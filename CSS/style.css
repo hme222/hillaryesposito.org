@@ -24,7 +24,7 @@ html, body {
   top: 0; 
   z-index: 1000;
 }
-.logo { display: flex; align-items: center; gap: 0.5rem; font-weight: bold; font-size: 1.5rem; letter-spacing: 2px; }
+.logo { display: flex; align-items: center; gap: 0.5rem; font-weight: bold; font-size: 1.5rem; letter-spacing: 1px; }
 .cat-logo { height: 30px; }
 .menu { display: flex; gap: 2rem; list-style: none; }
 .menu a { text-decoration: none; color: inherit; letter-spacing: 1px; }
@@ -39,7 +39,7 @@ html, body {
 
 /* Hero */
 .hero { padding: 5rem 2rem; text-align: center; }
-.hero-title { opacity: 0; clip-path: inset(0 0 100% 0); font-size: 2.5rem; font-weight: 900; }
+.hero-title { opacity: 0; clip-path: inset(0 0 100% 0); font-size: 2.5rem; font-weight: 900; letter-spacing: 2px; }
 .section { padding: 3rem 2rem; max-width: 800px; margin: auto; }
 .fade-text { opacity: 0; transform: translateY(30px); }
 
@@ -115,7 +115,7 @@ footer {
 
 /* If body has a background */
 body {
-  background: #f9d0f5da; /* fallback color */
+  background: #feedfdda; /* fallback color */
   background-size: cover;
   background-position: center;
   background-attachment: fixed; /* parallax-like effect */
