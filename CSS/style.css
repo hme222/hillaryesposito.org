@@ -27,7 +27,7 @@ html, body {
 .logo { display: flex; align-items: center; gap: 0.5rem; font-weight: bold; font-size: 1.5rem; letter-spacing: 1px; }
 .cat-logo { height: 30px; }
 .menu { display: flex; gap: 2rem; list-style: none; }
-.menu a { text-decoration: none; color: inherit; letter-spacing: 1px; }
+.menu a { text-decoration: none; color: inherit; letter-spacing: 1px; font-weight:  500; }
 .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
 
 /* Mobile menu */
@@ -40,7 +40,7 @@ html, body {
 /* Hero */
 .hero { padding: 5rem 2rem; text-align: center; }
 .hero-title { opacity: 0; clip-path: inset(0 0 100% 0); font-size: 2.5rem; font-weight: 900; letter-spacing: 2px; }
-.section { padding: 3rem 2rem; max-width: 800px; margin: auto; }
+.section { min-height: 100vh; padding: 120px 2rem 4rem; max-width: 800px; justify-content: center; flex-direction: column ; }
 .fade-text { opacity: 0; transform: translateY(30px); }
 
 /* Loader */
@@ -52,9 +52,9 @@ html, body {
 
 
 /* Dark mode */
-body.dark { background: #121212; color: #e0e0e0; }
-body.dark .navbar { background: rgba(18,18,18,0.9); border-color: #333; }
-body.dark a { color: #90caf9; }
+body.dark { background: #0e0e0e ; color: #f5f5f5; }
+body.dark .navbar { background: rgba(14,14,14,0.9); border-color: #333; }
+body.dark a { color: #f5f5f5; }
 
 /* Cursor */
 #custom-cursor {
@@ -121,3 +121,9 @@ body {
   background-attachment: fixed; /* parallax-like effect */
 }
 
+.project a,
+.section a {
+  color: inherit;
+  text-decoration: underline;
+  opacity: 1;
+}

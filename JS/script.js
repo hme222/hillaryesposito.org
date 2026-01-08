@@ -45,8 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Fade-in Text
   gsap.utils.toArray(".fade-text").forEach((el, i) => {
     gsap.from(el, {
-      opacity: 0, y: 30, duration: 1, delay: 2.7 + i * 0.2, ease: "power2.out",
-      scrollTrigger: { trigger: el, start: "top 90%" }
+      opacity: 0, y: 30, duration: 1, delay: i * 0.2, ease: "power2.out",
+      scrollTrigger: { trigger: el, start: "top 85%", once: true }
     });
   });
 
