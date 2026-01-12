@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "es6",                       // Output JS version (ES6 is common)
+    "module": "esnext",                   // Use ES modules (compatible with bundlers)
+    "lib": ["dom", "dom.iterable", "esnext"],  // Include browser & modern JS APIs
+    "allowJs": true,                      // Allow importing JS files if any
+    "skipLibCheck": true,                 // Skip type checking of declaration files for faster builds
+    "esModuleInterop": true,              // Support default imports from CommonJS modules
+    "allowSyntheticDefaultImports": true, // Allow default imports even if not explicitly in module
+    "strict": true,                       // Enable all strict type-checking options
+    "forceConsistentCasingInFileNames": true, // Prevents case-related file issues (important on Mac/Windows)
+    "moduleResolution": "node",           // How to resolve modules, standard Node resolution
+    "resolveJsonModule": true,            // Allow importing JSON files
+    "isolatedModules": true,              // Supports transpiling each file independently (required by some bundlers)
+    "noEmit": true,                       // Don't output compiled files (React-scripts handles it)
+    "jsx": "react-jsx"                    // Use React 17+ JSX transform
+  },
+  "include": ["src"],                     // Include all TS and TSX files under src folder
+  "exclude": ["node_modules", "build"]   // Exclude these folders
+}
