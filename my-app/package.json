@@ -1,6 +1,7 @@
 {
   "name": "my-app",
   "version": "0.1.0",
+  "homepage": "https://hillaryesposito.org",
   "private": true,
   "dependencies": {
     "framer-motion": "^12.25.0",
