@@ -16,5 +16,5 @@
     "jsx": "react-jsx"                    // Use React 17+ JSX transform
   },
   "include": ["src"],                     // Include all TS and TSX files under src folder
-  "exclude": ["node_modules", "build"]   // Exclude these folders
+  "exclude": ["node_modules", "../build"]   // Exclude these folders
 }
