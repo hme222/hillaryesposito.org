@@ -60,6 +60,20 @@ export function Portfolio({ darkMode, setDarkMode }: PortfolioProps) {
     );
   }
 
+  function Contact() {
+  return (
+    <section className="contact-hero section active" aria-label="Contact section">
+      <div className="contact-container">
+        <div className="contact-info">
+          <h1>Let's Work Together</h1>
+          <p>Open to collaborations and freelance projects.</p>
+        </div>
+        {/* ... form code ... */}
+      </div>
+    </section>
+  );
+}
+
   function Projects() {
     return (
       <section
