@@ -1,6 +1,5 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import {
-  BrowserRouter as Router,
   Routes,
   Route,
   Link,
@@ -234,7 +233,7 @@ export function Portfolio({ darkMode, setDarkMode }: PortfolioProps) {
           points around feature discoverability and visual overwhelm.
 
 
-          
+
         </p>
 
         <h2>Design Approach</h2>

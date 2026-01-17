@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import { Portfolio } from "./components/Portfolio";
 import "./App.css";
 
@@ -121,7 +121,7 @@ function App() {
   return (
     <Router>
       <>
-        {/* Loader */}
+        {/* Loader
         <div id="loader" aria-hidden="true">
           <img
             src="assets/logo-cat.png"
@@ -129,7 +129,7 @@ function App() {
             className="loader-cat"
             aria-hidden="true"
           />
-        </div>
+        </div> */}
 
         <div className={`app ${darkMode ? "dark-mode" : ""}`}>
           <Portfolio darkMode={darkMode} setDarkMode={setDarkMode} />
