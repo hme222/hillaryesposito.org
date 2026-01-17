@@ -430,34 +430,46 @@ footer {
   color: #f8d2b7;
 }
 
-/* MOBILE */
+/* MOBILE *//* MOBILE */
 @media (max-width: 768px) {
-
+  /* 1. Ensure the hamburger is the top-most layer */
   .hamburger {
     display: block;
+    z-index: 2000; /* Higher than the nav-menu */
+    position: relative;
   }
 
+  /* 2. Transform the menu into a full-screen overlay */
   .nav-menu {
-    position: flex;
-    top: 100%;
-    right: 5%;
-    flex-direction: column;
+    position: fixed; /* Fixes it to the viewport */
+    top: 0;
+    right: -100%; /* Hidden off-screen to the right */
+    width: 100%;
+    height: 100vh;
     background: white;
-    padding: 2rem;
-    border-radius: 20px;
-    display: none;
-    width: 200px;
-    box-shadow: 0 6px 15px rgba(104, 96, 62, 0.2);
+    flex-direction: column;
+    justify-content: center; /* Center links vertically */
+    align-items: center;    /* Center links horizontally */
+    gap: 3rem;
+    padding: 0;
+    border-radius: 0; /* Full screen looks cleaner than a box */
+    display: flex;    /* Keep flex but control visibility via position */
+    transition: right 0.4s ease-in-out;
+    z-index: 1500;
   }
 
+  /* 3. Show the menu when open */
   .nav-menu.open {
-    display: flex;
+    right: 0;
   }
 
-  .dark-mode .nav-menu.open {
-    background: #36220c;
+  /* 4. Dark Mode Menu Adjustment */
+  .dark-mode .nav-menu {
+    background: #1a0e03;
+    border: none;
   }
 
+  /* 5. Clean up other mobile elements */
   .hero h1 {
     font-size: 3rem;
     letter-spacing: -2px;
@@ -467,20 +479,11 @@ footer {
     font-size: 1rem;
   }
 
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-
   .contact-container {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
-
-  .contact-info h1 {
-    font-size: 2.5rem;
-  }
 }
-
 /* Case Study Pages */
 .case-study {
   max-width: 900px;
