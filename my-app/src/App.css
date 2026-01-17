@@ -435,7 +435,7 @@ footer {
   /* 1. Ensure the hamburger is the top-most layer */
   .hamburger {
     display: block;
-    z-index: 2000; /* Higher than the nav-menu */
+    z-index: 2100; /* Higher than the nav-menu */
     position: relative;
   }
 
@@ -455,12 +455,13 @@ footer {
     border-radius: 0; /* Full screen looks cleaner than a box */
     display: flex;    /* Keep flex but control visibility via position */
     transition: right 0.4s ease-in-out;
-    z-index: 1500;
+    z-index: 2000;
   }
 
   /* 3. Show the menu when open */
   .nav-menu.open {
     right: 0;
+    display: flex;
   }
 
   /* 4. Dark Mode Menu Adjustment */
