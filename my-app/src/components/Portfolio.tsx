@@ -109,7 +109,10 @@ export function Portfolio({ darkMode, setDarkMode }: PortfolioProps) {
             className="project-card project"
             role="button"
             tabIndex={0}
-            onClick={() => navigate("/case-study/hipstirred-photo")}
+            onClick={() => {
+              setMenuOpen(false); // Added for consistency
+              navigate("/case-study/hipstirred-photo");
+            }}
             onKeyDown={(e) =>
               e.key === "Enter" && navigate("/case-study/hipstirred-photo")
             }
@@ -178,11 +181,10 @@ export function Portfolio({ darkMode, setDarkMode }: PortfolioProps) {
     return (
       <main className="case-study" aria-label="Mobile UX App Case Study">
         <h1>Good Harvest App — UX Case Study</h1>
-        <p>
-          Author: Hillary Esposito
-          <p></p>
+        <div>
+          <p>Author: Hillary Esposito</p>
           <h2> Project Concept </h2>
-          This project is a mobile app for both busy foodies
+          <p>This project is a mobile app for both busy foodies
           and people new to seasonal eating, to help them quickly plan a meal or
           make a shopping list based on what produce is in season in their area.
           The app will include seasonality information based on geographic
@@ -190,18 +192,17 @@ export function Portfolio({ darkMode, setDarkMode }: PortfolioProps) {
           recipe ideas based on that food, and some limited health information,
           such as whether a produce item is on the Environmental Working Group’s
           annual Clean Fifteen / Dirty Dozen list for most and least amount of
-          pesticide residue on that product.
-          <p> </p>
-          <h2> Project Statement </h2> How might we
-          reduce the time to plan meals around the food that is in season at the
-          location we live in, in order to follow a more sustainable diet?
-        </p>
+          pesticide residue on that product.</p>
+          
+          <h2> Project Statement </h2> 
+          <p>How might we reduce the time to plan meals around the food that is in season at the
+          location we live in, in order to follow a more sustainable diet?</p>
+        </div>
 
         <h2>Challenge</h2>
         <p>
           Key Requirements: Allows users to see what produce items are available in
-          their region right now
-           Problem: “What’s in season right now in my
+          their region right now. Problem: “What’s in season right now in my
           area?” Gives users the ability to understand the difference between
           different varieties of the same produce item. Problem: “I see both red
           beets and golden beets at the farmers’ market, and I want to
@@ -231,9 +232,6 @@ export function Portfolio({ darkMode, setDarkMode }: PortfolioProps) {
         <p>
           We conducted user interviews and usability tests, uncovering pain
           points around feature discoverability and visual overwhelm.
-
-
-
         </p>
 
         <h2>Design Approach</h2>
@@ -344,7 +342,10 @@ export function Portfolio({ darkMode, setDarkMode }: PortfolioProps) {
       <nav className="navbar" aria-label="Primary navigation">
         <button
           className="logo"
-          onClick={() => setMenuOpen(false)}
+          onClick={() => {
+            setMenuOpen(false);
+            navigate("/");
+          }}
           aria-label="Go to home section"
         >
           {imgVisible && (
@@ -419,7 +420,7 @@ export function Portfolio({ darkMode, setDarkMode }: PortfolioProps) {
       </Routes>
 
       <footer>
-        <p>© 2025 Hillary Esposito</p>
+        <p>© 2026 Hillary Esposito</p>
       </footer>
     </div>
   );

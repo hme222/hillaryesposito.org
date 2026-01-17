@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { HashRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom"; // Essential for GH Pages
 import { Portfolio } from "./components/Portfolio";
 import "./App.css";
 
@@ -11,7 +11,6 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    // Load dark mode preference
     const saved = localStorage.getItem("darkMode");
     if (saved) setDarkMode(JSON.parse(saved));
   }, []);
@@ -21,7 +20,7 @@ function App() {
   }, [darkMode]);
 
   useEffect(() => {
-    // Loader Animation
+    // 1. Loader Animation
     if (document.querySelector(".loader-cat")) {
       gsap.to(".loader-cat", {
         opacity: 1,
@@ -50,7 +49,7 @@ function App() {
       });
     }
 
-    // Hero Title Animation
+    // 2. Hero Title Animation (Clip-path)
     if (document.querySelector(".hero h1")) {
       gsap.fromTo(
         ".hero h1",
@@ -65,7 +64,7 @@ function App() {
       );
     }
 
-    // Fade-in Text Animation
+    // 3. Fade-in Text Animation
     gsap.utils.toArray<HTMLElement>(".fade-text").forEach((el, i) => {
       gsap.from(el, {
         opacity: 0,
@@ -81,7 +80,7 @@ function App() {
       });
     });
 
-    // Projects Animation
+    // 4. Projects Animation
     gsap.utils.toArray<HTMLElement>(".project-card").forEach((el, i) => {
       gsap.from(el, {
         opacity: 0,
@@ -96,7 +95,7 @@ function App() {
       });
     });
 
-    // Smooth Custom Cursor
+    // 5. Smooth Custom Cursor
     const cursor = document.getElementById("custom-cursor");
     if (cursor) {
       cursor.style.left = "-100px";
@@ -121,7 +120,7 @@ function App() {
   return (
     <Router>
       <>
-        {/* Loader
+        {/* Loader */}
         <div id="loader" aria-hidden="true">
           <img
             src="assets/logo-cat.png"
@@ -129,7 +128,7 @@ function App() {
             className="loader-cat"
             aria-hidden="true"
           />
-        </div> */}
+        </div>
 
         <div className={`app ${darkMode ? "dark-mode" : ""}`}>
           <Portfolio darkMode={darkMode} setDarkMode={setDarkMode} />
