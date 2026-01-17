@@ -123,7 +123,8 @@ body {
 .logo {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: .5rem;
+  z-index: 2101;
   background: none;
   border: none;
   cursor: pointer;
@@ -131,12 +132,12 @@ body {
 }
 
 .logo img {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
 }
 
 .logo-text {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: 2px;
 }
@@ -523,9 +524,10 @@ footer {
     gap: 2rem;
   }
   .contact-info h1 {
-    font-size: 3rem; 
+    font-size: 2.2rem; 
     text-align: center;
-    line-height: 1.1;
+    line-height: 1.2;
+    margin-bottom: 1rem;
   }
   .contact-info p {
     text-align: center;
@@ -533,8 +535,27 @@ footer {
     margin-bottom: 1rem;
   }
   .contact-form {
-    padding: 2rem 1.5rem; /* more padding for smaller screens */
+    padding: 1.5rem; /* more padding for smaller screens */
+    gap: 1.5rem;
     width: 100%;
+    border-radius: 20px;
+  }
+
+  .logo-text{
+    display: none; 
+  }
+  /* Adjust Inputs for smaller screens */
+  .form-group input, 
+  .form-group textarea {
+    padding: 0.7rem;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Make sure the container doesn't have horizontal scroll */
+  .contact-container {
+    padding: 0 10px;
+    gap: 2rem;
   }
 
 }
