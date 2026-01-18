@@ -36,11 +36,9 @@ export function Portfolio({ darkMode, setDarkMode }: PortfolioProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
           >
-            User Experience professional with 8+ years shaping thoughtful
-            digital systems where clarity and trust matter most. Experienced in
-            navigating ambiguity, aligning stakeholders, and supporting
-            data-informed design and training initiatives that drive adoption
-            and impact at scale.
+            UX Designer who codes modern, accessible web experiences. 
+
+            I design and build intuitive, high-performance interfaces with a focus on usability, accessibility, and real-world impact.
           </motion.p>
           <motion.div
             initial={{ opacity: 0 }}
