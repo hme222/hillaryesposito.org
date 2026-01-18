@@ -276,7 +276,7 @@ body {
 
 /* PROJECTS */
 .projects {
-  padding: 8rem 5%;
+  padding: 4rem 5%;
   background: #ffffff;
 }
 
@@ -330,7 +330,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8rem 5%;
+  padding: 4rem 5%;
   background: #ffffff;
 }
 
