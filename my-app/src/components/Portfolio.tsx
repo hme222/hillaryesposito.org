@@ -1,10 +1,5 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
-import {
-  Routes,
-  Route,
-  Link,
-  useNavigate,
-} from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 interface PortfolioProps {
@@ -36,9 +31,9 @@ export function Portfolio({ darkMode, setDarkMode }: PortfolioProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
           >
-            UX Designer who codes modern, accessible web experiences. 
-
-            I design and build intuitive, high-performance interfaces with a focus on usability, accessibility, and real-world impact.
+            UX Designer who codes modern, accessible web experiences. I design
+            and build intuitive, high-performance interfaces with a focus on
+            usability, accessibility, and real-world impact.
           </motion.p>
           <motion.div
             initial={{ opacity: 0 }}
@@ -180,27 +175,75 @@ export function Portfolio({ darkMode, setDarkMode }: PortfolioProps) {
       <main className="case-study" aria-label="Mobile UX App Case Study">
         <h1>Good Harvest App — UX Case Study</h1>
         <p>Author: Hillary Esposito</p>
-        <h2> Project Concept </h2>
+        <h2> Overview </h2>
         <p>
           This project is a mobile app for both busy foodies and people new to
           seasonal eating, to help them quickly plan a meal or make a shopping
-          list based on what produce is in season in their area.
+          list based on what produce is in season in their area. The app will
+          include seasonality information based on geographic region, how long
+          the item is in season (June through October), simple recipe ideas
+          based on that food, and some limited health information, such as
+          whether a produce item is on the Environmental Working Group’s annual
+          Clean Fifteen / Dirty Dozen list for most and least amount of
+          pesticide residue on that product. How might we reduce the time to
+          plan meals around the food that is in season at the location we live
+          in, in order to follow a more sustainable diet?
         </p>
 
-        <h2>Challenge</h2>
+        <h2>Key Requirements</h2>
         <p>
-          Key Requirements: Allows users to see what produce items are available in
-          their region right now. Problem: “What’s in season right now in my
-          area?”
+          Allows users to see what produce items are available in their region
+          right now Problem: “What’s in season right now in my area?” Gives
+          users the ability to understand the difference between different
+          varieties of the same produce item. Problem: “I see both red beets and
+          golden beets at the farmers’ market, and I want to understand if these
+          are cooked the same way, or if one is better than the other.” Allows
+          users to see examples of simple recipes that include produce items
+          that are currently in season. “Problem: “If tomatoes are in season, I
+          want to see recipes that feature this ingredient.” Allows users to see
+          whether it’s worth spending extra to buy an organic version of the
+          produce item. Problem: “Do potatoes have a lot of pesticide residue
+          that can’t be removed by rinsing them off?” Gives users basic
+          nutritional information about produce items. Problem: “I want to know
+          what the health benefits are, if any, of eating cherries.” Gives users
+          the ability to select recipes in-app and add the ingredients to a
+          shopping list Problem: “I want to make a shopping list so I can make
+          the tomato soup and potato hash recipes I found in the app.” Allows
+          users to export recipe data to ToDoist, Google Keep, Asana, Notion, or
+          other popular to-do apps Problem: “I want to add my shopping list to
+          the apps I’m already using for personal task management.” Allows users
+          to skip ahead to see what’s in season next month, or what just came
+          out of season — because sometimes crops are early or late. Problem:
+          “Asparagus season should be over, but I still see lots of it at the
+          market. I want to see some recipe ideas for cooking with asparagus.”
+        </p>
+        <h2> Roles & Tools </h2>
+        <p>
+          The final product received positive feedback for its ease of use and
+          engaging UI, increasing user retention by 25%.
         </p>
 
-        <h2>Research & Insights</h2>
+        <h2>Research</h2>
         <p>
           We conducted user interviews and usability tests, uncovering pain
           points around feature discoverability and visual overwhelm.
         </p>
-
-        <h2>Outcome</h2>
+        <h2> Design </h2>
+        <p>
+          The final product received positive feedback for its ease of use and
+          engaging UI, increasing user retention by 25%.
+        </p>
+        <h2> Build </h2>
+        <p>
+          The final product received positive feedback for its ease of use and
+          engaging UI, increasing user retention by 25%.
+        </p>
+        <h2> Results</h2>
+        <p>
+          The final product received positive feedback for its ease of use and
+          engaging UI, increasing user retention by 25%.
+        </p>
+        <h2> Takeaways</h2>
         <p>
           The final product received positive feedback for its ease of use and
           engaging UI, increasing user retention by 25%.
