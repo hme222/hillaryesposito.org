@@ -1,12 +1,12 @@
-import { getCLS, getFID, getLCP, getFCP, getTTFB } from "web-vitals";
+import { onCLS, onLCP, onFCP, onTTFB, onINP } from "web-vitals";
 
 const reportWebVitals = (onPerfEntry?: (metric: any) => void) => {
   if (onPerfEntry && typeof onPerfEntry === "function") {
-    getCLS(onPerfEntry);
-    getFID(onPerfEntry);
-    getLCP(onPerfEntry);
-    getFCP(onPerfEntry);
-    getTTFB(onPerfEntry);
+    onCLS(onPerfEntry);
+    onLCP(onPerfEntry);
+    onFCP(onPerfEntry);
+    onTTFB(onPerfEntry);
+    onINP(onPerfEntry); // Replaces FID
   }
 };
 
