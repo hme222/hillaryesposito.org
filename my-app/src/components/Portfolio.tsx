@@ -175,63 +175,140 @@ export function Portfolio({ darkMode, setDarkMode }: PortfolioProps) {
       <main className="case-study" aria-label="Mobile UX App Case Study">
         <h1>Good Harvest App — UX Case Study</h1>
         <p>Author: Hillary Esposito</p>
-        <h2> Overview </h2>
+        <h2> Project Overview </h2>
         <p>
-          This project is a mobile app for both busy foodies and people new to
-          seasonal eating, to help them quickly plan a meal or make a shopping
-          list based on what produce is in season in their area. The app will
-          include seasonality information based on geographic region, how long
-          the item is in season (June through October), simple recipe ideas
-          based on that food, and some limited health information, such as
-          whether a produce item is on the Environmental Working Group’s annual
-          Clean Fifteen / Dirty Dozen list for most and least amount of
-          pesticide residue on that product. How might we reduce the time to
-          plan meals around the food that is in season at the location we live
-          in, in order to follow a more sustainable diet?
+          is a mobile app designed for busy food lovers and people new to
+          seasonal eating. The app helps users quickly plan meals and create
+          shopping lists based on what produce is currently in season in their
+          geographic area. The goal is to make sustainable eating easier by
+          providing: Regional seasonality information Simple, seasonal recipes
+          Basic nutrition and health insights Smart shopping list tools My Role:
+          UX Researcher & Designer Tools: Figma, User Surveys, Interviews,
+          Competitive Analysis This project is a mobile app for both busy
+          foodies and people new to seasonal eating, to help them quickly plan a
+          meal or make a shopping list based on what produce is in season in
+          their area. The app will include seasonality information based on
+          geographic region, how long the item is in season (June through
+          October), simple recipe ideas based on that food, and some limited
+          health information, such as whether a produce item is on the
+          Environmental Working Group’s annual Clean Fifteen / Dirty Dozen list
+          for most and least amount of pesticide residue on that product. How
+          might we reduce the time to plan meals around the food that is in
+          season at the location we live in, in order to follow a more
+          sustainable diet?
         </p>
 
-        <h2>Key Requirements</h2>
+        <h2>The Problem </h2>
         <p>
-          Allows users to see what produce items are available in their region
-          right now Problem: “What’s in season right now in my area?” Gives
-          users the ability to understand the difference between different
-          varieties of the same produce item. Problem: “I see both red beets and
-          golden beets at the farmers’ market, and I want to understand if these
-          are cooked the same way, or if one is better than the other.” Allows
-          users to see examples of simple recipes that include produce items
-          that are currently in season. “Problem: “If tomatoes are in season, I
-          want to see recipes that feature this ingredient.” Allows users to see
-          whether it’s worth spending extra to buy an organic version of the
-          produce item. Problem: “Do potatoes have a lot of pesticide residue
-          that can’t be removed by rinsing them off?” Gives users basic
-          nutritional information about produce items. Problem: “I want to know
-          what the health benefits are, if any, of eating cherries.” Gives users
-          the ability to select recipes in-app and add the ingredients to a
-          shopping list Problem: “I want to make a shopping list so I can make
-          the tomato soup and potato hash recipes I found in the app.” Allows
-          users to export recipe data to ToDoist, Google Keep, Asana, Notion, or
-          other popular to-do apps Problem: “I want to add my shopping list to
-          the apps I’m already using for personal task management.” Allows users
-          to skip ahead to see what’s in season next month, or what just came
-          out of season — because sometimes crops are early or late. Problem:
-          “Asparagus season should be over, but I still see lots of it at the
-          market. I want to see some recipe ideas for cooking with asparagus.”
-        </p>
-        <h2> Roles & Tools </h2>
-        <p>
-          The final product received positive feedback for its ease of use and
-          engaging UI, increasing user retention by 25%.
-        </p>
+          Many people want to eat more sustainably, but struggle to plan meals around seasonal produce. Finding accurate, location-based seasonality information, understanding produce varieties, and deciding whether to buy organic can be time-consuming and confusing.
+          
+          Core User Question
 
-        <h2>Research</h2>
+“What’s in season right now in my area?”
+
+Design Challenge
+
+How might we reduce the time it takes to plan meals using seasonal produce, so people can follow a more sustainable diet?
+        </p>
+        <h2>Research Summary </h2>
         <p>
-          We conducted user interviews and usability tests, uncovering pain
-          points around feature discoverability and visual overwhelm.
+          To better understand user needs, I conducted:
+
+User surveys
+
+Interviews
+
+Behavioral analysis
+
+Competitive analysis & SWOT
+
+Key Insights
+
+Users want quick answers about what’s in season locally
+
+Many are confused by different produce varieties
+
+People want simple recipe ideas, not complex meal plans
+
+Shoppers want to know when organic purchases actually matter
+
+Most users already use task management apps for shopping lists
+
+These insights shaped the core features of the app.
         </p>
         <h2> Design </h2>
         <p>
-          The final product received positive feedback for its ease of use and
-          engaging UI, increasing user retention by 25%.
+          1. See What’s in Season Locally
+
+User Problem:
+
+“What’s in season right now in my area?”
+
+Solution:
+The app shows region-specific produce based on the user’s location and current month.
+2. Understand Produce Varieties
+
+User Problem:
+
+“I see red beets and golden beets — are they cooked the same way?”
+
+Solution:
+Each produce item includes variety comparisons with flavor and cooking notes.
+3. Discover Simple Recipes
+
+User Problem:
+
+“If tomatoes are in season, I want recipe ideas that use them.”
+
+Solution:
+The app suggests easy, seasonal recipes featuring currently available produce.
+4. Make Smarter Organic Choices
+
+User Problem:
+
+“Do potatoes have a lot of pesticide residue?”
+
+Solution:
+The app includes Environmental Working Group (EWG) Clean Fifteen / Dirty Dozen info so users can decide when organic is worth the cost.
+5. Learn Basic Health Benefits
+
+User Problem:
+
+“What are the health benefits of cherries?”
+
+Solution:
+Each produce item includes simple nutritional highlights.
+
+6. Build a Shopping List
+
+User Problem:
+
+“I want to make a list for the recipes I found.”
+
+Solution:
+Users can add ingredients directly to an in-app shopping list.
+7. Export to Existing Apps
+
+User Problem:
+
+“I already use Notion / ToDoist / Google Keep.”
+
+Solution:
+Users can export their lists to popular productivity tools.
+
+8. View Upcoming or Past Seasons
+
+User Problem:
+
+“Asparagus should be out of season, but I still see it.”
+
+Solution:
+Users can view past and upcoming seasonal produce to account for early or late harvests.
+
+Final Problem Statement
+
+How might we help people quickly plan meals around seasonal produce in their local area, so sustainable eating feels simple and accessible?
+
         </p>
         <h2> Build </h2>
         <p>
