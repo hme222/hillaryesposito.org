@@ -246,14 +246,6 @@ export function Portfolio({ darkMode, setDarkMode }: PortfolioProps) {
       </section>
 
       <section>
-        <h2>Results</h2>
-        <p>
-          Users reported faster meal planning and clearer shopping decisions.
-          The app improved confidence in sustainable food choices.
-        </p>
-      </section>
-
-      <section>
         <h2>Takeaways</h2>
         <p>
           This project strengthened my ability to translate research into
