@@ -120,7 +120,7 @@ textarea:focus {
 }
 
 .dark-mode .logo img {
-  filter: invert 100%;
+  filter: brightness(3);
 }
 
 /* NAVBAR */
