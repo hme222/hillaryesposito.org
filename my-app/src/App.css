@@ -728,3 +728,552 @@ footer p {
     letter-spacing: -2px;
   }
 }
+
+
+/* =========================
+   CASE STUDY (Good Harvest)
+   ========================= */
+   /* -----------------------------
+   PROJECT CARDS: match sizing + add media header
+-------------------------------- */
+.projects {
+  padding: 8rem 5%;
+  background: #ffffff;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 1100px; /* keeps grid centered + consistent */
+  margin: 0 auto;
+}
+
+.project-card {
+  background: #fff;
+  border-radius: 26px;
+  border: 1px solid rgba(0,0,0,0.10);
+  padding: 0; /* because header will handle top */
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.14);
+}
+
+.dark-mode .project-card {
+  background: #36220c;
+  border-color: rgba(248, 210, 183, 0.18);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+}
+
+/* New media header (icon or image) */
+.project-media {
+  height: 170px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(235,163,82,0.25), rgba(186,128,63,0.20));
+}
+
+.dark-mode .project-media {
+  background: linear-gradient(135deg, rgba(235,163,82,0.20), rgba(26,14,3,0.0));
+}
+
+.project-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.project-icon {
+  font-size: 2.25rem;
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  background: rgba(255,255,255,0.65);
+  border: 1px solid rgba(0,0,0,0.10);
+}
+
+.dark-mode .project-icon {
+  background: rgba(54,34,12,0.85);
+  border-color: rgba(248, 210, 183, 0.22);
+}
+
+.project-body {
+  padding: 1.4rem 1.5rem 1.6rem;
+}
+
+.project-body h3 {
+  font-size: 1.2rem;
+  letter-spacing: 0.4px;
+  margin-bottom: 0.4rem;
+}
+
+.project-body p {
+  color: #444;
+  line-height: 1.55;
+  font-size: 0.98rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;  /* clamps long blurbs */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.dark-mode .project-body p {
+  color: #f8d2b7;
+}
+
+/* -----------------------------
+   CASE STUDY MEDIA: match projects grid width
+-------------------------------- */
+.cs-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3rem; /* more breathing room */
+  margin: 3rem 0;
+}
+
+@media (max-width: 1024px) {
+  .cs-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .cs-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* 3-column layout */
+.cs-gallery.cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.media-card {
+  background: var(--card-bg, #fff);
+  border-radius: 18px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* Image behavior */
+.media-card img {
+  width: 100%;
+  height: auto;
+  max-height: 280px; /* keeps them compact */
+  object-fit: contain; /* preserves detail */
+}
+
+
+
+.cs-media figcaption {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #555;
+}
+
+.dark-mode .cs-media figcaption {
+  color: #e8d5c4;
+}
+
+.cs-media {
+  display: flex;
+  flex-direction: column;
+}
+
+.cs-actions {
+  margin-top: auto;
+}
+
+.cs-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #6B8E23;
+}
+
+.cs-link:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   CASE STUDY: Recruiter skim card + compact media grid
+   ========================= */
+
+/* Recruiter quick-skim card */
+.cs-skim {
+  margin: 2.25rem 0 3rem;
+  padding: 1.5rem;
+  border-radius: 22px;
+  border: 1px solid rgba(0,0,0,0.10);
+  background:
+    radial-gradient(circle at 20% 30%, rgba(128,128,0,0.08), transparent 55%),
+    radial-gradient(circle at 85% 70%, rgba(107,142,35,0.08), transparent 55%),
+    #ffffff;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+}
+
+.dark-mode .cs-skim {
+  background:
+    radial-gradient(circle at 20% 30%, rgba(235,163,82,0.16), transparent 60%),
+    radial-gradient(circle at 85% 70%, rgba(186,128,63,0.14), transparent 60%),
+    #0f0f0f;
+  border-color: rgba(248, 210, 183, 0.18);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.38);
+}
+
+.cs-skim-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.cs-skim-title {
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #0a0a0a;
+}
+
+.dark-mode .cs-skim-title {
+  color: #ffffff;
+}
+
+.cs-skim-meta {
+  font-size: 0.95rem;
+  color: #666;
+  font-style: italic;
+}
+
+.dark-mode .cs-skim-meta {
+  color: #b8b8b8;
+}
+
+.cs-skim-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .cs-skim-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cs-skim-block h3 {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  margin-bottom: 0.5rem;
+  color: #6B8E23;
+  font-weight: 700;
+}
+
+.dark-mode .cs-skim-block h3 {
+  color: #EBA352;
+}
+
+.cs-skim-block p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #444;
+}
+
+.dark-mode .cs-skim-block p {
+  color: #e8d5c4;
+}
+
+/* Tags */
+.cs-skim-tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding: 0;
+  margin: 0;
+}
+
+.cs-tag {
+  font-size: 0.9rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(107,142,35,0.10);
+  border: 1px solid rgba(107,142,35,0.22);
+  color: #0a0a0a;
+  font-weight: 600;
+}
+
+.dark-mode .cs-tag {
+  background: rgba(235,163,82,0.12);
+  border-color: rgba(235,163,82,0.22);
+  color: #ffffff;
+}
+
+/* =========================
+   Case study media grid (smaller, card-like, 3 columns)
+   ========================= */
+
+/* Make the grid feel like your project cards */
+.cs-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;              /* tighter than 3rem */
+  margin: 2rem 0 3rem;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .cs-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .cs-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card */
+.media-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 1rem;
+  border: 1px solid rgba(0,0,0,0.10);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.dark-mode .media-card {
+  background: #0f0f0f;
+  border-color: rgba(248, 210, 183, 0.18);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.38);
+}
+
+/* Clickable image area (fix “images aren’t linking”) */
+.media-link {
+  display: block;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.10);
+  background: rgba(0,0,0,0.02);
+}
+
+.dark-mode .media-link {
+  border-color: rgba(248, 210, 183, 0.14);
+  background: rgba(255,255,255,0.03);
+}
+
+.media-link:focus {
+  outline: 3px solid #6B8E23;
+  outline-offset: 3px;
+}
+
+.dark-mode .media-link:focus {
+  outline-color: #EBA352;
+}
+
+/* Compact image sizing, still readable */
+.media-card img {
+  width: 100%;
+  height: 220px;           /* compact + consistent */
+  object-fit: contain;     /* preserve detail */
+  display: block;
+  background: transparent;
+}
+
+/* Caption */
+.cs-media figcaption {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #555;
+}
+
+.dark-mode .cs-media figcaption {
+  color: #e8d5c4;
+}
+
+/* Actions */
+.cs-actions {
+  margin-top: auto;
+  padding-top: 0.25rem;
+}
+
+.cs-link {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: #6B8E23;
+}
+
+.cs-link:hover {
+  text-decoration: underline;
+}
+
+.dark-mode .cs-link {
+  color: #EBA352;
+}
+
+/* Optional: keep big screenshots from blowing up */
+@media (max-width: 600px) {
+  .media-card img {
+    height: 190px;
+  }
+}
+
+.media-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.media-card-link:hover {
+  transform: translateY(-4px);
+}
+
+.media-card-link:focus {
+  outline: 3px solid #6B8E23;
+  outline-offset: 4px;
+}
+
+.dark-mode .media-card-link:focus {
+  outline-color: #EBA352;
+}
+
+
+/* Recruiter CTA line */
+.recruiter-cta {
+  margin-top: 1.2rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.recruiter-cta a {
+  color: #6B8E23;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.recruiter-cta a:hover {
+  opacity: 0.9;
+}
+
+/* Recruiter skim card */
+.cs-skim {
+  margin: 4rem 0;
+  padding: 2.5rem;
+  border-radius: 24px;
+  background: linear-gradient(
+    135deg,
+    rgba(107, 142, 35, 0.08),
+    rgba(107, 142, 35, 0.03)
+  );
+  border: 1px solid rgba(107, 142, 35, 0.25);
+}
+
+.dark-mode .cs-skim {
+  background: linear-gradient(
+    135deg,
+    rgba(235, 163, 82, 0.12),
+    rgba(235, 163, 82, 0.04)
+  );
+  border-color: rgba(235, 163, 82, 0.35);
+}
+
+.cs-skim-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.cs-skim-head h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.cs-skim-badge {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(107, 142, 35, 0.15);
+  border: 1px solid rgba(107, 142, 35, 0.35);
+}
+
+/* List */
+.cs-skim-list {
+  list-style: none;
+  padding: 0;
+}
+
+.cs-skim-list li {
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.cs-micro {
+  margin-top: 1.5rem;
+}
+
+.cs-micro-link {
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #6B8E23;
+}
+
+.cs-micro-link:hover {
+  text-decoration: underline;
+}
+
+.recruiter-toggle-link {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: #6B8E23;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  font: inherit;
+}
+
+.cs-micro-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #6B8E23;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  font: inherit;
+}
+
+/* optional: improve anchor scroll with fixed nav */
+#recruiter-summary,
+#full-case-study {
+  scroll-margin-top: 120px;
+}
