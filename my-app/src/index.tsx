@@ -14,4 +14,6 @@ root.render(
   </React.StrictMode>
 );
 
-reportWebVitals();
+reportWebVitals((metric) => {
+  console.log(metric.name, metric.value);
+});

@@ -1,22 +1,24 @@
 # Hillary Esposito – UX Designer Portfolio
 
-This is my personal portfolio website built with **React + TypeScript** to showcase my UX design work, projects, and contact information.
+Live site: https://hillaryesposito.org
+
+A UX portfolio built with React + TypeScript, focused on accessibility (WCAG-aware), performance, and modern UI motion.
 
 ## ✨ Features
 
-- Responsive modern UI
-- Dark / light mode toggle
-- Project showcase
-- Contact form
-- Accessible navigation
-- Clean, minimalist design
+- Accessible navigation + focus states
+- Dark mode (WCAG contrast mindful)
+- Project case studies with:
+  - Prototype + heatmap visuals
+  - Recruiter quick-skim summary (optional via query param)
+- Motion that respects `prefers-reduced-motion`
 
 ## 🛠 Tech Stack
 
-- React
-- TypeScript
+- React + Typescript
+- React Router
 - CSS (custom styling)
+- Framer Motion
 - HTML5
 
-## 📁 Project Structure
 
