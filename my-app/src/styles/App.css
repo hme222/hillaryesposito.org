@@ -1347,3 +1347,437 @@ footer p {
 .dark-mode .cs-toggle-link {
   color: #EBA352;
 }
+
+/* =========================
+   ECOMMERCE CASE STUDY (scoped)
+   Matches your premium card + olive gradient vibe
+   ========================= */
+
+.sr-only {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+.sr-only-focusable {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  padding: 0.75rem 1rem;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.12);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.08);
+  z-index: 9999;
+}
+.sr-only-focusable:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+.ecommerce-cs .ecom-header-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+@media (max-width: 768px) {
+  .ecommerce-cs .ecom-header-row {
+    flex-direction: column;
+  }
+}
+
+.ecom-highlight {
+  margin-top: 1.5rem;
+}
+
+/* Controls: use your form-group styling but make it grid */
+.ecommerce-controls .ecom-controls-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  gap: 1.25rem;
+  align-items: end;
+}
+@media (max-width: 968px) {
+  .ecommerce-controls .ecom-controls-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .ecommerce-controls .ecom-controls-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ecommerce-controls .ecom-select {
+  width: 100%;
+  padding: 1.2rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 15px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  background: white;
+}
+
+.ecommerce-controls .ecom-help {
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: 0.6rem;
+}
+
+.ecommerce-controls .ecom-range {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0.75rem;
+  align-items: center;
+}
+.ecommerce-controls .ecom-range input {
+  width: 100%;
+}
+
+.ecom-controls-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ecom-results {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: #666;
+}
+.ecom-results-label {
+  font-style: italic;
+}
+
+/* Product grid: card look aligned with your project cards */
+.ecom-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+}
+
+.ecom-card {
+  background: #f8f8f8;
+  border-radius: 26px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.ecom-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(107, 142, 35, 0.20);
+}
+
+.ecom-media {
+  display: block;
+  width: 100%;
+  border: none;
+  padding: 0;
+  background: radial-gradient(circle at 20% 30%, rgba(128,128,0,0.10), transparent 55%),
+              radial-gradient(circle at 85% 70%, rgba(107,142,35,0.10), transparent 55%),
+              #ffffff;
+  cursor: pointer;
+}
+.ecom-media img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.ecom-body {
+  padding: 1.4rem 1.5rem 1.6rem;
+}
+
+.ecom-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+  color: #0a0a0a;
+}
+.ecom-meta {
+  color: #666;
+  font-style: italic;
+  margin-bottom: 0.75rem;
+}
+.ecom-price {
+  font-weight: 700;
+  color: #0a0a0a;
+}
+.ecom-desc {
+  color: #666;
+  margin-bottom: 1.1rem;
+  line-height: 1.7;
+}
+
+/* Actions: blend with your button language */
+.ecom-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+.ecom-add.hero-btn {
+  padding: 0.9rem 1.6rem;
+  font-size: 0.85rem;
+}
+.ecom-link {
+  background: none;
+  border: none;
+  color: #6B8E23;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  font: inherit;
+}
+.ecom-link:hover {
+  opacity: 0.9;
+}
+
+/* Dialog: premium card feel */
+.ecom-dialog {
+  border: none;
+  padding: 0;
+  border-radius: 24px;
+  width: min(900px, 92vw);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+}
+.ecom-dialog::backdrop {
+  background: rgba(10,10,10,0.55);
+}
+
+.ecom-dialog-inner {
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid rgba(0,0,0,0.12);
+}
+
+.ecom-dialog-head {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.ecom-icon-btn {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0.35rem 0.6rem;
+  border-radius: 12px;
+}
+
+.ecom-dialog-body {
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 1.5rem;
+}
+@media (max-width: 768px) {
+  .ecom-dialog-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ecom-dialog-media img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,0.10);
+}
+
+.ecom-dialog-price {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #0a0a0a;
+  margin-bottom: 0.25rem;
+}
+.ecom-dialog-cat {
+  color: #666;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+.ecom-dialog-desc {
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+.ecom-dialog-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Drawer: matches your fixed/glass vibe */
+.ecom-drawer-root {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+}
+.ecom-backdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  background: rgba(10,10,10,0.45);
+}
+
+.ecom-drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(480px, 92vw);
+  background: #ffffff;
+  border-left: 1px solid rgba(0,0,0,0.12);
+  box-shadow: -20px 0 60px rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 1.25rem 1.5rem;
+}
+
+.ecom-drawer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.ecom-cart-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ecom-cart-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  background: #f8f8f8;
+  border: 1px solid #e0e0e0;
+  border-radius: 18px;
+  padding: 1rem;
+}
+
+.ecom-cart-title {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-weight: 700;
+}
+
+.ecom-muted {
+  color: #666;
+  font-weight: 600;
+}
+
+.ecom-qty-row {
+  margin-top: 0.75rem;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.ecom-qty-btn {
+  border: 1px solid rgba(0,0,0,0.12);
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 0.55rem 0.75rem;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.ecom-qty-input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 14px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.ecom-remove {
+  justify-self: end;
+}
+
+.ecom-summary {
+  margin-top: 1rem;
+}
+
+.ecom-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.65rem;
+}
+.ecom-total {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(0,0,0,0.10);
+}
+
+.ecom-summary-actions {
+  margin-top: 1.25rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+/* Dark mode alignment */
+.dark-mode .ecom-card,
+.dark-mode .ecom-cart-item,
+.dark-mode .ecom-dialog-inner,
+.dark-mode .ecom-drawer,
+.dark-mode .ecommerce-controls {
+  background: #0f0f0f;
+  border-color: rgba(255,255,255,0.10);
+  box-shadow: 0 10px 28px rgba(107, 142, 35, 0.20);
+}
+.dark-mode .ecom-body,
+.dark-mode .ecom-dialog-body,
+.dark-mode .ecom-drawer {
+  color: #ffffff;
+}
+.dark-mode .ecom-title,
+.dark-mode .ecom-dialog-price,
+.dark-mode .ecom-price {
+  color: #ffffff;
+}
+.dark-mode .ecom-meta,
+.dark-mode .ecom-desc,
+.dark-mode .ecom-muted,
+.dark-mode .ecom-dialog-cat,
+.dark-mode .ecom-dialog-desc,
+.dark-mode .ecom-help,
+.dark-mode .ecom-results {
+  color: #b8b8b8;
+}
+.dark-mode .ecom-link {
+  color: #EBA352; /* matches your existing dark mode accent */
+}
+.dark-mode .ecom-qty-btn {
+  background: #1a1a1a;
+  border-color: rgba(255,255,255,0.12);
+  color: #ffffff;
+}
+.dark-mode .ecom-qty-input,
+.dark-mode .ecommerce-controls .ecom-select {
+  background: #1a1a1a;
+  border-color: rgba(255,255,255,0.12);
+  color: #ffffff;
+}
