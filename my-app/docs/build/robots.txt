@@ -1,8 +1,0 @@
-# Allow all web crawlers access to everything except admin and private folders
-
-User-agent: *
-Disallow: /admin/
-Disallow: /private/
-
-# Sitemap location (optional but recommended for SEO)
-Sitemap: https://yourdomain.com/sitemap.xml
