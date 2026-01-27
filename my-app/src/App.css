@@ -822,6 +822,7 @@ footer p {
   font-size: 0.98rem;
   display: -webkit-box;
   -webkit-line-clamp: 3;  /* clamps long blurbs */
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
