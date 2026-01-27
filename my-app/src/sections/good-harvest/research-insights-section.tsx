@@ -78,37 +78,69 @@ export default function ResearchInsightsSection() {
           I summarized competitor patterns into what works vs. what’s missing, so the insights stay scannable.
         </p>
 
-        <div className="caTableWrap" role="region" aria-label="Competitive comparison table">
-          <table className="caTable">
-            <caption className="caTable__caption">
-              Direct competitors and the gaps Good Harvest can address
-            </caption>
-            <thead className="caTable__head">
-              <tr>
-                <th scope="col" className="caTable__th">App</th>
-                <th scope="col" className="caTable__th">What works</th>
-                <th scope="col" className="caTable__th">What’s missing</th>
-              </tr>
-            </thead>
-            <tbody className="caTable__body">
-              {competitors.map((c) => (
-                <tr key={c.name} className="caTable__row">
-                  <th scope="row" className="caTable__app">
-                    {c.href ? (
-                      <a className="caTable__link" href={c.href} target="_blank" rel="noreferrer">
-                        {c.name}
-                      </a>
-                    ) : (
-                      c.name
-                    )}
-                  </th>
-                  <td className="caTable__td">{c.whatWorks}</td>
-                  <td className="caTable__td">{c.whatsMissing}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="research__toggleBlock">
+          <button
+            type="button"
+            className="recruiter-toggle-link"
+            aria-expanded={showFullCA}
+            aria-controls="competitive-analysis"
+            onClick={() => setShowFullCA((v) => !v)}
+          >
+            {showFullCA ? "Hide" : "View"} full competitive analysis (PDF)
+          </button>
         </div>
+
+        {showFullCA && (
+          <div id="competitive-analysis">
+            <div className="caTableWrap" role="region" aria-label="Competitive comparison table">
+              <table className="caTable">
+                <caption className="caTable__caption">
+                  Direct competitors and the gaps Good Harvest can address
+                </caption>
+                <thead className="caTable__head">
+                  <tr>
+                    <th scope="col" className="caTable__th">App</th>
+                    <th scope="col" className="caTable__th">What works</th>
+                    <th scope="col" className="caTable__th">What’s missing</th>
+                  </tr>
+                </thead>
+                <tbody className="caTable__body">
+                  {competitors.map((c) => (
+                    <tr key={c.name} className="caTable__row">
+                      <th scope="row" className="caTable__app">
+                        {c.href ? (
+                          <a className="caTable__link" href={c.href} target="_blank" rel="noreferrer">
+                            {c.name}
+                          </a>
+                        ) : (
+                          c.name
+                        )}
+                      </th>
+                      <td className="caTable__td">{c.whatWorks}</td>
+                      <td className="caTable__td">{c.whatsMissing}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="research__pdf">
+              <p className="research__body">
+                <a
+                  className="research__pdfLink"
+                  href="/assets/good-harvest-competitive-analysis.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Open the full Competitive Analysis + SWOT (PDF)
+                </a>
+              </p>
+
+              <p className="research__fineprint">
+              </p>
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="research__block">
@@ -125,36 +157,6 @@ export default function ResearchInsightsSection() {
           <li>Prioritized a location-first onboarding and editable location controls.</li>
           <li>Built a recipe-forward flow to reduce drop-off from “in season” → “make this.”</li>
         </ul>
-      </div>
-
-      <div className="research__block research__toggleBlock">
-        <button
-          type="button"
-          className="research__toggle"
-          aria-expanded={showFullCA}
-          onClick={() => setShowFullCA((v) => !v)}
-        >
-          {showFullCA ? "Hide" : "View"} full competitive analysis (PDF)
-        </button>
-
-        {showFullCA && (
-          <div className="research__pdf">
-            <p className="research__body">
-              <a
-                className="research__pdfLink"
-                href="/assets/good-harvest-competitive-analysis.pdf"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Open the full Competitive Analysis + SWOT (PDF)
-              </a>
-            </p>
-
-            <p className="research__fineprint">
-              Tip: replace <code>/assets/good-harvest-competitive-analysis.pdf</code> with your actual hosted file path.
-            </p>
-          </div>
-        )}
       </div>
     </section>
   );

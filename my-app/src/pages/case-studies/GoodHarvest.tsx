@@ -28,6 +28,16 @@ export default function GoodHarvest() {
     sessionStorage.setItem("recruiterMode", recruiterMode ? "1" : "0");
   }, [recruiterMode]);
 
+  // Toggle state for Competitive Analysis (session-only)
+  const [showCA, setShowCA] = useState<boolean>(() => {
+    const saved = sessionStorage.getItem("showCA");
+    return saved === "1";
+  });
+
+  useEffect(() => {
+    sessionStorage.setItem("showCA", showCA ? "1" : "0");
+  }, [showCA]);
+
   // If recruiter mode turns on, scroll to the recruiter card
   useEffect(() => {
     if (!recruiterMode) return;
@@ -38,6 +48,17 @@ export default function GoodHarvest() {
 
     return () => window.clearTimeout(id);
   }, [recruiterMode]);
+
+  // If Competitive Analysis turns on, scroll to it
+  useEffect(() => {
+    if (!showCA) return;
+
+    const id = window.setTimeout(() => {
+      scrollToId("competitive-analysis");
+    }, 0);
+
+    return () => window.clearTimeout(id);
+  }, [showCA]);
 
   const screens = useMemo(
     () => ({
@@ -92,6 +113,19 @@ export default function GoodHarvest() {
         />
       )}
 
+      <p className="recruiter-cta">
+        Want details?{" "}
+        <button
+          type="button"
+          className="recruiter-toggle-link"
+          onClick={() => setShowCA((v) => !v)}
+          aria-expanded={showCA}
+          aria-controls="competitive-analysis"
+        >
+          {showCA ? "Hide competitive analysis ←" : "View competitive analysis →"}
+        </button>
+      </p>
+
       <div id="full-case-study" />
 
       <section>
@@ -131,6 +165,8 @@ export default function GoodHarvest() {
           </li>
         </ol>
       </section>
+
+      {showCA && <div id="competitive-analysis" />}
 
       <ResearchInsightsSection />
 

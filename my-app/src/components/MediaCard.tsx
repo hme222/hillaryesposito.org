@@ -12,9 +12,22 @@ export type MediaCardProps = {
   alt: string;
   caption: string;
   contain?: boolean;
+
+  // NEW: optional toggle (for Competitive Analysis)
+  toggleLabel?: string;
+  isToggled?: boolean;
+  onToggle?: () => void;
 };
 
-export default function MediaCard({ src, alt, caption, contain = true }: MediaCardProps) {
+export default function MediaCard({
+  src,
+  alt,
+  caption,
+  contain = true,
+  toggleLabel,
+  isToggled,
+  onToggle,
+}: MediaCardProps) {
   const reduceMotion = useReducedMotion();
 
   return (
@@ -42,6 +55,22 @@ export default function MediaCard({ src, alt, caption, contain = true }: MediaCa
 
         <span className="cs-actions">
           <span className="cs-link">Open full size ↗</span>
+
+          {toggleLabel && onToggle && (
+            <button
+              type="button"
+              className="cs-toggle-link"
+              aria-pressed={!!isToggled}
+              onClick={(e) => {
+                // prevent opening the image link when toggling
+                e.preventDefault();
+                e.stopPropagation();
+                onToggle();
+              }}
+            >
+              {toggleLabel}{isToggled ? " ▾" : " ▸"}
+            </button>
+          )}
         </span>
       </a>
     </motion.figure>
