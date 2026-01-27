@@ -5,4 +5,5 @@ Disallow: /admin/
 Disallow: /private/
 
 # Sitemap location (optional but recommended for SEO)
-Sitemap: https://yourdomain.com/sitemap.xml
+Sitemap: https://hillaryesposito.org/sitemap.xml
+
