@@ -1,0 +1,101 @@
+/* comparison-table.css */
+/* Focused CSS just for the comparison table (import separately) */
+
+.caTableWrap {
+  overflow-x: auto;
+  border: 1px solid var(--border, rgba(0, 0, 0, 0.12));
+  border-radius: 12px;
+  background: var(--surface, #fff);
+}
+
+.caTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 720px; /* keeps columns readable on desktop */
+}
+
+.caTable__caption {
+  text-align: left;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  color: var(--muted, rgba(0, 0, 0, 0.7));
+  border-bottom: 1px solid var(--border, rgba(0, 0, 0, 0.12));
+}
+
+.caTable__head .caTable__th {
+  text-align: left;
+  font-weight: 600;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  border-bottom: 1px solid var(--border, rgba(0, 0, 0, 0.12));
+  background: var(--surface-2, rgba(0, 0, 0, 0.03));
+}
+
+.caTable__row .caTable__app,
+.caTable__row .caTable__td {
+  padding: 12px 14px;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border, rgba(0, 0, 0, 0.08));
+  font-size: 0.98rem;
+  line-height: 1.35;
+}
+
+.caTable__row:last-child .caTable__app,
+.caTable__row:last-child .caTable__td {
+  border-bottom: none;
+}
+
+.caTable__app {
+  width: 28%;
+  font-weight: 600;
+}
+
+.caTable__td {
+  width: 36%;
+  color: var(--text, rgba(0, 0, 0, 0.88));
+}
+
+.caTable__link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.caTable__link:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* small screens */
+@media (max-width: 720px) {
+  .caTable {
+    min-width: 640px; /* still scrollable, but slightly tighter */
+  }
+}
+
+/* Dark mode support for the comparison table */
+.dark-mode .caTableWrap {
+  border-color: rgba(248, 210, 183, 0.18);
+  background: #0f0f0f;
+}
+
+.dark-mode .caTable__caption {
+  color: #b8b8b8;
+  border-bottom-color: rgba(248, 210, 183, 0.18);
+}
+
+.dark-mode .caTable__head .caTable__th {
+  border-bottom-color: rgba(248, 210, 183, 0.18);
+  background: rgba(255, 255, 255, 0.04);
+  color: #ffffff;
+}
+
+.dark-mode .caTable__row .caTable__app,
+.dark-mode .caTable__row .caTable__td {
+  border-bottom-color: rgba(248, 210, 183, 0.12);
+  color: #e8d5c4;
+}
+
+.caTableWrap {
+  margin-top: 1rem;
+}
