@@ -33,6 +33,10 @@ cp -R "$BUILD_DIR"/. "$DOCS_DIR"
 # This prevents GitHub Pages from running Jekyll processing.
 touch "$DOCS_DIR/.nojekyll"
 
+# ---- ENSURE CUSTOM DOMAIN ----
+echo "➡️  Writing CNAME..."
+echo "hillaryesposito.org" > "$DOCS_DIR/CNAME"
+
 # ---- FIX COMMON PDF DOUBLE-EXTENSION (optional) ----
 # If you had the .pdf.pdf issue, this auto-fixes it if present.
 if [ -f "$ASSETS_DIR/good-harvest-competitive-analysis.pdf.pdf" ]; then
