@@ -1018,3 +1018,190 @@ footer p{color: var(--muted);font-size:.9rem;font-weight:600;}
   font-style: italic;
 }
 
+/* src/pages/case-studies/Ecommerce.css */
+
+/* ===== Demo Drawer ===== */
+.ecommerce-cs .demo-drawer {
+  margin: 1.25rem 0 2.25rem;
+  max-width: 760px;
+}
+
+.ecommerce-cs details.demo {
+  background: var(--surface, #ffffff);
+  border: 1px solid var(--border, #e0e0e0);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+}
+
+.ecommerce-cs summary.demo-summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1.25rem 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.25rem 1rem;
+  align-items: center;
+  user-select: none;
+}
+
+.ecommerce-cs summary.demo-summary::-webkit-details-marker {
+  display: none;
+}
+.ecommerce-cs summary.demo-summary::marker {
+  content: "";
+}
+
+.ecommerce-cs .demo-summary__title {
+  font-weight: 700;
+  color: var(--primary, #1a1a1a);
+  font-size: 1rem;
+}
+
+.ecommerce-cs .demo-summary__hint {
+  grid-column: 1 / 2;
+  font-size: 0.9rem;
+  color: var(--text-light, #666);
+}
+
+.ecommerce-cs .demo-summary__icon {
+  grid-column: 2 / 3;
+  grid-row: 1 / span 2;
+  font-size: 1.25rem;
+  color: var(--secondary, #e85d04);
+  transform: rotate(0deg);
+  transition: transform 200ms ease;
+}
+
+.ecommerce-cs details[open] .demo-summary__icon {
+  transform: rotate(180deg);
+}
+
+.ecommerce-cs .demo-panel {
+  border-top: 1px solid var(--border, #e0e0e0);
+  background: linear-gradient(180deg, rgba(250, 163, 7, 0.06), transparent 35%);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 350ms ease;
+}
+
+.ecommerce-cs details[open] .demo-panel {
+  max-height: 1300px;
+}
+
+.ecommerce-cs .demo-panel__inner {
+  padding: 1.5rem;
+}
+
+.ecommerce-cs .demo-panel__title {
+  font-family: var(--serif, "Libre Baskerville", serif);
+  font-size: 1.35rem;
+  margin: 0 0 0.25rem;
+  color: var(--primary, #1a1a1a);
+}
+
+.ecommerce-cs .demo-panel__sub {
+  margin: 0;
+  color: var(--text-light, #666);
+}
+
+.ecommerce-cs .demo-embed {
+  margin-top: 1rem;
+  border: 1px solid var(--border, #e0e0e0);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.ecommerce-cs .demo-embed iframe {
+  width: 100%;
+  height: 680px;
+  border: 0;
+  display: block;
+}
+
+.ecommerce-cs .demo-panel__footer {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ecommerce-cs .demo-link {
+  color: var(--secondary, #e85d04);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.ecommerce-cs .demo-link:hover {
+  color: var(--accent, #faa307);
+}
+
+.ecommerce-cs summary.demo-summary:focus-visible {
+  outline: 3px solid rgba(232, 93, 4, 0.35);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .ecommerce-cs .demo-panel,
+  .ecommerce-cs .demo-summary__icon {
+    transition: none !important;
+  }
+}
+
+/* Mobile tweaks */
+@media (max-width: 768px) {
+  .ecommerce-cs .demo-drawer {
+    max-width: 100%;
+  }
+  .ecommerce-cs .demo-embed iframe {
+    height: 520px;
+  }
+}
+
+/* ===== Optional: nice-looking preview when you don't iframe a live demo ===== */
+.ecommerce-cs .demo-preview {
+  margin-top: 1rem;
+}
+
+.ecommerce-cs .demo-preview__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.ecommerce-cs .demo-preview__card {
+  border: 1px solid var(--border, #e0e0e0);
+  border-radius: 12px;
+  background: var(--surface, #fff);
+  padding: 1rem;
+}
+
+.ecommerce-cs .demo-preview__kicker {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--secondary, #e85d04);
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.ecommerce-cs .demo-preview__title {
+  font-weight: 700;
+  color: var(--primary, #1a1a1a);
+  margin-bottom: 0.35rem;
+}
+
+.ecommerce-cs .demo-preview__desc {
+  margin: 0;
+  color: var(--text-light, #666);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .ecommerce-cs .demo-preview__grid {
+    grid-template-columns: 1fr;
+  }
+}
