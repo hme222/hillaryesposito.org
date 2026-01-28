@@ -1,6 +1,7 @@
 // src/pages/case-studies/Ecommerce.tsx
 import React, { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import { products, Product } from "../../data/products";
+import "./Ecommerce.css";
 
 type ProductLike = Product & {
   description?: string;
@@ -10,6 +11,11 @@ type ProductLike = Product & {
 type CartItem = { productId: string; qty: number };
 
 const CART_KEY = "ecommerce-demo-cart-v2";
+
+// If you deploy just the storefront/demo somewhere, drop it here.
+// Example: const DEMO_URL = "https://yourdomain.com/#/case-study/ecommerce-demo";
+const DEMO_URL: string | null = "https://your-live-demo-url.com";
+
 
 function formatUSD(n: number) {
   return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(n);
@@ -290,6 +296,20 @@ export default function Ecommerce() {
     return parts.join(" · ");
   }, [category, query, minPrice, maxPrice]);
 
+  // Demo Drawer behavior: scroll into view when opened
+  const demoDetailsRef = useRef<HTMLDetailsElement | null>(null);
+  useEffect(() => {
+    const el = demoDetailsRef.current;
+    if (!el) return;
+
+    const onToggle = () => {
+      if (el.open) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
+    el.addEventListener("toggle", onToggle);
+    return () => el.removeEventListener("toggle", onToggle);
+  }, []);
+
   return (
     <main className="case-study ecommerce-cs" aria-label="E-Commerce Platform Case Study">
       {/* a11y helpers */}
@@ -303,31 +323,93 @@ export default function Ecommerce() {
       {/* Header */}
       <header className="cs-header ecommerce-header">
         <div className="ecom-header-row">
-          <div>
+          <div className="ecom-header-copy">
             <h1>E-Commerce Platform</h1>
-            <p className="meta">High-end UX · React · TypeScript · Accessible Demo</p>
+            <p className="meta">Personal project · Layout + features · Accessible interactions</p>
 
             <p className="intro">
-              Static product browsing with filters, a quick-view modal, and a cart drawer with keyboard + screen-reader
-              support.
+              A storefront demo focused on product discovery and purchase confidence: filtering, quick view, and a cart
+              drawer with keyboard + screen-reader support.
             </p>
 
             <div className="ecom-overview">
               <div className="feature ecom-overview-card">
                 <h2>Project Summary</h2>
                 <p>
-                  Built a static storefront demo with filtering, quick view, and cart interactions emphasizing accessible
-                  patterns and polished UX.
+                  Built a static storefront demo with filtering, a quick view modal, and a cart drawer—designed to feel
+                  premium and function accessibly.
                 </p>
               </div>
               <div className="feature ecom-overview-card">
-                <h2>My Role</h2>
-                <p>
-                  UX/UI, component architecture, accessibility (focus management + announcements), and interaction
-                  design.
-                </p>
+                <h2>Focus</h2>
+                <p>Information hierarchy, polished layouts, and accessible UI patterns (focus, announcements, ESC).</p>
               </div>
             </div>
+
+            {/* Demo Drawer */}
+            <section className="demo-drawer" id="demo" aria-label="Interactive demo">
+              <details ref={demoDetailsRef} className="demo" id="demoDetails">
+                <summary className="demo-summary">
+                  <span className="demo-summary__title">View interactive demo</span>
+                  <span className="demo-summary__hint">
+                    {DEMO_URL ? "Opens an embedded demo" : "Reveals a quick demo overview"}
+                  </span>
+                  <span className="demo-summary__icon" aria-hidden="true">
+                    ⌄
+                  </span>
+                </summary>
+
+                <div className="demo-panel">
+                  <div className="demo-panel__inner">
+                    <div className="demo-panel__header">
+                      <h3 className="demo-panel__title">Interactive Demo</h3>
+                      <p className="demo-panel__sub">
+                        Explore the layout, accessible patterns, and key flows (filters, quick view, cart drawer).
+                      </p>
+                    </div>
+
+                    {DEMO_URL ? (
+                      <div className="demo-embed" role="region" aria-label="Interactive demo embed">
+                        <iframe title="E-commerce demo" src={DEMO_URL} loading="lazy" referrerPolicy="no-referrer" />
+                      </div>
+                    ) : (
+                      <div className="demo-preview" role="region" aria-label="Demo preview">
+                        <div className="demo-preview__grid">
+                          <div className="demo-preview__card">
+                            <div className="demo-preview__kicker">Discovery</div>
+                            <div className="demo-preview__title">PLP filters + sorting</div>
+                            <p className="demo-preview__desc">Search, category, and price range designed to be fast.</p>
+                          </div>
+                          <div className="demo-preview__card">
+                            <div className="demo-preview__kicker">Confidence</div>
+                            <div className="demo-preview__title">Quick View modal</div>
+                            <p className="demo-preview__desc">ESC to close, focus restored, clean hierarchy.</p>
+                          </div>
+                          <div className="demo-preview__card">
+                            <div className="demo-preview__kicker">Checkout</div>
+                            <div className="demo-preview__title">Cart drawer</div>
+                            <p className="demo-preview__desc">Focus trap + keyboard quantity controls + totals.</p>
+                          </div>
+                        </div>
+                        <div className="demo-panel__footer">
+                          <a className="demo-link" href="#ecom-storefront">
+                            Jump to storefront ↓
+                          </a>
+                        </div>
+                      </div>
+                    )}
+
+                    {DEMO_URL ? (
+                      <div className="demo-panel__footer">
+                        <a className="demo-link" href="#ecom-storefront">
+                          Jump to storefront ↓
+                        </a>
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+              </details>
+            </section>
           </div>
 
           <div className="ecom-header-actions">
@@ -357,28 +439,21 @@ export default function Ecommerce() {
       </nav>
 
       {/* Storefront band */}
-      <section
-  id="ecom-storefront"
-  className="ecom-storefront"
-  aria-label="Storefront demo"
->
-  <div className="ecom-wide">
-    {/* Storefront Head */}
-    <div className="ecom-storefront-head">
-      <div>
-        <div className="ecom-band-title">Storefront</div>
-        <div className="ecom-band-subtitle">
-          Filters · Quick View · Cart Drawer
-        </div>
-      </div>
-    </div>
+      <section id="ecom-storefront" className="ecom-storefront" aria-label="Storefront demo">
+        <div className="ecom-wide">
+          {/* Storefront Head */}
+          <div className="ecom-storefront-head">
+            <div>
+              <div className="ecom-band-title">Storefront</div>
+              <div className="ecom-band-subtitle">Filters · Quick View · Cart Drawer</div>
+            </div>
+          </div>
 
-    {/* Demo Note */}
-    <div className="highlight ecom-highlight" role="note" aria-label="Demo note">
-      This is a <strong>static demo</strong>. Products are stored in local
-      TypeScript data. Cart persists via <strong>localStorage</strong> (no
-      payment processed).
-    </div>
+          {/* Demo Note */}
+          <div className="highlight ecom-highlight" role="note" aria-label="Demo note">
+            This is a <strong>static demo</strong>. Products are stored in local TypeScript data. Cart persists via{" "}
+            <strong>localStorage</strong> (no payment processed).
+          </div>
 
           {/* Controls */}
           <section className="feature ecommerce-controls" aria-label="Filters and sorting">
@@ -496,7 +571,7 @@ export default function Ecommerce() {
               <div className="ecom-grid" role="list">
                 {filtered.map((p) => {
                   const id = String(p.id);
-                  const img = p.images?.[0] ?? p.image;
+                  const img = p.images?.[0] ?? (p as any).image;
 
                   return (
                     <article key={id} className="ecom-card" role="listitem">
@@ -547,8 +622,8 @@ export default function Ecommerce() {
               <ul>
                 <li>Keyboard-friendly filters and cart drawer focus trapping.</li>
                 <li>Screen reader announcements for add/remove actions.</li>
-                <li>Visible focus rings using your global focus styles.</li>
                 <li>Quick view modal supports ESC to close + restores focus.</li>
+                <li>Cart drawer supports ESC + backdrop click to close.</li>
               </ul>
             </div>
           </section>
@@ -573,7 +648,7 @@ export default function Ecommerce() {
           {activeProduct ? (
             <div className="ecom-dialog-body">
               <div className="ecom-dialog-media">
-                <img src={activeProduct.images?.[0] ?? activeProduct.image} alt={activeProduct.name} />
+                <img src={activeProduct.images?.[0] ?? (activeProduct as any).image} alt={activeProduct.name} />
               </div>
 
               <div className="ecom-dialog-details">
