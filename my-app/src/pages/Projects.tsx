@@ -15,32 +15,36 @@ export default function Projects() {
     if (!root) return;
 
     const ctx = gsap.context(() => {
-      // 4. Projects Animation
-      gsap.utils.toArray<HTMLElement>(root.querySelectorAll(".project-card")).forEach((el, i) => {
-        gsap.from(el, {
-          opacity: 0,
-          y: 60,
-          duration: 1,
-          delay: i * 0.1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 80%",
-          },
+      gsap.utils
+        .toArray<HTMLElement>(root.querySelectorAll(".project-card"))
+        .forEach((el, i) => {
+          gsap.from(el, {
+            opacity: 0,
+            y: 60,
+            duration: 1,
+            delay: i * 0.1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 80%",
+            },
+          });
         });
-      });
     }, root);
 
-    return () => {
-      ctx.revert();
-    };
+    return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={rootRef} className="section active projects" aria-label="Projects section">
+    <section
+      ref={rootRef}
+      className="section active projects"
+      aria-label="Projects section"
+    >
       <h2 className="section-title">PROJECTS</h2>
 
       <div className="projects-grid">
+        {/* Good Harvest */}
         <div
           className="project-card project"
           role="button"
@@ -58,6 +62,7 @@ export default function Projects() {
           </div>
         </div>
 
+        {/* E-Commerce */}
         <div
           className="project-card project"
           role="button"
@@ -75,20 +80,22 @@ export default function Projects() {
           </div>
         </div>
 
+        {/* Reina */}
         <div
           className="project-card project"
           role="button"
           tabIndex={0}
-          onClick={() => navigate("/case-study/hipstirred-photo")}
-          onKeyDown={(e) => e.key === "Enter" && navigate("/case-study/hipstirred-photo")}
-          aria-label="Go to Hipstirred Photo case study"
+          onClick={() => navigate("/case-study/Reina")}
+          onKeyDown={(e) => e.key === "Enter" && navigate("/case-study/Reina")}
+          aria-label="Go to Reina destination wedding planning case study"
         >
           <div className="project-media" aria-hidden="true">
-            <div className="project-icon">📷</div>
+            <div className="project-icon">👑</div>
           </div>
+
           <div className="project-body">
-            <h3>Hipstirred Photo</h3>
-            <p>Story-led portfolio in motion.</p>
+            <h3>Reina</h3>
+            <p>Visual-first UX for international wedding planning.</p>
           </div>
         </div>
       </div>

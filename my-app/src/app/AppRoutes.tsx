@@ -1,5 +1,4 @@
 // src/app/AppRoutes.tsx
-// ✅ Put this file in: src/app/AppRoutes.tsx
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
@@ -9,7 +8,7 @@ import Contact from "../pages/Contact";
 
 import GoodHarvest from "../pages/case-studies/GoodHarvest";
 import Ecommerce from "../pages/case-studies/Ecommerce";
-import HipstirredPhoto from "../pages/case-studies/HipstirredPhoto";
+import Reina from "../pages/case-studies/Reina";
 
 export default function AppRoutes() {
   return (
@@ -20,7 +19,7 @@ export default function AppRoutes() {
 
       <Route path="/case-study/good-harvest" element={<GoodHarvest />} />
       <Route path="/case-study/ecommerce" element={<Ecommerce />} />
-      <Route path="/case-study/hipstirred-photo" element={<HipstirredPhoto />} />
+      <Route path="/case-study/reina" element={<Reina />} />
     </Routes>
   );
 }
