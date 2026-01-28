@@ -1,7 +1,6 @@
 // src/pages/case-studies/Ecommerce.tsx
 import React, { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import { products, Product } from "../../data/products";
-import "./Ecommerce.css";
 
 type ProductLike = Product & {
   description?: string;
