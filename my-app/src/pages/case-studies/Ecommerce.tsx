@@ -12,10 +12,7 @@ type CartItem = { productId: string; qty: number };
 const CART_KEY = "ecommerce-demo-cart-v2";
 
 function formatUSD(n: number) {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  }).format(n);
+  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(n);
 }
 
 function clamp(n: number, min: number, max: number) {
@@ -35,23 +32,14 @@ export default function Ecommerce() {
   // Filters
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("All");
-  const [sort, setSort] = useState<
-    "featured" | "name-asc" | "price-asc" | "price-desc"
-  >("featured");
+  const [sort, setSort] = useState<"featured" | "name-asc" | "price-asc" | "price-desc">("featured");
 
   const prices = useMemo(
-    () =>
-      allProducts.map((p) => Number(p.price)).filter((v) => Number.isFinite(v)),
-    [allProducts],
+    () => allProducts.map((p) => Number(p.price)).filter((v) => Number.isFinite(v)),
+    [allProducts]
   );
-  const minPossible = useMemo(
-    () => (prices.length ? Math.min(...prices) : 0),
-    [prices],
-  );
-  const maxPossible = useMemo(
-    () => (prices.length ? Math.max(...prices) : 0),
-    [prices],
-  );
+  const minPossible = useMemo(() => (prices.length ? Math.min(...prices) : 0), [prices]);
+  const maxPossible = useMemo(() => (prices.length ? Math.max(...prices) : 0), [prices]);
 
   const [minPrice, setMinPrice] = useState(minPossible);
   const [maxPrice, setMaxPrice] = useState(maxPossible);
@@ -69,14 +57,8 @@ export default function Ecommerce() {
       const parsed = JSON.parse(saved) as CartItem[];
       if (!Array.isArray(parsed)) return [];
       return parsed
-        .filter(
-          (x) =>
-            x && typeof x.productId === "string" && typeof x.qty === "number",
-        )
-        .map((x) => ({
-          productId: x.productId,
-          qty: clamp(Math.floor(x.qty), 1, 999),
-        }));
+        .filter((x) => x && typeof x.productId === "string" && typeof x.qty === "number")
+        .map((x) => ({ productId: x.productId, qty: clamp(Math.floor(x.qty), 1, 999) }));
     } catch {
       return [];
     }
@@ -101,14 +83,10 @@ export default function Ecommerce() {
       .filter(Boolean) as Array<{ product: ProductLike; qty: number }>;
   }, [cart, productById]);
 
-  const cartCount = useMemo(
-    () => cart.reduce((sum, l) => sum + l.qty, 0),
-    [cart],
-  );
+  const cartCount = useMemo(() => cart.reduce((sum, l) => sum + l.qty, 0), [cart]);
   const subtotal = useMemo(
-    () =>
-      cartLines.reduce((sum, l) => sum + Number(l.product.price) * l.qty, 0),
-    [cartLines],
+    () => cartLines.reduce((sum, l) => sum + Number(l.product.price) * l.qty, 0),
+    [cartLines]
   );
   const shipping = subtotal > 0 ? 6 : 0;
   const tax = subtotal > 0 ? Math.round(subtotal * 0.07 * 100) / 100 : 0;
@@ -138,9 +116,7 @@ export default function Ecommerce() {
     const nextQty = clamp(Math.floor(qty), 0, 999);
     setCart((prev) => {
       if (nextQty <= 0) return prev.filter((x) => x.productId !== productId);
-      return prev.map((x) =>
-        x.productId === productId ? { ...x, qty: nextQty } : x,
-      );
+      return prev.map((x) => (x.productId === productId ? { ...x, qty: nextQty } : x));
     });
   }
 
@@ -182,9 +158,7 @@ export default function Ecommerce() {
         list = [...list].sort((a, b) => Number(b.price) - Number(a.price));
         break;
       case "name-asc":
-        list = [...list].sort((a, b) =>
-          (a.name ?? "").localeCompare(b.name ?? ""),
-        );
+        list = [...list].sort((a, b) => (a.name ?? "").localeCompare(b.name ?? ""));
         break;
       case "featured":
       default:
@@ -200,8 +174,8 @@ export default function Ecommerce() {
   const lastFocus = useRef<HTMLElement | null>(null);
 
   const activeProduct = useMemo(
-    () => (activeId ? (productById.get(activeId) ?? null) : null),
-    [activeId, productById],
+    () => (activeId ? productById.get(activeId) ?? null : null),
+    [activeId, productById]
   );
 
   function openQuickView(productId: string) {
@@ -212,7 +186,7 @@ export default function Ecommerce() {
       window.requestAnimationFrame(() => {
         dialogRef.current
           ?.querySelector<HTMLElement>(
-            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
           )
           ?.focus();
       });
@@ -249,16 +223,15 @@ export default function Ecommerce() {
     window.requestAnimationFrame(() => {
       cartPanelRef.current
         ?.querySelector<HTMLElement>(
-          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
         )
         ?.focus();
     });
   }
+
   function closeCart() {
     setCartOpen(false);
-    window.requestAnimationFrame(() =>
-      (lastFocus.current ?? cartBtnRef.current)?.focus?.(),
-    );
+    window.requestAnimationFrame(() => (lastFocus.current ?? cartBtnRef.current)?.focus?.());
   }
 
   useEffect(() => {
@@ -277,8 +250,8 @@ export default function Ecommerce() {
 
       const focusables = Array.from(
         container.querySelectorAll<HTMLElement>(
-          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
-        ),
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        )
       ).filter((el) => !el.hasAttribute("disabled"));
 
       if (!focusables.length) return;
@@ -318,10 +291,7 @@ export default function Ecommerce() {
   }, [category, query, minPrice, maxPrice]);
 
   return (
-    <main
-      className="case-study ecommerce-cs"
-      aria-label="E-Commerce Platform Case Study"
-    >
+    <main className="case-study ecommerce-cs" aria-label="E-Commerce Platform Case Study">
       {/* a11y helpers */}
       <a href="#ecom-storefront" className="sr-only-focusable">
         Skip to storefront
@@ -330,37 +300,37 @@ export default function Ecommerce() {
         {liveMessage}
       </div>
 
-      {/* HERO: headline + project summary + role */}
+      {/* Header */}
       <header className="cs-header ecommerce-header">
-        <div className="ecom-hero">
-          <div className="ecom-hero-copy">
+        <div className="ecom-header-row">
+          <div>
             <h1>E-Commerce Platform</h1>
-            <p className="meta">
-              High-end UX · React · TypeScript · Accessible Demo
+            <p className="meta">High-end UX · React · TypeScript · Accessible Demo</p>
+
+            <p className="intro">
+              Static product browsing with filters, a quick-view modal, and a cart drawer with keyboard + screen-reader
+              support.
             </p>
 
-            <div className="ecom-hero-panels">
-              <div className="ecom-hero-panel">
-                <h2 className="ecom-hero-h2">Project summary</h2>
-                <p className="intro">
-                  A static storefront demo with product browsing, filters, quick
-                  view, and a cart drawer built with keyboard + screen reader
-                  support.
+            <div className="ecom-overview">
+              <div className="feature ecom-overview-card">
+                <h2>Project Summary</h2>
+                <p>
+                  Built a static storefront demo with filtering, quick view, and cart interactions emphasizing accessible
+                  patterns and polished UX.
                 </p>
               </div>
-
-              <div className="ecom-hero-panel">
-                <h2 className="ecom-hero-h2">My role</h2>
-                <p className="intro">
-                  UX + UI design, component architecture, and accessibility
-                  implementation (focus management, live announcements, and
-                  dialog/drawer behaviors).
+              <div className="feature ecom-overview-card">
+                <h2>My Role</h2>
+                <p>
+                  UX/UI, component architecture, accessibility (focus management + announcements), and interaction
+                  design.
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="ecom-hero-actions">
+          <div className="ecom-header-actions">
             <button
               ref={cartBtnRef}
               type="button"
@@ -370,45 +340,48 @@ export default function Ecommerce() {
               aria-expanded={cartOpen}
               aria-controls="ecom-cart-drawer"
             >
-              Cart <span aria-hidden="true">·</span>{" "}
-              <span aria-label={`${cartCount} items`}>{cartCount}</span>
+              Cart <span aria-hidden="true">·</span> <span aria-label={`${cartCount} items`}>{cartCount}</span>
             </button>
           </div>
         </div>
       </header>
 
-      {/* STOREFRONT SECTION: big + separated + wide like Reina */}
-      <section
-        id="ecom-storefront"
-        className="ecom-storefront"
-        aria-label="Storefront"
-      >
-        <div className="ecom-wide">
-          <div className="ecom-storefront-head">
-            <div>
-              <h2>Storefront</h2>
-              <p className="ecom-muted">
-                Browse products, open quick view, and manage your cart.
-                (Demo-only)
-              </p>
-            </div>
+      {/* Switcher */}
+      <nav className="ecom-switcher" aria-label="Page sections">
+        <a className="ecom-switcher-btn" href="#ecom-storefront">
+          Storefront
+        </a>
+        <a className="ecom-switcher-btn" href="#ecom-case-study">
+          Case Study
+        </a>
+      </nav>
 
-            <div
-              className="highlight ecom-highlight"
-              role="note"
-              aria-label="Demo note"
-            >
-              This is a <strong>static demo</strong>. Products are stored in
-              local TypeScript data. Cart persists via{" "}
-              <strong>localStorage</strong> (no payment processed).
-            </div>
-          </div>
+      {/* Storefront band */}
+      <section
+  id="ecom-storefront"
+  className="ecom-storefront"
+  aria-label="Storefront demo"
+>
+  <div className="ecom-wide">
+    {/* Storefront Head */}
+    <div className="ecom-storefront-head">
+      <div>
+        <div className="ecom-band-title">Storefront</div>
+        <div className="ecom-band-subtitle">
+          Filters · Quick View · Cart Drawer
+        </div>
+      </div>
+    </div>
+
+    {/* Demo Note */}
+    <div className="highlight ecom-highlight" role="note" aria-label="Demo note">
+      This is a <strong>static demo</strong>. Products are stored in local
+      TypeScript data. Cart persists via <strong>localStorage</strong> (no
+      payment processed).
+    </div>
 
           {/* Controls */}
-          <section
-            className="feature ecommerce-controls"
-            aria-label="Filters and sorting"
-          >
+          <section className="feature ecommerce-controls" aria-label="Filters and sorting">
             <div className="ecom-controls-grid">
               <div className="form-group ecom-field">
                 <label htmlFor="ecom-search">Search</label>
@@ -458,11 +431,7 @@ export default function Ecommerce() {
 
               <div className="form-group ecom-field">
                 <label id="ecom-price-label">Price range</label>
-                <div
-                  className="ecom-range"
-                  role="group"
-                  aria-labelledby="ecom-price-label"
-                >
+                <div className="ecom-range" role="group" aria-labelledby="ecom-price-label">
                   <input
                     aria-label="Minimum price"
                     type="number"
@@ -495,11 +464,7 @@ export default function Ecommerce() {
               </div>
 
               <div className="ecom-controls-actions">
-                <button
-                  type="button"
-                  className="submit-btn ecom-reset"
-                  onClick={resetFilters}
-                >
+                <button type="button" className="submit-btn ecom-reset" onClick={resetFilters}>
                   Reset
                 </button>
               </div>
@@ -507,8 +472,7 @@ export default function Ecommerce() {
 
             <div className="ecom-results" role="status" aria-live="polite">
               <span>
-                <strong>{filtered.length}</strong> result
-                {filtered.length === 1 ? "" : "s"}
+                <strong>{filtered.length}</strong> result{filtered.length === 1 ? "" : "s"}
               </span>
               <span className="ecom-results-label">{resultsLabel}</span>
             </div>
@@ -521,18 +485,10 @@ export default function Ecommerce() {
             </div>
 
             {filtered.length === 0 ? (
-              <div
-                className="feature ecom-empty"
-                role="region"
-                aria-label="No results"
-              >
+              <div className="feature ecom-empty" role="region" aria-label="No results">
                 <h3>No matches</h3>
                 <p>Try resetting filters or broadening your search.</p>
-                <button
-                  type="button"
-                  className="hero-btn"
-                  onClick={resetFilters}
-                >
+                <button type="button" className="hero-btn" onClick={resetFilters}>
                   Reset filters
                 </button>
               </div>
@@ -556,29 +512,16 @@ export default function Ecommerce() {
                       <div className="ecom-body">
                         <h3 className="ecom-title">{p.name}</h3>
                         <p className="ecom-meta">
-                          <span>{p.category}</span>{" "}
-                          <span aria-hidden="true">·</span>{" "}
-                          <span className="ecom-price">
-                            {formatUSD(Number(p.price))}
-                          </span>
+                          <span>{p.category}</span> <span aria-hidden="true">·</span>{" "}
+                          <span className="ecom-price">{formatUSD(Number(p.price))}</span>
                         </p>
-                        {p.description ? (
-                          <p className="ecom-desc">{p.description}</p>
-                        ) : null}
+                        {p.description ? <p className="ecom-desc">{p.description}</p> : null}
 
                         <div className="ecom-actions">
-                          <button
-                            type="button"
-                            className="hero-btn ecom-add"
-                            onClick={() => addToCart(id)}
-                          >
+                          <button type="button" className="hero-btn ecom-add" onClick={() => addToCart(id)}>
                             Add to cart
                           </button>
-                          <button
-                            type="button"
-                            className="ecom-link"
-                            onClick={() => openQuickView(id)}
-                          >
+                          <button type="button" className="ecom-link" onClick={() => openQuickView(id)}>
                             Quick view
                           </button>
                         </div>
@@ -592,8 +535,8 @@ export default function Ecommerce() {
         </div>
       </section>
 
-      {/* CASE STUDY BODY: back to Good Harvest-style width */}
-      <section className="ecom-caseStudy" aria-label="Case study">
+      {/* Case study body (normal width) */}
+      <section id="ecom-case-study" className="ecom-caseStudy" aria-label="Case study">
         <div className="ecom-narrow">
           <h2>Case Study</h2>
 
@@ -602,19 +545,13 @@ export default function Ecommerce() {
             <div className="feature">
               <h4>Accessibility + UX</h4>
               <ul>
-                <li>
-                  Keyboard-friendly filters and cart drawer focus trapping.
-                </li>
+                <li>Keyboard-friendly filters and cart drawer focus trapping.</li>
                 <li>Screen reader announcements for add/remove actions.</li>
                 <li>Visible focus rings using your global focus styles.</li>
-                <li>
-                  Quick view modal supports ESC to close + restores focus.
-                </li>
+                <li>Quick view modal supports ESC to close + restores focus.</li>
               </ul>
             </div>
           </section>
-
-          {/* Add Good Harvest-like sections here next: Problem / Goals / Research / Solution / Outcomes */}
         </div>
       </section>
 
@@ -627,15 +564,8 @@ export default function Ecommerce() {
       >
         <div className="ecom-dialog-inner">
           <div className="ecom-dialog-head">
-            <h2 className="ecom-dialog-title">
-              {activeProduct?.name ?? "Product"}
-            </h2>
-            <button
-              type="button"
-              className="ecom-icon-btn"
-              onClick={closeQuickView}
-              aria-label="Close quick view"
-            >
+            <h2 className="ecom-dialog-title">{activeProduct?.name ?? "Product"}</h2>
+            <button type="button" className="ecom-icon-btn" onClick={closeQuickView} aria-label="Close quick view">
               ✕
             </button>
           </div>
@@ -643,36 +573,19 @@ export default function Ecommerce() {
           {activeProduct ? (
             <div className="ecom-dialog-body">
               <div className="ecom-dialog-media">
-                <img
-                  src={activeProduct.images?.[0] ?? activeProduct.image}
-                  alt={activeProduct.name}
-                />
+                <img src={activeProduct.images?.[0] ?? activeProduct.image} alt={activeProduct.name} />
               </div>
 
               <div className="ecom-dialog-details">
-                <p className="ecom-dialog-price">
-                  {formatUSD(Number(activeProduct.price))}
-                </p>
+                <p className="ecom-dialog-price">{formatUSD(Number(activeProduct.price))}</p>
                 <p className="ecom-dialog-cat">{activeProduct.category}</p>
-                {activeProduct.description ? (
-                  <p className="ecom-dialog-desc">
-                    {activeProduct.description}
-                  </p>
-                ) : null}
+                {activeProduct.description ? <p className="ecom-dialog-desc">{activeProduct.description}</p> : null}
 
                 <div className="ecom-dialog-actions">
-                  <button
-                    type="button"
-                    className="hero-btn"
-                    onClick={() => addToCart(String(activeProduct.id))}
-                  >
+                  <button type="button" className="hero-btn" onClick={() => addToCart(String(activeProduct.id))}>
                     Add to cart
                   </button>
-                  <button
-                    type="button"
-                    className="ecom-link"
-                    onClick={closeQuickView}
-                  >
+                  <button type="button" className="ecom-link" onClick={closeQuickView}>
                     Continue browsing
                   </button>
                 </div>
@@ -687,11 +600,7 @@ export default function Ecommerce() {
       {/* Cart Drawer */}
       {cartOpen ? (
         <div className="ecom-drawer-root" role="presentation">
-          <button
-            className="ecom-backdrop"
-            aria-label="Close cart"
-            onClick={closeCart}
-          />
+          <button className="ecom-backdrop" aria-label="Close cart" onClick={closeCart} />
           <aside
             id="ecom-cart-drawer"
             ref={cartPanelRef}
@@ -702,12 +611,7 @@ export default function Ecommerce() {
           >
             <div className="ecom-drawer-head">
               <h2>Cart</h2>
-              <button
-                type="button"
-                className="ecom-icon-btn"
-                onClick={closeCart}
-                aria-label="Close cart"
-              >
+              <button type="button" className="ecom-icon-btn" onClick={closeCart} aria-label="Close cart">
                 ✕
               </button>
             </div>
@@ -731,9 +635,7 @@ export default function Ecommerce() {
                         <div className="ecom-cart-main">
                           <div className="ecom-cart-title">
                             <span>{product.name}</span>
-                            <span className="ecom-muted">
-                              {formatUSD(price)}
-                            </span>
+                            <span className="ecom-muted">{formatUSD(price)}</span>
                           </div>
 
                           <div className="ecom-qty-row">
@@ -752,9 +654,7 @@ export default function Ecommerce() {
                               min={0}
                               max={999}
                               value={qty}
-                              onChange={(e) =>
-                                setQty(id, Number(e.target.value))
-                              }
+                              onChange={(e) => setQty(id, Number(e.target.value))}
                               aria-label={`Quantity for ${product.name}`}
                               inputMode="numeric"
                             />
@@ -779,10 +679,7 @@ export default function Ecommerce() {
                           </div>
                         </div>
 
-                        <div
-                          className="ecom-cart-lineTotal"
-                          aria-label={`Line total ${formatUSD(price * qty)}`}
-                        >
+                        <div className="ecom-cart-lineTotal" aria-label={`Line total ${formatUSD(price * qty)}`}>
                           {formatUSD(price * qty)}
                         </div>
                       </li>
@@ -790,10 +687,7 @@ export default function Ecommerce() {
                   })}
                 </ul>
 
-                <div
-                  className="feature ecom-summary"
-                  aria-label="Order summary"
-                >
+                <div className="feature ecom-summary" aria-label="Order summary">
                   <div className="ecom-row">
                     <span className="ecom-muted">Subtotal</span>
                     <span>{formatUSD(subtotal)}</span>
@@ -817,27 +711,18 @@ export default function Ecommerce() {
                       className="submit-btn"
                       onClick={() => {
                         announce("Demo checkout complete.");
-                        alert(
-                          "Demo checkout complete! (No payment processed.)",
-                        );
+                        alert("Demo checkout complete! (No payment processed.)");
                       }}
                     >
                       Checkout (Demo)
                     </button>
 
-                    <button
-                      type="button"
-                      className="ecom-link"
-                      onClick={clearCart}
-                    >
+                    <button type="button" className="ecom-link" onClick={clearCart}>
                       Clear cart
                     </button>
                   </div>
 
-                  <p className="ecom-help">
-                    Demo-only checkout. Cart persists in your browser via
-                    localStorage.
-                  </p>
+                  <p className="ecom-help">Demo-only checkout. Cart persists in your browser via localStorage.</p>
                 </div>
               </>
             )}
