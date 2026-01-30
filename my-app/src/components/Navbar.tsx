@@ -50,12 +50,30 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
           </Link>
         </li>
         <li>
-          <Link to="/projects" onClick={() => setMenuOpen(false)} className="nav-link">
+          <Link
+            to="/about"
+            onClick={() => setMenuOpen(false)}
+            className="nav-link nav-link--about"
+          >
+            ABOUT
+          </Link>
+        </li>
+
+        <li>
+          <Link
+            to="/projects"
+            onClick={() => setMenuOpen(false)}
+            className="nav-link"
+          >
             PROJECTS
           </Link>
         </li>
         <li>
-          <Link to="/contact" onClick={() => setMenuOpen(false)} className="nav-link">
+          <Link
+            to="/contact"
+            onClick={() => setMenuOpen(false)}
+            className="nav-link"
+          >
             CONTACT
           </Link>
         </li>

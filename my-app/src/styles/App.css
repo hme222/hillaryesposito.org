@@ -170,6 +170,11 @@ button:focus,a:focus,input:focus,textarea:focus,select:focus{
   padding:1rem 0;
   transition: color .25s ease;
 }
+ .nav-link--about{
+  font-weight: 600;
+  letter-spacing: 2.5px;
+}
+
 
 .theme-btn{font-size:1.5rem;padding:.5rem;}
 .theme-btn:hover{transform:scale(1.2);}
