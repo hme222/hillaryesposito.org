@@ -1242,487 +1242,228 @@ footer p{color: var(--muted);font-size:.9rem;font-weight:600;}
     grid-template-columns: 1fr;
   }
 }
-
 /* =========================
-   ABOUT PAGE - WARM PALETTE
+   ABOUT PAGE (SITE-NATIVE)
    ========================= */
 
-/* About-specific color tokens using your site palette */
-:root {
-  --about-peach: #f8d2b7;
-  --about-amber: #EBA352;
-  --about-bronze: #ba803f;
-  --about-brown: #8b5f2d;
-  --about-dark-brown: #5f3f1c;
-  --about-darker: #36220c;
-  --about-darkest: #1a0e03;
-}
-
-.dark-mode {
-  --about-text-primary: var(--about-peach);
-  --about-text-secondary: var(--about-amber);
-  --about-text-muted: rgba(248, 210, 183, 0.8);
-  --about-bg-primary: var(--about-darkest);
-  --about-bg-secondary: var(--about-darker);
-  --about-border: rgba(248, 210, 183, 0.18);
-}
-
-/* Light mode overrides */
-body:not(.dark-mode) {
-  --about-text-primary: var(--about-darker);
-  --about-text-secondary: var(--about-brown);
-  --about-text-muted: var(--about-dark-brown);
-  --about-bg-primary: var(--about-peach);
-  --about-bg-secondary: rgba(248, 210, 183, 0.3);
-  --about-border: var(--about-bronze);
-}
-
-/* =========================
-   ABOUT PAGE LAYOUT
-   ========================= */
-.about-page {
+/* Page wrapper */
+.about-page{
   min-height: 100vh;
-  background: var(--about-bg-primary);
-  transition: background 0.3s ease;
-  position: relative;
+  background: var(--bg);
+  color: var(--fg);
 }
 
-/* =========================
-   FLOATING LUNA
-   ========================= */
-.about-luna {
-  display: none;
-  position: fixed;
-  right: 3rem;
-  top: 33%;
-  z-index: 10;
-  transition: transform 0.3s ease-out;
-}
-
-.about-luna img {
-  width: 8rem;
-  height: 8rem;
-  object-fit: contain;
-  opacity: 0.9;
-  transition: opacity 0.3s ease;
-}
-
-.about-luna:hover img {
-  opacity: 1;
-}
-
-@media (min-width: 1024px) {
-  .about-luna {
-    display: block;
-  }
-}
-
-/* =========================
-   HERO SECTION
-   ========================= */
-.about-hero {
-  max-width: 64rem;
+/* Match your global section spacing (projects/contact/case-study patterns) */
+.about-hero,
+.about-journey,
+.about-life,
+.about-growth,
+.about-cta,
+.about-closing{
+  width: min(var(--case-max), calc(100% - 2 * var(--page-pad)));
   margin: 0 auto;
-  padding: 5rem var(--page-pad) 3rem;
 }
 
-@media (min-width: 768px) {
-  .about-hero {
-    padding-top: 8rem;
-    padding-bottom: 4rem;
-  }
+/* Give About the same “page rhythm” as case studies */
+.about-hero{ padding: 120px 0 56px; }
+.about-journey,
+.about-life,
+.about-growth,
+.about-cta{ padding: 56px 0; }
+.about-closing{ padding: 56px 0 100px; }
+
+/* Intro line should look like your muted hero copy */
+.about-intro{
+  font-size: 1.1rem;
+  color: var(--muted);
+  line-height: 1.9;
+  max-width: 68ch;
 }
 
-.about-hero-content {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+/* Title should match your brand gradient language */
+.about-title{
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  margin-top: 18px;
+  font-size: clamp(2.5rem, 4.2vw, 3.6rem);
+  background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 55%, var(--olive-3) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
 }
 
-.about-intro {
-  font-family: 'Georgia', serif;
-  font-size: 1.125rem;
-  line-height: 1.8;
-  color: var(--about-text-muted);
-  opacity: 0.9;
+/* Chapters: reuse your case-study structure vibe (olive h2, muted paragraphs) */
+.about-chapters{ display:flex; flex-direction:column; gap: 3rem; }
+
+.about-chapter{
+  padding: 0;
+  border-left: none;
 }
 
-@media (min-width: 768px) {
-  .about-intro {
-    font-size: 1.25rem;
-  }
+/* Make the marker look like a “kicker” consistent with nav uppercase style */
+.chapter-marker{
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+  margin-bottom: .75rem;
 }
 
-.about-title {
-  font-family: 'Georgia', serif;
-  font-size: 2.5rem;
-  line-height: 1.25;
-  color: var(--about-text-primary);
-  font-weight: 400;
+.chapter-dot{
+  width: .7rem;
+  height: .7rem;
+  border-radius: 999px;
+  background: var(--olive-2);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--olive-2) 12%, transparent);
 }
 
-@media (min-width: 768px) {
-  .about-title {
-    font-size: 3.75rem;
-  }
-}
-
-/* =========================
-   JOURNEY / CHAPTERS
-   ========================= */
-.about-journey {
-  max-width: 64rem;
-  margin: 0 auto;
-  padding: 4rem var(--page-pad);
-}
-
-.about-chapters {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
-
-.about-chapter {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  border-left: 4px solid;
-  padding-left: 2rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
-/* Chapter color variations */
-.about-chapter--reina {
-  border-color: var(--about-amber);
-}
-
-.dark-mode .about-chapter--reina {
-  border-color: var(--about-bronze);
-}
-
-.about-chapter--msk {
-  border-color: var(--about-bronze);
-}
-
-.dark-mode .about-chapter--msk {
-  border-color: var(--about-brown);
-}
-
-.about-chapter--army {
-  border-color: var(--about-brown);
-}
-
-.dark-mode .about-chapter--army {
-  border-color: var(--about-dark-brown);
-}
-
-.chapter-marker {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.chapter-dot {
-  width: 0.75rem;
-  height: 0.75rem;
-  border-radius: 50%;
-}
-
-.about-chapter--reina .chapter-dot {
-  background: var(--about-amber);
-}
-
-.dark-mode .about-chapter--reina .chapter-dot {
-  background: var(--about-bronze);
-}
-
-.about-chapter--msk .chapter-dot {
-  background: var(--about-bronze);
-}
-
-.dark-mode .about-chapter--msk .chapter-dot {
-  background: var(--about-brown);
-}
-
-.about-chapter--army .chapter-dot {
-  background: var(--about-brown);
-}
-
-.dark-mode .about-chapter--army .chapter-dot {
-  background: var(--about-dark-brown);
-}
-
-.chapter-label {
-  font-size: 0.875rem;
+.chapter-label{
+  font-size: .85rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 500;
-  color: var(--about-text-secondary);
+  letter-spacing: .14em;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--fg) 72%, transparent);
 }
 
-.chapter-heading {
-  font-family: 'Georgia', serif;
-  font-size: 1.875rem;
-  line-height: 1.3;
-  color: var(--about-text-primary);
+/* Headings match case-study: strong, with olive accent */
+.chapter-heading{
+  font-size: 2.1rem;
+  font-weight: 800;
+  margin: 0 0 1rem;
+  color: var(--olive-2);
 }
 
-@media (min-width: 768px) {
-  .chapter-heading {
-    font-size: 2.25rem;
-  }
+.chapter-text{
+  font-size: 1.1rem;
+  color: var(--muted);
+  line-height: 1.9;
+  margin-bottom: 1.1rem;
 }
 
-.chapter-text {
-  font-size: 1.125rem;
-  line-height: 1.8;
-  color: var(--about-text-muted);
+/* Life card: use your existing surface language */
+.about-life-card{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  padding: 2.25rem;
 }
 
-/* =========================
-   LIFE AS A VETERAN
-   ========================= */
-.about-life {
-  max-width: 64rem;
-  margin: 0 auto;
-  padding: 4rem var(--page-pad);
-}
-
-.about-life-card {
-  background: var(--about-bg-secondary);
-  padding: 2rem;
-  border-radius: 0.125rem;
-  border: 2px solid var(--about-border);
-}
-
-.dark-mode .about-life-card {
-  background: var(--about-darker);
-  border-color: var(--about-brown);
-}
-
-@media (min-width: 768px) {
-  .about-life-card {
-    padding: 3rem;
-  }
-}
-
-.about-life-title {
-  font-family: 'Georgia', serif;
-  font-size: 1.875rem;
-  line-height: 1.3;
-  color: var(--about-text-primary);
-  margin-bottom: 2rem;
-}
-
-@media (min-width: 768px) {
-  .about-life-title {
-    font-size: 2.25rem;
-  }
-}
-
-.about-life-intro {
-  margin-bottom: 1.5rem;
-}
-
-.about-life-intro p {
-  font-size: 1.125rem;
-  line-height: 1.8;
-  color: var(--about-text-muted);
-}
-
-.about-hobbies {
-  display: grid;
-  gap: 2rem;
-  padding-top: 1.5rem;
-}
-
-@media (min-width: 768px) {
-  .about-hobbies {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.hobby-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.hobby-icon {
-  font-size: 2.5rem;
-}
-
-.hobby-title {
-  font-size: 1.25rem;
-  font-weight: 500;
-  color: var(--about-text-primary);
-}
-
-.dark-mode .hobby-title {
-  color: var(--about-amber);
-}
-
-.hobby-desc {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--about-text-muted);
-}
-
-/* =========================
-   GROWTH SECTION
-   ========================= */
-.about-growth {
-  max-width: 64rem;
-  margin: 0 auto;
-  padding: 4rem var(--page-pad);
-}
-
-.about-growth-title {
-  font-family: 'Georgia', serif;
-  font-size: 1.875rem;
-  line-height: 1.3;
-  color: var(--about-text-primary);
-  margin-bottom: 2rem;
-}
-
-@media (min-width: 768px) {
-  .about-growth-title {
-    font-size: 2.25rem;
-  }
-}
-
-.about-growth-text {
-  font-size: 1.125rem;
-  line-height: 1.8;
-  color: var(--about-text-muted);
+.about-life-title,
+.about-growth-title,
+.about-cta-title{
+  font-size: 2.2rem;
+  font-weight: 900;
   margin-bottom: 1.25rem;
+  background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
 }
 
-/* =========================
-   CTA SECTION
-   ========================= */
-.about-cta {
-  max-width: 64rem;
-  margin: 0 auto;
-  padding: 4rem var(--page-pad);
+.about-life-intro p,
+.about-growth-text{
+  font-size: 1.1rem;
+  color: var(--muted);
+  line-height: 1.9;
+  margin-bottom: 1rem;
 }
 
-.about-cta-card {
-  background: var(--about-darker);
+/* Hobbies grid: card style consistent with .feature */
+.about-hobbies{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.hobby-card{
+  background: var(--bg);
+  border: 1px solid rgba(0,0,0,0.10);
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
+  padding: 1.25rem;
+  display:flex;
+  flex-direction:column;
+  gap:.6rem;
+}
+.dark-mode .hobby-card{
+  border-color: rgba(255,255,255,0.10);
+  background: var(--card);
+}
+
+.hobby-icon{ font-size: 2rem; }
+.hobby-title{ font-size: 1.1rem; font-weight: 800; }
+.hobby-desc{ color: var(--muted); line-height: 1.7; }
+
+/* CTA: make it feel like your existing gradient button world */
+.about-cta-card{
+  background:
+    radial-gradient(circle at 20% 30%, rgba(128,128,0,0.10), transparent 55%),
+    radial-gradient(circle at 85% 70%, rgba(107,142,35,0.10), transparent 55%),
+    var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md), var(--shadow-olive);
   padding: 2.5rem;
-  border-radius: 0.125rem;
 }
 
-.dark-mode .about-cta-card {
-  background: var(--about-amber);
+.about-cta-content p{
+  font-size: 1.1rem;
+  color: var(--muted);
+  line-height: 1.9;
+  margin-bottom: 1rem;
 }
 
-@media (min-width: 768px) {
-  .about-cta-card {
-    padding: 4rem;
-  }
+.about-cta-highlight{
+  margin-top: .75rem;
+  font-weight: 900;
+  color: var(--fg);
 }
 
-.about-cta-title {
-  font-family: 'Georgia', serif;
-  font-size: 1.875rem;
-  line-height: 1.3;
-  color: var(--about-peach);
-  margin-bottom: 2rem;
-}
-
-.dark-mode .about-cta-title {
-  color: var(--about-darkest);
-}
-
-@media (min-width: 768px) {
-  .about-cta-title {
-    font-size: 2.25rem;
-  }
-}
-
-.about-cta-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.about-cta-content p {
-  font-size: 1.125rem;
-  line-height: 1.8;
-  color: rgba(248, 210, 183, 0.9);
-}
-
-.dark-mode .about-cta-content p {
-  color: rgba(26, 14, 3, 0.9);
-}
-
-.about-cta-highlight {
-  font-size: 1.25rem;
-  font-weight: 400;
-  padding-top: 1rem;
-  color: var(--about-peach) !important;
-}
-
-.dark-mode .about-cta-highlight {
-  color: var(--about-darkest) !important;
-}
-
-/* =========================
-   CLOSING
-   ========================= */
-.about-closing {
-  max-width: 64rem;
-  margin: 0 auto;
-  padding: 5rem var(--page-pad) 8rem;
-}
-
-.about-closing-text {
-  font-family: 'Georgia', serif;
-  font-size: 1.25rem;
-  line-height: 1.8;
-  color: var(--about-text-muted);
+/* Closing looks like your footer/case-study outro */
+.about-closing-text{
   text-align: center;
+  color: var(--muted);
+  font-size: 1.05rem;
+  font-weight: 600;
 }
 
-@media (min-width: 768px) {
-  .about-closing-text {
-    font-size: 1.5rem;
+/* Luna: keep it playful but site-consistent (no scroll math needed) */
+.about-luna{
+  display:none;
+}
+
+@media (min-width: 1024px){
+  .about-luna{
+    display:block;
+    position: fixed;
+    right: 2.5rem;
+    top: 34%;
+    z-index: 10;
+    opacity: .9;
+    animation: lunaFloat 6s ease-in-out infinite;
+  }
+  .about-luna img{
+    width: 7.5rem;
+    height: 7.5rem;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.12));
   }
 }
 
-.dark-mode .about-closing-text {
-  color: var(--about-amber);
+@keyframes lunaFloat{
+  0%,100%{ transform: translateY(0); }
+  50%{ transform: translateY(10px); }
 }
 
-/* =========================
-   RESPONSIVE ADJUSTMENTS
-   ========================= */
-@media (max-width: 600px) {
-  .about-hero {
-    padding-top: 6.25rem;
-    padding-bottom: 2.5rem;
-  }
+@media (prefers-reduced-motion: reduce){
+  .about-luna{ animation: none !important; }
+}
 
-  .about-title {
-    font-size: 1.875rem;
-  }
-
-  .about-chapter {
-    padding-left: 1.5rem;
-  }
-
-  .chapter-heading {
-    font-size: 1.5rem;
-  }
-
-  .about-life-card,
-  .about-cta-card {
-    padding: 1.5rem;
-  }
-
-  .about-closing {
-    padding-bottom: 5rem;
-  }
+/* Responsive */
+@media (max-width: 900px){
+  .about-hobbies{ grid-template-columns: 1fr; }
+  .chapter-heading{ font-size: 1.8rem; }
 }
