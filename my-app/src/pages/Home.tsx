@@ -73,7 +73,10 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.15, ease: [0.2, 0.8, 0.2, 1] }}
         >
-          UX Designer who codes modern, accessible web experiences. I design and build intuitive, high-performance interfaces with a focus on usability, accessibility, and real-world impact.
+          Designing digital experiences that help people breathe easier and make meaningful decisions with confidence. Building modern and accessible interfaces that bring those moments to life.
+          <p> 
+            I’m a UX designer and front‑end builder who creates intuitive, high‑performance web experiences with a focus on usability, accessibility, and real‑world impact. My work spans healthcare, government, wellness, and any space where people are navigating important choices. I bring a calm, human‑centered approach shaped by years of designing for complex systems and a background as a U.S. Army veteran, which gives me a steady, grounded perspective in high‑pressure environments. Whether I’m simplifying clinical workflows or helping people curate meaningful life experiences, I design and build tools that make complexity feel manageable and decisions feel clearer.
+          </p>
         </motion.p>
 
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.35 }}>

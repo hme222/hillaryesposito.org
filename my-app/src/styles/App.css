@@ -349,12 +349,18 @@ button:focus,a:focus,input:focus,textarea:focus,select:focus{
 .project-body h3{font-size:1.2rem;margin-bottom:.4rem;letter-spacing:.4px;}
 .project-body p{
   color: color-mix(in srgb, var(--fg) 65%, transparent);
-  line-height:1.55;
-  font-size:.98rem;
-  display:-webkit-box;
-  -webkit-line-clamp:3;
-  -webkit-box-orient:vertical;
-  overflow:hidden;
+  line-height: 1.55;
+  font-size: .98rem;
+
+  /* Clamp */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+
+  overflow: hidden;
+
+  /* Modern spec (helps in some browsers) */
+  line-clamp: 3;
 }
 
 /* =========================
