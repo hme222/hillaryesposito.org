@@ -255,8 +255,12 @@ button:focus,a:focus,input:focus,textarea:focus,select:focus{
 }
 
 .hero-content{
-  max-width:960px; /* slightly wider */
-  margin:0 auto;
+  width: 100%;            /* IMPORTANT: ensures content spans available width */
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;          /* centers the inner stack reliably */
+  flex-direction: column;
+  align-items: center;
 }
 
 .hero-title{
@@ -287,8 +291,12 @@ button:focus,a:focus,input:focus,textarea:focus,select:focus{
 }
 
 .hero-copy{
-  max-width:68ch;
-  margin:0 auto;
+  width: 100%;
+  max-width: 68ch;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;    /* centers text + CTA */
 }
 
 .hero-copy .hero-description{
@@ -297,6 +305,7 @@ button:focus,a:focus,input:focus,textarea:focus,select:focus{
 
 .hero-actions{
   display:flex;
+  width: 100%;
   justify-content:center;
   gap:12px;
   margin-top:28px;
@@ -1270,7 +1279,7 @@ footer p{color: var(--muted);font-size:.9rem;font-weight:600;}
 .about-life,
 .about-growth,
 .about-cta{ padding: 56px 0; }
-.about-closing{ padding: 56px 0 100px; }
+.about-closing{ padding: 56px 0 110px; }
 
 /* Intro line should look like your muted hero copy */
 .about-intro{
