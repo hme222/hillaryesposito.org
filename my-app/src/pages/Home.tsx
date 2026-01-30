@@ -111,7 +111,7 @@ export default function Home() {
             and other spaces where people navigate important choices. With a calm,
             human-centered approach shaped by complex systems—and a background as
             a U.S. Army veteran—I help teams make complexity feel manageable and
-            decisions feel clearer.
+            decisions feel clear.
           </motion.p>
         </div>
 
@@ -123,11 +123,6 @@ export default function Home() {
         >
           <Link to="/contact" className="hero-btn">
             Contact
-          </Link>
-
-          {/* Optional secondary CTA (small change, big “welcome” energy) */}
-          <Link to="/work" className="hero-btn hero-btn--secondary">
-            View work
           </Link>
         </motion.div>
       </div>

@@ -246,32 +246,44 @@ button:focus,a:focus,input:focus,textarea:focus,select:focus{
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:80px var(--page-pad) 40px;
+  padding:100px var(--page-pad) 60px; /* ↑ more top/bottom air */
   text-align:center;
   background:
-    radial-gradient(circle at 20% 50%, rgba(128,128,0,0.08), transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(107,142,35,0.08), transparent 50%),
+    radial-gradient(circle at 20% 45%, rgba(128,128,0,0.06), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(107,142,35,0.06), transparent 55%),
     var(--bg);
 }
-.hero-content{max-width:900px;margin:0 auto;}
+
+.hero-content{
+  max-width:960px; /* slightly wider */
+  margin:0 auto;
+}
+
 .hero-title{
-  font-size:8rem;
+  font-size:clamp(4.5rem, 8vw, 8rem); /* responsive breathing room */
   font-weight:900;
-  letter-spacing:-5px;
-  line-height:1;
-  margin-bottom:2rem;
-  background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 50%, var(--olive-3) 100%);
+  letter-spacing:-4px; /* slightly less tight */
+  line-height:0.95;
+  margin-bottom:2.5rem; /* more separation */
+  background: linear-gradient(
+    135deg,
+    var(--olive-1) 0%,
+    var(--olive-2) 50%,
+    var(--olive-3) 100%
+  );
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   background-clip:text;
 }
+
 .hero-description{
-  font-size:1.3rem;
-  margin:2rem auto 3rem;
+  font-size:1.25rem; /* a touch softer */
+  margin:0 auto 2rem;
   color: var(--muted);
-  line-height:1.8;
-  max-width:700px;
+  line-height:1.75;
+  max-width:68ch; /* optimal reading width */
 }
+
 
 .section{display:none;}
 .section.active{display:block;}
