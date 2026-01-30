@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
+
 export default function About() {
   const catRef = useRef<HTMLDivElement>(null);
 
@@ -27,7 +28,7 @@ export default function About() {
         aria-label="Luna, Hillary's cat companion"
       >
         <img 
-          src="/mnt/user-data/uploads/ChatGPT_Image_Jan_26__2026__05_30_36_PM.png"
+          src="/favicon.png"
           alt="Luna, a gray and white cat with orange eyes"
         />
       </div>
