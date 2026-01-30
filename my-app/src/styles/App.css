@@ -274,6 +274,8 @@ button:focus,a:focus,input:focus,textarea:focus,select:focus{
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   background-clip:text;
+  display: inline-block;
+  will-change: transform, opacity, clip-path;
 }
 
 .hero-description{
@@ -284,6 +286,22 @@ button:focus,a:focus,input:focus,textarea:focus,select:focus{
   max-width:68ch; /* optimal reading width */
 }
 
+.hero-copy{
+  max-width:68ch;
+  margin:0 auto;
+}
+
+.hero-copy .hero-description{
+  margin:0 auto 1.25rem;           /* consistent spacing between paragraphs */
+}
+
+.hero-actions{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-top:28px;
+  flex-wrap:wrap;
+}
 
 .section{display:none;}
 .section.active{display:block;}
