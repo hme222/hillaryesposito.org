@@ -26,12 +26,12 @@ export default function Home() {
             duration: 1.2,
             ease: "power3.out",
             delay: 0.2,
-          }
+          },
         );
       }
 
       const fadeEls = gsap.utils.toArray<HTMLElement>(
-        root.querySelectorAll(".fade-text")
+        root.querySelectorAll(".fade-text"),
       );
 
       fadeEls.forEach((el, i) => {
@@ -54,7 +54,11 @@ export default function Home() {
   }, []);
 
   return (
-    <section ref={rootRef} className="section active hero" aria-label="Home section">
+    <section
+      ref={rootRef}
+      className="section active hero"
+      aria-label="Home section"
+    >
       <div className="hero-content">
         <motion.h1
           initial={{ opacity: 0, y: 18 }}
@@ -72,8 +76,12 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.2, 0.8, 0.2, 1] }}
           >
-            Designing digital experiences that help people breathe easier and make
-            meaningful decisions with confidence—through modern, accessible interfaces.
+            I design for clarity in the moments that matter. Veteran turned UX
+            designer with experience in healthcare, government, and
+            high‑pressure systems. I am driven by curiosity, grounded in service,
+            and focused on helping people feel more capable. I turn complex,
+            high‑emotion workflows into experiences that feel intuitive, calm,
+            and human.
           </motion.p>
 
           <motion.div

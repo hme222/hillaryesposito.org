@@ -28,7 +28,7 @@ export default function About() {
         aria-label="Luna, Hillary's cat companion"
       >
         <img 
-          src="/favicon.png"
+          src="assets/favicon.png"
           alt="Luna, a gray and white cat with orange eyes"
         />
       </div>
@@ -37,11 +37,11 @@ export default function About() {
       <section className="about-hero">
         <div className="about-hero-content">
           <p className="about-intro">
-            Let me tell you a story about designing for the moments that matter.
+            I'm a UX designer driven by curiosity and a desire to help people navigate complexity with more clarity and confidence.
           </p>
           
           <h1 className="about-title">
-            I turn complex, high‑emotion systems into experiences that feel intuitive, calm, and human.
+            I turn complex, high‑pressure systems into experiences that feel intuitive, manageable, and human.
           </h1>
         </div>
       </section>
@@ -50,55 +50,29 @@ export default function About() {
       <section className="about-journey">
         <div className="about-chapters">
           
-          {/* Chapter: Starting with Joy */}
-          <div className="about-chapter about-chapter--reina">
-            <div className="chapter-marker">
-              <div className="chapter-dot" />
-              <span className="chapter-label">
-                Where I Started for Fun
-              </span>
-            </div>
-            
-            <h2 className="chapter-heading">
-              First, I built something for joy.
-            </h2>
-            
-            <p className="chapter-text">
-              Not every high-stakes moment happens in a hospital or a war zone. Sometimes it's a couple planning their destination wedding, trying to balance family expectations, budget constraints, and the dream of a perfect day. The stress is different, but the need for clarity and calm is exactly the same.
-            </p>
-            
-            <p className="chapter-text">
-              So I created Reina—a mobile app that guides couples through the emotional complexity of planning a celebration in a place they've never been. It's about more than checklists. It's about helping people feel supported, grounded, and confident during one of the most meaningful moments of their lives.
-            </p>
-            
-            <p className="chapter-text">
-              This project taught me that whether you're saving lives or planning the best day of your life, you deserve tools that make you feel capable.
-            </p>
-          </div>
-
-          {/* Chapter: Healthcare */}
+          {/* Chapter: Healthcare - Where It Started */}
           <div className="about-chapter about-chapter--msk">
             <div className="chapter-marker">
               <div className="chapter-dot" />
               <span className="chapter-label">
-                Where it Got Real
+                Where I Discovered UX
               </span>
             </div>
             
             <h2 className="chapter-heading">
-              Healthcare showed me what's at stake.
+              Healthcare showed me what design can do.
             </h2>
             
             <p className="chapter-text">
-              At Memorial Sloan Kettering Cancer Center, I led UX research for tools used by 21,000+ staff. Clinicians, administrators, researchers—all navigating life-and-death decisions through digital interfaces. A confusing workflow isn't just frustrating here. It could mean a missed diagnosis, a delayed treatment, a moment of uncertainty when someone needs absolute clarity.
+              I was introduced to UX while working at Memorial Sloan Kettering Cancer Center, where I supported research and design efforts for internal tools used by 21,000+ staff. Clinicians, administrators, researchers—all navigating life-and-death decisions through digital interfaces.
             </p>
             
             <p className="chapter-text">
-              I redesigned EHR features. I reengineered certification workflows. I guided massive system rollouts. But more than anything, I learned to design with deep respect for the weight people carry. These weren't just users—they were professionals trying to save lives while drowning in administrative complexity.
+              Seeing how small interface decisions could influence understanding, efficiency, and stress levels sparked my interest in designing systems that prioritize clarity and ease of use. A confusing workflow isn't just frustrating in healthcare—it could mean a missed diagnosis, a delayed treatment, a moment of uncertainty when someone needs absolute clarity.
             </p>
             
             <p className="chapter-text">
-              So I designed for cognitive ease. For trust. For the feeling of "yes, this makes sense" in a world that often doesn't.
+              I redesigned EHR features. I reengineered certification workflows. I guided system rollouts. But more than anything, I learned to design with deep respect for the weight people carry.
             </p>
           </div>
 
@@ -112,23 +86,64 @@ export default function About() {
             </div>
             
             <h2 className="chapter-heading">
-              The Army taught me to design for pressure.
+              The Army taught me adaptability and systems thinking.
             </h2>
             
             <p className="chapter-text">
-              As a logistics officer in the Army National Guard, I directed systems for 5,000+ deployed soldiers. When you're coordinating supplies across combat zones, there's no room for ambiguity. Every interface, every workflow, every decision point needs to work under the worst possible conditions.
+              Earlier in my career, I served in the Army National Guard while balancing civilian work. As a logistics officer, I directed systems for 5,000+ deployed soldiers. When you're coordinating supplies across combat zones, there's no room for ambiguity.
             </p>
             
             <p className="chapter-text">
-              That experience didn't just teach me discipline—it taught me empathy. I learned to design for people who are stressed, overwhelmed, and making decisions that truly matter. People who need systems that hold up when everything else is falling apart.
+              That experience strengthened my adaptability, collaboration skills, and comfort working within complex systems. It also shaped how I approach problem-solving—with steadiness and care for the people navigating those systems under pressure.
             </p>
             
             <p className="chapter-text">
-              My deployment shaped who I am today. It gave me a steady, thoughtful perspective that I bring to every project.
+              My deployment gave me a perspective I bring to every project: design for people who are stressed, overwhelmed, and making decisions that truly matter.
+            </p>
+          </div>
+
+          {/* Chapter: Personal Projects - Reina */}
+          <div className="about-chapter about-chapter--reina">
+            <div className="chapter-marker">
+              <div className="chapter-dot" />
+              <span className="chapter-label">
+                Where I Explored End-to-End
+              </span>
+            </div>
+            
+            <h2 className="chapter-heading">
+              Personal projects taught me to design for emotion.
+            </h2>
+            
+            <p className="chapter-text">
+              Outside of professional work, I enjoy building projects that let me explore design problems from end to end. One of those projects, Reina, is a mobile app created to help couples plan destination weddings with less uncertainty.
+            </p>
+            
+            <p className="chapter-text">
+              Not every high-stakes moment happens in a hospital or a combat zone. Sometimes it's a couple trying to balance family expectations, budget constraints, and the dream of a perfect day. The stress is different, but the need for clarity and calm is exactly the same.
+            </p>
+            
+            <p className="chapter-text">
+              Designing for an emotionally charged experience reinforced an important lesson: regardless of context, people benefit from tools that help them feel informed, supported, and capable.
             </p>
           </div>
 
         </div>
+      </section>
+
+      {/* Skills & Growth */}
+      <section className="about-growth">
+        <h2 className="about-growth-title">
+          Building technical fluency
+        </h2>
+        
+        <p className="about-growth-text">
+          After transitioning fully out of the military, I made a deliberate decision to focus on strengthening my design and technical foundation. I completed three full-time bootcamps in UX design, data analytics, and software engineering to better understand how design, data, and technology work together.
+        </p>
+        
+        <p className="about-growth-text">
+          This experience helped me become more fluent in collaborating across disciplines and more confident working within technical constraints. I work at the intersection of UX, service design, and systems thinking—with a focus on healthcare, government, and products where people are time-pressed or making decisions that shape their lives.
+        </p>
       </section>
 
       {/* Life After Service - Luna, Running, Reading */}
@@ -172,35 +187,20 @@ export default function About() {
         </div>
       </section>
 
-      {/* Skills & Growth */}
-      <section className="about-growth">
-        <h2 className="about-growth-title">
-          Always learning, always growing
-        </h2>
-        
-        <p className="about-growth-text">
-          After years in healthcare and government systems, I've recently completed several bootcamps to sharpen my technical skills and stay at the forefront of UX best practices. I've deepened my expertise in interaction design, accessibility standards, and research methodologies—all while keeping my focus on what matters most: designing tools that help people.
-        </p>
-        
-        <p className="about-growth-text">
-          I work at the intersection of UX, service design, and systems thinking. My focus is healthcare, government, wellness—anywhere people are time-pressed, overwhelmed, or making decisions that shape their lives.
-        </p>
-      </section>
-
       {/* Ready for New Opportunities */}
       <section className="about-cta">
         <div className="about-cta-card">
           <h2 className="about-cta-title">
-            Ready for what's next
+            What I'm looking for
           </h2>
           
           <div className="about-cta-content">
             <p>
-              I'm currently seeking new opportunities where I can bring my unique combination of military discipline, healthcare systems expertise, and human-centered design thinking to teams that value clarity, empathy, and impact.
+              I'm seeking a junior UX role where I can continue learning, contribute thoughtfully to cross-functional teams, and apply my skills in research, interaction design, and systems thinking across a variety of products and industries.
             </p>
             
             <p>
-              Whether it's improving clinical workflows, streamlining government services, or building consumer products that bring joy—I specialize in reducing cognitive load and creating experiences that help people feel more capable, more informed, and more at ease.
+              Whether it's improving clinical workflows, streamlining government services, or building consumer products that reduce cognitive load—I specialize in creating experiences that help people feel more capable, more informed, and more at ease.
             </p>
             
             <p className="about-cta-highlight">
