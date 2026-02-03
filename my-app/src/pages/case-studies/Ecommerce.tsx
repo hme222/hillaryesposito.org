@@ -38,17 +38,12 @@ function safeLocalStorageSet(key: string, value: string) {
   }
 }
 
-function prefersReducedMotion() {
-  if (typeof window === "undefined" || !window.matchMedia) return false;
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-}
-
 function useLiveAnnouncer() {
   const [liveMessage, setLiveMessage] = useState("");
   const liveTimer = useRef<number | null>(null);
 
   const announce = useCallback((msg: string) => {
-    // Clear then set (helps some SRs re-announce the same text)
+    // Clear then set (helps some SRs re-announce identical text)
     setLiveMessage("");
     window.requestAnimationFrame(() => setLiveMessage(msg));
 
@@ -71,6 +66,12 @@ function getPrimaryImage(p: any) {
 
 export default function Ecommerce() {
   const allProducts = products as ProductLike[];
+
+  /** =========================
+   *  DEMO TOGGLE (single interactive zone)
+   *  ========================= */
+  const [demoOpen, setDemoOpen] = useState(false);
+  const toggleDemo = () => setDemoOpen((v) => !v);
 
   // Categories
   const categories = useMemo(() => {
@@ -213,6 +214,15 @@ export default function Ecommerce() {
     return list;
   }, [allProducts, category, minPrice, maxPrice, query, sort]);
 
+  function resetFilters() {
+    setQuery("");
+    setCategory("All");
+    setSort("featured");
+    setMinPrice(minPossible);
+    setMaxPrice(maxPossible);
+    announce("Filters reset.");
+  }
+
   const resultsLabel = useMemo(() => {
     const parts: string[] = [];
     if (category !== "All") parts.push(category);
@@ -258,7 +268,6 @@ export default function Ecommerce() {
     if (!dlg) return;
 
     const onCancel = (e: Event) => {
-      // ESC key
       e.preventDefault();
       closeQuickView();
     };
@@ -328,76 +337,35 @@ export default function Ecommerce() {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [cartOpen]);
 
-  function resetFilters() {
-    setQuery("");
-    setCategory("All");
-    setSort("featured");
-    setMinPrice(minPossible);
-    setMaxPrice(maxPossible);
-    announce("Filters reset.");
-  }
-
-  // Demo Drawer behavior: scroll into view when opened
-  const demoDetailsRef = useRef<HTMLDetailsElement | null>(null);
+  // When demo closes, close anything "app-like" living inside it
   useEffect(() => {
-    const el = demoDetailsRef.current;
-    if (!el) return;
-
-    const onToggle = () => {
-      if (!el.open) return;
-      if (prefersReducedMotion()) {
-        el.scrollIntoView({ behavior: "auto", block: "start" });
-      } else {
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    };
-
-    el.addEventListener("toggle", onToggle);
-    return () => el.removeEventListener("toggle", onToggle);
-  }, []);
+    if (!demoOpen) {
+      setCartOpen(false);
+      closeQuickView();
+    }
+  }, [demoOpen, closeQuickView]);
 
   return (
     <main className="case-study ecommerce-cs" aria-label="E-Commerce Storefront + Accessibility Case Study">
       {/* a11y helpers */}
-      <a href="#ecom-storefront" className="sr-only-focusable">
-        Skip to storefront demo
+      <a href="#ecom-demo" className="sr-only-focusable">
+        Skip to interactive demo
       </a>
       <div aria-live="polite" aria-atomic="true" className="sr-only">
         {liveMessage}
       </div>
 
-      {/* Header */}
+      {/* Header (keep calm: no cart here) */}
       <header className="cs-header ecommerce-header">
-        <div className="ecom-header-row">
+        <div className="ecom-header-row ecom-header-single">
           <div className="ecom-header-copy">
             <h1>E-Commerce Storefront</h1>
-            <p className="meta">Personal project · Interaction design + UI engineering · Accessibility-first</p>
+            <p className="meta">Personal project · UI engineering · Accessibility-first interactions</p>
 
             <p className="intro">
-              Designed and built a premium-feeling storefront demo where core shopping flows work smoothly for{" "}
-              <strong>keyboard</strong> and <strong>screen reader</strong> users: filters, quick view, and a cart drawer.
+              Built a premium-feeling storefront demo with keyboard + screen reader support across the key flows:
+              discovery (filters), quick view, and a cart drawer.
             </p>
-
-            <div className="ecom-overview">
-              <div className="feature ecom-overview-card">
-                <h2>Problem</h2>
-                <p>
-                  E-commerce UIs often add friction for non-mouse users. The goal was to build a polished storefront
-                  pattern set that stays usable under real accessibility constraints (focus, announcements, ESC,
-                  predictable navigation).
-                </p>
-              </div>
-
-              <div className="feature ecom-overview-card">
-                <h2>What I built</h2>
-                <ul className="ecom-bullets">
-                  <li>Product discovery: search, category, price range, sorting</li>
-                  <li>Quick View dialog with focus management + ESC</li>
-                  <li>Cart drawer with focus trap, keyboard quantity controls, totals</li>
-                  <li>Live region announcements for key cart changes</li>
-                </ul>
-              </div>
-            </div>
 
             <div className="ecom-kpis" aria-label="Project constraints and notes">
               <div className="ecom-kpi">
@@ -417,288 +385,264 @@ export default function Ecommerce() {
                 <div className="ecom-kpi__value">Keyboard + SR</div>
               </div>
             </div>
-
-            {/* Demo Drawer */}
-            <section className="demo-drawer" id="demo" aria-label="Interactive demo">
-              <details ref={demoDetailsRef} className="demo" id="demoDetails">
-                <summary className="demo-summary">
-                  <span className="demo-summary__title">View interactive demo</span>
-                  <span className="demo-summary__hint">
-                    {DEMO_URL ? "Opens an embedded demo" : "Preview the flows + jump to the storefront"}
-                  </span>
-                  <span className="demo-summary__icon" aria-hidden="true">
-                    ⌄
-                  </span>
-                </summary>
-
-                <div className="demo-panel">
-                  <div className="demo-panel__inner">
-                    <div className="demo-panel__header">
-                      <h3 className="demo-panel__title">Demo focus</h3>
-                      <p className="demo-panel__sub">
-                        This is a UI/UX + accessibility demo (not a full commerce stack). The goal is clean interaction
-                        design under real constraints.
-                      </p>
-                    </div>
-
-                    {DEMO_URL ? (
-                      <div className="demo-embed" role="region" aria-label="Interactive demo embed">
-                        <iframe title="E-commerce demo" src={DEMO_URL} loading="lazy" referrerPolicy="no-referrer" />
-                      </div>
-                    ) : (
-                      <div className="demo-preview" role="region" aria-label="Demo preview">
-                        <div className="demo-preview__grid">
-                          <div className="demo-preview__card">
-                            <div className="demo-preview__kicker">Discovery</div>
-                            <div className="demo-preview__title">Filters + sorting</div>
-                            <p className="demo-preview__desc">
-                              Clear hierarchy, keyboard-friendly controls, live result counts.
-                            </p>
-                          </div>
-                          <div className="demo-preview__card">
-                            <div className="demo-preview__kicker">Confidence</div>
-                            <div className="demo-preview__title">Quick View dialog</div>
-                            <p className="demo-preview__desc">
-                              ESC to close, focus restored, primary action kept obvious.
-                            </p>
-                          </div>
-                          <div className="demo-preview__card">
-                            <div className="demo-preview__kicker">Cart</div>
-                            <div className="demo-preview__title">Drawer checkout pattern</div>
-                            <p className="demo-preview__desc">
-                              Focus trap, qty controls, totals, SR announcements.
-                            </p>
-                          </div>
-                        </div>
-                        <div className="demo-panel__footer">
-                          <a className="demo-link" href="#ecom-storefront">
-                            Jump to storefront ↓
-                          </a>
-                        </div>
-                      </div>
-                    )}
-
-                    {DEMO_URL ? (
-                      <div className="demo-panel__footer">
-                        <a className="demo-link" href="#ecom-storefront">
-                          Jump to storefront ↓
-                        </a>
-                      </div>
-                    ) : null}
-                  </div>
-                </div>
-              </details>
-            </section>
-          </div>
-
-          <div className="ecom-header-actions">
-            <button
-              ref={cartBtnRef}
-              type="button"
-              className="hero-btn ecom-cart-btn"
-              onClick={openCart}
-              aria-haspopup="dialog"
-              aria-expanded={cartOpen}
-              aria-controls="ecom-cart-drawer"
-            >
-              Cart <span aria-hidden="true">·</span> <span aria-label={`${cartCount} items`}>{cartCount}</span>
-            </button>
-
-            <div className="ecom-header-note" role="note" aria-label="Demo note">
-              Static demo · No payments processed
-            </div>
           </div>
         </div>
       </header>
 
-      {/* Switcher */}
-      <nav className="ecom-switcher" aria-label="Page sections">
-        <a className="ecom-switcher-btn" href="#ecom-storefront">
-          Storefront demo
-        </a>
-        <a className="ecom-switcher-btn" href="#ecom-case-study">
-          Case study
-        </a>
-      </nav>
-
-      {/* Storefront band */}
-      <section id="ecom-storefront" className="ecom-storefront" aria-label="Storefront demo">
-        <div className="ecom-wide">
-          {/* Storefront Head */}
-          <div className="ecom-storefront-head">
+      {/* SINGLE DEMO SECTION (toggle on/off like a button) */}
+      <section id="ecom-demo" className="ecom-demoSection" aria-label="Interactive storefront demo">
+        <div className="ecom-narrow">
+          <div className="ecom-demoHeader">
             <div>
-              <div className="ecom-band-title">Storefront demo</div>
-              <div className="ecom-band-subtitle">Filters · Quick View · Cart Drawer</div>
+              <h2 className="ecom-demoTitle">Interactive demo</h2>
+              <p className="ecom-demoSubtitle">
+                Toggle the full demo on/off to keep the page calm. The cart + quick view only exist inside this section.
+              </p>
             </div>
+
+            <button
+              type="button"
+              className="ecom-demoToggle"
+              onClick={toggleDemo}
+              aria-expanded={demoOpen}
+              aria-controls="ecom-demoPanel"
+            >
+              {demoOpen ? "Close demo" : "Open demo"}
+            </button>
           </div>
 
-          {/* Demo Note */}
-          <div className="highlight ecom-highlight" role="note" aria-label="Demo note">
-            This is a <strong>static demo</strong>. Products are stored in local TypeScript data. Cart persists via{" "}
-            <strong>localStorage</strong>. Checkout is demo-only (no payment processed).
-          </div>
-
-          {/* Controls */}
-          <section className="feature ecommerce-controls" aria-label="Filters and sorting">
-            <div className="ecom-controls-grid">
-              <div className="form-group ecom-field">
-                <label htmlFor="ecom-search">Search</label>
-                <input
-                  id="ecom-search"
-                  type="search"
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Search products, categories…"
-                  aria-describedby="ecom-search-help"
-                />
-                <p id="ecom-search-help" className="ecom-help">
-                  Try a keyword like “tee” or a category like “Accessories”.
-                </p>
-              </div>
-
-              <div className="form-group ecom-field">
-                <label htmlFor="ecom-category">Category</label>
-                <select
-                  id="ecom-category"
-                  value={category}
-                  onChange={(e) => setCategory(e.target.value)}
-                  className="ecom-select"
-                >
-                  {categories.map((c) => (
-                    <option key={c} value={c}>
-                      {c}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div className="form-group ecom-field">
-                <label htmlFor="ecom-sort">Sort</label>
-                <select
-                  id="ecom-sort"
-                  value={sort}
-                  onChange={(e) => setSort(e.target.value as any)}
-                  className="ecom-select"
-                >
-                  <option value="featured">Featured</option>
-                  <option value="name-asc">Name (A–Z)</option>
-                  <option value="price-asc">Price (Low–High)</option>
-                  <option value="price-desc">Price (High–Low)</option>
-                </select>
-              </div>
-
-              <div className="form-group ecom-field">
-                <label id="ecom-price-label">Price range</label>
-                <div className="ecom-range" role="group" aria-labelledby="ecom-price-label">
-                  <input
-                    aria-label="Minimum price"
-                    type="number"
-                    min={minPossible}
-                    max={maxPossible}
-                    value={minPrice}
-                    onChange={(e) => {
-                      const v = Number(e.target.value);
-                      const next = Number.isFinite(v) ? v : minPossible;
-                      setMinPrice(clamp(next, minPossible, maxPrice));
-                    }}
-                  />
-                  <span aria-hidden="true">—</span>
-                  <input
-                    aria-label="Maximum price"
-                    type="number"
-                    min={minPossible}
-                    max={maxPossible}
-                    value={maxPrice}
-                    onChange={(e) => {
-                      const v = Number(e.target.value);
-                      const next = Number.isFinite(v) ? v : maxPossible;
-                      setMaxPrice(clamp(next, minPrice, maxPossible));
-                    }}
-                  />
+          {!demoOpen ? (
+            <div className="ecom-demoClosed" role="region" aria-label="Demo preview">
+              <div className="ecom-demoPreviewGrid">
+                <div className="ecom-demoPreviewCard">
+                  <div className="ecom-demoKicker">Discovery</div>
+                  <div className="ecom-demoPreviewTitle">Search + filters</div>
+                  <p className="ecom-demoPreviewDesc">Category, price range, sorting, and live results.</p>
                 </div>
-                <p className="ecom-help">
-                  {formatUSD(minPrice)} – {formatUSD(maxPrice)}
-                </p>
+                <div className="ecom-demoPreviewCard">
+                  <div className="ecom-demoKicker">Confidence</div>
+                  <div className="ecom-demoPreviewTitle">Quick view modal</div>
+                  <p className="ecom-demoPreviewDesc">ESC close, focus restore, clean hierarchy.</p>
+                </div>
+                <div className="ecom-demoPreviewCard">
+                  <div className="ecom-demoKicker">Cart</div>
+                  <div className="ecom-demoPreviewTitle">Drawer pattern</div>
+                  <p className="ecom-demoPreviewDesc">Focus trap, quantity controls, totals, announcements.</p>
+                </div>
               </div>
 
-              <div className="ecom-controls-actions">
-                <button type="button" className="submit-btn ecom-reset" onClick={resetFilters}>
-                  Reset
-                </button>
+              <div className="ecom-demoNote" role="note">
+                Static demo. Products come from local TypeScript data. Cart persists via <strong>localStorage</strong>. No
+                payment is processed.
               </div>
+
+              {DEMO_URL ? (
+                <div className="ecom-demoExternal">
+                  <a className="ecom-demoExternalLink" href={DEMO_URL} target="_blank" rel="noreferrer">
+                    Open live demo in new tab →
+                  </a>
+                </div>
+              ) : null}
             </div>
+          ) : (
+            <div id="ecom-demoPanel" className="ecom-demoOpen" role="region" aria-label="Demo panel">
+              <div className="ecom-wide ecom-demoWide">
+                {/* Demo top bar (cart lives here; feels “in place”) */}
+                <div className="ecom-storefront-head">
+                  <div>
+                    <div className="ecom-band-title">Storefront</div>
+                    <div className="ecom-band-subtitle">Filters · Quick View · Cart Drawer</div>
+                  </div>
 
-            <div className="ecom-results" role="status" aria-live="polite">
-              <span>
-                <strong>{filtered.length}</strong> result{filtered.length === 1 ? "" : "s"}
-              </span>
-              <span className="ecom-results-label">{resultsLabel}</span>
-            </div>
-          </section>
+                  <button
+                    ref={cartBtnRef}
+                    type="button"
+                    className="ecom-cart-pill"
+                    onClick={openCart}
+                    aria-haspopup="dialog"
+                    aria-expanded={cartOpen}
+                    aria-controls="ecom-cart-drawer"
+                  >
+                    Cart <span aria-hidden="true">·</span> <span aria-label={`${cartCount} items`}>{cartCount}</span>
+                  </button>
+                </div>
 
-          {/* Products */}
-          <section aria-label="Product results">
-            <div className="ecom-products-head">
-              <h2 id="ecom-products">Products</h2>
-            </div>
+                <div className="highlight ecom-highlight" role="note" aria-label="Demo note">
+                  This is a <strong>static demo</strong>. Products are stored in local TypeScript data. Cart persists via{" "}
+                  <strong>localStorage</strong>. Checkout is demo-only (no payment processed).
+                </div>
 
-            {filtered.length === 0 ? (
-              <div className="feature ecom-empty" role="region" aria-label="No results">
-                <h3>No matches</h3>
-                <p>Try resetting filters or broadening your search.</p>
-                <button type="button" className="hero-btn" onClick={resetFilters}>
-                  Reset filters
-                </button>
-              </div>
-            ) : (
-              <div className="ecom-grid" role="list">
-                {filtered.map((p) => {
-                  const id = String(p.id);
-                  const img = getPrimaryImage(p);
+                {/* Controls */}
+                <section className="feature ecommerce-controls" aria-label="Filters and sorting">
+                  <div className="ecom-controls-grid">
+                    <div className="form-group ecom-field">
+                      <label htmlFor="ecom-search">Search</label>
+                      <input
+                        id="ecom-search"
+                        type="search"
+                        value={query}
+                        onChange={(e) => setQuery(e.target.value)}
+                        placeholder="Search products, categories…"
+                        aria-describedby="ecom-search-help"
+                      />
+                      <p id="ecom-search-help" className="ecom-help">
+                        Try a keyword like “tee” or a category like “Accessories”.
+                      </p>
+                    </div>
 
-                  return (
-                    <article key={id} className="ecom-card" role="listitem">
-                      <button
-                        type="button"
-                        className="ecom-media"
-                        onClick={() => openQuickView(id)}
-                        aria-label={`Open quick view for ${p.name}`}
+                    <div className="form-group ecom-field">
+                      <label htmlFor="ecom-category">Category</label>
+                      <select
+                        id="ecom-category"
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                        className="ecom-select"
                       >
-                        <img src={img} alt={p.name} loading="lazy" />
-                      </button>
+                        {categories.map((c) => (
+                          <option key={c} value={c}>
+                            {c}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
 
-                      <div className="ecom-body">
-                        <h3 className="ecom-title">{p.name}</h3>
-                        <p className="ecom-meta">
-                          <span>{p.category}</span> <span aria-hidden="true">·</span>{" "}
-                          <span className="ecom-price">{formatUSD(Number(p.price))}</span>
-                        </p>
+                    <div className="form-group ecom-field">
+                      <label htmlFor="ecom-sort">Sort</label>
+                      <select
+                        id="ecom-sort"
+                        value={sort}
+                        onChange={(e) => setSort(e.target.value as any)}
+                        className="ecom-select"
+                      >
+                        <option value="featured">Featured</option>
+                        <option value="name-asc">Name (A–Z)</option>
+                        <option value="price-asc">Price (Low–High)</option>
+                        <option value="price-desc">Price (High–Low)</option>
+                      </select>
+                    </div>
 
-                        {p.description ? <p className="ecom-desc">{p.description}</p> : null}
-
-                        <div className="ecom-actions">
-                          <button
-                            type="button"
-                            className="hero-btn ecom-add"
-                            onClick={() => addToCart(id, p.name)}
-                          >
-                            Add to cart
-                          </button>
-                          <button type="button" className="ecom-link" onClick={() => openQuickView(id)}>
-                            Quick view
-                          </button>
-                        </div>
+                    <div className="form-group ecom-field">
+                      <label id="ecom-price-label">Price range</label>
+                      <div className="ecom-range" role="group" aria-labelledby="ecom-price-label">
+                        <input
+                          aria-label="Minimum price"
+                          type="number"
+                          min={minPossible}
+                          max={maxPossible}
+                          value={minPrice}
+                          onChange={(e) => {
+                            const v = Number(e.target.value);
+                            const next = Number.isFinite(v) ? v : minPossible;
+                            setMinPrice(clamp(next, minPossible, maxPrice));
+                          }}
+                        />
+                        <span aria-hidden="true">—</span>
+                        <input
+                          aria-label="Maximum price"
+                          type="number"
+                          min={minPossible}
+                          max={maxPossible}
+                          value={maxPrice}
+                          onChange={(e) => {
+                            const v = Number(e.target.value);
+                            const next = Number.isFinite(v) ? v : maxPossible;
+                            setMaxPrice(clamp(next, minPrice, maxPossible));
+                          }}
+                        />
                       </div>
-                    </article>
-                  );
-                })}
+                      <p className="ecom-help">
+                        {formatUSD(minPrice)} – {formatUSD(maxPrice)}
+                      </p>
+                    </div>
+
+                    <div className="ecom-controls-actions">
+                      <button type="button" className="submit-btn ecom-reset" onClick={resetFilters}>
+                        Reset
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="ecom-results" role="status" aria-live="polite">
+                    <span>
+                      <strong>{filtered.length}</strong> result{filtered.length === 1 ? "" : "s"}
+                    </span>
+                    <span className="ecom-results-label">{resultsLabel}</span>
+                  </div>
+                </section>
+
+                {/* Products */}
+                <section aria-label="Product results">
+                  <div className="ecom-products-head">
+                    <h2 id="ecom-products">Products</h2>
+                  </div>
+
+                  {filtered.length === 0 ? (
+                    <div className="feature ecom-empty" role="region" aria-label="No results">
+                      <h3>No matches</h3>
+                      <p>Try resetting filters or broadening your search.</p>
+                      <button type="button" className="hero-btn" onClick={resetFilters}>
+                        Reset filters
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="ecom-grid" role="list">
+                      {filtered.map((p) => {
+                        const id = String(p.id);
+                        const img = getPrimaryImage(p);
+
+                        return (
+                          <article key={id} className="ecom-card" role="listitem">
+                            <button
+                              type="button"
+                              className="ecom-media"
+                              onClick={() => openQuickView(id)}
+                              aria-label={`Open quick view for ${p.name}`}
+                            >
+                              <img src={img} alt={p.name} loading="lazy" />
+                            </button>
+
+                            <div className="ecom-body">
+                              <h3 className="ecom-title">{p.name}</h3>
+                              <p className="ecom-meta">
+                                <span>{p.category}</span> <span aria-hidden="true">·</span>{" "}
+                                <span className="ecom-price">{formatUSD(Number(p.price))}</span>
+                              </p>
+
+                              {p.description ? <p className="ecom-desc">{p.description}</p> : null}
+
+                              <div className="ecom-actions">
+                                <button
+                                  type="button"
+                                  className="hero-btn ecom-add"
+                                  onClick={() => addToCart(id, p.name)}
+                                >
+                                  Add to cart
+                                </button>
+
+                                {/* calmer than a second text link */}
+                                <button
+                                  type="button"
+                                  className="ecom-quick"
+                                  onClick={() => openQuickView(id)}
+                                  aria-label={`Quick view: ${p.name}`}
+                                >
+                                  👁
+                                </button>
+                              </div>
+                            </div>
+                          </article>
+                        );
+                      })}
+                    </div>
+                  )}
+                </section>
               </div>
-            )}
-          </section>
+            </div>
+          )}
         </div>
       </section>
 
-      {/* Case study body (normal width) */}
+      {/* Case study body (stays calm; not mixed into the demo) */}
       <section id="ecom-case-study" className="ecom-caseStudy" aria-label="Case study">
         <div className="ecom-narrow">
           <h2>Case Study</h2>
@@ -707,10 +651,10 @@ export default function Ecommerce() {
             <section className="feature">
               <h3>Design goals</h3>
               <ul className="ecom-bullets">
-                <li>Keep discovery fast: search, filters, and sorting should feel immediate</li>
-                <li>Reduce uncertainty: quick view offers details without losing position</li>
-                <li>Make cart management low-friction: drawer pattern with clear totals</li>
-                <li>Ship accessible defaults: focus behavior, announcements, ESC support</li>
+                <li>Fast discovery: search, filters, and sorting feel immediate</li>
+                <li>Reduce uncertainty: quick view shows details without losing context</li>
+                <li>Low-friction cart edits: drawer pattern supports quick adjustments</li>
+                <li>Accessible defaults: focus, announcements, and ESC behavior are consistent</li>
               </ul>
             </section>
 
@@ -718,16 +662,16 @@ export default function Ecommerce() {
               <h3>Key UX decisions</h3>
               <ul className="ecom-bullets">
                 <li>
-                  <strong>Sticky section switcher</strong> so the demo doesn’t feel like it “takes over” the case study.
+                  <strong>Demo is opt-in</strong> via toggle, so the page reads calm by default.
                 </li>
                 <li>
-                  <strong>Quick View on image click</strong> to preserve browsing flow and reduce page churn.
+                  <strong>Cart lives in the demo header</strong>, not the portfolio hero.
                 </li>
                 <li>
-                  <strong>Cart as a drawer</strong> to enable quick edits while keeping product context available.
+                  <strong>One primary CTA</strong> per product card (Add to cart); quick view is subtle.
                 </li>
                 <li>
-                  <strong>Readable hierarchy</strong>: primary CTA (Add to cart) + secondary action (Quick view).
+                  <strong>Predictable keyboard flows</strong> across dialog/drawer interactions.
                 </li>
               </ul>
             </section>
@@ -735,83 +679,85 @@ export default function Ecommerce() {
             <section className="feature">
               <h3>Accessibility patterns</h3>
               <ul className="ecom-bullets">
-                <li>Quick view supports ESC to close + restores focus to the trigger</li>
-                <li>Cart drawer supports ESC + backdrop click + focus trap for keyboard users</li>
-                <li>Live region announcements for add/remove/clear events</li>
-                <li>Skip link to storefront demo for fast navigation</li>
+                <li>Quick view supports ESC to close + restores focus</li>
+                <li>Cart drawer supports ESC + backdrop click + focus trap</li>
+                <li>Live region announcements for add/remove/clear</li>
+                <li>Skip link to reach the demo quickly</li>
               </ul>
             </section>
 
             <section className="feature">
-              <h3>Tradeoffs & constraints</h3>
+              <h3>Constraints</h3>
               <ul className="ecom-bullets">
                 <li>Static product data (no API) keeps focus on interaction patterns</li>
-                <li>Demo checkout: totals are realistic, but payment isn’t implemented</li>
+                <li>Demo checkout: realistic totals, no payments</li>
                 <li>localStorage persistence mirrors real cart “return” behavior</li>
               </ul>
             </section>
 
             <section className="feature ecom-next">
-              <h3>What I’d do next</h3>
+              <h3>Next steps</h3>
               <ul className="ecom-bullets">
-                <li>Usability testing: validate filter comprehension + quick view usefulness</li>
-                <li>Accessibility audit: heading structure, contrast, SR behavior across devices</li>
-                <li>Performance: image sizing, lazy-loading strategy, and memoization review</li>
-                <li>Analytics: track filter usage, quick view opens, add-to-cart conversion</li>
+                <li>Usability testing: validate filters + quick view usefulness</li>
+                <li>Cross-device SR audit (NVDA/JAWS/VoiceOver)</li>
+                <li>Performance: image sizing + loading strategy</li>
+                <li>Analytics instrumentation for the key events</li>
               </ul>
             </section>
           </div>
         </div>
       </section>
 
-      {/* Quick View Dialog */}
-      <dialog
-        ref={dialogRef}
-        className="ecom-dialog"
-        aria-label="Product quick view"
-        onClose={() => setActiveId(null)}
-      >
-        <div className="ecom-dialog-inner">
-          <div className="ecom-dialog-head">
-            <h2 className="ecom-dialog-title">{activeProduct?.name ?? "Product"}</h2>
-            <button type="button" className="ecom-icon-btn" onClick={closeQuickView} aria-label="Close quick view">
-              ✕
-            </button>
-          </div>
+      {/* Quick View Dialog (only mounted when demo is open, to keep page calm) */}
+      {demoOpen ? (
+        <dialog
+          ref={dialogRef}
+          className="ecom-dialog"
+          aria-label="Product quick view"
+          onClose={() => setActiveId(null)}
+        >
+          <div className="ecom-dialog-inner">
+            <div className="ecom-dialog-head">
+              <h2 className="ecom-dialog-title">{activeProduct?.name ?? "Product"}</h2>
+              <button type="button" className="ecom-icon-btn" onClick={closeQuickView} aria-label="Close quick view">
+                ✕
+              </button>
+            </div>
 
-          {activeProduct ? (
-            <div className="ecom-dialog-body">
-              <div className="ecom-dialog-media">
-                <img src={getPrimaryImage(activeProduct)} alt={activeProduct.name} />
-              </div>
+            {activeProduct ? (
+              <div className="ecom-dialog-body">
+                <div className="ecom-dialog-media">
+                  <img src={getPrimaryImage(activeProduct)} alt={activeProduct.name} />
+                </div>
 
-              <div className="ecom-dialog-details">
-                <p className="ecom-dialog-price">{formatUSD(Number(activeProduct.price))}</p>
-                <p className="ecom-dialog-cat">{activeProduct.category}</p>
-                {activeProduct.description ? <p className="ecom-dialog-desc">{activeProduct.description}</p> : null}
+                <div className="ecom-dialog-details">
+                  <p className="ecom-dialog-price">{formatUSD(Number(activeProduct.price))}</p>
+                  <p className="ecom-dialog-cat">{activeProduct.category}</p>
+                  {activeProduct.description ? <p className="ecom-dialog-desc">{activeProduct.description}</p> : null}
 
-                <div className="ecom-dialog-actions">
-                  <button
-                    type="button"
-                    className="hero-btn"
-                    onClick={() => addToCart(String(activeProduct.id), activeProduct.name)}
-                  >
-                    Add to cart
-                  </button>
-                  <button type="button" className="ecom-link" onClick={closeQuickView}>
-                    Continue browsing
-                  </button>
+                  <div className="ecom-dialog-actions">
+                    <button
+                      type="button"
+                      className="hero-btn"
+                      onClick={() => addToCart(String(activeProduct.id), activeProduct.name)}
+                    >
+                      Add to cart
+                    </button>
+                    <button type="button" className="ecom-link" onClick={closeQuickView}>
+                      Continue browsing
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ) : (
-            <p>Loading…</p>
-          )}
-        </div>
-      </dialog>
+            ) : (
+              <p>Loading…</p>
+            )}
+          </div>
+        </dialog>
+      ) : null}
 
-      {/* Cart Drawer */}
-      {cartOpen ? (
+      {/* Cart Drawer (only when demo is open) */}
+      {demoOpen && cartOpen ? (
         <div className="ecom-drawer-root" role="presentation">
           <button className="ecom-backdrop" aria-label="Close cart" onClick={closeCart} />
           <aside
