@@ -9,12 +9,11 @@ type ProductLike = Product & {
 
 type CartItem = { productId: string; qty: number };
 
-const CART_KEY = "ecommerce-demo-cart-v2";
+const CART_KEY = "ecommerce-demo-cart-v3";
 
 // If you deploy just the storefront/demo somewhere, drop it here.
-// Example: const DEMO_URL = "https://yourdomain.com/#/case-study/ecommerce-demo";
-const DEMO_URL: string | null = "https://your-live-demo-url.com";
-
+// If null, we show a lightweight preview instead of embedding an iframe.
+const DEMO_URL: string | null = null;
 
 function formatUSD(n: number) {
   return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(n);
@@ -22,6 +21,52 @@ function formatUSD(n: number) {
 
 function clamp(n: number, min: number, max: number) {
   return Math.max(min, Math.min(max, n));
+}
+
+function safeLocalStorageGet(key: string) {
+  try {
+    return window.localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+function safeLocalStorageSet(key: string, value: string) {
+  try {
+    window.localStorage.setItem(key, value);
+  } catch {
+    // ignore
+  }
+}
+
+function prefersReducedMotion() {
+  if (typeof window === "undefined" || !window.matchMedia) return false;
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function useLiveAnnouncer() {
+  const [liveMessage, setLiveMessage] = useState("");
+  const liveTimer = useRef<number | null>(null);
+
+  const announce = useCallback((msg: string) => {
+    // Clear then set (helps some SRs re-announce the same text)
+    setLiveMessage("");
+    window.requestAnimationFrame(() => setLiveMessage(msg));
+
+    if (liveTimer.current) window.clearTimeout(liveTimer.current);
+    liveTimer.current = window.setTimeout(() => setLiveMessage(""), 1400);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (liveTimer.current) window.clearTimeout(liveTimer.current);
+    };
+  }, []);
+
+  return { liveMessage, announce };
+}
+
+function getPrimaryImage(p: any) {
+  return p?.images?.[0] ?? p?.image ?? "";
 }
 
 export default function Ecommerce() {
@@ -56,7 +101,7 @@ export default function Ecommerce() {
 
   // Cart (localStorage)
   const [cart, setCart] = useState<CartItem[]>(() => {
-    const saved = localStorage.getItem(CART_KEY);
+    const saved = safeLocalStorageGet(CART_KEY);
     if (!saved) return [];
     try {
       const parsed = JSON.parse(saved) as CartItem[];
@@ -70,7 +115,7 @@ export default function Ecommerce() {
   });
 
   useEffect(() => {
-    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    safeLocalStorageSet(CART_KEY, JSON.stringify(cart));
   }, [cart]);
 
   const productById = useMemo(() => {
@@ -98,15 +143,9 @@ export default function Ecommerce() {
   const total = subtotal + shipping + tax;
 
   // Accessible announcements
-  const [liveMessage, setLiveMessage] = useState("");
-  const liveTimer = useRef<number | null>(null);
-  function announce(msg: string) {
-    setLiveMessage(msg);
-    if (liveTimer.current) window.clearTimeout(liveTimer.current);
-    liveTimer.current = window.setTimeout(() => setLiveMessage(""), 1200);
-  }
+  const { liveMessage, announce } = useLiveAnnouncer();
 
-  function addToCart(productId: string) {
+  function addToCart(productId: string, name?: string) {
     setCart((prev) => {
       const idx = prev.findIndex((x) => x.productId === productId);
       if (idx === -1) return [...prev, { productId, qty: 1 }];
@@ -114,20 +153,21 @@ export default function Ecommerce() {
       next[idx] = { ...next[idx], qty: clamp(next[idx].qty + 1, 1, 999) };
       return next;
     });
-    announce("Added to cart.");
+    announce(name ? `${name} added to cart.` : "Added to cart.");
   }
 
-  function setQty(productId: string, qty: number) {
+  function setQty(productId: string, qty: number, name?: string) {
     const nextQty = clamp(Math.floor(qty), 0, 999);
     setCart((prev) => {
       if (nextQty <= 0) return prev.filter((x) => x.productId !== productId);
       return prev.map((x) => (x.productId === productId ? { ...x, qty: nextQty } : x));
     });
+    if (nextQty <= 0) announce(name ? `${name} removed from cart.` : "Removed from cart.");
   }
 
-  function removeFromCart(productId: string) {
+  function removeFromCart(productId: string, name?: string) {
     setCart((prev) => prev.filter((x) => x.productId !== productId));
-    announce("Removed from cart.");
+    announce(name ? `${name} removed from cart.` : "Removed from cart.");
   }
 
   function clearCart() {
@@ -173,6 +213,14 @@ export default function Ecommerce() {
     return list;
   }, [allProducts, category, minPrice, maxPrice, query, sort]);
 
+  const resultsLabel = useMemo(() => {
+    const parts: string[] = [];
+    if (category !== "All") parts.push(category);
+    if (query.trim()) parts.push(`“${query.trim()}”`);
+    parts.push(`${formatUSD(minPrice)}–${formatUSD(maxPrice)}`);
+    return parts.join(" · ");
+  }, [category, query, minPrice, maxPrice]);
+
   // Quick View (dialog)
   const dialogRef = useRef<HTMLDialogElement | null>(null);
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -186,6 +234,7 @@ export default function Ecommerce() {
   function openQuickView(productId: string) {
     lastFocus.current = document.activeElement as HTMLElement | null;
     setActiveId(productId);
+
     window.requestAnimationFrame(() => {
       dialogRef.current?.showModal();
       window.requestAnimationFrame(() => {
@@ -209,6 +258,7 @@ export default function Ecommerce() {
     if (!dlg) return;
 
     const onCancel = (e: Event) => {
+      // ESC key
       e.preventDefault();
       closeQuickView();
     };
@@ -287,14 +337,6 @@ export default function Ecommerce() {
     announce("Filters reset.");
   }
 
-  const resultsLabel = useMemo(() => {
-    const parts: string[] = [];
-    if (category !== "All") parts.push(category);
-    if (query.trim()) parts.push(`“${query.trim()}”`);
-    parts.push(`${formatUSD(minPrice)}–${formatUSD(maxPrice)}`);
-    return parts.join(" · ");
-  }, [category, query, minPrice, maxPrice]);
-
   // Demo Drawer behavior: scroll into view when opened
   const demoDetailsRef = useRef<HTMLDetailsElement | null>(null);
   useEffect(() => {
@@ -302,7 +344,12 @@ export default function Ecommerce() {
     if (!el) return;
 
     const onToggle = () => {
-      if (el.open) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (!el.open) return;
+      if (prefersReducedMotion()) {
+        el.scrollIntoView({ behavior: "auto", block: "start" });
+      } else {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     };
 
     el.addEventListener("toggle", onToggle);
@@ -310,10 +357,10 @@ export default function Ecommerce() {
   }, []);
 
   return (
-    <main className="case-study ecommerce-cs" aria-label="E-Commerce Platform Case Study">
+    <main className="case-study ecommerce-cs" aria-label="E-Commerce Storefront + Accessibility Case Study">
       {/* a11y helpers */}
       <a href="#ecom-storefront" className="sr-only-focusable">
-        Skip to storefront
+        Skip to storefront demo
       </a>
       <div aria-live="polite" aria-atomic="true" className="sr-only">
         {liveMessage}
@@ -323,25 +370,51 @@ export default function Ecommerce() {
       <header className="cs-header ecommerce-header">
         <div className="ecom-header-row">
           <div className="ecom-header-copy">
-            <h1>E-Commerce Platform</h1>
-            <p className="meta">Personal project · Layout + features · Accessible interactions</p>
+            <h1>E-Commerce Storefront</h1>
+            <p className="meta">Personal project · Interaction design + UI engineering · Accessibility-first</p>
 
             <p className="intro">
-              A storefront demo focused on product discovery and purchase confidence: filtering, quick view, and a cart
-              drawer with keyboard + screen-reader support.
+              Designed and built a premium-feeling storefront demo where core shopping flows work smoothly for{" "}
+              <strong>keyboard</strong> and <strong>screen reader</strong> users: filters, quick view, and a cart drawer.
             </p>
 
             <div className="ecom-overview">
               <div className="feature ecom-overview-card">
-                <h2>Project Summary</h2>
+                <h2>Problem</h2>
                 <p>
-                  Built a static storefront demo with filtering, a quick view modal, and a cart drawer—designed to feel
-                  premium and function accessibly.
+                  E-commerce UIs often add friction for non-mouse users. The goal was to build a polished storefront
+                  pattern set that stays usable under real accessibility constraints (focus, announcements, ESC,
+                  predictable navigation).
                 </p>
               </div>
+
               <div className="feature ecom-overview-card">
-                <h2>Focus</h2>
-                <p>Information hierarchy, polished layouts, and accessible UI patterns (focus, announcements, ESC).</p>
+                <h2>What I built</h2>
+                <ul className="ecom-bullets">
+                  <li>Product discovery: search, category, price range, sorting</li>
+                  <li>Quick View dialog with focus management + ESC</li>
+                  <li>Cart drawer with focus trap, keyboard quantity controls, totals</li>
+                  <li>Live region announcements for key cart changes</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="ecom-kpis" aria-label="Project constraints and notes">
+              <div className="ecom-kpi">
+                <div className="ecom-kpi__label">Data</div>
+                <div className="ecom-kpi__value">Local TypeScript</div>
+              </div>
+              <div className="ecom-kpi">
+                <div className="ecom-kpi__label">Cart</div>
+                <div className="ecom-kpi__value">localStorage</div>
+              </div>
+              <div className="ecom-kpi">
+                <div className="ecom-kpi__label">Checkout</div>
+                <div className="ecom-kpi__value">Demo-only</div>
+              </div>
+              <div className="ecom-kpi">
+                <div className="ecom-kpi__label">A11y</div>
+                <div className="ecom-kpi__value">Keyboard + SR</div>
               </div>
             </div>
 
@@ -351,7 +424,7 @@ export default function Ecommerce() {
                 <summary className="demo-summary">
                   <span className="demo-summary__title">View interactive demo</span>
                   <span className="demo-summary__hint">
-                    {DEMO_URL ? "Opens an embedded demo" : "Reveals a quick demo overview"}
+                    {DEMO_URL ? "Opens an embedded demo" : "Preview the flows + jump to the storefront"}
                   </span>
                   <span className="demo-summary__icon" aria-hidden="true">
                     ⌄
@@ -361,9 +434,10 @@ export default function Ecommerce() {
                 <div className="demo-panel">
                   <div className="demo-panel__inner">
                     <div className="demo-panel__header">
-                      <h3 className="demo-panel__title">Interactive Demo</h3>
+                      <h3 className="demo-panel__title">Demo focus</h3>
                       <p className="demo-panel__sub">
-                        Explore the layout, accessible patterns, and key flows (filters, quick view, cart drawer).
+                        This is a UI/UX + accessibility demo (not a full commerce stack). The goal is clean interaction
+                        design under real constraints.
                       </p>
                     </div>
 
@@ -376,18 +450,24 @@ export default function Ecommerce() {
                         <div className="demo-preview__grid">
                           <div className="demo-preview__card">
                             <div className="demo-preview__kicker">Discovery</div>
-                            <div className="demo-preview__title">PLP filters + sorting</div>
-                            <p className="demo-preview__desc">Search, category, and price range designed to be fast.</p>
+                            <div className="demo-preview__title">Filters + sorting</div>
+                            <p className="demo-preview__desc">
+                              Clear hierarchy, keyboard-friendly controls, live result counts.
+                            </p>
                           </div>
                           <div className="demo-preview__card">
                             <div className="demo-preview__kicker">Confidence</div>
-                            <div className="demo-preview__title">Quick View modal</div>
-                            <p className="demo-preview__desc">ESC to close, focus restored, clean hierarchy.</p>
+                            <div className="demo-preview__title">Quick View dialog</div>
+                            <p className="demo-preview__desc">
+                              ESC to close, focus restored, primary action kept obvious.
+                            </p>
                           </div>
                           <div className="demo-preview__card">
-                            <div className="demo-preview__kicker">Checkout</div>
-                            <div className="demo-preview__title">Cart drawer</div>
-                            <p className="demo-preview__desc">Focus trap + keyboard quantity controls + totals.</p>
+                            <div className="demo-preview__kicker">Cart</div>
+                            <div className="demo-preview__title">Drawer checkout pattern</div>
+                            <p className="demo-preview__desc">
+                              Focus trap, qty controls, totals, SR announcements.
+                            </p>
                           </div>
                         </div>
                         <div className="demo-panel__footer">
@@ -423,6 +503,10 @@ export default function Ecommerce() {
             >
               Cart <span aria-hidden="true">·</span> <span aria-label={`${cartCount} items`}>{cartCount}</span>
             </button>
+
+            <div className="ecom-header-note" role="note" aria-label="Demo note">
+              Static demo · No payments processed
+            </div>
           </div>
         </div>
       </header>
@@ -430,10 +514,10 @@ export default function Ecommerce() {
       {/* Switcher */}
       <nav className="ecom-switcher" aria-label="Page sections">
         <a className="ecom-switcher-btn" href="#ecom-storefront">
-          Storefront
+          Storefront demo
         </a>
         <a className="ecom-switcher-btn" href="#ecom-case-study">
-          Case Study
+          Case study
         </a>
       </nav>
 
@@ -443,7 +527,7 @@ export default function Ecommerce() {
           {/* Storefront Head */}
           <div className="ecom-storefront-head">
             <div>
-              <div className="ecom-band-title">Storefront</div>
+              <div className="ecom-band-title">Storefront demo</div>
               <div className="ecom-band-subtitle">Filters · Quick View · Cart Drawer</div>
             </div>
           </div>
@@ -451,7 +535,7 @@ export default function Ecommerce() {
           {/* Demo Note */}
           <div className="highlight ecom-highlight" role="note" aria-label="Demo note">
             This is a <strong>static demo</strong>. Products are stored in local TypeScript data. Cart persists via{" "}
-            <strong>localStorage</strong> (no payment processed).
+            <strong>localStorage</strong>. Checkout is demo-only (no payment processed).
           </div>
 
           {/* Controls */}
@@ -570,7 +654,7 @@ export default function Ecommerce() {
               <div className="ecom-grid" role="list">
                 {filtered.map((p) => {
                   const id = String(p.id);
-                  const img = p.images?.[0] ?? (p as any).image;
+                  const img = getPrimaryImage(p);
 
                   return (
                     <article key={id} className="ecom-card" role="listitem">
@@ -578,7 +662,7 @@ export default function Ecommerce() {
                         type="button"
                         className="ecom-media"
                         onClick={() => openQuickView(id)}
-                        aria-label={`Quick view: ${p.name}`}
+                        aria-label={`Open quick view for ${p.name}`}
                       >
                         <img src={img} alt={p.name} loading="lazy" />
                       </button>
@@ -589,10 +673,15 @@ export default function Ecommerce() {
                           <span>{p.category}</span> <span aria-hidden="true">·</span>{" "}
                           <span className="ecom-price">{formatUSD(Number(p.price))}</span>
                         </p>
+
                         {p.description ? <p className="ecom-desc">{p.description}</p> : null}
 
                         <div className="ecom-actions">
-                          <button type="button" className="hero-btn ecom-add" onClick={() => addToCart(id)}>
+                          <button
+                            type="button"
+                            className="hero-btn ecom-add"
+                            onClick={() => addToCart(id, p.name)}
+                          >
                             Add to cart
                           </button>
                           <button type="button" className="ecom-link" onClick={() => openQuickView(id)}>
@@ -614,18 +703,64 @@ export default function Ecommerce() {
         <div className="ecom-narrow">
           <h2>Case Study</h2>
 
-          <section>
-            <h3>Implementation Notes</h3>
-            <div className="feature">
-              <h4>Accessibility + UX</h4>
-              <ul>
-                <li>Keyboard-friendly filters and cart drawer focus trapping.</li>
-                <li>Screen reader announcements for add/remove actions.</li>
-                <li>Quick view modal supports ESC to close + restores focus.</li>
-                <li>Cart drawer supports ESC + backdrop click to close.</li>
+          <div className="ecom-case-grid">
+            <section className="feature">
+              <h3>Design goals</h3>
+              <ul className="ecom-bullets">
+                <li>Keep discovery fast: search, filters, and sorting should feel immediate</li>
+                <li>Reduce uncertainty: quick view offers details without losing position</li>
+                <li>Make cart management low-friction: drawer pattern with clear totals</li>
+                <li>Ship accessible defaults: focus behavior, announcements, ESC support</li>
               </ul>
-            </div>
-          </section>
+            </section>
+
+            <section className="feature">
+              <h3>Key UX decisions</h3>
+              <ul className="ecom-bullets">
+                <li>
+                  <strong>Sticky section switcher</strong> so the demo doesn’t feel like it “takes over” the case study.
+                </li>
+                <li>
+                  <strong>Quick View on image click</strong> to preserve browsing flow and reduce page churn.
+                </li>
+                <li>
+                  <strong>Cart as a drawer</strong> to enable quick edits while keeping product context available.
+                </li>
+                <li>
+                  <strong>Readable hierarchy</strong>: primary CTA (Add to cart) + secondary action (Quick view).
+                </li>
+              </ul>
+            </section>
+
+            <section className="feature">
+              <h3>Accessibility patterns</h3>
+              <ul className="ecom-bullets">
+                <li>Quick view supports ESC to close + restores focus to the trigger</li>
+                <li>Cart drawer supports ESC + backdrop click + focus trap for keyboard users</li>
+                <li>Live region announcements for add/remove/clear events</li>
+                <li>Skip link to storefront demo for fast navigation</li>
+              </ul>
+            </section>
+
+            <section className="feature">
+              <h3>Tradeoffs & constraints</h3>
+              <ul className="ecom-bullets">
+                <li>Static product data (no API) keeps focus on interaction patterns</li>
+                <li>Demo checkout: totals are realistic, but payment isn’t implemented</li>
+                <li>localStorage persistence mirrors real cart “return” behavior</li>
+              </ul>
+            </section>
+
+            <section className="feature ecom-next">
+              <h3>What I’d do next</h3>
+              <ul className="ecom-bullets">
+                <li>Usability testing: validate filter comprehension + quick view usefulness</li>
+                <li>Accessibility audit: heading structure, contrast, SR behavior across devices</li>
+                <li>Performance: image sizing, lazy-loading strategy, and memoization review</li>
+                <li>Analytics: track filter usage, quick view opens, add-to-cart conversion</li>
+              </ul>
+            </section>
+          </div>
         </div>
       </section>
 
@@ -647,7 +782,7 @@ export default function Ecommerce() {
           {activeProduct ? (
             <div className="ecom-dialog-body">
               <div className="ecom-dialog-media">
-                <img src={activeProduct.images?.[0] ?? (activeProduct as any).image} alt={activeProduct.name} />
+                <img src={getPrimaryImage(activeProduct)} alt={activeProduct.name} />
               </div>
 
               <div className="ecom-dialog-details">
@@ -656,7 +791,11 @@ export default function Ecommerce() {
                 {activeProduct.description ? <p className="ecom-dialog-desc">{activeProduct.description}</p> : null}
 
                 <div className="ecom-dialog-actions">
-                  <button type="button" className="hero-btn" onClick={() => addToCart(String(activeProduct.id))}>
+                  <button
+                    type="button"
+                    className="hero-btn"
+                    onClick={() => addToCart(String(activeProduct.id), activeProduct.name)}
+                  >
                     Add to cart
                   </button>
                   <button type="button" className="ecom-link" onClick={closeQuickView}>
@@ -704,6 +843,7 @@ export default function Ecommerce() {
                   {cartLines.map(({ product, qty }) => {
                     const id = String(product.id);
                     const price = Number(product.price);
+
                     return (
                       <li key={id} className="ecom-cart-item">
                         <div className="ecom-cart-main">
@@ -716,7 +856,7 @@ export default function Ecommerce() {
                             <button
                               type="button"
                               className="ecom-qty-btn"
-                              onClick={() => setQty(id, qty - 1)}
+                              onClick={() => setQty(id, qty - 1, product.name)}
                               aria-label={`Decrease quantity for ${product.name}`}
                             >
                               −
@@ -728,7 +868,7 @@ export default function Ecommerce() {
                               min={0}
                               max={999}
                               value={qty}
-                              onChange={(e) => setQty(id, Number(e.target.value))}
+                              onChange={(e) => setQty(id, Number(e.target.value), product.name)}
                               aria-label={`Quantity for ${product.name}`}
                               inputMode="numeric"
                             />
@@ -736,7 +876,7 @@ export default function Ecommerce() {
                             <button
                               type="button"
                               className="ecom-qty-btn"
-                              onClick={() => setQty(id, qty + 1)}
+                              onClick={() => setQty(id, qty + 1, product.name)}
                               aria-label={`Increase quantity for ${product.name}`}
                             >
                               +
@@ -745,7 +885,7 @@ export default function Ecommerce() {
                             <button
                               type="button"
                               className="ecom-link ecom-remove"
-                              onClick={() => removeFromCart(id)}
+                              onClick={() => removeFromCart(id, product.name)}
                               aria-label={`Remove ${product.name} from cart`}
                             >
                               Remove
