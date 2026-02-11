@@ -1671,3 +1671,226 @@ footer p{color: var(--muted);font-size:.9rem;font-weight:600;}
   .about-hobbies{ grid-template-columns: 1fr; }
   .chapter-heading{ font-size: 1.8rem; }
 }
+
+/* =========================
+   REINA (scoped to section)
+   Uses your GLOBAL tokens:
+   --bg --fg --muted --card --border
+   --olive-1 --olive-2 --olive-3
+   --shadow-sm --shadow-md --shadow-olive
+   ========================= */
+
+.projects.reina{
+  /* Map “Reina palette” to your existing tokens */
+  --reina-olive-primary: var(--olive-2);
+  --reina-olive-dark: var(--olive-3);
+  --reina-olive-light: color-mix(in srgb, var(--olive-2) 14%, var(--bg));
+  --reina-peach: color-mix(in srgb, #F4E5D9 72%, var(--bg));
+  --reina-cream: var(--bg);
+  --reina-charcoal: var(--fg);
+  --reina-warm-gray: var(--muted);
+}
+
+/* Hero block */
+.reina__hero{
+  margin-top: 1.25rem;
+  padding: 2.75rem 2.25rem;
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at 18% 35%, color-mix(in srgb, var(--olive-2) 18%, transparent), transparent 60%),
+    linear-gradient(135deg, var(--reina-olive-light) 0%, var(--reina-peach) 100%);
+  border: 1px solid color-mix(in srgb, var(--reina-olive-primary) 18%, transparent);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.dark-mode .reina__hero{
+  background:
+    radial-gradient(circle at 18% 35%, color-mix(in srgb, var(--focus) 18%, transparent), transparent 60%),
+    linear-gradient(135deg,
+      color-mix(in srgb, var(--bg) 92%, var(--focus)),
+      color-mix(in srgb, var(--bg) 88%, #F4E5D9)
+    );
+  border-color: rgba(255,255,255,0.10);
+}
+
+/* Big glow orb like your HTML */
+.reina__hero::before{
+  content:"";
+  position:absolute;
+  top:-55%;
+  right:-25%;
+  width: 620px;
+  height: 620px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--reina-olive-primary) 18%, transparent) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.reina__tag{
+  position: relative;
+  z-index: 1;
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  background: color-mix(in srgb, var(--bg) 70%, transparent);
+  border: 1px solid color-mix(in srgb, var(--reina-olive-primary) 18%, transparent);
+  padding: .55rem 1.05rem;
+  border-radius: 999px;
+  font-size: .85rem;
+  font-weight: 900;
+  letter-spacing: .02em;
+  color: var(--reina-olive-dark);
+  box-shadow: var(--shadow-sm);
+}
+
+.dark-mode .reina__tag{
+  background: rgba(15,15,15,0.65);
+  color: var(--fg);
+  border-color: rgba(255,255,255,0.12);
+}
+
+.reina__heroRow{
+  position: relative;
+  z-index: 1;
+  margin-top: 1rem;
+  display:flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.reina__title{
+  /* Your global section title already has gradient,
+     so this just tightens the “Reina” word */
+  letter-spacing: -0.02em;
+}
+
+/* Lead text */
+.reina__lead{
+  position: relative;
+  z-index: 1;
+  margin-top: .85rem;
+  max-width: 72ch;
+  font-size: 1.05rem;
+  color: color-mix(in srgb, var(--fg) 80%, transparent);
+  line-height: 1.75;
+}
+
+.reina__muted{
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* CTA buttons — reuse your hero button language */
+.reina__cta,
+.reina__bottomCta{
+  position: relative;
+  z-index: 1;
+  border: none;
+  cursor: pointer;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .10em;
+  color: #fff;
+  background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 100%);
+  padding: .9rem 1.15rem;
+  border-radius: 999px;
+  box-shadow: var(--shadow-olive);
+  transition: transform .25s cubic-bezier(.4,0,.2,1), box-shadow .25s cubic-bezier(.4,0,.2,1);
+}
+
+.reina__cta:hover,
+.reina__bottomCta:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(107,142,35,0.30);
+}
+
+.dark-mode .reina__cta,
+.dark-mode .reina__bottomCta{
+  background: linear-gradient(135deg, var(--focus) 0%, color-mix(in srgb, var(--focus) 72%, #fff) 100%);
+}
+
+/* Bottom CTA full width */
+.reina__bottomCta{
+  width:100%;
+  margin-top: 1.25rem;
+}
+
+/* Stats row */
+.reina__stats{
+  position: relative;
+  z-index: 1;
+  display:flex;
+  gap: 14px;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.reina__stat{
+  min-width: 180px;
+  padding: 0.9rem 1rem;
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  border: 1px solid color-mix(in srgb, var(--reina-olive-primary) 16%, transparent);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-sm);
+}
+
+.dark-mode .reina__stat{
+  background: rgba(15,15,15,0.60);
+  border-color: rgba(255,255,255,0.12);
+}
+
+.reina__statLabel{
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--muted);
+  font-weight: 900;
+  margin-bottom: .25rem;
+}
+
+.reina__statValue{
+  font-size: 0.98rem;
+  color: var(--fg);
+  font-weight: 800;
+}
+
+/* Blend your existing “project-card” with Reina palette */
+.reina__featureCard{
+  margin-top: 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--olive-2) 18%, var(--border));
+  box-shadow: var(--shadow-md);
+}
+
+.reina__featureCard:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.14);
+}
+
+/* Optional: make the Reina image card feel more “premium” */
+.reina__imageWrap{
+  border-radius: 24px;
+  border: 1px solid color-mix(in srgb, var(--olive-2) 18%, var(--border));
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  background: color-mix(in srgb, var(--card) 90%, transparent);
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .reina__hero{
+    padding: 2.25rem 1.5rem;
+  }
+
+  .reina__heroRow{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .reina__cta{
+    width: auto;
+  }
+}

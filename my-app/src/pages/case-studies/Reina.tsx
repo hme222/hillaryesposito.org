@@ -21,9 +21,45 @@ export default function ReinaSection() {
 
   return (
     <section id="reina" className="projects reina">
-      <h2 className="section-title">Reina</h2>
+      {/* Hero-style header from the HTML version */}
+      <header className="reina__hero page-width">
+        <div className="reina__tag" aria-label="Featured Concept">
+          <span aria-hidden="true">👑</span>
+          <span>Featured Concept</span>
+        </div>
 
-      {/* Featured intro card (reuses your project card system) */}
+        <div className="reina__heroRow">
+          <h2 className="section-title reina__title">Reina</h2>
+
+          <button type="button" className="reina__cta" onClick={goToCaseStudy} aria-label="Open Reina case study">
+            View case study →
+          </button>
+        </div>
+
+        <p className="reina__lead">
+          Helping couples discover and schedule international wedding venues with confidence.{" "}
+          <span className="reina__muted">
+            A self-directed concept app designed to reduce stress and add clarity to destination wedding planning.
+          </span>
+        </p>
+
+        <div className="reina__stats" role="list" aria-label="Reina project stats">
+          <div className="reina__stat" role="listitem">
+            <div className="reina__statLabel">Role</div>
+            <div className="reina__statValue">UX Designer & Researcher</div>
+          </div>
+          <div className="reina__stat" role="listitem">
+            <div className="reina__statLabel">Timeline</div>
+            <div className="reina__statValue">Self-Directed Project</div>
+          </div>
+          <div className="reina__stat" role="listitem">
+            <div className="reina__statLabel">Type</div>
+            <div className="reina__statValue">Mobile App Concept</div>
+          </div>
+        </div>
+      </header>
+
+      {/* Featured intro card (kept) */}
       <div
         className="project-card reina__featureCard page-width"
         role="button"
@@ -65,21 +101,11 @@ export default function ReinaSection() {
               loading="lazy"
             />
 
-            <span className="reina__badge reina__badge--1" aria-hidden="true">
-              1
-            </span>
-            <span className="reina__badge reina__badge--2" aria-hidden="true">
-              2
-            </span>
-            <span className="reina__badge reina__badge--3" aria-hidden="true">
-              3
-            </span>
-            <span className="reina__badge reina__badge--4" aria-hidden="true">
-              4
-            </span>
-            <span className="reina__badge reina__badge--5" aria-hidden="true">
-              5
-            </span>
+            <span className="reina__badge reina__badge--1" aria-hidden="true">1</span>
+            <span className="reina__badge reina__badge--2" aria-hidden="true">2</span>
+            <span className="reina__badge reina__badge--3" aria-hidden="true">3</span>
+            <span className="reina__badge reina__badge--4" aria-hidden="true">4</span>
+            <span className="reina__badge reina__badge--5" aria-hidden="true">5</span>
           </div>
 
           <figcaption className="reina__caption">
@@ -137,6 +163,10 @@ export default function ReinaSection() {
               </ul>
             </div>
           </div>
+
+          <button type="button" className="reina__bottomCta" onClick={goToCaseStudy}>
+            Open the full Reina case study →
+          </button>
         </aside>
       </div>
     </section>
