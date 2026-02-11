@@ -59,30 +59,6 @@ export default function ReinaSection() {
         </div>
       </header>
 
-      {/* Featured intro card (kept) */}
-      <div
-        className="project-card reina__featureCard page-width"
-        role="button"
-        tabIndex={0}
-        onClick={goToCaseStudy}
-        onKeyDown={(e) => e.key === "Enter" && goToCaseStudy()}
-        aria-label="Go to Reina destination wedding planning case study"
-      >
-        <div className="project-media" aria-hidden="true">
-          <div className="project-icon">👑</div>
-        </div>
-
-        <div className="project-body">
-          <h3>🌟 Featured Concept</h3>
-          <p>
-            Helping couples discover and schedule international wedding venues with confidence.{" "}
-            <span className="reina__muted">
-              A self-directed concept app designed to reduce stress and add clarity to destination wedding planning.
-            </span>
-          </p>
-        </div>
-      </div>
-
       {/* Main content grid */}
       <div className="reina__grid page-width">
         <figure className="reina__figure">
