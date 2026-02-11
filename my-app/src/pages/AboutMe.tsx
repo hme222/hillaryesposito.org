@@ -20,7 +20,7 @@ export default function About() {
   return (
     <div className="about-page">
       
-      {/* Floating Luna - Hidden on mobile for WCAG, visible on desktop */}
+      {/* Floating Luna - Hidden on mobile for WCAG, visible on desktop
       <div 
         ref={catRef}
         className="about-luna"
@@ -31,7 +31,7 @@ export default function About() {
           src="assets/favicon.png"
           alt="Luna, a gray and white cat with orange eyes"
         />
-      </div>
+      </div> */}
 
       {/* Opening - Setting the Scene */}
       <section className="about-hero">
@@ -208,13 +208,6 @@ export default function About() {
             </p>
           </div>
         </div>
-      </section>
-
-      {/* Closing */}
-      <section className="about-closing">
-        <p className="about-closing-text">
-          That's my journey. Let's see where yours takes us.
-        </p>
       </section>
     </div>
   );
