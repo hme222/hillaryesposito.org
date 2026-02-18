@@ -1672,225 +1672,277 @@ footer p{color: var(--muted);font-size:.9rem;font-weight:600;}
   .chapter-heading{ font-size: 1.8rem; }
 }
 
-/* =========================
-   REINA (scoped to section)
-   Uses your GLOBAL tokens:
-   --bg --fg --muted --card --border
-   --olive-1 --olive-2 --olive-3
-   --shadow-sm --shadow-md --shadow-olive
-   ========================= */
+/* =========================================
+   REINA — CLEAN LANDING LAYOUT
+   Add AFTER your global CSS
+   ========================================= */
 
-.projects.reina{
-  /* Map “Reina palette” to your existing tokens */
-  --reina-olive-primary: var(--olive-2);
-  --reina-olive-dark: var(--olive-3);
-  --reina-olive-light: color-mix(in srgb, var(--olive-2) 14%, var(--bg));
-  --reina-peach: color-mix(in srgb, #F4E5D9 72%, var(--bg));
-  --reina-cream: var(--bg);
-  --reina-charcoal: var(--fg);
-  --reina-warm-gray: var(--muted);
+/* Optional: if page-width isn't defined or is inconsistent */
+.page-width{
+  width: min(1100px, calc(100% - 2 * var(--page-pad)));
+  margin: 0 auto;
 }
 
-/* Hero block */
+/* Make this section feel like a “project landing”, not a generic projects section */
+.projects.reina{
+  padding-top: 110px;               /* matches your fixed navbar */
+  padding-bottom: 70px;
+}
+
+/* HERO */
 .reina__hero{
-  margin-top: 1.25rem;
-  padding: 2.75rem 2.25rem;
+  padding: 2.25rem 2rem;
   border-radius: var(--radius-xl);
+  border: 1px solid color-mix(in srgb, var(--olive-2) 18%, var(--border));
   background:
-    radial-gradient(circle at 18% 35%, color-mix(in srgb, var(--olive-2) 18%, transparent), transparent 60%),
-    linear-gradient(135deg, var(--reina-olive-light) 0%, var(--reina-peach) 100%);
-  border: 1px solid color-mix(in srgb, var(--reina-olive-primary) 18%, transparent);
+    radial-gradient(circle at 18% 35%, rgba(107,142,35,0.10), transparent 55%),
+    radial-gradient(circle at 80% 85%, rgba(128,128,0,0.10), transparent 55%),
+    color-mix(in srgb, var(--bg) 92%, transparent);
   box-shadow: var(--shadow-md);
-  position: relative;
-  overflow: hidden;
 }
 
 .dark-mode .reina__hero{
   background:
-    radial-gradient(circle at 18% 35%, color-mix(in srgb, var(--focus) 18%, transparent), transparent 60%),
-    linear-gradient(135deg,
-      color-mix(in srgb, var(--bg) 92%, var(--focus)),
-      color-mix(in srgb, var(--bg) 88%, #F4E5D9)
-    );
-  border-color: rgba(255,255,255,0.10);
-}
-
-/* Big glow orb like your HTML */
-.reina__hero::before{
-  content:"";
-  position:absolute;
-  top:-55%;
-  right:-25%;
-  width: 620px;
-  height: 620px;
-  background: radial-gradient(circle, color-mix(in srgb, var(--reina-olive-primary) 18%, transparent) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.reina__tag{
-  position: relative;
-  z-index: 1;
-  display:inline-flex;
-  align-items:center;
-  gap:.5rem;
-  background: color-mix(in srgb, var(--bg) 70%, transparent);
-  border: 1px solid color-mix(in srgb, var(--reina-olive-primary) 18%, transparent);
-  padding: .55rem 1.05rem;
-  border-radius: 999px;
-  font-size: .85rem;
-  font-weight: 900;
-  letter-spacing: .02em;
-  color: var(--reina-olive-dark);
-  box-shadow: var(--shadow-sm);
-}
-
-.dark-mode .reina__tag{
-  background: rgba(15,15,15,0.65);
-  color: var(--fg);
+    radial-gradient(circle at 18% 35%, rgba(235,163,82,0.12), transparent 55%),
+    radial-gradient(circle at 80% 85%, rgba(235,163,82,0.08), transparent 55%),
+    rgba(15,15,15,0.78);
   border-color: rgba(255,255,255,0.12);
 }
 
+.reina__tag{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  padding: .55rem .95rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bg) 75%, transparent);
+  border: 1px solid color-mix(in srgb, var(--olive-2) 18%, transparent);
+  font-weight: 900;
+  font-size: .85rem;
+  letter-spacing: .02em;
+  box-shadow: var(--shadow-sm);
+}
+
 .reina__heroRow{
-  position: relative;
-  z-index: 1;
   margin-top: 1rem;
   display:flex;
-  align-items: baseline;
-  justify-content: space-between;
+  align-items:center;
+  justify-content:space-between;
   gap: 1rem;
 }
 
 .reina__title{
-  /* Your global section title already has gradient,
-     so this just tightens the “Reina” word */
-  letter-spacing: -0.02em;
+  margin: 0;
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 60%, var(--olive-3) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
 }
 
-/* Lead text */
 .reina__lead{
-  position: relative;
-  z-index: 1;
-  margin-top: .85rem;
-  max-width: 72ch;
+  margin-top: .9rem;
+  max-width: 70ch;
+  color: color-mix(in srgb, var(--fg) 75%, transparent);
   font-size: 1.05rem;
-  color: color-mix(in srgb, var(--fg) 80%, transparent);
   line-height: 1.75;
 }
 
-.reina__muted{
-  color: var(--muted);
-  font-weight: 600;
-}
+.reina__muted{ color: var(--muted); font-weight: 650; }
 
-/* CTA buttons — reuse your hero button language */
-.reina__cta,
-.reina__bottomCta{
-  position: relative;
-  z-index: 1;
-  border: none;
-  cursor: pointer;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: .10em;
-  color: #fff;
-  background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 100%);
-  padding: .9rem 1.15rem;
+.reina__cta{
+  border:none;
+  cursor:pointer;
+  padding: .9rem 1.1rem;
   border-radius: 999px;
+  font-weight: 900;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  color:#fff;
+  background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 100%);
   box-shadow: var(--shadow-olive);
-  transition: transform .25s cubic-bezier(.4,0,.2,1), box-shadow .25s cubic-bezier(.4,0,.2,1);
+  transition: transform .2s ease, box-shadow .2s ease;
 }
-
-.reina__cta:hover,
-.reina__bottomCta:hover{
+.reina__cta:hover{
   transform: translateY(-3px);
   box-shadow: 0 15px 30px rgba(107,142,35,0.30);
 }
 
-.dark-mode .reina__cta,
-.dark-mode .reina__bottomCta{
-  background: linear-gradient(135deg, var(--focus) 0%, color-mix(in srgb, var(--focus) 72%, #fff) 100%);
-}
-
-/* Bottom CTA full width */
-.reina__bottomCta{
-  width:100%;
-  margin-top: 1.25rem;
-}
-
-/* Stats row */
+/* STATS */
 .reina__stats{
-  position: relative;
-  z-index: 1;
-  display:flex;
-  gap: 14px;
-  margin-top: 1.5rem;
-  flex-wrap: wrap;
+  margin-top: 1.25rem;
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+@media (max-width: 900px){
+  .reina__stats{ grid-template-columns: 1fr; }
 }
 
 .reina__stat{
-  min-width: 180px;
-  padding: 0.9rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
   border-radius: 18px;
-  background: color-mix(in srgb, var(--bg) 72%, transparent);
-  border: 1px solid color-mix(in srgb, var(--reina-olive-primary) 16%, transparent);
-  backdrop-filter: blur(10px);
+  padding: .9rem 1rem;
   box-shadow: var(--shadow-sm);
 }
 
 .dark-mode .reina__stat{
-  background: rgba(15,15,15,0.60);
   border-color: rgba(255,255,255,0.12);
+  background: rgba(15,15,15,0.60);
 }
 
 .reina__statLabel{
-  font-size: .75rem;
-  text-transform: uppercase;
-  letter-spacing: .14em;
-  color: var(--muted);
+  font-size: .78rem;
   font-weight: 900;
-  margin-bottom: .25rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 .reina__statValue{
-  font-size: 0.98rem;
+  margin-top: .2rem;
+  font-weight: 900;
   color: var(--fg);
-  font-weight: 800;
 }
 
-/* Blend your existing “project-card” with Reina palette */
-.reina__featureCard{
-  margin-top: 1.25rem;
-  border: 1px solid color-mix(in srgb, var(--olive-2) 18%, var(--border));
-  box-shadow: var(--shadow-md);
+/* MAIN GRID — this is what makes it feel “portfolio” */
+.reina__grid{
+  margin-top: 2rem;
+  display:grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 1.5rem;
+  align-items:start;
 }
 
-.reina__featureCard:hover{
-  transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.14);
+@media (max-width: 960px){
+  .reina__grid{ grid-template-columns: 1fr; }
 }
 
-/* Optional: make the Reina image card feel more “premium” */
+/* FIGURE */
+.reina__figure{
+  margin: 0;
+}
+
 .reina__imageWrap{
-  border-radius: 24px;
-  border: 1px solid color-mix(in srgb, var(--olive-2) 18%, var(--border));
-  box-shadow: var(--shadow-sm);
+  position: relative;
+  border-radius: var(--radius-lg);
+  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+  background: var(--card);
+  box-shadow: var(--shadow-md);
   overflow: hidden;
-  background: color-mix(in srgb, var(--card) 90%, transparent);
 }
 
-/* Responsive */
-@media (max-width: 900px){
-  .reina__hero{
-    padding: 2.25rem 1.5rem;
-  }
+.reina__image{
+  width: 100%;
+  height: auto;
+  display:block;
+}
 
-  .reina__heroRow{
-    flex-direction: column;
-    align-items: flex-start;
-  }
+/* badges: keep them subtle so it doesn't look “busy” */
+.reina__badge{
+  position:absolute;
+  width: 34px; height: 34px;
+  border-radius: 999px;
+  display:grid; place-items:center;
+  font-weight: 900;
+  font-size: .9rem;
+  color:#fff;
+  background: linear-gradient(135deg, var(--olive-1), var(--olive-2));
+  box-shadow: var(--shadow-sm);
+  opacity: 0.92;
+}
 
-  .reina__cta{
-    width: auto;
-  }
+/* You can tweak these positions to match your image */
+.reina__badge--1{ top: 10%; left: 8%; }
+.reina__badge--2{ top: 14%; left: 28%; }
+.reina__badge--3{ top: 14%; left: 50%; }
+.reina__badge--4{ top: 14%; left: 72%; }
+.reina__badge--5{ top: 14%; left: 92%; }
+
+.reina__caption{
+  margin-top: .9rem;
+  color: var(--muted);
+  line-height: 1.7;
+  font-weight: 650;
+}
+
+/* ASIDE CARD */
+.reina__aside{
+  border-radius: var(--radius-lg);
+  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+  background: var(--card);
+  box-shadow: var(--shadow-md);
+  padding: 1.5rem;
+}
+
+.reina__asideTitle{
+  margin: 0 0 .25rem;
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
+.reina__asideSubtitle{
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-weight: 650;
+}
+
+/* list styling: cleaner */
+.reina__list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display:grid;
+  gap: .85rem;
+}
+
+.reina__item{
+  display:flex;
+  gap: .85rem;
+  align-items:flex-start;
+  padding: .85rem;
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  border: 1px solid color-mix(in srgb, var(--fg) 9%, transparent);
+}
+
+.reina__step{
+  width: 36px; height: 36px;
+  border-radius: 999px;
+  display:grid; place-items:center;
+  font-weight: 900;
+  color:#fff;
+  background: linear-gradient(135deg, var(--olive-2), var(--olive-3));
+  flex: 0 0 auto;
+}
+
+.reina__itemTitle{ font-weight: 900; }
+.reina__itemDesc{ color: var(--muted); font-weight: 650; margin-top: .1rem; }
+
+/* commentary: reduce clutter */
+.reina__commentary{ margin-top: 1.25rem; }
+.reina__cols{ display:grid; grid-template-columns: 1fr; gap: 1rem; }
+.reina__miniTitle{ font-weight: 900; margin: .75rem 0 .35rem; }
+.reina__bullets{ margin: 0; padding-left: 1.15rem; color: var(--muted); line-height: 1.7; }
+.reina__value{ margin-top: 1rem; }
+
+/* button at bottom */
+.reina__bottomCta{
+  width: 100%;
+  margin-top: 1.1rem;
+  border:none;
+  cursor:pointer;
+  padding: .95rem 1.1rem;
+  border-radius: 999px;
+  font-weight: 900;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  color:#fff;
+  background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 100%);
+  box-shadow: var(--shadow-olive);
 }
