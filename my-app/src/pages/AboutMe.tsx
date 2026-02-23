@@ -40,9 +40,9 @@ export default function About() {
             I'm a UX designer driven by curiosity and a desire to help people navigate complexity with more clarity and confidence.
           </p>
           
-          <h1 className="about-title">
+          <h2 className="about-title">
             I turn complex, high‑pressure systems into experiences that feel intuitive, manageable, and human.
-          </h1>
+          </h2>
         </div>
       </section>
 
@@ -172,7 +172,7 @@ export default function About() {
               <div className="hobby-icon">📚</div>
               <h3 className="hobby-title">Reading</h3>
               <p className="hobby-desc">
-                Books remind me that every good story—like every good design—needs structure, empathy, and purpose.
+                Books remind me that every story—like every design—needs structure, empathy, and purpose.
               </p>
             </div>
             

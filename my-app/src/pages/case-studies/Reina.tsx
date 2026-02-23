@@ -21,115 +21,129 @@ export default function ReinaSection() {
 
   return (
     <section id="reina" className="projects reina">
-      {/* Hero-style header from the HTML version */}
-      <header className="reina__hero page-width">
-        <div className="reina__tag" aria-label="Featured Concept">
-          <span aria-hidden="true">👑</span>
-          <span>Featured Concept</span>
-        </div>
-
-        <div className="reina__heroRow">
-          <h2 className="section-title reina__title">Reina</h2>
-
-          <button type="button" className="reina__cta" onClick={goToCaseStudy} aria-label="Open Reina case study">
-            View case study →
-          </button>
-        </div>
-
-        <p className="reina__lead">
-          Helping couples discover and schedule international wedding venues with confidence.{" "}
-          <span className="reina__muted">
-            A self-directed concept app designed to reduce stress and add clarity to destination wedding planning.
-          </span>
-        </p>
-
-        <div className="reina__stats" role="list" aria-label="Reina project stats">
-          <div className="reina__stat" role="listitem">
-            <div className="reina__statLabel">Role</div>
-            <div className="reina__statValue">UX Designer & Researcher</div>
-          </div>
-          <div className="reina__stat" role="listitem">
-            <div className="reina__statLabel">Timeline</div>
-            <div className="reina__statValue">Self-Directed Project</div>
-          </div>
-          <div className="reina__stat" role="listitem">
-            <div className="reina__statLabel">Type</div>
-            <div className="reina__statValue">Mobile App Concept</div>
-          </div>
-        </div>
-      </header>
-
-      {/* Main content grid */}
-      <div className="reina__grid page-width">
-        <figure className="reina__figure">
-          <div
-            className="reina__imageWrap"
-            role="button"
-            tabIndex={0}
-            onClick={goToCaseStudy}
-            onKeyDown={(e) => e.key === "Enter" && goToCaseStudy()}
-            aria-label="Open Reina case study"
-          >
-            <img
-              className="reina__image"
-              src="/assets/reina-flow.png"
-              alt="Reina core user flow wireframes: discovery, preferences, swipe gallery, consultation chat, visitation schedule."
-              loading="lazy"
-            />
-
-            <span className="reina__badge reina__badge--1" aria-hidden="true">1</span>
-            <span className="reina__badge reina__badge--2" aria-hidden="true">2</span>
-            <span className="reina__badge reina__badge--3" aria-hidden="true">3</span>
-            <span className="reina__badge reina__badge--4" aria-hidden="true">4</span>
-            <span className="reina__badge reina__badge--5" aria-hidden="true">5</span>
+      <div className="page-width reina__wrap">
+        {/* ========== OVERVIEW / HERO ========== */}
+        <header className="reina__overview" aria-label="Reina project overview">
+          <div className="reina__tag" aria-label="Featured Concept">
+            <span aria-hidden="true">👑</span>
+            <span>Featured Concept</span>
           </div>
 
-          <figcaption className="reina__caption">
-            Reina guides users through selecting preferences, browsing venues, consulting with an expert, and receiving a
-            personalized visitation schedule — all tailored for destination weddings abroad.
-          </figcaption>
-        </figure>
+          <div className="reina__overviewTop">
+            <h2 className="section-title reina__title">Reina</h2>
 
-        <aside className="reina__aside">
-          <h3 className="reina__asideTitle">🗂️ Core User Flow</h3>
-          <p className="reina__asideSubtitle">From venue discovery to scheduled visit</p>
+            <button
+              type="button"
+              className="reina__cta"
+              onClick={goToCaseStudy}
+              aria-label="Open Reina case study"
+            >
+              View case study →
+            </button>
+          </div>
 
-          <ol className="reina__list">
-            {CALLOUTS.map((c) => (
-              <li key={c.step} className="reina__item">
-                <div className="reina__step">{c.step}</div>
-                <div className="reina__text">
-                  <div className="reina__itemTitle">{c.title}</div>
-                  <div className="reina__itemDesc">{c.description}</div>
-                </div>
-              </li>
-            ))}
-          </ol>
+          <p className="reina__lead">
+            Helping couples discover and schedule international wedding venues with confidence.{" "}
+            <span className="reina__muted">
+              A self-directed concept app designed to reduce stress and add clarity to destination wedding planning.
+            </span>
+          </p>
 
-          <div className="reina__commentary">
-            <h3 className="reina__asideTitle">🔧 Designer Commentary</h3>
+          <dl className="reina__stats" aria-label="Reina project stats">
+            <div className="reina__stat">
+              <dt className="reina__statLabel">Role</dt>
+              <dd className="reina__statValue">UX Designer & Researcher</dd>
+            </div>
+            <div className="reina__stat">
+              <dt className="reina__statLabel">Timeline</dt>
+              <dd className="reina__statValue">Self-Directed Project</dd>
+            </div>
+            <div className="reina__stat">
+              <dt className="reina__statLabel">Type</dt>
+              <dd className="reina__statValue">Mobile App Concept</dd>
+            </div>
+          </dl>
+        </header>
 
-            <div className="reina__cols">
-              <div className="reina__col">
-                <h4 className="reina__miniTitle">🎯 What I Practiced</h4>
-                <ul className="reina__bullets">
-                  <li>Designing end-to-end UX for a multi-touch, service-oriented app</li>
-                  <li>Creating structured choice without overwhelming users</li>
-                  <li>Balancing inspiration with utility in a high-emotion domain</li>
-                </ul>
-              </div>
+        {/* ========== MAIN: PREVIEW + FLOW ========== */}
+        <div className="reina__main" aria-label="Reina preview and core flow">
+          <figure className="reina__preview">
+            <button
+              type="button"
+              className="reina__imageWrap"
+              onClick={goToCaseStudy}
+              aria-label="Open Reina case study"
+            >
+              <img
+                className="reina__image"
+                src="/assets/reina-flow.png"
+                alt="Reina core user flow wireframes: discovery, preferences, swipe gallery, consultation chat, visitation schedule."
+                loading="lazy"
+              />
+              {/* Keep your badges if you want, but they’re optional now */}
+              <span className="reina__badge reina__badge--1" aria-hidden="true">1</span>
+              <span className="reina__badge reina__badge--2" aria-hidden="true">2</span>
+              <span className="reina__badge reina__badge--3" aria-hidden="true">3</span>
+              <span className="reina__badge reina__badge--4" aria-hidden="true">4</span>
+              <span className="reina__badge reina__badge--5" aria-hidden="true">5</span>
+            </button>
 
-              <div className="reina__col">
-                <h4 className="reina__miniTitle">💭 What I’d Do Next</h4>
-                <ul className="reina__bullets">
-                  <li>Add booking + calendar integration</li>
-                  <li>Test form length vs. completion rate</li>
-                  <li>Explore language localization for global use</li>
-                </ul>
-              </div>
+            <figcaption className="reina__caption">
+              Reina guides users through selecting preferences, browsing venues, consulting with an expert,
+              and receiving a personalized visitation schedule — tailored for destination weddings abroad.
+            </figcaption>
+          </figure>
+
+          <aside className="reina__flowCard" aria-label="Core user flow">
+            <div className="reina__flowHeader">
+              <h3 className="reina__asideTitle">🗂️ Core User Flow</h3>
+              <p className="reina__asideSubtitle">From venue discovery to scheduled visit</p>
             </div>
 
-            <div className="reina__value">
+            <ol className="reina__list">
+              {CALLOUTS.map((c) => (
+                <li key={c.step} className="reina__item">
+                  <div className="reina__step">{c.step}</div>
+                  <div className="reina__text">
+                    <div className="reina__itemTitle">{c.title}</div>
+                    <div className="reina__itemDesc">{c.description}</div>
+                  </div>
+                </li>
+              ))}
+            </ol>
+
+            <div className="reina__flowCta">
+              <button type="button" className="reina__bottomCta" onClick={goToCaseStudy}>
+                Open the full Reina case study →
+              </button>
+            </div>
+          </aside>
+        </div>
+
+        {/* ========== DESIGNER NOTES (3-UP) ========== */}
+        <section className="reina__notes" aria-label="Designer notes">
+          <h3 className="reina__notesTitle">🔧 Designer Notes</h3>
+
+          <div className="reina__noteGrid">
+            <article className="reina__note">
+              <h4 className="reina__miniTitle">🎯 What I Practiced</h4>
+              <ul className="reina__bullets">
+                <li>Designing end-to-end UX for a multi-touch, service-oriented app</li>
+                <li>Creating structured choice without overwhelming users</li>
+                <li>Balancing inspiration with utility in a high-emotion domain</li>
+              </ul>
+            </article>
+
+            <article className="reina__note">
+              <h4 className="reina__miniTitle">💭 What I’d Do Next</h4>
+              <ul className="reina__bullets">
+                <li>Add booking + calendar integration</li>
+                <li>Test form length vs. completion rate</li>
+                <li>Explore language localization for global use</li>
+              </ul>
+            </article>
+
+            <article className="reina__note">
               <h4 className="reina__miniTitle">✅ What This Adds to My UX Story</h4>
               <ul className="reina__bullets">
                 <li>Showcases visual design & flow thinking</li>
@@ -137,13 +151,16 @@ export default function ReinaSection() {
                 <li>Reflects initiative + long-term personal interest</li>
                 <li>Adds emotional range to my UX brand</li>
               </ul>
-            </div>
+            </article>
           </div>
+        </section>
 
-          <button type="button" className="reina__bottomCta" onClick={goToCaseStudy}>
-            Open the full Reina case study →
+        {/* ========== FINAL CTA STRIP ========== */}
+        <footer className="reina__footer" aria-label="Reina call to action">
+          <button type="button" className="reina__footerCta" onClick={goToCaseStudy}>
+            View the Reina case study →
           </button>
-        </aside>
+        </footer>
       </div>
     </section>
   );
