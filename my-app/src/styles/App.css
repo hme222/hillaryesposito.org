@@ -1498,7 +1498,7 @@ footer p{color: var(--muted);font-size:.9rem;font-weight:600;}
 
 /* Intro line should look like your muted hero copy */
 .about-intro{
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--muted);
   line-height: 1.9;
   max-width: 68ch;
