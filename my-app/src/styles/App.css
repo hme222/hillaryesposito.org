@@ -51,7 +51,7 @@
 .dark-mode .nav-link,
 .dark-mode .theme-btn,
 .dark-mode .hamburger{
-  color: var(--focus);
+  color: rgba(255,255,255,0.92);
 }
 
 .dark-mode .nav-link:hover{
