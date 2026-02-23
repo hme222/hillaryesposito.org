@@ -8,11 +8,11 @@ type Callout = {
 };
 
 const CALLOUTS: Callout[] = [
-  { step: 1, title: "Homepage", description: "Curated top-rated venues + onboarding process" },
-  { step: 2, title: "Preferences Form", description: "Location, price, guest count, and extras" },
-  { step: 3, title: "Venue Swipe Gallery", description: "Visual-first browsing (Tinder-like interaction)" },
-  { step: 4, title: "Live Chat", description: "Access to destination consultants" },
-  { step: 5, title: "Visit Schedule", description: "Final itinerary for in-person venue visits" },
+  { step: 1, title: "Homepage", description: "Curated venue discovery with a quick onboarding preview" },
+  { step: 2, title: "Preferences form", description: "Capture location, budget range, guest count, and must-haves" },
+  { step: 3, title: "Swipe gallery", description: "Fast visual comparison to build a shortlist confidently" },
+  { step: 4, title: "Consultant chat", description: "Expert guidance to validate fit and answer questions in real time" },
+  { step: 5, title: "Visit schedule", description: "Turn the shortlist into a personalized itinerary for in-person tours" },
 ];
 
 export default function ReinaSection() {
@@ -22,16 +22,13 @@ export default function ReinaSection() {
   return (
     <section id="reina" className="projects reina">
       <div className="page-width reina__wrap">
-        {/* ========== OVERVIEW / HERO ========== */}
         <header className="reina__overview" aria-label="Reina project overview">
           <div className="reina__tag" aria-label="Featured Concept">
             <span aria-hidden="true">👑</span>
             <span>Featured Concept</span>
           </div>
 
-          <div className="reina__overviewTop">
-            <h2 className="section-title reina__title">Reina</h2>
-          </div>
+          <h2 className="section-title reina__title">Reina</h2>
 
           <p className="reina__lead">
             Helping couples discover and schedule international wedding venues with confidence.{" "}
@@ -40,78 +37,83 @@ export default function ReinaSection() {
             </span>
           </p>
 
-          <dl className="reina__stats" aria-label="Reina project stats">
-            <div className="reina__stat">
-              <dt className="reina__statLabel">Role</dt>
-              <dd className="reina__statValue">UX Designer & Researcher</dd>
+          {/* NEW: professional framing */}
+          <div className="reina__summary" aria-label="Problem approach outcome summary">
+            <div className="reina__summaryItem">
+              <div className="reina__kicker">Problem</div>
+              <p className="reina__summaryText">
+                Destination planning is emotionally high-stakes and logistically complex, especially when venues are abroad.
+              </p>
             </div>
-            <div className="reina__stat">
-              <dt className="reina__statLabel">Timeline</dt>
-              <dd className="reina__statValue">Self-Directed Project</dd>
+
+            <div className="reina__summaryItem">
+              <div className="reina__kicker">Approach</div>
+              <p className="reina__summaryText">
+                A guided flow that combines preference capture, visual shortlisting, and consultant support to reduce overwhelm.
+              </p>
             </div>
-            <div className="reina__stat">
-              <dt className="reina__statLabel">Type</dt>
-              <dd className="reina__statValue">Mobile App Concept</dd>
+
+            <div className="reina__summaryItem">
+              <div className="reina__kicker">Outcome</div>
+              <p className="reina__summaryText">
+                A concept experience that turns browsing into a clear shortlist and a scheduled visit plan.
+              </p>
+            </div>
+          </div>
+
+          <dl className="reina__meta" aria-label="Reina project details">
+            <div className="reina__metaItem">
+              <dt>Role</dt>
+              <dd>UX Designer & Researcher</dd>
+            </div>
+            <div className="reina__metaItem">
+              <dt>Timeline</dt>
+              <dd>Self-Directed Project</dd>
+            </div>
+            <div className="reina__metaItem">
+              <dt>Type</dt>
+              <dd>Mobile App Concept</dd>
             </div>
           </dl>
         </header>
 
-        {/* ========== MAIN: PREVIEW + FLOW ========== */}
-        <div className="reina__main" aria-label="Reina preview and core flow">
-          <figure className="reina__preview">
-            <button
-              type="button"
-              className="reina__imageWrap"
-              onClick={goToCaseStudy}
-              aria-label="Open Reina case study"
-            >
-              <img
-                className="reina__image"
-                src="/assets/reina-flow.png"
-                alt="Reina core user flow wireframes: discovery, preferences, swipe gallery, consultation chat, visitation schedule."
-                loading="lazy"
-              />
-              {/* Keep your badges if you want, but they’re optional now */}
-              <span className="reina__badge reina__badge--1" aria-hidden="true">1</span>
-              <span className="reina__badge reina__badge--2" aria-hidden="true">2</span>
-              <span className="reina__badge reina__badge--3" aria-hidden="true">3</span>
-              <span className="reina__badge reina__badge--4" aria-hidden="true">4</span>
-              <span className="reina__badge reina__badge--5" aria-hidden="true">5</span>
-            </button>
+        <figure className="reina__preview">
+          <button type="button" className="reina__imageWrap" onClick={goToCaseStudy} aria-label="Open Reina case study">
+            <img
+              className="reina__image"
+              src="/assets/reina-flow.png"
+              alt="Reina core user flow wireframes: discovery, preferences, swipe gallery, consultation chat, visitation schedule."
+              loading="lazy"
+            />
+          </button>
 
-            <figcaption className="reina__caption">
-              Reina guides users through selecting preferences, browsing venues, consulting with an expert,
-              and receiving a personalized visitation schedule — tailored for destination weddings abroad.
-            </figcaption>
-          </figure>
+          <figcaption className="reina__caption">
+            Reina guides users through selecting preferences, browsing venues, consulting with an expert, and receiving a
+            personalized visitation schedule — tailored for destination weddings abroad.
+          </figcaption>
+        </figure>
 
-          <aside className="reina__flowCard" aria-label="Core user flow">
-            <div className="reina__flowHeader">
-              <h3 className="reina__asideTitle">🗂️ Core User Flow</h3>
-              <p className="reina__asideSubtitle">From venue discovery to scheduled visit</p>
-            </div>
+        <section className="reina__flow" aria-label="Core user flow">
+          <h3 className="reina__sectionTitle">Core user flow</h3>
+          <ol className="reina__flowList">
+            {CALLOUTS.map((c) => (
+              <li key={c.step} className="reina__flowRow">
+                <div className="reina__flowStep">{c.step}</div>
+                <div className="reina__flowBody">
+                  <div className="reina__flowTitle">{c.title}</div>
+                  <div className="reina__flowDesc">{c.description}</div>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
 
-            <ol className="reina__list">
-              {CALLOUTS.map((c) => (
-                <li key={c.step} className="reina__item">
-                  <div className="reina__step">{c.step}</div>
-                  <div className="reina__text">
-                    <div className="reina__itemTitle">{c.title}</div>
-                    <div className="reina__itemDesc">{c.description}</div>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </aside>
-        </div>
+        <section className="reina__notes" aria-label="Design reflections">
+          <h3 className="reina__sectionTitle">Design reflections</h3>
 
-        {/* ========== DESIGNER NOTES (3-UP) ========== */}
-        <section className="reina__notes" aria-label="Designer notes">
-          <h3 className="reina__notesTitle">🔧 Designer Notes</h3>
-
-          <div className="reina__noteGrid">
+          <div className="reina__noteStack">
             <article className="reina__note">
-              <h4 className="reina__miniTitle">🎯 What I Practiced</h4>
+              <h4 className="reina__noteTitle">What I practiced</h4>
               <ul className="reina__bullets">
                 <li>Designing end-to-end UX for a multi-touch, service-oriented app</li>
                 <li>Creating structured choice without overwhelming users</li>
@@ -120,7 +122,7 @@ export default function ReinaSection() {
             </article>
 
             <article className="reina__note">
-              <h4 className="reina__miniTitle">💭 What I’d Do Next</h4>
+              <h4 className="reina__noteTitle">Next steps</h4>
               <ul className="reina__bullets">
                 <li>Add booking + calendar integration</li>
                 <li>Test form length vs. completion rate</li>
@@ -129,12 +131,21 @@ export default function ReinaSection() {
             </article>
 
             <article className="reina__note">
-              <h4 className="reina__miniTitle">✅ What This Adds to My UX Story</h4>
+              <h4 className="reina__noteTitle">Portfolio impact</h4>
               <ul className="reina__bullets">
-                <li>Showcases visual design & flow thinking</li>
-                <li>Diversifies my portfolio beyond enterprise systems</li>
-                <li>Reflects initiative + long-term personal interest</li>
-                <li>Adds emotional range to my UX brand</li>
+                <li>Demonstrates end-to-end flow design and information hierarchy</li>
+                <li>Expands my work into consumer, emotion-driven decision making</li>
+                <li>Shows service + product thinking (expert support integrated into UX)</li>
+                <li>Highlights clarity and structure in complex, high-stakes choices</li>
+              </ul>
+            </article>
+
+            <article className="reina__note">
+              <h4 className="reina__noteTitle">Constraints & assumptions</h4>
+              <ul className="reina__bullets">
+                <li>Concept project (no live inventory or vendor integrations)</li>
+                <li>Focused on discovery + scheduling rather than booking/payment</li>
+                <li>Designed for early-stage planners who need clarity fast</li>
               </ul>
             </article>
           </div>

@@ -1691,26 +1691,25 @@ footer p{color: var(--muted);font-size:.9rem;font-weight:600;}
   .about-hobbies{ grid-template-columns: 1fr; }
   .chapter-heading{ font-size: 1.8rem; }
 }
-/* =========================================================
-   REINA — CLEAN, CENTERED, NOT BUSY (single source of truth)
-   Replace ALL previous Reina CSS with this block.
-   ========================================================= */
 
-/* Do NOT redefine global --page-pad here. Use your site token. */
+/* =========================================================
+   REINA — CLEAN + MORE PROFESSIONAL (adds summary + polish)
+   Keep your current Reina block and ADD/REPLACE with this
+   (This version matches your TSX: reina__meta, flowList, noteStack)
+   ========================================================= */
 
 /* Section spacing: match your global page rhythm */
 .projects.reina{
-  /* keep consistent with navbar offset */
   padding: 120px var(--page-pad) 90px;
 }
 
-/* Use ONE layout container rule: centered + readable */
+/* Centered container */
 .projects.reina .reina__wrap{
   width: min(1100px, 100%);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 72px; /* consistent vertical rhythm */
+  gap: 72px;
 }
 
 /* -------------------------
@@ -1718,11 +1717,10 @@ footer p{color: var(--muted);font-size:.9rem;font-weight:600;}
    ------------------------- */
 .projects.reina .reina__overview{
   width: 100%;
-  max-width: 900px;     /* readable column */
-  margin: 0 auto;       /* centers the whole block */
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-/* Tag stays, but quiet */
 .projects.reina .reina__tag{
   display: inline-flex;
   align-items: center;
@@ -1736,26 +1734,29 @@ footer p{color: var(--muted);font-size:.9rem;font-weight:600;}
   font-size: 0.95rem;
 }
 
-/* Title: BIGGER + clean. (If gradient feels noisy, remove it below.) */
-.projects.reina .reina__title{
+/* Make the title behave like a case-study header */
+.projects.reina .section-title.reina__title{
+  text-align: left;
   margin: 18px 0 0 0;
   font-size: clamp(44px, 5.6vw, 74px);
   line-height: 1.03;
   letter-spacing: -0.04em;
   font-weight: 900;
 
-  /* OPTIONAL: comment these 6 lines for plain text title */
+  /* Keep gradient if you like; comment out for ultra-pro plain text */
   background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 60%, var(--olive-3) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+
+  /* Override global section-title spacing */
+  margin-bottom: 0;
 }
 
-/* Lead: bigger + comfy */
 .projects.reina .reina__lead{
   margin-top: 18px;
   max-width: 68ch;
-  font-size: 1.22rem;         /* noticeably larger */
+  font-size: 1.22rem;
   line-height: 1.75;
   color: color-mix(in srgb, var(--fg) 82%, transparent);
 }
@@ -1765,25 +1766,18 @@ footer p{color: var(--muted);font-size:.9rem;font-weight:600;}
   font-weight: 600;
 }
 
-/* Stats: NOT cards. Just clean inline grid */
-.projects.reina .reina__stats{
-  margin-top: 34px;
+/* META (your TSX uses reina__meta, not reina__stats) */
+.projects.reina .reina__meta{
+  margin-top: 30px;
   padding-top: 18px;
   border-top: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
 
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 28px;
+  gap: 26px;
 }
 
-.projects.reina .reina__stat{
-  padding: 0;
-  border: 0;
-  background: transparent;
-  box-shadow: none;
-}
-
-.projects.reina .reina__statLabel{
+.projects.reina .reina__metaItem dt{
   font-size: .78rem;
   letter-spacing: .12em;
   text-transform: uppercase;
@@ -1791,7 +1785,7 @@ footer p{color: var(--muted);font-size:.9rem;font-weight:600;}
   color: color-mix(in srgb, var(--fg) 55%, transparent);
 }
 
-.projects.reina .reina__statValue{
+.projects.reina .reina__metaItem dd{
   margin-top: 7px;
   font-size: 1.05rem;
   font-weight: 750;
@@ -1799,20 +1793,37 @@ footer p{color: var(--muted);font-size:.9rem;font-weight:600;}
 }
 
 /* -------------------------
-   MAIN CONTENT
-   Make it single-column so it stops feeling “busy”
+   NEW: PRO SUMMARY (Problem / Approach / Outcome)
    ------------------------- */
-.projects.reina .reina__main{
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
+.projects.reina .reina__summary{
+  margin-top: 26px;
+  padding-top: 18px;
+  border-top: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
 
-  display: flex;
-  flex-direction: column;
-  gap: 56px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
 }
 
-/* Preview: allow it to be wide, centered */
+.projects.reina .reina__kicker{
+  font-size: .78rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 850;
+  color: color-mix(in srgb, var(--fg) 55%, transparent);
+  margin-bottom: 8px;
+}
+
+.projects.reina .reina__summaryText{
+  margin: 0;
+  font-size: 1.03rem;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--fg) 74%, transparent);
+}
+
+/* -------------------------
+   PREVIEW
+   ------------------------- */
 .projects.reina .reina__preview{
   margin: 0;
 }
@@ -1829,10 +1840,8 @@ footer p{color: var(--muted);font-size:.9rem;font-weight:600;}
   cursor: pointer;
 }
 
-/* KILL the badges (busy) */
-.projects.reina .reina__badge{
-  display: none !important;
-}
+/* No badges */
+.projects.reina .reina__badge{ display: none !important; }
 
 .projects.reina .reina__caption{
   margin-top: 18px;
@@ -1843,33 +1852,25 @@ footer p{color: var(--muted);font-size:.9rem;font-weight:600;}
 }
 
 /* -------------------------
-   FLOW
-   Keep it as calm text rows (no card)
+   SECTION TITLES
    ------------------------- */
-.projects.reina .reina__flowCard{
-  /* remove card styling if present */
-  border: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  border-radius: 0 !important;
-}
-
-.projects.reina .reina__asideTitle{
-  margin: 0 0 10px 0;
+.projects.reina .reina__sectionTitle{
+  margin: 0 0 14px 0;
   font-size: 1.25rem;
   font-weight: 850;
+  letter-spacing: -0.01em;
 }
 
-.projects.reina .reina__asideSubtitle{
-  margin: 0 0 22px 0;
-  font-size: 1.02rem;
-  line-height: 1.6;
-  color: color-mix(in srgb, var(--fg) 55%, transparent);
-  font-weight: 600;
+/* -------------------------
+   FLOW (your TSX uses flowList/flowRow)
+   ------------------------- */
+.projects.reina .reina__flow{
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.projects.reina .reina__list{
+.projects.reina .reina__flowList{
   list-style: none;
   padding: 0;
   margin: 0;
@@ -1879,24 +1880,20 @@ footer p{color: var(--muted);font-size:.9rem;font-weight:600;}
   gap: 18px;
 }
 
-/* Each row: divider-based (clean) */
-.projects.reina .reina__item{
+.projects.reina .reina__flowRow{
   display: grid;
   grid-template-columns: 44px 1fr;
   gap: 16px;
   padding-top: 18px;
   border-top: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
-
-  background: transparent;
-  border-radius: 0;
 }
 
-.projects.reina .reina__item:first-child{
-  border-top: 0;
+.projects.reina .reina__flowRow:first-child{
   padding-top: 0;
+  border-top: 0;
 }
 
-.projects.reina .reina__step{
+.projects.reina .reina__flowStep{
   width: 36px;
   height: 36px;
   border-radius: 999px;
@@ -1911,13 +1908,13 @@ footer p{color: var(--muted);font-size:.9rem;font-weight:600;}
   background: color-mix(in srgb, var(--fg) 5%, transparent);
 }
 
-.projects.reina .reina__itemTitle{
+.projects.reina .reina__flowTitle{
   font-size: 1.1rem;
   font-weight: 850;
   line-height: 1.3;
 }
 
-.projects.reina .reina__itemDesc{
+.projects.reina .reina__flowDesc{
   margin-top: 6px;
   font-size: 1.02rem;
   line-height: 1.65;
@@ -1926,8 +1923,7 @@ footer p{color: var(--muted);font-size:.9rem;font-weight:600;}
 }
 
 /* -------------------------
-   NOTES
-   Make them ONE column with dividers (clean)
+   NOTES (your TSX uses noteStack)
    ------------------------- */
 .projects.reina .reina__notes{
   width: 100%;
@@ -1935,14 +1931,7 @@ footer p{color: var(--muted);font-size:.9rem;font-weight:600;}
   margin: 0 auto;
 }
 
-.projects.reina .reina__notesTitle{
-  margin: 0 0 18px 0;
-  font-size: 1.25rem;
-  font-weight: 850;
-}
-
-/* Force one column, even if TSX uses noteGrid */
-.projects.reina .reina__noteGrid{
+.projects.reina .reina__noteStack{
   display: flex;
   flex-direction: column;
   gap: 28px;
@@ -1958,7 +1947,7 @@ footer p{color: var(--muted);font-size:.9rem;font-weight:600;}
   padding-top: 0;
 }
 
-.projects.reina .reina__miniTitle{
+.projects.reina .reina__noteTitle{
   margin: 0 0 12px 0;
   font-size: 1.1rem;
   font-weight: 850;
@@ -1974,24 +1963,25 @@ footer p{color: var(--muted);font-size:.9rem;font-weight:600;}
   line-height: 1.7;
   color: color-mix(in srgb, var(--fg) 62%, transparent);
 }
-.projects.reina .section-title.reina__title{
-  text-align: left;
-}
 
 /* -------------------------
    RESPONSIVE
    ------------------------- */
 @media (max-width: 900px){
-  .projects.reina .reina__stats{
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
   .projects.reina{
     padding: 110px var(--page-pad) 80px;
   }
 
   .projects.reina .reina__wrap{
     gap: 56px;
+  }
+
+  .projects.reina .reina__meta{
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .projects.reina .reina__summary{
+    grid-template-columns: 1fr;
   }
 }
