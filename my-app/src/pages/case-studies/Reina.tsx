@@ -31,15 +31,6 @@ export default function ReinaSection() {
 
           <div className="reina__overviewTop">
             <h2 className="section-title reina__title">Reina</h2>
-
-            <button
-              type="button"
-              className="reina__cta"
-              onClick={goToCaseStudy}
-              aria-label="Open Reina case study"
-            >
-              View case study →
-            </button>
           </div>
 
           <p className="reina__lead">
@@ -111,12 +102,6 @@ export default function ReinaSection() {
                 </li>
               ))}
             </ol>
-
-            <div className="reina__flowCta">
-              <button type="button" className="reina__bottomCta" onClick={goToCaseStudy}>
-                Open the full Reina case study →
-              </button>
-            </div>
           </aside>
         </div>
 
