@@ -1693,341 +1693,228 @@ footer p{color: var(--muted);font-size:.9rem;font-weight:600;}
 }
 
 /* =========================================
-   REINA — CLEANER / MORE PROFESSIONAL (FIXED)
-   - removes CTAs (safe even if buttons still exist)
-   - adds spacing + slightly larger type
-   - reduces “busy” feel (less boxiness, better rhythm)
-   Paste AFTER your current Reina CSS (or replace it)
+   REINA — QUIET / EDITORIAL LAYOUT
+   Paste AFTER your existing Reina CSS.
+   (This overrides the busy parts.)
    ========================================= */
 
-/* Safety: if --page-pad isn't set globally */
 :root{
-  --page-pad: clamp(16px, 4vw, 32px);
-
-  /* Rhythm tokens */
-  --reina-s1: clamp(12px, 1.2vw, 18px);
-  --reina-s2: clamp(18px, 2vw, 28px);
-  --reina-s3: clamp(28px, 3vw, 44px);
-  --reina-s4: clamp(44px, 5vw, 80px);
+  --page-pad: clamp(18px, 4vw, 36px);
+  --reina-gap-1: clamp(12px, 1.5vw, 18px);
+  --reina-gap-2: clamp(18px, 2.4vw, 28px);
+  --reina-gap-3: clamp(28px, 3.6vw, 44px);
+  --reina-gap-4: clamp(44px, 6vw, 84px);
 }
 
-/* Page width */
-.page-width{
-  width: min(1120px, calc(100% - 2 * var(--page-pad)));
-  margin: 0 auto;
-}
-
-/* Section spacing */
 .projects.reina{
   padding-top: clamp(96px, 10vw, 140px);
-  padding-bottom: clamp(72px, 8vw, 120px);
+  padding-bottom: clamp(80px, 9vw, 140px);
 }
 
-/* =========================
-   HERO (less “card-y”, more editorial)
-   ========================= */
-.reina__hero{
-  padding: clamp(28px, 3.5vw, 44px);
-  border-radius: var(--radius-xl);
-  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
-  background: color-mix(in srgb, var(--bg) 94%, transparent);
-  box-shadow: var(--shadow-sm);
+/* Wrap */
+.reina__wrap{
+  display: flex;
+  flex-direction: column;
+  gap: var(--reina-gap-4);
 }
 
-/* Dark mode keeps it simple */
-.dark-mode .reina__hero{
-  background: rgba(15,15,15,0.65);
-  border-color: rgba(255,255,255,0.12);
+/* OVERVIEW becomes simple (remove “hero card” feel) */
+.reina__overview{
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
 }
 
-/* Tag */
+/* Tag stays small + quiet */
 .reina__tag{
-  display:inline-flex;
-  align-items:center;
-  gap:.55rem;
-  padding: .55rem 1rem;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  box-shadow: none;
   border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
-  font-weight: 800;
-  font-size: .9rem;           /* slightly bigger */
-  letter-spacing: .01em;
-  box-shadow: none;           /* remove “sticker” feel */
+  background: color-mix(in srgb, var(--bg) 95%, transparent);
+  font-weight: 750;
+  font-size: .9rem;
 }
 
-/* Title row */
-.reina__heroRow{
-  margin-top: var(--reina-s2);
-  display:flex;
-  align-items:flex-end;
-  justify-content:space-between;
-  gap: var(--reina-s2);
-}
-
-/* Bigger title, tighter but readable */
+/* Title + lead */
 .reina__title{
-  margin: 0;
-  font-size: clamp(40px, 5vw, 64px);
-  font-weight: 900;
-  letter-spacing: -0.035em;
+  margin: var(--reina-gap-2) 0 0 0;
+  font-size: clamp(42px, 5.2vw, 68px);
   line-height: 1.02;
+  letter-spacing: -0.04em;
 
-  /* keep your gradient, but it can read “loud” — if you want pure professional, comment this out */
-  background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 60%, var(--olive-3) 100%);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
+  /* If gradient feels “not clean”, uncomment next 3 lines and remove gradient styles */
+  /* background: none;
+  -webkit-text-fill-color: initial;
+  color: var(--fg); */
 }
 
-/* Lead copy: larger + better line length */
 .reina__lead{
-  margin-top: var(--reina-s2);
-  max-width: 68ch;
-  color: color-mix(in srgb, var(--fg) 78%, transparent);
-  font-size: clamp(18px, 1.3vw, 20px);
+  margin-top: var(--reina-gap-2);
+  max-width: 70ch;
+  font-size: clamp(18px, 1.35vw, 20px);
   line-height: 1.75;
+  color: color-mix(in srgb, var(--fg) 80%, transparent);
 }
 
 .reina__muted{
   color: color-mix(in srgb, var(--fg) 62%, transparent);
-  font-weight: 650;
+  font-weight: 600;
 }
 
-/* =========================
-   REMOVE BUTTONS (per request)
-   ========================= */
-.reina__cta,
-.reina__bottomCta{
-  display: none !important;
-}
+/* META replaces stat cards */
+.reina__meta{
+  margin-top: var(--reina-gap-3);
+  padding-top: var(--reina-gap-2);
+  border-top: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
 
-/* =========================
-   STATS (more air + stronger separation)
-   ========================= */
-.reina__stats{
-  margin-top: var(--reina-s3);
-  padding-top: var(--reina-s2);
-  border-top: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
-
-  display:grid;
+  display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--reina-s2);
+  gap: var(--reina-gap-2);
 }
 
 @media (max-width: 900px){
-  .reina__stats{ grid-template-columns: 1fr; }
+  .reina__meta{ grid-template-columns: 1fr; }
 }
 
-.reina__stat{
-  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
-  background: color-mix(in srgb, var(--bg) 96%, transparent);
-  border-radius: 18px;
-  padding: 1.05rem 1.1rem;
-  box-shadow: none; /* less clutter */
-}
-
-.dark-mode .reina__stat{
-  border-color: rgba(255,255,255,0.12);
-  background: rgba(15,15,15,0.55);
-}
-
-.reina__statLabel{
-  font-size: .8rem;
-  font-weight: 850;
+.reina__metaItem dt{
+  font-size: .78rem;
   letter-spacing: .12em;
   text-transform: uppercase;
   color: color-mix(in srgb, var(--fg) 55%, transparent);
+  font-weight: 800;
 }
 
-.reina__statValue{
-  margin-top: .35rem;
-  font-weight: 850;
-  font-size: 1.02rem; /* slightly bigger */
+.reina__metaItem dd{
+  margin: .35rem 0 0 0;
+  font-size: 1.02rem;
+  font-weight: 700;
   color: var(--fg);
 }
 
-/* =========================
-   MAIN GRID (more spacing + better proportions)
-   ========================= */
-.reina__grid{
-  margin-top: var(--reina-s4);
-  display:grid;
-  grid-template-columns: 1.55fr 1fr;
-  gap: clamp(28px, 4vw, 72px);
-  align-items:start;
+/* PREVIEW is the single “hero visual” */
+.reina__preview{
+  margin: 0;
 }
-
-@media (max-width: 960px){
-  .reina__grid{
-    grid-template-columns: 1fr;
-    gap: var(--reina-s3);
-  }
-}
-
-/* =========================
-   FIGURE / IMAGE
-   ========================= */
-.reina__figure{ margin: 0; }
 
 .reina__imageWrap{
-  position: relative;
-  border-radius: var(--radius-lg);
-  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
-  background: var(--card);
-  box-shadow: none; /* professional = fewer shadows */
-  overflow: hidden;
-}
-
-.reina__image{
   width: 100%;
-  height: auto;
-  display:block;
-}
-
-/* Badges: make them calmer + less “gamey” */
-.reina__badge{
-  position:absolute;
-  width: 30px; height: 30px;
-  border-radius: 999px;
-  display:grid; place-items:center;
-  font-weight: 850;
-  font-size: .85rem;
-  color:#fff;
-  background: color-mix(in srgb, var(--olive-2) 85%, #000 0%);
+  border-radius: 24px;
+  border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+  background: color-mix(in srgb, var(--bg) 97%, transparent);
   box-shadow: none;
-  opacity: 0.82;
+  overflow: hidden;
+  cursor: pointer;
 }
 
-/* Badge positions unchanged */
-.reina__badge--1{ top: 10%; left: 8%; }
-.reina__badge--2{ top: 14%; left: 28%; }
-.reina__badge--3{ top: 14%; left: 50%; }
-.reina__badge--4{ top: 14%; left: 72%; }
-.reina__badge--5{ top: 14%; left: 92%; }
+/* Remove badges entirely (busy) */
+.reina__badge{ display: none !important; }
 
 .reina__caption{
-  margin-top: var(--reina-s2);
-  max-width: 78ch;
-  color: color-mix(in srgb, var(--fg) 60%, transparent);
-  line-height: 1.7;
-  font-weight: 600;
+  margin-top: var(--reina-gap-2);
+  max-width: 80ch;
   font-size: 0.98rem;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--fg) 60%, transparent);
 }
 
-/* =========================
-   ASIDE CARD (cleaner, less heavy)
-   ========================= */
-.reina__aside{
-  border-radius: var(--radius-lg);
-  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
-  background: color-mix(in srgb, var(--bg) 96%, transparent);
-  box-shadow: none;
-  padding: clamp(18px, 2.4vw, 34px);
-}
-
-.reina__asideTitle{
-  margin: 0 0 .35rem;
-  font-size: 1.35rem;   /* slightly bigger */
-  font-weight: 900;
+/* Section headings: simple + consistent */
+.reina__sectionTitle{
+  margin: 0 0 var(--reina-gap-2) 0;
+  font-size: 1.15rem;
+  font-weight: 850;
   letter-spacing: -0.01em;
 }
 
-.reina__asideSubtitle{
-  margin: 0 0 var(--reina-s2);
-  color: color-mix(in srgb, var(--fg) 55%, transparent);
-  font-weight: 600;
-  font-size: 0.98rem;
+/* FLOW becomes “editorial list” (no card) */
+.reina__flow{
+  padding-top: var(--reina-gap-2);
 }
 
-/* =========================
-   FLOW LIST (less boxed, better spacing)
-   ========================= */
-.reina__list{
-  list-style: none;
-  padding: 0;
+.reina__flowList{
   margin: 0;
-  display:flex;
+  padding: 0;
+  list-style: none;
+
+  display: flex;
   flex-direction: column;
+  gap: 18px;
+}
+
+.reina__flowRow{
+  display: grid;
+  grid-template-columns: 40px 1fr;
   gap: 16px;
-}
+  align-items: start;
 
-/* Remove “pill tiles” and let items breathe */
-.reina__item{
-  display:flex;
-  gap: 14px;
-  align-items:flex-start;
-  padding: 0;                         /* key change */
-  border-radius: 0;
-  background: transparent;            /* key change */
-  border: none;                       /* key change */
-}
-
-.reina__step{
-  width: 34px; height: 34px;
-  border-radius: 999px;
-  display:grid; place-items:center;
-  font-weight: 900;
-  color: var(--fg);
-  background: color-mix(in srgb, var(--fg) 6%, transparent);
-  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
-  flex: 0 0 auto;
-}
-
-/* Better hierarchy */
-.reina__itemTitle{
-  font-weight: 850;
-  font-size: 1.02rem;     /* slightly bigger */
-}
-
-.reina__itemDesc{
-  color: color-mix(in srgb, var(--fg) 60%, transparent);
-  font-weight: 600;
-  margin-top: .2rem;
-  line-height: 1.6;
-  font-size: .98rem;
-}
-
-/* =========================
-   COMMENTARY (more spacing, clearer sections)
-   ========================= */
-.reina__commentary{
-  margin-top: var(--reina-s3);
-  padding-top: var(--reina-s2);
+  padding-top: 16px;
   border-top: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
 }
 
-.reina__cols{
-  display:grid;
-  grid-template-columns: 1fr;
-  gap: var(--reina-s2);
+.reina__flowRow:first-child{
+  border-top: 0;
+  padding-top: 0;
 }
 
-.reina__miniTitle{
-  font-weight: 900;
-  margin: 0 0 .6rem;
+.reina__flowStep{
+  font-weight: 850;
+  font-size: 0.95rem;
+  color: color-mix(in srgb, var(--fg) 70%, transparent);
+}
+
+.reina__flowTitle{
+  font-weight: 800;
   font-size: 1.05rem;
+}
+
+.reina__flowDesc{
+  margin-top: .25rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--fg) 62%, transparent);
+}
+
+/* NOTES: single column stack */
+.reina__noteStack{
+  display: flex;
+  flex-direction: column;
+  gap: var(--reina-gap-3);
+  padding-top: 8px;
+}
+
+.reina__note{
+  padding-top: var(--reina-gap-2);
+  border-top: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+}
+
+.reina__note:first-child{
+  border-top: 0;
+  padding-top: 0;
+}
+
+.reina__noteTitle{
+  margin: 0 0 .65rem 0;
+  font-size: 1.05rem;
+  font-weight: 850;
 }
 
 .reina__bullets{
   margin: 0;
   padding-left: 1.1rem;
-  color: color-mix(in srgb, var(--fg) 60%, transparent);
-  line-height: 1.7;
-  font-size: 0.98rem; /* slightly bigger */
+  display: grid;
+  gap: 10px;
+
+  font-size: 1rem;
+  line-height: 1.65;
+  color: color-mix(in srgb, var(--fg) 62%, transparent);
 }
 
-.reina__value{
-  margin-top: var(--reina-s2);
-}
-
-/* =========================
-   Small-screen tweaks
-   ========================= */
-@media (max-width: 520px){
-  .reina__heroRow{
-    align-items:flex-start;
-  }
-  .reina__title{
-    font-size: clamp(38px, 9vw, 52px);
-  }
+/* Make sure old “flowCard/aside” styles don’t show as boxes if still present */
+.reina__flowCard,
+.reina__aside{
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
 }

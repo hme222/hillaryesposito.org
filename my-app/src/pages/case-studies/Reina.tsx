@@ -139,13 +139,6 @@ export default function ReinaSection() {
             </article>
           </div>
         </section>
-
-        {/* ========== FINAL CTA STRIP ========== */}
-        <footer className="reina__footer" aria-label="Reina call to action">
-          <button type="button" className="reina__footerCta" onClick={goToCaseStudy}>
-            View the Reina case study →
-          </button>
-        </footer>
       </div>
     </section>
   );
