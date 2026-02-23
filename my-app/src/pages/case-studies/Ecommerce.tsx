@@ -366,7 +366,7 @@ export default function Ecommerce() {
               discovery (filters), quick view, and a cart drawer.
             </p>
 
-            {/* KPI pills (refreshed) */}
+            {/* KPI pills */}
             <div className="ecom-kpis" aria-label="Project constraints and notes">
               <div className="ecom-kpi">
                 <span className="ecom-kpi__label">Data</span>
@@ -389,260 +389,7 @@ export default function Ecommerce() {
         </div>
       </header>
 
-      {/* SINGLE DEMO SECTION (toggle on/off like a button) */}
-      <section id="ecom-demo" className="ecom-demoSection" aria-label="Interactive storefront demo">
-        <div className="ecom-narrow">
-          <div className="ecom-demoHeader">
-            <div>
-              <h2 className="ecom-demoTitle">Interactive demo</h2>
-              <p className="ecom-demoSubtitle">
-                Toggle the full demo on/off to keep the page calm. The cart + quick view only exist inside this section.
-              </p>
-            </div>
-
-            <button
-              type="button"
-              className="ecom-demoToggle"
-              onClick={toggleDemo}
-              aria-expanded={demoOpen}
-              aria-controls="ecom-demoPanel"
-            >
-              {demoOpen ? "Close demo" : "Open demo"}
-            </button>
-          </div>
-
-          {!demoOpen ? (
-            <div className="ecom-demoClosed" role="region" aria-label="Demo preview">
-              <div className="ecom-demoPreviewGrid">
-                <div className="ecom-demoPreviewCard">
-                  <div className="ecom-demoKicker">Discovery</div>
-                  <div className="ecom-demoPreviewTitle">Search + filters</div>
-                  <p className="ecom-demoPreviewDesc">Category, price range, sorting, and live results.</p>
-                </div>
-                <div className="ecom-demoPreviewCard">
-                  <div className="ecom-demoKicker">Confidence</div>
-                  <div className="ecom-demoPreviewTitle">Quick view modal</div>
-                  <p className="ecom-demoPreviewDesc">ESC close, focus restore, clean hierarchy.</p>
-                </div>
-                <div className="ecom-demoPreviewCard">
-                  <div className="ecom-demoKicker">Cart</div>
-                  <div className="ecom-demoPreviewTitle">Drawer pattern</div>
-                  <p className="ecom-demoPreviewDesc">Focus trap, quantity controls, totals, announcements.</p>
-                </div>
-              </div>
-
-              <div className="ecom-demoNote" role="note">
-                Static demo. Products come from local TypeScript data. Cart persists via <strong>localStorage</strong>. No
-                payment is processed.
-              </div>
-
-              {DEMO_URL ? (
-                <div className="ecom-demoExternal">
-                  <a className="ecom-demoExternalLink" href={DEMO_URL} target="_blank" rel="noreferrer">
-                    Open live demo in new tab →
-                  </a>
-                </div>
-              ) : null}
-            </div>
-          ) : (
-            <div id="ecom-demoPanel" className="ecom-demoOpen" role="region" aria-label="Demo panel">
-              <div className="ecom-wide ecom-demoWide">
-                {/* Demo top bar (cart lives here; feels “in place”) */}
-                <div className="ecom-storefront-head">
-                  <div>
-                    <div className="ecom-band-title">Storefront</div>
-                    <div className="ecom-band-subtitle">Filters · Quick View · Cart Drawer</div>
-                  </div>
-
-                  <button
-                    ref={cartBtnRef}
-                    type="button"
-                    className="ecom-cart-pill"
-                    onClick={openCart}
-                    aria-haspopup="dialog"
-                    aria-expanded={cartOpen}
-                    aria-controls="ecom-cart-drawer"
-                  >
-                    Cart <span aria-hidden="true">·</span> <span aria-label={`${cartCount} items`}>{cartCount}</span>
-                  </button>
-                </div>
-
-                <div className="highlight ecom-highlight" role="note" aria-label="Demo note">
-                  This is a <strong>static demo</strong>. Products are stored in local TypeScript data. Cart persists via{" "}
-                  <strong>localStorage</strong>. Checkout is demo-only (no payment processed).
-                </div>
-
-                {/* Controls */}
-                <section className="feature ecommerce-controls" aria-label="Filters and sorting">
-                  <div className="ecom-controls-grid">
-                    <div className="form-group ecom-field">
-                      <label htmlFor="ecom-search">Search</label>
-                      <input
-                        id="ecom-search"
-                        type="search"
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
-                        placeholder="Search products, categories…"
-                        aria-describedby="ecom-search-help"
-                      />
-                      <p id="ecom-search-help" className="ecom-help">
-                        Try a keyword like “tee” or a category like “Accessories”.
-                      </p>
-                    </div>
-
-                    <div className="form-group ecom-field">
-                      <label htmlFor="ecom-category">Category</label>
-                      <select
-                        id="ecom-category"
-                        value={category}
-                        onChange={(e) => setCategory(e.target.value)}
-                        className="ecom-select"
-                      >
-                        {categories.map((c) => (
-                          <option key={c} value={c}>
-                            {c}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div className="form-group ecom-field">
-                      <label htmlFor="ecom-sort">Sort</label>
-                      <select
-                        id="ecom-sort"
-                        value={sort}
-                        onChange={(e) => setSort(e.target.value as any)}
-                        className="ecom-select"
-                      >
-                        <option value="featured">Featured</option>
-                        <option value="name-asc">Name (A–Z)</option>
-                        <option value="price-asc">Price (Low–High)</option>
-                        <option value="price-desc">Price (High–Low)</option>
-                      </select>
-                    </div>
-
-                    <div className="form-group ecom-field">
-                      <label id="ecom-price-label">Price range</label>
-                      <div className="ecom-range" role="group" aria-labelledby="ecom-price-label">
-                        <input
-                          aria-label="Minimum price"
-                          type="number"
-                          min={minPossible}
-                          max={maxPossible}
-                          value={minPrice}
-                          onChange={(e) => {
-                            const v = Number(e.target.value);
-                            const next = Number.isFinite(v) ? v : minPossible;
-                            setMinPrice(clamp(next, minPossible, maxPrice));
-                          }}
-                        />
-                        <span aria-hidden="true">—</span>
-                        <input
-                          aria-label="Maximum price"
-                          type="number"
-                          min={minPossible}
-                          max={maxPossible}
-                          value={maxPrice}
-                          onChange={(e) => {
-                            const v = Number(e.target.value);
-                            const next = Number.isFinite(v) ? v : maxPossible;
-                            setMaxPrice(clamp(next, minPrice, maxPossible));
-                          }}
-                        />
-                      </div>
-                      <p className="ecom-help">
-                        {formatUSD(minPrice)} – {formatUSD(maxPrice)}
-                      </p>
-                    </div>
-
-                    <div className="ecom-controls-actions">
-                      <button type="button" className="submit-btn ecom-reset" onClick={resetFilters}>
-                        Reset
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="ecom-results" role="status" aria-live="polite">
-                    <span>
-                      <strong>{filtered.length}</strong> result{filtered.length === 1 ? "" : "s"}
-                    </span>
-                    <span className="ecom-results-label">{resultsLabel}</span>
-                  </div>
-                </section>
-
-                {/* Products */}
-                <section aria-label="Product results">
-                  <div className="ecom-products-head">
-                    <h2 id="ecom-products">Products</h2>
-                  </div>
-
-                  {filtered.length === 0 ? (
-                    <div className="feature ecom-empty" role="region" aria-label="No results">
-                      <h3>No matches</h3>
-                      <p>Try resetting filters or broadening your search.</p>
-                      <button type="button" className="hero-btn" onClick={resetFilters}>
-                        Reset filters
-                      </button>
-                    </div>
-                  ) : (
-                    <div className="ecom-grid" role="list">
-                      {filtered.map((p) => {
-                        const id = String(p.id);
-                        const img = getPrimaryImage(p);
-
-                        return (
-                          <article key={id} className="ecom-card" role="listitem">
-                            <button
-                              type="button"
-                              className="ecom-media"
-                              onClick={() => openQuickView(id)}
-                              aria-label={`Open quick view for ${p.name}`}
-                            >
-                              <img src={img} alt={p.name} loading="lazy" />
-                            </button>
-
-                            <div className="ecom-body">
-                              <h3 className="ecom-title">{p.name}</h3>
-                              <p className="ecom-meta">
-                                <span>{p.category}</span> <span aria-hidden="true">·</span>{" "}
-                                <span className="ecom-price">{formatUSD(Number(p.price))}</span>
-                              </p>
-
-                              {p.description ? <p className="ecom-desc">{p.description}</p> : null}
-
-                              <div className="ecom-actions">
-                                <button
-                                  type="button"
-                                  className="hero-btn ecom-add"
-                                  onClick={() => addToCart(id, p.name)}
-                                >
-                                  Add to cart
-                                </button>
-
-                                <button
-                                  type="button"
-                                  className="ecom-quick"
-                                  onClick={() => openQuickView(id)}
-                                  aria-label={`Quick view: ${p.name}`}
-                                  title="Quick view"
-                                >
-                                  👁
-                                </button>
-                              </div>
-                            </div>
-                          </article>
-                        );
-                      })}
-                    </div>
-                  )}
-                </section>
-              </div>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Case study body (stays calm; not mixed into the demo) */}
+      {/* Case study body (calm + editorial; demo moved to bottom) */}
       <section id="ecom-case-study" className="ecom-caseStudy" aria-label="Case study">
         <div className="ecom-narrow">
           <h2>Case Study</h2>
@@ -705,6 +452,274 @@ export default function Ecommerce() {
               </ul>
             </section>
           </div>
+        </div>
+      </section>
+
+      {/* DEMO (moved to bottom) */}
+      <section id="ecom-demo" className="ecom-demoSection" aria-label="Interactive storefront demo">
+        <div className="ecom-narrow">
+          <div className="ecom-demoHeader">
+            <div>
+              <h2 className="ecom-demoTitle">Interactive demo</h2>
+              <p className="ecom-demoSubtitle">
+                The full experience is isolated in this section. Toggle it on to explore filters, quick view, and the cart
+                drawer without changing the rest of the page.
+              </p>
+            </div>
+
+            <button
+              type="button"
+              className="ecom-demoToggle"
+              onClick={toggleDemo}
+              aria-expanded={demoOpen}
+              aria-controls="ecom-demoPanel"
+            >
+              {demoOpen ? "Close demo" : "Open demo"}
+            </button>
+          </div>
+
+          {!demoOpen ? (
+            <div className="ecom-demoClosed" role="region" aria-label="Demo preview">
+              <div className="ecom-demoPreviewGrid">
+                <div className="ecom-demoPreviewCard">
+                  <div className="ecom-demoKicker">Discovery</div>
+                  <div className="ecom-demoPreviewTitle">Search + filters</div>
+                  <p className="ecom-demoPreviewDesc">Category, price range, sorting, and live results.</p>
+                </div>
+                <div className="ecom-demoPreviewCard">
+                  <div className="ecom-demoKicker">Confidence</div>
+                  <div className="ecom-demoPreviewTitle">Quick view modal</div>
+                  <p className="ecom-demoPreviewDesc">ESC close, focus restore, clean hierarchy.</p>
+                </div>
+                <div className="ecom-demoPreviewCard">
+                  <div className="ecom-demoKicker">Cart</div>
+                  <div className="ecom-demoPreviewTitle">Drawer pattern</div>
+                  <p className="ecom-demoPreviewDesc">Focus trap, quantity controls, totals, announcements.</p>
+                </div>
+              </div>
+
+              <div className="ecom-demoNote" role="note">
+                Static demo. Products come from local TypeScript data. Cart persists via <strong>localStorage</strong>. No
+                payment is processed.
+              </div>
+
+              {DEMO_URL ? (
+                <div className="ecom-demoExternal">
+                  <a className="ecom-demoExternalLink" href={DEMO_URL} target="_blank" rel="noreferrer">
+                    Open live demo in new tab →
+                  </a>
+                </div>
+              ) : null}
+            </div>
+          ) : (
+            <div id="ecom-demoPanel" className="ecom-demoOpen" role="region" aria-label="Demo panel">
+              {/* “Inside a computer” frame */}
+              <div className="ecom-deviceFrame" role="group" aria-label="Storefront demo frame">
+                <div className="ecom-deviceTop" aria-hidden="true">
+                  <div className="ecom-deviceDots">
+                    <span />
+                    <span />
+                    <span />
+                  </div>
+                  <div className="ecom-deviceUrl">storefront.demo</div>
+                </div>
+
+                <div className="ecom-deviceBody">
+                  <div className="ecom-wide ecom-demoWide">
+                    {/* Demo top bar (cart lives here; feels “in place”) */}
+                    <div className="ecom-storefront-head">
+                      <div>
+                        <div className="ecom-band-title">Storefront</div>
+                        <div className="ecom-band-subtitle">Filters · Quick View · Cart Drawer</div>
+                      </div>
+
+                      <button
+                        ref={cartBtnRef}
+                        type="button"
+                        className="ecom-cart-pill"
+                        onClick={openCart}
+                        aria-haspopup="dialog"
+                        aria-expanded={cartOpen}
+                        aria-controls="ecom-cart-drawer"
+                      >
+                        Cart <span aria-hidden="true">·</span> <span aria-label={`${cartCount} items`}>{cartCount}</span>
+                      </button>
+                    </div>
+
+                    <div className="highlight ecom-highlight" role="note" aria-label="Demo note">
+                      This is a <strong>static demo</strong>. Products are stored in local TypeScript data. Cart persists
+                      via <strong>localStorage</strong>. Checkout is demo-only (no payment processed).
+                    </div>
+
+                    {/* Controls */}
+                    <section className="feature ecommerce-controls" aria-label="Filters and sorting">
+                      <div className="ecom-controls-grid">
+                        <div className="form-group ecom-field">
+                          <label htmlFor="ecom-search">Search</label>
+                          <input
+                            id="ecom-search"
+                            type="search"
+                            value={query}
+                            onChange={(e) => setQuery(e.target.value)}
+                            placeholder="Search products, categories…"
+                            aria-describedby="ecom-search-help"
+                          />
+                          <p id="ecom-search-help" className="ecom-help">
+                            Try a keyword like “tee” or a category like “Accessories”.
+                          </p>
+                        </div>
+
+                        <div className="form-group ecom-field">
+                          <label htmlFor="ecom-category">Category</label>
+                          <select
+                            id="ecom-category"
+                            value={category}
+                            onChange={(e) => setCategory(e.target.value)}
+                            className="ecom-select"
+                          >
+                            {categories.map((c) => (
+                              <option key={c} value={c}>
+                                {c}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+
+                        <div className="form-group ecom-field">
+                          <label htmlFor="ecom-sort">Sort</label>
+                          <select
+                            id="ecom-sort"
+                            value={sort}
+                            onChange={(e) => setSort(e.target.value as any)}
+                            className="ecom-select"
+                          >
+                            <option value="featured">Featured</option>
+                            <option value="name-asc">Name (A–Z)</option>
+                            <option value="price-asc">Price (Low–High)</option>
+                            <option value="price-desc">Price (High–Low)</option>
+                          </select>
+                        </div>
+
+                        <div className="form-group ecom-field">
+                          <label id="ecom-price-label">Price range</label>
+                          <div className="ecom-range" role="group" aria-labelledby="ecom-price-label">
+                            <input
+                              aria-label="Minimum price"
+                              type="number"
+                              min={minPossible}
+                              max={maxPossible}
+                              value={minPrice}
+                              onChange={(e) => {
+                                const v = Number(e.target.value);
+                                const next = Number.isFinite(v) ? v : minPossible;
+                                setMinPrice(clamp(next, minPossible, maxPrice));
+                              }}
+                            />
+                            <span aria-hidden="true">—</span>
+                            <input
+                              aria-label="Maximum price"
+                              type="number"
+                              min={minPossible}
+                              max={maxPossible}
+                              value={maxPrice}
+                              onChange={(e) => {
+                                const v = Number(e.target.value);
+                                const next = Number.isFinite(v) ? v : maxPossible;
+                                setMaxPrice(clamp(next, minPrice, maxPossible));
+                              }}
+                            />
+                          </div>
+                          <p className="ecom-help">
+                            {formatUSD(minPrice)} – {formatUSD(maxPrice)}
+                          </p>
+                        </div>
+
+                        <div className="ecom-controls-actions">
+                          <button type="button" className="submit-btn ecom-reset" onClick={resetFilters}>
+                            Reset
+                          </button>
+                        </div>
+                      </div>
+
+                      <div className="ecom-results" role="status" aria-live="polite">
+                        <span>
+                          <strong>{filtered.length}</strong> result{filtered.length === 1 ? "" : "s"}
+                        </span>
+                        <span className="ecom-results-label">{resultsLabel}</span>
+                      </div>
+                    </section>
+
+                    {/* Products */}
+                    <section aria-label="Product results">
+                      <div className="ecom-products-head">
+                        <h2 id="ecom-products">Products</h2>
+                      </div>
+
+                      {filtered.length === 0 ? (
+                        <div className="feature ecom-empty" role="region" aria-label="No results">
+                          <h3>No matches</h3>
+                          <p>Try resetting filters or broadening your search.</p>
+                          <button type="button" className="hero-btn" onClick={resetFilters}>
+                            Reset filters
+                          </button>
+                        </div>
+                      ) : (
+                        <div className="ecom-grid" role="list">
+                          {filtered.map((p) => {
+                            const id = String(p.id);
+                            const img = getPrimaryImage(p);
+
+                            return (
+                              <article key={id} className="ecom-card" role="listitem">
+                                <button
+                                  type="button"
+                                  className="ecom-media"
+                                  onClick={() => openQuickView(id)}
+                                  aria-label={`Open quick view for ${p.name}`}
+                                >
+                                  <img src={img} alt={p.name} loading="lazy" />
+                                </button>
+
+                                <div className="ecom-body">
+                                  <h3 className="ecom-title">{p.name}</h3>
+                                  <p className="ecom-meta">
+                                    <span>{p.category}</span> <span aria-hidden="true">·</span>{" "}
+                                    <span className="ecom-price">{formatUSD(Number(p.price))}</span>
+                                  </p>
+
+                                  {p.description ? <p className="ecom-desc">{p.description}</p> : null}
+
+                                  <div className="ecom-actions">
+                                    <button
+                                      type="button"
+                                      className="hero-btn ecom-add"
+                                      onClick={() => addToCart(id, p.name)}
+                                    >
+                                      Add to cart
+                                    </button>
+
+                                    <button
+                                      type="button"
+                                      className="ecom-quick"
+                                      onClick={() => openQuickView(id)}
+                                      aria-label={`Quick view: ${p.name}`}
+                                      title="Quick view"
+                                    >
+                                      👁
+                                    </button>
+                                  </div>
+                                </div>
+                              </article>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </section>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
