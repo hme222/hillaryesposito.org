@@ -185,6 +185,50 @@ button:focus,a:focus,input:focus,textarea:focus,select:focus{
 }
 .nav-link:hover::after{width:100%;}
 
+
+/* =========================
+   NAV SURFACE TOKENS (fix dark-mode navbar visibility)
+   ========================= */
+:root{
+  --nav-bg: rgba(255,255,255,0.78);
+  --nav-border: rgba(0,0,0,0.08);
+  --nav-shadow: 0 10px 28px rgba(0,0,0,0.08);
+
+  --menu-bg: rgba(255,255,255,0.92);
+}
+
+.dark-mode{
+  --nav-bg: rgba(15,15,15,0.80);          /* visibly distinct from page bg */
+  --nav-border: rgba(255,255,255,0.12);
+  --nav-shadow: 0 14px 34px rgba(0,0,0,0.55);
+
+  --menu-bg: rgba(15,15,15,0.92);
+}
+
+/* Apply tokens */
+.navbar{
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--nav-border);
+  box-shadow: var(--nav-shadow);
+}
+
+/* Mobile menu surface (your .nav-menu overlay) */
+@media (max-width:968px){
+  .nav-menu{
+    background: var(--menu-bg);
+  }
+}
+
+/* Make the underline visible + on-brand in dark mode */
+.dark-mode .nav-link::after{
+  background: var(--focus); /* your dark-mode orange */
+}
+
+/* Optional: make theme icon feel consistent */
+.theme-btn{
+  transition: transform .25s ease, color .25s ease;
+}
+
 /* =========================
    GLOBAL UI
    ========================= */
