@@ -28,7 +28,7 @@ export default function ReinaSection() {
             <span>Featured Concept</span>
           </div>
 
-          <h2 className="section-title reina__title">Reina</h2>
+          <h1 className="section-title reina__title">Reina</h1>
 
           <p className="reina__lead">
             Helping couples discover and schedule international wedding venues with confidence.{" "}
@@ -94,7 +94,7 @@ export default function ReinaSection() {
         </figure>
 
         <section className="reina__flow" aria-label="Core user flow">
-          <h3 className="reina__sectionTitle">Core user flow</h3>
+          <h2 className="reina__sectionTitle">Core user flow</h2>
           <ol className="reina__flowList">
             {CALLOUTS.map((c) => (
               <li key={c.step} className="reina__flowRow">
@@ -109,7 +109,7 @@ export default function ReinaSection() {
         </section>
 
         <section className="reina__notes" aria-label="Design reflections">
-          <h3 className="reina__sectionTitle">Design reflections</h3>
+          <h2 className="reina__sectionTitle">Design reflections</h2>
 
           <div className="reina__noteStack">
             <article className="reina__note">

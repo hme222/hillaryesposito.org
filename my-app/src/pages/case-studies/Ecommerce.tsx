@@ -43,7 +43,6 @@ function useLiveAnnouncer() {
   const liveTimer = useRef<number | null>(null);
 
   const announce = useCallback((msg: string) => {
-    // Clear then set (helps some SRs re-announce identical text)
     setLiveMessage("");
     window.requestAnimationFrame(() => setLiveMessage(msg));
 
@@ -367,22 +366,23 @@ export default function Ecommerce() {
               discovery (filters), quick view, and a cart drawer.
             </p>
 
+            {/* KPI pills (refreshed) */}
             <div className="ecom-kpis" aria-label="Project constraints and notes">
               <div className="ecom-kpi">
-                <div className="ecom-kpi__label">Data</div>
-                <div className="ecom-kpi__value">Local TypeScript</div>
+                <span className="ecom-kpi__label">Data</span>
+                <span className="ecom-kpi__value">Local TypeScript</span>
               </div>
               <div className="ecom-kpi">
-                <div className="ecom-kpi__label">Cart</div>
-                <div className="ecom-kpi__value">localStorage</div>
+                <span className="ecom-kpi__label">Cart</span>
+                <span className="ecom-kpi__value">localStorage</span>
               </div>
               <div className="ecom-kpi">
-                <div className="ecom-kpi__label">Checkout</div>
-                <div className="ecom-kpi__value">Demo-only</div>
+                <span className="ecom-kpi__label">Checkout</span>
+                <span className="ecom-kpi__value">Demo-only</span>
               </div>
               <div className="ecom-kpi">
-                <div className="ecom-kpi__label">A11y</div>
-                <div className="ecom-kpi__value">Keyboard + SR</div>
+                <span className="ecom-kpi__label">A11y</span>
+                <span className="ecom-kpi__value">Keyboard + SR</span>
               </div>
             </div>
           </div>
@@ -619,12 +619,12 @@ export default function Ecommerce() {
                                   Add to cart
                                 </button>
 
-                                {/* calmer than a second text link */}
                                 <button
                                   type="button"
                                   className="ecom-quick"
                                   onClick={() => openQuickView(id)}
                                   aria-label={`Quick view: ${p.name}`}
+                                  title="Quick view"
                                 >
                                   👁
                                 </button>
