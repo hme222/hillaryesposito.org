@@ -1,94 +1,48 @@
 // src/pages/Home.tsx
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
 
-gsap.registerPlugin(ScrollTrigger);
-
 export default function Home() {
-  const rootRef = useRef<HTMLElement | null>(null);
-
-  useEffect(() => {
-    const root = rootRef.current;
-    if (!root) return;
-
-    const ctx = gsap.context(() => {
-      const heroH1 = root.querySelector(".hero-title");
-      if (heroH1) {
-        gsap.fromTo(
-          heroH1,
-          { opacity: 0, clipPath: "inset(0 0 100% 0)" },
-          {
-            opacity: 1,
-            clipPath: "inset(0 0 0% 0)",
-            duration: 1.2,
-            ease: "power3.out",
-            delay: 0.2,
-          },
-        );
-      }
-
-      const fadeEls = gsap.utils.toArray<HTMLElement>(
-        root.querySelectorAll(".fade-text"),
-      );
-
-      fadeEls.forEach((el, i) => {
-        gsap.from(el, {
-          opacity: 0,
-          y: 18,
-          duration: 0.8,
-          delay: 0.15 + i * 0.12,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 85%",
-            once: true,
-          },
-        });
-      });
-    }, root);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section
-      ref={rootRef}
-      className="section active hero"
-      aria-label="Home section"
-    >
+    <section className="section active hero" aria-label="Home section">
       <div className="hero-content">
         <motion.h1
+          className="hero-title"
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.2, 0.8, 0.2, 1] }}
-          className="hero-title"
         >
           HILLARY ESPOSITO
         </motion.h1>
 
         <div className="hero-copy">
           <motion.p
-            className="hero-description fade-text"
+            className="hero-description"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.2, 0.8, 0.2, 1] }}
+            transition={{
+              duration: 0.8,
+              delay: 0.1,
+              ease: [0.2, 0.8, 0.2, 1],
+            }}
           >
             I design for clarity in the moments that matter. Veteran turned UX
-            designer with experience in healthcare, government, and
-            high‑pressure systems. I am driven by curiosity, grounded in service,
-            and focused on helping people feel more capable. I turn complex,
-            high‑emotion workflows into experiences that feel intuitive, calm,
-            and human.
+            designer with experience in healthcare, government, and high-pressure
+            systems. I am driven by curiosity, grounded in service, and focused
+            on helping people feel more capable. I turn complex, high-emotion
+            workflows into experiences that feel intuitive, calm, and human.
           </motion.p>
 
           <motion.div
-            className="hero-actions fade-text"
+            className="hero-actions"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.2, 0.8, 0.2, 1] }}
+            transition={{
+              duration: 0.8,
+              delay: 0.2,
+              ease: [0.2, 0.8, 0.2, 1],
+            }}
           >
             <Link to="/contact" className="hero-btn">
               Contact me
