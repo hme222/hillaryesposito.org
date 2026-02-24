@@ -2251,3 +2251,288 @@ footer p {
 .dark-mode .cs-toggle-link{
   color: var(--focus);
 }
+
+/* =========================================================
+   WCAG DARK MODE PATCH (PALETTE-LOCKED, NO LAYOUT CHANGES)
+   Paste at the VERY BOTTOM of your CSS file.
+
+   Palette:
+   #F8D2B7 (cream)
+   #EBA352 (gold)
+   #BA803F (copper)
+   #8B5F2D (brown)
+   #5F3F1C (deep brown)
+   #36220C (card brown)
+   #1A0E03 (near-black brown)
+
+   WCAG goal:
+   - Body/copy/labels/link text always >= 4.5:1 against their backgrounds.
+   - Accent background ALWAYS uses dark text (never cream on gold).
+   ========================================================= */
+
+/* 1) Core tokens in dark mode (use your palette everywhere) */
+.dark-mode{
+  /* Base */
+  --bg: #1A0E03;
+  --fg: #F8D2B7;
+
+  /* Copy tokens (WCAG-safe on #1A0E03 and #36220C) */
+  --text-1: #F8D2B7;              /* main copy */
+  --text-2: rgba(248,210,183,.86); /* secondary copy */
+  --text-3: rgba(248,210,183,.76); /* muted copy (still WCAG-safe) */
+  --muted: var(--text-3);
+
+  /* Surfaces */
+  --card: #36220C;
+  --surface-0: var(--bg);
+  --surface-1: var(--card);
+  --surface-2: #5F3F1C;
+
+  /* Borders */
+  --border: rgba(248,210,183,.18);
+  --border-strong: rgba(248,210,183,.26);
+
+  /* Accent + focus */
+  --focus: #EBA352;
+
+  /* IMPORTANT: remap your existing “olive” system so you don’t rewrite gradients */
+  --olive-1: #EBA352;
+  --olive-2: #BA803F;
+  --olive-3: #8B5F2D;
+
+  /* Buttons on accent backgrounds MUST use dark text for WCAG */
+  --on-accent: #1A0E03;
+
+  /* Inputs */
+  --input-bg: rgba(26,14,3,.82);
+  --input-border: rgba(248,210,183,.22);
+
+  /* Shadows */
+  --shadow-sm: 0 10px 28px rgba(0,0,0,.55);
+  --shadow-md: 0 16px 44px rgba(0,0,0,.62);
+  --shadow-olive: 0 18px 50px rgba(235,163,82,.18);
+}
+
+/* 2) Global text + surfaces (copy contrast) */
+.dark-mode body{
+  background: var(--bg);
+  color: var(--text-1);
+}
+
+.dark-mode p,
+.dark-mode li,
+.dark-mode .hero-description,
+.dark-mode .contact-info p,
+.dark-mode .about-intro,
+.dark-mode .chapter-text,
+.dark-mode .about-life-intro p,
+.dark-mode .about-growth-text,
+.dark-mode .about-cta-content p{
+  color: var(--text-3);
+}
+
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4,
+.dark-mode dt,
+.dark-mode strong{
+  color: var(--text-1);
+}
+
+/* 3) Cards/surfaces (no layout change, just color) */
+.dark-mode .feature,
+.dark-mode .contact-form,
+.dark-mode .about-life-card,
+.dark-mode .about-cta-card,
+.dark-mode .media-card,
+.dark-mode .hobby-card,
+.dark-mode .project-card{
+  background: var(--surface-1) !important;
+  border-color: var(--border) !important;
+}
+
+/* 4) Projects page (ensure title/description contrast) */
+.dark-mode .projects{ background: var(--bg); }
+
+.dark-mode .project-body h3{ color: var(--text-1); }
+.dark-mode .project-body p{
+  color: var(--text-2); /* safer than color-mix against changing --fg */
+}
+
+/* Project media stays pretty but not muddy */
+.dark-mode .project-media{
+  background:
+    radial-gradient(circle at 18% 38%, rgba(235,163,82,.20), transparent 60%),
+    radial-gradient(circle at 82% 72%, rgba(186,128,63,.16), transparent 60%),
+    linear-gradient(135deg, rgba(95,63,28,.55), rgba(26,14,3,.40));
+}
+.dark-mode .project-icon{
+  background: rgba(248,210,183,.10);
+  border-color: rgba(248,210,183,.24);
+  color: var(--text-1);
+}
+
+/* 5) Links: don’t rely on color alone + keep contrast */
+.dark-mode a,
+.dark-mode .cs-link,
+.dark-mode .cs-toggle-link,
+.dark-mode .ecommerce-cs .ecom-link,
+.dark-mode .ecommerce-cs .ecom-demoExternalLink{
+  color: var(--focus);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
+
+/* Hover stays within palette and still contrasts */
+.dark-mode a:hover,
+.dark-mode .nav-link:hover{
+  color: #EBA352;
+}
+
+/* 6) NAV: readable, consistent, WCAG-safe */
+.dark-mode .navbar{
+  color: var(--text-1);
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  border-bottom: 1px solid rgba(248,210,183,.14);
+}
+.dark-mode .nav-link,
+.dark-mode .theme-btn,
+.dark-mode .hamburger{
+  color: var(--text-1);
+}
+.dark-mode .nav-link::after{ background: var(--focus); }
+
+/* 7) Forms: inputs + labels must pass */
+.dark-mode .form-group label{ color: var(--text-1); }
+
+.dark-mode .form-group input,
+.dark-mode .form-group textarea,
+.dark-mode select{
+  background: var(--input-bg);
+  color: var(--text-1);
+  border-color: var(--input-border);
+}
+.dark-mode .form-group input::placeholder,
+.dark-mode .form-group textarea::placeholder{
+  color: rgba(248,210,183,.70);
+}
+.dark-mode .form-group input:focus,
+.dark-mode .form-group textarea:focus,
+.dark-mode select:focus{
+  border-color: var(--focus);
+}
+
+/* 8) Buttons / CTAs (CRITICAL WCAG FIX)
+   Your gradients now use palette via --olive-*.
+   Force text to dark on the warm gradient so it passes. */
+.dark-mode .hero-btn,
+.dark-mode .submit-btn,
+.dark-mode .ecommerce-cs .ecom-add.hero-btn{
+  color: var(--on-accent) !important;
+}
+
+/* 9) Case study blocks */
+.dark-mode .case-study p,
+.dark-mode .case-study li{ color: var(--text-3); }
+
+.dark-mode .case-study .meta{ color: var(--text-3); }
+
+.dark-mode .case-study .highlight,
+.dark-mode .highlight{
+  background: color-mix(in srgb, var(--card) 90%, transparent);
+  border-color: var(--border);
+  border-left-color: var(--focus);
+  color: var(--text-1);
+}
+
+/* Media captions (copy must pass) */
+.dark-mode .cs-media figcaption{
+  color: var(--text-2);
+}
+
+/* 10) Reina: borders + copy */
+.dark-mode .projects.reina{ background: transparent; }
+
+.dark-mode .projects.reina .reina__tag,
+.dark-mode .projects.reina .reina__imageWrap{
+  background: color-mix(in srgb, var(--card) 88%, transparent);
+  border-color: var(--border);
+}
+
+.dark-mode .projects.reina .reina__lead,
+.dark-mode .projects.reina .reina__caption,
+.dark-mode .projects.reina .reina__flowDesc,
+.dark-mode .projects.reina .reina__bullets{
+  color: var(--text-2);
+}
+
+.dark-mode .projects.reina .reina__meta,
+.dark-mode .projects.reina .reina__summary,
+.dark-mode .projects.reina .reina__flowRow,
+.dark-mode .projects.reina .reina__note{
+  border-top-color: rgba(248,210,183,.16);
+}
+
+/* 11) E-commerce: remove gray/white-dark leftovers; keep copy readable */
+.dark-mode .ecommerce-cs .ecom-wide,
+.dark-mode .ecommerce-cs .ecom-deviceFrame,
+.dark-mode .ecommerce-cs .ecom-dialog-inner,
+.dark-mode .ecommerce-cs .ecom-drawer{
+  background: color-mix(in srgb, var(--card) 82%, transparent);
+  border-color: var(--border) !important;
+}
+
+.dark-mode .ecommerce-cs .ecom-kpi,
+.dark-mode .ecommerce-cs .ecom-demoToggle,
+.dark-mode .ecommerce-cs .ecom-demoClosed,
+.dark-mode .ecommerce-cs .ecom-demoPreviewCard,
+.dark-mode .ecommerce-cs .ecom-cart-pill,
+.dark-mode .ecommerce-cs .ecom-quick,
+.dark-mode .ecommerce-cs .ecom-qty-btn{
+  border-color: var(--border) !important;
+  background: rgba(248,210,183,.06) !important;
+  color: var(--text-1);
+}
+
+.dark-mode .ecommerce-cs .ecom-select,
+.dark-mode .ecommerce-cs .ecom-qty-input,
+.dark-mode .ecommerce-cs input[type="search"],
+.dark-mode .ecommerce-cs input[type="number"]{
+  background: var(--input-bg) !important;
+  color: var(--text-1) !important;
+  border-color: var(--input-border) !important;
+}
+
+.dark-mode .ecommerce-cs .ecom-title,
+.dark-mode .ecommerce-cs .ecom-price,
+.dark-mode .ecommerce-cs .ecom-dialog-price{
+  color: var(--text-1);
+}
+
+.dark-mode .ecommerce-cs .ecom-help,
+.dark-mode .ecommerce-cs .ecom-desc,
+.dark-mode .ecommerce-cs .ecom-results,
+.dark-mode .ecommerce-cs .ecom-demoSubtitle,
+.dark-mode .ecommerce-cs .ecom-demoPreviewDesc,
+.dark-mode .ecommerce-cs .ecom-demoNote,
+.dark-mode .ecommerce-cs .ecom-meta,
+.dark-mode .ecommerce-cs .ecom-dialog-cat,
+.dark-mode .ecommerce-cs .ecom-muted{
+  color: var(--text-3) !important;
+}
+
+.dark-mode .ecommerce-cs .ecom-cart-item{
+  background: color-mix(in srgb, var(--card) 92%, transparent);
+  border-color: var(--border);
+}
+
+/* 12) Focus visibility (already in your base, but ensure it’s visible on brown) */
+.dark-mode button:focus,
+.dark-mode a:focus,
+.dark-mode input:focus,
+.dark-mode textarea:focus,
+.dark-mode select:focus{
+  outline-color: var(--focus);
+}
