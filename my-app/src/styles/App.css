@@ -1650,3 +1650,186 @@ footer p{color: var(--text-3);font-size:.9rem;font-weight:600;}
   .projects.reina .reina__meta{ grid-template-columns: 1fr; gap: 18px; }
   .projects.reina .reina__summary{ grid-template-columns: 1fr; }
 }
+
+/* =========================================================
+   PROJECT PAGES — NIGHT MODE FIX PACK
+   Targets: Projects grid, Reina, Ecommerce, Good Harvest/case-study
+   Paste at the very bottom of your CSS
+   ========================================================= */
+
+/* 0) Make sure your “canonical” surfaces are used everywhere */
+.dark-mode body{
+  background: var(--surface-0);
+  color: var(--text-1);
+}
+
+/* 1) PROJECTS PAGE (grid) */
+.dark-mode .projects{
+  background: var(--surface-0);
+}
+
+/* Title gradient can look harsh on black; soften */
+.dark-mode .section-title{
+  background: linear-gradient(135deg, rgba(235,163,82,0.95) 0%, rgba(235,163,82,0.70) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+/* Cards: kill any brown/light hardcodes and unify */
+.dark-mode .project-card{
+  background: var(--surface-1) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow-md);
+}
+
+/* Card hover should not “gray out” */
+.dark-mode .project-card:hover{
+  box-shadow: 0 18px 46px rgba(0,0,0,0.55);
+}
+
+/* Media header should be subtle (not muddy gradients) */
+.dark-mode .project-media{
+  background:
+    radial-gradient(circle at 20% 40%, rgba(235,163,82,0.14), transparent 60%),
+    radial-gradient(circle at 85% 70%, rgba(235,163,82,0.10), transparent 60%),
+    var(--surface-1) !important;
+}
+
+/* Text inside project cards */
+.dark-mode .project-body h3{
+  color: var(--text-1);
+}
+.dark-mode .project-body p{
+  color: var(--text-2);
+}
+
+/* Project icon should not inherit weird brown/white blocks */
+.dark-mode .project-icon{
+  background: rgba(255,255,255,0.06) !important;
+  border-color: rgba(255,255,255,0.14) !important;
+  color: var(--text-1);
+}
+
+/* 2) CASE STUDY BASE (Good Harvest + any other subproject page) */
+.dark-mode .case-study{
+  background: transparent; /* let body show through */
+  color: var(--text-1);
+}
+
+/* Fix headings that were tuned for light */
+.dark-mode .case-study h1{
+  background: linear-gradient(135deg, rgba(235,163,82,0.95) 0%, rgba(235,163,82,0.70) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.dark-mode .case-study h2{ color: var(--focus); }
+.dark-mode .case-study h3{ color: var(--text-1); }
+
+/* Body text */
+.dark-mode .case-study p,
+.dark-mode .case-study li,
+.dark-mode .case-study .meta{
+  color: var(--text-2);
+}
+
+/* Highlight callout: stop looking like a light-mode panel */
+.dark-mode .case-study .highlight,
+.dark-mode .highlight{
+  background: var(--surface-1);
+  border-color: rgba(255,255,255,0.12);
+  color: var(--text-1);
+}
+.dark-mode .case-study strong{ color: var(--text-1); }
+
+/* 3) CASE STUDY MEDIA GRID (Good Harvest gallery cards) */
+.dark-mode .media-card{
+  background: var(--surface-1) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow-md);
+}
+.dark-mode .media-link{
+  background: rgba(255,255,255,0.03) !important;
+  border-color: rgba(255,255,255,0.14) !important;
+}
+.dark-mode .cs-media figcaption{
+  color: var(--text-2);
+}
+
+/* 4) ECOMMERCE PAGE — unify surfaces (your file mixes var(--bg)/rgba) */
+.dark-mode .ecommerce-cs .ecom-wide,
+.dark-mode .ecommerce-cs .ecom-deviceFrame,
+.dark-mode .ecommerce-cs .ecom-dialog-inner,
+.dark-mode .ecommerce-cs .ecom-drawer,
+.dark-mode .ecommerce-cs .ecom-card,
+.dark-mode .ecommerce-cs .ecom-demoPreviewCard,
+.dark-mode .ecommerce-cs .ecom-demoClosed{
+  background: var(--surface-1) !important;
+  border-color: rgba(255,255,255,0.12) !important;
+}
+
+/* Ecommerce “raised” areas (slightly different depth) */
+.dark-mode .ecommerce-cs .ecom-deviceTop,
+.dark-mode .ecommerce-cs .ecom-cart-item{
+  background: var(--surface-2) !important;
+  border-color: rgba(255,255,255,0.12) !important;
+}
+
+/* Ecommerce text */
+.dark-mode .ecommerce-cs .ecom-title,
+.dark-mode .ecommerce-cs .ecom-price,
+.dark-mode .ecommerce-cs .ecom-dialog-price{
+  color: var(--text-1);
+}
+.dark-mode .ecommerce-cs .ecom-desc,
+.dark-mode .ecommerce-cs .ecom-help,
+.dark-mode .ecommerce-cs .ecom-dialog-desc,
+.dark-mode .ecommerce-cs .ecom-band-subtitle{
+  color: var(--text-2);
+}
+
+/* Inputs/buttons: remove #1a1a1a pockets */
+.dark-mode .ecommerce-cs .ecom-select,
+.dark-mode .ecommerce-cs .ecom-qty-input{
+  background: var(--input-bg) !important;
+  border-color: var(--input-border) !important;
+  color: var(--text-1) !important;
+}
+.dark-mode .ecommerce-cs .ecom-qty-btn,
+.dark-mode .ecommerce-cs .ecom-quick,
+.dark-mode .ecommerce-cs .ecom-cart-pill,
+.dark-mode .ecommerce-cs .ecom-demoToggle{
+  background: rgba(255,255,255,0.04) !important;
+  border-color: rgba(255,255,255,0.14) !important;
+  color: var(--text-1) !important;
+}
+
+/* 5) REINA PAGE — fix “light” borders/backgrounds */
+.dark-mode .projects.reina{
+  background: var(--surface-0);
+}
+.dark-mode .projects.reina .reina__imageWrap,
+.dark-mode .projects.reina .reina__tag{
+  background: rgba(255,255,255,0.03) !important;
+  border-color: rgba(255,255,255,0.14) !important;
+}
+.dark-mode .projects.reina .reina__caption,
+.dark-mode .projects.reina .reina__flowDesc,
+.dark-mode .projects.reina .reina__bullets,
+.dark-mode .projects.reina .reina__summaryText{
+  color: var(--text-2);
+}
+.dark-mode .projects.reina .reina__flowTitle,
+.dark-mode .projects.reina .reina__noteTitle,
+.dark-mode .projects.reina .reina__metaItem dd{
+  color: var(--text-1);
+}
+
+/* 6) Links on dark pages (so your accents are consistent) */
+.dark-mode .cs-link,
+.dark-mode .cs-toggle-link,
+.dark-mode .ecommerce-cs .ecom-link,
+.dark-mode .ecommerce-cs .ecom-demoExternalLink{
+  color: var(--focus);
+}
