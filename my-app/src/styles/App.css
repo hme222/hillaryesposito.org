@@ -63,6 +63,169 @@
   background: var(--focus);
 }
 
+/* =========================================================
+   NIGHT MODE ALIGNMENT PATCH (unify surfaces + remove hardcodes)
+   Paste after your :root and .dark-mode token blocks
+   ========================================================= */
+
+/* 1) Add shared “surface” tokens (light + dark) */
+:root{
+  /* Surfaces */
+  --surface-0: var(--bg);        /* page background */
+  --surface-1: var(--card);      /* standard card */
+  --surface-2: #ffffff;          /* raised card (light) */
+
+  /* Borders */
+  --border-strong: color-mix(in srgb, var(--fg) 14%, transparent);
+
+  /* Text helpers */
+  --text-1: var(--fg);
+  --text-2: color-mix(in srgb, var(--fg) 72%, transparent);
+  --text-3: var(--muted);
+
+  /* Inputs */
+  --input-bg: var(--bg);
+  --input-border: var(--border);
+}
+
+.dark-mode{
+  /* Make dark mode feel like one system everywhere */
+  --surface-0: #0a0a0a;
+  --surface-1: #0f0f0f;          /* your current --card */
+  --surface-2: #141414;          /* “raised” surface for cards/dialogs */
+  --border: rgba(255,255,255,0.10);
+  --border-strong: rgba(255,255,255,0.14);
+
+  --text-1: rgba(255,255,255,0.96);
+  --text-2: rgba(255,255,255,0.78);
+  --text-3: rgba(255,255,255,0.68);
+
+  --input-bg: #101010;
+  --input-border: rgba(255,255,255,0.14);
+}
+
+/* 2) Normalize global surfaces */
+body{
+  background: var(--surface-0);
+  color: var(--text-1);
+}
+
+.feature,
+.contact-form,
+.about-life-card,
+.about-cta-card,
+.media-card,
+.ecommerce-cs .ecom-demoClosed,
+.ecommerce-cs .ecom-demoPreviewCard,
+.ecommerce-cs .ecom-card,
+.ecommerce-cs .ecom-deviceFrame,
+.ecommerce-cs .ecom-dialog-inner,
+.ecommerce-cs .ecom-drawer,
+.ecommerce-cs .ecom-cart-item{
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+}
+
+/* Raised components (optional but helps “depth” consistency) */
+.ecommerce-cs .ecom-wide,
+.ecommerce-cs .ecom-deviceTop{
+  background: color-mix(in srgb, var(--surface-2) 92%, transparent);
+  border: 1px solid var(--border);
+}
+
+/* 3) Kill the biggest offender: hard-coded dark brown project card */
+.project-card{
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+}
+.dark-mode .project-card{
+  /* REMOVE: background: #36220c; */
+  background: var(--surface-1);
+  border-color: var(--border);
+  box-shadow: var(--shadow-md);
+}
+
+/* Make project-media match the same night palette */
+.project-media{
+  background:
+    radial-gradient(circle at 20% 40%, color-mix(in srgb, var(--focus) 14%, transparent), transparent 60%),
+    radial-gradient(circle at 85% 70%, color-mix(in srgb, var(--focus) 10%, transparent), transparent 60%),
+    var(--surface-1);
+}
+.dark-mode .project-media{
+  background:
+    radial-gradient(circle at 20% 40%, rgba(235,163,82,0.14), transparent 60%),
+    radial-gradient(circle at 85% 70%, rgba(235,163,82,0.10), transparent 60%),
+    var(--surface-1);
+}
+
+/* 4) Make text colors consistent across sections */
+.hero-description,
+.contact-info p,
+.case-study p,
+.case-study li,
+.about-intro,
+.chapter-text,
+.about-life-intro p,
+.about-growth-text,
+.about-cta-content p,
+.ecommerce-cs .ecom-desc,
+.ecommerce-cs .ecom-demoSubtitle,
+.ecommerce-cs .ecom-demoPreviewDesc,
+.ecommerce-cs .ecom-demoNote,
+.ecommerce-cs .ecom-help,
+.ecommerce-cs .ecom-results{
+  color: var(--text-3);
+}
+
+.project-body p,
+.cs-media figcaption,
+.ecommerce-cs .ecom-meta,
+.ecommerce-cs .ecom-dialog-cat{
+  color: var(--text-2);
+}
+
+/* 5) Inputs/controls: stop flipping between bg/card/random #1a1a1a */
+.form-group input,
+.form-group textarea,
+select,
+.ecommerce-cs .ecom-select,
+.ecommerce-cs .ecom-qty-input{
+  background: var(--input-bg);
+  color: var(--text-1);
+  border-color: var(--input-border);
+}
+
+.ecommerce-cs .ecom-qty-btn,
+.ecommerce-cs .ecom-quick,
+.ecommerce-cs .ecom-cart-pill,
+.ecommerce-cs .ecom-demoToggle{
+  background: color-mix(in srgb, var(--surface-2) 90%, transparent);
+  border: 1px solid var(--border);
+  color: var(--text-1);
+}
+
+/* 6) About hobbies: align with surface tokens */
+.hobby-card{
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+}
+
+/* 7) Navbar backdrop consistency (night mode can look “separate”) */
+.navbar{
+  background: color-mix(in srgb, var(--surface-0) 82%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+}
+
+/* 8) Footer consistent */
+footer{
+  background: var(--surface-0);
+  border-top: 1px solid var(--border);
+}
+footer p{ color: var(--text-3); }
+
+
+
 /* =========================
    RESET + BASE
    ========================= */
