@@ -1,697 +1,2986 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap");
-
-/* ========================= TOKENS ========================= */
-:root{
-  --bg:#ffffff;
-  --fg:#0a0a0a;
-  --muted:#666;
-
-  --card:#f8f8f8;
-  --border:#e0e0e0;
-
-  --olive-1:#808000;
-  --olive-2:#6b8e23;
-  --olive-3:#556b2f;
-
-  --radius-xl:30px;
-  --radius-lg:24px;
-  --radius-md:18px;
-
-  --shadow-sm:0 6px 15px rgba(0,0,0,.08);
-  --shadow-md:0 10px 28px rgba(0,0,0,.10);
-  --shadow-olive:0 12px 30px rgba(107,142,35,.18);
-
-  --focus:var(--olive-2);
-
-  --page-pad:5%;
-  --case-max:900px;
-  --wide-max:1240px;
-
-  /* Unified surfaces (single system) */
-  --surface-0: var(--bg);   /* page */
-  --surface-1: var(--card); /* card */
-  --surface-2: #ffffff;     /* raised (light) */
-
+ @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap"); /* ========================= TOKENS ========================= */
+:root {
+  --bg: #ffffff;
+  --fg: #0a0a0a;
+  --muted: #666;
+  --card: #f8f8f8;
+  --border: #e0e0e0;
+  --olive-1: #808000;
+  --olive-2: #6b8e23;
+  --olive-3: #556b2f;
+  --radius-xl: 30px;
+  --radius-lg: 24px;
+  --radius-md: 18px;
+  --shadow-sm: 0 6px 15px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.1);
+  --shadow-olive: 0 12px 30px rgba(107, 142, 35, 0.18);
+  --focus: var(--olive-2);
+  --page-pad: 5%;
+  --case-max: 900px;
+  --wide-max: 1240px;
+} /* Dark mode tokens */
+.dark-mode {
+  --bg: #0a0a0a;
+  --fg: #ffffff;
+  --muted: #b8b8b8;
+  --card: #0f0f0f;
+  --border: rgba(255, 255, 255, 0.1);
+  --focus: #eba352;
+  --shadow-sm: 0 10px 28px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.42);
+  --shadow-olive: 0 12px 30px rgba(235, 163, 82, 0.16);
+} /* Make nav text readable in dark mode */
+.dark-mode .navbar {
+  color: rgba(255, 255, 255, 0.92);
+}
+.dark-mode .nav-link,
+.dark-mode .theme-btn,
+.dark-mode .hamburger {
+  color: rgba(255, 255, 255, 0.92);
+}
+.dark-mode .nav-link:hover {
+  color: #ffb866;
+} /* underline uses your accent */
+.dark-mode .nav-link::after {
+  background: var(--focus);
+} /* ========================================================= NIGHT MODE ALIGNMENT PATCH (unify surfaces + remove hardcodes) Paste after your :root and .dark-mode token blocks ========================================================= */ /* 1) Add shared “surface” tokens (light + dark) */
+:root {
+  /* Surfaces */
+  --surface-0: var(--bg); /* page background */
+  --surface-1: var(--card); /* standard card */
+  --surface-2: #ffffff; /* raised card (light) */ /* Borders */
+  --border-strong: color-mix(
+    in srgb,
+    var(--fg) 14%,
+    transparent
+  ); /* Text helpers */
   --text-1: var(--fg);
-  --text-2: color-mix(in srgb, var(--fg) 78%, transparent);
-  --text-3: var(--muted);
-
+  --text-2: color-mix(in srgb, var(--fg) 72%, transparent);
+  --text-3: var(--muted); /* Inputs */
   --input-bg: var(--bg);
   --input-border: var(--border);
 }
-
-/* Dark mode tokens — palette locked */
-:root.dark-mode,
-html.dark-mode,
-body.dark-mode,
-.dark-mode{
-  --bg:#1A0E03;
-  --fg:#F8D2B7;
-
-  --muted: rgba(248,210,183,.76);
-
-  --card:#36220C;
-  --border: rgba(248,210,183,.18);
-
-  --surface-0: var(--bg);
-  --surface-1: var(--card);
-  --surface-2: #5F3F1C;
-
-  --text-1: rgba(248,210,183,.96);
-  --text-2: rgba(248,210,183,.86);
-  --text-3: rgba(248,210,183,.76);
-
-  --input-bg: rgba(26,14,3,.82);
-  --input-border: rgba(248,210,183,.22);
-
-  --focus:#EBA352;
-
-  /* Remap gradient system so buttons/headings keep working */
-  --olive-1:#EBA352;
-  --olive-2:#BA803F;
-  --olive-3:#8B5F2D;
-
-  --shadow-sm:0 10px 28px rgba(0,0,0,.55);
-  --shadow-md:0 16px 44px rgba(0,0,0,.62);
-  --shadow-olive:0 18px 50px rgba(235,163,82,.18);
-}
-
-/* ========================= RESET + BASE ========================= */
-*{ margin:0; padding:0; box-sizing:border-box; }
-
-html, body, #root{ height:100%; }
-
-body{
-  font-family:"Poppins",sans-serif;
+.dark-mode {
+  /* Make dark mode feel like one system everywhere */
+  --surface-0: #0a0a0a;
+  --surface-1: #0f0f0f; /* your current --card */
+  --surface-2: #141414; /* “raised” surface for cards/dialogs */
+  --border: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --text-1: rgba(255, 255, 255, 0.96);
+  --text-2: rgba(255, 255, 255, 0.78);
+  --text-3: rgba(255, 255, 255, 0.68);
+  --input-bg: #101010;
+  --input-border: rgba(255, 255, 255, 0.14);
+} /* 2) Normalize global surfaces */
+body {
   background: var(--surface-0);
   color: var(--text-1);
-  overflow-x:hidden;
-  transition: background .25s cubic-bezier(.4,0,.2,1), color .25s cubic-bezier(.4,0,.2,1);
-  line-height:1.6;
 }
-
-a{ color:inherit; }
-img{ max-width:100%; display:block; }
-
-button, input, select, textarea{ font:inherit; }
-
-/* Accessibility focus */
+.feature,
+.contact-form,
+.about-life-card,
+.about-cta-card,
+.media-card,
+.ecommerce-cs .ecom-demoClosed,
+.ecommerce-cs .ecom-demoPreviewCard,
+.ecommerce-cs .ecom-card,
+.ecommerce-cs .ecom-deviceFrame,
+.ecommerce-cs .ecom-dialog-inner,
+.ecommerce-cs .ecom-drawer,
+.ecommerce-cs .ecom-cart-item {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+} /* Raised components (optional but helps “depth” consistency) */
+.ecommerce-cs .ecom-wide,
+.ecommerce-cs .ecom-deviceTop {
+  background: color-mix(in srgb, var(--surface-2) 92%, transparent);
+  border: 1px solid var(--border);
+} /* 3) Kill the biggest offender: hard-coded dark brown project card */
+.project-card {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+}
+.dark-mode .project-card {
+  /* REMOVE: background: #36220c; */
+  background: var(--surface-1);
+  border-color: var(--border);
+  box-shadow: var(--shadow-md);
+} /* Make project-media match the same night palette */
+.project-media {
+  background:
+    radial-gradient(
+      circle at 20% 40%,
+      color-mix(in srgb, var(--focus) 14%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 85% 70%,
+      color-mix(in srgb, var(--focus) 10%, transparent),
+      transparent 60%
+    ),
+    var(--surface-1);
+}
+.dark-mode .project-media {
+  background:
+    radial-gradient(
+      circle at 20% 40%,
+      rgba(235, 163, 82, 0.14),
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 85% 70%,
+      rgba(235, 163, 82, 0.1),
+      transparent 60%
+    ),
+    var(--surface-1);
+} /* 4) Make text colors consistent across sections */
+.hero-description,
+.contact-info p,
+.case-study p,
+.case-study li,
+.about-intro,
+.chapter-text,
+.about-life-intro p,
+.about-growth-text,
+.about-cta-content p,
+.ecommerce-cs .ecom-desc,
+.ecommerce-cs .ecom-demoSubtitle,
+.ecommerce-cs .ecom-demoPreviewDesc,
+.ecommerce-cs .ecom-demoNote,
+.ecommerce-cs .ecom-help,
+.ecommerce-cs .ecom-results {
+  color: var(--text-3);
+}
+.project-body p,
+.cs-media figcaption,
+.ecommerce-cs .ecom-meta,
+.ecommerce-cs .ecom-dialog-cat {
+  color: var(--text-2);
+} /* 5) Inputs/controls: stop flipping between bg/card/random #1a1a1a */
+.form-group input,
+.form-group textarea,
+select,
+.ecommerce-cs .ecom-select,
+.ecommerce-cs .ecom-qty-input {
+  background: var(--input-bg);
+  color: var(--text-1);
+  border-color: var(--input-border);
+}
+.ecommerce-cs .ecom-qty-btn,
+.ecommerce-cs .ecom-quick,
+.ecommerce-cs .ecom-cart-pill,
+.ecommerce-cs .ecom-demoToggle {
+  background: color-mix(in srgb, var(--surface-2) 90%, transparent);
+  border: 1px solid var(--border);
+  color: var(--text-1);
+} /* 6) About hobbies: align with surface tokens */
+.hobby-card {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+} /* 7) Navbar backdrop consistency (night mode can look “separate”) */
+.navbar {
+  background: color-mix(in srgb, var(--surface-0) 82%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+} /* 8) Footer consistent */
+footer {
+  background: var(--surface-0);
+  border-top: 1px solid var(--border);
+}
+footer p {
+  color: var(--text-3);
+} /* ========================= RESET + BASE ========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  overflow-x: hidden;
+  transition:
+    background 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  line-height: 1.6;
+}
+a {
+  color: inherit;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+} /* Accessibility focus */
 button:focus,
 a:focus,
 input:focus,
 textarea:focus,
-select:focus{
-  outline:3px solid var(--focus);
-  outline-offset:3px;
+select:focus {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+} /* Screen-reader helpers */
+.sr-only {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
 }
-
-/* Screen-reader helpers */
-.sr-only{
-  position:absolute!important;
-  height:1px; width:1px;
-  overflow:hidden;
-  clip:rect(1px,1px,1px,1px);
-  white-space:nowrap;
-}
-.sr-only-focusable{
-  position:absolute;
-  left:-999px; top:0;
-  padding:.75rem 1rem;
-  border-radius:14px;
-  background: var(--surface-1);
-  border:1px solid var(--border);
+.sr-only-focusable {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  padding: 0.75rem 1rem;
+  border-radius: 14px;
+  background: var(--bg);
+  border: 1px solid rgba(0, 0, 0, 0.12);
   box-shadow: var(--shadow-md);
-  z-index:9999;
+  z-index: 9999;
 }
-.sr-only-focusable:focus{ left:1rem; top:1rem; }
-
-/* ========================= APP + LOADER ========================= */
-.app{
-  padding-top:20px;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
+.dark-mode .sr-only-focusable {
+  border-color: rgba(255, 255, 255, 0.14);
 }
-
-.loader-wrapper{
-  position:fixed;
-  inset:0;
-  background: var(--surface-0);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
+.sr-only-focusable:focus {
+  left: 1rem;
+  top: 1rem;
+} /* ========================= APP + LOADER ========================= */
+.app {
+  padding-top: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
-
-/* ========================= NAVBAR ========================= */
-.navbar{
-  position:fixed;
-  top:0;
-  width:100%;
-  padding:1.2rem var(--page-pad);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  z-index:1000;
-  background: color-mix(in srgb, var(--surface-0) 85%, transparent);
-  border-bottom:1px solid color-mix(in srgb, var(--border) 70%, transparent);
+.loader-wrapper {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+} /* ========================= NAVBAR ========================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1.2rem var(--page-pad);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
   backdrop-filter: blur(20px);
-  color: var(--text-1);
 }
-
-.logo{
-  display:flex;
-  align-items:center;
-  gap:.5rem;
-  background:none;
-  border:none;
-  cursor:pointer;
-  color:inherit;
-  transition: transform .3s ease;
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  transition: transform 0.3s ease;
 }
-.logo:hover{ transform:scale(1.05); }
-.logo img{ width:40px; height:40px; }
-.logo-text{
-  font-size:1.2rem;
-  font-weight:700;
-  letter-spacing:2px;
+.logo:hover {
+  transform: scale(1.05);
 }
-
-.hamburger{
-  display:none;
-  background:none;
-  border:none;
-  font-size:2rem;
-  cursor:pointer;
-  color:inherit;
-  transition: transform .3s ease;
+.logo img {
+  width: 40px;
+  height: 40px;
 }
-.hamburger:hover{ transform:scale(1.1); }
-
-.nav-menu{
-  display:flex;
-  gap:3rem;
-  list-style:none;
-  align-items:center;
+.logo-text {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
 }
-
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: inherit;
+  transition: transform 0.3s ease;
+}
+.hamburger:hover {
+  transform: scale(1.1);
+}
+.nav-menu {
+  display: flex;
+  gap: 3rem;
+  list-style: none;
+  align-items: center;
+}
 .nav-link,
-.theme-btn{
-  background:none;
-  border:none;
-  font-weight:500;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  font-size:.85rem;
-  cursor:pointer;
-  position:relative;
-  color:inherit;
-  text-decoration:none;
-  padding:1rem 0;
-  transition: color .25s ease;
+.theme-btn {
+  background: none;
+  border: none;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+  padding: 1rem 0;
+  transition: color 0.25s ease;
 }
-
-.theme-btn{
-  font-size:1.5rem;
-  padding:.5rem;
+.theme-btn {
+  font-size: 1.5rem;
+  padding: 0.5rem;
 }
-.theme-btn:hover{ transform:scale(1.2); }
-
-.nav-link::after{
-  content:"";
-  position:absolute;
-  bottom:-5px;
-  left:0;
-  width:0;
-  height:2px;
-  background: var(--focus);
-  transition: width .25s ease;
+.theme-btn:hover {
+  transform: scale(1.2);
 }
-.nav-link:hover::after{ width:100%; }
-.nav-link:hover{ color: var(--focus); }
-
-/* ========================= GLOBAL UI ========================= */
-.gradient-text{
-  background: linear-gradient(135deg,var(--olive-1) 0%,var(--olive-2) 50%,var(--olive-3) 100%);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--olive-2);
+  transition: width 0.25s ease;
 }
-
-.hero-btn{
-  padding:1.2rem 3rem;
-  background: linear-gradient(135deg,var(--olive-1) 0%,var(--olive-2) 100%);
-  color:#fff;
-  border:none;
-  border-radius:50px;
-  font-weight:600;
-  font-size:1rem;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  text-decoration:none;
-  display:inline-block;
-  cursor:pointer;
-  transition: transform .3s cubic-bezier(.4,0,.2,1), box-shadow .3s cubic-bezier(.4,0,.2,1);
+.nav-link:hover::after {
+  width: 100%;
+} /* ========================= GLOBAL UI ========================= */
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--olive-1) 0%,
+    var(--olive-2) 50%,
+    var(--olive-3) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
-.hero-btn:hover{
+.hero-btn {
+  padding: 1.2rem 3rem;
+  background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  transition:
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hero-btn:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(107,142,35,.4);
-}
-/* WCAG fix on warm accent in dark mode */
-:root.dark-mode .hero-btn,
-html.dark-mode .hero-btn,
-body.dark-mode .hero-btn,
-.dark-mode .hero-btn{
-  color:#1A0E03;
-}
-
-/* Shared card surface */
-.feature{
-  background: var(--surface-1);
-  padding:2rem;
-  border-radius:20px;
-  border:1px solid var(--border);
-}
-
-/* Highlight callout */
+  box-shadow: 0 15px 30px rgba(107, 142, 35, 0.4);
+} /* Shared “card” styling used by features */
+.feature {
+  background: var(--card);
+  padding: 2rem;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+} /* Highlight callout */
 .case-study .highlight,
-.highlight{
-  background: var(--surface-1);
-  padding:2rem;
-  border-left:4px solid var(--focus);
-  border-radius:10px;
-  font-size:1.1rem;
-  font-weight:600;
-  color: var(--text-1);
-  border:1px solid var(--border);
-}
-
-/* ========================= HERO + SECTIONS ========================= */
-.hero{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:100px var(--page-pad) 60px;
-  text-align:center;
+.highlight {
+  background: var(--card);
+  padding: 2rem;
+  border-left: 4px solid var(--olive-2);
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--fg);
+  border-top: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+} /* ========================= HERO + SECTIONS ========================= */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px var(--page-pad) 60px; /* ↑ more top/bottom air */
+  text-align: center;
   background:
-    radial-gradient(circle at 20% 45%, rgba(128,128,0,.06), transparent 55%),
-    radial-gradient(circle at 80% 80%, rgba(107,142,35,.06), transparent 55%),
-    var(--surface-0);
+    radial-gradient(
+      circle at 20% 45%,
+      rgba(128, 128, 0, 0.06),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(107, 142, 35, 0.06),
+      transparent 55%
+    ),
+    var(--bg);
 }
-.hero-content{
-  width:100%;
-  max-width:960px;
-  margin:0 auto;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+.hero-content {
+  width: 100%; /* IMPORTANT: ensures content spans available width */
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex; /* centers the inner stack reliably */
+  flex-direction: column;
+  align-items: center;
 }
-.hero-title{
-  font-size:clamp(4.5rem,8vw,8rem);
-  font-weight:900;
-  letter-spacing:-4px;
-  line-height:.95;
-  margin-bottom:2.5rem;
-  background: linear-gradient(135deg,var(--olive-1) 0%,var(--olive-2) 50%,var(--olive-3) 100%);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
-  display:inline-block;
+.hero-title {
+  font-size: clamp(4.5rem, 8vw, 8rem); /* responsive breathing room */
+  font-weight: 900;
+  letter-spacing: -4px; /* slightly less tight */
+  line-height: 0.95;
+  margin-bottom: 2.5rem; /* more separation */
+  background: linear-gradient(
+    135deg,
+    var(--olive-1) 0%,
+    var(--olive-2) 50%,
+    var(--olive-3) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
   will-change: transform, opacity, clip-path;
 }
-.hero-description{
-  font-size:1.25rem;
-  margin:0 auto 2rem;
-  color: var(--text-3);
-  line-height:1.75;
-  max-width:68ch;
+.hero-description {
+  font-size: 1.25rem; /* a touch softer */
+  margin: 0 auto 2rem;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 68ch; /* optimal reading width */
 }
-.hero-copy{
-  width:100%;
-  max-width:68ch;
-  margin:0 auto;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+.hero-copy {
+  width: 100%;
+  max-width: 68ch;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centers text + CTA */
 }
-.hero-actions{
-  display:flex;
-  width:100%;
-  justify-content:center;
-  gap:12px;
-  margin-top:28px;
-  flex-wrap:wrap;
+.hero-copy .hero-description {
+  margin: 0 auto 1.25rem; /* consistent spacing between paragraphs */
 }
-
-.section{ display:none; }
-.section.active{ display:block; }
-
-/* ========================= PROJECTS ========================= */
-.projects{
-  min-height:100vh;
-  padding:100px var(--page-pad) 60px;
-  background: var(--surface-0);
+.hero-actions {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 28px;
+  flex-wrap: wrap;
 }
-
-.section-title{
-  font-size:4rem;
-  font-weight:900;
-  text-align:center;
-  margin-bottom:4rem;
-  letter-spacing:1px;
-  background: linear-gradient(135deg,var(--olive-1) 0%,var(--olive-2) 100%);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
+.section {
+  display: none;
 }
-
-.projects-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:2rem;
-  max-width:1100px;
-  margin:0 auto;
+.section.active {
+  display: block;
+} /* ========================= PROJECTS ========================= */
+.projects {
+  min-height: 100vh;
+  padding: 100px var(--page-pad) 60px;
+  background: var(--bg);
 }
-
-/* ✅ FIXED: project cards are cards (not page bg), and no hard-coded dark color */
-.project-card{
-  background: var(--surface-1);
-  border-radius:26px;
-  border:1px solid var(--border);
-  padding:0;
-  overflow:hidden;
-  cursor:pointer;
+.section-title {
+  font-size: 4rem;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 4rem;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.project-card {
+  background: var(--bg);
+  border-radius: 26px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
   box-shadow: var(--shadow-sm);
-  transition: transform .25s ease, box-shadow .25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
-.project-card:hover{
+.dark-mode .project-card {
+  background: #36220c;
+  border-color: rgba(248, 210, 183, 0.18);
+  box-shadow: var(--shadow-md);
+}
+.project-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 14px 34px rgba(0,0,0,.14);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.14);
 }
-
-.project-media{
-  height:170px;
-  display:grid;
-  place-items:center;
+.project-media {
+  height: 170px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(
+    135deg,
+    rgba(235, 163, 82, 0.25),
+    rgba(186, 128, 63, 0.2)
+  );
+}
+.dark-mode .project-media {
+  background: linear-gradient(
+    135deg,
+    rgba(235, 163, 82, 0.2),
+    rgba(26, 14, 3, 0)
+  );
+}
+.project-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.project-icon {
+  font-size: 2.25rem;
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.dark-mode .project-icon {
+  background: rgba(54, 34, 12, 0.85);
+  border-color: rgba(248, 210, 183, 0.22);
+}
+.project-body {
+  padding: 1.4rem 1.5rem 1.6rem;
+}
+.project-body h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.4px;
+}
+.project-body p {
+  color: color-mix(in srgb, var(--fg) 65%, transparent);
+  line-height: 1.55;
+  font-size: 0.98rem; /* Clamp */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden; /* Modern spec (helps in some browsers) */
+  line-clamp: 3;
+} /* ========================= CONTACT ========================= */
+.contact-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px var(--page-pad) 60px;
   background:
-    radial-gradient(circle at 20% 40%, color-mix(in srgb, var(--focus) 14%, transparent), transparent 60%),
-    radial-gradient(circle at 85% 70%, color-mix(in srgb, var(--focus) 10%, transparent), transparent 60%),
-    var(--surface-1);
+    radial-gradient(
+      circle at 20% 50%,
+      rgba(128, 128, 0, 0.08),
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(107, 142, 35, 0.08),
+      transparent 50%
+    ),
+    var(--bg);
 }
-
-.project-media img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  max-width: 1200px;
+  width: 100%;
+  align-items: center;
 }
-
-.project-icon{
-  font-size:2.25rem;
-  width:58px;
-  height:58px;
-  border-radius:16px;
-  display:grid;
-  place-items:center;
-  background: color-mix(in srgb, var(--surface-0) 75%, transparent);
-  border:1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+.contact-info h1 {
+  font-size: 5rem;
+  font-weight: 900;
+  margin-bottom: 2rem;
+  line-height: 1.1;
+  background: linear-gradient(
+    135deg,
+    var(--olive-1) 0%,
+    var(--olive-2) 50%,
+    var(--olive-3) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
-
-.project-body{ padding:1.4rem 1.5rem 1.6rem; }
-.project-body h3{
-  font-size:1.2rem;
-  margin-bottom:.4rem;
-  letter-spacing:.4px;
-  color: var(--text-1);
+.contact-info p {
+  font-size: 1.3rem;
+  color: var(--muted);
+  line-height: 1.8;
 }
-.project-body p{
-  color: var(--text-2);
-  line-height:1.55;
-  font-size:.98rem;
-  display:-webkit-box;
-  -webkit-box-orient:vertical;
-  -webkit-line-clamp:3;
-  overflow:hidden;
-  line-clamp:3;
-}
-
-/* ========================= CONTACT ========================= */
-.contact-hero{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:100px var(--page-pad) 60px;
-  background:
-    radial-gradient(circle at 20% 50%, rgba(128,128,0,.08), transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(107,142,35,.08), transparent 50%),
-    var(--surface-0);
-}
-
-.contact-container{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:5rem;
-  max-width:1200px;
-  width:100%;
-  align-items:center;
-}
-
-.contact-info h1{
-  font-size:5rem;
-  font-weight:900;
-  margin-bottom:2rem;
-  line-height:1.1;
-  background: linear-gradient(135deg,var(--olive-1) 0%,var(--olive-2) 50%,var(--olive-3) 100%);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
-}
-
-.contact-info p{
-  font-size:1.3rem;
-  color: var(--text-3);
-  line-height:1.8;
-}
-
-.contact-form{
-  background: var(--surface-1);
-  padding:3rem;
+.contact-form {
+  background: var(--card);
+  padding: 3rem;
   border-radius: var(--radius-xl);
-  border:1px solid var(--border);
+  border: 1px solid var(--border);
 }
-
-.form-group{ margin-bottom:2rem; }
-.form-group label{
-  display:block;
-  margin-bottom:.8rem;
-  font-weight:600;
-  color: var(--text-1);
-  font-size:.95rem;
-  text-transform:uppercase;
-  letter-spacing:1px;
+.form-group {
+  margin-bottom: 2rem;
 }
-
+.form-group label {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+  color: var(--fg);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 .form-group input,
 .form-group textarea,
-select{
-  width:100%;
-  padding:1.2rem;
-  border:2px solid var(--input-border);
-  border-radius:15px;
-  font-size:1rem;
-  background: var(--input-bg);
-  color: var(--text-1);
-  transition: border-color .3s;
+select {
+  width: 100%;
+  padding: 1.2rem;
+  border: 2px solid var(--border);
+  border-radius: 15px;
+  font-size: 1rem;
+  background: var(--bg);
+  color: var(--fg);
+  transition: border-color 0.3s;
 }
 .form-group input:focus,
 .form-group textarea:focus,
-select:focus{
-  border-color: var(--focus);
+select:focus {
+  border-color: var(--olive-2);
 }
-.form-group textarea{
-  resize:vertical;
-  min-height:150px;
+.form-group textarea {
+  resize: vertical;
+  min-height: 150px;
 }
-
-.submit-btn{
-  width:100%;
-  padding:1.3rem;
-  background: linear-gradient(135deg,var(--olive-1) 0%,var(--olive-2) 100%);
-  color:#fff;
-  border:none;
-  border-radius:50px;
-  font-weight:600;
-  font-size:1.1rem;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  cursor:pointer;
-  transition: transform .3s cubic-bezier(.4,0,.2,1), box-shadow .3s cubic-bezier(.4,0,.2,1);
+.submit-btn {
+  width: 100%;
+  padding: 1.3rem;
+  background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition:
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.submit-btn:hover{
+.submit-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(107,142,35,.4);
-}
-/* WCAG fix on accent in dark mode */
-:root.dark-mode .submit-btn,
-html.dark-mode .submit-btn,
-body.dark-mode .submit-btn,
-.dark-mode .submit-btn{ color:#1A0E03; }
-
-/* ========================= CASE STUDY (GLOBAL) ========================= */
-.case-study{
+  box-shadow: 0 15px 30px rgba(107, 142, 35, 0.4);
+} /* ========================= CASE STUDY (GLOBAL) ========================= */
+.case-study {
   max-width: var(--case-max);
-  margin:0 auto;
-  padding:120px var(--page-pad) 60px;
-  line-height:1.8;
-  background: transparent; /* let page surface show */
+  margin: 0 auto;
+  padding: 120px var(--page-pad) 60px;
+  line-height: 1.8;
 }
-
-.case-study h1{
-  font-size:3.5rem;
-  font-weight:900;
-  margin-bottom:1rem;
-  background: linear-gradient(135deg,var(--olive-1) 0%,var(--olive-2) 100%);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
+.case-study h1 {
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
-.case-study .meta{
-  color: var(--text-3);
-  font-size:1.1rem;
-  margin-bottom:2rem;
-  font-style:italic;
+.case-study .meta {
+  color: var(--muted);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  font-style: italic;
 }
-.case-study section{ margin-bottom:3rem; }
-.case-study h2{
-  font-size:2.2rem;
+.case-study section {
+  margin-bottom: 3rem;
+}
+.case-study h2 {
+  font-size: 2.2rem;
   color: var(--olive-2);
-  margin:3rem 0 1.5rem;
-  font-weight:700;
+  margin: 3rem 0 1.5rem;
+  font-weight: 700;
 }
-.case-study h3{
-  font-size:1.6rem;
-  color: var(--text-1);
-  margin:2rem 0 1rem;
-  font-weight:600;
+.case-study h3 {
+  font-size: 1.6rem;
+  color: var(--fg);
+  margin: 2rem 0 1rem;
+  font-weight: 600;
 }
 .case-study p,
-.case-study li{
-  font-size:1.1rem;
-  color: var(--text-3);
-  margin-bottom:1.25rem;
-  line-height:1.9;
+.case-study li {
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+  line-height: 1.9;
 }
-.case-study ul{ margin-left:2rem; margin-bottom:1.5rem; }
-.case-study strong{ color: var(--text-1); font-weight:600; }
-.case-study .feature h3{ margin-top:0; color: var(--olive-2); }
-
-/* ========================= CASE STUDY MEDIA GRID ========================= */
-.cs-gallery{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:1.5rem;
-  margin:2rem 0 3rem;
-  align-items:start;
+.case-study ul {
+  margin-left: 2rem;
+  margin-bottom: 1.5rem;
 }
-@media (max-width:1024px){ .cs-gallery{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
-@media (max-width:768px){ .cs-gallery{ grid-template-columns:1fr; } }
-
-.media-card{
-  background: var(--surface-1);
-  border-radius:18px;
-  padding:1rem;
-  border:1px solid var(--border);
+.case-study strong {
+  color: var(--fg);
+  font-weight: 600;
+}
+.case-study .feature h3 {
+  margin-top: 0;
+  color: var(--olive-2);
+} /* ========================= CASE STUDY MEDIA GRID (used by Good Harvest etc.) ========================= */
+.cs-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0 3rem;
+  align-items: start;
+}
+@media (max-width: 1024px) {
+  .cs-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 768px) {
+  .cs-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+.media-card {
+  background: var(--bg);
+  border-radius: 18px;
+  padding: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: var(--shadow-md);
-  display:flex;
-  flex-direction:column;
-  gap:.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
-
-.media-link{
-  display:block;
-  border-radius:14px;
-  overflow:hidden;
-  border:1px solid color-mix(in srgb, var(--fg) 10%, transparent);
-  background: color-mix(in srgb, var(--surface-0) 96%, transparent);
+.dark-mode .media-card {
+  background: var(--card);
+  border-color: var(--border);
+  box-shadow: var(--shadow-md);
 }
-
-.media-card img{
-  width:100%;
-  height:220px;
-  object-fit:contain;
+.media-link {
+  display: block;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.02);
 }
-@media (max-width:600px){ .media-card img{ height:190px; } }
-
-.cs-media figcaption{
-  font-size:.95rem;
-  line-height:1.5;
-  color: var(--text-2);
+.dark-mode .media-link {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.03);
 }
-
-.cs-actions{
-  margin-top:auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
+.media-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
 }
-.cs-link{
-  font-size:.9rem;
-  font-weight:700;
-  text-decoration:none;
+@media (max-width: 600px) {
+  .media-card img {
+    height: 190px;
+  }
+}
+.cs-media figcaption {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--fg) 55%, transparent);
+}
+.cs-actions {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.cs-link {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
   color: var(--olive-2);
 }
-.cs-link:hover{ text-decoration:underline; }
-
-.cs-toggle-link{
-  background:none;
-  border:none;
-  padding:0;
-  margin:0;
-  color: var(--olive-2);
-  font-weight:700;
-  text-decoration:underline;
-  text-underline-offset:4px;
-  cursor:pointer;
+.cs-link:hover {
+  text-decoration: underline;
 }
-:root.dark-mode .cs-link,
-:root.dark-mode .cs-toggle-link,
-html.dark-mode .cs-link,
-html.dark-mode .cs-toggle-link,
-body.dark-mode .cs-link,
-body.dark-mode .cs-toggle-link,
+.cs-toggle-link {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: var(--olive-2);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+.dark-mode .cs-link,
+.dark-mode .cs-toggle-link {
+  color: var(--focus);
+} /* ========================= FOOTER ========================= */
+footer {
+  background: var(--bg);
+  padding: 3rem var(--page-pad);
+  text-align: center;
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+}
+footer p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+} /* src/pages/case-studies/Ecommerce.css */ /* src/pages/case-studies/Ecommerce.css */ /* Scoped polish for the E-Commerce case study + demo frame */
+.ecommerce-cs {
+  --space-1: 8px;
+  --space-2: 12px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 72px;
+} /* Narrow + Wide wrappers */
+.ecommerce-cs .ecom-narrow {
+  width: min(var(--case-max), calc(100% - 48px));
+  margin: 0 auto;
+}
+.ecommerce-cs .ecom-wide {
+  width: min(var(--wide-max), calc(100% - 48px));
+  margin: 0 auto;
+  border-radius: var(--radius-xl);
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(10px);
+}
+.dark-mode .ecommerce-cs .ecom-wide {
+  background: rgba(15, 15, 15, 0.7);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-md);
+} /* ========================= HEADER (calmer) ========================= */
+.ecommerce-cs .ecommerce-header .intro {
+  max-width: 70ch;
+} /* KPI pills */
+.ecommerce-cs .ecom-kpis {
+  margin-top: var(--space-4);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.ecommerce-cs .ecom-kpi {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bg) 94%, transparent);
+  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+  box-shadow: none;
+}
+.dark-mode .ecommerce-cs .ecom-kpi {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+.ecommerce-cs .ecom-kpi__label {
+  font-weight: 800;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--fg) 55%, transparent);
+}
+.ecommerce-cs .ecom-kpi__value {
+  font-weight: 800;
+  color: var(--fg);
+} /* ========================= CASE STUDY GRID ========================= */
+.ecommerce-cs .ecom-caseStudy {
+  padding: var(--space-7) 0;
+}
+.ecommerce-cs .ecom-case-grid {
+  margin-top: var(--space-4);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+@media (max-width: 900px) {
+  .ecommerce-cs .ecom-case-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.ecommerce-cs .ecom-next {
+  grid-column: 1 / -1;
+}
+.ecommerce-cs .ecom-bullets {
+  margin: 0.75rem 0 0;
+  padding-left: 1.15rem;
+  line-height: 1.7;
+}
+.ecommerce-cs .ecom-bullets li {
+  margin: 0.35rem 0;
+} /* ========================= DEMO SECTION (bottom + roomy) ========================= */
+.ecommerce-cs .ecom-demoSection {
+  margin-top: 110px;
+  padding: 110px 0;
+  background:
+    radial-gradient(
+      circle at 20% 25%,
+      rgba(128, 128, 0, 0.08),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 85% 70%,
+      rgba(107, 142, 35, 0.08),
+      transparent 55%
+    ),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.015), rgba(0, 0, 0, 0.03));
+}
+.dark-mode .ecommerce-cs .ecom-demoSection {
+  background:
+    radial-gradient(
+      circle at 20% 25%,
+      rgba(235, 163, 82, 0.12),
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 85% 70%,
+      rgba(235, 163, 82, 0.08),
+      transparent 60%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.02),
+      rgba(255, 255, 255, 0.04)
+    );
+}
+.ecommerce-cs .ecom-demoHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+.ecommerce-cs .ecom-demoTitle {
+  margin: 0;
+}
+.ecommerce-cs .ecom-demoSubtitle {
+  margin: 10px 0 0;
+  color: var(--muted);
+  line-height: 1.7;
+  font-weight: 600;
+  max-width: 68ch;
+}
+.ecommerce-cs .ecom-demoToggle {
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-weight: 900;
+  border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+}
+.ecommerce-cs .ecom-demoToggle:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+.dark-mode .ecommerce-cs .ecom-demoToggle {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+}
+.ecommerce-cs .ecom-demoClosed {
+  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+  border-radius: 22px;
+  padding: 18px;
+  background: color-mix(in srgb, var(--bg) 94%, transparent);
+  box-shadow: var(--shadow-sm);
+}
+.dark-mode .ecommerce-cs .ecom-demoClosed {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(15, 15, 15, 0.65);
+}
+.ecommerce-cs .ecom-demoPreviewGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+@media (max-width: 900px) {
+  .ecommerce-cs .ecom-demoPreviewGrid {
+    grid-template-columns: 1fr;
+  }
+}
+.ecommerce-cs .ecom-demoPreviewCard {
+  border: 1px solid color-mix(in srgb, var(--fg) 8%, transparent);
+  border-radius: 18px;
+  padding: 16px;
+  background: var(--bg);
+}
+.dark-mode .ecommerce-cs .ecom-demoPreviewCard {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+.ecommerce-cs .ecom-demoKicker {
+  font-weight: 900;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--fg) 60%, transparent);
+}
+.ecommerce-cs .ecom-demoPreviewTitle {
+  margin-top: 8px;
+  font-weight: 900;
+  font-size: 1.05rem;
+}
+.ecommerce-cs .ecom-demoPreviewDesc {
+  margin-top: 8px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+.ecommerce-cs .ecom-demoNote {
+  margin-top: 14px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+.ecommerce-cs .ecom-demoExternal {
+  margin-top: 12px;
+}
+.ecommerce-cs .ecom-demoExternalLink {
+  font-weight: 900;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  color: var(--olive-2);
+}
+.dark-mode .ecommerce-cs .ecom-demoExternalLink {
+  color: var(--focus);
+} /* ========================= “INSIDE A COMPUTER” FRAME (browser chrome) ========================= */
+.ecommerce-cs .ecom-demoOpen {
+  margin-top: 18px;
+}
+.ecommerce-cs .ecom-deviceFrame {
+  border-radius: 26px;
+  border: 1px solid color-mix(in srgb, var(--fg) 14%, transparent);
+  background: color-mix(in srgb, var(--bg) 94%, transparent);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.16);
+  overflow: hidden;
+}
+.dark-mode .ecommerce-cs .ecom-deviceFrame {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(15, 15, 15, 0.55);
+}
+.ecommerce-cs .ecom-deviceTop {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-bottom: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--bg) 92%, transparent),
+    color-mix(in srgb, var(--bg) 86%, transparent)
+  );
+}
+.dark-mode .ecommerce-cs .ecom-deviceTop {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+.ecommerce-cs .ecom-deviceDots {
+  display: flex;
+  gap: 8px;
+}
+.ecommerce-cs .ecom-deviceDots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--fg) 25%, transparent);
+  opacity: 0.7;
+}
+.ecommerce-cs .ecom-deviceUrl {
+  flex: 1;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--fg) 55%, transparent);
+}
+.ecommerce-cs .ecom-deviceBody {
+  padding: 18px;
+}
+@media (max-width: 768px) {
+  .ecommerce-cs .ecom-deviceBody {
+    padding: 10px;
+  }
+} /* Roomy demo container inside the frame */
+.ecommerce-cs .ecom-wide.ecom-demoWide {
+  padding: 44px;
+}
+@media (max-width: 768px) {
+  .ecommerce-cs .ecom-wide.ecom-demoWide {
+    padding: 22px;
+  }
+} /* ========================= DEMO TOP BAR (cart lives here) ========================= */
+.ecommerce-cs .ecom-storefront-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.ecommerce-cs .ecom-band-title {
+  font-size: 0.85rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.ecommerce-cs .ecom-band-subtitle {
+  margin-top: 6px;
+  font-size: 0.95rem;
+  color: var(--muted);
+  font-style: italic;
+}
+.ecommerce-cs .ecom-cart-pill {
+  border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 900;
+  cursor: pointer;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+.ecommerce-cs .ecom-cart-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+.dark-mode .ecommerce-cs .ecom-cart-pill {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+} /* Tightness fixes: add rhythm inside demo */
+.ecommerce-cs .ecom-highlight {
+  margin: 18px 0 28px;
+}
+.ecommerce-cs .ecommerce-controls {
+  margin-top: 26px;
+}
+.ecommerce-cs .ecom-grid {
+  margin-top: 28px;
+} /* ========================= CONTROLS ========================= */
+.ecommerce-cs .ecommerce-controls {
+  padding: 32px;
+  border-radius: 22px;
+}
+.ecommerce-cs .ecom-controls-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  gap: var(--space-4);
+  align-items: end;
+}
+@media (max-width: 968px) {
+  .ecommerce-cs .ecom-controls-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .ecommerce-cs .ecom-controls-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.ecommerce-cs .ecom-field label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 8px;
+}
+.ecommerce-cs .ecom-select {
+  width: 100%;
+  padding: 1.05rem;
+  border: 2px solid var(--border);
+  border-radius: 15px;
+  background: var(--bg);
+  color: var(--fg);
+}
+.ecommerce-cs .ecom-help {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-top: 0.6rem;
+  line-height: 1.55;
+}
+.ecommerce-cs .ecom-range {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0.75rem;
+  align-items: center;
+}
+.ecommerce-cs .ecom-controls-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+.ecommerce-cs .ecom-results {
+  margin-top: var(--space-4);
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  color: var(--muted);
+}
+.ecommerce-cs .ecom-results-label {
+  font-style: italic;
+} /* ========================= PRODUCTS ========================= */
+.ecommerce-cs .ecom-products-head {
+  margin-top: var(--space-4);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.ecommerce-cs .ecom-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-4);
+}
+.ecommerce-cs .ecom-card {
+  background: var(--bg);
+  border-radius: 26px;
+  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+  overflow: hidden;
+  box-shadow: none;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+.ecommerce-cs .ecom-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .ecommerce-cs .ecom-card {
+    transition: none;
+  }
+  .ecommerce-cs .ecom-card:hover {
+    transform: none;
+  }
+}
+.ecommerce-cs .ecom-media {
+  display: block;
+  width: 100%;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(128, 128, 0, 0.1), transparent 55%),
+    radial-gradient(
+      circle at 85% 70%,
+      rgba(107, 142, 35, 0.1),
+      transparent 55%
+    ),
+    var(--bg);
+}
+.ecommerce-cs .ecom-media img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+.ecommerce-cs .ecom-body {
+  padding: 1.2rem 1.25rem 1.25rem;
+}
+.ecommerce-cs .ecom-title {
+  font-size: 1.12rem;
+  font-weight: 900;
+  margin-bottom: 0.35rem;
+  color: var(--fg);
+}
+.ecommerce-cs .ecom-meta {
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 0.75rem;
+}
+.ecommerce-cs .ecom-price {
+  font-weight: 900;
+  color: var(--fg);
+}
+.ecommerce-cs .ecom-desc {
+  color: var(--muted);
+  margin-bottom: 1rem;
+  line-height: 1.65;
+}
+.ecommerce-cs .ecom-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.ecommerce-cs .ecom-add.hero-btn {
+  padding: 0.85rem 1.25rem;
+  font-size: 0.85rem;
+}
+.ecommerce-cs .ecom-quick {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+  background: color-mix(in srgb, var(--bg) 94%, transparent);
+  cursor: pointer;
+  font-size: 1rem;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+.ecommerce-cs .ecom-quick:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+.dark-mode .ecommerce-cs .ecom-quick {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+} /* Link button */
+.ecommerce-cs .ecom-link {
+  background: none;
+  border: none;
+  color: var(--olive-2);
+  font-weight: 900;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+.dark-mode .ecommerce-cs .ecom-link {
+  color: var(--focus);
+} /* Muted helper */
+.ecommerce-cs .ecom-muted {
+  color: var(--muted);
+  font-weight: 650;
+} /* ========================= DIALOG (Quick View) ========================= */
+.ecommerce-cs .ecom-dialog {
+  border: none;
+  padding: 0;
+  border-radius: var(--radius-lg);
+  width: min(900px, 92vw);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+.ecommerce-cs .ecom-dialog::backdrop {
+  background: rgba(10, 10, 10, 0.55);
+}
+.ecommerce-cs .ecom-dialog-inner {
+  background: var(--bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+}
+.dark-mode .ecommerce-cs .ecom-dialog-inner {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+.ecommerce-cs .ecom-dialog-head {
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+}
+.dark-mode .ecommerce-cs .ecom-dialog-head {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+.ecommerce-cs .ecom-icon-btn {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0.35rem 0.6rem;
+  border-radius: 12px;
+  color: inherit;
+}
+.ecommerce-cs .ecom-dialog-body {
+  padding: 1.25rem;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 1.25rem;
+}
+@media (max-width: 768px) {
+  .ecommerce-cs .ecom-dialog-body {
+    grid-template-columns: 1fr;
+  }
+}
+.ecommerce-cs .ecom-dialog-media img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+}
+.dark-mode .ecommerce-cs .ecom-dialog-media img {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+.ecommerce-cs .ecom-dialog-price {
+  font-size: 1.35rem;
+  font-weight: 900;
+  margin-bottom: 0.25rem;
+}
+.ecommerce-cs .ecom-dialog-cat {
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+.ecommerce-cs .ecom-dialog-desc {
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
+}
+.ecommerce-cs .ecom-dialog-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+} /* ========================= DRAWER (Cart) ========================= */
+.ecommerce-cs .ecom-drawer-root {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+}
+.ecommerce-cs .ecom-backdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  background: rgba(10, 10, 10, 0.45);
+}
+.ecommerce-cs .ecom-drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(480px, 92vw);
+  background: var(--bg);
+  border-left: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  padding: 1.15rem 1.15rem 1.25rem;
+}
+.dark-mode .ecommerce-cs .ecom-drawer {
+  border-left-color: rgba(255, 255, 255, 0.1);
+}
+.ecommerce-cs .ecom-drawer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+}
+.dark-mode .ecommerce-cs .ecom-drawer-head {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+.ecommerce-cs .ecom-cart-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.ecommerce-cs .ecom-cart-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 12px;
+}
+.ecommerce-cs .ecom-cart-title {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-weight: 900;
+}
+.ecommerce-cs .ecom-qty-row {
+  margin-top: 0.65rem;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 0.6rem;
+  align-items: center;
+}
+.ecommerce-cs .ecom-qty-btn {
+  border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+  background: var(--bg);
+  border-radius: 14px;
+  padding: 0.55rem 0.75rem;
+  cursor: pointer;
+  font-weight: 900;
+}
+.dark-mode .ecommerce-cs .ecom-qty-btn {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: #1a1a1a;
+}
+.ecommerce-cs .ecom-qty-input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  background: var(--bg);
+  color: var(--fg);
+}
+.dark-mode .ecommerce-cs .ecom-qty-input {
+  background: #1a1a1a;
+}
+.ecommerce-cs .ecom-remove {
+  justify-self: end;
+}
+.ecommerce-cs .ecom-summary {
+  margin-top: 12px;
+}
+.ecommerce-cs .ecom-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 0.65rem;
+}
+.ecommerce-cs .ecom-total {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+}
+.dark-mode .ecommerce-cs .ecom-total {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+.ecommerce-cs .ecom-summary-actions {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.75rem;
+} /*======================== ABOUT PAGE (SITE-NATIVE) ========================= */ /* Page wrapper */
+.about-page {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--fg);
+} /* Match your global section spacing (projects/contact/case-study patterns) */
+.about-hero,
+.about-journey,
+.about-life,
+.about-growth,
+.about-cta,
+.about-closing {
+  width: min(var(--case-max), calc(100% - 2 * var(--page-pad)));
+  margin: 0 auto;
+} /* Give About the same “page rhythm” as case studies */
+.about-hero {
+  padding: 120px 0 56px;
+}
+.about-journey,
+.about-life,
+.about-growth,
+.about-cta {
+  padding: 56px 0;
+}
+.about-closing {
+  padding: 56px 0 110px;
+} /* Intro line should look like your muted hero copy */
+.about-intro {
+  font-size: 1.1rem;
+  color: var(--muted);
+  line-height: 1.9;
+  max-width: 68ch;
+} /* Title should match your brand gradient language */
+.about-title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  margin-top: 18px;
+  font-size: clamp(2.5rem, 4.2vw, 3.6rem);
+  background: linear-gradient(
+    135deg,
+    var(--olive-1) 0%,
+    var(--olive-2) 55%,
+    var(--olive-3) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+} /* Chapters: reuse your case-study structure vibe (olive h2, muted paragraphs) */
+.about-chapters {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.about-chapter {
+  padding: 0;
+  border-left: none;
+} /* Make the marker look like a “kicker” consistent with nav uppercase style */
+.chapter-marker {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.chapter-dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 999px;
+  background: var(--olive-2);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--olive-2) 12%, transparent);
+}
+.chapter-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--fg) 72%, transparent);
+} /* Headings match case-study: strong, with olive accent */
+.chapter-heading {
+  font-size: 2.1rem;
+  font-weight: 800;
+  margin: 0 0 1rem;
+  color: var(--olive-2);
+}
+.chapter-text {
+  font-size: 1.1rem;
+  color: var(--muted);
+  line-height: 1.9;
+  margin-bottom: 1.1rem;
+} /* Life card: use your existing surface language */
+.about-life-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  padding: 2.25rem;
+}
+.about-life-title,
+.about-growth-title,
+.about-cta-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin-bottom: 1.25rem;
+  background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.about-life-intro p,
+.about-growth-text {
+  font-size: 1.1rem;
+  color: var(--muted);
+  line-height: 1.9;
+  margin-bottom: 1rem;
+} /* Hobbies grid: card style consistent with .feature */
+.about-hobbies {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+.hobby-card {
+  background: var(--bg);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.dark-mode .hobby-card {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: var(--card);
+}
+.hobby-icon {
+  font-size: 2rem;
+}
+.hobby-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+.hobby-desc {
+  color: var(--muted);
+  line-height: 1.7;
+} /* CTA: make it feel like your existing gradient button world */
+.about-cta-card {
+  background:
+    radial-gradient(circle at 20% 30%, rgba(128, 128, 0, 0.1), transparent 55%),
+    radial-gradient(
+      circle at 85% 70%,
+      rgba(107, 142, 35, 0.1),
+      transparent 55%
+    ),
+    var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md), var(--shadow-olive);
+  padding: 2.5rem;
+}
+.about-cta-content p {
+  font-size: 1.1rem;
+  color: var(--muted);
+  line-height: 1.9;
+  margin-bottom: 1rem;
+}
+.about-cta-highlight {
+  margin-top: 0.75rem;
+  font-weight: 900;
+  color: var(--fg);
+} /* Closing looks like your footer/case-study outro */
+.about-closing-text {
+  text-align: center;
+  color: var(--muted);
+  font-size: 1.05rem;
+  font-weight: 600;
+} /* Luna: keep it playful but site-consistent (no scroll math needed) */
+.about-luna {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .about-luna {
+    display: block;
+    position: fixed;
+    right: 2.5rem;
+    top: 34%;
+    z-index: 10;
+    opacity: 0.9;
+    animation: lunaFloat 6s ease-in-out infinite;
+  }
+  .about-luna img {
+    width: 7.5rem;
+    height: 7.5rem;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.12));
+  }
+}
+@keyframes lunaFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-luna {
+    animation: none !important;
+  }
+} /* Responsive */
+@media (max-width: 900px) {
+  .about-hobbies {
+    grid-template-columns: 1fr;
+  }
+  .chapter-heading {
+    font-size: 1.8rem;
+  }
+} /* ========================================================= REINA — CLEAN + MORE PROFESSIONAL (adds summary + polish) Keep your current Reina block and ADD/REPLACE with this (This version matches your TSX: reina__meta, flowList, noteStack) ========================================================= */ /* Section spacing: match your global page rhythm */
+.projects.reina {
+  padding: 120px var(--page-pad) 90px;
+} /* Centered container */
+.projects.reina .reina__wrap {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+} /* ------------------------- OVERVIEW ------------------------- */
+.projects.reina .reina__overview {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.projects.reina .reina__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+  background: color-mix(in srgb, var(--bg) 96%, transparent);
+  box-shadow: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+} /* Make the title behave like a case-study header */
+.projects.reina .section-title.reina__title {
+  text-align: left;
+  margin: 18px 0 0 0;
+  font-size: clamp(44px, 5.6vw, 74px);
+  line-height: 1.03;
+  letter-spacing: -0.04em;
+  font-weight: 900; /* Keep gradient if you like; comment out for ultra-pro plain text */
+  background: linear-gradient(
+    135deg,
+    var(--olive-1) 0%,
+    var(--olive-2) 60%,
+    var(--olive-3) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text; /* Override global section-title spacing */
+  margin-bottom: 0;
+}
+.projects.reina .reina__lead {
+  margin-top: 18px;
+  max-width: 68ch;
+  font-size: 1.22rem;
+  line-height: 1.75;
+  color: color-mix(in srgb, var(--fg) 82%, transparent);
+}
+.projects.reina .reina__muted {
+  color: color-mix(in srgb, var(--fg) 62%, transparent);
+  font-weight: 600;
+} /* META (your TSX uses reina__meta, not reina__stats) */
+.projects.reina .reina__meta {
+  margin-top: 30px;
+  padding-top: 18px;
+  border-top: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+}
+.projects.reina .reina__metaItem dt {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: color-mix(in srgb, var(--fg) 55%, transparent);
+}
+.projects.reina .reina__metaItem dd {
+  margin-top: 7px;
+  font-size: 1.05rem;
+  font-weight: 750;
+  color: var(--fg);
+} /* ------------------------- NEW: PRO SUMMARY (Problem / Approach / Outcome) ------------------------- */
+.projects.reina .reina__summary {
+  margin-top: 26px;
+  padding-top: 18px;
+  border-top: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+.projects.reina .reina__kicker {
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 750;
+  color: color-mix(in srgb, var(--fg) 55%, transparent);
+  margin-bottom: 8px;
+}
+.projects.reina .reina__summaryText {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--fg) 72%, transparent);
+} /* ------------------------- PREVIEW ------------------------- */
+.projects.reina .reina__preview {
+  margin: 0;
+}
+.projects.reina .reina__imageWrap {
+  width: 100%;
+  display: block;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+  border-radius: 28px;
+  background: color-mix(in srgb, var(--bg) 97%, transparent);
+  box-shadow: none;
+  overflow: hidden;
+  cursor: pointer;
+} /* No badges */
+.projects.reina .reina__badge {
+  display: none !important;
+}
+.projects.reina .reina__caption {
+  margin-top: 18px;
+  max-width: 85ch;
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: color-mix(in srgb, var(--fg) 60%, transparent);
+} /* ------------------------- SECTION TITLES ------------------------- */
+.projects.reina .reina__sectionTitle {
+  margin: 0 0 14px 0;
+  font-size: 1.25rem;
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  color: color-mix(in srgb, var(--fg) 86%, transparent);
+} /* ------------------------- FLOW (your TSX uses flowList/flowRow) ------------------------- */
+.projects.reina .reina__flow {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.projects.reina .reina__flowList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.projects.reina .reina__flowRow {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 16px;
+  padding-top: 18px;
+  border-top: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+}
+.projects.reina .reina__flowRow:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+.projects.reina .reina__flowStep {
+  width: auto;
+  height: auto;
+  border: 0;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  font-weight: 800;
+  color: color-mix(in srgb, var(--fg) 55%, transparent);
+}
+.projects.reina .reina__flowTitle {
+  font-size: 1.1rem;
+  font-weight: 850;
+  line-height: 1.3;
+}
+.projects.reina .reina__flowDesc {
+  margin-top: 6px;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: color-mix(in srgb, var(--fg) 62%, transparent);
+  font-weight: 600;
+} /* ------------------------- NOTES (your TSX uses noteStack) ------------------------- */
+.projects.reina .reina__notes {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.projects.reina .reina__noteStack {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.projects.reina .reina__note {
+  padding-top: 22px;
+  border-top: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+}
+.projects.reina .reina__note:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+.projects.reina .reina__noteTitle {
+  margin: 0 0 12px 0;
+  font-size: 1.1rem;
+  font-weight: 850;
+  color: color-mix(in srgb, var(--fg) 82%, transparent);
+}
+.projects.reina .reina__bullets {
+  margin: 0;
+  padding-left: 1.15rem;
+  display: grid;
+  gap: 10px;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--fg) 62%, transparent);
+} /* ------------------------- RESPONSIVE ------------------------- */
+@media (max-width: 900px) {
+  .projects.reina {
+    padding: 110px var(--page-pad) 80px;
+  }
+  .projects.reina .reina__wrap {
+    gap: 56px;
+  }
+  .projects.reina .reina__meta {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .projects.reina .reina__summary {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   DARK MODE PALETTE PATCH (NO LAYOUT CHANGES)
+   Paste at the VERY BOTTOM of your CSS file
+   Palette:
+   F8D2B7, EBA352, BA803F, 8B5F2D, 5F3F1C, 36220C, 1A0E03
+   ========================================================= */
+
+/* 1) Make dark-mode tokens match your palette (this alone fixes a LOT) */
+.dark-mode{
+  /* Page + text */
+  --bg: #1A0E03;
+  --fg: #F8D2B7;
+  --muted: rgba(248,210,183,0.72);
+
+  /* Surfaces */
+  --card: #36220C;
+  --surface-0: var(--bg);
+  --surface-1: var(--card);
+  --surface-2: #5F3F1C;
+
+  /* Borders */
+  --border: rgba(248,210,183,0.14);
+  --border-strong: rgba(248,210,183,0.20);
+
+  /* Accent */
+  --focus: #EBA352;
+
+  /* IMPORTANT: remap your existing “olive” gradient system to your palette
+     so you don't have to rewrite buttons/headings/gradient-text */
+  --olive-1: #EBA352;
+  --olive-2: #BA803F;
+  --olive-3: #8B5F2D;
+
+  /* Shadows */
+  --shadow-sm: 0 10px 28px rgba(0,0,0,0.55);
+  --shadow-md: 0 16px 44px rgba(0,0,0,0.62);
+  --shadow-olive: 0 18px 50px rgba(235,163,82,0.18);
+
+  /* Inputs */
+  --input-bg: #1A0E03;
+  --input-border: rgba(248,210,183,0.18);
+
+  /* Text helpers (your patch uses these) */
+  --text-1: rgba(248,210,183,0.96);
+  --text-2: rgba(248,210,183,0.82);
+  --text-3: rgba(248,210,183,0.70);
+}
+
+/* 2) Body + global surfaces (keep EXACT layout, just correct contrast) */
+.dark-mode body{
+  background: var(--bg);
+  color: var(--fg);
+}
+
+/* Make “cards” consistently use your palette surfaces */
+.dark-mode .feature,
+.dark-mode .contact-form,
+.dark-mode .about-life-card,
+.dark-mode .about-cta-card,
+.dark-mode .media-card{
+  background: var(--card);
+  border-color: var(--border);
+}
+
+/* 3) PROJECTS PAGE — stop “mud” + ensure readable */
+.dark-mode .projects{ background: var(--bg); }
+
+/* Your earlier patch gets overwritten later by .project-card { background: var(--bg) }
+   so force it here at the end. */
+.dark-mode .project-card{
+  background: var(--card) !important;
+  border-color: var(--border) !important;
+  box-shadow: var(--shadow-md);
+}
+
+/* Keep the same media block, just tune the gradient to your palette */
+.dark-mode .project-media{
+  background:
+    radial-gradient(circle at 18% 38%, rgba(235,163,82,0.20), transparent 60%),
+    radial-gradient(circle at 82% 72%, rgba(186,128,63,0.16), transparent 60%),
+    linear-gradient(135deg, rgba(95,63,28,0.55), rgba(26,14,3,0.35));
+}
+
+/* Icon chip should be cream-ish, not gray/white */
+.dark-mode .project-icon{
+  background: rgba(248,210,183,0.10);
+  border-color: rgba(248,210,183,0.22);
+  color: var(--fg);
+}
+
+/* Your project description uses color-mix(var(--fg)...) — with --fg now cream, it's good.
+   Just make sure headings never go white. */
+.dark-mode .project-body h3{ color: var(--fg); }
+
+/* 4) CASE STUDIES (Good Harvest etc.) — keep structure, fix readability */
+.dark-mode .case-study{
+  background: transparent; /* uses body bg */
+}
+.dark-mode .case-study p,
+.dark-mode .case-study li{
+  color: var(--muted);
+}
+.dark-mode .case-study strong{
+  color: var(--fg);
+}
+
+/* Highlight callout: keep same sizing/layout, but palette */
+.dark-mode .case-study .highlight,
+.dark-mode .highlight{
+  background: color-mix(in srgb, var(--card) 88%, transparent);
+  border-color: var(--border);
+  border-left-color: var(--focus);
+  color: var(--fg);
+}
+
+/* Media cards + frames */
+.dark-mode .media-card{
+  background: var(--card);
+  border-color: var(--border);
+}
+.dark-mode .media-link{
+  border-color: rgba(248,210,183,0.18);
+  background: rgba(248,210,183,0.03);
+}
+.dark-mode .cs-media figcaption{
+  color: rgba(248,210,183,0.78);
+}
+
+/* 5) NAV — keep same behavior, palette contrast */
+.dark-mode .navbar{
+  background: color-mix(in srgb, var(--bg) 84%, transparent);
+  border-bottom-color: rgba(248,210,183,0.12);
+}
+.dark-mode .nav-link:hover{ color: #EBA352; }
+.dark-mode .nav-link::after{ background: var(--focus); }
+
+/* 6) FORMS — same sizes, better palette */
+.dark-mode .form-group label{ color: var(--fg); }
+.dark-mode .form-group input,
+.dark-mode .form-group textarea,
+.dark-mode select{
+  background: rgba(26,14,3,0.70);
+  color: var(--fg);
+  border-color: rgba(248,210,183,0.18);
+}
+.dark-mode .form-group input:focus,
+.dark-mode .form-group textarea:focus,
+.dark-mode select:focus{
+  border-color: var(--focus);
+}
+
+/* 7) REINA — keep layout, just make borders/surfaces match palette */
+.dark-mode .projects.reina{ background: transparent; }
+
+/* Any Reina “glass” backgrounds should be warm, not gray */
+.dark-mode .projects.reina .reina__tag,
+.dark-mode .projects.reina .reina__imageWrap{
+  background: color-mix(in srgb, var(--card) 85%, transparent);
+  border-color: var(--border);
+}
+
+/* Reina section dividers */
+.dark-mode .projects.reina .reina__meta,
+.dark-mode .projects.reina .reina__summary,
+.dark-mode .projects.reina .reina__flowRow,
+.dark-mode .projects.reina .reina__note{
+  border-top-color: rgba(248,210,183,0.14);
+}
+.dark-mode .projects.reina .reina__metaItem dd,
+.dark-mode .projects.reina .reina__flowTitle,
+.dark-mode .projects.reina .reina__noteTitle{
+  color: var(--fg);
+}
+.dark-mode .projects.reina .reina__lead,
+.dark-mode .projects.reina .reina__caption,
+.dark-mode .projects.reina .reina__flowDesc,
+.dark-mode .projects.reina .reina__bullets{
+  color: rgba(248,210,183,0.78);
+}
+
+/* 8) ECOMMERCE — remove “gray UI kit” dark styles and warm them up */
+.dark-mode .ecommerce-cs .ecom-wide,
+.dark-mode .ecommerce-cs .ecom-deviceFrame,
+.dark-mode .ecommerce-cs .ecom-dialog-inner,
+.dark-mode .ecommerce-cs .ecom-drawer{
+  background: color-mix(in srgb, var(--card) 78%, transparent);
+  border-color: var(--border);
+}
+
+/* Replace all the rgba(255,255,255,...) borders used in dark mode */
+.dark-mode .ecommerce-cs .ecom-kpi,
+.dark-mode .ecommerce-cs .ecom-demoToggle,
+.dark-mode .ecommerce-cs .ecom-demoClosed,
+.dark-mode .ecommerce-cs .ecom-demoPreviewCard,
+.dark-mode .ecommerce-cs .ecom-cart-pill,
+.dark-mode .ecommerce-cs .ecom-quick,
+.dark-mode .ecommerce-cs .ecom-qty-btn,
+.dark-mode .ecommerce-cs .ecom-dialog-head,
+.dark-mode .ecommerce-cs .ecom-drawer-head,
+.dark-mode .ecommerce-cs .ecom-total{
+  border-color: var(--border) !important;
+}
+
+/* Warm background fills */
+.dark-mode .ecommerce-cs .ecom-kpi,
+.dark-mode .ecommerce-cs .ecom-demoToggle,
+.dark-mode .ecommerce-cs .ecom-cart-pill,
+.dark-mode .ecommerce-cs .ecom-quick{
+  background: rgba(248,210,183,0.06) !important;
+  color: var(--fg);
+}
+
+/* Inputs in ecommerce */
+.dark-mode .ecommerce-cs .ecom-select,
+.dark-mode .ecommerce-cs .ecom-qty-input,
+.dark-mode .ecommerce-cs input[type="search"],
+.dark-mode .ecommerce-cs input[type="number"]{
+  background: rgba(26,14,3,0.70) !important;
+  color: var(--fg) !important;
+  border-color: rgba(248,210,183,0.18) !important;
+}
+
+/* Product cards should be warm-brown, not page-black */
+.dark-mode .ecommerce-cs .ecom-card,
+.dark-mode .ecommerce-cs .ecom-demoPreviewCard{
+  background: color-mix(in srgb, var(--card) 88%, transparent) !important;
+}
+
+/* Drawer/cart items */
+.dark-mode .ecommerce-cs .ecom-cart-item{
+  background: color-mix(in srgb, var(--card) 92%, transparent);
+  border-color: var(--border);
+}
+
+/* Muted text */
+.dark-mode .ecommerce-cs .ecom-help,
+.dark-mode .ecommerce-cs .ecom-desc,
+.dark-mode .ecommerce-cs .ecom-results,
+.dark-mode .ecommerce-cs .ecom-demoSubtitle,
+.dark-mode .ecommerce-cs .ecom-demoPreviewDesc,
+.dark-mode .ecommerce-cs .ecom-demoNote,
+.dark-mode .ecommerce-cs .ecom-meta,
+.dark-mode .ecommerce-cs .ecom-dialog-cat{
+  color: rgba(248,210,183,0.72) !important;
+}
+
+/* Links already map to --focus via your existing rule; keep it consistent */
+.dark-mode .ecommerce-cs .ecom-link,
 .dark-mode .cs-link,
 .dark-mode .cs-toggle-link{
   color: var(--focus);
 }
 
-/* ========================= FOOTER ========================= */
-footer{
-  background: var(--surface-0);
-  padding:3rem var(--page-pad);
-  text-align:center;
-  border-top:1px solid var(--border);
-  margin-top:auto;
-}
-footer p{
-  color: var(--text-3);
-  font-size:.9rem;
-  font-weight:600;
+/* =========================================================
+   WCAG DARK MODE PATCH (PALETTE-LOCKED, NO LAYOUT CHANGES)
+   Paste at the VERY BOTTOM of your CSS file.
+
+   Palette:
+   #F8D2B7 (cream)
+   #EBA352 (gold)
+   #BA803F (copper)
+   #8B5F2D (brown)
+   #5F3F1C (deep brown)
+   #36220C (card brown)
+   #1A0E03 (near-black brown)
+
+   WCAG goal:
+   - Body/copy/labels/link text always >= 4.5:1 against their backgrounds.
+   - Accent background ALWAYS uses dark text (never cream on gold).
+   ========================================================= */
+
+/* 1) Core tokens in dark mode (use your palette everywhere) */
+.dark-mode{
+  /* Base */
+  --bg: #1A0E03;
+  --fg: #F8D2B7;
+
+  /* Copy tokens (WCAG-safe on #1A0E03 and #36220C) */
+  --text-1: #F8D2B7;              /* main copy */
+  --text-2: rgba(248,210,183,.86); /* secondary copy */
+  --text-3: rgba(248,210,183,.76); /* muted copy (still WCAG-safe) */
+  --muted: var(--text-3);
+
+  /* Surfaces */
+  --card: #36220C;
+  --surface-0: var(--bg);
+  --surface-1: var(--card);
+  --surface-2: #5F3F1C;
+
+  /* Borders */
+  --border: rgba(248,210,183,.18);
+  --border-strong: rgba(248,210,183,.26);
+
+  /* Accent + focus */
+  --focus: #EBA352;
+
+  /* IMPORTANT: remap your existing “olive” system so you don’t rewrite gradients */
+  --olive-1: #EBA352;
+  --olive-2: #BA803F;
+  --olive-3: #8B5F2D;
+
+  /* Buttons on accent backgrounds MUST use dark text for WCAG */
+  --on-accent: #1A0E03;
+
+  /* Inputs */
+  --input-bg: rgba(26,14,3,.82);
+  --input-border: rgba(248,210,183,.22);
+
+  /* Shadows */
+  --shadow-sm: 0 10px 28px rgba(0,0,0,.55);
+  --shadow-md: 0 16px 44px rgba(0,0,0,.62);
+  --shadow-olive: 0 18px 50px rgba(235,163,82,.18);
 }
 
-/* ========================= ABOUT PAGE (kept, only surfaces corrected) ========================= */
-.about-page{
-  min-height:100vh;
-  background: var(--surface-0);
+/* 2) Global text + surfaces (copy contrast) */
+.dark-mode body{
+  background: var(--bg);
   color: var(--text-1);
 }
-/* (Keep the rest of your About/Reina/Ecommerce blocks as-is)
-   BUT: wherever you have background: var(--bg) on a card, change to var(--surface-1)
-   and wherever you have border: 1px solid rgba(0,0,0,0.1) change to var(--border). */
 
-/* ========================= REINA ========================= */
-/* Keep your Reina block — only add these two lines so it matches the system */
-.projects.reina{ background: var(--surface-0); }
+.dark-mode p,
+.dark-mode li,
+.dark-mode .hero-description,
+.dark-mode .contact-info p,
+.dark-mode .about-intro,
+.dark-mode .chapter-text,
+.dark-mode .about-life-intro p,
+.dark-mode .about-growth-text,
+.dark-mode .about-cta-content p{
+  color: var(--text-3);
+}
+
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4,
+.dark-mode dt,
+.dark-mode strong{
+  color: var(--text-1);
+}
+
+/* 3) Cards/surfaces (no layout change, just color) */
+.dark-mode .feature,
+.dark-mode .contact-form,
+.dark-mode .about-life-card,
+.dark-mode .about-cta-card,
+.dark-mode .media-card,
+.dark-mode .hobby-card,
+.dark-mode .project-card{
+  background: var(--surface-1) !important;
+  border-color: var(--border) !important;
+}
+
+/* 4) Projects page (ensure title/description contrast) */
+.dark-mode .projects{ background: var(--bg); }
+
+.dark-mode .project-body h3{ color: var(--text-1); }
+.dark-mode .project-body p{
+  color: var(--text-2); /* safer than color-mix against changing --fg */
+}
+
+/* Project media stays pretty but not muddy */
+.dark-mode .project-media{
+  background:
+    radial-gradient(circle at 18% 38%, rgba(235,163,82,.20), transparent 60%),
+    radial-gradient(circle at 82% 72%, rgba(186,128,63,.16), transparent 60%),
+    linear-gradient(135deg, rgba(95,63,28,.55), rgba(26,14,3,.40));
+}
+.dark-mode .project-icon{
+  background: rgba(248,210,183,.10);
+  border-color: rgba(248,210,183,.24);
+  color: var(--text-1);
+}
+
+/* 5) Links: don’t rely on color alone + keep contrast */
+.dark-mode a,
+.dark-mode .cs-link,
+.dark-mode .cs-toggle-link,
+.dark-mode .ecommerce-cs .ecom-link,
+.dark-mode .ecommerce-cs .ecom-demoExternalLink{
+  color: var(--focus);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
+
+/* Hover stays within palette and still contrasts */
+.dark-mode a:hover,
+.dark-mode .nav-link:hover{
+  color: #EBA352;
+}
+
+/* 6) NAV: readable, consistent, WCAG-safe */
+.dark-mode .navbar{
+  color: var(--text-1);
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  border-bottom: 1px solid rgba(248,210,183,.14);
+}
+.dark-mode .nav-link,
+.dark-mode .theme-btn,
+.dark-mode .hamburger{
+  color: var(--text-1);
+}
+.dark-mode .nav-link::after{ background: var(--focus); }
+
+/* 7) Forms: inputs + labels must pass */
+.dark-mode .form-group label{ color: var(--text-1); }
+
+.dark-mode .form-group input,
+.dark-mode .form-group textarea,
+.dark-mode select{
+  background: var(--input-bg);
+  color: var(--text-1);
+  border-color: var(--input-border);
+}
+.dark-mode .form-group input::placeholder,
+.dark-mode .form-group textarea::placeholder{
+  color: rgba(248,210,183,.70);
+}
+.dark-mode .form-group input:focus,
+.dark-mode .form-group textarea:focus,
+.dark-mode select:focus{
+  border-color: var(--focus);
+}
+
+/* 8) Buttons / CTAs (CRITICAL WCAG FIX)
+   Your gradients now use palette via --olive-*.
+   Force text to dark on the warm gradient so it passes. */
+.dark-mode .hero-btn,
+.dark-mode .submit-btn,
+.dark-mode .ecommerce-cs .ecom-add.hero-btn{
+  color: var(--on-accent) !important;
+}
+
+/* 9) Case study blocks */
+.dark-mode .case-study p,
+.dark-mode .case-study li{ color: var(--text-3); }
+
+.dark-mode .case-study .meta{ color: var(--text-3); }
+
+.dark-mode .case-study .highlight,
+.dark-mode .highlight{
+  background: color-mix(in srgb, var(--card) 90%, transparent);
+  border-color: var(--border);
+  border-left-color: var(--focus);
+  color: var(--text-1);
+}
+
+/* Media captions (copy must pass) */
+.dark-mode .cs-media figcaption{
+  color: var(--text-2);
+}
+
+/* 10) Reina: borders + copy */
+.dark-mode .projects.reina{ background: transparent; }
+
+.dark-mode .projects.reina .reina__tag,
+.dark-mode .projects.reina .reina__imageWrap{
+  background: color-mix(in srgb, var(--card) 88%, transparent);
+  border-color: var(--border);
+}
+
+.dark-mode .projects.reina .reina__lead,
+.dark-mode .projects.reina .reina__caption,
+.dark-mode .projects.reina .reina__flowDesc,
+.dark-mode .projects.reina .reina__bullets{
+  color: var(--text-2);
+}
+
+.dark-mode .projects.reina .reina__meta,
+.dark-mode .projects.reina .reina__summary,
+.dark-mode .projects.reina .reina__flowRow,
+.dark-mode .projects.reina .reina__note{
+  border-top-color: rgba(248,210,183,.16);
+}
+
+/* 11) E-commerce: remove gray/white-dark leftovers; keep copy readable */
+.dark-mode .ecommerce-cs .ecom-wide,
+.dark-mode .ecommerce-cs .ecom-deviceFrame,
+.dark-mode .ecommerce-cs .ecom-dialog-inner,
+.dark-mode .ecommerce-cs .ecom-drawer{
+  background: color-mix(in srgb, var(--card) 82%, transparent);
+  border-color: var(--border) !important;
+}
+
+.dark-mode .ecommerce-cs .ecom-kpi,
+.dark-mode .ecommerce-cs .ecom-demoToggle,
+.dark-mode .ecommerce-cs .ecom-demoClosed,
+.dark-mode .ecommerce-cs .ecom-demoPreviewCard,
+.dark-mode .ecommerce-cs .ecom-cart-pill,
+.dark-mode .ecommerce-cs .ecom-quick,
+.dark-mode .ecommerce-cs .ecom-qty-btn{
+  border-color: var(--border) !important;
+  background: rgba(248,210,183,.06) !important;
+  color: var(--text-1);
+}
+
+.dark-mode .ecommerce-cs .ecom-select,
+.dark-mode .ecommerce-cs .ecom-qty-input,
+.dark-mode .ecommerce-cs input[type="search"],
+.dark-mode .ecommerce-cs input[type="number"]{
+  background: var(--input-bg) !important;
+  color: var(--text-1) !important;
+  border-color: var(--input-border) !important;
+}
+
+.dark-mode .ecommerce-cs .ecom-title,
+.dark-mode .ecommerce-cs .ecom-price,
+.dark-mode .ecommerce-cs .ecom-dialog-price{
+  color: var(--text-1);
+}
+
+.dark-mode .ecommerce-cs .ecom-help,
+.dark-mode .ecommerce-cs .ecom-desc,
+.dark-mode .ecommerce-cs .ecom-results,
+.dark-mode .ecommerce-cs .ecom-demoSubtitle,
+.dark-mode .ecommerce-cs .ecom-demoPreviewDesc,
+.dark-mode .ecommerce-cs .ecom-demoNote,
+.dark-mode .ecommerce-cs .ecom-meta,
+.dark-mode .ecommerce-cs .ecom-dialog-cat,
+.dark-mode .ecommerce-cs .ecom-muted{
+  color: var(--text-3) !important;
+}
+
+.dark-mode .ecommerce-cs .ecom-cart-item{
+  background: color-mix(in srgb, var(--card) 92%, transparent);
+  border-color: var(--border);
+}
+
+/* 12) Focus visibility (already in your base, but ensure it’s visible on brown) */
+.dark-mode button:focus,
+.dark-mode a:focus,
+.dark-mode input:focus,
+.dark-mode textarea:focus,
+.dark-mode select:focus{
+  outline-color: var(--focus);
+}
+
+/* =========================================================
+   FIX: DARK MODE APPLY + STABILIZE PROJECTS/REINA/ECOM/CASE STUDIES
+   Paste at the VERY BOTTOM of your CSS (below everything).
+   This does NOT change layout — only fixes cascade + contrast.
+   ========================================================= */
+
+/* 0) Make dark-mode work no matter where you place the class */
+:root.dark-mode,
+html.dark-mode,
+body.dark-mode,
+.dark-mode {
+  /* Palette tokens */
+  --bg: #1A0E03;
+  --fg: #F8D2B7;
+
+  --muted: rgba(248, 210, 183, 0.76);
+
+  --card: #36220C;
+  --border: rgba(248, 210, 183, 0.18);
+
+  /* Surface tokens used by your “alignment patch” */
+  --surface-0: var(--bg);
+  --surface-1: var(--card);
+  --surface-2: #5F3F1C;
+
+  --text-1: rgba(248, 210, 183, 0.96);
+  --text-2: rgba(248, 210, 183, 0.86);
+  --text-3: rgba(248, 210, 183, 0.76);
+
+  --input-bg: rgba(26, 14, 3, 0.82);
+  --input-border: rgba(248, 210, 183, 0.22);
+
+  --focus: #EBA352;
+
+  /* Remap “olive” system so headings/buttons keep working */
+  --olive-1: #EBA352;
+  --olive-2: #BA803F;
+  --olive-3: #8B5F2D;
+
+  --shadow-sm: 0 10px 28px rgba(0, 0, 0, 0.55);
+  --shadow-md: 0 16px 44px rgba(0, 0, 0, 0.62);
+  --shadow-olive: 0 18px 50px rgba(235, 163, 82, 0.18);
+}
+
+/* 1) IMPORTANT: Your file later resets body { background: var(--bg); color: var(--fg); }
+   Force the final, correct dark-mode surface/text. */
+body.dark-mode,
+.dark-mode body {
+  background: var(--bg);
+  color: var(--text-1);
+}
+
+/* 2) Global copy stabilization (prevents weird “washed out / too dim” sections) */
+body.dark-mode p,
+body.dark-mode li,
+body.dark-mode .hero-description,
+body.dark-mode .contact-info p,
+body.dark-mode .about-intro,
+body.dark-mode .chapter-text,
+body.dark-mode .about-life-intro p,
+body.dark-mode .about-growth-text,
+body.dark-mode .about-cta-content p,
+body.dark-mode .ecommerce-cs .ecom-desc,
+body.dark-mode .ecommerce-cs .ecom-help,
+body.dark-mode .ecommerce-cs .ecom-results,
+body.dark-mode .ecommerce-cs .ecom-demoSubtitle,
+body.dark-mode .ecommerce-cs .ecom-demoPreviewDesc,
+body.dark-mode .ecommerce-cs .ecom-demoNote,
+body.dark-mode .ecommerce-cs .ecom-meta,
+body.dark-mode .ecommerce-cs .ecom-dialog-cat,
+body.dark-mode .cs-media figcaption {
+  color: var(--text-3);
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode strong {
+  color: var(--text-1);
+}
+
+/* 3) PROJECTS page: your later .project-card/.project-media rules override earlier patches.
+   Re-assert the intended surfaces without changing sizing/spacing. */
+body.dark-mode .projects {
+  background: var(--bg);
+}
+
+body.dark-mode .project-card {
+  background: var(--card);
+  border-color: var(--border);
+  box-shadow: var(--shadow-md);
+}
+
+body.dark-mode .project-media {
+  background:
+    radial-gradient(circle at 18% 38%, rgba(235,163,82,0.20), transparent 60%),
+    radial-gradient(circle at 82% 72%, rgba(186,128,63,0.16), transparent 60%),
+    linear-gradient(135deg, rgba(95,63,28,0.55), rgba(26,14,3,0.40));
+}
+
+body.dark-mode .project-icon {
+  background: rgba(248,210,183,0.10);
+  border-color: rgba(248,210,183,0.24);
+  color: var(--text-1);
+}
+
+body.dark-mode .project-body h3 { color: var(--text-1); }
+body.dark-mode .project-body p  { color: var(--text-2); }
+
+/* 4) REINA: keep your layout, only align surfaces + divider lines */
+body.dark-mode .projects.reina {
+  background: transparent;
+  color: var(--text-1);
+}
+
+body.dark-mode .projects.reina .reina__tag,
+body.dark-mode .projects.reina .reina__imageWrap {
+  background: color-mix(in srgb, var(--card) 88%, transparent);
+  border-color: var(--border);
+}
+
+body.dark-mode .projects.reina .reina__meta,
+body.dark-mode .projects.reina .reina__summary,
+body.dark-mode .projects.reina .reina__flowRow,
+body.dark-mode .projects.reina .reina__note {
+  border-top-color: rgba(248, 210, 183, 0.16);
+}
+
+body.dark-mode .projects.reina .reina__lead,
+body.dark-mode .projects.reina .reina__caption,
+body.dark-mode .projects.reina .reina__flowDesc,
+body.dark-mode .projects.reina .reina__bullets {
+  color: var(--text-2);
+}
+
+/* 5) CASE STUDIES (Good Harvest etc.) */
+body.dark-mode .case-study {
+  background: transparent;
+  color: var(--text-1);
+}
+
+body.dark-mode .case-study p,
+body.dark-mode .case-study li {
+  color: var(--text-3);
+}
+
+body.dark-mode .case-study .highlight,
+body.dark-mode .highlight {
+  background: color-mix(in srgb, var(--card) 90%, transparent);
+  border-color: var(--border);
+  border-left-color: var(--focus);
+  color: var(--text-1);
+}
+
+/* 6) ECOMMERCE: remove “gray kit” remnants but don’t touch layout */
+body.dark-mode .ecommerce-cs .ecom-wide,
+body.dark-mode .ecommerce-cs .ecom-deviceFrame,
+body.dark-mode .ecommerce-cs .ecom-dialog-inner,
+body.dark-mode .ecommerce-cs .ecom-drawer {
+  background: color-mix(in srgb, var(--card) 82%, transparent);
+  border-color: var(--border);
+}
+
+body.dark-mode .ecommerce-cs .ecom-kpi,
+body.dark-mode .ecommerce-cs .ecom-demoToggle,
+body.dark-mode .ecommerce-cs .ecom-demoClosed,
+body.dark-mode .ecommerce-cs .ecom-demoPreviewCard,
+body.dark-mode .ecommerce-cs .ecom-cart-pill,
+body.dark-mode .ecommerce-cs .ecom-quick,
+body.dark-mode .ecommerce-cs .ecom-qty-btn,
+body.dark-mode .ecommerce-cs .ecom-dialog-head,
+body.dark-mode .ecommerce-cs .ecom-drawer-head,
+body.dark-mode .ecommerce-cs .ecom-total {
+  border-color: var(--border);
+}
+
+body.dark-mode .ecommerce-cs .ecom-kpi,
+body.dark-mode .ecommerce-cs .ecom-demoToggle,
+body.dark-mode .ecommerce-cs .ecom-cart-pill,
+body.dark-mode .ecommerce-cs .ecom-quick {
+  background: rgba(248,210,183,0.06);
+  color: var(--text-1);
+}
+
+body.dark-mode .ecommerce-cs .ecom-select,
+body.dark-mode .ecommerce-cs .ecom-qty-input,
+body.dark-mode .ecommerce-cs input[type="search"],
+body.dark-mode .ecommerce-cs input[type="number"] {
+  background: var(--input-bg);
+  color: var(--text-1);
+  border-color: var(--input-border);
+}
+
+/* 7) WCAG CTA fix: your palette gradient is bright, so use dark text on it */
+body.dark-mode .hero-btn,
+body.dark-mode .submit-btn,
+body.dark-mode .ecommerce-cs .ecom-add.hero-btn {
+  color: #1A0E03;
+}
+
+/* =========================================================
+   PROJECT BACKGROUND FIX (NO LAYOUT CHANGES)
+   Paste at the VERY BOTTOM
+   ========================================================= */
+
+/* 1) Projects page wrappers should ALWAYS use the page surface */
+.projects,
+.section.projects,
+.projects.reina,
+.case-study,
+main.case-study {
+  background: var(--surface-0);
+}
+
+/* 2) All “card-like” blocks inside projects/case-studies should use surface-1 */
+.project-card,
+.feature,
+.contact-form,
+.about-life-card,
+.about-cta-card,
+.media-card,
+.ecommerce-cs .ecom-card,
+.ecommerce-cs .ecom-demoClosed,
+.ecommerce-cs .ecom-demoPreviewCard,
+.ecommerce-cs .ecom-deviceFrame,
+.ecommerce-cs .ecom-dialog-inner,
+.ecommerce-cs .ecom-drawer,
+.ecommerce-cs .ecom-cart-item,
 .projects.reina .reina__tag,
-.projects.reina .reina__imageWrap{ background: var(--surface-1); border-color: var(--border); }
+.projects.reina .reina__imageWrap {
+  background: var(--surface-1) !important;
+  border-color: var(--border) !important;
+}
+
+/* 3) Raised surfaces (frames / “browser chrome”) */
+.ecommerce-cs .ecom-wide,
+.ecommerce-cs .ecom-deviceTop {
+  background: var(--surface-2) !important;
+  border-color: var(--border) !important;
+}
+
+/* 4) Projects media header background should not “flip” to page bg */
+.project-media {
+  background:
+    radial-gradient(
+      circle at 20% 40%,
+      color-mix(in srgb, var(--focus) 14%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 85% 70%,
+      color-mix(in srgb, var(--focus) 10%, transparent),
+      transparent 60%
+    ),
+    var(--surface-1) !important;
+}
+
+/* 5) Fix the two big offenders that commonly overwrite you later */
+.project-card { background: var(--surface-1) !important; }
+.media-card   { background: var(--surface-1) !important; }
+
+/* 6) If any case-study component is painting a bg, stop it */
+.case-study > header,
+.case-study > section {
+  background: transparent;
+}
+
+/* 7) Dark mode: ensure surfaces are your palette (so backgrounds are consistent) */
+:root.dark-mode,
+html.dark-mode,
+body.dark-mode,
+.dark-mode {
+  --bg: #1A0E03;
+  --fg: #F8D2B7;
+  --card: #36220C;
+  --surface-0: #1A0E03;
+  --surface-1: #36220C;
+  --surface-2: #5F3F1C;
+  --border: rgba(248,210,183,0.18);
+  --focus: #EBA352;
+
+  /* keep your existing gradient system working */
+  --olive-1: #EBA352;
+  --olive-2: #BA803F;
+  --olive-3: #8B5F2D;
+}
+
+/* =========================================================
+   DFIX — STABILIZE ABOUT / REINA / ECOM DEMO / FEATURES
+   Paste at the VERY BOTTOM of your CSS (last lines).
+   Goal: stop background/border overrides + restore card surfaces.
+   No layout/grid/spacing changes.
+   ========================================================= */
+
+/* 0) Make sure dark mode works whether class is on .app or body/html */
+.app.dark-mode,
+body.dark-mode,
+html.dark-mode,
+.dark-mode{
+  color: var(--fg);
+}
+
+/* 1) GLOBAL: pages should use page bg, cards should use card bg */
+.projects,
+.case-study,
+.about-page,
+.contact-hero,
+.hero{
+  background: var(--bg) !important;
+}
+
+/* Bring back “feature cards” (if they looked invisible / blended) */
+.feature{
+  display: block;
+  background: var(--card) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow-sm);
+}
+
+/* 2) ABOUT: fix day + night surfaces + readable copy */
+.about-page{
+  background: var(--bg) !important;
+  color: var(--fg);
+}
+
+.about-life-card,
+.about-cta-card,
+.hobby-card{
+  background: var(--card) !important;
+  border: 1px solid var(--border) !important;
+}
+
+.about-intro,
+.chapter-text,
+.about-life-intro p,
+.about-growth-text,
+.about-cta-content p,
+.hobby-desc,
+.about-closing-text{
+  color: var(--muted) !important;
+}
+
+.about-life-title,
+.about-growth-title,
+.about-cta-title,
+.hobby-title{
+  color: var(--fg);
+}
+
+/* 3) REINA: stop “wrong layer” backgrounds and divider weirdness */
+.projects.reina{
+  background: var(--bg) !important;
+  color: var(--fg);
+}
+
+.projects.reina .reina__tag,
+.projects.reina .reina__imageWrap{
+  background: var(--card) !important;
+  border: 1px solid var(--border) !important;
+}
+
+.projects.reina .reina__lead,
+.projects.reina .reina__caption,
+.projects.reina .reina__flowDesc,
+.projects.reina .reina__bullets{
+  color: var(--muted) !important;
+}
+
+.projects.reina .reina__meta,
+.projects.reina .reina__summary,
+.projects.reina .reina__flowRow,
+.projects.reina .reina__note{
+  border-top-color: color-mix(in srgb, var(--fg) 12%, transparent) !important;
+}
+
+/* 4) PROJECT CARDS: remove the “mud” + stop hard-coded overrides winning */
+.project-card{
+  background: var(--card) !important;
+  border: 1px solid var(--border) !important;
+}
+
+.dark-mode .project-card{
+  /* prevents any earlier hard-coded dark brown from winning */
+  background: var(--card) !important;
+  border-color: var(--border) !important;
+}
+
+.project-body p{
+  color: color-mix(in srgb, var(--fg) 65%, transparent) !important;
+}
+
+/* 5) CASE STUDY MEDIA CARDS: stop flipping to page bg */
+.media-card{
+  background: var(--card) !important;
+  border: 1px solid var(--border) !important;
+}
+
+/* 6) E-COMMERCE DEMO: fix the demo frame + cards day/night */
+.ecommerce-cs .ecom-wide,
+.ecommerce-cs .ecom-deviceFrame,
+.ecommerce-cs .ecom-dialog-inner,
+.ecommerce-cs .ecom-drawer,
+.ecommerce-cs .ecom-card,
+.ecommerce-cs .ecom-demoClosed,
+.ecommerce-cs .ecom-demoPreviewCard,
+.ecommerce-cs .ecom-cart-item{
+  background: var(--card) !important;
+  border-color: var(--border) !important;
+}
+
+/* Make the demo section background match the site instead of “gray kit” */
+.ecommerce-cs .ecom-demoSection{
+  background:
+    radial-gradient(circle at 20% 25%, color-mix(in srgb, var(--olive-2) 10%, transparent), transparent 60%),
+    radial-gradient(circle at 85% 70%, color-mix(in srgb, var(--olive-2) 8%, transparent), transparent 60%),
+    var(--bg) !important;
+}
+
+/* Inputs inside demo should not invert to random #1a1a1a / gray */
+.ecommerce-cs .ecom-select,
+.ecommerce-cs .ecom-qty-input{
+  background: var(--bg) !important;
+  color: var(--fg) !important;
+  border-color: var(--border) !important;
+}
+
+/* 7) Dark mode readability for muted copy (fix “washed out / too dim”) */
+.dark-mode .about-intro,
+.dark-mode .chapter-text,
+.dark-mode .about-life-intro p,
+.dark-mode .about-growth-text,
+.dark-mode .about-cta-content p,
+.dark-mode .hobby-desc,
+.dark-mode .case-study p,
+.dark-mode .case-study li,
+.dark-mode .cs-media figcaption,
+.dark-mode .ecommerce-cs .ecom-desc,
+.dark-mode .ecommerce-cs .ecom-help,
+.dark-mode .ecommerce-cs .ecom-results,
+.dark-mode .ecommerce-cs .ecom-demoSubtitle,
+.dark-mode .ecommerce-cs .ecom-demoPreviewDesc,
+.dark-mode .ecommerce-cs .ecom-demoNote,
+.dark-mode .ecommerce-cs .ecom-meta,
+.dark-mode .ecommerce-cs .ecom-dialog-cat{
+  color: rgba(248,210,183,.76) !important;
+}
