@@ -24,9 +24,10 @@ export default function App() {
     if (saved) setDarkMode(JSON.parse(saved));
   }, []);
 
-  // Persist theme preference
+    // Persist theme preference + apply class globally
   useEffect(() => {
     localStorage.setItem("darkMode", JSON.stringify(darkMode));
+    document.documentElement.classList.toggle("dark-mode", darkMode);
   }, [darkMode]);
 
   return (
@@ -34,7 +35,7 @@ export default function App() {
       <>
         <Loader />
 
-        <div className={`app ${darkMode ? "dark-mode" : ""}`}>
+        <div className= "app">
           <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
           <AppRoutes />
           <Footer />

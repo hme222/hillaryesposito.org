@@ -1,6 +1,9 @@
-/* index.css (minimal) */
+/* index.css (minimal + safe with theme tokens) */
 html, body, #root { height: 100%; }
 body { margin: 0; }
 
 /* optional: keep code font if you show code snippets */
-code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
