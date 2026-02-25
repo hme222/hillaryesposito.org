@@ -3064,13 +3064,3 @@ select,
 textarea{
   border-color: var(--border);
 }
-
-/* 8) Reduce motion support (WCAG 2.2.2 / prefers-reduced-motion) */
-@media (prefers-reduced-motion: reduce){
-  *{
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
