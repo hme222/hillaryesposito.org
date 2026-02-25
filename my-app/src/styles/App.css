@@ -2984,3 +2984,93 @@ html.dark-mode,
 .dark-mode .ecommerce-cs .ecom-dialog-cat{
   color: rgba(248,210,183,.76) !important;
 }
+
+/* =========================================================
+   WCAG SAFETY PATCH — no layout changes
+   Paste at VERY BOTTOM (after DFIX)
+   Targets: contrast, focus, links, buttons, form states
+   ========================================================= */
+
+/* 1) Minimum readable defaults */
+body{
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+/* 2) Focus visibility (WCAG 2.2 focus appearance-ish, strong + offset) */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible{
+  outline: 3px solid var(--focus) !important;
+  outline-offset: 4px !important;
+}
+:where(a, button, input, select, textarea, [tabindex]):focus{
+  outline: none;
+}
+
+/* 3) Links must not rely on color alone (WCAG 1.4.1) */
+a{
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
+a:hover{
+  text-decoration-thickness: 3px;
+}
+
+/* Your nav links can keep the underline animation, but still be “links” */
+.nav-link{
+  text-decoration: none; /* nav underline handled by ::after */
+}
+.nav-link:hover{
+  text-decoration: none;
+}
+
+/* 4) Button text on bright gradients MUST be dark for contrast */
+.hero-btn,
+.submit-btn,
+.ecommerce-cs .ecom-add.hero-btn{
+  color: #0a0a0a !important;
+}
+.dark-mode .hero-btn,
+.dark-mode .submit-btn,
+.dark-mode .ecommerce-cs .ecom-add.hero-btn{
+  color: #1A0E03 !important; /* matches your palette dark */
+}
+
+/* 5) Form readability */
+::placeholder{
+  opacity: 1; /* avoid too-faint placeholders */
+}
+input::placeholder,
+textarea::placeholder{
+  color: color-mix(in srgb, var(--fg) 55%, transparent);
+}
+.dark-mode input::placeholder,
+.dark-mode textarea::placeholder{
+  color: rgba(248,210,183,.70);
+}
+
+/* 6) Disabled states visible (WCAG 1.4.3/1.4.11-ish) */
+:disabled,
+[aria-disabled="true"]{
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+/* 7) Interactive controls have a visible border (non-text contrast) */
+button,
+input,
+select,
+textarea{
+  border-color: var(--border);
+}
+
+/* 8) Reduce motion support (WCAG 2.2.2 / prefers-reduced-motion) */
+@media (prefers-reduced-motion: reduce){
+  *{
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
