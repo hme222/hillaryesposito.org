@@ -2430,7 +2430,7 @@ footer p {
 .dark-mode .hero-btn,
 .dark-mode .submit-btn,
 .dark-mode .ecommerce-cs .ecom-add.hero-btn{
-  color: var(--on-accent) !important;
+  color: var(--bg) !important;
 }
 
 /* 9) Case study blocks */
