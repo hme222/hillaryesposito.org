@@ -53,7 +53,11 @@ export default function Home() {
               ease: [0.2, 0.8, 0.2, 1],
             }}
           >
-            I design for clarity in the moments that matter...
+            I design for clarity in the moments that matter. Veteran turned UX
+            designer with experience in healthcare, government, and high-pressure
+            systems. I am driven by curiosity, grounded in service, and focused
+            on helping people feel more capable. I turn complex, high-emotion
+            workflows into experiences that feel intuitive, calm, and human.
           </motion.p>
 
           <motion.div
