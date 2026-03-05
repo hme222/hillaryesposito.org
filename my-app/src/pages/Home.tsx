@@ -1,9 +1,24 @@
 // src/pages/Home.tsx
-import React from "react";
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 export default function Home() {
+  const catRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (catRef.current) {
+        const scrollY = window.scrollY;
+        const movement = Math.sin(scrollY * 0.002) * 20;
+        catRef.current.style.transform = `translateY(${movement}px)`;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section className="section active hero" aria-label="Home section">
       <div className="hero-content">
@@ -16,6 +31,17 @@ export default function Home() {
           HILLARY ESPOSITO
         </motion.h1>
 
+        {/* Floating Luna */}
+        <div
+          ref={catRef}
+          className="about-luna"
+        >
+          <img
+            src="/assets/favicon.png"
+            alt="Luna, a gray and white cat with orange eyes"
+          />
+        </div>
+
         <div className="hero-copy">
           <motion.p
             className="hero-description"
@@ -27,11 +53,7 @@ export default function Home() {
               ease: [0.2, 0.8, 0.2, 1],
             }}
           >
-            I design for clarity in the moments that matter. Veteran turned UX
-            designer with experience in healthcare, government, and high-pressure
-            systems. I am driven by curiosity, grounded in service, and focused
-            on helping people feel more capable. I turn complex, high-emotion
-            workflows into experiences that feel intuitive, calm, and human.
+            I design for clarity in the moments that matter...
           </motion.p>
 
           <motion.div
