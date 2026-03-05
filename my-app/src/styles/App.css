@@ -1570,7 +1570,7 @@ footer p {
   margin: 0 auto;
 } /* Give About the same “page rhythm” as case studies */
 .about-hero {
-  padding: 120px 0 56px;
+  padding: 120px 0 20px;
 }
 .about-journey,
 .about-life,
@@ -1589,11 +1589,11 @@ footer p {
 } /* Title should match your brand gradient language */
 .about-title {
   font-family: "Poppins", sans-serif;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -1px;
   line-height: 1.1;
   margin-top: 18px;
-  font-size: clamp(2.5rem, 4.2vw, 3.6rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   background: linear-gradient(
     135deg,
     var(--olive-1) 0%,
@@ -1899,7 +1899,7 @@ footer p {
 } /* ------------------------- SECTION TITLES ------------------------- */
 .projects.reina .reina__sectionTitle {
   margin: 0 0 14px 0;
-  font-size: 1.25rem;
+  font-size: 2rem;
   font-weight: 850;
   letter-spacing: -0.01em;
   color: color-mix(in srgb, var(--fg) 86%, transparent);
