@@ -31,17 +31,6 @@ export default function Home() {
           HILLARY ESPOSITO
         </motion.h1>
 
-        {/* Floating Luna */}
-        <div
-          ref={catRef}
-          className="about-luna"
-        >
-          <img
-            src="/assets/favicon.png"
-            alt="Luna, a gray and white cat with orange eyes"
-          />
-        </div>
-
         <div className="hero-copy">
           <motion.p
             className="hero-description"
@@ -73,6 +62,18 @@ export default function Home() {
             <Link to="/contact" className="hero-btn">
               Contact me
             </Link>
+
+
+        {/* Floating Luna */}
+        <div
+          ref={catRef}
+          className="about-luna"
+        >
+          <img
+            src="/assets/favicon.png"
+            alt="Luna, a gray and white cat with orange eyes"
+          />
+        </div>
           </motion.div>
         </div>
       </div>
