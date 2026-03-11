@@ -204,7 +204,7 @@ body {
   transition:
     background 0.25s cubic-bezier(0.4, 0, 0.2, 1),
     color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  line-height: 1.6;
+  line-height: 1;
 }
 a {
   color: inherit;
@@ -260,7 +260,7 @@ select:focus {
   flex-direction: column;
 }
 .loader-wrapper {
-  position: fixed;
+  position: flex;
   inset: 0;
   background: var(--bg);
   display: flex;
@@ -707,7 +707,7 @@ select:focus {
 }
 .contact-form {
   background: var(--card);
-  padding: 3rem;
+  padding: 2.2rem;
   border-radius: var(--radius-xl);
   border: 1px solid var(--border);
 }
