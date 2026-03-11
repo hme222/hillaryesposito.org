@@ -70,7 +70,6 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
 
   return (
     <nav className="navbar" aria-label="Primary navigation">
-      {/* Logo */}
       <button
         className="logo"
         type="button"
@@ -91,7 +90,6 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
         <span className="logo-text">HILLARY</span>
       </button>
 
-      {/* Hamburger */}
       <button
         className="hamburger"
         type="button"
@@ -100,18 +98,15 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
         aria-controls="primary-menu"
         onClick={() => setMenuOpen((m) => !m)}
       >
-        ☰
+        {menuOpen ? "✕" : "☰"}
       </button>
 
-      {/* Backdrop */}
       {menuOpen && <div className="nav-overlay-backdrop" onClick={close} />}
 
       <ul
         id="primary-menu"
         className={`nav-menu ${menuOpen ? "open" : ""}`}
-        aria-hidden={!menuOpen}
       >
-        {/* Close button inside full-screen overlay */}
         <li className="nav-close-row">
           <button
             type="button"
@@ -143,7 +138,6 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
           </button>
         </li>
 
-        {/* ABOUT now links to the About page route */}
         <li>
           <Link to="/about" className="nav-link nav-link--about" onClick={close}>
             ABOUT
@@ -160,7 +154,6 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
           </button>
         </li>
 
-        {/* Resume button */}
         <li>
           <a
             href="/assets/Hillary-Esposito-Resume.pdf"
