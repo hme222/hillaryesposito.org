@@ -72,6 +72,29 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+  const handleMouseMove = (e: MouseEvent) => {
+    if (!catRef.current) return;
+
+    const rect = catRef.current.getBoundingClientRect();
+
+    const catCenterX = rect.left + rect.width / 2;
+    const catCenterY = rect.top + rect.height / 2;
+
+    const deltaX = e.clientX - catCenterX;
+    const deltaY = e.clientY - catCenterY;
+
+    const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+
+    catRef.current.style.transform =
+      `translateX(-50%) rotate(${angle * 0.05}deg)`;
+  };
+
+  window.addEventListener("mousemove", handleMouseMove);
+
+  return () => window.removeEventListener("mousemove", handleMouseMove);
+}, []);
+
   return (
     <>
       {/* ══════════════════════════════════════════
@@ -259,10 +282,19 @@ export default function Home() {
                 autoComplete="off"
                 noValidate
                 onSubmit={(e) => {
-                  e.preventDefault();
-                  alert("Thanks — I'll reply soon.");
-                  (e.target as HTMLFormElement).reset();
-                }}
+  e.preventDefault();
+
+  if (catRef.current) {
+    catRef.current.classList.add("tail-wag");
+
+    setTimeout(() => {
+      catRef.current?.classList.remove("tail-wag");
+    }, 1500);
+  }
+
+  alert("Thanks — I'll reply soon.");
+  (e.target as HTMLFormElement).reset();
+}}
               >
                 <div className="form-group">
                   <label htmlFor="contact-name">Name</label>

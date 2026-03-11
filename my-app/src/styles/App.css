@@ -1744,46 +1744,66 @@ footer p {
     display: block;
     position: fixed;
     left: 50%;
-    bottom: 2rem;
+    bottom: -1.5rem;
     z-index: 10;
+
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+
     transform: translateX(-50%) translateY(12px);
-    transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+
+    transition:
+      opacity 0.35s ease,
+      transform 0.35s ease,
+      visibility 0.35s ease;
+
     animation: lunaFloat 6s ease-in-out infinite;
   }
 }
 
-  .about-luna.is-visible {
-    opacity: 0.9;
-    visibility: visible;
-    transform: translateY(0);
-  }
+.about-luna.is-visible {
+  opacity: 0.9;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
 
-  .about-luna img {
-    width: 7.5rem;
-    height: 7.5rem;
-    object-fit: contain;
-    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.12));
-  }
+.about-luna img {
+  width: 7.5rem;
+  height: 7.5rem;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 28px rgba(0,0,0,0.18));
+}
 
-
+/* floating animation */
 @keyframes lunaFloat {
-  0%,
-  100% {
-    transform: translateY(0);
+  0%,100% {
+    transform: translateX(-50%) translateY(0);
   }
   50% {
-    transform: translateY(10px);
+    transform: translateX(-50%) translateY(14px);
   }
 }
 
+/* reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .about-luna {
     animation: none !important;
     transition: none !important;
   }
+}
+
+/* tail wag */
+@keyframes lunaTail {
+  0%   { transform: translateX(-50%) rotate(0deg); }
+  25%  { transform: translateX(-50%) rotate(-6deg); }
+  50%  { transform: translateX(-50%) rotate(6deg); }
+  75%  { transform: translateX(-50%) rotate(-4deg); }
+  100% { transform: translateX(-50%) rotate(0deg); }
+}
+
+.about-luna.tail-wag {
+  animation: lunaTail 0.7s ease-in-out 2;
 }
 
 /* Responsive */
@@ -1796,6 +1816,7 @@ footer p {
     font-size: 1.8rem;
   }
 }
+
 /* ========================================================= REINA — CLEAN + MORE PROFESSIONAL (adds summary + polish) Keep your current Reina block and ADD/REPLACE with this (This version matches your TSX: reina__meta, flowList, noteStack) ========================================================= */ /* Section spacing: match your global page rhythm */
 .projects.reina {
   padding: 120px var(--page-pad) 90px;
