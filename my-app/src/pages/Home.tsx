@@ -1,7 +1,83 @@
 // src/pages/Home.tsx
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+
+// ─── Orb background ──────────────────────────────────────────────────────────
+const orbStyles = `
+  @keyframes breathe1 {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.08); opacity: 0.7; }
+  }
+  @keyframes breathe2 {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.65; }
+  }
+  @keyframes breathe3 {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.5; }
+  }
+`;
+
+const OrbBackground: React.FC = () => {
+  return (
+    <>
+      <style>{orbStyles}</style>
+
+      <div
+        style={{
+          position: "absolute",
+          borderRadius: "50%",
+          filter: "blur(90px)",
+          width: 600,
+          height: 600,
+          top: -180,
+          left: -120,
+          background:
+            "radial-gradient(circle, rgba(128,128,0,.13) 0%, rgba(107,142,35,.08) 50%, transparent 75%)",
+          animation: "breathe1 7s ease-in-out infinite",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+
+      <div
+        style={{
+          position: "absolute",
+          borderRadius: "50%",
+          filter: "blur(90px)",
+          width: 560,
+          height: 560,
+          bottom: -160,
+          right: -100,
+          background:
+            "radial-gradient(circle, rgba(85,107,47,.11) 0%, rgba(107,142,35,.06) 50%, transparent 75%)",
+          animation: "breathe2 9s ease-in-out infinite",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+
+      <div
+        style={{
+          position: "absolute",
+          borderRadius: "50%",
+          filter: "blur(90px)",
+          width: 320,
+          height: 320,
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          background:
+            "radial-gradient(circle, rgba(128,128,0,.055) 0%, transparent 70%)",
+          animation: "breathe3 11s ease-in-out infinite",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+    </>
+  );
+};
 
 // ─── Reina callouts ──────────────────────────────────────────────────────────
 type Callout = { step: number; title: string; description: string };
@@ -42,7 +118,6 @@ export default function Home() {
   const [showLuna, setShowLuna] = useState(false);
   const navigate = useNavigate();
 
-  // Luna parallax
   useEffect(() => {
     const handleScroll = () => {
       if (catRef.current) {
@@ -73,39 +148,44 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-  const handleMouseMove = (e: MouseEvent) => {
-    if (!catRef.current) return;
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!catRef.current) return;
 
-    const rect = catRef.current.getBoundingClientRect();
+      const rect = catRef.current.getBoundingClientRect();
 
-    const catCenterX = rect.left + rect.width / 2;
-    const catCenterY = rect.top + rect.height / 2;
+      const catCenterX = rect.left + rect.width / 2;
+      const catCenterY = rect.top + rect.height / 2;
 
-    const deltaX = e.clientX - catCenterX;
-    const deltaY = e.clientY - catCenterY;
+      const deltaX = e.clientX - catCenterX;
+      const deltaY = e.clientY - catCenterY;
 
-    const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+      const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
 
-    catRef.current.style.transform =
-      `translateX(-50%) rotate(${angle * 0.05}deg)`;
-  };
+      catRef.current.style.transform = `translateX(-50%) rotate(${angle * 0.05}deg)`;
+    };
 
-  window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove);
 
-  return () => window.removeEventListener("mousemove", handleMouseMove);
-}, []);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   return (
     <>
-      {/* ══════════════════════════════════════════
-          1. HERO
-      ══════════════════════════════════════════ */}
       <section
         id="home"
         className="section active hero"
         aria-label="Home section"
+        style={{
+          position: "relative",
+          overflow: "hidden",
+        }}
       >
-        <div className="hero-content">
+        <OrbBackground />
+
+        <div
+          className="hero-content"
+          style={{ position: "relative", zIndex: 1 }}
+        >
           <motion.h1
             className="hero-title"
             initial={{ opacity: 0, y: 18 }}
@@ -150,7 +230,6 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
-
         {/* ══════════════════════════════════════════
           2. PROJECTS
       ══════════════════════════════════════════ */}
@@ -282,19 +361,19 @@ export default function Home() {
                 autoComplete="off"
                 noValidate
                 onSubmit={(e) => {
-  e.preventDefault();
+                  e.preventDefault();
 
-  if (catRef.current) {
-    catRef.current.classList.add("tail-wag");
+                  if (catRef.current) {
+                    catRef.current.classList.add("tail-wag");
 
-    setTimeout(() => {
-      catRef.current?.classList.remove("tail-wag");
-    }, 1500);
-  }
+                    setTimeout(() => {
+                      catRef.current?.classList.remove("tail-wag");
+                    }, 1500);
+                  }
 
-  alert("Thanks — I'll reply soon.");
-  (e.target as HTMLFormElement).reset();
-}}
+                  alert("Thanks — I'll reply soon.");
+                  (e.target as HTMLFormElement).reset();
+                }}
               >
                 <div className="form-group">
                   <label htmlFor="contact-name">Name</label>
