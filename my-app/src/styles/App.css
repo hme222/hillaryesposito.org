@@ -178,7 +178,8 @@ select,
 .hobby-card {
   background: var(--surface-1);
   border: 1px solid var(--border);
-} /* 7) Navbar backdrop consistency (night mode can look “separate”) */
+} 
+/* 7) Navbar backdrop consistency (night mode can look “separate”) */
 .navbar {
   background: color-mix(in srgb, var(--surface-0) 82%, transparent);
   border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
@@ -268,7 +269,7 @@ select:focus {
   z-index: 9999;
 } /* ========================= NAVBAR ========================= */
 .navbar {
-  position: fixed;
+  position: sticky;
   top: 0;
   width: 100%;
   padding: 1.2rem var(--page-pad);
@@ -313,12 +314,29 @@ select:focus {
 .hamburger:hover {
   transform: scale(1.1);
 }
-.nav-menu {
-  display: flex;
-  gap: 3rem;
-  list-style: none;
-  align-items: center;
-}
+
+ .nav-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 1101;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.25rem;
+    width: 100vw;
+    height: 100vh;
+    padding: 2rem;
+    margin: 0;
+    list-style: none;
+
+    background: var(--bg);
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
 .nav-link,
 .theme-btn {
   background: none;
@@ -353,7 +371,9 @@ select:focus {
 }
 .nav-link:hover::after {
   width: 100%;
-} /* ========================= GLOBAL UI ========================= */
+} 
+
+/* ========================= GLOBAL UI ========================= */
 .gradient-text {
   background: linear-gradient(
     135deg,
@@ -484,7 +504,7 @@ select:focus {
   display: block;
 } /* ========================= PROJECTS ========================= */
 .projects {
-  min-height: 100vh;
+  min-height: 80vh;
   padding: 100px var(--page-pad) 60px;
   background: var(--bg);
 }

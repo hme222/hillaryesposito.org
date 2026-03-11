@@ -1,5 +1,4 @@
-// src/components/Navbar.tsx
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
 type NavbarProps = {
@@ -9,7 +8,7 @@ type NavbarProps = {
 
 // Scrolls to a section anchor on the home page.
 // If already on "/", scrolls directly.
-// If on a subpage (e.g. a case study), navigates home first then scrolls.
+// If on a subpage, navigates home first then scrolls.
 function useAnchorNav() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -18,7 +17,7 @@ function useAnchorNav() {
     const scroll = () => {
       const el = document.getElementById(id);
       if (!el) return;
-      const navHeight = 80; // keep in sync with your navbar height
+      const navHeight = 80;
       const y = el.getBoundingClientRect().top + window.scrollY - navHeight;
       window.scrollTo({ top: y, behavior: "smooth" });
     };
@@ -31,7 +30,6 @@ function useAnchorNav() {
     if (isHome) {
       scroll();
     } else {
-      // Go home, wait for render, then scroll
       navigate("/");
       setTimeout(scroll, 150);
     }
@@ -42,6 +40,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [imgVisible, setImgVisible] = useState(true);
   const navigate = useNavigate();
+  const location = useLocation();
   const scrollToAnchor = useAnchorNav();
 
   function close() {
@@ -53,9 +52,25 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
     scrollToAnchor(id);
   }
 
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    close();
+  }, [location.pathname]);
+
   return (
     <nav className="navbar" aria-label="Primary navigation">
-      {/* Logo — always goes home and scrolls to top */}
+      {/* Logo */}
       <button
         className="logo"
         type="button"
@@ -68,7 +83,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
       >
         {imgVisible && (
           <img
-            src="assets/logo-cat.png"
+            src="/assets/logo-cat.png"
             alt="Hillary Esposito Logo"
             onError={() => setImgVisible(false)}
           />
@@ -80,15 +95,34 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
       <button
         className="hamburger"
         type="button"
-        aria-label="Toggle menu"
+        aria-label={menuOpen ? "Close menu" : "Open menu"}
         aria-expanded={menuOpen}
+        aria-controls="primary-menu"
         onClick={() => setMenuOpen((m) => !m)}
       >
-        {menuOpen ? "✕" : "☰"}
+        ☰
       </button>
 
-      <ul className={`nav-menu ${menuOpen ? "open" : ""}`}>
-        {/* HOME — scroll to #home anchor */}
+      {/* Backdrop */}
+      {menuOpen && <div className="nav-overlay-backdrop" onClick={close} />}
+
+      <ul
+        id="primary-menu"
+        className={`nav-menu ${menuOpen ? "open" : ""}`}
+        aria-hidden={!menuOpen}
+      >
+        {/* Close button inside full-screen overlay */}
+        <li className="nav-close-row">
+          <button
+            type="button"
+            className="nav-close-btn"
+            aria-label="Close menu"
+            onClick={close}
+          >
+            ✕
+          </button>
+        </li>
+
         <li>
           <button
             type="button"
@@ -99,7 +133,6 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
           </button>
         </li>
 
-        {/* PROJECTS — scroll to #projects anchor on home page */}
         <li>
           <button
             type="button"
@@ -110,18 +143,13 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
           </button>
         </li>
 
-        {/* ABOUT — scroll to #about anchor on home page */}
+        {/* ABOUT now links to the About page route */}
         <li>
-          <button
-            type="button"
-            className="nav-link nav-link--about"
-            onClick={() => handleAnchor("about")}
-          >
+          <Link to="/about" className="nav-link nav-link--about" onClick={close}>
             ABOUT
-          </button>
+          </Link>
         </li>
 
-        {/* CONTACT — scroll to #contact anchor on home page */}
         <li>
           <button
             type="button"
@@ -132,7 +160,19 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
           </button>
         </li>
 
-        {/* Theme toggle */}
+        {/* Resume button */}
+        <li>
+          <a
+            href="/assets/Hillary-Esposito-Resume.pdf"
+            className="nav-link nav-link--resume"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={close}
+          >
+            RESUME
+          </a>
+        </li>
+
         <li>
           <button
             className="theme-btn"
