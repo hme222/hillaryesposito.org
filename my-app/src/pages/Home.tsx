@@ -338,7 +338,7 @@ export default function Home() {
               <h2 className="about-cta-title">What I'm looking for</h2>
               <div className="about-cta-content">
                 <p>
-                  I'm seeking a junior UX role where I can continue learning,
+                  I'm seeking a UX role where I can continue learning,
                   contribute thoughtfully to cross-functional teams, and apply
                   my skills in research, interaction design, and systems
                   thinking across a variety of products and industries.
