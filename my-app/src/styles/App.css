@@ -426,10 +426,11 @@ select:focus {
 }
 .hero-content {
   width: 100%; /* IMPORTANT: ensures content spans available width */
-  max-width: 960px;
+  max-width: 12000px;
   margin: 0 auto;
   display: flex; /* centers the inner stack reliably */
   flex-direction: column;
+  padding: 50px;
   align-items: center;
 }
 .hero-title {
@@ -611,7 +612,7 @@ select:focus {
   font-size: 5rem;
   font-weight: 900;
   margin-bottom: 2rem;
-  line-height: 1.1;
+  line-height: 1.3;
   background: linear-gradient(
     135deg,
     var(--olive-1) 0%,
