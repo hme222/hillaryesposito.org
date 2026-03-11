@@ -17,6 +17,10 @@ const orbStyles = `
     0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
     50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.5; }
   }
+  @keyframes breathe4 {
+    0%, 100% { transform: scale(1);    opacity: 1; }
+    50%       { transform: scale(1.09); opacity: 0.68; }
+  }
 `;
 
 const OrbBackground: React.FC = () => {
@@ -28,13 +32,13 @@ const OrbBackground: React.FC = () => {
         style={{
           position: "absolute",
           borderRadius: "50%",
-          filter: "blur(90px)",
-          width: 600,
-          height: 600,
-          top: -180,
-          left: -120,
+          filter: "blur(80px)",
+          width: 400,
+          height: 400,
+          top: -100,
+          left: -100,
           background:
-            "radial-gradient(circle, rgba(128,128,0,.13) 0%, rgba(107,142,35,.08) 50%, transparent 75%)",
+            "radial-gradient(circle, rgba(128,128,0.5,.22) 0%, rgba(107,142,35,.14) 50%, transparent 75%)",
           animation: "breathe1 7s ease-in-out infinite",
           pointerEvents: "none",
           zIndex: 0,
@@ -57,6 +61,22 @@ const OrbBackground: React.FC = () => {
           zIndex: 0,
         }}
       />
+       {/* Lower-right orb */}
+      <div
+        style={{
+          position: "absolute",
+          borderRadius: "50%",
+          filter: "blur(60px)",
+          width: 340,
+          height: 340,
+          bottom: -100,
+          right: -60,
+          background:
+            "radial-gradient(circle, rgba(85,107,47,.18) 0%, rgba(107,142,35,.11) 50%, transparent 75%)",
+          animation: "breathe2 9s ease-in-out infinite",
+          pointerEvents: "none",
+        }}
+      />
 
       <div
         style={{
@@ -69,7 +89,7 @@ const OrbBackground: React.FC = () => {
           left: "50%",
           transform: "translate(-50%, -50%)",
           background:
-            "radial-gradient(circle, rgba(128,128,0,.055) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(128,128,0.5,.055) 0%, transparent 70%)",
           animation: "breathe3 11s ease-in-out infinite",
           pointerEvents: "none",
           zIndex: 0,
