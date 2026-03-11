@@ -1898,8 +1898,8 @@ select:focus {
   .about-luna {
     display: block;
     position: fixed;
-    left: 50%;
-    bottom: -1.5rem;
+    right: 50%;
+    bottom: -1rem;
     z-index: 10;
 
     opacity: 0;
