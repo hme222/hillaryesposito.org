@@ -1857,7 +1857,6 @@ footer p {
 
 .about-luna {
   display: none;
-  transform: translateX(-50%);
   transition: transform 0.2s ease;
 }
 
@@ -1873,7 +1872,7 @@ footer p {
     visibility: hidden;
     pointer-events: none;
 
-    transform: translateX(-50%) translateY(12px);
+    transform: translateY(12px);
 
     transition:
       opacity 0.35s ease,
@@ -1887,7 +1886,7 @@ footer p {
 .about-luna.is-visible {
   opacity: 0.9;
   visibility: visible;
-  transform: translateX(-50%) translateY(0);
+  transform: translateY(0);
 }
 
 .about-luna img {
@@ -1900,10 +1899,10 @@ footer p {
 /* floating animation */
 @keyframes lunaFloat {
   0%,100% {
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
   }
   50% {
-    transform: translateX(-50%) translateY(14px);
+    transform: translateY(14px);
   }
 }
 
