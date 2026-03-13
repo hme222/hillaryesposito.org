@@ -4622,3 +4622,97 @@ body.dark-mode .nav-overlay-backdrop,
   .home-cta-right      { grid-template-columns: 1fr; }
   .home-expertise-strip { display: none; } /* prevent overflow on tiny screens */
 }
+
+/* =========================================================
+   ECOMMERCE CASE STUDY — ADDITIONS
+   Append to App.css below existing .ecommerce-cs rules.
+   ========================================================= */
+
+/* ── Hero badge (right column) ── */
+.ecom-hero-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 200px;
+  min-height: 200px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+
+.ecom-hero-icon {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.ecom-hero-badge-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+}
+
+.ecom-hero-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--olive-2) 35%, transparent);
+  color: var(--olive-2);
+  background: color-mix(in srgb, var(--olive-2) 6%, transparent);
+}
+
+/* ── Case study cards with icon header ── */
+.ecom-case-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.85rem;
+}
+
+.ecom-case-card__header h3 {
+  margin: 0;
+  color: var(--olive-2);
+}
+
+.ecom-case-card__icon {
+  font-size: 1.25rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* ── Demo section header layout ── */
+.ecom-demo-intro {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* ── Demo validation strip spacing ── */
+.ecom-demo-strip {
+  margin-bottom: 1.75rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .ecom-hero-badge {
+    width: 160px;
+    min-height: 160px;
+  }
+  .ecom-hero-icon { font-size: 2.25rem; }
+  .ecom-demo-intro { flex-direction: column; gap: 1rem; }
+}
+
+@media (max-width: 600px) {
+  .ecom-hero-badge { display: none; } /* hero badge hidden on very small screens */
+}
