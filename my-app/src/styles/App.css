@@ -3966,3 +3966,342 @@ body.dark-mode .nav-overlay-backdrop,
     font-size: 1.3rem;
   }
 }
+
+/* =========================================================
+   ABOUT PAGE — ADDITIONS
+   Append to App.css (below existing .about-page rules).
+   Zero conflicts with existing tokens or layout.
+   ========================================================= */
+
+/* ── Back button row ── */
+.about-back-row {
+  padding: 0 var(--page-pad);
+  max-width: var(--case-max);
+  margin: 0 auto 1rem;
+}
+
+.about-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--fg);
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.about-back-btn:hover {
+  border-color: var(--olive-2);
+  color: var(--olive-2);
+  transform: translateX(-3px);
+}
+
+.about-back-btn--outline {
+  /* reuses back-btn but sits inline next to hero-btn */
+  margin-left: 0;
+}
+
+/* ── Hero accent decoration ── */
+.about-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.about-hero-accent {
+  position: absolute;
+  top: 2rem;
+  right: var(--page-pad);
+  width: 160px;
+  height: 160px;
+  pointer-events: none;
+}
+
+.about-hero-accent__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid color-mix(in srgb, var(--olive-2) 22%, transparent);
+}
+
+.about-hero-accent__dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--olive-1), var(--olive-2));
+  box-shadow: var(--shadow-olive);
+}
+
+@media (max-width: 768px) {
+  .about-hero-accent { display: none; }
+}
+
+/* ── Stat strip ── */
+.about-stats {
+  width: min(var(--case-max), calc(100% - 2 * var(--page-pad)));
+  margin: 0 auto;
+  padding: 0 0 3rem;
+}
+
+.about-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.about-stat-card {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.about-stat-value {
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+  margin: 0 0 0.35rem;
+  line-height: 1;
+}
+
+.about-stat-label {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .about-stats__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── Timeline rail ── */
+.about-journey {
+  position: relative;
+}
+
+.about-timeline-rail {
+  position: absolute;
+  left: calc(var(--page-pad) + 22px);
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--olive-2) 8%,
+    var(--olive-2) 92%,
+    transparent
+  );
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .about-timeline-rail { display: none; }
+}
+
+/* ── Chapter layout with icon node ── */
+.about-chapter {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 1.5rem;
+  margin-bottom: 3.5rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .about-chapter {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .about-chapter__node { display: flex; align-items: center; gap: 0.75rem; }
+  .about-chapter__line { display: none; }
+}
+
+.about-chapter__node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 0.25rem;
+}
+
+.about-chapter__icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+}
+
+.about-chapter__line {
+  width: 2px;
+  flex: 1;
+  min-height: 60px;
+  background: linear-gradient(to bottom, var(--border), transparent);
+}
+
+.about-chapter__body { padding-top: 0.25rem; }
+
+/* ── Pull quote ── */
+.about-pullquote {
+  margin: 1.5rem 0 0;
+  padding: 1.1rem 1.5rem;
+  border-left: 3px solid var(--olive-2);
+  background: var(--card);
+  border-radius: 0 12px 12px 0;
+  border-top: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.about-pullquote p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--fg) !important;
+  line-height: 1.65;
+  font-style: italic;
+}
+
+/* ── Skills section ── */
+.about-skills {
+  width: min(var(--case-max), calc(100% - 2 * var(--page-pad)));
+  margin: 0 auto;
+  padding: 56px 0;
+}
+
+.about-skills__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.about-skills__group {
+  padding: 1.5rem;
+}
+
+.about-skills__group-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  color: var(--olive-2);
+  margin: 0 0 1rem;
+}
+
+.about-skills__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.about-skill-badge {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--fg);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.about-skill-badge:hover {
+  border-color: var(--olive-2);
+  color: var(--olive-2);
+}
+
+@media (max-width: 600px) {
+  .about-skills__grid { grid-template-columns: 1fr; }
+}
+
+/* ── Bootcamp timeline row ── */
+.about-bootcamp-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.about-bootcamp-card {
+  flex: 1;
+  min-width: 180px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.about-bootcamp-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.about-bootcamp-label {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--fg);
+  margin: 0;
+}
+
+.about-bootcamp-sub {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.about-bootcamp-arrow {
+  font-size: 1.5rem;
+  color: var(--olive-2);
+  font-weight: 900;
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+@media (max-width: 600px) {
+  .about-bootcamp-row { flex-direction: column; }
+  .about-bootcamp-arrow { transform: rotate(90deg); }
+}
+
+/* ── Luna paw decoration (replaces the img-based one) ── */
+.about-luna-deco {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 2rem;
+  font-size: 2.5rem;
+  opacity: 0.18;
+  pointer-events: none;
+  transition: transform 0.1s linear;
+  user-select: none;
+}
+
+/* Make about-life-card position:relative so deco positions correctly */
+.about-life-card { position: relative; overflow: hidden; }
+
+/* ── CTA actions row ── */
+.about-cta-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
