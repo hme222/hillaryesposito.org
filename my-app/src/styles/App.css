@@ -3464,3 +3464,505 @@ body.dark-mode .nav-overlay-backdrop,
 .dark-mode .nav-overlay-backdrop {
   background: rgba(0, 0, 0, 0.55);
 }
+
+
+ 
+/* ── HERO: headline left, phone right ── */
+.gh-hero {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 3.5rem;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+ 
+.gh-hero__copy .meta {
+  margin-bottom: 0.75rem;
+}
+ 
+.gh-hero__copy h1 {
+  margin-bottom: 1.25rem;
+}
+ 
+.gh-hero__intro {
+  font-size: 1.1rem;
+  color: var(--muted);
+  line-height: 1.85;
+  max-width: 58ch;
+}
+ 
+/* Phone frame */
+.gh-hero__visual {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+ 
+.gh-phone-frame {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md), var(--shadow-olive);
+  width: 100%;
+  max-width: 220px;
+}
+ 
+.gh-phone-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+ 
+/* ── META STRIP (horizontal below hero) ── */
+.gh-meta-strip {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.5rem;
+  margin-bottom: 3rem;
+}
+ 
+.gh-meta-strip__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0 1.25rem;
+  flex: 1;
+  min-width: 0;
+}
+ 
+.gh-meta-strip__item:first-child {
+  padding-left: 0;
+}
+ 
+.gh-meta-strip__label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  color: var(--muted);
+}
+ 
+.gh-meta-strip__value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--fg);
+  line-height: 1.4;
+}
+ 
+.gh-meta-strip__divider {
+  width: 1px;
+  height: 2.25rem;
+  background: var(--border);
+  flex-shrink: 0;
+}
+ 
+/* ── PROCESS: 4-column step cards ── */
+.gh-process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+ 
+.gh-process-card {
+  padding: 1.5rem;
+}
+ 
+.gh-process-num {
+  font-size: 1.9rem;
+  font-weight: 900;
+  line-height: 1;
+  margin: 0;
+  letter-spacing: -1px;
+}
+ 
+/* ── DESIGN SOLUTIONS: split layout ── */
+.gh-solutions-split {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 3rem;
+  align-items: start;
+}
+ 
+.gh-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+ 
+.gh-feature-row {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+ 
+.gh-feature-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+  margin-top: 2px;
+}
+ 
+/* Browser-style frame for webpage screenshot */
+.gh-browser-frame {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 130px;
+}
+ 
+.gh-browser-chrome {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+ 
+.gh-browser-chrome span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+  flex-shrink: 0;
+}
+ 
+.gh-browser-url {
+  flex: 1;
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+}
+ 
+.gh-browser-body {
+  max-height: 580px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+ 
+.gh-browser-body img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+ 
+/* ── VALIDATION: summary strip ── */
+.gh-validation-strip {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 1.25rem 1.75rem;
+}
+ 
+.gh-vstrip-item {
+  flex: 1;
+  padding: 0 1.25rem;
+}
+ 
+.gh-vstrip-item:first-child { padding-left: 0; }
+.gh-vstrip-item:last-child  { padding-right: 0; }
+ 
+.gh-vstrip-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  color: var(--muted);
+  margin: 0 0 0.3rem;
+}
+ 
+.gh-vstrip-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--fg);
+  margin: 0;
+  line-height: 1.4;
+}
+ 
+.gh-vstrip-divider {
+  width: 1px;
+  height: 2.5rem;
+  background: var(--border);
+  flex-shrink: 0;
+}
+ 
+/* Gallery section labels */
+.gh-gallery-label {
+  margin-bottom: 1rem;
+}
+ 
+.gh-gallery-label span {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  color: var(--muted);
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--olive-2);
+}
+ 
+/* ── IMPACT: 3-col stat row ── */
+.gh-impact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+ 
+.gh-impact-card {
+  padding: 1.5rem;
+  text-align: center;
+}
+ 
+.gh-impact-stat {
+  font-size: 1.6rem;
+  font-weight: 900;
+  margin: 0 0 0.6rem;
+  letter-spacing: -0.5px;
+}
+ 
+/* ── OTHER PROJECTS: bottom nav ── */
+.gh-other-projects {
+  margin-top: 5rem;
+  padding-top: 3.5rem;
+  border-top: 1px solid var(--border);
+}
+ 
+.gh-other-projects__header {
+  margin-bottom: 2rem;
+}
+ 
+.gh-other-projects__eyebrow {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  color: var(--muted);
+  margin: 0 0 0.3rem;
+}
+ 
+.gh-other-projects__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+ 
+/* Inherits .project-card styles; just add the CTA link */
+.gh-proj-card .gh-proj-cta {
+  display: inline-block;
+  margin-top: 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--olive-2);
+  text-decoration: none;
+}
+ 
+.dark-mode .gh-proj-card .gh-proj-cta {
+  color: var(--focus);
+}
+ 
+/* ── RESPONSIVE ── */
+ 
+@media (max-width: 1024px) {
+  .gh-solutions-split {
+    grid-template-columns: 1fr;
+  }
+  .gh-browser-frame {
+    position: static;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+}
+ 
+@media (max-width: 900px) {
+  .gh-hero {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .gh-hero__visual {
+    order: -1;   /* phone appears above text on mobile */
+    justify-content: flex-start;
+  }
+  .gh-phone-frame {
+    max-width: 180px;
+  }
+  .gh-process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .gh-impact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .gh-meta-strip {
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .gh-meta-strip__divider {
+    display: none;
+  }
+  .gh-meta-strip__item {
+    padding: 0;
+    flex: 0 0 calc(50% - 0.375rem);
+  }
+}
+ 
+@media (max-width: 600px) {
+  .gh-process-grid,
+  .gh-impact-grid,
+  .gh-other-projects__grid {
+    grid-template-columns: 1fr;
+  }
+  .gh-validation-strip {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .gh-vstrip-divider {
+    width: 100%;
+    height: 1px;
+  }
+  .gh-vstrip-item {
+    padding: 0;
+  }
+  .gh-meta-strip__item {
+    flex: 0 0 100%;
+  }
+}
+
+/* =========================================================
+   REINA — additions to GoodHarvest.css
+   Append these to the bottom of your existing GoodHarvest.css
+   ========================================================= */
+
+/* ── Hero badge (replaces phone frame for this concept project) ── */
+.reina-hero-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 180px;
+  height: 180px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  box-shadow: var(--shadow-md), var(--shadow-olive);
+}
+
+.reina-hero-crown {
+  font-size: 3.5rem;
+  line-height: 1;
+}
+
+.reina-hero-badge-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ── Overview grid: 3-col (matches process grid) ── */
+.reina-summary-grid {
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+
+/* ── Flow wireframe frame ── */
+.reina-flow-frame {
+  position: static !important; /* override sticky from solutions split */
+  max-width: 100%;
+}
+
+.reina-flow-body {
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.reina-flow-img-btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.reina-flow-img-btn:hover {
+  opacity: 0.88;
+}
+
+.reina-flow-img-btn img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── Numbered flow list ── */
+.reina-flow-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.reina-flow-row {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 1.25rem;
+  align-items: start;
+  padding: 1.25rem 1.5rem;
+}
+
+.reina-flow-num {
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1;
+  margin: 0;
+  padding-top: 2px;
+}
+
+.reina-flow-content {
+  padding-top: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .reina-summary-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .reina-hero-badge {
+    width: 130px;
+    height: 130px;
+  }
+  .reina-hero-crown {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .reina-flow-row {
+    grid-template-columns: 40px 1fr;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+  }
+  .reina-flow-num {
+    font-size: 1.3rem;
+  }
+}

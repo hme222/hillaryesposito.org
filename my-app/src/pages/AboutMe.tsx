@@ -19,19 +19,7 @@ export default function About() {
 
   return (
     <div className="about-page">
-      
-      {/* Floating Luna - Hidden on mobile for WCAG, visible on desktop
-      <div 
-        ref={catRef}
-        className="about-luna"
-        role="img"
-        aria-label="Luna, Hillary's cat companion"
-      >
-        <img 
-          src="assets/favicon.png"
-          alt="Luna, a gray and white cat with orange eyes"
-        />
-      </div> */}
+    
 
       {/* Opening - Setting the Scene */}
       <section className="about-hero">
@@ -64,11 +52,11 @@ export default function About() {
             </h2>
             
             <p className="chapter-text">
-              I was introduced to UX while working at Memorial Sloan Kettering Cancer Center, where I supported research and design efforts for internal tools used by 21,000+ staff. Clinicians, administrators, researchers—all navigating life-and-death decisions through digital interfaces.
+              I was introduced to UX while working at Memorial Sloan Kettering Cancer Center, where I supported research and design efforts for internal tools used by 21,000+ staff. Clinicians, administrators, researchers, all navigating life-and-death decisions through digital interfaces.
             </p>
             
             <p className="chapter-text">
-              Seeing how small interface decisions could influence understanding, efficiency, and stress levels sparked my interest in designing systems that prioritize clarity and ease of use. A confusing workflow isn't just frustrating in healthcare—it could mean a missed diagnosis, a delayed treatment, a moment of uncertainty when someone needs absolute clarity.
+              Seeing how small interface decisions could influence understanding, efficiency, and stress levels sparked my interest in designing systems that prioritize clarity and ease of use. A confusing workflow isn't just frustrating in healthcare; it could mean a missed diagnosis, a delayed treatment, a moment of uncertainty when someone needs absolute clarity.
             </p>
             
             <p className="chapter-text">
