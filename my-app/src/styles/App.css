@@ -5690,3 +5690,208 @@ body.dark-mode .nav-overlay-backdrop,
     text-align: left;
   }
 }
+
+/* =========================================================
+   RECRUITER SKIM CARD
+   Append to App.css.
+   Replace src/components/RecruiterSkimCard.tsx with the
+   new version to get these class names.
+   ========================================================= */
+
+/* ── Outer card ── */
+.rsc {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--olive-2);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: 1.75rem 2rem;
+  margin-bottom: 2.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.dark-mode .rsc {
+  border-left-color: var(--focus);
+  background: var(--card);
+  border-color: var(--border);
+  border-left-color: var(--focus);
+}
+
+/* ── Header row ── */
+.rsc__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.rsc__header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.rsc__eyebrow {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  color: var(--olive-2);
+}
+
+.dark-mode .rsc__eyebrow {
+  color: var(--focus);
+}
+
+.rsc__title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--fg);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.rsc__timeframe {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  white-space: nowrap;
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+/* ── Three-column facts grid ── */
+.rsc__facts {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin-bottom: 1.25rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.rsc__fact {
+  flex: 1;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.rsc__fact-divider {
+  width: 1px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+.rsc__fact-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  color: var(--muted);
+  margin: 0;
+}
+
+.rsc__fact-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--fg);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ── Skills row ── */
+.rsc__skills-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.rsc__skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.rsc__skill-badge {
+  display: inline-block;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--olive-2);
+  background: color-mix(in srgb, var(--olive-2) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--olive-2) 25%, transparent);
+}
+
+.dark-mode .rsc__skill-badge {
+  color: var(--focus);
+  background: color-mix(in srgb, var(--focus) 8%, transparent);
+  border-color: color-mix(in srgb, var(--focus) 25%, transparent);
+}
+
+/* ── Footer ── */
+.rsc__footer {
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.rsc__story-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--olive-2);
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+  text-decoration-color: color-mix(in srgb, var(--olive-2) 40%, transparent);
+  transition: text-decoration-color 0.2s ease, opacity 0.2s ease;
+}
+
+.rsc__story-btn:hover {
+  text-decoration-color: var(--olive-2);
+  opacity: 0.8;
+}
+
+.dark-mode .rsc__story-btn {
+  color: var(--focus);
+  text-decoration-color: color-mix(in srgb, var(--focus) 40%, transparent);
+}
+
+.dark-mode .rsc__story-btn:hover {
+  text-decoration-color: var(--focus);
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .rsc {
+    padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+  }
+
+  .rsc__facts {
+    flex-direction: column;
+  }
+
+  .rsc__fact-divider {
+    width: 100%;
+    height: 1px;
+  }
+
+  .rsc__skills-row {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+}
