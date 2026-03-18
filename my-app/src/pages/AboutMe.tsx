@@ -372,9 +372,8 @@ export default function About() {
           <h2 className="about-cta-title">What I'm looking for</h2>
           <div className="about-cta-content">
             <p>
-              I'm seeking a UX role — junior or mid-level — where I can continue
-              learning, contribute to cross-functional teams, and apply research,
-              interaction design, and systems thinking across healthcare,
+              I'm seeking a UX role where I can continue learning, contribute to cross-functional teams,
+               and apply research, interaction design, and systems thinking across healthcare,
               government, or high-stakes consumer products.
             </p>
             <p>
