@@ -4716,3 +4716,1015 @@ body.dark-mode .nav-overlay-backdrop,
 @media (max-width: 600px) {
   .ecom-hero-badge { display: none; } /* hero badge hidden on very small screens */
 }
+
+/* =========================================================
+   UNIFIED BUTTON SYSTEM
+   Paste this block into App.css, replacing:
+     - .hero-btn
+     - .submit-btn
+     - .home-secondary-btn
+     - .about-back-btn / .about-back-btn--outline
+     - .recruiter-toggle-link
+     - .ecom-demoToggle
+     - .cs-toggle-link
+
+   Four variants, one consistent language:
+     .btn-primary   → filled gradient (was hero-btn / submit-btn)
+     .btn-outline   → bordered pill   (was secondary / back / demoToggle)
+     .btn-ghost     → text + underline (was recruiter-toggle-link / cs-toggle-link)
+     .btn-icon      → square icon chip (was ecom-quick / ecom-icon-btn)
+
+   Size modifiers:
+     default        → normal size
+     .btn--sm       → compact
+     .btn--lg       → hero-sized
+     .btn--full     → full-width (was submit-btn)
+
+   All existing class names are kept as aliases so nothing breaks.
+   ========================================================= */
+
+/* ── Shared base ── */
+.btn-primary,
+.btn-outline,
+.btn-ghost,
+.btn-icon,
+.hero-btn,
+.submit-btn,
+.home-secondary-btn,
+.about-back-btn,
+.ecom-demoToggle,
+.recruiter-toggle-link,
+.cs-toggle-link {
+  /* Reset */
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  border: none;
+  background: none;
+  /* Transitions */
+  transition:
+    background   0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    color        0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow   0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    transform    0.18s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity      0.2s ease;
+}
+
+/* ── Disabled state (all variants) ── */
+.btn-primary:disabled,
+.btn-outline:disabled,
+.btn-ghost:disabled,
+.hero-btn:disabled,
+.submit-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Focus ring (all variants) ── */
+.btn-primary:focus-visible,
+.btn-outline:focus-visible,
+.btn-ghost:focus-visible,
+.btn-icon:focus-visible,
+.hero-btn:focus-visible,
+.submit-btn:focus-visible,
+.home-secondary-btn:focus-visible,
+.about-back-btn:focus-visible,
+.ecom-demoToggle:focus-visible,
+.recruiter-toggle-link:focus-visible,
+.cs-toggle-link:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* ════════════════════════════════════════
+   VARIANT 1 — PRIMARY (filled gradient)
+   Used: hero-btn, submit-btn, btn-primary
+════════════════════════════════════════ */
+.btn-primary,
+.hero-btn {
+  padding: 0.85rem 2rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #0a0a0a;                            /* dark text on bright gradient */
+  background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 100%);
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--olive-2) 20%, transparent);
+}
+
+.btn-primary:hover,
+.hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--olive-2) 35%, transparent);
+}
+
+.btn-primary:active,
+.hero-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px color-mix(in srgb, var(--olive-2) 15%, transparent);
+}
+
+/* Dark mode: darker text so it passes WCAG on warm gradient */
+.dark-mode .btn-primary,
+.dark-mode .hero-btn {
+  color: #1a0e03 !important;
+  background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 100%);
+}
+
+/* Size: large (hero CTAs) */
+.btn-primary.btn--lg,
+.hero-btn.btn--lg {
+  padding: 1.2rem 3rem;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+}
+
+/* Size: small */
+.btn-primary.btn--sm,
+.hero-btn.btn--sm {
+  padding: 0.6rem 1.25rem;
+  font-size: 0.8rem;
+}
+
+/* Full-width (submit) */
+.submit-btn,
+.btn-primary.btn--full,
+.hero-btn.btn--full {
+  padding: 1.1rem 2rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #0a0a0a;
+  background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 100%);
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--olive-2) 20%, transparent);
+  width: 100%;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--olive-2) 35%, transparent);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+.dark-mode .submit-btn {
+  color: #1a0e03 !important;
+}
+
+/* ════════════════════════════════════════
+   VARIANT 2 — OUTLINE (bordered pill)
+   Used: home-secondary-btn, about-back-btn,
+         ecom-demoToggle, btn-outline
+════════════════════════════════════════ */
+.btn-outline,
+.home-secondary-btn,
+.about-back-btn,
+.ecom-demoToggle {
+  padding: 0.75rem 1.4rem;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  color: var(--fg);
+  border: 1.5px solid var(--border);
+  background: transparent;
+}
+
+.btn-outline:hover,
+.home-secondary-btn:hover,
+.about-back-btn:hover,
+.ecom-demoToggle:hover {
+  border-color: var(--olive-2);
+  color: var(--olive-2);
+  background: color-mix(in srgb, var(--olive-2) 6%, transparent);
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--olive-2) 12%, transparent);
+}
+
+.btn-outline:active,
+.home-secondary-btn:active,
+.about-back-btn:active,
+.ecom-demoToggle:active {
+  transform: scale(0.98);
+}
+
+.dark-mode .btn-outline,
+.dark-mode .home-secondary-btn,
+.dark-mode .about-back-btn,
+.dark-mode .ecom-demoToggle {
+  color: var(--text-1);
+  border-color: var(--border);
+}
+
+.dark-mode .btn-outline:hover,
+.dark-mode .home-secondary-btn:hover,
+.dark-mode .about-back-btn:hover,
+.dark-mode .ecom-demoToggle:hover {
+  border-color: var(--focus);
+  color: var(--focus);
+  background: color-mix(in srgb, var(--focus) 8%, transparent);
+}
+
+/* ← directional back variant */
+.about-back-btn {
+  font-size: 0.88rem;
+  padding: 0.55rem 1.1rem;
+}
+
+.about-back-btn:hover {
+  transform: translateX(-3px);
+}
+
+/* → directional forward variant */
+.btn-outline.btn--forward:hover,
+.home-secondary-btn:hover {
+  transform: translateX(3px);
+}
+
+/* Size modifiers */
+.btn-outline.btn--sm { padding: 0.45rem 1rem;  font-size: 0.78rem; }
+.btn-outline.btn--lg { padding: 1rem   1.75rem; font-size: 0.95rem; }
+
+/* ════════════════════════════════════════
+   VARIANT 3 — GHOST (text + underline)
+   Used: recruiter-toggle-link, cs-toggle-link,
+         ecom-link, btn-ghost
+════════════════════════════════════════ */
+.btn-ghost,
+.recruiter-toggle-link,
+.cs-toggle-link,
+.ecommerce-cs .ecom-link {
+  padding: 0.15rem 0;
+  border-radius: 0;
+  font-size: inherit;
+  font-weight: 700;
+  color: var(--olive-2);
+  background: transparent;
+  border: none;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+  text-decoration-color: color-mix(in srgb, var(--olive-2) 40%, transparent);
+  letter-spacing: 0;
+}
+
+.btn-ghost:hover,
+.recruiter-toggle-link:hover,
+.cs-toggle-link:hover,
+.ecommerce-cs .ecom-link:hover {
+  text-decoration-color: var(--olive-2);
+  text-decoration-thickness: 2px;
+  opacity: 0.85;
+}
+
+.btn-ghost:active,
+.recruiter-toggle-link:active,
+.cs-toggle-link:active {
+  opacity: 0.7;
+}
+
+.dark-mode .btn-ghost,
+.dark-mode .recruiter-toggle-link,
+.dark-mode .cs-toggle-link,
+.dark-mode .ecommerce-cs .ecom-link {
+  color: var(--focus);
+  text-decoration-color: color-mix(in srgb, var(--focus) 40%, transparent);
+}
+
+.dark-mode .btn-ghost:hover,
+.dark-mode .recruiter-toggle-link:hover,
+.dark-mode .cs-toggle-link:hover {
+  text-decoration-color: var(--focus);
+}
+
+/* Muted ghost (for "continue browsing" etc.) */
+.btn-ghost.btn--muted {
+  color: var(--muted);
+  text-decoration-color: color-mix(in srgb, var(--muted) 40%, transparent);
+}
+
+.btn-ghost.btn--muted:hover {
+  color: var(--fg);
+  text-decoration-color: var(--fg);
+}
+
+/* ════════════════════════════════════════
+   VARIANT 4 — ICON (square chip)
+   Used: ecom-quick, ecom-icon-btn, btn-icon
+════════════════════════════════════════ */
+.btn-icon,
+.ecommerce-cs .ecom-quick,
+.ecommerce-cs .ecom-icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  padding: 0;
+  font-size: 1rem;
+  color: var(--fg);
+  border: 1.5px solid var(--border);
+  background: var(--card);
+  flex-shrink: 0;
+}
+
+.btn-icon:hover,
+.ecommerce-cs .ecom-quick:hover,
+.ecommerce-cs .ecom-icon-btn:hover {
+  border-color: var(--olive-2);
+  color: var(--olive-2);
+  background: color-mix(in srgb, var(--olive-2) 6%, transparent);
+  transform: translateY(-1px);
+}
+
+.btn-icon:active,
+.ecommerce-cs .ecom-quick:active,
+.ecommerce-cs .ecom-icon-btn:active {
+  transform: scale(0.95);
+}
+
+.dark-mode .btn-icon,
+.dark-mode .ecommerce-cs .ecom-quick,
+.dark-mode .ecommerce-cs .ecom-icon-btn {
+  color: var(--text-1);
+  border-color: var(--border);
+  background: color-mix(in srgb, var(--surface-2) 60%, transparent);
+}
+
+.dark-mode .btn-icon:hover,
+.dark-mode .ecommerce-cs .ecom-quick:hover,
+.dark-mode .ecommerce-cs .ecom-icon-btn:hover {
+  border-color: var(--focus);
+  color: var(--focus);
+  background: color-mix(in srgb, var(--focus) 8%, transparent);
+}
+
+/* ── Large icon button (close dialogs / drawers) ── */
+.btn-icon.btn--lg,
+.ecommerce-cs .ecom-icon-btn {
+  width: auto;
+  height: auto;
+  padding: 0.4rem 0.65rem;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  border-color: transparent;
+  background: transparent;
+}
+
+.ecommerce-cs .ecom-icon-btn:hover {
+  background: color-mix(in srgb, var(--fg) 8%, transparent);
+  border-color: transparent;
+  color: var(--fg);
+  transform: none;
+}
+
+/* ════════════════════════════════════════
+   SPECIAL: nav-link resume pill
+   Already has its own pattern but needs
+   to match the outline system.
+════════════════════════════════════════ */
+.nav-link--resume {
+  padding: 0.55rem 1.1rem;
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  letter-spacing: 0.1em;
+  transition: color 0.2s ease, border-color 0.2s ease,
+              background 0.2s ease, transform 0.2s ease;
+}
+
+.nav-link--resume:hover {
+  background: color-mix(in srgb, currentColor 8%, transparent);
+  transform: translateY(-1px);
+}
+
+.nav-link--resume::after {
+  display: none !important; /* no underline animation on pill buttons */
+}
+
+/* ════════════════════════════════════════
+   SPECIAL: ecom-cart-pill (demo header)
+════════════════════════════════════════ */
+.ecommerce-cs .ecom-cart-pill {
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--fg);
+  border: 1.5px solid var(--border);
+  background: var(--card);
+  transition: border-color 0.2s ease, color 0.2s ease,
+              background 0.2s ease, transform 0.18s ease;
+}
+
+.ecommerce-cs .ecom-cart-pill:hover {
+  border-color: var(--olive-2);
+  color: var(--olive-2);
+  background: color-mix(in srgb, var(--olive-2) 6%, transparent);
+  transform: translateY(-1px);
+}
+
+.dark-mode .ecommerce-cs .ecom-cart-pill {
+  color: var(--text-1);
+  border-color: var(--border);
+  background: color-mix(in srgb, var(--surface-2) 50%, transparent);
+}
+
+.dark-mode .ecommerce-cs .ecom-cart-pill:hover {
+  border-color: var(--focus);
+  color: var(--focus);
+  background: color-mix(in srgb, var(--focus) 8%, transparent);
+}
+
+/* ════════════════════════════════════════
+   SPECIAL: gh-proj-cta inline arrow link
+════════════════════════════════════════ */
+.gh-proj-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.85rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--olive-2);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: gap 0.18s ease, color 0.18s ease;
+}
+
+.gh-proj-card:hover .gh-proj-cta {
+  gap: 0.6rem;
+  color: var(--olive-1);
+}
+
+.dark-mode .gh-proj-cta,
+.dark-mode .gh-proj-card:hover .gh-proj-cta {
+  color: var(--focus);
+}
+
+/* ════════════════════════════════════════
+   SPECIAL: status chip (Home hero)
+   Already defined in Home.css — kept here
+   for the complete picture, no duplicate.
+════════════════════════════════════════ */
+
+/* ════════════════════════════════════════
+   BUTTON GROUP utility
+   Wrap multiple buttons in .btn-group
+════════════════════════════════════════ */
+.btn-group {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.btn-group--center { justify-content: center; }
+.btn-group--end    { justify-content: flex-end; }
+
+/* =========================================================
+   ECOMMERCE PAGE — WIDE LAYOUT
+   Append to App.css below existing .ecommerce-cs rules.
+
+   Key fix: removes the 900px case-study constraint.
+   Uses --wide-max (1240px) for the outer wrapper and
+   a full-bleed hero with generous breathing room.
+   ========================================================= */
+
+/* ── Page wrapper — wider than case-study max ── */
+.ecom-page {
+  /* Override any inherited case-study narrowing */
+  max-width: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Central content wrapper at 1240px */
+.ecom-page-wrap {
+  width: min(var(--wide-max), calc(100% - 2 * var(--page-pad)));
+  margin: 0 auto;
+}
+
+/* ── HERO — full-bleed with gradient bg ── */
+.ecom-page-hero {
+  padding: 100px 0 80px;
+  background:
+    radial-gradient(circle at 15% 50%, color-mix(in srgb, var(--olive-2) 7%, transparent), transparent 55%),
+    radial-gradient(circle at 85% 20%, color-mix(in srgb, var(--olive-1) 5%, transparent), transparent 55%),
+    var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.ecom-page-hero__inner {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 4rem;
+  align-items: center;
+}
+
+.ecom-page-hero__copy .meta {
+  margin-bottom: 0.85rem;
+}
+
+.ecom-page-hero__copy h1 {
+  font-size: clamp(3rem, 5.5vw, 5rem);
+  font-weight: 900;
+  letter-spacing: -3px;
+  line-height: 0.95;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 50%, var(--olive-3) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ecom-page-hero__intro {
+  font-size: 1.15rem;
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 55ch;
+}
+
+/* Right: a11y badge 2×2 grid */
+.ecom-page-hero__badges {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.ecom-page-badge {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.1rem;
+}
+
+.ecom-page-badge__icon {
+  font-size: 1.4rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.ecom-page-badge__label {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--fg);
+  margin: 0 0 0.2rem;
+}
+
+.ecom-page-badge__sub {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Meta strip — full wide-max width, no cramped 900px */
+.ecom-page-meta {
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
+
+/* ── SECTIONS — consistent vertical rhythm ── */
+.ecom-page-section {
+  padding: 80px 0;
+}
+
+.ecom-page-section__header {
+  margin-bottom: 2.5rem;
+}
+
+.ecom-page-section__header h2 {
+  font-size: 2.2rem;
+  color: var(--olive-2);
+  margin: 0 0 0.75rem;
+  font-weight: 700;
+}
+
+.ecom-page-section__lead {
+  font-size: 1.05rem;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 70ch;
+  margin: 0;
+}
+
+/* ── CASE STUDY — 3-column grid on wide screens ── */
+.ecom-page-case-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Next steps: horizontal 4-item row inside the card */
+.ecom-page-next-card {
+  /* spans full width naturally */
+}
+
+.ecom-page-next-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem 2rem;
+  margin-top: 0.5rem;
+}
+
+.ecom-page-next-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-size: 0.98rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.ecom-page-next-bullet {
+  color: var(--olive-2);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ── DEMO SECTION — header layout ── */
+.ecom-page-demo-section {
+  /* inherits ecom-demoSection background radials */
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.ecom-page-demo-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: start;
+  margin-bottom: 1.5rem;
+}
+
+.ecom-page-demo-header__copy h2 {
+  margin: 0 0 0.5rem;
+  font-size: 2.2rem;
+  color: var(--olive-2);
+  font-weight: 700;
+}
+
+.ecom-page-demo-header__controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.ecom-page-demo-strip {
+  /* validation strip — override narrowing */
+  min-width: 480px;
+}
+
+.ecom-page-demo-toggle {
+  /* inherits ecom-demoToggle styles from existing CSS */
+  align-self: flex-end;
+}
+
+/* ── Override ecom-narrow inside the wide layout ── */
+.ecom-page .ecom-narrow {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+/* ── Override ecom-wide inside the wide layout ──
+   Let the storefront frame use the full container */
+.ecom-page .ecom-wide {
+  width: 100%;
+  max-width: none;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1100px) {
+  .ecom-page-case-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ecom-page-demo-header {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .ecom-page-demo-header__controls {
+    align-items: flex-start;
+  }
+  .ecom-page-demo-strip {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .ecom-page-hero__inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .ecom-page-hero__badges {
+    /* show badges below copy, still 2-col */
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ecom-page-hero__copy h1 {
+    font-size: clamp(2.5rem, 7vw, 3.5rem);
+    letter-spacing: -2px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ecom-page-hero { padding: 72px 0 56px; }
+  .ecom-page-hero__badges { grid-template-columns: 1fr; }
+  .ecom-page-case-grid { grid-template-columns: 1fr; }
+  .ecom-page-next-grid { grid-template-columns: 1fr; }
+  .ecom-page-section { padding: 56px 0; }
+}
+
+/* =========================================================
+   ABOUT PAGE — NEW SECTION ADDITIONS
+   Append to App.css below existing about-page rules.
+   Adds: .about-agenda, .about-career-timeline, .about-edu-grid
+   ========================================================= */
+
+/* ── Shared eyebrow label (reused across sections) ── */
+.about-agenda__eyebrow {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  color: var(--olive-2);
+  margin: 0 0 0.5rem;
+}
+
+/* ══════════════════════════════════════
+   AGENDA SECTION — "what I bring"
+══════════════════════════════════════ */
+.about-agenda {
+  width: min(var(--case-max), calc(100% - 2 * var(--page-pad)));
+  margin: 0 auto;
+  padding: 56px 0;
+}
+
+.about-agenda__header {
+  margin-bottom: 2.5rem;
+}
+
+.about-agenda__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.about-agenda__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.5rem;
+}
+
+.about-agenda__icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.about-agenda__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--olive-2);
+  margin: 0;
+}
+
+.about-agenda__desc {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ══════════════════════════════════════
+   CAREER TIMELINE
+══════════════════════════════════════ */
+.about-timeline-section {
+  width: min(var(--case-max), calc(100% - 2 * var(--page-pad)));
+  margin: 0 auto;
+  padding: 56px 0;
+}
+
+.about-career-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.about-career-item {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 1.5rem;
+  position: relative;
+}
+
+/* Left column: year + dot + connector */
+.about-career-item__left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-top: 1.6rem;
+  position: relative;
+}
+
+.about-career-item__year {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-align: right;
+  line-height: 1.3;
+  margin-bottom: 0.6rem;
+}
+
+.about-career-item__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--olive-2);
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 2px var(--olive-2);
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.about-career-item__connector {
+  width: 2px;
+  flex: 1;
+  min-height: 40px;
+  background: linear-gradient(to bottom, var(--olive-2), var(--border));
+  margin-top: 4px;
+  opacity: 0.4;
+}
+
+/* Right column: card */
+.about-career-item__card {
+  margin-bottom: 1rem;
+  padding: 1.25rem 1.5rem;
+}
+
+/* Current role gets a subtle olive left accent */
+.about-career-item__card--current {
+  border-left: 3px solid var(--olive-2);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.about-career-item__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+
+.about-career-item__type-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.about-career-item__role {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--fg);
+  margin: 0 0 0.2rem;
+  line-height: 1.3;
+}
+
+.about-career-item__org {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0;
+  font-style: italic;
+}
+
+/* "Now" pill badge */
+.about-career-item__badge {
+  margin-left: auto;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: color-mix(in srgb, var(--olive-2) 12%, transparent);
+  color: var(--olive-2);
+  border: 1px solid color-mix(in srgb, var(--olive-2) 30%, transparent);
+}
+
+.dark-mode .about-career-item__badge {
+  background: color-mix(in srgb, var(--focus) 12%, transparent);
+  color: var(--focus);
+  border-color: color-mix(in srgb, var(--focus) 30%, transparent);
+}
+
+.about-career-item__bullets {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.about-career-item__bullets li {
+  font-size: 0.93rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+/* ══════════════════════════════════════
+   EDUCATION GRID
+══════════════════════════════════════ */
+.about-edu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.about-edu-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1rem 1.25rem;
+}
+
+.about-edu-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.about-edu-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--fg);
+  margin: 0 0 0.2rem;
+  line-height: 1.35;
+}
+
+.about-edu-sub {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .about-agenda__grid   { grid-template-columns: 1fr; }
+  .about-edu-grid       { grid-template-columns: 1fr; }
+
+  .about-career-item {
+    grid-template-columns: 90px 1fr;
+    gap: 1rem;
+  }
+
+  .about-career-item__year {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-career-item {
+    grid-template-columns: 1fr;
+  }
+
+  .about-career-item__left {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+    padding-top: 0;
+  }
+
+  .about-career-item__connector {
+    display: none;
+  }
+
+  .about-career-item__dot {
+    order: -1;
+  }
+
+  .about-career-item__year {
+    text-align: left;
+  }
+}

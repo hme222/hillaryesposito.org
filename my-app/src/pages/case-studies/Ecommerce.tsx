@@ -33,7 +33,6 @@ function useLiveAnnouncer() {
 
 function getPrimaryImage(p: any) { return p?.images?.[0] ?? p?.image ?? ""; }
 
-// ── Case study data ──────────────────────────────────────────────────────────
 const CASE_BLOCKS = [
   {
     icon: "🎯",
@@ -91,15 +90,12 @@ const OTHER_PROJECTS = [
   },
 ];
 
-// ── Component ────────────────────────────────────────────────────────────────
 export default function Ecommerce() {
   const allProducts = products as ProductLike[];
   const navigate    = useNavigate();
 
-  /* demo toggle */
   const [demoOpen, setDemoOpen] = useState(false);
 
-  /* filters */
   const categories = useMemo(() => {
     const s = new Set<string>();
     allProducts.forEach((p) => p.category && s.add(p.category));
@@ -117,7 +113,6 @@ export default function Ecommerce() {
   const [maxPrice, setMaxPrice] = useState(maxPossible);
   useEffect(() => { setMinPrice(minPossible); setMaxPrice(maxPossible); }, [minPossible, maxPossible]);
 
-  /* cart */
   const [cart, setCart] = useState<CartItem[]>(() => {
     const s = safeGet(CART_KEY);
     if (!s) return [];
@@ -177,7 +172,6 @@ export default function Ecommerce() {
 
   function clearCart() { setCart([]); announce("Cart cleared."); }
 
-  /* filter + sort */
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     let list = allProducts.filter((p) => {
@@ -208,7 +202,6 @@ export default function Ecommerce() {
     return p.join(" · ");
   }, [category, query, minPrice, maxPrice]);
 
-  /* quick view */
   const dialogRef = useRef<HTMLDialogElement | null>(null);
   const [activeId, setActiveId] = useState<string | null>(null);
   const lastFocus = useRef<HTMLElement | null>(null);
@@ -239,7 +232,6 @@ export default function Ecommerce() {
     return () => dlg.removeEventListener("cancel", h);
   }, [closeQuickView]);
 
-  /* cart drawer */
   const [cartOpen, setCartOpen] = useState(false);
   const cartPanelRef = useRef<HTMLDivElement | null>(null);
   const cartBtnRef   = useRef<HTMLButtonElement | null>(null);
@@ -278,75 +270,90 @@ export default function Ecommerce() {
     if (!demoOpen) { setCartOpen(false); closeQuickView(); }
   }, [demoOpen, closeQuickView]);
 
-  /* ══════════════════════════════════════════════════════════════
-      RENDER
-  ══════════════════════════════════════════════════════════════ */
   return (
-    <main className="case-study ecommerce-cs" aria-label="E-Commerce Storefront Case Study">
+    // NOTE: "ecommerce-cs" NOT "case-study" — avoids the 900px max-width constraint
+    <main className="ecommerce-cs ecom-page" aria-label="E-Commerce Storefront Case Study">
       <a href="#ecom-demo" className="sr-only-focusable">Skip to interactive demo</a>
       <div aria-live="polite" aria-atomic="true" className="sr-only">{liveMessage}</div>
 
       {/* ══════════════════════════════════════
-          HERO — two-column with meta strip
+          HERO — full-width two-column
       ══════════════════════════════════════ */}
-      <header className="gh-hero ecom-hero-header">
-        <div className="gh-hero__copy">
-          <p className="meta">Personal project · UI Engineering · Accessibility-first</p>
-          <h1>E-Commerce Storefront</h1>
-          <p className="gh-hero__intro">
-            Built a premium-feeling storefront demo with full keyboard and screen
-            reader support across the key flows: discovery via filters, product
-            quick view, and a cart drawer.
-          </p>
-        </div>
+      <header className="ecom-page-hero">
+        <div className="ecom-page-wrap">
+          <div className="ecom-page-hero__inner">
 
-        {/* Right: visual badge */}
-        <div className="gh-hero__visual" aria-hidden="true">
-          <div className="ecom-hero-badge">
-            <span className="ecom-hero-icon">🛍️</span>
-            <div className="ecom-hero-badge-tags">
-              {["Keyboard nav", "Focus trap", "Live regions", "WCAG"].map((t) => (
-                <span key={t} className="ecom-hero-tag">{t}</span>
+            {/* Left copy */}
+            <div className="ecom-page-hero__copy">
+              <p className="meta">Personal project · UI Engineering · Accessibility-first</p>
+              <h1>E-Commerce<br/>Storefront</h1>
+              <p className="ecom-page-hero__intro">
+                A premium-feeling storefront demo with full keyboard and screen
+                reader support across the flows that matter most — discovery,
+                product quick view, and a cart drawer.
+              </p>
+            </div>
+
+            {/* Right: a11y badge grid */}
+            <div className="ecom-page-hero__badges" aria-hidden="true">
+              {[
+                { icon: "⌨️", label: "Keyboard nav",  sub: "Full tab + arrow support" },
+                { icon: "🔒", label: "Focus trap",     sub: "Dialog + drawer contained" },
+                { icon: "📢", label: "Live regions",   sub: "Cart feedback announced" },
+                { icon: "✅", label: "WCAG",           sub: "Contrast + focus visible" },
+              ].map((b) => (
+                <div key={b.label} className="ecom-page-badge feature">
+                  <span className="ecom-page-badge__icon">{b.icon}</span>
+                  <div>
+                    <p className="ecom-page-badge__label">{b.label}</p>
+                    <p className="ecom-page-badge__sub">{b.sub}</p>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
         </div>
       </header>
 
-      {/* Meta strip */}
-      <div className="gh-meta-strip">
-        {[
-          { label: "Type",     value: "Personal project" },
-          { label: "Stack",    value: "React · TypeScript" },
-          { label: "Data",     value: "Local TypeScript" },
-          { label: "Cart",     value: "localStorage" },
-          { label: "A11y",     value: "Keyboard + Screen Reader" },
-        ].map((item, i, arr) => (
-          <React.Fragment key={item.label}>
-            <div className="gh-meta-strip__item">
-              <span className="gh-meta-strip__label">{item.label}</span>
-              <span className="gh-meta-strip__value">{item.value}</span>
-            </div>
-            {i < arr.length - 1 && <div className="gh-meta-strip__divider" aria-hidden="true" />}
-          </React.Fragment>
-        ))}
+      {/* Meta strip — full width */}
+      <div className="ecom-page-wrap">
+        <div className="gh-meta-strip ecom-page-meta">
+          {[
+            { label: "Type",  value: "Personal project" },
+            { label: "Stack", value: "React · TypeScript" },
+            { label: "Data",  value: "Local TypeScript" },
+            { label: "Cart",  value: "localStorage" },
+            { label: "A11y",  value: "Keyboard + Screen Reader" },
+          ].map((item, i, arr) => (
+            <React.Fragment key={item.label}>
+              <div className="gh-meta-strip__item">
+                <span className="gh-meta-strip__label">{item.label}</span>
+                <span className="gh-meta-strip__value">{item.value}</span>
+              </div>
+              {i < arr.length - 1 && <div className="gh-meta-strip__divider" aria-hidden="true" />}
+            </React.Fragment>
+          ))}
+        </div>
       </div>
 
       {/* ══════════════════════════════════════
-          CASE STUDY — icon cards
+          CASE STUDY — 3-col card grid (wider)
       ══════════════════════════════════════ */}
-      <section className="ecom-caseStudy" aria-label="Case study">
-        <div className="ecom-narrow">
-          <h2>Case Study</h2>
-          <p style={{ color: "var(--muted)", marginBottom: "2rem", fontSize: "1.05rem", lineHeight: 1.75 }}>
-            A focused engineering + UX exercise: build the flows that matter most
-            for e-commerce (discovery, confidence, cart) with accessibility baked
-            in from the start — not added at the end.
-          </p>
+      <section className="ecom-page-section" aria-label="Case study">
+        <div className="ecom-page-wrap">
+          <div className="ecom-page-section__header">
+            <h2>Case Study</h2>
+            <p className="ecom-page-section__lead">
+              Build the flows that matter most for e-commerce — discovery,
+              confidence, cart — with accessibility baked in from the start,
+              not added at the end.
+            </p>
+          </div>
 
-          <div className="ecom-case-grid">
+          {/* 3-column card grid on wide screens */}
+          <div className="ecom-page-case-grid">
             {CASE_BLOCKS.map((block) => (
-              <section key={block.title} className="feature ecom-case-card">
+              <div key={block.title} className="feature ecom-case-card">
                 <div className="ecom-case-card__header">
                   <span className="ecom-case-card__icon" aria-hidden="true">{block.icon}</span>
                   <h3>{block.title}</h3>
@@ -354,68 +361,75 @@ export default function Ecommerce() {
                 <ul className="ecom-bullets">
                   {block.items.map((item) => <li key={item}>{item}</li>)}
                 </ul>
-              </section>
-            ))}
-
-            {/* Next steps — full width */}
-            <section className="feature ecom-next ecom-case-card">
-              <div className="ecom-case-card__header">
-                <span className="ecom-case-card__icon" aria-hidden="true">🔭</span>
-                <h3>Next steps</h3>
               </div>
-              <ul className="ecom-bullets">
-                <li>Usability testing: validate filters + quick view usefulness</li>
-                <li>Cross-device SR audit (NVDA / JAWS / VoiceOver)</li>
-                <li>Performance: image sizing + loading strategy</li>
-                <li>Analytics instrumentation for the key interaction events</li>
-              </ul>
-            </section>
+            ))}
+          </div>
+
+          {/* Next steps — separate full-width card */}
+          <div className="feature ecom-case-card ecom-page-next-card">
+            <div className="ecom-case-card__header">
+              <span className="ecom-case-card__icon" aria-hidden="true">🔭</span>
+              <h3>Next steps</h3>
+            </div>
+            <div className="ecom-page-next-grid">
+              {[
+                "Usability testing: validate filters + quick view usefulness",
+                "Cross-device SR audit (NVDA / JAWS / VoiceOver)",
+                "Performance: image sizing + loading strategy",
+                "Analytics instrumentation for the key interaction events",
+              ].map((item) => (
+                <div key={item} className="ecom-page-next-item">
+                  <span className="ecom-page-next-bullet" aria-hidden="true">→</span>
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* ══════════════════════════════════════
-          DEMO — validation strip + toggle
+          DEMO SECTION
       ══════════════════════════════════════ */}
-      <section id="ecom-demo" className="ecom-demoSection" aria-label="Interactive storefront demo">
-        <div className="ecom-narrow">
+      <section id="ecom-demo" className="ecom-demoSection ecom-page-demo-section"
+        aria-label="Interactive storefront demo">
+        <div className="ecom-page-wrap">
 
-          {/* Section header matching GH validation style */}
-          <div className="ecom-demo-intro">
-            <div>
+          <div className="ecom-page-demo-header">
+            <div className="ecom-page-demo-header__copy">
               <h2 className="ecom-demoTitle">Interactive demo</h2>
               <p className="ecom-demoSubtitle">
                 The full experience is isolated below. Toggle it on to explore
-                filters, quick view, and the cart drawer without affecting the
-                rest of the page.
+                filters, quick view, and the cart drawer.
               </p>
             </div>
-            <button type="button" className="ecom-demoToggle"
-              onClick={() => setDemoOpen((v) => !v)}
-              aria-expanded={demoOpen} aria-controls="ecom-demoPanel">
-              {demoOpen ? "Close demo ↑" : "Open demo ↓"}
-            </button>
-          </div>
 
-          {/* Validation strip (always visible) */}
-          <div className="gh-validation-strip feature ecom-demo-strip">
-            {[
-              { label: "Discovery", value: "Search + filters + sort" },
-              { label: "Confidence", value: "Quick view modal" },
-              { label: "Cart", value: "Drawer with focus trap" },
-            ].map((item, i, arr) => (
-              <React.Fragment key={item.label}>
-                <div className="gh-vstrip-item">
-                  <p className="gh-vstrip-label">{item.label}</p>
-                  <p className="gh-vstrip-value">{item.value}</p>
-                </div>
-                {i < arr.length - 1 && <div className="gh-vstrip-divider" aria-hidden="true" />}
-              </React.Fragment>
-            ))}
+            {/* Summary strip + toggle in one row */}
+            <div className="ecom-page-demo-header__controls">
+              <div className="gh-validation-strip feature ecom-page-demo-strip">
+                {[
+                  { label: "Discovery",  value: "Search + filters + sort" },
+                  { label: "Confidence", value: "Quick view modal" },
+                  { label: "Cart",       value: "Drawer + focus trap" },
+                ].map((item, i, arr) => (
+                  <React.Fragment key={item.label}>
+                    <div className="gh-vstrip-item">
+                      <p className="gh-vstrip-label">{item.label}</p>
+                      <p className="gh-vstrip-value">{item.value}</p>
+                    </div>
+                    {i < arr.length - 1 && <div className="gh-vstrip-divider" aria-hidden="true" />}
+                  </React.Fragment>
+                ))}
+              </div>
+              <button type="button" className="ecom-demoToggle ecom-page-demo-toggle"
+                onClick={() => setDemoOpen((v) => !v)}
+                aria-expanded={demoOpen} aria-controls="ecom-demoPanel">
+                {demoOpen ? "Close demo ↑" : "Open demo ↓"}
+              </button>
+            </div>
           </div>
 
           {!demoOpen ? (
-            /* ── Closed: 3 preview cards ── */
             <div className="ecom-demoClosed" role="region" aria-label="Demo preview">
               <div className="ecom-demoPreviewGrid">
                 {[
@@ -443,18 +457,14 @@ export default function Ecommerce() {
               )}
             </div>
           ) : (
-            /* ── Open: full storefront ── */
             <div id="ecom-demoPanel" className="ecom-demoOpen" role="region" aria-label="Demo panel">
               <div className="ecom-deviceFrame" role="group" aria-label="Storefront demo frame">
                 <div className="ecom-deviceTop" aria-hidden="true">
                   <div className="ecom-deviceDots"><span /><span /><span /></div>
                   <div className="ecom-deviceUrl">storefront.demo</div>
                 </div>
-
                 <div className="ecom-deviceBody">
                   <div className="ecom-wide ecom-demoWide">
-
-                    {/* Demo top bar */}
                     <div className="ecom-storefront-head">
                       <div>
                         <div className="ecom-band-title">Storefront</div>
@@ -473,7 +483,6 @@ export default function Ecommerce() {
                       Cart via <strong>localStorage</strong>. No payment processed.
                     </div>
 
-                    {/* Filters */}
                     <section className="feature ecommerce-controls" aria-label="Filters and sorting">
                       <div className="ecom-controls-grid">
                         <div className="form-group ecom-field">
@@ -524,7 +533,6 @@ export default function Ecommerce() {
                       </div>
                     </section>
 
-                    {/* Products */}
                     <section aria-label="Product results">
                       <div className="ecom-products-head"><h2 id="ecom-products">Products</h2></div>
                       {filtered.length === 0 ? (
@@ -640,14 +648,14 @@ export default function Ecommerce() {
                           <div className="ecom-qty-row">
                             <button type="button" className="ecom-qty-btn"
                               onClick={() => setQty(id, qty - 1, product.name)}
-                              aria-label={`Decrease quantity for ${product.name}`}>−</button>
+                              aria-label={`Decrease qty for ${product.name}`}>−</button>
                             <input className="ecom-qty-input" type="number" min={0} max={999}
                               value={qty} inputMode="numeric"
                               onChange={(e) => setQty(id, Number(e.target.value), product.name)}
                               aria-label={`Quantity for ${product.name}`} />
                             <button type="button" className="ecom-qty-btn"
                               onClick={() => setQty(id, qty + 1, product.name)}
-                              aria-label={`Increase quantity for ${product.name}`}>+</button>
+                              aria-label={`Increase qty for ${product.name}`}>+</button>
                             <button type="button" className="ecom-link ecom-remove"
                               onClick={() => removeFromCart(id, product.name)}
                               aria-label={`Remove ${product.name} from cart`}>Remove</button>
@@ -692,49 +700,44 @@ export default function Ecommerce() {
       )}
 
       {/* ══════════════════════════════════════
-          OTHER PROJECTS — bottom nav
-          Sits completely outside all overlays.
+          OTHER PROJECTS
       ══════════════════════════════════════ */}
-      <aside className="gh-other-projects" aria-label="Other projects">
-        <div className="gh-other-projects__header">
-          <p className="gh-other-projects__eyebrow">More Work</p>
-          <h2 style={{ margin: "0.25rem 0 0" }}>Other Projects</h2>
-        </div>
-
-        <div className="gh-other-projects__grid">
-          {OTHER_PROJECTS.map((proj) => (
-            <article
-              key={proj.path}
-              className="project-card gh-proj-card"
-              onClick={() => navigate(proj.path)}
-              role="button"
-              tabIndex={0}
-              aria-label={`View ${proj.title} case study`}
-              onKeyDown={(e) => e.key === "Enter" && navigate(proj.path)}
-            >
-              <div className="project-media">
-                <div className="project-icon">{proj.icon}</div>
-              </div>
-              <div className="project-body">
-                <h3>{proj.title}</h3>
-                <p>{proj.desc}</p>
-                <span className="gh-proj-cta">View case study →</span>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        <div style={{ textAlign: "center", marginTop: "2.5rem" }}>
-          <button
-            type="button"
-            className="hero-btn"
-            onClick={() => navigate("/")}
-            style={{ fontSize: "0.85rem", padding: "0.9rem 2rem", letterSpacing: "1.5px" }}
-          >
-            ← Back to All Work
-          </button>
-        </div>
-      </aside>
+      <div className="ecom-page-wrap">
+        <aside className="gh-other-projects" aria-label="Other projects">
+          <div className="gh-other-projects__header">
+            <p className="gh-other-projects__eyebrow">More Work</p>
+            <h2 style={{ margin: "0.25rem 0 0" }}>Other Projects</h2>
+          </div>
+          <div className="gh-other-projects__grid">
+            {OTHER_PROJECTS.map((proj) => (
+              <article
+                key={proj.path}
+                className="project-card gh-proj-card"
+                onClick={() => navigate(proj.path)}
+                role="button"
+                tabIndex={0}
+                aria-label={`View ${proj.title} case study`}
+                onKeyDown={(e) => e.key === "Enter" && navigate(proj.path)}
+              >
+                <div className="project-media">
+                  <div className="project-icon">{proj.icon}</div>
+                </div>
+                <div className="project-body">
+                  <h3>{proj.title}</h3>
+                  <p>{proj.desc}</p>
+                  <span className="gh-proj-cta">View case study →</span>
+                </div>
+              </article>
+            ))}
+          </div>
+          <div style={{ textAlign: "center", marginTop: "2.5rem" }}>
+            <button type="button" className="hero-btn" onClick={() => navigate("/")}
+              style={{ fontSize: "0.85rem", padding: "0.9rem 2rem", letterSpacing: "1.5px" }}>
+              ← Back to All Work
+            </button>
+          </div>
+        </aside>
+      </div>
 
     </main>
   );
