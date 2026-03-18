@@ -1726,7 +1726,7 @@ select:focus {
   margin: 0 auto;
 } /* Give About the same “page rhythm” as case studies */
 .about-hero {
-  padding: 120px 0 20px;
+  padding: 20px 0 20px;
 }
 .about-journey,
 .about-life,
@@ -3977,7 +3977,7 @@ body.dark-mode .nav-overlay-backdrop,
 .about-back-row {
   padding: 0 var(--page-pad);
   max-width: var(--case-max);
-  margin: 0 auto 1rem;
+  margin: 30px auto 1rem;
 }
 
 .about-back-btn {
@@ -4015,7 +4015,7 @@ body.dark-mode .nav-overlay-backdrop,
 
 .about-hero-accent {
   position: absolute;
-  top: 2rem;
+  top: .5rem;
   right: var(--page-pad);
   width: 160px;
   height: 160px;
@@ -4049,7 +4049,7 @@ body.dark-mode .nav-overlay-backdrop,
 .about-stats {
   width: min(var(--case-max), calc(100% - 2 * var(--page-pad)));
   margin: 0 auto;
-  padding: 0 0 3rem;
+  padding: 20px;
 }
 
 .about-stats__grid {
@@ -5649,44 +5649,6 @@ body.dark-mode .nav-overlay-backdrop,
   font-size: 0.93rem;
   color: var(--muted);
   line-height: 1.65;
-}
-
-/* ══════════════════════════════════════
-   EDUCATION GRID
-══════════════════════════════════════ */
-.about-edu-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.75rem;
-  margin-top: 1.5rem;
-}
-
-.about-edu-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.85rem;
-  padding: 1rem 1.25rem;
-}
-
-.about-edu-icon {
-  font-size: 1.2rem;
-  line-height: 1;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.about-edu-title {
-  font-size: 0.92rem;
-  font-weight: 700;
-  color: var(--fg);
-  margin: 0 0 0.2rem;
-  line-height: 1.35;
-}
-
-.about-edu-sub {
-  font-size: 0.8rem;
-  color: var(--muted);
-  margin: 0;
 }
 
 /* ── Responsive ── */

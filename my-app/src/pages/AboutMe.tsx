@@ -340,31 +340,6 @@ export default function About() {
       </section>
 
       {/* ══════════════════════════════════════
-          EDUCATION — added from resume
-      ══════════════════════════════════════ */}
-      <section className="about-growth">
-        <h2 className="about-growth-title">Education &amp; certifications</h2>
-        <div className="about-edu-grid">
-          {[
-            { icon: "🎓", title: "Master of Healthcare Administration", sub: "Rutgers University" },
-            { icon: "🎓", title: "B.S. Public Health",                  sub: "Rutgers University" },
-            { icon: "🎖️", title: "Associate of Science",               sub: "Valley Forge Military College" },
-            { icon: "📜", title: "Google UX Design Certificate",        sub: "Google" },
-            { icon: "📜", title: "Lean Six Sigma Green Belt",           sub: "Purdue University" },
-            { icon: "💻", title: "UX · Data Analytics · Software Eng.", sub: "Noble Desktop Bootcamps" },
-          ].map((e) => (
-            <div key={e.title} className="about-edu-card feature">
-              <span className="about-edu-icon" aria-hidden="true">{e.icon}</span>
-              <div>
-                <p className="about-edu-title">{e.title}</p>
-                <p className="about-edu-sub">{e.sub}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════
           LIFE
       ══════════════════════════════════════ */}
       <section className="about-life">
