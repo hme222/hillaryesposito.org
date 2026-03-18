@@ -245,7 +245,7 @@ export default function About() {
       <section className="about-timeline-section" aria-label="Career timeline">
         <p className="about-agenda__eyebrow">Career timeline</p>
         <h2 className="about-growth-title" style={{ marginBottom: "2rem" }}>
-          The path here.
+          The Journey.
         </h2>
 
         <div className="about-career-timeline">
