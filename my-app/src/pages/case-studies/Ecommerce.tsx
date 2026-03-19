@@ -272,7 +272,7 @@ export default function Ecommerce() {
 
   return (
     // NOTE: "ecommerce-cs" NOT "case-study" — avoids the 900px max-width constraint
-    <main className="ecommerce-cs ecom-page" aria-label="E-Commerce Storefront Case Study">
+    <main className="ecommerce-cs ecom-page lux" aria-label="E-Commerce Storefront Case Study">
       <a href="#ecom-demo" className="sr-only-focusable">Skip to interactive demo</a>
       <div aria-live="polite" aria-atomic="true" className="sr-only">{liveMessage}</div>
 
