@@ -5895,3 +5895,56 @@ body.dark-mode .nav-overlay-backdrop,
     gap: 0.6rem;
   }
 }
+
+.gh-phone-frame {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md), var(--shadow-olive);
+  width: 100%;
+  max-width: 220px;
+  position: relative;
+  max-height: 440px;
+}
+
+.gh-phone-frame::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--card) 95%, transparent), transparent);
+  z-index: 2;
+  pointer-events: none;
+  border-radius: 32px 32px 0 0;
+}
+
+.gh-phone-frame::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--card) 85%, transparent));
+  z-index: 2;
+  pointer-events: none;
+  border-radius: 0 0 32px 32px;
+}
+
+.gh-phone-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-position: top;
+}
+
+@media (max-width: 900px) {
+  .gh-phone-frame { max-width: 180px; max-height: 360px; }
+}
+
+@media (max-width: 600px) {
+  .gh-phone-frame { max-width: 160px; max-height: 300px; }
+}

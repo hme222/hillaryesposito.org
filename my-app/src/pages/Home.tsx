@@ -85,6 +85,11 @@ export default function Home() {
   const [showLuna, setShowLuna] = useState(false);
   const navigate = useNavigate();
 
+  // Smooth-scroll helper — no hash change, no router interference
+  const scrollToContact = () => {
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   // Scroll float on Luna
   useEffect(() => {
     const onScroll = () => {
@@ -159,7 +164,9 @@ export default function Home() {
             </motion.p>
 
             <motion.div className="hero-actions" {...stagger(0.24)}>
-              <a href="#contact" className="hero-btn">Get in touch</a>
+              <button type="button" className="hero-btn" onClick={scrollToContact}>
+                Get in touch
+              </button>
               <button type="button" className="home-secondary-btn"
                 onClick={() => navigate("/about")}>
                 About me →
@@ -274,9 +281,11 @@ export default function Home() {
                 If you're building something that matters, let's talk.
               </p>
               <div style={{ display:"flex", gap:"1rem", flexWrap:"wrap" }}>
-                <a href="#contact" className="hero-btn" style={{ fontSize:"0.9rem", padding:"1rem 2rem" }}>
+                <button type="button" className="hero-btn"
+                  style={{ fontSize:"0.9rem", padding:"1rem 2rem" }}
+                  onClick={scrollToContact}>
                   Get in touch
-                </a>
+                </button>
                 <button type="button" className="about-back-btn"
                   onClick={() => navigate("/about")} style={{ fontSize:"0.9rem" }}>
                   Read my story →
