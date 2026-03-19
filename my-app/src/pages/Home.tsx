@@ -268,6 +268,7 @@ export default function Home() {
                 I'm seeking a UX role where I can continue learning, contribute to cross-functional teams,
                and apply research, interaction design, and systems thinking across healthcare,
               government, or high-stakes consumer products.
+              
               </p>
               <p className="about-cta-highlight" style={{ marginBottom:"1.75rem" }}>
                 If you're building something that matters, let's talk.
