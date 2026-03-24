@@ -21,46 +21,62 @@ export default function RecruiterSkimCard({
   onBackToStory,
 }: RecruiterSkimCardProps) {
   return (
-    <aside id="recruiter-summary" className="cs-skim" aria-label={`${title} recruiter quick skim`}>
-      <div className="cs-skim-head">
-        <h2 className="cs-skim-title">Recruiter quick-skim</h2>
-        {timeframe ? <p className="cs-skim-meta">{timeframe}</p> : null}
+    <aside
+      id="recruiter-summary"
+      className="rsc"
+      aria-label={`${title} recruiter quick skim`}
+    >
+      <div className="rsc__header">
+        <div className="rsc__header-left">
+          <p className="rsc__eyebrow">Recruiter quick-skim</p>
+          <h2 className="rsc__title">{title}</h2>
+        </div>
+
+        {timeframe ? (
+          <p className="rsc__timeframe">{timeframe}</p>
+        ) : null}
       </div>
 
-      <div className="cs-skim-grid">
-        <div className="cs-skim-block">
-          <h3>What</h3>
-          <p>{what}</p>
+      <div className="rsc__facts">
+        <div className="rsc__fact">
+          <p className="rsc__fact-label">What</p>
+          <p className="rsc__fact-value">{what}</p>
         </div>
 
-        <div className="cs-skim-block">
-          <h3>Outcome</h3>
-          <p>{outcome}</p>
+        <div className="rsc__fact-divider" aria-hidden="true" />
+
+        <div className="rsc__fact">
+          <p className="rsc__fact-label">Outcome</p>
+          <p className="rsc__fact-value">{outcome}</p>
         </div>
 
-        <div className="cs-skim-block">
-          <h3>My role</h3>
-          <p>{myRole}</p>
-        </div>
+        <div className="rsc__fact-divider" aria-hidden="true" />
 
-        <div className="cs-skim-block">
-          <h3>Skills</h3>
-          <ul className="cs-skim-tags" aria-label="Skills used">
-            {skills.map((s) => (
-              <li key={s} className="cs-tag">
-                {s}
-              </li>
-            ))}
-          </ul>
+        <div className="rsc__fact">
+          <p className="rsc__fact-label">My role</p>
+          <p className="rsc__fact-value">{myRole}</p>
         </div>
       </div>
 
-      {/* Micro-link (fixed) */}
-      <p className="cs-micro">
-        <button type="button" className="cs-micro-link" onClick={onBackToStory}>
-          Back to full story ↑
+      <div className="rsc__skills-row">
+        <div className="rsc__skills" aria-label="Skills used">
+          {skills.map((s) => (
+            <span key={s} className="rsc__skill-badge">
+              {s}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div className="rsc__footer">
+        <button
+          type="button"
+          className="rsc__story-btn"
+          onClick={onBackToStory}
+        >
+          View full case study
         </button>
-      </p>
+      </div>
     </aside>
   );
 }

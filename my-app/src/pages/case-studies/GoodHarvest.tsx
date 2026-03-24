@@ -117,14 +117,21 @@ export default function GoodHarvest() {
             using produce that is in season in their local area — making
             sustainable eating faster, easier, and more accessible.
           </p>
-          <p className="recruiter-cta" style={{ marginTop: "1.5rem" }}>
-            Recruiter?{" "}
-            <button type="button" className="recruiter-toggle-link"
-              onClick={() => setRecruiterMode((v) => !v)}>
-              {recruiterMode ? "Hide quick project breakdown ←" : "Click for a quick project breakdown →"}
-            </button>
-          </p>
-        </div>
+          <div className="recruiter-cta">
+  <span className="recruiter-cta__label">Recruiter?</span>
+  <button
+    type="button"
+    className="recruiter-toggle-link"
+    onClick={() => setRecruiterMode((v) => !v)}
+    aria-expanded={recruiterMode}
+    aria-controls="recruiter-summary"
+  >
+    {recruiterMode
+      ? "Hide quick project breakdown ←"
+      : "Click for a quick project breakdown →"}
+  </button>
+</div>
+</div>
  
         {/* Phone mockup */}
         <div className="gh-hero__visual" aria-hidden="true">
@@ -165,18 +172,18 @@ export default function GoodHarvest() {
       </div>
  
       {recruiterMode && (
-        <div id="recruiter-summary" style={{ marginBottom: "2.5rem" }}>
-          <RecruiterSkimCard
-            title="Good Harvest"
-            what="Mobile app for seasonal produce, recipes, and shopping lists — localized by region."
-            outcome="A faster 'scan → choose → act' flow validated with prototype testing + heatmaps."
-            myRole="End-to-end UX: research, IA, wireframes, prototypes, iteration."
-            skills={["Interviews","Surveys","Journey mapping","Competitive analysis","SWOT","Prototyping","Accessibility"]}
-            timeframe="Project snapshot"
-            onBackToStory={() => scrollToId("full-case-study")}
-          />
-        </div>
-      )}
+  <div style={{ marginBottom: "2.5rem" }}>
+    <RecruiterSkimCard
+      title="Good Harvest"
+      what="Mobile app for seasonal produce, recipes, and shopping lists — localized by region."
+      outcome="A faster 'scan → choose → act' flow validated with prototype testing + heatmaps."
+      myRole="End-to-end UX: research, IA, wireframes, prototypes, iteration."
+      skills={["Interviews","Surveys","Journey mapping","Competitive analysis","SWOT","Prototyping","Accessibility"]}
+      timeframe="Project snapshot"
+      onBackToStory={() => scrollToId("full-case-study")}
+    />
+  </div>
+)}
  
       <div id="full-case-study" />
  
