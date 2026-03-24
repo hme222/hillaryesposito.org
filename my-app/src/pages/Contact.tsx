@@ -10,7 +10,7 @@ export default function Contact() {
     try {
       await emailjs.sendForm(
         "service_q1wp8vi",
-        "template_vyp39ze",
+        "template_l869lhf",
         form,
         "bGvvXIOFbQBoA_PSK"
       );
