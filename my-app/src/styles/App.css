@@ -144,7 +144,8 @@ body {
       transparent 60%
     ),
     var(--surface-1);
-} /* 4) Make text colors consistent across sections */
+} 
+/* 4) Make text colors consistent across sections */
 .hero-description,
 .contact-info p,
 .case-study p,
@@ -715,7 +716,7 @@ select:focus {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 100px var(--page-pad) 60px;
+  padding: 80px var(--page-pad) 50px;
   background:
     radial-gradient(
       circle at 20% 50%,
@@ -732,16 +733,16 @@ select:focus {
 .contact-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  max-width: 1200px;
+  gap: 3rem;
+  max-width: 1000px;
   width: 100%;
   align-items: center;
 }
 .contact-info h1 {
-  font-size: 5rem;
+  font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 600;
   margin-bottom: 2rem;
-  line-height: 1.3;
+  line-height: 1.2;
   background: linear-gradient(
     135deg,
     var(--olive-1) 0%,
@@ -753,18 +754,18 @@ select:focus {
   background-clip: text;
 }
 .contact-info p {
-  font-size: 1.3rem;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
   color: var(--muted);
   line-height: 1.8;
 }
 .contact-form {
   background: var(--card);
-  padding: 2.2rem;
+  padding: 1.6rem;
   border-radius: var(--radius-xl);
   border: 1px solid var(--border);
 }
 .form-group {
-  margin-bottom: 2rem;
+  margin-bottom: 1.4rem;
 }
 .form-group label {
   display: block;
@@ -779,10 +780,10 @@ select:focus {
 .form-group textarea,
 select {
   width: 100%;
-  padding: 1.2rem;
+  padding: .9rem;
   border: 2px solid var(--border);
   border-radius: 15px;
-  font-size: 1rem;
+  font-size: .95rem;
   background: var(--bg);
   color: var(--fg);
   transition: border-color 0.3s;
@@ -798,13 +799,13 @@ select:focus {
 }
 .submit-btn {
   width: 100%;
-  padding: 1.3rem;
+  padding: 1rem;
   background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 100%);
   color: #fff;
   border: none;
   border-radius: 50px;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: .95rem;
   text-transform: uppercase;
   letter-spacing: 2px;
   cursor: pointer;
@@ -815,7 +816,36 @@ select:focus {
 .submit-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 15px 30px rgba(107, 142, 35, 0.4);
-} /* ========================= CASE STUDY (GLOBAL) ========================= */
+} 
+
+@media (max-width: 900px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .form-group input,
+  .form-group textarea,
+  select {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-form {
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-hero {
+    padding: 60px 20px 40px;
+  }
+}
+/* ========================= CASE STUDY (GLOBAL) ========================= */
 .case-study {
   max-width: var(--case-max);
   margin: 0 auto;
