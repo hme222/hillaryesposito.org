@@ -272,9 +272,7 @@ export default function Home() {
                 What I'm looking for
               </h2>
               <p className="about-cta-content" style={{ color:"var(--muted)", lineHeight:1.8, marginBottom:"1.5rem" }}>
-                I'm seeking a UX role where I can continue learning, contribute to cross-functional teams,
-               and apply research, interaction design, and systems thinking across healthcare,
-              government, or high-stakes consumer products.
+               I’m seeking a role where I can apply research, systems thinking, and interaction design to help people navigate complex, high-stakes scenarios.
               
               </p>
               <p className="about-cta-highlight" style={{ marginBottom:"1.75rem" }}>

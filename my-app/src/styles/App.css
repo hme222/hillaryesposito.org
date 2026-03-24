@@ -6451,106 +6451,138 @@ body.dark-mode .nav-overlay-backdrop,
   .lux .ecom-grid { gap: 1px; }
 }
 
+/* =========================================================
+   ABOUT PAGE — MATCHING CSS FOR REWRITTEN ABOUT.TSX
+   Paste at the VERY BOTTOM of App.css
+   ========================================================= */
 
-.about-timeline-section {
-  padding: 4rem 1rem;
-  max-width: 1100px;
+/* ── Hero support ── */
+.about-hero-subtext {
+  margin-top: 1.25rem;
+  max-width: 62ch;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--muted);
+}
+
+/* ── Skills header ── */
+.about-skills__header {
+  margin-bottom: 2rem;
+}
+
+/* ── Story section ── */
+.about-story-section {
+  width: min(var(--case-max), calc(100% - 2 * var(--page-pad)));
   margin: 0 auto;
+  padding: 56px 0;
 }
 
-.about-timeline-graphic {
-  position: relative;
-  padding: 2rem 0;
-  margin-top: 1rem;
+.about-story-header {
+  margin-bottom: 2.25rem;
 }
 
-.timeline-spine {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 20px; 
-  width: 2px;
-  background-color: #d1d5db; 
-  z-index: 1;
+.about-story-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
 }
 
-.timeline-events-container {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem; 
-  z-index: 2; 
+.about-story-card {
+  padding: 1.75rem;
+  border-radius: var(--radius-lg);
 }
 
-.timeline-event-card {
+.about-story-card__top {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  position: relative;
+  margin-bottom: 1.1rem;
 }
 
-
-.timeline-event-year {
-  flex: 0 0 6rem;
-  text-align: right;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #4b5563;
-  margin-right: 0.5rem;
+.about-story-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.35rem;
+  background: color-mix(in srgb, var(--olive-2) 10%, var(--card));
+  border: 1px solid color-mix(in srgb, var(--olive-2) 20%, var(--border));
 }
 
-.timeline-event-marker {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  border: 3px solid #6b21a8; 
-  background-color: #fff;
-  position: absolute;
-  left: 13px; 
-  top: 3px;
-  z-index: 3;
+.about-story-card__label {
+  margin: 0 0 0.25rem;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  color: var(--olive-2);
 }
 
-.timeline-pulsar {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #6b21a8;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  
-
-  animation: timelinePulse 2s infinite ease-out;
-}
-
-@keyframes timelinePulse {
-  0% { box-shadow: 0 0 0 0px rgba(107, 33, 168, 0.4); }
-  70% { box-shadow: 0 0 0 8px rgba(107, 33, 168, 0); }
-  100% { box-shadow: 0 0 0 0px rgba(107, 33, 168, 0); }
-}
-
-.timeline-event-details {
-  flex: 1;
-}
-
-.timeline-event-title {
+.about-story-card__heading {
   margin: 0;
+  font-size: 1.15rem;
+  line-height: 1.35;
+  font-weight: 800;
+  color: var(--fg);
+}
+
+.about-story-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.about-story-card__text {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+.about-story-card__callout {
+  margin-top: 1.2rem;
+  padding: 1rem 1.15rem;
+  border-left: 3px solid var(--olive-2);
+  border-radius: 0 12px 12px 0;
+  background: color-mix(in srgb, var(--olive-2) 6%, var(--card));
+  border-top: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.about-story-card__callout p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.65;
   font-weight: 600;
-  font-size: 1.1rem;
-  line-height: 1.2;
+  color: var(--fg);
 }
 
-.timeline-event-org {
-  margin: 0.1rem 0 0 0;
-  font-size: 0.9rem;
-  color: #4b5563;
-}
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .about-story-card {
+    padding: 1.3rem;
+  }
 
-/* --- Responsive Timeline --- */
-@media (max-width: 600px) {
-  .timeline-event-year {
-    flex: 0 0 5rem;
-    font-size: 0.85rem;
+  .about-story-card__top {
+    gap: 0.85rem;
+  }
+
+  .about-story-card__icon {
+    width: 42px;
+    height: 42px;
+    font-size: 1.15rem;
+    border-radius: 12px;
+  }
+
+  .about-story-card__heading {
+    font-size: 1.02rem;
+  }
+
+  .about-story-card__text {
+    font-size: 0.95rem;
   }
 }
