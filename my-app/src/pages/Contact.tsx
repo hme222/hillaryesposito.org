@@ -8,18 +8,19 @@ export default function Contact() {
     const form = e.currentTarget;
 
     try {
-      await emailjs.sendForm(
+      const result = await emailjs.sendForm(
         "service_q1wp8vi",
-        "template_l869lhf",
+        "template_m678chn",
         form,
         "bGvvXIOFbQBoA_PSK"
       );
 
+      console.log("SUCCESS:", result);
       alert("Message sent successfully!");
       form.reset();
     } catch (error) {
-      console.error(error);
-      alert("Something went wrong. Please try again.");
+      console.error("EMAILJS ERROR:", error);
+      alert("Something went wrong. Check console.");
     }
   }
 
@@ -28,7 +29,10 @@ export default function Contact() {
       <div className="contact-container">
         <div className="contact-info">
           <h1>Let’s build something</h1>
-          <p>Freelance, full-time, or collaborations. If you’re hiring or launching, I’d love to chat.</p>
+          <p>
+            Freelance, full-time, or collaborations. If you’re hiring or launching,
+            I’d love to chat.
+          </p>
         </div>
 
         <div className="contact-form">

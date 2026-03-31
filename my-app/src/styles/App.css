@@ -3144,7 +3144,7 @@ html.dark-mode,
 .about-page,
 .contact-hero,
 .hero {
-  background: var(--bg) !important;
+  background: var(--card) !important;
 }
 
 /* Bring back “feature cards” (if they looked invisible / blended) */
@@ -4035,7 +4035,7 @@ body.dark-mode .nav-overlay-backdrop,
 
 .about-hero-accent {
   position: absolute;
-  top: .5rem;
+  top: 8rem;
   right: var(--page-pad);
   width: 160px;
   height: 160px;
