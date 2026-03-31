@@ -3144,7 +3144,7 @@ html.dark-mode,
 .about-page,
 .contact-hero,
 .hero {
-  background: var(--card) !important;
+  background: var(--bg) !important;
 }
 
 /* Bring back “feature cards” (if they looked invisible / blended) */
@@ -4025,44 +4025,6 @@ body.dark-mode .nav-overlay-backdrop,
 .about-back-btn--outline {
   /* reuses back-btn but sits inline next to hero-btn */
   margin-left: 0;
-}
-
-/* ── Hero accent decoration ── */
-.about-hero {
-  position: relative;
-  overflow: hidden;
-}
-
-.about-hero-accent {
-  position: absolute;
-  top: 8rem;
-  right: var(--page-pad);
-  width: 160px;
-  height: 160px;
-  pointer-events: none;
-}
-
-.about-hero-accent__ring {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 2px solid color-mix(in srgb, var(--olive-2) 22%, transparent);
-}
-
-.about-hero-accent__dot {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--olive-1), var(--olive-2));
-  box-shadow: var(--shadow-olive);
-}
-
-@media (max-width: 768px) {
-  .about-hero-accent { display: none; }
 }
 
 /* ── Stat strip ── */

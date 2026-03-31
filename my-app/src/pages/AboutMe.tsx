@@ -153,11 +153,6 @@ export default function About() {
             and digital products—where clarity matters and confusion slows people down.
           </p>
         </div>
-
-        <div className="about-hero-accent" aria-hidden="true">
-          <div className="about-hero-accent__ring" />
-          <div className="about-hero-accent__dot" />
-        </div>
       </section>
 
       {/* ═ STATS ════════════════════════════════════════════════════ */}
