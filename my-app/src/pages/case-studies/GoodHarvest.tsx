@@ -96,17 +96,17 @@ export default function GoodHarvest() {
   ];
 
   const researchInsightCards = [
-    { num: "Finding 01", heading: "Location trust — not information access — was the real gap",
-      body: "[X] of [X] participants abandoned seasonal searches mid-task because they couldn't confirm whether a result applied to their region.",
+    { num: "Finding 01", heading: "Users are motivated",
+      body: " 19 of 22 participants say that eating seasonal foods is desirable",
       tag: "User interviews" },
-    { num: "Finding 02", heading: "Produce variety confusion caused decision paralysis",
-      body: "When faced with multiple apple or lettuce varieties, [X] of [X] participants either chose randomly or deferred the decision entirely.",
+    { num: "Finding 02", heading: "Unclear what's in season locally",
+      body: "13 of 22 participants do not know what's in season in their specific area",
       tag: "Interviews + surveys" },
-    { num: "Finding 03", heading: "Users want a clear \"next step,\" not just a list",
-      body: "Every participant who mentioned seasonal eating as a goal described the same breakdown: knowing what's in season but not knowing what to make with it.",
+    { num: "Finding 03", heading: "Users find seasonal shopping time consuming",
+      body: "12 of 22 participants found meal planning around seasonal food takes too much time.",
       tag: "User interviews" },
-    { num: "Finding 04", heading: "Organic decisions are driven by anxiety, not knowledge",
-      body: "[X]% of survey respondents said they wished they had clearer guidance on which organic items were actually worth the premium vs. which weren't.",
+    { num: "Finding 04", heading: "Produce variety confusion caused decision paralysis",
+      body: "When faced with multiple apple or lettuce varieties, 12 of 22 participants either chose randomly or deferred the decision entirely.",
       tag: "Survey data" },
   ];
 
@@ -303,14 +303,14 @@ export default function GoodHarvest() {
       <div id="gh-panel-0" role="tabpanel" className={`gh-panel${activeTab === 0 ? " gh-panel--active" : ""}`}>
         <section>
           <SectionLabel>01 · Research</SectionLabel>
-          <h2>What [X] people told me<br />before I opened Figma</h2>
+          <h2>What 22 people told me<br />before I opened Figma</h2>
 
           <div className="gh-stats-row">
             {[
-              { num: "[X]",    label: "User interviews" },
-              { num: "[X]",    label: "Survey responses" },
+              { num: "3",    label: "User interviews" },
+              { num: "22",    label: "Survey responses" },
               { num: "3",      label: "Competitors analyzed" },
-              { num: "[X]wks", label: "Research duration" },
+              { num: "6wks", label: "Research duration" },
             ].map((s, i, arr) => (
               <React.Fragment key={s.label}>
                 <div className="gh-stat-block">
@@ -324,8 +324,8 @@ export default function GoodHarvest() {
 
           <p>
             Participants were{" "}
-            <strong>[describe screener — e.g., "health-conscious home cooks aged 25–45 who grocery shop at least twice per week"]</strong>.
-            Recruited through <strong>[channels]</strong>.
+            <strong>["health-conscious home cooks aged 25–45 who grocery shop at least twice per week"]</strong>.
+            Recruited through <strong> networks </strong>.
           </p>
 
           <div className="gh-insight-cards">
@@ -342,10 +342,9 @@ export default function GoodHarvest() {
           <div className="gh-user-quote">
             <span className="gh-user-quote__mark" aria-hidden="true">"</span>
             <blockquote className="gh-user-quote__text">
-              [Replace with a real verbatim quote — e.g., "I know I want to eat more seasonally
-              but I don't even know where to start. What's actually in season right now, in my city?"]
+              "Planning a menu around seasonal food takes too much time, I don't know how to cook many seasonal foods"
             </blockquote>
-            <p className="gh-user-quote__attr">— Interview participant, [Month Year]</p>
+            <p className="gh-user-quote__attr">— Interview participant, March 2025</p>
           </div>
         </section>
 
