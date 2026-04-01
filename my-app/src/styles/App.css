@@ -849,7 +849,7 @@ select:focus {
 .case-study {
   max-width: var(--case-max);
   margin: 0 auto;
-  padding: 120px var(--page-pad) 60px;
+  padding: 10px var(--page-pad) 10px;
   line-height: 1.8;
 }
 .case-study h1 {
