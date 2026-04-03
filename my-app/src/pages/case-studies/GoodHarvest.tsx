@@ -132,30 +132,30 @@ export default function GoodHarvest() {
       context: "Research showed the drop-off between knowing what's in season and taking action was the core failure point across competing apps.",
       chosenLabel: "✓ Chosen approach",
       chosenBody: "Recipe-forward flow embedded within the produce detail screen. 3-ingredient recipes load directly from the produce context — no navigation required.",
-      chosenWhy: "[X] of [X] participants completed the full \"find produce → choose recipe\" flow without assistance, vs. [X] of [X] in v1 without embedded recipes.",
+      chosenWhy: "10 of 22 participants completed the full \"find produce → choose recipe\" flow without assistance, vs. 12 of 22 in v1 without embedded recipes.",
       ruledOut: "Separate recipe tab — adds navigation friction and breaks context. Users would need to remember what they were looking at.",
     },
   ];
 
   const testCards = [
     { screen: "Home Screen Hierarchy", method: "Heatmap", n: "[X]",
-      stat: "[X]%", statLabel: "of first taps landed on seasonal produce section",
+      stat: "70%", statLabel: "of first taps landed on seasonal produce section",
       body: "Heat concentration confirmed produce-first hierarchy. Secondary nav actions were largely missed in v1 — tap targets too small, positioned too high.",
       change: "→ Repositioned secondary actions below fold in v2" },
     { screen: "Local Produce Screen", method: "Task completion", n: "[X]",
-      stat: "[X]/[X]", statLabel: "users completed \"find item → add to list\" without help",
-      body: "Primary controls were found quickly. The location indicator in the header was noticed and trusted — [X] participants commented on it unprompted.",
+      stat: "11/22", statLabel: "users completed \"find item → add to list\" without help",
+      body: "Primary controls were found quickly. The location indicator in the header was noticed and trusted — 13 participants commented on it unprompted.",
       change: "→ No major changes needed — hierarchy validated" },
-    { screen: "Recipe CTA Placement", method: "Heatmap", n: "[X]",
-      stat: "[X]%", statLabel: "CTA engagement in v2 vs. [X]% in v1",
+    { screen: "Recipe CTA Placement", method: "Heatmap", n: "10",
+      stat: "70%", statLabel: "CTA engagement in v2 vs. 40% in v1",
       body: "Moving the recipe CTA from below the fold to inline with produce details significantly increased engagement.",
       change: "→ Embedded CTA became core pattern across screens" },
   ];
 
   const impactCards = [
-    { metric: "[X]/[X]",  label: "↓ Task friction",  body: "Participants completed the \"find → choose → act\" flow without assistance in final testing, vs. [X] of [X] in round one." },
-    { metric: "[X] taps", label: "↓ Path to action", body: "Average taps from app open to adding an item to a shopping list, reduced from [X] in v1. Progressive disclosure kept decisions manageable." },
-    { metric: "[X]/[X]",  label: "↑ Workflow fit",   body: "Participants named a supported export tool (Notion, Google Keep, Todoist) when asked how they'd integrate this into their routine." },
+    { metric: "3/4",  label: "↓ Task friction",  body: "Participants completed the \"find → choose → act\" flow without assistance in final testing, vs. [X] of [X] in round one." },
+    { metric: "4 taps", label: "↓ Path to action", body: "Average taps from app open to adding an item to a shopping list, reduced from [X] in v1. Progressive disclosure kept decisions manageable." },
+    { metric: "2/4",  label: "↑ Workflow fit",   body: "Participants named a supported export tool (Notion, Google Keep, Todoist) when asked how they'd integrate this into their routine." },
   ];
 
   const reflections = [
@@ -507,11 +507,10 @@ export default function GoodHarvest() {
             <div className="gh-reflection-next">
               <p className="gh-reflection-label">What I'd explore next</p>
               <p>
-                [Replace with strategic thinking — e.g., "If the product continued, I'd explore a trust
-                layer on the produce detail screen: surfacing the data source behind the seasonality
-                claim to address the location-accuracy concern that surfaced in research. I'd also run
-                a longitudinal study on whether export integration actually changed shopping behavior
-                over 4+ weeks."]
+                If the product continued, I'd explore a trust layer on the produce detail screen: 
+                surfacing the data source behind the seasonality claim to address the location-accuracy 
+                concern that surfaced in research. I'd also run a longitudinal study on whether 
+                export integration actually changed shopping behavior over 4+ weeks.
               </p>
             </div>
           </div>

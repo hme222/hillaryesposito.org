@@ -885,7 +885,7 @@ select:focus {
 .case-study p,
 .case-study li {
   font-size: 1.1rem;
-  color: var(--muted);
+  color: var(--fg);
   margin-bottom: 1.25rem;
   line-height: 1.9;
 }
