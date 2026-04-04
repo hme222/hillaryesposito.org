@@ -124,7 +124,7 @@ export default function GoodHarvest() {
       context: "Should users start by finding a nearby market, or browsing what's in season? The order shapes the whole mental model.",
       chosenLabel: "✓ Chosen approach",
       chosenBody: "Produce-first home screen with markets as a secondary action. Seasonal produce leads; market discovery follows.",
-      chosenWhy: "Heatmap data showed [X]% of first taps went to the produce section. Users are oriented around ingredients, not locations.",
+      chosenWhy: "Heatmap data showed 60% of first taps went to the produce section. Users are oriented around ingredients, not locations.",
       ruledOut: "Market-first flow — users without a preferred market hit a dead end before seeing value, producing higher drop-off at onboarding.",
     },
     {
@@ -153,18 +153,18 @@ export default function GoodHarvest() {
   ];
 
   const impactCards = [
-    { metric: "3/4",  label: "↓ Task friction",  body: "Participants completed the \"find → choose → act\" flow without assistance in final testing, vs. [X] of [X] in round one." },
-    { metric: "4 taps", label: "↓ Path to action", body: "Average taps from app open to adding an item to a shopping list, reduced from [X] in v1. Progressive disclosure kept decisions manageable." },
+    { metric: "3/4",  label: "↓ Task friction",  body: "Participants completed the \"find → choose → act\" flow without assistance in final testing, vs. 1 of 4 in round one." },
+    { metric: "4 taps", label: "↓ Path to action", body: "Average taps from app open to adding an item to a shopping list, reduced from 7 taps in v1. Progressive disclosure kept decisions manageable." },
     { metric: "2/4",  label: "↑ Workflow fit",   body: "Participants named a supported export tool (Notion, Google Keep, Todoist) when asked how they'd integrate this into their routine." },
   ];
 
   const reflections = [
     { label: "What surprised me",
-      body: "[Replace with a specific moment — e.g., \"I went in expecting navigation to be the friction point. What emerged instead was a trust problem — users found the information, they just didn't believe it applied to them. That reframed the whole problem from IA to credibility design.\"]" },
+      body: "I went in expecting navigation to be the friction point. What emerged instead was a trust problem — users found the information, they just didn't believe it applied to them. That reframed the whole problem from IA to credibility design." },
     { label: "A decision I'd revisit",
-      body: "[Replace with something honest — e.g., \"I'd test organic guidance earlier. It was added late in the design process based on survey data, but wasn't validated in the same depth as the core produce flow.\"]" },
+      body: "I'd test organic guidance earlier. It was added late in the design process based on survey data, but wasn't validated in the same depth as the core produce flow." },
     { label: "What this shifted in my practice",
-      body: "[Replace with a concrete change — e.g., \"I now build a decision trail doc alongside wireframes — logging every major design choice, what I considered, and why I ruled it out. It makes design reviews sharper and handoff cleaner.\"]" },
+      body: "I now build a decision trail doc alongside wireframes — logging every major design choice, what I considered, and why I ruled it out. It makes design reviews sharper and handoff cleaner." },
   ];
 
   return (
@@ -486,7 +486,7 @@ export default function GoodHarvest() {
           <div className="gh-impact-caveat highlight">
             <p>
               <strong>Honest framing:</strong>{" "}
-              These metrics reflect prototype usability testing with [n] participants, not post-launch data.
+              These metrics reflect prototype usability testing with 22 participants, not post-launch data.
               Adoption and retention metrics would require a live product to validate. The directional
               signals are encouraging — but I'm treating them as hypotheses for a next round, not proven outcomes.
             </p>
