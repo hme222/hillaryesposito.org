@@ -7055,3 +7055,112 @@ body.dark-mode .nav-overlay-backdrop,
   .gh-user-quote { padding: 2rem 1.5rem; }
   .gh-user-quote__text { font-size: 1rem; padding-left: 0.5rem; }
 }
+
+
+/* ========================= CONTACT SECTION ========================= */
+
+.contact-hero {
+  padding: 80px var(--page-pad) 100px;
+}
+
+.contact-container {
+  width: min(var(--case-max), calc(100% - 2 * var(--page-pad)));
+  margin: 0 auto;
+}
+
+.contact-info {
+  margin-bottom: 0;
+}
+
+.contact-info::before {
+  content: "Get in touch";
+  display: block;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  color: var(--olive-2);
+  margin-bottom: 0.5rem;
+}
+
+.dark-mode .contact-info::before {
+  color: var(--focus);
+}
+
+.contact-info h1 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.05;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 55%, var(--olive-3) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.contact-info p {
+  font-size: 1.1rem;
+  color: var(--muted);
+  line-height: 1.85;
+  max-width: 52ch;
+  margin: 0;
+}
+
+.contact-email-block {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 2.25rem;
+  flex-wrap: wrap;
+}
+
+.contact-email-link {
+  font-size: 1.1rem;
+  letter-spacing: 0.01em;
+  color: var(--fg);
+  text-decoration: none;
+  border-bottom: 1.5px solid color-mix(in srgb, var(--fg) 30%, transparent);
+  padding-bottom: 2px;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.contact-email-link:hover {
+  color: var(--olive-2);
+  border-color: var(--olive-2);
+}
+
+.dark-mode .contact-email-link:hover {
+  color: var(--focus);
+  border-color: var(--focus);
+}
+
+.contact-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 0.45rem 1rem;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  border-radius: 999px;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.contact-copy-btn:hover {
+  border-color: var(--olive-2);
+  color: var(--olive-2);
+  background: color-mix(in srgb, var(--olive-2) 6%, transparent);
+}
+
+.dark-mode .contact-copy-btn:hover {
+  border-color: var(--focus);
+  color: var(--focus);
+  background: color-mix(in srgb, var(--focus) 6%, transparent);
+}
