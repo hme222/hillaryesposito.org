@@ -4453,6 +4453,7 @@ body.dark-mode .nav-overlay-backdrop,
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  line-clamp:2;
   overflow: hidden;
 
   min-width: 0;        /* 🔑 critical fix */
@@ -5258,7 +5259,7 @@ body.dark-mode .nav-overlay-backdrop,
 
 /* Next steps: horizontal 4-item row inside the card */
 .ecom-page-next-card {
-  /* spans full width naturally */
+  grid-column: 1/-1
 }
 
 .ecom-page-next-grid {

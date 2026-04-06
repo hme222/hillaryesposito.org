@@ -9,7 +9,7 @@
     "allowSyntheticDefaultImports": true, // Allow default imports even if not explicitly in module
     "strict": true,                       // Enable all strict type-checking options
     "forceConsistentCasingInFileNames": true, // Prevents case-related file issues (important on Mac/Windows)
-    "moduleResolution": "node",           // How to resolve modules, standard Node resolution
+    "moduleResolution": "bundler",           // How to resolve modules, standard Node resolution
     "resolveJsonModule": true,            // Allow importing JSON files
     "isolatedModules": true,              // Supports transpiling each file independently (required by some bundlers)
     "noEmit": true,                       // Don't output compiled files (React-scripts handles it)

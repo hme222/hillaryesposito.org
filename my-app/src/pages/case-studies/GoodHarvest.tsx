@@ -21,7 +21,7 @@ const EvidenceTag: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 );
 
 export default function GoodHarvest() {
-  const asset = (p: string) => `${process.env.PUBLIC_URL}${p}`;
+  const asset = (p: string) => p;
   const navigate = useNavigate();
 
   const [recruiterMode, setRecruiterMode] = useState<boolean>(
@@ -106,7 +106,7 @@ export default function GoodHarvest() {
       body: "12 of 22 participants found meal planning around seasonal food takes too much time.",
       tag: "User interviews" },
     { num: "Finding 04", heading: "Produce variety confusion caused decision paralysis",
-      body: "When faced with multiple apple or lettuce varieties, 12 of 22 participants either chose randomly or deferred the decision entirely.",
+      body: "When faced with multiple apple or lettuce varieties, 17 of 22 participants either chose randomly or deferred the decision entirely.",
       tag: "Survey data" },
   ];
 
@@ -116,7 +116,7 @@ export default function GoodHarvest() {
       context: "Users needed to know instantly whether a produce item was in season locally — and trust that the data was accurate for their region.",
       chosenLabel: "✓ Chosen approach",
       chosenBody: "Explicit text labels + visible legend anchored to the user's confirmed location. Location is editable at any point.",
-      chosenWhy: "Color-only indicators failed in wireframe testing — [X] of [X] users didn't know what the colors meant. Labels + source attribution addressed the trust gap directly.",
+      chosenWhy: "Color-only indicators failed in wireframe testing — 18 of 22 users didn't know what the colors meant. Labels + source attribution addressed the trust gap directly.",
       ruledOut: "Color-coded tags only — ambiguous without a legend, failed to address the location trust problem. Calendar view — too much cognitive load at point of decision.",
     },
     {
