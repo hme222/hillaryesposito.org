@@ -84,11 +84,11 @@ const SKILLS = [
   },
   {
     group: "Tools",
-    items: ["Figma", "FigJam", "Miro", "Notion"],
+    items: ["Figma", "FigJam", "Miro", "Notion", "ChatGPT", "Claude", "Emergent"],
   },
   {
     group: "Technical",
-    items: ["HTML / CSS", "React", "SQL basics", "Accessibility"],
+    items: ["HTML / CSS", "React", "Javascript", "SQL basics", "Accessibility"],
   },
 ];
 
