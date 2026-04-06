@@ -33,6 +33,15 @@ function useLiveAnnouncer() {
 
 function getPrimaryImage(p: any) { return p?.images?.[0] ?? p?.image ?? ""; }
 
+const IconSearch = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"
+    aria-hidden="true">
+    <circle cx="11" cy="11" r="8" />
+    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+  </svg>
+);
+
 const CASE_BLOCKS = [
   {
     icon: "🎯",
@@ -48,7 +57,7 @@ const CASE_BLOCKS = [
     icon: "💡",
     title: "Key UX decisions",
     items: [
-      "Demo is opt-in via toggle — page reads calm by default",
+      "Demo is always visible alongside the case study",
       "Cart lives in the demo header, not the portfolio hero",
       "One primary CTA per card (Add to cart); quick view is secondary",
       "Predictable keyboard flows across all dialog/drawer interactions",
@@ -93,8 +102,6 @@ const OTHER_PROJECTS = [
 export default function Ecommerce() {
   const allProducts = products as ProductLike[];
   const navigate    = useNavigate();
-
-  const [demoOpen, setDemoOpen] = useState(false);
 
   const categories = useMemo(() => {
     const s = new Set<string>();
@@ -266,10 +273,6 @@ export default function Ecommerce() {
     return () => document.removeEventListener("keydown", onKey);
   }, [cartOpen]);
 
-  useEffect(() => {
-    if (!demoOpen) { setCartOpen(false); closeQuickView(); }
-  }, [demoOpen, closeQuickView]);
-
   return (
     // NOTE: "ecommerce-cs" NOT "case-study" — avoids the 900px max-width constraint
     <main className="ecommerce-cs ecom-page lux" aria-label="E-Commerce Storefront Case Study">
@@ -315,309 +318,250 @@ export default function Ecommerce() {
         </div>
       </header>
 
-      {/* Meta strip — full width */}
-      <div className="ecom-page-wrap">
-        <div className="gh-meta-strip ecom-page-meta">
-          {[
-            { label: "Type",  value: "Personal project" },
-            { label: "Stack", value: "React · TypeScript" },
-            { label: "Data",  value: "Local TypeScript" },
-            { label: "Cart",  value: "localStorage" },
-            { label: "A11y",  value: "Keyboard + Screen Reader" },
-          ].map((item, i, arr) => (
-            <React.Fragment key={item.label}>
-              <div className="gh-meta-strip__item">
-                <span className="gh-meta-strip__label">{item.label}</span>
-                <span className="gh-meta-strip__value">{item.value}</span>
-              </div>
-              {i < arr.length - 1 && <div className="gh-meta-strip__divider" aria-hidden="true" />}
-            </React.Fragment>
-          ))}
-        </div>
-      </div>
-
       {/* ══════════════════════════════════════
-          CASE STUDY — 3-col card grid (wider)
+          SPLIT LAYOUT — left: case study, right: demo
       ══════════════════════════════════════ */}
-      <section className="ecom-page-section" aria-label="Case study">
-        <div className="ecom-page-wrap">
-          <div className="ecom-page-section__header">
-            <h2>Case Study</h2>
-            <p className="ecom-page-section__lead">
-              Build the flows that matter most for e-commerce — discovery,
-              confidence, cart — with accessibility baked in from the start,
-              not added at the end.
-            </p>
-          </div>
+      <div className="ecom-split-layout">
 
-          {/* 3-column card grid on wide screens */}
-          <div className="ecom-page-case-grid">
-            {CASE_BLOCKS.map((block) => (
-              <div key={block.title} className="feature ecom-case-card">
-                <div className="ecom-case-card__header">
-                  <span className="ecom-case-card__icon" aria-hidden="true">{block.icon}</span>
-                  <h3>{block.title}</h3>
+        {/* ── LEFT COLUMN: meta + case study ── */}
+        <div className="ecom-split-left">
+
+          {/* Meta strip */}
+          <div className="gh-meta-strip ecom-page-meta">
+            {[
+              { label: "Type",  value: "Personal project" },
+              { label: "Stack", value: "React · TypeScript" },
+              { label: "Data",  value: "Local TypeScript" },
+              { label: "Cart",  value: "localStorage" },
+              { label: "A11y",  value: "Keyboard + Screen Reader" },
+            ].map((item, i, arr) => (
+              <React.Fragment key={item.label}>
+                <div className="gh-meta-strip__item">
+                  <span className="gh-meta-strip__label">{item.label}</span>
+                  <span className="gh-meta-strip__value">{item.value}</span>
                 </div>
-                <ul className="ecom-bullets">
-                  {block.items.map((item) => <li key={item}>{item}</li>)}
-                </ul>
-              </div>
+                {i < arr.length - 1 && <div className="gh-meta-strip__divider" aria-hidden="true" />}
+              </React.Fragment>
             ))}
           </div>
 
-          {/* Next steps — separate full-width card */}
-          <div className="feature ecom-case-card ecom-page-next-card">
-            <div className="ecom-case-card__header">
-              <span className="ecom-case-card__icon" aria-hidden="true">🔭</span>
-              <h3>Next steps</h3>
+          {/* Case study */}
+          <section className="ecom-page-section" aria-label="Case study">
+            <div className="ecom-page-section__header">
+              <h2>Case Study</h2>
+              <p className="ecom-page-section__lead">
+                Build the flows that matter most for e-commerce — discovery,
+                confidence, cart — with accessibility baked in from the start,
+                not added at the end.
+              </p>
             </div>
-            <div className="ecom-page-next-grid">
-              {[
-                "Usability testing: validate filters + quick view usefulness",
-                "Cross-device SR audit (NVDA / JAWS / VoiceOver)",
-                "Performance: image sizing + loading strategy",
-                "Analytics instrumentation for the key interaction events",
-              ].map((item) => (
-                <div key={item} className="ecom-page-next-item">
-                  <span className="ecom-page-next-bullet" aria-hidden="true">→</span>
-                  <span>{item}</span>
+
+            <div className="ecom-page-case-grid">
+              {CASE_BLOCKS.map((block) => (
+                <div key={block.title} className="feature ecom-case-card">
+                  <div className="ecom-case-card__header">
+                    <span className="ecom-case-card__icon" aria-hidden="true">{block.icon}</span>
+                    <h3>{block.title}</h3>
+                  </div>
+                  <ul className="ecom-bullets">
+                    {block.items.map((item) => <li key={item}>{item}</li>)}
+                  </ul>
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* ══════════════════════════════════════
-          DEMO SECTION
-      ══════════════════════════════════════ */}
-      <section id="ecom-demo" className="ecom-demoSection ecom-page-demo-section"
-        aria-label="Interactive storefront demo">
-        <div className="ecom-page-wrap">
-
-          <div className="ecom-page-demo-header">
-            <div className="ecom-page-demo-header__copy">
-              <h2 className="ecom-demoTitle">Interactive demo</h2>
-              <p className="ecom-demoSubtitle">
-                The full experience is isolated below. Toggle it on to explore
-                filters, quick view, and the cart drawer.
-              </p>
-            </div>
-
-            {/* Summary strip + toggle in one row */}
-            <div className="ecom-page-demo-header__controls">
-              <div className="gh-validation-strip feature ecom-page-demo-strip">
-                {[
-                  { label: "Discovery",  value: "Search + filters + sort" },
-                  { label: "Confidence", value: "Quick view modal" },
-                  { label: "Cart",       value: "Drawer + focus trap" },
-                ].map((item, i, arr) => (
-                  <React.Fragment key={item.label}>
-                    <div className="gh-vstrip-item">
-                      <p className="gh-vstrip-label">{item.label}</p>
-                      <p className="gh-vstrip-value">{item.value}</p>
-                    </div>
-                    {i < arr.length - 1 && <div className="gh-vstrip-divider" aria-hidden="true" />}
-                  </React.Fragment>
-                ))}
+            <div className="feature ecom-case-card ecom-page-next-card">
+              <div className="ecom-case-card__header">
+                <span className="ecom-case-card__icon" aria-hidden="true">🔭</span>
+                <h3>Next steps</h3>
               </div>
-              <button type="button" className="ecom-demoToggle ecom-page-demo-toggle"
-                onClick={() => setDemoOpen((v) => !v)}
-                aria-expanded={demoOpen} aria-controls="ecom-demoPanel">
-                {demoOpen ? "Close demo ↑" : "Open demo ↓"}
-              </button>
-            </div>
-          </div>
-
-          {!demoOpen ? (
-            <div className="ecom-demoClosed" role="region" aria-label="Demo preview">
-              <div className="ecom-demoPreviewGrid">
+              <div className="ecom-page-next-grid">
                 {[
-                  { kicker: "Discovery",  title: "Search + filters",  desc: "Category, price range, sorting, and live results." },
-                  { kicker: "Confidence", title: "Quick view modal",  desc: "ESC close, focus restore, clean hierarchy." },
-                  { kicker: "Cart",       title: "Drawer pattern",    desc: "Focus trap, quantity controls, totals, announcements." },
-                ].map((c) => (
-                  <div key={c.kicker} className="ecom-demoPreviewCard">
-                    <div className="ecom-demoKicker">{c.kicker}</div>
-                    <div className="ecom-demoPreviewTitle">{c.title}</div>
-                    <p className="ecom-demoPreviewDesc">{c.desc}</p>
+                  "Usability testing: validate filters + quick view usefulness",
+                  "Cross-device SR audit (NVDA / JAWS / VoiceOver)",
+                  "Performance: image sizing + loading strategy",
+                  "Analytics instrumentation for the key interaction events",
+                ].map((item) => (
+                  <div key={item} className="ecom-page-next-item">
+                    <span className="ecom-page-next-bullet" aria-hidden="true">→</span>
+                    <span>{item}</span>
                   </div>
                 ))}
               </div>
-              <p className="ecom-demoNote" role="note">
-                Static demo. Products from local TypeScript data. Cart persists via{" "}
-                <strong>localStorage</strong>. No payment is processed.
-              </p>
-              {DEMO_URL && (
-                <div className="ecom-demoExternal">
-                  <a className="ecom-demoExternalLink" href={DEMO_URL} target="_blank" rel="noreferrer">
-                    Open live demo in new tab →
-                  </a>
-                </div>
-              )}
             </div>
-          ) : (
-            <div id="ecom-demoPanel" className="ecom-demoOpen" role="region" aria-label="Demo panel">
-              <div className="ecom-deviceFrame" role="group" aria-label="Storefront demo frame">
-                <div className="ecom-deviceTop" aria-hidden="true">
-                  <div className="ecom-deviceDots"><span /><span /><span /></div>
-                  <div className="ecom-deviceUrl">storefront.demo</div>
-                </div>
-                <div className="ecom-deviceBody">
-                  <div className="ecom-wide ecom-demoWide">
-                    <div className="ecom-storefront-head">
-                      <div>
-                        <div className="ecom-band-title">Storefront</div>
-                        <div className="ecom-band-subtitle">Filters · Quick View · Cart Drawer</div>
-                      </div>
-                      <button ref={cartBtnRef} type="button" className="ecom-cart-pill"
-                        onClick={openCart} aria-haspopup="dialog"
-                        aria-expanded={cartOpen} aria-controls="ecom-cart-drawer">
-                        Cart <span aria-hidden="true">·</span>{" "}
-                        <span aria-label={`${cartCount} items`}>{cartCount}</span>
-                      </button>
+          </section>
+
+        </div>{/* end ecom-split-left */}
+
+        {/* ── RIGHT COLUMN: sticky demo ── */}
+        <div className="ecom-split-right">
+
+          <div className="ecom-split-demo-label" aria-hidden="true">
+            <span>Live Demo</span>
+          </div>
+
+          <div id="ecom-demo" className="ecom-demoOpen ecom-split-demo-panel" role="region" aria-label="Interactive storefront demo">
+            <div className="ecom-deviceFrame" role="group" aria-label="Storefront demo frame">
+              <div className="ecom-deviceTop" aria-hidden="true">
+                <div className="ecom-deviceDots"><span /><span /><span /></div>
+                <div className="ecom-deviceUrl">storefront.demo</div>
+              </div>
+              <div className="ecom-deviceBody">
+                <div className="ecom-wide ecom-demoWide">
+                  <div className="ecom-storefront-head">
+                    <div>
+                      <div className="ecom-band-title">Storefront</div>
+                      <div className="ecom-band-subtitle">Filters · Quick View · Cart Drawer</div>
                     </div>
+                    <button ref={cartBtnRef} type="button" className="ecom-cart-pill"
+                      onClick={openCart} aria-haspopup="dialog"
+                      aria-expanded={cartOpen} aria-controls="ecom-cart-drawer">
+                      Cart <span aria-hidden="true">·</span>{" "}
+                      <span aria-label={`${cartCount} items`}>{cartCount}</span>
+                    </button>
+                  </div>
 
-                    <div className="highlight ecom-highlight" role="note">
-                      <strong>Static demo.</strong> Products from local TypeScript data.
-                      Cart via <strong>localStorage</strong>. No payment processed.
+                  <div className="highlight ecom-highlight" role="note">
+                    <strong>Static demo.</strong> Products from local TypeScript data.
+                    Cart via <strong>localStorage</strong>. No payment processed.
+                  </div>
+
+                  <section className="feature ecommerce-controls" aria-label="Filters and sorting">
+                    <div className="ecom-controls-grid">
+                      <div className="form-group ecom-field">
+                        <label htmlFor="ecom-search">Search</label>
+                        <input id="ecom-search" type="search" value={query}
+                          onChange={(e) => setQuery(e.target.value)}
+                          placeholder="Search products, categories…"
+                          aria-describedby="ecom-search-help" />
+                        <p id="ecom-search-help" className="ecom-help">Try "tee" or "Accessories".</p>
+                      </div>
+                      <div className="form-group ecom-field">
+                        <label htmlFor="ecom-category">Category</label>
+                        <select id="ecom-category" value={category}
+                          onChange={(e) => setCategory(e.target.value)} className="ecom-select">
+                          {categories.map((c) => <option key={c} value={c}>{c}</option>)}
+                        </select>
+                      </div>
+                      <div className="form-group ecom-field">
+                        <label htmlFor="ecom-sort">Sort</label>
+                        <select id="ecom-sort" value={sort}
+                          onChange={(e) => setSort(e.target.value as any)} className="ecom-select">
+                          <option value="featured">Featured</option>
+                          <option value="name-asc">Name (A–Z)</option>
+                          <option value="price-asc">Price (Low–High)</option>
+                          <option value="price-desc">Price (High–Low)</option>
+                        </select>
+                      </div>
+                      <div className="form-group ecom-field">
+                        <label id="ecom-price-label">Price range</label>
+                        <div className="ecom-range" role="group" aria-labelledby="ecom-price-label">
+                          <input aria-label="Minimum price" type="number"
+                            min={minPossible} max={maxPossible} value={minPrice}
+                            onChange={(e) => { const v = Number(e.target.value); setMinPrice(clamp(isFinite(v) ? v : minPossible, minPossible, maxPrice)); }} />
+                          <span aria-hidden="true">—</span>
+                          <input aria-label="Maximum price" type="number"
+                            min={minPossible} max={maxPossible} value={maxPrice}
+                            onChange={(e) => { const v = Number(e.target.value); setMaxPrice(clamp(isFinite(v) ? v : maxPossible, minPrice, maxPossible)); }} />
+                        </div>
+                        <p className="ecom-help">{formatUSD(minPrice)} – {formatUSD(maxPrice)}</p>
+                      </div>
+                      <div className="ecom-controls-actions">
+                        <button type="button" className="submit-btn" onClick={resetFilters}>Reset</button>
+                      </div>
                     </div>
+                    <div className="ecom-results" role="status" aria-live="polite">
+                      <span><strong>{filtered.length}</strong> result{filtered.length === 1 ? "" : "s"}</span>
+                      <span className="ecom-results-label">{resultsLabel}</span>
+                    </div>
+                  </section>
 
-                    <section className="feature ecommerce-controls" aria-label="Filters and sorting">
-                      <div className="ecom-controls-grid">
-                        <div className="form-group ecom-field">
-                          <label htmlFor="ecom-search">Search</label>
-                          <input id="ecom-search" type="search" value={query}
-                            onChange={(e) => setQuery(e.target.value)}
-                            placeholder="Search products, categories…"
-                            aria-describedby="ecom-search-help" />
-                          <p id="ecom-search-help" className="ecom-help">Try "tee" or "Accessories".</p>
-                        </div>
-                        <div className="form-group ecom-field">
-                          <label htmlFor="ecom-category">Category</label>
-                          <select id="ecom-category" value={category}
-                            onChange={(e) => setCategory(e.target.value)} className="ecom-select">
-                            {categories.map((c) => <option key={c} value={c}>{c}</option>)}
-                          </select>
-                        </div>
-                        <div className="form-group ecom-field">
-                          <label htmlFor="ecom-sort">Sort</label>
-                          <select id="ecom-sort" value={sort}
-                            onChange={(e) => setSort(e.target.value as any)} className="ecom-select">
-                            <option value="featured">Featured</option>
-                            <option value="name-asc">Name (A–Z)</option>
-                            <option value="price-asc">Price (Low–High)</option>
-                            <option value="price-desc">Price (High–Low)</option>
-                          </select>
-                        </div>
-                        <div className="form-group ecom-field">
-                          <label id="ecom-price-label">Price range</label>
-                          <div className="ecom-range" role="group" aria-labelledby="ecom-price-label">
-                            <input aria-label="Minimum price" type="number"
-                              min={minPossible} max={maxPossible} value={minPrice}
-                              onChange={(e) => { const v = Number(e.target.value); setMinPrice(clamp(isFinite(v) ? v : minPossible, minPossible, maxPrice)); }} />
-                            <span aria-hidden="true">—</span>
-                            <input aria-label="Maximum price" type="number"
-                              min={minPossible} max={maxPossible} value={maxPrice}
-                              onChange={(e) => { const v = Number(e.target.value); setMaxPrice(clamp(isFinite(v) ? v : maxPossible, minPrice, maxPossible)); }} />
-                          </div>
-                          <p className="ecom-help">{formatUSD(minPrice)} – {formatUSD(maxPrice)}</p>
-                        </div>
-                        <div className="ecom-controls-actions">
-                          <button type="button" className="submit-btn" onClick={resetFilters}>Reset</button>
-                        </div>
+                  <section aria-label="Product results">
+                    <div className="ecom-products-head"><h2 id="ecom-products">Products</h2></div>
+                    {filtered.length === 0 ? (
+                      <div className="feature ecom-empty" role="region" aria-label="No results">
+                        <h3>No matches</h3>
+                        <p>Try resetting filters or broadening your search.</p>
+                        <button type="button" className="hero-btn" onClick={resetFilters}>Reset filters</button>
                       </div>
-                      <div className="ecom-results" role="status" aria-live="polite">
-                        <span><strong>{filtered.length}</strong> result{filtered.length === 1 ? "" : "s"}</span>
-                        <span className="ecom-results-label">{resultsLabel}</span>
-                      </div>
-                    </section>
-
-                    <section aria-label="Product results">
-                      <div className="ecom-products-head"><h2 id="ecom-products">Products</h2></div>
-                      {filtered.length === 0 ? (
-                        <div className="feature ecom-empty" role="region" aria-label="No results">
-                          <h3>No matches</h3>
-                          <p>Try resetting filters or broadening your search.</p>
-                          <button type="button" className="hero-btn" onClick={resetFilters}>Reset filters</button>
-                        </div>
-                      ) : (
-                        <div className="ecom-grid" role="list">
-                          {filtered.map((p) => {
-                            const id = String(p.id);
-                            return (
-                              <article key={id} className="ecom-card" role="listitem">
-                                <button type="button" className="ecom-media"
-                                  onClick={() => openQuickView(id)}
-                                  aria-label={`Open quick view for ${p.name}`}>
-                                  <img src={getPrimaryImage(p)} alt={p.name} loading="lazy" />
-                                </button>
-                                <div className="ecom-body">
-                                  <h3 className="ecom-title">{p.name}</h3>
-                                  <p className="ecom-meta">
-                                    <span>{p.category}</span>{" "}<span aria-hidden="true">·</span>{" "}
-                                    <span className="ecom-price">{formatUSD(Number(p.price))}</span>
-                                  </p>
-                                  {p.description && <p className="ecom-desc">{p.description}</p>}
-                                  <div className="ecom-actions">
-                                    <button type="button" className="hero-btn ecom-add"
-                                      onClick={() => addToCart(id, p.name)}>Add to cart</button>
-                                    <button type="button" className="ecom-quick"
-                                      onClick={() => openQuickView(id)}
-                                      aria-label={`Quick view: ${p.name}`} title="Quick view">👁</button>
-                                  </div>
+                    ) : (
+                      <div className="ecom-grid" role="list">
+                        {filtered.map((p) => {
+                          const id = String(p.id);
+                          return (
+                            <article key={id} className="ecom-card" role="listitem">
+                              <button type="button" className="ecom-media"
+                                onClick={() => openQuickView(id)}
+                                aria-label={`Open quick view for ${p.name}`}>
+                                <img src={getPrimaryImage(p)} alt={p.name} loading="lazy" />
+                              </button>
+                              <div className="ecom-body">
+                                <h3 className="ecom-title">{p.name}</h3>
+                                <p className="ecom-meta">
+                                  <span>{p.category}</span>{" "}<span aria-hidden="true">·</span>{" "}
+                                  <span className="ecom-price">{formatUSD(Number(p.price))}</span>
+                                </p>
+                                {p.description && <p className="ecom-desc">{p.description}</p>}
+                                <div className="ecom-actions">
+                                  <button type="button" className="hero-btn ecom-add"
+                                    onClick={() => addToCart(id, p.name)}>Add to cart</button>
+                                  <button type="button" className="ecom-quick"
+                                    onClick={() => openQuickView(id)}
+                                    aria-label={`Quick view: ${p.name}`} title="Quick view">
+                                    <IconSearch />
+                                  </button>
                                 </div>
-                              </article>
-                            );
-                          })}
-                        </div>
-                      )}
-                    </section>
-                  </div>
+                              </div>
+                            </article>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </section>
                 </div>
               </div>
             </div>
-          )}
-        </div>
-      </section>
+          </div>
+
+        </div>{/* end ecom-split-right */}
+
+      </div>{/* end ecom-split-layout */}
 
       {/* ── Quick View Dialog ── */}
-      {demoOpen && (
-        <dialog ref={dialogRef} className="ecom-dialog"
-          aria-label="Product quick view" onClose={() => setActiveId(null)}>
-          <div className="ecom-dialog-inner">
-            <div className="ecom-dialog-head">
-              <h2 className="ecom-dialog-title">{activeProduct?.name ?? "Product"}</h2>
-              <button type="button" className="ecom-icon-btn" onClick={closeQuickView}
-                aria-label="Close quick view">✕</button>
-            </div>
-            {activeProduct ? (
-              <div className="ecom-dialog-body">
-                <div className="ecom-dialog-media">
-                  <img src={getPrimaryImage(activeProduct)} alt={activeProduct.name} />
-                </div>
-                <div className="ecom-dialog-details">
-                  <p className="ecom-dialog-price">{formatUSD(Number(activeProduct.price))}</p>
-                  <p className="ecom-dialog-cat">{activeProduct.category}</p>
-                  {activeProduct.description && <p className="ecom-dialog-desc">{activeProduct.description}</p>}
-                  <div className="ecom-dialog-actions">
-                    <button type="button" className="hero-btn"
-                      onClick={() => addToCart(String(activeProduct.id), activeProduct.name)}>
-                      Add to cart
-                    </button>
-                    <button type="button" className="ecom-link" onClick={closeQuickView}>
-                      Continue browsing
-                    </button>
-                  </div>
+      <dialog ref={dialogRef} className="ecom-dialog"
+        aria-label="Product quick view" onClose={() => setActiveId(null)}>
+        <div className="ecom-dialog-inner">
+          <div className="ecom-dialog-head">
+            <h2 className="ecom-dialog-title">{activeProduct?.name ?? "Product"}</h2>
+            <button type="button" className="ecom-icon-btn" onClick={closeQuickView}
+              aria-label="Close quick view">✕</button>
+          </div>
+          {activeProduct ? (
+            <div className="ecom-dialog-body">
+              <div className="ecom-dialog-media">
+                <img src={getPrimaryImage(activeProduct)} alt={activeProduct.name} />
+              </div>
+              <div className="ecom-dialog-details">
+                <p className="ecom-dialog-price">{formatUSD(Number(activeProduct.price))}</p>
+                <p className="ecom-dialog-cat">{activeProduct.category}</p>
+                {activeProduct.description && <p className="ecom-dialog-desc">{activeProduct.description}</p>}
+                <div className="ecom-dialog-actions">
+                  <button type="button" className="hero-btn"
+                    onClick={() => addToCart(String(activeProduct.id), activeProduct.name)}>
+                    Add to cart
+                  </button>
+                  <button type="button" className="ecom-link" onClick={closeQuickView}>
+                    Continue browsing
+                  </button>
                 </div>
               </div>
-            ) : <p>Loading…</p>}
-          </div>
-        </dialog>
-      )}
+            </div>
+          ) : <p>Loading…</p>}
+        </div>
+      </dialog>
 
       {/* ── Cart Drawer ── */}
-      {demoOpen && cartOpen && (
+      {cartOpen && (
         <div className="ecom-drawer-root" role="presentation">
           <button className="ecom-backdrop" aria-label="Close cart" onClick={closeCart} />
           <aside id="ecom-cart-drawer" ref={cartPanelRef} className="ecom-drawer"

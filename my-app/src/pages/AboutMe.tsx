@@ -84,11 +84,15 @@ const SKILLS = [
   },
   {
     group: "Tools",
-    items: ["Figma", "FigJam", "Miro", "Notion", "ChatGPT", "Claude", "Emergent"],
+    items: ["Figma", "FigJam", "Miro", "Notion", "ChatGPT", "Claude", "Emergent", "Cursor", "v0"],
   },
   {
     group: "Technical",
     items: ["HTML / CSS", "React", "Javascript", "SQL basics", "Accessibility"],
+  },
+  {
+    group: "AI for UX",
+    items: ["AI prompting", "Product thinking", "Fast decision-making", "AI-assisted research synthesis", "Prompt-driven prototyping", "Human-AI interaction design"],
   },
 ];
 
