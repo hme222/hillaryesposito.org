@@ -1837,9 +1837,9 @@ select:focus {
   .about-luna {
     display: flex;
     position: fixed;
-    right: 10%;
-    bottom: 1rem;
-    z-index: 10;
+    right: 11rem;
+    bottom: 0.5rem;
+    z-index: 900;
 
     opacity: 0;
     visibility: hidden;
@@ -1863,8 +1863,8 @@ select:focus {
 }
 
 .about-luna img {
-  width: 7.5rem;
-  height: 7.5rem;
+  width: 5.5rem;
+  height: 5.5rem;
   object-fit: contain;
   filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.18));
 }
@@ -3896,22 +3896,26 @@ body.dark-mode .nav-overlay-backdrop,
 
 .home-mag-media {
   position: relative;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 10;
   background: linear-gradient(135deg, rgba(120, 140, 90, 0.12), rgba(120, 140, 90, 0.04));
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1.25rem;
 }
 .home-mag-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 80%;
+  max-height: 80%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
   display: block;
   transition: transform 0.4s ease;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.15));
 }
 .home-mag-card:hover .home-mag-media img {
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
 .home-mag-media__placeholder {
   width: 100%;
@@ -4081,7 +4085,7 @@ body.dark-mode .nav-overlay-backdrop,
   position: fixed;
   inset: 0;
   background: rgba(10, 10, 10, 0.5);
-  z-index: 950;
+  z-index: 1100;
   animation: recruiterFade 0.2s ease-out;
 }
 .recruiter-panel {
@@ -4091,7 +4095,7 @@ body.dark-mode .nav-overlay-backdrop,
   bottom: 0;
   width: min(420px, 100vw);
   background: var(--bg, #fff);
-  z-index: 951;
+  z-index: 1101;
   box-shadow: -20px 0 60px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;

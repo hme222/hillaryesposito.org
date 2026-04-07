@@ -76,13 +76,15 @@ const PROJECTS: Project[] = [
   },
   {
     num: "02",
+    icon: "🛍️",
     title: "E-Commerce Storefront",
     tags: ["UI Engineering", "Accessibility", "React"],
     desc: "An accessibility-first storefront demo with keyboard and screen reader support across discovery filters, quick view, and a cart drawer.",
     why: "Built and shipped — a live, interactive demo you can keyboard through right now.",
     tools: ["React", "TypeScript", "axe DevTools"],
-    image: "/assets/Hipstirred.png",
-    imageAlt: "E-commerce storefront product grid",
+    // Drop a demo screenshot at /public/assets/ecommerce-demo.png to replace the icon placeholder
+    image: "/assets/ecommerce-demo.png",
+    imageAlt: "E-commerce storefront demo — product grid with filters and cart",
     path: "/case-study/ecommerce",
   },
   {
@@ -137,19 +139,7 @@ export default function Home() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Mouse-follow on Luna
-  useEffect(() => {
-    const onMouseMove = (e: MouseEvent) => {
-      if (!catRef.current) return;
-      const rect = catRef.current.getBoundingClientRect();
-      const dx = e.clientX - (rect.left + rect.width / 2);
-      const dy = e.clientY - (rect.top + rect.height / 2);
-      const angle = Math.atan2(dy, dx) * (180 / Math.PI);
-      catRef.current.style.transform = `translateX(-50%) rotate(${angle * 0.05}deg)`;
-    };
-    window.addEventListener("mousemove", onMouseMove);
-    return () => window.removeEventListener("mousemove", onMouseMove);
-  }, []);
+  // (Mouse-follow removed — Luna sits in the corner now, scroll bob is enough)
 
 
   // contact 
@@ -302,9 +292,24 @@ function handleCopy() {
               >
                 <div className="home-mag-media">
                   {proj.image ? (
-                    <img src={proj.image} alt={proj.imageAlt || proj.title} loading="lazy" />
-                  ) : (
-                    <div className="home-mag-media__placeholder" aria-hidden="true">
+                    <img
+                      src={proj.image}
+                      alt={proj.imageAlt || proj.title}
+                      loading="lazy"
+                      onError={(e) => {
+                        const img = e.currentTarget;
+                        const fallback = img.nextElementSibling as HTMLElement | null;
+                        img.style.display = "none";
+                        if (fallback) fallback.style.display = "flex";
+                      }}
+                    />
+                  ) : null}
+                  {(proj.icon || !proj.image) && (
+                    <div
+                      className="home-mag-media__placeholder"
+                      aria-hidden="true"
+                      style={proj.image ? { display: "none" } : undefined}
+                    >
                       <span className="home-mag-media__icon">{proj.icon || "✦"}</span>
                     </div>
                   )}
