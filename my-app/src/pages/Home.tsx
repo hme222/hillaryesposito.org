@@ -48,30 +48,63 @@ const EXPERTISE = [
   "Journey Mapping", "Systems Thinking", "Figma", "Design Systems",
 ];
 
-const PROJECTS = [
+type Project = {
+  num: string;
+  title: string;
+  tags: string[];
+  desc: string;
+  why: string;
+  tools: string[];
+  image?: string;
+  imageAlt?: string;
+  icon?: string;
+  path?: string;
+  comingSoon?: boolean;
+};
+
+const PROJECTS: Project[] = [
   {
     num: "01",
-    icon: "🌿",
     title: "Good Harvest",
     tags: ["Mobile App", "UX Research", "Figma"],
     desc: "A mobile app helping users plan meals around seasonal, local produce — reducing decision friction and making sustainable eating more accessible.",
+    why: "End-to-end research → design → validation, with heatmap evidence behind every key decision.",
+    tools: ["Figma", "Maze", "FigJam"],
+    image: "/assets/good-harvest/goodharvest-app-mobile.png",
+    imageAlt: "Good Harvest mobile app screens showing seasonal produce and recipes",
     path: "/case-study/good-harvest",
   },
   {
     num: "02",
-    icon: "🛍️",
     title: "E-Commerce Storefront",
     tags: ["UI Engineering", "Accessibility", "React"],
     desc: "An accessibility-first storefront demo with keyboard and screen reader support across discovery filters, quick view, and a cart drawer.",
+    why: "Built and shipped — a live, interactive demo you can keyboard through right now.",
+    tools: ["React", "TypeScript", "axe DevTools"],
+    image: "/assets/Hipstirred.png",
+    imageAlt: "E-commerce storefront product grid",
     path: "/case-study/ecommerce",
   },
   {
     num: "03",
-    icon: "👑",
     title: "Reina App",
     tags: ["Mobile Concept", "Service Design", "End-to-End"],
     desc: "A self-directed concept app designed to reduce stress and add clarity to destination wedding planning.",
+    why: "Service-design thinking applied to a high-emotion, multi-touch decision.",
+    tools: ["Figma", "FigJam"],
+    image: "/assets/reina-flow.png",
+    imageAlt: "Reina app core user flow wireframes",
     path: "/case-study/reina",
+  },
+  {
+    num: "04",
+    icon: "🤖",
+    title: "AI in Design (in progress)",
+    tags: ["AI Tools", "Experiment", "In Progress"],
+    desc: "An emergent project exploring how AI accelerates research synthesis, ideation, and prototyping — and where human judgment still leads.",
+    why: "Hiring managers are asking about AI fluency. This is me showing my work as I learn.",
+    tools: ["Claude", "Cursor", "Figma"],
+    comingSoon: true,
   },
 ];
 
@@ -186,6 +219,24 @@ function handleCopy() {
                 About me →
               </button>
             </motion.div>
+
+            <motion.button
+              type="button"
+              className="home-recruiter-banner"
+              {...stagger(0.32)}
+              onClick={() => {
+                const el = document.getElementById("projects");
+                if (!el) return;
+                el.scrollIntoView({ behavior: "smooth" });
+                window.dispatchEvent(new CustomEvent("open-recruiter-panel"));
+              }}
+            >
+              <span className="home-recruiter-banner__icon" aria-hidden="true">⚡</span>
+              <span className="home-recruiter-banner__text">
+                <strong>Recruiter?</strong> Take the 90-second tour
+              </span>
+              <span className="home-recruiter-banner__arrow" aria-hidden="true">→</span>
+            </motion.button>
           </div>
         </div>
       </section>
@@ -235,42 +286,58 @@ function handleCopy() {
           <h2 className="section-title home-section-title">Projects</h2>
         </div>
 
-        <div className="home-projects-list">
-          {PROJECTS.map((proj) => (
-            <article
-              key={proj.path}
-              className="home-project-row"
-              onClick={() => navigate(proj.path)}
-              role="button"
-              tabIndex={0}
-              aria-label={`View ${proj.title} case study`}
-              onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && navigate(proj.path)}
-            >
-              {/* Number */}
-              <span className="home-proj-num gradient-text" aria-hidden="true">{proj.num}</span>
+        <div className="home-projects-mag">
+          {PROJECTS.map((proj) => {
+            const clickable = !!proj.path && !proj.comingSoon;
+            const handleOpen = () => clickable && proj.path && navigate(proj.path);
+            return (
+              <article
+                key={proj.num}
+                className={`home-mag-card${proj.comingSoon ? " home-mag-card--soon" : ""}`}
+                onClick={handleOpen}
+                role={clickable ? "button" : undefined}
+                tabIndex={clickable ? 0 : undefined}
+                aria-label={clickable ? `View ${proj.title} case study` : `${proj.title} — coming soon`}
+                onKeyDown={(e) => clickable && (e.key === "Enter" || e.key === " ") && handleOpen()}
+              >
+                <div className="home-mag-media">
+                  {proj.image ? (
+                    <img src={proj.image} alt={proj.imageAlt || proj.title} loading="lazy" />
+                  ) : (
+                    <div className="home-mag-media__placeholder" aria-hidden="true">
+                      <span className="home-mag-media__icon">{proj.icon || "✦"}</span>
+                    </div>
+                  )}
+                  <span className="home-mag-num gradient-text" aria-hidden="true">{proj.num}</span>
+                  {proj.comingSoon && <span className="home-mag-badge">In progress</span>}
+                </div>
 
-              {/* Icon chip */}
-              <div className="home-proj-icon-wrap">
-                <div className="project-icon">{proj.icon}</div>
-              </div>
-
-              {/* Copy */}
-              <div className="home-proj-copy">
-                <div className="home-proj-title-row">
-                  <h3 className="home-proj-title">{proj.title}</h3>
-                  <div className="home-proj-tags" aria-label="Tags">
+                <div className="home-mag-body">
+                  <div className="home-mag-tags" aria-label="Tags">
                     {proj.tags.map((t) => (
                       <span key={t} className="home-proj-tag">{t}</span>
                     ))}
                   </div>
-                </div>
-                <p className="home-proj-desc">{proj.desc}</p>
-              </div>
+                  <h3 className="home-mag-title">{proj.title}</h3>
+                  <p className="home-mag-desc">{proj.desc}</p>
+                  <p className="home-mag-why"><strong>Why it matters:</strong> {proj.why}</p>
 
-              {/* Arrow */}
-              <span className="home-proj-arrow" aria-hidden="true">→</span>
-            </article>
-          ))}
+                  <div className="home-mag-tools" aria-label="Tools used">
+                    <span className="home-mag-tools__label">Tools</span>
+                    {proj.tools.map((t) => (
+                      <span key={t} className="home-mag-tool">{t}</span>
+                    ))}
+                  </div>
+
+                  {clickable ? (
+                    <span className="home-mag-cta">Read case study →</span>
+                  ) : (
+                    <span className="home-mag-cta home-mag-cta--soon">Coming soon</span>
+                  )}
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
 

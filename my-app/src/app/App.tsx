@@ -8,6 +8,7 @@ import Loader from "../components/Loader";
 import CustomCursor from "../components/CustomCursor";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import RecruiterPill from "../components/RecruiterPill";
 
 import "../styles/index.css";
 import "../styles/App.css";
@@ -41,6 +42,7 @@ export default function App() {
           <Footer />
         </div>
 
+        <RecruiterPill />
         <CustomCursor />
       </>
     </Router>
