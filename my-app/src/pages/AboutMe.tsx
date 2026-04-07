@@ -148,9 +148,9 @@ export default function About() {
         <div className="about-hero-content">
           <p className="about-intro">UX Designer. Systems thinker. Veteran.</p>
 
-          <h2 className="about-title">
+          <h1 className="about-title">
             I design systems for people who don’t have time to figure things out.
-          </h2>
+          </h1>
 
           <p className="about-hero-subtext">
             I’ve spent 8+ years working inside healthcare systems, military logistics,

@@ -139,7 +139,12 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
         </li>
 
         <li>
-          <Link to="/about" className="nav-link nav-link--about" onClick={close}>
+          <Link
+            to="/about"
+            className={`nav-link nav-link--about${location.pathname === "/about" ? " is-active" : ""}`}
+            aria-current={location.pathname === "/about" ? "page" : undefined}
+            onClick={close}
+          >
             ABOUT
           </Link>
         </li>
@@ -160,6 +165,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
             className="nav-link nav-link--resume"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Download resume (opens in new tab)"
             onClick={close}
           >
             RESUME
@@ -170,7 +176,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
           <button
             className="theme-btn"
             type="button"
-            aria-label="Toggle dark/light theme"
+            aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
             onClick={() => {
               setDarkMode((d) => !d);
               close();

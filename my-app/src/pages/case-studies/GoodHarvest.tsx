@@ -532,7 +532,7 @@ export default function GoodHarvest() {
               role="button"
               tabIndex={0}
               aria-label={`View ${proj.title} case study`}
-              onKeyDown={(e) => e.key === "Enter" && navigate(proj.path)}
+              onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && navigate(proj.path)}
             >
               <div className="project-media">
                 <div className="project-icon">{proj.icon}</div>

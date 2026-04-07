@@ -208,7 +208,7 @@ body {
   transition:
     background 0.25s cubic-bezier(0.4, 0, 0.2, 1),
     color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  line-height: 1;
+  line-height: 1.6;
 }
 a {
   color: inherit;
@@ -3239,6 +3239,18 @@ a:hover {
 .nav-link:hover {
   text-decoration: none;
 }
+.nav-link.is-active {
+  color: var(--olive-2);
+}
+.nav-link.is-active::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--olive-2);
+  margin-top: 4px;
+  border-radius: 2px;
+}
 
 /* 4) Button text on bright gradients MUST be dark for contrast */
 .hero-btn,
@@ -4278,6 +4290,10 @@ body.dark-mode .nav-overlay-backdrop,
   to   { transform: translateX(-50%); }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .home-expertise-track { animation: none !important; }
+}
+
 .home-expertise-item {
   font-size: 0.82rem;
   font-weight: 600;
@@ -4694,10 +4710,9 @@ body.dark-mode .nav-overlay-backdrop,
 .ecom-demoToggle:focus-visible,
 .recruiter-toggle-link:focus-visible,
 .cs-toggle-link:focus-visible {
-  outline: none;
-  box-shadow:
-    0 0 0 3px color-mix(in srgb, var(--olive-2) 22%, transparent),
-    0 6px 18px rgba(0, 0, 0, 0.08);
+  outline: 3px solid var(--olive-2);
+  outline-offset: 3px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
 .recruiter-toggle-link:hover {

@@ -17,6 +17,9 @@ const orbStyles = `
     0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
     50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.5; }
   }
+  @media (prefers-reduced-motion: reduce) {
+    [style*="breathe1"], [style*="breathe2"], [style*="breathe3"] { animation: none !important; }
+  }
 `;
 
 const OrbBackground: React.FC = () => (
@@ -241,7 +244,7 @@ function handleCopy() {
               role="button"
               tabIndex={0}
               aria-label={`View ${proj.title} case study`}
-              onKeyDown={(e) => e.key === "Enter" && navigate(proj.path)}
+              onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && navigate(proj.path)}
             >
               {/* Number */}
               <span className="home-proj-num gradient-text" aria-hidden="true">{proj.num}</span>
@@ -329,7 +332,7 @@ function handleCopy() {
       <section id="contact" ref={contactRef} className="section active contact-hero" aria-label="Contact section">
       <div className="contact-container">
       <div className="contact-info">
-      <h1>Let&apos;s build something together</h1>
+      <h2>Let&apos;s build something together</h2>
       <p>
         Freelance, full-time, or collaborations. If you&apos;re hiring or
         launching, I&apos;d love to chat.

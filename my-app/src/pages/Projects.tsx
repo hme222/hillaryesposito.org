@@ -50,7 +50,7 @@ export default function Projects() {
           role="button"
           tabIndex={0}
           onClick={() => navigate("/case-study/good-harvest")}
-          onKeyDown={(e) => e.key === "Enter" && navigate("/case-study/good-harvest")}
+          onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && navigate("/case-study/good-harvest")}
           aria-label="Go to Good Harvest case study"
         >
           <div className="project-media" aria-hidden="true">
@@ -68,7 +68,7 @@ export default function Projects() {
           role="button"
           tabIndex={0}
           onClick={() => navigate("/case-study/ecommerce")}
-          onKeyDown={(e) => e.key === "Enter" && navigate("/case-study/ecommerce")}
+          onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && navigate("/case-study/ecommerce")}
           aria-label="Go to E-Commerce Platform case study"
         >
           <div className="project-media" aria-hidden="true">
@@ -85,8 +85,8 @@ export default function Projects() {
           className="project-card project"
           role="button"
           tabIndex={0}
-          onClick={() => navigate("/case-study/Reina")}
-          onKeyDown={(e) => e.key === "Enter" && navigate("/case-study/Reina")}
+          onClick={() => navigate("/case-study/reina")}
+          onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && navigate("/case-study/reina")}
           aria-label="Go to Reina destination wedding planning case study"
         >
           <div className="project-media" aria-hidden="true">
