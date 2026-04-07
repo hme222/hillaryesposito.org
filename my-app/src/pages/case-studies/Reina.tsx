@@ -1,6 +1,7 @@
 // src/pages/case-studies/ReinaSection.tsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ToolsUsed from "../../components/ToolsUsed";
 
 type Callout = {
   step: number;
@@ -34,6 +35,18 @@ const OTHER_PROJECTS = [
 
 export default function ReinaSection() {
   const navigate = useNavigate();
+  const [zoomSrc, setZoomSrc] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!zoomSrc) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setZoomSrc(null); };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [zoomSrc]);
 
   return (
     <main className="case-study gh-layout" aria-label="Reina UX Case Study">
@@ -79,6 +92,20 @@ export default function ReinaSection() {
           </React.Fragment>
         ))}
       </div>
+
+      {/* ══════════════════════════════════════
+          TOOLS & WHY
+      ══════════════════════════════════════ */}
+      <ToolsUsed
+        tools={[
+          { icon: "🎨", name: "Figma",
+            why: "Wireframing + interactive flow prototyping. Components let the 5 core screens share a consistent hierarchy so the flow felt like one experience, not five." },
+          { icon: "🗂️", name: "FigJam",
+            why: "Sketching the user journey and emotional arc before any screen design — destination planning is high-stress, so mapping emotional beats came first." },
+          { icon: "📚", name: "Secondary research",
+            why: "Industry reports on destination weddings + competitor teardowns to ground a self-directed concept in real pain points, not assumptions." },
+        ]}
+      />
 
       {/* ══════════════════════════════════════
           OVERVIEW — Problem / Approach / Outcome
@@ -128,14 +155,15 @@ export default function ReinaSection() {
             <button
               type="button"
               className="reina-flow-img-btn"
-              onClick={() => navigate("/case-study/reina")}
-              aria-label="View Reina case study full wireframes"
+              onClick={() => setZoomSrc("/assets/reina-flow.png")}
+              aria-label="Zoom in on Reina core user flow wireframes"
             >
               <img
                 src="/assets/reina-flow.png"
                 alt="Reina core user flow wireframes: discovery, preferences, swipe gallery, consultation chat, visitation schedule."
                 loading="lazy"
               />
+              <span className="reina-zoom-hint" aria-hidden="true">🔍 Click to zoom</span>
             </button>
           </div>
         </div>
@@ -288,6 +316,26 @@ export default function ReinaSection() {
           </button>
         </div>
       </aside>
+
+      {zoomSrc && (
+        <div
+          className="reina-zoom-overlay"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Zoomed wireframe view"
+          onClick={() => setZoomSrc(null)}
+        >
+          <button
+            type="button"
+            className="reina-zoom-close"
+            onClick={() => setZoomSrc(null)}
+            aria-label="Close zoomed view"
+          >
+            ✕
+          </button>
+          <img src={zoomSrc} alt="Zoomed Reina wireframes" onClick={(e) => e.stopPropagation()} />
+        </div>
+      )}
 
     </main>
   );

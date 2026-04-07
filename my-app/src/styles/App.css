@@ -3669,10 +3669,42 @@ body.dark-mode .nav-overlay-backdrop,
 }
  
 .gh-impact-stat {
-  font-size: 1.6rem;
+  font-size: 2.2rem;
   font-weight: 900;
   margin: 0 0 0.6rem;
   letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.gh-impact-lede {
+  max-width: 640px;
+  margin: 0.5rem 0 1.5rem;
+  font-size: 1.02rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.gh-impact-pain {
+  display: block;
+  text-align: left;
+  margin: 0 0 1rem;
+  padding: 0.75rem 0.9rem;
+  border-left: 3px solid var(--olive-2, #6b7a3a);
+  background: rgba(120, 140, 90, 0.07);
+  border-radius: 0 6px 6px 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.gh-impact-pain-label {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--olive-2, #6b7a3a);
+  margin-bottom: 0.25rem;
 }
  
 /* ── OTHER PROJECTS: bottom nav ── */
@@ -3821,6 +3853,88 @@ body.dark-mode .nav-overlay-backdrop,
   grid-template-columns: repeat(3, 1fr) !important;
 }
 
+/* ── CA 2-3 key takeaways ── */
+.ca-takeaways {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0 1.5rem;
+}
+.ca-takeaway {
+  padding: 1.25rem;
+  border-radius: 10px;
+}
+.ca-takeaway__num {
+  font-size: 1.4rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.ca-takeaway__title {
+  margin: 0 0 0.5rem;
+  font-size: 1.02rem;
+  line-height: 1.3;
+  color: var(--fg);
+}
+.ca-takeaway__body {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* ── Tools Used (prominent "what + why") ── */
+.tools-used {
+  margin: 3rem 0 3.5rem;
+  padding: 2rem 1.75rem;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(120, 140, 90, 0.08), rgba(120, 140, 90, 0.02));
+  border: 1px solid rgba(120, 140, 90, 0.18);
+}
+.tools-used__eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--olive-2, #6b7a3a);
+  margin: 0 0 0.35rem;
+  font-weight: 600;
+}
+.tools-used__heading {
+  margin: 0 0 1.5rem;
+  font-size: 1.75rem;
+  line-height: 1.25;
+}
+.tools-used__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+.tools-used__card {
+  padding: 1.25rem 1.25rem 1.1rem;
+  border-radius: 10px;
+}
+.tools-used__header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+.tools-used__icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+.tools-used__name {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--fg);
+}
+.tools-used__why {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
 /* ── Flow wireframe frame ── */
 .reina-flow-frame {
   position: static !important; /* override sticky from solutions split */
@@ -3834,22 +3948,87 @@ body.dark-mode .nav-overlay-backdrop,
 
 .reina-flow-img-btn {
   display: block;
+  position: relative;
   width: 100%;
   padding: 0;
   border: none;
   background: none;
-  cursor: pointer;
+  cursor: zoom-in;
   transition: opacity 0.2s ease;
 }
 
 .reina-flow-img-btn:hover {
-  opacity: 0.88;
+  opacity: 0.92;
 }
 
 .reina-flow-img-btn img {
   width: 100%;
   height: auto;
   display: block;
+}
+
+.reina-zoom-hint {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.72);
+  color: #fff;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  letter-spacing: 0.5px;
+  pointer-events: none;
+}
+
+/* ── Zoom overlay (Reina + reusable) ── */
+.reina-zoom-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.92);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  overflow: auto;
+  cursor: zoom-out;
+  animation: reinaZoomFade 0.18s ease-out;
+}
+
+@keyframes reinaZoomFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.reina-zoom-overlay img {
+  max-width: 95vw;
+  max-height: 92vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  cursor: default;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+}
+
+.reina-zoom-close {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.5rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  z-index: 10000;
+}
+
+.reina-zoom-close:hover {
+  background: rgba(255, 255, 255, 0.22);
 }
 
 /* ── Numbered flow list ── */
@@ -6725,12 +6904,12 @@ body.dark-mode .nav-overlay-backdrop,
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--olive-2);
-  margin-bottom: 1rem;
+  margin-bottom: 1.15rem;
 }
 
 .gh-section-label::after {

@@ -75,8 +75,35 @@ export default function ResearchInsightsSection() {
       <div className="research__block">
         <h3 className="research__blockTitle">Competitive snapshot</h3>
         <p className="research__body">
-          I summarized competitor patterns into what works vs. what’s missing, so the insights stay scannable.
+          Three direct competitors analyzed. I kept only the takeaways that actually shaped design decisions —
+          the full table is available below for anyone who wants depth.
         </p>
+
+        <div className="ca-takeaways">
+          {[
+            {
+              n: "01",
+              title: "Information ≠ decision support",
+              body: "Every competitor lists what's in season, none tell you what to do with it. Bridging that gap became Good Harvest's core design bet.",
+            },
+            {
+              n: "02",
+              title: "Color-only indicators fail without legends",
+              body: "Two of three apps used color tags with no key. Users guessed meaning — or ignored them. Drove the decision to use explicit text labels + visible legend.",
+            },
+            {
+              n: "03",
+              title: "Location defaults erode trust",
+              body: "When apps defaulted to a wrong region, users stopped trusting the data entirely. Location-first onboarding addresses this head-on.",
+            },
+          ].map((t) => (
+            <div key={t.n} className="ca-takeaway feature">
+              <span className="ca-takeaway__num gradient-text">{t.n}</span>
+              <h4 className="ca-takeaway__title">{t.title}</h4>
+              <p className="ca-takeaway__body">{t.body}</p>
+            </div>
+          ))}
+        </div>
 
         <div className="research__toggleBlock">
           <button

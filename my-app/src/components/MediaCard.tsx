@@ -1,5 +1,5 @@
 // src/components/MediaCard.tsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 
 const reveal = {
@@ -29,6 +29,18 @@ export default function MediaCard({
   onToggle,
 }: MediaCardProps) {
   const reduceMotion = useReducedMotion();
+  const [zoomed, setZoomed] = useState(false);
+
+  useEffect(() => {
+    if (!zoomed) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setZoomed(false); };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [zoomed]);
 
   return (
     <motion.figure
@@ -39,13 +51,12 @@ export default function MediaCard({
       viewport={{ once: true, amount: 0.35 }}
       transition={reduceMotion ? { duration: 0 } : { duration: 0.45, ease: [0.2, 0.8, 0.2, 1] }}
     >
-      {/* Whole card clickable */}
-      <a
+      {/* Whole card clickable — opens in-page full-screen zoom */}
+      <button
+        type="button"
         className="media-card media-card-link"
-        href={src}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`Open full size: ${alt}`}
+        onClick={() => setZoomed(true)}
+        aria-label={`Zoom full size: ${alt}`}
       >
         <span className="media-link">
           <img src={src} alt={alt} loading="lazy" className={contain ? "contain" : undefined} />
@@ -54,7 +65,7 @@ export default function MediaCard({
         <figcaption>{caption}</figcaption>
 
         <span className="cs-actions">
-          <span className="cs-link">Open full size ↗</span>
+          <span className="cs-link">🔍 Click to zoom</span>
 
           {toggleLabel && onToggle && (
             <button
@@ -62,7 +73,6 @@ export default function MediaCard({
               className="cs-toggle-link"
               aria-pressed={!!isToggled}
               onClick={(e) => {
-                // prevent opening the image link when toggling
                 e.preventDefault();
                 e.stopPropagation();
                 onToggle();
@@ -72,7 +82,27 @@ export default function MediaCard({
             </button>
           )}
         </span>
-      </a>
+      </button>
+
+      {zoomed && (
+        <div
+          className="reina-zoom-overlay"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Zoomed: ${alt}`}
+          onClick={() => setZoomed(false)}
+        >
+          <button
+            type="button"
+            className="reina-zoom-close"
+            onClick={() => setZoomed(false)}
+            aria-label="Close zoomed view"
+          >
+            ✕
+          </button>
+          <img src={src} alt={alt} onClick={(e) => e.stopPropagation()} />
+        </div>
+      )}
     </motion.figure>
   );
 }

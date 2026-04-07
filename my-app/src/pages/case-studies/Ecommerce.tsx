@@ -2,6 +2,7 @@
 import React, { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { products, Product } from "../../data/products";
+import ToolsUsed from "../../components/ToolsUsed";
 
 type ProductLike = Product & { description?: string; images?: string[] };
 type CartItem    = { productId: string; qty: number };
@@ -344,6 +345,20 @@ export default function Ecommerce() {
               </React.Fragment>
             ))}
           </div>
+
+          {/* Tools & why */}
+          <ToolsUsed
+            tools={[
+              { icon: "⚛️", name: "React + TypeScript",
+                why: "Type safety for cart + product state kept accessibility patterns (focus, ARIA, announcements) reliable as the UI grew." },
+              { icon: "🎨", name: "CSS (hand-rolled)",
+                why: "No framework — I wanted full control over focus rings, reduced-motion, and high-contrast behavior instead of fighting defaults." },
+              { icon: "♿", name: "axe DevTools + manual SR testing",
+                why: "Automated audits catch ~30% of issues; I paired them with VoiceOver + keyboard walkthroughs to catch the rest." },
+              { icon: "💾", name: "localStorage",
+                why: "Cart persistence without a backend — lets the demo focus on interaction patterns, not infra." },
+            ]}
+          />
 
           {/* Case study */}
           <section className="ecom-page-section" aria-label="Case study">

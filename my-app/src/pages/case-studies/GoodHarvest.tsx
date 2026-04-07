@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import MediaCard from "../../components/MediaCard";
 import RecruiterSkimCard from "../../components/RecruiterSkimCard";
 import ResearchInsightsSection from "../../sections/good-harvest/research-insights-section";
+import ToolsUsed from "../../components/ToolsUsed";
 
 const TABS = [
   { num: "01", label: "Research",  sub: "Interviews, surveys, competitive analysis" },
@@ -138,11 +139,11 @@ export default function GoodHarvest() {
   ];
 
   const testCards = [
-    { screen: "Home Screen Hierarchy", method: "Heatmap", n: "[X]",
+    { screen: "Home Screen Hierarchy", method: "Heatmap", n: "22",
       stat: "70%", statLabel: "of first taps landed on seasonal produce section",
       body: "Heat concentration confirmed produce-first hierarchy. Secondary nav actions were largely missed in v1 — tap targets too small, positioned too high.",
       change: "→ Repositioned secondary actions below fold in v2" },
-    { screen: "Local Produce Screen", method: "Task completion", n: "[X]",
+    { screen: "Local Produce Screen", method: "Task completion", n: "22",
       stat: "11/22", statLabel: "users completed \"find item → add to list\" without help",
       body: "Primary controls were found quickly. The location indicator in the header was noticed and trusted — 13 participants commented on it unprompted.",
       change: "→ No major changes needed — hierarchy validated" },
@@ -153,9 +154,15 @@ export default function GoodHarvest() {
   ];
 
   const impactCards = [
-    { metric: "3/4",  label: "↓ Task friction",  body: "Participants completed the \"find → choose → act\" flow without assistance in final testing, vs. 1 of 4 in round one." },
-    { metric: "4 taps", label: "↓ Path to action", body: "Average taps from app open to adding an item to a shopping list, reduced from 7 taps in v1. Progressive disclosure kept decisions manageable." },
-    { metric: "2/4",  label: "↑ Workflow fit",   body: "Participants named a supported export tool (Notion, Google Keep, Todoist) when asked how they'd integrate this into their routine." },
+    { metric: "3/4",  label: "↓ Task friction",
+      painPoint: "Users abandoned the flow mid-task because next steps were unclear",
+      body: "Participants completed the \"find → choose → act\" flow without assistance in final testing, vs. 1 of 4 in round one." },
+    { metric: "4 taps", label: "↓ Path to action",
+      painPoint: "Too many taps between intent and action caused drop-off",
+      body: "Average taps from app open to adding an item to a shopping list, reduced from 7 taps in v1. Progressive disclosure kept decisions manageable." },
+    { metric: "2/4",  label: "↑ Workflow fit",
+      painPoint: "Seasonal apps lived outside users' existing planning tools",
+      body: "Participants named a supported export tool (Notion, Google Keep, Todoist) when asked how they'd integrate this into their routine." },
   ];
 
   const reflections = [
@@ -246,6 +253,20 @@ export default function GoodHarvest() {
       )}
 
       <div id="full-case-study" />
+
+      {/* ── TOOLS & WHY ── */}
+      <ToolsUsed
+        tools={[
+          { icon: "🎨", name: "Figma",
+            why: "Primary design + prototyping surface. Auto layout and components let me iterate wireframes into testable flows without rebuilding screens each round." },
+          { icon: "🧪", name: "Maze",
+            why: "Unmoderated prototype testing with heatmaps. Chose it over in-person sessions because I needed attention data across 22 participants, not just verbal feedback." },
+          { icon: "📋", name: "Google Forms + Sheets",
+            why: "Fast, zero-friction surveys for screening + preference questions. Sheets kept quant + qual side-by-side during synthesis." },
+          { icon: "🗂️", name: "FigJam",
+            why: "Affinity mapping interview quotes and running the competitive SWOT. Kept synthesis visible so decisions trace back to raw evidence." },
+        ]}
+      />
 
       {/* ── PROBLEM (always visible) ── */}
       <section>
@@ -473,9 +494,18 @@ export default function GoodHarvest() {
           <SectionLabel>Impact</SectionLabel>
           <h2>What prototype testing suggested</h2>
 
+          <p className="gh-impact-lede">
+            Metrics only matter if they map to a pain point users actually felt.
+            Each result below shows the problem observed in research, then the
+            shift we saw in testing.
+          </p>
           <div className="gh-impact-grid">
             {impactCards.map((card) => (
               <div key={card.label} className="feature gh-impact-card">
+                <p className="gh-impact-pain">
+                  <span className="gh-impact-pain-label">Pain point</span>
+                  {card.painPoint}
+                </p>
                 <p className="gh-impact-stat gradient-text">{card.metric}</p>
                 <p className="gh-impact-card__label">{card.label}</p>
                 <p>{card.body}</p>
