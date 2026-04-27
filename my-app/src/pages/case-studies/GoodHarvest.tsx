@@ -119,6 +119,9 @@ export default function GoodHarvest() {
       chosenBody: "Explicit text labels + visible legend anchored to the user's confirmed location. Location is editable at any point.",
       chosenWhy: "Color-only indicators failed in wireframe testing — 18 of 22 users didn't know what the colors meant. Labels + source attribution addressed the trust gap directly.",
       ruledOut: "Color-coded tags only — ambiguous without a legend, failed to address the location trust problem. Calendar view — too much cognitive load at point of decision.",
+      // before/after: drop images at /public/assets/good-harvest/
+      beforeImg: "/assets/good-harvest/seasonal-before.png",
+      afterImg: "/assets/good-harvest/seasonal-after.png",
     },
     {
       challenge: "Entry point: market-first vs. produce-first",
@@ -127,6 +130,8 @@ export default function GoodHarvest() {
       chosenBody: "Produce-first home screen with markets as a secondary action. Seasonal produce leads; market discovery follows.",
       chosenWhy: "Heatmap data showed 60% of first taps went to the produce section. Users are oriented around ingredients, not locations.",
       ruledOut: "Market-first flow — users without a preferred market hit a dead end before seeing value, producing higher drop-off at onboarding.",
+      beforeImg: "/assets/good-harvest/entrypoint-before.png",
+      afterImg: "/assets/good-harvest/entrypoint-after.png",
     },
     {
       challenge: "Bridging \"in season\" to \"what to cook\"",
@@ -135,6 +140,54 @@ export default function GoodHarvest() {
       chosenBody: "Recipe-forward flow embedded within the produce detail screen. 3-ingredient recipes load directly from the produce context — no navigation required.",
       chosenWhy: "10 of 22 participants completed the full \"find produce → choose recipe\" flow without assistance, vs. 12 of 22 in v1 without embedded recipes.",
       ruledOut: "Separate recipe tab — adds navigation friction and breaks context. Users would need to remember what they were looking at.",
+      beforeImg: "/assets/good-harvest/recipe-before.png",
+      afterImg: "/assets/good-harvest/recipe-after.png",
+    },
+  ];
+
+  const userFlows = [
+    {
+      num: "01",
+      title: "Find seasonal produce → add to list",
+      tools: ["Figma", "Maze"],
+      toolWhy: "Figma for the interactive prototype, Maze for unmoderated testing with heatmaps — needed attention data, not just verbal feedback.",
+      steps: "Open app → view seasonal produce (location confirmed) → tap item → review details → add to shopping list",
+      // drop image at /public/assets/good-harvest/flow-produce.png
+      image: "/assets/good-harvest/flow-produce.png",
+    },
+    {
+      num: "02",
+      title: "Browse recipes from produce context",
+      tools: ["Figma", "Maze"],
+      toolWhy: "Same testing setup — this flow was the core bet, so I needed quantitative engagement data (CTA tap rate) alongside qualitative observations.",
+      steps: "View produce detail → scroll to embedded recipes → tap recipe → view ingredients → add to list",
+      image: "/assets/good-harvest/flow-recipe.png",
+    },
+    {
+      num: "03",
+      title: "Compare produce varieties",
+      tools: ["Figma", "FigJam"],
+      toolWhy: "FigJam for mapping the decision tree (which varieties, what differences matter), Figma for the comparison UI. This flow emerged from research — it wasn't in the original spec.",
+      steps: "Tap produce category → see variety list → tap 'compare' → side-by-side view → choose variety → add to list",
+      image: "/assets/good-harvest/flow-compare.png",
+    },
+  ];
+
+  const researchMistakes = [
+    {
+      issue: "Survey questions were too leading",
+      impact: "Early survey phrasing like 'Do you wish you ate more seasonal food?' produced inflated interest signals. 19 of 22 said yes — but follow-up interviews revealed most couldn't name a single seasonal item.",
+      learned: "I rewrote the survey to ask behavioral questions ('When did you last buy something because it was in season?') instead of aspirational ones. The reframed data was more honest and more useful.",
+    },
+    {
+      issue: "Didn't recruit enough non-enthusiasts",
+      impact: "Initial participants skewed toward farmers market regulars — people already motivated. This inflated task completion rates and masked onboarding friction for casual shoppers.",
+      learned: "For the second round, I specifically recruited people who grocery shop at chain stores and don't think about seasonality. Their struggles surfaced the location-trust problem that became the core design insight.",
+    },
+    {
+      issue: "Tested wireframes too late",
+      impact: "I spent 3 weeks on mid-fidelity wireframes before testing. The first heatmap session revealed the secondary nav was completely missed — tap targets too small, positioned too high. That was a week of rework.",
+      learned: "I now test paper-level fidelity within the first week. The earlier the test, the cheaper the fix. Pixel polish can wait; hierarchy can't.",
     },
   ];
 
@@ -371,6 +424,35 @@ export default function GoodHarvest() {
 
         {showCA && <div id="competitive-analysis" />}
         <ResearchInsightsSection />
+
+        {/* ── Research mistakes ── */}
+        <section>
+          <SectionLabel>What went wrong</SectionLabel>
+          <h2>Research mistakes — and what<br />they taught me</h2>
+          <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)" }}>
+            A clean case study hides the messy parts. These are the mistakes I
+            made during research, how they impacted the project, and what I
+            changed because of them.
+          </p>
+          <div className="gh-mistakes-list">
+            {researchMistakes.map((m) => (
+              <div key={m.issue} className="gh-mistake-card feature">
+                <div className="gh-mistake-row">
+                  <span className="gh-mistake-label gh-mistake-label--issue">What happened</span>
+                  <p><strong>{m.issue}</strong></p>
+                </div>
+                <div className="gh-mistake-row">
+                  <span className="gh-mistake-label gh-mistake-label--impact">Impact</span>
+                  <p>{m.impact}</p>
+                </div>
+                <div className="gh-mistake-row">
+                  <span className="gh-mistake-label gh-mistake-label--learned">What I changed</span>
+                  <p>{m.learned}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
 
       {/* ── PANEL 2: DESIGN ── */}
@@ -397,6 +479,21 @@ export default function GoodHarvest() {
                   <p className="gh-decision-label">✗ Ruled out</p>
                   <p>{d.ruledOut}</p>
                 </div>
+                {d.beforeImg && d.afterImg && (
+                  <div className="gh-before-after">
+                    <div className="gh-before-after__frame">
+                      <span className="gh-before-after__tag gh-before-after__tag--before">Before</span>
+                      <img src={d.beforeImg} alt={`${d.challenge} — before research`} loading="lazy"
+                        onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
+                    </div>
+                    <span className="gh-before-after__arrow" aria-hidden="true">→</span>
+                    <div className="gh-before-after__frame">
+                      <span className="gh-before-after__tag gh-before-after__tag--after">After</span>
+                      <img src={d.afterImg} alt={`${d.challenge} — after research`} loading="lazy"
+                        onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -428,6 +525,55 @@ export default function GoodHarvest() {
                   <img src={screens.appWeb} alt="Good Harvest web app — produce discovery, location finder and seasonal recipe features" />
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* ── 3 Key User Flows ── */}
+          <div className="gh-flows-section">
+            <SectionLabel>Key User Flows</SectionLabel>
+            <h2>Three flows that define the experience</h2>
+            <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)" }}>
+              Each flow shows the path a user takes, the tools I used to
+              build and test it, and why I chose those tools.
+            </p>
+
+            <div className="gh-flows-list">
+              {userFlows.map((flow) => (
+                <div key={flow.num} className="gh-flow-card feature">
+                  <div className="gh-flow-card__header">
+                    <span className="gh-flow-card__num gradient-text">{flow.num}</span>
+                    <h3>{flow.title}</h3>
+                  </div>
+
+                  <div className="gh-flow-card__body">
+                    <div className="gh-flow-card__meta">
+                      <div>
+                        <span className="gh-flow-card__label">Flow</span>
+                        <p className="gh-flow-card__steps">{flow.steps}</p>
+                      </div>
+                      <div>
+                        <span className="gh-flow-card__label">Tools</span>
+                        <div className="gh-flow-card__tools">
+                          {flow.tools.map((t) => (
+                            <span key={t} className="home-mag-tool">{t}</span>
+                          ))}
+                        </div>
+                        <p className="gh-flow-card__toolwhy"><strong>Why:</strong> {flow.toolWhy}</p>
+                      </div>
+                    </div>
+
+                    <div className="gh-flow-card__visual">
+                      <img
+                        src={flow.image}
+                        alt={`User flow: ${flow.title}`}
+                        loading="lazy"
+                        onError={(e) => { (e.currentTarget.parentElement as HTMLElement).classList.add("gh-flow-card__visual--empty"); e.currentTarget.style.display = "none"; }}
+                      />
+                      <p className="gh-flow-card__placeholder">Flow screenshot — drop image to display</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>

@@ -109,6 +109,12 @@ export default function RecruiterPill() {
                       <span>Service-design concept for destination wedding planning</span>
                     </button>
                   </li>
+                  <li>
+                    <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/grove")}>
+                      <strong>Grove</strong>
+                      <span>AI + design — full-stack plant care app built with Claude Code + Cursor</span>
+                    </button>
+                  </li>
                 </ul>
               </section>
 

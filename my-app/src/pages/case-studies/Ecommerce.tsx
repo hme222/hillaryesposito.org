@@ -404,6 +404,27 @@ export default function Ecommerce() {
                 ))}
               </div>
             </div>
+
+            <div className="feature ecom-case-card ecom-page-next-card">
+              <div className="ecom-case-card__header">
+                <span className="ecom-case-card__icon" aria-hidden="true">🔮</span>
+                <h3>With more time or larger scope</h3>
+              </div>
+              <div className="ecom-page-next-grid">
+                {[
+                  "Wishlist + saved items: let users curate before committing — reduces cart abandonment friction",
+                  "Real product API integration: test how the UI scales with 500+ items, pagination, and search latency",
+                  "Checkout flow: shipping, payment, and order confirmation — the full purchase funnel",
+                  "Design system extraction: formalize the token + component patterns into a reusable system with documentation",
+                  "Mobile responsiveness audit: drawer/modal behavior on touch devices, swipe gestures for quick view",
+                ].map((item) => (
+                  <div key={item} className="ecom-page-next-item">
+                    <span className="ecom-page-next-bullet" aria-hidden="true">→</span>
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </section>
 
         </div>{/* end ecom-split-left */}

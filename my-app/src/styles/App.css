@@ -263,14 +263,20 @@ select:focus {
   display: flex;
   flex-direction: column;
 }
+#loader,
 .loader-wrapper {
-  position: flex;
+  position: fixed;
   inset: 0;
   background: var(--bg);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
+}
+.loader-cat {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
 } /* ========================= NAVBAR ========================= */
 .navbar {
   position: sticky;
@@ -1837,8 +1843,8 @@ select:focus {
   .about-luna {
     display: flex;
     position: fixed;
-    right: 11rem;
-    bottom: 0.5rem;
+    right: 16rem;
+    bottom: 5.5rem;
     z-index: 900;
 
     opacity: 0;
@@ -1863,8 +1869,8 @@ select:focus {
 }
 
 .about-luna img {
-  width: 5.5rem;
-  height: 5.5rem;
+  width: 7.5rem;
+  height: 7.5rem;
   object-fit: contain;
   filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.18));
 }
@@ -3814,6 +3820,283 @@ body.dark-mode .nav-overlay-backdrop,
   }
 }
 
+/* ─────────────────────────────────────────────
+   GH — Before / After mockup pairs
+   ───────────────────────────────────────────── */
+.gh-before-after {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  grid-column: 1 / -1;
+}
+.gh-before-after__frame {
+  position: relative;
+  flex: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(120, 140, 90, 0.05);
+  border: 1px solid var(--border);
+}
+.gh-before-after__frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.gh-before-after__tag {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  font-size: 0.65rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 800;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  z-index: 1;
+}
+.gh-before-after__tag--before {
+  background: rgba(239, 68, 68, 0.12);
+  color: #dc2626;
+}
+.gh-before-after__tag--after {
+  background: rgba(120, 140, 90, 0.15);
+  color: var(--olive-2, #6b7a3a);
+}
+.gh-before-after__arrow {
+  font-size: 1.5rem;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+@media (max-width: 600px) {
+  .gh-before-after { flex-direction: column; }
+  .gh-before-after__arrow { transform: rotate(90deg); }
+}
+
+/* ─────────────────────────────────────────────
+   GH — Research mistakes
+   ───────────────────────────────────────────── */
+.gh-mistakes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.gh-mistake-card {
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+.gh-mistake-row {
+  margin-bottom: 0.85rem;
+}
+.gh-mistake-row:last-child {
+  margin-bottom: 0;
+}
+.gh-mistake-row p {
+  margin: 0.3rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.gh-mistake-label {
+  display: inline-block;
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 800;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+.gh-mistake-label--issue {
+  background: rgba(239, 68, 68, 0.12);
+  color: #dc2626;
+}
+.gh-mistake-label--impact {
+  background: rgba(245, 158, 11, 0.12);
+  color: #b45309;
+}
+.gh-mistake-label--learned {
+  background: rgba(120, 140, 90, 0.15);
+  color: var(--olive-2, #6b7a3a);
+}
+
+/* ─────────────────────────────────────────────
+   GH — Key User Flows
+   ───────────────────────────────────────────── */
+.gh-flows-section {
+  margin-top: 3rem;
+}
+.gh-flows-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.gh-flow-card {
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+.gh-flow-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.gh-flow-card__num {
+  font-size: 1.6rem;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+.gh-flow-card__header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--fg);
+}
+.gh-flow-card__body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+@media (max-width: 700px) {
+  .gh-flow-card__body { grid-template-columns: 1fr; }
+}
+.gh-flow-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.gh-flow-card__label {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--olive-2, #6b7a3a);
+  margin-bottom: 0.3rem;
+}
+.gh-flow-card__steps {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.gh-flow-card__tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.4rem;
+}
+.gh-flow-card__toolwhy {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+.gh-flow-card__visual {
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(120, 140, 90, 0.05);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 140px;
+}
+.gh-flow-card__visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.gh-flow-card__placeholder {
+  display: none;
+  font-size: 0.82rem;
+  color: var(--muted);
+  opacity: 0.5;
+  text-align: center;
+  padding: 1rem;
+}
+.gh-flow-card__visual--empty .gh-flow-card__placeholder {
+  display: block;
+}
+
+/* =========================================================
+   BLOOMBUDDY / EMERGENT — case study styles
+   ========================================================= */
+
+/* Screenshot placeholder */
+.emergent-screenshot-placeholder {
+  margin: 2rem 0;
+  padding: 3rem 2rem;
+  border: 2px dashed var(--border, rgba(0, 0, 0, 0.15));
+  border-radius: 14px;
+  text-align: center;
+  background: rgba(120, 140, 90, 0.04);
+}
+.emergent-placeholder-text {
+  font-size: 1rem;
+  color: var(--muted);
+  margin: 0 0 0.5rem;
+}
+.emergent-placeholder-sub {
+  font-size: 0.8rem;
+  color: var(--muted);
+  opacity: 0.6;
+  margin: 0;
+}
+.emergent-placeholder-sub code {
+  background: rgba(0, 0, 0, 0.06);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.78rem;
+}
+
+/* AI decisions grid */
+.emergent-ai-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.emergent-ai-card {
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+.emergent-ai-card__area {
+  margin: 0 0 1rem;
+  font-size: 1.15rem;
+  color: var(--fg);
+}
+.emergent-ai-card__row {
+  margin-bottom: 0.85rem;
+}
+.emergent-ai-card__row:last-child {
+  margin-bottom: 0;
+}
+.emergent-ai-card__row p {
+  margin: 0.3rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.emergent-ai-card__label {
+  display: inline-block;
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 800;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+.emergent-ai-card__label--ai {
+  background: rgba(99, 102, 241, 0.12);
+  color: #6366f1;
+}
+.emergent-ai-card__label--why {
+  background: rgba(245, 158, 11, 0.12);
+  color: #b45309;
+}
+.emergent-ai-card__label--human {
+  background: rgba(120, 140, 90, 0.15);
+  color: var(--olive-2, #6b7a3a);
+}
+
 /* =========================================================
    REINA — additions to GoodHarvest.css
    Append these to the bottom of your existing GoodHarvest.css
@@ -3902,11 +4185,11 @@ body.dark-mode .nav-overlay-backdrop,
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.25rem;
+  padding: 0.5rem;
 }
 .home-mag-media img {
-  max-width: 80%;
-  max-height: 80%;
+  max-width: 100%;
+  max-height: 100%;
   width: auto;
   height: auto;
   object-fit: contain;
