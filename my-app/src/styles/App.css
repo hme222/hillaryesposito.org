@@ -501,14 +501,14 @@ select:focus {
   background-clip: text;
 }
 .hero-btn {
-  padding: 1.2rem 3rem;
+  padding: 1rem 2.25rem;
   background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 100%);
   color: #fff;
   border: none;
   border-radius: 50px;
   font-weight: 600;
-  font-size: 1rem;
-  letter-spacing: 2px;
+  font-size: 0.95rem;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   text-decoration: none;
   display: inline-block;
@@ -4177,6 +4177,107 @@ body.dark-mode .nav-overlay-backdrop,
   box-shadow: none;
 }
 
+/* Dark mode overrides for magazine cards */
+.dark-mode .home-mag-card {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+.dark-mode .home-mag-card:hover,
+.dark-mode .home-mag-card:focus-visible {
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+  border-color: var(--focus, #ffb866);
+}
+.dark-mode .home-mag-media {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+}
+.dark-mode .home-mag-badge {
+  background: rgba(255, 255, 255, 0.15);
+}
+.dark-mode .home-mag-why {
+  background: rgba(255, 255, 255, 0.04);
+  border-left-color: var(--focus, #ffb866);
+}
+.dark-mode .home-mag-tool {
+  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--muted);
+}
+.dark-mode .home-mag-tools__label {
+  color: var(--focus, #ffb866);
+}
+.dark-mode .home-mag-cta {
+  color: var(--focus, #ffb866);
+}
+
+/* Dark mode — recruiter banner */
+.dark-mode .home-recruiter-banner {
+  background: linear-gradient(135deg, rgba(255, 184, 102, 0.12), rgba(255, 184, 102, 0.04));
+  border-color: rgba(255, 184, 102, 0.35);
+}
+.dark-mode .home-recruiter-banner:hover {
+  background: linear-gradient(135deg, rgba(255, 184, 102, 0.2), rgba(255, 184, 102, 0.08));
+  box-shadow: 0 8px 24px rgba(255, 184, 102, 0.2);
+}
+
+/* Dark mode — recruiter pill + panel */
+.dark-mode .recruiter-pill {
+  background: var(--focus, #ffb866);
+  color: #0a0a0a;
+}
+.dark-mode .recruiter-panel {
+  background: var(--bg, #0a0a0a);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+.dark-mode .recruiter-panel__close {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--fg);
+}
+.dark-mode .recruiter-panel__close:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+.dark-mode .recruiter-panel__chip {
+  background: rgba(255, 184, 102, 0.1);
+  border-color: rgba(255, 184, 102, 0.25);
+}
+.dark-mode .recruiter-panel__project {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+.dark-mode .recruiter-panel__project:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: var(--focus, #ffb866);
+}
+.dark-mode .recruiter-panel__btn {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+.dark-mode .recruiter-panel__btn:hover {
+  border-color: var(--focus, #ffb866);
+  background: rgba(255, 184, 102, 0.08);
+}
+.dark-mode .recruiter-panel__btn--primary {
+  background: var(--focus, #ffb866);
+  color: #0a0a0a;
+  border-color: var(--focus, #ffb866);
+}
+.dark-mode .recruiter-panel__btn--primary:hover {
+  background: #e6a55c;
+  color: #0a0a0a;
+}
+.dark-mode .recruiter-panel__eyebrow,
+.dark-mode .recruiter-panel__label {
+  color: var(--focus, #ffb866);
+}
+
+/* Dark mode — tools used block */
+.dark-mode .tools-used {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+  border-color: rgba(255, 255, 255, 0.1);
+}
+.dark-mode .tools-used__eyebrow,
+.dark-mode .home-mag-tools__label {
+  color: var(--focus, #ffb866);
+}
+
 .home-mag-media {
   position: relative;
   aspect-ratio: 16 / 10;
@@ -4226,10 +4327,10 @@ body.dark-mode .nav-overlay-backdrop,
   right: 1rem;
   background: rgba(0, 0, 0, 0.78);
   color: #fff;
-  padding: 0.35rem 0.75rem;
+  padding: 0.3rem 0.7rem;
   border-radius: 999px;
-  font-size: 0.7rem;
-  letter-spacing: 1px;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   font-weight: 700;
 }
@@ -4247,13 +4348,13 @@ body.dark-mode .nav-overlay-backdrop,
 }
 .home-mag-title {
   margin: 0;
-  font-size: 1.45rem;
-  line-height: 1.2;
+  font-size: 1.35rem;
+  line-height: 1.25;
   color: var(--fg);
 }
 .home-mag-desc {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   line-height: 1.6;
   color: var(--muted);
 }
@@ -4262,7 +4363,7 @@ body.dark-mode .nav-overlay-backdrop,
   font-size: 0.88rem;
   line-height: 1.55;
   color: var(--muted);
-  padding: 0.6rem 0.8rem;
+  padding: 0.65rem 0.85rem;
   border-left: 3px solid var(--olive-2, #6b7a3a);
   background: rgba(120, 140, 90, 0.06);
   border-radius: 0 6px 6px 0;
@@ -4275,8 +4376,8 @@ body.dark-mode .nav-overlay-backdrop,
   margin-top: 0.4rem;
 }
 .home-mag-tools__label {
-  font-size: 0.68rem;
-  letter-spacing: 1.5px;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   font-weight: 700;
   color: var(--olive-2, #6b7a3a);
@@ -4291,8 +4392,9 @@ body.dark-mode .nav-overlay-backdrop,
 }
 .home-mag-cta {
   margin-top: 0.6rem;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 700;
+  letter-spacing: 0.5px;
   color: var(--olive-2, #6b7a3a);
 }
 .home-mag-cta--soon {
@@ -4305,14 +4407,15 @@ body.dark-mode .nav-overlay-backdrop,
 .home-recruiter-banner {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-top: 1.5rem;
-  padding: 0.85rem 1.25rem;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+  padding: 0.75rem 1.5rem;
   background: linear-gradient(135deg, rgba(120, 140, 90, 0.15), rgba(120, 140, 90, 0.05));
   border: 1px solid rgba(120, 140, 90, 0.4);
   border-radius: 999px;
   cursor: pointer;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
   color: var(--fg);
   transition: all 0.25s ease;
 }
@@ -4358,9 +4461,7 @@ body.dark-mode .nav-overlay-backdrop,
 }
 .recruiter-pill__icon { font-size: 1rem; }
 @media (max-width: 600px) {
-  .recruiter-pill { bottom: 1rem; right: 1rem; padding: 0.75rem 1.1rem; font-size: 0.82rem; }
-  .recruiter-pill__text { display: none; }
-  .recruiter-pill__icon { font-size: 1.2rem; }
+  .recruiter-pill { bottom: 1rem; right: 1rem; padding: 0.65rem 1rem; font-size: 0.78rem; }
 }
 
 /* Slide-out panel */
@@ -5093,12 +5194,13 @@ body.dark-mode .nav-overlay-backdrop,
   background: none;
   border: 1.5px solid var(--border);
   border-radius: 999px;
-  padding: 1.2rem 2rem;
-  font-size: 1rem;
+  padding: 1rem 2.25rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--fg);
   cursor: pointer;
-  letter-spacing: 0.5px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
   transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
@@ -5289,8 +5391,8 @@ body.dark-mode .nav-overlay-backdrop,
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 0.2rem 0.6rem;
+  letter-spacing: 0.12em;
+  padding: 0.25rem 0.65rem;
   border-radius: 999px;
   border: 1px solid var(--border);
   color: var(--muted);

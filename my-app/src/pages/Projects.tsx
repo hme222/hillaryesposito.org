@@ -62,40 +62,21 @@ export default function Projects() {
           </div>
         </div>
 
-        {/* E-Commerce */}
+        {/* Grove */}
         <div
           className="project-card project"
           role="button"
           tabIndex={0}
-          onClick={() => navigate("/case-study/ecommerce")}
-          onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && navigate("/case-study/ecommerce")}
-          aria-label="Go to E-Commerce Platform case study"
+          onClick={() => navigate("/case-study/grove")}
+          onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && navigate("/case-study/grove")}
+          aria-label="Go to Grove AI plant care case study"
         >
           <div className="project-media" aria-hidden="true">
-            <div className="project-icon">🛍️</div>
+            <div className="project-icon">🌱</div>
           </div>
           <div className="project-body">
-            <h3>E-Commerce Platform</h3>
-            <p>Checkout + design system refresh.</p>
-          </div>
-        </div>
-
-        {/* Reina */}
-        <div
-          className="project-card project"
-          role="button"
-          tabIndex={0}
-          onClick={() => navigate("/case-study/reina")}
-          onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && navigate("/case-study/reina")}
-          aria-label="Go to Reina destination wedding planning case study"
-        >
-          <div className="project-media" aria-hidden="true">
-            <div className="project-icon">👑</div>
-          </div>
-
-          <div className="project-body">
-            <h3>Reina</h3>
-            <p>Visual-first UX for international wedding planning.</p>
+            <h3>Grove</h3>
+            <p>AI + design — plant care app.</p>
           </div>
         </div>
       </div>

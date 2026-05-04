@@ -21,8 +21,6 @@ import Contact from "../pages/Contact";
 import About from "../pages/AboutMe";
 
 import GoodHarvest from "../pages/case-studies/GoodHarvest";
-import Ecommerce from "../pages/case-studies/Ecommerce";
-import Reina from "../pages/case-studies/Reina";
 import Emergent from "../pages/case-studies/Emergent";
 
 export default function AppRoutes() {
@@ -34,8 +32,6 @@ export default function AppRoutes() {
       <Route path="/contact" element={<Contact />} />
 
       <Route path="/case-study/good-harvest" element={<GoodHarvest />} />
-      <Route path="/case-study/ecommerce" element={<Ecommerce />} />
-      <Route path="/case-study/reina" element={<Reina />} />
       <Route path="/case-study/grove" element={<Emergent />} />
 
       <Route path="*" element={<NotFound />} />

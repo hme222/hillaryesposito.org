@@ -90,10 +90,8 @@ export default function GoodHarvest() {
   ];
 
   const otherProjects = [
-    { icon: "🛍️", title: "E-Commerce Storefront", path: "/case-study/ecommerce",
-      desc: "Accessibility-first storefront with keyboard & screen-reader support across filters, quick view, and a cart drawer." },
-    { icon: "👑",  title: "Reina App",             path: "/case-study/reina",
-      desc: "A self-directed concept app designed to reduce stress and add clarity to destination wedding planning." },
+    { icon: "🌱", title: "Grove", path: "/case-study/grove",
+      desc: "A plant care app I designed and built with AI tools — showing judgment about when AI helps and when human thinking leads." },
   ];
 
   const researchInsightCards = [

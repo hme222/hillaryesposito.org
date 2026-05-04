@@ -76,30 +76,6 @@ const PROJECTS: Project[] = [
   },
   {
     num: "02",
-    icon: "🛍️",
-    title: "E-Commerce Storefront",
-    tags: ["UI Engineering", "Accessibility", "React"],
-    desc: "An accessibility-first storefront demo with keyboard and screen reader support across discovery filters, quick view, and a cart drawer.",
-    why: "Built and shipped — a live, interactive demo you can keyboard through right now.",
-    tools: ["React", "TypeScript", "axe DevTools"],
-    // Drop a demo screenshot at /public/assets/ecommerce-demo.png to replace the icon placeholder
-    image: "/assets/ecommerce-demo.png",
-    imageAlt: "E-commerce storefront demo — product grid with filters and cart",
-    path: "/case-study/ecommerce",
-  },
-  {
-    num: "03",
-    title: "Reina App",
-    tags: ["Mobile Concept", "Service Design", "End-to-End"],
-    desc: "A self-directed concept app designed to reduce stress and add clarity to destination wedding planning.",
-    why: "Service-design thinking applied to a high-emotion, multi-touch decision.",
-    tools: ["Figma", "FigJam"],
-    image: "/assets/reina-flow.png",
-    imageAlt: "Reina app core user flow wireframes",
-    path: "/case-study/reina",
-  },
-  {
-    num: "04",
     icon: "🌱",
     title: "Grove",
     tags: ["AI + Design", "Full-Stack", "In Progress"],
@@ -112,7 +88,7 @@ const PROJECTS: Project[] = [
     path: "/case-study/grove",
   },
   {
-    num: "05",
+    num: "03",
     icon: "👑",
     title: "Luxe Headband Collection",
     tags: ["Product Design", "Fashion", "Coming Soon"],
@@ -234,7 +210,6 @@ function handleCopy() {
                 window.dispatchEvent(new CustomEvent("open-recruiter-panel"));
               }}
             >
-              <span className="home-recruiter-banner__icon" aria-hidden="true">⚡</span>
               <span className="home-recruiter-banner__text">
                 <strong>Recruiter?</strong> Take the 90-second tour
               </span>
@@ -271,8 +246,8 @@ function handleCopy() {
           {APPROACH.map((a) => (
             <div key={a.label} className="home-approach-card feature">
               <span className="home-approach-icon">{a.icon}</span>
-              <h3 style={{ color:"var(--fg)", margin:"0.6rem 0 0.4rem", fontSize:"1.05rem" }}>{a.label}</h3>
-              <p style={{ color:"var(--muted)", fontSize:"0.95rem", lineHeight:1.65, margin:0 }}>{a.desc}</p>
+              <h3 style={{ color:"var(--fg)", margin:"0.6rem 0 0.4rem", fontSize:"1.1rem" }}>{a.label}</h3>
+              <p style={{ color:"var(--muted)", fontSize:"0.92rem", lineHeight:1.65, margin:0 }}>{a.desc}</p>
             </div>
           ))}
         </div>

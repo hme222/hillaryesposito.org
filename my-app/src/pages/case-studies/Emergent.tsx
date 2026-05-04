@@ -44,12 +44,6 @@ const OTHER_PROJECTS = [
     desc: "End-to-end mobile UX for seasonal produce — validated with heatmaps + 22 testers.",
     path: "/case-study/good-harvest",
   },
-  {
-    icon: "🛍️",
-    title: "E-Commerce Storefront",
-    desc: "Accessibility-first React build with keyboard + screen reader support.",
-    path: "/case-study/ecommerce",
-  },
 ];
 
 export default function EmergentCaseStudy() {

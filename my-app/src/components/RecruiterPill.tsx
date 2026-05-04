@@ -43,7 +43,6 @@ export default function RecruiterPill() {
         onClick={() => setOpen(true)}
         aria-label="Open recruiter view: 90-second project breakdown"
       >
-        <span className="recruiter-pill__icon" aria-hidden="true">⚡</span>
         <span className="recruiter-pill__text">Recruiter view</span>
       </button>
 
@@ -95,18 +94,6 @@ export default function RecruiterPill() {
                     <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/good-harvest")}>
                       <strong>Good Harvest</strong>
                       <span>End-to-end mobile UX, validated with heatmaps + 22 testers</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/ecommerce")}>
-                      <strong>E-Commerce Storefront</strong>
-                      <span>Accessibility-first React build — keyboard + screen reader complete</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/reina")}>
-                      <strong>Reina</strong>
-                      <span>Service-design concept for destination wedding planning</span>
                     </button>
                   </li>
                   <li>
