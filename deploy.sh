@@ -37,13 +37,6 @@ touch "$DOCS_DIR/.nojekyll"
 echo "➡️  Writing CNAME..."
 echo "hillaryesposito.org" > "$DOCS_DIR/CNAME"
 
-# ---- FIX COMMON PDF DOUBLE-EXTENSION (optional) ----
-# If you had the .pdf.pdf issue, this auto-fixes it if present.
-if [ -f "$ASSETS_DIR/good-harvest-competitive-analysis.pdf.pdf" ]; then
-  echo "⚠️  Found .pdf.pdf - renaming to .pdf"
-  mv "$ASSETS_DIR/good-harvest-competitive-analysis.pdf.pdf" \
-     "$ASSETS_DIR/good-harvest-competitive-analysis.pdf"
-fi
 
 # ---- GIT STATUS + COMMIT ----
 echo "➡️  Staging changes (source + docs)..."
