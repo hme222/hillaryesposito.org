@@ -89,6 +89,18 @@ const PROJECTS: Project[] = [
   },
   {
     num: "03",
+    icon: "📱",
+    title: "Mobbin",
+    tags: ["Contract", "UX Documentation", "Pattern Library"],
+    desc: "Catalogued three live apps — Kikoff, Polymarket, and Discover — for Mobbin's UX pattern library, documenting flows that designers reference every day.",
+    why: "Close reading of three different fintech products built fluency in how trust, risk, and progress get communicated in real interfaces.",
+    tools: ["Mobbin", "Figma", "Pattern Taxonomy"],
+    image: "/assets/mobbin/mobbin-hero.png",
+    imageAlt: "Three phones showing Kikoff, Polymarket, and Discover app screens",
+    path: "/case-study/mobbin",
+  },
+  {
+    num: "04",
     icon: "👑",
     title: "Luxe Headband Collection",
     tags: ["Product Design", "Fashion", "Coming Soon"],

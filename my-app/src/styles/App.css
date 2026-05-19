@@ -8295,3 +8295,128 @@ body.dark-mode .nav-overlay-backdrop,
   color: var(--focus);
   background: color-mix(in srgb, var(--focus) 6%, transparent);
 }
+
+/* =========================================================
+   MOBBIN CASE STUDY — three-phones row
+   ========================================================= */
+.mobbin-phones-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  align-items: start;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.mobbin-phone-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.mobbin-phone-frame {
+  position: relative;
+  width: 100%;
+  max-width: 240px;
+  aspect-ratio: 9 / 19.5;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 36px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md), var(--shadow-olive);
+  margin-bottom: 1.25rem;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+}
+
+.mobbin-phone-card:nth-child(2) .mobbin-phone-frame {
+  transform: translateY(-12px);
+}
+
+.mobbin-phone-card:hover .mobbin-phone-frame {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg, 0 16px 40px rgba(0,0,0,0.12)), var(--shadow-olive);
+}
+
+.mobbin-phone-card:nth-child(2):hover .mobbin-phone-frame {
+  transform: translateY(-18px);
+}
+
+.mobbin-phone-frame::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 38%;
+  height: 22px;
+  background: var(--fg, #1a1a1a);
+  border-radius: 0 0 16px 16px;
+  z-index: 3;
+  opacity: 0.85;
+}
+
+.mobbin-phone-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+.mobbin-phone-placeholder {
+  display: none;
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--olive-2) 14%, var(--card)) 0%,
+    var(--card) 60%,
+    color-mix(in srgb, var(--olive-2) 8%, var(--card)) 100%
+  );
+  color: var(--olive-2);
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+}
+
+.mobbin-phone-body {
+  max-width: 240px;
+}
+
+.mobbin-phone-cat {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--olive-2);
+  margin: 0 0 0.4rem;
+  font-weight: 600;
+}
+
+.mobbin-phone-name {
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+  color: var(--fg);
+}
+
+.mobbin-phone-blurb {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .mobbin-phones-row {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    justify-items: center;
+  }
+  .mobbin-phone-card:nth-child(2) .mobbin-phone-frame {
+    transform: none;
+  }
+  .mobbin-phone-card:nth-child(2):hover .mobbin-phone-frame {
+    transform: translateY(-6px);
+  }
+}
