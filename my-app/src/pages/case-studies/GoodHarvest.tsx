@@ -1,6 +1,6 @@
 // src/pages/case-studies/GoodHarvest.tsx
 import React, { useEffect, useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import MediaCard from "../../components/MediaCard";
 import RecruiterSkimCard from "../../components/RecruiterSkimCard";
 import ResearchInsightsSection from "../../sections/good-harvest/research-insights-section";
@@ -699,14 +699,11 @@ export default function GoodHarvest() {
         </div>
         <div className="gh-other-projects__grid">
           {otherProjects.map((proj) => (
-            <article
+            <Link
               key={proj.path}
+              to={proj.path}
               className="project-card gh-proj-card"
-              onClick={() => navigate(proj.path)}
-              role="button"
-              tabIndex={0}
               aria-label={`View ${proj.title} case study`}
-              onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && navigate(proj.path)}
             >
               <div className="project-media">
                 <div className="project-icon">{proj.icon}</div>
@@ -716,7 +713,7 @@ export default function GoodHarvest() {
                 <p>{proj.desc}</p>
                 <span className="gh-proj-cta">View case study →</span>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
         <div className="gh-back-row">

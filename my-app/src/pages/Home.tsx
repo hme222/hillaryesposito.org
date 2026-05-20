@@ -1,7 +1,7 @@
 // src/pages/Home.tsx
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 // ─── Orb background ──────────────────────────────────────────────────────────
 const orbStyles = `
@@ -247,19 +247,19 @@ function handleCopy() {
       </div>
 
       {/* ══════════════════════════════════════════
-          2. APPROACH
+          2. PROOF — stats that back up the hero claim
       ══════════════════════════════════════════ */}
-      <section className="section active home-approach-section" aria-label="Design approach">
-        <div className="home-section-header">
-          <p className="home-eyebrow">How I work</p>
-          <h2 className="section-title home-section-title">Design approach</h2>
-        </div>
-        <div className="home-approach-grid">
-          {APPROACH.map((a) => (
-            <div key={a.label} className="home-approach-card feature">
-              <span className="home-approach-icon">{a.icon}</span>
-              <h3 style={{ color:"var(--fg)", margin:"0.6rem 0 0.4rem", fontSize:"1.1rem" }}>{a.label}</h3>
-              <p style={{ color:"var(--muted)", fontSize:"0.92rem", lineHeight:1.65, margin:0 }}>{a.desc}</p>
+      <section className="section active home-proof-section" aria-label="Experience highlights">
+        <div className="home-proof-grid">
+          {[
+            { value: "8+",  label: "Years improving complex systems" },
+            { value: "21K+", label: "Users impacted at Memorial Sloan Kettering" },
+            { value: "25%",  label: "Improvement in task completion" },
+            { value: "60%",  label: "Reduction in logistics waste" },
+          ].map((s) => (
+            <div key={s.label} className="home-proof-card">
+              <p className="home-proof-value gradient-text">{s.value}</p>
+              <p className="home-proof-label">{s.label}</p>
             </div>
           ))}
         </div>
@@ -279,17 +279,9 @@ function handleCopy() {
         <div className="home-projects-mag">
           {PROJECTS.map((proj) => {
             const clickable = !!proj.path && !proj.comingSoon;
-            const handleOpen = () => clickable && proj.path && navigate(proj.path);
-            return (
-              <article
-                key={proj.num}
-                className={`home-mag-card${proj.comingSoon ? " home-mag-card--soon" : ""}`}
-                onClick={handleOpen}
-                role={clickable ? "button" : undefined}
-                tabIndex={clickable ? 0 : undefined}
-                aria-label={clickable ? `View ${proj.title} case study` : `${proj.title} — coming soon`}
-                onKeyDown={(e) => clickable && (e.key === "Enter" || e.key === " ") && handleOpen()}
-              >
+
+            const cardContent = (
+              <>
                 <div className="home-mag-media">
                   {proj.image ? (
                     <img
@@ -340,7 +332,26 @@ function handleCopy() {
                     <span className="home-mag-cta home-mag-cta--soon">Coming soon</span>
                   )}
                 </div>
-              </article>
+              </>
+            );
+
+            return clickable ? (
+              <Link
+                key={proj.num}
+                to={proj.path!}
+                className="home-mag-card"
+                aria-label={`View ${proj.title} case study`}
+              >
+                {cardContent}
+              </Link>
+            ) : (
+              <div
+                key={proj.num}
+                className={`home-mag-card home-mag-card--soon`}
+                aria-label={`${proj.title} — coming soon`}
+              >
+                {cardContent}
+              </div>
             );
           })}
         </div>

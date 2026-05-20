@@ -16,25 +16,26 @@ function NotFound() {
 }
 
 import Home from "../pages/Home";
-import Projects from "../pages/Projects";
 import Contact from "../pages/Contact";
 import About from "../pages/AboutMe";
 
 import GoodHarvest from "../pages/case-studies/GoodHarvest";
 import Emergent from "../pages/case-studies/Emergent";
 import Mobbin from "../pages/case-studies/Mobbin";
+import PasswordGate from "../components/PasswordGate";
+import { Navigate } from "react-router-dom";
 
 export default function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/projects" element={<Projects />} />
+      <Route path="/projects" element={<Navigate to="/#projects" replace />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
 
       <Route path="/case-study/good-harvest" element={<GoodHarvest />} />
       <Route path="/case-study/grove" element={<Emergent />} />
-      <Route path="/case-study/mobbin" element={<Mobbin />} />
+      <Route path="/case-study/mobbin" element={<PasswordGate><Mobbin /></PasswordGate>} />
 
       <Route path="*" element={<NotFound />} />
     </Routes>

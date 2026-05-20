@@ -1,6 +1,6 @@
 // src/pages/case-studies/Mobbin.tsx
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import ToolsUsed from "../../components/ToolsUsed";
 
 const APPS = [
@@ -260,14 +260,11 @@ export default function MobbinCaseStudy() {
         </div>
         <div className="gh-other-projects__grid">
           {OTHER_PROJECTS.map((proj) => (
-            <article
+            <Link
               key={proj.path}
+              to={proj.path}
               className="project-card gh-proj-card"
-              onClick={() => navigate(proj.path)}
-              role="button"
-              tabIndex={0}
               aria-label={`View ${proj.title} case study`}
-              onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && navigate(proj.path)}
             >
               <div className="project-media">
                 <div className="project-icon">{proj.icon}</div>
@@ -277,7 +274,7 @@ export default function MobbinCaseStudy() {
                 <p>{proj.desc}</p>
                 <span className="gh-proj-cta">View case study →</span>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
         <div className="gh-back-row">

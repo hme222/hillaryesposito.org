@@ -4,6 +4,7 @@
   "homepage": "https://hillaryesposito.org",
   "private": true,
   "dependencies": {
+    "focus-trap-react": "^12.0.2",
     "framer-motion": "^12.25.0",
     "gsap": "^3.14.2",
     "react": "^18.3.1",
