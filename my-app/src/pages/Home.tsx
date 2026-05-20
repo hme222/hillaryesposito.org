@@ -99,16 +99,6 @@ const PROJECTS: Project[] = [
     imageAlt: "Three phones showing Kikoff, Polymarket, and Discover app screens",
     path: "/case-study/mobbin",
   },
-  {
-    num: "04",
-    icon: "👑",
-    title: "Luxe Headband Collection",
-    tags: ["Product Design", "Fashion", "Coming Soon"],
-    desc: "A high-fashion headband line blending structured form with premium materials — currently in design development.",
-    why: "Expanding my design thinking beyond screens into physical product, material, and brand experience.",
-    tools: ["Product Design", "Brand Strategy"],
-    comingSoon: true,
-  },
 ];
 
 const APPROACH = [

@@ -6,51 +6,75 @@ type NavbarProps = {
   setDarkMode: Dispatch<SetStateAction<boolean>>;
 };
 
-// Scrolls to a section anchor on the home page.
-// If already on "/", scrolls directly.
-// If on a subpage, navigates home first then scrolls.
-function useAnchorNav() {
+export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [imgVisible, setImgVisible] = useState(true);
+  const [activeSection, setActiveSection] = useState<string>("home");
   const navigate = useNavigate();
   const location = useLocation();
 
-  return (id: string) => {
-    const scroll = () => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const navHeight = 80;
-      const y = el.getBoundingClientRect().top + window.scrollY - navHeight;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    };
+  function close() {
+    setMenuOpen(false);
+  }
 
+  // Handle anchor clicks — scroll on home, navigate then scroll on subpages
+  function handleAnchorClick(e: React.MouseEvent<HTMLAnchorElement>, id: string) {
+    close();
     const isHome =
       location.pathname === "/" ||
       location.pathname === "" ||
       location.pathname === "/index.html";
 
     if (isHome) {
-      scroll();
+      e.preventDefault();
+      const el = document.getElementById(id);
+      if (!el) return;
+      const navHeight = 80;
+      const y = el.getBoundingClientRect().top + window.scrollY - navHeight;
+      window.scrollTo({ top: y, behavior: "smooth" });
     } else {
+      e.preventDefault();
       navigate("/");
-      setTimeout(scroll, 150);
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const navHeight = 80;
+        const y = el.getBoundingClientRect().top + window.scrollY - navHeight;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }, 150);
     }
-  };
-}
-
-export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [imgVisible, setImgVisible] = useState(true);
-  const navigate = useNavigate();
-  const location = useLocation();
-  const scrollToAnchor = useAnchorNav();
-
-  function close() {
-    setMenuOpen(false);
   }
 
-  function handleAnchor(id: string) {
-    close();
-    scrollToAnchor(id);
-  }
+  // Track which section is in view on the home page
+  useEffect(() => {
+    const isHome =
+      location.pathname === "/" ||
+      location.pathname === "" ||
+      location.pathname === "/index.html";
+    if (!isHome) {
+      setActiveSection("");
+      return;
+    }
+
+    const sections = ["contact", "projects", "home"];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, [location.pathname]);
 
   useEffect(() => {
     if (menuOpen) {
@@ -67,6 +91,14 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   useEffect(() => {
     close();
   }, [location.pathname]);
+
+  const isOnCaseStudy = location.pathname.startsWith("/case-study");
+
+  function navClass(section: string) {
+    if (section === "projects" && isOnCaseStudy) return "nav-link is-active";
+    if (activeSection === section) return "nav-link is-active";
+    return "nav-link";
+  }
 
   return (
     <nav className="navbar" aria-label="Primary navigation">
@@ -119,23 +151,23 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
         </li>
 
         <li>
-          <button
-            type="button"
-            className="nav-link"
-            onClick={() => handleAnchor("home")}
+          <a
+            href="#home"
+            className={navClass("home")}
+            onClick={(e) => handleAnchorClick(e, "home")}
           >
             HOME
-          </button>
+          </a>
         </li>
 
         <li>
-          <button
-            type="button"
-            className="nav-link"
-            onClick={() => handleAnchor("projects")}
+          <a
+            href="#projects"
+            className={navClass("projects")}
+            onClick={(e) => handleAnchorClick(e, "projects")}
           >
             PROJECTS
-          </button>
+          </a>
         </li>
 
         <li>
@@ -150,13 +182,13 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
         </li>
 
         <li>
-          <button
-            type="button"
-            className="nav-link"
-            onClick={() => handleAnchor("contact")}
+          <a
+            href="#contact"
+            className={navClass("contact")}
+            onClick={(e) => handleAnchorClick(e, "contact")}
           >
             CONTACT
-          </button>
+          </a>
         </li>
 
         <li>

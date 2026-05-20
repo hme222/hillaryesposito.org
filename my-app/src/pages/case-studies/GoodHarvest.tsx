@@ -348,12 +348,31 @@ export default function GoodHarvest() {
       </section>
 
       {/* ── PROCESS TAB BAR (sticky) ── */}
-      <div id="gh-process-tabs" className="gh-tabs" role="tablist" aria-label="Process steps">
+      <div
+        id="gh-process-tabs"
+        className="gh-tabs"
+        role="tablist"
+        aria-label="Process steps"
+        onKeyDown={(e) => {
+          if (e.key === "ArrowRight") {
+            const next = (activeTab + 1) % TABS.length;
+            handleTabClick(next);
+            (document.getElementById(`gh-tab-${next}`) as HTMLElement)?.focus();
+          }
+          if (e.key === "ArrowLeft") {
+            const prev = (activeTab - 1 + TABS.length) % TABS.length;
+            handleTabClick(prev);
+            (document.getElementById(`gh-tab-${prev}`) as HTMLElement)?.focus();
+          }
+        }}
+      >
         {TABS.map((tab, i) => (
           <button
             key={tab.num}
+            id={`gh-tab-${i}`}
             type="button"
             role="tab"
+            tabIndex={activeTab === i ? 0 : -1}
             aria-selected={activeTab === i}
             aria-controls={`gh-panel-${i}`}
             className={`gh-tab-btn${activeTab === i ? " gh-tab-btn--active" : ""}`}
@@ -372,7 +391,7 @@ export default function GoodHarvest() {
       </div>
 
       {/* ── PANEL 1: RESEARCH ── */}
-      <div id="gh-panel-0" role="tabpanel" className={`gh-panel${activeTab === 0 ? " gh-panel--active" : ""}`}>
+      <div id="gh-panel-0" role="tabpanel" aria-labelledby="gh-tab-0" className={`gh-panel${activeTab === 0 ? " gh-panel--active" : ""}`}>
         <section>
           <SectionLabel>01 · Research</SectionLabel>
           <h2>What 22 people told me<br />before I opened Figma</h2>
@@ -454,7 +473,7 @@ export default function GoodHarvest() {
       </div>
 
       {/* ── PANEL 2: DESIGN ── */}
-      <div id="gh-panel-1" role="tabpanel" className={`gh-panel${activeTab === 1 ? " gh-panel--active" : ""}`}>
+      <div id="gh-panel-1" role="tabpanel" aria-labelledby="gh-tab-1" className={`gh-panel${activeTab === 1 ? " gh-panel--active" : ""}`}>
         <section>
           <SectionLabel>02 · Design Decisions</SectionLabel>
           <h2>Not just what I designed —<br />why I designed it this way</h2>
@@ -578,7 +597,7 @@ export default function GoodHarvest() {
       </div>
 
       {/* ── PANEL 3: PROTOTYPE ── */}
-      <div id="gh-panel-2" role="tabpanel" className={`gh-panel${activeTab === 2 ? " gh-panel--active" : ""}`}>
+      <div id="gh-panel-2" role="tabpanel" aria-labelledby="gh-tab-2" className={`gh-panel${activeTab === 2 ? " gh-panel--active" : ""}`}>
         <section>
           <SectionLabel>03 · Validation</SectionLabel>
           <h2>What testing confirmed —<br />and what it changed</h2>
@@ -633,63 +652,76 @@ export default function GoodHarvest() {
       </div>
 
       {/* ── PANEL 4: ITERATE ── */}
-      <div id="gh-panel-3" role="tabpanel" className={`gh-panel${activeTab === 3 ? " gh-panel--active" : ""}`}>
+      <div id="gh-panel-3" role="tabpanel" aria-labelledby="gh-tab-3" className={`gh-panel${activeTab === 3 ? " gh-panel--active" : ""}`}>
         <section>
-          <SectionLabel>Impact</SectionLabel>
-          <h2>What prototype testing suggested</h2>
-
-          <p className="gh-impact-lede">
-            Metrics only matter if they map to a pain point users actually felt.
-            Each result below shows the problem observed in research, then the
-            shift we saw in testing.
+          <SectionLabel>04 · Iterate</SectionLabel>
+          <h2>How testing shaped the final design</h2>
+          <p>
+            Each round of testing revealed what worked and what needed to change.
+            The biggest shifts: repositioning secondary actions below the fold,
+            embedding recipe CTAs inline with produce details, and making the
+            location indicator more prominent to address the trust gap.
           </p>
-          <div className="gh-impact-grid">
-            {impactCards.map((card) => (
-              <div key={card.label} className="feature gh-impact-card">
-                <p className="gh-impact-pain">
-                  <span className="gh-impact-pain-label">Pain point</span>
-                  {card.painPoint}
-                </p>
-                <p className="gh-impact-stat gradient-text">{card.metric}</p>
-                <p className="gh-impact-card__label">{card.label}</p>
-                <p>{card.body}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="gh-impact-caveat highlight">
-            <p>
-              <strong>Honest framing:</strong>{" "}
-              These metrics reflect prototype usability testing with 22 participants, not post-launch data.
-              Adoption and retention metrics would require a live product to validate. The directional
-              signals are encouraging — but I'm treating them as hypotheses for a next round, not proven outcomes.
-            </p>
-          </div>
-        </section>
-
-        <section>
-          <SectionLabel>What I Learned</SectionLabel>
-          <h2>The specific ways this project<br />changed how I design</h2>
-
-          <div className="gh-reflection-grid">
-            {reflections.map((r) => (
-              <div key={r.label} className="gh-reflection-card feature">
-                <p className="gh-reflection-label">{r.label}</p>
-                <p>{r.body}</p>
-              </div>
-            ))}
-            <div className="gh-reflection-next">
-              <p className="gh-reflection-label">What I'd explore next</p>
-              <p>
-                If the product continued, I'd explore a trust layer on the produce detail screen: 
-                surfacing the data source behind the seasonality claim to address the location-accuracy 
-                concern that surfaced in research. I'd also run a longitudinal study on whether 
-                export integration actually changed shopping behavior over 4+ weeks.
-              </p>
-            </div>
-          </div>
         </section>
       </div>
+
+      {/* ── IMPACT (always visible — not hidden in a tab) ── */}
+      <section>
+        <SectionLabel>Impact</SectionLabel>
+        <h2>What prototype testing suggested</h2>
+
+        <p className="gh-impact-lede">
+          Metrics only matter if they map to a pain point users actually felt.
+          Each result below shows the problem observed in research, then the
+          shift we saw in testing.
+        </p>
+        <div className="gh-impact-grid">
+          {impactCards.map((card) => (
+            <div key={card.label} className="feature gh-impact-card">
+              <p className="gh-impact-pain">
+                <span className="gh-impact-pain-label">Pain point</span>
+                {card.painPoint}
+              </p>
+              <p className="gh-impact-stat gradient-text">{card.metric}</p>
+              <p className="gh-impact-card__label">{card.label}</p>
+              <p>{card.body}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="gh-impact-caveat highlight">
+          <p>
+            <strong>Honest framing:</strong>{" "}
+            These metrics reflect prototype usability testing with 22 participants, not post-launch data.
+            Adoption and retention metrics would require a live product to validate. The directional
+            signals are encouraging — but I'm treating them as hypotheses for a next round, not proven outcomes.
+          </p>
+        </div>
+      </section>
+
+      {/* ── REFLECTIONS (always visible) ── */}
+      <section>
+        <SectionLabel>What I Learned</SectionLabel>
+        <h2>The specific ways this project<br />changed how I design</h2>
+
+        <div className="gh-reflection-grid">
+          {reflections.map((r) => (
+            <div key={r.label} className="gh-reflection-card feature">
+              <p className="gh-reflection-label">{r.label}</p>
+              <p>{r.body}</p>
+            </div>
+          ))}
+          <div className="gh-reflection-next">
+            <p className="gh-reflection-label">What I'd explore next</p>
+            <p>
+              If the product continued, I'd explore a trust layer on the produce detail screen:
+              surfacing the data source behind the seasonality claim to address the location-accuracy
+              concern that surfaced in research. I'd also run a longitudinal study on whether
+              export integration actually changed shopping behavior over 4+ weeks.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* ── OTHER PROJECTS ── */}
       <aside className="gh-other-projects" aria-label="Other projects">

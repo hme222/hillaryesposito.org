@@ -500,6 +500,15 @@ select:focus {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+@media (forced-colors: active) {
+  .gradient-text {
+    color: CanvasText;
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: unset;
+  }
+}
 .hero-btn {
   padding: 1rem 2.25rem;
   background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 100%);
@@ -872,7 +881,7 @@ select:focus {
 .cs-media figcaption {
   font-size: 0.95rem;
   line-height: 1.5;
-  color: color-mix(in srgb, var(--fg) 55%, transparent);
+  color: var(--muted);
 }
 .cs-actions {
   margin-top: auto;
@@ -999,7 +1008,7 @@ select:focus {
   font-size: 0.78rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--fg) 55%, transparent);
+  color: var(--muted);
 }
 .ecommerce-cs .ecom-kpi__value {
   font-weight: 800;
@@ -1138,7 +1147,7 @@ select:focus {
   font-size: 0.78rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--fg) 60%, transparent);
+  color: var(--muted);
 }
 .ecommerce-cs .ecom-demoPreviewTitle {
   margin-top: 8px;
@@ -1212,7 +1221,7 @@ select:focus {
   text-align: center;
   font-size: 0.85rem;
   font-weight: 700;
-  color: color-mix(in srgb, var(--fg) 55%, transparent);
+  color: var(--muted);
 }
 .ecommerce-cs .ecom-deviceBody {
   padding: 18px;
@@ -1998,7 +2007,7 @@ select:focus {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-weight: 800;
-  color: color-mix(in srgb, var(--fg) 55%, transparent);
+  color: var(--muted);
 }
 .projects.reina .reina__metaItem dd {
   margin-top: 7px;
@@ -2019,7 +2028,7 @@ select:focus {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 750;
-  color: color-mix(in srgb, var(--fg) 55%, transparent);
+  color: var(--muted);
   margin-bottom: 8px;
 }
 .projects.reina .reina__summaryText {
@@ -2050,7 +2059,7 @@ select:focus {
   max-width: 85ch;
   font-size: 1.02rem;
   line-height: 1.75;
-  color: color-mix(in srgb, var(--fg) 60%, transparent);
+  color: var(--muted);
 } /* ------------------------- SECTION TITLES ------------------------- */
 .projects.reina .reina__sectionTitle {
   margin: 0 0 14px 0;
@@ -2091,7 +2100,7 @@ select:focus {
   border-radius: 0;
   padding: 0;
   font-weight: 800;
-  color: color-mix(in srgb, var(--fg) 55%, transparent);
+  color: var(--muted);
 }
 .projects.reina .reina__flowTitle {
   font-size: 1.1rem;
@@ -3278,7 +3287,7 @@ a:hover {
 }
 input::placeholder,
 textarea::placeholder {
-  color: color-mix(in srgb, var(--fg) 55%, transparent);
+  color: var(--muted);
 }
 .dark-mode input::placeholder,
 .dark-mode textarea::placeholder {
@@ -4497,6 +4506,10 @@ body.dark-mode .nav-overlay-backdrop,
   from { transform: translateX(100%); }
   to { transform: translateX(0); }
 }
+@media (prefers-reduced-motion: reduce) {
+  .recruiter-panel-backdrop { animation: none; }
+  .recruiter-panel { animation: none; }
+}
 .recruiter-panel__header {
   display: flex;
   align-items: flex-start;
@@ -4518,8 +4531,8 @@ body.dark-mode .nav-overlay-backdrop,
   color: var(--fg);
 }
 .recruiter-panel__close {
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.05);
   border: none;
@@ -5192,6 +5205,9 @@ body.dark-mode .nav-overlay-backdrop,
   0%, 100% { opacity: 1; transform: scale(1); }
   50%       { opacity: 0.5; transform: scale(0.85); }
 }
+@media (prefers-reduced-motion: reduce) {
+  .home-status-dot { animation: none; }
+}
 
 /* ── Secondary hero button ── */
 .home-secondary-btn {
@@ -5240,7 +5256,13 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .home-expertise-track { animation: none !important; }
+  .home-expertise-track {
+    animation: none !important;
+    flex-wrap: wrap;
+    width: auto;
+    justify-content: center;
+    gap: 0.25rem 0;
+  }
 }
 
 .home-expertise-item {
@@ -7904,6 +7926,9 @@ body.dark-mode .nav-overlay-backdrop,
 @keyframes ghPanelIn {
   from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gh-panel--active { animation: none; }
 }
 
 /* ── Research: stats row ── */

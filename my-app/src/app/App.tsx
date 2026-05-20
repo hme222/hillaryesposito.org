@@ -35,10 +35,13 @@ export default function App() {
     <Router>
       <>
         <Loader />
+        <a href="#main-content" className="sr-only-focusable">Skip to main content</a>
 
         <div className= "app">
           <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
-          <AppRoutes />
+          <div id="main-content">
+            <AppRoutes />
+          </div>
           <Footer />
         </div>
 
