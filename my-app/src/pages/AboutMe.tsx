@@ -146,15 +146,16 @@ export default function About() {
       {/* ═ HERO ═════════════════════════════════════════════════════ */}
       <section className="about-hero">
         <div className="about-hero-content">
-          <p className="about-intro">UX Designer. Systems thinker. Veteran.</p>
+          <p className="about-intro">Product Designer. Systems thinker. Veteran.</p>
 
           <h1 className="about-title">
             I design systems for people who don’t have time to figure things out.
           </h1>
 
           <p className="about-hero-subtext">
-            I’ve spent 8+ years working inside healthcare systems, military logistics,
-            and digital products—where clarity matters and confusion slows people down.
+            8+ years inside healthcare systems, military logistics, and digital
+            products — designing under conditions where confusion isn’t an option
+            and clarity directly impacts outcomes.
           </p>
         </div>
       </section>
@@ -287,13 +288,14 @@ export default function About() {
 
           <div className="about-cta-content">
             <p>
-              I’m looking for a UX or systems-focused role where I can help make
-              complex tools easier to use.
+              I’m looking for a product design or UX role at a healthcare, gov tech,
+              fintech, or enterprise company — somewhere the product directly affects
+              how people do high-stakes work.
             </p>
             <p>
-              Whether it’s healthcare, SaaS, or internal platforms, I’m interested
-              in problems where clarity, structure, and usability actually make a
-              difference.
+              I bring research rigor, accessibility expertise, and the kind of
+              systems thinking you build from redesigning tools for 21,000 clinicians
+              and managing logistics for 5,000 soldiers.
             </p>
           </div>
 

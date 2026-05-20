@@ -70,7 +70,7 @@ export default function RecruiterPill() {
                 <div>
                   <p className="recruiter-panel__eyebrow">90-second tour</p>
                   <h2 id="recruiter-panel-title" className="recruiter-panel__title">
-                    Hillary Esposito — UX/Design
+                    Hillary Esposito — Product Design
                   </h2>
                 </div>
                 <button
@@ -86,13 +86,13 @@ export default function RecruiterPill() {
               <div className="recruiter-panel__body">
                 <section className="recruiter-panel__section">
                   <p className="recruiter-panel__label">In one line</p>
-                  <p>Veteran turned UX designer — research-led, accessibility-first, and shipping working code.</p>
+                  <p>Product designer who redesigned tools for 21K clinicians at MSK and managed systems for 5K soldiers. Research-led, accessibility-first, shipping working code.</p>
                 </section>
 
                 <section className="recruiter-panel__section">
                   <p className="recruiter-panel__label">Strengths</p>
                   <div className="recruiter-panel__chips">
-                    {["UX Research", "Accessibility (WCAG)", "End-to-end UX", "Prototyping", "React + TypeScript", "Healthcare UX"].map((s) => (
+                    {["Product Design", "UX Research", "Accessibility (WCAG)", "Healthcare UX", "Systems Thinking", "React + TypeScript"].map((s) => (
                       <span key={s} className="recruiter-panel__chip">{s}</span>
                     ))}
                   </div>

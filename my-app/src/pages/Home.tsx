@@ -43,7 +43,7 @@ const OrbBackground: React.FC = () => (
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 const EXPERTISE = [
-  "UX Research", "Interaction Design", "Wireframing", "Prototyping",
+  "Product Design", "UX Research", "Interaction Design", "Prototyping",
   "Information Architecture", "Healthcare UX", "Accessibility (WCAG)",
   "Journey Mapping", "Systems Thinking", "Figma", "Design Systems",
 ];
@@ -185,10 +185,10 @@ function handleCopy() {
 
           <div className="hero-copy">
             <motion.p className="hero-description" {...stagger(0.16)}>
-              I design for clarity in the moments that matter. Veteran turned UX
-              designer with experience in healthcare, government, and
-              high-pressure systems — driven by curiosity, grounded in service,
-              focused on helping people feel more capable.
+              Product designer who's redesigned tools for 21,000 clinicians at
+              Memorial Sloan Kettering and managed systems for 5,000 soldiers in
+              Iraq. I bring research rigor, systems thinking, and accessibility to
+              products where confusion isn't an option.
             </motion.p>
 
             <motion.div className="hero-actions" {...stagger(0.24)}>
@@ -356,14 +356,13 @@ function handleCopy() {
             {/* Left */}
             <div className="home-cta-left">
               <h2 className="about-cta-title" style={{ marginBottom:"1rem" }}>
-                What I'm looking for
+                What I’m looking for
               </h2>
               <p className="about-cta-content" style={{ color:"var(--muted)", lineHeight:1.8, marginBottom:"1.5rem" }}>
-               I’m seeking a role where I can apply research, systems thinking, and interaction design to help people navigate complex, high-stakes scenarios.
-              
+               I’m looking for a product design or UX role where I can bring research, systems thinking, and real-world experience to products that help people navigate complexity with confidence.
               </p>
               <p className="about-cta-highlight" style={{ marginBottom:"1.75rem" }}>
-                If you're building something that matters, let's talk.
+                If you’re building healthcare tools, government services, or complex enterprise products — let’s talk.
               </p>
               <div style={{ display:"flex", gap:"1rem", flexWrap:"wrap" }}>
                 <button type="button" className="hero-btn"
@@ -381,10 +380,10 @@ function handleCopy() {
             {/* Right: domain chips */}
             <div className="home-cta-right" aria-label="Focus areas">
               {[
-                { icon: "🏥", label: "Healthcare UX",       sub: "EHR · Clinical workflows" },
-                { icon: "🏛️", label: "Government services",  sub: "Service design · Civic tech" },
-                { icon: "📱", label: "Consumer products",    sub: "High-stakes decisions" },
-                { icon: "♿", label: "Accessibility",        sub: "WCAG · Inclusive design" },
+                { icon: "🏥", label: "Healthcare tech",       sub: "EHR · Clinical workflows · Patient systems" },
+                { icon: "🏛️", label: "Government services",  sub: "Civic tech · Service design · USDS" },
+                { icon: "🏢", label: "Enterprise tools",     sub: "Internal platforms · Complex workflows" },
+                { icon: "💰", label: "Fintech",              sub: "Trust patterns · High-stakes decisions" },
               ].map((d) => (
                 <div key={d.label} className="home-domain-chip feature">
                   <span style={{ fontSize:"1.3rem" }}>{d.icon}</span>

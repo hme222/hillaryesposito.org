@@ -231,7 +231,7 @@ export default function GoodHarvest() {
       {/* ── HERO ── */}
       <header className="gh-hero">
         <div className="gh-hero__copy">
-          <p className="meta">UX Research &amp; Design · Mobile App · Figma</p>
+          <p className="meta">Product Design · UX Research · Mobile App · Figma</p>
           <h1>Good Harvest</h1>
           <p className="gh-hero__intro">
             A mobile app I designed to help health-conscious shoppers make{" "}
