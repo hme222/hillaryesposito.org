@@ -100,7 +100,7 @@ export default function MobbinCaseStudy() {
       {/* ── META STRIP ── */}
       <div className="gh-meta-strip">
         {[
-          { label: "Role",    value: "Freelance UX Designer" },
+          { label: "Role",    value: "Freelance Product Designer" },
           { label: "Client",  value: "Mobbin" },
           { label: "Output",  value: "3 apps · Full flow capture" },
           { label: "Focus",   value: "Pattern documentation" },

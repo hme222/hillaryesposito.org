@@ -55,13 +55,13 @@ export default function EmergentCaseStudy() {
       {/* ── HERO ── */}
       <header className="gh-hero">
         <div className="gh-hero__copy">
-          <p className="meta">AI + Design · Full-Stack App · React · FastAPI</p>
+          <p className="meta">Product Design · AI + Design · Full-Stack App · React · FastAPI</p>
           <h1>Grove</h1>
           <p className="gh-hero__intro">
-            A plant care app I designed <em>and</em> built — using AI tools to
-            accelerate development while keeping every design decision
-            intentional. This project is my answer to{" "}
-            <strong>"how do you use AI in your design process?"</strong>
+            Plant parents forget to care for their plants, then feel guilty about it.
+            I designed and built Grove to turn inconsistent care into a habit — and
+            used AI tools throughout to show{" "}
+            <strong>where AI accelerates and where human judgment leads.</strong>
           </p>
         </div>
         <div className="gh-hero__visual" aria-hidden="true">
@@ -75,7 +75,7 @@ export default function EmergentCaseStudy() {
       {/* ── META STRIP ── */}
       <div className="gh-meta-strip">
         {[
-          { label: "Role",     value: "Designer + Developer" },
+          { label: "Role",     value: "Product Designer + Developer" },
           { label: "Type",     value: "Full-Stack App" },
           { label: "Stack",    value: "React · FastAPI · MongoDB" },
           { label: "AI Tools", value: "Claude Code · Cursor · Emergent" },

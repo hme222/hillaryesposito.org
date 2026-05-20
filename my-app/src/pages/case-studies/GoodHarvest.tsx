@@ -261,7 +261,7 @@ export default function GoodHarvest() {
       {/* ── META STRIP ── */}
       <div className="gh-meta-strip">
         {[
-          { label: "Role",     value: "End-to-end UX" },
+          { label: "Role",     value: "End-to-end Product Design" },
           { label: "Platform", value: "Mobile App"     },
           { label: "Tools",    value: "Figma · Maze"   },
           { label: "Scope",    value: "Research → Design → Prototype → Iterate" },
@@ -295,7 +295,7 @@ export default function GoodHarvest() {
             title="Good Harvest"
             what="Mobile app for seasonal produce, recipes, and shopping lists — localized by region."
             outcome="A faster 'scan → choose → act' flow validated with prototype testing + heatmaps."
-            myRole="End-to-end UX: research, IA, wireframes, prototypes, iteration."
+            myRole="End-to-end product design: research, IA, wireframes, prototypes, iteration."
             skills={["Interviews","Surveys","Journey mapping","Competitive analysis","SWOT","Prototyping","Accessibility"]}
             timeframe="Project snapshot"
             onBackToStory={() => scrollToId("full-case-study")}
