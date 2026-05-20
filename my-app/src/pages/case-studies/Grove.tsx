@@ -1,4 +1,4 @@
-// src/pages/case-studies/Emergent.tsx
+// src/pages/case-studies/Grove.tsx
 import React from "react";
 import { useNavigate, Link } from "react-router-dom";
 import ToolsUsed from "../../components/ToolsUsed";
@@ -44,9 +44,15 @@ const OTHER_PROJECTS = [
     desc: "End-to-end mobile UX for seasonal produce — validated with heatmaps + 22 testers.",
     path: "/case-study/good-harvest",
   },
+  {
+    icon: "📱",
+    title: "Mobbin",
+    desc: "Three fintech apps catalogued for Mobbin's UX pattern library — documenting trust, risk, and progress patterns.",
+    path: "/case-study/mobbin",
+  },
 ];
 
-export default function EmergentCaseStudy() {
+export default function GroveCaseStudy() {
   const navigate = useNavigate();
 
   return (
@@ -182,14 +188,40 @@ export default function EmergentCaseStudy() {
           ))}
         </ol>
 
-        {/* Screenshot placeholder — intentional messaging for hiring managers */}
-        <div className="emergent-screenshot-placeholder" aria-label="App screenshots available on request">
-          <p className="emergent-placeholder-text">
-            Currently running user testing — screenshots available on request.
-          </p>
-          <p className="emergent-placeholder-sub">
-            <a href="mailto:espositohillary@gmail.com">Reach out for a live walkthrough</a>
-          </p>
+        {/* Design artifacts — show the IA and flow thinking */}
+        <div className="emergent-artifacts" aria-label="Design artifacts">
+          <p className="gh-section-label">Design artifacts</p>
+          <h3 style={{ marginTop: "0.5rem", marginBottom: "1rem", color: "var(--olive-2)" }}>Information architecture + flow logic</h3>
+          <div className="emergent-ia-flow feature" style={{ padding: "1.5rem", borderRadius: "12px" }}>
+            <div className="emergent-ia-row">
+              <div className="emergent-ia-block">
+                <p className="emergent-ia-label">Core IA decision</p>
+                <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
+                  Organized around <strong>bouquets</strong> (plant groups), not individual plants.
+                  Every screen answers: "Which bouquet am I looking at?" This eliminated
+                  the "wall of plants" problem in competing apps where 15+ individual plants
+                  creates decision paralysis.
+                </p>
+              </div>
+              <div className="emergent-ia-block">
+                <p className="emergent-ia-label">Task generation logic</p>
+                <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
+                  Daily tasks are generated per-bouquet based on plant type + environment + care history.
+                  New users see 1 task/day. Complexity unlocks with streak length — not all at once.
+                  Designed to prevent the "too many reminders" fatigue that kills plant app retention.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="emergent-screenshot-placeholder" style={{ marginTop: "1.25rem" }} aria-label="App screenshots available on request">
+            <p className="emergent-placeholder-text">
+              Full UI screens and interactive prototype available on request — currently in user testing.
+            </p>
+            <p className="emergent-placeholder-sub">
+              <a href="mailto:espositohillary@gmail.com">Reach out for a live walkthrough →</a>
+            </p>
+          </div>
         </div>
       </section>
 
@@ -227,22 +259,28 @@ export default function EmergentCaseStudy() {
         </div>
       </section>
 
-      {/* ── FEATURES BUILT ── */}
+      {/* ── KEY DESIGN DECISIONS ── */}
       <section>
-        <p className="gh-section-label">What's built</p>
-        <h2>Features shipping to testing</h2>
+        <p className="gh-section-label">Design decisions</p>
+        <h2>Where I led, not the AI</h2>
+        <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
+          AI accelerated the code. These are the design decisions I made —
+          the parts where human judgment shaped the product.
+        </p>
         <div className="gh-features-grid">
           {[
-            { title: "Auth + profiles", items: ["Registration / login with JWT", "User types + XP progression", "Profile customization"] },
-            { title: "Bouquet management", items: ["Create / edit bouquets (plant collections)", "Active bouquet dashboard", "Per-bouquet task generation"] },
-            { title: "Daily care system", items: ["Personalized daily tasks", "Task completion tracking", "Streak-based progression"] },
-            { title: "Growth journal", items: ["Photo entries attached to bouquets", "Timeline view of plant progress", "File upload + cloud storage"] },
+            { title: "Bouquet as mental model",
+              desc: "Users think in groups (\u201Cmy kitchen plants,\u201D \u201Cmy bedroom plants\u201D), not individual species. I chose \u201Cbouquet\u201D as the core organizing concept \u2014 grouping plants by context, not taxonomy. This shaped the entire IA: every task, journal entry, and reward ties back to a bouquet, not a plant." },
+            { title: "Progressive care complexity",
+              desc: "New users see one task per day. Complexity scales with streak length — unlocking rotation reminders, light adjustments, and fertilizer timing only after the habit is established. This prevents the overwhelm that kills retention in care apps." },
+            { title: "Reward as delight, not gamification",
+              desc: "AI-generated bloom illustrations appear at milestones — but there's no points system, no leaderboard, no guilt mechanics. The reward is a unique visual moment tied to your specific plants. I rejected the AI's suggestion to add XP and levels." },
+            { title: "Journal over dashboard",
+              desc: "Most plant apps lead with a status dashboard. I led with a photo journal — the thing users actually want to revisit. Growth over time is more motivating than today's task list. The dashboard exists, but it's secondary to the narrative view." },
           ].map((block) => (
             <div key={block.title} className="feature">
               <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.75rem" }}>{block.title}</h3>
-              <ul className="case-study" style={{ marginLeft: "1.25rem", marginBottom: 0 }}>
-                {block.items.map((item) => <li key={item}>{item}</li>)}
-              </ul>
+              <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>{block.desc}</p>
             </div>
           ))}
         </div>
@@ -269,11 +307,12 @@ export default function EmergentCaseStudy() {
           <div className="gh-reflection-card feature">
             <p className="gh-reflection-label">What I've learned so far</p>
             <p>
-              Building with AI tools sharpened my understanding of where design
-              thinking matters most. The parts AI struggled with — flow logic,
-              hierarchy decisions, edge cases in the care system — are exactly
-              the parts that make or break the user experience. AI is a
-              multiplier, not a replacement.
+              AI generated a task dashboard as the default home screen — I overrode
+              it with the journal view because growth narrative is more motivating than
+              a to-do list. AI suggested XP points and levels for gamification — I
+              rejected it because guilt mechanics contradict the product's emotional goal.
+              The pattern: AI defaults to conventional solutions. Design judgment means
+              knowing when conventional is wrong for your specific users.
             </p>
           </div>
           <div className="gh-reflection-next">

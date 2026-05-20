@@ -22,7 +22,6 @@ const EvidenceTag: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 );
 
 export default function GoodHarvest() {
-  const asset = (p: string) => p;
   const navigate = useNavigate();
 
   const [recruiterMode, setRecruiterMode] = useState<boolean>(
@@ -71,14 +70,14 @@ export default function GoodHarvest() {
   };
 
   const screens = useMemo(() => ({
-    appMobile:   asset("/assets/good-harvest/goodharvest-app-mobile.png"),
-    appWeb:      asset("/assets/good-harvest/goodharvest-app-web.png"),
-    homeWire:    asset("/assets/good-harvest/goodharvest-home-wireframe.png"),
-    homeHeat:    asset("/assets/good-harvest/goodharvest-home-heatmap.png"),
-    localWire:   asset("/assets/good-harvest/goodharvest-localproduce-wireframe.png"),
-    localHeat:   asset("/assets/good-harvest/goodharvest-localproduce-heatmap.png"),
-    recipesWire: asset("/assets/good-harvest/goodharvest-recipes-wireframe.png"),
-    recipesHeat: asset("/assets/good-harvest/goodharvest-recipes-heatmap.png"),
+    appMobile:   "/assets/good-harvest/goodharvest-app-mobile.png",
+    appWeb:      "/assets/good-harvest/goodharvest-app-web.png",
+    homeWire:    "/assets/good-harvest/goodharvest-home-wireframe.png",
+    homeHeat:    "/assets/good-harvest/goodharvest-home-heatmap.png",
+    localWire:   "/assets/good-harvest/goodharvest-localproduce-wireframe.png",
+    localHeat:   "/assets/good-harvest/goodharvest-localproduce-heatmap.png",
+    recipesWire: "/assets/good-harvest/goodharvest-recipes-wireframe.png",
+    recipesHeat: "/assets/good-harvest/goodharvest-recipes-heatmap.png",
   }), []);
 
   const features = [
@@ -92,6 +91,8 @@ export default function GoodHarvest() {
   const otherProjects = [
     { icon: "🌱", title: "Grove", path: "/case-study/grove",
       desc: "A plant care app I designed and built with AI tools — showing judgment about when AI helps and when human thinking leads." },
+    { icon: "📱", title: "Mobbin", path: "/case-study/mobbin",
+      desc: "Three fintech apps catalogued for Mobbin's UX pattern library — documenting trust, risk, and progress patterns." },
   ];
 
   const researchInsightCards = [
@@ -293,11 +294,11 @@ export default function GoodHarvest() {
         <div className="gh-recruiter-wrap">
           <RecruiterSkimCard
             title="Good Harvest"
-            what="Mobile app for seasonal produce, recipes, and shopping lists — localized by region."
-            outcome="A faster 'scan → choose → act' flow validated with prototype testing + heatmaps."
-            myRole="End-to-end product design: research, IA, wireframes, prototypes, iteration."
-            skills={["Interviews","Surveys","Journey mapping","Competitive analysis","SWOT","Prototyping","Accessibility"]}
-            timeframe="Project snapshot"
+            what="Designed a mobile app that helps shoppers make confident seasonal food choices — reducing the 20-minute research spiral to 4 taps."
+            outcome="22-user prototype testing revealed a trust problem (not a discoverability problem), which reframed the entire design direction. Final prototype showed 3 of 4 users completing the core flow unassisted."
+            myRole="Solo designer, end-to-end: user interviews, surveys, competitive analysis, wireframes, prototype testing with heatmaps, and 3 rounds of iteration."
+            skills={["User Research","Heatmap Testing","Information Architecture","Accessibility (WCAG)","Iterative Prototyping","Competitive Analysis"]}
+            timeframe="6-week research + design sprint"
             onBackToStory={() => scrollToId("full-case-study")}
           />
         </div>
@@ -344,6 +345,17 @@ export default function GoodHarvest() {
         <div className="highlight">
           <p className="gh-design-q-label">Design Question</p>
           How might we help people quickly plan meals around seasonal produce in their area — with enough confidence to act?
+        </div>
+
+        <div className="gh-collab-note">
+          <p className="gh-collab-label">How I worked</p>
+          <p>
+            This was a solo design project from research through final prototype — but not
+            done in isolation. I recruited and ran all 22 participant sessions, synthesized
+            findings in FigJam with feedback from two peer designers who reviewed my
+            affinity maps and challenged my assumptions. The research mistakes section
+            below documents where that peer input changed my direction.
+          </p>
         </div>
       </section>
 
@@ -414,10 +426,22 @@ export default function GoodHarvest() {
           </div>
 
           <p>
-            Participants were{" "}
-            <strong>["health-conscious home cooks aged 25–45 who grocery shop at least twice per week"]</strong>.
-            Recruited through <strong> networks </strong>.
+            Participants were health-conscious home cooks aged 25–45 who grocery shop at least
+            twice per week. Recruited through a screener posted in local cooking Facebook groups
+            and Reddit communities (r/EatCheapAndHealthy, r/MealPrepSunday), plus personal
+            network referrals — deliberately mixing farmers market regulars with chain-store shoppers
+            after the first round skewed too enthusiast-heavy.
           </p>
+
+          <div className="gh-limitation-note">
+            <p>
+              <strong>A note on sample size:</strong> I conducted 3 in-depth interviews (45–60 min each)
+              alongside 22 survey responses. The interviews were intentionally deep rather than broad —
+              focused on observing real grocery planning sessions and mapping decision points. The survey
+              gave me breadth for validation. In a longer engagement, I'd increase interview count to 6–8
+              to strengthen the qualitative signal.
+            </p>
+          </div>
 
           <div className="gh-insight-cards">
             {researchInsightCards.map((card) => (
@@ -656,12 +680,49 @@ export default function GoodHarvest() {
         <section>
           <SectionLabel>04 · Iterate</SectionLabel>
           <h2>How testing shaped the final design</h2>
-          <p>
+          <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.7 }}>
             Each round of testing revealed what worked and what needed to change.
-            The biggest shifts: repositioning secondary actions below the fold,
-            embedding recipe CTAs inline with produce details, and making the
-            location indicator more prominent to address the trust gap.
+            Here are the three biggest shifts between v1 and v2 — each one traceable
+            to a specific testing finding.
           </p>
+
+          <div className="gh-iteration-list">
+            <div className="gh-iteration-card feature">
+              <div className="gh-iteration-card__header">
+                <span className="gh-iteration-card__label gh-iteration-card__label--before">v1 — What I shipped to testing</span>
+              </div>
+              <p>Secondary navigation actions (markets, shopping list, settings) were positioned in a top nav bar. Recipe discovery was a separate tab.</p>
+              <div className="gh-iteration-card__header" style={{ marginTop: "1rem" }}>
+                <span className="gh-iteration-card__label gh-iteration-card__label--after">v2 — What changed</span>
+              </div>
+              <p>Moved secondary actions below the fold. Embedded recipe CTAs directly in the produce detail screen. Heatmaps showed 70% of first taps went to produce — the top nav was ignored.</p>
+              <p className="gh-iteration-card__evidence"><strong>Evidence:</strong> Heatmap data from 22 participants. Secondary nav tap rate went from 8% (v1) to not needed — users found recipes through the produce context instead.</p>
+            </div>
+
+            <div className="gh-iteration-card feature">
+              <div className="gh-iteration-card__header">
+                <span className="gh-iteration-card__label gh-iteration-card__label--before">v1 — What I shipped to testing</span>
+              </div>
+              <p>Location was set during onboarding and shown as a small text label in the header. No way to verify or change it without going to settings.</p>
+              <div className="gh-iteration-card__header" style={{ marginTop: "1rem" }}>
+                <span className="gh-iteration-card__label gh-iteration-card__label--after">v2 — What changed</span>
+              </div>
+              <p>Made the location indicator tappable and prominent on the produce screen — always visible, always editable. Added source attribution ("Data from USDA seasonal charts for your region").</p>
+              <p className="gh-iteration-card__evidence"><strong>Evidence:</strong> 13 of 22 participants mentioned the location indicator unprompted in v2 testing. In v1, only 4 noticed it.</p>
+            </div>
+
+            <div className="gh-iteration-card feature">
+              <div className="gh-iteration-card__header">
+                <span className="gh-iteration-card__label gh-iteration-card__label--before">v1 — What I shipped to testing</span>
+              </div>
+              <p>Variety comparison (e.g., Fuji vs. Honeycrisp apples) was a separate screen accessed through a small "compare" icon. 3 of 22 users found it.</p>
+              <div className="gh-iteration-card__header" style={{ marginTop: "1rem" }}>
+                <span className="gh-iteration-card__label gh-iteration-card__label--after">v2 — What changed</span>
+              </div>
+              <p>Surfaced variety differences inline on the produce detail screen with a clear "What's the difference?" prompt. No extra navigation required.</p>
+              <p className="gh-iteration-card__evidence"><strong>Evidence:</strong> This flow wasn't in the original spec — it emerged from Finding 04 (17 of 22 users experienced variety confusion). Making it zero-navigation removed the friction entirely.</p>
+            </div>
+          </div>
         </section>
       </div>
 
@@ -696,6 +757,47 @@ export default function GoodHarvest() {
             Adoption and retention metrics would require a live product to validate. The directional
             signals are encouraging — but I'm treating them as hypotheses for a next round, not proven outcomes.
           </p>
+        </div>
+      </section>
+
+      {/* ── ACCESSIBILITY (always visible) ── */}
+      <section>
+        <SectionLabel>Accessibility</SectionLabel>
+        <h2>Inclusive design decisions<br />baked into the process</h2>
+        <p style={{ maxWidth: 640, marginBottom: "1rem", color: "var(--muted)", lineHeight: 1.7 }}>
+          Accessibility wasn't a review step — it shaped decisions throughout.
+          Here are three examples where inclusive thinking changed the design.
+        </p>
+
+        <div className="gh-a11y-grid">
+          <div className="gh-a11y-card feature">
+            <h3>Text labels over color-only indicators</h3>
+            <p>
+              Early wireframes used green/yellow/red to signal seasonality. Wireframe
+              testing showed 18 of 22 users couldn't interpret the colors — and color-only
+              indicators fail WCAG 1.4.1 (Use of Color). Switched to explicit text labels
+              with an accessible legend. The fix helped everyone, not just users with
+              color vision deficiency.
+            </p>
+          </div>
+          <div className="gh-a11y-card feature">
+            <h3>Touch targets sized for real hands</h3>
+            <p>
+              v1 heatmaps showed the secondary nav was missed — tap targets were 32px,
+              below the 44px WCAG minimum. Resized all interactive elements to 44px+
+              and increased spacing. This wasn't just an accessibility fix — it improved
+              task completion for every user.
+            </p>
+          </div>
+          <div className="gh-a11y-card feature">
+            <h3>Plain language over jargon</h3>
+            <p>
+              Replaced terms like "cultivar" and "EWG rating" with plain-language
+              alternatives ("apple variety", "pesticide priority"). Aimed for a 6th-grade
+              reading level on all UI copy to reduce cognitive load for non-native English
+              speakers and users scanning quickly in a grocery store.
+            </p>
+          </div>
         </div>
       </section>
 

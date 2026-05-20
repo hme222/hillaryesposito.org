@@ -91,7 +91,7 @@ const PROJECTS: Project[] = [
     num: "03",
     icon: "📱",
     title: "Mobbin",
-    tags: ["Contract", "Product Design", "Pattern Library"],
+    tags: ["Contract", "Content Design", "Pattern Library"],
     desc: "Contracted by Mobbin to catalogue three fintech apps (Kikoff, Polymarket, Discover) at a professional standard — documenting the trust, risk, and progress patterns that thousands of designers reference daily.",
     why: "Close-reading complex interfaces at production quality built fluency in fintech UX patterns.",
     tools: ["Mobbin", "Figma", "Pattern Taxonomy"],

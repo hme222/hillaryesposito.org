@@ -60,13 +60,13 @@ const OTHER_PROJECTS = [
   {
     icon: "🌿",
     title: "Good Harvest",
-    desc: "End-to-end mobile UX for seasonal produce — validated with heatmaps + 22 testers.",
+    desc: "End-to-end product design for seasonal produce — validated with heatmaps + 22 testers.",
     path: "/case-study/good-harvest",
   },
   {
     icon: "🌱",
     title: "Grove",
-    desc: "AI + design plant care app — designed and built solo with AI tooling.",
+    desc: "AI + design plant care app — showing where AI accelerates and where human design judgment leads.",
     path: "/case-study/grove",
   },
 ];
@@ -100,7 +100,7 @@ export default function MobbinCaseStudy() {
       {/* ── META STRIP ── */}
       <div className="gh-meta-strip">
         {[
-          { label: "Role",    value: "Freelance Product Designer" },
+          { label: "Role",    value: "Freelance Content Designer" },
           { label: "Client",  value: "Mobbin" },
           { label: "Output",  value: "3 apps · Full flow capture" },
           { label: "Focus",   value: "Pattern documentation" },
@@ -115,6 +115,29 @@ export default function MobbinCaseStudy() {
           </React.Fragment>
         ))}
       </div>
+
+      {/* ── THE CHALLENGE ── */}
+      <section>
+        <p className="gh-section-label">The challenge</p>
+        <h2>Cataloguing isn't capturing — it's reading</h2>
+        <p style={{ maxWidth: 720, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.7 }}>
+          Anyone can screenshot an app. The challenge is knowing <em>which</em> flows
+          are worth documenting, <em>how</em> to structure them so they're findable,
+          and <em>what</em> to write so a designer arriving without context understands
+          what they're looking at — and why it matters.
+        </p>
+
+        <div className="gh-assumption-grid">
+          <div className="gh-assumption-card gh-assumption-card--initial">
+            <p className="gh-assumption-label">The hard part wasn't</p>
+            <p>Capturing screens. That's mechanical. Any tool can do it.</p>
+          </div>
+          <div className="gh-assumption-card gh-assumption-card--finding">
+            <p className="gh-assumption-label">The hard part was</p>
+            <p>Deciding what's worth showing, chunking flows into meaningful sequences, and writing annotations that stay useful to thousands of designers who will never meet me.</p>
+          </div>
+        </div>
+      </section>
 
       {/* ── THE 3 PHONES ── */}
       <section aria-label="The three apps">
@@ -170,6 +193,75 @@ export default function MobbinCaseStudy() {
         ]}
       />
 
+      {/* ── DOCUMENTATION EXAMPLE ── */}
+      <section>
+        <p className="gh-section-label">What the work looks like</p>
+        <h2>Anatomy of a pattern entry</h2>
+        <p style={{ maxWidth: 720, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.7 }}>
+          Each screen I catalogued needed structured metadata that fits Mobbin's taxonomy.
+          Here's an example of the judgment calls behind a single entry.
+        </p>
+
+        <div className="mobbin-example-entry feature" style={{ padding: "1.5rem", borderRadius: "12px" }}>
+          <div className="mobbin-example-grid">
+            <div className="mobbin-example-block">
+              <p className="mobbin-example-label">Screen</p>
+              <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
+                Kikoff — Credit score progress screen (post-onboarding)
+              </p>
+            </div>
+            <div className="mobbin-example-block">
+              <p className="mobbin-example-label">Flow placement</p>
+              <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
+                Screen 8 of 12 in the "First session → credit building" flow.
+                Appears after the user completes their first credit-building action.
+              </p>
+            </div>
+            <div className="mobbin-example-block">
+              <p className="mobbin-example-label">Pattern tags</p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem", marginTop: "0.25rem" }}>
+                {["Progress indicator", "Trust signal", "Positive reinforcement", "Data visualization", "Onboarding completion"].map((tag) => (
+                  <span key={tag} className="home-mag-tool">{tag}</span>
+                ))}
+              </div>
+            </div>
+            <div className="mobbin-example-block">
+              <p className="mobbin-example-label">My annotation</p>
+              <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65, fontStyle: "italic" }}>
+                "Shows credit score improvement as a direct result of the action just taken —
+                not a generic dashboard. The timing is deliberate: reinforcement appears immediately
+                after the first credit-building task, creating a cause-effect loop that builds
+                confidence in the product's value."
+              </p>
+            </div>
+            <div className="mobbin-example-block">
+              <p className="mobbin-example-label">Why this screen matters</p>
+              <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
+                This is where Kikoff converts a skeptical user into a believer. Most fintech
+                onboarding ends with a "you're all set" confirmation. Kikoff shows you the
+                <em> result</em> — immediately. It's a trust-building pattern worth studying for
+                any product where users need proof the system works before they commit.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── HOW I WORKED WITH MOBBIN ── */}
+      <section>
+        <p className="gh-section-label">Collaboration</p>
+        <h2>Working inside someone else's system</h2>
+        <div className="gh-collab-note">
+          <p>
+            I worked asynchronously with Mobbin's content team — submitting batches of
+            catalogued flows for review against their quality bar and taxonomy standards.
+            Feedback was specific: tag accuracy, annotation clarity, flow completeness.
+            I adapted my process after the first review round to front-load taxonomy
+            alignment before capturing screens, which cut revision cycles in half.
+          </p>
+        </div>
+      </section>
+
       {/* ── WHY THIS WORK MATTERS ── */}
       <section>
         <p className="gh-section-label">The why</p>
@@ -218,35 +310,38 @@ export default function MobbinCaseStudy() {
         <h2>What three apps taught me</h2>
         <div className="gh-features-grid">
           <div className="feature">
-            <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.75rem" }}>Pattern fluency</h3>
+            <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.75rem" }}>Trust patterns diverge by risk type</h3>
             <p style={{ color: "var(--muted)", lineHeight: 1.65, margin: 0 }}>
-              Reading three different fintech products at this depth surfaced
-              the patterns each category leans on — and the places where
-              category conventions break in interesting ways.
+              Kikoff builds trust through immediate proof (show the score change).
+              Polymarket builds trust through transparency (show the math behind odds).
+              Discover builds trust through familiarity (match the mental model people already have from physical cards).
+              Same goal — "trust us with your money" — three completely different approaches.
             </p>
           </div>
           <div className="feature">
-            <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.75rem" }}>Disciplined documentation</h3>
+            <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.75rem" }}>Naming is harder than designing</h3>
             <p style={{ color: "var(--muted)", lineHeight: 1.65, margin: 0 }}>
-              Working inside an existing taxonomy sharpened how I name things,
-              chunk flows, and write annotations that stay legible to a designer
-              who arrives without context.
+              Mobbin's taxonomy has specific vocabulary. Tagging a screen as "progress indicator"
+              vs. "status display" vs. "achievement" changes how designers find it. I learned to
+              name patterns by how someone would <em>search</em> for them, not how I'd describe them.
             </p>
           </div>
           <div className="feature">
-            <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.75rem" }}>Trust-signal vocabulary</h3>
+            <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.75rem" }}>Onboarding length ≠ friction</h3>
             <p style={{ color: "var(--muted)", lineHeight: 1.65, margin: 0 }}>
-              All three apps handle high-stakes financial decisions. Watching
-              how each one signals safety, confirms intent, and discloses risk
-              built a vocabulary I now reach for in my own work.
+              Kikoff's 12-screen onboarding should feel long — but it doesn't, because
+              each screen gives the user something (a score, a plan, a confirmation).
+              Polymarket's 4-screen onboarding feels longer because it front-loads
+              legal disclosure without reward. Screen count is a misleading metric.
             </p>
           </div>
           <div className="feature">
-            <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.75rem" }}>Designer empathy at scale</h3>
+            <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.75rem" }}>Writing for absent strangers</h3>
             <p style={{ color: "var(--muted)", lineHeight: 1.65, margin: 0 }}>
-              Every entry is read by someone trying to solve a problem fast.
-              That constraint — clarity for a stranger in a hurry — is the same
-              one good interface copy lives under.
+              Every annotation I wrote will be read by someone I'll never meet, in a context
+              I can't predict, to solve a problem I don't know about. That constraint —
+              clarity for a stranger in a hurry — is the same one good interface copy lives under.
+              It changed how I write everything.
             </p>
           </div>
         </div>

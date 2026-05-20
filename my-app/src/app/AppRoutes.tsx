@@ -20,7 +20,7 @@ import Contact from "../pages/Contact";
 import About from "../pages/AboutMe";
 
 import GoodHarvest from "../pages/case-studies/GoodHarvest";
-import Emergent from "../pages/case-studies/Emergent";
+import Emergent from "../pages/case-studies/Grove";
 import Mobbin from "../pages/case-studies/Mobbin";
 import PasswordGate from "../components/PasswordGate";
 import { Navigate } from "react-router-dom";

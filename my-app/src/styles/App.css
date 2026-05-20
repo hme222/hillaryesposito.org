@@ -3931,6 +3931,120 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 /* ─────────────────────────────────────────────
+   GH — Collaboration Note
+   ───────────────────────────────────────────── */
+.gh-collab-note {
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--olive-2) 5%, transparent);
+  border: 1px solid color-mix(in srgb, var(--olive-2) 15%, transparent);
+}
+.gh-collab-label {
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--olive-2);
+  margin: 0 0 0.5rem;
+}
+.gh-collab-note p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.gh-collab-note p + p {
+  margin-top: 0.5rem;
+}
+
+/* ─────────────────────────────────────────────
+   GH — Limitation Note
+   ───────────────────────────────────────────── */
+.gh-limitation-note {
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--olive-2);
+  background: color-mix(in srgb, var(--olive-2) 6%, transparent);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.gh-limitation-note p { margin: 0; }
+
+/* ─────────────────────────────────────────────
+   GH — Iteration Cards (Tab 4)
+   ───────────────────────────────────────────── */
+.gh-iteration-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.gh-iteration-card {
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+.gh-iteration-card__header {
+  margin-bottom: 0.5rem;
+}
+.gh-iteration-card__label {
+  display: inline-block;
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 800;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+.gh-iteration-card__label--before {
+  background: rgba(245, 158, 11, 0.12);
+  color: #b45309;
+}
+.gh-iteration-card__label--after {
+  background: rgba(120, 140, 90, 0.15);
+  color: var(--olive-2, #6b7a3a);
+}
+.gh-iteration-card p {
+  margin: 0.3rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.gh-iteration-card__evidence {
+  margin-top: 0.75rem !important;
+  font-size: 0.85rem !important;
+  padding: 0.6rem 0.8rem;
+  background: color-mix(in srgb, var(--olive-2) 6%, transparent);
+  border-radius: 6px;
+}
+
+/* ─────────────────────────────────────────────
+   GH — Accessibility Section
+   ───────────────────────────────────────────── */
+.gh-a11y-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.gh-a11y-card {
+  padding: 1.25rem;
+  border-radius: 12px;
+}
+.gh-a11y-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  color: var(--olive-2);
+}
+.gh-a11y-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+/* ─────────────────────────────────────────────
    GH — Key User Flows
    ───────────────────────────────────────────── */
 .gh-flows-section {
@@ -4057,6 +4171,29 @@ body.dark-mode .nav-overlay-backdrop,
   padding: 0.15rem 0.4rem;
   border-radius: 4px;
   font-size: 0.78rem;
+}
+
+/* Grove IA artifacts */
+.emergent-ia-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+@media (max-width: 640px) {
+  .emergent-ia-row { grid-template-columns: 1fr; }
+}
+.emergent-ia-block { }
+.emergent-ia-label {
+  display: inline-block;
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 800;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  background: rgba(120, 140, 90, 0.15);
+  color: var(--olive-2, #6b7a3a);
+  margin-bottom: 0.5rem;
 }
 
 /* AI decisions grid */
@@ -8486,6 +8623,26 @@ body.dark-mode .nav-overlay-backdrop,
   .mobbin-phone-card:nth-child(2):hover .mobbin-phone-frame {
     transform: translateY(-6px);
   }
+}
+
+/* ── Mobbin — Pattern Documentation Example ── */
+.mobbin-example-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.mobbin-example-block { }
+.mobbin-example-label {
+  display: inline-block;
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 800;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  background: rgba(120, 140, 90, 0.15);
+  color: var(--olive-2, #6b7a3a);
+  margin-bottom: 0.4rem;
 }
 
 /* ── PASSWORD GATE ── */
