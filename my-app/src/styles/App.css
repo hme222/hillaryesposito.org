@@ -2670,20 +2670,16 @@ select:focus {
 }
 
 /* 5) Links: don’t rely on color alone + keep contrast */
-.dark-mode a,
+/* Dark mode inline links only — not nav, cards, or buttons */
 .dark-mode .cs-link,
-.dark-mode .cs-toggle-link,
-.dark-mode .ecommerce-cs .ecom-link,
-.dark-mode .ecommerce-cs .ecom-demoExternalLink {
+.dark-mode .cs-toggle-link {
   color: var(--focus);
   text-decoration: underline;
   text-underline-offset: 4px;
   text-decoration-thickness: 2px;
 }
-
-/* Hover stays within palette and still contrasts */
-.dark-mode a:hover,
-.dark-mode .nav-link:hover {
+.dark-mode .cs-link:hover,
+.dark-mode .cs-toggle-link:hover {
   color: #eba352;
 }
 
@@ -4533,10 +4529,8 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 .home-proj-badge--patent {
-  top: auto;
-  bottom: 1.25rem;
-  left: 1.25rem;
   right: auto;
+  left: 1.25rem;
   background: rgba(180, 140, 80, 0.85);
   backdrop-filter: blur(8px);
 }
