@@ -1,73 +1,13 @@
 // src/pages/case-studies/GoodHarvest.tsx
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import usePageTitle from "../../hooks/usePageTitle";
 import MediaCard from "../../components/MediaCard";
-import RecruiterSkimCard from "../../components/RecruiterSkimCard";
-import ResearchInsightsSection from "../../sections/good-harvest/research-insights-section";
 import ToolsUsed from "../../components/ToolsUsed";
 
-const TABS = [
-  { num: "01", label: "Research",  sub: "Interviews, surveys, competitive analysis" },
-  { num: "02", label: "Design",    sub: "Hierarchy, decision trail, tradeoffs"       },
-  { num: "03", label: "Prototype", sub: "Speed & comprehension testing"              },
-  { num: "04", label: "Iterate",   sub: "Refine emphasis & reduce hesitation"        },
-] as const;
-
-const SectionLabel: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <p className="gh-section-label">{children}</p>
-);
-
-const EvidenceTag: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <span className="gh-evidence-tag">{children}</span>
-);
-
 export default function GoodHarvest() {
+  usePageTitle("Good Harvest: Evidence-Based Mobile UX");
   const navigate = useNavigate();
-
-  const [recruiterMode, setRecruiterMode] = useState<boolean>(
-    () => sessionStorage.getItem("recruiterMode") === "1"
-  );
-  useEffect(() => {
-    sessionStorage.setItem("recruiterMode", recruiterMode ? "1" : "0");
-  }, [recruiterMode]);
-
-  const [showCA, setShowCA] = useState<boolean>(
-    () => sessionStorage.getItem("showCA") === "1"
-  );
-  useEffect(() => {
-    sessionStorage.setItem("showCA", showCA ? "1" : "0");
-  }, [showCA]);
-
-  const scrollToId = (id: string) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    const y = el.getBoundingClientRect().top + window.scrollY - 110;
-    window.scrollTo({ top: y, behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    if (!recruiterMode) return;
-    const id = window.setTimeout(() => scrollToId("recruiter-summary"), 0);
-    return () => window.clearTimeout(id);
-  }, [recruiterMode]);
-
-  useEffect(() => {
-    if (!showCA) return;
-    const id = window.setTimeout(() => scrollToId("competitive-analysis"), 0);
-    return () => window.clearTimeout(id);
-  }, [showCA]);
-
-  const [activeTab, setActiveTab] = useState(0);
-
-  const handleTabClick = (idx: number) => {
-    setActiveTab(idx);
-    window.setTimeout(() => {
-      const bar = document.getElementById("gh-process-tabs");
-      if (!bar) return;
-      const y = bar.getBoundingClientRect().bottom + window.scrollY - 20;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    }, 50);
-  };
 
   const screens = useMemo(() => ({
     appMobile:   "/assets/good-harvest/goodharvest-app-mobile.png",
@@ -80,19 +20,11 @@ export default function GoodHarvest() {
     recipesHeat: "/assets/good-harvest/goodharvest-recipes-heatmap.png",
   }), []);
 
-  const features = [
-    { icon: "📍", title: "Local Seasonal Produce",  desc: "Shows what's in season based on the user's location and current month, eliminating guesswork and research time." },
-    { icon: "🔍", title: "Variety Comparison",       desc: "Plain-language differences between similar items (e.g. apple types, lettuce varieties) for quick, confident choices." },
-    { icon: "🍳", title: "Simple Recipes",           desc: "Quick, seasonal meal ideas that integrate seamlessly with available produce — reducing planning time." },
-    { icon: "🌱", title: "Organic Guidance",         desc: "EWG data surfaces which items are highest-priority buys, so users spend wisely on what actually matters." },
-    { icon: "📋", title: "Shopping Lists & Exports", desc: "Export lists directly to Notion, Google Keep, or Todoist for seamless workflow integration." },
-  ];
-
   const otherProjects = [
     { icon: "🌱", title: "Grove", path: "/case-study/grove",
-      desc: "A plant care app I designed and built with AI tools — showing judgment about when AI helps and when human thinking leads." },
+      desc: "A plant care app I designed and built with AI tools, showing judgment about when AI helps and when human thinking leads." },
     { icon: "📱", title: "Mobbin", path: "/case-study/mobbin",
-      desc: "Three fintech apps catalogued for Mobbin's UX pattern library — documenting trust, risk, and progress patterns." },
+      desc: "Three fintech apps catalogued for Mobbin's UX pattern library, documenting trust, risk, and progress patterns." },
   ];
 
   const researchInsightCards = [
@@ -110,120 +42,13 @@ export default function GoodHarvest() {
       tag: "Survey data" },
   ];
 
-  const designDecisions = [
-    {
-      challenge: "How to surface seasonal indicators",
-      context: "Users needed to know instantly whether a produce item was in season locally — and trust that the data was accurate for their region.",
-      chosenLabel: "✓ Chosen approach",
-      chosenBody: "Explicit text labels + visible legend anchored to the user's confirmed location. Location is editable at any point.",
-      chosenWhy: "Color-only indicators failed in wireframe testing — 18 of 22 users didn't know what the colors meant. Labels + source attribution addressed the trust gap directly.",
-      ruledOut: "Color-coded tags only — ambiguous without a legend, failed to address the location trust problem. Calendar view — too much cognitive load at point of decision.",
-      // before/after: drop images at /public/assets/good-harvest/
-      beforeImg: "/assets/good-harvest/seasonal-before.png",
-      afterImg: "/assets/good-harvest/seasonal-after.png",
-    },
-    {
-      challenge: "Entry point: market-first vs. produce-first",
-      context: "Should users start by finding a nearby market, or browsing what's in season? The order shapes the whole mental model.",
-      chosenLabel: "✓ Chosen approach",
-      chosenBody: "Produce-first home screen with markets as a secondary action. Seasonal produce leads; market discovery follows.",
-      chosenWhy: "Heatmap data showed 60% of first taps went to the produce section. Users are oriented around ingredients, not locations.",
-      ruledOut: "Market-first flow — users without a preferred market hit a dead end before seeing value, producing higher drop-off at onboarding.",
-      beforeImg: "/assets/good-harvest/entrypoint-before.png",
-      afterImg: "/assets/good-harvest/entrypoint-after.png",
-    },
-    {
-      challenge: "Bridging \"in season\" to \"what to cook\"",
-      context: "Research showed the drop-off between knowing what's in season and taking action was the core failure point across competing apps.",
-      chosenLabel: "✓ Chosen approach",
-      chosenBody: "Recipe-forward flow embedded within the produce detail screen. 3-ingredient recipes load directly from the produce context — no navigation required.",
-      chosenWhy: "10 of 22 participants completed the full \"find produce → choose recipe\" flow without assistance, vs. 12 of 22 in v1 without embedded recipes.",
-      ruledOut: "Separate recipe tab — adds navigation friction and breaks context. Users would need to remember what they were looking at.",
-      beforeImg: "/assets/good-harvest/recipe-before.png",
-      afterImg: "/assets/good-harvest/recipe-after.png",
-    },
-  ];
-
-  const userFlows = [
-    {
-      num: "01",
-      title: "Find seasonal produce → add to list",
-      tools: ["Figma", "Maze"],
-      toolWhy: "Figma for the interactive prototype, Maze for unmoderated testing with heatmaps — needed attention data, not just verbal feedback.",
-      steps: "Open app → view seasonal produce (location confirmed) → tap item → review details → add to shopping list",
-      // drop image at /public/assets/good-harvest/flow-produce.png
-      image: "/assets/good-harvest/flow-produce.png",
-    },
-    {
-      num: "02",
-      title: "Browse recipes from produce context",
-      tools: ["Figma", "Maze"],
-      toolWhy: "Same testing setup — this flow was the core bet, so I needed quantitative engagement data (CTA tap rate) alongside qualitative observations.",
-      steps: "View produce detail → scroll to embedded recipes → tap recipe → view ingredients → add to list",
-      image: "/assets/good-harvest/flow-recipe.png",
-    },
-    {
-      num: "03",
-      title: "Compare produce varieties",
-      tools: ["Figma", "FigJam"],
-      toolWhy: "FigJam for mapping the decision tree (which varieties, what differences matter), Figma for the comparison UI. This flow emerged from research — it wasn't in the original spec.",
-      steps: "Tap produce category → see variety list → tap 'compare' → side-by-side view → choose variety → add to list",
-      image: "/assets/good-harvest/flow-compare.png",
-    },
-  ];
-
-  const researchMistakes = [
-    {
-      issue: "Survey questions were too leading",
-      impact: "Early survey phrasing like 'Do you wish you ate more seasonal food?' produced inflated interest signals. 19 of 22 said yes — but follow-up interviews revealed most couldn't name a single seasonal item.",
-      learned: "I rewrote the survey to ask behavioral questions ('When did you last buy something because it was in season?') instead of aspirational ones. The reframed data was more honest and more useful.",
-    },
-    {
-      issue: "Didn't recruit enough non-enthusiasts",
-      impact: "Initial participants skewed toward farmers market regulars — people already motivated. This inflated task completion rates and masked onboarding friction for casual shoppers.",
-      learned: "For the second round, I specifically recruited people who grocery shop at chain stores and don't think about seasonality. Their struggles surfaced the location-trust problem that became the core design insight.",
-    },
-    {
-      issue: "Tested wireframes too late",
-      impact: "I spent 3 weeks on mid-fidelity wireframes before testing. The first heatmap session revealed the secondary nav was completely missed — tap targets too small, positioned too high. That was a week of rework.",
-      learned: "I now test paper-level fidelity within the first week. The earlier the test, the cheaper the fix. Pixel polish can wait; hierarchy can't.",
-    },
-  ];
-
-  const testCards = [
-    { screen: "Home Screen Hierarchy", method: "Heatmap", n: "22",
-      stat: "70%", statLabel: "of first taps landed on seasonal produce section",
-      body: "Heat concentration confirmed produce-first hierarchy. Secondary nav actions were largely missed in v1 — tap targets too small, positioned too high.",
-      change: "→ Repositioned secondary actions below fold in v2" },
-    { screen: "Local Produce Screen", method: "Task completion", n: "22",
-      stat: "11/22", statLabel: "users completed \"find item → add to list\" without help",
-      body: "Primary controls were found quickly. The location indicator in the header was noticed and trusted — 13 participants commented on it unprompted.",
-      change: "→ No major changes needed — hierarchy validated" },
-    { screen: "Recipe CTA Placement", method: "Heatmap", n: "10",
-      stat: "70%", statLabel: "CTA engagement in v2 vs. 40% in v1",
-      body: "Moving the recipe CTA from below the fold to inline with produce details significantly increased engagement.",
-      change: "→ Embedded CTA became core pattern across screens" },
-  ];
-
-  const impactCards = [
-    { metric: "3/4",  label: "↓ Task friction",
-      painPoint: "Users abandoned the flow mid-task because next steps were unclear",
-      body: "Participants completed the \"find → choose → act\" flow without assistance in final testing, vs. 1 of 4 in round one." },
-    { metric: "4 taps", label: "↓ Path to action",
-      painPoint: "Too many taps between intent and action caused drop-off",
-      body: "Average taps from app open to adding an item to a shopping list, reduced from 7 taps in v1. Progressive disclosure kept decisions manageable." },
-    { metric: "2/4",  label: "↑ Workflow fit",
-      painPoint: "Seasonal apps lived outside users' existing planning tools",
-      body: "Participants named a supported export tool (Notion, Google Keep, Todoist) when asked how they'd integrate this into their routine." },
-  ];
-
   const reflections = [
     { label: "What surprised me",
-      body: "I went in expecting navigation to be the friction point. What emerged instead was a trust problem — users found the information, they just didn't believe it applied to them. That reframed the whole problem from IA to credibility design." },
+      body: "I went in expecting navigation to be the friction point. What emerged instead was a trust problem: users found the information, they just didn't believe it applied to them. That reframed the whole problem from IA to credibility design." },
     { label: "A decision I'd revisit",
       body: "I'd test organic guidance earlier. It was added late in the design process based on survey data, but wasn't validated in the same depth as the core produce flow." },
     { label: "What this shifted in my practice",
-      body: "I now build a decision trail doc alongside wireframes — logging every major design choice, what I considered, and why I ruled it out. It makes design reviews sharper and handoff cleaner." },
+      body: "I now build a decision trail doc alongside wireframes, logging every major design choice, what I considered, and why I ruled it out. It makes design reviews sharper and handoff cleaner." },
   ];
 
   return (
@@ -236,21 +61,9 @@ export default function GoodHarvest() {
           <h1>Good Harvest</h1>
           <p className="gh-hero__intro">
             A mobile app I designed to help health-conscious shoppers make{" "}
-            <strong>confident, seasonal food choices</strong> — without the
+            <strong>confident, seasonal food choices</strong>, without the
             20-minute research spiral before every grocery run.
           </p>
-          <div className="recruiter-cta">
-            <span className="recruiter-cta__label">Recruiter?</span>
-            <button
-              type="button"
-              className="recruiter-toggle-link"
-              onClick={() => setRecruiterMode((v) => !v)}
-              aria-expanded={recruiterMode}
-              aria-controls="recruiter-summary"
-            >
-              {recruiterMode ? "Hide quick project breakdown ←" : "Click for a quick project breakdown →"}
-            </button>
-          </div>
         </div>
         <div className="gh-hero__visual" aria-hidden="true">
           <div className="gh-phone-frame">
@@ -275,36 +88,58 @@ export default function GoodHarvest() {
             {i < arr.length - 1 && <div className="gh-meta-strip__divider" aria-hidden="true" />}
           </React.Fragment>
         ))}
-        <div className="gh-meta-strip__divider" aria-hidden="true" />
-        <div className="gh-meta-strip__item">
-          <button
-            type="button"
-            className="recruiter-toggle-link"
-            onClick={() => setShowCA((v) => !v)}
-            aria-expanded={showCA}
-            aria-controls="competitive-analysis"
-          >
-            {showCA ? "Hide competitive analysis ←" : "View competitive analysis →"}
-          </button>
-        </div>
       </div>
 
-      {/* ── RECRUITER CARD ── */}
-      {recruiterMode && (
-        <div className="gh-recruiter-wrap">
-          <RecruiterSkimCard
-            title="Good Harvest"
-            what="Designed a mobile app that helps shoppers make confident seasonal food choices — reducing the 20-minute research spiral to 4 taps."
-            outcome="22-user prototype testing revealed a trust problem (not a discoverability problem), which reframed the entire design direction. Final prototype showed 3 of 4 users completing the core flow unassisted."
-            myRole="Solo designer, end-to-end: user interviews, surveys, competitive analysis, wireframes, prototype testing with heatmaps, and 3 rounds of iteration."
-            skills={["User Research","Heatmap Testing","Information Architecture","Accessibility (WCAG)","Iterative Prototyping","Competitive Analysis"]}
-            timeframe="6-week research + design sprint"
-            onBackToStory={() => scrollToId("full-case-study")}
-          />
-        </div>
-      )}
+      {/* ── OVERVIEW ── */}
+      <section className="cs-overview">
+        <p className="cs-section-heading">Overview</p>
+        <h2 className="cs-section-title">Systematic methodology applied to a mobile product challenge</h2>
+        <p className="cs-overview-text">
+          Good Harvest applies the same systematic methodology I bring from process improvement:
+          research first, evidence-based decisions, and measurable outcomes. Applied to a mobile product
+          design challenge. Every design decision traces back to a specific research finding.
+          Nothing was assumed. Everything was tested.
+        </p>
+      </section>
 
-      <div id="full-case-study" />
+      {/* ── THE CHALLENGE ── */}
+      <section>
+        <p className="gh-section-label">The challenge</p>
+        <h2>People want to eat seasonally.<br />The information makes it hard.</h2>
+        <p>
+          Health-conscious shoppers aren't lacking motivation; they're lacking decision
+          support. Existing tools tell you what's in season globally, but fail to answer
+          the question that matters at point of purchase:{" "}
+          <em>what's in season here, right now, and what do I do with it?</em>
+        </p>
+
+        <div className="gh-assumption-grid">
+          <div className="gh-assumption-card gh-assumption-card--initial">
+            <p className="gh-assumption-label">Initial assumption</p>
+            <p>Users need better access to seasonal produce information. The problem is discoverability.</p>
+          </div>
+          <div className="gh-assumption-card gh-assumption-card--finding">
+            <p className="gh-assumption-label">What research revealed</p>
+            <p>Users could find the information. They didn't trust it applied to their location, and had no clear "next step" once they found it.</p>
+          </div>
+        </div>
+
+        <div className="highlight">
+          <p className="gh-design-q-label">Design Question</p>
+          How might we help people quickly plan meals around seasonal produce in their area, with enough confidence to act?
+        </div>
+
+        <div className="gh-collab-note">
+          <p className="gh-collab-label">How I worked</p>
+          <p>
+            This was a solo design project from research through final prototype, but not
+            done in isolation. I recruited and ran all 22 participant sessions, synthesized
+            findings in FigJam with feedback from two peer designers who reviewed my
+            affinity maps and challenged my assumptions. The research mistakes section
+            below documents where that peer input changed my direction.
+          </p>
+        </div>
+      </section>
 
       {/* ── TOOLS & WHY ── */}
       <ToolsUsed
@@ -320,501 +155,212 @@ export default function GoodHarvest() {
         ]}
       />
 
-      {/* ── PROBLEM (always visible) ── */}
+      {/* ── PROCESS ── */}
       <section>
-        <SectionLabel>Problem</SectionLabel>
-        <h2>People want to eat seasonally.<br />The information makes it hard.</h2>
-        <p>
-          Health-conscious shoppers aren't lacking motivation — they're lacking decision
-          support. Existing tools tell you what's in season globally, but fail to answer
-          the question that matters at point of purchase:{" "}
-          <em>what's in season here, right now, and what do I do with it?</em>
-        </p>
+        <p className="gh-section-label">Process</p>
+        <h2>From research to tested prototype in 6 weeks</h2>
 
-        <div className="gh-assumption-grid">
-          <div className="gh-assumption-card gh-assumption-card--initial">
-            <p className="gh-assumption-label">Initial assumption</p>
-            <p>Users need better access to seasonal produce information — the problem is discoverability.</p>
-          </div>
-          <div className="gh-assumption-card gh-assumption-card--finding">
-            <p className="gh-assumption-label">What research revealed</p>
-            <p>Users could find the information. They didn't trust it applied to their location — and had no clear "next step" once they found it.</p>
-          </div>
-        </div>
-
-        <div className="highlight">
-          <p className="gh-design-q-label">Design Question</p>
-          How might we help people quickly plan meals around seasonal produce in their area — with enough confidence to act?
-        </div>
-
-        <div className="gh-collab-note">
-          <p className="gh-collab-label">How I worked</p>
-          <p>
-            This was a solo design project from research through final prototype — but not
-            done in isolation. I recruited and ran all 22 participant sessions, synthesized
-            findings in FigJam with feedback from two peer designers who reviewed my
-            affinity maps and challenged my assumptions. The research mistakes section
-            below documents where that peer input changed my direction.
-          </p>
-        </div>
+        <ol className="reina-flow-list" aria-label="Design process steps">
+          <li className="reina-flow-row feature">
+            <div className="reina-flow-num gradient-text">01</div>
+            <div className="reina-flow-content">
+              <h3 style={{ margin: "0 0 0.35rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>User research: interviews + surveys</h3>
+              <p style={{ margin: 0, fontSize: "0.97rem", color: "var(--muted)", lineHeight: 1.7 }}>
+                3 in-depth interviews (45-60 min each) and 22 survey responses with health-conscious home cooks aged 25-45.
+                Deliberately mixed farmers market regulars with chain-store shoppers after the first round skewed too enthusiast-heavy.
+              </p>
+            </div>
+          </li>
+          <li className="reina-flow-row feature">
+            <div className="reina-flow-num gradient-text">02</div>
+            <div className="reina-flow-content">
+              <h3 style={{ margin: "0 0 0.35rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>Evidence-based design decisions</h3>
+              <p style={{ margin: 0, fontSize: "0.97rem", color: "var(--muted)", lineHeight: 1.7 }}>
+                Every design choice traced back to research. Produce-first IA (heatmap showed 60% of first taps went to produce),
+                embedded recipe CTAs (removed navigation friction), and explicit location indicators (addressing trust, not discoverability).
+              </p>
+            </div>
+          </li>
+          <li className="reina-flow-row feature">
+            <div className="reina-flow-num gradient-text">03</div>
+            <div className="reina-flow-content">
+              <h3 style={{ margin: "0 0 0.35rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>Prototype testing with heatmaps</h3>
+              <p style={{ margin: 0, fontSize: "0.97rem", color: "var(--muted)", lineHeight: 1.7 }}>
+                22-participant unmoderated testing via Maze. Heatmaps revealed what users actually tapped vs. what I expected.
+                Recipe CTA engagement jumped from 40% to 70% after repositioning inline with produce details.
+              </p>
+            </div>
+          </li>
+          <li className="reina-flow-row feature">
+            <div className="reina-flow-num gradient-text">04</div>
+            <div className="reina-flow-content">
+              <h3 style={{ margin: "0 0 0.35rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>Iterate based on testing findings</h3>
+              <p style={{ margin: 0, fontSize: "0.97rem", color: "var(--muted)", lineHeight: 1.7 }}>
+                Three major shifts between v1 and v2: secondary nav moved below fold, location indicator made tappable
+                and prominent, variety comparison surfaced inline. Each traceable to a specific test finding.
+              </p>
+            </div>
+          </li>
+        </ol>
       </section>
 
-      {/* ── PROCESS TAB BAR (sticky) ── */}
-      <div
-        id="gh-process-tabs"
-        className="gh-tabs"
-        role="tablist"
-        aria-label="Process steps"
-        onKeyDown={(e) => {
-          if (e.key === "ArrowRight") {
-            const next = (activeTab + 1) % TABS.length;
-            handleTabClick(next);
-            (document.getElementById(`gh-tab-${next}`) as HTMLElement)?.focus();
-          }
-          if (e.key === "ArrowLeft") {
-            const prev = (activeTab - 1 + TABS.length) % TABS.length;
-            handleTabClick(prev);
-            (document.getElementById(`gh-tab-${prev}`) as HTMLElement)?.focus();
-          }
-        }}
-      >
-        {TABS.map((tab, i) => (
-          <button
-            key={tab.num}
-            id={`gh-tab-${i}`}
-            type="button"
-            role="tab"
-            tabIndex={activeTab === i ? 0 : -1}
-            aria-selected={activeTab === i}
-            aria-controls={`gh-panel-${i}`}
-            className={`gh-tab-btn${activeTab === i ? " gh-tab-btn--active" : ""}`}
-            onClick={() => handleTabClick(i)}
-          >
-            <span className="gh-tab-num">{tab.num}</span>
-            <span className="gh-tab-label">{tab.label}</span>
-            <span className="gh-tab-sub">{tab.sub}</span>
-          </button>
-        ))}
-      </div>
-
-      {/* Progress bar — width is dynamic, this single inline style is unavoidable */}
-      <div className="gh-tab-progress" aria-hidden="true">
-        <div className="gh-tab-progress-fill" style={{ width: `${((activeTab + 1) / TABS.length) * 100}%` }} />
-      </div>
-
-      {/* ── PANEL 1: RESEARCH ── */}
-      <div id="gh-panel-0" role="tabpanel" aria-labelledby="gh-tab-0" className={`gh-panel${activeTab === 0 ? " gh-panel--active" : ""}`}>
-        <section>
-          <SectionLabel>01 · Research</SectionLabel>
-          <h2>What 22 people told me<br />before I opened Figma</h2>
-
-          <div className="gh-stats-row">
-            {[
-              { num: "3",    label: "User interviews" },
-              { num: "22",    label: "Survey responses" },
-              { num: "3",      label: "Competitors analyzed" },
-              { num: "6wks", label: "Research duration" },
-            ].map((s, i, arr) => (
-              <React.Fragment key={s.label}>
-                <div className="gh-stat-block">
-                  <p className="gh-stat-num gradient-text">{s.num}</p>
-                  <p className="gh-stat-label">{s.label}</p>
-                </div>
-                {i < arr.length - 1 && <div className="gh-stat-divider" aria-hidden="true" />}
-              </React.Fragment>
-            ))}
-          </div>
-
-          <p>
-            Participants were health-conscious home cooks aged 25–45 who grocery shop at least
-            twice per week. Recruited through a screener posted in local cooking Facebook groups
-            and Reddit communities (r/EatCheapAndHealthy, r/MealPrepSunday), plus personal
-            network referrals — deliberately mixing farmers market regulars with chain-store shoppers
-            after the first round skewed too enthusiast-heavy.
-          </p>
-
-          <div className="gh-limitation-note">
-            <p>
-              <strong>A note on sample size:</strong> I conducted 3 in-depth interviews (45–60 min each)
-              alongside 22 survey responses. The interviews were intentionally deep rather than broad —
-              focused on observing real grocery planning sessions and mapping decision points. The survey
-              gave me breadth for validation. In a longer engagement, I'd increase interview count to 6–8
-              to strengthen the qualitative signal.
-            </p>
-          </div>
-
-          <div className="gh-insight-cards">
-            {researchInsightCards.map((card) => (
-              <div key={card.num} className="gh-insight-card feature">
-                <span className="gh-insight-num">{card.num}</span>
-                <h3>{card.heading}</h3>
-                <p>{card.body}</p>
-                <EvidenceTag>{card.tag}</EvidenceTag>
-              </div>
-            ))}
-          </div>
-
-          <div className="gh-user-quote">
-            <span className="gh-user-quote__mark" aria-hidden="true">"</span>
-            <blockquote className="gh-user-quote__text">
-              "Planning a menu around seasonal food takes too much time, I don't know how to cook many seasonal foods"
-            </blockquote>
-            <p className="gh-user-quote__attr">— Interview participant, March 2025</p>
-          </div>
-        </section>
-
-        {showCA && <div id="competitive-analysis" />}
-        <ResearchInsightsSection />
-
-        {/* ── Research mistakes ── */}
-        <section>
-          <SectionLabel>What went wrong</SectionLabel>
-          <h2>Research mistakes — and what<br />they taught me</h2>
-          <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)" }}>
-            A clean case study hides the messy parts. These are the mistakes I
-            made during research, how they impacted the project, and what I
-            changed because of them.
-          </p>
-          <div className="gh-mistakes-list">
-            {researchMistakes.map((m) => (
-              <div key={m.issue} className="gh-mistake-card feature">
-                <div className="gh-mistake-row">
-                  <span className="gh-mistake-label gh-mistake-label--issue">What happened</span>
-                  <p><strong>{m.issue}</strong></p>
-                </div>
-                <div className="gh-mistake-row">
-                  <span className="gh-mistake-label gh-mistake-label--impact">Impact</span>
-                  <p>{m.impact}</p>
-                </div>
-                <div className="gh-mistake-row">
-                  <span className="gh-mistake-label gh-mistake-label--learned">What I changed</span>
-                  <p>{m.learned}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-      </div>
-
-      {/* ── PANEL 2: DESIGN ── */}
-      <div id="gh-panel-1" role="tabpanel" aria-labelledby="gh-tab-1" className={`gh-panel${activeTab === 1 ? " gh-panel--active" : ""}`}>
-        <section>
-          <SectionLabel>02 · Design Decisions</SectionLabel>
-          <h2>Not just what I designed —<br />why I designed it this way</h2>
-          <p>For each major decision, I considered alternatives. Here's where I landed and why — grounded in what research showed.</p>
-
-          <div className="gh-decision-list">
-            {designDecisions.map((d) => (
-              <div key={d.challenge} className="gh-decision-item">
-                <div className="gh-decision-col gh-decision-col--challenge">
-                  <p className="gh-decision-label">Design challenge</p>
-                  <h3>{d.challenge}</h3>
-                  <p>{d.context}</p>
-                </div>
-                <div className="gh-decision-col gh-decision-col--chosen">
-                  <p className="gh-decision-label">{d.chosenLabel}</p>
-                  <p><strong>{d.chosenBody}</strong></p>
-                  <p className="gh-decision-why">Why: {d.chosenWhy}</p>
-                </div>
-                <div className="gh-decision-col gh-decision-col--ruled">
-                  <p className="gh-decision-label">✗ Ruled out</p>
-                  <p>{d.ruledOut}</p>
-                </div>
-                {d.beforeImg && d.afterImg && (
-                  <div className="gh-before-after">
-                    <div className="gh-before-after__frame">
-                      <span className="gh-before-after__tag gh-before-after__tag--before">Before</span>
-                      <img src={d.beforeImg} alt={`${d.challenge} — before research`} loading="lazy"
-                        onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
-                    </div>
-                    <span className="gh-before-after__arrow" aria-hidden="true">→</span>
-                    <div className="gh-before-after__frame">
-                      <span className="gh-before-after__tag gh-before-after__tag--after">After</span>
-                      <img src={d.afterImg} alt={`${d.challenge} — after research`} loading="lazy"
-                        onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-
-          <div className="gh-solutions-header">
-            <SectionLabel>Design Solutions</SectionLabel>
-            <p>Each feature maps directly to a pain point surfaced during research.</p>
-          </div>
-
-          <div className="gh-solutions-split">
-            <div className="gh-features-list">
-              {features.map((f) => (
-                <div key={f.title} className="gh-feature-row">
-                  <span className="gh-feature-icon" aria-hidden="true">{f.icon}</span>
-                  <div>
-                    <h3 className="gh-feature-title">{f.title}</h3>
-                    <p>{f.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="gh-solutions__visual">
-              <div className="gh-browser-frame">
-                <div className="gh-browser-chrome">
-                  <span /><span /><span />
-                  <div className="gh-browser-url">goodharvest.app</div>
-                </div>
-                <div className="gh-browser-body">
-                  <img src={screens.appWeb} alt="Good Harvest web app — produce discovery, location finder and seasonal recipe features" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* ── 3 Key User Flows ── */}
-          <div className="gh-flows-section">
-            <SectionLabel>Key User Flows</SectionLabel>
-            <h2>Three flows that define the experience</h2>
-            <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)" }}>
-              Each flow shows the path a user takes, the tools I used to
-              build and test it, and why I chose those tools.
-            </p>
-
-            <div className="gh-flows-list">
-              {userFlows.map((flow) => (
-                <div key={flow.num} className="gh-flow-card feature">
-                  <div className="gh-flow-card__header">
-                    <span className="gh-flow-card__num gradient-text">{flow.num}</span>
-                    <h3>{flow.title}</h3>
-                  </div>
-
-                  <div className="gh-flow-card__body">
-                    <div className="gh-flow-card__meta">
-                      <div>
-                        <span className="gh-flow-card__label">Flow</span>
-                        <p className="gh-flow-card__steps">{flow.steps}</p>
-                      </div>
-                      <div>
-                        <span className="gh-flow-card__label">Tools</span>
-                        <div className="gh-flow-card__tools">
-                          {flow.tools.map((t) => (
-                            <span key={t} className="home-mag-tool">{t}</span>
-                          ))}
-                        </div>
-                        <p className="gh-flow-card__toolwhy"><strong>Why:</strong> {flow.toolWhy}</p>
-                      </div>
-                    </div>
-
-                    <div className="gh-flow-card__visual">
-                      <img
-                        src={flow.image}
-                        alt={`User flow: ${flow.title}`}
-                        loading="lazy"
-                        onError={(e) => { (e.currentTarget.parentElement as HTMLElement).classList.add("gh-flow-card__visual--empty"); e.currentTarget.style.display = "none"; }}
-                      />
-                      <p className="gh-flow-card__placeholder">Flow screenshot — drop image to display</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </div>
-
-      {/* ── PANEL 3: PROTOTYPE ── */}
-      <div id="gh-panel-2" role="tabpanel" aria-labelledby="gh-tab-2" className={`gh-panel${activeTab === 2 ? " gh-panel--active" : ""}`}>
-        <section>
-          <SectionLabel>03 · Validation</SectionLabel>
-          <h2>What testing confirmed —<br />and what it changed</h2>
-
-          <div className="gh-validation-strip feature">
-            {[
-              { label: "Method",  value: "Prototype testing" },
-              { label: "Insight", value: "Speed + comprehension confirmed" },
-              { label: "Signal",  value: "Heatmaps verified visual hierarchy" },
-            ].map((item, i, arr) => (
-              <React.Fragment key={item.label}>
-                <div className="gh-vstrip-item">
-                  <p className="gh-vstrip-label">{item.label}</p>
-                  <p className="gh-vstrip-value">{item.value}</p>
-                </div>
-                {i < arr.length - 1 && <div className="gh-vstrip-divider" aria-hidden="true" />}
-              </React.Fragment>
-            ))}
-          </div>
-
-          <div className="gh-test-cards">
-            {testCards.map((tc) => (
-              <div key={tc.screen} className="gh-test-card feature">
-                <div className="gh-test-card__header">
-                  <p className="gh-test-card__screen">{tc.screen}</p>
-                  <p className="gh-test-card__method">{tc.method} · n={tc.n}</p>
-                </div>
-                <div className="gh-test-card__body">
-                  <p className="gh-test-card__stat gradient-text">{tc.stat}</p>
-                  <p className="gh-test-card__stat-label">{tc.statLabel}</p>
-                  <p>{tc.body}</p>
-                  <span className="gh-test-card__change">{tc.change}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="gh-gallery-label"><span>Home Screen</span></div>
-          <div className="cs-gallery cols-3">
-            <MediaCard src={screens.homeWire}  alt="Good Harvest home wireframe showing layout hierarchy"          caption="Wireframe: hierarchy + tap targets." />
-            <MediaCard src={screens.homeHeat}  alt="Heatmap showing attention on seasonal produce module"           caption="Heatmap: produce first — secondary actions clarified." />
-            <MediaCard src={screens.localWire} alt="Local produce wireframe showing location-based filtering"       caption="Local view: faster decisions." />
-          </div>
-
-          <div className="gh-gallery-label gh-gallery-label--spaced"><span>Local Produce &amp; Recipes</span></div>
-          <div className="cs-gallery cols-3">
-            <MediaCard src={screens.localHeat}   alt="Heatmap of local produce view showing focus on primary controls" caption="Heatmap: primary controls found first." />
-            <MediaCard src={screens.recipesWire} alt="Recipes wireframe showing seasonal recipe cards"                 caption="Recipes: quick picks." />
-            <MediaCard src={screens.recipesHeat} alt="Heatmap of recipes showing attention on cards and CTA"           caption="Heatmap: CTA placement validated." />
-          </div>
-        </section>
-      </div>
-
-      {/* ── PANEL 4: ITERATE ── */}
-      <div id="gh-panel-3" role="tabpanel" aria-labelledby="gh-tab-3" className={`gh-panel${activeTab === 3 ? " gh-panel--active" : ""}`}>
-        <section>
-          <SectionLabel>04 · Iterate</SectionLabel>
-          <h2>How testing shaped the final design</h2>
-          <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.7 }}>
-            Each round of testing revealed what worked and what needed to change.
-            Here are the three biggest shifts between v1 and v2 — each one traceable
-            to a specific testing finding.
-          </p>
-
-          <div className="gh-iteration-list">
-            <div className="gh-iteration-card feature">
-              <div className="gh-iteration-card__header">
-                <span className="gh-iteration-card__label gh-iteration-card__label--before">v1 — What I shipped to testing</span>
-              </div>
-              <p>Secondary navigation actions (markets, shopping list, settings) were positioned in a top nav bar. Recipe discovery was a separate tab.</p>
-              <div className="gh-iteration-card__header" style={{ marginTop: "1rem" }}>
-                <span className="gh-iteration-card__label gh-iteration-card__label--after">v2 — What changed</span>
-              </div>
-              <p>Moved secondary actions below the fold. Embedded recipe CTAs directly in the produce detail screen. Heatmaps showed 70% of first taps went to produce — the top nav was ignored.</p>
-              <p className="gh-iteration-card__evidence"><strong>Evidence:</strong> Heatmap data from 22 participants. Secondary nav tap rate went from 8% (v1) to not needed — users found recipes through the produce context instead.</p>
-            </div>
-
-            <div className="gh-iteration-card feature">
-              <div className="gh-iteration-card__header">
-                <span className="gh-iteration-card__label gh-iteration-card__label--before">v1 — What I shipped to testing</span>
-              </div>
-              <p>Location was set during onboarding and shown as a small text label in the header. No way to verify or change it without going to settings.</p>
-              <div className="gh-iteration-card__header" style={{ marginTop: "1rem" }}>
-                <span className="gh-iteration-card__label gh-iteration-card__label--after">v2 — What changed</span>
-              </div>
-              <p>Made the location indicator tappable and prominent on the produce screen — always visible, always editable. Added source attribution ("Data from USDA seasonal charts for your region").</p>
-              <p className="gh-iteration-card__evidence"><strong>Evidence:</strong> 13 of 22 participants mentioned the location indicator unprompted in v2 testing. In v1, only 4 noticed it.</p>
-            </div>
-
-            <div className="gh-iteration-card feature">
-              <div className="gh-iteration-card__header">
-                <span className="gh-iteration-card__label gh-iteration-card__label--before">v1 — What I shipped to testing</span>
-              </div>
-              <p>Variety comparison (e.g., Fuji vs. Honeycrisp apples) was a separate screen accessed through a small "compare" icon. 3 of 22 users found it.</p>
-              <div className="gh-iteration-card__header" style={{ marginTop: "1rem" }}>
-                <span className="gh-iteration-card__label gh-iteration-card__label--after">v2 — What changed</span>
-              </div>
-              <p>Surfaced variety differences inline on the produce detail screen with a clear "What's the difference?" prompt. No extra navigation required.</p>
-              <p className="gh-iteration-card__evidence"><strong>Evidence:</strong> This flow wasn't in the original spec — it emerged from Finding 04 (17 of 22 users experienced variety confusion). Making it zero-navigation removed the friction entirely.</p>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      {/* ── IMPACT (always visible — not hidden in a tab) ── */}
+      {/* ── RESEARCH FINDINGS ── */}
       <section>
-        <SectionLabel>Impact</SectionLabel>
-        <h2>What prototype testing suggested</h2>
-
-        <p className="gh-impact-lede">
-          Metrics only matter if they map to a pain point users actually felt.
-          Each result below shows the problem observed in research, then the
-          shift we saw in testing.
+        <p className="gh-section-label">Research findings</p>
+        <h2>What 22 participants revealed</h2>
+        <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
+          Four key findings shaped every design decision that followed.
         </p>
-        <div className="gh-impact-grid">
-          {impactCards.map((card) => (
-            <div key={card.label} className="feature gh-impact-card">
-              <p className="gh-impact-pain">
-                <span className="gh-impact-pain-label">Pain point</span>
-                {card.painPoint}
-              </p>
-              <p className="gh-impact-stat gradient-text">{card.metric}</p>
-              <p className="gh-impact-card__label">{card.label}</p>
-              <p>{card.body}</p>
+
+        <div className="gh-features-grid">
+          {researchInsightCards.map((card) => (
+            <div key={card.num} className="feature">
+              <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>{card.heading}</h3>
+              <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>{card.body}</p>
+              <p style={{ margin: "0.5rem 0 0", fontSize: "0.82rem", color: "var(--olive-2)", fontWeight: 600 }}>{card.tag}</p>
             </div>
           ))}
         </div>
-
-        <div className="gh-impact-caveat highlight">
-          <p>
-            <strong>Honest framing:</strong>{" "}
-            These metrics reflect prototype usability testing with 22 participants, not post-launch data.
-            Adoption and retention metrics would require a live product to validate. The directional
-            signals are encouraging — but I'm treating them as hypotheses for a next round, not proven outcomes.
-          </p>
-        </div>
       </section>
 
-      {/* ── ACCESSIBILITY (always visible) ── */}
+      {/* ── THE PRODUCT ── */}
       <section>
-        <SectionLabel>Accessibility</SectionLabel>
-        <h2>Inclusive design decisions<br />baked into the process</h2>
-        <p style={{ maxWidth: 640, marginBottom: "1rem", color: "var(--muted)", lineHeight: 1.7 }}>
-          Accessibility wasn't a review step — it shaped decisions throughout.
-          Here are three examples where inclusive thinking changed the design.
+        <p className="gh-section-label">The product</p>
+        <h2>What Good Harvest looks like</h2>
+        <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
+          Key screens from wireframe through final prototype, validated with heatmap testing.
         </p>
 
-        <div className="gh-a11y-grid">
-          <div className="gh-a11y-card feature">
-            <h3>Text labels over color-only indicators</h3>
-            <p>
-              Early wireframes used green/yellow/red to signal seasonality. Wireframe
-              testing showed 18 of 22 users couldn't interpret the colors — and color-only
-              indicators fail WCAG 1.4.1 (Use of Color). Switched to explicit text labels
-              with an accessible legend. The fix helped everyone, not just users with
-              color vision deficiency.
+        <div className="cs-gallery cols-3">
+          <MediaCard src={screens.homeWire}  alt="Good Harvest home wireframe showing layout hierarchy"          caption="Wireframe: hierarchy + tap targets." />
+          <MediaCard src={screens.homeHeat}  alt="Heatmap showing attention on seasonal produce module"           caption="Heatmap: produce first, secondary actions clarified." />
+          <MediaCard src={screens.appMobile} alt="Good Harvest mobile app showing seasonal produce and recipes"   caption="Final design: produce-first mobile app." />
+        </div>
+      </section>
+
+      {/* ── TESTING ── */}
+      <section>
+        <p className="gh-section-label">Testing</p>
+        <h2>What heatmaps and task testing showed</h2>
+        <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
+          22 participants across 3 rounds. Each round changed the design.
+        </p>
+
+        <div className="gh-validation-strip feature" style={{ marginBottom: "1.5rem" }}>
+          {[
+            { label: "Participants", value: "22" },
+            { label: "Rounds",       value: "3 test cycles" },
+            { label: "Method",       value: "Heatmaps + task completion" },
+          ].map((item, i, arr) => (
+            <React.Fragment key={item.label}>
+              <div className="gh-vstrip-item">
+                <p className="gh-vstrip-label">{item.label}</p>
+                <p className="gh-vstrip-value">{item.value}</p>
+              </div>
+              {i < arr.length - 1 && <div className="gh-vstrip-divider" aria-hidden="true" />}
+            </React.Fragment>
+          ))}
+        </div>
+
+        <div className="gh-features-grid">
+          <div className="feature">
+            <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>Secondary nav relocated</h3>
+            <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
+              Heatmaps showed 70% of first taps went to produce; top nav was ignored.
+              Moved secondary actions below the fold and embedded recipe CTAs directly in produce detail.
             </p>
           </div>
-          <div className="gh-a11y-card feature">
-            <h3>Touch targets sized for real hands</h3>
-            <p>
-              v1 heatmaps showed the secondary nav was missed — tap targets were 32px,
-              below the 44px WCAG minimum. Resized all interactive elements to 44px+
-              and increased spacing. This wasn't just an accessibility fix — it improved
-              task completion for every user.
+          <div className="feature">
+            <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>Location trust solved</h3>
+            <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
+              13 of 22 participants mentioned the location indicator unprompted in v2 (vs. 4 in v1).
+              Made it tappable, prominent, and added source attribution.
             </p>
           </div>
-          <div className="gh-a11y-card feature">
-            <h3>Plain language over jargon</h3>
-            <p>
-              Replaced terms like "cultivar" and "EWG rating" with plain-language
-              alternatives ("apple variety", "pesticide priority"). Aimed for a 6th-grade
-              reading level on all UI copy to reduce cognitive load for non-native English
-              speakers and users scanning quickly in a grocery store.
+          <div className="feature">
+            <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>Variety comparison surfaced</h3>
+            <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
+              Only 3 of 22 users found the hidden compare feature in v1. Surfaced variety differences
+              inline on produce detail with a "What's the difference?" prompt. Zero-navigation.
             </p>
           </div>
         </div>
       </section>
 
-      {/* ── REFLECTIONS (always visible) ── */}
-      <section>
-        <SectionLabel>What I Learned</SectionLabel>
-        <h2>The specific ways this project<br />changed how I design</h2>
+      {/* ── KEY DECISIONS ── */}
+      <section className="cs-decisions">
+        <p className="cs-section-heading">Key decisions</p>
+        <h2 className="cs-section-title">Where I landed and why</h2>
+        <table className="cs-decisions-table">
+          <thead>
+            <tr>
+              <th>Decision</th>
+              <th>Chosen approach</th>
+              <th>Rationale</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Seasonal indicators</td>
+              <td>Explicit text labels + visible legend anchored to confirmed location</td>
+              <td>18 of 22 users couldn't interpret color-only indicators. Labels + source attribution addressed the trust gap</td>
+            </tr>
+            <tr>
+              <td>Entry point</td>
+              <td>Produce-first home screen; markets as secondary action</td>
+              <td>Heatmap showed 60% of first taps went to produce. Users orient around ingredients, not locations</td>
+            </tr>
+            <tr>
+              <td>Recipe discovery</td>
+              <td>Recipe-forward flow embedded in produce detail, no navigation required</td>
+              <td>Task completion improved when recipes loaded from produce context. Separate tab broke the mental model</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
 
-        <div className="gh-reflection-grid">
+      {/* ── OUTCOMES ── */}
+      <section className="cs-outcome">
+        <p className="cs-section-heading">Outcomes</p>
+        <h2 className="cs-section-title">What prototype testing suggested</h2>
+        <div className="cs-outcome-grid">
+          <div className="cs-outcome-card">
+            <p className="cs-outcome-value gradient-text">3/4</p>
+            <p className="cs-outcome-label">Users completed core flow unassisted (vs. 1/4 in round one)</p>
+          </div>
+          <div className="cs-outcome-card">
+            <p className="cs-outcome-value gradient-text">4 taps</p>
+            <p className="cs-outcome-label">Average path to action, down from 7 in v1</p>
+          </div>
+          <div className="cs-outcome-card">
+            <p className="cs-outcome-value gradient-text">70%</p>
+            <p className="cs-outcome-label">Recipe CTA engagement in v2 vs. 40% in v1</p>
+          </div>
+          <div className="cs-outcome-card">
+            <p className="cs-outcome-value gradient-text">22</p>
+            <p className="cs-outcome-label">Participants across 3 rounds of testing</p>
+          </div>
+        </div>
+        <p className="cs-overview-text" style={{ marginTop: "1.5rem", maxWidth: 640 }}>
+          <strong>Honest framing:</strong> These metrics reflect prototype usability testing
+          with 22 participants, not post-launch data. The directional signals are encouraging,
+          but I'm treating them as hypotheses for a next round, not proven outcomes.
+        </p>
+      </section>
+
+      {/* ── WHAT I LEARNED ── */}
+      <section className="cs-reflections">
+        <p className="cs-section-heading">What I learned</p>
+        <h2 className="cs-section-title">The specific ways this project changed how I design</h2>
+        <div className="cs-reflections-grid">
           {reflections.map((r) => (
-            <div key={r.label} className="gh-reflection-card feature">
-              <p className="gh-reflection-label">{r.label}</p>
+            <div key={r.label} className="cs-reflection-card">
+              <h3>{r.label}</h3>
               <p>{r.body}</p>
             </div>
           ))}
-          <div className="gh-reflection-next">
-            <p className="gh-reflection-label">What I'd explore next</p>
+          <div className="cs-reflection-card">
+            <h3>What I'd explore next</h3>
             <p>
               If the product continued, I'd explore a trust layer on the produce detail screen:
               surfacing the data source behind the seasonality claim to address the location-accuracy

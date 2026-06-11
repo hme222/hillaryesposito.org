@@ -1,7 +1,8 @@
 // src/pages/Home.tsx
-import React, { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useRef, useState, useMemo } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { useNavigate, Link } from "react-router-dom";
+import usePageTitle from "../hooks/usePageTitle";
 
 // ─── Orb background ──────────────────────────────────────────────────────────
 const orbStyles = `
@@ -23,90 +24,92 @@ const orbStyles = `
 `;
 
 const OrbBackground: React.FC = () => (
-  <>
+  <div aria-hidden="true">
     <style>{orbStyles}</style>
     <div style={{ position:"absolute", borderRadius:"50%", filter:"blur(80px)", width:400, height:400, top:-100, left:-100,
       background:"radial-gradient(circle, rgba(128,128,0,.22) 0%, rgba(107,142,35,.14) 50%, transparent 75%)",
-      animation:"breathe1 7s ease-in-out infinite", pointerEvents:"none", zIndex:0 }} />
+      animation:"breathe1 8s ease-in-out infinite", pointerEvents:"none", zIndex:0 }} />
     <div style={{ position:"absolute", borderRadius:"50%", filter:"blur(90px)", width:560, height:560, bottom:-160, right:-100,
       background:"radial-gradient(circle, rgba(85,107,47,.11) 0%, rgba(107,142,35,.06) 50%, transparent 75%)",
-      animation:"breathe2 9s ease-in-out infinite", pointerEvents:"none", zIndex:0 }} />
+      animation:"breathe2 11s ease-in-out infinite", pointerEvents:"none", zIndex:0 }} />
     <div style={{ position:"absolute", borderRadius:"50%", filter:"blur(60px)", width:340, height:340, bottom:-100, right:-60,
       background:"radial-gradient(circle, rgba(85,107,47,.18) 0%, rgba(107,142,35,.11) 50%, transparent 75%)",
-      animation:"breathe2 9s ease-in-out infinite", pointerEvents:"none" }} />
+      animation:"breathe2 11s ease-in-out infinite", pointerEvents:"none" }} />
     <div style={{ position:"absolute", borderRadius:"50%", filter:"blur(90px)", width:320, height:320, top:"50%", left:"50%",
       transform:"translate(-50%,-50%)",
       background:"radial-gradient(circle, rgba(128,128,0,.055) 0%, transparent 70%)",
-      animation:"breathe3 11s ease-in-out infinite", pointerEvents:"none", zIndex:0 }} />
-  </>
+      animation:"breathe3 14s ease-in-out infinite", pointerEvents:"none", zIndex:0 }} />
+  </div>
 );
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 const EXPERTISE = [
-  "Product Design", "UX Research", "Interaction Design", "Prototyping",
-  "Information Architecture", "Healthcare UX", "Accessibility (WCAG)",
-  "Journey Mapping", "Systems Thinking", "Figma", "Design Systems",
+  "Product Design", "UX Research", "Process Improvement", "Lean Six Sigma",
+  "Healthcare Systems", "AI Integration", "Interaction Design", "Accessibility (WCAG)",
+  "Workflow Optimization", "Systems Thinking", "Journey Mapping", "Design Systems",
+];
+
+const CREDENTIALS = [
+  { label: "Lean Six Sigma Green Belt", detail: "Purdue University" },
+  { label: "MHA", detail: "Rutgers University" },
+  { label: "UX Design Certified", detail: "" },
+  { label: "Army Veteran", detail: "NJ National Guard" },
+  { label: "Bilingual", detail: "English · Spanish" },
 ];
 
 type Project = {
-  num: string;
   title: string;
-  tags: string[];
+  subtitle: string;
   desc: string;
-  why: string;
-  tools: string[];
-  image?: string;
+  images?: string[];
   imageAlt?: string;
   icon?: string;
+  bg: string;
   path?: string;
   comingSoon?: boolean;
+  locked?: boolean;
 };
 
 const PROJECTS: Project[] = [
   {
-    num: "01",
-    title: "Good Harvest",
-    tags: ["Product Design", "UX Research", "Mobile App"],
-    desc: "End-to-end product design for a mobile app that helps shoppers make confident seasonal food choices — validated with 22 users, heatmaps, and iterative prototype testing.",
-    why: "Full research-to-design pipeline with quantified evidence behind every major decision.",
-    tools: ["Figma", "Maze", "FigJam"],
-    image: "/assets/good-harvest/goodharvest-app-mobile.png",
-    imageAlt: "Good Harvest mobile app screens showing seasonal produce and recipes",
-    path: "/case-study/good-harvest",
+    title: "Mobbin",
+    subtitle: "Contract · Pattern Analysis",
+    desc: "Three fintech apps catalogued at production quality for a leading UX pattern library.",
+    images: ["/assets/mobbin/kikoff.png", "/assets/mobbin/polymarket.png", "/assets/mobbin/discover.png"],
+    imageAlt: "Fintech app screens catalogued for UX pattern library",
+    bg: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
+    path: "/case-study/mobbin",
+    locked: true,
   },
   {
-    num: "02",
-    icon: "🌱",
     title: "Grove",
-    tags: ["Product Design", "AI + Design", "Full-Stack"],
-    desc: "Designed and built a plant care app using AI tools — showing where AI accelerates execution and where human design judgment leads.",
-    why: "Real evidence of AI fluency: not just 'I used AI' but 'here's where I overrode it and why.'",
-    tools: ["Claude Code", "Cursor", "Emergent"],
-    // Drop a screenshot at /public/assets/grove-hero.png to replace the icon
-    image: "/assets/grove-hero.png",
-    imageAlt: "Grove app — plant care dashboard with daily tasks and growth journal",
+    subtitle: "Product Design · AI Judgment",
+    desc: "Plant care app where every AI decision is documented — accepted or overridden.",
+    images: ["/assets/grove/grove1.png"],
+    imageAlt: "Grove plant care app",
+    bg: "linear-gradient(135deg, #1a2e1a 0%, #2d4a2d 50%, #1a3a2a 100%)",
     path: "/case-study/grove",
   },
   {
-    num: "03",
-    icon: "📱",
-    title: "Mobbin",
-    tags: ["Contract", "Content Design", "Pattern Library"],
-    desc: "Contracted by Mobbin to catalogue three fintech apps (Kikoff, Polymarket, Discover) at a professional standard — documenting the trust, risk, and progress patterns that thousands of designers reference daily.",
-    why: "Close-reading complex interfaces at production quality built fluency in fintech UX patterns.",
-    tools: ["Mobbin", "Figma", "Pattern Taxonomy"],
-    image: "/assets/mobbin/mobbin-hero.png",
-    imageAlt: "Three phones showing Kikoff, Polymarket, and Discover app screens",
-    path: "/case-study/mobbin",
+    title: "Good Harvest",
+    subtitle: "Product Design · UX Research",
+    desc: "Seasonal food app validated with 22 users across 3 rounds of heatmap testing.",
+    images: [
+      "/assets/good-harvest/goodharvest-home-wireframe.png",
+      "/assets/good-harvest/goodharvest-app-mobile.png",
+      "/assets/good-harvest/goodharvest-home-heatmap.png",
+    ],
+    imageAlt: "Good Harvest wireframe, final design, and heatmap testing",
+    bg: "linear-gradient(135deg, #2e2a1a 0%, #3d3520 50%, #2a2215 100%)",
+    path: "/case-study/good-harvest",
   },
   {
-    num: "04",
-    icon: "👑",
     title: "Hera",
-    tags: ["Product Design", "Brand Strategy", "Coming Soon"],
-    desc: "Designing a premium headband line from concept to product — applying the same research, systems thinking, and user-centered process to physical product design.",
-    why: "Proof that design thinking isn't limited to screens. Same process, different medium.",
-    tools: ["Product Design", "Brand Strategy", "Material Research"],
+    subtitle: "Product Design · Brand Strategy",
+    desc: "Premium headband line from concept to product. Same process, different medium.",
+    images: ["/assets/hera/hera_1.jpg"],
+    imageAlt: "Hera premium headband product",
+    bg: "linear-gradient(135deg, #2e1a2e 0%, #3d2040 50%, #2a1535 100%)",
     comingSoon: true,
   },
 ];
@@ -123,6 +126,10 @@ export default function Home() {
   const contactRef = useRef<HTMLElement>(null);
   const [showLuna, setShowLuna] = useState(false);
   const navigate = useNavigate();
+  const prefersReducedMotion = useReducedMotion();
+  usePageTitle();
+
+  const mobbinUnlocked = useMemo(() => sessionStorage.getItem("mobbin-unlocked") === "true", []);
 
   // Smooth-scroll helper — no hash change, no router interference
   const scrollToContact = () => {
@@ -165,11 +172,13 @@ function handleCopy() {
     return () => observer.disconnect();
   }, []);
 
-  const stagger = (delay: number) => ({
-    initial: { opacity: 0, y: 16 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.75, delay, ease: [0.2, 0.8, 0.2, 1] as any },
-  });
+  const stagger = (delay: number) => prefersReducedMotion
+    ? { initial: { opacity: 1, y: 0 }, animate: { opacity: 1, y: 0 } }
+    : {
+        initial: { opacity: 0, y: 16 },
+        animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.75, delay, ease: [0.2, 0.8, 0.2, 1] as any },
+      };
 
   return (
     <>
@@ -193,12 +202,13 @@ function handleCopy() {
             HILLARY ESPOSITO
           </motion.h1>
 
+          <motion.p className="hero-positioning hero-positioning-gradient" {...stagger(0.12)}>
+            UX Designer × Process Improvement Leader
+          </motion.p>
+
           <div className="hero-copy">
             <motion.p className="hero-description" {...stagger(0.16)}>
-              Product designer who's redesigned tools for 21,000 clinicians at
-              Memorial Sloan Kettering and managed systems for 5,000 soldiers in
-              Iraq. I bring research rigor, systems thinking, and accessibility to
-              products where confusion isn't an option.
+              Eight years redesigning healthcare systems and military logistics, with AI fluency as the edge that makes both sharper.
             </motion.p>
 
             <motion.div className="hero-actions" {...stagger(0.24)}>
@@ -207,62 +217,45 @@ function handleCopy() {
               </button>
               <button type="button" className="home-secondary-btn"
                 onClick={() => navigate("/about")}>
-                About me →
+                See my approach →
               </button>
             </motion.div>
-
-            <motion.button
-              type="button"
-              className="home-recruiter-banner"
-              {...stagger(0.32)}
-              onClick={() => {
-                const el = document.getElementById("projects");
-                if (!el) return;
-                el.scrollIntoView({ behavior: "smooth" });
-                window.dispatchEvent(new CustomEvent("open-recruiter-panel"));
-              }}
-            >
-              <span className="home-recruiter-banner__text">
-                <strong>Recruiter?</strong> Take the 90-second tour
-              </span>
-              <span className="home-recruiter-banner__arrow" aria-hidden="true">→</span>
-            </motion.button>
           </div>
         </div>
       </section>
 
       {/* ══════════════════════════════════════════
-          EXPERTISE SCROLL STRIP
+          CREDENTIALS — single inline strip
       ══════════════════════════════════════════ */}
-      <div className="home-expertise-strip" aria-label="Areas of expertise">
-        <div className="home-expertise-track">
-          {/* Duplicated for seamless loop */}
-          {[...EXPERTISE, ...EXPERTISE].map((skill, i) => (
-            <React.Fragment key={i}>
-              <span className="home-expertise-item">{skill}</span>
-              <span className="home-expertise-sep" aria-hidden="true">·</span>
-            </React.Fragment>
-          ))}
-        </div>
-      </div>
+      <section className="home-credentials-bar" aria-label="Professional credentials">
+        <p className="home-credentials-inline">
+          Lean Six Sigma Green Belt · MHA, Rutgers · UX Certified · Army Veteran · Bilingual EN/ES
+        </p>
+      </section>
 
       {/* ══════════════════════════════════════════
           2. PROOF — stats that back up the hero claim
       ══════════════════════════════════════════ */}
       <section className="section active home-proof-section" aria-label="Experience highlights">
-        <div className="home-proof-grid">
+        <motion.div
+          className="home-proof-grid"
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
+        >
           {[
-            { value: "8+",  label: "Years improving complex systems" },
-            { value: "21K+", label: "Users impacted at Memorial Sloan Kettering" },
-            { value: "25%",  label: "Improvement in task completion" },
-            { value: "60%",  label: "Reduction in logistics waste" },
+            { value: "8+",  label: "Years redesigning complex systems" },
+            { value: "21K+", label: "Clinicians impacted at MSK" },
+            { value: "85%",  label: "Faster resupply, deployed in Iraq" },
+            { value: "20%",  label: "Cost reduction: MSK EMR redesign" },
           ].map((s) => (
             <div key={s.label} className="home-proof-card">
               <p className="home-proof-value gradient-text">{s.value}</p>
               <p className="home-proof-label">{s.label}</p>
             </div>
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* ══════════════════════════════════════════
@@ -271,97 +264,119 @@ function handleCopy() {
       <section id="projects" className="section active projects home-projects-section"
         aria-label="Projects section">
 
-        <div className="home-section-header">
+        <motion.div
+          className="home-section-header"
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5, ease: [0.2, 0.8, 0.2, 1] }}
+        >
           <p className="home-eyebrow">Selected work</p>
           <h2 className="section-title home-section-title">Projects</h2>
-        </div>
+        </motion.div>
 
-        <div className="home-projects-mag">
-          {PROJECTS.map((proj) => {
+        <div className="home-projects-list">
+          {PROJECTS.map((proj, idx) => {
+            const isLocked = proj.locked && !mobbinUnlocked;
             const clickable = !!proj.path && !proj.comingSoon;
 
-            const cardContent = (
-              <>
-                <div className="home-mag-media">
-                  {proj.image ? (
-                    <img
-                      src={proj.image}
-                      alt={proj.imageAlt || proj.title}
-                      loading="lazy"
-                      onError={(e) => {
-                        const img = e.currentTarget;
-                        const fallback = img.nextElementSibling as HTMLElement | null;
-                        img.style.display = "none";
-                        if (fallback) fallback.style.display = "flex";
-                      }}
-                    />
-                  ) : null}
-                  {(proj.icon || !proj.image) && (
-                    <div
-                      className="home-mag-media__placeholder"
-                      aria-hidden="true"
-                      style={proj.image ? { display: "none" } : undefined}
-                    >
-                      <span className="home-mag-media__icon">{proj.icon || "✦"}</span>
+            const displayTitle = isLocked ? "NDA Project" : proj.title;
+            const displayDesc = isLocked
+              ? "Three fintech apps catalogued at production quality. Password required to view."
+              : proj.desc;
+
+            const cardVariants = {
+              hidden: { opacity: 0, y: 40 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.7, delay: idx * 0.1, ease: [0.2, 0.8, 0.2, 1] } },
+            };
+
+            const cardInner = (
+              <div className="home-proj-card-inner">
+                {/* ── Image area ── */}
+                <div className="home-proj-preview" style={{ background: proj.bg }}>
+                  {proj.images && !isLocked ? (
+                    <div className={`home-proj-devices ${proj.images.length > 1 ? "home-proj-devices--multi" : ""}`}>
+                      {proj.images.map((src, i) => (
+                        <div key={src} className="home-proj-device" style={{ zIndex: proj.images!.length - i }}>
+                          <img src={src} alt="" loading="lazy" />
+                        </div>
+                      ))}
+                    </div>
+                  ) : isLocked ? (
+                    <div className="home-proj-icon-display">
+                      <span>🔒</span>
+                    </div>
+                  ) : (
+                    <div className="home-proj-icon-display">
+                      <span>{proj.icon || "✦"}</span>
                     </div>
                   )}
-                  <span className="home-mag-num gradient-text" aria-hidden="true">{proj.num}</span>
-                  {proj.comingSoon && <span className="home-mag-badge">In progress</span>}
+                  {proj.comingSoon && <span className="home-proj-badge">Coming soon</span>}
+                  {isLocked && <span className="home-proj-badge">Password protected</span>}
                 </div>
 
-                <div className="home-mag-body">
-                  <div className="home-mag-tags" aria-label="Tags">
-                    {proj.tags.map((t) => (
-                      <span key={t} className="home-proj-tag">{t}</span>
-                    ))}
-                  </div>
-                  <h3 className="home-mag-title">{proj.title}</h3>
-                  <p className="home-mag-desc">{proj.desc}</p>
-                  <p className="home-mag-why"><strong>Why it matters:</strong> {proj.why}</p>
-
-                  <div className="home-mag-tools" aria-label="Tools used">
-                    <span className="home-mag-tools__label">Tools</span>
-                    {proj.tools.map((t) => (
-                      <span key={t} className="home-mag-tool">{t}</span>
-                    ))}
-                  </div>
-
+                {/* ── Text area ── */}
+                <div className="home-proj-info">
+                  <p className="home-proj-subtitle">{proj.subtitle}</p>
+                  <h3 className="home-proj-title">{displayTitle}</h3>
+                  <p className="home-proj-desc">{displayDesc}</p>
                   {clickable ? (
-                    <span className="home-mag-cta">Read case study →</span>
+                    <span className="home-proj-cta">{isLocked ? "Unlock case study →" : "View case study →"}</span>
                   ) : (
-                    <span className="home-mag-cta home-mag-cta--soon">Coming soon</span>
+                    <span className="home-proj-cta home-proj-cta--soon">Coming soon</span>
                   )}
                 </div>
-              </>
+              </div>
             );
 
-            return clickable ? (
-              <Link
-                key={proj.num}
-                to={proj.path!}
-                className="home-mag-card"
-                aria-label={`View ${proj.title} case study`}
+            return (
+              <motion.div
+                key={proj.title}
+                variants={cardVariants}
+                initial={prefersReducedMotion ? false : "hidden"}
+                whileInView="visible"
+                viewport={{ once: true, margin: "-60px" }}
               >
-                {cardContent}
-              </Link>
-            ) : (
-              <div
-                key={proj.num}
-                className={`home-mag-card home-mag-card--soon`}
-                aria-label={`${proj.title} — coming soon`}
-              >
-                {cardContent}
-              </div>
+                {clickable ? (
+                  <Link to={proj.path!} className="home-proj-card-link" aria-label={`View ${proj.title} case study`}>
+                    {cardInner}
+                  </Link>
+                ) : (
+                  <div className="home-proj-card-link home-proj-card-link--soon" aria-label={`${proj.title}, coming soon`}>
+                    {cardInner}
+                  </div>
+                )}
+              </motion.div>
             );
           })}
         </div>
       </section>
 
       {/* ══════════════════════════════════════════
+          EXPERTISE — scrolling skills strip
+      ══════════════════════════════════════════ */}
+      <div className="home-expertise-strip" aria-label="Areas of expertise" role="marquee">
+        <div className="home-expertise-track">
+          {[...EXPERTISE, ...EXPERTISE].map((item, i) => (
+            <React.Fragment key={`${item}-${i}`}>
+              <span className="home-expertise-item">{item}</span>
+              <span className="home-expertise-sep" aria-hidden="true">·</span>
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+
+      {/* ══════════════════════════════════════════
           4. CTA STRIP
       ══════════════════════════════════════════ */}
       <section className="section active home-cta-section" aria-label="What I'm looking for">
-        <div className="about-cta">
+        <motion.div
+          className="about-cta"
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.65, ease: [0.2, 0.8, 0.2, 1] }}
+        >
           <div className="about-cta-card home-cta-card">
             {/* Left */}
             <div className="home-cta-left">
@@ -369,10 +384,10 @@ function handleCopy() {
                 What I’m looking for
               </h2>
               <p className="about-cta-content" style={{ color:"var(--muted)", lineHeight:1.8, marginBottom:"1.5rem" }}>
-               I’m looking for a product design or UX role where I can bring research, systems thinking, and real-world experience to products that help people navigate complexity with confidence.
+                I’m looking for roles where I can bring research, systems thinking, and process improvement to products that help people navigate complexity: healthcare, government, or enterprise environments where clarity directly impacts outcomes.
               </p>
               <p className="about-cta-highlight" style={{ marginBottom:"1.75rem" }}>
-                If you’re building healthcare tools, government services, or complex enterprise products — let’s talk.
+                If you’re building healthcare tools, operational systems, or complex enterprise products, and you value someone who bridges design and process improvement, let’s talk.
               </p>
               <div style={{ display:"flex", gap:"1rem", flexWrap:"wrap" }}>
                 <button type="button" className="hero-btn"
@@ -390,10 +405,10 @@ function handleCopy() {
             {/* Right: domain chips */}
             <div className="home-cta-right" aria-label="Focus areas">
               {[
-                { icon: "🏥", label: "Healthcare tech",       sub: "EHR · Clinical workflows · Patient systems" },
-                { icon: "🏛️", label: "Government services",  sub: "Civic tech · Service design · USDS" },
-                { icon: "🏢", label: "Enterprise tools",     sub: "Internal platforms · Complex workflows" },
-                { icon: "💰", label: "Fintech",              sub: "Trust patterns · High-stakes decisions" },
+                { icon: "🏥", label: "Healthcare systems",        sub: "EHR · Clinical workflows · Operational transformation" },
+                { icon: "🏛️", label: "Government services",       sub: "Civic tech · Service design · USDS" },
+                { icon: "🏢", label: "Enterprise tools",          sub: "Internal platforms · Complex workflows" },
+                { icon: "⚡", label: "Operational transformation", sub: "Process improvement · Workflow optimization" },
               ].map((d) => (
                 <div key={d.label} className="home-domain-chip feature">
                   <span style={{ fontSize:"1.3rem" }}>{d.icon}</span>
@@ -405,7 +420,7 @@ function handleCopy() {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* ══════════════════════════════════════════

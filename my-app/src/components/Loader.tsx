@@ -28,36 +28,44 @@ export default function Loader({
     gsap.set(img, { opacity: 0, scale: 1 });
     gsap.set(root, { opacity: 1 });
 
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     const tl = gsap.timeline({
-      onComplete: () => setDone(true), // React removes it (no manual DOM remove)
+      onComplete: () => setDone(true),
     });
 
-    tl.to(img, {
-      opacity: 1,
-      scale: 0.1,
-      duration: 0.6,
-      ease: "power2.out",
-    })
-      .to(
-        img,
-        {
-          rotation: 360,
-          duration: 2,
-          ease: "linear",
-          repeat: 1,
-          transformOrigin: "center",
-        },
-        0 // start at the same time as the first tween
-      )
-      .to(
-        root,
-        {
-          opacity: 0,
-          duration: 0.8,
-          ease: "power2.inOut",
-        },
-        delayMs / 1000 // convert ms → seconds for GSAP timeline position
-      );
+    if (reducedMotion) {
+      // Skip animation, just show then fade out
+      tl.set(img, { opacity: 1, scale: 0.1 })
+        .to(root, { opacity: 0, duration: 0.3, ease: "power2.inOut" }, delayMs / 1000);
+    } else {
+      tl.to(img, {
+        opacity: 1,
+        scale: 0.1,
+        duration: 0.6,
+        ease: "power2.out",
+      })
+        .to(
+          img,
+          {
+            rotation: 360,
+            duration: 2,
+            ease: "linear",
+            repeat: 1,
+            transformOrigin: "center",
+          },
+          0
+        )
+        .to(
+          root,
+          {
+            opacity: 0,
+            duration: 0.8,
+            ease: "power2.inOut",
+          },
+          delayMs / 1000
+        );
+    }
 
     return () => {
       tl.kill();

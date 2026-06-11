@@ -133,7 +133,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
         {menuOpen ? "✕" : "☰"}
       </button>
 
-      {menuOpen && <div className="nav-overlay-backdrop" onClick={close} />}
+      {menuOpen && <div className="nav-overlay-backdrop" aria-hidden="true" onClick={close} />}
 
       <ul
         id="primary-menu"

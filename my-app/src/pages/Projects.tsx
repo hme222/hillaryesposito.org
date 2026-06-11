@@ -2,17 +2,20 @@
 import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
+import usePageTitle from "../hooks/usePageTitle";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Projects() {
+  usePageTitle("Projects");
   const navigate = useNavigate();
   const rootRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const ctx = gsap.context(() => {
       gsap.utils
@@ -41,7 +44,7 @@ export default function Projects() {
       className="section active projects"
       aria-label="Projects section"
     >
-      <h2 className="section-title">PROJECTS</h2>
+      <h1 className="section-title">PROJECTS</h1>
 
       <div className="projects-grid">
         {/* Good Harvest */}
@@ -76,7 +79,7 @@ export default function Projects() {
           </div>
           <div className="project-body">
             <h3>Grove</h3>
-            <p>AI + design — plant care app.</p>
+            <p>AI + design: plant care app.</p>
           </div>
         </div>
       </div>

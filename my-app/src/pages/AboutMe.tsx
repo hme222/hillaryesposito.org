@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import usePageTitle from "../hooks/usePageTitle";
 
 // ── Stats ────────────────────────────────────────────────────────────────
 const STATS = [
@@ -9,90 +10,97 @@ const STATS = [
   { value: "60%", label: "Reduction in logistics waste" },
 ];
 
+// ── Credentials ─────────────────────────────────────────────────────────
+const CREDENTIALS = [
+  { icon: "📊", title: "Lean Six Sigma Green Belt", detail: "Purdue University" },
+  { icon: "🎓", title: "MHA", detail: "Rutgers University" },
+  { icon: "✏️", title: "UX Design Certified", detail: "" },
+  { icon: "🎖️", title: "Army Veteran", detail: "NJ National Guard" },
+  { icon: "🌐", title: "Bilingual", detail: "English · Spanish" },
+];
+
 // ── What I bring ─────────────────────────────────────────────────────────
 const AGENDA = [
   {
     icon: "🔬",
     title: "Research-first thinking",
-    desc: "I don’t start with screens. I start with how the system actually works—and where people struggle. Interviews, workflows, and edge cases come before anything visual.",
+    desc: "I map workflows and interview users before designing anything.",
   },
   {
     icon: "🧩",
     title: "Systems perspective",
-    desc: "I think in workflows, not screens. I focus on how tools, people, and processes connect—not just the interface layer.",
+    desc: "I think in workflows, not wireframes — people, tools, and processes together.",
   },
   {
-    icon: "⚡",
-    title: "Clarity under pressure",
-    desc: "I’ve worked in environments where confusion leads to delays or mistakes. I design to remove that so people can move with confidence.",
+    icon: "🤖",
+    title: "AI judgment",
+    desc: "I know when to use AI, how to evaluate its outputs, and where human judgment leads.",
   },
   {
     icon: "🤝",
     title: "Cross-disciplinary fluency",
-    desc: "I work comfortably with clinicians, engineers, and operators. I focus on making sure decisions translate into something usable.",
+    desc: "I translate between clinicians, engineers, and operators so decisions become usable systems.",
   },
 ];
 
 // ── Story chapters ───────────────────────────────────────────────────────
 const CHAPTERS = [
   {
-    id: "mobbin",
-    label: "Where I Am Now",
-    icon: "💻",
-    heading: "Currently studying what makes interfaces actually work.",
+    id: "army",
+    label: "Where My Foundation Was Built",
+    icon: "🎖️",
+    heading: "The Army taught me process improvement before I had the vocabulary for it.",
+    image: "/assets/about/army.jpg",
     paragraphs: [
-      "I’m currently working as a UX content designer at Mobbin, analyzing mobile UI patterns and breaking down what makes interfaces intuitive—or confusing.",
-      "I study user flows, contribute to pattern libraries, and focus on how microcopy supports clarity. It’s detail-oriented work, but those small moments are often what shape the overall experience.",
+      "As a commissioned officer in the NJ Army National Guard, I directed medical logistics for 5,000+ soldiers across 7 aid stations in 3 countries. Cut resupply time 85%, reduced spending 60%, and pioneered digital tracking in a deployed environment.",
     ],
-    callout: "Most usability issues aren’t big—they’re small moments that add up.",
+    callout: "Process failure in a combat zone isn’t an inconvenience. It’s a casualty risk.",
   },
   {
     id: "msk",
-    label: "Where I Learned UX",
+    label: "Where Process Met Design",
     icon: "🏥",
-    heading: "Healthcare showed me what clarity really means.",
+    heading: "Six years at MSK, designing for humans inside the systems I was improving.",
+    image: "/assets/about/msk.jpg",
     paragraphs: [
-      "I spent four years at Memorial Sloan Kettering working on internal tools used by 21,000+ staff—clinicians, administrators, and researchers.",
-      "I led UX research and testing, redesigned workflows, and worked on EHR-related systems. We improved task completion by 25%, but more importantly, we made systems easier to understand for people doing complex work every day.",
-      "The biggest takeaway: in healthcare, confusing systems slow people down when they can’t afford it.",
+      "Across four roles, I cut EMR costs 20%, rebuilt certification workflows for 70% efficiency gains, and redesigned onboarding for 21,000+ clinicians. That’s when I realized process improvement and design are the same discipline.",
     ],
     callout: "Clarity isn’t optional when people rely on the system to do their job.",
   },
   {
-    id: "army",
-    label: "Where My Foundation Was Built",
-    icon: "🎖️",
-    heading: "The Army taught me how systems break—and how to fix them.",
+    id: "now",
+    label: "Where I Am Now",
+    icon: "💻",
+    heading: "UX design, process improvement, and AI — unified.",
+    image: "/assets/about/now.jpg",
     paragraphs: [
-      "While working in healthcare, I was also serving in the Army National Guard. In 2024, I deployed to Iraq as a logistics officer, managing supply systems for over 5,000 soldiers.",
-      "We improved coordination by 15% and reduced waste by 60%. But the bigger lesson was operational: when systems aren’t clear, people feel it immediately.",
-      "That experience shapes how I approach design—I prioritize clarity, structure, and reliability over everything else.",
+      "Today I bring both disciplines together through UX and service design, with AI fluency as the edge. I focus on where AI fits into workflows responsibly, in ways frontline staff will actually trust and adopt.",
     ],
-    callout: "Good systems remove friction before it becomes a problem.",
+    callout: "Design for the humans in the system, and the metrics follow.",
   },
 ];
 
 // ── Skills ───────────────────────────────────────────────────────────────
 const SKILLS = [
   {
-    group: "Research",
-    items: ["Usability testing", "Heuristic evaluation", "Interviewing", "Journey mapping"],
+    group: "Research & Strategy",
+    items: ["Usability testing", "Heuristic evaluation", "Interviewing", "Journey mapping", "Competitive analysis"],
   },
   {
-    group: "Design",
-    items: ["Prototyping", "Interaction design", "Design systems", "Microcopy"],
+    group: "Design & Prototyping",
+    items: ["Interaction design", "Design systems", "Prototyping", "Information architecture", "Microcopy"],
   },
   {
-    group: "Tools",
-    items: ["Figma", "FigJam", "Miro", "Notion", "ChatGPT", "Claude", "Emergent", "Cursor", "v0"],
+    group: "Process Improvement",
+    items: ["Lean Six Sigma", "Workflow optimization", "Change management", "Stakeholder alignment", "Operational transformation"],
   },
   {
-    group: "Technical",
-    items: ["HTML / CSS", "React", "Javascript", "SQL basics", "Accessibility"],
+    group: "AI Integration",
+    items: ["AI output evaluation", "Human-AI workflow design", "Responsible AI adoption", "AI-assisted research synthesis", "Build vs. buy assessment"],
   },
   {
-    group: "AI for UX",
-    items: ["AI prompting", "Product thinking", "Fast decision-making", "AI-assisted research synthesis", "Prompt-driven prototyping", "Human-AI interaction design"],
+    group: "Tools & Technical",
+    items: ["Figma", "FigJam", "HTML / CSS", "React", "SQL basics", "Accessibility (WCAG)"],
   },
 ];
 
@@ -106,7 +114,7 @@ const HOBBIES = [
   {
     icon: "📚",
     title: "Reading",
-    desc: "Reading keeps me grounded—every system is someone else’s experience.",
+    desc: "Reading keeps me grounded; every system is someone else’s experience.",
   },
   {
     icon: "🐱",
@@ -116,6 +124,7 @@ const HOBBIES = [
 ];
 
 export default function About() {
+  usePageTitle("About");
   const navigate = useNavigate();
   const lunaRef = useRef<HTMLDivElement>(null);
 
@@ -146,17 +155,23 @@ export default function About() {
       {/* ═ HERO ═════════════════════════════════════════════════════ */}
       <section className="about-hero">
         <div className="about-hero-content">
-          <p className="about-intro">Product Designer. Systems thinker. Veteran.</p>
+          <p className="about-intro">UX Designer × Process Improvement Leader. Veteran.</p>
 
           <h1 className="about-title">
-            I design systems for people who don’t have time to figure things out.
+            I redesign how people and processes work together, in systems where confusion isn’t an option.
           </h1>
 
           <p className="about-hero-subtext">
-            8+ years inside healthcare systems, military logistics, and digital
-            products — designing under conditions where confusion isn’t an option
-            and clarity directly impacts outcomes.
+            Eight years inside healthcare operations, military logistics, and digital products, bridging design and process improvement with AI fluency as the edge that makes both sharper.
           </p>
+        </div>
+
+        <div className="about-hero-photo">
+          <img
+            src="/assets/about/headshot.jpg"
+            alt="Hillary Esposito"
+            className="about-headshot"
+          />
         </div>
       </section>
 
@@ -167,6 +182,30 @@ export default function About() {
             <div key={s.label} className="about-stat-card feature">
               <p className="about-stat-value gradient-text">{s.value}</p>
               <p className="about-stat-label">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ═ CREDENTIALS ═════════════════════════════════════════════ */}
+      <section className="about-credentials" aria-label="Credentials">
+        <div className="about-credentials__header">
+          <p className="about-agenda__eyebrow">Credentials</p>
+          <h2 className="about-growth-title">Background and qualifications</h2>
+        </div>
+
+        <div className="about-credentials__grid">
+          {CREDENTIALS.map((cred) => (
+            <div key={cred.title} className="about-credential-card feature">
+              <span className="about-credential-card__icon" aria-hidden="true">
+                {cred.icon}
+              </span>
+              <div className="about-credential-card__text">
+                <p className="about-credential-card__title">{cred.title}</p>
+                {cred.detail && (
+                  <p className="about-credential-card__detail">{cred.detail}</p>
+                )}
+              </div>
             </div>
           ))}
         </div>
@@ -215,6 +254,12 @@ export default function About() {
                   <h3 className="about-story-card__heading">{chapter.heading}</h3>
                 </div>
               </div>
+
+              {chapter.image && (
+                <div className="about-story-card__image">
+                  <img src={chapter.image} alt="" loading="lazy" />
+                </div>
+              )}
 
               <div className="about-story-card__body">
                 {chapter.paragraphs.map((paragraph) => (
@@ -284,18 +329,11 @@ export default function About() {
       {/* ═ CTA ══════════════════════════════════════════════════════ */}
       <section className="about-cta">
         <div className="about-cta-card">
-          <h2 className="about-cta-title">Looking for work that matters.</h2>
+          <h2 className="about-cta-title">Looking for work where systems meet people.</h2>
 
           <div className="about-cta-content">
             <p>
-              I’m looking for a product design or UX role at a healthcare, gov tech,
-              fintech, or enterprise company — somewhere the product directly affects
-              how people do high-stakes work.
-            </p>
-            <p>
-              I bring research rigor, accessibility expertise, and the kind of
-              systems thinking you build from redesigning tools for 21,000 clinicians
-              and managing logistics for 5,000 soldiers.
+              I’m looking for roles where research, systems thinking, and process improvement meet products that help people navigate complexity — healthcare, government, or enterprise.
             </p>
           </div>
 

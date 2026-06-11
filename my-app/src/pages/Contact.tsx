@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import usePageTitle from "../hooks/usePageTitle";
 
 export default function Contact() {
+  usePageTitle("Contact");
   const [copied, setCopied] = useState(false);
   const email = "espositohillary@gmail.com";
 
