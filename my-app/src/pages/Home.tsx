@@ -68,6 +68,7 @@ type Project = {
   path?: string;
   comingSoon?: boolean;
   locked?: boolean;
+  patentPending?: boolean;
 };
 
 const PROJECTS: Project[] = [
@@ -111,6 +112,7 @@ const PROJECTS: Project[] = [
     imageAlt: "Hera premium headband product",
     bg: "linear-gradient(135deg, #2e1a2e 0%, #3d2040 50%, #2a1535 100%)",
     comingSoon: true,
+    patentPending: true,
   },
 ];
 
@@ -313,6 +315,7 @@ function handleCopy() {
                   )}
                   {proj.comingSoon && <span className="home-proj-badge">Coming soon</span>}
                   {isLocked && <span className="home-proj-badge">Password protected</span>}
+                  {proj.patentPending && <span className="home-proj-badge home-proj-badge--patent">Patent Pending</span>}
                 </div>
 
                 {/* ── Text area ── */}

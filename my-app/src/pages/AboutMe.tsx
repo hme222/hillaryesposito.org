@@ -66,6 +66,11 @@ const CHAPTERS = [
       "Across four roles, I cut EMR costs 20%, rebuilt certification workflows for 70% efficiency gains, and redesigned onboarding for 21,000+ clinicians. That’s when I realized process improvement and design are the same discipline.",
     ],
     callout: "Clarity isn’t optional when people rely on the system to do their job.",
+    articleLink: {
+      url: "https://www.mskcc.org/news/hillary-esposito-s-career-path-military-msk",
+      title: "Hillary Esposito’s Career Path: From the Military to MSK",
+      source: "MSK News",
+    },
   },
   {
     id: "now",
@@ -272,6 +277,32 @@ export default function About() {
               <div className="about-story-card__callout">
                 <p>{chapter.callout}</p>
               </div>
+
+              {chapter.articleLink && (
+                <a
+                  href={chapter.articleLink.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="about-story-card__article-link"
+                  aria-label={`Read article: ${chapter.articleLink.title}`}
+                >
+                  <span className="about-story-card__article-icon" aria-hidden="true">
+                    📰
+                  </span>
+                  <span className="about-story-card__article-text">
+                    <span className="about-story-card__article-title">
+                      {chapter.articleLink.title}
+                    </span>
+                    <span className="about-story-card__article-source">
+                      {chapter.articleLink.source}
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" style={{ marginLeft: "0.35rem", verticalAlign: "middle" }}>
+                        <path d="M3.5 1.5H10.5V8.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M10.5 1.5L1.5 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </span>
+                  </span>
+                </a>
+              )}
             </article>
           ))}
         </div>
