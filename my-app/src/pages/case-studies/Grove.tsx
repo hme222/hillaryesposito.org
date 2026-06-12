@@ -5,10 +5,10 @@ import usePageTitle from "../../hooks/usePageTitle";
 import ToolsUsed from "../../components/ToolsUsed";
 
 const SCREENS = [
-  { icon: "🌱", label: "Onboarding / bouquet creation" },
-  { icon: "✅", label: "Daily care tasks" },
-  { icon: "📔", label: "Growth journal" },
-  { icon: "🌸", label: "AI-generated bloom reward" },
+  { image: "/assets/grove/bouquet.png", label: "Onboarding / bouquet creation", bg: "#3a3a3a" },
+  { image: "/assets/grove/care.png", label: "Daily care tasks", bg: "#f5f0e8" },
+  { image: "/assets/grove/Growth.png", label: "Growth journal", bg: "#e8edd9" },
+  { image: "/assets/grove/plantpersonality.png", label: "AI-generated plant personality", bg: "#f5f0e8" },
 ];
 
 const SOCIAL_FEATURES = [
@@ -33,15 +33,15 @@ const FLOW_STEPS = [
   { num: "01", title: "Onboard + create bouquet", desc: "User registers, picks plant types, and creates their first bouquet, the core unit of the app." },
   { num: "02", title: "Daily care tasks", desc: "Personalized watering/light/rotation tasks appear each morning based on the bouquet's plants and environment." },
   { num: "03", title: "Journal progress", desc: "Photo journal entries track growth over time, attached to specific bouquets for context." },
-  { num: "04", title: "AI-generated bloom", desc: "When care streaks hit milestones, the app generates a unique flower illustration as a reward, blending gamification with delight." },
+  { num: "04", title: "AI-generated plant personality", desc: "When care streaks hit milestones, the app generates a unique plant personality profile — a playful, AI-written character sketch that makes each plant feel personal." },
 ];
 
 const AI_DECISIONS = [
   {
-    area: "AI-generated reward illustrations",
-    whatAIDid: "Generative AI creates unique flower visuals when users hit care milestones. Each one is different, reinforcing the feeling that their plant journey is personal.",
-    whyNotManual: "Hand-illustrating hundreds of reward variants isn't scalable. AI generation makes every milestone feel unique without a design bottleneck.",
-    humanJudgment: "I defined the prompt constraints, art style, and quality bar. AI executes within those guardrails; I curate what ships.",
+    area: "AI-generated plant personalities",
+    whatAIDid: "AI generates unique personality profiles for each plant when users hit care milestones — playful character sketches that make plants feel like individuals, not inventory items.",
+    whyNotManual: "Writing hundreds of unique personality variants by hand isn't scalable. AI generation makes every plant feel personal without a content bottleneck.",
+    humanJudgment: "I defined the prompt constraints, tone, and quality bar. AI executes within those guardrails; I curate what ships.",
   },
   {
     area: "Building the full stack with AI coding tools",
@@ -206,7 +206,7 @@ export default function GroveCaseStudy() {
             <div className="reina-flow-content">
               <h3 style={{ margin: "0 0 0.35rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>IA + flow mapping</h3>
               <p style={{ margin: 0, fontSize: "0.97rem", color: "var(--muted)", lineHeight: 1.7 }}>
-                Defined the bouquet-first information architecture and mapped the core flow (onboard to first bloom) before touching any tools. This kept scope tight and prevented feature creep.
+                Defined the bouquet-first information architecture and mapped the core flow (onboard to first plant personality) before touching any tools. This kept scope tight and prevented feature creep.
               </p>
             </div>
           </li>
@@ -236,19 +236,19 @@ export default function GroveCaseStudy() {
         <p className="gh-section-label">The product</p>
         <h2>What Grove looks like</h2>
         <p style={{ maxWidth: 640, marginBottom: "0.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
-          Key screens from the working build: onboarding through your first bloom reward.
+          Key screens from the working build: onboarding through your first plant personality.
         </p>
 
         <div className="grove-screens-grid" aria-label="App screen previews">
           {SCREENS.map((screen) => (
             <div key={screen.label} className="grove-screen-item">
-              <div
-                className="grove-phone-frame"
-                role="img"
-                aria-label={`${screen.label} screen`}
-              >
-                <span className="grove-phone-frame__icon" aria-hidden="true">{screen.icon}</span>
-                <span className="grove-phone-frame__placeholder">{screen.label}</span>
+              <div className="grove-phone-frame" style={{ background: screen.bg }}>
+                <img
+                  src={screen.image}
+                  alt={`${screen.label} screen`}
+                  className="grove-phone-frame__img"
+                  loading="lazy"
+                />
               </div>
               <p className="grove-screen-label">{screen.label}</p>
             </div>
@@ -259,7 +259,7 @@ export default function GroveCaseStudy() {
       {/* ── CORE FLOW ── */}
       <section>
         <p className="gh-section-label">Core flow</p>
-        <h2>Four steps from setup to first bloom</h2>
+        <h2>Four steps from setup to first plant personality</h2>
 
         <div className="gh-validation-strip feature" style={{ marginBottom: "1.5rem" }}>
           {[
@@ -401,7 +401,7 @@ export default function GroveCaseStudy() {
             </tr>
             <tr>
               <td>Reward system</td>
-              <td>AI-generated bloom illustrations at milestones. No points, no leaderboard</td>
+              <td>AI-generated plant personalities at milestones. No points, no leaderboard</td>
               <td>Rejected AI's suggestion for XP and levels. Guilt mechanics contradict the product's emotional goal</td>
             </tr>
             <tr>
@@ -471,7 +471,7 @@ export default function GroveCaseStudy() {
               5-user moderated sessions focused on three questions: (1) Is the
               onboarding flow clear enough to complete without help? (2) Do
               daily tasks feel helpful or nagging? (3) Does the AI-generated
-              bloom reward actually motivate continued care?
+              plant personality actually motivate continued care?
             </p>
           </div>
         </div>

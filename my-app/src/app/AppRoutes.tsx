@@ -1,6 +1,6 @@
 // src/app/AppRoutes.tsx
-import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
 
 function NotFound() {
   return (
@@ -25,8 +25,18 @@ import Mobbin from "../pages/case-studies/Mobbin";
 import PasswordGate from "../components/PasswordGate";
 import { Navigate } from "react-router-dom";
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
 export default function AppRoutes() {
   return (
+    <>
+    <ScrollToTop />
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/projects" element={<Navigate to="/#projects" replace />} />
@@ -39,5 +49,6 @@ export default function AppRoutes() {
 
       <Route path="*" element={<NotFound />} />
     </Routes>
+    </>
   );
 }

@@ -193,7 +193,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
 
         <li>
           <a
-            href="/assets/Hillary-Esposito-Resume.pdf"
+            href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"
             className="nav-link nav-link--resume"
             target="_blank"
             rel="noopener noreferrer"

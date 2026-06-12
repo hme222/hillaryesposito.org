@@ -118,7 +118,7 @@ export default function RecruiterPill() {
 
                 <section className="recruiter-panel__section recruiter-panel__actions">
                   <a className="recruiter-panel__btn recruiter-panel__btn--primary"
-                     href="/assets/Hillary-Esposito-Resume.pdf"
+                     href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"
                      target="_blank"
                      rel="noopener noreferrer">
                     📄 Download resume
@@ -127,6 +127,10 @@ export default function RecruiterPill() {
                      href="mailto:espositohillary@gmail.com">
                     ✉️ Email me
                   </a>
+                  <button type="button" className="recruiter-panel__btn"
+                     onClick={() => go("/about")}>
+                    👤 About me
+                  </button>
                 </section>
               </div>
             </aside>

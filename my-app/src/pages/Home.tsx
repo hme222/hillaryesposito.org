@@ -386,11 +386,8 @@ function handleCopy() {
               <h2 className="about-cta-title" style={{ marginBottom:"1rem" }}>
                 What I’m looking for
               </h2>
-              <p className="about-cta-content" style={{ color:"var(--muted)", lineHeight:1.8, marginBottom:"1.5rem" }}>
-                I’m looking for roles where I can bring research, systems thinking, and process improvement to products that help people navigate complexity: healthcare, government, or enterprise environments where clarity directly impacts outcomes.
-              </p>
-              <p className="about-cta-highlight" style={{ marginBottom:"1.75rem" }}>
-                If you’re building healthcare tools, operational systems, or complex enterprise products, and you value someone who bridges design and process improvement, let’s talk.
+              <p className="about-cta-content" style={{ color:"var(--muted)", lineHeight:1.8, marginBottom:"1.75rem" }}>
+                I bring research, systems thinking, and process improvement to products where clarity directly impacts outcomes. If you’re building for healthcare, government, or enterprise — let’s talk.
               </p>
               <div style={{ display:"flex", gap:"1rem", flexWrap:"wrap" }}>
                 <button type="button" className="hero-btn"

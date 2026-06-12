@@ -451,13 +451,13 @@ select:focus {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2.5rem;
     width: 100vw;
     height: 100vh;
     padding: 2rem;
-    background: color-mix(in srgb, var(--surface-0) 80%, transparent);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    background: color-mix(in srgb, var(--surface-0) 70%, transparent);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
     transform: translateY(-100%);
     opacity: 0;
     pointer-events: none;
@@ -3442,9 +3442,9 @@ textarea {
 }
 
 .nav-menu {
-  background: color-mix(in srgb, var(--surface-0) 80%, transparent);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: color-mix(in srgb, var(--surface-0) 70%, transparent);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
 }
 
 /* dark mode explicit navbar stabilization */
@@ -3523,9 +3523,9 @@ html.dark-mode .nav-menu,
 body.dark-mode .nav-menu,
 .app.dark-mode .nav-menu,
 .dark-mode .nav-menu {
-  background: color-mix(in srgb, var(--surface-0) 80%, transparent);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: color-mix(in srgb, var(--surface-0) 70%, transparent);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
 }
 
 :root.dark-mode .nav-overlay-backdrop,
@@ -7904,16 +7904,37 @@ body.dark-mode .nav-overlay-backdrop,
   color: var(--fg);
 }
 
+.about-story-card__layout {
+  display: flex;
+  gap: 1.5rem;
+  align-items: stretch;
+}
 .about-story-card__image {
+  flex-shrink: 0;
+  width: 220px;
   border-radius: 12px;
   overflow: hidden;
-  margin-bottom: 0.5rem;
 }
 .about-story-card__image img {
   width: 100%;
-  height: 180px;
+  height: 100%;
   object-fit: cover;
   display: block;
+}
+.about-story-card__content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 700px) {
+  .about-story-card__layout {
+    flex-direction: column;
+  }
+  .about-story-card__image {
+    width: 100%;
+    max-height: 200px;
+  }
 }
 .about-story-card__body {
   display: flex;
@@ -8908,14 +8929,15 @@ body.dark-mode .nav-overlay-backdrop,
 /* ── Product Showcase: phone frame grid ── */
 .grove-screens-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.75rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
   margin-top: 2rem;
+  justify-items: center;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .grove-screens-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.25rem;
   }
 }
@@ -8956,6 +8978,14 @@ body.dark-mode .nav-overlay-backdrop,
   height: 5px;
   background: var(--border);
   border-radius: 99px;
+  z-index: 1;
+}
+
+.grove-phone-frame__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 26px;
 }
 
 .grove-phone-frame__icon {

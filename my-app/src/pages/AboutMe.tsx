@@ -77,7 +77,7 @@ const CHAPTERS = [
     label: "Where I Am Now",
     icon: "💻",
     heading: "UX design, process improvement, and AI — unified.",
-    image: "/assets/about/now.jpg",
+    image: "/assets/about/now.png",
     paragraphs: [
       "Today I bring both disciplines together through UX and service design, with AI fluency as the edge. I focus on where AI fits into workflows responsibly, in ways frontline staff will actually trust and adopt.",
     ],
@@ -250,32 +250,36 @@ export default function About() {
         <div className="about-story-grid">
           {CHAPTERS.map((chapter) => (
             <article key={chapter.id} className="about-story-card feature">
-              <div className="about-story-card__top">
-                <span className="about-story-card__icon" aria-hidden="true">
-                  {chapter.icon}
-                </span>
-                <div>
-                  <p className="about-story-card__label">{chapter.label}</p>
-                  <h3 className="about-story-card__heading">{chapter.heading}</h3>
+              <div className="about-story-card__layout">
+                {chapter.image && (
+                  <div className="about-story-card__image">
+                    <img src={chapter.image} alt="" loading="lazy" />
+                  </div>
+                )}
+
+                <div className="about-story-card__content">
+                  <div className="about-story-card__top">
+                    <span className="about-story-card__icon" aria-hidden="true">
+                      {chapter.icon}
+                    </span>
+                    <div>
+                      <p className="about-story-card__label">{chapter.label}</p>
+                      <h3 className="about-story-card__heading">{chapter.heading}</h3>
+                    </div>
+                  </div>
+
+                  <div className="about-story-card__body">
+                    {chapter.paragraphs.map((paragraph) => (
+                      <p key={paragraph} className="about-story-card__text">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+
+                  <div className="about-story-card__callout">
+                    <p>{chapter.callout}</p>
+                  </div>
                 </div>
-              </div>
-
-              {chapter.image && (
-                <div className="about-story-card__image">
-                  <img src={chapter.image} alt="" loading="lazy" />
-                </div>
-              )}
-
-              <div className="about-story-card__body">
-                {chapter.paragraphs.map((paragraph) => (
-                  <p key={paragraph} className="about-story-card__text">
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-
-              <div className="about-story-card__callout">
-                <p>{chapter.callout}</p>
               </div>
 
               {chapter.articleLink && (
@@ -359,31 +363,49 @@ export default function About() {
 
       {/* ═ CTA ══════════════════════════════════════════════════════ */}
       <section className="about-cta">
-        <div className="about-cta-card">
-          <h2 className="about-cta-title">Looking for work where systems meet people.</h2>
-
-          <div className="about-cta-content">
-            <p>
-              I’m looking for roles where research, systems thinking, and process improvement meet products that help people navigate complexity — healthcare, government, or enterprise.
+        <div className="about-cta-card home-cta-card">
+          <div className="home-cta-left">
+            <h2 className="about-cta-title" style={{ marginBottom: "1rem" }}>
+              What I’m looking for
+            </h2>
+            <p className="about-cta-content" style={{ color: "var(--muted)", lineHeight: 1.8, marginBottom: "1.75rem" }}>
+              I bring research, systems thinking, and process improvement to products where clarity directly impacts outcomes. If you’re building for healthcare, government, or enterprise — let’s talk.
             </p>
+            <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+              <button
+                type="button"
+                className="hero-btn"
+                style={{ fontSize: "0.9rem", padding: "1rem 2rem" }}
+                onClick={() => navigate("/contact")}
+              >
+                Get in touch
+              </button>
+              <button
+                type="button"
+                className="about-back-btn"
+                onClick={() => navigate("/")}
+                style={{ fontSize: "0.9rem" }}
+              >
+                ← View my work
+              </button>
+            </div>
           </div>
 
-          <div className="about-cta-actions">
-            <button
-              type="button"
-              className="hero-btn"
-              onClick={() => navigate("/contact")}
-            >
-              Get in touch
-            </button>
-
-            <button
-              type="button"
-              className="about-back-btn about-back-btn--outline"
-              onClick={() => navigate("/")}
-            >
-              ← View my work
-            </button>
+          <div className="home-cta-right" aria-label="Focus areas">
+            {[
+              { icon: "🏥", label: "Healthcare systems", sub: "EHR · Clinical workflows · Operational transformation" },
+              { icon: "🏛️", label: "Government services", sub: "Civic tech · Service design · USDS" },
+              { icon: "🏢", label: "Enterprise tools", sub: "Internal platforms · Complex workflows" },
+              { icon: "⚡", label: "Operational transformation", sub: "Process improvement · Workflow optimization" },
+            ].map((d) => (
+              <div key={d.label} className="home-domain-chip feature">
+                <span style={{ fontSize: "1.3rem" }}>{d.icon}</span>
+                <div>
+                  <p style={{ fontWeight: 700, fontSize: "0.9rem", margin: 0, color: "var(--fg)" }}>{d.label}</p>
+                  <p style={{ fontSize: "0.78rem", color: "var(--muted)", margin: 0 }}>{d.sub}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
