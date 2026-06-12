@@ -91,11 +91,12 @@ export default function GroveCaseStudy() {
             <strong>where AI accelerates and where human judgment leads.</strong>
           </p>
         </div>
-        <div className="gh-hero__visual" aria-hidden="true">
-          <div className="reina-hero-badge">
-            <span className="reina-hero-crown">🌱</span>
-            <span className="reina-hero-badge-label">AI + Design</span>
-          </div>
+        <div className="gh-hero__visual grove-hero-visual" aria-hidden="true">
+          <img
+            src="/assets/grove/grove1.png"
+            alt=""
+            className="grove-hero-screen"
+          />
         </div>
       </header>
 
