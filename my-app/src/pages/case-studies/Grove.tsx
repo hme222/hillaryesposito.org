@@ -11,22 +11,39 @@ const SCREENS = [
   { image: "/assets/grove/plantpersonality.png", label: "AI-generated plant personality", bg: "#f5f0e8" },
 ];
 
-const SOCIAL_FEATURES = [
+const SURVEY_FINDINGS = [
   {
-    title: "Share progress",
-    desc: "Photo updates tied to bouquets. Celebrate growth together. Sharing a visual milestone keeps the habit alive past the first week.",
-    rationale: "Design rationale: tying shares to bouquets keeps context intact. No decontextualised feed posts.",
+    stat: "74%",
+    label: "picked smart care reminders as a top-3 dealbreaker feature",
   },
   {
-    title: "Community tips",
-    desc: "Ask questions, share advice. A gentle support network for the moments when a leaf turns yellow and you don't know why.",
-    rationale: "Design rationale: framed as mutual help, not expert/novice hierarchy. Reduces the anxiety of asking 'dumb questions.'",
+    stat: "61%",
+    label: "need AI plant identification via camera",
   },
   {
-    title: "Follow plant parents",
-    desc: "See others' journeys. Inspiration without competition. No likes, no follower counts. Just growth timelines.",
-    rationale: "Design rationale: deliberately omitted engagement metrics to avoid the comparison spiral that kills casual communities.",
+    stat: "15+",
+    label: "respondents cited 'too many notifications' as an instant-delete trigger",
   },
+  {
+    stat: "2.4/5",
+    label: "average lighting confidence among new owners — the #1 skill gap",
+  },
+  {
+    stat: "9/12",
+    label: "new owners raised pet toxicity unprompted",
+  },
+];
+
+const MVP_FEATURES = [
+  { feature: "Smart care reminders", pct: 74, tier: "core" },
+  { feature: "AI plant identification (camera)", pct: 61, tier: "core" },
+  { feature: "AI photo diagnosis", pct: 45, tier: "core" },
+  { feature: "Growth photo journal", pct: 26, tier: "post" },
+  { feature: "Community forums", pct: 23, tier: "post" },
+  { feature: "Greenhouse encyclopedia", pct: 19, tier: "post" },
+  { feature: "Bulk logging", pct: 19, tier: "post" },
+  { feature: "Bouquet scanner", pct: 10, tier: "post" },
+  { feature: "Verified swapping", pct: 6, tier: "post" },
 ];
 
 const FLOW_STEPS = [
@@ -85,9 +102,9 @@ export default function GroveCaseStudy() {
           <p className="meta">Product Design · AI + Design · Full-Stack App · React · FastAPI</p>
           <h1>Grove</h1>
           <p className="gh-hero__intro">
-            Plant parents forget to care for their plants, then feel guilty about it.
-            I designed and built Grove to turn inconsistent care into a habit, and
-            used AI tools throughout to show{" "}
+            Plant parents kill their plants because care advice is generic, conflicting,
+            and untrustworthy. I surveyed 31 users, defined an MVP from their data, and
+            built a working app — using AI tools throughout to show{" "}
             <strong>where AI accelerates and where human judgment leads.</strong>
           </p>
         </div>
@@ -123,14 +140,18 @@ export default function GroveCaseStudy() {
       {/* ── OVERVIEW ── */}
       <section className="cs-overview">
         <p className="cs-section-heading">Overview</p>
-        <h2 className="cs-section-title">A real product built to answer a real question about AI</h2>
+        <h2 className="cs-section-title">Research-driven design for a plant care app — with AI as the accelerant</h2>
         <p className="cs-overview-text">
-          Grove is a plant care app I designed and built to test a thesis: where does AI accelerate
-          design execution, and where does human judgment need to lead? Every AI decision in this
-          project is documented: what it suggested, whether I accepted it, and why.
+          Grove is a plant care app I designed, researched, and built end-to-end. A 31-respondent
+          survey defined the MVP, two data-driven personas shaped every design decision, and a
+          moderated testing plan is ready to validate the hypothesis. AI tools accelerated the build —
+          and every AI decision is documented with explicit reasoning.
         </p>
         <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
-          <strong>Constraints:</strong> Solo project. 3-week timeline. No user testing yet. Shipped to validate the build; testing is next.
+          <strong>Research:</strong> 31-respondent survey (5/22–6/4/2026) · competitive analysis of 6 plant care apps · moderated testing plan (5–6 participants, ready to run).
+        </p>
+        <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
+          <strong>Constraints:</strong> Solo project. 3-week build. Prototype shipped; moderated user testing is next.
         </p>
       </section>
 
@@ -139,37 +160,33 @@ export default function GroveCaseStudy() {
         <p className="gh-section-label">The challenge</p>
         <h2>Plant parents forget. Then they feel guilty.</h2>
         <p>
-          Every design portfolio says "I'm curious about AI." I wanted to show
-          it, not say it. Grove is a real, working product that I designed
-          and shipped, using AI tools throughout the process. The case study
-          isn't about the app. It's about{" "}
-          <strong>how I think about when AI helps and when it doesn't.</strong>
-        </p>
-        <p>
-          Beginner-to-intermediate plant owners who want to keep plants alive but forget care routines.
-          People who've killed a succulent and felt guilty about it. They want to do better, but
-          care routines are inconsistent. Watering schedules get forgotten,
-          light needs are unclear, and there's no feedback loop to reinforce
-          good habits. Existing apps either overwhelm with botanical data or
-          feel like generic to-do lists.
+          New plant owners kill their plants because care information is generic, conflicting, and
+          untrustworthy — and existing apps respond by nagging rather than teaching. Every clause
+          of that statement came from the survey data:
         </p>
 
         <div className="gh-assumption-grid">
           <div className="gh-assumption-card gh-assumption-card--initial">
-            <p className="gh-assumption-label">What recruiters ask</p>
-            <p>"How do you use AI in your design process?"</p>
+            <p className="gh-assumption-label">What users said</p>
+            <p>"Advice is too generic — doesn't account for my specific home environment." Most common single frustration across all respondents.</p>
           </div>
           <div className="gh-assumption-card gh-assumption-card--finding">
-            <p className="gh-assumption-label">What this project answers</p>
-            <p>AI accelerated execution by ~3x, but every design decision (flows, hierarchy, what to build and what to cut) was mine. Here's the evidence.</p>
+            <p className="gh-assumption-label">What the data showed</p>
+            <p>"Too many notifications" was the #1 instant-delete trigger, cited 15+ times. One respondent: "Plant care should feel peaceful, not stressful."</p>
           </div>
         </div>
 
+        <p style={{ marginTop: "1.5rem" }}>
+          A secondary finding sharpened the direction: <strong>the self-reported skill gap is light, not water.</strong>{" "}
+          Lighting confidence averaged 2.4/5 among new owners. Respondents asked unprompted for an app that would
+          "tell me exactly where to place a plant in my home for the best light." No major competitor addresses this.
+        </p>
+
         <div className="highlight">
           <p className="gh-design-q-label">Design Question</p>
-          How might we help plant owners build consistent care habits, with
-          enough delight and feedback to sustain motivation beyond the first
-          week?
+          How might we help plant owners build consistent care habits through
+          trustworthy, species-specific guidance — with calm notifications and
+          lighting education as the differentiators?
         </div>
       </section>
 
@@ -187,49 +204,150 @@ export default function GroveCaseStudy() {
         ]}
       />
 
-      {/* ── PROCESS ── */}
+      {/* ── RESEARCH ── */}
       <section>
-        <p className="gh-section-label">Process</p>
-        <h2>How I got from idea to working product in 3 weeks</h2>
+        <p className="gh-section-label">Research</p>
+        <h2>31 respondents told me what actually matters</h2>
+        <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
+          I ran a 31-respondent survey (5/22–6/4/2026) targeting new-to-experienced plant owners.
+          A forced trade-off question — "If Grove could only launch with THREE features, which are
+          dealbreakers?" — defined the MVP empirically, not by assumption.
+        </p>
 
-        <ol className="reina-flow-list" aria-label="Design process steps">
-          <li className="reina-flow-row feature">
-            <div className="reina-flow-num gradient-text">01</div>
-            <div className="reina-flow-content">
-              <h3 style={{ margin: "0 0 0.35rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>Secondary research on plant care app patterns</h3>
-              <p style={{ margin: 0, fontSize: "0.97rem", color: "var(--muted)", lineHeight: 1.7 }}>
-                Audited 6 plant care apps to map common patterns and failure points. Found the same two problems everywhere: information overload on day one, and no emotional payoff for consistency.
-              </p>
+        <div className="grove-survey-stats" aria-label="Key survey findings">
+          {SURVEY_FINDINGS.map((f) => (
+            <div key={f.label} className="grove-survey-stat feature">
+              <p className="grove-survey-stat__value gradient-text">{f.stat}</p>
+              <p className="grove-survey-stat__label">{f.label}</p>
             </div>
-          </li>
-          <li className="reina-flow-row feature">
-            <div className="reina-flow-num gradient-text">02</div>
-            <div className="reina-flow-content">
-              <h3 style={{ margin: "0 0 0.35rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>IA + flow mapping</h3>
-              <p style={{ margin: 0, fontSize: "0.97rem", color: "var(--muted)", lineHeight: 1.7 }}>
-                Defined the bouquet-first information architecture and mapped the core flow (onboard to first plant personality) before touching any tools. This kept scope tight and prevented feature creep.
-              </p>
+          ))}
+        </div>
+
+        <h3 style={{ marginTop: "2.5rem", color: "var(--olive-2)" }}>Who I'm designing for</h3>
+        <p style={{ color: "var(--muted)", lineHeight: 1.65, marginBottom: "1rem" }}>
+          Two personas emerged from the data. The case study focuses on Maya — the largest segment and the hypothesis-critical user.
+        </p>
+        <div className="gh-assumption-grid">
+          <div className="gh-assumption-card gh-assumption-card--initial">
+            <p className="gh-assumption-label">Maya — new plant owner (39%)</p>
+            <ul className="grove-persona-list">
+              <li><strong>Owns:</strong> 1–6 plants</li>
+              <li><strong>Goal:</strong> "Just help me keep it alive"</li>
+              <li><strong>Skill gap:</strong> Lighting confidence 2.4/5</li>
+              <li><strong>Top concern:</strong> Pet toxicity (9/12 raised unprompted)</li>
+              <li><strong>Will delete if:</strong> Nagged with notifications</li>
+            </ul>
+          </div>
+          <div className="gh-assumption-card gh-assumption-card--finding">
+            <p className="gh-assumption-label">James — experienced collector (42%)</p>
+            <ul className="grove-persona-list">
+              <li><strong>Owns:</strong> 6–50+ plants</li>
+              <li><strong>Goal:</strong> Track collection without it feeling like work</li>
+              <li><strong>Care style:</strong> Intuitive / "vibes-based"</li>
+              <li><strong>Needs:</strong> Bulk logging, growth photo journal</li>
+              <li><strong>Will delete if:</strong> App feels like "an administrative chore"</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 style={{ marginTop: "2.5rem", color: "var(--olive-2)" }}>MVP definition — what the data says to build</h3>
+        <p style={{ color: "var(--muted)", lineHeight: 1.65, marginBottom: "1rem" }}>
+          Forced-rank results. The top 3 define the MVP; everything below is post-launch.
+        </p>
+        <div className="grove-mvp-list">
+          {MVP_FEATURES.map((f) => (
+            <div key={f.feature} className={`grove-mvp-row feature ${f.tier === "core" ? "grove-mvp-row--core" : ""}`}>
+              <span className="grove-mvp-row__feature">{f.feature}</span>
+              <div className="grove-mvp-row__bar-wrap">
+                <div className="grove-mvp-row__bar" style={{ width: `${f.pct}%` }} />
+              </div>
+              <span className="grove-mvp-row__pct">{f.pct}%</span>
             </div>
-          </li>
-          <li className="reina-flow-row feature">
-            <div className="reina-flow-num gradient-text">03</div>
-            <div className="reina-flow-content">
-              <h3 style={{ margin: "0 0 0.35rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>Design + build with AI assistance</h3>
-              <p style={{ margin: 0, fontSize: "0.97rem", color: "var(--muted)", lineHeight: 1.7 }}>
-                Wireframed in Figma, then built with Claude Code and Cursor handling boilerplate while I focused on UX logic and interaction details. AI accelerated the code; I directed every design decision.
-              </p>
-            </div>
-          </li>
-          <li className="reina-flow-row feature">
-            <div className="reina-flow-num gradient-text">04</div>
-            <div className="reina-flow-content">
-              <h3 style={{ margin: "0 0 0.35rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>AI judgment documentation</h3>
-              <p style={{ margin: 0, fontSize: "0.97rem", color: "var(--muted)", lineHeight: 1.7 }}>
-                Documented every AI decision point: what it suggested, whether I accepted or overrode it, and the reasoning. This is the real deliverable of the project.
-              </p>
-            </div>
-          </li>
+          ))}
+        </div>
+
+        <div className="highlight" style={{ marginTop: "2rem" }}>
+          <p className="gh-design-q-label">Key self-critique</p>
+          The prototype was built breadth-first (community, badges, swaps, bouquets) while the
+          survey says the download decision is made on three care features plus trust.
+          The differentiators don't matter until the dealbreakers are excellent.
+        </div>
+      </section>
+
+      {/* ── WHAT THE RESEARCH CHANGED ── */}
+      <section>
+        <p className="gh-section-label">What the research changed</p>
+        <h2>I built community features. The survey said they're not why people download.</h2>
+        <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
+          Community forums ranked 6th out of 11 features (23%). Verified swapping ranked 9th (6%).
+          The social layer I designed isn't wrong — but it's not the reason anyone installs a plant app.
+          Smart reminders, plant ID, and diagnosis are. The research reordered my priorities:
+          make the care core excellent first, then layer in community as a retention play.
+        </p>
+
+        <div className="gh-features-grid">
+          <div className="feature">
+            <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>Built but deprioritized</h3>
+            <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>Community forums, plant swaps, and badges are in the prototype but are explicitly post-MVP. They'll generate secondary testing data, but the hypothesis doesn't depend on them.</p>
+          </div>
+          <div className="feature">
+            <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>Elevated by data</h3>
+            <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>Pet toxicity warnings (9/12 new owners raised it unprompted), lighting education (lowest confidence score), and cited sources (top trust signal) — none of which were in the original build scope.</p>
+          </div>
+          <div className="feature">
+            <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>Paused entirely</h3>
+            <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>The Florist Pro tier (AI-generated care sheets for clients). One florist respondent: "Any generative AI in this will remove any sense of trust." n=2 is too thin to build on, but not too thin to pause on.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── HOW IT WORKS ── */}
+      <section>
+        <p className="gh-section-label">How it works</p>
+        <h2>Four steps from setup to first plant personality</h2>
+
+        <ol className="reina-flow-list" aria-label="Core user flow steps">
+          {FLOW_STEPS.map((s) => (
+            <li key={s.num} className="reina-flow-row feature">
+              <div className="reina-flow-num gradient-text">{s.num}</div>
+              <div className="reina-flow-content">
+                <h3 style={{ margin: "0 0 0.35rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>{s.title}</h3>
+                <p style={{ margin: 0, fontSize: "0.97rem", color: "var(--muted)", lineHeight: 1.7 }}>{s.desc}</p>
+              </div>
+            </li>
+          ))}
         </ol>
+
+        {/* ── Action 4: IA diagram ── */}
+        <div className="grove-ia-diagram feature" style={{ marginTop: "2rem", padding: "1.5rem", borderRadius: "12px" }}>
+          <h3 style={{ margin: "0 0 1.25rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>Core IA decision: bouquets, not individual plants</h3>
+          <div className="grove-ia-compare">
+            <div className="grove-ia-compare__side grove-ia-compare__side--before">
+              <p className="grove-ia-compare__label">Competing apps</p>
+              <div className="grove-ia-compare__items">
+                {["Pothos", "Snake Plant", "Monstera", "Spider Plant", "Fern", "Peace Lily", "Succulent", "Aloe", "Orchid", "Philodendron", "Jade", "ZZ Plant"].map((p) => (
+                  <span key={p} className="grove-ia-chip grove-ia-chip--flat">{p}</span>
+                ))}
+              </div>
+              <p className="grove-ia-compare__verdict">Flat list → decision paralysis</p>
+            </div>
+            <div className="grove-ia-compare__arrow" aria-hidden="true">→</div>
+            <div className="grove-ia-compare__side grove-ia-compare__side--after">
+              <p className="grove-ia-compare__label">Grove</p>
+              <div className="grove-ia-compare__items">
+                {["🪴 Kitchen window", "🌿 Living room shelf", "🌸 Bedroom"].map((b) => (
+                  <span key={b} className="grove-ia-chip grove-ia-chip--grouped">{b}</span>
+                ))}
+              </div>
+              <p className="grove-ia-compare__verdict">Grouped by context → focused tasks</p>
+            </div>
+          </div>
+          <p style={{ margin: "1rem 0 0", fontSize: "0.88rem", color: "var(--muted)", lineHeight: 1.6 }}>
+            Every screen answers one question: "Which bouquet am I looking at?" Tasks, journal
+            entries, and care reminders all tie to bouquets. New users see 1 task/day;
+            complexity scales with streak length, not all at once.
+          </p>
+        </div>
       </section>
 
       {/* ── PRODUCT SHOWCASE ── */}
@@ -257,100 +375,13 @@ export default function GroveCaseStudy() {
         </div>
       </section>
 
-      {/* ── CORE FLOW ── */}
-      <section>
-        <p className="gh-section-label">Core flow</p>
-        <h2>Four steps from setup to first plant personality</h2>
-
-        <div className="gh-validation-strip feature" style={{ marginBottom: "1.5rem" }}>
-          {[
-            { label: "Screens", value: "4 core steps" },
-            { label: "Goal",    value: "Guilt → confidence" },
-            { label: "Output",  value: "Daily tasks + growth journal" },
-          ].map((item, i, arr) => (
-            <React.Fragment key={item.label}>
-              <div className="gh-vstrip-item">
-                <p className="gh-vstrip-label">{item.label}</p>
-                <p className="gh-vstrip-value">{item.value}</p>
-              </div>
-              {i < arr.length - 1 && <div className="gh-vstrip-divider" aria-hidden="true" />}
-            </React.Fragment>
-          ))}
-        </div>
-
-        <ol className="reina-flow-list" aria-label="Core user flow steps">
-          {FLOW_STEPS.map((s) => (
-            <li key={s.num} className="reina-flow-row feature">
-              <div className="reina-flow-num gradient-text">{s.num}</div>
-              <div className="reina-flow-content">
-                <h3 style={{ margin: "0 0 0.35rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>{s.title}</h3>
-                <p style={{ margin: 0, fontSize: "0.97rem", color: "var(--muted)", lineHeight: 1.7 }}>{s.desc}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
-
-        {/* Design artifacts — show the IA and flow thinking */}
-        <div className="emergent-artifacts" aria-label="Design artifacts">
-          <p className="gh-section-label">Design artifacts</p>
-          <h3 style={{ marginTop: "0.5rem", marginBottom: "1rem", color: "var(--olive-2)" }}>Information architecture + flow logic</h3>
-          <div className="emergent-ia-flow feature" style={{ padding: "1.5rem", borderRadius: "12px" }}>
-            <div className="emergent-ia-row">
-              <div className="emergent-ia-block">
-                <p className="emergent-ia-label">Core IA decision</p>
-                <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
-                  Organized around <strong>bouquets</strong> (plant groups), not individual plants.
-                  Every screen answers: "Which bouquet am I looking at?" This eliminated
-                  the "wall of plants" problem in competing apps where 15+ individual plants
-                  creates decision paralysis.
-                </p>
-              </div>
-              <div className="emergent-ia-block">
-                <p className="emergent-ia-label">Task generation logic</p>
-                <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
-                  Daily tasks are generated per-bouquet based on plant type + environment + care history.
-                  New users see 1 task/day. Complexity unlocks with streak length, not all at once.
-                  Designed to prevent the "too many reminders" fatigue that kills plant app retention.
-                </p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ── SOCIAL LAYER ── */}
-      <section>
-        <p className="gh-section-label">Social layer</p>
-        <h2>Plant care is solitary. That's why people quit.</h2>
-        <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
-          Habit research is clear: motivation sustained in isolation fades fast.
-          A community layer isn't a social network; it's an accountability
-          structure. Seeing someone else's fiddle-leaf fig thrive keeps you
-          coming back to water yours. I designed this as a lightweight layer,
-          not a feed. No engagement mechanics. No algorithmic amplification.
-          Just plant parents, helping each other not kill things.
-        </p>
-
-        <div className="gh-features-grid">
-          {SOCIAL_FEATURES.map((feature) => (
-            <div key={feature.title} className="feature">
-              <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>{feature.title}</h3>
-              <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>{feature.desc}</p>
-              <p className="grove-feature-rationale">{feature.rationale}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── AI DECISIONS — the heart of this case study ── */}
+      {/* ── AI IN MY PROCESS ── */}
       <section>
         <p className="gh-section-label">AI in my process</p>
-        <h2>Where AI helped, where I led,<br />and how I decided</h2>
+        <h2>Where AI helped, where I led, and how I decided</h2>
         <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
-          The point isn't "I used AI"; everyone does. The point is showing
-          judgment: knowing when to trust it, when to override it, and when to
-          do the work myself.
+          The point isn't "I used AI"; everyone does. The point is showing judgment:
+          knowing when to trust it, when to override it, and when to do the work myself.
         </p>
 
         <div className="emergent-ai-grid">
@@ -375,40 +406,26 @@ export default function GroveCaseStudy() {
             </div>
           ))}
         </div>
-      </section>
 
-      {/* ── KEY DECISIONS ── */}
-      <section className="cs-decisions">
-        <p className="cs-section-heading">Key decisions</p>
-        <h2 className="cs-section-title">Where I led, not the AI</h2>
+        <h3 style={{ marginTop: "2.5rem", marginBottom: "1rem", color: "var(--olive-2)" }}>Decisions where I overrode AI</h3>
         <table className="cs-decisions-table">
           <thead>
             <tr>
               <th>Decision</th>
-              <th>Chosen approach</th>
-              <th>Rationale</th>
+              <th>AI suggested</th>
+              <th>I chose instead</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Core organizing concept</td>
-              <td>Bouquets (plant groups by context), not individual species</td>
-              <td>Users think in groups ("my kitchen plants"). Shaped entire IA: tasks, journal, rewards all tie to bouquets</td>
-            </tr>
-            <tr>
-              <td>Care complexity</td>
-              <td>Progressive: 1 task/day for new users, complexity scales with streak length</td>
-              <td>Prevents the overwhelm that kills retention in care apps. Unlock rotation, light, fertilizer after habit is established</td>
-            </tr>
-            <tr>
               <td>Reward system</td>
-              <td>AI-generated plant personalities at milestones. No points, no leaderboard</td>
-              <td>Rejected AI's suggestion for XP and levels. Guilt mechanics contradict the product's emotional goal</td>
+              <td>XP points and leaderboard</td>
+              <td>AI-generated plant personalities. Survey confirmed: "administrative chore" = #1 delete trigger</td>
             </tr>
             <tr>
               <td>Home screen</td>
-              <td>Photo journal as primary view, dashboard secondary</td>
-              <td>Overrode AI's default of a task dashboard. Growth narrative is more motivating than a to-do list</td>
+              <td>Task dashboard as primary view</td>
+              <td>Photo journal first. Growth narrative is more motivating than a to-do list</td>
             </tr>
           </tbody>
         </table>
@@ -416,30 +433,30 @@ export default function GroveCaseStudy() {
 
       {/* ── OUTCOMES ── */}
       <section className="cs-outcome">
-        <p className="cs-section-heading">Outcomes</p>
-        <h2 className="cs-section-title">What this project produced</h2>
+        <p className="cs-section-heading">What I shipped</p>
+        <h2 className="cs-section-title">Research artifacts + working product</h2>
         <div className="cs-outcome-grid">
           <div className="cs-outcome-card">
-            <p className="cs-outcome-value gradient-text">Shipped</p>
-            <p className="cs-outcome-label">Live working app: React + FastAPI + MongoDB</p>
+            <p className="cs-outcome-value gradient-text">31</p>
+            <p className="cs-outcome-label">Survey respondents grounding every design decision in data</p>
           </div>
           <div className="cs-outcome-card">
-            <p className="cs-outcome-value gradient-text">4</p>
-            <p className="cs-outcome-label">Core screens designed in Figma before a line of code</p>
+            <p className="cs-outcome-value gradient-text">2</p>
+            <p className="cs-outcome-label">Data-driven personas with validated needs, frustrations, and dealbreakers</p>
           </div>
           <div className="cs-outcome-card">
             <p className="cs-outcome-value gradient-text">3</p>
             <p className="cs-outcome-label">AI decisions documented with explicit human override reasoning</p>
           </div>
           <div className="cs-outcome-card">
-            <p className="cs-outcome-value gradient-text">2×</p>
-            <p className="cs-outcome-label">AI suggestions overridden on UX grounds (XP system, dashboard home)</p>
+            <p className="cs-outcome-value gradient-text">Shipped</p>
+            <p className="cs-outcome-label">Full-stack app (React + FastAPI + MongoDB) ready for moderated testing</p>
           </div>
         </div>
         <p className="cs-overview-text" style={{ marginTop: "1.5rem", maxWidth: 640 }}>
-          Built and shipped in 3 weeks solo. The real deliverable isn't the app. It's documented
-          evidence of AI judgment: 3 decisions where I evaluated AI output, accepted 1, overrode 2,
-          with reasoning for each.
+          The most useful output wasn't the prototype — it was learning that I built breadth-first
+          while users decide on three features. The research reordered my priorities before I spent
+          more time building the wrong things.
         </p>
       </section>
 
@@ -449,30 +466,29 @@ export default function GroveCaseStudy() {
         <h2 className="cs-section-title">Where this project stands and what it taught me</h2>
         <div className="cs-reflections-grid">
           <div className="cs-reflection-card">
+            <h3>Research before conviction</h3>
+            <p>
+              I built community features, badges, and swaps before surveying users. The survey
+              showed those rank 6th–9th in priority. The most useful output of this project was
+              learning to validate before investing — the research reordered my roadmap entirely.
+            </p>
+          </div>
+          <div className="cs-reflection-card">
             <h3>The AI skills gap is a judgment gap</h3>
             <p>
-              The AI skills gap isn't knowing which tools exist. It's knowing when to use them,
-              how to evaluate their outputs critically, and where human judgment leads. Every
-              designer will use AI. The differentiator is whether you can tell the difference
-              between AI accelerating execution and AI making product decisions for you.
+              The differentiator isn't knowing which AI tools exist. It's knowing when to trust
+              them and when to override. I rejected AI's suggestion for XP gamification and a
+              task-dashboard home screen — both would have contradicted the emotional goal the
+              survey validated.
             </p>
           </div>
           <div className="cs-reflection-card">
-            <h3>Direction before delegation</h3>
+            <h3>What's next: moderated testing</h3>
             <p>
-              Every AI tool in this project received a clear brief before it produced anything.
-              Prompt constraints, quality bars, architecture decisions, and scope limits were
-              set by me first. AI executed within guardrails I defined, not the other way around.
-              That sequencing matters and it's learnable.
-            </p>
-          </div>
-          <div className="cs-reflection-card">
-            <h3>What's next</h3>
-            <p>
-              5-user moderated sessions focused on three questions: (1) Is the
-              onboarding flow clear enough to complete without help? (2) Do
-              daily tasks feel helpful or nagging? (3) Does the AI-generated
-              plant personality actually motivate continued care?
+              5–6 moderated sessions, one persona per participant: can Maya add a plant
+              in under 30 seconds? Can she find the lighting tutorial unaided? Does James's
+              bulk logging match his mental model? Pre-registered success criteria so the
+              hypothesis can be clearly supported or challenged.
             </p>
           </div>
         </div>

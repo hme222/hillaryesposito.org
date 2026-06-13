@@ -93,12 +93,12 @@ export default function GoodHarvest() {
       {/* ── OVERVIEW ── */}
       <section className="cs-overview">
         <p className="cs-section-heading">Overview</p>
-        <h2 className="cs-section-title">Systematic methodology applied to a mobile product challenge</h2>
+        <h2 className="cs-section-title">People want to eat seasonally — the information makes it harder, not easier</h2>
         <p className="cs-overview-text">
-          Good Harvest applies the same systematic methodology I bring from process improvement:
-          research first, evidence-based decisions, and measurable outcomes. Applied to a mobile product
-          design challenge. Every design decision traces back to a specific research finding.
-          Nothing was assumed. Everything was tested.
+          I designed Good Harvest to solve a problem I found through research: health-conscious
+          shoppers aren't lacking motivation to eat seasonally — they're lacking confidence that
+          the information they find applies to <em>their</em> location, right now. Every core
+          design decision traces back to a specific finding from 22 participants across 3 rounds of testing.
         </p>
       </section>
 
@@ -132,11 +132,8 @@ export default function GoodHarvest() {
         <div className="gh-collab-note">
           <p className="gh-collab-label">How I worked</p>
           <p>
-            This was a solo design project from research through final prototype, but not
-            done in isolation. I recruited and ran all 22 participant sessions, synthesized
-            findings in FigJam with feedback from two peer designers who reviewed my
-            affinity maps and challenged my assumptions. The research mistakes section
-            below documents where that peer input changed my direction.
+            Solo design, research through final prototype. I recruited and ran all 22 sessions.
+            Two peer designers reviewed my affinity maps and challenged assumptions during synthesis.
           </p>
         </div>
       </section>
@@ -186,18 +183,16 @@ export default function GoodHarvest() {
             <div className="reina-flow-content">
               <h3 style={{ margin: "0 0 0.35rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>Prototype testing with heatmaps</h3>
               <p style={{ margin: 0, fontSize: "0.97rem", color: "var(--muted)", lineHeight: 1.7 }}>
-                22-participant unmoderated testing via Maze. Heatmaps revealed what users actually tapped vs. what I expected.
-                Recipe CTA engagement jumped from 40% to 70% after repositioning inline with produce details.
+                22-participant unmoderated testing via Maze across 3 rounds. Heatmaps revealed what users actually tapped vs. what I expected — details in the Testing section below.
               </p>
             </div>
           </li>
           <li className="reina-flow-row feature">
             <div className="reina-flow-num gradient-text">04</div>
             <div className="reina-flow-content">
-              <h3 style={{ margin: "0 0 0.35rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>Iterate based on testing findings</h3>
+              <h3 style={{ margin: "0 0 0.35rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>Iterate based on findings</h3>
               <p style={{ margin: 0, fontSize: "0.97rem", color: "var(--muted)", lineHeight: 1.7 }}>
-                Three major shifts between v1 and v2: secondary nav moved below fold, location indicator made tappable
-                and prominent, variety comparison surfaced inline. Each traceable to a specific test finding.
+                Three major design shifts between v1 and v2, each traceable to a specific test finding.
               </p>
             </div>
           </li>
@@ -231,10 +226,29 @@ export default function GoodHarvest() {
           Key screens from wireframe through final prototype, validated with heatmap testing.
         </p>
 
+        <h3 style={{ color: "var(--olive-2)", marginBottom: "0.75rem" }}>Home screen: produce-first hierarchy</h3>
         <div className="cs-gallery cols-3">
           <MediaCard src={screens.homeWire}  alt="Good Harvest home wireframe showing layout hierarchy"          caption="Wireframe: hierarchy + tap targets." />
-          <MediaCard src={screens.homeHeat}  alt="Heatmap showing attention on seasonal produce module"           caption="Heatmap: produce first, secondary actions clarified." />
-          <MediaCard src={screens.appMobile} alt="Good Harvest mobile app showing seasonal produce and recipes"   caption="Final design: produce-first mobile app." />
+          <MediaCard src={screens.homeHeat}  alt="Heatmap showing attention on seasonal produce module"           caption="Heatmap: 60% of first taps went to produce." />
+          <MediaCard src={screens.appMobile} alt="Good Harvest mobile app showing seasonal produce and recipes"   caption="Final: produce-first, secondary nav below fold." />
+        </div>
+
+        <h3 style={{ color: "var(--olive-2)", marginTop: "2rem", marginBottom: "0.75rem" }}>Local produce: location trust solved</h3>
+        <p style={{ fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65, marginBottom: "1rem" }}>
+          13/22 participants didn't trust that produce info applied to their area. Made the location indicator tappable and prominent with source attribution.
+        </p>
+        <div className="cs-gallery cols-2">
+          <MediaCard src={screens.localWire} alt="Local produce wireframe showing initial location indicator"     caption="v1: location indicator present but passive." />
+          <MediaCard src={screens.localHeat} alt="Local produce heatmap showing attention patterns"               caption="Heatmap: users noticed location in v2 (13/22 mentioned it unprompted)." />
+        </div>
+
+        <h3 style={{ color: "var(--olive-2)", marginTop: "2rem", marginBottom: "0.75rem" }}>Recipes: embedded discovery</h3>
+        <p style={{ fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65, marginBottom: "1rem" }}>
+          Recipe CTA engagement jumped from 40% to 70% after embedding recipes inline with produce detail instead of a separate tab.
+        </p>
+        <div className="cs-gallery cols-2">
+          <MediaCard src={screens.recipesWire} alt="Recipes wireframe showing embedded recipe discovery"         caption="v2: recipes embedded in produce context." />
+          <MediaCard src={screens.recipesHeat} alt="Recipes heatmap showing improved engagement"                  caption="Heatmap: 70% recipe CTA engagement (up from 40%)." />
         </div>
       </section>
 

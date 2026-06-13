@@ -38,30 +38,22 @@ const WHAT_I_DID = [
   {
     num: "01",
     title: "Audited live app flows",
-    desc: "Walked through each app end-to-end, identifying the flows worth cataloguing: onboarding, key tasks, edge states, and empty states.",
-    why: "Not every screen belongs in a pattern library. Auditing first meant the final catalogue contained flows designers actually search for, not just whatever was easiest to capture.",
-    learned: "Kikoff's 12-screen onboarding was worth documenting in full; Discover's marketing interstitials were not. The audit saved hours of unnecessary capture work downstream.",
+    desc: "Walked each app end-to-end to identify flows worth cataloguing. Kikoff's 12-screen onboarding was worth documenting in full; Discover's marketing interstitials were not.",
   },
   {
     num: "02",
     title: "Captured + structured screens",
-    desc: "Methodically captured every state in each flow, organized them in sequence, and tagged each screen with patterns, components, and UI elements.",
-    why: "A screen out of sequence or missing a state breaks the flow's usefulness. Designers reference these to understand transitions, not just individual screens.",
-    learned: "Empty states and error screens were consistently the hardest to reach but the most valuable to include. Designers search for those patterns more than happy-path screens.",
+    desc: "Captured every state in each flow, organized in sequence. Empty states and error screens were the hardest to reach but the most valuable — designers search for those more than happy paths.",
   },
   {
     num: "03",
     title: "Wrote pattern annotations",
-    desc: "Authored the descriptive metadata that lets designers search the library: short, consistent annotations that explain what each screen does and why.",
-    why: "Annotations are how designers find patterns. A screen without a clear annotation is invisible in the library, no matter how well it was captured.",
-    learned: "Writing for search changed my instinct. I stopped describing what I saw and started describing what a designer would be looking for when they needed this pattern.",
+    desc: "Authored descriptive metadata for search. Stopped describing what I saw and started describing what a designer would be looking for when they needed this pattern.",
   },
   {
     num: "04",
     title: "Quality-checked for consistency",
-    desc: "Reviewed against Mobbin's taxonomy and style guide so the contributions slot cleanly into the broader library and stay searchable.",
-    why: "Inconsistent tagging fragments the library. If I called something 'progress indicator' and the existing library used 'progress bar,' designers would miss the connection.",
-    learned: "Front-loading taxonomy alignment after the first review round cut revision cycles by 50%. The upfront cost paid for itself immediately.",
+    desc: "Aligned tagging to Mobbin's taxonomy. Front-loading this after the first review round cut revision cycles by 50%.",
   },
 ];
 
@@ -132,24 +124,11 @@ export default function MobbinCaseStudy() {
         <p className="cs-section-heading">Overview</p>
         <h2 className="cs-section-title">Systematic analysis applied to real product patterns</h2>
         <p className="cs-overview-text">
-          Contracted by Mobbin to systematically catalogue fintech interfaces, applying the same
-          analytical rigor I use for process improvement to document trust, risk, and progress
-          patterns across thousands of interface states. The work required deciding what was worth
-          documenting, structuring it so it was findable, and writing annotations useful to designers
-          I would never meet.
-        </p>
-        <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
-          This is design work, not data entry. Cataloguing a pattern library requires the same instincts
-          as designing a product: knowing what's worth showing, what to label, and how a stranger will
-          read the structure later. Every annotation, tag, and flow sequence is a design decision that
-          shapes how thousands of designers find and use these patterns.
-        </p>
-        <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
-          Thousands of product designers and researchers who search Mobbin for real-world interface
-          patterns. My cataloguing work needed to be findable, accurate, and useful to designers
-          who'd never see the original app. Every annotation, tag, and flow structure was written
-          for someone arriving without context, in a hurry, trying to solve a design problem I
-          can't predict.
+          Contracted by Mobbin to systematically catalogue fintech interfaces. The work required
+          deciding what was worth documenting, structuring it so it was findable, and writing
+          annotations useful to thousands of designers I would never meet. Every annotation,
+          tag, and flow sequence is a design decision that shapes how designers find and use
+          these patterns.
         </p>
       </section>
 
@@ -188,12 +167,6 @@ export default function MobbinCaseStudy() {
               <div className="reina-flow-content">
                 <h3 style={{ margin: "0 0 0.35rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>{s.title}</h3>
                 <p style={{ margin: 0, fontSize: "0.97rem", color: "var(--muted)", lineHeight: 1.7 }}>{s.desc}</p>
-                <p style={{ margin: "0.5rem 0 0", fontSize: "0.92rem", color: "var(--olive-2)", lineHeight: 1.65 }}>
-                  <strong>Why it mattered:</strong> {s.why}
-                </p>
-                <p style={{ margin: "0.35rem 0 0", fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65, fontStyle: "italic" }}>
-                  {s.learned}
-                </p>
               </div>
             </li>
           ))}
@@ -249,19 +222,13 @@ export default function MobbinCaseStudy() {
           Here's an example of the judgment calls behind a single entry.
         </p>
 
-        <div className="mobbin-example-entry feature" style={{ padding: "1.5rem", borderRadius: "12px" }}>
+        <div className="mobbin-example-entry feature" style={{ padding: "1.5rem", borderRadius: "12px", marginBottom: "1.5rem" }}>
+          <h4 style={{ margin: "0 0 1rem", color: "var(--olive-2)", fontSize: "0.95rem" }}>Example 1: Kikoff — trust through proof</h4>
           <div className="mobbin-example-grid">
             <div className="mobbin-example-block">
               <p className="mobbin-example-label">Screen</p>
               <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
-                Kikoff: Credit score progress screen (post-onboarding)
-              </p>
-            </div>
-            <div className="mobbin-example-block">
-              <p className="mobbin-example-label">Flow placement</p>
-              <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
-                Screen 8 of 12 in the "First session → credit building" flow.
-                Appears after the user completes their first credit-building action.
+                Credit score progress screen (post-onboarding). Screen 8 of 12 in the "First session → credit building" flow.
               </p>
             </div>
             <div className="mobbin-example-block">
@@ -275,19 +242,52 @@ export default function MobbinCaseStudy() {
             <div className="mobbin-example-block">
               <p className="mobbin-example-label">My annotation</p>
               <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65, fontStyle: "italic" }}>
-                "Shows credit score improvement as a direct result of the action just taken,
-                not a generic dashboard. The timing is deliberate: reinforcement appears immediately
-                after the first credit-building task, creating a cause-effect loop that builds
-                confidence in the product's value."
+                "Shows credit score improvement as a direct result of the action just taken.
+                The timing is deliberate: reinforcement appears immediately after the first
+                credit-building task, creating a cause-effect loop that builds confidence."
               </p>
             </div>
             <div className="mobbin-example-block">
               <p className="mobbin-example-label">Why this screen matters</p>
               <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
-                This is where Kikoff converts a skeptical user into a believer. Most fintech
-                onboarding ends with a "you're all set" confirmation. Kikoff shows you the
-                <em> result</em>, immediately. It's a trust-building pattern worth studying for
-                any product where users need proof the system works before they commit.
+                Most fintech onboarding ends with "you're all set." Kikoff shows you the
+                <em> result</em>, immediately. Trust through proof.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mobbin-example-entry feature" style={{ padding: "1.5rem", borderRadius: "12px" }}>
+          <h4 style={{ margin: "0 0 1rem", color: "var(--olive-2)", fontSize: "0.95rem" }}>Example 2: Polymarket — trust through transparency</h4>
+          <div className="mobbin-example-grid">
+            <div className="mobbin-example-block">
+              <p className="mobbin-example-label">Screen</p>
+              <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
+                Market detail screen showing live odds, position history, and resolution criteria. Core view in the "Browse → trade" flow.
+              </p>
+            </div>
+            <div className="mobbin-example-block">
+              <p className="mobbin-example-label">Pattern tags</p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem", marginTop: "0.25rem" }}>
+                {["Data transparency", "Risk disclosure", "Real-time data", "Decision support", "Progressive disclosure"].map((tag) => (
+                  <span key={tag} className="home-mag-tool">{tag}</span>
+                ))}
+              </div>
+            </div>
+            <div className="mobbin-example-block">
+              <p className="mobbin-example-label">My annotation</p>
+              <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65, fontStyle: "italic" }}>
+                "Surfaces the math behind the odds without requiring financial literacy. Resolution
+                criteria visible before any action — the user knows how they'll win or lose before
+                committing. Transparency as trust mechanism."
+              </p>
+            </div>
+            <div className="mobbin-example-block">
+              <p className="mobbin-example-label">Why this screen matters</p>
+              <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
+                Prediction markets ask users to risk money on uncertain outcomes. Where Kikoff
+                builds trust by showing results, Polymarket builds trust by showing the rules.
+                Same goal, opposite approach — worth studying side by side.
               </p>
             </div>
           </div>

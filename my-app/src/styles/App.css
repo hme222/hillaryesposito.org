@@ -9036,6 +9036,105 @@ body.dark-mode .nav-overlay-backdrop,
   color: var(--muted);
 }
 
+/* ── Persona bullet list ── */
+.grove-persona-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.grove-persona-list li {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.grove-persona-list li strong {
+  color: var(--fg);
+}
+
+/* ── IA comparison diagram ── */
+.grove-ia-compare {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.grove-ia-compare__side {
+  flex: 1;
+}
+
+.grove-ia-compare__label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  margin: 0 0 0.6rem;
+  color: var(--muted);
+}
+
+.grove-ia-compare__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.6rem;
+}
+
+.grove-ia-chip {
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.grove-ia-chip--flat {
+  background: color-mix(in srgb, var(--fg) 6%, transparent);
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+.grove-ia-chip--grouped {
+  background: color-mix(in srgb, var(--olive-2) 12%, transparent);
+  color: var(--olive-2);
+  font-weight: 600;
+}
+
+.grove-ia-compare__verdict {
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.grove-ia-compare__side--before .grove-ia-compare__verdict {
+  color: #c0392b;
+}
+
+.grove-ia-compare__side--after .grove-ia-compare__verdict {
+  color: var(--olive-2);
+}
+
+.grove-ia-compare__arrow {
+  font-size: 1.5rem;
+  color: var(--muted);
+  padding-top: 2rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .grove-ia-compare {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .grove-ia-compare__arrow {
+    transform: rotate(90deg);
+    padding-top: 0;
+    align-self: center;
+  }
+}
+
 /* ── Social Layer: feature card with rationale line ── */
 .grove-feature-rationale {
   margin-top: 0.75rem;
@@ -9045,6 +9144,88 @@ body.dark-mode .nav-overlay-backdrop,
   color: #595959;
   font-style: italic;
   line-height: 1.5;
+}
+
+/* ── Survey stats grid ── */
+.grove-survey-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.grove-survey-stat {
+  padding: 1.25rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.grove-survey-stat__value {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0 0 0.35rem;
+  line-height: 1;
+}
+
+.grove-survey-stat__label {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* ── MVP bar chart ── */
+.grove-mvp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.grove-mvp-row {
+  display: grid;
+  grid-template-columns: 200px 1fr 45px;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+}
+
+.grove-mvp-row--core {
+  background: color-mix(in srgb, var(--olive-2) 8%, transparent);
+  border-left: 3px solid var(--olive-2);
+}
+
+.grove-mvp-row__feature {
+  color: var(--fg);
+  font-weight: 500;
+}
+
+.grove-mvp-row__bar-wrap {
+  height: 8px;
+  background: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.grove-mvp-row__bar {
+  height: 100%;
+  background: var(--olive-2);
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+
+.grove-mvp-row__pct {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: right;
+}
+
+@media (max-width: 600px) {
+  .grove-mvp-row {
+    grid-template-columns: 1fr 80px 40px;
+    font-size: 0.82rem;
+  }
 }
 
 /* ========================= SHARED CASE STUDY TEMPLATE ========================= */
