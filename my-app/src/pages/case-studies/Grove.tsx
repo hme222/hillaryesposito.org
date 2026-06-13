@@ -84,7 +84,7 @@ const OTHER_PROJECTS = [
   {
     icon: "📱",
     title: "Mobbin",
-    desc: "Three fintech apps catalogued for Mobbin's UX pattern library, documenting trust, risk, and progress patterns.",
+    desc: "Three fintech apps documented for Mobbin's UX pattern library — UX flow documentation and UI pattern curation.",
     path: "/case-study/mobbin",
   },
 ];
@@ -187,6 +187,31 @@ export default function GroveCaseStudy() {
           How might we help plant owners build consistent care habits through
           trustworthy, species-specific guidance — with calm notifications and
           lighting education as the differentiators?
+        </div>
+      </section>
+
+      {/* ── PRODUCT SHOWCASE ── */}
+      <section>
+        <p className="gh-section-label">The product</p>
+        <h2>What Grove looks like</h2>
+        <p style={{ maxWidth: 640, marginBottom: "0.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
+          Key screens from the working build: onboarding through your first plant personality.
+        </p>
+
+        <div className="grove-screens-grid" aria-label="App screen previews">
+          {SCREENS.map((screen) => (
+            <div key={screen.label} className="grove-screen-item">
+              <div className="grove-phone-frame" style={{ background: screen.bg }}>
+                <img
+                  src={screen.image}
+                  alt={`${screen.label} screen`}
+                  className="grove-phone-frame__img"
+                  loading="lazy"
+                />
+              </div>
+              <p className="grove-screen-label">{screen.label}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -347,31 +372,6 @@ export default function GroveCaseStudy() {
             entries, and care reminders all tie to bouquets. New users see 1 task/day;
             complexity scales with streak length, not all at once.
           </p>
-        </div>
-      </section>
-
-      {/* ── PRODUCT SHOWCASE ── */}
-      <section>
-        <p className="gh-section-label">The product</p>
-        <h2>What Grove looks like</h2>
-        <p style={{ maxWidth: 640, marginBottom: "0.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
-          Key screens from the working build: onboarding through your first plant personality.
-        </p>
-
-        <div className="grove-screens-grid" aria-label="App screen previews">
-          {SCREENS.map((screen) => (
-            <div key={screen.label} className="grove-screen-item">
-              <div className="grove-phone-frame" style={{ background: screen.bg }}>
-                <img
-                  src={screen.image}
-                  alt={`${screen.label} screen`}
-                  className="grove-phone-frame__img"
-                  loading="lazy"
-                />
-              </div>
-              <p className="grove-screen-label">{screen.label}</p>
-            </div>
-          ))}
         </div>
       </section>
 

@@ -73,19 +73,9 @@ type Project = {
 
 const PROJECTS: Project[] = [
   {
-    title: "Mobbin",
-    subtitle: "Contract · Pattern Analysis",
-    desc: "Three fintech apps catalogued at production quality for a leading UX pattern library.",
-    images: ["/assets/mobbin/kikoff.png", "/assets/mobbin/polymarket.png", "/assets/mobbin/discover.png"],
-    imageAlt: "Fintech app screens catalogued for UX pattern library",
-    bg: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
-    path: "/case-study/mobbin",
-    locked: true,
-  },
-  {
     title: "Grove",
     subtitle: "Product Design · AI Judgment",
-    desc: "Plant care app where every AI decision is documented — accepted or overridden.",
+    desc: "31-user survey reshaped the MVP. AI accelerated the build — research led every decision.",
     images: ["/assets/grove/grove1.png"],
     imageAlt: "Grove plant care app",
     bg: "linear-gradient(135deg, #1a2e1a 0%, #2d4a2d 50%, #1a3a2a 100%)",
@@ -94,7 +84,7 @@ const PROJECTS: Project[] = [
   {
     title: "Good Harvest",
     subtitle: "Product Design · UX Research",
-    desc: "Seasonal food app validated with 22 users across 3 rounds of heatmap testing.",
+    desc: "Heatmap testing with 22 users revealed the problem wasn't discoverability — it was trust.",
     images: [
       "/assets/good-harvest/goodharvest-home-wireframe.png",
       "/assets/good-harvest/goodharvest-app-mobile.png",
@@ -105,6 +95,16 @@ const PROJECTS: Project[] = [
     path: "/case-study/good-harvest",
   },
   {
+    title: "Mobbin",
+    subtitle: "Freelance · UX Flow Documentation",
+    desc: "Three fintech apps documented for Mobbin's UX pattern library. Flow capture and UI pattern curation at scale.",
+    images: ["/assets/mobbin/kikoff.png", "/assets/mobbin/polymarket.png", "/assets/mobbin/discover.png"],
+    imageAlt: "Fintech app screens catalogued for UX pattern library",
+    bg: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
+    path: "/case-study/mobbin",
+    locked: true,
+  },
+  {
     title: "Hera",
     subtitle: "Product Design · Brand Strategy",
     desc: "Premium headband line from concept to product. Same process, different medium.",
@@ -113,7 +113,7 @@ const PROJECTS: Project[] = [
     bg: "linear-gradient(135deg, #2e1a2e 0%, #3d2040 50%, #2a1535 100%)",
     comingSoon: true,
     patentPending: true,
-  },
+    },
 ];
 
 const APPROACH = [
@@ -204,13 +204,17 @@ function handleCopy() {
             HILLARY ESPOSITO
           </motion.h1>
 
+          <motion.p className="hero-role-label" {...stagger(0.10)}>
+            Product Designer
+          </motion.p>
+
           <motion.p className="hero-positioning hero-positioning-gradient" {...stagger(0.12)}>
-            UX Designer × Process Improvement Leader
+            I redesign how people and processes work together.
           </motion.p>
 
           <div className="hero-copy">
             <motion.p className="hero-description" {...stagger(0.16)}>
-              Eight years redesigning healthcare systems and military logistics, with AI fluency as the edge that makes both sharper.
+              Eight years in healthcare and military systems — bridging UX, process improvement, and AI.
             </motion.p>
 
             <motion.div className="hero-actions" {...stagger(0.24)}>
@@ -248,9 +252,9 @@ function handleCopy() {
         >
           {[
             { value: "8+",  label: "Years redesigning complex systems" },
-            { value: "21K+", label: "Clinicians impacted at MSK" },
-            { value: "85%",  label: "Faster resupply, deployed in Iraq" },
-            { value: "20%",  label: "Cost reduction: MSK EMR redesign" },
+            { value: "21K+", label: "Clinicians impacted, MSK Cancer Center" },
+            { value: "85%",  label: "Faster resupply, NJ Army National Guard" },
+            { value: "20%",  label: "EMR cost reduction, MSK Cancer Center" },
           ].map((s) => (
             <div key={s.label} className="home-proof-card">
               <p className="home-proof-value gradient-text">{s.value}</p>
@@ -356,18 +360,19 @@ function handleCopy() {
       </section>
 
       {/* ══════════════════════════════════════════
-          EXPERTISE — scrolling skills strip
+          APPROACH — how I work
       ══════════════════════════════════════════ */}
-      <div className="home-expertise-strip" aria-label="Areas of expertise" role="marquee">
-        <div className="home-expertise-track">
-          {[...EXPERTISE, ...EXPERTISE].map((item, i) => (
-            <React.Fragment key={`${item}-${i}`}>
-              <span className="home-expertise-item">{item}</span>
-              <span className="home-expertise-sep" aria-hidden="true">·</span>
-            </React.Fragment>
+      <section className="home-approach-section" aria-label="How I work">
+        <div className="home-approach-grid">
+          {APPROACH.map((a) => (
+            <div key={a.label} className="home-approach-card feature">
+              <span className="home-approach-icon" aria-hidden="true">{a.icon}</span>
+              <h3 className="home-approach-label">{a.label}</h3>
+              <p className="home-approach-desc">{a.desc}</p>
+            </div>
           ))}
         </div>
-      </div>
+      </section>
 
       {/* ══════════════════════════════════════════
           4. CTA STRIP
@@ -459,6 +464,12 @@ function handleCopy() {
           </>
         )}
       </button>
+    </div>
+
+    <div className="contact-links-row">
+      <a href="https://www.linkedin.com/in/hillary-esposito/" target="_blank" rel="noopener noreferrer" className="contact-link-btn">
+        LinkedIn →
+      </a>
     </div>
 
     {/* Floating Luna */}

@@ -2,14 +2,6 @@ import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import usePageTitle from "../hooks/usePageTitle";
 
-// ── Stats ────────────────────────────────────────────────────────────────
-const STATS = [
-  { value: "8+", label: "Years improving complex systems" },
-  { value: "21K+", label: "Users impacted at MSK" },
-  { value: "25%", label: "Improvement in task completion" },
-  { value: "60%", label: "Reduction in logistics waste" },
-];
-
 // ── Credentials ─────────────────────────────────────────────────────────
 const CREDENTIALS = [
   { icon: "📊", title: "Lean Six Sigma Green Belt", detail: "Purdue University" },
@@ -85,49 +77,6 @@ const CHAPTERS = [
   },
 ];
 
-// ── Skills ───────────────────────────────────────────────────────────────
-const SKILLS = [
-  {
-    group: "Research & Strategy",
-    items: ["Usability testing", "Heuristic evaluation", "Interviewing", "Journey mapping", "Competitive analysis"],
-  },
-  {
-    group: "Design & Prototyping",
-    items: ["Interaction design", "Design systems", "Prototyping", "Information architecture", "Microcopy"],
-  },
-  {
-    group: "Process Improvement",
-    items: ["Lean Six Sigma", "Workflow optimization", "Change management", "Stakeholder alignment", "Operational transformation"],
-  },
-  {
-    group: "AI Integration",
-    items: ["AI output evaluation", "Human-AI workflow design", "Responsible AI adoption", "AI-assisted research synthesis", "Build vs. buy assessment"],
-  },
-  {
-    group: "Tools & Technical",
-    items: ["Figma", "FigJam", "HTML / CSS", "React", "SQL basics", "Accessibility (WCAG)"],
-  },
-];
-
-// ── Beyond work ──────────────────────────────────────────────────────────
-const HOBBIES = [
-  {
-    icon: "🏃‍♀️",
-    title: "Running",
-    desc: "Running is where I process problems I couldn’t solve at my desk.",
-  },
-  {
-    icon: "📚",
-    title: "Reading",
-    desc: "Reading keeps me grounded; every system is someone else’s experience.",
-  },
-  {
-    icon: "🐱",
-    title: "Luna",
-    desc: "My cat and unofficial QA partner. She’s good at reminding me when to step away.",
-  },
-];
-
 export default function About() {
   usePageTitle("About");
   const navigate = useNavigate();
@@ -160,7 +109,7 @@ export default function About() {
       {/* ═ HERO ═════════════════════════════════════════════════════ */}
       <section className="about-hero">
         <div className="about-hero-content">
-          <p className="about-intro">UX Designer × Process Improvement Leader. Veteran.</p>
+          <p className="about-intro">Product Designer × Process Improvement. Veteran.</p>
 
           <h1 className="about-title">
             I redesign how people and processes work together, in systems where confusion isn’t an option.
@@ -177,18 +126,6 @@ export default function About() {
             alt="Hillary Esposito"
             className="about-headshot"
           />
-        </div>
-      </section>
-
-      {/* ═ STATS ════════════════════════════════════════════════════ */}
-      <section className="about-stats" aria-label="Key numbers">
-        <div className="about-stats__grid">
-          {STATS.map((s) => (
-            <div key={s.label} className="about-stat-card feature">
-              <p className="about-stat-value gradient-text">{s.value}</p>
-              <p className="about-stat-label">{s.label}</p>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -312,49 +249,13 @@ export default function About() {
         </div>
       </section>
 
-      {/* ═ SKILLS ═══════════════════════════════════════════════════ */}
-      <section className="about-skills" aria-label="Toolbox and methods">
-        <div className="about-skills__header">
-          <p className="about-agenda__eyebrow">Toolbox</p>
-          <h2 className="about-growth-title">Methods I rely on.</h2>
-        </div>
-
-        <div className="about-skills__grid">
-          {SKILLS.map((group) => (
-            <div key={group.group} className="about-skills__group feature">
-              <p className="about-skills__group-label">{group.group}</p>
-              <div className="about-skills__badges">
-                {group.items.map((skill) => (
-                  <span key={skill} className="about-skill-badge">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ═ HUMAN ════════════════════════════════════════════════════ */}
       <section className="about-life" aria-label="Outside of work">
         <div className="about-life-card feature">
           <h2 className="about-life-title">Outside of work</h2>
           <p className="about-life-intro">
-            I try to keep routines that help me stay clear, focused, and grounded.
+            Running, reading, and Luna the cat — routines that keep me clear and grounded.
           </p>
-
-          <div className="about-hobbies">
-            {HOBBIES.map((hobby) => (
-              <div key={hobby.title} className="hobby-card">
-                <div className="hobby-icon" aria-hidden="true">
-                  {hobby.icon}
-                </div>
-                <h3 className="hobby-title">{hobby.title}</h3>
-                <p className="hobby-desc">{hobby.desc}</p>
-              </div>
-            ))}
-          </div>
-
           <div ref={lunaRef} className="about-luna-deco" aria-hidden="true">
             🐾
           </div>
@@ -363,49 +264,30 @@ export default function About() {
 
       {/* ═ CTA ══════════════════════════════════════════════════════ */}
       <section className="about-cta">
-        <div className="about-cta-card home-cta-card">
-          <div className="home-cta-left">
-            <h2 className="about-cta-title" style={{ marginBottom: "1rem" }}>
-              What I’m looking for
-            </h2>
-            <p className="about-cta-content" style={{ color: "var(--muted)", lineHeight: 1.8, marginBottom: "1.75rem" }}>
-              I bring research, systems thinking, and process improvement to products where clarity directly impacts outcomes. If you’re building for healthcare, government, or enterprise — let’s talk.
-            </p>
-            <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-              <button
-                type="button"
-                className="hero-btn"
-                style={{ fontSize: "0.9rem", padding: "1rem 2rem" }}
-                onClick={() => navigate("/contact")}
-              >
-                Get in touch
-              </button>
-              <button
-                type="button"
-                className="about-back-btn"
-                onClick={() => navigate("/")}
-                style={{ fontSize: "0.9rem" }}
-              >
-                ← View my work
-              </button>
-            </div>
-          </div>
-
-          <div className="home-cta-right" aria-label="Focus areas">
-            {[
-              { icon: "🏥", label: "Healthcare systems", sub: "EHR · Clinical workflows · Operational transformation" },
-              { icon: "🏛️", label: "Government services", sub: "Civic tech · Service design · USDS" },
-              { icon: "🏢", label: "Enterprise tools", sub: "Internal platforms · Complex workflows" },
-              { icon: "⚡", label: "Operational transformation", sub: "Process improvement · Workflow optimization" },
-            ].map((d) => (
-              <div key={d.label} className="home-domain-chip feature">
-                <span style={{ fontSize: "1.3rem" }}>{d.icon}</span>
-                <div>
-                  <p style={{ fontWeight: 700, fontSize: "0.9rem", margin: 0, color: "var(--fg)" }}>{d.label}</p>
-                  <p style={{ fontSize: "0.78rem", color: "var(--muted)", margin: 0 }}>{d.sub}</p>
-                </div>
-              </div>
-            ))}
+        <div className="about-cta-simple">
+          <h2 className="about-cta-title" style={{ marginBottom: "1rem" }}>
+            Interested in working together?
+          </h2>
+          <p className="about-cta-content" style={{ color: "var(--muted)", lineHeight: 1.8, marginBottom: "1.75rem" }}>
+            I’m open to full-time product design roles, freelance projects, and collaborations — especially in healthcare, government, and enterprise.
+          </p>
+          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+            <button
+              type="button"
+              className="hero-btn"
+              style={{ fontSize: "0.9rem", padding: "1rem 2rem" }}
+              onClick={() => navigate("/contact")}
+            >
+              Get in touch
+            </button>
+            <button
+              type="button"
+              className="about-back-btn"
+              onClick={() => navigate("/")}
+              style={{ fontSize: "0.9rem" }}
+            >
+              ← View my work
+            </button>
           </div>
         </div>
       </section>

@@ -24,27 +24,27 @@ export default function GoodHarvest() {
     { icon: "🌱", title: "Grove", path: "/case-study/grove",
       desc: "A plant care app I designed and built with AI tools, showing judgment about when AI helps and when human thinking leads." },
     { icon: "📱", title: "Mobbin", path: "/case-study/mobbin",
-      desc: "Three fintech apps catalogued for Mobbin's UX pattern library, documenting trust, risk, and progress patterns." },
+      desc: "Three fintech apps documented for Mobbin's UX pattern library — UX flow documentation and UI pattern curation." },
   ];
 
   const researchInsightCards = [
     { num: "Finding 01", heading: "Users are motivated",
       body: " 19 of 22 participants say that eating seasonal foods is desirable",
-      tag: "User interviews" },
+      tag: "Provided research" },
     { num: "Finding 02", heading: "Unclear what's in season locally",
       body: "13 of 22 participants do not know what's in season in their specific area",
-      tag: "Interviews + surveys" },
+      tag: "Provided research" },
     { num: "Finding 03", heading: "Users find seasonal shopping time consuming",
       body: "12 of 22 participants found meal planning around seasonal food takes too much time.",
-      tag: "User interviews" },
+      tag: "Provided research" },
     { num: "Finding 04", heading: "Produce variety confusion caused decision paralysis",
       body: "When faced with multiple apple or lettuce varieties, 17 of 22 participants either chose randomly or deferred the decision entirely.",
-      tag: "Survey data" },
+      tag: "Provided research" },
   ];
 
   const reflections = [
     { label: "What surprised me",
-      body: "I went in expecting navigation to be the friction point. What emerged instead was a trust problem: users found the information, they just didn't believe it applied to them. That reframed the whole problem from IA to credibility design." },
+      body: "The provided research pointed to navigation as the friction point. But when I dug into the data, what emerged was a trust problem: users found the information, they just didn't believe it applied to them. That reframed the whole problem from IA to credibility design." },
     { label: "A decision I'd revisit",
       body: "I'd test organic guidance earlier. It was added late in the design process based on survey data, but wasn't validated in the same depth as the core produce flow." },
     { label: "What this shifted in my practice",
@@ -57,7 +57,7 @@ export default function GoodHarvest() {
       {/* ── HERO ── */}
       <header className="gh-hero">
         <div className="gh-hero__copy">
-          <p className="meta">Product Design · UX Research · Mobile App · Figma</p>
+          <p className="meta">Product Design · Mobile App · Figma · Heatmap Testing</p>
           <h1>Good Harvest</h1>
           <p className="gh-hero__intro">
             A mobile app I designed to help health-conscious shoppers make{" "}
@@ -75,10 +75,10 @@ export default function GoodHarvest() {
       {/* ── META STRIP ── */}
       <div className="gh-meta-strip">
         {[
-          { label: "Role",     value: "End-to-end Product Design" },
-          { label: "Platform", value: "Mobile App"     },
+          { label: "Role",     value: "Product Design" },
+          { label: "Context",  value: "UX Bootcamp project" },
           { label: "Tools",    value: "Figma · Maze"   },
-          { label: "Scope",    value: "Research → Design → Prototype → Iterate" },
+          { label: "Scope",    value: "Design → Prototype → Test → Iterate" },
         ].map((item, i, arr) => (
           <React.Fragment key={item.label}>
             <div className="gh-meta-strip__item">
@@ -95,10 +95,10 @@ export default function GoodHarvest() {
         <p className="cs-section-heading">Overview</p>
         <h2 className="cs-section-title">People want to eat seasonally — the information makes it harder, not easier</h2>
         <p className="cs-overview-text">
-          I designed Good Harvest to solve a problem I found through research: health-conscious
-          shoppers aren't lacking motivation to eat seasonally — they're lacking confidence that
-          the information they find applies to <em>their</em> location, right now. Every core
-          design decision traces back to a specific finding from 22 participants across 3 rounds of testing.
+          A UX bootcamp project where I took provided research (22 participant interviews and surveys)
+          and designed a mobile app from findings through tested prototype. The research revealed that
+          shoppers aren't lacking motivation — they're lacking confidence that information applies to
+          <em> their</em> location. I designed the solution and validated it with heatmap testing.
         </p>
       </section>
 
@@ -132,8 +132,9 @@ export default function GoodHarvest() {
         <div className="gh-collab-note">
           <p className="gh-collab-label">How I worked</p>
           <p>
-            Solo design, research through final prototype. I recruited and ran all 22 sessions.
-            Two peer designers reviewed my affinity maps and challenged assumptions during synthesis.
+            UX bootcamp project. Research data (22 participant interviews and surveys) was provided.
+            I synthesized findings, designed the product, built prototypes, and ran heatmap testing.
+            Two peer designers reviewed my synthesis and challenged assumptions.
           </p>
         </div>
       </section>
@@ -145,10 +146,8 @@ export default function GoodHarvest() {
             why: "Primary design + prototyping surface. Auto layout and components let me iterate wireframes into testable flows without rebuilding screens each round." },
           { icon: "🧪", name: "Maze",
             why: "Unmoderated prototype testing with heatmaps. Chose it over in-person sessions because I needed attention data across 22 participants, not just verbal feedback." },
-          { icon: "📋", name: "Google Forms + Sheets",
-            why: "Fast, zero-friction surveys for screening + preference questions. Sheets kept quant + qual side-by-side during synthesis." },
           { icon: "🗂️", name: "FigJam",
-            why: "Affinity mapping interview quotes and running the competitive SWOT. Kept synthesis visible so decisions trace back to raw evidence." },
+            why: "Affinity mapping provided research data and running the competitive SWOT. Kept synthesis visible so decisions trace back to raw evidence." },
         ]}
       />
 
@@ -161,10 +160,10 @@ export default function GoodHarvest() {
           <li className="reina-flow-row feature">
             <div className="reina-flow-num gradient-text">01</div>
             <div className="reina-flow-content">
-              <h3 style={{ margin: "0 0 0.35rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>User research: interviews + surveys</h3>
+              <h3 style={{ margin: "0 0 0.35rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>Research synthesis</h3>
               <p style={{ margin: 0, fontSize: "0.97rem", color: "var(--muted)", lineHeight: 1.7 }}>
-                3 in-depth interviews (45-60 min each) and 22 survey responses with health-conscious home cooks aged 25-45.
-                Deliberately mixed farmers market regulars with chain-store shoppers after the first round skewed too enthusiast-heavy.
+                Provided research included 3 in-depth interviews and 22 survey responses with health-conscious home cooks aged 25-45.
+                I synthesized the data to identify patterns and define design opportunities.
               </p>
             </div>
           </li>
@@ -202,7 +201,7 @@ export default function GoodHarvest() {
       {/* ── RESEARCH FINDINGS ── */}
       <section>
         <p className="gh-section-label">Research findings</p>
-        <h2>What 22 participants revealed</h2>
+        <h2>What the research revealed</h2>
         <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
           Four key findings shaped every design decision that followed.
         </p>

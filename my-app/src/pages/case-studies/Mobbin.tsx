@@ -38,7 +38,7 @@ const WHAT_I_DID = [
   {
     num: "01",
     title: "Audited live app flows",
-    desc: "Walked each app end-to-end to identify flows worth cataloguing. Kikoff's 12-screen onboarding was worth documenting in full; Discover's marketing interstitials were not.",
+    desc: "Walked each app end-to-end to identify flows worth documenting. Kikoff's 12-screen onboarding was worth capturing in full; Discover's marketing interstitials were not.",
   },
   {
     num: "02",
@@ -47,7 +47,7 @@ const WHAT_I_DID = [
   },
   {
     num: "03",
-    title: "Wrote pattern annotations",
+    title: "Curated pattern annotations",
     desc: "Authored descriptive metadata for search. Stopped describing what I saw and started describing what a designer would be looking for when they needed this pattern.",
   },
   {
@@ -73,7 +73,7 @@ const OTHER_PROJECTS = [
 ];
 
 export default function MobbinCaseStudy() {
-  usePageTitle("Mobbin: Systematic Fintech Pattern Analysis");
+  usePageTitle("Mobbin: UX Flow Documentation & UI Pattern Curation");
   const navigate = useNavigate();
 
   return (
@@ -82,13 +82,13 @@ export default function MobbinCaseStudy() {
       {/* ── HERO ── */}
       <header className="gh-hero">
         <div className="gh-hero__copy">
-          <p className="meta">Contract · UX Cataloguing · Pattern Documentation</p>
+          <p className="meta">Freelance · UX Flow Documentation · UI Pattern Curation</p>
           <h1>Mobbin</h1>
           <p className="gh-hero__intro">
             Three live apps (<strong>Kikoff</strong>, <strong>Polymarket</strong>, and <strong>Discover</strong>)
-            catalogued for Mobbin's UX pattern library. The work behind the library
-            designers use every day: walking flows, capturing every state, and
-            documenting the patterns that make each product feel the way it does.
+            documented for Mobbin's UX pattern library. UX flow documentation and UI
+            pattern curation: walking flows, capturing every state, and writing the
+            annotations that help designers find and understand each pattern.
           </p>
         </div>
         <div className="gh-hero__visual" aria-hidden="true">
@@ -102,11 +102,11 @@ export default function MobbinCaseStudy() {
       {/* ── META STRIP ── */}
       <div className="gh-meta-strip">
         {[
-          { label: "Role",    value: "Freelance Content Designer" },
+          { label: "Role",    value: "App Capture Specialist, Freelance" },
           { label: "Client",  value: "Mobbin" },
           { label: "Timeline", value: "4-week contract" },
           { label: "Output",  value: "3 apps · Full flow capture" },
-          { label: "Focus",   value: "Pattern documentation" },
+          { label: "Focus",   value: "UX flow documentation · UI pattern curation" },
           { label: "Status",  value: "Shipped" },
         ].map((item, i, arr) => (
           <React.Fragment key={item.label}>
@@ -122,25 +122,24 @@ export default function MobbinCaseStudy() {
       {/* ── OVERVIEW ── */}
       <section className="cs-overview">
         <p className="cs-section-heading">Overview</p>
-        <h2 className="cs-section-title">Systematic analysis applied to real product patterns</h2>
+        <h2 className="cs-section-title">Documenting UX flows and curating UI patterns at scale</h2>
         <p className="cs-overview-text">
-          Contracted by Mobbin to systematically catalogue fintech interfaces. The work required
-          deciding what was worth documenting, structuring it so it was findable, and writing
-          annotations useful to thousands of designers I would never meet. Every annotation,
-          tag, and flow sequence is a design decision that shapes how designers find and use
-          these patterns.
+          Freelance App Capture Specialist for Mobbin, documenting UX flows and curating UI
+          patterns across live fintech products. The work required walking every flow end-to-end,
+          deciding which screens and states were worth capturing, structuring them for findability,
+          and writing annotations useful to thousands of designers I would never meet.
         </p>
       </section>
 
       {/* ── THE CHALLENGE ── */}
       <section>
         <p className="gh-section-label">The challenge</p>
-        <h2>Cataloguing isn't capturing; it's reading</h2>
+        <h2>Flow documentation isn't screenshots; it's editorial judgment</h2>
         <p style={{ maxWidth: 720, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.7 }}>
-          Anyone can screenshot an app. The challenge is knowing <em>which</em> flows
+          Anyone can capture a screen. The challenge is knowing <em>which</em> flows
           are worth documenting, <em>how</em> to structure them so they're findable,
           and <em>what</em> to write so a designer arriving without context understands
-          what they're looking at, and why it matters.
+          what they're looking at, and why the pattern matters.
         </p>
 
         <div className="gh-assumption-grid">

@@ -16,16 +16,16 @@ export default function Contact() {
     <section className="section active contact-hero" aria-label="Contact section">
       <div className="contact-container">
         <div className="contact-info">
+          <p className="contact-role-label">Product Designer</p>
           <h1>Let&apos;s build something</h1>
           <p>
-            Freelance, full-time, or collaborations. If you&apos;re hiring or
-            launching, I&apos;d love to chat.
+            I bring research, systems thinking, and process improvement to products
+            where clarity directly impacts outcomes. Open to full-time, freelance, or collaborations.
           </p>
         </div>
 
         <div className="contact-email-block">
-          
-            <a href={"mailto:" + email}
+          <a href={"mailto:" + email}
             className="contact-email-link"
             aria-label="Send email">
             {email}
@@ -53,6 +53,15 @@ export default function Contact() {
               </>
             )}
           </button>
+        </div>
+
+        <div className="contact-links-row">
+          <a href="https://www.linkedin.com/in/hillary-esposito/" target="_blank" rel="noopener noreferrer" className="contact-link-btn">
+            LinkedIn →
+          </a>
+          <a href="/assets/Hillary_Esposito_Portfolio_Resume.pdf" target="_blank" rel="noopener noreferrer" className="contact-link-btn">
+            Resume →
+          </a>
         </div>
       </div>
     </section>
