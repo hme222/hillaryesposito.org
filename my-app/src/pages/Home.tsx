@@ -62,11 +62,19 @@ const PROJECTS: Project[] = [
   {
     title: "Grove",
     subtitle: "Product Design · AI Judgment",
-    desc: "31-user survey reshaped the MVP. AI accelerated the build — research led every decision.",
+    desc: "Research to shipped product in 3 weeks, solo. 31-user survey reshaped the MVP — AI accelerated the build.",
     images: ["/assets/grove/grove1.png"],
     imageAlt: "Grove plant care app",
     bg: "linear-gradient(135deg, #1a2e1a 0%, #2d4a2d 50%, #1a3a2a 100%)",
     path: "/case-study/grove",
+  },
+  {
+    title: "MSK Cancer Center",
+    subtitle: "Process Improvement · UX Design",
+    desc: "Six years redesigning clinical workflows, onboarding, and EMR systems for 21,000+ clinicians.",
+    icon: "🏥",
+    bg: "linear-gradient(135deg, #1a1a2e 0%, #2d2d4a 50%, #1a2a3a 100%)",
+    path: "/case-study/msk",
   },
   {
     title: "Good Harvest",
@@ -192,12 +200,8 @@ function handleCopy() {
             HILLARY ESPOSITO
           </motion.h1>
 
-          <motion.p className="hero-role-label" {...stagger(0.10)}>
-            Product Designer
-          </motion.p>
-
           <motion.p className="hero-positioning hero-positioning-gradient" {...stagger(0.12)}>
-            I redesign how people and processes work together.
+            Product Designer who redesigns how people and processes work together.
           </motion.p>
 
           <div className="hero-copy">
@@ -242,7 +246,7 @@ function handleCopy() {
             { value: "8+",  label: "Years redesigning complex systems" },
             { value: "21K+", label: "Clinicians impacted, MSK Cancer Center" },
             { value: "85%",  label: "Faster resupply, NJ Army National Guard" },
-            { value: "70%",  label: "Recipe CTA engagement after redesign" },
+            { value: "20%",  label: "EMR cost reduction, MSK Cancer Center" },
           ].map((s) => (
             <div key={s.label} className="home-proof-card">
               <p className="home-proof-value gradient-text">{s.value}</p>
@@ -379,47 +383,26 @@ function handleCopy() {
               <h2 className="about-cta-title" style={{ marginBottom:"1rem" }}>
                 What I’m looking for
               </h2>
-              <p className="about-cta-content" style={{ color:"var(--muted)", lineHeight:1.8, marginBottom:"1.75rem" }}>
+              <p className="about-cta-content" style={{ color:"var(--muted)", lineHeight:1.8, marginBottom:"1.5rem" }}>
                 I bring research, systems thinking, and process improvement to products where clarity directly impacts outcomes. If you’re building for healthcare, government, or enterprise — let’s talk.
               </p>
 
-              <div className="contact-email-block" style={{ marginTop: 0, marginBottom: "1.25rem" }}>
-                <a href={"mailto:" + email} className="contact-email-link" aria-label="Send email">
-                  {email}
-                </a>
-                <button onClick={handleCopy} className="contact-copy-btn" aria-label="Copy email address">
-                  {copied ? (
-                    <>
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="20 6 9 17 4 12" />
-                      </svg>
-                      Copied
-                    </>
-                  ) : (
-                    <>
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-                      </svg>
-                      Copy
-                    </>
-                  )}
-                </button>
-              </div>
+              <a href={"mailto:" + email} className="hero-btn" style={{ display:"inline-block", fontSize:"0.95rem", padding:"1rem 2rem", textDecoration:"none", marginBottom:"1rem" }} aria-label="Send email">
+                {email}
+              </a>
 
-              <div className="contact-links-row" style={{ marginBottom: "1.25rem" }}>
+              <div className="contact-links-row" style={{ marginBottom: "0.75rem" }}>
                 <a href="https://www.linkedin.com/in/hillaryesposito/" target="_blank" rel="noopener noreferrer" className="contact-link-btn">
                   LinkedIn →
                 </a>
                 <a href="/assets/Hillary_Esposito_Portfolio_Resume.pdf" target="_blank" rel="noopener noreferrer" className="contact-link-btn">
                   Resume →
                 </a>
+                <button type="button" className="contact-link-btn" style={{ background:"none", border:"none", cursor:"pointer", padding:0, font:"inherit", color:"inherit" }}
+                  onClick={() => navigate("/about")}>
+                  About me →
+                </button>
               </div>
-
-              <button type="button" className="about-back-btn"
-                onClick={() => navigate("/about")} style={{ fontSize:"0.9rem" }}>
-                Read my story →
-              </button>
             </div>
 
             {/* Right: domain chips */}

@@ -46,7 +46,7 @@ const CHAPTERS = [
     heading: "Six years at MSK, designing for humans inside the systems I was improving.",
     image: "/assets/about/msk.jpg",
     paragraphs: [
-      "Across four roles, I cut EMR costs 20%, rebuilt certification workflows for 70% efficiency gains, and redesigned onboarding for 21,000+ clinicians. That’s when I realized process improvement and design are the same discipline.",
+      "Across four roles, I cut EMR costs 20%, rebuilt certification workflows for 70% efficiency gains, and redesigned onboarding for 21,000+ clinicians — working across IT, clinical leadership, and frontline staff to align stakeholders and ship solutions they’d actually use. That’s when I realized process improvement and design are the same discipline.",
     ],
     callout: "Clarity isn’t optional when people rely on the system to do their job.",
     articleLink: {

@@ -609,15 +609,6 @@ select:focus {
   display: inline-block;
   will-change: transform, opacity, clip-path;
 }
-.hero-role-label {
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--olive-2);
-  margin-bottom: 0.75rem;
-  text-align: center;
-}
 .hero-positioning {
   font-size: 1.3rem;
   font-weight: 600;
@@ -5552,7 +5543,7 @@ body.dark-mode .nav-overlay-backdrop,
 
 .home-approach-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.25rem;
 }
 
@@ -5636,7 +5627,7 @@ body.dark-mode .nav-overlay-backdrop,
 
 .home-approach-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.25rem;
   max-width: 900px;
   margin: 0 auto;
@@ -8724,7 +8715,7 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 .contact-info::before {
-  display: none;
+  content: none;
 }
 
 .dark-mode .contact-info::before {

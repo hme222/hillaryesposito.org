@@ -22,6 +22,7 @@ import About from "../pages/AboutMe";
 import GoodHarvest from "../pages/case-studies/GoodHarvest";
 import Emergent from "../pages/case-studies/Grove";
 import Mobbin from "../pages/case-studies/Mobbin";
+import MSK from "../pages/case-studies/MSK";
 import PasswordGate from "../components/PasswordGate";
 import { Navigate } from "react-router-dom";
 
@@ -46,6 +47,7 @@ export default function AppRoutes() {
       <Route path="/case-study/good-harvest" element={<GoodHarvest />} />
       <Route path="/case-study/grove" element={<Emergent />} />
       <Route path="/case-study/mobbin" element={<PasswordGate><Mobbin /></PasswordGate>} />
+      <Route path="/case-study/msk" element={<MSK />} />
 
       <Route path="*" element={<NotFound />} />
     </Routes>
