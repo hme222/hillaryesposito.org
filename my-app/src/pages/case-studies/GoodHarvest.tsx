@@ -202,9 +202,13 @@ export default function GoodHarvest() {
       <section>
         <p className="gh-section-label">Research findings</p>
         <h2>What the research revealed</h2>
-        <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
-          Four key findings shaped every design decision that followed.
-        </p>
+        <div className="gh-collab-note" style={{ marginBottom: "1.5rem" }}>
+          <p className="gh-collab-label">What I inherited</p>
+          <p>
+            Research data (22 participant interviews and surveys) was provided as part of the bootcamp.
+            Four key findings from that data shaped every design decision that followed.
+          </p>
+        </div>
 
         <div className="gh-features-grid">
           {researchInsightCards.map((card) => (
@@ -255,9 +259,13 @@ export default function GoodHarvest() {
       <section>
         <p className="gh-section-label">Testing</p>
         <h2>What heatmaps and task testing showed</h2>
-        <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
-          22 participants across 3 rounds. Each round changed the design.
-        </p>
+        <div className="gh-collab-note" style={{ marginBottom: "1.5rem" }}>
+          <p className="gh-collab-label">What I generated</p>
+          <p>
+            Given provided research, I focused effort where it had the most design leverage — prototype testing.
+            I designed and ran 3 rounds of heatmap testing with 22 participants, producing new actionable data that reshaped the product.
+          </p>
+        </div>
 
         <div className="gh-validation-strip feature" style={{ marginBottom: "1.5rem" }}>
           {[

@@ -2,15 +2,6 @@ import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import usePageTitle from "../hooks/usePageTitle";
 
-// ── Credentials ─────────────────────────────────────────────────────────
-const CREDENTIALS = [
-  { icon: "📊", title: "Lean Six Sigma Green Belt", detail: "Purdue University" },
-  { icon: "🎓", title: "MHA", detail: "Rutgers University" },
-  { icon: "✏️", title: "UX Design Certified", detail: "" },
-  { icon: "🎖️", title: "Army Veteran", detail: "NJ National Guard" },
-  { icon: "🌐", title: "Bilingual", detail: "English · Spanish" },
-];
-
 // ── What I bring ─────────────────────────────────────────────────────────
 const AGENDA = [
   {
@@ -116,7 +107,7 @@ export default function About() {
           </h1>
 
           <p className="about-hero-subtext">
-            Eight years inside healthcare operations, military logistics, and digital products, bridging design and process improvement with AI fluency as the edge that makes both sharper.
+            Eight years in healthcare and military systems — bridging UX, process improvement, and AI.
           </p>
         </div>
 
@@ -126,30 +117,6 @@ export default function About() {
             alt="Hillary Esposito"
             className="about-headshot"
           />
-        </div>
-      </section>
-
-      {/* ═ CREDENTIALS ═════════════════════════════════════════════ */}
-      <section className="about-credentials" aria-label="Credentials">
-        <div className="about-credentials__header">
-          <p className="about-agenda__eyebrow">Credentials</p>
-          <h2 className="about-growth-title">Background and qualifications</h2>
-        </div>
-
-        <div className="about-credentials__grid">
-          {CREDENTIALS.map((cred) => (
-            <div key={cred.title} className="about-credential-card feature">
-              <span className="about-credential-card__icon" aria-hidden="true">
-                {cred.icon}
-              </span>
-              <div className="about-credential-card__text">
-                <p className="about-credential-card__title">{cred.title}</p>
-                {cred.detail && (
-                  <p className="about-credential-card__detail">{cred.detail}</p>
-                )}
-              </div>
-            </div>
-          ))}
         </div>
       </section>
 

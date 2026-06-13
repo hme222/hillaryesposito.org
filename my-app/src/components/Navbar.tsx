@@ -182,13 +182,14 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
         </li>
 
         <li>
-          <a
-            href="#contact"
-            className={navClass("contact")}
-            onClick={(e) => handleAnchorClick(e, "contact")}
+          <Link
+            to="/contact"
+            className={`nav-link${location.pathname === "/contact" ? " is-active" : ""}`}
+            aria-current={location.pathname === "/contact" ? "page" : undefined}
+            onClick={close}
           >
             CONTACT
-          </a>
+          </Link>
         </li>
 
         <li>

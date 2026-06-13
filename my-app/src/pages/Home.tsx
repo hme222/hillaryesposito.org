@@ -43,19 +43,6 @@ const OrbBackground: React.FC = () => (
 );
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
-const EXPERTISE = [
-  "Product Design", "UX Research", "Process Improvement", "Lean Six Sigma",
-  "Healthcare Systems", "AI Integration", "Interaction Design", "Accessibility (WCAG)",
-  "Workflow Optimization", "Systems Thinking", "Journey Mapping", "Design Systems",
-];
-
-const CREDENTIALS = [
-  { label: "Lean Six Sigma Green Belt", detail: "Purdue University" },
-  { label: "MHA", detail: "Rutgers University" },
-  { label: "UX Design Certified", detail: "" },
-  { label: "Army Veteran", detail: "NJ National Guard" },
-  { label: "Bilingual", detail: "English · Spanish" },
-];
 
 type Project = {
   title: string;
@@ -117,9 +104,10 @@ const PROJECTS: Project[] = [
 ];
 
 const APPROACH = [
-  { icon: "🔍", label: "Research first",   desc: "Every project starts with understanding the people who will use it." },
-  { icon: "🗺️", label: "Map the system",   desc: "IA and journey maps before any pixels, so structure serves purpose." },
-  { icon: "⚡", label: "Iterate fast",      desc: "Low-fi → test → refine. Confidence through cycles, not perfection." },
+  { icon: "🔬", label: "Research-first thinking",     desc: "I map workflows and interview users before designing anything." },
+  { icon: "🧩", label: "Systems perspective",          desc: "I think in workflows, not wireframes — people, tools, and processes together." },
+  { icon: "🤖", label: "AI judgment",                  desc: "I know when to use AI, how to evaluate its outputs, and where human judgment leads." },
+  { icon: "🤝", label: "Cross-disciplinary fluency",   desc: "I translate between clinicians, engineers, and operators so decisions become usable systems." },
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -254,7 +242,7 @@ function handleCopy() {
             { value: "8+",  label: "Years redesigning complex systems" },
             { value: "21K+", label: "Clinicians impacted, MSK Cancer Center" },
             { value: "85%",  label: "Faster resupply, NJ Army National Guard" },
-            { value: "20%",  label: "EMR cost reduction, MSK Cancer Center" },
+            { value: "70%",  label: "Recipe CTA engagement after redesign" },
           ].map((s) => (
             <div key={s.label} className="home-proof-card">
               <p className="home-proof-value gradient-text">{s.value}</p>
@@ -288,7 +276,7 @@ function handleCopy() {
 
             const displayTitle = isLocked ? "NDA Project" : proj.title;
             const displayDesc = isLocked
-              ? "Three fintech apps catalogued at production quality. Password required to view."
+              ? "Three fintech apps documented at production quality. Password required to view."
               : proj.desc;
 
             const cardVariants = {
@@ -375,9 +363,9 @@ function handleCopy() {
       </section>
 
       {/* ══════════════════════════════════════════
-          4. CTA STRIP
+          4. CTA + CONTACT (merged)
       ══════════════════════════════════════════ */}
-      <section className="section active home-cta-section" aria-label="What I'm looking for">
+      <section id="contact" ref={contactRef} className="section active home-cta-section" aria-label="Contact section">
         <motion.div
           className="about-cta"
           initial={prefersReducedMotion ? false : { opacity: 0, y: 28 }}
@@ -394,17 +382,44 @@ function handleCopy() {
               <p className="about-cta-content" style={{ color:"var(--muted)", lineHeight:1.8, marginBottom:"1.75rem" }}>
                 I bring research, systems thinking, and process improvement to products where clarity directly impacts outcomes. If you’re building for healthcare, government, or enterprise — let’s talk.
               </p>
-              <div style={{ display:"flex", gap:"1rem", flexWrap:"wrap" }}>
-                <button type="button" className="hero-btn"
-                  style={{ fontSize:"0.9rem", padding:"1rem 2rem" }}
-                  onClick={scrollToContact}>
-                  Get in touch
-                </button>
-                <button type="button" className="about-back-btn"
-                  onClick={() => navigate("/about")} style={{ fontSize:"0.9rem" }}>
-                  Read my story →
+
+              <div className="contact-email-block" style={{ marginTop: 0, marginBottom: "1.25rem" }}>
+                <a href={"mailto:" + email} className="contact-email-link" aria-label="Send email">
+                  {email}
+                </a>
+                <button onClick={handleCopy} className="contact-copy-btn" aria-label="Copy email address">
+                  {copied ? (
+                    <>
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      Copied
+                    </>
+                  ) : (
+                    <>
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                      </svg>
+                      Copy
+                    </>
+                  )}
                 </button>
               </div>
+
+              <div className="contact-links-row" style={{ marginBottom: "1.25rem" }}>
+                <a href="https://www.linkedin.com/in/hillaryesposito/" target="_blank" rel="noopener noreferrer" className="contact-link-btn">
+                  LinkedIn →
+                </a>
+                <a href="/assets/Hillary_Esposito_Portfolio_Resume.pdf" target="_blank" rel="noopener noreferrer" className="contact-link-btn">
+                  Resume →
+                </a>
+              </div>
+
+              <button type="button" className="about-back-btn"
+                onClick={() => navigate("/about")} style={{ fontSize:"0.9rem" }}>
+                Read my story →
+              </button>
             </div>
 
             {/* Right: domain chips */}
@@ -426,58 +441,12 @@ function handleCopy() {
             </div>
           </div>
         </motion.div>
+
+        {/* Floating Luna */}
+        <div ref={catRef} className={`about-luna ${showLuna ? "is-visible" : ""}`}>
+          <img src="/assets/favicon.png" alt="Luna, a gray and white cat with orange eyes" />
+        </div>
       </section>
-
-      {/* ══════════════════════════════════════════
-          5. CONTACT
-      ══════════════════════════════════════════ */}
-      <section id="contact" ref={contactRef} className="section active contact-hero" aria-label="Contact section">
-      <div className="contact-container">
-      <div className="contact-info">
-      <h2>Let&apos;s build something together</h2>
-      <p>
-        Freelance, full-time, or collaborations. If you&apos;re hiring or
-        launching, I&apos;d love to chat.
-      </p>
-    </div>
-
-    <div className="contact-email-block">
-      <a href={"mailto:" + email} className="contact-email-link" aria-label="Send email">
-        {email}
-      </a>
-
-      <button onClick={handleCopy} className="contact-copy-btn" aria-label="Copy email address">
-        {copied ? (
-          <>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="20 6 9 17 4 12" />
-            </svg>
-            Copied
-          </>
-        ) : (
-          <>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-            </svg>
-            Copy
-          </>
-        )}
-      </button>
-    </div>
-
-    <div className="contact-links-row">
-      <a href="https://www.linkedin.com/in/hillary-esposito/" target="_blank" rel="noopener noreferrer" className="contact-link-btn">
-        LinkedIn →
-      </a>
-    </div>
-
-    {/* Floating Luna */}
-    <div ref={catRef} className={`about-luna ${showLuna ? "is-visible" : ""}`}>
-      <img src="/assets/favicon.png" alt="Luna, a gray and white cat with orange eyes" />
-    </div>
-  </div>
-</section>
  </>
   ); 
 }

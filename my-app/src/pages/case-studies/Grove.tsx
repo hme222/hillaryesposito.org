@@ -215,6 +215,55 @@ export default function GroveCaseStudy() {
         </div>
       </section>
 
+      {/* ── HOW IT WORKS ── */}
+      <section>
+        <p className="gh-section-label">How it works</p>
+        <h2>Four steps from setup to first plant personality</h2>
+
+        <ol className="reina-flow-list" aria-label="Core user flow steps">
+          {FLOW_STEPS.map((s) => (
+            <li key={s.num} className="reina-flow-row feature">
+              <div className="reina-flow-num gradient-text">{s.num}</div>
+              <div className="reina-flow-content">
+                <h3 style={{ margin: "0 0 0.35rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>{s.title}</h3>
+                <p style={{ margin: 0, fontSize: "0.97rem", color: "var(--muted)", lineHeight: 1.7 }}>{s.desc}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+
+        {/* ── IA diagram ── */}
+        <div className="grove-ia-diagram feature" style={{ marginTop: "2rem", padding: "1.5rem", borderRadius: "12px" }}>
+          <h3 style={{ margin: "0 0 1.25rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>Core IA decision: bouquets, not individual plants</h3>
+          <div className="grove-ia-compare">
+            <div className="grove-ia-compare__side grove-ia-compare__side--before">
+              <p className="grove-ia-compare__label">Competing apps</p>
+              <div className="grove-ia-compare__items">
+                {["Pothos", "Snake Plant", "Monstera", "Spider Plant", "Fern", "Peace Lily", "Succulent", "Aloe", "Orchid", "Philodendron", "Jade", "ZZ Plant"].map((p) => (
+                  <span key={p} className="grove-ia-chip grove-ia-chip--flat">{p}</span>
+                ))}
+              </div>
+              <p className="grove-ia-compare__verdict">Flat list → decision paralysis</p>
+            </div>
+            <div className="grove-ia-compare__arrow" aria-hidden="true">→</div>
+            <div className="grove-ia-compare__side grove-ia-compare__side--after">
+              <p className="grove-ia-compare__label">Grove</p>
+              <div className="grove-ia-compare__items">
+                {["🪴 Kitchen window", "🌿 Living room shelf", "🌸 Bedroom"].map((b) => (
+                  <span key={b} className="grove-ia-chip grove-ia-chip--grouped">{b}</span>
+                ))}
+              </div>
+              <p className="grove-ia-compare__verdict">Grouped by context → focused tasks</p>
+            </div>
+          </div>
+          <p style={{ margin: "1rem 0 0", fontSize: "0.88rem", color: "var(--muted)", lineHeight: 1.6 }}>
+            Every screen answers one question: "Which bouquet am I looking at?" Tasks, journal
+            entries, and care reminders all tie to bouquets. New users see 1 task/day;
+            complexity scales with streak length, not all at once.
+          </p>
+        </div>
+      </section>
+
       {/* ── TOOLS & WHY ── */}
       <ToolsUsed
         tools={[
@@ -323,55 +372,6 @@ export default function GroveCaseStudy() {
             <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>Paused entirely</h3>
             <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>The Florist Pro tier (AI-generated care sheets for clients). One florist respondent: "Any generative AI in this will remove any sense of trust." n=2 is too thin to build on, but not too thin to pause on.</p>
           </div>
-        </div>
-      </section>
-
-      {/* ── HOW IT WORKS ── */}
-      <section>
-        <p className="gh-section-label">How it works</p>
-        <h2>Four steps from setup to first plant personality</h2>
-
-        <ol className="reina-flow-list" aria-label="Core user flow steps">
-          {FLOW_STEPS.map((s) => (
-            <li key={s.num} className="reina-flow-row feature">
-              <div className="reina-flow-num gradient-text">{s.num}</div>
-              <div className="reina-flow-content">
-                <h3 style={{ margin: "0 0 0.35rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>{s.title}</h3>
-                <p style={{ margin: 0, fontSize: "0.97rem", color: "var(--muted)", lineHeight: 1.7 }}>{s.desc}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
-
-        {/* ── Action 4: IA diagram ── */}
-        <div className="grove-ia-diagram feature" style={{ marginTop: "2rem", padding: "1.5rem", borderRadius: "12px" }}>
-          <h3 style={{ margin: "0 0 1.25rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>Core IA decision: bouquets, not individual plants</h3>
-          <div className="grove-ia-compare">
-            <div className="grove-ia-compare__side grove-ia-compare__side--before">
-              <p className="grove-ia-compare__label">Competing apps</p>
-              <div className="grove-ia-compare__items">
-                {["Pothos", "Snake Plant", "Monstera", "Spider Plant", "Fern", "Peace Lily", "Succulent", "Aloe", "Orchid", "Philodendron", "Jade", "ZZ Plant"].map((p) => (
-                  <span key={p} className="grove-ia-chip grove-ia-chip--flat">{p}</span>
-                ))}
-              </div>
-              <p className="grove-ia-compare__verdict">Flat list → decision paralysis</p>
-            </div>
-            <div className="grove-ia-compare__arrow" aria-hidden="true">→</div>
-            <div className="grove-ia-compare__side grove-ia-compare__side--after">
-              <p className="grove-ia-compare__label">Grove</p>
-              <div className="grove-ia-compare__items">
-                {["🪴 Kitchen window", "🌿 Living room shelf", "🌸 Bedroom"].map((b) => (
-                  <span key={b} className="grove-ia-chip grove-ia-chip--grouped">{b}</span>
-                ))}
-              </div>
-              <p className="grove-ia-compare__verdict">Grouped by context → focused tasks</p>
-            </div>
-          </div>
-          <p style={{ margin: "1rem 0 0", fontSize: "0.88rem", color: "var(--muted)", lineHeight: 1.6 }}>
-            Every screen answers one question: "Which bouquet am I looking at?" Tasks, journal
-            entries, and care reminders all tie to bouquets. New users see 1 task/day;
-            complexity scales with streak length, not all at once.
-          </p>
         </div>
       </section>
 

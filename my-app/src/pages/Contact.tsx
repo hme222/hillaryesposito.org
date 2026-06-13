@@ -56,7 +56,7 @@ export default function Contact() {
         </div>
 
         <div className="contact-links-row">
-          <a href="https://www.linkedin.com/in/hillary-esposito/" target="_blank" rel="noopener noreferrer" className="contact-link-btn">
+          <a href="https://www.linkedin.com/in/hillaryesposito/" target="_blank" rel="noopener noreferrer" className="contact-link-btn">
             LinkedIn →
           </a>
           <a href="/assets/Hillary_Esposito_Portfolio_Resume.pdf" target="_blank" rel="noopener noreferrer" className="contact-link-btn">
