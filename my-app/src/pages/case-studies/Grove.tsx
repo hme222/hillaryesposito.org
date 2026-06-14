@@ -26,7 +26,7 @@ const SURVEY_FINDINGS = [
   },
   {
     stat: "2.4/5",
-    label: "average lighting confidence among new owners — the #1 skill gap",
+    label: "average lighting confidence among new owners, the #1 skill gap",
   },
   {
     stat: "9/12",
@@ -50,13 +50,13 @@ const FLOW_STEPS = [
   { num: "01", title: "Onboard + create bouquet", desc: "User registers, picks plant types, and creates their first bouquet, the core unit of the app." },
   { num: "02", title: "Daily care tasks", desc: "Personalized watering/light/rotation tasks appear each morning based on the bouquet's plants and environment." },
   { num: "03", title: "Journal progress", desc: "Photo journal entries track growth over time, attached to specific bouquets for context." },
-  { num: "04", title: "AI-generated plant personality", desc: "When care streaks hit milestones, the app generates a unique plant personality profile — a playful, AI-written character sketch that makes each plant feel personal." },
+  { num: "04", title: "AI-generated plant personality", desc: "When care streaks hit milestones, the app generates a unique plant personality profile: a playful, AI-written character sketch that makes each plant feel personal." },
 ];
 
 const AI_DECISIONS = [
   {
     area: "AI-generated plant personalities",
-    whatAIDid: "AI generates unique personality profiles for each plant when users hit care milestones — playful character sketches that make plants feel like individuals, not inventory items.",
+    whatAIDid: "AI generates unique personality profiles for each plant when users hit care milestones: playful character sketches that make plants feel like individuals, not inventory items.",
     whyNotManual: "Writing hundreds of unique personality variants by hand isn't scalable. AI generation makes every plant feel personal without a content bottleneck.",
     humanJudgment: "I defined the prompt constraints, tone, and quality bar. AI executes within those guardrails; I curate what ships.",
   },
@@ -86,7 +86,6 @@ const OTHER_PROJECTS = [
     title: "Good Harvest",
     desc: "End-to-end mobile UX for seasonal produce, validated with heatmaps + 22 testers.",
     path: "/case-study/good-harvest",
-    path: "/case-study/mobbin",
   },
 ];
 
@@ -105,7 +104,7 @@ export default function GroveCaseStudy() {
           <p className="gh-hero__intro">
             Plant parents kill their plants because care advice is generic, conflicting,
             and untrustworthy. I surveyed 31 users, defined an MVP from their data, and
-            built a working app — using AI tools throughout to show{" "}
+            built a working app, using AI tools throughout to show{" "}
             <strong>where AI accelerates and where human judgment leads.</strong>
           </p>
         </div>
@@ -141,11 +140,11 @@ export default function GroveCaseStudy() {
       {/* ── OVERVIEW ── */}
       <section className="cs-overview">
         <p className="cs-section-heading">Overview</p>
-        <h2 className="cs-section-title">Research-driven design for a plant care app — with AI as the accelerant</h2>
+        <h2 className="cs-section-title">Research-driven design for a plant care app, with AI as the accelerant</h2>
         <p className="cs-overview-text">
           Grove is a plant care app I designed, researched, and built end-to-end. A 31-respondent
           survey defined the MVP, two data-driven personas shaped every design decision, and a
-          moderated testing plan is ready to validate the hypothesis. AI tools accelerated the build —
+          moderated testing plan is ready to validate the hypothesis. AI tools accelerated the build,
           and every AI decision is documented with explicit reasoning.
         </p>
         <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
@@ -162,14 +161,14 @@ export default function GroveCaseStudy() {
         <h2>Plant parents forget. Then they feel guilty.</h2>
         <p>
           New plant owners kill their plants because care information is generic, conflicting, and
-          untrustworthy — and existing apps respond by nagging rather than teaching. Every clause
+          untrustworthy, and existing apps respond by nagging rather than teaching. Every clause
           of that statement came from the survey data:
         </p>
 
         <div className="gh-assumption-grid">
           <div className="gh-assumption-card gh-assumption-card--initial">
             <p className="gh-assumption-label">What users said</p>
-            <p>"Advice is too generic — doesn't account for my specific home environment." Most common single frustration across all respondents.</p>
+            <p>"Advice is too generic, doesn't account for my specific home environment." Most common single frustration across all respondents.</p>
           </div>
           <div className="gh-assumption-card gh-assumption-card--finding">
             <p className="gh-assumption-label">What the data showed</p>
@@ -186,7 +185,7 @@ export default function GroveCaseStudy() {
         <div className="highlight">
           <p className="gh-design-q-label">Design Question</p>
           How might we help plant owners build consistent care habits through
-          trustworthy, species-specific guidance — with calm notifications and
+          trustworthy, species-specific guidance, with calm notifications and
           lighting education as the differentiators?
         </div>
       </section>
@@ -211,8 +210,8 @@ export default function GroveCaseStudy() {
         <h2>31 respondents told me what actually matters</h2>
         <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
           I ran a 31-respondent survey (5/22–6/4/2026) targeting new-to-experienced plant owners.
-          A forced trade-off question — "If Grove could only launch with THREE features, which are
-          dealbreakers?" — defined the MVP empirically, not by assumption.
+          A forced trade-off question, "If Grove could only launch with THREE features, which are
+          dealbreakers?", defined the MVP empirically, not by assumption.
         </p>
 
         <div className="grove-survey-stats" aria-label="Key survey findings">
@@ -226,11 +225,11 @@ export default function GroveCaseStudy() {
 
         <h3 style={{ marginTop: "2.5rem", color: "var(--olive-2)" }}>Who I'm designing for</h3>
         <p style={{ color: "var(--muted)", lineHeight: 1.65, marginBottom: "1rem" }}>
-          Two personas emerged from the data. The case study focuses on Maya — the largest segment and the hypothesis-critical user.
+          Two personas emerged from the data. The case study focuses on Maya, the largest segment and the hypothesis-critical user.
         </p>
         <div className="gh-assumption-grid">
           <div className="gh-assumption-card gh-assumption-card--initial">
-            <p className="gh-assumption-label">Maya — new plant owner (39%)</p>
+            <p className="gh-assumption-label">Maya, new plant owner (39%)</p>
             <ul className="grove-persona-list">
               <li><strong>Owns:</strong> 1–6 plants</li>
               <li><strong>Goal:</strong> "Just help me keep it alive"</li>
@@ -240,7 +239,7 @@ export default function GroveCaseStudy() {
             </ul>
           </div>
           <div className="gh-assumption-card gh-assumption-card--finding">
-            <p className="gh-assumption-label">James — experienced collector (42%)</p>
+            <p className="gh-assumption-label">James, experienced collector (42%)</p>
             <ul className="grove-persona-list">
               <li><strong>Owns:</strong> 6–50+ plants</li>
               <li><strong>Goal:</strong> Track collection without it feeling like work</li>
@@ -251,7 +250,7 @@ export default function GroveCaseStudy() {
           </div>
         </div>
 
-        <h3 style={{ marginTop: "2.5rem", color: "var(--olive-2)" }}>MVP definition — what the data says to build</h3>
+        <h3 style={{ marginTop: "2.5rem", color: "var(--olive-2)" }}>MVP definition: what the data says to build</h3>
         <p style={{ color: "var(--muted)", lineHeight: 1.65, marginBottom: "1rem" }}>
           Forced-rank results. The top 3 define the MVP; everything below is post-launch.
         </p>
@@ -281,7 +280,7 @@ export default function GroveCaseStudy() {
         <h2>I built community features. The survey said they're not why people download.</h2>
         <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
           Community forums ranked 6th out of 11 features (23%). Verified swapping ranked 9th (6%).
-          The social layer I designed isn't wrong — but it's not the reason anyone installs a plant app.
+          The social layer I designed isn't wrong, but it's not the reason anyone installs a plant app.
           Smart reminders, plant ID, and diagnosis are. The research reordered my priorities:
           make the care core excellent first, then layer in community as a retention play.
         </p>
@@ -293,7 +292,7 @@ export default function GroveCaseStudy() {
           </div>
           <div className="feature">
             <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>Elevated by data</h3>
-            <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>Pet toxicity warnings (9/12 new owners raised it unprompted), lighting education (lowest confidence score), and cited sources (top trust signal) — none of which were in the original build scope.</p>
+            <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>Pet toxicity warnings (9/12 new owners raised it unprompted), lighting education (lowest confidence score), and cited sources (top trust signal). None of these were in the original build scope.</p>
           </div>
           <div className="feature">
             <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>Paused entirely</h3>
@@ -455,11 +454,18 @@ export default function GroveCaseStudy() {
           </div>
         </div>
         <p className="cs-overview-text" style={{ marginTop: "1.5rem", maxWidth: 640 }}>
-          The most useful output wasn't the prototype — it was learning that I built breadth-first
+          The most useful output wasn't the prototype; it was learning that I built breadth-first
           while users decide on three features. The research reordered my priorities before I spent
           more time building the wrong things.
         </p>
       </section>
+
+      <div className="cs-inline-cta">
+        <p>Interested in this kind of work?</p>
+        <a href="mailto:espositohillary@gmail.com" className="hero-btn" style={{ fontSize: "0.9rem", padding: "0.8rem 1.8rem", textDecoration: "none" }}>
+          Send me a note
+        </a>
+      </div>
 
       {/* ── WHAT I LEARNED ── */}
       <section className="cs-reflections">
@@ -471,7 +477,7 @@ export default function GroveCaseStudy() {
             <p>
               I built community features, badges, and swaps before surveying users. The survey
               showed those rank 6th–9th in priority. The most useful output of this project was
-              learning to validate before investing — the research reordered my roadmap entirely.
+              learning to validate before investing. The research reordered my roadmap entirely.
             </p>
           </div>
           <div className="cs-reflection-card">
@@ -479,7 +485,7 @@ export default function GroveCaseStudy() {
             <p>
               The differentiator isn't knowing which AI tools exist. It's knowing when to trust
               them and when to override. I rejected AI's suggestion for XP gamification and a
-              task-dashboard home screen — both would have contradicted the emotional goal the
+              task-dashboard home screen. Both would have contradicted the emotional goal the
               survey validated.
             </p>
           </div>
@@ -521,7 +527,7 @@ export default function GroveCaseStudy() {
           ))}
         </div>
         <div className="gh-back-row">
-          <button type="button" className="hero-btn" onClick={() => navigate("/")}>
+          <button type="button" className="hero-btn" onClick={() => navigate("/?scrollTo=projects")}>
             ← Back to All Work
           </button>
         </div>

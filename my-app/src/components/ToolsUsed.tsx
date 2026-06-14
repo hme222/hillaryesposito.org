@@ -20,7 +20,7 @@ type Props = {
 export default function ToolsUsed({
   tools,
   eyebrow = "Tools",
-  heading = "What I used — and why",
+  heading = "What I used, and why",
 }: Props) {
   return (
     <section className="tools-used" aria-label="Tools used in this project">

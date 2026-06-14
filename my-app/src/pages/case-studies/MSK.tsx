@@ -6,13 +6,13 @@ const OTHER_PROJECTS = [
   {
     icon: "🌱",
     title: "Grove",
-    desc: "AI + design plant care app — research to shipped product in 3 weeks, solo.",
+    desc: "AI + design plant care app. Research to shipped product in 3 weeks, solo.",
     path: "/case-study/grove",
   },
   {
     icon: "🌿",
     title: "Good Harvest",
-    desc: "Heatmap testing with 22 users revealed the problem wasn't discoverability — it was trust.",
+    desc: "Heatmap testing with 22 users revealed the problem wasn't discoverability; it was trust.",
     path: "/case-study/good-harvest",
   },
 ];
@@ -32,7 +32,7 @@ export default function MSKCaseStudy() {
           <p className="gh-hero__intro">
             Six years, four roles. I redesigned clinical workflows, onboarding systems,
             and operational processes for <strong>21,000+ clinicians</strong> at one of the
-            world's top cancer centers — where confusion isn't an inconvenience, it's a patient safety risk.
+            world's top cancer centers, where confusion isn't an inconvenience; it's a patient safety risk.
           </p>
         </div>
         <div className="gh-hero__visual" aria-hidden="true">
@@ -65,12 +65,12 @@ export default function MSKCaseStudy() {
       {/* ── OVERVIEW ── */}
       <section className="cs-overview">
         <p className="cs-section-heading">Overview</p>
-        <h2 className="cs-section-title">Process improvement is design — I just didn't call it that yet</h2>
+        <h2 className="cs-section-title">Process improvement is design. I just didn't call it that yet</h2>
         <p className="cs-overview-text">
           At MSK, I didn't carry the title "designer." But the work was design: mapping workflows,
           identifying where systems failed the people using them, aligning stakeholders across
           clinical and administrative teams, and shipping solutions that 21,000+ users relied on daily.
-          This case study documents the process, not the pixels — because the work that matters most
+          This case study documents the process, not the pixels, because the work that matters most
           in healthcare happens before anyone opens Figma.
         </p>
         <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
@@ -122,13 +122,13 @@ export default function MSKCaseStudy() {
         <ol className="reina-flow-list" aria-label="Process steps">
           {[
             { num: "01", title: "Map the current state",
-              desc: "Shadowed frontline staff, interviewed stakeholders across departments, and documented the actual workflow — not the documented one. The gap between policy and practice was where the problems lived." },
+              desc: "Shadowed frontline staff, interviewed stakeholders across departments, and documented the actual workflow, not the documented one. The gap between policy and practice was where the problems lived." },
             { num: "02", title: "Identify the failure points",
               desc: "Used Lean Six Sigma methods to isolate where time, effort, and trust were being lost. Root cause analysis, not symptom treatment." },
             { num: "03", title: "Align stakeholders on the problem",
-              desc: "Presented findings to clinical leadership, IT, and frontline staff simultaneously. Cross-functional alignment before proposing solutions — because a solution only one team understands is a solution nobody adopts." },
+              desc: "Presented findings to clinical leadership, IT, and frontline staff simultaneously. Cross-functional alignment before proposing solutions, because a solution only one team understands is a solution nobody adopts." },
             { num: "04", title: "Design and implement the change",
-              desc: "Redesigned workflows, built new processes, and worked with IT to implement system changes. Then measured whether the change actually worked — not whether it was delivered on time." },
+              desc: "Redesigned workflows, built new processes, and worked with IT to implement system changes. Then measured whether the change actually worked, not whether it was delivered on time." },
           ].map((s) => (
             <li key={s.num} className="reina-flow-row feature">
               <div className="reina-flow-num gradient-text">{s.num}</div>
@@ -191,10 +191,17 @@ export default function MSKCaseStudy() {
           </div>
           <div className="cs-outcome-card">
             <p className="cs-outcome-value gradient-text">4</p>
-            <p className="cs-outcome-label">Roles across 6 years — each building on the last</p>
+            <p className="cs-outcome-label">Roles across 6 years, each building on the last</p>
           </div>
         </div>
       </section>
+
+      <div className="cs-inline-cta">
+        <p>Interested in this kind of work?</p>
+        <a href="mailto:espositohillary@gmail.com" className="hero-btn" style={{ fontSize: "0.9rem", padding: "0.8rem 1.8rem", textDecoration: "none" }}>
+          Send me a note
+        </a>
+      </div>
 
       {/* ── KEY DECISIONS ── */}
       <section className="cs-decisions">
@@ -217,7 +224,7 @@ export default function MSKCaseStudy() {
             <tr>
               <td>Certification tracking</td>
               <td>Built visibility into compliance status for both staff and managers</td>
-              <td>The old system told you when you'd failed. The new one tells you what's coming — proactive, not punitive</td>
+              <td>The old system told you when you'd failed. The new one tells you what's coming: proactive, not punitive</td>
             </tr>
             <tr>
               <td>Onboarding scope</td>
@@ -237,7 +244,7 @@ export default function MSKCaseStudy() {
             <h3>Process improvement is user research</h3>
             <p>
               Shadowing clinicians, mapping their actual workflows, identifying where the system
-              failed them — that's user research. I was doing design thinking with a different
+              failed them. That's user research. I was doing design thinking with a different
               vocabulary. The transition to UX wasn't a career change; it was a name change.
             </p>
           </div>
@@ -245,8 +252,8 @@ export default function MSKCaseStudy() {
             <h3>Stakeholder alignment is the design constraint</h3>
             <p>
               The best solution that only one department supports will fail. At MSK, I learned
-              that the alignment process — getting clinical, IT, and operations to see the same
-              problem — is where most projects actually succeed or fail. The design comes after.
+              that the alignment process, getting clinical, IT, and operations to see the same
+              problem, is where most projects actually succeed or fail. The design comes after.
             </p>
           </div>
           <div className="cs-reflection-card">
@@ -314,7 +321,7 @@ export default function MSKCaseStudy() {
           ))}
         </div>
         <div className="gh-back-row">
-          <button type="button" className="hero-btn" onClick={() => navigate("/")}>
+          <button type="button" className="hero-btn" onClick={() => navigate("/?scrollTo=projects")}>
             ← Back to All Work
           </button>
         </div>

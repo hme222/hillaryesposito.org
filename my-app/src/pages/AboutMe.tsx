@@ -12,7 +12,7 @@ const AGENDA = [
   {
     icon: "🧩",
     title: "Systems perspective",
-    desc: "I think in workflows, not wireframes — people, tools, and processes together.",
+    desc: "I think in workflows, not wireframes: people, tools, and processes together.",
   },
   {
     icon: "🤖",
@@ -46,7 +46,7 @@ const CHAPTERS = [
     heading: "Six years at MSK, designing for humans inside the systems I was improving.",
     image: "/assets/about/msk.jpg",
     paragraphs: [
-      "Across four roles, I cut EMR costs 20%, rebuilt certification workflows for 70% efficiency gains, and redesigned onboarding for 21,000+ clinicians — working across IT, clinical leadership, and frontline staff to align stakeholders and ship solutions they’d actually use. That’s when I realized process improvement and design are the same discipline.",
+      "Across four roles, I cut EMR costs 20%, rebuilt certification workflows for 70% efficiency gains, and redesigned onboarding for 21,000+ clinicians, working across IT, clinical leadership, and frontline staff to align stakeholders and ship solutions they’d actually use. That’s when I realized process improvement and design are the same discipline.",
     ],
     callout: "Clarity isn’t optional when people rely on the system to do their job.",
     articleLink: {
@@ -59,7 +59,7 @@ const CHAPTERS = [
     id: "now",
     label: "Where I Am Now",
     icon: "💻",
-    heading: "UX design, process improvement, and AI — unified.",
+    heading: "UX design, process improvement, and AI, unified.",
     image: "/assets/about/now.png",
     paragraphs: [
       "Today I bring both disciplines together through UX and service design, with AI fluency as the edge. I focus on where AI fits into workflows responsibly, in ways frontline staff will actually trust and adopt.",
@@ -107,7 +107,7 @@ export default function About() {
           </h1>
 
           <p className="about-hero-subtext">
-            Eight years in healthcare and military systems — bridging UX, process improvement, and AI.
+            From directing medical logistics for 5,000 soldiers to redesigning clinical systems for 21,000 clinicians at MSK. Here's how that became product design.
           </p>
         </div>
 
@@ -221,7 +221,7 @@ export default function About() {
         <div className="about-life-card feature">
           <h2 className="about-life-title">Outside of work</h2>
           <p className="about-life-intro">
-            Running, reading, and Luna the cat — routines that keep me clear and grounded.
+            Running, reading, and Luna the cat. Routines that keep me clear and grounded.
           </p>
           <div ref={lunaRef} className="about-luna-deco" aria-hidden="true">
             🐾
@@ -236,7 +236,7 @@ export default function About() {
             Interested in working together?
           </h2>
           <p className="about-cta-content" style={{ color: "var(--muted)", lineHeight: 1.8, marginBottom: "1.75rem" }}>
-            I’m open to full-time product design roles, freelance projects, and collaborations — especially in healthcare, government, and enterprise.
+            I’m open to full-time product design roles, freelance projects, and collaborations, especially in healthcare, government, and enterprise.
           </p>
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
             <button

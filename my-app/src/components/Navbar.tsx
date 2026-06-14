@@ -34,14 +34,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
       window.scrollTo({ top: y, behavior: "smooth" });
     } else {
       e.preventDefault();
-      navigate("/");
-      setTimeout(() => {
-        const el = document.getElementById(id);
-        if (!el) return;
-        const navHeight = 80;
-        const y = el.getBoundingClientRect().top + window.scrollY - navHeight;
-        window.scrollTo({ top: y, behavior: "smooth" });
-      }, 150);
+      navigate("/?scrollTo=" + id);
     }
   }
 

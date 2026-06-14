@@ -23,8 +23,8 @@ export default function GoodHarvest() {
   const otherProjects = [
     { icon: "🌱", title: "Grove", path: "/case-study/grove",
       desc: "A plant care app I designed and built with AI tools, showing judgment about when AI helps and when human thinking leads." },
-    { icon: "📱", title: "Mobbin", path: "/case-study/mobbin",
-      desc: "Three fintech apps documented for Mobbin's UX pattern library — UX flow documentation and UI pattern curation." },
+    { icon: "🏥", title: "MSK Cancer Center", path: "/case-study/msk",
+      desc: "Six years redesigning clinical workflows, onboarding, and certification systems for 21,000+ clinicians." },
   ];
 
   const researchInsightCards = [
@@ -93,11 +93,11 @@ export default function GoodHarvest() {
       {/* ── OVERVIEW ── */}
       <section className="cs-overview">
         <p className="cs-section-heading">Overview</p>
-        <h2 className="cs-section-title">People want to eat seasonally — the information makes it harder, not easier</h2>
+        <h2 className="cs-section-title">People want to eat seasonally. The information makes it harder, not easier</h2>
         <p className="cs-overview-text">
           A UX bootcamp project where I took provided research (22 participant interviews and surveys)
           and designed a mobile app from findings through tested prototype. The research revealed that
-          shoppers aren't lacking motivation — they're lacking confidence that information applies to
+          shoppers aren't lacking motivation; they're lacking confidence that information applies to
           <em> their</em> location. I designed the solution and validated it with heatmap testing.
         </p>
       </section>
@@ -130,10 +130,11 @@ export default function GoodHarvest() {
         </div>
 
         <div className="gh-collab-note">
-          <p className="gh-collab-label">How I worked</p>
+          <p className="gh-collab-label">Research provenance</p>
           <p>
-            UX bootcamp project. Research data (22 participant interviews and surveys) was provided.
-            I synthesized findings, designed the product, built prototypes, and ran heatmap testing.
+            <strong>Inherited:</strong> 22 participant interviews and surveys (conducted by bootcamp research team, recruitment via convenience sample).
+            I synthesized these findings into personas and design principles.<br />
+            <strong>Generated:</strong> 22-participant unmoderated heatmap testing across 3 rounds (I designed the test plan, wrote tasks, recruited participants via Maze panel, and analyzed results).
             Two peer designers reviewed my synthesis and challenged assumptions.
           </p>
         </div>
@@ -182,7 +183,7 @@ export default function GoodHarvest() {
             <div className="reina-flow-content">
               <h3 style={{ margin: "0 0 0.35rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>Prototype testing with heatmaps</h3>
               <p style={{ margin: 0, fontSize: "0.97rem", color: "var(--muted)", lineHeight: 1.7 }}>
-                22-participant unmoderated testing via Maze across 3 rounds. Heatmaps revealed what users actually tapped vs. what I expected — details in the Testing section below.
+                22-participant unmoderated testing via Maze across 3 rounds. Heatmaps revealed what users actually tapped vs. what I expected. Details in the Testing section below.
               </p>
             </div>
           </li>
@@ -262,7 +263,7 @@ export default function GoodHarvest() {
         <div className="gh-collab-note" style={{ marginBottom: "1.5rem" }}>
           <p className="gh-collab-label">What I generated</p>
           <p>
-            Given provided research, I focused effort where it had the most design leverage — prototype testing.
+            Given provided research, I focused effort where it had the most design leverage: prototype testing.
             I designed and ran 3 rounds of heatmap testing with 22 participants, producing new actionable data that reshaped the product.
           </p>
         </div>
@@ -369,6 +370,13 @@ export default function GoodHarvest() {
         </p>
       </section>
 
+      <div className="cs-inline-cta">
+        <p>Interested in this kind of work?</p>
+        <a href="mailto:espositohillary@gmail.com" className="hero-btn" style={{ fontSize: "0.9rem", padding: "0.8rem 1.8rem", textDecoration: "none" }}>
+          Send me a note
+        </a>
+      </div>
+
       {/* ── WHAT I LEARNED ── */}
       <section className="cs-reflections">
         <p className="cs-section-heading">What I learned</p>
@@ -418,7 +426,7 @@ export default function GoodHarvest() {
           ))}
         </div>
         <div className="gh-back-row">
-          <button type="button" className="hero-btn" onClick={() => navigate("/")}>
+          <button type="button" className="hero-btn" onClick={() => navigate("/?scrollTo=projects")}>
             ← Back to All Work
           </button>
         </div>

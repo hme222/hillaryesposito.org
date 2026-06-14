@@ -43,7 +43,7 @@ const WHAT_I_DID = [
   {
     num: "02",
     title: "Captured + structured screens",
-    desc: "Captured every state in each flow, organized in sequence. Empty states and error screens were the hardest to reach but the most valuable — designers search for those more than happy paths.",
+    desc: "Captured every state in each flow, organized in sequence. Empty states and error screens were the hardest to reach but the most valuable. Designers search for those more than happy paths.",
   },
   {
     num: "03",
@@ -59,16 +59,16 @@ const WHAT_I_DID = [
 
 const OTHER_PROJECTS = [
   {
-    icon: "🌿",
-    title: "Good Harvest",
-    desc: "End-to-end product design for seasonal produce, validated with heatmaps + 22 testers.",
-    path: "/case-study/good-harvest",
-  },
-  {
     icon: "🌱",
     title: "Grove",
     desc: "AI + design plant care app, showing where AI accelerates and where human design judgment leads.",
     path: "/case-study/grove",
+  },
+  {
+    icon: "🏥",
+    title: "MSK Cancer Center",
+    desc: "Six years redesigning clinical workflows, onboarding, and certification systems for 21,000+ clinicians.",
+    path: "/case-study/msk",
   },
 ];
 
@@ -222,7 +222,7 @@ export default function MobbinCaseStudy() {
         </p>
 
         <div className="mobbin-example-entry feature" style={{ padding: "1.5rem", borderRadius: "12px", marginBottom: "1.5rem" }}>
-          <h4 style={{ margin: "0 0 1rem", color: "var(--olive-2)", fontSize: "0.95rem" }}>Example 1: Kikoff — trust through proof</h4>
+          <h4 style={{ margin: "0 0 1rem", color: "var(--olive-2)", fontSize: "0.95rem" }}>Example 1: Kikoff, trust through proof</h4>
           <div className="mobbin-example-grid">
             <div className="mobbin-example-block">
               <p className="mobbin-example-label">Screen</p>
@@ -257,7 +257,7 @@ export default function MobbinCaseStudy() {
         </div>
 
         <div className="mobbin-example-entry feature" style={{ padding: "1.5rem", borderRadius: "12px" }}>
-          <h4 style={{ margin: "0 0 1rem", color: "var(--olive-2)", fontSize: "0.95rem" }}>Example 2: Polymarket — trust through transparency</h4>
+          <h4 style={{ margin: "0 0 1rem", color: "var(--olive-2)", fontSize: "0.95rem" }}>Example 2: Polymarket, trust through transparency</h4>
           <div className="mobbin-example-grid">
             <div className="mobbin-example-block">
               <p className="mobbin-example-label">Screen</p>
@@ -277,7 +277,7 @@ export default function MobbinCaseStudy() {
               <p className="mobbin-example-label">My annotation</p>
               <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65, fontStyle: "italic" }}>
                 "Surfaces the math behind the odds without requiring financial literacy. Resolution
-                criteria visible before any action — the user knows how they'll win or lose before
+                criteria visible before any action. The user knows how they'll win or lose before
                 committing. Transparency as trust mechanism."
               </p>
             </div>
@@ -286,7 +286,7 @@ export default function MobbinCaseStudy() {
               <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
                 Prediction markets ask users to risk money on uncertain outcomes. Where Kikoff
                 builds trust by showing results, Polymarket builds trust by showing the rules.
-                Same goal, opposite approach — worth studying side by side.
+                Same goal, opposite approach. Worth studying side by side.
               </p>
             </div>
           </div>
@@ -387,6 +387,13 @@ export default function MobbinCaseStudy() {
         </div>
       </section>
 
+      <div className="cs-inline-cta">
+        <p>Interested in this kind of work?</p>
+        <a href="mailto:espositohillary@gmail.com" className="hero-btn" style={{ fontSize: "0.9rem", padding: "0.8rem 1.8rem", textDecoration: "none" }}>
+          Send me a note
+        </a>
+      </div>
+
       {/* ── WHAT I LEARNED ── */}
       <section className="cs-reflections">
         <p className="cs-section-heading">What I learned</p>
@@ -456,7 +463,7 @@ export default function MobbinCaseStudy() {
           ))}
         </div>
         <div className="gh-back-row">
-          <button type="button" className="hero-btn" onClick={() => navigate("/")}>
+          <button type="button" className="hero-btn" onClick={() => navigate("/?scrollTo=projects")}>
             ← Back to All Work
           </button>
         </div>

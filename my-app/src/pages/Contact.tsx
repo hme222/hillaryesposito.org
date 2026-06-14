@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import usePageTitle from "../hooks/usePageTitle";
 
 export default function Contact() {
@@ -62,6 +63,15 @@ export default function Contact() {
           <a href="/assets/Hillary_Esposito_Portfolio_Resume.pdf" target="_blank" rel="noopener noreferrer" className="contact-link-btn">
             Resume →
           </a>
+        </div>
+
+        <div className="contact-work-links">
+          <p className="contact-work-label">See my work</p>
+          <div className="contact-links-row">
+            <Link to="/case-study/grove" className="contact-link-btn">Grove →</Link>
+            <Link to="/case-study/msk" className="contact-link-btn">MSK Cancer Center →</Link>
+            <Link to="/case-study/good-harvest" className="contact-link-btn">Good Harvest →</Link>
+          </div>
         </div>
       </div>
     </section>

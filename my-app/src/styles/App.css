@@ -94,20 +94,8 @@ body {
 .feature,
 .about-life-card,
 .about-cta-card,
-.media-card,
-.ecommerce-cs .ecom-demoClosed,
-.ecommerce-cs .ecom-demoPreviewCard,
-.ecommerce-cs .ecom-card,
-.ecommerce-cs .ecom-deviceFrame,
-.ecommerce-cs .ecom-dialog-inner,
-.ecommerce-cs .ecom-drawer,
-.ecommerce-cs .ecom-cart-item {
+.media-card {
   background: var(--surface-1);
-  border: 1px solid var(--border);
-} /* Raised components (optional but helps “depth” consistency) */
-.ecommerce-cs .ecom-wide,
-.ecommerce-cs .ecom-deviceTop {
-  background: color-mix(in srgb, var(--surface-2) 92%, transparent);
   border: 1px solid var(--border);
 } /* 3) Kill the biggest offender: hard-coded dark brown project card */
 .project-card {
@@ -157,38 +145,21 @@ body {
 .chapter-text,
 .about-life-intro p,
 .about-growth-text,
-.about-cta-content p,
-.ecommerce-cs .ecom-desc,
-.ecommerce-cs .ecom-demoSubtitle,
-.ecommerce-cs .ecom-demoPreviewDesc,
-.ecommerce-cs .ecom-demoNote,
-.ecommerce-cs .ecom-help,
-.ecommerce-cs .ecom-results {
+.about-cta-content p {
   color: var(--text-3);
 }
 .project-body p,
-.cs-media figcaption,
-.ecommerce-cs .ecom-meta,
-.ecommerce-cs .ecom-dialog-cat {
+.cs-media figcaption {
   color: var(--text-2);
 } /* 5) Inputs/controls: stop flipping between bg/card/random #1a1a1a */
 .form-group input,
 .form-group textarea,
-select,
-.ecommerce-cs .ecom-select,
-.ecommerce-cs .ecom-qty-input {
+select {
   background: var(--input-bg);
   color: var(--text-1);
   border-color: var(--input-border);
 }
-.ecommerce-cs .ecom-qty-btn,
-.ecommerce-cs .ecom-quick,
-.ecommerce-cs .ecom-cart-pill,
-.ecommerce-cs .ecom-demoToggle {
-  background: color-mix(in srgb, var(--surface-2) 90%, transparent);
-  border: 1px solid var(--border);
-  color: var(--text-1);
-} /* 6) About hobbies: align with surface tokens */
+/* 6) About hobbies: align with surface tokens */
 .hobby-card {
   background: var(--surface-1);
   border: 1px solid var(--border);
@@ -584,7 +555,7 @@ select:focus {
 }
 .hero-content {
   width: 100%; /* IMPORTANT: ensures content spans available width */
-  max-width: 12000px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex; /* centers the inner stack reliably */
   flex-direction: column;
@@ -1019,719 +990,7 @@ select:focus {
   box-shadow: 0 8px 18px rgba(0,0,0,0.15);
 }
 
-/* src/pages/case-studies/Ecommerce.css */ /* src/pages/case-studies/Ecommerce.css */ /* Scoped polish for the E-Commerce case study + demo frame */
-.ecommerce-cs {
-  --space-1: 8px;
-  --space-2: 12px;
-  --space-3: 16px;
-  --space-4: 24px;
-  --space-5: 32px;
-  --space-6: 48px;
-  --space-7: 72px;
-} /* Narrow + Wide wrappers */
-.ecommerce-cs .ecom-narrow {
-  width: min(var(--case-max), calc(100% - 48px));
-  margin: 0 auto;
-}
-.ecommerce-cs .ecom-wide {
-  width: min(var(--wide-max), calc(100% - 48px));
-  margin: 0 auto;
-  border-radius: var(--radius-xl);
-  background: color-mix(in srgb, var(--bg) 92%, transparent);
-  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
-  box-shadow: var(--shadow-md);
-  backdrop-filter: blur(10px);
-}
-.dark-mode .ecommerce-cs .ecom-wide {
-  background: rgba(15, 15, 15, 0.7);
-  border-color: rgba(255, 255, 255, 0.1);
-  box-shadow: var(--shadow-md);
-} /* ========================= HEADER (calmer) ========================= */
-.ecommerce-cs .ecommerce-header .intro {
-  max-width: 70ch;
-} /* KPI pills */
-.ecommerce-cs .ecom-kpis {
-  margin-top: var(--space-4);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-.ecommerce-cs .ecom-kpi {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--bg) 94%, transparent);
-  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
-  box-shadow: none;
-}
-.dark-mode .ecommerce-cs .ecom-kpi {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(255, 255, 255, 0.12);
-}
-.ecommerce-cs .ecom-kpi__label {
-  font-weight: 800;
-  font-size: 0.78rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.ecommerce-cs .ecom-kpi__value {
-  font-weight: 800;
-  color: var(--fg);
-} /* ========================= CASE STUDY GRID ========================= */
-.ecommerce-cs .ecom-caseStudy {
-  padding: var(--space-7) 0;
-}
-.ecommerce-cs .ecom-case-grid {
-  margin-top: var(--space-4);
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-}
-@media (max-width: 900px) {
-  .ecommerce-cs .ecom-case-grid {
-    grid-template-columns: 1fr;
-  }
-}
-.ecommerce-cs .ecom-next {
-  grid-column: 1 / -1;
-}
-.ecommerce-cs .ecom-bullets {
-  margin: 0.75rem 0 0;
-  padding-left: 1.15rem;
-  line-height: 1.7;
-}
-.ecommerce-cs .ecom-bullets li {
-  margin: 0.35rem 0;
-} /* ========================= DEMO SECTION (bottom + roomy) ========================= */
-.ecommerce-cs .ecom-demoSection {
-  margin-top: 110px;
-  padding: 110px 0;
-  background:
-    radial-gradient(
-      circle at 20% 25%,
-      rgba(128, 128, 0, 0.08),
-      transparent 55%
-    ),
-    radial-gradient(
-      circle at 85% 70%,
-      rgba(107, 142, 35, 0.08),
-      transparent 55%
-    ),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.015), rgba(0, 0, 0, 0.03));
-}
-.dark-mode .ecommerce-cs .ecom-demoSection {
-  background:
-    radial-gradient(
-      circle at 20% 25%,
-      rgba(235, 163, 82, 0.12),
-      transparent 60%
-    ),
-    radial-gradient(
-      circle at 85% 70%,
-      rgba(235, 163, 82, 0.08),
-      transparent 60%
-    ),
-    linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.02),
-      rgba(255, 255, 255, 0.04)
-    );
-}
-.ecommerce-cs .ecom-demoHeader {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--space-4);
-  margin-bottom: var(--space-4);
-}
-.ecommerce-cs .ecom-demoTitle {
-  margin: 0;
-}
-.ecommerce-cs .ecom-demoSubtitle {
-  margin: 10px 0 0;
-  color: var(--muted);
-  line-height: 1.7;
-  font-weight: 600;
-  max-width: 68ch;
-}
-.ecommerce-cs .ecom-demoToggle {
-  border-radius: 999px;
-  padding: 10px 14px;
-  font-weight: 900;
-  border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
-  background: color-mix(in srgb, var(--bg) 92%, transparent);
-  cursor: pointer;
-  white-space: nowrap;
-  transition:
-    transform 0.18s ease,
-    box-shadow 0.18s ease,
-    background 0.18s ease;
-}
-.ecommerce-cs .ecom-demoToggle:hover {
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-sm);
-}
-.dark-mode .ecommerce-cs .ecom-demoToggle {
-  border-color: rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.04);
-}
-.ecommerce-cs .ecom-demoClosed {
-  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
-  border-radius: 22px;
-  padding: 18px;
-  background: color-mix(in srgb, var(--bg) 94%, transparent);
-  box-shadow: var(--shadow-sm);
-}
-.dark-mode .ecommerce-cs .ecom-demoClosed {
-  border-color: rgba(255, 255, 255, 0.12);
-  background: rgba(15, 15, 15, 0.65);
-}
-.ecommerce-cs .ecom-demoPreviewGrid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-}
-@media (max-width: 900px) {
-  .ecommerce-cs .ecom-demoPreviewGrid {
-    grid-template-columns: 1fr;
-  }
-}
-.ecommerce-cs .ecom-demoPreviewCard {
-  border: 1px solid color-mix(in srgb, var(--fg) 8%, transparent);
-  border-radius: 18px;
-  padding: 16px;
-  background: var(--bg);
-}
-.dark-mode .ecommerce-cs .ecom-demoPreviewCard {
-  background: rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 255, 255, 0.1);
-}
-.ecommerce-cs .ecom-demoKicker {
-  font-weight: 900;
-  font-size: 0.78rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.ecommerce-cs .ecom-demoPreviewTitle {
-  margin-top: 8px;
-  font-weight: 900;
-  font-size: 1.05rem;
-}
-.ecommerce-cs .ecom-demoPreviewDesc {
-  margin-top: 8px;
-  color: var(--muted);
-  line-height: 1.65;
-}
-.ecommerce-cs .ecom-demoNote {
-  margin-top: 14px;
-  color: var(--muted);
-  line-height: 1.65;
-}
-.ecommerce-cs .ecom-demoExternal {
-  margin-top: 12px;
-}
-.ecommerce-cs .ecom-demoExternalLink {
-  font-weight: 900;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  color: var(--olive-2);
-}
-.dark-mode .ecommerce-cs .ecom-demoExternalLink {
-  color: var(--focus);
-} /* ========================= “INSIDE A COMPUTER” FRAME (browser chrome) ========================= */
-.ecommerce-cs .ecom-demoOpen {
-  margin-top: 18px;
-}
-.ecommerce-cs .ecom-deviceFrame {
-  border-radius: 26px;
-  border: 1px solid color-mix(in srgb, var(--fg) 14%, transparent);
-  background: color-mix(in srgb, var(--bg) 94%, transparent);
-  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.16);
-  overflow: hidden;
-}
-.dark-mode .ecommerce-cs .ecom-deviceFrame {
-  border-color: rgba(255, 255, 255, 0.12);
-  background: rgba(15, 15, 15, 0.55);
-}
-.ecommerce-cs .ecom-deviceTop {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 14px 16px;
-  border-bottom: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
-  background: linear-gradient(
-    to bottom,
-    color-mix(in srgb, var(--bg) 92%, transparent),
-    color-mix(in srgb, var(--bg) 86%, transparent)
-  );
-}
-.dark-mode .ecommerce-cs .ecom-deviceTop {
-  border-bottom-color: rgba(255, 255, 255, 0.1);
-}
-.ecommerce-cs .ecom-deviceDots {
-  display: flex;
-  gap: 8px;
-}
-.ecommerce-cs .ecom-deviceDots span {
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--fg) 25%, transparent);
-  opacity: 0.7;
-}
-.ecommerce-cs .ecom-deviceUrl {
-  flex: 1;
-  text-align: center;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--muted);
-}
-.ecommerce-cs .ecom-deviceBody {
-  padding: 18px;
-}
-@media (max-width: 768px) {
-  .ecommerce-cs .ecom-deviceBody {
-    padding: 10px;
-  }
-} /* Roomy demo container inside the frame */
-.ecommerce-cs .ecom-wide.ecom-demoWide {
-  padding: 44px;
-}
-@media (max-width: 768px) {
-  .ecommerce-cs .ecom-wide.ecom-demoWide {
-    padding: 22px;
-  }
-} /* ========================= DEMO TOP BAR (cart lives here) ========================= */
-.ecommerce-cs .ecom-storefront-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-.ecommerce-cs .ecom-band-title {
-  font-size: 0.85rem;
-  font-weight: 900;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-.ecommerce-cs .ecom-band-subtitle {
-  margin-top: 6px;
-  font-size: 0.95rem;
-  color: var(--muted);
-  font-style: italic;
-}
-.ecommerce-cs .ecom-cart-pill {
-  border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
-  background: color-mix(in srgb, var(--bg) 92%, transparent);
-  padding: 10px 14px;
-  border-radius: 999px;
-  font-weight: 900;
-  cursor: pointer;
-  transition:
-    transform 0.18s ease,
-    box-shadow 0.18s ease;
-}
-.ecommerce-cs .ecom-cart-pill:hover {
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-sm);
-}
-.dark-mode .ecommerce-cs .ecom-cart-pill {
-  border-color: rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.04);
-} /* Tightness fixes: add rhythm inside demo */
-.ecommerce-cs .ecom-highlight {
-  margin: 18px 0 28px;
-}
-.ecommerce-cs .ecommerce-controls {
-  margin-top: 26px;
-}
-.ecommerce-cs .ecom-grid {
-  margin-top: 28px;
-} /* ========================= CONTROLS ========================= */
-.ecommerce-cs .ecommerce-controls {
-  padding: 32px;
-  border-radius: 22px;
-}
-.ecommerce-cs .ecom-controls-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
-  gap: var(--space-4);
-  align-items: end;
-}
-@media (max-width: 968px) {
-  .ecommerce-cs .ecom-controls-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-@media (max-width: 600px) {
-  .ecommerce-cs .ecom-controls-grid {
-    grid-template-columns: 1fr;
-  }
-}
-.ecommerce-cs .ecom-field label {
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  opacity: 0.7;
-  margin-bottom: 8px;
-}
-.ecommerce-cs .ecom-select {
-  width: 100%;
-  padding: 1.05rem;
-  border: 2px solid var(--border);
-  border-radius: 15px;
-  background: var(--bg);
-  color: var(--fg);
-}
-.ecommerce-cs .ecom-help {
-  font-size: 0.95rem;
-  color: var(--muted);
-  margin-top: 0.6rem;
-  line-height: 1.55;
-}
-.ecommerce-cs .ecom-range {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 0.75rem;
-  align-items: center;
-}
-.ecommerce-cs .ecom-controls-actions {
-  display: flex;
-  justify-content: flex-end;
-}
-.ecommerce-cs .ecom-results {
-  margin-top: var(--space-4);
-  display: flex;
-  justify-content: space-between;
-  gap: var(--space-3);
-  color: var(--muted);
-}
-.ecommerce-cs .ecom-results-label {
-  font-style: italic;
-} /* ========================= PRODUCTS ========================= */
-.ecommerce-cs .ecom-products-head {
-  margin-top: var(--space-4);
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-}
-.ecommerce-cs .ecom-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: var(--space-4);
-}
-.ecommerce-cs .ecom-card {
-  background: var(--bg);
-  border-radius: 26px;
-  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
-  overflow: hidden;
-  box-shadow: none;
-  transition:
-    transform 0.18s ease,
-    box-shadow 0.18s ease;
-}
-.ecommerce-cs .ecom-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
-}
-@media (prefers-reduced-motion: reduce) {
-  .ecommerce-cs .ecom-card {
-    transition: none;
-  }
-  .ecommerce-cs .ecom-card:hover {
-    transform: none;
-  }
-}
-.ecommerce-cs .ecom-media {
-  display: block;
-  width: 100%;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  background:
-    radial-gradient(circle at 20% 30%, rgba(128, 128, 0, 0.1), transparent 55%),
-    radial-gradient(
-      circle at 85% 70%,
-      rgba(107, 142, 35, 0.1),
-      transparent 55%
-    ),
-    var(--bg);
-}
-.ecommerce-cs .ecom-media img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-}
-.ecommerce-cs .ecom-body {
-  padding: 1.2rem 1.25rem 1.25rem;
-}
-.ecommerce-cs .ecom-title {
-  font-size: 1.12rem;
-  font-weight: 900;
-  margin-bottom: 0.35rem;
-  color: var(--fg);
-}
-.ecommerce-cs .ecom-meta {
-  color: var(--muted);
-  font-style: italic;
-  margin-bottom: 0.75rem;
-}
-.ecommerce-cs .ecom-price {
-  font-weight: 900;
-  color: var(--fg);
-}
-.ecommerce-cs .ecom-desc {
-  color: var(--muted);
-  margin-bottom: 1rem;
-  line-height: 1.65;
-}
-.ecommerce-cs .ecom-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-.ecommerce-cs .ecom-add.hero-btn {
-  padding: 0.85rem 1.25rem;
-  font-size: 0.85rem;
-}
-.ecommerce-cs .ecom-quick {
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
-  background: color-mix(in srgb, var(--bg) 94%, transparent);
-  cursor: pointer;
-  font-size: 1rem;
-  transition:
-    transform 0.18s ease,
-    box-shadow 0.18s ease;
-}
-.ecommerce-cs .ecom-quick:hover {
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-sm);
-}
-.dark-mode .ecommerce-cs .ecom-quick {
-  border-color: rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.04);
-} /* Link button */
-.ecommerce-cs .ecom-link {
-  background: none;
-  border: none;
-  color: var(--olive-2);
-  font-weight: 900;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  cursor: pointer;
-}
-.dark-mode .ecommerce-cs .ecom-link {
-  color: var(--focus);
-} /* Muted helper */
-.ecommerce-cs .ecom-muted {
-  color: var(--muted);
-  font-weight: 650;
-} /* ========================= DIALOG (Quick View) ========================= */
-.ecommerce-cs .ecom-dialog {
-  border: none;
-  padding: 0;
-  border-radius: var(--radius-lg);
-  width: min(900px, 92vw);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-}
-.ecommerce-cs .ecom-dialog::backdrop {
-  background: rgba(10, 10, 10, 0.55);
-}
-.ecommerce-cs .ecom-dialog-inner {
-  background: var(--bg);
-  border-radius: var(--radius-lg);
-  border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
-}
-.dark-mode .ecommerce-cs .ecom-dialog-inner {
-  border-color: rgba(255, 255, 255, 0.1);
-}
-.ecommerce-cs .ecom-dialog-head {
-  padding: 1.1rem 1.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
-}
-.dark-mode .ecommerce-cs .ecom-dialog-head {
-  border-bottom-color: rgba(255, 255, 255, 0.1);
-}
-.ecommerce-cs .ecom-icon-btn {
-  background: none;
-  border: none;
-  font-size: 1.3rem;
-  cursor: pointer;
-  padding: 0.35rem 0.6rem;
-  border-radius: 12px;
-  color: inherit;
-}
-.ecommerce-cs .ecom-dialog-body {
-  padding: 1.25rem;
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 1.25rem;
-}
-@media (max-width: 768px) {
-  .ecommerce-cs .ecom-dialog-body {
-    grid-template-columns: 1fr;
-  }
-}
-.ecommerce-cs .ecom-dialog-media img {
-  width: 100%;
-  height: 360px;
-  object-fit: cover;
-  border-radius: 18px;
-  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
-}
-.dark-mode .ecommerce-cs .ecom-dialog-media img {
-  border-color: rgba(255, 255, 255, 0.1);
-}
-.ecommerce-cs .ecom-dialog-price {
-  font-size: 1.35rem;
-  font-weight: 900;
-  margin-bottom: 0.25rem;
-}
-.ecommerce-cs .ecom-dialog-cat {
-  color: var(--muted);
-  font-style: italic;
-  margin-bottom: 1rem;
-}
-.ecommerce-cs .ecom-dialog-desc {
-  color: var(--muted);
-  line-height: 1.75;
-  margin-bottom: 1.25rem;
-}
-.ecommerce-cs .ecom-dialog-actions {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-} /* ========================= DRAWER (Cart) ========================= */
-.ecommerce-cs .ecom-drawer-root {
-  position: fixed;
-  inset: 0;
-  z-index: 2000;
-}
-.ecommerce-cs .ecom-backdrop {
-  position: absolute;
-  inset: 0;
-  border: none;
-  background: rgba(10, 10, 10, 0.45);
-}
-.ecommerce-cs .ecom-drawer {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
-  width: min(480px, 92vw);
-  background: var(--bg);
-  border-left: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
-  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.18);
-  display: flex;
-  flex-direction: column;
-  padding: 1.15rem 1.15rem 1.25rem;
-}
-.dark-mode .ecommerce-cs .ecom-drawer {
-  border-left-color: rgba(255, 255, 255, 0.1);
-}
-.ecommerce-cs .ecom-drawer-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 0.75rem;
-  margin-bottom: 0.75rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
-}
-.dark-mode .ecommerce-cs .ecom-drawer-head {
-  border-bottom-color: rgba(255, 255, 255, 0.1);
-}
-.ecommerce-cs .ecom-cart-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  overflow: auto;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.ecommerce-cs .ecom-cart-item {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 12px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 12px;
-}
-.ecommerce-cs .ecom-cart-title {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  font-weight: 900;
-}
-.ecommerce-cs .ecom-qty-row {
-  margin-top: 0.65rem;
-  display: grid;
-  grid-template-columns: auto 1fr auto auto;
-  gap: 0.6rem;
-  align-items: center;
-}
-.ecommerce-cs .ecom-qty-btn {
-  border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
-  background: var(--bg);
-  border-radius: 14px;
-  padding: 0.55rem 0.75rem;
-  cursor: pointer;
-  font-weight: 900;
-}
-.dark-mode .ecommerce-cs .ecom-qty-btn {
-  border-color: rgba(255, 255, 255, 0.12);
-  background: #1a1a1a;
-}
-.ecommerce-cs .ecom-qty-input {
-  width: 100%;
-  padding: 0.8rem;
-  border: 2px solid var(--border);
-  border-radius: 14px;
-  background: var(--bg);
-  color: var(--fg);
-}
-.dark-mode .ecommerce-cs .ecom-qty-input {
-  background: #1a1a1a;
-}
-.ecommerce-cs .ecom-remove {
-  justify-self: end;
-}
-.ecommerce-cs .ecom-summary {
-  margin-top: 12px;
-}
-.ecommerce-cs .ecom-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 0.65rem;
-}
-.ecommerce-cs .ecom-total {
-  margin-top: 0.75rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
-}
-.dark-mode .ecommerce-cs .ecom-total {
-  border-top-color: rgba(255, 255, 255, 0.1);
-}
-.ecommerce-cs .ecom-summary-actions {
-  margin-top: 1rem;
-  display: grid;
-  gap: 0.75rem;
-} /*======================== ABOUT PAGE (SITE-NATIVE) ========================= */ /* Page wrapper */
+ /*======================== ABOUT PAGE (SITE-NATIVE) ========================= */ /* Page wrapper */
 .about-page {
   min-height: 100vh;
   background: var(--bg);
@@ -2479,74 +1738,7 @@ select:focus {
   color: rgba(248, 210, 183, 0.78);
 }
 
-/* 8) ECOMMERCE — remove “gray UI kit” dark styles and warm them up */
-.dark-mode .ecommerce-cs .ecom-wide,
-.dark-mode .ecommerce-cs .ecom-deviceFrame,
-.dark-mode .ecommerce-cs .ecom-dialog-inner,
-.dark-mode .ecommerce-cs .ecom-drawer {
-  background: color-mix(in srgb, var(--card) 78%, transparent);
-  border-color: var(--border);
-}
-
-/* Replace all the rgba(255,255,255,...) borders used in dark mode */
-.dark-mode .ecommerce-cs .ecom-kpi,
-.dark-mode .ecommerce-cs .ecom-demoToggle,
-.dark-mode .ecommerce-cs .ecom-demoClosed,
-.dark-mode .ecommerce-cs .ecom-demoPreviewCard,
-.dark-mode .ecommerce-cs .ecom-cart-pill,
-.dark-mode .ecommerce-cs .ecom-quick,
-.dark-mode .ecommerce-cs .ecom-qty-btn,
-.dark-mode .ecommerce-cs .ecom-dialog-head,
-.dark-mode .ecommerce-cs .ecom-drawer-head,
-.dark-mode .ecommerce-cs .ecom-total {
-  border-color: var(--border) !important;
-}
-
-/* Warm background fills */
-.dark-mode .ecommerce-cs .ecom-kpi,
-.dark-mode .ecommerce-cs .ecom-demoToggle,
-.dark-mode .ecommerce-cs .ecom-cart-pill,
-.dark-mode .ecommerce-cs .ecom-quick {
-  background: rgba(248, 210, 183, 0.06) !important;
-  color: var(--fg);
-}
-
-/* Inputs in ecommerce */
-.dark-mode .ecommerce-cs .ecom-select,
-.dark-mode .ecommerce-cs .ecom-qty-input,
-.dark-mode .ecommerce-cs input[type="search"],
-.dark-mode .ecommerce-cs input[type="number"] {
-  background: rgba(26, 14, 3, 0.7) !important;
-  color: var(--fg) !important;
-  border-color: rgba(248, 210, 183, 0.18) !important;
-}
-
-/* Product cards should be warm-brown, not page-black */
-.dark-mode .ecommerce-cs .ecom-card,
-.dark-mode .ecommerce-cs .ecom-demoPreviewCard {
-  background: color-mix(in srgb, var(--card) 88%, transparent) !important;
-}
-
-/* Drawer/cart items */
-.dark-mode .ecommerce-cs .ecom-cart-item {
-  background: color-mix(in srgb, var(--card) 92%, transparent);
-  border-color: var(--border);
-}
-
-/* Muted text */
-.dark-mode .ecommerce-cs .ecom-help,
-.dark-mode .ecommerce-cs .ecom-desc,
-.dark-mode .ecommerce-cs .ecom-results,
-.dark-mode .ecommerce-cs .ecom-demoSubtitle,
-.dark-mode .ecommerce-cs .ecom-demoPreviewDesc,
-.dark-mode .ecommerce-cs .ecom-demoNote,
-.dark-mode .ecommerce-cs .ecom-meta,
-.dark-mode .ecommerce-cs .ecom-dialog-cat {
-  color: rgba(248, 210, 183, 0.72) !important;
-}
-
 /* Links already map to --focus via your existing rule; keep it consistent */
-.dark-mode .ecommerce-cs .ecom-link,
 .dark-mode .cs-link,
 .dark-mode .cs-toggle-link {
   color: var(--focus);
@@ -2740,8 +1932,7 @@ select:focus {
    Your gradients now use palette via --olive-*.
    Force text to dark on the warm gradient so it passes. */
 .dark-mode .hero-btn,
-.dark-mode .submit-btn,
-.dark-mode .ecommerce-cs .ecom-add.hero-btn {
+.dark-mode .submit-btn {
   color: #1a0e03 !important;
 }
 
@@ -2793,58 +1984,6 @@ select:focus {
   border-top-color: rgba(248, 210, 183, 0.16);
 }
 
-/* 11) E-commerce: remove gray/white-dark leftovers; keep copy readable */
-.dark-mode .ecommerce-cs .ecom-wide,
-.dark-mode .ecommerce-cs .ecom-deviceFrame,
-.dark-mode .ecommerce-cs .ecom-dialog-inner,
-.dark-mode .ecommerce-cs .ecom-drawer {
-  background: color-mix(in srgb, var(--card) 82%, transparent);
-  border-color: var(--border) !important;
-}
-
-.dark-mode .ecommerce-cs .ecom-kpi,
-.dark-mode .ecommerce-cs .ecom-demoToggle,
-.dark-mode .ecommerce-cs .ecom-demoClosed,
-.dark-mode .ecommerce-cs .ecom-demoPreviewCard,
-.dark-mode .ecommerce-cs .ecom-cart-pill,
-.dark-mode .ecommerce-cs .ecom-quick,
-.dark-mode .ecommerce-cs .ecom-qty-btn {
-  border-color: var(--border) !important;
-  background: rgba(248, 210, 183, 0.06) !important;
-  color: var(--text-1);
-}
-
-.dark-mode .ecommerce-cs .ecom-select,
-.dark-mode .ecommerce-cs .ecom-qty-input,
-.dark-mode .ecommerce-cs input[type="search"],
-.dark-mode .ecommerce-cs input[type="number"] {
-  background: var(--input-bg) !important;
-  color: var(--text-1) !important;
-  border-color: var(--input-border) !important;
-}
-
-.dark-mode .ecommerce-cs .ecom-title,
-.dark-mode .ecommerce-cs .ecom-price,
-.dark-mode .ecommerce-cs .ecom-dialog-price {
-  color: var(--text-1);
-}
-
-.dark-mode .ecommerce-cs .ecom-help,
-.dark-mode .ecommerce-cs .ecom-desc,
-.dark-mode .ecommerce-cs .ecom-results,
-.dark-mode .ecommerce-cs .ecom-demoSubtitle,
-.dark-mode .ecommerce-cs .ecom-demoPreviewDesc,
-.dark-mode .ecommerce-cs .ecom-demoNote,
-.dark-mode .ecommerce-cs .ecom-meta,
-.dark-mode .ecommerce-cs .ecom-dialog-cat,
-.dark-mode .ecommerce-cs .ecom-muted {
-  color: var(--text-3) !important;
-}
-
-.dark-mode .ecommerce-cs .ecom-cart-item {
-  background: color-mix(in srgb, var(--card) 92%, transparent);
-  border-color: var(--border);
-}
 
 /* 12) Focus visibility (already in your base, but ensure it’s visible on brown) */
 .dark-mode button:focus,
@@ -2917,14 +2056,6 @@ body.dark-mode .chapter-text,
 body.dark-mode .about-life-intro p,
 body.dark-mode .about-growth-text,
 body.dark-mode .about-cta-content p,
-body.dark-mode .ecommerce-cs .ecom-desc,
-body.dark-mode .ecommerce-cs .ecom-help,
-body.dark-mode .ecommerce-cs .ecom-results,
-body.dark-mode .ecommerce-cs .ecom-demoSubtitle,
-body.dark-mode .ecommerce-cs .ecom-demoPreviewDesc,
-body.dark-mode .ecommerce-cs .ecom-demoNote,
-body.dark-mode .ecommerce-cs .ecom-meta,
-body.dark-mode .ecommerce-cs .ecom-dialog-cat,
 body.dark-mode .cs-media figcaption {
   color: var(--text-3);
 }
@@ -3022,49 +2153,9 @@ body.dark-mode .highlight {
   color: var(--text-1);
 }
 
-/* 6) ECOMMERCE: remove “gray kit” remnants but don’t touch layout */
-body.dark-mode .ecommerce-cs .ecom-wide,
-body.dark-mode .ecommerce-cs .ecom-deviceFrame,
-body.dark-mode .ecommerce-cs .ecom-dialog-inner,
-body.dark-mode .ecommerce-cs .ecom-drawer {
-  background: color-mix(in srgb, var(--card) 82%, transparent);
-  border-color: var(--border);
-}
-
-body.dark-mode .ecommerce-cs .ecom-kpi,
-body.dark-mode .ecommerce-cs .ecom-demoToggle,
-body.dark-mode .ecommerce-cs .ecom-demoClosed,
-body.dark-mode .ecommerce-cs .ecom-demoPreviewCard,
-body.dark-mode .ecommerce-cs .ecom-cart-pill,
-body.dark-mode .ecommerce-cs .ecom-quick,
-body.dark-mode .ecommerce-cs .ecom-qty-btn,
-body.dark-mode .ecommerce-cs .ecom-dialog-head,
-body.dark-mode .ecommerce-cs .ecom-drawer-head,
-body.dark-mode .ecommerce-cs .ecom-total {
-  border-color: var(--border);
-}
-
-body.dark-mode .ecommerce-cs .ecom-kpi,
-body.dark-mode .ecommerce-cs .ecom-demoToggle,
-body.dark-mode .ecommerce-cs .ecom-cart-pill,
-body.dark-mode .ecommerce-cs .ecom-quick {
-  background: rgba(248, 210, 183, 0.06);
-  color: var(--text-1);
-}
-
-body.dark-mode .ecommerce-cs .ecom-select,
-body.dark-mode .ecommerce-cs .ecom-qty-input,
-body.dark-mode .ecommerce-cs input[type="search"],
-body.dark-mode .ecommerce-cs input[type="number"] {
-  background: var(--input-bg);
-  color: var(--text-1);
-  border-color: var(--input-border);
-}
-
 /* 7) WCAG CTA fix: your palette gradient is bright, so use dark text on it */
 body.dark-mode .hero-btn,
-body.dark-mode .submit-btn,
-body.dark-mode .ecommerce-cs .ecom-add.hero-btn {
+body.dark-mode .submit-btn {
   color: #1a0e03;
 }
 
@@ -3089,23 +2180,9 @@ main.case-study {
 .about-life-card,
 .about-cta-card,
 .media-card,
-.ecommerce-cs .ecom-card,
-.ecommerce-cs .ecom-demoClosed,
-.ecommerce-cs .ecom-demoPreviewCard,
-.ecommerce-cs .ecom-deviceFrame,
-.ecommerce-cs .ecom-dialog-inner,
-.ecommerce-cs .ecom-drawer,
-.ecommerce-cs .ecom-cart-item,
 .projects.reina .reina__tag,
 .projects.reina .reina__imageWrap {
   background: var(--surface-1) !important;
-  border-color: var(--border) !important;
-}
-
-/* 3) Raised surfaces (frames / “browser chrome”) */
-.ecommerce-cs .ecom-wide,
-.ecommerce-cs .ecom-deviceTop {
-  background: var(--surface-2) !important;
   border-color: var(--border) !important;
 }
 
@@ -3271,42 +2348,6 @@ html.dark-mode,
   border: 1px solid var(--border) !important;
 }
 
-/* 6) E-COMMERCE DEMO: fix the demo frame + cards day/night */
-.ecommerce-cs .ecom-wide,
-.ecommerce-cs .ecom-deviceFrame,
-.ecommerce-cs .ecom-dialog-inner,
-.ecommerce-cs .ecom-drawer,
-.ecommerce-cs .ecom-card,
-.ecommerce-cs .ecom-demoClosed,
-.ecommerce-cs .ecom-demoPreviewCard,
-.ecommerce-cs .ecom-cart-item {
-  background: var(--card) !important;
-  border-color: var(--border) !important;
-}
-
-/* Make the demo section background match the site instead of “gray kit” */
-.ecommerce-cs .ecom-demoSection {
-  background:
-    radial-gradient(
-      circle at 20% 25%,
-      color-mix(in srgb, var(--olive-2) 10%, transparent),
-      transparent 60%
-    ),
-    radial-gradient(
-      circle at 85% 70%,
-      color-mix(in srgb, var(--olive-2) 8%, transparent),
-      transparent 60%
-    ),
-    var(--bg) !important;
-}
-
-/* Inputs inside demo should not invert to random #1a1a1a / gray */
-.ecommerce-cs .ecom-select,
-.ecommerce-cs .ecom-qty-input {
-  background: var(--bg) !important;
-  color: var(--fg) !important;
-  border-color: var(--border) !important;
-}
 
 /* 7) Dark mode readability for muted copy (fix “washed out / too dim”) */
 .dark-mode .about-intro,
@@ -3317,15 +2358,7 @@ html.dark-mode,
 .dark-mode .hobby-desc,
 .dark-mode .case-study p,
 .dark-mode .case-study li,
-.dark-mode .cs-media figcaption,
-.dark-mode .ecommerce-cs .ecom-desc,
-.dark-mode .ecommerce-cs .ecom-help,
-.dark-mode .ecommerce-cs .ecom-results,
-.dark-mode .ecommerce-cs .ecom-demoSubtitle,
-.dark-mode .ecommerce-cs .ecom-demoPreviewDesc,
-.dark-mode .ecommerce-cs .ecom-demoNote,
-.dark-mode .ecommerce-cs .ecom-meta,
-.dark-mode .ecommerce-cs .ecom-dialog-cat {
+.dark-mode .cs-media figcaption {
   color: rgba(248, 210, 183, 0.76) !important;
 }
 
@@ -3383,13 +2416,11 @@ a:hover {
 
 /* 4) Button text on bright gradients MUST be dark for contrast */
 .hero-btn,
-.submit-btn,
-.ecommerce-cs .ecom-add.hero-btn {
+.submit-btn {
   color: #0a0a0a !important;
 }
 .dark-mode .hero-btn,
-.dark-mode .submit-btn,
-.dark-mode .ecommerce-cs .ecom-add.hero-btn {
+.dark-mode .submit-btn {
   color: #1a0e03 !important; /* matches your palette dark */
 }
 
@@ -4415,11 +3446,6 @@ body.dark-mode .nav-overlay-backdrop,
   text-align: center;
 }
 
-/* ── Overview grid: 3-col (matches process grid) ── */
-.reina-summary-grid {
-  grid-template-columns: repeat(3, 1fr) !important;
-}
-
 /* ─────────────────────────────────────────────
    HOME — magazine project cards
    ───────────────────────────────────────────── */
@@ -4937,102 +3963,6 @@ body.dark-mode .nav-overlay-backdrop,
   color: var(--muted);
 }
 
-/* ── Flow wireframe frame ── */
-.reina-flow-frame {
-  position: static !important; /* override sticky from solutions split */
-  max-width: 100%;
-}
-
-.reina-flow-body {
-  overflow: hidden;
-  background: var(--bg);
-}
-
-.reina-flow-img-btn {
-  display: block;
-  position: relative;
-  width: 100%;
-  padding: 0;
-  border: none;
-  background: none;
-  cursor: zoom-in;
-  transition: opacity 0.2s ease;
-}
-
-.reina-flow-img-btn:hover {
-  opacity: 0.92;
-}
-
-.reina-flow-img-btn img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.reina-zoom-hint {
-  position: absolute;
-  bottom: 12px;
-  right: 12px;
-  background: rgba(0, 0, 0, 0.72);
-  color: #fff;
-  padding: 0.4rem 0.75rem;
-  border-radius: 999px;
-  font-size: 0.78rem;
-  letter-spacing: 0.5px;
-  pointer-events: none;
-}
-
-/* ── Zoom overlay (Reina + reusable) ── */
-.reina-zoom-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(10, 10, 10, 0.92);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  overflow: auto;
-  cursor: zoom-out;
-  animation: reinaZoomFade 0.18s ease-out;
-}
-
-@keyframes reinaZoomFade {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-.reina-zoom-overlay img {
-  max-width: 95vw;
-  max-height: 92vh;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  cursor: default;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-  border-radius: 6px;
-}
-
-.reina-zoom-close {
-  position: fixed;
-  top: 1.25rem;
-  right: 1.5rem;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #fff;
-  font-size: 1.25rem;
-  cursor: pointer;
-  transition: background 0.15s ease;
-  z-index: 10000;
-}
-
-.reina-zoom-close:hover {
-  background: rgba(255, 255, 255, 0.22);
-}
-
 /* ── Numbered flow list ── */
 .reina-flow-list {
   list-style: none;
@@ -5066,9 +3996,6 @@ body.dark-mode .nav-overlay-backdrop,
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
-  .reina-summary-grid {
-    grid-template-columns: 1fr !important;
-  }
   .reina-hero-badge {
     width: 130px;
     height: 130px;
@@ -5581,6 +4508,18 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 /* ── Contact LinkedIn link ── */
+.contact-work-links {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+.contact-work-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 0 0 0.75rem;
+}
 .contact-links-row {
   margin-top: 1.5rem;
 }
@@ -5882,99 +4821,6 @@ body.dark-mode .nav-overlay-backdrop,
   .home-expertise-strip { display: none; } /* prevent overflow on tiny screens */
 }
 
-/* =========================================================
-   ECOMMERCE CASE STUDY — ADDITIONS
-   Append to App.css below existing .ecommerce-cs rules.
-   ========================================================= */
-
-/* ── Hero badge (right column) ── */
-.ecom-hero-badge {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  width: 200px;
-  min-height: 200px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  padding: 1.5rem;
-  box-shadow: var(--shadow-md);
-  text-align: center;
-}
-
-.ecom-hero-icon {
-  font-size: 3rem;
-  line-height: 1;
-}
-
-.ecom-hero-badge-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  justify-content: center;
-}
-
-.ecom-hero-tag {
-  font-size: 0.68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 0.25rem 0.6rem;
-  border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--olive-2) 35%, transparent);
-  color: var(--olive-2);
-  background: color-mix(in srgb, var(--olive-2) 6%, transparent);
-}
-
-/* ── Case study cards with icon header ── */
-.ecom-case-card__header {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  margin-bottom: 0.85rem;
-}
-
-.ecom-case-card__header h3 {
-  margin: 0;
-  color: var(--olive-2);
-}
-
-.ecom-case-card__icon {
-  font-size: 1.25rem;
-  line-height: 1;
-  flex-shrink: 0;
-}
-
-/* ── Demo section header layout ── */
-.ecom-demo-intro {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 2rem;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-}
-
-/* ── Demo validation strip spacing ── */
-.ecom-demo-strip {
-  margin-bottom: 1.75rem;
-}
-
-/* ── Responsive ── */
-@media (max-width: 900px) {
-  .ecom-hero-badge {
-    width: 160px;
-    min-height: 160px;
-  }
-  .ecom-hero-icon { font-size: 2.25rem; }
-  .ecom-demo-intro { flex-direction: column; gap: 1rem; }
-}
-
-@media (max-width: 600px) {
-  .ecom-hero-badge { display: none; } /* hero badge hidden on very small screens */
-}
 
 /* =========================================================
    UNIFIED BUTTON SYSTEM
@@ -5984,14 +4830,13 @@ body.dark-mode .nav-overlay-backdrop,
      - .home-secondary-btn
      - .about-back-btn / .about-back-btn--outline
      - .recruiter-toggle-link
-     - .ecom-demoToggle
      - .cs-toggle-link
 
    Four variants, one consistent language:
      .btn-primary   → filled gradient (was hero-btn / submit-btn)
-     .btn-outline   → bordered pill   (was secondary / back / demoToggle)
+     .btn-outline   → bordered pill   (was secondary / back)
      .btn-ghost     → text + underline (was recruiter-toggle-link / cs-toggle-link)
-     .btn-icon      → square icon chip (was ecom-quick / ecom-icon-btn)
+     .btn-icon      → square icon chip (btn-icon)
 
    Size modifiers:
      default        → normal size
@@ -6011,7 +4856,6 @@ body.dark-mode .nav-overlay-backdrop,
 .submit-btn,
 .home-secondary-btn,
 .about-back-btn,
-.ecom-demoToggle,
 .recruiter-toggle-link,
 .cs-toggle-link {
   appearance: none;
@@ -6054,7 +4898,6 @@ body.dark-mode .nav-overlay-backdrop,
 .submit-btn:focus-visible,
 .home-secondary-btn:focus-visible,
 .about-back-btn:focus-visible,
-.ecom-demoToggle:focus-visible,
 .recruiter-toggle-link:focus-visible,
 .cs-toggle-link:focus-visible {
   outline: 3px solid var(--olive-2);
@@ -6174,13 +5017,11 @@ body.dark-mode .nav-overlay-backdrop,
 
 /* ════════════════════════════════════════
    VARIANT 2 — OUTLINE (bordered pill)
-   Used: home-secondary-btn, about-back-btn,
-         ecom-demoToggle, btn-outline
+   Used: home-secondary-btn, about-back-btn, btn-outline
 ════════════════════════════════════════ */
 .btn-outline,
 .home-secondary-btn,
-.about-back-btn,
-.ecom-demoToggle {
+.about-back-btn {
   padding: 0.75rem 1.4rem;
   border-radius: 999px;
   font-size: 0.88rem;
@@ -6192,8 +5033,7 @@ body.dark-mode .nav-overlay-backdrop,
 
 .btn-outline:hover,
 .home-secondary-btn:hover,
-.about-back-btn:hover,
-.ecom-demoToggle:hover {
+.about-back-btn:hover {
   border-color: var(--olive-2);
   color: var(--olive-2);
   background: color-mix(in srgb, var(--olive-2) 6%, transparent);
@@ -6202,23 +5042,20 @@ body.dark-mode .nav-overlay-backdrop,
 
 .btn-outline:active,
 .home-secondary-btn:active,
-.about-back-btn:active,
-.ecom-demoToggle:active {
+.about-back-btn:active {
   transform: scale(0.98);
 }
 
 .dark-mode .btn-outline,
 .dark-mode .home-secondary-btn,
-.dark-mode .about-back-btn,
-.dark-mode .ecom-demoToggle {
+.dark-mode .about-back-btn {
   color: var(--text-1);
   border-color: var(--border);
 }
 
 .dark-mode .btn-outline:hover,
 .dark-mode .home-secondary-btn:hover,
-.dark-mode .about-back-btn:hover,
-.dark-mode .ecom-demoToggle:hover {
+.dark-mode .about-back-btn:hover {
   border-color: var(--focus);
   color: var(--focus);
   background: color-mix(in srgb, var(--focus) 8%, transparent);
@@ -6246,13 +5083,11 @@ body.dark-mode .nav-overlay-backdrop,
 
 /* ════════════════════════════════════════
    VARIANT 3 — GHOST (text + underline)
-   Used: recruiter-toggle-link, cs-toggle-link,
-         ecom-link, btn-ghost
+   Used: recruiter-toggle-link, cs-toggle-link, btn-ghost
 ════════════════════════════════════════ */
 .btn-ghost,
 .recruiter-toggle-link,
-.cs-toggle-link,
-.ecommerce-cs .ecom-link {
+.cs-toggle-link {
   padding: 0.15rem 0;
   border-radius: 0;
   font-size: inherit;
@@ -6269,8 +5104,7 @@ body.dark-mode .nav-overlay-backdrop,
 
 .btn-ghost:hover,
 .recruiter-toggle-link:hover,
-.cs-toggle-link:hover,
-.ecommerce-cs .ecom-link:hover {
+.cs-toggle-link:hover {
   text-decoration-color: var(--olive-2);
   text-decoration-thickness: 2px;
   opacity: 0.85;
@@ -6284,8 +5118,7 @@ body.dark-mode .nav-overlay-backdrop,
 
 .dark-mode .btn-ghost,
 .dark-mode .recruiter-toggle-link,
-.dark-mode .cs-toggle-link,
-.dark-mode .ecommerce-cs .ecom-link {
+.dark-mode .cs-toggle-link {
   background: color-mix(in srgb, var(--focus) 10%, var(--card));
   color: var(--focus);
   border-color: color-mix(in srgb, var(--focus) 30%, var(--border));
@@ -6312,11 +5145,9 @@ body.dark-mode .nav-overlay-backdrop,
 
 /* ════════════════════════════════════════
    VARIANT 4 — ICON (square chip)
-   Used: ecom-quick, ecom-icon-btn, btn-icon
+   Used: btn-icon
 ════════════════════════════════════════ */
-.btn-icon,
-.ecommerce-cs .ecom-quick,
-.ecommerce-cs .ecom-icon-btn {
+.btn-icon {
   width: 40px;
   height: 40px;
   border-radius: 12px;
@@ -6328,40 +5159,31 @@ body.dark-mode .nav-overlay-backdrop,
   flex-shrink: 0;
 }
 
-.btn-icon:hover,
-.ecommerce-cs .ecom-quick:hover,
-.ecommerce-cs .ecom-icon-btn:hover {
+.btn-icon:hover {
   border-color: var(--olive-2);
   color: var(--olive-2);
   background: color-mix(in srgb, var(--olive-2) 6%, transparent);
   transform: translateY(-1px);
 }
 
-.btn-icon:active,
-.ecommerce-cs .ecom-quick:active,
-.ecommerce-cs .ecom-icon-btn:active {
+.btn-icon:active {
   transform: scale(0.95);
 }
 
-.dark-mode .btn-icon,
-.dark-mode .ecommerce-cs .ecom-quick,
-.dark-mode .ecommerce-cs .ecom-icon-btn {
+.dark-mode .btn-icon {
   color: var(--text-1);
   border-color: var(--border);
   background: color-mix(in srgb, var(--surface-2) 60%, transparent);
 }
 
-.dark-mode .btn-icon:hover,
-.dark-mode .ecommerce-cs .ecom-quick:hover,
-.dark-mode .ecommerce-cs .ecom-icon-btn:hover {
+.dark-mode .btn-icon:hover {
   border-color: var(--focus);
   color: var(--focus);
   background: color-mix(in srgb, var(--focus) 8%, transparent);
 }
 
 /* ── Large icon button (close dialogs / drawers) ── */
-.btn-icon.btn--lg,
-.ecommerce-cs .ecom-icon-btn {
+.btn-icon.btn--lg {
   width: auto;
   height: auto;
   padding: 0.4rem 0.65rem;
@@ -6369,13 +5191,6 @@ body.dark-mode .nav-overlay-backdrop,
   font-size: 1.1rem;
   border-color: transparent;
   background: transparent;
-}
-
-.ecommerce-cs .ecom-icon-btn:hover {
-  background: color-mix(in srgb, var(--fg) 8%, transparent);
-  border-color: transparent;
-  color: var(--fg);
-  transform: none;
 }
 
 /* ════════════════════════════════════════
@@ -6402,40 +5217,6 @@ body.dark-mode .nav-overlay-backdrop,
   display: none !important; /* no underline animation on pill buttons */
 }
 
-/* ════════════════════════════════════════
-   SPECIAL: ecom-cart-pill (demo header)
-════════════════════════════════════════ */
-.ecommerce-cs .ecom-cart-pill {
-  padding: 0.6rem 1rem;
-  border-radius: 999px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: var(--fg);
-  border: 1.5px solid var(--border);
-  background: var(--card);
-  transition: border-color 0.2s ease, color 0.2s ease,
-              background 0.2s ease, transform 0.18s ease;
-}
-
-.ecommerce-cs .ecom-cart-pill:hover {
-  border-color: var(--olive-2);
-  color: var(--olive-2);
-  background: color-mix(in srgb, var(--olive-2) 6%, transparent);
-  transform: translateY(-1px);
-}
-
-.dark-mode .ecommerce-cs .ecom-cart-pill {
-  color: var(--text-1);
-  border-color: var(--border);
-  background: color-mix(in srgb, var(--surface-2) 50%, transparent);
-}
-
-.dark-mode .ecommerce-cs .ecom-cart-pill:hover {
-  border-color: var(--focus);
-  color: var(--focus);
-  background: color-mix(in srgb, var(--focus) 8%, transparent);
-}
 
 /* ════════════════════════════════════════
    SPECIAL: gh-proj-cta inline arrow link
@@ -6483,433 +5264,6 @@ body.dark-mode .nav-overlay-backdrop,
 .btn-group--center { justify-content: center; }
 .btn-group--end    { justify-content: flex-end; }
 
-/* =========================================================
-   ECOMMERCE PAGE — WIDE LAYOUT
-   Append to App.css below existing .ecommerce-cs rules.
-
-   Key fix: removes the 900px case-study constraint.
-   Uses --wide-max (1240px) for the outer wrapper and
-   a full-bleed hero with generous breathing room.
-   ========================================================= */
-
-/* ── Page wrapper — wider than case-study max ── */
-.ecom-page {
-  /* Override any inherited case-study narrowing */
-  max-width: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-/* Central content wrapper at 1240px */
-.ecom-page-wrap {
-  width: min(var(--wide-max), calc(100% - 2 * var(--page-pad)));
-  margin: 0 auto;
-}
-
-/* ── HERO — full-bleed with gradient bg ── */
-.ecom-page-hero {
-  padding: 100px 0 80px;
-  background:
-    radial-gradient(circle at 15% 50%, color-mix(in srgb, var(--olive-2) 7%, transparent), transparent 55%),
-    radial-gradient(circle at 85% 20%, color-mix(in srgb, var(--olive-1) 5%, transparent), transparent 55%),
-    var(--bg);
-  border-bottom: 1px solid var(--border);
-}
-
-.ecom-page-hero__inner {
-  display: grid;
-  grid-template-columns: 1fr 420px;
-  gap: 4rem;
-  align-items: center;
-}
-
-.ecom-page-hero__copy .meta {
-  margin-bottom: 0.85rem;
-}
-
-.ecom-page-hero__copy h1 {
-  font-size: clamp(3rem, 5.5vw, 5rem);
-  font-weight: 900;
-  letter-spacing: -3px;
-  line-height: 0.95;
-  margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 50%, var(--olive-3) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.ecom-page-hero__intro {
-  font-size: 1.15rem;
-  color: var(--muted);
-  line-height: 1.8;
-  max-width: 55ch;
-}
-
-/* Right: a11y badge 2×2 grid */
-.ecom-page-hero__badges {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-}
-
-.ecom-page-badge {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  padding: 1rem 1.1rem;
-}
-
-.ecom-page-badge__icon {
-  font-size: 1.4rem;
-  line-height: 1;
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-
-.ecom-page-badge__label {
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--fg);
-  margin: 0 0 0.2rem;
-}
-
-.ecom-page-badge__sub {
-  font-size: 0.78rem;
-  color: var(--muted);
-  margin: 0;
-  line-height: 1.4;
-}
-
-/* Meta strip — full wide-max width, no cramped 900px */
-.ecom-page-meta {
-  margin-top: 1.5rem;
-  margin-bottom: 0;
-}
-
-/* ── SECTIONS — consistent vertical rhythm ── */
-.ecom-page-section {
-  padding: 80px 0;
-}
-
-.ecom-page-section__header {
-  margin-bottom: 2.5rem;
-}
-
-.ecom-page-section__header h2 {
-  font-size: 2.2rem;
-  color: var(--olive-2);
-  margin: 0 0 0.75rem;
-  font-weight: 700;
-}
-
-.ecom-page-section__lead {
-  font-size: 1.05rem;
-  color: var(--muted);
-  line-height: 1.75;
-  max-width: 70ch;
-  margin: 0;
-}
-
-/* ── CASE STUDY — 3-column grid on wide screens ── */
-.ecom-page-case-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-/* Next steps: horizontal 4-item row inside the card */
-.ecom-page-next-card {
-  grid-column: 1/-1
-}
-
-.ecom-page-next-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.6rem 2rem;
-  margin-top: 0.5rem;
-}
-
-.ecom-page-next-item {
-  display: flex;
-  align-items: baseline;
-  gap: 0.6rem;
-  font-size: 0.98rem;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.ecom-page-next-bullet {
-  color: var(--olive-2);
-  font-weight: 700;
-  flex-shrink: 0;
-}
-
-/* ── DEMO SECTION — header layout ── */
-.ecom-page-demo-section {
-  /* inherits ecom-demoSection background radials */
-  padding-top: 80px;
-  padding-bottom: 80px;
-}
-
-.ecom-page-demo-header {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 3rem;
-  align-items: start;
-  margin-bottom: 1.5rem;
-}
-
-.ecom-page-demo-header__copy h2 {
-  margin: 0 0 0.5rem;
-  font-size: 2.2rem;
-  color: var(--olive-2);
-  font-weight: 700;
-}
-
-.ecom-page-demo-header__controls {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 1rem;
-}
-
-.ecom-page-demo-strip {
-  /* validation strip — override narrowing */
-  min-width: 480px;
-}
-
-.ecom-page-demo-toggle {
-  /* inherits ecom-demoToggle styles from existing CSS */
-  align-self: flex-end;
-}
-
-/* ── Override ecom-narrow inside the wide layout ── */
-.ecom-page .ecom-narrow {
-  width: 100%;
-  max-width: none;
-  margin: 0;
-}
-
-/* ── Override ecom-wide inside the wide layout ──
-   Let the storefront frame use the full container */
-.ecom-page .ecom-wide {
-  width: 100%;
-  max-width: none;
-}
-
-/* ── RESPONSIVE ── */
-@media (max-width: 1100px) {
-  .ecom-page-case-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .ecom-page-demo-header {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  .ecom-page-demo-header__controls {
-    align-items: flex-start;
-  }
-  .ecom-page-demo-strip {
-    min-width: 0;
-    width: 100%;
-  }
-}
-
-@media (max-width: 900px) {
-  .ecom-page-hero__inner {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-  .ecom-page-hero__badges {
-    /* show badges below copy, still 2-col */
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .ecom-page-hero__copy h1 {
-    font-size: clamp(2.5rem, 7vw, 3.5rem);
-    letter-spacing: -2px;
-  }
-}
-
-@media (max-width: 640px) {
-  .ecom-page-hero { padding: 72px 0 56px; }
-  .ecom-page-hero__badges { grid-template-columns: 1fr; }
-  .ecom-page-case-grid { grid-template-columns: 1fr; }
-  .ecom-page-next-grid { grid-template-columns: 1fr; }
-  .ecom-page-section { padding: 56px 0; }
-}
-
-/* =========================================================
-   SPLIT-SCREEN LAYOUT
-   Two-column layout: left scrolls (case study), right sticks (demo)
-   ========================================================= */
-
-.ecom-split-layout {
-  display: grid;
-  grid-template-columns: 45fr 55fr;
-  width: 100%;
-  align-items: start;
-}
-
-/* ── Left column: scrolls naturally with the page ── */
-.ecom-split-left {
-  padding: 2rem 2rem 80px 5%;
-  border-right: 1px solid var(--border);
-}
-
-.ecom-split-left .ecom-page-meta {
-  margin-top: 1.75rem;
-  margin-bottom: 0;
-  flex-wrap: wrap;
-}
-
-.ecom-split-left .ecom-page-section {
-  padding: 40px 0 0;
-}
-
-/* Narrower left column: 2-col card grid fits better than 3 */
-.ecom-split-left .ecom-page-case-grid {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.ecom-split-left .ecom-page-next-grid {
-  grid-template-columns: 1fr;
-}
-
-/* ── Right column: sticky demo panel ── */
-.ecom-split-right {
-  position: sticky;
-  top: 68px; /* match navbar height */
-  height: calc(100vh - 68px);
-  overflow-y: auto;
-  padding: 1.25rem 5% 1.25rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  background: var(--bg);
-}
-
-/* "Live Demo" pill label */
-.ecom-split-demo-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  align-self: flex-start;
-  padding: 0.3rem 0.7rem;
-  border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--olive-2) 25%, transparent);
-  background: color-mix(in srgb, var(--olive-2) 7%, transparent);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  color: var(--olive-2);
-}
-
-.ecom-split-demo-label::before {
-  content: "";
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--olive-2) 70%, transparent);
-  animation: ecom-pulse 2.4s ease-in-out infinite;
-}
-
-@keyframes ecom-pulse {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.35; }
-}
-
-.dark-mode .ecom-split-demo-label {
-  border-color: rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.05);
-  color: var(--muted);
-}
-
-/* Demo panel: fills remaining height of the right column */
-.ecom-split-demo-panel {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-  margin-top: 0 !important; /* override .ecom-demoOpen margin */
-}
-
-.ecom-split-right .ecom-deviceFrame {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-}
-
-.ecom-split-right .ecom-deviceBody {
-  flex: 1;
-  overflow-y: auto;
-  min-height: 0;
-}
-
-/* Tighter demo padding in the narrower right column */
-.ecom-split-right .ecom-wide.ecom-demoWide {
-  padding: 1.25rem 1.5rem;
-}
-
-/* ── Quick-view magnifier icon sizing ── */
-.ecom-quick svg {
-  display: block;
-  pointer-events: none;
-}
-
-/* ── RESPONSIVE: stack columns below 1024px ── */
-@media (max-width: 1024px) {
-  .ecom-split-layout {
-    display: block;
-  }
-
-  .ecom-split-left {
-    padding: 2rem 5% 48px;
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .ecom-split-right {
-    position: static;
-    height: auto;
-    overflow-y: visible;
-    padding: 2rem 5% 64px;
-  }
-
-  .ecom-split-demo-panel,
-  .ecom-split-right .ecom-deviceFrame {
-    flex: none;
-    height: auto;
-  }
-
-  .ecom-split-right .ecom-deviceBody {
-    overflow-y: visible;
-    min-height: 0;
-    height: auto;
-  }
-
-  .ecom-split-left .ecom-page-case-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .ecom-split-right .ecom-wide.ecom-demoWide {
-    padding: 1.5rem 2rem;
-  }
-}
-
-@media (max-width: 640px) {
-  .ecom-split-left .ecom-page-case-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .ecom-split-right .ecom-wide.ecom-demoWide {
-    padding: 1rem;
-  }
-}
 
 /* =========================================================
    ABOUT PAGE — NEW SECTION ADDITIONS
@@ -7171,7 +5525,6 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 
-
 .dark-mode .rsc {
   border-left-color: var(--focus);
   background: var(--card);
@@ -7412,17 +5765,8 @@ body.dark-mode .nav-overlay-backdrop,
   .gh-phone-frame { max-width: 160px; max-height: 300px; }
 }
 
-/* =========================================================
-   PASTE THIS ENTIRE BLOCK AT THE VERY BOTTOM OF App.css
-   Covers:
-   1. Missing .about-edu-grid (from About-additions.css)
-   2. Luxury ecommerce demo upgrade
-   ========================================================= */
-
-
 /* ══════════════════════════════════════════════════════════
-   1. MISSING: EDUCATION GRID
-   Was in About-additions.css but never merged into App.css
+   EDUCATION GRID
 ══════════════════════════════════════════════════════════ */
 
 .about-edu-grid {
@@ -7464,465 +5808,6 @@ body.dark-mode .nav-overlay-backdrop,
   .about-edu-grid { grid-template-columns: 1fr; }
 }
 
-
-/* ══════════════════════════════════════════════════════════
-   2. LUXURY ECOMMERCE DEMO UPGRADE
-   Targets the open demo panel only — .ecom-page.lux scoped
-   so nothing outside the demo is affected.
-   Add className="ecommerce-cs ecom-page lux" to your <main>
-   in Ecommerce.tsx to activate.
-══════════════════════════════════════════════════════════ */
-
-/* ── Typography refinement (demo-wide) ── */
-.lux .ecom-band-title {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.lux .ecom-band-subtitle {
-  font-size: 0.82rem;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  font-style: normal;
-  margin-top: 4px;
-}
-
-/* ── Device frame — thinner, more refined ── */
-.lux .ecom-deviceFrame {
-  border-radius: 20px;
-  border: 1px solid color-mix(in srgb, var(--fg) 8%, transparent);
-  box-shadow:
-    0 2px 4px rgba(0,0,0,0.04),
-    0 8px 24px rgba(0,0,0,0.08),
-    0 32px 64px rgba(0,0,0,0.06);
-}
-
-.dark-mode .lux .ecom-deviceFrame {
-  box-shadow:
-    0 2px 4px rgba(0,0,0,0.3),
-    0 8px 24px rgba(0,0,0,0.4),
-    0 32px 80px rgba(0,0,0,0.35);
-}
-
-.lux .ecom-deviceTop {
-  padding: 12px 18px;
-  background: var(--bg);
-  border-bottom: 1px solid color-mix(in srgb, var(--fg) 6%, transparent);
-}
-
-.lux .ecom-deviceDots span {
-  width: 8px;
-  height: 8px;
-  opacity: 0.35;
-}
-
-.lux .ecom-deviceUrl {
-  font-size: 0.75rem;
-  letter-spacing: 0.06em;
-  font-weight: 500;
-  opacity: 0.5;
-}
-
-/* ── Cart pill — refined ── */
-.lux .ecom-cart-pill {
-  padding: 0.5rem 1.1rem;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--fg) 14%, transparent);
-  background: transparent;
-  transition: all 0.22s ease;
-}
-
-.lux .ecom-cart-pill:hover {
-  background: var(--fg);
-  color: var(--bg);
-  border-color: var(--fg);
-  transform: none;
-  box-shadow: none;
-}
-
-/* ── Product grid — wider cards, more air ── */
-.lux .ecom-grid {
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 2px;
-  margin-top: 2px;
-  background: color-mix(in srgb, var(--border) 60%, transparent);
-  border: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
-  border-radius: 20px;
-  overflow: hidden;
-}
-
-/* ── Product cards — editorial, no borders ── */
-.lux .ecom-card {
-  border-radius: 0;
-  border: none;
-  background: var(--bg);
-  transition: background 0.22s ease;
-}
-
-.lux .ecom-card:hover {
-  transform: none;
-  box-shadow: none;
-  background: color-mix(in srgb, var(--card) 70%, transparent);
-}
-
-/* ── Product image — taller, more editorial ── */
-.lux .ecom-media {
-  background:
-    radial-gradient(circle at 30% 40%, color-mix(in srgb, var(--olive-2) 6%, transparent), transparent 60%),
-    var(--card);
-}
-
-.lux .ecom-media img {
-  height: 300px;
-  object-fit: cover;
-  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.lux .ecom-card:hover .ecom-media img {
-  transform: scale(1.03);
-}
-
-/* ── Product body — refined spacing + type ── */
-.lux .ecom-body {
-  padding: 1.4rem 1.5rem 1.6rem;
-  border-top: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
-}
-
-.lux .ecom-title {
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  margin-bottom: 0.2rem;
-  text-transform: none;
-}
-
-.lux .ecom-meta {
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-  font-style: normal;
-}
-
-.lux .ecom-price {
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
-
-.lux .ecom-desc {
-  font-size: 0.85rem;
-  line-height: 1.7;
-  margin-bottom: 1.25rem;
-  color: var(--muted);
-}
-
-/* ── Product actions — refined CTA ── */
-.lux .ecom-actions {
-  gap: 0.6rem;
-}
-
-.lux .ecom-add.hero-btn {
-  padding: 0.7rem 1.4rem;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  border-radius: 3px;               /* square corners — luxury feel */
-  background: var(--fg);
-  color: var(--bg);
-  box-shadow: none;
-  flex: 1;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.lux .ecom-add.hero-btn:hover {
-  opacity: 0.82;
-  transform: none;
-  box-shadow: none;
-}
-
-.dark-mode .lux .ecom-add.hero-btn {
-  color: var(--bg) !important;
-}
-
-.lux .ecom-quick {
-  width: 38px;
-  height: 38px;
-  border-radius: 3px;
-  border: 1px solid color-mix(in srgb, var(--fg) 14%, transparent);
-  background: transparent;
-  font-size: 0.9rem;
-  transition: background 0.2s ease;
-}
-
-.lux .ecom-quick:hover {
-  background: color-mix(in srgb, var(--fg) 6%, transparent);
-  transform: none;
-  box-shadow: none;
-}
-
-/* ── Filter controls — minimal ── */
-.lux .ecommerce-controls {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0 0 1.5rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--border) 60%, transparent) !important;
-  border-radius: 0 !important;
-}
-
-.lux .ecom-controls-grid {
-  grid-template-columns: 2fr 1fr 1fr 1.4fr auto;
-  gap: 1rem;
-}
-
-.lux .ecom-field label {
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  font-weight: 700;
-  opacity: 0.55;
-  text-transform: uppercase;
-}
-
-.lux .form-group input[type="search"],
-.lux .ecom-select,
-.lux .form-group input[type="number"] {
-  border: none !important;
-  border-bottom: 1px solid color-mix(in srgb, var(--fg) 18%, transparent) !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  padding: 0.65rem 0 !important;
-  font-size: 0.88rem;
-  transition: border-color 0.2s ease;
-}
-
-.lux .form-group input[type="search"]:focus,
-.lux .ecom-select:focus,
-.lux .form-group input[type="number"]:focus {
-  border-color: var(--fg) !important;
-  outline: none !important;
-}
-
-/* Reset button — minimal */
-.lux .submit-btn.ecom-reset,
-.lux .ecom-controls-actions .submit-btn {
-  background: transparent;
-  color: var(--fg);
-  border: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);
-  border-radius: 3px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  padding: 0.65rem 1.25rem;
-  width: auto;
-  box-shadow: none;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.lux .submit-btn.ecom-reset:hover,
-.lux .ecom-controls-actions .submit-btn:hover {
-  background: var(--fg);
-  color: var(--bg);
-  transform: none;
-  box-shadow: none;
-}
-
-/* Results label */
-.lux .ecom-results {
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-top: 1rem;
-  padding-top: 0;
-  border-top: none;
-}
-
-/* ── Demo highlight strip — minimal ── */
-.lux .highlight.ecom-highlight {
-  background: transparent;
-  border: none;
-  border-top: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
-  border-bottom: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
-  border-left: none;
-  border-radius: 0;
-  padding: 0.75rem 0;
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  color: var(--muted);
-  margin: 0 0 1.5rem;
-}
-
-/* ── Quick view dialog — elevated ── */
-.lux ~ .ecom-dialog {
-  border-radius: 4px;
-  box-shadow:
-    0 4px 12px rgba(0,0,0,0.08),
-    0 24px 60px rgba(0,0,0,0.16),
-    0 60px 120px rgba(0,0,0,0.1);
-}
-
-.lux ~ .ecom-dialog .ecom-dialog-inner {
-  border-radius: 4px;
-  border-color: color-mix(in srgb, var(--fg) 8%, transparent);
-}
-
-.lux ~ .ecom-dialog .ecom-dialog-head {
-  padding: 1.4rem 1.5rem;
-  border-bottom-color: color-mix(in srgb, var(--fg) 6%, transparent);
-}
-
-.lux ~ .ecom-dialog .ecom-dialog-title {
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.lux ~ .ecom-dialog .ecom-dialog-media img {
-  height: 400px;
-  border-radius: 2px;
-  border-color: color-mix(in srgb, var(--fg) 6%, transparent);
-}
-
-.lux ~ .ecom-dialog .ecom-dialog-price {
-  font-size: 1.1rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-}
-
-.lux ~ .ecom-dialog .ecom-dialog-cat {
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  font-style: normal;
-}
-
-.lux ~ .ecom-dialog .hero-btn {
-  border-radius: 3px;
-  background: var(--fg);
-  color: var(--bg);
-  box-shadow: none;
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-}
-
-.lux ~ .ecom-dialog .hero-btn:hover {
-  opacity: 0.8;
-  transform: none;
-  box-shadow: none;
-}
-
-/* ── Cart drawer — editorial ── */
-.lux ~ .ecom-drawer-root .ecom-drawer {
-  border-left: 1px solid color-mix(in srgb, var(--fg) 8%, transparent);
-  box-shadow: -40px 0 80px rgba(0,0,0,0.12);
-}
-
-.lux ~ .ecom-drawer-root .ecom-drawer-head {
-  padding-bottom: 1rem;
-  margin-bottom: 1rem;
-  border-bottom-color: color-mix(in srgb, var(--fg) 8%, transparent);
-}
-
-.lux ~ .ecom-drawer-root .ecom-drawer-head h2 {
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-}
-
-.lux ~ .ecom-drawer-root .ecom-cart-item {
-  border-radius: 2px;
-  border-color: color-mix(in srgb, var(--fg) 8%, transparent);
-  padding: 1rem 1.1rem;
-}
-
-.lux ~ .ecom-drawer-root .ecom-cart-title {
-  font-size: 0.88rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-
-.lux ~ .ecom-drawer-root .ecom-qty-btn {
-  border-radius: 2px;
-  border-color: color-mix(in srgb, var(--fg) 12%, transparent);
-  padding: 0.4rem 0.65rem;
-  font-size: 0.85rem;
-}
-
-.lux ~ .ecom-drawer-root .ecom-total {
-  border-top-color: color-mix(in srgb, var(--fg) 12%, transparent);
-}
-
-.lux ~ .ecom-drawer-root .submit-btn {
-  border-radius: 3px;
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  background: var(--fg);
-  color: var(--bg);
-  box-shadow: none;
-}
-
-.lux ~ .ecom-drawer-root .submit-btn:hover {
-  opacity: 0.8;
-  transform: none;
-  box-shadow: none;
-}
-
-/* ── Empty state ── */
-.lux .ecom-empty {
-  text-align: center;
-  padding: 4rem 2rem;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-.lux .ecom-empty h3 {
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  margin-bottom: 0.75rem;
-}
-
-/* ── Products heading ── */
-.lux .ecom-products-head h2 {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin: 1.5rem 0 1rem;
-}
-
-/* ── Storefront head section ── */
-.lux .ecom-storefront-head {
-  padding-bottom: 1rem;
-  margin-bottom: 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
-}
-
-/* ── Demo open container — more padding ── */
-.lux .ecom-wide.ecom-demoWide {
-  padding: 3rem 3.5rem;
-}
-
-@media (max-width: 768px) {
-  .lux .ecom-wide.ecom-demoWide { padding: 1.5rem; }
-  .lux .ecom-controls-grid { grid-template-columns: 1fr; }
-  .lux .ecom-media img { height: 220px; }
-  .lux .ecom-grid { gap: 1px; }
-}
 
 /* =========================================================
    ABOUT PAGE — MATCHING CSS FOR REWRITTEN ABOUT.TSX
@@ -9414,6 +7299,20 @@ body.dark-mode .nav-overlay-backdrop,
   font-size: 0.82rem;
   color: var(--text-3);
   margin: 0;
+}
+.cs-inline-cta {
+  max-width: var(--case-max);
+  margin: 0 auto 3rem;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  border-radius: var(--radius-md);
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+}
+.cs-inline-cta p {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  color: var(--muted);
 }
 .cs-reflections {
   max-width: var(--case-max);

@@ -1,7 +1,7 @@
 // src/pages/Home.tsx
 import React, { useEffect, useRef, useState, useMemo } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import usePageTitle from "../hooks/usePageTitle";
 
 // ─── Orb background ──────────────────────────────────────────────────────────
@@ -62,7 +62,7 @@ const PROJECTS: Project[] = [
   {
     title: "Grove",
     subtitle: "Product Design · AI Judgment",
-    desc: "Research to shipped product in 3 weeks, solo. 31-user survey reshaped the MVP — AI accelerated the build.",
+    desc: "Research to shipped product in 3 weeks, solo. 31-user survey reshaped the MVP. AI accelerated the build.",
     images: ["/assets/grove/grove1.png"],
     imageAlt: "Grove plant care app",
     bg: "linear-gradient(135deg, #1a2e1a 0%, #2d4a2d 50%, #1a3a2a 100%)",
@@ -70,8 +70,8 @@ const PROJECTS: Project[] = [
   },
   {
     title: "MSK Cancer Center",
-    subtitle: "Process Improvement · UX Design",
-    desc: "Six years redesigning clinical workflows, onboarding, and EMR systems for 21,000+ clinicians.",
+    subtitle: "Process Improvement · UX Design · Enterprise",
+    desc: "Six years, four roles. Redesigned clinical workflows, onboarding, and EMR systems for 21,000+ clinicians at one of the world's top cancer centers.",
     icon: "🏥",
     bg: "linear-gradient(135deg, #1a1a2e 0%, #2d2d4a 50%, #1a2a3a 100%)",
     path: "/case-study/msk",
@@ -79,7 +79,7 @@ const PROJECTS: Project[] = [
   {
     title: "Good Harvest",
     subtitle: "Product Design · UX Research",
-    desc: "Heatmap testing with 22 users revealed the problem wasn't discoverability — it was trust.",
+    desc: "Heatmap testing with 22 users revealed the problem wasn't discoverability; it was trust.",
     images: [
       "/assets/good-harvest/goodharvest-home-wireframe.png",
       "/assets/good-harvest/goodharvest-app-mobile.png",
@@ -112,10 +112,10 @@ const PROJECTS: Project[] = [
 ];
 
 const APPROACH = [
-  { icon: "🔬", label: "Research-first thinking",     desc: "I map workflows and interview users before designing anything." },
-  { icon: "🧩", label: "Systems perspective",          desc: "I think in workflows, not wireframes — people, tools, and processes together." },
-  { icon: "🤖", label: "AI judgment",                  desc: "I know when to use AI, how to evaluate its outputs, and where human judgment leads." },
-  { icon: "🤝", label: "Cross-disciplinary fluency",   desc: "I translate between clinicians, engineers, and operators so decisions become usable systems." },
+  { icon: "🔬", label: "Research before pixels",       desc: "31-user surveys, heatmap testing, competitive analysis. I validate before I build." },
+  { icon: "📐", label: "End-to-end product design",    desc: "From user research through shipped UI. I own the full design process, not just wireframes." },
+  { icon: "📊", label: "Measurable outcomes",           desc: "20% cost reduction. 70% efficiency gains. 85% faster resupply. I measure what I ship." },
+  { icon: "🤖", label: "AI-literate",                   desc: "I use AI to accelerate execution and document every judgment call about where it helps and where it doesn't." },
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -124,10 +124,29 @@ export default function Home() {
   const contactRef = useRef<HTMLElement>(null);
   const [showLuna, setShowLuna] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const prefersReducedMotion = useReducedMotion();
   usePageTitle();
 
   const mobbinUnlocked = useMemo(() => sessionStorage.getItem("mobbin-unlocked") === "true", []);
+
+  // Handle scrollTo query param from navbar navigation
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const scrollTarget = params.get("scrollTo");
+    if (!scrollTarget) return;
+    // Wait for DOM to render, then scroll
+    const raf = requestAnimationFrame(() => {
+      const el = document.getElementById(scrollTarget);
+      if (!el) return;
+      const navHeight = 80;
+      const y = el.getBoundingClientRect().top + window.scrollY - navHeight;
+      window.scrollTo({ top: y, behavior: "smooth" });
+      // Clean up the URL
+      navigate("/", { replace: true });
+    });
+    return () => cancelAnimationFrame(raf);
+  }, [location.search, navigate]);
 
   // Smooth-scroll helper — no hash change, no router interference
   const scrollToContact = () => {
@@ -201,12 +220,12 @@ function handleCopy() {
           </motion.h1>
 
           <motion.p className="hero-positioning hero-positioning-gradient" {...stagger(0.12)}>
-            Product Designer who redesigns how people and processes work together.
+            Product Designer. Research-led, systems-minded, AI-literate.
           </motion.p>
 
           <div className="hero-copy">
             <motion.p className="hero-description" {...stagger(0.16)}>
-              Eight years in healthcare and military systems — bridging UX, process improvement, and AI.
+              I design products for healthcare, enterprise, and complex operations. Eight years turning messy workflows into tools people actually trust.
             </motion.p>
 
             <motion.div className="hero-actions" {...stagger(0.24)}>
@@ -377,51 +396,30 @@ function handleCopy() {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.65, ease: [0.2, 0.8, 0.2, 1] }}
         >
-          <div className="about-cta-card home-cta-card">
-            {/* Left */}
-            <div className="home-cta-left">
+          <div className="about-cta-card home-cta-card" style={{ textAlign: "center", display: "block" }}>
               <h2 className="about-cta-title" style={{ marginBottom:"1rem" }}>
-                What I’m looking for
+                Let’s talk about your product
               </h2>
-              <p className="about-cta-content" style={{ color:"var(--muted)", lineHeight:1.8, marginBottom:"1.5rem" }}>
-                I bring research, systems thinking, and process improvement to products where clarity directly impacts outcomes. If you’re building for healthcare, government, or enterprise — let’s talk.
+              <p className="about-cta-content" style={{ color:"var(--muted)", lineHeight:1.8, marginBottom:"1.75rem", maxWidth: "52ch", margin: "0 auto 1.75rem" }}>
+                I design for healthcare, enterprise, and complex operations. If your team needs a product designer who brings research rigor and systems thinking, I’d like to hear about it.
               </p>
 
-              <a href={"mailto:" + email} className="hero-btn" style={{ display:"inline-block", fontSize:"0.95rem", padding:"1rem 2rem", textDecoration:"none", marginBottom:"1rem" }} aria-label="Send email">
-                {email}
+              <a href={"mailto:" + email} className="hero-btn" style={{ display:"inline-block", fontSize:"0.95rem", padding:"1rem 2rem", textDecoration:"none", marginBottom:"1.5rem" }} aria-label="Send me a note">
+                Send me a note
               </a>
 
-              <div className="contact-links-row" style={{ marginBottom: "0.75rem" }}>
-                <a href="https://www.linkedin.com/in/hillaryesposito/" target="_blank" rel="noopener noreferrer" className="contact-link-btn">
-                  LinkedIn →
+              <p style={{ fontSize: "0.85rem", color: "var(--muted)", margin: 0 }}>
+                <a href="https://www.linkedin.com/in/hillaryesposito/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--muted)", marginRight: "1.25rem" }}>
+                  LinkedIn
                 </a>
-                <a href="/assets/Hillary_Esposito_Portfolio_Resume.pdf" target="_blank" rel="noopener noreferrer" className="contact-link-btn">
-                  Resume →
+                <a href="/assets/Hillary_Esposito_Portfolio_Resume.pdf" target="_blank" rel="noopener noreferrer" style={{ color: "var(--muted)", marginRight: "1.25rem" }}>
+                  Resume
                 </a>
-                <button type="button" className="contact-link-btn" style={{ background:"none", border:"none", cursor:"pointer", padding:0, font:"inherit", color:"inherit" }}
+                <button type="button" style={{ background:"none", border:"none", cursor:"pointer", padding:0, font:"inherit", color:"var(--muted)" }}
                   onClick={() => navigate("/about")}>
-                  About me →
+                  About me
                 </button>
-              </div>
-            </div>
-
-            {/* Right: domain chips */}
-            <div className="home-cta-right" aria-label="Focus areas">
-              {[
-                { icon: "🏥", label: "Healthcare systems",        sub: "EHR · Clinical workflows · Operational transformation" },
-                { icon: "🏛️", label: "Government services",       sub: "Civic tech · Service design · USDS" },
-                { icon: "🏢", label: "Enterprise tools",          sub: "Internal platforms · Complex workflows" },
-                { icon: "⚡", label: "Operational transformation", sub: "Process improvement · Workflow optimization" },
-              ].map((d) => (
-                <div key={d.label} className="home-domain-chip feature">
-                  <span style={{ fontSize:"1.3rem" }}>{d.icon}</span>
-                  <div>
-                    <p style={{ fontWeight:700, fontSize:"0.9rem", margin:0, color:"var(--fg)" }}>{d.label}</p>
-                    <p style={{ fontSize:"0.78rem", color:"var(--muted)", margin:0 }}>{d.sub}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+              </p>
           </div>
         </motion.div>
 

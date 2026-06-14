@@ -75,7 +75,7 @@ export default function ResearchInsightsSection() {
       <div className="research__block">
         <h3 className="research__blockTitle">Competitive snapshot</h3>
         <p className="research__body">
-          Three direct competitors analyzed. I kept only the takeaways that actually shaped design decisions —
+          Three direct competitors analyzed. I kept only the takeaways that actually shaped design decisions;
           the full table is available below for anyone who wants depth.
         </p>
 
@@ -89,7 +89,7 @@ export default function ResearchInsightsSection() {
             {
               n: "02",
               title: "Color-only indicators fail without legends",
-              body: "Two of three apps used color tags with no key. Users guessed meaning — or ignored them. Drove the decision to use explicit text labels + visible legend.",
+              body: "Two of three apps used color tags with no key. Users guessed meaning or ignored them. Drove the decision to use explicit text labels + visible legend.",
             },
             {
               n: "03",

@@ -70,7 +70,7 @@ export default function RecruiterPill() {
                 <div>
                   <p className="recruiter-panel__eyebrow">90-second tour</p>
                   <h2 id="recruiter-panel-title" className="recruiter-panel__title">
-                    Hillary Esposito — Product Design
+                    Hillary Esposito, Product Design
                   </h2>
                 </div>
                 <button
@@ -86,13 +86,13 @@ export default function RecruiterPill() {
               <div className="recruiter-panel__body">
                 <section className="recruiter-panel__section">
                   <p className="recruiter-panel__label">In one line</p>
-                  <p>Product designer who redesigned tools for 21K clinicians at MSK and managed systems for 5K soldiers. Research-led, accessibility-first, shipping working code.</p>
+                  <p>Product designer with 8 years in healthcare and military operations. Lean Six Sigma rigor applied to UX research. Knows where AI fits in complex workflows.</p>
                 </section>
 
                 <section className="recruiter-panel__section">
                   <p className="recruiter-panel__label">Strengths</p>
                   <div className="recruiter-panel__chips">
-                    {["Product Design", "UX Research", "Accessibility (WCAG)", "Healthcare UX", "Systems Thinking", "React + TypeScript"].map((s) => (
+                    {["Product Design", "UX Research", "Healthcare UX", "Lean Six Sigma", "Systems Thinking", "Accessibility (WCAG)"].map((s) => (
                       <span key={s} className="recruiter-panel__chip">{s}</span>
                     ))}
                   </div>
@@ -102,15 +102,21 @@ export default function RecruiterPill() {
                   <p className="recruiter-panel__label">Selected work</p>
                   <ul className="recruiter-panel__projects">
                     <li>
-                      <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/good-harvest")}>
-                        <strong>Good Harvest</strong>
-                        <span>End-to-end mobile UX, validated with heatmaps + 22 testers</span>
+                      <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/grove")}>
+                        <strong>Grove</strong>
+                        <span>End-to-end product design: research, personas, UI, shipped app</span>
                       </button>
                     </li>
                     <li>
-                      <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/grove")}>
-                        <strong>Grove</strong>
-                        <span>AI + design — full-stack plant care app built with Claude Code + Cursor</span>
+                      <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/msk")}>
+                        <strong>MSK Cancer Center</strong>
+                        <span>6 years redesigning workflows for 21,000+ clinicians</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/good-harvest")}>
+                        <strong>Good Harvest</strong>
+                        <span>Mobile UX validated with heatmap testing, 22 participants</span>
                       </button>
                     </li>
                   </ul>
