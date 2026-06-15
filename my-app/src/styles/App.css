@@ -6999,6 +6999,171 @@ body.dark-mode .nav-overlay-backdrop,
   letter-spacing: 0.01em;
 }
 
+/* ── Screen annotations ── */
+.grove-screen-note {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0.35rem 0 0;
+  text-align: left;
+  max-width: 280px;
+}
+.grove-screens-grid--annotated {
+  gap: 2rem;
+}
+.grove-screen-item--annotated {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Flow diagram ── */
+.grove-flow-diagram {
+  padding: 2rem 1.5rem;
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+}
+.grove-flow-track {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  min-width: 700px;
+  padding-bottom: 1rem;
+}
+.grove-flow-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 120px;
+  flex: 1;
+}
+.grove-flow-node__icon {
+  font-size: 1.5rem;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--surface-1);
+  border: 2px solid var(--border);
+  margin-bottom: 0.5rem;
+}
+.grove-flow-node--start .grove-flow-node__icon,
+.grove-flow-node--end .grove-flow-node__icon {
+  border-color: var(--olive-2);
+  background: color-mix(in srgb, var(--olive-2) 10%, var(--surface-1));
+}
+.grove-flow-node__label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--fg);
+  margin-bottom: 0.2rem;
+}
+.grove-flow-node__sub {
+  font-size: 0.75rem;
+  color: var(--muted);
+  max-width: 110px;
+}
+.grove-flow-arrow {
+  flex: 0 0 40px;
+  height: 2px;
+  background: var(--border);
+  align-self: center;
+  margin-top: -1.5rem;
+  position: relative;
+}
+.grove-flow-arrow::after {
+  content: "→";
+  position: absolute;
+  right: -4px;
+  top: -9px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.grove-flow-branches {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.grove-flow-branch {
+  padding: 1rem;
+  border-radius: var(--radius-md);
+}
+.grove-flow-branch__trigger {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--olive-2);
+  margin: 0 0 0.5rem;
+}
+.grove-flow-branch__response {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+@media (max-width: 768px) {
+  .grove-flow-branches {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── State design cards ── */
+.grove-states-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+.grove-state-card {
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+}
+.grove-state-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.grove-state-card__badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--olive-2) 12%, transparent);
+  color: var(--olive-2);
+  white-space: nowrap;
+}
+.grove-state-card__title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--fg);
+  margin: 0;
+}
+.grove-state-card__desc {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0 0 0.75rem;
+}
+.grove-state-card__rationale {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+@media (max-width: 768px) {
+  .grove-states-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .dark-mode .grove-phone-frame {
   background: color-mix(in srgb, var(--focus) 6%, var(--surface-1));
   border-color: var(--border);

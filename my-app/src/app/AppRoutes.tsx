@@ -16,11 +16,10 @@ function NotFound() {
 }
 
 import Home from "../pages/Home";
-import Contact from "../pages/Contact";
 import About from "../pages/AboutMe";
 
 import GoodHarvest from "../pages/case-studies/GoodHarvest";
-import Emergent from "../pages/case-studies/Grove";
+import Grove from "../pages/case-studies/Grove";
 import Mobbin from "../pages/case-studies/Mobbin";
 import MSK from "../pages/case-studies/MSK";
 import PasswordGate from "../components/PasswordGate";
@@ -42,10 +41,9 @@ export default function AppRoutes() {
       <Route path="/" element={<Home />} />
       <Route path="/projects" element={<Navigate to="/#projects" replace />} />
       <Route path="/about" element={<About />} />
-      <Route path="/contact" element={<Contact />} />
 
       <Route path="/case-study/good-harvest" element={<GoodHarvest />} />
-      <Route path="/case-study/grove" element={<Emergent />} />
+      <Route path="/case-study/grove" element={<Grove />} />
       <Route path="/case-study/mobbin" element={<PasswordGate><Mobbin /></PasswordGate>} />
       <Route path="/case-study/msk" element={<MSK />} />
 

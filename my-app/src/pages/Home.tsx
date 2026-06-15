@@ -115,7 +115,7 @@ const APPROACH = [
   { icon: "🔬", label: "Research before pixels",       desc: "31-user surveys, heatmap testing, competitive analysis. I validate before I build." },
   { icon: "📐", label: "End-to-end product design",    desc: "From user research through shipped UI. I own the full design process, not just wireframes." },
   { icon: "📊", label: "Measurable outcomes",           desc: "20% cost reduction. 70% efficiency gains. 85% faster resupply. I measure what I ship." },
-  { icon: "🤖", label: "AI-literate",                   desc: "I use AI to accelerate execution and document every judgment call about where it helps and where it doesn't." },
+  { icon: "🤖", label: "AI-literate",                   desc: "I evaluate where AI creates value, where it creates risk, and design the human-in-the-loop accordingly." },
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -315,7 +315,7 @@ function handleCopy() {
                     <div className={`home-proj-devices ${proj.images.length > 1 ? "home-proj-devices--multi" : ""}`}>
                       {proj.images.map((src, i) => (
                         <div key={src} className="home-proj-device" style={{ zIndex: proj.images!.length - i }}>
-                          <img src={src} alt="" loading="lazy" />
+                          <img src={src} alt={proj.imageAlt || ""} loading="lazy" />
                         </div>
                       ))}
                     </div>
@@ -404,19 +404,19 @@ function handleCopy() {
                 I design for healthcare, enterprise, and complex operations. If your team needs a product designer who brings research rigor and systems thinking, I’d like to hear about it.
               </p>
 
-              <a href={"mailto:" + email} className="hero-btn" style={{ display:"inline-block", fontSize:"0.95rem", padding:"1rem 2rem", textDecoration:"none", marginBottom:"1.5rem" }} aria-label="Send me a note">
+              <a href={"mailto:" + email} className="hero-btn" style={{ display:"inline-block", fontSize:"0.9rem", padding:"1rem 2rem", textDecoration:"none", marginBottom:"1.5rem" }} aria-label="Send me a note">
                 Send me a note
               </a>
 
               <p style={{ fontSize: "0.85rem", color: "var(--muted)", margin: 0 }}>
-                <a href="https://www.linkedin.com/in/hillaryesposito/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--muted)", marginRight: "1.25rem" }}>
+                <a href="https://www.linkedin.com/in/hillaryesposito/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--muted)", marginRight: "1.25rem" }} aria-label="LinkedIn profile (opens in new tab)">
                   LinkedIn
                 </a>
-                <a href="/assets/Hillary_Esposito_Portfolio_Resume.pdf" target="_blank" rel="noopener noreferrer" style={{ color: "var(--muted)", marginRight: "1.25rem" }}>
+                <a href="/assets/Hillary_Esposito_Portfolio_Resume.pdf" target="_blank" rel="noopener noreferrer" style={{ color: "var(--muted)", marginRight: "1.25rem" }} aria-label="Download resume (opens in new tab)">
                   Resume
                 </a>
                 <button type="button" style={{ background:"none", border:"none", cursor:"pointer", padding:0, font:"inherit", color:"var(--muted)" }}
-                  onClick={() => navigate("/about")}>
+                  onClick={() => navigate("/about")} aria-label="About me">
                   About me
                 </button>
               </p>

@@ -61,7 +61,7 @@ const OTHER_PROJECTS = [
   {
     icon: "🌱",
     title: "Grove",
-    desc: "AI + design plant care app, showing where AI accelerates and where human design judgment leads.",
+    desc: "AI + design plant care app. Research to shipped product in 3 weeks, solo.",
     path: "/case-study/grove",
   },
   {

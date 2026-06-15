@@ -90,7 +90,7 @@ export default function About() {
         <button
           type="button"
           className="about-back-btn"
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/?scrollTo=projects")}
           aria-label="Back to main portfolio"
         >
           ← Back to work
@@ -107,7 +107,7 @@ export default function About() {
           </h1>
 
           <p className="about-hero-subtext">
-            From directing medical logistics for 5,000 soldiers to redesigning clinical systems for 21,000 clinicians at MSK. Here's how that became product design.
+            From directing medical logistics for 5,000 soldiers to redesigning clinical systems for 21,000+ clinicians at MSK. Here's how that became product design.
           </p>
         </div>
 
@@ -243,14 +243,14 @@ export default function About() {
               type="button"
               className="hero-btn"
               style={{ fontSize: "0.9rem", padding: "1rem 2rem" }}
-              onClick={() => navigate("/contact")}
+              onClick={() => navigate("/?scrollTo=contact")}
             >
               Get in touch
             </button>
             <button
               type="button"
               className="about-back-btn"
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/?scrollTo=projects")}
               style={{ fontSize: "0.9rem" }}
             >
               ← View my work

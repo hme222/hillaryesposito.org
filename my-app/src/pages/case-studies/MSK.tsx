@@ -114,6 +114,45 @@ export default function MSKCaseStudy() {
         </div>
       </section>
 
+      {/* ── BEFORE / AFTER ── */}
+      <section>
+        <p className="gh-section-label">What changed</p>
+        <h2>Before and after: concrete state changes</h2>
+        <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
+          Process improvement without measurable state change is just rearranging chairs. Here's what actually changed for the people inside each system.
+        </p>
+
+        <div className="gh-features-grid">
+          <div className="feature">
+            <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>EMR workflow</h3>
+            <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
+              <strong>Before:</strong> 14 steps across 3 systems to complete a single clinical task. Clinicians toggled between windows, re-entered data, and lost context mid-workflow.
+            </p>
+            <p style={{ margin: "0.5rem 0 0", fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
+              <strong>After:</strong> 6 steps in one view. Consolidated inputs, eliminated redundant data entry, and aligned navigation to clinical task flow, not software architecture.
+            </p>
+          </div>
+          <div className="feature">
+            <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>Certification tracking</h3>
+            <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
+              <strong>Before:</strong> Manual spreadsheet tracking. Staff found out certifications had lapsed after the fact. Managers had no visibility until compliance flagged an issue.
+            </p>
+            <p style={{ margin: "0.5rem 0 0", fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
+              <strong>After:</strong> Automated status dashboard with proactive reminders. Both staff and managers see upcoming deadlines, not past failures. Compliance shifted from punitive to preventive.
+            </p>
+          </div>
+          <div className="feature">
+            <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>Clinician onboarding</h3>
+            <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
+              <strong>Before:</strong> Fragmented across 5+ departments. New hires received conflicting instructions, missed critical orientation steps, and reached patients underprepared.
+            </p>
+            <p style={{ margin: "0.5rem 0 0", fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
+              <strong>After:</strong> Unified onboarding experience with a single source of truth. Every new clinician follows the same path, tracked from day one through full productivity.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ── MY PROCESS ── */}
       <section>
         <p className="gh-section-label">My process</p>
@@ -194,6 +233,12 @@ export default function MSKCaseStudy() {
             <p className="cs-outcome-label">Roles across 6 years, each building on the last</p>
           </div>
         </div>
+        <p className="cs-overview-text" style={{ marginTop: "1.5rem", maxWidth: 640 }}>
+          <strong>What happened after launch:</strong> These weren't one-time deliverables. The EMR workflow redesign
+          was adopted org-wide and maintained through two system upgrades. The certification dashboard became
+          the default compliance tool across departments. Onboarding changes survived three leadership transitions.
+          Sustainment is the real test of whether a design actually solved the problem.
+        </p>
       </section>
 
       <div className="cs-inline-cta">
@@ -262,6 +307,16 @@ export default function MSKCaseStudy() {
               Every project at MSK ended with numbers: cost reduction, efficiency gains, users
               impacted. Not because someone asked for metrics, but because measurable change is
               the only way to know if your design actually worked for the people using it.
+            </p>
+          </div>
+          <div className="cs-reflection-card">
+            <h3>Why this work matters now</h3>
+            <p>
+              I left MSK in 2024, as healthcare was entering its AI inflection point. The clinical workflows
+              I redesigned are exactly the kind of systems being augmented by AI today: triage, scheduling,
+              documentation, compliance. Understanding how 21,000 clinicians actually work, not how a
+              flowchart says they work, is the foundation for designing AI-augmented clinical tools that
+              people will trust and adopt.
             </p>
           </div>
         </div>

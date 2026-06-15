@@ -12,7 +12,7 @@ type LoaderProps = {
 
 export default function Loader({
   src = "assets/logo-cat.png",
-  alt = "Loading animation",
+  alt = "",
   delayMs = 800,
 }: LoaderProps) {
   const rootRef = useRef<HTMLDivElement | null>(null);

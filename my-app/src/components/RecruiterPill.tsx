@@ -86,7 +86,7 @@ export default function RecruiterPill() {
               <div className="recruiter-panel__body">
                 <section className="recruiter-panel__section">
                   <p className="recruiter-panel__label">In one line</p>
-                  <p>Product designer with 8 years in healthcare and military operations. Lean Six Sigma rigor applied to UX research. Knows where AI fits in complex workflows.</p>
+                  <p>Product designer with 8+ years in healthcare and military operations. Lean Six Sigma rigor applied to UX research. Knows where AI fits in complex workflows.</p>
                 </section>
 
                 <section className="recruiter-panel__section">

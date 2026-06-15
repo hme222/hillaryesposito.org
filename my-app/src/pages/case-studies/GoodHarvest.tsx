@@ -22,14 +22,14 @@ export default function GoodHarvest() {
 
   const otherProjects = [
     { icon: "🌱", title: "Grove", path: "/case-study/grove",
-      desc: "A plant care app I designed and built with AI tools, showing judgment about when AI helps and when human thinking leads." },
+      desc: "AI + design plant care app. Research to shipped product in 3 weeks, solo." },
     { icon: "🏥", title: "MSK Cancer Center", path: "/case-study/msk",
       desc: "Six years redesigning clinical workflows, onboarding, and certification systems for 21,000+ clinicians." },
   ];
 
   const researchInsightCards = [
     { num: "Finding 01", heading: "Users are motivated",
-      body: " 19 of 22 participants say that eating seasonal foods is desirable",
+      body: "19 of 22 participants say that eating seasonal foods is desirable",
       tag: "Provided research" },
     { num: "Finding 02", heading: "Unclear what's in season locally",
       body: "13 of 22 participants do not know what's in season in their specific area",
@@ -173,7 +173,7 @@ export default function GoodHarvest() {
             <div className="reina-flow-content">
               <h3 style={{ margin: "0 0 0.35rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>Evidence-based design decisions</h3>
               <p style={{ margin: 0, fontSize: "0.97rem", color: "var(--muted)", lineHeight: 1.7 }}>
-                Every design choice traced back to research. Produce-first IA (heatmap showed 60% of first taps went to produce),
+                Every design choice traced back to research. Produce-first IA (heatmap showed 70% of first taps went to produce),
                 embedded recipe CTAs (removed navigation friction), and explicit location indicators (addressing trust, not discoverability).
               </p>
             </div>
@@ -233,7 +233,7 @@ export default function GoodHarvest() {
         <h3 style={{ color: "var(--olive-2)", marginBottom: "0.75rem" }}>Home screen: produce-first hierarchy</h3>
         <div className="cs-gallery cols-3">
           <MediaCard src={screens.homeWire}  alt="Good Harvest home wireframe showing layout hierarchy"          caption="Wireframe: hierarchy + tap targets." />
-          <MediaCard src={screens.homeHeat}  alt="Heatmap showing attention on seasonal produce module"           caption="Heatmap: 60% of first taps went to produce." />
+          <MediaCard src={screens.homeHeat}  alt="Heatmap showing attention on seasonal produce module"           caption="Heatmap: 70% of first taps went to produce." />
           <MediaCard src={screens.appMobile} alt="Good Harvest mobile app showing seasonal produce and recipes"   caption="Final: produce-first, secondary nav below fold." />
         </div>
 
@@ -330,7 +330,7 @@ export default function GoodHarvest() {
             <tr>
               <td>Entry point</td>
               <td>Produce-first home screen; markets as secondary action</td>
-              <td>Heatmap showed 60% of first taps went to produce. Users orient around ingredients, not locations</td>
+              <td>Heatmap showed 70% of first taps went to produce. Users orient around ingredients, not locations</td>
             </tr>
             <tr>
               <td>Recipe discovery</td>
@@ -364,9 +364,7 @@ export default function GoodHarvest() {
           </div>
         </div>
         <p className="cs-overview-text" style={{ marginTop: "1.5rem", maxWidth: 640 }}>
-          <strong>Honest framing:</strong> These metrics reflect prototype usability testing
-          with 22 participants, not post-launch data. The directional signals are encouraging,
-          but I'm treating them as hypotheses for a next round, not proven outcomes.
+          <em>Note: Prototype usability metrics (22 participants), not post-launch data. Directional signals treated as hypotheses for a next round.</em>
         </p>
       </section>
 
