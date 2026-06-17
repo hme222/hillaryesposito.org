@@ -76,7 +76,7 @@ export default function GoodHarvest() {
       <div className="gh-meta-strip">
         {[
           { label: "Role",     value: "Product Design" },
-          { label: "Context",  value: "UX Bootcamp project" },
+          { label: "Context",  value: "Independent project" },
           { label: "Tools",    value: "Figma · Maze"   },
           { label: "Scope",    value: "Design → Prototype → Test → Iterate" },
         ].map((item, i, arr) => (
@@ -95,7 +95,7 @@ export default function GoodHarvest() {
         <p className="cs-section-heading">Overview</p>
         <h2 className="cs-section-title">People want to eat seasonally. The information makes it harder, not easier</h2>
         <p className="cs-overview-text">
-          A UX bootcamp project where I took provided research (22 participant interviews and surveys)
+          An independent project where I took provided research (22 participant interviews and surveys)
           and designed a mobile app from findings through tested prototype. The research revealed that
           shoppers aren't lacking motivation; they're lacking confidence that information applies to
           <em> their</em> location. I designed the solution and validated it with heatmap testing.
@@ -137,6 +137,23 @@ export default function GoodHarvest() {
             <strong>Generated:</strong> 22-participant unmoderated heatmap testing across 3 rounds (I designed the test plan, wrote tasks, recruited participants via Maze panel, and analyzed results).
             Two peer designers reviewed my synthesis and challenged assumptions.
           </p>
+        </div>
+      </section>
+
+      {/* ── WHAT I NEEDED TO LEARN ── */}
+      <section>
+        <p className="gh-section-label">What I needed to learn</p>
+        <h2>Research questions before designing anything</h2>
+        <p className="cs-section-intro">
+          I had provided research from 22 participants. Before designing, I needed to understand what was actually
+          blocking people from acting on seasonal food information.
+        </p>
+
+        <div className="cs-research-questions">
+          <div className="cs-research-question">Is the problem discoverability (can't find seasonal info) or trust (don't believe it applies to them)?</div>
+          <div className="cs-research-question">What does "confidence to act" look like at point of purchase — and what breaks it?</div>
+          <div className="cs-research-question">Where do users look first on a food app screen, and what do they ignore?</div>
+          <div className="cs-research-question">Can heatmap testing validate design hypotheses from inherited research, or do I need new primary research?</div>
         </div>
       </section>
 
@@ -395,6 +412,17 @@ export default function GoodHarvest() {
               export integration actually changed shopping behavior over 4+ weeks.
             </p>
           </div>
+        </div>
+
+        <div className="cs-shows-card">
+          <p className="cs-shows-card__label">What this shows about my design approach</p>
+          <p className="cs-shows-card__text">
+            I don't treat research as a phase that ends. In this project, heatmap testing after
+            the initial design round changed core decisions — the seasonal produce screen needed
+            a completely different visual hierarchy than what I'd designed first. I test with real
+            users, read what they actually do (not what they say), and redesign based on evidence.
+            That cycle — design, test, learn, redesign — is how I work on every project.
+          </p>
         </div>
       </section>
 

@@ -62,7 +62,7 @@ const PROJECTS: Project[] = [
   {
     title: "Grove",
     subtitle: "Product Design · AI Judgment",
-    desc: "Research to shipped product in 3 weeks, solo. 31-user survey reshaped the MVP. AI accelerated the build.",
+    desc: "Research to working prototype in 3 weeks, solo. 31-user survey reshaped the MVP. AI accelerated the build. Testing next.",
     images: ["/assets/grove/grove1.png"],
     imageAlt: "Grove plant care app",
     bg: "linear-gradient(135deg, #1a2e1a 0%, #2d4a2d 50%, #1a3a2a 100%)",
@@ -70,7 +70,7 @@ const PROJECTS: Project[] = [
   },
   {
     title: "MSK Cancer Center",
-    subtitle: "Process Improvement · UX Design · Enterprise",
+    subtitle: "UX & Product Design · Healthcare Systems",
     desc: "Six years, four roles. Redesigned clinical workflows, onboarding, and EMR systems for 21,000+ clinicians at one of the world's top cancer centers.",
     icon: "🏥",
     bg: "linear-gradient(135deg, #1a1a2e 0%, #2d2d4a 50%, #1a2a3a 100%)",
@@ -91,8 +91,8 @@ const PROJECTS: Project[] = [
   },
   {
     title: "Mobbin",
-    subtitle: "Freelance · UX Flow Documentation",
-    desc: "Three fintech apps documented for Mobbin's UX pattern library. Flow capture and UI pattern curation at scale.",
+    subtitle: "Freelance · UX Flow Documentation · Pattern Curation",
+    desc: "Documented end-to-end mobile experiences across three fintech apps for Mobbin's design reference library. 200+ screens captured, annotated, and tagged.",
     images: ["/assets/mobbin/kikoff.png", "/assets/mobbin/polymarket.png", "/assets/mobbin/discover.png"],
     imageAlt: "Fintech app screens catalogued for UX pattern library",
     bg: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
@@ -111,12 +111,6 @@ const PROJECTS: Project[] = [
     },
 ];
 
-const APPROACH = [
-  { icon: "🔬", label: "Research before pixels",       desc: "31-user surveys, heatmap testing, competitive analysis. I validate before I build." },
-  { icon: "📐", label: "End-to-end product design",    desc: "From user research through shipped UI. I own the full design process, not just wireframes." },
-  { icon: "📊", label: "Measurable outcomes",           desc: "20% cost reduction. 70% efficiency gains. 85% faster resupply. I measure what I ship." },
-  { icon: "🤖", label: "AI-literate",                   desc: "I evaluate where AI creates value, where it creates risk, and design the human-in-the-loop accordingly." },
-];
 
 // ─── Component ────────────────────────────────────────────────────────────────
 export default function Home() {
@@ -167,15 +161,7 @@ export default function Home() {
   // (Mouse-follow removed — Luna sits in the corner now, scroll bob is enough)
 
 
-  // contact 
-  const [copied, setCopied] = useState(false);
-const email = "espositohillary@gmail.com";
-
-function handleCopy() {
-  navigator.clipboard.writeText(email);
-  setCopied(true);
-  setTimeout(() => setCopied(false), 2000);
-}
+  const email = "espositohillary@gmail.com";
 
   // Show Luna when contact is visible
   useEffect(() => {
@@ -220,12 +206,12 @@ function handleCopy() {
           </motion.h1>
 
           <motion.p className="hero-positioning hero-positioning-gradient" {...stagger(0.12)}>
-            Product Designer. Research-led, systems-minded, AI-literate.
+            I turn messy workflows into products people actually trust.
           </motion.p>
 
           <div className="hero-copy">
             <motion.p className="hero-description" {...stagger(0.16)}>
-              I design products for healthcare, enterprise, and complex operations. Eight years turning messy workflows into tools people actually trust.
+              Senior UX & Product Designer. Eight years in healthcare systems and complex operations. Army veteran.
             </motion.p>
 
             <motion.div className="hero-actions" {...stagger(0.24)}>
@@ -246,7 +232,7 @@ function handleCopy() {
       ══════════════════════════════════════════ */}
       <section className="home-credentials-bar" aria-label="Professional credentials">
         <p className="home-credentials-inline">
-          Lean Six Sigma Green Belt · MHA, Rutgers · UX Certified · Army Veteran · Bilingual EN/ES
+          Army Veteran · Lean Six Sigma Green Belt · MHA, Rutgers · Bilingual EN/ES
         </p>
       </section>
 
@@ -262,7 +248,7 @@ function handleCopy() {
           transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
         >
           {[
-            { value: "8+",  label: "Years redesigning complex systems" },
+            { value: "8+",  label: "Years in healthcare & complex operations" },
             { value: "21K+", label: "Clinicians impacted, MSK Cancer Center" },
             { value: "85%",  label: "Faster resupply, NJ Army National Guard" },
             { value: "20%",  label: "EMR cost reduction, MSK Cancer Center" },
@@ -371,21 +357,6 @@ function handleCopy() {
       </section>
 
       {/* ══════════════════════════════════════════
-          APPROACH — how I work
-      ══════════════════════════════════════════ */}
-      <section className="home-approach-section" aria-label="How I work">
-        <div className="home-approach-grid">
-          {APPROACH.map((a) => (
-            <div key={a.label} className="home-approach-card feature">
-              <span className="home-approach-icon" aria-hidden="true">{a.icon}</span>
-              <h3 className="home-approach-label">{a.label}</h3>
-              <p className="home-approach-desc">{a.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════
           4. CTA + CONTACT (merged)
       ══════════════════════════════════════════ */}
       <section id="contact" ref={contactRef} className="section active home-cta-section" aria-label="Contact section">
@@ -401,7 +372,7 @@ function handleCopy() {
                 Let’s talk about your product
               </h2>
               <p className="about-cta-content" style={{ color:"var(--muted)", lineHeight:1.8, marginBottom:"1.75rem", maxWidth: "52ch", margin: "0 auto 1.75rem" }}>
-                I design for healthcare, enterprise, and complex operations. If your team needs a product designer who brings research rigor and systems thinking, I’d like to hear about it.
+                I design products for healthcare systems and complex operations. If your team needs a product designer who ships research-driven work, let’s talk.
               </p>
 
               <a href={"mailto:" + email} className="hero-btn" style={{ display:"inline-block", fontSize:"0.9rem", padding:"1rem 2rem", textDecoration:"none", marginBottom:"1.5rem" }} aria-label="Send me a note">

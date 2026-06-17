@@ -3847,6 +3847,20 @@ body.dark-mode .nav-overlay-backdrop,
   color: var(--muted);
   font-size: 0.82rem;
 }
+.recruiter-panel__vitals-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.recruiter-panel__vitals-grid span {
+  background: var(--surface-0);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
 .recruiter-panel__actions {
   display: flex;
   flex-direction: column;
@@ -7630,6 +7644,202 @@ body.dark-mode .nav-overlay-backdrop,
     width: 38px;
     height: 38px;
   }
+}
+
+/* ════════════════════════════════════════════
+   UTILITY CLASSES (replaces inline styles)
+════════════════════════════════════════════ */
+.cs-body-text {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+.cs-section-intro {
+  max-width: 640px;
+  margin-bottom: 1.5rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+.cs-subsection-heading {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--olive-2);
+}
+.cs-feature-heading {
+  color: var(--olive-2);
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+}
+
+/* Missing class used in Mobbin pattern tags */
+.home-mag-tool {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.78rem;
+  border-radius: 100px;
+  background: color-mix(in srgb, var(--olive-2) 10%, var(--surface-1));
+  border: 1px solid color-mix(in srgb, var(--olive-2) 18%, var(--border));
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* ════════════════════════════════════════════
+   UXfolio CASE STUDY COMPONENTS
+════════════════════════════════════════════ */
+
+/* "What I needed to learn" / Research questions */
+.cs-research-questions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+.cs-research-question {
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--olive-2);
+  font-size: 0.92rem;
+  color: var(--fg);
+  line-height: 1.6;
+}
+@media (max-width: 600px) {
+  .cs-research-questions {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Evidence + Finding pairs */
+.cs-evidence-pair {
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  margin-bottom: 1rem;
+}
+.cs-evidence-pair__finding {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--fg);
+  margin: 0 0 0.5rem;
+}
+.cs-evidence-pair__evidence {
+  font-size: 0.92rem;
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 0;
+  padding-left: 1rem;
+  border-left: 2px solid color-mix(in srgb, var(--olive-2) 30%, transparent);
+}
+
+/* Method rationale cards */
+.cs-methods-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+.cs-method-card {
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+}
+.cs-method-card__name {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--olive-2);
+  margin: 0 0 0.35rem;
+}
+.cs-method-card__why {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+@media (max-width: 600px) {
+  .cs-methods-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Collaboration / team map */
+.cs-team-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+.cs-team-card {
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-md);
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+}
+.cs-team-card__role {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--olive-2);
+  margin: 0 0 0.25rem;
+}
+.cs-team-card__desc {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+@media (max-width: 600px) {
+  .cs-team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Insight → Action bridge */
+.cs-insight-action {
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--olive-2) 5%, var(--surface-1));
+  border: 1px solid color-mix(in srgb, var(--olive-2) 15%, var(--border));
+  margin-bottom: 1rem;
+}
+.cs-insight-action__label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--olive-2);
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+}
+.cs-insight-action__text {
+  font-size: 0.92rem;
+  color: var(--fg);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* "What this shows" summary card */
+.cs-shows-card {
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--olive-2) 4%, var(--card));
+  border: 1px solid color-mix(in srgb, var(--olive-2) 12%, var(--border));
+  margin-top: 1.5rem;
+}
+.cs-shows-card__label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--olive-2);
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+}
+.cs-shows-card__text {
+  font-size: 0.92rem;
+  color: var(--fg);
+  line-height: 1.65;
+  margin: 0;
 }
 
 /* ════════════════════════════════════════════

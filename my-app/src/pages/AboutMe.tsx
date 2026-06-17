@@ -29,24 +29,24 @@ const AGENDA = [
 // ── Story chapters ───────────────────────────────────────────────────────
 const CHAPTERS = [
   {
-    id: "army",
-    label: "Where My Foundation Was Built",
-    icon: "🎖️",
-    heading: "The Army taught me process improvement before I had the vocabulary for it.",
-    image: "/assets/about/army.jpg",
+    id: "now",
+    label: "What I Do Now",
+    icon: "💻",
+    heading: "UX & product design for healthcare systems and complex operations.",
+    image: "/assets/about/now.png",
     paragraphs: [
-      "As a commissioned officer in the NJ Army National Guard, I directed medical logistics for 5,000+ soldiers across 7 aid stations in 3 countries. Cut resupply time 85%, reduced spending 60%, and pioneered digital tracking in a deployed environment.",
+      "I design products for teams where confusion isn’t an option. Currently freelancing and building independently, bringing together UX research, systems thinking, and AI fluency to ship work that holds up under real conditions.",
     ],
-    callout: "Process failure in a combat zone isn’t an inconvenience. It’s a casualty risk.",
+    callout: "Design for the humans in the system, and the metrics follow.",
   },
   {
     id: "msk",
-    label: "Where Process Met Design",
+    label: "Where I Built My Practice",
     icon: "🏥",
     heading: "Six years at MSK, designing for humans inside the systems I was improving.",
     image: "/assets/about/msk.jpg",
     paragraphs: [
-      "Across four roles, I cut EMR costs 20%, rebuilt certification workflows for 70% efficiency gains, and redesigned onboarding for 21,000+ clinicians, working across IT, clinical leadership, and frontline staff to align stakeholders and ship solutions they’d actually use. That’s when I realized process improvement and design are the same discipline.",
+      "Across four roles, I cut EMR costs 20%, rebuilt certification workflows for 70% efficiency gains, and redesigned onboarding for 21,000+ clinicians, working across IT, clinical leadership, and frontline staff to align stakeholders and ship solutions they’d actually use.",
     ],
     callout: "Clarity isn’t optional when people rely on the system to do their job.",
     articleLink: {
@@ -56,15 +56,15 @@ const CHAPTERS = [
     },
   },
   {
-    id: "now",
-    label: "Where I Am Now",
-    icon: "💻",
-    heading: "UX design, process improvement, and AI, unified.",
-    image: "/assets/about/now.png",
+    id: "army",
+    label: "Where My Foundation Was Built",
+    icon: "🎖️",
+    heading: "The Army taught me systems thinking before I had the design vocabulary for it.",
+    image: "/assets/about/army.jpg",
     paragraphs: [
-      "Today I bring both disciplines together through UX and service design, with AI fluency as the edge. I focus on where AI fits into workflows responsibly, in ways frontline staff will actually trust and adopt.",
+      "As a commissioned officer in the NJ Army National Guard, I directed medical logistics for 5,000+ soldiers across 7 aid stations in 3 countries. Cut resupply time 85%, reduced spending 60%, and pioneered digital tracking in a deployed environment.",
     ],
-    callout: "Design for the humans in the system, and the metrics follow.",
+    callout: "Process failure in a combat zone isn’t an inconvenience. It’s a casualty risk.",
   },
 ];
 
@@ -100,7 +100,7 @@ export default function About() {
       {/* ═ HERO ═════════════════════════════════════════════════════ */}
       <section className="about-hero">
         <div className="about-hero-content">
-          <p className="about-intro">Product Designer × Process Improvement. Veteran.</p>
+          <p className="about-intro">Senior UX & Product Designer. Healthcare Systems. Army Veteran.</p>
 
           <h1 className="about-title">
             I redesign how people and processes work together, in systems where confusion isn’t an option.
@@ -236,7 +236,7 @@ export default function About() {
             Interested in working together?
           </h2>
           <p className="about-cta-content" style={{ color: "var(--muted)", lineHeight: 1.8, marginBottom: "1.75rem" }}>
-            I’m open to full-time product design roles, freelance projects, and collaborations, especially in healthcare, government, and enterprise.
+            I’m looking for senior product design roles where healthcare, operations, or complex systems are the problem space. Also open to freelance and collaborations.
           </p>
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
             <button

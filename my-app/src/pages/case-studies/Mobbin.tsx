@@ -37,23 +37,23 @@ const APPS = [
 const WHAT_I_DID = [
   {
     num: "01",
-    title: "Audited live app flows",
-    desc: "Walked each app end-to-end to identify flows worth documenting. Kikoff's 12-screen onboarding was worth capturing in full; Discover's marketing interstitials were not.",
+    title: "Captured end-to-end product journeys",
+    desc: "Documented complete mobile app experiences by walking every flow as a real user, capturing screens, and mapping key interaction sequences. Kikoff's 12-screen onboarding was worth capturing in full; Discover's marketing interstitials were not.",
   },
   {
     num: "02",
-    title: "Captured + structured screens",
-    desc: "Captured every state in each flow, organized in sequence. Empty states and error screens were the hardest to reach but the most valuable. Designers search for those more than happy paths.",
+    title: "Curated UI patterns and navigation models",
+    desc: "Organized onboarding flows, conversion paths, feature entry points, and interaction behaviors into a searchable structure. Empty states and error screens were the hardest to reach but the most valuable.",
   },
   {
     num: "03",
-    title: "Curated pattern annotations",
-    desc: "Authored descriptive metadata for search. Stopped describing what I saw and started describing what a designer would be looking for when they needed this pattern.",
+    title: "Analyzed real-world product experiences",
+    desc: "Identified reusable interface patterns across apps: how each product structures information, guides users, and reduces friction. Wrote annotations for designers arriving without context.",
   },
   {
     num: "04",
-    title: "Quality-checked for consistency",
-    desc: "Aligned tagging to Mobbin's taxonomy. Front-loading this after the first review round cut revision cycles by 50%.",
+    title: "Reviewed and refined for accuracy",
+    desc: "Ensured each submission was usable as a reliable product design reference. Front-loaded taxonomy alignment after the first review round, which cut revision cycles by 50%.",
   },
 ];
 
@@ -82,19 +82,19 @@ export default function MobbinCaseStudy() {
       {/* ── HERO ── */}
       <header className="gh-hero">
         <div className="gh-hero__copy">
-          <p className="meta">Freelance · UX Flow Documentation · UI Pattern Curation</p>
+          <p className="meta">App Capture Specialist · UX Flow Documentation · UI Pattern Curation</p>
           <h1>Mobbin</h1>
           <p className="gh-hero__intro">
-            Three live apps (<strong>Kikoff</strong>, <strong>Polymarket</strong>, and <strong>Discover</strong>)
-            documented for Mobbin's UX pattern library. UX flow documentation and UI
-            pattern curation: walking flows, capturing every state, and writing the
-            annotations that help designers find and understand each pattern.
+            Documented end-to-end mobile app experiences across three fintech products
+            (<strong>Kikoff</strong>, <strong>Polymarket</strong>, and <strong>Discover</strong>)
+            for Mobbin's searchable design reference library. Captured screens, organized user flows,
+            mapped key interaction sequences, and curated UI patterns used by UX, product, and design teams globally.
           </p>
         </div>
         <div className="gh-hero__visual" aria-hidden="true">
           <div className="reina-hero-badge">
             <span className="reina-hero-crown">📱</span>
-            <span className="reina-hero-badge-label">3 Apps Catalogued</span>
+            <span className="reina-hero-badge-label">3 Apps · 200+ Screens</span>
           </div>
         </div>
       </header>
@@ -102,12 +102,12 @@ export default function MobbinCaseStudy() {
       {/* ── META STRIP ── */}
       <div className="gh-meta-strip">
         {[
-          { label: "Role",    value: "App Capture Specialist, Freelance" },
-          { label: "Client",  value: "Mobbin" },
-          { label: "Timeline", value: "4-week contract" },
-          { label: "Output",  value: "3 apps · Full flow capture" },
+          { label: "Role",    value: "App Capture Specialist" },
+          { label: "Client",  value: "Mobbin · Freelance" },
+          { label: "Timeline", value: "Mar 2026 - Present · 4 months" },
+          { label: "Output",  value: "3 apps · 200+ screens · Full flow capture" },
           { label: "Focus",   value: "UX flow documentation · UI pattern curation" },
-          { label: "Status",  value: "Shipped" },
+          { label: "Status",  value: "Ongoing" },
         ].map((item, i, arr) => (
           <React.Fragment key={item.label}>
             <div className="gh-meta-strip__item">
@@ -119,15 +119,40 @@ export default function MobbinCaseStudy() {
         ))}
       </div>
 
+      {/* ── WHAT I NEEDED TO LEARN ── */}
+      <section className="cs-research-questions">
+        <p className="cs-section-heading">What I needed to learn</p>
+        <h2 className="cs-section-title">The questions that shaped how I approached each app</h2>
+        <div className="cs-research-questions__grid">
+          <div className="cs-research-question">
+            <p className="cs-research-question__q">How do designers actually search for UI patterns?</p>
+            <p className="cs-research-question__why">If I tagged screens based on how I'd describe them instead of how someone would search, the work would be invisible in the library.</p>
+          </div>
+          <div className="cs-research-question">
+            <p className="cs-research-question__q">What makes a flow worth documenting vs. a single screen?</p>
+            <p className="cs-research-question__why">Mobbin's value is in sequences, not screenshots. I needed to identify which interactions only make sense in context of the full journey.</p>
+          </div>
+          <div className="cs-research-question">
+            <p className="cs-research-question__q">How do different fintech products solve the same trust problem differently?</p>
+            <p className="cs-research-question__why">All three apps ask users to trust them with money. Understanding the trust strategy behind each pattern made my annotations useful, not just descriptive.</p>
+          </div>
+          <div className="cs-research-question">
+            <p className="cs-research-question__q">What's the quality bar for contributions that serve a global audience?</p>
+            <p className="cs-research-question__why">Writing for thousands of designers in contexts I can't predict required a different standard than writing for a known team.</p>
+          </div>
+        </div>
+      </section>
+
       {/* ── OVERVIEW ── */}
       <section className="cs-overview">
         <p className="cs-section-heading">Overview</p>
-        <h2 className="cs-section-title">Documenting UX flows and curating UI patterns at scale</h2>
+        <h2 className="cs-section-title">Capturing real product experiences for a global design reference library</h2>
         <p className="cs-overview-text">
-          Freelance App Capture Specialist for Mobbin, documenting UX flows and curating UI
-          patterns across live fintech products. The work required walking every flow end-to-end,
-          deciding which screens and states were worth capturing, structuring them for findability,
-          and writing annotations useful to thousands of designers I would never meet.
+          As an App Capture Specialist for Mobbin, I document end-to-end mobile app experiences by
+          capturing screens, organizing user flows, and mapping key interaction sequences across real
+          product journeys. I curate UI patterns, navigation models, and task flows to support a
+          searchable design reference library used by UX, product, and design teams worldwide. Each
+          submission is reviewed and refined for clarity, completeness, and accuracy.
         </p>
       </section>
 
@@ -434,6 +459,27 @@ export default function MobbinCaseStudy() {
               It changed how I write everything.
             </p>
           </div>
+          <div className="cs-reflection-card">
+            <h3>Strengthened product judgment</h3>
+            <p>
+              Studying how leading apps structure information, guide users, and reduce friction
+              across complex digital experiences sharpened how I evaluate my own design decisions.
+              Seeing 200+ screens of real product work builds pattern recognition you can't get
+              from reading about patterns.
+            </p>
+          </div>
+        </div>
+
+        <div className="cs-shows-card">
+          <p className="cs-shows-card__label">What this shows about my design approach</p>
+          <p className="cs-shows-card__text">
+            This contract is product analysis at scale. Studying 200+ screens across three fintech
+            apps built pattern recognition I use in every design decision — knowing how leading
+            products handle trust, disclosure, and progressive complexity isn't theory, it's
+            something I've documented screen by screen. It also proved I can produce high-quality
+            work inside someone else's system, adapting to their taxonomy, quality bar, and review
+            process without needing hand-holding.
+          </p>
         </div>
       </section>
 

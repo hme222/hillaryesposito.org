@@ -124,7 +124,7 @@ export default function GroveCaseStudy() {
       {/* ── META STRIP ── */}
       <div className="gh-meta-strip">
         {[
-          { label: "Role",     value: "Product Designer + Developer" },
+          { label: "Role",     value: "Product Designer (solo)" },
           { label: "Type",     value: "Full-Stack App" },
           { label: "Timeline", value: "3 weeks, solo" },
           { label: "Stack",    value: "React · FastAPI · MongoDB" },
@@ -152,7 +152,7 @@ export default function GroveCaseStudy() {
           and every AI decision is documented with explicit reasoning.
         </p>
         <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
-          <strong>Research:</strong> 31-respondent survey (5/22–6/4/2026) · competitive analysis of 6 plant care apps · moderated testing plan (5–6 participants, ready to run).
+          <strong>Research:</strong> 31-respondent survey (5/22–6/4/2026) · moderated testing plan (5–6 participants, ready to run).
         </p>
         <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
           <strong>Constraints:</strong> Solo project. 3-week build. Prototype shipped; moderated user testing is next.
@@ -191,6 +191,22 @@ export default function GroveCaseStudy() {
           How might we help plant owners build consistent care habits through
           trustworthy, species-specific guidance, with calm notifications and
           lighting education as the differentiators?
+        </div>
+      </section>
+
+      {/* ── WHAT I NEEDED TO LEARN ── */}
+      <section>
+        <p className="gh-section-label">What I needed to learn</p>
+        <h2>Research questions that shaped the project</h2>
+        <p className="cs-section-intro">
+          I had assumptions about what plant owners need. Before designing anything, I needed to test them.
+        </p>
+
+        <div className="cs-research-questions">
+          <div className="cs-research-question">What actually causes plant deaths — lack of knowledge, lack of motivation, or lack of tools?</div>
+          <div className="cs-research-question">Which features would make someone download a plant care app vs. delete it?</div>
+          <div className="cs-research-question">Where does AI create genuine value in plant care, and where does it erode trust?</div>
+          <div className="cs-research-question">What does "calm" look like in an app category dominated by notification spam?</div>
         </div>
       </section>
 
@@ -569,21 +585,6 @@ export default function GroveCaseStudy() {
           </tbody>
         </table>
 
-        <h3 style={{ marginTop: "2.5rem", marginBottom: "1rem", color: "var(--olive-2)" }}>Where AI creates risk, not just speed</h3>
-        <div className="gh-features-grid">
-          <div className="feature">
-            <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>Plant ID accuracy</h3>
-            <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>AI plant identification is probabilistic, not definitive. A false positive on a toxic species could harm a pet. I added confidence scoring, verification prompts, and a "not sure? take another photo" fallback. The design treats AI as a suggestion, not an authority.</p>
-          </div>
-          <div className="feature">
-            <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>Content guardrails</h3>
-            <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>AI-generated personality profiles run through prompt constraints that reject guilt-tripping, anthropomorphized blame, and care advice that contradicts species-specific data. Every generation is filtered before display. The user never sees raw AI output.</p>
-          </div>
-          <div className="feature">
-            <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>Trust calibration</h3>
-            <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>Care recommendations cite sources (botanical databases, not AI opinion). The florist research confirmed: when users can't verify where advice comes from, they stop trusting the entire app. AI generates the delivery; humans and databases provide the facts.</p>
-          </div>
-        </div>
       </section>
 
       {/* ── OUTCOMES ── */}
@@ -698,6 +699,15 @@ export default function GroveCaseStudy() {
               hypothesis can be clearly supported or challenged.
             </p>
           </div>
+        </div>
+
+        <div className="cs-shows-card">
+          <p className="cs-shows-card__label">What this shows about my design approach</p>
+          <p className="cs-shows-card__text">
+            I validate before I build. I let data reorder my priorities, even when it means deprioritizing features I already designed.
+            I document AI decisions with explicit reasoning — not "I used AI" but "here's where I trusted it, where I overrode it,
+            and why." And I design for the emotional experience users described, not the feature list competitors ship.
+          </p>
         </div>
       </section>
 

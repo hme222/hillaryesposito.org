@@ -70,7 +70,7 @@ export default function RecruiterPill() {
                 <div>
                   <p className="recruiter-panel__eyebrow">90-second tour</p>
                   <h2 id="recruiter-panel-title" className="recruiter-panel__title">
-                    Hillary Esposito, Product Design
+                    Hillary Esposito, Senior Product Designer
                   </h2>
                 </div>
                 <button
@@ -84,15 +84,24 @@ export default function RecruiterPill() {
               </header>
 
               <div className="recruiter-panel__body">
+                <section className="recruiter-panel__section recruiter-panel__vitals">
+                  <div className="recruiter-panel__vitals-grid">
+                    <span>8+ years experience</span>
+                    <span>MHA, Rutgers University</span>
+                    <span>Open to remote &amp; hybrid</span>
+                    <span>Available now</span>
+                  </div>
+                </section>
+
                 <section className="recruiter-panel__section">
                   <p className="recruiter-panel__label">In one line</p>
-                  <p>Product designer with 8+ years in healthcare and military operations. Lean Six Sigma rigor applied to UX research. Knows where AI fits in complex workflows.</p>
+                  <p>Senior product designer who shipped healthcare systems for 21,000+ clinicians at MSK and built a research-driven AI app solo in 3 weeks. Army veteran.</p>
                 </section>
 
                 <section className="recruiter-panel__section">
                   <p className="recruiter-panel__label">Strengths</p>
                   <div className="recruiter-panel__chips">
-                    {["Product Design", "UX Research", "Healthcare UX", "Lean Six Sigma", "Systems Thinking", "Accessibility (WCAG)"].map((s) => (
+                    {["UX & Product Design", "Healthcare Systems", "Research-Led Design", "Lean Six Sigma", "AI Fluency", "Accessibility (WCAG)"].map((s) => (
                       <span key={s} className="recruiter-panel__chip">{s}</span>
                     ))}
                   </div>
@@ -104,19 +113,19 @@ export default function RecruiterPill() {
                     <li>
                       <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/grove")}>
                         <strong>Grove</strong>
-                        <span>End-to-end product design: research, personas, UI, shipped app</span>
+                        <span>End-to-end product design: 31-user survey, AI judgment, shipped prototype</span>
                       </button>
                     </li>
                     <li>
                       <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/msk")}>
                         <strong>MSK Cancer Center</strong>
-                        <span>6 years redesigning workflows for 21,000+ clinicians</span>
+                        <span>20% EMR cost reduction, 70% efficiency gains, 21K+ clinicians</span>
                       </button>
                     </li>
                     <li>
                       <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/good-harvest")}>
                         <strong>Good Harvest</strong>
-                        <span>Mobile UX validated with heatmap testing, 22 participants</span>
+                        <span>Heatmap-validated mobile UX, 22 participants, 3 test rounds</span>
                       </button>
                     </li>
                   </ul>
