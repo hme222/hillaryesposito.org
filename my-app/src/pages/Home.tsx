@@ -206,12 +206,12 @@ export default function Home() {
           </motion.h1>
 
           <motion.p className="hero-positioning hero-positioning-gradient" {...stagger(0.12)}>
-            I turn messy workflows into products people actually trust.
+            Turning complex healthcare and enterprise workflows into trusted digital products.
           </motion.p>
 
           <div className="hero-copy">
             <motion.p className="hero-description" {...stagger(0.16)}>
-              Senior UX & Product Designer. Eight years in healthcare systems and complex operations. Army veteran.
+              UX/Product Designer. 13+ years of leadership across process improvement, clinical systems, military operations, and UX research. Army veteran.
             </motion.p>
 
             <motion.div className="hero-actions" {...stagger(0.24)}>
@@ -232,7 +232,7 @@ export default function Home() {
       ══════════════════════════════════════════ */}
       <section className="home-credentials-bar" aria-label="Professional credentials">
         <p className="home-credentials-inline">
-          Army Veteran · Lean Six Sigma Green Belt · MHA, Rutgers · Bilingual EN/ES
+          Army Captain · Lean Six Sigma Green Belt · MHA, Rutgers · Bilingual EN/ES
         </p>
       </section>
 
@@ -248,7 +248,7 @@ export default function Home() {
           transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
         >
           {[
-            { value: "8+",  label: "Years in healthcare & complex operations" },
+            { value: "13+",  label: "Years of leadership across healthcare, military, and UX" },
             { value: "21K+", label: "Clinicians impacted, MSK Cancer Center" },
             { value: "85%",  label: "Faster resupply, NJ Army National Guard" },
             { value: "20%",  label: "EMR cost reduction, MSK Cancer Center" },
@@ -372,7 +372,7 @@ export default function Home() {
                 Let’s talk about your product
               </h2>
               <p className="about-cta-content" style={{ color:"var(--muted)", lineHeight:1.8, marginBottom:"1.75rem", maxWidth: "52ch", margin: "0 auto 1.75rem" }}>
-                I design products for healthcare systems and complex operations. If your team needs a product designer who ships research-driven work, let’s talk.
+                I turn complex workflows into tools people trust. If your team needs a UX/product designer with deep healthcare, enterprise, or operations experience, let’s talk.
               </p>
 
               <a href={"mailto:" + email} className="hero-btn" style={{ display:"inline-block", fontSize:"0.9rem", padding:"1rem 2rem", textDecoration:"none", marginBottom:"1.5rem" }} aria-label="Send me a note">

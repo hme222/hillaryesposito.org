@@ -70,7 +70,7 @@ export default function RecruiterPill() {
                 <div>
                   <p className="recruiter-panel__eyebrow">90-second tour</p>
                   <h2 id="recruiter-panel-title" className="recruiter-panel__title">
-                    Hillary Esposito, Senior Product Designer
+                    Hillary Esposito, UX/Product Designer
                   </h2>
                 </div>
                 <button
@@ -86,22 +86,22 @@ export default function RecruiterPill() {
               <div className="recruiter-panel__body">
                 <section className="recruiter-panel__section recruiter-panel__vitals">
                   <div className="recruiter-panel__vitals-grid">
-                    <span>8+ years experience</span>
-                    <span>MHA, Rutgers University</span>
-                    <span>Open to remote &amp; hybrid</span>
-                    <span>Available now</span>
+                    <span>13+ years leadership</span>
+                    <span>MHA, Rutgers</span>
+                    <span>Remote &amp; hybrid</span>
+                    <span>Currently freelancing</span>
                   </div>
                 </section>
 
                 <section className="recruiter-panel__section">
                   <p className="recruiter-panel__label">In one line</p>
-                  <p>Senior product designer who shipped healthcare systems for 21,000+ clinicians at MSK and built a research-driven AI app solo in 3 weeks. Army veteran.</p>
+                  <p>UX/Product Designer turning complex healthcare and enterprise workflows into trusted digital products. 21,000+ clinicians impacted at MSK. Army veteran.</p>
                 </section>
 
                 <section className="recruiter-panel__section">
                   <p className="recruiter-panel__label">Strengths</p>
                   <div className="recruiter-panel__chips">
-                    {["UX & Product Design", "Healthcare Systems", "Research-Led Design", "Lean Six Sigma", "AI Fluency", "Accessibility (WCAG)"].map((s) => (
+                    {["UX & Product Design", "Service Design", "Healthcare Systems", "Process Improvement", "Lean Six Sigma", "AI-Augmented Workflows", "Bilingual EN/ES"].map((s) => (
                       <span key={s} className="recruiter-panel__chip">{s}</span>
                     ))}
                   </div>
@@ -141,6 +141,12 @@ export default function RecruiterPill() {
                   <a className="recruiter-panel__btn"
                      href="mailto:espositohillary@gmail.com">
                     ✉️ Email me
+                  </a>
+                  <a className="recruiter-panel__btn"
+                     href="https://www.linkedin.com/in/hillaryesposito/"
+                     target="_blank"
+                     rel="noopener noreferrer">
+                    💼 LinkedIn
                   </a>
                   <button type="button" className="recruiter-panel__btn"
                      onClick={() => go("/about")}>

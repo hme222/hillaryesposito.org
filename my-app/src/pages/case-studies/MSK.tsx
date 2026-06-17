@@ -64,14 +64,14 @@ export default function MSKCaseStudy() {
 
       {/* ── OVERVIEW ── */}
       <section className="cs-overview">
-        <p className="cs-section-heading">Overview</p>
+        <p className="gh-section-label">Overview</p>
         <h2 className="cs-section-title">Designing for 21,000 clinicians inside the systems they depend on</h2>
         <p className="cs-overview-text">
-          At MSK, I designed how people and systems work together: mapping workflows,
-          identifying where systems failed the clinicians using them, aligning stakeholders across
-          clinical and administrative teams, and shipping solutions that 21,000+ users relied on daily.
-          This case study documents the design process, not the pixels, because the work that matters most
-          in healthcare happens before anyone opens Figma.
+          At MSK, I optimized internal operations: mapping workflows, identifying where systems failed
+          the clinicians using them, aligning stakeholders across clinical and administrative teams,
+          and shipping solutions that 21,000+ users relied on daily. This was deep user research before
+          I formally had the vocabulary for it. The work that matters most in healthcare happens before
+          anyone opens Figma.
         </p>
         <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
           <strong>Note:</strong> Internal systems and patient data are confidential. This case study
@@ -346,7 +346,7 @@ export default function MSKCaseStudy() {
 
       {/* ── OUTCOMES ── */}
       <section className="cs-outcome">
-        <p className="cs-section-heading">Outcomes</p>
+        <p className="gh-section-label">Outcomes</p>
         <h2 className="cs-section-title">Measurable results across three systems</h2>
         <div className="cs-outcome-grid">
           <div className="cs-outcome-card">
@@ -383,7 +383,7 @@ export default function MSKCaseStudy() {
 
       {/* ── KEY DECISIONS ── */}
       <section className="cs-decisions">
-        <p className="cs-section-heading">Key decisions</p>
+        <p className="gh-section-label">Key decisions</p>
         <h2 className="cs-section-title">Judgment calls that shaped outcomes</h2>
         <table className="cs-decisions-table">
           <thead>
@@ -415,7 +415,7 @@ export default function MSKCaseStudy() {
 
       {/* ── WHAT I LEARNED ── */}
       <section className="cs-reflections">
-        <p className="cs-section-heading">What I learned</p>
+        <p className="gh-section-label">What I learned</p>
         <h2 className="cs-section-title">Why MSK shaped how I design</h2>
         <div className="cs-reflections-grid">
           <div className="cs-reflection-card">
@@ -445,10 +445,10 @@ export default function MSKCaseStudy() {
           <div className="cs-reflection-card">
             <h3>Why this work matters now</h3>
             <p>
-              I left MSK in 2024, as healthcare entered its AI inflection point. The clinical workflows
-              I redesigned are exactly the systems being augmented by AI today. Understanding how
-              21,000 clinicians actually work is the foundation for designing AI-augmented tools
-              they'll trust and adopt.
+              The clinical workflows I redesigned are exactly the systems being augmented by AI today.
+              Understanding how 21,000 clinicians actually work — how they build workarounds, where they
+              lose trust, what makes them adopt or resist change — is the foundation for designing
+              AI-augmented tools they'll actually use.
             </p>
           </div>
         </div>

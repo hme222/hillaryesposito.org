@@ -143,7 +143,7 @@ export default function GroveCaseStudy() {
 
       {/* ── OVERVIEW ── */}
       <section className="cs-overview">
-        <p className="cs-section-heading">Overview</p>
+        <p className="gh-section-label">Overview</p>
         <h2 className="cs-section-title">Research-driven design for a plant care app, with AI as the accelerant</h2>
         <p className="cs-overview-text">
           Grove is a plant care app I designed, researched, and built end-to-end. A 31-respondent
@@ -589,7 +589,7 @@ export default function GroveCaseStudy() {
 
       {/* ── OUTCOMES ── */}
       <section className="cs-outcome">
-        <p className="cs-section-heading">What I shipped</p>
+        <p className="gh-section-label">What I shipped</p>
         <h2 className="cs-section-title">Research artifacts + working product</h2>
         <div className="cs-outcome-grid">
           <div className="cs-outcome-card">
@@ -670,7 +670,7 @@ export default function GroveCaseStudy() {
 
       {/* ── WHAT I LEARNED ── */}
       <section className="cs-reflections">
-        <p className="cs-section-heading">What I learned</p>
+        <p className="gh-section-label">What I learned</p>
         <h2 className="cs-section-title">Where this project stands and what it taught me</h2>
         <div className="cs-reflections-grid">
           <div className="cs-reflection-card">

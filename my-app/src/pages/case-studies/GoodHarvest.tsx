@@ -92,7 +92,7 @@ export default function GoodHarvest() {
 
       {/* ── OVERVIEW ── */}
       <section className="cs-overview">
-        <p className="cs-section-heading">Overview</p>
+        <p className="gh-section-label">Overview</p>
         <h2 className="cs-section-title">People want to eat seasonally. The information makes it harder, not easier</h2>
         <p className="cs-overview-text">
           An independent project where I took provided research (22 participant interviews and surveys)
@@ -149,11 +149,23 @@ export default function GoodHarvest() {
           blocking people from acting on seasonal food information.
         </p>
 
-        <div className="cs-research-questions">
-          <div className="cs-research-question">Is the problem discoverability (can't find seasonal info) or trust (don't believe it applies to them)?</div>
-          <div className="cs-research-question">What does "confidence to act" look like at point of purchase — and what breaks it?</div>
-          <div className="cs-research-question">Where do users look first on a food app screen, and what do they ignore?</div>
-          <div className="cs-research-question">Can heatmap testing validate design hypotheses from inherited research, or do I need new primary research?</div>
+        <div className="cs-research-questions__grid">
+          <div className="cs-research-question">
+            <p className="cs-research-question__q">Is the problem discoverability or trust?</p>
+            <p className="cs-research-question__why">The provided research said users couldn't find seasonal info. But I suspected they found it and didn't believe it applied to them. Different root cause, different solution.</p>
+          </div>
+          <div className="cs-research-question">
+            <p className="cs-research-question__q">What does "confidence to act" look like at point of purchase?</p>
+            <p className="cs-research-question__why">Knowing what's in season is useless if people still hesitate at the grocery store. I needed to understand what breaks the last-mile decision.</p>
+          </div>
+          <div className="cs-research-question">
+            <p className="cs-research-question__q">Where do users look first on a food app screen, and what do they ignore?</p>
+            <p className="cs-research-question__why">Heatmap testing would show me actual attention patterns, not self-reported preferences. This was my primary validation method.</p>
+          </div>
+          <div className="cs-research-question">
+            <p className="cs-research-question__q">Can heatmap testing validate hypotheses from inherited research?</p>
+            <p className="cs-research-question__why">I was working with someone else's data. I needed to confirm their findings held before designing on top of them.</p>
+          </div>
         </div>
       </section>
 
@@ -328,7 +340,7 @@ export default function GoodHarvest() {
 
       {/* ── KEY DECISIONS ── */}
       <section className="cs-decisions">
-        <p className="cs-section-heading">Key decisions</p>
+        <p className="gh-section-label">Key decisions</p>
         <h2 className="cs-section-title">Where I landed and why</h2>
         <table className="cs-decisions-table">
           <thead>
@@ -360,7 +372,7 @@ export default function GoodHarvest() {
 
       {/* ── OUTCOMES ── */}
       <section className="cs-outcome">
-        <p className="cs-section-heading">Outcomes</p>
+        <p className="gh-section-label">Outcomes</p>
         <h2 className="cs-section-title">What prototype testing suggested</h2>
         <div className="cs-outcome-grid">
           <div className="cs-outcome-card">
@@ -392,9 +404,35 @@ export default function GoodHarvest() {
         </a>
       </div>
 
+      {/* ── WHAT WENT WRONG ── */}
+      <section>
+        <p className="gh-section-label">What went wrong</p>
+        <h2>Mistakes I made and what they taught me</h2>
+
+        <div className="cs-evidence-pair">
+          <p className="cs-evidence-pair__finding">I designed for discoverability when the real problem was trust.</p>
+          <p className="cs-evidence-pair__evidence">
+            My first wireframes focused on making seasonal produce easier to find — bigger cards, clearer categories,
+            prominent search. But heatmap testing showed users were already finding the content. They just didn't
+            believe the seasonality claims applied to their specific location. I had to redesign the produce detail
+            screen around credibility signals (data sources, location specificity) instead of navigation patterns.
+          </p>
+        </div>
+
+        <div className="cs-evidence-pair">
+          <p className="cs-evidence-pair__finding">I treated inherited research as validated truth instead of testing it myself.</p>
+          <p className="cs-evidence-pair__evidence">
+            The provided research from 22 participants said users wanted "easier access to seasonal information."
+            I designed two rounds of wireframes based on that framing before my own heatmap testing revealed a
+            different story. I should have run a validation round earlier, before committing to a direction built
+            on someone else's interpretation.
+          </p>
+        </div>
+      </section>
+
       {/* ── WHAT I LEARNED ── */}
       <section className="cs-reflections">
-        <p className="cs-section-heading">What I learned</p>
+        <p className="gh-section-label">What I learned</p>
         <h2 className="cs-section-title">The specific ways this project changed how I design</h2>
         <div className="cs-reflections-grid">
           {reflections.map((r) => (

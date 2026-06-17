@@ -5,24 +5,24 @@ import usePageTitle from "../hooks/usePageTitle";
 // ── What I bring ─────────────────────────────────────────────────────────
 const AGENDA = [
   {
-    icon: "🔬",
-    title: "Research-first thinking",
-    desc: "I map workflows and interview users before designing anything.",
+    icon: "📊",
+    title: "Process improvement",
+    desc: "Lean Six Sigma expertise with documented 20-85% gains in cost, efficiency, and cycle time.",
   },
   {
-    icon: "🧩",
-    title: "Systems perspective",
-    desc: "I think in workflows, not wireframes: people, tools, and processes together.",
+    icon: "🔬",
+    title: "Human-centered design",
+    desc: "Rigorous technical foundation across design, data, and technology, grounded in research and usability.",
+  },
+  {
+    icon: "🏥",
+    title: "Healthcare fluency",
+    desc: "Master of Health Administration (MHA) and six years inside clinical operations at MSK.",
   },
   {
     icon: "🤖",
-    title: "AI judgment",
-    desc: "I know when to use AI, how to evaluate its outputs, and where human judgment leads.",
-  },
-  {
-    icon: "🤝",
-    title: "Cross-disciplinary fluency",
-    desc: "I translate between clinicians, engineers, and operators so decisions become usable systems.",
+    title: "AI-augmented workflows",
+    desc: "I leverage AI to accelerate research, prototyping, and analysis — focused on responsible integration into high-stakes environments.",
   },
 ];
 
@@ -32,10 +32,10 @@ const CHAPTERS = [
     id: "now",
     label: "What I Do Now",
     icon: "💻",
-    heading: "UX & product design for healthcare systems and complex operations.",
+    heading: "Fusing UX, service design, and AI-augmented workflows.",
     image: "/assets/about/now.png",
     paragraphs: [
-      "I design products for teams where confusion isn’t an option. Currently freelancing and building independently, bringing together UX research, systems thinking, and AI fluency to ship work that holds up under real conditions.",
+      "Today I leverage AI to accelerate research synthesis, prototyping, and data analysis — focused on how AI can be integrated into high-stakes workflows responsibly, so frontline teams actually trust it. Currently freelancing and building independently.",
     ],
     callout: "Design for the humans in the system, and the metrics follow.",
   },
@@ -43,12 +43,12 @@ const CHAPTERS = [
     id: "msk",
     label: "Where I Built My Practice",
     icon: "🏥",
-    heading: "Six years at MSK, designing for humans inside the systems I was improving.",
+    heading: "Six years at MSK, optimizing internal operations and designing for 21,000+ clinicians.",
     image: "/assets/about/msk.jpg",
     paragraphs: [
-      "Across four roles, I cut EMR costs 20%, rebuilt certification workflows for 70% efficiency gains, and redesigned onboarding for 21,000+ clinicians, working across IT, clinical leadership, and frontline staff to align stakeholders and ship solutions they’d actually use.",
+      "I led an EMR process redesign that cut costs 20% organization-wide, rebuilt certification workflows for a 70% efficiency gain, and redesigned onboarding using staff feedback. This was deep user research before I formally had the vocabulary for it.",
     ],
-    callout: "Clarity isn’t optional when people rely on the system to do their job.",
+    callout: "Systems don’t fail in flowcharts. They fail at the point where a real person has to use them.",
     articleLink: {
       url: "https://www.mskcc.org/news/hillary-esposito-s-career-path-military-msk",
       title: "Hillary Esposito’s Career Path: From the Military to MSK",
@@ -59,10 +59,10 @@ const CHAPTERS = [
     id: "army",
     label: "Where My Foundation Was Built",
     icon: "🎖️",
-    heading: "The Army taught me systems thinking before I had the design vocabulary for it.",
+    heading: "Captain and Medical Logistics Officer, NJ Army National Guard.",
     image: "/assets/about/army.jpg",
     paragraphs: [
-      "As a commissioned officer in the NJ Army National Guard, I directed medical logistics for 5,000+ soldiers across 7 aid stations in 3 countries. Cut resupply time 85%, reduced spending 60%, and pioneered digital tracking in a deployed environment.",
+      "Deployed to Iraq with the 44th IBCT, I directed medical logistics for 5,000+ soldiers and $2M in supplies across seven aid stations in three countries. Pioneered digital tracking that cut resupply time 85% and reduced spending 60%. In 2020, activated for New Jersey’s COVID-19 response, reporting state medical operations directly to the Joint Surgeon’s office.",
     ],
     callout: "Process failure in a combat zone isn’t an inconvenience. It’s a casualty risk.",
   },
@@ -100,14 +100,14 @@ export default function About() {
       {/* ═ HERO ═════════════════════════════════════════════════════ */}
       <section className="about-hero">
         <div className="about-hero-content">
-          <p className="about-intro">Senior UX & Product Designer. Healthcare Systems. Army Veteran.</p>
+          <p className="about-intro">UX/Product Designer. Healthcare & Enterprise Systems. Army Veteran.</p>
 
           <h1 className="about-title">
-            I redesign how people and processes work together, in systems where confusion isn’t an option.
+            Turning complex healthcare and enterprise workflows into trusted digital products.
           </h1>
 
           <p className="about-hero-subtext">
-            From directing medical logistics for 5,000 soldiers to redesigning clinical systems for 21,000+ clinicians at MSK. Here's how that became product design.
+            13+ years of leadership across process improvement, clinical systems, military operations, and UX research. I’ve spent my career at the intersection where systems fail: the point where a real person has to use them.
           </p>
         </div>
 
@@ -124,10 +124,9 @@ export default function About() {
       <section className="about-agenda" aria-label="What I bring">
         <div className="about-agenda__header">
           <p className="about-agenda__eyebrow">What I bring</p>
-          <h2 className="about-growth-title">A perspective shaped by real systems.</h2>
+          <h2 className="about-growth-title">What I bring to the table.</h2>
           <p className="about-growth-text" style={{ maxWidth: "68ch" }}>
-            My approach comes from working in environments where small breakdowns
-            cause real problems.
+            My core philosophy: design for the humans in the system, and the metrics follow.
           </p>
         </div>
 
@@ -236,7 +235,7 @@ export default function About() {
             Interested in working together?
           </h2>
           <p className="about-cta-content" style={{ color: "var(--muted)", lineHeight: 1.8, marginBottom: "1.75rem" }}>
-            I’m looking for senior product design roles where healthcare, operations, or complex systems are the problem space. Also open to freelance and collaborations.
+            Open to UX, product design, and service design roles in healthcare, mission-driven organizations, and operationally complex environments. Also open to freelance and collaborations.
           </p>
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
             <button

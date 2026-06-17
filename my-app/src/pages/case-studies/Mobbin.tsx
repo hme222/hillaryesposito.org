@@ -119,33 +119,9 @@ export default function MobbinCaseStudy() {
         ))}
       </div>
 
-      {/* ── WHAT I NEEDED TO LEARN ── */}
-      <section className="cs-research-questions">
-        <p className="cs-section-heading">What I needed to learn</p>
-        <h2 className="cs-section-title">The questions that shaped how I approached each app</h2>
-        <div className="cs-research-questions__grid">
-          <div className="cs-research-question">
-            <p className="cs-research-question__q">How do designers actually search for UI patterns?</p>
-            <p className="cs-research-question__why">If I tagged screens based on how I'd describe them instead of how someone would search, the work would be invisible in the library.</p>
-          </div>
-          <div className="cs-research-question">
-            <p className="cs-research-question__q">What makes a flow worth documenting vs. a single screen?</p>
-            <p className="cs-research-question__why">Mobbin's value is in sequences, not screenshots. I needed to identify which interactions only make sense in context of the full journey.</p>
-          </div>
-          <div className="cs-research-question">
-            <p className="cs-research-question__q">How do different fintech products solve the same trust problem differently?</p>
-            <p className="cs-research-question__why">All three apps ask users to trust them with money. Understanding the trust strategy behind each pattern made my annotations useful, not just descriptive.</p>
-          </div>
-          <div className="cs-research-question">
-            <p className="cs-research-question__q">What's the quality bar for contributions that serve a global audience?</p>
-            <p className="cs-research-question__why">Writing for thousands of designers in contexts I can't predict required a different standard than writing for a known team.</p>
-          </div>
-        </div>
-      </section>
-
       {/* ── OVERVIEW ── */}
       <section className="cs-overview">
-        <p className="cs-section-heading">Overview</p>
+        <p className="gh-section-label">Overview</p>
         <h2 className="cs-section-title">Capturing real product experiences for a global design reference library</h2>
         <p className="cs-overview-text">
           As an App Capture Specialist for Mobbin, I document end-to-end mobile app experiences by
@@ -175,6 +151,30 @@ export default function MobbinCaseStudy() {
           <div className="gh-assumption-card gh-assumption-card--finding">
             <p className="gh-assumption-label">The hard part was</p>
             <p>Deciding what's worth showing, chunking flows into meaningful sequences, and writing annotations that stay useful to thousands of designers who will never meet me.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── WHAT I NEEDED TO LEARN ── */}
+      <section>
+        <p className="gh-section-label">What I needed to learn</p>
+        <h2>The questions that shaped how I approached each app</h2>
+        <div className="cs-research-questions__grid">
+          <div className="cs-research-question">
+            <p className="cs-research-question__q">How do designers actually search for UI patterns?</p>
+            <p className="cs-research-question__why">If I tagged screens based on how I'd describe them instead of how someone would search, the work would be invisible in the library.</p>
+          </div>
+          <div className="cs-research-question">
+            <p className="cs-research-question__q">What makes a flow worth documenting vs. a single screen?</p>
+            <p className="cs-research-question__why">Mobbin's value is in sequences, not screenshots. I needed to identify which interactions only make sense in context of the full journey.</p>
+          </div>
+          <div className="cs-research-question">
+            <p className="cs-research-question__q">How do different fintech products solve the same trust problem differently?</p>
+            <p className="cs-research-question__why">All three apps ask users to trust them with money. Understanding the trust strategy behind each pattern made my annotations useful, not just descriptive.</p>
+          </div>
+          <div className="cs-research-question">
+            <p className="cs-research-question__q">What's the quality bar for contributions that serve a global audience?</p>
+            <p className="cs-research-question__why">Writing for thousands of designers in contexts I can't predict required a different standard than writing for a known team.</p>
           </div>
         </div>
       </section>
@@ -349,7 +349,7 @@ export default function MobbinCaseStudy() {
 
       {/* ── KEY DECISIONS ── */}
       <section className="cs-decisions">
-        <p className="cs-section-heading">Key decisions</p>
+        <p className="gh-section-label">Key decisions</p>
         <h2 className="cs-section-title">How I made judgment calls in each app</h2>
         <table className="cs-decisions-table">
           <thead>
@@ -386,7 +386,7 @@ export default function MobbinCaseStudy() {
 
       {/* ── OUTCOMES ── */}
       <section className="cs-outcome">
-        <p className="cs-section-heading">Outcomes</p>
+        <p className="gh-section-label">Outcomes</p>
         <h2 className="cs-section-title">What the contract produced</h2>
         <div className="cs-outcome-grid">
           <div className="cs-outcome-card">
@@ -412,6 +412,32 @@ export default function MobbinCaseStudy() {
         </div>
       </section>
 
+      {/* ── WHAT WENT WRONG ── */}
+      <section>
+        <p className="gh-section-label">What went wrong</p>
+        <h2>Mistakes I made and what they taught me</h2>
+
+        <div className="cs-evidence-pair">
+          <p className="cs-evidence-pair__finding">My first submission batch had tag inconsistencies that doubled the review cycle.</p>
+          <p className="cs-evidence-pair__evidence">
+            I tagged screens based on my own vocabulary instead of aligning with Mobbin's existing taxonomy first.
+            "Progress indicator" vs. "status display" vs. "achievement" — each maps to a different search behavior.
+            After the first review round flagged the inconsistencies, I restructured my process to front-load taxonomy
+            review before capturing any screens. Revision cycles dropped by half.
+          </p>
+        </div>
+
+        <div className="cs-evidence-pair">
+          <p className="cs-evidence-pair__finding">I initially over-documented marketing screens that designers rarely search for.</p>
+          <p className="cs-evidence-pair__evidence">
+            My first Discover submission included promotional interstitials and marketing landing screens.
+            Mobbin's feedback was clear: designers search for interaction patterns, not marketing content.
+            I shifted to prioritizing onboarding flows, key task completions, and edge/empty states — the
+            screens that solve real design problems.
+          </p>
+        </div>
+      </section>
+
       <div className="cs-inline-cta">
         <p>Interested in this kind of work?</p>
         <a href="mailto:espositohillary@gmail.com" className="hero-btn" style={{ fontSize: "0.9rem", padding: "0.8rem 1.8rem", textDecoration: "none" }}>
@@ -421,7 +447,7 @@ export default function MobbinCaseStudy() {
 
       {/* ── WHAT I LEARNED ── */}
       <section className="cs-reflections">
-        <p className="cs-section-heading">What I learned</p>
+        <p className="gh-section-label">What I learned</p>
         <h2 className="cs-section-title">What three apps taught me</h2>
         <div className="cs-reflections-grid">
           <div className="cs-reflection-card">
