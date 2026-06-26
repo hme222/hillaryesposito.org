@@ -26,8 +26,11 @@ import PasswordGate from "../components/PasswordGate";
 import { Navigate } from "react-router-dom";
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
   useEffect(() => {
+    // When landing on a section (?scrollTo=...), let the page position itself
+    // instead of resetting to the top and fighting that scroll.
+    if (new URLSearchParams(search).has("scrollTo")) return;
     window.scrollTo(0, 0);
   }, [pathname]);
   return null;
@@ -39,7 +42,7 @@ export default function AppRoutes() {
     <ScrollToTop />
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/projects" element={<Navigate to="/#projects" replace />} />
+      <Route path="/projects" element={<Navigate to="/?scrollTo=projects" replace />} />
       <Route path="/about" element={<About />} />
 
       <Route path="/case-study/good-harvest" element={<GoodHarvest />} />

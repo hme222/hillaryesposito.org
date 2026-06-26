@@ -21,8 +21,8 @@ const AGENDA = [
   },
   {
     icon: "🤖",
-    title: "AI-augmented workflows",
-    desc: "I leverage AI to accelerate research, prototyping, and analysis — focused on responsible integration into high-stakes environments.",
+    title: "AI judgment, not AI hype",
+    desc: "Everyone uses AI now. The skill is knowing when to trust it and when to override it. On Grove I rejected five of its suggestions — and documented why.",
   },
 ];
 
@@ -32,10 +32,10 @@ const CHAPTERS = [
     id: "now",
     label: "What I Do Now",
     icon: "💻",
-    heading: "Fusing UX, service design, and AI-augmented workflows.",
+    heading: "Designing for trust in complex, regulated products.",
     image: "/assets/about/now.png",
     paragraphs: [
-      "Today I leverage AI to accelerate research synthesis, prototyping, and data analysis — focused on how AI can be integrated into high-stakes workflows responsibly, so frontline teams actually trust it. Currently freelancing and building independently.",
+      "Right now I'm freelancing. My most recent contract was a deep study of three fintech products, where I documented more than 200 screens of end-to-end mobile flows, then annotated and tagged each one so thousands of designers could actually find and reuse them. It sharpened three things: reading interaction patterns at scale across financial UX, structuring documentation to a strict taxonomy and quality bar, and seeing how different products solve the same trust problem in very different ways. AI is part of how I work now, but it stays a tool. I use it to move faster on research and prototyping, then make the calls myself.",
     ],
     callout: "Design for the humans in the system, and the metrics follow.",
   },

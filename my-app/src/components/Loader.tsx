@@ -6,85 +6,68 @@ type LoaderProps = {
   src?: string;
   /** Visible alt text (your current string) */
   alt?: string;
-  /** How long to keep loader before fading out (ms) */
-  delayMs?: number;
+  /** How long to hold the overlay before fading out (ms) */
+  holdMs?: number;
 };
 
+/**
+ * Brief branded intro overlay. It sits ON TOP of fully-rendered content
+ * (content is always in the DOM behind it) and removes itself quickly:
+ *
+ *   - capped total duration: ~120ms hold + ~300ms fade = ~420ms
+ *   - a safety timeout force-removes it no matter what, so it can never
+ *     get stuck if the animation is interrupted (e.g. StrictMode remount)
+ *   - prefers-reduced-motion: skipped entirely, content shows immediately
+ */
 export default function Loader({
-  src = "assets/logo-cat.png",
+  src = "/assets/logo-cat.png",
   alt = "",
-  delayMs = 800,
+  holdMs = 120,
 }: LoaderProps) {
   const rootRef = useRef<HTMLDivElement | null>(null);
-  const imgRef = useRef<HTMLImageElement | null>(null);
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    const root = rootRef.current;
-    const img = imgRef.current;
-    if (!root || !img) return;
-
-    // Ensure initial state so it doesn't flash
-    gsap.set(img, { opacity: 0, scale: 1 });
-    gsap.set(root, { opacity: 1 });
-
+    // Reduced motion: no intro at all — content is already behind this overlay.
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    const tl = gsap.timeline({
-      onComplete: () => setDone(true),
-    });
-
     if (reducedMotion) {
-      // Skip animation, just show then fade out
-      tl.set(img, { opacity: 1, scale: 0.1 })
-        .to(root, { opacity: 0, duration: 0.3, ease: "power2.inOut" }, delayMs / 1000);
-    } else {
-      tl.to(img, {
-        opacity: 1,
-        scale: 0.1,
-        duration: 0.6,
-        ease: "power2.out",
-      })
-        .to(
-          img,
-          {
-            rotation: 360,
-            duration: 2,
-            ease: "linear",
-            repeat: 1,
-            transformOrigin: "center",
-          },
-          0
-        )
-        .to(
-          root,
-          {
-            opacity: 0,
-            duration: 0.8,
-            ease: "power2.inOut",
-          },
-          delayMs / 1000
-        );
+      setDone(true);
+      return;
     }
 
+    const root = rootRef.current;
+    if (!root) {
+      setDone(true);
+      return;
+    }
+
+    // Hard safety net: regardless of what happens to the tween, the overlay
+    // is gone shortly after the expected end. It can never gate content.
+    const safety = window.setTimeout(() => setDone(true), holdMs + 450);
+
+    const tween = gsap.fromTo(
+      root,
+      { opacity: 1 },
+      {
+        opacity: 0,
+        duration: 0.3,
+        delay: holdMs / 1000,
+        ease: "power2.out",
+        onComplete: () => setDone(true),
+      }
+    );
+
     return () => {
-      tl.kill();
-      gsap.killTweensOf(img);
-      gsap.killTweensOf(root);
+      window.clearTimeout(safety);
+      tween.kill();
     };
-  }, [delayMs]);
+  }, [holdMs]);
 
   if (done) return null;
 
   return (
     <div id="loader" ref={rootRef} aria-hidden="true">
-      <img
-        ref={imgRef}
-        src={src}
-        alt={alt}
-        className="loader-cat"
-        aria-hidden="true"
-      />
+      <img src={src} alt={alt} className="loader-cat" aria-hidden="true" />
     </div>
   );
 }

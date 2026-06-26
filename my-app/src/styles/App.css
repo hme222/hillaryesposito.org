@@ -187,6 +187,9 @@ body {
     color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   line-height: 1.6;
 }
+p, li, td, blockquote, .cs-body-text, .cs-section-intro, .cs-overview-text {
+  font-family: Optima, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+}
 a {
   color: inherit;
 }
@@ -3474,13 +3477,32 @@ body.dark-mode .nav-overlay-backdrop,
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
   outline: none;
 }
+/* De-emphasise unavailable cards (coming-soon + password-locked) so the grid
+   leads with the three viewable case studies instead of reading as dead ends. */
+.home-proj-card-link--soon,
+.home-proj-card-link--locked {
+  opacity: 0.55;
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.35s ease;
+}
 .home-proj-card-link--soon {
   cursor: default;
-  opacity: 0.85;
 }
 .home-proj-card-link--soon:hover {
   transform: none;
   box-shadow: none;
+}
+/* The locked card is still clickable (to unlock), so it brightens on hover to
+   invite the click; the lift comes from the base .home-proj-card-link:hover. */
+.home-proj-card-link--locked:hover,
+.home-proj-card-link--locked:focus-visible {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-proj-card-link--soon,
+  .home-proj-card-link--locked {
+    transition: opacity 0.35s ease;
+  }
 }
 
 .home-proj-card-inner {
@@ -4598,6 +4620,42 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 /* ── Credentials bar ── */
+/* ── Hero ambient blob (decorative, behind content) ── */
+.hero-blob {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(720px, 92vw);
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(42px);
+  transform: translate(-50%, -50%);
+  animation: hero-blob-drift 26s ease-in-out infinite;
+  will-change: transform;
+}
+.hero-blob svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@keyframes hero-blob-drift {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+  33% {
+    transform: translate(-53%, -47%) rotate(7deg) scale(1.06);
+  }
+  66% {
+    transform: translate(-47%, -53%) rotate(-6deg) scale(0.97);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-blob {
+    animation: none;
+  }
+}
+
 .home-credentials-bar {
   padding: 1rem var(--page-pad);
   display: flex;
@@ -7451,6 +7509,100 @@ body.dark-mode .nav-overlay-backdrop,
 .cs-decisions-table tr:last-child td {
   border-bottom: none;
 }
+
+/* ── "Where I pushed back" callout (Grove AI section) ── */
+.pushback-callout {
+  margin: 0 0 2.5rem;
+  padding: 1.75rem 1.75rem 1.5rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent-warm);
+  background: var(--card);
+  box-shadow: var(--shadow-md);
+}
+.pushback-callout__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+.pushback-callout__marker {
+  font-size: 1.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.pushback-callout__eyebrow {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+.pushback-callout__sub {
+  margin: 0.2rem 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.pushback-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.pushback-item {
+  padding: 1.1rem 1.15rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg);
+}
+.pushback-item__topic {
+  margin: 0 0 0.7rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--olive-2);
+}
+.pushback-item__said,
+.pushback-item__chose {
+  margin: 0 0 0.5rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--fg);
+}
+.pushback-tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.12rem 0.45rem;
+  border-radius: var(--radius-sm);
+  margin-right: 0.5rem;
+  vertical-align: 1px;
+}
+.pushback-tag--ai {
+  background: color-mix(in srgb, var(--muted) 14%, transparent);
+  color: var(--muted);
+}
+.pushback-tag--me {
+  background: color-mix(in srgb, var(--accent-warm) 18%, transparent);
+  color: var(--accent-warm);
+}
+.pushback-item__why {
+  margin: 0.75rem 0 0;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+@media (max-width: 640px) {
+  .pushback-list { grid-template-columns: 1fr; }
+}
+
 .cs-outcome {
   max-width: var(--case-max);
   margin: 0 auto 3rem;

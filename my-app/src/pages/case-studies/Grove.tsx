@@ -78,6 +78,34 @@ const AI_DECISIONS = [
   },
 ];
 
+// The sharpest overrides, surfaced as a scannable callout above the full table.
+const PUSHBACK = [
+  {
+    topic: "Personality tone",
+    ai: "Playful, anthropomorphized guilt — “I’m thirsty, why did you forget me?”",
+    me: "Encouraging tone only; prompt guardrails reject blame and neglect language.",
+    why: "Guilt directly contradicts the calm experience users told me they wanted. I tested 20+ generations before locking the template.",
+  },
+  {
+    topic: "Notification frequency",
+    ai: "Daily push notifications for every plant.",
+    me: "A single morning digest per bouquet.",
+    why: "“Too many notifications” was the #1 instant-delete trigger in the survey — 15+ respondents named it unprompted.",
+  },
+  {
+    topic: "Plant ID confidence",
+    ai: "Show the AI identification as definitive.",
+    me: "Surface a confidence score and a “verify with a photo” prompt below 80%.",
+    why: "Misidentifying a toxic plant near a pet is a safety risk, not a UX inconvenience. The human stays in the loop.",
+  },
+  {
+    topic: "Reward system",
+    ai: "XP points and a leaderboard.",
+    me: "AI-generated plant personalities unlocked at care milestones.",
+    why: "The survey was blunt: an app that feels like an “administrative chore” is the #1 reason people delete it.",
+  },
+];
+
 const OTHER_PROJECTS = [
   {
     icon: "🏥",
@@ -524,6 +552,31 @@ export default function GroveCaseStudy() {
           knowing when to trust it, when to override it, and when to do the work myself.
         </p>
 
+        {/* ── "Where I pushed back" callout — the scannable highlight ── */}
+        <aside className="pushback-callout" aria-labelledby="pushback-heading">
+          <div className="pushback-callout__head">
+            <span className="pushback-callout__marker" aria-hidden="true">✋</span>
+            <div>
+              <h3 id="pushback-heading" className="pushback-callout__eyebrow">Where I pushed back</h3>
+              <p className="pushback-callout__sub">Four moments I overruled the AI — and why.</p>
+            </div>
+          </div>
+          <ul className="pushback-list">
+            {PUSHBACK.map((p) => (
+              <li key={p.topic} className="pushback-item">
+                <p className="pushback-item__topic">{p.topic}</p>
+                <p className="pushback-item__said">
+                  <span className="pushback-tag pushback-tag--ai">AI said</span>{p.ai}
+                </p>
+                <p className="pushback-item__chose">
+                  <span className="pushback-tag pushback-tag--me">I chose</span>{p.me}
+                </p>
+                <p className="pushback-item__why">{p.why}</p>
+              </li>
+            ))}
+          </ul>
+        </aside>
+
         <div className="emergent-ai-grid">
           {AI_DECISIONS.map((d) => (
             <div key={d.area} className="emergent-ai-card feature">
@@ -547,7 +600,7 @@ export default function GroveCaseStudy() {
           ))}
         </div>
 
-        <h3 style={{ marginTop: "2.5rem", marginBottom: "1rem", color: "var(--olive-2)" }}>Decisions where I overrode AI</h3>
+        <h3 style={{ marginTop: "2.5rem", marginBottom: "1rem", color: "var(--olive-2)" }}>The full record: every override</h3>
         <table className="cs-decisions-table">
           <thead>
             <tr>

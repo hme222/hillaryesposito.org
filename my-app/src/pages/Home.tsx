@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState, useMemo } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import usePageTitle from "../hooks/usePageTitle";
+import HeroBlob from "../components/HeroBlob";
 
 // ─── Orb background ──────────────────────────────────────────────────────────
 const orbStyles = `
@@ -124,22 +125,31 @@ export default function Home() {
 
   const mobbinUnlocked = useMemo(() => sessionStorage.getItem("mobbin-unlocked") === "true", []);
 
-  // Handle scrollTo query param from navbar navigation
+  // Handle scrollTo query param from cross-route navigation (e.g. a case study
+  // → "Projects"). The page is still laying out (fonts, images, framer-motion)
+  // when we mount, so a single scroll lands short. We re-scroll across a few
+  // delays — recomputing the target each time to catch late layout shifts —
+  // then clean the URL. setTimeout is used (not rAF) so it still fires when the
+  // tab is backgrounded/throttled.
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const scrollTarget = params.get("scrollTo");
     if (!scrollTarget) return;
-    // Wait for DOM to render, then scroll
-    const raf = requestAnimationFrame(() => {
+
+    const navHeight = 80;
+    const scrollToEl = () => {
       const el = document.getElementById(scrollTarget);
       if (!el) return;
-      const navHeight = 80;
-      const y = el.getBoundingClientRect().top + window.scrollY - navHeight;
-      window.scrollTo({ top: y, behavior: "smooth" });
-      // Clean up the URL
-      navigate("/", { replace: true });
-    });
-    return () => cancelAnimationFrame(raf);
+      const y = Math.max(0, el.getBoundingClientRect().top + window.scrollY - navHeight);
+      window.scrollTo({ top: y, behavior: "auto" });
+    };
+
+    const timers = [0, 80, 200, 400].map((d) => window.setTimeout(scrollToEl, d));
+    // Clean the URL after the last reposition. Pathname is unchanged, so
+    // ScrollToTop won't re-fire.
+    timers.push(window.setTimeout(() => navigate("/", { replace: true }), 460));
+
+    return () => timers.forEach((t) => clearTimeout(t));
   }, [location.search, navigate]);
 
   // Smooth-scroll helper — no hash change, no router interference
@@ -192,6 +202,7 @@ export default function Home() {
         aria-label="Home section" style={{ position:"relative", overflow:"hidden" }}>
 
         <OrbBackground />
+        <HeroBlob />
 
         <div className="hero-content" style={{ position:"relative", zIndex:1 }}>
 
@@ -342,7 +353,9 @@ export default function Home() {
                 viewport={{ once: true, margin: "-60px" }}
               >
                 {clickable ? (
-                  <Link to={proj.path!} className="home-proj-card-link" aria-label={`View ${proj.title} case study`}>
+                  <Link to={proj.path!}
+                    className={`home-proj-card-link${isLocked ? " home-proj-card-link--locked" : ""}`}
+                    aria-label={`View ${proj.title} case study`}>
                     {cardInner}
                   </Link>
                 ) : (
@@ -400,5 +413,5 @@ export default function Home() {
         </div>
       </section>
  </>
-  ); 
+  );
 }

@@ -17,25 +17,27 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
     setMenuOpen(false);
   }
 
-  // Handle anchor clicks — scroll on home, navigate then scroll on subpages
-  function handleAnchorClick(e: React.MouseEvent<HTMLAnchorElement>, id: string) {
+  // Same-page section nav, fully independent of the hash router.
+  // These are <button>s (no href), so the router never intercepts them.
+  // On the home page we scroll directly; from any other route we send the
+  // user home with a ?scrollTo param that Home reads on mount.
+  function scrollToSection(id: string) {
     close();
     const isHome =
       location.pathname === "/" ||
       location.pathname === "" ||
       location.pathname === "/index.html";
 
-    if (isHome) {
-      e.preventDefault();
-      const el = document.getElementById(id);
-      if (!el) return;
-      const navHeight = 80;
-      const y = el.getBoundingClientRect().top + window.scrollY - navHeight;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    } else {
-      e.preventDefault();
+    if (!isHome) {
       navigate("/?scrollTo=" + id);
+      return;
     }
+
+    const el = document.getElementById(id);
+    if (!el) return;
+    const navHeight = 80;
+    const y = el.getBoundingClientRect().top + window.scrollY - navHeight;
+    window.scrollTo({ top: y, behavior: "smooth" });
   }
 
   // Track which section is in view on the home page
@@ -144,23 +146,23 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
         </li>
 
         <li>
-          <a
-            href="#home"
+          <button
+            type="button"
             className={navClass("home")}
-            onClick={(e) => handleAnchorClick(e, "home")}
+            onClick={() => scrollToSection("home")}
           >
             HOME
-          </a>
+          </button>
         </li>
 
         <li>
-          <a
-            href="#projects"
+          <button
+            type="button"
             className={navClass("projects")}
-            onClick={(e) => handleAnchorClick(e, "projects")}
+            onClick={() => scrollToSection("projects")}
           >
             PROJECTS
-          </a>
+          </button>
         </li>
 
         <li>
@@ -175,13 +177,13 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
         </li>
 
         <li>
-          <a
-            href="#contact"
+          <button
+            type="button"
             className={navClass("contact")}
-            onClick={(e) => handleAnchorClick(e, "contact")}
+            onClick={() => scrollToSection("contact")}
           >
             CONTACT
-          </a>
+          </button>
         </li>
 
         <li>
