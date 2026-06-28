@@ -1,9 +1,11 @@
 // src/pages/Home.tsx
-import React, { useEffect, useRef, useState, useMemo } from "react";
+import React, { useEffect, useRef, useState, useMemo, lazy, Suspense } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import usePageTitle from "../hooks/usePageTitle";
-import HeroBlob from "../components/HeroBlob";
+
+// Lazy-loaded so three.js stays in its own chunk (only fetched when needed).
+const WorkflowKnot = lazy(() => import("../components/WorkflowKnot"));
 
 // ─── Orb background ──────────────────────────────────────────────────────────
 const orbStyles = `
@@ -52,6 +54,7 @@ type Project = {
   images?: string[];
   imageAlt?: string;
   icon?: string;
+  cover?: string;
   bg: string;
   path?: string;
   comingSoon?: boolean;
@@ -63,7 +66,7 @@ const PROJECTS: Project[] = [
   {
     title: "Grove",
     subtitle: "Product Design · AI Judgment",
-    desc: "Research to working prototype in 3 weeks, solo. 31-user survey reshaped the MVP. AI accelerated the build. Testing next.",
+    desc: "Research to working prototype in 3 weeks, solo. 32-user survey reshaped the MVP. AI accelerated the build. Testing next.",
     images: ["/assets/grove/grove1.png"],
     imageAlt: "Grove plant care app",
     bg: "linear-gradient(135deg, #1a2e1a 0%, #2d4a2d 50%, #1a3a2a 100%)",
@@ -72,23 +75,12 @@ const PROJECTS: Project[] = [
   {
     title: "MSK Cancer Center",
     subtitle: "UX & Product Design · Healthcare Systems",
-    desc: "Six years, four roles. Redesigned clinical workflows, onboarding, and EMR systems for 21,000+ clinicians at one of the world's top cancer centers.",
+    desc: "Six years, three roles. Redesigned clinical workflows, onboarding, and EMR systems for 21,000+ clinicians at one of the world's top cancer centers.",
     icon: "🏥",
+    cover: "/assets/msk/mskcc-cover.png",
+    imageAlt: "Memorial Sloan Kettering Cancer Center",
     bg: "linear-gradient(135deg, #1a1a2e 0%, #2d2d4a 50%, #1a2a3a 100%)",
     path: "/case-study/msk",
-  },
-  {
-    title: "Good Harvest",
-    subtitle: "Product Design · UX Research",
-    desc: "Heatmap testing with 22 users revealed the problem wasn't discoverability; it was trust.",
-    images: [
-      "/assets/good-harvest/goodharvest-home-wireframe.png",
-      "/assets/good-harvest/goodharvest-app-mobile.png",
-      "/assets/good-harvest/goodharvest-home-heatmap.png",
-    ],
-    imageAlt: "Good Harvest wireframe, final design, and heatmap testing",
-    bg: "linear-gradient(135deg, #2e2a1a 0%, #3d3520 50%, #2a2215 100%)",
-    path: "/case-study/good-harvest",
   },
   {
     title: "Mobbin",
@@ -100,16 +92,6 @@ const PROJECTS: Project[] = [
     path: "/case-study/mobbin",
     locked: true,
   },
-  {
-    title: "Hera",
-    subtitle: "Product Design · Brand Strategy",
-    desc: "Premium headband line from concept to product. Same process, different medium.",
-    images: ["/assets/hera/hera_1.jpg"],
-    imageAlt: "Hera premium headband product",
-    bg: "linear-gradient(135deg, #2e1a2e 0%, #3d2040 50%, #2a1535 100%)",
-    comingSoon: true,
-    patentPending: true,
-    },
 ];
 
 
@@ -185,6 +167,23 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  // Subtle cursor-driven 3D tilt on project cards (the site's one "3D touch").
+  // Disabled for reduced-motion and touch; resets on leave.
+  const TILT_MAX = 6; // degrees
+  const handleCardTilt = (e: React.MouseEvent<HTMLElement>) => {
+    if (prefersReducedMotion || window.matchMedia("(pointer: coarse)").matches) return;
+    const el = e.currentTarget;
+    const r = el.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width - 0.5;
+    const py = (e.clientY - r.top) / r.height - 0.5;
+    el.style.setProperty("--ry", `${px * TILT_MAX}deg`);
+    el.style.setProperty("--rx", `${-py * TILT_MAX}deg`);
+  };
+  const resetCardTilt = (e: React.MouseEvent<HTMLElement>) => {
+    e.currentTarget.style.setProperty("--rx", "0deg");
+    e.currentTarget.style.setProperty("--ry", "0deg");
+  };
+
   const stagger = (delay: number) => prefersReducedMotion
     ? { initial: { opacity: 1, y: 0 }, animate: { opacity: 1, y: 0 } }
     : {
@@ -202,9 +201,10 @@ export default function Home() {
         aria-label="Home section" style={{ position:"relative", overflow:"hidden" }}>
 
         <OrbBackground />
-        <HeroBlob />
 
-        <div className="hero-content" style={{ position:"relative", zIndex:1 }}>
+        <div className="hero-content hero-content--split" style={{ position:"relative", zIndex:1 }}>
+
+          <div className="hero-text">
 
           {/* Status chip */}
           <motion.div className="home-status-chip" {...stagger(0)}>
@@ -234,6 +234,13 @@ export default function Home() {
                 See my approach →
               </button>
             </motion.div>
+          </div>
+          </div>{/* /hero-text */}
+
+          <div className="hero-visual" aria-hidden="true">
+            <Suspense fallback={null}>
+              <WorkflowKnot />
+            </Suspense>
           </div>
         </div>
       </section>
@@ -308,7 +315,15 @@ export default function Home() {
               <div className="home-proj-card-inner">
                 {/* ── Image area ── */}
                 <div className="home-proj-preview" style={{ background: proj.bg }}>
-                  {proj.images && !isLocked ? (
+                  {proj.cover && !isLocked ? (
+                    <img
+                      className="home-proj-cover"
+                      src={proj.cover}
+                      alt={proj.imageAlt || proj.title}
+                      loading="lazy"
+                      onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+                    />
+                  ) : proj.images && !isLocked ? (
                     <div className={`home-proj-devices ${proj.images.length > 1 ? "home-proj-devices--multi" : ""}`}>
                       {proj.images.map((src, i) => (
                         <div key={src} className="home-proj-device" style={{ zIndex: proj.images!.length - i }}>
@@ -317,8 +332,13 @@ export default function Home() {
                       ))}
                     </div>
                   ) : isLocked ? (
-                    <div className="home-proj-icon-display">
-                      <span>🔒</span>
+                    <div className="home-proj-icon-display home-proj-icon-display--lock" style={{ color: "rgba(255,255,255,0.8)" }}>
+                      <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <rect x="5" y="10.5" width="14" height="9.5" rx="2.6" stroke="currentColor" strokeWidth="1.3" />
+                        <path d="M8.2 10.5V7.6a3.8 3.8 0 0 1 7.6 0v2.9" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+                        <circle cx="12" cy="14.4" r="1.3" stroke="currentColor" strokeWidth="1.3" />
+                        <path d="M12 15.7v1.8" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+                      </svg>
                     </div>
                   ) : (
                     <div className="home-proj-icon-display">
@@ -355,11 +375,15 @@ export default function Home() {
                 {clickable ? (
                   <Link to={proj.path!}
                     className={`home-proj-card-link${isLocked ? " home-proj-card-link--locked" : ""}`}
-                    aria-label={`View ${proj.title} case study`}>
+                    aria-label={`View ${proj.title} case study`}
+                    onMouseMove={handleCardTilt}
+                    onMouseLeave={resetCardTilt}>
                     {cardInner}
                   </Link>
                 ) : (
-                  <div className="home-proj-card-link home-proj-card-link--soon" aria-label={`${proj.title}, coming soon`}>
+                  <div className="home-proj-card-link home-proj-card-link--soon" aria-label={`${proj.title}, coming soon`}
+                    onMouseMove={handleCardTilt}
+                    onMouseLeave={resetCardTilt}>
                     {cardInner}
                   </div>
                 )}
@@ -388,9 +412,14 @@ export default function Home() {
                 I turn complex workflows into tools people trust. If your team needs a UX/product designer with deep healthcare, enterprise, or operations experience, let’s talk.
               </p>
 
-              <a href={"mailto:" + email} className="hero-btn" style={{ display:"inline-block", fontSize:"0.9rem", padding:"1rem 2rem", textDecoration:"none", marginBottom:"1.5rem" }} aria-label="Send me a note">
-                Send me a note
-              </a>
+              <div style={{ display:"flex", gap:"0.75rem", justifyContent:"center", flexWrap:"wrap", marginBottom:"1.5rem" }}>
+                <a href={"mailto:" + email} className="hero-btn" style={{ display:"inline-block", fontSize:"0.9rem", padding:"1rem 2rem", textDecoration:"none" }} aria-label="Send me a note">
+                  Send me a note
+                </a>
+                <a href="https://cal.com/hillary-e" target="_blank" rel="noopener noreferrer" className="home-secondary-btn" style={{ display:"inline-block", fontSize:"0.9rem", padding:"1rem 2rem", textDecoration:"none" }} aria-label="Book a call (opens in new tab)">
+                  Book a call →
+                </a>
+              </div>
 
               <p style={{ fontSize: "0.85rem", color: "var(--muted)", margin: 0 }}>
                 <a href="https://www.linkedin.com/in/hillaryesposito/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--muted)", marginRight: "1.25rem" }} aria-label="LinkedIn profile (opens in new tab)">

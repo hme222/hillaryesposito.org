@@ -1,13 +1,17 @@
 // src/pages/case-studies/GoodHarvest.tsx
-import React, { useMemo } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import React, { useMemo, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import usePageTitle from "../../hooks/usePageTitle";
 import MediaCard from "../../components/MediaCard";
 import ToolsUsed from "../../components/ToolsUsed";
+import MoreWork from "../../components/MoreWork";
+import useReveal from "../../hooks/useReveal";
 
 export default function GoodHarvest() {
   usePageTitle("Good Harvest: Evidence-Based Mobile UX");
   const navigate = useNavigate();
+  const rootRef = useRef<HTMLElement>(null);
+  useReveal(rootRef);
 
   const screens = useMemo(() => ({
     appMobile:   "/assets/good-harvest/goodharvest-app-mobile.png",
@@ -52,7 +56,7 @@ export default function GoodHarvest() {
   ];
 
   return (
-    <main className="case-study gh-layout" aria-label="Good Harvest UX Case Study">
+    <main className="case-study gh-layout" aria-label="Good Harvest UX Case Study" ref={rootRef}>
 
       {/* ── HERO ── */}
       <header className="gh-hero">
@@ -465,36 +469,7 @@ export default function GoodHarvest() {
       </section>
 
       {/* ── OTHER PROJECTS ── */}
-      <aside className="gh-other-projects" aria-label="Other projects">
-        <div className="gh-other-projects__header">
-          <p className="gh-other-projects__eyebrow">More Work</p>
-          <h2>Other Projects</h2>
-        </div>
-        <div className="gh-other-projects__grid">
-          {otherProjects.map((proj) => (
-            <Link
-              key={proj.path}
-              to={proj.path}
-              className="project-card gh-proj-card"
-              aria-label={`View ${proj.title} case study`}
-            >
-              <div className="project-media">
-                <div className="project-icon">{proj.icon}</div>
-              </div>
-              <div className="project-body">
-                <h3>{proj.title}</h3>
-                <p>{proj.desc}</p>
-                <span className="gh-proj-cta">View case study →</span>
-              </div>
-            </Link>
-          ))}
-        </div>
-        <div className="gh-back-row">
-          <button type="button" className="hero-btn" onClick={() => navigate("/?scrollTo=projects")}>
-            ← Back to All Work
-          </button>
-        </div>
-      </aside>
+      <MoreWork projects={otherProjects} onBack={() => navigate("/?scrollTo=projects")} />
 
     </main>
   );

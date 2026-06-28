@@ -1,6 +1,11 @@
-import React from "react";
-import { useNavigate, Link } from "react-router-dom";
+import React, { lazy, Suspense, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import usePageTitle from "../../hooks/usePageTitle";
+import MoreWork from "../../components/MoreWork";
+import useReveal from "../../hooks/useReveal";
+
+// Lazy-loaded so three.js ships in its own chunk (only fetched on this page).
+const MSKSystemMap = lazy(() => import("../../components/MSKSystemMap"));
 
 const OTHER_PROJECTS = [
   {
@@ -9,20 +14,16 @@ const OTHER_PROJECTS = [
     desc: "AI + design plant care app. Research to shipped product in 3 weeks, solo.",
     path: "/case-study/grove",
   },
-  {
-    icon: "🌿",
-    title: "Good Harvest",
-    desc: "Heatmap testing with 22 users revealed the problem wasn't discoverability; it was trust.",
-    path: "/case-study/good-harvest",
-  },
 ];
 
 export default function MSKCaseStudy() {
   usePageTitle("MSK: Redesigning Systems for 21,000 Clinicians");
   const navigate = useNavigate();
+  const rootRef = useRef<HTMLElement>(null);
+  useReveal(rootRef);
 
   return (
-    <main className="case-study gh-layout" aria-label="MSK Case Study">
+    <main className="case-study gh-layout" aria-label="MSK Case Study" ref={rootRef}>
 
       {/* ── HERO ── */}
       <header className="gh-hero">
@@ -30,15 +31,14 @@ export default function MSKCaseStudy() {
           <p className="meta">UX & Product Design · Healthcare Systems · Enterprise</p>
           <h1>Memorial Sloan Kettering</h1>
           <p className="gh-hero__intro">
-            Six years, four roles. I redesigned clinical workflows, onboarding systems,
+            Six years, three roles. I redesigned clinical workflows, onboarding systems,
             and operational processes for <strong>21,000+ clinicians</strong> at one of the
             world's top cancer centers, where confusion isn't an inconvenience; it's a patient safety risk.
           </p>
         </div>
         <div className="gh-hero__visual" aria-hidden="true">
           <div className="reina-hero-badge">
-            <span className="reina-hero-crown">🏥</span>
-            <span className="reina-hero-badge-label">6 Years · 4 Roles</span>
+            <span className="reina-hero-badge-label">6 Years · 3 Roles</span>
           </div>
         </div>
       </header>
@@ -48,7 +48,7 @@ export default function MSKCaseStudy() {
         {[
           { label: "Role",     value: "Process Improvement → UX & Product Design" },
           { label: "Org",      value: "Memorial Sloan Kettering Cancer Center" },
-          { label: "Duration", value: "6 years, 4 roles" },
+          { label: "Duration", value: "6 years, 3 roles" },
           { label: "Scale",    value: "21,000+ clinicians" },
           { label: "Methods",  value: "Lean Six Sigma · Workflow Redesign · Stakeholder Alignment" },
         ].map((item, i, arr) => (
@@ -82,26 +82,33 @@ export default function MSKCaseStudy() {
       {/* ── MY ROLE ── */}
       <section>
         <p className="gh-section-label">My role</p>
-        <h2>What I personally owned across four roles</h2>
+        <h2>What I personally owned across three roles</h2>
         <p className="cs-section-intro">
-          Over six years I held four roles with increasing design responsibility. Here's what I did in each, specifically.
+          Over six years I held three roles with increasing design responsibility. Here's what I did in each, specifically.
         </p>
 
         <div className="cs-team-grid">
           <div className="cs-team-card">
-            <p className="cs-team-card__role">Roles 1-2: Process Improvement Analyst → Lead</p>
+            <p className="cs-team-card__role">Role 1: Office Coordinator</p>
             <p className="cs-team-card__desc">
-              Conducted frontline shadowing sessions with nurses and clinicians. Created workflow maps documenting
-              actual behavior vs. documented policy. Ran root cause analysis (Lean Six Sigma DMAIC). Presented findings
-              to clinical leadership. Owned the EMR cost analysis that identified the 20% reduction opportunity.
+              Coordinated clinical office operations day to day, embedded with frontline teams. This is where I
+              learned how the work actually flowed — shadowing nurses and clinicians and mapping real behavior
+              against documented policy.
             </p>
           </div>
           <div className="cs-team-card">
-            <p className="cs-team-card__role">Roles 3-4: UX Design → Senior UX</p>
+            <p className="cs-team-card__role">Role 2: Administrative Assistant</p>
             <p className="cs-team-card__desc">
-              Led the certification dashboard redesign end-to-end: user interviews, workflow mapping, wireframes, stakeholder
-              presentations, and validation with frontline staff. Designed the unified onboarding experience across 5 departments.
-              Worked directly with IT on implementation, translating clinical needs into system requirements.
+              Supported operations and analysis across the team, turning frontline observations into documented
+              workflows and findings I could bring to clinical leadership.
+            </p>
+          </div>
+          <div className="cs-team-card">
+            <p className="cs-team-card__role">Role 3: Training Specialist I</p>
+            <p className="cs-team-card__desc">
+              Owned onboarding and certification training across departments, redesigning the experience around
+              what frontline staff actually needed. Co-led the Veteran employee resource network (ERN) while in
+              this role.
             </p>
           </div>
         </div>
@@ -136,6 +143,20 @@ export default function MSKCaseStudy() {
             </p>
           </div>
         </div>
+      </section>
+
+      {/* ── SYSTEM MAP: complexity → clarity ── */}
+      <section className="msk-systemmap-section">
+        <p className="gh-section-label">The through-line</p>
+        <h2>Turning tangled systems into clear flow</h2>
+        <p className="cs-section-intro">
+          Every one of these projects was the same move at heart: take a system that had grown
+          tangled and reorganize it into something the people inside it could actually follow.
+          Scroll to watch the knot resolve.
+        </p>
+        <Suspense fallback={<div className="msk-systemmap" />}>
+          <MSKSystemMap />
+        </Suspense>
       </section>
 
       {/* ── WHAT I NEEDED TO LEARN ── */}
@@ -477,7 +498,6 @@ export default function MSKCaseStudy() {
           style={{ maxWidth: 480 }}
           aria-label="Read article: Hillary Esposito's Career Path"
         >
-          <span className="about-story-card__article-icon" aria-hidden="true">📰</span>
           <span className="about-story-card__article-text">
             <span className="about-story-card__article-title">
               Hillary Esposito's Career Path: From the Military to MSK
@@ -494,36 +514,7 @@ export default function MSKCaseStudy() {
       </section>
 
       {/* ── OTHER PROJECTS ── */}
-      <aside className="gh-other-projects" aria-label="Other projects">
-        <div className="gh-other-projects__header">
-          <p className="gh-other-projects__eyebrow">More Work</p>
-          <h2>Other Projects</h2>
-        </div>
-        <div className="gh-other-projects__grid">
-          {OTHER_PROJECTS.map((proj) => (
-            <Link
-              key={proj.path}
-              to={proj.path}
-              className="project-card gh-proj-card"
-              aria-label={`View ${proj.title} case study`}
-            >
-              <div className="project-media">
-                <div className="project-icon">{proj.icon}</div>
-              </div>
-              <div className="project-body">
-                <h3>{proj.title}</h3>
-                <p>{proj.desc}</p>
-                <span className="gh-proj-cta">View case study →</span>
-              </div>
-            </Link>
-          ))}
-        </div>
-        <div className="gh-back-row">
-          <button type="button" className="hero-btn" onClick={() => navigate("/?scrollTo=projects")}>
-            ← Back to All Work
-          </button>
-        </div>
-      </aside>
+      <MoreWork projects={OTHER_PROJECTS} onBack={() => navigate("/?scrollTo=projects")} />
     </main>
   );
 }

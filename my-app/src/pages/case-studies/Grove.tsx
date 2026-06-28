@@ -1,8 +1,10 @@
 // src/pages/case-studies/Grove.tsx
-import React from "react";
-import { useNavigate, Link } from "react-router-dom";
+import React, { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import usePageTitle from "../../hooks/usePageTitle";
 import ToolsUsed from "../../components/ToolsUsed";
+import MoreWork from "../../components/MoreWork";
+import useReveal from "../../hooks/useReveal";
 
 const SCREENS = [
   { image: "/assets/grove/bouquet.png", label: "Onboarding / bouquet creation", bg: "#3a3a3a",
@@ -113,20 +115,16 @@ const OTHER_PROJECTS = [
     desc: "Six years redesigning clinical workflows, onboarding, and certification systems for 21,000+ clinicians.",
     path: "/case-study/msk",
   },
-  {
-    icon: "🌿",
-    title: "Good Harvest",
-    desc: "Heatmap testing with 22 users revealed the problem wasn't discoverability; it was trust.",
-    path: "/case-study/good-harvest",
-  },
 ];
 
 export default function GroveCaseStudy() {
   usePageTitle("Grove: AI Judgment in Plant Care Design");
   const navigate = useNavigate();
+  const rootRef = useRef<HTMLElement>(null);
+  useReveal(rootRef);
 
   return (
-    <main className="case-study gh-layout" aria-label="Grove AI Case Study">
+    <main className="case-study gh-layout" aria-label="Grove AI Case Study" ref={rootRef}>
 
       {/* ── HERO ── */}
       <header className="gh-hero">
@@ -135,7 +133,7 @@ export default function GroveCaseStudy() {
           <h1>Grove</h1>
           <p className="gh-hero__intro">
             Plant parents kill their plants because care advice is generic, conflicting,
-            and untrustworthy. I surveyed 31 users, defined an MVP from their data, and
+            and untrustworthy. I surveyed 32 users, defined an MVP from their data, and
             built a working app, using AI tools throughout to show{" "}
             <strong>where AI accelerates and where human judgment leads.</strong>
           </p>
@@ -174,13 +172,13 @@ export default function GroveCaseStudy() {
         <p className="gh-section-label">Overview</p>
         <h2 className="cs-section-title">Research-driven design for a plant care app, with AI as the accelerant</h2>
         <p className="cs-overview-text">
-          Grove is a plant care app I designed, researched, and built end-to-end. A 31-respondent
+          Grove is a plant care app I designed, researched, and built end-to-end. A 32-respondent
           survey defined the MVP, two data-driven personas shaped every design decision, and a
           moderated testing plan is ready to validate the hypothesis. AI tools accelerated the build,
           and every AI decision is documented with explicit reasoning.
         </p>
         <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
-          <strong>Research:</strong> 31-respondent survey (5/22–6/4/2026) · moderated testing plan (5–6 participants, ready to run).
+          <strong>Research:</strong> 32-respondent survey (5/22–6/19/2026) · moderated testing plan (5–6 participants, ready to run).
         </p>
         <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
           <strong>Constraints:</strong> Solo project. 3-week build. Prototype shipped; moderated user testing is next.
@@ -255,9 +253,9 @@ export default function GroveCaseStudy() {
       {/* ── RESEARCH ── */}
       <section>
         <p className="gh-section-label">Research</p>
-        <h2>31 respondents told me what actually matters</h2>
+        <h2>32 respondents told me what actually matters</h2>
         <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
-          I ran a 31-respondent survey (5/22–6/4/2026) targeting new-to-experienced plant owners.
+          I ran a 32-respondent survey (5/22–6/19/2026) targeting new-to-experienced plant owners.
           A forced trade-off question, "If Grove could only launch with THREE features, which are
           dealbreakers?", defined the MVP empirically, not by assumption.
         </p>
@@ -646,7 +644,7 @@ export default function GroveCaseStudy() {
         <h2 className="cs-section-title">Research artifacts + working product</h2>
         <div className="cs-outcome-grid">
           <div className="cs-outcome-card">
-            <p className="cs-outcome-value gradient-text">31</p>
+            <p className="cs-outcome-value gradient-text">32</p>
             <p className="cs-outcome-label">Survey respondents grounding every design decision in data</p>
           </div>
           <div className="cs-outcome-card">
@@ -765,36 +763,7 @@ export default function GroveCaseStudy() {
       </section>
 
       {/* ── OTHER PROJECTS ── */}
-      <aside className="gh-other-projects" aria-label="Other projects">
-        <div className="gh-other-projects__header">
-          <p className="gh-other-projects__eyebrow">More Work</p>
-          <h2>Other Projects</h2>
-        </div>
-        <div className="gh-other-projects__grid">
-          {OTHER_PROJECTS.map((proj) => (
-            <Link
-              key={proj.path}
-              to={proj.path}
-              className="project-card gh-proj-card"
-              aria-label={`View ${proj.title} case study`}
-            >
-              <div className="project-media">
-                <div className="project-icon">{proj.icon}</div>
-              </div>
-              <div className="project-body">
-                <h3>{proj.title}</h3>
-                <p>{proj.desc}</p>
-                <span className="gh-proj-cta">View case study →</span>
-              </div>
-            </Link>
-          ))}
-        </div>
-        <div className="gh-back-row">
-          <button type="button" className="hero-btn" onClick={() => navigate("/?scrollTo=projects")}>
-            ← Back to All Work
-          </button>
-        </div>
-      </aside>
+      <MoreWork projects={OTHER_PROJECTS} onBack={() => navigate("/?scrollTo=projects")} />
     </main>
   );
 }

@@ -1,8 +1,10 @@
 // src/pages/case-studies/Mobbin.tsx
-import React from "react";
-import { useNavigate, Link } from "react-router-dom";
+import React, { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import usePageTitle from "../../hooks/usePageTitle";
 import ToolsUsed from "../../components/ToolsUsed";
+import MoreWork from "../../components/MoreWork";
+import useReveal from "../../hooks/useReveal";
 
 const APPS = [
   {
@@ -75,9 +77,11 @@ const OTHER_PROJECTS = [
 export default function MobbinCaseStudy() {
   usePageTitle("Mobbin: UX Flow Documentation & UI Pattern Curation");
   const navigate = useNavigate();
+  const rootRef = useRef<HTMLElement>(null);
+  useReveal(rootRef);
 
   return (
-    <main className="case-study gh-layout mobbin-cs" aria-label="Mobbin Case Study">
+    <main className="case-study gh-layout mobbin-cs" aria-label="Mobbin Case Study" ref={rootRef}>
 
       {/* ── HERO ── */}
       <header className="gh-hero">
@@ -510,36 +514,7 @@ export default function MobbinCaseStudy() {
       </section>
 
       {/* ── OTHER PROJECTS ── */}
-      <aside className="gh-other-projects" aria-label="Other projects">
-        <div className="gh-other-projects__header">
-          <p className="gh-other-projects__eyebrow">More Work</p>
-          <h2>Other Projects</h2>
-        </div>
-        <div className="gh-other-projects__grid">
-          {OTHER_PROJECTS.map((proj) => (
-            <Link
-              key={proj.path}
-              to={proj.path}
-              className="project-card gh-proj-card"
-              aria-label={`View ${proj.title} case study`}
-            >
-              <div className="project-media">
-                <div className="project-icon">{proj.icon}</div>
-              </div>
-              <div className="project-body">
-                <h3>{proj.title}</h3>
-                <p>{proj.desc}</p>
-                <span className="gh-proj-cta">View case study →</span>
-              </div>
-            </Link>
-          ))}
-        </div>
-        <div className="gh-back-row">
-          <button type="button" className="hero-btn" onClick={() => navigate("/?scrollTo=projects")}>
-            ← Back to All Work
-          </button>
-        </div>
-      </aside>
+      <MoreWork projects={OTHER_PROJECTS} onBack={() => navigate("/?scrollTo=projects")} />
     </main>
   );
 }
