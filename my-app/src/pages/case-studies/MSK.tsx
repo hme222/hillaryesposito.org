@@ -14,6 +14,12 @@ const OTHER_PROJECTS = [
     desc: "AI + design plant care app. Research to shipped product in 3 weeks, solo.",
     path: "/case-study/grove",
   },
+  {
+    icon: "🌿",
+    title: "Good Harvest",
+    desc: "Heatmap testing with 22 users revealed the problem wasn't discoverability; it was trust.",
+    path: "/case-study/good-harvest",
+  },
 ];
 
 export default function MSKCaseStudy() {

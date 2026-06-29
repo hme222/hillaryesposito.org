@@ -222,8 +222,8 @@ export default function About() {
           <p className="about-life-intro">
             Running, reading, and Luna the cat. Routines that keep me clear and grounded.
           </p>
-          <div ref={lunaRef} className="about-luna-deco" aria-hidden="true">
-            🐾
+          <div ref={lunaRef} className="about-luna-deco">
+            <img src="/assets/favicon.png" alt="Luna, a gray and white cat with orange eyes" />
           </div>
         </div>
       </section>

@@ -150,8 +150,10 @@ export default function MSKSystemMap() {
       const t = clock.getElapsedTime();
       const pe = smoothstep(scrollProgress());
       layout(pe);
-      // Tumbles while tangled, settles to face front as it orders.
-      group.rotation.y = Math.sin(t * 0.25) * 0.22 * (1 - pe * 0.7);
+      // Tumbles while tangled, then settles fully to zero once resolved — the
+      // only remaining motion is scroll-driven (user-controlled), so nothing
+      // moves on its own when the section is at rest (WCAG 2.2.2).
+      group.rotation.y = Math.sin(t * 0.25) * 0.22 * (1 - pe);
       renderOnce();
       rafId = requestAnimationFrame(loop);
     };

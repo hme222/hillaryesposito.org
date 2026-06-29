@@ -1,5 +1,5 @@
 // src/pages/Home.tsx
-import React, { useEffect, useRef, useState, useMemo, lazy, Suspense } from "react";
+import React, { useEffect, useRef, useMemo, lazy, Suspense } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import usePageTitle from "../hooks/usePageTitle";
@@ -83,6 +83,19 @@ const PROJECTS: Project[] = [
     path: "/case-study/msk",
   },
   {
+    title: "Good Harvest",
+    subtitle: "Product Design · UX Research",
+    desc: "Heatmap testing with 22 users revealed the problem wasn't discoverability; it was trust.",
+    images: [
+      "/assets/good-harvest/goodharvest-home-wireframe.png",
+      "/assets/good-harvest/goodharvest-app-mobile.png",
+      "/assets/good-harvest/goodharvest-home-heatmap.png",
+    ],
+    imageAlt: "Good Harvest wireframe, final design, and heatmap testing",
+    bg: "linear-gradient(135deg, #2e2a1a 0%, #3d3520 50%, #2a2215 100%)",
+    path: "/case-study/good-harvest",
+  },
+  {
     title: "Mobbin",
     subtitle: "Freelance · UX Flow Documentation · Pattern Curation",
     desc: "Documented end-to-end mobile experiences across three fintech apps for Mobbin's design reference library. 200+ screens captured, annotated, and tagged.",
@@ -97,9 +110,7 @@ const PROJECTS: Project[] = [
 
 // ─── Component ────────────────────────────────────────────────────────────────
 export default function Home() {
-  const catRef     = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLElement>(null);
-  const [showLuna, setShowLuna] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const prefersReducedMotion = useReducedMotion();
@@ -139,33 +150,7 @@ export default function Home() {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // Scroll float on Luna
-  useEffect(() => {
-    const onScroll = () => {
-      if (!catRef.current) return;
-      const movement = Math.sin(window.scrollY * 0.002) * 20;
-      catRef.current.style.transform = `translateY(${movement}px)`;
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  // (Mouse-follow removed — Luna sits in the corner now, scroll bob is enough)
-
-
   const email = "espositohillary@gmail.com";
-
-  // Show Luna when contact is visible
-  useEffect(() => {
-    const section = contactRef.current;
-    if (!section) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => setShowLuna(entry.isIntersecting),
-      { threshold: 0.25 }
-    );
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, []);
 
   // Subtle cursor-driven 3D tilt on project cards (the site's one "3D touch").
   // Disabled for reduced-motion and touch; resets on leave.
@@ -237,10 +222,24 @@ export default function Home() {
           </div>
           </div>{/* /hero-text */}
 
-          <div className="hero-visual" aria-hidden="true">
+          <div className="hero-visual">
             <Suspense fallback={null}>
               <WorkflowKnot />
             </Suspense>
+            {!prefersReducedMotion && (
+              <button
+                type="button"
+                className="hero-knot-replay"
+                onClick={() => window.dispatchEvent(new CustomEvent("knot:replay"))}
+                aria-label="Replay the animation"
+              >
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M3 12a9 9 0 1 0 3-6.7" />
+                  <path d="M3 4v4h4" />
+                </svg>
+                Replay
+              </button>
+            )}
           </div>
         </div>
       </section>
@@ -436,10 +435,6 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* Floating Luna */}
-        <div ref={catRef} className={`about-luna ${showLuna ? "is-visible" : ""}`}>
-          <img src="/assets/favicon.png" alt="Luna, a gray and white cat with orange eyes" />
-        </div>
       </section>
  </>
   );

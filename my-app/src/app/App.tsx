@@ -4,7 +4,6 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { HashRouter as Router } from "react-router-dom";
 
 import AppRoutes from "./AppRoutes";
-import Loader from "../components/Loader";
 import CustomCursor from "../components/CustomCursor";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -35,7 +34,6 @@ export default function App() {
   return (
     <Router>
       <>
-        <Loader />
         <a href="#main-content" className="sr-only-focusable">Skip to main content</a>
 
         <div className= "app">

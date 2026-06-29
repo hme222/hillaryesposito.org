@@ -156,35 +156,40 @@ export default function MoreWork({ projects, onBack, backLabel = "← Back to Al
         )}
       </div>
 
-      <div
-        ref={viewportRef}
-        className="morework-viewport"
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={endDrag}
-        onPointerCancel={endDrag}
-        onClickCapture={onClickCapture}
-      >
-        <div className="morework-track">
-          {projects.map((proj) => (
-            <Link
-              key={proj.path}
-              to={proj.path}
-              className="project-card gh-proj-card morework-card"
-              aria-label={`View ${proj.title} case study`}
-              draggable={false}
-            >
-              <div className="project-media">
-                <div className="project-icon">{proj.icon}</div>
-              </div>
-              <div className="project-body">
-                <h3>{proj.title}</h3>
-                <p>{proj.desc}</p>
-                <span className="gh-proj-cta">View case study &rarr;</span>
-              </div>
-            </Link>
-          ))}
+      <div className="morework-stage">
+        <div
+          ref={viewportRef}
+          className="morework-viewport"
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={endDrag}
+          onPointerCancel={endDrag}
+          onClickCapture={onClickCapture}
+        >
+          <div className="morework-track">
+            {projects.map((proj) => (
+              <Link
+                key={proj.path}
+                to={proj.path}
+                className="project-card gh-proj-card morework-card"
+                aria-label={`View ${proj.title} case study`}
+                draggable={false}
+              >
+                <div className="project-media">
+                  <div className="project-icon">{proj.icon}</div>
+                </div>
+                <div className="project-body">
+                  <h3>{proj.title}</h3>
+                  <p>{proj.desc}</p>
+                  <span className="gh-proj-cta">View case study &rarr;</span>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
+        {/* Edge fades hint there's more to scroll/drag (decorative, non-blocking). */}
+        {canPrev && <div className="morework-fade morework-fade--left" aria-hidden="true" />}
+        {canNext && <div className="morework-fade morework-fade--right" aria-hidden="true" />}
       </div>
 
       <div className="gh-back-row">

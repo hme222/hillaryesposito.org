@@ -115,6 +115,12 @@ const OTHER_PROJECTS = [
     desc: "Six years redesigning clinical workflows, onboarding, and certification systems for 21,000+ clinicians.",
     path: "/case-study/msk",
   },
+  {
+    icon: "🌿",
+    title: "Good Harvest",
+    desc: "Heatmap testing with 22 users revealed the problem wasn't discoverability; it was trust.",
+    path: "/case-study/good-harvest",
+  },
 ];
 
 export default function GroveCaseStudy() {

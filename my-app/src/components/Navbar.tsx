@@ -8,7 +8,6 @@ type NavbarProps = {
 
 export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [imgVisible, setImgVisible] = useState(true);
   const [activeSection, setActiveSection] = useState<string>("home");
   const navigate = useNavigate();
   const location = useLocation();
@@ -107,14 +106,15 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
           window.scrollTo({ top: 0, behavior: "smooth" });
         }}
       >
-        {imgVisible && (
-          <img
-            src="/assets/logo-cat.png"
-            alt="Hillary Esposito Logo"
-            onError={() => setImgVisible(false)}
-          />
-        )}
-        <span className="logo-text">HILLARY</span>
+        <svg className="logo-mark" width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M5 13.5 Q15.5 30 27.5 13 Q24 17 19 18.6 Q12 20.4 5 13.5 Z" fill="currentColor" />
+          <circle className="lm-accent" cx="15.5" cy="10.2" r="3.1" />
+        </svg>
+        <span className="logo-divider" aria-hidden="true" />
+        <span className="logo-textblock">
+          <span className="logo-text">Hillary Esposito</span>
+          <span className="logo-tagline">UX &times; Process Improvement</span>
+        </span>
       </button>
 
       <button
@@ -134,17 +134,6 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
         id="primary-menu"
         className={`nav-menu ${menuOpen ? "open" : ""}`}
       >
-        <li className="nav-close-row">
-          <button
-            type="button"
-            className="nav-close-btn"
-            aria-label="Close menu"
-            onClick={close}
-          >
-            ✕
-          </button>
-        </li>
-
         <li>
           <button
             type="button"

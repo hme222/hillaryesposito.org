@@ -14,7 +14,7 @@
   --olive-1: #7c8c3c;
   --olive-2: #5a7a2e;
   --olive-3: #3d5a1e;
-  --accent-warm: #b87d35;
+  --accent-warm: #946420; /* darkened from #b87d35 to clear WCAG AA (4.5:1) at body size on the light bg */
   --radius-xl: 16px;
   --radius-lg: 12px;
   --radius-md: 8px;
@@ -295,22 +295,60 @@ select:focus {
   transform: scale(1.03);
 }
 
-.logo img {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
+/* Logo lockup: an "HE" ligature mark · hairline rule · tracked name over a role
+   tagline. Typography-led, no container; doubles as a favicon-ready mark. */
+/* Symbol mark: an inked cradle holding an amber point of clarity — human-centred
+   care ("design for the humans in the system"). Olive via currentColor. */
+.logo-mark {
+  color: var(--olive-2);
+  flex-shrink: 0;
+  display: block;
 }
-
-.dark-mode .logo img {
-  filter: drop-shadow(0 0 3px rgba(248, 210, 183, 0.6))
-    drop-shadow(0 0 6px rgba(248, 210, 183, 0.35));
+.dark-mode .logo-mark {
+  color: var(--olive-1);
 }
-
+.logo-mark .lm-accent {
+  fill: var(--accent-warm);
+}
+.logo-divider {
+  width: 1px;
+  align-self: stretch;
+  min-height: 30px;
+  background: var(--border-strong, rgba(0, 0, 0, 0.16));
+}
+.logo-textblock {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  line-height: 1;
+}
 .logo-text {
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: 2px;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: 0.16em; /* the tracked treatment from option 4 */
+  text-transform: uppercase;
   color: var(--fg);
+  white-space: nowrap;
+}
+.logo-tagline {
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+/* Tighten the lockup spacing and keep the mark from scaling weirdly */
+.logo {
+  gap: 0.55rem;
+}
+@media (max-width: 600px) {
+  .logo-divider,
+  .logo-tagline {
+    display: none; /* mark + name only on small screens */
+  }
 }
 
 /* RIGHT SIDE DESKTOP MENU */
@@ -435,7 +473,8 @@ select:focus {
     width: 100vw;
     height: 100vh;
     padding: 2rem;
-    background: color-mix(in srgb, var(--surface-0) 70%, transparent);
+    /* Solid, defined background so page content never shows through the menu. */
+    background: var(--bg);
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
     transform: translateY(-100%);
@@ -1073,12 +1112,52 @@ select:focus {
   position: absolute;
   inset: 0;
   z-index: 0;
-  pointer-events: none;
+  /* Receives hover for the cursor-parallax tilt (it owns its own panel, so this
+     doesn't block any content behind it). */
+  pointer-events: auto;
 }
 .hero-knot canvas {
   width: 100%;
   height: 100%;
   display: block;
+}
+/* Subtle replay control for the knot animation. */
+.hero-knot-replay {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.7rem;
+  font-family: var(--font-head);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.hero-visual:hover .hero-knot-replay,
+.hero-knot-replay:hover,
+.hero-knot-replay:focus-visible {
+  opacity: 1;
+  color: var(--olive-2);
+  border-color: var(--olive-2);
+}
+.hero-knot-replay:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+.dark-mode .hero-knot-replay:hover,
+.dark-mode .hero-knot-replay:focus-visible {
+  color: var(--focus);
+  border-color: var(--focus);
 }
 @media (max-width: 860px) {
   .hero-content--split {
@@ -1100,9 +1179,48 @@ select:focus {
   .hero-visual {
     width: 100%;
     flex: none;
-    min-height: 300px;
+    min-height: 230px;
+  }
+  /* Tighten the space under the knot on stacked/mobile layouts. */
+  .hero {
+    padding-bottom: 24px;
+  }
+  .hero-content {
+    padding-bottom: 8px;
   }
 }
+
+/* ── Large screens: scale the hero up and let case studies fill the width.
+   The container widens so heroes, images and multi-column grids breathe, while
+   prose is held to a readable measure so line lengths don't blow out. ── */
+@media (min-width: 1440px) {
+  :root {
+    --case-max: 1080px;
+  }
+  .case-study p,
+  .case-study li,
+  .cs-section-intro,
+  .cs-overview-text,
+  .gh-hero__intro {
+    max-width: 74ch;
+  }
+  .hero-content--split {
+    max-width: 1440px;
+  }
+  .hero-title {
+    font-size: clamp(4.5rem, 4.4vw, 5.6rem);
+  }
+  .hero-positioning {
+    font-size: 1.5rem;
+  }
+  .hero-text .hero-description {
+    font-size: 1.15rem;
+  }
+  .hero-visual {
+    min-height: 600px;
+  }
+}
+
 .about-headshot {
   width: 100%;
   height: auto;
@@ -3093,6 +3211,26 @@ body.dark-mode .nav-overlay-backdrop,
   outline-offset: 3px;
 }
 
+.morework-stage {
+  position: relative;
+}
+.morework-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 56px;
+  pointer-events: none;
+  z-index: 1;
+}
+.morework-fade--right {
+  right: 0;
+  background: linear-gradient(to right, transparent, var(--bg));
+}
+.morework-fade--left {
+  left: 0;
+  background: linear-gradient(to left, transparent, var(--bg));
+}
+
 .morework-viewport {
   overflow-x: auto;
   overflow-y: hidden;
@@ -4593,11 +4731,19 @@ body.dark-mode .nav-overlay-backdrop,
   position: absolute;
   bottom: 1.5rem;
   right: 2rem;
-  font-size: 2.5rem;
-  opacity: 0.18;
+  width: 92px;
   pointer-events: none;
   transition: transform 0.1s linear;
   user-select: none;
+}
+.about-luna-deco img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 14px;
+}
+@media (max-width: 600px) {
+  .about-luna-deco { width: 68px; bottom: 1rem; right: 1rem; }
 }
 
 /* Make about-life-card position:relative so deco positions correctly */
@@ -8162,6 +8308,22 @@ body.dark-mode .nav-overlay-backdrop,
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
   margin-top: 1.25rem;
+}
+/* No lonely orphan: a trailing odd card centres at sibling width instead of
+   sitting alone on its own row. Multi-column widths only; stacks on mobile. */
+@media (min-width: 601px) {
+  .cs-team-grid > :last-child:nth-child(odd),
+  .cs-methods-grid > :last-child:nth-child(odd),
+  .cs-research-questions > :last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 0.5rem);
+  }
+}
+@media (max-width: 600px) {
+  .cs-team-grid {
+    grid-template-columns: 1fr;
+  }
 }
 .cs-team-card {
   padding: 1rem 1.25rem;
