@@ -7,6 +7,7 @@ import usePageTitle from "../hooks/usePageTitle";
 // Lazy-loaded so three.js stays in its own chunk (only fetched when needed).
 const WorkflowKnot = lazy(() => import("../components/WorkflowKnot"));
 import type { KnotNavItem } from "../components/WorkflowKnot";
+import KnotErrorBoundary from "../components/KnotErrorBoundary";
 
 // Static resolved-grid placeholder shown while the three.js chunk loads, so the
 // hero's right column is never blank.
@@ -245,9 +246,11 @@ export default function Home() {
 
           {/* Knot leads — its nodes are the nav, resolving from a dense tangle. */}
           <div className={`hero-visual${knotResolved ? " hero-visual--resolved" : ""}`}>
-            <Suspense fallback={<HeroKnotFallback />}>
-              <WorkflowKnot navItems={knotNav} />
-            </Suspense>
+            <KnotErrorBoundary fallback={<HeroKnotFallback />}>
+              <Suspense fallback={<HeroKnotFallback />}>
+                <WorkflowKnot navItems={knotNav} />
+              </Suspense>
+            </KnotErrorBoundary>
 
             {!prefersReducedMotion && (
               <button

@@ -30,9 +30,9 @@ const N = NAV + EXTRA;
 const smoothstep = (x: number) => x * x * (3 - 2 * x);
 const clamp01 = (x: number) => (x < 0 ? 0 : x > 1 ? 1 : x);
 
-const DELAY = 0.6;
-const DURATION = 2.8;
-const TAIL = 1.0;
+const DELAY = 0.5;
+const DURATION = 3.4; // slow enough to watch the globs absorb
+const TAIL = 0.5;
 
 export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem[] }) {
   const mountRef = useRef<HTMLDivElement | null>(null);
@@ -76,10 +76,8 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
     const chaos: THREE.Vector3[] = [];
     for (let i = 0; i < NAV; i++) order.push(new THREE.Vector3(navXs[i], 0, 0));
     for (let i = 0; i < EXTRA; i++) {
-      const t = navXs[i % NAV];
-      order.push(
-        new THREE.Vector3(t + (Math.random() - 0.5) * 0.3, (Math.random() - 0.5) * 0.3, 0)
-      );
+      // converge to the EXACT nav dot so they visibly pile in and merge
+      order.push(new THREE.Vector3(navXs[i % NAV], 0, 0));
     }
     for (let i = 0; i < N; i++) {
       chaos.push(
@@ -90,6 +88,8 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
         )
       );
     }
+    // Per-glob phase → staggered absorption + size variation (organic merge).
+    const phase = Array.from({ length: N }, () => Math.random());
 
     const CHAOS_HW = 5.7;
     const CHAOS_HH = 2.7;
@@ -98,8 +98,9 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
       const halfW = halfH * camera.aspect;
       // Fit to WIDTH so the 4-dot row stays full-width even when the panel
       // collapses to a thin strip after the animation finishes.
-      const scale = Math.max(0.4, Math.min(1.6, (halfW * 0.93) / CHAOS_HW));
+      const scale = Math.max(0.4, Math.min(1.6, (halfW * 0.86) / CHAOS_HW));
       group.scale.setScalar(scale);
+      group.position.x = halfW * 0.03; // nudge right so "Projects" isn't hard against the edge
       group.position.y = Math.max(0, halfH - CHAOS_HH * scale) * 0.12;
     };
     fitToPanel();
@@ -113,14 +114,14 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
 
     const nodeGeo = new THREE.SphereGeometry(0.22, 20, 20);
     const oliveMat = new THREE.MeshStandardMaterial({
-      color: 0x6f7c34, metalness: 0.2, roughness: 0.5, emissive: 0x2c3414, emissiveIntensity: 0.35,
+      color: 0x5a7a2e, metalness: 0.2, roughness: 0.5, emissive: 0x2c3414, emissiveIntensity: 0.35,
     });
     const amberMat = new THREE.MeshStandardMaterial({
       color: 0xb87d35, metalness: 0.25, roughness: 0.45, emissive: 0x5a3a12, emissiveIntensity: 0.4,
     });
     // Shared, fading material for the disposable tangle nodes.
     const extraMat = new THREE.MeshStandardMaterial({
-      color: 0x6f7c34, metalness: 0.2, roughness: 0.55, emissive: 0x2c3414,
+      color: 0x5a7a2e, metalness: 0.2, roughness: 0.55, emissive: 0x2c3414,
       emissiveIntensity: 0.3, transparent: true, opacity: 0.85,
     });
     const nodes: THREE.Mesh[] = [];
@@ -165,7 +166,7 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
       }
       // Fade the disposable tangle (extra nodes + all edges) out across the back
       // half, leaving only the four nav dots.
-      extraMat.opacity = 0.85 * (1 - smoothstep(clamp01((pe - 0.45) / 0.5)));
+      extraMat.opacity = 0.9; // stays opaque — it shrinks into the dot, not fades
       edgeMat.opacity = 0.45 * (1 - smoothstep(clamp01((pe - 0.3) / 0.6)));
       const pos = edgeGeo.attributes.position as THREE.BufferAttribute;
       for (let e = 0; e < edges.length; e++) {
@@ -251,12 +252,26 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
       group.rotation.x = -0.06 + curTiltX;
       group.rotation.y = Math.sin(t * 0.2) * 0.18 * (1 - pe) + curTiltY;
 
+      // The tangle MERGES into the nav dots: extras shrink to nothing as they
+      // arrive, and each nav dot grows into a bigger ball (mass of the merge).
+      // Globs travel in at varied sizes and are absorbed one-by-one (staggered),
+      // each swelling its nav dot — so it reads as blobs eating each other.
+      const grow = smoothstep(clamp01((pe - 0.45) / 0.5));
       let maxScaleDelta = 0;
       for (let i = 0; i < N; i++) {
-        const target = i === focusedIndex ? 1.9 : 1;
-        const s = lerp(nodes[i].scale.x, target, 0.18);
+        let target;
+        if (i < NAV) {
+          target = 1 + 1.9 * grow;
+        } else {
+          const size = 0.8 + phase[i] * 0.7; // varied glob sizes
+          const start = 0.42 + phase[i] * 0.42; // staggered absorb time
+          const a = smoothstep(clamp01((pe - start) / 0.14));
+          target = size * (1 - a);
+        }
+        if (i === focusedIndex) target *= 1.3;
+        const s = lerp(nodes[i].scale.x, target, 0.2);
         nodes[i].scale.setScalar(s);
-        if (Math.abs(s - 1) > maxScaleDelta) maxScaleDelta = Math.abs(s - 1);
+        if (Math.abs(s - target) > maxScaleDelta) maxScaleDelta = Math.abs(s - target);
         const wantMat = i === focusedIndex ? amberMat : baseMats[i];
         if (nodes[i].material !== wantMat) nodes[i].material = wantMat;
       }
@@ -295,6 +310,7 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
 
     if (reduced) {
       layout(1);
+      for (let i = 0; i < N; i++) nodes[i].scale.setScalar(i < NAV ? 2.6 : 0);
       group.rotation.y = 0;
       renderOnce();
       window.dispatchEvent(new CustomEvent("knot:resolved"));

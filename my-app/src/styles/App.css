@@ -1137,7 +1137,7 @@ select:focus {
   align-self: center;
   min-height: clamp(360px, 46vw, 640px);
   margin: 0 calc(50% - 50vw) 1.5rem; /* full-bleed — uses the whole width */
-  transition: min-height 0.55s ease, margin 0.55s ease;
+  transition: min-height 0.32s ease, margin 0.32s ease;
 }
 /* When the tangle has resolved to the 4 dots, collapse the empty space
    above/below the row (until Replay re-expands it). */
@@ -1150,6 +1150,7 @@ select:focus {
 @media (max-width: 768px) {
   .hero-content--centered {
     max-width: 100%;
+    padding-top: 0.85rem; /* a little air above "Available" on mobile */
   }
   .hero-content--centered .home-status-chip { order: 1; }
   .hero-content--centered .hero-title { order: 2; }
