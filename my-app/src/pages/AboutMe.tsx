@@ -5,22 +5,22 @@ import usePageTitle from "../hooks/usePageTitle";
 // ── What I bring ─────────────────────────────────────────────────────────
 const AGENDA = [
   {
-    icon: "📊",
+    icon: "01",
     title: "Process improvement",
     desc: "Lean Six Sigma expertise with documented 20-85% gains in cost, efficiency, and cycle time.",
   },
   {
-    icon: "🔬",
+    icon: "02",
     title: "Human-centered design",
     desc: "Rigorous technical foundation across design, data, and technology, grounded in research and usability.",
   },
   {
-    icon: "🏥",
+    icon: "03",
     title: "Healthcare fluency",
     desc: "Master of Health Administration (MHA) and six years inside clinical operations at MSK.",
   },
   {
-    icon: "🤖",
+    icon: "04",
     title: "AI judgment, not AI hype",
     desc: "Everyone uses AI now. The skill is knowing when to trust it and when to override it. On Grove I rejected five of its suggestions — and documented why.",
   },
@@ -162,9 +162,6 @@ export default function About() {
 
                 <div className="about-story-card__content">
                   <div className="about-story-card__top">
-                    <span className="about-story-card__icon" aria-hidden="true">
-                      {chapter.icon}
-                    </span>
                     <div>
                       <p className="about-story-card__label">{chapter.label}</p>
                       <h3 className="about-story-card__heading">{chapter.heading}</h3>

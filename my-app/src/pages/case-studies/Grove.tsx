@@ -374,34 +374,34 @@ export default function GroveCaseStudy() {
           <div className="grove-flow-track">
             {/* Happy path */}
             <div className="grove-flow-node grove-flow-node--start">
-              <span className="grove-flow-node__icon">📱</span>
+              <span className="grove-flow-node__icon" aria-hidden="true">1</span>
               <span className="grove-flow-node__label">Open app</span>
             </div>
             <div className="grove-flow-arrow" aria-hidden="true" />
 
             <div className="grove-flow-node">
-              <span className="grove-flow-node__icon">🪴</span>
+              <span className="grove-flow-node__icon" aria-hidden="true">2</span>
               <span className="grove-flow-node__label">Create bouquet</span>
               <span className="grove-flow-node__sub">Name by location, add plants</span>
             </div>
             <div className="grove-flow-arrow" aria-hidden="true" />
 
             <div className="grove-flow-node">
-              <span className="grove-flow-node__icon">💧</span>
+              <span className="grove-flow-node__icon" aria-hidden="true">3</span>
               <span className="grove-flow-node__label">Daily care</span>
               <span className="grove-flow-node__sub">Morning digest, 1 task/day</span>
             </div>
             <div className="grove-flow-arrow" aria-hidden="true" />
 
             <div className="grove-flow-node">
-              <span className="grove-flow-node__icon">📸</span>
+              <span className="grove-flow-node__icon" aria-hidden="true">4</span>
               <span className="grove-flow-node__label">Journal entry</span>
               <span className="grove-flow-node__sub">Photo + note, tied to bouquet</span>
             </div>
             <div className="grove-flow-arrow" aria-hidden="true" />
 
             <div className="grove-flow-node grove-flow-node--end">
-              <span className="grove-flow-node__icon">✨</span>
+              <span className="grove-flow-node__icon" aria-hidden="true">5</span>
               <span className="grove-flow-node__label">Personality unlock</span>
               <span className="grove-flow-node__sub">Streak milestone reward</span>
             </div>

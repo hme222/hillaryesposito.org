@@ -2,7 +2,7 @@
 
 :root {
   --font-head: "Switzer", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: "Optima", "Optima Nova", "Noto Serif", Georgia, serif;
+  --font-body: "Optima", "Optima Nova", "Spectral", "Noto Serif", Georgia, serif;
 }
 /* ========================= TOKENS ========================= */
 :root {
@@ -244,7 +244,7 @@ select:focus {
   top: 1rem;
 } /* ========================= APP + LOADER ========================= */
 .app {
-  padding-top: 20px;
+  padding-top: 0;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -313,20 +313,20 @@ select:focus {
 .logo-divider {
   width: 1px;
   align-self: stretch;
-  min-height: 30px;
+  min-height: 24px;
   background: var(--border-strong, rgba(0, 0, 0, 0.16));
 }
 .logo-textblock {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 2px;
   line-height: 1;
 }
 .logo-text {
   font-family: var(--font-head);
   font-weight: 600;
-  font-size: 0.92rem;
-  letter-spacing: 0.16em; /* the tracked treatment from option 4 */
+  font-size: 0.78rem;
+  letter-spacing: 0.14em; /* the tracked treatment from option 4 */
   text-transform: uppercase;
   color: var(--fg);
   white-space: nowrap;
@@ -334,8 +334,8 @@ select:focus {
 .logo-tagline {
   font-family: var(--font-head);
   font-weight: 600;
-  font-size: 0.62rem;
-  letter-spacing: 0.16em;
+  font-size: 0.53rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted);
   white-space: nowrap;
@@ -369,8 +369,8 @@ select:focus {
   color: var(--fg);
   text-decoration: none;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 0.95rem;
+  letter-spacing: 1.4px;
+  font-size: 0.8rem;
   font-weight: 500;
   cursor: pointer;
   position: relative;
@@ -404,7 +404,7 @@ select:focus {
 }
 
 .theme-btn {
-  font-size: 1.2rem;
+  font-size: 1rem;
   padding: 0;
   display: inline-flex;
   align-items: center;
@@ -417,8 +417,8 @@ select:focus {
 
 /* optional resume button */
 .nav-link--resume {
-  padding: 0.7rem 1.2rem;
-  border: 2px solid currentColor;
+  padding: 0.5rem 1rem;
+  border: 1.5px solid currentColor;
   border-radius: 999px;
 }
 
@@ -445,7 +445,7 @@ select:focus {
 }
 
 /* MOBILE */
-@media (max-width: 928px) {
+@media (max-width: 768px) {
   .hamburger {
     display: inline-flex;
     align-items: center;
@@ -586,8 +586,11 @@ select:focus {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 52px var(--page-pad) 60px; /* sit the headline higher, below the nav */
+  padding: 0 var(--page-pad) 52px; /* tighter top — headline sits just below the nav */
   text-align: center;
+  position: relative;
+}
+.home-hero {
   background:
     radial-gradient(
       circle at 20% 45%,
@@ -607,7 +610,7 @@ select:focus {
   margin: 0 auto;
   display: flex; /* centers the inner stack reliably */
   flex-direction: column;
-  padding: 20px 50px 50px;
+  padding: 0 50px 40px;
   align-items: center;
 }
 .hero-title {
@@ -632,28 +635,32 @@ select:focus {
   background-clip: text;
 }
 .hero-positioning {
-  font-size: 1.3rem;
+  /* Primary value prop — sentence case, large and heavy (not a kicker). */
+  font-size: clamp(1.5rem, 2.3vw, 2rem);
   font-weight: 600;
   color: var(--muted);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  text-transform: none;
+  line-height: 1.3;
   margin-bottom: 2rem;
   text-align: center;
 }
 @media (max-width: 768px) {
   .hero-positioning {
-    font-size: 1rem;
-    letter-spacing: 0.04em;
+    font-size: 1.3rem;
+    letter-spacing: -0.005em;
   }
 }
 
 /* ── Gen Z flair: gradient shimmer on the positioning line ── */
 .hero-positioning-gradient {
+  /* olive-2 (not olive-1) as the lightest stop keeps the whole line AA-safe at
+     body size; amber middle retains the warmth. */
   background: linear-gradient(
     135deg,
-    var(--olive-1) 0%,
+    var(--olive-2) 0%,
     var(--accent-warm) 50%,
-    var(--olive-2) 100%
+    var(--olive-3) 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1107,6 +1114,78 @@ select:focus {
   align-self: stretch;
   min-height: clamp(360px, 40vw, 520px);
 }
+
+/* Centered hero: chip · name · large knot · positioning · copy, stacked. */
+.hero-content--centered {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 1040px;
+  gap: 0.25rem;
+}
+.hero-content--centered .hero-title {
+  text-align: center;
+}
+/* Wide but with breathing room on the sides (not full-bleed). */
+.hero-content--centered .hero-title {
+  margin-bottom: 2.75rem; /* clear gap between the name and the knot */
+}
+.hero-content--centered .hero-visual {
+  width: 100vw;
+  max-width: 100vw;
+  flex: none;
+  align-self: center;
+  min-height: clamp(360px, 46vw, 640px);
+  margin: 0 calc(50% - 50vw) 1.5rem; /* full-bleed — uses the whole width */
+  transition: min-height 0.55s ease, margin 0.55s ease;
+}
+/* When the tangle has resolved to the 4 dots, collapse the empty space
+   above/below the row (until Replay re-expands it). */
+.hero-content--centered .hero-visual--resolved {
+  min-height: clamp(150px, 15vw, 210px);
+  margin-bottom: 0.75rem;
+}
+/* Mobile: the knot isn't the nav here, so it sits UNDER the name. Reorder the
+   stack (chip · name · knot · positioning · copy) and keep it centred. */
+@media (max-width: 768px) {
+  .hero-content--centered {
+    max-width: 100%;
+  }
+  .hero-content--centered .home-status-chip { order: 1; }
+  .hero-content--centered .hero-title { order: 2; }
+  .hero-content--centered .hero-positioning { order: 3; }
+  .hero-content--centered .hero-visual { order: 4; }
+  .hero-content--centered .hero-copy { order: 5; }
+  /* Larger knot on mobile, and no collapse (it isn't the nav here). */
+  .hero-content--centered .hero-visual,
+  .hero-content--centered .hero-visual--resolved {
+    width: 100%;
+    max-width: 100%;
+    margin: 0.5rem auto 1.5rem;
+    min-height: clamp(300px, 66vw, 420px);
+  }
+}
+.hero-content--centered .hero-positioning,
+.hero-content--centered .hero-description {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero-content--centered .hero-positioning {
+  line-height: 1.35;
+  margin-bottom: 1.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+.hero-content--centered .hero-description {
+  max-width: 58ch;
+  line-height: 1.9;
+  margin-bottom: 2.5rem;
+}
+.hero-content--centered .hero-actions {
+  justify-content: center;
+  gap: 1rem;
+}
 /* In the split layout the knot owns its panel — full strength, no mask. */
 .hero-knot {
   position: absolute;
@@ -1121,11 +1200,138 @@ select:focus {
   height: 100%;
   display: block;
 }
-/* Subtle replay control for the knot animation. */
+/* Knot-as-nav. WorkflowKnot projects each labelled node's live 3D position to
+   2D and writes it to the element's `transform`, so the label is pinned exactly
+   to its node (top:0/left:0 + a translate set in JS, offset so the dot sits on
+   the node and the label rides just above it). */
+.hero-knot-stage {
+  position: absolute;
+  inset: 0;
+}
+.hero-knot-labels {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+.hero-knot-nav__node {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 20px 2px; /* generous tap target */
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  will-change: transform;
+}
+/* Transparent extender so hovering the nodule below also triggers the link
+   (the link and its node respond together). */
+.hero-knot-nav__node::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(48px, 6vw, 80px);
+  height: clamp(28px, 5vh, 46px);
+}
+/* Bigger name, filled with the same shaded "texture" as the olive nodule
+   (amber for Resume) so the title reads as the node made into a word. */
+.hero-knot-nav__label {
+  font-family: var(--font-head);
+  font-size: clamp(0.85rem, 0.7rem + 0.55vw, 1.1rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--olive-2); /* fallback */
+  /* Darkened so the lightest stop still clears WCAG AA on the light bg. */
+  background: linear-gradient(150deg, var(--olive-2) 0%, var(--olive-3) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: transform var(--dur-fast) var(--ease-spring),
+    filter var(--dur-fast) var(--ease-soft);
+}
+.hero-knot-nav__node--accent .hero-knot-nav__label {
+  background: linear-gradient(150deg, var(--accent-warm) 0%, #6e4a18 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.hero-knot-nav__node:hover .hero-knot-nav__label,
+.hero-knot-nav__node:focus-visible .hero-knot-nav__label {
+  filter: brightness(1.12);
+}
+/* The link's OWN dot, sitting above the 3D nodule. */
+.hero-knot-nav__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--olive-2);
+  box-shadow: 0 0 0 0 var(--glow);
+  transition: transform var(--dur-fast) var(--ease-spring),
+    box-shadow var(--dur-fast) var(--ease-soft), background var(--dur-fast) var(--ease-soft);
+}
+/* Thin connector pointing down toward the nodule it links to. */
+.hero-knot-nav__node::after {
+  content: "";
+  width: 1.5px;
+  height: clamp(10px, 2vh, 18px);
+  background: linear-gradient(var(--olive-2), transparent);
+  opacity: 0.45;
+  transition: opacity var(--dur-fast) var(--ease-soft);
+}
+.hero-knot-nav__node--accent .hero-knot-nav__dot {
+  background: var(--accent-warm);
+}
+.hero-knot-nav__node--accent::after {
+  background: linear-gradient(var(--accent-warm), transparent);
+}
+.hero-knot-nav__node:hover .hero-knot-nav__label,
+.hero-knot-nav__node:focus-visible .hero-knot-nav__label {
+  transform: translateY(-3px);
+}
+.hero-knot-nav__node:focus-visible {
+  outline: none;
+}
+.hero-knot-nav__node:focus-visible .hero-knot-nav__label {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.hero-knot-nav__node:hover .hero-knot-nav__dot,
+.hero-knot-nav__node:focus-visible .hero-knot-nav__dot {
+  transform: scale(1.4);
+  box-shadow: 0 0 0 6px var(--glow);
+}
+.hero-knot-nav__node:hover::after,
+.hero-knot-nav__node:focus-visible::after {
+  opacity: 0.85;
+}
+/* No dot/connector for Projects & About — label only. Pad the bottom by the
+   dot+connector height so these labels still line up with the dotted ones. */
+.hero-knot-nav__node--nodot::after {
+  display: none;
+}
+.hero-knot-nav__node--nodot {
+  padding-bottom: 30px;
+}
+@media (max-width: 768px), (pointer: coarse) {
+  .hero-knot-labels { display: none; }
+}
+
+/* Subtle replay control for the knot animation — centred under the knot so it
+   is never clipped by the wide panel's edge. */
 .hero-knot-replay {
   position: absolute;
-  bottom: 6px;
-  right: 6px;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 2;
   display: inline-flex;
   align-items: center;
@@ -1211,7 +1417,7 @@ select:focus {
     font-size: clamp(4.5rem, 4.4vw, 5.6rem);
   }
   .hero-positioning {
-    font-size: 1.5rem;
+    font-size: 2.05rem;
   }
   .hero-text .hero-description {
     font-size: 1.15rem;
@@ -3778,6 +3984,35 @@ body.dark-mode .nav-overlay-backdrop,
   line-height: 1;
 }
 
+/* MSK hero stat medallion — typographic, intentional (replaces the leftover badge). */
+.msk-hero-badge {
+  gap: 0.45rem;
+}
+.msk-hero-badge__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  font-family: var(--font-head);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  color: var(--muted);
+}
+.msk-hero-badge__stat strong {
+  font-size: 2.3rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--olive-2);
+}
+.msk-hero-badge__rule {
+  width: 64px;
+  height: 1px;
+  background: var(--border-strong, var(--border));
+}
+
 .reina-hero-badge-label {
   font-size: 0.72rem;
   text-transform: uppercase;
@@ -4768,15 +5003,15 @@ body.dark-mode .nav-overlay-backdrop,
 .home-status-chip {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  padding: 0.45rem 1rem;
-  border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--olive-2) 30%, transparent);
-  background: color-mix(in srgb, var(--olive-2) 8%, transparent);
-  font-size: 0.82rem;
+  gap: 0.35rem;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 0.62rem;
   font-weight: 600;
-  color: var(--olive-2);
-  letter-spacing: 0.04em;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   margin-bottom: 1.5rem;
 }
 
@@ -4816,6 +5051,57 @@ body.dark-mode .nav-overlay-backdrop,
   border-color: var(--olive-2);
   color: var(--olive-2);
   transform: translateX(3px);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   COHESIVE INTERACTION LANGUAGE
+   One motion vocabulary site-wide: a gentle spring on the same easing
+   as the knot's node-hover, plus the knot's soft "glow ring." So a
+   button, a knot node, and a card all answer the cursor the same way.
+   ════════════════════════════════════════════════════════════════ */
+:root {
+  --ease-spring: cubic-bezier(0.22, 0.9, 0.3, 1.15); /* slight overshoot */
+  --ease-soft: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dur-fast: 0.2s;
+  --dur: 0.34s;
+  --glow: color-mix(in srgb, var(--olive-2) 16%, transparent);
+}
+.hero-btn,
+.home-secondary-btn,
+.about-back-btn,
+.home-proj-cta {
+  transition: transform var(--dur) var(--ease-spring),
+    box-shadow var(--dur) var(--ease-soft),
+    border-color var(--dur) var(--ease-soft),
+    color var(--dur) var(--ease-soft) !important;
+}
+.hero-btn:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 14px 30px color-mix(in srgb, var(--olive-2) 34%, transparent),
+    0 0 0 5px var(--glow) !important;
+}
+.home-secondary-btn:hover,
+.about-back-btn:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 0 0 5px var(--glow);
+}
+/* The "→" in CTAs nudges forward, echoing the node-hover lift. */
+.home-proj-card-link:hover .home-proj-cta,
+.home-secondary-btn:hover {
+  letter-spacing: 1.7px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-btn,
+  .home-secondary-btn,
+  .about-back-btn,
+  .home-proj-cta {
+    transition: none !important;
+  }
+  .hero-btn:hover,
+  .home-secondary-btn:hover,
+  .about-back-btn:hover {
+    transform: none !important;
+  }
 }
 
 /* ── Expertise scroll strip ── */
@@ -5019,6 +5305,35 @@ body.dark-mode .nav-overlay-backdrop,
   display: block;
   width: 100% !important;
   height: 100% !important;
+}
+/* Labeled stage axis under the map — turns it into a contextual workflow
+   diagram (distinct from the abstract hero knot). */
+.msk-systemmap-stages {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0.85rem 0 0;
+  padding: 0 0.5rem;
+}
+.msk-systemmap-stages li {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-head);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.msk-systemmap-stages__end {
+  color: var(--accent-warm);
+}
+@media (max-width: 600px) {
+  .msk-systemmap-stages li {
+    font-size: 0.6rem;
+    letter-spacing: 0.04em;
+  }
 }
 
 .home-credentials-bar {
@@ -5745,8 +6060,15 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 .about-agenda__icon {
-  font-size: 1.6rem;
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
   line-height: 1;
+  color: var(--olive-2);
+}
+.dark-mode .about-agenda__icon {
+  color: var(--focus);
 }
 
 .about-agenda__title {
@@ -7476,20 +7798,22 @@ body.dark-mode .nav-overlay-backdrop,
   flex: 1;
 }
 .grove-flow-node__icon {
-  font-size: 1.5rem;
-  width: 48px;
-  height: 48px;
+  font-family: var(--font-head);
+  font-size: 1rem;
+  font-weight: 700;
+  width: 44px;
+  height: 44px;
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: var(--surface-1);
-  border: 2px solid var(--border);
-  margin-bottom: 0.5rem;
+  background: var(--olive-2);
+  color: #fff;
+  border: none;
+  margin-bottom: 0.55rem;
 }
-.grove-flow-node--start .grove-flow-node__icon,
+/* The final step is the reward — amber, the brand's "clarity" accent. */
 .grove-flow-node--end .grove-flow-node__icon {
-  border-color: var(--olive-2);
-  background: color-mix(in srgb, var(--olive-2) 10%, var(--surface-1));
+  background: var(--accent-warm);
 }
 .grove-flow-node__label {
   font-size: 0.85rem;
@@ -8408,5 +8732,81 @@ body.dark-mode .nav-overlay-backdrop,
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* ── Restraint: hold the olive gradient to the hero + stat numbers. Section and
+   page headings render as solid olive so the gradient stays a deliberate accent
+   rather than a default applied to every heading. ── */
+.section-title,
+.case-study h1,
+.about-title,
+.about-cta-title,
+.contact-info h1 {
+  background: none !important;
+  -webkit-text-fill-color: var(--olive-2) !important;
+  color: var(--olive-2) !important;
+}
+.dark-mode .section-title,
+.dark-mode .case-study h1,
+.dark-mode .about-title,
+.dark-mode .about-cta-title,
+.dark-mode .contact-info h1 {
+  -webkit-text-fill-color: var(--focus) !important;
+  color: var(--focus) !important;
+}
+
+/* ── Nav condenses into a centred floating island once scrolled past the top.
+   Includes everything (logo · links · Resume · light/dark toggle). ── */
+.navbar {
+  transition: max-width 0.3s ease, margin 0.3s ease, padding 0.3s ease,
+    border-radius 0.3s ease, box-shadow 0.3s ease, top 0.3s ease,
+    background 0.3s ease, gap 0.3s ease;
+}
+.navbar.is-floating {
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: calc(100% - 1.5rem);
+  margin: 0 auto;
+  top: 12px;
+  gap: 1.75rem;
+  justify-content: center;
+  padding: 0.55rem 1.4rem;
+  border: 1px solid var(--border) !important;
+  border-radius: 18px;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.14);
+  background: color-mix(in srgb, var(--bg) 86%, transparent) !important;
+}
+.dark-mode .navbar.is-floating {
+  background: color-mix(in srgb, #15110b 82%, transparent) !important;
+  border-color: rgba(248, 210, 183, 0.16) !important;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.5);
+}
+/* Desktop: at the top, recede to just the logo (the knot's nodes navigate);
+   the real nav reveals once you scroll (floating) — or on keyboard focus, so it
+   never becomes unreachable. */
+@media (min-width: 769px) {
+  .navbar:not(.is-floating) {
+    background: transparent !important;
+    border-bottom-color: transparent !important;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  /* The masthead is empty at the top, so pull the hero up to reclaim that gap. */
+  .home-hero {
+    margin-top: -2.4rem;
+  }
+  .navbar:not(.is-floating) .nav-menu,
+  .navbar:not(.is-floating) .logo {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+  .navbar:not(.is-floating):focus-within .nav-menu,
+  .navbar:not(.is-floating):focus-within .logo {
+    opacity: 1;
+    pointer-events: auto;
   }
 }

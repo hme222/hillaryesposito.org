@@ -32,11 +32,14 @@ export default function RecruiterPill() {
     };
   }, [open]);
 
-  // Return focus to trigger when panel closes
+  // Return focus to the trigger only on an actual open→close transition —
+  // never on initial mount (which would steal focus/scroll to the pill on load).
+  const wasOpen = useRef(false);
   useEffect(() => {
-    if (!open) {
+    if (!open && wasOpen.current) {
       triggerRef.current?.focus();
     }
+    wasOpen.current = open;
   }, [open]);
 
   const go = (path: string) => {
@@ -136,21 +139,21 @@ export default function RecruiterPill() {
                      href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"
                      target="_blank"
                      rel="noopener noreferrer">
-                    📄 Download resume
+                    <span aria-hidden="true">📄</span> Download resume
                   </a>
                   <a className="recruiter-panel__btn"
                      href="mailto:espositohillary@gmail.com">
-                    ✉️ Email me
+                    <span aria-hidden="true">✉️</span> Email me
                   </a>
                   <a className="recruiter-panel__btn"
                      href="https://www.linkedin.com/in/hillaryesposito/"
                      target="_blank"
                      rel="noopener noreferrer">
-                    💼 LinkedIn
+                    <span aria-hidden="true">💼</span> LinkedIn
                   </a>
                   <button type="button" className="recruiter-panel__btn"
                      onClick={() => go("/about")}>
-                    👤 About me
+                    <span aria-hidden="true">👤</span> About me
                   </button>
                 </section>
               </div>

@@ -38,7 +38,7 @@ export default function App() {
 
         <div className= "app">
           <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
-          <div id="main-content">
+          <div id="main-content" tabIndex={-1}>
             <AppRoutes />
           </div>
           <Footer />

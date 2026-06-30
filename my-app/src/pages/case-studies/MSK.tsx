@@ -43,8 +43,10 @@ export default function MSKCaseStudy() {
           </p>
         </div>
         <div className="gh-hero__visual" aria-hidden="true">
-          <div className="reina-hero-badge">
-            <span className="reina-hero-badge-label">6 Years · 3 Roles</span>
+          <div className="reina-hero-badge msk-hero-badge">
+            <span className="msk-hero-badge__stat"><strong>6</strong>Years</span>
+            <span className="msk-hero-badge__rule" />
+            <span className="msk-hero-badge__stat"><strong>3</strong>Roles</span>
           </div>
         </div>
       </header>
@@ -151,18 +153,24 @@ export default function MSKCaseStudy() {
         </div>
       </section>
 
-      {/* ── SYSTEM MAP: complexity → clarity ── */}
+      {/* ── SYSTEM MAP: tangled clinical systems → trusted flow ── */}
       <section className="msk-systemmap-section">
         <p className="gh-section-label">The through-line</p>
-        <h2>Turning tangled systems into clear flow</h2>
+        <h2>How a tangled clinical system became one clinicians trust</h2>
         <p className="cs-section-intro">
-          Every one of these projects was the same move at heart: take a system that had grown
-          tangled and reorganize it into something the people inside it could actually follow.
-          Scroll to watch the knot resolve.
+          Every project here was the same move: take disconnected EMR, certification, and
+          onboarding systems and reorganize them into a flow the 21,000+ people inside could
+          actually follow. Scroll — the knot below maps that path, stage by stage.
         </p>
         <Suspense fallback={<div className="msk-systemmap" />}>
           <MSKSystemMap />
         </Suspense>
+        <ol className="msk-systemmap-stages" aria-label="Workflow stages, left to right">
+          <li>Tangled systems</li>
+          <li>Mapped (DMAIC)</li>
+          <li>Redesigned</li>
+          <li className="msk-systemmap-stages__end">Trusted by clinicians</li>
+        </ol>
       </section>
 
       {/* ── WHAT I NEEDED TO LEARN ── */}
@@ -389,7 +397,7 @@ export default function MSKCaseStudy() {
             <p className="cs-outcome-label">Clinicians impacted by onboarding redesign</p>
           </div>
           <div className="cs-outcome-card">
-            <p className="cs-outcome-value gradient-text">4</p>
+            <p className="cs-outcome-value gradient-text">3</p>
             <p className="cs-outcome-label">Roles across 6 years, each building on the last</p>
           </div>
         </div>
@@ -413,11 +421,12 @@ export default function MSKCaseStudy() {
         <p className="gh-section-label">Key decisions</p>
         <h2 className="cs-section-title">Judgment calls that shaped outcomes</h2>
         <table className="cs-decisions-table">
+          <caption className="sr-only">Key judgment calls: decision, approach, and rationale</caption>
           <thead>
             <tr>
-              <th>Decision</th>
-              <th>Approach</th>
-              <th>Why</th>
+              <th scope="col">Decision</th>
+              <th scope="col">Approach</th>
+              <th scope="col">Why</th>
             </tr>
           </thead>
           <tbody>

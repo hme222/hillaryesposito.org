@@ -1,5 +1,5 @@
 // src/app/AppRoutes.tsx
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route, Link, useLocation } from "react-router-dom";
 
 function NotFound() {
@@ -36,10 +36,37 @@ function ScrollToTop() {
   return null;
 }
 
+// Announces page changes to screen readers (SPA navigation otherwise gives no
+// audible cue that the view changed).
+const ROUTE_NAMES: Record<string, string> = {
+  "/": "Home",
+  "/about": "About",
+  "/case-study/msk": "MSK case study",
+  "/case-study/grove": "Grove case study",
+  "/case-study/good-harvest": "Good Harvest case study",
+  "/case-study/mobbin": "Mobbin case study",
+};
+function RouteAnnouncer() {
+  const { pathname } = useLocation();
+  const [msg, setMsg] = useState("");
+  useEffect(() => {
+    const name = ROUTE_NAMES[pathname] || "Page";
+    // Small delay so the live region updates after the route swaps in.
+    const id = window.setTimeout(() => setMsg(`${name} loaded`), 150);
+    return () => window.clearTimeout(id);
+  }, [pathname]);
+  return (
+    <div aria-live="polite" role="status" className="sr-only">
+      {msg}
+    </div>
+  );
+}
+
 export default function AppRoutes() {
   return (
     <>
     <ScrollToTop />
+    <RouteAnnouncer />
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/projects" element={<Navigate to="/?scrollTo=projects" replace />} />

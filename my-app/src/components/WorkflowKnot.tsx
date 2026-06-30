@@ -1,29 +1,46 @@
 import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 
+export type KnotNavItem = {
+  label: string;
+  nodeIndex: number;
+  href?: string;
+  onActivate?: () => void;
+  accent?: boolean;
+  noDot?: boolean;
+};
+
 /**
- * The Home hero's "complexity → clarity" visual. A tangled graph of nodes +
- * connections plays the resolve once on mount — the knot untangles into an
- * ordered left-to-right blueprint, the final column resolving to amber
- * (complexity → clarity → trust) — then settles and stops. It replays only when
- * the hero is scrolled back into view; intent-driven, never on a timer.
+ * The Home hero's "complexity → clarity" visual, doubling as navigation.
  *
- * Guards: skipped if WebGL is unavailable; prefers-reduced-motion renders the
- * resolved state statically; the loop pauses offscreen / tab-hidden and stops
- * once settled; capped pixel ratio; everything disposed on unmount.
+ * A tangled graph resolves into an ordered grid once on mount, then rests. Nav
+ * labels (passed via `navItems`) are pinned to specific nodes by PROJECTING the
+ * node's live 3D world position to 2D screen space every frame — so a label
+ * sits exactly on its node and tracks it through the resolve, the cursor
+ * parallax, and the focus rotation. Hovering a label rotates the knot toward
+ * its node and grows it.
+ *
+ * Guards: skipped without WebGL; prefers-reduced-motion renders the resolved
+ * state statically; the loop pauses offscreen / tab-hidden and stops when idle;
+ * everything disposed on unmount.
  */
-const COLS = 4;
-const ROWS = 4;
-const N = COLS * ROWS;
+const NAV = 4; // persistent nav dots (Projects · About · Contact · Resume)
+const EXTRA = 26; // disposable tangle that funnels into the nav dots
+const N = NAV + EXTRA;
 const smoothstep = (x: number) => x * x * (3 - 2 * x);
 const clamp01 = (x: number) => (x < 0 ? 0 : x > 1 ? 1 : x);
 
-const DELAY = 0.6; // held tangled before the resolve begins
-const DURATION = 2.8; // resolve
-const TAIL = 1.0; // settle before stopping
+const DELAY = 0.6;
+const DURATION = 2.8;
+const TAIL = 1.0;
 
-export default function WorkflowKnot() {
+export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem[] }) {
   const mountRef = useRef<HTMLDivElement | null>(null);
+  const labelRefs = useRef<(HTMLAnchorElement | HTMLButtonElement | null)[]>([]);
+  const navRef = useRef<KnotNavItem[]>(navItems);
+  navRef.current = navItems;
+  const focusRef = useRef<(i: number) => void>(() => {});
+  const unfocusRef = useRef<() => void>(() => {});
 
   useEffect(() => {
     const mount = mountRef.current;
@@ -37,8 +54,8 @@ export default function WorkflowKnot() {
     }
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let w = mount.clientWidth || 480;
-    let h = mount.clientHeight || 480;
+    let w = mount.clientWidth || 720;
+    let h = mount.clientHeight || 460;
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
     renderer.setSize(w, h, false);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -49,78 +66,87 @@ export default function WorkflowKnot() {
     camera.position.set(0, 0, 10.5);
 
     const group = new THREE.Group();
-    group.rotation.x = -0.08;
+    group.rotation.x = -0.06;
     scene.add(group);
 
-    // Responsive fit: scale the whole graph to the panel's current aspect so the
-    // widest tangled spread always stays in frame — phone, tablet or desktop —
-    // and nudge it up to use the space above. Recomputed on every resize.
-    const CHAOS_HW = 5.2; // widest tangled extent (x)
-    const CHAOS_HH = 3.4; // widest tangled extent (y)
+    // Resolved targets: the 4 nav dots sit in a row; every extra node funnels
+    // into one of them (then fades), so a dense tangle collapses to 4 dots.
+    const navXs = [-5.0, -1.7, 1.7, 5.0];
+    const order: THREE.Vector3[] = [];
+    const chaos: THREE.Vector3[] = [];
+    for (let i = 0; i < NAV; i++) order.push(new THREE.Vector3(navXs[i], 0, 0));
+    for (let i = 0; i < EXTRA; i++) {
+      const t = navXs[i % NAV];
+      order.push(
+        new THREE.Vector3(t + (Math.random() - 0.5) * 0.3, (Math.random() - 0.5) * 0.3, 0)
+      );
+    }
+    for (let i = 0; i < N; i++) {
+      chaos.push(
+        new THREE.Vector3(
+          (Math.random() * 2 - 1) * 5.2,
+          (Math.random() * 2 - 1) * 2.6,
+          (Math.random() * 2 - 1) * 2.4
+        )
+      );
+    }
+
+    const CHAOS_HW = 5.7;
+    const CHAOS_HH = 2.7;
     const fitToPanel = () => {
       const halfH = Math.tan((camera.fov * Math.PI) / 360) * camera.position.z;
       const halfW = halfH * camera.aspect;
-      const margin = 1.01; // another ~2% larger across all views
-      const scale = Math.max(
-        0.5,
-        Math.min(1.05, (halfW * margin) / CHAOS_HW, (halfH * margin) / CHAOS_HH)
-      );
+      // Fit to WIDTH so the 4-dot row stays full-width even when the panel
+      // collapses to a thin strip after the animation finishes.
+      const scale = Math.max(0.4, Math.min(1.6, (halfW * 0.93) / CHAOS_HW));
       group.scale.setScalar(scale);
-      // Nudge up only by a fraction of the leftover vertical room, so a short
-      // (mobile) panel doesn't leave a gap below the graph.
-      group.position.y = Math.max(0, halfH - CHAOS_HH * scale) * 0.35;
+      group.position.y = Math.max(0, halfH - CHAOS_HH * scale) * 0.12;
     };
     fitToPanel();
 
-    const xs = [-3.9, -1.3, 1.3, 3.9];
-    const ys = [2.4, 0.8, -0.8, -2.4];
-    const order: THREE.Vector3[] = [];
-    const chaos: THREE.Vector3[] = [];
-    const idx = (c: number, r: number) => c * ROWS + r;
-    for (let c = 0; c < COLS; c++) {
-      for (let r = 0; r < ROWS; r++) {
-        order.push(new THREE.Vector3(xs[c], ys[r], 0));
-        chaos.push(
-          new THREE.Vector3(
-            (Math.random() * 2 - 1) * 5.2,
-            (Math.random() * 2 - 1) * 3.4,
-            (Math.random() * 2 - 1) * 3.0
-          )
-        );
-      }
-    }
-
+    // Each extra is tethered to its nav dot, with a few cross-links for density.
     const edges: [number, number][] = [];
-    for (let c = 0; c < COLS - 1; c++) {
-      for (let r = 0; r < ROWS; r++) {
-        edges.push([idx(c, r), idx(c + 1, r)]);
-        if (r < ROWS - 1 && (c + r) % 2 === 0) edges.push([idx(c, r), idx(c + 1, r + 1)]);
-        if (r > 0 && (c + r) % 2 === 1) edges.push([idx(c, r), idx(c + 1, r - 1)]);
-      }
+    for (let i = 0; i < EXTRA; i++) {
+      edges.push([NAV + i, i % NAV]);
+      if (i % 2 === 0) edges.push([NAV + i, NAV + ((i + 3) % EXTRA)]);
     }
 
-    const nodeGeo = new THREE.SphereGeometry(0.17, 20, 20);
+    const nodeGeo = new THREE.SphereGeometry(0.22, 20, 20);
     const oliveMat = new THREE.MeshStandardMaterial({
       color: 0x6f7c34, metalness: 0.2, roughness: 0.5, emissive: 0x2c3414, emissiveIntensity: 0.35,
     });
     const amberMat = new THREE.MeshStandardMaterial({
       color: 0xb87d35, metalness: 0.25, roughness: 0.45, emissive: 0x5a3a12, emissiveIntensity: 0.4,
     });
+    // Shared, fading material for the disposable tangle nodes.
+    const extraMat = new THREE.MeshStandardMaterial({
+      color: 0x6f7c34, metalness: 0.2, roughness: 0.55, emissive: 0x2c3414,
+      emissiveIntensity: 0.3, transparent: true, opacity: 0.85,
+    });
     const nodes: THREE.Mesh[] = [];
-    for (let c = 0; c < COLS; c++) {
-      for (let r = 0; r < ROWS; r++) {
-        const m = new THREE.Mesh(nodeGeo, c === COLS - 1 ? amberMat : oliveMat);
-        group.add(m);
-        nodes.push(m);
-      }
+    for (let i = 0; i < N; i++) {
+      const mat = i < NAV ? (i === NAV - 1 ? amberMat : oliveMat) : extraMat;
+      const m = new THREE.Mesh(nodeGeo, mat);
+      group.add(m);
+      nodes.push(m);
     }
+    const baseMats = nodes.map((n) => n.material as THREE.Material);
 
     const edgePositions = new Float32Array(edges.length * 2 * 3);
     const edgeGeo = new THREE.BufferGeometry();
     edgeGeo.setAttribute("position", new THREE.BufferAttribute(edgePositions, 3));
-    const edgeMat = new THREE.LineBasicMaterial({ color: 0x4f6b27, transparent: true, opacity: 0.5 });
+    const edgeMat = new THREE.LineBasicMaterial({ color: 0x4f6b27, transparent: true, opacity: 0.45 });
     const lines = new THREE.LineSegments(edgeGeo, edgeMat);
     group.add(lines);
+
+    // Persistent connector through the 4 nav dots — stays after the tangle fades.
+    const navEdges: [number, number][] = [[0, 1], [1, 2], [2, 3]];
+    const navEdgePositions = new Float32Array(navEdges.length * 2 * 3);
+    const navEdgeGeo = new THREE.BufferGeometry();
+    navEdgeGeo.setAttribute("position", new THREE.BufferAttribute(navEdgePositions, 3));
+    const navEdgeMat = new THREE.LineBasicMaterial({ color: 0x4f6b27, transparent: true, opacity: 0 });
+    const navLines = new THREE.LineSegments(navEdgeGeo, navEdgeMat);
+    group.add(navLines);
 
     scene.add(new THREE.AmbientLight(0x8a7e66, 0.85));
     const key = new THREE.DirectionalLight(0xfff0d8, 1.4);
@@ -131,11 +157,16 @@ export default function WorkflowKnot() {
     scene.add(fill);
 
     const tmp = new THREE.Vector3();
+    const proj = new THREE.Vector3();
     const layout = (pe: number) => {
       for (let i = 0; i < N; i++) {
         tmp.copy(chaos[i]).lerp(order[i], pe);
         nodes[i].position.copy(tmp);
       }
+      // Fade the disposable tangle (extra nodes + all edges) out across the back
+      // half, leaving only the four nav dots.
+      extraMat.opacity = 0.85 * (1 - smoothstep(clamp01((pe - 0.45) / 0.5)));
+      edgeMat.opacity = 0.45 * (1 - smoothstep(clamp01((pe - 0.3) / 0.6)));
       const pos = edgeGeo.attributes.position as THREE.BufferAttribute;
       for (let e = 0; e < edges.length; e++) {
         const a = nodes[edges[e][0]].position;
@@ -144,9 +175,40 @@ export default function WorkflowKnot() {
         pos.setXYZ(e * 2 + 1, b.x, b.y, b.z);
       }
       pos.needsUpdate = true;
+
+      // Nav connector fades IN as the row forms, and stays.
+      navEdgeMat.opacity = 0.5 * smoothstep(clamp01((pe - 0.55) / 0.45));
+      const npos = navEdgeGeo.attributes.position as THREE.BufferAttribute;
+      for (let e = 0; e < navEdges.length; e++) {
+        const a = nodes[navEdges[e][0]].position;
+        const b = nodes[navEdges[e][1]].position;
+        npos.setXYZ(e * 2, a.x, a.y, a.z);
+        npos.setXYZ(e * 2 + 1, b.x, b.y, b.z);
+      }
+      npos.needsUpdate = true;
     };
 
-    const renderOnce = () => renderer.render(scene, camera);
+    // Pin each label to its node's projected 2D position.
+    // Pin each link above its node. The link carries its OWN dot, lifted clear
+    // of the 3D nodule so it reads as a distinct, tappable nav link. Lift scales
+    // a little with panel height so it stays proportional on small screens.
+    const positionLabels = () => {
+      const items = navRef.current;
+      const lift = Math.max(8, h * 0.025);
+      for (let k = 0; k < items.length; k++) {
+        const el = labelRefs.current[k];
+        if (!el) continue;
+        nodes[items[k].nodeIndex].getWorldPosition(proj).project(camera);
+        const px = (proj.x * 0.5 + 0.5) * w;
+        const py = (-proj.y * 0.5 + 0.5) * h - lift;
+        el.style.transform = `translate(${px}px, ${py}px) translate(-50%, -100%)`;
+      }
+    };
+
+    const renderOnce = () => {
+      renderer.render(scene, camera);
+      positionLabels();
+    };
 
     let rafId = 0;
     let running = false;
@@ -155,13 +217,23 @@ export default function WorkflowKnot() {
     const clock = new THREE.Clock();
     let startT = 0;
 
-    // Cursor parallax: hovering the knot tilts it gently toward the pointer.
     let hoverActive = false;
     let targetTiltX = 0;
     let targetTiltY = 0;
     let curTiltX = 0;
     let curTiltY = 0;
+    let focusedIndex = -1;
     const lerp = (a: number, b: number, n: number) => a + (b - a) * n;
+
+    focusRef.current = (i: number) => {
+      if (reduced) return;
+      focusedIndex = i;
+      if (tabVisible && inView) start();
+    };
+    unfocusRef.current = () => {
+      focusedIndex = -1;
+      if (tabVisible && inView) start();
+    };
 
     const loop = () => {
       const t = clock.getElapsedTime();
@@ -169,34 +241,53 @@ export default function WorkflowKnot() {
       const e = t - startT;
       const pe = smoothstep(clamp01((e - DELAY) / DURATION));
       layout(pe);
+
+      if (focusedIndex >= 0) {
+        targetTiltY = -(order[focusedIndex].x / 5.0) * 0.22;
+        targetTiltX = (order[focusedIndex].y / 1.8) * 0.1;
+      }
       curTiltX = lerp(curTiltX, targetTiltX, 0.12);
       curTiltY = lerp(curTiltY, targetTiltY, 0.12);
-      group.rotation.x = -0.08 + curTiltX;
-      group.rotation.y = Math.sin(t * 0.2) * 0.2 * (1 - pe) + curTiltY;
+      group.rotation.x = -0.06 + curTiltX;
+      group.rotation.y = Math.sin(t * 0.2) * 0.18 * (1 - pe) + curTiltY;
+
+      let maxScaleDelta = 0;
+      for (let i = 0; i < N; i++) {
+        const target = i === focusedIndex ? 1.9 : 1;
+        const s = lerp(nodes[i].scale.x, target, 0.18);
+        nodes[i].scale.setScalar(s);
+        if (Math.abs(s - 1) > maxScaleDelta) maxScaleDelta = Math.abs(s - 1);
+        const wantMat = i === focusedIndex ? amberMat : baseMats[i];
+        if (nodes[i].material !== wantMat) nodes[i].material = wantMat;
+      }
+
       renderOnce();
-      // Rest once resolved AND no hover tilt is active or pending — so nothing
-      // moves on its own, but hover always re-wakes it (WCAG 2.2.2 friendly).
       const resolved = pe >= 1 && e > DELAY + DURATION + TAIL;
-      const tiltSettled =
-        !hoverActive && Math.abs(curTiltX) < 0.002 && Math.abs(curTiltY) < 0.002;
-      if (resolved && tiltSettled) {
-        group.rotation.x = -0.08;
+      const settled =
+        !hoverActive &&
+        focusedIndex < 0 &&
+        Math.abs(curTiltX) < 0.002 &&
+        Math.abs(curTiltY) < 0.002 &&
+        maxScaleDelta < 0.01;
+      if (resolved && settled) {
+        group.rotation.x = -0.06;
         group.rotation.y = 0;
         curTiltX = 0;
         curTiltY = 0;
         layout(1);
         renderOnce();
+        window.dispatchEvent(new CustomEvent("knot:resolved"));
         running = false;
         return;
       }
       rafId = requestAnimationFrame(loop);
     };
 
-    const start = () => {
+    function start() {
       if (running || reduced) return;
       running = true;
       rafId = requestAnimationFrame(loop);
-    };
+    }
     const stop = () => {
       running = false;
       cancelAnimationFrame(rafId);
@@ -206,6 +297,7 @@ export default function WorkflowKnot() {
       layout(1);
       group.rotation.y = 0;
       renderOnce();
+      window.dispatchEvent(new CustomEvent("knot:resolved"));
     } else {
       layout(0);
       start();
@@ -245,31 +337,31 @@ export default function WorkflowKnot() {
     const ro = new ResizeObserver(onResize);
     ro.observe(mount);
 
-    // ── Hover parallax (skipped for reduced motion / coarse pointers) ──
     const coarse = window.matchMedia("(pointer: coarse)").matches;
     const onPointerMove = (ev: PointerEvent) => {
       if (reduced || coarse) return;
       const rect = mount.getBoundingClientRect();
       const px = ((ev.clientX - rect.left) / rect.width) * 2 - 1;
       const py = ((ev.clientY - rect.top) / rect.height) * 2 - 1;
-      const MAX = 0.36;
-      targetTiltY = px * MAX;
-      targetTiltX = -py * MAX * 0.6;
+      targetTiltY = px * 0.3;
+      targetTiltX = -py * 0.3 * 0.6;
       hoverActive = true;
       if (tabVisible && inView) start();
     };
     const onPointerLeave = () => {
       hoverActive = false;
-      targetTiltX = 0;
-      targetTiltY = 0;
-      if (tabVisible && inView) start(); // animate back to rest, then settle
+      if (focusedIndex < 0) {
+        targetTiltX = 0;
+        targetTiltY = 0;
+      }
+      if (tabVisible && inView) start();
     };
     mount.addEventListener("pointermove", onPointerMove);
     mount.addEventListener("pointerleave", onPointerLeave);
 
-    // Replay on demand (fired by the hero's "Replay" button).
     const onReplay = () => {
       if (reduced) return;
+      window.dispatchEvent(new CustomEvent("knot:active"));
       startT = 0;
       layout(0);
       if (tabVisible && inView) start();
@@ -287,12 +379,48 @@ export default function WorkflowKnot() {
       nodeGeo.dispose();
       oliveMat.dispose();
       amberMat.dispose();
+      extraMat.dispose();
       edgeGeo.dispose();
       edgeMat.dispose();
+      navEdgeGeo.dispose();
+      navEdgeMat.dispose();
       renderer.dispose();
       if (renderer.domElement.parentNode === mount) mount.removeChild(renderer.domElement);
     };
   }, []);
 
-  return <div ref={mountRef} className="hero-knot" aria-hidden="true" />;
+  return (
+    <div className="hero-knot-stage">
+      <div ref={mountRef} className="hero-knot" aria-hidden="true" />
+      <div className="hero-knot-labels">
+        {navItems.map((item, k) => {
+          const handlers = {
+            ref: (el: HTMLAnchorElement | HTMLButtonElement | null) => {
+              labelRefs.current[k] = el;
+            },
+            className: `hero-knot-nav__node${item.accent ? " hero-knot-nav__node--accent" : ""}${item.noDot ? " hero-knot-nav__node--nodot" : ""}`,
+            onMouseEnter: () => focusRef.current(item.nodeIndex),
+            onFocus: () => focusRef.current(item.nodeIndex),
+            onMouseLeave: () => unfocusRef.current(),
+            onBlur: () => unfocusRef.current(),
+          };
+          const inner = (
+            <>
+              <span className="hero-knot-nav__label">{item.label}</span>
+              {!item.noDot && <span className="hero-knot-nav__dot" aria-hidden="true" />}
+            </>
+          );
+          return item.href ? (
+            <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer" {...handlers}>
+              {inner}
+            </a>
+          ) : (
+            <button key={item.label} type="button" onClick={item.onActivate} {...handlers}>
+              {inner}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
 }

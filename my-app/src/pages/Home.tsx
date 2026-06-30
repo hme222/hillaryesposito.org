@@ -1,11 +1,43 @@
 // src/pages/Home.tsx
-import React, { useEffect, useRef, useMemo, lazy, Suspense } from "react";
+import React, { useEffect, useState, useRef, useMemo, lazy, Suspense } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import usePageTitle from "../hooks/usePageTitle";
 
 // Lazy-loaded so three.js stays in its own chunk (only fetched when needed).
 const WorkflowKnot = lazy(() => import("../components/WorkflowKnot"));
+import type { KnotNavItem } from "../components/WorkflowKnot";
+
+// Static resolved-grid placeholder shown while the three.js chunk loads, so the
+// hero's right column is never blank.
+function HeroKnotFallback() {
+  const xs = [60, 150, 240, 315];
+  const ys = [70, 140, 210, 280];
+  const nodes: { x: number; y: number; amber: boolean }[] = [];
+  xs.forEach((x, c) => ys.forEach((y) => nodes.push({ x, y, amber: c === 3 })));
+  const edges: [number, number, number, number][] = [];
+  ys.forEach((y) => {
+    for (let c = 0; c < 3; c++) edges.push([xs[c], y, xs[c + 1], y]);
+  });
+  edges.push(
+    [xs[0], ys[0], xs[1], ys[1]],
+    [xs[1], ys[1], xs[2], ys[0]],
+    [xs[1], ys[2], xs[2], ys[1]],
+    [xs[2], ys[2], xs[3], ys[3]]
+  );
+  return (
+    <div className="hero-knot" aria-hidden="true">
+      <svg viewBox="0 0 375 350" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+        {edges.map((e, i) => (
+          <line key={i} x1={e[0]} y1={e[1]} x2={e[2]} y2={e[3]} stroke="#4f6b27" strokeWidth="1.4" opacity="0.4" />
+        ))}
+        {nodes.map((n, i) => (
+          <circle key={i} cx={n.x} cy={n.y} r={n.amber ? 8 : 7} fill={n.amber ? "#b87d35" : "#5a7a2e"} />
+        ))}
+      </svg>
+    </div>
+  );
+}
 
 // ─── Orb background ──────────────────────────────────────────────────────────
 const orbStyles = `
@@ -150,6 +182,28 @@ export default function Home() {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
+  // The knot's top-row nodes (0 · 4 · 8 · 12) double as navigation. WorkflowKnot
+  // pins each label to its node's live screen position and rotates/grows it on hover.
+  const knotNav: KnotNavItem[] = [
+    { label: "Projects", nodeIndex: 0, noDot: true, onActivate: () => document.getElementById("projects")?.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth" }) },
+    { label: "About", nodeIndex: 1, noDot: true, onActivate: () => navigate("/about") },
+    { label: "Contact", nodeIndex: 2, noDot: true, onActivate: scrollToContact },
+    { label: "Resume", nodeIndex: 3, noDot: true, accent: true, href: "/assets/Hillary_Esposito_Portfolio_Resume.pdf" },
+  ];
+
+  // Collapse the knot's panel once it resolves to the 4 dots; expand on replay.
+  const [knotResolved, setKnotResolved] = useState(false);
+  useEffect(() => {
+    const onRes = () => setKnotResolved(true);
+    const onAct = () => setKnotResolved(false);
+    window.addEventListener("knot:resolved", onRes);
+    window.addEventListener("knot:active", onAct);
+    return () => {
+      window.removeEventListener("knot:resolved", onRes);
+      window.removeEventListener("knot:active", onAct);
+    };
+  }, []);
+
   const email = "espositohillary@gmail.com";
 
   // Subtle cursor-driven 3D tilt on project cards (the site's one "3D touch").
@@ -187,9 +241,29 @@ export default function Home() {
 
         <OrbBackground />
 
-        <div className="hero-content hero-content--split" style={{ position:"relative", zIndex:1 }}>
+        <div className="hero-content hero-content--centered" style={{ position:"relative", zIndex:1 }}>
 
-          <div className="hero-text">
+          {/* Knot leads — its nodes are the nav, resolving from a dense tangle. */}
+          <div className={`hero-visual${knotResolved ? " hero-visual--resolved" : ""}`}>
+            <Suspense fallback={<HeroKnotFallback />}>
+              <WorkflowKnot navItems={knotNav} />
+            </Suspense>
+
+            {!prefersReducedMotion && (
+              <button
+                type="button"
+                className="hero-knot-replay"
+                onClick={() => window.dispatchEvent(new CustomEvent("knot:replay"))}
+                aria-label="Replay the animation"
+              >
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M3 12a9 9 0 1 0 3-6.7" />
+                  <path d="M3 4v4h4" />
+                </svg>
+                Replay
+              </button>
+            )}
+          </div>
 
           {/* Status chip */}
           <motion.div className="home-status-chip" {...stagger(0)}>
@@ -219,27 +293,6 @@ export default function Home() {
                 See my approach →
               </button>
             </motion.div>
-          </div>
-          </div>{/* /hero-text */}
-
-          <div className="hero-visual">
-            <Suspense fallback={null}>
-              <WorkflowKnot />
-            </Suspense>
-            {!prefersReducedMotion && (
-              <button
-                type="button"
-                className="hero-knot-replay"
-                onClick={() => window.dispatchEvent(new CustomEvent("knot:replay"))}
-                aria-label="Replay the animation"
-              >
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M3 12a9 9 0 1 0 3-6.7" />
-                  <path d="M3 4v4h4" />
-                </svg>
-                Replay
-              </button>
-            )}
           </div>
         </div>
       </section>
@@ -326,7 +379,8 @@ export default function Home() {
                     <div className={`home-proj-devices ${proj.images.length > 1 ? "home-proj-devices--multi" : ""}`}>
                       {proj.images.map((src, i) => (
                         <div key={src} className="home-proj-device" style={{ zIndex: proj.images!.length - i }}>
-                          <img src={src} alt={proj.imageAlt || ""} loading="lazy" />
+                          {/* Only the first image carries the alt; the rest are decorative duplicates. */}
+                          <img src={src} alt={i === 0 ? proj.imageAlt || "" : ""} loading="lazy" />
                         </div>
                       ))}
                     </div>

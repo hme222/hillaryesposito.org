@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nav concept — knot-nav → floating bar on scroll</title>
+<style>
+  :root { --olive:#5a7a2e; --amber:#b87d35; --bg:#faf9f7; --fg:#0a0a0a; --muted:#6b6560; --border:rgba(0,0,0,.1); }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#e9e5df; color:var(--fg);
+         font-family:"Switzer",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; padding:34px; }
+  h1 { font-size:18px; margin:0 0 4px; }
+  .sub { color:var(--muted); font-size:13px; margin:0 0 22px; max-width:880px; }
+  .state__label { font-size:13px; font-weight:700; color:var(--olive); margin:0 0 8px; }
+  .arrow { text-align:center; color:var(--muted); font-size:12px; letter-spacing:.08em; text-transform:uppercase; margin:14px 0; }
+  .stage { position:relative; border-radius:14px; overflow:hidden; border:1px solid var(--border);
+           background:linear-gradient(180deg,#fbfaf8,#f1ede7); }
+  .minilogo { position:absolute; left:24px; top:22px; display:flex; align-items:center; gap:.5rem; z-index:3; }
+  .minilogo .rule { width:1px; height:20px; background:rgba(0,0,0,.16); }
+  .minilogo .nm { font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+  .lnk { font-size:12.5px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--fg); }
+  .lnk--muted { color:var(--muted); }
+  .lnk--active { color:var(--olive); }
+  .resume { border:1px solid var(--fg); border-radius:999px; padding:7px 16px; font-size:11.5px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; }
+  .knot-label { font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+  .hero-name { position:absolute; left:40px; top:120px; font-size:40px; font-weight:800; color:var(--olive); letter-spacing:-.02em; opacity:.92; line-height:1; }
+  .hero-tag  { position:absolute; left:42px; top:176px; font-size:13px; color:var(--muted); }
+  /* floating bar */
+  .float-bar { position:absolute; left:18px; right:18px; top:16px; display:flex; align-items:center;
+               justify-content:space-between; padding:13px 22px; border-radius:16px;
+               background:rgba(250,249,247,.85); backdrop-filter:blur(10px);
+               border:1px solid var(--border); box-shadow:0 8px 30px rgba(0,0,0,.10); z-index:3; }
+  .links { display:flex; align-items:center; gap:24px; }
+  .ghost b { position:absolute; left:40px; top:250px; display:block; height:26px; width:230px; border-radius:6px; background:rgba(90,122,46,.10); }
+  .ghost i { position:absolute; left:40px; top:288px; display:block; height:12px; width:340px; border-radius:4px; background:rgba(0,0,0,.05); }
+</style>
+</head>
+<body>
+<h1>Concept: knot-nav at the top → floating bar on scroll</h1>
+<p class="sub">At the top of the page the hero knot's nodes <em>are</em> the navigation. As soon as you scroll past the hero, it condenses into a clean floating bar for the rest of the site. (A real, conventional nav stays in the DOM the whole time for keyboard / screen-reader / mobile — the knot-nodes are a sighted-desktop enhancement.)</p>
+
+<p class="state__label">① Top of the page — the knot is the nav</p>
+<div class="stage" style="height:320px;">
+  <span class="minilogo">
+    <svg width="22" height="22" viewBox="0 0 32 32" fill="none"><path d="M5 13.5 Q15.5 30 27.5 13 Q24 17 19 18.6 Q12 20.4 5 13.5 Z" fill="#5a7a2e"/><circle cx="15.5" cy="10.2" r="3" fill="#b87d35"/></svg>
+    <span class="rule"></span><span class="nm">Hillary Esposito</span>
+  </span>
+  <div class="hero-name">HILLARY<br/>ESPOSITO</div>
+  <div class="hero-tag">UX × Process Improvement</div>
+  <svg width="430" height="300" viewBox="0 0 430 300" style="position:absolute; right:10px; top:6px;">
+    <g stroke="#5a7a2e" stroke-width="1.5" opacity=".5">
+      <line x1="120" y1="70" x2="250" y2="150"/><line x1="250" y1="150" x2="350" y2="80"/>
+      <line x1="350" y1="80" x2="300" y2="210"/><line x1="120" y1="70" x2="350" y2="80"/>
+      <line x1="250" y1="150" x2="300" y2="210"/>
+    </g>
+    <circle cx="120" cy="70" r="7" fill="#b87d35"/><text class="knot-label" x="120" y="50" text-anchor="middle" fill="#5a7a2e">Home</text>
+    <circle cx="350" cy="80" r="6.5" fill="#5a7a2e"/><text class="knot-label" x="350" y="60" text-anchor="middle" fill="#6b6560">About</text>
+    <circle cx="250" cy="150" r="6.5" fill="#5a7a2e"/><text class="knot-label" x="250" y="174" text-anchor="middle" fill="#6b6560">Projects</text>
+    <circle cx="300" cy="210" r="6.5" fill="#5a7a2e"/><text class="knot-label" x="300" y="234" text-anchor="middle" fill="#6b6560">Contact</text>
+  </svg>
+</div>
+
+<p class="arrow">↓ scroll past the hero ↓</p>
+
+<p class="state__label">② Scrolled — condensed into a floating bar</p>
+<div class="stage" style="height:330px;">
+  <div class="float-bar">
+    <span class="minilogo" style="position:static;">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none"><path d="M5 13.5 Q15.5 30 27.5 13 Q24 17 19 18.6 Q12 20.4 5 13.5 Z" fill="#5a7a2e"/><circle cx="15.5" cy="10.2" r="3" fill="#b87d35"/></svg>
+      <span class="rule"></span><span class="nm">Hillary Esposito</span>
+    </span>
+    <span class="links">
+      <span class="lnk lnk--active">Home</span><span class="lnk lnk--muted">Projects</span>
+      <span class="lnk lnk--muted">About</span><span class="lnk lnk--muted">Contact</span>
+      <span class="resume">Resume</span>
+    </span>
+  </div>
+  <div class="ghost"><b></b><i></i></div>
+</div>
+
+</body>
+</html>

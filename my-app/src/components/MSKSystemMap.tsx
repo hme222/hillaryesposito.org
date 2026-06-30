@@ -144,17 +144,23 @@ export default function MSKSystemMap() {
     let running = false;
     let inView = true;
     let tabVisible = !document.hidden;
-    const clock = new THREE.Clock();
+    let lastPe = -1;
+    let idleFrames = 0;
 
     const loop = () => {
-      const t = clock.getElapsedTime();
       const pe = smoothstep(scrollProgress());
       layout(pe);
-      // Tumbles while tangled, then settles fully to zero once resolved — the
-      // only remaining motion is scroll-driven (user-controlled), so nothing
-      // moves on its own when the section is at rest (WCAG 2.2.2).
-      group.rotation.y = Math.sin(t * 0.25) * 0.22 * (1 - pe);
+      // Rotation is tied to scroll position only (tilted while tangled, flat
+      // once resolved) — no time-based auto-motion. When the scroll position
+      // stops changing the loop stops too (WCAG 2.2.2); a scroll re-wakes it.
+      group.rotation.y = (1 - pe) * 0.3;
       renderOnce();
+      idleFrames = Math.abs(pe - lastPe) < 0.0008 ? idleFrames + 1 : 0;
+      lastPe = pe;
+      if (idleFrames > 8) {
+        running = false;
+        return;
+      }
       rafId = requestAnimationFrame(loop);
     };
 
@@ -194,6 +200,16 @@ export default function MSKSystemMap() {
     };
     document.addEventListener("visibilitychange", onVisibility);
 
+    // Scrolling re-wakes the (otherwise stopped) loop so the scroll-linked
+    // resolve stays responsive without any idle/auto motion.
+    const onScroll = () => {
+      if (inView && tabVisible) {
+        idleFrames = 0;
+        start();
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+
     const onResize = () => {
       w = mount.clientWidth || w;
       h = mount.clientHeight || h;
@@ -210,6 +226,7 @@ export default function MSKSystemMap() {
       io.disconnect();
       ro.disconnect();
       document.removeEventListener("visibilitychange", onVisibility);
+      window.removeEventListener("scroll", onScroll);
       nodeGeo.dispose();
       oliveMat.dispose();
       amberMat.dispose();

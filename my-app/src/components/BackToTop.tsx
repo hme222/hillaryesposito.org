@@ -13,7 +13,14 @@ export default function BackToTop() {
     <button
       type="button"
       className={`back-to-top ${visible ? "is-visible" : ""}`}
-      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      onClick={() =>
+        window.scrollTo({
+          top: 0,
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+            ? "auto"
+            : "smooth",
+        })
+      }
       aria-label="Back to top"
     >
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
