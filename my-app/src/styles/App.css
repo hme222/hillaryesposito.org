@@ -4059,7 +4059,6 @@ body.dark-mode .nav-overlay-backdrop,
 .home-proj-card-link:focus-visible {
   --lift: -6px;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.16);
-  outline: none;
 }
 @media (prefers-reduced-motion: reduce) {
   .home-proj-card-link {

@@ -183,7 +183,7 @@ export default function Home() {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // The knot's top-row nodes (0 · 4 · 8 · 12) double as navigation. WorkflowKnot
+  // The knot's four nav nodes (0 · 1 · 2 · 3) double as navigation. WorkflowKnot
   // pins each label to its node's live screen position and rotates/grows it on hover.
   const knotNav: KnotNavItem[] = [
     { label: "Projects", nodeIndex: 0, noDot: true, onActivate: () => document.getElementById("projects")?.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth" }) },

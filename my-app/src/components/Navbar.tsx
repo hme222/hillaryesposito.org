@@ -217,6 +217,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
           <button
             type="button"
             className={navClass("contact")}
+            aria-current={activeSection === "contact" ? "true" : undefined}
             onClick={() => scrollToSection("contact")}
           >
             CONTACT
