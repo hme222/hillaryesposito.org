@@ -289,7 +289,7 @@ export default function Home() {
       ══════════════════════════════════════════ */}
       <section className="home-credentials-bar" aria-label="Professional credentials">
         <p className="home-credentials-inline">
-          Army Captain · Lean Six Sigma Green Belt · MHA, Rutgers · Bilingual EN/ES
+          Lean Six Sigma Green Belt · MHA, Rutgers · Bilingual EN/ES
         </p>
       </section>
 
