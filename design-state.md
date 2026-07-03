@@ -35,6 +35,12 @@
 | One Gen Z flair moment | Gradient hero text, unexpected hover, or scroll colour shift — ONE touch | taste calibration |
 | 85/12/3 colour ratio | 85% warm neutrals, 12% olive/sage, 3% jewel-tone moment (amber/gold) | taste calibration |
 | Accessibility review: 2 critical, 3 major, 6 minor findings | MSKSystemMap loop, mobile nav focus trap, RecruiterPill auto-focus bug are blockers; contrast tokens verified to pass AA in both modes except olive-1 in hero gradient at mobile body-text size | accessibility-reviewer 2026-06-29 |
+| Header nav recede gated on `body.knot-resolved` (set by Home on `knot:resolved`) | During chunk-load + the tangle there was NO visible navigation anywhere; header now stays until the 4-dot row exists. Side effect: non-Home routes keep their header nav at page-top (class removed on Home unmount) — accessibility wins | review panel fixes 2026-07-02 |
+| Tagline: sentence case, solid `var(--fg)` ink; H1 keeps the one gradient | Three stacked gradient treatments in one viewport read as template, not quiet authority; amber stays reserved for Resume | review panel fixes 2026-07-02 |
+| WebGL failure degrades to a static centered label row (`hero-knot-stage--static`); Suspense fallback redrawn as a 4-dot row | Renderer-fail path previously stranded all 4 nav links overlapping at top-left; old 16-dot grid placeholder matched neither state | review panel fixes 2026-07-02 |
+| Nav words seated ~10px above their spheres (nodot 30px padding removed, JS gap tightened) | Word + ball must read as ONE nav object, not a caption over a decoration | review panel fixes 2026-07-02 |
+| Recruiter pill hidden until scroll on ≤768px (all routes) | It occluded the hero description on mobile; desktop position unchanged | review panel fixes 2026-07-02 |
+| Knot morph slowed: DELAY 0.4 / DURATION 3.8 / TAIL 0.5, absorb window 0.10→0.18 | Owner wants the morph watchable and deliberate; resolvedOnce stillness + reduced-motion paths untouched | owner direction 2026-07-02 |
 
 ## Open Questions
 - Specific hero headline copy (to be determined in strategy/content phases)

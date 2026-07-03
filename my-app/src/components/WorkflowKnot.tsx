@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 
 export type KnotNavItem = {
@@ -8,6 +8,8 @@ export type KnotNavItem = {
   onActivate?: () => void;
   accent?: boolean;
   noDot?: boolean;
+  /** Accessible name override — e.g. to announce a PDF / new-tab destination. */
+  ariaLabel?: string;
 };
 
 /**
@@ -30,12 +32,15 @@ const N = NAV + EXTRA;
 const smoothstep = (x: number) => x * x * (3 - 2 * x);
 const clamp01 = (x: number) => (x < 0 ? 0 : x > 1 ? 1 : x);
 
-const DELAY = 0.5;
-const DURATION = 3.4; // slow enough to watch the globs absorb
-const TAIL = 0.5;
+const DELAY = 0.4;
+const DURATION = 3.8; // deliberate morph — slow enough to watch the globs travel and merge
+const TAIL = 0.5; // gentle settle rather than an abrupt stop
 
 export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem[] }) {
   const mountRef = useRef<HTMLDivElement | null>(null);
+  // WebGL unavailable → the labels can't be pinned to projected node positions;
+  // CSS (`--static`) lays them out as a plain centered row instead.
+  const [glFailed, setGlFailed] = useState(false);
   const labelRefs = useRef<(HTMLAnchorElement | HTMLButtonElement | null)[]>([]);
   const navRef = useRef<KnotNavItem[]>(navItems);
   navRef.current = navItems;
@@ -50,6 +55,7 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
     try {
       renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "low-power" });
     } catch {
+      setGlFailed(true); // degrade: labels become a static centered row, nav stays usable
       return;
     }
 
@@ -71,7 +77,7 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
 
     // Resolved targets: the 4 nav dots sit in a row; every extra node funnels
     // into one of them (then fades), so a dense tangle collapses to 4 dots.
-    const navXs = [-5.0, -1.7, 1.7, 5.0];
+    const navXs = [-5.8, -1.95, 1.95, 5.8];
     const order: THREE.Vector3[] = [];
     const chaos: THREE.Vector3[] = [];
     for (let i = 0; i < NAV; i++) order.push(new THREE.Vector3(navXs[i], 0, 0));
@@ -82,26 +88,32 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
     for (let i = 0; i < N; i++) {
       chaos.push(
         new THREE.Vector3(
-          (Math.random() * 2 - 1) * 5.2,
-          (Math.random() * 2 - 1) * 2.6,
-          (Math.random() * 2 - 1) * 2.4
+          // Wider + taller starting scatter so the opening tangle reaches across
+          // the whole hero (the balls and the resolved row are unchanged — this
+          // only sets how expansively the nodes are strewn before they converge).
+          (Math.random() * 2 - 1) * 9.3,
+          (Math.random() * 2 - 1) * 5.3,
+          (Math.random() * 2 - 1) * 3.0
         )
       );
     }
     // Per-glob phase → staggered absorption + size variation (organic merge).
     const phase = Array.from({ length: N }, () => Math.random());
 
-    const CHAOS_HW = 5.7;
+    const CHAOS_HW = 6.4; // wider so the roomier nav row still fits with edge margin
     const CHAOS_HH = 2.7;
     const fitToPanel = () => {
       const halfH = Math.tan((camera.fov * Math.PI) / 360) * camera.position.z;
       const halfW = halfH * camera.aspect;
       // Fit to WIDTH so the 4-dot row stays full-width even when the panel
       // collapses to a thin strip after the animation finishes.
-      const scale = Math.max(0.4, Math.min(1.6, (halfW * 0.86) / CHAOS_HW));
+      const scale = Math.max(0.4, Math.min(1.6, (halfW * 0.82) / CHAOS_HW));
       group.scale.setScalar(scale);
       group.position.x = halfW * 0.03; // nudge right so "Projects" isn't hard against the edge
-      group.position.y = Math.max(0, halfH - CHAOS_HH * scale) * 0.12;
+      // Backdrop mode: the canvas fills the whole hero and the resolved row rests
+      // in the centred .hero-knot-band (kept text-free between the lede and the
+      // copy), so the row sits at the vertical centre.
+      group.position.y = 0;
     };
     fitToPanel();
 
@@ -159,6 +171,8 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
 
     const tmp = new THREE.Vector3();
     const proj = new THREE.Vector3();
+    const projTop = new THREE.Vector3();
+    let curPe = 0; // latest resolve progress, read by positionLabels
     const layout = (pe: number) => {
       for (let i = 0; i < N; i++) {
         tmp.copy(chaos[i]).lerp(order[i], pe);
@@ -189,19 +203,35 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
       npos.needsUpdate = true;
     };
 
-    // Pin each label to its node's projected 2D position.
-    // Pin each link above its node. The link carries its OWN dot, lifted clear
-    // of the 3D nodule so it reads as a distinct, tappable nav link. Lift scales
-    // a little with panel height so it stays proportional on small screens.
+    // Pin each label just above its node. We measure the nodule's ON-SCREEN
+    // radius (project centre + a point one world-radius above it) so the label
+    // always clears the top edge no matter how large the resolved ball grows —
+    // no more text colliding into an oversized nodule. Labels also reveal
+    // sequentially (rise + fade, left-to-right) as their dot settles, so the
+    // row reads as a deliberately composed menu rather than four loose balls.
     const positionLabels = () => {
       const items = navRef.current;
-      const lift = Math.max(8, h * 0.025);
+      // Tight seat: the word rests ~10px above its sphere so word + ball read
+      // as ONE nav object (not a caption floating over a decoration).
+      const gap = Math.max(8, h * 0.011);
       for (let k = 0; k < items.length; k++) {
         const el = labelRefs.current[k];
         if (!el) continue;
-        nodes[items[k].nodeIndex].getWorldPosition(proj).project(camera);
+        const node = nodes[items[k].nodeIndex];
+        node.getWorldPosition(proj);
+        projTop.copy(proj);
+        projTop.y += 0.22 * node.scale.x * group.scale.y; // top of the ball
+        proj.project(camera);
+        projTop.project(camera);
         const px = (proj.x * 0.5 + 0.5) * w;
-        const py = (-proj.y * 0.5 + 0.5) * h - lift;
+        const pyTop = (-projTop.y * 0.5 + 0.5) * h;
+        const reveal = smoothstep(clamp01((curPe - (0.5 + k * 0.08)) / 0.22));
+        const py = pyTop - gap + (1 - reveal) * 10;
+        el.style.opacity = String(reveal);
+        // Keep not-yet-revealed labels out of the tab order (visibility:hidden
+        // is unfocusable) so keyboard users never land on an invisible link
+        // mid-animation.
+        el.style.visibility = reveal > 0.02 ? "visible" : "hidden";
         el.style.transform = `translate(${px}px, ${py}px) translate(-50%, -100%)`;
       }
     };
@@ -224,6 +254,7 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
     let curTiltX = 0;
     let curTiltY = 0;
     let focusedIndex = -1;
+    let resolvedOnce = false; // true after first resolve — freezes tilt/parallax and stops replay-on-scroll
     const lerp = (a: number, b: number, n: number) => a + (b - a) * n;
 
     focusRef.current = (i: number) => {
@@ -241,15 +272,21 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
       if (!startT) startT = t;
       const e = t - startT;
       const pe = smoothstep(clamp01((e - DELAY) / DURATION));
+      curPe = pe;
       layout(pe);
 
-      if (focusedIndex >= 0) {
+      // Once resolved, the group no longer tilts toward a hovered node — the
+      // hovered ball still grows in place (target *= 1.3 below), but the row
+      // stays put so nav targets never move out from under the cursor.
+      if (focusedIndex >= 0 && !resolvedOnce) {
         targetTiltY = -(order[focusedIndex].x / 5.0) * 0.22;
         targetTiltX = (order[focusedIndex].y / 1.8) * 0.1;
       }
       curTiltX = lerp(curTiltX, targetTiltX, 0.12);
       curTiltY = lerp(curTiltY, targetTiltY, 0.12);
-      group.rotation.x = -0.06 + curTiltX;
+      // Ease the base 3D tilt out to flat as the tangle resolves, so the resting
+      // nav row is axis-aligned with equal baselines (stillness = quiet authority).
+      group.rotation.x = -0.06 * (1 - pe) + curTiltX;
       group.rotation.y = Math.sin(t * 0.2) * 0.18 * (1 - pe) + curTiltY;
 
       // The tangle MERGES into the nav dots: extras shrink to nothing as they
@@ -257,15 +294,20 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
       // Globs travel in at varied sizes and are absorbed one-by-one (staggered),
       // each swelling its nav dot — so it reads as blobs eating each other.
       const grow = smoothstep(clamp01((pe - 0.45) / 0.5));
+      // A damped mid-swell so each nav dot visibly "gulps" as mass arrives, then
+      // settles to an exact final size (bounce returns to 1 at grow 0 and 1).
+      const bounce = 1 + 0.12 * Math.sin(grow * Math.PI);
       let maxScaleDelta = 0;
       for (let i = 0; i < N; i++) {
         let target;
         if (i < NAV) {
-          target = 1 + 1.9 * grow;
+          // Small resting nodes — the knot is a decorative flourish now (no
+          // labels pinned to it), so the settled dots stay subtle.
+          target = (1 + 0.3 * grow) * bounce;
         } else {
           const size = 0.8 + phase[i] * 0.7; // varied glob sizes
           const start = 0.42 + phase[i] * 0.42; // staggered absorb time
-          const a = smoothstep(clamp01((pe - start) / 0.14));
+          const a = smoothstep(clamp01((pe - start) / 0.18)); // wide enough that each absorb reads as a visible merge
           target = size * (1 - a);
         }
         if (i === focusedIndex) target *= 1.3;
@@ -285,10 +327,11 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
         Math.abs(curTiltY) < 0.002 &&
         maxScaleDelta < 0.01;
       if (resolved && settled) {
-        group.rotation.x = -0.06;
+        group.rotation.x = 0;
         group.rotation.y = 0;
         curTiltX = 0;
         curTiltY = 0;
+        resolvedOnce = true;
         layout(1);
         renderOnce();
         window.dispatchEvent(new CustomEvent("knot:resolved"));
@@ -309,8 +352,11 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
     };
 
     if (reduced) {
+      curPe = 1; // labels fully revealed for the static (reduced-motion) state
+      resolvedOnce = true;
       layout(1);
-      for (let i = 0; i < N; i++) nodes[i].scale.setScalar(i < NAV ? 2.6 : 0);
+      for (let i = 0; i < N; i++) nodes[i].scale.setScalar(i < NAV ? 1.3 : 0);
+      group.rotation.x = 0;
       group.rotation.y = 0;
       renderOnce();
       window.dispatchEvent(new CustomEvent("knot:resolved"));
@@ -322,7 +368,10 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
     const io = new IntersectionObserver(
       (entries) => {
         const nowInView = entries[0].isIntersecting;
-        if (nowInView && !inView && !reduced) {
+        // Only re-run the full tangle if it hasn't resolved yet. Once resolved,
+        // scrolling back to the hero keeps the settled nav row — no re-scatter
+        // across the copy every time (the Replay button is the way to see it again).
+        if (nowInView && !inView && !reduced && !resolvedOnce) {
           startT = 0;
           layout(0);
         }
@@ -355,7 +404,7 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
 
     const coarse = window.matchMedia("(pointer: coarse)").matches;
     const onPointerMove = (ev: PointerEvent) => {
-      if (reduced || coarse) return;
+      if (reduced || coarse || resolvedOnce) return; // no cursor-parallax once the row has settled
       const rect = mount.getBoundingClientRect();
       const px = ((ev.clientX - rect.left) / rect.width) * 2 - 1;
       const py = ((ev.clientY - rect.top) / rect.height) * 2 - 1;
@@ -378,6 +427,7 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
     const onReplay = () => {
       if (reduced) return;
       window.dispatchEvent(new CustomEvent("knot:active"));
+      resolvedOnce = false; // let the tangle play (and parallax return) again
       startT = 0;
       layout(0);
       if (tabVisible && inView) start();
@@ -401,14 +451,22 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
       navEdgeGeo.dispose();
       navEdgeMat.dispose();
       renderer.dispose();
+      // Release the WebGL context itself, not just its resources — otherwise
+      // repeated Home mounts (Home → case study → Home) accumulate contexts and
+      // the browser evicts the oldest once it passes its ~16-context cap.
+      renderer.forceContextLoss();
       if (renderer.domElement.parentNode === mount) mount.removeChild(renderer.domElement);
     };
   }, []);
 
   return (
-    <div className="hero-knot-stage">
+    <div className={`hero-knot-stage${glFailed ? " hero-knot-stage--static" : ""}`}>
       <div ref={mountRef} className="hero-knot" aria-hidden="true" />
-      <div className="hero-knot-labels">
+      {/* Optional pinned nav labels. Empty today (the knot is decorative and the
+          header is the nav), so nothing renders — no empty landmark. Kept so the
+          component can still be driven as knot-nav if navItems are passed. */}
+      {navItems.length > 0 && (
+      <nav className="hero-knot-labels" aria-label="Hero shortcuts">
         {navItems.map((item, k) => {
           const handlers = {
             ref: (el: HTMLAnchorElement | HTMLButtonElement | null) => {
@@ -427,7 +485,7 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
             </>
           );
           return item.href ? (
-            <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer" {...handlers}>
+            <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer" aria-label={item.ariaLabel} {...handlers}>
               {inner}
             </a>
           ) : (
@@ -436,7 +494,8 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
             </button>
           );
         })}
-      </div>
+      </nav>
+      )}
     </div>
   );
 }

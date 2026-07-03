@@ -15,6 +15,16 @@ export default function RecruiterPill() {
   const [open, setOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
+  // On small screens the fixed pill lands on top of the hero copy, so it stays
+  // hidden until the user scrolls (CSS gates the hiding to ≤768px — desktop
+  // keeps its always-on position).
+  const [scrolled, setScrolled] = useState(() => window.scrollY > 120);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 120);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   useEffect(() => {
     const handler = () => setOpen(true);
     window.addEventListener("open-recruiter-panel", handler);
@@ -52,7 +62,7 @@ export default function RecruiterPill() {
       <button
         ref={triggerRef}
         type="button"
-        className="recruiter-pill"
+        className={`recruiter-pill${scrolled ? "" : " recruiter-pill--unscrolled"}`}
         onClick={() => setOpen(true)}
         aria-label="Open recruiter view: 90-second project breakdown"
       >

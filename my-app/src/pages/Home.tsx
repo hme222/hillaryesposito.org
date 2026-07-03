@@ -6,34 +6,22 @@ import usePageTitle from "../hooks/usePageTitle";
 
 // Lazy-loaded so three.js stays in its own chunk (only fetched when needed).
 const WorkflowKnot = lazy(() => import("../components/WorkflowKnot"));
-import type { KnotNavItem } from "../components/WorkflowKnot";
 import KnotErrorBoundary from "../components/KnotErrorBoundary";
 
-// Static resolved-grid placeholder shown while the three.js chunk loads, so the
-// hero's right column is never blank.
+// Static placeholder shown while the three.js chunk loads — mirrors the knot's
+// RESOLVED 4-dot row (amber last, connector through) so it never contradicts
+// either the tangle or the settled state it hands off to.
 function HeroKnotFallback() {
-  const xs = [60, 150, 240, 315];
-  const ys = [70, 140, 210, 280];
-  const nodes: { x: number; y: number; amber: boolean }[] = [];
-  xs.forEach((x, c) => ys.forEach((y) => nodes.push({ x, y, amber: c === 3 })));
-  const edges: [number, number, number, number][] = [];
-  ys.forEach((y) => {
-    for (let c = 0; c < 3; c++) edges.push([xs[c], y, xs[c + 1], y]);
-  });
-  edges.push(
-    [xs[0], ys[0], xs[1], ys[1]],
-    [xs[1], ys[1], xs[2], ys[0]],
-    [xs[1], ys[2], xs[2], ys[1]],
-    [xs[2], ys[2], xs[3], ys[3]]
-  );
+  const xs = [60, 145, 230, 315];
+  const y = 175;
   return (
     <div className="hero-knot" aria-hidden="true">
       <svg viewBox="0 0 375 350" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
-        {edges.map((e, i) => (
-          <line key={i} x1={e[0]} y1={e[1]} x2={e[2]} y2={e[3]} stroke="#4f6b27" strokeWidth="1.4" opacity="0.4" />
+        {xs.slice(0, -1).map((x, i) => (
+          <line key={i} x1={x} y1={y} x2={xs[i + 1]} y2={y} stroke="#4f6b27" strokeWidth="1.4" opacity="0.4" />
         ))}
-        {nodes.map((n, i) => (
-          <circle key={i} cx={n.x} cy={n.y} r={n.amber ? 8 : 7} fill={n.amber ? "#b87d35" : "#5a7a2e"} />
+        {xs.map((x, i) => (
+          <circle key={x} cx={x} cy={y} r={i === 3 ? 9 : 8} fill={i === 3 ? "#b87d35" : "#5a7a2e"} />
         ))}
       </svg>
     </div>
@@ -183,27 +171,8 @@ export default function Home() {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // The knot's four nav nodes (0 · 1 · 2 · 3) double as navigation. WorkflowKnot
-  // pins each label to its node's live screen position and rotates/grows it on hover.
-  const knotNav: KnotNavItem[] = [
-    { label: "Projects", nodeIndex: 0, noDot: true, onActivate: () => document.getElementById("projects")?.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth" }) },
-    { label: "About", nodeIndex: 1, noDot: true, onActivate: () => navigate("/about") },
-    { label: "Contact", nodeIndex: 2, noDot: true, onActivate: scrollToContact },
-    { label: "Resume", nodeIndex: 3, noDot: true, accent: true, href: "/assets/Hillary_Esposito_Portfolio_Resume.pdf" },
-  ];
-
-  // Collapse the knot's panel once it resolves to the 4 dots; expand on replay.
-  const [knotResolved, setKnotResolved] = useState(false);
-  useEffect(() => {
-    const onRes = () => setKnotResolved(true);
-    const onAct = () => setKnotResolved(false);
-    window.addEventListener("knot:resolved", onRes);
-    window.addEventListener("knot:active", onAct);
-    return () => {
-      window.removeEventListener("knot:resolved", onRes);
-      window.removeEventListener("knot:active", onAct);
-    };
-  }, []);
+  // The knot is now purely a decorative "complexity → clarity" flourish — the
+  // header nav (always visible) is the navigation, so no labels are pinned to it.
 
   const email = "espositohillary@gmail.com";
 
@@ -242,45 +211,60 @@ export default function Home() {
 
         <OrbBackground />
 
+        {/* Knot as an IMMERSIVE BACKDROP: the tangle resolves behind the whole
+            hero (balls dimmed + masked at top/bottom for readability), while the
+            text sits on top. Its nav words are a separate, un-dimmed layer that
+            lands in the text-free middle band. */}
+        <div className="hero-visual">
+          <KnotErrorBoundary fallback={<HeroKnotFallback />}>
+            <Suspense fallback={<HeroKnotFallback />}>
+              <WorkflowKnot />
+            </Suspense>
+          </KnotErrorBoundary>
+
+          {!prefersReducedMotion && (
+            <button
+              type="button"
+              className="hero-knot-replay"
+              onClick={() => window.dispatchEvent(new CustomEvent("knot:replay"))}
+              aria-label="Replay the animation"
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M3 12a9 9 0 1 0 3-6.7" />
+                <path d="M3 4v4h4" />
+              </svg>
+              Replay
+            </button>
+          )}
+        </div>
+
         <div className="hero-content hero-content--centered" style={{ position:"relative", zIndex:1 }}>
 
-          {/* Knot leads — its nodes are the nav, resolving from a dense tangle. */}
-          <div className={`hero-visual${knotResolved ? " hero-visual--resolved" : ""}`}>
-            <KnotErrorBoundary fallback={<HeroKnotFallback />}>
-              <Suspense fallback={<HeroKnotFallback />}>
-                <WorkflowKnot navItems={knotNav} />
-              </Suspense>
-            </KnotErrorBoundary>
+          {/* Lede clusters at the TOP; the copy sits at the BOTTOM (space-between),
+              leaving the middle band for the knot-nav to breathe behind. */}
+          <div className="hero-lede">
+            {/* Status chip */}
+            <motion.div className="home-status-chip" {...stagger(0)}>
+              <span className="home-status-dot" aria-hidden="true" />
+              Available for opportunities
+            </motion.div>
 
-            {!prefersReducedMotion && (
-              <button
-                type="button"
-                className="hero-knot-replay"
-                onClick={() => window.dispatchEvent(new CustomEvent("knot:replay"))}
-                aria-label="Replay the animation"
-              >
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M3 12a9 9 0 1 0 3-6.7" />
-                  <path d="M3 4v4h4" />
-                </svg>
-                Replay
-              </button>
-            )}
+            <motion.h1 className="hero-title" {...stagger(0.08)}>
+              HILLARY ESPOSITO
+            </motion.h1>
+
+            {/* Solid ink, sentence case — the H1 above keeps the viewport's one
+                gradient treatment; amber stays reserved for the Resume node. */}
+            <motion.p className="hero-positioning" {...stagger(0.12)}>
+              Turning complex healthcare and enterprise workflows into trusted digital products.
+            </motion.p>
           </div>
 
-          {/* Status chip */}
-          <motion.div className="home-status-chip" {...stagger(0)}>
-            <span className="home-status-dot" aria-hidden="true" />
-            Available for opportunities
-          </motion.div>
-
-          <motion.h1 className="hero-title" {...stagger(0.08)}>
-            HILLARY ESPOSITO
-          </motion.h1>
-
-          <motion.p className="hero-positioning hero-positioning-gradient" {...stagger(0.12)}>
-            Turning complex healthcare and enterprise workflows into trusted digital products.
-          </motion.p>
+          {/* Reserved band the knot-nav resolves INTO — keeps the nav row (and
+              its words) in clear space between the lede above and the copy
+              below, so nothing collides. The balls still animate full-height
+              behind everything; only their resting row lands here. */}
+          <div className="hero-knot-band" aria-hidden="true" />
 
           <div className="hero-copy">
             <motion.p className="hero-description" {...stagger(0.16)}>
