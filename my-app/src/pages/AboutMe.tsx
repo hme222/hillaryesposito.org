@@ -22,7 +22,7 @@ const AGENDA = [
   {
     icon: "04",
     title: "AI judgment, not AI hype",
-    desc: "Everyone uses AI now. The skill is knowing when to trust it and when to override it. On Grove I rejected five of its suggestions — and documented why.",
+    desc: "Everyone uses AI now. The skill is knowing when to trust it and when to override it. On Grove I rejected five of its suggestions, and documented why.",
   },
 ];
 

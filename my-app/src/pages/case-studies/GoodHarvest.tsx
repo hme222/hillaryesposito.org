@@ -416,7 +416,7 @@ export default function GoodHarvest() {
         <div className="cs-evidence-pair">
           <p className="cs-evidence-pair__finding">I designed for discoverability when the real problem was trust.</p>
           <p className="cs-evidence-pair__evidence">
-            My first wireframes focused on making seasonal produce easier to find — bigger cards, clearer categories,
+            My first wireframes focused on making seasonal produce easier to find: bigger cards, clearer categories,
             prominent search. But heatmap testing showed users were already finding the content. They just didn't
             believe the seasonality claims applied to their specific location. I had to redesign the produce detail
             screen around credibility signals (data sources, location specificity) instead of navigation patterns.
@@ -460,10 +460,10 @@ export default function GoodHarvest() {
           <p className="cs-shows-card__label">What this shows about my design approach</p>
           <p className="cs-shows-card__text">
             I don't treat research as a phase that ends. In this project, heatmap testing after
-            the initial design round changed core decisions — the seasonal produce screen needed
+            the initial design round changed core decisions: the seasonal produce screen needed
             a completely different visual hierarchy than what I'd designed first. I test with real
             users, read what they actually do (not what they say), and redesign based on evidence.
-            That cycle — design, test, learn, redesign — is how I work on every project.
+            That cycle (design, test, learn, redesign) is how I work on every project.
           </p>
         </div>
       </section>

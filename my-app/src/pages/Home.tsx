@@ -256,7 +256,7 @@ export default function Home() {
             {/* Solid ink, sentence case — the H1 above keeps the viewport's one
                 gradient treatment; amber stays reserved for the Resume node. */}
             <motion.p className="hero-positioning" {...stagger(0.12)}>
-              Turning complex healthcare and enterprise workflows into trusted digital products.
+              UX/Product Designer turning complex healthcare and enterprise workflows into trusted digital products.
             </motion.p>
           </div>
 
@@ -268,7 +268,7 @@ export default function Home() {
 
           <div className="hero-copy">
             <motion.p className="hero-description" {...stagger(0.16)}>
-              UX/Product Designer. 13+ years of leadership across process improvement, clinical systems, military operations, and UX research. Army veteran.
+              13+ years of leadership across process improvement, clinical systems, military operations, and UX research. Army veteran.
             </motion.p>
 
             <motion.div className="hero-actions" {...stagger(0.24)}>

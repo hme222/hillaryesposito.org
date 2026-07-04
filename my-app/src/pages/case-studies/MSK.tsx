@@ -100,7 +100,7 @@ export default function MSKCaseStudy() {
             <p className="cs-team-card__role">Role 1: Office Coordinator</p>
             <p className="cs-team-card__desc">
               Coordinated clinical office operations day to day, embedded with frontline teams. This is where I
-              learned how the work actually flowed — shadowing nurses and clinicians and mapping real behavior
+              learned how the work actually flowed, shadowing nurses and clinicians and mapping real behavior
               against documented policy.
             </p>
           </div>
@@ -160,7 +160,7 @@ export default function MSKCaseStudy() {
         <p className="cs-section-intro">
           Every project here was the same move: take disconnected EMR, certification, and
           onboarding systems and reorganize them into a flow the 21,000+ people inside could
-          actually follow. Scroll — the knot below maps that path, stage by stage.
+          actually follow. Scroll: the knot below maps that path, stage by stage.
         </p>
         <Suspense fallback={<div className="msk-systemmap" />}>
           <MSKSystemMap />
@@ -200,7 +200,7 @@ export default function MSKCaseStudy() {
             <p className="cs-method-card__name">Frontline shadowing</p>
             <p className="cs-method-card__why">
               Interviewed and observed nurses, clinicians, and admin staff during actual shifts.
-              Not in a conference room — on the floor, watching where they paused, backtracked, or worked around the system.
+              Not in a conference room. On the floor, watching where they paused, backtracked, or worked around the system.
               This is how I found the gap between documented workflows and real behavior.
             </p>
           </div>
@@ -216,7 +216,7 @@ export default function MSKCaseStudy() {
             <p className="cs-method-card__name">Workflow mapping (current vs. ideal state)</p>
             <p className="cs-method-card__why">
               Documented every step, handoff, and decision point in the actual workflow, then mapped the ideal state.
-              The visual comparison was the artifact that aligned stakeholders — everyone could see where the waste lived.
+              The visual comparison was the artifact that aligned stakeholders: everyone could see where the waste lived.
             </p>
           </div>
           <div className="cs-method-card">
@@ -238,7 +238,7 @@ export default function MSKCaseStudy() {
         </p>
 
         <div className="cs-evidence-pair">
-          <p className="cs-evidence-pair__finding">Finding: Clinicians weren't slow — the system made them slow.</p>
+          <p className="cs-evidence-pair__finding">Finding: Clinicians weren't slow; the system made them slow.</p>
           <p className="cs-evidence-pair__evidence">
             Shadowing revealed that completing a single clinical task required navigating 3 separate systems,
             re-entering patient data at each transition, and mentally tracking context across windows.
@@ -258,7 +258,7 @@ export default function MSKCaseStudy() {
           <p className="cs-evidence-pair__finding">Finding: Staff didn't fail certifications from neglect. They failed because the system only told them after the fact.</p>
           <p className="cs-evidence-pair__evidence">
             The certification tracking spreadsheet had no proactive alerts. Staff learned their certification had
-            lapsed when compliance flagged it — by then it was a disciplinary issue, not a planning issue.
+            lapsed when compliance flagged it. By then it was a disciplinary issue, not a planning issue.
             Managers had no dashboard view of upcoming expirations across their teams.
           </p>
           <div className="cs-insight-action" style={{ marginTop: "0.75rem" }}>
@@ -482,8 +482,8 @@ export default function MSKCaseStudy() {
             <h3>Why this work matters now</h3>
             <p>
               The clinical workflows I redesigned are exactly the systems being augmented by AI today.
-              Understanding how 21,000 clinicians actually work — how they build workarounds, where they
-              lose trust, what makes them adopt or resist change — is the foundation for designing
+              Understanding how 21,000 clinicians actually work (how they build workarounds, where they
+              lose trust, what makes them adopt or resist change) is the foundation for designing
               AI-augmented tools they'll actually use.
             </p>
           </div>
@@ -495,7 +495,7 @@ export default function MSKCaseStudy() {
             I start with the people inside the system, not the interface around it. I use research methods that
             match the organization's language (Lean Six Sigma at MSK, not "design sprints"). I align stakeholders
             before proposing solutions. I measure whether the change worked for the people using it, not whether
-            it was delivered on time. And I design for sustainment — solutions that survive leadership transitions
+            it was delivered on time. And I design for sustainment: solutions that survive leadership transitions
             and system upgrades, not just launch day.
           </p>
         </div>

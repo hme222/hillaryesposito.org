@@ -425,7 +425,7 @@ export default function MobbinCaseStudy() {
           <p className="cs-evidence-pair__finding">My first submission batch had tag inconsistencies that doubled the review cycle.</p>
           <p className="cs-evidence-pair__evidence">
             I tagged screens based on my own vocabulary instead of aligning with Mobbin's existing taxonomy first.
-            "Progress indicator" vs. "status display" vs. "achievement" — each maps to a different search behavior.
+            "Progress indicator" vs. "status display" vs. "achievement": each maps to a different search behavior.
             After the first review round flagged the inconsistencies, I restructured my process to front-load taxonomy
             review before capturing any screens. Revision cycles dropped by half.
           </p>
@@ -436,7 +436,7 @@ export default function MobbinCaseStudy() {
           <p className="cs-evidence-pair__evidence">
             My first Discover submission included promotional interstitials and marketing landing screens.
             Mobbin's feedback was clear: designers search for interaction patterns, not marketing content.
-            I shifted to prioritizing onboarding flows, key task completions, and edge/empty states — the
+            I shifted to prioritizing onboarding flows, key task completions, and edge/empty states: the
             screens that solve real design problems.
           </p>
         </div>
@@ -504,7 +504,7 @@ export default function MobbinCaseStudy() {
           <p className="cs-shows-card__label">What this shows about my design approach</p>
           <p className="cs-shows-card__text">
             This contract is product analysis at scale. Studying 200+ screens across three fintech
-            apps built pattern recognition I use in every design decision — knowing how leading
+            apps built pattern recognition I use in every design decision: knowing how leading
             products handle trust, disclosure, and progressive complexity isn't theory, it's
             something I've documented screen by screen. It also proved I can produce high-quality
             work inside someone else's system, adapting to their taxonomy, quality bar, and review

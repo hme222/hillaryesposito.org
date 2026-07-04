@@ -84,7 +84,7 @@ const AI_DECISIONS = [
 const PUSHBACK = [
   {
     topic: "Personality tone",
-    ai: "Playful, anthropomorphized guilt — “I’m thirsty, why did you forget me?”",
+    ai: "Playful, anthropomorphized guilt: “I’m thirsty, why did you forget me?”",
     me: "Encouraging tone only; prompt guardrails reject blame and neglect language.",
     why: "Guilt directly contradicts the calm experience users told me they wanted. I tested 20+ generations before locking the template.",
   },
@@ -92,7 +92,7 @@ const PUSHBACK = [
     topic: "Notification frequency",
     ai: "Daily push notifications for every plant.",
     me: "A single morning digest per bouquet.",
-    why: "“Too many notifications” was the #1 instant-delete trigger in the survey — 15+ respondents named it unprompted.",
+    why: "“Too many notifications” was the #1 instant-delete trigger in the survey; 15+ respondents named it unprompted.",
   },
   {
     topic: "Plant ID confidence",
@@ -235,7 +235,7 @@ export default function GroveCaseStudy() {
         </p>
 
         <div className="cs-research-questions">
-          <div className="cs-research-question">What actually causes plant deaths — lack of knowledge, lack of motivation, or lack of tools?</div>
+          <div className="cs-research-question">What actually causes plant deaths: lack of knowledge, lack of motivation, or lack of tools?</div>
           <div className="cs-research-question">Which features would make someone download a plant care app vs. delete it?</div>
           <div className="cs-research-question">Where does AI create genuine value in plant care, and where does it erode trust?</div>
           <div className="cs-research-question">What does "calm" look like in an app category dominated by notification spam?</div>
@@ -562,7 +562,7 @@ export default function GroveCaseStudy() {
             <span className="pushback-callout__marker" aria-hidden="true">✋</span>
             <div>
               <h3 id="pushback-heading" className="pushback-callout__eyebrow">Where I pushed back</h3>
-              <p className="pushback-callout__sub">Four moments I overruled the AI — and why.</p>
+              <p className="pushback-callout__sub">Four moments I overruled the AI, and why.</p>
             </div>
           </div>
           <ul className="pushback-list">
@@ -762,7 +762,7 @@ export default function GroveCaseStudy() {
           <p className="cs-shows-card__label">What this shows about my design approach</p>
           <p className="cs-shows-card__text">
             I validate before I build. I let data reorder my priorities, even when it means deprioritizing features I already designed.
-            I document AI decisions with explicit reasoning — not "I used AI" but "here's where I trusted it, where I overrode it,
+            I document AI decisions with explicit reasoning: not "I used AI" but "here's where I trusted it, where I overrode it,
             and why." And I design for the emotional experience users described, not the feature list competitors ship.
           </p>
         </div>
