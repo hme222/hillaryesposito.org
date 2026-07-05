@@ -646,7 +646,7 @@ select:focus {
 }
 /* Keep it legible on the dark theme too (deep olive would vanish on black). */
 .dark-mode .hero-title {
-  background: linear-gradient(135deg, #ecc187 0%, #c98f43 100%);
+  background: linear-gradient(135deg, #f0d3a4 0%, #d9a55e 100%);
   -webkit-background-clip: text;
   background-clip: text;
 }
@@ -1243,6 +1243,19 @@ select:focus {
 }
 .dark-mode .orb-bg {
   opacity: 0.4;
+}
+/* Inline "View it live" style link inside case-study copy. */
+.cs-inline-link {
+  color: var(--olive-2);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 1px solid color-mix(in srgb, var(--olive-2) 38%, transparent);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.cs-inline-link:hover,
+.cs-inline-link:focus-visible {
+  border-bottom-color: var(--olive-2);
 }
 @media (max-width: 768px) {
   .hero-content--centered {
@@ -2615,19 +2628,23 @@ main.case-study {
 html.dark-mode,
 body.dark-mode,
 .dark-mode {
-  --bg: #1a0e03;
-  --fg: #f8d2b7;
-  --card: #36220c;
-  --surface-0: #1a0e03;
-  --surface-1: #36220c;
-  --surface-2: #5f3f1c;
-  --border: rgba(248, 210, 183, 0.18);
-  --focus: #eba352;
+  /* "Matcha and Honey" dark palette: warm-black ground (orange cast removed),
+     ivory text, honey accent. Sage lives in the knot; honey in the UI accents. */
+  --bg: #15120c;
+  --fg: #f5efe6;
+  --muted: #b3a89a;
+  --card: #231d14;
+  --surface-0: #15120c;
+  --surface-1: #231d14;
+  --surface-2: #2e261a;
+  --border: rgba(245, 239, 230, 0.14);
+  --focus: #e8b06a;
+  --accent-warm: #e8b06a;
 
-  /* keep your existing gradient system working */
-  --olive-1: #eba352;
-  --olive-2: #ba803f;
-  --olive-3: #8b5f2d;
+  /* gradient-text stops shift to creamy honey to match the new ground */
+  --olive-1: #f0d3a4;
+  --olive-2: #d9a55e;
+  --olive-3: #b8823f;
 }
 
 /* =========================================================

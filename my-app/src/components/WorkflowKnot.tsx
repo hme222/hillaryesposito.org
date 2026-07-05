@@ -241,6 +241,30 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
       positionLabels();
     };
 
+    // Materials are created once; re-tint them when the site theme toggles. Dark
+    // mode lifts the olive to a "matcha" sage and warms the connector so the
+    // spheres read on the warm-black ground instead of muddying into it.
+    const applyTheme = () => {
+      const dark = document.documentElement.classList.contains("dark-mode");
+      if (dark) {
+        oliveMat.color.set(0x8fa452); oliveMat.emissive.set(0x4a5a28); oliveMat.emissiveIntensity = 0.45;
+        extraMat.color.set(0x8fa452); extraMat.emissive.set(0x4a5a28); extraMat.emissiveIntensity = 0.4;
+        amberMat.color.set(0xd99a4e); amberMat.emissive.set(0x6e4a1c); amberMat.emissiveIntensity = 0.45;
+        edgeMat.color.set(0x8a7a5e); navEdgeMat.color.set(0x8a7a5e);
+      } else {
+        // Light mode: carry the dark version's lifted "matcha + honey" character
+        // onto the cream ground — a livelier sage and a warmer honey, with a bit
+        // more emissive glow than the old flat olive.
+        oliveMat.color.set(0x7c9a45); oliveMat.emissive.set(0x3d4e1e); oliveMat.emissiveIntensity = 0.42;
+        extraMat.color.set(0x7c9a45); extraMat.emissive.set(0x3d4e1e); extraMat.emissiveIntensity = 0.38;
+        amberMat.color.set(0xcf9147); amberMat.emissive.set(0x6e4a1c); amberMat.emissiveIntensity = 0.42;
+        edgeMat.color.set(0x6a8a3a); navEdgeMat.color.set(0x6a8a3a);
+      }
+    };
+    applyTheme();
+    const themeObserver = new MutationObserver(() => { applyTheme(); renderOnce(); });
+    themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+
     let rafId = 0;
     let running = false;
     let inView = true;
@@ -438,6 +462,7 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
       stop();
       io.disconnect();
       ro.disconnect();
+      themeObserver.disconnect();
       document.removeEventListener("visibilitychange", onVisibility);
       mount.removeEventListener("pointermove", onPointerMove);
       mount.removeEventListener("pointerleave", onPointerLeave);
