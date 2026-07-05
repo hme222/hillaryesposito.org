@@ -52,17 +52,17 @@ const OrbBackground: React.FC = () => (
     <style>{orbStyles}</style>
     <div style={{ position:"absolute", borderRadius:"50%", filter:"blur(80px)", width:400, height:400, top:-100, left:-100,
       background:"radial-gradient(circle, rgba(128,128,0,.22) 0%, rgba(107,142,35,.14) 50%, transparent 75%)",
-      animation:"breathe1 8s ease-in-out infinite", pointerEvents:"none", zIndex:0 }} />
+      animation:"breathe1 8s ease-in-out 3", pointerEvents:"none", zIndex:0 }} />
     <div style={{ position:"absolute", borderRadius:"50%", filter:"blur(90px)", width:560, height:560, bottom:-160, right:-100,
       background:"radial-gradient(circle, rgba(85,107,47,.11) 0%, rgba(107,142,35,.06) 50%, transparent 75%)",
-      animation:"breathe2 11s ease-in-out infinite", pointerEvents:"none", zIndex:0 }} />
+      animation:"breathe2 11s ease-in-out 3", pointerEvents:"none", zIndex:0 }} />
     <div style={{ position:"absolute", borderRadius:"50%", filter:"blur(60px)", width:340, height:340, bottom:-100, right:-60,
       background:"radial-gradient(circle, rgba(85,107,47,.18) 0%, rgba(107,142,35,.11) 50%, transparent 75%)",
-      animation:"breathe2 11s ease-in-out infinite", pointerEvents:"none" }} />
+      animation:"breathe2 11s ease-in-out 3", pointerEvents:"none" }} />
     <div style={{ position:"absolute", borderRadius:"50%", filter:"blur(90px)", width:320, height:320, top:"50%", left:"50%",
       transform:"translate(-50%,-50%)",
       background:"radial-gradient(circle, rgba(128,128,0,.055) 0%, transparent 70%)",
-      animation:"breathe3 14s ease-in-out infinite", pointerEvents:"none", zIndex:0 }} />
+      animation:"breathe3 14s ease-in-out 3", pointerEvents:"none", zIndex:0 }} />
   </div>
 );
 

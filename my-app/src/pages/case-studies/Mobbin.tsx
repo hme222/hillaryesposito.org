@@ -55,7 +55,7 @@ const WHAT_I_DID = [
   {
     num: "04",
     title: "Reviewed and refined for accuracy",
-    desc: "Ensured each submission was usable as a reliable product design reference. Front-loaded taxonomy alignment after the first review round, which cut revision cycles by 50%.",
+    desc: "Ensured each submission was usable as a reliable product design reference. Front-loaded taxonomy alignment after the first review round, which reduced rework on later batches.",
   },
 ];
 
@@ -332,7 +332,7 @@ export default function MobbinCaseStudy() {
             catalogued flows for review against their quality bar and taxonomy standards.
             Feedback was specific: tag accuracy, annotation clarity, flow completeness.
             I adapted my process after the first review round to front-load taxonomy
-            alignment before capturing screens, which cut revision cycles in half.
+            alignment before capturing screens, which cut down the back-and-forth on later batches.
           </p>
         </div>
       </section>
@@ -372,7 +372,7 @@ export default function MobbinCaseStudy() {
             <tr>
               <td>Taxonomy alignment</td>
               <td>Front-loaded taxonomy review before capturing screens; revised after first feedback round</td>
-              <td>First submission batch had tag inconsistencies that cut revision cycles in half after realigning early</td>
+              <td>First submission batch drew tag-consistency feedback; realigning to their taxonomy early reduced rework on the batches that followed</td>
             </tr>
             <tr>
               <td>Annotation style</td>
@@ -406,12 +406,8 @@ export default function MobbinCaseStudy() {
             <p className="cs-outcome-label">Distinct trust pattern categories documented across apps</p>
           </div>
           <div className="cs-outcome-card">
-            <p className="cs-outcome-value gradient-text">Shipped</p>
-            <p className="cs-outcome-label">Contributions live in Mobbin, used by designers globally</p>
-          </div>
-          <div className="cs-outcome-card">
-            <p className="cs-outcome-value gradient-text">50%</p>
-            <p className="cs-outcome-label">Fewer revision cycles after front-loading taxonomy alignment</p>
+            <p className="cs-outcome-value gradient-text">Ongoing</p>
+            <p className="cs-outcome-label">Active contract; flows catalogued and submitted to Mobbin's reference library</p>
           </div>
         </div>
       </section>

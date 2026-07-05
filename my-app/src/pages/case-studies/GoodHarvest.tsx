@@ -281,11 +281,11 @@ export default function GoodHarvest() {
 
         <h3 style={{ color: "var(--olive-2)", marginTop: "2rem", marginBottom: "0.75rem" }}>Recipes: embedded discovery</h3>
         <p style={{ fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65, marginBottom: "1rem" }}>
-          Recipe CTA engagement jumped from 40% to 70% after embedding recipes inline with produce detail instead of a separate tab.
+          I embedded recipes inline with produce detail instead of behind a separate tab, putting them in the path people were already on.
         </p>
         <div className="cs-gallery cols-2">
           <MediaCard src={screens.recipesWire} alt="Recipes wireframe showing embedded recipe discovery"         caption="v2: recipes embedded in produce context." />
-          <MediaCard src={screens.recipesHeat} alt="Recipes heatmap showing improved engagement"                  caption="Heatmap: 70% recipe CTA engagement (up from 40%)." />
+          <MediaCard src={screens.recipesHeat} alt="Recipes layout showing recipes surfaced inline with produce"  caption="Recipes surfaced inline with produce detail." />
         </div>
       </section>
 
@@ -380,16 +380,12 @@ export default function GoodHarvest() {
         <h2 className="cs-section-title">What prototype testing suggested</h2>
         <div className="cs-outcome-grid">
           <div className="cs-outcome-card">
-            <p className="cs-outcome-value gradient-text">3/4</p>
-            <p className="cs-outcome-label">Users completed core flow unassisted (vs. 1/4 in round one)</p>
+            <p className="cs-outcome-value gradient-text">3 of 4</p>
+            <p className="cs-outcome-label">In-depth usability testers completed the core flow unassisted (1 of 4 in round one)</p>
           </div>
           <div className="cs-outcome-card">
             <p className="cs-outcome-value gradient-text">4 taps</p>
             <p className="cs-outcome-label">Average path to action, down from 7 in v1</p>
-          </div>
-          <div className="cs-outcome-card">
-            <p className="cs-outcome-value gradient-text">70%</p>
-            <p className="cs-outcome-label">Recipe CTA engagement in v2 vs. 40% in v1</p>
           </div>
           <div className="cs-outcome-card">
             <p className="cs-outcome-value gradient-text">22</p>

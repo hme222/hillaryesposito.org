@@ -75,11 +75,12 @@ export default function MSKCaseStudy() {
         <p className="gh-section-label">Overview</p>
         <h2 className="cs-section-title">Designing for 21,000 clinicians inside the systems they depend on</h2>
         <p className="cs-overview-text">
-          At MSK, I optimized internal operations: mapping workflows, identifying where systems failed
-          the clinicians using them, aligning stakeholders across clinical and administrative teams,
-          and shipping solutions that 21,000+ users relied on daily. This was deep user research before
-          I formally had the vocabulary for it. The work that matters most in healthcare happens before
-          anyone opens Figma.
+          At MSK, I optimized how the place actually ran. I mapped workflows, found where systems failed
+          the clinicians using them, aligned clinical and administrative stakeholders, and shipped fixes
+          that 21,000+ people relied on daily. This was deep user research before I formally had the
+          vocabulary for it. The instinct came from the Army, where I had directed medical logistics for
+          5,000+ soldiers, systems whose failures were measured in readiness, not support tickets. The
+          work that matters most in healthcare happens before anyone opens Figma.
         </p>
         <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
           <strong>Note:</strong> Internal systems and patient data are confidential. This case study
@@ -386,15 +387,15 @@ export default function MSKCaseStudy() {
         <div className="cs-outcome-grid">
           <div className="cs-outcome-card">
             <p className="cs-outcome-value gradient-text">20%</p>
-            <p className="cs-outcome-label">EMR cost reduction through workflow redesign</p>
+            <p className="cs-outcome-label">Organization-wide EMR cost reduction. I led the process redesign.</p>
           </div>
           <div className="cs-outcome-card">
             <p className="cs-outcome-value gradient-text">70%</p>
-            <p className="cs-outcome-label">Efficiency gains in clinical certification workflows</p>
+            <p className="cs-outcome-label">Efficiency gain in the certification workflows I rebuilt.</p>
           </div>
           <div className="cs-outcome-card">
             <p className="cs-outcome-value gradient-text">21K+</p>
-            <p className="cs-outcome-label">Clinicians impacted by onboarding redesign</p>
+            <p className="cs-outcome-label">Clinicians across the workflows I redesigned</p>
           </div>
           <div className="cs-outcome-card">
             <p className="cs-outcome-value gradient-text">3</p>
