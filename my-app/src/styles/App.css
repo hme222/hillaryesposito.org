@@ -409,6 +409,9 @@ select:focus {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  /* WCAG 2.5.8 target size: the icon is 18px, so pad the hit area to ≥40px. */
+  min-width: 40px;
+  min-height: 40px;
 }
 
 .theme-btn:hover {
@@ -1230,6 +1233,16 @@ select:focus {
    behind the lede/copy, not from fading the knot). */
 .home-hero .hero-knot {
   opacity: 0.5;
+}
+/* Dark mode (class is on <html>, so target .dark-mode, not body.dark-mode):
+   the olive/amber balls sit on a near-black ground, so lift them out of the
+   murk rather than dimming them into it, and mute the ambient orbs that
+   otherwise wash the background muddy-brown. */
+.dark-mode .home-hero .hero-knot {
+  opacity: 0.85;
+}
+.dark-mode .orb-bg {
+  opacity: 0.4;
 }
 @media (max-width: 768px) {
   .hero-content--centered {

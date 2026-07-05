@@ -48,7 +48,7 @@ const orbStyles = `
 `;
 
 const OrbBackground: React.FC = () => (
-  <div aria-hidden="true">
+  <div className="orb-bg" aria-hidden="true">
     <style>{orbStyles}</style>
     <div style={{ position:"absolute", borderRadius:"50%", filter:"blur(80px)", width:400, height:400, top:-100, left:-100,
       background:"radial-gradient(circle, rgba(128,128,0,.22) 0%, rgba(107,142,35,.14) 50%, transparent 75%)",

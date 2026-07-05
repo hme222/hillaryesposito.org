@@ -206,7 +206,7 @@ export default function GoodHarvest() {
             <div className="reina-flow-content">
               <h3 style={{ margin: "0 0 0.35rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>Evidence-based design decisions</h3>
               <p style={{ margin: 0, fontSize: "0.97rem", color: "var(--muted)", lineHeight: 1.7 }}>
-                Every design choice traced back to research. Produce-first IA (heatmap showed 70% of first taps went to produce),
+                Every design choice traced back to research. Produce-first IA (testing showed first taps landed on produce, not the top nav),
                 embedded recipe CTAs (removed navigation friction), and explicit location indicators (addressing trust, not discoverability).
               </p>
             </div>
@@ -266,7 +266,7 @@ export default function GoodHarvest() {
         <h3 style={{ color: "var(--olive-2)", marginBottom: "0.75rem" }}>Home screen: produce-first hierarchy</h3>
         <div className="cs-gallery cols-3">
           <MediaCard src={screens.homeWire}  alt="Good Harvest home wireframe showing layout hierarchy"          caption="Wireframe: hierarchy + tap targets." />
-          <MediaCard src={screens.homeHeat}  alt="Heatmap showing attention on seasonal produce module"           caption="Heatmap: 70% of first taps went to produce." />
+          <MediaCard src={screens.homeHeat}  alt="Heatmap showing attention on seasonal produce module"           caption="First taps landed on produce, not the top nav." />
           <MediaCard src={screens.appMobile} alt="Good Harvest mobile app showing seasonal produce and recipes"   caption="Final: produce-first, secondary nav below fold." />
         </div>
 
@@ -321,7 +321,7 @@ export default function GoodHarvest() {
           <div className="feature">
             <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>Secondary nav relocated</h3>
             <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
-              Heatmaps showed 70% of first taps went to produce; top nav was ignored.
+              Testing showed first taps landed on produce; top nav was ignored.
               Moved secondary actions below the fold and embedded recipe CTAs directly in produce detail.
             </p>
           </div>
@@ -363,7 +363,7 @@ export default function GoodHarvest() {
             <tr>
               <td>Entry point</td>
               <td>Produce-first home screen; markets as secondary action</td>
-              <td>Heatmap showed 70% of first taps went to produce. Users orient around ingredients, not locations</td>
+              <td>Testing showed first taps landed on produce, not the top nav. Users orient around ingredients, not locations</td>
             </tr>
             <tr>
               <td>Recipe discovery</td>
@@ -380,8 +380,8 @@ export default function GoodHarvest() {
         <h2 className="cs-section-title">What prototype testing suggested</h2>
         <div className="cs-outcome-grid">
           <div className="cs-outcome-card">
-            <p className="cs-outcome-value gradient-text">3 of 4</p>
-            <p className="cs-outcome-label">In-depth usability testers completed the core flow unassisted (1 of 4 in round one)</p>
+            <p className="cs-outcome-value gradient-text">3/4</p>
+            <p className="cs-outcome-label">Users completed core flow unassisted (vs. 1/4 in round one)</p>
           </div>
           <div className="cs-outcome-card">
             <p className="cs-outcome-value gradient-text">4 taps</p>

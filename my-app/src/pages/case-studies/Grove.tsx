@@ -140,7 +140,7 @@ export default function GroveCaseStudy() {
           <p className="gh-hero__intro">
             Plant parents kill their plants because care advice is generic, conflicting,
             and untrustworthy. I surveyed 32 users, defined an MVP from their data, and
-            built a working app, using AI tools throughout to show{" "}
+            am building a working app, using AI tools throughout to show{" "}
             <strong>where AI accelerates and where human judgment leads.</strong>
           </p>
         </div>
@@ -158,10 +158,10 @@ export default function GroveCaseStudy() {
         {[
           { label: "Role",     value: "Product Designer (solo)" },
           { label: "Type",     value: "Full-Stack App" },
-          { label: "Timeline", value: "3 weeks, solo" },
+          { label: "Timeline", value: "3 weeks so far, solo" },
           { label: "Stack",    value: "React · FastAPI · MongoDB" },
           { label: "AI Tools", value: "Claude Code · Cursor · Emergent" },
-          { label: "Status",   value: "Built, testing next" },
+          { label: "Status",   value: "In progress, testing next" },
         ].map((item, i, arr) => (
           <React.Fragment key={item.label}>
             <div className="gh-meta-strip__item">
@@ -662,7 +662,7 @@ export default function GroveCaseStudy() {
             <p className="cs-outcome-label">AI decisions documented with explicit human override reasoning</p>
           </div>
           <div className="cs-outcome-card">
-            <p className="cs-outcome-value gradient-text">Shipped</p>
+            <p className="cs-outcome-value gradient-text">In progress</p>
             <p className="cs-outcome-label">Full-stack app (React + FastAPI + MongoDB) ready for moderated testing</p>
           </div>
         </div>

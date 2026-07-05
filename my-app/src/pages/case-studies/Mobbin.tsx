@@ -108,7 +108,7 @@ export default function MobbinCaseStudy() {
         {[
           { label: "Role",    value: "App Capture Specialist" },
           { label: "Client",  value: "Mobbin · Freelance" },
-          { label: "Timeline", value: "Mar 2026 - Present · 4 months" },
+          { label: "Timeline", value: "Mar - Jun 2026 · 4 months" },
           { label: "Output",  value: "3 apps · 200+ screens · Full flow capture" },
           { label: "Focus",   value: "UX flow documentation · UI pattern curation" },
           { label: "Status",  value: "Ongoing" },
@@ -406,8 +406,8 @@ export default function MobbinCaseStudy() {
             <p className="cs-outcome-label">Distinct trust pattern categories documented across apps</p>
           </div>
           <div className="cs-outcome-card">
-            <p className="cs-outcome-value gradient-text">Ongoing</p>
-            <p className="cs-outcome-label">Active contract; flows catalogued and submitted to Mobbin's reference library</p>
+            <p className="cs-outcome-value gradient-text">Launched</p>
+            <p className="cs-outcome-label">Live in Mobbin's Finance+ library (50+ finance apps, launched June 2026)</p>
           </div>
         </div>
       </section>
