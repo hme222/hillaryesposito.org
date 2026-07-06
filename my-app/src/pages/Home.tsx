@@ -3,36 +3,28 @@ import React, { useEffect, useState, useRef, useMemo, lazy, Suspense } from "rea
 import { motion, useReducedMotion } from "framer-motion";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import usePageTitle from "../hooks/usePageTitle";
+import { useT } from "../app/LanguageContext";
+import type { StringKey } from "../i18n/strings";
 
 // Lazy-loaded so three.js stays in its own chunk (only fetched when needed).
 const WorkflowKnot = lazy(() => import("../components/WorkflowKnot"));
-import type { KnotNavItem } from "../components/WorkflowKnot";
+import KnotErrorBoundary from "../components/KnotErrorBoundary";
+import { MedicalCrossIcon } from "../components/LineIcons";
 
-// Static resolved-grid placeholder shown while the three.js chunk loads, so the
-// hero's right column is never blank.
+// Static placeholder shown while the three.js chunk loads — mirrors the knot's
+// RESOLVED 4-dot row (amber last, connector through) so it never contradicts
+// either the tangle or the settled state it hands off to.
 function HeroKnotFallback() {
-  const xs = [60, 150, 240, 315];
-  const ys = [70, 140, 210, 280];
-  const nodes: { x: number; y: number; amber: boolean }[] = [];
-  xs.forEach((x, c) => ys.forEach((y) => nodes.push({ x, y, amber: c === 3 })));
-  const edges: [number, number, number, number][] = [];
-  ys.forEach((y) => {
-    for (let c = 0; c < 3; c++) edges.push([xs[c], y, xs[c + 1], y]);
-  });
-  edges.push(
-    [xs[0], ys[0], xs[1], ys[1]],
-    [xs[1], ys[1], xs[2], ys[0]],
-    [xs[1], ys[2], xs[2], ys[1]],
-    [xs[2], ys[2], xs[3], ys[3]]
-  );
+  const xs = [60, 145, 230, 315];
+  const y = 175;
   return (
     <div className="hero-knot" aria-hidden="true">
       <svg viewBox="0 0 375 350" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
-        {edges.map((e, i) => (
-          <line key={i} x1={e[0]} y1={e[1]} x2={e[2]} y2={e[3]} stroke="#4f6b27" strokeWidth="1.4" opacity="0.4" />
+        {xs.slice(0, -1).map((x, i) => (
+          <line key={i} x1={x} y1={y} x2={xs[i + 1]} y2={y} stroke="#4f6b27" strokeWidth="1.4" opacity="0.4" />
         ))}
-        {nodes.map((n, i) => (
-          <circle key={i} cx={n.x} cy={n.y} r={n.amber ? 8 : 7} fill={n.amber ? "#b87d35" : "#5a7a2e"} />
+        {xs.map((x, i) => (
+          <circle key={x} cx={x} cy={y} r={i === 3 ? 9 : 8} fill={i === 3 ? "#b87d35" : "#5a7a2e"} />
         ))}
       </svg>
     </div>
@@ -59,33 +51,33 @@ const orbStyles = `
 `;
 
 const OrbBackground: React.FC = () => (
-  <div aria-hidden="true">
+  <div className="orb-bg" aria-hidden="true">
     <style>{orbStyles}</style>
     <div style={{ position:"absolute", borderRadius:"50%", filter:"blur(80px)", width:400, height:400, top:-100, left:-100,
       background:"radial-gradient(circle, rgba(128,128,0,.22) 0%, rgba(107,142,35,.14) 50%, transparent 75%)",
-      animation:"breathe1 8s ease-in-out infinite", pointerEvents:"none", zIndex:0 }} />
+      animation:"breathe1 8s ease-in-out 3", pointerEvents:"none", zIndex:0 }} />
     <div style={{ position:"absolute", borderRadius:"50%", filter:"blur(90px)", width:560, height:560, bottom:-160, right:-100,
       background:"radial-gradient(circle, rgba(85,107,47,.11) 0%, rgba(107,142,35,.06) 50%, transparent 75%)",
-      animation:"breathe2 11s ease-in-out infinite", pointerEvents:"none", zIndex:0 }} />
+      animation:"breathe2 11s ease-in-out 3", pointerEvents:"none", zIndex:0 }} />
     <div style={{ position:"absolute", borderRadius:"50%", filter:"blur(60px)", width:340, height:340, bottom:-100, right:-60,
       background:"radial-gradient(circle, rgba(85,107,47,.18) 0%, rgba(107,142,35,.11) 50%, transparent 75%)",
-      animation:"breathe2 11s ease-in-out infinite", pointerEvents:"none" }} />
+      animation:"breathe2 11s ease-in-out 3", pointerEvents:"none" }} />
     <div style={{ position:"absolute", borderRadius:"50%", filter:"blur(90px)", width:320, height:320, top:"50%", left:"50%",
       transform:"translate(-50%,-50%)",
       background:"radial-gradient(circle, rgba(128,128,0,.055) 0%, transparent 70%)",
-      animation:"breathe3 14s ease-in-out infinite", pointerEvents:"none", zIndex:0 }} />
+      animation:"breathe3 14s ease-in-out 3", pointerEvents:"none", zIndex:0 }} />
   </div>
 );
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 type Project = {
-  title: string;
-  subtitle: string;
-  desc: string;
+  title: string; // proper noun — never translated
+  subtitleKey: StringKey;
+  descKey: StringKey;
   images?: string[];
-  imageAlt?: string;
-  icon?: string;
+  imageAltKey?: StringKey;
+  icon?: React.ReactNode;
   cover?: string;
   bg: string;
   path?: string;
@@ -94,45 +86,47 @@ type Project = {
   patentPending?: boolean;
 };
 
+// Display copy lives in src/i18n/strings.ts (keyed) so it can translate;
+// structural data (assets, routes, gradients) stays here.
 const PROJECTS: Project[] = [
   {
     title: "Grove",
-    subtitle: "Product Design · AI Judgment",
-    desc: "Research to working prototype in 3 weeks, solo. 32-user survey reshaped the MVP. AI accelerated the build. Testing next.",
+    subtitleKey: "home.proj.grove.subtitle",
+    descKey: "home.proj.grove.desc",
     images: ["/assets/grove/grove1.png"],
-    imageAlt: "Grove plant care app",
+    imageAltKey: "home.proj.grove.alt",
     bg: "linear-gradient(135deg, #1a2e1a 0%, #2d4a2d 50%, #1a3a2a 100%)",
     path: "/case-study/grove",
   },
   {
     title: "MSK Cancer Center",
-    subtitle: "UX & Product Design · Healthcare Systems",
-    desc: "Six years, three roles. Redesigned clinical workflows, onboarding, and EMR systems for 21,000+ clinicians at one of the world's top cancer centers.",
-    icon: "🏥",
+    subtitleKey: "home.proj.msk.subtitle",
+    descKey: "home.proj.msk.desc",
+    icon: <MedicalCrossIcon />,
     cover: "/assets/msk/mskcc-cover.png",
-    imageAlt: "Memorial Sloan Kettering Cancer Center",
+    imageAltKey: "home.proj.msk.alt",
     bg: "linear-gradient(135deg, #1a1a2e 0%, #2d2d4a 50%, #1a2a3a 100%)",
     path: "/case-study/msk",
   },
   {
     title: "Good Harvest",
-    subtitle: "Product Design · UX Research",
-    desc: "Heatmap testing with 22 users revealed the problem wasn't discoverability; it was trust.",
+    subtitleKey: "home.proj.gh.subtitle",
+    descKey: "home.proj.gh.desc",
     images: [
       "/assets/good-harvest/goodharvest-home-wireframe.png",
       "/assets/good-harvest/goodharvest-app-mobile.png",
       "/assets/good-harvest/goodharvest-home-heatmap.png",
     ],
-    imageAlt: "Good Harvest wireframe, final design, and heatmap testing",
+    imageAltKey: "home.proj.gh.alt",
     bg: "linear-gradient(135deg, #2e2a1a 0%, #3d3520 50%, #2a2215 100%)",
     path: "/case-study/good-harvest",
   },
   {
     title: "Mobbin",
-    subtitle: "Freelance · UX Flow Documentation · Pattern Curation",
-    desc: "Documented end-to-end mobile experiences across three fintech apps for Mobbin's design reference library. 200+ screens captured, annotated, and tagged.",
+    subtitleKey: "home.proj.mobbin.subtitle",
+    descKey: "home.proj.mobbin.desc",
     images: ["/assets/mobbin/kikoff.png", "/assets/mobbin/polymarket.png", "/assets/mobbin/discover.png"],
-    imageAlt: "Fintech app screens catalogued for UX pattern library",
+    imageAltKey: "home.proj.mobbin.alt",
     bg: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
     path: "/case-study/mobbin",
     locked: true,
@@ -146,6 +140,7 @@ export default function Home() {
   const navigate = useNavigate();
   const location = useLocation();
   const prefersReducedMotion = useReducedMotion();
+  const t = useT();
   usePageTitle();
 
   const mobbinUnlocked = useMemo(() => sessionStorage.getItem("mobbin-unlocked") === "true", []);
@@ -182,27 +177,8 @@ export default function Home() {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // The knot's top-row nodes (0 · 4 · 8 · 12) double as navigation. WorkflowKnot
-  // pins each label to its node's live screen position and rotates/grows it on hover.
-  const knotNav: KnotNavItem[] = [
-    { label: "Projects", nodeIndex: 0, noDot: true, onActivate: () => document.getElementById("projects")?.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth" }) },
-    { label: "About", nodeIndex: 1, noDot: true, onActivate: () => navigate("/about") },
-    { label: "Contact", nodeIndex: 2, noDot: true, onActivate: scrollToContact },
-    { label: "Resume", nodeIndex: 3, noDot: true, accent: true, href: "/assets/Hillary_Esposito_Portfolio_Resume.pdf" },
-  ];
-
-  // Collapse the knot's panel once it resolves to the 4 dots; expand on replay.
-  const [knotResolved, setKnotResolved] = useState(false);
-  useEffect(() => {
-    const onRes = () => setKnotResolved(true);
-    const onAct = () => setKnotResolved(false);
-    window.addEventListener("knot:resolved", onRes);
-    window.addEventListener("knot:active", onAct);
-    return () => {
-      window.removeEventListener("knot:resolved", onRes);
-      window.removeEventListener("knot:active", onAct);
-    };
-  }, []);
+  // The knot is now purely a decorative "complexity → clarity" flourish — the
+  // header nav (always visible) is the navigation, so no labels are pinned to it.
 
   const email = "espositohillary@gmail.com";
 
@@ -237,60 +213,77 @@ export default function Home() {
           1. HERO
       ══════════════════════════════════════════ */}
       <section id="home" className="section active hero home-hero"
-        aria-label="Home section" style={{ position:"relative", overflow:"hidden" }}>
+        aria-label={t("home.heroAria")} style={{ position:"relative", overflow:"hidden" }}>
 
         <OrbBackground />
 
+        {/* Knot as an IMMERSIVE BACKDROP: the tangle resolves behind the whole
+            hero (balls dimmed + masked at top/bottom for readability), while the
+            text sits on top. Its nav words are a separate, un-dimmed layer that
+            lands in the text-free middle band. */}
+        <div className="hero-visual">
+          <KnotErrorBoundary fallback={<HeroKnotFallback />}>
+            <Suspense fallback={<HeroKnotFallback />}>
+              <WorkflowKnot />
+            </Suspense>
+          </KnotErrorBoundary>
+
+          {!prefersReducedMotion && (
+            <button
+              type="button"
+              className="hero-knot-replay"
+              onClick={() => window.dispatchEvent(new CustomEvent("knot:replay"))}
+              aria-label={t("home.replayAria")}
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M3 12a9 9 0 1 0 3-6.7" />
+                <path d="M3 4v4h4" />
+              </svg>
+              {t("home.replay")}
+            </button>
+          )}
+        </div>
+
         <div className="hero-content hero-content--centered" style={{ position:"relative", zIndex:1 }}>
 
-          {/* Knot leads — its nodes are the nav, resolving from a dense tangle. */}
-          <div className={`hero-visual${knotResolved ? " hero-visual--resolved" : ""}`}>
-            <Suspense fallback={<HeroKnotFallback />}>
-              <WorkflowKnot navItems={knotNav} />
-            </Suspense>
+          {/* Lede clusters at the TOP; the copy sits at the BOTTOM (space-between),
+              leaving the middle band for the knot-nav to breathe behind. */}
+          <div className="hero-lede">
+            {/* Status chip */}
+            <motion.div className="home-status-chip" {...stagger(0)}>
+              <span className="home-status-dot" aria-hidden="true" />
+              {t("home.status")}
+            </motion.div>
 
-            {!prefersReducedMotion && (
-              <button
-                type="button"
-                className="hero-knot-replay"
-                onClick={() => window.dispatchEvent(new CustomEvent("knot:replay"))}
-                aria-label="Replay the animation"
-              >
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M3 12a9 9 0 1 0 3-6.7" />
-                  <path d="M3 4v4h4" />
-                </svg>
-                Replay
-              </button>
-            )}
+            <motion.h1 className="hero-title" {...stagger(0.08)}>
+              HILLARY ESPOSITO
+            </motion.h1>
+
+            {/* Solid ink, sentence case — the H1 above keeps the viewport's one
+                gradient treatment; amber stays reserved for the Resume node. */}
+            <motion.p className="hero-positioning" {...stagger(0.12)}>
+              {t("home.positioning")}
+            </motion.p>
           </div>
 
-          {/* Status chip */}
-          <motion.div className="home-status-chip" {...stagger(0)}>
-            <span className="home-status-dot" aria-hidden="true" />
-            Available for opportunities
-          </motion.div>
-
-          <motion.h1 className="hero-title" {...stagger(0.08)}>
-            HILLARY ESPOSITO
-          </motion.h1>
-
-          <motion.p className="hero-positioning hero-positioning-gradient" {...stagger(0.12)}>
-            Turning complex healthcare and enterprise workflows into trusted digital products.
-          </motion.p>
+          {/* Reserved band the knot-nav resolves INTO — keeps the nav row (and
+              its words) in clear space between the lede above and the copy
+              below, so nothing collides. The balls still animate full-height
+              behind everything; only their resting row lands here. */}
+          <div className="hero-knot-band" aria-hidden="true" />
 
           <div className="hero-copy">
             <motion.p className="hero-description" {...stagger(0.16)}>
-              UX/Product Designer. 13+ years of leadership across process improvement, clinical systems, military operations, and UX research. Army veteran.
+              {t("home.description")}
             </motion.p>
 
             <motion.div className="hero-actions" {...stagger(0.24)}>
               <button type="button" className="hero-btn" onClick={scrollToContact}>
-                Get in touch
+                {t("home.getInTouch")}
               </button>
               <button type="button" className="home-secondary-btn"
                 onClick={() => navigate("/about")}>
-                See my approach →
+                {t("home.seeApproach")}
               </button>
             </motion.div>
           </div>
@@ -300,16 +293,16 @@ export default function Home() {
       {/* ══════════════════════════════════════════
           CREDENTIALS — single inline strip
       ══════════════════════════════════════════ */}
-      <section className="home-credentials-bar" aria-label="Professional credentials">
+      <section className="home-credentials-bar" aria-label={t("home.credentialsAria")}>
         <p className="home-credentials-inline">
-          Army Captain · Lean Six Sigma Green Belt · MHA, Rutgers · Bilingual EN/ES
+          {t("home.credentials")}
         </p>
       </section>
 
       {/* ══════════════════════════════════════════
           2. PROOF — stats that back up the hero claim
       ══════════════════════════════════════════ */}
-      <section className="section active home-proof-section" aria-label="Experience highlights">
+      <section className="section active home-proof-section" aria-label={t("home.proofAria")}>
         <motion.div
           className="home-proof-grid"
           initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
@@ -317,15 +310,15 @@ export default function Home() {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
         >
-          {[
-            { value: "13+",  label: "Years of leadership across healthcare, military, and UX" },
-            { value: "21K+", label: "Clinicians impacted, MSK Cancer Center" },
-            { value: "85%",  label: "Faster resupply, NJ Army National Guard" },
-            { value: "20%",  label: "EMR cost reduction, MSK Cancer Center" },
-          ].map((s) => (
-            <div key={s.label} className="home-proof-card">
+          {([
+            { value: "13+",  labelKey: "home.stat.years" },
+            { value: "21K+", labelKey: "home.stat.clinicians" },
+            { value: "85%",  labelKey: "home.stat.resupply" },
+            { value: "20%",  labelKey: "home.stat.emr" },
+          ] as { value: string; labelKey: StringKey }[]).map((s) => (
+            <div key={s.labelKey} className="home-proof-card">
               <p className="home-proof-value gradient-text">{s.value}</p>
-              <p className="home-proof-label">{s.label}</p>
+              <p className="home-proof-label">{t(s.labelKey)}</p>
             </div>
           ))}
         </motion.div>
@@ -335,7 +328,7 @@ export default function Home() {
           3. PROJECTS — numbered cards
       ══════════════════════════════════════════ */}
       <section id="projects" className="section active projects home-projects-section"
-        aria-label="Projects section">
+        aria-label={t("home.projectsAria")}>
 
         <motion.div
           className="home-section-header"
@@ -344,8 +337,8 @@ export default function Home() {
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.5, ease: [0.2, 0.8, 0.2, 1] }}
         >
-          <p className="home-eyebrow">Selected work</p>
-          <h2 className="section-title home-section-title">Projects</h2>
+          <p className="home-eyebrow">{t("home.eyebrow")}</p>
+          <h2 className="section-title home-section-title">{t("home.projectsTitle")}</h2>
         </motion.div>
 
         <div className="home-projects-list">
@@ -353,10 +346,9 @@ export default function Home() {
             const isLocked = proj.locked && !mobbinUnlocked;
             const clickable = !!proj.path && !proj.comingSoon;
 
-            const displayTitle = isLocked ? "NDA Project" : proj.title;
-            const displayDesc = isLocked
-              ? "Three fintech apps documented at production quality. Password required to view."
-              : proj.desc;
+            const displayTitle = isLocked ? t("home.proj.ndaTitle") : proj.title;
+            const displayDesc = isLocked ? t("home.proj.ndaDesc") : t(proj.descKey);
+            const imageAlt = proj.imageAltKey ? t(proj.imageAltKey) : undefined;
 
             const cardVariants = {
               hidden: { opacity: 0, y: 40 },
@@ -371,7 +363,7 @@ export default function Home() {
                     <img
                       className="home-proj-cover"
                       src={proj.cover}
-                      alt={proj.imageAlt || proj.title}
+                      alt={imageAlt || proj.title}
                       loading="lazy"
                       onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
                     />
@@ -380,7 +372,7 @@ export default function Home() {
                       {proj.images.map((src, i) => (
                         <div key={src} className="home-proj-device" style={{ zIndex: proj.images!.length - i }}>
                           {/* Only the first image carries the alt; the rest are decorative duplicates. */}
-                          <img src={src} alt={i === 0 ? proj.imageAlt || "" : ""} loading="lazy" />
+                          <img src={src} alt={i === 0 ? imageAlt || "" : ""} loading="lazy" />
                         </div>
                       ))}
                     </div>
@@ -394,24 +386,24 @@ export default function Home() {
                       </svg>
                     </div>
                   ) : (
-                    <div className="home-proj-icon-display">
+                    <div className="home-proj-icon-display" style={{ color: "rgba(255,255,255,0.8)" }}>
                       <span>{proj.icon || "✦"}</span>
                     </div>
                   )}
-                  {proj.comingSoon && <span className="home-proj-badge">Coming soon</span>}
-                  {isLocked && <span className="home-proj-badge">Password protected</span>}
-                  {proj.patentPending && <span className="home-proj-badge home-proj-badge--patent">Patent Pending</span>}
+                  {proj.comingSoon && <span className="home-proj-badge">{t("home.proj.comingSoon")}</span>}
+                  {isLocked && <span className="home-proj-badge">{t("home.proj.passwordBadge")}</span>}
+                  {proj.patentPending && <span className="home-proj-badge home-proj-badge--patent">{t("home.proj.patentBadge")}</span>}
                 </div>
 
                 {/* ── Text area ── */}
                 <div className="home-proj-info">
-                  <p className="home-proj-subtitle">{proj.subtitle}</p>
+                  <p className="home-proj-subtitle">{t(proj.subtitleKey)}</p>
                   <h3 className="home-proj-title">{displayTitle}</h3>
                   <p className="home-proj-desc">{displayDesc}</p>
                   {clickable ? (
-                    <span className="home-proj-cta">{isLocked ? "Unlock case study →" : "View case study →"}</span>
+                    <span className="home-proj-cta">{isLocked ? t("home.proj.unlock") : t("home.proj.view")}</span>
                   ) : (
-                    <span className="home-proj-cta home-proj-cta--soon">Coming soon</span>
+                    <span className="home-proj-cta home-proj-cta--soon">{t("home.proj.comingSoon")}</span>
                   )}
                 </div>
               </div>
@@ -428,13 +420,13 @@ export default function Home() {
                 {clickable ? (
                   <Link to={proj.path!}
                     className={`home-proj-card-link${isLocked ? " home-proj-card-link--locked" : ""}`}
-                    aria-label={`View ${proj.title} case study`}
+                    aria-label={t("home.proj.viewAria", { title: proj.title })}
                     onMouseMove={handleCardTilt}
                     onMouseLeave={resetCardTilt}>
                     {cardInner}
                   </Link>
                 ) : (
-                  <div className="home-proj-card-link home-proj-card-link--soon" aria-label={`${proj.title}, coming soon`}
+                  <div className="home-proj-card-link home-proj-card-link--soon" aria-label={t("home.proj.soonAria", { title: proj.title })}
                     onMouseMove={handleCardTilt}
                     onMouseLeave={resetCardTilt}>
                     {cardInner}
@@ -449,7 +441,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════
           4. CTA + CONTACT (merged)
       ══════════════════════════════════════════ */}
-      <section id="contact" ref={contactRef} className="section active home-cta-section" aria-label="Contact section">
+      <section id="contact" ref={contactRef} className="section active home-cta-section" aria-label={t("home.contactAria")}>
         <motion.div
           className="about-cta"
           initial={prefersReducedMotion ? false : { opacity: 0, y: 28 }}
@@ -459,31 +451,31 @@ export default function Home() {
         >
           <div className="about-cta-card home-cta-card" style={{ textAlign: "center", display: "block" }}>
               <h2 className="about-cta-title" style={{ marginBottom:"1rem" }}>
-                Let’s talk about your product
+                {t("home.ctaTitle")}
               </h2>
               <p className="about-cta-content" style={{ color:"var(--muted)", lineHeight:1.8, marginBottom:"1.75rem", maxWidth: "52ch", margin: "0 auto 1.75rem" }}>
-                I turn complex workflows into tools people trust. If your team needs a UX/product designer with deep healthcare, enterprise, or operations experience, let’s talk.
+                {t("home.ctaBody")}
               </p>
 
               <div style={{ display:"flex", gap:"0.75rem", justifyContent:"center", flexWrap:"wrap", marginBottom:"1.5rem" }}>
-                <a href={"mailto:" + email} className="hero-btn" style={{ display:"inline-block", fontSize:"0.9rem", padding:"1rem 2rem", textDecoration:"none" }} aria-label="Send me a note">
-                  Send me a note
+                <a href={"mailto:" + email} className="hero-btn" style={{ display:"inline-block", fontSize:"0.9rem", padding:"1rem 2rem", textDecoration:"none" }} aria-label={t("home.ctaEmailAria")}>
+                  {t("home.ctaEmail")}
                 </a>
-                <a href="https://cal.com/hillary-e" target="_blank" rel="noopener noreferrer" className="home-secondary-btn" style={{ display:"inline-block", fontSize:"0.9rem", padding:"1rem 2rem", textDecoration:"none" }} aria-label="Book a call (opens in new tab)">
-                  Book a call →
+                <a href="https://cal.com/hillary-e" target="_blank" rel="noopener noreferrer" className="home-secondary-btn" style={{ display:"inline-block", fontSize:"0.9rem", padding:"1rem 2rem", textDecoration:"none" }} aria-label={t("home.ctaCallAria")}>
+                  {t("home.ctaCall")}
                 </a>
               </div>
 
               <p style={{ fontSize: "0.85rem", color: "var(--muted)", margin: 0 }}>
-                <a href="https://www.linkedin.com/in/hillaryesposito/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--muted)", marginRight: "1.25rem" }} aria-label="LinkedIn profile (opens in new tab)">
+                <a href="https://www.linkedin.com/in/hillaryesposito/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--muted)", marginRight: "1.25rem" }} aria-label={t("home.linkedinAria")}>
                   LinkedIn
                 </a>
-                <a href="/assets/Hillary_Esposito_Portfolio_Resume.pdf" target="_blank" rel="noopener noreferrer" style={{ color: "var(--muted)", marginRight: "1.25rem" }} aria-label="Download resume (opens in new tab)">
-                  Resume
+                <a href="/assets/Hillary_Esposito_Portfolio_Resume.pdf" target="_blank" rel="noopener noreferrer" style={{ color: "var(--muted)", marginRight: "1.25rem" }} aria-label={t("nav.resumeAria")}>
+                  {t("home.resumeLink")}
                 </a>
                 <button type="button" style={{ background:"none", border:"none", cursor:"pointer", padding:0, font:"inherit", color:"var(--muted)" }}
-                  onClick={() => navigate("/about")} aria-label="About me">
-                  About me
+                  onClick={() => navigate("/about")} aria-label={t("home.aboutLink")}>
+                  {t("home.aboutLink")}
                 </button>
               </p>
           </div>

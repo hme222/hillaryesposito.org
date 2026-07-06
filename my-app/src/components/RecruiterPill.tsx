@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FocusTrap from "focus-trap-react";
+import { useT } from "../app/LanguageContext";
 
 /**
  * Persistent floating "Recruiter view" pill that appears on every page.
@@ -12,8 +13,19 @@ import FocusTrap from "focus-trap-react";
  */
 export default function RecruiterPill() {
   const navigate = useNavigate();
+  const t = useT();
   const [open, setOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
+
+  // On small screens the fixed pill lands on top of the hero copy, so it stays
+  // hidden until the user scrolls (CSS gates the hiding to ≤768px — desktop
+  // keeps its always-on position).
+  const [scrolled, setScrolled] = useState(() => window.scrollY > 120);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 120);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     const handler = () => setOpen(true);
@@ -52,11 +64,12 @@ export default function RecruiterPill() {
       <button
         ref={triggerRef}
         type="button"
-        className="recruiter-pill"
+        className={`recruiter-pill${scrolled ? "" : " recruiter-pill--unscrolled"}`}
         onClick={() => setOpen(true)}
-        aria-label="Open recruiter view: 90-second project breakdown"
+        aria-label={t("recruiter.pillAria")}
       >
-        <span className="recruiter-pill__text">Recruiter view</span>
+        {/* Panel content stays English in Phase 1 — only the trigger translates. */}
+        <span className="recruiter-pill__text">{t("recruiter.pill")}</span>
       </button>
 
       {open && (

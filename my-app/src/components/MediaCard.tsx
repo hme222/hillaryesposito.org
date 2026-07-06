@@ -65,7 +65,13 @@ export default function MediaCard({
         <figcaption>{caption}</figcaption>
 
         <span className="cs-actions">
-          <span className="cs-link">🔍 Click to zoom</span>
+          <span className="cs-link">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ marginRight: "0.35rem", verticalAlign: "-0.08em" }}>
+              <circle cx="11" cy="11" r="6.2" />
+              <path d="M15.6 15.6L20 20" />
+            </svg>
+            Click to zoom
+          </span>
 
           {toggleLabel && onToggle && (
             <button

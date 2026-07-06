@@ -355,7 +355,7 @@ select:focus {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 2.5rem;
+  gap: 3rem;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -409,10 +409,21 @@ select:focus {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  /* WCAG 2.5.8 target size: the icon is 18px, so pad the hit area to ≥40px. */
+  min-width: 40px;
+  min-height: 40px;
 }
 
 .theme-btn:hover {
   transform: scale(1.08);
+}
+
+/* Language toggle — inherits .theme-btn's hit area (≥40px), currentColor and
+   dark-mode theming; this just restyles the icon slot as compact nav text. */
+.lang-btn {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1.4px;
 }
 
 /* optional resume button */
@@ -446,6 +457,18 @@ select:focus {
 
 /* MOBILE */
 @media (max-width: 768px) {
+  /* Drop the navbar's backdrop-filter on mobile: it makes the bar a containing
+     block for position:fixed descendants, which would anchor the full-screen
+     menu to the padded bar (shifted right by --page-pad, partly off-screen)
+     instead of the viewport. !important because the dark-mode navbar
+     stabilization block re-applies the blur at higher specificity. A slightly
+     more opaque background (theme-aware --surface-0) compensates for the blur. */
+  .navbar {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: color-mix(in srgb, var(--surface-0) 92%, transparent) !important;
+  }
+
   .hamburger {
     display: inline-flex;
     align-items: center;
@@ -471,7 +494,8 @@ select:focus {
     align-items: center;
     gap: 2.5rem;
     width: 100vw;
-    height: 100vh;
+    /* dvh (not vh) so iOS Safari's dynamic toolbar can't clip the last item. */
+    height: 100dvh;
     padding: 2rem;
     /* Solid, defined background so page content never shows through the menu. */
     background: var(--bg);
@@ -630,7 +654,7 @@ select:focus {
 }
 /* Keep it legible on the dark theme too (deep olive would vanish on black). */
 .dark-mode .hero-title {
-  background: linear-gradient(135deg, #ecc187 0%, #c98f43 100%);
+  background: linear-gradient(135deg, #f0d3a4 0%, #d9a55e 100%);
   -webkit-background-clip: text;
   background-clip: text;
 }
@@ -682,7 +706,14 @@ select:focus {
 }
 
 @media (forced-colors: active) {
-  .hero-positioning-gradient {
+  /* Gradient-clipped text renders as `transparent` fill in Windows High Contrast
+     (forced-colors strips the background-image but not -webkit-text-fill-color),
+     making the text invisible. Restore a system colour for every gradient-text
+     treatment — not just the tagline. */
+  .hero-positioning-gradient,
+  .hero-title,
+  .section-title,
+  .gradient-text {
     color: CanvasText;
     background: none;
     -webkit-background-clip: unset;
@@ -1115,54 +1146,135 @@ select:focus {
   min-height: clamp(360px, 40vw, 520px);
 }
 
-/* Centered hero: chip · name · large knot · positioning · copy, stacked. */
+/* Centered hero: the lede clusters at the top, the copy at the bottom, and the
+   knot-nav resolves in the middle band BEHIND the text (see .home-hero
+   .hero-visual). space-between opens that middle band; min-height gives it real
+   vertical room so the balls have space to be immersive without crowding text. */
 .hero-content--centered {
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
   max-width: 1040px;
-  gap: 0.25rem;
+  min-height: min(74vh, 660px);
+  gap: 0;
 }
 .hero-content--centered .hero-title {
   text-align: center;
 }
-/* Wide but with breathing room on the sides (not full-bleed). */
-.hero-content--centered .hero-title {
-  margin-bottom: 2.75rem; /* clear gap between the name and the knot */
+/* Top cluster: chip · name · positioning, stacked and centred. */
+.hero-lede {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
 }
-.hero-content--centered .hero-visual {
-  width: 100vw;
-  max-width: 100vw;
+/* The band the knot-nav rests in. Sits between the lede and the copy so the
+   resolved row of balls + nav words has clear space of its own (no collision
+   with the positioning line or the description). The balls still play their
+   full-height tangle behind everything; group.position.y ≈ 0 lands the resting
+   row in this centred band. */
+.hero-knot-band {
+  width: 100%;
+  /* Sized for the small decorative knot now (not a full nav row), so the resting
+     dots nestle between the tagline and the copy rather than floating in a void. */
+  height: clamp(96px, 13vh, 140px);
   flex: none;
-  align-self: center;
-  min-height: clamp(360px, 46vw, 640px);
-  margin: 0 calc(50% - 50vw) 1.5rem; /* full-bleed — uses the whole width */
-  transition: min-height 0.55s ease, margin 0.55s ease;
+  pointer-events: none;
 }
-/* When the tangle has resolved to the 4 dots, collapse the empty space
-   above/below the row (until Replay re-expands it). */
-.hero-content--centered .hero-visual--resolved {
-  min-height: clamp(150px, 15vw, 210px);
-  margin-bottom: 0.75rem;
+/* Balanced breathing around the knot band: the resting knot sits between the
+   tagline above and the "UX/Product Designer…" sentence below with even air. */
+.hero-content--centered .hero-copy {
+  margin-top: 2.25rem;
 }
-/* Mobile: the knot isn't the nav here, so it sits UNDER the name. Reorder the
-   stack (chip · name · knot · positioning · copy) and keep it centred. */
+.hero-content--centered .hero-lede {
+  margin-bottom: 0.5rem;
+}
+/* Text-protection scrim: a soft halo of the page background sits BEHIND the
+   lede and copy text (above the balls at z:0, below this text at z:1 and below
+   the nav words at z:2), so the H1 / positioning / description keep AA contrast
+   over the dimmed tangle — without dimming the balls themselves. The scrim only
+   covers the top/bottom text zones, leaving the middle nav band fully immersive. */
+.hero-content--centered .hero-lede,
+.hero-content--centered .hero-copy {
+  position: relative;
+}
+.hero-content--centered .hero-lede::before,
+.hero-content--centered .hero-copy::before {
+  content: "";
+  position: absolute;
+  inset: -14% -6%;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in srgb, var(--bg) 82%, transparent) 0%,
+    color-mix(in srgb, var(--bg) 60%, transparent) 52%,
+    transparent 78%
+  );
+}
+@media (max-width: 768px), (pointer: coarse) {
+  /* Nav labels are hidden on mobile (hamburger handles nav), so the band only
+     needs to give the decorative resting row a little breathing room. */
+  .hero-knot-band {
+    height: clamp(72px, 12vh, 110px);
+  }
+}
+
+/* IMMERSIVE BACKDROP: the knot canvas fills the whole hero, sitting behind the
+   text (canvas z:0, .hero-content z:1, nav labels z:2). No z-index here so the
+   canvas/label z-indexes layer around the text rather than being trapped in a
+   backdrop stacking context. */
+.home-hero > .hero-visual {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  min-height: 0;
+  margin: 0;
+  flex: none;
+  pointer-events: none; /* text stays selectable; nav nodes re-enable pointer events */
+}
+/* Dim the balls so they read as an ambient field behind the text. No edge mask —
+   the knot shows to the edges without fading (readability comes from the scrim
+   behind the lede/copy, not from fading the knot). */
+.home-hero .hero-knot {
+  opacity: 0.5;
+}
+/* Dark mode (class is on <html>, so target .dark-mode, not body.dark-mode):
+   the olive/amber balls sit on a near-black ground, so lift them out of the
+   murk rather than dimming them into it, and mute the ambient orbs that
+   otherwise wash the background muddy-brown. */
+.dark-mode .home-hero .hero-knot {
+  opacity: 0.85;
+}
+.dark-mode .orb-bg {
+  opacity: 0.4;
+}
+/* Inline "View it live" style link inside case-study copy. */
+.cs-inline-link {
+  color: var(--olive-2);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 1px solid color-mix(in srgb, var(--olive-2) 38%, transparent);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.cs-inline-link:hover,
+.cs-inline-link:focus-visible {
+  border-bottom-color: var(--olive-2);
+}
 @media (max-width: 768px) {
   .hero-content--centered {
     max-width: 100%;
+    min-height: min(72vh, 560px);
+    padding-top: 0.85rem; /* a little air above "Available" on mobile */
   }
-  .hero-content--centered .home-status-chip { order: 1; }
-  .hero-content--centered .hero-title { order: 2; }
-  .hero-content--centered .hero-positioning { order: 3; }
-  .hero-content--centered .hero-visual { order: 4; }
-  .hero-content--centered .hero-copy { order: 5; }
-  /* Larger knot on mobile, and no collapse (it isn't the nav here). */
-  .hero-content--centered .hero-visual,
-  .hero-content--centered .hero-visual--resolved {
-    width: 100%;
-    max-width: 100%;
-    margin: 0.5rem auto 1.5rem;
-    min-height: clamp(300px, 66vw, 420px);
+  /* Balls read a touch stronger on mobile since the nav labels are hidden here
+     and the knot is purely decorative. */
+  .home-hero .hero-knot {
+    opacity: 0.6;
   }
 }
 .hero-content--centered .hero-positioning,
@@ -1173,9 +1285,12 @@ select:focus {
 }
 .hero-content--centered .hero-positioning {
   line-height: 1.35;
-  margin-bottom: 1.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.01em;
+  margin-bottom: 0; /* spacing is handled by the .hero-lede gap now */
+  /* Sentence case + solid ink: the H1 above keeps the viewport's one gradient
+     treatment. Uppercase-gradient stacked beneath a gradient H1 read as a
+     template, not quiet authority (letter-spacing cascades from the base). */
+  text-transform: none;
+  color: var(--fg);
 }
 .hero-content--centered .hero-description {
   max-width: 58ch;
@@ -1208,137 +1323,25 @@ select:focus {
   position: absolute;
   inset: 0;
 }
-.hero-knot-labels {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-}
-.hero-knot-nav__node {
-  position: absolute;
-  top: 0;
-  left: 0;
-  pointer-events: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  padding: 8px 20px 2px; /* generous tap target */
-  background: none;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  will-change: transform;
-}
-/* Transparent extender so hovering the nodule below also triggers the link
-   (the link and its node respond together). */
-.hero-knot-nav__node::before {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: clamp(48px, 6vw, 80px);
-  height: clamp(28px, 5vh, 46px);
-}
-/* Bigger name, filled with the same shaded "texture" as the olive nodule
-   (amber for Resume) so the title reads as the node made into a word. */
-.hero-knot-nav__label {
-  font-family: var(--font-head);
-  font-size: clamp(0.85rem, 0.7rem + 0.55vw, 1.1rem);
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  color: var(--olive-2); /* fallback */
-  /* Darkened so the lightest stop still clears WCAG AA on the light bg. */
-  background: linear-gradient(150deg, var(--olive-2) 0%, var(--olive-3) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transition: transform var(--dur-fast) var(--ease-spring),
-    filter var(--dur-fast) var(--ease-soft);
-}
-.hero-knot-nav__node--accent .hero-knot-nav__label {
-  background: linear-gradient(150deg, var(--accent-warm) 0%, #6e4a18 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-}
-.hero-knot-nav__node:hover .hero-knot-nav__label,
-.hero-knot-nav__node:focus-visible .hero-knot-nav__label {
-  filter: brightness(1.12);
-}
-/* The link's OWN dot, sitting above the 3D nodule. */
-.hero-knot-nav__dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--olive-2);
-  box-shadow: 0 0 0 0 var(--glow);
-  transition: transform var(--dur-fast) var(--ease-spring),
-    box-shadow var(--dur-fast) var(--ease-soft), background var(--dur-fast) var(--ease-soft);
-}
-/* Thin connector pointing down toward the nodule it links to. */
-.hero-knot-nav__node::after {
-  content: "";
-  width: 1.5px;
-  height: clamp(10px, 2vh, 18px);
-  background: linear-gradient(var(--olive-2), transparent);
-  opacity: 0.45;
-  transition: opacity var(--dur-fast) var(--ease-soft);
-}
-.hero-knot-nav__node--accent .hero-knot-nav__dot {
-  background: var(--accent-warm);
-}
-.hero-knot-nav__node--accent::after {
-  background: linear-gradient(var(--accent-warm), transparent);
-}
-.hero-knot-nav__node:hover .hero-knot-nav__label,
-.hero-knot-nav__node:focus-visible .hero-knot-nav__label {
-  transform: translateY(-3px);
-}
-.hero-knot-nav__node:focus-visible {
-  outline: none;
-}
-.hero-knot-nav__node:focus-visible .hero-knot-nav__label {
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-.hero-knot-nav__node:hover .hero-knot-nav__dot,
-.hero-knot-nav__node:focus-visible .hero-knot-nav__dot {
-  transform: scale(1.4);
-  box-shadow: 0 0 0 6px var(--glow);
-}
-.hero-knot-nav__node:hover::after,
-.hero-knot-nav__node:focus-visible::after {
-  opacity: 0.85;
-}
-/* No dot/connector for Projects & About — label only. Pad the bottom by the
-   dot+connector height so these labels still line up with the dotted ones. */
-.hero-knot-nav__node--nodot::after {
-  display: none;
-}
-.hero-knot-nav__node--nodot {
-  padding-bottom: 30px;
-}
-@media (max-width: 768px), (pointer: coarse) {
-  .hero-knot-labels { display: none; }
-}
+/* Knot nav-label styles removed — the knot is decorative now and the header is
+   the navigation. WorkflowKnot only renders the label layer if navItems are
+   passed (none are today), so no label CSS is needed. */
 
 /* Subtle replay control for the knot animation — centred under the knot so it
    is never clipped by the wide panel's edge. */
 .hero-knot-replay {
   position: absolute;
-  bottom: 4px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
+  /* Bottom-RIGHT so it clears the centred name/copy/CTA column now that the
+     knot spans the whole hero as a backdrop. */
+  bottom: 16px;
+  right: 18px;
+  z-index: 3;
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
   padding: 0.35rem 0.7rem;
   font-family: var(--font-head);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   color: var(--muted);
@@ -1346,7 +1349,11 @@ select:focus {
   border: 1px solid var(--border);
   border-radius: 999px;
   cursor: pointer;
-  opacity: 0.7;
+  /* Full opacity so the label keeps var(--muted)'s 5.46:1 contrast (dimming it
+     to 0.7 dropped the effective ratio to ~2.96:1, failing AA). Subtlety comes
+     from the translucent background + hairline border instead. */
+  opacity: 1;
+  pointer-events: auto; /* re-enable: the .hero-visual backdrop is pointer-events:none */
   transition: opacity 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 .hero-visual:hover .hero-knot-replay,
@@ -2629,19 +2636,23 @@ main.case-study {
 html.dark-mode,
 body.dark-mode,
 .dark-mode {
-  --bg: #1a0e03;
-  --fg: #f8d2b7;
-  --card: #36220c;
-  --surface-0: #1a0e03;
-  --surface-1: #36220c;
-  --surface-2: #5f3f1c;
-  --border: rgba(248, 210, 183, 0.18);
-  --focus: #eba352;
+  /* "Matcha and Honey" dark palette: warm-black ground (orange cast removed),
+     ivory text, honey accent. Sage lives in the knot; honey in the UI accents. */
+  --bg: #15120c;
+  --fg: #f5efe6;
+  --muted: #b3a89a;
+  --card: #231d14;
+  --surface-0: #15120c;
+  --surface-1: #231d14;
+  --surface-2: #2e261a;
+  --border: rgba(245, 239, 230, 0.14);
+  --focus: #e8b06a;
+  --accent-warm: #e8b06a;
 
-  /* keep your existing gradient system working */
-  --olive-1: #eba352;
-  --olive-2: #ba803f;
-  --olive-3: #8b5f2d;
+  /* gradient-text stops shift to creamy honey to match the new ground */
+  --olive-1: #f0d3a4;
+  --olive-2: #d9a55e;
+  --olive-3: #b8823f;
 }
 
 /* =========================================================
@@ -4058,7 +4069,6 @@ body.dark-mode .nav-overlay-backdrop,
 .home-proj-card-link:focus-visible {
   --lift: -6px;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.16);
-  outline: none;
 }
 @media (prefers-reduced-motion: reduce) {
   .home-proj-card-link {
@@ -4339,7 +4349,8 @@ body.dark-mode .nav-overlay-backdrop,
   font-weight: 700;
   letter-spacing: 0.5px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    opacity 0.25s ease, visibility 0.25s ease;
 }
 .recruiter-pill:hover {
   transform: translateY(-3px);
@@ -4348,6 +4359,16 @@ body.dark-mode .nav-overlay-backdrop,
 .recruiter-pill__icon { font-size: 1rem; }
 @media (max-width: 600px) {
   .recruiter-pill { bottom: 1rem; right: 1rem; padding: 0.65rem 1rem; font-size: 0.78rem; }
+}
+/* On small screens the fixed pill sits on top of the hero description, so it
+   stays hidden (and out of the tab order) until the user scrolls — the class
+   is toggled by RecruiterPill. Desktop keeps its always-on position. */
+@media (max-width: 768px) {
+  .recruiter-pill--unscrolled {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+  }
 }
 
 /* Slide-out panel */
@@ -5012,7 +5033,8 @@ body.dark-mode .nav-overlay-backdrop,
   color: var(--muted);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-bottom: 1.5rem;
+  margin-top: 1.75rem;   /* air above "Available for opportunities" */
+  margin-bottom: 0.4rem; /* sit close to the name below it */
 }
 
 .home-status-dot {
@@ -8794,19 +8816,28 @@ body.dark-mode .nav-overlay-backdrop,
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
   }
-  /* The masthead is empty at the top, so pull the hero up to reclaim that gap. */
+  /* Header nav stays visible and flush over the hero at page-top (the knot is
+     decorative now, not the navigation) — it just transitions to the floating
+     pill on scroll. A little breathing room between the masthead and the hero. */
   .home-hero {
-    margin-top: -2.4rem;
+    margin-top: 0.4rem;
   }
-  .navbar:not(.is-floating) .nav-menu,
-  .navbar:not(.is-floating) .logo {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.25s ease;
-  }
-  .navbar:not(.is-floating):focus-within .nav-menu,
-  .navbar:not(.is-floating):focus-within .logo {
-    opacity: 1;
-    pointer-events: auto;
-  }
+}
+/* ── Line icons in former emoji slots ─────────────────────────────────
+   SVG glyphs (components/LineIcons) inherit the slot's font-size via
+   width/height: 1em; give them the olive accent and flex centring so
+   they sit like the emoji they replaced. */
+.tools-used__icon,
+.pushback-callout__marker,
+.reina-hero-crown {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.tools-used__icon,
+.project-icon,
+.pushback-callout__marker,
+.about-story-card__article-icon,
+.reina-hero-crown {
+  color: var(--olive-2);
 }
