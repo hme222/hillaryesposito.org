@@ -1265,6 +1265,66 @@ select:focus {
 .cs-inline-link:focus-visible {
   border-bottom-color: var(--olive-2);
 }
+
+/* Mini "About" on the home page: a face + a short human blurb before the work. */
+.home-mini-about {
+  max-width: 1040px;
+  margin: clamp(2rem, 6vw, 4.5rem) auto;
+  padding: 0 clamp(1.1rem, 4vw, 2.5rem);
+  display: grid;
+  grid-template-columns: minmax(180px, 260px) 1fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+}
+.mini-about-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 2px rgba(44, 52, 20, 0.06), 0 18px 40px -20px rgba(44, 52, 20, 0.28);
+}
+.mini-about-eyebrow {
+  font-family: var(--font-head);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--olive-2);
+  margin: 0 0 0.9rem;
+}
+.mini-about-blurb {
+  font-size: clamp(1.05rem, 1.4vw, 1.22rem);
+  line-height: 1.7;
+  color: var(--fg);
+  max-width: 54ch;
+  margin: 0 0 1.4rem;
+}
+.mini-about-link {
+  font-family: var(--font-head);
+  font-weight: 600;
+  color: var(--olive-2);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--olive-2) 40%, transparent);
+  transition: border-color 0.2s ease;
+}
+.mini-about-link:hover,
+.mini-about-link:focus-visible {
+  border-bottom-color: var(--olive-2);
+}
+@media (max-width: 700px) {
+  .home-mini-about {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+  .mini-about-photo {
+    max-width: 220px;
+  }
+  .mini-about-blurb {
+    text-align: left;
+  }
+}
 @media (max-width: 768px) {
   .hero-content--centered {
     max-width: 100%;
