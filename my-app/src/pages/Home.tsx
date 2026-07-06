@@ -327,7 +327,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════
           MINI ABOUT — a face + a short human blurb, linking to /about
       ══════════════════════════════════════════ */}
-      <section className="home-mini-about" aria-label={t("home.about.aria")}>
+      <section id="about" className="home-mini-about" aria-label={t("home.about.aria")}>
         <div className="mini-about-photo">
           <img src="/assets/about/headshot.jpg" alt={t("home.about.photoAlt")} loading="lazy" />
         </div>
