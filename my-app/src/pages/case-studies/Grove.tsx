@@ -62,7 +62,7 @@ const AI_DECISIONS = [
   },
   {
     area: "Building the full stack with AI coding tools",
-    whatAIDid: "Used Claude Code and Cursor to accelerate backend API development, component scaffolding, and debugging, reducing boilerplate time significantly.",
+    whatAIDid: "Used Claude Code and Cursor for backend API development, component scaffolding, and debugging. It's how a solo designer ships a React + FastAPI + MongoDB app with auth in 3 weeks.",
     whyNotManual: "Writing auth flows, CRUD endpoints, and database models from scratch would have tripled the timeline for a solo project. AI let me focus on UX decisions instead of plumbing.",
     humanJudgment: "Every AI-generated code block was reviewed, tested, and refactored. I directed the architecture decisions: API structure, data models, auth strategy. AI accelerated the execution.",
   },
@@ -70,7 +70,7 @@ const AI_DECISIONS = [
     area: "Emergent Agent platform for deployment",
     whatAIDid: "Used Emergent's AI agent platform for environment provisioning, deployment, and infrastructure. No manual DevOps.",
     whyNotManual: "As a designer building a solo full-stack project, managing servers and CI/CD would've pulled focus from the product. Emergent handled infra so I could stay in the design layer.",
-    humanJudgment: "Chose the platform intentionally. It let me ship a working product to test with real users, which is the whole point of this project.",
+    humanJudgment: "It let me ship a working product to test with real users, which is the whole point of this project.",
   },
 ];
 
@@ -626,7 +626,7 @@ export default function GroveCaseStudy() {
           </div>
           <div className="cs-outcome-card">
             <p className="cs-outcome-value gradient-text">2</p>
-            <p className="cs-outcome-label">Data-driven personas with validated needs, frustrations, and dealbreakers</p>
+            <p className="cs-outcome-label">Personas built from the survey data: needs, frustrations, and dealbreakers</p>
           </div>
           <div className="cs-outcome-card">
             <p className="cs-outcome-value gradient-text">3</p>
