@@ -389,17 +389,18 @@ export default function MSKCaseStudy() {
           <div className="cs-reflection-card">
             <h3>The design work starts on the floor</h3>
             <p>
-              Shadowing clinicians during actual shifts taught me more about system failures than
-              any stakeholder interview. The gap between documented process and real behavior is
-              where the design problems live. I bring this to every project now.
+              No stakeholder interview surfaced the sticky notes and personal spreadsheets clinicians
+              used to survive the EMR. Shadowing during actual shifts did. The gap between documented
+              process and real behavior is where the design problems live, and I bring that to every
+              project now.
             </p>
           </div>
           <div className="cs-reflection-card">
             <h3>Stakeholder alignment is the hardest design problem</h3>
             <p>
-              The best solution that only one department supports will fail. Getting clinical, IT,
-              and operations to see the same problem in the same room is where most projects
-              succeed or fail. The design comes after the alignment.
+              The best solution that only one department supports will fail. The "as of [date]"
+              timestamp compromise happened because clinical leadership and IT were finally in the
+              same room hearing the same constraint. The design comes after the alignment.
             </p>
           </div>
           <div className="cs-reflection-card">
