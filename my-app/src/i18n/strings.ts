@@ -48,6 +48,14 @@ const en = {
   "home.replay": "Replay",
   "home.replayAria": "Replay the animation",
 
+  // ── Home: mini about ──
+  "home.about.aria": "About Hillary Esposito",
+  "home.about.photoAlt": "Portrait of Hillary Esposito",
+  "home.about.eyebrow": "A little about me",
+  "home.about.blurb":
+    "I've spent 13 years where systems meet the people who use them: directing medical logistics in the Army, redesigning clinical operations at Memorial Sloan Kettering, and now bringing that judgment to responsible AI. Systems don't fail in flowcharts. They fail at the point where a real person has to use them, and that's where I work.",
+  "home.about.link": "More about me →",
+
   // ── Home: credentials strip ──
   "home.credentialsAria": "Professional credentials",
   "home.credentials": "Lean Six Sigma Green Belt · MHA, Rutgers · Bilingual EN/ES",
@@ -139,10 +147,18 @@ const es: Partial<Record<StringKey, string>> = {
     "Diseñadora UX y de Producto que convierte flujos de trabajo complejos del sector salud y de entornos empresariales en productos digitales confiables.",
   "home.description":
     "Más de 13 años de liderazgo en mejora de procesos, sistemas clínicos, operaciones militares e investigación UX. Veterana del Ejército de EE. UU.",
-  "home.getInTouch": "Contáctame",
-  "home.seeApproach": "Conoce mi enfoque →",
+  "home.getInTouch": "Contácteme",
+  "home.seeApproach": "Conozca mi enfoque →",
   "home.replay": "Repetir",
   "home.replayAria": "Repetir la animación",
+
+  // ── Home: mini about ──
+  "home.about.aria": "Sobre Hillary Esposito",
+  "home.about.photoAlt": "Retrato de Hillary Esposito",
+  "home.about.eyebrow": "Un poco sobre mí",
+  "home.about.blurb":
+    "Llevo 13 años trabajando donde los sistemas se encuentran con las personas que los usan: dirigí logística médica en el Ejército, rediseñé operaciones clínicas en Memorial Sloan Kettering y hoy aplico ese mismo criterio a la adopción responsable de la IA. Los sistemas no fallan en los diagramas de flujo. Fallan en el punto donde una persona real tiene que usarlos, y ahí es donde trabajo.",
+  "home.about.link": "Conozca más sobre mí →",
 
   // ── Home: credentials strip ──
   "home.credentialsAria": "Credenciales profesionales",
@@ -187,12 +203,12 @@ const es: Partial<Record<StringKey, string>> = {
 
   // ── Home: contact / CTA ──
   "home.contactAria": "Sección de contacto",
-  "home.ctaTitle": "Hablemos de tu producto",
+  "home.ctaTitle": "Hablemos de su producto",
   "home.ctaBody":
-    "Convierto flujos de trabajo complejos en herramientas que inspiran confianza. Si tu equipo necesita una diseñadora UX y de producto con amplia experiencia en salud, entornos empresariales u operaciones, hablemos.",
-  "home.ctaEmail": "Escríbeme",
-  "home.ctaEmailAria": "Envíame un correo",
-  "home.ctaCall": "Agenda una llamada →",
+    "Convierto flujos de trabajo complejos en herramientas que inspiran confianza. Si su equipo necesita una diseñadora UX y de producto con amplia experiencia en salud, entornos empresariales u operaciones, hablemos.",
+  "home.ctaEmail": "Escríbame",
+  "home.ctaEmailAria": "Envíeme un correo",
+  "home.ctaCall": "Agende una llamada →",
   "home.ctaCallAria": "Agendar una llamada (se abre en una pestaña nueva)",
   "home.linkedinAria": "Perfil de LinkedIn (se abre en una pestaña nueva)",
   "home.resumeLink": "CV",

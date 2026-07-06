@@ -325,6 +325,20 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════
+          MINI ABOUT — a face + a short human blurb, linking to /about
+      ══════════════════════════════════════════ */}
+      <section className="home-mini-about" aria-label={t("home.about.aria")}>
+        <div className="mini-about-photo">
+          <img src="/assets/about/headshot.jpg" alt={t("home.about.photoAlt")} loading="lazy" />
+        </div>
+        <div className="mini-about-text">
+          <p className="mini-about-eyebrow">{t("home.about.eyebrow")}</p>
+          <p className="mini-about-blurb">{t("home.about.blurb")}</p>
+          <Link to="/about" className="mini-about-link">{t("home.about.link")}</Link>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
           3. PROJECTS — numbered cards
       ══════════════════════════════════════════ */}
       <section id="projects" className="section active projects home-projects-section"
