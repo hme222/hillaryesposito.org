@@ -53,13 +53,6 @@ const MVP_FEATURES = [
   { feature: "Verified swapping", pct: 6, tier: "post" },
 ];
 
-const FLOW_STEPS = [
-  { num: "01", title: "Onboard + create bouquet", desc: "User registers, picks plant types, and creates their first bouquet, the core unit of the app." },
-  { num: "02", title: "Daily care tasks", desc: "Personalized watering/light/rotation tasks appear each morning based on the bouquet's plants and environment." },
-  { num: "03", title: "Journal progress", desc: "Photo journal entries track growth over time, attached to specific bouquets for context." },
-  { num: "04", title: "AI-generated plant personality", desc: "When care streaks hit milestones, the app generates a unique plant personality profile: a playful, AI-written character sketch that makes each plant feel personal." },
-];
-
 const AI_DECISIONS = [
   {
     area: "AI-generated plant personalities",
@@ -180,15 +173,19 @@ export default function GroveCaseStudy() {
         ))}
       </div>
 
-      {/* ── OVERVIEW ── */}
+      {/* ── THE PREMISE ── */}
       <section className="cs-overview">
-        <p className="gh-section-label">Overview</p>
-        <h2 className="cs-section-title">Research-driven design for a plant care app, with AI as the accelerant</h2>
+        <p className="gh-section-label">The premise</p>
+        <h2 className="cs-section-title">Plant parents forget. Then they feel guilty.</h2>
         <p className="cs-overview-text">
-          Grove is a plant care app I designed, researched, and built end-to-end. A 32-respondent
-          survey defined the MVP, two data-driven personas shaped every design decision, and a
-          moderated testing plan is ready to validate the hypothesis. AI tools accelerated the build,
-          and every AI decision is documented with explicit reasoning.
+          Grove is a plant care app I designed, researched, and built end-to-end in a 3-week solo
+          sprint, so this case study reads the way the project ran: as a build log. New plant owners
+          kill their plants because care information is generic, conflicting, and untrustworthy, and
+          existing apps respond by nagging rather than teaching. Every clause of that statement came
+          from the survey data. A 32-respondent survey defined the MVP, two data-driven personas
+          shaped every design decision, and a moderated testing plan is ready to validate the
+          hypothesis. AI tools accelerated the build, and every AI decision is documented below with
+          explicit reasoning.
         </p>
         <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
           <strong>Research:</strong> 32-respondent survey (5/22–6/19/2026) · moderated testing plan (5–6 participants, ready to run).
@@ -196,19 +193,8 @@ export default function GroveCaseStudy() {
         <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
           <strong>Constraints:</strong> Solo project. 3-week build. Prototype shipped; moderated user testing is next.
         </p>
-      </section>
 
-      {/* ── THE CHALLENGE ── */}
-      <section>
-        <p className="gh-section-label">The challenge</p>
-        <h2>Plant parents forget. Then they feel guilty.</h2>
-        <p>
-          New plant owners kill their plants because care information is generic, conflicting, and
-          untrustworthy, and existing apps respond by nagging rather than teaching. Every clause
-          of that statement came from the survey data:
-        </p>
-
-        <div className="gh-assumption-grid">
+        <div className="gh-assumption-grid" style={{ marginTop: "1.5rem" }}>
           <div className="gh-assumption-card gh-assumption-card--initial">
             <p className="gh-assumption-label">What users said</p>
             <p>"Advice is too generic, doesn't account for my specific home environment." Most common single frustration across all respondents.</p>
@@ -233,12 +219,14 @@ export default function GroveCaseStudy() {
         </div>
       </section>
 
-      {/* ── WHAT I NEEDED TO LEARN ── */}
+      {/* ── LOG: WEEK 1 — RESEARCH ── */}
       <section>
-        <p className="gh-section-label">What I needed to learn</p>
-        <h2>Research questions that shaped the project</h2>
-        <p className="cs-section-intro">
-          I had assumptions about what plant owners need. Before designing anything, I needed to test them.
+        <p className="gh-section-label">Log · Week 1 · Research</p>
+        <h2>32 respondents told me what actually matters</h2>
+        <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
+          Week 1 was survey design, distribution, and analysis. I ran a 32-respondent survey
+          (5/22–6/19/2026) targeting new-to-experienced plant owners. I had assumptions about
+          what plant owners need; before designing anything, I needed to test them:
         </p>
 
         <div className="cs-research-questions">
@@ -247,33 +235,8 @@ export default function GroveCaseStudy() {
           <div className="cs-research-question">Where does AI create genuine value in plant care, and where does it erode trust?</div>
           <div className="cs-research-question">What does "calm" look like in an app category dominated by notification spam?</div>
         </div>
-      </section>
 
-      {/* ── TOOLS & WHY ── */}
-      <ToolsUsed
-        tools={[
-          { icon: <TerminalIcon />, name: "Claude Code",
-            why: "AI pair programmer for backend API development: auth flows, database models, endpoint logic. I directed architecture; AI accelerated the boilerplate." },
-          { icon: <PencilIcon />, name: "Cursor",
-            why: "AI-assisted frontend scaffolding and debugging. Useful for generating component shells; I refined every component's UX after." },
-          { icon: <LaunchIcon />, name: "Emergent Agent",
-            why: "AI-powered deployment platform. Handled infra and environment setup so I could focus entirely on design and product decisions." },
-          { icon: <FrameIcon />, name: "Figma",
-            why: "Wireframing the core flows before writing any code. Even with AI speeding up development, I still designed first." },
-        ]}
-      />
-
-      {/* ── RESEARCH ── */}
-      <section>
-        <p className="gh-section-label">Research</p>
-        <h2>32 respondents told me what actually matters</h2>
-        <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
-          I ran a 32-respondent survey (5/22–6/19/2026) targeting new-to-experienced plant owners.
-          A forced trade-off question, "If Grove could only launch with THREE features, which are
-          dealbreakers?", let the responses define the MVP.
-        </p>
-
-        <div className="grove-survey-stats" aria-label="Key survey findings">
+        <div className="grove-survey-stats" aria-label="Key survey findings" style={{ marginTop: "1.5rem" }}>
           {SURVEY_FINDINGS.map((f) => (
             <div key={f.label} className="grove-survey-stat feature">
               <p className="grove-survey-stat__value gradient-text">{f.stat}</p>
@@ -308,11 +271,18 @@ export default function GroveCaseStudy() {
             </ul>
           </div>
         </div>
+      </section>
 
-        <h3 style={{ marginTop: "2.5rem", color: "var(--olive-2)" }}>MVP definition: what the data says to build</h3>
-        <p style={{ color: "var(--muted)", lineHeight: 1.65, marginBottom: "1rem" }}>
-          Forced-rank results. The top 3 define the MVP; everything below is post-launch.
+      {/* ── LOG: WEEK 1 — MVP DEFINITION ── */}
+      <section>
+        <p className="gh-section-label">Log · Week 1 · MVP definition</p>
+        <h2>I built community features. The survey said they're not why people download.</h2>
+        <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
+          A forced trade-off question, "If Grove could only launch with THREE features, which are
+          dealbreakers?", let the responses define the MVP. Forced-rank results below: the top 3
+          define the MVP; everything below is post-launch.
         </p>
+
         <div className="grove-mvp-list">
           {MVP_FEATURES.map((f) => (
             <div key={f.feature} className={`grove-mvp-row feature ${f.tier === "core" ? "grove-mvp-row--core" : ""}`}>
@@ -331,13 +301,8 @@ export default function GroveCaseStudy() {
           survey says the download decision is made on three care features plus trust.
           The differentiators don't matter until the dealbreakers are excellent.
         </div>
-      </section>
 
-      {/* ── WHAT THE RESEARCH CHANGED ── */}
-      <section>
-        <p className="gh-section-label">What the research changed</p>
-        <h2>I built community features. The survey said they're not why people download.</h2>
-        <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
+        <p style={{ maxWidth: 640, margin: "2rem 0 1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
           Community forums ranked 6th out of 11 features (23%). Verified swapping ranked 9th (6%).
           The social layer I designed isn't why anyone installs a plant app.
           Smart reminders, plant ID, and diagnosis are. The research reordered my priorities:
@@ -366,12 +331,45 @@ export default function GroveCaseStudy() {
             Florist respondent, on AI-generated care sheets. This single quote paused an entire feature tier. When your users explicitly tell you AI erodes their trust, the responsible design decision is to stop and listen, not ship and iterate.
           </span>
         </div>
+
+        <div className="highlight" style={{ marginTop: "2rem" }}>
+          <p className="gh-design-q-label">What got cut</p>
+          Community forums, plant swapping, achievement badges, the Florist Pro tier, and a
+          gamification layer with XP points. None of these were in the top 3 survey features.
+          The hardest cut was community forums (ranked 5th at 23%), but building retention
+          features before the core care loop is excellent would have been building in the wrong order.
+        </div>
       </section>
 
-      {/* ── HOW IT WORKS ── */}
+      {/* ── LOG: WEEKS 1–2 — BUILD ── */}
       <section>
-        <p className="gh-section-label">How it works</p>
-        <h2>User flow: setup to first plant personality</h2>
+        <p className="gh-section-label">Log · Weeks 1–2 · Build</p>
+        <h2>Core architecture, then the core care loop</h2>
+        <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
+          Shipping a full-stack app solo in 3 weeks meant making hard prioritization calls every day.
+          The survey data made those calls easier: if users didn't rank it in the top 3, it waited.
+          Week 1 also covered core architecture: I set up the React + FastAPI + MongoDB stack and
+          built auth and the bouquet data model; every architecture decision followed the MVP
+          features the survey identified.
+          Week 2 was smart reminders, plant ID via camera, and the daily care task flow — the three
+          features users said they'd download for. I built them before touching anything else.
+          AI coding tools (Claude Code, Cursor) handled boilerplate so I could focus on interaction design.
+        </p>
+
+        <ToolsUsed
+          tools={[
+            { icon: <TerminalIcon />, name: "Claude Code",
+              why: "AI pair programmer for backend API development: auth flows, database models, endpoint logic. I directed architecture; AI accelerated the boilerplate." },
+            { icon: <PencilIcon />, name: "Cursor",
+              why: "AI-assisted frontend scaffolding and debugging. Useful for generating component shells; I refined every component's UX after." },
+            { icon: <LaunchIcon />, name: "Emergent Agent",
+              why: "AI-powered deployment platform. Handled infra and environment setup so I could focus entirely on design and product decisions." },
+            { icon: <FrameIcon />, name: "Figma",
+              why: "Wireframing the core flows before writing any code. Even with AI speeding up development, I still designed first." },
+          ]}
+        />
+
+        <h3 style={{ marginTop: "2.5rem", color: "var(--olive-2)" }}>User flow: setup to first plant personality</h3>
         <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
           The happy path is four steps. But the product thinking lives in the branches: what happens when a user skips a day, hasn't added any plants yet, or returns after a week away.
         </p>
@@ -463,40 +461,15 @@ export default function GroveCaseStudy() {
         </div>
       </section>
 
-      {/* ── PRODUCT SHOWCASE ── */}
+      {/* ── LOG: WEEK 3 — PERSONALITY SYSTEM + POLISH ── */}
       <section>
-        <p className="gh-section-label">The product</p>
-        <h2>What Grove looks like</h2>
-        <p style={{ maxWidth: 640, marginBottom: "0.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
-          Key screens from the working build: onboarding through your first plant personality.
-        </p>
-
-        <div className="grove-screens-grid grove-screens-grid--annotated" aria-label="App screen previews with design rationale">
-          {SCREENS.map((screen) => (
-            <div key={screen.label} className="grove-screen-item grove-screen-item--annotated">
-              <div className="grove-phone-frame" style={{ background: screen.bg }}>
-                <img
-                  src={screen.image}
-                  alt={`${screen.label} screen`}
-                  className="grove-phone-frame__img"
-                  loading="lazy"
-                />
-              </div>
-              <p className="grove-screen-label">{screen.label}</p>
-              {screen.designNote && (
-                <p className="grove-screen-note">{screen.designNote}</p>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── DESIGNING FOR EDGE CASES ── */}
-      <section>
-        <p className="gh-section-label">Interaction design</p>
-        <h2>Designing for the states users actually encounter</h2>
+        <p className="gh-section-label">Log · Week 3 · Personality system + polish</p>
+        <h2>Edge states, guardrails, and the reward loop</h2>
         <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
-          The happy path is the easy part. These are the states that determine whether someone keeps using the app or uninstalls it.
+          Week 3 was AI-generated plant personalities, prompt guardrails, the photo journal, and edge
+          state handling. Deployed via Emergent. Community features (forums, swaps, badges) were
+          intentionally deferred; the survey ranked them 5th-9th. The happy path is the easy part.
+          These are the states that determine whether someone keeps using the app or uninstalls it.
         </p>
 
         <div className="grove-states-grid">
@@ -554,13 +527,42 @@ export default function GroveCaseStudy() {
         </div>
       </section>
 
-      {/* ── AI IN MY PROCESS ── */}
+      {/* ── THE PRODUCT TODAY ── */}
       <section>
-        <p className="gh-section-label">AI in my process</p>
+        <p className="gh-section-label">The product today</p>
+        <h2>What Grove looks like</h2>
+        <p style={{ maxWidth: 640, marginBottom: "0.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
+          Key screens from the working build: onboarding through your first plant personality.
+        </p>
+
+        <div className="grove-screens-grid grove-screens-grid--annotated" aria-label="App screen previews with design rationale">
+          {SCREENS.map((screen) => (
+            <div key={screen.label} className="grove-screen-item grove-screen-item--annotated">
+              <div className="grove-phone-frame" style={{ background: screen.bg }}>
+                <img
+                  src={screen.image}
+                  alt={`${screen.label} screen`}
+                  className="grove-phone-frame__img"
+                  loading="lazy"
+                />
+              </div>
+              <p className="grove-screen-label">{screen.label}</p>
+              {screen.designNote && (
+                <p className="grove-screen-note">{screen.designNote}</p>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── THE AI-JUDGMENT LOG ── */}
+      <section>
+        <p className="gh-section-label">The AI-judgment log</p>
         <h2>Where AI helped, where I led, and how I decided</h2>
         <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
           Everyone uses AI now. What this section shows is judgment:
           knowing when to trust it, when to override it, and when to do the work myself.
+          These calls happened all through the sprint; they're collected here as their own log.
         </p>
 
         {/* ── "Where I pushed back" callout — the scannable highlight ── */}
@@ -613,9 +615,9 @@ export default function GroveCaseStudy() {
 
       </section>
 
-      {/* ── OUTCOMES ── */}
+      {/* ── WHERE IT STANDS ── */}
       <section className="cs-outcome">
-        <p className="gh-section-label">What I shipped</p>
+        <p className="gh-section-label">Where it stands</p>
         <h2 className="cs-section-title">Research artifacts + working product</h2>
         <div className="cs-outcome-grid">
           <div className="cs-outcome-card">
@@ -640,65 +642,8 @@ export default function GroveCaseStudy() {
           while users decide on three features. The research reordered my priorities before I spent
           more time building the wrong things.
         </p>
-      </section>
 
-      {/* ── HOW I SHIPPED ── */}
-      <section>
-        <p className="gh-section-label">How I shipped</p>
-        <h2>3 weeks, solo: what I prioritized and what I cut</h2>
-        <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
-          Shipping a full-stack app solo in 3 weeks meant making hard prioritization calls every day.
-          The survey data made those calls easier: if users didn't rank it in the top 3, it waited.
-        </p>
-
-        <div className="gh-features-grid">
-          <div className="feature">
-            <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>Week 1: Research + core architecture</h3>
-            <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
-              Survey design, distribution, and analysis. Set up the React + FastAPI + MongoDB stack.
-              Built auth and the bouquet data model. Every architecture decision followed the
-              MVP features the survey identified.
-            </p>
-          </div>
-          <div className="feature">
-            <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>Week 2: Core care loop</h3>
-            <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
-              Smart reminders, plant ID via camera, and the daily care task flow. These are the three
-              features users said they'd download for. I built them before touching anything else.
-              AI coding tools (Claude Code, Cursor) handled boilerplate so I could focus on interaction design.
-            </p>
-          </div>
-          <div className="feature">
-            <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>Week 3: Personality system + polish</h3>
-            <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
-              AI-generated plant personalities, prompt guardrails, the photo journal, and edge state
-              handling. Deployed via Emergent. Community features (forums, swaps, badges) were
-              intentionally deferred; the survey ranked them 5th-9th.
-            </p>
-          </div>
-        </div>
-
-        <div className="highlight" style={{ marginTop: "2rem" }}>
-          <p className="gh-design-q-label">What got cut</p>
-          Community forums, plant swapping, achievement badges, the Florist Pro tier, and a
-          gamification layer with XP points. None of these were in the top 3 survey features.
-          The hardest cut was community forums (ranked 5th at 23%), but building retention
-          features before the core care loop is excellent would have been building in the wrong order.
-        </div>
-      </section>
-
-      <div className="cs-inline-cta">
-        <p>Interested in this kind of work?</p>
-        <a href="mailto:espositohillary@gmail.com" className="hero-btn" style={{ fontSize: "0.9rem", padding: "0.8rem 1.8rem", textDecoration: "none" }}>
-          Send me a note
-        </a>
-      </div>
-
-      {/* ── WHAT I LEARNED ── */}
-      <section className="cs-reflections">
-        <p className="gh-section-label">What I learned</p>
-        <h2 className="cs-section-title">Where this project stands and what it taught me</h2>
-        <div className="cs-reflections-grid">
+        <div className="cs-reflections-grid" style={{ marginTop: "1.5rem" }}>
           <div className="cs-reflection-card">
             <h3>Research before conviction</h3>
             <p>
@@ -716,18 +661,27 @@ export default function GroveCaseStudy() {
               survey validated.
             </p>
           </div>
-          <div className="cs-reflection-card">
-            <h3>What's next: moderated testing</h3>
-            <p>
-              5–6 moderated sessions, one persona per participant: can Maya add a plant
-              in under 30 seconds? Can she find the lighting tutorial unaided? Does James's
-              bulk logging match his mental model? Pre-registered success criteria so the
-              hypothesis can be clearly supported or challenged.
-            </p>
-          </div>
         </div>
-
       </section>
+
+      {/* ── WHAT'S NEXT ── */}
+      <section>
+        <p className="gh-section-label">Log · Next entry</p>
+        <h2>What's next: moderated testing</h2>
+        <p style={{ maxWidth: 640, color: "var(--muted)", lineHeight: 1.65 }}>
+          5–6 moderated sessions, one persona per participant: can Maya add a plant
+          in under 30 seconds? Can she find the lighting tutorial unaided? Does James's
+          bulk logging match his mental model? Pre-registered success criteria so the
+          hypothesis can be clearly supported or challenged.
+        </p>
+      </section>
+
+      <div className="cs-inline-cta">
+        <p>Interested in this kind of work?</p>
+        <a href="mailto:espositohillary@gmail.com" className="hero-btn" style={{ fontSize: "0.9rem", padding: "0.8rem 1.8rem", textDecoration: "none" }}>
+          Send me a note
+        </a>
+      </div>
 
       {/* ── OTHER PROJECTS ── */}
       <MoreWork projects={OTHER_PROJECTS} onBack={() => navigate("/?scrollTo=projects")} />
