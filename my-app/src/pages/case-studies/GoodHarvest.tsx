@@ -6,6 +6,7 @@ import MediaCard from "../../components/MediaCard";
 import ToolsUsed from "../../components/ToolsUsed";
 import MoreWork from "../../components/MoreWork";
 import useReveal from "../../hooks/useReveal";
+import { FrameIcon, FlaskIcon, FolderIcon, SproutIcon, MedicalCrossIcon } from "../../components/LineIcons";
 
 export default function GoodHarvest() {
   usePageTitle("Good Harvest: Evidence-Based Mobile UX");
@@ -25,9 +26,9 @@ export default function GoodHarvest() {
   }), []);
 
   const otherProjects = [
-    { icon: "🌱", title: "Grove", path: "/case-study/grove",
+    { icon: <SproutIcon />, title: "Grove", path: "/case-study/grove",
       desc: "AI + design plant care app. Research to shipped product in 3 weeks, solo." },
-    { icon: "🏥", title: "MSK Cancer Center", path: "/case-study/msk",
+    { icon: <MedicalCrossIcon />, title: "MSK Cancer Center", path: "/case-study/msk",
       desc: "Six years redesigning clinical workflows, onboarding, and certification systems for 21,000+ clinicians." },
   ];
 
@@ -97,11 +98,11 @@ export default function GoodHarvest() {
       {/* ── OVERVIEW ── */}
       <section className="cs-overview">
         <p className="gh-section-label">Overview</p>
-        <h2 className="cs-section-title">People want to eat seasonally. The information makes it harder, not easier</h2>
+        <h2 className="cs-section-title">From inherited research to a heatmap-tested prototype</h2>
         <p className="cs-overview-text">
           An independent project where I took provided research (22 participant interviews and surveys)
-          and designed a mobile app from findings through tested prototype. The research revealed that
-          shoppers aren't lacking motivation; they're lacking confidence that information applies to
+          and designed a mobile app from findings through tested prototype. The research showed shoppers
+          are already motivated. What stopped them was confidence that the information applied to
           <em> their</em> location. I designed the solution and validated it with heatmap testing.
         </p>
       </section>
@@ -111,8 +112,7 @@ export default function GoodHarvest() {
         <p className="gh-section-label">The challenge</p>
         <h2>People want to eat seasonally.<br />The information makes it hard.</h2>
         <p>
-          Health-conscious shoppers aren't lacking motivation; they're lacking decision
-          support. Existing tools tell you what's in season globally, but fail to answer
+          Existing tools tell you what's in season globally, but fail to answer
           the question that matters at point of purchase:{" "}
           <em>what's in season here, right now, and what do I do with it?</em>
         </p>
@@ -164,7 +164,7 @@ export default function GoodHarvest() {
           </div>
           <div className="cs-research-question">
             <p className="cs-research-question__q">Where do users look first on a food app screen, and what do they ignore?</p>
-            <p className="cs-research-question__why">Heatmap testing would show me actual attention patterns, not self-reported preferences. This was my primary validation method.</p>
+            <p className="cs-research-question__why">Heatmap testing would show me where attention actually went on each screen. This was my primary validation method.</p>
           </div>
           <div className="cs-research-question">
             <p className="cs-research-question__q">Can heatmap testing validate hypotheses from inherited research?</p>
@@ -176,11 +176,11 @@ export default function GoodHarvest() {
       {/* ── TOOLS & WHY ── */}
       <ToolsUsed
         tools={[
-          { icon: "🎨", name: "Figma",
+          { icon: <FrameIcon />, name: "Figma",
             why: "Primary design + prototyping surface. Auto layout and components let me iterate wireframes into testable flows without rebuilding screens each round." },
-          { icon: "🧪", name: "Maze",
-            why: "Unmoderated prototype testing with heatmaps. Chose it over in-person sessions because I needed attention data across 22 participants, not just verbal feedback." },
-          { icon: "🗂️", name: "FigJam",
+          { icon: <FlaskIcon />, name: "Maze",
+            why: "Unmoderated prototype testing with heatmaps. Chose it over in-person sessions because I needed attention data across all 22 participants." },
+          { icon: <FolderIcon />, name: "FigJam",
             why: "Affinity mapping provided research data and running the competitive SWOT. Kept synthesis visible so decisions trace back to raw evidence." },
         ]}
       />
@@ -206,8 +206,8 @@ export default function GoodHarvest() {
             <div className="reina-flow-content">
               <h3 style={{ margin: "0 0 0.35rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>Evidence-based design decisions</h3>
               <p style={{ margin: 0, fontSize: "0.97rem", color: "var(--muted)", lineHeight: 1.7 }}>
-                Every design choice traced back to research. Produce-first IA (testing showed first taps landed on produce, not the top nav),
-                embedded recipe CTAs (removed navigation friction), and explicit location indicators (addressing trust, not discoverability).
+                Every design choice traced back to research. Produce-first IA (testing showed first taps landed on produce),
+                embedded recipe CTAs (removed navigation friction), and explicit location indicators (addressing the trust gap).
               </p>
             </div>
           </li>
@@ -266,7 +266,7 @@ export default function GoodHarvest() {
         <h3 style={{ color: "var(--olive-2)", marginBottom: "0.75rem" }}>Home screen: produce-first hierarchy</h3>
         <div className="cs-gallery cols-3">
           <MediaCard src={screens.homeWire}  alt="Good Harvest home wireframe showing layout hierarchy"          caption="Wireframe: hierarchy + tap targets." />
-          <MediaCard src={screens.homeHeat}  alt="Heatmap showing attention on seasonal produce module"           caption="First taps landed on produce, not the top nav." />
+          <MediaCard src={screens.homeHeat}  alt="Heatmap showing attention on seasonal produce module"           caption="First taps landed on produce; the top nav went untouched." />
           <MediaCard src={screens.appMobile} alt="Good Harvest mobile app showing seasonal produce and recipes"   caption="Final: produce-first, secondary nav below fold." />
         </div>
 
@@ -363,7 +363,7 @@ export default function GoodHarvest() {
             <tr>
               <td>Entry point</td>
               <td>Produce-first home screen; markets as secondary action</td>
-              <td>Testing showed first taps landed on produce, not the top nav. Users orient around ingredients, not locations</td>
+              <td>Testing showed first taps landed on produce while the top nav went untouched. Users orient around ingredients</td>
             </tr>
             <tr>
               <td>Recipe discovery</td>
@@ -452,16 +452,6 @@ export default function GoodHarvest() {
           </div>
         </div>
 
-        <div className="cs-shows-card">
-          <p className="cs-shows-card__label">What this shows about my design approach</p>
-          <p className="cs-shows-card__text">
-            I don't treat research as a phase that ends. In this project, heatmap testing after
-            the initial design round changed core decisions: the seasonal produce screen needed
-            a completely different visual hierarchy than what I'd designed first. I test with real
-            users, read what they actually do (not what they say), and redesign based on evidence.
-            That cycle (design, test, learn, redesign) is how I work on every project.
-          </p>
-        </div>
       </section>
 
       {/* ── OTHER PROJECTS ── */}

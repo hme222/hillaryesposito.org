@@ -5,6 +5,7 @@ import usePageTitle from "../../hooks/usePageTitle";
 import ToolsUsed from "../../components/ToolsUsed";
 import MoreWork from "../../components/MoreWork";
 import useReveal from "../../hooks/useReveal";
+import { PhoneIcon, FrameIcon, MagnifierIcon, FolderIcon, SproutIcon, MedicalCrossIcon } from "../../components/LineIcons";
 
 const APPS = [
   {
@@ -40,7 +41,7 @@ const WHAT_I_DID = [
   {
     num: "01",
     title: "Captured end-to-end product journeys",
-    desc: "Documented complete mobile app experiences by walking every flow as a real user, capturing screens, and mapping key interaction sequences. Kikoff's 12-screen onboarding was worth capturing in full; Discover's marketing interstitials were not.",
+    desc: "Documented complete mobile app experiences by walking every flow as a real user, capturing screens, and mapping key interaction sequences. Kikoff's 12-screen onboarding earned a full capture. Discover's marketing interstitials stayed out of the batch.",
   },
   {
     num: "02",
@@ -61,13 +62,13 @@ const WHAT_I_DID = [
 
 const OTHER_PROJECTS = [
   {
-    icon: "🌱",
+    icon: <SproutIcon />,
     title: "Grove",
     desc: "AI + design plant care app. Research to shipped product in 3 weeks, solo.",
     path: "/case-study/grove",
   },
   {
-    icon: "🏥",
+    icon: <MedicalCrossIcon />,
     title: "MSK Cancer Center",
     desc: "Six years redesigning clinical workflows, onboarding, and certification systems for 21,000+ clinicians.",
     path: "/case-study/msk",
@@ -97,7 +98,7 @@ export default function MobbinCaseStudy() {
         </div>
         <div className="gh-hero__visual" aria-hidden="true">
           <div className="reina-hero-badge">
-            <span className="reina-hero-crown">📱</span>
+            <span className="reina-hero-crown"><PhoneIcon /></span>
             <span className="reina-hero-badge-label">3 Apps · 200+ Screens</span>
           </div>
         </div>
@@ -111,7 +112,7 @@ export default function MobbinCaseStudy() {
           { label: "Timeline", value: "Mar - Jun 2026 · 4 months" },
           { label: "Output",  value: "3 apps · 200+ screens · Full flow capture" },
           { label: "Focus",   value: "UX flow documentation · UI pattern curation" },
-          { label: "Status",  value: "Ongoing" },
+          { label: "Status",  value: "Launched · Jun 2026" },
         ].map((item, i, arr) => (
           <React.Fragment key={item.label}>
             <div className="gh-meta-strip__item">
@@ -128,18 +129,23 @@ export default function MobbinCaseStudy() {
         <p className="gh-section-label">Overview</p>
         <h2 className="cs-section-title">Capturing real product experiences for a global design reference library</h2>
         <p className="cs-overview-text">
-          As an App Capture Specialist for Mobbin, I document end-to-end mobile app experiences by
-          capturing screens, organizing user flows, and mapping key interaction sequences across real
-          product journeys. I curate UI patterns, navigation models, and task flows to support a
-          searchable design reference library used by UX, product, and design teams worldwide. Each
-          submission is reviewed and refined for clarity, completeness, and accuracy.
+          Mobbin brought me on as a freelance App Capture Specialist to document three fintech
+          apps for its design reference library. Over four months I captured 200+ screens,
+          organized them into flows, and tagged everything against Mobbin's taxonomy so other
+          designers could actually find the work. Each batch went through Mobbin's review, and
+          after the first round of feedback I learned to do the taxonomy alignment before
+          capturing anything.
+        </p>
+        <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
+          In June 2026, this work launched publicly as part of Mobbin's Finance+ library (50+ finance apps).{" "}
+          <a href="https://mobbin.com/finance" target="_blank" rel="noopener noreferrer" className="cs-inline-link">View it live →</a>
         </p>
       </section>
 
       {/* ── THE CHALLENGE ── */}
       <section>
         <p className="gh-section-label">The challenge</p>
-        <h2>Flow documentation isn't screenshots; it's editorial judgment</h2>
+        <h2>Flow documentation is editorial judgment</h2>
         <p style={{ maxWidth: 720, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.7 }}>
           Anyone can capture a screen. The challenge is knowing <em>which</em> flows
           are worth documenting, <em>how</em> to structure them so they're findable,
@@ -149,11 +155,11 @@ export default function MobbinCaseStudy() {
 
         <div className="gh-assumption-grid">
           <div className="gh-assumption-card gh-assumption-card--initial">
-            <p className="gh-assumption-label">The hard part wasn't</p>
-            <p>Capturing screens. That's mechanical. Any tool can do it.</p>
+            <p className="gh-assumption-label">The mechanical part</p>
+            <p>Capturing screens. Any tool can do it.</p>
           </div>
           <div className="gh-assumption-card gh-assumption-card--finding">
-            <p className="gh-assumption-label">The hard part was</p>
+            <p className="gh-assumption-label">The judgment calls</p>
             <p>Deciding what's worth showing, chunking flows into meaningful sequences, and writing annotations that stay useful to thousands of designers who will never meet me.</p>
           </div>
         </div>
@@ -166,15 +172,15 @@ export default function MobbinCaseStudy() {
         <div className="cs-research-questions__grid">
           <div className="cs-research-question">
             <p className="cs-research-question__q">How do designers actually search for UI patterns?</p>
-            <p className="cs-research-question__why">If I tagged screens based on how I'd describe them instead of how someone would search, the work would be invisible in the library.</p>
+            <p className="cs-research-question__why">Tagging screens with my own vocabulary would make the work invisible in the library. Findability depends on matching the searcher's words.</p>
           </div>
           <div className="cs-research-question">
             <p className="cs-research-question__q">What makes a flow worth documenting vs. a single screen?</p>
-            <p className="cs-research-question__why">Mobbin's value is in sequences, not screenshots. I needed to identify which interactions only make sense in context of the full journey.</p>
+            <p className="cs-research-question__why">Mobbin's value is in sequences. I needed to identify which interactions only make sense in context of the full journey.</p>
           </div>
           <div className="cs-research-question">
             <p className="cs-research-question__q">How do different fintech products solve the same trust problem differently?</p>
-            <p className="cs-research-question__why">All three apps ask users to trust them with money. Understanding the trust strategy behind each pattern made my annotations useful, not just descriptive.</p>
+            <p className="cs-research-question__why">All three apps ask users to trust them with money. Understanding the trust strategy behind each pattern is what made my annotations useful.</p>
           </div>
           <div className="cs-research-question">
             <p className="cs-research-question__q">What's the quality bar for contributions that serve a global audience?</p>
@@ -340,13 +346,13 @@ export default function MobbinCaseStudy() {
       {/* ── TOOLS ── */}
       <ToolsUsed
         tools={[
-          { icon: "📱", name: "Mobbin",
+          { icon: <PhoneIcon />, name: "Mobbin",
             why: "Source of truth for the contribution pipeline: taxonomy, conventions, and quality bar all live here." },
-          { icon: "🎨", name: "Figma",
+          { icon: <FrameIcon />, name: "Figma",
             why: "Annotated key flows when patterns needed extra context beyond a screen capture." },
-          { icon: "🔍", name: "Live apps",
+          { icon: <MagnifierIcon />, name: "Live apps",
             why: "Walked each product as a real user, across iOS, edge cases, and empty states, to capture flows in context." },
-          { icon: "🗂️", name: "Pattern taxonomy",
+          { icon: <FolderIcon />, name: "Pattern taxonomy",
             why: "Worked within Mobbin's existing component and pattern vocabulary so contributions stayed searchable and consistent." },
         ]}
       />
@@ -377,12 +383,12 @@ export default function MobbinCaseStudy() {
             <tr>
               <td>Annotation style</td>
               <td>Wrote annotations for a designer arriving without context, explaining what each screen does and why it matters</td>
-              <td>Annotations used by thousands of designers in contexts I can't predict; clarity for a stranger in a hurry is the constraint</td>
+              <td>Annotations are read by designers in contexts I can't predict, so each one has to explain itself</td>
             </tr>
             <tr>
               <td>App selection framing</td>
               <td>Treated each app as a different "trust problem": Kikoff (proof), Polymarket (transparency), Discover (familiarity)</td>
-              <td>Same goal across all three ("trust us with your money"), different approaches. Cross-app analysis reveals the pattern system</td>
+              <td>All three ask users to trust them with money. Comparing their approaches side by side reveals the pattern system</td>
             </tr>
           </tbody>
         </table>
@@ -431,9 +437,9 @@ export default function MobbinCaseStudy() {
           <p className="cs-evidence-pair__finding">I initially over-documented marketing screens that designers rarely search for.</p>
           <p className="cs-evidence-pair__evidence">
             My first Discover submission included promotional interstitials and marketing landing screens.
-            Mobbin's feedback was clear: designers search for interaction patterns, not marketing content.
-            I shifted to prioritizing onboarding flows, key task completions, and edge/empty states: the
-            screens that solve real design problems.
+            Mobbin's feedback was clear: designers come to the library to solve interaction problems, and
+            marketing screens don't help them. I shifted to prioritizing onboarding flows, key task
+            completions, and edge/empty states: the screens that solve real design problems.
           </p>
         </div>
       </section>
@@ -464,7 +470,7 @@ export default function MobbinCaseStudy() {
             <p>
               Mobbin's taxonomy has specific vocabulary. Tagging a screen as "progress indicator"
               vs. "status display" vs. "achievement" changes how designers find it. I learned to
-              name patterns by how someone would search for them, not how I'd describe them.
+              name patterns by how someone would search for them.
             </p>
           </div>
           <div className="cs-reflection-card">
@@ -488,25 +494,12 @@ export default function MobbinCaseStudy() {
           <div className="cs-reflection-card">
             <h3>Strengthened product judgment</h3>
             <p>
-              Studying how leading apps structure information, guide users, and reduce friction
-              across complex digital experiences sharpened how I evaluate my own design decisions.
               Seeing 200+ screens of real product work builds pattern recognition you can't get
-              from reading about patterns.
+              from reading about patterns. It sharpened how I evaluate my own design decisions.
             </p>
           </div>
         </div>
 
-        <div className="cs-shows-card">
-          <p className="cs-shows-card__label">What this shows about my design approach</p>
-          <p className="cs-shows-card__text">
-            This contract is product analysis at scale. Studying 200+ screens across three fintech
-            apps built pattern recognition I use in every design decision: knowing how leading
-            products handle trust, disclosure, and progressive complexity isn't theory, it's
-            something I've documented screen by screen. It also proved I can produce high-quality
-            work inside someone else's system, adapting to their taxonomy, quality bar, and review
-            process without needing hand-holding.
-          </p>
-        </div>
       </section>
 
       {/* ── OTHER PROJECTS ── */}

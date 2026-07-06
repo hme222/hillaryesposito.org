@@ -2,7 +2,8 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 export type MoreWorkProject = {
-  icon: string;
+  /** Line-icon element (see components/LineIcons) — matches the site's stroke family. */
+  icon: React.ReactNode;
   title: string;
   desc: string;
   path: string;

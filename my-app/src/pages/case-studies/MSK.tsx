@@ -3,21 +3,22 @@ import { useNavigate } from "react-router-dom";
 import usePageTitle from "../../hooks/usePageTitle";
 import MoreWork from "../../components/MoreWork";
 import useReveal from "../../hooks/useReveal";
+import { SproutIcon, LeafIcon } from "../../components/LineIcons";
 
 // Lazy-loaded so three.js ships in its own chunk (only fetched on this page).
 const MSKSystemMap = lazy(() => import("../../components/MSKSystemMap"));
 
 const OTHER_PROJECTS = [
   {
-    icon: "🌱",
+    icon: <SproutIcon />,
     title: "Grove",
     desc: "AI + design plant care app. Research to shipped product in 3 weeks, solo.",
     path: "/case-study/grove",
   },
   {
-    icon: "🌿",
+    icon: <LeafIcon />,
     title: "Good Harvest",
-    desc: "Heatmap testing with 22 users revealed the problem wasn't discoverability; it was trust.",
+    desc: "Heatmap testing with 22 users found a trust problem: people located the seasonal info but didn't believe it applied to them.",
     path: "/case-study/good-harvest",
   },
 ];
@@ -39,7 +40,7 @@ export default function MSKCaseStudy() {
           <p className="gh-hero__intro">
             Six years, three roles. I redesigned clinical workflows, onboarding systems,
             and operational processes for <strong>21,000+ clinicians</strong> at one of the
-            world's top cancer centers, where confusion isn't an inconvenience; it's a patient safety risk.
+            world's top cancer centers.
           </p>
         </div>
         <div className="gh-hero__visual" aria-hidden="true">
@@ -79,7 +80,7 @@ export default function MSKCaseStudy() {
           the clinicians using them, aligned clinical and administrative stakeholders, and shipped fixes
           that 21,000+ people relied on daily. This was deep user research before I formally had the
           vocabulary for it. The instinct came from the Army, where I had directed medical logistics for
-          5,000+ soldiers, systems whose failures were measured in readiness, not support tickets. The
+          5,000+ soldiers, systems whose failures showed up as readiness problems. The
           work that matters most in healthcare happens before anyone opens Figma.
         </p>
         <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
@@ -134,7 +135,7 @@ export default function MSKCaseStudy() {
             <p className="cs-body-text">
               Clinicians spent 14 steps across 3 systems to complete a single clinical task. They toggled between windows,
               re-entered data, and lost context mid-workflow. Cost overruns and staff frustration were symptoms; the root cause
-              was navigation designed around software architecture, not clinical tasks.
+              was navigation built around the software's own architecture.
             </p>
           </div>
           <div className="feature">
@@ -187,7 +188,7 @@ export default function MSKCaseStudy() {
           <div className="cs-research-question">Where in the workflow were clinicians losing time, and was it the system's fault or the process's fault?</div>
           <div className="cs-research-question">What did staff actually do vs. what the documented procedure said they should do?</div>
           <div className="cs-research-question">Which handoffs between departments created confusion, rework, or dropped tasks?</div>
-          <div className="cs-research-question">What would "good" look like to the people who use this system every day, not just the people who manage it?</div>
+          <div className="cs-research-question">What would "good" look like to the people who use this system every day?</div>
         </div>
       </section>
 
@@ -200,8 +201,8 @@ export default function MSKCaseStudy() {
           <div className="cs-method-card">
             <p className="cs-method-card__name">Frontline shadowing</p>
             <p className="cs-method-card__why">
-              Interviewed and observed nurses, clinicians, and admin staff during actual shifts.
-              Not in a conference room. On the floor, watching where they paused, backtracked, or worked around the system.
+              Interviewed and observed nurses, clinicians, and admin staff during actual shifts,
+              on the floor, watching where they paused, backtracked, or worked around the system.
               This is how I found the gap between documented workflows and real behavior.
             </p>
           </div>
@@ -223,7 +224,7 @@ export default function MSKCaseStudy() {
           <div className="cs-method-card">
             <p className="cs-method-card__name">Cross-functional stakeholder sessions</p>
             <p className="cs-method-card__why">
-              Presented findings to clinical leadership, IT, and frontline staff simultaneously, not sequentially.
+              Presented findings to clinical leadership, IT, and frontline staff simultaneously.
               When each group heard the same data at the same time, alignment happened in the room instead of over months of email.
             </p>
           </div>
@@ -239,7 +240,7 @@ export default function MSKCaseStudy() {
         </p>
 
         <div className="cs-evidence-pair">
-          <p className="cs-evidence-pair__finding">Finding: Clinicians weren't slow; the system made them slow.</p>
+          <p className="cs-evidence-pair__finding">Finding: The system made clinicians slow.</p>
           <p className="cs-evidence-pair__evidence">
             Shadowing revealed that completing a single clinical task required navigating 3 separate systems,
             re-entering patient data at each transition, and mentally tracking context across windows.
@@ -248,18 +249,18 @@ export default function MSKCaseStudy() {
           <div className="cs-insight-action" style={{ marginTop: "0.75rem" }}>
             <p className="cs-insight-action__label">What I changed</p>
             <p className="cs-insight-action__text">
-              Redesigned the EMR workflow around clinical tasks, not system features.
+              Redesigned the EMR workflow around clinical tasks.
               Consolidated 14 steps across 3 systems into 6 steps in one view. Eliminated redundant data entry.
-              Aligned navigation to how clinicians think: patient actions, not software menus.
+              Aligned navigation to the patient actions clinicians were trying to complete.
             </p>
           </div>
         </div>
 
         <div className="cs-evidence-pair">
-          <p className="cs-evidence-pair__finding">Finding: Staff didn't fail certifications from neglect. They failed because the system only told them after the fact.</p>
+          <p className="cs-evidence-pair__finding">Finding: Staff failed certifications because the system only told them after the fact.</p>
           <p className="cs-evidence-pair__evidence">
             The certification tracking spreadsheet had no proactive alerts. Staff learned their certification had
-            lapsed when compliance flagged it. By then it was a disciplinary issue, not a planning issue.
+            lapsed when compliance flagged it. By then it had already become a disciplinary issue.
             Managers had no dashboard view of upcoming expirations across their teams.
           </p>
           <div className="cs-insight-action" style={{ marginTop: "0.75rem" }}>
@@ -299,7 +300,7 @@ export default function MSKCaseStudy() {
           <div className="feature">
             <h3 className="cs-feature-heading">EMR workflow</h3>
             <p className="cs-body-text"><strong>Before:</strong> 14 steps across 3 systems. Clinicians toggled between windows, re-entered data, and lost context mid-workflow.</p>
-            <p className="cs-body-text" style={{ marginTop: "0.5rem" }}><strong>After:</strong> 6 steps in one view. Navigation aligned to clinical task flow, not software architecture.</p>
+            <p className="cs-body-text" style={{ marginTop: "0.5rem" }}><strong>After:</strong> 6 steps in one view. Navigation aligned to the clinical task flow.</p>
           </div>
           <div className="feature">
             <h3 className="cs-feature-heading">Certification tracking</h3>
@@ -338,7 +339,7 @@ export default function MSKCaseStudy() {
           </div>
           <div className="cs-team-card">
             <p className="cs-team-card__role">Operations / Compliance</p>
-            <p className="cs-team-card__desc">Process improvement and training teams. We co-designed change management plans so new workflows were adopted, not just deployed.</p>
+            <p className="cs-team-card__desc">Process improvement and training teams. We co-designed change management plans so new workflows actually got adopted.</p>
           </div>
         </div>
 
@@ -359,11 +360,11 @@ export default function MSKCaseStudy() {
         <h2>Mistakes I made and what they taught me</h2>
 
         <div className="cs-evidence-pair">
-          <p className="cs-evidence-pair__finding">I designed the onboarding system for managers, not new hires.</p>
+          <p className="cs-evidence-pair__finding">I designed the onboarding system for the managers instead of the new hires.</p>
           <p className="cs-evidence-pair__evidence">
             The first version of the unified onboarding experience was optimized for manager visibility: tracking dashboards,
             completion rates, compliance reports. But when I tested it with actual new clinicians, they found the interface
-            overwhelming. They didn't need a dashboard on day one. They needed a single clear next step. I redesigned the
+            overwhelming. What they needed on day one was a single clear next step. I redesigned the
             new-hire view to show only the current task and a progress indicator. The manager dashboard stayed, but it
             wasn't the primary interface anymore.
           </p>
@@ -374,7 +375,7 @@ export default function MSKCaseStudy() {
           <p className="cs-evidence-pair__evidence">
             The redesigned EMR workflow was technically better, but the initial rollout had lower adoption than expected.
             Clinicians who had spent years building workarounds for the old system were resistant to relearning.
-            I added floor-level training sessions (not webinars) where I walked clinicians through the new flow
+            I added floor-level training sessions, walking clinicians through the new flow
             on their actual workstations during shift transitions. Adoption improved within two weeks.
           </p>
         </div>
@@ -433,13 +434,13 @@ export default function MSKCaseStudy() {
           <tbody>
             <tr>
               <td>EMR navigation</td>
-              <td>Redesigned around clinical tasks, not system features</td>
-              <td>Clinicians think in patient actions, not software menus. Aligning IA to mental models cut navigation time</td>
+              <td>Redesigned around clinical tasks</td>
+              <td>Clinicians think in patient actions. Aligning the IA to that mental model cut navigation time</td>
             </tr>
             <tr>
               <td>Certification tracking</td>
               <td>Built visibility into compliance status for both staff and managers</td>
-              <td>The old system told you when you'd failed. The new one tells you what's coming: proactive, not punitive</td>
+              <td>The old system told you when you'd failed. The new one tells you what's coming</td>
             </tr>
             <tr>
               <td>Onboarding scope</td>
@@ -456,7 +457,7 @@ export default function MSKCaseStudy() {
         <h2 className="cs-section-title">Why MSK shaped how I design</h2>
         <div className="cs-reflections-grid">
           <div className="cs-reflection-card">
-            <h3>The design work starts on the floor, not in Figma</h3>
+            <h3>The design work starts on the floor</h3>
             <p>
               Shadowing clinicians during actual shifts taught me more about system failures than
               any stakeholder interview. The gap between documented process and real behavior is
@@ -468,15 +469,14 @@ export default function MSKCaseStudy() {
             <p>
               The best solution that only one department supports will fail. Getting clinical, IT,
               and operations to see the same problem in the same room is where most projects
-              succeed or fail. The design comes after alignment, not before.
+              succeed or fail. The design comes after the alignment.
             </p>
           </div>
           <div className="cs-reflection-card">
-            <h3>Measure what you changed, not what you shipped</h3>
+            <h3>Measure what actually changed</h3>
             <p>
               Every project ended with numbers: cost reduction, efficiency gains, adoption rates.
-              Not because someone asked for metrics, but because that's the only way to know if
-              your design actually worked for the people using it.
+              That's the only way to know whether the design worked for the people using it.
             </p>
           </div>
           <div className="cs-reflection-card">
@@ -490,16 +490,6 @@ export default function MSKCaseStudy() {
           </div>
         </div>
 
-        <div className="cs-shows-card">
-          <p className="cs-shows-card__label">What this shows about my design approach</p>
-          <p className="cs-shows-card__text">
-            I start with the people inside the system, not the interface around it. I use research methods that
-            match the organization's language (Lean Six Sigma at MSK, not "design sprints"). I align stakeholders
-            before proposing solutions. I measure whether the change worked for the people using it, not whether
-            it was delivered on time. And I design for sustainment: solutions that survive leadership transitions
-            and system upgrades, not just launch day.
-          </p>
-        </div>
       </section>
 
       {/* ── PRESS ── */}

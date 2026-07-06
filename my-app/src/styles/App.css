@@ -8815,3 +8815,21 @@ body.dark-mode .nav-overlay-backdrop,
     margin-top: 0.4rem;
   }
 }
+/* ── Line icons in former emoji slots ─────────────────────────────────
+   SVG glyphs (components/LineIcons) inherit the slot's font-size via
+   width/height: 1em; give them the olive accent and flex centring so
+   they sit like the emoji they replaced. */
+.tools-used__icon,
+.pushback-callout__marker,
+.reina-hero-crown {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.tools-used__icon,
+.project-icon,
+.pushback-callout__marker,
+.about-story-card__article-icon,
+.reina-hero-crown {
+  color: var(--olive-2);
+}

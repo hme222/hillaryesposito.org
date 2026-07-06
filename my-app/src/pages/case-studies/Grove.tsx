@@ -5,16 +5,17 @@ import usePageTitle from "../../hooks/usePageTitle";
 import ToolsUsed from "../../components/ToolsUsed";
 import MoreWork from "../../components/MoreWork";
 import useReveal from "../../hooks/useReveal";
+import { TerminalIcon, PencilIcon, LaunchIcon, FrameIcon, HandIcon, MedicalCrossIcon, LeafIcon } from "../../components/LineIcons";
 
 const SCREENS = [
   { image: "/assets/grove/bouquet.png", label: "Onboarding / bouquet creation", bg: "#3a3a3a",
-    designNote: "Location-first setup. Users name their bouquet by where it lives (\"Kitchen window\"), not what's in it. This mirrors the mental model from survey: people think in spaces, not species." },
+    designNote: "Location-first setup. Users name their bouquet by where it lives (\"Kitchen window\"), because the survey showed people think in spaces: the kitchen window, the living room shelf." },
   { image: "/assets/grove/care.png", label: "Daily care tasks", bg: "#f5f0e8",
-    designNote: "Single morning digest, not per-plant alerts. High-contrast status indicators because this is the one screen users check daily. Task count scales with streak length, not plant count." },
+    designNote: "One morning digest covers every plant. High-contrast status indicators because this is the one screen users check daily. Task count grows with the care streak, so adding plants doesn't add noise." },
   { image: "/assets/grove/Growth.png", label: "Growth journal", bg: "#e8edd9",
     designNote: "Photo-first layout. The journal is the emotional payoff. Growth over time is more motivating than a task checklist. Chose this as the home screen over a dashboard based on survey data." },
   { image: "/assets/grove/plantpersonality.png", label: "AI-generated plant personality", bg: "#f5f0e8",
-    designNote: "The reward for consistent care. Personality unlocks at streak milestones, not immediately. Tone is encouraging, never guilt-based. Every profile runs through prompt guardrails before display." },
+    designNote: "The reward for consistent care. Personality unlocks at streak milestones. The tone stays encouraging: every profile runs through prompt guardrails before display." },
 ];
 
 const SURVEY_FINDINGS = [
@@ -62,7 +63,7 @@ const FLOW_STEPS = [
 const AI_DECISIONS = [
   {
     area: "AI-generated plant personalities",
-    whatAIDid: "AI generates unique personality profiles for each plant when users hit care milestones: playful character sketches that make plants feel like individuals, not inventory items.",
+    whatAIDid: "AI generates unique personality profiles for each plant when users hit care milestones: playful character sketches that make each plant feel like an individual.",
     whyNotManual: "Writing hundreds of unique personality variants by hand isn't scalable. AI generation makes every plant feel personal without a content bottleneck.",
     humanJudgment: "I defined the prompt constraints, tone, and quality bar. Early outputs included anthropomorphized guilt-tripping ('I'm so thirsty, why did you forget me?') that contradicted the calm tone survey respondents valued. I rewrote prompt guardrails to enforce encouragement over guilt, filtered outputs that referenced neglect or blame, and tested 20+ generations before locking the prompt template.",
   },
@@ -70,7 +71,7 @@ const AI_DECISIONS = [
     area: "Building the full stack with AI coding tools",
     whatAIDid: "Used Claude Code and Cursor to accelerate backend API development, component scaffolding, and debugging, reducing boilerplate time significantly.",
     whyNotManual: "Writing auth flows, CRUD endpoints, and database models from scratch would have tripled the timeline for a solo project. AI let me focus on UX decisions instead of plumbing.",
-    humanJudgment: "Every AI-generated code block was reviewed, tested, and refactored. I directed architecture decisions (API structure, data models, auth strategy). AI accelerated execution, not thinking.",
+    humanJudgment: "Every AI-generated code block was reviewed, tested, and refactored. I directed the architecture decisions: API structure, data models, auth strategy. AI accelerated the execution.",
   },
   {
     area: "Emergent Agent platform for deployment",
@@ -106,19 +107,25 @@ const PUSHBACK = [
     me: "AI-generated plant personalities unlocked at care milestones.",
     why: "The survey was blunt: an app that feels like an “administrative chore” is the #1 reason people delete it.",
   },
+  {
+    topic: "Home screen",
+    ai: "A task dashboard as the primary view.",
+    me: "The photo journal first.",
+    why: "Growth over time is more motivating than a to-do list. The survey data backed the journal as the emotional payoff.",
+  },
 ];
 
 const OTHER_PROJECTS = [
   {
-    icon: "🏥",
+    icon: <MedicalCrossIcon />,
     title: "MSK Cancer Center",
     desc: "Six years redesigning clinical workflows, onboarding, and certification systems for 21,000+ clinicians.",
     path: "/case-study/msk",
   },
   {
-    icon: "🌿",
+    icon: <LeafIcon />,
     title: "Good Harvest",
-    desc: "Heatmap testing with 22 users revealed the problem wasn't discoverability; it was trust.",
+    desc: "Heatmap testing with 22 users found a trust problem: people located the seasonal info but didn't believe it applied to them.",
     path: "/case-study/good-harvest",
   },
 ];
@@ -138,8 +145,8 @@ export default function GroveCaseStudy() {
           <p className="meta">Product Design · AI + Design · Full-Stack App · React · FastAPI</p>
           <h1>Grove</h1>
           <p className="gh-hero__intro">
-            Plant parents kill their plants because care advice is generic, conflicting,
-            and untrustworthy. I surveyed 32 users, defined an MVP from their data, and
+            Plant parents kill their plants because the care advice they find doesn't
+            hold up. I surveyed 32 users, defined an MVP from their data, and
             am building a working app, using AI tools throughout to show{" "}
             <strong>where AI accelerates and where human judgment leads.</strong>
           </p>
@@ -245,13 +252,13 @@ export default function GroveCaseStudy() {
       {/* ── TOOLS & WHY ── */}
       <ToolsUsed
         tools={[
-          { icon: "🤖", name: "Claude Code",
+          { icon: <TerminalIcon />, name: "Claude Code",
             why: "AI pair programmer for backend API development: auth flows, database models, endpoint logic. I directed architecture; AI accelerated the boilerplate." },
-          { icon: "✏️", name: "Cursor",
+          { icon: <PencilIcon />, name: "Cursor",
             why: "AI-assisted frontend scaffolding and debugging. Useful for generating component shells; I refined every component's UX after." },
-          { icon: "🚀", name: "Emergent Agent",
+          { icon: <LaunchIcon />, name: "Emergent Agent",
             why: "AI-powered deployment platform. Handled infra and environment setup so I could focus entirely on design and product decisions." },
-          { icon: "🎨", name: "Figma",
+          { icon: <FrameIcon />, name: "Figma",
             why: "Wireframing the core flows before writing any code. Even with AI speeding up development, I still designed first." },
         ]}
       />
@@ -263,7 +270,7 @@ export default function GroveCaseStudy() {
         <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
           I ran a 32-respondent survey (5/22–6/19/2026) targeting new-to-experienced plant owners.
           A forced trade-off question, "If Grove could only launch with THREE features, which are
-          dealbreakers?", defined the MVP empirically, not by assumption.
+          dealbreakers?", let the responses define the MVP.
         </p>
 
         <div className="grove-survey-stats" aria-label="Key survey findings">
@@ -332,7 +339,7 @@ export default function GroveCaseStudy() {
         <h2>I built community features. The survey said they're not why people download.</h2>
         <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
           Community forums ranked 6th out of 11 features (23%). Verified swapping ranked 9th (6%).
-          The social layer I designed isn't wrong, but it's not the reason anyone installs a plant app.
+          The social layer I designed isn't why anyone installs a plant app.
           Smart reminders, plant ID, and diagnosis are. The research reordered my priorities:
           make the care core excellent first, then layer in community as a retention play.
         </p>
@@ -415,18 +422,18 @@ export default function GroveCaseStudy() {
             </div>
             <div className="grove-flow-branch feature">
               <p className="grove-flow-branch__trigger">Branch: Skipped a day</p>
-              <p className="grove-flow-branch__response">No guilt notification. Streak pauses, not resets. Re-entry shows "Welcome back" with today's single task. The survey was clear: shame-based reminders are the #1 uninstall trigger.</p>
+              <p className="grove-flow-branch__response">No guilt notification. The streak pauses and waits. Re-entry shows "Welcome back" with today's single task. The survey was clear: shame-based reminders are the #1 uninstall trigger.</p>
             </div>
             <div className="grove-flow-branch feature">
               <p className="grove-flow-branch__trigger">Branch: Returned after a week</p>
-              <p className="grove-flow-branch__response">Triage mode: surfaces only at-risk plants (yellowing, overdue watering). Skips the journal and personality features until the user re-establishes a streak. Meet them where they are, not where you want them to be.</p>
+              <p className="grove-flow-branch__response">Triage mode: surfaces only at-risk plants (yellowing, overdue watering). Skips the journal and personality features until the user re-establishes a streak.</p>
             </div>
           </div>
         </div>
 
         {/* ── IA diagram ── */}
         <div className="grove-ia-diagram feature" style={{ marginTop: "2rem", padding: "1.5rem", borderRadius: "12px" }}>
-          <h3 style={{ margin: "0 0 1.25rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>Core IA decision: bouquets, not individual plants</h3>
+          <h3 style={{ margin: "0 0 1.25rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>Core IA decision: group plants into bouquets</h3>
           <div className="grove-ia-compare">
             <div className="grove-ia-compare__side grove-ia-compare__side--before">
               <p className="grove-ia-compare__label">Competing apps</p>
@@ -451,7 +458,7 @@ export default function GroveCaseStudy() {
           <p style={{ margin: "1rem 0 0", fontSize: "0.88rem", color: "var(--muted)", lineHeight: 1.6 }}>
             Every screen answers one question: "Which bouquet am I looking at?" Tasks, journal
             entries, and care reminders all tie to bouquets. New users see 1 task/day;
-            complexity scales with streak length, not all at once.
+            complexity grows as the streak does.
           </p>
         </div>
       </section>
@@ -515,7 +522,7 @@ export default function GroveCaseStudy() {
               When AI identification confidence falls below 80%, Grove shows the top 3 possibilities with confidence scores and asks "Does this look right?" with a retake option. Never presents a low-confidence result as definitive.
             </p>
             <p className="grove-state-card__rationale">
-              <strong>Why:</strong> Misidentifying a toxic plant near a pet is a safety risk. The design treats AI as a suggestion, shows its uncertainty, and keeps the human in the loop.
+              <strong>Why:</strong> The design treats AI as a suggestion, shows its uncertainty, and keeps the human in the loop. 9 of 12 new owners raised pet toxicity unprompted.
             </p>
           </div>
 
@@ -528,7 +535,7 @@ export default function GroveCaseStudy() {
               "Welcome back" with only at-risk plants surfaced. No guilt, no streak-reset punishment, no backlog of missed tasks. One clear action: "Here's what needs attention today." Journal and personality features stay hidden until a new streak starts.
             </p>
             <p className="grove-state-card__rationale">
-              <strong>Why:</strong> 15+ survey respondents said shame-based reminders trigger uninstalls. The re-entry experience must feel like a fresh start, not a failure report.
+              <strong>Why:</strong> 15+ survey respondents said shame-based reminders trigger uninstalls. Re-entry is designed to feel like a fresh start.
             </p>
           </div>
 
@@ -538,10 +545,10 @@ export default function GroveCaseStudy() {
               <h3 className="grove-state-card__title">Streak milestone reached</h3>
             </div>
             <p className="grove-state-card__desc">
-              Brief celebration animation (under 2 seconds), then the AI-generated plant personality card appears. The reveal is the reward, not a points screen. Animation respects prefers-reduced-motion.
+              Brief celebration animation (under 2 seconds), then the AI-generated plant personality card appears. The reveal itself is the reward. Animation respects prefers-reduced-motion.
             </p>
             <p className="grove-state-card__rationale">
-              <strong>Why:</strong> The survey rejected XP/leaderboard gamification. The personality reveal is an emotional reward, not a competitive one. Motion is purposeful and short.
+              <strong>Why:</strong> The survey rejected XP/leaderboard gamification, so the reward here is emotional: a personality reveal. Motion is purposeful and short.
             </p>
           </div>
         </div>
@@ -552,17 +559,17 @@ export default function GroveCaseStudy() {
         <p className="gh-section-label">AI in my process</p>
         <h2>Where AI helped, where I led, and how I decided</h2>
         <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
-          The point isn't "I used AI"; everyone does. The point is showing judgment:
+          Everyone uses AI now. What this section shows is judgment:
           knowing when to trust it, when to override it, and when to do the work myself.
         </p>
 
         {/* ── "Where I pushed back" callout — the scannable highlight ── */}
         <aside className="pushback-callout" aria-labelledby="pushback-heading">
           <div className="pushback-callout__head">
-            <span className="pushback-callout__marker" aria-hidden="true">✋</span>
+            <span className="pushback-callout__marker" aria-hidden="true"><HandIcon /></span>
             <div>
               <h3 id="pushback-heading" className="pushback-callout__eyebrow">Where I pushed back</h3>
-              <p className="pushback-callout__sub">Four moments I overruled the AI, and why.</p>
+              <p className="pushback-callout__sub">Five moments I overruled the AI, and why.</p>
             </div>
           </div>
           <ul className="pushback-list">
@@ -604,44 +611,6 @@ export default function GroveCaseStudy() {
           ))}
         </div>
 
-        <h3 style={{ marginTop: "2.5rem", marginBottom: "1rem", color: "var(--olive-2)" }}>The full record: every override</h3>
-        <table className="cs-decisions-table">
-          <thead>
-            <tr>
-              <th>Decision</th>
-              <th>AI suggested</th>
-              <th>I chose instead</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Reward system</td>
-              <td>XP points and leaderboard</td>
-              <td>AI-generated plant personalities. Survey confirmed: "administrative chore" = #1 delete trigger</td>
-            </tr>
-            <tr>
-              <td>Home screen</td>
-              <td>Task dashboard as primary view</td>
-              <td>Photo journal first. Growth narrative is more motivating than a to-do list</td>
-            </tr>
-            <tr>
-              <td>Notification frequency</td>
-              <td>Daily push notifications for each plant</td>
-              <td>Single morning digest per bouquet. "Too many notifications" was the #1 instant-delete trigger in the survey (15+ respondents)</td>
-            </tr>
-            <tr>
-              <td>Plant ID confidence</td>
-              <td>Show AI identification as definitive</td>
-              <td>Added confidence percentage and "verify with a photo" prompt. Misidentifying a toxic plant near a pet is a safety risk, not a UX inconvenience</td>
-            </tr>
-            <tr>
-              <td>Personality tone</td>
-              <td>Playful, anthropomorphized guilt ("I'm thirsty!")</td>
-              <td>Encouraging tone only. Prompt guardrails reject blame/neglect language. Guilt contradicts the calm experience users said they wanted</td>
-            </tr>
-          </tbody>
-        </table>
-
       </section>
 
       {/* ── OUTCOMES ── */}
@@ -667,7 +636,7 @@ export default function GroveCaseStudy() {
           </div>
         </div>
         <p className="cs-overview-text" style={{ marginTop: "1.5rem", maxWidth: 640 }}>
-          The most useful output wasn't the prototype; it was learning that I built breadth-first
+          The most useful output was learning that I built breadth-first
           while users decide on three features. The research reordered my priorities before I spent
           more time building the wrong things.
         </p>
@@ -687,8 +656,8 @@ export default function GroveCaseStudy() {
             <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>Week 1: Research + core architecture</h3>
             <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
               Survey design, distribution, and analysis. Set up the React + FastAPI + MongoDB stack.
-              Built auth and the bouquet data model. Every architecture decision was shaped by the
-              MVP features the survey identified, not by what was interesting to build.
+              Built auth and the bouquet data model. Every architecture decision followed the
+              MVP features the survey identified.
             </p>
           </div>
           <div className="feature">
@@ -741,8 +710,8 @@ export default function GroveCaseStudy() {
           <div className="cs-reflection-card">
             <h3>The AI skills gap is a judgment gap</h3>
             <p>
-              The differentiator isn't knowing which AI tools exist. It's knowing when to trust
-              them and when to override. I rejected AI's suggestion for XP gamification and a
+              The differentiator is knowing when to trust AI and when to override it.
+              I rejected AI's suggestion for XP gamification and a
               task-dashboard home screen. Both would have contradicted the emotional goal the
               survey validated.
             </p>
@@ -758,14 +727,6 @@ export default function GroveCaseStudy() {
           </div>
         </div>
 
-        <div className="cs-shows-card">
-          <p className="cs-shows-card__label">What this shows about my design approach</p>
-          <p className="cs-shows-card__text">
-            I validate before I build. I let data reorder my priorities, even when it means deprioritizing features I already designed.
-            I document AI decisions with explicit reasoning: not "I used AI" but "here's where I trusted it, where I overrode it,
-            and why." And I design for the emotional experience users described, not the feature list competitors ship.
-          </p>
-        </div>
       </section>
 
       {/* ── OTHER PROJECTS ── */}

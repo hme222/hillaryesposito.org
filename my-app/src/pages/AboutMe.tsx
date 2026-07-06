@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import usePageTitle from "../hooks/usePageTitle";
+import { NewsIcon } from "../components/LineIcons";
 
 // ── What I bring ─────────────────────────────────────────────────────────
 const AGENDA = [
@@ -21,7 +22,7 @@ const AGENDA = [
   },
   {
     icon: "04",
-    title: "AI judgment, not AI hype",
+    title: "AI judgment",
     desc: "Everyone uses AI now. The skill is knowing when to trust it and when to override it. On Grove I rejected five of its suggestions, and documented why.",
   },
 ];
@@ -31,24 +32,22 @@ const CHAPTERS = [
   {
     id: "now",
     label: "What I Do Now",
-    icon: "💻",
     heading: "Designing for trust in complex, regulated products.",
     image: "/assets/about/now.png",
     paragraphs: [
       "Right now I'm freelancing. My most recent contract was a deep study of three fintech products, where I documented more than 200 screens of end-to-end mobile flows, then annotated and tagged each one so thousands of designers could actually find and reuse them. It sharpened three things: reading interaction patterns at scale across financial UX, structuring documentation to a strict taxonomy and quality bar, and seeing how different products solve the same trust problem in very different ways. AI is part of how I work now, but it stays a tool. I use it to move faster on research and prototyping, then make the calls myself.",
     ],
-    callout: "Design for the humans in the system, and the metrics follow.",
+    callout: "AI moves the work faster. The calls stay mine.",
   },
   {
     id: "msk",
     label: "Where I Built My Practice",
-    icon: "🏥",
     heading: "Six years at MSK, optimizing internal operations and designing for 21,000+ clinicians.",
     image: "/assets/about/msk.jpg",
     paragraphs: [
       "I led an EMR process redesign that cut costs 20% organization-wide, rebuilt certification workflows for a 70% efficiency gain, and redesigned onboarding using staff feedback. This was deep user research before I formally had the vocabulary for it.",
     ],
-    callout: "Systems don’t fail in flowcharts. They fail at the point where a real person has to use them.",
+    callout: "Systems fail at the point where a real person has to use them.",
     articleLink: {
       url: "https://www.mskcc.org/news/hillary-esposito-s-career-path-military-msk",
       title: "Hillary Esposito’s Career Path: From the Military to MSK",
@@ -58,7 +57,6 @@ const CHAPTERS = [
   {
     id: "army",
     label: "Where My Foundation Was Built",
-    icon: "🎖️",
     heading: "Captain and Medical Logistics Officer, NJ Army National Guard.",
     image: "/assets/about/army.jpg",
     paragraphs: [
@@ -107,7 +105,7 @@ export default function About() {
           </h1>
 
           <p className="about-hero-subtext">
-            13+ years of leadership across process improvement, clinical systems, military operations, and UX research. I’ve spent my career at the intersection where systems fail: the point where a real person has to use them.
+            13+ years of leadership across process improvement, clinical systems, military operations, and UX research.
           </p>
         </div>
 
@@ -191,7 +189,7 @@ export default function About() {
                   aria-label={`Read article: ${chapter.articleLink.title}`}
                 >
                   <span className="about-story-card__article-icon" aria-hidden="true">
-                    📰
+                    <NewsIcon />
                   </span>
                   <span className="about-story-card__article-text">
                     <span className="about-story-card__article-title">

@@ -7,6 +7,7 @@ import usePageTitle from "../hooks/usePageTitle";
 // Lazy-loaded so three.js stays in its own chunk (only fetched when needed).
 const WorkflowKnot = lazy(() => import("../components/WorkflowKnot"));
 import KnotErrorBoundary from "../components/KnotErrorBoundary";
+import { MedicalCrossIcon } from "../components/LineIcons";
 
 // Static placeholder shown while the three.js chunk loads — mirrors the knot's
 // RESOLVED 4-dot row (amber last, connector through) so it never contradicts
@@ -74,7 +75,7 @@ type Project = {
   desc: string;
   images?: string[];
   imageAlt?: string;
-  icon?: string;
+  icon?: React.ReactNode;
   cover?: string;
   bg: string;
   path?: string;
@@ -97,7 +98,7 @@ const PROJECTS: Project[] = [
     title: "MSK Cancer Center",
     subtitle: "UX & Product Design · Healthcare Systems",
     desc: "Six years, three roles. Redesigned clinical workflows, onboarding, and EMR systems for 21,000+ clinicians at one of the world's top cancer centers.",
-    icon: "🏥",
+    icon: <MedicalCrossIcon />,
     cover: "/assets/msk/mskcc-cover.png",
     imageAlt: "Memorial Sloan Kettering Cancer Center",
     bg: "linear-gradient(135deg, #1a1a2e 0%, #2d2d4a 50%, #1a2a3a 100%)",
@@ -106,7 +107,7 @@ const PROJECTS: Project[] = [
   {
     title: "Good Harvest",
     subtitle: "Product Design · UX Research",
-    desc: "Heatmap testing with 22 users revealed the problem wasn't discoverability; it was trust.",
+    desc: "Heatmap testing with 22 users found a trust problem: people located the seasonal info but didn't believe it applied to them.",
     images: [
       "/assets/good-harvest/goodharvest-home-wireframe.png",
       "/assets/good-harvest/goodharvest-app-mobile.png",
@@ -381,7 +382,7 @@ export default function Home() {
                       </svg>
                     </div>
                   ) : (
-                    <div className="home-proj-icon-display">
+                    <div className="home-proj-icon-display" style={{ color: "rgba(255,255,255,0.8)" }}>
                       <span>{proj.icon || "✦"}</span>
                     </div>
                   )}
