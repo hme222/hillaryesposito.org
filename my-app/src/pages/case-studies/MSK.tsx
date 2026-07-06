@@ -12,7 +12,7 @@ const OTHER_PROJECTS = [
   {
     icon: <SproutIcon />,
     title: "Grove",
-    desc: "AI + design plant care app. Research to shipped product in 3 weeks, solo.",
+    desc: "AI + design plant care app. Research to working prototype in 3 weeks, solo.",
     path: "/case-study/grove",
   },
   {
@@ -78,7 +78,7 @@ export default function MSKCaseStudy() {
         <p className="cs-overview-text">
           At MSK, I optimized how the place actually ran. I mapped workflows, found where systems failed
           the clinicians using them, aligned clinical and administrative stakeholders, and shipped fixes
-          that 21,000+ people relied on daily. This was deep user research before I formally had the
+          that 21,000+ people relied on daily. This was user research before I formally had the
           vocabulary for it. The instinct came from the Army, where I had directed medical logistics for
           5,000+ soldiers, systems whose failures showed up as readiness problems. The
           work that matters most in healthcare happens before anyone opens Figma.

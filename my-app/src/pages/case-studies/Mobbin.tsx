@@ -40,7 +40,7 @@ const OTHER_PROJECTS = [
   {
     icon: <SproutIcon />,
     title: "Grove",
-    desc: "AI + design plant care app. Research to shipped product in 3 weeks, solo.",
+    desc: "AI + design plant care app. Research to working prototype in 3 weeks, solo.",
     path: "/case-study/grove",
   },
   {

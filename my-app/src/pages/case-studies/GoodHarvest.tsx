@@ -27,7 +27,7 @@ export default function GoodHarvest() {
 
   const otherProjects = [
     { icon: <SproutIcon />, title: "Grove", path: "/case-study/grove",
-      desc: "AI + design plant care app. Research to shipped product in 3 weeks, solo." },
+      desc: "AI + design plant care app. Research to working prototype in 3 weeks, solo." },
     { icon: <MedicalCrossIcon />, title: "MSK Cancer Center", path: "/case-study/msk",
       desc: "Six years redesigning clinical workflows, onboarding, and certification systems for 21,000+ clinicians." },
   ];
@@ -270,7 +270,7 @@ export default function GoodHarvest() {
           <MediaCard src={screens.appMobile} alt="Good Harvest mobile app showing seasonal produce and recipes"   caption="Final: produce-first, secondary nav below fold." />
         </div>
 
-        <h3 style={{ color: "var(--olive-2)", marginTop: "2rem", marginBottom: "0.75rem" }}>Local produce: location trust solved</h3>
+        <h3 style={{ color: "var(--olive-2)", marginTop: "2rem", marginBottom: "0.75rem" }}>Local produce: location trust (13/22 noticed the indicator, vs. 4 in v1)</h3>
         <p style={{ fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65, marginBottom: "1rem" }}>
           13/22 participants didn't trust that produce info applied to their area. Made the location indicator tappable and prominent with source attribution.
         </p>
@@ -326,7 +326,7 @@ export default function GoodHarvest() {
             </p>
           </div>
           <div className="feature">
-            <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>Location trust solved</h3>
+            <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>Location trust: 4 → 13 unprompted mentions</h3>
             <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
               13 of 22 participants mentioned the location indicator unprompted in v2 (vs. 4 in v1).
               Made it tappable, prominent, and added source attribution.
