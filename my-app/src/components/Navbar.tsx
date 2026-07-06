@@ -45,7 +45,10 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
     window.scrollTo({ top: y, behavior: "smooth" });
   }
 
-  // Track which section is in view on the home page
+  // Track which section is in view on the home page. Sections can be taller than
+  // the viewport, so an IntersectionObserver threshold is unreliable (30% of a
+  // tall section is never visible at once) — instead pick the last section whose
+  // top has scrolled above a reference line ~a third down the viewport.
   useEffect(() => {
     const isHome =
       location.pathname === "/" ||
@@ -56,24 +59,23 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
       return;
     }
 
-    const sections = ["contact", "projects", "home"];
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    sections.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
+    const ids = ["home", "projects", "contact"];
+    const update = () => {
+      const line = window.innerHeight * 0.35;
+      let current = "home";
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= line) current = id;
+      }
+      setActiveSection(current);
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
   }, [location.pathname]);
 
   useEffect(() => {
