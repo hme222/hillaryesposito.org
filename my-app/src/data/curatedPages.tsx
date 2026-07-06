@@ -20,20 +20,20 @@ export type CuratedPage = {
   slug: string;
   company: string;
   role: string;
+  variant: "care" | "finance";
+  badgeLabel: string;
   eyebrow: string;
   headline: string;
   subhead: string;
   meta: Array<{ label: string; value: string }>;
   intro: string[];
   proofPoints: Array<{ stat: string; detail: string }>;
-  caseStudyOrder: Array<{ title: string; reason: string }>;
-  whyFit: string[];
+  featuredWork: Array<{ title: string; reason: string }>;
+  strengths: string[];
   relevantExperience: string[];
   keywords: string[];
   hiringManagerNote: string;
-  outreachLine: string;
-  cautions: string[];
-  recommendation: string;
+  closing: string;
   supportLinks: CuratedLink[];
   relatedLinks: CuratedLink[];
 };
@@ -43,77 +43,72 @@ export const curatedPages: Record<string, CuratedPage> = {
     slug: "omada-staff-product-designer-healthcare-ai",
     company: "Omada Health",
     role: "Staff Product Designer",
-    eyebrow: "Healthcare systems · service design · AI-supported workflows",
-    headline: "Designing AI-enabled healthcare experiences grounded in real operational complexity",
+    variant: "care",
+    badgeLabel: "Healthcare product view",
+    eyebrow: "Healthcare systems · workflow design · research-led product thinking",
+    headline: "Designing healthcare products that hold up inside real operational complexity",
     subhead:
-      "I am a UX and product designer with an MHA and deep healthcare operations experience, focused on making complex clinical and operational workflows clearer, more trustworthy, and easier to act on.",
+      "I am a UX and product designer with an MHA and deep healthcare operations experience, focused on making clinical and operational workflows clearer, faster, and easier to trust.",
     meta: [
-      { label: "Target role", value: "Staff Product Designer" },
-      { label: "Primary angle", value: "Healthcare workflows + service design + AI judgment" },
-      { label: "Priority", value: "Apply now" },
-      { label: "Best proof", value: "21K+ clinicians, 20% EMR cost reduction, 70% efficiency gain" },
+      { label: "Focus", value: "Healthcare workflow design" },
+      { label: "Strength", value: "Research + systems thinking" },
+      { label: "Evidence", value: "21K+ clinicians, 20% cost reduction, 70% efficiency gain" },
+      { label: "Best fit", value: "High-stakes internal and service-heavy products" },
     ],
     intro: [
-      "This role sits at the intersection of healthcare complexity, service design, and AI-supported decision-making, which is where my background is strongest. My experience spans clinical operations, UX research, internal tools, and process redesign, with a track record of improving how high-stakes work actually gets done for the people inside the system.",
-      "I bring domain fluency that is hard to fake: hospital operations, workflow redesign, bilingual communication, and measurable improvement in environments where trust and speed both matter. The value I would add here is not generic product-design polish. It is the ability to shape tools and journeys that make sense in real care settings.",
+      "This role aligns with the part of product design I do best: understanding how work actually happens in care settings, finding where the process breaks down, and designing tools that reduce friction without losing trust. My background spans healthcare operations, UX research, internal tools, and service design, which gives me a practical view of both user needs and system constraints.",
+      "I do not approach healthcare as a generic SaaS category. I understand the handoffs, pressure, and tradeoffs behind operational and clinical work, and I know how to translate that reality into clearer experiences, better decision support, and stronger product judgment.",
     ],
     proofPoints: [
-      { stat: "21K+", detail: "Clinicians and administrative staff affected by workflow redesign work at MSK" },
+      { stat: "21K+", detail: "Clinicians and administrative staff affected by workflow redesign work at Memorial Sloan Kettering" },
       { stat: "20%", detail: "EMR process cost reduction through redesign of a complex operational system" },
       { stat: "70%", detail: "Certification workflow efficiency gain through simplification and visibility improvements" },
       { stat: "25%", detail: "Internal tool task-completion improvement through UX research, usability testing, and task analysis" },
     ],
-    caseStudyOrder: [
+    featuredWork: [
       {
         title: "MSK internal tools and workflow redesign",
-        reason: "Start with direct healthcare credibility, operational reality, and workflow impact at scale.",
+        reason: "Shows direct healthcare credibility, operational context, and measurable impact at scale.",
       },
       {
         title: "Certification and onboarding workflow redesign",
-        reason: "Reinforces service design, friction removal, and process clarity across cross-functional teams.",
+        reason: "Demonstrates service design, cross-functional coordination, and reduction of process friction.",
       },
       {
-        title: "AI-supported product judgment",
-        reason: "Use Grove to show where AI helps exploration and where human oversight still needs to lead.",
+        title: "Grove product work",
+        reason: "Adds product judgment, rapid iteration, and thoughtful use of AI-supported tooling without overclaiming AI delivery.",
       },
       {
         title: "Military medical logistics transformation",
-        reason: "End with high-stakes systems thinking and execution under pressure.",
+        reason: "Reinforces systems thinking, reliability, and execution in high-consequence environments.",
       },
     ],
-    whyFit: [
-      "Deep familiarity with high-stakes workflows where trust and clarity matter",
-      "Strong service-design and systems-thinking foundation, not just UI execution",
-      "Proven ability to translate messy operational reality into cleaner processes and better tools",
-      "Credible bridge between research, workflow redesign, and AI-assisted product thinking",
+    strengths: [
+      "Deep familiarity with high-stakes workflows where clarity and trust matter",
+      "Strong service-design and systems-thinking foundation beyond screen-level UI",
+      "Experience translating messy operational reality into usable tools and better process design",
+      "Credible bridge between research, workflow redesign, and product decision-making",
     ],
     relevantExperience: [
-      "My background combines UX research, workflow analysis, clinical operations, and process improvement. At Memorial Sloan Kettering, I worked inside healthcare operations before moving into UX and internal tools work, which gives me unusually strong context for designing systems that need to work for real staff under pressure.",
-      "As an Army medical logistics officer, I also led process and tracking improvements where broken workflows had immediate consequences. That shows up in how I approach reliability, handoffs, and decision support inside complex systems.",
+      "At Memorial Sloan Kettering, I worked inside healthcare operations before moving into UX and internal tools work. That combination gives me unusually strong context for designing systems that need to work for real staff under pressure, not just in polished demos.",
+      "As an Army medical logistics officer, I also led process and tracking improvements where reliability and speed had direct consequences. That experience sharpened how I think about handoffs, failure points, and decision support inside complex systems.",
     ],
     keywords: [
       "healthcare",
-      "care experience",
+      "workflow design",
       "service design",
-      "AI",
-      "workflow",
       "research",
+      "clinical operations",
       "trust",
-      "clinical",
-      "operations",
+      "internal tools",
+      "cross-functional collaboration",
+      "process improvement",
       "inclusive design",
     ],
     hiringManagerNote:
-      "I am strongest in environments where product decisions affect operational reality, not just screen-level aesthetics.",
-    outreachLine:
-      "I put together a role-specific portfolio page that focuses on healthcare workflows, service design, and AI-enabled product judgment here: [portfolio URL].",
-    cautions: [
-      "Do not imply direct ownership of shipped clinical AI products unless the evidence is explicit.",
-      "Keep the AI framing grounded in judgment, prototyping, and workflow implications rather than ML depth.",
-      "Avoid making the page feel like an operations resume with a design layer on top. Design decisions still need to stay visible.",
-    ],
-    recommendation:
-      "This is the clearest healthcare-first story and the strongest match between my background and the problem space.",
+      "I am strongest in environments where product decisions affect how real operational work gets done, not just how polished the interface looks.",
+    closing:
+      "If your team is designing for complex care journeys, internal operations, or service-heavy healthcare products, this is the clearest view of how I work and what I would contribute.",
     supportLinks: [
       {
         label: "MSK case study",
@@ -124,7 +119,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       {
         label: "Grove case study",
         path: "/case-study/grove",
-        description: "AI-supported product judgment, rapid prototyping, and end-to-end product design.",
+        description: "Product judgment, prototyping, and end-to-end collaboration.",
         icon: <SproutIcon />,
       },
     ],
@@ -132,13 +127,13 @@ export const curatedPages: Record<string, CuratedPage> = {
       {
         label: "JPM Service Design VP",
         path: "/curated/jpm-service-design-vp-systems",
-        description: "Strongest adjacent regulated-systems narrative.",
+        description: "Adjacent regulated-systems narrative with stronger service-design emphasis.",
         icon: <HandIcon />,
       },
       {
         label: "JPM Design Strategy VP",
         path: "/curated/jpm-design-strategy-vp-service-ops",
-        description: "Operator-to-strategy bridge for ambiguity-heavy enterprise work.",
+        description: "Operator-to-strategy framing for structured decision-making work.",
         icon: <TerminalIcon />,
       },
     ],
@@ -147,19 +142,21 @@ export const curatedPages: Record<string, CuratedPage> = {
     slug: "jpm-service-design-vp-systems",
     company: "JPMorgan Chase",
     role: "Service Design Vice President",
-    eyebrow: "Service design · regulated systems · trust and orchestration",
-    headline: "Service design for high-stakes systems, shaped by operational reality",
+    variant: "finance",
+    badgeLabel: "Enterprise service view",
+    eyebrow: "Service design · regulated systems · journey and orchestration work",
+    headline: "Designing better services in complex, high-trust operating environments",
     subhead:
-      "I design end-to-end workflows for regulated, high-consequence environments, combining service design, research, and process improvement to make complex systems easier to trust and use.",
+      "I design end-to-end workflows for regulated, high-consequence environments, combining service design, research, and process improvement to make complex systems easier to use and easier to trust.",
     meta: [
-      { label: "Target role", value: "Service Design Vice President" },
-      { label: "Primary angle", value: "Service blueprinting + systems thinking + trust design" },
-      { label: "Priority", value: "Warm intro first" },
-      { label: "Best proof", value: "70% workflow gain, 20% cost reduction, 85% resupply speed improvement" },
+      { label: "Focus", value: "Service blueprinting and workflow orchestration" },
+      { label: "Strength", value: "Regulated systems and cross-functional alignment" },
+      { label: "Evidence", value: "70% workflow gain, 20% cost reduction, 85% speed improvement" },
+      { label: "Best fit", value: "Service-heavy enterprise transformation work" },
     ],
     intro: [
-      "This role is a strong adjacent fit because it centers on the kind of work I already do well: mapping messy service journeys, identifying friction across channels and handoffs, and creating clearer systems for people operating under pressure. The industry is different, but the design challenge is familiar: complex systems, multiple stakeholders, compliance constraints, and the need to turn ambiguity into repeatable service patterns.",
-      "What I bring here is systems thinking backed by lived experience. I have worked inside healthcare operations and military logistics, where service failures are not abstract. That makes me a credible fit for service blueprinting, journey mapping, and designing for trust in agentic or automation-supported environments.",
+      "The industry is different from healthcare, but the underlying design challenge is familiar: multiple actors, constrained systems, compliance requirements, and the need to reduce friction across handoffs. My background in healthcare operations and military logistics gives me a grounded approach to service design work where failures are costly and process quality matters.",
+      "I am not presenting myself as a banking insider. The value I bring is a strong service-design practice shaped by real operational complexity: mapping journeys, surfacing breakdowns, clarifying dependencies, and helping teams build more coherent systems around the people doing the work.",
     ],
     proofPoints: [
       { stat: "70%", detail: "Certification workflow efficiency gain through simplification and visibility improvements" },
@@ -167,52 +164,44 @@ export const curatedPages: Record<string, CuratedPage> = {
       { stat: "25%", detail: "Internal tool task-completion improvement through research and workflow redesign" },
       { stat: "85%", detail: "Medical resupply speed improvement across seven aid stations using better tracking and process structure" },
     ],
-    caseStudyOrder: [
+    featuredWork: [
       {
         title: "Certification workflow redesign",
-        reason: "Best entry point for service blueprinting, handoffs, and operational friction removal.",
+        reason: "Strongest example of service blueprinting, handoff improvement, and operational simplification.",
       },
       {
         title: "MSK internal tools and EMR redesign",
-        reason: "Adds regulated-system complexity and evidence of cross-functional coordination.",
+        reason: "Adds regulated-system complexity and cross-functional coordination in a high-trust environment.",
       },
       {
         title: "Medical logistics transformation",
-        reason: "Shows scalability, orchestration, and trust under pressure.",
+        reason: "Shows orchestration, execution discipline, and systems reliability under pressure.",
       },
     ],
-    whyFit: [
-      "Strong evidence in cross-channel workflow redesign, not just screens",
-      "Comfort working inside regulated and operationally complex environments",
-      "Practical service-design mindset grounded in handoffs, dependencies, and root causes",
-      "Credible angle on trust and controlled autonomy in agentic systems",
+    strengths: [
+      "Evidence in cross-channel workflow redesign, not just interface polish",
+      "Comfort working in regulated and operationally complex environments",
+      "Service-design mindset grounded in dependencies, handoffs, and root causes",
+      "Strong fit for work that requires structured thinking across people, process, and tools",
     ],
     relevantExperience: [
-      "I have spent my career improving systems that depend on coordination across people, tools, and process constraints. My healthcare and logistics work gives me unusual depth in diagnosing operational failure points, aligning stakeholders, and redesigning journeys so the service works more reliably from end to end.",
+      "My work has consistently involved improving systems that depend on coordination across people, tools, and process constraints. In healthcare and logistics, I learned to diagnose failure points, align stakeholders, and redesign journeys so the service works more reliably from end to end.",
     ],
     keywords: [
       "service blueprinting",
       "journey mapping",
       "systems thinking",
-      "agentic",
+      "workflow design",
       "trust",
-      "cross-functional",
-      "customer experience",
-      "process",
-      "stakeholders",
+      "cross-functional collaboration",
+      "stakeholder alignment",
+      "process improvement",
       "accessibility",
     ],
     hiringManagerNote:
       "My strongest design work starts upstream, where unclear systems create downstream friction for both users and the business.",
-    outreachLine:
-      "I drafted a tailored portfolio page focused on service blueprinting, systems thinking, and workflow redesign for the Service Design VP role here: [portfolio URL].",
-    cautions: [
-      "Do not overstate finance-domain knowledge.",
-      "Acknowledge that the title is senior in banking but frame fit around the work, not the label.",
-      "Keep agentic-language claims limited to design-for-trust and workflow implications unless direct shipping evidence exists.",
-    ],
-    recommendation:
-      "This is the strongest adjacent JPM story if I want to emphasize regulated systems, service blueprinting, and trust design.",
+    closing:
+      "This page is the best representation of my fit for service-design roles that sit inside large, regulated systems and need someone who can translate complexity into clearer operating models.",
     supportLinks: [
       {
         label: "MSK case study",
@@ -223,7 +212,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       {
         label: "Good Harvest case study",
         path: "/case-study/good-harvest",
-        description: "Customer-journey and trust diagnostics through iterative research and testing.",
+        description: "Customer journey diagnosis through iterative research and testing.",
         icon: <MagnifierIcon />,
       },
     ],
@@ -231,7 +220,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       {
         label: "Omada Staff Product Designer",
         path: "/curated/omada-staff-product-designer-healthcare-ai",
-        description: "Healthcare-first page and strongest direct match.",
+        description: "Healthcare-first page and strongest direct domain match.",
         icon: <MedicalCrossIcon />,
       },
       {
@@ -246,62 +235,66 @@ export const curatedPages: Record<string, CuratedPage> = {
     slug: "jpm-ux-design-lead-vp-workflows",
     company: "JPMorgan Chase",
     role: "UX Design Lead, Vice President",
-    eyebrow: "Enterprise UX · internal tools · discovery and delivery",
-    headline: "Designing complex internal workflows with research, structure, and execution discipline",
+    variant: "finance",
+    badgeLabel: "Workflow design view",
+    eyebrow: "Enterprise UX · internal tools · discovery to delivery",
+    headline: "Improving complex internal workflows with research, structure, and execution discipline",
     subhead:
       "I bring a workflow-first UX approach shaped by clinical operations, internal tools, and process redesign in regulated environments.",
     meta: [
-      { label: "Target role", value: "UX Design Lead, Vice President" },
-      { label: "Primary angle", value: "Internal tools + discovery + delivery discipline" },
-      { label: "Priority", value: "Save and refine" },
-      { label: "Best proof", value: "25% task completion improvement, 21K+ staff impact" },
+      { label: "Focus", value: "Internal tools and workflow simplification" },
+      { label: "Strength", value: "Discovery, facilitation, and delivery discipline" },
+      { label: "Evidence", value: "25% task completion improvement, 21K+ staff impact" },
+      { label: "Best fit", value: "Enterprise UX for complex internal products" },
     ],
     intro: [
-      "This role is strongest if positioned around complex internal workflows rather than consumer-finance polish. My experience maps well to the core problem: understanding user needs in complicated business environments, facilitating early discovery, simplifying dense flows, and carrying design decisions through delivery with clear rationale.",
-      "The differentiator here is not just that I can design screens. It is that I understand how hard it is to make complicated work usable when the system is constrained by risk, policy, handoffs, and competing stakeholder priorities.",
+      "This page is strongest when read through the lens of internal-product UX rather than consumer-finance design. My experience maps well to the core challenge: understanding user needs in complicated business environments, simplifying dense flows, and carrying design decisions through delivery with clear rationale.",
+      "The differentiator in my work is not pure UI craft. It is the ability to make complicated work more usable when the system is shaped by policy, risk, handoffs, and competing stakeholder priorities.",
     ],
     proofPoints: [
       { stat: "25%", detail: "Internal tool task-completion improvement through research and workflow redesign" },
-      { stat: "21K+", detail: "Clinicians and staff affected by workflow redesign work at MSK" },
+      { stat: "21K+", detail: "Clinicians and staff affected by workflow redesign work at Memorial Sloan Kettering" },
       { stat: "20%", detail: "EMR process cost reduction through redesign of a complex operational system" },
       { stat: "70%", detail: "Certification workflow efficiency gain supported by onboarding and process improvements" },
     ],
-    caseStudyOrder: [
-      { title: "Internal tools UX research and redesign", reason: "Best match for discovery, facilitation, and workflow simplification." },
-      { title: "Onboarding redesign", reason: "Reinforces information hierarchy, comprehension, and adoption." },
-      { title: "Certification and EMR redesign", reason: "Shows delivery in constrained operational environments." },
+    featuredWork: [
+      {
+        title: "Internal tools UX research and redesign",
+        reason: "Best match for discovery, facilitation, and workflow simplification in complex environments.",
+      },
+      {
+        title: "Onboarding redesign",
+        reason: "Supports information hierarchy, comprehension, and adoption across operational users.",
+      },
+      {
+        title: "Certification and EMR redesign",
+        reason: "Shows delivery work inside constrained and regulated systems.",
+      },
     ],
-    whyFit: [
+    strengths: [
       "Strong overlap with discovery, research, and stakeholder alignment",
       "Comfortable with complex workflows and regulated business contexts",
       "Proven record of turning staff pain points into structured improvements",
-      "Credible fit for internal-facing product work where usability directly affects throughput and quality",
+      "Best suited for internal-facing product work where usability affects throughput and quality",
     ],
     relevantExperience: [
-      "At Memorial Sloan Kettering, I supported internal tools and workflow improvements by combining research, task analysis, and process redesign. My prior operations background means I read workflow complexity as a design problem, not just a business constraint.",
+      "At Memorial Sloan Kettering, I supported internal tools and workflow improvements by combining research, task analysis, and process redesign. My operations background means I read workflow complexity as a design problem, not just a business constraint.",
     ],
     keywords: [
       "UX research",
       "discovery",
       "complex workflows",
-      "design systems",
       "stakeholder alignment",
       "delivery",
       "information hierarchy",
       "iterative prototyping",
+      "internal tools",
       "accessibility",
     ],
     hiringManagerNote:
       "I work best on products where better UX can reduce operational friction, improve decision-making, and make complex work easier to complete accurately.",
-    outreachLine:
-      "I created a targeted portfolio draft for the UX Design Lead role that focuses on internal tools, workflow simplification, and research-led redesign here: [portfolio URL].",
-    cautions: [
-      "This page should not over-index on visual polish if the evidence is workflow-heavy.",
-      "Do not claim formal people-management depth unless mentoring and cross-functional leadership are framed carefully.",
-      "Keep the lead story centered on discovery, facilitation, and delivery quality.",
-    ],
-    recommendation:
-      "This is a solid adjacent story for workflow-heavy enterprise UX, though the domain resonance is weaker than the healthcare-first Omada page.",
+    closing:
+      "For teams hiring into workflow-heavy enterprise UX, this page shows the parts of my background that are most relevant: research, structure, and measurable operational improvement.",
     supportLinks: [
       {
         label: "MSK case study",
@@ -329,19 +322,21 @@ export const curatedPages: Record<string, CuratedPage> = {
     slug: "jpm-design-strategy-vp-service-ops",
     company: "JPMorgan Chase",
     role: "Design Strategy, Vice President",
+    variant: "finance",
+    badgeLabel: "Strategy view",
     eyebrow: "Design strategy · service design · measurable process change",
     headline: "Turning ambiguous operational problems into structured decisions and measurable change",
     subhead:
       "I combine service design, operational leadership, and research-informed problem solving to clarify complex systems and move teams toward better decisions.",
     meta: [
-      { label: "Target role", value: "Design Strategy, Vice President" },
-      { label: "Primary angle", value: "Service design + facilitation + measurable operational outcomes" },
-      { label: "Priority", value: "Save and refine" },
-      { label: "Best proof", value: "20% cost reduction, 70% efficiency gain, 85% speed improvement" },
+      { label: "Focus", value: "Design strategy and service design" },
+      { label: "Strength", value: "Operational problem framing and measurable outcomes" },
+      { label: "Evidence", value: "20% cost reduction, 70% efficiency gain, 85% speed improvement" },
+      { label: "Best fit", value: "Strategy work tied to real implementation" },
     ],
     intro: [
-      "This is the clearest JPM role for framing me as an operator-designer rather than a traditional product-design ladder candidate. The role asks for journey mapping, service design tools, facilitation, risk-aware thinking, and turning evidence into decision-ready recommendations. That aligns closely with how I have worked across healthcare operations, internal process redesign, and logistics.",
-      "The strongest version of this story is simple: I can structure ambiguity, surface tradeoffs, and improve systems with measurable outcomes. That is more convincing here than trying to mimic a conventional strategy-consulting or long-tenure banking profile.",
+      "This is the clearest adjacent role for presenting my background as an operator-designer rather than as a traditional product-design ladder candidate. The strongest part of that story is practical: I can structure ambiguity, surface tradeoffs, and improve systems with measurable outcomes.",
+      "I am not trying to mimic a long-tenure banking or consulting profile. What I bring instead is grounded experience in operations, UX, and workflow redesign, with a track record of turning recommendations into working systems.",
     ],
     proofPoints: [
       { stat: "20%", detail: "EMR process cost reduction through operational redesign" },
@@ -349,19 +344,28 @@ export const curatedPages: Record<string, CuratedPage> = {
       { stat: "85%", detail: "Medical resupply speed improvement using better tracking and system structure" },
       { stat: "21K+", detail: "Clinical and administrative staff reached by internal workflow improvement work" },
     ],
-    caseStudyOrder: [
-      { title: "EMR and certification workflow redesign", reason: "Best evidence for structured problem solving, tradeoffs, and measurable outcomes." },
-      { title: "Medical logistics systems improvement", reason: "Strong support for ambiguity management and execution discipline." },
-      { title: "Internal tools research and redesign", reason: "Adds user-centered discovery and cross-functional problem framing." },
+    featuredWork: [
+      {
+        title: "EMR and certification workflow redesign",
+        reason: "Best evidence for structured problem solving, tradeoffs, and measurable outcomes.",
+      },
+      {
+        title: "Medical logistics systems improvement",
+        reason: "Supports ambiguity management, operating discipline, and execution under constraints.",
+      },
+      {
+        title: "Internal tools research and redesign",
+        reason: "Adds user-centered discovery and cross-functional problem framing.",
+      },
     ],
-    whyFit: [
+    strengths: [
       "Strong bridge between service design and operational execution",
       "Credible history of measurable improvement in complex environments",
       "Comfortable facilitating across stakeholders with different incentives",
-      "Naturally aligned to root-cause diagnosis, tradeoff framing, and structured recommendations",
+      "Natural fit for root-cause diagnosis, tradeoff framing, and structured recommendations",
     ],
     relevantExperience: [
-      "My background is unusually useful for design strategy work because it is grounded in both analysis and implementation. I have worked inside clinical operations, supported UX and internal-tool redesign, and led logistics improvements where recommendations had to become working systems, not just slide narratives.",
+      "My background is useful for design strategy work because it is grounded in both analysis and implementation. I have worked inside clinical operations, supported UX and internal-tool redesign, and led logistics improvements where recommendations had to become working systems, not just presentation material.",
     ],
     keywords: [
       "design strategy",
@@ -377,15 +381,8 @@ export const curatedPages: Record<string, CuratedPage> = {
     ],
     hiringManagerNote:
       "I am most useful when a team has a real systems problem, competing constraints, and needs someone to turn ambiguity into a grounded path forward.",
-    outreachLine:
-      "I put together a tailored page for the Design Strategy VP role focused on service design, measurable process improvement, and regulated-environment problem solving here: [portfolio URL].",
-    cautions: [
-      "This role prefers deep tenure; the page should not pretend Hillary is coming from a decade inside enterprise design strategy teams.",
-      "Keep the case centered on evidence and execution, not abstract transformation language.",
-      "Avoid consultant-speak.",
-    ],
-    recommendation:
-      "This is the clearest operator-to-design-strategy bridge if I want to emphasize structured problem-solving and measurable operational change.",
+    closing:
+      "For strategy-oriented roles, this page shows the throughline in my work: operational depth, clear framing, and measurable improvement rather than abstract transformation language.",
     supportLinks: [
       {
         label: "MSK case study",
@@ -398,7 +395,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       {
         label: "JPM Service Design VP",
         path: "/curated/jpm-service-design-vp-systems",
-        description: "Better if the conversation leans toward blueprinting and trust design.",
+        description: "Better fit if the conversation leans toward blueprinting and service orchestration.",
         icon: <HandIcon />,
       },
       {

@@ -18,7 +18,11 @@ export default function CuratedRolePage() {
   }
 
   return (
-    <main className="case-study gh-layout curated-page" aria-label={`${page.company} tailored portfolio page`} ref={rootRef}>
+    <main
+      className={`case-study gh-layout curated-page curated-page--${page.variant}`}
+      aria-label={`${page.company} tailored portfolio page`}
+      ref={rootRef}
+    >
       <header className="gh-hero curated-hero">
         <div className="gh-hero__copy">
           <p className="meta">{page.eyebrow}</p>
@@ -30,7 +34,7 @@ export default function CuratedRolePage() {
 
         <div className="gh-hero__visual curated-hero__visual" aria-hidden="true">
           <div className="curated-hero-badge">
-            <span className="curated-hero-badge__eyebrow">Selected focus</span>
+            <span className="curated-hero-badge__eyebrow">{page.badgeLabel}</span>
             <strong>{page.role}</strong>
             <span className="curated-hero-badge__rule" />
             <span>{page.company}</span>
@@ -52,7 +56,7 @@ export default function CuratedRolePage() {
 
       <section className="cs-overview">
         <p className="gh-section-label">Overview</p>
-        <h2 className="cs-section-title">Why I fit this work</h2>
+        <h2 className="cs-section-title">Why this work fits my background</h2>
         {page.intro.map((paragraph) => (
           <p key={paragraph} className="cs-overview-text">
             {paragraph}
@@ -62,7 +66,7 @@ export default function CuratedRolePage() {
 
       <section>
         <p className="gh-section-label">Selected proof</p>
-        <h2>Evidence I would lead with</h2>
+        <h2>Relevant results</h2>
         <div className="curated-proof-grid">
           {page.proofPoints.map((point) => (
             <article key={point.stat + point.detail} className="curated-proof-card">
@@ -74,10 +78,10 @@ export default function CuratedRolePage() {
       </section>
 
       <section>
-        <p className="gh-section-label">Case study path</p>
-        <h2>How I would tell the story</h2>
+        <p className="gh-section-label">Featured work</p>
+        <h2>What to review</h2>
         <ol className="curated-sequence">
-          {page.caseStudyOrder.map((item) => (
+          {page.featuredWork.map((item) => (
             <li key={item.title} className="curated-sequence__item">
               <h3>{item.title}</h3>
               <p>{item.reason}</p>
@@ -88,10 +92,10 @@ export default function CuratedRolePage() {
 
       <section className="curated-two-column">
         <div>
-          <p className="gh-section-label">Role fit</p>
-          <h2>What I would bring to this team</h2>
+          <p className="gh-section-label">Strengths</p>
+          <h2>What this work shows</h2>
           <ul className="curated-list">
-            {page.whyFit.map((item) => (
+            {page.strengths.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
@@ -113,10 +117,10 @@ export default function CuratedRolePage() {
         ))}
       </section>
 
-      <section className="curated-two-column">
+      <section>
         <div>
-          <p className="gh-section-label">Role language</p>
-          <h2>Keywords reflected in this page</h2>
+          <p className="gh-section-label">Relevant themes</p>
+          <h2>Topics reflected in this work</h2>
           <div className="curated-chip-cloud">
             {page.keywords.map((keyword) => (
               <span key={keyword} className="curated-chip">
@@ -125,22 +129,6 @@ export default function CuratedRolePage() {
             ))}
           </div>
         </div>
-
-        <div className="curated-outreach">
-          <p className="gh-section-label">Short note</p>
-          <h2>How I would frame the conversation</h2>
-          <p className="curated-outreach__quote">{page.outreachLine}</p>
-        </div>
-      </section>
-
-      <section>
-        <p className="gh-section-label">Scope and emphasis</p>
-        <h2>How I would keep this page honest</h2>
-        <ul className="curated-list curated-list--compact">
-          {page.cautions.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
       </section>
 
       <section className="curated-links-wrap">
@@ -179,11 +167,9 @@ export default function CuratedRolePage() {
 
       <section className="curated-footer">
         <div className="curated-footer__copy">
-          <p className="gh-section-label">Looking across the work</p>
-          <h2>{page.recommendation}</h2>
-          <p className="cs-section-intro">
-            This page is a role-specific view of the same throughline in my work: turning complex, high-stakes systems into tools and workflows people can use with more clarity and confidence.
-          </p>
+          <p className="gh-section-label">Closing note</p>
+          <h2>Where I am strongest</h2>
+          <p className="cs-section-intro">{page.closing}</p>
         </div>
 
         <div className="curated-footer__actions">
