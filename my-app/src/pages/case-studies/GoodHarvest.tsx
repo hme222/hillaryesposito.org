@@ -368,7 +368,7 @@ export default function GoodHarvest() {
             <tr>
               <td>Recipe discovery</td>
               <td>Recipe-forward flow embedded in produce detail, no navigation required</td>
-              <td>Task completion improved when recipes loaded from produce context. Separate tab broke the mental model</td>
+              <td>Path to action dropped from 7 taps to 4 when recipes loaded from produce context. A separate tab broke the mental model</td>
             </tr>
           </tbody>
         </table>
