@@ -22,6 +22,7 @@ import GoodHarvest from "../pages/case-studies/GoodHarvest";
 import Grove from "../pages/case-studies/Grove";
 import Mobbin from "../pages/case-studies/Mobbin";
 import MSK from "../pages/case-studies/MSK";
+import CuratedRolePage from "../pages/curated/CuratedRolePage";
 import PasswordGate from "../components/PasswordGate";
 import { Navigate } from "react-router-dom";
 
@@ -50,7 +51,7 @@ function RouteAnnouncer() {
   const { pathname } = useLocation();
   const [msg, setMsg] = useState("");
   useEffect(() => {
-    const name = ROUTE_NAMES[pathname] || "Page";
+    const name = pathname.startsWith("/curated/") ? "Curated role page" : ROUTE_NAMES[pathname] || "Page";
     // Small delay so the live region updates after the route swaps in.
     const id = window.setTimeout(() => setMsg(`${name} loaded`), 150);
     return () => window.clearTimeout(id);
@@ -76,6 +77,7 @@ export default function AppRoutes() {
       <Route path="/case-study/grove" element={<Grove />} />
       <Route path="/case-study/mobbin" element={<PasswordGate><Mobbin /></PasswordGate>} />
       <Route path="/case-study/msk" element={<MSK />} />
+      <Route path="/curated/:slug" element={<CuratedRolePage />} />
 
       <Route path="*" element={<NotFound />} />
     </Routes>

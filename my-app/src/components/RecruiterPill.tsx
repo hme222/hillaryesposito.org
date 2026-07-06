@@ -147,6 +147,32 @@ export default function RecruiterPill() {
                   </ul>
                 </section>
 
+                <section className="recruiter-panel__section">
+                  <p className="recruiter-panel__label">Targeted role pages</p>
+                  <ul className="recruiter-panel__projects">
+                    <li>
+                      <button
+                        type="button"
+                        className="recruiter-panel__project"
+                        onClick={() => go("/curated/omada-staff-product-designer-healthcare-ai")}
+                      >
+                        <strong>Omada · Staff Product Designer</strong>
+                        <span>Healthcare workflows, service design, and AI-enabled product judgment</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        type="button"
+                        className="recruiter-panel__project"
+                        onClick={() => go("/curated/jpm-service-design-vp-systems")}
+                      >
+                        <strong>JPMorgan · Service Design VP</strong>
+                        <span>Adjacent regulated-systems narrative built around blueprinting and trust</span>
+                      </button>
+                    </li>
+                  </ul>
+                </section>
+
                 <section className="recruiter-panel__section recruiter-panel__actions">
                   <a className="recruiter-panel__btn recruiter-panel__btn--primary"
                      href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"
