@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FocusTrap from "focus-trap-react";
+import { useT } from "../app/LanguageContext";
 
 /**
  * Persistent floating "Recruiter view" pill that appears on every page.
@@ -12,6 +13,7 @@ import FocusTrap from "focus-trap-react";
  */
 export default function RecruiterPill() {
   const navigate = useNavigate();
+  const t = useT();
   const [open, setOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
@@ -64,9 +66,10 @@ export default function RecruiterPill() {
         type="button"
         className={`recruiter-pill${scrolled ? "" : " recruiter-pill--unscrolled"}`}
         onClick={() => setOpen(true)}
-        aria-label="Open recruiter view: 90-second project breakdown"
+        aria-label={t("recruiter.pillAria")}
       >
-        <span className="recruiter-pill__text">Recruiter view</span>
+        {/* Panel content stays English in Phase 1 — only the trigger translates. */}
+        <span className="recruiter-pill__text">{t("recruiter.pill")}</span>
       </button>
 
       {open && (

@@ -1,5 +1,6 @@
 import React, { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useLanguage, useT } from "../app/LanguageContext";
 
 type NavbarProps = {
   darkMode: boolean;
@@ -7,6 +8,8 @@ type NavbarProps = {
 };
 
 export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
+  const { lang, setLang } = useLanguage();
+  const t = useT();
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("home");
   const [floating, setFloating] = useState(false);
@@ -141,11 +144,11 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   }
 
   return (
-    <nav className={`navbar${floating ? " is-floating" : ""}`} aria-label="Primary navigation">
+    <nav className={`navbar${floating ? " is-floating" : ""}`} aria-label={t("nav.ariaPrimary")}>
       <button
         className="logo"
         type="button"
-        aria-label="Go to home"
+        aria-label={t("nav.logoAria")}
         onClick={() => {
           close();
           navigate("/");
@@ -159,7 +162,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
         <span className="logo-divider" aria-hidden="true" />
         <span className="logo-textblock">
           <span className="logo-text">Hillary Esposito</span>
-          <span className="logo-tagline">UX &times; Process Improvement</span>
+          <span className="logo-tagline">{t("nav.tagline")}</span>
         </span>
       </button>
 
@@ -167,7 +170,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
         ref={hamburgerRef}
         className="hamburger"
         type="button"
-        aria-label={menuOpen ? "Close menu" : "Open menu"}
+        aria-label={menuOpen ? t("nav.menuClose") : t("nav.menuOpen")}
         aria-expanded={menuOpen}
         aria-controls="primary-menu"
         onClick={() => setMenuOpen((m) => !m)}
@@ -187,7 +190,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
             aria-current={activeSection === "home" ? "true" : undefined}
             onClick={() => scrollToSection("home")}
           >
-            HOME
+            {t("nav.home")}
           </button>
         </li>
 
@@ -198,7 +201,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
             aria-current={activeSection === "projects" || isOnCaseStudy ? "true" : undefined}
             onClick={() => scrollToSection("projects")}
           >
-            PROJECTS
+            {t("nav.projects")}
           </button>
         </li>
 
@@ -209,7 +212,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
             aria-current={location.pathname === "/about" ? "page" : undefined}
             onClick={close}
           >
-            ABOUT
+            {t("nav.about")}
           </Link>
         </li>
 
@@ -220,7 +223,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
             aria-current={activeSection === "contact" ? "true" : undefined}
             onClick={() => scrollToSection("contact")}
           >
-            CONTACT
+            {t("nav.contact")}
           </button>
         </li>
 
@@ -230,10 +233,10 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
             className="nav-link nav-link--resume"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Download resume (opens in new tab)"
+            aria-label={t("nav.resumeAria")}
             onClick={close}
           >
-            RESUME
+            {t("nav.resume")}
           </a>
         </li>
 
@@ -241,7 +244,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
           <button
             className="theme-btn"
             type="button"
-            aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+            aria-label={darkMode ? t("nav.themeToLight") : t("nav.themeToDark")}
             onClick={() => {
               setDarkMode((d) => !d);
               close();
@@ -257,6 +260,25 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
               </svg>
             )}
+          </button>
+        </li>
+
+        <li>
+          {/* Language toggle — shows the language you'd switch TO. The label
+              (and lang attr) are in that target language so screen readers
+              pronounce it correctly. Shares .theme-btn for the ≥40px target,
+              currentColor, and dark-mode theming. */}
+          <button
+            className="theme-btn lang-btn"
+            type="button"
+            lang={lang === "en" ? "es" : "en"}
+            aria-label={t("nav.langSwitch")}
+            onClick={() => {
+              setLang((l) => (l === "en" ? "es" : "en"));
+              close();
+            }}
+          >
+            {t("nav.langCode")}
           </button>
         </li>
       </ul>

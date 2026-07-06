@@ -418,6 +418,14 @@ select:focus {
   transform: scale(1.08);
 }
 
+/* Language toggle — inherits .theme-btn's hit area (≥40px), currentColor and
+   dark-mode theming; this just restyles the icon slot as compact nav text. */
+.lang-btn {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+}
+
 /* optional resume button */
 .nav-link--resume {
   padding: 0.5rem 1rem;

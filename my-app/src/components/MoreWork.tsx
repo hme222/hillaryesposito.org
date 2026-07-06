@@ -69,13 +69,15 @@ export default function MoreWork({ projects, onBack, backLabel = "← Back to Al
   };
 
   // ── Mouse drag-to-scroll (touch keeps native scrolling) ──
-  const drag = useRef({ active: false, startX: 0, startLeft: 0, moved: false });
+  // Capture is deferred until the pointer actually moves past the drag
+  // threshold — capturing on pointerdown would redirect the following `click`
+  // to this scroller instead of the card's <Link>, so cards wouldn't navigate.
+  const drag = useRef({ active: false, startX: 0, startLeft: 0, moved: false, id: 0, captured: false });
   const onPointerDown = (e: React.PointerEvent) => {
     if (e.pointerType !== "mouse") return;
     const vp = viewportRef.current;
     if (!vp) return;
-    drag.current = { active: true, startX: e.clientX, startLeft: vp.scrollLeft, moved: false };
-    vp.setPointerCapture(e.pointerId);
+    drag.current = { active: true, startX: e.clientX, startLeft: vp.scrollLeft, moved: false, id: e.pointerId, captured: false };
   };
   const onPointerMove = (e: React.PointerEvent) => {
     const d = drag.current;
@@ -83,13 +85,19 @@ export default function MoreWork({ projects, onBack, backLabel = "← Back to Al
     const vp = viewportRef.current;
     if (!vp) return;
     const dx = e.clientX - d.startX;
-    if (Math.abs(dx) > 4) d.moved = true;
-    vp.scrollLeft = d.startLeft - dx;
+    if (Math.abs(dx) > 4) {
+      d.moved = true;
+      // Only now does this become a real drag — start capturing so a plain
+      // click (no movement) is never intercepted.
+      if (!d.captured) { vp.setPointerCapture(d.id); d.captured = true; }
+    }
+    if (d.moved) vp.scrollLeft = d.startLeft - dx;
   };
   const endDrag = (e: React.PointerEvent) => {
+    const d = drag.current;
     const vp = viewportRef.current;
-    if (vp && vp.hasPointerCapture(e.pointerId)) vp.releasePointerCapture(e.pointerId);
-    drag.current.active = false;
+    if (vp && d.captured && vp.hasPointerCapture(e.pointerId)) vp.releasePointerCapture(e.pointerId);
+    d.active = false;
   };
   // Swallow the click that follows a real drag so a card doesn't navigate mid-swipe.
   const onClickCapture = (e: React.MouseEvent) => {
