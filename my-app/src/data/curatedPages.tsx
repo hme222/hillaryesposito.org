@@ -43,10 +43,10 @@ export const curatedPages: Record<string, CuratedPage> = {
     slug: "omada-staff-product-designer-healthcare-ai",
     company: "Omada Health",
     role: "Staff Product Designer",
-    eyebrow: "Tailored Portfolio Page · Portfolio page priority",
+    eyebrow: "Healthcare systems · service design · AI-supported workflows",
     headline: "Designing AI-enabled healthcare experiences grounded in real operational complexity",
     subhead:
-      "Hillary Esposito is a UX and product designer with an MHA and deep healthcare operations experience, focused on making complex clinical and operational workflows clearer, more trustworthy, and easier to act on.",
+      "I am a UX and product designer with an MHA and deep healthcare operations experience, focused on making complex clinical and operational workflows clearer, more trustworthy, and easier to act on.",
     meta: [
       { label: "Target role", value: "Staff Product Designer" },
       { label: "Primary angle", value: "Healthcare workflows + service design + AI judgment" },
@@ -54,8 +54,8 @@ export const curatedPages: Record<string, CuratedPage> = {
       { label: "Best proof", value: "21K+ clinicians, 20% EMR cost reduction, 70% efficiency gain" },
     ],
     intro: [
-      "This role sits at the intersection of healthcare complexity, service design, and AI-supported decision-making, which is where Hillary's background is strongest. Her experience spans clinical operations, UX research, internal tools, and process redesign, with a track record of improving how high-stakes work actually gets done for the people inside the system.",
-      "She brings domain fluency that is hard to fake: hospital operations, workflow redesign, bilingual communication, and measurable improvement in environments where trust and speed both matter. The value here is not generic product-design polish. It is the ability to shape tools and journeys that make sense in real care settings.",
+      "This role sits at the intersection of healthcare complexity, service design, and AI-supported decision-making, which is where my background is strongest. My experience spans clinical operations, UX research, internal tools, and process redesign, with a track record of improving how high-stakes work actually gets done for the people inside the system.",
+      "I bring domain fluency that is hard to fake: hospital operations, workflow redesign, bilingual communication, and measurable improvement in environments where trust and speed both matter. The value I would add here is not generic product-design polish. It is the ability to shape tools and journeys that make sense in real care settings.",
     ],
     proofPoints: [
       { stat: "21K+", detail: "Clinicians and administrative staff affected by workflow redesign work at MSK" },
@@ -88,8 +88,8 @@ export const curatedPages: Record<string, CuratedPage> = {
       "Credible bridge between research, workflow redesign, and AI-assisted product thinking",
     ],
     relevantExperience: [
-      "Hillary's background combines UX research, workflow analysis, clinical operations, and process improvement. At Memorial Sloan Kettering, she worked inside healthcare operations before moving into UX and internal tools work, which gives her unusually strong context for designing systems that need to work for real staff under pressure.",
-      "As an Army medical logistics officer, she also led process and tracking improvements where broken workflows had immediate consequences. That shows up in how she approaches reliability, handoffs, and decision support inside complex systems.",
+      "My background combines UX research, workflow analysis, clinical operations, and process improvement. At Memorial Sloan Kettering, I worked inside healthcare operations before moving into UX and internal tools work, which gives me unusually strong context for designing systems that need to work for real staff under pressure.",
+      "As an Army medical logistics officer, I also led process and tracking improvements where broken workflows had immediate consequences. That shows up in how I approach reliability, handoffs, and decision support inside complex systems.",
     ],
     keywords: [
       "healthcare",
@@ -113,7 +113,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       "Avoid making the page feel like an operations resume with a design layer on top. Design decisions still need to stay visible.",
     ],
     recommendation:
-      "Use first. This is the clearest healthcare-first page and the strongest match between Hillary's background and the problem space.",
+      "This is the clearest healthcare-first story and the strongest match between my background and the problem space.",
     supportLinks: [
       {
         label: "MSK case study",
@@ -147,10 +147,10 @@ export const curatedPages: Record<string, CuratedPage> = {
     slug: "jpm-service-design-vp-systems",
     company: "JPMorgan Chase",
     role: "Service Design Vice President",
-    eyebrow: "Tailored Portfolio Page · Strong adjacent fit",
+    eyebrow: "Service design · regulated systems · trust and orchestration",
     headline: "Service design for high-stakes systems, shaped by operational reality",
     subhead:
-      "Hillary Esposito designs end-to-end workflows for regulated, high-consequence environments, combining service design, research, and process improvement to make complex systems easier to trust and use.",
+      "I design end-to-end workflows for regulated, high-consequence environments, combining service design, research, and process improvement to make complex systems easier to trust and use.",
     meta: [
       { label: "Target role", value: "Service Design Vice President" },
       { label: "Primary angle", value: "Service blueprinting + systems thinking + trust design" },
@@ -158,8 +158,8 @@ export const curatedPages: Record<string, CuratedPage> = {
       { label: "Best proof", value: "70% workflow gain, 20% cost reduction, 85% resupply speed improvement" },
     ],
     intro: [
-      "This role is a strong adjacent fit because it centers on the kind of work Hillary already does well: mapping messy service journeys, identifying friction across channels and handoffs, and creating clearer systems for people operating under pressure. The industry is different, but the design challenge is familiar: complex systems, multiple stakeholders, compliance constraints, and the need to turn ambiguity into repeatable service patterns.",
-      "Her value here is systems thinking backed by lived experience. She has worked inside healthcare operations and military logistics, where service failures are not abstract. That makes her credible for service blueprinting, journey mapping, and designing for trust in agentic or automation-supported environments.",
+      "This role is a strong adjacent fit because it centers on the kind of work I already do well: mapping messy service journeys, identifying friction across channels and handoffs, and creating clearer systems for people operating under pressure. The industry is different, but the design challenge is familiar: complex systems, multiple stakeholders, compliance constraints, and the need to turn ambiguity into repeatable service patterns.",
+      "What I bring here is systems thinking backed by lived experience. I have worked inside healthcare operations and military logistics, where service failures are not abstract. That makes me a credible fit for service blueprinting, journey mapping, and designing for trust in agentic or automation-supported environments.",
     ],
     proofPoints: [
       { stat: "70%", detail: "Certification workflow efficiency gain through simplification and visibility improvements" },
@@ -188,7 +188,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       "Credible angle on trust and controlled autonomy in agentic systems",
     ],
     relevantExperience: [
-      "Hillary has spent her career improving systems that depend on coordination across people, tools, and process constraints. Her healthcare and logistics work gives her unusual depth in diagnosing operational failure points, aligning stakeholders, and redesigning journeys so the service works more reliably from end to end.",
+      "I have spent my career improving systems that depend on coordination across people, tools, and process constraints. My healthcare and logistics work gives me unusual depth in diagnosing operational failure points, aligning stakeholders, and redesigning journeys so the service works more reliably from end to end.",
     ],
     keywords: [
       "service blueprinting",
@@ -212,7 +212,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       "Keep agentic-language claims limited to design-for-trust and workflow implications unless direct shipping evidence exists.",
     ],
     recommendation:
-      "Strong consider. This is the best JPM page to build if Hillary wants a serious adjacent regulated-systems option.",
+      "This is the strongest adjacent JPM story if I want to emphasize regulated systems, service blueprinting, and trust design.",
     supportLinks: [
       {
         label: "MSK case study",
@@ -246,10 +246,10 @@ export const curatedPages: Record<string, CuratedPage> = {
     slug: "jpm-ux-design-lead-vp-workflows",
     company: "JPMorgan Chase",
     role: "UX Design Lead, Vice President",
-    eyebrow: "Tailored Portfolio Page · Workflow-heavy enterprise UX",
+    eyebrow: "Enterprise UX · internal tools · discovery and delivery",
     headline: "Designing complex internal workflows with research, structure, and execution discipline",
     subhead:
-      "Hillary Esposito brings a workflow-first UX approach shaped by clinical operations, internal tools, and process redesign in regulated environments.",
+      "I bring a workflow-first UX approach shaped by clinical operations, internal tools, and process redesign in regulated environments.",
     meta: [
       { label: "Target role", value: "UX Design Lead, Vice President" },
       { label: "Primary angle", value: "Internal tools + discovery + delivery discipline" },
@@ -257,8 +257,8 @@ export const curatedPages: Record<string, CuratedPage> = {
       { label: "Best proof", value: "25% task completion improvement, 21K+ staff impact" },
     ],
     intro: [
-      "This role is strongest if positioned around complex internal workflows rather than consumer-finance polish. Hillary's experience maps well to the core problem: understanding user needs in complicated business environments, facilitating early discovery, simplifying dense flows, and carrying design decisions through delivery with clear rationale.",
-      "The differentiator here is not just that she can design screens. It is that she understands how hard it is to make complicated work usable when the system is constrained by risk, policy, handoffs, and competing stakeholder priorities.",
+      "This role is strongest if positioned around complex internal workflows rather than consumer-finance polish. My experience maps well to the core problem: understanding user needs in complicated business environments, facilitating early discovery, simplifying dense flows, and carrying design decisions through delivery with clear rationale.",
+      "The differentiator here is not just that I can design screens. It is that I understand how hard it is to make complicated work usable when the system is constrained by risk, policy, handoffs, and competing stakeholder priorities.",
     ],
     proofPoints: [
       { stat: "25%", detail: "Internal tool task-completion improvement through research and workflow redesign" },
@@ -278,7 +278,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       "Credible fit for internal-facing product work where usability directly affects throughput and quality",
     ],
     relevantExperience: [
-      "At Memorial Sloan Kettering, Hillary supported internal tools and workflow improvements by combining research, task analysis, and process redesign. Her prior operations background means she reads workflow complexity as a design problem, not just a business constraint.",
+      "At Memorial Sloan Kettering, I supported internal tools and workflow improvements by combining research, task analysis, and process redesign. My prior operations background means I read workflow complexity as a design problem, not just a business constraint.",
     ],
     keywords: [
       "UX research",
@@ -301,7 +301,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       "Keep the lead story centered on discovery, facilitation, and delivery quality.",
     ],
     recommendation:
-      "Consider. Good adjacent fit if Hillary wants workflow-heavy enterprise UX, but weaker domain resonance than Omada.",
+      "This is a solid adjacent story for workflow-heavy enterprise UX, though the domain resonance is weaker than the healthcare-first Omada page.",
     supportLinks: [
       {
         label: "MSK case study",
@@ -329,10 +329,10 @@ export const curatedPages: Record<string, CuratedPage> = {
     slug: "jpm-design-strategy-vp-service-ops",
     company: "JPMorgan Chase",
     role: "Design Strategy, Vice President",
-    eyebrow: "Tailored Portfolio Page · Operator-to-strategy bridge",
+    eyebrow: "Design strategy · service design · measurable process change",
     headline: "Turning ambiguous operational problems into structured decisions and measurable change",
     subhead:
-      "Hillary Esposito combines service design, operational leadership, and research-informed problem solving to clarify complex systems and move teams toward better decisions.",
+      "I combine service design, operational leadership, and research-informed problem solving to clarify complex systems and move teams toward better decisions.",
     meta: [
       { label: "Target role", value: "Design Strategy, Vice President" },
       { label: "Primary angle", value: "Service design + facilitation + measurable operational outcomes" },
@@ -340,8 +340,8 @@ export const curatedPages: Record<string, CuratedPage> = {
       { label: "Best proof", value: "20% cost reduction, 70% efficiency gain, 85% speed improvement" },
     ],
     intro: [
-      "This is the clearest JPM role for framing Hillary as an operator-designer rather than a traditional product-design ladder candidate. The role asks for journey mapping, service design tools, facilitation, risk-aware thinking, and turning evidence into decision-ready recommendations. That aligns closely with how she has worked across healthcare operations, internal process redesign, and logistics.",
-      "The page should position her as someone who can structure ambiguity, surface tradeoffs, and improve systems with measurable outcomes. That is more convincing here than trying to mimic a conventional strategy-consulting or long-tenure banking profile.",
+      "This is the clearest JPM role for framing me as an operator-designer rather than a traditional product-design ladder candidate. The role asks for journey mapping, service design tools, facilitation, risk-aware thinking, and turning evidence into decision-ready recommendations. That aligns closely with how I have worked across healthcare operations, internal process redesign, and logistics.",
+      "The strongest version of this story is simple: I can structure ambiguity, surface tradeoffs, and improve systems with measurable outcomes. That is more convincing here than trying to mimic a conventional strategy-consulting or long-tenure banking profile.",
     ],
     proofPoints: [
       { stat: "20%", detail: "EMR process cost reduction through operational redesign" },
@@ -361,7 +361,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       "Naturally aligned to root-cause diagnosis, tradeoff framing, and structured recommendations",
     ],
     relevantExperience: [
-      "Hillary's background is unusually useful for design strategy work because it is grounded in both analysis and implementation. She has worked inside clinical operations, supported UX and internal-tool redesign, and led logistics improvements where recommendations had to become working systems, not just slide narratives.",
+      "My background is unusually useful for design strategy work because it is grounded in both analysis and implementation. I have worked inside clinical operations, supported UX and internal-tool redesign, and led logistics improvements where recommendations had to become working systems, not just slide narratives.",
     ],
     keywords: [
       "design strategy",
@@ -385,7 +385,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       "Avoid consultant-speak.",
     ],
     recommendation:
-      "Consider. Strong adjacent narrative if Hillary wants to sell the operator-to-design-strategy bridge.",
+      "This is the clearest operator-to-design-strategy bridge if I want to emphasize structured problem-solving and measurable operational change.",
     supportLinks: [
       {
         label: "MSK case study",
