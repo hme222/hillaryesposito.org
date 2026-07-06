@@ -59,7 +59,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
       return;
     }
 
-    const ids = ["home", "projects", "contact"];
+    const ids = ["home", "about", "projects", "contact"];
     const update = () => {
       const line = window.innerHeight * 0.35;
       let current = "home";
@@ -197,6 +197,17 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
         </li>
 
         <li>
+          <Link
+            to="/about"
+            className={`nav-link nav-link--about${location.pathname === "/about" || activeSection === "about" ? " is-active" : ""}`}
+            aria-current={location.pathname === "/about" ? "page" : activeSection === "about" ? "true" : undefined}
+            onClick={close}
+          >
+            {t("nav.about")}
+          </Link>
+        </li>
+
+        <li>
           <button
             type="button"
             className={navClass("projects")}
@@ -205,17 +216,6 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
           >
             {t("nav.projects")}
           </button>
-        </li>
-
-        <li>
-          <Link
-            to="/about"
-            className={`nav-link nav-link--about${location.pathname === "/about" ? " is-active" : ""}`}
-            aria-current={location.pathname === "/about" ? "page" : undefined}
-            onClick={close}
-          >
-            {t("nav.about")}
-          </Link>
         </li>
 
         <li>
