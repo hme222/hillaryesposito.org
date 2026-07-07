@@ -8459,6 +8459,17 @@ body.dark-mode .nav-overlay-backdrop,
   margin: 0 0 1rem;
   line-height: 1.3;
 }
+/* Restructured sections pair `gh-section-label` with a bare <h2>, which falls
+   back to the larger, olive, 3rem-top-margin `.case-study h2`. Normalize any h2
+   directly after an eyebrow to the cs-section-title rhythm so section titles are
+   the same size, colour, and eyebrow-to-title distance across every page. */
+.case-study .gh-section-label + h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-1);
+  margin: 0 0 1rem;
+  line-height: 1.3;
+}
 @media (max-width: 600px) {
   .cs-challenge-grid,
   .cs-reflections-grid {
