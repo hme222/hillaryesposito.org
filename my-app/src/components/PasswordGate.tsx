@@ -26,7 +26,7 @@ export default function PasswordGate({ children }: { children: React.ReactNode }
       <div className="pw-gate__card">
         <div className="pw-gate__icon" aria-hidden="true">🔒</div>
         <h1 className="pw-gate__title">This case study is password-protected</h1>
-        <p className="pw-gate__subtitle">Enter the password to view this project.</p>
+        <p className="pw-gate__subtitle">Enter the password to view this case study.</p>
         <form onSubmit={handleSubmit} className="pw-gate__form">
           <input
             type="password"
@@ -36,10 +36,17 @@ export default function PasswordGate({ children }: { children: React.ReactNode }
             placeholder="Password"
             autoFocus
             aria-label="Password"
+            aria-invalid={error || undefined}
+            aria-describedby={error ? "pw-gate-error" : undefined}
           />
-          <button type="submit" className="pw-gate__btn">View project</button>
+          <button type="submit" className="pw-gate__btn">View case study</button>
         </form>
-        {error && <p className="pw-gate__error" role="alert">Incorrect password. Try again.</p>}
+        {error && <p id="pw-gate-error" className="pw-gate__error" role="alert">Incorrect password. Try again.</p>}
+        <p className="pw-gate__help">
+          Don't have the password?{" "}
+          <a href="mailto:espositohillary@gmail.com?subject=Portfolio%20case%20study%20access">Email me</a>{" "}
+          and I'll send it over.
+        </p>
       </div>
     </main>
   );

@@ -8,14 +8,14 @@ import useReveal from "../../hooks/useReveal";
 import { TerminalIcon, PencilIcon, LaunchIcon, FrameIcon, HandIcon, MedicalCrossIcon, LeafIcon } from "../../components/LineIcons";
 
 const SCREENS = [
-  { image: "/assets/grove/bouquet.png", label: "Onboarding / bouquet creation", bg: "#3a3a3a",
-    designNote: "Location-first setup. Users name their bouquet by where it lives (\"Kitchen window\"), because the survey showed people think in spaces: the kitchen window, the living room shelf." },
-  { image: "/assets/grove/care.png", label: "Daily care tasks", bg: "#f5f0e8",
-    designNote: "One morning digest covers every plant. High-contrast status indicators because this is the one screen users check daily. Task count grows with the care streak, so adding plants doesn't add noise." },
-  { image: "/assets/grove/Growth.png", label: "Growth journal", bg: "#e8edd9",
-    designNote: "Photo-first layout. The journal is the emotional payoff. Growth over time is more motivating than a task checklist. Chose this as the home screen over a dashboard based on survey data." },
-  { image: "/assets/grove/plantpersonality.png", label: "AI-generated plant personality", bg: "#f5f0e8",
-    designNote: "The reward for consistent care. Personality unlocks at streak milestones. The tone stays encouraging: every profile runs through prompt guardrails before display." },
+  { image: "/assets/grove/bouquet.png", label: "Adding a plant or a bouquet", bg: "#efe7d9",
+    designNote: "The first choice splits two things people lump together: potted plants they tend for months, and cut bouquets with days of vase life. Deciding up front lets each get the right model, growth tracking for plants, vase life and flower ID for bouquets." },
+  { image: "/assets/grove/care.png", label: "What needs you today", bg: "#f5f0e8",
+    designNote: "One list answers the daily question. Each plant carries its own schedule, its location, and a soil-dry estimate read from your watering pattern, and Water all clears the easy ones in a tap. Overdue and due-soon read as label plus color, never color alone." },
+  { image: "/assets/grove/Growth.png", label: "A plant's own page", bg: "#e8edd9",
+    designNote: "Every plant gets one page, photo first, with its timeline, photos, care history, and notes behind it. A real growth photo motivates more than a checklist, so it leads instead of a stat block." },
+  { image: "/assets/grove/plantpersonality.png", label: "AI plant personality", bg: "#f5f0e8",
+    designNote: "The payoff for a streak. It reads your care history and reflects it back as an encouraging profile tied to your streak and plant count, like \"The Careful Beginner.\" Every personality runs through prompt guardrails so the tone stays kind, not clinical." },
 ];
 
 const SURVEY_FINDINGS = [
@@ -130,7 +130,7 @@ export default function GroveCaseStudy() {
   useReveal(rootRef);
 
   return (
-    <main className="case-study gh-layout" aria-label="Grove AI Case Study" ref={rootRef}>
+    <main className="case-study gh-layout" aria-label="Grove AI Case Study" lang="en" ref={rootRef}>
 
       {/* ── HERO ── */}
       <header className="gh-hero">
@@ -140,7 +140,7 @@ export default function GroveCaseStudy() {
           <p className="gh-hero__intro">
             Plant parents kill their plants because the care advice they find doesn't
             hold up. I surveyed 32 users, defined an MVP from their data, and
-            am building a working app, using AI tools throughout to show{" "}
+            am redesigning the app based on a working prototype from Emergent, using AI tools throughout to show{" "}
             <strong>where AI accelerates and where human judgment leads.</strong>
           </p>
         </div>
@@ -178,8 +178,8 @@ export default function GroveCaseStudy() {
         <p className="gh-section-label">The premise</p>
         <h2 className="cs-section-title">Plant parents forget. Then they feel guilty.</h2>
         <p className="cs-overview-text">
-          Grove is a plant care app I designed, researched, and built end-to-end in a 3-week solo
-          sprint, so this case study reads the way the project ran: as a build log. New plant owners
+          Grove is a plant care app I researched and am redesigning based on a working prototype from
+          Emergent, so this case study reads the way the project ran: as a build log. New plant owners
           kill their plants because care information is generic, conflicting, and untrustworthy, and
           existing apps respond by nagging rather than teaching. Every clause of that statement came
           from the survey data. A 32-respondent survey defined the MVP, two data-driven personas
@@ -188,10 +188,10 @@ export default function GroveCaseStudy() {
           explicit reasoning.
         </p>
         <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
-          <strong>Research:</strong> 32-respondent survey (5/22–6/19/2026) · moderated testing plan (5–6 participants, ready to run).
+          <strong>Research:</strong> 32-respondent survey (May 22–June 19, 2026) · moderated testing plan (5–6 participants, ready to run).
         </p>
         <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
-          <strong>Constraints:</strong> Solo project. 3-week build. Prototype shipped; moderated user testing is next.
+          <strong>Constraints:</strong> Solo project. Redesigning from a working Emergent prototype; moderated user testing is next.
         </p>
 
         <div className="gh-assumption-grid" style={{ marginTop: "1.5rem" }}>
@@ -225,7 +225,7 @@ export default function GroveCaseStudy() {
         <h2>32 respondents told me what actually matters</h2>
         <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
           Week 1 was survey design, distribution, and analysis. I ran a 32-respondent survey
-          (5/22–6/19/2026) targeting new-to-experienced plant owners. I had assumptions about
+          (May 22–June 19, 2026) targeting new-to-experienced plant owners. I had assumptions about
           what plant owners need; before designing anything, I needed to test them:
         </p>
 
@@ -351,7 +351,7 @@ export default function GroveCaseStudy() {
           Week 1 also covered core architecture: I set up the React + FastAPI + MongoDB stack and
           built auth and the bouquet data model; every architecture decision followed the MVP
           features the survey identified.
-          Week 2 was smart reminders, plant ID via camera, and the daily care task flow — the three
+          Week 2 was smart reminders, plant ID via camera, and the daily care task flow: the three
           features users said they'd download for. I built them before touching anything else.
           AI coding tools (Claude Code, Cursor) handled boilerplate so I could focus on interaction design.
         </p>
@@ -532,7 +532,7 @@ export default function GroveCaseStudy() {
         <p className="gh-section-label">The product today</p>
         <h2>What Grove looks like</h2>
         <p style={{ maxWidth: 640, marginBottom: "0.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
-          Key screens from the working build: onboarding through your first plant personality.
+          Key screens from the working build: from adding your first plant to earning a plant personality.
         </p>
 
         <div className="grove-screens-grid grove-screens-grid--annotated" aria-label="App screen previews with design rationale">

@@ -30,7 +30,7 @@ export default function MSKCaseStudy() {
   useReveal(rootRef);
 
   return (
-    <main className="case-study gh-layout" aria-label="MSK Case Study" ref={rootRef}>
+    <main className="case-study gh-layout" aria-label="MSK Case Study" lang="en" ref={rootRef}>
 
       {/* ── HERO ── */}
       <header className="gh-hero">
@@ -57,7 +57,7 @@ export default function MSKCaseStudy() {
         {[
           { label: "Role",     value: "Process Improvement → UX & Product Design" },
           { label: "Org",      value: "Memorial Sloan Kettering Cancer Center" },
-          { label: "Duration", value: "6 years, 3 roles" },
+          { label: "Timeline", value: "6 years, 3 roles" },
           { label: "Scale",    value: "21,000+ clinicians" },
           { label: "Methods",  value: "Lean Six Sigma · Workflow Redesign · Stakeholder Alignment" },
         ].map((item, i, arr) => (
@@ -281,8 +281,8 @@ export default function MSKCaseStudy() {
           <p className="cs-body-text" style={{ marginTop: "0.75rem" }}>
             <strong>Before:</strong> Manual spreadsheet; staff found out certifications had lapsed after the fact.{" "}
             <strong>After:</strong> Automated dashboard with proactive reminders at 90/60/30 days. Compliance
-            shifted from punitive to preventive — with "as of [date]" timestamps making the daily data refresh
-            transparent, the compromise described above.
+            shifted from punitive to preventive, with "as of [date]" timestamps making the daily data refresh
+            transparent (the compromise described above).
           </p>
         </div>
 
@@ -351,7 +351,7 @@ export default function MSKCaseStudy() {
         <div className="cs-outcome-grid">
           <div className="cs-outcome-card">
             <p className="cs-outcome-value gradient-text">20%</p>
-            <p className="cs-outcome-label">Organization-wide EMR cost reduction. I led the process redesign.</p>
+            <p className="cs-outcome-label">Organization-wide EMR cost reduction. I led the workflow redesign that contributed to it.</p>
           </div>
           <div className="cs-outcome-card">
             <p className="cs-outcome-value gradient-text">70%</p>

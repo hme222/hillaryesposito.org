@@ -136,7 +136,6 @@ const PROJECTS: Project[] = [
 
 // ─── Component ────────────────────────────────────────────────────────────────
 export default function Home() {
-  const contactRef = useRef<HTMLElement>(null);
   const navigate = useNavigate();
   const location = useLocation();
   const prefersReducedMotion = useReducedMotion();
@@ -332,7 +331,7 @@ export default function Home() {
           <img src="/assets/about/headshot.jpg" alt={t("home.about.photoAlt")} loading="lazy" />
         </div>
         <div className="mini-about-text">
-          <p className="mini-about-eyebrow">{t("home.about.eyebrow")}</p>
+          <h2 className="mini-about-eyebrow">{t("home.about.eyebrow")}</h2>
           <p className="mini-about-blurb">{t("home.about.blurb")}</p>
           <Link to="/about" className="mini-about-link">{t("home.about.link")}</Link>
         </div>
@@ -434,13 +433,13 @@ export default function Home() {
                 {clickable ? (
                   <Link to={proj.path!}
                     className={`home-proj-card-link${isLocked ? " home-proj-card-link--locked" : ""}`}
-                    aria-label={t("home.proj.viewAria", { title: proj.title })}
+                    aria-label={isLocked ? t("home.proj.lockedViewAria") : t("home.proj.viewAria", { title: displayTitle })}
                     onMouseMove={handleCardTilt}
                     onMouseLeave={resetCardTilt}>
                     {cardInner}
                   </Link>
                 ) : (
-                  <div className="home-proj-card-link home-proj-card-link--soon" aria-label={t("home.proj.soonAria", { title: proj.title })}
+                  <div className="home-proj-card-link home-proj-card-link--soon" aria-label={t("home.proj.soonAria", { title: displayTitle })}
                     onMouseMove={handleCardTilt}
                     onMouseLeave={resetCardTilt}>
                     {cardInner}
@@ -455,7 +454,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════
           4. CTA + CONTACT (merged)
       ══════════════════════════════════════════ */}
-      <section id="contact" ref={contactRef} className="section active home-cta-section" aria-label={t("home.contactAria")}>
+      <section id="contact" className="section active home-cta-section" aria-label={t("home.contactAria")}>
         <motion.div
           className="about-cta"
           initial={prefersReducedMotion ? false : { opacity: 0, y: 28 }}

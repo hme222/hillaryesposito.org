@@ -57,7 +57,7 @@ export default function GoodHarvest() {
   ];
 
   return (
-    <main className="case-study gh-layout" aria-label="Good Harvest UX Case Study" ref={rootRef}>
+    <main className="case-study gh-layout" aria-label="Good Harvest UX Case Study" lang="en" ref={rootRef}>
 
       {/* ── HERO ── */}
       <header className="gh-hero">
@@ -100,7 +100,7 @@ export default function GoodHarvest() {
         <p className="gh-section-label">Overview</p>
         <h2 className="cs-section-title">From inherited research to a heatmap-tested prototype</h2>
         <p className="cs-overview-text">
-          An independent project where I took provided research (22 participant interviews and surveys)
+          An independent project where I took provided research (3 in-depth interviews and 22 survey responses)
           and designed a mobile app from findings through tested prototype. The research showed shoppers
           are already motivated. What stopped them was confidence that the information applied to
           <em> their</em> location. I designed the solution and validated it with heatmap testing.
@@ -136,7 +136,7 @@ export default function GoodHarvest() {
         <div className="gh-collab-note">
           <p className="gh-collab-label">Research provenance</p>
           <p>
-            <strong>Inherited:</strong> 22 participant interviews and surveys (conducted by bootcamp research team, recruitment via convenience sample).
+            <strong>Inherited:</strong> 3 in-depth interviews and 22 survey responses (conducted by bootcamp research team, recruitment via convenience sample).
             I synthesized these findings into personas and design principles.<br />
             <strong>Generated:</strong> 22-participant unmoderated heatmap testing across 3 rounds (I designed the test plan, wrote tasks, recruited participants via Maze panel, and analyzed results).
             Two peer designers reviewed my synthesis and challenged assumptions.
@@ -239,7 +239,7 @@ export default function GoodHarvest() {
         <div className="gh-collab-note" style={{ marginBottom: "1.5rem" }}>
           <p className="gh-collab-label">What I inherited</p>
           <p>
-            Research data (22 participant interviews and surveys) was provided as part of the bootcamp.
+            Research data (3 in-depth interviews and 22 survey responses) was provided as part of the bootcamp.
             Four key findings from that data shaped every design decision that followed.
           </p>
         </div>
@@ -380,8 +380,8 @@ export default function GoodHarvest() {
         <h2 className="cs-section-title">What prototype testing suggested</h2>
         <div className="cs-outcome-grid">
           <div className="cs-outcome-card">
-            <p className="cs-outcome-value gradient-text">3/4</p>
-            <p className="cs-outcome-label">Users completed core flow unassisted (vs. 1/4 in round one)</p>
+            <p className="cs-outcome-value gradient-text">3 of 4</p>
+            <p className="cs-outcome-label">Core-task attempts completed unassisted in the final round (vs. 1 of 4 in round one)</p>
           </div>
           <div className="cs-outcome-card">
             <p className="cs-outcome-value gradient-text">4 taps</p>

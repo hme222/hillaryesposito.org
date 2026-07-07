@@ -233,6 +233,9 @@ export default function MSKSystemMap() {
       edgeGeo.dispose();
       edgeMat.dispose();
       renderer.dispose();
+      // Explicitly drop the WebGL context so repeated mounts (Home→MSK→Home…)
+      // don't accumulate contexts until the browser evicts the oldest (~16).
+      renderer.forceContextLoss();
       if (renderer.domElement.parentNode === mount) mount.removeChild(renderer.domElement);
     };
   }, []);

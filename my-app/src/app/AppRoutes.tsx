@@ -1,5 +1,5 @@
 // src/app/AppRoutes.tsx
-import React, { useEffect, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import { Routes, Route, Link, useLocation } from "react-router-dom";
 
 function NotFound() {
@@ -20,11 +20,15 @@ import About from "../pages/AboutMe";
 
 import GoodHarvest from "../pages/case-studies/GoodHarvest";
 import Grove from "../pages/case-studies/Grove";
-import Mobbin from "../pages/case-studies/Mobbin";
 import MSK from "../pages/case-studies/MSK";
 import CuratedRolePage from "../pages/curated/CuratedRolePage";
 import PasswordGate from "../components/PasswordGate";
 import { Navigate } from "react-router-dom";
+
+// Lazy so the NDA'd Mobbin case-study text ships in its own chunk, fetched only
+// after the password gate renders its children — not in the always-loaded main
+// bundle every visitor downloads.
+const Mobbin = lazy(() => import("../pages/case-studies/Mobbin"));
 
 function ScrollToTop() {
   const { pathname, search } = useLocation();
@@ -75,7 +79,7 @@ export default function AppRoutes() {
 
       <Route path="/case-study/good-harvest" element={<GoodHarvest />} />
       <Route path="/case-study/grove" element={<Grove />} />
-      <Route path="/case-study/mobbin" element={<PasswordGate><Mobbin /></PasswordGate>} />
+      <Route path="/case-study/mobbin" element={<PasswordGate><Suspense fallback={null}><Mobbin /></Suspense></PasswordGate>} />
       <Route path="/case-study/msk" element={<MSK />} />
       <Route path="/curated/:slug" element={<CuratedRolePage />} />
 

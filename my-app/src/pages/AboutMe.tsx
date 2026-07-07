@@ -33,7 +33,7 @@ const CHAPTERS = [
     id: "now",
     label: "What I Do Now",
     heading: "Designing for trust in complex, regulated products.",
-    image: "/assets/about/now.png",
+    image: "/assets/about/now.jpg",
     paragraphs: [
       "Right now I'm freelancing. My most recent contract was a deep study of three fintech products, where I documented more than 200 screens of end-to-end mobile flows, then annotated and tagged each one so thousands of designers could actually find and reuse them. It sharpened three things: reading interaction patterns at scale across financial UX, structuring documentation to a strict taxonomy and quality bar, and seeing how different products solve the same trust problem in very different ways. AI is part of how I work now, but it stays a tool. I use it to move faster on research and prototyping, then make the calls myself.",
     ],
@@ -45,7 +45,7 @@ const CHAPTERS = [
     heading: "Six years at MSK, optimizing internal operations and designing for 21,000+ clinicians.",
     image: "/assets/about/msk.jpg",
     paragraphs: [
-      "I led an EMR process redesign that cut costs 20% organization-wide, rebuilt certification workflows for a 70% efficiency gain, and redesigned onboarding using staff feedback. This was deep user research before I formally had the vocabulary for it.",
+      "I led the EMR workflow redesign behind a 20% organization-wide cost reduction, rebuilt certification workflows for a 70% efficiency gain, and redesigned onboarding using staff feedback. This was deep user research before I formally had the vocabulary for it.",
     ],
     callout: "Systems fail at the point where a real person has to use them.",
     articleLink: {
@@ -83,7 +83,7 @@ export default function About() {
   }, []);
 
   return (
-    <div className="about-page">
+    <div className="about-page" lang="en">
       <div className="about-back-row">
         <button
           type="button"
@@ -91,7 +91,7 @@ export default function About() {
           onClick={() => navigate("/?scrollTo=projects")}
           aria-label="Back to main portfolio"
         >
-          ← Back to work
+          ← Back to projects
         </button>
       </div>
 
@@ -101,7 +101,7 @@ export default function About() {
           <p className="about-intro">UX/Product Designer. Healthcare & Enterprise Systems. Army Veteran.</p>
 
           <h1 className="about-title">
-            Turning complex healthcare and enterprise workflows into trusted digital products.
+            Turning complex healthcare, enterprise, and AI workflows into trusted digital products.
           </h1>
 
           <p className="about-hero-subtext">
@@ -218,7 +218,7 @@ export default function About() {
             Running, reading, and Luna the cat. Routines that keep me clear and grounded.
           </p>
           <div ref={lunaRef} className="about-luna-deco">
-            <img src="/assets/favicon.png" alt="Luna, a gray and white cat with orange eyes" />
+            <img src="/assets/about/luna.jpg" alt="Luna, a gray and white cat with orange eyes" />
           </div>
         </div>
       </section>
@@ -247,7 +247,7 @@ export default function About() {
               onClick={() => navigate("/?scrollTo=projects")}
               style={{ fontSize: "0.9rem" }}
             >
-              ← View my work
+              ← Back to projects
             </button>
           </div>
         </div>

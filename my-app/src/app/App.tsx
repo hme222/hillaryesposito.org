@@ -1,6 +1,4 @@
 import React, { useEffect, useMemo, useState } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 import { HashRouter as Router } from "react-router-dom";
 
 import AppRoutes from "./AppRoutes";
@@ -16,10 +14,14 @@ import "../styles/index.css";
 import "../styles/App.css";
 import "../styles/comparison-table.css";
 
-gsap.registerPlugin(ScrollTrigger);
-
 export default function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  // Theme preference. Read once, synchronously, into the initializer so the
+  // first paint is already in the saved theme — no light→dark flash, and no
+  // mount-ordering dependency between a read-effect and a write-effect. Same
+  // pattern as `lang` below.
+  const [darkMode, setDarkMode] = useState<boolean>(
+    () => localStorage.getItem("darkMode") === "true"
+  );
 
   // Language preference (Phase 1: home + nav). Read once, synchronously, so
   // the first paint is already in the saved language — no EN→ES flash.
@@ -27,13 +29,7 @@ export default function App() {
     localStorage.getItem("lang") === "es" ? "es" : "en"
   );
 
-  // Load theme preference once
-  useEffect(() => {
-    const saved = localStorage.getItem("darkMode");
-    if (saved) setDarkMode(JSON.parse(saved));
-  }, []);
-
-    // Persist theme preference + apply class globally
+  // Persist theme preference + apply class globally
   useEffect(() => {
     localStorage.setItem("darkMode", JSON.stringify(darkMode));
     document.documentElement.classList.toggle("dark-mode", darkMode);

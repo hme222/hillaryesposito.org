@@ -16,6 +16,8 @@ root.render(
 );
 
 
-reportWebVitals((metric) => {
-  console.log(metric.name, metric.value);
-});
+if (process.env.NODE_ENV !== "production") {
+  reportWebVitals((metric) => {
+    console.log(metric.name, metric.value);
+  });
+}

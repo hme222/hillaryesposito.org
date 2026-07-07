@@ -111,7 +111,7 @@ export default function RecruiterPill() {
 
                 <section className="recruiter-panel__section">
                   <p className="recruiter-panel__label">In one line</p>
-                  <p>UX/Product Designer turning complex healthcare and enterprise workflows into trusted digital products. 21,000+ clinicians impacted at MSK. Army veteran.</p>
+                  <p>UX/Product Designer turning complex healthcare, enterprise, and AI workflows into trusted digital products. 21K+ clinicians impacted at MSK. Army veteran.</p>
                 </section>
 
                 <section className="recruiter-panel__section">
@@ -129,13 +129,13 @@ export default function RecruiterPill() {
                     <li>
                       <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/grove")}>
                         <strong>Grove</strong>
-                        <span>End-to-end product design: 31-user survey, AI judgment, shipped prototype</span>
+                        <span>End-to-end product design: 32-user survey, AI judgment, working prototype</span>
                       </button>
                     </li>
                     <li>
                       <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/msk")}>
                         <strong>MSK Cancer Center</strong>
-                        <span>20% EMR cost reduction, 70% efficiency gains, 21K+ clinicians</span>
+                        <span>Led the workflow redesign behind a 20% EMR cost reduction, 70% efficiency gain, 21K+ clinicians</span>
                       </button>
                     </li>
                     <li>
@@ -147,31 +147,10 @@ export default function RecruiterPill() {
                   </ul>
                 </section>
 
-                <section className="recruiter-panel__section">
-                  <p className="recruiter-panel__label">Targeted role pages</p>
-                  <ul className="recruiter-panel__projects">
-                    <li>
-                      <button
-                        type="button"
-                        className="recruiter-panel__project"
-                        onClick={() => go("/curated/omada-staff-product-designer-healthcare-ai")}
-                      >
-                        <strong>Omada · Staff Product Designer</strong>
-                        <span>Healthcare workflows, service design, and AI-enabled product judgment</span>
-                      </button>
-                    </li>
-                    <li>
-                      <button
-                        type="button"
-                        className="recruiter-panel__project"
-                        onClick={() => go("/curated/jpm-service-design-vp-systems")}
-                      >
-                        <strong>JPMorgan · Service Design VP</strong>
-                        <span>Adjacent regulated-systems narrative built around blueprinting and trust</span>
-                      </button>
-                    </li>
-                  </ul>
-                </section>
+                {/* Targeted role pages are intentionally unlisted here. The
+                    /curated/:slug routes still resolve, so a tailored page can
+                    be shared with a specific recruiter by direct link — but the
+                    public panel never reveals who is being targeted. */}
 
                 <section className="recruiter-panel__section recruiter-panel__actions">
                   <a className="recruiter-panel__btn recruiter-panel__btn--primary"

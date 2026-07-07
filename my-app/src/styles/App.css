@@ -907,6 +907,7 @@ select:focus {
 .case-study h1 {
   font-size: 3.5rem;
   font-weight: 700;
+  line-height: 1.1;
   margin-bottom: 1rem;
   background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 100%);
   -webkit-background-clip: text;
@@ -1268,13 +1269,17 @@ select:focus {
 
 /* Mini "About" on the home page: a face + a short human blurb before the work. */
 .home-mini-about {
-  max-width: 1040px;
+  max-width: 620px;
   margin: clamp(2rem, 6vw, 4.5rem) auto;
   padding: 0 clamp(1.1rem, 4vw, 2.5rem);
-  display: grid;
-  grid-template-columns: minmax(180px, 260px) 1fr;
-  gap: clamp(1.5rem, 4vw, 3rem);
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
+  gap: clamp(1.25rem, 3vw, 1.75rem);
+}
+.mini-about-photo {
+  width: 200px;
 }
 .mini-about-photo img {
   display: block;
@@ -1288,6 +1293,7 @@ select:focus {
 .mini-about-eyebrow {
   font-family: var(--font-head);
   font-size: 0.72rem;
+  font-weight: inherit; /* semantic <h2> for screen-reader nav, styled as an eyebrow */
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--olive-2);
@@ -1297,8 +1303,8 @@ select:focus {
   font-size: clamp(1.05rem, 1.4vw, 1.22rem);
   line-height: 1.7;
   color: var(--fg);
-  max-width: 54ch;
-  margin: 0 0 1.4rem;
+  max-width: 52ch;
+  margin: 0 auto 1.4rem;
 }
 .mini-about-link {
   font-family: var(--font-head);
@@ -1313,16 +1319,8 @@ select:focus {
   border-bottom-color: var(--olive-2);
 }
 @media (max-width: 700px) {
-  .home-mini-about {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    text-align: center;
-  }
   .mini-about-photo {
-    max-width: 220px;
-  }
-  .mini-about-blurb {
-    text-align: left;
+    width: 168px;
   }
 }
 @media (max-width: 768px) {
@@ -5459,6 +5457,8 @@ body.dark-mode .nav-overlay-backdrop,
   font-weight: 700;
   margin: 0 0 0.35rem;
   line-height: 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
 }
 .home-proof-label {
   font-size: 0.85rem;
@@ -7713,7 +7713,8 @@ body.dark-mode .nav-overlay-backdrop,
 .pw-gate__input:focus {
   border-color: var(--olive-2);
 }
-.pw-gate__input--error {
+.pw-gate__input--error,
+.pw-gate__input.pw-gate__input--error:focus {
   border-color: #c0392b;
 }
 .pw-gate__btn {
@@ -7734,6 +7735,20 @@ body.dark-mode .nav-overlay-backdrop,
   color: #c0392b;
   font-size: 0.9rem;
   margin: 0.75rem 0 0;
+}
+/* Beat `.dark-mode p` (type+class) so the error stays red, not muted peach. */
+.dark-mode .pw-gate__error {
+  color: #ff8a7a;
+}
+
+.pw-gate__help {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 1.25rem 0 0;
+}
+.pw-gate__help a {
+  color: var(--accent-warm, var(--focus));
+  text-decoration: underline;
 }
 
 /* =========================================================
@@ -8381,9 +8396,24 @@ body.dark-mode .nav-overlay-backdrop,
 }
 .cs-outcome-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.25rem;
   margin-top: 1.5rem;
+}
+/* No lonely orphan: 4-card grids (MSK, Grove) sit as a clean 2x2; a trailing odd
+   card (Good Harvest's 3rd) centres at sibling width instead of stranding left. */
+.cs-outcome-grid > .cs-outcome-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: calc(50% - 0.625rem);
+}
+@media (max-width: 480px) {
+  .cs-outcome-grid {
+    grid-template-columns: 1fr;
+  }
+  .cs-outcome-grid > .cs-outcome-card:last-child:nth-child(odd) {
+    width: 100%;
+  }
 }
 .cs-outcome-card {
   padding: 1.25rem;

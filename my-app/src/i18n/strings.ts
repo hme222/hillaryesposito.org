@@ -40,7 +40,7 @@ const en = {
   "home.heroAria": "Home section",
   "home.status": "Available for opportunities",
   "home.positioning":
-    "UX/Product Designer turning complex healthcare and enterprise workflows into trusted digital products.",
+    "UX/Product Designer turning complex healthcare, enterprise, and AI workflows into trusted digital products.",
   "home.description":
     "13+ years of leadership across process improvement, clinical systems, military operations, and UX research. Army veteran.",
   "home.getInTouch": "Get in touch",
@@ -87,15 +87,16 @@ const en = {
   "home.proj.mobbin.desc":
     "Documented end-to-end mobile experiences across three fintech apps for Mobbin's design reference library. 200+ screens captured, annotated, and tagged.",
   "home.proj.mobbin.alt": "Fintech app screens catalogued for UX pattern library",
-  "home.proj.ndaTitle": "NDA Project",
+  "home.proj.ndaTitle": "Protected Case Study",
   "home.proj.ndaDesc":
     "Three fintech apps documented at production quality. Password required to view.",
   "home.proj.view": "View case study →",
   "home.proj.unlock": "Unlock case study →",
   "home.proj.comingSoon": "Coming soon",
   "home.proj.passwordBadge": "Password protected",
-  "home.proj.patentBadge": "Patent Pending",
+  "home.proj.patentBadge": "Patent pending",
   "home.proj.viewAria": "View {title} case study",
+  "home.proj.lockedViewAria": "Unlock the protected case study",
   "home.proj.soonAria": "{title}, coming soon",
 
   // ── Home: contact / CTA ──
@@ -144,7 +145,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.heroAria": "Sección de inicio",
   "home.status": "Disponible para nuevas oportunidades",
   "home.positioning":
-    "Diseñadora UX y de Producto que convierte flujos de trabajo complejos del sector salud y de entornos empresariales en productos digitales confiables.",
+    "Diseñadora UX y de Producto que convierte flujos de trabajo complejos de salud, empresas e IA en productos digitales confiables.",
   "home.description":
     "Más de 13 años de liderazgo en mejora de procesos, sistemas clínicos, operaciones militares e investigación UX. Veterana del Ejército de EE. UU.",
   "home.getInTouch": "Contácteme",
@@ -190,15 +191,16 @@ const es: Partial<Record<StringKey, string>> = {
   "home.proj.mobbin.desc":
     "Documenté experiencias móviles de principio a fin en tres apps fintech para la biblioteca de referencia de diseño de Mobbin. Más de 200 pantallas capturadas, anotadas y etiquetadas.",
   "home.proj.mobbin.alt": "Pantallas de apps fintech catalogadas para una biblioteca de patrones UX",
-  "home.proj.ndaTitle": "Proyecto bajo NDA",
+  "home.proj.ndaTitle": "Estudio de caso protegido",
   "home.proj.ndaDesc":
     "Tres apps fintech documentadas con calidad de producción. Se requiere contraseña para ver el contenido.",
-  "home.proj.view": "Ver caso de estudio →",
-  "home.proj.unlock": "Desbloquear caso de estudio →",
+  "home.proj.view": "Ver estudio de caso →",
+  "home.proj.unlock": "Desbloquear estudio de caso →",
   "home.proj.comingSoon": "Próximamente",
   "home.proj.passwordBadge": "Protegido con contraseña",
   "home.proj.patentBadge": "Patente en trámite",
-  "home.proj.viewAria": "Ver el caso de estudio de {title}",
+  "home.proj.viewAria": "Ver el estudio de caso de {title}",
+  "home.proj.lockedViewAria": "Desbloquear el estudio de caso protegido",
   "home.proj.soonAria": "{title}, próximamente",
 
   // ── Home: contact / CTA ──

@@ -58,7 +58,7 @@ export default function MobbinCaseStudy() {
   useReveal(rootRef);
 
   return (
-    <main className="case-study gh-layout mobbin-cs" aria-label="Mobbin Case Study" ref={rootRef}>
+    <main className="case-study gh-layout mobbin-cs" aria-label="Mobbin Case Study" lang="en" ref={rootRef}>
 
       {/* ── HERO ── */}
       <header className="gh-hero">
@@ -85,7 +85,7 @@ export default function MobbinCaseStudy() {
         {[
           { label: "Role",    value: "App Capture Specialist" },
           { label: "Client",  value: "Mobbin · Freelance" },
-          { label: "Timeline", value: "Mar - Jun 2026 · 4 months" },
+          { label: "Timeline", value: "Mar–Jun 2026 · 4 months" },
           { label: "Output",  value: "3 apps · 200+ screens · Full flow capture" },
           { label: "Focus",   value: "UX flow documentation · UI pattern curation" },
           { label: "Status",  value: "Launched · Jun 2026" },
@@ -218,7 +218,7 @@ export default function MobbinCaseStudy() {
         </p>
 
         <div className="mobbin-example-entry feature" style={{ padding: "1.5rem", borderRadius: "12px" }}>
-          <h4 style={{ margin: "0 0 1rem", color: "var(--olive-2)", fontSize: "0.95rem" }}>Kikoff, trust through proof</h4>
+          <h3 style={{ margin: "0 0 1rem", color: "var(--olive-2)", fontSize: "0.95rem" }}>Kikoff, trust through proof</h3>
           <div className="mobbin-example-grid">
             <div className="mobbin-example-block">
               <p className="mobbin-example-label">Screen</p>

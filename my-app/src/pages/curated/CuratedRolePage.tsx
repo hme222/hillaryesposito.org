@@ -21,6 +21,7 @@ export default function CuratedRolePage() {
     <main
       className={`case-study gh-layout curated-page curated-page--${page.variant}`}
       aria-label={`${page.company} tailored portfolio page`}
+      lang="en"
       ref={rootRef}
     >
       <header className="gh-hero curated-hero">
@@ -137,22 +138,6 @@ export default function CuratedRolePage() {
           <h2>Case studies to pair with this page</h2>
           <div className="curated-link-grid">
             {page.supportLinks.map((item) => (
-              <Link key={item.path} to={item.path} className="curated-link-card">
-                <span className="curated-link-card__icon">{item.icon}</span>
-                <span className="curated-link-card__body">
-                  <strong>{item.label}</strong>
-                  <span>{item.description}</span>
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        <div className="curated-links-group">
-          <p className="gh-section-label">Other tailored pages</p>
-          <h2>Related role narratives</h2>
-          <div className="curated-link-grid">
-            {page.relatedLinks.map((item) => (
               <Link key={item.path} to={item.path} className="curated-link-card">
                 <span className="curated-link-card__icon">{item.icon}</span>
                 <span className="curated-link-card__body">
