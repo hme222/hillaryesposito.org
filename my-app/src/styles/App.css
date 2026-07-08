@@ -4,8 +4,14 @@
   --font-head: "Switzer", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: "Optima", "Optima Nova", "Spectral", "Noto Serif", Georgia, serif;
 }
-/* ========================= TOKENS ========================= */
+/* ============================================================
+   DESIGN TOKENS — single source of truth.
+   Light values here; dark overrides in the .dark-mode block below.
+   Consolidated from several competing token blocks; every value is
+   verified identical to the previous computed output (both themes).
+   ============================================================ */
 :root {
+  /* Core palette */
   --bg: #faf9f7;
   --fg: #0a0a0a;
   --muted: #6b6560;
@@ -15,35 +21,99 @@
   --olive-2: #5a7a2e;
   --olive-3: #3d5a1e;
   --accent-warm: #946420; /* darkened from #b87d35 to clear WCAG AA (4.5:1) at body size on the light bg */
-  --radius-xl: 16px;
-  --radius-lg: 12px;
-  --radius-md: 8px;
-  --radius-sm: 4px;
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 8px 20px rgba(0, 0, 0, 0.03);
-  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.06), 0 16px 32px rgba(0, 0, 0, 0.05);
-  --shadow-olive: 0 2px 4px rgba(90, 122, 46, 0.08), 0 16px 32px rgba(90, 122, 46, 0.12);
   --focus: var(--olive-2);
-  --page-pad: 5%;
-  --case-max: 900px;
-  --wide-max: 1240px;
+
+  /* Surfaces */
+  --surface-0: var(--bg);
+  --surface-1: var(--card);
+  --surface-2: #faf9f7;
+
+  /* Borders */
+  --border-strong: color-mix(in srgb, var(--fg) 14%, transparent);
+
+  /* Text helpers */
+  --text-1: var(--fg);
+  --text-2: color-mix(in srgb, var(--fg) 72%, transparent);
+  --text-3: var(--muted);
+
+  /* Inputs */
+  --input-bg: var(--bg);
+  --input-border: var(--border);
+
+  /* Footer social icons */
   --footer-icon-bg: #ffffff;
   --footer-icon-border: #d0d5dd;
   --footer-icon-color: #344054;
   --footer-icon-hover-bg: #0a66c2;
   --footer-icon-hover-color: #ffffff;
-} /* Dark mode tokens */
+
+  /* Radii */
+  --radius-xl: 16px;
+  --radius-lg: 12px;
+  --radius-md: 8px;
+  --radius-sm: 4px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 8px 20px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.06), 0 16px 32px rgba(0, 0, 0, 0.05);
+  --shadow-olive: 0 2px 4px rgba(90, 122, 46, 0.08), 0 16px 32px rgba(90, 122, 46, 0.12);
+
+  /* Layout */
+  --page-pad: 5%;
+  --case-max: 900px;
+  --wide-max: 1240px;
+}
+/* "Matcha and Honey" dark palette: warm-black ground, ivory text, honey accent.
+   Sage lives in the knot; honey in the UI accents. Grouped selector so the
+   class works on html, body, .app, or :root. */
+:root.dark-mode,
+html.dark-mode,
+body.dark-mode,
+.app.dark-mode,
 .dark-mode {
-  --bg: #0a0a0a;
-  --fg: #ffffff;
-  --muted: #b5b0a8;
-  --card: #111110;
-  --border: rgba(255, 255, 255, 0.1);
-  --olive-2: #ba803f;
-  --focus: #eba352;
-  --accent-warm: #eba352;
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2), 0 8px 20px rgba(0, 0, 0, 0.25);
-  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.3), 0 16px 32px rgba(0, 0, 0, 0.35);
-  --shadow-olive: 0 2px 4px rgba(235, 163, 82, 0.08), 0 16px 32px rgba(235, 163, 82, 0.12);
+  /* Core palette */
+  --bg: #15120c;
+  --fg: #f5efe6;
+  --muted: #b3a89a;
+  --card: #231d14;
+  --border: rgba(245, 239, 230, 0.14);
+  --olive-1: #f0d3a4;
+  --olive-2: #d9a55e;
+  --olive-3: #b8823f;
+  --accent-warm: #e8b06a;
+  --focus: #e8b06a;
+
+  /* Surfaces */
+  --surface-0: #15120c;
+  --surface-1: #231d14;
+  --surface-2: #2e261a;
+
+  /* Borders */
+  --border-strong: rgba(248, 210, 183, 0.26);
+
+  /* Text helpers */
+  --text-1: rgba(248, 210, 183, 0.96);
+  --text-2: rgba(248, 210, 183, 0.86);
+  --text-3: rgba(248, 210, 183, 0.76);
+
+  /* Inputs */
+  --input-bg: rgba(26, 14, 3, 0.82);
+  --input-border: rgba(248, 210, 183, 0.22);
+
+  /* Buttons on accent backgrounds use dark text for WCAG */
+  --on-accent: #1a0e03;
+
+  /* Footer social icons */
+  --footer-icon-bg: #161b22;
+  --footer-icon-border: #30363d;
+  --footer-icon-color: #e6edf3;
+  --footer-icon-hover-bg: #0a66c2;
+  --footer-icon-hover-color: #ffffff;
+
+  /* Shadows */
+  --shadow-sm: 0 10px 28px rgba(0, 0, 0, 0.55);
+  --shadow-md: 0 16px 44px rgba(0, 0, 0, 0.62);
+  --shadow-olive: 0 18px 50px rgba(235, 163, 82, 0.18);
 } /* Make nav text readable in dark mode */
 .dark-mode .navbar {
   color: rgba(255, 255, 255, 0.92);
@@ -59,40 +129,9 @@
 .dark-mode .nav-link::after {
   background: var(--focus);
 } /* ========================================================= NIGHT MODE ALIGNMENT PATCH (unify surfaces + remove hardcodes) Paste after your :root and .dark-mode token blocks ========================================================= */ /* 1) Add shared “surface” tokens (light + dark) */
-:root {
-  /* Surfaces */
-  --surface-0: var(--bg); /* page background */
-  --surface-1: var(--card); /* standard card */
-  --surface-2: #faf9f7; /* raised card (light) */ /* Borders */
-  --border-strong: color-mix(
-    in srgb,
-    var(--fg) 14%,
-    transparent
-  ); /* Text helpers */
-  --text-1: var(--fg);
-  --text-2: color-mix(in srgb, var(--fg) 72%, transparent);
-  --text-3: var(--muted); /* Inputs */
-  --input-bg: var(--bg);
-  --input-border: var(--border);
-}
-.dark-mode {
-  /* Make dark mode feel like one system everywhere */
-  --surface-0: #0a0a0a;
-  --surface-1: #111110; /* matches --card */
-  --surface-2: #151413; /* “raised” surface for cards/dialogs */
-  --border: rgba(255, 255, 255, 0.1);
-  --border-strong: rgba(255, 255, 255, 0.14);
-  --text-1: rgba(255, 255, 255, 0.96);
-  --text-2: rgba(255, 255, 255, 0.78);
-  --text-3: rgba(255, 248, 240, 0.68);
-  --input-bg: #101010;
-  --input-border: rgba(255, 255, 255, 0.14);
-  --footer-icon-bg: #161b22;
-  --footer-icon-border: #30363d;
-  --footer-icon-color: #e6edf3;
-  --footer-icon-hover-bg: #0a66c2;
-  --footer-icon-hover-color: #ffffff;
-} /* 2) Normalize global surfaces */
+/* Surface / text / input / footer tokens are consolidated into the two token
+   blocks at the top of this file. */
+/* 2) Normalize global surfaces */
 body {
   background: var(--surface-0);
   color: var(--text-1);
@@ -2017,45 +2056,8 @@ select:focus {
    ========================================================= */
 
 /* 1) Make dark-mode tokens match your palette (this alone fixes a LOT) */
-.dark-mode {
-  /* Page + text */
-  --bg: #1a0e03;
-  --fg: #f8d2b7;
-  --muted: rgba(248, 210, 183, 0.72);
-
-  /* Surfaces */
-  --card: #36220c;
-  --surface-0: var(--bg);
-  --surface-1: var(--card);
-  --surface-2: #5f3f1c;
-
-  /* Borders */
-  --border: rgba(248, 210, 183, 0.14);
-  --border-strong: rgba(248, 210, 183, 0.2);
-
-  /* Accent */
-  --focus: #eba352;
-
-  /* IMPORTANT: remap your existing “olive” gradient system to your palette
-     so you don't have to rewrite buttons/headings/gradient-text */
-  --olive-1: #eba352;
-  --olive-2: #ba803f;
-  --olive-3: #8b5f2d;
-
-  /* Shadows */
-  --shadow-sm: 0 10px 28px rgba(0, 0, 0, 0.55);
-  --shadow-md: 0 16px 44px rgba(0, 0, 0, 0.62);
-  --shadow-olive: 0 18px 50px rgba(235, 163, 82, 0.18);
-
-  /* Inputs */
-  --input-bg: #1a0e03;
-  --input-border: rgba(248, 210, 183, 0.18);
-
-  /* Text helpers (your patch uses these) */
-  --text-1: rgba(248, 210, 183, 0.96);
-  --text-2: rgba(248, 210, 183, 0.82);
-  --text-3: rgba(248, 210, 183, 0.7);
-}
+/* (Superseded dark token block removed — dark tokens now live in the single
+   canonical .dark-mode block at the top of this file.) */
 
 /* 2) Body + global surfaces (keep EXACT layout, just correct contrast) */
 .dark-mode body {
@@ -2236,47 +2238,8 @@ select:focus {
    ========================================================= */
 
 /* 1) Core tokens in dark mode (use your palette everywhere) */
-.dark-mode {
-  /* Base */
-  --bg: #1a0e03;
-  --fg: #f8d2b7;
-
-  /* Copy tokens (WCAG-safe on #1A0E03 and #36220C) */
-  --text-1: #f8d2b7; /* main copy */
-  --text-2: rgba(248, 210, 183, 0.86); /* secondary copy */
-  --text-3: rgba(248, 210, 183, 0.76); /* muted copy (still WCAG-safe) */
-  --muted: var(--text-3);
-
-  /* Surfaces */
-  --card: #36220c;
-  --surface-0: var(--bg);
-  --surface-1: var(--card);
-  --surface-2: #5f3f1c;
-
-  /* Borders */
-  --border: rgba(248, 210, 183, 0.18);
-  --border-strong: rgba(248, 210, 183, 0.26);
-
-  /* Accent + focus */
-  --focus: #eba352;
-
-  /* IMPORTANT: remap your existing “olive” system so you don’t rewrite gradients */
-  --olive-1: #eba352;
-  --olive-2: #ba803f;
-  --olive-3: #8b5f2d;
-
-  /* Buttons on accent backgrounds MUST use dark text for WCAG */
-  --on-accent: #1a0e03;
-
-  /* Inputs */
-  --input-bg: rgba(26, 14, 3, 0.82);
-  --input-border: rgba(248, 210, 183, 0.22);
-
-  /* Shadows */
-  --shadow-sm: 0 10px 28px rgba(0, 0, 0, 0.55);
-  --shadow-md: 0 16px 44px rgba(0, 0, 0, 0.62);
-  --shadow-olive: 0 18px 50px rgba(235, 163, 82, 0.18);
-}
+/* (Superseded dark token block removed — see the canonical .dark-mode block
+   at the top of this file.) */
 
 /* 2) Global text + surfaces (copy contrast) */
 .dark-mode body {
@@ -2474,42 +2437,8 @@ select:focus {
    ========================================================= */
 
 /* 0) Make dark-mode work no matter where you place the class */
-:root.dark-mode,
-html.dark-mode,
-body.dark-mode,
-.dark-mode {
-  /* Palette tokens */
-  --bg: #1a0e03;
-  --fg: #f8d2b7;
-
-  --muted: rgba(248, 210, 183, 0.76);
-
-  --card: #36220c;
-  --border: rgba(248, 210, 183, 0.18);
-
-  /* Surface tokens used by your “alignment patch” */
-  --surface-0: var(--bg);
-  --surface-1: var(--card);
-  --surface-2: #5f3f1c;
-
-  --text-1: rgba(248, 210, 183, 0.96);
-  --text-2: rgba(248, 210, 183, 0.86);
-  --text-3: rgba(248, 210, 183, 0.76);
-
-  --input-bg: rgba(26, 14, 3, 0.82);
-  --input-border: rgba(248, 210, 183, 0.22);
-
-  --focus: #eba352;
-
-  /* Remap “olive” system so headings/buttons keep working */
-  --olive-1: #eba352;
-  --olive-2: #ba803f;
-  --olive-3: #8b5f2d;
-
-  --shadow-sm: 0 10px 28px rgba(0, 0, 0, 0.55);
-  --shadow-md: 0 16px 44px rgba(0, 0, 0, 0.62);
-  --shadow-olive: 0 18px 50px rgba(235, 163, 82, 0.18);
-}
+/* (Superseded dark token block removed — see the canonical .dark-mode block
+   at the top of this file.) */
 
 /* 1) IMPORTANT: Your file later resets body { background: var(--bg); color: var(--fg); }
    Force the final, correct dark-mode surface/text. */
@@ -2690,28 +2619,8 @@ main.case-study {
 }
 
 /* 7) Dark mode: ensure surfaces are your palette (so backgrounds are consistent) */
-:root.dark-mode,
-html.dark-mode,
-body.dark-mode,
-.dark-mode {
-  /* "Matcha and Honey" dark palette: warm-black ground (orange cast removed),
-     ivory text, honey accent. Sage lives in the knot; honey in the UI accents. */
-  --bg: #15120c;
-  --fg: #f5efe6;
-  --muted: #b3a89a;
-  --card: #231d14;
-  --surface-0: #15120c;
-  --surface-1: #231d14;
-  --surface-2: #2e261a;
-  --border: rgba(245, 239, 230, 0.14);
-  --focus: #e8b06a;
-  --accent-warm: #e8b06a;
-
-  /* gradient-text stops shift to creamy honey to match the new ground */
-  --olive-1: #f0d3a4;
-  --olive-2: #d9a55e;
-  --olive-3: #b8823f;
-}
+/* (The "Matcha and Honey" dark palette now lives in the single canonical
+   .dark-mode block at the top of this file.) */
 
 /* =========================================================
    DFIX — STABILIZE ABOUT / REINA / ECOM DEMO / FEATURES
