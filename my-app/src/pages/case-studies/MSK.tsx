@@ -100,24 +100,24 @@ export default function MSKCaseStudy() {
         <h2 id="msk-artifact-title">Before and after: EMR workflow redesign</h2>
         <p className="cs-section-intro">
           Recreated with patient, department, and system details removed. This is the type of artifact
-          I used to align clinicians, IT, and operations around the same problem: the interface reflected
-          system architecture, not the clinical task.
+          I used to align clinicians, IT, and operations around the same problem: the workflow required
+          staff to print and send records out for filing even though the final destination was online EMR.
         </p>
 
         <div className="msk-workflow-artifact feature" aria-label="Before and after EMR workflow">
           <div className="msk-workflow-column msk-workflow-column--before">
             <p className="msk-workflow-label">Before</p>
-            <h3>14 steps across 3 systems</h3>
+            <h3>Print, send, then re-file online</h3>
             <ol className="msk-workflow-list">
-              <li>Search patient in System A</li>
-              <li>Copy identifiers manually</li>
-              <li>Open System B in a second window</li>
-              <li>Re-enter patient context</li>
-              <li>Check status in a spreadsheet workaround</li>
-              <li>Return to EMR and document action</li>
+              <li>Open the dashboard</li>
+              <li>Find the record that needed filing</li>
+              <li>Print the documentation packet</li>
+              <li>Send it to a separate filing site</li>
+              <li>Wait for the record to be filed back into EMR</li>
+              <li>Return later to confirm completion</li>
             </ol>
             <p className="msk-artifact-note">
-              Failure mode: clinicians were doing memory work the interface should have handled.
+              Failure mode: the workflow turned a digital record into paper, then back into a digital record.
             </p>
           </div>
 
@@ -125,17 +125,17 @@ export default function MSKCaseStudy() {
 
           <div className="msk-workflow-column msk-workflow-column--after">
             <p className="msk-workflow-label">After</p>
-            <h3>6 steps in one view</h3>
+            <h3>One dashboard button to online EMR</h3>
             <ol className="msk-workflow-list">
-              <li>Search patient once</li>
-              <li>Keep patient context persistent</li>
-              <li>Show task status in the same view</li>
-              <li>Guide the next clinical action</li>
-              <li>Confirm completion with timestamp</li>
-              <li>Return clinician to the patient queue</li>
+              <li>Open the dashboard</li>
+              <li>Select the record</li>
+              <li>Click the direct EMR action</li>
+              <li>Land in the online EMR filing destination</li>
+              <li>Complete the filing action digitally</li>
+              <li>Return to the dashboard with status updated</li>
             </ol>
             <p className="msk-artifact-note">
-              Design decision: align navigation to the clinical task, not the software modules.
+              Design decision: add the missing bridge between the dashboard and the online EMR destination.
             </p>
           </div>
         </div>
@@ -272,33 +272,34 @@ export default function MSKCaseStudy() {
         <div className="cs-evidence-pair">
           <h3 className="cs-feature-heading">1 · EMR workflow redesign</h3>
           <p className="cs-body-text">
-            Clinicians spent 14 steps across 3 systems to complete a single clinical task. They toggled between windows,
-            re-entered data, and lost context mid-workflow. Cost overruns and staff frustration were symptoms; the root cause
-            was navigation built around the software's own architecture.
+            Staff were printing documentation from a dashboard and sending it to a separate site to be filed,
+            even though the destination was ultimately online EMR. Cost overruns and staff frustration were
+            symptoms; the root cause was a missing digital bridge between the dashboard and the place the record
+            needed to live.
           </p>
           <p className="cs-evidence-pair__finding" style={{ marginTop: "0.75rem" }}>Finding: The system made clinicians slow.</p>
           <p className="cs-evidence-pair__evidence">
-            Shadowing revealed that completing a single clinical task required navigating 3 separate systems,
-            re-entering patient data at each transition, and mentally tracking context across windows.
-            Clinicians had developed workarounds (sticky notes, personal spreadsheets) to compensate.
+            Shadowing revealed that a digital workflow had become a paper workaround. Staff printed records,
+            sent them out for filing, and then waited for the same information to appear in online EMR.
+            The system added handoffs because there was no direct action from the dashboard.
           </p>
           <div className="cs-insight-action" style={{ marginTop: "0.75rem" }}>
             <p className="cs-insight-action__label">What I changed</p>
             <p className="cs-insight-action__text">
-              Redesigned the EMR workflow around clinical tasks.
-              Consolidated 14 steps across 3 systems into 6 steps in one view. Eliminated redundant data entry.
-              Aligned navigation to the patient actions clinicians were trying to complete.
-              Clinicians think in patient actions; aligning the IA to that mental model cut navigation time.
+              Added a dashboard button that sent staff directly to the online EMR filing destination.
+              The redesign removed the print-and-send workaround, reduced handoffs, and kept the work in the
+              digital system where it belonged. The key interaction decision was simple: put the next required
+              action at the point where staff were already making the decision.
             </p>
           </div>
           <p className="cs-body-text" style={{ marginTop: "0.75rem" }}>
-            <strong>Before:</strong> 14 steps across 3 systems. <strong>After:</strong> 6 steps in one view,
-            navigation aligned to the clinical task flow.
+            <strong>Before:</strong> Print from the dashboard, send to a separate filing site, wait for the record
+            to return to EMR. <strong>After:</strong> one dashboard action routed staff directly to online EMR.
           </p>
           <p className="cs-evidence-pair__finding" style={{ marginTop: "0.75rem" }}>What went wrong: I underestimated change management.</p>
           <p className="cs-evidence-pair__evidence">
             The redesigned EMR workflow was technically better, but the initial rollout had lower adoption than expected.
-            Clinicians who had spent years building workarounds for the old system were resistant to relearning.
+            Staff who had spent years relying on the print-and-send workaround were resistant to relearning.
             I added floor-level training sessions, walking clinicians through the new flow
             on their actual workstations during shift transitions. Adoption improved within two weeks.
           </p>
@@ -399,7 +400,7 @@ export default function MSKCaseStudy() {
         <div className="cs-outcome-grid">
           <div className="cs-outcome-card">
             <p className="cs-outcome-value gradient-text">20%</p>
-            <p className="cs-outcome-label">Organization-wide EMR cost reduction. I led the workflow redesign that contributed to it.</p>
+            <p className="cs-outcome-label">Organization-wide EMR cost reduction. I led the dashboard-to-online-EMR workflow redesign that contributed to it.</p>
           </div>
           <div className="cs-outcome-card">
             <p className="cs-outcome-value gradient-text">70%</p>
