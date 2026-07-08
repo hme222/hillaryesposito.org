@@ -124,11 +124,13 @@ export default function GroveCaseStudy() {
           </p>
         </div>
         <div className="gh-hero__visual grove-hero-visual" aria-hidden="true">
-          <img
-            src="/assets/grove/grove1.png"
-            alt=""
-            className="grove-hero-screen"
-          />
+          <div className="grove-phone-frame grove-phone-frame--hero" style={{ background: "#1b2f15" }}>
+            <img
+              src="/assets/grove/grove1.png"
+              alt=""
+              className="grove-phone-frame__img grove-phone-frame__img--welcome"
+            />
+          </div>
         </div>
       </header>
 

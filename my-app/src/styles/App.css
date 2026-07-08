@@ -3044,13 +3044,13 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 .grove-hero-visual {
-  background: #f5f0e8;
-  border-radius: 28px;
-  border: 2px solid var(--border);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  max-width: 260px;
-  aspect-ratio: 9 / 16;
+  background: transparent;
+  border-radius: 0;
+  border: 0;
+  overflow: visible;
+  box-shadow: none;
+  max-width: none;
+  aspect-ratio: auto;
 }
 
 .grove-hero-screen {
@@ -7848,6 +7848,11 @@ body.dark-mode .nav-overlay-backdrop,
   overflow: hidden;
   box-shadow: var(--shadow-sm);
 }
+.grove-phone-frame--hero {
+  width: min(260px, 58vw);
+  max-width: 260px;
+  flex: 0 0 auto;
+}
 
 /* Notch */
 .grove-phone-frame::before {
@@ -7868,6 +7873,11 @@ body.dark-mode .nav-overlay-backdrop,
   height: 100%;
   object-fit: contain;
   border-radius: 26px;
+}
+.grove-phone-frame__img--welcome {
+  object-fit: contain;
+  padding: 0;
+  background: #1b2f15;
 }
 
 .grove-phone-frame__icon {
