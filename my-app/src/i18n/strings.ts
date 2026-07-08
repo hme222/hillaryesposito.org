@@ -67,6 +67,19 @@ const en = {
   "home.stat.resupply": "Faster resupply, NJ Army National Guard",
   "home.stat.emr": "EMR cost reduction, MSK Cancer Center",
 
+  // ── Home: role fit ──
+  "home.fitAria": "Role fit highlights",
+  "home.fitEyebrow": "Where I’m strongest",
+  "home.fitTitle": "Designed for complex systems, not simple brochure flows",
+  "home.fit.internal.title": "Internal tools",
+  "home.fit.internal.desc": "Clinical dashboards, EMR workflows, onboarding systems, and certification tools where work has to move cleanly across teams.",
+  "home.fit.roles.title": "Multiple user types",
+  "home.fit.roles.desc": "Clinicians, managers, admins, IT, compliance, patients, and designers each need different views, permissions, and levels of detail.",
+  "home.fit.logic.title": "Workflow logic",
+  "home.fit.logic.desc": "Status models, handoffs, exceptions, audit needs, and next-best actions for tools people depend on under pressure.",
+  "home.fit.ai.title": "AI-assisted design",
+  "home.fit.ai.desc": "I use AI to accelerate research synthesis, prototyping, and build work, then document where human judgment overrides the output.",
+
   // ── Home: projects ──
   "home.projectsAria": "Projects section",
   "home.eyebrow": "Selected work",
@@ -171,6 +184,19 @@ const es: Partial<Record<StringKey, string>> = {
   "home.stat.clinicians": "Profesionales clínicos beneficiados, MSK Cancer Center",
   "home.stat.resupply": "Reabastecimiento más rápido, Guardia Nacional del Ejército de NJ",
   "home.stat.emr": "Reducción de costos del EMR, MSK Cancer Center",
+
+  // ── Home: role fit ──
+  "home.fitAria": "Fortalezas para el puesto",
+  "home.fitEyebrow": "Donde soy más fuerte",
+  "home.fitTitle": "Diseñada para sistemas complejos, no flujos simples de marketing",
+  "home.fit.internal.title": "Herramientas internas",
+  "home.fit.internal.desc": "Dashboards clínicos, flujos de EMR, onboarding y sistemas de certificación donde el trabajo debe moverse claramente entre equipos.",
+  "home.fit.roles.title": "Múltiples tipos de usuario",
+  "home.fit.roles.desc": "Profesionales clínicos, gerentes, administradores, IT, cumplimiento, pacientes y diseñadores necesitan vistas, permisos y niveles de detalle distintos.",
+  "home.fit.logic.title": "Lógica de flujos",
+  "home.fit.logic.desc": "Estados, traspasos, excepciones, auditoría y próximas acciones para herramientas que se usan bajo presión.",
+  "home.fit.ai.title": "Diseño asistido por IA",
+  "home.fit.ai.desc": "Uso IA para acelerar síntesis, prototipos y desarrollo, y documento dónde el criterio humano debe corregir el resultado.",
 
   // ── Home: projects ──
   "home.projectsAria": "Sección de proyectos",

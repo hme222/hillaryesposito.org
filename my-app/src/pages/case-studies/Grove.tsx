@@ -529,6 +529,66 @@ export default function GroveCaseStudy() {
               <strong>Why:</strong> The survey rejected XP/leaderboard gamification, so the reward here is emotional: a personality reveal. Motion is purposeful and short.
             </p>
           </div>
+
+          <div className="grove-state-card feature">
+            <div className="grove-state-card__header">
+              <span className="grove-state-card__badge">Safety state</span>
+              <h3 className="grove-state-card__title">Pet toxicity warning</h3>
+            </div>
+            <p className="grove-state-card__desc">
+              If a plant may be toxic to pets, Grove surfaces the warning at add time with source attribution and plain-language next steps. It does not block the user or bury the warning in a plant profile.
+            </p>
+            <p className="grove-state-card__rationale">
+              <strong>Why:</strong> Pet toxicity came up unprompted in the survey. The system treats it as a safety-critical trust moment, not optional educational content.
+            </p>
+          </div>
+
+          <div className="grove-state-card feature">
+            <div className="grove-state-card__header">
+              <span className="grove-state-card__badge">Notification cap</span>
+              <h3 className="grove-state-card__title">Too many plants due at once</h3>
+            </div>
+            <p className="grove-state-card__desc">
+              Grove groups routine care into a morning digest by bouquet and lets urgent issues bypass the cap only when the plant is at risk. The user sees one clear queue instead of stacked alerts.
+            </p>
+            <p className="grove-state-card__rationale">
+              <strong>Why:</strong> A calm notification model is part of the product logic. Reminders only work if they do not become the reason someone deletes the app.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── VISUAL CRAFT ── */}
+      <section>
+        <p className="gh-section-label">Visual craft</p>
+        <h2>Calm UI for anxious plant care moments</h2>
+        <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
+          The visual system is intentionally quiet. Plant care apps can turn into red-alert chore boards;
+          Grove uses soft contrast, clear hierarchy, and warm feedback so the interface feels trustworthy
+          without feeling clinical.
+        </p>
+
+        <div className="grove-craft-grid">
+          <article className="grove-craft-card feature">
+            <p className="grove-craft-card__label">Color</p>
+            <h3>Warm greens, not warning greens</h3>
+            <p>Green is used for care and growth, while amber is reserved for attention states. Overdue states use text labels with color so status is not color-only.</p>
+          </article>
+          <article className="grove-craft-card feature">
+            <p className="grove-craft-card__label">Hierarchy</p>
+            <h3>One decision per screen</h3>
+            <p>The care screen leads with what needs attention today. Secondary actions like journaling and plant personality stay lower in the hierarchy until the daily care task is complete.</p>
+          </article>
+          <article className="grove-craft-card feature">
+            <p className="grove-craft-card__label">Components</p>
+            <h3>Cards model real-world groupings</h3>
+            <p>Bouquet cards group plants by location and context instead of forcing a flat inventory list. The component structure mirrors how people remember where plants live.</p>
+          </article>
+          <article className="grove-craft-card feature">
+            <p className="grove-craft-card__label">Motion</p>
+            <h3>Feedback, not spectacle</h3>
+            <p>Celebration is short and optional. Reduced-motion users get the same state change without animation, so reward never depends on motion tolerance.</p>
+          </article>
         </div>
       </section>
 

@@ -141,6 +141,65 @@ export default function MSKCaseStudy() {
         </div>
       </section>
 
+      <section className="msk-complexity-section" aria-labelledby="msk-complexity-title">
+        <p className="gh-section-label">Systems complexity</p>
+        <h2 id="msk-complexity-title">The product problem was roles, permissions, and workflow states</h2>
+        <p className="cs-section-intro">
+          The dashboard button looked simple, but the surrounding product logic was not. The design had
+          to account for who could act, who only needed visibility, what status meant, and what could go
+          wrong if the wrong person saw or changed the wrong thing.
+        </p>
+
+        <div className="msk-complexity-grid">
+          <article className="msk-complexity-card feature">
+            <p className="msk-complexity-card__label">User types</p>
+            <h3>Different users needed different views</h3>
+            <ul>
+              <li>Frontline staff needed the next filing action.</li>
+              <li>Managers needed completion visibility across teams.</li>
+              <li>Admins needed exception queues and status follow-up.</li>
+              <li>IT/EMR teams needed clear requirements and constraints.</li>
+              <li>Compliance needed evidence that the action was complete.</li>
+            </ul>
+          </article>
+
+          <article className="msk-complexity-card feature">
+            <p className="msk-complexity-card__label">Permission logic</p>
+            <h3>Access was part of the interaction design</h3>
+            <ul>
+              <li>Some users could view status but not complete the filing action.</li>
+              <li>Some users needed team-level visibility without patient-level noise.</li>
+              <li>Completion needed to create a reliable audit trail.</li>
+              <li>The button had to route to the right EMR destination based on context.</li>
+            </ul>
+          </article>
+
+          <article className="msk-complexity-card feature">
+            <p className="msk-complexity-card__label">Workflow states</p>
+            <h3>Status had to be legible at a glance</h3>
+            <ul>
+              <li>Not started</li>
+              <li>Ready to file</li>
+              <li>In progress</li>
+              <li>Filed in EMR</li>
+              <li>Blocked or needs review</li>
+            </ul>
+          </article>
+
+          <article className="msk-complexity-card feature">
+            <p className="msk-complexity-card__label">Edge cases</p>
+            <h3>The hard parts sat outside the happy path</h3>
+            <ul>
+              <li>Missing or mismatched record data.</li>
+              <li>User lacks permission to complete the action.</li>
+              <li>Status does not update after filing.</li>
+              <li>Record needs manual review before completion.</li>
+              <li>Downtime or delayed EMR response.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
       {/* ── ROLE 1: OFFICE COORDINATOR ── */}
       <section>
         <p className="gh-section-label">Role 1 · Office Coordinator</p>

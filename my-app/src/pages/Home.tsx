@@ -323,6 +323,28 @@ export default function Home() {
         </motion.div>
       </section>
 
+      <section className="home-role-fit-section" aria-label={t("home.fitAria")}>
+        <div className="home-section-header">
+          <p className="home-eyebrow">{t("home.fitEyebrow")}</p>
+          <h2 className="section-title home-section-title">{t("home.fitTitle")}</h2>
+        </div>
+
+        <div className="home-role-fit-grid">
+          {([
+            ["01", "home.fit.internal.title", "home.fit.internal.desc"],
+            ["02", "home.fit.roles.title", "home.fit.roles.desc"],
+            ["03", "home.fit.logic.title", "home.fit.logic.desc"],
+            ["04", "home.fit.ai.title", "home.fit.ai.desc"],
+          ] as [string, StringKey, StringKey][]).map(([num, titleKey, descKey]) => (
+            <article key={titleKey} className="home-role-fit-card feature">
+              <span className="home-role-fit-card__num" aria-hidden="true">{num}</span>
+              <h3 className="home-role-fit-card__title">{t(titleKey)}</h3>
+              <p className="home-role-fit-card__desc">{t(descKey)}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
       {/* ══════════════════════════════════════════
           MINI ABOUT — a face + a short human blurb, linking to /about
       ══════════════════════════════════════════ */}

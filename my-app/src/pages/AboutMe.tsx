@@ -66,6 +66,16 @@ const CHAPTERS = [
   },
 ];
 
+const CLIENT_FEEDBACK = [
+  {
+    quote:
+      "Hillary was timely, communicative, and diligent in ensuring that every screen and interaction was captured to a high standard.",
+    name: "Lynette Yap",
+    role: "Content and Community @ Mobbin",
+    context: "Client recommendation, freelance UX flow documentation project",
+  },
+];
+
 export default function About() {
   usePageTitle("About");
   const navigate = useNavigate();
@@ -220,6 +230,26 @@ export default function About() {
           <div ref={lunaRef} className="about-luna-deco">
             <img src="/assets/about/luna.jpg" alt="Luna, a gray and white cat with orange eyes" />
           </div>
+        </div>
+      </section>
+
+      <section className="about-feedback-section" aria-label="Client feedback">
+        <div className="about-story-header">
+          <p className="about-agenda__eyebrow">Client feedback</p>
+          <h2 className="about-growth-title">How clients describe working with me.</h2>
+        </div>
+
+        <div className="about-feedback-grid">
+          {CLIENT_FEEDBACK.map((item) => (
+            <figure key={item.name} className="about-feedback-card feature">
+              <blockquote>“{item.quote}”</blockquote>
+              <figcaption>
+                <strong>{item.name}</strong>
+                <span>{item.role}</span>
+                <span>{item.context}</span>
+              </figcaption>
+            </figure>
+          ))}
         </div>
       </section>
 

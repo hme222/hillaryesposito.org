@@ -111,13 +111,13 @@ export default function RecruiterPill() {
 
                 <section className="recruiter-panel__section">
                   <p className="recruiter-panel__label">In one line</p>
-                  <p>Senior UX/Product Designer for healthcare systems. 21K+ clinicians impacted at MSK; built an AI-assisted Grove prototype from 32-user research. Army veteran.</p>
+                  <p>Senior UX/Product Designer for complex healthcare systems, internal tools, and AI-assisted workflows. 21K+ clinicians impacted at MSK; Grove shows end-to-end product design from 32-user research.</p>
                 </section>
 
                 <section className="recruiter-panel__section">
                   <p className="recruiter-panel__label">Strengths</p>
                   <div className="recruiter-panel__chips">
-                    {["Healthcare Product UX", "Clinical Workflows", "AI Judgment", "Human-Centered Process Design", "Bilingual EN/ES", "Army Veteran"].map((s) => (
+                    {["Healthcare Product UX", "Internal Tools", "Clinical Workflows", "Role-Based Systems", "AI Judgment", "Bilingual EN/ES", "Army Veteran"].map((s) => (
                       <span key={s} className="recruiter-panel__chip">{s}</span>
                     ))}
                   </div>
@@ -135,7 +135,7 @@ export default function RecruiterPill() {
                     <li>
                       <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/msk")}>
                         <strong>MSK Cancer Center</strong>
-                        <span>21K+ clinicians, 20% EMR cost reduction, 70% workflow efficiency gain</span>
+                        <span>Dashboard-to-online-EMR workflow redesign; user roles, permissions, workflow states, 20% EMR cost reduction</span>
                       </button>
                     </li>
                     <li>
