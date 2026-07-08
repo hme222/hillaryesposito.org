@@ -3,6 +3,7 @@ import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import usePageTitle from "../../hooks/usePageTitle";
 import MoreWork from "../../components/MoreWork";
+import Disclosure from "../../components/Disclosure";
 import useReveal from "../../hooks/useReveal";
 import { PhoneIcon, SproutIcon, MedicalCrossIcon } from "../../components/LineIcons";
 
@@ -66,7 +67,7 @@ export default function MobbinCaseStudy() {
           <p className="meta">App Capture Specialist | UX Flow Documentation & UI Pattern Curation</p>
           <h1>Mobbin</h1>
           <p className="gh-hero__intro">
-            Mobbin · Freelance · Mar 2026 - Present · Remote. Documented end-to-end mobile app experiences across three fintech products
+            Mobbin · Freelance · Mar 2026 - Jun 2026 · Remote. Documented end-to-end mobile app experiences across three fintech products
             (<strong>Kikoff</strong>, <strong>Polymarket</strong>, and <strong>Discover</strong>)
             for Mobbin's searchable design reference library. Captured screens, organized user flows,
             mapped key interaction sequences, and curated UI patterns used by UX, product, and design teams globally.
@@ -85,7 +86,7 @@ export default function MobbinCaseStudy() {
         {[
           { label: "Role",    value: "App Capture Specialist" },
           { label: "Client",  value: "Mobbin · Freelance" },
-          { label: "Timeline", value: "Mar 2026 - Present · 4 mos" },
+          { label: "Timeline", value: "Mar 2026 - Jun 2026 · 4 mos" },
           { label: "Output",  value: "3 apps · 200+ screens · Full flow capture" },
           { label: "Focus",   value: "UX flow documentation · UI pattern curation" },
           { label: "Location", value: "Remote" },
@@ -125,25 +126,27 @@ export default function MobbinCaseStudy() {
           </div>
         </div>
 
-        <p className="cs-overview-text" style={{ marginTop: "1.5rem" }}>
-          The method: walk every flow as a real user, across iOS, edge cases, and empty states,
-          capturing screens and mapping key interaction sequences, then organize onboarding flows,
-          conversion paths, feature entry points, and interaction behaviors into a searchable
-          structure. Mobbin's value is in sequences, so the judgment call was identifying which
-          interactions only make sense in context of the full journey. Kikoff's 12-screen
-          onboarding earned a full capture; Discover's marketing interstitials stayed out of the
-          batch, because designers search Mobbin to solve interaction problems, and task flows are
-          more reusable than landing pages. Empty states and error screens were the hardest to
-          reach but the most valuable. The tooling stayed light: the live apps themselves, Figma
-          when a pattern needed annotation beyond a screen capture, and Mobbin's own taxonomy as
-          the source of truth for conventions and the quality bar.
-        </p>
-        <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
-          Every annotation was written for a designer arriving without context, in a situation I
-          can't predict, so each one has to explain what the screen does and why it matters.
-          Writing for thousands of designers in contexts I can't predict required a different
-          standard than writing for a known team.
-        </p>
+        <Disclosure title="Show my capture method and editorial criteria">
+          <p className="cs-overview-text">
+            The method: walk every flow as a real user, across iOS, edge cases, and empty states,
+            capturing screens and mapping key interaction sequences, then organize onboarding flows,
+            conversion paths, feature entry points, and interaction behaviors into a searchable
+            structure. Mobbin's value is in sequences, so the judgment call was identifying which
+            interactions only make sense in context of the full journey. Kikoff's 12-screen
+            onboarding earned a full capture; Discover's marketing interstitials stayed out of the
+            batch, because designers search Mobbin to solve interaction problems, and task flows are
+            more reusable than landing pages. Empty states and error screens were the hardest to
+            reach but the most valuable. The tooling stayed light: the live apps themselves, Figma
+            when a pattern needed annotation beyond a screen capture, and Mobbin's own taxonomy as
+            the source of truth for conventions and the quality bar.
+          </p>
+          <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
+            Every annotation was written for a designer arriving without context, in a situation I
+            can't predict, so each one has to explain what the screen does and why it matters.
+            Writing for thousands of designers in contexts I can't predict required a different
+            standard than writing for a known team.
+          </p>
+        </Disclosure>
 
         <div className="cs-insight-action" style={{ marginTop: "1.5rem" }}>
           <p className="cs-insight-action__label">Role scope</p>
@@ -268,24 +271,26 @@ export default function MobbinCaseStudy() {
       <section>
         <p className="gh-section-label">The lesson</p>
         <h2>Naming is harder than designing</h2>
-        <div className="gh-collab-note">
-          <p>
-            I worked asynchronously with Mobbin's content team, submitting batches of catalogued
-            flows for review against their quality bar and taxonomy standards. Feedback was
-            specific: tag accuracy, annotation clarity, flow completeness. My first submission
-            batch had tag inconsistencies that doubled the review cycle, because I tagged screens
-            based on my own vocabulary instead of aligning with Mobbin's existing taxonomy first.
-            "Progress indicator" vs. "status display" vs. "achievement": each maps to a different
-            search behavior, and findability depends on matching the searcher's words. I also
-            initially over-documented marketing screens; my first Discover submission included
-            promotional interstitials and landing screens, and Mobbin's feedback was clear that
-            designers come to the library to solve interaction problems. I restructured my process
-            to front-load taxonomy review before capturing any screens and shifted to prioritizing
-            onboarding flows, key task completions, and edge/empty states. Revision cycles dropped
-            by half, and rework on later batches with it. I learned to name patterns by how someone
-            would search for them.
-          </p>
-        </div>
+        <Disclosure title="Show the taxonomy lesson and revision story">
+          <div className="gh-collab-note">
+            <p>
+              I worked asynchronously with Mobbin's content team, submitting batches of catalogued
+              flows for review against their quality bar and taxonomy standards. Feedback was
+              specific: tag accuracy, annotation clarity, flow completeness. My first submission
+              batch had tag inconsistencies that doubled the review cycle, because I tagged screens
+              based on my own vocabulary instead of aligning with Mobbin's existing taxonomy first.
+              "Progress indicator" vs. "status display" vs. "achievement": each maps to a different
+              search behavior, and findability depends on matching the searcher's words. I also
+              initially over-documented marketing screens; my first Discover submission included
+              promotional interstitials and landing screens, and Mobbin's feedback was clear that
+              designers come to the library to solve interaction problems. I restructured my process
+              to front-load taxonomy review before capturing any screens and shifted to prioritizing
+              onboarding flows, key task completions, and edge/empty states. Revision cycles dropped
+              by half, and rework on later batches with it. I learned to name patterns by how someone
+              would search for them.
+            </p>
+          </div>
+        </Disclosure>
       </section>
 
       {/* ── WHERE IT LANDED ── */}
@@ -297,14 +302,16 @@ export default function MobbinCaseStudy() {
           documenting three distinct trust pattern categories for Mobbin's Finance+ library (50+ finance apps).{" "}
           <a href="https://mobbin.com/finance" target="_blank" rel="noopener noreferrer" className="cs-inline-link">View it live →</a>
         </p>
-        <p className="cs-overview-text" style={{ marginTop: "1rem", maxWidth: 720 }}>
-          What stuck with me: every annotation I wrote will be read by someone I'll never meet, in
-          a context I can't predict, to solve a problem I don't know about. That constraint,
-          clarity for a stranger in a hurry, is the same one good interface copy lives under. It
-          changed how I write everything. And seeing 200+ screens of real product work builds
-          pattern recognition you can't get from reading about patterns; it sharpened how I
-          evaluate my own design decisions.
-        </p>
+        <Disclosure title="Show what this changed in my product judgment">
+          <p className="cs-overview-text">
+            What stuck with me: every annotation I wrote will be read by someone I'll never meet, in
+            a context I can't predict, to solve a problem I don't know about. That constraint,
+            clarity for a stranger in a hurry, is the same one good interface copy lives under. It
+            changed how I write everything. And seeing 200+ screens of real product work builds
+            pattern recognition you can't get from reading about patterns; it sharpened how I
+            evaluate my own design decisions.
+          </p>
+        </Disclosure>
       </section>
 
       <div className="cs-inline-cta">

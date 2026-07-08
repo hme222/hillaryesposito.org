@@ -5,6 +5,7 @@ import usePageTitle from "../../hooks/usePageTitle";
 import MediaCard from "../../components/MediaCard";
 import ToolsUsed from "../../components/ToolsUsed";
 import MoreWork from "../../components/MoreWork";
+import Disclosure from "../../components/Disclosure";
 import useReveal from "../../hooks/useReveal";
 import { FrameIcon, FlaskIcon, FolderIcon, SproutIcon, MedicalCrossIcon } from "../../components/LineIcons";
 
@@ -409,25 +410,27 @@ export default function GoodHarvest() {
         <p className="gh-section-label">What went wrong</p>
         <h2>Mistakes I made and what they taught me</h2>
 
-        <div className="cs-evidence-pair">
-          <p className="cs-evidence-pair__finding">I designed for discoverability when the real problem was trust.</p>
-          <p className="cs-evidence-pair__evidence">
-            My first wireframes focused on making seasonal produce easier to find: bigger cards, clearer categories,
-            prominent search. But heatmap testing showed users were already finding the content. They just didn't
-            believe the seasonality claims applied to their specific location. I had to redesign the produce detail
-            screen around credibility signals (data sources, location specificity) instead of navigation patterns.
-          </p>
-        </div>
+        <Disclosure title="Show the two mistakes behind the redesign">
+          <div className="cs-evidence-pair">
+            <p className="cs-evidence-pair__finding">I designed for discoverability when the real problem was trust.</p>
+            <p className="cs-evidence-pair__evidence">
+              My first wireframes focused on making seasonal produce easier to find: bigger cards, clearer categories,
+              prominent search. But heatmap testing showed users were already finding the content. They just didn't
+              believe the seasonality claims applied to their specific location. I had to redesign the produce detail
+              screen around credibility signals (data sources, location specificity) instead of navigation patterns.
+            </p>
+          </div>
 
-        <div className="cs-evidence-pair">
-          <p className="cs-evidence-pair__finding">I treated inherited research as validated truth instead of testing it myself.</p>
-          <p className="cs-evidence-pair__evidence">
-            The provided research from 22 participants said users wanted "easier access to seasonal information."
-            I designed two rounds of wireframes based on that framing before my own heatmap testing revealed a
-            different story. I should have run a validation round earlier, before committing to a direction built
-            on someone else's interpretation.
-          </p>
-        </div>
+          <div className="cs-evidence-pair" style={{ marginTop: "1rem" }}>
+            <p className="cs-evidence-pair__finding">I treated inherited research as validated truth instead of testing it myself.</p>
+            <p className="cs-evidence-pair__evidence">
+              The provided research from 22 participants said users wanted "easier access to seasonal information."
+              I designed two rounds of wireframes based on that framing before my own heatmap testing revealed a
+              different story. I should have run a validation round earlier, before committing to a direction built
+              on someone else's interpretation.
+            </p>
+          </div>
+        </Disclosure>
       </section>
 
       {/* ── WHAT I LEARNED ── */}

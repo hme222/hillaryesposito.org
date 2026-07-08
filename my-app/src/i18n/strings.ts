@@ -40,9 +40,9 @@ const en = {
   "home.heroAria": "Home section",
   "home.status": "Available for opportunities",
   "home.positioning":
-    "I design trusted products for complex healthcare systems.",
+    "I design trusted tools for complex healthcare and internal workflows.",
   "home.description":
-    "13+ years in healthcare and military systems, with UX and product design shaped by frontline operations. Army veteran.",
+    "UX & Product Designer focused on healthcare systems, internal tools, role-based workflows, and AI-assisted product design. Army veteran.",
   "home.getInTouch": "Get in touch",
   "home.seeApproach": "See my approach →",
   "home.replay": "Replay",
@@ -53,12 +53,12 @@ const en = {
   "home.about.photoAlt": "Portrait of Hillary Esposito",
   "home.about.eyebrow": "A little about me",
   "home.about.blurb":
-    "I've spent 13 years where systems meet the people who use them: directing medical logistics in the Army, redesigning clinical operations at Memorial Sloan Kettering, and now bringing that judgment to responsible AI. Systems don't fail in flowcharts. They fail at the point where a real person has to use them, and that's where I work.",
+    "I've spent 13 years inside systems where failure has consequences: military medical logistics, cancer care operations, internal workflows, and AI-assisted product work. Systems do not fail in flowcharts. They fail at the point where a real person has to use them, and that is where I design.",
   "home.about.link": "More about me →",
 
   // ── Home: credentials strip ──
   "home.credentialsAria": "Professional credentials",
-  "home.credentials": "UX & Product Design · Healthcare Systems · Human-Centered Process Design · Army Veteran",
+  "home.credentials": "Healthcare systems UX · Internal tools · Role-based workflows · AI-assisted product design · Army veteran",
 
   // ── Home: proof stats ──
   "home.proofAria": "Experience highlights",
@@ -70,13 +70,13 @@ const en = {
   // ── Home: role fit ──
   "home.fitAria": "Role fit highlights",
   "home.fitEyebrow": "Where I’m strongest",
-  "home.fitTitle": "Designed for complex systems, not simple brochure flows",
+  "home.fitTitle": "The work I’m built for",
   "home.fit.internal.title": "Internal tools",
   "home.fit.internal.desc": "Clinical dashboards, EMR workflows, onboarding systems, and certification tools where work has to move cleanly across teams.",
   "home.fit.roles.title": "Multiple user types",
   "home.fit.roles.desc": "Clinicians, managers, admins, IT, compliance, patients, and designers each need different views, permissions, and levels of detail.",
   "home.fit.logic.title": "Workflow logic",
-  "home.fit.logic.desc": "Status models, handoffs, exceptions, audit needs, and next-best actions for tools people depend on under pressure.",
+  "home.fit.logic.desc": "Status models, handoffs, exceptions, audit needs, and next-best actions for healthcare and internal tools people depend on under pressure.",
   "home.fit.ai.title": "AI-assisted design",
   "home.fit.ai.desc": "I use AI to accelerate research synthesis, prototyping, and build work, then document where human judgment overrides the output.",
 
@@ -116,7 +116,7 @@ const en = {
   "home.contactAria": "Contact section",
   "home.ctaTitle": "Let’s talk about the system your team needs to fix",
   "home.ctaBody":
-    "I design trusted products for complex healthcare, enterprise, and operational workflows. If your team needs a UX/product designer who can turn messy systems into usable tools, let’s talk.",
+    "I design trusted tools for complex healthcare and internal workflows. If your team needs a UX/product designer who can turn messy workflows, permissions, data, and edge cases into usable tools, let’s talk.",
   "home.ctaEmail": "Send me a note",
   "home.ctaEmailAria": "Send me a note",
   "home.ctaCall": "Book a call →",
@@ -158,9 +158,9 @@ const es: Partial<Record<StringKey, string>> = {
   "home.heroAria": "Sección de inicio",
   "home.status": "Disponible para nuevas oportunidades",
   "home.positioning":
-    "Diseño productos confiables para sistemas de salud complejos.",
+    "Diseño herramientas confiables para flujos complejos de salud e internos.",
   "home.description":
-    "Más de 13 años en sistemas de salud y militares, con diseño UX y de producto formado por operaciones de primera línea. Veterana del Ejército de EE. UU.",
+    "Diseñadora UX y de producto enfocada en sistemas de salud, herramientas internas, flujos por rol y diseño de producto asistido por IA. Veterana del Ejército de EE. UU.",
   "home.getInTouch": "Contácteme",
   "home.seeApproach": "Conozca mi enfoque →",
   "home.replay": "Repetir",
@@ -171,12 +171,12 @@ const es: Partial<Record<StringKey, string>> = {
   "home.about.photoAlt": "Retrato de Hillary Esposito",
   "home.about.eyebrow": "Un poco sobre mí",
   "home.about.blurb":
-    "Llevo 13 años trabajando donde los sistemas se encuentran con las personas que los usan: dirigí logística médica en el Ejército, rediseñé operaciones clínicas en Memorial Sloan Kettering y hoy aplico ese mismo criterio a la adopción responsable de la IA. Los sistemas no fallan en los diagramas de flujo. Fallan en el punto donde una persona real tiene que usarlos, y ahí es donde trabajo.",
+    "Llevo 13 años dentro de sistemas donde los errores tienen consecuencias: logística médica militar, operaciones oncológicas, flujos internos y trabajo de producto asistido por IA. Los sistemas no fallan en los diagramas de flujo. Fallan en el punto donde una persona real tiene que usarlos, y ahí es donde diseño.",
   "home.about.link": "Conozca más sobre mí →",
 
   // ── Home: credentials strip ──
   "home.credentialsAria": "Credenciales profesionales",
-  "home.credentials": "Diseño UX y de producto · Sistemas de salud · Diseño de procesos centrado en las personas · Veterana del Ejército",
+  "home.credentials": "UX para sistemas de salud · Herramientas internas · Flujos por rol · Diseño de producto asistido por IA · Veterana del Ejército",
 
   // ── Home: proof stats ──
   "home.proofAria": "Experiencia destacada",
@@ -188,7 +188,7 @@ const es: Partial<Record<StringKey, string>> = {
   // ── Home: role fit ──
   "home.fitAria": "Fortalezas para el puesto",
   "home.fitEyebrow": "Donde soy más fuerte",
-  "home.fitTitle": "Diseñada para sistemas complejos, no flujos simples de marketing",
+  "home.fitTitle": "El trabajo para el que estoy preparada",
   "home.fit.internal.title": "Herramientas internas",
   "home.fit.internal.desc": "Dashboards clínicos, flujos de EMR, onboarding y sistemas de certificación donde el trabajo debe moverse claramente entre equipos.",
   "home.fit.roles.title": "Múltiples tipos de usuario",
@@ -233,7 +233,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.contactAria": "Sección de contacto",
   "home.ctaTitle": "Hablemos del sistema que su equipo necesita mejorar",
   "home.ctaBody":
-    "Diseño productos confiables para flujos de salud, empresa y operaciones complejas. Si su equipo necesita una diseñadora UX y de producto que convierta sistemas confusos en herramientas utilizables, hablemos.",
+    "Diseño herramientas confiables para flujos complejos de salud e internos. Si su equipo necesita una diseñadora UX y de producto que convierta flujos, permisos, datos y casos límite en herramientas utilizables, hablemos.",
   "home.ctaEmail": "Escríbame",
   "home.ctaEmailAria": "Envíeme un correo",
   "home.ctaCall": "Agende una llamada →",

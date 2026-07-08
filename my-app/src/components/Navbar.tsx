@@ -17,6 +17,10 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   const location = useLocation();
   const menuRef = useRef<HTMLUListElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const isHome =
+    location.pathname === "/" ||
+    location.pathname === "" ||
+    location.pathname === "/index.html";
 
   function close() {
     setMenuOpen(false);
@@ -28,11 +32,6 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   // user home with a ?scrollTo param that Home reads on mount.
   function scrollToSection(id: string) {
     close();
-    const isHome =
-      location.pathname === "/" ||
-      location.pathname === "" ||
-      location.pathname === "/index.html";
-
     if (!isHome) {
       navigate("/?scrollTo=" + id);
       return;
@@ -50,10 +49,6 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   // tall section is never visible at once) — instead pick the last section whose
   // top has scrolled above a reference line ~a third down the viewport.
   useEffect(() => {
-    const isHome =
-      location.pathname === "/" ||
-      location.pathname === "" ||
-      location.pathname === "/index.html";
     if (!isHome) {
       setActiveSection("");
       return;
@@ -268,8 +263,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
         <li>
           {/* Language toggle — shows the language you'd switch TO. The label
               (and lang attr) are in that target language so screen readers
-              pronounce it correctly. Shares .theme-btn for the ≥40px target,
-              currentColor, and dark-mode theming. */}
+              pronounce it correctly. */}
           <button
             className="theme-btn lang-btn"
             type="button"

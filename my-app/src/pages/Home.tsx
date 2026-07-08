@@ -5,6 +5,7 @@ import { useNavigate, Link, useLocation } from "react-router-dom";
 import usePageTitle from "../hooks/usePageTitle";
 import { useT } from "../app/LanguageContext";
 import type { StringKey } from "../i18n/strings";
+import MSKDashboardMockup from "../components/MSKDashboardMockup";
 
 // Lazy-loaded so three.js stays in its own chunk (only fetched when needed).
 const WorkflowKnot = lazy(() => import("../components/WorkflowKnot"));
@@ -90,15 +91,6 @@ type Project = {
 // structural data (assets, routes, gradients) stays here.
 const PROJECTS: Project[] = [
   {
-    title: "Grove",
-    subtitleKey: "home.proj.grove.subtitle",
-    descKey: "home.proj.grove.desc",
-    images: ["/assets/grove/bouquet.png"],
-    imageAltKey: "home.proj.grove.alt",
-    bg: "linear-gradient(135deg, #1a2e1a 0%, #2d4a2d 50%, #1a3a2a 100%)",
-    path: "/case-study/grove",
-  },
-  {
     title: "MSK Cancer Center",
     subtitleKey: "home.proj.msk.subtitle",
     descKey: "home.proj.msk.desc",
@@ -107,6 +99,15 @@ const PROJECTS: Project[] = [
     imageAltKey: "home.proj.msk.alt",
     bg: "linear-gradient(135deg, #1a1a2e 0%, #2d2d4a 50%, #1a2a3a 100%)",
     path: "/case-study/msk",
+  },
+  {
+    title: "Grove",
+    subtitleKey: "home.proj.grove.subtitle",
+    descKey: "home.proj.grove.desc",
+    images: ["/assets/grove/bouquet.png"],
+    imageAltKey: "home.proj.grove.alt",
+    bg: "linear-gradient(135deg, #1a2e1a 0%, #2d4a2d 50%, #1a3a2a 100%)",
+    path: "/case-study/grove",
   },
   {
     title: "Good Harvest",
@@ -296,6 +297,23 @@ export default function Home() {
         <p className="home-credentials-inline">
           {t("home.credentials")}
         </p>
+      </section>
+
+      <section className="home-product-proof" aria-label="Product UI proof">
+        <div className="home-product-proof__copy">
+          <p className="home-eyebrow">Product proof</p>
+          <h2>Workflow thinking, visible in the interface.</h2>
+          <p>
+            Recreated artifacts from the work: an internal EMR filing queue and a Grove care flow.
+            The point is not decoration. It is showing how status, action, and trust become UI.
+          </p>
+        </div>
+        <div className="home-product-proof__visuals">
+          <MSKDashboardMockup compact />
+          <div className="home-grove-mini-phone" aria-hidden="true">
+            <img src="/assets/grove/care.png" alt="" loading="lazy" />
+          </div>
+        </div>
       </section>
 
       {/* ══════════════════════════════════════════

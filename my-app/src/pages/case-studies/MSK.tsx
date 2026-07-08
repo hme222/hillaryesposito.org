@@ -2,6 +2,8 @@ import React, { lazy, Suspense, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import usePageTitle from "../../hooks/usePageTitle";
 import MoreWork from "../../components/MoreWork";
+import Disclosure from "../../components/Disclosure";
+import MSKDashboardMockup from "../../components/MSKDashboardMockup";
 import useReveal from "../../hooks/useReveal";
 import { SproutIcon, LeafIcon } from "../../components/LineIcons";
 
@@ -33,7 +35,7 @@ export default function MSKCaseStudy() {
     <main className="case-study gh-layout" aria-label="MSK Case Study" lang="en" ref={rootRef}>
 
       {/* ── HERO ── */}
-      <header className="gh-hero">
+      <header className="gh-hero msk-hero">
         <div className="gh-hero__copy">
           <p className="meta">UX & Product Design · Healthcare Systems · Enterprise</p>
           <h1>Memorial Sloan Kettering</h1>
@@ -43,12 +45,8 @@ export default function MSKCaseStudy() {
             world's top cancer centers.
           </p>
         </div>
-        <div className="gh-hero__visual" aria-hidden="true">
-          <div className="reina-hero-badge msk-hero-badge">
-            <span className="msk-hero-badge__stat"><strong>6</strong>Years</span>
-            <span className="msk-hero-badge__rule" />
-            <span className="msk-hero-badge__stat"><strong>3</strong>Roles</span>
-          </div>
+        <div className="gh-hero__visual msk-hero-dashboard" aria-hidden="true">
+          <MSKDashboardMockup compact />
         </div>
       </header>
 
@@ -139,6 +137,18 @@ export default function MSKCaseStudy() {
             </p>
           </div>
         </div>
+      </section>
+
+      {/* ── DASHBOARD CONCEPT ── */}
+      <section className="msk-dashboard-section" aria-labelledby="msk-dashboard-title">
+        <p className="gh-section-label">Interface artifact</p>
+        <h2 id="msk-dashboard-title">Recreated dashboard concept: the missing EMR action</h2>
+        <p className="cs-section-intro">
+          The core UI decision was not decorative. The dashboard needed to show status, preserve
+          accountability, and expose the direct EMR action only when the record was ready and the
+          user had permission to complete it.
+        </p>
+        <MSKDashboardMockup />
       </section>
 
       <section className="msk-complexity-section" aria-labelledby="msk-complexity-title">
@@ -355,13 +365,15 @@ export default function MSKCaseStudy() {
             <strong>Before:</strong> Print from the dashboard, send to a separate filing site, wait for the record
             to return to EMR. <strong>After:</strong> one dashboard action routed staff directly to online EMR.
           </p>
-          <p className="cs-evidence-pair__finding" style={{ marginTop: "0.75rem" }}>What went wrong: I underestimated change management.</p>
-          <p className="cs-evidence-pair__evidence">
-            The redesigned EMR workflow was technically better, but the initial rollout had lower adoption than expected.
-            Staff who had spent years relying on the print-and-send workaround were resistant to relearning.
-            I added floor-level training sessions, walking clinicians through the new flow
-            on their actual workstations during shift transitions. Adoption improved within two weeks.
-          </p>
+          <Disclosure title="Show rollout lesson">
+            <p className="cs-evidence-pair__finding">What went wrong: I underestimated change management.</p>
+            <p className="cs-evidence-pair__evidence">
+              The redesigned EMR workflow was technically better, but the initial rollout had lower adoption than expected.
+              Staff who had spent years relying on the print-and-send workaround were resistant to relearning.
+              I added floor-level training sessions, walking clinicians through the new flow
+              on their actual workstations during shift transitions. Adoption improved within two weeks.
+            </p>
+          </Disclosure>
         </div>
 
         {/* — Certification system overhaul — */}
@@ -421,14 +433,16 @@ export default function MSKCaseStudy() {
             <strong>Before:</strong> Fragmented across 5+ departments; conflicting instructions, missed safety steps.{" "}
             <strong>After:</strong> Unified experience with a single source of truth, tracked from day one through full productivity.
           </p>
-          <p className="cs-evidence-pair__finding" style={{ marginTop: "0.75rem" }}>What went wrong: I designed the onboarding system for the managers instead of the new hires.</p>
-          <p className="cs-evidence-pair__evidence">
-            The first version of the unified onboarding experience was optimized for manager visibility: tracking dashboards,
-            completion rates, compliance reports. But when I tested it with actual new clinicians, they found the interface
-            overwhelming. What they needed on day one was a single clear next step. I redesigned the
-            new-hire view to show only the current task and a progress indicator. The manager dashboard stayed, but it
-            wasn't the primary interface anymore.
-          </p>
+          <Disclosure title="Show onboarding iteration">
+            <p className="cs-evidence-pair__finding">What went wrong: I designed the onboarding system for the managers instead of the new hires.</p>
+            <p className="cs-evidence-pair__evidence">
+              The first version of the unified onboarding experience was optimized for manager visibility: tracking dashboards,
+              completion rates, compliance reports. But when I tested it with actual new clinicians, they found the interface
+              overwhelming. What they needed on day one was a single clear next step. I redesigned the
+              new-hire view to show only the current task and a progress indicator. The manager dashboard stayed, but it
+              wasn't the primary interface anymore.
+            </p>
+          </Disclosure>
         </div>
       </section>
 

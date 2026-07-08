@@ -42,7 +42,10 @@ export default function App() {
     document.documentElement.lang = lang;
   }, [lang]);
 
-  const languageValue = useMemo(() => ({ lang, setLang }), [lang]);
+  const languageValue = useMemo(
+    () => ({ lang, setLang }),
+    [lang, setLang]
+  );
 
   return (
     <LanguageContext.Provider value={languageValue}>

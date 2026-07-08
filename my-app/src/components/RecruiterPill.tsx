@@ -86,7 +86,7 @@ export default function RecruiterPill() {
                 <div>
                   <p className="recruiter-panel__eyebrow">90-second tour</p>
                   <h2 id="recruiter-panel-title" className="recruiter-panel__title">
-                    Hillary Esposito, Senior UX & Product Designer
+                    Hillary Esposito, UX & Product Designer
                   </h2>
                 </div>
                 <button
@@ -102,22 +102,22 @@ export default function RecruiterPill() {
               <div className="recruiter-panel__body">
                 <section className="recruiter-panel__section recruiter-panel__vitals">
                   <div className="recruiter-panel__vitals-grid">
-                    <span>13+ years systems leadership</span>
+                    <span>13+ years high-stakes systems</span>
                     <span>MHA, Rutgers</span>
-                    <span>Healthcare UX/Product</span>
+                    <span>Internal tools + healthcare UX</span>
                     <span>Currently freelancing</span>
                   </div>
                 </section>
 
                 <section className="recruiter-panel__section">
                   <p className="recruiter-panel__label">In one line</p>
-                  <p>Senior UX/Product Designer for complex healthcare systems, internal tools, and AI-assisted workflows. 21K+ clinicians impacted at MSK; Grove shows end-to-end product design from 32-user research.</p>
+                  <p>UX/Product Designer who designs trusted tools for complex healthcare and internal workflows. Strongest in healthcare systems, role-based workflows, internal tools, and AI-assisted product design.</p>
                 </section>
 
                 <section className="recruiter-panel__section">
                   <p className="recruiter-panel__label">Strengths</p>
                   <div className="recruiter-panel__chips">
-                    {["Healthcare Product UX", "Internal Tools", "Clinical Workflows", "Role-Based Systems", "AI Judgment", "Bilingual EN/ES", "Army Veteran"].map((s) => (
+                    {["Healthcare Systems UX", "Internal Tools", "Healthcare Workflows", "Role-Based Systems", "AI Judgment", "Bilingual EN/ES", "Army Veteran"].map((s) => (
                       <span key={s} className="recruiter-panel__chip">{s}</span>
                     ))}
                   </div>

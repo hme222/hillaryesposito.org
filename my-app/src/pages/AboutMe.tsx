@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import usePageTitle from "../hooks/usePageTitle";
-import { NewsIcon } from "../components/LineIcons";
+import { NewsIcon, PhoneIcon } from "../components/LineIcons";
 
 // ── What I bring ─────────────────────────────────────────────────────────
 const AGENDA = [
@@ -17,8 +17,8 @@ const AGENDA = [
   },
   {
     icon: "03",
-    title: "Human-centered process design",
-    desc: "Lean Six Sigma rigor applied through a UX lens: map the system, find the friction, design the better path. Proof: 20% EMR cost reduction and 70% certification workflow gain.",
+    title: "Systems UX for healthcare workflows",
+    desc: "I design around roles, permissions, handoffs, statuses, and exceptions. Proof: 20% EMR cost reduction and 70% certification workflow gain.",
   },
   {
     icon: "04",
@@ -108,14 +108,14 @@ export default function About() {
       {/* ═ HERO ═════════════════════════════════════════════════════ */}
       <section className="about-hero">
         <div className="about-hero-content">
-          <p className="about-intro">UX & Product Designer | Healthcare Systems | Human-Centered Process Design | Army Veteran</p>
+          <p className="about-intro">UX & Product Designer | Healthcare Systems | Internal Tools | Army Veteran</p>
 
           <h1 className="about-title">
-            Turning complex healthcare, enterprise, and AI workflows into trusted digital products.
+            I design trusted tools for complex healthcare and internal workflows.
           </h1>
 
           <p className="about-hero-subtext">
-            13+ years in healthcare and military systems, with UX and product design shaped by frontline operations.
+            13+ years inside high-stakes healthcare and military systems, now focused on internal tools, role-based workflows, and AI-assisted product design.
           </p>
         </div>
 
@@ -242,6 +242,9 @@ export default function About() {
         <div className="about-feedback-grid">
           {CLIENT_FEEDBACK.map((item) => (
             <figure key={item.name} className="about-feedback-card feature">
+              <div className="about-feedback-card__icon" aria-hidden="true">
+                <PhoneIcon />
+              </div>
               <blockquote>“{item.quote}”</blockquote>
               <figcaption>
                 <strong>{item.name}</strong>

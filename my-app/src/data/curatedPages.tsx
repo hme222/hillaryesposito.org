@@ -45,18 +45,18 @@ export const curatedPages: Record<string, CuratedPage> = {
     role: "Staff Product Designer",
     variant: "care",
     badgeLabel: "Healthcare product view",
-    eyebrow: "Healthcare systems · workflow design · research-led product thinking",
-    headline: "Designing healthcare products that make care operations easier to deliver",
+    eyebrow: "Complex systems UX · internal tools · healthcare product thinking",
+    headline: "Designing trusted tools for complex healthcare workflows",
     subhead:
       "I am a UX and product designer with an MHA and healthcare operations depth, focused on reducing friction in clinical and operational work without losing clarity or trust.",
     meta: [
-      { label: "Focus", value: "Healthcare workflow design" },
-      { label: "Strength", value: "Research + systems thinking" },
+      { label: "Focus", value: "Complex systems UX" },
+      { label: "Strength", value: "Internal tools + product judgment" },
       { label: "Evidence", value: "21K+ clinicians, 20% cost reduction, 70% efficiency gain" },
-      { label: "Best fit", value: "High-stakes internal and service-heavy products" },
+      { label: "Best fit", value: "High-stakes internal tools and healthcare workflows" },
     ],
     intro: [
-      "My strongest product work starts with how care and operations actually run: where teams slow down, where handoffs break, and where the system asks too much of the people using it. I bring healthcare operations, UX research, internal tools, and service design together to make those moments clearer and easier to act on.",
+      "My strongest product work starts with how care and operations actually run: where teams slow down, where handoffs break, and where the system asks too much of the people using it. I bring healthcare operations, UX research, internal tools, and product judgment together to make those moments clearer and easier to act on.",
       "I do not treat healthcare like generic SaaS. I understand the pressure behind clinical and operational work, and I design with that reality in mind so products support better decisions, smoother coordination, and more usable day-to-day workflows.",
     ],
     proofPoints: [
@@ -71,7 +71,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       },
       {
         title: "Certification and onboarding workflow redesign",
-        reason: "Demonstrates service design, cross-functional coordination, and reduction of process friction.",
+        reason: "Demonstrates role-based workflows, cross-functional coordination, and reduction of product friction.",
       },
       {
         title: "Grove product work",
@@ -85,7 +85,7 @@ export const curatedPages: Record<string, CuratedPage> = {
     strengths: [
       "Turns operational pain points into clearer product direction",
       "Brings healthcare context that shortens the learning curve on real care workflows",
-      "Works comfortably across research, service design, and product execution",
+      "Works comfortably across research, internal tools, and product execution",
       "Improves usability without losing operational rigor or trust",
     ],
     relevantExperience: [
@@ -95,19 +95,19 @@ export const curatedPages: Record<string, CuratedPage> = {
     keywords: [
       "healthcare",
       "workflow design",
-      "service design",
+      "internal tools",
       "research",
       "clinical operations",
       "trust",
       "internal tools",
       "cross-functional collaboration",
-      "process improvement",
+      "healthcare workflows",
       "inclusive design",
     ],
     hiringManagerNote:
       "I add the most value when product decisions change how care teams and operational teams actually get work done.",
     closing:
-      "If your team needs a designer who can connect healthcare context, product judgment, and measurable workflow improvement, this is the clearest view of what I would bring.",
+      "If your team needs a designer who can connect healthcare context, product judgment, and measurable systems improvement, this is the clearest view of what I would bring.",
     supportLinks: [
       {
         label: "MSK case study",

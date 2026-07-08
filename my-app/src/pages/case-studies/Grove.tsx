@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import usePageTitle from "../../hooks/usePageTitle";
 import ToolsUsed from "../../components/ToolsUsed";
 import MoreWork from "../../components/MoreWork";
+import Disclosure from "../../components/Disclosure";
 import useReveal from "../../hooks/useReveal";
 import { TerminalIcon, PencilIcon, LaunchIcon, FrameIcon, HandIcon, MedicalCrossIcon, LeafIcon } from "../../components/LineIcons";
 
@@ -168,12 +169,14 @@ export default function GroveCaseStudy() {
           hypothesis. AI tools accelerated the build, and every AI decision is documented below with
           explicit reasoning.
         </p>
-        <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
-          <strong>Research:</strong> 32-respondent survey (May 22–June 19, 2026) · moderated testing plan (5–6 participants, ready to run).
-        </p>
-        <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
-          <strong>Constraints:</strong> Solo project. Redesigning from a working Emergent prototype; moderated user testing is next.
-        </p>
+        <Disclosure title="Show research inputs and constraints">
+          <p className="cs-overview-text">
+            <strong>Research:</strong> 32-respondent survey (May 22–June 19, 2026) · moderated testing plan (5–6 participants, ready to run).
+          </p>
+          <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
+            <strong>Constraints:</strong> Solo project. Redesigning from a working Emergent prototype; moderated user testing is next.
+          </p>
+        </Disclosure>
 
         <div className="gh-assumption-grid" style={{ marginTop: "1.5rem" }}>
           <div className="gh-assumption-card gh-assumption-card--initial">
@@ -186,11 +189,13 @@ export default function GroveCaseStudy() {
           </div>
         </div>
 
-        <p style={{ marginTop: "1.5rem" }}>
-          A secondary finding sharpened the direction: <strong>the self-reported skill gap is light, not water.</strong>{" "}
-          Lighting confidence averaged 2.4/5 among new owners. Respondents asked unprompted for an app that would
-          "tell me exactly where to place a plant in my home for the best light." No major competitor addresses this.
-        </p>
+        <Disclosure title="Show the secondary finding that changed the direction">
+          <p>
+            A secondary finding sharpened the direction: <strong>the self-reported skill gap is light, not water.</strong>{" "}
+            Lighting confidence averaged 2.4/5 among new owners. Respondents asked unprompted for an app that would
+            "tell me exactly where to place a plant in my home for the best light." No major competitor addresses this.
+          </p>
+        </Disclosure>
 
         <div className="highlight">
           <p className="gh-design-q-label">Design Question</p>
@@ -466,6 +471,49 @@ export default function GroveCaseStudy() {
         </div>
       </section>
 
+      {/* ── DESIGN EVOLUTION ── */}
+      <section>
+        <p className="gh-section-label">Design evolution</p>
+        <h2>From task board to calm care queue</h2>
+        <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
+          The early layout treated plant care like an admin checklist. The final version turns the
+          same logic into one calm daily queue, with status labels, grouped context, and one clear
+          next action.
+        </p>
+
+        <div className="grove-evolution">
+          <div className="grove-wireframe-panel" aria-label="Early Grove wireframe concept">
+            <p className="grove-evolution__label">Before · task-board wireframe</p>
+            <div className="grove-wireframe-screen">
+              <span className="grove-wireframe-pill" />
+              <span className="grove-wireframe-title" />
+              <div className="grove-wireframe-row"><span /><span /></div>
+              <div className="grove-wireframe-row"><span /><span /></div>
+              <div className="grove-wireframe-row"><span /><span /></div>
+              <div className="grove-wireframe-grid">
+                <span /><span /><span /><span />
+              </div>
+            </div>
+            <p className="grove-evolution__note">Problem: everything competed for attention, so the interface felt like another chore.</p>
+          </div>
+
+          <div className="grove-evolution__arrow" aria-hidden="true">→</div>
+
+          <div className="grove-final-panel" aria-label="Final Grove care screen">
+            <p className="grove-evolution__label">After · care queue</p>
+            <div className="grove-phone-frame" style={{ background: "#f5f0e8" }}>
+              <img
+                src="/assets/grove/care.png"
+                alt="Final Grove care queue screen"
+                className="grove-phone-frame__img"
+                loading="lazy"
+              />
+            </div>
+            <p className="grove-evolution__note">Decision: lead with what needs attention today, then hide secondary features until the care task is complete.</p>
+          </div>
+        </div>
+      </section>
+
       {/* ── LOG: WEEK 3 — PERSONALITY SYSTEM + POLISH ── */}
       <section>
         <p className="gh-section-label">Log · Week 3 · Personality system + polish</p>
@@ -477,84 +525,26 @@ export default function GroveCaseStudy() {
           These are the states that determine whether someone keeps using the app or uninstalls it.
         </p>
 
-        <div className="grove-states-grid">
-          <div className="grove-state-card feature">
-            <div className="grove-state-card__header">
-              <span className="grove-state-card__badge">Empty state</span>
-              <h3 className="grove-state-card__title">First open, no plants</h3>
-            </div>
-            <p className="grove-state-card__desc">
-              Single action: "Add your first plant." No dashboard, no empty cards, no feature tour. The app has nothing to show yet, so it doesn't pretend to. One button, one path forward. Complexity unlocks as the user earns it.
-            </p>
-            <p className="grove-state-card__rationale">
-              <strong>Why:</strong> Survey respondents cited "overwhelming on first open" as a pain point in competing apps. Grove's empty state is intentionally minimal.
-            </p>
+        <div className="grove-state-gallery" role="table" aria-label="Grove edge state gallery">
+          <div className="grove-state-gallery__row grove-state-gallery__row--head" role="row">
+            <span role="columnheader">State</span>
+            <span role="columnheader">UI response</span>
+            <span role="columnheader">Product reason</span>
           </div>
-
-          <div className="grove-state-card feature">
-            <div className="grove-state-card__header">
-              <span className="grove-state-card__badge">Error state</span>
-              <h3 className="grove-state-card__title">Plant ID confidence too low</h3>
+          {[
+            ["Empty", "Single “Add your first plant” action. No empty dashboard.", "Reduces cognitive load on first open."],
+            ["Low AI confidence", "Top 3 matches, confidence scores, and retake option.", "AI is a suggestion, not a source of false certainty."],
+            ["Returning after absence", "At-risk plants only. No guilt copy or missed-task backlog.", "Re-entry should feel recoverable, not punitive."],
+            ["Reward", "Brief reveal of AI plant personality, with reduced-motion fallback.", "Emotional reward over XP or leaderboards."],
+            ["Pet toxicity", "Warning at add time with source attribution and next steps.", "Safety-critical trust moment."],
+            ["Notification cap", "Morning digest by bouquet; urgent issues can bypass.", "Reminders cannot become the uninstall trigger."],
+          ].map(([state, response, reason]) => (
+            <div className="grove-state-gallery__row" role="row" key={state}>
+              <span role="cell" className="grove-state-gallery__state">{state}</span>
+              <span role="cell">{response}</span>
+              <span role="cell">{reason}</span>
             </div>
-            <p className="grove-state-card__desc">
-              When AI identification confidence falls below 80%, Grove shows the top 3 possibilities with confidence scores and asks "Does this look right?" with a retake option. Never presents a low-confidence result as definitive.
-            </p>
-            <p className="grove-state-card__rationale">
-              <strong>Why:</strong> The design treats AI as a suggestion, shows its uncertainty, and keeps the human in the loop. 9 of 12 new owners raised pet toxicity unprompted.
-            </p>
-          </div>
-
-          <div className="grove-state-card feature">
-            <div className="grove-state-card__header">
-              <span className="grove-state-card__badge">Re-engagement</span>
-              <h3 className="grove-state-card__title">Returning after absence</h3>
-            </div>
-            <p className="grove-state-card__desc">
-              "Welcome back" with only at-risk plants surfaced. No guilt, no streak-reset punishment, no backlog of missed tasks. One clear action: "Here's what needs attention today." Journal and personality features stay hidden until a new streak starts.
-            </p>
-            <p className="grove-state-card__rationale">
-              <strong>Why:</strong> 15+ survey respondents said shame-based reminders trigger uninstalls. Re-entry is designed to feel like a fresh start.
-            </p>
-          </div>
-
-          <div className="grove-state-card feature">
-            <div className="grove-state-card__header">
-              <span className="grove-state-card__badge">Reward state</span>
-              <h3 className="grove-state-card__title">Streak milestone reached</h3>
-            </div>
-            <p className="grove-state-card__desc">
-              Brief celebration animation (under 2 seconds), then the AI-generated plant personality card appears. The reveal itself is the reward. Animation respects prefers-reduced-motion.
-            </p>
-            <p className="grove-state-card__rationale">
-              <strong>Why:</strong> The survey rejected XP/leaderboard gamification, so the reward here is emotional: a personality reveal. Motion is purposeful and short.
-            </p>
-          </div>
-
-          <div className="grove-state-card feature">
-            <div className="grove-state-card__header">
-              <span className="grove-state-card__badge">Safety state</span>
-              <h3 className="grove-state-card__title">Pet toxicity warning</h3>
-            </div>
-            <p className="grove-state-card__desc">
-              If a plant may be toxic to pets, Grove surfaces the warning at add time with source attribution and plain-language next steps. It does not block the user or bury the warning in a plant profile.
-            </p>
-            <p className="grove-state-card__rationale">
-              <strong>Why:</strong> Pet toxicity came up unprompted in the survey. The system treats it as a safety-critical trust moment, not optional educational content.
-            </p>
-          </div>
-
-          <div className="grove-state-card feature">
-            <div className="grove-state-card__header">
-              <span className="grove-state-card__badge">Notification cap</span>
-              <h3 className="grove-state-card__title">Too many plants due at once</h3>
-            </div>
-            <p className="grove-state-card__desc">
-              Grove groups routine care into a morning digest by bouquet and lets urgent issues bypass the cap only when the plant is at risk. The user sees one clear queue instead of stacked alerts.
-            </p>
-            <p className="grove-state-card__rationale">
-              <strong>Why:</strong> A calm notification model is part of the product logic. Reminders only work if they do not become the reason someone deletes the app.
-            </p>
-          </div>
+          ))}
         </div>
       </section>
 
@@ -642,11 +632,13 @@ export default function GroveCaseStudy() {
             <p className="cs-outcome-label">Full-stack app (React + FastAPI + MongoDB) ready for moderated testing</p>
           </div>
         </div>
-        <p className="cs-overview-text" style={{ marginTop: "1.5rem", maxWidth: 640 }}>
-          The most useful output was learning that I built breadth-first
-          while users decide on three features. The research reordered my priorities before I spent
-          more time building the wrong things.
-        </p>
+        <Disclosure title="Show the self-critique behind the next build cycle">
+          <p className="cs-overview-text">
+            The most useful output was learning that I built breadth-first
+            while users decide on three features. The research reordered my priorities before I spent
+            more time building the wrong things.
+          </p>
+        </Disclosure>
 
         <div className="cs-reflections-grid" style={{ marginTop: "1.5rem" }}>
           <div className="cs-reflection-card">
