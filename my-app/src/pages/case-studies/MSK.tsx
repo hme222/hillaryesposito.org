@@ -55,7 +55,7 @@ export default function MSKCaseStudy() {
       {/* ── META STRIP ── */}
       <div className="gh-meta-strip">
         {[
-          { label: "Role",     value: "Process Improvement → UX & Product Design" },
+          { label: "Role",     value: "Healthcare Systems → UX & Product Design" },
           { label: "Org",      value: "Memorial Sloan Kettering Cancer Center" },
           { label: "Timeline", value: "6 years, 3 roles" },
           { label: "Scale",    value: "21,000+ clinicians" },
@@ -80,8 +80,9 @@ export default function MSKCaseStudy() {
           the clinicians using them, aligned clinical and administrative stakeholders, and shipped fixes
           that 21,000+ people relied on daily. This was user research before I formally had the
           vocabulary for it. The instinct came from the Army, where I had directed medical logistics for
-          5,000+ soldiers, systems whose failures showed up as readiness problems. The
-          work that matters most in healthcare happens before anyone opens Figma.
+          5,000+ soldiers, systems whose failures showed up as readiness problems. In healthcare, the
+          design work often starts before Figma: mapping real work, identifying failure points, and
+          deciding what the interface must make easier.
         </p>
         <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
           This case study reads in the order it happened: three roles, each building on the last,
@@ -89,8 +90,55 @@ export default function MSKCaseStudy() {
         </p>
         <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
           <strong>Note:</strong> Internal systems and patient data are confidential. This case study
-          focuses on process, methods, and measurable outcomes rather than interface screenshots.
+          uses recreated workflow artifacts and anonymized examples rather than interface screenshots.
         </p>
+      </section>
+
+      {/* ── ANONYMIZED ARTIFACT ── */}
+      <section className="msk-artifact-section" aria-labelledby="msk-artifact-title">
+        <p className="gh-section-label">Anonymized artifact</p>
+        <h2 id="msk-artifact-title">Before and after: EMR workflow redesign</h2>
+        <p className="cs-section-intro">
+          Recreated with patient, department, and system details removed. This is the type of artifact
+          I used to align clinicians, IT, and operations around the same problem: the interface reflected
+          system architecture, not the clinical task.
+        </p>
+
+        <div className="msk-workflow-artifact feature" aria-label="Before and after EMR workflow">
+          <div className="msk-workflow-column msk-workflow-column--before">
+            <p className="msk-workflow-label">Before</p>
+            <h3>14 steps across 3 systems</h3>
+            <ol className="msk-workflow-list">
+              <li>Search patient in System A</li>
+              <li>Copy identifiers manually</li>
+              <li>Open System B in a second window</li>
+              <li>Re-enter patient context</li>
+              <li>Check status in a spreadsheet workaround</li>
+              <li>Return to EMR and document action</li>
+            </ol>
+            <p className="msk-artifact-note">
+              Failure mode: clinicians were doing memory work the interface should have handled.
+            </p>
+          </div>
+
+          <div className="msk-workflow-arrow" aria-hidden="true">→</div>
+
+          <div className="msk-workflow-column msk-workflow-column--after">
+            <p className="msk-workflow-label">After</p>
+            <h3>6 steps in one view</h3>
+            <ol className="msk-workflow-list">
+              <li>Search patient once</li>
+              <li>Keep patient context persistent</li>
+              <li>Show task status in the same view</li>
+              <li>Guide the next clinical action</li>
+              <li>Confirm completion with timestamp</li>
+              <li>Return clinician to the patient queue</li>
+            </ol>
+            <p className="msk-artifact-note">
+              Design decision: align navigation to the clinical task, not the software modules.
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* ── ROLE 1: OFFICE COORDINATOR ── */}

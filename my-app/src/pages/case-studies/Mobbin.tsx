@@ -63,10 +63,10 @@ export default function MobbinCaseStudy() {
       {/* ── HERO ── */}
       <header className="gh-hero">
         <div className="gh-hero__copy">
-          <p className="meta">App Capture Specialist · UX Flow Documentation · UI Pattern Curation</p>
+          <p className="meta">App Capture Specialist | UX Flow Documentation & UI Pattern Curation</p>
           <h1>Mobbin</h1>
           <p className="gh-hero__intro">
-            Documented end-to-end mobile app experiences across three fintech products
+            Mobbin · Freelance · Mar 2026 - Present · Remote. Documented end-to-end mobile app experiences across three fintech products
             (<strong>Kikoff</strong>, <strong>Polymarket</strong>, and <strong>Discover</strong>)
             for Mobbin's searchable design reference library. Captured screens, organized user flows,
             mapped key interaction sequences, and curated UI patterns used by UX, product, and design teams globally.
@@ -85,10 +85,10 @@ export default function MobbinCaseStudy() {
         {[
           { label: "Role",    value: "App Capture Specialist" },
           { label: "Client",  value: "Mobbin · Freelance" },
-          { label: "Timeline", value: "Mar–Jun 2026 · 4 months" },
+          { label: "Timeline", value: "Mar 2026 - Present · 4 mos" },
           { label: "Output",  value: "3 apps · 200+ screens · Full flow capture" },
           { label: "Focus",   value: "UX flow documentation · UI pattern curation" },
-          { label: "Status",  value: "Launched · Jun 2026" },
+          { label: "Location", value: "Remote" },
         ].map((item, i, arr) => (
           <React.Fragment key={item.label}>
             <div className="gh-meta-strip__item">
@@ -144,6 +144,17 @@ export default function MobbinCaseStudy() {
           Writing for thousands of designers in contexts I can't predict required a different
           standard than writing for a known team.
         </p>
+
+        <div className="cs-insight-action" style={{ marginTop: "1.5rem" }}>
+          <p className="cs-insight-action__label">Role scope</p>
+          <ul className="cs-role-scope-list">
+            <li>Documented end-to-end mobile app experiences by capturing screens, organizing user flows, and mapping key interaction sequences across real product journeys.</li>
+            <li>Curated UI patterns, navigation models, and task flows to support a searchable design reference library used by UX, product, and design teams.</li>
+            <li>Analyzed real-world product experiences to identify onboarding flows, conversion paths, feature entry points, interaction behaviors, and reusable interface patterns.</li>
+            <li>Reviewed and refined captured flows for clarity, completeness, and accuracy, ensuring each submission was usable as a reliable product design reference.</li>
+            <li>Strengthened product judgment by studying how leading apps structure information, guide users, and reduce friction across complex digital experiences.</li>
+          </ul>
+        </div>
       </section>
 
       {/* ── THREE APPS, ONE TRUST PROBLEM ── */}
@@ -280,11 +291,10 @@ export default function MobbinCaseStudy() {
       {/* ── WHERE IT LANDED ── */}
       <section className="cs-outcome">
         <p className="gh-section-label">Where it landed</p>
-        <h2 className="cs-section-title">Launched in Mobbin's Finance+ library</h2>
+        <h2 className="cs-section-title">Contributing to Mobbin's Finance+ library</h2>
         <p className="cs-overview-text" style={{ maxWidth: 720 }}>
           Three live fintech apps fully catalogued: 200+ screens captured, annotated, and tagged,
-          documenting three distinct trust pattern categories. In June 2026, the work launched
-          publicly as part of Mobbin's Finance+ library (50+ finance apps).{" "}
+          documenting three distinct trust pattern categories for Mobbin's Finance+ library (50+ finance apps).{" "}
           <a href="https://mobbin.com/finance" target="_blank" rel="noopener noreferrer" className="cs-inline-link">View it live →</a>
         </p>
         <p className="cs-overview-text" style={{ marginTop: "1rem", maxWidth: 720 }}>

@@ -86,7 +86,7 @@ export default function RecruiterPill() {
                 <div>
                   <p className="recruiter-panel__eyebrow">90-second tour</p>
                   <h2 id="recruiter-panel-title" className="recruiter-panel__title">
-                    Hillary Esposito, UX/Product Designer
+                    Hillary Esposito, Senior UX & Product Designer
                   </h2>
                 </div>
                 <button
@@ -102,22 +102,22 @@ export default function RecruiterPill() {
               <div className="recruiter-panel__body">
                 <section className="recruiter-panel__section recruiter-panel__vitals">
                   <div className="recruiter-panel__vitals-grid">
-                    <span>13+ years leadership</span>
+                    <span>13+ years systems leadership</span>
                     <span>MHA, Rutgers</span>
-                    <span>Remote &amp; hybrid</span>
+                    <span>Healthcare UX/Product</span>
                     <span>Currently freelancing</span>
                   </div>
                 </section>
 
                 <section className="recruiter-panel__section">
                   <p className="recruiter-panel__label">In one line</p>
-                  <p>UX/Product Designer turning complex healthcare, enterprise, and AI workflows into trusted digital products. 21K+ clinicians impacted at MSK. Army veteran.</p>
+                  <p>Senior UX/Product Designer for healthcare systems. 21K+ clinicians impacted at MSK; built an AI-assisted Grove prototype from 32-user research. Army veteran.</p>
                 </section>
 
                 <section className="recruiter-panel__section">
                   <p className="recruiter-panel__label">Strengths</p>
                   <div className="recruiter-panel__chips">
-                    {["UX & Product Design", "Service Design", "Healthcare Systems", "Process Improvement", "Lean Six Sigma", "AI-Augmented Workflows", "Bilingual EN/ES"].map((s) => (
+                    {["Healthcare Product UX", "Clinical Workflows", "AI Judgment", "Human-Centered Process Design", "Bilingual EN/ES", "Army Veteran"].map((s) => (
                       <span key={s} className="recruiter-panel__chip">{s}</span>
                     ))}
                   </div>
@@ -129,19 +129,19 @@ export default function RecruiterPill() {
                     <li>
                       <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/grove")}>
                         <strong>Grove</strong>
-                        <span>End-to-end product design: 32-user survey, AI judgment, working prototype</span>
+                        <span>32-user survey reshaped the MVP; AI override log; working prototype ready for moderated testing</span>
                       </button>
                     </li>
                     <li>
                       <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/msk")}>
                         <strong>MSK Cancer Center</strong>
-                        <span>Led the workflow redesign behind a 20% EMR cost reduction, 70% efficiency gain, 21K+ clinicians</span>
+                        <span>21K+ clinicians, 20% EMR cost reduction, 70% workflow efficiency gain</span>
                       </button>
                     </li>
                     <li>
                       <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/good-harvest")}>
                         <strong>Good Harvest</strong>
-                        <span>Heatmap-validated mobile UX, 22 participants, 3 test rounds</span>
+                        <span>22-user Maze testing across 3 rounds; redesigned around trust, not discoverability</span>
                       </button>
                     </li>
                   </ul>

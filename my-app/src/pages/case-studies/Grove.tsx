@@ -53,27 +53,6 @@ const MVP_FEATURES = [
   { feature: "Verified swapping", pct: 6, tier: "post" },
 ];
 
-const AI_DECISIONS = [
-  {
-    area: "AI-generated plant personalities",
-    whatAIDid: "AI generates unique personality profiles for each plant when users hit care milestones: playful character sketches that make each plant feel like an individual.",
-    whyNotManual: "Writing hundreds of unique personality variants by hand isn't scalable. AI generation makes every plant feel personal without a content bottleneck.",
-    humanJudgment: "I defined the prompt constraints, tone, and quality bar. Early outputs included anthropomorphized guilt-tripping ('I'm so thirsty, why did you forget me?') that contradicted the calm tone survey respondents valued. I rewrote prompt guardrails to enforce encouragement over guilt, filtered outputs that referenced neglect or blame, and tested 20+ generations before locking the prompt template.",
-  },
-  {
-    area: "Building the full stack with AI coding tools",
-    whatAIDid: "Used Claude Code and Cursor for backend API development, component scaffolding, and debugging. It's how a solo designer ships a React + FastAPI + MongoDB app with auth in 3 weeks.",
-    whyNotManual: "Writing auth flows, CRUD endpoints, and database models from scratch would have tripled the timeline for a solo project. AI let me focus on UX decisions instead of plumbing.",
-    humanJudgment: "Every AI-generated code block was reviewed, tested, and refactored. I directed the architecture decisions: API structure, data models, auth strategy. AI accelerated the execution.",
-  },
-  {
-    area: "Emergent Agent platform for deployment",
-    whatAIDid: "Used Emergent's AI agent platform for environment provisioning, deployment, and infrastructure. No manual DevOps.",
-    whyNotManual: "As a designer building a solo full-stack project, managing servers and CI/CD would've pulled focus from the product. Emergent handled infra so I could stay in the design layer.",
-    humanJudgment: "It let me ship a working product to test with real users, which is the whole point of this project.",
-  },
-];
-
 // The sharpest overrides, surfaced as a scannable callout above the full table.
 const PUSHBACK = [
   {
@@ -339,6 +318,30 @@ export default function GroveCaseStudy() {
           The hardest cut was community forums (ranked 5th at 23%), but building retention
           features before the core care loop is excellent would have been building in the wrong order.
         </div>
+
+        <aside className="pushback-callout pushback-callout--early" aria-labelledby="pushback-heading">
+          <div className="pushback-callout__head">
+            <span className="pushback-callout__marker" aria-hidden="true"><HandIcon /></span>
+            <div>
+              <h3 id="pushback-heading" className="pushback-callout__eyebrow">Where I pushed back</h3>
+              <p className="pushback-callout__sub">Five AI suggestions I overruled because the research said they would break trust.</p>
+            </div>
+          </div>
+          <ul className="pushback-list">
+            {PUSHBACK.map((p) => (
+              <li key={p.topic} className="pushback-item">
+                <p className="pushback-item__topic">{p.topic}</p>
+                <p className="pushback-item__said">
+                  <span className="pushback-tag pushback-tag--ai">AI said</span>{p.ai}
+                </p>
+                <p className="pushback-item__chose">
+                  <span className="pushback-tag pushback-tag--me">I chose</span>{p.me}
+                </p>
+                <p className="pushback-item__why">{p.why}</p>
+              </li>
+            ))}
+          </ul>
+        </aside>
       </section>
 
       {/* ── LOG: WEEKS 1–2 — BUILD ── */}
@@ -555,66 +558,6 @@ export default function GroveCaseStudy() {
         </div>
       </section>
 
-      {/* ── THE AI-JUDGMENT LOG ── */}
-      <section>
-        <p className="gh-section-label">The AI-judgment log</p>
-        <h2>Where AI helped, where I led, and how I decided</h2>
-        <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
-          Everyone uses AI now. What this section shows is judgment:
-          knowing when to trust it, when to override it, and when to do the work myself.
-          These calls happened all through the sprint; they're collected here as their own log.
-        </p>
-
-        {/* ── "Where I pushed back" callout — the scannable highlight ── */}
-        <aside className="pushback-callout" aria-labelledby="pushback-heading">
-          <div className="pushback-callout__head">
-            <span className="pushback-callout__marker" aria-hidden="true"><HandIcon /></span>
-            <div>
-              <h3 id="pushback-heading" className="pushback-callout__eyebrow">Where I pushed back</h3>
-              <p className="pushback-callout__sub">Five moments I overruled the AI, and why.</p>
-            </div>
-          </div>
-          <ul className="pushback-list">
-            {PUSHBACK.map((p) => (
-              <li key={p.topic} className="pushback-item">
-                <p className="pushback-item__topic">{p.topic}</p>
-                <p className="pushback-item__said">
-                  <span className="pushback-tag pushback-tag--ai">AI said</span>{p.ai}
-                </p>
-                <p className="pushback-item__chose">
-                  <span className="pushback-tag pushback-tag--me">I chose</span>{p.me}
-                </p>
-                <p className="pushback-item__why">{p.why}</p>
-              </li>
-            ))}
-          </ul>
-        </aside>
-
-        <div className="emergent-ai-grid">
-          {AI_DECISIONS.map((d) => (
-            <div key={d.area} className="emergent-ai-card feature">
-              <h3 className="emergent-ai-card__area">{d.area}</h3>
-
-              <div className="emergent-ai-card__row">
-                <span className="emergent-ai-card__label emergent-ai-card__label--ai">What AI did</span>
-                <p>{d.whatAIDid}</p>
-              </div>
-
-              <div className="emergent-ai-card__row">
-                <span className="emergent-ai-card__label emergent-ai-card__label--why">Why not manual</span>
-                <p>{d.whyNotManual}</p>
-              </div>
-
-              <div className="emergent-ai-card__row">
-                <span className="emergent-ai-card__label emergent-ai-card__label--human">My judgment</span>
-                <p>{d.humanJudgment}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-      </section>
-
       {/* ── WHERE IT STANDS ── */}
       <section className="cs-outcome">
         <p className="gh-section-label">Where it stands</p>
@@ -629,7 +572,7 @@ export default function GroveCaseStudy() {
             <p className="cs-outcome-label">Personas built from the survey data: needs, frustrations, and dealbreakers</p>
           </div>
           <div className="cs-outcome-card">
-            <p className="cs-outcome-value gradient-text">3</p>
+            <p className="cs-outcome-value gradient-text">5</p>
             <p className="cs-outcome-label">AI decisions documented with explicit human override reasoning</p>
           </div>
           <div className="cs-outcome-card">

@@ -7,23 +7,23 @@ import { NewsIcon } from "../components/LineIcons";
 const AGENDA = [
   {
     icon: "01",
-    title: "Process improvement",
-    desc: "Lean Six Sigma expertise with documented 20-85% gains in cost, efficiency, and cycle time.",
+    title: "UX & product design",
+    desc: "I turn unclear workflows into digital products, prototypes, and interaction models people can trust. Proof: Grove, Good Harvest, and Mobbin flow documentation.",
   },
   {
     icon: "02",
-    title: "Human-centered design",
-    desc: "Rigorous technical foundation across design, data, and technology, grounded in research and usability.",
+    title: "Healthcare systems",
+    desc: "MHA training and six years inside clinical operations at MSK, designing around real care-team constraints. Proof: 21,000+ clinicians impacted.",
   },
   {
     icon: "03",
-    title: "Healthcare fluency",
-    desc: "Master of Health Administration (MHA) and six years inside clinical operations at MSK.",
+    title: "Human-centered process design",
+    desc: "Lean Six Sigma rigor applied through a UX lens: map the system, find the friction, design the better path. Proof: 20% EMR cost reduction and 70% certification workflow gain.",
   },
   {
     icon: "04",
     title: "AI judgment",
-    desc: "Everyone uses AI now. The skill is knowing when to trust it and when to override it. On Grove I rejected five of its suggestions, and documented why.",
+    desc: "Everyone uses AI now. The skill is knowing when to trust it and when to override it. Proof: Grove documents five AI suggestions I rejected and why.",
   },
 ];
 
@@ -98,14 +98,14 @@ export default function About() {
       {/* ═ HERO ═════════════════════════════════════════════════════ */}
       <section className="about-hero">
         <div className="about-hero-content">
-          <p className="about-intro">UX/Product Designer. Healthcare & Enterprise Systems. Army Veteran.</p>
+          <p className="about-intro">UX & Product Designer | Healthcare Systems | Human-Centered Process Design | Army Veteran</p>
 
           <h1 className="about-title">
             Turning complex healthcare, enterprise, and AI workflows into trusted digital products.
           </h1>
 
           <p className="about-hero-subtext">
-            13+ years of leadership across process improvement, clinical systems, military operations, and UX research.
+            13+ years in healthcare and military systems, with UX and product design shaped by frontline operations.
           </p>
         </div>
 
@@ -230,7 +230,7 @@ export default function About() {
             Interested in working together?
           </h2>
           <p className="about-cta-content" style={{ color: "var(--muted)", lineHeight: 1.8, marginBottom: "1.75rem" }}>
-            Open to UX, product design, and service design roles in healthcare, mission-driven organizations, and operationally complex environments. Also open to freelance and collaborations.
+            Open to UX and product design roles in healthcare, mission-driven organizations, and operationally complex environments. Also open to freelance and collaborations.
           </p>
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
             <button

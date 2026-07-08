@@ -35,16 +35,16 @@ export default function GoodHarvest() {
   const researchInsightCards = [
     { num: "Finding 01", heading: "Users are motivated",
       body: "19 of 22 participants say that eating seasonal foods is desirable",
-      tag: "Provided research" },
+      tag: "My synthesis from provided research" },
     { num: "Finding 02", heading: "Unclear what's in season locally",
       body: "13 of 22 participants do not know what's in season in their specific area",
-      tag: "Provided research" },
+      tag: "My synthesis from provided research" },
     { num: "Finding 03", heading: "Users find seasonal shopping time consuming",
       body: "12 of 22 participants found meal planning around seasonal food takes too much time.",
-      tag: "Provided research" },
+      tag: "My synthesis from provided research" },
     { num: "Finding 04", heading: "Produce variety confusion caused decision paralysis",
       body: "When faced with multiple apple or lettuce varieties, 17 of 22 participants either chose randomly or deferred the decision entirely.",
-      tag: "Provided research" },
+      tag: "My synthesis from provided research" },
   ];
 
   const reflections = [
@@ -138,7 +138,7 @@ export default function GoodHarvest() {
           <p>
             <strong>Inherited:</strong> 3 in-depth interviews and 22 survey responses (conducted by bootcamp research team, recruitment via convenience sample).
             I synthesized these findings into personas and design principles.<br />
-            <strong>Generated:</strong> 22-participant unmoderated heatmap testing across 3 rounds (I designed the test plan, wrote tasks, recruited participants via Maze panel, and analyzed results).
+            <strong>Generated:</strong> separate 22-participant unmoderated heatmap testing across 3 rounds (I designed the test plan, wrote tasks, recruited participants via Maze panel, and analyzed results).
             Two peer designers reviewed my synthesis and challenged assumptions.
           </p>
         </div>
@@ -216,7 +216,7 @@ export default function GoodHarvest() {
             <div className="reina-flow-content">
               <h3 style={{ margin: "0 0 0.35rem", color: "var(--olive-2)", fontSize: "1.05rem" }}>Prototype testing with heatmaps</h3>
               <p style={{ margin: 0, fontSize: "0.97rem", color: "var(--muted)", lineHeight: 1.7 }}>
-                22-participant unmoderated testing via Maze across 3 rounds. Heatmaps revealed what users actually tapped vs. what I expected. Details in the Testing section below.
+                A separate 22-participant unmoderated test via Maze across 3 rounds. Heatmaps revealed what users actually tapped vs. what I expected. Details in the Testing section below.
               </p>
             </div>
           </li>
@@ -297,7 +297,7 @@ export default function GoodHarvest() {
           <p className="gh-collab-label">What I generated</p>
           <p>
             Given provided research, I focused effort where it had the most design leverage: prototype testing.
-            I designed and ran 3 rounds of heatmap testing with 22 participants, producing new actionable data that reshaped the product.
+            I designed and ran 3 rounds of heatmap testing with a separate 22-participant Maze panel, producing new actionable data that reshaped the product.
           </p>
         </div>
 

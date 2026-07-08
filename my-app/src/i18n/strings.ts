@@ -20,7 +20,7 @@ const en = {
   // ── Navbar ──
   "nav.ariaPrimary": "Primary navigation",
   "nav.logoAria": "Go to home",
-  "nav.tagline": "UX × Process Improvement",
+  "nav.tagline": "UX & Product Design",
   "nav.menuOpen": "Open menu",
   "nav.menuClose": "Close menu",
   "nav.home": "HOME",
@@ -40,9 +40,9 @@ const en = {
   "home.heroAria": "Home section",
   "home.status": "Available for opportunities",
   "home.positioning":
-    "UX/Product Designer turning complex healthcare, enterprise, and AI workflows into trusted digital products.",
+    "I design trusted products for complex healthcare systems.",
   "home.description":
-    "13+ years of leadership across process improvement, clinical systems, military operations, and UX research. Army veteran.",
+    "13+ years in healthcare and military systems, with UX and product design shaped by frontline operations. Army veteran.",
   "home.getInTouch": "Get in touch",
   "home.seeApproach": "See my approach →",
   "home.replay": "Replay",
@@ -58,7 +58,7 @@ const en = {
 
   // ── Home: credentials strip ──
   "home.credentialsAria": "Professional credentials",
-  "home.credentials": "Lean Six Sigma Green Belt · MHA, Rutgers · Bilingual EN/ES",
+  "home.credentials": "UX & Product Design · Healthcare Systems · Human-Centered Process Design · Army Veteran",
 
   // ── Home: proof stats ──
   "home.proofAria": "Experience highlights",
@@ -73,11 +73,11 @@ const en = {
   "home.projectsTitle": "Projects",
   "home.proj.grove.subtitle": "Product Design · AI Judgment",
   "home.proj.grove.desc":
-    "Research to working prototype in 3 weeks, solo. 32-user survey reshaped the MVP. AI accelerated the build. Testing next.",
+    "32-user survey to working prototype in 3 weeks. MVP reset, AI override log, and moderated testing plan.",
   "home.proj.grove.alt": "Grove plant care app",
   "home.proj.msk.subtitle": "UX & Product Design · Healthcare Systems",
   "home.proj.msk.desc":
-    "Six years, three roles. Redesigned clinical workflows, onboarding, and EMR systems for 21,000+ clinicians at one of the world's top cancer centers.",
+    "21K+ clinicians, 20% EMR cost reduction, and 70% certification workflow gain across six years at MSK.",
   "home.proj.msk.alt": "Memorial Sloan Kettering Cancer Center",
   "home.proj.gh.subtitle": "Product Design · UX Research",
   "home.proj.gh.desc":
@@ -85,7 +85,7 @@ const en = {
   "home.proj.gh.alt": "Good Harvest wireframe, final design, and heatmap testing",
   "home.proj.mobbin.subtitle": "Freelance · UX Flow Documentation · Pattern Curation",
   "home.proj.mobbin.desc":
-    "Documented end-to-end mobile experiences across three fintech apps for Mobbin's design reference library. 200+ screens captured, annotated, and tagged.",
+    "Freelance app capture specialist documenting end-to-end UX flows, interaction patterns, and product journeys for Mobbin.",
   "home.proj.mobbin.alt": "Fintech app screens catalogued for UX pattern library",
   "home.proj.ndaTitle": "Protected Case Study",
   "home.proj.ndaDesc":
@@ -101,9 +101,9 @@ const en = {
 
   // ── Home: contact / CTA ──
   "home.contactAria": "Contact section",
-  "home.ctaTitle": "Let’s talk about your product",
+  "home.ctaTitle": "Let’s talk about the system your team needs to fix",
   "home.ctaBody":
-    "I turn complex workflows into tools people trust. If your team needs a UX/product designer with deep healthcare, enterprise, or operations experience, let’s talk.",
+    "I design trusted products for complex healthcare, enterprise, and operational workflows. If your team needs a UX/product designer who can turn messy systems into usable tools, let’s talk.",
   "home.ctaEmail": "Send me a note",
   "home.ctaEmailAria": "Send me a note",
   "home.ctaCall": "Book a call →",
@@ -127,7 +127,7 @@ const es: Partial<Record<StringKey, string>> = {
   // ── Navbar ──
   "nav.ariaPrimary": "Navegación principal",
   "nav.logoAria": "Ir al inicio",
-  "nav.tagline": "UX × Mejora de procesos",
+  "nav.tagline": "Diseño UX y de Producto",
   "nav.menuOpen": "Abrir menú",
   "nav.menuClose": "Cerrar menú",
   "nav.home": "INICIO",
@@ -145,9 +145,9 @@ const es: Partial<Record<StringKey, string>> = {
   "home.heroAria": "Sección de inicio",
   "home.status": "Disponible para nuevas oportunidades",
   "home.positioning":
-    "Diseñadora UX y de Producto que convierte flujos de trabajo complejos de salud, empresas e IA en productos digitales confiables.",
+    "Diseño productos confiables para sistemas de salud complejos.",
   "home.description":
-    "Más de 13 años de liderazgo en mejora de procesos, sistemas clínicos, operaciones militares e investigación UX. Veterana del Ejército de EE. UU.",
+    "Más de 13 años en sistemas de salud y militares, con diseño UX y de producto formado por operaciones de primera línea. Veterana del Ejército de EE. UU.",
   "home.getInTouch": "Contácteme",
   "home.seeApproach": "Conozca mi enfoque →",
   "home.replay": "Repetir",
@@ -163,7 +163,7 @@ const es: Partial<Record<StringKey, string>> = {
 
   // ── Home: credentials strip ──
   "home.credentialsAria": "Credenciales profesionales",
-  "home.credentials": "Lean Six Sigma Green Belt · MHA, Rutgers · Bilingüe EN/ES",
+  "home.credentials": "Diseño UX y de producto · Sistemas de salud · Diseño de procesos centrado en las personas · Veterana del Ejército",
 
   // ── Home: proof stats ──
   "home.proofAria": "Experiencia destacada",
@@ -178,18 +178,18 @@ const es: Partial<Record<StringKey, string>> = {
   "home.projectsTitle": "Proyectos",
   "home.proj.grove.subtitle": "Diseño de producto · Criterio con IA",
   "home.proj.grove.desc":
-    "De la investigación a un prototipo funcional en 3 semanas, en solitario. Una encuesta a 32 usuarios redefinió el MVP. La IA aceleró la construcción. Próximo paso: pruebas con usuarios.",
+    "Encuesta a 32 usuarios a prototipo funcional en 3 semanas. MVP redefinido, registro de decisiones con IA y plan de pruebas moderadas.",
   "home.proj.grove.alt": "Aplicación Grove para el cuidado de plantas",
   "home.proj.msk.subtitle": "Diseño UX y de producto · Sistemas de salud",
   "home.proj.msk.desc":
-    "Seis años, tres roles. Rediseñé flujos de trabajo clínicos, onboarding y sistemas de EMR para más de 21,000 profesionales clínicos en uno de los principales centros oncológicos del mundo.",
+    "Más de 21,000 profesionales clínicos, 20% de reducción de costos del EMR y 70% de mejora en certificación durante seis años en MSK.",
   "home.proj.gh.subtitle": "Diseño de producto · Investigación UX",
   "home.proj.gh.desc":
     "Pruebas de mapas de calor con 22 usuarios revelaron un problema de confianza: las personas encontraban la información de temporada, pero no creían que aplicara a su caso.",
   "home.proj.gh.alt": "Wireframe, diseño final y pruebas de mapa de calor de Good Harvest",
   "home.proj.mobbin.subtitle": "Freelance · Documentación de flujos UX · Curaduría de patrones",
   "home.proj.mobbin.desc":
-    "Documenté experiencias móviles de principio a fin en tres apps fintech para la biblioteca de referencia de diseño de Mobbin. Más de 200 pantallas capturadas, anotadas y etiquetadas.",
+    "Especialista freelance en captura de apps, documentando flujos UX completos, patrones de interacción y recorridos de producto para Mobbin.",
   "home.proj.mobbin.alt": "Pantallas de apps fintech catalogadas para una biblioteca de patrones UX",
   "home.proj.ndaTitle": "Estudio de caso protegido",
   "home.proj.ndaDesc":
@@ -205,9 +205,9 @@ const es: Partial<Record<StringKey, string>> = {
 
   // ── Home: contact / CTA ──
   "home.contactAria": "Sección de contacto",
-  "home.ctaTitle": "Hablemos de su producto",
+  "home.ctaTitle": "Hablemos del sistema que su equipo necesita mejorar",
   "home.ctaBody":
-    "Convierto flujos de trabajo complejos en herramientas que inspiran confianza. Si su equipo necesita una diseñadora UX y de producto con amplia experiencia en salud, entornos empresariales u operaciones, hablemos.",
+    "Diseño productos confiables para flujos de salud, empresa y operaciones complejas. Si su equipo necesita una diseñadora UX y de producto que convierta sistemas confusos en herramientas utilizables, hablemos.",
   "home.ctaEmail": "Escríbame",
   "home.ctaEmailAria": "Envíeme un correo",
   "home.ctaCall": "Agende una llamada →",
