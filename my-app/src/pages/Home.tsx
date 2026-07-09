@@ -313,6 +313,45 @@ export default function Home() {
         </motion.div>
       </section>
 
+      <section className="home-tailor-section" aria-label={t("home.tailorAria")}>
+        <div className="home-tailor-header">
+          <p className="home-eyebrow">{t("home.tailorEyebrow")}</p>
+          <h2 className="section-title home-section-title">{t("home.tailorTitle")}</h2>
+          <p>{t("home.tailorBody")}</p>
+        </div>
+
+        <div className="home-tailor-grid">
+          {([
+            {
+              titleKey: "home.tailor.healthcare.title",
+              descKey: "home.tailor.healthcare.desc",
+              path: "/curated/omada-staff-product-designer-healthcare-ai",
+            },
+            {
+              titleKey: "home.tailor.enterprise.title",
+              descKey: "home.tailor.enterprise.desc",
+              path: "/curated/jpm-ux-design-lead-vp-workflows",
+            },
+            {
+              titleKey: "home.tailor.ai.title",
+              descKey: "home.tailor.ai.desc",
+              path: "/case-study/grove",
+            },
+            {
+              titleKey: "home.tailor.visual.title",
+              descKey: "home.tailor.visual.desc",
+              path: "/curated/fashion-graphic-designer",
+            },
+          ] as { titleKey: StringKey; descKey: StringKey; path: string }[]).map((item) => (
+            <Link key={item.path} to={item.path} className="home-tailor-card">
+              <span className="home-tailor-card__title">{t(item.titleKey)}</span>
+              <span className="home-tailor-card__desc">{t(item.descKey)}</span>
+              <span className="home-tailor-card__link">{t("home.tailor.view")}</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       {/* ══════════════════════════════════════════
           3. PROJECTS — numbered cards
       ══════════════════════════════════════════ */}

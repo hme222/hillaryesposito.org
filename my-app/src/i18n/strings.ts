@@ -76,6 +76,22 @@ const en = {
   "home.stat.emr": "EMR cost reduction, MSK Cancer Center",
   "home.stat.grove": "Survey respondents shaped Grove's MVP",
 
+  // ── Home: tailored relevance ──
+  "home.tailorAria": "Role-specific portfolio paths",
+  "home.tailorEyebrow": "Relevant paths",
+  "home.tailorTitle": "Make the fit easy to see",
+  "home.tailorBody":
+    "Different roles need different proof. These views surface the experience that already lines up with the product, customer, or problem space.",
+  "home.tailor.healthcare.title": "Healthcare product teams",
+  "home.tailor.healthcare.desc": "MSK, clinical workflows, internal tools, and healthcare product judgment.",
+  "home.tailor.enterprise.title": "Enterprise and internal tools",
+  "home.tailor.enterprise.desc": "Role-based workflows, permissions, handoffs, dense systems, and admin-style UX.",
+  "home.tailor.ai.title": "AI-assisted product work",
+  "home.tailor.ai.desc": "Grove, AI workflow decisions, override judgment, and trust calibration.",
+  "home.tailor.visual.title": "Visual and brand-led roles",
+  "home.tailor.visual.desc": "Campaign hierarchy, ecommerce modules, social/email systems, and production craft.",
+  "home.tailor.view": "View relevant work →",
+
   // ── Home: role fit ──
   "home.fitAria": "Role fit highlights",
   "home.fitEyebrow": "Where I’m strongest",
@@ -209,6 +225,22 @@ const es: Partial<Record<StringKey, string>> = {
   "home.stat.resupply": "Reabastecimiento más rápido, Guardia Nacional del Ejército de NJ",
   "home.stat.emr": "Reducción de costos del EMR, MSK Cancer Center",
   "home.stat.grove": "Participantes de encuesta definieron el MVP de Grove",
+
+  // ── Home: tailored relevance ──
+  "home.tailorAria": "Rutas de portafolio por tipo de rol",
+  "home.tailorEyebrow": "Rutas relevantes",
+  "home.tailorTitle": "Hacer que el encaje sea fácil de ver",
+  "home.tailorBody":
+    "Distintos roles necesitan pruebas distintas. Estas vistas muestran la experiencia que ya se alinea con el producto, cliente o tipo de problema.",
+  "home.tailor.healthcare.title": "Equipos de producto en salud",
+  "home.tailor.healthcare.desc": "MSK, flujos clínicos, herramientas internas y criterio de producto en salud.",
+  "home.tailor.enterprise.title": "Enterprise y herramientas internas",
+  "home.tailor.enterprise.desc": "Flujos por rol, permisos, traspasos, sistemas densos y UX para administración.",
+  "home.tailor.ai.title": "Trabajo de producto asistido por IA",
+  "home.tailor.ai.desc": "Grove, decisiones de flujo con IA, criterio de corrección y calibración de confianza.",
+  "home.tailor.visual.title": "Roles visuales y de marca",
+  "home.tailor.visual.desc": "Jerarquía de campaña, módulos ecommerce, sistemas social/email y producción.",
+  "home.tailor.view": "Ver trabajo relevante →",
 
   // ── Home: role fit ──
   "home.fitAria": "Fortalezas para el puesto",

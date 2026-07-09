@@ -16,8 +16,8 @@
       <stop offset="0.52" stop-color="#d9a55e" stop-opacity="0.05"/>
       <stop offset="1" stop-color="#d9a55e" stop-opacity="0"/>
     </radialGradient>
-    <pattern id="grid" width="54" height="54" patternUnits="userSpaceOnUse">
-      <path d="M 54 0 L 0 0 0 54" fill="none" stroke="#0a0a0a" stroke-opacity="0.024" stroke-width="1"/>
+    <pattern id="grid" width="72" height="72" patternUnits="userSpaceOnUse">
+      <path d="M 72 0 L 0 0 0 72" fill="none" stroke="#0a0a0a" stroke-opacity="0.018" stroke-width="1"/>
     </pattern>
   </defs>
 
@@ -26,42 +26,42 @@
   <rect width="1584" height="396" fill="url(#grid)"/>
 
   <!-- Safe-area visual weight stays center/right because LinkedIn overlays the profile photo on the lower left. -->
-  <g opacity="0.82">
-    <path d="M 706 78 C 848 108, 916 150, 1046 138 S 1240 74, 1470 100"
-          fill="none" stroke="#7c8c3c" stroke-width="1.4" stroke-opacity="0.14"/>
+  <g opacity="0.72">
+    <path d="M 716 78 C 858 108, 922 148, 1052 138 S 1238 76, 1470 100"
+          fill="none" stroke="#7c8c3c" stroke-width="1.2" stroke-opacity="0.12"/>
   </g>
 
-  <g fill="#5a7a2e" opacity="0.48">
+  <g fill="#5a7a2e" opacity="0.42">
     <circle cx="1152" cy="94" r="5"/>
     <circle cx="1212" cy="134" r="5"/>
   </g>
 
-  <g opacity="0.62">
+  <g opacity="0.48">
     <path d="M 1152 94 C 1232 94, 1232 158, 1306 158 S 1376 222, 1460 222"
-          fill="none" stroke="#5a7a2e" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.20"/>
+          fill="none" stroke="#5a7a2e" stroke-width="1.4" stroke-linecap="round" stroke-opacity="0.18"/>
     <circle cx="1306" cy="158" r="5" fill="#d9a55e" fill-opacity="0.40"/>
     <circle cx="1460" cy="222" r="5" fill="#5a7a2e" fill-opacity="0.34"/>
   </g>
 
-  <g transform="translate(112 86)">
+  <g transform="translate(112 90)">
     <g transform="translate(0 0)">
-      <circle cx="18" cy="18" r="18" fill="#5a7a2e" opacity="0.12"/>
-      <path d="M17.7 7.5c5.3 5.1 8.1 9.8 8.1 14.2 0 5.6-3.5 9.4-8.3 9.4-4.9 0-8.3-3.8-8.3-9.4 0-4.5 3-9.2 8.5-14.2z" fill="none" stroke="#5a7a2e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M15 23.5c3.9-1 7-3.3 9.1-7" fill="none" stroke="#5a7a2e" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="18" cy="18" r="18" fill="#5a7a2e" opacity="0.10"/>
+      <path d="M17.7 7.5c5.3 5.1 8.1 9.8 8.1 14.2 0 5.6-3.5 9.4-8.3 9.4-4.9 0-8.3-3.8-8.3-9.4 0-4.5 3-9.2 8.5-14.2z" fill="none" stroke="#4f7028" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M15 23.5c3.9-1 7-3.3 9.1-7" fill="none" stroke="#4f7028" stroke-width="2.4" stroke-linecap="round"/>
     </g>
-    <text x="54" y="21" fill="#0a0a0a" font-family="Switzer, Inter, Helvetica, Arial, sans-serif" font-size="18" font-weight="800" letter-spacing="4.5">HILLARY ESPOSITO</text>
-    <text x="54" y="55" fill="#5f594f" font-family="Optima, Georgia, serif" font-size="20" font-style="italic">www.hillaryesposito.org</text>
+    <text x="58" y="20" fill="#0a0a0a" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="800" letter-spacing="4">HILLARY ESPOSITO</text>
+    <text x="58" y="58" fill="#3d352e" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="600" letter-spacing="0.2">www.hillaryesposito.org</text>
   </g>
 
-  <g transform="translate(836 104)" text-anchor="end">
-    <text x="560" y="0" fill="#5a7a2e" font-family="Switzer, Inter, Helvetica, Arial, sans-serif" font-size="16" font-weight="800" letter-spacing="3.8">UX &amp; PRODUCT DESIGNER</text>
-    <text x="560" y="70" fill="#0a0a0a" font-family="Switzer, Inter, Helvetica, Arial, sans-serif" font-size="42" font-weight="800" letter-spacing="0">
+  <g transform="translate(812 104)" text-anchor="end">
+    <text x="584" y="0" fill="#4f7028" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="800" letter-spacing="3.6">UX &amp; PRODUCT DESIGNER</text>
+    <text x="584" y="70" fill="#050505" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="800" letter-spacing="-0.2">
       Designing trusted tools
     </text>
-    <text x="560" y="120" fill="#0a0a0a" font-family="Switzer, Inter, Helvetica, Arial, sans-serif" font-size="42" font-weight="800" letter-spacing="0">
+    <text x="584" y="120" fill="#050505" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="800" letter-spacing="-0.2">
       for complex systems.
     </text>
-    <text x="560" y="178" fill="#4d473e" font-family="Optima, Georgia, serif" font-size="22" font-style="italic">
+    <text x="584" y="178" fill="#3d352e" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="600">
       Healthcare Systems · Human-Centered Process Design · Army Veteran
     </text>
   </g>
