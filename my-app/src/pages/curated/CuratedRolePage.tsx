@@ -118,6 +118,10 @@ export default function CuratedRolePage() {
               <p>Reusable crops and modules for launch, email, product detail, and last-call moments.</p>
             </article>
           </div>
+
+          <Link to="/curated/fashion-campaign-system" className="fashion-artifact-link">
+            Open the full campaign system →
+          </Link>
         </section>
       )}
 

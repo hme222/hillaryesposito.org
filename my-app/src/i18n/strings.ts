@@ -121,10 +121,10 @@ const en = {
 
   // ── Home: tailored paths ──
   "home.fashionBridgeAria": "Tailored page for fashion and graphic design roles",
-  "home.fashionBridgeEyebrow": "Applying for fashion, luxury, or graphic design?",
+  "home.fashionBridgeEyebrow": "Visual design for brand-led teams",
   "home.fashionBridgeText":
-    "View the visual design fit: campaign hierarchy, ecommerce content, social/email systems, production craft, and brand-system thinking.",
-  "home.fashionBridgeLink": "View visual design fit →",
+    "A curated fashion campaign system showing campaign hierarchy, ecommerce modules, social and email assets, production craft, and brand-system thinking.",
+  "home.fashionBridgeLink": "View campaign system →",
 
   // ── Home: contact / CTA ──
   "home.contactAria": "Contact section",
@@ -252,10 +252,10 @@ const es: Partial<Record<StringKey, string>> = {
 
   // ── Home: tailored paths ──
   "home.fashionBridgeAria": "Página adaptada para roles de moda y diseño gráfico",
-  "home.fashionBridgeEyebrow": "¿Moda, lujo o diseño gráfico?",
+  "home.fashionBridgeEyebrow": "Diseño visual para equipos de marca",
   "home.fashionBridgeText":
-    "Vea el ajuste de diseño visual: jerarquía de campaña, contenido ecommerce, sistemas social/email, producción y sistema de marca.",
-  "home.fashionBridgeLink": "Ver ajuste de diseño visual →",
+    "Un sistema de campaña de moda curado que muestra jerarquía, módulos ecommerce, piezas para redes y email, producción y pensamiento de sistema de marca.",
+  "home.fashionBridgeLink": "Ver sistema de campaña →",
 
   // ── Home: contact / CTA ──
   "home.contactAria": "Sección de contacto",
