@@ -59,9 +59,27 @@
   --shadow-olive: 0 2px 4px rgba(90, 122, 46, 0.08), 0 16px 32px rgba(90, 122, 46, 0.12);
 
   /* Layout */
-  --page-pad: 5%;
-  --case-max: 900px;
-  --wide-max: 1240px;
+  --page-pad: clamp(3rem, 5vw, 5.25rem);
+  --case-max: 940px;
+  --wide-max: 1180px;
+
+  /* Three responsive locks:
+     Mobile QA: 390px · Mid QA: 900px · Desktop QA: 1440px */
+  --space-section: 6rem;
+  --space-section-tight: 4rem;
+  --space-grid: 1.25rem;
+  --card-pad: 1.4rem;
+  --measure: 68ch;
+  --measure-tight: 52ch;
+  --type-hero-name: clamp(4.2rem, 5.4vw, 5.9rem);
+  --type-hero-title: clamp(2.2rem, 3.2vw, 3.4rem);
+  --type-section-title: clamp(2.1rem, 3vw, 3rem);
+  --type-card-title: 1.35rem;
+  --type-body: 1rem;
+  --type-lede: 1.12rem;
+  --type-small: 0.9rem;
+  --line-body: 1.72;
+  --line-heading: 1.05;
 }
 /* "Matcha and Honey" dark palette: warm-black ground, ivory text, honey accent.
    Sage lives in the knot; honey in the UI accents. Grouped selector so the
@@ -234,6 +252,56 @@ body {
 }
 p, li, td, blockquote, .cs-body-text, .cs-section-intro, .cs-overview-text {
   font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+.section-title,
+.hero-title,
+.hero-positioning,
+.about-title,
+.about-growth-title,
+.about-cta-title,
+.home-proj-title,
+.cs-section-title,
+.case-study h1,
+.case-study h2,
+.case-study h3 {
+  text-wrap: balance;
+}
+
+p,
+li,
+blockquote,
+figcaption,
+.hero-description,
+.about-hero-subtext,
+.mini-about-blurb,
+.home-proj-desc,
+.home-proof-label,
+.cs-overview-text,
+.cs-skim-card p,
+.cs-outcome-label,
+.gh-hero__intro,
+.recruiter-panel p {
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+}
+
+.hero-description,
+.about-intro,
+.about-hero-subtext,
+.home-proj-subtitle,
+.home-tailored-path__eyebrow,
+.gh-hero__copy .meta,
+.case-study .meta,
+.gh-section-label {
+  text-wrap: balance;
+}
+
+.u-nowrap {
+  white-space: nowrap;
 }
 a {
   color: inherit;
@@ -939,9 +1007,11 @@ select:focus {
 /* ========================= CASE STUDY (GLOBAL) ========================= */
 .case-study {
   max-width: var(--case-max);
+  width: min(var(--case-max), calc(100% - 2rem));
   margin: 0 auto;
-  padding: 10px var(--page-pad) 10px;
+  padding: 10px 0;
   line-height: 1.8;
+  overflow-x: clip;
 }
 .case-study h1 {
   font-size: 3.5rem;
@@ -1280,14 +1350,14 @@ select:focus {
    the knot shows to the edges without fading (readability comes from the scrim
    behind the lede/copy, not from fading the knot). */
 .home-hero .hero-knot {
-  opacity: 0.5;
+  opacity: 0.28;
 }
 /* Dark mode (class is on <html>, so target .dark-mode, not body.dark-mode):
    the olive/amber balls sit on a near-black ground, so lift them out of the
    murk rather than dimming them into it, and mute the ambient orbs that
    otherwise wash the background muddy-brown. */
 .dark-mode .home-hero .hero-knot {
-  opacity: 0.85;
+  opacity: 0.52;
 }
 .dark-mode .orb-bg {
   opacity: 0.4;
@@ -1405,7 +1475,7 @@ select:focus {
   /* Balls read a touch stronger on mobile since the nav labels are hidden here
      and the knot is purely decorative. */
   .home-hero .hero-knot {
-    opacity: 0.36;
+    opacity: 0.22;
   }
 }
 .hero-content--centered .hero-positioning,
@@ -3080,6 +3150,10 @@ body.dark-mode .nav-overlay-backdrop,
   align-items: center;
   margin-bottom: 2.5rem;
 }
+
+.gh-hero__copy {
+  min-width: 0;
+}
  
 .gh-hero__copy .meta {
   margin-bottom: 0.75rem;
@@ -3094,6 +3168,7 @@ body.dark-mode .nav-overlay-backdrop,
   color: var(--muted);
   line-height: 1.85;
   max-width: 58ch;
+  overflow-wrap: break-word;
 }
  
 /* Phone frame */
@@ -3586,10 +3661,11 @@ body.dark-mode .nav-overlay-backdrop,
   .gh-hero {
     grid-template-columns: 1fr;
     gap: 2rem;
+    width: 100%;
   }
   .gh-hero__visual {
     order: -1;   /* phone appears above text on mobile */
-    justify-content: flex-start;
+    justify-content: center;
   }
   .gh-phone-frame {
     max-width: 180px;
@@ -3603,6 +3679,7 @@ body.dark-mode .nav-overlay-backdrop,
   .gh-meta-strip {
     gap: 0.75rem;
     flex-wrap: wrap;
+    width: 100%;
   }
   .gh-meta-strip__divider {
     display: none;
@@ -3614,6 +3691,31 @@ body.dark-mode .nav-overlay-backdrop,
 }
  
 @media (max-width: 600px) {
+  .case-study {
+    width: calc(100vw - 2rem);
+    max-width: calc(100vw - 2rem);
+  }
+  .gh-hero,
+  .gh-hero__copy,
+  .gh-hero__intro,
+  .case-study .meta {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  .case-study .meta {
+    font-size: 1rem;
+    overflow-wrap: anywhere;
+  }
+  .case-study h1 {
+    font-size: clamp(2.5rem, 13vw, 3.1rem);
+  }
+  .gh-hero__intro {
+    font-size: 1rem;
+    line-height: 1.75;
+    overflow-wrap: anywhere;
+  }
   .gh-process-grid,
   .gh-impact-grid,
   .gh-other-projects__grid {
@@ -5805,37 +5907,16 @@ body.dark-mode .nav-overlay-backdrop,
   }
 }
 
-.home-credentials-bar {
-  padding: 1rem var(--page-pad);
-  display: flex;
-  justify-content: center;
-}
-.home-credentials-inline {
-  max-width: min(100%, 48rem);
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--text-3);
-  letter-spacing: 0.03em;
-  text-align: center;
-  margin: 0;
-  line-height: 1.6;
-}
-@media (max-width: 600px) {
-  .home-credentials-inline {
-    font-size: 0.75rem;
-  }
-}
-
 /* ── Proof stats row ── */
 .home-proof-section {
-  padding: 80px var(--page-pad) 80px;
+  padding: 64px var(--page-pad) 72px;
   background: var(--bg);
 }
 .home-proof-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.25rem;
-  max-width: 960px;
+  max-width: 800px;
   margin: 0 auto;
   text-align: center;
 }
@@ -5858,8 +5939,9 @@ body.dark-mode .nav-overlay-backdrop,
 }
 @media (max-width: 640px) {
   .home-proof-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 1rem;
+    text-align: left;
   }
   .home-proof-value {
     font-size: 1.8rem;
@@ -5868,17 +5950,15 @@ body.dark-mode .nav-overlay-backdrop,
 
 /* ── Tailored application path ── */
 .home-tailored-path {
-  width: min(1120px, calc(100% - 2 * var(--page-pad)));
-  margin: -0.75rem auto 0;
-  padding: clamp(1rem, 2vw, 1.25rem) clamp(1rem, 3vw, 1.5rem);
+  width: min(1120px, 100%);
+  margin: clamp(1.5rem, 4vw, 2.5rem) auto 0;
+  padding: 1.1rem 0 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1.25rem;
-  border: 1px solid color-mix(in srgb, var(--olive-2) 22%, var(--border));
-  border-radius: 14px;
-  background:
-    linear-gradient(135deg, color-mix(in srgb, var(--olive-2) 8%, var(--surface-0)), color-mix(in srgb, #8b1e3f 5%, var(--surface-1)));
+  border-top: 1px solid var(--border);
+  background: transparent;
 }
 
 .home-tailored-path__copy {
@@ -5897,10 +5977,10 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 .home-tailored-path__copy p:not(.home-tailored-path__eyebrow) {
-  max-width: 64ch;
+  max-width: 56ch;
   margin: 0;
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   line-height: 1.55;
 }
 
@@ -5920,121 +6000,10 @@ body.dark-mode .nav-overlay-backdrop,
   text-underline-offset: 0.28em;
 }
 
-/* ── Role-fit cards ── */
-.home-role-fit-section {
-  padding: 32px var(--page-pad) 72px;
-  background: var(--bg);
-}
-.home-role-fit-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1rem;
-  max-width: 1120px;
-  margin: 0 auto;
-}
-.home-role-fit-card {
-  padding: 1.35rem;
-  min-height: 100%;
-}
-.home-role-fit-card__num {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  margin-bottom: 0.85rem;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--olive-2) 12%, var(--surface-0));
-  color: var(--olive-2);
-  font-family: var(--font-head);
-  font-size: 0.78rem;
-  font-weight: 700;
-}
-.home-role-fit-card__title {
-  margin: 0 0 0.55rem;
-  color: var(--fg);
-  font-size: 1rem;
-  line-height: 1.25;
-}
-.home-role-fit-card__desc {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.9rem;
-  line-height: 1.6;
-}
 @media (max-width: 980px) {
-  .home-role-fit-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
   .home-tailored-path {
     align-items: flex-start;
     flex-direction: column;
-  }
-}
-
-/* ── Product proof near the top of Home ── */
-.home-product-proof {
-  display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-  gap: clamp(1.5rem, 4vw, 3rem);
-  align-items: center;
-  width: min(1120px, calc(100% - 2 * var(--page-pad)));
-  margin: 0 auto;
-  padding: 40px 0 64px;
-}
-
-.home-product-proof__copy h2 {
-  margin: 0 0 0.75rem;
-  color: var(--fg);
-  font-size: clamp(1.8rem, 3vw, 2.4rem);
-  line-height: 1.15;
-}
-
-.home-product-proof__copy p:not(.home-eyebrow) {
-  margin: 0;
-  color: var(--muted);
-  font-size: 1rem;
-  line-height: 1.7;
-}
-
-.home-product-proof__visuals {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(120px, 0.34fr);
-  gap: 1rem;
-  align-items: center;
-}
-
-.home-grove-mini-phone {
-  aspect-ratio: 9 / 16;
-  max-height: 320px;
-  border: 8px solid var(--fg);
-  border-radius: 28px;
-  background: #f5f0e8;
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-}
-
-.home-grove-mini-phone img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
-
-@media (max-width: 900px) {
-  .home-product-proof {
-    grid-template-columns: 1fr;
-  }
-  .home-product-proof__visuals {
-    grid-template-columns: 1fr;
-  }
-  .home-grove-mini-phone {
-    display: none;
-  }
-}
-@media (max-width: 560px) {
-  .home-role-fit-grid {
-    grid-template-columns: 1fr;
   }
 }
 
@@ -9003,11 +8972,102 @@ body.dark-mode .nav-overlay-backdrop,
   margin: 0 auto 3rem;
   padding: 0 var(--page-pad);
 }
+.case-study section[id],
+.cs-skim[id],
+.cs-outcome[id] {
+  scroll-margin-top: 96px;
+}
+.cs-jump-nav {
+  position: sticky;
+  top: 74px;
+  z-index: 20;
+  width: min(var(--case-max), calc(100% - 2 * var(--page-pad)));
+  margin: 0 auto 2.25rem;
+  padding: 0.55rem;
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface-0) 86%, transparent);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: var(--shadow-sm);
+}
+.cs-jump-nav a {
+  flex: 0 0 auto;
+  min-height: 36px;
+  padding: 0.55rem 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  color: var(--text-2);
+  font-family: var(--font-head);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.cs-jump-nav a:hover,
+.cs-jump-nav a:focus-visible {
+  background: color-mix(in srgb, var(--olive-2) 12%, transparent);
+  color: var(--fg);
+}
 .cs-overview-text {
   font-size: 1.15rem;
   line-height: 1.75;
   color: var(--text-2);
   max-width: 65ch;
+}
+.cs-skim {
+  max-width: var(--case-max);
+  margin: 0 auto 3rem;
+  padding: 0 var(--page-pad);
+}
+.cs-skim-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+.cs-skim-card {
+  padding: 1.15rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-1);
+}
+.cs-skim-card span {
+  display: block;
+  margin-bottom: 0.55rem;
+  color: var(--olive-2);
+  font-family: var(--font-head);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.cs-skim-card p {
+  margin: 0;
+  color: var(--text-1);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+.spanish-case-note {
+  margin-top: 1rem;
+  max-width: 52ch;
+  color: var(--text-3);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+@media (max-width: 640px) {
+  .cs-jump-nav {
+    top: 68px;
+    width: calc(100% - 1.5rem);
+    margin-bottom: 1.75rem;
+    border-radius: 18px;
+  }
 }
 .cs-challenge {
   max-width: var(--case-max);
@@ -11030,6 +11090,9 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 @media (max-width: 640px) {
+  .cs-skim-grid {
+    grid-template-columns: 1fr;
+  }
   .curated-sequence__item {
     padding-left: 1.2rem;
     padding-top: 3.35rem;
@@ -11080,4 +11143,275 @@ body.dark-mode .nav-overlay-backdrop,
   .fashion-spec-table {
     overflow-x: auto;
   }
+}
+
+/* Final mobile containment pass for case studies.
+   This sits at the end intentionally so older case-study blocks cannot stretch
+   hero copy beyond the viewport on narrow screens. */
+@media (max-width: 640px) {
+  .case-study {
+    width: min(100% - 2rem, 100vw - 2rem) !important;
+    max-width: calc(100vw - 2rem) !important;
+    margin-inline: auto !important;
+    padding-inline: 0 !important;
+    overflow-x: clip;
+  }
+
+  .case-study *,
+  .case-study *::before,
+  .case-study *::after {
+    box-sizing: border-box;
+  }
+
+  .gh-hero {
+    width: 100% !important;
+    max-width: 100% !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 1.65rem;
+    margin-inline: 0;
+  }
+
+  .gh-hero__copy,
+  .gh-hero__intro,
+  .case-study .meta {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .case-study .meta {
+    display: block;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+
+  .gh-hero__intro {
+    max-width: 34ch;
+    font-size: 1rem;
+    line-height: 1.72;
+    overflow-wrap: anywhere;
+  }
+
+  .cs-jump-nav {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0;
+  }
+}
+
+/* Final minimalist mobile hero containment. */
+@media (max-width: 640px) {
+  .home-hero,
+  .home-hero .hero-content,
+  .home-hero .hero-lede,
+  .home-hero .hero-copy {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    overflow-x: clip;
+  }
+
+  .hero-content--centered .hero-positioning {
+    width: min(100%, 18rem);
+    max-width: calc(100vw - 2rem);
+    font-size: clamp(1.05rem, 4.8vw, 1.22rem);
+    overflow-wrap: break-word;
+    text-wrap: balance;
+  }
+
+  .hero-content--centered .hero-description {
+    width: min(100%, 18rem);
+    max-width: calc(100vw - 2rem);
+  }
+
+  .about-hero {
+    width: min(var(--case-max), calc(100% - 2 * var(--page-pad)));
+    max-width: calc(100% - 2 * var(--page-pad));
+    min-width: 0;
+    box-sizing: border-box;
+    overflow-x: clip;
+  }
+
+  .about-hero-content {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    overflow-x: clip;
+  }
+
+  .about-intro {
+    width: min(100%, 31ch);
+    max-width: calc(100vw - 2rem);
+    text-wrap: pretty;
+    overflow-wrap: break-word;
+  }
+
+  .about-title,
+  .about-hero-subtext {
+    max-width: calc(100vw - 2rem);
+    overflow-wrap: break-word;
+  }
+}
+
+/* ============================================================
+   THREE RESPONSIVE LOCKS
+   QA the portfolio at 390px, 900px, and 1440px.
+   These tokens control the shared rhythm while component-specific
+   breakpoints still handle layout shifts like grids and mockups.
+   ============================================================ */
+@media (max-width: 640px) {
+  :root {
+    --page-pad: clamp(1rem, 5.8vw, 1.45rem);
+    --case-max: 100%;
+    --wide-max: 100%;
+    --space-section: 4.25rem;
+    --space-section-tight: 2.75rem;
+    --space-grid: 0.95rem;
+    --card-pad: 1rem;
+    --measure: 34ch;
+    --measure-tight: 30ch;
+    --type-hero-name: clamp(3.2rem, 15vw, 4.15rem);
+    --type-hero-title: clamp(2rem, 8.2vw, 2.75rem);
+    --type-section-title: clamp(1.8rem, 7vw, 2.35rem);
+    --type-card-title: 1.08rem;
+    --type-body: 1rem;
+    --type-lede: 1.03rem;
+    --type-small: 0.88rem;
+    --line-body: 1.68;
+    --line-heading: 1.02;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1100px) {
+  :root {
+    --page-pad: clamp(2rem, 5vw, 3.5rem);
+    --case-max: 860px;
+    --wide-max: 980px;
+    --space-section: 5rem;
+    --space-section-tight: 3.25rem;
+    --space-grid: 1.1rem;
+    --card-pad: 1.2rem;
+    --measure: 60ch;
+    --measure-tight: 48ch;
+    --type-hero-name: clamp(3.6rem, 7.2vw, 4.7rem);
+    --type-hero-title: clamp(2rem, 4.2vw, 2.65rem);
+    --type-section-title: clamp(2rem, 4.4vw, 2.7rem);
+    --type-card-title: 1.2rem;
+    --type-body: 1rem;
+    --type-lede: 1.08rem;
+  }
+}
+
+@media (min-width: 1101px) {
+  :root {
+    --page-pad: clamp(3rem, 5vw, 5.25rem);
+    --case-max: 940px;
+    --wide-max: 1180px;
+    --space-section: 6rem;
+    --space-section-tight: 4rem;
+    --space-grid: 1.25rem;
+    --card-pad: 1.4rem;
+    --measure: 68ch;
+    --measure-tight: 52ch;
+    --type-body: 1rem;
+    --type-lede: 1.12rem;
+  }
+}
+
+body {
+  font-size: var(--type-body);
+}
+
+.hero-title {
+  font-size: var(--type-hero-name);
+  line-height: 0.9;
+}
+
+.hero-positioning,
+.about-title,
+.gh-hero__title,
+.case-study h1 {
+  font-size: var(--type-hero-title);
+  line-height: var(--line-heading);
+}
+
+.section-title,
+.home-section-title,
+.about-growth-title,
+.about-cta-title,
+.cs-section-title,
+.case-study h2 {
+  font-size: var(--type-section-title);
+  line-height: 1.08;
+}
+
+.home-proj-title,
+.feature h3,
+.cs-reflection-card h3,
+.cs-outcome-card h3,
+.case-study h3 {
+  font-size: var(--type-card-title);
+  line-height: 1.18;
+}
+
+.hero-description,
+.about-hero-subtext,
+.mini-about-blurb,
+.home-proj-desc,
+.cs-overview-text,
+.gh-hero__intro,
+.case-study p,
+.case-study li {
+  font-size: var(--type-body);
+  line-height: var(--line-body);
+}
+
+.hero-positioning,
+.about-intro,
+.home-proj-subtitle,
+.gh-section-label,
+.case-study .meta {
+  max-width: var(--measure-tight);
+}
+
+.hero-description,
+.mini-about-blurb,
+.about-hero-subtext,
+.cs-overview-text,
+.gh-hero__intro {
+  max-width: var(--measure);
+}
+
+.home-proof-section,
+.home-projects-section,
+.home-mini-about,
+.home-cta-section,
+.about-story-section,
+.about-feedback-section,
+.about-cta,
+.case-study section {
+  scroll-margin-top: 96px;
+}
+
+.home-projects-list,
+.cs-outcome-grid,
+.cs-reflections-grid,
+.gh-features-grid,
+.grove-states-grid {
+  gap: var(--space-grid);
+}
+
+.feature,
+.home-proj-info,
+.cs-outcome-card,
+.cs-reflection-card,
+.about-story-card,
+.about-cta-card,
+.media-card {
+  padding: var(--card-pad);
 }

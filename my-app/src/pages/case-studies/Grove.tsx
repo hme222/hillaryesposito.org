@@ -123,7 +123,7 @@ export default function GroveCaseStudy() {
       {/* ── HERO ── */}
       <header className="gh-hero">
         <div className="gh-hero__copy">
-          <p className="meta">Product Design · AI + Design · Full-Stack App · React · FastAPI</p>
+          <p className="meta">Product Design · AI Product · Full-Stack Prototype</p>
           <h1>Grove</h1>
           <p className="gh-hero__intro">
             Plant parents kill their plants because the care advice they find doesn't
@@ -162,6 +162,37 @@ export default function GroveCaseStudy() {
           </React.Fragment>
         ))}
       </div>
+
+      <nav className="cs-jump-nav" aria-label="Jump to Grove case study sections">
+        <a href="#grove-summary">Summary</a>
+        <a href="#grove-research">Research</a>
+        <a href="#grove-flow">Flow</a>
+        <a href="#grove-screens">Screens</a>
+        <a href="#grove-outcomes">Outcomes</a>
+      </nav>
+
+      <section id="grove-summary" className="cs-skim" aria-labelledby="grove-skim-title">
+        <p className="gh-section-label">Read this first</p>
+        <h2 id="grove-skim-title" className="cs-section-title">The short version</h2>
+        <div className="cs-skim-grid">
+          <article className="cs-skim-card">
+            <span>Problem</span>
+            <p>Plant care advice is generic, conflicting, and often untrusted, while existing apps overcorrect with stressful reminders.</p>
+          </article>
+          <article className="cs-skim-card">
+            <span>My role</span>
+            <p>Solo product designer and builder: survey synthesis, MVP definition, IA, UI, AI guardrails, and working prototype iteration.</p>
+          </article>
+          <article className="cs-skim-card">
+            <span>Key decision</span>
+            <p>Prioritize trust: calm reminders, source-backed care, light education, pet safety, and human override of AI output.</p>
+          </article>
+          <article className="cs-skim-card">
+            <span>What I’d test next</span>
+            <p>Whether new plant owners find the lighting tutorial, understand AI confidence, and describe the app as helpful instead of nagging.</p>
+          </article>
+        </div>
+      </section>
 
       {/* ── THE PREMISE ── */}
       <section className="cs-overview">
@@ -214,7 +245,7 @@ export default function GroveCaseStudy() {
       </section>
 
       {/* ── LOG: WEEK 1 — RESEARCH ── */}
-      <section>
+      <section id="grove-research">
         <p className="gh-section-label">Log · Week 1 · Research</p>
         <h2>32 respondents told me what actually matters</h2>
         <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
@@ -360,7 +391,7 @@ export default function GroveCaseStudy() {
       </section>
 
       {/* ── LOG: WEEKS 1–2 — BUILD ── */}
-      <section>
+      <section id="grove-flow">
         <p className="gh-section-label">Log · Weeks 1–2 · Build</p>
         <h2>Core architecture, then the core care loop</h2>
         <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
@@ -591,7 +622,7 @@ export default function GroveCaseStudy() {
       </section>
 
       {/* ── THE PRODUCT TODAY ── */}
-      <section>
+      <section id="grove-screens">
         <p className="gh-section-label">The product today</p>
         <h2>What Grove looks like</h2>
         <p style={{ maxWidth: 640, marginBottom: "0.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
@@ -619,7 +650,7 @@ export default function GroveCaseStudy() {
       </section>
 
       {/* ── WHERE IT STANDS ── */}
-      <section className="cs-outcome">
+      <section id="grove-outcomes" className="cs-outcome">
         <p className="gh-section-label">Where it stands</p>
         <h2 className="cs-section-title">Research artifacts + working product</h2>
         <div className="cs-outcome-grid">

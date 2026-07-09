@@ -5,7 +5,6 @@ import { useNavigate, Link, useLocation } from "react-router-dom";
 import usePageTitle from "../hooks/usePageTitle";
 import { useT } from "../app/LanguageContext";
 import type { StringKey } from "../i18n/strings";
-import MSKDashboardMockup from "../components/MSKDashboardMockup";
 
 // Lazy-loaded so three.js stays in its own chunk (only fetched when needed).
 const WorkflowKnot = lazy(() => import("../components/WorkflowKnot"));
@@ -291,30 +290,7 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════
-          CREDENTIALS — single inline strip
-      ══════════════════════════════════════════ */}
-      <section className="home-credentials-bar" aria-label={t("home.credentialsAria")}>
-        <p className="home-credentials-inline">
-          {t("home.credentials")}
-        </p>
-      </section>
-
-      <section className="home-product-proof" aria-label={t("home.productProofAria")}>
-        <div className="home-product-proof__copy">
-          <p className="home-eyebrow">{t("home.productProofEyebrow")}</p>
-          <h2>{t("home.productProofTitle")}</h2>
-          <p>{t("home.productProofBody")}</p>
-        </div>
-        <div className="home-product-proof__visuals">
-          <MSKDashboardMockup compact />
-          <div className="home-grove-mini-phone" aria-hidden="true">
-            <img src="/assets/grove/care.png" alt="" loading="lazy" />
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════
-          2. PROOF — stats that back up the hero claim
+          2. PROOF — three numbers that back up the hero claim
       ══════════════════════════════════════════ */}
       <section className="section active home-proof-section" aria-label={t("home.proofAria")}>
         <motion.div
@@ -325,10 +301,9 @@ export default function Home() {
           transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
         >
           {([
-            { value: "13+",  labelKey: "home.stat.years" },
             { value: "21K+", labelKey: "home.stat.clinicians" },
-            { value: "85%",  labelKey: "home.stat.resupply" },
             { value: "20%",  labelKey: "home.stat.emr" },
+            { value: "32",   labelKey: "home.stat.grove" },
           ] as { value: string; labelKey: StringKey }[]).map((s) => (
             <div key={s.labelKey} className="home-proof-card">
               <p className="home-proof-value gradient-text">{s.value}</p>
@@ -450,38 +425,15 @@ export default function Home() {
             );
           })}
         </div>
-      </section>
 
-      <section className="home-tailored-path" aria-label={t("home.fashionBridgeAria")}>
-        <div className="home-tailored-path__copy">
-          <p className="home-tailored-path__eyebrow">{t("home.fashionBridgeEyebrow")}</p>
-          <p>{t("home.fashionBridgeText")}</p>
-        </div>
-        <Link to="/curated/fashion-graphic-designer" className="home-tailored-path__link">
-          {t("home.fashionBridgeLink")}
-        </Link>
-      </section>
-
-
-      <section className="home-role-fit-section" aria-label={t("home.fitAria")}>
-        <div className="home-section-header">
-          <p className="home-eyebrow">{t("home.fitEyebrow")}</p>
-          <h2 className="section-title home-section-title">{t("home.fitTitle")}</h2>
-        </div>
-
-        <div className="home-role-fit-grid">
-          {([
-            ["01", "home.fit.internal.title", "home.fit.internal.desc"],
-            ["02", "home.fit.roles.title", "home.fit.roles.desc"],
-            ["03", "home.fit.logic.title", "home.fit.logic.desc"],
-            ["04", "home.fit.ai.title", "home.fit.ai.desc"],
-          ] as [string, StringKey, StringKey][]).map(([num, titleKey, descKey]) => (
-            <article key={titleKey} className="home-role-fit-card feature">
-              <span className="home-role-fit-card__num" aria-hidden="true">{num}</span>
-              <h3 className="home-role-fit-card__title">{t(titleKey)}</h3>
-              <p className="home-role-fit-card__desc">{t(descKey)}</p>
-            </article>
-          ))}
+        <div className="home-tailored-path" aria-label={t("home.fashionBridgeAria")}>
+          <div className="home-tailored-path__copy">
+            <p className="home-tailored-path__eyebrow">{t("home.fashionBridgeEyebrow")}</p>
+            <p>{t("home.fashionBridgeText")}</p>
+          </div>
+          <Link to="/curated/fashion-graphic-designer" className="home-tailored-path__link">
+            {t("home.fashionBridgeLink")}
+          </Link>
         </div>
       </section>
 

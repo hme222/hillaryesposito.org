@@ -28,6 +28,9 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
           <p className="meta">{data.meta}</p>
           <h1>{data.title}</h1>
           <p className="gh-hero__intro">{data.intro}</p>
+          <p className="spanish-case-note">
+            Resumen en español. La versión completa del estudio de caso está disponible en inglés.
+          </p>
         </div>
       </header>
 

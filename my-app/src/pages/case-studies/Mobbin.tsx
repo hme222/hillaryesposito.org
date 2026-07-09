@@ -109,8 +109,16 @@ export default function MobbinCaseStudy() {
         ))}
       </div>
 
+      <nav className="cs-jump-nav" aria-label="Jump to Mobbin case study sections">
+        <a href="#mobbin-work">Work</a>
+        <a href="#mobbin-apps">Apps</a>
+        <a href="#mobbin-entry">Entry</a>
+        <a href="#mobbin-lesson">Lesson</a>
+        <a href="#mobbin-outcomes">Outcome</a>
+      </nav>
+
       {/* ── THE WORK ── */}
-      <section className="cs-overview">
+      <section id="mobbin-work" className="cs-overview">
         <p className="gh-section-label">The work</p>
         <h2 className="cs-section-title">Flow documentation is editorial judgment</h2>
         <p className="cs-overview-text">
@@ -169,7 +177,7 @@ export default function MobbinCaseStudy() {
       </section>
 
       {/* ── THREE APPS, ONE TRUST PROBLEM ── */}
-      <section aria-label="The three apps">
+      <section id="mobbin-apps" aria-label="The three apps">
         <p className="gh-section-label">Three apps, one trust problem</p>
         <h2>Same goal, three completely different approaches</h2>
         <p style={{ maxWidth: 720, marginBottom: "2rem", color: "var(--muted)", lineHeight: 1.7 }}>
@@ -231,7 +239,7 @@ export default function MobbinCaseStudy() {
       </section>
 
       {/* ── ONE ENTRY, UP CLOSE ── */}
-      <section>
+      <section id="mobbin-entry">
         <p className="gh-section-label">One entry, up close</p>
         <h2>Anatomy of a pattern entry</h2>
         <p style={{ maxWidth: 720, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.7 }}>
@@ -276,7 +284,7 @@ export default function MobbinCaseStudy() {
       </section>
 
       {/* ── THE LESSON ── */}
-      <section>
+      <section id="mobbin-lesson">
         <p className="gh-section-label">The lesson</p>
         <h2>Naming is harder than designing</h2>
         <Disclosure title="Show the taxonomy lesson and revision story">
@@ -302,7 +310,7 @@ export default function MobbinCaseStudy() {
       </section>
 
       {/* ── WHERE IT LANDED ── */}
-      <section className="cs-outcome">
+      <section id="mobbin-outcomes" className="cs-outcome">
         <p className="gh-section-label">Where it landed</p>
         <h2 className="cs-section-title">Contributing to Mobbin's Finance+ library</h2>
         <p className="cs-overview-text" style={{ maxWidth: 720 }}>

@@ -102,22 +102,21 @@ export default function RecruiterPill() {
               <div className="recruiter-panel__body">
                 <section className="recruiter-panel__section recruiter-panel__vitals">
                   <div className="recruiter-panel__vitals-grid">
-                    <span>13+ years high-stakes systems</span>
-                    <span>MHA, Rutgers</span>
-                    <span>Internal tools + healthcare UX</span>
+                    <span>UX/Product Designer</span>
+                    <span>Healthcare + internal tools</span>
                     <span>Currently freelancing</span>
                   </div>
                 </section>
 
                 <section className="recruiter-panel__section">
                   <p className="recruiter-panel__label">In one line</p>
-                  <p>UX/Product Designer who designs trusted tools for complex healthcare and internal workflows. Strongest in healthcare systems, role-based workflows, internal tools, and AI-assisted product design.</p>
+                  <p>UX/Product Designer for healthcare systems and internal tools, with proof across MSK, Grove, Good Harvest, and Mobbin.</p>
                 </section>
 
                 <section className="recruiter-panel__section">
                   <p className="recruiter-panel__label">Strengths</p>
                   <div className="recruiter-panel__chips">
-                    {["Healthcare Systems UX", "Internal Tools", "Healthcare Workflows", "Role-Based Systems", "AI Judgment", "Bilingual EN/ES", "Army Veteran"].map((s) => (
+                    {["Healthcare Systems UX", "Internal Tools", "AI Judgment", "Army\u00a0Veteran"].map((s) => (
                       <span key={s} className="recruiter-panel__chip">{s}</span>
                     ))}
                   </div>

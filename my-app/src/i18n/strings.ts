@@ -24,6 +24,7 @@ const en = {
   "nav.menuOpen": "Open menu",
   "nav.menuClose": "Close menu",
   "nav.home": "HOME",
+  "nav.work": "WORK",
   "nav.projects": "PROJECTS",
   "nav.about": "ABOUT",
   "nav.contact": "CONTACT",
@@ -42,7 +43,7 @@ const en = {
   "home.positioning":
     "I design trusted tools for complex healthcare and internal workflows.",
   "home.description":
-    "UX & Product Designer focused on healthcare systems, internal tools, role-based workflows, and AI-assisted product design. Army veteran.",
+    "Healthcare systems, internal tools, AI-assisted product design, and Army\u00a0Veteran\u00a0perspective.",
   "home.getInTouch": "Get in touch",
   "home.seeApproach": "See my approach →",
   "home.replay": "Replay",
@@ -53,7 +54,7 @@ const en = {
   "home.about.photoAlt": "Portrait of Hillary Esposito",
   "home.about.eyebrow": "A little about me",
   "home.about.blurb":
-    "I've spent 13 years inside systems where failure has consequences: military medical logistics, cancer care operations, internal workflows, and AI-assisted product work. Systems do not fail in flowcharts. They fail at the point where a real person has to use them, and that is where I design.",
+    "I’ve spent 13 years inside high-stakes systems across military medical logistics, cancer care operations, internal workflows, and AI-assisted product work. I design where the workflow meets the person using it.",
   "home.about.link": "More about me →",
 
   // ── Home: credentials strip ──
@@ -73,6 +74,7 @@ const en = {
   "home.stat.clinicians": "Clinicians impacted, MSK Cancer Center",
   "home.stat.resupply": "Faster resupply, NJ Army National Guard",
   "home.stat.emr": "EMR cost reduction, MSK Cancer Center",
+  "home.stat.grove": "Survey respondents shaped Grove's MVP",
 
   // ── Home: role fit ──
   "home.fitAria": "Role fit highlights",
@@ -120,17 +122,17 @@ const en = {
   "home.proj.soonAria": "{title}, coming soon",
 
   // ── Home: tailored paths ──
-  "home.fashionBridgeAria": "Tailored page for fashion and graphic design roles",
-  "home.fashionBridgeEyebrow": "Visual design for brand-led teams",
+  "home.fashionBridgeAria": "Additional visual design artifact",
+  "home.fashionBridgeEyebrow": "Additional visual design artifact",
   "home.fashionBridgeText":
-    "A curated fashion campaign system showing campaign hierarchy, ecommerce modules, social and email assets, production craft, and brand-system thinking.",
+    "A speculative fashion campaign system showing campaign hierarchy, ecommerce modules, social and email assets, production craft, and brand-system thinking.",
   "home.fashionBridgeLink": "View campaign system →",
 
   // ── Home: contact / CTA ──
   "home.contactAria": "Contact section",
-  "home.ctaTitle": "Let’s talk about the system your team needs to fix",
+  "home.ctaTitle": "Let’s talk about the workflow your team needs to make clearer",
   "home.ctaBody":
-    "I design trusted tools for complex healthcare and internal workflows. If your team needs a UX/product designer who can turn messy workflows, permissions, data, and edge cases into usable tools, let’s talk.",
+    "If your team needs a UX/product designer who can turn messy workflows, permissions, data, and edge cases into usable tools, let’s talk.",
   "home.ctaEmail": "Send me a note",
   "home.ctaEmailAria": "Send me a note",
   "home.ctaCall": "Book a call →",
@@ -158,6 +160,7 @@ const es: Partial<Record<StringKey, string>> = {
   "nav.menuOpen": "Abrir menú",
   "nav.menuClose": "Cerrar menú",
   "nav.home": "INICIO",
+  "nav.work": "TRABAJO",
   "nav.projects": "PROYECTOS",
   "nav.about": "SOBRE MÍ",
   "nav.contact": "CONTACTO",
@@ -174,7 +177,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.positioning":
     "Diseño herramientas confiables para flujos complejos de salud e internos.",
   "home.description":
-    "Diseñadora UX y de producto enfocada en sistemas de salud, herramientas internas, flujos por rol y diseño de producto asistido por IA. Veterana del Ejército de EE. UU.",
+    "Sistemas de salud, herramientas internas, diseño de producto asistido por IA y perspectiva de veterana del Ejército.",
   "home.getInTouch": "Contácteme",
   "home.seeApproach": "Conozca mi enfoque →",
   "home.replay": "Repetir",
@@ -185,7 +188,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.about.photoAlt": "Retrato de Hillary Esposito",
   "home.about.eyebrow": "Un poco sobre mí",
   "home.about.blurb":
-    "Llevo 13 años dentro de sistemas donde los errores tienen consecuencias: logística médica militar, operaciones oncológicas, flujos internos y trabajo de producto asistido por IA. Los sistemas no fallan en los diagramas de flujo. Fallan en el punto donde una persona real tiene que usarlos, y ahí es donde diseño.",
+    "Llevo 13 años dentro de sistemas de alto riesgo en logística médica militar, operaciones oncológicas, flujos internos y trabajo de producto asistido por IA. Diseño donde el flujo se encuentra con la persona que tiene que usarlo.",
   "home.about.link": "Conozca más sobre mí →",
 
   // ── Home: credentials strip ──
@@ -205,6 +208,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.stat.clinicians": "Profesionales clínicos beneficiados, MSK Cancer Center",
   "home.stat.resupply": "Reabastecimiento más rápido, Guardia Nacional del Ejército de NJ",
   "home.stat.emr": "Reducción de costos del EMR, MSK Cancer Center",
+  "home.stat.grove": "Participantes de encuesta definieron el MVP de Grove",
 
   // ── Home: role fit ──
   "home.fitAria": "Fortalezas para el puesto",
@@ -251,17 +255,17 @@ const es: Partial<Record<StringKey, string>> = {
   "home.proj.soonAria": "{title}, próximamente",
 
   // ── Home: tailored paths ──
-  "home.fashionBridgeAria": "Página adaptada para roles de moda y diseño gráfico",
-  "home.fashionBridgeEyebrow": "Diseño visual para equipos de marca",
+  "home.fashionBridgeAria": "Artefacto adicional de diseño visual",
+  "home.fashionBridgeEyebrow": "Artefacto adicional de diseño visual",
   "home.fashionBridgeText":
-    "Un sistema de campaña de moda curado que muestra jerarquía, módulos ecommerce, piezas para redes y email, producción y pensamiento de sistema de marca.",
+    "Un sistema especulativo de campaña de moda que muestra jerarquía, módulos ecommerce, piezas para redes y email, producción y pensamiento de sistema de marca.",
   "home.fashionBridgeLink": "Ver sistema de campaña →",
 
   // ── Home: contact / CTA ──
   "home.contactAria": "Sección de contacto",
-  "home.ctaTitle": "Hablemos del sistema que su equipo necesita mejorar",
+  "home.ctaTitle": "Hablemos del flujo que su equipo necesita hacer más claro",
   "home.ctaBody":
-    "Diseño herramientas confiables para flujos complejos de salud e internos. Si su equipo necesita una diseñadora UX y de producto que convierta flujos, permisos, datos y casos límite en herramientas utilizables, hablemos.",
+    "Si su equipo necesita una diseñadora UX y de producto que convierta flujos, permisos, datos y casos límite en herramientas utilizables, hablemos.",
   "home.ctaEmail": "Escríbame",
   "home.ctaEmailAria": "Envíeme un correo",
   "home.ctaCall": "Agende una llamada →",

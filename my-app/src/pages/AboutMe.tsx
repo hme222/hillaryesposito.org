@@ -4,30 +4,6 @@ import usePageTitle from "../hooks/usePageTitle";
 import { useLanguage } from "../app/LanguageContext";
 import { NewsIcon, PhoneIcon } from "../components/LineIcons";
 
-// ── What I bring ─────────────────────────────────────────────────────────
-const AGENDA = [
-  {
-    icon: "01",
-    title: "UX & product design",
-    desc: "I turn unclear workflows into digital products, prototypes, and interaction models people can trust. Proof: Grove, Good Harvest, and Mobbin flow documentation.",
-  },
-  {
-    icon: "02",
-    title: "Healthcare systems",
-    desc: "MHA training and six years inside clinical operations at MSK, designing around real care-team constraints. Proof: 21,000+ clinicians impacted.",
-  },
-  {
-    icon: "03",
-    title: "Systems UX for healthcare workflows",
-    desc: "I design around roles, permissions, handoffs, statuses, and exceptions. Proof: 20% EMR cost reduction and 70% certification workflow gain.",
-  },
-  {
-    icon: "04",
-    title: "AI judgment",
-    desc: "Everyone uses AI now. The skill is knowing when to trust it and when to override it. Proof: Grove documents five AI suggestions I rejected and why.",
-  },
-];
-
 // ── Story chapters ───────────────────────────────────────────────────────
 const CHAPTERS = [
   {
@@ -74,29 +50,6 @@ const CLIENT_FEEDBACK = [
     name: "Lynette Yap",
     role: "Content and Community @ Mobbin",
     context: "Client recommendation, freelance UX flow documentation project",
-  },
-];
-
-const AGENDA_ES = [
-  {
-    icon: "01",
-    title: "Diseño UX y de producto",
-    desc: "Convierto flujos poco claros en productos digitales, prototipos y modelos de interacción que las personas pueden confiar.",
-  },
-  {
-    icon: "02",
-    title: "Sistemas de salud",
-    desc: "Formación MHA y seis años dentro de operaciones clínicas en MSK, diseñando alrededor de restricciones reales de equipos de atención.",
-  },
-  {
-    icon: "03",
-    title: "UX para flujos internos",
-    desc: "Diseño alrededor de roles, permisos, traspasos, estados y excepciones. Prueba: 20% de reducción en costos EMR y 70% de mejora en certificación.",
-  },
-  {
-    icon: "04",
-    title: "Criterio con IA",
-    desc: "La habilidad no es solo usar IA. Es saber cuándo confiar en ella, cuándo corregirla y cómo documentar la decisión humana.",
   },
 ];
 
@@ -154,7 +107,6 @@ export default function About() {
   const navigate = useNavigate();
   const lunaRef = useRef<HTMLDivElement>(null);
   const isSpanish = lang === "es";
-  const agenda = isSpanish ? AGENDA_ES : AGENDA;
   const chapters = isSpanish ? CHAPTERS_ES : CHAPTERS;
   const feedback = isSpanish ? CLIENT_FEEDBACK_ES : CLIENT_FEEDBACK;
 
@@ -186,7 +138,7 @@ export default function About() {
       <section className="about-hero">
         <div className="about-hero-content">
           <p className="about-intro">
-            {isSpanish ? "Diseñadora UX y de producto | Sistemas de salud | Herramientas internas | Veterana del Ejército" : "UX & Product Designer | Healthcare Systems | Internal Tools | Army Veteran"}
+            {isSpanish ? "Diseñadora UX y de producto para sistemas de salud y herramientas internas, con perspectiva de veterana del Ejército." : "UX & Product Designer for healthcare systems and internal tools, with Army\u00a0Veteran perspective."}
           </p>
 
           <h1 className="about-title">
@@ -204,29 +156,6 @@ export default function About() {
             alt="Hillary Esposito"
             className="about-headshot"
           />
-        </div>
-      </section>
-
-      {/* ═ WHAT I BRING ═════════════════════════════════════════════ */}
-      <section className="about-agenda" aria-label={isSpanish ? "Lo que aporto" : "What I bring"}>
-        <div className="about-agenda__header">
-          <p className="about-agenda__eyebrow">{isSpanish ? "Lo que aporto" : "What I bring"}</p>
-          <h2 className="about-growth-title">{isSpanish ? "Lo que aporto al equipo." : "What I bring to the table."}</h2>
-          <p className="about-growth-text" style={{ maxWidth: "68ch" }}>
-            {isSpanish ? "Mi filosofía central: diseñar para las personas dentro del sistema, y las métricas llegan después." : "My core philosophy: design for the humans in the system, and the metrics follow."}
-          </p>
-        </div>
-
-        <div className="about-agenda__grid">
-          {agenda.map((item) => (
-            <div key={item.title} className="about-agenda__card feature">
-              <span className="about-agenda__icon" aria-hidden="true">
-                {item.icon}
-              </span>
-              <h3 className="about-agenda__title">{item.title}</h3>
-              <p className="about-agenda__desc">{item.desc}</p>
-            </div>
-          ))}
         </div>
       </section>
 

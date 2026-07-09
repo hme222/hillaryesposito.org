@@ -104,8 +104,16 @@ export default function GoodHarvest() {
         ))}
       </div>
 
+      <nav className="cs-jump-nav" aria-label="Jump to Good Harvest case study sections">
+        <a href="#gh-overview">Overview</a>
+        <a href="#gh-research">Research</a>
+        <a href="#gh-product">Screens</a>
+        <a href="#gh-testing">Testing</a>
+        <a href="#gh-outcomes">Outcomes</a>
+      </nav>
+
       {/* ── OVERVIEW ── */}
-      <section className="cs-overview">
+      <section id="gh-overview" className="cs-overview">
         <p className="gh-section-label">Overview</p>
         <h2 className="cs-section-title">From inherited research to a heatmap-tested prototype</h2>
         <p className="cs-overview-text">
@@ -242,7 +250,7 @@ export default function GoodHarvest() {
       </section>
 
       {/* ── RESEARCH FINDINGS ── */}
-      <section>
+      <section id="gh-research">
         <p className="gh-section-label">Research findings</p>
         <h2>What the research revealed</h2>
         <div className="gh-collab-note" style={{ marginBottom: "1.5rem" }}>
@@ -265,7 +273,7 @@ export default function GoodHarvest() {
       </section>
 
       {/* ── THE PRODUCT ── */}
-      <section>
+      <section id="gh-product">
         <p className="gh-section-label">The product</p>
         <h2>What Good Harvest looks like</h2>
         <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
@@ -299,7 +307,7 @@ export default function GoodHarvest() {
       </section>
 
       {/* ── TESTING ── */}
-      <section>
+      <section id="gh-testing">
         <p className="gh-section-label">Testing</p>
         <h2>What heatmaps and task testing showed</h2>
         <div className="gh-collab-note" style={{ marginBottom: "1.5rem" }}>
@@ -384,7 +392,7 @@ export default function GoodHarvest() {
       </section>
 
       {/* ── OUTCOMES ── */}
-      <section className="cs-outcome">
+      <section id="gh-outcomes" className="cs-outcome">
         <p className="gh-section-label">Outcomes</p>
         <h2 className="cs-section-title">What prototype testing suggested</h2>
         <div className="cs-outcome-grid">

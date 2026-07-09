@@ -54,7 +54,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
       return;
     }
 
-    const ids = ["home", "about", "projects", "contact"];
+    const ids = ["home", "projects", "about", "contact"];
     const update = () => {
       const line = window.innerHeight * 0.35;
       let current = "home";
@@ -183,11 +183,11 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
         <li>
           <button
             type="button"
-            className={navClass("home")}
-            aria-current={activeSection === "home" ? "true" : undefined}
-            onClick={() => scrollToSection("home")}
+            className={navClass("projects")}
+            aria-current={activeSection === "projects" || isOnCaseStudy ? "true" : undefined}
+            onClick={() => scrollToSection("projects")}
           >
-            {t("nav.home")}
+            {t("nav.work")}
           </button>
         </li>
 
@@ -200,17 +200,6 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
           >
             {t("nav.about")}
           </Link>
-        </li>
-
-        <li>
-          <button
-            type="button"
-            className={navClass("projects")}
-            aria-current={activeSection === "projects" || isOnCaseStudy ? "true" : undefined}
-            onClick={() => scrollToSection("projects")}
-          >
-            {t("nav.projects")}
-          </button>
         </li>
 
         <li>

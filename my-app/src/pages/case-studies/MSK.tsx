@@ -77,6 +77,37 @@ export default function MSKCaseStudy() {
         ))}
       </div>
 
+      <nav className="cs-jump-nav" aria-label="Jump to MSK case study sections">
+        <a href="#msk-summary">Summary</a>
+        <a href="#msk-artifact">Workflow</a>
+        <a href="#msk-interactions">Interactions</a>
+        <a href="#msk-systems">Systems</a>
+        <a href="#msk-outcomes">Outcomes</a>
+      </nav>
+
+      <section id="msk-summary" className="cs-skim" aria-labelledby="msk-skim-title">
+        <p className="gh-section-label">Read this first</p>
+        <h2 id="msk-skim-title" className="cs-section-title">The short version</h2>
+        <div className="cs-skim-grid">
+          <article className="cs-skim-card">
+            <span>Problem</span>
+            <p>Clinical teams were forced through fragmented workflows, paper workarounds, and unclear status paths inside high-stakes systems.</p>
+          </article>
+          <article className="cs-skim-card">
+            <span>My role</span>
+            <p>Mapped frontline workflows, translated clinical needs into system requirements, and aligned operations, IT, and clinical leadership.</p>
+          </article>
+          <article className="cs-skim-card">
+            <span>Key decision</span>
+            <p>Move the next required action into the dashboard instead of asking staff to leave the workflow, print, send, and wait.</p>
+          </article>
+          <article className="cs-skim-card">
+            <span>Outcome</span>
+            <p>20% EMR cost reduction, 70% certification workflow gain, and systems used across workflows impacting 21,000+ clinicians.</p>
+          </article>
+        </div>
+      </section>
+
       {/* ── OVERVIEW ── */}
       <section className="cs-overview">
         <p className="gh-section-label">Overview</p>
@@ -101,7 +132,7 @@ export default function MSKCaseStudy() {
       </section>
 
       {/* ── ANONYMIZED ARTIFACT ── */}
-      <section className="msk-artifact-section" aria-labelledby="msk-artifact-title">
+      <section id="msk-artifact" className="msk-artifact-section" aria-labelledby="msk-artifact-title">
         <p className="gh-section-label">Anonymized artifact</p>
         <h2 id="msk-artifact-title">Before and after: EMR workflow redesign</h2>
         <p className="cs-section-intro">
@@ -159,7 +190,7 @@ export default function MSKCaseStudy() {
         <MSKDashboardMockup />
       </section>
 
-      <section className="msk-complexity-section" aria-labelledby="msk-complexity-title">
+      <section id="msk-systems" className="msk-complexity-section" aria-labelledby="msk-complexity-title">
         <p className="gh-section-label">Systems complexity</p>
         <h2 id="msk-complexity-title">The product problem was roles, permissions, and workflow states</h2>
         <p className="cs-section-intro">
@@ -216,6 +247,47 @@ export default function MSKCaseStudy() {
             </ul>
           </article>
         </div>
+      </section>
+
+      <section id="msk-interactions" className="cs-decisions">
+        <p className="gh-section-label">Interaction decisions</p>
+        <h2 className="cs-section-title">The product logic behind the “simple” dashboard button</h2>
+        <table className="cs-decisions-table">
+          <thead>
+            <tr>
+              <th>Decision</th>
+              <th>What changed in the UI</th>
+              <th>Why it mattered</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Show the action only when the record was ready</td>
+              <td>The direct EMR button appeared in the ready-to-file state, not for every record.</td>
+              <td>Reduced false starts and kept staff from clicking into records that still needed review.</td>
+            </tr>
+            <tr>
+              <td>Make permission limits visible</td>
+              <td>Users without action access saw status and ownership, not a disabled mystery button.</td>
+              <td>Prevented confusion while preserving visibility for managers, admins, and compliance partners.</td>
+            </tr>
+            <tr>
+              <td>Separate “blocked” from “not started”</td>
+              <td>Blocked records were pulled into an exception state with a reason and owner.</td>
+              <td>Helped teams distinguish normal backlog from work that needed intervention.</td>
+            </tr>
+            <tr>
+              <td>Return users to the dashboard with updated status</td>
+              <td>After filing in online EMR, staff returned to the dashboard context instead of losing their place.</td>
+              <td>Closed the loop and made the system feel accountable, not like a one-way link.</td>
+            </tr>
+            <tr>
+              <td>Use plain status labels</td>
+              <td>States were named around work: ready to file, in progress, filed, blocked.</td>
+              <td>Matched how staff talked about the workflow and reduced training load.</td>
+            </tr>
+          </tbody>
+        </table>
       </section>
 
       {/* ── ROLE 1: OFFICE COORDINATOR ── */}
@@ -475,7 +547,7 @@ export default function MSKCaseStudy() {
       </section>
 
       {/* ── OUTCOMES ── */}
-      <section className="cs-outcome">
+      <section id="msk-outcomes" className="cs-outcome">
         <p className="gh-section-label">Outcomes</p>
         <h2 className="cs-section-title">Measurable results across three systems</h2>
         <div className="cs-outcome-grid">
