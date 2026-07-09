@@ -5866,6 +5866,60 @@ body.dark-mode .nav-overlay-backdrop,
   }
 }
 
+/* ── Tailored application path ── */
+.home-tailored-path {
+  width: min(1120px, calc(100% - 2 * var(--page-pad)));
+  margin: -0.75rem auto 0;
+  padding: clamp(1rem, 2vw, 1.25rem) clamp(1rem, 3vw, 1.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--olive-2) 22%, var(--border));
+  border-radius: 14px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--olive-2) 8%, var(--surface-0)), color-mix(in srgb, #8b1e3f 5%, var(--surface-1)));
+}
+
+.home-tailored-path__copy {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.home-tailored-path__eyebrow {
+  margin: 0;
+  color: var(--olive-2);
+  font-family: var(--font-head);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.home-tailored-path__copy p:not(.home-tailored-path__eyebrow) {
+  max-width: 64ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.home-tailored-path__link {
+  flex: 0 0 auto;
+  color: var(--fg);
+  font-family: var(--font-head);
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.home-tailored-path__link:hover,
+.home-tailored-path__link:focus-visible {
+  color: var(--olive-2);
+  text-decoration: underline;
+  text-underline-offset: 0.28em;
+}
+
 /* ── Role-fit cards ── */
 .home-role-fit-section {
   padding: 32px var(--page-pad) 72px;
@@ -5911,6 +5965,10 @@ body.dark-mode .nav-overlay-backdrop,
 @media (max-width: 980px) {
   .home-role-fit-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .home-tailored-path {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
 

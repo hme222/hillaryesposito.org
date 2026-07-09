@@ -119,6 +119,13 @@ const en = {
   "home.proj.lockedViewAria": "Unlock the protected case study",
   "home.proj.soonAria": "{title}, coming soon",
 
+  // ── Home: tailored paths ──
+  "home.fashionBridgeAria": "Tailored page for fashion and graphic design roles",
+  "home.fashionBridgeEyebrow": "Applying for fashion, luxury, or graphic design?",
+  "home.fashionBridgeText":
+    "View the visual design fit: campaign hierarchy, ecommerce content, social/email systems, production craft, and brand-system thinking.",
+  "home.fashionBridgeLink": "View visual design fit →",
+
   // ── Home: contact / CTA ──
   "home.contactAria": "Contact section",
   "home.ctaTitle": "Let’s talk about the system your team needs to fix",
@@ -242,6 +249,13 @@ const es: Partial<Record<StringKey, string>> = {
   "home.proj.viewAria": "Ver el estudio de caso de {title}",
   "home.proj.lockedViewAria": "Desbloquear el estudio de caso protegido",
   "home.proj.soonAria": "{title}, próximamente",
+
+  // ── Home: tailored paths ──
+  "home.fashionBridgeAria": "Página adaptada para roles de moda y diseño gráfico",
+  "home.fashionBridgeEyebrow": "¿Moda, lujo o diseño gráfico?",
+  "home.fashionBridgeText":
+    "Vea el ajuste de diseño visual: jerarquía de campaña, contenido ecommerce, sistemas social/email, producción y sistema de marca.",
+  "home.fashionBridgeLink": "Ver ajuste de diseño visual →",
 
   // ── Home: contact / CTA ──
   "home.contactAria": "Sección de contacto",

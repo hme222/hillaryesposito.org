@@ -94,28 +94,28 @@ export default function CuratedRolePage() {
       {page.variant === "fashion" && (
         <section className="fashion-artifact-section" aria-labelledby="fashion-artifact-title">
           <p className="gh-section-label">Visual direction exercise</p>
-          <h2 id="fashion-artifact-title">How I would close the fashion graphic design gap</h2>
+          <h2 id="fashion-artifact-title">A role-matched fashion campaign system</h2>
           <p className="cs-section-intro">
-            I would not pretend my current book is a full fashion portfolio. This exercise shows the
-            kind of graphic-design proof I would add for fashion: campaign hierarchy, editorial layout,
-            social/email crops, and a reusable visual system.
+            This speculative system shows the kind of graphic-design proof I would build for this role:
+            campaign hierarchy, ecommerce modules, social and email crops, lookbook logic, and a reusable
+            visual language that can support collection launches and brand moments.
           </p>
 
           <div className="fashion-artifact-grid" aria-label="Speculative fashion graphic design artifacts">
             <article className="fashion-artifact fashion-artifact--campaign">
               <p className="fashion-artifact__label">Campaign key visual</p>
-              <h3>Drop 01: Utility / Soft Structure</h3>
-              <p>Hero lockup, product mood, and CTA hierarchy for a seasonal capsule.</p>
+              <h3>Drop 01: Sculpted Utility</h3>
+              <p>Hero lockup, product mood, and CTA hierarchy for a collection launch.</p>
             </article>
             <article className="fashion-artifact fashion-artifact--editorial">
-              <p className="fashion-artifact__label">Editorial layout</p>
+              <p className="fashion-artifact__label">Lookbook layout</p>
               <h3>Lookbook spread</h3>
               <p>Image-led grid, restrained type scale, and clear product storytelling.</p>
             </article>
             <article className="fashion-artifact fashion-artifact--social">
-              <p className="fashion-artifact__label">Channel system</p>
+              <p className="fashion-artifact__label">Ecommerce + social</p>
               <h3>Social + email set</h3>
-              <p>Reusable crops and modules for launch, reminder, and last-call moments.</p>
+              <p>Reusable crops and modules for launch, email, product detail, and last-call moments.</p>
             </article>
           </div>
         </section>

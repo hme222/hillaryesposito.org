@@ -452,6 +452,16 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="home-tailored-path" aria-label={t("home.fashionBridgeAria")}>
+        <div className="home-tailored-path__copy">
+          <p className="home-tailored-path__eyebrow">{t("home.fashionBridgeEyebrow")}</p>
+          <p>{t("home.fashionBridgeText")}</p>
+        </div>
+        <Link to="/curated/fashion-graphic-designer" className="home-tailored-path__link">
+          {t("home.fashionBridgeLink")}
+        </Link>
+      </section>
+
 
       <section className="home-role-fit-section" aria-label={t("home.fitAria")}>
         <div className="home-section-header">
