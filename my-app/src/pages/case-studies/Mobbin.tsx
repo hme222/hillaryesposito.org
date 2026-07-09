@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 import usePageTitle from "../../hooks/usePageTitle";
 import MoreWork from "../../components/MoreWork";
 import Disclosure from "../../components/Disclosure";
+import SpanishCaseStudy from "../../components/SpanishCaseStudy";
+import { useLanguage } from "../../app/LanguageContext";
+import { MOBBIN_ES } from "../../data/spanishCaseStudies";
 import useReveal from "../../hooks/useReveal";
 import { PhoneIcon, SproutIcon, MedicalCrossIcon } from "../../components/LineIcons";
 
@@ -54,9 +57,14 @@ const OTHER_PROJECTS = [
 
 export default function MobbinCaseStudy() {
   usePageTitle("Mobbin: UX Flow Documentation & UI Pattern Curation");
+  const { lang } = useLanguage();
   const navigate = useNavigate();
   const rootRef = useRef<HTMLElement>(null);
   useReveal(rootRef);
+
+  if (lang === "es") {
+    return <SpanishCaseStudy data={MOBBIN_ES} />;
+  }
 
   return (
     <main className="case-study gh-layout mobbin-cs" aria-label="Mobbin Case Study" lang="en" ref={rootRef}>

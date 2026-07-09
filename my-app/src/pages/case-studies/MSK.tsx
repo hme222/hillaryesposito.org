@@ -4,6 +4,9 @@ import usePageTitle from "../../hooks/usePageTitle";
 import MoreWork from "../../components/MoreWork";
 import Disclosure from "../../components/Disclosure";
 import MSKDashboardMockup from "../../components/MSKDashboardMockup";
+import SpanishCaseStudy from "../../components/SpanishCaseStudy";
+import { useLanguage } from "../../app/LanguageContext";
+import { MSK_ES } from "../../data/spanishCaseStudies";
 import useReveal from "../../hooks/useReveal";
 import { SproutIcon, LeafIcon } from "../../components/LineIcons";
 
@@ -27,9 +30,14 @@ const OTHER_PROJECTS = [
 
 export default function MSKCaseStudy() {
   usePageTitle("MSK: Redesigning Systems for 21,000 Clinicians");
+  const { lang } = useLanguage();
   const navigate = useNavigate();
   const rootRef = useRef<HTMLElement>(null);
   useReveal(rootRef);
+
+  if (lang === "es") {
+    return <SpanishCaseStudy data={MSK_ES} />;
+  }
 
   return (
     <main className="case-study gh-layout" aria-label="MSK Case Study" lang="en" ref={rootRef}>

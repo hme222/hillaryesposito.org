@@ -5,6 +5,7 @@ import {
   LaunchIcon,
   MagnifierIcon,
   MedicalCrossIcon,
+  PencilIcon,
   SproutIcon,
   TerminalIcon,
 } from "../components/LineIcons";
@@ -20,7 +21,7 @@ export type CuratedPage = {
   slug: string;
   company: string;
   role: string;
-  variant: "care" | "finance";
+  variant: "care" | "finance" | "fashion";
   badgeLabel: string;
   eyebrow: string;
   headline: string;
@@ -399,6 +400,108 @@ export const curatedPages: Record<string, CuratedPage> = {
         label: "Omada Staff Product Designer",
         path: "/curated/omada-staff-product-designer-healthcare-ai",
         description: "Stronger if healthcare domain fit matters more than enterprise-strategy adjacency.",
+        icon: <LaunchIcon />,
+      },
+    ],
+  },
+  "fashion-graphic-designer": {
+    slug: "fashion-graphic-designer",
+    company: "Fashion Graphic Design",
+    role: "Graphic Designer",
+    variant: "fashion",
+    badgeLabel: "Fashion visual design view",
+    eyebrow: "Graphic design · visual systems · campaign hierarchy · production craft",
+    headline: "Building polished visual systems for fashion, lifestyle, and brand storytelling",
+    subhead:
+      "This page reframes my portfolio for a fashion graphic design role: editorial layout, hierarchy, production discipline, image-led storytelling, and visual systems that can scale across channels.",
+    meta: [
+      { label: "Target role", value: "Graphic Designer, Fashion" },
+      { label: "Transferable strength", value: "Layout systems + detail discipline" },
+      { label: "Visual proof", value: "Grove, Good Harvest, Mobbin capture, curated fashion exercise" },
+      { label: "Best fit", value: "Brand, digital, campaign, and production design support" },
+    ],
+    intro: [
+      "My core portfolio is not a traditional fashion book, so I would not position myself as a long-tenure fashion designer. The honest fit is graphic design work that needs strong hierarchy, clean layout systems, visual consistency, and production reliability across digital surfaces.",
+      "Fashion teams move fast and still need work that feels considered. My strongest transferable strengths are precision, visual organization, documentation, iteration, and the ability to turn a brand or campaign idea into a usable system of layouts.",
+    ],
+    proofPoints: [
+      { stat: "200+", detail: "Screens captured and reviewed for visual clarity, completeness, and interaction accuracy during Mobbin freelance work" },
+      { stat: "3", detail: "Fintech apps studied for UI pattern, navigation, hierarchy, and reusable interface behavior" },
+      { stat: "22", detail: "Participants in Good Harvest testing, using heatmaps to improve hierarchy and CTA clarity" },
+      { stat: "31", detail: "Survey respondents informing Grove's product, content hierarchy, and visual direction" },
+    ],
+    featuredWork: [
+      {
+        title: "Grove visual system",
+        reason: "Best evidence of brand mood, color restraint, mobile composition, and polished product screens.",
+      },
+      {
+        title: "Good Harvest before/final layouts",
+        reason: "Shows hierarchy, CTA emphasis, visual iteration, and the ability to improve comprehension through layout.",
+      },
+      {
+        title: "Mobbin UX flow documentation",
+        reason: "Shows attention to visual systems, production accuracy, and pattern recognition across real digital products.",
+      },
+      {
+        title: "Fashion visual direction exercise",
+        reason: "A focused speculative section on this page showing campaign, editorial, and social layout thinking.",
+      },
+    ],
+    strengths: [
+      "Builds clean layout systems that can scale across multiple surfaces",
+      "Uses hierarchy, spacing, and type to make content easier to scan",
+      "Can work from a brief, iterate quickly, and maintain visual consistency",
+      "Brings production discipline: details, accuracy, naming, handoff, and repeatable systems",
+      "Strong fit for digital campaign assets, email, social, ecommerce support, lookbook layouts, and brand-system production",
+    ],
+    relevantExperience: [
+      "My Mobbin freelance work required careful screen capture, sequencing, review, and taxonomy alignment. That translates directly to graphic design production work where precision, naming, consistency, and completeness matter.",
+      "Good Harvest and Grove show the design side: creating visual hierarchy, choosing what should lead, reducing clutter, and making interface content feel trustworthy and polished.",
+    ],
+    keywords: [
+      "graphic design",
+      "fashion",
+      "campaign design",
+      "editorial layout",
+      "social assets",
+      "email design",
+      "brand systems",
+      "production design",
+      "ecommerce",
+      "visual hierarchy",
+      "Figma",
+      "Adobe Creative Suite",
+    ],
+    hiringManagerNote:
+      "I am not asking you to read me as a traditional fashion art director. I am strongest as a precise, systems-minded graphic designer who can support brand, digital, campaign, and ecommerce work with strong layout discipline.",
+    closing:
+      "For a fashion graphic design role, I would bring a mix of polished layout judgment, production reliability, and the ability to turn visual direction into consistent assets across channels.",
+    supportLinks: [
+      {
+        label: "Grove case study",
+        path: "/case-study/grove",
+        description: "Visual system, mobile composition, tone, and polished product screens.",
+        icon: <SproutIcon />,
+      },
+      {
+        label: "Good Harvest case study",
+        path: "/case-study/good-harvest",
+        description: "Before/final layouts, hierarchy, CTA clarity, and visual iteration.",
+        icon: <MagnifierIcon />,
+      },
+      {
+        label: "Mobbin case study",
+        path: "/case-study/mobbin",
+        description: "Production accuracy, visual pattern recognition, and UI documentation.",
+        icon: <PencilIcon />,
+      },
+    ],
+    relatedLinks: [
+      {
+        label: "Main portfolio",
+        path: "/",
+        description: "Full UX/product portfolio and contact section.",
         icon: <LaunchIcon />,
       },
     ],

@@ -60,6 +60,13 @@ const en = {
   "home.credentialsAria": "Professional credentials",
   "home.credentials": "Healthcare systems UX · Internal tools · Role-based workflows · AI-assisted product design · Army veteran",
 
+  // ── Home: product proof ──
+  "home.productProofAria": "Product UI proof",
+  "home.productProofEyebrow": "Product proof",
+  "home.productProofTitle": "Workflow thinking, visible in the interface.",
+  "home.productProofBody":
+    "Recreated artifacts from the work: an internal EMR filing queue and a Grove care flow. The point is not decoration. It is showing how status, action, and trust become UI.",
+
   // ── Home: proof stats ──
   "home.proofAria": "Experience highlights",
   "home.stat.years": "Years of leadership across healthcare, military, and UX",
@@ -177,6 +184,13 @@ const es: Partial<Record<StringKey, string>> = {
   // ── Home: credentials strip ──
   "home.credentialsAria": "Credenciales profesionales",
   "home.credentials": "UX para sistemas de salud · Herramientas internas · Flujos por rol · Diseño de producto asistido por IA · Veterana del Ejército",
+
+  // ── Home: product proof ──
+  "home.productProofAria": "Prueba de interfaz de producto",
+  "home.productProofEyebrow": "Prueba de producto",
+  "home.productProofTitle": "Pensamiento de flujo, visible en la interfaz.",
+  "home.productProofBody":
+    "Artefactos recreados del trabajo: una cola interna de archivo EMR y un flujo de cuidado en Grove. No es decoración. Muestra cómo estado, acción y confianza se convierten en UI.",
 
   // ── Home: proof stats ──
   "home.proofAria": "Experiencia destacada",

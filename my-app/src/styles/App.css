@@ -10050,10 +10050,127 @@ body.dark-mode .nav-overlay-backdrop,
   justify-content: flex-end;
 }
 
+.curated-page--fashion {
+  --curated-accent: #8b1e3f;
+  --curated-accent-soft: color-mix(in srgb, #8b1e3f 12%, var(--surface-0));
+  --curated-accent-border: color-mix(in srgb, #8b1e3f 24%, var(--border));
+}
+
+.fashion-artifact-section {
+  padding: clamp(1.2rem, 3vw, 2rem);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--surface-1) 94%, transparent), color-mix(in srgb, var(--curated-accent) 6%, var(--surface-0))),
+    var(--surface-1);
+}
+
+.fashion-artifact-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr 0.8fr;
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+
+.fashion-artifact {
+  min-height: 280px;
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, var(--fg) 14%, transparent);
+  border-radius: 14px;
+  background: var(--surface-0);
+  color: var(--fg);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.fashion-artifact::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, transparent 0 45%, color-mix(in srgb, var(--fg) 68%, transparent) 100%),
+    radial-gradient(circle at 24% 20%, color-mix(in srgb, var(--curated-accent) 34%, transparent), transparent 32%),
+    linear-gradient(135deg, #f3e8dc, #d2b8a3 46%, #2a211d 47%, #2a211d 100%);
+  opacity: 0.92;
+}
+
+.fashion-artifact--editorial::before {
+  background:
+    linear-gradient(90deg, #15120c 0 42%, #efe6dc 42% 100%),
+    linear-gradient(180deg, transparent 0 64%, color-mix(in srgb, var(--fg) 70%, transparent) 100%);
+}
+
+.fashion-artifact--editorial::after {
+  content: "LOOK\\A BOOK";
+  white-space: pre;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: #15120c;
+  font-family: var(--font-head);
+  font-size: clamp(2.5rem, 6vw, 4.7rem);
+  font-weight: 800;
+  line-height: 0.84;
+  letter-spacing: 0;
+  text-align: right;
+  opacity: 0.88;
+}
+
+.fashion-artifact--social::before {
+  background:
+    linear-gradient(180deg, #f7f2ec 0 34%, #19130f 34% 36%, #f7f2ec 36% 62%, #8b1e3f 62% 100%);
+}
+
+.fashion-artifact__label,
+.fashion-artifact h3,
+.fashion-artifact p {
+  position: relative;
+  z-index: 1;
+}
+
+.fashion-artifact__label {
+  margin: 0 0 auto;
+  color: color-mix(in srgb, #fff 86%, transparent);
+  font-family: var(--font-head);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.fashion-artifact h3 {
+  max-width: 14ch;
+  margin: 2rem 0 0.55rem;
+  color: #fff;
+  font-size: clamp(1.5rem, 3vw, 2.55rem);
+  line-height: 0.98;
+}
+
+.fashion-artifact p:not(.fashion-artifact__label) {
+  max-width: 28ch;
+  margin: 0;
+  color: color-mix(in srgb, #fff 88%, transparent);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.fashion-artifact--editorial .fashion-artifact__label,
+.fashion-artifact--editorial h3,
+.fashion-artifact--editorial p:not(.fashion-artifact__label),
+.fashion-artifact--social .fashion-artifact__label,
+.fashion-artifact--social h3,
+.fashion-artifact--social p:not(.fashion-artifact__label) {
+  color: #fff;
+}
+
 @media (max-width: 900px) {
   .curated-proof-grid,
   .curated-link-grid,
-  .curated-two-column {
+  .curated-two-column,
+  .fashion-artifact-grid {
     grid-template-columns: 1fr;
   }
   .curated-footer {

@@ -299,14 +299,11 @@ export default function Home() {
         </p>
       </section>
 
-      <section className="home-product-proof" aria-label="Product UI proof">
+      <section className="home-product-proof" aria-label={t("home.productProofAria")}>
         <div className="home-product-proof__copy">
-          <p className="home-eyebrow">Product proof</p>
-          <h2>Workflow thinking, visible in the interface.</h2>
-          <p>
-            Recreated artifacts from the work: an internal EMR filing queue and a Grove care flow.
-            The point is not decoration. It is showing how status, action, and trust become UI.
-          </p>
+          <p className="home-eyebrow">{t("home.productProofEyebrow")}</p>
+          <h2>{t("home.productProofTitle")}</h2>
+          <p>{t("home.productProofBody")}</p>
         </div>
         <div className="home-product-proof__visuals">
           <MSKDashboardMockup compact />
@@ -339,42 +336,6 @@ export default function Home() {
             </div>
           ))}
         </motion.div>
-      </section>
-
-      <section className="home-role-fit-section" aria-label={t("home.fitAria")}>
-        <div className="home-section-header">
-          <p className="home-eyebrow">{t("home.fitEyebrow")}</p>
-          <h2 className="section-title home-section-title">{t("home.fitTitle")}</h2>
-        </div>
-
-        <div className="home-role-fit-grid">
-          {([
-            ["01", "home.fit.internal.title", "home.fit.internal.desc"],
-            ["02", "home.fit.roles.title", "home.fit.roles.desc"],
-            ["03", "home.fit.logic.title", "home.fit.logic.desc"],
-            ["04", "home.fit.ai.title", "home.fit.ai.desc"],
-          ] as [string, StringKey, StringKey][]).map(([num, titleKey, descKey]) => (
-            <article key={titleKey} className="home-role-fit-card feature">
-              <span className="home-role-fit-card__num" aria-hidden="true">{num}</span>
-              <h3 className="home-role-fit-card__title">{t(titleKey)}</h3>
-              <p className="home-role-fit-card__desc">{t(descKey)}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════
-          MINI ABOUT — a face + a short human blurb, linking to /about
-      ══════════════════════════════════════════ */}
-      <section id="about" className="home-mini-about" aria-label={t("home.about.aria")}>
-        <div className="mini-about-photo">
-          <img src="/assets/about/headshot.jpg" alt={t("home.about.photoAlt")} loading="lazy" />
-        </div>
-        <div className="mini-about-text">
-          <h2 className="mini-about-eyebrow">{t("home.about.eyebrow")}</h2>
-          <p className="mini-about-blurb">{t("home.about.blurb")}</p>
-          <Link to="/about" className="mini-about-link">{t("home.about.link")}</Link>
-        </div>
       </section>
 
       {/* ══════════════════════════════════════════
@@ -488,6 +449,43 @@ export default function Home() {
               </motion.div>
             );
           })}
+        </div>
+      </section>
+
+
+      <section className="home-role-fit-section" aria-label={t("home.fitAria")}>
+        <div className="home-section-header">
+          <p className="home-eyebrow">{t("home.fitEyebrow")}</p>
+          <h2 className="section-title home-section-title">{t("home.fitTitle")}</h2>
+        </div>
+
+        <div className="home-role-fit-grid">
+          {([
+            ["01", "home.fit.internal.title", "home.fit.internal.desc"],
+            ["02", "home.fit.roles.title", "home.fit.roles.desc"],
+            ["03", "home.fit.logic.title", "home.fit.logic.desc"],
+            ["04", "home.fit.ai.title", "home.fit.ai.desc"],
+          ] as [string, StringKey, StringKey][]).map(([num, titleKey, descKey]) => (
+            <article key={titleKey} className="home-role-fit-card feature">
+              <span className="home-role-fit-card__num" aria-hidden="true">{num}</span>
+              <h3 className="home-role-fit-card__title">{t(titleKey)}</h3>
+              <p className="home-role-fit-card__desc">{t(descKey)}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          MINI ABOUT — a face + a short human blurb, linking to /about
+      ══════════════════════════════════════════ */}
+      <section id="about" className="home-mini-about" aria-label={t("home.about.aria")}>
+        <div className="mini-about-photo">
+          <img src="/assets/about/headshot.jpg" alt={t("home.about.photoAlt")} loading="lazy" />
+        </div>
+        <div className="mini-about-text">
+          <h2 className="mini-about-eyebrow">{t("home.about.eyebrow")}</h2>
+          <p className="mini-about-blurb">{t("home.about.blurb")}</p>
+          <Link to="/about" className="mini-about-link">{t("home.about.link")}</Link>
         </div>
       </section>
 

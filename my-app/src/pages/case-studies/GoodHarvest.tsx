@@ -6,14 +6,22 @@ import MediaCard from "../../components/MediaCard";
 import ToolsUsed from "../../components/ToolsUsed";
 import MoreWork from "../../components/MoreWork";
 import Disclosure from "../../components/Disclosure";
+import SpanishCaseStudy from "../../components/SpanishCaseStudy";
+import { useLanguage } from "../../app/LanguageContext";
+import { GOOD_HARVEST_ES } from "../../data/spanishCaseStudies";
 import useReveal from "../../hooks/useReveal";
 import { FrameIcon, FlaskIcon, FolderIcon, SproutIcon, MedicalCrossIcon } from "../../components/LineIcons";
 
 export default function GoodHarvest() {
   usePageTitle("Good Harvest: Evidence-Based Mobile UX");
+  const { lang } = useLanguage();
   const navigate = useNavigate();
   const rootRef = useRef<HTMLElement>(null);
   useReveal(rootRef);
+
+  if (lang === "es") {
+    return <SpanishCaseStudy data={GOOD_HARVEST_ES} />;
+  }
 
   const screens = useMemo(() => ({
     appMobile:   "/assets/good-harvest/goodharvest-app-mobile.png",

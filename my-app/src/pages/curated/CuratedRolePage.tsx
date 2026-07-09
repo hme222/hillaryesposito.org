@@ -91,6 +91,36 @@ export default function CuratedRolePage() {
         </ol>
       </section>
 
+      {page.variant === "fashion" && (
+        <section className="fashion-artifact-section" aria-labelledby="fashion-artifact-title">
+          <p className="gh-section-label">Visual direction exercise</p>
+          <h2 id="fashion-artifact-title">How I would close the fashion graphic design gap</h2>
+          <p className="cs-section-intro">
+            I would not pretend my current book is a full fashion portfolio. This exercise shows the
+            kind of graphic-design proof I would add for fashion: campaign hierarchy, editorial layout,
+            social/email crops, and a reusable visual system.
+          </p>
+
+          <div className="fashion-artifact-grid" aria-label="Speculative fashion graphic design artifacts">
+            <article className="fashion-artifact fashion-artifact--campaign">
+              <p className="fashion-artifact__label">Campaign key visual</p>
+              <h3>Drop 01: Utility / Soft Structure</h3>
+              <p>Hero lockup, product mood, and CTA hierarchy for a seasonal capsule.</p>
+            </article>
+            <article className="fashion-artifact fashion-artifact--editorial">
+              <p className="fashion-artifact__label">Editorial layout</p>
+              <h3>Lookbook spread</h3>
+              <p>Image-led grid, restrained type scale, and clear product storytelling.</p>
+            </article>
+            <article className="fashion-artifact fashion-artifact--social">
+              <p className="fashion-artifact__label">Channel system</p>
+              <h3>Social + email set</h3>
+              <p>Reusable crops and modules for launch, reminder, and last-call moments.</p>
+            </article>
+          </div>
+        </section>
+      )}
+
       <section className="curated-two-column">
         <div>
           <p className="gh-section-label">Strengths</p>
