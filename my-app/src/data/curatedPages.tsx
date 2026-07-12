@@ -100,7 +100,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       "research",
       "clinical operations",
       "trust",
-      "internal tools",
+      "product judgment",
       "cross-functional collaboration",
       "healthcare workflows",
       "inclusive design",
@@ -428,7 +428,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       { stat: "200+", detail: "Screens captured and quality-checked for visual clarity, sequencing, completeness, and production accuracy during Mobbin freelance work" },
       { stat: "3", detail: "Production products studied for layout systems, navigation models, hierarchy, and reusable interface behavior" },
       { stat: "22", detail: "Good Harvest test participants; heatmaps informed CTA hierarchy, layout clarity, and content emphasis" },
-      { stat: "31", detail: "Grove survey respondents informing visual tone, feature hierarchy, and digitally forward product direction" },
+      { stat: "32", detail: "Grove survey respondents informing visual tone, feature hierarchy, and digitally forward product direction" },
     ],
     featuredWork: [
       {

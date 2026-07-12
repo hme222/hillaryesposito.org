@@ -1,4 +1,5 @@
 import React, { useState, FormEvent } from "react";
+import { LockIcon } from "./LineIcons";
 
 const PASSWORD_SHA256 = "4a707e3a066d834d96a4fe907d5cc8318309d7106984c0156b20b5c02997b78a";
 const SESSION_KEY = "mobbin-unlocked";
@@ -35,9 +36,9 @@ export default function PasswordGate({ children }: { children: React.ReactNode }
   if (unlocked) return <>{children}</>;
 
   return (
-    <main className="pw-gate" aria-label="Password required">
+    <main className="pw-gate" aria-label="Password required" lang="en">
       <div className="pw-gate__card">
-        <div className="pw-gate__icon" aria-hidden="true">🔒</div>
+        <div className="pw-gate__icon" aria-hidden="true"><LockIcon /></div>
         <h1 className="pw-gate__title">This case study is password-protected</h1>
         <p className="pw-gate__subtitle">Enter the password to view this case study.</p>
         <form onSubmit={handleSubmit} className="pw-gate__form">

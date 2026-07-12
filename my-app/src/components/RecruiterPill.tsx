@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FocusTrap from "focus-trap-react";
 import { useT } from "../app/LanguageContext";
+import { FileTextIcon, MailIcon, BriefcaseIcon, UserIcon, XIcon } from "./LineIcons";
 
 /**
  * Persistent floating "Recruiter view" pill that appears on every page.
@@ -81,6 +82,7 @@ export default function RecruiterPill() {
               role="dialog"
               aria-modal="true"
               aria-labelledby="recruiter-panel-title"
+              lang="en"
             >
               <header className="recruiter-panel__header">
                 <div>
@@ -95,7 +97,7 @@ export default function RecruiterPill() {
                   onClick={() => setOpen(false)}
                   aria-label="Close recruiter view"
                 >
-                  ✕
+                  <XIcon />
                 </button>
               </header>
 
@@ -155,22 +157,24 @@ export default function RecruiterPill() {
                   <a className="recruiter-panel__btn recruiter-panel__btn--primary"
                      href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"
                      target="_blank"
-                     rel="noopener noreferrer">
-                    <span aria-hidden="true">📄</span> Download resume
+                     rel="noopener noreferrer"
+                     aria-label="Download resume (opens in new tab)">
+                    <FileTextIcon className="recruiter-panel__btn-icon" /> Download resume
                   </a>
                   <a className="recruiter-panel__btn"
                      href="mailto:espositohillary@gmail.com">
-                    <span aria-hidden="true">✉️</span> Email me
+                    <MailIcon className="recruiter-panel__btn-icon" /> Email me
                   </a>
                   <a className="recruiter-panel__btn"
                      href="https://www.linkedin.com/in/hillaryesposito/"
                      target="_blank"
-                     rel="noopener noreferrer">
-                    <span aria-hidden="true">💼</span> LinkedIn
+                     rel="noopener noreferrer"
+                     aria-label="LinkedIn (opens in new tab)">
+                    <BriefcaseIcon className="recruiter-panel__btn-icon" /> LinkedIn
                   </a>
                   <button type="button" className="recruiter-panel__btn"
                      onClick={() => go("/about")}>
-                    <span aria-hidden="true">👤</span> About me
+                    <UserIcon className="recruiter-panel__btn-icon" /> About me
                   </button>
                 </section>
               </div>

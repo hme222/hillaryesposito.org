@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import usePageTitle from "../hooks/usePageTitle";
 import { useLanguage } from "../app/LanguageContext";
-import { NewsIcon, PhoneIcon } from "../components/LineIcons";
+import { MobbinIcon, NewsIcon } from "../components/LineIcons";
 
 // ── Story chapters ───────────────────────────────────────────────────────
 const CHAPTERS = [
@@ -60,7 +60,7 @@ const CHAPTERS_ES = [
     heading: "Diseño para generar confianza en productos complejos y regulados.",
     image: "/assets/about/now.jpg",
     paragraphs: [
-      "Ahora trabajo freelance. Mi contrato más reciente fue un estudio profundo de tres productos fintech, donde documenté más de 200 pantallas de flujos móviles end-to-end, y luego anoté y etiqueté cada una para que miles de diseñadores pudieran encontrarlas y reutilizarlas.",
+      "Ahora trabajo freelance. Mi contrato más reciente fue un estudio profundo de tres productos fintech, donde documenté más de 200 pantallas de flujos móviles de principio a fin, y luego anoté y etiqueté cada una para que miles de diseñadores pudieran encontrarlas y reutilizarlas.",
     ],
     callout: "La IA acelera el trabajo. Las decisiones siguen siendo mías.",
   },
@@ -85,7 +85,7 @@ const CHAPTERS_ES = [
     heading: "Capitana y Oficial de Logística Médica, NJ Army National Guard.",
     image: "/assets/about/army.jpg",
     paragraphs: [
-      "Desplegada en Irak con la 44th IBCT, dirigí logística médica para más de 5,000 soldados y $2M en suministros en siete estaciones de ayuda en tres países. En 2020, durante la respuesta de COVID-19 en Nueva Jersey, reporté desde la Oficina del Joint Surgeon al Pentágono sobre operaciones médicas estatales.",
+      "Desplegada en Irak con la 44th IBCT, dirigí logística médica para más de 5,000 soldados y $2M en suministros en siete estaciones de ayuda en tres países. Fui pionera en un sistema de seguimiento digital que redujo el tiempo de reabastecimiento en 85% y el gasto en 60%. En 2020, durante la respuesta de COVID-19 en Nueva Jersey, reporté desde la Oficina del Joint Surgeon al Pentágono sobre operaciones médicas estatales.",
     ],
     callout: "Una falla de proceso en zona de combate no es una molestia. Es un riesgo.",
   },
@@ -122,7 +122,7 @@ export default function About() {
   }, []);
 
   return (
-    <div className="about-page" lang={isSpanish ? "es" : "en"}>
+    <main className="about-page" lang={isSpanish ? "es" : "en"}>
       <div className="about-back-row">
         <button
           type="button"
@@ -156,6 +156,21 @@ export default function About() {
             alt="Hillary Esposito"
             className="about-headshot"
           />
+        </div>
+      </section>
+
+      <section className="about-pattern-section" aria-label={isSpanish ? "Mi patrón de trabajo" : "My working pattern"}>
+        <div className="about-pattern-card feature">
+          <p className="about-agenda__eyebrow">{isSpanish ? "Mi patrón" : "My pattern"}</p>
+          <h2 className="about-growth-title">
+            {isSpanish ? "Entro en sistemas complejos y encuentro dónde se rompe la confianza." : "I enter complex systems and find where trust breaks."}
+          </h2>
+          <ol className="about-pattern-list">
+            <li>{isSpanish ? "Observo cómo el trabajo ocurre realmente, no solo cómo el proceso dice que debería ocurrir." : "I observe how the work actually happens, not just how the process says it should happen."}</li>
+            <li>{isSpanish ? "Mapeo los puntos donde personas, permisos, datos y herramientas dejan de coincidir." : "I map where people, permissions, data, and tools stop matching each other."}</li>
+            <li>{isSpanish ? "Diseño el siguiente paso claro: la acción, estado o flujo que reduce la fricción." : "I design the clearer next step: the action, status, or flow that reduces friction."}</li>
+            <li>{isSpanish ? "Mido si el cambio se sostiene cuando personas reales tienen que usarlo bajo presión." : "I measure whether the change holds when real people have to use it under pressure."}</li>
+          </ol>
         </div>
       </section>
 
@@ -250,8 +265,8 @@ export default function About() {
         <div className="about-feedback-grid">
           {feedback.map((item) => (
             <figure key={item.name} className="about-feedback-card feature">
-              <div className="about-feedback-card__icon" aria-hidden="true">
-                <PhoneIcon />
+              <div className="about-feedback-card__icon about-feedback-card__icon--mobbin" aria-hidden="true">
+                <MobbinIcon />
               </div>
               <blockquote>“{item.quote}”</blockquote>
               <figcaption>
@@ -293,6 +308,6 @@ export default function About() {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

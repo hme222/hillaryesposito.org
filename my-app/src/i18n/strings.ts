@@ -54,7 +54,7 @@ const en = {
   "home.about.photoAlt": "Portrait of Hillary Esposito",
   "home.about.eyebrow": "A little about me",
   "home.about.blurb":
-    "I’ve spent 13 years inside high-stakes systems across military medical logistics, cancer care operations, internal workflows, and AI-assisted product work. I design where the workflow meets the person using it.",
+    "I’ve spent 13+ years inside high-stakes systems across military medical logistics, cancer care operations, internal workflows, and AI-assisted product work. I design where the workflow meets the person using it.",
   "home.about.link": "More about me →",
 
   // ── Home: credentials strip ──
@@ -70,27 +70,31 @@ const en = {
 
   // ── Home: proof stats ──
   "home.proofAria": "Experience highlights",
-  "home.stat.years": "Years of leadership across healthcare, military, and UX",
   "home.stat.clinicians": "Clinicians impacted, MSK Cancer Center",
-  "home.stat.resupply": "Faster resupply, NJ Army National Guard",
   "home.stat.emr": "EMR cost reduction, MSK Cancer Center",
   "home.stat.grove": "Survey respondents shaped Grove's MVP",
+  "home.trustAria": "Trust and credibility signals",
+  "home.trust.msk": "MSK Cancer Center",
+  "home.trust.mobbin": "Mobbin client work",
+  "home.trust.grove": "32-user Grove survey",
+  "home.trust.army": "Army Veteran",
+  "home.trust.credentials": "MHA + Lean Six Sigma",
 
   // ── Home: tailored relevance ──
   "home.tailorAria": "Role-specific portfolio paths",
-  "home.tailorEyebrow": "Relevant paths",
-  "home.tailorTitle": "Make the fit easy to see",
+  "home.tailorEyebrow": "Start here by role",
+  "home.tailorTitle": "Find the proof your team needs",
   "home.tailorBody":
-    "Different roles need different proof. These views surface the experience that already lines up with the product, customer, or problem space.",
+    "Shortcuts to case studies, outcomes, and artifacts for healthcare product, internal tools, AI-assisted product work, and visual craft roles.",
   "home.tailor.healthcare.title": "Healthcare product teams",
   "home.tailor.healthcare.desc": "MSK, clinical workflows, internal tools, and healthcare product judgment.",
   "home.tailor.enterprise.title": "Enterprise and internal tools",
   "home.tailor.enterprise.desc": "Role-based workflows, permissions, handoffs, dense systems, and admin-style UX.",
   "home.tailor.ai.title": "AI-assisted product work",
   "home.tailor.ai.desc": "Grove, AI workflow decisions, override judgment, and trust calibration.",
-  "home.tailor.visual.title": "Visual and brand-led roles",
-  "home.tailor.visual.desc": "Campaign hierarchy, ecommerce modules, social/email systems, and production craft.",
-  "home.tailor.view": "View relevant work →",
+  "home.tailor.visual.title": "Visual craft and UI systems",
+  "home.tailor.visual.desc": "Grove, Good Harvest, and Mobbin artifacts showing hierarchy, polish, documentation quality, and production care.",
+  "home.tailor.view": "Review this path →",
 
   // ── Home: role fit ──
   "home.fitAria": "Role fit highlights",
@@ -137,13 +141,6 @@ const en = {
   "home.proj.lockedViewAria": "Unlock the protected case study",
   "home.proj.soonAria": "{title}, coming soon",
 
-  // ── Home: tailored paths ──
-  "home.fashionBridgeAria": "Additional visual design artifact",
-  "home.fashionBridgeEyebrow": "Additional visual design artifact",
-  "home.fashionBridgeText":
-    "A speculative fashion campaign system showing campaign hierarchy, ecommerce modules, social and email assets, production craft, and brand-system thinking.",
-  "home.fashionBridgeLink": "View campaign system →",
-
   // ── Home: contact / CTA ──
   "home.contactAria": "Contact section",
   "home.ctaTitle": "Let’s talk about the workflow your team needs to make clearer",
@@ -159,7 +156,7 @@ const en = {
 
   // ── Recruiter pill (global trigger only — the panel stays English in Phase 1) ──
   "recruiter.pill": "Recruiter view",
-  "recruiter.pillAria": "Open recruiter view: 90-second project breakdown",
+  "recruiter.pillAria": "Open recruiter view: 90-second tour",
 } as const;
 
 export type StringKey = keyof typeof en;
@@ -204,7 +201,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.about.photoAlt": "Retrato de Hillary Esposito",
   "home.about.eyebrow": "Un poco sobre mí",
   "home.about.blurb":
-    "Llevo 13 años dentro de sistemas de alto riesgo en logística médica militar, operaciones oncológicas, flujos internos y trabajo de producto asistido por IA. Diseño donde el flujo se encuentra con la persona que tiene que usarlo.",
+    "Llevo más de 13 años dentro de sistemas de alto riesgo en logística médica militar, operaciones oncológicas, flujos internos y trabajo de producto asistido por IA. Diseño donde el flujo se encuentra con la persona que tiene que usarlo.",
   "home.about.link": "Conozca más sobre mí →",
 
   // ── Home: credentials strip ──
@@ -220,27 +217,31 @@ const es: Partial<Record<StringKey, string>> = {
 
   // ── Home: proof stats ──
   "home.proofAria": "Experiencia destacada",
-  "home.stat.years": "Años de liderazgo en salud, ámbito militar y UX",
   "home.stat.clinicians": "Profesionales clínicos beneficiados, MSK Cancer Center",
-  "home.stat.resupply": "Reabastecimiento más rápido, Guardia Nacional del Ejército de NJ",
   "home.stat.emr": "Reducción de costos del EMR, MSK Cancer Center",
   "home.stat.grove": "Participantes de encuesta definieron el MVP de Grove",
+  "home.trustAria": "Señales de confianza y credibilidad",
+  "home.trust.msk": "MSK Cancer Center",
+  "home.trust.mobbin": "Trabajo para cliente Mobbin",
+  "home.trust.grove": "Encuesta Grove con 32 usuarios",
+  "home.trust.army": "Veterana del Ejército",
+  "home.trust.credentials": "MHA + Lean Six Sigma",
 
   // ── Home: tailored relevance ──
   "home.tailorAria": "Rutas de portafolio por tipo de rol",
-  "home.tailorEyebrow": "Rutas relevantes",
-  "home.tailorTitle": "Hacer que el encaje sea fácil de ver",
+  "home.tailorEyebrow": "Empiece aquí por tipo de rol",
+  "home.tailorTitle": "Encuentre la prueba que su equipo necesita",
   "home.tailorBody":
-    "Distintos roles necesitan pruebas distintas. Estas vistas muestran la experiencia que ya se alinea con el producto, cliente o tipo de problema.",
+    "Atajos a estudios de caso, resultados y artefactos para producto en salud, herramientas internas, trabajo de producto asistido por IA y roles de craft visual.",
   "home.tailor.healthcare.title": "Equipos de producto en salud",
   "home.tailor.healthcare.desc": "MSK, flujos clínicos, herramientas internas y criterio de producto en salud.",
   "home.tailor.enterprise.title": "Enterprise y herramientas internas",
   "home.tailor.enterprise.desc": "Flujos por rol, permisos, traspasos, sistemas densos y UX para administración.",
   "home.tailor.ai.title": "Trabajo de producto asistido por IA",
   "home.tailor.ai.desc": "Grove, decisiones de flujo con IA, criterio de corrección y calibración de confianza.",
-  "home.tailor.visual.title": "Roles visuales y de marca",
-  "home.tailor.visual.desc": "Jerarquía de campaña, módulos ecommerce, sistemas social/email y producción.",
-  "home.tailor.view": "Ver trabajo relevante →",
+  "home.tailor.visual.title": "Craft visual y sistemas UI",
+  "home.tailor.visual.desc": "Artefactos de Grove, Good Harvest y Mobbin que muestran jerarquía, pulido, documentación y cuidado de producción.",
+  "home.tailor.view": "Revisar esta ruta →",
 
   // ── Home: role fit ──
   "home.fitAria": "Fortalezas para el puesto",
@@ -285,13 +286,6 @@ const es: Partial<Record<StringKey, string>> = {
   "home.proj.viewAria": "Ver el estudio de caso de {title}",
   "home.proj.lockedViewAria": "Desbloquear el estudio de caso protegido",
   "home.proj.soonAria": "{title}, próximamente",
-
-  // ── Home: tailored paths ──
-  "home.fashionBridgeAria": "Artefacto adicional de diseño visual",
-  "home.fashionBridgeEyebrow": "Artefacto adicional de diseño visual",
-  "home.fashionBridgeText":
-    "Un sistema especulativo de campaña de moda que muestra jerarquía, módulos ecommerce, piezas para redes y email, producción y pensamiento de sistema de marca.",
-  "home.fashionBridgeLink": "Ver sistema de campaña →",
 
   // ── Home: contact / CTA ──
   "home.contactAria": "Sección de contacto",

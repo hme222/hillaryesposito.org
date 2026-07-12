@@ -4,12 +4,12 @@ export const GROVE_ES: SpanishCaseStudyData = {
   title: "Grove",
   meta: "Diseño de producto · IA · Investigación UX · Prototipo funcional",
   intro:
-    "Grove es una app de cuidado de plantas que diseñé y construí como proyecto end-to-end. La investigación con 31 participantes redefinió el MVP: menos funciones sociales, más confianza, educación de luz, recordatorios tranquilos y criterio humano sobre la IA.",
+    "Grove es una app de cuidado de plantas que estoy rediseñando a partir de un prototipo funcional de Emergent. La investigación con 32 participantes redefinió el MVP: menos funciones sociales, más confianza, educación sobre la iluminación, recordatorios tranquilos y criterio humano sobre la IA.",
   stats: [
     { label: "Rol", value: "Diseño de producto, investigación, prototipo" },
-    { label: "Muestra", value: "31 respuestas de encuesta" },
+    { label: "Muestra", value: "32 respuestas de encuesta" },
     { label: "Tiempo", value: "3 semanas" },
-    { label: "Estado", value: "Prototipo listo para pruebas moderadas" },
+    { label: "Estado", value: "Rediseño en curso; pruebas moderadas a continuación" },
   ],
   sections: [
     {
@@ -29,7 +29,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
       bullets: [
         "Recordatorios inteligentes fueron la función más importante, pero solo si tenían límites claros.",
         "Identificación por cámara y diagnóstico por foto eran esenciales, pero necesitaban confianza, fuentes y niveles de certeza.",
-        "La educación sobre luz y toxicidad para mascotas se convirtió en parte del núcleo de confianza.",
+        "La educación sobre la luz y la toxicidad para mascotas se convirtió en parte del núcleo de confianza.",
       ],
     },
     {
@@ -55,6 +55,10 @@ export const GROVE_ES: SpanishCaseStudyData = {
       ],
     },
   ],
+  otherProjects: [
+    { title: "MSK Cancer Center", desc: "Seis años rediseñando flujos clínicos, onboarding y certificación para más de 21,000 clínicos.", path: "/case-study/msk" },
+    { title: "Good Harvest", desc: "Las pruebas con mapas de calor con 22 usuarios revelaron un problema de confianza: la gente encontraba la información estacional, pero no creía que aplicara a su zona.", path: "/case-study/good-harvest" },
+  ],
 };
 
 export const MSK_ES: SpanishCaseStudyData = {
@@ -63,7 +67,7 @@ export const MSK_ES: SpanishCaseStudyData = {
   intro:
     "Durante seis años en MSK, rediseñé flujos clínicos, onboarding y procesos operativos para sistemas usados por más de 21,000 profesionales clínicos. Este trabajo muestra diseño aplicado a herramientas internas, permisos, estados y adopción en un entorno de salud real.",
   stats: [
-    { label: "Rol", value: "Healthcare Systems → UX & Product Design" },
+    { label: "Rol", value: "Sistemas de salud → UX y diseño de producto" },
     { label: "Organización", value: "Memorial Sloan Kettering Cancer Center" },
     { label: "Escala", value: "21,000+ clínicos" },
     { label: "Impacto", value: "20% reducción de costos EMR" },
@@ -91,7 +95,7 @@ export const MSK_ES: SpanishCaseStudyData = {
         "Mapeé el estado actual, encontré puntos de fallo, alineé stakeholders y diseñé cambios que podían sostenerse después del lanzamiento. La adopción importaba tanto como la solución técnica.",
       ],
       bullets: [
-        "El flujo EMR necesitó entrenamiento en piso porque las personas habían usado el workaround anterior durante años.",
+        "El flujo EMR necesitó capacitación práctica en el lugar de trabajo porque las personas habían usado la solución alternativa anterior durante años.",
         "El rediseño de certificaciones ganó 70% de eficiencia al reorganizar tareas, estados y visibilidad.",
         "El onboarding se ajustó después de ver que nuevos clínicos necesitaban un siguiente paso claro, no un dashboard completo.",
       ],
@@ -103,6 +107,10 @@ export const MSK_ES: SpanishCaseStudyData = {
         "El trabajo contribuyó a una reducción de 20% en costos relacionados con EMR, una mejora de 70% en el flujo de certificación y mejores experiencias de onboarding para equipos clínicos.",
       ],
     },
+  ],
+  otherProjects: [
+    { title: "Grove", desc: "App de cuidado de plantas con IA. De la investigación a un prototipo funcional en 3 semanas.", path: "/case-study/grove" },
+    { title: "Good Harvest", desc: "Las pruebas con mapas de calor con 22 usuarios revelaron un problema de confianza en la información estacional.", path: "/case-study/good-harvest" },
   ],
 };
 
@@ -141,8 +149,8 @@ export const GOOD_HARVEST_ES: SpanishCaseStudyData = {
       ],
       bullets: [
         "3 de 4 tareas clave se completaron sin ayuda.",
-        "El flujo bajó de 7 taps a 4 taps.",
-        "70% de los primeros taps se concentraron en la llamada a la acción principal.",
+        "El flujo bajó de 7 toques a 4 toques.",
+        "70% de los primeros toques se concentraron en la llamada a la acción principal.",
       ],
     },
     {
@@ -153,16 +161,20 @@ export const GOOD_HARVEST_ES: SpanishCaseStudyData = {
       ],
     },
   ],
+  otherProjects: [
+    { title: "Grove", desc: "App de cuidado de plantas con IA. De la investigación a un prototipo funcional en 3 semanas.", path: "/case-study/grove" },
+    { title: "MSK Cancer Center", desc: "Seis años rediseñando flujos clínicos, onboarding y certificación para más de 21,000 clínicos.", path: "/case-study/msk" },
+  ],
 };
 
 export const MOBBIN_ES: SpanishCaseStudyData = {
   title: "Mobbin",
   meta: "App Capture Specialist · Documentación de flujos UX · Curaduría de patrones",
   intro:
-    "Trabajo freelance para Mobbin documentando experiencias móviles end-to-end. Capturé, organicé y anoté flujos de tres productos fintech para una biblioteca de referencia usada por equipos de UX, producto y diseño.",
+    "Trabajo freelance para Mobbin documentando experiencias móviles de principio a fin. Capturé, organicé y anoté flujos de tres productos fintech para una biblioteca de referencia usada por equipos de UX, producto y diseño.",
   stats: [
     { label: "Cliente", value: "Mobbin · Freelance" },
-    { label: "Tiempo", value: "Mar 2026 - Jun 2026 · 4 meses" },
+    { label: "Tiempo", value: "mar.–jun. 2026 · 4 meses" },
     { label: "Output", value: "3 apps · 200+ pantallas" },
     { label: "Ubicación", value: "Remoto" },
   ],
@@ -188,5 +200,9 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
         "Estudiar cómo apps líderes estructuran información, guían usuarios y reducen fricción fortaleció mi criterio de producto. También me enseñó a nombrar patrones según cómo otros diseñadores los buscarían.",
       ],
     },
+  ],
+  otherProjects: [
+    { title: "Grove", desc: "App de cuidado de plantas con IA. De la investigación a un prototipo funcional en 3 semanas.", path: "/case-study/grove" },
+    { title: "MSK Cancer Center", desc: "Seis años rediseñando flujos clínicos, onboarding y certificación para más de 21,000 clínicos.", path: "/case-study/msk" },
   ],
 };

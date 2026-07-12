@@ -112,6 +112,50 @@ export default function GoodHarvest() {
         <a href="#gh-outcomes">Outcomes</a>
       </nav>
 
+      <section className="cs-skim" aria-labelledby="gh-skim-title">
+        <p className="gh-section-label">Read this first</p>
+        <h2 id="gh-skim-title" className="cs-section-title">The short version</h2>
+        <div className="cs-skim-grid">
+          <article className="cs-skim-card">
+            <span>Problem</span>
+            <p>Seasonal food information existed, but shoppers did not trust that it applied to their location or next grocery decision.</p>
+          </article>
+          <article className="cs-skim-card">
+            <span>My role</span>
+            <p>Synthesized provided research, designed the prototype, ran heatmap testing, and iterated the core produce-to-recipe path.</p>
+          </article>
+          <article className="cs-skim-card">
+            <span>Key decision</span>
+            <p>Move recipes and organic guidance into the produce detail flow instead of hiding them behind separate navigation.</p>
+          </article>
+          <article className="cs-skim-card">
+            <span>Outcome</span>
+            <p>Prototype testing suggested fewer taps, clearer recipe engagement, and stronger confidence in local seasonal choices.</p>
+          </article>
+        </div>
+      </section>
+
+      <nav className="cs-evidence-links" aria-label="Good Harvest evidence shortcuts">
+        <a href="#gh-research">View research synthesis</a>
+        <a href="#gh-product">View screens</a>
+        <a href="#gh-testing">View heatmaps</a>
+        <a href="#gh-outcomes">View outcomes</a>
+      </nav>
+
+      <section className="cs-artifact-hook" aria-labelledby="gh-artifact-hook-title">
+        <div className="cs-artifact-hook__copy">
+          <p className="gh-section-label">What changed</p>
+          <h2 id="gh-artifact-hook-title">Recipe discovery moved into the decision path.</h2>
+          <p>
+            The strongest usability signal was not that people could not find seasonal produce. It was that they needed an immediate next step once they trusted the produce was local. The redesign moved recipes and organic guidance into the produce detail path instead of asking users to hunt through separate tabs.
+          </p>
+        </div>
+        <div className="cs-artifact-hook__media cs-artifact-hook__media--two">
+          <MediaCard src={screens.recipesWire} alt="Good Harvest recipe wireframe" caption="Before: recipe discovery was structurally separate." />
+          <MediaCard src={screens.recipesHeat} alt="Good Harvest recipe heatmap" caption="After: recipes surfaced where users were already deciding." />
+        </div>
+      </section>
+
       {/* ── OVERVIEW ── */}
       <section id="gh-overview" className="cs-overview">
         <p className="gh-section-label">Overview</p>
@@ -287,9 +331,9 @@ export default function GoodHarvest() {
           <MediaCard src={screens.appMobile} alt="Good Harvest mobile app showing seasonal produce and recipes"   caption="Final: produce-first, secondary nav below fold." />
         </div>
 
-        <h3 style={{ color: "var(--olive-2)", marginTop: "2rem", marginBottom: "0.75rem" }}>Local produce: location trust (13/22 noticed the indicator, vs. 4 in v1)</h3>
+        <h3 style={{ color: "var(--olive-2)", marginTop: "2rem", marginBottom: "0.75rem" }}>Local produce: location trust</h3>
         <p style={{ fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65, marginBottom: "1rem" }}>
-          13/22 participants didn't trust that produce info applied to their area. Made the location indicator tappable and prominent with source attribution.
+          Only 4 of 22 participants noticed the location indicator in v1, which tracked with their distrust that produce info applied to their area. I made the indicator tappable and prominent with source attribution, and noticing rose to 13 of 22 in v2.
         </p>
         <div className="cs-gallery cols-2">
           <MediaCard src={screens.localWire} alt="Local produce wireframe showing initial location indicator"     caption="v1: location indicator present but passive." />

@@ -9,18 +9,7 @@ import SpanishCaseStudy from "../../components/SpanishCaseStudy";
 import { useLanguage } from "../../app/LanguageContext";
 import { GROVE_ES } from "../../data/spanishCaseStudies";
 import useReveal from "../../hooks/useReveal";
-import { TerminalIcon, PencilIcon, LaunchIcon, FrameIcon, HandIcon, MedicalCrossIcon, LeafIcon } from "../../components/LineIcons";
-
-const SCREENS = [
-  { image: "/assets/grove/bouquet.png", label: "Adding a plant or a bouquet", bg: "#efe7d9",
-    designNote: "The first choice splits two things people lump together: potted plants they tend for months, and cut bouquets with days of vase life. Deciding up front lets each get the right model, growth tracking for plants, vase life and flower ID for bouquets." },
-  { image: "/assets/grove/care.png", label: "What needs you today", bg: "#f5f0e8",
-    designNote: "One list answers the daily question. Each plant carries its own schedule, its location, and a soil-dry estimate read from your watering pattern, and Water all clears the easy ones in a tap. Overdue and due-soon read as label plus color, never color alone." },
-  { image: "/assets/grove/Growth.png", label: "A plant's own page", bg: "#e8edd9",
-    designNote: "Every plant gets one page, photo first, with its timeline, photos, care history, and notes behind it. A real growth photo motivates more than a checklist, so it leads instead of a stat block." },
-  { image: "/assets/grove/plantpersonality.png", label: "AI plant personality", bg: "#f5f0e8",
-    designNote: "The payoff for a streak. It reads your care history and reflects it back as an encouraging profile tied to your streak and plant count, like \"The Careful Beginner.\" Every personality runs through prompt guardrails so the tone stays kind, not clinical." },
-];
+import { TerminalIcon, PencilIcon, LaunchIcon, FrameIcon, HandIcon, MedicalCrossIcon, LeafIcon, SproutIcon, FlowerIcon } from "../../components/LineIcons";
 
 const SURVEY_FINDINGS = [
   {
@@ -81,7 +70,7 @@ const PUSHBACK = [
     topic: "Reward system",
     ai: "XP points and a leaderboard.",
     me: "AI-generated plant personalities unlocked at care milestones.",
-    why: "The survey was blunt: an app that feels like an “administrative chore” is the #1 reason people delete it.",
+    why: "The survey was blunt: feeling like an “administrative chore” was the #1 reason people stop updating a plant app after the first week.",
   },
   {
     topic: "Home screen",
@@ -167,7 +156,6 @@ export default function GroveCaseStudy() {
         <a href="#grove-summary">Summary</a>
         <a href="#grove-research">Research</a>
         <a href="#grove-flow">Flow</a>
-        <a href="#grove-screens">Screens</a>
         <a href="#grove-outcomes">Outcomes</a>
       </nav>
 
@@ -193,6 +181,14 @@ export default function GroveCaseStudy() {
           </article>
         </div>
       </section>
+
+      <nav className="cs-evidence-links" aria-label="Grove evidence shortcuts">
+        <a href="#grove-research">View research</a>
+        <a href="#grove-flow">View flow</a>
+        <a href="#grove-evolution">View before/final</a>
+        <a href="#grove-states">View edge states</a>
+        <a href="#grove-outcomes">View outcomes</a>
+      </nav>
 
       {/* ── THE PREMISE ── */}
       <section className="cs-overview">
@@ -327,27 +323,29 @@ export default function GroveCaseStudy() {
           The differentiators don't matter until the dealbreakers are excellent.
         </div>
 
-        <p style={{ maxWidth: 640, margin: "2rem 0 1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
-          Community forums ranked 6th out of 11 features (23%). Verified swapping ranked 9th (6%).
-          The social layer I designed isn't why anyone installs a plant app.
-          Smart reminders, plant ID, and diagnosis are. The research reordered my priorities:
-          make the care core excellent first, then layer in community as a retention play.
-        </p>
+        <Disclosure title="Show secondary roadmap decisions">
+          <p className="cs-overview-text">
+            Community forums ranked 6th out of 11 features (23%). Verified swapping ranked 9th (6%).
+            The social layer I designed isn't why anyone installs a plant app.
+            Smart reminders, plant ID, and diagnosis are. The research reordered my priorities:
+            make the care core excellent first, then layer in community as a retention play.
+          </p>
 
-        <div className="gh-features-grid">
-          <div className="feature">
-            <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>Built but deprioritized</h3>
-            <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>Community forums, plant swaps, and badges are in the prototype but are explicitly post-MVP. They'll generate secondary testing data, but the hypothesis doesn't depend on them.</p>
+          <div className="gh-features-grid" style={{ marginTop: "1.25rem" }}>
+            <div className="feature">
+              <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>Built but deprioritized</h3>
+              <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>Community forums, plant swaps, and badges are in the prototype but are explicitly post-MVP. They'll generate secondary testing data, but the hypothesis doesn't depend on them.</p>
+            </div>
+            <div className="feature">
+              <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>Elevated by data</h3>
+              <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>Pet toxicity warnings (9/12 new owners raised it unprompted), lighting education (lowest confidence score), and cited sources (top trust signal). None of these were in the original build scope.</p>
+            </div>
+            <div className="feature">
+              <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>Paused entirely</h3>
+              <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>The Florist Pro tier (AI-generated care sheets for clients). n=2 is too thin to build on, but not too thin to pause on.</p>
+            </div>
           </div>
-          <div className="feature">
-            <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>Elevated by data</h3>
-            <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>Pet toxicity warnings (9/12 new owners raised it unprompted), lighting education (lowest confidence score), and cited sources (top trust signal). None of these were in the original build scope.</p>
-          </div>
-          <div className="feature">
-            <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>Paused entirely</h3>
-            <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>The Florist Pro tier (AI-generated care sheets for clients). n=2 is too thin to build on, but not too thin to pause on.</p>
-          </div>
-        </div>
+        </Disclosure>
 
         <div className="highlight" style={{ marginTop: "2rem" }}>
           <p className="gh-design-q-label">AI trust signal from research</p>
@@ -361,7 +359,7 @@ export default function GroveCaseStudy() {
           <p className="gh-design-q-label">What got cut</p>
           Community forums, plant swapping, achievement badges, the Florist Pro tier, and a
           gamification layer with XP points. None of these were in the top 3 survey features.
-          The hardest cut was community forums (ranked 5th at 23%), but building retention
+          The hardest cut was community forums (ranked 6th at 23%), but building retention
           features before the core care loop is excellent would have been building in the wrong order.
         </div>
 
@@ -469,7 +467,7 @@ export default function GroveCaseStudy() {
             </div>
             <div className="grove-flow-branch feature">
               <p className="grove-flow-branch__trigger">Branch: Skipped a day</p>
-              <p className="grove-flow-branch__response">No guilt notification. The streak pauses and waits. Re-entry shows "Welcome back" with today's single task. The survey was clear: shame-based reminders are the #1 uninstall trigger.</p>
+              <p className="grove-flow-branch__response">No guilt notification. The streak pauses and waits. Re-entry shows "Welcome back" with today's single task. This is the same finding, applied: since "too many notifications" was the #1 delete trigger, a guilt-based nag is exactly the kind of reminder that loses people.</p>
             </div>
             <div className="grove-flow-branch feature">
               <p className="grove-flow-branch__trigger">Branch: Returned after a week</p>
@@ -495,8 +493,15 @@ export default function GroveCaseStudy() {
             <div className="grove-ia-compare__side grove-ia-compare__side--after">
               <p className="grove-ia-compare__label">Grove</p>
               <div className="grove-ia-compare__items">
-                {["🪴 Kitchen window", "🌿 Living room shelf", "🌸 Bedroom"].map((b) => (
-                  <span key={b} className="grove-ia-chip grove-ia-chip--grouped">{b}</span>
+                {[
+                  { icon: <SproutIcon />, label: "Kitchen window" },
+                  { icon: <LeafIcon />, label: "Living room shelf" },
+                  { icon: <FlowerIcon />, label: "Bedroom" },
+                ].map((b) => (
+                  <span key={b.label} className="grove-ia-chip grove-ia-chip--grouped">
+                    <span className="grove-ia-chip__icon" aria-hidden="true">{b.icon}</span>
+                    {b.label}
+                  </span>
                 ))}
               </div>
               <p className="grove-ia-compare__verdict">Grouped by context → focused tasks</p>
@@ -511,7 +516,7 @@ export default function GroveCaseStudy() {
       </section>
 
       {/* ── DESIGN EVOLUTION ── */}
-      <section>
+      <section id="grove-evolution">
         <p className="gh-section-label">Design evolution</p>
         <h2>From task board to calm care queue</h2>
         <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
@@ -554,13 +559,13 @@ export default function GroveCaseStudy() {
       </section>
 
       {/* ── LOG: WEEK 3 — PERSONALITY SYSTEM + POLISH ── */}
-      <section>
+      <section id="grove-states">
         <p className="gh-section-label">Log · Week 3 · Personality system + polish</p>
         <h2>Edge states, guardrails, and the reward loop</h2>
         <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
           Week 3 was AI-generated plant personalities, prompt guardrails, the photo journal, and edge
           state handling. Deployed via Emergent. Community features (forums, swaps, badges) were
-          intentionally deferred; the survey ranked them 5th-9th. The happy path is the easy part.
+          intentionally deferred; the survey ranked them 6th–9th. The happy path is the easy part.
           These are the states that determine whether someone keeps using the app or uninstalls it.
         </p>
 
@@ -621,33 +626,8 @@ export default function GroveCaseStudy() {
         </div>
       </section>
 
-      {/* ── THE PRODUCT TODAY ── */}
-      <section id="grove-screens">
-        <p className="gh-section-label">The product today</p>
-        <h2>What Grove looks like</h2>
-        <p style={{ maxWidth: 640, marginBottom: "0.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
-          Key screens from the working build: from adding your first plant to earning a plant personality.
-        </p>
-
-        <div className="grove-screens-grid grove-screens-grid--annotated" aria-label="App screen previews with design rationale">
-          {SCREENS.map((screen) => (
-            <div key={screen.label} className="grove-screen-item grove-screen-item--annotated">
-              <div className="grove-phone-frame" style={{ background: screen.bg }}>
-                <img
-                  src={screen.image}
-                  alt={`${screen.label} screen`}
-                  className="grove-phone-frame__img"
-                  loading="lazy"
-                />
-              </div>
-              <p className="grove-screen-label">{screen.label}</p>
-              {screen.designNote && (
-                <p className="grove-screen-note">{screen.designNote}</p>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* Screen showcase removed while the app is mid-redesign, so the case
+          study never shows stale UI. Re-add when the new screens are ready. */}
 
       {/* ── WHERE IT STANDS ── */}
       <section id="grove-outcomes" className="cs-outcome">

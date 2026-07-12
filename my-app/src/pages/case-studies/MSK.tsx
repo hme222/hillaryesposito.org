@@ -103,15 +103,25 @@ export default function MSKCaseStudy() {
           </article>
           <article className="cs-skim-card">
             <span>Outcome</span>
-            <p>20% EMR cost reduction, 70% certification workflow gain, and systems used across workflows impacting 21,000+ clinicians.</p>
+            <p>A 20% EMR cost reduction I contributed to by leading the workflow redesign, a 70% certification workflow gain, and systems used across workflows impacting 21,000+ clinicians.</p>
           </article>
         </div>
       </section>
+
+      <nav className="cs-evidence-links" aria-label="MSK evidence shortcuts">
+        <a href="#msk-artifact">View before/after workflow</a>
+        <a href="#msk-dashboard-title">View dashboard mockup</a>
+        <a href="#msk-interactions">View interaction decisions</a>
+        <a href="#msk-outcomes">View outcomes</a>
+      </nav>
 
       {/* ── OVERVIEW ── */}
       <section className="cs-overview">
         <p className="gh-section-label">Overview</p>
         <h2 className="cs-section-title">Designing for 21,000 clinicians inside the systems they depend on</h2>
+        <div className="highlight">
+          Staff were printing dashboard records and sending them elsewhere for EMR filing, even though the final destination was online. I redesigned the workflow by adding a direct dashboard action into online EMR, reducing handoffs and keeping clinical work in context.
+        </div>
         <p className="cs-overview-text">
           At MSK, I optimized how the place actually ran. I mapped workflows, found where systems failed
           the clinicians using them, aligned clinical and administrative stakeholders, and shipped fixes

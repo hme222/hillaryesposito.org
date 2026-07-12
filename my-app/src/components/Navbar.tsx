@@ -1,6 +1,7 @@
 import React, { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useLanguage, useT } from "../app/LanguageContext";
+import { MenuIcon, XIcon } from "./LineIcons";
 
 type NavbarProps = {
   darkMode: boolean;
@@ -172,7 +173,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
         aria-controls="primary-menu"
         onClick={() => setMenuOpen((m) => !m)}
       >
-        {menuOpen ? "✕" : "☰"}
+        {menuOpen ? <XIcon /> : <MenuIcon />}
       </button>
 
       <ul

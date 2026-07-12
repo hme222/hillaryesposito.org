@@ -1,5 +1,6 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useLanguage } from "../app/LanguageContext";
 
 export type SpanishCaseStudyData = {
   title: string;
@@ -12,6 +13,8 @@ export type SpanishCaseStudyData = {
     body: string[];
     bullets?: string[];
   }[];
+  /** Links to the other case studies, for case-to-case navigation (parity with the English MoreWork). */
+  otherProjects?: { title: string; desc: string; path: string }[];
 };
 
 type SpanishCaseStudyProps = {
@@ -20,6 +23,12 @@ type SpanishCaseStudyProps = {
 
 export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
   const navigate = useNavigate();
+  const { setLang } = useLanguage();
+
+  const readInEnglish = () => {
+    setLang("en");
+    window.scrollTo(0, 0);
+  };
 
   return (
     <main className="case-study gh-layout" aria-label={`${data.title} estudio de caso`} lang="es">
@@ -29,7 +38,10 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
           <h1>{data.title}</h1>
           <p className="gh-hero__intro">{data.intro}</p>
           <p className="spanish-case-note">
-            Resumen en español. La versión completa del estudio de caso está disponible en inglés.
+            Esta es una versión condensada.{" "}
+            <button type="button" className="spanish-case-note__link" onClick={readInEnglish}>
+              Leer el estudio de caso completo en inglés →
+            </button>
           </p>
         </div>
       </header>
@@ -64,6 +76,22 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
           )}
         </section>
       ))}
+
+      {data.otherProjects && data.otherProjects.length > 0 && (
+        <section className="spanish-more-work" aria-label="Otros proyectos">
+          <p className="gh-section-label">Más trabajo</p>
+          <h2 className="cs-section-title">Otros proyectos</h2>
+          <div className="spanish-more-work__grid">
+            {data.otherProjects.map((proj) => (
+              <Link key={proj.path} to={proj.path} className="spanish-more-work__card">
+                <strong>{proj.title}</strong>
+                <span>{proj.desc}</span>
+                <span className="spanish-more-work__cta" aria-hidden="true">Ver estudio de caso →</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       <div className="cs-inline-cta">
         <p>¿Quiere hablar sobre este tipo de trabajo?</p>

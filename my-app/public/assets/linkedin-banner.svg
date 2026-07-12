@@ -26,21 +26,16 @@
   <rect width="1584" height="396" fill="url(#grid)"/>
 
   <!-- Safe-area visual weight stays center/right because LinkedIn overlays the profile photo on the lower left. -->
-  <g opacity="0.72">
-    <path d="M 716 78 C 858 108, 922 148, 1052 138 S 1238 76, 1470 100"
-          fill="none" stroke="#7c8c3c" stroke-width="1.2" stroke-opacity="0.12"/>
+  <g opacity="0.52">
+    <path d="M 728 232 C 872 256, 964 248, 1072 276 S 1264 326, 1468 286"
+          fill="none" stroke="#7c8c3c" stroke-width="1.2" stroke-opacity="0.10"/>
   </g>
 
-  <g fill="#5a7a2e" opacity="0.42">
-    <circle cx="1152" cy="94" r="5"/>
-    <circle cx="1212" cy="134" r="5"/>
-  </g>
-
-  <g opacity="0.48">
-    <path d="M 1152 94 C 1232 94, 1232 158, 1306 158 S 1376 222, 1460 222"
+  <g opacity="0.42">
+    <path d="M 1160 248 C 1236 248, 1240 196, 1310 196 S 1384 246, 1460 246"
           fill="none" stroke="#5a7a2e" stroke-width="1.4" stroke-linecap="round" stroke-opacity="0.18"/>
-    <circle cx="1306" cy="158" r="5" fill="#d9a55e" fill-opacity="0.40"/>
-    <circle cx="1460" cy="222" r="5" fill="#5a7a2e" fill-opacity="0.34"/>
+    <circle cx="1310" cy="196" r="5" fill="#d9a55e" fill-opacity="0.32"/>
+    <circle cx="1460" cy="246" r="5" fill="#5a7a2e" fill-opacity="0.28"/>
   </g>
 
   <g transform="translate(112 90)">

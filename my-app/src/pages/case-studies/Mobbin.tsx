@@ -117,6 +117,57 @@ export default function MobbinCaseStudy() {
         <a href="#mobbin-outcomes">Outcome</a>
       </nav>
 
+      <section className="cs-skim" aria-labelledby="mobbin-skim-title">
+        <p className="gh-section-label">Read this first</p>
+        <h2 id="mobbin-skim-title" className="cs-section-title">The short version</h2>
+        <div className="cs-skim-grid">
+          <article className="cs-skim-card">
+            <span>Problem</span>
+            <p>Mobbin needed complete, reliable, searchable product-flow references, not loose screenshots without context.</p>
+          </article>
+          <article className="cs-skim-card">
+            <span>My role</span>
+            <p>Freelance App Capture Specialist documenting UX flows, interaction sequences, UI patterns, and product journeys.</p>
+          </article>
+          <article className="cs-skim-card">
+            <span>Key decision</span>
+            <p>Capture full task paths and edge states so each entry could work as a product design reference.</p>
+          </article>
+          <article className="cs-skim-card">
+            <span>Outcome</span>
+            <p>200+ screens across three fintech products, reviewed for clarity, completeness, and reusable pattern value.</p>
+          </article>
+        </div>
+      </section>
+
+      <nav className="cs-evidence-links" aria-label="Mobbin evidence shortcuts">
+        <a href="#mobbin-apps">View documented apps</a>
+        <a href="#mobbin-entry">View pattern entry</a>
+        <a href="#mobbin-lesson">View product lessons</a>
+        <a href="#mobbin-outcomes">View outcome</a>
+      </nav>
+
+      <section className="mobbin-artifact-strip" aria-labelledby="mobbin-artifact-title">
+        <div className="mobbin-artifact-strip__copy">
+          <p className="gh-section-label">Artifact preview</p>
+          <h2 id="mobbin-artifact-title">Screenshots became searchable UX flow documentation.</h2>
+          <p>
+            The work was not just capture. Each screen had to sit inside a sequence, carry the right taxonomy, and help another designer understand the interaction pattern without replaying the app themselves.
+          </p>
+        </div>
+        <div className="mobbin-artifact-strip__flow" aria-label="Mobbin documentation flow">
+          {APPS.map((app, index) => (
+            <figure key={app.slug} className="mobbin-artifact-strip__shot">
+              <img src={app.image} alt="" loading="lazy" />
+              <figcaption>
+                <span>{index === 0 ? "Capture" : index === 1 ? "Map" : "Curate"}</span>
+                {app.name}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
       {/* ── THE WORK ── */}
       <section id="mobbin-work" className="cs-overview">
         <p className="gh-section-label">The work</p>
@@ -167,8 +218,7 @@ export default function MobbinCaseStudy() {
         <div className="cs-insight-action" style={{ marginTop: "1.5rem" }}>
           <p className="cs-insight-action__label">Role scope</p>
           <ul className="cs-role-scope-list">
-            <li>Documented end-to-end mobile app experiences by capturing screens, organizing user flows, and mapping key interaction sequences across real product journeys.</li>
-            <li>Curated UI patterns, navigation models, and task flows to support a searchable design reference library used by UX, product, and design teams.</li>
+            <li>Curated UI patterns, navigation models, and task flows into a searchable design reference library used by UX, product, and design teams.</li>
             <li>Analyzed real-world product experiences to identify onboarding flows, conversion paths, feature entry points, interaction behaviors, and reusable interface patterns.</li>
             <li>Reviewed and refined captured flows for clarity, completeness, and accuracy, ensuring each submission was usable as a reliable product design reference.</li>
             <li>Strengthened product judgment by studying how leading apps structure information, guide users, and reduce friction across complex digital experiences.</li>

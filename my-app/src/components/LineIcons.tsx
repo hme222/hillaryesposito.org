@@ -86,6 +86,16 @@ export const PhoneIcon = (p: IconProps) => (
   </Svg>
 );
 
+/** Mobbin — client work / UX flow documentation */
+export const MobbinIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <rect x="3.75" y="4.25" width="16.5" height="15.5" rx="4" />
+    <path d="M7.5 16v-5.5" />
+    <path d="M7.5 11.8c.7-1.1 1.65-1.7 2.85-1.7 1.45 0 2.25 1 2.25 2.75V16" />
+    <path d="M12.6 11.9c.7-1.15 1.7-1.8 2.95-1.8 1.55 0 2.45 1.05 2.45 2.9V16" />
+  </Svg>
+);
+
 /** Magnifier — search / live-app research (replaces 🔍) */
 export const MagnifierIcon = (p: IconProps) => (
   <Svg {...p}>
@@ -138,5 +148,79 @@ export const NewsIcon = (p: IconProps) => (
     <path d="M7.5 12.5h9" />
     <path d="M7.5 15.8h9" />
     <path d="M15 9.2h1.5" />
+  </Svg>
+);
+
+/** Document with lines — resume / download (replaces 📄) */
+export const FileTextIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="M13 3.5H7A1.8 1.8 0 0 0 5.2 5.3v13.4A1.8 1.8 0 0 0 7 20.5h10a1.8 1.8 0 0 0 1.8-1.8V9.3z" />
+    <path d="M13 3.5v6h5.8" />
+    <path d="M8.5 13h7" />
+    <path d="M8.5 16.3h7" />
+  </Svg>
+);
+
+/** Envelope — email (replaces ✉️) */
+export const MailIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <rect x="3.5" y="5.5" width="17" height="13" rx="2.2" />
+    <path d="M4.3 7.2l7.7 5.6 7.7-5.6" />
+  </Svg>
+);
+
+/** Briefcase — LinkedIn / professional profile (replaces 💼) */
+export const BriefcaseIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <rect x="3.5" y="7.5" width="17" height="12" rx="2.2" />
+    <path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5" />
+    <path d="M3.5 12.5h17" />
+  </Svg>
+);
+
+/** Person — about me / profile (replaces 👤) */
+export const UserIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <circle cx="12" cy="8.5" r="3.5" />
+    <path d="M5.5 20a6.5 6.5 0 0 1 13 0" />
+  </Svg>
+);
+
+/** Padlock — password-protected (replaces 🔒) */
+export const LockIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <rect x="5" y="10.5" width="14" height="9.5" rx="2.2" />
+    <path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" />
+    <path d="M12 14.4v2.6" />
+  </Svg>
+);
+
+/** Hamburger — open menu (replaces ☰) */
+export const MenuIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="M4 7h16" />
+    <path d="M4 12h16" />
+    <path d="M4 17h16" />
+  </Svg>
+);
+
+/** X — close (replaces ✕) */
+export const XIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="M6 6l12 12" />
+    <path d="M18 6L6 18" />
+  </Svg>
+);
+
+/** Bloom — flowering plant / bouquet (replaces 🌸) */
+export const FlowerIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <circle cx="12" cy="9" r="2.1" />
+    <path d="M12 6.9C12 4.7 10.7 3.5 9.2 3.9 8 4.2 7.9 6 9.3 7.4" />
+    <path d="M12 6.9C12 4.7 13.3 3.5 14.8 3.9 16 4.2 16.1 6 14.7 7.4" />
+    <path d="M9.9 10.4C8 11.4 6.4 10.9 6.2 9.4 6 8.2 7.5 7.3 9.3 7.9" />
+    <path d="M14.1 10.4C16 11.4 17.6 10.9 17.8 9.4 18 8.2 16.5 7.3 14.7 7.9" />
+    <path d="M12 11v10" />
+    <path d="M12 16c-1.6-1.2-3.2-1.1-3.9.2" />
   </Svg>
 );

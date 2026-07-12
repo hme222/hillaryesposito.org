@@ -90,6 +90,15 @@ type Project = {
 // structural data (assets, routes, gradients) stays here.
 const PROJECTS: Project[] = [
   {
+    title: "Grove",
+    subtitleKey: "home.proj.grove.subtitle",
+    descKey: "home.proj.grove.desc",
+    images: ["/assets/grove/bouquet.png"],
+    imageAltKey: "home.proj.grove.alt",
+    bg: "linear-gradient(135deg, #1a2e1a 0%, #2d4a2d 50%, #1a3a2a 100%)",
+    path: "/case-study/grove",
+  },
+  {
     title: "MSK Cancer Center",
     subtitleKey: "home.proj.msk.subtitle",
     descKey: "home.proj.msk.desc",
@@ -98,15 +107,6 @@ const PROJECTS: Project[] = [
     imageAltKey: "home.proj.msk.alt",
     bg: "linear-gradient(135deg, #1a1a2e 0%, #2d2d4a 50%, #1a2a3a 100%)",
     path: "/case-study/msk",
-  },
-  {
-    title: "Grove",
-    subtitleKey: "home.proj.grove.subtitle",
-    descKey: "home.proj.grove.desc",
-    images: ["/assets/grove/bouquet.png"],
-    imageAltKey: "home.proj.grove.alt",
-    bg: "linear-gradient(135deg, #1a2e1a 0%, #2d4a2d 50%, #1a3a2a 100%)",
-    path: "/case-study/grove",
   },
   {
     title: "Good Harvest",
@@ -140,6 +140,20 @@ export default function Home() {
   const location = useLocation();
   const prefersReducedMotion = useReducedMotion();
   const t = useT();
+
+  // Fail-safe for the scroll-reveals below. framer-motion's whileInView can miss
+  // its IntersectionObserver crossing on a fast scroll, an anchor jump, or a
+  // back/forward restore, leaving content stranded at opacity 0. After a short
+  // delay we force every reveal to its visible state via `animate` (framer
+  // applies `animate` whenever whileInView isn't active), so nothing can stay
+  // invisible — the same "fail visible" guarantee useReveal gives the case studies.
+  const [revealAll, setRevealAll] = useState(false);
+  useEffect(() => {
+    // 2.5s matches useReveal's FAILSAFE_MS on the case studies, so a slow reader
+    // gets the same "everything is shown by now" guarantee sitewide.
+    const id = window.setTimeout(() => setRevealAll(true), 2500);
+    return () => window.clearTimeout(id);
+  }, []);
   usePageTitle();
 
   const mobbinUnlocked = useMemo(() => sessionStorage.getItem("mobbin-unlocked") === "true", []);
@@ -207,7 +221,7 @@ export default function Home() {
       };
 
   return (
-    <>
+    <main>
       {/* ══════════════════════════════════════════
           1. HERO
       ══════════════════════════════════════════ */}
@@ -297,6 +311,7 @@ export default function Home() {
           className="home-proof-grid"
           initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
+          animate={revealAll ? { opacity: 1, y: 0 } : undefined}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
         >
@@ -311,45 +326,17 @@ export default function Home() {
             </div>
           ))}
         </motion.div>
-      </section>
-
-      <section className="home-tailor-section" aria-label={t("home.tailorAria")}>
-        <div className="home-tailor-header">
-          <p className="home-eyebrow">{t("home.tailorEyebrow")}</p>
-          <h2 className="section-title home-section-title">{t("home.tailorTitle")}</h2>
-          <p>{t("home.tailorBody")}</p>
-        </div>
-
-        <div className="home-tailor-grid">
+        <ul className="home-trust-strip" aria-label={t("home.trustAria")}>
           {([
-            {
-              titleKey: "home.tailor.healthcare.title",
-              descKey: "home.tailor.healthcare.desc",
-              path: "/curated/omada-staff-product-designer-healthcare-ai",
-            },
-            {
-              titleKey: "home.tailor.enterprise.title",
-              descKey: "home.tailor.enterprise.desc",
-              path: "/curated/jpm-ux-design-lead-vp-workflows",
-            },
-            {
-              titleKey: "home.tailor.ai.title",
-              descKey: "home.tailor.ai.desc",
-              path: "/case-study/grove",
-            },
-            {
-              titleKey: "home.tailor.visual.title",
-              descKey: "home.tailor.visual.desc",
-              path: "/curated/fashion-graphic-designer",
-            },
-          ] as { titleKey: StringKey; descKey: StringKey; path: string }[]).map((item) => (
-            <Link key={item.path} to={item.path} className="home-tailor-card">
-              <span className="home-tailor-card__title">{t(item.titleKey)}</span>
-              <span className="home-tailor-card__desc">{t(item.descKey)}</span>
-              <span className="home-tailor-card__link">{t("home.tailor.view")}</span>
-            </Link>
+            "home.trust.msk",
+            "home.trust.mobbin",
+            "home.trust.grove",
+            "home.trust.army",
+            "home.trust.credentials",
+          ] as StringKey[]).map((key) => (
+            <li key={key}>{t(key)}</li>
           ))}
-        </div>
+        </ul>
       </section>
 
       {/* ══════════════════════════════════════════
@@ -362,6 +349,7 @@ export default function Home() {
           className="home-section-header"
           initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
+          animate={revealAll ? { opacity: 1, y: 0 } : undefined}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.5, ease: [0.2, 0.8, 0.2, 1] }}
         >
@@ -443,6 +431,7 @@ export default function Home() {
                 variants={cardVariants}
                 initial={prefersReducedMotion ? false : "hidden"}
                 whileInView="visible"
+                animate={revealAll ? "visible" : undefined}
                 viewport={{ once: true, margin: "-60px" }}
               >
                 {clickable ? (
@@ -465,15 +454,45 @@ export default function Home() {
           })}
         </div>
 
-        <div className="home-tailored-path" aria-label={t("home.fashionBridgeAria")}>
-          <div className="home-tailored-path__copy">
-            <p className="home-tailored-path__eyebrow">{t("home.fashionBridgeEyebrow")}</p>
-            <p>{t("home.fashionBridgeText")}</p>
+        <section className="home-tailor-section" aria-label={t("home.tailorAria")}>
+          <div className="home-tailor-header">
+            <p className="home-eyebrow">{t("home.tailorEyebrow")}</p>
+            <h2 className="section-title home-section-title">{t("home.tailorTitle")}</h2>
+            <p>{t("home.tailorBody")}</p>
           </div>
-          <Link to="/curated/fashion-graphic-designer" className="home-tailored-path__link">
-            {t("home.fashionBridgeLink")}
-          </Link>
-        </div>
+
+          <div className="home-tailor-grid">
+            {([
+              {
+                titleKey: "home.tailor.healthcare.title",
+                descKey: "home.tailor.healthcare.desc",
+                path: "/curated/omada-staff-product-designer-healthcare-ai",
+              },
+              {
+                titleKey: "home.tailor.enterprise.title",
+                descKey: "home.tailor.enterprise.desc",
+                path: "/curated/jpm-ux-design-lead-vp-workflows",
+              },
+              {
+                titleKey: "home.tailor.ai.title",
+                descKey: "home.tailor.ai.desc",
+                path: "/case-study/grove",
+              },
+              {
+                titleKey: "home.tailor.visual.title",
+                descKey: "home.tailor.visual.desc",
+                path: "/curated/fashion-graphic-designer",
+              },
+            ] as { titleKey: StringKey; descKey: StringKey; path: string }[]).map((item) => (
+              <Link key={item.path} to={item.path} className="home-tailor-card">
+                <span className="home-tailor-card__title">{t(item.titleKey)}</span>
+                <span className="home-tailor-card__desc">{t(item.descKey)}</span>
+                <span className="home-tailor-card__link">{t("home.tailor.view")}</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
       </section>
 
       {/* ══════════════════════════════════════════
@@ -498,6 +517,7 @@ export default function Home() {
           className="about-cta"
           initial={prefersReducedMotion ? false : { opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
+          animate={revealAll ? { opacity: 1, y: 0 } : undefined}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.65, ease: [0.2, 0.8, 0.2, 1] }}
         >
@@ -534,6 +554,6 @@ export default function Home() {
         </motion.div>
 
       </section>
- </>
+ </main>
   );
 }
