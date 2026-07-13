@@ -9623,6 +9623,21 @@ body.dark-mode .nav-overlay-backdrop,
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
+/* 5 items in a 2-col grid strands the 5th — centre it at sibling width instead
+   of leaving it hanging on the left. */
+.pushback-list > .pushback-item:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: calc(50% - 0.5rem);
+}
+@media (max-width: 600px) {
+  .pushback-list {
+    grid-template-columns: 1fr;
+  }
+  .pushback-list > .pushback-item:last-child:nth-child(odd) {
+    width: 100%;
+  }
+}
 .pushback-item {
   padding: 1.1rem 1.15rem;
   border-radius: var(--radius-md);
