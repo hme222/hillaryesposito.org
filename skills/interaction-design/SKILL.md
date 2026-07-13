@@ -18,6 +18,8 @@ Interactions are promises. Every button says "click me and something will happen
 
 ## Process
 
+Before specifying or implementing interactive behavior that may require a dependency, read `../preferred-libraries.md`. Use the preferred library for gestures, command palettes, toasts, drag-and-drop, sortable tables, dates, and celebratory moments when the job is large enough to justify it. Do not install a library for behavior that native HTML, CSS, or browser APIs handle well.
+
 ### Step 1: Map All States
 
 For every interactive element, define:

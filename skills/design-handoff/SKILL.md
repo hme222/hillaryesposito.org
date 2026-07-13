@@ -25,6 +25,7 @@ Gather all artefacts from the design process:
 - Interaction specifications (states, transitions, feedback)
 - Accessibility requirements (per component)
 - Design system references (tokens, components used)
+- Dependency decisions from `../preferred-libraries.md` (which libraries were used or intentionally avoided, and why)
 
 ### Step 2: Write Component Specifications
 
@@ -46,6 +47,7 @@ For each component or screen, provide:
 - States: [default, hover, focus, active, disabled, error, loading]
 - Transitions: [what animates, duration, easing, reduced-motion alternative]
 - Feedback: [what the user perceives at each state change]
+- Libraries: [native platform/CSS only, or preferred library used and why]
 
 ### Accessibility Requirements
 - Semantic element: [which HTML element to use]

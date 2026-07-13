@@ -7,6 +7,18 @@ description: Use when designing animation sequences, page transitions, micro-int
 
 Motion is communication. Every animation answers a question the user didn't know they had. If it doesn't answer one, cut it.
 
+## Preferred Libraries
+
+Before specifying or implementing motion, read `../preferred-libraries.md`.
+
+- Use Motion from `motion/react` for meaningful animations, transitions, and gestures when CSS is not enough.
+- Use Lenis for a site-level smooth, premium scroll feel when the experience depends on scroll quality.
+- Use GSAP with ScrollTrigger for timeline choreography and scroll-triggered sequences.
+- Use React Three Fiber with Drei helpers for 3D scenes.
+- Use canvas-confetti for celebratory moments.
+
+Tell the user which library you are using and why before installing anything new. Do not add an animation runtime for simple CSS fades, hovers, or one-off transforms.
+
 ## The Three Questions
 
 Before adding any animation:

@@ -1,5 +1,7 @@
 # Design State: Full Portfolio Redesign — Hybrid Positioning
 
+_Last updated: 2026-07-08 by Codex / Designpowers implementation_
+
 ## Brief Summary
 **Problem:** Portfolio positions Hillary as Product Designer only, burying process improvement track record and treating AI as a project tag. LinkedIn and portfolio tell different stories.
 **Primary audience:** Hiring managers and recruiters (30-60 second scan), process improvement leaders, AI-curious hiring managers, UX designer peers
@@ -41,6 +43,11 @@
 | Nav words seated ~10px above their spheres (nodot 30px padding removed, JS gap tightened) | Word + ball must read as ONE nav object, not a caption over a decoration | review panel fixes 2026-07-02 |
 | Recruiter pill hidden until scroll on ≤768px (all routes) | It occluded the hero description on mobile; desktop position unchanged | review panel fixes 2026-07-02 |
 | Knot morph slowed: DELAY 0.4 / DURATION 3.8 / TAIL 0.5, absorb window 0.10→0.18 | Owner wants the morph watchable and deliberate; resolvedOnce stillness + reduced-motion paths untouched | owner direction 2026-07-02 |
+| Canonical positioning updated to “UX & Product Designer \| Healthcare Systems \| Human-Centered Process Design \| Army Veteran” | User requested this positioning; primary surfaces now lead with UX/product while keeping process design as a differentiator instead of the main role identity | implementation 2026-07-08 |
+| Mobbin reframed as App Capture Specialist \| UX Flow Documentation & UI Pattern Curation | Matches user-provided LinkedIn framing and preserves NDA-gated professional context without overstating it as product design ownership | implementation 2026-07-08 |
+| Good Harvest research sample ambiguity clarified | Inherited 22-person research and generated separate 22-person Maze heatmap testing now read as distinct samples; finding cards credit Hillary’s synthesis from provided research | implementation 2026-07-08 |
+| About page “What I bring” reordered product-first | Senior reviewer feedback showed process improvement was leading too strongly; cards now start with UX/product design, then healthcare systems, then human-centered process design | implementation 2026-07-08 |
+| Post knot-nav-hero-redesign accessibility audit: 0 critical, 2 serious, 3 minor findings (WCAG 2.2 AA + COGA) | Missing `<main>` landmark on Home/About (App.tsx wraps routes in a plain div, unlike case-study/curated pages which supply their own `<main>`); RecruiterPill and PasswordGate render English-only content with no `lang="en"` override while the Spanish shell's `<html lang="es">` is active — a real Language of Parts (3.1.2) gap, distinct from the already-fixed case-study/About/curated root overrides. Everything else tested (keyboard focus, mobile-menu + recruiter-panel focus traps, password-gate error semantics, reduced-motion handling of the WorkflowKnot/orbs, contrast tokens in both themes, forced-colors gradient-text fallback, target sizes) passed clean | accessibility-reviewer 2026-07-10 |
 
 ## Open Questions
 - Specific hero headline copy (to be determined in strategy/content phases)
@@ -65,10 +72,14 @@
 
 ## Design Debt Register
 
-_Items: 6 | Open: 0 | Resolved: 6 | All closed: 2026-07-01_
+_Items: 8 | Open: 2 | Resolved: 6 | Last reviewed: 2026-07-10_
 
 | ID | Date | Source | Severity | What | Who is affected | Suggested fix | Status | Notes |
 |----|------|--------|----------|------|----------------|---------------|--------|-------|
+| DD-007 | 2026-07-10 | accessibility-reviewer | Minor | "Opens in new tab" is only appended to aria-labels on the Navbar resume link and the Home CTA section (in both EN/ES strings). Footer social icons, RecruiterPill's resume/LinkedIn/email links, and AboutMe's MSK News articleLink all open target="_blank" with no such warning | Screen reader users and cognitively-disabled users who lose orientation when a new tab opens silently | Standardize the "(opens in new tab)" / "(se abre en una pestaña nueva)" suffix across every target="_blank" aria-label — Footer.tsx:13,25; RecruiterPill.tsx:155-169; AboutMe.tsx:222 | Open | Low effort, sitewide consistency pass |
+| DD-008 | 2026-07-10 | accessibility-reviewer | Minor | `.pw-gate__input--error` border stays `#c0392b` in dark mode (not overridden like `.pw-gate__error` text is) — measures ~3.07:1 against the dark card surface, barely over the 3:1 non-text-contrast floor with almost no margin | Low-vision users in dark mode relying on the input border to see the error state | Add a `.dark-mode .pw-gate__input--error { border-color: #ff8a7a; }` rule matching the text-color override already at App.css:8364 | Open | Verify against actual rendered surface (approximated using --card token) |
+
+
 | DD-001 | 2026-06-29 | accessibility-reviewer | Minor | Hero positioning gradient starts at olive-1 (#7c8c3c, 3.54:1) — passes large-text AA at desktop (1.3rem/600wt) but fails body-text AA at mobile size (1rem/600wt = 16px, needs 4.5:1) | Low-vision users on mobile | In the max-width: 768px media query, change gradient start to var(--olive-2) (#5a7a2e, 4.71:1) instead of var(--olive-1). See App.css:651–668 | Resolved 2026-07-01 | Fixed even better than suggested — gradient start changed to var(--olive-2) globally (App.css:661), not just mobile. Verified in source |
 | DD-002 | 2026-06-29 | accessibility-reviewer | Minor | Good Harvest and multi-device project cards render 2–3 device screenshots all sharing one alt text — screen reader announces the same description multiple times | Screen reader users | First image in home-proj-devices--multi group carries descriptive alt; 2nd and 3rd siblings use alt="". See Home.tsx:326–330 | Resolved 2026-07-01 | Fixed: `alt={i === 0 ? proj.imageAlt || "" : ""}` at Home.tsx:386. First image descriptive, siblings empty. Verified |
 | DD-003 | 2026-06-29 | accessibility-reviewer | Minor | Active section nav buttons (HOME, PROJECTS, CONTACT) use .is-active class for visual state only — no aria-current. Only ABOUT Link has aria-current="page" | Screen reader users who rely on aria-current to understand current location | Add aria-current="true" to active button-based nav items. See Navbar.tsx:138–170 | Resolved 2026-07-01 | HOME/PROJECTS/ABOUT already had it; added the missing aria-current to the CONTACT button (Navbar.tsx:220) this session |
@@ -78,8 +89,14 @@ _Items: 6 | Open: 0 | Resolved: 6 | All closed: 2026-07-01_
 
 ## Handoff Chain
 
+### 2026-07-10 — accessibility-reviewer → design-builder
+> "Two things before this ships. First: Home and About render straight through App.tsx's `<div id="main-content">` — there's no `<main>` landmark on those two routes (case-study and curated pages already wrap themselves in one, so this is just Home.tsx and AboutMe.tsx, or change the shared div in App.tsx:58 to a `<main>`). Second, and more pressing: RecruiterPill and PasswordGate are both hardcoded English with no `lang=\"en\"` override, so when a Spanish-speaking screen reader user has the shell flipped to `<html lang=\"es\">`, both get mispronounced word-for-word — this is the same Language of Parts gap you already fixed on the case-study/About/curated roots, just missed on these two. Add `lang=\"en\"` to RecruiterPill.tsx's `<aside className=\"recruiter-panel\">` and to PasswordGate.tsx's `<main className=\"pw-gate\">`. Everything else — keyboard focus, both focus traps, password-gate error semantics, reduced-motion handling, contrast, forced-colors gradient fallback, target sizes — passed clean. Two Minor items (new-tab link consistency, a borderline dark-mode error-border contrast) logged as DD-007/DD-008 in the debt register, not blocking."
+
 ### 2026-06-29 — accessibility-reviewer → design-builder
 > "Three things need to ship before this can credibly say 'accessibility is the craft.' First: MSKSystemMap's rAF loop needs a stop condition when pe >= 1 — identical to what WorkflowKnot already does. Second: RecruiterPill has a one-line focus bug on mount — add a hasOpenedOnce ref so focus-return only fires after the panel has been opened at least once. Third: the mobile nav menu needs focus moved into it on open and a focus trap to keep it there; the same focus-trap-react you already have in RecruiterPill handles this. Also: skip link target div needs tabindex='-1', SPA route changes need an aria-live announcer, and the MSK decisions table needs scope='col' on its th elements and a caption. Six deferred minor items recorded in the Design Debt Register (DD-001 through DD-006). Motion work is good throughout; finish the loop on MSKSystemMap and those three critical/major fixes."
+
+### 2026-07-08 — senior review synthesis → final implementation
+> "The portfolio should now read product-first, with healthcare systems and Army credibility doing the supporting work. Mobbin stays protected and framed honestly as UX flow documentation, not inflated product ownership. The remaining portfolio gap is evidence, not wording: MSK still needs anonymized design artifacts or recreated workflow visuals if Hillary wants senior product design reviewers to see craft as quickly as they see operational impact."
 
 ### 2026-06-10 — design planning → build
 > "Plan approved. 7 phases, 20 tasks. Start with foundation (tokens, type, spacing), then homepage hero + positioning, then projects + CTA, then About page, then case study restructuring (unified template across all 5 + individual content rewrites), then polish + Gen Z moment, then full WCAG audit. Every case study gets the same skeleton: Hero → Meta → Overview → Challenge → Process → Key Decisions → Outcome → Reflections → Footer. Flagship quality throughout. Go build."

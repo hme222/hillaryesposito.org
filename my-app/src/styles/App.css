@@ -2,7 +2,7 @@
 
 :root {
   --font-head: "Switzer", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: "Switzer", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: "Optima", "Optima Nova", "Spectral", "Noto Serif", Georgia, serif;
   --font-editorial: "Optima", "Optima Nova", "Spectral", "Noto Serif", Georgia, serif;
 }
 /* ============================================================
@@ -72,9 +72,9 @@
   --card-pad: 1.4rem;
   --measure: 68ch;
   --measure-tight: 52ch;
-  --type-hero-name: clamp(4.2rem, 5.4vw, 5.9rem);
-  --type-hero-title: clamp(2.2rem, 3.2vw, 3.4rem);
-  --type-section-title: clamp(2.1rem, 3vw, 3rem);
+  --type-hero-name: clamp(3.4rem, 4vw, 4.4rem);
+  --type-hero-title: clamp(1.85rem, 2.4vw, 2.6rem);
+  --type-section-title: clamp(1.65rem, 2.2vw, 2.25rem);
   --type-card-title: 1.35rem;
   --type-body: 1rem;
   --type-lede: 1.12rem;
@@ -369,7 +369,11 @@ select:focus {
   position: sticky;
   top: 0;
   width: 100%;
-  padding: 1.2rem var(--page-pad);
+  /* Full-width background/border, but the content (logo + nav) is capped to the
+     page's content width and centred, so on wide screens the nav doesn't strand
+     the logo and menu at the extreme edges. max() keeps --page-pad on the
+     narrower responsive locks, so mobile/tablet layouts are untouched. */
+  padding: 1.2rem max(var(--page-pad), calc((100% - 1280px) / 2));
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1262,7 +1266,7 @@ select:focus {
   justify-content: center;
   text-align: center;
   max-width: 1040px;
-  min-height: min(74vh, 660px);
+  min-height: min(66vh, 580px);
   gap: 0;
 }
 .hero-content--centered .hero-title {
@@ -1285,7 +1289,7 @@ select:focus {
   width: 100%;
   /* Sized for the small decorative knot now (not a full nav row), so the resting
      dots nestle between the tagline and the copy rather than floating in a void. */
-  height: clamp(96px, 13vh, 140px);
+  height: clamp(76px, 10vh, 112px);
   flex: none;
   pointer-events: none;
 }
@@ -1481,8 +1485,13 @@ select:focus {
   margin-right: auto;
 }
 .hero-content--centered .hero-positioning {
-  line-height: 1.35;
-  margin-bottom: 0; /* spacing is handled by the .hero-lede gap now */
+  /* Subordinate tagline, not a second headline: the name above is ~58px, so the
+     positioning stays clearly smaller with generous line spacing so its multi-
+     line block reads calm rather than tight and heavy. */
+  font-size: clamp(1.1rem, 1.45vw, 1.4rem);
+  line-height: 1.55;
+  max-width: 30ch;
+  margin: 0.65rem auto 0; /* a little air below the name */
   /* Sentence case + solid ink: the H1 above keeps the viewport's one gradient
      treatment. Uppercase-gradient stacked beneath a gradient H1 read as a
      template, not quiet authority (letter-spacing cascades from the base). */
@@ -1846,16 +1855,22 @@ select:focus {
   height: 1.2rem;
 }
 
+/* Real Mobbin logo (self-contained black tile) replaces the chip — no circle. */
 .about-feedback-card__icon--mobbin {
-  color: #fff;
-  background: #111;
-  border-color: color-mix(in srgb, #111 82%, var(--border));
+  width: auto;
+  height: auto;
+  background: none;
+  border: none;
+  border-radius: 0;
 }
-
-.dark-mode .about-feedback-card__icon--mobbin {
-  color: #111;
-  background: #f8f8f4;
-  border-color: color-mix(in srgb, #f8f8f4 75%, var(--border));
+.about-feedback-card__logo {
+  height: 2.5rem;
+  width: auto;
+  display: block;
+  border-radius: 9px;
+}
+.dark-mode .about-feedback-card__logo {
+  box-shadow: 0 0 0 1px rgba(245, 239, 230, 0.16);
 }
 
 .about-feedback-card blockquote {
@@ -3218,6 +3233,7 @@ body.dark-mode .nav-overlay-backdrop,
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0;
   background: var(--card);
   border: 1px solid var(--border);
@@ -3231,7 +3247,7 @@ body.dark-mode .nav-overlay-backdrop,
   flex-direction: column;
   gap: 0.2rem;
   padding: 0 1.25rem;
-  flex: 1;
+  flex: 0 1 auto;
   min-width: 0;
 }
  
@@ -3252,6 +3268,7 @@ body.dark-mode .nav-overlay-backdrop,
   font-weight: 600;
   color: var(--fg);
   line-height: 1.4;
+  white-space: nowrap;
 }
  
 .gh-meta-strip__divider {
@@ -3632,7 +3649,9 @@ body.dark-mode .nav-overlay-backdrop,
 .morework-track {
   display: flex;
   gap: 1.5rem;
-  padding-bottom: 0.5rem;
+  /* Room for the project-card drop shadow — the viewport clips overflow-y, so
+     without this the cards read as visually cut off at the bottom. */
+  padding: 0.5rem 0.25rem 2.25rem;
 }
 
 .morework-card {
@@ -5472,7 +5491,9 @@ body.dark-mode .nav-overlay-backdrop,
 
 .home-section-title {
   margin-bottom: 0 !important;
-  font-size: clamp(2.1rem, 4vw, 2.5rem) !important;
+  /* font-size comes from --type-section-title via the shared heading-scale
+     block near the end of this file; the old !important clamp here defeated
+     the token and broke hierarchy against the retuned hero headline. */
 }
 
 /* ── Approach section ── */
@@ -5967,6 +5988,61 @@ body.dark-mode .nav-overlay-backdrop,
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+
+/* "Companies I've been contracted to support" — client accreditation strip. */
+.home-clients {
+  max-width: 980px;
+  margin: 2.75rem auto 0;
+  padding: 0 var(--page-pad);
+  text-align: center;
+}
+.home-clients__label {
+  font-size: 0.74rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 1.1rem;
+}
+.home-clients__list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+.home-clients__item {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  opacity: 0.82;
+  transition: opacity 0.2s ease;
+}
+.home-clients__item:hover,
+.home-clients__item:focus-visible {
+  opacity: 1;
+}
+.home-clients__wordmark {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+}
+.home-clients__logo {
+  height: 42px;
+  width: auto;
+  display: block;
+  border-radius: 10px;
+}
+/* The Mobbin mark is a self-contained black app-icon tile — never recolor a
+   brand logo. On the warm-black dark background a hairline ring keeps its edge
+   defined so it doesn't blend into the page. */
+.dark-mode .home-clients__logo {
+  box-shadow: 0 0 0 1px rgba(245, 239, 230, 0.16);
 }
 
 .home-trust-strip li {
@@ -7382,7 +7458,11 @@ body.dark-mode .nav-overlay-backdrop,
   }
   .about-story-card__image {
     width: 100%;
-    max-height: 200px;
+    max-height: none;
+    aspect-ratio: 4 / 3;
+  }
+  .about-story-card__image img {
+    object-position: center 30%;
   }
 }
 .about-story-card__body {
@@ -9000,9 +9080,61 @@ body.dark-mode .nav-overlay-backdrop,
 
 /* ── Survey stats grid ── */
 .grove-survey-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
+}
+.grove-survey-stat {
+  flex: 1 1 200px;
+  max-width: 300px;
+}
+
+/* User-flow steps — numbered, connected by a subtle rail, no arrow glyphs. */
+.grove-flow-steps {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.grove-flow-steps li {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.55rem 0;
+  color: var(--fg);
+  font-size: 0.98rem;
+  line-height: 1.4;
+  position: relative;
+}
+/* Connecting rail between the numbered nodes. */
+.grove-flow-steps li:not(:last-child) .grove-flow-steps__n::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 1px;
+  height: calc(0.55rem * 2 + 0.4rem);
+  background: color-mix(in srgb, var(--olive-2) 28%, var(--border));
+  transform: translateX(-50%);
+}
+.grove-flow-steps__n {
+  position: relative;
+  flex-shrink: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--olive-2);
+  background: color-mix(in srgb, var(--olive-2) 12%, var(--surface-0));
+  border: 1px solid color-mix(in srgb, var(--olive-2) 26%, var(--border));
 }
 
 .grove-survey-stat {
@@ -9089,7 +9221,9 @@ body.dark-mode .nav-overlay-backdrop,
 .case-study section[id],
 .cs-skim[id],
 .cs-outcome[id] {
-  scroll-margin-top: 96px;
+  /* Clear BOTH sticky layers: the navbar (~74px) and the jump-nav pill that
+     sticks just below it (~48px), so an anchored section never lands hidden. */
+  scroll-margin-top: 140px;
 }
 .cs-jump-nav {
   position: sticky;
@@ -11633,9 +11767,9 @@ body.dark-mode .nav-overlay-backdrop,
     --card-pad: 1rem;
     --measure: 34ch;
     --measure-tight: 30ch;
-    --type-hero-name: clamp(3.2rem, 15vw, 4.15rem);
-    --type-hero-title: clamp(2rem, 8.2vw, 2.75rem);
-    --type-section-title: clamp(1.8rem, 7vw, 2.35rem);
+    --type-hero-name: clamp(2.5rem, 11vw, 3rem);
+    --type-hero-title: clamp(1.5rem, 6.5vw, 2rem);
+    --type-section-title: clamp(1.35rem, 6vw, 1.75rem);
     --type-card-title: 1.08rem;
     --type-body: 1rem;
     --type-lede: 1.03rem;
@@ -11656,9 +11790,9 @@ body.dark-mode .nav-overlay-backdrop,
     --card-pad: 1.2rem;
     --measure: 60ch;
     --measure-tight: 48ch;
-    --type-hero-name: clamp(3.6rem, 7.2vw, 4.7rem);
-    --type-hero-title: clamp(2rem, 4.2vw, 2.65rem);
-    --type-section-title: clamp(2rem, 4.4vw, 2.7rem);
+    --type-hero-name: clamp(2.8rem, 5.4vw, 3.5rem);
+    --type-hero-title: clamp(1.6rem, 3.2vw, 2.05rem);
+    --type-section-title: clamp(1.5rem, 3.1vw, 1.9rem);
     --type-card-title: 1.2rem;
     --type-body: 1rem;
     --type-lede: 1.08rem;
@@ -11817,7 +11951,9 @@ blockquote,
 
 .hero-positioning {
   max-width: 27ch;
-  font-size: clamp(1.6rem, 2.15vw, 2.4rem);
+  /* Use the shared token so the display headline stays above section titles
+     in the retuned scale (a hard-coded clamp here previously undercut it). */
+  font-size: var(--type-hero-title);
   font-weight: 650;
   letter-spacing: var(--tracking-tight);
   line-height: 1.14;
@@ -11942,7 +12078,18 @@ blockquote,
   }
 
   .case-study h2,
-  .case-study .cs-section-title {
+  .case-study .cs-section-title,
+  .about-growth-title,
+  .about-cta-title,
+  .home-section-title,
+  .section-title {
     line-height: 1.16;
+  }
+
+  /* Keep the project-card eyebrow (e.g. "Product Design · AI Judgment") on one
+     line on narrow screens instead of wrapping the separator onto a new row. */
+  .home-proj-subtitle {
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
   }
 }

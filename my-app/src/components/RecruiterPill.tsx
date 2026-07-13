@@ -112,7 +112,7 @@ export default function RecruiterPill() {
 
                 <section className="recruiter-panel__section">
                   <p className="recruiter-panel__label">In one line</p>
-                  <p>UX/Product Designer for healthcare systems and internal tools, with proof across MSK, Grove, Good Harvest, and Mobbin.</p>
+                  <p>UX/Product Designer for AI-enabled workflows, healthcare systems, and complex data-heavy products.</p>
                 </section>
 
                 <section className="recruiter-panel__section">

@@ -17,6 +17,8 @@ A design system is a shared language. When components are consistent, accessible
 
 ## Process
 
+If a component or pattern needs an implementation library, check `../preferred-libraries.md` before choosing one. Use the preferred icon, table, chart, date, toast, command palette, drag-and-drop, animation, and 3D libraries unless the existing project already has an equivalent system.
+
 ### Step 1: Inventory the Existing System
 
 If a design system exists, catalogue:

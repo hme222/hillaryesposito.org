@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import usePageTitle from "../hooks/usePageTitle";
 import { useLanguage } from "../app/LanguageContext";
-import { MobbinIcon, NewsIcon } from "../components/LineIcons";
+import { NewsIcon } from "../components/LineIcons";
 
 // ── Story chapters ───────────────────────────────────────────────────────
 const CHAPTERS = [
@@ -105,21 +105,9 @@ export default function About() {
   usePageTitle("About");
   const { lang } = useLanguage();
   const navigate = useNavigate();
-  const lunaRef = useRef<HTMLDivElement>(null);
   const isSpanish = lang === "es";
   const chapters = isSpanish ? CHAPTERS_ES : CHAPTERS;
   const feedback = isSpanish ? CLIENT_FEEDBACK_ES : CLIENT_FEEDBACK;
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!lunaRef.current) return;
-      const movement = Math.sin(window.scrollY * 0.002) * 14;
-      lunaRef.current.style.transform = `translateY(${movement}px)`;
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <main className="about-page" lang={isSpanish ? "es" : "en"}>
@@ -250,9 +238,6 @@ export default function About() {
           <p className="about-life-intro">
             {isSpanish ? "Correr, leer y Luna la gata. Rutinas que me mantienen clara y con los pies en la tierra." : "Running, reading, and Luna the cat. Routines that keep me clear and grounded."}
           </p>
-          <div ref={lunaRef} className="about-luna-deco">
-            <img src="/assets/about/luna.jpg" alt={isSpanish ? "Luna, una gata gris y blanca con ojos naranjas" : "Luna, a gray and white cat with orange eyes"} />
-          </div>
         </div>
       </section>
 
@@ -266,7 +251,7 @@ export default function About() {
           {feedback.map((item) => (
             <figure key={item.name} className="about-feedback-card feature">
               <div className="about-feedback-card__icon about-feedback-card__icon--mobbin" aria-hidden="true">
-                <MobbinIcon />
+                <img src="/assets/mobbin/mobbin-logo.png" alt="Mobbin" className="about-feedback-card__logo" />
               </div>
               <blockquote>“{item.quote}”</blockquote>
               <figcaption>

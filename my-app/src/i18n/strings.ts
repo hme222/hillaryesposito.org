@@ -41,9 +41,9 @@ const en = {
   "home.heroAria": "Home section",
   "home.status": "Available for opportunities",
   "home.positioning":
-    "I design trusted tools for complex healthcare and internal workflows.",
+    "UX/Product Designer for AI-enabled workflows, healthcare systems, and complex data-heavy products.",
   "home.description":
-    "Healthcare systems, internal tools, AI-assisted product design, and Army\u00a0Veteran\u00a0perspective.",
+    "6 years at Memorial Sloan Kettering \u00b7 21,000+ clinicians \u00b7 US Army veteran.",
   "home.getInTouch": "Get in touch",
   "home.seeApproach": "See my approach →",
   "home.replay": "Replay",
@@ -72,13 +72,17 @@ const en = {
   "home.proofAria": "Experience highlights",
   "home.stat.clinicians": "Clinicians impacted, MSK Cancer Center",
   "home.stat.emr": "EMR cost reduction, MSK Cancer Center",
-  "home.stat.grove": "Survey respondents shaped Grove's MVP",
+  "home.stat.cert": "Certification workflow gain, MSK Cancer Center",
   "home.trustAria": "Trust and credibility signals",
   "home.trust.msk": "MSK Cancer Center",
   "home.trust.mobbin": "Mobbin client work",
-  "home.trust.grove": "32-user Grove survey",
+  "home.trust.grove": "Responsible-AI focus",
   "home.trust.army": "Army Veteran",
   "home.trust.credentials": "MHA + Lean Six Sigma",
+  "home.trust.bilingual": "Bilingual EN/ES",
+  "home.clientsAria": "Companies I have been contracted to support",
+  "home.clientsLabel": "Companies I have been contracted to support",
+  "home.clients.mobbinAria": "Mobbin, freelance UX documentation (view case study)",
 
   // ── Home: tailored relevance ──
   "home.tailorAria": "Role-specific portfolio paths",
@@ -93,7 +97,7 @@ const en = {
   "home.tailor.ai.title": "AI-assisted product work",
   "home.tailor.ai.desc": "Grove, AI workflow decisions, override judgment, and trust calibration.",
   "home.tailor.visual.title": "Visual craft and UI systems",
-  "home.tailor.visual.desc": "Grove, Good Harvest, and Mobbin artifacts showing hierarchy, polish, documentation quality, and production care.",
+  "home.tailor.visual.desc": "Grove and the broader body of work: interface hierarchy, polish, documentation quality, and production care.",
   "home.tailor.view": "Review this path →",
 
   // ── Home: role fit ──
@@ -188,9 +192,9 @@ const es: Partial<Record<StringKey, string>> = {
   "home.heroAria": "Sección de inicio",
   "home.status": "Disponible para nuevas oportunidades",
   "home.positioning":
-    "Diseño herramientas confiables para flujos complejos de salud e internos.",
+    "UX/Product Designer para flujos de trabajo habilitados por IA, sistemas de salud y productos complejos con muchos datos.",
   "home.description":
-    "Sistemas de salud, herramientas internas, diseño de producto asistido por IA y perspectiva de veterana del Ejército.",
+    "6 años en Memorial Sloan Kettering · más de 21,000 profesionales clínicos · veterana del Ejército de EE. UU.",
   "home.getInTouch": "Contácteme",
   "home.seeApproach": "Conozca mi enfoque →",
   "home.replay": "Repetir",
@@ -219,13 +223,17 @@ const es: Partial<Record<StringKey, string>> = {
   "home.proofAria": "Experiencia destacada",
   "home.stat.clinicians": "Profesionales clínicos beneficiados, MSK Cancer Center",
   "home.stat.emr": "Reducción de costos del EMR, MSK Cancer Center",
-  "home.stat.grove": "Participantes de encuesta definieron el MVP de Grove",
+  "home.stat.cert": "Mejora del flujo de certificación, MSK Cancer Center",
   "home.trustAria": "Señales de confianza y credibilidad",
   "home.trust.msk": "MSK Cancer Center",
   "home.trust.mobbin": "Trabajo para cliente Mobbin",
-  "home.trust.grove": "Encuesta Grove con 32 usuarios",
+  "home.trust.grove": "Enfoque en IA responsable",
   "home.trust.army": "Veterana del Ejército",
   "home.trust.credentials": "MHA + Lean Six Sigma",
+  "home.trust.bilingual": "Bilingüe EN/ES",
+  "home.clientsAria": "Empresas que he apoyado por contrato",
+  "home.clientsLabel": "Empresas que he apoyado por contrato",
+  "home.clients.mobbinAria": "Mobbin, documentación UX freelance (ver estudio de caso)",
 
   // ── Home: tailored relevance ──
   "home.tailorAria": "Rutas de portafolio por tipo de rol",
@@ -240,7 +248,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.tailor.ai.title": "Trabajo de producto asistido por IA",
   "home.tailor.ai.desc": "Grove, decisiones de flujo con IA, criterio de corrección y calibración de confianza.",
   "home.tailor.visual.title": "Craft visual y sistemas UI",
-  "home.tailor.visual.desc": "Artefactos de Grove, Good Harvest y Mobbin que muestran jerarquía, pulido, documentación y cuidado de producción.",
+  "home.tailor.visual.desc": "Grove y el resto del trabajo: jerarquía de interfaz, pulido, calidad de documentación y cuidado de producción.",
   "home.tailor.view": "Revisar esta ruta →",
 
   // ── Home: role fit ──

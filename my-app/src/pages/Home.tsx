@@ -108,29 +108,6 @@ const PROJECTS: Project[] = [
     bg: "linear-gradient(135deg, #1a1a2e 0%, #2d2d4a 50%, #1a2a3a 100%)",
     path: "/case-study/msk",
   },
-  {
-    title: "Good Harvest",
-    subtitleKey: "home.proj.gh.subtitle",
-    descKey: "home.proj.gh.desc",
-    images: [
-      "/assets/good-harvest/goodharvest-home-wireframe.png",
-      "/assets/good-harvest/goodharvest-app-mobile.png",
-      "/assets/good-harvest/goodharvest-home-heatmap.png",
-    ],
-    imageAltKey: "home.proj.gh.alt",
-    bg: "linear-gradient(135deg, #2e2a1a 0%, #3d3520 50%, #2a2215 100%)",
-    path: "/case-study/good-harvest",
-  },
-  {
-    title: "Mobbin",
-    subtitleKey: "home.proj.mobbin.subtitle",
-    descKey: "home.proj.mobbin.desc",
-    images: ["/assets/mobbin/kikoff.png", "/assets/mobbin/polymarket.png", "/assets/mobbin/discover.png"],
-    imageAltKey: "home.proj.mobbin.alt",
-    bg: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
-    path: "/case-study/mobbin",
-    locked: true,
-  },
 ];
 
 
@@ -149,10 +126,21 @@ export default function Home() {
   // invisible — the same "fail visible" guarantee useReveal gives the case studies.
   const [revealAll, setRevealAll] = useState(false);
   useEffect(() => {
-    // 2.5s matches useReveal's FAILSAFE_MS on the case studies, so a slow reader
-    // gets the same "everything is shown by now" guarantee sitewide.
-    const id = window.setTimeout(() => setRevealAll(true), 2500);
-    return () => window.clearTimeout(id);
+    const revealNow = () => setRevealAll(true);
+    // Slow-reader guarantee (matches useReveal's FAILSAFE_MS on the case studies).
+    const id = window.setTimeout(revealNow, 2500);
+    // Jump guarantee: if the viewport is already deep (End key, anchor deep-link,
+    // or a back/forward scroll restore), framer's whileInView may miss its
+    // IntersectionObserver crossing, so reveal everything immediately rather than
+    // leaving a blank screen. Normal top-of-page reading keeps the entrance effect.
+    const onScroll = () => {
+      if (window.scrollY > window.innerHeight * 1.2) revealNow();
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.clearTimeout(id);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
   usePageTitle();
 
@@ -318,7 +306,7 @@ export default function Home() {
           {([
             { value: "21K+", labelKey: "home.stat.clinicians" },
             { value: "20%",  labelKey: "home.stat.emr" },
-            { value: "32",   labelKey: "home.stat.grove" },
+            { value: "70%",  labelKey: "home.stat.cert" },
           ] as { value: string; labelKey: StringKey }[]).map((s) => (
             <div key={s.labelKey} className="home-proof-card">
               <p className="home-proof-value gradient-text">{s.value}</p>
@@ -328,11 +316,11 @@ export default function Home() {
         </motion.div>
         <ul className="home-trust-strip" aria-label={t("home.trustAria")}>
           {([
-            "home.trust.msk",
-            "home.trust.mobbin",
+            // Only credentials NOT already shown in the hero proof line, the
+            // stats, the project cards, or the client accreditation — no repeats.
             "home.trust.grove",
-            "home.trust.army",
             "home.trust.credentials",
+            "home.trust.bilingual",
           ] as StringKey[]).map((key) => (
             <li key={key}>{t(key)}</li>
           ))}
@@ -452,6 +440,18 @@ export default function Home() {
               </motion.div>
             );
           })}
+        </div>
+
+        {/* Contracted-client accreditation. */}
+        <div className="home-clients" aria-label={t("home.clientsAria")}>
+          <p className="home-clients__label">{t("home.clientsLabel")}</p>
+          <ul className="home-clients__list">
+            <li>
+              <Link to="/case-study/mobbin" className="home-clients__item" aria-label={t("home.clients.mobbinAria")}>
+                <img className="home-clients__logo" src="/assets/mobbin/mobbin-logo.png" alt="Mobbin" />
+              </Link>
+            </li>
+          </ul>
         </div>
 
         <section className="home-tailor-section" aria-label={t("home.tailorAria")}>

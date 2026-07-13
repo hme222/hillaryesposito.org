@@ -26,6 +26,8 @@ Before making visual decisions, confirm you have:
 - Personas (especially ability spectrum considerations)
 - Existing design system (invoke `design-system-alignment` if one exists)
 
+If implementation will require icons, charts, tables, 3D, command palettes, toasts, drag-and-drop, dates, or other specialized UI behavior, read `../preferred-libraries.md` and follow its library choices and dependency guardrails.
+
 ### Step 2: Layout and Structure
 
 **Grid system:**

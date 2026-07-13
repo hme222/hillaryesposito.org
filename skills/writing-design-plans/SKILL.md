@@ -22,6 +22,7 @@ Gather:
 - Strategy document (from design-strategy, if applicable)
 - Personas (from inclusive-personas)
 - Existing design system inventory
+- Preferred implementation libraries from `../preferred-libraries.md` when the plan includes animation, charts, 3D, icons, tables, command palettes, toasts, drag-and-drop, dates, or celebratory effects
 
 ### Step 2: Identify Design Tasks
 
@@ -72,6 +73,8 @@ Order tasks so that:
 - [ ] Step 3: [Specific action]
 
 **Accessibility check:** [What inclusive design criteria this task must meet]
+
+**Dependency check:** [Native platform/CSS only, or preferred library from `../preferred-libraries.md` with reason]
 
 **Verification:** [How to confirm this task is complete and correct]
 

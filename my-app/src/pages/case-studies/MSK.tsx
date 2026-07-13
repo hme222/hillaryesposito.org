@@ -61,11 +61,10 @@ export default function MSKCaseStudy() {
       {/* ── META STRIP ── */}
       <div className="gh-meta-strip">
         {[
-          { label: "Role",     value: "Healthcare Systems → UX & Product Design" },
-          { label: "Org",      value: "Memorial Sloan Kettering Cancer Center" },
+          { label: "Role",     value: "UX & Product Design" },
+          { label: "Org",      value: "Memorial Sloan Kettering" },
           { label: "Timeline", value: "6 years, 3 roles" },
           { label: "Scale",    value: "21,000+ clinicians" },
-          { label: "Methods",  value: "Lean Six Sigma · Workflow Redesign · Stakeholder Alignment" },
         ].map((item, i, arr) => (
           <React.Fragment key={item.label}>
             <div className="gh-meta-strip__item">
@@ -89,22 +88,14 @@ export default function MSKCaseStudy() {
         <p className="gh-section-label">Read this first</p>
         <h2 id="msk-skim-title" className="cs-section-title">The short version</h2>
         <div className="cs-skim-grid">
-          <article className="cs-skim-card">
-            <span>Problem</span>
-            <p>Clinical teams were forced through fragmented workflows, paper workarounds, and unclear status paths inside high-stakes systems.</p>
-          </article>
-          <article className="cs-skim-card">
-            <span>My role</span>
-            <p>Mapped frontline workflows, translated clinical needs into system requirements, and aligned operations, IT, and clinical leadership.</p>
-          </article>
-          <article className="cs-skim-card">
-            <span>Key decision</span>
-            <p>Move the next required action into the dashboard instead of asking staff to leave the workflow, print, send, and wait.</p>
-          </article>
-          <article className="cs-skim-card">
-            <span>Outcome</span>
-            <p>A 20% EMR cost reduction I contributed to by leading the workflow redesign, a 70% certification workflow gain, and systems used across workflows impacting 21,000+ clinicians.</p>
-          </article>
+          {[
+            ["Problem", "Clinical teams were forced through fragmented workflows, paper workarounds, and unclear status paths inside high-stakes systems."],
+            ["My role", "Mapped frontline workflows, translated clinical needs into system requirements, and aligned operations, IT, and clinical leadership."],
+            ["Key decision", "Move the next required action into the dashboard instead of asking staff to leave the workflow, print, send, and wait."],
+            ["Outcome", "A 20% EMR cost reduction I contributed to by leading the workflow redesign, a 70% certification workflow gain, and systems used across workflows impacting 21,000+ clinicians."],
+          ].map(([k, v]) => (
+            <article key={k} className="cs-skim-card"><span>{k}</span><p>{v}</p></article>
+          ))}
         </div>
       </section>
 
@@ -119,25 +110,15 @@ export default function MSKCaseStudy() {
       <section className="cs-overview">
         <p className="gh-section-label">Overview</p>
         <h2 className="cs-section-title">Designing for 21,000 clinicians inside the systems they depend on</h2>
-        <div className="highlight">
-          Staff were printing dashboard records and sending them elsewhere for EMR filing, even though the final destination was online. I redesigned the workflow by adding a direct dashboard action into online EMR, reducing handoffs and keeping clinical work in context.
-        </div>
         <p className="cs-overview-text">
-          At MSK, I optimized how the place actually ran. I mapped workflows, found where systems failed
-          the clinicians using them, aligned clinical and administrative stakeholders, and shipped fixes
-          that 21,000+ people relied on daily. This was user research before I formally had the
-          vocabulary for it. The instinct came from the Army, where I had directed medical logistics for
-          5,000+ soldiers, systems whose failures showed up as readiness problems. In healthcare, the
-          design work often starts before Figma: mapping real work, identifying failure points, and
-          deciding what the interface must make easier.
+          At MSK, I optimized how the place actually ran: mapping workflows, finding where systems
+          failed the clinicians using them, and shipping fixes that 21,000+ people relied on daily.
+          This was user research before I had the vocabulary for it; the instinct came from the
+          Army, where I directed medical logistics for 5,000+ soldiers.
         </p>
         <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
-          This case study reads in the order it happened: three roles, each building on the last,
-          from coordinating a clinical office to redesigning the systems the whole organization ran on.
-        </p>
-        <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
-          <strong>Note:</strong> Internal systems and patient data are confidential. This case study
-          uses recreated workflow artifacts and anonymized examples rather than interface screenshots.
+          <strong>Note:</strong> Internal systems and patient data are confidential, so this case
+          study uses recreated workflow artifacts and anonymized examples.
         </p>
       </section>
 
@@ -146,45 +127,30 @@ export default function MSKCaseStudy() {
         <p className="gh-section-label">Anonymized artifact</p>
         <h2 id="msk-artifact-title">Before and after: EMR workflow redesign</h2>
         <p className="cs-section-intro">
-          Recreated with patient, department, and system details removed. This is the type of artifact
-          I used to align clinicians, IT, and operations around the same problem: the workflow required
-          staff to print and send records out for filing even though the final destination was online EMR.
+          This is the artifact that aligned clinicians, IT, and operations around the same problem.
         </p>
 
         <div className="msk-workflow-artifact feature" aria-label="Before and after EMR workflow">
-          <div className="msk-workflow-column msk-workflow-column--before">
-            <p className="msk-workflow-label">Before</p>
-            <h3>Print, send, then re-file online</h3>
-            <ol className="msk-workflow-list">
-              <li>Open the dashboard</li>
-              <li>Find the record that needed filing</li>
-              <li>Print the documentation packet</li>
-              <li>Send it to a separate filing site</li>
-              <li>Wait for the record to be filed back into EMR</li>
-              <li>Return later to confirm completion</li>
-            </ol>
-            <p className="msk-artifact-note">
-              Failure mode: the workflow turned a digital record into paper, then back into a digital record.
-            </p>
-          </div>
-
-          <div className="msk-workflow-arrow" aria-hidden="true">→</div>
-
-          <div className="msk-workflow-column msk-workflow-column--after">
-            <p className="msk-workflow-label">After</p>
-            <h3>One dashboard button to online EMR</h3>
-            <ol className="msk-workflow-list">
-              <li>Open the dashboard</li>
-              <li>Select the record</li>
-              <li>Click the direct EMR action</li>
-              <li>Land in the online EMR filing destination</li>
-              <li>Complete the filing action digitally</li>
-              <li>Return to the dashboard with status updated</li>
-            </ol>
-            <p className="msk-artifact-note">
-              Design decision: add the missing bridge between the dashboard and the online EMR destination.
-            </p>
-          </div>
+          {([
+            ["before", "Before", "Print, send, then re-file online",
+              ["Open the dashboard", "Find the record that needed filing", "Print the documentation packet", "Send it to a separate filing site", "Wait for the record to be filed back into EMR", "Return later to confirm completion"],
+              "Failure mode: the workflow turned a digital record into paper, then back into a digital record."],
+            ["after", "After", "One dashboard button to online EMR",
+              ["Open the dashboard", "Select the record", "Click the direct EMR action", "Land in the online EMR filing destination", "Complete the filing action digitally", "Return to the dashboard with status updated"],
+              "Design decision: add the missing bridge between the dashboard and the online EMR destination."],
+          ] as Array<[string, string, string, string[], string]>).map(([key, label, title, steps, note], i) => (
+            <React.Fragment key={key}>
+              {i === 1 && <div className="msk-workflow-arrow" aria-hidden="true">→</div>}
+              <div className={`msk-workflow-column msk-workflow-column--${key}`}>
+                <p className="msk-workflow-label">{label}</p>
+                <h3>{title}</h3>
+                <ol className="msk-workflow-list">
+                  {steps.map((s) => <li key={s}>{s}</li>)}
+                </ol>
+                <p className="msk-artifact-note">{note}</p>
+              </div>
+            </React.Fragment>
+          ))}
         </div>
       </section>
 
@@ -193,9 +159,8 @@ export default function MSKCaseStudy() {
         <p className="gh-section-label">Interface artifact</p>
         <h2 id="msk-dashboard-title">Recreated dashboard concept: the missing EMR action</h2>
         <p className="cs-section-intro">
-          The core UI decision was not decorative. The dashboard needed to show status, preserve
-          accountability, and expose the direct EMR action only when the record was ready and the
-          user had permission to complete it.
+          The dashboard needed to show status, preserve accountability, and expose the direct EMR
+          action only when the record was ready and the user had permission.
         </p>
         <MSKDashboardMockup />
       </section>
@@ -204,59 +169,26 @@ export default function MSKCaseStudy() {
         <p className="gh-section-label">Systems complexity</p>
         <h2 id="msk-complexity-title">The product problem was roles, permissions, and workflow states</h2>
         <p className="cs-section-intro">
-          The dashboard button looked simple, but the surrounding product logic was not. The design had
-          to account for who could act, who only needed visibility, what status meant, and what could go
-          wrong if the wrong person saw or changed the wrong thing.
+          The button looked simple. The product logic was not: who could act, who only needed
+          visibility, what status meant, and what could go wrong.
         </p>
 
-        <div className="msk-complexity-grid">
-          <article className="msk-complexity-card feature">
-            <p className="msk-complexity-card__label">User types</p>
-            <h3>Different users needed different views</h3>
-            <ul>
-              <li>Frontline staff needed the next filing action.</li>
-              <li>Managers needed completion visibility across teams.</li>
-              <li>Admins needed exception queues and status follow-up.</li>
-              <li>IT/EMR teams needed clear requirements and constraints.</li>
-              <li>Compliance needed evidence that the action was complete.</li>
-            </ul>
-          </article>
-
-          <article className="msk-complexity-card feature">
-            <p className="msk-complexity-card__label">Permission logic</p>
-            <h3>Access was part of the interaction design</h3>
-            <ul>
-              <li>Some users could view status but not complete the filing action.</li>
-              <li>Some users needed team-level visibility without patient-level noise.</li>
-              <li>Completion needed to create a reliable audit trail.</li>
-              <li>The button had to route to the right EMR destination based on context.</li>
-            </ul>
-          </article>
-
-          <article className="msk-complexity-card feature">
-            <p className="msk-complexity-card__label">Workflow states</p>
-            <h3>Status had to be legible at a glance</h3>
-            <ul>
-              <li>Not started</li>
-              <li>Ready to file</li>
-              <li>In progress</li>
-              <li>Filed in EMR</li>
-              <li>Blocked or needs review</li>
-            </ul>
-          </article>
-
-          <article className="msk-complexity-card feature">
-            <p className="msk-complexity-card__label">Edge cases</p>
-            <h3>The hard parts sat outside the happy path</h3>
-            <ul>
-              <li>Missing or mismatched record data.</li>
-              <li>User lacks permission to complete the action.</li>
-              <li>Status does not update after filing.</li>
-              <li>Record needs manual review before completion.</li>
-              <li>Downtime or delayed EMR response.</li>
-            </ul>
-          </article>
-        </div>
+        <Disclosure title="Show the roles, permissions, states, and edge cases">
+          <div className="msk-complexity-grid">
+            {([
+              ["User types", "Different users needed different views", ["Frontline staff needed the next filing action.", "Managers needed completion visibility across teams.", "Admins needed exception queues and status follow-up.", "Compliance needed evidence that the action was complete."]],
+              ["Permission logic", "Access was part of the interaction design", ["Some users could view status but not complete the action.", "Completion needed to create a reliable audit trail.", "The button had to route to the right EMR destination by context."]],
+              ["Workflow states", "Status had to be legible at a glance", ["Not started", "Ready to file", "In progress", "Filed in EMR", "Blocked or needs review"]],
+              ["Edge cases", "The hard parts sat outside the happy path", ["Missing or mismatched record data.", "User lacks permission to complete the action.", "Status does not update after filing.", "Downtime or delayed EMR response."]],
+            ] as Array<[string, string, string[]]>).map(([label, title, items]) => (
+              <article key={label} className="msk-complexity-card feature">
+                <p className="msk-complexity-card__label">{label}</p>
+                <h3>{title}</h3>
+                <ul>{items.map((it) => <li key={it}>{it}</li>)}</ul>
+              </article>
+            ))}
+          </div>
+        </Disclosure>
       </section>
 
       <section id="msk-interactions" className="cs-decisions">
@@ -271,31 +203,15 @@ export default function MSKCaseStudy() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Show the action only when the record was ready</td>
-              <td>The direct EMR button appeared in the ready-to-file state, not for every record.</td>
-              <td>Reduced false starts and kept staff from clicking into records that still needed review.</td>
-            </tr>
-            <tr>
-              <td>Make permission limits visible</td>
-              <td>Users without action access saw status and ownership, not a disabled mystery button.</td>
-              <td>Prevented confusion while preserving visibility for managers, admins, and compliance partners.</td>
-            </tr>
-            <tr>
-              <td>Separate “blocked” from “not started”</td>
-              <td>Blocked records were pulled into an exception state with a reason and owner.</td>
-              <td>Helped teams distinguish normal backlog from work that needed intervention.</td>
-            </tr>
-            <tr>
-              <td>Return users to the dashboard with updated status</td>
-              <td>After filing in online EMR, staff returned to the dashboard context instead of losing their place.</td>
-              <td>Closed the loop and made the system feel accountable, not like a one-way link.</td>
-            </tr>
-            <tr>
-              <td>Use plain status labels</td>
-              <td>States were named around work: ready to file, in progress, filed, blocked.</td>
-              <td>Matched how staff talked about the workflow and reduced training load.</td>
-            </tr>
+            {[
+              ["Show the action only when the record was ready", "The direct EMR button appeared in the ready-to-file state only.", "Reduced false starts on records still needing review."],
+              ["Make permission limits visible", "Users without action access saw status and ownership, not a disabled mystery button.", "Prevented confusion; managers and compliance kept visibility."],
+              ["Separate “blocked” from “not started”", "Blocked records moved to an exception state with a reason and owner.", "Separated normal backlog from work needing intervention."],
+              ["Return users to the dashboard with updated status", "After filing, staff returned to the dashboard instead of losing their place.", "Closed the loop; the system felt accountable, not like a one-way link."],
+              ["Use plain status labels", "States were named around work: ready to file, in progress, filed, blocked.", "Matched how staff talked and reduced training load."],
+            ].map(([a, b, c]) => (
+              <tr key={a}><td>{a}</td><td>{b}</td><td>{c}</td></tr>
+            ))}
           </tbody>
         </table>
       </section>
@@ -305,33 +221,10 @@ export default function MSKCaseStudy() {
         <p className="gh-section-label">Role 1 · Office Coordinator</p>
         <h2>On the floor, learning how the work actually flowed</h2>
         <p className="cs-section-intro">
-          I coordinated clinical office operations day to day, embedded with frontline teams. This is where I
-          learned how the work actually flowed, shadowing nurses and clinicians and mapping real behavior
-          against documented policy.
+          Embedded with frontline teams, I shadowed nurses and clinicians during actual shifts and
+          mapped real behavior against documented policy. Where staff paused, backtracked, or
+          worked around the system is where the design problems lived.
         </p>
-
-        <div className="cs-methods-grid">
-          <div className="cs-method-card">
-            <p className="cs-method-card__name">The method this role taught me: frontline shadowing</p>
-            <p className="cs-method-card__why">
-              Interviewed and observed nurses, clinicians, and admin staff during actual shifts,
-              on the floor, watching where they paused, backtracked, or worked around the system.
-              This is how I found the gap between documented workflows and real behavior.
-            </p>
-          </div>
-        </div>
-
-        <p className="cs-section-intro" style={{ marginTop: "1.5rem" }}>
-          Every project that followed started with a gap between what leadership thought was happening and what
-          was actually happening on the floor. These are the research questions I carried onto the floor to close that gap.
-        </p>
-
-        <div className="cs-research-questions">
-          <div className="cs-research-question">Where in the workflow were clinicians losing time, and was it the system's fault or the process's fault?</div>
-          <div className="cs-research-question">What did staff actually do vs. what the documented procedure said they should do?</div>
-          <div className="cs-research-question">Which handoffs between departments created confusion, rework, or dropped tasks?</div>
-          <div className="cs-research-question">What would "good" look like to the people who use this system every day?</div>
-        </div>
       </section>
 
       {/* ── ROLE 2: ADMINISTRATIVE ASSISTANT ── */}
@@ -339,59 +232,38 @@ export default function MSKCaseStudy() {
         <p className="gh-section-label">Role 2 · Administrative Assistant</p>
         <h2>Turning floor observations into evidence leadership could act on</h2>
         <p className="cs-section-intro">
-          I supported operations and analysis across the team, turning frontline observations into documented
-          workflows and findings I could bring to clinical leadership. Watching wasn't enough anymore;
-          the findings had to survive a room full of stakeholders. These are the methods that made that work.
+          Watching wasn't enough anymore; the findings had to survive a room full of stakeholders.
+          Three methods made that work.
         </p>
 
         <div className="cs-methods-grid">
-          <div className="cs-method-card">
-            <p className="cs-method-card__name">Workflow mapping (current vs. ideal state)</p>
-            <p className="cs-method-card__why">
-              Documented every step, handoff, and decision point in the actual workflow, then mapped the ideal state.
-              The visual comparison was the artifact that aligned stakeholders: everyone could see where the waste lived.
-            </p>
-          </div>
-          <div className="cs-method-card">
-            <p className="cs-method-card__name">Lean Six Sigma (DMAIC)</p>
-            <p className="cs-method-card__why">
-              Used Define-Measure-Analyze-Improve-Control to structure each project. Why DMAIC over other frameworks:
-              MSK's leadership trusted Lean Six Sigma methodology. Speaking their language got buy-in faster than proposing
-              "design thinking" to a clinical operations team.
-            </p>
-          </div>
-          <div className="cs-method-card">
-            <p className="cs-method-card__name">Cross-functional stakeholder sessions</p>
-            <p className="cs-method-card__why">
-              Presented findings to clinical leadership, IT, and frontline staff simultaneously.
-              When each group heard the same data at the same time, alignment happened in the room instead of over months of email.
-            </p>
-          </div>
+          {[
+            ["Workflow mapping (current vs. ideal state)", "Documented every step, handoff, and decision point, then mapped the ideal state. Everyone could see where the waste lived."],
+            ["Speaking leadership's language", 'MSK\'s leadership trusted Lean Six Sigma, so I framed the work in their terms instead of pitching "design thinking" to a clinical operations team.'],
+            ["Cross-functional stakeholder sessions", "Clinical leadership, IT, and frontline staff heard the same data at the same time, so alignment happened in the room, not over months of email."],
+          ].map(([name, why]) => (
+            <div key={name} className="cs-method-card">
+              <p className="cs-method-card__name">{name}</p>
+              <p className="cs-method-card__why">{why}</p>
+            </div>
+          ))}
         </div>
 
-        <p className="cs-section-intro" style={{ marginTop: "1.5rem" }}>
-          Healthcare systems don't have a single owner. Every project required navigating competing priorities
-          across teams that don't naturally collaborate. This was the cast in every room:
-        </p>
-
+        <Disclosure title="Show the cast in every room">
         <div className="cs-team-grid">
-          <div className="cs-team-card">
-            <p className="cs-team-card__role">Clinical leadership</p>
-            <p className="cs-team-card__desc">Physicians and nursing directors who set clinical priorities. I presented workflow data to get buy-in for changes that affected patient-facing processes.</p>
-          </div>
-          <div className="cs-team-card">
-            <p className="cs-team-card__role">IT / EMR engineering</p>
-            <p className="cs-team-card__desc">System administrators and developers who built the changes. I translated clinical needs into technical requirements and validated implementations with frontline staff.</p>
-          </div>
-          <div className="cs-team-card">
-            <p className="cs-team-card__role">Frontline staff</p>
-            <p className="cs-team-card__desc">Nurses, technicians, and coordinators who used the systems daily. They were my primary research participants and my validation audience before anything shipped.</p>
-          </div>
-          <div className="cs-team-card">
-            <p className="cs-team-card__role">Operations / Compliance</p>
-            <p className="cs-team-card__desc">Process improvement and training teams. We co-designed change management plans so new workflows actually got adopted.</p>
-          </div>
+          {[
+            ["Clinical leadership", "Physicians and nursing directors setting clinical priorities; workflow data got their buy-in."],
+            ["IT / EMR engineering", "Built the changes; I translated clinical needs into technical requirements."],
+            ["Frontline staff", "Nurses, technicians, and coordinators using the systems daily: my research participants and validation audience."],
+            ["Operations / Compliance", "We co-designed change management plans so new workflows actually got adopted."],
+          ].map(([role, desc]) => (
+            <div key={role} className="cs-team-card">
+              <p className="cs-team-card__role">{role}</p>
+              <p className="cs-team-card__desc">{desc}</p>
+            </div>
+          ))}
         </div>
+        </Disclosure>
       </section>
 
       {/* ── ROLE 3: TRAINING SPECIALIST I ── */}
@@ -399,23 +271,10 @@ export default function MSKCaseStudy() {
         <p className="gh-section-label">Role 3 · Training Specialist I</p>
         <h2>Owning the systems I used to observe</h2>
         <p className="cs-section-intro">
-          I owned onboarding and certification training across departments, redesigning the experience around
-          what frontline staff actually needed. Co-led the Veteran employee resource network (ERN) while in
-          this role. This is where the observation and the evidence from the first two roles became design
-          authority: the workflow, certification, and onboarding redesigns below.
+          I owned onboarding and certification training across departments and co-led the Veteran
+          employee resource network. Observation and evidence became design authority: the three
+          redesigns below.
         </p>
-      </section>
-
-      {/* ── THE TIMESTAMP COMPROMISE ── */}
-      <section>
-        <p className="gh-section-label">A moment that shows how this worked in practice</p>
-        <h2>The compromise was a design decision, not a technical one</h2>
-        <div className="highlight">
-          During the certification redesign, clinical leadership wanted real-time compliance dashboards visible to department heads.
-          IT said the data feed could only refresh daily due to system architecture constraints.
-          I proposed a design that showed "as of [date]" timestamps alongside each status, making the daily refresh transparent
-          rather than hiding it. Both teams accepted. The compromise was a design decision, not a technical one.
-        </div>
       </section>
 
       {/* ── WHAT THE THREE ROLES BUILT ── */}
@@ -423,117 +282,56 @@ export default function MSKCaseStudy() {
         <p className="gh-section-label">What the three roles built</p>
         <h2>Three systems that worked on paper but failed the people inside them</h2>
         <p className="cs-section-intro">
-          Each redesign below follows the same arc the roles taught me: a finding from shadowing or workflow
-          analysis, the design change it led to, what shifted, and what I got wrong along the way.
+          Each redesign follows the same arc: a finding from the floor, the design change, and
+          what I got wrong.
         </p>
 
-        {/* — EMR workflow redesign — */}
-        <div className="cs-evidence-pair">
-          <h3 className="cs-feature-heading">1 · EMR workflow redesign</h3>
-          <p className="cs-body-text">
-            Staff were printing documentation from a dashboard and sending it to a separate site to be filed,
-            even though the destination was ultimately online EMR. Cost overruns and staff frustration were
-            symptoms; the root cause was a missing digital bridge between the dashboard and the place the record
-            needed to live.
-          </p>
-          <p className="cs-evidence-pair__finding" style={{ marginTop: "0.75rem" }}>Finding: The system made clinicians slow.</p>
-          <p className="cs-evidence-pair__evidence">
-            Shadowing revealed that a digital workflow had become a paper workaround. Staff printed records,
-            sent them out for filing, and then waited for the same information to appear in online EMR.
-            The system added handoffs because there was no direct action from the dashboard.
-          </p>
-          <div className="cs-insight-action" style={{ marginTop: "0.75rem" }}>
-            <p className="cs-insight-action__label">What I changed</p>
-            <p className="cs-insight-action__text">
-              Added a dashboard button that sent staff directly to the online EMR filing destination.
-              The redesign removed the print-and-send workaround, reduced handoffs, and kept the work in the
-              digital system where it belonged. The key interaction decision was simple: put the next required
-              action at the point where staff were already making the decision.
-            </p>
-          </div>
-          <p className="cs-body-text" style={{ marginTop: "0.75rem" }}>
-            <strong>Before:</strong> Print from the dashboard, send to a separate filing site, wait for the record
-            to return to EMR. <strong>After:</strong> one dashboard action routed staff directly to online EMR.
-          </p>
-          <Disclosure title="Show rollout lesson">
-            <p className="cs-evidence-pair__finding">What went wrong: I underestimated change management.</p>
-            <p className="cs-evidence-pair__evidence">
-              The redesigned EMR workflow was technically better, but the initial rollout had lower adoption than expected.
-              Staff who had spent years relying on the print-and-send workaround were resistant to relearning.
-              I added floor-level training sessions, walking clinicians through the new flow
-              on their actual workstations during shift transitions. Adoption improved within two weeks.
-            </p>
-          </Disclosure>
+        <div className="highlight" style={{ marginBottom: "1.5rem" }}>
+          <p className="gh-design-q-label">The compromise was a design decision, not a technical one</p>
+          During the certification redesign, clinical leadership wanted real-time compliance
+          dashboards. IT said the data feed could only refresh daily. I proposed "last refreshed"
+          timestamps beside each status, making the daily refresh transparent instead of hiding
+          it. Both teams accepted.
         </div>
 
-        {/* — Certification system overhaul — */}
-        <div className="cs-evidence-pair">
-          <h3 className="cs-feature-heading">2 · Certification system overhaul</h3>
-          <p className="cs-body-text">
-            The certification process was manual, error-prone, and opaque. Staff didn't know where they stood.
-            Managers couldn't track compliance until it was too late. The system generated more administrative work than clinical value.
-          </p>
-          <p className="cs-evidence-pair__finding" style={{ marginTop: "0.75rem" }}>Finding: Staff failed certifications because the system only told them after the fact.</p>
-          <p className="cs-evidence-pair__evidence">
-            The certification tracking spreadsheet had no proactive alerts. Staff learned their certification had
-            lapsed when compliance flagged it. By then it had already become a disciplinary issue.
-            Managers had no dashboard view of upcoming expirations across their teams.
-          </p>
-          <div className="cs-insight-action" style={{ marginTop: "0.75rem" }}>
-            <p className="cs-insight-action__label">What I changed</p>
-            <p className="cs-insight-action__text">
-              Designed a certification dashboard showing upcoming deadlines for both staff and managers.
-              Shifted the system from punitive (you failed) to preventive (this is coming up).
-              Added proactive reminders at 90, 60, and 30 days before expiration.
-              The old system told you when you'd failed; the new one tells you what's coming.
-            </p>
+        {([
+          {
+            title: "1 · EMR workflow redesign",
+            finding: "The system made clinicians slow.",
+            evidence: "Shadowing revealed a digital workflow that had become a paper workaround: print the record, send it out for filing, wait for it to reappear in online EMR. Cost overruns and frustration were symptoms; the missing bridge was the root cause.",
+            change: "One dashboard button routed staff directly to the online EMR filing destination (the before/after artifact above), putting the next required action where staff were already making the decision.",
+            lesson: ["I underestimated change management.", "Early adoption lagged; staff who had spent years on the print-and-send workaround resisted relearning. Floor-level training on their actual workstations during shift transitions fixed it within two weeks."],
+          },
+          {
+            title: "2 · Certification system overhaul",
+            finding: "Staff failed certifications because the system only told them after the fact.",
+            evidence: "The tracking spreadsheet had no proactive alerts. Staff learned a certification had lapsed when compliance flagged it, by then a disciplinary issue.",
+            change: 'A certification dashboard for staff and managers, with reminders at 90, 60, and 30 days before expiration and "last refreshed" timestamps (the compromise above). The old system told you when you\'d failed; the new one tells you what\'s coming.',
+          },
+          {
+            title: "3 · Clinician onboarding redesign",
+            finding: "New clinicians reached patients underprepared because onboarding was owned by everyone and no one.",
+            evidence: "Onboarding was fragmented across 5+ departments, each with its own checklist. Critical steps like system access and safety protocols sometimes finished weeks after a clinician started seeing patients.",
+            change: "One unified path with a single source of truth, sequenced so no one reaches patients without completing safety prerequisites. One system, one standard.",
+            lesson: ["I designed the first version for managers instead of new hires.", "Tracking dashboards and compliance reports overwhelmed new clinicians, who needed a single clear next step on day one. I redesigned the new-hire view to show only the current task and a progress indicator; the manager dashboard stayed, but stopped being the primary interface."],
+          },
+        ] as Array<{ title: string; finding: string; evidence: string; change: string; lesson?: [string, string] }>).map((r) => (
+          <div key={r.title} className="cs-evidence-pair">
+            <h3 className="cs-feature-heading">{r.title}</h3>
+            <p className="cs-evidence-pair__finding" style={{ marginTop: "0.75rem" }}>Finding: {r.finding}</p>
+            <p className="cs-evidence-pair__evidence">{r.evidence}</p>
+            <div className="cs-insight-action" style={{ marginTop: "0.75rem" }}>
+              <p className="cs-insight-action__label">What I changed</p>
+              <p className="cs-insight-action__text">{r.change}</p>
+            </div>
+            {r.lesson && (
+              <Disclosure title="Show what went wrong">
+                <p className="cs-evidence-pair__finding">What went wrong: {r.lesson[0]}</p>
+                <p className="cs-evidence-pair__evidence">{r.lesson[1]}</p>
+              </Disclosure>
+            )}
           </div>
-          <p className="cs-body-text" style={{ marginTop: "0.75rem" }}>
-            <strong>Before:</strong> Manual spreadsheet; staff found out certifications had lapsed after the fact.{" "}
-            <strong>After:</strong> Automated dashboard with proactive reminders at 90/60/30 days. Compliance
-            shifted from punitive to preventive, with "as of [date]" timestamps making the daily data refresh
-            transparent (the compromise described above).
-          </p>
-        </div>
-
-        {/* — Clinician onboarding redesign — */}
-        <div className="cs-evidence-pair">
-          <h3 className="cs-feature-heading">3 · Clinician onboarding redesign</h3>
-          <p className="cs-body-text">
-            New clinician onboarding was fragmented across 5+ departments. Critical orientation steps were missed,
-            time-to-productivity was slow, and the experience didn't reflect MSK's standard of care.
-          </p>
-          <p className="cs-evidence-pair__finding" style={{ marginTop: "0.75rem" }}>Finding: New clinicians reached patients underprepared because onboarding was owned by everyone and no one.</p>
-          <p className="cs-evidence-pair__evidence">
-            Onboarding was fragmented across 5+ departments, each with their own checklist.
-            New hires received conflicting instructions. Critical steps (system access, safety protocols, department-specific
-            procedures) were sometimes completed weeks after the clinician started seeing patients.
-          </p>
-          <div className="cs-insight-action" style={{ marginTop: "0.75rem" }}>
-            <p className="cs-insight-action__label">What I changed</p>
-            <p className="cs-insight-action__text">
-              Designed a unified onboarding experience with a single source of truth across all departments.
-              Every new clinician follows the same path, tracked from day one through full productivity.
-              Critical steps are sequenced so no one reaches patients without completing safety prerequisites.
-              A unified cross-department experience instead of per-department patches: fragmented onboarding
-              created inconsistent care preparation. One system, one standard.
-            </p>
-          </div>
-          <p className="cs-body-text" style={{ marginTop: "0.75rem" }}>
-            <strong>Before:</strong> Fragmented across 5+ departments; conflicting instructions, missed safety steps.{" "}
-            <strong>After:</strong> Unified experience with a single source of truth, tracked from day one through full productivity.
-          </p>
-          <Disclosure title="Show onboarding iteration">
-            <p className="cs-evidence-pair__finding">What went wrong: I designed the onboarding system for the managers instead of the new hires.</p>
-            <p className="cs-evidence-pair__evidence">
-              The first version of the unified onboarding experience was optimized for manager visibility: tracking dashboards,
-              completion rates, compliance reports. But when I tested it with actual new clinicians, they found the interface
-              overwhelming. What they needed on day one was a single clear next step. I redesigned the
-              new-hire view to show only the current task and a progress indicator. The manager dashboard stayed, but it
-              wasn't the primary interface anymore.
-            </p>
-          </Disclosure>
-        </div>
+        ))}
       </section>
 
       {/* ── SYSTEM MAP: tangled clinical systems → trusted flow ── */}
@@ -541,9 +339,8 @@ export default function MSKCaseStudy() {
         <p className="gh-section-label">The through-line</p>
         <h2>How a tangled clinical system became one clinicians trust</h2>
         <p className="cs-section-intro">
-          Every project here was the same move: take disconnected EMR, certification, and
-          onboarding systems and reorganize them into a flow the 21,000+ people inside could
-          actually follow. Scroll: the knot below maps that path, stage by stage.
+          Every project was the same move: reorganize disconnected systems into a flow the
+          21,000+ people inside could actually follow.
         </p>
         <Suspense fallback={<div className="msk-systemmap" />}>
           <MSKSystemMap />
@@ -561,28 +358,23 @@ export default function MSKCaseStudy() {
         <p className="gh-section-label">Outcomes</p>
         <h2 className="cs-section-title">Measurable results across three systems</h2>
         <div className="cs-outcome-grid">
-          <div className="cs-outcome-card">
-            <p className="cs-outcome-value gradient-text">20%</p>
-            <p className="cs-outcome-label">Organization-wide EMR cost reduction. I led the dashboard-to-online-EMR workflow redesign that contributed to it.</p>
-          </div>
-          <div className="cs-outcome-card">
-            <p className="cs-outcome-value gradient-text">70%</p>
-            <p className="cs-outcome-label">Efficiency gain in the certification workflows I rebuilt.</p>
-          </div>
-          <div className="cs-outcome-card">
-            <p className="cs-outcome-value gradient-text">21K+</p>
-            <p className="cs-outcome-label">Clinicians across the workflows I redesigned</p>
-          </div>
-          <div className="cs-outcome-card">
-            <p className="cs-outcome-value gradient-text">3</p>
-            <p className="cs-outcome-label">Roles across 6 years, each building on the last</p>
-          </div>
+          {[
+            ["20%", "Organization-wide EMR cost reduction. I led the dashboard-to-online-EMR workflow redesign that contributed to it."],
+            ["70%", "Efficiency gain in the certification workflows I rebuilt."],
+            ["21K+", "Clinicians across the workflows I redesigned"],
+            ["3", "Roles across 6 years, each building on the last"],
+          ].map(([v, l]) => (
+            <div key={l} className="cs-outcome-card">
+              <p className="cs-outcome-value gradient-text">{v}</p>
+              <p className="cs-outcome-label">{l}</p>
+            </div>
+          ))}
         </div>
         <p className="cs-overview-text" style={{ marginTop: "1.5rem", maxWidth: 640 }}>
-          <strong>What happened after launch:</strong> These weren't one-time deliverables. The EMR workflow redesign
-          was adopted org-wide and maintained through two system upgrades. The certification dashboard became
-          the default compliance tool across departments. Onboarding changes survived three leadership transitions.
-          Sustainment is the real test of whether a design actually solved the problem.
+          <strong>What happened after launch:</strong> The EMR redesign was adopted org-wide and
+          survived two system upgrades, the certification dashboard became the default compliance
+          tool, and the onboarding changes outlasted three leadership transitions. Sustainment is
+          the real test of whether a design solved the problem.
         </p>
       </section>
 
@@ -598,41 +390,14 @@ export default function MSKCaseStudy() {
         <p className="gh-section-label">What I learned</p>
         <h2 className="cs-section-title">Why MSK shaped how I design</h2>
         <div className="cs-reflections-grid">
-          <div className="cs-reflection-card">
-            <h3>The design work starts on the floor</h3>
-            <p>
-              No stakeholder interview surfaced the sticky notes and personal spreadsheets clinicians
-              used to survive the EMR. Shadowing during actual shifts did. The gap between documented
-              process and real behavior is where the design problems live, and I bring that to every
-              project now.
-            </p>
-          </div>
-          <div className="cs-reflection-card">
-            <h3>Stakeholder alignment is the hardest design problem</h3>
-            <p>
-              The best solution that only one department supports will fail. The "as of [date]"
-              timestamp compromise happened because clinical leadership and IT were finally in the
-              same room hearing the same constraint. The design comes after the alignment.
-            </p>
-          </div>
-          <div className="cs-reflection-card">
-            <h3>Measure what actually changed</h3>
-            <p>
-              Every project ended with numbers: cost reduction, efficiency gains, adoption rates.
-              That's the only way to know whether the design worked for the people using it.
-            </p>
-          </div>
-          <div className="cs-reflection-card">
-            <h3>Why this work matters now</h3>
-            <p>
-              The clinical workflows I redesigned are exactly the systems being augmented by AI today.
-              Understanding how 21,000 clinicians actually work (how they build workarounds, where they
-              lose trust, what makes them adopt or resist change) is the foundation for designing
-              AI-augmented tools they'll actually use.
-            </p>
-          </div>
+          {[
+            ["The design work starts on the floor", "No stakeholder interview surfaced the sticky notes and personal spreadsheets clinicians used to survive the EMR. Shadowing did. The gap between documented process and real behavior is where the design problems live."],
+            ["Stakeholder alignment is the hardest design problem", 'The best solution that only one department supports will fail. The "last refreshed" compromise happened because clinical leadership and IT finally heard the same constraint in the same room.'],
+            ["Why this work matters now", "The clinical workflows I redesigned are exactly the systems being augmented by AI today. Knowing how 21,000 clinicians actually work, where they build workarounds and lose trust, is the foundation for designing AI tools they'll actually use."],
+          ].map(([h, p]) => (
+            <div key={h} className="cs-reflection-card"><h3>{h}</h3><p>{p}</p></div>
+          ))}
         </div>
-
       </section>
 
       {/* ── PRESS ── */}
@@ -654,8 +419,7 @@ export default function MSKCaseStudy() {
             <span className="about-story-card__article-source">
               MSK News
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" style={{ marginLeft: "0.35rem", verticalAlign: "middle" }}>
-                <path d="M3.5 1.5H10.5V8.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M10.5 1.5L1.5 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M3.5 1.5H10.5V8.5M10.5 1.5L1.5 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </span>
           </span>
