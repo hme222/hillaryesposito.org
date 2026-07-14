@@ -72,9 +72,9 @@
   --card-pad: 1.4rem;
   --measure: 68ch;
   --measure-tight: 52ch;
-  --type-hero-name: clamp(3.4rem, 4vw, 4.4rem);
-  --type-hero-title: clamp(1.85rem, 2.4vw, 2.6rem);
-  --type-section-title: clamp(1.65rem, 2.2vw, 2.25rem);
+  --type-hero-name: clamp(3.4rem, 4vw, 5rem);
+  --type-hero-title: clamp(1.85rem, 2.4vw, 3rem);
+  --type-section-title: clamp(1.65rem, 2.2vw, 2.6rem);
   --type-card-title: 1.35rem;
   --type-body: 1rem;
   --type-lede: 1.12rem;
@@ -150,6 +150,21 @@ body.dark-mode,
 } /* ========================================================= NIGHT MODE ALIGNMENT PATCH (unify surfaces + remove hardcodes) Paste after your :root and .dark-mode token blocks ========================================================= */ /* 1) Add shared “surface” tokens (light + dark) */
 /* Surface / text / input / footer tokens are consolidated into the two token
    blocks at the top of this file. */
+/* Large-screen typography scale.
+   Below 1500px nothing changes — the 390 / 900 / 1440 layouts stay exactly as
+   tuned. On wider monitors the root font-size steps up so every rem-based size
+   (body copy, headings, spacing) grows in proportion, instead of leaving small
+   text stranded in a huge viewport. Purely additive above the 1440 lock. */
+@media (min-width: 1500px) {
+  html { font-size: 106.25%; } /* ~17px */
+}
+@media (min-width: 1900px) {
+  html { font-size: 112.5%; } /* ~18px */
+}
+@media (min-width: 2400px) {
+  html { font-size: 118.75%; } /* ~19px */
+}
+
 /* 2) Normalize global surfaces */
 body {
   background: var(--surface-0);

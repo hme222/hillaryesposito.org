@@ -262,7 +262,7 @@ export default function FashionCampaignSystem() {
           </p>
         </div>
         <button type="button" className="hero-btn" onClick={() => navigate("/?scrollTo=contact")}>
-          Contact me
+          Get in touch
         </button>
       </section>
     </main>

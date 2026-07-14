@@ -193,10 +193,10 @@ export default function CuratedRolePage() {
 
         <div className="curated-footer__actions">
           <button type="button" className="hero-btn" onClick={() => navigate("/?scrollTo=projects")}>
-            Back to portfolio
+            ← Back to projects
           </button>
           <Link to="/about" className="btn-outline">
-            About Hillary
+            About me
           </Link>
         </div>
       </section>
