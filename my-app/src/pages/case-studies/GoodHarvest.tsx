@@ -2,6 +2,7 @@
 import React, { useMemo, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import usePageTitle from "../../hooks/usePageTitle";
+import JumpNav from "../../components/JumpNav";
 import MediaCard from "../../components/MediaCard";
 import ToolsUsed from "../../components/ToolsUsed";
 import MoreWork from "../../components/MoreWork";
@@ -71,12 +72,12 @@ export default function GoodHarvest() {
       {/* ── HERO ── */}
       <header className="gh-hero">
         <div className="gh-hero__copy">
-          <p className="meta">Product Design · Mobile App · Figma · Heatmap Testing</p>
+          <p className="meta">Product Design&nbsp;· Mobile App&nbsp;· Figma&nbsp;· Heatmap Testing</p>
           <h1>Good Harvest</h1>
           <p className="gh-hero__intro">
             A mobile app I designed to help health-conscious shoppers make{" "}
             <strong>confident, seasonal food choices</strong>, without the
-            20-minute research spiral before every grocery run.
+            research spiral before every grocery run.
           </p>
         </div>
         <div className="gh-hero__visual" aria-hidden="true">
@@ -104,13 +105,16 @@ export default function GoodHarvest() {
         ))}
       </div>
 
-      <nav className="cs-jump-nav" aria-label="Jump to Good Harvest case study sections">
-        <a href="#gh-overview">Overview</a>
-        <a href="#gh-research">Research</a>
-        <a href="#gh-product">Screens</a>
-        <a href="#gh-testing">Testing</a>
-        <a href="#gh-outcomes">Outcomes</a>
-      </nav>
+      <JumpNav
+        label="Jump to Good Harvest case study sections"
+        items={[
+          { id: "gh-overview", label: "Overview" },
+          { id: "gh-research", label: "Research" },
+          { id: "gh-product", label: "Screens" },
+          { id: "gh-testing", label: "Testing" },
+          { id: "gh-outcomes", label: "Outcomes" },
+        ]}
+      />
 
       <section className="cs-skim" aria-labelledby="gh-skim-title">
         <p className="gh-section-label">Read this first</p>
@@ -510,7 +514,7 @@ export default function GoodHarvest() {
               If the product continued, I'd explore a trust layer on the produce detail screen:
               surfacing the data source behind the seasonality claim to address the location-accuracy
               concern that surfaced in research. I'd also run a longitudinal study on whether
-              export integration actually changed shopping behavior over 4+ weeks.
+              the redesign actually changed shopping behavior over 4+ weeks.
             </p>
           </div>
         </div>

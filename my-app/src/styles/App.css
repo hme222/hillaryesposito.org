@@ -1420,6 +1420,10 @@ select:focus {
   font-weight: 600;
   color: var(--olive-2);
   text-decoration: none;
+  /* inline-block + vertical padding gives the link a taller hit target for
+     touch/low-precision pointers without shifting the surrounding text. */
+  display: inline-block;
+  padding: 0.35rem 0;
   border-bottom: 1px solid color-mix(in srgb, var(--olive-2) 40%, transparent);
   transition: border-color 0.2s ease;
 }
@@ -1552,10 +1556,10 @@ select:focus {
    is never clipped by the wide panel's edge. */
 .hero-knot-replay {
   position: absolute;
-  /* Bottom-RIGHT so it clears the centred name/copy/CTA column now that the
-     knot spans the whole hero as a backdrop. */
+  /* Bottom-LEFT so it clears the centred column AND doesn't collide with the
+     fixed bottom-right "Recruiter view" pill (which was stealing its clicks). */
   bottom: 16px;
-  right: 18px;
+  left: 18px;
   z-index: 3;
   display: inline-flex;
   align-items: center;
@@ -9262,6 +9266,16 @@ body.dark-mode .nav-overlay-backdrop,
 .cs-jump-nav a:focus-visible {
   background: color-mix(in srgb, var(--olive-2) 12%, transparent);
   color: var(--fg);
+}
+/* Section currently in view — solid pill so the reader can see where they are. */
+.cs-jump-nav a.is-active {
+  background: var(--olive-2);
+  color: var(--bg);
+}
+.cs-jump-nav a.is-active:hover,
+.cs-jump-nav a.is-active:focus-visible {
+  background: var(--olive-2);
+  color: var(--bg);
 }
 .cs-overview-text {
   font-size: 1.15rem;

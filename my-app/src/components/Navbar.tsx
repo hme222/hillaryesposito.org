@@ -86,6 +86,23 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
     };
   }, [menuOpen]);
 
+  // The mobile menu is an off-canvas drawer (translated off-screen when closed
+  // but still in the DOM). Mark it `inert` while closed on mobile so its links
+  // leave the tab order and accessibility tree — otherwise keyboard users tab
+  // into invisible off-screen links. On desktop the menu is inline and always
+  // interactive, so inert must never apply there.
+  useEffect(() => {
+    const apply = () => {
+      const el = menuRef.current;
+      if (!el) return;
+      const isMobile = window.matchMedia("(max-width: 768px)").matches;
+      el.inert = isMobile && !menuOpen;
+    };
+    apply();
+    window.addEventListener("resize", apply);
+    return () => window.removeEventListener("resize", apply);
+  }, [menuOpen]);
+
   useEffect(() => {
     close();
   }, [location.pathname]);

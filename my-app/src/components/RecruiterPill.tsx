@@ -136,7 +136,7 @@ export default function RecruiterPill() {
                     <li>
                       <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/msk")}>
                         <strong>MSK Cancer Center</strong>
-                        <span>Dashboard-to-online-EMR workflow redesign; user roles, permissions, workflow states, 20% EMR cost reduction</span>
+                        <span>Dashboard-to-online-EMR workflow redesign; user roles, permissions, workflow states; contributed to a 20% EMR cost reduction</span>
                       </button>
                     </li>
                     <li>

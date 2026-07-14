@@ -43,7 +43,7 @@ const en = {
   "home.positioning":
     "UX/Product Designer for AI-enabled workflows, healthcare systems, and complex data-heavy products.",
   "home.description":
-    "6 years at Memorial Sloan Kettering \u00b7 21,000+ clinicians \u00b7 US Army veteran.",
+    "6 years at Memorial Sloan Kettering\u00a0\u00b7 21,000+ clinicians\u00a0\u00b7 US Army veteran.",
   "home.getInTouch": "Get in touch",
   "home.seeApproach": "See my approach →",
   "home.replay": "Replay",
@@ -194,7 +194,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.positioning":
     "UX/Product Designer para flujos de trabajo habilitados por IA, sistemas de salud y productos complejos con muchos datos.",
   "home.description":
-    "6 años en Memorial Sloan Kettering · más de 21,000 profesionales clínicos · veterana del Ejército de EE. UU.",
+    "6 años en Memorial Sloan Kettering · más de 21,000 profesionales clínicos · veterana del Ejército de EE. UU.",
   "home.getInTouch": "Contácteme",
   "home.seeApproach": "Conozca mi enfoque →",
   "home.replay": "Repetir",
@@ -272,6 +272,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.proj.grove.desc":
     "Encuesta a 32 usuarios a prototipo funcional en 3 semanas. MVP redefinido, registro de decisiones con IA y plan de pruebas moderadas.",
   "home.proj.grove.alt": "Aplicación Grove para el cuidado de plantas",
+  "home.proj.msk.alt": "Memorial Sloan Kettering Cancer Center",
   "home.proj.msk.subtitle": "Diseño UX y de producto · Sistemas de salud",
   "home.proj.msk.desc":
     "Más de 21,000 profesionales clínicos, 20% de reducción de costos del EMR y 70% de mejora en certificación durante seis años en MSK.",

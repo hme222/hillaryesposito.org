@@ -150,7 +150,7 @@ export const GOOD_HARVEST_ES: SpanishCaseStudyData = {
       bullets: [
         "3 de 4 tareas clave se completaron sin ayuda.",
         "El flujo bajó de 7 toques a 4 toques.",
-        "70% de los primeros toques se concentraron en la llamada a la acción principal.",
+        "Los primeros toques se concentraron en el módulo de productos de temporada.",
       ],
     },
     {

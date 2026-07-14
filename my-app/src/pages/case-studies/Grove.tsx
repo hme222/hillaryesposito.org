@@ -2,6 +2,7 @@
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import usePageTitle from "../../hooks/usePageTitle";
+import JumpNav from "../../components/JumpNav";
 import MoreWork from "../../components/MoreWork";
 import Disclosure from "../../components/Disclosure";
 import SpanishCaseStudy from "../../components/SpanishCaseStudy";
@@ -26,10 +27,6 @@ const SURVEY_FINDINGS = [
   {
     stat: "2.4/5",
     label: "average lighting confidence among new owners, the #1 skill gap",
-  },
-  {
-    stat: "9/12",
-    label: "new owners raised pet toxicity unprompted",
   },
 ];
 
@@ -111,7 +108,7 @@ export default function GroveCaseStudy() {
       {/* ── HERO ── */}
       <header className="gh-hero">
         <div className="gh-hero__copy">
-          <p className="meta">Product Design · AI Product · Full-Stack Prototype</p>
+          <p className="meta">Product Design&nbsp;· AI Product&nbsp;· Full-Stack Prototype</p>
           <h1>Grove</h1>
           <p className="gh-hero__intro">
             Plant parents kill their plants because the care advice they find doesn't
@@ -149,12 +146,15 @@ export default function GroveCaseStudy() {
         ))}
       </div>
 
-      <nav className="cs-jump-nav" aria-label="Jump to Grove case study sections">
-        <a href="#grove-summary">Summary</a>
-        <a href="#grove-research">Research</a>
-        <a href="#grove-flow">Flow</a>
-        <a href="#grove-outcomes">Outcomes</a>
-      </nav>
+      <JumpNav
+        label="Jump to Grove case study sections"
+        items={[
+          { id: "grove-summary", label: "Summary" },
+          { id: "grove-research", label: "Research" },
+          { id: "grove-flow", label: "Flow" },
+          { id: "grove-outcomes", label: "Outcomes" },
+        ]}
+      />
 
       <section id="grove-summary" className="cs-skim" aria-labelledby="grove-skim-title">
         <p className="gh-section-label">Read this first</p>
@@ -243,7 +243,7 @@ export default function GroveCaseStudy() {
               ["Goal", "Track 6–50+ plants without it feeling like work"],
               ["Care style", 'Intuitive / "vibes-based"'],
               ["Needs", "Bulk logging, growth photo journal"],
-              ["Will delete if", 'App feels like "an administrative chore"'],
+              ["Stops updating if", 'App feels like "an administrative chore"'],
             ]],
           ].map(([cls, name, rows]) => (
             <div key={name as string} className={`gh-assumption-card ${cls}`}>

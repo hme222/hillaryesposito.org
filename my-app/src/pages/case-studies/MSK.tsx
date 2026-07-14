@@ -1,6 +1,7 @@
 import React, { lazy, Suspense, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import usePageTitle from "../../hooks/usePageTitle";
+import JumpNav from "../../components/JumpNav";
 import MoreWork from "../../components/MoreWork";
 import Disclosure from "../../components/Disclosure";
 import MSKDashboardMockup from "../../components/MSKDashboardMockup";
@@ -45,7 +46,7 @@ export default function MSKCaseStudy() {
       {/* ── HERO ── */}
       <header className="gh-hero msk-hero">
         <div className="gh-hero__copy">
-          <p className="meta">UX & Product Design · Healthcare Systems · Enterprise</p>
+          <p className="meta">UX & Product Design&nbsp;· Healthcare Systems&nbsp;· Enterprise</p>
           <h1>Memorial Sloan Kettering</h1>
           <p className="gh-hero__intro">
             Six years, three roles. I redesigned clinical workflows, onboarding systems,
@@ -76,13 +77,16 @@ export default function MSKCaseStudy() {
         ))}
       </div>
 
-      <nav className="cs-jump-nav" aria-label="Jump to MSK case study sections">
-        <a href="#msk-summary">Summary</a>
-        <a href="#msk-artifact">Workflow</a>
-        <a href="#msk-interactions">Interactions</a>
-        <a href="#msk-systems">Systems</a>
-        <a href="#msk-outcomes">Outcomes</a>
-      </nav>
+      <JumpNav
+        label="Jump to MSK case study sections"
+        items={[
+          { id: "msk-summary", label: "Summary" },
+          { id: "msk-artifact", label: "Workflow" },
+          { id: "msk-interactions", label: "Interactions" },
+          { id: "msk-systems", label: "Systems" },
+          { id: "msk-outcomes", label: "Outcomes" },
+        ]}
+      />
 
       <section id="msk-summary" className="cs-skim" aria-labelledby="msk-skim-title">
         <p className="gh-section-label">Read this first</p>

@@ -425,7 +425,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       "My strongest work lives in that overlap: user motivation, system clarity, workflow behavior, and product decisions that reduce friction without flattening complexity.",
     ],
     proofPoints: [
-      { stat: "20%", detail: "EMR cost reduction from workflow redesign work at Memorial Sloan Kettering" },
+      { stat: "20%", detail: "Organization-wide EMR cost reduction at Memorial Sloan Kettering; I led the workflow redesign that contributed to it" },
       { stat: "70%", detail: "Efficiency gain in physician certification collection through clearer workflow structure" },
       { stat: "85%", detail: "Faster medical resupply after improving tracking and communication workflows across distributed teams" },
       { stat: "3M", detail: "Users in Pogo's product context; my page focuses on clarity, trust, and scalable product behavior" },
@@ -531,7 +531,7 @@ export const curatedPages: Record<string, CuratedPage> = {
     ],
     proofPoints: [
       { stat: "MSK", detail: "Healthcare systems experience across clinical operations, training, implementation, and workflow redesign" },
-      { stat: "20%", detail: "EMR cost reduction from healthcare workflow redesign work" },
+      { stat: "20%", detail: "Organization-wide EMR cost reduction; I led the healthcare workflow redesign that contributed to it" },
       { stat: "70%", detail: "Certification workflow efficiency gain through simplification and visibility improvements" },
       { stat: "7", detail: "Aid stations coordinated through high-pressure medical logistics workflows across three countries" },
     ],
@@ -635,7 +635,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       "My strongest fit is the bridge between user needs, operational complexity, data-heavy workflows, and prototype discipline.",
     ],
     proofPoints: [
-      { stat: "20%", detail: "EMR cost reduction from workflow redesign work at MSK" },
+      { stat: "20%", detail: "Organization-wide EMR cost reduction at MSK; I led the workflow redesign that contributed to it" },
       { stat: "70%", detail: "Physician certification workflow efficiency gain through simplification and visibility" },
       { stat: "85%", detail: "Faster medical resupply after building tracking and reporting workflows" },
       { stat: "60%", detail: "Reduced medical logistics spending through better visibility and process structure" },
@@ -846,7 +846,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       "My background is not fintech-first, but it is trust-first: healthcare operations, regulated systems, complex workflows, and product experiences where unclear information slows people down or creates avoidable risk.",
     ],
     proofPoints: [
-      { stat: "20%", detail: "EMR cost reduction from regulated healthcare workflow redesign work" },
+      { stat: "20%", detail: "Organization-wide EMR cost reduction; I led the regulated healthcare workflow redesign that contributed to it" },
       { stat: "70%", detail: "Certification workflow efficiency gain through clearer process and visibility" },
       { stat: "85%", detail: "Faster medical resupply after operational tracking improvements" },
       { stat: "60%", detail: "Reduced medical logistics spending through better visibility and coordination" },

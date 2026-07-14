@@ -2,6 +2,7 @@
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import usePageTitle from "../../hooks/usePageTitle";
+import JumpNav from "../../components/JumpNav";
 import MoreWork from "../../components/MoreWork";
 import Disclosure from "../../components/Disclosure";
 import SpanishCaseStudy from "../../components/SpanishCaseStudy";
@@ -94,10 +95,8 @@ export default function MobbinCaseStudy() {
         {[
           { label: "Role",    value: "App Capture Specialist" },
           { label: "Client",  value: "Mobbin · Freelance" },
-          { label: "Timeline", value: "Mar 2026 - Jun 2026 · 4 mos" },
-          { label: "Output",  value: "3 apps · 200+ screens · Full flow capture" },
-          { label: "Focus",   value: "UX flow documentation · UI pattern curation" },
-          { label: "Location", value: "Remote" },
+          { label: "Timeline", value: "Mar–Jun 2026 · 4 mos" },
+          { label: "Output",  value: "3 apps · 200+ screens" },
         ].map((item, i, arr) => (
           <React.Fragment key={item.label}>
             <div className="gh-meta-strip__item">
@@ -109,13 +108,16 @@ export default function MobbinCaseStudy() {
         ))}
       </div>
 
-      <nav className="cs-jump-nav" aria-label="Jump to Mobbin case study sections">
-        <a href="#mobbin-work">Work</a>
-        <a href="#mobbin-apps">Apps</a>
-        <a href="#mobbin-entry">Entry</a>
-        <a href="#mobbin-lesson">Lesson</a>
-        <a href="#mobbin-outcomes">Outcome</a>
-      </nav>
+      <JumpNav
+        label="Jump to Mobbin case study sections"
+        items={[
+          { id: "mobbin-work", label: "Work" },
+          { id: "mobbin-apps", label: "Apps" },
+          { id: "mobbin-entry", label: "Entry" },
+          { id: "mobbin-lesson", label: "Lesson" },
+          { id: "mobbin-outcomes", label: "Outcome" },
+        ]}
+      />
 
       <section className="cs-skim" aria-labelledby="mobbin-skim-title">
         <p className="gh-section-label">Read this first</p>
@@ -352,7 +354,7 @@ export default function MobbinCaseStudy() {
               designers come to the library to solve interaction problems. I restructured my process
               to front-load taxonomy review before capturing any screens and shifted to prioritizing
               onboarding flows, key task completions, and edge/empty states. Revision cycles dropped
-              by half, and rework on later batches with it. I learned to name patterns by how someone
+              by half, and rework on later batches dropped with them. I learned to name patterns by how someone
               would search for them.
             </p>
           </div>

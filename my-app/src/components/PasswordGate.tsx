@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from "react";
+import React, { useState, useRef, FormEvent } from "react";
 import { LockIcon } from "./LineIcons";
 
 const PASSWORD_SHA256 = "4a707e3a066d834d96a4fe907d5cc8318309d7106984c0156b20b5c02997b78a";
@@ -17,6 +17,7 @@ export default function PasswordGate({ children }: { children: React.ReactNode }
   const [value, setValue] = useState("");
   const [error, setError] = useState(false);
   const [checking, setChecking] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -30,6 +31,9 @@ export default function PasswordGate({ children }: { children: React.ReactNode }
     } else {
       setError(true);
       setValue("");
+      // Return focus to the (now-cleared) field so the error is announced and
+      // the user can retry without hunting for the input again.
+      inputRef.current?.focus();
     }
   }
 
@@ -43,6 +47,7 @@ export default function PasswordGate({ children }: { children: React.ReactNode }
         <p className="pw-gate__subtitle">Enter the password to view this case study.</p>
         <form onSubmit={handleSubmit} className="pw-gate__form">
           <input
+            ref={inputRef}
             type="password"
             className={`pw-gate__input${error ? " pw-gate__input--error" : ""}`}
             value={value}
