@@ -428,7 +428,6 @@ export const curatedPages: Record<string, CuratedPage> = {
       { stat: "20%", detail: "Organization-wide EMR cost reduction at Memorial Sloan Kettering; I led the workflow redesign that contributed to it" },
       { stat: "70%", detail: "Efficiency gain in physician certification collection through clearer workflow structure" },
       { stat: "85%", detail: "Faster medical resupply after improving tracking and communication workflows across distributed teams" },
-      { stat: "3M", detail: "Users in Pogo's product context; my page focuses on clarity, trust, and scalable product behavior" },
     ],
     featuredWork: [
       {

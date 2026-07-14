@@ -286,7 +286,8 @@ export default function GroveCaseStudy() {
 
         <Disclosure title="Show secondary roadmap decisions">
           <p className="cs-overview-text">
-            Community forums ranked 6th of 11 features (23%); verified swapping ranked 9th (6%).
+            Community forums drew only 23%, and verified swapping just 6% — both ranked well
+            below the core care features above.
             The social layer, badges, and XP I had already designed stay in the prototype as
             post-MVP. The survey elevated what wasn't in the build scope instead: pet toxicity
             warnings (9/12 new owners raised it unprompted), lighting education (the lowest
