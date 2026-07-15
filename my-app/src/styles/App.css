@@ -165,6 +165,21 @@ body.dark-mode,
   html { font-size: 118.75%; } /* ~19px */
 }
 
+/* Global reduced-motion safety net. Per-component rules below still fine-tune
+   specifics, but this guarantees NOTHING animates or smooth-scrolls for users
+   who ask for reduced motion — a single baked-in rule instead of relying on
+   every future component to remember its own opt-out. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* 2) Normalize global surfaces */
 body {
   background: var(--surface-0);
@@ -4599,26 +4614,40 @@ body.dark-mode .nav-overlay-backdrop,
   }
 }
 
-/* Slide-out panel */
-.recruiter-panel-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(10, 10, 10, 0.5);
-  z-index: 1100;
-  animation: recruiterFade 0.2s ease-out;
-}
+/* Slide-out panel — a native <dialog>. Reset the UA dialog box, then position
+   it as a right-edge slide-out. `::backdrop` replaces the old backdrop div. */
 .recruiter-panel {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
+  left: auto;
   width: min(420px, 100vw);
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
   background: var(--bg, #fff);
+  color: inherit;
   z-index: 1101;
   box-shadow: -20px 0 60px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  animation: recruiterSlide 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+/* Author rule wins over the UA `dialog:not([open]){display:none}`, so restate it. */
+.recruiter-panel:not([open]) {
+  display: none;
+}
+.recruiter-panel::backdrop {
+  background: rgba(10, 10, 10, 0.5);
+  animation: recruiterFade 0.2s ease-out;
+}
+.recruiter-panel__inner {
   display: flex;
   flex-direction: column;
-  animation: recruiterSlide 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+  height: 100%;
+  width: 100%;
 }
 @keyframes recruiterFade {
   from { opacity: 0; }
@@ -4629,8 +4658,8 @@ body.dark-mode .nav-overlay-backdrop,
   to { transform: translateX(0); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .recruiter-panel-backdrop { animation: none; }
   .recruiter-panel { animation: none; }
+  .recruiter-panel::backdrop { animation: none; }
 }
 .recruiter-panel__header {
   display: flex;

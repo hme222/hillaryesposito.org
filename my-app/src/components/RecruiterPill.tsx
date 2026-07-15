@@ -1,7 +1,7 @@
 // src/components/RecruiterPill.tsx
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import FocusTrap from "focus-trap-react";
+import Modal from "./Modal";
 import { useT } from "../app/LanguageContext";
 import { FileTextIcon, MailIcon, BriefcaseIcon, UserIcon, XIcon } from "./LineIcons";
 
@@ -16,7 +16,6 @@ export default function RecruiterPill() {
   const navigate = useNavigate();
   const t = useT();
   const [open, setOpen] = useState(false);
-  const triggerRef = useRef<HTMLButtonElement>(null);
 
   // On small screens the fixed pill lands on top of the hero copy, so it stays
   // hidden until the user scrolls (CSS gates the hiding to ≤768px — desktop
@@ -34,26 +33,8 @@ export default function RecruiterPill() {
     return () => window.removeEventListener("open-recruiter-panel", handler);
   }, []);
 
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", onKey);
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [open]);
-
-  // Return focus to the trigger only on an actual open→close transition —
-  // never on initial mount (which would steal focus/scroll to the pill on load).
-  const wasOpen = useRef(false);
-  useEffect(() => {
-    if (!open && wasOpen.current) {
-      triggerRef.current?.focus();
-    }
-    wasOpen.current = open;
-  }, [open]);
+  // Escape, scroll-lock, background inertness, and focus restore-to-trigger are
+  // all handled natively by <Modal>'s <dialog> — no manual effects needed here.
 
   const go = (path: string) => {
     setOpen(false);
@@ -63,7 +44,6 @@ export default function RecruiterPill() {
   return (
     <>
       <button
-        ref={triggerRef}
         type="button"
         className={`recruiter-pill${scrolled ? "" : " recruiter-pill--unscrolled"}`}
         onClick={() => setOpen(true)}
@@ -73,17 +53,15 @@ export default function RecruiterPill() {
         <span className="recruiter-pill__text">{t("recruiter.pill")}</span>
       </button>
 
-      {open && (
-        <FocusTrap focusTrapOptions={{ allowOutsideClick: true, escapeDeactivates: false }}>
-          <div>
-            <div className="recruiter-panel-backdrop" onClick={() => setOpen(false)} aria-hidden="true" />
-            <aside
-              className="recruiter-panel"
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="recruiter-panel-title"
-              lang="en"
-            >
+      <Modal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        labelledBy="recruiter-panel-title"
+        className="recruiter-panel"
+        lang="en"
+      >
+        {/* Panel content stays English in Phase 1 — only the trigger translates. */}
+        <div className="recruiter-panel__inner">
               <header className="recruiter-panel__header">
                 <div>
                   <p className="recruiter-panel__eyebrow">90-second tour</p>
@@ -178,10 +156,8 @@ export default function RecruiterPill() {
                   </button>
                 </section>
               </div>
-            </aside>
-          </div>
-        </FocusTrap>
-      )}
+        </div>
+      </Modal>
     </>
   );
 }
