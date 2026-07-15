@@ -1,0 +1,287 @@
+/* Case-study "show" primitives (ShowKit.tsx). Tokens reused from App.css. */
+
+.ck-caption {
+  margin-top: 0.6rem;
+  font-family: var(--font-head);
+  font-size: 0.85rem;
+  color: var(--text-2, color-mix(in srgb, var(--fg) 62%, transparent));
+  line-height: 1.5;
+}
+
+/* ── BeforeAfter ───────────────────────────────────────────────────── */
+.ck-beforeafter { margin: 0; }
+.ck-ba__toggle {
+  display: inline-flex;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  margin-bottom: 0.75rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--olive-2, #6b7d52) 12%, transparent);
+}
+.ck-ba__tab {
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-head);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  color: var(--fg);
+  background: transparent;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.ck-ba__tab.is-active {
+  background: var(--accent-warm, #946420);
+  color: var(--bg, #fff);
+}
+.ck-ba__stage {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+  background: color-mix(in srgb, var(--fg) 4%, transparent);
+}
+.ck-ba__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+/* Second image overlays the first; crossfade via opacity. */
+.ck-ba__stage .ck-ba__img + .ck-ba__img {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  object-fit: contain;
+}
+.ck-ba__img { opacity: 0; transition: opacity 0.28s ease; }
+.ck-ba__img.is-on { opacity: 1; }
+
+/* ── AnnotatedShot ─────────────────────────────────────────────────── */
+.ck-annotated { margin: 0; }
+.ck-annotated__frame {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+}
+.ck-annotated__img { display: block; width: 100%; height: auto; }
+.ck-hotspot { position: absolute; transform: translate(-50%, -50%); }
+.ck-hotspot__pin {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--bg, #fff);
+  background: var(--accent-warm, #946420);
+  color: var(--bg, #fff);
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 0.8rem;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  transition: transform 0.18s ease;
+}
+.ck-hotspot__pin:hover,
+.ck-hotspot__pin:focus-visible { transform: scale(1.15); }
+.ck-hotspot__callout {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 240px;
+  padding: 0.6rem 0.75rem;
+  border-radius: 10px;
+  background: var(--fg);
+  color: var(--bg);
+  font-family: var(--font-head);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+  z-index: 4;
+}
+.ck-hotspot__callout strong { display: block; margin-bottom: 0.15rem; }
+.ck-hotspot.is-active .ck-hotspot__callout { opacity: 1; visibility: visible; }
+/* Always-visible fallback list (nothing is hover-only). */
+.ck-annotated__list {
+  margin: 0.9rem 0 0;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 0.4rem;
+  font-family: var(--font-head);
+  font-size: 0.85rem;
+  color: var(--text-2, color-mix(in srgb, var(--fg) 66%, transparent));
+  line-height: 1.5;
+}
+
+/* ── DecisionCard ──────────────────────────────────────────────────── */
+.ck-decision {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.25rem;
+  border-radius: 16px;
+  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+  background: color-mix(in srgb, var(--fg) 3%, transparent);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.ck-decision:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+.ck-decision__row {
+  display: flex;
+  gap: 0.6rem;
+  margin: 0 0 0.6rem;
+  line-height: 1.5;
+}
+.ck-decision__tag {
+  flex: 0 0 auto;
+  align-self: flex-start;
+  font-family: var(--font-head);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+}
+.ck-decision__tag--ai {
+  background: color-mix(in srgb, var(--fg) 10%, transparent);
+  color: var(--text-2, color-mix(in srgb, var(--fg) 70%, transparent));
+}
+.ck-decision__tag--me {
+  background: color-mix(in srgb, var(--accent-warm, #946420) 20%, transparent);
+  color: var(--accent-warm, #946420);
+}
+.ck-decision__why {
+  margin: 0.75rem 0 0;
+  padding-top: 0.75rem;
+  border-top: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+  font-style: italic;
+  color: var(--text-2, color-mix(in srgb, var(--fg) 72%, transparent));
+  line-height: 1.55;
+}
+.ck-decision__shot { margin: 0; }
+.ck-decision__shot img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+}
+
+/* ── StateMatrix ───────────────────────────────────────────────────── */
+.ck-statematrix {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+.ck-state {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.ck-state__shot { margin: 0; }
+.ck-state__shot img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+}
+.ck-state__name {
+  margin: 0;
+  font-family: var(--font-head);
+  font-weight: 700;
+}
+.ck-state__note {
+  margin: 0.25rem 0 0;
+  color: var(--text-2, color-mix(in srgb, var(--fg) 68%, transparent));
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  .ck-decision { grid-template-columns: 1fr; }
+}
+
+/* ── Tap-path (Good Harvest 7→4) ───────────────────────────────────── */
+.gh-tap-path {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 0.75rem;
+  max-width: 520px;
+}
+.gh-tap-path__row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.gh-tap-path__label {
+  flex: 0 0 auto;
+  width: 6.5rem;
+  font-family: var(--font-head);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-2, color-mix(in srgb, var(--fg) 66%, transparent));
+}
+.gh-tap-path__dots {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+.gh-tap-dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--fg) 16%, transparent);
+  position: relative;
+}
+.gh-tap-dot + .gh-tap-dot::before {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  width: 0.55rem;
+  height: 2px;
+  transform: translateY(-50%);
+  background: color-mix(in srgb, var(--fg) 16%, transparent);
+}
+.gh-tap-dot--on {
+  background: var(--accent-warm, #946420);
+}
+.gh-tap-dot--on + .gh-tap-dot--on::before {
+  background: var(--accent-warm, #946420);
+}
+.gh-tap-path__row--after .gh-tap-path__label {
+  color: var(--accent-warm, #946420);
+}
+
+/* ── Mobbin anatomy entry screenshot ───────────────────────────────── */
+.mobbin-example-shot {
+  margin: 0 0 1.25rem;
+  float: right;
+  width: min(200px, 40%);
+  margin-left: 1.5rem;
+}
+.mobbin-example-shot img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+}
+.mobbin-example-shot figcaption {
+  margin-top: 0.5rem;
+  font-family: var(--font-head);
+  font-size: 0.78rem;
+  color: var(--text-2, color-mix(in srgb, var(--fg) 62%, transparent));
+  line-height: 1.45;
+}
+@media (max-width: 640px) {
+  .mobbin-example-shot { float: none; width: 100%; margin-left: 0; }
+}

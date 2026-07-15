@@ -45,7 +45,7 @@ const OTHER_PROJECTS = [
   {
     icon: <SproutIcon />,
     title: "Grove",
-    desc: "AI + design plant care app. Research to working prototype in 3 weeks, solo.",
+    desc: "AI + design plant care app. Solo, research to a working prototype.",
     path: "/case-study/grove",
   },
   {
@@ -76,10 +76,11 @@ export default function MobbinCaseStudy() {
           <p className="meta">App Capture Specialist | UX Flow Documentation & UI Pattern Curation</p>
           <h1>Mobbin</h1>
           <p className="gh-hero__intro">
-            Mobbin · Freelance · Mar 2026 - Jun 2026 · Remote. Documented end-to-end mobile app experiences across three fintech products
+            <strong>Anyone can screenshot an app. Mobbin hired me to decide what 200+ screens mean
+            to a designer who'll never meet me.</strong> I documented three fintech products
             (<strong>Kikoff</strong>, <strong>Polymarket</strong>, and <strong>Discover</strong>)
-            for Mobbin's searchable design reference library. Captured screens, organized user flows,
-            mapped key interaction sequences, and curated UI patterns used by UX, product, and design teams globally.
+            into searchable UX flow references — mapping the interaction sequences and curating the
+            patterns product teams actually search for.
           </p>
         </div>
         <div className="gh-hero__visual" aria-hidden="true">
@@ -217,15 +218,6 @@ export default function MobbinCaseStudy() {
           </p>
         </Disclosure>
 
-        <div className="cs-insight-action" style={{ marginTop: "1.5rem" }}>
-          <p className="cs-insight-action__label">Role scope</p>
-          <ul className="cs-role-scope-list">
-            <li>Curated UI patterns, navigation models, and task flows into a searchable design reference library used by UX, product, and design teams.</li>
-            <li>Analyzed real-world product experiences to identify onboarding flows, conversion paths, feature entry points, interaction behaviors, and reusable interface patterns.</li>
-            <li>Reviewed and refined captured flows for clarity, completeness, and accuracy, ensuring each submission was usable as a reliable product design reference.</li>
-            <li>Strengthened product judgment by studying how leading apps structure information, guide users, and reduce friction across complex digital experiences.</li>
-          </ul>
-        </div>
       </section>
 
       {/* ── THREE APPS, ONE TRUST PROBLEM ── */}
@@ -301,6 +293,10 @@ export default function MobbinCaseStudy() {
 
         <div className="mobbin-example-entry feature" style={{ padding: "1.5rem", borderRadius: "12px" }}>
           <h3 style={{ margin: "0 0 1rem", color: "var(--olive-2)", fontSize: "0.95rem" }}>Kikoff, trust through proof</h3>
+          <figure className="mobbin-example-shot">
+            <img src="/assets/mobbin/kikoff.png" alt="Kikoff credit-building screen from the captured onboarding flow" loading="lazy" />
+            <figcaption>The screen this entry documents, from Kikoff's credit-building flow.</figcaption>
+          </figure>
           <div className="mobbin-example-grid">
             <div className="mobbin-example-block">
               <p className="mobbin-example-label">Screen</p>
@@ -339,26 +335,21 @@ export default function MobbinCaseStudy() {
       <section id="mobbin-lesson">
         <p className="gh-section-label">The lesson</p>
         <h2>Naming is harder than designing</h2>
-        <Disclosure title="Show the taxonomy lesson and revision story">
-          <div className="gh-collab-note">
-            <p>
-              I worked asynchronously with Mobbin's content team, submitting batches of catalogued
-              flows for review against their quality bar and taxonomy standards. Feedback was
-              specific: tag accuracy, annotation clarity, flow completeness. My first submission
-              batch had tag inconsistencies that doubled the review cycle, because I tagged screens
-              based on my own vocabulary instead of aligning with Mobbin's existing taxonomy first.
-              "Progress indicator" vs. "status display" vs. "achievement": each maps to a different
-              search behavior, and findability depends on matching the searcher's words. I also
-              initially over-documented marketing screens; my first Discover submission included
-              promotional interstitials and landing screens, and Mobbin's feedback was clear that
-              designers come to the library to solve interaction problems. I restructured my process
-              to front-load taxonomy review before capturing any screens and shifted to prioritizing
-              onboarding flows, key task completions, and edge/empty states. Revision cycles dropped
-              by half, and rework on later batches dropped with them. I learned to name patterns by how someone
-              would search for them.
-            </p>
-          </div>
-        </Disclosure>
+        <p style={{ maxWidth: 720, marginBottom: "1.25rem", color: "var(--muted)", lineHeight: 1.7 }}>
+          My first submission batch had tag inconsistencies that doubled the review cycle — I'd
+          tagged screens in my own vocabulary instead of aligning to Mobbin's taxonomy first.
+          "Progress indicator" vs. "status display" vs. "achievement" each maps to a different
+          search, and findability depends on matching the searcher's words, not mine. I also
+          over-documented marketing screens at first; designers come to the library to solve
+          interaction problems, not to read landing pages. So I front-loaded taxonomy review before
+          capturing anything and prioritized onboarding flows, key task completions, and edge/empty
+          states.
+        </p>
+        <div className="highlight">
+          <p className="gh-design-q-label">The result</p>
+          Revision cycles dropped by half, and rework on later batches dropped with them. The lesson
+          that stuck: name patterns by how someone would search for them.
+        </div>
       </section>
 
       {/* ── WHERE IT LANDED ── */}

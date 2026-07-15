@@ -5628,7 +5628,39 @@ body.dark-mode .nav-overlay-backdrop,
   font-size: 0.92rem;
 }
 .msk-workflow-list li + li {
-  margin-top: 0.35rem;
+  margin-top: 0.5rem;
+}
+/* Lane tag: which system each step lives in. Colour encodes the "lane" so the
+   before visibly bounces across systems and the after stays digital. Text label
+   carries the meaning too, so it never depends on colour alone. */
+.msk-lane {
+  display: inline-block;
+  margin-right: 0.5rem;
+  padding: 0.05rem 0.45rem;
+  border-radius: 5px;
+  font-family: var(--font-head);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  vertical-align: 1px;
+  border: 1px solid transparent;
+}
+.msk-lane[data-lane="Dashboard"] {
+  background: color-mix(in srgb, var(--olive-2) 16%, transparent);
+  color: var(--olive-2);
+  border-color: color-mix(in srgb, var(--olive-2) 30%, transparent);
+}
+.msk-lane[data-lane="EMR"] {
+  background: color-mix(in srgb, var(--accent-warm, #946420) 16%, transparent);
+  color: var(--accent-warm, #946420);
+  border-color: color-mix(in srgb, var(--accent-warm, #946420) 30%, transparent);
+}
+.msk-lane[data-lane="Paper"],
+.msk-lane[data-lane="Filing site"] {
+  background: color-mix(in srgb, #b4472e 14%, transparent);
+  color: #b4472e;
+  border-color: color-mix(in srgb, #b4472e 32%, transparent);
 }
 .msk-workflow-arrow {
   align-self: center;

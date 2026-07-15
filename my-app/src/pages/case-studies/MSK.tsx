@@ -18,7 +18,7 @@ const OTHER_PROJECTS = [
   {
     icon: <SproutIcon />,
     title: "Grove",
-    desc: "AI + design plant care app. Research to working prototype in 3 weeks, solo.",
+    desc: "AI + design plant care app. Solo, research to a working prototype.",
     path: "/case-study/grove",
   },
   {
@@ -49,9 +49,10 @@ export default function MSKCaseStudy() {
           <p className="meta">UX & Product Design&nbsp;· Healthcare Systems&nbsp;· Enterprise</p>
           <h1>Memorial Sloan Kettering</h1>
           <p className="gh-hero__intro">
-            Six years, three roles. I redesigned clinical workflows, onboarding systems,
-            and operational processes for <strong>21,000+ clinicians</strong> at one of the
-            world's top cancer centers.
+            <strong>Clinicians were printing digital records just to re-file them digitally.</strong>{" "}
+            Six years and three roles later, I'd redesigned the workflows, onboarding, and
+            certification systems <strong>21,000+ clinicians</strong> depend on — and the fixes
+            outlasted the leadership that approved them.
           </p>
         </div>
         <div className="gh-hero__visual msk-hero-dashboard" aria-hidden="true">
@@ -96,7 +97,7 @@ export default function MSKCaseStudy() {
             ["Problem", "Clinical teams were forced through fragmented workflows, paper workarounds, and unclear status paths inside high-stakes systems."],
             ["My role", "Mapped frontline workflows, translated clinical needs into system requirements, and aligned operations, IT, and clinical leadership."],
             ["Key decision", "Move the next required action into the dashboard instead of asking staff to leave the workflow, print, send, and wait."],
-            ["Outcome", "A 20% EMR cost reduction I contributed to by leading the workflow redesign, a 70% certification workflow gain, and systems used across workflows impacting 21,000+ clinicians."],
+            ["Outcome", "Led the dashboard-to-EMR workflow redesign inside an initiative that cut EMR costs 20% org-wide, rebuilt the certification workflow, and shipped systems used across workflows impacting 21,000+ clinicians."],
           ].map(([k, v]) => (
             <article key={k} className="cs-skim-card"><span>{k}</span><p>{v}</p></article>
           ))}
@@ -134,22 +135,31 @@ export default function MSKCaseStudy() {
           This is the artifact that aligned clinicians, IT, and operations around the same problem.
         </p>
 
+        <p className="cs-section-intro" style={{ marginTop: "-0.5rem" }}>
+          The lane tag on each step shows which system it lived in. The failure mode is spatial:
+          <strong> the “before” crosses four systems; the redesign stays in two.</strong>
+        </p>
         <div className="msk-workflow-artifact feature" aria-label="Before and after EMR workflow">
           {([
             ["before", "Before", "Print, send, then re-file online",
-              ["Open the dashboard", "Find the record that needed filing", "Print the documentation packet", "Send it to a separate filing site", "Wait for the record to be filed back into EMR", "Return later to confirm completion"],
-              "Failure mode: the workflow turned a digital record into paper, then back into a digital record."],
+              [["Open the dashboard", "Dashboard"], ["Find the record that needed filing", "Dashboard"], ["Print the documentation packet", "Paper"], ["Send it to a separate filing site", "Filing site"], ["Wait for the record to be filed back into EMR", "Filing site"], ["Return later to confirm completion", "EMR"]],
+              "Failure mode: the workflow turned a digital record into paper, then back into a digital record — four systems for one filing."],
             ["after", "After", "One dashboard button to online EMR",
-              ["Open the dashboard", "Select the record", "Click the direct EMR action", "Land in the online EMR filing destination", "Complete the filing action digitally", "Return to the dashboard with status updated"],
-              "Design decision: add the missing bridge between the dashboard and the online EMR destination."],
-          ] as Array<[string, string, string, string[], string]>).map(([key, label, title, steps, note], i) => (
+              [["Open the dashboard", "Dashboard"], ["Select the record", "Dashboard"], ["Click the direct EMR action", "Dashboard"], ["Land in the online EMR filing destination", "EMR"], ["Complete the filing action digitally", "EMR"], ["Return to the dashboard with status updated", "Dashboard"]],
+              "Design decision: add the missing bridge between the dashboard and the online EMR destination — the record never leaves the screen."],
+          ] as Array<[string, string, string, Array<[string, string]>, string]>).map(([key, label, title, steps, note], i) => (
             <React.Fragment key={key}>
               {i === 1 && <div className="msk-workflow-arrow" aria-hidden="true">→</div>}
               <div className={`msk-workflow-column msk-workflow-column--${key}`}>
                 <p className="msk-workflow-label">{label}</p>
                 <h3>{title}</h3>
                 <ol className="msk-workflow-list">
-                  {steps.map((s) => <li key={s}>{s}</li>)}
+                  {steps.map(([s, lane]) => (
+                    <li key={s}>
+                      <span className="msk-lane" data-lane={lane}>{lane}</span>
+                      {s}
+                    </li>
+                  ))}
                 </ol>
                 <p className="msk-artifact-note">{note}</p>
               </div>
@@ -220,24 +230,24 @@ export default function MSKCaseStudy() {
         </table>
       </section>
 
-      {/* ── ROLE 1: OFFICE COORDINATOR ── */}
+      {/* ── PHASE 1: ON THE FLOOR ── */}
       <section>
-        <p className="gh-section-label">Role 1 · Office Coordinator</p>
-        <h2>On the floor, learning how the work actually flowed</h2>
+        <p className="gh-section-label">Started on the floor</p>
+        <h2>Learning how the work actually flowed</h2>
         <p className="cs-section-intro">
-          Embedded with frontline teams, I shadowed nurses and clinicians during actual shifts and
-          mapped real behavior against documented policy. Where staff paused, backtracked, or
-          worked around the system is where the design problems lived.
+          As Office Coordinator, I embedded with frontline teams — shadowing nurses and clinicians
+          during actual shifts and mapping real behavior against documented policy. Where staff
+          paused, backtracked, or worked around the system is where the design problems lived.
         </p>
       </section>
 
-      {/* ── ROLE 2: ADMINISTRATIVE ASSISTANT ── */}
+      {/* ── PHASE 2: BUILDING THE EVIDENCE ── */}
       <section>
-        <p className="gh-section-label">Role 2 · Administrative Assistant</p>
+        <p className="gh-section-label">Built the evidence</p>
         <h2>Turning floor observations into evidence leadership could act on</h2>
         <p className="cs-section-intro">
-          Watching wasn't enough anymore; the findings had to survive a room full of stakeholders.
-          Three methods made that work.
+          As Administrative Assistant, watching wasn't enough anymore; the findings had to survive a
+          room full of stakeholders. Three methods made that work.
         </p>
 
         <div className="cs-methods-grid">
@@ -270,14 +280,14 @@ export default function MSKCaseStudy() {
         </Disclosure>
       </section>
 
-      {/* ── ROLE 3: TRAINING SPECIALIST I ── */}
+      {/* ── PHASE 3: OWNING THE SYSTEMS ── */}
       <section>
-        <p className="gh-section-label">Role 3 · Training Specialist I</p>
+        <p className="gh-section-label">Owned the systems</p>
         <h2>Owning the systems I used to observe</h2>
         <p className="cs-section-intro">
-          I owned onboarding and certification training across departments and co-led the Veteran
-          employee resource network. Observation and evidence became design authority: the three
-          redesigns below.
+          As Training Specialist, I owned onboarding and certification training across departments
+          and co-led the Veteran employee resource network. Observation and evidence became design
+          authority: the three redesigns below.
         </p>
       </section>
 
@@ -360,7 +370,7 @@ export default function MSKCaseStudy() {
       {/* ── OUTCOMES ── */}
       <section id="msk-outcomes" className="cs-outcome">
         <p className="gh-section-label">Outcomes</p>
-        <h2 className="cs-section-title">Measurable results across three systems</h2>
+        <h2 className="cs-section-title">Three systems that outlasted the leadership that approved them</h2>
         <div className="cs-outcome-grid">
           {[
             ["20%", "Organization-wide EMR cost reduction. I led the dashboard-to-online-EMR workflow redesign that contributed to it."],

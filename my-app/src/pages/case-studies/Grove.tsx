@@ -9,6 +9,7 @@ import SpanishCaseStudy from "../../components/SpanishCaseStudy";
 import { useLanguage } from "../../app/LanguageContext";
 import { GROVE_ES } from "../../data/spanishCaseStudies";
 import useReveal from "../../hooks/useReveal";
+import { StateMatrix } from "../../components/casestudy/ShowKit";
 import { HandIcon, MedicalCrossIcon, LeafIcon } from "../../components/LineIcons";
 
 const SURVEY_FINDINGS = [
@@ -111,10 +112,10 @@ export default function GroveCaseStudy() {
           <p className="meta">Product Design&nbsp;· AI Product&nbsp;· Full-Stack Prototype</p>
           <h1>Grove</h1>
           <p className="gh-hero__intro">
-            Plant parents kill their plants because the care advice they find doesn't
-            hold up. I surveyed 32 users, defined the MVP from their data, and am
-            redesigning a working Emergent prototype, documenting{" "}
-            <strong>where AI accelerates and where human judgment leads.</strong>
+            <strong>AI built me the wrong app. 32 plant owners told me which one to build instead.</strong>{" "}
+            Grove is a plant-care app I'm redesigning from a working Emergent prototype — cutting the
+            community features I'd built breadth-first, and keeping the AI honest wherever a wrong
+            answer is a safety risk, not just a bad suggestion.
           </p>
         </div>
         <div className="gh-hero__visual grove-hero-visual" aria-hidden="true">
@@ -133,8 +134,8 @@ export default function GroveCaseStudy() {
         {[
           { label: "Role",     value: "Product Designer (solo)" },
           { label: "Type",     value: "Full-Stack App" },
-          { label: "Timeline", value: "3 weeks so far" },
-          { label: "Status",   value: "In progress, testing next" },
+          { label: "Timeline", value: "Phase 2 of 3" },
+          { label: "Status",   value: "Redesign in progress" },
         ].map((item, i, arr) => (
           <React.Fragment key={item.label}>
             <div className="gh-meta-strip__item">
@@ -175,6 +176,7 @@ export default function GroveCaseStudy() {
         <a href="#grove-research">View research</a>
         <a href="#grove-evolution">View before/final</a>
         <a href="#grove-states">View edge states</a>
+        <a href="#grove-screens">View screens</a>
         <a href="#grove-outcomes">View outcomes</a>
       </nav>
 
@@ -189,15 +191,16 @@ export default function GroveCaseStudy() {
           respondents: "too many notifications." One respondent put the whole brief in a sentence:
           "Plant care should feel peaceful, not stressful."
         </p>
-        <Disclosure title="Show research inputs and the finding that changed the direction">
+        <p className="cs-overview-text" style={{ marginTop: "1rem" }}>
+          <strong>The wedge:</strong> the skill new owners most lack is light — where to place a
+          plant and why — and no major plant app teaches it. Lighting confidence averaged 2.4/5, and
+          respondents asked unprompted for an app to "tell me exactly where to place a plant." That
+          gap, plus trust, is where Grove competes.
+        </p>
+        <Disclosure title="Show research inputs">
           <p className="cs-overview-text">
             <strong>Inputs:</strong> 32-respondent survey, moderated testing plan ready to run
             (5–6 participants). Solo project.
-          </p>
-          <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
-            <strong>The skill gap is light, not water.</strong> Lighting confidence averaged 2.4/5
-            among new owners, and respondents asked unprompted for an app to "tell me exactly where
-            to place a plant." No major competitor addresses this.
           </p>
         </Disclosure>
 
@@ -441,7 +444,35 @@ export default function GroveCaseStudy() {
         </Disclosure>
       </section>
 
-      {/* Screen showcase removed while the app is mid-redesign; re-add when new screens are ready. */}
+      {/* ── PRODUCT SCREENS ── */}
+      <section id="grove-screens">
+        <p className="gh-section-label">The build, shown</p>
+        <h2>Three screens carry the product thinking</h2>
+        <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
+          Each of these is a decision from the research made visible — grouping, the emotional
+          payoff, and a reward that isn't a points system.
+        </p>
+        <StateMatrix
+          rows={[
+            {
+              state: "Bouquets, not a flat list",
+              screen: { src: "/assets/grove/bouquet.png", alt: "Grove bouquet screen grouping plants by location" },
+              note: "Plants group by location, so every screen answers one question: which bouquet am I looking at? Competing apps show one flat list that reads as decision paralysis.",
+            },
+            {
+              state: "The journal is the home",
+              screen: { src: "/assets/grove/Growth.png", alt: "Grove growth photo journal screen" },
+              note: "Growth over time is the emotional payoff the survey validated — more motivating than a to-do dashboard, so it leads instead of the task list AI proposed.",
+            },
+            {
+              state: "Reward is a personality, not points",
+              screen: { src: "/assets/grove/plantpersonality.png", alt: "Grove AI-generated plant personality reward screen" },
+              note: "Unlocked at a care milestone: an AI-generated plant personality, not XP or a leaderboard. Care shouldn't feel like an administrative chore — the #1 reason people quit these apps.",
+            },
+          ]}
+        />
+      </section>
+
 
       {/* ── WHERE IT STANDS ── */}
       <section id="grove-outcomes" className="cs-outcome">
@@ -449,10 +480,10 @@ export default function GroveCaseStudy() {
         <h2 className="cs-section-title">Research artifacts + working product</h2>
         <div className="cs-outcome-grid">
           {[
-            ["32", "Survey respondents grounding every design decision in data"],
-            ["2", "Personas built from the survey data: needs, frustrations, and dealbreakers"],
-            ["5", "AI decisions documented with explicit human override reasoning"],
-            ["In progress", "Full-stack app (React + FastAPI + MongoDB) ready for moderated testing"],
+            ["0", "plants shown as identified above the AI's confidence — below 80%, Grove asks you to verify with a photo"],
+            ["1/day", "care task per bouquet, capped by design — a reminder can never become the uninstall trigger"],
+            ["5", "AI decisions overruled and logged, each one traceable to a specific survey finding"],
+            ["Ready", "Full-stack app (React + FastAPI + MongoDB) with pre-registered testing criteria set"],
           ].map(([v, l]) => (
             <div key={l} className="cs-outcome-card">
               <p className="cs-outcome-value gradient-text">{v}</p>

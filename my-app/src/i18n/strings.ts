@@ -119,7 +119,7 @@ const en = {
   "home.projectsTitle": "Projects",
   "home.proj.grove.subtitle": "Product Design · AI Judgment",
   "home.proj.grove.desc":
-    "32-user survey to working prototype in 3 weeks. MVP reset, AI override log, and moderated testing plan.",
+    "32-user survey to a working prototype. MVP reset, AI override log, and moderated testing plan.",
   "home.proj.grove.alt": "Grove plant care app",
   "home.proj.msk.subtitle": "UX & Product Design · Healthcare Systems",
   "home.proj.msk.desc":
@@ -270,7 +270,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.projectsTitle": "Proyectos",
   "home.proj.grove.subtitle": "Diseño de producto · Criterio con IA",
   "home.proj.grove.desc":
-    "Encuesta a 32 usuarios a prototipo funcional en 3 semanas. MVP redefinido, registro de decisiones con IA y plan de pruebas moderadas.",
+    "Encuesta a 32 usuarios a un prototipo funcional. MVP redefinido, registro de decisiones con IA y plan de pruebas moderadas.",
   "home.proj.grove.alt": "Aplicación Grove para el cuidado de plantas",
   "home.proj.msk.alt": "Memorial Sloan Kettering Cancer Center",
   "home.proj.msk.subtitle": "Diseño UX y de producto · Sistemas de salud",

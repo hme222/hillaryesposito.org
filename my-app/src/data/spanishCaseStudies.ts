@@ -8,7 +8,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
   stats: [
     { label: "Rol", value: "Diseño de producto, investigación, prototipo" },
     { label: "Muestra", value: "32 respuestas de encuesta" },
-    { label: "Tiempo", value: "3 semanas" },
+    { label: "Tiempo", value: "Fase 2 de 3" },
     { label: "Estado", value: "Rediseño en curso; pruebas moderadas a continuación" },
   ],
   sections: [
@@ -109,7 +109,7 @@ export const MSK_ES: SpanishCaseStudyData = {
     },
   ],
   otherProjects: [
-    { title: "Grove", desc: "App de cuidado de plantas con IA. De la investigación a un prototipo funcional en 3 semanas.", path: "/case-study/grove" },
+    { title: "Grove", desc: "App de cuidado de plantas con IA. Sola, de la investigación a un prototipo funcional.", path: "/case-study/grove" },
     { title: "Good Harvest", desc: "Las pruebas con mapas de calor con 22 usuarios revelaron un problema de confianza en la información estacional.", path: "/case-study/good-harvest" },
   ],
 };
@@ -162,7 +162,7 @@ export const GOOD_HARVEST_ES: SpanishCaseStudyData = {
     },
   ],
   otherProjects: [
-    { title: "Grove", desc: "App de cuidado de plantas con IA. De la investigación a un prototipo funcional en 3 semanas.", path: "/case-study/grove" },
+    { title: "Grove", desc: "App de cuidado de plantas con IA. Sola, de la investigación a un prototipo funcional.", path: "/case-study/grove" },
     { title: "MSK Cancer Center", desc: "Seis años rediseñando flujos clínicos, onboarding y certificación para más de 21,000 clínicos.", path: "/case-study/msk" },
   ],
 };
@@ -202,7 +202,7 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
     },
   ],
   otherProjects: [
-    { title: "Grove", desc: "App de cuidado de plantas con IA. De la investigación a un prototipo funcional en 3 semanas.", path: "/case-study/grove" },
+    { title: "Grove", desc: "App de cuidado de plantas con IA. Sola, de la investigación a un prototipo funcional.", path: "/case-study/grove" },
     { title: "MSK Cancer Center", desc: "Seis años rediseñando flujos clínicos, onboarding y certificación para más de 21,000 clínicos.", path: "/case-study/msk" },
   ],
 };

@@ -37,24 +37,20 @@ export default function GoodHarvest() {
 
   const otherProjects = [
     { icon: <SproutIcon />, title: "Grove", path: "/case-study/grove",
-      desc: "AI + design plant care app. Research to working prototype in 3 weeks, solo." },
+      desc: "AI + design plant care app. Solo, research to a working prototype." },
     { icon: <MedicalCrossIcon />, title: "MSK Cancer Center", path: "/case-study/msk",
       desc: "Six years redesigning clinical workflows, onboarding, and certification systems for 21,000+ clinicians." },
   ];
 
   const researchInsightCards = [
     { num: "Finding 01", heading: "Users are motivated",
-      body: "19 of 22 participants say that eating seasonal foods is desirable",
-      tag: "My synthesis from provided research" },
+      body: "19 of 22 participants say that eating seasonal foods is desirable" },
     { num: "Finding 02", heading: "Unclear what's in season locally",
-      body: "13 of 22 participants do not know what's in season in their specific area",
-      tag: "My synthesis from provided research" },
+      body: "13 of 22 participants do not know what's in season in their specific area" },
     { num: "Finding 03", heading: "Users find seasonal shopping time consuming",
-      body: "12 of 22 participants found meal planning around seasonal food takes too much time.",
-      tag: "My synthesis from provided research" },
+      body: "12 of 22 participants found meal planning around seasonal food takes too much time." },
     { num: "Finding 04", heading: "Produce variety confusion caused decision paralysis",
-      body: "When faced with multiple apple or lettuce varieties, 17 of 22 participants either chose randomly or deferred the decision entirely.",
-      tag: "My synthesis from provided research" },
+      body: "When faced with multiple apple or lettuce varieties, 17 of 22 participants either chose randomly or deferred the decision entirely." },
   ];
 
   const reflections = [
@@ -75,9 +71,9 @@ export default function GoodHarvest() {
           <p className="meta">Product Design&nbsp;· Mobile App&nbsp;· Figma&nbsp;· Heatmap Testing</p>
           <h1>Good Harvest</h1>
           <p className="gh-hero__intro">
-            A mobile app I designed to help health-conscious shoppers make{" "}
-            <strong>confident, seasonal food choices</strong>, without the
-            research spiral before every grocery run.
+            <strong>The research said people couldn't find seasonal produce. My testing showed
+            they found it — and didn't believe it applied to them.</strong> Good Harvest is the
+            mobile app I redesigned around that reframe, from a trust problem, not a navigation one.
           </p>
         </div>
         <div className="gh-hero__visual" aria-hidden="true">
@@ -155,8 +151,8 @@ export default function GoodHarvest() {
           </p>
         </div>
         <div className="cs-artifact-hook__media cs-artifact-hook__media--two">
-          <MediaCard src={screens.recipesWire} alt="Good Harvest recipe wireframe" caption="Before: recipe discovery was structurally separate." />
-          <MediaCard src={screens.recipesHeat} alt="Good Harvest recipe heatmap" caption="After: recipes surfaced where users were already deciding." />
+          <MediaCard src={screens.recipesWire} alt="Good Harvest recipe wireframe" caption="The redesign: recipes embedded in the produce detail path." />
+          <MediaCard src={screens.recipesHeat} alt="Good Harvest recipe attention heatmap" caption="AttentionInsight heatmap: attention stayed on the produce-to-recipe path." />
         </div>
       </section>
 
@@ -198,10 +194,20 @@ export default function GoodHarvest() {
           How might we help people quickly plan meals around seasonal produce in their area, with enough confidence to act?
         </div>
 
+        <p className="cs-overview-text" style={{ marginTop: "1.25rem" }}>
+          <strong>The market gap:</strong> a competitive SWOT put the incumbents into two camps —
+          recipe apps that ignore seasonality and locality, and farmers-market finders that stop at
+          "where," never "what to cook." Good Harvest's wedge is the join: local + seasonal +
+          an immediate next step.{" "}
+          <a href="/assets/good-harvest-competitive-analysis.pdf" target="_blank" rel="noopener noreferrer">
+            View the competitive analysis (PDF) →
+          </a>
+        </p>
+
         <div className="gh-collab-note">
           <p className="gh-collab-label">Research provenance</p>
           <p>
-            <strong>Inherited:</strong> 3 in-depth interviews and 22 survey responses (conducted by bootcamp research team, recruitment via convenience sample).
+            <strong>Inherited:</strong> 3 in-depth interviews and 22 survey responses (conducted by the project's research team, recruitment via convenience sample).
             I synthesized these findings into personas and design principles.<br />
             <strong>Generated:</strong> separate 22-participant unmoderated heatmap testing across 3 rounds (I designed the test plan, wrote tasks, recruited participants via Maze panel, and analyzed results).
             Two peer designers reviewed my synthesis and challenged assumptions.
@@ -244,7 +250,15 @@ export default function GoodHarvest() {
           { icon: <FrameIcon />, name: "Figma",
             why: "Primary design + prototyping surface. Auto layout and components let me iterate wireframes into testable flows without rebuilding screens each round." },
           { icon: <FlaskIcon />, name: "Maze",
-            why: "Unmoderated prototype testing with heatmaps. Chose it over in-person sessions because I needed attention data across all 22 participants." },
+            why: "Unmoderated task testing across all 22 participants. Chose it over in-person sessions to capture task completion and behavior at scale." },
+          { icon: <FlaskIcon />, name: "AttentionInsight",
+            why: (
+              <>
+                AI attention-prediction heatmaps to validate visual hierarchy — where the eye lands
+                before a single tap — so I could catch hierarchy problems ahead of participant testing.{" "}
+                <a href="https://attentioninsight.com?aff=_hillaryesposito" target="_blank" rel="noopener noreferrer">Try AttentionInsight →</a>
+              </>
+            ) },
           { icon: <FolderIcon />, name: "FigJam",
             why: "Affinity mapping provided research data and running the competitive SWOT. Kept synthesis visible so decisions trace back to raw evidence." },
         ]}
@@ -304,7 +318,7 @@ export default function GoodHarvest() {
         <div className="gh-collab-note" style={{ marginBottom: "1.5rem" }}>
           <p className="gh-collab-label">What I inherited</p>
           <p>
-            Research data (3 in-depth interviews and 22 survey responses) was provided as part of the bootcamp.
+            Research data (3 in-depth interviews and 22 survey responses) was provided at the start of the project.
             Four key findings from that data shaped every design decision that followed.
           </p>
         </div>
@@ -314,7 +328,6 @@ export default function GoodHarvest() {
             <div key={card.num} className="feature">
               <h3 style={{ color: "var(--olive-2)", marginTop: 0, marginBottom: "0.6rem" }}>{card.heading}</h3>
               <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>{card.body}</p>
-              <p style={{ margin: "0.5rem 0 0", fontSize: "0.82rem", color: "var(--olive-2)", fontWeight: 600 }}>{card.tag}</p>
             </div>
           ))}
         </div>
@@ -331,17 +344,17 @@ export default function GoodHarvest() {
         <h3 style={{ color: "var(--olive-2)", marginBottom: "0.75rem" }}>Home screen: produce-first hierarchy</h3>
         <div className="cs-gallery cols-3">
           <MediaCard src={screens.homeWire}  alt="Good Harvest home wireframe showing layout hierarchy"          caption="Wireframe: hierarchy + tap targets." />
-          <MediaCard src={screens.homeHeat}  alt="Heatmap showing attention on seasonal produce module"           caption="First taps landed on produce; the top nav went untouched." />
+          <MediaCard src={screens.homeHeat}  alt="Attention heatmap showing focus on the seasonal produce module"  caption="AttentionInsight heatmap: attention landed first on produce; the top nav drew little." />
           <MediaCard src={screens.appMobile} alt="Good Harvest mobile app showing seasonal produce and recipes"   caption="Final: produce-first, secondary nav below fold." />
         </div>
 
         <h3 style={{ color: "var(--olive-2)", marginTop: "2rem", marginBottom: "0.75rem" }}>Local produce: location trust</h3>
         <p style={{ fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65, marginBottom: "1rem" }}>
-          Only 4 of 22 participants noticed the location indicator in v1, which tracked with their distrust that produce info applied to their area. I made the indicator tappable and prominent with source attribution, and noticing rose to 13 of 22 in v2.
+          Only 4 of 22 participants mentioned the location indicator unprompted in v1, which tracked with their distrust that produce info applied to their area. I made the indicator tappable and prominent with source attribution, and unprompted mentions rose to 13 of 22 in v2.
         </p>
         <div className="cs-gallery cols-2">
           <MediaCard src={screens.localWire} alt="Local produce wireframe showing initial location indicator"     caption="v1: location indicator present but passive." />
-          <MediaCard src={screens.localHeat} alt="Local produce heatmap showing attention patterns"               caption="Heatmap: users noticed location in v2 (13/22 mentioned it unprompted)." />
+          <MediaCard src={screens.localHeat} alt="Local produce attention heatmap showing focus on the indicator"  caption="AttentionInsight heatmap: predicted attention concentrated on the location indicator in v2." />
         </div>
 
         <h3 style={{ color: "var(--olive-2)", marginTop: "2rem", marginBottom: "0.75rem" }}>Recipes: embedded discovery</h3>
@@ -442,11 +455,11 @@ export default function GoodHarvest() {
       {/* ── OUTCOMES ── */}
       <section id="gh-outcomes" className="cs-outcome">
         <p className="gh-section-label">Outcomes</p>
-        <h2 className="cs-section-title">What prototype testing suggested</h2>
+        <h2 className="cs-section-title">What three rounds of testing changed</h2>
         <div className="cs-outcome-grid">
           <div className="cs-outcome-card">
             <p className="cs-outcome-value gradient-text">3 of 4</p>
-            <p className="cs-outcome-label">Core-task attempts completed unassisted in the final round (vs. 1 of 4 in round one)</p>
+            <p className="cs-outcome-label">core tasks completed unassisted in the final round, up from 1 of 4 in round one</p>
           </div>
           <div className="cs-outcome-card">
             <p className="cs-outcome-value gradient-text">4 taps</p>
@@ -457,6 +470,22 @@ export default function GoodHarvest() {
             <p className="cs-outcome-label">Participants across 3 rounds of testing</p>
           </div>
         </div>
+
+        <div className="gh-tap-path" role="img" aria-label="Path to action dropped from 7 taps in v1 to 4 taps in v2">
+          <div className="gh-tap-path__row">
+            <span className="gh-tap-path__label">v1 · 7 taps</span>
+            <span className="gh-tap-path__dots">
+              {Array.from({ length: 7 }).map((_, i) => <span key={i} className="gh-tap-dot" />)}
+            </span>
+          </div>
+          <div className="gh-tap-path__row gh-tap-path__row--after">
+            <span className="gh-tap-path__label">v2 · 4 taps</span>
+            <span className="gh-tap-path__dots">
+              {Array.from({ length: 4 }).map((_, i) => <span key={i} className="gh-tap-dot gh-tap-dot--on" />)}
+            </span>
+          </div>
+        </div>
+
         <p className="cs-overview-text" style={{ marginTop: "1.5rem", maxWidth: 640 }}>
           <em>Note: Prototype usability metrics (22 participants), not post-launch data. Directional signals treated as hypotheses for a next round.</em>
         </p>

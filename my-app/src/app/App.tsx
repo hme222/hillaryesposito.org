@@ -13,6 +13,7 @@ import BackToTop from "../components/BackToTop";
 import "../styles/index.css";
 import "../styles/App.css";
 import "../styles/comparison-table.css";
+import "../styles/casestudy-show.css";
 
 export default function App() {
   // Theme preference. Read once, synchronously, into the initializer so the
