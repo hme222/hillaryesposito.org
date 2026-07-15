@@ -3,9 +3,9 @@ import React from "react";
 
 export type ToolEntry = {
   name: string;
-  /** Rationale — string, or JSX when it needs an inline link. */
+  /** Rationale - string, or JSX when it needs an inline link. */
   why: React.ReactNode;
-  /** Line-icon element (see components/LineIcons) — matches the site's stroke family. */
+  /** Line-icon element (see components/LineIcons) - matches the site's stroke family. */
   icon?: React.ReactNode;
 };
 

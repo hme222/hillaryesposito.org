@@ -11,7 +11,7 @@ const WorkflowKnot = lazy(() => import("../components/WorkflowKnot"));
 import KnotErrorBoundary from "../components/KnotErrorBoundary";
 import { MedicalCrossIcon } from "../components/LineIcons";
 
-// Static placeholder shown while the three.js chunk loads — mirrors the knot's
+// Static placeholder shown while the three.js chunk loads - mirrors the knot's
 // RESOLVED 4-dot row (amber last, connector through) so it never contradicts
 // either the tangle or the settled state it hands off to.
 function HeroKnotFallback() {
@@ -72,7 +72,7 @@ const OrbBackground: React.FC = () => (
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 type Project = {
-  title: string; // proper noun — never translated
+  title: string; // proper noun - never translated
   subtitleKey: StringKey;
   descKey: StringKey;
   images?: string[];
@@ -123,7 +123,7 @@ export default function Home() {
   // back/forward restore, leaving content stranded at opacity 0. After a short
   // delay we force every reveal to its visible state via `animate` (framer
   // applies `animate` whenever whileInView isn't active), so nothing can stay
-  // invisible — the same "fail visible" guarantee useReveal gives the case studies.
+  // invisible - the same "fail visible" guarantee useReveal gives the case studies.
   const [revealAll, setRevealAll] = useState(false);
   useEffect(() => {
     const revealNow = () => setRevealAll(true);
@@ -149,7 +149,7 @@ export default function Home() {
   // Handle scrollTo query param from cross-route navigation (e.g. a case study
   // → "Projects"). The page is still laying out (fonts, images, framer-motion)
   // when we mount, so a single scroll lands short. We re-scroll across a few
-  // delays — recomputing the target each time to catch late layout shifts —
+  // delays - recomputing the target each time to catch late layout shifts -
   // then clean the URL. setTimeout is used (not rAF) so it still fires when the
   // tab is backgrounded/throttled.
   useEffect(() => {
@@ -173,12 +173,12 @@ export default function Home() {
     return () => timers.forEach((t) => clearTimeout(t));
   }, [location.search, navigate]);
 
-  // Smooth-scroll helper — no hash change, no router interference
+  // Smooth-scroll helper - no hash change, no router interference
   const scrollToContact = () => {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // The knot is now purely a decorative "complexity → clarity" flourish — the
+  // The knot is now purely a decorative "complexity → clarity" flourish - the
   // header nav (always visible) is the navigation, so no labels are pinned to it.
 
   const email = "espositohillary@gmail.com";
@@ -260,14 +260,14 @@ export default function Home() {
               HILLARY ESPOSITO
             </motion.h1>
 
-            {/* Solid ink, sentence case — the H1 above keeps the viewport's one
+            {/* Solid ink, sentence case - the H1 above keeps the viewport's one
                 gradient treatment; amber stays reserved for the Resume node. */}
             <motion.p className="hero-positioning" {...stagger(0.12)}>
               {t("home.positioning")}
             </motion.p>
           </div>
 
-          {/* Reserved band the knot-nav resolves INTO — keeps the nav row (and
+          {/* Reserved band the knot-nav resolves INTO - keeps the nav row (and
               its words) in clear space between the lede above and the copy
               below, so nothing collides. The balls still animate full-height
               behind everything; only their resting row lands here. */}
@@ -292,7 +292,7 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════
-          2. PROOF — three numbers that back up the hero claim
+          2. PROOF - three numbers that back up the hero claim
       ══════════════════════════════════════════ */}
       <section className="section active home-proof-section" aria-label={t("home.proofAria")}>
         <motion.div
@@ -317,7 +317,7 @@ export default function Home() {
         <ul className="home-trust-strip" aria-label={t("home.trustAria")}>
           {([
             // Only credentials NOT already shown in the hero proof line, the
-            // stats, the project cards, or the client accreditation — no repeats.
+            // stats, the project cards, or the client accreditation - no repeats.
             "home.trust.grove",
             "home.trust.credentials",
             "home.trust.bilingual",
@@ -328,7 +328,7 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════
-          3. PROJECTS — numbered cards
+          3. PROJECTS - numbered cards
       ══════════════════════════════════════════ */}
       <section id="projects" className="section active projects home-projects-section"
         aria-label={t("home.projectsAria")}>
@@ -496,7 +496,7 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════
-          MINI ABOUT — a face + a short human blurb, linking to /about
+          MINI ABOUT - a face + a short human blurb, linking to /about
       ══════════════════════════════════════════ */}
       <section id="about" className="home-mini-about" aria-label={t("home.about.aria")}>
         <div className="mini-about-photo">

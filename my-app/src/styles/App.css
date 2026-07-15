@@ -6,7 +6,7 @@
   --font-editorial: "Optima", "Optima Nova", "Spectral", "Noto Serif", Georgia, serif;
 }
 /* ============================================================
-   DESIGN TOKENS — single source of truth.
+   DESIGN TOKENS - single source of truth.
    Light values here; dark overrides in the .dark-mode block below.
    Consolidated from several competing token blocks; every value is
    verified identical to the previous computed output (both themes).
@@ -151,7 +151,7 @@ body.dark-mode,
 /* Surface / text / input / footer tokens are consolidated into the two token
    blocks at the top of this file. */
 /* Large-screen typography scale.
-   Below 1500px nothing changes — the 390 / 900 / 1440 layouts stay exactly as
+   Below 1500px nothing changes - the 390 / 900 / 1440 layouts stay exactly as
    tuned. On wider monitors the root font-size steps up so every rem-based size
    (body copy, headings, spacing) grows in proportion, instead of leaving small
    text stranded in a huge viewport. Purely additive above the 1440 lock. */
@@ -167,7 +167,7 @@ body.dark-mode,
 
 /* Global reduced-motion safety net. Per-component rules below still fine-tune
    specifics, but this guarantees NOTHING animates or smooth-scrolls for users
-   who ask for reduced motion — a single baked-in rule instead of relying on
+   who ask for reduced motion - a single baked-in rule instead of relying on
    every future component to remember its own opt-out. */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -432,7 +432,7 @@ select:focus {
 
 /* Logo lockup: an "HE" ligature mark · hairline rule · tracked name over a role
    tagline. Typography-led, no container; doubles as a favicon-ready mark. */
-/* Symbol mark: an inked cradle holding an amber point of clarity — human-centred
+/* Symbol mark: an inked cradle holding an amber point of clarity - human-centred
    care ("design for the humans in the system"). Olive via currentColor. */
 .logo-mark {
   color: var(--olive-2);
@@ -553,7 +553,7 @@ select:focus {
   transform: scale(1.08);
 }
 
-/* Language toggle — inherits .theme-btn's hit area (≥40px), currentColor and
+/* Language toggle - inherits .theme-btn's hit area (≥40px), currentColor and
    dark-mode theming; this just restyles the icon slot as compact nav text. */
 .lang-btn {
   font-size: 0.8rem;
@@ -747,7 +747,7 @@ select:focus {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 var(--page-pad) 52px; /* tighter top — headline sits just below the nav */
+  padding: 0 var(--page-pad) 52px; /* tighter top - headline sits just below the nav */
   text-align: center;
   position: relative;
 }
@@ -796,7 +796,7 @@ select:focus {
   background-clip: text;
 }
 .hero-positioning {
-  /* Primary value prop — sentence case, large and heavy (not a kicker). */
+  /* Primary value prop - sentence case, large and heavy (not a kicker). */
   font-size: clamp(1.5rem, 2.3vw, 2rem);
   font-weight: 600;
   color: var(--muted);
@@ -846,7 +846,7 @@ select:focus {
   /* Gradient-clipped text renders as `transparent` fill in Windows High Contrast
      (forced-colors strips the background-image but not -webkit-text-fill-color),
      making the text invisible. Restore a system colour for every gradient-text
-     treatment — not just the tagline. */
+     treatment - not just the tagline. */
   .hero-positioning-gradient,
   .hero-title,
   .section-title,
@@ -1334,7 +1334,7 @@ select:focus {
 /* Text-protection scrim: a soft halo of the page background sits BEHIND the
    lede and copy text (above the balls at z:0, below this text at z:1 and below
    the nav words at z:2), so the H1 / positioning / description keep AA contrast
-   over the dimmed tangle — without dimming the balls themselves. The scrim only
+   over the dimmed tangle - without dimming the balls themselves. The scrim only
    covers the top/bottom text zones, leaving the middle nav band fully immersive. */
 .hero-content--centered .hero-lede,
 .hero-content--centered .hero-copy {
@@ -1376,7 +1376,7 @@ select:focus {
   flex: none;
   pointer-events: none; /* text stays selectable; nav nodes re-enable pointer events */
 }
-/* Dim the balls so they read as an ambient field behind the text. No edge mask —
+/* Dim the balls so they read as an ambient field behind the text. No edge mask -
    the knot shows to the edges without fading (readability comes from the scrim
    behind the lede/copy, not from fading the knot). */
 .home-hero .hero-knot {
@@ -1556,7 +1556,7 @@ select:focus {
     width: min(100%, 17rem);
   }
 }
-/* In the split layout the knot owns its panel — full strength, no mask. */
+/* In the split layout the knot owns its panel - full strength, no mask. */
 .hero-knot {
   position: absolute;
   inset: 0;
@@ -1578,11 +1578,11 @@ select:focus {
   position: absolute;
   inset: 0;
 }
-/* Knot nav-label styles removed — the knot is decorative now and the header is
+/* Knot nav-label styles removed - the knot is decorative now and the header is
    the navigation. WorkflowKnot only renders the label layer if navItems are
    passed (none are today), so no label CSS is needed. */
 
-/* Subtle replay control for the knot animation — centred under the knot so it
+/* Subtle replay control for the knot animation - centred under the knot so it
    is never clipped by the wide panel's edge. */
 .hero-knot-replay {
   position: absolute;
@@ -1889,7 +1889,7 @@ select:focus {
   height: 1.2rem;
 }
 
-/* Real Mobbin logo (self-contained black tile) replaces the chip — no circle. */
+/* Real Mobbin logo (self-contained black tile) replaces the chip - no circle. */
 .about-feedback-card__icon--mobbin {
   width: auto;
   height: auto;
@@ -2058,7 +2058,7 @@ select:focus {
   }
 }
 
-/* ========================================================= REINA — CLEAN + MORE PROFESSIONAL (adds summary + polish) Keep your current Reina block and ADD/REPLACE with this (This version matches your TSX: reina__meta, flowList, noteStack) ========================================================= */ /* Section spacing: match your global page rhythm */
+/* ========================================================= REINA - CLEAN + MORE PROFESSIONAL (adds summary + polish) Keep your current Reina block and ADD/REPLACE with this (This version matches your TSX: reina__meta, flowList, noteStack) ========================================================= */ /* Section spacing: match your global page rhythm */
 .projects.reina {
   padding: 120px var(--page-pad) 90px;
 } /* Centered container */
@@ -2292,7 +2292,7 @@ select:focus {
    ========================================================= */
 
 /* 1) Make dark-mode tokens match your palette (this alone fixes a LOT) */
-/* (Superseded dark token block removed — dark tokens now live in the single
+/* (Superseded dark token block removed - dark tokens now live in the single
    canonical .dark-mode block at the top of this file.) */
 
 /* 2) Body + global surfaces (keep EXACT layout, just correct contrast) */
@@ -2311,7 +2311,7 @@ select:focus {
   border-color: var(--border);
 }
 
-/* 3) PROJECTS PAGE — stop “mud” + ensure readable */
+/* 3) PROJECTS PAGE - stop “mud” + ensure readable */
 .dark-mode .projects {
   background: var(--bg);
 }
@@ -2347,13 +2347,13 @@ select:focus {
   color: var(--fg);
 }
 
-/* Your project description uses color-mix(var(--fg)...) — with --fg now cream, it's good.
+/* Your project description uses color-mix(var(--fg)...) - with --fg now cream, it's good.
    Just make sure headings never go white. */
 .dark-mode .project-body h3 {
   color: var(--fg);
 }
 
-/* 4) CASE STUDIES (Good Harvest etc.) — keep structure, fix readability */
+/* 4) CASE STUDIES (Good Harvest etc.) - keep structure, fix readability */
 .dark-mode .case-study {
   background: transparent; /* uses body bg */
 }
@@ -2387,7 +2387,7 @@ select:focus {
   color: rgba(248, 210, 183, 0.78);
 }
 
-/* 5) NAV — keep same behavior, palette contrast */
+/* 5) NAV - keep same behavior, palette contrast */
 .dark-mode .navbar {
   background: color-mix(in srgb, var(--surface-0) 72%, transparent);
   border-bottom-color: rgba(248, 210, 183, 0.12);
@@ -2401,7 +2401,7 @@ select:focus {
   background: var(--focus);
 }
 
-/* 6) FORMS — same sizes, better palette */
+/* 6) FORMS - same sizes, better palette */
 .dark-mode .form-group label {
   color: var(--fg);
 }
@@ -2418,7 +2418,7 @@ select:focus {
   border-color: var(--focus);
 }
 
-/* 7) REINA — keep layout, just make borders/surfaces match palette */
+/* 7) REINA - keep layout, just make borders/surfaces match palette */
 .dark-mode .projects.reina {
   background: transparent;
 }
@@ -2474,7 +2474,7 @@ select:focus {
    ========================================================= */
 
 /* 1) Core tokens in dark mode (use your palette everywhere) */
-/* (Superseded dark token block removed — see the canonical .dark-mode block
+/* (Superseded dark token block removed - see the canonical .dark-mode block
    at the top of this file.) */
 
 /* 2) Global text + surfaces (copy contrast) */
@@ -2550,7 +2550,7 @@ select:focus {
 }
 
 /* 5) Links: don’t rely on color alone + keep contrast */
-/* Dark mode inline links only — not nav, cards, or buttons */
+/* Dark mode inline links only - not nav, cards, or buttons */
 .dark-mode .cs-link,
 .dark-mode .cs-toggle-link {
   color: var(--focus);
@@ -2669,11 +2669,11 @@ select:focus {
 /* =========================================================
    FIX: DARK MODE APPLY + STABILIZE PROJECTS/REINA/ECOM/CASE STUDIES
    Paste at the VERY BOTTOM of your CSS (below everything).
-   This does NOT change layout — only fixes cascade + contrast.
+   This does NOT change layout - only fixes cascade + contrast.
    ========================================================= */
 
 /* 0) Make dark-mode work no matter where you place the class */
-/* (Superseded dark token block removed — see the canonical .dark-mode block
+/* (Superseded dark token block removed - see the canonical .dark-mode block
    at the top of this file.) */
 
 /* 1) IMPORTANT: Your file later resets body { background: var(--bg); color: var(--fg); }
@@ -2859,7 +2859,7 @@ main.case-study {
    .dark-mode block at the top of this file.) */
 
 /* =========================================================
-   DFIX — STABILIZE ABOUT / REINA / ECOM DEMO / FEATURES
+   DFIX - STABILIZE ABOUT / REINA / ECOM DEMO / FEATURES
    Paste at the VERY BOTTOM of your CSS (last lines).
    Goal: stop background/border overrides + restore card surfaces.
    No layout/grid/spacing changes.
@@ -2985,7 +2985,7 @@ html.dark-mode,
 }
 
 /* =========================================================
-   WCAG SAFETY PATCH — no layout changes
+   WCAG SAFETY PATCH - no layout changes
    Paste at VERY BOTTOM (after DFIX)
    Targets: contrast, focus, links, buttons, form states
    ========================================================= */
@@ -3111,7 +3111,7 @@ textarea {
 }
 
 /* The desktop nav-menu (the <ul> of links inside the navbar) must stay
-   transparent — otherwise its own translucent surface stacks on top of the
+   transparent - otherwise its own translucent surface stacks on top of the
    navbar's frosted glass and the links area reads as a solid panel. The mobile
    full-screen panel applies its own glass inside the max-width media query. */
 
@@ -3683,7 +3683,7 @@ body.dark-mode .nav-overlay-backdrop,
 .morework-track {
   display: flex;
   gap: 1.5rem;
-  /* Room for the project-card drop shadow — the viewport clips overflow-y, so
+  /* Room for the project-card drop shadow - the viewport clips overflow-y, so
      without this the cards read as visually cut off at the bottom. */
   padding: 0.5rem 0.25rem 2.25rem;
 }
@@ -3800,7 +3800,7 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 /* ─────────────────────────────────────────────
-   GH — Before / After mockup pairs
+   GH - Before / After mockup pairs
    ───────────────────────────────────────────── */
 .gh-before-after {
   display: flex;
@@ -3853,7 +3853,7 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 /* ─────────────────────────────────────────────
-   GH — Research mistakes
+   GH - Research mistakes
    ───────────────────────────────────────────── */
 .gh-mistakes-list {
   display: flex;
@@ -3899,7 +3899,7 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 /* ─────────────────────────────────────────────
-   GH — Collaboration Note
+   GH - Collaboration Note
    ───────────────────────────────────────────── */
 .gh-collab-note {
   margin-top: 1.5rem;
@@ -3927,7 +3927,7 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 /* ─────────────────────────────────────────────
-   GH — Limitation Note
+   GH - Limitation Note
    ───────────────────────────────────────────── */
 .gh-limitation-note {
   margin-top: 1.25rem;
@@ -3942,7 +3942,7 @@ body.dark-mode .nav-overlay-backdrop,
 .gh-limitation-note p { margin: 0; }
 
 /* ─────────────────────────────────────────────
-   GH — Iteration Cards (Tab 4)
+   GH - Iteration Cards (Tab 4)
    ───────────────────────────────────────────── */
 .gh-iteration-list {
   display: flex;
@@ -3988,7 +3988,7 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 /* ─────────────────────────────────────────────
-   GH — Accessibility Section
+   GH - Accessibility Section
    ───────────────────────────────────────────── */
 .gh-a11y-grid {
   display: grid;
@@ -4013,7 +4013,7 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 /* ─────────────────────────────────────────────
-   GH — Key User Flows
+   GH - Key User Flows
    ───────────────────────────────────────────── */
 .gh-flows-section {
   margin-top: 3rem;
@@ -4111,7 +4111,7 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 /* =========================================================
-   BLOOMBUDDY / EMERGENT — case study styles
+   BLOOMBUDDY / EMERGENT - case study styles
    ========================================================= */
 
 /* Screenshot placeholder */
@@ -4214,7 +4214,7 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 /* =========================================================
-   REINA — additions to GoodHarvest.css
+   REINA - additions to GoodHarvest.css
    Append these to the bottom of your existing GoodHarvest.css
    ========================================================= */
 
@@ -4238,7 +4238,7 @@ body.dark-mode .nav-overlay-backdrop,
   line-height: 1;
 }
 
-/* MSK hero stat medallion — typographic, intentional (replaces the leftover badge). */
+/* MSK hero stat medallion - typographic, intentional (replaces the leftover badge). */
 .msk-hero-badge {
   gap: 0.45rem;
 }
@@ -4277,10 +4277,10 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 /* ─────────────────────────────────────────────
-   HOME — magazine project cards
+   HOME - magazine project cards
    ───────────────────────────────────────────── */
 /* ─────────────────────────────────────────────
-   HOME — Project cards (UXFolio-inspired)
+   HOME - Project cards (UXFolio-inspired)
    ───────────────────────────────────────────── */
 .home-projects-list {
   display: flex;
@@ -4294,7 +4294,7 @@ body.dark-mode .nav-overlay-backdrop,
 .home-proj-card-link {
   display: block;
   width: 100%;
-  /* Smaller, centred footprint — the device screenshots inside scale with the
+  /* Smaller, centred footprint - the device screenshots inside scale with the
      card but keep their proportions (no crop or distortion). */
   max-width: 760px;
   text-decoration: none;
@@ -4375,7 +4375,7 @@ body.dark-mode .nav-overlay-backdrop,
   padding: 2rem 2rem 0;
 }
 
-/* Full-bleed cover image (e.g. MSK logo card) — fills the 16:9 preview edge to
+/* Full-bleed cover image (e.g. MSK logo card) - fills the 16:9 preview edge to
    edge, no padding, no crop since the asset shares the preview's aspect ratio. */
 .home-proj-cover {
   position: absolute;
@@ -4531,7 +4531,7 @@ body.dark-mode .nav-overlay-backdrop,
   .home-proj-card-link:hover .home-proj-icon-display { transform: none; }
 }
 
-/* Dark mode — tools used block */
+/* Dark mode - tools used block */
 .dark-mode .tools-used {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
   border-color: rgba(255, 255, 255, 0.1);
@@ -4541,7 +4541,7 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 /* ─────────────────────────────────────────────
-   HOME — recruiter banner (hero CTA)
+   HOME - recruiter banner (hero CTA)
    ───────────────────────────────────────────── */
 .home-recruiter-banner {
   display: inline-flex;
@@ -4604,7 +4604,7 @@ body.dark-mode .nav-overlay-backdrop,
   .recruiter-pill { bottom: 1rem; right: 1rem; padding: 0.65rem 1rem; font-size: 0.78rem; }
 }
 /* On small screens the fixed pill sits on top of the hero description, so it
-   stays hidden (and out of the tab order) until the user scrolls — the class
+   stays hidden (and out of the tab order) until the user scrolls - the class
    is toggled by RecruiterPill. Desktop keeps its always-on position. */
 @media (max-width: 768px) {
   .recruiter-pill--unscrolled {
@@ -4614,7 +4614,7 @@ body.dark-mode .nav-overlay-backdrop,
   }
 }
 
-/* Slide-out panel — a native <dialog>. Reset the UA dialog box, then position
+/* Slide-out panel - a native <dialog>. Reset the UA dialog box, then position
    it as a right-edge slide-out. `::backdrop` replaces the old backdrop div. */
 .recruiter-panel {
   position: fixed;
@@ -4941,7 +4941,7 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 /* =========================================================
-   ABOUT PAGE — ADDITIONS
+   ABOUT PAGE - ADDITIONS
    Append to App.css (below existing .about-page rules).
    Zero conflicts with existing tokens or layout.
    ========================================================= */
@@ -5277,9 +5277,9 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 /* =========================================================
-   HOME PAGE — ADDITIONS
+   HOME PAGE - ADDITIONS
    Append to App.css (below existing .hero rules).
-   All additions — zero conflicts with existing tokens.
+   All additions - zero conflicts with existing tokens.
    ========================================================= */
 
 /* ── Status chip ── */
@@ -5991,7 +5991,7 @@ body.dark-mode .nav-overlay-backdrop,
   width: 100% !important;
   height: 100% !important;
 }
-/* Labeled stage axis under the map — turns it into a contextual workflow
+/* Labeled stage axis under the map - turns it into a contextual workflow
    diagram (distinct from the abstract hero knot). */
 .msk-systemmap-stages {
   display: flex;
@@ -6070,7 +6070,7 @@ body.dark-mode .nav-overlay-backdrop,
   text-transform: uppercase;
 }
 
-/* "Companies I've been contracted to support" — client accreditation strip. */
+/* "Companies I've been contracted to support" - client accreditation strip. */
 .home-clients {
   max-width: 980px;
   margin: 2.75rem auto 0;
@@ -6118,7 +6118,7 @@ body.dark-mode .nav-overlay-backdrop,
   display: block;
   border-radius: 10px;
 }
-/* The Mobbin mark is a self-contained black app-icon tile — never recolor a
+/* The Mobbin mark is a self-contained black app-icon tile - never recolor a
    brand logo. On the warm-black dark background a hairline ring keeps its edge
    defined so it doesn't blend into the page. */
 .dark-mode .home-clients__logo {
@@ -6257,7 +6257,7 @@ body.dark-mode .nav-overlay-backdrop,
   }
 }
 
-/* ── Projects — list layout ── */
+/* ── Projects - list layout ── */
 .home-projects-section {
   padding: 100px var(--page-pad) 100px;
 }
@@ -6553,7 +6553,7 @@ body.dark-mode .nav-overlay-backdrop,
 
 
 /* ════════════════════════════════════════
-   VARIANT 1 — PRIMARY (filled gradient)
+   VARIANT 1 - PRIMARY (filled gradient)
    Used: hero-btn, submit-btn, btn-primary
 ════════════════════════════════════════ */
 .btn-primary,
@@ -6631,7 +6631,7 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 /* ════════════════════════════════════════
-   VARIANT 2 — OUTLINE (bordered pill)
+   VARIANT 2 - OUTLINE (bordered pill)
    Used: home-secondary-btn, about-back-btn, btn-outline
 ════════════════════════════════════════ */
 .btn-outline,
@@ -6697,7 +6697,7 @@ body.dark-mode .nav-overlay-backdrop,
 .btn-outline.btn--lg { padding: 1rem   1.75rem; font-size: 0.95rem; }
 
 /* ════════════════════════════════════════
-   VARIANT 3 — GHOST (text + underline)
+   VARIANT 3 - GHOST (text + underline)
    Used: recruiter-toggle-link, cs-toggle-link, btn-ghost
 ════════════════════════════════════════ */
 .btn-ghost,
@@ -6759,7 +6759,7 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 /* ════════════════════════════════════════
-   VARIANT 4 — ICON (square chip)
+   VARIANT 4 - ICON (square chip)
    Used: btn-icon
 ════════════════════════════════════════ */
 .btn-icon {
@@ -6861,7 +6861,7 @@ body.dark-mode .nav-overlay-backdrop,
 
 /* ════════════════════════════════════════
    SPECIAL: status chip (Home hero)
-   Already defined in Home.css — kept here
+   Already defined in Home.css - kept here
    for the complete picture, no duplicate.
 ════════════════════════════════════════ */
 
@@ -6881,7 +6881,7 @@ body.dark-mode .nav-overlay-backdrop,
 
 
 /* =========================================================
-   ABOUT PAGE — NEW SECTION ADDITIONS
+   ABOUT PAGE - NEW SECTION ADDITIONS
    Append to App.css below existing about-page rules.
    Adds: .about-agenda, .about-career-timeline, .about-edu-grid
    ========================================================= */
@@ -6897,7 +6897,7 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 /* ══════════════════════════════════════
-   AGENDA SECTION — "what I bring"
+   AGENDA SECTION - "what I bring"
 ══════════════════════════════════════ */
 .about-agenda {
   width: min(var(--case-max), calc(100% - 2 * var(--page-pad)));
@@ -7432,7 +7432,7 @@ body.dark-mode .nav-overlay-backdrop,
 
 
 /* =========================================================
-   ABOUT PAGE — MATCHING CSS FOR REWRITTEN ABOUT.TSX
+   ABOUT PAGE - MATCHING CSS FOR REWRITTEN ABOUT.TSX
    Paste at the VERY BOTTOM of App.css
    ========================================================= */
 
@@ -7665,7 +7665,7 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 /* =========================================================
-   GOOD HARVEST — UPGRADE ADDITIONS
+   GOOD HARVEST - UPGRADE ADDITIONS
    Paste at the bottom of App.css (after all existing rules).
    All new classes follow the existing gh- naming convention.
    No existing rules are changed.
@@ -8144,7 +8144,7 @@ body.dark-mode .nav-overlay-backdrop,
 
 .dark-mode .gh-reflection-label { color: var(--focus); }
 
-/* "What I'd explore next" — spans both columns, dark background */
+/* "What I'd explore next" - spans both columns, dark background */
 .gh-reflection-next {
   grid-column: span 2;
   padding: 2rem 2.5rem;
@@ -8189,7 +8189,7 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 @media (max-width: 768px) {
-  .gh-tabs { position: static; } /* un-stick on mobile — tabs too cramped */
+  .gh-tabs { position: static; } /* un-stick on mobile - tabs too cramped */
   .gh-tab-sub { display: none; }
   .gh-tab-btn { padding: 1rem 0.75rem; }
   .gh-user-quote { padding: 2rem 1.5rem; }
@@ -8312,7 +8312,7 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 /* =========================================================
-   MOBBIN CASE STUDY — three-phones row
+   MOBBIN CASE STUDY - three-phones row
    ========================================================= */
 .mobbin-phones-row {
   display: grid;
@@ -8436,7 +8436,7 @@ body.dark-mode .nav-overlay-backdrop,
   }
 }
 
-/* ── Mobbin — Pattern Documentation Example ── */
+/* ── Mobbin - Pattern Documentation Example ── */
 .mobbin-example-grid {
   display: flex;
   flex-direction: column;
@@ -8547,7 +8547,7 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 /* =========================================================
-   GROVE — PRODUCT SHOWCASE, SOCIAL LAYER, CTA
+   GROVE - PRODUCT SHOWCASE, SOCIAL LAYER, CTA
    New sections added to Grove case study.
    All classes follow the gh- / grove- naming convention.
    ========================================================= */
@@ -8870,7 +8870,7 @@ body.dark-mode .nav-overlay-backdrop,
   border: none;
   margin-bottom: 0.55rem;
 }
-/* The final step is the reward — amber, the brand's "clarity" accent. */
+/* The final step is the reward - amber, the brand's "clarity" accent. */
 .grove-flow-node--end .grove-flow-node__icon {
   background: var(--accent-warm);
 }
@@ -9170,7 +9170,7 @@ body.dark-mode .nav-overlay-backdrop,
   max-width: 300px;
 }
 
-/* User-flow steps — numbered, connected by a subtle rail, no arrow glyphs. */
+/* User-flow steps - numbered, connected by a subtle rail, no arrow glyphs. */
 .grove-flow-steps {
   list-style: none;
   margin: 0 0 1.5rem;
@@ -9343,7 +9343,7 @@ body.dark-mode .nav-overlay-backdrop,
   background: color-mix(in srgb, var(--olive-2) 12%, transparent);
   color: var(--fg);
 }
-/* Section currently in view — solid pill so the reader can see where they are. */
+/* Section currently in view - solid pill so the reader can see where they are. */
 .cs-jump-nav a.is-active {
   background: var(--olive-2);
   color: var(--bg);
@@ -9713,7 +9713,7 @@ body.dark-mode .nav-overlay-backdrop,
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
-/* 5 items in a 2-col grid strands the 5th — centre it at sibling width instead
+/* 5 items in a 2-col grid strands the 5th - centre it at sibling width instead
    of leaving it hanging on the left. */
 .pushback-list > .pushback-item:last-child:nth-child(odd) {
   grid-column: 1 / -1;
@@ -10463,7 +10463,7 @@ body.dark-mode .nav-overlay-backdrop,
   box-shadow: 0 12px 34px rgba(0, 0, 0, 0.5);
 }
 /* Desktop: at the top, recede to just the logo (the knot's nodes navigate);
-   the real nav reveals once you scroll (floating) — or on keyboard focus, so it
+   the real nav reveals once you scroll (floating) - or on keyboard focus, so it
    never becomes unreachable. */
 @media (min-width: 769px) {
   .navbar:not(.is-floating) {
@@ -10475,7 +10475,7 @@ body.dark-mode .nav-overlay-backdrop,
     padding-bottom: 0.5rem;
   }
   /* Header nav stays visible and flush over the hero at page-top (the knot is
-     decorative now, not the navigation) — it just transitions to the floating
+     decorative now, not the navigation) - it just transitions to the floating
      pill on scroll. A little breathing room between the masthead and the hero. */
   .home-hero {
     margin-top: 0.4rem;

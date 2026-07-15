@@ -6,7 +6,6 @@ import JumpNav from "../../components/JumpNav";
 import MediaCard from "../../components/MediaCard";
 import ToolsUsed from "../../components/ToolsUsed";
 import MoreWork from "../../components/MoreWork";
-import Disclosure from "../../components/Disclosure";
 import SpanishCaseStudy from "../../components/SpanishCaseStudy";
 import { useLanguage } from "../../app/LanguageContext";
 import { GOOD_HARVEST_ES } from "../../data/spanishCaseStudies";
@@ -374,7 +373,7 @@ export default function GoodHarvest() {
         <div className="gh-collab-note" style={{ marginBottom: "1.5rem" }}>
           <p className="gh-collab-label">What I generated</p>
           <p>
-            Given provided research, I focused effort where it had the most design leverage: prototype testing.
+            Given provided research, I focused effort where it had the most impact: prototype testing.
             I designed and ran 3 rounds of heatmap testing with a separate 22-participant Maze panel, producing new actionable data that reshaped the product.
           </p>
         </div>
@@ -500,30 +499,33 @@ export default function GoodHarvest() {
 
       {/* ── WHAT WENT WRONG ── */}
       <section>
-        <p className="gh-section-label">What went wrong</p>
-        <h2>Mistakes I made and what they taught me</h2>
+        <p className="gh-section-label">The honest version</p>
+        <h2>I validated too late, on a concept that never shipped</h2>
+        <p className="cs-section-intro" style={{ maxWidth: 680 }}>
+          Good Harvest was a self-directed concept, not a launched product, and I keep it here for the
+          mistake, not the polish. I committed to a direction on someone else's research and only caught
+          the real problem two rounds of wireframes in. Two specific misses, stated plainly:
+        </p>
 
-        <Disclosure title="Show the two mistakes behind the redesign">
-          <div className="cs-evidence-pair">
-            <p className="cs-evidence-pair__finding">I designed for discoverability when the real problem was trust.</p>
-            <p className="cs-evidence-pair__evidence">
-              My first wireframes focused on making seasonal produce easier to find: bigger cards, clearer categories,
-              prominent search. But heatmap testing showed users were already finding the content. They just didn't
-              believe the seasonality claims applied to their specific location. I had to redesign the produce detail
-              screen around credibility signals (data sources, location specificity) instead of navigation patterns.
-            </p>
-          </div>
+        <div className="cs-evidence-pair">
+          <p className="cs-evidence-pair__finding">1. I designed for discoverability when the real problem was trust.</p>
+          <p className="cs-evidence-pair__evidence">
+            My first wireframes focused on making seasonal produce easier to find: bigger cards, clearer categories,
+            prominent search. But heatmap testing showed users were already finding the content. They just didn't
+            believe the seasonality claims applied to their specific location. I had to redesign the produce detail
+            screen around credibility signals (data sources, location specificity) instead of navigation patterns.
+          </p>
+        </div>
 
-          <div className="cs-evidence-pair" style={{ marginTop: "1rem" }}>
-            <p className="cs-evidence-pair__finding">I treated inherited research as validated truth instead of testing it myself.</p>
-            <p className="cs-evidence-pair__evidence">
-              The provided research from 22 participants said users wanted "easier access to seasonal information."
-              I designed two rounds of wireframes based on that framing before my own heatmap testing revealed a
-              different story. I should have run a validation round earlier, before committing to a direction built
-              on someone else's interpretation.
-            </p>
-          </div>
-        </Disclosure>
+        <div className="cs-evidence-pair" style={{ marginTop: "1rem" }}>
+          <p className="cs-evidence-pair__finding">2. I treated inherited research as validated truth instead of testing it myself.</p>
+          <p className="cs-evidence-pair__evidence">
+            The provided research from 22 participants said users wanted "easier access to seasonal information."
+            I designed two rounds of wireframes on that framing before my own heatmap testing revealed a different
+            story. I should have run a validation round first. Now I do; testing the problem statement before the
+            solution is the habit this project bought me.
+          </p>
+        </div>
       </section>
 
       {/* ── WHAT I LEARNED ── */}

@@ -292,7 +292,7 @@ export default function GroveCaseStudy() {
             Community forums drew only 23%, and verified swapping just 6%; both ranked well
             below the core care features above.
             The social layer, badges, and XP I had already designed stay in the prototype as
-            post-MVP. The survey elevated what wasn't in the build scope instead: pet toxicity
+            post-MVP. The survey surfaced what wasn't in the build scope instead: pet toxicity
             warnings (9/12 new owners raised it unprompted), lighting education (the lowest
             confidence score), and cited sources (the top trust signal). The Florist Pro tier is
             paused; n=2 is too thin to build on.

@@ -15,7 +15,7 @@ export default class KnotErrorBoundary extends React.Component<
   }
 
   componentDidCatch(error: unknown) {
-    // Non-fatal — the hero just shows the static fallback.
+    // Non-fatal - the hero just shows the static fallback.
     if (process.env.NODE_ENV !== "production") {
       // eslint-disable-next-line no-console
       console.warn("[WorkflowKnot] fell back to static:", error);

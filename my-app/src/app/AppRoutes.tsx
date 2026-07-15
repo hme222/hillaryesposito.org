@@ -27,7 +27,7 @@ import PasswordGate from "../components/PasswordGate";
 import { Navigate } from "react-router-dom";
 
 // Lazy so the NDA'd Mobbin case-study text ships in its own chunk, fetched only
-// after the password gate renders its children — not in the always-loaded main
+// after the password gate renders its children - not in the always-loaded main
 // bundle every visitor downloads.
 const Mobbin = lazy(() => import("../pages/case-studies/Mobbin"));
 

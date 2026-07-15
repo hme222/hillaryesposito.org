@@ -27,7 +27,7 @@ function Svg({ children, ...rest }: IconProps & { children: React.ReactNode }) {
   );
 }
 
-/** Terminal window — AI coding tools (replaces 🤖 / 💻) */
+/** Terminal window - AI coding tools (replaces 🤖 / 💻) */
 export const TerminalIcon = (p: IconProps) => (
   <Svg {...p}>
     <rect x="3" y="4.5" width="18" height="15" rx="2.4" />
@@ -36,7 +36,7 @@ export const TerminalIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Pencil — editors / Cursor (replaces ✏️) */
+/** Pencil - editors / Cursor (replaces ✏️) */
 export const PencilIcon = (p: IconProps) => (
   <Svg {...p}>
     <path d="M17 3.8a2.3 2.3 0 0 1 3.2 3.2L7.6 19.6 3 21l1.4-4.6L17 3.8z" />
@@ -44,7 +44,7 @@ export const PencilIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Up-right arrow — launch / deploy (replaces 🚀) */
+/** Up-right arrow - launch / deploy (replaces 🚀) */
 export const LaunchIcon = (p: IconProps) => (
   <Svg {...p}>
     <path d="M7 17L17 7" />
@@ -52,7 +52,7 @@ export const LaunchIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Frame / crop marks — design tools, Figma (replaces 🎨) */
+/** Frame / crop marks - design tools, Figma (replaces 🎨) */
 export const FrameIcon = (p: IconProps) => (
   <Svg {...p}>
     <path d="M9 4v16" />
@@ -62,7 +62,7 @@ export const FrameIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Flask — testing / Maze (replaces 🧪) */
+/** Flask - testing / Maze (replaces 🧪) */
 export const FlaskIcon = (p: IconProps) => (
   <Svg {...p}>
     <path d="M9.5 3.5v5.2L4.8 17a2 2 0 0 0 1.8 3h10.8a2 2 0 0 0 1.8-3l-4.7-8.3V3.5" />
@@ -71,14 +71,14 @@ export const FlaskIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Folder — organizing / taxonomy / FigJam (replaces 🗂️) */
+/** Folder - organizing / taxonomy / FigJam (replaces 🗂️) */
 export const FolderIcon = (p: IconProps) => (
   <Svg {...p}>
     <path d="M3.5 7.2A2.2 2.2 0 0 1 5.7 5h3.9l2 2.4h6.7a2.2 2.2 0 0 1 2.2 2.2v7.2a2.2 2.2 0 0 1-2.2 2.2H5.7a2.2 2.2 0 0 1-2.2-2.2V7.2z" />
   </Svg>
 );
 
-/** Phone — mobile apps / Mobbin (replaces 📱) */
+/** Phone - mobile apps / Mobbin (replaces 📱) */
 export const PhoneIcon = (p: IconProps) => (
   <Svg {...p}>
     <rect x="7" y="3" width="10" height="18" rx="2.4" />
@@ -86,7 +86,7 @@ export const PhoneIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Mobbin — client work / UX flow documentation */
+/** Mobbin - client work / UX flow documentation */
 export const MobbinIcon = (p: IconProps) => (
   <Svg {...p}>
     <rect x="3.75" y="4.25" width="16.5" height="15.5" rx="4" />
@@ -96,7 +96,7 @@ export const MobbinIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Magnifier — search / live-app research (replaces 🔍) */
+/** Magnifier - search / live-app research (replaces 🔍) */
 export const MagnifierIcon = (p: IconProps) => (
   <Svg {...p}>
     <circle cx="11" cy="11" r="6.2" />
@@ -104,7 +104,7 @@ export const MagnifierIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Medical cross — MSK / healthcare (replaces 🏥) */
+/** Medical cross - MSK / healthcare (replaces 🏥) */
 export const MedicalCrossIcon = (p: IconProps) => (
   <Svg {...p}>
     <rect x="4" y="4" width="16" height="16" rx="3.2" />
@@ -113,7 +113,7 @@ export const MedicalCrossIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Sprout — Grove (replaces 🌱) */
+/** Sprout - Grove (replaces 🌱) */
 export const SproutIcon = (p: IconProps) => (
   <Svg {...p}>
     <path d="M12 21v-8" />
@@ -122,7 +122,7 @@ export const SproutIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Leaf — Good Harvest (replaces 🌿) */
+/** Leaf - Good Harvest (replaces 🌿) */
 export const LeafIcon = (p: IconProps) => (
   <Svg {...p}>
     <path d="M18.5 5.5C10.5 5.5 6 11.5 6 19c7.5 0 12.5-6 12.5-13.5z" />
@@ -130,7 +130,7 @@ export const LeafIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Raised hand — "where I pushed back" (replaces ✋) */
+/** Raised hand - "where I pushed back" (replaces ✋) */
 export const HandIcon = (p: IconProps) => (
   <Svg {...p}>
     <path d="M18 11V6a2 2 0 0 0-4 0v5" />
@@ -140,7 +140,7 @@ export const HandIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Newspaper — press links (replaces 📰) */
+/** Newspaper - press links (replaces 📰) */
 export const NewsIcon = (p: IconProps) => (
   <Svg {...p}>
     <rect x="3.5" y="5" width="17" height="14.5" rx="2.2" />
@@ -151,7 +151,7 @@ export const NewsIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Document with lines — resume / download (replaces 📄) */
+/** Document with lines - resume / download (replaces 📄) */
 export const FileTextIcon = (p: IconProps) => (
   <Svg {...p}>
     <path d="M13 3.5H7A1.8 1.8 0 0 0 5.2 5.3v13.4A1.8 1.8 0 0 0 7 20.5h10a1.8 1.8 0 0 0 1.8-1.8V9.3z" />
@@ -161,7 +161,7 @@ export const FileTextIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Envelope — email (replaces ✉️) */
+/** Envelope - email (replaces ✉️) */
 export const MailIcon = (p: IconProps) => (
   <Svg {...p}>
     <rect x="3.5" y="5.5" width="17" height="13" rx="2.2" />
@@ -169,7 +169,7 @@ export const MailIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Briefcase — LinkedIn / professional profile (replaces 💼) */
+/** Briefcase - LinkedIn / professional profile (replaces 💼) */
 export const BriefcaseIcon = (p: IconProps) => (
   <Svg {...p}>
     <rect x="3.5" y="7.5" width="17" height="12" rx="2.2" />
@@ -178,7 +178,7 @@ export const BriefcaseIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Person — about me / profile (replaces 👤) */
+/** Person - about me / profile (replaces 👤) */
 export const UserIcon = (p: IconProps) => (
   <Svg {...p}>
     <circle cx="12" cy="8.5" r="3.5" />
@@ -186,7 +186,7 @@ export const UserIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Padlock — password-protected (replaces 🔒) */
+/** Padlock - password-protected (replaces 🔒) */
 export const LockIcon = (p: IconProps) => (
   <Svg {...p}>
     <rect x="5" y="10.5" width="14" height="9.5" rx="2.2" />
@@ -195,7 +195,7 @@ export const LockIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Hamburger — open menu (replaces ☰) */
+/** Hamburger - open menu (replaces ☰) */
 export const MenuIcon = (p: IconProps) => (
   <Svg {...p}>
     <path d="M4 7h16" />
@@ -204,7 +204,7 @@ export const MenuIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** X — close (replaces ✕) */
+/** X - close (replaces ✕) */
 export const XIcon = (p: IconProps) => (
   <Svg {...p}>
     <path d="M6 6l12 12" />
@@ -212,7 +212,7 @@ export const XIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Bloom — flowering plant / bouquet (replaces 🌸) */
+/** Bloom - flowering plant / bouquet (replaces 🌸) */
 export const FlowerIcon = (p: IconProps) => (
   <Svg {...p}>
     <circle cx="12" cy="9" r="2.1" />

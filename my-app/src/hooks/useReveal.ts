@@ -3,14 +3,14 @@ import { useEffect, RefObject } from "react";
 /**
  * Masked scroll-reveal for case-study section headings. As a targeted element
  * scrolls into view it wipes up from behind a mask (clip-path inset + a slight
- * rise) — the restrained takeaway from T.Ricks-style interaction work, tuned to
+ * rise) - the restrained takeaway from T.Ricks-style interaction work, tuned to
  * the "quiet authority" bar.
  *
  * Designed to FAIL SAFE. Content is visible by default; JS only opts elements
  * into the hidden start-state (via the `reveal-ready` flag on the root), an
  * IntersectionObserver reveals them on scroll, and a hard fallback timer reveals
  * everything regardless. So if JS is off, the observer never fires, or motion is
- * reduced, headings are simply shown — they can never be stranded invisible.
+ * reduced, headings are simply shown - they can never be stranded invisible.
  *
  * Scoped to a root ref so it never touches the framer-motion-driven home page.
  */

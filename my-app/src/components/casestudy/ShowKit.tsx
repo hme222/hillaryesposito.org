@@ -1,11 +1,11 @@
 import React, { useId, useState } from "react";
 
 /**
- * Case-study "show" primitives — the guardrail against telling-not-showing.
+ * Case-study "show" primitives - the guardrail against telling-not-showing.
  *
  * The design rule (from the panel review vs. the Carmen Elena / Pilgrimz
  * standard): every design decision, edge state, or before/after must be paired
- * with the pixels it produced. That rule is enforced HERE, in the types — a
+ * with the pixels it produced. That rule is enforced HERE, in the types - a
  * `DecisionCard` and every `StateMatrix` row REQUIRE a `screen`, so a
  * told-not-shown decision won't compile.
  *
@@ -15,7 +15,7 @@ import React, { useId, useState } from "react";
  */
 
 export type Shot = {
-  /** Image src (required — this is the guardrail: no decision without its pixel). */
+  /** Image src (required - this is the guardrail: no decision without its pixel). */
   src: string;
   /** Meaningful alt text describing what the screen shows. */
   alt: string;
@@ -140,7 +140,7 @@ export function DecisionCard({
   ai: string;
   chose: string;
   why: string;
-  /** REQUIRED — the shipped screen this decision produced. The guardrail. */
+  /** REQUIRED - the shipped screen this decision produced. The guardrail. */
   screen: Shot;
 }) {
   return (
@@ -167,7 +167,7 @@ export function DecisionCard({
 
 export type StateRow = {
   state: string;
-  /** REQUIRED — the screen for this state. Guardrail: no state described-only. */
+  /** REQUIRED - the screen for this state. Guardrail: no state described-only. */
   screen: Shot;
   note: string;
 };

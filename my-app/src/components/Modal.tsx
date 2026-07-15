@@ -12,7 +12,7 @@ type ModalProps = {
 };
 
 /**
- * Native <dialog> modal — the "best part of Astryx without the dependency".
+ * Native <dialog> modal - the "best part of Astryx without the dependency".
  * `showModal()` gives, for free and correctly:
  *   - background made inert to pointer + assistive tech (no manual inert bookkeeping)
  *   - focus moved into the dialog on open, and restored to the invoker on close

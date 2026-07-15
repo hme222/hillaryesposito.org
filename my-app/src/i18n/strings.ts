@@ -1,13 +1,13 @@
 // src/i18n/strings.ts
 //
-// Lightweight i18n dictionaries — no library, no runtime cost beyond a lookup.
+// Lightweight i18n dictionaries - no library, no runtime cost beyond a lookup.
 // PHASE 1: home page + global nav only. Everything else (About, case studies)
 // intentionally has no `es` entry and falls back to the English default, so an
 // untranslated key never renders blank.
 //
 // NOTE FOR OWNER REVIEW: all Spanish strings below are marked for native-
 // speaker proofread. Aim was natural, Latin-American-neutral professional
-// Spanish — see the EN → ES table in the handoff notes.
+// Spanish - see the EN → ES table in the handoff notes.
 
 export type Lang = "en" | "es";
 
@@ -54,7 +54,7 @@ const en = {
   "home.about.photoAlt": "Portrait of Hillary Esposito",
   "home.about.eyebrow": "A little about me",
   "home.about.blurb":
-    "I’ve spent 13+ years inside high-stakes systems across military medical logistics, cancer care operations, internal workflows, and AI-assisted product work. I design where the workflow meets the person using it.",
+    "13+ years inside high-stakes systems: military medical logistics, cancer-care operations, internal tools, and AI-assisted product work. The through-line across all of it: I design for the person using the system under pressure, the clinician between patients, not the org chart above them. Whether it’s 21,000 clinicians or one new plant owner, the job is the same: make the software trustworthy where a wrong answer costs something.",
   "home.about.link": "More about me →",
 
   // ── Home: credentials strip ──
@@ -158,14 +158,14 @@ const en = {
   "home.resumeLink": "Resume",
   "home.aboutLink": "About me",
 
-  // ── Recruiter pill (global trigger only — the panel stays English in Phase 1) ──
+  // ── Recruiter pill (global trigger only - the panel stays English in Phase 1) ──
   "recruiter.pill": "Recruiter view",
   "recruiter.pillAria": "Open recruiter view: 90-second tour",
 } as const;
 
 export type StringKey = keyof typeof en;
 
-// Spanish — Phase 1 (home + nav). /* TODO: native-speaker (owner) review */
+// Spanish - Phase 1 (home + nav). /* TODO: native-speaker (owner) review */
 const es: Partial<Record<StringKey, string>> = {
   // ── App shell ──
   "app.skip": "Saltar al contenido principal",
@@ -205,7 +205,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.about.photoAlt": "Retrato de Hillary Esposito",
   "home.about.eyebrow": "Un poco sobre mí",
   "home.about.blurb":
-    "Llevo más de 13 años dentro de sistemas de alto riesgo en logística médica militar, operaciones oncológicas, flujos internos y trabajo de producto asistido por IA. Diseño donde el flujo se encuentra con la persona que tiene que usarlo.",
+    "Más de 13 años dentro de sistemas de alto riesgo: logística médica militar, operaciones oncológicas, herramientas internas y trabajo de producto asistido por IA. El hilo común: diseño para la persona que usa el sistema bajo presión, el clínico entre pacientes, no el organigrama por encima. Ya sean 21,000 clínicos o un nuevo dueño de plantas, el trabajo es el mismo: hacer que el software sea confiable donde una respuesta equivocada cuesta algo.",
   "home.about.link": "Conozca más sobre mí →",
 
   // ── Home: credentials strip ──

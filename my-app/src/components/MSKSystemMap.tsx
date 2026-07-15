@@ -4,7 +4,7 @@ import * as THREE from "three";
 /**
  * Scroll-driven 3D system map for the MSK case study. A graph of nodes +
  * connections starts as a tangled cluster and, as the section scrolls into view,
- * reorganizes into a clean left-to-right blueprint — the final column resolving
+ * reorganizes into a clean left-to-right blueprint - the final column resolving
  * to amber (complexity → clarity → trust). It visualizes the through-line of
  * Hillary's work rather than decorating.
  *
@@ -151,7 +151,7 @@ export default function MSKSystemMap() {
       const pe = smoothstep(scrollProgress());
       layout(pe);
       // Rotation is tied to scroll position only (tilted while tangled, flat
-      // once resolved) — no time-based auto-motion. When the scroll position
+      // once resolved) - no time-based auto-motion. When the scroll position
       // stops changing the loop stops too (WCAG 2.2.2); a scroll re-wakes it.
       group.rotation.y = (1 - pe) * 0.3;
       renderOnce();

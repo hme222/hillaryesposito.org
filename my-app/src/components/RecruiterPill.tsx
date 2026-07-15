@@ -18,7 +18,7 @@ export default function RecruiterPill() {
   const [open, setOpen] = useState(false);
 
   // On small screens the fixed pill lands on top of the hero copy, so it stays
-  // hidden until the user scrolls (CSS gates the hiding to ≤768px — desktop
+  // hidden until the user scrolls (CSS gates the hiding to ≤768px - desktop
   // keeps its always-on position).
   const [scrolled, setScrolled] = useState(() => window.scrollY > 120);
   useEffect(() => {
@@ -34,7 +34,7 @@ export default function RecruiterPill() {
   }, []);
 
   // Escape, scroll-lock, background inertness, and focus restore-to-trigger are
-  // all handled natively by <Modal>'s <dialog> — no manual effects needed here.
+  // all handled natively by <Modal>'s <dialog> - no manual effects needed here.
 
   const go = (path: string) => {
     setOpen(false);
@@ -49,7 +49,7 @@ export default function RecruiterPill() {
         onClick={() => setOpen(true)}
         aria-label={t("recruiter.pillAria")}
       >
-        {/* Panel content stays English in Phase 1 — only the trigger translates. */}
+        {/* Panel content stays English in Phase 1 - only the trigger translates. */}
         <span className="recruiter-pill__text">{t("recruiter.pill")}</span>
       </button>
 
@@ -60,7 +60,7 @@ export default function RecruiterPill() {
         className="recruiter-panel"
         lang="en"
       >
-        {/* Panel content stays English in Phase 1 — only the trigger translates. */}
+        {/* Panel content stays English in Phase 1 - only the trigger translates. */}
         <div className="recruiter-panel__inner">
               <header className="recruiter-panel__header">
                 <div>
@@ -128,7 +128,7 @@ export default function RecruiterPill() {
 
                 {/* Targeted role pages are intentionally unlisted here. The
                     /curated/:slug routes still resolve, so a tailored page can
-                    be shared with a specific recruiter by direct link — but the
+                    be shared with a specific recruiter by direct link - but the
                     public panel never reveals who is being targeted. */}
 
                 <section className="recruiter-panel__section recruiter-panel__actions">

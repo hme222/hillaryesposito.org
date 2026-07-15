@@ -4,7 +4,7 @@ type JumpItem = { id: string; label: string };
 
 /**
  * Sticky in-page section nav for case studies. Tracks which section is
- * currently in view and marks the matching link as active — so a reader always
+ * currently in view and marks the matching link as active - so a reader always
  * knows where they are in a long page (Nielsen "visibility of system status").
  *
  * Pass the target section ids WITHOUT the leading "#".

@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 export type MoreWorkProject = {
-  /** Line-icon element (see components/LineIcons) — matches the site's stroke family. */
+  /** Line-icon element (see components/LineIcons) - matches the site's stroke family. */
   icon: React.ReactNode;
   title: string;
   desc: string;
@@ -25,7 +25,7 @@ const prefersReduced = () =>
  * overflows. Touch uses native scrolling; keyboard users tab through the cards
  * (focus scrolls them into view). Magnetic pull and smooth scroll are disabled
  * for prefers-reduced-motion. The arrow interaction is the restrained takeaway
- * from T.Ricks — purposeful navigation, not decoration.
+ * from T.Ricks - purposeful navigation, not decoration.
  */
 export default function MoreWork({ projects, onBack, backLabel = "← Back to projects" }: Props) {
   const viewportRef = useRef<HTMLDivElement>(null);
@@ -70,7 +70,7 @@ export default function MoreWork({ projects, onBack, backLabel = "← Back to pr
 
   // ── Mouse drag-to-scroll (touch keeps native scrolling) ──
   // Capture is deferred until the pointer actually moves past the drag
-  // threshold — capturing on pointerdown would redirect the following `click`
+  // threshold - capturing on pointerdown would redirect the following `click`
   // to this scroller instead of the card's <Link>, so cards wouldn't navigate.
   const drag = useRef({ active: false, startX: 0, startLeft: 0, moved: false, id: 0, captured: false });
   const onPointerDown = (e: React.PointerEvent) => {
@@ -87,7 +87,7 @@ export default function MoreWork({ projects, onBack, backLabel = "← Back to pr
     const dx = e.clientX - d.startX;
     if (Math.abs(dx) > 4) {
       d.moved = true;
-      // Only now does this become a real drag — start capturing so a plain
+      // Only now does this become a real drag - start capturing so a plain
       // click (no movement) is never intercepted.
       if (!d.captured) { vp.setPointerCapture(d.id); d.captured = true; }
     }

@@ -17,7 +17,7 @@ import "../styles/casestudy-show.css";
 
 export default function App() {
   // Theme preference. Read once, synchronously, into the initializer so the
-  // first paint is already in the saved theme — no light→dark flash, and no
+  // first paint is already in the saved theme - no light→dark flash, and no
   // mount-ordering dependency between a read-effect and a write-effect. Same
   // pattern as `lang` below.
   const [darkMode, setDarkMode] = useState<boolean>(
@@ -25,7 +25,7 @@ export default function App() {
   );
 
   // Language preference (Phase 1: home + nav). Read once, synchronously, so
-  // the first paint is already in the saved language — no EN→ES flash.
+  // the first paint is already in the saved language - no EN→ES flash.
   const [lang, setLang] = useState<Lang>(() =>
     localStorage.getItem("lang") === "es" ? "es" : "en"
   );

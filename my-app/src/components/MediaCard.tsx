@@ -51,7 +51,7 @@ export default function MediaCard({
       viewport={{ once: true, amount: 0.35 }}
       transition={reduceMotion ? { duration: 0 } : { duration: 0.45, ease: [0.2, 0.8, 0.2, 1] }}
     >
-      {/* Whole card clickable — opens in-page full-screen zoom */}
+      {/* Whole card clickable - opens in-page full-screen zoom */}
       <button
         type="button"
         className="media-card media-card-link"

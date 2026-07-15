@@ -8,7 +8,7 @@ export type KnotNavItem = {
   onActivate?: () => void;
   accent?: boolean;
   noDot?: boolean;
-  /** Accessible name override — e.g. to announce a PDF / new-tab destination. */
+  /** Accessible name override - e.g. to announce a PDF / new-tab destination. */
   ariaLabel?: string;
 };
 
@@ -17,7 +17,7 @@ export type KnotNavItem = {
  *
  * A tangled graph resolves into an ordered grid once on mount, then rests. Nav
  * labels (passed via `navItems`) are pinned to specific nodes by PROJECTING the
- * node's live 3D world position to 2D screen space every frame — so a label
+ * node's live 3D world position to 2D screen space every frame - so a label
  * sits exactly on its node and tracks it through the resolve, the cursor
  * parallax, and the focus rotation. Hovering a label rotates the knot toward
  * its node and grows it.
@@ -33,7 +33,7 @@ const smoothstep = (x: number) => x * x * (3 - 2 * x);
 const clamp01 = (x: number) => (x < 0 ? 0 : x > 1 ? 1 : x);
 
 const DELAY = 0.4;
-const DURATION = 3.8; // deliberate morph — slow enough to watch the globs travel and merge
+const DURATION = 3.8; // deliberate morph - slow enough to watch the globs travel and merge
 const TAIL = 0.5; // gentle settle rather than an abrupt stop
 
 export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem[] }) {
@@ -89,7 +89,7 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
       chaos.push(
         new THREE.Vector3(
           // Wider + taller starting scatter so the opening tangle reaches across
-          // the whole hero (the balls and the resolved row are unchanged — this
+          // the whole hero (the balls and the resolved row are unchanged - this
           // only sets how expansively the nodes are strewn before they converge).
           (Math.random() * 2 - 1) * 9.3,
           (Math.random() * 2 - 1) * 5.3,
@@ -152,7 +152,7 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
     const lines = new THREE.LineSegments(edgeGeo, edgeMat);
     group.add(lines);
 
-    // Persistent connector through the 4 nav dots — stays after the tangle fades.
+    // Persistent connector through the 4 nav dots - stays after the tangle fades.
     const navEdges: [number, number][] = [[0, 1], [1, 2], [2, 3]];
     const navEdgePositions = new Float32Array(navEdges.length * 2 * 3);
     const navEdgeGeo = new THREE.BufferGeometry();
@@ -180,7 +180,7 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
       }
       // Fade the disposable tangle (extra nodes + all edges) out across the back
       // half, leaving only the four nav dots.
-      extraMat.opacity = 0.9; // stays opaque — it shrinks into the dot, not fades
+      extraMat.opacity = 0.9; // stays opaque - it shrinks into the dot, not fades
       edgeMat.opacity = 0.45 * (1 - smoothstep(clamp01((pe - 0.3) / 0.6)));
       const pos = edgeGeo.attributes.position as THREE.BufferAttribute;
       for (let e = 0; e < edges.length; e++) {
@@ -205,7 +205,7 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
 
     // Pin each label just above its node. We measure the nodule's ON-SCREEN
     // radius (project centre + a point one world-radius above it) so the label
-    // always clears the top edge no matter how large the resolved ball grows —
+    // always clears the top edge no matter how large the resolved ball grows -
     // no more text colliding into an oversized nodule. Labels also reveal
     // sequentially (rise + fade, left-to-right) as their dot settles, so the
     // row reads as a deliberately composed menu rather than four loose balls.
@@ -253,7 +253,7 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
         edgeMat.color.set(0x8a7a5e); navEdgeMat.color.set(0x8a7a5e);
       } else {
         // Light mode: carry the dark version's lifted "matcha + honey" character
-        // onto the cream ground — a livelier sage and a warmer honey, with a bit
+        // onto the cream ground - a livelier sage and a warmer honey, with a bit
         // more emissive glow than the old flat olive.
         oliveMat.color.set(0x7c9a45); oliveMat.emissive.set(0x3d4e1e); oliveMat.emissiveIntensity = 0.42;
         extraMat.color.set(0x7c9a45); extraMat.emissive.set(0x3d4e1e); extraMat.emissiveIntensity = 0.38;
@@ -278,7 +278,7 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
     let curTiltX = 0;
     let curTiltY = 0;
     let focusedIndex = -1;
-    let resolvedOnce = false; // true after first resolve — freezes tilt/parallax and stops replay-on-scroll
+    let resolvedOnce = false; // true after first resolve - freezes tilt/parallax and stops replay-on-scroll
     const lerp = (a: number, b: number, n: number) => a + (b - a) * n;
 
     focusRef.current = (i: number) => {
@@ -299,7 +299,7 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
       curPe = pe;
       layout(pe);
 
-      // Once resolved, the group no longer tilts toward a hovered node — the
+      // Once resolved, the group no longer tilts toward a hovered node - the
       // hovered ball still grows in place (target *= 1.3 below), but the row
       // stays put so nav targets never move out from under the cursor.
       if (focusedIndex >= 0 && !resolvedOnce) {
@@ -316,7 +316,7 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
       // The tangle MERGES into the nav dots: extras shrink to nothing as they
       // arrive, and each nav dot grows into a bigger ball (mass of the merge).
       // Globs travel in at varied sizes and are absorbed one-by-one (staggered),
-      // each swelling its nav dot — so it reads as blobs eating each other.
+      // each swelling its nav dot - so it reads as blobs eating each other.
       const grow = smoothstep(clamp01((pe - 0.45) / 0.5));
       // A damped mid-swell so each nav dot visibly "gulps" as mass arrives, then
       // settles to an exact final size (bounce returns to 1 at grow 0 and 1).
@@ -325,7 +325,7 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
       for (let i = 0; i < N; i++) {
         let target;
         if (i < NAV) {
-          // Small resting nodes — the knot is a decorative flourish now (no
+          // Small resting nodes - the knot is a decorative flourish now (no
           // labels pinned to it), so the settled dots stay subtle.
           target = (1 + 0.3 * grow) * bounce;
         } else {
@@ -393,7 +393,7 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
       (entries) => {
         const nowInView = entries[0].isIntersecting;
         // Only re-run the full tangle if it hasn't resolved yet. Once resolved,
-        // scrolling back to the hero keeps the settled nav row — no re-scatter
+        // scrolling back to the hero keeps the settled nav row - no re-scatter
         // across the copy every time (the Replay button is the way to see it again).
         if (nowInView && !inView && !reduced && !resolvedOnce) {
           startT = 0;
@@ -476,7 +476,7 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
       navEdgeGeo.dispose();
       navEdgeMat.dispose();
       renderer.dispose();
-      // Release the WebGL context itself, not just its resources — otherwise
+      // Release the WebGL context itself, not just its resources - otherwise
       // repeated Home mounts (Home → case study → Home) accumulate contexts and
       // the browser evicts the oldest once it passes its ~16-context cap.
       renderer.forceContextLoss();
@@ -488,7 +488,7 @@ export default function WorkflowKnot({ navItems = [] }: { navItems?: KnotNavItem
     <div className={`hero-knot-stage${glFailed ? " hero-knot-stage--static" : ""}`}>
       <div ref={mountRef} className="hero-knot" aria-hidden="true" />
       {/* Optional pinned nav labels. Empty today (the knot is decorative and the
-          header is the nav), so nothing renders — no empty landmark. Kept so the
+          header is the nav), so nothing renders - no empty landmark. Kept so the
           component can still be driven as knot-nav if navItems are passed. */}
       {navItems.length > 0 && (
       <nav className="hero-knot-labels" aria-label="Hero shortcuts">

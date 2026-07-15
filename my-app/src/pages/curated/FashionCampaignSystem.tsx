@@ -70,7 +70,7 @@ export default function FashionCampaignSystem() {
       <section className="fashion-system-meta" aria-label="Campaign strategy">
         <article>
           <span>Creative brief</span>
-          <strong>Elevated utility with a sharp digital retail system.</strong>
+          <strong>A sharp, practical digital retail system.</strong>
         </article>
         <article>
           <span>Audience</span>

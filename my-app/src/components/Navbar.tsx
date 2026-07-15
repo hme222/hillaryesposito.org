@@ -47,7 +47,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
 
   // Track which section is in view on the home page. Sections can be taller than
   // the viewport, so an IntersectionObserver threshold is unreliable (30% of a
-  // tall section is never visible at once) — instead pick the last section whose
+  // tall section is never visible at once) - instead pick the last section whose
   // top has scrolled above a reference line ~a third down the viewport.
   useEffect(() => {
     if (!isHome) {
@@ -88,7 +88,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
 
   // The mobile menu is an off-canvas drawer (translated off-screen when closed
   // but still in the DOM). Mark it `inert` while closed on mobile so its links
-  // leave the tab order and accessibility tree — otherwise keyboard users tab
+  // leave the tab order and accessibility tree - otherwise keyboard users tab
   // into invisible off-screen links. On desktop the menu is inline and always
   // interactive, so inert must never apply there.
   useEffect(() => {
@@ -268,7 +268,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
         </li>
 
         <li>
-          {/* Language toggle — shows the language you'd switch TO. The label
+          {/* Language toggle - shows the language you'd switch TO. The label
               (and lang attr) are in that target language so screen readers
               pronounce it correctly. */}
           <button

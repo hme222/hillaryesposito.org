@@ -23,7 +23,7 @@ export function useLanguage() {
 }
 
 /**
- * Returns t(key, vars?) — looks the key up in the current-language dictionary
+ * Returns t(key, vars?) - looks the key up in the current-language dictionary
  * and falls back to the English default when the translation is missing.
  */
 export function useT() {
