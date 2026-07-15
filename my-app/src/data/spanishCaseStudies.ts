@@ -56,7 +56,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
     },
   ],
   otherProjects: [
-    { title: "MSK Cancer Center", desc: "Seis años rediseñando flujos clínicos, onboarding y certificación para más de 21,000 clínicos.", path: "/case-study/msk" },
+    { title: "MSK Cancer Center", desc: "Seis años rediseñando flujos clínicos, onboarding y certificación para más de 21,000 clínicos y personal administrativo.", path: "/case-study/msk" },
     { title: "Good Harvest", desc: "Las pruebas con mapas de calor con 22 usuarios revelaron un problema de confianza: la gente encontraba la información estacional, pero no creía que aplicara a su zona.", path: "/case-study/good-harvest" },
   ],
 };
@@ -65,11 +65,11 @@ export const MSK_ES: SpanishCaseStudyData = {
   title: "Memorial Sloan Kettering",
   meta: "UX y diseño de producto · Sistemas de salud · Herramientas internas",
   intro:
-    "Durante seis años en MSK, rediseñé flujos clínicos, onboarding y procesos operativos para sistemas usados por más de 21,000 profesionales clínicos. Este trabajo muestra diseño aplicado a herramientas internas, permisos, estados y adopción en un entorno de salud real.",
+    "Durante seis años en MSK, rediseñé flujos clínicos, onboarding y procesos operativos para sistemas usados por más de 21,000 profesionales clínicos y administrativos. Este trabajo muestra diseño aplicado a herramientas internas, permisos, estados y adopción en un entorno de salud real.",
   stats: [
     { label: "Rol", value: "Sistemas de salud → UX y diseño de producto" },
     { label: "Organización", value: "Memorial Sloan Kettering Cancer Center" },
-    { label: "Escala", value: "21,000+ clínicos" },
+    { label: "Escala", value: "21,000+ clínicos y personal" },
     { label: "Impacto", value: "20% reducción de costos EMR" },
   ],
   sections: [
@@ -163,7 +163,7 @@ export const GOOD_HARVEST_ES: SpanishCaseStudyData = {
   ],
   otherProjects: [
     { title: "Grove", desc: "App de cuidado de plantas con IA. Sola, de la investigación a un prototipo funcional.", path: "/case-study/grove" },
-    { title: "MSK Cancer Center", desc: "Seis años rediseñando flujos clínicos, onboarding y certificación para más de 21,000 clínicos.", path: "/case-study/msk" },
+    { title: "MSK Cancer Center", desc: "Seis años rediseñando flujos clínicos, onboarding y certificación para más de 21,000 clínicos y personal administrativo.", path: "/case-study/msk" },
   ],
 };
 
@@ -203,6 +203,6 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
   ],
   otherProjects: [
     { title: "Grove", desc: "App de cuidado de plantas con IA. Sola, de la investigación a un prototipo funcional.", path: "/case-study/grove" },
-    { title: "MSK Cancer Center", desc: "Seis años rediseñando flujos clínicos, onboarding y certificación para más de 21,000 clínicos.", path: "/case-study/msk" },
+    { title: "MSK Cancer Center", desc: "Seis años rediseñando flujos clínicos, onboarding y certificación para más de 21,000 clínicos y personal administrativo.", path: "/case-study/msk" },
   ],
 };

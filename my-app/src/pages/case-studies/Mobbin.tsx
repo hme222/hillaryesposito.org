@@ -51,7 +51,7 @@ const OTHER_PROJECTS = [
   {
     icon: <MedicalCrossIcon />,
     title: "MSK Cancer Center",
-    desc: "Six years redesigning clinical workflows, onboarding, and certification systems for 21,000+ clinicians.",
+    desc: "Six years redesigning clinical workflows, onboarding, and certification systems for 21,000+ clinicians and administrative staff.",
     path: "/case-study/msk",
   },
 ];
@@ -79,7 +79,7 @@ export default function MobbinCaseStudy() {
             <strong>Anyone can screenshot an app. Mobbin hired me to decide what 200+ screens mean
             to a designer who'll never meet me.</strong> I documented three fintech products
             (<strong>Kikoff</strong>, <strong>Polymarket</strong>, and <strong>Discover</strong>)
-            into searchable UX flow references — mapping the interaction sequences and curating the
+            into searchable UX flow references, mapping the interaction sequences and curating the
             patterns product teams actually search for.
           </p>
         </div>
@@ -295,13 +295,13 @@ export default function MobbinCaseStudy() {
           <h3 style={{ margin: "0 0 1rem", color: "var(--olive-2)", fontSize: "0.95rem" }}>Kikoff, trust through proof</h3>
           <figure className="mobbin-example-shot">
             <img src="/assets/mobbin/kikoff.png" alt="Kikoff credit-building screen from the captured onboarding flow" loading="lazy" />
-            <figcaption>The screen this entry documents, from Kikoff's credit-building flow.</figcaption>
+            <figcaption>A screen from Kikoff's credit-building flow.</figcaption>
           </figure>
           <div className="mobbin-example-grid">
             <div className="mobbin-example-block">
               <p className="mobbin-example-label">Screen</p>
               <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
-                Credit score progress screen (post-onboarding). Screen 8 of 12 in the "First session → credit building" flow.
+                Credit score progress screen (post-onboarding), from the "First session → credit building" flow.
               </p>
             </div>
             <div className="mobbin-example-block">
@@ -336,7 +336,7 @@ export default function MobbinCaseStudy() {
         <p className="gh-section-label">The lesson</p>
         <h2>Naming is harder than designing</h2>
         <p style={{ maxWidth: 720, marginBottom: "1.25rem", color: "var(--muted)", lineHeight: 1.7 }}>
-          My first submission batch had tag inconsistencies that doubled the review cycle — I'd
+          My first submission batch had tag inconsistencies that doubled the review cycle: I'd
           tagged screens in my own vocabulary instead of aligning to Mobbin's taxonomy first.
           "Progress indicator" vs. "status display" vs. "achievement" each maps to a different
           search, and findability depends on matching the searcher's words, not mine. I also

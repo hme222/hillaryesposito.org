@@ -30,7 +30,7 @@ const OTHER_PROJECTS = [
 ];
 
 export default function MSKCaseStudy() {
-  usePageTitle("MSK: Redesigning Systems for 21,000 Clinicians");
+  usePageTitle("MSK: Redesigning Systems for 21,000 Clinicians and Staff");
   const { lang } = useLanguage();
   const navigate = useNavigate();
   const rootRef = useRef<HTMLElement>(null);
@@ -51,8 +51,8 @@ export default function MSKCaseStudy() {
           <p className="gh-hero__intro">
             <strong>Clinicians were printing digital records just to re-file them digitally.</strong>{" "}
             Six years and three roles later, I'd redesigned the workflows, onboarding, and
-            certification systems <strong>21,000+ clinicians</strong> depend on — and the fixes
-            outlasted the leadership that approved them.
+            certification systems <strong>21,000+ clinicians and administrative staff</strong> depend
+            on, and the fixes outlasted the leadership that approved them.
           </p>
         </div>
         <div className="gh-hero__visual msk-hero-dashboard" aria-hidden="true">
@@ -66,7 +66,7 @@ export default function MSKCaseStudy() {
           { label: "Role",     value: "UX & Product Design" },
           { label: "Org",      value: "Memorial Sloan Kettering" },
           { label: "Timeline", value: "6 years, 3 roles" },
-          { label: "Scale",    value: "21,000+ clinicians" },
+          { label: "Scale",    value: "21,000+ clinicians & staff" },
         ].map((item, i, arr) => (
           <React.Fragment key={item.label}>
             <div className="gh-meta-strip__item">
@@ -97,7 +97,7 @@ export default function MSKCaseStudy() {
             ["Problem", "Clinical teams were forced through fragmented workflows, paper workarounds, and unclear status paths inside high-stakes systems."],
             ["My role", "Mapped frontline workflows, translated clinical needs into system requirements, and aligned operations, IT, and clinical leadership."],
             ["Key decision", "Move the next required action into the dashboard instead of asking staff to leave the workflow, print, send, and wait."],
-            ["Outcome", "Led the dashboard-to-EMR workflow redesign inside an initiative that cut EMR costs 20% org-wide, rebuilt the certification workflow, and shipped systems used across workflows impacting 21,000+ clinicians."],
+            ["Outcome", "Led the dashboard-to-EMR workflow redesign inside an initiative that cut EMR costs 20% org-wide, rebuilt the certification workflow, and shipped systems used across workflows impacting 21,000+ clinicians and administrative staff."],
           ].map(([k, v]) => (
             <article key={k} className="cs-skim-card"><span>{k}</span><p>{v}</p></article>
           ))}
@@ -114,7 +114,7 @@ export default function MSKCaseStudy() {
       {/* ── OVERVIEW ── */}
       <section className="cs-overview">
         <p className="gh-section-label">Overview</p>
-        <h2 className="cs-section-title">Designing for 21,000 clinicians inside the systems they depend on</h2>
+        <h2 className="cs-section-title">Designing for 21,000 clinicians and staff inside the systems they depend on</h2>
         <p className="cs-overview-text">
           At MSK, I optimized how the place actually ran: mapping workflows, finding where systems
           failed the clinicians using them, and shipping fixes that 21,000+ people relied on daily.
@@ -143,10 +143,10 @@ export default function MSKCaseStudy() {
           {([
             ["before", "Before", "Print, send, then re-file online",
               [["Open the dashboard", "Dashboard"], ["Find the record that needed filing", "Dashboard"], ["Print the documentation packet", "Paper"], ["Send it to a separate filing site", "Filing site"], ["Wait for the record to be filed back into EMR", "Filing site"], ["Return later to confirm completion", "EMR"]],
-              "Failure mode: the workflow turned a digital record into paper, then back into a digital record — four systems for one filing."],
+              "Failure mode: the workflow turned a digital record into paper, then back into a digital record: four systems for one filing."],
             ["after", "After", "One dashboard button to online EMR",
               [["Open the dashboard", "Dashboard"], ["Select the record", "Dashboard"], ["Click the direct EMR action", "Dashboard"], ["Land in the online EMR filing destination", "EMR"], ["Complete the filing action digitally", "EMR"], ["Return to the dashboard with status updated", "Dashboard"]],
-              "Design decision: add the missing bridge between the dashboard and the online EMR destination — the record never leaves the screen."],
+              "Design decision: add the missing bridge between the dashboard and the online EMR destination, so the record never leaves the screen."],
           ] as Array<[string, string, string, Array<[string, string]>, string]>).map(([key, label, title, steps, note], i) => (
             <React.Fragment key={key}>
               {i === 1 && <div className="msk-workflow-arrow" aria-hidden="true">→</div>}
@@ -235,7 +235,7 @@ export default function MSKCaseStudy() {
         <p className="gh-section-label">Started on the floor</p>
         <h2>Learning how the work actually flowed</h2>
         <p className="cs-section-intro">
-          As Office Coordinator, I embedded with frontline teams — shadowing nurses and clinicians
+          As Office Coordinator, I embedded with frontline teams, shadowing nurses and clinicians
           during actual shifts and mapping real behavior against documented policy. Where staff
           paused, backtracked, or worked around the system is where the design problems lived.
         </p>
@@ -375,7 +375,7 @@ export default function MSKCaseStudy() {
           {[
             ["20%", "Organization-wide EMR cost reduction. I led the dashboard-to-online-EMR workflow redesign that contributed to it."],
             ["70%", "Efficiency gain in the certification workflows I rebuilt."],
-            ["21K+", "Clinicians across the workflows I redesigned"],
+            ["21K+", "Clinicians and administrative staff across the workflows I redesigned"],
             ["3", "Roles across 6 years, each building on the last"],
           ].map(([v, l]) => (
             <div key={l} className="cs-outcome-card">
@@ -407,7 +407,7 @@ export default function MSKCaseStudy() {
           {[
             ["The design work starts on the floor", "No stakeholder interview surfaced the sticky notes and personal spreadsheets clinicians used to survive the EMR. Shadowing did. The gap between documented process and real behavior is where the design problems live."],
             ["Stakeholder alignment is the hardest design problem", 'The best solution that only one department supports will fail. The "last refreshed" compromise happened because clinical leadership and IT finally heard the same constraint in the same room.'],
-            ["Why this work matters now", "The clinical workflows I redesigned are exactly the systems being augmented by AI today. Knowing how 21,000 clinicians actually work, where they build workarounds and lose trust, is the foundation for designing AI tools they'll actually use."],
+            ["Why this work matters now", "The clinical workflows I redesigned are exactly the systems being augmented by AI today. Knowing how 21,000 clinicians and staff actually work, where they build workarounds and lose trust, is the foundation for designing AI tools they'll actually use."],
           ].map(([h, p]) => (
             <div key={h} className="cs-reflection-card"><h3>{h}</h3><p>{p}</p></div>
           ))}

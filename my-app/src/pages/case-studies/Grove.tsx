@@ -81,7 +81,7 @@ const OTHER_PROJECTS = [
   {
     icon: <MedicalCrossIcon />,
     title: "MSK Cancer Center",
-    desc: "Six years redesigning clinical workflows, onboarding, and certification systems for 21,000+ clinicians.",
+    desc: "Six years redesigning clinical workflows, onboarding, and certification systems for 21,000+ clinicians and administrative staff.",
     path: "/case-study/msk",
   },
   {
@@ -113,8 +113,8 @@ export default function GroveCaseStudy() {
           <h1>Grove</h1>
           <p className="gh-hero__intro">
             <strong>AI built me the wrong app. 32 plant owners told me which one to build instead.</strong>{" "}
-            Grove is a plant-care app I'm redesigning from a working Emergent prototype — cutting the
-            community features I'd built breadth-first, and keeping the AI honest wherever a wrong
+            Grove is a plant-care app I'm redesigning from a working Emergent prototype, cutting the
+            community features I'd built breadth-first and keeping the AI honest wherever a wrong
             answer is a safety risk, not just a bad suggestion.
           </p>
         </div>
@@ -174,9 +174,9 @@ export default function GroveCaseStudy() {
 
       <nav className="cs-evidence-links" aria-label="Grove evidence shortcuts">
         <a href="#grove-research">View research</a>
-        <a href="#grove-evolution">View before/final</a>
+        <a href="#grove-evolution">View evolution</a>
         <a href="#grove-states">View edge states</a>
-        <a href="#grove-screens">View screens</a>
+        <a href="#grove-screens">View prototype</a>
         <a href="#grove-outcomes">View outcomes</a>
       </nav>
 
@@ -192,8 +192,8 @@ export default function GroveCaseStudy() {
           "Plant care should feel peaceful, not stressful."
         </p>
         <p className="cs-overview-text" style={{ marginTop: "1rem" }}>
-          <strong>The wedge:</strong> the skill new owners most lack is light — where to place a
-          plant and why — and no major plant app teaches it. Lighting confidence averaged 2.4/5, and
+          <strong>The wedge:</strong> the skill new owners most lack is light (where to place a
+          plant and why), and no major plant app teaches it. Lighting confidence averaged 2.4/5, and
           respondents asked unprompted for an app to "tell me exactly where to place a plant." That
           gap, plus trust, is where Grove competes.
         </p>
@@ -289,7 +289,7 @@ export default function GroveCaseStudy() {
 
         <Disclosure title="Show secondary roadmap decisions">
           <p className="cs-overview-text">
-            Community forums drew only 23%, and verified swapping just 6% — both ranked well
+            Community forums drew only 23%, and verified swapping just 6%; both ranked well
             below the core care features above.
             The social layer, badges, and XP I had already designed stay in the prototype as
             post-MVP. The survey elevated what wasn't in the build scope instead: pet toxicity
@@ -368,37 +368,40 @@ export default function GroveCaseStudy() {
       {/* ── DESIGN EVOLUTION ── */}
       <section id="grove-evolution">
         <p className="gh-section-label">Design evolution</p>
-        <h2>From task board to calm care queue</h2>
+        <h2>The prototype AI built, and the redesign direction</h2>
         <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
-          The early layout treated plant care like an admin checklist. The final version turns the
-          same logic into one calm daily queue with one clear next action.
+          The Emergent prototype was built breadth-first: the care screen led with a social feed
+          and a daily "mission." The redesign strips it back to the three things the survey said
+          actually drive the download.
         </p>
 
         <div className="grove-evolution">
-          <div className="grove-wireframe-panel" aria-label="Early Grove wireframe concept">
-            <p className="grove-evolution__label">Before · task-board wireframe</p>
-            <div className="grove-wireframe-screen">
-              <span className="grove-wireframe-pill" />
-              <span className="grove-wireframe-title" />
-              {[0, 1, 2].map((i) => <div key={i} className="grove-wireframe-row"><span /><span /></div>)}
-              <div className="grove-wireframe-grid"><span /><span /><span /><span /></div>
-            </div>
-            <p className="grove-evolution__note">Problem: everything competed for attention, so the interface felt like another chore.</p>
-          </div>
-
-          <div className="grove-evolution__arrow" aria-hidden="true">→</div>
-
-          <div className="grove-final-panel" aria-label="Final Grove care screen">
-            <p className="grove-evolution__label">After · care queue</p>
+          <div className="grove-final-panel" aria-label="Emergent prototype care screen">
+            <p className="grove-evolution__label">Before · Emergent prototype</p>
             <div className="grove-phone-frame" style={{ background: "#f5f0e8" }}>
               <img
                 src="/assets/grove/care.png"
-                alt="Final Grove care queue screen"
+                alt="Emergent prototype care screen leading with a social feed and daily mission"
                 className="grove-phone-frame__img"
                 loading="lazy"
               />
             </div>
-            <p className="grove-evolution__note">Decision: lead with what needs attention today, then hide secondary features until the care task is complete.</p>
+            <p className="grove-evolution__note">The care screen led with a social feed and "today's mission." Community forums ranked near the bottom of the survey (23%).</p>
+          </div>
+
+          <div className="grove-evolution__arrow" aria-hidden="true">→</div>
+
+          <div className="grove-final-panel" aria-label="Grove redesign welcome screen">
+            <p className="grove-evolution__label">After · redesign direction</p>
+            <div className="grove-phone-frame" style={{ background: "#1b2f15" }}>
+              <img
+                src="/assets/grove/grove1.png"
+                alt="Redesigned Grove welcome screen, calm and pared back"
+                className="grove-phone-frame__img"
+                loading="lazy"
+              />
+            </div>
+            <p className="grove-evolution__note">Community demoted to post-MVP; the app opens on care, not a feed. Calm over busy: the brief one respondent set, "peaceful, not stressful."</p>
           </div>
         </div>
       </section>
@@ -444,30 +447,30 @@ export default function GroveCaseStudy() {
         </Disclosure>
       </section>
 
-      {/* ── PRODUCT SCREENS ── */}
+      {/* ── PROTOTYPE VS SURVEY ── */}
       <section id="grove-screens">
-        <p className="gh-section-label">The build, shown</p>
-        <h2>Three screens carry the product thinking</h2>
+        <p className="gh-section-label">Reading the prototype</p>
+        <h2>The prototype AI built, read against the survey</h2>
         <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
-          Each of these is a decision from the research made visible — grouping, the emotional
-          payoff, and a reward that isn't a points system.
+          Emergent had already built these screens breadth-first. The survey told me which instincts
+          to keep and which to cut.
         </p>
         <StateMatrix
           rows={[
             {
-              state: "Bouquets, not a flat list",
-              screen: { src: "/assets/grove/bouquet.png", alt: "Grove bouquet screen grouping plants by location" },
-              note: "Plants group by location, so every screen answers one question: which bouquet am I looking at? Competing apps show one flat list that reads as decision paralysis.",
+              state: "Add flow: keep",
+              screen: { src: "/assets/grove/bouquet.png", alt: "Emergent prototype add screen: track a plant or a bouquet" },
+              note: "Tracking a plant or a bouquet, by what people actually own, matched how owners think. Grouping stays core; a flat list would read as decision paralysis.",
             },
             {
-              state: "The journal is the home",
-              screen: { src: "/assets/grove/Growth.png", alt: "Grove growth photo journal screen" },
-              note: "Growth over time is the emotional payoff the survey validated — more motivating than a to-do dashboard, so it leads instead of the task list AI proposed.",
+              state: "Growth journal: keep",
+              screen: { src: "/assets/grove/Growth.png", alt: "Emergent prototype plant detail with a growth timeline" },
+              note: "A plant's timeline and photos are the emotional payoff the survey validated, more motivating than a task dashboard, so the journal leads.",
             },
             {
-              state: "Reward is a personality, not points",
-              screen: { src: "/assets/grove/plantpersonality.png", alt: "Grove AI-generated plant personality reward screen" },
-              note: "Unlocked at a care milestone: an AI-generated plant personality, not XP or a leaderboard. Care shouldn't feel like an administrative chore — the #1 reason people quit these apps.",
+              state: "Personality yes, gamification no",
+              screen: { src: "/assets/grove/plantpersonality.png", alt: "Emergent prototype profile with plant personality, badges, and streak" },
+              note: "The AI “plant personality” stays. The badges (11) and streak counter are cut. They made care feel like the “administrative chore” that's the #1 reason people quit.",
             },
           ]}
         />
@@ -480,8 +483,8 @@ export default function GroveCaseStudy() {
         <h2 className="cs-section-title">Research artifacts + working product</h2>
         <div className="cs-outcome-grid">
           {[
-            ["0", "plants shown as identified above the AI's confidence — below 80%, Grove asks you to verify with a photo"],
-            ["1/day", "care task per bouquet, capped by design — a reminder can never become the uninstall trigger"],
+            ["0", "plants shown as identified above the AI's confidence; below 80%, Grove asks you to verify with a photo"],
+            ["1/day", "care task per bouquet, capped by design, so a reminder can never become the uninstall trigger"],
             ["5", "AI decisions overruled and logged, each one traceable to a specific survey finding"],
             ["Ready", "Full-stack app (React + FastAPI + MongoDB) with pre-registered testing criteria set"],
           ].map(([v, l]) => (

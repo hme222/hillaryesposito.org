@@ -39,7 +39,7 @@ export default function GoodHarvest() {
     { icon: <SproutIcon />, title: "Grove", path: "/case-study/grove",
       desc: "AI + design plant care app. Solo, research to a working prototype." },
     { icon: <MedicalCrossIcon />, title: "MSK Cancer Center", path: "/case-study/msk",
-      desc: "Six years redesigning clinical workflows, onboarding, and certification systems for 21,000+ clinicians." },
+      desc: "Six years redesigning clinical workflows, onboarding, and certification systems for 21,000+ clinicians and administrative staff." },
   ];
 
   const researchInsightCards = [
@@ -72,7 +72,7 @@ export default function GoodHarvest() {
           <h1>Good Harvest</h1>
           <p className="gh-hero__intro">
             <strong>The research said people couldn't find seasonal produce. My testing showed
-            they found it — and didn't believe it applied to them.</strong> Good Harvest is the
+            they found it, and didn't believe it applied to them.</strong> Good Harvest is the
             mobile app I redesigned around that reframe, from a trust problem, not a navigation one.
           </p>
         </div>
@@ -195,7 +195,7 @@ export default function GoodHarvest() {
         </div>
 
         <p className="cs-overview-text" style={{ marginTop: "1.25rem" }}>
-          <strong>The market gap:</strong> a competitive SWOT put the incumbents into two camps —
+          <strong>The market gap:</strong> a competitive SWOT put the incumbents into two camps:
           recipe apps that ignore seasonality and locality, and farmers-market finders that stop at
           "where," never "what to cook." Good Harvest's wedge is the join: local + seasonal +
           an immediate next step.{" "}
@@ -254,8 +254,8 @@ export default function GoodHarvest() {
           { icon: <FlaskIcon />, name: "AttentionInsight",
             why: (
               <>
-                AI attention-prediction heatmaps to validate visual hierarchy — where the eye lands
-                before a single tap — so I could catch hierarchy problems ahead of participant testing.{" "}
+                AI attention-prediction heatmaps to validate visual hierarchy (where the eye lands
+                before a single tap), so I could catch hierarchy problems ahead of participant testing.{" "}
                 <a href="https://attentioninsight.com?aff=_hillaryesposito" target="_blank" rel="noopener noreferrer">Try AttentionInsight →</a>
               </>
             ) },

@@ -53,7 +53,7 @@ export const curatedPages: Record<string, CuratedPage> = {
     meta: [
       { label: "Focus", value: "Complex systems UX" },
       { label: "Strength", value: "Internal tools + product judgment" },
-      { label: "Evidence", value: "21K+ clinicians, 20% cost reduction, 70% efficiency gain" },
+      { label: "Evidence", value: "21K+ clinicians and staff, 20% cost reduction, 70% efficiency gain" },
       { label: "Best fit", value: "High-stakes internal tools and healthcare workflows" },
     ],
     intro: [
