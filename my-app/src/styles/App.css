@@ -6044,6 +6044,8 @@ body.dark-mode .nav-overlay-backdrop,
   line-height: 1;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.01em;
+  /* Solid warm accent, not gradient text: the H1 keeps the one gradient moment. */
+  color: var(--accent-warm, #946420);
 }
 .home-proof-label {
   font-size: 0.85rem;

@@ -31,43 +31,9 @@ function HeroKnotFallback() {
   );
 }
 
-// ─── Orb background ──────────────────────────────────────────────────────────
-const orbStyles = `
-  @keyframes breathe1 {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.08); opacity: 0.7; }
-  }
-  @keyframes breathe2 {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.1); opacity: 0.65; }
-  }
-  @keyframes breathe3 {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-    50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.5; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    [style*="breathe1"], [style*="breathe2"], [style*="breathe3"] { animation: none !important; }
-  }
-`;
-
-const OrbBackground: React.FC = () => (
-  <div className="orb-bg" aria-hidden="true">
-    <style>{orbStyles}</style>
-    <div style={{ position:"absolute", borderRadius:"50%", filter:"blur(80px)", width:400, height:400, top:-100, left:-100,
-      background:"radial-gradient(circle, rgba(128,128,0,.22) 0%, rgba(107,142,35,.14) 50%, transparent 75%)",
-      animation:"breathe1 8s ease-in-out 3", pointerEvents:"none", zIndex:0 }} />
-    <div style={{ position:"absolute", borderRadius:"50%", filter:"blur(90px)", width:560, height:560, bottom:-160, right:-100,
-      background:"radial-gradient(circle, rgba(85,107,47,.11) 0%, rgba(107,142,35,.06) 50%, transparent 75%)",
-      animation:"breathe2 11s ease-in-out 3", pointerEvents:"none", zIndex:0 }} />
-    <div style={{ position:"absolute", borderRadius:"50%", filter:"blur(60px)", width:340, height:340, bottom:-100, right:-60,
-      background:"radial-gradient(circle, rgba(85,107,47,.18) 0%, rgba(107,142,35,.11) 50%, transparent 75%)",
-      animation:"breathe2 11s ease-in-out 3", pointerEvents:"none" }} />
-    <div style={{ position:"absolute", borderRadius:"50%", filter:"blur(90px)", width:320, height:320, top:"50%", left:"50%",
-      transform:"translate(-50%,-50%)",
-      background:"radial-gradient(circle, rgba(128,128,0,.055) 0%, transparent 70%)",
-      animation:"breathe3 14s ease-in-out 3", pointerEvents:"none", zIndex:0 }} />
-  </div>
-);
+// (Retired: the blurred "breathing orb" background. It was the loudest AI-design
+// tell on the page and competed with the WorkflowKnot for the same atmospheric
+// job. The hero's own radial washes carry the quiet depth now.)
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
@@ -95,7 +61,7 @@ const PROJECTS: Project[] = [
     descKey: "home.proj.grove.desc",
     images: ["/assets/grove/bouquet.png"],
     imageAltKey: "home.proj.grove.alt",
-    bg: "linear-gradient(135deg, #1a2e1a 0%, #2d4a2d 50%, #1a3a2a 100%)",
+    bg: "#1b2f15",
     path: "/case-study/grove",
   },
   {
@@ -105,7 +71,7 @@ const PROJECTS: Project[] = [
     icon: <MedicalCrossIcon />,
     cover: "/assets/msk/mskcc-cover.png",
     imageAltKey: "home.proj.msk.alt",
-    bg: "linear-gradient(135deg, #1a1a2e 0%, #2d2d4a 50%, #1a2a3a 100%)",
+    bg: "#211c12",
     path: "/case-study/msk",
   },
 ];
@@ -216,8 +182,6 @@ export default function Home() {
       <section id="home" className="section active hero home-hero"
         aria-label={t("home.heroAria")} style={{ position:"relative", overflow:"hidden" }}>
 
-        <OrbBackground />
-
         {/* Knot as an IMMERSIVE BACKDROP: the tangle resolves behind the whole
             hero (balls dimmed + masked at top/bottom for readability), while the
             text sits on top. Its nav words are a separate, un-dimmed layer that
@@ -309,7 +273,7 @@ export default function Home() {
             { value: "70%",  labelKey: "home.stat.cert" },
           ] as { value: string; labelKey: StringKey }[]).map((s) => (
             <div key={s.labelKey} className="home-proof-card">
-              <p className="home-proof-value gradient-text">{s.value}</p>
+              <p className="home-proof-value">{s.value}</p>
               <p className="home-proof-label">{t(s.labelKey)}</p>
             </div>
           ))}
