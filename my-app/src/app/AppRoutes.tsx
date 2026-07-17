@@ -34,11 +34,22 @@ const Mobbin = lazy(() => import("../pages/case-studies/Mobbin"));
 function ScrollToTop() {
   const { pathname, search } = useLocation();
   useEffect(() => {
+    const params = new URLSearchParams(search);
+    const restoredPath = params.get("p");
+    if (pathname === "/" && restoredPath?.startsWith("/")) {
+      const nextSearch = new URLSearchParams(search);
+      nextSearch.delete("p");
+      const query = nextSearch.toString();
+      window.history.replaceState(null, "", `${restoredPath}${query ? `?${query}` : ""}`);
+      window.dispatchEvent(new PopStateEvent("popstate"));
+      return;
+    }
+
     // When landing on a section (?scrollTo=...), let the page position itself
     // instead of resetting to the top and fighting that scroll.
-    if (new URLSearchParams(search).has("scrollTo")) return;
+    if (params.has("scrollTo")) return;
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [pathname, search]);
   return null;
 }
 
