@@ -10509,6 +10509,8 @@ body.dark-mode .nav-overlay-backdrop,
   --curated-surface: var(--surface-1);
   --curated-card-shadow: var(--shadow-sm);
   padding-bottom: 6rem;
+  min-width: 0;
+  overflow-x: clip;
 }
 .curated-page--care {
   --curated-accent: var(--olive-2);
@@ -10561,9 +10563,11 @@ body.dark-mode .nav-overlay-backdrop,
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
+  min-width: 0;
 }
 .curated-hero-badge {
   width: min(100%, 320px);
+  max-width: 100%;
   padding: 1.25rem 1.2rem;
   border-radius: var(--radius-xl);
   border: 1px solid var(--border);
@@ -10579,12 +10583,14 @@ body.dark-mode .nav-overlay-backdrop,
 }
 .curated-hero-badge strong {
   font-size: 1.1rem;
+  overflow-wrap: break-word;
 }
 .curated-hero-badge__eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-size: 0.72rem;
   color: var(--text-3);
+  overflow-wrap: anywhere;
 }
 .curated-hero-badge__rule {
   width: 56px;
@@ -10763,6 +10769,44 @@ body.dark-mode .nav-overlay-backdrop,
   gap: 0.85rem;
   flex-wrap: wrap;
   justify-content: flex-end;
+}
+
+.curated-page .gh-meta-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+  justify-content: stretch;
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.curated-page .gh-meta-strip__divider {
+  display: none;
+}
+
+.curated-page .gh-meta-strip__item {
+  min-width: 0;
+  padding: 1rem 1.15rem;
+  border-left: 1px solid var(--border);
+}
+
+.curated-page .gh-meta-strip__item:first-child {
+  border-left: 0;
+}
+
+.curated-page .gh-meta-strip__value {
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+.curated-page .gh-hero__copy,
+.curated-page .curated-hero__subhead,
+.curated-page .cs-overview-text,
+.curated-page .curated-proof-card,
+.curated-page .curated-sequence__item,
+.curated-page .curated-link-card {
+  min-width: 0;
 }
 
 .curated-page--fashion {
@@ -11654,6 +11698,45 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 @media (max-width: 900px) {
+  .curated-page {
+    width: min(100% - 2rem, 100vw - 2rem);
+    max-width: calc(100vw - 2rem);
+  }
+
+  .curated-page .curated-hero {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 1.5rem;
+  }
+
+  .curated-page .curated-hero__visual {
+    order: 2;
+    width: 100%;
+    max-width: 100%;
+    justify-content: flex-start;
+  }
+
+  .curated-page .curated-hero-badge {
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .curated-page .gh-meta-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .curated-page .gh-meta-strip__item {
+    border-left: 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .curated-page .gh-meta-strip__item:first-child {
+    border-top: 0;
+  }
+
+  .curated-page .gh-meta-strip__item:nth-child(3) {
+    border-top: 0;
+  }
+
   .curated-proof-grid,
   .curated-link-grid,
   .curated-two-column,
@@ -11687,6 +11770,56 @@ body.dark-mode .nav-overlay-backdrop,
 }
 
 @media (max-width: 640px) {
+  .curated-page {
+    width: min(100% - 1.5rem, 100vw - 1.5rem) !important;
+    max-width: calc(100vw - 1.5rem) !important;
+    overflow-x: clip;
+  }
+
+  .curated-page .curated-hero {
+    gap: 1.15rem;
+    margin-bottom: 2rem;
+  }
+
+  .curated-page .curated-hero__role {
+    max-width: 100%;
+    font-size: 1rem;
+    line-height: 1.45;
+    overflow-wrap: break-word;
+  }
+
+  .curated-page .curated-hero__subhead,
+  .curated-page .gh-hero__intro,
+  .curated-page .cs-overview-text,
+  .curated-page p,
+  .curated-page li {
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+
+  .curated-page .curated-hero-badge {
+    max-width: 100%;
+    padding: 1rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .curated-page .gh-meta-strip {
+    grid-template-columns: minmax(0, 1fr);
+    margin-bottom: 2.4rem;
+  }
+
+  .curated-page .gh-meta-strip__item {
+    padding: 0.95rem 1rem;
+  }
+
+  .curated-page .gh-meta-strip__item:nth-child(3) {
+    border-top: 1px solid var(--border);
+  }
+
+  .curated-page .gh-meta-strip__value {
+    overflow-wrap: anywhere;
+  }
+
   .cs-skim-grid {
     grid-template-columns: 1fr;
   }
