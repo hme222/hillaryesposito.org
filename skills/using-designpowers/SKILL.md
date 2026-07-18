@@ -296,6 +296,7 @@ Before responding to ANY message — including clarifying questions — check wh
 | Inspiration | `inspiration-scouting` | When the team needs aesthetic references, interaction examples, or visual direction beyond competitive research |
 | Debate | `design-debate` | When a design direction is uncertain and competing approaches should be argued before committing |
 | Plan | `writing-design-plans` | When a design spec exists and implementation needs breaking down |
+| Design Intelligence | `ui-ux-pro-max` | When generating data-backed design systems — palettes, typography, styles, stack guidelines, landing patterns. Invoke after taste calibration, before or with `ui-composition`. Reconcile with taste profile and brief |
 | UI | `ui-composition` | When building layouts, color, typography, visual hierarchy |
 | Interaction | `interaction-design` | When designing states, transitions, feedback, error handling |
 | Content | `accessible-content` | When writing or structuring any user-facing content |
@@ -316,10 +317,11 @@ Before responding to ANY message — including clarifying questions — check wh
 
 1. **Process skills first** — design-discovery, writing-design-plans, designpowers-critique
 2. **Taste skills early** — design-memory (load at start), inspiration-scouting (before visual design), design-debate (when direction is uncertain)
-3. **Domain skills second** — ui-composition, interaction-design, accessible-content
-4. **Feedback skills during build** — taste-feedback (mid-flight course correction during design-builder execution)
-5. **Accessibility skills always** — cognitive-accessibility, adaptive-interfaces, inclusive-personas are woven through every phase, not bolted on at the end
-6. **Reflection skills at the end** — design-retrospective (after shipping, feeds back into design-memory)
+3. **Design intelligence before visuals** — ui-ux-pro-max (after taste, before ui-composition) for data-backed palettes, typography, and stack guidance
+4. **Domain skills second** — ui-composition, interaction-design, accessible-content
+5. **Feedback skills during build** — taste-feedback (mid-flight course correction during design-builder execution)
+6. **Accessibility skills always** — cognitive-accessibility, adaptive-interfaces, inclusive-personas are woven through every phase, not bolted on at the end
+7. **Reflection skills at the end** — design-retrospective (after shipping, feeds back into design-memory)
 
 ## Accessibility Is Not a Phase
 

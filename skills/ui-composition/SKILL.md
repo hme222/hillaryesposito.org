@@ -25,8 +25,18 @@ Before making visual decisions, confirm you have:
 - Design brief or strategy (from earlier phases)
 - Personas (especially ability spectrum considerations)
 - Existing design system (invoke `design-system-alignment` if one exists)
+- Taste profile loaded (from `design-memory`)
 
-If implementation will require icons, charts, tables, 3D, command palettes, toasts, drag-and-drop, dates, or other specialized UI behavior, read `../preferred-libraries.md` and follow its library choices and dependency guardrails.
+### Step 1b: Generate Design Intelligence (when no existing system)
+
+If the project has no established design system, invoke `ui-ux-pro-max` before choosing colours, typography, or layout patterns:
+
+1. Run `--design-system` with product type, industry, and taste keywords from the brief
+2. Reconcile recommendations with the taste profile — taste profile wins on conflict
+3. Apply Designpowers accessibility minimums even when database suggestions differ
+4. Optionally `--persist` to `design-system/` and record the path in `design-state.md`
+
+Skip this step when working from an existing design system or when the user has locked visual direction.
 
 ### Step 2: Layout and Structure
 
@@ -103,7 +113,7 @@ For each visual decision, document:
 ## Integration
 
 - **Called by:** `writing-design-plans` (as part of plan execution)
-- **Pairs with:** `design-system-alignment` (for consistency), `cognitive-accessibility` (for visual load), `adaptive-interfaces` (for user preferences)
+- **Pairs with:** `ui-ux-pro-max` (data-backed palettes, typography, stack guidance), `design-system-alignment` (for consistency), `cognitive-accessibility` (for visual load), `adaptive-interfaces` (for user preferences)
 - **Reviewed by:** `designpowers-critique`
 
 ## Quick Reference: Accessibility Minimums
