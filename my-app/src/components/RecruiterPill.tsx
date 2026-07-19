@@ -155,6 +155,11 @@ export default function RecruiterPill() {
                     <UserIcon className="recruiter-panel__btn-icon" /> About me
                   </button>
                 </section>
+
+                {/* Visible, selectable address so the mailto never silent-fails. */}
+                <p className="recruiter-panel__email">
+                  or copy: <a href="mailto:espositohillary@gmail.com">espositohillary@gmail.com</a>
+                </p>
               </div>
         </div>
       </Modal>

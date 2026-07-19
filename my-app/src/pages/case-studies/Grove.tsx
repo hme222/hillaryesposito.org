@@ -450,7 +450,7 @@ export default function GroveCaseStudy() {
       {/* ── PROTOTYPE VS SURVEY ── */}
       <section id="grove-screens">
         <p className="gh-section-label">Reading the prototype</p>
-        <h2>The prototype AI built, read against the survey</h2>
+        <h2>What the survey said to keep, and what to cut</h2>
         <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
           Emergent had already built these screens breadth-first. The survey told me which instincts
           to keep and which to cut.

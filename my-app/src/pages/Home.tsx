@@ -502,6 +502,12 @@ export default function Home() {
                 </a>
               </div>
 
+              {/* Visible, selectable address so the mailto never silent-fails on a locked-down machine. */}
+              <p style={{ fontSize: "0.9rem", color: "var(--muted)", margin: "0 auto 1.5rem" }}>
+                or reach me at{" "}
+                <a href={"mailto:" + email} style={{ color: "var(--fg)", fontWeight: 600, textDecoration: "underline" }}>{email}</a>
+              </p>
+
               <p style={{ fontSize: "0.85rem", color: "var(--muted)", margin: 0 }}>
                 <a href="https://www.linkedin.com/in/hillaryesposito/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--muted)", marginRight: "1.25rem" }} aria-label={t("home.linkedinAria")}>
                   LinkedIn
@@ -509,7 +515,7 @@ export default function Home() {
                 <a href="/assets/Hillary_Esposito_Portfolio_Resume.pdf" target="_blank" rel="noopener noreferrer" style={{ color: "var(--muted)", marginRight: "1.25rem" }} aria-label={t("nav.resumeAria")}>
                   {t("home.resumeLink")}
                 </a>
-                <button type="button" style={{ background:"none", border:"none", cursor:"pointer", padding:0, font:"inherit", color:"var(--muted)" }}
+                <button type="button" style={{ background:"none", border:"none", cursor:"pointer", padding:0, font:"inherit", color:"var(--muted)", textDecoration:"underline" }}
                   onClick={() => navigate("/about")} aria-label={t("home.aboutLink")}>
                   {t("home.aboutLink")}
                 </button>

@@ -495,6 +495,13 @@ select:focus {
   padding: 0;
   list-style: none;
 }
+/* Between the hamburger breakpoint (768) and the roomy desktop layout, the
+   3rem-gapped menu ran into the logo ("HILLARY ESPOSITOWORK"). Tighten the gap
+   and drop the tagline through that band so the at-rest header never collides. */
+@media (min-width: 769px) and (max-width: 960px) {
+  .nav-menu { gap: 1.4rem; }
+  .logo-tagline { display: none; }
+}
 
 /* BASE LINK STYLES */
 .nav-link,
@@ -4582,13 +4589,14 @@ body.dark-mode .nav-overlay-backdrop,
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  padding: 0.85rem 1.35rem;
+  /* Trimmed footprint so the floating pill occludes less case-study content. */
+  padding: 0.68rem 1.15rem;
   background: var(--olive-2, #6b7a3a);
   color: #fff;
   border: none;
   border-radius: 999px;
   cursor: pointer;
-  font-size: 0.88rem;
+  font-size: 0.84rem;
   font-weight: 700;
   letter-spacing: 0.5px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
@@ -4770,6 +4778,17 @@ body.dark-mode .nav-overlay-backdrop,
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+}
+.recruiter-panel__email {
+  margin: 0.9rem 0 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.recruiter-panel__email a {
+  color: var(--fg);
+  font-weight: 600;
+  text-decoration: underline;
+  word-break: break-all;
 }
 .recruiter-panel__btn {
   display: flex;
@@ -9320,7 +9339,8 @@ body.dark-mode .nav-overlay-backdrop,
   overflow-x: auto;
   border: 1px solid var(--border);
   border-radius: 999px;
-  background: color-mix(in srgb, var(--surface-0) 86%, transparent);
+  /* Higher opacity so page content doesn't slice through the frosted pill mid-scroll. */
+  background: color-mix(in srgb, var(--surface-0) 94%, transparent);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   box-shadow: var(--shadow-sm);

@@ -46,7 +46,7 @@ const en = {
     "6 years at Memorial Sloan Kettering\u00a0\u00b7 21,000+ clinicians & staff\u00a0\u00b7 US Army veteran.",
   "home.getInTouch": "Get in touch",
   "home.seeApproach": "See my approach →",
-  "home.replay": "Replay",
+  "home.replay": "Replay intro",
   "home.replayAria": "Replay the animation",
 
   // ── Home: mini about ──
@@ -197,7 +197,7 @@ const es: Partial<Record<StringKey, string>> = {
     "6 años en Memorial Sloan Kettering · más de 21,000 profesionales clínicos y administrativos · veterana del Ejército de EE. UU.",
   "home.getInTouch": "Contácteme",
   "home.seeApproach": "Conozca mi enfoque →",
-  "home.replay": "Repetir",
+  "home.replay": "Repetir intro",
   "home.replayAria": "Repetir la animación",
 
   // ── Home: mini about ──
