@@ -380,7 +380,7 @@ export default function GroveCaseStudy() {
             <p className="grove-evolution__label">Before · Emergent prototype</p>
             <div className="grove-phone-frame" style={{ background: "#f5f0e8" }}>
               <img
-                src="/assets/grove/care.png"
+                src="/assets/grove/care.jpg"
                 alt="Emergent prototype care screen leading with a social feed and daily mission"
                 className="grove-phone-frame__img"
                 loading="lazy"
@@ -459,17 +459,17 @@ export default function GroveCaseStudy() {
           rows={[
             {
               state: "Add flow: keep",
-              screen: { src: "/assets/grove/bouquet.png", alt: "Emergent prototype add screen: track a plant or a bouquet" },
+              screen: { src: "/assets/grove/bouquet.jpg", alt: "Emergent prototype add screen: track a plant or a bouquet" },
               note: "Tracking a plant or a bouquet, by what people actually own, matched how owners think. Grouping stays core; a flat list would read as decision paralysis.",
             },
             {
               state: "Growth journal: keep",
-              screen: { src: "/assets/grove/Growth.png", alt: "Emergent prototype plant detail with a growth timeline" },
+              screen: { src: "/assets/grove/Growth.jpg", alt: "Emergent prototype plant detail with a growth timeline" },
               note: "A plant's timeline and photos are the emotional payoff the survey validated, more motivating than a task dashboard, so the journal leads.",
             },
             {
               state: "Personality yes, gamification no",
-              screen: { src: "/assets/grove/plantpersonality.png", alt: "Emergent prototype profile with plant personality, badges, and streak" },
+              screen: { src: "/assets/grove/plantpersonality.jpg", alt: "Emergent prototype profile with plant personality, badges, and streak" },
               note: "The AI “plant personality” stays. The badges (11) and streak counter are cut. They made care feel like the “administrative chore” that's the #1 reason people quit.",
             },
           ]}

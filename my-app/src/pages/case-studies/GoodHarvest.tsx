@@ -24,14 +24,13 @@ export default function GoodHarvest() {
   }
 
   const screens = useMemo(() => ({
-    appMobile:   "/assets/good-harvest/goodharvest-app-mobile.png",
-    appWeb:      "/assets/good-harvest/goodharvest-app-web.png",
-    homeWire:    "/assets/good-harvest/goodharvest-home-wireframe.png",
-    homeHeat:    "/assets/good-harvest/goodharvest-home-heatmap.png",
-    localWire:   "/assets/good-harvest/goodharvest-localproduce-wireframe.png",
-    localHeat:   "/assets/good-harvest/goodharvest-localproduce-heatmap.png",
-    recipesWire: "/assets/good-harvest/goodharvest-recipes-wireframe.png",
-    recipesHeat: "/assets/good-harvest/goodharvest-recipes-heatmap.png",
+    appMobile:   "/assets/good-harvest/goodharvest-app-mobile.jpg",
+    homeWire:    "/assets/good-harvest/goodharvest-home-wireframe.jpg",
+    homeHeat:    "/assets/good-harvest/goodharvest-home-heatmap.jpg",
+    localWire:   "/assets/good-harvest/goodharvest-localproduce-wireframe.jpg",
+    localHeat:   "/assets/good-harvest/goodharvest-localproduce-heatmap.jpg",
+    recipesWire: "/assets/good-harvest/goodharvest-recipes-wireframe.jpg",
+    recipesHeat: "/assets/good-harvest/goodharvest-recipes-heatmap.jpg",
   }), []);
 
   const otherProjects = [

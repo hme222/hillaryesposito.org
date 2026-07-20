@@ -18,7 +18,7 @@ const APPS = [
     category: "Fintech · Credit building",
     blurb:
       "Catalogued the credit-building onboarding flow, surfacing how Kikoff turns a complex financial product into a confidence-building first session.",
-    image: "/assets/mobbin/kikoff.png",
+    image: "/assets/mobbin/kikoff.jpg",
     alt: "Kikoff app screen showing credit building flow",
   },
   {
@@ -27,7 +27,7 @@ const APPS = [
     category: "Prediction markets",
     blurb:
       "Documented how Polymarket presents probabilistic data (odds, positions, and market resolution) without overwhelming first-time users.",
-    image: "/assets/mobbin/polymarket.png",
+    image: "/assets/mobbin/polymarket.jpg",
     alt: "Polymarket app screen showing prediction market interface",
   },
   {
@@ -36,7 +36,7 @@ const APPS = [
     category: "Banking · Credit cards",
     blurb:
       "Captured the account and rewards experience: patterns that demonstrate how a legacy financial brand handles trust, clarity, and disclosure.",
-    image: "/assets/mobbin/discover.png",
+    image: "/assets/mobbin/discover.jpg",
     alt: "Discover app screen showing account and rewards view",
   },
 ];
@@ -294,7 +294,7 @@ export default function MobbinCaseStudy() {
         <div className="mobbin-example-entry feature" style={{ padding: "1.5rem", borderRadius: "12px" }}>
           <h3 style={{ margin: "0 0 1rem", color: "var(--olive-2)", fontSize: "0.95rem" }}>Kikoff, trust through proof</h3>
           <figure className="mobbin-example-shot">
-            <img src="/assets/mobbin/kikoff.png" alt="Kikoff credit-building screen from the captured onboarding flow" loading="lazy" />
+            <img src="/assets/mobbin/kikoff.jpg" alt="Kikoff credit-building screen from the captured onboarding flow" loading="lazy" />
             <figcaption>A screen from Kikoff's credit-building flow.</figcaption>
           </figure>
           <div className="mobbin-example-grid">
