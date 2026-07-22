@@ -8699,6 +8699,45 @@ body.dark-mode .nav-overlay-backdrop,
   align-items: center;
 }
 
+/* ── Inside-the-app showcase (curated screen row) ── */
+.grove-showcase {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+.grove-showcase__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  margin: 0;
+  min-width: 0;
+}
+.grove-showcase__cap {
+  max-width: 24ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.55;
+  text-align: center;
+}
+.grove-showcase__label {
+  display: block;
+  color: var(--olive-2);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+@media (max-width: 720px) {
+  .grove-showcase {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.75rem 1rem;
+  }
+}
+
 .grove-evolution {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);

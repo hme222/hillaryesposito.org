@@ -3,7 +3,6 @@ import type { ReactNode } from "react";
 import {
   HandIcon,
   LaunchIcon,
-  MagnifierIcon,
   MedicalCrossIcon,
   PencilIcon,
   SproutIcon,
@@ -207,12 +206,6 @@ export const curatedPages: Record<string, CuratedPage> = {
         path: "/case-study/msk",
         description: "Regulated systems, workflow redesign, and stakeholder-heavy improvement work.",
         icon: <MedicalCrossIcon />,
-      },
-      {
-        label: "Good Harvest case study",
-        path: "/case-study/good-harvest",
-        description: "Customer journey diagnosis through iterative research and testing.",
-        icon: <MagnifierIcon />,
       },
     ],
     relatedLinks: [
@@ -439,10 +432,6 @@ export const curatedPages: Record<string, CuratedPage> = {
         reason: "Shows mobile pattern fluency, hierarchy, flows, and current product taste.",
       },
       {
-        title: "Good Harvest",
-        reason: "Shows research-led product decisions and user motivation.",
-      },
-      {
         title: "MSK workflow redesign",
         reason: "Closes with measurable workflow credibility and complex systems proof.",
       },
@@ -455,7 +444,7 @@ export const curatedPages: Record<string, CuratedPage> = {
     ],
     relevantExperience: [
       "My healthcare and military work trained me to design around data that cannot simply be decorative. The interface has to help someone understand status, risk, next steps, and what information is still missing.",
-      "Grove, Good Harvest, and Mobbin show the current product-design side of that background: AI-assisted product exploration, user research, mobile pattern analysis, and product decisions grounded in clarity rather than surface polish.",
+      "Grove and Mobbin show the current product-design side of that background: AI-assisted product exploration, user research, mobile pattern analysis, and product decisions grounded in clarity rather than surface polish.",
     ],
     keywords: [
       "product design",
@@ -485,12 +474,6 @@ export const curatedPages: Record<string, CuratedPage> = {
         path: "/case-study/mobbin",
         description: "Mobile pattern fluency, interface hierarchy, and product-analysis rigor.",
         icon: <PencilIcon />,
-      },
-      {
-        label: "Good Harvest case study",
-        path: "/case-study/good-harvest",
-        description: "Research-led product direction and user motivation.",
-        icon: <MagnifierIcon />,
       },
     ],
     relatedLinks: [
@@ -546,10 +529,6 @@ export const curatedPages: Record<string, CuratedPage> = {
       {
         title: "Mobbin",
         reason: "Shows pattern literacy and the ability to translate interface patterns into reusable design decisions.",
-      },
-      {
-        title: "Good Harvest",
-        reason: "Supports research synthesis, product clarity, and user-centered decision making.",
       },
     ],
     strengths: [
@@ -626,7 +605,7 @@ export const curatedPages: Record<string, CuratedPage> = {
     meta: [
       { label: "Focus", value: "Research to working prototype" },
       { label: "Strength", value: "Workflow clarity + AI-assisted build fluency" },
-      { label: "Evidence", value: "Grove AI, Good Harvest research, MSK systems thinking" },
+      { label: "Evidence", value: "Grove AI, MSK systems thinking, Mobbin pattern fluency" },
       { label: "Best fit", value: "Complex data workflows that need practical UX judgment" },
     ],
     intro: [
@@ -643,10 +622,6 @@ export const curatedPages: Record<string, CuratedPage> = {
       {
         title: "Grove AI",
         reason: "AI-assisted product/prototype exploration and trust-state thinking.",
-      },
-      {
-        title: "Good Harvest",
-        reason: "Research synthesis, user needs, and product prioritization.",
       },
       {
         title: "MSK workflow redesign",
@@ -690,12 +665,6 @@ export const curatedPages: Record<string, CuratedPage> = {
         path: "/case-study/grove",
         description: "AI-assisted product exploration and prototype thinking.",
         icon: <SproutIcon />,
-      },
-      {
-        label: "Good Harvest case study",
-        path: "/case-study/good-harvest",
-        description: "Research synthesis, user motivation, and product prioritization.",
-        icon: <MagnifierIcon />,
       },
       {
         label: "MSK case study",
@@ -837,7 +806,7 @@ export const curatedPages: Record<string, CuratedPage> = {
     meta: [
       { label: "Focus", value: "Regulated product clarity" },
       { label: "Strength", value: "Workflow design, research, and pattern fluency" },
-      { label: "Evidence", value: "MSK, Good Harvest, Mobbin, Grove AI" },
+      { label: "Evidence", value: "MSK, Mobbin, Grove AI" },
       { label: "Best fit", value: "Digital banking experiences that need trust and coherence" },
     ],
     intro: [
@@ -856,10 +825,6 @@ export const curatedPages: Record<string, CuratedPage> = {
         reason: "Regulated systems and measurable internal workflow outcomes.",
       },
       {
-        title: "Good Harvest",
-        reason: "Research, user needs, and product clarity.",
-      },
-      {
         title: "Mobbin",
         reason: "Design-system and pattern fluency.",
       },
@@ -876,7 +841,7 @@ export const curatedPages: Record<string, CuratedPage> = {
     ],
     relevantExperience: [
       "My healthcare and military background is not a substitute for fintech experience, but it is strong evidence of regulated-systems judgment. I have worked in contexts where clarity, trust, status, and role-based decisions mattered.",
-      "For Lumin Digital, I would foreground MSK, Good Harvest, and Mobbin: measurable workflow redesign, research-led product decisions, and pattern fluency for coherent digital systems.",
+      "For Lumin Digital, I would foreground MSK, Mobbin, and Grove: measurable workflow redesign, pattern fluency, and product decisions grounded in clarity for coherent digital systems.",
     ],
     keywords: [
       "product design",
@@ -900,12 +865,6 @@ export const curatedPages: Record<string, CuratedPage> = {
         path: "/case-study/msk",
         description: "Regulated systems, workflow redesign, and measurable outcomes.",
         icon: <MedicalCrossIcon />,
-      },
-      {
-        label: "Good Harvest case study",
-        path: "/case-study/good-harvest",
-        description: "Research-led product direction and user-centered iteration.",
-        icon: <MagnifierIcon />,
       },
       {
         label: "Mobbin case study",
@@ -952,17 +911,12 @@ export const curatedPages: Record<string, CuratedPage> = {
     proofPoints: [
       { stat: "200+", detail: "Screens captured and quality-checked for visual clarity, sequencing, completeness, and production accuracy during Mobbin freelance work" },
       { stat: "3", detail: "Production products studied for layout systems, navigation models, hierarchy, and reusable interface behavior" },
-      { stat: "22", detail: "Good Harvest test participants; heatmaps informed CTA hierarchy, layout clarity, and content emphasis" },
       { stat: "32", detail: "Grove survey respondents informing visual tone, feature hierarchy, and digitally forward product direction" },
     ],
     featuredWork: [
       {
         title: "Grove visual system",
         reason: "Best evidence of mood, color restraint, product polish, type hierarchy, and mobile-first visual execution.",
-      },
-      {
-        title: "Good Harvest before/final layouts",
-        reason: "Shows visual iteration, CTA emphasis, hierarchy, and the ability to improve marketing effectiveness through layout.",
       },
       {
         title: "Mobbin UX flow documentation",
@@ -982,7 +936,7 @@ export const curatedPages: Record<string, CuratedPage> = {
     ],
     relevantExperience: [
       "My Mobbin freelance work required careful screen capture, sequencing, review, and taxonomy alignment. That translates directly to graphic design production work where precision, naming, consistency, completeness, and quality control matter.",
-      "Good Harvest and Grove show the visual-design side: creating hierarchy, choosing what should lead, reducing clutter, and making digital content feel trustworthy, polished, and easy to act on.",
+      "Grove shows the visual-design side: creating hierarchy, choosing what should lead, reducing clutter, and making digital content feel trustworthy, polished, and easy to act on.",
       "My UX background gives me an advantage on ecommerce, email, and digital campaign assets because I think about how a visual decision affects attention, click behavior, comprehension, and brand perception.",
     ],
     keywords: [
@@ -1020,12 +974,6 @@ export const curatedPages: Record<string, CuratedPage> = {
         path: "/case-study/grove",
         description: "Visual system, mobile composition, tone, and polished product screens.",
         icon: <SproutIcon />,
-      },
-      {
-        label: "Good Harvest case study",
-        path: "/case-study/good-harvest",
-        description: "Before/final layouts, hierarchy, CTA clarity, and visual iteration.",
-        icon: <MagnifierIcon />,
       },
       {
         label: "Mobbin case study",

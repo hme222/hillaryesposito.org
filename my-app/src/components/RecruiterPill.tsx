@@ -117,12 +117,6 @@ export default function RecruiterPill() {
                         <span>Dashboard-to-online-EMR workflow redesign; user roles, permissions, workflow states; contributed to a 20% EMR cost reduction</span>
                       </button>
                     </li>
-                    <li>
-                      <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/good-harvest")}>
-                        <strong>Good Harvest</strong>
-                        <span>22-user Maze testing across 3 rounds; redesigned around trust, not discoverability</span>
-                      </button>
-                    </li>
                   </ul>
                 </section>
 

@@ -9,7 +9,7 @@ import SpanishCaseStudy from "../../components/SpanishCaseStudy";
 import { useLanguage } from "../../app/LanguageContext";
 import { MSK_ES } from "../../data/spanishCaseStudies";
 import useReveal from "../../hooks/useReveal";
-import { SproutIcon, LeafIcon } from "../../components/LineIcons";
+import { SproutIcon, PhoneIcon } from "../../components/LineIcons";
 
 // Lazy-loaded so three.js ships in its own chunk (only fetched on this page).
 const MSKSystemMap = lazy(() => import("../../components/MSKSystemMap"));
@@ -22,10 +22,10 @@ const OTHER_PROJECTS = [
     path: "/case-study/grove",
   },
   {
-    icon: <LeafIcon />,
-    title: "Good Harvest",
-    desc: "Heatmap testing with 22 users found a trust problem: people located the seasonal info but didn't believe it applied to them.",
-    path: "/case-study/good-harvest",
+    icon: <PhoneIcon />,
+    title: "Mobbin",
+    desc: "200+ screens across three finance apps, documented into searchable, step-by-step references for Mobbin's library.",
+    path: "/case-study/mobbin",
   },
 ];
 
@@ -50,9 +50,12 @@ export default function MSKCaseStudy() {
           <h1>Memorial Sloan Kettering</h1>
           <p className="gh-hero__intro">
             <strong>Clinicians were printing digital records just to re-file them digitally.</strong>{" "}
-            Six years and three roles later, I'd redesigned the workflows, onboarding, and
-            certification systems <strong>21,000+ clinicians and administrative staff</strong> depend
-            on, and the fixes outlasted the leadership that approved them.
+            Every clinician's day runs on the EMR — the electronic medical record, the digital chart
+            system that holds a patient's whole history. At MSK, one workflow inside it made staff
+            print a record only to send it back in by hand. Six years and three roles later, I'd
+            redesigned the workflows, onboarding, and certification systems{" "}
+            <strong>21,000+ clinicians and administrative staff</strong> depend on, and the fixes
+            outlasted the leadership that approved them.
           </p>
         </div>
         <div className="gh-hero__visual msk-hero-dashboard" aria-hidden="true">

@@ -125,10 +125,6 @@ const en = {
   "home.proj.msk.desc":
     "21K+ clinicians and staff, 20% EMR cost reduction, and 70% certification workflow gain across six years at MSK.",
   "home.proj.msk.alt": "Memorial Sloan Kettering Cancer Center",
-  "home.proj.gh.subtitle": "Product Design · UX Research",
-  "home.proj.gh.desc":
-    "Heatmap testing with 22 users found a trust problem: people located the seasonal info but didn't believe it applied to them.",
-  "home.proj.gh.alt": "Good Harvest wireframe, final design, and heatmap testing",
   "home.proj.mobbin.subtitle": "Freelance · UX Flow Documentation · Pattern Curation",
   "home.proj.mobbin.desc":
     "Freelance app capture specialist documenting end-to-end UX flows, interaction patterns, and product journeys for Mobbin.",
@@ -276,10 +272,6 @@ const es: Partial<Record<StringKey, string>> = {
   "home.proj.msk.subtitle": "Diseño UX y de producto · Sistemas de salud",
   "home.proj.msk.desc":
     "Más de 21,000 profesionales clínicos y administrativos, 20% de reducción de costos del EMR y 70% de mejora en certificación durante seis años en MSK.",
-  "home.proj.gh.subtitle": "Diseño de producto · Investigación UX",
-  "home.proj.gh.desc":
-    "Pruebas de mapas de calor con 22 usuarios revelaron un problema de confianza: las personas encontraban la información de temporada, pero no creían que aplicara a su caso.",
-  "home.proj.gh.alt": "Wireframe, diseño final y pruebas de mapa de calor de Good Harvest",
   "home.proj.mobbin.subtitle": "Freelance · Documentación de flujos UX · Curaduría de patrones",
   "home.proj.mobbin.desc":
     "Especialista freelance en captura de apps, documentando flujos UX completos, patrones de interacción y recorridos de producto para Mobbin.",

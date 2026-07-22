@@ -18,7 +18,6 @@ function NotFound() {
 import Home from "../pages/Home";
 import About from "../pages/AboutMe";
 
-import GoodHarvest from "../pages/case-studies/GoodHarvest";
 import Grove from "../pages/case-studies/Grove";
 import MSK from "../pages/case-studies/MSK";
 import CuratedRolePage from "../pages/curated/CuratedRolePage";
@@ -49,7 +48,6 @@ const ROUTE_NAMES: Record<string, string> = {
   "/about": "About",
   "/case-study/msk": "MSK case study",
   "/case-study/grove": "Grove case study",
-  "/case-study/good-harvest": "Good Harvest case study",
   "/case-study/mobbin": "Mobbin case study",
   "/curated/fashion-campaign-system": "Fashion campaign system",
 };
@@ -79,7 +77,6 @@ export default function AppRoutes() {
       <Route path="/projects" element={<Navigate to="/?scrollTo=projects" replace />} />
       <Route path="/about" element={<About />} />
 
-      <Route path="/case-study/good-harvest" element={<GoodHarvest />} />
       <Route path="/case-study/grove" element={<Grove />} />
       <Route path="/case-study/mobbin" element={<PasswordGate><Suspense fallback={null}><Mobbin /></Suspense></PasswordGate>} />
       <Route path="/case-study/msk" element={<MSK />} />

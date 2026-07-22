@@ -15,9 +15,9 @@ const APPS = [
   {
     slug: "kikoff",
     name: "Kikoff",
-    category: "Fintech · Credit building",
+    category: "Finance · Credit building",
     blurb:
-      "Catalogued the credit-building onboarding flow, surfacing how Kikoff turns a complex financial product into a confidence-building first session.",
+      "Documented Kikoff's credit-building sign-up, showing how it turns a complicated money product into a first session that builds confidence.",
     image: "/assets/mobbin/kikoff.jpg",
     alt: "Kikoff app screen showing credit building flow",
   },
@@ -26,7 +26,7 @@ const APPS = [
     name: "Polymarket",
     category: "Prediction markets",
     blurb:
-      "Documented how Polymarket presents probabilistic data (odds, positions, and market resolution) without overwhelming first-time users.",
+      "Documented how Polymarket shows odds, bets, and how each market is settled without overwhelming first-time users.",
     image: "/assets/mobbin/polymarket.jpg",
     alt: "Polymarket app screen showing prediction market interface",
   },
@@ -35,7 +35,7 @@ const APPS = [
     name: "Discover",
     category: "Banking · Credit cards",
     blurb:
-      "Captured the account and rewards experience: patterns that demonstrate how a legacy financial brand handles trust, clarity, and disclosure.",
+      "Captured the account and rewards screens: how an old, established bank handles trust, clarity, and telling you the fine print.",
     image: "/assets/mobbin/discover.jpg",
     alt: "Discover app screen showing account and rewards view",
   },
@@ -73,14 +73,14 @@ export default function MobbinCaseStudy() {
       {/* ── HERO ── */}
       <header className="gh-hero">
         <div className="gh-hero__copy">
-          <p className="meta">App Capture Specialist | UX Flow Documentation & UI Pattern Curation</p>
+          <p className="meta">App Capture Specialist · Documenting how apps flow, screen by screen</p>
           <h1>Mobbin</h1>
           <p className="gh-hero__intro">
             <strong>Anyone can screenshot an app. Mobbin hired me to decide what 200+ screens mean
-            to a designer who'll never meet me.</strong> I documented three fintech products
+            to a designer who'll never meet me.</strong> I documented three finance apps
             (<strong>Kikoff</strong>, <strong>Polymarket</strong>, and <strong>Discover</strong>)
-            into searchable UX flow references, mapping the interaction sequences and curating the
-            patterns product teams actually search for.
+            into searchable, step-by-step references other designers can learn from: what each screen
+            is, the order things happen in, and which patterns product teams actually go looking for.
           </p>
         </div>
         <div className="gh-hero__visual" aria-hidden="true">
@@ -126,19 +126,19 @@ export default function MobbinCaseStudy() {
         <div className="cs-skim-grid">
           <article className="cs-skim-card">
             <span>Problem</span>
-            <p>Mobbin needed complete, reliable, searchable product-flow references, not loose screenshots without context.</p>
+            <p>Mobbin needed complete, reliable, searchable references for how apps actually work — not a pile of screenshots with no context.</p>
           </article>
           <article className="cs-skim-card">
             <span>My role</span>
-            <p>Freelance App Capture Specialist documenting UX flows, interaction sequences, UI patterns, and product journeys.</p>
+            <p>Freelance capture specialist: documenting how each app flows, screen by screen — the steps, the patterns, the whole journey.</p>
           </article>
           <article className="cs-skim-card">
             <span>Key decision</span>
-            <p>Capture full task paths and edge states so each entry could work as a product design reference.</p>
+            <p>Capture the whole path a user takes, including the moments things go wrong or a screen is empty, so each entry works as a real reference.</p>
           </article>
           <article className="cs-skim-card">
             <span>Outcome</span>
-            <p>200+ screens across three fintech products, reviewed for clarity, completeness, and reusable pattern value.</p>
+            <p>200+ screens across three finance apps, each checked for clarity, completeness, and patterns other designers can reuse.</p>
           </article>
         </div>
       </section>
@@ -153,9 +153,9 @@ export default function MobbinCaseStudy() {
       <section className="mobbin-artifact-strip" aria-labelledby="mobbin-artifact-title">
         <div className="mobbin-artifact-strip__copy">
           <p className="gh-section-label">Artifact preview</p>
-          <h2 id="mobbin-artifact-title">Screenshots became searchable UX flow documentation.</h2>
+          <h2 id="mobbin-artifact-title">Screenshots became searchable, step-by-step documentation.</h2>
           <p>
-            The work was not just capture. Each screen had to sit inside a sequence, carry the right taxonomy, and help another designer understand the interaction pattern without replaying the app themselves.
+            The work wasn't just taking pictures. Each screen had to sit in the right order, carry the right labels so people could find it, and help another designer understand the pattern without opening the app themselves.
           </p>
         </div>
         <div className="mobbin-artifact-strip__flow" aria-label="Mobbin documentation flow">
@@ -174,15 +174,15 @@ export default function MobbinCaseStudy() {
       {/* ── THE WORK ── */}
       <section id="mobbin-work" className="cs-overview">
         <p className="gh-section-label">The work</p>
-        <h2 className="cs-section-title">Flow documentation is editorial judgment</h2>
+        <h2 className="cs-section-title">Documenting a flow is a judgment call, not a screenshot</h2>
         <p className="cs-overview-text">
-          Mobbin brought me on as a freelance App Capture Specialist to document three fintech
-          apps for its design reference library. Over four months I captured 200+ screens,
-          organized them into flows, and tagged everything against Mobbin's taxonomy so other
-          designers could actually find the work. Anyone can capture a screen. The challenge is
-          knowing <em>which</em> flows are worth documenting, <em>how</em> to structure them so
-          they're findable, and <em>what</em> to write so a designer arriving without context
-          understands what they're looking at, and why the pattern matters.
+          Mobbin brought me on as a freelance capture specialist to document three finance apps
+          for its reference library. Over four months I captured 200+ screens, put them in order
+          as flows, and tagged them with Mobbin's own vocabulary so other designers could actually
+          find them. Anyone can grab a screenshot. The hard part is knowing <em>which</em> flows are
+          worth documenting, <em>how</em> to organize them so they're findable, and <em>what</em> to
+          write so a designer landing cold understands what they're looking at, and why the pattern
+          matters.
         </p>
 
         <div className="gh-assumption-grid" style={{ marginTop: "1.5rem" }}>
@@ -192,29 +192,28 @@ export default function MobbinCaseStudy() {
           </div>
           <div className="gh-assumption-card gh-assumption-card--finding">
             <p className="gh-assumption-label">The judgment calls</p>
-            <p>Deciding what's worth showing, chunking flows into meaningful sequences, and writing annotations that stay useful to thousands of designers who will never meet me.</p>
+            <p>Deciding what's worth showing, breaking flows into steps that make sense, and writing notes that stay useful to thousands of designers I'll never meet.</p>
           </div>
         </div>
 
-        <Disclosure title="Show my capture method and editorial criteria">
+        <Disclosure title="Show how I captured, and what I chose to include">
           <p className="cs-overview-text">
-            The method: walk every flow as a real user, across iOS, edge cases, and empty states,
-            capturing screens and mapping key interaction sequences, then organize onboarding flows,
-            conversion paths, feature entry points, and interaction behaviors into a searchable
-            structure. Mobbin's value is in sequences, so the judgment call was identifying which
-            interactions only make sense in context of the full journey. Kikoff's 12-screen
-            onboarding earned a full capture; Discover's marketing interstitials stayed out of the
-            batch, because designers search Mobbin to solve interaction problems, and task flows are
-            more reusable than landing pages. Empty states and error screens were the hardest to
-            reach but the most valuable. The tooling stayed light: the live apps themselves, Figma
-            when a pattern needed annotation beyond a screen capture, and Mobbin's own taxonomy as
-            the source of truth for conventions and the quality bar.
+            The method: walk through every flow like a real user on iPhone — including the odd cases
+            and the empty screens — capturing each one and noting the order things happen in. Then
+            sort them into groups: sign-up flows, the steps that lead to signing up or paying, where
+            each feature starts, and how the app responds when you tap. Mobbin's whole value is in
+            the sequence, so the judgment call was spotting which screens only make sense as part of
+            the full journey. Kikoff's 12-screen sign-up earned a full capture. Discover's marketing
+            splash screens didn't make the cut — designers come to Mobbin to solve real design
+            problems, and task flows are more reusable than landing pages. The empty and error
+            screens were the hardest to reach and the most valuable. The tools stayed simple: the
+            live apps themselves, Figma when a pattern needed more explaining than a screenshot could
+            carry, and Mobbin's own vocabulary as the rulebook for naming and quality.
           </p>
           <p className="cs-overview-text" style={{ marginTop: "0.75rem" }}>
-            Every annotation was written for a designer arriving without context, in a situation I
-            can't predict, so each one has to explain what the screen does and why it matters.
-            Writing for thousands of designers in contexts I can't predict required a different
-            standard than writing for a known team.
+            Every note was written for a designer landing on it cold, in a situation I can't predict,
+            so each one has to explain what the screen does and why it matters. Writing for thousands
+            of strangers takes a different standard than writing for a team you already know.
           </p>
         </Disclosure>
 
@@ -225,14 +224,14 @@ export default function MobbinCaseStudy() {
         <p className="gh-section-label">Three apps, one trust problem</p>
         <h2>Same goal, three completely different approaches</h2>
         <p style={{ maxWidth: 720, marginBottom: "2rem", color: "var(--muted)", lineHeight: 1.7 }}>
-          Each app sits in a different corner of fintech and financial UX:
-          credit building, prediction markets, and legacy banking. All three ask users to trust
-          them with money, and I treated each as a different trust problem. Kikoff builds trust
-          through immediate proof (show the score change). Polymarket builds trust through
-          transparency (show the math behind the odds). Discover builds trust through familiarity
-          (match the mental model people already have from physical cards). Comparing their
-          approaches side by side is what reveals the pattern system, and understanding the trust
-          strategy behind each pattern is what made the annotations useful.
+          Each app lives in a different corner of finance:
+          building credit, betting on outcomes, and old-school banking. All three ask people to trust
+          them with money, and I treated each as a different trust problem. Kikoff earns trust by
+          showing proof right away (watch your score change). Polymarket earns it by being transparent
+          (show the math behind the odds). Discover earns it by feeling familiar (match what people
+          already expect from a physical card). Putting them side by side is what reveals the
+          patterns, and knowing what each one was trying to earn is what made the notes worth
+          reading.
         </p>
 
         <div className="mobbin-phones-row">
@@ -264,31 +263,31 @@ export default function MobbinCaseStudy() {
         </div>
 
         <p style={{ maxWidth: 720, margin: "2rem 0 0", color: "var(--muted)", lineHeight: 1.7 }}>
-          Polymarket's core view, the market detail screen showing live odds, position history,
-          and resolution criteria, went into the library tagged under data transparency, risk
-          disclosure, real-time data, decision support, and progressive disclosure. My annotation:{" "}
-          <em>"Surfaces the math behind the odds without requiring financial literacy. Resolution
-          criteria visible before any action. The user knows how they'll win or lose before
-          committing. Transparency as trust mechanism."</em> Prediction markets ask users to risk
-          money on uncertain outcomes; where Kikoff builds trust by showing results, Polymarket
-          builds trust by showing the rules. Same goal, opposite approach. Worth studying side by side.
+          Polymarket's main screen — live odds, your past bets, and the exact rules for how a bet
+          gets settled — went into the library tagged for things like showing the math, spelling out
+          the risk, and revealing detail a bit at a time. My note:{" "}
+          <em>"Shows the math behind the odds without needing any finance background. The rules for
+          winning or losing are visible before you commit. Transparency as a way to build trust."</em>{" "}
+          Prediction markets ask people to risk money on an uncertain outcome; where Kikoff builds
+          trust by showing results, Polymarket builds it by showing the rules. Same goal, opposite
+          approach. Worth studying side by side.
         </p>
         <p style={{ maxWidth: 720, margin: "1rem 0 0", color: "var(--muted)", lineHeight: 1.7 }}>
-          The comparison also broke a metric I'd trusted: onboarding length does not equal
-          friction. Kikoff's 12-screen onboarding should feel long, but it doesn't, because each
-          screen gives the user something (a score, a plan, a confirmation). Polymarket's 4-screen
-          onboarding feels longer because it front-loads legal disclosure without reward. Screen
-          count is a misleading metric.
+          The comparison also broke a rule I'd trusted: a longer sign-up doesn't mean more
+          friction. Kikoff's 12-screen sign-up should feel long, but it doesn't, because every
+          screen gives you something (a score, a plan, a confirmation). Polymarket's 4-screen
+          sign-up feels longer because it front-loads legal fine print with nothing in return.
+          Counting screens tells you almost nothing.
         </p>
       </section>
 
       {/* ── ONE ENTRY, UP CLOSE ── */}
       <section id="mobbin-entry">
         <p className="gh-section-label">One entry, up close</p>
-        <h2>Anatomy of a pattern entry</h2>
+        <h2>What goes into a single entry</h2>
         <p style={{ maxWidth: 720, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.7 }}>
-          Each screen I catalogued needed structured metadata that fits Mobbin's taxonomy.
-          Here's an example of the judgment calls behind a single entry.
+          Every screen I filed needed the right labels so it fits Mobbin's system.
+          Here's the thinking behind one entry.
         </p>
 
         <div className="mobbin-example-entry feature" style={{ padding: "1.5rem", borderRadius: "12px" }}>
@@ -301,7 +300,7 @@ export default function MobbinCaseStudy() {
             <div className="mobbin-example-block">
               <p className="mobbin-example-label">Screen</p>
               <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
-                Credit score progress screen (post-onboarding), from the "First session → credit building" flow.
+                The credit-score progress screen, right after sign-up, from the "first session → building credit" flow.
               </p>
             </div>
             <div className="mobbin-example-block">
@@ -315,16 +314,16 @@ export default function MobbinCaseStudy() {
             <div className="mobbin-example-block">
               <p className="mobbin-example-label">My annotation</p>
               <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65, fontStyle: "italic" }}>
-                "Shows credit score improvement as a direct result of the action just taken.
-                The timing is deliberate: reinforcement appears immediately after the first
-                credit-building task, creating a cause-effect loop that builds confidence."
+                "Shows the credit score moving up right after the action that caused it.
+                The timing's deliberate — that jump lands the moment you finish the first
+                credit-building task, so cause and effect are obvious. That's what builds confidence."
               </p>
             </div>
             <div className="mobbin-example-block">
               <p className="mobbin-example-label">Why this screen matters</p>
               <p style={{ margin: 0, fontSize: "0.92rem", color: "var(--muted)", lineHeight: 1.65 }}>
-                Most fintech onboarding ends with "you're all set." Kikoff shows you the
-                <em> result</em>, immediately. Trust through proof.
+                Most finance apps end sign-up with "you're all set." Kikoff shows you the
+                <em> result</em> instead, right away. Trust through proof.
               </p>
             </div>
           </div>
@@ -336,19 +335,19 @@ export default function MobbinCaseStudy() {
         <p className="gh-section-label">The lesson</p>
         <h2>Naming is harder than designing</h2>
         <p style={{ maxWidth: 720, marginBottom: "1.25rem", color: "var(--muted)", lineHeight: 1.7 }}>
-          My first submission batch had tag inconsistencies that doubled the review cycle: I'd
-          tagged screens in my own vocabulary instead of aligning to Mobbin's taxonomy first.
-          "Progress indicator" vs. "status display" vs. "achievement" each maps to a different
-          search, and findability depends on matching the searcher's words, not mine. I also
-          over-documented marketing screens at first; designers come to the library to solve
-          interaction problems, not to read landing pages. So I front-loaded taxonomy review before
-          capturing anything and prioritized onboarding flows, key task completions, and edge/empty
-          states.
+          My first batch had messy, inconsistent labels, and it doubled the review time: I'd
+          tagged screens in my own words instead of learning Mobbin's first.
+          "Progress indicator" vs. "status display" vs. "achievement" each sends someone to a
+          different search, and a screen only gets found if I match the searcher's words, not mine.
+          I also over-documented marketing screens at first; people come to the library to
+          solve real design problems, not to read landing pages. So I studied Mobbin's vocabulary
+          before capturing anything, and put sign-up flows, key task completions, and the
+          empty-or-error screens first.
         </p>
         <div className="highlight">
           <p className="gh-design-q-label">The result</p>
-          Revision cycles dropped by half, and rework on later batches dropped with them. The lesson
-          that stuck: name patterns by how someone would search for them.
+          Revisions dropped by half, and the rework on later batches dropped with them. The lesson
+          that stuck: name things the way someone would search for them.
         </div>
       </section>
 
@@ -357,18 +356,18 @@ export default function MobbinCaseStudy() {
         <p className="gh-section-label">Where it landed</p>
         <h2 className="cs-section-title">Contributing to Mobbin's Finance+ library</h2>
         <p className="cs-overview-text" style={{ maxWidth: 720 }}>
-          Three live fintech apps fully catalogued: 200+ screens captured, annotated, and tagged,
-          documenting three distinct trust pattern categories for Mobbin's Finance+ library (50+ finance apps).{" "}
+          Three live finance apps fully documented: 200+ screens captured, annotated, and labeled —
+          three different ways of building trust, added to Mobbin's Finance+ library (50+ finance apps).{" "}
           <a href="https://mobbin.com/finance" target="_blank" rel="noopener noreferrer" className="cs-inline-link">View it live →</a>
         </p>
         <Disclosure title="Show what this changed in my product judgment">
           <p className="cs-overview-text">
-            What stuck with me: every annotation I wrote will be read by someone I'll never meet, in
-            a context I can't predict, to solve a problem I don't know about. That constraint,
-            clarity for a stranger in a hurry, is the same one good interface copy lives under. It
-            changed how I write everything. And seeing 200+ screens of real product work builds
-            pattern recognition you can't get from reading about patterns; it sharpened how I
-            evaluate my own design decisions.
+            What stuck with me: every note I wrote will be read by someone I'll never meet, in
+            a situation I can't predict, to solve a problem I don't know about. That constraint —
+            be clear for a stranger in a hurry — is the same one good interface writing lives under.
+            It changed how I write everything. And studying 200+ screens of real product work builds
+            an instinct you can't get from reading about patterns; it sharpened how I judge my own
+            design decisions.
           </p>
         </Disclosure>
       </section>

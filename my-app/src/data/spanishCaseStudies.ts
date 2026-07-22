@@ -2,62 +2,63 @@ import type { SpanishCaseStudyData } from "../components/SpanishCaseStudy";
 
 export const GROVE_ES: SpanishCaseStudyData = {
   title: "Grove",
-  meta: "Diseño de producto · IA · Investigación UX · Prototipo funcional",
+  meta: "Diseño de producto · Producto con IA · Prototipo funcional",
   intro:
-    "Grove es una app de cuidado de plantas que estoy rediseñando a partir de un prototipo funcional de Emergent. La investigación con 32 participantes redefinió el MVP: menos funciones sociales, más confianza, educación sobre la iluminación, recordatorios tranquilos y criterio humano sobre la IA.",
+    "Grove es una app de cuidado de plantas. Una herramienta de IA llamada Emergent me construyó la app entera, rápido, llena de funciones. Pero cuando me senté a probar esa primera versión, la forma en que estaba organizada se sentía confusa: demasiadas cosas, en el orden equivocado. Así que hice la investigación que debí haber hecho primero, y les pregunté a 32 dueños de plantas qué querían de verdad. Resultó ser algo más tranquilo y más simple. Ahora la estoy rehaciendo alrededor de eso: quito las funciones sociales que nadie pidió y le enseño a la IA a admitir cuando no está segura. Porque cuando una planta es tóxica para un gato, adivinar mal no es una sugerencia. Es un riesgo.",
   stats: [
-    { label: "Rol", value: "Diseño de producto, investigación, prototipo" },
+    { label: "Rol", value: "Diseñadora de producto (en solitario)" },
     { label: "Muestra", value: "32 respuestas de encuesta" },
     { label: "Tiempo", value: "Fase 2 de 3" },
-    { label: "Estado", value: "Rediseño en curso; pruebas moderadas a continuación" },
+    { label: "Estado", value: "Rediseño en curso" },
   ],
   sections: [
     {
-      eyebrow: "Problema",
-      title: "Las apps de plantas prometen cuidado, pero muchas generan estrés",
+      eyebrow: "Dónde empieza esto",
+      title: "Los dueños de plantas se olvidan. Y luego se sienten culpables.",
       body: [
-        "Los usuarios no rechazaban la guía. Rechazaban consejos genéricos, contradictorios y sin fuentes. También rechazaban recordatorios que se sentían como regaños.",
-        "El hallazgo más fuerte fue que la brecha principal para nuevos dueños de plantas no era solo agua. Era luz: dónde colocar la planta, por qué ese lugar importa y cómo reconocer señales antes de que la planta esté en riesgo.",
+        "La mayoría de la gente que compra una planta quiere una sola cosa: mantenerla viva. Pero se olvidan de regarla, o la riegan de más, y de cualquier forma se sienten mal. Les pregunté a 32 dueños de plantas qué era lo que más los frustraba. La respuesta más común: “Los consejos son demasiado genéricos, no toman en cuenta mi casa.” Lo que más rápido hace que borren una app, dicho por 15+ personas sin que se lo preguntara: demasiadas notificaciones. Una persona resumió todo el trabajo en seis palabras: “El cuidado de plantas debería sentirse tranquilo, no estresante.”",
+        "El punto débil: en lo que peor están los dueños nuevos es en la luz — dónde poner una planta, y por qué. Ninguna app grande lo enseña. La gente calificó su propia confianza sobre la luz en 2.4 de 5, y pidió, sin que se lo preguntara, una app que “me diga exactamente dónde colocar una planta.” Ahí, más la confianza, es donde Grove gana o no gana.",
       ],
     },
     {
       eyebrow: "Investigación",
-      title: "La encuesta cambió el MVP",
+      title: "Les pregunté a 32 dueños de plantas qué importa de verdad",
       body: [
-        "La encuesta obligó a separar funciones atractivas de funciones esenciales. Comunidad, swaps y recompensas eran interesantes, pero no eran la razón para descargar la app.",
+        "Antes de rehacer nada, hice una encuesta. 32 personas, desde principiantes hasta coleccionistas serios, respondieron entre el 22 de mayo y el 19 de junio de 2026. El objetivo era simple: probar mis suposiciones antes de confiar en ellas.",
+        "Emergent había construido las funciones sociales dentro de la app. La encuesta dijo que no es por eso que la gente la descarga. Así que hice una pregunta difícil: “Si Grove solo pudiera lanzarse con TRES funciones, ¿cuáles no podrías dejar de tener?” Las tres primeras se construyeron primero. Todo lo demás espera.",
       ],
       bullets: [
-        "Recordatorios inteligentes fueron la función más importante, pero solo si tenían límites claros.",
-        "Identificación por cámara y diagnóstico por foto eran esenciales, pero necesitaban confianza, fuentes y niveles de certeza.",
-        "La educación sobre la luz y la toxicidad para mascotas se convirtió en parte del núcleo de confianza.",
+        "Recordatorios inteligentes: la función más pedida (74%), pero solo con límites claros.",
+        "Identificar la planta con la cámara (61%) y diagnóstico por foto: esenciales, pero tenían que mostrar cuánta confianza tienen y sus fuentes.",
+        "Las advertencias para plantas tóxicas para mascotas (9 de 12 dueños nuevos las pidieron solos) y la educación sobre la luz pasaron a ser parte del núcleo de confianza, aunque yo ni siquiera las había construido.",
       ],
     },
     {
       eyebrow: "Producto",
-      title: "Diseñé una cola de cuidado, no una lista de tareas",
+      title: "Agrupé las plantas por dónde viven, no en una sola lista larga",
       body: [
-        "La pantalla principal prioriza lo que necesita atención hoy. Oculta funciones secundarias hasta que la tarea de cuidado está clara. La intención era reducir carga cognitiva y evitar que la app se sintiera como administración extra.",
-        "También documenté decisiones donde rechacé salidas de IA: tono culpabilizador, recompensas tipo juego, confianza falsa en identificación de plantas y notificaciones demasiado frecuentes.",
+        "Otras apps meten todas las plantas en una sola lista larga. Abruma — ¿por dónde empiezas? Grove agrupa las plantas por dónde viven: la ventana de la cocina, el estante de la sala, la recámara. Cada pantalla responde una sola pregunta: ¿qué grupo estoy viendo? Un usuario nuevo solo ve una tarea al día.",
+        "También anoté las cinco decisiones donde le dije que no a la IA: el tono que hace sentir culpa, las recompensas tipo juego, la falsa certeza al identificar una planta, y las notificaciones demasiado frecuentes. Cada una respaldada por lo que dijo la encuesta.",
       ],
     },
     {
-      eyebrow: "Estados y casos límite",
-      title: "El producto se define en los estados difíciles",
+      eyebrow: "Cuando algo sale mal",
+      title: "El producto se decide en los momentos difíciles",
       body: [
-        "Diseñé estados vacíos, baja confianza de IA, regreso después de varios días, advertencias de toxicidad y límites de notificaciones. Esos detalles importan porque determinan si la experiencia se siente útil o estresante.",
+        "Cuando todo sale bien, cualquier app se ve bien. La prueba real son los momentos difíciles: la pantalla vacía, cuando la IA no está segura, volver después de varios días sin que te haga sentir culpa, la advertencia de una planta tóxica para mascotas, y el límite de notificaciones. Esos detalles deciden si la app se siente útil o estresante.",
       ],
     },
     {
       eyebrow: "Resultado",
-      title: "El prototipo demostró pensamiento de producto y criterio con IA",
+      title: "Un prototipo que muestra criterio, no solo pantallas bonitas",
       body: [
-        "El resultado no fue solo una app visual. Fue una definición más honesta del MVP, una hipótesis clara para pruebas moderadas y un registro de decisiones que muestra dónde la IA acelera el trabajo y dónde debe ser corregida por criterio humano.",
+        "Lo que quedó no fue solo una app bonita. Fue una definición más honesta de la primera versión, una hipótesis clara para las pruebas con personas reales, y un registro de decisiones que muestra dónde la IA acelera el trabajo y dónde un humano tiene que corregirla. La diferencia no es usar IA. Es saber cuándo confiar en ella y cuándo decir que no.",
       ],
     },
   ],
   otherProjects: [
     { title: "MSK Cancer Center", desc: "Seis años rediseñando flujos clínicos, onboarding y certificación para más de 21,000 clínicos y personal administrativo.", path: "/case-study/msk" },
-    { title: "Good Harvest", desc: "Las pruebas con mapas de calor con 22 usuarios revelaron un problema de confianza: la gente encontraba la información estacional, pero no creía que aplicara a su zona.", path: "/case-study/good-harvest" },
+    { title: "Mobbin", desc: "Más de 200 pantallas de tres apps de finanzas, documentadas como referencias buscables paso a paso para la biblioteca de Mobbin.", path: "/case-study/mobbin" },
   ],
 };
 
@@ -65,7 +66,7 @@ export const MSK_ES: SpanishCaseStudyData = {
   title: "Memorial Sloan Kettering",
   meta: "UX y diseño de producto · Sistemas de salud · Herramientas internas",
   intro:
-    "Durante seis años en MSK, rediseñé flujos clínicos, onboarding y procesos operativos para sistemas usados por más de 21,000 profesionales clínicos y administrativos. Este trabajo muestra diseño aplicado a herramientas internas, permisos, estados y adopción en un entorno de salud real.",
+    "Durante seis años en MSK, rediseñé flujos clínicos, onboarding y procesos operativos para sistemas usados por más de 21,000 profesionales clínicos y administrativos. El día de cada clínico gira en torno al EMR: el expediente médico electrónico, la historia clínica digital donde vive toda la información del paciente. Este trabajo muestra diseño aplicado a herramientas internas, permisos, estados y adopción en un entorno de salud real.",
   stats: [
     { label: "Rol", value: "Sistemas de salud → UX y diseño de producto" },
     { label: "Organización", value: "Memorial Sloan Kettering Cancer Center" },
@@ -110,60 +111,7 @@ export const MSK_ES: SpanishCaseStudyData = {
   ],
   otherProjects: [
     { title: "Grove", desc: "App de cuidado de plantas con IA. Sola, de la investigación a un prototipo funcional.", path: "/case-study/grove" },
-    { title: "Good Harvest", desc: "Las pruebas con mapas de calor con 22 usuarios revelaron un problema de confianza en la información estacional.", path: "/case-study/good-harvest" },
-  ],
-};
-
-export const GOOD_HARVEST_ES: SpanishCaseStudyData = {
-  title: "Good Harvest",
-  meta: "Diseño de producto · Prototipo móvil · Pruebas de mapa de calor",
-  intro:
-    "Good Harvest fue un proyecto de UX Bootcamp donde tomé investigación proporcionada, diseñé un prototipo móvil y generé evidencia propia con pruebas de usabilidad y mapas de calor.",
-  stats: [
-    { label: "Contexto", value: "Proyecto UX Bootcamp" },
-    { label: "Rol", value: "Diseño, prototipo, pruebas" },
-    { label: "Investigación", value: "Datos iniciales proporcionados" },
-    { label: "Pruebas", value: "22 participantes en Maze" },
-  ],
-  sections: [
-    {
-      eyebrow: "Punto de partida",
-      title: "La investigación indicaba un problema de confianza, no solo de descubrimiento",
-      body: [
-        "La investigación proporcionada mostraba que las personas podían encontrar información sobre productos de temporada, pero no necesariamente creían que aplicaba a su situación.",
-        "Mi trabajo fue convertir esos hallazgos en decisiones de diseño, prototipo y pruebas.",
-      ],
-    },
-    {
-      eyebrow: "Diseño",
-      title: "Hacer que lo local y lo estacional se sintiera específico",
-      body: [
-        "Rediseñé el flujo para conectar productos locales, recetas y contexto de temporada. El objetivo era que la información no se sintiera genérica, sino accionable y relevante.",
-      ],
-    },
-    {
-      eyebrow: "Validación",
-      title: "Los mapas de calor cambiaron la iteración",
-      body: [
-        "Usé pruebas no moderadas en Maze para ver dónde tocaban primero los usuarios, dónde dudaban y qué información ignoraban. La iteración priorizó claridad, jerarquía y confianza.",
-      ],
-      bullets: [
-        "3 de 4 tareas clave se completaron sin ayuda.",
-        "El flujo bajó de 7 toques a 4 toques.",
-        "Los primeros toques se concentraron en el módulo de productos de temporada.",
-      ],
-    },
-    {
-      eyebrow: "Aprendizaje",
-      title: "El diseño no podía depender de más texto",
-      body: [
-        "La solución no era explicar más. Era estructurar mejor la información, mostrar contexto en el momento correcto y reducir dudas antes de pedir acción.",
-      ],
-    },
-  ],
-  otherProjects: [
-    { title: "Grove", desc: "App de cuidado de plantas con IA. Sola, de la investigación a un prototipo funcional.", path: "/case-study/grove" },
-    { title: "MSK Cancer Center", desc: "Seis años rediseñando flujos clínicos, onboarding y certificación para más de 21,000 clínicos y personal administrativo.", path: "/case-study/msk" },
+    { title: "Mobbin", desc: "Más de 200 pantallas de tres apps de finanzas, documentadas como referencias buscables paso a paso para la biblioteca de Mobbin.", path: "/case-study/mobbin" },
   ],
 };
 

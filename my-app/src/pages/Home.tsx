@@ -59,7 +59,7 @@ const PROJECTS: Project[] = [
     title: "Grove",
     subtitleKey: "home.proj.grove.subtitle",
     descKey: "home.proj.grove.desc",
-    images: ["/assets/grove/bouquet.jpg"],
+    images: ["/assets/grove/Growth.jpg", "/assets/grove/bouquet.jpg", "/assets/grove/plantpersonality.jpg"],
     imageAltKey: "home.proj.grove.alt",
     bg: "#1b2f15",
     path: "/case-study/grove",
