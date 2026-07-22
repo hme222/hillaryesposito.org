@@ -10,6 +10,7 @@ import { useLanguage } from "../../app/LanguageContext";
 import { GROVE_ES } from "../../data/spanishCaseStudies";
 import useReveal from "../../hooks/useReveal";
 import { StateMatrix } from "../../components/casestudy/ShowKit";
+import GroveAppDemo from "../../components/GroveAppDemo";
 import { HandIcon, MedicalCrossIcon, PhoneIcon } from "../../components/LineIcons";
 
 const SURVEY_FINDINGS = [
@@ -189,33 +190,11 @@ export default function GroveCaseStudy() {
       <section id="grove-app-tour" aria-labelledby="grove-app-tour-title">
         <p className="gh-section-label">Inside the app</p>
         <h2 id="grove-app-tour-title" className="cs-section-title">A look at Grove</h2>
-        <p style={{ maxWidth: 640, marginBottom: "1.75rem", color: "var(--muted)", lineHeight: 1.65 }}>
-          The working full-stack app (React, FastAPI, MongoDB). These are the screens the survey said
-          to keep, plus the calmer welcome the redesign leads with.
+        <p style={{ maxWidth: 640, marginBottom: "2rem", color: "var(--muted)", lineHeight: 1.65 }}>
+          The working full-stack app (React, FastAPI, MongoDB), playing through itself. Tap any
+          section to jump, or pause whenever.
         </p>
-        <div className="grove-showcase">
-          {[
-            ["/assets/grove/grove1.png", "Welcome", "Opens calm, not busy. Care first, no feed.", "#1b2f15"],
-            ["/assets/grove/bouquet.jpg", "Bouquets", "Plants grouped by where they live.", "#f5f0e8"],
-            ["/assets/grove/Growth.jpg", "Photo journal", "A plant's photos over time — the real reward.", "#f5f0e8"],
-            ["/assets/grove/plantpersonality.jpg", "Plant personality", "Earned at a care milestone, not with points.", "#f5f0e8"],
-          ].map(([src, label, note, bg]) => (
-            <figure key={label} className="grove-showcase__item">
-              <div className="grove-phone-frame" style={{ background: bg }}>
-                <img
-                  src={src}
-                  alt={`Grove app, ${label} screen`}
-                  className={`grove-phone-frame__img${bg === "#1b2f15" ? " grove-phone-frame__img--welcome" : ""}`}
-                  loading="lazy"
-                />
-              </div>
-              <figcaption className="grove-showcase__cap">
-                <span className="grove-showcase__label">{label}</span>
-                {note}
-              </figcaption>
-            </figure>
-          ))}
-        </div>
+        <GroveAppDemo />
       </section>
 
       {/* ── THE PREMISE ── */}

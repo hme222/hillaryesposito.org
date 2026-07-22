@@ -22,7 +22,6 @@ import Grove from "../pages/case-studies/Grove";
 import MSK from "../pages/case-studies/MSK";
 import CuratedRolePage from "../pages/curated/CuratedRolePage";
 import FashionCampaignSystem from "../pages/curated/FashionCampaignSystem";
-import PasswordGate from "../components/PasswordGate";
 import { Navigate } from "react-router-dom";
 
 // Lazy so the NDA'd Mobbin case-study text ships in its own chunk, fetched only
@@ -78,7 +77,7 @@ export default function AppRoutes() {
       <Route path="/about" element={<About />} />
 
       <Route path="/case-study/grove" element={<Grove />} />
-      <Route path="/case-study/mobbin" element={<PasswordGate><Suspense fallback={null}><Mobbin /></Suspense></PasswordGate>} />
+      <Route path="/case-study/mobbin" element={<Suspense fallback={null}><Mobbin /></Suspense>} />
       <Route path="/case-study/msk" element={<MSK />} />
       <Route path="/curated/fashion-campaign-system" element={<FashionCampaignSystem />} />
       <Route path="/curated/:slug" element={<CuratedRolePage />} />

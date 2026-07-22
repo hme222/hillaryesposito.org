@@ -435,7 +435,7 @@ export default function Home() {
               {
                 titleKey: "home.tailor.enterprise.title",
                 descKey: "home.tailor.enterprise.desc",
-                path: "/curated/jpm-ux-design-lead-vp-workflows",
+                path: "/case-study/msk",
               },
               {
                 titleKey: "home.tailor.ai.title",

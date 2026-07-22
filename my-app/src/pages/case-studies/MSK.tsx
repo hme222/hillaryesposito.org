@@ -144,12 +144,12 @@ export default function MSKCaseStudy() {
         </p>
         <div className="msk-workflow-artifact feature" aria-label="Before and after EMR workflow">
           {([
-            ["before", "Before", "Print, send, then re-file online",
-              [["Open the dashboard", "Dashboard"], ["Find the record that needed filing", "Dashboard"], ["Print the documentation packet", "Paper"], ["Send it to a separate filing site", "Filing site"], ["Wait for the record to be filed back into EMR", "Filing site"], ["Return later to confirm completion", "EMR"]],
-              "Failure mode: the workflow turned a digital record into paper, then back into a digital record: four systems for one filing."],
-            ["after", "After", "One dashboard button to online EMR",
-              [["Open the dashboard", "Dashboard"], ["Select the record", "Dashboard"], ["Click the direct EMR action", "Dashboard"], ["Land in the online EMR filing destination", "EMR"], ["Complete the filing action digitally", "EMR"], ["Return to the dashboard with status updated", "Dashboard"]],
-              "Design decision: add the missing bridge between the dashboard and the online EMR destination, so the record never leaves the screen."],
+            ["before", "Before", "Print, scan, then re-file to the chart",
+              [["Open the work queue", "Dashboard"], ["Find the document that needed filing", "Dashboard"], ["Print the record to paper", "Paper"], ["Route the paper to document imaging", "Imaging"], ["Wait for imaging to scan it into the chart", "Imaging"], ["Return later to confirm it filed", "EMR"]],
+              "Failure mode: the workflow turned a digital document into paper, then scanned it back into a digital chart — four systems for one filing."],
+            ["after", "After", "One File-to-chart action in the queue",
+              [["Open the work queue", "Dashboard"], ["Select the document", "Dashboard"], ["Click File to chart", "Dashboard"], ["Land on the document in the online chart", "EMR"], ["File it to the chart digitally", "EMR"], ["Return to the queue with status updated", "Dashboard"]],
+              "Design decision: bridge the work queue straight to the online chart, so the document never leaves the screen."],
           ] as Array<[string, string, string, Array<[string, string]>, string]>).map(([key, label, title, steps, note], i) => (
             <React.Fragment key={key}>
               {i === 1 && <div className="msk-workflow-arrow" aria-hidden="true">→</div>}
@@ -174,10 +174,10 @@ export default function MSKCaseStudy() {
       {/* ── DASHBOARD CONCEPT ── */}
       <section className="msk-dashboard-section" aria-labelledby="msk-dashboard-title">
         <p className="gh-section-label">Interface artifact</p>
-        <h2 id="msk-dashboard-title">Recreated dashboard concept: the missing EMR action</h2>
+        <h2 id="msk-dashboard-title">Recreated dashboard concept: the missing File-to-chart action</h2>
         <p className="cs-section-intro">
-          The dashboard needed to show status, preserve accountability, and expose the direct EMR
-          action only when the record was ready and the user had permission.
+          The work queue needed to show status, preserve accountability, and expose the File-to-chart
+          action only when the document was ready and the user held chart-filing rights.
         </p>
         <MSKDashboardMockup />
       </section>
@@ -221,7 +221,7 @@ export default function MSKCaseStudy() {
           </thead>
           <tbody>
             {[
-              ["Show the action only when the record was ready", "The direct EMR button appeared in the ready-to-file state only.", "Reduced false starts on records still needing review."],
+              ["Show the action only when the document was ready", "The File-to-chart button appeared in the ready-to-file state only.", "Reduced false starts on documents still needing review."],
               ["Make permission limits visible", "Users without action access saw status and ownership, not a disabled mystery button.", "Prevented confusion; managers and compliance kept visibility."],
               ["Separate “blocked” from “not started”", "Blocked records moved to an exception state with a reason and owner.", "Separated normal backlog from work needing intervention."],
               ["Return users to the dashboard with updated status", "After filing, staff returned to the dashboard instead of losing their place.", "Closed the loop; the system felt accountable, not like a one-way link."],

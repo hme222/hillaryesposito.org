@@ -143,7 +143,7 @@ const en = {
 
   // ── Home: contact / CTA ──
   "home.contactAria": "Contact section",
-  "home.ctaTitle": "Let’s talk about the workflow your team needs to make clearer",
+  "home.ctaTitle": "Have a workflow that needs untangling?",
   "home.ctaBody":
     "If your team needs a UX/product designer who can turn messy workflows, permissions, data, and edge cases into usable tools, let’s talk.",
   "home.ctaEmail": "Send me a note",
@@ -290,7 +290,7 @@ const es: Partial<Record<StringKey, string>> = {
 
   // ── Home: contact / CTA ──
   "home.contactAria": "Sección de contacto",
-  "home.ctaTitle": "Hablemos del flujo que su equipo necesita hacer más claro",
+  "home.ctaTitle": "¿Tiene un flujo que necesita orden?",
   "home.ctaBody":
     "Si su equipo necesita una diseñadora UX y de producto que convierta flujos, permisos, datos y casos límite en herramientas utilizables, hablemos.",
   "home.ctaEmail": "Escríbame",
