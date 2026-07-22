@@ -126,7 +126,7 @@ export default function About() {
       <section className="about-hero">
         <div className="about-hero-content">
           <p className="about-intro">
-            {isSpanish ? "Diseñadora UX y de producto para sistemas de salud y herramientas internas, con perspectiva de veterana del Ejército." : "UX & Product Designer for healthcare systems and internal tools, with Army\u00a0Veteran perspective."}
+            {isSpanish ? "Diseñadora de producto — cuido los detalles que la gente siente. Oficio de producto e investigación, más seis años en sistemas de salud que no pueden fallar y la disciplina de una veterana del Ejército." : "Product designer — I sweat the details people feel. Consumer craft and research, plus six years in healthcare systems that can't fail and an Army veteran's discipline."}
           </p>
 
           <h1 className="about-title">

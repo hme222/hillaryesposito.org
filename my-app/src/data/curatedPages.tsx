@@ -39,6 +39,93 @@ export type CuratedPage = {
 };
 
 export const curatedPages: Record<string, CuratedPage> = {
+  "meta-instagram-product-designer": {
+    slug: "meta-instagram-product-designer",
+    company: "Meta · Instagram",
+    role: "Product Designer",
+    variant: "care",
+    badgeLabel: "Consumer product craft view",
+    eyebrow: "Interaction craft · consumer product judgment · research-led",
+    headline: "Designing consumer products where research keeps taste honest",
+    subhead:
+      "I design consumer products where the details decide everything — how it feels, whether people trust it, whether they come back. I check my taste against research, then build for the parts people actually notice.",
+    meta: [
+      { label: "Focus", value: "Consumer interaction craft" },
+      { label: "Strength", value: "Taste + research + product judgment" },
+      { label: "Evidence", value: "Shipped AI consumer app · 200+ app patterns studied" },
+      { label: "Best fit", value: "Consumer product design where craft is the product" },
+    ],
+    intro: [
+      "Consumer products win or lose on details most people never consciously notice: the timing of a reveal, a calm default, the one screen that earns trust. That's the work I care about most.",
+      "I'm not coming from a decade inside big consumer social. I'm coming with a shipped AI consumer app, a research habit that kills my own bad ideas, and years spent studying how the best apps actually behave, screen by screen.",
+    ],
+    proofPoints: [
+      { stat: "1", detail: "Consumer AI app designed and built end to end — research, interaction design, and a working prototype (React + FastAPI + MongoDB)" },
+      { stat: "200+", detail: "Consumer and finance app screens documented for Mobbin, studying real interaction patterns and trust signals" },
+      { stat: "32", detail: "People surveyed before I designed anything — every major design call traced back to a finding" },
+    ],
+    featuredWork: [
+      {
+        title: "Grove — AI consumer app",
+        reason: "Leads with interaction craft, calm defaults, AI trust states, and product judgment — including where I overruled the AI to keep the product calm and honest.",
+      },
+      {
+        title: "Mobbin — consumer pattern study",
+        reason: "200+ screens documented for craft; shows pattern fluency and taste for how great apps behave.",
+      },
+      {
+        title: "The 'AI vs mine' calls",
+        reason: "A visual record of five product decisions where craft and research beat the obvious AI default.",
+      },
+      {
+        title: "MSK — systems rigor",
+        reason: "Shows role-based flows, states, and permissions for 21,000+ users — where clarity was safety-critical.",
+      },
+    ],
+    strengths: [
+      "Sweats the interaction details users feel but rarely name",
+      "Chooses calm, trustworthy defaults over loud ones",
+      "Uses research to pressure-test taste, not replace it",
+      "Knows the best consumer patterns cold, from 200+ screens studied firsthand",
+    ],
+    relevantExperience: [
+      "Grove is my clearest consumer-craft artifact: I designed the interaction model, the AI trust states, and the calm reminder system, then built a working full-stack prototype — and overruled the AI wherever a wrong call would cost someone's trust.",
+      "My Mobbin work is 200+ screens of the best consumer apps, documented for craft and patterns. It's why I can walk into a product and quickly see what's working, what's borrowed, and what needs fixing.",
+    ],
+    keywords: [],
+    hiringManagerNote:
+      "I'm strongest when the details decide the product — timing, defaults, trust, and the one screen that makes someone stay.",
+    closing:
+      "For an Instagram product-design role, I'd bring consumer craft, a research habit that keeps taste honest, and systems experience most craft-only portfolios don't have.",
+    supportLinks: [
+      {
+        label: "Grove case study",
+        path: "/case-study/grove",
+        description: "Consumer AI app: interaction craft, trust states, and a playable demo.",
+        icon: <SproutIcon />,
+      },
+      {
+        label: "Mobbin case study",
+        path: "/case-study/mobbin",
+        description: "200+ consumer app screens studied for craft and patterns.",
+        icon: <PencilIcon />,
+      },
+      {
+        label: "MSK case study",
+        path: "/case-study/msk",
+        description: "Systems rigor: role-based flows, states, and permissions for 21,000+ users.",
+        icon: <MedicalCrossIcon />,
+      },
+    ],
+    relatedLinks: [
+      {
+        label: "Main portfolio",
+        path: "/",
+        description: "Full UX/product portfolio and contact section.",
+        icon: <LaunchIcon />,
+      },
+    ],
+  },
   "omada-staff-product-designer-healthcare-ai": {
     slug: "omada-staff-product-designer-healthcare-ai",
     company: "Omada Health",

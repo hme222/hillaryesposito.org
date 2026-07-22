@@ -41,9 +41,9 @@ const en = {
   "home.heroAria": "Home section",
   "home.status": "Available for opportunities",
   "home.positioning":
-    "UX/Product Designer for AI-enabled workflows, healthcare systems, and complex data-heavy products.",
+    "Product designer — I sweat the details people feel. Craft, taste, and research that holds up.",
   "home.description":
-    "6 years at Memorial Sloan Kettering\u00a0\u00b7 21,000+ clinicians & staff\u00a0\u00b7 US Army veteran.",
+    "AI product design\u00a0\u00b7 200+ app patterns studied\u00a0\u00b7 research-led\u00a0\u00b7 six years in systems that can't fail.",
   "home.getInTouch": "Get in touch",
   "home.seeApproach": "See my approach →",
   "home.replay": "Replay intro",
@@ -188,9 +188,9 @@ const es: Partial<Record<StringKey, string>> = {
   "home.heroAria": "Sección de inicio",
   "home.status": "Disponible para nuevas oportunidades",
   "home.positioning":
-    "UX/Product Designer para flujos de trabajo habilitados por IA, sistemas de salud y productos complejos con muchos datos.",
+    "Diseñadora de producto — cuido los detalles que la gente siente. Oficio, buen gusto e investigación que se sostiene.",
   "home.description":
-    "6 años en Memorial Sloan Kettering · más de 21,000 profesionales clínicos y administrativos · veterana del Ejército de EE. UU.",
+    "Diseño de producto con IA · 200+ pantallas de apps estudiadas · basada en investigación · seis años en sistemas que no pueden fallar.",
   "home.getInTouch": "Contácteme",
   "home.seeApproach": "Conozca mi enfoque →",
   "home.replay": "Repetir intro",
@@ -290,7 +290,7 @@ const es: Partial<Record<StringKey, string>> = {
 
   // ── Home: contact / CTA ──
   "home.contactAria": "Sección de contacto",
-  "home.ctaTitle": "¿Tiene un flujo que necesita orden?",
+  "home.ctaTitle": "¿Tiene un flujo que necesita desenredarse?",
   "home.ctaBody":
     "Si su equipo necesita una diseñadora UX y de producto que convierta flujos, permisos, datos y casos límite en herramientas utilizables, hablemos.",
   "home.ctaEmail": "Escríbame",

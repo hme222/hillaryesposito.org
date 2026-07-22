@@ -334,6 +334,39 @@ export default function GroveCaseStudy() {
               <p className="pushback-callout__sub">Five calls the AI wanted to make. I overruled all five — the research said they'd break trust.</p>
             </div>
           </div>
+
+          <div className="pushback-demo" aria-hidden="true">
+            <figure className="pushback-demo__col">
+              <figcaption className="pushback-demo__tag pushback-demo__tag--ai">What the AI wanted</figcaption>
+              <div className="pushback-demo__screen pushback-demo__screen--ai">
+                <span className="pushback-demo__status">9:41</span>
+                <div className="pushback-demo__notif">
+                  <span className="pushback-demo__app">Grove · now</span>
+                  <p>I'm thirsty. Why did you forget me?</p>
+                </div>
+                <div className="pushback-demo__notif">
+                  <span className="pushback-demo__app">Grove · 2h ago</span>
+                  <p>Your Pothos is struggling. Don't let it down.</p>
+                </div>
+                <div className="pushback-demo__notif">
+                  <span className="pushback-demo__app">Grove · 5h ago</span>
+                  <p>3 plants are counting on you today.</p>
+                </div>
+              </div>
+            </figure>
+            <span className="pushback-demo__vs" aria-hidden="true">vs</span>
+            <figure className="pushback-demo__col">
+              <figcaption className="pushback-demo__tag pushback-demo__tag--me">What I shipped</figcaption>
+              <div className="pushback-demo__screen pushback-demo__screen--me">
+                <span className="pushback-demo__status">9:41</span>
+                <div className="pushback-demo__digest">
+                  <span className="pushback-demo__digest-head">Good morning</span>
+                  <p>One thing today — your Fiddle Leaf in the living room could use a little water.</p>
+                  <span className="pushback-demo__digest-cta">Mark done</span>
+                </div>
+              </div>
+            </figure>
+          </div>
           <ul className="pushback-list">
             {PUSHBACK.map((p) => (
               <li key={p.topic} className="pushback-item">

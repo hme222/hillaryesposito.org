@@ -17,7 +17,7 @@ const rows = [
 
 export default function MSKDashboardMockup({ compact = false }: MSKDashboardMockupProps) {
   return (
-    <div className={`msk-dashboard-mockup${compact ? " msk-dashboard-mockup--compact" : ""}`} aria-label="Anonymized MSK chart-filing work queue mockup">
+    <div className={`msk-dashboard-mockup${compact ? " msk-dashboard-mockup--compact" : ""}`} role="group" aria-label="Anonymized MSK chart-filing work queue mockup">
       <div className="msk-dashboard-mockup__topbar">
         <div>
           <p className="msk-dashboard-mockup__eyebrow">Anonymized internal tool concept</p>

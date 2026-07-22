@@ -65,6 +65,15 @@ const PROJECTS: Project[] = [
     path: "/case-study/grove",
   },
   {
+    title: "Mobbin",
+    subtitleKey: "home.proj.mobbin.subtitle",
+    descKey: "home.proj.mobbin.desc",
+    images: ["/assets/mobbin/kikoff.jpg", "/assets/mobbin/polymarket.jpg", "/assets/mobbin/discover.jpg"],
+    imageAltKey: "home.proj.mobbin.alt",
+    bg: "#1c1c1e",
+    path: "/case-study/mobbin",
+  },
+  {
     title: "MSK Cancer Center",
     subtitleKey: "home.proj.msk.subtitle",
     descKey: "home.proj.msk.desc",

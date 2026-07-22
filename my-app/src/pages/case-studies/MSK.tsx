@@ -145,11 +145,11 @@ export default function MSKCaseStudy() {
         <div className="msk-workflow-artifact feature" aria-label="Before and after EMR workflow">
           {([
             ["before", "Before", "Print, scan, then re-file to the chart",
-              [["Open the work queue", "Dashboard"], ["Find the document that needed filing", "Dashboard"], ["Print the record to paper", "Paper"], ["Route the paper to document imaging", "Imaging"], ["Wait for imaging to scan it into the chart", "Imaging"], ["Return later to confirm it filed", "EMR"]],
+              [["Open the work queue", "Dashboard"], ["Find the document that needed filing", "Dashboard"], ["Print the record to paper", "Paper"], ["Route the paper to document imaging", "Imaging"], ["Wait for imaging to scan it into the chart", "Imaging"], ["Return later to confirm it was filed", "EMR"]],
               "Failure mode: the workflow turned a digital document into paper, then scanned it back into a digital chart — four systems for one filing."],
             ["after", "After", "One File-to-chart action in the queue",
               [["Open the work queue", "Dashboard"], ["Select the document", "Dashboard"], ["Click File to chart", "Dashboard"], ["Land on the document in the online chart", "EMR"], ["File it to the chart digitally", "EMR"], ["Return to the queue with status updated", "Dashboard"]],
-              "Design decision: bridge the work queue straight to the online chart, so the document never leaves the screen."],
+              "Design decision: connect the work queue straight to the online chart, so the document never leaves the screen."],
           ] as Array<[string, string, string, Array<[string, string]>, string]>).map(([key, label, title, steps, note], i) => (
             <React.Fragment key={key}>
               {i === 1 && <div className="msk-workflow-arrow" aria-hidden="true">→</div>}
@@ -176,7 +176,7 @@ export default function MSKCaseStudy() {
         <p className="gh-section-label">Interface artifact</p>
         <h2 id="msk-dashboard-title">Recreated dashboard concept: the missing File-to-chart action</h2>
         <p className="cs-section-intro">
-          The work queue needed to show status, preserve accountability, and expose the File-to-chart
+          The work queue needed to show status, preserve accountability, and surface the File-to-chart
           action only when the document was ready and the user held chart-filing rights.
         </p>
         <MSKDashboardMockup />
@@ -211,6 +211,23 @@ export default function MSKCaseStudy() {
       <section id="msk-interactions" className="cs-decisions">
         <p className="gh-section-label">Interaction decisions</p>
         <h2 className="cs-section-title">The product logic behind the “simple” dashboard button</h2>
+        <div className="msk-btn-states" aria-hidden="true">
+          <div className="msk-btn-state">
+            <span className="msk-btn-state__cap">Ready to file</span>
+            <span className="msk-btn-chip msk-btn-chip--ready">File to chart</span>
+            <span className="msk-btn-state__note">The action appears only when the document is ready to file.</span>
+          </div>
+          <div className="msk-btn-state">
+            <span className="msk-btn-state__cap">View-only role</span>
+            <span className="msk-btn-chip msk-btn-chip--view">Status only</span>
+            <span className="msk-btn-state__note">Sees status and owner — not a disabled mystery button.</span>
+          </div>
+          <div className="msk-btn-state">
+            <span className="msk-btn-state__cap">Blocked</span>
+            <span className="msk-btn-chip msk-btn-chip--blocked">Needs review</span>
+            <span className="msk-btn-state__note">Moves to an exception state with a reason and owner.</span>
+          </div>
+        </div>
         <table className="cs-decisions-table">
           <thead>
             <tr>

@@ -116,15 +116,14 @@ export default function GroveAppDemo() {
       </div>
 
       <figcaption className="grove-demo__chapters">
-        <div className="grove-demo__list" role="tablist" aria-label="Grove app sections">
+        <div className="grove-demo__list" role="group" aria-label="Grove app sections">
           {SCREENS.map((s, i) => {
             const on = i === active;
             return (
               <button
                 key={s.label}
                 type="button"
-                role="tab"
-                aria-selected={on}
+                aria-current={on ? "true" : undefined}
                 className={`grove-demo__chapter ${on ? "is-active" : ""}`}
                 onClick={() => jump(i)}
               >
@@ -149,9 +148,8 @@ export default function GroveAppDemo() {
               type="button"
               className="grove-demo__toggle"
               onClick={() => setPaused((p) => !p)}
-              aria-pressed={paused}
             >
-              {playing ? "❚❚ Pause" : "▶ Play"}
+              {playing ? <><span aria-hidden="true">❚❚</span> Pause</> : <><span aria-hidden="true">▶</span> Play</>}
             </button>
           )}
           <span className="grove-demo__status">

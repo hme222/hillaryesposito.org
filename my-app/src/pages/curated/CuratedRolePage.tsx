@@ -152,19 +152,21 @@ export default function CuratedRolePage() {
         ))}
       </section>
 
-      <section>
-        <div>
-          <p className="gh-section-label">Relevant themes</p>
-          <h2>Topics reflected in this work</h2>
-          <div className="curated-chip-cloud">
-            {page.keywords.map((keyword) => (
-              <span key={keyword} className="curated-chip">
-                {keyword}
-              </span>
-            ))}
+      {page.keywords.length > 0 && (
+        <section>
+          <div>
+            <p className="gh-section-label">Relevant themes</p>
+            <h2>Topics reflected in this work</h2>
+            <div className="curated-chip-cloud">
+              {page.keywords.map((keyword) => (
+                <span key={keyword} className="curated-chip">
+                  {keyword}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <section className="curated-links-wrap">
         <div className="curated-links-group">
