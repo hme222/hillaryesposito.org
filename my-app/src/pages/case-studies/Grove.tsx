@@ -115,10 +115,9 @@ export default function GroveCaseStudy() {
           <p className="gh-hero__intro">
             <strong>AI built me the wrong app. 32 plant owners told me which one to build instead.</strong>{" "}
             Grove is a plant-care app. An AI tool called Emergent built the whole thing for me, fast —
-            packed with features. But when I sat down and tested that first version myself, the way it
-            was organized felt off: too much going on, in the wrong order, none of it clear. So I did
-            the research I should have done first, and asked 32 plant owners what they actually wanted.
-            Turns out: something calmer and simpler. Now I'm rebuilding around that — cutting the
+            packed with features. I put that first version in front of 5 users, and the problem was
+            obvious: too much going on, in the wrong order. So I ran a 32-person survey to find the few
+            features worth focusing on, then started rebuilding around those — cutting the
             social features nobody asked for, and teaching the AI to admit when it isn't sure. Because
             when a plant is poisonous to a cat, a wrong guess isn't a suggestion. It's a risk.
           </p>
@@ -168,7 +167,7 @@ export default function GroveCaseStudy() {
         <div className="cs-skim-grid">
           {[
             ["The problem", "Plant advice online is generic and contradictory. People don't trust it. And the apps that do exist nag you until you quit."],
-            ["What I did", "All of it, solo: testing the AI's first build, the survey, the plan, the redesign, and the rules that keep the AI honest."],
+            ["What I did", "All of it, solo: a 5-user test of the AI's first build, a 32-person survey to prioritize, the redesign, and the rules that keep the AI honest."],
             ["The big decision", "Earn trust first, before anything else. Calm reminders. Advice that shows its sources. Real help with light. Pet-safety warnings. And a person who can always overrule the AI."],
             ["What I'd test next", "Do new owners find the lighting lesson on their own? Do they notice when the AI is unsure? And do they call the app helpful instead of naggy?"],
           ].map(([k, v]) => (
@@ -233,9 +232,9 @@ export default function GroveCaseStudy() {
         <p className="gh-section-label">Research</p>
         <h2>I asked 32 plant owners what actually matters</h2>
         <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
-          Before I designed anything, I ran a survey. 32 people, from brand-new owners to serious
-          collectors, answered between May 22 and June 19, 2026. The point was simple: test my guesses
-          before I trusted them.
+          After a 5-user test showed the first build was overloaded, I ran a survey to decide what the
+          redesign should keep. 32 people, from brand-new owners to serious collectors, answered
+          between May 22 and June 19, 2026.
         </p>
 
         <div className="grove-survey-stats" aria-label="Key survey findings">
@@ -422,8 +421,8 @@ export default function GroveCaseStudy() {
         <h2>What the AI built, and where I'm taking it</h2>
         <p style={{ maxWidth: 640, marginBottom: "1.5rem", color: "var(--muted)", lineHeight: 1.65 }}>
           Emergent built the full app, every feature at once. The main care screen opened with a
-          social feed and a daily "mission." When I tested it, the whole thing felt cluttered and
-          hard to follow — so the survey, and then this redesign, stripped it back to the three things
+          social feed and a daily "mission." A 5-user test flagged how cluttered it was, so I surveyed
+          32 people to find what mattered — and this redesign strips it back to the three things
           people actually said they'd download for.
         </p>
 

@@ -4,7 +4,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
   title: "Grove",
   meta: "Diseño de producto · Producto con IA · Prototipo funcional",
   intro:
-    "Grove es una app de cuidado de plantas. Una herramienta de IA llamada Emergent me construyó la app entera, rápido, llena de funciones. Pero cuando me senté a probar esa primera versión, la forma en que estaba organizada se sentía confusa: demasiadas cosas, en el orden equivocado. Así que hice la investigación que debí haber hecho primero, y les pregunté a 32 dueños de plantas qué querían de verdad. Resultó ser algo más tranquilo y más simple. Ahora la estoy rehaciendo alrededor de eso: quito las funciones sociales que nadie pidió y le enseño a la IA a admitir cuando no está segura. Porque cuando una planta es tóxica para un gato, adivinar mal no es una sugerencia. Es un riesgo.",
+    "Grove es una app de cuidado de plantas. Una herramienta de IA llamada Emergent me construyó la app entera, rápido, llena de funciones. La probé con 5 usuarios y el problema fue evidente: demasiadas cosas, en el orden equivocado. Así que hice una encuesta a 32 personas para encontrar las pocas funciones en las que valía la pena concentrarme, y empecé a rehacerla alrededor de esas: quito las funciones sociales que nadie pidió y le enseño a la IA a admitir cuando no está segura. Porque cuando una planta es tóxica para un gato, adivinar mal no es una sugerencia. Es un riesgo.",
   stats: [
     { label: "Rol", value: "Diseñadora de producto (en solitario)" },
     { label: "Muestra", value: "32 respuestas de encuesta" },
@@ -24,7 +24,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
       eyebrow: "Investigación",
       title: "Les pregunté a 32 dueños de plantas qué importa de verdad",
       body: [
-        "Antes de rehacer nada, hice una encuesta. 32 personas, desde principiantes hasta coleccionistas serios, respondieron entre el 22 de mayo y el 19 de junio de 2026. El objetivo era simple: probar mis suposiciones antes de confiar en ellas.",
+        "Después de que una prueba con 5 usuarios mostró que la primera versión estaba sobrecargada, hice una encuesta para decidir qué debía conservar el rediseño. 32 personas, desde principiantes hasta coleccionistas serios, respondieron entre el 22 de mayo y el 19 de junio de 2026.",
         "Emergent había construido las funciones sociales dentro de la app. La encuesta dijo que no es por eso que la gente la descarga. Así que hice una pregunta difícil: “Si Grove solo pudiera lanzarse con TRES funciones, ¿cuáles no podrías dejar de tener?” Las tres primeras se construyeron primero. Todo lo demás espera.",
       ],
       bullets: [

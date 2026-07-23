@@ -899,8 +899,7 @@ select:focus {
   display: block;
 } /* ========================= PROJECTS ========================= */
 .projects {
-  min-height: 80vh;
-  padding: 100px var(--page-pad) 60px;
+  padding: 40px var(--page-pad) 60px;
   background: var(--bg);
 }
 .section-title {
@@ -1303,7 +1302,7 @@ select:focus {
   justify-content: center;
   text-align: center;
   max-width: 1040px;
-  min-height: min(66vh, 580px);
+  min-height: min(52vh, 460px);
   gap: 0;
 }
 .hero-content--centered .hero-title {

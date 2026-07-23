@@ -277,9 +277,9 @@ export default function Home() {
           transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
         >
           {([
-            { value: "21K+", labelKey: "home.stat.clinicians" },
-            { value: "20%",  labelKey: "home.stat.emr" },
-            { value: "70%",  labelKey: "home.stat.cert" },
+            { value: "200+", labelKey: "home.stat.patterns" },
+            { value: "32",   labelKey: "home.stat.research" },
+            { value: "21K+", labelKey: "home.stat.scale" },
           ] as { value: string; labelKey: StringKey }[]).map((s) => (
             <div key={s.labelKey} className="home-proof-card">
               <p className="home-proof-value">{s.value}</p>

@@ -70,9 +70,9 @@ const en = {
 
   // ── Home: proof stats ──
   "home.proofAria": "Experience highlights",
-  "home.stat.clinicians": "Clinicians impacted, MSK Cancer Center",
-  "home.stat.emr": "EMR cost reduction, MSK Cancer Center",
-  "home.stat.cert": "Certification workflow gain, MSK Cancer Center",
+  "home.stat.patterns": "App screens studied for craft & patterns",
+  "home.stat.research": "People surveyed before I designed anything",
+  "home.stat.scale": "People relying on systems I redesigned",
   "home.trustAria": "Trust and credibility signals",
   "home.trust.msk": "MSK Cancer Center",
   "home.trust.mobbin": "Mobbin client work",
@@ -89,7 +89,7 @@ const en = {
   "home.tailorEyebrow": "Start here by role",
   "home.tailorTitle": "Find the proof your team needs",
   "home.tailorBody":
-    "Shortcuts to case studies, outcomes, and artifacts for healthcare product, internal tools, AI-assisted product work, and visual craft roles.",
+    "Shortcuts to the work that matters for your role — consumer and social product, healthcare, internal tools, AI-assisted product, and visual craft.",
   "home.tailor.consumer.title": "Consumer & social product",
   "home.tailor.consumer.desc": "Interaction craft, taste, and research for products people actually enjoy using.",
   "home.tailor.healthcare.title": "Healthcare product teams",
@@ -127,9 +127,9 @@ const en = {
   "home.proj.msk.desc":
     "21K+ clinicians and staff, 20% EMR cost reduction, and 70% certification workflow gain across six years at MSK.",
   "home.proj.msk.alt": "Memorial Sloan Kettering Cancer Center",
-  "home.proj.mobbin.subtitle": "Freelance · UX Flow Documentation · Pattern Curation",
+  "home.proj.mobbin.subtitle": "Freelance · 200+ consumer app screens, studied for craft",
   "home.proj.mobbin.desc":
-    "Freelance app capture specialist documenting end-to-end UX flows, interaction patterns, and product journeys for Mobbin.",
+    "Documented 200+ screens across three finance apps for Mobbin — pattern fluency and taste for how the best consumer apps behave.",
   "home.proj.mobbin.alt": "Fintech app screens catalogued for UX pattern library",
   "home.proj.ndaTitle": "Protected Case Study",
   "home.proj.ndaDesc":
@@ -219,9 +219,9 @@ const es: Partial<Record<StringKey, string>> = {
 
   // ── Home: proof stats ──
   "home.proofAria": "Experiencia destacada",
-  "home.stat.clinicians": "Profesionales clínicos beneficiados, MSK Cancer Center",
-  "home.stat.emr": "Reducción de costos del EMR, MSK Cancer Center",
-  "home.stat.cert": "Mejora del flujo de certificación, MSK Cancer Center",
+  "home.stat.patterns": "Pantallas de apps estudiadas por su oficio y patrones",
+  "home.stat.research": "Personas encuestadas antes de diseñar nada",
+  "home.stat.scale": "Personas que dependen de sistemas que rediseñé",
   "home.trustAria": "Señales de confianza y credibilidad",
   "home.trust.msk": "MSK Cancer Center",
   "home.trust.mobbin": "Trabajo para cliente Mobbin",
@@ -238,7 +238,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.tailorEyebrow": "Empiece aquí por tipo de rol",
   "home.tailorTitle": "Encuentre la prueba que su equipo necesita",
   "home.tailorBody":
-    "Atajos a estudios de caso, resultados y artefactos para producto en salud, herramientas internas, trabajo de producto asistido por IA y roles de craft visual.",
+    "Atajos al trabajo que importa para tu rol — producto de consumo y social, salud, herramientas internas, producto asistido por IA y craft visual.",
   "home.tailor.consumer.title": "Producto de consumo y social",
   "home.tailor.consumer.desc": "Oficio de interacción, gusto e investigación para productos que la gente disfruta usar.",
   "home.tailor.healthcare.title": "Equipos de producto en salud",
@@ -276,9 +276,9 @@ const es: Partial<Record<StringKey, string>> = {
   "home.proj.msk.subtitle": "Diseño UX y de producto · Sistemas de salud",
   "home.proj.msk.desc":
     "Más de 21,000 profesionales clínicos y administrativos, 20% de reducción de costos del EMR y 70% de mejora en certificación durante seis años en MSK.",
-  "home.proj.mobbin.subtitle": "Freelance · Documentación de flujos UX · Curaduría de patrones",
+  "home.proj.mobbin.subtitle": "Freelance · Más de 200 pantallas de apps de consumo, estudiadas por su oficio",
   "home.proj.mobbin.desc":
-    "Especialista freelance en captura de apps, documentando flujos UX completos, patrones de interacción y recorridos de producto para Mobbin.",
+    "Documenté más de 200 pantallas de tres apps de finanzas para Mobbin — fluidez de patrones y gusto por cómo se comportan las mejores apps de consumo.",
   "home.proj.mobbin.alt": "Pantallas de apps fintech catalogadas para una biblioteca de patrones UX",
   "home.proj.ndaTitle": "Estudio de caso protegido",
   "home.proj.ndaDesc":

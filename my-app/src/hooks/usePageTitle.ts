@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 const BASE = "Hillary Esposito";
-const DEFAULT_TITLE = `${BASE} | UX & Product Designer for Healthcare Systems`;
+const DEFAULT_TITLE = `${BASE} | Product Designer — consumer craft & research`;
 
 export default function usePageTitle(page?: string) {
   useEffect(() => {
