@@ -9119,8 +9119,8 @@ body.dark-mode .nav-overlay-backdrop,
 }
 .grove-demo__device {
   position: relative;
-  width: min(300px, 66vw);
-  aspect-ratio: 500 / 743;
+  width: min(300px, 64vw);
+  aspect-ratio: 9 / 14;
   border-radius: 32px;
   border: 2px solid var(--border-strong);
   overflow: hidden;
