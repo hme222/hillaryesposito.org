@@ -90,6 +90,8 @@ const en = {
   "home.tailorTitle": "Find the proof your team needs",
   "home.tailorBody":
     "Shortcuts to case studies, outcomes, and artifacts for healthcare product, internal tools, AI-assisted product work, and visual craft roles.",
+  "home.tailor.consumer.title": "Consumer & social product",
+  "home.tailor.consumer.desc": "Interaction craft, taste, and research for products people actually enjoy using.",
   "home.tailor.healthcare.title": "Healthcare product teams",
   "home.tailor.healthcare.desc": "MSK, clinical workflows, internal tools, and healthcare product judgment.",
   "home.tailor.enterprise.title": "Enterprise and internal tools",
@@ -237,6 +239,8 @@ const es: Partial<Record<StringKey, string>> = {
   "home.tailorTitle": "Encuentre la prueba que su equipo necesita",
   "home.tailorBody":
     "Atajos a estudios de caso, resultados y artefactos para producto en salud, herramientas internas, trabajo de producto asistido por IA y roles de craft visual.",
+  "home.tailor.consumer.title": "Producto de consumo y social",
+  "home.tailor.consumer.desc": "Oficio de interacción, gusto e investigación para productos que la gente disfruta usar.",
   "home.tailor.healthcare.title": "Equipos de producto en salud",
   "home.tailor.healthcare.desc": "MSK, flujos clínicos, herramientas internas y criterio de producto en salud.",
   "home.tailor.enterprise.title": "Enterprise y herramientas internas",

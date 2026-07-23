@@ -224,100 +224,6 @@ export const curatedPages: Record<string, CuratedPage> = {
       },
     ],
   },
-  "pogo-product-designer-ai-data-workflows": {
-    slug: "pogo-product-designer-ai-data-workflows",
-    company: "Pogo",
-    role: "Product Designer",
-    variant: "finance",
-    badgeLabel: "AI data workflow view",
-    eyebrow: "Product design · AI-enabled data · consumer and B2B workflows",
-    headline: "Product design for AI-enabled data workflows people can actually trust",
-    subhead:
-      "I design product experiences that make complex information easier to understand, act on, and improve, with a background spanning healthcare systems, military logistics, mobile pattern analysis, and AI-assisted product exploration.",
-    meta: [
-      { label: "Focus", value: "AI-enabled data clarity" },
-      { label: "Strength", value: "Workflow, trust, and mobile pattern judgment" },
-      { label: "Evidence", value: "85% faster resupply, 70% workflow gain, 20% cost reduction" },
-      { label: "Best fit", value: "Consumer and B2B products with complex data decisions" },
-    ],
-    intro: [
-      "Pogo's product challenge is not just making data visible. It is making data useful across a consumer app, a B2B platform, and AI-enabled technology that depends on trust.",
-      "My strongest work lives in that overlap: user motivation, system clarity, workflow behavior, and product decisions that reduce friction without flattening complexity.",
-    ],
-    proofPoints: [
-      { stat: "20%", detail: "Organization-wide EMR cost reduction at Memorial Sloan Kettering; I led the workflow redesign that contributed to it" },
-      { stat: "70%", detail: "Efficiency gain in physician certification collection through clearer workflow structure" },
-      { stat: "85%", detail: "Faster medical resupply after improving tracking and communication workflows across distributed teams" },
-    ],
-    featuredWork: [
-      {
-        title: "Grove AI",
-        reason: "Leads with AI-enabled workflow judgment, trust states, and product exploration.",
-      },
-      {
-        title: "Mobbin",
-        reason: "Shows mobile pattern fluency, hierarchy, flows, and current product taste.",
-      },
-      {
-        title: "MSK workflow redesign",
-        reason: "Closes with measurable workflow credibility and complex systems proof.",
-      },
-    ],
-    strengths: [
-      "Turns messy product information into clearer decisions and next steps",
-      "Brings mobile product pattern fluency from ongoing Mobbin analysis work",
-      "Designs with AI trust, uncertainty, and data legibility in mind",
-      "Works well in ambiguous product spaces where the system is still being shaped",
-    ],
-    relevantExperience: [
-      "My healthcare and military work trained me to design around data that cannot simply be decorative. The interface has to help someone understand status, risk, next steps, and what information is still missing.",
-      "Grove and Mobbin show the current product-design side of that background: AI-assisted product exploration, user research, mobile pattern analysis, and product decisions grounded in clarity rather than surface polish.",
-    ],
-    keywords: [
-      "product design",
-      "AI-enabled workflows",
-      "data clarity",
-      "consumer app",
-      "B2B platform",
-      "mobile UX",
-      "trust",
-      "research synthesis",
-      "startup ambiguity",
-      "interaction design",
-    ],
-    hiringManagerNote:
-      "I am strongest when a product has to make messy data, workflows, or decisions feel simple enough to use without hiding the complexity that matters.",
-    closing:
-      "For Pogo, I would bring a product designer's eye, an operator's tolerance for ambiguity, and a strong bias toward interfaces that help people understand what to do next.",
-    supportLinks: [
-      {
-        label: "Grove case study",
-        path: "/case-study/grove",
-        description: "AI-enabled product exploration, trust states, and prototype thinking.",
-        icon: <SproutIcon />,
-      },
-      {
-        label: "Mobbin case study",
-        path: "/case-study/mobbin",
-        description: "Mobile pattern fluency, interface hierarchy, and product-analysis rigor.",
-        icon: <PencilIcon />,
-      },
-    ],
-    relatedLinks: [
-      {
-        label: "EnergyCAP UX Designer",
-        path: "/curated/energycap-ux-ai-prototyping-data-products",
-        description: "Adjacent AI-assisted prototyping and data-product framing.",
-        icon: <TerminalIcon />,
-      },
-      {
-        label: "Main portfolio",
-        path: "/",
-        description: "Full UX/product portfolio and contact section.",
-        icon: <LaunchIcon />,
-      },
-    ],
-  },
   "spring-health-ai-interaction-design": {
     slug: "spring-health-ai-interaction-design",
     company: "Spring Health",
@@ -502,9 +408,9 @@ export const curatedPages: Record<string, CuratedPage> = {
     ],
     relatedLinks: [
       {
-        label: "Pogo Product Designer",
-        path: "/curated/pogo-product-designer-ai-data-workflows",
-        description: "Adjacent AI-enabled data and consumer/B2B workflow framing.",
+        label: "CompanyCam Product Designer",
+        path: "/curated/companycam-product-designer-field-workflows",
+        description: "Adjacent product design for real-world field workflows.",
         icon: <TerminalIcon />,
       },
       {
@@ -607,9 +513,9 @@ export const curatedPages: Record<string, CuratedPage> = {
     ],
     relatedLinks: [
       {
-        label: "Pogo Product Designer",
-        path: "/curated/pogo-product-designer-ai-data-workflows",
-        description: "Adjacent consumer/B2B product and AI-enabled data framing.",
+        label: "EnergyCAP UX Designer",
+        path: "/curated/energycap-ux-ai-prototyping-data-products",
+        description: "Adjacent AI-assisted prototyping and data-product framing.",
         icon: <TerminalIcon />,
       },
       {

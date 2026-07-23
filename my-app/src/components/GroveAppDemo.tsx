@@ -8,34 +8,35 @@ import React, { useEffect, useRef, useState } from "react";
 
 type Screen = { src: string; label: string; note: string; bg: string };
 
+// Real screens captured from the working Grove app (not mockups).
 const SCREENS: Screen[] = [
   {
-    src: "/assets/grove/grove1.png",
-    label: "Welcome",
-    note: "Opens calm, not busy. Care first, no social feed.",
-    bg: "#1b2f15",
+    src: "/assets/grove/grove-live-collection.jpg",
+    label: "Your collection",
+    note: "Every plant in one place, grouped by where they live.",
+    bg: "#eaf1e0",
   },
   {
-    src: "/assets/grove/bouquet.jpg",
+    src: "/assets/grove/grove-live-add.jpg",
     label: "Add a plant",
-    note: "Track one plant or a whole bouquet, grouped by where they live.",
-    bg: "#f5f0e8",
+    note: "Track a single plant, or a whole bouquet.",
+    bg: "#efe9e1",
   },
   {
-    src: "/assets/grove/Growth.jpg",
-    label: "Photo journal",
-    note: "A plant's photos over time — the reward people said they wanted.",
-    bg: "#f5f0e8",
+    src: "/assets/grove/grove-live-journal.jpg",
+    label: "Care journal",
+    note: "Every watering and note on one timeline — and no guilt for a missed day.",
+    bg: "#eef2e6",
   },
   {
-    src: "/assets/grove/plantpersonality.jpg",
+    src: "/assets/grove/grove-live-personality.jpg",
     label: "Plant personality",
-    note: "An AI personality, earned at a care milestone. No points, no leaderboard.",
-    bg: "#f5f0e8",
+    note: "An AI personality you earn by caring — not points, not a leaderboard.",
+    bg: "#f3efe6",
   },
 ];
 
-const DURATION = 3800; // ms per screen
+const DURATION = 4400; // ms per screen
 
 export default function GroveAppDemo() {
   const [active, setActive] = useState(0);
@@ -100,7 +101,6 @@ export default function GroveAppDemo() {
     <figure className="grove-demo" aria-label="Auto-playing tour of the Grove app">
       <div className="grove-demo__stage">
         <div className="grove-demo__device" style={{ background: SCREENS[active].bg }}>
-          <span className="grove-demo__notch" aria-hidden="true" />
           {SCREENS.map((s, i) => (
             <img
               key={s.src}

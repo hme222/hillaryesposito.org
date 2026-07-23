@@ -150,7 +150,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
     return () => document.removeEventListener("keydown", onKey);
   }, [menuOpen]);
 
-  const isOnCaseStudy = location.pathname.startsWith("/case-study");
+  const isOnCaseStudy = location.pathname.startsWith("/case-study") || location.pathname.startsWith("/curated");
 
   function navClass(section: string) {
     if (section === "projects" && isOnCaseStudy) return "nav-link is-active";

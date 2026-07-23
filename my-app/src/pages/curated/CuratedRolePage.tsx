@@ -91,6 +91,54 @@ export default function CuratedRolePage() {
         </ol>
       </section>
 
+      {page.slug === "meta-instagram-product-designer" && (
+        <section className="meta-craft-section" aria-labelledby="meta-craft-title">
+          <p className="gh-section-label">A quick proof</p>
+          <h2 id="meta-craft-title">Consumer craft is mostly knowing what to leave out</h2>
+          <p className="cs-section-intro">
+            Same screen, two ways to build it. The job isn't adding more — it's earning attention
+            without spending someone's calm.
+          </p>
+          <div className="meta-craft" aria-hidden="true">
+            <figure className="meta-craft__col">
+              <figcaption className="meta-craft__tag meta-craft__tag--loud">The obvious version</figcaption>
+              <div className="meta-craft__screen meta-craft__screen--loud">
+                <div className="meta-craft__bar">
+                  <span className="meta-craft__logo">grove</span>
+                  <span className="meta-craft__badge">3</span>
+                </div>
+                <div className="meta-craft__promo">🔥 LIMITED — 24:59:12 left</div>
+                <div className="meta-craft__card meta-craft__card--loud">
+                  <span className="meta-craft__ndot" />
+                  <p>Your plant misses you!! Tap now 👉</p>
+                  <span className="meta-craft__cta meta-craft__cta--loud">OPEN</span>
+                </div>
+                <div className="meta-craft__card meta-craft__card--loud">
+                  <p>🌱 NEW badges unlocked · streak ×7 🔥</p>
+                  <span className="meta-craft__cta meta-craft__cta--loud">CLAIM</span>
+                </div>
+                <div className="meta-craft__promo meta-craft__promo--alt">▶ Autoplaying · Upgrade to Pro</div>
+              </div>
+            </figure>
+            <span className="meta-craft__vs" aria-hidden="true">vs</span>
+            <figure className="meta-craft__col">
+              <figcaption className="meta-craft__tag meta-craft__tag--calm">The considered version</figcaption>
+              <div className="meta-craft__screen meta-craft__screen--calm">
+                <div className="meta-craft__bar">
+                  <span className="meta-craft__logo meta-craft__logo--calm">Grove</span>
+                </div>
+                <div className="meta-craft__hello">Good morning</div>
+                <div className="meta-craft__card meta-craft__card--calm">
+                  <p>Your Fiddle Leaf could use a little water today.</p>
+                  <span className="meta-craft__cta meta-craft__cta--calm">Mark done</span>
+                </div>
+                <p className="meta-craft__quiet">That's the only thing that needs you.</p>
+              </div>
+            </figure>
+          </div>
+        </section>
+      )}
+
       {page.variant === "fashion" && (
         <section className="fashion-artifact-section" aria-labelledby="fashion-artifact-title">
           <p className="gh-section-label">Visual direction exercise</p>

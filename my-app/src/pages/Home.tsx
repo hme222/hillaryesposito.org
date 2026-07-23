@@ -437,6 +437,11 @@ export default function Home() {
           <div className="home-tailor-grid">
             {([
               {
+                titleKey: "home.tailor.consumer.title",
+                descKey: "home.tailor.consumer.desc",
+                path: "/curated/meta-instagram-product-designer",
+              },
+              {
                 titleKey: "home.tailor.healthcare.title",
                 descKey: "home.tailor.healthcare.desc",
                 path: "/curated/omada-staff-product-designer-healthcare-ai",
