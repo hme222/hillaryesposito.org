@@ -19,6 +19,7 @@ import Home from "../pages/Home";
 import About from "../pages/AboutMe";
 
 import Grove from "../pages/case-studies/Grove";
+import RisoGrove from "../pages/case-studies/RisoGrove";
 import MSK from "../pages/case-studies/MSK";
 import CuratedRolePage from "../pages/curated/CuratedRolePage";
 import FashionCampaignSystem from "../pages/curated/FashionCampaignSystem";
@@ -77,6 +78,7 @@ export default function AppRoutes() {
       <Route path="/about" element={<About />} />
 
       <Route path="/case-study/grove" element={<Grove />} />
+      <Route path="/riso/grove" element={<RisoGrove />} />
       <Route path="/case-study/mobbin" element={<Suspense fallback={null}><Mobbin /></Suspense>} />
       <Route path="/case-study/msk" element={<MSK />} />
       <Route path="/curated/fashion-campaign-system" element={<FashionCampaignSystem />} />

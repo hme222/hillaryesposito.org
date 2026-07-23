@@ -39,6 +39,77 @@ export type CuratedPage = {
 };
 
 export const curatedPages: Record<string, CuratedPage> = {
+  "indyx-ux-product-designer": {
+    slug: "indyx-ux-product-designer",
+    company: "Indyx",
+    role: "UX / Product Designer",
+    variant: "care",
+    badgeLabel: "Consumer product design view",
+    eyebrow: "Consumer product · human-first · sustainable by design",
+    headline: "Design for the closet you already own — human judgment over the algorithm",
+    subhead:
+      "This page reframes my portfolio for Indyx's UX/Product Designer role: consumer interaction craft, research that keeps taste honest, and a real belief that the best product decisions — like the best styling — come from human judgment, not an algorithm.",
+    meta: [
+      { label: "Target role", value: "UX / Product Designer · consumer" },
+      { label: "Focus", value: "Interaction craft, research, cataloging & analytics UX" },
+      { label: "Best fit", value: "Human-first consumer product, sustainable by design" },
+      { label: "Tools", value: "Figma + research + AI-assisted prototyping" },
+    ],
+    intro: [
+      "Indyx helps people love the wardrobe they already own — catalog it, see it clearly, and get dressed with joy instead of decision fatigue. I've spent the last year building the closest thing to that in a different category: Grove, a consumer app that helps people organize and care for what they already have, and removes the overwhelm that makes them give up.",
+      "The deeper fit is a value, not a category. Indyx's thesis is that “style is a human art that can never be replaced by an algorithm.” In Grove, the defining design work was exactly that: I let an AI build the first version, then overruled it five times to keep a person in charge of the calls that matter. I design consumer products where taste and judgment lead, and research keeps them honest.",
+    ],
+    proofPoints: [
+      { stat: "200+", detail: "consumer app screens documented for Mobbin — pattern fluency for how the best consumer products handle onboarding, discovery, and data" },
+      { stat: "32", detail: "owners surveyed before I redesigned a single Grove screen — product calls traced to real people, not assumptions" },
+      { stat: "5", detail: "calls I overruled the AI on in Grove to keep a human in charge — the same 'human over algorithm' belief Indyx is built on" },
+    ],
+    featuredWork: [
+      { title: "Grove — a consumer app for what you already own", reason: "Cataloging, calm daily-use flows, cost-of-care awareness, and AI-override judgment. The closest analog to Indyx: organize what you own, reduce overwhelm, keep humans in charge." },
+      { title: "Mobbin — 200+ consumer app screens, studied for craft", reason: "Pattern fluency and taste for how great consumer apps handle onboarding, discovery, and data — directly useful for cataloging speed and outfit discoverability." },
+      { title: "The 'AI vs. mine' decisions", reason: "A record of where I let the algorithm accelerate the work and where I overruled it — Indyx's stylist-not-algorithm belief, shown not told." },
+    ],
+    strengths: [
+      "Consumer interaction craft: onboarding, daily-use loops, and the small details that make an app feel joyful instead of a chore",
+      "Research-led: surveys, moderated testing, and decision logs so product calls trace back to real people",
+      "Human-over-algorithm judgment: I use AI to accelerate, then document where a person has to overrule it",
+      "Reducing overwhelm: turning “I have nothing to wear” into one clear, calm next step",
+      "Analytics UX: making data (wear frequency, cost-per-wear, care history) feel actionable and intuitive, not like a spreadsheet",
+      "Sustainability-minded: designing to celebrate what people already own, not to sell them more",
+    ],
+    relevantExperience: [
+      "Grove maps almost 1:1 to Indyx's UX challenges: fast cataloging of what you own, surfacing combinations people miss, keeping motivation through a long setup, and making care/analytics data intuitive.",
+      "My Mobbin work — documenting 200+ consumer screens across three apps — built exactly the pattern library Indyx's problems need: efficient capture, discovery, and photo-quality consistency.",
+      "Six years in healthcare systems taught me to design where a wrong answer has a cost and trust is everything — the same rigor Indyx wants behind a product people invite into their daily routine.",
+    ],
+    keywords: [
+      "consumer product design",
+      "fashion tech",
+      "digital wardrobe",
+      "styling",
+      "sustainability",
+      "cataloging UX",
+      "onboarding",
+      "analytics UX",
+      "human-centered AI",
+      "mobile app",
+      "iOS",
+      "Android",
+      "discovery",
+      "decision fatigue",
+      "cost-per-wear",
+      "user research",
+    ],
+    hiringManagerNote:
+      "I'm not coming from a decade inside fashion. I'm coming with a shipped consumer app that does what Indyx does in spirit — help people love what they already own — plus the research habit and the conviction that humans, not algorithms, make the calls that matter. That's the fit.",
+    closing:
+      "For Indyx's UX/Product Designer role, I'd bring consumer interaction craft, research that keeps taste honest, and a genuine belief in human judgment over the algorithm — designing a product that makes getting dressed joyful, intentional, and yours.",
+    supportLinks: [
+      { label: "Grove case study", path: "/case-study/grove", description: "A consumer app for what you already own — cataloging, calm daily use, and AI-override judgment.", icon: <SproutIcon /> },
+      { label: "Mobbin case study", path: "/case-study/mobbin", description: "200+ consumer app screens documented — pattern fluency and taste.", icon: <PencilIcon /> },
+    ],
+    relatedLinks: [],
+  },
   "meta-instagram-product-designer": {
     slug: "meta-instagram-product-designer",
     company: "Meta · Instagram",

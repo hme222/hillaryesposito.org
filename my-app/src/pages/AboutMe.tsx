@@ -126,15 +126,15 @@ export default function About() {
       <section className="about-hero">
         <div className="about-hero-content">
           <p className="about-intro">
-            {isSpanish ? "Diseñadora de producto — cuido los detalles que la gente siente. Oficio de producto e investigación, más seis años en sistemas de salud que no pueden fallar y la disciplina de una veterana del Ejército." : "Product designer — I sweat the details people feel. Consumer craft and research, plus six years in healthcare systems that can't fail and an Army veteran's discipline."}
+            {isSpanish ? "Diseñadora de producto e investigadora. Pasé seis años creando software para 21,000 clínicos que no podían permitirse un error. Casi todo lo que diseño tiene que estar bien, no solo bonito — ese hábito viene de la salud, y no se ha ido. Oficio de producto de consumo, investigación y la disciplina de una veterana del Ejército." : "Product designer and researcher. I spent six years building software for 21,000 clinicians who couldn't afford a wrong guess. Most of what I design has to be right, not just pretty — that habit came from healthcare, and it hasn't left. Consumer craft, research, and an Army veteran's discipline."}
           </p>
 
           <h1 className="about-title">
-            {isSpanish ? "Diseño herramientas confiables para flujos complejos de salud e internos." : "I design trusted tools for complex healthcare and internal workflows."}
+            {isSpanish ? "Diseño productos de consumo donde los detalles deciden si la gente confía en ellos." : "I design consumer products where the details decide whether people trust them."}
           </h1>
 
           <p className="about-hero-subtext">
-            {isSpanish ? "13+ años dentro de sistemas de salud y militares de alto riesgo, ahora enfocada en herramientas internas, flujos por rol y diseño de producto asistido por IA." : "13+ years inside high-stakes healthcare and military systems, now focused on internal tools, role-based workflows, and AI-assisted product design."}
+            {isSpanish ? "13+ años en sistemas de alto riesgo — operaciones de atención oncológica, logística médica militar, una app de consumo hecha con IA. Ese rigor es lo que aporto al diseño de producto de consumo." : "13+ years in high-stakes systems — cancer-care operations, military medical logistics, an AI-built consumer app. The rigor that demanded is what I bring to consumer product."}
           </p>
         </div>
 

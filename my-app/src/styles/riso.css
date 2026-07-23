@@ -1,0 +1,129 @@
+/* ============================================================
+   Risograph Cartography — system primitives
+   Pair with <RisoDefs>, <RisoLayer>, <Clearing>, <DataRail>.
+   ============================================================ */
+
+.riso-scope {
+  --paper: #e8ece3;   /* eucalyptus-tinted paper */
+  --paper-2: #dee4d6;
+  --ink: #20241c;
+  --ink-2: #45503f;
+  --muted: #66705f;
+  --hair: #c2cbb8;
+  --green: #3d6b3f;   /* pine tritone midtone — the ORGANIC ink (riso-pine) */
+  --euc: #4f6b60;     /* eucalyptus — the STRUCTURAL ink (riso-eucalyptus) */
+  --tan: #a98f52;
+  --pop: #c23a26;
+  /* usage: structural layers (maps, elevations, plats) -> edition="eucalyptus";
+     organic layers (botanical line-work) -> edition="pine". */
+  --riso-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+/* ---- decorative collage layer ---- */
+.riso-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--paper);
+  contain: paint;
+}
+.riso-layer__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+}
+
+/* ---- riso grain (no asset needed) ---- */
+.riso-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+  opacity: 0.4;
+}
+
+/* ---- the reading clearing (contrast guarantee) ---- */
+.riso-clearing {
+  position: relative;
+  z-index: 2;
+  background: color-mix(in srgb, var(--paper) 84%, transparent);
+  backdrop-filter: blur(1px) saturate(1.08);
+  border-radius: 6px;
+  padding: clamp(1.1rem, 3vw, 2rem);
+  max-width: 36ch;
+}
+
+/* ---- coordinate / metric rail ---- */
+.riso-rail {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 1rem 0.7rem;
+  font-family: var(--riso-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  color: var(--paper);
+  text-align: right;
+}
+.riso-rail--right { right: 0; }
+.riso-rail--left { left: 0; text-align: left; }
+.riso-rail span {
+  background: color-mix(in srgb, var(--ink) 58%, transparent);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+/* ---- a section that hosts a collage + clearing ---- */
+.riso-section {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.riso-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--riso-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.7rem;
+  border-radius: 4px;
+}
+.riso-eyebrow::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--pop);
+}
+
+/* ---- responsive + motion ---- */
+@media (max-width: 760px) {
+  .riso-rail { display: none; }        /* rail is desktop-only */
+}
+@media (prefers-reduced-motion: reduce) {
+  .riso-layer video { animation: none !important; }
+}
+
+/* ---- video collage (riso-treated MP4 as the motion moment) ---- */
+.riso-layer video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+}

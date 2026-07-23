@@ -1223,7 +1223,7 @@ select:focus {
   background: var(--footer-icon-hover-bg);
   color: var(--footer-icon-hover-color);
   transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.10), 0 8px 18px rgba(0,0,0,0.13);
 }
 
  /*======================== ABOUT PAGE (SITE-NATIVE) ========================= */ /* Page wrapper */
@@ -1700,7 +1700,7 @@ select:focus {
   height: auto;
   border-radius: 20px;
   object-fit: cover;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 24px 48px rgba(0, 0, 0, 0.12);
 }
 @media (max-width: 768px) {
   .about-hero {
@@ -3271,24 +3271,22 @@ body.dark-mode .nav-overlay-backdrop,
  
 /* ── META STRIP (horizontal below hero) ── */
 .gh-meta-strip {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: start;
+  gap: 1.1rem 1.5rem;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 1rem 1.5rem;
+  padding: 1.25rem 1.5rem;
   margin-bottom: 3rem;
 }
- 
+
 .gh-meta-strip__item {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
-  padding: 0 1.25rem;
-  flex: 0 1 auto;
+  padding: 0;
   min-width: 0;
 }
  
@@ -3309,14 +3307,10 @@ body.dark-mode .nav-overlay-backdrop,
   font-weight: 600;
   color: var(--fg);
   line-height: 1.4;
-  white-space: nowrap;
 }
- 
+
 .gh-meta-strip__divider {
-  width: 1px;
-  height: 2.25rem;
-  background: var(--border);
-  flex-shrink: 0;
+  display: none;
 }
  
 /* ── PROCESS: 4-column step cards ── */
@@ -3505,7 +3499,7 @@ body.dark-mode .nav-overlay-backdrop,
   text-align: left;
   margin: 0 0 1rem;
   padding: 0.75rem 0.9rem;
-  border-left: 3px solid var(--olive-2, #6b7a3a);
+  border-left: 3px solid var(--olive-2, #5a7a2e);
   background: rgba(120, 140, 90, 0.07);
   border-radius: 0 6px 6px 0;
   font-size: 0.88rem;
@@ -3519,7 +3513,7 @@ body.dark-mode .nav-overlay-backdrop,
   letter-spacing: 1.5px;
   text-transform: uppercase;
   font-weight: 700;
-  color: var(--olive-2, #6b7a3a);
+  color: var(--olive-2, #5a7a2e);
   margin-bottom: 0.25rem;
 }
  
@@ -3745,16 +3739,9 @@ body.dark-mode .nav-overlay-backdrop,
     grid-template-columns: repeat(2, 1fr);
   }
   .gh-meta-strip {
-    gap: 0.75rem;
-    flex-wrap: wrap;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 1.25rem;
     width: 100%;
-  }
-  .gh-meta-strip__divider {
-    display: none;
-  }
-  .gh-meta-strip__item {
-    padding: 0;
-    flex: 0 0 calc(50% - 0.375rem);
   }
 }
  
@@ -3801,8 +3788,8 @@ body.dark-mode .nav-overlay-backdrop,
   .gh-vstrip-item {
     padding: 0;
   }
-  .gh-meta-strip__item {
-    flex: 0 0 100%;
+  .gh-meta-strip {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -3847,7 +3834,7 @@ body.dark-mode .nav-overlay-backdrop,
 }
 .gh-before-after__tag--after {
   background: rgba(120, 140, 90, 0.15);
-  color: var(--olive-2, #6b7a3a);
+  color: var(--olive-2, #5a7a2e);
 }
 .gh-before-after__arrow {
   font-size: 1.5rem;
@@ -3902,7 +3889,7 @@ body.dark-mode .nav-overlay-backdrop,
 }
 .gh-mistake-label--learned {
   background: rgba(120, 140, 90, 0.15);
-  color: var(--olive-2, #6b7a3a);
+  color: var(--olive-2, #5a7a2e);
 }
 
 /* ─────────────────────────────────────────────
@@ -3978,7 +3965,7 @@ body.dark-mode .nav-overlay-backdrop,
 }
 .gh-iteration-card__label--after {
   background: rgba(120, 140, 90, 0.15);
-  color: var(--olive-2, #6b7a3a);
+  color: var(--olive-2, #5a7a2e);
 }
 .gh-iteration-card p {
   margin: 0.3rem 0 0;
@@ -4069,7 +4056,7 @@ body.dark-mode .nav-overlay-backdrop,
   letter-spacing: 1.5px;
   text-transform: uppercase;
   font-weight: 700;
-  color: var(--olive-2, #6b7a3a);
+  color: var(--olive-2, #5a7a2e);
   margin-bottom: 0.3rem;
 }
 .gh-flow-card__steps {
@@ -4167,7 +4154,7 @@ body.dark-mode .nav-overlay-backdrop,
   padding: 0.2rem 0.55rem;
   border-radius: 4px;
   background: rgba(120, 140, 90, 0.15);
-  color: var(--olive-2, #6b7a3a);
+  color: var(--olive-2, #5a7a2e);
   margin-bottom: 0.5rem;
 }
 
@@ -4217,7 +4204,7 @@ body.dark-mode .nav-overlay-backdrop,
 }
 .emergent-ai-card__label--human {
   background: rgba(120, 140, 90, 0.15);
-  color: var(--olive-2, #6b7a3a);
+  color: var(--olive-2, #5a7a2e);
 }
 
 /* =========================================================
@@ -4318,7 +4305,7 @@ body.dark-mode .nav-overlay-backdrop,
 .home-proj-card-link:hover,
 .home-proj-card-link:focus-visible {
   --lift: -6px;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10), 0 24px 60px rgba(0, 0, 0, 0.16);
 }
 @media (prefers-reduced-motion: reduce) {
   .home-proj-card-link {
@@ -4491,7 +4478,7 @@ body.dark-mode .nav-overlay-backdrop,
   letter-spacing: 0.1em;
   text-transform: uppercase;
   font-weight: 600;
-  color: var(--olive-2, #6b7a3a);
+  color: var(--olive-2, #5a7a2e);
 }
 .dark-mode .home-proj-subtitle {
   color: var(--focus, #ffb866);
@@ -4513,7 +4500,7 @@ body.dark-mode .nav-overlay-backdrop,
 .home-proj-cta {
   font-size: 0.9rem;
   font-weight: 700;
-  color: var(--olive-2, #6b7a3a);
+  color: var(--olive-2, #5a7a2e);
   letter-spacing: 0.3px;
 }
 .dark-mode .home-proj-cta {
@@ -4591,7 +4578,7 @@ body.dark-mode .nav-overlay-backdrop,
   gap: 0.6rem;
   /* Trimmed footprint so the floating pill occludes less case-study content. */
   padding: 0.68rem 1.15rem;
-  background: var(--olive-2, #6b7a3a);
+  background: var(--olive-2, #5a7a2e);
   color: #fff;
   border: none;
   border-radius: 999px;
@@ -4599,13 +4586,13 @@ body.dark-mode .nav-overlay-backdrop,
   font-size: 0.84rem;
   font-weight: 700;
   letter-spacing: 0.5px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14), 0 10px 30px rgba(0, 0, 0, 0.22);
   transition: transform 0.2s ease, box-shadow 0.2s ease,
     opacity 0.25s ease, visibility 0.25s ease;
 }
 .recruiter-pill:hover {
   transform: translateY(-3px);
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.32);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16), 0 14px 36px rgba(0, 0, 0, 0.28);
 }
 .recruiter-pill__icon { font-size: 1rem; }
 @media (max-width: 600px) {
@@ -4681,7 +4668,7 @@ body.dark-mode .nav-overlay-backdrop,
   letter-spacing: 1.5px;
   text-transform: uppercase;
   font-weight: 700;
-  color: var(--olive-2, #6b7a3a);
+  color: var(--olive-2, #5a7a2e);
   margin: 0 0 0.3rem;
 }
 .recruiter-panel__title {
@@ -4711,7 +4698,7 @@ body.dark-mode .nav-overlay-backdrop,
   letter-spacing: 1.5px;
   text-transform: uppercase;
   font-weight: 700;
-  color: var(--olive-2, #6b7a3a);
+  color: var(--olive-2, #5a7a2e);
   margin: 0 0 0.5rem;
 }
 .recruiter-panel__chips {
@@ -4750,7 +4737,7 @@ body.dark-mode .nav-overlay-backdrop,
 }
 .recruiter-panel__project:hover {
   background: rgba(120, 140, 90, 0.12);
-  border-color: var(--olive-2, #6b7a3a);
+  border-color: var(--olive-2, #5a7a2e);
 }
 .recruiter-panel__project strong {
   color: var(--fg);
@@ -4811,13 +4798,13 @@ body.dark-mode .nav-overlay-backdrop,
   flex-shrink: 0;
 }
 .recruiter-panel__btn:hover {
-  border-color: var(--olive-2, #6b7a3a);
+  border-color: var(--olive-2, #5a7a2e);
   background: rgba(120, 140, 90, 0.06);
 }
 .recruiter-panel__btn--primary {
-  background: var(--olive-2, #6b7a3a);
+  background: var(--olive-2, #5a7a2e);
   color: #fff;
-  border-color: var(--olive-2, #6b7a3a);
+  border-color: var(--olive-2, #5a7a2e);
 }
 .recruiter-panel__btn--primary:hover {
   background: #5a6830;
@@ -4866,7 +4853,7 @@ body.dark-mode .nav-overlay-backdrop,
   font-size: 0.78rem;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--olive-2, #6b7a3a);
+  color: var(--olive-2, #5a7a2e);
   margin: 0 0 0.35rem;
   font-weight: 600;
 }
@@ -8439,7 +8426,7 @@ body.dark-mode .nav-overlay-backdrop,
   aspect-ratio: 9 / 19.5;
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 36px;
+  border-radius: 32px;
   overflow: hidden;
   box-shadow: var(--shadow-md), var(--shadow-olive);
   margin-bottom: 1.25rem;
@@ -8555,7 +8542,7 @@ body.dark-mode .nav-overlay-backdrop,
   padding: 0.2rem 0.55rem;
   border-radius: 4px;
   background: rgba(120, 140, 90, 0.15);
-  color: var(--olive-2, #6b7a3a);
+  color: var(--olive-2, #5a7a2e);
   margin-bottom: 0.4rem;
 }
 
@@ -9121,12 +9108,10 @@ body.dark-mode .nav-overlay-backdrop,
   width: min(300px, 64vw);
   aspect-ratio: 9 / 14;
   border-radius: 32px;
-  border: 2px solid var(--border-strong);
+  border: 1px solid var(--border);
   overflow: hidden;
   transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.06),
-    0 30px 60px -22px rgba(0, 0, 0, 0.35);
+  box-shadow: var(--shadow-md), var(--shadow-olive);
 }
 .grove-demo__notch {
   position: absolute;
@@ -9289,6 +9274,72 @@ body.dark-mode .nav-overlay-backdrop,
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   gap: 1.25rem;
   align-items: center;
+}
+
+/* The before (Emergent capture, ~3:4) and after (real phone screen, ~9:19.5)
+   are different source shapes. Framing both at the capture's natural 3:4 lets
+   the before fill edge-to-edge while the after sits centered — its dark bands
+   blend into the matching dark frame — so the pair reads as aligned devices. */
+.grove-evolution .grove-phone-frame {
+  aspect-ratio: 3 / 4;
+  max-width: 240px;
+}
+
+/* Prototype-vs-survey gallery (StateMatrix from ShowKit) — each decision shown
+   next to the actual screen it was made against. */
+.ck-statematrix {
+  list-style: none;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+.ck-state {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  min-width: 0;
+}
+.ck-state__shot {
+  margin: 0;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: #f5f0ea;
+  box-shadow: var(--shadow-sm);
+}
+.ck-state__shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+.ck-state__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.ck-state__name {
+  margin: 0;
+  color: var(--olive-2);
+  font-family: var(--font-head);
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+.ck-state__note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+@media (max-width: 760px) {
+  .ck-statematrix {
+    grid-template-columns: 1fr;
+    max-width: 380px;
+  }
 }
 
 .grove-wireframe-panel,
@@ -10801,6 +10852,7 @@ body.dark-mode .nav-overlay-backdrop,
 /* ── Progressive disclosure for dense case-study detail ── */
 .content-disclosure {
   margin-top: 1rem;
+  max-width: 42rem;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   background: color-mix(in srgb, var(--surface-1) 82%, transparent);
@@ -11413,7 +11465,7 @@ body.dark-mode .nav-overlay-backdrop,
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, transparent 0 45%, color-mix(in srgb, var(--fg) 68%, transparent) 100%),
+    linear-gradient(180deg, transparent 0 42%, rgba(23, 17, 14, 0.86) 100%),
     radial-gradient(circle at 24% 20%, color-mix(in srgb, var(--curated-accent) 34%, transparent), transparent 32%),
     linear-gradient(135deg, #f3e8dc, #d2b8a3 46%, #2a211d 47%, #2a211d 100%);
   opacity: 0.92;
@@ -11421,8 +11473,8 @@ body.dark-mode .nav-overlay-backdrop,
 
 .fashion-artifact--editorial::before {
   background:
-    linear-gradient(90deg, #15120c 0 42%, #efe6dc 42% 100%),
-    linear-gradient(180deg, transparent 0 64%, color-mix(in srgb, var(--fg) 70%, transparent) 100%);
+    linear-gradient(180deg, transparent 0 55%, rgba(23, 17, 14, 0.9) 100%),
+    linear-gradient(90deg, #15120c 0 42%, #efe6dc 42% 100%);
 }
 
 .fashion-artifact--editorial::after {
@@ -11479,13 +11531,29 @@ body.dark-mode .nav-overlay-backdrop,
   line-height: 1.45;
 }
 
-.fashion-artifact--editorial .fashion-artifact__label,
 .fashion-artifact--editorial h3,
 .fashion-artifact--editorial p:not(.fashion-artifact__label),
-.fashion-artifact--social .fashion-artifact__label,
 .fashion-artifact--social h3,
 .fashion-artifact--social p:not(.fashion-artifact__label) {
   color: #fff;
+}
+
+/* Eyebrows sit on theme-independent artwork (cream on some panels, ink on
+   others) so they can't take the theme text color. A small dark caption chip
+   guarantees contrast on any panel, in both themes, and reads as editorial
+   tagging. The dark-mode selector is specific enough to beat the global
+   `.dark-mode .case-study p !important` rule. */
+.fashion-artifact .fashion-artifact__label {
+  display: inline-block;
+  align-self: flex-start;
+  width: fit-content;
+  background: rgba(23, 17, 14, 0.74);
+  color: #f4ece2;
+  padding: 0.3em 0.62em;
+  border-radius: 5px;
+}
+.dark-mode .fashion-artifact .fashion-artifact__label {
+  color: #f4ece2 !important;
 }
 
 .fashion-artifact-link {
@@ -12253,11 +12321,14 @@ body.dark-mode .nav-overlay-backdrop,
   max-width: 720px;
 }
 
-.dark-mode .fashion-artifact::before,
+/* Editorial fashion artifacts are faux-photography: they carry the same warm
+   campaign palette in both themes (a lookbook image doesn't dim when the UI
+   flips). No brightness hack — render at full fidelity and seat the framed
+   ones against the dark surface with a deeper ambient shadow. */
 .dark-mode .fashion-channel--hero,
 .dark-mode .fashion-key-visual,
 .dark-mode .fashion-lookbook__page--image {
-  filter: saturate(0.95) brightness(0.92);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.45), 0 22px 48px rgba(0, 0, 0, 0.42);
 }
 
 @media (max-width: 900px) {

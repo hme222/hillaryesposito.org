@@ -41,9 +41,9 @@ const en = {
   "home.heroAria": "Home section",
   "home.status": "Available for opportunities",
   "home.positioning":
-    "Product designer — I sweat the details people feel. Craft, taste, and research that holds up.",
+    "Product designer and researcher. I spent six years building software for 21,000 clinicians who couldn't afford a wrong guess.",
   "home.description":
-    "AI product design\u00a0\u00b7 200+ app patterns studied\u00a0\u00b7 research-led\u00a0\u00b7 six years in systems that can't fail.",
+    "AI product design\u00a0\u00b7 200+ app patterns studied\u00a0\u00b7 research-led\u00a0\u00b7 consumer craft.",
   "home.getInTouch": "Get in touch",
   "home.seeApproach": "See my approach →",
   "home.replay": "Replay intro",
@@ -145,9 +145,9 @@ const en = {
 
   // ── Home: contact / CTA ──
   "home.contactAria": "Contact section",
-  "home.ctaTitle": "Have a workflow that needs untangling?",
+  "home.ctaTitle": "Building a product people have to trust?",
   "home.ctaBody":
-    "If your team needs a UX/product designer who can turn messy workflows, permissions, data, and edge cases into usable tools, let’s talk.",
+    "If your team needs a product designer who pairs consumer taste with research rigor — and gets the details people actually notice right — let’s talk.",
   "home.ctaEmail": "Send me a note",
   "home.ctaEmailAria": "Send me a note",
   "home.ctaCall": "Book a call →",
@@ -190,9 +190,9 @@ const es: Partial<Record<StringKey, string>> = {
   "home.heroAria": "Sección de inicio",
   "home.status": "Disponible para nuevas oportunidades",
   "home.positioning":
-    "Diseñadora de producto — cuido los detalles que la gente siente. Oficio, buen gusto e investigación que se sostiene.",
+    "Diseñadora de producto e investigadora. Pasé seis años creando software para 21,000 clínicos que no podían permitirse un error.",
   "home.description":
-    "Diseño de producto con IA · 200+ pantallas de apps estudiadas · basada en investigación · seis años en sistemas que no pueden fallar.",
+    "Diseño de producto con IA · 200+ pantallas de apps estudiadas · basada en investigación · oficio de producto de consumo.",
   "home.getInTouch": "Contácteme",
   "home.seeApproach": "Conozca mi enfoque →",
   "home.replay": "Repetir intro",
@@ -294,9 +294,9 @@ const es: Partial<Record<StringKey, string>> = {
 
   // ── Home: contact / CTA ──
   "home.contactAria": "Sección de contacto",
-  "home.ctaTitle": "¿Tiene un flujo que necesita desenredarse?",
+  "home.ctaTitle": "¿Está creando un producto en el que la gente tiene que confiar?",
   "home.ctaBody":
-    "Si su equipo necesita una diseñadora UX y de producto que convierta flujos, permisos, datos y casos límite en herramientas utilizables, hablemos.",
+    "Si su equipo necesita una diseñadora de producto que combine buen gusto de consumo con rigor de investigación — y que acierte en los detalles que la gente sí nota — hablemos.",
   "home.ctaEmail": "Escríbame",
   "home.ctaEmailAria": "Envíeme un correo",
   "home.ctaCall": "Agende una llamada →",

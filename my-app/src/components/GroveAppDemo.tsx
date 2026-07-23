@@ -14,37 +14,37 @@ const SCREENS: Screen[] = [
     src: "/assets/grove/grove-live-collection.jpg",
     label: "Your collection",
     note: "Every plant in one place, grouped by where they live.",
-    bg: "#eaf1e0",
+    bg: "#f5f0ea",
   },
   {
     src: "/assets/grove/grove-live-add.jpg",
     label: "Add a plant",
     note: "Track a single plant, or a whole bouquet.",
-    bg: "#efe9e1",
+    bg: "#31302e",
   },
   {
     src: "/assets/grove/grove-live-care.jpg",
     label: "Daily care",
     note: "One clear task a day. Overdue plants surface first — no shaming.",
-    bg: "#efe9e1",
+    bg: "#f5f0ea",
   },
   {
     src: "/assets/grove/grove-live-journal.jpg",
     label: "Care journal",
     note: "Every watering and note on one timeline — and no guilt for a missed day.",
-    bg: "#eef2e6",
+    bg: "#f5f0ea",
   },
   {
     src: "/assets/grove/grove-live-personality.jpg",
     label: "Plant personality",
     note: "An AI personality you earn by caring — not points, not a leaderboard.",
-    bg: "#f3efe6",
+    bg: "#f5f0ea",
   },
   {
     src: "/assets/grove/grove-live-greenhouse.jpg",
     label: "Greenhouse",
     note: "A species guide with real care notes, grouped into themed guilds.",
-    bg: "#efe9e1",
+    bg: "#f5f0ea",
   },
 ];
 
