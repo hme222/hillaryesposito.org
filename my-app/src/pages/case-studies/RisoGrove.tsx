@@ -225,6 +225,33 @@ export default function RisoGrove() {
     };
   }, []);
 
+  // Scroll-linked hand-drawn underline — draws as the quote rises into view,
+  // reverses on scroll-up, redraws on the way back down.
+  useEffect(() => {
+    const path = document.querySelector<SVGPathElement>(".riso-page .rp-underline path");
+    const quote = document.querySelector<HTMLElement>(".riso-page .rp-quote");
+    if (!path || !quote) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      path.style.strokeDashoffset = "0";
+      return;
+    }
+    const onScroll = () => {
+      const r = quote.getBoundingClientRect();
+      const vh = window.innerHeight || 1;
+      const start = vh * 0.66; // starts a bit later — as your eye reaches it
+      const end = vh * 0.44; // fully drawn near centre
+      const p = Math.max(0, Math.min(1, (start - r.top) / (start - end)));
+      path.style.strokeDashoffset = String(1 - p);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+
   return (
     <main className="riso-page">
       <RisoDefs />
@@ -241,7 +268,10 @@ export default function RisoGrove() {
           <div className="rp-clearing">
             <span className="rp-eyebrow">Product design · AI judgment</span>
             <h1 className="rp-h1">Grove.</h1>
-            <span className="rp-readtime"><b>4 min</b>&nbsp;read · a decision log, not a demo</span>
+            <span className="rp-readtime">
+              <b>4 min</b>
+              <span>read · a decision log, not a demo</span>
+            </span>
             <p className="rp-sub">
               A plant-care app an AI built in one pass. I tested it, surveyed 32 owners, and I’m
               rebuilding it around the one thing that keeps people: <b>trust</b>. (Phase 2 of 3.)
@@ -257,6 +287,9 @@ export default function RisoGrove() {
           </div>
         </div>
         <div className="rp-hero__media">
+          <div className="rp-device rp-device--peek" aria-hidden="true">
+            <img src="/assets/grove/grove-live-care.jpg" alt="" />
+          </div>
           <div className="rp-device">
             <img src="/assets/grove/grove-live-collection.jpg" alt="Grove — your plant collection, grouped by where they live" />
           </div>
@@ -392,6 +425,21 @@ export default function RisoGrove() {
         </div>
       </section>
 
+      {/* FULL-BLEED PULL QUOTE */}
+      <section className="rp-quote">
+        <blockquote className="rp-reveal">
+          Plant care should feel{" "}
+          <span className="rp-underline">
+            peaceful
+            <svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true">
+              <path pathLength="1" d="M4,13 C50,4 96,18 150,10 C208,3 252,16 296,7" />
+            </svg>
+          </span>
+          , not stressful.
+        </blockquote>
+        <cite>— one plant owner, unprompted, in the survey</cite>
+      </section>
+
       {/* AI DECISION DEEP-DIVE */}
       <section className="rp-section rp-section--alt">
         <div className="rp-wrap">
@@ -413,6 +461,20 @@ export default function RisoGrove() {
               <p className="rp-notif__tag">What I’m designing instead</p>
               <div className="rp-notif__card"><span className="rp-notif__app">Grove · 8:00 AM</span><p className="rp-notif__msg">Good morning. One thing today — your Fiddle Leaf could use a little water.</p></div>
             </div>
+          </div>
+
+          <h3 style={{ fontSize: "1.1rem", fontWeight: 800, margin: "2.8rem 0 0", letterSpacing: "-.01em" }}>All five calls, in full</h3>
+          <div className="rp-accordion rp-reveal">
+            {OVERRIDES.map((o, i) => (
+              <details className="rp-acc" key={o.topic}>
+                <summary><span className="rp-acc__num">{String(i + 1).padStart(2, "0")}</span> {o.topic}</summary>
+                <div className="rp-acc__body">
+                  <p className="rp-acc__line rp-acc__ai"><b>AI wanted</b>{o.ai}</p>
+                  <p className="rp-acc__line rp-acc__me"><b>I chose</b>{o.me}</p>
+                  <p className="rp-acc__why">{o.why}</p>
+                </div>
+              </details>
+            ))}
           </div>
         </div>
       </section>
@@ -438,13 +500,29 @@ export default function RisoGrove() {
               <span style={{ fontFamily: "var(--mono)", textTransform: "uppercase", letterSpacing: ".14em", fontSize: ".78rem" }}>Healthy · due · overdue</span>
             </div>
           </div>
+
+          <div className="rp-code" role="img" aria-label="A decision-log entry: the AI proposed urgency and guilt; the human override was one calm morning summary.">
+            <div className="rp-code__bar">
+              <span className="rp-code__dot" style={{ background: "#ef8a7a" }} />
+              <span className="rp-code__dot" style={{ background: "#e6c07a" }} />
+              <span className="rp-code__dot" style={{ background: "#9ccb7a" }} />
+              <span className="rp-code__name">decision-log.json</span>
+            </div>
+            <pre>
+{"{\n  "}<span className="k">"decision"</span>{": "}<span className="s">"reminders.tone"</span>{",\n  "}<span className="k">"ai_proposed"</span>{": "}<span className="s">"urgency + guilt"</span>{",\n  "}<span className="k">"human_override"</span>{": "}<span className="s">"one calm morning summary"</span>{",\n  "}<span className="k">"rationale"</span>{": "}<span className="s">"notifications = #1 delete reason"</span>{",\n  "}<span className="k">"overruled"</span>{": "}<span className="b">true</span>{"\n}"}
+            </pre>
+          </div>
+
           <div className="rp-foundation rp-reveal">
             <div className="rp-fcard"><p className="rp-fcard__k">Principle · locked</p><p className="rp-fcard__t">One task a day</p><p className="rp-fcard__d">A new user only ever sees one decision per screen.</p></div>
             <div className="rp-fcard"><p className="rp-fcard__k">Principle · locked</p><p className="rp-fcard__t">Grouped by where they live</p><p className="rp-fcard__d">Plants grouped by room, never one long overwhelming list.</p></div>
             <div className="rp-fcard"><p className="rp-fcard__k">Principle · locked</p><p className="rp-fcard__t">The AI can always be overruled</p><p className="rp-fcard__d">A person has the final call on every automated decision.</p></div>
-            <div className="rp-fcard rp-fcard--todo"><p className="rp-fcard__k">To document</p><p className="rp-fcard__t">Color &amp; type tokens</p><p className="rp-fcard__d">Add the palette and type scale once the redesign locks.</p></div>
-            <div className="rp-fcard rp-fcard--todo"><p className="rp-fcard__k">To document</p><p className="rp-fcard__t">Edge states</p><p className="rp-fcard__d">Empty, unsure-AI, coming-back, pet-toxic, too-many-reminders.</p></div>
-            <div className="rp-fcard rp-fcard--todo"><p className="rp-fcard__k">To test</p><p className="rp-fcard__t">Moderated round 2</p><p className="rp-fcard__d">Re-test the redesign with real owners; log what breaks.</p></div>
+          </div>
+          <p className="rp-phase" style={{ marginTop: "2.4rem" }}>Still coming <span>· documented as the redesign settles</span></p>
+          <div className="rp-roadmap rp-reveal">
+            <div className="rp-roadmap__item"><span className="rp-roadmap__box">▢</span><div><p className="rp-roadmap__t">Color &amp; type tokens</p><p className="rp-roadmap__d">The full palette and type scale, once the redesign locks.</p></div></div>
+            <div className="rp-roadmap__item"><span className="rp-roadmap__box">▢</span><div><p className="rp-roadmap__t">Edge states</p><p className="rp-roadmap__d">Empty, unsure-AI, coming-back, pet-toxic, too-many-reminders.</p></div></div>
+            <div className="rp-roadmap__item"><span className="rp-roadmap__box">▢</span><div><p className="rp-roadmap__t">Moderated round 2</p><p className="rp-roadmap__d">Re-test the redesign with real owners; log what breaks.</p></div></div>
           </div>
         </div>
       </section>
@@ -547,8 +625,8 @@ export default function RisoGrove() {
         <div className="rp-madewith__inner">
           <p className="rp-madewith__k">Made with</p>
           <div className="rp-madewith__list">
-            <span>Figma</span><span>Emergent</span><span>React</span><span>FastAPI</span><span>MongoDB</span>
-            <span>32 real opinions</span><span>the word “no”</span><span>restraint</span><span>caffeine</span>
+            <span>🎨 Figma</span><span>🤖 Emergent</span><span>⚛️ React</span><span>⚡ FastAPI</span><span>🍃 MongoDB</span>
+            <span>🗣️ 32 real opinions</span><span>✋ the word “no”</span><span>🧘 restraint</span><span>☕ caffeine</span>
           </div>
         </div>
       </footer>
