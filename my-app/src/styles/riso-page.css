@@ -385,7 +385,6 @@
 
 /* ---------- section scaffolding ---------- */
 .rp-section { position: relative; padding: clamp(2.6rem, 6vw, 4.5rem) 0; }
-.rp-section[id], .rp-hero[id], .rp-cinema[id], .rp-completionTrigger[id] { scroll-margin-top: 150px; }
 .rp-section--alt { background: var(--paper-2); border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); }
 .rp-kicker { font-family: var(--mono); font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--coral); font-weight: 700; }
 .rp-title { font-size: clamp(1.6rem, 4vw, 2.5rem); font-weight: 850; letter-spacing: -.015em; margin: .5rem 0 0; max-width: 20ch; text-wrap: balance; }
@@ -888,6 +887,11 @@
 /* Current chapter. Weight carries it as well as colour, so the state survives
    greyscale, forced colours, and colour-vision differences. */
 .rp-chapters a.is-active { color: var(--ink); font-weight: 700; border-bottom-color: var(--ink); }
+/* The active chapter's authored note. Pushed to its own end of the strip so it
+   reads as context for where you are, not as another link. */
+.rp-chapters__note { margin-left: auto; padding-left: 1rem; color: var(--muted);
+  font-style: italic; letter-spacing: .02em; text-transform: none; }
+@media (max-width: 900px) { .rp-chapters__note { display: none; } }
 @media (max-width: 760px) {
   .rp-chapters {
     flex-wrap: wrap;
@@ -1284,30 +1288,7 @@
 }
 
 /* ---------- journal completion reward ---------- */
-.rp-completionTrigger { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;
-  padding: 1.2rem clamp(1rem,4vw,2rem); border-top: 1px solid var(--hair); background: var(--paper); font-family: var(--mono); font-size: .68rem; }
-.rp-completionTrigger button { min-height: 44px; border: 1px solid var(--hair); border-radius: 6px; padding: .6rem .9rem;
-  background: var(--paper); color: var(--ink); font: inherit; cursor: pointer; }
-.rp-completion { position: relative; width: min(680px,calc(100% - 2rem)); max-height: min(720px,calc(100vh - 2rem)); overflow: hidden;
-  padding: clamp(2rem,7vw,5rem); border: 1px solid var(--hair); border-radius: 8px; background: #f5f0ea; color: #20241c; box-shadow: 0 32px 100px rgba(0,0,0,.42); }
-.rp-completion::backdrop { background: rgba(13,24,14,.72); backdrop-filter: blur(7px); }
-.rp-completion__arc { position: absolute; z-index: -1; width: 130%; aspect-ratio: 1; left: -15%; top: 42%;
-  border-radius: 50%; background:
-  repeating-radial-gradient(circle at 50% 100%,rgba(58,107,46,.08) 0 1px,transparent 2px 28px),
-  linear-gradient(135deg,rgba(188,90,120,.12),rgba(198,138,46,.08)); }
-.rp-completion__close { position: absolute; top: 1rem; right: 1rem; width: 44px; height: 44px; border: 1px solid #c2cbb8;
-  border-radius: 50%; background: #f5f0ea; color: #20241c; font-size: 1.5rem; cursor: pointer; }
-.rp-completion h2 { margin: .65rem 0 0; max-width: 12ch; font-size: clamp(2rem,6vw,4rem); line-height: 1.06; letter-spacing: -.024em; }
-.rp-completion > p:not(.rp-kicker) { margin-top: 1rem; max-width: 44ch; color: #45503f; }
-.rp-completion__actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 2rem; }
-.rp-completion__shareMsg { margin: .9rem 0 0; min-height: 1.2em; font-family: var(--mono); font-size: .72rem; letter-spacing: .04em; color: var(--green); }
-.rp-completion__shareMsg:empty { margin-top: 0; }
-.rp-completion__actions a, .rp-completion__actions button { min-height: 44px; display: inline-flex; align-items: center; padding: .7rem 1rem;
-  border: 1px solid #3a6b2e; border-radius: 7px; background: #3a6b2e; color: #fff; font: 700 .72rem/1 var(--mono); text-decoration: none; cursor: pointer; }
-.rp-completion__actions button { background: transparent; color: #3a6b2e; }
 @media (max-width: 520px) {
-  .rp-completion__actions { flex-direction: column; }
-  .rp-completion__actions a, .rp-completion__actions button { justify-content: center; width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) {
   .rp-decisionStory__note { animation: none; }
@@ -1364,3 +1345,48 @@
 .rp-quoteCard { margin: 2.4rem 0 0; padding: 1.4rem 1.5rem; border-left: 3px solid var(--coral); background: var(--paper-2); }
 .rp-quoteCard blockquote { margin: 0; font-size: clamp(1.15rem, 2.2vw, 1.5rem); line-height: 1.35; letter-spacing: -.015em; font-weight: 700; }
 .rp-quoteCard figcaption { margin-top: .8rem; font-size: .88rem; line-height: 1.6; color: var(--ink-2); }
+
+/* ---------- home: client testimonial ---------- */
+/* Sits with the proof stats deliberately. Those numbers are self-reported;
+   this is the only voice on the site that is not Hillary's, so it does the
+   work the stats cannot. */
+.rp-testimonial { margin: 2.2rem 0 0; padding: 1.5rem 1.6rem; border: 1px solid var(--hair); border-left: 3px solid var(--coral); background: var(--paper); }
+.rp-testimonial blockquote { margin: 0; font-size: clamp(1.05rem, 2vw, 1.3rem); line-height: 1.5; letter-spacing: -.012em; }
+.rp-testimonial figcaption { display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem .8rem; margin-top: 1rem; }
+.rp-testimonial figcaption b { font-size: .92rem; }
+.rp-testimonial figcaption span { font-family: var(--mono); font-size: .66rem; letter-spacing: .06em; color: var(--muted); }
+
+/* ---------- forced colours (Windows High Contrast) ---------- */
+/* The new visual system had no forced-colors handling at all. In that mode the
+   OS replaces author colours, so anything distinguished ONLY by a fill loses
+   its meaning. Two different problems here, with two different answers. */
+@media (forced-colors: active) {
+  /* 1. Affordances that relied on a coral fill to read as buttons. Without an
+     author border there is nothing guaranteeing a visible edge. */
+  .rp-cta,
+  .rp-share,
+  .site-footer__marqueeToggle { border: 1px solid ButtonBorder; }
+
+  /* 2. Selected states distinguished only by a background fill. Give them a
+     border so the selection survives when the fill does not. */
+  .rp-demo__tabs button[aria-selected="true"] {
+    border: 2px solid Highlight;
+    forced-color-adjust: none;
+  }
+  .rp-chapters a.is-active { border-bottom-width: 2px; }
+
+  /* 3. Where the colour IS the content, opt out of the override entirely and
+     add an edge so adjacent specimens stay separable. The literal swatches and
+     the neutral ramp exist to show real hex values; replacing them with system
+     colours defeats the point of the component. */
+  .rp-swatch__chip,
+  .rp-neutral > span,
+  .rp-rank__track i {
+    forced-color-adjust: none;
+    border: 1px solid CanvasText;
+  }
+
+  /* 4. The closing band is a fixed near-black; let the OS reclaim it rather
+     than leave light-on-light. */
+  .site-footer__base { forced-color-adjust: auto; border-top: 1px solid CanvasText; }
+}

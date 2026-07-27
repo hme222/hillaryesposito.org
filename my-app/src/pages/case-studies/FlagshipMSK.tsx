@@ -19,6 +19,7 @@ const MSKSystemMap = lazy(() => import("../../components/MSKSystemMap"));
 
 const CHAPTERS: CaseStudyChapter[] = [
   { id: "msk-start", label: "Start", note: "The contradiction" },
+  { id: "msk-brief", label: "Problem", note: "A digital workflow became a paper ritual" },
   { id: "msk-workflow", label: "Workflow", note: "Four systems became two" },
   { id: "msk-decisions", label: "Decisions", note: "The simple button was not simple" },
   { id: "msk-systems", label: "Systems", note: "Six years on the floor" },

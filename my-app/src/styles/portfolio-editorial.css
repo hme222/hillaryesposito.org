@@ -720,29 +720,78 @@
   font-size: .72rem;
   letter-spacing: .04em;
 }
-.site-footer__colophon {
-  padding-bottom: 1.3rem;
-  margin-bottom: 1.3rem;
+/* "Made with:" banner. Per-case-study credits, scrolling. It sits in the
+   closing band rather than mid-page, where the previous marquee was competing
+   with the final CTA for attention. */
+.site-footer__madeWith {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1.2rem;
+  margin-bottom: 1.2rem;
   border-bottom: 1px solid color-mix(in srgb, currentColor 22%, transparent);
 }
-.site-footer__ethos {
-  max-width: 72ch;
+.site-footer__madeWithLabel {
+  flex: 0 0 auto;
+  margin: 0;
   font-family: var(--font-mono, ui-monospace, monospace);
-  font-size: .74rem;
-  line-height: 1.75;
-  letter-spacing: .04em;
-  opacity: .72;
+  font-size: .7rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  opacity: .6;
 }
-.site-footer__credits {
+.site-footer__marquee {
+  flex: 1 1 auto;
   display: flex;
-  flex-wrap: wrap;
-  gap: .45rem 1.1rem;
-  margin: .9rem 0 0;
+  gap: 2.2rem;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 3%, #000 92%, transparent);
+}
+.site-footer__track {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 2.2rem;
+  margin: 0;
   padding: 0;
   list-style: none;
+  white-space: nowrap;
   font-family: var(--font-mono, ui-monospace, monospace);
-  font-size: .74rem;
-  opacity: .82;
+  font-size: .76rem;
+  animation: footer-marquee 42s linear infinite;
+}
+@keyframes footer-marquee { from { transform: translateX(0); } to { transform: translateX(calc(-100% - 2.2rem)); } }
+.site-footer__madeWith:hover .site-footer__track,
+.site-footer__madeWith:focus-within .site-footer__track,
+.site-footer__madeWith.is-paused .site-footer__track { animation-play-state: paused; }
+.site-footer__marqueeToggle {
+  flex: 0 0 auto;
+  min-height: 44px;
+  padding: 0 .7rem;
+  border: 1px solid color-mix(in srgb, currentColor 34%, transparent);
+  border-radius: 3px;
+  background: transparent;
+  color: inherit;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: .64rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.site-footer__marqueeToggle:hover { background: color-mix(in srgb, currentColor 14%, transparent); }
+
+/* No motion: the banner becomes a plain wrapped list, the duplicate track that
+   only existed to make the loop seamless is removed, and the control that
+   pauses something no longer moving goes with it. */
+@media (prefers-reduced-motion: reduce) {
+  .site-footer__madeWith { flex-wrap: wrap; }
+  .site-footer__marquee { overflow: visible; mask-image: none; }
+  .site-footer__track { animation: none; white-space: normal; flex-wrap: wrap; gap: .45rem 1.4rem; }
+  .site-footer__track[aria-hidden="true"] { display: none; }
+  .site-footer__marqueeToggle { display: none; }
+}
+@media (max-width: 700px) {
+  .site-footer__madeWith { flex-wrap: wrap; gap: .7rem; }
+  .site-footer__marquee { order: 3; flex-basis: 100%; }
 }
 @media (max-width: 700px) {
   .site-footer__baseRow { flex-direction: column; }

@@ -27,8 +27,13 @@ import "../../styles/riso-page.css";
 // tracking; the component itself renders from the second onward.
 const CHAPTERS: CaseStudyChapter[] = [
   { id: "grove-start", label: "Start", note: "A decision log, not a demo" },
+  { id: "grove-brief", label: "Problem", note: "Care should fit a life already happening" },
   { id: "grove-research", label: "Research", note: "32 real opinions" },
-  { id: "grove-redesign", label: "Redesign", note: "What the AI built" },
+  // "Redesign" used to point here, at the gallery of what the AI built — the
+  // opposite of what the label promised. The gallery is now labelled for what
+  // it is, and the decisions section finally has an anchor of its own.
+  { id: "grove-redesign", label: "What AI built", note: "The first version, screen by screen" },
+  { id: "grove-decisions", label: "Decisions", note: "Three features, one call each" },
   { id: "grove-override", label: "Human override", note: "Five calls" },
   { id: "grove-system", label: "System", note: "The decisions underneath" },
   { id: "grove-outcomes", label: "Evidence", note: "No invented numbers" },
@@ -405,7 +410,7 @@ export default function RisoGrove() {
       </section>
 
       {/* THE REDESIGN — Emergent → focused, evidence-backed direction */}
-      <section className="rp-section">
+      <section className="rp-section" id="grove-decisions">
         <div className="rp-wrap">
           <p className="rp-kicker">The redesign · what changes and why</p>
           <h2 className="rp-title">Three features, one decision each</h2>

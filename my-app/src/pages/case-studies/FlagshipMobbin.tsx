@@ -17,6 +17,7 @@ import "../../styles/flagship-case-study.css";
 
 const CHAPTERS: CaseStudyChapter[] = [
   { id: "mobbin-start", label: "Start", note: "The capture desk" },
+  { id: "mobbin-brief", label: "Problem", note: "It has to survive without its author" },
   { id: "mobbin-work", label: "Method", note: "A screenshot is not a flow" },
   { id: "mobbin-apps", label: "Apps", note: "Three trust models" },
   { id: "mobbin-outcomes", label: "Outcome", note: "200+ screens later" },

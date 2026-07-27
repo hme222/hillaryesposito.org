@@ -1,5 +1,5 @@
 // src/components/Footer.tsx
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useT } from "../app/LanguageContext";
 
@@ -11,31 +11,52 @@ import { useT } from "../app/LanguageContext";
  * dark slab above the footer and repeating the copyright. Grove is the only
  * page using it today; the shape exists so others can join the same band.
  */
-const COLOPHONS: Record<
-  string,
-  { ethos: string; credits: Array<{ icon: string; label: string }> }
-> = {
-  "/case-study/grove": {
-    ethos:
-      "Calm, not stressful · One task a day · Humans over algorithms · Reduce the overwhelm · Trust, not tricks · What you already own",
-    credits: [
-      { icon: "🎨", label: "Figma" },
-      { icon: "🤖", label: "Emergent" },
-      { icon: "⚛️", label: "React" },
-      { icon: "⚡", label: "FastAPI" },
-      { icon: "🍃", label: "MongoDB" },
-      { icon: "🗣️", label: "32 real opinions" },
-      { icon: "✋", label: "the word “no”" },
-      { icon: "🧘", label: "restraint" },
-      { icon: "☕", label: "caffeine" },
-    ],
-  },
+/**
+ * Every entry must be traceable to something the case study itself states.
+ * Grove's list is literal build tooling. MSK and Mobbin did not ship from a
+ * toolchain worth listing, so theirs credit the methods and materials those
+ * pages already claim — never a tool Hillary has not said she used.
+ */
+const COLOPHONS: Record<string, Array<{ icon: string; label: string }>> = {
+  "/case-study/grove": [
+    { icon: "🎨", label: "Figma" },
+    { icon: "🤖", label: "Emergent" },
+    { icon: "⚛️", label: "React" },
+    { icon: "⚡", label: "FastAPI" },
+    { icon: "🍃", label: "MongoDB" },
+    { icon: "🗣️", label: "32 real opinions" },
+    { icon: "✋", label: "the word “no”" },
+    { icon: "🧘", label: "restraint" },
+    { icon: "☕", label: "caffeine" },
+  ],
+  "/case-study/msk": [
+    { icon: "📋", label: "current-state maps" },
+    { icon: "👀", label: "shadowing real shifts" },
+    { icon: "📈", label: "Lean Six Sigma" },
+    { icon: "🎓", label: "an MHA" },
+    { icon: "🗂️", label: "the sticky notes that told the truth" },
+    { icon: "🤝", label: "clinical, IT, and operations in one room" },
+    { icon: "🏥", label: "six years on the floor" },
+    { icon: "☕", label: "caffeine" },
+  ],
+  "/case-study/mobbin": [
+    { icon: "📱", label: "3 live finance apps" },
+    { icon: "🖼️", label: "200+ screens" },
+    { icon: "🏷️", label: "Mobbin’s vocabulary" },
+    { icon: "✂️", label: "an editor, not a camera" },
+    { icon: "🗓️", label: "4 months" },
+    { icon: "☕", label: "caffeine" },
+  ],
 };
 
 export default function Footer() {
   const t = useT();
   const { pathname } = useLocation();
-  const colophon = COLOPHONS[pathname];
+  const credits = COLOPHONS[pathname];
+  // Auto-moving content needs a way to stop it (WCAG 2.2.2). Hover-pause alone
+  // does not serve keyboard or touch, so the banner carries a real control.
+  // Reduced-motion users never see it move; the button is harmless there.
+  const [paused, setPaused] = useState(false);
   const hasAuthoredClose =
     pathname === "/" ||
     pathname === "/about" ||
@@ -84,16 +105,37 @@ export default function Footer() {
       </div>
 
       <div className="site-footer__base">
-        {colophon && (
-          <div className="site-footer__colophon">
-            <p className="site-footer__ethos">{colophon.ethos}</p>
-            <ul className="site-footer__credits">
-              {colophon.credits.map((c) => (
-                <li key={c.label}>
-                  <span aria-hidden="true">{c.icon}</span> {c.label}
-                </li>
-              ))}
-            </ul>
+        {credits && (
+          <div className={`site-footer__madeWith${paused ? " is-paused" : ""}`}>
+            <p className="site-footer__madeWithLabel">Made with:</p>
+            <div className="site-footer__marquee">
+              {/* The first copy is the real list. The second exists only so the
+                  scroll can loop seamlessly, so it is hidden from the a11y tree
+                  rather than announced twice. */}
+              <ul className="site-footer__track">
+                {credits.map((c) => (
+                  <li key={c.label}>
+                    <span aria-hidden="true">{c.icon}</span> {c.label}
+                  </li>
+                ))}
+              </ul>
+              <ul className="site-footer__track" aria-hidden="true">
+                {credits.map((c) => (
+                  <li key={`dup-${c.label}`}>
+                    <span>{c.icon}</span> {c.label}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <button
+              type="button"
+              className="site-footer__marqueeToggle"
+              onClick={() => setPaused((p) => !p)}
+              aria-pressed={paused}
+            >
+              {paused ? "Play" : "Pause"}
+              <span className="sr-only"> the credits banner</span>
+            </button>
           </div>
         )}
         <div className="site-footer__baseRow">

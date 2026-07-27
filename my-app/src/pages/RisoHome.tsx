@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import RisoDefs from "../components/riso/RisoDefs";
 import CartoField from "../components/riso/CartoField";
+import { CLIENT_FEEDBACK, CLIENT_FEEDBACK_ES } from "../data/clientFeedback";
 import usePageTitle from "../hooks/usePageTitle";
 import { useLanguage, useT } from "../app/LanguageContext";
 import type { StringKey } from "../i18n/strings";
@@ -144,6 +145,37 @@ export default function RisoHome() {
         ))}
       </ul>
 
+      {/* PROOF */}
+      <section className="rp-section rp-section--alt" aria-labelledby="home-proof-title">
+        <div className="rp-wrap">
+          <p className="rp-kicker">{t("home.riso.proofKicker")}</p>
+          <h2 className="rp-title" id="home-proof-title">{t("home.riso.proofTitle")}</h2>
+          <div className="rp-outcomes">
+            {STATS.map((s) => (
+              <div className="rp-stat" key={s.n}>
+                <p className="rp-stat__n">{s.n}</p>
+                <p className="rp-stat__l">{t(s.labelKey)}</p>
+                <p className="rp-stat__source">{t(s.sourceKey)}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* The numbers are self-reported; this is the one voice on the site
+              that isn't Hillary's, so it belongs with the proof rather than
+              three pages deep on About. */}
+          {(lang === "es" ? CLIENT_FEEDBACK_ES : CLIENT_FEEDBACK).map((f) => (
+            <figure className="rp-testimonial" key={f.name}>
+              <blockquote>“{f.quote}”</blockquote>
+              <figcaption>
+                <b>{f.name}</b>
+                <span>{f.role}</span>
+                <span>{f.context}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
       {/* SELECTED WORK */}
       <section className="rp-section" id="projects" aria-labelledby="home-work-title">
         <div className="rp-wrap">
@@ -166,23 +198,6 @@ export default function RisoHome() {
                 </div>
                 <span className="rp-work__arrow" aria-hidden="true">→</span>
               </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PROOF */}
-      <section className="rp-section rp-section--alt" aria-labelledby="home-proof-title">
-        <div className="rp-wrap">
-          <p className="rp-kicker">{t("home.riso.proofKicker")}</p>
-          <h2 className="rp-title" id="home-proof-title">{t("home.riso.proofTitle")}</h2>
-          <div className="rp-outcomes">
-            {STATS.map((s) => (
-              <div className="rp-stat" key={s.n}>
-                <p className="rp-stat__n">{s.n}</p>
-                <p className="rp-stat__l">{t(s.labelKey)}</p>
-                <p className="rp-stat__source">{t(s.sourceKey)}</p>
-              </div>
             ))}
           </div>
         </div>

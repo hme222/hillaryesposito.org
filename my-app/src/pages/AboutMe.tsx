@@ -4,6 +4,7 @@ import usePageTitle from "../hooks/usePageTitle";
 import { useLanguage } from "../app/LanguageContext";
 import { NewsIcon } from "../components/LineIcons";
 import CartoField from "../components/riso/CartoField";
+import { CLIENT_FEEDBACK, CLIENT_FEEDBACK_ES } from "../data/clientFeedback";
 import "../styles/riso.css";
 import "../styles/riso-page.css";
 
@@ -46,16 +47,6 @@ const CHAPTERS = [
   },
 ];
 
-const CLIENT_FEEDBACK = [
-  {
-    quote:
-      "Hillary was timely, communicative, and diligent in ensuring that every screen and interaction was captured to a high standard.",
-    name: "Lynette Yap",
-    role: "Content and Community @ Mobbin",
-    context: "Client recommendation, freelance UX flow documentation project",
-  },
-];
-
 const CHAPTERS_ES = [
   {
     id: "now",
@@ -91,16 +82,6 @@ const CHAPTERS_ES = [
       "Desplegada en Irak con la 44th IBCT, dirigí logística médica para más de 5,000 soldados y $2M en suministros en siete estaciones de ayuda en tres países. Fui pionera en un sistema de seguimiento digital que redujo el tiempo de reabastecimiento en 85% y el gasto en 60%. En 2020, durante la respuesta de COVID-19 en Nueva Jersey, reporté desde la Oficina del Joint Surgeon al Pentágono sobre operaciones médicas estatales.",
     ],
     callout: "Una falla de proceso en zona de combate no es una molestia. Es un riesgo.",
-  },
-];
-
-const CLIENT_FEEDBACK_ES = [
-  {
-    quote:
-      "Hillary fue puntual, comunicativa y diligente para asegurar que cada pantalla e interacción se capturara con un estándar alto.",
-    name: "Lynette Yap",
-    role: "Content and Community @ Mobbin",
-    context: "Recomendación de cliente, proyecto freelance de documentación de flujos UX",
   },
 ];
 

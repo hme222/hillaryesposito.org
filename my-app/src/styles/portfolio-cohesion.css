@@ -166,8 +166,9 @@
   border-top: 1px solid rgba(245, 239, 230, .16);
 }
 .site-footer__base p,
-.site-footer__ethos,
-.site-footer__credits {
+.site-footer__madeWithLabel,
+.site-footer__track,
+.site-footer__marqueeToggle {
   color: #f5efe6;
   font-family: var(--shell-mono);
 }
