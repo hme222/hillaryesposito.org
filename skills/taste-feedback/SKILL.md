@@ -61,6 +61,17 @@ Good taste questions are specific and answerable:
 | "Any feedback?" | "The cards have 16px padding and 8px radius. Does this density feel right, or do you want more breathing room?" |
 | "Is this the right direction?" | "I went warm grey (#F5F3F0) for the background instead of pure white. Does this warmth match what you had in mind?" |
 
+When feedback becomes an implementation request, write it to the Visual queue using the `emergent-inspired-build-loop` change format:
+
+- element and location;
+- current and target states;
+- exact scope and breakpoints;
+- what must remain unchanged;
+- screenshot or rendered evidence;
+- verification method.
+
+Do not combine this visual request with a new feature or unrelated bug fix.
+
 ### Step 3: Present the Checkpoint
 
 Show the user the intermediate state with targeted questions:
@@ -150,7 +161,7 @@ The system should learn this preference over time via `design-memory`.
 - **Called by:** `design-builder` (at visual checkpoints during build), `using-designpowers` (can be enabled/disabled)
 - **Calls:** `design-memory` (to record taste signals from feedback)
 - **Reads from:** Taste profile (to determine checkpoint frequency and known preferences), `design-state.md` (for current decisions)
-- **Pairs with:** `design-memory`, `ui-composition`, `designpowers-critique`
+- **Pairs with:** `design-memory`, `ui-composition`, `emergent-inspired-build-loop`, `designpowers-critique`
 
 ## Anti-Patterns
 

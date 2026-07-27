@@ -3,9 +3,39 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useT } from "../app/LanguageContext";
 
+/**
+ * Per-route colophon.
+ *
+ * A page built with something worth crediting contributes an ethos line and a
+ * credits list into the footer's dark base band, rather than stacking a second
+ * dark slab above the footer and repeating the copyright. Grove is the only
+ * page using it today; the shape exists so others can join the same band.
+ */
+const COLOPHONS: Record<
+  string,
+  { ethos: string; credits: Array<{ icon: string; label: string }> }
+> = {
+  "/case-study/grove": {
+    ethos:
+      "Calm, not stressful · One task a day · Humans over algorithms · Reduce the overwhelm · Trust, not tricks · What you already own",
+    credits: [
+      { icon: "🎨", label: "Figma" },
+      { icon: "🤖", label: "Emergent" },
+      { icon: "⚛️", label: "React" },
+      { icon: "⚡", label: "FastAPI" },
+      { icon: "🍃", label: "MongoDB" },
+      { icon: "🗣️", label: "32 real opinions" },
+      { icon: "✋", label: "the word “no”" },
+      { icon: "🧘", label: "restraint" },
+      { icon: "☕", label: "caffeine" },
+    ],
+  },
+};
+
 export default function Footer() {
   const t = useT();
   const { pathname } = useLocation();
+  const colophon = COLOPHONS[pathname];
   const hasAuthoredClose =
     pathname === "/" ||
     pathname === "/about" ||
@@ -54,8 +84,22 @@ export default function Footer() {
       </div>
 
       <div className="site-footer__base">
-        <p>© 2026 Hillary Esposito</p>
-        <p>{t("footer.availability")}</p>
+        {colophon && (
+          <div className="site-footer__colophon">
+            <p className="site-footer__ethos">{colophon.ethos}</p>
+            <ul className="site-footer__credits">
+              {colophon.credits.map((c) => (
+                <li key={c.label}>
+                  <span aria-hidden="true">{c.icon}</span> {c.label}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        <div className="site-footer__baseRow">
+          <p>© 2026 Hillary Esposito</p>
+          <p>{t("footer.availability")}</p>
+        </div>
       </div>
     </footer>
   );

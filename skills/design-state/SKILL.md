@@ -57,6 +57,15 @@ _Last updated: [date] by [agent name]_
 
 _If no taste calibration was done, note: "No taste profile — craft evaluation uses general quality standards only."_
 
+## Build Loop
+- **Build contract:** [path]
+- **Profile:** [Prototype / Standard / Deep / Mobile]
+- **Active queue:** [Feature / Bug / Visual]
+- **Current slice:** [name and outcome]
+- **Recovery point:** [commit SHA or diff note]
+- **Preview evidence:** [paths/URLs]
+- **Health status:** [Pending / Ready / Conditional / Blocked]
+
 ## Decisions Log
 Append-only. Each entry records who decided, what, and why.
 
@@ -81,6 +90,9 @@ Paths to key documents produced during the workflow.
 | Personas | [path] | Complete |
 | Strategy | [path] | Complete |
 | Plan | [path] | In progress |
+| Build contract | [path] | [Approved/In progress] |
+| Focused context packet | [path] | [Current/Complete] |
+| Local health report | [path] | [Pending/Ready/Conditional/Blocked] |
 | Heuristic evaluation | [path] | [Pending/Complete] |
 | Synthetic test results | [path] | [Pending/Complete] |
 | ... | ... | ... |
@@ -144,3 +156,4 @@ When an agent completes its work:
 6. Write the handoff babble message (2-4 conversational sentences addressed to the next agent)
 7. Add the babble to the Handoff Chain — this is shown to the user
 8. Update the "Last updated" line
+9. When `emergent-inspired-build-loop` is active, update the profile, queue, slice, recovery point, preview evidence, and health status

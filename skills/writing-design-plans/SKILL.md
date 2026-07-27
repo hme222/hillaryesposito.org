@@ -24,6 +24,8 @@ Gather:
 - Existing design system inventory
 - Preferred implementation libraries from `../preferred-libraries.md` when the plan includes animation, charts, 3D, icons, tables, command palettes, toasts, drag-and-drop, dates, or celebratory effects
 
+When the plan will produce working code, invoke `emergent-inspired-build-loop` and create the build contract before task decomposition.
+
 ### Step 2: Identify Design Tasks
 
 Break the work into categories:
@@ -34,6 +36,8 @@ Break the work into categories:
 4. **Interaction tasks** — states, transitions, feedback patterns
 5. **Content tasks** — copy, labels, error messages, help text
 6. **Accessibility tasks** — specific inclusive design requirements per component
+
+Group implementation work into functional slices. Assign every slice to exactly one queue: Feature, Bug, or Visual. Do not mix queues inside one task.
 
 ### Step 3: Order the Work
 
@@ -62,9 +66,17 @@ Order tasks so that:
 
 **Personas:** [Reference to personas this plan serves]
 
+**Build Contract:** [Path from `emergent-inspired-build-loop`]
+
+**Build Profile:** [Prototype / Standard / Deep / Mobile]
+
 ---
 
 ## Task 1: [Task Name]
+
+**Queue:** [Feature / Bug / Visual]
+
+**Functional slice:** [Visible or testable outcome]
 
 **Files:** [Which files will be created or modified]
 
@@ -109,7 +121,7 @@ User must approve the plan before execution begins.
 ## Integration
 
 - **Called by:** `design-discovery`, `design-strategy`
-- **Calls:** Implementation begins via the relevant design skills (`ui-composition`, `interaction-design`, etc.)
+- **Calls:** `emergent-inspired-build-loop` for code-producing plans; implementation then begins via the relevant design skills
 - **Pairs with:** `designpowers-critique` (reviews work against the plan)
 
 ## Anti-Patterns

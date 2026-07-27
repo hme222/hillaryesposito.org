@@ -138,15 +138,6 @@ const OVERRIDES = [
   { topic: "Notification frequency", ai: "Nudge whenever engagement dips.", me: "One summary per group; only true emergencies interrupt.", why: "A reminder can never become the reason someone leaves." },
 ];
 
-const MARQUEE = [
-  "Calm, not stressful",
-  "One task a day",
-  "Humans over algorithms",
-  "Reduce the overwhelm",
-  "Trust, not tricks",
-  "What you already own",
-];
-
 // Share, then confirm only what actually happened — shared, copied, or a way to
 // recover. Cancelling the share sheet says nothing celebratory.
 type ShareOutcome = "shared" | "copied" | "error" | null;
@@ -617,27 +608,6 @@ export default function RisoGrove() {
         </div>
       </Link>
 
-      {/* CLOSING BANNER — the ethos, the credits, the copyright. No motion. */}
-      <aside className="rp-colophon" aria-label="Credits and site information">
-        <div className="rp-colophon__inner">
-          <p className="rp-colophon__ethos">{MARQUEE.join(" · ")}</p>
-          <div>
-            <p className="rp-colophon__k">Made with</p>
-            <div className="rp-colophon__list">
-              <span><span aria-hidden="true">🎨</span> Figma</span>
-              <span><span aria-hidden="true">🤖</span> Emergent</span>
-              <span><span aria-hidden="true">⚛️</span> React</span>
-              <span><span aria-hidden="true">⚡</span> FastAPI</span>
-              <span><span aria-hidden="true">🍃</span> MongoDB</span>
-              <span><span aria-hidden="true">🗣️</span> 32 real opinions</span>
-              <span><span aria-hidden="true">✋</span> the word “no”</span>
-              <span><span aria-hidden="true">🧘</span> restraint</span>
-              <span><span aria-hidden="true">☕</span> caffeine</span>
-            </div>
-          </div>
-          <p className="rp-colophon__rights">© 2026 Hillary Esposito</p>
-        </div>
-      </aside>
     </main>
   );
 }

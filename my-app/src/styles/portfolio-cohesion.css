@@ -151,9 +151,24 @@
   font-family: var(--shell-sans);
 }
 .site-footer__eyebrow,
-.site-footer__label,
-.site-footer__base p {
+.site-footer__label {
   color: var(--shell-muted);
+  font-family: var(--shell-mono);
+}
+
+/* The closing band. Fixed near-black in BOTH themes: --fg/--bg invert with the
+   theme, which would turn the black band white in dark mode. The hairline keeps
+   it defined where the page behind it is also dark. This layer loads last, so
+   the colours are set here rather than in the editorial sheet. */
+.site-footer__base {
+  background: #12120f;
+  color: #f5efe6;
+  border-top: 1px solid rgba(245, 239, 230, .16);
+}
+.site-footer__base p,
+.site-footer__ethos,
+.site-footer__credits {
+  color: #f5efe6;
   font-family: var(--shell-mono);
 }
 .site-footer__statement {

@@ -53,6 +53,22 @@ Run — do not guess:
 - [ ] Heading hierarchy documented
 - [ ] All states designed (not just the happy path)
 
+### Step 3b: Local Build Health Gate
+
+When implementation used `emergent-inspired-build-loop`, verify its health report:
+
+- [ ] Build and automated tests pass
+- [ ] Primary, error, and interruption/resumption paths pass
+- [ ] Required responsive locks were rendered and inspected
+- [ ] Data persistence and migrations are safe, or marked N/A
+- [ ] Dependencies and environment configuration are complete
+- [ ] No secrets are hardcoded or exposed
+- [ ] Performance and production-resource risks are understood
+- [ ] A rollback or recovery path exists
+- [ ] Preview and production are treated as separate states
+
+Any missing recovery path, exposed secret, failed critical task, failed accessibility gate, or absent representative test makes the verdict **Blocked**.
+
 ### Step 4: Content Verification
 
 - [ ] All placeholder text has been replaced with real content
@@ -98,6 +114,13 @@ Present verification results to the user:
 - Zoom: [Pass/Fail — specific issues]
 - Motion: [Pass/Fail — specific issues]
 
+### Local Build Health
+- Build/tests: [Pass/Fail]
+- Preview evidence: [Links/paths]
+- Data/config/secrets: [Pass/Fail/N/A]
+- Recovery: [Verified/Missing]
+- Health verdict: [Ready/Conditional/Blocked]
+
 ### Content Status
 [Complete / Gaps identified]
 
@@ -117,7 +140,7 @@ Present verification results to the user:
 ## Integration
 
 - **Called by:** Before any completion claim
-- **Follows:** `designpowers-critique`, `design-handoff`
+- **Follows:** `emergent-inspired-build-loop`, `designpowers-critique`, `design-handoff`
 - **Blocks:** Completion claims, PR creation, merge decisions
 
 ## The Iron Law

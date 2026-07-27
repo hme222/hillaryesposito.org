@@ -935,20 +935,6 @@
 .rp-next__arrow { font-size: 1.8rem; color: var(--on-coral); transition: transform .3s ease; flex: 0 0 auto; }
 .rp-next:hover .rp-next__arrow { transform: translateX(6px); }
 
-/* ---------- closing colophon banner ---------- */
-/* Replaces the scrolling green marquee. Same ethos phrases, stated once and
-   held still: no animation, no rules, one quiet band that also carries the
-   credits and the copyright. */
-.rp-colophon { background: var(--ink); color: var(--paper); padding: clamp(2rem,4vw,3rem) clamp(1rem,4vw,2rem); }
-.rp-colophon__inner { max-width: 1080px; margin: 0 auto; display: grid; gap: 1.5rem; }
-.rp-colophon__ethos { max-width: 72ch; font-family: var(--mono); font-size: .78rem; line-height: 1.75; letter-spacing: .04em; opacity: .72; }
-.rp-colophon__k { font-family: var(--mono); font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; opacity: .55; }
-.rp-colophon__list { display: flex; flex-wrap: wrap; gap: .5rem .9rem; margin-top: .9rem; font-family: var(--mono); font-size: .82rem; }
-.rp-colophon__list > span { opacity: .82; }
-.rp-colophon__list > span::after { content: " ·"; opacity: .4; }
-.rp-colophon__list > span:last-child::after { content: ""; }
-.rp-colophon__rights { font-family: var(--mono); font-size: .7rem; letter-spacing: .06em; opacity: .5; }
-
 /* ---------- scroll progress = a route you walk (on-theme) ---------- */
 .rp-progress { display: none; }
 .rp-progress__track { position: relative; width: 3px; height: 210px; border-radius: 3px;

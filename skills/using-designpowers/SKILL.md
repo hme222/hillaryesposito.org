@@ -296,6 +296,7 @@ Before responding to ANY message — including clarifying questions — check wh
 | Inspiration | `inspiration-scouting` | When the team needs aesthetic references, interaction examples, or visual direction beyond competitive research |
 | Debate | `design-debate` | When a design direction is uncertain and competing approaches should be argued before committing |
 | Plan | `writing-design-plans` | When a design spec exists and implementation needs breaking down |
+| Build Loop | `emergent-inspired-build-loop` | When turning an approved direction into scoped working slices with focused context, preview, recovery, and health gates |
 | Design Intelligence | `ui-ux-pro-max` | When generating data-backed design systems — palettes, typography, styles, stack guidelines, landing patterns. Invoke after taste calibration, before or with `ui-composition`. Reconcile with taste profile and brief |
 | UI | `ui-composition` | When building layouts, color, typography, visual hierarchy |
 | Interaction | `interaction-design` | When designing states, transitions, feedback, error handling |
@@ -318,7 +319,7 @@ Before responding to ANY message — including clarifying questions — check wh
 
 ### Skill Priority
 
-1. **Process skills first** — design-discovery, writing-design-plans, designpowers-critique
+1. **Process skills first** — design-discovery, writing-design-plans, emergent-inspired-build-loop, designpowers-critique
 2. **Taste skills early** — design-memory (load at start), inspiration-scouting (before visual design), design-debate (when direction is uncertain)
 3. **Design intelligence before visuals** — ui-ux-pro-max (after taste, before ui-composition) for data-backed palettes, typography, and stack guidance
 4. **Domain skills second** — ui-composition, interaction-design, accessible-content, laws-of-ux
@@ -346,6 +347,7 @@ Accessibility is not a separate step. It is present in every skill. When working
 | Building components without checking the design system | STOP. Invoke design-system-alignment |
 | Writing interface copy without considering reading levels | STOP. Invoke accessible-content |
 | Using a UX law as universal proof or post-hoc justification | STOP. Invoke laws-of-ux and add evidence, counter-risk, and validation |
+| Mixing feature work, bug repair, and visual refinement in one build slice | STOP. Invoke emergent-inspired-build-loop and select one queue |
 | Project complete but no retrospective run | PAUSE. Invoke design-retrospective to capture learnings |
 
 ## Agent Routing
