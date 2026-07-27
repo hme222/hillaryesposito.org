@@ -32,6 +32,32 @@ const DECISIONS = [
   { n: "04", title: "Return people to the queue", body: "After filing, staff land back where they started with the status updated. The workflow closes the loop instead of dropping them elsewhere.", note: "Preserve place and context" },
 ];
 
+// Restored from the earlier case study. The outcome metrics named certification
+// and onboarding but the page no longer said what actually changed in either —
+// the "70% efficiency gain" was a number with no mechanism under it.
+const REDESIGNS = [
+  {
+    n: "01",
+    title: "EMR filing workflow",
+    finding: "A digital record was printed, routed out for filing, then waited to reappear in the online chart.",
+    change: "One dashboard action routed staff straight to the filing destination, putting the next required step where the decision was already being made.",
+    wrong: "I underestimated change management. Staff who had spent years on the print-and-send workaround resisted relearning it. Floor-level training on their own workstations, during shift transitions, fixed it within two weeks.",
+  },
+  {
+    n: "02",
+    title: "Certification tracking",
+    finding: "The tracking spreadsheet had no proactive alerts. Staff learned a certification had lapsed when compliance flagged it — by then a disciplinary issue.",
+    change: "A dashboard for staff and managers with reminders at 90, 60, and 30 days before expiry, and “last refreshed” timestamps. The old system told you when you had failed; the new one tells you what is coming.",
+  },
+  {
+    n: "03",
+    title: "Clinician onboarding",
+    finding: "Onboarding was fragmented across five or more departments, each with its own checklist. System access and safety protocols sometimes finished weeks after a clinician started seeing patients.",
+    change: "One unified path with a single source of truth, sequenced so no one reaches patients before completing safety prerequisites.",
+    wrong: "I designed the first version for managers instead of new hires. Tracking dashboards overwhelmed clinicians who needed one clear next step on day one. The manager view stayed, but stopped being the primary interface.",
+  },
+];
+
 const WORKFLOW_BEFORE = [
   "Open the dashboard queue",
   "Find the document",
@@ -188,8 +214,35 @@ export default function FlagshipMSK() {
 
       <section className="rp-section">
         <div className="rp-wrap">
+          <p className="rp-kicker">Three redesigns · what actually changed</p>
+          <h2 className="rp-title">Not one system. Three.</h2>
+          <p className="rp-lede">The outcome numbers below come from these. Each one had a mechanism, and two of them had a version I got wrong first.</p>
+          <div className="fp-redesigns rp-reveal">
+            {REDESIGNS.map((r) => (
+              <article key={r.n}>
+                <span className="fp-redesigns__n">{r.n}</span>
+                <h3>{r.title}</h3>
+                <p className="fp-redesigns__finding">{r.finding}</p>
+                <p className="fp-redesigns__change">{r.change}</p>
+                {r.wrong && (
+                  <p className="fp-redesigns__wrong"><b>What I got wrong</b>{r.wrong}</p>
+                )}
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="rp-section">
+        <div className="rp-wrap">
           <p className="rp-kicker">What the system taught me</p>
           <h2 className="rp-title">Sustainment is a design outcome.</h2>
+          <p className="rp-lede">
+            The EMR redesign was adopted organization-wide and survived two system upgrades. The
+            certification dashboard became the default compliance tool. The onboarding changes
+            outlasted three leadership transitions. Sustainment is the real test of whether a design
+            solved the problem.
+          </p>
           <div className="fp-reflections rp-reveal">
             <article><h3>The work starts on the floor</h3><p>No interview surfaced every workaround. Watching the work did.</p></article>
             <article><h3>Alignment is part of the interface</h3><p>The right solution still fails when each department carries a different model of the problem.</p></article>

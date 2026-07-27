@@ -46,6 +46,8 @@ Extraneous load is design debt. Reduce it:
 - **Clear defaults.** Sensible pre-selections reduce decisions. Make the safe choice the easy choice
 - **Chunking.** Break long forms into sections of 3-5 related fields. Break long content into scannable sections
 
+When using `laws-of-ux`, treat Hick's Law, Choice Overload, Chunking, Working Memory, Selective Attention, and Miller's Law as contextual lenses. Do not convert Miller's 7±2 finding into a universal menu, navigation, card, or form limit. Measure comprehension, decision effort, errors, and task resumption with representative users.
+
 ### Step 3: Wayfinding
 
 People need to know three things at all times:
@@ -91,7 +93,8 @@ For each screen or flow, note:
 ## Integration
 
 - **Called by:** Any design skill, especially `ui-composition` and `interaction-design`
-- **Pairs with:** `accessible-content` (language complexity), `adaptive-interfaces` (personalisation), `inclusive-personas` (cognitive diversity)
+- **Pairs with:** `accessible-content` (language complexity), `laws-of-ux` (testable psychology lenses), `adaptive-interfaces` (personalisation), `inclusive-personas` (cognitive diversity), `neurodiversity-review` (evidence-labelled review and lived-experience validation)
+- **Dispatch for dedicated review:** `neurodiversity-reviewer`
 - **Reviewed by:** `designpowers-critique`
 
 ## Quick Reference: COGA Guidelines

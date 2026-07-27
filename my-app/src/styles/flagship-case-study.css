@@ -269,3 +269,29 @@
 @media (prefers-reduced-motion: reduce) {
   .fp-capture, .fp-cinemaCore, .fp-dashboardFrame { transform: none !important; transition: none !important; }
 }
+
+/* Three redesigns — restored mechanism. The outcome metrics named certification
+   and onboarding while the page had stopped saying what changed in either, so
+   "70% efficiency gain" stood as a number with nothing under it. Two entries
+   also carry the version that failed first; a case study with no mistakes in it
+   reads as marketing. */
+.fp-redesigns { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; margin-top: 2rem; }
+.fp-redesigns article { padding: 1.3rem; border: 1px solid var(--hair); background: var(--paper); }
+.fp-redesigns__n { font: .62rem/1.2 var(--mono); letter-spacing: .1em; color: var(--coral); }
+.fp-redesigns h3 { margin: .5rem 0 0; font-size: 1.08rem; line-height: 1.25; }
+.fp-redesigns__finding { margin-top: .7rem; font-size: .88rem; line-height: 1.6; color: var(--muted); }
+.fp-redesigns__change { margin-top: .7rem; font-size: .9rem; line-height: 1.6; color: var(--ink); }
+.fp-redesigns__wrong { margin-top: .9rem; padding-top: .8rem; border-top: 1px solid var(--hair);
+  font-size: .85rem; line-height: 1.6; color: var(--ink-2); }
+.fp-redesigns__wrong b { display: block; font: .6rem/1.2 var(--mono); letter-spacing: .1em;
+  text-transform: uppercase; color: var(--coral); margin-bottom: .4rem; }
+
+/* One delivered annotation, restored. The old page showed an entry whole —
+   screen, tags, and the verbatim note — which was the only direct evidence of
+   the judgment this case study is actually selling. Kept to a single entry
+   rather than the old four-panel anatomy, since the page was just compressed. */
+.fp-annotation { margin: 2.4rem 0 0; padding: 1.4rem 1.5rem; border: 1px solid var(--hair); background: var(--paper-2); }
+.fp-annotation figcaption span { display: block; font: .6rem/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--coral); }
+.fp-annotation figcaption b { display: block; margin-top: .35rem; font-size: 1rem; }
+.fp-annotation blockquote { margin: 1.1rem 0 0; padding-left: 1rem; border-left: 3px solid var(--coral);
+  font-size: .95rem; line-height: 1.65; font-style: italic; color: var(--ink); }

@@ -63,6 +63,16 @@ Owner live review during the same session produced eight further repairs: the MS
 
 **Verification:** 33/33 tests pass (up from 29 — four new override-panel contrast guards). Production build compiles successfully. Rendered verification was performed by the owner directly against a live dev server rather than by captured screenshots.
 
+### Carryover Audit: Old Design vs Redesign (2026-07-27)
+
+**Status:** Complete. A panel compared the four retired pages (`pages/Home.tsx`, `case-studies/MSK.tsx`, `Mobbin.tsx`, `Grove.tsx` — all still in the tree, all unrouted) against their live replacements. Verdict: the visual system, truth-labeling, curated-page framing, and navigation scaffolding survived or improved, and homepage metrics gained source attribution they never had. The failure mode was not taste — it was **evidence deleted while the claims it supported stayed**.
+
+Restored: Grove's survey answers (74% reminders, 61% camera ID, 15+ notification-deletion, 2.4/5 lighting confidence) and the nine-feature ranked chart; the florist quote; pet safety's nine-of-twelve source; MSK's certification and onboarding mechanisms; MSK's two admitted failures; MSK's sustainment evidence; Mobbin's live Finance+ link and one delivered annotation; the homepage credential strip and availability line.
+
+**Number-safety rule established:** the Grove roadmap chart cites **shares only, never ordinal ranks**. Eleven features were tested and nine are charted, so "6th of 11" is true to the dataset but contradicts the bars on screen. That exact mismatch was corrected once before (commit `add85eb`); the constant now carries a comment so it is not reintroduced.
+
+**Verification:** 33/33 tests pass; production build compiles clean.
+
 ## Design Principles
 1. One Person, Not Three Resumes — every element serves the unified identity; no apologetic "I also do X" framing
 2. Numbers Before Narratives — lead with quantified evidence, then the story; recruiters trust metrics, peers trust methodology

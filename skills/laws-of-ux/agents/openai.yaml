@@ -1,0 +1,4 @@
+interface:
+  display_name: "Laws of UX"
+  short_description: "Apply psychology principles with evidence"
+  default_prompt: "Use $laws-of-ux to evaluate this design with relevant psychology principles and testable evidence."

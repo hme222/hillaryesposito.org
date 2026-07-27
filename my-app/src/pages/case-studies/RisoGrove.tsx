@@ -66,6 +66,31 @@ const LEGS = [
   },
 ];
 
+// Recovered from the earlier version of this case study. The page claimed a
+// 32-person survey and never once reported what those 32 people said.
+const SURVEY_FINDINGS = [
+  { stat: "74%", label: "called smart care reminders a must-have" },
+  { stat: "61%", label: "wanted to point a camera at a plant and have the app just tell them what it is" },
+  { stat: "15+", label: "said “too many notifications” would get the app deleted, no hesitation" },
+  { stat: "2.4/5", label: "how confident new owners felt about light — their weakest spot, by a mile" },
+];
+
+// Share of respondents who wanted each feature. Deliberately no ordinal ranks:
+// eleven features were tested and nine are charted here, so "6th of 11" is true
+// to the dataset but does not match the bars on screen. That exact mismatch was
+// corrected once already (commit add85eb) — cite shares, never positions.
+const MVP_FEATURES = [
+  { feature: "Smart care reminders", pct: 74, tier: "core" },
+  { feature: "AI plant identification (camera)", pct: 61, tier: "core" },
+  { feature: "AI photo diagnosis", pct: 45, tier: "core" },
+  { feature: "Growth photo journal", pct: 26, tier: "post" },
+  { feature: "Community forums", pct: 23, tier: "post" },
+  { feature: "Greenhouse encyclopedia", pct: 19, tier: "post" },
+  { feature: "Bulk logging", pct: 19, tier: "post" },
+  { feature: "Bouquet scanner", pct: 10, tier: "post" },
+  { feature: "Verified swapping", pct: 6, tier: "post" },
+];
+
 const OUTCOMES = [
   { n: "32", l: "plant owners surveyed before any screen changed" },
   { n: "3", l: "features that earn the download; everything else waits" },
@@ -109,7 +134,7 @@ const OVERRIDES = [
   { topic: "Reminder tone", ai: "Guilt and urgency — “your plant misses you.”", me: "One calm morning summary.", why: "Notifications are the #1 reason people delete a plant app." },
   { topic: "Gamification", ai: "Badges, streaks, and a leaderboard.", me: "An AI plant personality you earn — a feeling, not points.", why: "Care that feels like paperwork is the top reason people quit." },
   { topic: "Plant ID confidence", ai: "One confident answer, every time.", me: "Top guesses, how sure it is, and its sources.", why: "False certainty is the fastest way to lose trust." },
-  { topic: "Pet safety", ai: "Generic care tips.", me: "Toxic-to-pets warnings the moment you add a plant, with sources.", why: "When a plant can hurt a cat, a wrong guess isn’t a suggestion — it’s a risk." },
+  { topic: "Pet safety", ai: "Generic care tips.", me: "Toxic-to-pets warnings the moment you add a plant, with sources.", why: "Nine of twelve new owners raised it unprompted, before I ever asked. When a plant can hurt a cat, a wrong guess isn’t a suggestion — it’s a risk." },
   { topic: "Notification frequency", ai: "Nudge whenever engagement dips.", me: "One summary per group; only true emergencies interrupt.", why: "A reminder can never become the reason someone leaves." },
 ];
 
@@ -317,6 +342,44 @@ export default function RisoGrove() {
               </div>
             </div>
           </div>
+
+          <h3 className="rp-subhead">What those 32 people actually said</h3>
+          <p className="rp-lede">
+            Brand-new owners through serious collectors, answered between 22 May and 19 June 2026.
+          </p>
+          <dl className="rp-surveyStats rp-reveal">
+            {SURVEY_FINDINGS.map((f) => (
+              <div key={f.stat}>
+                <dt>{f.stat}</dt>
+                <dd>{f.label}</dd>
+              </div>
+            ))}
+          </dl>
+
+          <h3 className="rp-subhead">What they wanted, and what waited</h3>
+          <p className="rp-lede">
+            Nine of the eleven features I tested, by share of people who wanted them. The top three
+            became the core. Everything under it — including the forums and swaps sitting in the
+            first build — waited.
+          </p>
+          <ol className="rp-rank rp-reveal">
+            {MVP_FEATURES.map((f) => (
+              <li key={f.feature} className={f.tier === "core" ? "is-core" : undefined}>
+                <span className="rp-rank__label">{f.feature}</span>
+                <span className="rp-rank__track" aria-hidden="true"><i style={{ width: `${f.pct}%` }} /></span>
+                <b className="rp-rank__pct">{f.pct}%</b>
+                <span className="rp-rank__tier">{f.tier === "core" ? "Core" : "Later"}</span>
+              </li>
+            ))}
+          </ol>
+
+          <figure className="rp-quoteCard rp-reveal">
+            <blockquote>“Any generative AI in this will remove any sense of trust.”</blockquote>
+            <figcaption>
+              A florist, about AI-written care sheets. One sentence, and I shelved a whole feature
+              set. When people tell you the AI is costing them trust, you listen.
+            </figcaption>
+          </figure>
         </div>
       </section>
 

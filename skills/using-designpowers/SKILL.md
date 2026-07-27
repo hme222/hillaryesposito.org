@@ -301,10 +301,12 @@ Before responding to ANY message — including clarifying questions — check wh
 | Interaction | `interaction-design` | When designing states, transitions, feedback, error handling |
 | Content | `accessible-content` | When writing or structuring any user-facing content |
 | Cognition | `cognitive-accessibility` | When evaluating mental load, wayfinding, focus management |
+| UX Psychology | `laws-of-ux` | When applying or reviewing psychology principles, behavioural predictions, perceptual grouping, decision load, progress, or complexity |
+| Neurodiversity Review | `neurodiversity-review` | When auditing attention, memory, literacy, numeracy, sensory load, predictability, task resumption, or neuroinclusive research |
 | Adaptation | `adaptive-interfaces` | When designing for user preferences, motion sensitivity, flexibility |
 | Systems | `design-system-alignment` | When working with or building design tokens and components |
 | Taste Check | `taste-feedback` | During build phase — shows intermediate visual output for mid-flight taste correction |
-| Heuristic | `heuristic-evaluation` | After build — dispatches heuristic-evaluator agent for Nielsen's 10 + cognitive walkthrough, runs in parallel with critic and accessibility-reviewer |
+| Heuristic | `heuristic-evaluation` | After build — dispatches heuristic-evaluator for Nielsen's 10, relevant Laws of UX, and cognitive walkthroughs |
 | Critique | `designpowers-critique` | When reviewing design work against the plan |
 | Portfolio Audit | `portfolio-recruiter-audit` | When scoring a professional design portfolio through a recruiter or hiring-manager lens |
 | Synthetic Test | `synthetic-user-testing` | After fix round — walks through key tasks as each persona to validate the design works for real people in real conditions |
@@ -319,9 +321,9 @@ Before responding to ANY message — including clarifying questions — check wh
 1. **Process skills first** — design-discovery, writing-design-plans, designpowers-critique
 2. **Taste skills early** — design-memory (load at start), inspiration-scouting (before visual design), design-debate (when direction is uncertain)
 3. **Design intelligence before visuals** — ui-ux-pro-max (after taste, before ui-composition) for data-backed palettes, typography, and stack guidance
-4. **Domain skills second** — ui-composition, interaction-design, accessible-content
+4. **Domain skills second** — ui-composition, interaction-design, accessible-content, laws-of-ux
 5. **Feedback skills during build** — taste-feedback (mid-flight course correction during design-builder execution)
-6. **Accessibility skills always** — cognitive-accessibility, adaptive-interfaces, inclusive-personas are woven through every phase, not bolted on at the end
+6. **Accessibility skills always** — cognitive-accessibility, neurodiversity-review, adaptive-interfaces, inclusive-personas are woven through every phase, not bolted on at the end
 7. **Reflection skills at the end** — design-retrospective (after shipping, feeds back into design-memory)
 
 ## Accessibility Is Not a Phase
@@ -338,11 +340,12 @@ Accessibility is not a separate step. It is present in every skill. When working
 | Design direction is uncertain with multiple viable options | PAUSE. Invoke design-debate before committing |
 | Designing for a "typical user" without considering ability spectrum | STOP. Invoke inclusive-personas |
 | Skipping straight to visuals without strategy | STOP. Invoke design-strategy |
-| Skipping heuristic evaluation after build | STOP. Dispatch heuristic-evaluator alongside critic and accessibility-reviewer |
+| Skipping the full reviewer round after build | STOP. Dispatch heuristic-evaluator and neurodiversity-reviewer alongside critic and accessibility-reviewer |
 | Skipping synthetic user testing after fix round | STOP. Run synthetic-user-testing before verification — the persona walkthrough needs evidence, not guesswork |
 | About to declare work complete without evidence | STOP. Invoke verification-before-shipping |
 | Building components without checking the design system | STOP. Invoke design-system-alignment |
 | Writing interface copy without considering reading levels | STOP. Invoke accessible-content |
+| Using a UX law as universal proof or post-hoc justification | STOP. Invoke laws-of-ux and add evidence, counter-risk, and validation |
 | Project complete but no retrospective run | PAUSE. Invoke design-retrospective to capture learnings |
 
 ## Agent Routing
@@ -362,6 +365,7 @@ The built-in agents are general-purpose — good for ad hoc work outside a desig
 Agents unique to Designpowers (no built-in equivalent):
 - **motion-designer** — animation choreography, micro-interactions, reduced motion
 - **accessibility-reviewer** — WCAG evaluation, cognitive accessibility, inclusive interaction
+- **neurodiversity-reviewer** — attention, memory, literacy, numeracy, sensory regulation, task resumption, and neuroinclusive research validation
 - **design-critic** — plan alignment, brief adherence, gap identification
 - **heuristic-evaluator** — Nielsen's 10 heuristics, cognitive walkthrough, usability validation
 - **inspiration-scout** — aesthetic references, cross-domain inspiration, mood board curation
@@ -555,18 +559,18 @@ If the content-writer was not dispatched (skipped), flag this to the builder: "N
 
 ## Reconciliation Protocol
 
-When reviewers evaluate the same work (typically **accessibility-reviewer**, **design-critic**, and **heuristic-evaluator** running in parallel after **design-builder** completes), their findings may conflict. Resolve conflicts using this protocol:
+When reviewers evaluate the same work (typically **accessibility-reviewer**, **neurodiversity-reviewer**, **design-critic**, and **heuristic-evaluator** running in parallel after **design-builder** completes), their findings may conflict. Resolve conflicts using this protocol:
 
 ### Step 1: Dispatch Reviewers in Parallel
 
 ```
 design-builder finishes
         |
-   ┌────┼────────┐
-   v    v        v
-critic  reviewer  heuristic    (run simultaneously)
-   |    |        |
-   └────┼────────┘
+   ┌────┼────────┬────────┐
+   v    v        v        v
+critic  a11y     neuro    heuristic    (run simultaneously)
+   |     |        |        |
+   └─────┼────────┴────────┘
         v
   reconciliation     (orchestrator resolves conflicts)
         v
@@ -577,19 +581,19 @@ critic  reviewer  heuristic    (run simultaneously)
 
 ### Step 2: Classify Each Finding
 
-Findings now come from three sources (critic, accessibility-reviewer, heuristic-evaluator). Classify all findings regardless of source:
+Findings now come from four sources (critic, accessibility-reviewer, neurodiversity-reviewer, heuristic-evaluator). Classify all findings regardless of source:
 
 | Category | Definition | Example |
 |----------|-----------|---------|
-| **Aligned** | Multiple agents flag the same issue | Critic says "missing empty state." Reviewer says "empty state has no screen reader announcement." Heuristic-evaluator says "empty state violates H1 — no system status." Same issue, three angles |
-| **Complementary** | Different findings, no conflict | Critic says "colour is off-brand." Reviewer says "touch targets too small." Heuristic-evaluator says "no undo on delete." Fix all |
-| **Conflicting** | Agents disagree on what to do | Critic says "add decorative animation for delight." Reviewer says "that animation is a vestibular risk." Heuristic-evaluator says "animation violates H8 — unnecessary element" |
+| **Aligned** | Multiple agents flag the same issue | Critic says "missing empty state." Accessibility says it lacks a screen-reader announcement. Neurodiversity says it does not explain how to resume. Heuristic says it violates H1. Same issue, four angles |
+| **Complementary** | Different findings, no conflict | Critic says "colour is off-brand." Accessibility says "touch targets too small." Neurodiversity says "session cannot be resumed." Heuristic says "no undo on delete." Fix all |
+| **Conflicting** | Agents disagree on what to do | Critic says "add decorative animation." Accessibility identifies vestibular risk. Neurodiversity identifies attention cost. Heuristic says it violates H8 |
 
 ### Step 3: Resolve Conflicts
 
 When findings conflict, apply these rules in order:
 
-1. **Accessibility wins over aesthetics** — if a visual recommendation creates an accessibility issue, the accessibility-reviewer's finding takes priority
+1. **Access needs win over aesthetics** — if a visual recommendation creates an accessibility or neuroinclusive UX barrier, the accessibility-reviewer or neurodiversity-reviewer's finding takes priority
 2. **Usability wins over style** — if a heuristic violation conflicts with a craft recommendation, fix the usability problem first. A beautiful interface that confuses people has failed
 3. **Brief wins over opinion** — if the conflict is about direction, refer to the design brief and principles. The answer that better serves the stated intent wins
 4. **Personas break ties** — if the brief does not resolve it, evaluate from each persona's perspective. The option that serves more personas (especially those with the greatest access needs) wins
@@ -668,7 +672,7 @@ The design-lead introduces each agent briefly ("Let's hear from design-scout on 
 
 After all agents have spoken, the design-lead **explicitly surfaces any disagreements or tensions** from the project. These include:
 
-- Reconciliation conflicts between critic, accessibility-reviewer, and heuristic-evaluator
+- Reconciliation conflicts between critic, accessibility-reviewer, neurodiversity-reviewer, and heuristic-evaluator
 - Trade-offs where one agent's preference was overridden by another
 - Decisions where the team went one way but an agent still has reservations
 - Areas where the brief was ambiguous and agents interpreted it differently

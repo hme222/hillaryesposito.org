@@ -1347,3 +1347,34 @@
   font-family: var(--mono); font-size: .66rem; letter-spacing: .08em;
   text-transform: uppercase; color: var(--ink-2);
 }
+
+/* ---------- grove: survey evidence ---------- */
+/* Restored from the earlier case study. The page asserted a 32-person survey
+   without reporting a single answer, and asserted a roadmap without showing
+   what drove it. Percentages only — never ordinal ranks, since nine of the
+   eleven tested features are charted and a position would not match the bars. */
+.rp-surveyStats { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin: 1.4rem 0 0; }
+.rp-surveyStats > div { padding: 1.1rem; border: 1px solid var(--hair); background: var(--paper-2); }
+.rp-surveyStats dt { font-size: clamp(1.7rem, 3.2vw, 2.4rem); font-weight: 800; letter-spacing: -.03em; line-height: 1; color: var(--green); }
+.rp-surveyStats dd { margin: .55rem 0 0; font-size: .88rem; line-height: 1.5; color: var(--ink-2); }
+
+.rp-rank { list-style: none; margin: 1.4rem 0 0; padding: 0; display: grid; gap: .5rem; }
+.rp-rank li { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) 3.2rem 4rem; gap: .9rem;
+  align-items: center; padding: .55rem 0; border-top: 1px solid var(--hair); }
+.rp-rank li:first-child { border-top: 0; }
+.rp-rank__label { font-size: .92rem; }
+.rp-rank__track { height: 8px; background: color-mix(in srgb, var(--ink) 8%, transparent); }
+.rp-rank__track i { display: block; height: 100%; background: color-mix(in srgb, var(--ink) 26%, transparent); }
+.rp-rank li.is-core .rp-rank__track i { background: var(--green); }
+.rp-rank__pct { font-family: var(--mono); font-size: .8rem; text-align: right; }
+.rp-rank__tier { font-family: var(--mono); font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.rp-rank li.is-core .rp-rank__tier { color: var(--green); }
+@media (max-width: 700px) {
+  .rp-rank li { grid-template-columns: minmax(0, 1fr) 3rem; grid-template-areas: "label pct" "track tier"; }
+  .rp-rank__label { grid-area: label; } .rp-rank__pct { grid-area: pct; }
+  .rp-rank__track { grid-area: track; } .rp-rank__tier { grid-area: tier; text-align: right; }
+}
+
+.rp-quoteCard { margin: 2.4rem 0 0; padding: 1.4rem 1.5rem; border-left: 3px solid var(--coral); background: var(--paper-2); }
+.rp-quoteCard blockquote { margin: 0; font-size: clamp(1.15rem, 2.2vw, 1.5rem); line-height: 1.35; letter-spacing: -.015em; font-weight: 700; }
+.rp-quoteCard figcaption { margin-top: .8rem; font-size: .88rem; line-height: 1.6; color: var(--ink-2); }

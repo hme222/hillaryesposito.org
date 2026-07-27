@@ -37,6 +37,8 @@ For every interactive element, define:
 
 ### Step 2: Design Feedback Patterns
 
+Use `laws-of-ux` to test interaction decisions involving Fitts's Law, Hick's Law, Doherty Threshold, Jakob's Law, Goal-Gradient, Peak-End Rule, Postel's Law, or Tesler's Law. Translate each selected law into observable criteria for target acquisition, decision complexity, feedback timing, familiarity, progress, endings, input tolerance, or where complexity lives.
+
 Every user action deserves a response. Map the feedback:
 
 **Immediate feedback (< 100ms):**
@@ -111,7 +113,7 @@ For each interaction, document:
 ## Integration
 
 - **Called by:** `writing-design-plans` (as part of plan execution)
-- **Pairs with:** `ui-composition` (visual states), `cognitive-accessibility` (interaction complexity), `accessible-content` (error messages)
+- **Pairs with:** `ui-composition` (visual states), `laws-of-ux` (testable interaction psychology), `cognitive-accessibility` (interaction complexity), `accessible-content` (error messages)
 - **Reviewed by:** `designpowers-critique`
 
 ## Red Flags

@@ -48,6 +48,22 @@ Examples:
 - Delight vs clarity: clarity wins unless delight directly improves confidence
   or comprehension.
 
+## Laws of UX Evidence Protocol
+
+Use `laws-of-ux` when psychology principles materially influence a design
+decision.
+
+1. Select only the laws relevant to the current user, task, and context.
+2. Name the interface evidence that makes each law applicable.
+3. State a predicted outcome, counter-risk, acceptance criterion, and validation
+   method.
+4. Resolve conflicts instead of stacking laws as post-hoc justification.
+5. Label untested recommendations as proposed.
+
+Never use Miller's Law as a universal 7±2 item limit. Never use Goal-Gradient,
+Zeigarnik, scarcity, or cognitive biases to manufacture pressure. Accessibility,
+safety, user control, and task truth override persuasion and aesthetics.
+
 ## Design-System-Is-Law
 
 If an existing design system, token file, component pattern, or visual language

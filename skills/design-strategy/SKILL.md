@@ -61,6 +61,10 @@ Example format:
 **What this means we will NOT do:** [What this rules out]
 ```
 
+### Step 3b: Add Behavioural Hypotheses
+
+Invoke `laws-of-ux` when a principle depends on expected human behaviour. Select only the laws relevant to the core journey, record the interface evidence and counter-risk, and turn each into a testable prediction. Laws of UX inform the hypothesis; research and product evidence determine whether it is true here.
+
 ### Step 4: Experience Map
 
 Map the end-to-end experience:
@@ -113,7 +117,7 @@ Present the strategy section by section. Confirm alignment before proceeding to 
 ## Integration
 
 - **Called by:** `design-discovery`
-- **Calls:** `writing-design-plans`
+- **Calls:** `laws-of-ux` when strategy depends on behavioural or perceptual assumptions; then `writing-design-plans`
 - **Informs:** All design skills — principles and strategy should be referenced in every design decision
 
 ## Red Flags

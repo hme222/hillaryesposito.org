@@ -1,0 +1,4 @@
+interface:
+  display_name: "Neurodiversity Review"
+  short_description: "Review interfaces for cognitive inclusion"
+  default_prompt: "Use $neurodiversity-review to audit this experience for neurodivergent users."

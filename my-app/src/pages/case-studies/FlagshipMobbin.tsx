@@ -120,6 +120,35 @@ export default function FlagshipMobbin() {
           <h2 className="rp-title">Same category. Opposite ways to earn confidence.</h2>
           <p className="rp-lede">Putting the apps side by side revealed more than counting screens ever could. A longer flow can feel shorter when every step gives something back.</p>
           <ScreenSequence label="Documented finance app sequence" items={APPS} />
+
+          {/* One entry exactly as delivered. This page sells annotation judgment;
+              without a real annotation on it, the claim had nothing under it. */}
+          <figure className="fp-annotation rp-reveal">
+            <figcaption>
+              <span>One entry, as delivered</span>
+              <b>Kikoff · credit-score progress, first session</b>
+            </figcaption>
+            <div className="rp-tags">
+              {["Progress indicator", "Trust signal", "Positive reinforcement", "Data visualization", "Onboarding completion"].map((tag) => (
+                <b className="rp-tag" key={tag}>{tag}</b>
+              ))}
+            </div>
+            <blockquote>
+              “Shows the credit score moving up right after the action that caused it. The timing’s
+              deliberate — that jump lands the moment you finish the first credit-building task, so
+              cause and effect are obvious. That’s what builds confidence.”
+            </blockquote>
+          </figure>
+
+          <a
+            className="fp-proofLink"
+            href="https://mobbin.com/finance"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View Mobbin's Finance+ library (opens in new tab)"
+          >
+            <span>Verify it · Mobbin Finance+</span><b>The library these screens went into →</b>
+          </a>
         </div>
       </section>
 

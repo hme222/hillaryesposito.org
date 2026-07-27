@@ -90,6 +90,12 @@ Every critique includes an accessibility evaluation:
 - [ ] ARIA is used only when necessary and correctly
 - [ ] The design works across supported browsers and assistive technology
 
+For public-facing interfaces and any flow with substantial attention, memory, literacy, numeracy, sensory, or executive-function demands, invoke `neurodiversity-review`. Keep its findings distinct from WCAG conformance and require lived-experience validation for condition-specific or consequential claims.
+
+### Step 4b: Laws of UX Review
+
+Invoke `laws-of-ux` for a psychology-informed review. Require a law trace showing the interface evidence, predicted outcome, counter-risk, acceptance criterion, validation status, and any conflict between laws. Reject post-hoc name-dropping and mark untested claims as Proposed.
+
 ### Step 5: Classify Issues
 
 Rate each finding:
@@ -133,6 +139,9 @@ Rate each finding:
 ## Accessibility Status
 [Pass/Fail against WCAG AA with specific gaps]
 
+## Laws of UX Status
+[Relevant laws, evidence, conflicts, and validation status]
+
 ## Recommendation
 [Proceed / Revise and re-review / Rethink approach]
 ```
@@ -164,5 +173,5 @@ When the artifact is a professional design portfolio, invoke `portfolio-recruite
 ## Integration
 
 - **Called by:** `writing-design-plans` (at review checkpoints)
-- **Reviews output from:** `ui-composition`, `interaction-design`, `accessible-content`, `cognitive-accessibility`, `adaptive-interfaces`, `design-system-alignment`
-- **Calls:** `portfolio-recruiter-audit` for portfolio artifacts; relevant design skills for fixes; `design-debt-tracker` for deferred findings; then `design-handoff` when critique passes
+- **Reviews output from:** `ui-composition`, `interaction-design`, `accessible-content`, `cognitive-accessibility`, `adaptive-interfaces`, `design-system-alignment`, `laws-of-ux`
+- **Calls:** `laws-of-ux` for psychology-informed evidence; `neurodiversity-review` for public-facing or cognitively demanding experiences; `portfolio-recruiter-audit` for portfolio artifacts; relevant design skills for fixes; `design-debt-tracker` for deferred findings; then `design-handoff` when critique passes

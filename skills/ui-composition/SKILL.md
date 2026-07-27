@@ -40,6 +40,8 @@ Skip this step when working from an existing design system or when the user has 
 
 ### Step 2: Layout and Structure
 
+Before finalizing hierarchy or grouping, invoke `laws-of-ux` and select the relevant perceptual lenses: proximity, common region, similarity, uniform connectedness, Prägnanz, Von Restorff, selective attention, and aesthetic-usability. Document the actual visual evidence and counter-risk; do not name laws after the layout is already chosen merely to justify it.
+
 **Grid system:**
 - Define columns, gutters, and margins
 - Ensure the grid adapts across breakpoints (mobile, tablet, desktop)
@@ -113,7 +115,7 @@ For each visual decision, document:
 ## Integration
 
 - **Called by:** `writing-design-plans` (as part of plan execution)
-- **Pairs with:** `ui-ux-pro-max` (data-backed palettes, typography, stack guidance), `design-system-alignment` (for consistency), `cognitive-accessibility` (for visual load), `adaptive-interfaces` (for user preferences)
+- **Pairs with:** `ui-ux-pro-max` (data-backed palettes, typography, stack guidance), `design-system-alignment` (for consistency), `laws-of-ux` (perceptual hierarchy and evidence), `cognitive-accessibility` (for visual load), `adaptive-interfaces` (for user preferences)
 - **Reviewed by:** `designpowers-critique`
 
 ## Quick Reference: Accessibility Minimums
