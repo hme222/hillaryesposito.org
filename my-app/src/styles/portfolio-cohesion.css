@@ -7,6 +7,27 @@
    ============================================================ */
 
 :root {
+  /* Spacing scale.
+     The system had 52 distinct clamp() values for padding, margin, gap, and
+     inset — eight of them doing "large section padding" with ceilings between
+     5rem and 7.2rem. Nobody perceives 6rem versus 6.5rem; what they perceive is
+     that sections do not share a rhythm. These are the values already carrying
+     the most weight, promoted to tokens. */
+  --sp-gutter: clamp(1rem, 4vw, 2rem);   /* page gutter, the most-used value */
+  --sp-sm: clamp(1.5rem, 4vw, 3rem);
+  --sp-md: clamp(2rem, 5vw, 4rem);
+  --sp-lg: clamp(2.5rem, 6vw, 5rem);
+  --sp-xl: clamp(3rem, 7vw, 5.5rem);     /* standard section padding-block */
+  --sp-2xl: clamp(4rem, 8vw, 7rem);
+  --sp-3xl: clamp(5rem, 10vw, 9rem);     /* major breaks between movements */
+
+  /* Radius. The stated rule is square plates, with radius reserved for literal
+     device hardware. Four values were doing "near-square plate" and six were
+     doing "phone frame". Circles and genuine status pills stay as-is. */
+  --r-plate: 4px;
+  --r-control: 3px;
+  --r-device: 28px;
+
   --shell-paper: #e8ece3;
   --shell-paper-2: #dee4d6;
   --shell-ink: #20241c;
@@ -46,7 +67,7 @@
   margin: 0;
   top: 0;
   gap: 2rem;
-  padding: .65rem max(clamp(1rem, 4vw, 2rem), calc((100% - 1280px) / 2));
+  padding: .65rem max(var(--sp-gutter), calc((100% - 1280px) / 2));
   justify-content: space-between;
   color: var(--shell-ink);
   background: color-mix(in srgb, var(--shell-paper) 96%, transparent) !important;
@@ -226,12 +247,12 @@ html[lang="es"] .riso-home .rp-clearing { max-width: 58ch; }
   background: var(--paper);
   padding: 9px;
   border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
-  border-radius: 4px;
+  border-radius: var(--r-plate);
   box-shadow: 0 2px 6px rgba(0,0,0,.14), 0 34px 60px -28px rgba(0,0,0,.42);
 }
 .riso-home .rp-hero__media .rp-headshot img {
   filter: none;
-  border-radius: 2px;
+  border-radius: var(--r-plate);
 }
 .dark-mode .riso-home .rp-hero__media .rp-headshot {
   mix-blend-mode: normal;
@@ -396,7 +417,7 @@ html[lang="es"] .riso-home .rp-clearing { max-width: 58ch; }
     linear-gradient(180deg, transparent 0 38%, rgba(23,17,14,.92) 100%),
     linear-gradient(135deg, var(--fashion-bone) 0 38%, var(--fashion-stone) 38% 62%, var(--fashion-espresso) 62% 100%);
 }
-.fashion-system-section--rules { gap: clamp(2rem, 5vw, 4rem); }
+.fashion-system-section--rules { gap: var(--sp-md); }
 .fashion-file-note {
   border: 1px solid var(--hair);
   background: var(--paper);
