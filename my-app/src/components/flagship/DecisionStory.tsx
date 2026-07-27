@@ -61,6 +61,10 @@ export default function DecisionStory({ id, kicker, title, intro, steps, visual 
                 <span>{step.n}</span>
                 <h3>{step.title}</h3>
                 <p>{step.body}</p>
+                {/* The decision-log note renders visually inside the sticky
+                    visual, which is aria-hidden — so this authored line existed
+                    for sighted readers only. Repeat it here for everyone else. */}
+                <span className="sr-only">Decision log: {step.note}</span>
               </li>
             ))}
           </ol>

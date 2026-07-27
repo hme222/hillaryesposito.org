@@ -117,18 +117,21 @@ const DECISIONS = [
   {
     feature: "Reminders",
     old: "grove-live-care.jpg",
+    oldAlt: "The care screen Emergent built, leading with a daily mission and a feed",
     oldBg: "#f5f0ea",
     why: "Emergent led with a daily “mission” and a feed. The redesign is one calm morning summary — never a nag.",
   },
   {
     feature: "Plant ID by camera",
     old: "grove-live-add.jpg",
+    oldAlt: "The add-plant screen Emergent built, giving a single confident identification",
     oldBg: "#31302e",
     why: "The AI guessed with false confidence. The redesign shows its top guesses, how sure it is, and its sources — a guess, not a verdict.",
   },
   {
     feature: "Personality, not points",
     old: "grove-live-personality.jpg",
+    oldAlt: "The personality screen Emergent built, with badges, streaks, and a leaderboard",
     oldBg: "#f5f0ea",
     why: "Badges, streaks, and a leaderboard turned care into paperwork. The redesign keeps the plant’s AI personality and drops the rest.",
   },
@@ -425,7 +428,7 @@ export default function RisoGrove() {
                 <div className="rp-decision__col">
                   <span className="rp-decision__tag rp-decision__tag--old">Emergent built</span>
                   <div className="rp-device" style={{ background: d.oldBg }}>
-                    <img src={`/assets/grove/${d.old}`} alt={`Emergent ${d.feature} screen`} loading="lazy" />
+                    <img src={`/assets/grove/${d.old}`} alt={d.oldAlt} loading="lazy" />
                   </div>
                 </div>
                 <div className="rp-decision__col rp-decision__col--dir">
@@ -464,7 +467,9 @@ export default function RisoGrove() {
       {/* AI DECISION DEEP-DIVE */}
       <section className="rp-section rp-override">
         <div className="rp-wrap">
-          <span id="grove-override" className="rp-anchor" aria-hidden="true" />
+          {/* The offset used to be hand-rolled here because the shared anchor
+              rule never matched this page. It does now. */}
+          <span id="grove-override" aria-hidden="true" />
           <p className="rp-kicker">Where I said no to the AI</p>
           <h2 className="rp-title">Reminders that never nag</h2>
           <p className="rp-lede">

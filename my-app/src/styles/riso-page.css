@@ -1127,7 +1127,6 @@
 }
 
 /* ---------- the human override is the differentiator ---------- */
-.rp-anchor { position: relative; display: block; top: -130px; visibility: hidden; }
 .rp-override { background: #17321b; color: #f4f1e6; border-top: 1px solid rgba(244,241,230,.18); border-bottom: 1px solid rgba(244,241,230,.18); }
 .rp-override .rp-title, .rp-override .rp-lede, .rp-override .rp-acc__line { color: #f4f1e6; }
 .rp-override .rp-lede, .rp-override .rp-acc__why { color: rgba(244,241,230,.76); }
@@ -1389,4 +1388,21 @@
   /* 4. The closing band is a fixed near-black; let the OS reclaim it rather
      than leave light-on-light. */
   .site-footer__base { forced-color-adjust: auto; border-top: 1px solid CanvasText; }
+}
+
+/* ---------- anchor landing ---------- */
+/* Every jump target on a riso page has to clear two stacked sticky elements:
+   the masthead (min-height 64px) and the chapter strip (top: 74px). Without
+   this, a chapter link scrolls its own heading underneath the chrome — which
+   is exactly the promise the strip makes and breaks.
+   The flagship pages had their own copy of this rule; Grove never matched it,
+   because Grove is a .riso-page and not a .flagship-page. Scoping it to
+   .riso-page covers both, since the flagships carry both classes. */
+.riso-page section[id],
+.riso-page header[id],
+.riso-page .rp-decisionStory[id] { scroll-margin-top: 138px; }
+@media (max-width: 900px) {
+  .riso-page section[id],
+  .riso-page header[id],
+  .riso-page .rp-decisionStory[id] { scroll-margin-top: 104px; }
 }
