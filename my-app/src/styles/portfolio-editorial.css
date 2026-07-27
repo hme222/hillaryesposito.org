@@ -163,7 +163,7 @@
 }
 .home-project-index strong {
   font-family: var(--font-editorial);
-  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  font-size: var(--ts-heading);
   letter-spacing: -.018em;
 }
 .portfolio-home .home-projects-list > div { width: 100%; }
@@ -429,7 +429,7 @@
 }
 .about-page .about-story-card__heading {
   font-family: var(--font-editorial);
-  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  font-size: var(--ts-heading);
   letter-spacing: -.018em;
   line-height: 1.1;
 }
@@ -511,7 +511,7 @@
   padding: clamp(1rem, 2.5vw, 1.5rem) clamp(1.1rem, 3vw, 1.7rem);
 }
 .about-page .about-hero-profile .rp-clearing .rp-h1 {
-  font-size: clamp(1.7rem, 3.1vw, 2.6rem) !important;
+  font-size: var(--ts-title) !important;
   line-height: 1.08 !important;
 }
 @media (max-width: 760px) {
@@ -832,7 +832,7 @@
 .recruiter-panel__title {
   max-width: 15ch;
   font-family: var(--font-editorial);
-  font-size: clamp(1.75rem, 4vw, 2.45rem);
+  font-size: var(--ts-title);
   letter-spacing: -.024em;
   line-height: 1;
 }
@@ -984,6 +984,6 @@
   letter-spacing: -.022em;
 }
 .about-page .about-story-card__heading {
-  font-size: clamp(1.5rem, 2.6vw, 2.3rem);
+  font-size: var(--ts-heading);
   line-height: 1.08;
 }

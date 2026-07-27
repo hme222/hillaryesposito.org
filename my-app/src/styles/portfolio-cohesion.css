@@ -28,6 +28,17 @@
   --r-control: 3px;
   --r-device: 28px;
 
+  /* Type scale — the shared middle. Section titles, card headings, and numeric
+     display were each being set with slightly different arbitrary numbers doing
+     the same job.
+     The display tier is deliberately NOT tokenised. Hero sizing is per-surface
+     on purpose: MSK's H1 is smaller because "Kettering." is wider than its
+     clearing at the shared size, and About's is set for its own measure.
+     Collapsing those into one display token would reintroduce the overflow. */
+  --ts-title: clamp(1.6rem, 4vw, 2.5rem);      /* section and item titles */
+  --ts-heading: clamp(1.35rem, 3vw, 2.1rem);   /* card and step headings */
+  --ts-stat: clamp(1.8rem, 4vw, 2.6rem);       /* numeric display */
+
   --shell-paper: #e8ece3;
   --shell-paper-2: #dee4d6;
   --shell-ink: #20241c;
