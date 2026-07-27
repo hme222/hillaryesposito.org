@@ -167,7 +167,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       },
       {
         title: "MSK — systems rigor",
-        reason: "Shows role-based flows, states, and permissions for 21,000+ users — where clarity was safety-critical.",
+        reason: "Shows role-based flows, states, and permissions for 21,000+ clinicians and staff — where clarity was safety-critical.",
       },
     ],
     strengths: [
@@ -201,7 +201,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       {
         label: "MSK case study",
         path: "/case-study/msk",
-        description: "Systems rigor: role-based flows, states, and permissions for 21,000+ users.",
+        description: "Systems rigor: role-based flows, states, and permissions for 21,000+ clinicians and staff.",
         icon: <MedicalCrossIcon />,
       },
     ],
@@ -227,7 +227,7 @@ export const curatedPages: Record<string, CuratedPage> = {
     meta: [
       { label: "Focus", value: "Complex systems UX" },
       { label: "Strength", value: "Internal tools + product judgment" },
-      { label: "Evidence", value: "21K+ clinicians and staff, 20% cost reduction, 70% efficiency gain" },
+      { label: "Evidence", value: "21,000+ clinicians and staff, 20% cost reduction, 70% efficiency gain" },
       { label: "Best fit", value: "High-stakes internal tools and healthcare workflows" },
     ],
     intro: [
@@ -235,7 +235,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       "I do not treat healthcare like generic SaaS. I understand the pressure behind clinical and operational work, and I design with that reality in mind so products support better decisions, smoother coordination, and more usable day-to-day workflows.",
     ],
     proofPoints: [
-      { stat: "21K+", detail: "Clinicians and administrative staff affected by workflow redesign work at Memorial Sloan Kettering" },
+      { stat: "21,000+", detail: "Clinicians and administrative staff affected by workflow redesign work at Memorial Sloan Kettering" },
       { stat: "20%", detail: "Organization-wide EMR cost reduction; I led the workflow redesign that contributed to it" },
       { stat: "70%", detail: "Certification workflow efficiency gain through simplification and visibility improvements" },
     ],
@@ -735,7 +735,7 @@ export const curatedPages: Record<string, CuratedPage> = {
     ],
     proofPoints: [
       { stat: "200+", detail: "Screens captured and quality-checked for visual clarity, sequencing, completeness, and production accuracy during Mobbin freelance work" },
-      { stat: "3", detail: "Production products studied for layout systems, navigation models, hierarchy, and reusable interface behavior" },
+      { stat: "3", detail: "Live finance apps studied for layout systems, navigation models, hierarchy, and reusable interface behavior" },
       { stat: "32", detail: "Grove survey respondents informing visual tone, feature hierarchy, and digitally forward product direction" },
     ],
     featuredWork: [

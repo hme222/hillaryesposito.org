@@ -119,7 +119,7 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
   title: "Mobbin",
   meta: "App Capture Specialist · Documentación de flujos UX · Curaduría de patrones",
   intro:
-    "Trabajo freelance para Mobbin documentando experiencias móviles de principio a fin. Capturé, organicé y anoté flujos de tres productos fintech para una biblioteca de referencia usada por equipos de UX, producto y diseño.",
+    "Trabajo freelance para Mobbin documentando experiencias móviles de principio a fin. Capturé, organicé y anoté flujos de tres apps de finanzas para una biblioteca de referencia usada por equipos de UX, producto y diseño.",
   stats: [
     { label: "Cliente", value: "Mobbin · Freelance" },
     { label: "Tiempo", value: "mar.–jun. 2026 · 4 meses" },

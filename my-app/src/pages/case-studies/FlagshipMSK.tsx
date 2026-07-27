@@ -135,7 +135,10 @@ export default function FlagshipMSK() {
           <div className="rp-cinema__bridge">
             <p className="rp-kicker">The problem, before the interface</p>
             <h2 id="msk-brief-title">The digital workflow had become a paper ritual.</h2>
-            <p>The button was the visible fix. The real design work was understanding why four systems stood between a clinician and one completed task.</p>
+            {/* EMR is used five times on this page and was never defined in
+                English — while the Spanish version defines it. Defined here, at
+                first real use, rather than assuming the reader already knows. */}
+            <p>Every clinical day runs through the EMR — the electronic medical record, the digital chart where a patient’s whole history lives. The button was the visible fix. The real design work was understanding why four systems stood between a clinician and one completed task.</p>
           </div>
         </div>
       </section>
@@ -144,7 +147,7 @@ export default function FlagshipMSK() {
         <div className="rp-wrap">
           <p className="rp-kicker">Primary artifact · recreated and anonymized</p>
           <h2 className="rp-title">Four systems became two.</h2>
-          <p className="rp-lede">The lane count made the failure visible to clinical leadership, IT, and operations at the same time. No patient information appears here.</p>
+          <p className="rp-lede">Counting the steps made the failure visible to clinical leadership, IT, and operations at the same time. No patient information appears here.</p>
           <div className="fp-workflow rp-reveal">
             <article>
               <span className="fp-workflow__label">Before · six steps</span>
@@ -262,7 +265,7 @@ export default function FlagshipMSK() {
         intro="I led the dashboard-to-online-EMR workflow redesign inside a larger initiative, rebuilt certification workflows, and redesigned onboarding across systems used throughout MSK."
         disclaimer="Anonymized evidence · organization-wide results are attributed to the initiative"
         metrics={[
-          { n: "21K+", label: "clinicians and administrative staff across the workflows I redesigned" },
+          { n: "21,000+", label: "clinicians and administrative staff across the workflows I redesigned" },
           { n: "20%", label: "organization-wide EMR cost reduction; my workflow redesign contributed to the initiative" },
           { n: "70%", label: "efficiency gain in the certification workflows I rebuilt" },
         ]}

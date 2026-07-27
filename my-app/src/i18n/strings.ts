@@ -63,7 +63,7 @@ const en = {
     "Research rigor, AI judgment, and consumer craft — shaped by six years building software for",
   "home.riso.heroProof": "21,000 clinicians and staff",
   "home.riso.heroClose": "who couldn't afford a wrong guess.",
-  "home.riso.workTitle": "Three products, one belief: get it right where it counts",
+  "home.riso.workTitle": "Three products, three ways trust gets earned",
   "home.riso.groveDesc":
     "A plant-care app an AI built in one pass. I tested it, surveyed 32 owners, and I'm rebuilding it around the one thing that keeps people: trust.",
   "home.riso.mskDesc":
@@ -75,7 +75,7 @@ const en = {
   "home.riso.mobbinAlt": "One of 200+ third-party app screens documented for Mobbin — a finance app welcome screen",
   "home.riso.groveTag": "Active · Phase 2 of 3",
   "home.riso.proofKicker": "The proof",
-  "home.riso.proofTitle": "Judgment, backed by real numbers",
+  "home.riso.proofTitle": "Every number here has a source",
   "home.riso.aboutTitle": "I design for the person under pressure",
   "home.riso.contactKicker": "Get in touch",
   "home.riso.contactBody":
@@ -164,7 +164,7 @@ const es: Partial<Record<StringKey, string>> = {
     "Rigor de investigación, criterio con IA y oficio de producto de consumo, forjados durante seis años creando software para",
   "home.riso.heroProof": "21,000 clínicos y personal",
   "home.riso.heroClose": "que no podían permitirse un error.",
-  "home.riso.workTitle": "Tres productos, una convicción: acertar donde importa",
+  "home.riso.workTitle": "Tres productos, tres formas de ganarse la confianza",
   "home.riso.groveDesc":
     "Una app para el cuidado de plantas que una IA creó de una sola vez. La probé, encuesté a 32 propietarios y la estoy reconstruyendo alrededor de lo que hace que la gente se quede: la confianza.",
   "home.riso.mskDesc":
@@ -176,7 +176,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.mobbinAlt": "Una de más de 200 pantallas de apps de terceros documentadas para Mobbin — la pantalla de bienvenida de una app financiera",
   "home.riso.groveTag": "Activo · Fase 2 de 3",
   "home.riso.proofKicker": "La evidencia",
-  "home.riso.proofTitle": "Criterio respaldado por números reales",
+  "home.riso.proofTitle": "Cada número aquí tiene una fuente",
   "home.riso.aboutTitle": "Diseño para la persona que trabaja bajo presión",
   "home.riso.contactKicker": "Contacto",
   "home.riso.contactBody":

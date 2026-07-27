@@ -16,7 +16,7 @@ const CHAPTERS = [
     heading: "Designing for trust in complex, regulated products.",
     image: "/assets/about/now.jpg",
     paragraphs: [
-      "Right now I'm freelancing. My most recent contract was a deep study of three fintech products, where I documented more than 200 screens of end-to-end mobile flows, then annotated and tagged each one so thousands of designers could actually find and reuse them. It sharpened three things: reading interaction patterns at scale across financial UX, structuring documentation to a strict taxonomy and quality bar, and seeing how different products solve the same trust problem in very different ways. AI is part of how I work now, but it stays a tool. I use it to move faster on research and prototyping, then make the calls myself.",
+      "Right now I'm freelancing. My most recent contract was a deep study of three finance apps, where I documented more than 200 screens of end-to-end mobile flows, then annotated and tagged each one so thousands of designers could actually find and reuse them. It sharpened three things: reading interaction patterns at scale across financial UX, structuring documentation to a strict taxonomy and quality bar, and seeing how different products solve the same trust problem in very different ways. AI is part of how I work now, but it stays a tool. I use it to move faster on research and prototyping, then make the calls myself.",
     ],
     callout: "AI moves the work faster. The calls stay mine.",
   },
@@ -54,7 +54,7 @@ const CHAPTERS_ES = [
     heading: "Diseño para generar confianza en productos complejos y regulados.",
     image: "/assets/about/now.jpg",
     paragraphs: [
-      "Ahora trabajo freelance. Mi contrato más reciente fue un estudio profundo de tres productos fintech, donde documenté más de 200 pantallas de flujos móviles de principio a fin, y luego anoté y etiqueté cada una para que miles de diseñadores pudieran encontrarlas y reutilizarlas.",
+      "Ahora trabajo freelance. Mi contrato más reciente fue un estudio profundo de tres apps de finanzas, donde documenté más de 200 pantallas de flujos móviles de principio a fin, y luego anoté y etiqueté cada una para que miles de diseñadores pudieran encontrarlas y reutilizarlas.",
     ],
     callout: "La IA acelera el trabajo. Las decisiones siguen siendo mías.",
   },

@@ -36,7 +36,7 @@ const CHAPTERS: CaseStudyChapter[] = [
   { id: "grove-decisions", label: "Decisions", note: "Three features, one call each" },
   { id: "grove-override", label: "Human override", note: "Five calls" },
   { id: "grove-system", label: "System", note: "The decisions underneath" },
-  { id: "grove-outcomes", label: "Evidence", note: "No invented numbers" },
+  { id: "grove-outcomes", label: "Outcomes", note: "No invented numbers" },
 ];
 
 const LEGS = [

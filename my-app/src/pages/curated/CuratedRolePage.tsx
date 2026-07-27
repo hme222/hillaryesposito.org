@@ -134,8 +134,8 @@ export default function CuratedRolePage() {
       {/* FIT / OVERVIEW */}
       <section id="curated-fit" className="rp-section">
         <div className="rp-wrap rp-reveal">
-          <p className="rp-kicker">Overview</p>
-          <h2 className="rp-title">Why this work fits my background</h2>
+          <p className="rp-kicker">The short version</p>
+          <h2 className="rp-title">Why I’m a fit for this</h2>
           {page.intro.map((p) => (
             <p className="rp-lede" key={p}>{p}</p>
           ))}
@@ -145,8 +145,8 @@ export default function CuratedRolePage() {
       {/* PROOF */}
       <section id="curated-proof" className="rp-section rp-section--alt">
         <div className="rp-wrap">
-          <p className="rp-kicker">Selected proof</p>
-          <h2 className="rp-title">Relevant results</h2>
+          <p className="rp-kicker">Numbers, with sources</p>
+          <h2 className="rp-title">What I’ve already proven</h2>
           <div className="rp-outcomes rp-reveal">
             {page.proofPoints.map((pt) => (
               <div className="rp-stat" key={pt.stat + pt.detail}>
@@ -161,7 +161,7 @@ export default function CuratedRolePage() {
       {/* FEATURED WORK */}
       <section id="curated-work" className="rp-section">
         <div className="rp-wrap">
-          <p className="rp-kicker">Featured work</p>
+          <p className="rp-kicker">Start here</p>
           <h2 className="rp-title">What to review</h2>
           <ol className="rp-numlist rp-reveal">
             {page.featuredWork.map((item) => {
@@ -235,8 +235,8 @@ export default function CuratedRolePage() {
         <div className="rp-wrap">
           <div className="rp-split rp-reveal">
             <div className="rp-split__text">
-              <p className="rp-kicker">Strengths</p>
-              <h2 className="rp-title">What this work shows</h2>
+              <p className="rp-kicker">What I bring</p>
+              <h2 className="rp-title">What I’d bring on day one</h2>
               <ul className="rp-list">
                 {page.strengths.slice(0, 4).map((item) => (
                   <li key={item}>{item}</li>
@@ -254,8 +254,8 @@ export default function CuratedRolePage() {
       {/* EXPERIENCE */}
       <section id="curated-experience" className="rp-section rp-section--alt">
         <div className="rp-wrap rp-reveal">
-          <p className="rp-kicker">Relevant experience</p>
-          <h2 className="rp-title">Experience behind the work</h2>
+          <p className="rp-kicker">The background</p>
+          <h2 className="rp-title">Where the experience comes from</h2>
           {page.relevantExperience.slice(0, 2).map((p) => (
             <p className="rp-lede" key={p}>{p}</p>
           ))}
@@ -265,8 +265,8 @@ export default function CuratedRolePage() {
       {/* CLOSING */}
       <section className="rp-section">
         <div className="rp-wrap rp-close">
-          <p className="rp-kicker">Closing note</p>
-          <h2>Where I'm strongest</h2>
+          <p className="rp-kicker">One last thing</p>
+          <h2>Where I’m strongest</h2>
           <p>{page.closing}</p>
           <div className="rp-hero__ctas">
             <button type="button" className="rp-cta" onClick={() => navigate("/?scrollTo=projects")}>← Back to work</button>
