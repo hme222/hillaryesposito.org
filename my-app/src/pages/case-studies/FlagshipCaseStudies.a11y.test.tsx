@@ -119,6 +119,18 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".rp-recruiter-link")).not.toBeNull();
   });
 
+  it("keeps broken routes out of search indexes", async () => {
+    await act(async () => {
+      root.render(<NotFoundPage />);
+    });
+
+    expect(document.title).toBe("Page not found | Hillary Esposito");
+    expect(document.querySelector('meta[name="robots"]')?.getAttribute("content"))
+      .toBe("noindex, nofollow, noarchive");
+    expect(document.querySelector('link[rel="canonical"]')?.getAttribute("href"))
+      .toBe("https://hillaryesposito.org");
+  });
+
   it("keeps painted cartography editorial rather than navigational", async () => {
     await act(async () => {
       root.render(<RisoHome />);

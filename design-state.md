@@ -1,6 +1,6 @@
 # Design State: Full Portfolio Redesign — Hybrid Positioning
 
-_Last updated: 2026-07-26 by Designpowers focused repair and rendered verification round_
+_Last updated: 2026-07-27 by Designpowers full portfolio release review_
 
 ## Brief Summary
 **Problem:** Portfolio positions Hillary as Product Designer only, burying process improvement track record and treating AI as a project tag. LinkedIn and portfolio tell different stories.
@@ -62,6 +62,16 @@ _Last updated: 2026-07-26 by Designpowers focused repair and rendered verificati
 Owner live review during the same session produced eight further repairs: the MSK hero headline overflowing its clearing, the cinema gradient scrim, ~45vh of dead scroll beneath the brief, Grove's decision layout implying three missing redesign screens, the scrolling green marquee, a non-functional share button on desktop, the About page's flat type scale, and the cognitive pass's full finding list.
 
 **Verification:** 33/33 tests pass (up from 29 — four new override-panel contrast guards). Production build compiles successfully. Rendered verification was performed by the owner directly against a live dev server rather than by captured screenshots.
+
+### Release Review: New Portfolio vs. Old Production (2026-07-27)
+
+**Status:** Conditional. The redesign was already committed locally on `portfolio-senior-rework`; it was not missing from Git. The actual release defect is that remote `main` and the deployed `gh-pages` state still represent the previous site. A repeatable Playwright audit now covers Home, About, Grove, MSK, Mobbin, a tailored role page, Fashion, and 404 at 320, 390, 900, and 1440px.
+
+**Repairs:** Homepage role language now says Product Designer/Diseñadora de producto, the retired `/old-home` route is removed, unknown routes emit noindex metadata, and audited global navigation, chapter, curated-title, and footer targets meet 44×44px. An obsolete Riso lab page and seven unreferenced 33 MB study assets were verified but could not be deleted because destructive filesystem authorization was unavailable.
+
+**Verification:** 34/34 tests pass, the optimized production build succeeds, and the baseline 32-state rendered audit found no overflow, broken images, missing alt attributes, duplicate IDs, heading skips, console errors, or invisible/unstyled sampled focus stops. Post-repair rendered and reduced-motion reruns remain pending.
+
+**Review:** `docs/designpowers/reviews/2026-07-27-full-portfolio-release-review.md`
 
 ### Carryover Audit: Old Design vs Redesign (2026-07-27)
 

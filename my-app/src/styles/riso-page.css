@@ -669,7 +669,7 @@
 .rp-numlist h3 { font-size: 1.05rem; font-weight: 800; margin: 0 0 .4rem; letter-spacing: -.01em; }
 /* Linked "what to review" titles carry a persistent coral underline so it's clear
    which items open a case study and which are plain descriptions. */
-.rp-numlist__link { color: var(--ink); text-decoration: underline; text-decoration-color: var(--coral); text-decoration-thickness: 2px; text-underline-offset: 3px; transition: color .2s ease; }
+.rp-numlist__link { min-height: 44px; display: inline-flex; align-items: center; color: var(--ink); text-decoration: underline; text-decoration-color: var(--coral); text-decoration-thickness: 2px; text-underline-offset: 3px; transition: color .2s ease; }
 .rp-numlist__link:hover, .rp-numlist__link:focus-visible { color: var(--coral); }
 .rp-numlist p { color: var(--ink-2); font-size: .93rem; margin: 0; }
 .rp-note { background: color-mix(in srgb, var(--coral) 7%, var(--paper)); border: 1px solid color-mix(in srgb, var(--coral) 26%, transparent);
@@ -882,7 +882,7 @@
   background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(6px); }
 .rp-chapters span { color: var(--muted); margin-right: .15rem; }
 .rp-chapters a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--hair);
-  min-height: 44px; display: inline-flex; align-items: center; padding: 0 .2rem; }
+  min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; padding: 0 .2rem; }
 .rp-chapters a:hover, .rp-chapters a:focus-visible { color: var(--coral); border-bottom-color: var(--coral); }
 /* Current chapter. Weight carries it as well as colour, so the state survives
    greyscale, forced colours, and colour-vision differences. */

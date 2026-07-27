@@ -50,7 +50,10 @@ export default function usePageTitle(page?: string) {
     const routeMeta = ROUTE_META.find((item) => item.match.test(path));
     const description = routeMeta?.description ?? DEFAULT_DESCRIPTION;
     const image = `${ORIGIN}${routeMeta?.image ?? "/riso/painted-cartography-01.jpg"}`;
-    const canonical = `${ORIGIN}${path === "/" ? "" : path}`;
+    const isNotFound = page === "Page not found";
+    const canonical = isNotFound
+      ? ORIGIN
+      : `${ORIGIN}${path === "/" ? "" : path}`;
     const isPrivateCuratedRoute = path.startsWith("/curated/");
 
     document.title = title;
@@ -66,7 +69,9 @@ export default function usePageTitle(page?: string) {
       'meta[name="robots"]',
       "name",
       "robots",
-      isPrivateCuratedRoute ? "noindex, nofollow, noarchive" : "index, follow",
+      isPrivateCuratedRoute || isNotFound
+        ? "noindex, nofollow, noarchive"
+        : "index, follow",
     );
 
     let canonicalLink = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');

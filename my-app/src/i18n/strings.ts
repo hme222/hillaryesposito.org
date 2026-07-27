@@ -57,7 +57,7 @@ const en = {
   "home.status": "Available for opportunities",
   "home.getInTouch": "Get in touch",
   "home.seeApproach": "See my approach →",
-  "home.riso.eyebrow": "Hillary Esposito · product design",
+  "home.riso.eyebrow": "Hillary Esposito · product designer",
   "home.riso.heroTitle": "Products people have to trust.",
   "home.riso.heroLead":
     "Research rigor, AI judgment, and consumer craft — shaped by six years building software for",
@@ -158,7 +158,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.status": "Disponible para nuevas oportunidades",
   "home.getInTouch": "Contácteme",
   "home.seeApproach": "Conozca mi enfoque →",
-  "home.riso.eyebrow": "Hillary Esposito · diseño de producto",
+  "home.riso.eyebrow": "Hillary Esposito · diseñadora de producto",
   "home.riso.heroTitle": "Productos en los que la gente tiene que confiar.",
   "home.riso.heroLead":
     "Rigor de investigación, criterio con IA y oficio de producto de consumo, forjados durante seis años creando software para",

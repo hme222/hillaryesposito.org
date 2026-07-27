@@ -35,6 +35,7 @@
 }
 .portfolio-chapter-strip span { color: var(--muted); }
 .portfolio-chapter-strip a {
+  min-width: 44px;
   min-height: 44px;
   display: inline-flex;
   align-items: center;
@@ -694,6 +695,10 @@
   gap: .8rem;
 }
 .site-footer__column a {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   color: var(--fg);
   font-size: .9rem;
   text-decoration: none;

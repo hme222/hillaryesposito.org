@@ -178,7 +178,10 @@
 .fp-sequence__controls button:first-child { text-align: left; }.fp-sequence__controls button:last-child { text-align: right; }
 .fp-sequence__controls p { font: .64rem/1 var(--mono); color: var(--muted); }.fp-sequence__controls b { color: var(--coral); }
 .fp-sequence__dots { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; margin-top: .6rem; }
-.fp-sequence__dots button { min-height: 44px; padding: .55rem .8rem; border: 1px solid var(--hair); border-radius: 999px; background: var(--paper); color: var(--ink); font: .62rem/1 var(--mono); cursor: pointer; }
+/* Squared with the rest of the controls. The 2026-07-25 sweep caught the Grove
+   system-lab tabs and missed these; a 999px pill is the one shape the editorial
+   vocabulary reserves for genuine status tags. */
+.fp-sequence__dots button { min-height: 44px; padding: .55rem .8rem; border: 1px solid var(--hair); border-radius: 3px; background: var(--paper); color: var(--ink); font: .62rem/1 var(--mono); cursor: pointer; }
 .fp-sequence__dots button.is-active { border-color: var(--green); background: var(--green); color: var(--paper); }
 
 /* The journal line now sits on light paper in the method section, so it uses

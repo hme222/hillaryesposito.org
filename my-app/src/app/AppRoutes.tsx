@@ -115,7 +115,6 @@ export default function AppRoutes() {
     <RouteAnnouncer />
     <Routes>
       <Route path="/" element={<RisoHome />} />
-      <Route path="/old-home" element={<Navigate to="/" replace />} />
       <Route path="/projects" element={<Navigate to="/?scrollTo=projects" replace />} />
       <Route path="/about" element={<About />} />
 
