@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef, useMemo, lazy, Suspense } from "rea
 import { motion, useReducedMotion } from "framer-motion";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import usePageTitle from "../hooks/usePageTitle";
-import { useT } from "../app/LanguageContext";
+import { useLanguage, useT } from "../app/LanguageContext";
 import type { StringKey } from "../i18n/strings";
 
 // Lazy-loaded so three.js stays in its own chunk (only fetched when needed).
@@ -38,6 +38,7 @@ function HeroKnotFallback() {
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 type Project = {
+  issue: string;
   title: string; // proper noun - never translated
   subtitleKey: StringKey;
   descKey: StringKey;
@@ -56,6 +57,7 @@ type Project = {
 // structural data (assets, routes, gradients) stays here.
 const PROJECTS: Project[] = [
   {
+    issue: "01",
     title: "Grove",
     subtitleKey: "home.proj.grove.subtitle",
     descKey: "home.proj.grove.desc",
@@ -65,6 +67,7 @@ const PROJECTS: Project[] = [
     path: "/case-study/grove",
   },
   {
+    issue: "02",
     title: "Mobbin",
     subtitleKey: "home.proj.mobbin.subtitle",
     descKey: "home.proj.mobbin.desc",
@@ -74,6 +77,7 @@ const PROJECTS: Project[] = [
     path: "/case-study/mobbin",
   },
   {
+    issue: "03",
     title: "MSK Cancer Center",
     subtitleKey: "home.proj.msk.subtitle",
     descKey: "home.proj.msk.desc",
@@ -92,6 +96,7 @@ export default function Home() {
   const location = useLocation();
   const prefersReducedMotion = useReducedMotion();
   const t = useT();
+  const { lang } = useLanguage();
 
   // Fail-safe for the scroll-reveals below. framer-motion's whileInView can miss
   // its IntersectionObserver crossing on a fast scroll, an anchor jump, or a
@@ -184,7 +189,7 @@ export default function Home() {
       };
 
   return (
-    <main>
+    <main className="portfolio-home">
       {/* ══════════════════════════════════════════
           1. HERO
       ══════════════════════════════════════════ */}
@@ -259,6 +264,13 @@ export default function Home() {
                 onClick={() => navigate("/about")}>
                 {t("home.seeApproach")}
               </button>
+              <button
+                type="button"
+                className="home-recruiter-link"
+                onClick={() => window.dispatchEvent(new CustomEvent("open-recruiter-panel"))}
+              >
+                {t("recruiter.pill")}{lang === "es" ? " · EN" : ""} · 90 sec →
+              </button>
             </motion.div>
           </div>
         </div>
@@ -318,6 +330,20 @@ export default function Home() {
           <h2 className="section-title home-section-title">{t("home.projectsTitle")}</h2>
         </motion.div>
 
+        <nav className="home-project-index" aria-label={t("home.projectIndexAria")}>
+          <ol>
+            {PROJECTS.map((project) => (
+              <li key={project.issue}>
+                <Link to={project.path || "#projects"}>
+                  <span aria-hidden="true">{project.issue}</span>
+                  <strong>{project.title}</strong>
+                  <small>{t(project.subtitleKey)}</small>
+                </Link>
+              </li>
+            ))}
+          </ol>
+        </nav>
+
         <div className="home-projects-list">
           {PROJECTS.map((proj, idx) => {
             const isLocked = proj.locked && !mobbinUnlocked;
@@ -374,6 +400,7 @@ export default function Home() {
 
                 {/* ── Text area ── */}
                 <div className="home-proj-info">
+                  <span className="home-proj-issue" aria-hidden="true">{proj.issue} / 03</span>
                   <p className="home-proj-subtitle">{t(proj.subtitleKey)}</p>
                   <h3 className="home-proj-title">{displayTitle}</h3>
                   <p className="home-proj-desc">{displayDesc}</p>

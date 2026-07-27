@@ -1,6 +1,9 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import usePageTitle from "../../hooks/usePageTitle";
+import RisoDefs from "../../components/riso/RisoDefs";
+import "../../styles/riso.css";
+import "../../styles/riso-page.css";
 
 const assetSpecs = [
   { channel: "Ecommerce hero", size: "2880 x 1400", purpose: "Launch story, product mood, primary CTA" },
@@ -39,54 +42,77 @@ export default function FashionCampaignSystem() {
   const navigate = useNavigate();
 
   return (
-    <main className="fashion-system-page" aria-label="Fashion campaign system artifact">
-      <header className="fashion-system-hero">
-        <div className="fashion-system-hero__copy">
-          <p className="fashion-system-kicker">Speculative graphic design artifact · Fashion / lifestyle</p>
-          <h1>Sculpted Utility</h1>
-          <p>
-            A compact campaign system for a premium capsule launch: key visual, ecommerce modules,
-            social and email crops, lookbook spread, packaging touchpoints, and production specs.
-          </p>
-          <div className="fashion-system-actions">
-            <a href="#campaign-assets" className="hero-btn">View assets</a>
-            <Link to="/curated/fashion-graphic-designer" className="home-secondary-btn">Back to role fit</Link>
+    <main className="riso-page fashion-system-page" aria-label="Fashion campaign system artifact" lang="en">
+      <RisoDefs />
+
+      <nav className="rp-breadcrumb" aria-label="Breadcrumb">
+        <Link to="/curated/fashion-graphic-designer">Role fit</Link> / <span>Sculpted Utility</span>
+      </nav>
+
+      <header className="rp-hero fashion-system-hero">
+        <div className="rp-hero__content fashion-system-hero__copy">
+          <div className="rp-clearing">
+            <span className="rp-eyebrow">Speculative graphic design artifact · Fashion / lifestyle</span>
+            <h1 className="rp-h1">Sculpted Utility</h1>
+            <p className="rp-sub">
+              A compact campaign system for a premium capsule launch: key visual, ecommerce modules,
+              social and email crops, lookbook spread, packaging touchpoints, and production specs.
+            </p>
+            <div className="rp-hero__ctas fashion-system-actions">
+              <a href="#campaign-assets" className="rp-cta">View assets →</a>
+              <Link to="/curated/fashion-graphic-designer" className="rp-cta rp-cta--ghost">Back to role fit</Link>
+            </div>
           </div>
         </div>
 
-        <div className="fashion-key-visual" aria-label="Campaign key visual mockup">
-          <div className="fashion-key-visual__image">
-            <span className="fashion-garment fashion-garment--coat" />
-            <span className="fashion-garment fashion-garment--trouser" />
-          </div>
-          <div className="fashion-key-visual__type">
-            <span>Drop 01</span>
-            <strong>Sculpted Utility</strong>
-            <small>Outerwear · Tailoring · Textured layers</small>
+        <div className="rp-hero__media">
+          <div className="fashion-key-visual" aria-label="Campaign key visual mockup">
+            <div className="fashion-key-visual__image">
+              <span className="fashion-garment fashion-garment--coat" />
+              <span className="fashion-garment fashion-garment--trouser" />
+            </div>
+            <div className="fashion-key-visual__type">
+              <span>Drop 01</span>
+              <strong>Sculpted Utility</strong>
+              <small>Outerwear · Tailoring · Textured layers</small>
+            </div>
           </div>
         </div>
       </header>
 
-      <section className="fashion-system-meta" aria-label="Campaign strategy">
-        <article>
-          <span>Creative brief</span>
-          <strong>A sharp, practical digital retail system.</strong>
-        </article>
-        <article>
-          <span>Audience</span>
-          <strong>Fashion-conscious shoppers moving between Instagram, email, and ecommerce.</strong>
-        </article>
-        <article>
-          <span>Goal</span>
-          <strong>Make the capsule feel premium, clear, and immediately shoppable.</strong>
-        </article>
+      <nav className="rp-chapters" aria-label="Fashion campaign system chapters">
+        <span aria-hidden="true">Jump to</span>
+        <a href="#campaign-assets">System</a>
+        <a href="#fashion-editorial">Editorial</a>
+        <a href="#fashion-rules">Rules</a>
+        <a href="#fashion-handoff">Handoff</a>
+      </nav>
+
+      <section className="rp-section" aria-label="Campaign strategy" style={{ paddingBottom: 0 }}>
+        <div className="rp-wrap">
+          <div className="fashion-system-meta rp-metagrid">
+            <article>
+              <span className="rp-metagrid__k">Creative brief</span>
+              <strong className="rp-metagrid__v">A sharp, practical digital retail system.</strong>
+            </article>
+            <article>
+              <span className="rp-metagrid__k">Audience</span>
+              <strong className="rp-metagrid__v">Fashion-conscious shoppers moving between Instagram, email, and ecommerce.</strong>
+            </article>
+            <article>
+              <span className="rp-metagrid__k">Goal</span>
+              <strong className="rp-metagrid__v">Make the capsule feel premium, clear, and immediately shoppable.</strong>
+            </article>
+          </div>
+        </div>
       </section>
 
-      <section id="campaign-assets" className="fashion-system-section">
+      <section id="campaign-assets" className="rp-section fashion-system-section">
+        <div className="rp-wrap">
         <div className="fashion-system-section__header">
-          <p className="gh-section-label">Campaign system</p>
-          <h2>One visual language, multiple channels</h2>
-          <p>
+          <p className="rp-kicker">Campaign system</p>
+          <h2 className="rp-title">One visual language, multiple channels</h2>
+          <p className="rp-lede">
             The system keeps the same mood and hierarchy, then adapts density for each surface:
             brand story on the homepage, product clarity on ecommerce, immediacy on social, and
             editorial pacing in the lookbook.
@@ -121,7 +147,7 @@ export default function FashionCampaignSystem() {
             <p className="fashion-channel__label">Ecommerce hero</p>
             <h3>Drop 01</h3>
             <span>Sculpted Utility</span>
-            <button type="button">Shop the capsule</button>
+            <span className="fashion-channel__mock-cta">Shop the capsule</span>
           </article>
 
           <article className="fashion-channel fashion-channel--pdp">
@@ -153,15 +179,17 @@ export default function FashionCampaignSystem() {
               <span />
               <span />
             </div>
-            <button type="button">Explore the drop</button>
+            <span className="fashion-channel__mock-cta">Explore the drop</span>
           </article>
+        </div>
         </div>
       </section>
 
-      <section className="fashion-system-section">
+      <section id="fashion-editorial" className="rp-section rp-section--alt fashion-system-section">
+        <div className="rp-wrap">
         <div className="fashion-system-section__header">
-          <p className="gh-section-label">Lookbook + print</p>
-          <h2>Editorial pacing for collection storytelling</h2>
+          <p className="rp-kicker">Lookbook + print</p>
+          <h2 className="rp-title">Editorial pacing for collection storytelling</h2>
         </div>
 
         <div className="fashion-lookbook">
@@ -192,12 +220,14 @@ export default function FashionCampaignSystem() {
             <p>Packaging sticker</p>
           </article>
         </div>
+        </div>
       </section>
 
-      <section className="fashion-system-section fashion-system-section--rules">
+      <section id="fashion-rules" className="rp-section fashion-system-section">
+        <div className="rp-wrap fashion-system-section--rules">
         <div>
-          <p className="gh-section-label">Brand system rules</p>
-          <h2>How the system stays consistent</h2>
+          <p className="rp-kicker">Brand system rules</p>
+          <h2 className="rp-title">How the system stays consistent</h2>
           <ul className="fashion-rule-list">
             {systemRules.map((rule) => (
               <li key={rule}>{rule}</li>
@@ -205,10 +235,10 @@ export default function FashionCampaignSystem() {
           </ul>
         </div>
 
-        <aside className="fashion-type-card">
+        <div className="fashion-type-card" role="note">
           <p>Type + color</p>
           <h3>Aa</h3>
-          <div className="fashion-swatches" aria-label="Campaign color palette">
+          <div className="fashion-swatches" aria-hidden="true">
             <span />
             <span />
             <span />
@@ -217,53 +247,63 @@ export default function FashionCampaignSystem() {
           <small>
             Bone, espresso, oxblood, and warm stone. Restrained enough for luxury, warm enough for digital retail.
           </small>
-        </aside>
+        </div>
+        </div>
       </section>
 
-      <section className="fashion-system-section">
+      <section id="fashion-handoff" className="rp-section rp-section--alt fashion-system-section">
+        <div className="rp-wrap">
         <div className="fashion-system-section__header">
-          <p className="gh-section-label">Production handoff</p>
-          <h2>Asset plan for marketing, ecommerce, and production teams</h2>
-          <p>
+          <p className="rp-kicker">Production handoff</p>
+          <h2 className="rp-title">Asset plan for marketing, ecommerce, and production teams</h2>
+          <p className="rp-lede">
             This is where my UX and production discipline helps: every asset has a channel, purpose,
             size, and naming system so collaborators can move quickly without losing quality.
           </p>
         </div>
 
-        <div className="fashion-spec-table" role="table" aria-label="Fashion campaign asset production plan">
-          <div className="fashion-spec-table__row fashion-spec-table__row--head" role="row">
-            <span role="columnheader">Channel</span>
-            <span role="columnheader">Size</span>
-            <span role="columnheader">Purpose</span>
-          </div>
-          {assetSpecs.map((spec) => (
-            <div className="fashion-spec-table__row" role="row" key={spec.channel}>
-              <span role="cell">{spec.channel}</span>
-              <span role="cell">{spec.size}</span>
-              <span role="cell">{spec.purpose}</span>
-            </div>
-          ))}
+        <div className="fashion-spec-table-wrap">
+          <table className="fashion-spec-table">
+            <caption>Fashion campaign asset production plan</caption>
+            <thead>
+              <tr>
+                <th scope="col">Channel</th>
+                <th scope="col">Size</th>
+                <th scope="col">Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              {assetSpecs.map((spec) => (
+                <tr key={spec.channel}>
+                  <th scope="row">{spec.channel}</th>
+                  <td>{spec.size}</td>
+                  <td>{spec.purpose}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
 
         <div className="fashion-file-note">
           <strong>File naming example:</strong>
           <span>MDV_SU_Drop01_EmailHeader_1200x720_v03_HE.jpg</span>
         </div>
+        </div>
       </section>
 
-      <section className="fashion-system-footer">
-        <div>
-          <p className="gh-section-label">Why this artifact matters</p>
+      <section className="rp-section">
+        <div className="rp-wrap rp-close">
+          <p className="rp-kicker">Why this artifact matters</p>
           <h2>It proves the gap I needed to close</h2>
           <p>
             My main portfolio proves systems thinking and UX. This artifact adds the missing graphic
             design evidence for a fashion role: visual taste, campaign hierarchy, channel adaptation,
             and production-ready thinking.
           </p>
-        </div>
-        <button type="button" className="hero-btn" onClick={() => navigate("/?scrollTo=contact")}>
-          Get in touch
+        <button type="button" className="rp-cta" onClick={() => navigate("/?scrollTo=contact")}>
+          Get in touch →
         </button>
+        </div>
       </section>
     </main>
   );

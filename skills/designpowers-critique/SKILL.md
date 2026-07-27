@@ -157,8 +157,12 @@ After the critique is complete and the fix round is determined:
 
 Do not silently drop Minor findings. They either get fixed or they get tracked.
 
+### Step 9: Add the recruiter lens for portfolios
+
+When the artifact is a professional design portfolio, invoke `portfolio-recruiter-audit` after the general critique. Use its six-second test and 24-check evidence score to evaluate role clarity, proof visibility, decision storytelling, project order, public case-study volume, and next-step friction. Reconcile its conversion heuristics with the approved brief, accessibility, content truth, and taste profile.
+
 ## Integration
 
 - **Called by:** `writing-design-plans` (at review checkpoints)
 - **Reviews output from:** `ui-composition`, `interaction-design`, `accessible-content`, `cognitive-accessibility`, `adaptive-interfaces`, `design-system-alignment`
-- **Calls:** Relevant design skills for fixes, `design-debt-tracker` for deferred findings, then `design-handoff` when critique passes
+- **Calls:** `portfolio-recruiter-audit` for portfolio artifacts; relevant design skills for fixes; `design-debt-tracker` for deferred findings; then `design-handoff` when critique passes

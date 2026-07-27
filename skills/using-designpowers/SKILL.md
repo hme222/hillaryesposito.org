@@ -306,6 +306,7 @@ Before responding to ANY message — including clarifying questions — check wh
 | Taste Check | `taste-feedback` | During build phase — shows intermediate visual output for mid-flight taste correction |
 | Heuristic | `heuristic-evaluation` | After build — dispatches heuristic-evaluator agent for Nielsen's 10 + cognitive walkthrough, runs in parallel with critic and accessibility-reviewer |
 | Critique | `designpowers-critique` | When reviewing design work against the plan |
+| Portfolio Audit | `portfolio-recruiter-audit` | When scoring a professional design portfolio through a recruiter or hiring-manager lens |
 | Synthetic Test | `synthetic-user-testing` | After fix round — walks through key tasks as each persona to validate the design works for real people in real conditions |
 | Debt | `design-debt-tracker` | After reviews produce deferred findings, at project start to review accumulated debt, or when deciding what to fix next |
 | Handoff | `design-handoff` | When preparing specifications for engineering |

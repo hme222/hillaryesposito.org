@@ -1,0 +1,4 @@
+interface:
+  display_name: "Portfolio Recruiter Audit"
+  short_description: "Score portfolios through a recruiter lens"
+  default_prompt: "Use $portfolio-recruiter-audit to score my portfolio and prioritize the highest-impact fixes."

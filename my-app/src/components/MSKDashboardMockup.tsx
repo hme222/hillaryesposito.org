@@ -2,6 +2,7 @@ import React from "react";
 
 type MSKDashboardMockupProps = {
   compact?: boolean;
+  headingLevel?: 2 | 3;
 };
 
 // Anonymized recreation. MRNs are masked (last 4 only) — the queue is patient-
@@ -15,13 +16,15 @@ const rows = [
   { mrn: "••••2960", received: "Received 3d ago", doc: "Discharge summary", status: "Filed to chart", owner: "Compliance", action: "View log" },
 ];
 
-export default function MSKDashboardMockup({ compact = false }: MSKDashboardMockupProps) {
+export default function MSKDashboardMockup({ compact = false, headingLevel = 3 }: MSKDashboardMockupProps) {
+  const Heading = headingLevel === 2 ? "h2" : "h3";
+
   return (
     <div className={`msk-dashboard-mockup${compact ? " msk-dashboard-mockup--compact" : ""}`} role="group" aria-label="Anonymized MSK chart-filing work queue mockup">
       <div className="msk-dashboard-mockup__topbar">
         <div>
           <p className="msk-dashboard-mockup__eyebrow">Anonymized internal tool concept</p>
-          <h3>Chart filing · work queue</h3>
+          <Heading>Chart filing · work queue</Heading>
         </div>
         <span className="msk-dashboard-mockup__timestamp">47 in queue · 09:42</span>
       </div>

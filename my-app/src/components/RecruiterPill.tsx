@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Modal from "./Modal";
-import { useT } from "../app/LanguageContext";
+import { useLanguage, useT } from "../app/LanguageContext";
 import { FileTextIcon, MailIcon, BriefcaseIcon, UserIcon, XIcon } from "./LineIcons";
 
 /**
@@ -15,11 +15,12 @@ import { FileTextIcon, MailIcon, BriefcaseIcon, UserIcon, XIcon } from "./LineIc
 export default function RecruiterPill() {
   const navigate = useNavigate();
   const t = useT();
+  const { lang } = useLanguage();
   const [open, setOpen] = useState(false);
 
-  // On small screens the fixed pill lands on top of the hero copy, so it stays
-  // hidden until the user scrolls (CSS gates the hiding to ≤768px - desktop
-  // keeps its always-on position).
+  // Keep the utility out of every opening composition. It appears only after
+  // the reader has moved beyond the hero, where it no longer competes with the
+  // page's authored hierarchy.
   const [scrolled, setScrolled] = useState(() => window.scrollY > 120);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 120);
@@ -50,7 +51,7 @@ export default function RecruiterPill() {
         aria-label={t("recruiter.pillAria")}
       >
         {/* Panel content stays English in Phase 1 - only the trigger translates. */}
-        <span className="recruiter-pill__text">{t("recruiter.pill")}</span>
+        <span className="recruiter-pill__text">{t("recruiter.pill")}{lang === "es" ? " · EN" : ""}</span>
       </button>
 
       <Modal
@@ -66,7 +67,7 @@ export default function RecruiterPill() {
                 <div>
                   <p className="recruiter-panel__eyebrow">90-second tour</p>
                   <h2 id="recruiter-panel-title" className="recruiter-panel__title">
-                    Hillary Esposito, UX & Product Designer
+                    Hillary Esposito, Product Designer
                   </h2>
                 </div>
                 <button
@@ -82,21 +83,21 @@ export default function RecruiterPill() {
               <div className="recruiter-panel__body">
                 <section className="recruiter-panel__section recruiter-panel__vitals">
                   <div className="recruiter-panel__vitals-grid">
-                    <span>UX/Product Designer</span>
-                    <span>Healthcare + internal tools</span>
+                    <span>Product Designer</span>
+                    <span>Trustworthy workflows + consumer products</span>
                     <span>Currently freelancing</span>
                   </div>
                 </section>
 
                 <section className="recruiter-panel__section">
                   <p className="recruiter-panel__label">In one line</p>
-                  <p>UX/Product Designer for AI-enabled workflows, healthcare systems, and complex data-heavy products.</p>
+                  <p>I design products people have to trust, pairing research rigor with AI judgment and consumer craft.</p>
                 </section>
 
                 <section className="recruiter-panel__section">
                   <p className="recruiter-panel__label">Strengths</p>
                   <div className="recruiter-panel__chips">
-                    {["Healthcare Systems UX", "Internal Tools", "AI Judgment", "Army\u00a0Veteran"].map((s) => (
+                    {["Product Research", "Workflow Systems", "AI Judgment", "Consumer Craft"].map((s) => (
                       <span key={s} className="recruiter-panel__chip">{s}</span>
                     ))}
                   </div>
@@ -108,13 +109,19 @@ export default function RecruiterPill() {
                     <li>
                       <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/grove")}>
                         <strong>Grove</strong>
-                        <span>32-user survey reshaped the MVP; AI override log; working prototype ready for moderated testing</span>
+                        <span>Phase-2 functional prototype; core flows ready for moderated testing; social prototype not yet built</span>
                       </button>
                     </li>
                     <li>
                       <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/msk")}>
                         <strong>MSK Cancer Center</strong>
                         <span>Dashboard-to-online-EMR workflow redesign; user roles, permissions, workflow states; contributed to a 20% EMR cost reduction</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/mobbin")}>
+                        <strong>Mobbin</strong>
+                        <span>200+ screens across three finance apps; production-ready flow documentation and consumer pattern curation</span>
                       </button>
                     </li>
                   </ul>
@@ -130,8 +137,8 @@ export default function RecruiterPill() {
                      href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"
                      target="_blank"
                      rel="noopener noreferrer"
-                     aria-label="Download resume (opens in new tab)">
-                    <FileTextIcon className="recruiter-panel__btn-icon" /> Download resume
+                     aria-label="View résumé (opens in new tab)">
+                    <FileTextIcon className="recruiter-panel__btn-icon" /> View résumé
                   </a>
                   <a className="recruiter-panel__btn"
                      href="mailto:espositohillary@gmail.com">

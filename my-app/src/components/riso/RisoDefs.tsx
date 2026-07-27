@@ -61,7 +61,7 @@ export default function RisoDefs() {
     <svg width="0" height="0" aria-hidden="true" focusable="false" style={{ position: "absolute" }}>
       <defs>
         {Object.entries(RISO_EDITIONS).map(([key, ed]) => (
-          <Duotone key={key} id={`riso-${key}`} shadow={ed.shadow} highlight={ed.highlight} />
+          <Duotone key={key} id={`riso-${key}`} shadow={ed.shadow} mid={ed.mid} highlight={ed.highlight} table={ed.table} />
         ))}
       </defs>
     </svg>

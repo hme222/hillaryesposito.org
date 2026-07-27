@@ -1,0 +1,447 @@
+/* ============================================================
+   Portfolio cohesion layer
+
+   Canonical shared vocabulary for the current Riso/editorial system.
+   This file intentionally loads last so retired global treatments cannot
+   reintroduce floating pills, frosted islands, soft cards, or mixed type.
+   ============================================================ */
+
+:root {
+  --shell-paper: #e8ece3;
+  --shell-paper-2: #dee4d6;
+  --shell-ink: #20241c;
+  --shell-ink-2: #45503f;
+  --shell-muted: #5d6656;
+  --shell-hair: #b7c1ae;
+  --shell-coral: #bd3828;
+  --shell-green: #3d6b3f;
+  --shell-mono: "Space Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --shell-sans: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+}
+
+.dark-mode {
+  --shell-paper: #14150e;
+  --shell-paper-2: #191b10;
+  --shell-ink: #ece7d4;
+  --shell-ink-2: #b9b596;
+  --shell-muted: #a9a582;
+  --shell-hair: #3a3d28;
+  --shell-coral: #ff8c82;
+  --shell-green: #7cb069;
+}
+
+.app {
+  background: var(--shell-paper);
+  color: var(--shell-ink);
+}
+
+/* One masthead, one behaviour: a stable editorial rule rather than a
+   transparent bar that turns into a floating island mid-scroll. */
+.navbar,
+.navbar.is-floating,
+.navbar:not(.is-floating) {
+  width: 100%;
+  max-width: none;
+  min-height: 64px;
+  margin: 0;
+  top: 0;
+  gap: 2rem;
+  padding: .65rem max(clamp(1rem, 4vw, 2rem), calc((100% - 1280px) / 2));
+  justify-content: space-between;
+  color: var(--shell-ink);
+  background: color-mix(in srgb, var(--shell-paper) 96%, transparent) !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--shell-hair) !important;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background-color .2s ease, border-color .2s ease;
+}
+
+.logo {
+  gap: .55rem;
+  min-height: 44px;
+  padding-block: .25rem;
+  color: var(--shell-ink);
+  transform: none;
+}
+.logo:hover { transform: none; }
+.logo-mark { width: 20px; height: 20px; color: var(--shell-green); }
+.logo-mark .lm-accent { fill: var(--shell-coral); }
+.logo-text {
+  color: var(--shell-ink);
+  font-family: var(--shell-sans);
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .035em;
+  text-transform: uppercase;
+}
+.logo-divider,
+.logo-tagline,
+.logo-textblock { display: none; }
+
+.nav-menu { gap: clamp(1rem, 2.4vw, 2.2rem); }
+.nav-link,
+.theme-btn,
+.lang-btn {
+  color: var(--shell-ink);
+  font-family: var(--shell-mono);
+  font-size: .66rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+}
+.nav-link { min-height: 44px; display: inline-flex; align-items: center; padding: 0; }
+.nav-link::after {
+  bottom: 5px;
+  height: 1px;
+  background: var(--shell-coral);
+}
+.nav-link.is-active::after { width: 100%; }
+.nav-link:hover { opacity: 1; color: var(--shell-coral); }
+.nav-link--resume {
+  padding: .45rem .75rem;
+  border: 1px solid var(--shell-ink);
+  border-radius: 0;
+}
+.nav-link--resume::after { display: none; }
+.nav-link--resume:hover { color: var(--shell-paper); background: var(--shell-ink); }
+.theme-btn { min-width: 44px; min-height: 44px; padding: 0; }
+.theme-btn:hover { color: var(--shell-coral); transform: none; }
+
+/* Utility controls wait until the authored opening composition is behind the
+   reader. This applies at every width, not only mobile. */
+.recruiter-pill--unscrolled {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none;
+  transform: translateY(6px);
+}
+.recruiter-pill,
+.recruiter-pill--unscrolled {
+  border: 1px solid var(--shell-coral) !important;
+  border-radius: 0 !important;
+  background: var(--shell-coral) !important;
+  color: #fff !important;
+  box-shadow: 4px 4px 0 color-mix(in srgb, var(--shell-coral) 20%, transparent) !important;
+  font-family: var(--shell-mono);
+  font-size: .66rem;
+  letter-spacing: .08em;
+}
+.recruiter-pill:hover { transform: translateY(-2px); }
+.back-to-top {
+  border-radius: 0 !important;
+  border: 1px solid var(--shell-ink) !important;
+  background: var(--shell-paper) !important;
+  color: var(--shell-ink) !important;
+  box-shadow: none !important;
+}
+.not-found__primary {
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+/* The shell closes on the same paper and type system as the pages. */
+.site-footer,
+.site-footer--compact {
+  color: var(--shell-ink);
+  background: var(--shell-paper-2);
+  border-top-color: var(--shell-hair);
+  font-family: var(--shell-sans);
+}
+.site-footer__eyebrow,
+.site-footer__label,
+.site-footer__base p {
+  color: var(--shell-muted);
+  font-family: var(--shell-mono);
+}
+.site-footer__statement {
+  max-width: 18ch;
+  color: var(--shell-ink);
+  font-family: var(--shell-sans);
+  font-size: clamp(2rem, 3.5vw, 3.7rem);
+  font-weight: 800;
+  letter-spacing: -.025em;
+}
+.site-footer__column a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  color: var(--shell-ink);
+  font-family: var(--shell-sans);
+}
+
+/* Home cover: one painted plate, one portrait, one typographic clearing.
+   The extra map windows, plotted drawings, rail chips, and readout are absent
+   in the component rather than merely covered up. */
+.riso-home .rp-hero {
+  grid-template-columns: minmax(0, 1.16fr) minmax(360px, .84fr);
+}
+.riso-home .rp-clearing { max-width: 53ch; }
+html[lang="es"] .riso-home .rp-clearing { max-width: 58ch; }
+.riso-home .rp-h1 { font-size: clamp(3rem, 6.2vw, 5.35rem); }
+.riso-home .carto--paint .carto__map--base {
+  inset: 0;
+  opacity: .72 !important;
+  clip-path: none;
+  background-size: cover !important;
+  background-position: 58% 48% !important;
+}
+.riso-home .carto__paperWash { opacity: .42; }
+.riso-home .carto__halftone { opacity: .16; }
+.riso-home .carto__grain { opacity: .12; }
+/* Portrait sits ON TOP of the collage as a solid mounted print — not blended
+   into it (multiply washed the photo out against the light paper). A warm paper
+   mount + thin rule + soft shadow gives it a real frame; the photo keeps its
+   natural color. */
+.riso-home .rp-hero__media .rp-headshot {
+  width: min(360px, 78%);
+  transform: translateY(3%) rotate(-.6deg);
+  mix-blend-mode: normal;
+  clip-path: none;
+  background: var(--paper);
+  padding: 9px;
+  border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.14), 0 34px 60px -28px rgba(0,0,0,.42);
+}
+.riso-home .rp-hero__media .rp-headshot img {
+  filter: none;
+  border-radius: 2px;
+}
+.dark-mode .riso-home .rp-hero__media .rp-headshot {
+  mix-blend-mode: normal;
+  opacity: 1;
+  background: var(--paper-2);
+  border-color: color-mix(in srgb, var(--paper) 22%, transparent);
+}
+.riso-home .rp-hero__media:hover .rp-headshot { transform: translateY(1%) rotate(-.6deg); }
+.rp-eyebrow { max-width: 100%; flex-wrap: wrap; }
+.rp-eyebrow::before { flex: 0 0 auto; }
+
+/* Source material behaves as translucent ink and memory, never as a second
+   interface. The component no longer renders plotted paths or coordinate
+   readouts; these crops are the last deliberately imperfect collage layer. */
+.carto:not(.carto--paint) .carto__paintPlate {
+  opacity: .78;
+  mask-image: linear-gradient(108deg, rgba(0,0,0,.56), #000 24%, #000 88%, rgba(0,0,0,.72));
+}
+.carto:not(.carto--paint) .carto__map--base { opacity: .08 !important; }
+.carto:not(.carto--paint) .carto__fragment--vertical,
+.carto:not(.carto--paint) .carto__fragment--window {
+  opacity: .1;
+  filter: grayscale(.84) sepia(.3) hue-rotate(38deg) saturate(.82) contrast(.94);
+  mix-blend-mode: multiply;
+}
+.carto:not(.carto--paint) .carto__ink { opacity: .13; }
+.carto:not(.carto--paint) .carto__halftone { opacity: .2; }
+.carto:not(.carto--paint) .carto__grain { opacity: .14; }
+
+/* About carries more copy than a project opener; give the statement enough
+   measure to read as a manifesto rather than a narrow display column. */
+.about-page .rp-hero {
+  grid-template-columns: minmax(0, 1.12fr) minmax(340px, .88fr);
+}
+.about-page .rp-clearing { max-width: 55ch; }
+
+/* Editorial plates use rules and spacing; only literal devices keep a device
+   radius or physical shadow. */
+.rp-note,
+.rp-numlist li,
+.rp-feature,
+.rp-fcard,
+.rp-code,
+.rp-motion,
+.rp-demo,
+.rp-demo__tabs,
+.rp-demoCard,
+.rp-decisionStory__stage,
+.fp-artifactLabel,
+.fp-dashboardFrame,
+.fp-cinemaCore--workflow > div,
+.fp-workflow > article,
+.fp-systemCards article,
+.fp-reflections article,
+.fp-workSplit article,
+.fp-sequence__stage,
+.fp-entryAnatomy section,
+.fp-proofLink,
+.about-page .about-pattern-card,
+.about-page .about-story-card,
+.about-page .about-feedback-card,
+.about-page.riso-page .about-cta-simple {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.fp-sequence__stage {
+  background: var(--paper-2);
+}
+.fp-artifactLabel {
+  border-left-width: 1px;
+  background: var(--paper);
+}
+.about-page .about-pattern-card,
+.about-page .about-story-card,
+.about-page .about-feedback-card {
+  border-color: var(--hair);
+  background: var(--paper);
+}
+.about-page .about-pattern-card { border-left: 3px solid var(--coral); }
+
+/* Fashion is a project artifact, not a separate microsite. Its campaign palette
+   remains project-specific while layout, typography, rules, and containers now
+   follow the shared publication system. */
+.fashion-system-page {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+}
+.fashion-system-page section { margin-top: 0; }
+.fashion-system-page .fashion-system-hero {
+  gap: 0;
+  grid-template-columns: 1.05fr .95fr;
+}
+.fashion-system-page .fashion-system-hero__copy { align-self: center; }
+.fashion-system-page .fashion-key-visual {
+  width: min(520px, 88%);
+  min-height: min(650px, 70vh);
+  border: 1px solid var(--hair);
+  border-radius: 0;
+  box-shadow: none;
+}
+.fashion-key-visual__image {
+  background:
+    radial-gradient(circle at 58% 20%, rgba(139, 30, 63, 0.28), transparent 28%),
+    linear-gradient(135deg, #33251f 0 39%, #e5d7c8 39% 64%, #17110e 64% 100%);
+}
+.fashion-system-meta {
+  gap: 0;
+  border: 1px solid var(--hair);
+}
+.fashion-system-meta article {
+  min-width: 0;
+  padding: 1.15rem;
+  border: 0;
+  border-right: 1px solid var(--hair);
+  border-radius: 0;
+  background: transparent;
+}
+.fashion-system-meta article:last-child { border-right: 0; }
+.fashion-system-page .fashion-system-section__header { max-width: 720px; }
+.fashion-direction-board,
+.fashion-route-card,
+.fashion-channel,
+.fashion-lookbook__page,
+.fashion-print-grid article,
+.fashion-type-card,
+.fashion-spec-table-wrap,
+.fashion-file-note {
+  border-radius: 0;
+  box-shadow: none;
+}
+.fashion-direction-board {
+  padding: 0;
+  gap: 0;
+  border-color: var(--hair);
+  background: transparent;
+}
+.fashion-direction-board__statement { border-radius: 0; }
+.fashion-direction-board__tiles { gap: 0; }
+.fashion-direction-board__tiles span {
+  border-radius: 0;
+  border-left: 1px solid rgba(255,255,255,.18);
+}
+.fashion-route-grid { gap: 0; border: 1px solid var(--hair); }
+.fashion-route-card {
+  border: 0;
+  border-right: 1px solid var(--hair);
+  background: var(--paper);
+}
+.fashion-route-card:last-child { border-right: 0; }
+.fashion-route-card__visual { border-radius: 0; }
+.fashion-channel-grid { gap: 0; border: 1px solid var(--hair); }
+.fashion-channel {
+  border: 0;
+  border-right: 1px solid var(--hair);
+  border-bottom: 1px solid var(--hair);
+}
+.fashion-channel--hero {
+  background:
+    linear-gradient(180deg, transparent 0 38%, rgba(23,17,14,.92) 100%),
+    linear-gradient(135deg, var(--fashion-bone) 0 38%, var(--fashion-stone) 38% 62%, var(--fashion-espresso) 62% 100%);
+}
+.fashion-system-section--rules { gap: clamp(2rem, 5vw, 4rem); }
+.fashion-file-note {
+  border: 1px solid var(--hair);
+  background: var(--paper);
+}
+
+@media (max-width: 768px) {
+  .navbar,
+  .navbar.is-floating,
+  .navbar:not(.is-floating) {
+    min-height: 64px;
+    padding: .6rem 1rem;
+    background: var(--shell-paper) !important;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .nav-menu {
+    align-items: stretch;
+    gap: 0;
+    padding: 5.5rem 1.25rem 2rem;
+    background: var(--shell-paper);
+    color: var(--shell-ink);
+  }
+  .nav-menu li { width: 100%; border-bottom: 1px solid var(--shell-hair); }
+  .nav-menu .nav-link,
+  .nav-menu .theme-btn {
+    width: 100%;
+    min-height: 58px;
+    justify-content: flex-start;
+    color: var(--shell-ink);
+    font-size: .78rem;
+    text-align: left;
+  }
+  .nav-link--resume {
+    border: 0;
+    background: transparent;
+  }
+  .nav-link--resume:hover { color: var(--shell-coral); background: transparent; }
+  .riso-home .rp-hero { grid-template-columns: 1fr; }
+  .about-page .rp-hero { grid-template-columns: 1fr; }
+  .about-page .rp-clearing { max-width: none; }
+  .riso-home .rp-clearing,
+  html[lang="es"] .riso-home .rp-clearing { max-width: none; }
+  .riso-home .rp-h1 { font-size: clamp(2.7rem, 13vw, 4rem); }
+  .fashion-system-page .fashion-system-hero { grid-template-columns: 1fr; }
+  .fashion-system-page .fashion-key-visual {
+    width: 100%;
+    min-height: 520px;
+  }
+  .fashion-system-meta { grid-template-columns: 1fr; }
+  .fashion-system-meta article,
+  .fashion-system-meta article:last-child {
+    border-right: 0;
+    border-bottom: 1px solid var(--hair);
+  }
+  .fashion-system-meta article:last-child { border-bottom: 0; }
+  .fashion-route-grid { grid-template-columns: 1fr; }
+  .fashion-route-card,
+  .fashion-route-card:last-child {
+    border-right: 0;
+    border-bottom: 1px solid var(--hair);
+  }
+  .fashion-route-card:last-child { border-bottom: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar,
+  .recruiter-pill,
+  .riso-home .rp-hero__media .rp-headshot {
+    transition: none !important;
+  }
+}

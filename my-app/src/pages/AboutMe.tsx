@@ -1,8 +1,11 @@
 import React, { useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import usePageTitle from "../hooks/usePageTitle";
 import { useLanguage } from "../app/LanguageContext";
 import { NewsIcon } from "../components/LineIcons";
+import CartoField from "../components/riso/CartoField";
+import "../styles/riso.css";
+import "../styles/riso-page.css";
 
 // ── Story chapters ───────────────────────────────────────────────────────
 const CHAPTERS = [
@@ -19,7 +22,7 @@ const CHAPTERS = [
   {
     id: "msk",
     label: "Where I Built My Practice",
-    heading: "Six years at MSK, optimizing internal operations and designing for 21,000+ clinicians.",
+    heading: "Six years at MSK, optimizing internal operations and designing for 21,000+ clinicians and staff.",
     image: "/assets/about/msk.jpg",
     paragraphs: [
       "I led the EMR workflow redesign behind a 20% organization-wide cost reduction, rebuilt certification workflows for a 70% efficiency gain, and redesigned onboarding using staff feedback. This was deep user research before I formally had the vocabulary for it.",
@@ -67,7 +70,7 @@ const CHAPTERS_ES = [
   {
     id: "msk",
     label: "Donde construí mi práctica",
-    heading: "Seis años en MSK, optimizando operaciones internas y diseñando para 21,000+ clínicos.",
+    heading: "Seis años en MSK, optimizando operaciones internas y diseñando para 21,000+ clínicos y personal.",
     image: "/assets/about/msk.jpg",
     paragraphs: [
       "Lideré el rediseño de un flujo EMR detrás de una reducción organizacional de 20% en costos, reconstruí flujos de certificación para una mejora de 70% y rediseñé onboarding usando feedback del personal.",
@@ -110,44 +113,52 @@ export default function About() {
   const feedback = isSpanish ? CLIENT_FEEDBACK_ES : CLIENT_FEEDBACK;
 
   return (
-    <main className="about-page" lang={isSpanish ? "es" : "en"}>
-      <div className="about-back-row">
-        <button
-          type="button"
-          className="about-back-btn"
-          onClick={() => navigate("/?scrollTo=projects")}
-          aria-label={isSpanish ? "Volver al portafolio principal" : "Back to main portfolio"}
-        >
-          ← {isSpanish ? "Volver a proyectos" : "Back to projects"}
-        </button>
-      </div>
+    <main className="about-page riso-page" lang={isSpanish ? "es" : "en"}>
+      <nav className="rp-breadcrumb" aria-label={isSpanish ? "Migas de pan" : "Breadcrumb"}>
+        <Link to="/?scrollTo=projects">{isSpanish ? "Trabajo" : "Work"}</Link> / <span>{isSpanish ? "Sobre mí" : "About"}</span>
+      </nav>
 
-      {/* ═ HERO ═════════════════════════════════════════════════════ */}
-      <section className="about-hero">
-        <div className="about-hero-content">
-          <p className="about-intro">
-            {isSpanish ? "Diseñadora de producto e investigadora. Pasé seis años creando software para 21,000 clínicos que no podían permitirse un error. Casi todo lo que diseño tiene que estar bien, no solo bonito — ese hábito viene de la salud, y no se ha ido. Oficio de producto de consumo, investigación y la disciplina de una veterana del Ejército." : "Product designer and researcher. I spent six years building software for 21,000 clinicians who couldn't afford a wrong guess. Most of what I design has to be right, not just pretty — that habit came from healthcare, and it hasn't left. Consumer craft, research, and an Army veteran's discipline."}
-          </p>
+      <nav className="rp-chapters" aria-label={isSpanish ? "Capítulos de la página Sobre mí" : "About page chapters"}>
+        <span aria-hidden="true">{isSpanish ? "Saltar a" : "Jump to"}</span>
+        <a href="#about-pattern">{isSpanish ? "Enfoque" : "Approach"}</a>
+        <a href="#about-story">{isSpanish ? "Historia" : "Story"}</a>
+        <a href="#about-proof">{isSpanish ? "Prueba" : "Proof"}</a>
+        <a href="#about-contact">{isSpanish ? "Contacto" : "Contact"}</a>
+      </nav>
 
-          <h1 className="about-title">
-            {isSpanish ? "Diseño productos de consumo donde los detalles deciden si la gente confía en ellos." : "I design consumer products where the details decide whether people trust them."}
-          </h1>
-
-          <p className="about-hero-subtext">
-            {isSpanish ? "13+ años en sistemas de alto riesgo — operaciones de atención oncológica, logística médica militar, una app de consumo hecha con IA. Ese rigor es lo que aporto al diseño de producto de consumo." : "13+ years in high-stakes systems — cancer-care operations, military medical logistics, an AI-built consumer app. The rigor that demanded is what I bring to consumer product."}
-          </p>
+      {/* ═ HERO — profile masthead (portrait-led, warm; distinct from Home) ═ */}
+      <header className="rp-hero about-hero-profile">
+        <CartoField
+          mapSrc="/riso/elevation-01.jpg"
+          edition="eucalyptus"
+          mapZoom={1.15}
+          mapPosition="55% 40%"
+          mapOpacity={0.42}
+        />
+        <div className="rp-hero__media">
+          <figure className="about-hero__portrait">
+            <div className="rp-headshot">
+              <img src="/assets/about/headshot.jpg" alt="Hillary Esposito" />
+            </div>
+            <figcaption className="about-hero__caption">
+              {isSpanish ? "Hillary Esposito · Diseñadora de producto · Nueva York" : "Hillary Esposito · Product Designer · New York"}
+            </figcaption>
+          </figure>
         </div>
-
-        <div className="about-hero-photo">
-          <img
-            src="/assets/about/headshot.jpg"
-            alt="Hillary Esposito"
-            className="about-headshot"
-          />
+        <div className="rp-hero__content">
+          <div className="rp-clearing">
+            <span className="rp-eyebrow">{isSpanish ? "Sobre mí" : "About"}</span>
+            <h1 className="rp-h1">
+              {isSpanish ? "Diseño productos donde los detalles deciden si la gente confía en ellos." : "I design products where the details decide whether people trust them."}
+            </h1>
+            <p className="rp-sub">
+              {isSpanish ? "Más de 13 años en sistemas de alto riesgo — operaciones de atención oncológica, logística médica militar y una app de consumo creada con IA. Cambia el contexto; mi pregunta no: ¿qué necesita una persona para avanzar con confianza?" : "13+ years in high-stakes systems — cancer-care operations, military medical logistics, and an AI-built consumer app. The context changes; my question does not: what does a person need to move forward with confidence?"}
+            </p>
+          </div>
         </div>
-      </section>
+      </header>
 
-      <section className="about-pattern-section" aria-label={isSpanish ? "Mi patrón de trabajo" : "My working pattern"}>
+      <section id="about-pattern" className="about-pattern-section" aria-label={isSpanish ? "Mi patrón de trabajo" : "My working pattern"}>
         <div className="about-pattern-card feature">
           <p className="about-agenda__eyebrow">{isSpanish ? "Mi patrón" : "My pattern"}</p>
           <h2 className="about-growth-title">
@@ -163,14 +174,14 @@ export default function About() {
       </section>
 
       {/* ═ STORY ════════════════════════════════════════════════════ */}
-      <section className="about-story-section" aria-label={isSpanish ? "Mi historia" : "My story"}>
+      <section id="about-story" className="about-story-section" aria-label={isSpanish ? "Mi historia" : "My story"}>
         <div className="about-story-header">
           <p className="about-agenda__eyebrow">{isSpanish ? "Mi historia" : "My story"}</p>
           <h2 className="about-growth-title">{isSpanish ? "Cómo llegué aquí." : "How I got here."}</h2>
         </div>
 
         <div className="about-story-grid">
-          {chapters.map((chapter) => (
+          {chapters.map((chapter, index) => (
             <article key={chapter.id} className="about-story-card feature">
               <div className="about-story-card__layout">
                 {chapter.image && (
@@ -182,6 +193,7 @@ export default function About() {
                 <div className="about-story-card__content">
                   <div className="about-story-card__top">
                     <div>
+                      <span className="about-story-card__index" aria-hidden="true">{String(index + 1).padStart(2, "0")} / {String(chapters.length).padStart(2, "0")}</span>
                       <p className="about-story-card__label">{chapter.label}</p>
                       <h3 className="about-story-card__heading">{chapter.heading}</h3>
                     </div>
@@ -207,13 +219,13 @@ export default function About() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="about-story-card__article-link"
-                  aria-label={`${isSpanish ? "Leer artículo" : "Read article"}: ${chapter.articleLink.title}`}
+                  aria-label={`${isSpanish ? "Leer artículo" : "Read article"}: ${chapter.articleLink.title} (${isSpanish ? "se abre en una pestaña nueva" : "opens in a new tab"})`}
                 >
                   <span className="about-story-card__article-icon" aria-hidden="true">
                     <NewsIcon />
                   </span>
                   <span className="about-story-card__article-text">
-                    <span className="about-story-card__article-title">
+                    <span className="about-story-card__article-title" lang={isSpanish ? "en" : undefined}>
                       {chapter.articleLink.title}
                     </span>
                     <span className="about-story-card__article-source">
@@ -241,7 +253,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="about-feedback-section" aria-label={isSpanish ? "Comentarios de clientes" : "Client feedback"}>
+      <section id="about-proof" className="about-feedback-section" aria-label={isSpanish ? "Comentarios de clientes" : "Client feedback"}>
         <div className="about-story-header">
           <p className="about-agenda__eyebrow">{isSpanish ? "Feedback de clientes" : "Client feedback"}</p>
           <h2 className="about-growth-title">{isSpanish ? "Cómo los clientes describen trabajar conmigo." : "How clients describe working with me."}</h2>
@@ -265,7 +277,7 @@ export default function About() {
       </section>
 
       {/* ═ CTA ══════════════════════════════════════════════════════ */}
-      <section className="about-cta">
+      <section id="about-contact" className="about-cta">
         <div className="about-cta-simple">
           <h2 className="about-cta-title" style={{ marginBottom: "1rem" }}>
             {isSpanish ? "¿Le interesa trabajar conmigo?" : "Interested in working together?"}

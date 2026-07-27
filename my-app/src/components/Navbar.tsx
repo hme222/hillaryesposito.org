@@ -13,7 +13,6 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   const t = useT();
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("home");
-  const [floating, setFloating] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const menuRef = useRef<HTMLUListElement>(null);
@@ -42,7 +41,8 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
     if (!el) return;
     const navHeight = 80;
     const y = el.getBoundingClientRect().top + window.scrollY - navHeight;
-    window.scrollTo({ top: y, behavior: "smooth" });
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: y, behavior: reduceMotion ? "auto" : "smooth" });
   }
 
   // Track which section is in view on the home page. Sections can be taller than
@@ -86,6 +86,25 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
     };
   }, [menuOpen]);
 
+  // The full-screen mobile menu behaves like a modal surface. Keep page
+  // content and floating utilities out of the accessibility tree while it is
+  // open, then restore them exactly when it closes.
+  useEffect(() => {
+    const targets = [
+      document.getElementById("main-content"),
+      document.querySelector<HTMLElement>(".site-footer"),
+      document.querySelector<HTMLElement>(".recruiter-pill"),
+      document.querySelector<HTMLElement>(".back-to-top"),
+    ].filter((target): target is HTMLElement => Boolean(target));
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    targets.forEach((target) => {
+      target.inert = isMobile && menuOpen;
+    });
+    return () => targets.forEach((target) => {
+      target.inert = false;
+    });
+  }, [menuOpen]);
+
   // The mobile menu is an off-canvas drawer (translated off-screen when closed
   // but still in the DOM). Mark it `inert` while closed on mobile so its links
   // leave the tab order and accessibility tree - otherwise keyboard users tab
@@ -106,14 +125,6 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   useEffect(() => {
     close();
   }, [location.pathname]);
-
-  // Condense into a centred floating island once scrolled past the top.
-  useEffect(() => {
-    const onScroll = () => setFloating(window.scrollY > 90);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   // Mobile menu: Escape to close (restoring focus to the toggle), move focus
   // into the menu on open, and trap Tab within it while it's open.
@@ -159,7 +170,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   }
 
   return (
-    <nav className={`navbar${floating ? " is-floating" : ""}`} aria-label={t("nav.ariaPrimary")}>
+    <nav className="navbar" aria-label={t("nav.ariaPrimary")}>
       <button
         className="logo"
         type="button"
@@ -167,18 +178,15 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
         onClick={() => {
           close();
           navigate("/");
-          window.scrollTo({ top: 0, behavior: "smooth" });
+          const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
         }}
       >
         <svg className="logo-mark" width="23" height="23" viewBox="0 0 32 32" fill="none" aria-hidden="true">
           <path d="M5 13.5 Q15.5 30 27.5 13 Q24 17 19 18.6 Q12 20.4 5 13.5 Z" fill="currentColor" />
           <circle className="lm-accent" cx="15.5" cy="10.2" r="3.1" />
         </svg>
-        <span className="logo-divider" aria-hidden="true" />
-        <span className="logo-textblock">
-          <span className="logo-text">Hillary Esposito</span>
-          <span className="logo-tagline">{t("nav.tagline")}</span>
-        </span>
+        <span className="logo-text">Hillary Esposito</span>
       </button>
 
       <button

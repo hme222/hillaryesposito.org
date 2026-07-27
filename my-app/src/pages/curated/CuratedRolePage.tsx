@@ -1,253 +1,277 @@
-import React, { useMemo, useRef } from "react";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import React, { useEffect, useMemo } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import RisoDefs from "../../components/riso/RisoDefs";
+import CartoField from "../../components/riso/CartoField";
 import usePageTitle from "../../hooks/usePageTitle";
-import useReveal from "../../hooks/useReveal";
+import { useLanguage } from "../../app/LanguageContext";
 import { curatedPages } from "../../data/curatedPages";
+import NotFoundPage from "../NotFoundPage";
+import "../../styles/riso.css";
+import "../../styles/riso-page.css";
+
+/**
+ * Curated role page — the company-mirror application pages, in the Risograph
+ * Cartography system. One renderer serves every curated page (Indyx, Meta, …);
+ * content comes from src/data/curatedPages.
+ */
+
+// When a "What to review" item names a real case study, link it there at the
+// moment it's named. Items that aren't standalone case studies (e.g. "The
+// 'AI vs mine' calls") match nothing and render as plain text.
+const CASE_STUDY_LINKS: Array<{ match: RegExp; path: string }> = [
+  { match: /\bmobbin\b/i, path: "/case-study/mobbin" },
+  { match: /\bmsk\b/i, path: "/case-study/msk" },
+  { match: /\bgrove\b/i, path: "/case-study/grove" },
+];
+function caseStudyPathFor(title: string): string | undefined {
+  return CASE_STUDY_LINKS.find((link) => link.match.test(title))?.path;
+}
 
 export default function CuratedRolePage() {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
-  const rootRef = useRef<HTMLElement>(null);
-  useReveal(rootRef);
-
+  const { lang } = useLanguage();
   const page = useMemo(() => (slug ? curatedPages[slug] : undefined), [slug]);
-  usePageTitle(page ? `${page.company}: ${page.role}` : "Curated portfolio page");
+  usePageTitle(page ? `${page.company}: ${page.role}` : "Page not found");
 
-  if (!page) {
-    return <Navigate to="/" replace />;
-  }
+  useEffect(() => {
+    if (typeof IntersectionObserver === "undefined") return;
+    const els = Array.from(document.querySelectorAll<HTMLElement>(".riso-page .rp-reveal"));
+    const io = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-in");
+            io.unobserve(e.target);
+          }
+        }),
+      { threshold: 0.1, rootMargin: "0px 0px -8% 0px" }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, [slug]);
+
+  if (!page) return <NotFoundPage />;
 
   return (
     <main
-      className={`case-study gh-layout curated-page curated-page--${page.variant}`}
+      className="riso-page"
       aria-label={`${page.company} tailored portfolio page`}
       lang="en"
-      ref={rootRef}
+      style={
+        page.accent
+          ? ({
+              "--rp-accent-l": page.accent,
+              ...(page.accentDark ? { "--rp-accent-d": page.accentDark } : {}),
+            } as React.CSSProperties)
+          : undefined
+      }
     >
-      <header className="gh-hero curated-hero">
-        <div className="gh-hero__copy">
-          <p className="meta">{page.eyebrow}</p>
-          <h1>{page.company}</h1>
-          <p className="curated-hero__role">{page.role}</p>
-          <p className="gh-hero__intro">{page.headline}</p>
-          <p className="curated-hero__subhead">{page.subhead}</p>
-        </div>
+      <RisoDefs />
 
-        <div className="gh-hero__visual curated-hero__visual" aria-hidden="true">
-          <div className="curated-hero-badge">
-            <span className="curated-hero-badge__eyebrow">{page.badgeLabel}</span>
-            <strong>{page.role}</strong>
-            <span className="curated-hero-badge__rule" />
-            <span>{page.company}</span>
+      <nav className="rp-breadcrumb" aria-label="Breadcrumb">
+        <Link to="/">Work</Link> / <span>{page.company}</span>
+      </nav>
+      {lang === "es" && (
+        <p className="rp-language-note" lang="es">
+          Esta página adaptada está disponible en inglés. Los estudios de caso enlazados sí incluyen un resumen en español.
+        </p>
+      )}
+
+      <nav className="rp-chapters" aria-label={`${page.company} tailored page chapters`}>
+        <span aria-hidden="true">Jump to</span>
+        <a href="#curated-fit">Fit</a>
+        <a href="#curated-proof">Proof</a>
+        <a href="#curated-work">Work</a>
+        <a href="#curated-experience">Experience</a>
+      </nav>
+
+      {/* HERO */}
+      <header className="rp-hero">
+        <CartoField
+          mapSrc={page.mapSrc ?? "/riso/elevation-01.jpg"}
+          edition={page.edition ?? "pine"}
+          mapZoom={1.15}
+          mapPosition="55% 38%"
+          mapOpacity={0.8}
+        />
+        <div className="rp-hero__content">
+          <div className="rp-clearing">
+            <span className="rp-eyebrow">{page.eyebrow}</span>
+            <h1 className="rp-h1">{page.company}</h1>
+            <p className="rp-work__sub" style={{ marginTop: ".7rem" }}>{page.role}</p>
+            <p className="rp-sub">{page.headline}</p>
+            <div className="rp-hero__ctas">
+              <a className="rp-cta" href="#curated-fit">See the fit →</a>
+              <Link className="rp-cta rp-cta--ghost" to={page.supportLinks[0]?.path ?? "/case-study/grove"}>View a case study</Link>
+            </div>
+          </div>
+        </div>
+        <div className="rp-hero__media">
+          <div className="rp-clearing" style={{ maxWidth: "34ch" }}>
+            <p className="rp-eyebrow" style={{ marginBottom: ".8rem" }}>{page.badgeLabel}</p>
+            <p style={{ fontSize: "1.05rem", fontWeight: 700, letterSpacing: "-.01em", color: "var(--ink-2)" }}>
+              {page.subhead}
+            </p>
           </div>
         </div>
       </header>
 
-      <div className="gh-meta-strip">
-        {page.meta.map((item, index) => (
-          <React.Fragment key={item.label}>
-            <div className="gh-meta-strip__item">
-              <span className="gh-meta-strip__label">{item.label}</span>
-              <span className="gh-meta-strip__value">{item.value}</span>
-            </div>
-            {index < page.meta.length - 1 && <div className="gh-meta-strip__divider" aria-hidden="true" />}
-          </React.Fragment>
-        ))}
-      </div>
-
-      <section className="cs-overview">
-        <p className="gh-section-label">Overview</p>
-        <h2 className="cs-section-title">Why this work fits my background</h2>
-        {page.intro.map((paragraph) => (
-          <p key={paragraph} className="cs-overview-text">
-            {paragraph}
-          </p>
-        ))}
+      {/* META GRID */}
+      <section className="rp-section" style={{ paddingBottom: 0 }}>
+        <div className="rp-wrap">
+          <div className="rp-metagrid rp-reveal">
+            {page.meta.map((item) => (
+              <div key={item.label}>
+                <p className="rp-metagrid__k">{item.label}</p>
+                <p className="rp-metagrid__v">{item.value}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
-      <section>
-        <p className="gh-section-label">Selected proof</p>
-        <h2>Relevant results</h2>
-        <div className="curated-proof-grid">
-          {page.proofPoints.map((point) => (
-            <article key={point.stat + point.detail} className="curated-proof-card">
-              <p className="curated-proof-card__stat">{point.stat}</p>
-              <p className="curated-proof-card__detail">{point.detail}</p>
-            </article>
+      {/* FIT / OVERVIEW */}
+      <section id="curated-fit" className="rp-section">
+        <div className="rp-wrap rp-reveal">
+          <p className="rp-kicker">Overview</p>
+          <h2 className="rp-title">Why this work fits my background</h2>
+          {page.intro.map((p) => (
+            <p className="rp-lede" key={p}>{p}</p>
           ))}
         </div>
       </section>
 
-      <section>
-        <p className="gh-section-label">Featured work</p>
-        <h2>What to review</h2>
-        <ol className="curated-sequence">
-          {page.featuredWork.map((item) => (
-            <li key={item.title} className="curated-sequence__item">
-              <h3>{item.title}</h3>
-              <p>{item.reason}</p>
-            </li>
-          ))}
-        </ol>
+      {/* PROOF */}
+      <section id="curated-proof" className="rp-section rp-section--alt">
+        <div className="rp-wrap">
+          <p className="rp-kicker">Selected proof</p>
+          <h2 className="rp-title">Relevant results</h2>
+          <div className="rp-outcomes rp-reveal">
+            {page.proofPoints.map((pt) => (
+              <div className="rp-stat" key={pt.stat + pt.detail}>
+                <p className="rp-stat__n">{pt.stat}</p>
+                <p className="rp-stat__l">{pt.detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
+      {/* FEATURED WORK */}
+      <section id="curated-work" className="rp-section">
+        <div className="rp-wrap">
+          <p className="rp-kicker">Featured work</p>
+          <h2 className="rp-title">What to review</h2>
+          <ol className="rp-numlist rp-reveal">
+            {page.featuredWork.map((item) => {
+              const path = caseStudyPathFor(item.title);
+              return (
+                <li key={item.title}>
+                  <h3>{path ? <Link className="rp-numlist__link" to={path}>{item.title}</Link> : item.title}</h3>
+                  <p>{item.reason}</p>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      </section>
+
+      {/* BESPOKE — Meta "obvious vs considered" */}
       {page.slug === "meta-instagram-product-designer" && (
-        <section className="meta-craft-section" aria-labelledby="meta-craft-title">
-          <p className="gh-section-label">A quick proof</p>
-          <h2 id="meta-craft-title">Consumer craft is mostly knowing what to leave out</h2>
-          <p className="cs-section-intro">
-            Same screen, two ways to build it. The job isn't adding more — it's earning attention
-            without spending someone's calm.
-          </p>
-          <div className="meta-craft" aria-hidden="true">
-            <figure className="meta-craft__col">
-              <figcaption className="meta-craft__tag meta-craft__tag--loud">The obvious version</figcaption>
-              <div className="meta-craft__screen meta-craft__screen--loud">
-                <div className="meta-craft__bar">
-                  <span className="meta-craft__logo">grove</span>
-                  <span className="meta-craft__badge">3</span>
-                </div>
-                <div className="meta-craft__promo">🔥 LIMITED — 24:59:12 left</div>
-                <div className="meta-craft__card meta-craft__card--loud">
-                  <span className="meta-craft__ndot" />
-                  <p>Your plant misses you!! Tap now 👉</p>
-                  <span className="meta-craft__cta meta-craft__cta--loud">OPEN</span>
-                </div>
-                <div className="meta-craft__card meta-craft__card--loud">
-                  <p>🌱 NEW badges unlocked · streak ×7 🔥</p>
-                  <span className="meta-craft__cta meta-craft__cta--loud">CLAIM</span>
-                </div>
-                <div className="meta-craft__promo meta-craft__promo--alt">▶ Autoplaying · Upgrade to Pro</div>
+        <section className="rp-section rp-section--alt" aria-labelledby="meta-craft-title">
+          <div className="rp-wrap">
+            <p className="rp-kicker">A quick proof</p>
+            <h2 className="rp-title" id="meta-craft-title">Consumer craft is mostly knowing what to leave out</h2>
+            <p className="rp-lede">Same screen, two ways to build it. The job isn't adding more — it's earning attention without spending someone's calm.</p>
+            <div className="rp-pushback rp-reveal">
+              <div className="rp-notif rp-notif--ai">
+                <p className="rp-notif__tag">The obvious version</p>
+                <div className="rp-notif__card"><span className="rp-notif__app">grove · limited 24:59</span><p className="rp-notif__msg">Your plant misses you!! Tap now 👉</p></div>
+                <div className="rp-notif__card"><span className="rp-notif__app">grove · streak ×7 🔥</span><p className="rp-notif__msg">NEW badges unlocked · claim them</p></div>
+                <div className="rp-notif__card"><span className="rp-notif__app">grove · pro</span><p className="rp-notif__msg">▶ Autoplaying · Upgrade to Pro</p></div>
               </div>
-            </figure>
-            <span className="meta-craft__vs" aria-hidden="true">vs</span>
-            <figure className="meta-craft__col">
-              <figcaption className="meta-craft__tag meta-craft__tag--calm">The considered version</figcaption>
-              <div className="meta-craft__screen meta-craft__screen--calm">
-                <div className="meta-craft__bar">
-                  <span className="meta-craft__logo meta-craft__logo--calm">Grove</span>
-                </div>
-                <div className="meta-craft__hello">Good morning</div>
-                <div className="meta-craft__card meta-craft__card--calm">
-                  <p>Your Fiddle Leaf could use a little water today.</p>
-                  <span className="meta-craft__cta meta-craft__cta--calm">Mark done</span>
-                </div>
-                <p className="meta-craft__quiet">That's the only thing that needs you.</p>
+              <div className="rp-pushback__vs" aria-hidden="true">vs</div>
+              <div className="rp-notif rp-notif--me">
+                <p className="rp-notif__tag">The considered version</p>
+                <div className="rp-notif__card"><span className="rp-notif__app">Grove · 8:00 AM</span><p className="rp-notif__msg">Good morning. Your Fiddle Leaf could use a little water today.</p></div>
               </div>
-            </figure>
-          </div>
-        </section>
-      )}
-
-      {page.variant === "fashion" && (
-        <section className="fashion-artifact-section" aria-labelledby="fashion-artifact-title">
-          <p className="gh-section-label">Visual direction exercise</p>
-          <h2 id="fashion-artifact-title">A role-matched fashion campaign system</h2>
-          <p className="cs-section-intro">
-            This speculative system shows the kind of graphic-design proof I would build for this role:
-            campaign hierarchy, ecommerce modules, social and email crops, lookbook logic, and a reusable
-            visual language that can support collection launches and brand moments.
-          </p>
-
-          <div className="fashion-artifact-grid" aria-label="Speculative fashion graphic design artifacts">
-            <article className="fashion-artifact fashion-artifact--campaign">
-              <p className="fashion-artifact__label">Campaign key visual</p>
-              <h3>Drop 01: Sculpted Utility</h3>
-              <p>Hero lockup, product mood, and CTA hierarchy for a collection launch.</p>
-            </article>
-            <article className="fashion-artifact fashion-artifact--editorial">
-              <p className="fashion-artifact__label">Lookbook layout</p>
-              <h3>Lookbook spread</h3>
-              <p>Image-led grid, restrained type scale, and clear product storytelling.</p>
-            </article>
-            <article className="fashion-artifact fashion-artifact--social">
-              <p className="fashion-artifact__label">Ecommerce + social</p>
-              <h3>Social + email set</h3>
-              <p>Reusable crops and modules for launch, email, product detail, and last-call moments.</p>
-            </article>
-          </div>
-
-          <Link to="/curated/fashion-campaign-system" className="fashion-artifact-link">
-            Open the full campaign system →
-          </Link>
-        </section>
-      )}
-
-      <section className="curated-two-column">
-        <div>
-          <p className="gh-section-label">Strengths</p>
-          <h2>What this work shows</h2>
-          <ul className="curated-list">
-            {page.strengths.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </div>
-
-        <aside className="highlight curated-highlight">
-          <p className="curated-highlight__label">A note for hiring teams</p>
-          <p>{page.hiringManagerNote}</p>
-        </aside>
-      </section>
-
-      <section>
-        <p className="gh-section-label">Relevant experience</p>
-        <h2>Experience behind the work</h2>
-        {page.relevantExperience.map((paragraph) => (
-          <p key={paragraph} className="cs-section-intro">
-            {paragraph}
-          </p>
-        ))}
-      </section>
-
-      {page.keywords.length > 0 && (
-        <section>
-          <div>
-            <p className="gh-section-label">Relevant themes</p>
-            <h2>Topics reflected in this work</h2>
-            <div className="curated-chip-cloud">
-              {page.keywords.map((keyword) => (
-                <span key={keyword} className="curated-chip">
-                  {keyword}
-                </span>
-              ))}
             </div>
           </div>
         </section>
       )}
 
-      <section className="curated-links-wrap">
-        <div className="curated-links-group">
-          <p className="gh-section-label">Supporting work</p>
-          <h2>Case studies to pair with this page</h2>
-          <div className="curated-link-grid">
-            {page.supportLinks.map((item) => (
-              <Link key={item.path} to={item.path} className="curated-link-card">
-                <span className="curated-link-card__icon">{item.icon}</span>
-                <span className="curated-link-card__body">
-                  <strong>{item.label}</strong>
-                  <span>{item.description}</span>
-                </span>
-              </Link>
-            ))}
+      {/* BESPOKE — Fashion campaign artifacts */}
+      {page.variant === "fashion" && (
+        <section className="rp-section rp-section--alt fashion-artifact-section" aria-labelledby="fashion-artifact-title">
+          <div className="rp-wrap">
+            <p className="rp-kicker">Visual direction exercise</p>
+            <h2 className="rp-title" id="fashion-artifact-title">A role-matched fashion campaign system</h2>
+            <p className="rp-lede">A speculative system: campaign hierarchy, ecommerce modules, social and email crops, lookbook logic, and a reusable visual language for collection launches and brand moments.</p>
+            <div className="fashion-artifact-grid" aria-label="Speculative fashion graphic design artifacts">
+              <article className="fashion-artifact fashion-artifact--campaign">
+                <p className="fashion-artifact__label">Campaign key visual</p>
+                <h3>Drop 01: Sculpted Utility</h3>
+                <p>Hero lockup, product mood, and CTA hierarchy for a collection launch.</p>
+              </article>
+              <article className="fashion-artifact fashion-artifact--editorial">
+                <p className="fashion-artifact__label">Lookbook layout</p>
+                <h3>Lookbook spread</h3>
+                <p>Image-led grid, restrained type scale, and clear product storytelling.</p>
+              </article>
+              <article className="fashion-artifact fashion-artifact--social">
+                <p className="fashion-artifact__label">Ecommerce + social</p>
+                <h3>Social + email set</h3>
+                <p>Reusable crops and modules for launch, email, product detail, and last-call moments.</p>
+              </article>
+            </div>
+            <Link to="/curated/fashion-campaign-system" className="rp-cta" style={{ marginTop: "1.4rem" }}>Open the full campaign system →</Link>
+          </div>
+        </section>
+      )}
+
+      {/* STRENGTHS + HIRING NOTE */}
+      <section className="rp-section">
+        <div className="rp-wrap">
+          <div className="rp-split rp-reveal">
+            <div className="rp-split__text">
+              <p className="rp-kicker">Strengths</p>
+              <h2 className="rp-title">What this work shows</h2>
+              <ul className="rp-list">
+                {page.strengths.slice(0, 4).map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="rp-note">
+              <p className="rp-note__k">A note for hiring teams</p>
+              <p>{page.hiringManagerNote}</p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="curated-footer">
-        <div className="curated-footer__copy">
-          <p className="gh-section-label">Closing note</p>
-          <h2>Where I am strongest</h2>
-          <p className="cs-section-intro">{page.closing}</p>
+      {/* EXPERIENCE */}
+      <section id="curated-experience" className="rp-section rp-section--alt">
+        <div className="rp-wrap rp-reveal">
+          <p className="rp-kicker">Relevant experience</p>
+          <h2 className="rp-title">Experience behind the work</h2>
+          {page.relevantExperience.slice(0, 2).map((p) => (
+            <p className="rp-lede" key={p}>{p}</p>
+          ))}
         </div>
+      </section>
 
-        <div className="curated-footer__actions">
-          <button type="button" className="hero-btn" onClick={() => navigate("/?scrollTo=projects")}>
-            ← Back to projects
-          </button>
-          <Link to="/about" className="btn-outline">
-            About me
-          </Link>
+      {/* CLOSING */}
+      <section className="rp-section">
+        <div className="rp-wrap rp-close">
+          <p className="rp-kicker">Closing note</p>
+          <h2>Where I'm strongest</h2>
+          <p>{page.closing}</p>
+          <div className="rp-hero__ctas">
+            <button type="button" className="rp-cta" onClick={() => navigate("/?scrollTo=projects")}>← Back to work</button>
+            <Link className="rp-cta rp-cta--ghost" to="/about">About me</Link>
+          </div>
         </div>
       </section>
     </main>

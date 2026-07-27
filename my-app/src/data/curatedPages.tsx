@@ -21,6 +21,15 @@ export type CuratedPage = {
   company: string;
   role: string;
   variant: "care" | "finance" | "fashion";
+  /** Company-mirror accent — re-inks the coral pop to evoke the company.
+   *  `accent` is the light-theme value (must reach 4.5:1 as text on light paper
+   *  and behind white); `accentDark` is the dark-theme value (4.5:1 as text on
+   *  dark paper and behind dark ink). Falls back to the default coral if omitted. */
+  accent?: string;
+  accentDark?: string;
+  /** Real riso graphic inked as the hero canvas + the edition (duotone ink). */
+  mapSrc?: string;
+  edition?: "pine" | "struct" | "meta" | "mdv" | "olive" | "eucalyptus";
   badgeLabel: string;
   eyebrow: string;
   headline: string;
@@ -44,6 +53,10 @@ export const curatedPages: Record<string, CuratedPage> = {
     company: "Indyx",
     role: "UX / Product Designer",
     variant: "care",
+    accent: "#8f4a2c",
+    accentDark: "#e0a074",
+    mapSrc: "/riso/elevation-03.jpg",
+    edition: "pine",
     badgeLabel: "Consumer product design view",
     eyebrow: "Consumer product · human-first · sustainable by design",
     headline: "Design for the closet you already own — human judgment over the algorithm",
@@ -101,7 +114,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       "user research",
     ],
     hiringManagerNote:
-      "I'm not coming from a decade inside fashion. I'm coming with a shipped consumer app that does what Indyx does in spirit — help people love what they already own — plus the research habit and the conviction that humans, not algorithms, make the calls that matter. That's the fit.",
+      "I'm not coming from a decade inside fashion. I'm coming with a functional consumer-app prototype that does what Indyx does in spirit — help people love what they already own — plus the research habit and the conviction that humans, not algorithms, make the calls that matter. That's the fit.",
     closing:
       "For Indyx's UX/Product Designer role, I'd bring consumer interaction craft, research that keeps taste honest, and a genuine belief in human judgment over the algorithm — designing a product that makes getting dressed joyful, intentional, and yours.",
     supportLinks: [
@@ -115,6 +128,10 @@ export const curatedPages: Record<string, CuratedPage> = {
     company: "Meta · Instagram",
     role: "Product Designer",
     variant: "care",
+    accent: "#1257c4",
+    accentDark: "#7fb0ff",
+    mapSrc: "/riso/elevation-01.jpg",
+    edition: "meta",
     badgeLabel: "Consumer product craft view",
     eyebrow: "Interaction craft · consumer product judgment · research-led",
     headline: "Designing consumer products where research keeps taste honest",
@@ -123,12 +140,12 @@ export const curatedPages: Record<string, CuratedPage> = {
     meta: [
       { label: "Focus", value: "Consumer interaction craft" },
       { label: "Strength", value: "Taste + research + product judgment" },
-      { label: "Evidence", value: "Shipped AI consumer app · 200+ app patterns studied" },
+      { label: "Evidence", value: "Functional AI consumer-app prototype · 200+ app patterns studied" },
       { label: "Best fit", value: "Consumer product design where craft is the product" },
     ],
     intro: [
       "Consumer products win or lose on details most people never consciously notice: the timing of a reveal, a calm default, the one screen that earns trust. That's the work I care about most.",
-      "I'm not coming from a decade inside big consumer social. I'm coming with a shipped AI consumer app, a research habit that kills my own bad ideas, and years spent studying how the best apps actually behave, screen by screen.",
+      "I'm not coming from a decade inside big consumer social. I'm coming with a functional AI consumer-app prototype, a research habit that kills my own bad ideas, and years spent studying how the best apps actually behave, screen by screen.",
     ],
     proofPoints: [
       { stat: "1", detail: "Consumer AI app designed and built end to end — research, interaction design, and a working prototype (React + FastAPI + MongoDB)" },
@@ -137,7 +154,7 @@ export const curatedPages: Record<string, CuratedPage> = {
     ],
     featuredWork: [
       {
-        title: "Grove — AI consumer app",
+        title: "Grove — AI consumer-app prototype",
         reason: "Leads with interaction craft, calm defaults, AI trust states, and product judgment — including where I overruled the AI to keep the product calm and honest.",
       },
       {
@@ -160,7 +177,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       "Knows the best consumer patterns cold, from 200+ screens studied firsthand",
     ],
     relevantExperience: [
-      "Grove is my clearest consumer-craft artifact: I designed the interaction model, the AI trust states, and the calm reminder system, then built a working full-stack prototype — and overruled the AI wherever a wrong call would cost someone's trust.",
+      "Grove is my clearest consumer-craft artifact: I designed the interaction model, the AI trust states, and the calm reminder system, then built a functional prototype — and overruled the AI wherever a wrong call would cost someone's trust.",
       "My Mobbin work is 200+ screens of the best consumer apps, documented for craft and patterns. It's why I can walk into a product and quickly see what's working, what's borrowed, and what needs fixing.",
     ],
     keywords: [],
@@ -172,7 +189,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       {
         label: "Grove case study",
         path: "/case-study/grove",
-        description: "Consumer AI app: interaction craft, trust states, and a playable demo.",
+        description: "Consumer AI prototype: interaction craft, trust states, and a hands-on demo.",
         icon: <SproutIcon />,
       },
       {
@@ -695,6 +712,10 @@ export const curatedPages: Record<string, CuratedPage> = {
   "fashion-graphic-designer": {
     slug: "fashion-graphic-designer",
     company: "Manière De Voir",
+    accent: "#7A1F38",
+    accentDark: "#db7f96",
+    mapSrc: "/riso/elevation-01.jpg",
+    edition: "mdv",
     role: "Graphic Designer",
     variant: "fashion",
     badgeLabel: "Fashion graphic design view",

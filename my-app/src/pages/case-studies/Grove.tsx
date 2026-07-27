@@ -190,7 +190,7 @@ export default function GroveCaseStudy() {
         <p className="gh-section-label">Inside the app</p>
         <h2 id="grove-app-tour-title" className="cs-section-title">A look at Grove</h2>
         <p style={{ maxWidth: 640, marginBottom: "2rem", color: "var(--muted)", lineHeight: 1.65 }}>
-          The working full-stack app (React, FastAPI, MongoDB), playing through itself. Tap any
+          The functional prototype (React, FastAPI, MongoDB), playing through itself. Tap any
           section to jump, or pause whenever.
         </p>
         <GroveAppDemo />
@@ -355,7 +355,7 @@ export default function GroveCaseStudy() {
             </figure>
             <span className="pushback-demo__vs" aria-hidden="true">vs</span>
             <figure className="pushback-demo__col">
-              <figcaption className="pushback-demo__tag pushback-demo__tag--me">What I shipped</figcaption>
+              <figcaption className="pushback-demo__tag pushback-demo__tag--me">Prototype decision</figcaption>
               <div className="pushback-demo__screen pushback-demo__screen--me">
                 <span className="pushback-demo__status">9:41</span>
                 <div className="pushback-demo__digest">
