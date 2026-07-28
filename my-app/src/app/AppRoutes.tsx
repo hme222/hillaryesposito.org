@@ -59,22 +59,44 @@ class LazyRouteBoundary extends Component<
 function ScrollToTop() {
   const { pathname, search } = useLocation();
   const isFirstRender = useRef(true);
+  const lastPath = useRef(pathname);
   useEffect(() => {
+    const params = new URLSearchParams(search);
+
+    // GitHub Pages deep-link restore: 404.html bounces an unknown path to "/"
+    // carrying ?p=<path>. This has to run first and bail out — without it the
+    // curated pages are unreachable by direct link, which is the only way they
+    // are ever opened.
+    const restoredPath = params.get("p");
+    if (pathname === "/" && restoredPath?.startsWith("/")) {
+      const nextSearch = new URLSearchParams(search);
+      nextSearch.delete("p");
+      const query = nextSearch.toString();
+      window.history.replaceState(null, "", `${restoredPath}${query ? `?${query}` : ""}`);
+      window.dispatchEvent(new PopStateEvent("popstate"));
+      return;
+    }
+
     const wasFirstRender = isFirstRender.current;
+    // A search-only change (anchor nav) is not a route change and must not
+    // reset scroll or steal focus. The effect has to observe `search` for the
+    // restore above, so the guard is explicit rather than a dependency array.
+    const pathChanged = lastPath.current !== pathname;
     isFirstRender.current = false;
+    lastPath.current = pathname;
+
     // When landing on a section (?scrollTo=...), let the page position itself
     // instead of resetting to the top and fighting that scroll.
-    if (new URLSearchParams(search).has("scrollTo")) return;
-    window.scrollTo(0, 0);
+    if (params.has("scrollTo")) return;
+    if (pathChanged) window.scrollTo(0, 0);
+
     // Move focus to the main content region on client-side navigation so keyboard
     // and screen-reader users land on the new page instead of a stale control from
     // the previous view. Skip the initial load so we don't steal focus on arrival.
-    if (wasFirstRender) return;
+    if (wasFirstRender || !pathChanged) return;
     const main = document.getElementById("main-content");
     main?.focus({ preventScroll: true });
-    // Effect intentionally keyed on pathname only; `search` is read for the guard
-    // but a search-only change (anchor nav) should not reset scroll or focus.
-  }, [pathname]);
+  }, [pathname, search]);
   return null;
 }
 
