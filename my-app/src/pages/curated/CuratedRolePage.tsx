@@ -79,7 +79,7 @@ export default function CuratedRolePage() {
       )}
 
       <nav className="rp-chapters" aria-label={`${page.company} tailored page chapters`}>
-        <span aria-hidden="true">Jump to</span>
+        <span>Jump to</span>
         <a href="#curated-fit">Fit</a>
         <a href="#curated-proof">Proof</a>
         <a href="#curated-work">Work</a>

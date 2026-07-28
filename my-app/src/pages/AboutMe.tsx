@@ -104,7 +104,7 @@ export default function About() {
       </nav>
 
       <nav className="rp-chapters" aria-label={isSpanish ? "Capítulos de la página Sobre mí" : "About page chapters"}>
-        <span aria-hidden="true">{isSpanish ? "Saltar a" : "Jump to"}</span>
+        <span>{isSpanish ? "Saltar a" : "Jump to"}</span>
         <a href="#about-pattern">{isSpanish ? "Enfoque" : "Approach"}</a>
         <a href="#about-story">{isSpanish ? "Historia" : "Story"}</a>
         <a href="#about-proof">{isSpanish ? "Prueba" : "Proof"}</a>
@@ -289,7 +289,7 @@ export default function About() {
               onClick={() => navigate("/?scrollTo=projects")}
               style={{ fontSize: "0.9rem" }}
             >
-              ← {isSpanish ? "Volver a proyectos" : "Back to projects"}
+              ← {isSpanish ? "Volver al trabajo" : "Back to work"}
             </button>
           </div>
         </div>

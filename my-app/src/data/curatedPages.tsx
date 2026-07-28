@@ -61,7 +61,7 @@ export const curatedPages: Record<string, CuratedPage> = {
     eyebrow: "Consumer product · human-first · sustainable by design",
     headline: "Design for the closet you already own — human judgment over the algorithm",
     subhead:
-      "This page reframes my portfolio for Indyx's UX/Product Designer role: consumer interaction craft, research that keeps taste honest, and a real belief that the best product decisions — like the best styling — come from human judgment, not an algorithm.",
+      "Consumer interaction craft, research that keeps taste honest, and a real belief that the best product decisions — like the best styling — come from human judgment, not an algorithm.",
     meta: [
       { label: "Target role", value: "UX / Product Designer · consumer" },
       { label: "Focus", value: "Interaction craft, research, cataloging & analytics UX" },
@@ -148,7 +148,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       "I'm not coming from a decade inside big consumer social. I'm coming with a functional AI consumer-app prototype, a research habit that kills my own bad ideas, and years spent studying how the best apps actually behave, screen by screen.",
     ],
     proofPoints: [
-      { stat: "1", detail: "Consumer AI app designed and built end to end — research, interaction design, and a working prototype (React + FastAPI + MongoDB)" },
+      { stat: "5", detail: "AI calls I overruled to keep Grove calm and honest — every one logged on the case study" },
       { stat: "200+", detail: "Consumer and finance app screens documented for Mobbin, studying real interaction patterns and trust signals" },
       { stat: "32", detail: "People surveyed before I designed anything — every major design call traced back to a finding" },
     ],
@@ -329,7 +329,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       { label: "Best fit", value: "Human-in-the-loop AI experiences in high-trust care contexts" },
     ],
     intro: [
-      "Spring Health is asking for more than a chat interface. This role requires intent architecture, system prompt thinking, release rigor, quality evaluation, clinical collaboration, and reusable AI interaction patterns.",
+      "Spring Health is asking for more than a chat interface. It needs AI that knows its boundaries, escalates when it should, and hands the decision back to a person before anything matters — which is the part I have actually designed for.",
       "My strongest fit is the combination of healthcare systems experience, AI product exploration, and workflow design under real constraints.",
     ],
     proofPoints: [
@@ -631,8 +631,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       { label: "Best fit", value: "Digital banking experiences that need trust and coherence" },
     ],
     intro: [
-      "Digital banking products need users to understand status, options, risk, and next steps without friction.",
-      "My background is not fintech-first, but it is trust-first: healthcare operations, regulated systems, complex workflows, and product experiences where unclear information slows people down or creates avoidable risk.",
+      "My background is not fintech-first. It is trust-first: healthcare operations, regulated systems, and products where unclear information slows someone down or creates avoidable risk.",
     ],
     proofPoints: [
       { stat: "20%", detail: "Organization-wide EMR cost reduction; I led the regulated healthcare workflow redesign that contributed to it" },
@@ -722,7 +721,7 @@ export const curatedPages: Record<string, CuratedPage> = {
     eyebrow: "Graphic design · campaign systems · ecommerce · elevated production craft",
     headline: "Hands-on visual design for campaign, ecommerce, social, and brand systems",
     subhead:
-      "This tailored page reframes my portfolio for Manière De Voir's Graphic Designer role: refined layout, campaign hierarchy, digital-first assets, production discipline, and the ability to partner across marketing, production, design, and development.",
+      "Refined layout, campaign hierarchy, digital-first assets, production discipline, and the ability to partner across marketing, production, design, and development.",
     meta: [
       { label: "Target role", value: "Graphic Designer · Fashion/Lifestyle" },
       { label: "Craft focus", value: "Layout, typography, campaign systems, production quality" },
@@ -757,7 +756,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       "Uses hierarchy, spacing, type, and image placement to make content feel elevated and easy to scan",
       "Can work from brand or seasonal direction, explore options, and adapt to feedback without losing craft quality",
       "Brings production discipline: details, accuracy, naming, handoff, versioning, and repeatable systems",
-      "Strong fit for digital campaign assets, collection launch support, ecommerce modules, email layouts, social crops, lookbook layouts, and brand-system production",
+      "Strong fit for digital campaign assets, ecommerce modules, and lookbook layouts",
     ],
     relevantExperience: [
       "My Mobbin freelance work required careful screen capture, sequencing, review, and taxonomy alignment. That translates directly to graphic design production work where precision, naming, consistency, completeness, and quality control matter.",

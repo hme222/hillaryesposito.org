@@ -88,7 +88,7 @@ const en = {
   // ── Home: mini about ──
   "home.about.eyebrow": "A little about me",
   "home.about.blurb":
-    "13+ years inside high-stakes systems: military medical logistics, cancer-care operations, internal tools, and AI-assisted product work. The through-line across all of it: I design for the person using the system under pressure, the clinician between patients, not the org chart above them. Whether it’s 21,000 clinicians and staff or one new plant owner, the job is the same: make the software trustworthy where a wrong answer costs something.",
+    "13+ years inside high-stakes systems: military medical logistics, cancer-care operations, internal tools, and AI-assisted product work. The through-line is who I design for. The person using the system under pressure — the clinician between patients, not the org chart above them. Whether it’s 21,000 clinicians and staff or one new plant owner, the job is the same. Make the software trustworthy where a wrong answer costs something.",
   "home.about.link": "More about me →",
 
   // ── Home: proof stats ──
@@ -194,7 +194,7 @@ const es: Partial<Record<StringKey, string>> = {
   // ── Home: mini about ──
   "home.about.eyebrow": "Un poco sobre mí",
   "home.about.blurb":
-    "Más de 13 años dentro de sistemas de alto riesgo: logística médica militar, operaciones oncológicas, herramientas internas y trabajo de producto asistido por IA. El hilo común: diseño para la persona que usa el sistema bajo presión, el clínico entre pacientes, no el organigrama por encima. Ya sean 21,000 clínicos y personal o un nuevo dueño de plantas, el trabajo es el mismo: hacer que el software sea confiable donde una respuesta equivocada cuesta algo.",
+    "Más de 13 años dentro de sistemas de alto riesgo: logística médica militar, operaciones oncológicas, herramientas internas y trabajo de producto asistido por IA. El hilo común es para quién diseño. La persona que usa el sistema bajo presión — el clínico entre pacientes, no el organigrama por encima. Ya sean 21,000 clínicos y personal o un nuevo dueño de plantas, el trabajo es el mismo. Hacer que el software sea confiable donde una respuesta equivocada cuesta algo.",
   "home.about.link": "Conozca más sobre mí →",
 
   // ── Home: proof stats ──

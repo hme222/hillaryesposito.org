@@ -27,7 +27,7 @@ const prefersReduced = () =>
  * for prefers-reduced-motion. The arrow interaction is the restrained takeaway
  * from T.Ricks - purposeful navigation, not decoration.
  */
-export default function MoreWork({ projects, onBack, backLabel = "← Back to projects" }: Props) {
+export default function MoreWork({ projects, onBack, backLabel = "← Back to work" }: Props) {
   const viewportRef = useRef<HTMLDivElement>(null);
   const [overflowing, setOverflowing] = useState(false);
   const [canPrev, setCanPrev] = useState(false);

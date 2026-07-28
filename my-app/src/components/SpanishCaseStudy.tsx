@@ -143,7 +143,7 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
           <div className="rp-hero__ctas">
             <a href="mailto:espositohillary@gmail.com" className="rp-cta">Escríbame →</a>
             <button type="button" className="rp-cta rp-cta--ghost" onClick={() => navigate("/?scrollTo=projects")}>
-              ← Volver a proyectos
+              ← Volver al trabajo
             </button>
           </div>
         </div>
