@@ -30,7 +30,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
       bullets: [
         "Recordatorios inteligentes: la función más pedida (74%), pero solo con límites claros.",
         "Identificar la planta con la cámara (61%) y diagnóstico por foto: esenciales, pero tenían que mostrar cuánta confianza tienen y sus fuentes.",
-        "Las advertencias para plantas tóxicas para mascotas (9 de 12 dueños nuevos las pidieron solos) y la educación sobre la luz pasaron a ser parte del núcleo de confianza, aunque yo ni siquiera las había construido.",
+        "Las advertencias para plantas tóxicas para mascotas (dueños nuevos las pidieron solos, sin que se lo preguntara) y la educación sobre la luz pasaron a ser parte del núcleo de confianza, aunque yo ni siquiera las había construido.",
       ],
     },
     {

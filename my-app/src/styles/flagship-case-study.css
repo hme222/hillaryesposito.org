@@ -240,7 +240,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .fp-capture, .fp-cinemaCore, .fp-dashboardFrame { transform: none !important; transition: none !important; }
+  /* Only the transitions go. The transforms on these are static composition —
+     the fanned capture stack, and the flow arrow that rotates 90deg below
+     820px for the stacked layout. Killing them flattened the fan into three
+     overlapping rectangles and turned the arrow back to horizontal inside a
+     vertical flow, which is not a removed animation but a wrong direction. */
+  .fp-capture, .fp-cinemaCore, .fp-dashboardFrame { transition: none !important; }
 }
 
 /* Three redesigns — restored mechanism. The outcome metrics named certification

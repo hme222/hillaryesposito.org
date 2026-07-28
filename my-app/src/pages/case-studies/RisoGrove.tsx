@@ -60,7 +60,7 @@ const LEGS = [
     n: "03",
     mission: "A 32-person survey found the three that matter",
     detail:
-      "I asked what actually earns a plant app a spot on the phone: calm reminders, plant ID by camera, real help with light. Forums ranked near the bottom, at 23%.",
+      "I asked what actually earns a plant app a spot on the phone: calm reminders, plant ID by camera, real help with light. Forums drew 23% — under a third.",
     impact: "3 must-haves, not 30",
   },
   {
@@ -154,8 +154,8 @@ type ShareOutcome = "shared" | "copied" | "error" | null;
 // Icon and text are separate so the emoji can be hidden from screen readers —
 // this string is announced through an aria-live region.
 const SHARE_MESSAGE: Record<Exclude<ShareOutcome, null>, { icon?: string; text: string }> = {
-  shared: { icon: "🌱", text: "woohoo — thanks for sharing!" },
-  copied: { icon: "🌱", text: "link copied — thanks!" },
+  shared: { icon: "🌱", text: "thanks for sharing." },
+  copied: { icon: "🌱", text: "link copied." },
   error: { text: "Couldn’t copy the link — you can copy it from the address bar." },
 };
 function ThanksShare() {
