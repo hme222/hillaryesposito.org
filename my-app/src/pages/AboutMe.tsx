@@ -16,7 +16,9 @@ const CHAPTERS = [
     heading: "Designing for trust in complex, regulated products.",
     image: "/assets/about/now.jpg",
     paragraphs: [
-      "Right now I'm freelancing. My most recent contract was a deep study of three finance apps, where I documented more than 200 screens of end-to-end mobile flows, then annotated and tagged each one so thousands of designers could actually find and reuse them. It sharpened three things: reading interaction patterns at scale across financial UX, structuring documentation to a strict taxonomy and quality bar, and seeing how different products solve the same trust problem in very different ways. AI is part of how I work now, but it stays a tool. I use it to move faster on research and prototyping, then make the calls myself.",
+      "Right now I'm freelancing. My most recent contract was a deep study of three finance apps, where I documented more than 200 screens of end-to-end mobile flows, then annotated and tagged each one so thousands of designers could actually find and reuse them.",
+      "It sharpened three things: reading interaction patterns at scale across financial UX, structuring documentation to a strict taxonomy and quality bar, and seeing how different products solve the same trust problem in very different ways.",
+      "AI is part of how I work now, but it stays a tool. I use it to move faster on research and prototyping, then make the calls myself.",
     ],
     callout: "AI moves the work faster. The calls stay mine.",
   },
@@ -55,6 +57,8 @@ const CHAPTERS_ES = [
     image: "/assets/about/now.jpg",
     paragraphs: [
       "Ahora trabajo freelance. Mi contrato más reciente fue un estudio profundo de tres apps de finanzas, donde documenté más de 200 pantallas de flujos móviles de principio a fin, y luego anoté y etiqueté cada una para que miles de diseñadores pudieran encontrarlas y reutilizarlas.",
+      "Afinó tres cosas: leer patrones de interacción a escala en UX financiera, estructurar documentación con una taxonomía y un estándar de calidad estrictos, y ver cómo productos distintos resuelven el mismo problema de confianza de maneras muy distintas.",
+      "La IA es parte de cómo trabajo ahora, pero sigue siendo una herramienta. La uso para avanzar más rápido en investigación y prototipos, y las decisiones las tomo yo.",
     ],
     callout: "La IA acelera el trabajo. Las decisiones siguen siendo mías.",
   },
@@ -64,7 +68,7 @@ const CHAPTERS_ES = [
     heading: "Seis años en MSK, optimizando operaciones internas y diseñando para 21,000+ clínicos y personal.",
     image: "/assets/about/msk.jpg",
     paragraphs: [
-      "Lideré el rediseño de un flujo EMR detrás de una reducción organizacional de 20% en costos, reconstruí flujos de certificación para una mejora de 70% y rediseñé onboarding usando feedback del personal.",
+      "Lideré el rediseño de un flujo EMR detrás de una reducción organizacional de 20% en costos, reconstruí flujos de certificación para una mejora de 70% y rediseñé onboarding usando feedback del personal. Esto fue investigación de usuarios en profundidad antes de que yo tuviera el vocabulario formal para llamarlo así.",
     ],
     callout: "Los sistemas fallan donde una persona real tiene que usarlos.",
     articleLink: {

@@ -1,56 +1,62 @@
 // src/components/Footer.tsx
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useT } from "../app/LanguageContext";
+import { useLanguage, useT } from "../app/LanguageContext";
 
 /**
  * Per-route colophon.
  *
- * A page built with something worth crediting contributes an ethos line and a
- * credits list into the footer's dark base band, rather than stacking a second
- * dark slab above the footer and repeating the copyright. Grove is the only
- * page using it today; the shape exists so others can join the same band.
- */
-/**
+ * A page built with something worth crediting contributes a credits list into
+ * the footer's dark base band, rather than stacking a second dark slab above
+ * the footer and repeating the copyright.
+ *
  * Every entry must be traceable to something the case study itself states.
  * Grove's list is literal build tooling. MSK and Mobbin did not ship from a
  * toolchain worth listing, so theirs credit the methods and materials those
  * pages already claim — never a tool Hillary has not said she used.
+ *
+ * Labels carry a Spanish variant because these pages render inside the
+ * bilingual shell. Product names stay untranslated; the human entries — which
+ * are the funny ones, and therefore the ones worth a Spanish reader seeing —
+ * do not.
  */
-const COLOPHONS: Record<string, Array<{ icon: string; label: string }>> = {
+type Credit = { icon: string; label: string; es?: string };
+
+const COLOPHONS: Record<string, Credit[]> = {
   "/case-study/grove": [
     { icon: "🎨", label: "Figma" },
     { icon: "🤖", label: "Emergent" },
     { icon: "⚛️", label: "React" },
     { icon: "⚡", label: "FastAPI" },
     { icon: "🍃", label: "MongoDB" },
-    { icon: "🗣️", label: "32 real opinions" },
-    { icon: "✋", label: "the word “no”" },
-    { icon: "🧘", label: "restraint" },
-    { icon: "☕", label: "caffeine" },
+    { icon: "🗣️", label: "32 real opinions", es: "32 opiniones reales" },
+    { icon: "✋", label: "the word “no”", es: "la palabra «no»" },
+    { icon: "🧘", label: "restraint", es: "contención" },
+    { icon: "☕", label: "caffeine", es: "cafeína" },
   ],
   "/case-study/msk": [
-    { icon: "📋", label: "current-state maps" },
-    { icon: "👀", label: "shadowing real shifts" },
+    { icon: "📋", label: "current-state maps", es: "mapas del estado actual" },
+    { icon: "👀", label: "shadowing real shifts", es: "observar turnos reales" },
     { icon: "📈", label: "Lean Six Sigma" },
-    { icon: "🎓", label: "an MHA" },
-    { icon: "🗂️", label: "the sticky notes that told the truth" },
-    { icon: "🤝", label: "clinical, IT, and operations in one room" },
-    { icon: "🏥", label: "six years on the floor" },
-    { icon: "☕", label: "caffeine" },
+    { icon: "🎓", label: "an MHA", es: "una MHA" },
+    { icon: "🗂️", label: "the sticky notes that told the truth", es: "las notas adhesivas que decían la verdad" },
+    { icon: "🤝", label: "clinical, IT, and operations in one room", es: "clínica, IT y operaciones en una sala" },
+    { icon: "🏥", label: "six years on the floor", es: "seis años en el piso" },
+    { icon: "☕", label: "caffeine", es: "cafeína" },
   ],
   "/case-study/mobbin": [
-    { icon: "📱", label: "3 live finance apps" },
-    { icon: "🖼️", label: "200+ screens" },
-    { icon: "🏷️", label: "Mobbin’s vocabulary" },
-    { icon: "✂️", label: "an editor, not a camera" },
-    { icon: "🗓️", label: "4 months" },
-    { icon: "☕", label: "caffeine" },
+    { icon: "📱", label: "3 live finance apps", es: "3 apps de finanzas en vivo" },
+    { icon: "🖼️", label: "200+ screens", es: "200+ pantallas" },
+    { icon: "🏷️", label: "Mobbin’s vocabulary", es: "el vocabulario de Mobbin" },
+    { icon: "✂️", label: "an editor, not a camera", es: "una editora, no una cámara" },
+    { icon: "🗓️", label: "4 months", es: "4 meses" },
+    { icon: "☕", label: "caffeine", es: "cafeína" },
   ],
 };
 
 export default function Footer() {
   const t = useT();
+  const { lang } = useLanguage();
   const { pathname } = useLocation();
   const credits = COLOPHONS[pathname];
   // Auto-moving content needs a way to stop it (WCAG 2.2.2). Hover-pause alone
@@ -107,7 +113,7 @@ export default function Footer() {
       <div className="site-footer__base">
         {credits && (
           <div className={`site-footer__madeWith${paused ? " is-paused" : ""}`}>
-            <p className="site-footer__madeWithLabel">Made with:</p>
+            <p className="site-footer__madeWithLabel">{t("footer.madeWith")}</p>
             <div className="site-footer__marquee">
               {/* The first copy is the real list. The second exists only so the
                   scroll can loop seamlessly, so it is hidden from the a11y tree
@@ -115,14 +121,14 @@ export default function Footer() {
               <ul className="site-footer__track">
                 {credits.map((c) => (
                   <li key={c.label}>
-                    <span aria-hidden="true">{c.icon}</span> {c.label}
+                    <span aria-hidden="true">{c.icon}</span> {lang === "es" && c.es ? c.es : c.label}
                   </li>
                 ))}
               </ul>
               <ul className="site-footer__track" aria-hidden="true">
                 {credits.map((c) => (
                   <li key={`dup-${c.label}`}>
-                    <span>{c.icon}</span> {c.label}
+                    <span>{c.icon}</span> {lang === "es" && c.es ? c.es : c.label}
                   </li>
                 ))}
               </ul>
@@ -133,8 +139,8 @@ export default function Footer() {
               onClick={() => setPaused((p) => !p)}
               aria-pressed={paused}
             >
-              {paused ? "Play" : "Pause"}
-              <span className="sr-only"> the credits banner</span>
+              {paused ? t("footer.marqueePlay") : t("footer.marqueePause")}
+              <span className="sr-only">{t("footer.marqueeAria")}</span>
             </button>
           </div>
         )}

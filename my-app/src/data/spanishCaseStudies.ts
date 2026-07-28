@@ -4,7 +4,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
   title: "Grove",
   meta: "Diseño de producto · Producto con IA · Prototipo funcional",
   intro:
-    "Grove es una app de cuidado de plantas. Una herramienta de IA llamada Emergent me construyó la app entera, rápido, llena de funciones. La probé con 5 usuarios y el problema fue evidente: demasiadas cosas, en el orden equivocado. Así que hice una encuesta a 32 personas para encontrar las pocas funciones en las que valía la pena concentrarme, y empecé a rehacerla alrededor de esas: quito las funciones sociales que nadie pidió y le enseño a la IA a admitir cuando no está segura. Porque cuando una planta es tóxica para un gato, adivinar mal no es una sugerencia. Es un riesgo.",
+    "Grove es una app de cuidado de plantas. Una herramienta de IA llamada Emergent me construyó la app entera, rápido, llena de funciones. La probé con 5 usuarios y el problema fue evidente: demasiadas cosas, en el orden equivocado. Así que hice una encuesta a 32 personas para encontrar las pocas funciones en las que valía la pena concentrarme, y empecé a rehacerla alrededor de esas: aplazo las funciones sociales que casi nadie pidió y le enseño a la IA a admitir cuando no está segura. Porque cuando una planta es tóxica para un gato, adivinar mal no es una sugerencia. Es un riesgo.",
   stats: [
     { label: "Rol", value: "Diseñadora de producto (en solitario)" },
     { label: "Muestra", value: "32 respuestas de encuesta" },
@@ -16,7 +16,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
       eyebrow: "Dónde empieza esto",
       title: "Los dueños de plantas se olvidan. Y luego se sienten culpables.",
       body: [
-        "La mayoría de la gente que compra una planta quiere una sola cosa: mantenerla viva. Pero se olvidan de regarla, o la riegan de más, y de cualquier forma se sienten mal. Les pregunté a 32 dueños de plantas qué era lo que más los frustraba. La respuesta más común: “Los consejos son demasiado genéricos, no toman en cuenta mi casa.” Lo que más rápido hace que borren una app, dicho por 15+ personas sin que se lo preguntara: demasiadas notificaciones. Una persona resumió todo el trabajo en seis palabras: “El cuidado de plantas debería sentirse tranquilo, no estresante.”",
+        "La mayoría de la gente que compra una planta quiere una sola cosa: mantenerla viva. Pero se olvidan de regarla, o la riegan de más, y de cualquier forma se sienten mal. Les pregunté a 32 dueños de plantas qué haría que una app de plantas se ganara un lugar en su teléfono. La respuesta más común: “Los consejos son demasiado genéricos, no toman en cuenta mi casa.” Lo que más rápido hace que borren una app, dicho por 15+ personas sin que se lo preguntara: demasiadas notificaciones. Una persona resumió todo el trabajo en seis palabras: “El cuidado de plantas debería sentirse tranquilo, no estresante.”",
         "El punto débil: en lo que peor están los dueños nuevos es en la luz — dónde poner una planta, y por qué. Ninguna app grande lo enseña. La gente calificó su propia confianza sobre la luz en 2.4 de 5, y pidió, sin que se lo preguntara, una app que “me diga exactamente dónde colocar una planta.” Ahí, más la confianza, es donde Grove gana o no gana.",
       ],
     },
@@ -117,13 +117,13 @@ export const MSK_ES: SpanishCaseStudyData = {
 
 export const MOBBIN_ES: SpanishCaseStudyData = {
   title: "Mobbin",
-  meta: "App Capture Specialist · Documentación de flujos UX · Curaduría de patrones",
+  meta: "Documentación de flujos UX · Curaduría de patrones",
   intro:
     "Trabajo freelance para Mobbin documentando experiencias móviles de principio a fin. Capturé, organicé y anoté flujos de tres apps de finanzas para una biblioteca de referencia usada por equipos de UX, producto y diseño.",
   stats: [
     { label: "Cliente", value: "Mobbin · Freelance" },
     { label: "Tiempo", value: "mar.–jun. 2026 · 4 meses" },
-    { label: "Output", value: "3 apps · 200+ pantallas" },
+    { label: "Entrega", value: "3 apps · 200+ pantallas" },
     { label: "Ubicación", value: "Remoto" },
   ],
   sections: [

@@ -122,7 +122,7 @@ export default function RisoHome() {
                 className="rp-recruiter-link"
                 onClick={() => window.dispatchEvent(new CustomEvent("open-recruiter-panel"))}
               >
-                {t("recruiter.pill")}{lang === "es" ? " · EN" : ""} · 90 sec →
+                {t("recruiter.pill")}{lang === "es" ? " · EN" : ""} · {t("recruiter.seconds")} →
               </button>
             </div>
           </div>

@@ -27,6 +27,10 @@ const en = {
   "footer.email": "Email",
   "footer.githubAria": "GitHub profile (opens in new tab)",
   "footer.availability": "Available for select product design opportunities",
+  "footer.madeWith": "Made with:",
+  "footer.marqueePlay": "Play",
+  "footer.marqueePause": "Pause",
+  "footer.marqueeAria": " the credits banner",
   "notFound.eyebrow": "Wrong turn · useful recovery",
   "notFound.title": "This page wandered off.",
   "notFound.body": "The link may be outdated, but the work is still here. Return to the portfolio or browse the selected work.",
@@ -113,6 +117,7 @@ const en = {
   // ── Recruiter pill (global trigger only - the panel stays English in Phase 1) ──
   "recruiter.pill": "Recruiter view",
   "recruiter.pillAria": "Open recruiter view: 90-second tour",
+  "recruiter.seconds": "90 sec",
 } as const;
 
 export type StringKey = keyof typeof en;
@@ -132,6 +137,10 @@ const es: Partial<Record<StringKey, string>> = {
   "footer.email": "Correo",
   "footer.githubAria": "Perfil de GitHub (se abre en una pestaña nueva)",
   "footer.availability": "Disponible para oportunidades selectas de diseño de producto",
+  "footer.madeWith": "Hecho con:",
+  "footer.marqueePlay": "Reproducir",
+  "footer.marqueePause": "Pausar",
+  "footer.marqueeAria": " el carrusel de créditos",
   "notFound.eyebrow": "Ruta equivocada · recuperación útil",
   "notFound.title": "Esta página se desvió.",
   "notFound.body": "Puede que el enlace esté desactualizado, pero el trabajo sigue aquí. Vuelva al portafolio o explore el trabajo seleccionado.",
@@ -214,6 +223,7 @@ const es: Partial<Record<StringKey, string>> = {
   // ── Recruiter pill ──
   "recruiter.pill": "Vista para reclutadores",
   "recruiter.pillAria": "Abrir la vista para reclutadores: resumen de proyectos en 90 segundos",
+  "recruiter.seconds": "90 seg",
 };
 
 export const STRINGS: { en: typeof en; es: Partial<Record<StringKey, string>> } = { en, es };
