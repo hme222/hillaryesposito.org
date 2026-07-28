@@ -2,3 +2,8 @@
 
 # macOS
 .DS_Store
+
+# Design-workflow tooling, not part of the website. Was a submodule pinned to a
+# commit that never existed upstream, which failed every GitHub Pages build
+# from 2026-07-18 onward — Pages clones submodules and could not resolve it.
+designpowers/
