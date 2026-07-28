@@ -1456,3 +1456,51 @@
 /* The fill is a position readout, not an animation. Reduced motion keeps the
    value and drops only the reveal transition. */
 @media (prefers-reduced-motion: reduce) { .rp-progress { transition: none; } }
+
+/* ---------- about: story chapters in the riso system ---------- */
+/* About used to run a riso hero over an older card system: soft cards, its own
+   type ramp, its own eyebrow class. Everything below the hero now uses the same
+   sections, kickers, rules, and plates as the case studies, so the page reads as
+   part of one publication instead of a visitor to it. */
+.rp-chapter { padding: var(--sp-lg) 0; border-top: 1px solid var(--hair); align-items: start; }
+.rp-chapter:first-of-type { border-top: 0; }
+/* Alternate the image side so the story has a rhythm rather than a column. */
+.rp-split--flip .rp-split__media { order: -1; }
+.rp-chapter__n {
+  display: flex; align-items: baseline; gap: .75rem;
+  font-family: var(--mono); font-size: .62rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--coral);
+}
+.rp-chapter__n span { color: var(--muted); }
+.rp-chapter .rp-subhead { margin-top: .7rem; max-width: 26ch; }
+.rp-chapter__body { margin-top: .9rem; max-width: 58ch; color: var(--ink-2); line-height: 1.7; }
+/* The callout is the chapter's one line worth remembering — a ruled aside, not
+   a tinted card. */
+.rp-chapter__callout {
+  margin-top: 1.2rem; padding-left: 1rem;
+  border-left: 2px solid var(--coral);
+  font-size: 1.02rem; line-height: 1.5; color: var(--ink);
+}
+.rp-chapter__proof {
+  display: inline-flex; align-items: center; gap: .7rem;
+  min-height: 44px; margin-top: 1.3rem; padding: .7rem .9rem;
+  border: 1px solid var(--hair); border-left: 3px solid var(--coral);
+  color: var(--ink); text-decoration: none;
+}
+.rp-chapter__proof:hover { background: color-mix(in srgb, var(--coral) 6%, transparent); }
+.rp-chapter__proof b { display: block; font-size: .9rem; }
+.rp-chapter__proof small { display: block; margin-top: .15rem; font-family: var(--mono); font-size: .6rem; letter-spacing: .08em; color: var(--muted); }
+/* Square plate with a hairline, matching the project index — not a rounded card. */
+.rp-chapter__plate { border: 1px solid var(--hair); background: var(--paper-2); }
+.rp-chapter__plate img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.rp-patternList { counter-reset: rp-step; margin-top: 1.6rem; }
+.rp-patternList li { counter-increment: rp-step; position: relative; padding-left: 2.4rem; color: var(--ink-2); line-height: 1.65; }
+.rp-patternList li::before {
+  content: counter(rp-step, decimal-leading-zero);
+  position: absolute; left: 0; top: .15em;
+  font-family: var(--mono); font-size: .68rem; color: var(--coral);
+}
+@media (max-width: 760px) {
+  .rp-split--flip .rp-split__media { order: 0; }
+  .rp-chapter .rp-subhead { max-width: none; }
+}

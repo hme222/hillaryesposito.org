@@ -108,6 +108,7 @@ export default function About() {
         <a href="#about-pattern">{isSpanish ? "Enfoque" : "Approach"}</a>
         <a href="#about-story">{isSpanish ? "Historia" : "Story"}</a>
         <a href="#about-proof">{isSpanish ? "Prueba" : "Proof"}</a>
+        <a href="#about-life">{isSpanish ? "Fuera del trabajo" : "Outside work"}</a>
         <a href="#about-contact">{isSpanish ? "Contacto" : "Contact"}</a>
       </nav>
 
@@ -143,17 +144,17 @@ export default function About() {
         </div>
       </header>
 
-      <section id="about-pattern" className="about-pattern-section" aria-label={isSpanish ? "Mi patrón de trabajo" : "My working pattern"}>
-        <div className="about-pattern-card feature">
-          <p className="about-agenda__eyebrow">{isSpanish ? "Mi patrón" : "My pattern"}</p>
-          <h2 className="about-growth-title">
+      <section id="about-pattern" className="rp-section" aria-labelledby="about-pattern-title">
+        <div className="rp-wrap">
+          <p className="rp-kicker">{isSpanish ? "Mi patrón" : "My pattern"}</p>
+          <h2 className="rp-title" id="about-pattern-title">
             {isSpanish ? "Entro en sistemas complejos y encuentro dónde se rompe la confianza." : "I enter complex systems and find where trust breaks."}
           </h2>
           {/* Rewritten from a four-step observe/map/design/measure list. That was
               generic process language, and it restated MSK's Observe/Align/Redesign
               without MSK's evidence under it. These are the judgment calls rather
               than the stages — things that are true of this practice specifically. */}
-          <ol className="about-pattern-list">
+          <ol className="rp-list rp-patternList rp-reveal">
             <li>{isSpanish ? "Busco primero el atajo. La nota adhesiva, la hoja de cálculo personal, el paso que todos se saltan. Ahí vive el proceso real, y nunca está en el documento del proceso." : "I look for the workaround first. The sticky note, the personal spreadsheet, the step everyone skips. That is where the real process lives, and it is never in the process document."}</li>
             <li>{isSpanish ? "Averiguo quién paga cuando falla. Un clínico entre pacientes, un soldado esperando reabastecimiento, alguien cuya planta murió. El costo decide cuánta certeza le debe el diseño." : "I find out who pays when it breaks. A clinician between patients, a soldier waiting on resupply, someone whose plant died. The cost decides how much certainty the design owes them."}</li>
             <li>{isSpanish ? "Hago que la falla sea compartida antes de mejorarla. Cuatro áreas con cuatro versiones del problema rechazarán la misma solución de cuatro maneras." : "I make the failure shared before I make it better. Four departments carrying four models of the problem will reject the same solution four different ways."}</li>
@@ -163,100 +164,65 @@ export default function About() {
       </section>
 
       {/* ═ STORY ════════════════════════════════════════════════════ */}
-      <section id="about-story" className="about-story-section" aria-label={isSpanish ? "Mi historia" : "My story"}>
-        <div className="about-story-header">
-          <p className="about-agenda__eyebrow">{isSpanish ? "Mi historia" : "My story"}</p>
-          <h2 className="about-growth-title">{isSpanish ? "Cómo llegué aquí." : "How I got here."}</h2>
-        </div>
+      <section id="about-story" className="rp-section rp-section--alt" aria-labelledby="about-story-title">
+        <div className="rp-wrap">
+          <p className="rp-kicker">{isSpanish ? "Mi historia" : "My story"}</p>
+          <h2 className="rp-title" id="about-story-title">{isSpanish ? "Cómo llegué aquí." : "How I got here."}</h2>
 
-        <div className="about-story-grid">
           {chapters.map((chapter, index) => (
-            <article key={chapter.id} className="about-story-card feature">
-              <div className="about-story-card__layout">
-                {chapter.image && (
-                  <div className="about-story-card__image">
-                    <img src={chapter.image} alt="" loading="lazy" />
-                  </div>
+            <article className={`rp-split rp-chapter rp-reveal${index % 2 ? " rp-split--flip" : ""}`} key={chapter.id}>
+              <div className="rp-split__text">
+                <p className="rp-chapter__n">
+                  {String(index + 1).padStart(2, "0")} / {String(chapters.length).padStart(2, "0")}
+                  <span>{chapter.label}</span>
+                </p>
+                <h3 className="rp-subhead">{chapter.heading}</h3>
+                {chapter.paragraphs.map((paragraph) => (
+                  <p className="rp-chapter__body" key={paragraph}>{paragraph}</p>
+                ))}
+                <p className="rp-chapter__callout">{chapter.callout}</p>
+
+                {chapter.articleLink && (
+                  <a
+                    href={chapter.articleLink.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rp-chapter__proof"
+                    aria-label={`${isSpanish ? "Leer artículo" : "Read article"}: ${chapter.articleLink.title} (${isSpanish ? "se abre en una pestaña nueva" : "opens in a new tab"})`}
+                  >
+                    <span aria-hidden="true"><NewsIcon /></span>
+                    <span>
+                      <b lang={isSpanish ? "en" : undefined}>{chapter.articleLink.title}</b>
+                      <small>{chapter.articleLink.source} ↗</small>
+                    </span>
+                  </a>
                 )}
-
-                <div className="about-story-card__content">
-                  <div className="about-story-card__top">
-                    <div>
-                      <span className="about-story-card__index" aria-hidden="true">{String(index + 1).padStart(2, "0")} / {String(chapters.length).padStart(2, "0")}</span>
-                      <p className="about-story-card__label">{chapter.label}</p>
-                      <h3 className="about-story-card__heading">{chapter.heading}</h3>
-                    </div>
-                  </div>
-
-                  <div className="about-story-card__body">
-                    {chapter.paragraphs.map((paragraph) => (
-                      <p key={paragraph} className="about-story-card__text">
-                        {paragraph}
-                      </p>
-                    ))}
-                  </div>
-
-                  <div className="about-story-card__callout">
-                    <p>{chapter.callout}</p>
-                  </div>
-                </div>
               </div>
 
-              {chapter.articleLink && (
-                <a
-                  href={chapter.articleLink.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="about-story-card__article-link"
-                  aria-label={`${isSpanish ? "Leer artículo" : "Read article"}: ${chapter.articleLink.title} (${isSpanish ? "se abre en una pestaña nueva" : "opens in a new tab"})`}
-                >
-                  <span className="about-story-card__article-icon" aria-hidden="true">
-                    <NewsIcon />
-                  </span>
-                  <span className="about-story-card__article-text">
-                    <span className="about-story-card__article-title" lang={isSpanish ? "en" : undefined}>
-                      {chapter.articleLink.title}
-                    </span>
-                    <span className="about-story-card__article-source">
-                      {chapter.articleLink.source}
-                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" style={{ marginLeft: "0.35rem", verticalAlign: "middle" }}>
-                        <path d="M3.5 1.5H10.5V8.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M10.5 1.5L1.5 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </span>
-                  </span>
-                </a>
+              {chapter.image && (
+                <div className="rp-split__media">
+                  <div className="rp-chapter__plate">
+                    <img src={chapter.image} alt="" loading="lazy" />
+                  </div>
+                </div>
               )}
             </article>
           ))}
         </div>
       </section>
 
-      {/* ═ HUMAN ════════════════════════════════════════════════════ */}
-      <section className="about-life" aria-label={isSpanish ? "Fuera del trabajo" : "Outside of work"}>
-        <div className="about-life-card feature">
-          <h2 className="about-life-title">{isSpanish ? "Fuera del trabajo" : "Outside of work"}</h2>
-          <p className="about-life-intro">
-            {isSpanish ? "Correr, leer y Luna la gata. Rutinas que me mantienen clara y con los pies en la tierra." : "Running, reading, and Luna the cat. Routines that keep me clear and grounded."}
-          </p>
-        </div>
-      </section>
-
-      <section id="about-proof" className="about-feedback-section" aria-label={isSpanish ? "Comentarios de clientes" : "Client feedback"}>
-        <div className="about-story-header">
-          <p className="about-agenda__eyebrow">{isSpanish ? "Feedback de clientes" : "Client feedback"}</p>
-          <h2 className="about-growth-title">{isSpanish ? "Cómo los clientes describen trabajar conmigo." : "How clients describe working with me."}</h2>
-        </div>
-
-        <div className="about-feedback-grid">
+      {/* ═ PROOF — the one voice here that is not hers ══════════════ */}
+      <section id="about-proof" className="rp-section" aria-labelledby="about-proof-title">
+        <div className="rp-wrap">
+          <p className="rp-kicker">{isSpanish ? "Feedback de clientes" : "Client feedback"}</p>
+          <h2 className="rp-title" id="about-proof-title">
+            {isSpanish ? "Cómo los clientes describen trabajar conmigo." : "How clients describe working with me."}
+          </h2>
           {feedback.map((item) => (
-            <figure key={item.name} className="about-feedback-card feature">
-              <div className="about-feedback-card__icon about-feedback-card__icon--mobbin" aria-hidden="true">
-                <img src="/assets/mobbin/mobbin-logo.png" alt="Mobbin" className="about-feedback-card__logo" />
-              </div>
+            <figure className="rp-testimonial rp-reveal" key={item.name}>
               <blockquote>“{item.quote}”</blockquote>
               <figcaption>
-                <strong>{item.name}</strong>
+                <b>{item.name}</b>
                 <span>{item.role}</span>
                 <span>{item.context}</span>
               </figcaption>
@@ -265,30 +231,31 @@ export default function About() {
         </div>
       </section>
 
-      {/* ═ CTA ══════════════════════════════════════════════════════ */}
-      <section id="about-contact" className="about-cta">
-        <div className="about-cta-simple">
-          <h2 className="about-cta-title" style={{ marginBottom: "1rem" }}>
-            {isSpanish ? "¿Le interesa trabajar conmigo?" : "Interested in working together?"}
+      {/* ═ HUMAN ════════════════════════════════════════════════════ */}
+      <section id="about-life" className="rp-section rp-section--alt" aria-labelledby="about-life-title">
+        <div className="rp-wrap">
+          <p className="rp-kicker">{isSpanish ? "Fuera del trabajo" : "Outside of work"}</p>
+          <h2 className="rp-title" id="about-life-title">
+            {isSpanish ? "Correr, leer y Luna la gata." : "Running, reading, and Luna the cat."}
           </h2>
-          <p className="about-cta-content" style={{ color: "var(--muted)", lineHeight: 1.8, marginBottom: "1.75rem" }}>
+          <p className="rp-lede">
+            {isSpanish ? "Rutinas que me mantienen clara y con los pies en la tierra." : "Routines that keep me clear and grounded."}
+          </p>
+        </div>
+      </section>
+
+      {/* ═ CTA ══════════════════════════════════════════════════════ */}
+      <section id="about-contact" className="rp-section">
+        <div className="rp-wrap rp-close">
+          <h2>{isSpanish ? "¿Le interesa trabajar conmigo?" : "Interested in working together?"}</h2>
+          <p>
             {isSpanish ? "Abierta a roles de UX y diseño de producto en salud, organizaciones con misión y entornos operativamente complejos. También abierta a freelance y colaboraciones." : "Open to UX and product design roles in healthcare, mission-driven organizations, and operationally complex environments. Also open to freelance and collaborations."}
           </p>
-          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-            <button
-              type="button"
-              className="hero-btn"
-              style={{ fontSize: "0.9rem", padding: "1rem 2rem" }}
-              onClick={() => navigate("/?scrollTo=contact")}
-            >
-              {isSpanish ? "Contácteme" : "Get in touch"}
+          <div className="rp-hero__ctas">
+            <button type="button" className="rp-cta" onClick={() => navigate("/?scrollTo=contact")}>
+              {isSpanish ? "Contácteme" : "Get in touch"} →
             </button>
-            <button
-              type="button"
-              className="about-back-btn"
-              onClick={() => navigate("/?scrollTo=projects")}
-              style={{ fontSize: "0.9rem" }}
-            >
+            <button type="button" className="rp-cta rp-cta--ghost" onClick={() => navigate("/?scrollTo=projects")}>
               ← {isSpanish ? "Volver al trabajo" : "Back to work"}
             </button>
           </div>
