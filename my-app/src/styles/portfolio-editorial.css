@@ -117,7 +117,7 @@
   text-align: left;
 }
 .portfolio-home .home-section-title {
-  max-width: 12ch;
+  text-wrap: balance;
   font-family: var(--font-editorial);
   font-size: clamp(2.6rem, 7vw, 5.8rem);
   letter-spacing: -.03em;
@@ -375,7 +375,7 @@
   text-transform: uppercase;
 }
 .about-page .about-title {
-  max-width: 14ch;
+  text-wrap: balance;
   font-family: var(--font-editorial);
   font-size: clamp(2.5rem, 6vw, 5.4rem);
   letter-spacing: -.03em;
@@ -681,7 +681,7 @@
   text-transform: uppercase;
 }
 .site-footer__statement {
-  max-width: 12ch;
+  text-wrap: balance;
   margin: 0;
   font-family: var(--font-editorial);
   font-size: clamp(2.7rem, 5vw, 5.5rem);
@@ -809,7 +809,7 @@
   padding-bottom: var(--sp-sm);
 }
 .site-footer--compact .site-footer__statement {
-  max-width: 18ch;
+  text-wrap: balance;
   font-size: clamp(2rem, 3.5vw, 3.7rem);
 }
 
@@ -830,7 +830,7 @@
   padding: 1.75rem clamp(1.25rem, 5vw, 2.5rem) 1.5rem;
 }
 .recruiter-panel__title {
-  max-width: 15ch;
+  text-wrap: balance;
   font-family: var(--font-editorial);
   font-size: var(--ts-title);
   letter-spacing: -.024em;
@@ -888,7 +888,7 @@
 }
 .not-found__copy { padding-bottom: clamp(1rem, 5vw, 5rem); }
 .not-found h1 {
-  max-width: 12ch;
+  text-wrap: balance;
   margin: 0 0 1.25rem;
   font-family: "Archivo", -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 850;

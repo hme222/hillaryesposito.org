@@ -387,7 +387,7 @@
 .rp-section { position: relative; padding: clamp(2.6rem, 6vw, 4.5rem) 0; }
 .rp-section--alt { background: var(--paper-2); border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); }
 .rp-kicker { font-family: var(--mono); font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--coral); font-weight: 700; }
-.rp-title { font-size: var(--ts-title); font-weight: 850; letter-spacing: -.015em; margin: .5rem 0 0; max-width: 20ch; text-wrap: balance; }
+.rp-title { font-size: var(--ts-title); font-weight: 850; letter-spacing: -.015em; margin: .5rem 0 0; text-wrap: balance; }
 .rp-lede { color: var(--ink-2); max-width: 64ch; margin: 1rem 0 0; font-size: 1.02rem; }
 .rp-lede b { color: var(--ink); }
 
@@ -452,7 +452,7 @@
 
 /* ---------- closing CTA ---------- */
 .rp-close { text-align: left; }
-.rp-close h2 { font-size: var(--ts-title); font-weight: 850; letter-spacing: -.015em; margin: 0; max-width: 18ch; text-wrap: balance; }
+.rp-close h2 { font-size: var(--ts-title); font-weight: 850; letter-spacing: -.015em; margin: 0; text-wrap: balance; }
 .rp-close p { color: var(--ink-2); margin: .8rem 0 1.4rem; max-width: 52ch; }
 
 /* ---------- two-column split: words + relevant screen ---------- */
@@ -771,7 +771,7 @@
 .rp-work__n { font-family: var(--mono); font-size: .68rem; color: var(--coral); font-weight: 700; display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
 .rp-work__tag { font-family: var(--mono); font-size: .58rem; letter-spacing: .08em; text-transform: uppercase; color: var(--green);
   border: 1px solid color-mix(in srgb, var(--green) 40%, transparent); border-radius: 999px; padding: .12rem .5rem; }
-.rp-work__title { font-size: var(--ts-title); font-weight: 850; letter-spacing: -.015em; margin: .3rem 0 .25rem; }
+.rp-work__title { font-size: var(--ts-title); font-weight: 850; letter-spacing: -.015em; margin: .3rem 0 .25rem; text-wrap: balance; }
 .rp-work__sub { font-family: var(--mono); font-size: .64rem; letter-spacing: .06em; text-transform: uppercase; color: var(--green); }
 .rp-work__desc { color: var(--ink-2); margin: .75rem 0 0; max-width: 52ch; font-size: .95rem; }
 /* Editorial "contact sheet" crop: a thin-ruled plate with near-square corners
@@ -852,7 +852,7 @@
 }
 
 /* ---------- thanks + share + woohoo ---------- */
-.rp-thanks .rp-title { max-width: 16ch; }
+.rp-thanks .rp-title { text-wrap: balance; }
 .rp-shareRow { display: flex; align-items: center; flex-wrap: wrap; gap: .3rem; margin-top: 1.5rem; }
 .rp-share { font: inherit; font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 700;
   color: var(--on-green); background: var(--green); border: 0; border-radius: var(--r-plate); min-height: 44px; padding: .72rem 1.15rem; cursor: pointer; display: inline-flex; align-items: center; gap: .5rem;

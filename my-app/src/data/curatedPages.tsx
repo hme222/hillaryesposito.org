@@ -171,7 +171,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       },
     ],
     strengths: [
-      "Sweats the interaction details users feel but rarely name",
+      "Works at the level of timing, defaults, and the one screen that earns trust",
       "Chooses calm, trustworthy defaults over loud ones",
       "Uses research to pressure-test taste, not replace it",
       "Knows the best consumer patterns cold, from 200+ screens studied firsthand",

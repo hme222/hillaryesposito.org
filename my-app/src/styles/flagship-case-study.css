@@ -61,7 +61,7 @@
 .flagship-page .rp-cinema[id],
 .flagship-page .rp-decisionStory[id] { scroll-margin-top: 150px; }
 
-.fp-hero .rp-h1 { max-width: 10ch; }
+.fp-hero .rp-h1 { text-wrap: balance; }
 .fp-hero .rp-sub + .rp-cta { margin-top: 1rem; }
 /* 10ch and a 4.35rem ceiling suit one-word titles (Grove., Mobbin.). "Memorial
    Sloan Kettering." is three long words, and at that size the single word

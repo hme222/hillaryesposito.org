@@ -142,7 +142,7 @@ const OVERRIDES = [
   { topic: "Reminder tone", ai: "Guilt and urgency — “your plant misses you.”", me: "One calm morning summary.", why: "Notifications are the #1 reason people delete a plant app." },
   { topic: "Gamification", ai: "Badges, streaks, and a leaderboard.", me: "An AI plant personality you earn — a feeling, not points.", why: "Care that feels like paperwork is the top reason people quit." },
   { topic: "Plant ID confidence", ai: "One confident answer, every time.", me: "Top guesses, how sure it is, and its sources.", why: "False certainty is the fastest way to lose trust." },
-  { topic: "Pet safety", ai: "Generic care tips.", me: "Toxic-to-pets warnings the moment you add a plant, with sources.", why: "Nine of twelve new owners raised it unprompted, before I ever asked. When a plant can hurt a cat, a wrong guess isn’t a suggestion — it’s a risk." },
+  { topic: "Pet safety", ai: "Generic care tips.", me: "Toxic-to-pets warnings the moment you add a plant, with sources.", why: "New owners raised it unprompted, before I ever asked. When a plant can hurt a cat, a wrong guess isn’t a suggestion — it’s a risk." },
   { topic: "Notification frequency", ai: "Nudge whenever engagement dips.", me: "One summary per group; only true emergencies interrupt.", why: "A reminder can never become the reason someone leaves." },
 ];
 

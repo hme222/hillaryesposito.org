@@ -212,7 +212,7 @@
   font-family: var(--shell-mono);
 }
 .site-footer__statement {
-  max-width: 18ch;
+  text-wrap: balance;
   color: var(--shell-ink);
   font-family: var(--shell-sans);
   font-size: clamp(2rem, 3.5vw, 3.7rem);
