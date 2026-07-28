@@ -12,26 +12,26 @@ _Last updated: 2026-07-27 by Designpowers full portfolio release review_
 **Problem:** Grove has a distinctive human-over-AI design language but does not yet demonstrate the full range of product craft available through immersive pacing, live system proof, varied evidence layouts, and interaction.
 **Primary audience:** UX/product/AI-design recruiters, hiring managers, and design peers; complete equivalents required for screen-reader, keyboard, low-vision, motion-sensitive, cognitively overloaded, and multilingual readers.
 **Success metric:** Account for all 84 audited Pilgrimz mechanics through direct Grove adaptations, system equivalents, or accessible equivalents while preserving truthful evidence, Hillary’s voice, responsive integrity, and WCAG 2.2 AA.
-**Approved brief:** `docs/designpowers/briefs/2026-07-23-portfolio-flagship-case-study-system.md`
+**Approved brief:** `design-docs/briefs/2026-07-23-portfolio-flagship-case-study-system.md`
 
 ### Active Initiative: Portfolio Flagship Case-Study System
 
 **Problem:** Grove, MSK, and Mobbin contain strong evidence but use inconsistent page structures and levels of craft.
 **Primary audience:** Recruiters scanning in 30 seconds, product/UX hiring managers evaluating depth, and readers using keyboard, screen reader, zoom, reduced motion, or Spanish content.
 **Success metric:** All three live English case studies share one reusable narrative spine, retain truthful project-specific evidence, remain visually distinct, and pass rendered review at 390px, 900px, and 1440px.
-**Approved brief:** `docs/designpowers/briefs/2026-07-23-portfolio-flagship-case-study-system.md`
+**Approved brief:** `design-docs/briefs/2026-07-23-portfolio-flagship-case-study-system.md`
 **Status:** Verified complete. Production build and structural accessibility tests pass; responsive, dark-mode, language, contrast, and truth reviews are recorded.
 
 ### Next Initiative: Remaining Portfolio Surfaces
 
 **Scope:** Home, About, recruiter-curated pages, project cards, and the wider portfolio shell.
 **Status:** Verified complete. The editorial system now covers the global shell, Home, About, recruiter view, curated pages, fashion artifact, and 404 recovery. Primary routes pass rendered reflow review at 320px, 390px, 900px, and 1440px; short-height mobile navigation, dark mode, Spanish metadata, recruiter flow, production build, and 15 structural/interaction tests pass.
-**Approved brief:** `docs/designpowers/briefs/2026-07-23-remaining-portfolio-editorial-system.md`
+**Approved brief:** `design-docs/briefs/2026-07-23-remaining-portfolio-editorial-system.md`
 
 ### Latest Quality Pass: Riso Home and Portfolio UX
 
 **Status:** Verified complete. The active Riso Home now preserves the global section-navigation contract, handles cross-route deep links, translates with the shared Spanish shell, and restores the mobile recruiter shortcut as a tertiary action. Tailored role pages now include chapter wayfinding. Six representative routes pass 24 rendered width checks from 320–1440px with no horizontal overflow; the accessibility/interaction suite passes 16/16 and the production build succeeds.
-**Review:** `docs/designpowers/reviews/2026-07-24-high-craft-ux-pass.md`
+**Review:** `design-docs/reviews/2026-07-24-high-craft-ux-pass.md`
 
 ### Latest Repair Pass: Full Portfolio Pre-Reveal
 
@@ -39,7 +39,7 @@ _Last updated: 2026-07-27 by Designpowers full portfolio release review_
 
 **Verification:** 29/29 tests pass; production build succeeds. Rendered checks passed at 390px and 1440px for Home and at 390px for Grove (English/Spanish), MSK, Mobbin, About, Indyx, and Fashion with no page-level horizontal overflow or broken images. Canonical redirects and route metadata were verified in-browser. The wider 320/768/900, 200% zoom, short-height, and complete dark-mode matrix remains release hardening rather than an unresolved design blocker.
 
-**Review:** `docs/designpowers/reviews/2026-07-24-full-portfolio-pre-reveal-review.md`
+**Review:** `design-docs/reviews/2026-07-24-full-portfolio-pre-reveal-review.md`
 
 ### Latest Cohesion Pass: Senior Graphic Design Review
 
@@ -47,7 +47,7 @@ _Last updated: 2026-07-27 by Designpowers full portfolio release review_
 
 **Verification:** Home, About, Grove, MSK, Mobbin, Indyx, and Fashion pass rendered review at 1440 × 1000 and 390 × 844 with no page-level horizontal overflow or broken images. Mobile navigation and dark-mode Grove were also reviewed. The structural/interaction suite passes 29/29, the optimized production build succeeds, and diff whitespace checks pass.
 
-**Review:** `docs/designpowers/reviews/2026-07-26-senior-graphic-design-cohesion-review.md`
+**Review:** `design-docs/reviews/2026-07-26-senior-graphic-design-cohesion-review.md`
 
 ### Latest Critic Closeout: All Findings Reconciled
 
@@ -71,7 +71,7 @@ Owner live review during the same session produced eight further repairs: the MS
 
 **Verification:** 34/34 tests pass, the optimized production build succeeds, and the baseline 32-state rendered audit found no overflow, broken images, missing alt attributes, duplicate IDs, heading skips, console errors, or invisible/unstyled sampled focus stops. Post-repair rendered and reduced-motion reruns remain pending.
 
-**Review:** `docs/designpowers/reviews/2026-07-27-full-portfolio-release-review.md`
+**Review:** `design-docs/reviews/2026-07-27-full-portfolio-release-review.md`
 
 ### Carryover Audit: Old Design vs Redesign (2026-07-27)
 
@@ -98,7 +98,7 @@ Restored: Grove's survey answers (74% reminders, 61% camera ID, 15+ notification
 - **Aesthetic principles:** Warm restraint, Organic within structure, Typography does the heavy lifting, Craft you feel not announce, Specific to Hillary
 - **Grove storytelling voice:** Direct, evidence-led, warm, dryly funny, and self-aware; confident and plainspoken, never agency jargon or AI-as-protagonist copy
 - **Painted-cartography override:** Maps are collage material, not navigation interfaces. Prefer photographic memory, watercolor bloom, torn plates, imperfect overprint, and hand-drawn gestures; avoid compass, scale, graticule, coordinates, route pins, survey language, and military/GIS associations.
-- **Taste document:** docs/designpowers/taste/2026-07-24-painted-cartography-taste-addendum.md
+- **Taste document:** design-docs/taste/2026-07-24-painted-cartography-taste-addendum.md
 
 ## Decisions Log
 | Decision | Rationale | Source |
@@ -216,21 +216,21 @@ Restored: Grove's survey answers (74% reminders, 61% camera ID, 15+ notification
 | Styles | my-app/src/styles/App.css |
 | Canonical cohesion layer | my-app/src/styles/portfolio-cohesion.css |
 | LinkedIn strategy | (provided by user in conversation, not saved as file) |
-| Riso/Grove flagship responsive review | docs/designpowers/reviews/2026-07-23-riso-grove-flagship-review.md |
-| Portfolio flagship case-study brief | docs/designpowers/briefs/2026-07-23-portfolio-flagship-case-study-system.md |
-| Portfolio flagship case-study implementation plan | docs/designpowers/plans/2026-07-23-portfolio-flagship-case-study-system-plan.md |
-| Portfolio flagship content map | docs/designpowers/matrices/2026-07-23-portfolio-case-study-content-map.md |
-| Portfolio flagship responsive review | docs/designpowers/reviews/2026-07-23-portfolio-flagship-responsive-review.md |
-| Portfolio flagship final critique | docs/designpowers/reviews/2026-07-23-portfolio-flagship-final-critique.md |
-| Remaining portfolio editorial brief | docs/designpowers/briefs/2026-07-23-remaining-portfolio-editorial-system.md |
-| Remaining portfolio editorial plan | docs/designpowers/plans/2026-07-23-remaining-portfolio-editorial-system-plan.md |
-| Remaining portfolio editorial critique | docs/designpowers/reviews/2026-07-23-remaining-portfolio-editorial-critique.md |
-| Harsh portfolio critic crosswalk | docs/designpowers/reviews/2026-07-24-harsh-portfolio-critic-crosswalk.md |
-| High-craft visual and UX pass | docs/designpowers/reviews/2026-07-24-high-craft-ux-pass.md |
-| Painted cartography brief | docs/designpowers/briefs/2026-07-24-painted-cartography-art-direction.md |
-| Painted cartography taste addendum | docs/designpowers/taste/2026-07-24-painted-cartography-taste-addendum.md |
-| Full portfolio pre-reveal review | docs/designpowers/reviews/2026-07-24-full-portfolio-pre-reveal-review.md |
-| Senior graphic design cohesion review | docs/designpowers/reviews/2026-07-26-senior-graphic-design-cohesion-review.md |
+| Riso/Grove flagship responsive review | design-docs/reviews/2026-07-23-riso-grove-flagship-review.md |
+| Portfolio flagship case-study brief | design-docs/briefs/2026-07-23-portfolio-flagship-case-study-system.md |
+| Portfolio flagship case-study implementation plan | design-docs/plans/2026-07-23-portfolio-flagship-case-study-system-plan.md |
+| Portfolio flagship content map | design-docs/matrices/2026-07-23-portfolio-case-study-content-map.md |
+| Portfolio flagship responsive review | design-docs/reviews/2026-07-23-portfolio-flagship-responsive-review.md |
+| Portfolio flagship final critique | design-docs/reviews/2026-07-23-portfolio-flagship-final-critique.md |
+| Remaining portfolio editorial brief | design-docs/briefs/2026-07-23-remaining-portfolio-editorial-system.md |
+| Remaining portfolio editorial plan | design-docs/plans/2026-07-23-remaining-portfolio-editorial-system-plan.md |
+| Remaining portfolio editorial critique | design-docs/reviews/2026-07-23-remaining-portfolio-editorial-critique.md |
+| Harsh portfolio critic crosswalk | design-docs/reviews/2026-07-24-harsh-portfolio-critic-crosswalk.md |
+| High-craft visual and UX pass | design-docs/reviews/2026-07-24-high-craft-ux-pass.md |
+| Painted cartography brief | design-docs/briefs/2026-07-24-painted-cartography-art-direction.md |
+| Painted cartography taste addendum | design-docs/taste/2026-07-24-painted-cartography-taste-addendum.md |
+| Full portfolio pre-reveal review | design-docs/reviews/2026-07-24-full-portfolio-pre-reveal-review.md |
+| Senior graphic design cohesion review | design-docs/reviews/2026-07-26-senior-graphic-design-cohesion-review.md |
 | Painted cartography hero plate | my-app/public/riso/painted-cartography-01.jpg |
 
 ## Design Debt Register
