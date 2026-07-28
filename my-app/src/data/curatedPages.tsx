@@ -79,8 +79,8 @@ export const curatedPages: Record<string, CuratedPage> = {
     ],
     featuredWork: [
       { title: "Grove — a consumer app for what you already own", reason: "Cataloging, calm daily-use flows, cost-of-care awareness, and AI-override judgment. The closest analog to Indyx: organize what you own, reduce overwhelm, keep humans in charge." },
-      { title: "Mobbin — 200+ consumer app screens, studied for craft", reason: "Pattern fluency and taste for how great consumer apps handle onboarding, discovery, and data — directly useful for cataloging speed and outfit discoverability." },
-      { title: "The 'AI vs. mine' decisions", reason: "A record of where I let the algorithm accelerate the work and where I overruled it — Indyx's stylist-not-algorithm belief, shown not told." },
+      { title: "Mobbin — 200+ consumer app screens, studied for craft", reason: "Pattern fluency and taste from 200+ screens documented across three finance apps — directly useful for cataloging speed and outfit discoverability." },
+      { title: "The 'AI vs. mine' calls", reason: "A record of where I let the algorithm accelerate the work and where I overruled it — Indyx's stylist-not-algorithm belief, shown not told." },
     ],
     strengths: [
       "Consumer interaction craft: onboarding, daily-use loops, and the small details that make an app feel joyful instead of a chore",
@@ -145,7 +145,7 @@ export const curatedPages: Record<string, CuratedPage> = {
     ],
     intro: [
       "Consumer products win or lose on details most people never consciously notice: the timing of a reveal, a calm default, the one screen that earns trust. That's the work I care about most.",
-      "I'm not coming from a decade inside big consumer social. I'm coming with a functional AI consumer-app prototype, a research habit that kills my own bad ideas, and years spent studying how the best apps actually behave, screen by screen.",
+      "I'm not coming from a decade inside big consumer social. I'm coming with a functional AI consumer-app prototype, a research habit that kills my own bad ideas, and years spent studying how the best consumer products actually behave, screen by screen.",
     ],
     proofPoints: [
       { stat: "5", detail: "AI calls I overruled to keep Grove calm and honest — every one logged on the case study" },
@@ -159,10 +159,10 @@ export const curatedPages: Record<string, CuratedPage> = {
       },
       {
         title: "Mobbin — consumer pattern study",
-        reason: "200+ screens documented for craft; shows pattern fluency and taste for how great apps behave.",
+        reason: "200+ screens documented for craft; pattern fluency across three finance apps, screen by screen.",
       },
       {
-        title: "The 'AI vs mine' calls",
+        title: "The 'AI vs. mine' calls",
         reason: "A visual record of five product decisions where craft and research beat the obvious AI default.",
       },
       {
@@ -171,10 +171,10 @@ export const curatedPages: Record<string, CuratedPage> = {
       },
     ],
     strengths: [
-      "Works at the level of timing, defaults, and the one screen that earns trust",
-      "Chooses calm, trustworthy defaults over loud ones",
-      "Uses research to pressure-test taste, not replace it",
-      "Knows the best consumer patterns cold, from 200+ screens studied firsthand",
+      "Interaction craft at the level of timing, defaults, and the one screen that earns trust",
+      "Calm, trustworthy defaults over loud ones",
+      "Research that pressure-tests taste instead of replacing it",
+      "Pattern fluency from 200+ consumer screens studied firsthand",
     ],
     relevantExperience: [
       "Grove is my clearest consumer-craft artifact: I designed the interaction model, the AI trust states, and the calm reminder system, then built a functional prototype — and overruled the AI wherever a wrong call would cost someone's trust.",
@@ -223,7 +223,7 @@ export const curatedPages: Record<string, CuratedPage> = {
     eyebrow: "Complex systems UX · internal tools · healthcare product thinking",
     headline: "Designing trusted tools for complex healthcare workflows",
     subhead:
-      "I am a UX and product designer with an MHA and healthcare operations depth, focused on reducing friction in clinical and operational work without losing clarity or trust.",
+      "I'm a UX and product designer with an MHA and healthcare operations depth, focused on reducing friction in clinical and operational work without losing clarity or trust.",
     meta: [
       { label: "Focus", value: "Complex systems UX" },
       { label: "Strength", value: "Internal tools + product judgment" },
@@ -232,7 +232,7 @@ export const curatedPages: Record<string, CuratedPage> = {
     ],
     intro: [
       "My strongest product work starts with how care and operations actually run: where teams slow down, where handoffs break, and where the system asks too much of the people using it. I bring healthcare operations, UX research, internal tools, and product judgment together to make those moments clearer and easier to act on.",
-      "I do not treat healthcare like generic SaaS. I understand the pressure behind clinical and operational work, and I design with that reality in mind so products support better decisions, smoother coordination, and more usable day-to-day workflows.",
+      "I don't treat healthcare like generic SaaS. I understand the pressure behind clinical and operational work, and I design with that reality in mind so products support better decisions, smoother coordination, and more usable day-to-day workflows.",
     ],
     proofPoints: [
       { stat: "21,000+", detail: "Clinicians and administrative staff affected by workflow redesign work at Memorial Sloan Kettering" },
@@ -258,9 +258,9 @@ export const curatedPages: Record<string, CuratedPage> = {
       },
     ],
     strengths: [
-      "Turns operational pain points into clearer product direction",
-      "Brings healthcare context that shortens the learning curve on real care workflows",
-      "Works comfortably across research, internal tools, and product execution",
+      "Operational pain points turned into clearer product direction",
+      "Healthcare context that shortens the learning curve on real care workflows",
+      "Range across research, internal tools, and product execution",
       "Improves usability without losing operational rigor or trust",
     ],
     relevantExperience: [
@@ -282,7 +282,7 @@ export const curatedPages: Record<string, CuratedPage> = {
     hiringManagerNote:
       "I add the most value when product decisions change how care teams and operational teams actually get work done.",
     closing:
-      "If your team needs a designer who can connect healthcare context, product judgment, and measurable systems improvement, this is the clearest view of what I would bring.",
+      "If your team needs a designer who can connect healthcare context, product judgment, and measurable systems improvement, this is the clearest view of what I'd bring.",
     supportLinks: [
       {
         label: "MSK case study",
@@ -353,14 +353,14 @@ export const curatedPages: Record<string, CuratedPage> = {
       },
     ],
     strengths: [
-      "Frames AI quality through intent, boundaries, feedback, evaluation, and reuse",
-      "Brings healthcare fluency that reduces ramp time on clinical and care-team workflows",
-      "Designs for escalation, uncertainty, human override, and trust instead of treating AI as magic",
+      "AI quality framed through intent, boundaries, feedback, evaluation, and reuse",
+      "Healthcare fluency that reduces ramp time on clinical and care-team workflows",
+      "Design for escalation, uncertainty, human override, and trust — never AI as magic",
       "Can connect AI interaction patterns to reusable product and design-system decisions",
     ],
     relevantExperience: [
       "At Memorial Sloan Kettering, I worked close to healthcare operations and internal workflow improvement. That context matters for AI interaction design because the stakes are not only task completion; they include trust, escalation, appropriateness, and the human decision that follows the interface.",
-      "Grove AI is the clearest current artifact for my AI product direction: intent mapping, prompt-assisted prototyping, trust states, and human fallback judgment. I would present it as focused AI product exploration, not as a shipped clinical AI product.",
+      "Grove AI is the clearest current artifact for my AI product direction: intent mapping, prompt-assisted prototyping, trust states, and human fallback judgment. I'd present it as focused AI product exploration, not as a shipped clinical AI product.",
     ],
     keywords: [
       "AI interaction design",
@@ -375,9 +375,9 @@ export const curatedPages: Record<string, CuratedPage> = {
       "design systems",
     ],
     hiringManagerNote:
-      "I am not trying to look like an AI researcher. I am positioning as a designer who can make AI experiences safer, clearer, and more useful inside healthcare workflows.",
+      "I'm not trying to look like an AI researcher. I'm positioning as a designer who can make AI experiences safer, clearer, and more useful inside healthcare workflows.",
     closing:
-      "For Spring Health, I would bring healthcare fluency, AI interaction judgment, and the calm systems thinking needed to design for people who may be navigating vulnerable moments.",
+      "For Spring Health, I'd bring healthcare fluency, AI interaction judgment, and the calm systems thinking needed to design for people who may be navigating vulnerable moments.",
     supportLinks: [
       {
         label: "Grove case study",
@@ -454,14 +454,14 @@ export const curatedPages: Record<string, CuratedPage> = {
       },
     ],
     strengths: [
-      "Moves from user need to testable interaction without losing problem clarity",
-      "Uses AI-assisted prototyping as a way to learn faster, not as a substitute for UX judgment",
+      "A path from user need to testable interaction without losing problem clarity",
+      "AI-assisted prototyping as a way to learn faster, never a substitute for UX judgment",
       "Considers accessibility, edge cases, and engineering handoff before treating prototypes as production-ready",
       "Comfortable with operational and data-heavy product contexts where clarity matters",
     ],
     relevantExperience: [
       "My work has consistently involved making operational data easier to understand and act on. In healthcare and medical logistics, that meant clarifying workflows, status, responsibility, and the next action under real constraints.",
-      "For EnergyCAP, I would translate that into sustainability and energy data: research what users actually need to decide, prototype just enough to test the interaction, and partner with engineering on what can become real.",
+      "For EnergyCAP, I'd translate that into sustainability and energy data: research what users actually need to decide, prototype just enough to test the interaction, and partner with engineering on what can become real.",
     ],
     keywords: [
       "UX design",
@@ -477,9 +477,9 @@ export const curatedPages: Record<string, CuratedPage> = {
       "complex systems",
     ],
     hiringManagerNote:
-      "I am strongest when I can move from research to working artifact without losing the user's actual need in the process.",
+      "I'm strongest when I can move from research to working artifact without losing the user's actual need in the process.",
     closing:
-      "For EnergyCAP, I would bring a practical, evidence-led UX approach to complex sustainability and energy data workflows.",
+      "For EnergyCAP, I'd bring a practical, evidence-led UX approach to complex sustainability and energy data workflows.",
     supportLinks: [
       {
         label: "Grove case study",
@@ -554,9 +554,9 @@ export const curatedPages: Record<string, CuratedPage> = {
       },
     ],
     strengths: [
-      "Designs for capture, context, state, trust, and speed in workflows that happen outside ideal conditions",
+      "Design for capture, context, state, trust, and speed in workflows that happen outside ideal conditions",
       "Understands how unclear handoffs create immediate downstream consequences",
-      "Brings mobile pattern fluency and product-system awareness from ongoing Mobbin analysis",
+      "Mobile pattern fluency and product-system awareness from ongoing Mobbin analysis",
       "Connects AI-enabled workflow ideas to practical user trust and team coordination",
     ],
     relevantExperience: [
@@ -576,9 +576,9 @@ export const curatedPages: Record<string, CuratedPage> = {
       "team coordination",
     ],
     hiringManagerNote:
-      "I am not coming from construction tech, but I am coming from environments where broken workflows, missing information, and unclear handoffs have immediate consequences.",
+      "I'm not coming from construction tech, but I'm coming from environments where broken workflows, missing information, and unclear handoffs have immediate consequences.",
     closing:
-      "For CompanyCam, I would bring workflow depth, mobile pattern fluency, and a practical product-design approach to tools built for people doing real work.",
+      "For CompanyCam, I'd bring workflow depth, mobile pattern fluency, and a practical product-design approach to tools built for people doing real work.",
     supportLinks: [
       {
         label: "MSK case study",
@@ -654,14 +654,14 @@ export const curatedPages: Record<string, CuratedPage> = {
       },
     ],
     strengths: [
-      "Designs for confidence before action, especially when information carries risk",
-      "Translates regulated-systems judgment from healthcare and military contexts into product decisions",
-      "Uses research and product patterns to clarify flows, states, hierarchy, and next steps",
+      "Design for confidence before action, especially when information carries risk",
+      "Regulated-systems judgment from healthcare and military contexts, applied to product decisions",
+      "Research and product patterns that clarify flows, states, hierarchy, and next steps",
       "Understands why design systems matter for complex products that need coherence over time",
     ],
     relevantExperience: [
-      "My healthcare and military background is not a substitute for fintech experience, but it is strong evidence of regulated-systems judgment. I have worked in contexts where clarity, trust, status, and role-based decisions mattered.",
-      "For Lumin Digital, I would foreground MSK, Mobbin, and Grove: measurable workflow redesign, pattern fluency, and product decisions grounded in clarity for coherent digital systems.",
+      "My healthcare and military background isn't a substitute for fintech experience, but it is strong evidence of regulated-systems judgment. I have worked in contexts where clarity, trust, status, and role-based decisions mattered.",
+      "For Lumin Digital, I'd foreground MSK, Mobbin, and Grove: measurable workflow redesign, pattern fluency, and product decisions grounded in clarity for coherent digital systems.",
     ],
     keywords: [
       "product design",
@@ -676,9 +676,9 @@ export const curatedPages: Record<string, CuratedPage> = {
       "AI curiosity",
     ],
     hiringManagerNote:
-      "I would position my healthcare and military background as evidence of regulated-systems judgment, not as a substitute for fintech experience.",
+      "I'd position my healthcare and military background as evidence of regulated-systems judgment, not as a substitute for fintech experience.",
     closing:
-      "For Lumin Digital, I would bring product design discipline, workflow clarity, and a strong systems lens to digital banking experiences.",
+      "For Lumin Digital, I'd bring product design discipline, workflow clarity, and a strong systems lens to digital banking experiences.",
     supportLinks: [
       {
         label: "MSK case study",
@@ -729,7 +729,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       { label: "Best fit", value: "Digital, ecommerce, social, email, lookbook, and launch support" },
     ],
     intro: [
-      "My main portfolio is not a traditional fashion book, so I would not position myself as someone with years of fashion-house experience. The honest fit is hands-on graphic design work that needs clean hierarchy, strong typography, elevated digital execution, and careful production across channels.",
+      "My main portfolio is not a traditional fashion book, so I wouldn't position myself as someone with years of fashion-house experience. The honest fit is hands-on graphic design work that needs clean hierarchy, strong typography, elevated digital execution, and careful production across channels.",
       "What maps directly to this role is the way I work: I can take a direction, structure the visual system, create polished layouts, iterate quickly, and keep output consistent across ecommerce, social, email, presentation, and campaign surfaces. My UX background is also useful here because the role asks for digitally forward brand work that has to perform, not just look good.",
     ],
     proofPoints: [
@@ -752,10 +752,10 @@ export const curatedPages: Record<string, CuratedPage> = {
       },
     ],
     strengths: [
-      "Builds clean layout systems that can scale across campaign, ecommerce, social, email, and presentation assets",
-      "Uses hierarchy, spacing, type, and image placement to make content feel elevated and easy to scan",
+      "Clean layout systems that scale across campaign, ecommerce, social, email, and presentation assets",
+      "Hierarchy, spacing, type, and image placement that make content feel elevated and easy to scan",
       "Can work from brand or seasonal direction, explore options, and adapt to feedback without losing craft quality",
-      "Brings production discipline: details, accuracy, naming, handoff, versioning, and repeatable systems",
+      "Production discipline: details, accuracy, naming, handoff, versioning, and repeatable systems",
       "Strong fit for digital campaign assets, ecommerce modules, and lookbook layouts",
     ],
     relevantExperience: [
@@ -789,9 +789,9 @@ export const curatedPages: Record<string, CuratedPage> = {
       "Illustrator",
     ],
     hiringManagerNote:
-      "I am not asking you to read me as a traditional fashion art director. I am strongest as a precise, hands-on visual designer who can support elevated digital, campaign, ecommerce, and production work with strong layout discipline and UX-aware judgment.",
+      "I'm not asking you to read me as a traditional fashion art director. I'm strongest as a precise, hands-on visual designer who can support elevated digital, campaign, ecommerce, and production work with strong layout discipline and UX-aware judgment.",
     closing:
-      "For Manière De Voir's Graphic Designer role, I would bring polished layout judgment, production reliability, digital UX awareness, and the ability to translate creative direction into consistent assets across channels.",
+      "For Manière De Voir's Graphic Designer role, I'd bring polished layout judgment, production reliability, digital UX awareness, and the ability to translate creative direction into consistent assets across channels.",
     supportLinks: [
       {
         label: "Grove case study",

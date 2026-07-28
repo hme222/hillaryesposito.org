@@ -388,7 +388,7 @@ export default function RisoGrove() {
       <section className="rp-section rp-section--alt">
         <div className="rp-wrap">
           <p className="rp-kicker">The rebuild</p>
-          <h2 className="rp-title">Four decisions, from AI-built to trustworthy</h2>
+          <h2 className="rp-title">Four decisions, from AI-built to trustworthy.</h2>
           <ol className="rp-route rp-reveal">
             {LEGS.map((leg) => (
               <li className={`rp-leg${leg.now ? " rp-leg--now" : ""}`} key={leg.n}>
@@ -408,7 +408,7 @@ export default function RisoGrove() {
       <section className="rp-section" id="grove-redesign">
         <div className="rp-wrap">
           <p className="rp-kicker">The first version · what Emergent built</p>
-          <h2 className="rp-title">Everything the AI built, screen by screen</h2>
+          <h2 className="rp-title">Everything the AI built, screen by screen.</h2>
           <p className="rp-lede">One AI pass produced all of this. Move through the screens — <b>this is what I’m redesigning from</b>, not the finished product.</p>
           <GroveScreenGallery screens={SCREENS} />
         </div>
@@ -418,7 +418,7 @@ export default function RisoGrove() {
       <section className="rp-section" id="grove-decisions">
         <div className="rp-wrap">
           <p className="rp-kicker">The redesign · what changes and why</p>
-          <h2 className="rp-title">Three features, one decision each</h2>
+          <h2 className="rp-title">Three features, one decision each.</h2>
           <span className="rp-inprogress">In progress · Phase 2 of 3</span>
           <p className="rp-lede" style={{ marginTop: "1.1rem" }}>
             Here’s each must-have feature: the screen Emergent built, and what the redesign does instead.
@@ -473,7 +473,7 @@ export default function RisoGrove() {
               rule never matched this page. It does now. */}
           <span id="grove-override" aria-hidden="true" />
           <p className="rp-kicker">Where I said no to the AI</p>
-          <h2 className="rp-title">Reminders that never nag</h2>
+          <h2 className="rp-title">Reminders that never nag.</h2>
           <p className="rp-lede">
             The AI wanted urgency — guilt, streaks, “your plant is counting on you.” I said no.
             Reminders should help, not guilt.
@@ -512,7 +512,7 @@ export default function RisoGrove() {
       <section className="rp-section" id="grove-system">
         <div className="rp-wrap">
           <p className="rp-phase">Foundation <span>· the system</span></p>
-          <h2 className="rp-title" style={{ marginTop: ".4rem" }}>The system underneath</h2>
+          <h2 className="rp-title" style={{ marginTop: ".4rem" }}>The system underneath.</h2>
           <p className="rp-lede">The decisions that hold Grove together — its palette, type, principles, and three interactive trust specimens. Click a token to copy it.</p>
           <GroveSystemLab />
           <h3 className="rp-subhead">Type scale</h3>
@@ -557,7 +557,7 @@ export default function RisoGrove() {
       <section className="rp-section rp-outcomeStage" id="grove-outcomes">
         <div className="rp-wrap">
           <p className="rp-kicker">Where it stands</p>
-          <h2 className="rp-title">Judgment, not just screens</h2>
+          <h2 className="rp-title">Judgment, not just screens.</h2>
           <p className="rp-lede">
             What exists so far isn’t a prettier app — it’s a more honest first version, a clear
             hypothesis to test with real people, and a decision log showing where AI accelerates the

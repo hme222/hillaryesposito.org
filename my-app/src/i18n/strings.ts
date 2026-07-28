@@ -61,7 +61,7 @@ const en = {
   "home.status": "Available for opportunities",
   "home.getInTouch": "Get in touch",
   "home.seeApproach": "See my approach →",
-  "home.riso.eyebrow": "Hillary Esposito · product designer",
+  "home.riso.eyebrow": "Hillary Esposito · Product Designer",
   "home.riso.heroTitle": "Products people have to trust.",
   "home.riso.heroLead":
     "Research rigor, AI judgment, and consumer craft — shaped by six years building software for",
@@ -92,7 +92,7 @@ const en = {
   "home.about.link": "More about me →",
 
   // ── Home: proof stats ──
-  "home.stat.patterns": "App screens studied for craft & patterns",
+  "home.stat.patterns": "App screens studied for craft and patterns",
   "home.stat.research": "People surveyed before I designed anything",
   "home.stat.scale": "People relying on systems I redesigned",
   "home.stat.mobbinSource": "Mobbin pattern study",
@@ -167,7 +167,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.status": "Disponible para nuevas oportunidades",
   "home.getInTouch": "Contácteme",
   "home.seeApproach": "Conozca mi enfoque →",
-  "home.riso.eyebrow": "Hillary Esposito · diseñadora de producto",
+  "home.riso.eyebrow": "Hillary Esposito · Diseñadora de Producto",
   "home.riso.heroTitle": "Productos en los que la gente tiene que confiar.",
   "home.riso.heroLead":
     "Rigor de investigación, criterio con IA y oficio de producto de consumo, forjados durante seis años creando software para",

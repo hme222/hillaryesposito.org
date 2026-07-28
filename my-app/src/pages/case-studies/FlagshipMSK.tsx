@@ -107,7 +107,7 @@ export default function FlagshipMSK() {
           <div className="rp-clearing">
             <span className="rp-eyebrow">Service design · process improvement · clinical systems</span>
             <h1 className="rp-h1">Memorial Sloan Kettering.</h1>
-            <span className="rp-readtime"><b>7 min</b><span>read · six years, three roles</span></span>
+            <span className="rp-readtime"><b>7 min</b><span>read · 6 years, 3 roles</span></span>
             <p className="rp-sub">
               Clinicians were printing digital records just to file them digitally again. I mapped the
               real workflow end to end, aligned clinical, IT, and operations teams, and redesigned
