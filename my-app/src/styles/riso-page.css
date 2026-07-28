@@ -500,9 +500,12 @@
 }
 
 /* ---------- scroll reveal ---------- */
-.rp-reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); }
-.rp-reveal.is-in { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) { .rp-reveal { opacity: 1; transform: none; transition: none; } }
+/* Scoped to .js-reveal, which a reveal observer adds to its root on mount.
+   Unscoped, any page that used .rp-reveal without mounting an observer rendered
+   blank — and so did every reader whose JS failed. About hit exactly that. */
+.js-reveal .rp-reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); }
+.js-reveal .rp-reveal.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .js-reveal .rp-reveal { opacity: 1; transform: none; transition: none; } }
 
 /* ---------- AI pushback deep-dive (Grove's judgment) ---------- */
 .rp-pushback { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1.3rem; align-items: center; margin-top: 2rem; }

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import useFlagshipReveal from "../hooks/useFlagshipReveal";
 import usePageTitle from "../hooks/usePageTitle";
 import { useLanguage } from "../app/LanguageContext";
 import { NewsIcon } from "../components/LineIcons";
@@ -94,11 +95,13 @@ export default function About() {
   const { lang } = useLanguage();
   const navigate = useNavigate();
   const isSpanish = lang === "es";
+  const rootRef = useRef<HTMLElement>(null);
+  useFlagshipReveal(rootRef);
   const chapters = isSpanish ? CHAPTERS_ES : CHAPTERS;
   const feedback = isSpanish ? CLIENT_FEEDBACK_ES : CLIENT_FEEDBACK;
 
   return (
-    <main className="about-page riso-page" lang={isSpanish ? "es" : "en"}>
+    <main className="about-page riso-page" lang={isSpanish ? "es" : "en"} ref={rootRef}>
       <nav className="rp-breadcrumb" aria-label={isSpanish ? "Migas de pan" : "Breadcrumb"}>
         <Link to="/?scrollTo=projects">{isSpanish ? "Trabajo" : "Work"}</Link> / <span>{isSpanish ? "Sobre mí" : "About"}</span>
       </nav>

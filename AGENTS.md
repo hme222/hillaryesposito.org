@@ -1,12 +1,12 @@
-# Designpowers
+# Portfolio Designpowers Consumer
 
-This is the Designpowers design workflow system.
+This repository is Hillary's portfolio implementation. It consumes the shared Designpowers system; it is not the canonical source for reusable agents or skills.
 
 ## Mandatory: Welcome Sequence First
 
-**Before doing anything else in a new session**, you MUST run the welcome sequence defined in `skills/using-designpowers/SKILL.md`. This is non-negotiable.
+**Before doing anything else in a new design session**, invoke the globally installed `using-designpowers` skill. Its canonical editable source is `/Users/hills_mac/Documents/Chief of Staff/designpowers-team/skills/using-designpowers/SKILL.md`. This is non-negotiable.
 
-1. Invoke the `using-designpowers` skill using the Skill tool **before** responding to any user message
+1. Invoke the globally installed `using-designpowers` skill **before** responding to any design request
 2. The skill will show the bird welcome screen and handle onboarding
 3. Do NOT skip the welcome, do NOT jump straight into design work, do NOT answer questions before the welcome runs
 
@@ -14,14 +14,18 @@ The welcome sequence checks for a returning user (taste profile at `~/.designpow
 
 **Specifically: do NOT invoke design-discovery, design-strategy, design-memory, design-state, design-taste, or any other Designpowers skill until the welcome sequence has completed.** The bird must appear. The user must see the greeting and the walkthrough offer. Only then can the pipeline begin. If any skill is invoked before the welcome, stop and run the welcome first.
 
-## Skills
+## Shared system
 
-All design skills live in `skills/`. The entry point is `skills/using-designpowers/SKILL.md` which orchestrates the entire workflow. Never bypass it.
+Reusable skills and specialist-agent instructions live in `/Users/hills_mac/Documents/Chief of Staff/designpowers-team/`. The globally installed copies under `~/.agents/skills/` are runtime artifacts, not the editable source. Never re-create shared `skills/` or `agents/` folders in this repository.
 
-Shared implementation preferences live in `skills/preferred-libraries.md`. Design skills that choose frontend libraries must follow that reference before adding or recommending dependencies.
+Project-specific portfolio guidance remains local under `designpowers/project-overrides/portfolio/`:
 
-Shared UX/UI craft guardrails live in `skills/design-quality-guardrails.md`. Design skills must use that reference to avoid generic pattern choices, respect the existing design system, resolve UX conflicts, and verify real rendered output before calling visual work complete.
+- `astryx-integration.md`
+- `case-study-show-guardrails.md`
+- `hme-inspiration-board.md`
+
+Use these only as portfolio context layered on top of the shared system. Do not promote them into global rules unless Hillary explicitly approves the generalization.
 
 ## Agents
 
-Design agents live in `agents/`. They are invoked by the workflow — do not call them directly without going through the skill orchestration.
+Invoke the Designpowers specialist roles through the shared workflow. Do not call them directly without going through skill orchestration and the current `design-state.md`.

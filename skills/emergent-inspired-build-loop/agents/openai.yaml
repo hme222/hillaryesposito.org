@@ -1,4 +1,0 @@
-interface:
-  display_name: "Emergent-Inspired Build Loop"
-  short_description: "Orchestrate scoped design-to-build iterations"
-  default_prompt: "Use $emergent-inspired-build-loop to turn this approved design direction into scoped, testable build slices with preview and recovery gates."

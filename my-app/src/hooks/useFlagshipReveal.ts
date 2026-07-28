@@ -4,6 +4,10 @@ export default function useFlagshipReveal(rootRef: RefObject<HTMLElement>) {
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return;
+    // Opt this subtree into the hidden-until-revealed state. Without the class
+    // the content is simply visible, so a missing observer costs an animation
+    // rather than the page.
+    root.classList.add("js-reveal");
     if (typeof IntersectionObserver === "undefined") {
       root.querySelectorAll<HTMLElement>(".rp-reveal").forEach((element) => element.classList.add("is-in"));
       return;

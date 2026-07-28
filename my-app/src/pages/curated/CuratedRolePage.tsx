@@ -36,6 +36,9 @@ export default function CuratedRolePage() {
 
   useEffect(() => {
     if (typeof IntersectionObserver === "undefined") return;
+    // Opt in only once the observer is definitely running; the early return
+    // above now leaves content visible instead of hidden forever.
+    document.querySelector<HTMLElement>(".riso-page")?.classList.add("js-reveal");
     const els = Array.from(document.querySelectorAll<HTMLElement>(".riso-page .rp-reveal"));
     const io = new IntersectionObserver(
       (entries) =>
