@@ -97,7 +97,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             aria-label={t("home.linkedinAria")}
           >
-            LinkedIn ↗
+            <span className="rp-ext">LinkedIn</span>
           </a>
           <a
             href="https://github.com/hme222"
@@ -105,7 +105,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             aria-label={t("footer.githubAria")}
           >
-            GitHub ↗
+            <span className="rp-ext">GitHub</span>
           </a>
         </div>
       </div>

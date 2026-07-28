@@ -196,7 +196,7 @@ export default function About() {
                     <span aria-hidden="true"><NewsIcon /></span>
                     <span>
                       <b lang={isSpanish ? "en" : undefined}>{chapter.articleLink.title}</b>
-                      <small>{chapter.articleLink.source} ↗</small>
+                      <small className="rp-ext">{chapter.articleLink.source}</small>
                     </span>
                   </a>
                 )}

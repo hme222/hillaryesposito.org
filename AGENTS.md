@@ -18,7 +18,7 @@ The welcome sequence checks for a returning user (taste profile at `~/.designpow
 
 Reusable skills and specialist-agent instructions live in `/Users/hills_mac/Documents/Chief of Staff/designpowers-team/`. The globally installed copies under `~/.agents/skills/` are runtime artifacts, not the editable source. Never re-create shared `skills/` or `agents/` folders in this repository.
 
-Project-specific portfolio guidance remains local under `designpowers/project-overrides/portfolio/`:
+Project-specific portfolio guidance remains local under `portfolio-overrides/`:
 
 - `astryx-integration.md`
 - `case-study-show-guardrails.md`

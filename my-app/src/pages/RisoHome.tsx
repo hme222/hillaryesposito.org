@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import RisoDefs from "../components/riso/RisoDefs";
 import CartoField from "../components/riso/CartoField";
+import PhaseIndicator from "../components/riso/PhaseIndicator";
 import { CLIENT_FEEDBACK, CLIENT_FEEDBACK_ES } from "../data/clientFeedback";
 import usePageTitle from "../hooks/usePageTitle";
 import { useLanguage, useT } from "../app/LanguageContext";
@@ -187,7 +188,7 @@ export default function RisoHome() {
                 <div>
                   <p className="rp-work__n">
                     {w.n}
-                    {w.tagKey && <span className="rp-work__tag">{t(w.tagKey)}</span>}
+                    {w.tagKey && <PhaseIndicator current={2} label={t(w.tagKey)} compact />}
                   </p>
                   <p className="rp-work__title">{w.title}</p>
                   <p className="rp-work__sub">{t(w.subKey)}</p>

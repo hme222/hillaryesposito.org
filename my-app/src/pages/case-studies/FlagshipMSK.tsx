@@ -255,7 +255,7 @@ export default function FlagshipMSK() {
             <article><h3>Transparency beats pretending</h3><p>When the certification feed could refresh only daily, “last refreshed” timestamps made the limitation visible instead of hiding it.</p></article>
           </div>
           <a className="fp-proofLink" href="https://www.mskcc.org/news/hillary-esposito-s-career-path-military-msk" target="_blank" rel="noopener noreferrer" aria-label="Read Hillary Esposito's career profile in MSK News (opens in new tab)">
-            <span>Independent proof · MSK News</span><b>From the military to Memorial Sloan Kettering →</b>
+            <span>Independent proof · MSK News</span><b className="rp-ext">From the military to Memorial Sloan Kettering</b>
           </a>
         </div>
       </section>

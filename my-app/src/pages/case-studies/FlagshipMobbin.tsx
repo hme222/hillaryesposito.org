@@ -134,7 +134,7 @@ export default function FlagshipMobbin() {
             </figcaption>
             <div className="rp-tags">
               {["Progress indicator", "Trust signal", "Positive reinforcement", "Data visualization", "Onboarding completion"].map((tag) => (
-                <b className="rp-tag" key={tag}>{tag}</b>
+                <b className="rp-badge rp-badge--tag" key={tag}>{tag}</b>
               ))}
             </div>
             <blockquote>

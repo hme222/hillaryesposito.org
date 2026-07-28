@@ -500,3 +500,14 @@ html[lang="es"] .riso-home .rp-clearing { max-width: 58ch; }
     transition: none !important;
   }
 }
+
+/* Restored after the dead-rule sweep: this paragraph's measure lived in a rule
+   whose sibling selectors had died, so it was collected with them and the copy
+   ran the full hero width. */
+.fashion-system-page .fashion-system-hero__copy > p:not(.fashion-system-kicker) {
+  max-width: 46ch;
+  line-height: 1.7;
+}
+@media (max-width: 760px) {
+  .fashion-system-page .fashion-system-hero__copy > p:not(.fashion-system-kicker) { max-width: 32ch; }
+}

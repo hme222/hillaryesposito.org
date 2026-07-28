@@ -9,6 +9,7 @@ import GroveScreenGallery from "../../components/riso/GroveScreenGallery";
 import GroveSystemLab from "../../components/riso/GroveSystemLab";
 import RisoDefs from "../../components/riso/RisoDefs";
 import CartoField from "../../components/riso/CartoField";
+import PhaseIndicator from "../../components/riso/PhaseIndicator";
 import SpanishCaseStudy from "../../components/SpanishCaseStudy";
 import { GROVE_ES } from "../../data/spanishCaseStudies";
 import usePageTitle from "../../hooks/usePageTitle";
@@ -372,7 +373,7 @@ export default function RisoGrove() {
                 <span className="rp-rank__label">{f.feature}</span>
                 <span className="rp-rank__track" aria-hidden="true"><i style={{ width: `${f.pct}%` }} /></span>
                 <b className="rp-rank__pct">{f.pct}%</b>
-                <span className="rp-rank__tier">{f.tier === "core" ? "Core" : "Later"}</span>
+                <span className={`rp-badge rp-badge--tier${f.tier === "core" ? " is-core" : ""}`}>{f.tier === "core" ? "Core" : "Later"}</span>
               </li>
             ))}
           </ol>
@@ -422,7 +423,7 @@ export default function RisoGrove() {
         <div className="rp-wrap">
           <p className="rp-kicker">The redesign · what changes and why</p>
           <h2 className="rp-title">Three features, one decision each.</h2>
-          <span className="rp-inprogress">In progress · Phase 2 of 3</span>
+          <PhaseIndicator current={2} label="In progress · Phase 2 of 3" />
           <p className="rp-lede" style={{ marginTop: "1.1rem" }}>
             Here’s each must-have feature: the screen Emergent built, and what the redesign does instead.
           </p>
