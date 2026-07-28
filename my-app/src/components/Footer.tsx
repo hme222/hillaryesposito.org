@@ -29,7 +29,7 @@ const COLOPHONS: Record<string, Credit[]> = {
     { icon: "⚛️", label: "React" },
     { icon: "⚡", label: "FastAPI" },
     { icon: "🍃", label: "MongoDB" },
-    { icon: "🗣️", label: "32 real opinions", es: "32 opiniones reales" },
+    { icon: "🗣️", label: "34 real opinions", es: "34 opiniones reales" },
     { icon: "✋", label: "the word “no”", es: "la palabra «no»" },
     { icon: "🧘", label: "restraint", es: "contención" },
     { icon: "☕", label: "caffeine", es: "cafeína" },

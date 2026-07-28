@@ -69,7 +69,7 @@ const en = {
   "home.riso.heroClose": "who couldn't afford a wrong guess.",
   "home.riso.workTitle": "Three products, three ways trust gets earned",
   "home.riso.groveDesc":
-    "A plant-care app an AI built in one pass. I tested it, surveyed 32 owners, and I'm rebuilding it around the one thing that keeps people: trust.",
+    "A plant-care app an AI built in one pass. I tested it, surveyed 34 owners, and I'm rebuilding it around the one thing that keeps people: trust.",
   "home.riso.mskDesc":
     "Six years redesigning clinical workflows where a wrong answer had a cost — a 20% EMR cost cut and a 70% certification-workflow gain.",
   "home.riso.mobbinDesc":
@@ -175,7 +175,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.heroClose": "que no podían permitirse un error.",
   "home.riso.workTitle": "Tres productos, tres formas de ganarse la confianza",
   "home.riso.groveDesc":
-    "Una app para el cuidado de plantas que una IA creó de una sola vez. La probé, encuesté a 32 propietarios y la estoy reconstruyendo alrededor de lo que hace que la gente se quede: la confianza.",
+    "Una app para el cuidado de plantas que una IA creó de una sola vez. La probé, encuesté a 34 propietarios y la estoy reconstruyendo alrededor de lo que hace que la gente se quede: la confianza.",
   "home.riso.mskDesc":
     "Seis años rediseñando flujos clínicos donde un error tenía un costo: 20% menos gasto en EMR y 70% de mejora en el flujo de certificación.",
   "home.riso.mobbinDesc":

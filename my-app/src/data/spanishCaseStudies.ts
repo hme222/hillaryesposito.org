@@ -4,10 +4,10 @@ export const GROVE_ES: SpanishCaseStudyData = {
   title: "Grove",
   meta: "Diseño de producto · Producto con IA · Prototipo funcional",
   intro:
-    "Grove es una app de cuidado de plantas. Una herramienta de IA llamada Emergent me construyó la app entera, rápido, llena de funciones. La probé con 5 usuarios y el problema fue evidente: demasiadas cosas, en el orden equivocado. Así que hice una encuesta a 32 personas para encontrar las pocas funciones en las que valía la pena concentrarme, y empecé a rehacerla alrededor de esas: aplazo las funciones sociales que casi nadie pidió y le enseño a la IA a admitir cuando no está segura. Porque cuando una planta es tóxica para un gato, adivinar mal no es una sugerencia. Es un riesgo.",
+    "Grove es una app de cuidado de plantas. Una herramienta de IA llamada Emergent me construyó la app entera, rápido, llena de funciones. La probé con 5 usuarios y el problema fue evidente: demasiadas cosas, en el orden equivocado. Así que hice una encuesta a 34 personas para encontrar las pocas funciones en las que valía la pena concentrarme, y empecé a rehacerla alrededor de esas: aplazo las funciones sociales que casi nadie pidió y le enseño a la IA a admitir cuando no está segura. Porque cuando una planta es tóxica para un gato, adivinar mal no es una sugerencia. Es un riesgo.",
   stats: [
     { label: "Rol", value: "Diseñadora de producto (en solitario)" },
-    { label: "Muestra", value: "32 respuestas de encuesta" },
+    { label: "Muestra", value: "34 respuestas de encuesta" },
     { label: "Tiempo", value: "Fase 2 de 3" },
     { label: "Estado", value: "Rediseño en curso" },
   ],
@@ -16,15 +16,15 @@ export const GROVE_ES: SpanishCaseStudyData = {
       eyebrow: "Dónde empieza esto",
       title: "Los dueños de plantas se olvidan. Y luego se sienten culpables.",
       body: [
-        "La mayoría de la gente que compra una planta quiere una sola cosa: mantenerla viva. Pero se olvidan de regarla, o la riegan de más, y de cualquier forma se sienten mal. Les pregunté a 32 dueños de plantas qué haría que una app de plantas se ganara un lugar en su teléfono. La respuesta más común: “Los consejos son demasiado genéricos, no toman en cuenta mi casa.” Lo que más rápido hace que borren una app, dicho por 15+ personas sin que se lo preguntara: demasiadas notificaciones. Una persona resumió todo el trabajo en seis palabras: “El cuidado de plantas debería sentirse tranquilo, no estresante.”",
-        "El punto débil: en lo que peor están los dueños nuevos es en la luz — dónde poner una planta, y por qué. Ninguna app grande lo enseña. La gente calificó su propia confianza sobre la luz en 2.4 de 5, y pidió, sin que se lo preguntara, una app que “me diga exactamente dónde colocar una planta.” Ahí, más la confianza, es donde Grove gana o no gana.",
+        "La mayoría de la gente que compra una planta quiere una sola cosa: mantenerla viva. Pero se olvidan de regarla, o la riegan de más, y de cualquier forma se sienten mal. Les pregunté a 34 dueños de plantas qué haría que una app de plantas se ganara un lugar en su teléfono. La respuesta más común: “Los consejos son demasiado genéricos, no toman en cuenta mi casa.” Lo que más rápido hace que borren una app, dicho por 11 de 34 sin que se lo preguntara: demasiadas notificaciones. Una persona resumió todo el trabajo en seis palabras: “El cuidado de plantas debería sentirse tranquilo, no estresante.”",
+        "El punto débil: en lo que peor están los dueños nuevos es en la luz — dónde poner una planta, y por qué. Ninguna app grande lo enseña. Los dueños nuevos calificaron su confianza sobre la luz en 2.4 de 5 (n=16); los experimentados, en 3.3, y pidió, sin que se lo preguntara, una app que “me diga exactamente dónde colocar una planta.” Ahí, más la confianza, es donde Grove gana o no gana.",
       ],
     },
     {
       eyebrow: "Investigación",
-      title: "Les pregunté a 32 dueños de plantas qué importa de verdad",
+      title: "Les pregunté a 34 dueños de plantas qué importa de verdad",
       body: [
-        "Después de que una prueba con 5 usuarios mostró que la primera versión estaba sobrecargada, hice una encuesta para decidir qué debía conservar el rediseño. 32 personas, desde principiantes hasta coleccionistas serios, respondieron entre el 22 de mayo y el 19 de junio de 2026.",
+        "Después de que una prueba con 5 usuarios mostró que la primera versión estaba sobrecargada, hice una encuesta para decidir qué debía conservar el rediseño. 34 personas, desde principiantes hasta coleccionistas serios, respondieron entre el 22 de mayo y el 8 de julio de 2026.",
         "Emergent había construido las funciones sociales dentro de la app. La encuesta dijo que no es por eso que la gente la descarga. Así que hice una pregunta difícil: “Si Grove solo pudiera lanzarse con TRES funciones, ¿cuáles no podrías dejar de tener?” Las tres primeras se construyeron primero. Todo lo demás espera.",
       ],
       bullets: [

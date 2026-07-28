@@ -30,7 +30,7 @@ import "../../styles/riso-page.css";
 const CHAPTERS: CaseStudyChapter[] = [
   { id: "grove-start", label: "Start", note: "A decision log, not a demo" },
   { id: "grove-brief", label: "Problem", note: "Care should fit a life already happening" },
-  { id: "grove-research", label: "Research", note: "32 real opinions" },
+  { id: "grove-research", label: "Research", note: "34 real opinions" },
   // "Redesign" used to point here, at the gallery of what the AI built — the
   // opposite of what the label promised. The gallery is now labelled for what
   // it is, and the decisions section finally has an anchor of its own.
@@ -58,9 +58,9 @@ const LEGS = [
   },
   {
     n: "03",
-    mission: "A 32-person survey found the three that matter",
+    mission: "A 34-person survey found the three that matter",
     detail:
-      "I asked what actually earns a plant app a spot on the phone: calm reminders, plant ID by camera, real help with light. Forums drew 23% — under a third.",
+      "I asked what actually earns a plant app a spot on the phone: calm reminders, plant ID by camera, real help with light. Forums drew 18%.",
     impact: "3 must-haves, not 30",
   },
   {
@@ -74,32 +74,35 @@ const LEGS = [
 ];
 
 // Recovered from the earlier version of this case study. The page claimed a
-// 32-person survey and never once reported what those 32 people said.
+// survey and never once reported what those people said.
 const SURVEY_FINDINGS = [
-  { stat: "74%", label: "called smart care reminders a must-have" },
-  { stat: "61%", label: "wanted to point a camera at a plant and have the app just tell them what it is" },
-  { stat: "15+", label: "said “too many notifications” would get the app deleted, no hesitation" },
-  { stat: "2.4/5", label: "how confident new owners felt about light — their weakest spot, by a mile" },
+  { stat: "74%", label: "picked smart care reminders as a launch dealbreaker — 25 of 34, the clear top answer" },
+  { stat: "56%", label: "wanted to point a camera at a plant and have the app just tell them what it is" },
+  { stat: "11", label: "of 34 named notification volume, unprompted, as what would make them delete it — the most-cited reason by far" },
+  { stat: "2.4", label: "out of 5: how confident new owners felt about light (n=16). Experienced owners rated themselves 3.3" },
 ];
 
-// Share of respondents who wanted each feature. Deliberately no ordinal ranks:
-// eleven features were tested and nine are charted here, so "6th of 11" is true
-// to the dataset but does not match the bars on screen. That exact mismatch was
-// corrected once already (commit add85eb) — cite shares, never positions.
+// All eleven features tested, recomputed directly from the survey export
+// (n=34). The chart previously showed nine of eleven with values that could not
+// be produced by any whole number of respondents — the omitted two included the
+// Room/Light Map, which ties for fourth. Charting every option removes both the
+// arithmetic problem and the reason ordinal ranks were banned here.
 const MVP_FEATURES = [
   { feature: "Smart care reminders", pct: 74, tier: "core" },
-  { feature: "AI plant identification (camera)", pct: 61, tier: "core" },
-  { feature: "AI photo diagnosis", pct: 45, tier: "core" },
-  { feature: "Growth photo journal", pct: 26, tier: "post" },
-  { feature: "Community forums", pct: 23, tier: "post" },
-  { feature: "Greenhouse encyclopedia", pct: 19, tier: "post" },
-  { feature: "Bulk logging", pct: 19, tier: "post" },
-  { feature: "Bouquet scanner", pct: 10, tier: "post" },
-  { feature: "Verified swapping", pct: 6, tier: "post" },
+  { feature: "AI plant identification (camera)", pct: 56, tier: "core" },
+  { feature: "AI photo diagnosis", pct: 50, tier: "core" },
+  { feature: "Growth photo journal", pct: 24, tier: "post" },
+  { feature: "Stylized room / light map", pct: 24, tier: "post" },
+  { feature: "Greenhouse encyclopedia", pct: 21, tier: "post" },
+  { feature: "Community forums", pct: 18, tier: "post" },
+  { feature: "Bulk logging", pct: 15, tier: "post" },
+  { feature: "Bouquet scanner", pct: 9, tier: "post" },
+  { feature: "Verified swapping", pct: 9, tier: "post" },
+  { feature: "Wishlist tracker", pct: 3, tier: "post" },
 ];
 
 const OUTCOMES = [
-  { n: "32", l: "plant owners surveyed before any screen changed" },
+  { n: "34", l: "plant owners surveyed before any screen changed" },
   { n: "3", l: "features that earn the download; everything else waits" },
   { n: "5", l: "AI calls I overruled to keep Grove trustworthy" },
 ];
@@ -307,7 +310,7 @@ export default function RisoGrove() {
             </span>
             <p className="rp-sub">
               An AI built this plant-care app in one pass — every feature, all at once. I tested it,
-              asked 32 owners what actually mattered, and now I’m rebuilding around <b>trust</b>. (Phase 2 of 3.)
+              asked 34 owners what actually mattered, and now I’m rebuilding around <b>trust</b>. (Phase 2 of 3.)
             </p>
             <a className="rp-cta" href="#grove-research">
               See the rebuild →
@@ -348,9 +351,9 @@ export default function RisoGrove() {
             </div>
           </div>
 
-          <h3 className="rp-subhead">What those 32 people actually said</h3>
+          <h3 className="rp-subhead">What those 34 people actually said</h3>
           <p className="rp-lede">
-            Brand-new owners through serious collectors, answered between 22 May and 19 June 2026.
+            Brand-new owners through serious collectors, answered between 22 May and 8 July 2026. Each picked the three features they considered launch dealbreakers.
           </p>
           <dl className="rp-surveyStats rp-reveal">
             {SURVEY_FINDINGS.map((f) => (
@@ -363,7 +366,7 @@ export default function RisoGrove() {
 
           <h3 className="rp-subhead">What they wanted, and what waited</h3>
           <p className="rp-lede">
-            Nine of the eleven features I tested, by share of people who wanted them. The top three
+            All eleven features tested, by share of the 34 who named each a dealbreaker. The top three
             became the core. Everything under it — including the forums and swaps sitting in the
             first build — waited.
           </p>
