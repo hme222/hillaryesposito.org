@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
+import ReadingProgress from "../../components/flagship/ReadingProgress";
 import GroveCinematic from "../../components/riso/GroveCinematic";
 import GroveDecisionStory from "../../components/riso/GroveDecisionStory";
 import GroveScreenGallery from "../../components/riso/GroveScreenGallery";
@@ -281,6 +282,7 @@ export default function RisoGrove() {
       </nav>
 
       <CaseStudyChapters project="Grove" chapters={CHAPTERS} />
+      <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
 
       {/* HERO */}
       <header className="rp-hero" id="grove-start">

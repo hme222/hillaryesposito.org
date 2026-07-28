@@ -2,6 +2,7 @@ import React, { lazy, Suspense, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
+import ReadingProgress from "../../components/flagship/ReadingProgress";
 import DecisionStory from "../../components/flagship/DecisionStory";
 import EvidenceField from "../../components/flagship/EvidenceField";
 import MSKDashboardMockup from "../../components/MSKDashboardMockup";
@@ -92,6 +93,7 @@ export default function FlagshipMSK() {
         <Link to="/">Work</Link> / <span>Memorial Sloan Kettering</span>
       </nav>
       <CaseStudyChapters project="Memorial Sloan Kettering" chapters={CHAPTERS} />
+      <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
 
       <header className="rp-hero fp-hero" id="msk-start">
         <CartoField

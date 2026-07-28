@@ -1406,3 +1406,63 @@
   .riso-page header[id],
   .riso-page .rp-decisionStory[id] { scroll-margin-top: 104px; }
 }
+
+/* ---------- reading progress ---------- */
+/* Right edge, vertically centred, and deliberately short: the bottom-right
+   corner belongs to the recruiter pill (bottom 1.75rem) and back-to-top
+   (bottom 5.5rem), and fixed-control collisions have been a defect here before.
+   Flush to the edge so it reads as a margin mark, not a floating widget. */
+.rp-progress {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  z-index: 38;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: 0 .7rem 0 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .25s ease, visibility .25s ease;
+  pointer-events: none;
+}
+.rp-progress.is-shown { opacity: 1; visibility: visible; }
+.rp-progress__track {
+  position: relative;
+  order: 2;
+  width: 2px;
+  height: min(38vh, 320px);
+  background: color-mix(in srgb, var(--ink) 16%, transparent);
+}
+.rp-progress__fill {
+  position: absolute;
+  inset: 0;
+  background: var(--coral);
+  transform-origin: top;
+}
+.rp-progress__tick {
+  position: absolute;
+  right: -3px;
+  width: 8px;
+  height: 1px;
+  background: color-mix(in srgb, var(--ink) 34%, transparent);
+}
+.rp-progress__label {
+  order: 1;
+  margin: 0;
+  text-align: right;
+  font-family: var(--mono);
+  line-height: 1.1;
+  color: var(--muted);
+}
+.rp-progress__label b { display: block; font-size: .78rem; color: var(--ink); }
+.rp-progress__label span { font-size: .55rem; letter-spacing: .12em; text-transform: uppercase; }
+.rp-progress--numeric .rp-progress__label { padding-right: .2rem; }
+
+/* Below the tablet breakpoint the sticky chapter strip already occupies the
+   orientation job, and screen edges are too tight for a second marker. */
+@media (max-width: 900px) { .rp-progress { display: none; } }
+/* The fill is a position readout, not an animation. Reduced motion keeps the
+   value and drops only the reveal transition. */
+@media (prefers-reduced-motion: reduce) { .rp-progress { transition: none; } }

@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
+import ReadingProgress from "../../components/flagship/ReadingProgress";
 import DecisionStory from "../../components/flagship/DecisionStory";
 import EvidenceField from "../../components/flagship/EvidenceField";
 import ScreenSequence, { ScreenSequenceItem } from "../../components/flagship/ScreenSequence";
@@ -50,6 +51,7 @@ export default function FlagshipMobbin() {
 
       <nav className="rp-breadcrumb" aria-label="Breadcrumb"><Link to="/">Work</Link> / <span>Mobbin</span></nav>
       <CaseStudyChapters project="Mobbin" chapters={CHAPTERS} />
+      <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
 
       <header className="rp-hero fp-hero" id="mobbin-start">
         <CartoField

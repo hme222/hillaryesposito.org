@@ -145,11 +145,15 @@ export default function About() {
           <h2 className="about-growth-title">
             {isSpanish ? "Entro en sistemas complejos y encuentro dónde se rompe la confianza." : "I enter complex systems and find where trust breaks."}
           </h2>
+          {/* Rewritten from a four-step observe/map/design/measure list. That was
+              generic process language, and it restated MSK's Observe/Align/Redesign
+              without MSK's evidence under it. These are the judgment calls rather
+              than the stages — things that are true of this practice specifically. */}
           <ol className="about-pattern-list">
-            <li>{isSpanish ? "Observo cómo el trabajo ocurre realmente, no solo cómo el proceso dice que debería ocurrir." : "I observe how the work actually happens, not just how the process says it should happen."}</li>
-            <li>{isSpanish ? "Mapeo los puntos donde personas, permisos, datos y herramientas dejan de coincidir." : "I map where people, permissions, data, and tools stop matching each other."}</li>
-            <li>{isSpanish ? "Diseño el siguiente paso claro: la acción, estado o flujo que reduce la fricción." : "I design the clearer next step: the action, status, or flow that reduces friction."}</li>
-            <li>{isSpanish ? "Mido si el cambio se sostiene cuando personas reales tienen que usarlo bajo presión." : "I measure whether the change holds when real people have to use it under pressure."}</li>
+            <li>{isSpanish ? "Busco primero el atajo. La nota adhesiva, la hoja de cálculo personal, el paso que todos se saltan. Ahí vive el proceso real, y nunca está en el documento del proceso." : "I look for the workaround first. The sticky note, the personal spreadsheet, the step everyone skips. That is where the real process lives, and it is never in the process document."}</li>
+            <li>{isSpanish ? "Averiguo quién paga cuando falla. Un clínico entre pacientes, un soldado esperando reabastecimiento, alguien cuya planta murió. El costo decide cuánta certeza le debe el diseño." : "I find out who pays when it breaks. A clinician between patients, a soldier waiting on resupply, someone whose plant died. The cost decides how much certainty the design owes them."}</li>
+            <li>{isSpanish ? "Hago que la falla sea compartida antes de mejorarla. Cuatro áreas con cuatro versiones del problema rechazarán la misma solución de cuatro maneras." : "I make the failure shared before I make it better. Four departments carrying four models of the problem will reject the same solution four different ways."}</li>
+            <li>{isSpanish ? "Compruebo si sobrevive sin mí. Si necesita que yo lo explique para funcionar, no está terminado." : "I check whether it survives without me. If it needs me there to explain it, it is not finished."}</li>
           </ol>
         </div>
       </section>
