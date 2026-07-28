@@ -232,6 +232,7 @@ Restored: Grove's survey answers (74% reminders, 61% camera ID, 15+ notification
 | Full portfolio pre-reveal review | design-docs/reviews/2026-07-24-full-portfolio-pre-reveal-review.md |
 | Senior graphic design cohesion review | design-docs/reviews/2026-07-26-senior-graphic-design-cohesion-review.md |
 | Painted cartography hero plate | my-app/public/riso/painted-cartography-01.jpg |
+| Full portfolio panel (8 lenses) | design-docs/reviews/2026-07-28-full-portfolio-panel.md |
 
 ## Design Debt Register
 
