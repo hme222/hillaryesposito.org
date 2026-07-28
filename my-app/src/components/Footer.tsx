@@ -137,7 +137,6 @@ export default function Footer() {
               type="button"
               className="site-footer__marqueeToggle"
               onClick={() => setPaused((p) => !p)}
-              aria-pressed={paused}
             >
               {paused ? t("footer.marqueePlay") : t("footer.marqueePause")}
               <span className="sr-only">{t("footer.marqueeAria")}</span>

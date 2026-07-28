@@ -203,7 +203,7 @@ function ThanksShare() {
 }
 
 export default function RisoGrove() {
-  usePageTitle("Grove — Risograph Cartography");
+  usePageTitle("Grove — AI Judgment Case Study");
   const { lang } = useLanguage();
 
   // Scroll-reveal — fade/rise sections in as they enter view (Carmen-style motion).
@@ -274,7 +274,7 @@ export default function RisoGrove() {
   if (lang === "es") return <SpanishCaseStudy data={GROVE_ES} />;
 
   return (
-    <main className="riso-page">
+    <main className="riso-page" lang="en">
       <RisoDefs />
 
       <nav className="rp-breadcrumb" aria-label="Breadcrumb">
@@ -467,11 +467,8 @@ export default function RisoGrove() {
       </section>
 
       {/* AI DECISION DEEP-DIVE */}
-      <section className="rp-section rp-override">
+      <section className="rp-section rp-override" id="grove-override">
         <div className="rp-wrap">
-          {/* The offset used to be hand-rolled here because the shared anchor
-              rule never matched this page. It does now. */}
-          <span id="grove-override" aria-hidden="true" />
           <p className="rp-kicker">Where I said no to the AI</p>
           <h2 className="rp-title">Reminders that never nag.</h2>
           <p className="rp-lede">

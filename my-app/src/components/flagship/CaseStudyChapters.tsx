@@ -38,12 +38,23 @@ export default function CaseStudyChapters({
       }
       setActive(current);
     };
+    // rAF-throttled: this reads getBoundingClientRect per chapter, and the raw
+    // scroll event fires far more often than the browser can paint.
+    let frame = 0;
+    const onScroll = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        update();
+      });
+    };
     update();
-    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", update);
     return () => {
-      window.removeEventListener("scroll", update);
+      window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", update);
+      if (frame) window.cancelAnimationFrame(frame);
     };
   }, [chapters]);
 

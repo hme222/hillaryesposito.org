@@ -33,6 +33,28 @@ export default function ReadingProgress({
   const [ticks, setTicks] = useState<number[]>([]);
   const frame = useRef(0);
 
+  // Tick positions are absolute document offsets: they do not change while
+  // scrolling, only when the layout does. Measuring them per frame meant a
+  // forced reflow per chapter on every scroll event for a constant result.
+  useEffect(() => {
+    const measureTicks = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      if (max <= 0 || !chapterIds.length) return;
+      setTicks(
+        chapterIds
+          .map((id) => {
+            const el = document.getElementById(id);
+            if (!el) return -1;
+            return (el.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.35) / max;
+          })
+          .filter((v) => v > 0.02 && v < 0.98),
+      );
+    };
+    measureTicks();
+    window.addEventListener("resize", measureTicks);
+    return () => window.removeEventListener("resize", measureTicks);
+  }, [chapterIds]);
+
   useEffect(() => {
     const measure = () => {
       const doc = document.documentElement;
@@ -41,17 +63,6 @@ export default function ReadingProgress({
       // Reveal only once the opening composition is behind the reader — the
       // same rule the other utility controls follow.
       setShown(window.scrollY > window.innerHeight * 0.6);
-      if (max > 0 && chapterIds.length) {
-        setTicks(
-          chapterIds
-            .map((id) => {
-              const el = document.getElementById(id);
-              if (!el) return -1;
-              return (el.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.35) / max;
-            })
-            .filter((v) => v > 0.02 && v < 0.98),
-        );
-      }
     };
     const onScroll = () => {
       if (frame.current) return;
@@ -68,7 +79,7 @@ export default function ReadingProgress({
       window.removeEventListener("resize", measure);
       if (frame.current) window.cancelAnimationFrame(frame.current);
     };
-  }, [chapterIds]);
+  }, []);
 
   const left = Math.max(0, Math.round((1 - read) * 100));
 

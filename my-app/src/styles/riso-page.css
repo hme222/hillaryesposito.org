@@ -940,16 +940,6 @@
 .rp-next:hover .rp-next__arrow { transform: translateX(6px); }
 
 /* ---------- scroll progress = a route you walk (on-theme) ---------- */
-.rp-progress { display: none; }
-.rp-progress__track { position: relative; width: 3px; height: 210px; border-radius: var(--r-control);
-  background: repeating-linear-gradient(color-mix(in srgb, var(--ink) 22%, transparent) 0 6px, transparent 6px 12px); }
-.rp-progress__fill { position: absolute; top: 0; left: 0; width: 100%; border-radius: var(--r-control); background: var(--green); }
-.rp-progress__pin { position: absolute; left: 50%; transform: translate(-50%, -50%); width: 13px; height: 13px; border-radius: 50%;
-  background: var(--coral); box-shadow: 0 0 0 4px color-mix(in srgb, var(--coral) 24%, transparent), 0 1px 3px rgba(0,0,0,.3); }
-.rp-progress__pct { font-family: var(--mono); font-size: .6rem; letter-spacing: .05em; color: var(--muted); }
-.rp-progress__cap { font-family: var(--mono); font-size: .54rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); writing-mode: vertical-rl; }
-@media (max-width: 960px) { .rp-progress { display: none; } }
-
 /* ---------- phase eyebrow ---------- */
 .rp-phase { font-family: var(--mono); font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 700;
   color: var(--green); display: inline-flex; align-items: center; gap: .5rem; }
@@ -1404,7 +1394,7 @@
 @media (max-width: 900px) {
   .riso-page section[id],
   .riso-page header[id],
-  .riso-page .rp-decisionStory[id] { scroll-margin-top: 104px; }
+  .riso-page .rp-decisionStory[id] { scroll-margin-top: 150px; }
 }
 
 /* ---------- reading progress ---------- */

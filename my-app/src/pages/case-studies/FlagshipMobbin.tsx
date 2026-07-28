@@ -20,6 +20,7 @@ const CHAPTERS: CaseStudyChapter[] = [
   { id: "mobbin-start", label: "Start", note: "The capture desk" },
   { id: "mobbin-brief", label: "Problem", note: "It has to survive without its author" },
   { id: "mobbin-work", label: "Method", note: "A screenshot is not a flow" },
+  { id: "mobbin-decisions", label: "Decisions", note: "Editing is the work" },
   { id: "mobbin-apps", label: "Apps", note: "Three trust models" },
   { id: "mobbin-outcomes", label: "Outcomes", note: "200+ screens later" },
 ];

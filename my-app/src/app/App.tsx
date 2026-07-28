@@ -11,7 +11,6 @@ import BackToTop from "../components/BackToTop";
 
 import "../styles/index.css";
 import "../styles/App.css";
-import "../styles/comparison-table.css";
 import "../styles/casestudy-show.css";
 import "../styles/portfolio-editorial.css";
 import "../styles/portfolio-cohesion.css";
