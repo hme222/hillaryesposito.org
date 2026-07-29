@@ -1,11 +1,19 @@
 # Design State: Full Portfolio Redesign — Hybrid Positioning
 
-_Last updated: 2026-07-27 by Designpowers full portfolio release review_
+_Last updated: 2026-07-29 by portfolio evidence-media producer_
 
 ## Brief Summary
 **Problem:** Portfolio positions Hillary as Product Designer only, burying process improvement track record and treating AI as a project tag. LinkedIn and portfolio tell different stories.
 **Primary audience:** Hiring managers and recruiters (30-60 second scan), process improvement leaders, AI-curious hiring managers, UX designer peers
 **Success metric:** Recruiter identifies hybrid value prop (UX + Process Improvement + AI strength) within 5 seconds of landing.
+
+### Active Initiative: Portfolio Evidence Media System
+
+**Problem:** The strongest proof still takes several minutes to absorb; media should compress the decision trace without fabricating outcomes or adding autoplay distraction.
+**Primary audience:** Recruiters and product/design hiring managers, with equivalent access for keyboard, screen-reader, low-vision, motion-sensitive, cognitively overloaded, and multilingual readers.
+**Success metric:** A static poster or user-initiated film of eight seconds or less communicates the project problem, consequential decision, and truthful outcome/status.
+**Approved brief:** `design-docs/briefs/2026-07-29-portfolio-evidence-media-system.md`
+**Status:** Approved; maker team dispatch pending.
 
 ### Active Initiative: Riso/Grove Flagship Storytelling System
 
@@ -103,6 +111,7 @@ Restored: Grove's survey answers (74% reminders, 61% camera ID, 15+ notification
 ## Decisions Log
 | Decision | Rationale | Source |
 |----------|-----------|--------|
+| Produce the evidence-media system in this order: Grove film + poster, MSK poster, Mobbin poster; gate later films on the Grove result | Grove carries the clearest human-over-AI narrative and can prove the motion pattern before credits are spent across all three. Static companions preserve access and recruiter value without motion | owner approval + recruiter audit 2026-07-29 |
 | Name service design and process improvement on MSK, not the Home hero | Two reviewers found the second pillar absent from every indexed page, contradicting the standing "credentials visible" decision. Putting it on the lead case study surfaces the vocabulary and defines Lean Six Sigma/MHA in plain language, without rewriting the hero line Hillary deliberately chose | design-critic + heuristic-evaluator / owner direction 2026-07-27 |
 | Compress Mobbin to four chapters | Its own copy states Hillary did not design the source products, yet it carried the same structural depth as a clinical-systems redesign touching 21,000 people. The taxonomy deep-dive duplicated the DecisionStory's naming step, so removing it cost no truthful evidence | design-critic / owner direction 2026-07-27 |
 | Nothing inside `.rp-override` may inherit a themed color var | Those panels are pinned dark in both themes while `--coral` flips, which put Mobbin's labels at 2.46:1 in light mode. Override-panel accents now use the fixed values and `accentContrast.test.tsx` guards them | accessibility-reviewer / repair 2026-07-27 |
@@ -208,6 +217,7 @@ Restored: Grove's survey answers (74% reminders, 61% camera ID, 15+ notification
 ## Artefact Index
 | Artefact | Path |
 |----------|------|
+| Portfolio evidence media brief | design-docs/briefs/2026-07-29-portfolio-evidence-media-system.md |
 | Active Riso Home page | my-app/src/pages/RisoHome.tsx |
 | About page | my-app/src/pages/AboutMe.tsx |
 | Grove case study | my-app/src/pages/case-studies/RisoGrove.tsx |
@@ -252,6 +262,9 @@ _Items: 8 | Open: 0 | Resolved: 8 | Last reviewed: 2026-07-24_
 | DD-006 | 2026-06-29 | accessibility-reviewer | Minor | .home-proj-card-link:focus-visible explicitly sets outline:none, which is rescued by the !important WCAG patch at the bottom of App.css. The source rule should be deleted — relying on !important to restore a removed affordance is fragile | All keyboard users (if the WCAG patch is ever modified or removed) | Delete `outline: none` from the .home-proj-card-link:hover, .home-proj-card-link:focus-visible block in App.css. See App.css:3822–3827 | Resolved 2026-07-01 | Deleted `outline: none` from the .home-proj-card-link:hover, :focus-visible block (App.css:4058). Global :where() focus-visible rule (App.css:2789, 3px solid var(--focus)) supplies the ring |
 
 ## Handoff Chain
+
+### 2026-07-29 — owner approval → evidence-media maker team
+> "The direction is locked: evidence first, one film before a series. Grove should show the real transition from AI breadth to research-backed restraint, with a static poster doing the same job for anyone who does not play motion. MSK and Mobbin stay truthful companion plates; no generated asset gets to imply a shipped state, patient data, or product ownership that the case study does not support."
 
 ### 2026-07-27 — four-reviewer pass + owner live review → open items
 > "Four passes ran against the closed-out state and the system held: no regressions from the prior two fix rounds, and the truth-labeling, curated-page framing, native-dialog modal, and scroll-margin coverage were all called out as genuinely strong. The finding that mattered was structural rather than cosmetic — the Process Improvement pillar had quietly vanished from every indexed page, found independently by two reviewers. That is now named on MSK with defined credentials. Owner live review in parallel caught eight rendered defects that source review alone had missed, most of them ghosts of earlier fixes: a comparison layout still promising images that were removed, a marquee that outlived its purpose, a headline sized for one-word titles. Remaining open: the jump-nav still skips the brief section on all three flagships (`msk-brief`, `mobbin-brief`, `grove-brief` are absent from their chapter arrays); authored chapter `note` copy is still dropped unrendered by `CaseStudyChapters`; `GroveCompletion` and `CaseStudyCompletion` remain dead code contradicting the decision log; no `forced-colors` handling exists anywhere in the new visual system; and Home still orders Work before Proof."
