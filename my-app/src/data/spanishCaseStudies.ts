@@ -38,7 +38,8 @@ export const GROVE_ES: SpanishCaseStudyData = {
       title: "Agrupé las plantas por dónde viven, no en una sola lista larga",
       body: [
         "Otras apps meten todas las plantas en una sola lista larga. Abruma — ¿por dónde empiezas? Grove agrupa las plantas por dónde viven: la ventana de la cocina, el estante de la sala, la recámara. Cada pantalla responde una sola pregunta: ¿qué grupo estoy viendo? Un usuario nuevo solo ve una tarea al día.",
-        "También anoté las cinco decisiones donde le dije que no a la IA: el tono que hace sentir culpa, las recompensas tipo juego, la falsa certeza al identificar una planta, y las notificaciones demasiado frecuentes. Cada una respaldada por lo que dijo la encuesta.",
+        "También anoté las cinco decisiones donde le dije que no a la IA: el tono que hace sentir culpa, las recompensas tipo juego, la falsa certeza al identificar una planta, la seguridad para mascotas, y las notificaciones demasiado frecuentes. Cada una respaldada por lo que dijo la encuesta.",
+        "Hay una sexta, y es la que estoy diseñando ahora. La IA armó un calendario de riego: cada planta con su intervalo fijo. Pero regar de más mata más plantas de interior que olvidarlas, y un intervalo fijo es justo como pasa. El recordatorio va a pedirte que revises, no que riegues: “Ficus lirado — revisa la primera pulgada de tierra.” Mi propia guía de cuidado ya lo decía; el motor de recordatorios no se había puesto al día.",
       ],
     },
     {

@@ -47,7 +47,7 @@ export type CuratedPage = {
   relatedLinks: CuratedLink[];
 };
 
-export const curatedPages: Record<string, CuratedPage> = {
+const allCuratedPages: Record<string, CuratedPage> = {
   "indyx-ux-product-designer": {
     slug: "indyx-ux-product-designer",
     company: "Indyx",
@@ -73,13 +73,13 @@ export const curatedPages: Record<string, CuratedPage> = {
       "The deeper fit is a value, not a category. Indyx's thesis is that “style is a human art that can never be replaced by an algorithm.” In Grove, the defining design work was exactly that: I let an AI build the first version, then overruled it five times to keep a person in charge of the calls that matter. I design consumer products where taste and judgment lead, and research keeps them honest.",
     ],
     proofPoints: [
-      { stat: "200+", detail: "consumer app screens documented for Mobbin — pattern fluency for how the best consumer products handle onboarding, discovery, and data" },
-      { stat: "32", detail: "owners surveyed before I redesigned a single Grove screen — product calls traced to real people, not assumptions" },
+      { stat: "200+", detail: "screens documented for Mobbin across three finance apps — pattern fluency for how mature consumer products handle onboarding, discovery, and data" },
+      { stat: "34", detail: "owners surveyed before I redesigned a single Grove screen — product calls traced to real people, not assumptions" },
       { stat: "5", detail: "calls I overruled the AI on in Grove to keep a human in charge — the same 'human over algorithm' belief Indyx is built on" },
     ],
     featuredWork: [
-      { title: "Grove — a consumer app for what you already own", reason: "Cataloging, calm daily-use flows, cost-of-care awareness, and AI-override judgment. The closest analog to Indyx: organize what you own, reduce overwhelm, keep humans in charge." },
-      { title: "Mobbin — 200+ consumer app screens, studied for craft", reason: "Pattern fluency and taste from 200+ screens documented across three finance apps — directly useful for cataloging speed and outfit discoverability." },
+      { title: "Grove — a consumer app for what you already own", reason: "Cataloging, calm daily-use flows, and AI-override judgment. The closest analog to Indyx: organize what you own, reduce overwhelm, keep humans in charge." },
+      { title: "Mobbin — 200+ screens across three finance apps, studied for craft", reason: "Pattern fluency and taste from 200+ screens documented across three finance apps — directly useful for cataloging speed and outfit discoverability." },
       { title: "The 'AI vs. mine' calls", reason: "A record of where I let the algorithm accelerate the work and where I overruled it — Indyx's stylist-not-algorithm belief, shown not told." },
     ],
     strengths: [
@@ -119,7 +119,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       "For Indyx's UX/Product Designer role, I'd bring consumer interaction craft, research that keeps taste honest, and a genuine belief in human judgment over the algorithm — designing a product that makes getting dressed joyful, intentional, and yours.",
     supportLinks: [
       { label: "Grove case study", path: "/case-study/grove", description: "A consumer app for what you already own — cataloging, calm daily use, and AI-override judgment.", icon: <SproutIcon /> },
-      { label: "Mobbin case study", path: "/case-study/mobbin", description: "200+ consumer app screens documented — pattern fluency and taste.", icon: <PencilIcon /> },
+      { label: "Mobbin case study", path: "/case-study/mobbin", description: "200+ screens across three finance apps — pattern fluency and taste.", icon: <PencilIcon /> },
     ],
     relatedLinks: [],
   },
@@ -150,7 +150,7 @@ export const curatedPages: Record<string, CuratedPage> = {
     proofPoints: [
       { stat: "5", detail: "AI calls I overruled to keep Grove calm and honest — every one logged on the case study" },
       { stat: "200+", detail: "Consumer and finance app screens documented for Mobbin, studying real interaction patterns and trust signals" },
-      { stat: "32", detail: "People surveyed before I designed anything — every major design call traced back to a finding" },
+      { stat: "34", detail: "People surveyed before I designed anything — every major design call traced back to a finding" },
     ],
     featuredWork: [
       {
@@ -178,7 +178,7 @@ export const curatedPages: Record<string, CuratedPage> = {
     ],
     relevantExperience: [
       "Grove is my clearest consumer-craft artifact: I designed the interaction model, the AI trust states, and the calm reminder system, then built a functional prototype — and overruled the AI wherever a wrong call would cost someone's trust.",
-      "My Mobbin work is 200+ screens of the best consumer apps, documented for craft and patterns. It's why I can walk into a product and quickly see what's working, what's borrowed, and what needs fixing.",
+      "My Mobbin work is 200+ screens across three finance apps, documented for craft and patterns. It's why I can walk into a product and quickly see what's working, what's borrowed, and what needs fixing.",
     ],
     keywords: [],
     hiringManagerNote:
@@ -195,7 +195,7 @@ export const curatedPages: Record<string, CuratedPage> = {
       {
         label: "Mobbin case study",
         path: "/case-study/mobbin",
-        description: "200+ consumer app screens studied for craft and patterns.",
+        description: "200+ screens across three finance apps, studied for craft and patterns.",
         icon: <PencilIcon />,
       },
       {
@@ -735,7 +735,7 @@ export const curatedPages: Record<string, CuratedPage> = {
     proofPoints: [
       { stat: "200+", detail: "Screens captured and quality-checked for visual clarity, sequencing, completeness, and production accuracy during Mobbin freelance work" },
       { stat: "3", detail: "Live finance apps studied for layout systems, navigation models, hierarchy, and reusable interface behavior" },
-      { stat: "32", detail: "Grove survey respondents informing visual tone, feature hierarchy, and digitally forward product direction" },
+      { stat: "34", detail: "Grove survey respondents informing visual tone, feature hierarchy, and digitally forward product direction" },
     ],
     featuredWork: [
       {
@@ -816,3 +816,33 @@ export const curatedPages: Record<string, CuratedPage> = {
     ],
   },
 };
+
+// Removed from the exported role collection on 2026-07-29:
+// EnergyCAP and CompanyCam no longer resolve to active requisitions.
+// Keeping the source definitions here makes the decision easy to reverse.
+const archivedCuratedSlugs = new Set([
+  "energycap-ux-ai-prototyping-data-products",
+  "companycam-product-designer-field-workflows",
+]);
+
+const isArchivedCuratedPath = (path: string) => {
+  const curatedPathPrefix = "/curated/";
+  return (
+    path.startsWith(curatedPathPrefix) &&
+    archivedCuratedSlugs.has(path.slice(curatedPathPrefix.length))
+  );
+};
+
+export const curatedPages: Record<string, CuratedPage> = Object.fromEntries(
+  Object.entries(allCuratedPages)
+    .filter(([slug]) => !archivedCuratedSlugs.has(slug))
+    .map(([slug, page]) => [
+      slug,
+      {
+        ...page,
+        relatedLinks: page.relatedLinks.filter(
+          (link) => !isArchivedCuratedPath(link.path),
+        ),
+      },
+    ]),
+);

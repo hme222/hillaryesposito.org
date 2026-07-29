@@ -27,7 +27,7 @@ type SpanishCaseStudyProps = {
 };
 
 const projectArt = (title: string) => {
-  if (/memorial|msk/i.test(title)) return { mapSrc: "/riso/mskcc-map.png", edition: "struct" as const };
+  if (/memorial|msk/i.test(title)) return { mapSrc: "/assets/msk/mskcc-map.jpg", edition: "struct" as const };
   if (/mobbin/i.test(title)) return { mapSrc: "/riso/elevation-03.jpg", edition: "eucalyptus" as const };
   return { mapSrc: "/riso/elevation-04.jpg", edition: "olive" as const };
 };

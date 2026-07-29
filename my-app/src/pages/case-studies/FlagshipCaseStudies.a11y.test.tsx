@@ -31,10 +31,6 @@ jest.mock("../../components/MSKSystemMap", () => () => (
   <div role="img" aria-label="MSK system map visualization" />
 ));
 
-jest.mock("../../components/WorkflowKnot", () => () => (
-  <div aria-hidden="true" />
-));
-
 class ObserverStub {
   observe() {}
   unobserve() {}

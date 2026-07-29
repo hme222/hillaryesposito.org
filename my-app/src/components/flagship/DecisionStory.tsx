@@ -20,18 +20,41 @@ export default function DecisionStory({ id, kicker, title, intro, steps, visual 
   const [active, setActive] = useState(0);
   const refs = useRef<Array<HTMLElement | null>>([]);
 
+  // Which step is "current" is decided by geometry rather than by whichever
+  // element happens to intersect a narrow band most. The band approach depended
+  // on each step being comfortably taller than the band: shorten the steps and
+  // a step can pass through without ever winning, so its decision-log note never
+  // appears. Picking the step nearest a fixed reading line always yields exactly
+  // one active step, at any step height.
   useEffect(() => {
-    if (typeof IntersectionObserver === "undefined") return;
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (!visible) return;
-      const index = Number((visible.target as HTMLElement).dataset.index);
-      if (Number.isFinite(index)) setActive(index);
-    }, { rootMargin: "-28% 0px -48% 0px", threshold: [0, 0.25, 0.6] });
-    refs.current.forEach((node) => node && observer.observe(node));
-    return () => observer.disconnect();
+    const readingLine = () => window.innerHeight * 0.4;
+    const pick = () => {
+      const line = readingLine();
+      let best = 0;
+      let bestDist = Infinity;
+      refs.current.forEach((node, index) => {
+        if (!node) return;
+        const r = node.getBoundingClientRect();
+        const dist = Math.abs(r.top + r.height / 2 - line);
+        if (dist < bestDist) { bestDist = dist; best = index; }
+      });
+      setActive(best);
+    };
+
+    let frame = 0;
+    const onScroll = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => { frame = 0; pick(); });
+    };
+
+    pick();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
   }, []);
 
   return (

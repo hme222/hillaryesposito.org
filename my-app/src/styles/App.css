@@ -1130,180 +1130,46 @@ select:focus {
   }
 }
 
-/* ========================================================= REINA - CLEAN + MORE PROFESSIONAL (adds summary + polish) Keep your current Reina block and ADD/REPLACE with this (This version matches your TSX: reina__meta, flowList, noteStack) ========================================================= */ /* Section spacing: match your global page rhythm */
-.projects.reina {
-  padding: 120px var(--page-pad) 90px;
-} /* ------------------------- RESPONSIVE ------------------------- */
-@media (max-width: 900px) {
-  .projects.reina {
-    padding: 110px var(--page-pad) 80px;
-  }
-
-
-}
 
 
 
 /* =========================================================
-   DARK MODE PALETTE PATCH (NO LAYOUT CHANGES)
-   Paste at the VERY BOTTOM of your CSS file
-   Palette:
-   F8D2B7, EBA352, BA803F, 8B5F2D, 5F3F1C, 36220C, 1A0E03
+   DARK MODE + BASELINE ACCESSIBILITY
+   ---------------------------------------------------------
+   Consolidated 2026-07-28 from seven stacked "paste at the VERY
+   BOTTOM" patches — three generations of the same dark-mode fixes,
+   ~670 lines. Those patches resolved conflicts by cascade order
+   rather than specificity, which is why they carried 36 !important
+   declarations between them.
+
+   Most of what they styled no longer renders. Checked against the
+   live DOM on all six routes: .projects, .project-card,
+   .project-media, .project-icon, .project-body, .media-card,
+   .media-link, .case-study, .highlight, .feature, .cs-link,
+   .cs-toggle-link, .cs-media, .about-intro, .hero-btn, .hero and
+   the .gh-* set match zero elements. Those rules are gone.
+
+   Also gone: every `body.dark-mode` and `.app.dark-mode` selector.
+   The theme class is toggled on documentElement (App.tsx:38), so it
+   lands on <html> — `body.dark-mode` never matched anything, and one
+   entire patch block was written in it.
+
+   What survives is written once, at the value it actually resolved
+   to. Only two !important declarations remain, each with a reason.
    ========================================================= */
 
-/* 1) Make dark-mode tokens match your palette (this alone fixes a LOT) */
-/* (Superseded dark token block removed - dark tokens now live in the single
-   canonical .dark-mode block at the top of this file.) */
-
-/* 2) Body + global surfaces (keep EXACT layout, just correct contrast) */
-.dark-mode body {
-  background: var(--bg);
-  color: var(--fg);
-}.dark-mode .feature,
-.dark-mode .media-card {
-  background: var(--card);
-  border-color: var(--border);
-}
-
-/* 3) PROJECTS PAGE - stop “mud” + ensure readable */
-.dark-mode .projects {
-  background: var(--bg);
-}
-
-/* Your earlier patch gets overwritten later by .project-card { background: var(--bg) }
-   so force it here at the end. */
-.dark-mode .project-card {
-  background: var(--card) !important;
-  border-color: var(--border) !important;
-  box-shadow: var(--shadow-md);
-}
-
-/* Keep the same media block, just tune the gradient to your palette */
-.dark-mode .project-media {
-  background:
-    radial-gradient(
-      circle at 18% 38%,
-      rgba(235, 163, 82, 0.2),
-      transparent 60%
-    ),
-    radial-gradient(
-      circle at 82% 72%,
-      rgba(186, 128, 63, 0.16),
-      transparent 60%
-    ),
-    linear-gradient(135deg, rgba(95, 63, 28, 0.55), rgba(26, 14, 3, 0.35));
-}
-
-/* Icon chip should be cream-ish, not gray/white */
-.dark-mode .project-icon {
-  background: rgba(248, 210, 183, 0.1);
-  border-color: rgba(248, 210, 183, 0.22);
+/* ---------- Dark mode: surfaces and copy ---------- */
+.dark-mode {
   color: var(--fg);
 }
-
-/* Your project description uses color-mix(var(--fg)...) - with --fg now cream, it's good.
-   Just make sure headings never go white. */
-.dark-mode .project-body h3 {
-  color: var(--fg);
-}
-
-/* 4) CASE STUDIES (Good Harvest etc.) - keep structure, fix readability */
-.dark-mode .case-study {
-  background: transparent; /* uses body bg */
-}
-.dark-mode .case-study p,
-.dark-mode .case-study li {
-  color: var(--muted);
-}
-.dark-mode .case-study strong {
-  color: var(--fg);
-}
-
-/* Highlight callout: keep same sizing/layout, but palette */
-.dark-mode .case-study .highlight,
-.dark-mode .highlight {
-  background: color-mix(in srgb, var(--card) 88%, transparent);
-  border-color: var(--border);
-  border-left-color: var(--focus);
-  color: var(--fg);
-}
-
-/* Media cards + frames */
-.dark-mode .media-card {
-  background: var(--card);
-  border-color: var(--border);
-}
-.dark-mode .media-link {
-  border-color: rgba(248, 210, 183, 0.18);
-  background: rgba(248, 210, 183, 0.03);
-}
-.dark-mode .cs-media figcaption {
-  color: rgba(248, 210, 183, 0.78);
-}
-
-/* 5) NAV - keep same behavior, palette contrast */
-.dark-mode .navbar {
-  background: color-mix(in srgb, var(--surface-0) 72%, transparent);
-  border-bottom-color: rgba(248, 210, 183, 0.12);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-}
-.dark-mode .nav-link:hover {
-  color: #eba352;
-}
-.dark-mode .nav-link::after {
-  background: var(--focus);
-}.dark-mode select {
-  background: rgba(26, 14, 3, 0.7);
-  color: var(--fg);
-  border-color: rgba(248, 210, 183, 0.18);
-}.dark-mode select:focus {
-  border-color: var(--focus);
-}
-
-/* 7) REINA - keep layout, just make borders/surfaces match palette */
-.dark-mode .projects.reina {
-  background: transparent;
-}
-
-/* Links already map to --focus via your existing rule; keep it consistent */
-.dark-mode .cs-link,
-.dark-mode .cs-toggle-link {
-  color: var(--focus);
-}
-
-/* =========================================================
-   WCAG DARK MODE PATCH (PALETTE-LOCKED, NO LAYOUT CHANGES)
-   Paste at the VERY BOTTOM of your CSS file.
-
-   Palette:
-   #F8D2B7 (cream)
-   #EBA352 (gold)
-   #BA803F (copper)
-   #8B5F2D (brown)
-   #5F3F1C (deep brown)
-   #36220C (card brown)
-   #1A0E03 (near-black brown)
-
-   WCAG goal:
-   - Body/copy/labels/link text always >= 4.5:1 against their backgrounds.
-   - Accent background ALWAYS uses dark text (never cream on gold).
-   ========================================================= */
-
-/* 1) Core tokens in dark mode (use your palette everywhere) */
-/* (Superseded dark token block removed - see the canonical .dark-mode block
-   at the top of this file.) */
-
-/* 2) Global text + surfaces (copy contrast) */
 .dark-mode body {
   background: var(--bg);
   color: var(--text-1);
-}.dark-mode p,
-.dark-mode li,
-.dark-mode .about-intro {
+}
+.dark-mode p,
+.dark-mode li {
   color: var(--text-3);
 }
-
 .dark-mode h1,
 .dark-mode h2,
 .dark-mode h3,
@@ -1311,113 +1177,34 @@ select:focus {
 .dark-mode dt,
 .dark-mode strong {
   color: var(--text-1);
-}.dark-mode .feature,
-.dark-mode .media-card,
-.dark-mode .project-card {
-  background: var(--surface-1) !important;
-  border-color: var(--border) !important;
 }
 
-/* 4) Projects page (ensure title/description contrast) */
-.dark-mode .projects {
-  background: var(--bg);
+/* Keeps its !important: portfolio-editorial.css and
+   portfolio-cohesion.css both load after this file and restyle
+   .about-page extensively. */
+.about-page {
+  background: var(--bg) !important;
+  color: var(--fg);
 }
 
-.dark-mode .project-body h3 {
-  color: var(--text-1);
-}
-.dark-mode .project-body p {
-  color: var(--text-2); /* safer than color-mix against changing --fg */
-}
-
-/* Project media stays pretty but not muddy */
-.dark-mode .project-media {
-  background:
-    radial-gradient(
-      circle at 18% 38%,
-      rgba(235, 163, 82, 0.2),
-      transparent 60%
-    ),
-    radial-gradient(
-      circle at 82% 72%,
-      rgba(186, 128, 63, 0.16),
-      transparent 60%
-    ),
-    linear-gradient(135deg, rgba(95, 63, 28, 0.55), rgba(26, 14, 3, 0.4));
-}
-.dark-mode .project-icon {
-  background: rgba(248, 210, 183, 0.1);
-  border-color: rgba(248, 210, 183, 0.24);
-  color: var(--text-1);
+/* ---------- Baseline readability ---------- */
+body {
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
 }
 
-/* 5) Links: don’t rely on color alone + keep contrast */
-/* Dark mode inline links only - not nav, cards, or buttons */
-.dark-mode .cs-link,
-.dark-mode .cs-toggle-link {
-  color: var(--focus);
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  text-decoration-thickness: 2px;
+/* ---------- Focus ----------
+   !important here is deliberate: a visible focus ring is an
+   accessibility floor, and it must not be removable by a later
+   component rule. */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid var(--focus) !important;
+  outline-offset: 4px !important;
 }
-.dark-mode .cs-link:hover,
-.dark-mode .cs-toggle-link:hover {
-  color: #eba352;
+:where(a, button, input, select, textarea, [tabindex]):focus {
+  outline: none;
 }
-
-/* 6) NAV: readable, consistent, WCAG-safe */
-.dark-mode .navbar {
-  color: var(--text-1);
-  background: color-mix(in srgb, var(--bg) 86%, transparent);
-  border-bottom: 1px solid rgba(248, 210, 183, 0.14);
-}
-.dark-mode .nav-link,
-.dark-mode .theme-btn,
-.dark-mode .hamburger {
-  color: var(--text-1);
-}
-.dark-mode .nav-link::after {
-  background: var(--focus);
-}.dark-mode select {
-  background: var(--input-bg);
-  color: var(--text-1);
-  border-color: var(--input-border);
-}.dark-mode select:focus {
-  border-color: var(--focus);
-}.dark-mode .hero-btn {
-  color: #1a0e03 !important;
-}
-
-/* 9) Case study blocks */
-.dark-mode .case-study p,
-.dark-mode .case-study li {
-  color: var(--text-3);
-}
-
-.dark-mode .case-study .meta {
-  color: var(--text-3);
-}
-
-.dark-mode .case-study .highlight,
-.dark-mode .highlight {
-  background: color-mix(in srgb, var(--card) 90%, transparent);
-  border-color: var(--border);
-  border-left-color: var(--focus);
-  color: var(--text-1);
-}
-
-/* Media captions (copy must pass) */
-.dark-mode .cs-media figcaption {
-  color: var(--text-2);
-}
-
-/* 10) Reina: borders + copy */
-.dark-mode .projects.reina {
-  background: transparent;
-}
-
-
-/* 12) Focus visibility (already in your base, but ensure it’s visible on brown) */
 .dark-mode button:focus,
 .dark-mode a:focus,
 .dark-mode input:focus,
@@ -1426,254 +1213,7 @@ select:focus {
   outline-color: var(--focus);
 }
 
-/* =========================================================
-   FIX: DARK MODE APPLY + STABILIZE PROJECTS/REINA/ECOM/CASE STUDIES
-   Paste at the VERY BOTTOM of your CSS (below everything).
-   This does NOT change layout - only fixes cascade + contrast.
-   ========================================================= */
-
-/* 0) Make dark-mode work no matter where you place the class */
-/* (Superseded dark token block removed - see the canonical .dark-mode block
-   at the top of this file.) */
-
-/* 1) IMPORTANT: Your file later resets body { background: var(--bg); color: var(--fg); }
-   Force the final, correct dark-mode surface/text. */
-body.dark-mode,
-.dark-mode body {
-  background: var(--bg);
-  color: var(--text-1);
-}body.dark-mode p,
-body.dark-mode li,
-body.dark-mode .about-intro,
-body.dark-mode .cs-media figcaption {
-  color: var(--text-3);
-}
-
-body.dark-mode h1,
-body.dark-mode h2,
-body.dark-mode h3,
-body.dark-mode h4,
-body.dark-mode strong {
-  color: var(--text-1);
-}
-
-/* 3) PROJECTS page: your later .project-card/.project-media rules override earlier patches.
-   Re-assert the intended surfaces without changing sizing/spacing. */
-body.dark-mode .projects {
-  background: var(--bg);
-}
-
-body.dark-mode .project-card {
-  background: var(--card);
-  border-color: var(--border);
-  box-shadow: var(--shadow-md);
-}
-
-body.dark-mode .project-media {
-  background:
-    radial-gradient(
-      circle at 18% 38%,
-      rgba(235, 163, 82, 0.2),
-      transparent 60%
-    ),
-    radial-gradient(
-      circle at 82% 72%,
-      rgba(186, 128, 63, 0.16),
-      transparent 60%
-    ),
-    linear-gradient(135deg, rgba(95, 63, 28, 0.55), rgba(26, 14, 3, 0.4));
-}
-
-body.dark-mode .project-icon {
-  background: rgba(248, 210, 183, 0.1);
-  border-color: rgba(248, 210, 183, 0.24);
-  color: var(--text-1);
-}
-
-body.dark-mode .project-body h3 {
-  color: var(--text-1);
-}
-body.dark-mode .project-body p {
-  color: var(--text-2);
-}
-
-/* 4) REINA: keep your layout, only align surfaces + divider lines */
-body.dark-mode .projects.reina {
-  background: transparent;
-  color: var(--text-1);
-}
-
-/* 5) CASE STUDIES (Good Harvest etc.) */
-body.dark-mode .case-study {
-  background: transparent;
-  color: var(--text-1);
-}
-
-body.dark-mode .case-study p,
-body.dark-mode .case-study li {
-  color: var(--text-3);
-}
-
-body.dark-mode .case-study .highlight,
-body.dark-mode .highlight {
-  background: color-mix(in srgb, var(--card) 90%, transparent);
-  border-color: var(--border);
-  border-left-color: var(--focus);
-  color: var(--text-1);
-}body.dark-mode .hero-btn {
-  color: #1a0e03;
-}
-
-/* =========================================================
-   PROJECT BACKGROUND FIX (NO LAYOUT CHANGES)
-   Paste at the VERY BOTTOM
-   ========================================================= */
-
-/* 1) Projects page wrappers should ALWAYS use the page surface */
-.projects,
-.section.projects,
-.projects.reina,
-.case-study,
-main.case-study {
-  background: var(--surface-0);
-}.project-card,
-.feature,
-.media-card {
-  background: var(--surface-1) !important;
-  border-color: var(--border) !important;
-}
-
-/* 4) Projects media header background should not “flip” to page bg */
-.project-media {
-  background:
-    radial-gradient(
-      circle at 20% 40%,
-      color-mix(in srgb, var(--focus) 14%, transparent),
-      transparent 60%
-    ),
-    radial-gradient(
-      circle at 85% 70%,
-      color-mix(in srgb, var(--focus) 10%, transparent),
-      transparent 60%
-    ),
-    var(--surface-1) !important;
-}
-
-/* 5) Fix the two big offenders that commonly overwrite you later */
-.project-card {
-  background: var(--surface-1) !important;
-}
-.media-card {
-  background: var(--surface-1) !important;
-}
-
-/* 6) If any case-study component is painting a bg, stop it */
-.case-study > header,
-.case-study > section {
-  background: transparent;
-}
-
-/* 7) Dark mode: ensure surfaces are your palette (so backgrounds are consistent) */
-/* (The "Matcha and Honey" dark palette now lives in the single canonical
-   .dark-mode block at the top of this file.) */
-
-/* =========================================================
-   DFIX - STABILIZE ABOUT / REINA / ECOM DEMO / FEATURES
-   Paste at the VERY BOTTOM of your CSS (last lines).
-   Goal: stop background/border overrides + restore card surfaces.
-   No layout/grid/spacing changes.
-   ========================================================= */
-
-/* 0) Make sure dark mode works whether class is on .app or body/html */
-.app.dark-mode,
-body.dark-mode,
-html.dark-mode,
-.dark-mode {
-  color: var(--fg);
-}.projects,
-.case-study,
-.about-page,
-.hero {
-  background: var(--bg) !important;
-}
-
-/* Bring back “feature cards” (if they looked invisible / blended) */
-.feature {
-  display: block;
-  background: var(--card) !important;
-  border: 1px solid var(--border) !important;
-  box-shadow: var(--shadow-sm);
-}
-
-/* 2) ABOUT: fix day + night surfaces + readable copy */
-.about-page {
-  background: var(--bg) !important;
-  color: var(--fg);
-}.about-intro {
-  color: var(--muted) !important;
-}.about-life-title,
-.about-growth-title {
-  color: var(--fg);
-}
-
-/* 3) REINA: stop “wrong layer” backgrounds and divider weirdness */
-.projects.reina {
-  background: var(--bg) !important;
-  color: var(--fg);
-}
-
-/* 4) PROJECT CARDS: remove the “mud” + stop hard-coded overrides winning */
-.project-card {
-  background: var(--card) !important;
-  border: 1px solid var(--border) !important;
-  color: inherit;
-  text-decoration: none;
-}
-
-.dark-mode .project-card {
-  /* prevents any earlier hard-coded dark brown from winning */
-  background: var(--card) !important;
-  border-color: var(--border) !important;
-}
-
-.project-body p {
-  color: color-mix(in srgb, var(--fg) 65%, transparent) !important;
-}
-
-/* 5) CASE STUDY MEDIA CARDS: stop flipping to page bg */
-.media-card {
-  background: var(--card) !important;
-  border: 1px solid var(--border) !important;
-}.dark-mode .about-intro,
-.dark-mode .case-study p,
-.dark-mode .case-study li,
-.dark-mode .cs-media figcaption {
-  color: rgba(248, 210, 183, 0.76) !important;
-}
-
-/* =========================================================
-   WCAG SAFETY PATCH - no layout changes
-   Paste at VERY BOTTOM (after DFIX)
-   Targets: contrast, focus, links, buttons, form states
-   ========================================================= */
-
-/* 1) Minimum readable defaults */
-body {
-  line-height: 1.6;
-  -webkit-text-size-adjust: 100%;
-  text-rendering: optimizeLegibility;
-}
-
-/* 2) Focus visibility (WCAG 2.2 focus appearance-ish, strong + offset) */
-:where(a, button, input, select, textarea, [tabindex]):focus-visible {
-  outline: 3px solid var(--focus) !important;
-  outline-offset: 4px !important;
-}
-:where(a, button, input, select, textarea, [tabindex]):focus {
-  outline: none;
-}
-
-/* 3) Links must not rely on color alone (WCAG 1.4.1) */
+/* ---------- Links must not rely on colour alone (WCAG 1.4.1) ---------- */
 a {
   text-decoration: underline;
   text-underline-offset: 4px;
@@ -1683,12 +1223,67 @@ a:hover {
   text-decoration-thickness: 3px;
 }
 
-/* Your nav links can keep the underline animation, but still be “links” */
-.nav-link {
-  text-decoration: none; /* nav underline handled by ::after */
+/* ---------- Forms ---------- */
+button,
+input,
+select,
+textarea {
+  border-color: var(--border);
 }
+::placeholder {
+  opacity: 1; /* avoid too-faint placeholders */
+}
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
+}
+.dark-mode input::placeholder,
+.dark-mode textarea::placeholder {
+  color: rgba(248, 210, 183, 0.7);
+}
+.dark-mode select {
+  background: var(--input-bg);
+  color: var(--text-1);
+  border-color: var(--input-border);
+}
+.dark-mode select:focus {
+  border-color: var(--focus);
+}
+:disabled,
+[aria-disabled="true"] {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  background: color-mix(in srgb, var(--surface-0) 72%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.logo,
+.logo-text,
+.nav-link,
+.theme-btn,
+.hamburger {
+  color: var(--text-1);
+}
+.nav-link,
 .nav-link:hover {
-  text-decoration: none;
+  text-decoration: none; /* the nav underline is drawn by ::after */
+}
+.nav-link::after {
+  background: var(--focus);
+}
+.nav-link:hover,
+.theme-btn:hover,
+.hamburger:hover,
+.logo:hover .logo-text {
+  color: var(--focus);
+}
+.nav-link--resume {
+  border-color: currentColor;
 }
 .nav-link.is-active {
   color: var(--olive-2);
@@ -1701,188 +1296,49 @@ a:hover {
   background: var(--olive-2);
   margin-top: 4px;
   border-radius: 2px;
-}.hero-btn {
-  color: #0a0a0a !important;
-}.dark-mode .hero-btn {
-  color: #1a0e03 !important; /* matches your palette dark */
-}
-
-/* 5) Form readability */
-::placeholder {
-  opacity: 1; /* avoid too-faint placeholders */
-}
-input::placeholder,
-textarea::placeholder {
-  color: var(--muted);
-}
-.dark-mode input::placeholder,
-.dark-mode textarea::placeholder {
-  color: rgba(248, 210, 183, 0.7);
-}
-
-/* 6) Disabled states visible (WCAG 1.4.3/1.4.11-ish) */
-:disabled,
-[aria-disabled="true"] {
-  opacity: 0.55;
-  cursor: not-allowed;
-}
-
-/* 7) Interactive controls have a visible border (non-text contrast) */
-button,
-input,
-select,
-textarea {
-  border-color: var(--border);
-}
-
-/* =========================
-   NAVBAR DARK MODE FINAL FIX
-   Put this at the VERY BOTTOM
-   ========================= */
-
-.navbar {
-  background: color-mix(in srgb, var(--surface-0) 72%, transparent);
-  border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-}.logo,
-.logo-text,
-.nav-link,
-.theme-btn,
-.hamburger {
-  color: var(--text-1);
-}
-
-.nav-link::after {
-  background: var(--focus);
-}
-
-.nav-link:hover,
-.theme-btn:hover,
-.hamburger:hover,
-.logo:hover .logo-text {
-  color: var(--focus);
-}
-
-.nav-link--resume {
-  border-color: currentColor;
 }
 
 /* The desktop nav-menu (the <ul> of links inside the navbar) must stay
-   transparent - otherwise its own translucent surface stacks on top of the
-   navbar's frosted glass and the links area reads as a solid panel. The mobile
-   full-screen panel applies its own glass inside the max-width media query. */
+   transparent — otherwise its own translucent surface stacks on top of
+   the navbar's frosted glass and the links area reads as a solid panel.
+   The mobile full-screen panel applies its own glass inside the
+   max-width media query. */
 
-/* dark mode explicit navbar stabilization */
-:root.dark-mode .navbar,
-html.dark-mode .navbar,
-body.dark-mode .navbar,
-.app.dark-mode .navbar,
-.dark-mode .navbar {
-  background: color-mix(in srgb, var(--surface-0) 72%, transparent);
-  border-bottom: 1px solid rgba(248, 210, 183, 0.14);
+/* Dark mode navbar.
+   These deliberately use `:root.dark-mode` rather than `.dark-mode`.
+   The theme class sits on <html>, so :root.dark-mode selects exactly the
+   same element — but at specificity (0,3,0) instead of (0,2,0), and it
+   needs to win two ties it would otherwise lose to stylesheets that load
+   after this one:
+     portfolio-cohesion.css  .navbar:not(.is-floating)      (0,2,0)
+     riso-page.css           .navbar .nav-link.is-active    (0,3,0)
+   Dropping to `.dark-mode` regressed the navbar's blur to 10px and turned
+   active nav links coral in dark mode. Verified by computed-style diff. */
+/* Only the blur survives here. portfolio-cohesion.css loads after this file
+   and settles the dark navbar's `color` by source order at equal specificity,
+   and its `background` and `border-bottom` with !important. The three
+   declarations that used to sit alongside this one never applied. */
+:root.dark-mode .navbar {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-}:root.dark-mode .logo,
+}
+:root.dark-mode .logo,
 :root.dark-mode .logo-text,
 :root.dark-mode .nav-link,
 :root.dark-mode .theme-btn,
-:root.dark-mode .hamburger,
-html.dark-mode .logo,
-html.dark-mode .logo-text,
-html.dark-mode .nav-link,
-html.dark-mode .theme-btn,
-html.dark-mode .hamburger,
-body.dark-mode .logo,
-body.dark-mode .logo-text,
-body.dark-mode .nav-link,
-body.dark-mode .theme-btn,
-body.dark-mode .hamburger,
-.app.dark-mode .logo,
-.app.dark-mode .logo-text,
-.app.dark-mode .nav-link,
-.app.dark-mode .theme-btn,
-.app.dark-mode .hamburger,
-.dark-mode .logo,
-.dark-mode .logo-text,
-.dark-mode .nav-link,
-.dark-mode .theme-btn,
-.dark-mode .hamburger {
+:root.dark-mode .hamburger {
   color: var(--text-1);
 }
-
 :root.dark-mode .nav-link:hover,
-html.dark-mode .nav-link:hover,
-body.dark-mode .nav-link:hover,
-.app.dark-mode .nav-link:hover,
-.dark-mode .nav-link:hover,
 :root.dark-mode .theme-btn:hover,
-html.dark-mode .theme-btn:hover,
-body.dark-mode .theme-btn:hover,
-.app.dark-mode .theme-btn:hover,
-.dark-mode .theme-btn:hover,
-:root.dark-mode .hamburger:hover,
-html.dark-mode .hamburger:hover,
-body.dark-mode .hamburger:hover,
-.app.dark-mode .hamburger:hover,
-.dark-mode .hamburger:hover {
+:root.dark-mode .hamburger:hover {
   color: var(--focus);
 }
-
-:root.dark-mode .nav-link::after,
-html.dark-mode .nav-link::after,
-body.dark-mode .nav-link::after,
-.app.dark-mode .nav-link::after,
-.dark-mode .nav-link::after {
+:root.dark-mode .nav-link::after {
   background: var(--focus);
 }
+
  
-/* ── META STRIP (horizontal below hero) ── */
-.gh-meta-strip {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  align-items: start;
-  gap: 1.1rem 1.5rem;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 1.25rem 1.5rem;
-  margin-bottom: 3rem;
-}
- 
-/* ── OTHER PROJECTS: bottom nav ── */
-.gh-other-projects {
-  margin-top: 5rem;
-  padding-top: 3.5rem;
-  border-top: 1px solid var(--border);
-}
- 
-.gh-other-projects__header {
-  margin-bottom: 2rem;
-}
- 
-.gh-other-projects__eyebrow {
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-weight: 700;
-  color: var(--muted);
-  margin: 0 0 0.3rem;
-}
- 
-/* Inherits .project-card styles; just add the CTA link */
-.gh-proj-card .gh-proj-cta {
-  display: inline-block;
-  margin-top: 0.85rem;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--olive-2);
-  text-decoration: none;
-}
- 
-.dark-mode .gh-proj-card .gh-proj-cta {
-  color: var(--focus);
-}
 
 /* ── Masked scroll-reveal (armed by useReveal; visible by default) ─────── */
 /* Hiding only applies once JS adds .reveal-ready to the root, so a no-JS or
@@ -2377,7 +1833,10 @@ body.dark-mode .nav-link::after,
   grid-template-columns: 1fr auto;
   gap: 0.2rem 0.75rem;
   align-items: center;
-  transition: padding 0.25s ease, background-color 0.25s ease;
+  /* Same defect as the home work list: the hover animated horizontal padding,
+     forcing layout every frame. The arrow's transform already signals the
+     affordance, so only the tint animates now. */
+  transition: background-color var(--dur-fast) var(--ease-soft);
 }
 .recruiter-panel__project::after {
   content: "→";
@@ -2389,8 +1848,6 @@ body.dark-mode .nav-link::after,
   transition: transform 0.25s ease;
 }
 .recruiter-panel__project:hover {
-  padding-left: 0.6rem;
-  padding-right: 0.6rem;
   background: color-mix(in srgb, var(--rp-coral) 6%, transparent);
 }
 .recruiter-panel__project:hover::after {
@@ -3061,33 +2518,6 @@ body.dark-mode .nav-link::after,
 
 .nav-link--resume::after {
   display: none !important; /* no underline animation on pill buttons */
-}
-
-
-/* ════════════════════════════════════════
-   SPECIAL: gh-proj-cta inline arrow link
-════════════════════════════════════════ */
-.gh-proj-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  margin-top: 0.85rem;
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--olive-2);
-  text-decoration: none;
-  letter-spacing: 0.02em;
-  transition: gap 0.18s ease, color 0.18s ease;
-}
-
-.gh-proj-card:hover .gh-proj-cta {
-  gap: 0.6rem;
-  color: var(--olive-1);
-}
-
-.dark-mode .gh-proj-cta,
-.dark-mode .gh-proj-card:hover .gh-proj-cta {
-  color: var(--focus);
 }
 
 
@@ -3804,39 +3234,18 @@ body.dark-mode .nav-link::after,
   color: var(--focus) !important;
 }
 
-/* ── Nav condenses into a centred floating island once scrolled past the top.
-   Includes everything (logo · links · Resume · light/dark toggle). ── */
-.navbar {
-  transition: max-width 0.3s ease, margin 0.3s ease, padding 0.3s ease,
-    border-radius 0.3s ease, box-shadow 0.3s ease, top 0.3s ease,
-    background 0.3s ease, gap 0.3s ease;
-}
-.navbar.is-floating {
-  width: -moz-fit-content;
-  width: fit-content;
-  max-width: calc(100% - 1.5rem);
-  margin: 0 auto;
-  top: 12px;
-  gap: 1.75rem;
-  justify-content: center;
-  padding: 0.55rem 1.4rem;
-  border: 1px solid var(--border) !important;
-  /* Editorial masthead pill → a crisp near-square bar with a thin rule and a
-     tighter shadow, matching the plate/rule vocabulary of the rest of the site. */
-  border-radius: 4px;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
-  background: color-mix(in srgb, var(--bg) 88%, transparent) !important;
-}
-.dark-mode .navbar.is-floating {
-  background: color-mix(in srgb, #15110b 82%, transparent) !important;
-  border-color: rgba(248, 210, 183, 0.16) !important;
-  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.5);
-}
-/* Desktop: at the top, recede to just the logo (the knot's nodes navigate);
-   the real nav reveals once you scroll (floating) - or on keyboard focus, so it
-   never becomes unreachable. */
+/* The floating-island masthead was removed on 2026-07-28. Nothing ever applied
+   `.is-floating`, so the condensing pill never ran; portfolio-cohesion.css
+   states the shipped intent — "one masthead, one behaviour: a stable editorial
+   rule rather than a transparent bar that turns into a floating island
+   mid-scroll." Its transition also animated max-width/margin/padding/top,
+   which would have forced layout on a sticky, always-present element.
+   `.navbar:not(.is-floating)` below is now simply `.navbar`. */
+
+/* Desktop: at the top the bar recedes to the rule, so the masthead reads as
+   part of the page rather than a floating chrome layer. */
 @media (min-width: 769px) {
-  .navbar:not(.is-floating) {
+  .navbar {
     background: transparent !important;
     border-bottom-color: transparent !important;
     backdrop-filter: none;

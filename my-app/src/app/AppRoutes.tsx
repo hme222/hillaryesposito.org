@@ -6,19 +6,20 @@ import RisoHome from "../pages/RisoHome";
 import About from "../pages/AboutMe";
 import { useLanguage } from "./LanguageContext";
 
-import RisoGrove from "../pages/case-studies/RisoGrove";
-import FlagshipMSK from "../pages/case-studies/FlagshipMSK";
 import CuratedRolePage from "../pages/curated/CuratedRolePage";
 import FashionCampaignSystem from "../pages/curated/FashionCampaignSystem";
 import NotFoundPage from "../pages/NotFoundPage";
 import { Navigate } from "react-router-dom";
 
-// Keep the image-heavy Mobbin study in its own chunk instead of adding it to
-// the always-loaded main bundle.
+// All three flagship case studies load on demand. None of them is reachable
+// without a click from the home page, so shipping them in the always-loaded
+// main bundle only slows down the one view every visitor actually sees.
 const FlagshipMobbin = lazy(() => import("../pages/case-studies/FlagshipMobbin"));
+const RisoGrove = lazy(() => import("../pages/case-studies/RisoGrove"));
+const FlagshipMSK = lazy(() => import("../pages/case-studies/FlagshipMSK"));
 
 class LazyRouteBoundary extends Component<
-  { children: React.ReactNode },
+  { children: React.ReactNode; name: string },
   { failed: boolean }
 > {
   state = { failed: false };
@@ -34,7 +35,7 @@ class LazyRouteBoundary extends Component<
           <div className="not-found__number" aria-hidden="true">↻</div>
           <div className="not-found__copy">
             <p className="not-found__eyebrow">Case study recovery</p>
-            <h1>Mobbin did not load.</h1>
+            <h1>{this.props.name} did not load.</h1>
             <p>The page bundle may have been interrupted. Reload it, or return to selected work.</p>
             <div className="not-found__actions">
               <button
@@ -54,6 +55,25 @@ class LazyRouteBoundary extends Component<
     }
     return this.props.children;
   }
+}
+
+// Every lazily-loaded case study gets the same treatment: an error boundary for
+// a chunk that fails to arrive, and an announced loading state for the gap
+// before it does.
+function LazyPage({ name, children }: { name: string; children: React.ReactNode }) {
+  return (
+    <LazyRouteBoundary name={name}>
+      <Suspense
+        fallback={
+          <div className="case-study-loader" role="status" aria-live="polite">
+            Loading {name} case study…
+          </div>
+        }
+      >
+        {children}
+      </Suspense>
+    </LazyRouteBoundary>
+  );
 }
 
 function ScrollToTop() {
@@ -140,19 +160,10 @@ export default function AppRoutes() {
       <Route path="/projects" element={<Navigate to="/?scrollTo=projects" replace />} />
       <Route path="/about" element={<About />} />
 
-      <Route path="/case-study/grove" element={<RisoGrove />} />
+      <Route path="/case-study/grove" element={<LazyPage name="Grove"><RisoGrove /></LazyPage>} />
       <Route path="/riso/grove" element={<Navigate to="/case-study/grove" replace />} />
-      <Route
-        path="/case-study/mobbin"
-        element={
-          <LazyRouteBoundary>
-            <Suspense fallback={<div className="case-study-loader" role="status" aria-live="polite">Loading Mobbin case study…</div>}>
-              <FlagshipMobbin />
-            </Suspense>
-          </LazyRouteBoundary>
-        }
-      />
-      <Route path="/case-study/msk" element={<FlagshipMSK />} />
+      <Route path="/case-study/mobbin" element={<LazyPage name="Mobbin"><FlagshipMobbin /></LazyPage>} />
+      <Route path="/case-study/msk" element={<LazyPage name="MSK"><FlagshipMSK /></LazyPage>} />
       <Route path="/curated/fashion-campaign-system" element={<FashionCampaignSystem />} />
       <Route path="/curated/:slug" element={<CuratedRolePage />} />
 

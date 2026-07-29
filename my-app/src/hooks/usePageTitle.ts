@@ -17,12 +17,12 @@ const ROUTE_META: Array<{ match: RegExp; description: string; image: string }> =
     match: /\/case-study\/msk$/,
     description:
       "A healthcare systems case study: designing clearer operational workflows for more than 21,000 people at Memorial Sloan Kettering.",
-    image: "/assets/msk/mskcc-map.png",
+    image: "/assets/msk/mskcc-map.jpg",
   },
   {
     match: /\/case-study\/mobbin$/,
     description:
-      "A pattern study documenting more than 200 consumer app screens to understand onboarding, discovery, trust, and interaction craft.",
+      "A pattern study documenting more than 200 screens across three finance apps to understand onboarding, discovery, trust, and interaction craft.",
     image: "/assets/mobbin/discover.jpg",
   },
   {

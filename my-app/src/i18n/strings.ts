@@ -107,7 +107,7 @@ const en = {
   "home.eyebrow": "Selected work",
   "home.proj.grove.subtitle": "Product Design · AI Judgment",
   "home.proj.msk.subtitle": "UX & Product Design · Healthcare Systems",
-  "home.proj.mobbin.subtitle": "Freelance · 200+ consumer app screens, studied for craft",
+  "home.proj.mobbin.subtitle": "Freelance · 200+ screens across three finance apps, studied for craft",
 
   // ── Home: contact / CTA ──
   "home.ctaTitle": "Building a product people have to trust?",
@@ -213,7 +213,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.eyebrow": "Trabajo seleccionado",
   "home.proj.grove.subtitle": "Diseño de producto · Criterio con IA",
   "home.proj.msk.subtitle": "Diseño UX y de producto · Sistemas de salud",
-  "home.proj.mobbin.subtitle": "Freelance · Más de 200 pantallas de apps de consumo, estudiadas por su oficio",
+  "home.proj.mobbin.subtitle": "Freelance · Más de 200 pantallas de tres apps de finanzas, estudiadas por su oficio",
 
   // ── Home: contact / CTA ──
   "home.ctaTitle": "¿Está creando un producto en el que la gente tiene que confiar?",

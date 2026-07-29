@@ -56,7 +56,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
     }
 
     const ids = ["home", "projects", "about", "contact"];
-    const update = () => {
+    const measure = () => {
       const line = window.innerHeight * 0.35;
       let current = "home";
       for (const id of ids) {
@@ -65,12 +65,27 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
       }
       setActiveSection(current);
     };
-    update();
+
+    // getBoundingClientRect() forces a synchronous layout, and this reads four
+    // elements. Running that on every raw scroll event means four forced
+    // reflows per event on the page's longest scroll. Coalesce to one read per
+    // animation frame, the same guard ReadingProgress uses.
+    let frame = 0;
+    const update = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        measure();
+      });
+    };
+
+    measure();
     window.addEventListener("scroll", update, { passive: true });
     window.addEventListener("resize", update);
     return () => {
       window.removeEventListener("scroll", update);
       window.removeEventListener("resize", update);
+      if (frame) window.cancelAnimationFrame(frame);
     };
   }, [location.pathname]);
 

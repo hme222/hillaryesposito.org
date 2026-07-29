@@ -66,7 +66,7 @@ export default function FlagshipMobbin() {
           <div className="rp-clearing">
             <span className="rp-eyebrow">UX flow documentation · pattern curation</span>
             <h1 className="rp-h1">Mobbin.</h1>
-            <span className="rp-readtime"><b>5 min</b><span>read · 3 apps, 200+ screens</span></span>
+            <span className="rp-readtime"><b>3 min</b><span>read · 3 apps, 200+ screens</span></span>
             <p className="rp-sub">
               Anyone can screenshot an app. Mobbin hired me to decide what <b>200+ screens</b> mean
               to a designer who will never meet me—and make every step searchable.

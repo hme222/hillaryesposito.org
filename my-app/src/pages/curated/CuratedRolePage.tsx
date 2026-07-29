@@ -27,12 +27,45 @@ function caseStudyPathFor(title: string): string | undefined {
   return CASE_STUDY_LINKS.find((link) => link.match.test(title))?.path;
 }
 
+/**
+ * Width of a headline's longest unbreakable word, measured at a 100px reference
+ * size, so CSS can size the type to its plate exactly.
+ *
+ * A character-count approximation is not good enough here: Archivo 850 runs
+ * ~0.61em per character for "Instagram" but ~0.75em for "CompanyCam", because
+ * capitals are wider. One shared ratio either lets the capital-heavy names
+ * overflow or shrinks the rest more than they need. Canvas measurement is exact
+ * and costs no layout — nothing is inserted into the document.
+ */
+function useLongestWordWidth(text: string): number | null {
+  const [w100, setW100] = React.useState<number | null>(null);
+  React.useEffect(() => {
+    let cancelled = false;
+    const measure = () => {
+      if (cancelled) return;
+      const canvas = document.createElement("canvas").getContext("2d");
+      if (!canvas) return;
+      // Match the rendered headline: same family, weight and tracking.
+      canvas.font = '850 100px Archivo, -apple-system, BlinkMacSystemFont, sans-serif';
+      canvas.letterSpacing = "-2.4px"; // -.024em at 100px
+      const widest = Math.max(...text.split(/\s+/).map((word) => canvas.measureText(word).width));
+      setW100(Math.ceil(widest));
+    };
+    // Measure once the webfont is in, otherwise we size against a fallback.
+    if (document.fonts?.ready) document.fonts.ready.then(measure);
+    else measure();
+    return () => { cancelled = true; };
+  }, [text]);
+  return w100;
+}
+
 export default function CuratedRolePage() {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const { lang } = useLanguage();
   const page = useMemo(() => (slug ? curatedPages[slug] : undefined), [slug]);
   usePageTitle(page ? `${page.company}: ${page.role}` : "Page not found");
+  const headlineW100 = useLongestWordWidth(page?.company ?? "");
 
   useEffect(() => {
     if (typeof IntersectionObserver === "undefined") return;
@@ -86,7 +119,6 @@ export default function CuratedRolePage() {
         <a href="#curated-fit">Fit</a>
         <a href="#curated-proof">Proof</a>
         <a href="#curated-work">Work</a>
-        <a href="#curated-experience">Experience</a>
       </nav>
 
       {/* HERO */}
@@ -101,7 +133,17 @@ export default function CuratedRolePage() {
         <div className="rp-hero__content">
           <div className="rp-clearing">
             <span className="rp-eyebrow">{page.eyebrow}</span>
-            <h1 className="rp-h1">{page.company}</h1>
+            {/* Company names run from "Indyx" to "Manière De Voir". At the shared
+                h1 size the long ones broke out of the clearing and printed over
+                the collage — "Instagram" measured 407px inside a 303px box. */}
+            <div className="rp-h1Fit">
+              <h1
+                className={`rp-h1${headlineW100 ? " rp-h1--fit" : ""}`}
+                style={headlineW100 ? ({ ["--h1-w100" as string]: headlineW100 } as React.CSSProperties) : undefined}
+              >
+                {page.company}
+              </h1>
+            </div>
             <p className="rp-work__sub" style={{ marginTop: ".7rem" }}>{page.role}</p>
             <p className="rp-sub">{page.headline}</p>
             <div className="rp-hero__ctas">
@@ -254,16 +296,12 @@ export default function CuratedRolePage() {
         </div>
       </section>
 
-      {/* EXPERIENCE */}
-      <section id="curated-experience" className="rp-section rp-section--alt">
-        <div className="rp-wrap rp-reveal">
-          <p className="rp-kicker">The background</p>
-          <h2 className="rp-title">Where the experience comes from</h2>
-          {page.relevantExperience.slice(0, 2).map((p) => (
-            <p className="rp-lede" key={p}>{p}</p>
-          ))}
-        </div>
-      </section>
+      {/* "Where the experience comes from" was removed on 2026-07-29. It restated
+          "What to review" — on six of the eight pages it described the same
+          Grove / Mobbin / MSK work in the same terms, one section further down
+          and without the links. ~592 words across the set, for no new evidence.
+          The copy is still in curatedPages.relevantExperience if a page ever
+          needs a background section that says something the work list doesn't. */}
 
       {/* CLOSING */}
       <section className="rp-section">

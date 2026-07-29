@@ -142,13 +142,15 @@ const DECISIONS = [
   },
 ];
 
-// The five calls I overruled the AI on — progressive-disclosure accordion.
-const OVERRIDES = [
+// The calls I overruled the AI on — progressive-disclosure accordion.
+// `next` marks a call I am making now rather than one already in the build.
+const OVERRIDES: Array<{ topic: string; ai: string; me: string; why: string; next?: boolean }> = [
   { topic: "Reminder tone", ai: "Guilt and urgency — “your plant misses you.”", me: "One calm morning summary.", why: "Notifications are the #1 reason people delete a plant app." },
-  { topic: "Gamification", ai: "Badges, streaks, and a leaderboard.", me: "An AI plant personality you earn — a feeling, not points.", why: "Care that feels like paperwork is the top reason people quit." },
+  { topic: "Gamification", ai: "Badges, streaks, and a leaderboard.", me: "An AI plant personality you earn — a feeling, not points.", why: "Care that feels like paperwork is the top reason people quit. A streak also rewards watering every day, and overwatering is the most common way people kill houseplants — the optimal play would kill the subject of the product. The honest cost: calm should show lower 7-day engagement than streaks would. I’d take that trade if 90-day retention holds. If it doesn’t, the mechanic was doing work I underestimated, and I’d rather find that out than assume it." },
   { topic: "Plant ID confidence", ai: "One confident answer, every time.", me: "Top guesses, how sure it is, and its sources.", why: "False certainty is the fastest way to lose trust." },
   { topic: "Pet safety", ai: "Generic care tips.", me: "Toxic-to-pets warnings the moment you add a plant, with sources.", why: "New owners raised it unprompted, before I ever asked. When a plant can hurt a cat, a wrong guess isn’t a suggestion — it’s a risk." },
   { topic: "Notification frequency", ai: "Nudge whenever engagement dips.", me: "One summary per group; only true emergencies interrupt.", why: "A reminder can never become the reason someone leaves." },
+  { topic: "Watering schedule", next: true, ai: "A fixed calendar — every plant on its own repeating interval, counting days overdue.", me: "The reminder asks you to check, not to water: “Fiddle Leaf — check the top inch.” Two taps: watered, or not yet.", why: "Overwatering kills more houseplants than neglect, and a fixed interval is exactly how it happens. My own care guide already says “water when the top inch is dry” — the reminder engine never caught up to it. Asking you to check makes the reminder correct, makes seasonality free, and turns “smart care reminders” from a label into a mechanism. This is the one I got wrong in the same direction as the AI: I overruled its tone five times and never once its logic." },
 ];
 
 // Share, then confirm only what actually happened — shared, copied, or a way to
@@ -261,7 +263,7 @@ export default function RisoGrove() {
       path.style.strokeDashoffset = "0";
       return;
     }
-    const onScroll = () => {
+    const draw = () => {
       const r = quote.getBoundingClientRect();
       const vh = window.innerHeight || 1;
       const start = vh * 0.66; // starts a bit later — as your eye reaches it
@@ -269,12 +271,26 @@ export default function RisoGrove() {
       const p = Math.max(0, Math.min(1, (start - r.top) / (start - end)));
       path.style.strokeDashoffset = String(1 - p);
     };
-    onScroll();
+
+    // Reads layout (getBoundingClientRect) and then writes style on the same
+    // element. Left on the raw scroll event that is a read/write cycle per
+    // event; batching into one frame keeps it to a single layout pass.
+    let frame = 0;
+    const onScroll = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        draw();
+      });
+    };
+
+    draw();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
     };
   }, []);
 
@@ -305,7 +321,7 @@ export default function RisoGrove() {
             <span className="rp-eyebrow">Product design · AI judgment</span>
             <h1 className="rp-h1">Grove.</h1>
             <span className="rp-readtime">
-              <b>5 min</b>
+              <b>7 min</b>
               <span>read · a decision log, not a demo</span>
             </span>
             <p className="rp-sub">
@@ -492,15 +508,18 @@ export default function RisoGrove() {
             <div className="rp-pushback__vs" aria-hidden="true">instead ↓</div>
             <div className="rp-notif rp-notif--me">
               <p className="rp-notif__tag">What I’m designing instead</p>
-              <div className="rp-notif__card"><span className="rp-notif__app">Grove · 8:00 AM</span><p className="rp-notif__msg">Good morning. One thing today — your Fiddle Leaf could use a little water.</p></div>
+              <div className="rp-notif__card"><span className="rp-notif__app">Grove · 8:00 AM</span><p className="rp-notif__msg">Good morning. One thing today — your Fiddle Leaf, check the top inch.</p></div>
             </div>
           </div>
 
-          <h3 className="rp-subhead">All five calls, in full</h3>
+          <h3 className="rp-subhead">All six calls, in full</h3>
           <div className="rp-accordion rp-reveal">
             {OVERRIDES.map((o, i) => (
               <details className="rp-acc" key={o.topic}>
-                <summary><span className="rp-acc__num">{String(i + 1).padStart(2, "0")}</span> {o.topic}</summary>
+                <summary>
+                  <span className="rp-acc__num">{String(i + 1).padStart(2, "0")}</span> {o.topic}
+                  {o.next && <span className="rp-acc__next">designing now</span>}
+                </summary>
                 <div className="rp-acc__body">
                   <p className="rp-acc__line rp-acc__ai"><b>AI wanted</b>{o.ai}</p>
                   <p className="rp-acc__line rp-acc__me"><b>I chose</b>{o.me}</p>
@@ -581,7 +600,7 @@ export default function RisoGrove() {
             <i aria-hidden="true">→</i>
             <span>Me: narrow, calm, accountable</span>
             <i aria-hidden="true">→</i>
-            <span>3 features kept, 5 calls overruled</span>
+            <span>3 features kept, 5 calls overruled, 1 in progress</span>
             <i aria-hidden="true">→</i>
             <strong>That’s Grove</strong>
           </div>

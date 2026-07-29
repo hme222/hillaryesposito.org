@@ -23,7 +23,7 @@ const WORK = [
     subKey: "home.proj.msk.subtitle",
     descKey: "home.riso.mskDesc",
     path: "/case-study/msk",
-    img: "/assets/msk/mskcc-map.png",
+    img: "/assets/msk/mskcc-map-thumb.jpg",
     imgAltKey: "home.riso.mskAlt",
   },
   {
@@ -58,7 +58,7 @@ const WORK = [
 
 const STATS = [
   { n: "200+", labelKey: "home.stat.patterns", sourceKey: "home.stat.mobbinSource" },
-  { n: "32", labelKey: "home.stat.research", sourceKey: "home.stat.groveSource" },
+  { n: "34", labelKey: "home.stat.research", sourceKey: "home.stat.groveSource" },
   { n: "21,000+", labelKey: "home.stat.scale", sourceKey: "home.stat.mskSource" },
 ] satisfies Array<{ n: string; labelKey: StringKey; sourceKey: StringKey }>;
 

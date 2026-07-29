@@ -69,9 +69,12 @@
 
 /* One masthead, one behaviour: a stable editorial rule rather than a
    transparent bar that turns into a floating island mid-scroll. */
-.navbar,
-.navbar.is-floating,
-.navbar:not(.is-floating) {
+/* `:root .navbar` rather than `.navbar`: this rule has to out-rank
+   `.dark-mode .navbar` in App.css, which it does at (0,2,0). It used to get
+   that weight from `.navbar:not(.is-floating)`, removed with the floating
+   masthead — dropping to a bare `.navbar` silently changed the dark navbar's
+   text colour. */
+:root .navbar {
   width: 100%;
   max-width: none;
   min-height: 64px;
@@ -435,9 +438,7 @@ html[lang="es"] .riso-home .rp-clearing { max-width: 58ch; }
 }
 
 @media (max-width: 768px) {
-  .navbar,
-  .navbar.is-floating,
-  .navbar:not(.is-floating) {
+  :root .navbar {
     min-height: 64px;
     padding: .6rem 1rem;
     background: var(--shell-paper) !important;

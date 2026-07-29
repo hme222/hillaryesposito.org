@@ -6,6 +6,8 @@ import ReadingProgress from "../../components/flagship/ReadingProgress";
 import DecisionStory from "../../components/flagship/DecisionStory";
 import EvidenceField from "../../components/flagship/EvidenceField";
 import MSKDashboardMockup from "../../components/MSKDashboardMockup";
+import MSKWorkflowMap from "../../components/MSKWorkflowMap";
+import MSKMechanism from "../../components/MSKMechanism";
 import RisoDefs from "../../components/riso/RisoDefs";
 import CartoField from "../../components/riso/CartoField";
 import SpanishCaseStudy from "../../components/SpanishCaseStudy";
@@ -42,20 +44,20 @@ const REDESIGNS = [
     n: "01",
     title: "EMR filing workflow",
     finding: "A digital record was printed, routed out for filing, then waited to reappear in the online chart.",
-    change: "One dashboard action routed staff straight to the filing destination, putting the next required step where the decision was already being made.",
+    change: "One dashboard action routed staff straight to the filing destination — the next step placed where the decision was already being made.",
     wrong: "I underestimated change management. Staff who had spent years on the print-and-send workaround resisted relearning it. Floor-level training on their own workstations, during shift transitions, fixed it within two weeks.",
   },
   {
     n: "02",
     title: "Certification tracking",
-    finding: "The tracking spreadsheet had no proactive alerts. Staff learned a certification had lapsed when compliance flagged it — by then a disciplinary issue.",
-    change: "A dashboard for staff and managers with reminders at 90, 60, and 30 days before expiry, and “last refreshed” timestamps. The old system told you when you had failed; the new one tells you what is coming.",
+    finding: "The tracking spreadsheet had no alerts. Staff learned a certification had lapsed when compliance flagged it — by then a disciplinary issue.",
+    change: "Reminders at 90, 60, and 30 days before expiry, with “last refreshed” timestamps. The old system told you when you had failed; the new one tells you what is coming.",
   },
   {
     n: "03",
     title: "Clinician onboarding",
-    finding: "Onboarding was fragmented across five or more departments, each with its own checklist. System access and safety protocols sometimes finished weeks after a clinician started seeing patients.",
-    change: "One unified path with a single source of truth, sequenced so no one reaches patients before completing safety prerequisites.",
+    finding: "Onboarding was split across five or more departments, each with its own checklist. System access and safety protocols sometimes finished weeks after a clinician started seeing patients.",
+    change: "One sequenced path, so no one reaches patients before completing safety prerequisites.",
     wrong: "I designed the first version for managers instead of new hires. Tracking dashboards overwhelmed clinicians who needed one clear next step on day one. The manager view stayed, but stopped being the primary interface.",
   },
 ];
@@ -97,7 +99,7 @@ export default function FlagshipMSK() {
 
       <header className="rp-hero fp-hero" id="msk-start">
         <CartoField
-          mapSrc="/riso/mskcc-map.png"
+          mapSrc="/assets/msk/mskcc-map.jpg"
           edition="eucalyptus"
           mapZoom={1.8}
           mapPosition="59% 73%"
@@ -140,7 +142,7 @@ export default function FlagshipMSK() {
             {/* EMR is used five times on this page and was never defined in
                 English — while the Spanish version defines it. Defined here, at
                 first real use, rather than assuming the reader already knows. */}
-            <p>Every clinical day runs through the EMR — the electronic medical record, the digital chart where a patient’s whole history lives. The button was the visible fix. The real design work was understanding why four systems stood between a clinician and one completed task.</p>
+            <p>Every clinical day runs through the EMR — the electronic medical record, the digital chart where a patient’s whole history lives. The real work was understanding why four systems stood between a clinician and one completed task.</p>
           </div>
         </div>
       </section>
@@ -149,7 +151,11 @@ export default function FlagshipMSK() {
         <div className="rp-wrap">
           <p className="rp-kicker">Primary artifact · recreated and anonymized</p>
           <h2 className="rp-title">Four systems became two.</h2>
-          <p className="rp-lede">Counting the steps made the failure visible to clinical leadership, IT, and operations at the same time. No patient information appears here.</p>
+          <p className="rp-lede">Counting the steps made the failure visible to every team at once. No patient information appears here.</p>
+          <figure className="fp-workflowFig rp-reveal">
+            <MSKWorkflowMap />
+            <figcaption>Recreated current-state and future-state map · no patient data</figcaption>
+          </figure>
           <div className="fp-workflow rp-reveal">
             <article>
               <span className="fp-workflow__label">Before · six steps</span>
@@ -183,16 +189,15 @@ export default function FlagshipMSK() {
           <h2 className="rp-title">I learned the system from the floor up.</h2>
           <p className="rp-lede">Office Coordinator taught me where people paused. Administrative Assistant taught me how to make evidence survive a stakeholder room. Training Specialist gave me the authority to redesign the system.</p>
           <div className="fp-systemCards rp-reveal">
-            <article><span>01 · Observe</span><h3>Find the workarounds</h3><p>Shadow nurses and clinicians during real shifts. The sticky notes and personal spreadsheets told the truth the policy map missed.</p></article>
-            <article><span>02 · Align</span><h3>Make the failure shared</h3><p>Current-state maps gave clinical leadership, IT, operations, and compliance one picture to argue with instead of four email threads.</p></article>
-            <article><span>03 · Redesign</span><h3>Sequence the next action</h3><p>Move the right task into the place people already make the decision, then make ownership and exceptions visible.</p></article>
+            <article><span>01 · Observe</span><h3>Find the workarounds</h3><p>Shadow real shifts. The sticky notes and personal spreadsheets told the truth the policy map missed.</p></article>
+            <article><span>02 · Align</span><h3>Make the failure shared</h3><p>Current-state maps gave four departments one picture to argue with instead of four email threads.</p></article>
+            <article><span>03 · Redesign</span><h3>Sequence the next action</h3><p>Move the task to where the decision already happens, then make ownership and exceptions visible.</p></article>
           </div>
           <div className="fp-discipline rp-reveal">
             <p className="fp-discipline__lead">
-              The work has a name before it has an interface. This is service design and process
-              improvement: follow the whole path a task takes through an organization, find the step
-              that should not exist, and redesign the sequence instead of decorating the screen at
-              the end of it.
+              The work has a name before it has an interface. Service design and process improvement:
+              follow a task through the whole organization, find the step that should not exist, and
+              redesign the sequence instead of decorating the screen at the end of it.
             </p>
             <dl>
               <div>
@@ -228,6 +233,7 @@ export default function FlagshipMSK() {
               <article key={r.n}>
                 <span className="fp-redesigns__n">{r.n}</span>
                 <h3>{r.title}</h3>
+                <MSKMechanism n={r.n} />
                 <p className="fp-redesigns__finding">{r.finding}</p>
                 <p className="fp-redesigns__change">{r.change}</p>
                 {r.wrong && (
@@ -249,10 +255,21 @@ export default function FlagshipMSK() {
             outlasted three leadership transitions. Sustainment is the real test of whether a design
             solved the problem.
           </p>
+          {/* This was the third card in a three-card row. It is the sharpest
+              principle on the page — a shipped decision about admitting a
+              limitation rather than designing around it — so it now carries its
+              own weight instead of reading as a footnote. */}
+          <figure className="rp-quoteCard fp-principle rp-reveal">
+            <blockquote>Transparency beats pretending.</blockquote>
+            <figcaption>
+              The certification feed could only refresh once a day. Rather than hide that, every
+              view carried a “last refreshed” timestamp — so stale data looked stale, and nobody
+              made a compliance decision believing they were reading live numbers.
+            </figcaption>
+          </figure>
           <div className="fp-reflections rp-reveal">
             <article><h3>The work starts on the floor</h3><p>No interview surfaced every workaround. Watching the work did.</p></article>
             <article><h3>Alignment is part of the interface</h3><p>The right solution still fails when each department carries a different model of the problem.</p></article>
-            <article><h3>Transparency beats pretending</h3><p>When the certification feed could refresh only daily, “last refreshed” timestamps made the limitation visible instead of hiding it.</p></article>
           </div>
           <a className="fp-proofLink" href="https://www.mskcc.org/news/hillary-esposito-s-career-path-military-msk" target="_blank" rel="noopener noreferrer" aria-label="Read Hillary Esposito's career profile in MSK News (opens in new tab)">
             <span>Independent proof · MSK News</span><b className="rp-ext">From the military to Memorial Sloan Kettering</b>
