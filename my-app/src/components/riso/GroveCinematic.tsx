@@ -21,7 +21,7 @@ export default function GroveCinematic() {
           <p>Source attached. The AI does not get the last word.</p>
         </div>
         <div className="rp-cinema__artifact rp-cinema__artifact--note" aria-hidden="true">
-          <span>Research journal · 17/32</span>
+          <span>Research journal · n=34</span>
           <b>“Peaceful, not stressful.”</b>
         </div>
         <div className="rp-cinema__bridge">

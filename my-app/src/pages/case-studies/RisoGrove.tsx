@@ -607,7 +607,7 @@ export default function RisoGrove() {
           <div className="rp-note rp-reveal">
             <p className="rp-note__k">What the three phases mean</p>
             <p>
-              Phase 1 was the first AI-built version and the 32-person survey this redesigns from.
+              Phase 1 was the first AI-built version and the 34-person survey this redesigns from.
               Phase 2 is the decisions on this page. Phase 3 is finishing the high-fidelity care and
               plant-ID screens, testing them with owners, and documenting the edge states. Social
               discovery stays out until the core care loop earns trust.
