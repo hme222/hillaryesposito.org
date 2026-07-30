@@ -20,7 +20,7 @@ const en = {
 
   // ── Global footer + recovery ──
   "footer.eyebrow": "Hillary Esposito · Product Designer",
-  "footer.statement": "Research rigor for products people have to trust.",
+  "footer.statement": "Software that's right, not just pretty.",
   "footer.siteAria": "Footer navigation",
   "footer.explore": "Explore",
   "footer.connect": "Connect",
@@ -62,9 +62,9 @@ const en = {
   "home.getInTouch": "Get in touch",
   "home.seeApproach": "See my approach →",
   "home.riso.eyebrow": "Hillary Esposito · Product Designer",
-  "home.riso.heroTitle": "Products people have to trust.",
+  "home.riso.heroTitle": "Systems people have to trust.",
   "home.riso.heroLead":
-    "Research rigor, AI judgment, and consumer craft — shaped by six years building software for",
+    "Workflow fluency, research rigor, and AI judgment — shaped by six years building software for",
   "home.riso.heroProof": "21,000 clinicians and staff",
   "home.riso.heroClose": "who couldn't afford a wrong guess.",
   "home.riso.workTitle": "Three products, three ways trust gets earned",
@@ -110,7 +110,7 @@ const en = {
   "home.proj.mobbin.subtitle": "Freelance · 200+ screens across three finance apps, studied for craft",
 
   // ── Home: contact / CTA ──
-  "home.ctaTitle": "Building a product people have to trust?",
+  "home.ctaTitle": "Building a product where the details decide?",
   "home.ctaEmailAria": "Send me a note",
   "home.linkedinAria": "LinkedIn profile (opens in new tab)",
 
@@ -130,7 +130,7 @@ const es: Partial<Record<StringKey, string>> = {
 
   // ── Global footer + recovery ──
   "footer.eyebrow": "Hillary Esposito · Diseñadora de Producto",
-  "footer.statement": "Rigor de investigación para productos en los que la gente debe confiar.",
+  "footer.statement": "Software que está bien hecho, no solo bonito.",
   "footer.siteAria": "Navegación del pie de página",
   "footer.explore": "Explorar",
   "footer.connect": "Contacto",
@@ -168,9 +168,9 @@ const es: Partial<Record<StringKey, string>> = {
   "home.getInTouch": "Contácteme",
   "home.seeApproach": "Conozca mi enfoque →",
   "home.riso.eyebrow": "Hillary Esposito · Diseñadora de Producto",
-  "home.riso.heroTitle": "Productos en los que la gente tiene que confiar.",
+  "home.riso.heroTitle": "Sistemas en los que la gente tiene que confiar.",
   "home.riso.heroLead":
-    "Rigor de investigación, criterio con IA y oficio de producto de consumo, forjados durante seis años creando software para",
+    "Fluidez en flujos de trabajo, rigor de investigación y criterio con IA, forjados durante seis años creando software para",
   "home.riso.heroProof": "21,000 clínicos y personal",
   "home.riso.heroClose": "que no podían permitirse un error.",
   "home.riso.workTitle": "Tres productos, tres formas de ganarse la confianza",
@@ -216,7 +216,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.proj.mobbin.subtitle": "Freelance · Más de 200 pantallas de tres apps de finanzas, estudiadas por su oficio",
 
   // ── Home: contact / CTA ──
-  "home.ctaTitle": "¿Está creando un producto en el que la gente tiene que confiar?",
+  "home.ctaTitle": "¿Está creando un producto donde los detalles deciden?",
   "home.ctaEmailAria": "Envíeme un correo",
   "home.linkedinAria": "Perfil de LinkedIn (se abre en una pestaña nueva)",
 
