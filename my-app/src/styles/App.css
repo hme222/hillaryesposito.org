@@ -2264,6 +2264,18 @@ textarea::placeholder {
   color: var(--on-accent, #1a0e03);
 }
 
+/* Plain-language key for the hospital shorthand in the queue above. Quieter
+   than the rule callout: it is there when a reader needs it, not competing. */
+.msk-dashboard-mockup__legend {
+  margin-top: 0.75rem;
+  display: grid;
+  gap: 0.3rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+.msk-dashboard-mockup__legend b { color: var(--fg); font-weight: 700; }
+
 .msk-dashboard-mockup__rule {
   margin-top: 0.85rem;
   padding: 0.7rem 0.85rem;

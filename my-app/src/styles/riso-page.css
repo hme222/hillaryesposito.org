@@ -1145,15 +1145,18 @@
 .rp-cinema__artifact span { font-family: var(--mono); font-size: .58rem; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
 .rp-cinema__artifact b { display: block; margin-top: .35rem; font-size: 1rem; line-height: 1.3; }
 .rp-cinema__artifact p { margin-top: .25rem; font-size: .78rem; line-height: 1.45; color: var(--ink-2); }
-/* Row 1: the two annotation plates flank the composition. Row 2: the centre
-   piece (a screenshot on Grove, the before/after core on MSK and Mobbin).
-   Row 3: the bridge copy, with Grove's optional note plate beside it. */
-.rp-cinema__artifact--reminder { grid-row: 1; grid-column: 1; justify-self: start; transform: rotate(-2deg); }
-.rp-cinema__artifact--safety { grid-row: 1; grid-column: 2; justify-self: end; transform: rotate(1.5deg); }
-.rp-cinema__artifact--note { grid-row: 3; grid-column: 2; justify-self: end; align-self: end; width: min(240px, 100%); transform: rotate(-1deg); }
+/* Text on the left, visuals stacked on the right.
+   The previous version put the plates in a row above and the bridge copy
+   underneath, which let the heading collide with the floor-observation plate
+   whenever the copy grew. A straight two-column split cannot collide: the
+   heading owns column 1, every visual owns column 2, and each takes its own
+   row so the plates stack instead of sharing a cell. */
+.rp-cinema__bridge { grid-column: 1; grid-row: 1 / -1; align-self: center; justify-self: start; max-width: 460px; }
+.rp-cinema__artifact--reminder { grid-column: 2; grid-row: 1; justify-self: end; transform: rotate(-2deg); }
+.rp-cinema__screen, .fp-cinemaCore { grid-column: 2; grid-row: 2; justify-self: end; }
+.rp-cinema__artifact--safety { grid-column: 2; grid-row: 3; justify-self: end; transform: rotate(1.5deg); }
+.rp-cinema__artifact--note { grid-column: 2; grid-row: 4; justify-self: end; width: min(240px, 100%); transform: rotate(-1deg); }
 .rp-cinema__artifact--note b { font-family: var(--sans); color: var(--green); }
-.rp-cinema__screen, .fp-cinemaCore { grid-row: 2; grid-column: 1 / -1; }
-.rp-cinema__bridge { grid-row: 3; grid-column: 1; justify-self: start; max-width: 430px; }
 .rp-cinema__bridge .rp-kicker { color: #ff8a78; }
 .rp-cinema__bridge h2 { margin: .45rem 0 0; font-size: clamp(1.8rem,4vw,3.3rem); line-height: 1.1; letter-spacing: -.021em; text-wrap: balance; }
 .rp-cinema__bridge > p:last-child { margin-top: .85rem; max-width: 44ch; color: rgba(244,241,230,.78); }
@@ -1166,11 +1169,14 @@
     padding: 0 .25rem; }
   .rp-cinema__screen { width: min(224px, 60vw); max-height: none; }
   .rp-cinema__artifact { width: min(190px, 100%); padding: .7rem .75rem; }
-  .rp-cinema__artifact--reminder,
-  .rp-cinema__artifact--safety { grid-row: auto; grid-column: 1; justify-self: start; }
+  /* Single column, and the copy leads. In DOM order the bridge comes last, so
+     without explicit rows the heading would land underneath the plates — the
+     same buried-heading problem the desktop split fixes. */
+  .rp-cinema__bridge { grid-column: 1; grid-row: 1; align-self: start; max-width: none; }
+  .rp-cinema__screen, .fp-cinemaCore { grid-column: 1; grid-row: 2; justify-self: center; }
+  .rp-cinema__artifact--reminder { grid-column: 1; grid-row: 3; justify-self: start; }
+  .rp-cinema__artifact--safety { grid-column: 1; grid-row: 4; justify-self: start; }
   .rp-cinema__artifact--note { display: none; }
-  .rp-cinema__screen, .fp-cinemaCore { grid-row: auto; grid-column: 1; justify-self: center; }
-  .rp-cinema__bridge { grid-row: auto; grid-column: 1; }
 }
 
 /* ---------- the human override is the differentiator ---------- */
@@ -1273,45 +1279,40 @@
 
 /* ---------- sticky decision narrative ---------- */
 .rp-decisionStory { padding: var(--sp-2xl) 0; border-block: 1px solid var(--hair); background: var(--paper-2); }
-.rp-decisionStory__head { max-width: 760px; }
-.rp-decisionStory__grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: var(--sp-xl); margin-top: var(--sp-lg); align-items: start; }
-.rp-decisionStory__visual { position: sticky; top: 150px; min-height: 520px; display: grid; place-items: center; border: 1px solid var(--hair);
-  border-radius: var(--r-plate); overflow: hidden; background:
-  radial-gradient(circle at 50% 40%, color-mix(in srgb,var(--green) 14%,transparent), transparent 48%),
-  color-mix(in srgb,var(--paper) 88%,white); }
+
+/* The artifact sits with the claim it belongs to, rather than being pinned
+   beside a column that outruns it. Nothing here is scroll-dependent. */
+.rp-decisionStory__top { display: grid; grid-template-columns: 1.05fr .95fr; gap: var(--sp-xl);
+  align-items: center; }
+.rp-decisionStory__head { max-width: 52ch; }
+.rp-decisionStory__visual { position: relative; display: grid; place-items: center; overflow: hidden;
+  border: 1px solid var(--hair); border-radius: var(--r-plate); padding: clamp(1rem, 2.5vw, 1.8rem);
+  background:
+    radial-gradient(circle at 50% 40%, color-mix(in srgb,var(--green) 14%,transparent), transparent 48%),
+    color-mix(in srgb,var(--paper) 88%,white); }
 .rp-decisionStory__visual::before { content: ""; position: absolute; inset: 0; opacity: .38; background-image:
-  linear-gradient(var(--hair) 1px,transparent 1px), linear-gradient(90deg,var(--hair) 1px,transparent 1px); background-size: 28px 28px; }
-.rp-decisionStory__visual .rp-device { width: min(250px,64%); z-index: 1; }
-.rp-decisionStory__note { position: absolute; left: 6%; right: 6%; bottom: 5%; z-index: 2; padding: .8rem .9rem; border-radius: var(--r-plate);
-  background: var(--ink); color: var(--paper); box-shadow: 0 16px 32px -20px rgba(0,0,0,.6); animation: rp-note-in .28s ease-out; }
-.rp-decisionStory__note span { display: block; font-family: var(--mono); font-size: .55rem; letter-spacing: .1em; color: var(--coral); text-transform: uppercase; }
-.rp-decisionStory__note b { display: block; margin-top: .25rem; font-size: .86rem; }
-@keyframes rp-note-in { from { opacity: 0; transform: translateY(8px); } }
-/* The trailing space keeps the sticky visual pinned through the final step.
-   Without it the column runs out before the last decision reaches the reading
-   line, the visual unsticks, and the image slides away from the text it is
-   meant to sit beside. The pinned visual fills this space, so it reads as
-   deliberate rather than empty. */
-.rp-decisionStory__steps { list-style: none; padding: 0 0 clamp(160px, 26vh, 260px); margin: 0; }
-/* Each step was min-height 52vh but holds about four lines, so four of them
-   produced roughly two viewport-heights of empty column and the section read as
-   unfinished. 34vh still gives the observer more room than its 24% detection
-   band needs to switch the active step, at a fraction of the dead space. */
-.rp-decisionStory__steps li { min-height: 34vh; padding: var(--sp-md) 0; opacity: .42; transition: opacity .28s ease; border-top: 1px solid var(--hair); }
-/* No leading padding on the first step: the visual starts at the top of its
-   column, so a top inset here left the image floating above the first line of
-   text it is meant to sit beside. */
-.rp-decisionStory__steps li:first-child { border-top: 0; padding-top: 0; }
-.rp-decisionStory__steps li.is-active { opacity: 1; }
-.rp-decisionStory__steps li > span { font-family: var(--mono); font-size: .7rem; color: var(--coral); }
-.rp-decisionStory__steps h3 { margin: .6rem 0 0; font-size: var(--ts-heading); line-height: 1.14; letter-spacing: -.018em; }
-.rp-decisionStory__steps p { margin-top: .8rem; color: var(--ink-2); max-width: 52ch; }
-@media (max-width: 760px) {
-  .rp-decisionStory__grid { grid-template-columns: 1fr; }
-  .rp-decisionStory__visual { position: relative; top: auto; min-height: 540px; }
-  /* Single column: nothing is pinned, so the trailing space would just be a gap. */
-  .rp-decisionStory__steps { padding-bottom: 0; }
-  .rp-decisionStory__steps li { min-height: auto; opacity: 1; padding: 2rem 0; }
+  linear-gradient(var(--hair) 1px,transparent 1px), linear-gradient(90deg,var(--hair) 1px,transparent 1px);
+  background-size: 28px 28px; }
+.rp-decisionStory__visual > * { position: relative; z-index: 1; }
+
+/* Four decisions as plates. Each is self-contained: title, what it does, and
+   the decision-log line that used to live inside the image and disappear with
+   it. auto-fit so two, three or four steps all fill the row. */
+.rp-decisionStory__steps { list-style: none; margin: var(--sp-lg) 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 1rem; }
+.rp-decisionStory__steps li { padding: clamp(1.1rem, 2.4vw, 1.5rem); border: 1px solid var(--hair);
+  border-radius: var(--r-plate); background: var(--paper); display: flex; flex-direction: column; }
+.rp-decisionStory__n { font-family: var(--mono); font-size: .7rem; color: var(--coral); }
+.rp-decisionStory__steps h3 { margin: .55rem 0 0; font-size: var(--ts-heading); line-height: 1.14; letter-spacing: -.018em; }
+.rp-decisionStory__steps p { margin-top: .7rem; color: var(--ink-2); }
+.rp-decisionStory__logline { margin-top: auto; padding-top: .9rem; border-top: 1px solid var(--hair); }
+.rp-decisionStory__logline span { display: block; font-family: var(--mono); font-size: .55rem;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--coral); }
+.rp-decisionStory__logline b { display: block; margin-top: .25rem; font-size: .86rem; color: var(--ink); }
+
+@media (max-width: 860px) {
+  .rp-decisionStory__top { grid-template-columns: 1fr; }
+  .rp-decisionStory__head { max-width: none; }
 }
 
 /* ---------- future work gets room to stay unfinished ---------- */
@@ -1348,12 +1349,6 @@
 }
 
 /* ---------- journal completion reward ---------- */
-@media (max-width: 520px) {
-}
-@media (prefers-reduced-motion: reduce) {
-  .rp-decisionStory__note { animation: none; }
-  .rp-decisionStory__steps li { opacity: 1; transition: none; }
-}
 
 /* ---------- home: availability + credential strip ---------- */
 /* Both recovered from the previous design. Availability and credentials (Lean

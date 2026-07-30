@@ -44,7 +44,7 @@ const CHAPTERS = [
     heading: "Captain and Medical Logistics Officer, NJ Army National Guard.",
     image: "/assets/about/army.jpg",
     paragraphs: [
-      "Deployed to Iraq with the 44th IBCT, I directed medical logistics for 5,000+ soldiers and $2M in supplies across seven aid stations in three countries. Pioneered digital tracking that cut resupply time 85% and reduced spending 60%. In 2020, activated for New Jersey’s COVID-19 response, I reported from the Joint Surgeon’s Office to the Pentagon on state medical operations.",
+      "Medical logistics means making sure medicine and equipment reach the people treating casualties, before they need it. Deployed to Iraq with the 44th IBCT — an infantry brigade of several thousand soldiers — I directed that supply chain for 5,000+ soldiers and $2M in supplies across seven aid stations, the front-line clinics where wounded soldiers are treated first, in three countries. Pioneered digital tracking that cut resupply time 85% and reduced spending 60%. In 2020, activated for New Jersey’s COVID-19 response, I reported from the Joint Surgeon’s Office — the medical command for the state’s National Guard — to the Pentagon on state medical operations.",
     ],
     callout: "Process failure in a combat zone isn’t an inconvenience. It’s a casualty risk.",
   },
@@ -84,7 +84,7 @@ const CHAPTERS_ES = [
     heading: "Capitana y Oficial de Logística Médica, NJ Army National Guard.",
     image: "/assets/about/army.jpg",
     paragraphs: [
-      "Desplegada en Irak con la 44th IBCT, dirigí logística médica para más de 5,000 soldados y $2M en suministros en siete estaciones de ayuda en tres países. Fui pionera en un sistema de seguimiento digital que redujo el tiempo de reabastecimiento en 85% y el gasto en 60%. En 2020, durante la respuesta de COVID-19 en Nueva Jersey, reporté desde la Oficina del Joint Surgeon al Pentágono sobre operaciones médicas estatales.",
+      "La logística médica consiste en lograr que los medicamentos y el equipo lleguen a quienes atienden heridos, antes de que los necesiten. Desplegada en Irak con la 44th IBCT — una brigada de infantería de varios miles de soldados — dirigí esa cadena de suministro para más de 5,000 soldados y $2M en suministros en siete estaciones de ayuda, las clínicas de primera línea donde se atiende primero a los heridos, en tres países. Fui pionera en un sistema de seguimiento digital que redujo el tiempo de reabastecimiento en 85% y el gasto en 60%. En 2020, durante la respuesta de COVID-19 en Nueva Jersey, reporté desde la Oficina del Joint Surgeon al Pentágono sobre operaciones médicas estatales.",
     ],
     callout: "Una falla de proceso en zona de combate no es una molestia. Es un riesgo.",
   },

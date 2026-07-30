@@ -198,7 +198,12 @@ export default function FlagshipMSK() {
         <div className="rp-wrap">
           <p className="rp-kicker">Six years · three roles</p>
           <h2 className="rp-title">I learned the system from the floor up.</h2>
-          <p className="rp-lede">Office Coordinator taught me where people paused. Administrative Assistant taught me how to make evidence survive a stakeholder room. Training Specialist gave me the authority to redesign the system.</p>
+          <p className="rp-lede">
+            Office Coordinator — running a clinic’s day-to-day paperwork — taught me where people
+            paused. Administrative Assistant — preparing the material leadership actually decided
+            from — taught me how to make evidence survive a stakeholder room. Training Specialist —
+            owning how staff were taught the system — gave me the authority to redesign it.
+          </p>
           <div className="fp-systemCards rp-reveal">
             <article><span>01 · Observe</span><h3>Find the workarounds</h3><p>Shadow real shifts. The sticky notes and personal spreadsheets told the truth the policy map missed.</p></article>
             <article><span>02 · Align</span><h3>Make the failure shared</h3><p>Current-state maps gave four departments one picture to argue with instead of four email threads.</p></article>

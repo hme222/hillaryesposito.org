@@ -65,6 +65,14 @@ export default function MSKDashboardMockup({ compact = false, headingLevel = 3 }
         ))}
       </div>
 
+      {/* The queue uses the shorthand the real screen used. Spelling it out here
+          keeps the artifact authentic while staying readable to anyone who has
+          never worked in a hospital. */}
+      <div className="msk-dashboard-mockup__legend">
+        <span><b>MRN</b> — medical record number, the ID for one patient’s chart. Masked to the last four digits.</span>
+        <span><b>HIM</b> — Health Information Management, the team responsible for filing documents into the right chart.</span>
+      </div>
+
       <div className="msk-dashboard-mockup__rule">
         <span>
           Rule: <strong>File to chart</strong> appears only when the document is ready to file and the

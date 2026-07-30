@@ -69,6 +69,7 @@ export default function FlagshipMobbin() {
             <h1 className="rp-h1">Mobbin.</h1>
             <span className="rp-readtime"><b>3 min</b><span>read · 3 apps, 200+ screens</span></span>
             <p className="rp-sub">
+              Mobbin is a reference library designers search to see how real apps solve a screen.
               Anyone can screenshot an app. Mobbin hired me to decide what <b>200+ screens</b> mean
               to a designer who will never meet me—and make every step searchable.
             </p>
