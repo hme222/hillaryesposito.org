@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
 import ReadingProgress from "../../components/flagship/ReadingProgress";
+import { EvidenceMediaPoster } from "../../components/evidence-media";
 import GroveCinematic from "../../components/riso/GroveCinematic";
 import GroveDecisionStory from "../../components/riso/GroveDecisionStory";
 import GroveScreenGallery from "../../components/riso/GroveScreenGallery";
@@ -344,6 +345,16 @@ export default function RisoGrove() {
         </div>
       </header>
 
+      <section className="rp-section evidence-media-section" aria-labelledby="grove-evidence-title">
+        <div className="rp-wrap">
+          <div className="evidence-media-section__intro">
+            <p className="rp-kicker">Decision trace · 30-second scan</p>
+            <h2 className="rp-title" id="grove-evidence-title">Grove decision trace</h2>
+          </div>
+          <EvidenceMediaPoster project="grove" groveMaterial="texture-a" />
+        </div>
+      </section>
+
       <GroveCinematic />
 
       {/* PROBLEM */}
@@ -586,7 +597,7 @@ export default function RisoGrove() {
             hypothesis to test with real people, and a decision log showing where AI accelerates the
             work and where a human has to overrule it.
           </p>
-          <p className="rp-disclaimer">No invented numbers · Grove is a live prototype, Phase 2 of 3</p>
+          <p className="rp-disclaimer">No invented numbers · Grove is a functional prototype, Phase 2 of 3</p>
           <div className="rp-outcomes rp-reveal">
             {OUTCOMES.map((o) => (
               <div className="rp-stat" key={o.n}>

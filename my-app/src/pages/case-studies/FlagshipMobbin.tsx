@@ -5,6 +5,7 @@ import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/C
 import ReadingProgress from "../../components/flagship/ReadingProgress";
 import DecisionStory from "../../components/flagship/DecisionStory";
 import EvidenceField from "../../components/flagship/EvidenceField";
+import { EvidenceMediaPoster } from "../../components/evidence-media";
 import ScreenSequence, { ScreenSequenceItem } from "../../components/flagship/ScreenSequence";
 import CartoField from "../../components/riso/CartoField";
 import RisoDefs from "../../components/riso/RisoDefs";
@@ -79,6 +80,16 @@ export default function FlagshipMobbin() {
           <div className="fp-artifactLabel"><span>CAPTURE LOG · 04 MONTHS</span><b>3 apps · 200+ screens · one searchable library</b></div>
         </div>
       </header>
+
+      <section className="rp-section evidence-media-section" aria-labelledby="mobbin-evidence-title">
+        <div className="rp-wrap">
+          <div className="evidence-media-section__intro">
+            <p className="rp-kicker">Documentation trace · 30-second scan</p>
+            <h2 className="rp-title" id="mobbin-evidence-title">Mobbin flow documentation</h2>
+          </div>
+          <EvidenceMediaPoster project="mobbin" />
+        </div>
+      </section>
 
       <section className="rp-cinema fp-cinema fp-cinema--mobbin" id="mobbin-brief" aria-labelledby="mobbin-brief-title">
         <div className="rp-cinema__sticky">

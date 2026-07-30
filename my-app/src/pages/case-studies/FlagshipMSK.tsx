@@ -5,6 +5,7 @@ import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/C
 import ReadingProgress from "../../components/flagship/ReadingProgress";
 import DecisionStory from "../../components/flagship/DecisionStory";
 import EvidenceField from "../../components/flagship/EvidenceField";
+import { EvidenceMediaPoster } from "../../components/evidence-media";
 import MSKDashboardMockup from "../../components/MSKDashboardMockup";
 import MSKWorkflowMap from "../../components/MSKWorkflowMap";
 import MSKMechanism from "../../components/MSKMechanism";
@@ -125,6 +126,16 @@ export default function FlagshipMSK() {
           </div>
         </div>
       </header>
+
+      <section className="rp-section evidence-media-section" aria-labelledby="msk-evidence-title">
+        <div className="rp-wrap">
+          <div className="evidence-media-section__intro">
+            <p className="rp-kicker">Workflow trace · 30-second scan</p>
+            <h2 className="rp-title" id="msk-evidence-title">MSK workflow redesign</h2>
+          </div>
+          <EvidenceMediaPoster project="msk" />
+        </div>
+      </section>
 
       <section className="rp-cinema fp-cinema" id="msk-brief" aria-labelledby="msk-brief-title">
         <div className="rp-cinema__sticky">

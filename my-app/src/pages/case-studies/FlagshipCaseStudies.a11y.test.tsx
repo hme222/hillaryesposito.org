@@ -115,6 +115,53 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".rp-recruiter-link")).not.toBeNull();
   });
 
+  it.each([
+    [
+      "Grove",
+      <RisoGrove />,
+      "Grove decision trace",
+      "Functional prototype · Phase 2 of 3",
+      "one calm morning summary",
+      "#grove-override",
+    ],
+    [
+      "MSK",
+      <FlagshipMSK />,
+      "MSK workflow redesign",
+      "Recreated workflow · No patient data",
+      "four systems to two",
+      "#msk-workflow",
+    ],
+    [
+      "Mobbin",
+      <FlagshipMobbin />,
+      "Mobbin flow documentation",
+      "Hillary documented the flows",
+      "A screenshot is not a flow",
+      "#mobbin-work",
+    ],
+  ])(
+    "%s includes one accessible first-scroll evidence poster",
+    async (_name, page, heading, qualifier, decision, href) => {
+      await act(async () => {
+        root.render(page);
+      });
+
+      expect(container.querySelectorAll(".evidence-media")).toHaveLength(1);
+      const section = container.querySelector<HTMLElement>(".evidence-media-section");
+      expect(section).not.toBeNull();
+      const labelledBy = section?.getAttribute("aria-labelledby");
+      expect(labelledBy).toBeTruthy();
+      expect(container.querySelector(`#${labelledBy}`)?.textContent).toContain(heading);
+      expect(section?.textContent?.toLowerCase()).toContain(String(qualifier).toLowerCase());
+      expect(section?.textContent?.toLowerCase()).toContain(String(decision).toLowerCase());
+      expect(section?.querySelector(`a[href="${href}"]`)).not.toBeNull();
+
+      const sourceImages = Array.from(section?.querySelectorAll("img") || []);
+      sourceImages.forEach((image) => expect(image.getAttribute("alt")).toBe(""));
+    },
+  );
+
   it("keeps broken routes out of search indexes", async () => {
     await act(async () => {
       root.render(<NotFoundPage />);
@@ -227,6 +274,9 @@ describe("flagship case-study accessibility", () => {
   });
 
   it.each([
+    ["Grove", <RisoGrove />],
+    ["MSK", <FlagshipMSK />],
+    ["Mobbin", <FlagshipMobbin />],
     ["About", <About />],
     ["Curated role", <CuratedRolePage />],
     ["Fashion campaign", <FashionCampaignSystem />],

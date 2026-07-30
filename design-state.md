@@ -1,6 +1,6 @@
 # Design State: Full Portfolio Redesign — Hybrid Positioning
 
-_Last updated: 2026-07-29 by portfolio evidence-media producer_
+_Last updated: 2026-07-29 by accessibility-reviewer_
 
 ## Brief Summary
 **Problem:** Portfolio positions Hillary as Product Designer only, burying process improvement track record and treating AI as a project tag. LinkedIn and portfolio tell different stories.
@@ -13,7 +13,7 @@ _Last updated: 2026-07-29 by portfolio evidence-media producer_
 **Primary audience:** Recruiters and product/design hiring managers, with equivalent access for keyboard, screen-reader, low-vision, motion-sensitive, cognitively overloaded, and multilingual readers.
 **Success metric:** A static poster or user-initiated film of eight seconds or less communicates the project problem, consequential decision, and truthful outcome/status.
 **Approved brief:** `design-docs/briefs/2026-07-29-portfolio-evidence-media-system.md`
-**Status:** Approved; maker team dispatch pending.
+**Status:** Deterministic static triad implemented on the first scroll of Grove, MSK, and Mobbin. Grove uses one reminder override and owner-approved Texture A at 7%; MSK is workflow-only with no pseudo-record rows; Mobbin carries the problem/value line and full ownership boundary. Structural, keyboard, baseline responsive, and build verification pass. The source-level accessibility findings are repaired; 200%/400% reflow, text-spacing, Windows forced-colour, real screen-reader validation, and representative recruiter recall remain the gates before motion.
 
 ### Active Initiative: Riso/Grove Flagship Storytelling System
 
@@ -111,6 +111,12 @@ Restored: Grove's survey answers (74% reminders, 61% camera ID, 15+ notification
 ## Decisions Log
 | Decision | Rationale | Source |
 |----------|-----------|--------|
+| Hold the static evidence-poster accessibility verdict at conditional REVISE until adaptive runtime checks run | Source findings are resolved: meaningful portrait copy has a 12px floor, folio/provenance has an 11px floor, narrow MSK becomes one column, Mobbin source labels wrap, the repeated figure label is removed, live summaries remain available, colour pairs pass AA, links resolve, 40/40 tests pass, and the production build succeeds. Fresh 200%/400%, text-spacing, Windows forced-colour, and real-screen-reader evidence is still required for PASS | accessibility-reviewer 2026-07-29 |
+| Use owner-approved Texture A at 7% only on the Grove poster | The texture remains behind non-text space, carries no evidence, and falls back to flat paper. A 1280×720, 168 KB derivative replaces the 13 MB production master in the site implementation | owner approval + independent design critic 2026-07-29 |
+| Put one evidence poster immediately after each case-study hero | Recruiters receive problem → decision → status/ownership in the first scroll without adding another persistent navigation path; each poster links into an existing chapter | integration explorer + implementation 2026-07-29 |
+| Treat 34 as Grove's canonical survey count | The active evidence and dated survey note support n=34; stale 32/17-of-32 references were repaired in the English case study and cinematic label | owner confirmation + source reconciliation 2026-07-29 |
+| Produce a deterministic static triad before the Grove film | The independent judge found the shared evidence-plate direction strong but the motion script too dense and cross-packet copy inconsistent. Landscape and portrait posters for Grove, MSK, and Mobbin test recruiter recall, mobile crops, provenance, and accessible equivalents before motion adds risk | independent design critic 2026-07-29 |
+| Treat Higgsfield texture A as a conditional material test; reject texture B | A is abstract enough to test at 6–8% behind non-text space against a flat-paper control, but it adds no recruiter meaning and its 13 MB master cannot ship. B's repeated fern stamps read as decorative wallpaper and compete with evidence | independent design critic + producer visual review 2026-07-29 |
 | Produce the evidence-media system in this order: Grove film + poster, MSK poster, Mobbin poster; gate later films on the Grove result | Grove carries the clearest human-over-AI narrative and can prove the motion pattern before credits are spent across all three. Static companions preserve access and recruiter value without motion | owner approval + recruiter audit 2026-07-29 |
 | Name service design and process improvement on MSK, not the Home hero | Two reviewers found the second pillar absent from every indexed page, contradicting the standing "credentials visible" decision. Putting it on the lead case study surfaces the vocabulary and defines Lean Six Sigma/MHA in plain language, without rewriting the hero line Hillary deliberately chose | design-critic + heuristic-evaluator / owner direction 2026-07-27 |
 | Compress Mobbin to four chapters | Its own copy states Hillary did not design the source products, yet it carried the same structural depth as a clinical-systems redesign touching 21,000 people. The taxonomy deep-dive duplicated the DecisionStory's naming step, so removing it cost no truthful evidence | design-critic / owner direction 2026-07-27 |
@@ -209,6 +215,7 @@ Restored: Grove's survey answers (74% reminders, 61% camera ID, 15+ notification
 | Sweep the remaining rounded-pill leftovers into the editorial vocabulary (M6) | Owner asked to finish the partial editorial propagation. Squared all UI cards/containers to near-square (riso-page.css 8–34px radii → 4–10px; portfolio-editorial.css 14px/10px cards → 4px), the recruiter-pill trigger and back-to-top (999px/pill → 3px), the Grove system-lab segmented tabs (999px → 6/4px), and the About closing card + "Get in touch" button (soft rounded olive-gradient pill → flat editorial plate + coral squared CTA). Device/phone frames (24–32px) and true status-tag pills (the Home "Active · Phase 2 of 3" tag) intentionally kept rounded. Build clean, 29/29 tests pass | Owner request / Next-tier 2026-07-25 |
 
 ## Open Questions
+- [ ] Do the final poster fixes pass 200%/400% zoom, WCAG text spacing, Windows forced colours, and VoiceOver or NVDA without clipping, duplicate naming, or lost qualifiers?
 - [x] MSK leads the Home project order while Grove remains an explicitly active Phase 2 journal.
 - [x] Fashion Campaign System remains direct-link/private and now carries `noindex, nofollow, noarchive`.
 - [x] Spanish case studies use the same shell and explicitly label their condensed scope plus the English full-study path.
@@ -218,6 +225,17 @@ Restored: Grove's survey answers (74% reminders, 61% camera ID, 15+ notification
 | Artefact | Path |
 |----------|------|
 | Portfolio evidence media brief | design-docs/briefs/2026-07-29-portfolio-evidence-media-system.md |
+| Portfolio evidence media visual direction | design-docs/media/2026-07-29-visual-direction.md |
+| Grove motion storyboard | design-docs/media/2026-07-29-motion-storyboard.md |
+| Portfolio evidence media copy | design-docs/media/2026-07-29-evidence-copy.md |
+| Portfolio evidence media independent judge | design-docs/media/2026-07-29-independent-judge.md |
+| Static poster final copy | design-docs/media/2026-07-29-static-poster-copy-final.md |
+| Static poster independent accessibility review | design-docs/media/2026-07-29-static-poster-accessibility-review.md |
+| Static evidence poster component | my-app/src/components/evidence-media/EvidenceMediaPoster.tsx |
+| Static evidence poster responsive styles | my-app/src/styles/evidence-media.css |
+| Approved Texture A shipping derivative | my-app/public/assets/generated/grove-riso-texture-a-1280.jpg |
+| Higgsfield texture review A master | Higgsfield generation `e6d47378-141e-4a72-ba27-ba13bc5f9de0`; retained outside the shipping tree during review |
+| Higgsfield texture review B (rejected) | Higgsfield generation `7ad79d9f-4e39-4b5e-8b7e-e28c3b21f2ce`; retained outside the shipping tree during review |
 | Active Riso Home page | my-app/src/pages/RisoHome.tsx |
 | About page | my-app/src/pages/AboutMe.tsx |
 | Grove case study | my-app/src/pages/case-studies/RisoGrove.tsx |
@@ -262,6 +280,18 @@ _Items: 8 | Open: 0 | Resolved: 8 | Last reviewed: 2026-07-24_
 | DD-006 | 2026-06-29 | accessibility-reviewer | Minor | .home-proj-card-link:focus-visible explicitly sets outline:none, which is rescued by the !important WCAG patch at the bottom of App.css. The source rule should be deleted — relying on !important to restore a removed affordance is fragile | All keyboard users (if the WCAG patch is ever modified or removed) | Delete `outline: none` from the .home-proj-card-link:hover, .home-proj-card-link:focus-visible block in App.css. See App.css:3822–3827 | Resolved 2026-07-01 | Deleted `outline: none` from the .home-proj-card-link:hover, :focus-visible block (App.css:4058). Global :where() focus-visible rule (App.css:2789, 3px solid var(--focus)) supplies the ring |
 
 ## Handoff Chain
+
+### 2026-07-29 — accessibility-reviewer → design-builder
+> "No critical blocker, and the source fixes are complete: 12px meaningful portrait text, 11px folio/provenance, one-column narrow MSK, wrapped Mobbin labels, and no repeated figure label. The live-DOM fallback, qualifier order, contrast, image hiding, link targets, and texture treatment are solid. Bring back 200%/400%, text-spacing, forced-colour, and real screen-reader evidence; that validation is the only reason this remains REVISE instead of PASS."
+
+### 2026-07-29 — static poster implementation → independent accessibility review
+> "The corrected static triad is live in the first scroll of all three English case studies. The visual plates are aria-hidden while exact project summaries, qualifiers, and 44px links remain live in the figure captions. Grove uses one reminder decision and the approved Texture A at 7%; MSK contains only a recreated workflow; Mobbin attributes every source product and disclaims product ownership. Forty tests pass, the production build succeeds, and twelve rendered states across 320/390/900/1440 have no overflow, broken images, missing alt text, duplicate IDs, heading skips, console errors, invisible focus, unstyled focus, or undersized targets."
+
+### 2026-07-29 — independent judge → evidence-media revision
+> "Verdict: revise, not rethink. Keep the publication-evidence direction. Lock Grove to one reminder override across poster, film, transcript, and accessible copy; remove the MSK pseudo-record dashboard crop; add literal Grove and Mobbin problem lines; then build the deterministic landscape/portrait static triad. Hold motion until the Grove poster passes unaided recruiter recall. Texture A may enter only as a 6–8% optional material test against flat paper; reject texture B and never generate evidence."
+
+### 2026-07-29 — evidence-media maker team → independent judge
+> "The visual, motion, and copy packets define one publication across three evidence plates, with real source locks, visible ownership/status, responsive layouts, user-controlled motion, and static equivalents. The judge should reject any asset that invents UI, outcomes, patient data, finished Grove screens, or product ownership, and should treat static comprehension as the first gate."
 
 ### 2026-07-29 — owner approval → evidence-media maker team
 > "The direction is locked: evidence first, one film before a series. Grove should show the real transition from AI breadth to research-backed restraint, with a static poster doing the same job for anyone who does not play motion. MSK and Mobbin stay truthful companion plates; no generated asset gets to imply a shipped state, patient data, or product ownership that the case study does not support."
