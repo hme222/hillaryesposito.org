@@ -408,6 +408,14 @@
   background: #f2eee4;
 }
 
+.grove-decision-film__frame video::cue {
+  background: rgba(37, 38, 31, 0.94);
+  color: #f2eee4;
+  font-family: var(--evidence-sans);
+  font-size: clamp(18px, 2.2vw, 28px);
+  line-height: 1.3;
+}
+
 .grove-decision-film__controls {
   display: flex;
   min-block-size: 44px;
@@ -450,6 +458,10 @@
   .grove-decision-film__controls {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .grove-decision-film__frame video {
+    aspect-ratio: 4 / 5;
   }
 }
 

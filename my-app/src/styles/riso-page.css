@@ -917,7 +917,10 @@
   max-width: 1080px; margin: .35rem auto 1rem; padding: .3rem var(--sp-gutter);
   display: flex; align-items: center; flex-wrap: wrap; gap: .35rem .55rem; font-family: var(--mono);
   font-size: .61rem; letter-spacing: .06em; text-transform: uppercase;
-  background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(6px); }
+  /* 92% let dark artifact text — the MSK queue's column headers, the hero
+     headline — read straight through the strip as a ghosted second layer.
+     97% keeps the frosted edge without the bleed. */
+  background: color-mix(in srgb, var(--paper) 97%, transparent); backdrop-filter: blur(6px); }
 .rp-chapters span { color: var(--muted); margin-right: .15rem; }
 .rp-chapters a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--hair);
   min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; padding: 0 .2rem; }
@@ -1282,8 +1285,11 @@
 
 /* The artifact sits with the claim it belongs to, rather than being pinned
    beside a column that outruns it. Nothing here is scroll-dependent. */
-.rp-decisionStory__top { display: grid; grid-template-columns: 1.05fr .95fr; gap: var(--sp-xl);
-  align-items: center; }
+/* The artifact column is sized for the artifact, not split evenly with the
+   prose. At 1.05fr/.95fr with an --sp-xl gap the visual got 436px, which is
+   narrower than the mockup needs to render as a table. */
+.rp-decisionStory__top { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,520px);
+  gap: clamp(1.5rem, 4vw, 3rem); align-items: start; }
 .rp-decisionStory__head { max-width: 52ch; }
 .rp-decisionStory__visual { position: relative; display: grid; place-items: center; overflow: hidden;
   border: 1px solid var(--hair); border-radius: var(--r-plate); padding: clamp(1rem, 2.5vw, 1.8rem);
@@ -1299,7 +1305,13 @@
    the decision-log line that used to live inside the image and disappear with
    it. auto-fit so two, three or four steps all fill the row. */
 .rp-decisionStory__steps { list-style: none; margin: var(--sp-lg) 0 0; padding: 0;
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 1rem; }
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 1.1rem; }
+/* Four decisions in a 1080px wrap: auto-fit fits three, leaving 04 alone on a
+   second row beside two empty cells. Two by two keeps the set whole and gives
+   each headline a line it can finish. */
+@media (min-width: 900px) {
+  .rp-decisionStory__steps { grid-template-columns: repeat(2, 1fr); }
+}
 .rp-decisionStory__steps li { padding: clamp(1.1rem, 2.4vw, 1.5rem); border: 1px solid var(--hair);
   border-radius: var(--r-plate); background: var(--paper); display: flex; flex-direction: column; }
 .rp-decisionStory__n { font-family: var(--mono); font-size: .7rem; color: var(--coral); }

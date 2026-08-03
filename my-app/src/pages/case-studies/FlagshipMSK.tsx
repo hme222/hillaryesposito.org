@@ -30,36 +30,58 @@ const CHAPTERS: CaseStudyChapter[] = [
   { id: "msk-outcomes", label: "Outcomes", note: "Evidence that lasted" },
 ];
 
+// Each body used to restate what the artifact beside it already shows — the
+// mockup carries the ready-to-file state, the permission rule, and the row
+// statuses in full. The text now says only the part the picture cannot.
 const DECISIONS = [
-  { n: "01", title: "Show the action only when the record is ready", body: "File to chart appears in the ready-to-file state only. Staff stop opening records that still need review.", note: "Ready means actionable" },
-  { n: "02", title: "Make permission limits visible", body: "View-only roles see status and ownership, not a disabled mystery button. Access rules become part of the interface.", note: "Permission is product logic" },
-  { n: "03", title: "Separate blocked from not started", body: "Exceptions get a reason and an owner. Normal backlog no longer hides work that needs intervention.", note: "Blocked needs an owner" },
-  { n: "04", title: "Return people to the queue", body: "After filing, staff land back where they started with the status updated. The workflow closes the loop instead of dropping them elsewhere.", note: "Preserve place and context" },
+  { n: "01", title: "Show the action only when the record is ready", body: "Staff stop opening records that still need review.", note: "Ready means actionable" },
+  { n: "02", title: "Make permission limits visible", body: "View-only roles see status and ownership, not a disabled mystery button.", note: "Permission is product logic" },
+  { n: "03", title: "Separate blocked from not started", body: "Exceptions get a reason and an owner, so the backlog stops hiding them.", note: "Blocked needs an owner" },
+  { n: "04", title: "Return people to the queue", body: "Staff land back where they started, status updated.", note: "Preserve place and context" },
+];
+
+// Six years, three roles. This was a 62-word paragraph with three definitions
+// folded into em-dashes; as a rail it reads as the ladder it actually was.
+const ROLES = [
+  { n: "01", role: "Office Coordinator", taught: "Where people paused" },
+  { n: "02", role: "Administrative Assistant", taught: "How evidence survives a room" },
+  { n: "03", role: "Training Specialist", taught: "The authority to redesign it" },
+];
+
+// The three sustainment facts, as evidence rather than a sentence each.
+const SURVIVED = [
+  { fact: "Two system upgrades", what: "EMR filing redesign, adopted organization-wide" },
+  { fact: "Became the default", what: "Certification compliance dashboard" },
+  { fact: "Three leadership transitions", what: "Onboarding changes" },
 ];
 
 // Restored from the earlier case study. The outcome metrics named certification
 // and onboarding but the page no longer said what actually changed in either —
 // the "70% efficiency gain" was a number with no mechanism under it.
+// Each card carries a drawn mechanism (MSKMechanism). The diagrams already show
+// the detour and the one hop, the 90/60/30 warnings against expiry, and five
+// checklists collapsing into one gated path — so `change` says the thing the
+// drawing cannot, and stops narrating the thing it can.
 const REDESIGNS = [
   {
     n: "01",
     title: "EMR filing workflow",
-    finding: "A digital record was printed, routed out for filing, then waited to reappear in the online chart.",
-    change: "One dashboard action routed staff straight to the filing destination — the next step placed where the decision was already being made.",
-    wrong: "I underestimated change management. Staff who had spent years on the print-and-send workaround resisted relearning it. Floor-level training on their own workstations, during shift transitions, fixed it within two weeks.",
+    finding: "A digital record was printed, routed out, then waited to reappear in the chart.",
+    change: "One dashboard action, placed where the decision was already being made.",
+    wrong: "I underestimated change management. Training on their own workstations, during shift changes, fixed it in two weeks.",
   },
   {
     n: "02",
     title: "Certification tracking",
-    finding: "The tracking spreadsheet had no alerts. Staff learned a certification had lapsed when compliance flagged it — by then a disciplinary issue.",
-    change: "Reminders at 90, 60, and 30 days before expiry, with “last refreshed” timestamps. The old system told you when you had failed; the new one tells you what is coming.",
+    finding: "The tracking spreadsheet had no alerts. Staff learned a certification had lapsed when compliance flagged it.",
+    change: "The old system told you when you had failed. The new one tells you what is coming.",
   },
   {
     n: "03",
     title: "Clinician onboarding",
-    finding: "Onboarding was split across five or more departments, each with its own checklist. System access and safety protocols sometimes finished weeks after a clinician started seeing patients.",
-    change: "One sequenced path, so no one reaches patients before completing safety prerequisites.",
-    wrong: "I designed the first version for managers instead of new hires. Tracking dashboards overwhelmed clinicians who needed one clear next step on day one. The manager view stayed, but stopped being the primary interface.",
+    finding: "Onboarding was split across five or more departments, each with its own checklist. Safety protocols sometimes finished weeks after a clinician started seeing patients.",
+    change: "One sequenced path, gated on safety.",
+    wrong: "I built the first version for managers, not new hires. Clinicians needed one clear next step on day one.",
   },
 ];
 
@@ -110,11 +132,11 @@ export default function FlagshipMSK() {
           <div className="rp-clearing">
             <span className="rp-eyebrow">Service design · process improvement · clinical systems</span>
             <h1 className="rp-h1">Memorial Sloan Kettering.</h1>
-            <span className="rp-readtime"><b>7 min</b><span>read · 6 years, 3 roles</span></span>
+            <span className="rp-readtime"><b>5 min</b><span>read · 6 years, 3 roles</span></span>
             <p className="rp-sub">
-              Clinicians were printing digital records just to file them digitally again. I mapped the
-              real workflow end to end, aligned clinical, IT, and operations teams, and redesigned
-              systems used across work touching <b>21,000+ clinicians and staff</b>.
+              Clinicians printed digital records just to file them digitally again. I mapped the real
+              workflow, aligned clinical, IT, and operations, and redesigned systems touching{" "}
+              <b>21,000+ clinicians and staff</b>.
             </p>
             <a className="rp-cta" href="#msk-workflow">See the workflow →</a>
           </div>
@@ -153,7 +175,7 @@ export default function FlagshipMSK() {
             {/* EMR is used five times on this page and was never defined in
                 English — while the Spanish version defines it. Defined here, at
                 first real use, rather than assuming the reader already knows. */}
-            <p>Every clinical day runs through the EMR — the electronic medical record, the digital chart where a patient’s whole history lives. The real work was understanding why four systems stood between a clinician and one completed task.</p>
+            <p>Every clinical day runs through the EMR — the electronic medical record, the digital chart where a patient’s whole history lives. Four systems stood between a clinician and one finished task.</p>
           </div>
         </div>
       </section>
@@ -162,24 +184,26 @@ export default function FlagshipMSK() {
         <div className="rp-wrap">
           <p className="rp-kicker">Primary artifact · recreated and anonymized</p>
           <h2 className="rp-title">Four systems became two.</h2>
-          <p className="rp-lede">Counting the steps made the failure visible to every team at once. No patient information appears here.</p>
+          <p className="rp-lede">Counting the steps made the failure visible to every team at once.</p>
           <figure className="fp-workflowFig rp-reveal">
             <MSKWorkflowMap />
             <figcaption>Recreated current-state and future-state map · no patient data</figcaption>
           </figure>
+          {/* These two lists are the text alternative for the aria-hidden map,
+              so they stay. What went was the pair of paragraphs under them —
+              "failure mode" and "design decision" restated the map's own
+              labels ("leaves the EMR" / "never leaves the EMR") in prose. */}
           <div className="fp-workflow rp-reveal">
             <article>
               <span className="fp-workflow__label">Before · six steps</span>
               <h3>Print, route, wait, check again</h3>
               <ol>{WORKFLOW_BEFORE.map((step, index) => <li key={step}><b>{String(index + 1).padStart(2, "0")}</b>{step}</li>)}</ol>
-              <p>Failure mode: a digital record became paper, then became digital again.</p>
             </article>
             <i aria-hidden="true">→</i>
             <article className="fp-workflow__after">
               <span className="fp-workflow__label">After · five steps</span>
               <h3>File from the queue, return with status</h3>
               <ol>{WORKFLOW_AFTER.map((step, index) => <li key={step}><b>{String(index + 1).padStart(2, "0")}</b>{step}</li>)}</ol>
-              <p>Design decision: connect the queue directly to the online chart.</p>
             </article>
           </div>
         </div>
@@ -189,7 +213,7 @@ export default function FlagshipMSK() {
         id="msk-decisions"
         kicker="Interaction logic · one state at a time"
         title="The “simple” button carried the whole system."
-        intro="Who could act, who needed visibility, what status meant, and how the system recovered all had to be legible before anyone clicked."
+        intro="Who could act, what status meant, and how the system recovered had to be legible before anyone clicked."
         steps={DECISIONS}
         visual={<div className="fp-dashboardFrame fp-dashboardFrame--story"><MSKDashboardMockup compact /></div>}
       />
@@ -198,35 +222,39 @@ export default function FlagshipMSK() {
         <div className="rp-wrap">
           <p className="rp-kicker">Six years · three roles</p>
           <h2 className="rp-title">I learned the system from the floor up.</h2>
-          <p className="rp-lede">
-            Office Coordinator — running a clinic’s day-to-day paperwork — taught me where people
-            paused. Administrative Assistant — preparing the material leadership actually decided
-            from — taught me how to make evidence survive a stakeholder room. Training Specialist —
-            owning how staff were taught the system — gave me the authority to redesign it.
-          </p>
+          {/* Was one 62-word paragraph with three job definitions folded into
+              em-dashes. The progression was the point, so it is drawn as a
+              progression. */}
+          <ol className="fp-roleRail rp-reveal" aria-label="Three roles at MSK, in order">
+            {ROLES.map((r) => (
+              <li key={r.n}>
+                <span className="fp-roleRail__n">{r.n}</span>
+                <b>{r.role}</b>
+                <span className="fp-roleRail__taught">{r.taught}</span>
+              </li>
+            ))}
+          </ol>
           <div className="fp-systemCards rp-reveal">
             <article><span>01 · Observe</span><h3>Find the workarounds</h3><p>Shadow real shifts. The sticky notes and personal spreadsheets told the truth the policy map missed.</p></article>
             <article><span>02 · Align</span><h3>Make the failure shared</h3><p>Current-state maps gave four departments one picture to argue with instead of four email threads.</p></article>
             <article><span>03 · Redesign</span><h3>Sequence the next action</h3><p>Move the task to where the decision already happens, then make ownership and exceptions visible.</p></article>
           </div>
+          {/* The lead paragraph that used to sit here defined service design and
+              process improvement in the abstract. The three cards above already
+              demonstrate it, so only the credentials remain. */}
           <div className="fp-discipline rp-reveal">
-            <p className="fp-discipline__lead">
-              The work has a name before it has an interface. Service design and process improvement:
-              follow a task through the whole organization, find the step that should not exist, and
-              redesign the sequence instead of decorating the screen at the end of it.
-            </p>
             <dl>
               <div>
                 <dt>Lean Six Sigma</dt>
-                <dd>A method for removing waste and variation from a process. It is the lens that showed four systems doing the work of two.</dd>
+                <dd>A method for removing waste from a process. The lens that showed four systems doing the work of two.</dd>
               </div>
               <div>
                 <dt>Master of Health Administration (MHA)</dt>
-                <dd>How hospitals fund, staff, and govern the work. It is why the redesign survived budget conversations and leadership changes.</dd>
+                <dd>How hospitals fund, staff, and govern. Why the redesign survived budget talks and leadership changes.</dd>
               </div>
               <div>
                 <dt>Current-state mapping</dt>
-                <dd>Documenting what actually happens, not what the policy says happens. The gap between those two is where the design work lives.</dd>
+                <dd>What actually happens, not what the policy says. The gap between the two is where the design work lives.</dd>
               </div>
             </dl>
           </div>
@@ -243,7 +271,7 @@ export default function FlagshipMSK() {
         <div className="rp-wrap">
           <p className="rp-kicker">Three redesigns · what actually changed</p>
           <h2 className="rp-title">Not one system. Three.</h2>
-          <p className="rp-lede">The outcome numbers below come from these. Each one had a mechanism, and two of them had a version I got wrong first.</p>
+          <p className="rp-lede">The outcome numbers come from these three. Two had a version I got wrong first.</p>
           <div className="fp-redesigns rp-reveal">
             {REDESIGNS.map((r) => (
               <article key={r.n}>
@@ -265,12 +293,14 @@ export default function FlagshipMSK() {
         <div className="rp-wrap">
           <p className="rp-kicker">What the system taught me</p>
           <h2 className="rp-title">Sustainment is a design outcome.</h2>
-          <p className="rp-lede">
-            The EMR redesign was adopted organization-wide and survived two system upgrades. The
-            certification dashboard became the default compliance tool. The onboarding changes
-            outlasted three leadership transitions. Sustainment is the real test of whether a design
-            solved the problem.
-          </p>
+          <p className="rp-lede">Sustainment is the real test of whether a design solved the problem.</p>
+          {/* Three sustainment facts that used to run together as one 48-word
+              paragraph. As a rail they read as the evidence they are. */}
+          <ul className="fp-survived rp-reveal">
+            {SURVIVED.map((s) => (
+              <li key={s.fact}><b>{s.fact}</b><span>{s.what}</span></li>
+            ))}
+          </ul>
           {/* This was the third card in a three-card row. It is the sharpest
               principle on the page — a shipped decision about admitting a
               limitation rather than designing around it — so it now carries its
@@ -278,9 +308,9 @@ export default function FlagshipMSK() {
           <figure className="rp-quoteCard fp-principle rp-reveal">
             <blockquote>Transparency beats pretending.</blockquote>
             <figcaption>
-              The certification feed could only refresh once a day. Rather than hide that, every
-              view carried a “last refreshed” timestamp — so stale data looked stale, and nobody
-              made a compliance decision believing they were reading live numbers.
+              The certification feed refreshed once a day. Every view carried a “last refreshed”
+              timestamp, so stale data looked stale — and nobody made a compliance decision
+              thinking the numbers were live.
             </figcaption>
           </figure>
           <div className="fp-reflections rp-reveal">

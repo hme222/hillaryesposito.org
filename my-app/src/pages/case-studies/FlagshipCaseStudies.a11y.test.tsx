@@ -166,6 +166,9 @@ describe("flagship case-study accessibility", () => {
     const play = jest
       .spyOn(HTMLMediaElement.prototype, "play")
       .mockResolvedValue(undefined);
+    const pause = jest
+      .spyOn(HTMLMediaElement.prototype, "pause")
+      .mockImplementation(() => undefined);
 
     await act(async () => {
       root.render(<RisoGrove />);
@@ -187,8 +190,27 @@ describe("flagship case-study accessibility", () => {
     expect(video?.loop).toBe(false);
     expect(video?.controls).toBe(true);
     expect(video?.preload).toBe("metadata");
-    expect(video?.querySelectorAll("source")).toHaveLength(2);
+    expect(video?.querySelectorAll("source")).toHaveLength(4);
+    expect(video?.querySelectorAll('source[media="(max-width: 42rem)"]')).toHaveLength(2);
     expect(video?.querySelector('track[kind="captions"][default]')).not.toBeNull();
+
+    await act(async () => video?.dispatchEvent(new Event("play", { bubbles: true })));
+    let control = film?.querySelector<HTMLButtonElement>(".grove-decision-film__controls button");
+    expect(control?.textContent).toContain("Pause Grove decision trace");
+    await act(async () => control?.click());
+    expect(pause).toHaveBeenCalledTimes(1);
+
+    await act(async () => video?.dispatchEvent(new Event("pause", { bubbles: true })));
+    expect(film?.querySelector(".grove-decision-film__status")?.textContent).toBe("Paused");
+
+    await act(async () => video?.dispatchEvent(new Event("ended", { bubbles: true })));
+    control = film?.querySelector<HTMLButtonElement>(".grove-decision-film__controls button");
+    expect(control?.textContent).toContain("Replay Grove decision trace");
+    await act(async () => control?.click());
+    expect(play).toHaveBeenCalledTimes(2);
+
+    await act(async () => video?.dispatchEvent(new Event("error", { bubbles: true })));
+    expect(film?.textContent).toContain("Motion version unavailable");
 
     const results = await axe.run(container, {
       rules: {
@@ -198,6 +220,7 @@ describe("flagship case-study accessibility", () => {
     expect(results.violations).toEqual([]);
 
     play.mockRestore();
+    pause.mockRestore();
   });
 
   it("keeps broken routes out of search indexes", async () => {

@@ -3,12 +3,26 @@ import { useEffect, useRef, useState } from "react";
 type PlaybackState = "idle" | "loading" | "playing" | "paused" | "ended" | "error";
 
 const SUMMARY =
-  "An AI generated a broad Grove prototype. A survey of 34 plant owners narrowed launch to three needs. Hillary rejected guilt-based reminders and chose one calm morning summary. The work is in Phase 2 of 3.";
+  "The AI-built Grove prototype made plant care feel busy and guilt-driven. A survey of 34 plant owners narrowed launch to three needs. Hillary rejected guilt-based reminders and chose one calm morning summary. The work is in Phase 2 of 3.";
+
+const PORTRAIT_QUERY = "(max-width: 42rem)";
 
 export default function GroveDecisionFilm() {
   const [isMounted, setIsMounted] = useState(false);
   const [state, setState] = useState<PlaybackState>("idle");
+  const [usePortrait, setUsePortrait] = useState(() =>
+    typeof window !== "undefined" && window.matchMedia?.(PORTRAIT_QUERY).matches,
+  );
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const query = window.matchMedia?.(PORTRAIT_QUERY);
+    if (!query) return;
+
+    const update = () => setUsePortrait(query.matches);
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  }, []);
 
   useEffect(() => {
     if (!isMounted || !videoRef.current) return;
@@ -62,7 +76,7 @@ export default function GroveDecisionFilm() {
               controls
               playsInline
               preload="metadata"
-              poster={`${process.env.PUBLIC_URL}/assets/generated/grove-decision-trace-poster.webp`}
+              poster={`${process.env.PUBLIC_URL}/assets/generated/grove-decision-trace${usePortrait ? "-portrait" : ""}-poster.webp`}
               onPlay={() => setState("playing")}
               onPause={(event) => {
                 if (!event.currentTarget.ended) setState("paused");
@@ -71,6 +85,16 @@ export default function GroveDecisionFilm() {
               onError={() => setState("error")}
               aria-describedby="grove-film-summary"
             >
+              <source
+                media={PORTRAIT_QUERY}
+                src={`${process.env.PUBLIC_URL}/assets/generated/grove-decision-trace-portrait.webm`}
+                type="video/webm"
+              />
+              <source
+                media={PORTRAIT_QUERY}
+                src={`${process.env.PUBLIC_URL}/assets/generated/grove-decision-trace-portrait.mp4`}
+                type="video/mp4"
+              />
               <source
                 src={`${process.env.PUBLIC_URL}/assets/generated/grove-decision-trace.webm`}
                 type="video/webm"
