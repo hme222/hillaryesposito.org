@@ -817,12 +817,14 @@ const allCuratedPages: Record<string, CuratedPage> = {
   },
 };
 
-// Removed from the exported role collection on 2026-07-29:
-// EnergyCAP and CompanyCam no longer resolve to active requisitions.
+// Removed from the exported role collection after direct listing checks:
+// EnergyCAP and CompanyCam were removed on 2026-07-29. Lumin Digital's exact
+// Product Designer requisition began returning HTTP 404 on 2026-08-03.
 // Keeping the source definitions here makes the decision easy to reverse.
 const archivedCuratedSlugs = new Set([
   "energycap-ux-ai-prototyping-data-products",
   "companycam-product-designer-field-workflows",
+  "lumin-digital-product-designer-fintech-systems",
 ]);
 
 const isArchivedCuratedPath = (path: string) => {

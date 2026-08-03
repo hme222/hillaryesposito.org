@@ -342,6 +342,129 @@
   font-weight: 700;
 }
 
+.grove-decision-film {
+  margin-block-start: clamp(1.5rem, 4vw, 2.75rem);
+  padding-block-start: clamp(1.25rem, 3vw, 2rem);
+  border-block-start: 1px solid color-mix(in srgb, currentColor 24%, transparent);
+}
+
+.grove-decision-film__intro {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+}
+
+.grove-decision-film__intro p,
+.grove-decision-film__intro h3,
+.grove-decision-film__summary,
+.grove-decision-film__provenance {
+  margin: 0;
+}
+
+.grove-decision-film__intro h3 {
+  max-inline-size: 34ch;
+  margin-block-start: 0.35rem;
+  font-family: var(--evidence-sans);
+  font-size: clamp(1.15rem, 2.2vw, 1.7rem);
+  line-height: 1.2;
+}
+
+.grove-decision-film__control {
+  display: inline-flex;
+  min-block-size: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1rem;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  background: transparent;
+  color: inherit;
+  font: 750 0.875rem/1.25 var(--evidence-sans);
+  text-align: start;
+  cursor: pointer;
+}
+
+.grove-decision-film__control:hover {
+  background: color-mix(in srgb, currentColor 8%, transparent);
+}
+
+.grove-decision-film__control:focus-visible {
+  outline: 3px solid var(--coral, #a94131);
+  outline-offset: 3px;
+}
+
+.grove-decision-film__frame {
+  overflow: hidden;
+  margin-block-start: 1rem;
+  border: 1px solid color-mix(in srgb, currentColor 28%, transparent);
+  background: #25261f;
+}
+
+.grove-decision-film__frame video {
+  display: block;
+  inline-size: 100%;
+  aspect-ratio: 16 / 9;
+  background: #f2eee4;
+}
+
+.grove-decision-film__controls {
+  display: flex;
+  min-block-size: 44px;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-block-start: 0.75rem;
+}
+
+.grove-decision-film__status,
+.grove-decision-film__provenance {
+  font-family: var(--evidence-mono);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.grove-decision-film__summary {
+  max-inline-size: 76ch;
+  margin-block-start: 1rem;
+  font-family: var(--evidence-sans);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+.grove-decision-film__provenance {
+  max-inline-size: 88ch;
+  margin-block-start: 0.55rem;
+  color: color-mix(in srgb, currentColor 72%, transparent);
+}
+
+@media (max-width: 42rem) {
+  .grove-decision-film__intro {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .grove-decision-film__control {
+    inline-size: 100%;
+  }
+
+  .grove-decision-film__controls {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
+
+@media (forced-colors: active) {
+  .grove-decision-film,
+  .grove-decision-film__frame,
+  .grove-decision-film__control {
+    border-color: CanvasText;
+  }
+
+  .grove-decision-film__control:focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 .evidence-poster__value {
   margin: 0.55rem 0 0;
   color: var(--ink-2);
