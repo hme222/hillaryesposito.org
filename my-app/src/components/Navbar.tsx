@@ -267,6 +267,33 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
           </a>
         </li>
 
+        <li className="nav-recruiter-entry">
+          <button
+            type="button"
+            className="nav-link nav-link--recruiter"
+            onClick={() => {
+              close();
+              window.dispatchEvent(new Event("open-recruiter-panel"));
+            }}
+          >
+            {t("recruiter.pill")}
+          </button>
+        </li>
+
+        <li className="nav-back-to-top-entry">
+          <button
+            type="button"
+            className="nav-link nav-link--back-to-top"
+            onClick={() => {
+              close();
+              const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+              window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+            }}
+          >
+            {t("app.backToTop")}
+          </button>
+        </li>
+
         <li>
           <button
             className="theme-btn"

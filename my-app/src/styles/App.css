@@ -1625,6 +1625,20 @@ textarea::placeholder {
 
 }
 
+/* At browser-zoom/reflow widths, the recruiter entry moves into the mobile
+   navigation instead of laying a fixed control across case-study copy. */
+@media (max-width: 480px) {
+  .recruiter-pill { display: none; }
+}
+
+.nav-recruiter-entry,
+.nav-back-to-top-entry { display: none; }
+@media (max-width: 480px) {
+  .nav-recruiter-entry,
+  .nav-back-to-top-entry { display: list-item; }
+  .back-to-top { display: none !important; }
+}
+
 
 /* On small screens the fixed pill sits on top of the hero description, so it
    stays hidden (and out of the tab order) until the user scrolls - the class
@@ -4578,5 +4592,3 @@ select {
 
 
 }
-
-

@@ -440,8 +440,21 @@
    pauses something no longer moving goes with it. */
 @media (prefers-reduced-motion: reduce) {
   .site-footer__madeWith { flex-wrap: wrap; }
-  .site-footer__marquee { overflow: visible; mask-image: none; }
-  .site-footer__track { animation: none; white-space: normal; flex-wrap: wrap; gap: .45rem 1.4rem; }
+  .site-footer__marquee {
+    inline-size: 100%;
+    min-inline-size: 0;
+    max-inline-size: 100%;
+    overflow: hidden;
+    mask-image: none;
+  }
+  .site-footer__track {
+    inline-size: 100%;
+    max-inline-size: 100%;
+    animation: none;
+    white-space: normal;
+    flex-wrap: wrap;
+    gap: .45rem 1.4rem;
+  }
   .site-footer__track[aria-hidden="true"] { display: none; }
   .site-footer__marqueeToggle { display: none; }
 

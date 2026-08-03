@@ -2,7 +2,7 @@
 
 **Date:** 2026-07-29  
 **Owner:** motion-designer  
-**Status:** Production-ready storyboard; no media generated and no credits spent  
+**Status:** Validated concept; hold generation until representative recruiter recall
 **Duration:** 7.8 seconds at 24 fps  
 **Delivery:** Silent, user-initiated film plus an equivalent static evidence poster  
 
@@ -27,14 +27,14 @@ Use only the sources below. Do not ask a generative model to redraw, interpolate
 | `my-app/public/assets/grove/grove-live-personality.jpg` | AI-built breadth; gamification decision evidence | `Emergent build · real prototype` |
 | `my-app/public/assets/grove/grove-live-greenhouse.jpg` | AI-built breadth/contact sheet | `Emergent build · real prototype` |
 | `SURVEY_FINDINGS` and `MVP_FEATURES` in `my-app/src/pages/case-studies/RisoGrove.tsx` | 34-person sample and the top three reported launch needs: 74% reminders, 56% plant ID, 50% photo diagnosis | `Survey · n=34 · 22 May–8 July 2026` |
-| `OVERRIDES` and `OUTCOMES` in `my-app/src/pages/case-studies/RisoGrove.tsx` | Five completed overrides; show only the three examples named below | `Decision direction · not finished screens` |
+| Reminder direction in `OVERRIDES` in `my-app/src/pages/case-studies/RisoGrove.tsx` | Show one completed override only: guilt/urgency → one calm morning summary | `Decision direction · not finished screen` |
 | Current page tokens in `my-app/src/styles/riso-page.css` | Warm paper, ink, pine, coral, Archivo, Space Mono | No new brand system |
 
-The five completed overrides are reminder tone, gamification, plant-ID confidence, pet safety, and notification frequency. The watering-schedule row is marked `next` in the implementation and must not be counted or depicted as a completed override.
+The case study documents five completed overrides, but this film deliberately proves only the reminder-tone decision. Do not introduce gamification, plant-ID confidence, pet safety, notification frequency, or the future watering-schedule row into this short asset.
 
-### Pre-production truth stop
+### Pre-production truth lock
 
-The current case study contains conflicting sample-size copy: the primary survey evidence says `34`, while the phase recap and cinematic journal still contain `32`/`17 of 32`. Production must not begin until the content owner confirms `34` as the canonical count and removes or reconciles the contradictory public copy. The storyboard is locked to the dated `n=34` survey evidence currently used by the findings and feature chart.
+The content owner confirmed `34` as the canonical survey count on 29 July 2026, and the stale public `32` references were reconciled. The film remains locked to `Survey · n=34 · 22 May–8 July 2026`.
 
 ## Visual frame
 
@@ -55,7 +55,7 @@ The film opens and closes on the same evidence poster. A reader who never presse
 | `0.00–0.35` | Hold the full three-column poster: **AI built wide** / **Research narrowed it** / **Human overruled risk**. The play state has already disappeared; no decorative entrance. | Poster described below | Playback state began, not the evidence itself | Left column | All three stages belong to one causal trace | Static hold |
 | `0.35–2.25` | Other poster columns dim to 16% opacity while the left column resolves into a 2 × 3 contact sheet of the six real Emergent screens. One shared label reads `EMERGENT BUILD · REAL PROTOTYPE`. No screen arrives separately. Narrative line: **“AI built wide in one pass.”** | Six `grove-live-*.jpg` assets listed above | A single AI pass produced breadth without a trustworthy priority model | The whole contact sheet, then the coral rule at its right edge | Breadth is the starting condition, not the outcome | Column dim: 240 ms ease-in-out. Contact sheet: 240 ms opacity ease-out plus `scale(0.985 → 1)`. Hold at least 1.35 s |
 | `2.25–4.60` | Contact sheet recedes to 12% opacity without moving off-canvas. Three evidence plates replace it: **74% reminders**, **56% plant ID**, **50% photo diagnosis**. A large `34` and the provenance line remain visible. Narrative line: **“34 owners narrowed launch to 3 needs.”** | Survey data rendered as live/vector type; no generated chart image | Unranked feature breadth became three research-backed launch priorities | `34`, then the three percentages in reading order | Research is the narrowing mechanism; the numbers explain why most AI-built features wait | Crossfade: 260 ms ease-in-out. Evidence plates appear simultaneously, not staggered. Coral selection rule reveals by matte over 240 ms ease-out |
-| `4.60–7.05` | Survey plates dim to 16%. Three real source crops sit on the left: care, personality, add. Opposite each crop, a direction card crossfades in: `Guilt + urgency → one calm summary`; `Badges + streaks → personality, not points`; `One confident answer → top guesses + confidence + sources`. A fixed label reads `3 EXAMPLES OF 5 OVERRIDES` and another reads `DIRECTION · NOT FINISHED SCREENS`. Narrative line: **“I overruled 5 AI calls to protect trust.”** | `grove-live-care.jpg`, `grove-live-personality.jpg`, `grove-live-add.jpg`; exact decisions from `OVERRIDES` | AI defaults became documented human decisions; no finished redesign is shown | First the count `5`, then the three paired rows | Human judgment changes product policy, not merely visual styling | Pair field: 260 ms opacity ease-out. All three rows appear together to preserve reading time. Direction cards settle with `translateX(8px → 0)` over 280 ms ease-out. No strike-through animation |
+| `4.60–7.05` | Survey plates dim to 16%. The real care-screen crop remains on the left. One direction card crossfades in: `AI default · guilt + urgency → Hillary chose · one calm morning summary`. A fixed label reads `REMINDER DIRECTION · NOT A FINISHED SCREEN`. Narrative line: **“I rejected guilt-based reminders for one calm morning summary.”** | `grove-live-care.jpg`; exact reminder decision from `OVERRIDES` | An AI default became one documented human policy decision; no finished redesign is shown | The ownership phrase `Hillary chose`, then the calm-summary direction | Human judgment changes product policy, not merely visual styling | Pair field: 260 ms opacity ease-out. The one direction card settles with `translateX(8px → 0)` over 280 ms ease-out. No strike-through animation |
 | `7.05–7.80` | Crossfade back to the full evidence poster. The status line remains: `Rebuilding around trust · Phase 2 of 3`. Hold on the poster after playback ends; never loop. | Static poster | The detailed trace returns to its recruiter-scan summary | Three column headings and status line | The end state is a truthful work-in-progress with a documented decision model | Crossfade: 300 ms ease-in-out; final hold: 450 ms, then indefinite poster |
 
 ### Sequence diagram
@@ -67,7 +67,7 @@ AI-BUILT CONTACT SHEET
     ↓ research evidence replaces breadth
 34 OWNERS → 3 LAUNCH NEEDS
     ↓ human judgment pairs source with direction
-5 OVERRIDES → TRUST
+ONE REMINDER OVERRIDE → CALM
     ↓
 FULL POSTER · PHASE 2 OF 3
 ```
@@ -88,7 +88,7 @@ There is no audio. The narrative text is part of the visual composition and is a
 |---|---:|---|
 | 1 | `00:00.350–00:02.200` | AI built wide in one pass. |
 | 2 | `00:02.250–00:04.550` | 34 owners narrowed launch to 3 needs. |
-| 3 | `00:04.600–00:07.000` | I overruled 5 AI calls to protect trust. |
+| 3 | `00:04.600–00:07.000` | I rejected guilt-based reminders for one calm morning summary. |
 
 Caption requirements:
 
@@ -96,8 +96,8 @@ Caption requirements:
 - Minimum effective rendered size: 18 px at a 390 px viewport and 28 px in the 1280 px master.
 - Contrast must meet 4.5:1 in light and dark page contexts.
 - Keep captions on by default because they carry the narration, even though the film is silent.
-- Visible adjacent summary: “An AI generated a broad Grove prototype. A survey of 34 plant owners narrowed launch to three needs. Hillary documented five human overrides and is rebuilding the product around trust; the work is in Phase 2 of 3.”
-- Screen-reader text must name the three example overrides without requiring video playback.
+- Visible adjacent summary: “An AI generated a broad Grove prototype. A survey of 34 plant owners narrowed launch to three needs. Hillary rejected guilt-based reminders and chose one calm morning summary; the work is in Phase 2 of 3.”
+- Screen-reader text must name the reminder override without requiring video playback.
 
 ## Poster frame and static equivalent
 
@@ -114,8 +114,8 @@ Three equal columns separated by thin ink rules:
    Large `34 → 3`; smaller line `74% reminders · 56% plant ID · 50% photo diagnosis`.  
    Folio: `Survey · 22 May–8 July 2026`
 3. **Human overruled risk**  
-   Large `5`; smaller line `calm reminders · visible confidence · human correction`.  
-   Folio: `Decision direction · not finished screens`
+   Large `1`; smaller line `guilt + urgency → one calm morning summary`.
+   Folio: `Reminder direction · not a finished screen`
 
 Footer across all columns: `GROVE · REBUILDING AROUND TRUST · PHASE 2 OF 3`.
 
@@ -163,7 +163,7 @@ Any one of these returns the asset to `Revise`; fabricated evidence or inaccessi
 3. Any generated, interpolated, or composited frame resembles a finished Grove redesign screen.
 4. A screenshot loses the label `Emergent build · real prototype`, or a direction card loses `not finished screens`.
 5. Playback starts without an explicit action, loops, or cannot be paused and replayed from the keyboard.
-6. The poster does not independently communicate AI breadth, research narrowing, human override, and Phase 2 status.
+6. The poster does not independently communicate AI breadth, research narrowing, the reminder override, and Phase 2 status.
 7. Motion, color, or arrows carry meaning that the copy and static layout do not.
 8. Captions obscure source evidence, fall below the effective mobile size, or are absent from the accessible text alternative.
 9. A pan, zoom, parallax move, flashing transition, or rapid stagger is introduced for atmosphere.
@@ -199,12 +199,12 @@ Keep the three real third-party app captures stationary while the editorial laye
 
 - **Agentic UX / Trust — Practitioner synthesis:** explicit play, pause/replay, provenance, truthful stage labeling, static recovery, and reduced-motion choice are specified.
 - **Enterprise Design Systems / Prototyping — Verified from repository:** current Riso tokens, type, source artifacts, and responsive compositions are reused; no new motion runtime or local visual fork is required for the film itself.
-- **UX Research / Strategy — Verified from repository with an unresolved content conflict:** the evidence-to-decision chain is specific, but `32` versus `34` must be reconciled before production.
+- **UX Research / Strategy — Verified from repository:** the evidence-to-decision chain is specific and the content owner confirmed `n=34`; representative recruiter recall remains required before generation.
 - **Prompting / Evals — Practitioner synthesis:** the source packet is frozen, generation boundaries are explicit, and critical failures are judgeable.
-- **Unresolved hard gates:** canonical survey count, final source-owner truth review, recruiter comprehension, rendered mobile caption legibility, real export weight, reduced-motion behavior, and independent accessibility judgment.
+- **Unresolved hard gates:** five-person representative recruiter comprehension, real export weight, and real VoiceOver/NVDA validation. Rendered mobile/reflow, text-spacing, forced-colour, reduced-motion, source truth, and automated accessibility checks now pass.
 
 ## Handoff
 
-**motion-designer → producer:** “Build the 7.8-second Grove trace from the six real Emergent screens, the dated n=34 survey evidence, and the five completed overrides—never from generated UI. The camera stays locked; the only expressive beat is the contact sheet receding as three research priorities take over. Stop before production if the public 32/34 conflict is not resolved, and keep `Phase 2 of 3` plus `not finished screens` visible in every version.”
+**motion-designer → producer:** “Hold generation until the representative recall study passes. Then build the 7.8-second Grove trace from the real Emergent screens, the dated n=34 survey evidence, and one reminder override—never from generated UI. The camera stays locked; keep `Hillary chose`, `Phase 2 of 3`, and `not a finished screen` visible.”
 
 **motion-designer → accessibility judge:** “Please test the static poster first: it must carry the entire claim without playback. Then check the 18 px mobile caption floor, keyboard play/pause/replay, the reduced-motion default, and whether the three transitions remain understandable without color or motion. The highest-risk points are the short 7.8-second reading pace and any temptation to hide provenance inside the final frame.”
