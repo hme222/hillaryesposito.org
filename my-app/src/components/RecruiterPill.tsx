@@ -121,7 +121,7 @@ export default function RecruiterPill() {
                     <li>
                       <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/mobbin")}>
                         <strong>Mobbin</strong>
-                        <span>200+ screens across three finance apps; production-ready flow documentation and consumer pattern curation</span>
+                        <span>200+ screens per app across three finance apps; production-ready flow documentation and consumer pattern curation</span>
                       </button>
                     </li>
                   </ul>

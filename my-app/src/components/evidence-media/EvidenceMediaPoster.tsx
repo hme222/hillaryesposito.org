@@ -285,7 +285,7 @@ function MobbinPoster() {
     >
       <header className="evidence-poster__folio">
         <p>MOBBIN · UX FLOW DOCUMENTATION</p>
-        <p>3 apps · 200+ screens · 4 months</p>
+        <p>3 apps · 200+ screens each · 4 months</p>
       </header>
 
       <div className="evidence-poster__mobbin-layout">
@@ -293,7 +293,7 @@ function MobbinPoster() {
           <p className="evidence-poster__problem">A screenshot is not a flow.</p>
           <p className="evidence-poster__value">A useful reference has to survive without its author.</p>
           <h2 className="evidence-poster__landscape-only">Capture → Map → Name → Verify</h2>
-          <p className="evidence-poster__scale">3 live finance apps · 200+ screens · 4 months</p>
+          <p className="evidence-poster__scale">3 live finance apps · 200+ screens each · 4 months</p>
           <p className="evidence-poster__contribution evidence-poster__landscape-only">
             Hillary’s contribution: flow documentation and pattern curation.
           </p>

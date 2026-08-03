@@ -48,7 +48,7 @@ const COLOPHONS: Record<string, Credit[]> = {
     { icon: "🤝", label: "stakeholder alignment", es: "alineación de stakeholders" },
     { icon: "🧩", label: "change management", es: "gestión del cambio" },
     { icon: "🔐", label: "roles and permissions", es: "roles y permisos" },
-    { icon: "🛡️", label: "HIPAA and compliance training", es: "capacitación en HIPAA y cumplimiento" },
+    { icon: "🛡️", label: "Epic, HIPAA and compliance training", es: "capacitación en Epic, HIPAA y cumplimiento" },
     { icon: "📚", label: "instructional design for mixed-ability cohorts", es: "diseño instruccional para grupos con distintos niveles" },
     { icon: "📊", label: "a Lean Six Sigma green belt", es: "un green belt de Lean Six Sigma" },
     { icon: "🎓", label: "an MHA", es: "una MHA" },
@@ -59,7 +59,7 @@ const COLOPHONS: Record<string, Credit[]> = {
   ],
   "/case-study/mobbin": [
     { icon: "📱", label: "3 live finance apps", es: "3 apps de finanzas en vivo" },
-    { icon: "🖼️", label: "200+ screens", es: "200+ pantallas" },
+    { icon: "🖼️", label: "200+ screens per app", es: "200+ pantallas por app" },
     { icon: "🏷️", label: "Mobbin’s vocabulary", es: "el vocabulario de Mobbin" },
     { icon: "✂️", label: "an editor, not a camera", es: "una editora, no una cámara" },
     { icon: "🗓️", label: "4 months", es: "4 meses" },

@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
 import ReadingProgress from "../../components/flagship/ReadingProgress";
-import { EvidenceMediaPoster } from "../../components/evidence-media";
-import GroveDecisionFilm from "../../components/evidence-media/GroveDecisionFilm";
 import GroveCinematic from "../../components/riso/GroveCinematic";
 import GroveDecisionStory from "../../components/riso/GroveDecisionStory";
 import GroveScreenGallery from "../../components/riso/GroveScreenGallery";
@@ -355,16 +353,11 @@ export default function RisoGrove() {
         </div>
       </header>
 
-      <section className="rp-section evidence-media-section" aria-labelledby="grove-evidence-title">
-        <div className="rp-wrap">
-          <div className="evidence-media-section__intro">
-            <p className="rp-kicker">Decision trace · 30-second scan</p>
-            <h2 className="rp-title" id="grove-evidence-title">Grove decision trace</h2>
-          </div>
-          <EvidenceMediaPoster project="grove" groveMaterial="texture-a" />
-          <GroveDecisionFilm />
-        </div>
-      </section>
+      {/* The "Grove decision trace" section — static evidence poster plus the
+          optional motion film — was removed on 2026-08-03 at Hillary's request,
+          along with the equivalent sections on MSK and Mobbin. Each restated
+          the case study's own argument in a compressed form before the reader
+          had the argument. */}
 
       <GroveCinematic />
 
@@ -383,7 +376,7 @@ export default function RisoGrove() {
               </p>
             </div>
             <div className="rp-split__media">
-              <div className="rp-device">
+              <div className="rp-device rp-device--app">
                 <img src="/assets/grove/grove-live-care.jpg" alt="Grove daily care — one clear task a day, overdue plants surface first, no shaming" />
               </div>
             </div>
@@ -477,7 +470,7 @@ export default function RisoGrove() {
               <div className="rp-decision__pair">
                 <div className="rp-decision__col">
                   <span className="rp-decision__tag rp-decision__tag--old">Emergent built</span>
-                  <div className="rp-device" style={{ background: d.oldBg }}>
+                  <div className="rp-device rp-device--app" style={{ background: d.oldBg }}>
                     <img src={`/assets/grove/${d.old}`} alt={d.oldAlt} loading="lazy" />
                   </div>
                 </div>

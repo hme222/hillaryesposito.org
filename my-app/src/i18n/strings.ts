@@ -76,10 +76,10 @@ const en = {
   "home.riso.mskDesc":
     "Six years redesigning clinical workflows where a wrong answer had a cost — a 20% EMR cost cut, and every CPR certification collected 70% ahead of a deadline that was about to slip.",
   "home.riso.mobbinDesc":
-    "Three finance apps turned into a searchable reference — the work was the taxonomy and the naming, not the screenshots. 200+ screens, an editor's judgment on every one.",
+    "Three finance apps turned into a searchable reference — the work was the taxonomy and the naming, not the screenshots. 200+ screens per app, an editor's judgment on every one.",
   "home.riso.groveAlt": "Grove's calm, plant-first entry screen — the redesign's first finished screen",
   "home.riso.mskAlt": "A recreated map of Memorial Sloan Kettering's care network across the New York region",
-  "home.riso.mobbinAlt": "One of 200+ third-party app screens documented for Mobbin — a finance app welcome screen",
+  "home.riso.mobbinAlt": "One of the third-party app screens documented for Mobbin — a finance app welcome screen",
   "home.riso.groveTag": "Active · Phase 2 of 3",
   "home.riso.proofKicker": "The proof",
   "home.riso.proofTitle": "Every number here has a source",
@@ -95,7 +95,7 @@ const en = {
   "home.about.link": "More about me →",
 
   // ── Home: proof stats ──
-  "home.stat.patterns": "App screens studied for craft and patterns",
+  "home.stat.patterns": "App screens studied per app, across three finance apps",
   "home.stat.research": "People surveyed before I designed anything",
   "home.stat.scale": "People relying on systems I redesigned",
   "home.stat.mobbinSource": "Mobbin pattern study",
@@ -110,7 +110,7 @@ const en = {
   "home.eyebrow": "Selected work",
   "home.proj.grove.subtitle": "Product Design · AI Judgment",
   "home.proj.msk.subtitle": "UX & Product Design · Healthcare Systems",
-  "home.proj.mobbin.subtitle": "Freelance · 200+ screens across three finance apps, studied for craft",
+  "home.proj.mobbin.subtitle": "Freelance · 200+ screens per app across three finance apps, studied for craft",
 
   // ── Home: contact / CTA ──
   "home.ctaTitle": "Building a product where the details decide?",

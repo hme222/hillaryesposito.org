@@ -58,7 +58,7 @@ export default function GroveDecisionStory() {
         </div>
         <div className="rp-decisionStory__grid">
           <div className="rp-decisionStory__visual" aria-hidden="true">
-            <div className="rp-device">
+            <div className="rp-device rp-device--app">
               <img src="/assets/grove/grove-live-care.jpg" alt="" />
             </div>
             <div className="rp-decisionStory__note" key={STEPS[active].n}>

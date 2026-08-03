@@ -99,7 +99,7 @@ export const MSK_ES: SpanishCaseStudyData = {
       bullets: [
         "El flujo EMR necesitó capacitación práctica en el lugar de trabajo porque las personas habían usado la solución alternativa anterior durante años.",
         "El material de certificación de RCP estaba en lenguaje técnico y legal, y tan poca gente lo completaba que el plazo estaba a punto de aplazarse. Lo reescribí para los clínicos que tenían que completarlo: llegaron todas las certificaciones, un 70% antes del plazo.",
-        "El programa de incorporación para personal administrativo nuevo — HIPAA, los módulos de cumplimiento y las habilidades técnicas y blandas del puesto — se reconstruyó con el equipo de diseño y se curó cohorte por cohorte, para el rango real de habilidades que llegaba.",
+        "El programa de incorporación para personal administrativo nuevo — Epic, HIPAA, los módulos de cumplimiento y las habilidades técnicas y blandas del puesto — se reconstruyó con el equipo de diseño y se curó cohorte por cohorte, para el rango real de habilidades que llegaba.",
       ],
     },
     {
@@ -124,7 +124,7 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
   stats: [
     { label: "Cliente", value: "Mobbin · Freelance" },
     { label: "Tiempo", value: "mar.–jun. 2026 · 4 meses" },
-    { label: "Entrega", value: "3 apps · 200+ pantallas" },
+    { label: "Entrega", value: "3 apps · 200+ pantallas cada una" },
     { label: "Ubicación", value: "Remoto" },
   ],
   sections: [

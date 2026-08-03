@@ -79,7 +79,7 @@ const allCuratedPages: Record<string, CuratedPage> = {
     ],
     featuredWork: [
       { title: "Grove — a consumer app for what you already own", reason: "Cataloging, calm daily-use flows, and AI-override judgment. The closest analog to Indyx: organize what you own, reduce overwhelm, keep humans in charge." },
-      { title: "Mobbin — 200+ screens across three finance apps, studied for craft", reason: "Pattern fluency and taste from 200+ screens documented across three finance apps — directly useful for cataloging speed and outfit discoverability." },
+      { title: "Mobbin — 200+ screens per app across three finance apps, studied for craft", reason: "Pattern fluency and taste from 200+ screens per app documented across three finance apps — directly useful for cataloging speed and outfit discoverability." },
       { title: "The 'AI vs. mine' calls", reason: "A record of where I let the algorithm accelerate the work and where I overruled it — Indyx's stylist-not-algorithm belief, shown not told." },
     ],
     strengths: [
@@ -92,7 +92,7 @@ const allCuratedPages: Record<string, CuratedPage> = {
     ],
     relevantExperience: [
       "Grove maps almost 1:1 to Indyx's UX challenges: fast cataloging of what you own, surfacing combinations people miss, keeping motivation through a long setup, and making care/analytics data intuitive.",
-      "My Mobbin work — documenting 200+ consumer screens across three apps — built exactly the pattern library Indyx's problems need: efficient capture, discovery, and photo-quality consistency.",
+      "My Mobbin work — documenting 200+ consumer screens per app across three apps — built exactly the pattern library Indyx's problems need: efficient capture, discovery, and photo-quality consistency.",
       "Six years in healthcare systems taught me to design where a wrong answer has a cost and trust is everything — the same rigor Indyx wants behind a product people invite into their daily routine.",
     ],
     keywords: [
@@ -119,7 +119,7 @@ const allCuratedPages: Record<string, CuratedPage> = {
       "For Indyx's UX/Product Designer role, I'd bring consumer interaction craft, research that keeps taste honest, and a genuine belief in human judgment over the algorithm — designing a product that makes getting dressed joyful, intentional, and yours.",
     supportLinks: [
       { label: "Grove case study", path: "/case-study/grove", description: "A consumer app for what you already own — cataloging, calm daily use, and AI-override judgment.", icon: <SproutIcon /> },
-      { label: "Mobbin case study", path: "/case-study/mobbin", description: "200+ screens across three finance apps — pattern fluency and taste.", icon: <PencilIcon /> },
+      { label: "Mobbin case study", path: "/case-study/mobbin", description: "200+ screens per app across three finance apps — pattern fluency and taste.", icon: <PencilIcon /> },
     ],
     relatedLinks: [],
   },
@@ -159,7 +159,7 @@ const allCuratedPages: Record<string, CuratedPage> = {
       },
       {
         title: "Mobbin — consumer pattern study",
-        reason: "200+ screens documented for craft; pattern fluency across three finance apps, screen by screen.",
+        reason: "200+ screens per app documented for craft; pattern fluency across three finance apps, screen by screen.",
       },
       {
         title: "The 'AI vs. mine' calls",
@@ -174,11 +174,11 @@ const allCuratedPages: Record<string, CuratedPage> = {
       "Interaction craft at the level of timing, defaults, and the one screen that earns trust",
       "Calm, trustworthy defaults over loud ones",
       "Research that pressure-tests taste instead of replacing it",
-      "Pattern fluency from 200+ consumer screens studied firsthand",
+      "Pattern fluency from 200+ consumer screens per app, studied firsthand",
     ],
     relevantExperience: [
       "Grove is my clearest consumer-craft artifact: I designed the interaction model, the AI trust states, and the calm reminder system, then built a functional prototype — and overruled the AI wherever a wrong call would cost someone's trust.",
-      "My Mobbin work is 200+ screens across three finance apps, documented for craft and patterns. It's why I can walk into a product and quickly see what's working, what's borrowed, and what needs fixing.",
+      "My Mobbin work is 200+ screens per app across three finance apps, documented for craft and patterns. It's why I can walk into a product and quickly see what's working, what's borrowed, and what needs fixing.",
     ],
     keywords: [],
     hiringManagerNote:
@@ -195,7 +195,7 @@ const allCuratedPages: Record<string, CuratedPage> = {
       {
         label: "Mobbin case study",
         path: "/case-study/mobbin",
-        description: "200+ screens across three finance apps, studied for craft and patterns.",
+        description: "200+ screens per app across three finance apps, studied for craft and patterns.",
         icon: <PencilIcon />,
       },
       {
@@ -269,6 +269,8 @@ const allCuratedPages: Record<string, CuratedPage> = {
     ],
     keywords: [
       "HIPAA",
+      "Epic",
+      "Epic training",
       "healthcare compliance",
       "clinical workflow design",
       "EHR / EMR workflows",
@@ -368,6 +370,8 @@ const allCuratedPages: Record<string, CuratedPage> = {
     ],
     keywords: [
       "HIPAA",
+      "Epic",
+      "Epic training",
       "healthcare compliance",
       "clinical workflow design",
       "EHR / EMR workflows",

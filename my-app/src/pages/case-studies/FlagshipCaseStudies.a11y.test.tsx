@@ -115,119 +115,33 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".rp-recruiter-link")).not.toBeNull();
   });
 
+  // Every flagship carried a first-scroll "decision trace" evidence poster —
+  // a compressed restatement of the case study's own argument, shown before the
+  // reader had the argument. All three were removed on 2026-08-03 at Hillary's
+  // request. Asserted rather than merely absent so they cannot creep back.
   it.each([
-    [
-      "Grove",
-      <RisoGrove />,
-      "Grove decision trace",
-      "Functional prototype · Phase 2 of 3",
-      "one calm morning summary",
-      "#grove-override",
-    ],
-    [
-      "Mobbin",
-      <FlagshipMobbin />,
-      "Mobbin flow documentation",
-      "Hillary documented the flows",
-      "A screenshot is not a flow",
-      "#mobbin-work",
-    ],
-  ])(
-    "%s includes one accessible first-scroll evidence poster",
-    async (_name, page, heading, qualifier, decision, href) => {
-      await act(async () => {
-        root.render(page);
-      });
-
-      expect(container.querySelectorAll(".evidence-media")).toHaveLength(1);
-      const section = container.querySelector<HTMLElement>(".evidence-media-section");
-      expect(section).not.toBeNull();
-      const labelledBy = section?.getAttribute("aria-labelledby");
-      expect(labelledBy).toBeTruthy();
-      expect(container.querySelector(`#${labelledBy}`)?.textContent).toContain(heading);
-      expect(section?.textContent?.toLowerCase()).toContain(String(qualifier).toLowerCase());
-      expect(section?.textContent?.toLowerCase()).toContain(String(decision).toLowerCase());
-      expect(section?.querySelector(`a[href="${href}"]`)).not.toBeNull();
-
-      const sourceImages = Array.from(section?.querySelectorAll("img") || []);
-      sourceImages.forEach((image) => expect(image.getAttribute("alt")).toBe(""));
-    },
-  );
-
-  // MSK is deliberately the exception. Its poster restated the before/after
-  // that the workflow map draws further down, a full screen before the reader
-  // had the problem, so it was removed. Asserted rather than merely absent so
-  // the removal cannot be undone by accident.
-  it("MSK carries no evidence poster — the workflow map is the artifact", async () => {
+    ["Grove", <RisoGrove />],
+    ["Mobbin", <FlagshipMobbin />],
+    ["MSK", <FlagshipMSK />],
+  ])("%s carries no evidence-poster decision trace", async (_name, page) => {
     await act(async () => {
-      root.render(<FlagshipMSK />);
+      root.render(page);
     });
 
     expect(container.querySelectorAll(".evidence-media")).toHaveLength(0);
     expect(container.querySelector(".evidence-media-section")).toBeNull();
+    expect(container.textContent).not.toMatch(/decision trace/i);
+  });
+
+  // The workflow map is MSK's first-scroll artifact now that the poster is gone.
+  it("MSK leads with the workflow map as its artifact", async () => {
+    await act(async () => {
+      root.render(<FlagshipMSK />);
+    });
+
     expect(container.querySelector(".fp-workflowFig")).not.toBeNull();
   });
 
-  it("keeps Grove motion optional, truthful, and controllable", async () => {
-    const play = jest
-      .spyOn(HTMLMediaElement.prototype, "play")
-      .mockResolvedValue(undefined);
-    const pause = jest
-      .spyOn(HTMLMediaElement.prototype, "pause")
-      .mockImplementation(() => undefined);
-
-    await act(async () => {
-      root.render(<RisoGrove />);
-    });
-
-    const film = container.querySelector<HTMLElement>(".grove-decision-film");
-    expect(film).not.toBeNull();
-    expect(film?.querySelector("video")).toBeNull();
-    expect(film?.textContent).toContain("A survey of 34 plant owners");
-    expect(film?.textContent).toContain("No finished redesign screen is shown");
-
-    const start = film?.querySelector<HTMLButtonElement>("button");
-    expect(start?.textContent).toContain("Play Grove decision trace · 7.8 sec");
-    await act(async () => start?.click());
-
-    const video = film?.querySelector<HTMLVideoElement>("video");
-    expect(play).toHaveBeenCalledTimes(1);
-    expect(video?.autoplay).toBe(false);
-    expect(video?.loop).toBe(false);
-    expect(video?.controls).toBe(true);
-    expect(video?.preload).toBe("metadata");
-    expect(video?.querySelectorAll("source")).toHaveLength(4);
-    expect(video?.querySelectorAll('source[media="(max-width: 42rem)"]')).toHaveLength(2);
-    expect(video?.querySelector('track[kind="captions"][default]')).not.toBeNull();
-
-    await act(async () => video?.dispatchEvent(new Event("play", { bubbles: true })));
-    let control = film?.querySelector<HTMLButtonElement>(".grove-decision-film__controls button");
-    expect(control?.textContent).toContain("Pause Grove decision trace");
-    await act(async () => control?.click());
-    expect(pause).toHaveBeenCalledTimes(1);
-
-    await act(async () => video?.dispatchEvent(new Event("pause", { bubbles: true })));
-    expect(film?.querySelector(".grove-decision-film__status")?.textContent).toBe("Paused");
-
-    await act(async () => video?.dispatchEvent(new Event("ended", { bubbles: true })));
-    control = film?.querySelector<HTMLButtonElement>(".grove-decision-film__controls button");
-    expect(control?.textContent).toContain("Replay Grove decision trace");
-    await act(async () => control?.click());
-    expect(play).toHaveBeenCalledTimes(2);
-
-    await act(async () => video?.dispatchEvent(new Event("error", { bubbles: true })));
-    expect(film?.textContent).toContain("Motion version unavailable");
-
-    const results = await axe.run(container, {
-      rules: {
-        "color-contrast": { enabled: false },
-      },
-    });
-    expect(results.violations).toEqual([]);
-
-    play.mockRestore();
-    pause.mockRestore();
-  });
 
   it("keeps broken routes out of search indexes", async () => {
     await act(async () => {

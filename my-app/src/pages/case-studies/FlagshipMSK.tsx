@@ -55,7 +55,7 @@ const ROLE_METHODS: Record<string, { term: string; body: string }> = {
   },
   "03": {
     term: "Training & Facilitation (ATD) · current-state mapping",
-    body: "Owning how staff were taught the system meant documenting what actually happens, not what the policy says. The gap between the two is where the design work lives.",
+    body: "I instructed on Epic, HIPAA, and the compliance modules. Owning how staff were taught the system meant documenting what actually happens, not what the policy says — and the gap between the two is where the design work lives.",
   },
 };
 
@@ -128,7 +128,10 @@ const REDESIGNS = [
     // and no real one has been supplied.
     n: "03",
     title: "Administrative onboarding",
-    finding: "HIPAA, the compliance modules, and the technical and soft skills of the job were taught the same way to every new administrative hire — people who arrived with very different starting points, some fluent with the systems, some never having used them.",
+    // Epic belongs to the Trainer I Specialist years (2022–24), where Hillary
+    // instructed on it — deliberately not attached to the 2018–20 filing
+    // redesign further up the page, which predates it.
+    finding: "Epic, HIPAA, the compliance modules, and the technical and soft skills of the job were taught the same way to every new administrative hire — people who arrived with very different starting points, some fluent with the systems, some never having opened them.",
     change: "I worked with the design team to rebuild the programme, then curated the instruction cohort by cohort so a one-to-three-week course met the range of abilities actually in the room.",
   },
 ];
@@ -421,7 +424,7 @@ export default function FlagshipMSK() {
         // prop below already states it, in its own dedicated line.
         kicker="What it added up to"
         title="The numbers, and who they belong to."
-        intro="I initiated the dashboard-to-online-EMR workflow redesign as a coordinator and it was implemented off my presentation to the company two roles later, rewrote the CPR certification material for the clinicians completing it, and rebuilt the onboarding programme — HIPAA, compliance, and the technical and soft skills — for new administrative staff."
+        intro="I initiated the dashboard-to-online-EMR workflow redesign as a coordinator and it was implemented off my presentation to the company two roles later, rewrote the CPR certification material for the clinicians completing it, and rebuilt the onboarding programme — Epic, HIPAA, compliance, and the technical and soft skills — for new administrative staff."
         disclaimer="Anonymized evidence · organization-wide results are attributed to the initiative"
         // The same discipline the certification dashboard used on its own data:
         // say what you are looking at before someone has to work it out. All

@@ -5,7 +5,6 @@ import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/C
 import ReadingProgress from "../../components/flagship/ReadingProgress";
 import DecisionStory from "../../components/flagship/DecisionStory";
 import EvidenceField from "../../components/flagship/EvidenceField";
-import { EvidenceMediaPoster } from "../../components/evidence-media";
 import ScreenSequence, { ScreenSequenceItem } from "../../components/flagship/ScreenSequence";
 import CartoField from "../../components/riso/CartoField";
 import RisoDefs from "../../components/riso/RisoDefs";
@@ -23,7 +22,7 @@ const CHAPTERS: CaseStudyChapter[] = [
   { id: "mobbin-work", label: "Method", note: "A screenshot is not a flow" },
   { id: "mobbin-decisions", label: "Decisions", note: "Editing is the work" },
   { id: "mobbin-apps", label: "Apps", note: "Three trust models" },
-  { id: "mobbin-outcomes", label: "Outcomes", note: "200+ screens later" },
+  { id: "mobbin-outcomes", label: "Outcomes", note: "200+ screens per app later" },
 ];
 
 const APPS: ScreenSequenceItem[] = [
@@ -67,10 +66,10 @@ export default function FlagshipMobbin() {
           <div className="rp-clearing">
             <span className="rp-eyebrow">UX flow documentation · pattern curation</span>
             <h1 className="rp-h1">Mobbin.</h1>
-            <span className="rp-readtime"><b>3 min</b><span>read · 3 apps, 200+ screens</span></span>
+            <span className="rp-readtime"><b>3 min</b><span>read · 3 apps, 200+ screens each</span></span>
             <p className="rp-sub">
               Mobbin is a reference library designers search to see how real apps solve a screen.
-              Anyone can screenshot an app. Mobbin hired me to decide what <b>200+ screens</b> mean
+              Anyone can screenshot an app. Mobbin hired me to decide what <b>200+ screens per app</b> mean
               to a designer who will never meet me—and make every step searchable.
             </p>
             <a className="rp-cta" href="#mobbin-work">Open the capture desk →</a>
@@ -78,19 +77,12 @@ export default function FlagshipMobbin() {
         </div>
         <div className="rp-hero__media fp-heroArt fp-heroArt--mobbin" aria-label="Three finance app screens documented for Mobbin">
           {APPS.map((app, index) => <div className={`fp-capture fp-capture--${index + 1}`} key={app.name}><img src={app.image} alt={index === 0 ? "Three documented finance app interfaces: Kikoff, Polymarket, and Discover" : ""} /></div>)}
-          <div className="fp-artifactLabel"><span>CAPTURE LOG · 04 MONTHS</span><b>3 apps · 200+ screens · one searchable library</b></div>
+          <div className="fp-artifactLabel"><span>CAPTURE LOG · 04 MONTHS</span><b>3 apps · 200+ screens each · one searchable library</b></div>
         </div>
       </header>
 
-      <section className="rp-section evidence-media-section" aria-labelledby="mobbin-evidence-title">
-        <div className="rp-wrap">
-          <div className="evidence-media-section__intro">
-            <p className="rp-kicker">Documentation trace · 30-second scan</p>
-            <h2 className="rp-title" id="mobbin-evidence-title">Mobbin flow documentation</h2>
-          </div>
-          <EvidenceMediaPoster project="mobbin" />
-        </div>
-      </section>
+      {/* The "Documentation trace" evidence-poster section was removed on
+          2026-08-03, matching Grove and MSK. */}
 
       <section className="rp-cinema fp-cinema fp-cinema--mobbin" id="mobbin-brief" aria-labelledby="mobbin-brief-title">
         <div className="rp-cinema__sticky">
@@ -140,24 +132,16 @@ export default function FlagshipMobbin() {
           <p className="rp-lede">Putting the apps side by side revealed more than counting screens ever could. A longer flow can feel shorter when every step gives something back.</p>
           <ScreenSequence label="Documented finance app sequence" items={APPS} />
 
-          {/* One entry exactly as delivered. This page sells annotation judgment;
-              without a real annotation on it, the claim had nothing under it. */}
-          <figure className="fp-annotation rp-reveal">
-            <figcaption>
-              <span>One entry, as delivered</span>
-              <b>Kikoff · credit-score progress, first session</b>
-            </figcaption>
-            <div className="rp-tags">
-              {["Progress indicator", "Trust signal", "Positive reinforcement", "Data visualization", "Onboarding completion"].map((tag) => (
-                <b className="rp-badge rp-badge--tag" key={tag}>{tag}</b>
-              ))}
-            </div>
-            <blockquote>
-              “Shows the credit score moving up right after the action that caused it. The timing’s
-              deliberate — that jump lands the moment you finish the first credit-building task, so
-              cause and effect are obvious. That’s what builds confidence.”
-            </blockquote>
-          </figure>
+          {/* REMOVED 2026-08-03. A figure headed "One entry, as delivered" sat
+              here: a quoted Kikoff annotation, an entry title, and five Mobbin
+              taxonomy tags. Hillary confirms none of it was hers — the quote was
+              not verbatim, the tags were not the terms she applied, and the
+              entry title was invented. It had been added precisely because this
+              page sells annotation judgment and had no artifact under the claim,
+              which is how the other fabrications on this site got written too.
+              The method steps above are Hillary's own first-person account and
+              stand on their own. If she supplies a real annotation, the
+              .fp-annotation styles are still in flagship-case-study.css. */}
 
           <a
             className="fp-proofLink"
@@ -178,7 +162,7 @@ export default function FlagshipMobbin() {
         intro="I documented the source apps for Mobbin’s Finance+ reference library. I did not design Kikoff, Polymarket, Discover, or Mobbin."
         disclaimer="Freelance app-capture work · source-product ownership stays with each company"
         metrics={[
-          { n: "200+", label: "screens captured, sequenced, annotated, and labeled" },
+          { n: "200+", label: "screens per app — captured, sequenced, annotated, and labeled across three apps" },
           { n: "3", label: "live finance apps documented across distinct trust models" },
           { n: "4", label: "months building reusable references for designers" },
         ]}
