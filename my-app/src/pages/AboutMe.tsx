@@ -244,6 +244,17 @@ export default function About() {
           <p className="rp-lede">
             {isSpanish ? "Rutinas que me mantienen clara y con los pies en la tierra." : "Routines that keep me clear and grounded."}
           </p>
+          {/* Currently reading, stated as currently reading. This is the honest
+              home for it: crediting it on the MSK colophon would claim a book
+              started in 2026 shaped work done years earlier. */}
+          <p className="rp-nowReading">
+            <span>{isSpanish ? "Leyendo ahora" : "Reading now"}</span>
+            <b>
+              {isSpanish
+                ? "Pensar en sistemas, de Donella Meadows — el texto de referencia sobre por qué los sistemas se resisten a los arreglos evidentes."
+                : "Thinking in Systems, Donella Meadows — the standard text on why systems resist the obvious fix."}
+            </b>
+          </p>
         </div>
       </section>
 

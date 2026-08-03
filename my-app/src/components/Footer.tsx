@@ -34,13 +34,24 @@ const COLOPHONS: Record<string, Credit[]> = {
     { icon: "🧘", label: "restraint", es: "contención" },
     { icon: "☕", label: "caffeine", es: "cafeína" },
   ],
+  // The named disciplines lead. This page's own eyebrow claims service design
+  // and process improvement, and the body claims stakeholder alignment, change
+  // management, and workflow redesign — so the colophon says them in the words
+  // a search for that work actually uses, without adding a claim the case
+  // study does not already make.
   "/case-study/msk": [
-    { icon: "📋", label: "current-state maps", es: "mapas del estado actual" },
-    { icon: "👀", label: "shadowing real shifts", es: "observar turnos reales" },
-    { icon: "📈", label: "Lean Six Sigma" },
+    { icon: "🧭", label: "service design", es: "diseño de servicios" },
+    { icon: "🧵", label: "owning the whole path, not the last screen", es: "hacerme cargo del recorrido completo, no de la última pantalla" },
+    { icon: "📈", label: "process improvement", es: "mejora de procesos" },
+    { icon: "📋", label: "current-state mapping", es: "mapeo del estado actual" },
+    { icon: "🔀", label: "workflow redesign", es: "rediseño de flujos de trabajo" },
+    { icon: "🤝", label: "stakeholder alignment", es: "alineación de stakeholders" },
+    { icon: "🧩", label: "change management", es: "gestión del cambio" },
+    { icon: "🔐", label: "roles and permissions", es: "roles y permisos" },
+    { icon: "📊", label: "a Lean Six Sigma green belt", es: "un green belt de Lean Six Sigma" },
     { icon: "🎓", label: "an MHA", es: "una MHA" },
+    { icon: "👀", label: "shadowing real shifts", es: "observar turnos reales" },
     { icon: "🗂️", label: "the sticky notes that told the truth", es: "las notas adhesivas que decían la verdad" },
-    { icon: "🤝", label: "clinical, IT, and operations in one room", es: "clínica, IT y operaciones en una sala" },
     { icon: "🏥", label: "six years on the floor", es: "seis años en el piso" },
     { icon: "☕", label: "caffeine", es: "cafeína" },
   ],

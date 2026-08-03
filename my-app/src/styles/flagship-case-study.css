@@ -84,7 +84,11 @@
    A floating tag landed on top of them, so here the label sits above the plate
    as a folio caption instead of over it. */
 .fp-heroArt--msk { flex-direction: column; gap: .9rem; }
-.fp-heroArt--msk .fp-artifactLabel { position: static; width: min(560px,84%); max-width: min(560px,84%); }
+/* The artifact is the evidence, so it gets the room. At min(560px,84%) inside
+   this column the queue rendered small enough to read as decoration rather
+   than as the thing the case study is about. */
+.fp-heroArt--msk .fp-artifactLabel { position: static; width: min(700px,96%); max-width: min(700px,96%); }
+.fp-heroArt--msk .fp-dashboardFrame { width: min(700px,96%); }
 /* No max-height. The frame used to clip at 72vh, which cut the mockup off
    mid-row and took the glossary and the rule line with it — the reader was
    told about a rule the artifact no longer showed. */
@@ -170,6 +174,15 @@
 /* Service design + process improvement — the discipline behind the MSK work,
    named plainly so the vocabulary is findable. Sits inside .rp-override, so the
    accents are the fixed dark-panel values rather than themed vars. */
+/* The one place the site says what service design actually is. Sits inside
+   .rp-override, so the accents are the fixed dark-panel values. */
+.fp-ownership { max-width: 64ch; margin: 2.4rem 0 0; padding-left: 1rem;
+  border-left: 3px solid #a9d28f; font-size: 1.02rem; line-height: 1.55;
+  color: rgba(244,241,230,.86); }
+.fp-ownership b { display: block; margin-bottom: .35rem; font: .62rem/1.2 var(--mono);
+  letter-spacing: .09em; text-transform: uppercase; color: #a9d28f; }
+@media (forced-colors: active) { .fp-ownership { border-left-color: CanvasText; } }
+
 .fp-discipline { margin-top: 2.5rem; padding-top: 1.8rem; border-top: 1px solid rgba(244,241,230,.2); }
 /* A credential strip, not a third row of plates. The role rail and the system
    cards already sit above this; a third bordered 3-up grid made the section
@@ -195,19 +208,59 @@
   font: .58rem/1.9 var(--mono); letter-spacing: .06em; color: #a9d28f; }
 .fp-roleRail b { display: block; font-size: 1.02rem; line-height: 1.25; }
 .fp-roleRail__taught { display: block; margin-top: .35rem; font-size: .86rem; color: rgba(244,241,230,.74); }
+
+/* Each role hides the method it gave her. <details> rather than a scripted
+   toggle: keyboard and screen-reader behaviour comes free and it survives with
+   no JS. */
+.fp-roleRail__method { margin-top: .7rem; }
+/* Hide the closed panel explicitly. The UA rule that normally does this did not
+   apply here — the panel stayed laid out at full height and overlapped the
+   next role in the rail — so the closed state is stated rather than assumed. */
+.fp-roleRail__method:not([open]) > div { display: none; }
+.fp-roleRail__method summary { display: flex; align-items: center; gap: .4rem;
+  min-height: 44px; list-style: none; cursor: pointer;
+  font: .6rem/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: #a9d28f; }
+.fp-roleRail__method summary::-webkit-details-marker { display: none; }
+.fp-roleRail__method summary:focus-visible { outline: 3px solid #ff8a78; outline-offset: 3px; }
+.fp-roleRail__method summary:hover .fp-roleRail__summaryLabel { text-decoration: underline; }
+.fp-roleRail__chev { width: 7px; height: 7px; border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg);
+  transition: transform .2s ease; }
+.fp-roleRail__method[open] .fp-roleRail__chev { transform: translateY(1px) rotate(-135deg); }
+.fp-roleRail__method > div { padding: .8rem .9rem; margin-top: .1rem;
+  border-left: 2px solid rgba(169,210,143,.5); background: rgba(244,241,230,.05); }
+.fp-roleRail__method b { font-size: .82rem; color: #a9d28f; }
+.fp-roleRail__method p { margin: .35rem 0 0; font-size: .82rem; line-height: 1.5; color: rgba(244,241,230,.74); }
+@media (prefers-reduced-motion: reduce) {
+  .fp-roleRail__chev { transition: none; }
+}
+@media (forced-colors: active) {
+  .fp-roleRail__method > div { border-left-color: CanvasText; }
+}
 @media (max-width: 700px) {
   .fp-roleRail { grid-template-columns: 1fr; gap: .9rem; }
   .fp-roleRail::before { display: none; }
 }
 
-/* What survived — the three sustainment facts, as evidence rather than a
-   sentence apiece. Light section, so these use the themed tokens. */
-.fp-survived { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px,100%),1fr));
-  gap: 1rem; list-style: none; margin: 1.6rem 0 0; padding: 0; }
-.fp-survived li { padding: 1.1rem 1.2rem; border: 1px solid var(--hair);
-  border-left: 3px solid var(--green); border-radius: var(--r-plate); background: var(--paper); }
-.fp-survived b { display: block; font-size: 1.05rem; line-height: 1.25; letter-spacing: -.012em; }
-.fp-survived span { display: block; margin-top: .4rem; font-size: .85rem; color: var(--muted); }
+/* The sustainment timeline: three systems, the events each one survived, and
+   the fact that the line keeps going. */
+.fp-sustainmentFig { margin: 1.8rem 0 0; padding: clamp(1.2rem, 3vw, 2rem) clamp(1rem, 2.5vw, 1.8rem);
+  border: 1px solid var(--hair); border-radius: var(--r-plate); background: var(--paper); }
+.fp-sustainment { color: var(--ink); }
+.fp-sustainment svg { display: block; overflow: visible; }
+.fp-sustainmentFig figcaption { margin-top: 1rem; font-family: var(--mono); font-size: .62rem;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+/* The timeline's text equivalent. Quiet by design — the drawing leads and this
+   states the same three claims for anyone not reading it. */
+.fp-survived { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px,100%),1fr));
+  gap: .5rem 1.6rem; list-style: none; margin: 1.1rem 0 0; padding: 0; }
+.fp-survived li { padding-left: .9rem; border-left: 2px solid color-mix(in srgb,var(--green) 55%,transparent); }
+.fp-survived b { display: block; font-size: .84rem; line-height: 1.3; }
+.fp-survived span { display: block; margin-top: .2rem; font-size: .8rem; line-height: 1.45; color: var(--muted); }
+@media (forced-colors: active) {
+  .fp-survived li { border-left-color: CanvasText; }
+}
 
 /* Mobbin capture desk */
 .fp-heroArt--mobbin { overflow: hidden; }

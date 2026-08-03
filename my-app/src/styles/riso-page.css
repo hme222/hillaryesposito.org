@@ -635,6 +635,11 @@
 .rp-acc__next { margin-left: auto; font-family: var(--mono); font-size: .56rem; letter-spacing: .09em;
   text-transform: uppercase; font-weight: 700; color: var(--coral); white-space: nowrap;
   border: 1px solid color-mix(in srgb, var(--coral) 45%, transparent); border-radius: 999px; padding: .16rem .5rem; }
+/* The author `display: grid` here defeats the UA rule that hides a closed
+   <details>' content, so every collapsed accordion on Grove was still laid out
+   at full height and overlapping the row beneath it. Restoring the closed state
+   explicitly; the same fix applies to .fp-roleRail__method on MSK. */
+.rp-acc:not([open]) > .rp-acc__body { display: none; }
 .rp-acc__body { padding: 0 0 1.3rem 2.15rem; display: grid; gap: .4rem; }
 .rp-acc__line { font-size: .92rem; }
 .rp-acc__line b { font-family: var(--mono); font-size: .64rem; letter-spacing: .06em; text-transform: uppercase; margin-right: .55rem; }
@@ -1127,12 +1132,34 @@
    pairs overlapping). Laying the content out as real grid rows keeps the same
    scattered composition while making a collision structurally impossible —
    the section now grows instead of stacking on itself. */
-.rp-cinema__sticky { position: relative; min-height: calc(100vh - 91px); overflow: visible;
-  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-content: center; justify-items: center;
-  gap: clamp(1.5rem, 4vh, 3rem) clamp(1rem, 3vw, 2.5rem);
-  padding: clamp(2.5rem, 7vh, 4.5rem) clamp(1rem, 6vw, 6rem);
+/* Reads top to bottom: the claim, then the before/after, then the notes that
+   qualify it.
+   The previous two-column version was the source of the scatter. Column 2 held
+   every visual, but .fp-cinemaCore is min(940px, 76vw) wide — far wider than a
+   half-width column — so it spilled sideways out of its own cell while the
+   note plates hugged the right edge and the copy floated alone on the left.
+   Add a forced 100vh stage under all of it and the pieces ended up far apart
+   with dead space between them. Now the section is only as tall as it needs to
+   be and each piece owns a full row, so nothing escapes its column and nothing
+   is stranded. */
+.rp-cinema__sticky { position: relative; overflow: visible;
+  display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1fr) minmax(0, 1fr);
+  /* The copy column is taller than the stack of visuals, and it spans every
+     row — so without a trailing flexible row the leftover height gets shared
+     out *between* the visuals and reopens the gaps this layout exists to
+     close. The 1fr row collects the slack underneath them instead. */
+  grid-template-rows: auto auto 1fr;
+  align-items: start; align-content: center;
+  gap: clamp(1.2rem, 3vh, 2rem) clamp(1rem, 2.5vw, 1.6rem);
+  padding: clamp(3rem, 8vh, 5rem) clamp(1rem, 6vw, 6rem);
   isolation: isolate; }
+/* .fp-cinemaCore is min(940px, 76vw) and reserves 260px of height, both sized
+   for a full-viewport stage. Inside a column that width spilled sideways out
+   of its own cell — the original cause of the scattered composition — and the
+   height reservation opened a hole under the copy. Constrained to its cell,
+   with the two boxes sharing the width instead of holding a fixed 330px. */
+.rp-cinema__sticky .fp-cinemaCore { width: 100%; min-height: 0; }
+.rp-cinema__sticky .fp-cinemaCore--workflow > div { width: auto; flex: 1 1 0; }
 .rp-cinema__wash { position: absolute; inset: 0; z-index: -2; background:
   radial-gradient(circle at 18% 20%, rgba(239,83,64,.28), transparent 23%),
   radial-gradient(circle at 78% 38%, rgba(198,138,46,.22), transparent 24%),
@@ -1148,37 +1175,37 @@
 .rp-cinema__artifact span { font-family: var(--mono); font-size: .58rem; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
 .rp-cinema__artifact b { display: block; margin-top: .35rem; font-size: 1rem; line-height: 1.3; }
 .rp-cinema__artifact p { margin-top: .25rem; font-size: .78rem; line-height: 1.45; color: var(--ink-2); }
-/* Text on the left, visuals stacked on the right.
-   The previous version put the plates in a row above and the bridge copy
-   underneath, which let the heading collide with the floor-observation plate
-   whenever the copy grew. A straight two-column split cannot collide: the
-   heading owns column 1, every visual owns column 2, and each takes its own
-   row so the plates stack instead of sharing a cell. */
-.rp-cinema__bridge { grid-column: 1; grid-row: 1 / -1; align-self: center; justify-self: start; max-width: 460px; }
-.rp-cinema__artifact--reminder { grid-column: 2; grid-row: 1; justify-self: end; transform: rotate(-2deg); }
-.rp-cinema__screen, .fp-cinemaCore { grid-column: 2; grid-row: 2; justify-self: end; }
-.rp-cinema__artifact--safety { grid-column: 2; grid-row: 3; justify-self: end; transform: rotate(1.5deg); }
-.rp-cinema__artifact--note { grid-column: 2; grid-row: 4; justify-self: end; width: min(240px, 100%); transform: rotate(-1deg); }
+/* Copy owns column 1 and every visual owns columns 2–3, each on its own row.
+   Explicit placement rather than source order, because the plates are authored
+   before the bridge on every case study — and because a cell each is what makes
+   a collision structurally impossible. */
+.rp-cinema__bridge { grid-column: 1; grid-row: 1 / -1; align-self: center; }
+.rp-cinema__screen, .fp-cinemaCore { grid-column: 2 / -1; grid-row: 1; }
+.rp-cinema__artifact--reminder { grid-column: 2; grid-row: 2; }
+.rp-cinema__artifact--safety { grid-column: 3; grid-row: 2; }
+.rp-cinema__artifact--note { grid-column: 2 / -1; grid-row: 3; }
+.rp-cinema__artifact { width: 100%; align-self: stretch; }
+/* Tiny residual rotations keep the collage feel. At the old ±2deg, against a
+   column edge, they read as knocked over rather than placed. */
+.rp-cinema__artifact--reminder { transform: rotate(-.8deg); }
+.rp-cinema__artifact--safety { transform: rotate(.7deg); }
+.rp-cinema__artifact--note { transform: rotate(-.6deg); }
 .rp-cinema__artifact--note b { font-family: var(--sans); color: var(--green); }
 .rp-cinema__bridge .rp-kicker { color: #ff8a78; }
 .rp-cinema__bridge h2 { margin: .45rem 0 0; font-size: clamp(1.8rem,4vw,3.3rem); line-height: 1.1; letter-spacing: -.021em; text-wrap: balance; }
 .rp-cinema__bridge > p:last-child { margin-top: .85rem; max-width: 44ch; color: rgba(244,241,230,.78); }
 @media (max-width: 760px) {
   .rp-cinema { min-height: auto; padding: 4.5rem 1rem 3rem; }
-  /* One column on phones: two 190px plates plus gutters no longer fit side by
-     side, so the collage becomes a single reading order. */
-  .rp-cinema__sticky { position: relative; top: auto; min-height: 0; overflow: visible;
-    grid-template-columns: minmax(0, 1fr); align-content: start; justify-items: start;
-    padding: 0 .25rem; }
+  /* One column on phones, copy first. Explicit rows again: in source order the
+     bridge comes last, so without them the heading lands under the plates. */
+  .rp-cinema__sticky { top: auto; grid-template-columns: minmax(0, 1fr);
+    align-items: stretch; padding: 0 .25rem; }
   .rp-cinema__screen { width: min(224px, 60vw); max-height: none; }
-  .rp-cinema__artifact { width: min(190px, 100%); padding: .7rem .75rem; }
-  /* Single column, and the copy leads. In DOM order the bridge comes last, so
-     without explicit rows the heading would land underneath the plates — the
-     same buried-heading problem the desktop split fixes. */
+  .rp-cinema__artifact { padding: .7rem .75rem; }
   .rp-cinema__bridge { grid-column: 1; grid-row: 1; align-self: start; max-width: none; }
-  .rp-cinema__screen, .fp-cinemaCore { grid-column: 1; grid-row: 2; justify-self: center; }
-  .rp-cinema__artifact--reminder { grid-column: 1; grid-row: 3; justify-self: start; }
-  .rp-cinema__artifact--safety { grid-column: 1; grid-row: 4; justify-self: start; }
+  .rp-cinema__screen, .fp-cinemaCore { grid-column: 1; grid-row: 2; }
+  .rp-cinema__artifact--reminder { grid-column: 1; grid-row: 3; }
+  .rp-cinema__artifact--safety { grid-column: 1; grid-row: 4; }
   .rp-cinema__artifact--note { display: none; }
 }
 
@@ -1283,16 +1310,40 @@
 /* ---------- sticky decision narrative ---------- */
 .rp-decisionStory { padding: var(--sp-2xl) 0; border-block: 1px solid var(--hair); background: var(--paper-2); }
 
-/* The artifact sits with the claim it belongs to, rather than being pinned
-   beside a column that outruns it. Nothing here is scroll-dependent. */
-/* The artifact column is sized for the artifact, not split evenly with the
-   prose. At 1.05fr/.95fr with an --sp-xl gap the visual got 436px, which is
-   narrower than the mockup needs to render as a table. */
-.rp-decisionStory__top { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,520px);
-  gap: clamp(1.5rem, 4vw, 3rem); align-items: start; }
-.rp-decisionStory__head { max-width: 52ch; }
-.rp-decisionStory__visual { position: relative; display: grid; place-items: center; overflow: hidden;
-  border: 1px solid var(--hair); border-radius: var(--r-plate); padding: clamp(1rem, 2.5vw, 1.8rem);
+.rp-decisionStory__head { max-width: 56ch; }
+
+/* The scroll track. Its height is the runway the panel is pinned across, and
+   the fraction of it that has passed the top of the viewport is what selects
+   the active decision. */
+.rp-decisionStory__track { position: relative; min-height: 250vh; margin-top: var(--sp-lg); }
+
+/* Steps and artifact travel together. They are one pinned panel precisely so
+   they cannot come apart the way the previous version did. */
+/* The artifact gets the larger share. At a 500px cap the queue was cramped
+   enough that the header, legend and rule all read as clutter. */
+.rp-decisionStory__panel { position: sticky; top: 136px; display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 620px); gap: clamp(1.5rem, 3vw, 2.4rem);
+  align-items: start; }
+
+.rp-decisionStory__steps { list-style: none; margin: 0; padding: 0; display: grid; gap: .25rem; }
+/* The rule is the position indicator. Every step keeps its text at all times —
+   the active one is emphasis on content already on screen, never a reveal. */
+.rp-decisionStory__steps li { display: grid; grid-template-columns: auto minmax(0,1fr); gap: .75rem;
+  padding: .85rem 0 .85rem 1rem; border-left: 3px solid var(--hair);
+  transition: border-color .3s ease, opacity .3s ease; opacity: .5; }
+.rp-decisionStory__steps li.is-active { border-left-color: var(--coral); opacity: 1; }
+.rp-decisionStory__n { font-family: var(--mono); font-size: .68rem; line-height: 1.6; color: var(--coral); }
+.rp-decisionStory__steps h3 { margin: 0; font-size: clamp(1.02rem, 1.5vw, 1.22rem);
+  line-height: 1.2; letter-spacing: -.012em; }
+.rp-decisionStory__steps p { margin: .3rem 0 0; font-size: .88rem; line-height: 1.45; color: var(--ink-2); }
+.rp-decisionStory__logline { display: flex; align-items: baseline; gap: .5rem; margin-top: .4rem; }
+.rp-decisionStory__logline span { flex: 0 0 auto; white-space: nowrap;
+  font-family: var(--mono); font-size: .55rem;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--coral); }
+.rp-decisionStory__logline b { font-size: .82rem; color: var(--ink); }
+
+.rp-decisionStory__visual { position: relative; overflow: hidden;
+  border: 1px solid var(--hair); border-radius: var(--r-plate); padding: clamp(1rem, 2.5vw, 1.6rem);
   background:
     radial-gradient(circle at 50% 40%, color-mix(in srgb,var(--green) 14%,transparent), transparent 48%),
     color-mix(in srgb,var(--paper) 88%,white); }
@@ -1301,26 +1352,24 @@
   background-size: 28px 28px; }
 .rp-decisionStory__visual > * { position: relative; z-index: 1; }
 
-/* Four decisions as plates. Each is self-contained: title, what it does, and
-   the decision-log line that used to live inside the image and disappear with
-   it. auto-fit so two, three or four steps all fill the row. */
-.rp-decisionStory__steps { list-style: none; margin: var(--sp-lg) 0 0; padding: 0;
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 1.1rem; }
-/* Four decisions in a 1080px wrap: auto-fit fits three, leaving 04 alone on a
-   second row beside two empty cells. Two by two keeps the set whole and gives
-   each headline a line it can finish. */
-@media (min-width: 900px) {
-  .rp-decisionStory__steps { grid-template-columns: repeat(2, 1fr); }
+/* Below the sticky breakpoint the panel is just a stacked block. Nothing is
+   conditional on scroll, so nothing is lost — every step still carries its
+   own text and the artifact still sits with them. */
+@media (max-width: 900px) {
+  .rp-decisionStory__track { min-height: 0; }
+  .rp-decisionStory__marks { display: none; }
+  .rp-decisionStory__panel { position: static; grid-template-columns: 1fr; gap: 1.5rem; }
+  .rp-decisionStory__steps li { opacity: 1; border-left-color: var(--coral); }
 }
-.rp-decisionStory__steps li { padding: clamp(1.1rem, 2.4vw, 1.5rem); border: 1px solid var(--hair);
-  border-radius: var(--r-plate); background: var(--paper); display: flex; flex-direction: column; }
-.rp-decisionStory__n { font-family: var(--mono); font-size: .7rem; color: var(--coral); }
-.rp-decisionStory__steps h3 { margin: .55rem 0 0; font-size: var(--ts-heading); line-height: 1.14; letter-spacing: -.018em; }
-.rp-decisionStory__steps p { margin-top: .7rem; color: var(--ink-2); }
-.rp-decisionStory__logline { margin-top: auto; padding-top: .9rem; border-top: 1px solid var(--hair); }
-.rp-decisionStory__logline span { display: block; font-family: var(--mono); font-size: .55rem;
-  letter-spacing: .1em; text-transform: uppercase; color: var(--coral); }
-.rp-decisionStory__logline b { display: block; margin-top: .25rem; font-size: .86rem; color: var(--ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  .rp-decisionStory__steps li { transition: none; }
+}
+
+@media (forced-colors: active) {
+  .rp-decisionStory__steps li { opacity: 1; border-left-color: CanvasText; }
+  .rp-decisionStory__steps li.is-active { border-left-color: Highlight; }
+}
 
 @media (max-width: 860px) {
   .rp-decisionStory__top { grid-template-columns: 1fr; }
@@ -1355,9 +1404,18 @@
   font-size: .7rem; letter-spacing: .03em; color: rgba(244,241,230,.76); }
 .rp-routeRecap i { color: #ff8171; font-style: normal; }
 .rp-routeRecap strong { color: #f4f1e6; }
+/* Above the numbers rather than after them: an orientation line, not a finale.
+   No top rule and no emphasised final step — nothing here should read as the
+   conclusion the section is building to. */
+.rp-routeRecap--lede { margin: .9rem 0 0; padding-top: 0; border-top: 0;
+  font-size: .66rem; color: rgba(244,241,230,.6); }
 @media (max-width: 560px) {
   .rp-routeRecap { display: grid; grid-template-columns: 1fr; }
   .rp-routeRecap i { transform: rotate(90deg); width: min-content; margin-left: .35rem; }
+  /* The lede variant stays inline on narrow widths — as a quiet orientation
+     line it should not become a four-row list. */
+  .rp-routeRecap--lede { display: flex; }
+  .rp-routeRecap--lede i { transform: none; margin-left: 0; }
 }
 
 /* ---------- journal completion reward ---------- */
@@ -1417,6 +1475,16 @@
 /* Sits with the proof stats deliberately. Those numbers are self-reported;
    this is the only voice on the site that is not Hillary's, so it does the
    work the stats cannot. */
+/* "Reading now" on the About page. Small and factual — a shelf note, not a
+   credential. */
+.rp-nowReading { max-width: 62ch; margin: 1.6rem 0 0; padding-left: .9rem;
+  border-left: 2px solid color-mix(in srgb, var(--green) 55%, transparent); }
+.rp-nowReading span { display: block; font-family: var(--mono); font-size: .58rem;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.rp-nowReading b { display: block; margin-top: .3rem; font-size: .92rem;
+  font-weight: 600; line-height: 1.5; color: var(--ink-2); }
+@media (forced-colors: active) { .rp-nowReading { border-left-color: CanvasText; } }
+
 .rp-testimonial { margin: 2.2rem 0 0; padding: 1.5rem 1.6rem; border: 1px solid var(--hair); border-left: 3px solid var(--coral); background: var(--paper); }
 .rp-testimonial blockquote { margin: 0; font-size: clamp(1.05rem, 2vw, 1.3rem); line-height: 1.5; letter-spacing: -.012em; }
 .rp-testimonial figcaption { display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem .8rem; margin-top: 1rem; }

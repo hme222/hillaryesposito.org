@@ -129,12 +129,14 @@ export default function MSKSystemMap() {
     const scrollProgress = () => {
       const rect = mount.getBoundingClientRect();
       const vh = window.innerHeight || 800;
-      // Hold the tangle until the map has risen to near the top of the viewport
-      // (so it's fully on screen and clearly knotted), then resolve as it
-      // continues up and out. This keeps the messy state visible instead of
-      // letting it untangle while it's still entering from the bottom.
-      const startTop = vh * 0.32; // begin resolving once the top reaches here
-      const endTop = -vh * 0.18; // fully resolved by the time it's leaving
+      // Start untangling as soon as the map clears the fold, and be fully
+      // resolved by the time it is centred on screen — roughly the halfway
+      // point of its travel. Spreading the resolve across the map's entire
+      // visible life made it crawl; you never saw it finish while looking at
+      // it. Landing the resolution at centre means the payoff happens while
+      // the map is the thing you are looking at.
+      const startTop = vh * 0.85; // top has cleared the fold
+      const endTop = (vh - rect.height) / 2; // the map is vertically centred
       return clamp01((startTop - rect.top) / (startTop - endTop));
     };
 

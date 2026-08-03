@@ -1,0 +1,108 @@
+import React from "react";
+
+/**
+ * Sustainment, drawn as survival.
+ *
+ * The previous treatment was three cards reading "Two system upgrades",
+ * "Became the default", "Three leadership transitions". Each was a label, not
+ * a claim — a reader had to assemble the point themselves, and the point is
+ * the whole reason the section exists.
+ *
+ * Sustainment is a claim about time: the thing kept running past the events
+ * that normally kill an internal tool. That is a shape, so it is drawn as one.
+ * Each system gets a lane; the coral ticks are the events it survived; the
+ * line continues past all of them.
+ *
+ * Decorative — the same three facts sit in the list beside it as real text, so
+ * this is aria-hidden rather than read out twice.
+ */
+
+type Lane = {
+  name: string;
+  /** Events survived, as a fraction of the lane's length. */
+  events: { at: number; label: string }[];
+  outcome: string;
+};
+
+const LANES: Lane[] = [
+  {
+    name: "EMR filing workflow",
+    events: [
+      { at: 0.3, label: "system upgrade" },
+      { at: 0.62, label: "system upgrade" },
+    ],
+    outcome: "still in use",
+  },
+  {
+    name: "Certification dashboard",
+    events: [{ at: 0.45, label: "compliance adopts it" }],
+    outcome: "the default tool",
+  },
+  {
+    name: "Clinician onboarding",
+    events: [
+      { at: 0.26, label: "leadership change" },
+      { at: 0.5, label: "leadership change" },
+      { at: 0.74, label: "leadership change" },
+    ],
+    outcome: "still in use",
+  },
+];
+
+const W = 760;
+const LANE_H = 82;
+const LINE_X0 = 4;
+const LINE_X1 = 566;
+const OUTCOME_X = 584;
+const H = LANE_H * LANES.length;
+
+export default function MSKSustainment() {
+  return (
+    <div className="fp-sustainment" aria-hidden="true">
+      <svg viewBox={`0 0 ${W} ${H}`} width="100%" role="presentation" focusable="false">
+        {LANES.map((lane, index) => {
+          const y = index * LANE_H;
+          const lineY = y + 40;
+          return (
+            <g key={lane.name}>
+              <text x={LINE_X0} y={y + 16} fontSize="12" fontWeight="700" fill="currentColor">
+                {lane.name}
+              </text>
+
+              {/* The run itself. */}
+              <line x1={LINE_X0} y1={lineY} x2={LINE_X1} y2={lineY} stroke="var(--green)" strokeWidth="2" />
+              <circle cx={LINE_X0 + 3} cy={lineY} r="4.5" fill="var(--green)" />
+              <text x={LINE_X0} y={lineY + 19} fontSize="8.5" letterSpacing="0.8" fill="currentColor" fillOpacity="0.5">
+                SHIPPED
+              </text>
+
+              {/* What it survived. */}
+              {lane.events.map((event, i) => {
+                const x = LINE_X0 + (LINE_X1 - LINE_X0) * event.at;
+                return (
+                  <g key={`${event.label}-${i}`}>
+                    <line x1={x} y1={lineY - 9} x2={x} y2={lineY + 9} stroke="var(--coral)" strokeWidth="2" />
+                    <text x={x} y={lineY - 15} fontSize="8.5" textAnchor="middle" fill="var(--coral)">
+                      {event.label}
+                    </text>
+                  </g>
+                );
+              })}
+
+              {/* Still going. */}
+              <path
+                d={`M${LINE_X1},${lineY} l12,0 M${LINE_X1 + 6},${lineY - 4.5} l6,4.5 l-6,4.5`}
+                fill="none"
+                stroke="var(--green)"
+                strokeWidth="2"
+              />
+              <text x={OUTCOME_X} y={lineY + 4} fontSize="11.5" fontWeight="700" fill="var(--green)">
+                {lane.outcome}
+              </text>
+            </g>
+          );
+        })}
+      </svg>
+    </div>
+  );
+}

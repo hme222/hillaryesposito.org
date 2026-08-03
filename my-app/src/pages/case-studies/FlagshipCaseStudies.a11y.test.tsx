@@ -125,14 +125,6 @@ describe("flagship case-study accessibility", () => {
       "#grove-override",
     ],
     [
-      "MSK",
-      <FlagshipMSK />,
-      "MSK workflow redesign",
-      "Recreated workflow · No patient data",
-      "four systems to two",
-      "#msk-workflow",
-    ],
-    [
       "Mobbin",
       <FlagshipMobbin />,
       "Mobbin flow documentation",
@@ -161,6 +153,20 @@ describe("flagship case-study accessibility", () => {
       sourceImages.forEach((image) => expect(image.getAttribute("alt")).toBe(""));
     },
   );
+
+  // MSK is deliberately the exception. Its poster restated the before/after
+  // that the workflow map draws further down, a full screen before the reader
+  // had the problem, so it was removed. Asserted rather than merely absent so
+  // the removal cannot be undone by accident.
+  it("MSK carries no evidence poster — the workflow map is the artifact", async () => {
+    await act(async () => {
+      root.render(<FlagshipMSK />);
+    });
+
+    expect(container.querySelectorAll(".evidence-media")).toHaveLength(0);
+    expect(container.querySelector(".evidence-media-section")).toBeNull();
+    expect(container.querySelector(".fp-workflowFig")).not.toBeNull();
+  });
 
   it("keeps Grove motion optional, truthful, and controllable", async () => {
     const play = jest

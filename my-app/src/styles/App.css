@@ -2156,6 +2156,28 @@ textarea::placeholder {
   font-weight: 600;
 }
 
+/* Whose screen this is, as a chip. Reads as a state label rather than as more
+   header prose. */
+.msk-dashboard-mockup__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex: 0 0 auto;
+  gap: 0.4rem;
+}
+
+.msk-dashboard-mockup__role {
+  padding: 0.22rem 0.5rem;
+  border: 1px solid color-mix(in srgb, var(--olive-2) 34%, var(--border));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--olive-2) 9%, transparent);
+  color: var(--fg);
+  font-size: 0.66rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
 .msk-dashboard-mockup__topbar :is(h2, h3) {
   margin: 0.25rem 0 0;
   color: var(--fg);
@@ -2212,6 +2234,21 @@ textarea::placeholder {
 .msk-dashboard-mockup__row[data-status="filed-to-chart"] { border-left-color: #4f88a8; }
 .msk-dashboard-mockup__row[data-status]:hover {
   background: color-mix(in srgb, var(--olive-2) 6%, transparent);
+}
+
+/* The row the active decision is talking about. Driven by the interaction-logic
+   section's scroll position; inert everywhere else, since activeRow defaults to
+   null. Brightness and a coral edge rather than a colour swap, so the
+   status accent underneath stays readable. */
+.msk-dashboard-mockup__row.is-active {
+  background: color-mix(in srgb, var(--coral) 9%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--coral) 38%, transparent);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .msk-dashboard-mockup__row { transition: background 0.3s ease, box-shadow 0.3s ease; }
+}
+@media (forced-colors: active) {
+  .msk-dashboard-mockup__row.is-active { outline: 2px solid Highlight; outline-offset: -2px; }
 }
 
 .msk-dashboard-mockup__row--head {

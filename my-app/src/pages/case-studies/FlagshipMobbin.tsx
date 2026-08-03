@@ -127,7 +127,10 @@ export default function FlagshipMobbin() {
         title="The capture became useful through editing."
         intro="The source app stayed the same. The value came from deciding what to preserve, how to sequence it, and what to call it."
         steps={STEPS}
-        visual={<div className="fp-sequence__phone fp-sequence__phone--story"><img src="/assets/mobbin/kikoff.jpg" alt="" /></div>}
+        // Mobbin's artifact is a single screenshot with no per-step state to
+        // highlight, so it ignores the active index and renders the same frame
+        // throughout. The steps still track with the scroll rule.
+        visual={() => <div className="fp-sequence__phone fp-sequence__phone--story"><img src="/assets/mobbin/kikoff.jpg" alt="" /></div>}
       />
 
       <section className="rp-section" id="mobbin-apps">

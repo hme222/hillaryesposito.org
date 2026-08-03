@@ -20,7 +20,7 @@ const en = {
 
   // ── Global footer + recovery ──
   "footer.eyebrow": "Hillary Esposito · Product Designer",
-  "footer.statement": "Software that's right, not just pretty.",
+  "footer.statement": "Software that's functional, not just pretty.",
   "footer.siteAria": "Footer navigation",
   "footer.explore": "Explore",
   "footer.connect": "Connect",
@@ -63,8 +63,11 @@ const en = {
   "home.seeApproach": "See my approach →",
   "home.riso.eyebrow": "Hillary Esposito · Product Designer",
   "home.riso.heroTitle": "Systems people have to trust.",
+  // "Workflow fluency" named a skill without saying what it covers. The
+  // durable claim is scope: the whole path a task takes, not the screen at the
+  // end of it — which is what the MSK case study actually demonstrates.
   "home.riso.heroLead":
-    "Workflow fluency, research rigor, and AI judgment — shaped by six years building software for",
+    "I own the whole path a task takes, not just the last screen — research rigor and AI judgment, shaped by six years building software for",
   "home.riso.heroProof": "21,000 clinicians and staff",
   "home.riso.heroClose": "who couldn't afford a wrong guess.",
   "home.riso.workTitle": "Three products, three ways trust gets earned",
@@ -130,7 +133,7 @@ const es: Partial<Record<StringKey, string>> = {
 
   // ── Global footer + recovery ──
   "footer.eyebrow": "Hillary Esposito · Diseñadora de Producto",
-  "footer.statement": "Software que está bien hecho, no solo bonito.",
+  "footer.statement": "Software que funciona, no solo bonito.",
   "footer.siteAria": "Navegación del pie de página",
   "footer.explore": "Explorar",
   "footer.connect": "Contacto",
@@ -170,7 +173,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.eyebrow": "Hillary Esposito · Diseñadora de Producto",
   "home.riso.heroTitle": "Sistemas en los que la gente tiene que confiar.",
   "home.riso.heroLead":
-    "Fluidez en flujos de trabajo, rigor de investigación y criterio con IA, forjados durante seis años creando software para",
+    "Me hago cargo de todo el recorrido de una tarea, no solo de la última pantalla — rigor de investigación y criterio con IA, forjados durante seis años creando software para",
   "home.riso.heroProof": "21,000 clínicos y personal",
   "home.riso.heroClose": "que no podían permitirse un error.",
   "home.riso.workTitle": "Tres productos, tres formas de ganarse la confianza",

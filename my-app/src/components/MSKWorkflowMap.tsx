@@ -32,7 +32,7 @@ const BEFORE: Step[] = [
 const AFTER: Step[] = [
   { label: "Open queue", lane: "system" },
   { label: "Select doc", lane: "system" },
-  { label: "File to chart", lane: "system" },
+  { label: "Send to EMR", lane: "system" },
   { label: "Files in chart", lane: "system" },
   { label: "Status updated", lane: "system" },
 ];
