@@ -13,7 +13,7 @@ _Last updated: 2026-08-03 by portfolio evidence-media verification lead_
 **Primary audience:** Recruiters and product/design hiring managers, with equivalent access for keyboard, screen-reader, low-vision, motion-sensitive, cognitively overloaded, and multilingual readers.
 **Success metric:** A static poster or user-initiated film of eight seconds or less communicates the project problem, consequential decision, and truthful outcome/status.
 **Approved brief:** `design-docs/briefs/2026-07-29-portfolio-evidence-media-system.md`
-**Status:** Deterministic static triad implemented and adaptively verified. Eighteen live states across desktop, 200%/400%-equivalent reflow, WCAG text spacing, forced colours, and reduced motion pass with no overflow, clipping, undersized evidence links, missing chapter targets, or poster animation. Forty tests and the production build pass. Synthetic recruiter recall is directionally positive; five real hiring-audience sessions and one VoiceOver/NVDA pass remain the gates before Grove motion generation.
+**Status:** Deterministic static triad implemented and adaptively verified. A 7.792-second Grove motion candidate is now integrated locally as an explicit-play secondary layer using real prototype screens and survey evidence; the first static-in-a-video export was rejected, and the corrected MP4/WebM has distinct decoded focus states, no audio, no autoplay, no loop, default captions, an adjacent transcript, and a complete static fallback. Desktop and 390px rendered checks have zero horizontal overflow and 50px play targets. Forty-one tests and the production build pass. Synthetic recruiter recall is directionally positive; five real hiring-audience sessions and one VoiceOver/NVDA pass remain release gates, and the candidate has not been deployed.
 
 ### Active Initiative: Riso/Grove Flagship Storytelling System
 
@@ -273,7 +273,7 @@ Restored: Grove's survey answers (74% reminders, 61% camera ID, 15+ notification
 
 ## Design Debt Register
 
-_Items: 8 | Open: 0 | Resolved: 8 | Last reviewed: 2026-07-24_
+_Items: 8 | Open: 0 | Resolved: 8 | Last reviewed: 2026-08-03_
 
 | ID | Date | Source | Severity | What | Who is affected | Suggested fix | Status | Notes |
 |----|------|--------|----------|------|----------------|---------------|--------|-------|

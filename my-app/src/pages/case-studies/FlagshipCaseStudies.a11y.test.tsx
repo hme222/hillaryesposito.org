@@ -162,6 +162,44 @@ describe("flagship case-study accessibility", () => {
     },
   );
 
+  it("keeps Grove motion optional, truthful, and controllable", async () => {
+    const play = jest
+      .spyOn(HTMLMediaElement.prototype, "play")
+      .mockResolvedValue(undefined);
+
+    await act(async () => {
+      root.render(<RisoGrove />);
+    });
+
+    const film = container.querySelector<HTMLElement>(".grove-decision-film");
+    expect(film).not.toBeNull();
+    expect(film?.querySelector("video")).toBeNull();
+    expect(film?.textContent).toContain("A survey of 34 plant owners");
+    expect(film?.textContent).toContain("No finished redesign screen is shown");
+
+    const start = film?.querySelector<HTMLButtonElement>("button");
+    expect(start?.textContent).toContain("Play Grove decision trace · 7.8 sec");
+    await act(async () => start?.click());
+
+    const video = film?.querySelector<HTMLVideoElement>("video");
+    expect(play).toHaveBeenCalledTimes(1);
+    expect(video?.autoplay).toBe(false);
+    expect(video?.loop).toBe(false);
+    expect(video?.controls).toBe(true);
+    expect(video?.preload).toBe("metadata");
+    expect(video?.querySelectorAll("source")).toHaveLength(2);
+    expect(video?.querySelector('track[kind="captions"][default]')).not.toBeNull();
+
+    const results = await axe.run(container, {
+      rules: {
+        "color-contrast": { enabled: false },
+      },
+    });
+    expect(results.violations).toEqual([]);
+
+    play.mockRestore();
+  });
+
   it("keeps broken routes out of search indexes", async () => {
     await act(async () => {
       root.render(<NotFoundPage />);
