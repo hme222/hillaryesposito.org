@@ -1,6 +1,14 @@
 import React from "react";
 
-type Metric = { n: string; label: string };
+/**
+ * `tag` is what Hillary's role in the number was — "Led", "Contributed to",
+ * "Scale". Optional, because it only earns its place where attribution differs
+ * between the numbers in a set. On MSK it does: the 70% is hers outright while
+ * the 20% is an organization-wide figure she contributed to, and buried at the
+ * end of a label sentence that distinction was invisible to anyone scanning.
+ * Mobbin's three are uniformly hers, so it stays off there.
+ */
+type Metric = { n: string; label: string; tag?: string };
 
 export default function EvidenceField({
   id,
@@ -42,6 +50,7 @@ export default function EvidenceField({
         <div className="rp-outcomes rp-reveal">
           {metrics.map((metric) => (
             <div className="rp-stat" key={`${metric.n}-${metric.label}`}>
+              {metric.tag && <p className="rp-stat__tag">{metric.tag}</p>}
               <p className="rp-stat__n">{metric.n}</p>
               <p className="rp-stat__l">{metric.label}</p>
             </div>

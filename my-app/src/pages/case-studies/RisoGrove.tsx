@@ -599,6 +599,19 @@ export default function RisoGrove() {
             hypothesis to test with real people, and a decision log showing where AI accelerates the
             work and where a human has to overrule it.
           </p>
+          {/* The bridge between the two halves of this portfolio. Grove and the
+              MSK case study previously sat in separate rooms: one demonstrated
+              AI-uncertainty design, the other clinical consequence, and nothing
+              on the site said they were the same discipline. Stated once, here,
+              where the evidence for both ends already exists. */}
+          <p className="rp-bridge">
+            <span>Why a plant app</span>
+            Teaching a model to say “I’m not sure” — to show its confidence, cite a source, and stop
+            short of a guess — is the same design problem whether the answer is “is this plant toxic
+            to my cat” or “is this the right dose.” I practised it here because I spent six years in
+            a cancer center, where I watched what happens when a system states something confidently
+            and is wrong. Plants are the low-stakes version of a question I already know the cost of.
+          </p>
           <p className="rp-disclaimer">No invented numbers · Grove is a functional prototype, Phase 2 of 3</p>
           <div className="rp-outcomes rp-reveal">
             {OUTCOMES.map((o) => (

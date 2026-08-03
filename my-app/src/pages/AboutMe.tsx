@@ -141,7 +141,11 @@ export default function About() {
               {isSpanish ? "Diseño productos donde los detalles deciden si la gente confía en ellos." : "I design products where the details decide whether people trust them."}
             </h1>
             <p className="rp-sub">
-              {isSpanish ? "Más de 13 años en sistemas de alto riesgo — operaciones de atención oncológica, logística médica militar y una app de consumo creada con IA. Cambia el contexto; mi pregunta no: ¿qué necesita una persona para avanzar con confianza?" : "13+ years in high-stakes systems — cancer-care operations, military medical logistics, and an AI-built consumer app. The context changes; my question does not: what does a person need to move forward with confidence?"}
+              {/* Frames the path as the qualification rather than as a pivot.
+                  She did not learn healthcare to design for it — she worked
+                  inside the broken workflows first and moved into design to fix
+                  them, which is the harder order to come by. */}
+              {isSpanish ? "No soy una diseñadora que aprendió sobre salud. Soy alguien de operaciones: más de 13 años dentro de sistemas donde fallar cuesta — operaciones de atención oncológica, logística médica militar — y pasé al diseño para arreglarlos desde adentro. Cambia el contexto; mi pregunta no: ¿qué necesita una persona para avanzar con confianza?" : "I'm not a designer who learned healthcare. I'm an operations person — 13+ years inside systems where failure had a cost, from cancer-care operations to military medical logistics — who moved into design to fix them from the inside. The context changes; my question does not: what does a person need to move forward with confidence?"}
             </p>
           </div>
         </div>

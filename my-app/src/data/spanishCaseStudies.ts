@@ -58,7 +58,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
     },
   ],
   otherProjects: [
-    { title: "MSK Cancer Center", desc: "Seis años rediseñando flujos clínicos, onboarding y certificación para más de 21,000 clínicos y personal administrativo.", path: "/case-study/msk" },
+    { title: "MSK Cancer Center", desc: "Seis años rediseñando flujos clínicos, certificación e incorporación de personal para más de 21,000 clínicos y personal administrativo.", path: "/case-study/msk" },
     { title: "Mobbin", desc: "Más de 200 pantallas de tres apps de finanzas, documentadas como referencias buscables paso a paso para la biblioteca de Mobbin.", path: "/case-study/mobbin" },
   ],
 };
@@ -67,7 +67,7 @@ export const MSK_ES: SpanishCaseStudyData = {
   title: "Memorial Sloan Kettering",
   meta: "UX y diseño de producto · Sistemas de salud · Herramientas internas",
   intro:
-    "Durante seis años en MSK, rediseñé flujos clínicos, onboarding y procesos operativos para sistemas usados por más de 21,000 profesionales clínicos y administrativos. El día de cada clínico gira en torno al EMR: el expediente médico electrónico, la historia clínica digital donde vive toda la información del paciente. Este trabajo muestra diseño aplicado a herramientas internas, permisos, estados y adopción en un entorno de salud real.",
+    "Durante seis años en MSK, rediseñé flujos clínicos, certificación e incorporación de personal para sistemas usados por más de 21,000 profesionales clínicos y administrativos. El día de cada clínico gira en torno al EMR: el expediente médico electrónico, la historia clínica digital donde vive toda la información del paciente. Este trabajo muestra diseño aplicado a herramientas internas, permisos, estados y adopción en un entorno de salud real.",
   stats: [
     { label: "Rol", value: "Sistemas de salud → UX y diseño de producto" },
     { label: "Organización", value: "Memorial Sloan Kettering Cancer Center" },
@@ -98,15 +98,15 @@ export const MSK_ES: SpanishCaseStudyData = {
       ],
       bullets: [
         "El flujo EMR necesitó capacitación práctica en el lugar de trabajo porque las personas habían usado la solución alternativa anterior durante años.",
-        "El rediseño de certificaciones ganó 70% de eficiencia al reorganizar tareas, estados y visibilidad.",
-        "El onboarding se ajustó después de ver que nuevos clínicos necesitaban un siguiente paso claro, no un dashboard completo.",
+        "El material de certificación de RCP estaba en lenguaje técnico y legal, y tan poca gente lo completaba que el plazo estaba a punto de aplazarse. Lo reescribí para los clínicos que tenían que completarlo: llegaron todas las certificaciones, un 70% antes del plazo.",
+        "El programa de incorporación para personal administrativo nuevo — HIPAA, los módulos de cumplimiento y las habilidades técnicas y blandas del puesto — se reconstruyó con el equipo de diseño y se curó cohorte por cohorte, para el rango real de habilidades que llegaba.",
       ],
     },
     {
       eyebrow: "Resultado",
       title: "Impacto medible en sistemas internos",
       body: [
-        "El trabajo contribuyó a una reducción de 20% en costos relacionados con EMR, una mejora de 70% en el flujo de certificación y mejores experiencias de onboarding para equipos clínicos.",
+        "El trabajo contribuyó a una reducción de 20% en costos relacionados con EMR; todas las certificaciones de RCP se recogieron un 70% antes del plazo; y el programa de incorporación del personal administrativo se rediseñó para el rango de habilidades de cada cohorte.",
       ],
     },
   ],
@@ -152,6 +152,6 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
   ],
   otherProjects: [
     { title: "Grove", desc: "App de cuidado de plantas con IA. Sola, de la investigación a un prototipo funcional.", path: "/case-study/grove" },
-    { title: "MSK Cancer Center", desc: "Seis años rediseñando flujos clínicos, onboarding y certificación para más de 21,000 clínicos y personal administrativo.", path: "/case-study/msk" },
+    { title: "MSK Cancer Center", desc: "Seis años rediseñando flujos clínicos, certificación e incorporación de personal para más de 21,000 clínicos y personal administrativo.", path: "/case-study/msk" },
   ],
 };

@@ -72,11 +72,11 @@ const en = {
   "home.riso.heroClose": "who couldn't afford a wrong guess.",
   "home.riso.workTitle": "Three products, three ways trust gets earned",
   "home.riso.groveDesc":
-    "A plant-care app an AI built in one pass. I tested it, surveyed 34 owners, and I'm rebuilding it around the one thing that keeps people: trust.",
+    "A plant-care app an AI built in one pass. I surveyed 34 owners, then rebuilt it around the harder problem: teaching the model to show its confidence, cite a source, and admit when it does not know.",
   "home.riso.mskDesc":
-    "Six years redesigning clinical workflows where a wrong answer had a cost — a 20% EMR cost cut and a 70% certification-workflow gain.",
+    "Six years redesigning clinical workflows where a wrong answer had a cost — a 20% EMR cost cut, and every CPR certification collected 70% ahead of a deadline that was about to slip.",
   "home.riso.mobbinDesc":
-    "Documented 200+ screens across three finance apps — pattern fluency and taste for how the best consumer products actually behave.",
+    "Three finance apps turned into a searchable reference — the work was the taxonomy and the naming, not the screenshots. 200+ screens, an editor's judgment on every one.",
   "home.riso.groveAlt": "Grove's calm, plant-first entry screen — the redesign's first finished screen",
   "home.riso.mskAlt": "A recreated map of Memorial Sloan Kettering's care network across the New York region",
   "home.riso.mobbinAlt": "One of 200+ third-party app screens documented for Mobbin — a finance app welcome screen",
@@ -178,11 +178,11 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.heroClose": "que no podían permitirse un error.",
   "home.riso.workTitle": "Tres productos, tres formas de ganarse la confianza",
   "home.riso.groveDesc":
-    "Una app para el cuidado de plantas que una IA creó de una sola vez. La probé, encuesté a 34 propietarios y la estoy reconstruyendo alrededor de lo que hace que la gente se quede: la confianza.",
+    "Una app para el cuidado de plantas que una IA creó de una sola vez. Encuesté a 34 propietarios y la reconstruí alrededor del problema más difícil: enseñarle al modelo a mostrar su confianza, citar su fuente y admitir cuando no sabe.",
   "home.riso.mskDesc":
-    "Seis años rediseñando flujos clínicos donde un error tenía un costo: 20% menos gasto en EMR y 70% de mejora en el flujo de certificación.",
+    "Seis años rediseñando flujos clínicos donde un error tenía un costo: 20% menos gasto en EMR y todas las certificaciones de RCP recogidas un 70% antes de un plazo que estaba a punto de aplazarse.",
   "home.riso.mobbinDesc":
-    "Documenté más de 200 pantallas de tres apps financieras: fluidez de patrones y criterio sobre cómo se comportan los mejores productos de consumo.",
+    "Tres apps financieras convertidas en una referencia buscable: el trabajo fue la taxonomía y los nombres, no las capturas. Más de 200 pantallas, con criterio de editora en cada una.",
   "home.riso.groveAlt": "La pantalla de inicio de Grove, serena y centrada en las plantas — la primera pantalla terminada del rediseño",
   "home.riso.mskAlt": "Un mapa recreado de la red de atención de Memorial Sloan Kettering en la región de Nueva York",
   "home.riso.mobbinAlt": "Una de más de 200 pantallas de apps de terceros documentadas para Mobbin — la pantalla de bienvenida de una app financiera",

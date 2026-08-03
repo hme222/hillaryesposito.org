@@ -37,52 +37,72 @@ function Filing() {
 }
 
 function Certification() {
-  // A timeline: the old system spoke only after expiry; the new one speaks before.
-  const marks = [
-    { x: 40, label: "90" },
-    { x: 100, label: "60" },
-    { x: 160, label: "30" },
+  // REPLACED 2026-08-03. This used to draw a 90/60/30-day expiry alerting
+  // timeline, which described a certification dashboard that was never built.
+  // The actual work was a format change: dense legal prose rewritten into steps
+  // a clinician could follow. So the drawing is the shape of that rewrite.
+  const before = [4, 12, 20, 28, 36, 44];
+  const after = [
+    { y: 74, w: 96 },
+    { y: 84, w: 78 },
+    { y: 94, w: 88 },
   ];
   return (
-    <svg viewBox="0 0 260 96" width="100%" role="presentation" focusable="false">
-      <text x="0" y="9" fontSize="7.5" letterSpacing="1" fill="var(--green)">AFTER · WARNS BEFORE</text>
-      <line x1="0" y1="40" x2="230" y2="40" stroke={INK} strokeOpacity=".3" />
-      {marks.map((m) => (
-        <g key={m.label}>
-          <line x1={m.x} y1="32" x2={m.x} y2="48" stroke="var(--green)" strokeWidth="1.5" />
-          <text x={m.x} y="26" fontSize="8" textAnchor="middle" fill="var(--green)">{m.label}d</text>
+    <svg viewBox="0 0 260 108" width="100%" role="presentation" focusable="false">
+      <text x="0" y="9" fontSize="7.5" letterSpacing="1" fill="var(--coral)">BEFORE · LEGAL PROSE</text>
+      {before.map((y) => (
+        <line key={y} x1="0" y1={y + 8} x2={y % 16 === 4 ? 150 : 132} y2={y + 8}
+          stroke="var(--coral)" strokeOpacity=".5" strokeWidth="3" />
+      ))}
+      <text x="160" y="34" fontSize="7.5" fill="var(--coral)" fillOpacity=".9">one dense block</text>
+
+      <text x="0" y="66" fontSize="7.5" letterSpacing="1" fill="var(--green)">AFTER · STEPS A CLINICIAN CAN FOLLOW</text>
+      {after.map((row, i) => (
+        <g key={row.y}>
+          <circle cx="3" cy={row.y} r="2.6" fill="var(--green)" />
+          <line x1="12" y1={row.y} x2={row.w} y2={row.y} stroke="var(--green)" strokeWidth="3" strokeOpacity=".55" />
+          <text x={row.w + 8} y={row.y + 2.5} fontSize="7" fill={INK} fillOpacity=".5">{`step ${i + 1}`}</text>
         </g>
       ))}
-      <line x1="230" y1="26" x2="230" y2="54" stroke="var(--coral)" strokeWidth="2" />
-      <text x="230" y="64" fontSize="7.5" textAnchor="end" fill="var(--coral)">expiry</text>
-
-      <text x="0" y="84" fontSize="7.5" letterSpacing="1" fill="var(--coral)">BEFORE · ONLY AFTER</text>
-      <line x1="0" y1="92" x2="230" y2="92" stroke={INK} strokeOpacity=".18" strokeDasharray="3 3" />
-      <circle cx="242" cy="92" r="3.5" fill="var(--coral)" />
     </svg>
   );
 }
 
 function Onboarding() {
-  // Five parallel department tracks collapsing into one sequenced path.
+  // REPLACED 2026-08-03. This drew five department checklists collapsing into
+  // one path gated on safety prerequisites before patient contact — a clinician
+  // onboarding flow that never existed. The real programme trained new
+  // administrative support staff, and the design problem was the opposite
+  // shape: not many paths converging, but one path that had to open up to meet
+  // cohorts arriving with very different starting points.
+  const starts = [
+    { y: 20, label: "new to the systems" },
+    { y: 40, label: "some exposure" },
+    { y: 60, label: "already fluent" },
+  ];
   return (
     <svg viewBox="0 0 260 96" width="100%" role="presentation" focusable="false">
-      <text x="0" y="9" fontSize="7.5" letterSpacing="1" fill="var(--coral)">BEFORE · 5 CHECKLISTS</text>
-      {[0, 1, 2, 3, 4].map((i) => (
-        <path
-          key={i}
-          d={`M0,${18 + i * 9} H96 C120,${18 + i * 9} 120,52 144,52`}
-          fill="none"
-          stroke="var(--coral)"
-          strokeOpacity=".55"
-          strokeWidth="1.2"
-          strokeDasharray="3 3"
-        />
+      <text x="0" y="9" fontSize="7.5" letterSpacing="1" fill="var(--coral)">BEFORE · ONE COURSE FOR EVERY COHORT</text>
+
+      {starts.map((s) => (
+        <g key={s.y}>
+          <circle cx="4" cy={s.y} r="2.4" fill="var(--coral)" fillOpacity=".75" />
+          <text x="11" y={s.y + 2.4} fontSize="6.6" fill={INK} fillOpacity=".55">{s.label}</text>
+          <path
+            d={`M62,${s.y} C104,${s.y} 116,40 158,40`}
+            fill="none"
+            stroke="var(--green)"
+            strokeOpacity=".7"
+            strokeWidth="1.4"
+          />
+        </g>
       ))}
-      <line x1="144" y1="52" x2="248" y2="52" stroke="var(--green)" strokeWidth="2" />
-      <text x="248" y="44" fontSize="7.5" textAnchor="end" fill="var(--green)">one sequenced path</text>
+
+      <line x1="158" y1="40" x2="236" y2="40" stroke="var(--green)" strokeWidth="2" />
+      <circle cx="240" cy="40" r="3.2" fill="var(--green)" />
+      <text x="236" y="31" fontSize="7.5" textAnchor="end" fill="var(--green)">same standard</text>
       <text x="0" y="88" fontSize="7.5" fill={INK} fillOpacity=".55">
-        safety prerequisites gate patient contact
+        instruction curated per cohort · 1–3 weeks
       </text>
     </svg>
   );

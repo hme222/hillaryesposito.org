@@ -48,6 +48,8 @@ const COLOPHONS: Record<string, Credit[]> = {
     { icon: "🤝", label: "stakeholder alignment", es: "alineación de stakeholders" },
     { icon: "🧩", label: "change management", es: "gestión del cambio" },
     { icon: "🔐", label: "roles and permissions", es: "roles y permisos" },
+    { icon: "🛡️", label: "HIPAA and compliance training", es: "capacitación en HIPAA y cumplimiento" },
+    { icon: "📚", label: "instructional design for mixed-ability cohorts", es: "diseño instruccional para grupos con distintos niveles" },
     { icon: "📊", label: "a Lean Six Sigma green belt", es: "un green belt de Lean Six Sigma" },
     { icon: "🎓", label: "an MHA", es: "una MHA" },
     { icon: "👀", label: "shadowing real shifts", es: "observar turnos reales" },

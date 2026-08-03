@@ -31,29 +31,30 @@ const CHAPTERS: CaseStudyChapter[] = [
   { id: "msk-brief", label: "Problem", note: "A digital workflow became a paper ritual" },
   { id: "msk-workflow", label: "Workflow", note: "Four systems became two" },
   { id: "msk-decisions", label: "Decisions", note: "The simple button was not simple" },
-  { id: "msk-redesigns", label: "Redesigns", note: "Not one system — three" },
-  { id: "msk-systems", label: "Background", note: "Six years on the floor" },
+  { id: "msk-redesigns", label: "Redesigns", note: "The same failure, in two more places" },
+  { id: "msk-systems", label: "Background", note: "Why I could see it" },
   { id: "msk-outcomes", label: "Outcomes", note: "Evidence that lasted" },
 ];
 
 // Each role opens the method it gave her. Closed by default: the credentials
 // are real and worth finding, but leading with them turns a work story into a
 // CV. Details, so it works with no JS and is keyboard-operable for free.
-// Each method is attached to the role Hillary actually earned it in, not
-// distributed for balance: green belt came out of the coordinator seat, the
-// master's was finished during the assistant years, and the research methods
-// came with owning training.
+// Checked against the résumé rather than distributed one-per-role for symmetry.
+// Both formal credentials land inside the Office Coordinator window — the MHA
+// finished May 2019 and the Green Belt July 2019, while that role ran Jan 2018
+// to Jan 2020. An earlier version put the master's in the Administrative
+// Assistant years, which the résumé contradicts by eight months.
 const ROLE_METHODS: Record<string, { term: string; body: string }> = {
   "01": {
-    term: "Lean Six Sigma — Green Belt certified",
-    body: "A method for removing waste from a process. Running a clinic's paperwork is where I learned it, and it is the lens that showed four systems doing the work of two.",
+    term: "Lean Six Sigma Green Belt (Purdue) · Master of Healthcare Administration (Rutgers)",
+    body: "Both finished in this seat, while I was running a clinic's paperwork. The Green Belt is the lens that showed four systems doing the work of two; the MHA is why the redesign survived budget talks and leadership changes.",
   },
   "02": {
-    term: "Master of Health Administration (MHA)",
-    body: "Earned while I was preparing what leadership decided from. How hospitals fund, staff, and govern — and why the redesign survived budget talks and leadership changes.",
+    term: "Writing for the person who has to act",
+    body: "No certificate for this one. Preparing what leadership decided from taught me to write for the reader who has to act on it — the CPR rewrite came out of that, and so did the presentation that finally got the EMR redesign I had started two years earlier implemented.",
   },
   "03": {
-    term: "Current-state mapping and research methods",
+    term: "Training & Facilitation (ATD) · current-state mapping",
     body: "Owning how staff were taught the system meant documenting what actually happens, not what the policy says. The gap between the two is where the design work lives.",
   },
 };
@@ -77,15 +78,18 @@ const DECISIONS = [
 const ROLES = [
   { n: "01", role: "Office Coordinator", taught: "Where people paused" },
   { n: "02", role: "Administrative Assistant", taught: "How evidence survives a room" },
-  { n: "03", role: "Training Specialist", taught: "The authority to redesign it" },
+  { n: "03", role: "Trainer I Specialist", taught: "The authority to redesign it" },
 ];
 
 // The text equivalent of the sustainment timeline. Each line states what the
 // system survived and that it is still standing — the claim, not just a label.
 const SURVIVED = [
   { fact: "EMR filing workflow", what: "Adopted organization-wide, and still in use through two system upgrades" },
-  { fact: "Certification dashboard", what: "Became the default compliance tool and stayed it" },
-  { fact: "Clinician onboarding", what: "Still in use after three leadership transitions" },
+  { fact: "CPR certification format", what: "A two-month project that closed early — other admins still use the collection method today" },
+  // "Clinician onboarding — still in use after three leadership transitions"
+  // was removed on 2026-08-03. The programme was not clinician onboarding, and
+  // the three-transitions claim was attached to that wrong description; nothing
+  // has been verified about how long the real programme ran.
 ];
 
 // Restored from the earlier case study. The outcome metrics named certification
@@ -105,16 +109,27 @@ const REDESIGNS = [
   },
   {
     n: "02",
-    title: "Certification tracking",
-    finding: "The tracking spreadsheet had no alerts. Staff learned a certification had lapsed when compliance flagged it.",
-    change: "The old system told you when you had failed. The new one tells you what is coming.",
+    // CORRECTED 2026-08-03 against Hillary's résumé and her own account. This
+    // card previously described a tracking spreadsheet with no alerts, fixed by
+    // a dashboard that warned at 90/60/30 days. None of that happened. The real
+    // work was optimizing the CPR certification *format*: the material was
+    // written in technical, legal language, and she reformatted it for the
+    // clinicians who had to complete it.
+    title: "CPR certification",
+    finding: "The material was written in technical, legal language. So few clinicians got through it that the compliance deadline was about to be pushed back.",
+    change: "I rewrote it for the people who had to complete it, not the people who wrote it. Every certification came in — 70% ahead of the deadline that was about to slip.",
   },
   {
+    // CORRECTED 2026-08-03. Every detail here was previously wrong: it described
+    // *clinician* onboarding split across five departments, with safety
+    // protocols gating patient contact. The real programme onboarded new
+    // administrative support staff, who have no patient contact at all. The
+    // "what I got wrong" line went with it — it was invented alongside the rest,
+    // and no real one has been supplied.
     n: "03",
-    title: "Clinician onboarding",
-    finding: "Onboarding was split across five or more departments, each with its own checklist. Safety protocols sometimes finished weeks after a clinician started seeing patients.",
-    change: "One sequenced path, gated on safety.",
-    wrong: "I built the first version for managers, not new hires. Clinicians needed one clear next step on day one.",
+    title: "Administrative onboarding",
+    finding: "HIPAA, the compliance modules, and the technical and soft skills of the job were taught the same way to every new administrative hire — people who arrived with very different starting points, some fluent with the systems, some never having used them.",
+    change: "I worked with the design team to rebuild the programme, then curated the instruction cohort by cohort so a one-to-three-week course met the range of abilities actually in the room.",
   },
 ];
 
@@ -166,9 +181,14 @@ export default function FlagshipMSK() {
             <span className="rp-eyebrow">Service design · process improvement · clinical systems</span>
             <h1 className="rp-h1">Memorial Sloan Kettering.</h1>
             <span className="rp-readtime"><b>6 min</b><span>read · 6 years, 3 roles</span></span>
+            {/* Opens the thread rather than summarising activities. The second
+                sentence used to list what she did (mapped, aligned, redesigned);
+                it now states what the story is, so every section below has
+                something to be part of. */}
             <p className="rp-sub">
-              Clinicians printed digital records just to file them digitally again. I mapped the real
-              workflow, aligned clinical, IT, and operations, and redesigned systems touching{" "}
+              Clinicians printed digital records just to file them digitally again. I followed that
+              one workaround through clinical, IT, and operations until it explained the whole
+              system — then found the same failure twice more. Work touching{" "}
               <b>21,000+ clinicians and staff</b>.
             </p>
             <a className="rp-cta" href="#msk-workflow">See the workflow →</a>
@@ -197,7 +217,12 @@ export default function FlagshipMSK() {
           <div className="rp-cinema__artifact rp-cinema__artifact--reminder"><span>Floor observation</span><b>People built workarounds because the official path failed.</b></div>
           <div className="rp-cinema__artifact rp-cinema__artifact--safety"><span>Design constraint</span><b>Roles, permissions, states, and audit trails.</b></div>
           <div className="rp-cinema__bridge">
-            <p className="rp-kicker">The problem, before the interface</p>
+            {/* Kickers across this page were taxonomy labels — they named the
+                type of exhibit ("Primary artifact", "Interaction logic",
+                "Three redesigns", "Six years · three roles") rather than the
+                next beat, which is what made the page read as a process deck
+                instead of one story. Each is now a step in the thread. */}
+            <p className="rp-kicker">It started with a workaround</p>
             <h2 id="msk-brief-title">The digital workflow had become a paper ritual.</h2>
             {/* EMR is used five times on this page and was never defined in
                 English — while the Spanish version defines it. Defined here, at
@@ -209,9 +234,12 @@ export default function FlagshipMSK() {
 
       <section className="rp-section" id="msk-workflow">
         <div className="rp-wrap">
-          <p className="rp-kicker">Primary artifact · recreated and anonymized</p>
+          {/* The "recreated and anonymized" qualifier moved to the figcaption
+              below, which already carries it — so the kicker is free to be a
+              beat instead of a provenance label. */}
+          <p className="rp-kicker">So I counted the steps</p>
           <h2 className="rp-title">Four systems became two.</h2>
-          <p className="rp-lede">Counting the steps made the failure visible to every team at once.</p>
+          <p className="rp-lede">Nobody had written the whole path down. On one page, four departments saw the same failure instead of four versions of it.</p>
           <figure className="fp-workflowFig rp-reveal">
             <MSKWorkflowMap />
             <figcaption>Recreated current-state and future-state map · no patient data</figcaption>
@@ -238,9 +266,9 @@ export default function FlagshipMSK() {
 
       <DecisionStory
         id="msk-decisions"
-        kicker="Interaction logic · one state at a time"
+        kicker="The fix looked like one button"
         title="The “simple” button carried the whole system."
-        intro="Who could act, what status meant, and how the system recovered had to be legible before anyone clicked."
+        intro="One action replaced the three steps that left the system. Everything that made it safe to press had to be legible before anyone pressed it."
         steps={DECISIONS}
         visual={(active) => (
           <div className="fp-dashboardFrame fp-dashboardFrame--story">
@@ -256,9 +284,16 @@ export default function FlagshipMSK() {
           them. */}
       <section className="rp-section" id="msk-redesigns">
         <div className="rp-wrap">
-          <p className="rp-kicker">Three redesigns · what actually changed</p>
-          <h2 className="rp-title">Not one system. Three.</h2>
-          <p className="rp-lede">The filing queue above is the first of these. The outcome numbers come from all three, and two had a version I got wrong first.</p>
+          {/* This was the break in the thread. "Three redesigns · what actually
+              changed" / "Not one system. Three." announced a list, so the page
+              stopped being a story here and became a portfolio of projects. The
+              same content framed as recurrence — the failure showing up again —
+              keeps the thread running instead of restarting it. */}
+          <p className="rp-kicker">Then the same shape turned up again</p>
+          <h2 className="rp-title">The same failure, in two more places.</h2>
+          {/* "Same failure" overstated it — the three are not the same mechanism.
+              What repeats is the root cause. */}
+          <p className="rp-lede">Once I knew what it looked like, I found it in the CPR certification and in the onboarding programme. Same root cause every time: built for the institution, not for the person who had to get through it.</p>
           <div className="fp-redesigns rp-reveal">
             {REDESIGNS.map((r) => (
               <article key={r.n}>
@@ -273,13 +308,24 @@ export default function FlagshipMSK() {
               </article>
             ))}
           </div>
+          {/* REMOVED 2026-08-03 — the "Transparency beats pretending" plate.
+              Its supporting detail was a certification feed that refreshed once
+              a day and carried a "last refreshed" timestamp. There was no feed
+              and no dashboard; the certification work was a format rewrite. The
+              principle may well be true of something Hillary actually shipped,
+              but it cannot stay attached to evidence that does not exist.
+              Pending: which project, if any, it belongs to. */}
         </div>
       </section>
 
       <section className="rp-section rp-override" id="msk-systems">
         <div className="rp-wrap">
-          <p className="rp-kicker">Six years · three roles</p>
+          {/* Was "Six years · three roles" — a credentials heading. In the
+              thread this section answers the question the previous one raises:
+              how did she see a pattern three departments had lived with? */}
+          <p className="rp-kicker">Why I could see it</p>
           <h2 className="rp-title">I learned the system from the floor up.</h2>
+          <p className="rp-lede">You do not spot that pattern from outside a system. I had already sat in three of its seats.</p>
           {/* Was one 62-word paragraph with three job definitions folded into
               em-dashes. The progression was the point, so it is drawn as a
               progression. */}
@@ -342,9 +388,9 @@ export default function FlagshipMSK() {
           already say both things, in the place where they are demonstrated. */}
       <section className="rp-section">
         <div className="rp-wrap">
-          <p className="rp-kicker">What lasted · after the roles ended</p>
+          <p className="rp-kicker">The real test came later</p>
           <h2 className="rp-title">Most internal tools die quietly. These did not.</h2>
-          <p className="rp-lede">A system upgrade, a compliance review, a new director — these are what usually end an internal tool, whatever anyone thought of it at launch. All three of mine ran straight past them.</p>
+          <p className="rp-lede">A system upgrade, or the project simply ending — these are what usually finish an internal tool, whatever anyone thought of it at launch. Both of these carried straight on past that.</p>
           <figure className="fp-sustainmentFig rp-reveal">
             <MSKSustainment />
             <figcaption>What each system survived, and where it stands now</figcaption>
@@ -356,17 +402,13 @@ export default function FlagshipMSK() {
               <li key={s.fact}><b>{s.fact}</b><span>{s.what}</span></li>
             ))}
           </ul>
-          {/* The sharpest decision on the page: admitting a limitation in the
-              interface rather than designing around it. It belongs here because
-              it is why people kept trusting the tool. */}
-          <figure className="rp-quoteCard fp-principle rp-reveal">
-            <blockquote>Transparency beats pretending.</blockquote>
-            <figcaption>
-              The certification feed refreshed once a day. Every view carried a “last refreshed”
-              timestamp, so stale data looked stale — and nobody made a compliance decision
-              thinking the numbers were live. That is the reason it stayed the default tool.
-            </figcaption>
-          </figure>
+          <p className="fp-survivedWhy">
+            None of that is luck. The filing queue survived two upgrades because it had stopped
+            being a workaround people maintained by hand — the work was in the system, not in
+            someone's spreadsheet. The certification format outlived its own project by two
+            months, then kept going, because the people it was written for preferred it to what
+            came before.
+          </p>
           <a className="fp-proofLink" href="https://www.mskcc.org/news/hillary-esposito-s-career-path-military-msk" target="_blank" rel="noopener noreferrer" aria-label="Read Hillary Esposito's career profile in MSK News (opens in new tab)">
             <span>Independent proof · MSK News</span><b className="rp-ext">From the military to Memorial Sloan Kettering</b>
           </a>
@@ -375,14 +417,20 @@ export default function FlagshipMSK() {
 
       <EvidenceField
         id="msk-outcomes"
-        kicker="Outcomes · attribution kept intact"
+        // "attribution kept intact" moved off the kicker — the `disclaimer`
+        // prop below already states it, in its own dedicated line.
+        kicker="What it added up to"
         title="The numbers, and who they belong to."
-        intro="I led the dashboard-to-online-EMR workflow redesign inside a larger initiative, rebuilt certification workflows, and redesigned onboarding across systems used throughout MSK."
+        intro="I initiated the dashboard-to-online-EMR workflow redesign as a coordinator and it was implemented off my presentation to the company two roles later, rewrote the CPR certification material for the clinicians completing it, and rebuilt the onboarding programme — HIPAA, compliance, and the technical and soft skills — for new administrative staff."
         disclaimer="Anonymized evidence · organization-wide results are attributed to the initiative"
+        // The same discipline the certification dashboard used on its own data:
+        // say what you are looking at before someone has to work it out. All
+        // three read as equal tiles otherwise, and "organization-wide" made the
+        // most qualified number sound like the biggest one.
         metrics={[
-          { n: "21,000+", label: "clinicians and administrative staff across the workflows I redesigned" },
-          { n: "20%", label: "organization-wide EMR cost reduction; my workflow redesign contributed to the initiative" },
-          { n: "70%", label: "efficiency gain in the certification workflows I rebuilt" },
+          { tag: "Scale", n: "21,000+", label: "clinicians and administrative staff across the workflows I redesigned" },
+          { tag: "Contributed to", n: "20%", label: "organization-wide EMR cost reduction, inside a larger initiative" },
+          { tag: "Led", n: "70%", label: "ahead of deadline — every CPR certification collected early, on a deadline that was about to be pushed back" },
         ]}
         route={["Observe the real work", "Map the failure", "Align the system", "Ship what lasts"]}
       />

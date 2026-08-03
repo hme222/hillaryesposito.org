@@ -237,7 +237,7 @@ const allCuratedPages: Record<string, CuratedPage> = {
     proofPoints: [
       { stat: "21,000+", detail: "Clinicians and administrative staff affected by workflow redesign work at Memorial Sloan Kettering" },
       { stat: "20%", detail: "Organization-wide EMR cost reduction; I led the workflow redesign that contributed to it" },
-      { stat: "70%", detail: "Certification workflow efficiency gain through simplification and visibility improvements" },
+      { stat: "70%", detail: "Every CPR certification collected 70% ahead of a deadline that was about to slip, after I rewrote the technical/legal material for the clinicians completing it" },
     ],
     featuredWork: [
       {
@@ -245,8 +245,8 @@ const allCuratedPages: Record<string, CuratedPage> = {
         reason: "Shows direct healthcare credibility, operational context, and measurable impact at scale.",
       },
       {
-        title: "Certification and onboarding workflow redesign",
-        reason: "Demonstrates role-based workflows, cross-functional coordination, and reduction of product friction.",
+        title: "CPR certification rewrite and onboarding workflow redesign",
+        reason: "Demonstrates plain-language content design for a clinical audience, role-based workflows, and cross-functional coordination.",
       },
       {
         title: "Grove product work",
@@ -268,6 +268,10 @@ const allCuratedPages: Record<string, CuratedPage> = {
       "As an Army medical logistics officer, I also led process and tracking improvements where reliability and speed had direct consequences. That experience sharpened how I think about handoffs, failure points, and decision support inside complex systems.",
     ],
     keywords: [
+      "HIPAA",
+      "healthcare compliance",
+      "clinical workflow design",
+      "EHR / EMR workflows",
       "healthcare",
       "workflow design",
       "internal tools",
@@ -335,7 +339,7 @@ const allCuratedPages: Record<string, CuratedPage> = {
     proofPoints: [
       { stat: "MSK", detail: "Healthcare systems experience across clinical operations, training, implementation, and workflow redesign" },
       { stat: "20%", detail: "Organization-wide EMR cost reduction; I led the healthcare workflow redesign that contributed to it" },
-      { stat: "70%", detail: "Certification workflow efficiency gain through simplification and visibility improvements" },
+      { stat: "70%", detail: "Every CPR certification collected 70% ahead of a deadline that was about to slip, after I rewrote the technical/legal material for the clinicians completing it" },
       { stat: "7", detail: "Aid stations coordinated through high-pressure medical logistics workflows across three countries" },
     ],
     featuredWork: [
@@ -363,6 +367,10 @@ const allCuratedPages: Record<string, CuratedPage> = {
       "Grove AI is the clearest current artifact for my AI product direction: intent mapping, prompt-assisted prototyping, trust states, and human fallback judgment. I'd present it as focused AI product exploration, not as a shipped clinical AI product.",
     ],
     keywords: [
+      "HIPAA",
+      "healthcare compliance",
+      "clinical workflow design",
+      "EHR / EMR workflows",
       "AI interaction design",
       "healthcare",
       "mental health",
@@ -435,7 +443,7 @@ const allCuratedPages: Record<string, CuratedPage> = {
     ],
     proofPoints: [
       { stat: "20%", detail: "Organization-wide EMR cost reduction at MSK; I led the workflow redesign that contributed to it" },
-      { stat: "70%", detail: "Physician certification workflow efficiency gain through simplification and visibility" },
+      { stat: "70%", detail: "Every CPR certification collected 70% ahead of a deadline that was about to slip, after I rewrote the technical/legal material for the clinicians completing it" },
       { stat: "85%", detail: "Faster medical resupply after building tracking and reporting workflows" },
       { stat: "60%", detail: "Reduced medical logistics spending through better visibility and process structure" },
     ],
@@ -533,7 +541,7 @@ const allCuratedPages: Record<string, CuratedPage> = {
       { stat: "7", detail: "Aid stations coordinated through tracking and communication workflows across three countries" },
       { stat: "$2M", detail: "Medical supplies and equipment managed while improving visibility, reporting, and coordination" },
       { stat: "85%", detail: "Faster resupply after improving field workflow visibility and handoffs" },
-      { stat: "70%", detail: "Certification workflow efficiency gain at MSK through clearer process structure" },
+      { stat: "70%", detail: "Every CPR certification collected 70% ahead of a deadline that was about to slip, after I rewrote the technical/legal material for the clinicians completing it" },
     ],
     featuredWork: [
       {
@@ -635,7 +643,7 @@ const allCuratedPages: Record<string, CuratedPage> = {
     ],
     proofPoints: [
       { stat: "20%", detail: "Organization-wide EMR cost reduction; I led the regulated healthcare workflow redesign that contributed to it" },
-      { stat: "70%", detail: "Certification workflow efficiency gain through clearer process and visibility" },
+      { stat: "70%", detail: "Every CPR certification collected 70% ahead of a deadline that was about to slip, after I rewrote the technical/legal material for the clinicians completing it" },
       { stat: "85%", detail: "Faster medical resupply after operational tracking improvements" },
       { stat: "60%", detail: "Reduced medical logistics spending through better visibility and coordination" },
     ],

@@ -33,20 +33,22 @@ const LANES: Lane[] = [
     ],
     outcome: "still in use",
   },
+  // Restored with the real sustainment fact. The old version of this lane
+  // claimed a "Certification dashboard" that became "the default compliance
+  // tool" — a dashboard that was never built. What actually happened is a
+  // stronger claim: the project ran two months and closed early, and other
+  // administrators kept using the collection method anyway. Surviving your own
+  // project ending is the hardest sustainment test there is.
   {
-    name: "Certification dashboard",
-    events: [{ at: 0.45, label: "compliance adopts it" }],
-    outcome: "the default tool",
+    name: "CPR certification format",
+    events: [{ at: 0.34, label: "project closes early" }],
+    outcome: "still used by other admins",
   },
-  {
-    name: "Clinician onboarding",
-    events: [
-      { at: 0.26, label: "leadership change" },
-      { at: 0.5, label: "leadership change" },
-      { at: 0.74, label: "leadership change" },
-    ],
-    outcome: "still in use",
-  },
+  // The onboarding lane was removed on 2026-08-03 along with the certification
+  // lane. It read "Clinician onboarding" surviving three leadership changes —
+  // but the programme trained administrative staff, not clinicians, and the
+  // three-transitions claim belonged to that wrong description. One lane with
+  // evidence is worth more than three with two guesses in them.
 ];
 
 const W = 760;
