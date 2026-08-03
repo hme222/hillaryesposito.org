@@ -47,8 +47,13 @@ const LEGS = [
   {
     n: "01",
     mission: "An AI tool built the whole app",
+    // "forums" was removed on 2026-08-03. Checked against the Grove repo:
+    // `git log --all -S"forum"` returns nothing across the whole history, so
+    // Emergent never built one. Forums *were* one of the eleven features the
+    // survey asked about, and the two got conflated. Feed, badges, missions,
+    // swaps and community groups are all real — verified in grove-frontend.
     detail:
-      "Emergent — the AI tool I used to generate the first build — made Grove in one pass: a social feed, badges, daily “missions,” forums, plant swaps. Wide, fast, and packed.",
+      "Emergent — the AI tool I used to generate the first build — made Grove in one pass: a social feed, badges, daily “missions,” community groups, plant swaps. Wide, fast, and packed.",
     impact: "Feature-complete, focus-empty",
   },
   {
@@ -138,9 +143,13 @@ const DECISIONS = [
   {
     feature: "Personality, not points",
     old: "grove-live-personality.jpg",
-    oldAlt: "The personality screen Emergent built, with badges, streaks, and a leaderboard",
+    // "leaderboard" removed 2026-08-03 for the same reason as "forums" — no
+    // occurrence anywhere in the Grove repo's history. Badges and streaks are
+    // real (203 and 56 references in grove-frontend), so the point stands
+    // without the invented third item.
+    oldAlt: "The personality screen Emergent built, with badges and streaks",
     oldBg: "#f5f0ea",
-    why: "Badges, streaks, and a leaderboard turned care into paperwork. The redesign keeps the plant’s AI personality and drops the rest.",
+    why: "Badges and streaks turned care into paperwork. The redesign keeps the plant’s AI personality and drops the scorekeeping.",
   },
 ];
 
@@ -148,7 +157,7 @@ const DECISIONS = [
 // `next` marks a call I am making now rather than one already in the build.
 const OVERRIDES: Array<{ topic: string; ai: string; me: string; why: string; next?: boolean }> = [
   { topic: "Reminder tone", ai: "Guilt and urgency — “your plant misses you.”", me: "One calm morning summary.", why: "Notifications are the #1 reason people delete a plant app." },
-  { topic: "Gamification", ai: "Badges, streaks, and a leaderboard.", me: "An AI plant personality you earn — a feeling, not points.", why: "Care that feels like paperwork is the top reason people quit. A streak also rewards watering every day, and overwatering is the most common way people kill houseplants — the optimal play would kill the subject of the product. The honest cost: calm should show lower 7-day engagement than streaks would. I’d take that trade if 90-day retention holds. If it doesn’t, the mechanic was doing work I underestimated, and I’d rather find that out than assume it." },
+  { topic: "Gamification", ai: "Badges and streaks.", me: "An AI plant personality you earn — a feeling, not points.", why: "Care that feels like paperwork is the top reason people quit. A streak also rewards watering every day, and overwatering is the most common way people kill houseplants — the optimal play would kill the subject of the product. The honest cost: calm should show lower 7-day engagement than streaks would. I’d take that trade if 90-day retention holds. If it doesn’t, the mechanic was doing work I underestimated, and I’d rather find that out than assume it." },
   { topic: "Plant ID confidence", ai: "One confident answer, every time.", me: "Top guesses, how sure it is, and its sources.", why: "False certainty is the fastest way to lose trust." },
   { topic: "Pet safety", ai: "Generic care tips.", me: "Toxic-to-pets warnings the moment you add a plant, with sources.", why: "New owners raised it unprompted, before I ever asked. When a plant can hurt a cat, a wrong guess isn’t a suggestion — it’s a risk." },
   { topic: "Notification frequency", ai: "Nudge whenever engagement dips.", me: "One summary per group; only true emergencies interrupt.", why: "A reminder can never become the reason someone leaves." },
@@ -395,9 +404,12 @@ export default function RisoGrove() {
 
           <h3 className="rp-subhead">What they wanted, and what waited</h3>
           <p className="rp-lede">
+            {/* Was "the forums and swaps sitting in the first build". Swaps are
+                in the build; forums never were — they were a survey option, not
+                something Emergent shipped. */}
             All eleven features tested, by share of the 34 who named each a dealbreaker. The top three
-            became the core. Everything under it — including the forums and swaps sitting in the
-            first build — waited.
+            became the core. Everything under it — including the swaps and community groups already
+            sitting in the first build — waited.
           </p>
           <ol className="rp-rank rp-reveal">
             {MVP_FEATURES.map((f) => (
