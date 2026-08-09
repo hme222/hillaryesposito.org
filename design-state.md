@@ -1,11 +1,27 @@
 # Design State: Full Portfolio Redesign — Hybrid Positioning
 
-_Last updated: 2026-08-03 by portfolio evidence-media verification lead_
+_Last updated: 2026-08-09 by design-lead_
 
 ## Brief Summary
 **Problem:** Portfolio positions Hillary as Product Designer only, burying process improvement track record and treating AI as a project tag. LinkedIn and portfolio tell different stories.
 **Primary audience:** Hiring managers and recruiters (30-60 second scan), process improvement leaders, AI-curious hiring managers, UX designer peers
 **Success metric:** Recruiter identifies hybrid value prop (UX + Process Improvement + AI strength) within 5 seconds of landing.
+
+### Active Initiative: The Impossible Evidence Table
+
+**Problem:** The portfolio asks recruiters to infer visual taste, product judgment, and skilled AI direction separately; the prior Higgsfield film was an animated evidence poster rather than a signature authored experience.
+**Primary audience:** Recruiters and product/UX/AI-design hiring managers scanning in 30–60 seconds, with equivalent access for keyboard, touch, screen-reader, low-vision, motion-sensitive, cognitively overloaded, and multilingual readers.
+**Success metric:** After a 12–15 second homepage teaser, at least four of five representative recruiters describe Hillary as a product designer with strong visual taste who directs AI deliberately, recall one consequential decision, and infer no fabricated evidence.
+**Approved brief:** `docs/designpowers/briefs/2026-08-09-impossible-evidence-table.md`
+**Status:** Discovery, strategy, research, inspiration, and first static visual direction are complete. V1 is rejected; V2 is a materially cleaner single-artifact direction but does not yet meet the saved-portfolio craft benchmark. Revise the MSK artifact before owner taste approval; no production or generation has begun.
+
+#### Initiative audience contexts
+
+- **Time-boxed recruiter** — needs a complete static signal and direct project path; may never press play.
+- **Skeptical design leader** — needs decision evidence, truthful status/ownership, and optional authorship provenance.
+- **Keyboard/low-vision evaluator** — needs familiar controls, strong focus, non-colour state, 44px targets, and robust reflow.
+- **Screen-reader or motion-sensitive evaluator** — needs the full decision and path without cinematic playback.
+- **Interrupted multilingual reader** — needs bilingual persistent labels, no fast required reading, and low-data recovery.
 
 ### Active Initiative: Portfolio Evidence Media System
 
@@ -13,7 +29,7 @@ _Last updated: 2026-08-03 by portfolio evidence-media verification lead_
 **Primary audience:** Recruiters and product/design hiring managers, with equivalent access for keyboard, screen-reader, low-vision, motion-sensitive, cognitively overloaded, and multilingual readers.
 **Success metric:** A static poster or user-initiated film of eight seconds or less communicates the project problem, consequential decision, and truthful outcome/status.
 **Approved brief:** `design-docs/briefs/2026-07-29-portfolio-evidence-media-system.md`
-**Status:** Deterministic static triad implemented and adaptively verified. A 7.792-second Grove motion candidate is now integrated locally as an explicit-play secondary layer using real prototype screens and survey evidence; the first static-in-a-video export was rejected, and the corrected MP4/WebM has distinct decoded focus states, no audio, no autoplay, no loop, default captions, an adjacent transcript, and a complete static fallback. Desktop and 390px rendered checks have zero horizontal overflow and 50px play targets. Forty-one tests and the production build pass. Synthetic recruiter recall is directionally positive; five real hiring-audience sessions and one VoiceOver/NVDA pass remain release gates, and the candidate has not been deployed.
+**Status:** Deterministic static triad implemented and adaptively verified. A 7.792-second Grove motion candidate is live as an explicit-play secondary layer using real prototype screens and survey evidence. It has separately composed 16:9 and 4:5 exports; the first static-in-a-video landscape export and two clipped/dense portrait poster passes were rejected. The accepted media has distinct decoded focus states, no audio, no autoplay, no loop, default captions, an adjacent transcript, and a complete static fallback. Desktop and 390px rendered checks have zero horizontal overflow and 50px play targets. Automated tests and the production build pass. Five real hiring-audience sessions and one VoiceOver/NVDA pass remain open post-release validation; do not reuse this motion pattern for MSK or Mobbin until they pass.
 
 ### Active Initiative: Riso/Grove Flagship Storytelling System
 
@@ -85,7 +101,7 @@ Owner live review during the same session produced eight further repairs: the MS
 
 **Status:** Complete. A panel compared the four retired pages (`pages/Home.tsx`, `case-studies/MSK.tsx`, `Mobbin.tsx`, `Grove.tsx` — all still in the tree, all unrouted) against their live replacements. Verdict: the visual system, truth-labeling, curated-page framing, and navigation scaffolding survived or improved, and homepage metrics gained source attribution they never had. The failure mode was not taste — it was **evidence deleted while the claims it supported stayed**.
 
-Restored: Grove's survey answers (74% reminders, 61% camera ID, 15+ notification-deletion, 2.4/5 lighting confidence) and the nine-feature ranked chart; the florist quote; pet safety's nine-of-twelve source; MSK's certification and onboarding mechanisms; MSK's two admitted failures; MSK's sustainment evidence; Mobbin's live Finance+ link and one delivered annotation; the homepage credential strip and availability line.
+Restored: Grove's survey answers (74% reminders, 56% camera ID, 15+ notification-deletion, 2.4/5 lighting confidence) and the nine-feature ranked chart; the florist quote; pet safety's nine-of-twelve source; MSK's certification and onboarding mechanisms; MSK's two admitted failures; MSK's sustainment evidence; Mobbin's live Finance+ link and one delivered annotation; the homepage credential strip and availability line.
 
 **Number-safety rule established:** the Grove roadmap chart cites **shares only, never ordinal ranks**. Eleven features were tested and nine are charted, so "6th of 11" is true to the dataset but contradicts the bars on screen. That exact mismatch was corrected once before (commit `add85eb`); the constant now carries a comment so it is not reintroduced.
 
@@ -97,6 +113,14 @@ Restored: Grove's survey answers (74% reminders, 61% camera ID, 15+ notification
 3. AI Is Judgment, Not a Tool List — show when NOT to use AI as much as when to; judgment > prompting
 4. Accessibility Is the Craft — WCAG AA floor, woven through every decision, not a compliance badge
 5. Elevated, Not Decorated — quality from restraint; Gen Z flair is one well-placed moment, not a texture
+
+### Impossible Evidence Table initiative principles
+
+1. **Proof must survive when the magic stops** — the still, exact text, qualifier, and case-study link carry the complete meaning without motion, sound, hover, or generation.
+2. **One project earns one consequential transformation** — MSK aligns a service system, Grove reduces to one calm cue, and Mobbin names and verifies one pattern.
+3. **Generate atmosphere; compose truth** — generative systems may shape material and motion, while evidence, labels, numbers, ownership, status, and provenance remain deterministic.
+4. **Agency should clarify, not create a puzzle** — three labeled project choices and familiar media controls; direct project navigation outranks playback or flourish.
+5. **Show senior AI judgment through boundaries and rejection** — source locks, tool routing, corrections, rejected tests, cost, and Hillary's approval form the optional authorship trace.
 
 ## Taste Profile
 - **Emotional target:** Quiet authority
@@ -111,6 +135,43 @@ Restored: Grove's survey answers (74% reminders, 61% camera ID, 15+ notification
 ## Decisions Log
 | Decision | Rationale | Source |
 |----------|-----------|--------|
+| Hold V2 from owner taste approval until one revised MSK still meets the saved-portfolio craft minimum | The single-artifact composition is a substantial V1 improvement, but the generic workflow geometry, flat diagonal light overlay, lost mobile before-state, small/low-contrast microcopy, and weak provenance make it a polished concept plate rather than reference-grade evidence. Revise specificity and the physical model; do not add UI or decoration | saved-portfolio craft benchmark / design-scout 2026-08-09 |
+| REJECT V1's pale-green panel, nested evidence frame, three-project collage, duplicate work-list context, and dense control stack; supersede it with one cinematic artifact stage | Owner found both desktop and mobile V1 highly cluttered and disorganized. The evidence-table metaphor only survives if one artifact receives full scale, generous negative space, and a minimal interface | owner taste feedback + design-lead V2 2026-08-09 |
+| V2 shows one source-locked artifact at a time on a materially rich full-bleed clean plate | Operation Night Watch's conservation posture and Honda Paper's authored spatial transformation are legible only when the artifact is the focal subject. Project selection swaps artifact, qualifier, and link without exposing a dashboard | design-lead V2 2026-08-09 |
+| Default V2 to one large MSK workflow sheet; recompose the same verified five-step structure vertically on mobile | The workflow carries system-level judgment without patient-like rows, PHI, Epic chrome, or fabricated record detail. Responsive vector re-layout preserves evidence while making the mobile artifact readable at full scale | design-lead V2 2026-08-09 |
+| Reduce the primary interface to title/promise, three selectors, one case-study action, and optional play | Every additional panel or control competed with the evidence in V1. Inspection light becomes an optional selection response rather than another visible control | owner taste feedback + design-lead V2 2026-08-09 |
+| Recommend the Impossible Evidence Table as the opening object inside Selected Work; retain the standalone bridge only as the comparison alternative | Desktop and mobile static comparisons show that the standalone bridge creates a duplicate editorial preamble before the canonical project index. Inside Selected Work keeps one heading, one familiar destination, and the existing MSK → Grove → Mobbin links adjacent. Final lock remains conditional on representative scan testing | design-lead static placement comparison 2026-08-09 |
+| Compose the table from existing Riso/editorial tokens, controls, disclosure, and evidence-media behavior; treat `EvidenceTable` and inspection light as local experimental compositions | The current system already supplies paper, ink, type, spacing, radius, link, disclosure, and explicit-play primitives. No `DESIGN.md` or generated registry exists, so the draft cannot claim a registry-proven canonical gap or add global tokens; the local proposal remains removable and ungraduated | design-lead + design-system-alignment 2026-08-09 |
+| Use a mobile-specific vertical stage and place decision, qualifier, and case-study link before the visual figure | A desktop crop would make exact artifacts and qualifiers illegible. The 390px draft preserves the full task and lets the tableau linearize at zoom without horizontal scrolling | design-lead responsive composition 2026-08-09 |
+| Limit the single playful interaction to a discrete Shift inspection light button with instant reduced-motion and static registration equivalents | The action changes how the selected evidence is inspected, not what it claims; it has keyboard/touch/pointer parity and can be removed without loss if contrast or low-vision review fails | design-lead interaction specification 2026-08-09 |
+| Treat the table as the opening object inside the existing Selected Work section, not a standalone homepage chapter | The current Home already moves from proof into one three-project index. Keeping one heading and one project path reduces repetition; rendered comparison and representative scan testing are still required before this proposed placement is locked | design-scout research 2026-08-09 |
+| Use three native project buttons with one persistent selected-project summary and direct link; do not require tabs, drag, hover, scrub, tilt, or spatial precision | Familiar button semantics preserve keyboard, touch, pointer, screen-reader, zoom, forced-colour, and reduced-motion access while the optional light/focus response carries visual surprise without owning meaning | design-scout research + W3C/WAI pattern review 2026-08-09 |
+| Build the MSK tableau from the verified workflow map and generic state/permission/action structure; exclude patient-like queue rows and Epic visual chrome | The current queue mockup contains fictional masked MRNs and patient-document rows, which conflict with this initiative's stricter prohibition on real or invented patient data. ONC safety guidance supports credibility through workflows, responsibilities, states, handoffs, and error reduction rather than vendor imitation | design-scout research + ONC/HHS review 2026-08-09 |
+| Keep video source/player absent until explicit Play intent and deliver a purpose-built mobile still | `preload` is only a browser hint. Source-on-intent, reserved dimensions, responsive poster delivery, and a 4:5/near-square mobile composition best protect the no-request-before-intent, LCP, CLS, comprehension, and recovery gates | design-scout research + web.dev review 2026-08-09 |
+| Give each project its own material logic instead of applying warm paper and botanicals uniformly | A shared generic luxury-editorial treatment would amplify AI-design tells. MSK should express workflow and permissions, Grove may own botanical matter, and Mobbin should use contact-sheet/source-label logic while exact qualifiers stay literal | design-scout anti-AI audit 2026-08-09 |
+| Use public conservation + authored paper transformation as the governing visual pair | Rijksmuseum Operation Night Watch supplies protected, inspectable evidence and PES/Honda Paper supplies a previsualised impossible journey whose craft remains materially legible; together they support trust and surprise without an AI-reel aesthetic | inspiration-scout board 2026-08-09 |
+| Translate playful material agency into three native project selectors plus at most one optional inspection-light action | Cooper Hewitt's material/light cause-and-effect is compelling, but the web experience must avoid drag, gesture discovery, and spatial precision; selection updates the decision, qualifier, and link before decorative focus/light changes | inspiration-scout board 2026-08-09 |
+| Treat ILM StageCraft and ANCESTRA as production-architecture references, not visible styles | Reusable stages, previsualised motion, protected regions, replaceable evidence slots, traditional compositing, and deterministic finish demonstrate senior orchestration while preventing protected evidence from entering uncontrolled generated pixels | inspiration-scout board 2026-08-09 |
+| Build The Impossible Evidence Table as one homepage teaser plus three case-study fragments | One cinematic macro journey can unite visual taste, product judgment, and senior AI orchestration; project fragments extend the system without repeating each case study | owner-approved Designpowers discovery 2026-08-09 |
+| Source-lock every meaningful artifact to the existing portfolio; generate only atmosphere, material behavior, transitions, light, and camera motion | Prevents generated imagery from being mistaken for shipped product evidence, research, customers, or outcomes | owner clarification 2026-08-09 |
+| Use a layered senior-AI production architecture instead of one-shot generation | Evidence mapping, pre-generation direction, selective multimodal routing, deterministic exact layers, accessible delivery, independent evaluation, and visible authorship demonstrate judgment beyond tool familiarity | owner direction + Designpowers discovery 2026-08-09 |
+| Use verified current artifacts for the direction test and first draft; accept owner-supplied stronger artifacts only after draft approval | Allows rapid concept validation without fabricating around missing evidence or delaying the first visual test | owner direction 2026-08-09 |
+| Keep Hera's wearable-business agents out of portfolio production while adapting their maker–judge discipline into portfolio-specific creative roles | The installed Hera team explicitly rejects Grove and portfolio routing; respecting its domain boundary prevents purpose and evidence drift | Hera team charter + Designpowers discovery 2026-08-09 |
+| Upgrade and approve the static tableau before expensive video production; keep portfolio artifacts in replaceable evidence slots over reusable cinematic clean plates | Hillary wants to improve or swap source artifacts after judging the first direction without invalidating the whole film. Modular masks, transforms, timing handles, and source IDs allow deterministic recomposition; only shots whose silhouette or lighting logic changes should need regeneration | owner clarification + design-strategy 2026-08-09 |
+| Ground the MSK zone loosely in real Epic-like hospital workflow topology without copying Epic UI | Persistent context, workqueue/task, encounter/status, and focused-action structure can signal credible hospital operations while Hillary's recreated/anonymized evidence and portfolio styling prevent proprietary imitation, PHI exposure, or a false literal screen | owner direction + design-strategy 2026-08-09 |
+| Treat immediate top-tier hiring desire as the ambition, not a guaranteed success metric | The portfolio can improve senior-role recognition, memorability, evidence trust, and desire to continue, but it cannot truthfully claim control over an employer's on-the-spot hiring decision | owner ambition + design-strategy evidence boundary 2026-08-09 |
+| REJECTED — both static placement mockups and the embedded control-panel composition | Hillary: “I hate both of them.” The drafts reduced the cinematic evidence-table idea to an oversized pale-green dashboard card with tiny screenshots, dense controls, duplicate project navigation, flat hierarchy, and little tactile or innovative craft. Nothing from this visual treatment may advance to motion, content, implementation, or Higgsfield | owner taste feedback 2026-08-09 |
+| Keep the evidence-table metaphor only as a clean, cinematic single-artifact stage | Hillary will retain the metaphor only if it presents cleanly. V2 must show one focal artifact at a time with generous negative space, no nested dashboard/card, no simultaneous three-project collage, no duplicated project index, minimal visible copy/controls, and a materially authored scene rather than an information panel | owner taste correction 2026-08-09 |
+| Place the Impossible Evidence Table between homepage proof and selected work, not as a replacement hero or entry gate | The existing hero establishes role and the proof block establishes credibility; the table's job is to bridge that evidence into project choice without delaying the scan path | design-strategist 2026-08-09 |
+| Keep MSK → Grove → Mobbin as the interaction and project priority | MSK is the strongest complete systems proof; Grove carries the clearest AI-judgment signal but remains Phase 2; Mobbin closes with pattern literacy and explicit third-party attribution | design-strategist 2026-08-09 |
+| Make direct case-study navigation primary, optional playback secondary, and the director's notebook tertiary | Recruiters can reach proof immediately; motion and AI-production detail reward interest without becoming prerequisites | design-strategist 2026-08-09 |
+| Give each project exactly one transformation and embed its 3–5 second fragment at the existing decision threshold | Single-decision fragments improve recall and attribution without replacing the case-study hero, evidence order, or surrounding argument | design-strategist 2026-08-09 |
+| Gate production through source freeze, decision lock, low-cost animatic, one hero-shot fidelity test, one integrated fragment, accessibility/static equivalence, recruiter comprehension, and release regression | Bounded gates prevent fabricated evidence, inaccessible spectacle, visual drift, and full-budget sunk cost before the grammar is proven | design-strategist + evaluation matrix 2026-08-09 |
+| Treat any generated evidence drift, critical accessibility failure, absent recovery, or recruiter false inference as a release blocker | Average craft scores cannot compensate for broken truth, access, provenance, or user control | design-strategist + evaluation matrix 2026-08-09 |
+| Keep MSK as ONE case study; reject the three-way split and the flagship+satellite hybrid | Owner decision after a full design debate. Advocate A (split into three) conceded under cross-examination that clinician onboarding — one mechanism diagram, one "what I got wrong", no dedicated number — cannot stand alone, and revised to a two-page split. Advocate C's hybrid rested on the claim that a reviewer must "read past a hospital's org chart" to reach the interaction craft; that premise was falsified against the current file — the queue mockup renders in the hero before any scroll and the six-year background sits *after* the decisions section. Advocate B's decisive and unrebutted point: the site's positioning line is "I own the whole path a task takes, not just the last screen," and a bridge card is mechanically a last screen — splitting reintroduces the exact handoff the claim exists to deny. Accessibility rated the split Medium concern for content integrity: the outcome numbers are aggregate, so splitting forces either duplicated attribution on every page or misleading standalone numbers | design-debate (design-strategist / design-scout / design-lead / accessibility-reviewer) + owner 2026-08-03 |
+| Rewrite MSK section framing from taxonomy labels to narrative beats | Owner: the page "shows mini process design instead of a thread story." Every kicker named the *type of exhibit* ("Primary artifact · recreated and anonymized", "Interaction logic · one state at a time", "Three redesigns · what actually changed", "Six years · three roles") rather than the next beat — process-deck grammar. The thread is now "I followed one workaround until it explained the whole system": *It started with a workaround → So I counted the steps → The fix looked like one button → Then the same shape turned up again → Why I could see it → The real test came later → What it added up to*. The break point was "Not one system. Three.", which announced a list; reframed as recurrence ("The same failure, in two more places"). Provenance and attribution qualifiers were relocated, not dropped — they live in the figcaption and the EvidenceField `disclaimer` | owner direction + narrative pass 2026-08-03 |
+| REJECTED — split MSK into three case studies | Two of three would be thin (certification: one diagram + one principle; onboarding: one diagram, no number), homepage goes 3→5 cards breaking "three products, three ways trust gets earned", and shared six-year/credentials/sustainment context would need duplicating or a fourth hub page | design-debate 2026-08-03 |
+| REJECTED — MSK flagship + `/case-study/msk/systems` satellite | Cheaper than a full split and keeps the homepage frame, but its premise (craft buried behind credibility) no longer holds after the section reorder, and it bundles certification with onboarding — reproducing the unequal-evidence-in-one-container defect it accused the split of | design-debate 2026-08-03 |
 | Hold Grove motion generation for a five-person representative recruiter recall study and one real VoiceOver/NVDA pass | Two independent synthetic reviews found the static triad memorable but disagreed on whether agent recall is sufficient. The evaluation matrix treats representative task evidence as a hard gate, so the test kit—not another generated asset—is the highest-value next step | design-critic + heuristic-evaluator + usability-testing 2026-08-03 |
 | Reduce the Grove film to one reminder override | The approved static poster proves one consequential judgment clearly. Three fast override examples diluted ownership and increased reading burden; the revised storyboard shows only `guilt + urgency → Hillary chose one calm morning summary` | hiring-manager scan + motion revision 2026-08-03 |
 | Move Recruiter View and Back to Top into the mobile menu at reflow widths | Both fixed utilities visibly covered evidence-caption copy at the 400%-equivalent viewport. The menu alternatives keep the actions available, keyboard reachable, and tested without persistent obstruction | adaptive runtime verification 2026-08-03 |
@@ -219,6 +280,16 @@ Restored: Grove's survey answers (74% reminders, 61% camera ID, 15+ notification
 | Sweep the remaining rounded-pill leftovers into the editorial vocabulary (M6) | Owner asked to finish the partial editorial propagation. Squared all UI cards/containers to near-square (riso-page.css 8–34px radii → 4–10px; portfolio-editorial.css 14px/10px cards → 4px), the recruiter-pill trigger and back-to-top (999px/pill → 3px), the Grove system-lab segmented tabs (999px → 6/4px), and the About closing card + "Get in touch" button (soft rounded olive-gradient pill → flat editorial plate + coral squared CTA). Device/phone frames (24–32px) and true status-tag pills (the Home "Active · Phase 2 of 3" tag) intentionally kept rounded. Build clean, 29/29 tests pass | Owner request / Next-tier 2026-07-25 |
 
 ## Open Questions
+- [ ] Can the revised MSK still reach the saved-reference minimum—4/4 for composition, evidence scale, signature moment, and anti-AI specificity; no dimension below 3—without unsupported domain detail?
+- [ ] Which exact source artifacts best survive the first macro-cinematic fidelity test for Grove, MSK, and Mobbin?
+- [ ] Does a natural 30–60 second homepage scan confirm that opening Selected Work with the table improves decision comprehension without delaying the existing project links?
+- [ ] Does an MSK workflow/state tableau feel clinically credible to an informed reviewer without any patient-like row data, Epic chrome, or confidential implementation detail?
+- [ ] Which current Higgsfield workflows and models are included in Hillary's membership, and what credit ceiling should govern the first production pass?
+- [ ] Does the proposed three-selector + optional inspection-light interaction improve comprehension across keyboard, touch, pointer, screen reader, and reduced-motion modes without becoming a required flourish?
+- [ ] Does rendered hierarchy favor the table immediately after the proof block or as the opening object inside Selected Work at 390px and 1440px?
+- [ ] Should the director's notebook remain one shared inline disclosure or become a small dedicated page if the record cannot stay concise?
+- [ ] Which source-manifest fields and artifacts may be public, and which must remain private production provenance?
+- [ ] What current mobile LCP baseline, device, and network profile will define the strategy's ≤200ms regression gate?
 - [x] The final poster fixes pass 200%/400%-equivalent reflow, WCAG text spacing, forced colours, and reduced motion without clipping, lost qualifiers, or fixed-utility obstruction.
 - [ ] Does one VoiceOver/Safari or NVDA/Firefox pass confirm the intended heading → qualifier → summary → link reading order?
 - [ ] Do at least four of five real hiring-audience participants accurately recall the Grove problem, single reminder decision, Phase-2/unfinished status, and Hillary's ownership?
@@ -230,6 +301,22 @@ Restored: Grove's survey answers (74% reminders, 61% camera ID, 15+ notification
 ## Artefact Index
 | Artefact | Path |
 |----------|------|
+| Saved-portfolio craft benchmark and V2 gap audit | docs/designpowers/research/2026-08-09-saved-portfolio-craft-benchmark.md |
+| Impossible Evidence Table V2 visual-direction delta | docs/designpowers/visual/2026-08-09-impossible-evidence-table-v2-direction.md |
+| Impossible Evidence Table V2 desktop SVG | docs/designpowers/visual/mockups/v2-desktop-single-artifact.svg |
+| Impossible Evidence Table V2 desktop PNG | docs/designpowers/visual/mockups/v2-desktop-single-artifact.png |
+| Impossible Evidence Table V2 mobile SVG | docs/designpowers/visual/mockups/v2-mobile-single-artifact.svg |
+| Impossible Evidence Table V2 mobile PNG | docs/designpowers/visual/mockups/v2-mobile-single-artifact.png |
+| Impossible Evidence Table visual direction | docs/designpowers/visual/2026-08-09-impossible-evidence-table-direction.md |
+| Impossible Evidence Table source-slot manifest | docs/designpowers/visual/2026-08-09-impossible-evidence-table-source-slots.md |
+| Impossible Evidence Table desktop placement SVG | docs/designpowers/visual/mockups/desktop-placement-comparison.svg |
+| Impossible Evidence Table desktop placement PNG | docs/designpowers/visual/mockups/desktop-placement-comparison.png |
+| Impossible Evidence Table mobile placement SVG | docs/designpowers/visual/mockups/mobile-placement-comparison.svg |
+| Impossible Evidence Table mobile placement PNG | docs/designpowers/visual/mockups/mobile-placement-comparison.png |
+| Impossible Evidence Table recruiter and interaction research | docs/designpowers/research/2026-08-09-impossible-evidence-table-research.md |
+| Impossible Evidence Table inspiration board | docs/designpowers/inspiration/2026-08-09-impossible-evidence-table-board.md |
+| Impossible Evidence Table brief | docs/designpowers/briefs/2026-08-09-impossible-evidence-table.md |
+| Impossible Evidence Table strategy | docs/designpowers/strategy/2026-08-09-impossible-evidence-table-strategy.md |
 | Portfolio evidence media brief | design-docs/briefs/2026-07-29-portfolio-evidence-media-system.md |
 | Portfolio evidence media visual direction | design-docs/media/2026-07-29-visual-direction.md |
 | Grove motion storyboard | design-docs/media/2026-07-29-motion-storyboard.md |
@@ -289,6 +376,49 @@ _Items: 8 | Open: 0 | Resolved: 8 | Last reviewed: 2026-08-03_
 | DD-006 | 2026-06-29 | accessibility-reviewer | Minor | .home-proj-card-link:focus-visible explicitly sets outline:none, which is rescued by the !important WCAG patch at the bottom of App.css. The source rule should be deleted — relying on !important to restore a removed affordance is fragile | All keyboard users (if the WCAG patch is ever modified or removed) | Delete `outline: none` from the .home-proj-card-link:hover, .home-proj-card-link:focus-visible block in App.css. See App.css:3822–3827 | Resolved 2026-07-01 | Deleted `outline: none` from the .home-proj-card-link:hover, :focus-visible block (App.css:4058). Global :where() focus-visible rule (App.css:2789, 3px solid var(--focus)) supplies the ring |
 
 ## Handoff Chain
+
+### 2026-08-09 — design-scout → design-lead (saved-portfolio craft benchmark)
+> "V2 is materially cleaner, but it is not yet reference craft: it has Alyssa Faustino's commitment to one scene and Pilgrimz's stated honesty without Alyssa's unmistakable authorship or Pilgrimz's proof density. Replace the generic flowchart with a source-faithful evidentiary object, make the real before-to-after registration survive on mobile, and fix the physical light model before owner review. The missing quality is specificity, not more interface or decoration."
+
+**Key finding that matters most:** the large paper prop has more authority than the evidence inside it. The current diagonal light reads as an overlay, and mobile removes the before-state entirely. Re-score one revised MSK still against the benchmark before expanding to other projects or motion.
+
+### 2026-08-09 — design-lead V2 → Hillary taste check
+> "V1 is rejected and archived as a useful anti-pattern. V2 removes the interface shell and gives the room to one artifact: a large MSK workflow sheet under conservation light, with only three selectors, one case-study link, and optional play. Please judge the scene on artifact scale, negative space, paper/light craft, and whether it feels authored—not on motion that does not exist yet."
+
+**Pay attention to:** the desktop and mobile scenes are independently composed; the exact workflow remains deterministic; the warm-black clean plate, tracing-layer depth, and raking inspection light carry the innovation. No app code, video, generation credits, or paid assets were used.
+
+**Matrix check:** all five dimensions apply. MSK source structure is Verified; camera/material decisions are Practitioner synthesis. Static truth and scope gates pass. Taste approval, final source freeze, integrated accessibility/responsive tests, recruiter comprehension, and any future media preflight remain open.
+
+### 2026-08-09 — design-lead → motion-designer / content-writer
+> "The table now lives inside Selected Work and starts as a complete conservation tableau—MSK workflow registration, Grove vellum focus, and Mobbin's source-labeled contact sheet. Protect every evidence pixel and all literal copy; motion belongs in paper, light, depth, and registration. The inspection-light toggle is the only optional flourish, and reduced motion returns instantly to the exact static state."
+
+**Content handoff:** one short decision and one unavoidable qualifier sit beside each evidence state. MSK must remain explicitly free of patient data and Epic implication; Grove remains Functional prototype · Phase 2 of 3; Mobbin states that Hillary documented rather than designed the source apps. EN/ES labels are required for selection, failure, light state, description, and the director's notebook.
+
+**Matrix check:** All five dimensions apply. Repository sources and current assets are Verified; placement and material recommendations are Practitioner synthesis pending representative validation. Static-phase truth/access hard gates pass; public source approval, bilingual copy, integrated responsive/zoom/forced-colour/AT tests, recruiter comprehension, and future media rights/performance remain unresolved, so release is Conditional.
+
+### 2026-08-09 — design-scout → design-lead
+> "Make the table behave like selected work before it behaves like cinema. Put it under the existing Selected Work heading, keep MSK selected with a normal case-study link, and use three plain buttons while the material response carries the surprise. The MSK zone should use the verified workflow map and generic state/permission/action logic; do not reuse patient-like queue rows or imitate Epic, and do not let warm paper plus botanicals become a generic AI-luxury skin across all three projects."
+
+**Key findings that matter most:** the table's evaluation job is correct decision comprehension and project continuation after the existing role/proof path; direct links outrank playback; project-specific material logic is the anti-AI guardrail; MSK patient-like rows are out; mobile uses a composed still and source-on-intent media.
+
+**Matrix check:** All five dimensions apply. Desk findings are Verified or Practitioner synthesis / Proposed as labeled. Production remains conditional on representative recruiter testing, real assistive-technology walkthroughs, public source-manifest approval, an MSK evidence-steward review, and the mobile performance baseline/regression run.
+
+### 2026-08-09 — inspiration-scout → design-lead
+> "The governing pair is Rijksmuseum conservation plus PES's *Honda Paper*: make the artifacts feel protected and inspectable, then let one rigorously previsualised paper journey deliver the impossible transitions. Cooper Hewitt contributes only three discrete selectors and one optional inspection-light gesture; ManvsMachine supplies raking macro light, while StageCraft and *ANCESTRA* stay backstage as the clean-plate/protected-slot architecture. Start with the static conservation-table composition and slot map—no motion or generation until MSK, Grove, and Mobbin each remain identifiable, qualified, and directly linked."
+
+**Matrix check:** All five dimensions apply. References are verified primary project/institution sources; transfers are practitioner synthesis. Production remains conditional on source freeze, rights/model/cost preflight, accessible static equivalence, recruiter comprehension, and performance validation.
+
+### 2026-08-09 — design-strategist → design-scout / inspiration-scout (pending owner approval)
+> "The table now has a strict job: bridge verified homepage proof into one decision per project, with MSK first and case-study links outranking playback. Research should test whether recruiters read the static object as product judgment—not an AI reel—and find references for tactile, impossible spatial craft that preserve exact evidence. Bring back evidence on interaction legibility, mobile composition, and anti-AI tells; do not start visual production or loosen the source-lock gates."
+
+**Critical strategic decisions:** proof-before-motion; one transformation per project; MSK → Grove → Mobbin priority; direct project links outrank playback; generated atmosphere and deterministic evidence remain separate; production stops at each truth/access/comprehension gate.
+
+**Constraints to respect:** no generated product evidence or people; no autoplay or motion-only meaning; existing hero, bilingual shell, case-study hierarchy, and WCAG 2.2 AA baseline remain canonical; makers do not approve their own outputs.
+
+**Matrix check:** Applied all five dimensions. Production remains conditional on source/rights preflight, representative recruiter tests, static/assistive-technology equivalence, and performance regression evidence.
+
+### 2026-08-09 — design-discovery → design-strategist (owner approved)
+> "The approved direction is one impossible macro journey across real Grove, MSK, and Mobbin artifacts: complexity enters, evidence changes the composition, and Hillary's judgment creates clarity. Preserve quiet authority, but make the experience playful and innovative through layered senior-AI technique—not obvious AI effects. Define the recruiter promise, interaction hierarchy, source-locking architecture, and evaluation gates before visual production; the full panel must work in staged waves and keep makers separate from independent judges."
 
 ### 2026-08-03 — adaptive verification + synthetic recruiter panel → representative recall study
 > "The static triad now passes 18 live adaptive states, 40 tests, and production compilation. Grove's decision survives a synthetic recruiter scan, but agent recall is not participant evidence: run the five-person kit before spending more Higgsfield credits. The film brief is now correctly locked to one reminder override; keep the poster as the complete fallback and preserve Hillary ownership, n=34 provenance, Phase 2, and the unfinished-screen boundary."

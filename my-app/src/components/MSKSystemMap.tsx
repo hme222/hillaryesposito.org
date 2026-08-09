@@ -130,13 +130,13 @@ export default function MSKSystemMap() {
       const rect = mount.getBoundingClientRect();
       const vh = window.innerHeight || 800;
       // Start untangling as soon as the map clears the fold, and be fully
-      // resolved by the time it is centred on screen — roughly the halfway
+      // resolved by the time it is centered on screen — roughly the halfway
       // point of its travel. Spreading the resolve across the map's entire
       // visible life made it crawl; you never saw it finish while looking at
-      // it. Landing the resolution at centre means the payoff happens while
+      // it. Landing the resolution at center means the payoff happens while
       // the map is the thing you are looking at.
       const startTop = vh * 0.85; // top has cleared the fold
-      const endTop = (vh - rect.height) / 2; // the map is vertically centred
+      const endTop = (vh - rect.height) / 2; // the map is vertically centered
       return clamp01((startTop - rect.top) / (startTop - endTop));
     };
 

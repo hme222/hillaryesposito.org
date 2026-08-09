@@ -659,7 +659,7 @@
 .rp-acc summary:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
 .rp-acc__num { font-family: var(--mono); font-size: .72rem; color: var(--green); }
 /* Marks a call being made now rather than one already in the build — the same
-   labelling discipline as the recreated-artifact and AI-built tags. */
+   labeling discipline as the recreated-artifact and AI-built tags. */
 .rp-acc__next { margin-left: auto; font-family: var(--mono); font-size: .56rem; letter-spacing: .09em;
   text-transform: uppercase; font-weight: 700; color: var(--coral); white-space: nowrap;
   border: 1px solid color-mix(in srgb, var(--coral) 45%, transparent); border-radius: 999px; padding: .16rem .5rem; }
@@ -958,8 +958,8 @@
 .rp-chapters a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--hair);
   min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; padding: 0 .2rem; }
 .rp-chapters a:hover, .rp-chapters a:focus-visible { color: var(--coral); border-bottom-color: var(--coral); }
-/* Current chapter. Weight carries it as well as colour, so the state survives
-   greyscale, forced colours, and colour-vision differences. */
+/* Current chapter. Weight carries it as well as color, so the state survives
+   grayscale, forced colors, and color-vision differences. */
 .rp-chapters a.is-active { color: var(--ink); font-weight: 700; border-bottom-color: var(--ink); }
 /* The active chapter's authored note. Pushed to its own end of the strip so it
    reads as context for where you are, not as another link. */
@@ -1530,9 +1530,9 @@
 .rp-testimonial figcaption b { font-size: .92rem; }
 .rp-testimonial figcaption span { font-family: var(--mono); font-size: .66rem; letter-spacing: .06em; color: var(--muted); }
 
-/* ---------- forced colours (Windows High Contrast) ---------- */
+/* ---------- forced colors (Windows High Contrast) ---------- */
 /* The new visual system had no forced-colors handling at all. In that mode the
-   OS replaces author colours, so anything distinguished ONLY by a fill loses
+   OS replaces author colors, so anything distinguished ONLY by a fill loses
    its meaning. Two different problems here, with two different answers. */
 @media (forced-colors: active) {
   /* 1. Affordances that relied on a coral fill to read as buttons. Without an
@@ -1549,10 +1549,10 @@
   }
   .rp-chapters a.is-active { border-bottom-width: 2px; }
 
-  /* 3. Where the colour IS the content, opt out of the override entirely and
+  /* 3. Where the color IS the content, opt out of the override entirely and
      add an edge so adjacent specimens stay separable. The literal swatches and
      the neutral ramp exist to show real hex values; replacing them with system
-     colours defeats the point of the component. */
+     colors defeats the point of the component. */
   .rp-swatch__chip,
   .rp-neutral > span,
   .rp-rank__track i {
@@ -1583,7 +1583,7 @@
 }
 
 /* ---------- reading progress ---------- */
-/* Right edge, vertically centred, and deliberately short: the bottom-right
+/* Right edge, vertically centered, and deliberately short: the bottom-right
    corner belongs to the recruiter pill (bottom 1.75rem) and back-to-top
    (bottom 5.5rem), and fixed-control collisions have been a defect here before.
    Flush to the edge so it reads as a margin mark, not a floating widget. */

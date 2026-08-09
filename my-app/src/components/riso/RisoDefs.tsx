@@ -11,7 +11,7 @@ import React from "react";
 
 type RGB = [number, number, number];
 // shadow → (optional mid) → highlight. A `mid` makes it a TRITONE so the ink
-// colour actually lives in the midtones (green reads) instead of only faintly
+// color actually lives in the midtones (green reads) instead of only faintly
 // tinting the paper. `highlight` keeps a slight tint = the "paper feel".
 // `table` overrides with explicit R/G/B ramps for full control (e.g. the 4-stop
 // struct ramp that holds bold lines black and only sends fine lines to green).
@@ -21,7 +21,7 @@ export const RISO_EDITIONS: Record<string, Edition> = {
   // LOCKED base — pine tritone: dark ink lines, real green midtones, bone paper
   // with a slight green tint. Reads green + keeps the paper feel.
   pine: { shadow: [28, 36, 26], mid: [61, 107, 63], highlight: [238, 240, 228] },
-  eucalyptus: { shadow: [47, 79, 69], highlight: [240, 243, 241] }, // muted grey-green (reads flat)
+  eucalyptus: { shadow: [47, 79, 69], highlight: [240, 243, 241] }, // muted gray-green (reads flat)
   // struct — for architectural/elevation assets that mix structure + botanical:
   // dark half → black, upper-mid (fine growth) → green, top → eucalyptus paper.
   // Black structure, green growth, from one asset. No overlay.

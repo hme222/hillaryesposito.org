@@ -29,7 +29,7 @@ const CHAPTERS = [
     heading: "Six years at MSK, optimizing internal operations and designing for 21,000+ clinicians and staff.",
     image: "/assets/about/msk.jpg",
     paragraphs: [
-      "I led the EMR workflow redesign behind a 20% organization-wide cost reduction, rebuilt certification workflows for a 70% efficiency gain, and redesigned onboarding using staff feedback. This was deep user research before I formally had the vocabulary for it.",
+      "I initiated the EMR workflow redesign behind a 20% organization-wide cost reduction, rewrote the CPR certification material so every certification came in 70% ahead of a deadline that was about to slip, and rebuilt the onboarding program — Epic, HIPAA, compliance — for new administrative staff. This was deep user research before I formally had the vocabulary for it.",
     ],
     callout: "Systems fail at the point where a real person has to use them.",
     articleLink: {
@@ -47,6 +47,7 @@ const CHAPTERS = [
       "Medical logistics means making sure medicine and equipment reach the people treating casualties, before they need it. Deployed to Iraq with the 44th IBCT — an infantry brigade of several thousand soldiers — I directed that supply chain for 5,000+ soldiers and $2M in supplies across seven aid stations, the front-line clinics where wounded soldiers are treated first, in three countries. Pioneered digital tracking that cut resupply time 85% and reduced spending 60%. In 2020, activated for New Jersey’s COVID-19 response, I reported from the Joint Surgeon’s Office — the medical command for the state’s National Guard — to the Pentagon on state medical operations.",
     ],
     callout: "Process failure in a combat zone isn’t an inconvenience. It’s a casualty risk.",
+    caseLink: { path: "/case-study/logistics", title: "Medical logistics, Iraq", source: "Read the case study" },
   },
 ];
 
@@ -69,7 +70,7 @@ const CHAPTERS_ES = [
     heading: "Seis años en MSK, optimizando operaciones internas y diseñando para 21,000+ clínicos y personal.",
     image: "/assets/about/msk.jpg",
     paragraphs: [
-      "Lideré el rediseño de un flujo EMR detrás de una reducción organizacional de 20% en costos, reconstruí flujos de certificación para una mejora de 70% y rediseñé onboarding usando feedback del personal. Esto fue investigación de usuarios en profundidad antes de que yo tuviera el vocabulario formal para llamarlo así.",
+      "Inicié el rediseño de un flujo EMR detrás de una reducción organizacional de 20% en costos, reescribí el material de certificación de RCP para que todas llegaran un 70% antes de un plazo que estaba a punto de aplazarse, y reconstruí el programa de incorporación — Epic, HIPAA, cumplimiento — para el personal administrativo nuevo. Esto fue investigación de usuarios en profundidad antes de que yo tuviera el vocabulario formal para llamarlo así.",
     ],
     callout: "Los sistemas fallan donde una persona real tiene que usarlos.",
     articleLink: {
@@ -87,6 +88,7 @@ const CHAPTERS_ES = [
       "La logística médica consiste en lograr que los medicamentos y el equipo lleguen a quienes atienden heridos, antes de que los necesiten. Desplegada en Irak con la 44th IBCT — una brigada de infantería de varios miles de soldados — dirigí esa cadena de suministro para más de 5,000 soldados y $2M en suministros en siete estaciones de ayuda, las clínicas de primera línea donde se atiende primero a los heridos, en tres países. Fui pionera en un sistema de seguimiento digital que redujo el tiempo de reabastecimiento en 85% y el gasto en 60%. En 2020, durante la respuesta de COVID-19 en Nueva Jersey, reporté desde la Oficina del Joint Surgeon al Pentágono sobre operaciones médicas estatales.",
     ],
     callout: "Una falla de proceso en zona de combate no es una molestia. Es un riesgo.",
+    caseLink: { path: "/case-study/logistics", title: "Logística médica, Irak", source: "Ver el caso de estudio" },
   },
 ];
 
@@ -188,6 +190,16 @@ export default function About() {
                   <p className="rp-chapter__body" key={paragraph}>{paragraph}</p>
                 ))}
                 <p className="rp-chapter__callout">{chapter.callout}</p>
+
+                {chapter.caseLink && (
+                  <Link to={chapter.caseLink.path} className="rp-chapter__proof">
+                    <span aria-hidden="true"><NewsIcon /></span>
+                    <span>
+                      <b>{chapter.caseLink.title}</b>
+                      <small>{chapter.caseLink.source}</small>
+                    </span>
+                  </Link>
+                )}
 
                 {chapter.articleLink && (
                   <a

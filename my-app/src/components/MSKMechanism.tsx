@@ -71,7 +71,7 @@ function Certification() {
 function Onboarding() {
   // REPLACED 2026-08-03. This drew five department checklists collapsing into
   // one path gated on safety prerequisites before patient contact — a clinician
-  // onboarding flow that never existed. The real programme trained new
+  // onboarding flow that never existed. The real program trained new
   // administrative support staff, and the design problem was the opposite
   // shape: not many paths converging, but one path that had to open up to meet
   // cohorts arriving with very different starting points.

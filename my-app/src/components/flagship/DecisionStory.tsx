@@ -39,7 +39,7 @@ type Props = {
  * that is already there, not a reveal of content that is not.
  *
  * Position is one division against the track's own rect: how far the track has
- * travelled past the top of the viewport, over the distance it can travel. The
+ * traveled past the top of the viewport, over the distance it can travel. The
  * track is the only element measured, so there is nothing to fall out of sync
  * with — no per-step height, no detection band a short step can slip through.
  */

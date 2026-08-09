@@ -89,7 +89,7 @@ const SURVIVED = [
   // "Clinician onboarding — still in use after three leadership transitions"
   // was removed on 2026-08-03. The programme was not clinician onboarding, and
   // the three-transitions claim was attached to that wrong description; nothing
-  // has been verified about how long the real programme ran.
+  // has been verified about how long the real program ran.
 ];
 
 // Restored from the earlier case study. The outcome metrics named certification
@@ -132,7 +132,7 @@ const REDESIGNS = [
     // instructed on it — deliberately not attached to the 2018–20 filing
     // redesign further up the page, which predates it.
     finding: "Epic, HIPAA, the compliance modules, and the technical and soft skills of the job were taught the same way to every new administrative hire — people who arrived with very different starting points, some fluent with the systems, some never having opened them.",
-    change: "I worked with the design team to rebuild the programme, then curated the instruction cohort by cohort so a one-to-three-week course met the range of abilities actually in the room.",
+    change: "I worked with the design team to rebuild the program, then curated the instruction cohort by cohort so a one-to-three-week course met the range of abilities actually in the room.",
   },
 ];
 
@@ -184,7 +184,7 @@ export default function FlagshipMSK() {
             <span className="rp-eyebrow">Service design · process improvement · clinical systems</span>
             <h1 className="rp-h1">Memorial Sloan Kettering.</h1>
             <span className="rp-readtime"><b>6 min</b><span>read · 6 years, 3 roles</span></span>
-            {/* Opens the thread rather than summarising activities. The second
+            {/* Opens the thread rather than summarizing activities. The second
                 sentence used to list what she did (mapped, aligned, redesigned);
                 it now states what the story is, so every section below has
                 something to be part of. */}
@@ -296,7 +296,7 @@ export default function FlagshipMSK() {
           <h2 className="rp-title">The same failure, in two more places.</h2>
           {/* "Same failure" overstated it — the three are not the same mechanism.
               What repeats is the root cause. */}
-          <p className="rp-lede">Once I knew what it looked like, I found it in the CPR certification and in the onboarding programme. Same root cause every time: built for the institution, not for the person who had to get through it.</p>
+          <p className="rp-lede">Once I knew what it looked like, I found it in the CPR certification and in the onboarding program. Same root cause every time: built for the institution, not for the person who had to get through it.</p>
           <div className="fp-redesigns rp-reveal">
             {REDESIGNS.map((r) => (
               <article key={r.n}>
@@ -424,7 +424,7 @@ export default function FlagshipMSK() {
         // prop below already states it, in its own dedicated line.
         kicker="What it added up to"
         title="The numbers, and who they belong to."
-        intro="I initiated the dashboard-to-online-EMR workflow redesign as a coordinator and it was implemented off my presentation to the company two roles later, rewrote the CPR certification material for the clinicians completing it, and rebuilt the onboarding programme — Epic, HIPAA, compliance, and the technical and soft skills — for new administrative staff."
+        intro="I initiated the dashboard-to-online-EMR workflow redesign as a coordinator and it was implemented off my presentation to the company two roles later, rewrote the CPR certification material for the clinicians completing it, and rebuilt the onboarding program — Epic, HIPAA, compliance, and the technical and soft skills — for new administrative staff."
         disclaimer="Anonymized evidence · organization-wide results are attributed to the initiative"
         // The same discipline the certification dashboard used on its own data:
         // say what you are looking at before someone has to work it out. All

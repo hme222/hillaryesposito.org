@@ -72,7 +72,7 @@ const en = {
   "home.riso.heroClose": "who couldn't afford a wrong guess.",
   "home.riso.workTitle": "Three products, three ways trust gets earned",
   "home.riso.groveDesc":
-    "A plant-care app an AI built in one pass. I surveyed 34 owners, then rebuilt it around the harder problem: teaching the model to show its confidence, cite a source, and admit when it does not know.",
+    "A plant-care app an AI built in one pass. I am the only designer on it: I surveyed 34 owners, cut eleven features to three, and rebuilt it around the harder problem — teaching the model to show its confidence, cite a source, and admit when it does not know.",
   "home.riso.mskDesc":
     "Six years redesigning clinical workflows where a wrong answer had a cost — a 20% EMR cost cut, and every CPR certification collected 70% ahead of a deadline that was about to slip.",
   "home.riso.mobbinDesc":
@@ -91,7 +91,7 @@ const en = {
   // ── Home: mini about ──
   "home.about.eyebrow": "A little about me",
   "home.about.blurb":
-    "13+ years inside high-stakes systems: military medical logistics, cancer-care operations, internal tools, and AI-assisted product work. The through-line is who I design for. The person using the system under pressure — the clinician between patients, not the org chart above them. Whether it’s 21,000 clinicians and staff or one new plant owner, the job is the same. Make the software trustworthy where a wrong answer costs something.",
+    "13+ years inside high-stakes systems: military medical logistics, cancer-care operations, internal tools, and AI-assisted product work. On Grove I have been the only designer — research, prioritization, interaction, and the screens. The through-line is who I design for. The person using the system under pressure — the clinician between patients, not the org chart above them. Whether it’s 21,000 clinicians and staff or one new plant owner, the job is the same. Make the software trustworthy where a wrong answer costs something.",
   "home.about.link": "More about me →",
 
   // ── Home: proof stats ──
@@ -197,7 +197,7 @@ const es: Partial<Record<StringKey, string>> = {
   // ── Home: mini about ──
   "home.about.eyebrow": "Un poco sobre mí",
   "home.about.blurb":
-    "Más de 13 años dentro de sistemas de alto riesgo: logística médica militar, operaciones oncológicas, herramientas internas y trabajo de producto asistido por IA. El hilo común es para quién diseño. La persona que usa el sistema bajo presión — el clínico entre pacientes, no el organigrama por encima. Ya sean 21,000 clínicos y personal o un nuevo dueño de plantas, el trabajo es el mismo. Hacer que el software sea confiable donde una respuesta equivocada cuesta algo.",
+    "Más de 13 años dentro de sistemas de alto riesgo: logística médica militar, operaciones oncológicas, herramientas internas y trabajo de producto asistido por IA. En Grove he sido la única diseñadora: investigación, priorización, interacción y las pantallas. El hilo común es para quién diseño. La persona que usa el sistema bajo presión — el clínico entre pacientes, no el organigrama por encima. Ya sean 21,000 clínicos y personal o un nuevo dueño de plantas, el trabajo es el mismo. Hacer que el software sea confiable donde una respuesta equivocada cuesta algo.",
   "home.about.link": "Conozca más sobre mí →",
 
   // ── Home: proof stats ──

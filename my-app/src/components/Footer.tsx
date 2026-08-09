@@ -57,6 +57,16 @@ const COLOPHONS: Record<string, Credit[]> = {
     { icon: "🏥", label: "six years on the floor", es: "seis años en el piso" },
     { icon: "☕", label: "caffeine", es: "cafeína" },
   ],
+  "/case-study/logistics": [
+    { icon: "🎖️", label: "5,000+ soldiers supplied", es: "más de 5,000 soldados abastecidos" },
+    { icon: "📦", label: "$2M in medical supplies", es: "$2M en suministros médicos" },
+    { icon: "🚚", label: "medical supply chain", es: "cadena de suministro médico" },
+    { icon: "🌡️", label: "a cold chain that could not slip", es: "una cadena de frío que no podía fallar" },
+    { icon: "📋", label: "one protocol for seven aid stations", es: "un protocolo para siete estaciones de ayuda" },
+    { icon: "📊", label: "weekly and monthly demand analysis", es: "análisis de demanda semanal y mensual" },
+    { icon: "🤝", label: "three countries and partner militaries", es: "tres países y militares aliados" },
+    { icon: "☕", label: "caffeine", es: "cafeína" },
+  ],
   "/case-study/mobbin": [
     { icon: "📱", label: "3 live finance apps", es: "3 apps de finanzas en vivo" },
     { icon: "🖼️", label: "200+ screens per app", es: "200+ pantallas por app" },

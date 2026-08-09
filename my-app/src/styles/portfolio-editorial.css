@@ -641,7 +641,7 @@
    reads as a web page rather than an editorial spread. The hero was also
    inline-capped in the JSX, so no stylesheet could reach it.
    Open the display end, widen the measure to carry it, and keep the steps
-   between levels wide enough that hierarchy does the work instead of colour. */
+   between levels wide enough that hierarchy does the work instead of color. */
 .about-page .about-hero-profile .rp-clearing { max-width: 46ch; }
 .about-page .about-hero-profile .rp-h1 {
   font-size: clamp(2.2rem, 5.2vw, 4rem);

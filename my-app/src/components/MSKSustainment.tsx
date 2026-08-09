@@ -46,7 +46,7 @@ const LANES: Lane[] = [
   },
   // The onboarding lane was removed on 2026-08-03 along with the certification
   // lane. It read "Clinician onboarding" surviving three leadership changes —
-  // but the programme trained administrative staff, not clinicians, and the
+  // but the program trained administrative staff, not clinicians, and the
   // three-transitions claim belonged to that wrong description. One lane with
   // evidence is worth more than three with two guesses in them.
 ];

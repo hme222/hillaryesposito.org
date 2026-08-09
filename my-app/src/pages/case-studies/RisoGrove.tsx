@@ -28,7 +28,7 @@ import "../../styles/riso-page.css";
 // chapter highlighting for free. The first entry anchors the hero for active
 // tracking; the component itself renders from the second onward.
 const CHAPTERS: CaseStudyChapter[] = [
-  { id: "grove-start", label: "Start", note: "A decision log, not a demo" },
+  { id: "grove-start", label: "Start", note: "One designer, end to end" },
   { id: "grove-brief", label: "Problem", note: "Care should fit a life already happening" },
   { id: "grove-research", label: "Research", note: "34 real opinions" },
   // "Redesign" used to point here, at the gallery of what the AI built — the
@@ -327,15 +327,17 @@ export default function RisoGrove() {
         />
         <div className="rp-hero__content">
           <div className="rp-clearing">
-            <span className="rp-eyebrow">Product design · AI judgment</span>
+            <span className="rp-eyebrow">Sole designer · research to shipped screens · AI judgment</span>
             <h1 className="rp-h1">Grove.</h1>
             <span className="rp-readtime">
               <b>7 min</b>
-              <span>read · a decision log, not a demo</span>
+              <span>read · one designer, end to end</span>
             </span>
             <p className="rp-sub">
-              An AI built this plant-care app in one pass — every feature, all at once. I tested it,
-              asked 34 owners what actually mattered, and now I’m rebuilding around <b>trust</b>. (Phase 2 of 3.)
+              I am the only designer on this. An AI built the plant-care app in one pass — every
+              feature at once — and everything after that is mine: the 5-user test, the 34-person
+              survey, cutting eleven features to three, the five calls where I overruled the model,
+              and the screens. I am <b>rebuilding it around trust</b>. (Phase 2 of 3.)
             </p>
             <a className="rp-cta" href="#grove-research">
               See the rebuild →
@@ -384,7 +386,7 @@ export default function RisoGrove() {
 
           <h3 className="rp-subhead">What those 34 people actually said</h3>
           <p className="rp-lede">
-            Brand-new owners through serious collectors, answered between 22 May and 8 July 2026. Each picked the three features they considered launch dealbreakers.
+            Brand-new owners through serious collectors, answered between May 22 and July 8, 2026. Each picked the three features they considered launch dealbreakers.
           </p>
           <dl className="rp-surveyStats rp-reveal">
             {SURVEY_FINDINGS.map((f) => (
@@ -613,7 +615,7 @@ export default function RisoGrove() {
             <span>Why a plant app</span>
             Teaching a model to say “I’m not sure” — to show its confidence, cite a source, and stop
             short of a guess — is the same design problem whether the answer is “is this plant toxic
-            to my cat” or “is this the right dose.” I practised it here because I spent six years in
+            to my cat” or “is this the right dose.” I practiced it here because I spent six years in
             a cancer center, where I watched what happens when a system states something confidently
             and is wrong. Plants are the low-stakes version of a question I already know the cost of.
           </p>

@@ -16,7 +16,7 @@ type MSKDashboardMockupProps = {
 // clinician's chart view — a clinician reads charts, they do not file into
 // them, and framing it that way described a job nobody in this story had.
 //
-// `slug` is explicit rather than derived from the label so the status colours
+// `slug` is explicit rather than derived from the label so the status colors
 // stay bound to meaning, not to wording.
 const rows = [
   { mrn: "••••4821", received: "Received 2h ago", doc: "Signed consent", status: "Ready to send", slug: "ready-to-file", routed: "Filing queue", action: "Send to EMR" },

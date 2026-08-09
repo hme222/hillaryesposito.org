@@ -363,7 +363,7 @@ select:focus {
   top: 0;
   width: 100%;
   /* Full-width background/border, but the content (logo + nav) is capped to the
-     page's content width and centred, so on wide screens the nav doesn't strand
+     page's content width and centered, so on wide screens the nav doesn't strand
      the logo and menu at the extreme edges. max() keeps --page-pad on the
      narrower responsive locks, so mobile/tablet layouts are untouched. */
   padding: 1.2rem max(var(--page-pad), calc((100% - 1280px) / 2));
@@ -395,7 +395,7 @@ select:focus {
 
 /* Logo lockup: an "HE" ligature mark · hairline rule · tracked name over a role
    tagline. Typography-led, no container; doubles as a favicon-ready mark. */
-/* Symbol mark: an inked cradle holding an amber point of clarity - human-centred
+/* Symbol mark: an inked cradle holding an amber point of clarity - human-centered
    care ("design for the humans in the system"). Olive via currentColor. */
 .logo-mark {
   color: var(--olive-2);
@@ -937,7 +937,7 @@ select:focus {
    resolved row of balls + nav words has clear space of its own (no collision
    with the positioning line or the description). The balls still play their
    full-height tangle behind everything; group.position.y ≈ 0 lands the resting
-   row in this centred band. */
+   row in this centered band. */
 .hero-knot-band {
   width: 100%;
   /* Sized for the small decorative knot now (not a full nav row), so the resting
@@ -1213,7 +1213,7 @@ body {
   outline-color: var(--focus);
 }
 
-/* ---------- Links must not rely on colour alone (WCAG 1.4.1) ---------- */
+/* ---------- Links must not rely on color alone (WCAG 1.4.1) ---------- */
 a {
   text-decoration: underline;
   text-underline-offset: 4px;
@@ -2238,7 +2238,7 @@ textarea::placeholder {
 
 /* The row the active decision is talking about. Driven by the interaction-logic
    section's scroll position; inert everywhere else, since activeRow defaults to
-   null. Brightness and a coral edge rather than a colour swap, so the
+   null. Brightness and a coral edge rather than a color swap, so the
    status accent underneath stays readable. */
 .msk-dashboard-mockup__row.is-active {
   background: color-mix(in srgb, var(--coral) 9%, transparent);
@@ -3101,7 +3101,7 @@ textarea::placeholder {
 /* Restructured sections pair `gh-section-label` with a bare <h2>, which falls
    back to the larger, olive, 3rem-top-margin `.case-study h2`. Normalize any h2
    directly after an eyebrow to the cs-section-title rhythm so section titles are
-   the same size, colour, and eyebrow-to-title distance across every page. */
+   the same size, color, and eyebrow-to-title distance across every page. */
 .case-study .gh-section-label + h2 {
   font-size: 1.5rem;
   font-weight: 600;
@@ -3299,7 +3299,7 @@ textarea::placeholder {
 
 /* The floating-island masthead was removed on 2026-07-28. Nothing ever applied
    `.is-floating`, so the condensing pill never ran; portfolio-cohesion.css
-   states the shipped intent — "one masthead, one behaviour: a stable editorial
+   states the shipped intent — "one masthead, one behavior: a stable editorial
    rule rather than a transparent bar that turns into a floating island
    mid-scroll." Its transition also animated max-width/margin/padding/top,
    which would have forced layout on a sticky, always-present element.
