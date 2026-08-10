@@ -2,7 +2,7 @@
 
 **Date:** 2026-07-29  
 **Owner:** motion-designer  
-**Status:** Local candidate produced and technically verified; release still held for representative recruiter recall and real assistive-technology review
+**Status:** Landscape candidate is live; corrected 4:5 candidate is locally verified; representative recruiter recall and real assistive-technology review remain open
 **Duration:** 7.792 seconds at 24 fps
 **Delivery:** Silent, user-initiated film plus an equivalent static evidence poster  
 
@@ -34,9 +34,9 @@ The case study documents five completed overrides, but this film deliberately pr
 
 ### Candidate production record · 3 August 2026
 
-Hillary explicitly approved continuing the Higgsfield candidate before the representative recall study. That approval changed the production gate, not the release gate. The candidate was assembled in Higgsfield's cloud sandbox with Pillow and ffmpeg from the locked source screens and survey copy; no image-to-video or generative UI model was used, and no generation credits were spent.
+Hillary explicitly approved continuing the Higgsfield candidate before the representative recall study, and the landscape candidate subsequently went live. That approval did not waive the remaining validation. The candidate was assembled in Higgsfield's cloud sandbox with Pillow and ffmpeg from the locked source screens and survey copy; no image-to-video or generative UI model was used, and no generation credits were spent.
 
-The first export was rejected because four sampled timestamps decoded to the same static frame. The corrected export has four distinct decoded frame hashes at 1.2, 3.3, 5.8, and 7.5 seconds and returns to the complete poster. Its delivered files are 181 KB MP4, 249 KB WebM, and a 45 KB WebP poster. The local integration is explicit-play, silent, non-looping, captioned, and paired with the complete static summary. Full provenance is recorded in `design-docs/media/2026-08-03-grove-higgsfield-candidate.md`.
+The first landscape export was rejected because four sampled timestamps decoded to the same static frame. The corrected landscape export has four distinct decoded frame hashes at 1.2, 3.3, 5.8, and 7.5 seconds and returns to the complete poster. Two portrait poster attempts were then rejected for clipped and crowded copy; the accepted 720×900 version reflows the evidence into three stacked panels with a larger problem statement. The delivery is explicit-play, silent, non-looping, captioned, and paired with the complete static summary. Full provenance is recorded in `design-docs/media/2026-08-03-grove-higgsfield-candidate.md`.
 
 ### Pre-production truth lock
 
@@ -205,12 +205,12 @@ Keep the three real third-party app captures stationary while the editorial laye
 
 - **Agentic UX / Trust — Practitioner synthesis:** explicit play, pause/replay, provenance, truthful stage labeling, static recovery, and reduced-motion choice are specified.
 - **Enterprise Design Systems / Prototyping — Verified from repository:** current Riso tokens, type, source artifacts, and responsive compositions are reused; no new motion runtime or local visual fork is required for the film itself.
-- **UX Research / Strategy — Verified from repository:** the evidence-to-decision chain is specific and the content owner confirmed `n=34`; representative recruiter recall remains required before release.
+- **UX Research / Strategy — Verified from repository:** the evidence-to-decision chain is specific and the content owner confirmed `n=34`; representative recruiter recall remains required before the pattern is retained or expanded to another case study.
 - **Prompting / Evals — Practitioner synthesis:** the source packet is frozen, generation boundaries are explicit, and critical failures are judgeable.
 - **Unresolved hard gates:** five-person representative recruiter comprehension and real VoiceOver/NVDA validation. Real export weight, rendered desktop/mobile integration, source truth, explicit playback behavior, and automated accessibility checks now pass.
 
 ## Handoff
 
-**motion-designer → producer:** “Keep the verified local candidate out of release until the representative recall and real AT passes. If either study changes the story, revise the 7.792-second trace from the real Emergent screens, the dated n=34 survey evidence, and the one reminder override—never from generated UI. Keep `Hillary chose`, `Phase 2 of 3`, and `not a finished screen` visible.”
+**motion-designer → producer:** “The landscape candidate is already live. Ship the corrected portrait source only after local verification, then treat representative recall and real AT as urgent post-release validation. If either study changes the story, revise or roll back the motion layer. Do not start MSK or Mobbin motion until this pattern earns a `Use` verdict.”
 
 **motion-designer → accessibility judge:** “Please test the static poster first: it must carry the entire claim without playback. Then check the 18 px mobile caption floor, keyboard play/pause/replay, the reduced-motion default, and whether the three transitions remain understandable without color or motion. The highest-risk points are the short 7.8-second reading pace and any temptation to hide provenance inside the final frame.”
