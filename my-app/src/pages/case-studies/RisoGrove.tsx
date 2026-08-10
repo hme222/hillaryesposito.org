@@ -70,9 +70,9 @@ const LEGS = [
   },
   {
     n: "04",
-    mission: "Redesign around trust",
+    mission: "Rebuild around the three that matter",
     detail:
-      "Keep only what earns trust: reminders that never nag, an AI that shows its sources, pet-safety warnings, and a person who can always overrule it. Calm, not busy.",
+      "Keep only what earns the download: reminders that never nag, an AI that shows its sources, pet-safety warnings, and a person who can always overrule it. Calm, not busy.",
     impact: "Phase 2 of 3",
     now: true,
   },
@@ -109,7 +109,7 @@ const MVP_FEATURES = [
 const OUTCOMES = [
   { n: "34", l: "plant owners surveyed before any screen changed" },
   { n: "3", l: "features that earn the download; everything else waits" },
-  { n: "5", l: "AI calls I overruled to keep Grove trustworthy" },
+  { n: "5", l: "AI calls I overruled to keep Grove honest" },
 ];
 
 const SCREENS = [
@@ -431,7 +431,7 @@ export default function RisoGrove() {
       <section className="rp-section rp-section--alt">
         <div className="rp-wrap">
           <p className="rp-kicker">The rebuild</p>
-          <h2 className="rp-title">Four decisions, from AI-built to trustworthy.</h2>
+          <h2 className="rp-title">Four decisions, from AI-built to worth keeping.</h2>
           <ol className="rp-route rp-reveal">
             {LEGS.map((leg) => (
               <li className={`rp-leg${leg.now ? " rp-leg--now" : ""}`} key={leg.n}>
@@ -556,7 +556,7 @@ export default function RisoGrove() {
         <div className="rp-wrap">
           <p className="rp-phase">Foundation <span>· the system</span></p>
           <h2 className="rp-title" style={{ marginTop: ".4rem" }}>The system underneath.</h2>
-          <p className="rp-lede">The decisions that hold Grove together — its palette, type, principles, and three interactive trust specimens. Click a token to copy it.</p>
+          <p className="rp-lede">The decisions that hold Grove together — its palette, type, principles, and three interactive specimens. Click a token to copy it.</p>
           <GroveSystemLab />
           <h3 className="rp-subhead">Type scale</h3>
           <div className="rp-typescale">
@@ -643,7 +643,7 @@ export default function RisoGrove() {
               Phase 1 was the first AI-built version and the 34-person survey this redesigns from.
               Phase 2 is the decisions on this page. Phase 3 is finishing the high-fidelity care and
               plant-ID screens, testing them with owners, and documenting the edge states. Social
-              discovery stays out until the core care loop earns trust.
+              discovery stays out until the core care loop earns its place.
             </p>
           </div>
         </div>

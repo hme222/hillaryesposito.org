@@ -173,7 +173,7 @@ describe("flagship case-study accessibility", () => {
       root.render(<RisoGrove />);
     });
     expect(container.textContent).toContain("The rebuild");
-    expect(container.textContent).toContain("Four decisions, from AI-built to trustworthy");
+    expect(container.textContent).toContain("Four decisions, from AI-built to worth keeping");
     expect(container.textContent).not.toContain("Walk the route");
   });
 

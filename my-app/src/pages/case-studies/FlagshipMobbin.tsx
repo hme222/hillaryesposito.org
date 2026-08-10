@@ -21,14 +21,14 @@ const CHAPTERS: CaseStudyChapter[] = [
   { id: "mobbin-brief", label: "Problem", note: "It has to survive without its author" },
   { id: "mobbin-work", label: "Method", note: "A screenshot is not a flow" },
   { id: "mobbin-decisions", label: "Decisions", note: "Editing is the work" },
-  { id: "mobbin-apps", label: "Apps", note: "Three trust models" },
+  { id: "mobbin-apps", label: "Apps", note: "Three different answers" },
   { id: "mobbin-outcomes", label: "Outcomes", note: "200+ screens per app later" },
 ];
 
 const APPS: ScreenSequenceItem[] = [
-  { name: "Kikoff", category: "Credit building · trust through proof", image: "/assets/mobbin/kikoff.jpg", alt: "Kikoff credit-building interface from the documented flow", summary: "A twelve-screen sign-up earns its length by showing a score, a plan, and proof after each action." },
-  { name: "Polymarket", category: "Prediction markets · trust through transparency", image: "/assets/mobbin/polymarket.jpg", alt: "Polymarket prediction-market interface from the documented flow", summary: "Odds, settlement rules, and risk stay visible before someone commits money to an uncertain outcome." },
-  { name: "Discover", category: "Banking · trust through familiarity", image: "/assets/mobbin/discover.jpg", alt: "Discover account interface from the documented flow", summary: "The interface leans on known card and account patterns, then makes the fine print easy to find." },
+  { name: "Kikoff", category: "Credit building · proof after every action", image: "/assets/mobbin/kikoff.jpg", alt: "Kikoff credit-building interface from the documented flow", summary: "A twelve-screen sign-up earns its length by showing a score, a plan, and proof after each action." },
+  { name: "Polymarket", category: "Prediction markets · odds and risk up front", image: "/assets/mobbin/polymarket.jpg", alt: "Polymarket prediction-market interface from the documented flow", summary: "Odds, settlement rules, and risk stay visible before someone commits money to an uncertain outcome." },
+  { name: "Discover", category: "Banking · familiar patterns, findable fine print", image: "/assets/mobbin/discover.jpg", alt: "Discover account interface from the documented flow", summary: "The interface leans on known card and account patterns, then makes the fine print easy to find." },
 ];
 
 const STEPS = [
@@ -127,7 +127,7 @@ export default function FlagshipMobbin() {
 
       <section className="rp-section" id="mobbin-apps">
         <div className="rp-wrap">
-          <p className="rp-kicker">Three apps · three trust models</p>
+          <p className="rp-kicker">Three apps · three different answers</p>
           <h2 className="rp-title">Same category. Opposite ways to earn confidence.</h2>
           <p className="rp-lede">Putting the apps side by side revealed more than counting screens ever could. A longer flow can feel shorter when every step gives something back.</p>
           <ScreenSequence label="Documented finance app sequence" items={APPS} />
@@ -163,7 +163,7 @@ export default function FlagshipMobbin() {
         disclaimer="Freelance app-capture work · source-product ownership stays with each company"
         metrics={[
           { n: "200+", label: "screens per app — captured, sequenced, annotated, and labeled across three apps" },
-          { n: "3", label: "live finance apps documented across distinct trust models" },
+          { n: "3", label: "live finance apps documented, each earning confidence a different way" },
           { n: "4", label: "months building reusable references for designers" },
         ]}
         route={["Capture the task", "Map the sequence", "Name the pattern", "Make it searchable"]}

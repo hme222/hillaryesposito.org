@@ -62,15 +62,15 @@ const en = {
   "home.getInTouch": "Get in touch",
   "home.seeApproach": "See my approach →",
   "home.riso.eyebrow": "Hillary Esposito · Product Designer",
-  "home.riso.heroTitle": "Systems people have to trust.",
+  "home.riso.heroTitle": "I own the whole path, not just the last screen.",
   // "Workflow fluency" named a skill without saying what it covers. The
   // durable claim is scope: the whole path a task takes, not the screen at the
   // end of it — which is what the MSK case study actually demonstrates.
   "home.riso.heroLead":
-    "I own the whole path a task takes, not just the last screen — research rigor and AI judgment, shaped by six years building software for",
+    "Six years building software for",
   "home.riso.heroProof": "21,000 clinicians and staff",
-  "home.riso.heroClose": "who couldn't afford a wrong guess.",
-  "home.riso.workTitle": "Three products, three ways trust gets earned",
+  "home.riso.heroClose": "who couldn't afford a wrong guess. Research rigor and AI judgment.",
+  "home.riso.workTitle": "Three products, three different problems",
   "home.riso.groveDesc":
     "A plant-care app an AI built in one pass. I am the only designer on it: I surveyed 34 owners, cut eleven features to three, and rebuilt it around the harder problem — teaching the model to show its confidence, cite a source, and admit when it does not know.",
   "home.riso.mskDesc":
@@ -91,7 +91,7 @@ const en = {
   // ── Home: mini about ──
   "home.about.eyebrow": "A little about me",
   "home.about.blurb":
-    "13+ years inside high-stakes systems: military medical logistics, cancer-care operations, internal tools, and AI-assisted product work. On Grove I have been the only designer — research, prioritization, interaction, and the screens. The through-line is who I design for. The person using the system under pressure — the clinician between patients, not the org chart above them. Whether it’s 21,000 clinicians and staff or one new plant owner, the job is the same. Make the software trustworthy where a wrong answer costs something.",
+    "13+ years inside high-stakes systems: military medical logistics, cancer-care operations, internal tools, and AI-assisted product work. On Grove I have been the only designer — research, prioritization, interaction, and the screens. The through-line is who I design for. The person using the system under pressure — the clinician between patients, not the org chart above them. Whether it’s 21,000 clinicians and staff or one new plant owner, the job is the same. Make the software right where a wrong answer costs something.",
   "home.about.link": "More about me →",
 
   // ── Home: proof stats ──
@@ -101,7 +101,7 @@ const en = {
   "home.stat.mobbinSource": "Mobbin pattern study",
   "home.stat.groveSource": "Grove discovery research",
   "home.stat.mskSource": "MSK clinical operations",
-  "home.trustAria": "Trust and credibility signals",
+  "home.trustAria": "Credentials",
   "home.trust.army": "Army Veteran",
   "home.trust.credentials": "MHA + Lean Six Sigma",
   "home.trust.bilingual": "Bilingual EN/ES",
@@ -171,12 +171,12 @@ const es: Partial<Record<StringKey, string>> = {
   "home.getInTouch": "Contácteme",
   "home.seeApproach": "Conozca mi enfoque →",
   "home.riso.eyebrow": "Hillary Esposito · Diseñadora de Producto",
-  "home.riso.heroTitle": "Sistemas en los que la gente tiene que confiar.",
+  "home.riso.heroTitle": "Asumo el recorrido completo, no solo la última pantalla.",
   "home.riso.heroLead":
-    "Me hago cargo de todo el recorrido de una tarea, no solo de la última pantalla — rigor de investigación y criterio con IA, forjados durante seis años creando software para",
+    "Seis años creando software para",
   "home.riso.heroProof": "21,000 clínicos y personal",
-  "home.riso.heroClose": "que no podían permitirse un error.",
-  "home.riso.workTitle": "Tres productos, tres formas de ganarse la confianza",
+  "home.riso.heroClose": "que no podían permitirse un error. Rigor de investigación y criterio con IA.",
+  "home.riso.workTitle": "Tres productos, tres problemas distintos",
   "home.riso.groveDesc":
     "Una app para el cuidado de plantas que una IA creó de una sola vez. Encuesté a 34 propietarios y la reconstruí alrededor del problema más difícil: enseñarle al modelo a mostrar su confianza, citar su fuente y admitir cuando no sabe.",
   "home.riso.mskDesc":
@@ -197,7 +197,7 @@ const es: Partial<Record<StringKey, string>> = {
   // ── Home: mini about ──
   "home.about.eyebrow": "Un poco sobre mí",
   "home.about.blurb":
-    "Más de 13 años dentro de sistemas de alto riesgo: logística médica militar, operaciones oncológicas, herramientas internas y trabajo de producto asistido por IA. En Grove he sido la única diseñadora: investigación, priorización, interacción y las pantallas. El hilo común es para quién diseño. La persona que usa el sistema bajo presión — el clínico entre pacientes, no el organigrama por encima. Ya sean 21,000 clínicos y personal o un nuevo dueño de plantas, el trabajo es el mismo. Hacer que el software sea confiable donde una respuesta equivocada cuesta algo.",
+    "Más de 13 años dentro de sistemas de alto riesgo: logística médica militar, operaciones oncológicas, herramientas internas y trabajo de producto asistido por IA. En Grove he sido la única diseñadora: investigación, priorización, interacción y las pantallas. El hilo común es para quién diseño. La persona que usa el sistema bajo presión — el clínico entre pacientes, no el organigrama por encima. Ya sean 21,000 clínicos y personal o un nuevo dueño de plantas, el trabajo es el mismo. Hacer que el software esté bien donde una respuesta equivocada cuesta algo.",
   "home.about.link": "Conozca más sobre mí →",
 
   // ── Home: proof stats ──
@@ -207,7 +207,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.stat.mobbinSource": "Estudio de patrones de Mobbin",
   "home.stat.groveSource": "Investigación de descubrimiento de Grove",
   "home.stat.mskSource": "Operaciones clínicas de MSK",
-  "home.trustAria": "Señales de confianza y credibilidad",
+  "home.trustAria": "Credenciales",
   "home.trust.army": "Veterana del Ejército",
   "home.trust.credentials": "MHA + Lean Six Sigma",
   "home.trust.bilingual": "Bilingüe EN/ES",

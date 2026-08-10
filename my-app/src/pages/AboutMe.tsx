@@ -14,11 +14,11 @@ const CHAPTERS = [
   {
     id: "now",
     label: "What I Do Now",
-    heading: "Designing for trust in complex, regulated products.",
+    heading: "Designing for the person who has to act on it.",
     image: "/assets/about/now.jpg",
     paragraphs: [
       "Right now I'm freelancing. My most recent contract was a deep study of three finance apps, where I documented more than 200 screens of end-to-end mobile flows, then annotated and tagged each one so thousands of designers could actually find and reuse them.",
-      "It sharpened three things: reading interaction patterns at scale across financial UX, structuring documentation to a strict taxonomy and quality bar, and seeing how different products solve the same trust problem in very different ways.",
+      "It sharpened three things: reading interaction patterns at scale across financial UX, structuring documentation to a strict taxonomy and quality bar, and seeing how differently products answer the same question — why should I believe this.",
       "AI is part of how I work now, but it stays a tool. I use it to move faster on research and prototyping, then make the calls myself.",
     ],
     callout: "AI moves the work faster. The calls stay mine.",
@@ -55,11 +55,11 @@ const CHAPTERS_ES = [
   {
     id: "now",
     label: "Lo que hago ahora",
-    heading: "Diseño para generar confianza en productos complejos y regulados.",
+    heading: "Diseñar para la persona que tiene que actuar.",
     image: "/assets/about/now.jpg",
     paragraphs: [
       "Ahora trabajo freelance. Mi contrato más reciente fue un estudio profundo de tres apps de finanzas, donde documenté más de 200 pantallas de flujos móviles de principio a fin, y luego anoté y etiqueté cada una para que miles de diseñadores pudieran encontrarlas y reutilizarlas.",
-      "Afinó tres cosas: leer patrones de interacción a escala en UX financiera, estructurar documentación con una taxonomía y un estándar de calidad estrictos, y ver cómo productos distintos resuelven el mismo problema de confianza de maneras muy distintas.",
+      "Afinó tres cosas: leer patrones de interacción a escala en UX financiera, estructurar documentación con una taxonomía y un estándar de calidad estrictos, y ver de qué maneras tan distintas los productos responden a la misma pregunta: por qué debería creerte.",
       "La IA es parte de cómo trabajo ahora, pero sigue siendo una herramienta. La uso para avanzar más rápido en investigación y prototipos, y las decisiones las tomo yo.",
     ],
     callout: "La IA acelera el trabajo. Las decisiones siguen siendo mías.",
@@ -140,7 +140,7 @@ export default function About() {
           <div className="rp-clearing">
             <span className="rp-eyebrow">{isSpanish ? "Sobre mí" : "About"}</span>
             <h1 className="rp-h1">
-              {isSpanish ? "Diseño productos donde los detalles deciden si la gente confía en ellos." : "I design products where the details decide whether people trust them."}
+              {isSpanish ? "Diseño productos donde los detalles deciden si alguien acierta." : "I design products where the details decide whether anyone gets it right."}
             </h1>
             <p className="rp-sub">
               {/* Frames the path as the qualification rather than as a pivot.

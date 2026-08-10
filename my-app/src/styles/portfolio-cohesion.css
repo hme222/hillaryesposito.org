@@ -236,9 +236,12 @@
 .riso-home .rp-hero {
   grid-template-columns: minmax(0, 1.16fr) minmax(360px, .84fr);
 }
-.riso-home .rp-clearing { max-width: 53ch; }
-html[lang="es"] .riso-home .rp-clearing { max-width: 58ch; }
-.riso-home .rp-h1 { font-size: clamp(3rem, 6.2vw, 5.35rem); }
+/* The headline is a sentence now, not four words. At 53ch and 5.35rem it set
+   on six lines and broke mid-phrase; the clearing widens and the type comes
+   down so it lands on three. Spanish runs longer, so it gets more room. */
+.riso-home .rp-clearing { max-width: 72ch; }
+html[lang="es"] .riso-home .rp-clearing { max-width: 78ch; }
+.riso-home .rp-h1 { font-size: clamp(2.4rem, 4.6vw, 4.4rem); }
 .riso-home .carto--paint .carto__map--base {
   inset: 0;
   opacity: .72 !important;
@@ -472,7 +475,8 @@ html[lang="es"] .riso-home .rp-clearing { max-width: 58ch; }
   .about-page .rp-clearing { max-width: none; }
   .riso-home .rp-clearing,
   html[lang="es"] .riso-home .rp-clearing { max-width: none; }
-  .riso-home .rp-h1 { font-size: clamp(2.7rem, 13vw, 4rem); }
+  /* 13vw sized a four-word headline; the sentence needs a lower ceiling. */
+  .riso-home .rp-h1 { font-size: clamp(1.9rem, 8.4vw, 2.9rem); }
   .fashion-system-page .fashion-system-hero { grid-template-columns: 1fr; }
   .fashion-system-page .fashion-key-visual {
     width: 100%;
