@@ -3,7 +3,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import RisoDefs from "../components/riso/RisoDefs";
 import CartoField from "../components/riso/CartoField";
 import PhaseIndicator from "../components/riso/PhaseIndicator";
-import FrameOfIntent from "../components/FrameOfIntent";
 import { CLIENT_FEEDBACK, CLIENT_FEEDBACK_ES } from "../data/clientFeedback";
 import usePageTitle from "../hooks/usePageTitle";
 import { useLanguage, useT } from "../app/LanguageContext";
@@ -183,7 +182,6 @@ export default function RisoHome() {
         <div className="rp-wrap">
           <p className="rp-kicker">{t("home.eyebrow")}</p>
           <h2 className="rp-title" id="home-work-title">{t("home.riso.workTitle")}</h2>
-          <FrameOfIntent />
           <div className="rp-worklist">
             {WORK.map((w) => (
               <Link className="rp-work" to={w.path} key={w.title}>

@@ -2,7 +2,9 @@
 
 **Date:** 2026-08-11  
 **Queue:** Feature / structure  
-**Verdict:** **Conditional — ready for owner interaction-direction review; not visually finished or production-ready**
+**Verdict:** **Rejected by owner; implementation removed**
+
+> Hillary rejected both the Frame of Intent homepage module and the Grove × Higgsfield production-run framing on 2026-08-11. Do not advance, restyle, or reuse this architecture.
 
 ## Delivered
 

@@ -2,10 +2,12 @@
 
 **Date:** 2026-08-11  
 **Owner:** Hillary Esposito  
-**Status:** Approved for a structure-only prototype  
+**Status:** **Rejected by owner and removed from the homepage**
 **Profile:** Prototype
 
 ## Portfolio system
+
+> **Do not implement or reuse.** Hillary rejected both the Frame of Intent homepage module and the Grove × Higgsfield production-run framing on 2026-08-11. This file is retained only as a decision record.
 
 1. **Impossible Evidence Table** — recruiter-facing proof object.
 2. **Frame of Intent / Decision Frame** — translates creative intent into constraints, routes work, and exposes decisions.
