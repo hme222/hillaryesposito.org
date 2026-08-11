@@ -114,94 +114,119 @@ export default function FrameOfIntent() {
 
   const progressStyle = {
     "--foi-progress": decisionProgress / 100,
+    "--foi-inverse": 1 - decisionProgress / 100,
+    "--foi-source-shift": `${(-decisionProgress / 100) * 18}px`,
+    "--foi-decision-shift": `${(1 - decisionProgress / 100) * 18}px`,
+    "--foi-left-shift": `${(decisionProgress / 100) * 30}px`,
+    "--foi-right-shift": `${(-decisionProgress / 100) * 24}px`,
+    "--foi-top-shift": `${(decisionProgress / 100) * 18}px`,
+    "--foi-bottom-shift": `${(-decisionProgress / 100) * 12}px`,
+    "--foi-material-scale": 0.82 + (decisionProgress / 100) * 0.18,
+    "--foi-material-rotate": `${-2.5 + (decisionProgress / 100) * 2.5}deg`,
   } as React.CSSProperties;
+
+  const progressState =
+    decisionProgress === 0 ? "source" : decisionProgress === 100 ? "decision" : "comparing";
 
   return (
     <section className="foi" aria-labelledby="frame-of-intent-title">
-      <div className="foi-intro">
-        <p className="foi-kicker">FRAME OF INTENT · DECISION FRAME 01</p>
-        <h3 id="frame-of-intent-title">A paper detour became an in-system path.</h3>
-        <p className="foi-promise">
-          Inspect the source condition, Hillary’s decision, and the boundary of her role.
-        </p>
-      </div>
+      <div className="foi-layout">
+        <div className="foi-text-rail">
+          <div className="foi-intro">
+            <p className="foi-kicker">FRAME OF INTENT · DECISION FRAME 01</p>
+            <h3 id="frame-of-intent-title">A paper detour became an in-system path.</h3>
+            <p className="foi-promise">
+              Inspect the source condition, Hillary’s decision, and the boundary of her role.
+            </p>
+          </div>
 
-      <Link className="foi-route-link" to="/case-study/msk">
-        Open the MSK case study
-      </Link>
+          <Link className="foi-route-link" to="/case-study/msk">
+            Open the MSK case study
+          </Link>
 
-      <div className="foi-evidence" aria-label="MSK source and decision evidence">
-        <section aria-labelledby="foi-decision-title">
-          <p className="foi-state-label" id="foi-decision-title">Hillary’s decision · In-system path</p>
-          <p className="foi-decision-label">Decision</p>
-          <p className="foi-decision-statement">
-            Keep the document inside the electronic medical record.
-          </p>
-          <p className="foi-route">{DECISION_STEPS.join(" → ")}</p>
-        </section>
-        <section aria-labelledby="foi-source-title">
-          <p className="foi-state-label" id="foi-source-title">Source condition · Paper detour</p>
-          <p className="foi-route">{SOURCE_STEPS.join(" → ")}</p>
-        </section>
-      </div>
+          <div className="foi-evidence" aria-label="MSK source and decision evidence">
+            <section aria-labelledby="foi-decision-title">
+              <p className="foi-state-label" id="foi-decision-title">Hillary’s decision · In-system path</p>
+              <p className="foi-decision-label">Decision</p>
+              <p className="foi-decision-statement">
+                Keep the document inside the electronic medical record.
+              </p>
+              <p className="foi-route">{DECISION_STEPS.join(" → ")}</p>
+            </section>
+            <section aria-labelledby="foi-source-title">
+              <p className="foi-state-label" id="foi-source-title">Source condition · Paper detour</p>
+              <p className="foi-route">{SOURCE_STEPS.join(" → ")}</p>
+            </section>
+          </div>
 
-      <div className="foi-boundary">
-        <p className="foi-state-label">Role and source boundary</p>
-        <p>
-          Hillary initiated the redesign as a coordinator. It was later implemented within a larger
-          EMR initiative. The workflow is recreated, contains no patient data, and is not an Epic screen.
-        </p>
-      </div>
-
-      <div className="foi-instrument" style={progressStyle}>
-        <p className="foi-instruction">
-          Move one point or use the range to inspect the change.
-        </p>
-
-        <div className="foi-stage" aria-hidden="true">
-          <div className="foi-stage__material" />
-          <span className="foi-stage__label foi-stage__label--outside">
-            Outside frame: raw project complexity
-          </span>
-          <span className="foi-stage__label foi-stage__label--inside">
-            Inside frame: selected decision evidence
-          </span>
-          {["north-west", "north-east", "south-west", "south-east"].map((corner) => (
-            <div
-              className={`foi-node foi-node--${corner}`}
-              data-frame-node={corner}
-              key={corner}
-              onPointerDown={handlePointerDown}
-              onPointerMove={handlePointerMove}
-              onPointerUp={handlePointerUp}
-              onPointerCancel={handlePointerCancel}
-            >
-              <span />
-            </div>
-          ))}
+          <div className="foi-boundary">
+            <p className="foi-state-label">Role and source boundary</p>
+            <p>
+              Hillary initiated the redesign as a coordinator. It was later implemented within a larger
+              EMR initiative. The workflow is recreated, contains no patient data, and is not an Epic screen.
+            </p>
+          </div>
         </div>
 
-        <div className="foi-controls">
-          <label htmlFor="decision-progress">Inspect the decision</label>
-          <div className="foi-range-wrap">
-            <span>Source condition</span>
-            <input
-              id="decision-progress"
-              type="range"
-              min="0"
-              max="100"
-              step="5"
-              value={decisionProgress}
-              aria-valuetext={valueText(decisionProgress)}
-              onInput={handleRangeChange}
-            />
-            <span>Hillary's decision</span>
+        <div className="foi-instrument" style={progressStyle}>
+          <p className="foi-instruction">
+            Move one point or use the range to inspect the change.
+          </p>
+
+          <div className="foi-stage" aria-hidden="true" data-progress-state={progressState}>
+            <div className="foi-stage__material" />
+            <span className="foi-stage__label foi-stage__label--outside">
+              Outside frame: raw project complexity
+            </span>
+            <span className="foi-stage__label foi-stage__label--inside">
+              Inside frame: selected decision evidence
+            </span>
+            <div className="foi-protected foi-protected--source" data-protected-route="source">
+              <span>Source condition · Paper detour</span>
+              <p>{SOURCE_STEPS.join(" → ")}</p>
+            </div>
+            <div className="foi-protected foi-protected--decision" data-protected-route="decision">
+              <span>Hillary’s decision · In-system path</span>
+              <p>{DECISION_STEPS.join(" → ")}</p>
+              <strong>Keep the document inside the electronic medical record.</strong>
+            </div>
+            {["north-west", "north-east", "south-west", "south-east"].map((corner) => (
+              <div
+                className={`foi-node foi-node--${corner}`}
+                data-frame-node={corner}
+                key={corner}
+                onPointerDown={handlePointerDown}
+                onPointerMove={handlePointerMove}
+                onPointerUp={handlePointerUp}
+                onPointerCancel={handlePointerCancel}
+              >
+                <span />
+              </div>
+            ))}
           </div>
-          <div className="foi-endpoints" aria-label="Decision frame endpoints">
-            <button type="button" onClick={() => showEndpoint(0)}>Show source condition</button>
-            <button type="button" onClick={() => showEndpoint(100)}>Show Hillary's decision</button>
+
+          <div className="foi-controls">
+            <label htmlFor="decision-progress">Inspect the decision</label>
+            <div className="foi-range-wrap">
+              <span>Source condition</span>
+              <input
+                id="decision-progress"
+                type="range"
+                min="0"
+                max="100"
+                step="5"
+                value={decisionProgress}
+                aria-valuetext={valueText(decisionProgress)}
+                onInput={handleRangeChange}
+              />
+              <span>Hillary's decision</span>
+            </div>
+            <div className="foi-endpoints" aria-label="Decision frame endpoints">
+              <button type="button" onClick={() => showEndpoint(0)}>Show source condition</button>
+              <button type="button" onClick={() => showEndpoint(100)}>Show Hillary's decision</button>
+            </div>
+            <p className="foi-status" aria-live="polite" aria-atomic="true">{announcement}</p>
           </div>
-          <p className="foi-status" aria-live="polite" aria-atomic="true">{announcement}</p>
         </div>
       </div>
 

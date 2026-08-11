@@ -1,11 +1,19 @@
 # Design State: Full Portfolio Redesign — Hybrid Positioning
 
-_Last updated: 2026-08-10 by design-critic_
+_Last updated: 2026-08-11 by owner-approved Frame of Intent build contract_
 
 ## Brief Summary
 **Problem:** Portfolio positions Hillary as Product Designer only, burying process improvement track record and treating AI as a project tag. LinkedIn and portfolio tell different stories.
 **Primary audience:** Hiring managers and recruiters (30-60 second scan), process improvement leaders, AI-curious hiring managers, UX designer peers
 **Success metric:** Recruiter identifies hybrid value prop (UX + Process Improvement + AI strength) within 5 seconds of landing.
+
+### Latest Quality Pass: Supabase Product Designer Curated Page
+
+**Status:** Implemented and verified locally; not deployed. The private `/curated/supabase-product-designer` route now leads with a functional React prototype, 21,000+ workflow scale, Grove-first proof, a role-specific tagged PDF, and direct email. It preserves the Riso system rather than imitating Supabase, and explicitly states that Grove is Phase 2 of 3, not shipped, and that developer-tool experience is adjacent rather than direct.
+
+**Verification:** Final senior recruiter score is 22/22 applicable checks. The full 45-test suite and production build pass. Supabase-specific axe, accent contrast, 320/390/900/1440 light/dark/reduced-motion renders, keyboard focus, 200%-equivalent reflow, sticky-anchor landing, PDF response, house style, component registry, and truth reconciliation pass. Existing curated pages retain their fit-first defaults. No deployment or external application action occurred.
+
+**Implementation:** One Supabase data record; bounded optional proof-order, proof-kicker, résumé, and contact controls in `CuratedRolePage`; focused regression tests; role-specific PDF asset. No new component, stylesheet, token, or dependency.
 
 ### Active Initiative: The Impossible Evidence Table
 
@@ -13,7 +21,7 @@ _Last updated: 2026-08-10 by design-critic_
 **Primary audience:** Recruiters and product/UX/AI-design hiring managers scanning in 30–60 seconds, with equivalent access for keyboard, touch, screen-reader, low-vision, motion-sensitive, cognitively overloaded, and multilingual readers.
 **Success metric:** After a 12–15 second homepage teaser, at least four of five representative recruiters describe Hillary as a product designer with strong visual taste who directs AI deliberately, recall one consequential decision, and infer no fabricated evidence.
 **Approved brief:** `docs/designpowers/briefs/2026-08-09-impossible-evidence-table.md`
-**Status:** MSK V6 remains the approved baseline. V8 now independently passes static craft, heuristics, and accessibility for both repaired projects: **Grove 95.9 craft / 98 heuristics / 3.5 accessibility — PASS** and **Mobbin 95.9 craft / 97 heuristics / 3.5 accessibility — PASS conditionally**. Grove's registered sleeve acts directly on inspectable source evidence and completes the choice/unfinished Phase-2 boundary inside 844px; Mobbin's contact strip visibly seats through one four-stop index gate at useful mobile scale with explicit non-ownership. Mobbin permission, representative recall, bilingual review, owner approval, runtime/AT, and any motion fidelity remain open; no motion, generation, or app implementation is authorised by these static passes alone.
+**Status:** MSK V6 and the V8 Grove/Mobbin static states retain their independent passes. The structure-only **Frame of Intent / Decision Frame** prototype and its first governed production record, **Grove × Higgsfield**, are implemented locally. The first poster-like layout was rejected and revised into an asymmetric evidence rail plus primary live aperture; rigid exact workflow planes now change between the six-step paper detour and five-step in-system path. Focused tests pass 5/5, the production build passes, house-style prebuild/pre-style gates pass, and 1440 decision/source plus 390 decision renders pass structural review. The progressive-enhancement conditions remain hard gates. Camera work, new paid Higgsfield generation, final styling, deployment, real assistive-technology review, and representative comprehension remain unauthorised or open.
 
 #### Initiative audience contexts
 
@@ -135,6 +143,9 @@ Restored: Grove's survey answers (74% reminders, 56% camera ID, 15+ notification
 ## Decisions Log
 | Decision | Rationale | Source |
 |----------|-----------|--------|
+| **APPROVED — Frame of Intent combines the Decision Frame with Higgsfield as a governed production run** | The Impossible Evidence Table remains the recruiter-facing proof object. Frame of Intent translates creative intent into constraints, routing, and exposed decisions. The existing Grove × Higgsfield workflow is its first real run: protect exact screens/copy/numbers/truth, route camera/light/texture/composition to Higgsfield without generative alteration, reject the static first export and clipped portrait attempts, and accept only after format/accessibility/provenance checks. The final Grove artifact stays in its case study. Higgsfield may shape motion, camera, light, texture, and composition; it may never rewrite evidence, interface text, metrics, ownership, provenance, or routes | owner approval 2026-08-11; `design-docs/builds/2026-08-11-frame-of-intent-prototype-contract.md` |
+| Hold Decision Frame at Conditional accessibility approval; do not treat the concept as implementation-ready | The complete semantic evidence and route must precede WebGL; the canvas is replaceable and non-semantic. Camera stays off by default and requires explicit local-only consent; the native range/two endpoint buttons provide keyboard, switch, voice, and non-drag equivalence; reduced motion, forced colours, Save Data, no-JS, GPU loss, denial, and tracking loss must return the same complete task | accessibility-reviewer 2026-08-11 |
+| **Approved for structure prototype — owner-directed Decision Frame synthesis** | Adapt the supplied four-point finger-frame reference into one open, non-poster aperture with a shared `decisionProgress` state. Camera-free pointer/touch plus a native keyboard range are complete by default. Live geometry may deform only clean material; MSK/Grove/Mobbin evidence, copy, ownership, status, and routes remain deterministic under the V6/V8 locks. Optional camera control stays outside the approved slice | `docs/designpowers/strategy/2026-08-11-decision-frame-concept.md`; owner approvals 2026-08-11 |
 | Pass Grove V8's independent static craft gate at 95.9/100 and preserve the registered sleeve composition | Evidence/provenance, scale, signature, mobile, and anti-AI each earn 4/4; no criterion is below 3.5. One railed/stopped sleeve now integrates the enlarged real source, clear aperture, decision docket, and unfinished Phase-2 boundary. Material remains 3.5 rather than the maker's 4 because the finish is vector-clean; runtime/AT and representative validation remain separate | V8 independent craft review 2026-08-10 |
 | Pass Mobbin V8's independent static craft gate at 95.9/100 and preserve the seated gate composition | Evidence/provenance, scale, signature, mobile, and anti-AI each earn 4/4; no criterion is below 3.5. The three-source strip now enters a visible slot, the four verbs form one method spine rather than pseudo-results, and the ownership docket stays truthful. Material remains 3.5; permission and runtime/participant gates stay open | V8 independent craft review 2026-08-10 |
 | Pass Grove and Mobbin V8 separately at 3.5/4 static accessibility, conditionally | Grove now completes the live choice and `PHASE 2 · NOT A FINISHED SCREEN` inside the exact crop. Mobbin keeps all three live source names, `NOT DESIGNED BY HILLARY`, and the complete method inside its crop. Both pass contrast, type, targets, non-colour selection, screenshot-independent meaning, crop continuity, and static fallback inspection; runtime/AT remains open | accessibility-reviewer V8 2026-08-10 |
@@ -328,6 +339,11 @@ Restored: Grove's survey answers (74% reminders, 56% camera ID, 15+ notification
 | Sweep the remaining rounded-pill leftovers into the editorial vocabulary (M6) | Owner asked to finish the partial editorial propagation. Squared all UI cards/containers to near-square (riso-page.css 8–34px radii → 4–10px; portfolio-editorial.css 14px/10px cards → 4px), the recruiter-pill trigger and back-to-top (999px/pill → 3px), the Grove system-lab segmented tabs (999px → 6/4px), and the About closing card + "Get in touch" button (soft rounded olive-gradient pill → flat editorial plate + coral squared CTA). Device/phone frames (24–32px) and true status-tag pills (the Home "Active · Phase 2 of 3" tag) intentionally kept rounded. Build clean, 29/29 tests pass | Owner request / Next-tier 2026-07-25 |
 
 ## Open Questions
+- [ ] Does the implemented Decision Frame pass privacy/network, permission/stop, keyboard/touch/non-drag, reduced-motion, forced-colour, 320–400% reflow, VoiceOver/NVDA, Save Data, no-JS/GPU-failure, and representative-comprehension gates without making WebGL or camera necessary?
+- [x] Does Hillary approve Decision Frame as the next prototype direction, including its open-aperture composition, constrained source-to-decision paths, and camera-free default? Yes — approved as the interaction inside Frame of Intent, with Grove × Higgsfield as the first governed production run.
+- [x] Should the first grayscale interaction prototype use MSK's complete source/decision workflow or Grove's reference-adjacent focus geometry? MSK's complete source/decision workflow; Grove remains the linked production-run record and final case-study artifact.
+- [ ] Can an on-device four-point hand-tracking spike meet consent, privacy, browser support, performance, and tracking-loss recovery requirements without making camera access necessary?
+- [ ] Does the constrained four-point behavior preserve enough of the owner's Sophia Yang reference while keeping every protected evidence plane rigid and exact?
 - [x] Does Grove V8 independently pass the owner static craft gate? Yes — 95.9/100; mandatory evidence/provenance, evidence scale, signature, and anti-AI dimensions are 4/4, with every criterion ≥3.5.
 - [x] Does Mobbin V8 independently pass the owner static craft gate? Yes — 95.9/100; mandatory evidence/provenance, evidence scale, signature, and anti-AI dimensions are 4/4, with every criterion ≥3.5.
 - [x] Do Grove V8 and Mobbin V8 each independently pass the ≥3.5/4 static accessibility floor? Yes — 3.5/4 each, with 0 Critical, 0 Major, and 0 Minor static findings; runtime/AT and Mobbin permission remain conditional.
@@ -387,6 +403,8 @@ Restored: Grove's survey answers (74% reminders, 56% camera ID, 15+ notification
 ## Artefact Index
 | Artefact | Path |
 |----------|------|
+| Decision Frame accessibility, privacy, adaptive-input, and failure-state review | docs/designpowers/reviews/2026-08-11-decision-frame-accessibility.md |
+| Decision Frame low-fidelity interaction architecture — proposal | docs/designpowers/strategy/2026-08-11-decision-frame-concept.md |
 | V8 independent Grove + Mobbin craft review | docs/designpowers/reviews/2026-08-10-impossible-evidence-table-v8-craft.md |
 | V8 Grove + Mobbin separate accessibility and inclusive-design review | docs/designpowers/reviews/2026-08-10-impossible-evidence-table-v8-accessibility.md |
 | V8 independent Grove + Mobbin heuristic and recruiter-comprehension re-review | docs/designpowers/reviews/2026-08-10-impossible-evidence-table-v8-heuristics.md |
@@ -525,6 +543,16 @@ _Items: 21 | Open: 8 | Resolved: 13 | Last reviewed: 2026-08-10_
 | DD-006 | 2026-06-29 | accessibility-reviewer | Minor | .home-proj-card-link:focus-visible explicitly sets outline:none, which is rescued by the !important WCAG patch at the bottom of App.css. The source rule should be deleted — relying on !important to restore a removed affordance is fragile | All keyboard users (if the WCAG patch is ever modified or removed) | Delete `outline: none` from the .home-proj-card-link:hover, .home-proj-card-link:focus-visible block in App.css. See App.css:3822–3827 | Resolved 2026-07-01 | Deleted `outline: none` from the .home-proj-card-link:hover, :focus-visible block (App.css:4058). Global :where() focus-visible rule (App.css:2789, 3px solid var(--focus)) supplies the ring |
 
 ## Handoff Chain
+
+### 2026-08-11 — accessibility-reviewer → design-lead / design-builder / owner (Decision Frame)
+> "The Decision Frame can be accessible, but only as an optional visual instrument over a complete semantic page. Two Critical lines cannot move: camera permission must be explicit, local-only, temporary, and stoppable; and WebGL must never own evidence, qualifiers, or the route. Keep the native range/two endpoint controls as the keyboard, switch, voice, and non-drag equivalent; make reduced-motion and forced-colour states literal and static; then prove denial, Save Data, no-JS, GPU loss, and tracking loss all return the same complete task."
+
+**Severity:** 2 Critical constraints, 6 Major constraints, 0 deferred Minor items. **Fix first:** semantic DOM architecture and camera privacy boundary; then equivalent input, motion, low-vision/AT, cognitive, and failure/performance verification.
+
+**Matrix check:** Agentic UX/privacy, system prototyping, research, evaluation, and context/mechanics apply. The concept is Conditional; implementation, representative tasks, privacy/network inspection, runtime accessibility, and recovery evidence remain hard gates.
+
+### 2026-08-11 — design-lead → design-builder (Decision Frame proposal)
+> "Decision Frame is an open four-point aperture, not another bordered hero asset. Prototype one shared 0–100 source-to-decision state: MSK opens the paper detour, Grove narrows the mask around the unchanged care source, and Mobbin rectifies a clean film field while all third-party captures remain rigid. Start with blank plates and camera-free pointer/touch/keyboard equivalence; camera tracking and Higgsfield clean plates stay behind later gates."
 
 ### 2026-08-10 — design-critic V8 → design-lead / design-builder
 > "Verdict: proceed at 95.9 for Grove and 95.9 for Mobbin. Grove now has one credible registered sleeve acting on inspectable source evidence, with the full choice and unfinished Phase-2 boundary inside 844px. Mobbin now visibly feeds the three-source strip into one four-stop index gate at useful mobile scale without inventing a result. Freeze these static compositions; remaining work is permission, implementation accessibility, representative recall, and owner approval—not another visual-polish round."

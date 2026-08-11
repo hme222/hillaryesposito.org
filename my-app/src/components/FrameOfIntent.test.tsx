@@ -95,6 +95,33 @@ describe("FrameOfIntent", () => {
     expect(Number(range.value)).toBeLessThan(100);
   });
 
+  it("keeps exact protected workflow planes rigid inside the stage and changes their progress state", () => {
+    const stage = container.querySelector<HTMLElement>(".foi-stage")!;
+    const source = stage.querySelector<HTMLElement>('[data-protected-route="source"]')!;
+    const decision = stage.querySelector<HTMLElement>('[data-protected-route="decision"]')!;
+    const range = container.querySelector<HTMLInputElement>("#decision-progress")!;
+
+    expect(source.textContent).toContain(
+      "Open queue → Find doc → Print → Route to imaging → Wait for scan → Re-check filing"
+    );
+    expect(decision.textContent).toContain(
+      "Open queue → Select doc → Send to EMR → Files in chart → Status updated"
+    );
+    expect(stage.dataset.progressState).toBe("decision");
+
+    act(() => {
+      range.value = "35";
+      range.dispatchEvent(new Event("input", { bubbles: true }));
+    });
+    expect(stage.dataset.progressState).toBe("comparing");
+
+    const sourceButton = Array.from(container.querySelectorAll("button")).find((button) =>
+      button.textContent === "Show source condition"
+    )!;
+    act(() => sourceButton.dispatchEvent(new MouseEvent("click", { bubbles: true })));
+    expect(stage.dataset.progressState).toBe("source");
+  });
+
   it("keeps the Grove production record semantic, truthful, and artifact-linked", () => {
     const details = container.querySelector("details");
     expect(details?.querySelector("summary")?.textContent).toBe("Production run 01 · Grove × Higgsfield");

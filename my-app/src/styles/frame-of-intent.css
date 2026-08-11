@@ -4,6 +4,17 @@
   border-block: 1px solid var(--hair);
 }
 
+.foi-layout {
+  display: grid;
+  grid-template-columns: minmax(17rem, 0.72fr) minmax(0, 1.48fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.foi-text-rail {
+  min-width: 0;
+}
+
 .foi-intro {
   max-width: 48rem;
 }
@@ -23,9 +34,9 @@
 
 .foi h3 {
   margin: 0.5rem 0;
-  max-width: 16ch;
-  font-size: clamp(2rem, 5vw, 4rem);
-  line-height: 1;
+  max-width: 18ch;
+  font-size: clamp(1.7rem, 3vw, 2.65rem);
+  line-height: 1.04;
   letter-spacing: -0.025em;
 }
 
@@ -38,24 +49,26 @@
 
 .foi-evidence {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(1.25rem, 4vw, 3.5rem);
-  margin-block: clamp(2rem, 5vw, 3.5rem) 1rem;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-block: 1.3rem 0.9rem;
 }
 
 .foi-evidence section {
-  padding-block-start: 0.8rem;
+  padding-block-start: 0.65rem;
   border-top: 1px solid var(--ink);
 }
 
 .foi-route {
-  margin: 0.65rem 0 0;
+  margin: 0.45rem 0 0;
   color: var(--ink);
-  font-weight: 650;
+  font-size: 0.84rem;
+  font-weight: 620;
+  line-height: 1.52;
 }
 
 .foi-decision-statement {
-  margin: 0.9rem 0 0;
+  margin: 0.45rem 0 0;
   max-width: 38ch;
   color: var(--green);
   font-weight: 750;
@@ -74,7 +87,8 @@
   max-width: 76ch;
   margin: 1rem 0 0;
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
 }
 
 .foi-boundary > p:last-child { margin: 0.5rem 0 0; }
@@ -95,7 +109,8 @@
 .foi-route-link { margin-block-start: 1.25rem; }
 
 .foi-instrument {
-  margin-block-start: clamp(1.5rem, 4vw, 3rem);
+  min-width: 0;
+  padding-block-start: 0.2rem;
 }
 
 .foi-instruction {
@@ -107,8 +122,8 @@
 
 .foi-stage {
   position: relative;
-  min-height: clamp(17rem, 38vw, 29rem);
-  margin-inline: calc(-1 * clamp(0.5rem, 2.5vw, 2rem));
+  min-height: clamp(25rem, 44vw, 32rem);
+  margin-inline: calc(-1 * clamp(0.5rem, 2vw, 1.5rem));
   overflow: clip;
   isolation: isolate;
 }
@@ -116,18 +131,15 @@
 .foi-stage__material {
   position: absolute;
   z-index: -1;
-  inset: 9% 6%;
+  inset: 9% 3%;
   background:
-    linear-gradient(103deg, transparent 0 12%, color-mix(in srgb, var(--green) 12%, transparent) 12% 14%, transparent 14% 100%),
-    repeating-linear-gradient(0deg, color-mix(in srgb, var(--ink) 5%, transparent) 0 1px, transparent 1px 20px);
-  clip-path: polygon(
-    calc(11% + (7% * var(--foi-progress))) calc(18% - (8% * var(--foi-progress))),
-    calc(88% - (5% * var(--foi-progress))) calc(8% + (8% * var(--foi-progress))),
-    calc(93% - (11% * var(--foi-progress))) calc(83% - (7% * var(--foi-progress))),
-    calc(7% + (12% * var(--foi-progress))) calc(92% - (9% * var(--foi-progress)))
-  );
-  opacity: calc(0.45 + (0.35 * var(--foi-progress)));
-  transition: clip-path 180ms ease-out, opacity 180ms ease-out;
+    linear-gradient(112deg, color-mix(in srgb, var(--paper-2) 72%, transparent), color-mix(in srgb, var(--green) 14%, transparent)),
+    repeating-linear-gradient(0deg, color-mix(in srgb, var(--ink) 7%, transparent) 0 1px, transparent 1px 24px);
+  clip-path: polygon(4% 15%, 95% 3%, 89% 89%, 10% 98%, 0 62%);
+  opacity: 0.78;
+  transform: rotate(var(--foi-material-rotate)) scaleX(var(--foi-material-scale));
+  transform-origin: center;
+  transition: transform 180ms ease-out;
 }
 
 .foi-stage__label {
@@ -141,15 +153,63 @@
 }
 
 .foi-stage__label--outside {
-  inset-block-start: 9%;
-  inset-inline-start: 5%;
+  inset-block-start: 3%;
+  inset-inline-start: 1%;
   color: var(--muted);
 }
 
 .foi-stage__label--inside {
-  inset-block-start: 46%;
-  inset-inline-start: calc(28% + (9% * var(--foi-progress)));
+  inset-block-start: 20%;
+  inset-inline-start: 29%;
   color: var(--ink);
+}
+
+.foi-protected {
+  position: absolute;
+  z-index: 1;
+  inset-inline-start: 15%;
+  inset-block-start: 31%;
+  width: min(76%, 42rem);
+  padding-block: clamp(1rem, 2vw, 1.4rem);
+  color: var(--ink);
+  background: color-mix(in srgb, var(--paper) 94%, transparent);
+  border-block: 1px solid var(--ink);
+  transition: opacity 150ms linear, transform 180ms ease-out;
+}
+
+.foi-protected > span {
+  display: block;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.foi-protected p {
+  margin: 0.7rem 0 0;
+  font-family: var(--sans);
+  font-size: clamp(0.88rem, 1.55vw, 1.08rem);
+  font-weight: 720;
+  line-height: 1.5;
+}
+
+.foi-protected strong {
+  display: block;
+  margin-block-start: 0.85rem;
+  color: var(--green);
+  font-size: 0.86rem;
+}
+
+.foi-protected--source {
+  opacity: var(--foi-inverse);
+  transform: translateY(var(--foi-source-shift));
+}
+
+.foi-protected--decision {
+  opacity: var(--foi-progress);
+  transform: translateY(var(--foi-decision-shift));
 }
 
 .foi-node {
@@ -183,29 +243,33 @@
 .foi-node::after { width: 1px; height: 30px; }
 
 .foi-node--north-west {
-  inset-block-start: calc(17% - (7% * var(--foi-progress)));
-  inset-inline-start: calc(7% + (11% * var(--foi-progress)));
+  inset-block-start: 16%;
+  inset-inline-start: 7%;
+  transform: translate(var(--foi-left-shift), var(--foi-top-shift));
 }
 
 .foi-node--north-east {
-  inset-block-start: calc(7% + (7% * var(--foi-progress)));
-  inset-inline-start: calc(87% - (8% * var(--foi-progress)));
+  inset-block-start: 7%;
+  inset-inline-start: 87%;
+  transform: translate(var(--foi-right-shift), var(--foi-top-shift));
 }
 
 .foi-node--south-west {
-  inset-block-start: calc(81% - (8% * var(--foi-progress)));
-  inset-inline-start: calc(4% + (14% * var(--foi-progress)));
+  inset-block-start: 79%;
+  inset-inline-start: 5%;
+  transform: translate(var(--foi-left-shift), var(--foi-bottom-shift));
 }
 
 .foi-node--south-east {
-  inset-block-start: calc(73% - (4% * var(--foi-progress)));
-  inset-inline-start: calc(88% - (12% * var(--foi-progress)));
+  inset-block-start: 76%;
+  inset-inline-start: 87%;
+  transform: translate(var(--foi-right-shift), var(--foi-bottom-shift));
 }
 
 .foi-controls {
   display: grid;
   gap: 0.7rem;
-  max-width: 46rem;
+  max-width: 42rem;
   margin-inline: auto;
 }
 
@@ -297,14 +361,24 @@
 }
 
 @media (max-width: 600px) {
+  .foi-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
   .foi-evidence,
   .foi-production dl {
     grid-template-columns: 1fr;
   }
 
   .foi-stage {
-    min-height: 17rem;
+    min-height: 21rem;
     margin-inline: -0.5rem;
+  }
+
+  .foi-protected {
+    inset-inline-start: 12%;
+    width: 78%;
   }
 
   .foi-range-wrap {
@@ -326,16 +400,32 @@
 
 @media (max-width: 360px) {
   .foi-stage {
-    min-height: 12rem;
+    display: grid;
+    min-height: 0;
+    gap: 0.75rem;
+    margin-inline: 0;
+    overflow: visible;
   }
 
-  .foi-node {
+  .foi-node,
+  .foi-stage__material,
+  .foi-stage__label {
     display: none;
+  }
+
+  .foi-protected {
+    position: relative;
+    inset: auto;
+    width: auto;
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .foi-stage__material {
+  .foi-stage__material,
+  .foi-protected {
     transition: none;
   }
 
