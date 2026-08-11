@@ -91,7 +91,7 @@ export default function RecruiterPill() {
 
                 <section className="recruiter-panel__section">
                   <p className="recruiter-panel__label">In one line</p>
-                  <p>I design products people have to trust, pairing research rigor with AI judgment and consumer craft.</p>
+                  <p>I own the whole path a task takes, not just the last screen — research rigor and AI judgment, shaped by six years building software for 21,000 clinicians and staff.</p>
                 </section>
 
                 <section className="recruiter-panel__section">

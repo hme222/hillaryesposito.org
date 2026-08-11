@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 
 const BASE = "Hillary Esposito";
-const DEFAULT_TITLE = `${BASE} | Product Designer for products people trust`;
+const DEFAULT_TITLE = `${BASE} | Product Designer, end to end`;
 const DEFAULT_DESCRIPTION =
-  "Product designer for products people have to trust, pairing research rigor with AI judgment and consumer craft.";
+  "Product designer who owns the whole path a task takes, not just the last screen \u2014 research rigor and AI judgment, shaped by six years building software for 21,000 clinicians.";
 const ORIGIN = "https://hillaryesposito.org";
 
 const ROUTE_META: Array<{ match: RegExp; description: string; image: string }> = [

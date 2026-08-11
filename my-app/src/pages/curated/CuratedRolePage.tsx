@@ -4,7 +4,7 @@ import RisoDefs from "../../components/riso/RisoDefs";
 import CartoField from "../../components/riso/CartoField";
 import usePageTitle from "../../hooks/usePageTitle";
 import { useLanguage } from "../../app/LanguageContext";
-import { curatedPages } from "../../data/curatedPages";
+import { curatedPages, type CuratedPage } from "../../data/curatedPages";
 import NotFoundPage from "../NotFoundPage";
 import "../../styles/riso.css";
 import "../../styles/riso-page.css";
@@ -57,6 +57,61 @@ function useLongestWordWidth(text: string): number | null {
     return () => { cancelled = true; };
   }, [text]);
   return w100;
+}
+
+function FitSection({ page }: { page: CuratedPage }) {
+  return (
+    <section id="curated-fit" className="rp-section" style={{ scrollMarginTop: "9.5rem" }}>
+      <div className="rp-wrap rp-reveal">
+        <p className="rp-kicker">The short version</p>
+        <h2 className="rp-title">Why I’m a fit for this</h2>
+        {page.intro.map((p) => (
+          <p className="rp-lede" key={p}>{p}</p>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function ProofSection({ page }: { page: CuratedPage }) {
+  return (
+    <section id="curated-proof" className="rp-section rp-section--alt" style={{ scrollMarginTop: "9.5rem" }}>
+      <div className="rp-wrap">
+        <p className="rp-kicker">{page.proofKicker ?? "Numbers, with sources"}</p>
+        <h2 className="rp-title">What I’ve already proven</h2>
+        <div className="rp-outcomes rp-reveal">
+          {page.proofPoints.map((pt) => (
+            <div className="rp-stat" key={pt.stat + pt.detail}>
+              <p className="rp-stat__n">{pt.stat}</p>
+              <p className="rp-stat__l">{pt.detail}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WorkSection({ page }: { page: CuratedPage }) {
+  return (
+    <section id="curated-work" className="rp-section" style={{ scrollMarginTop: "9.5rem" }}>
+      <div className="rp-wrap">
+        <p className="rp-kicker">Start here</p>
+        <h2 className="rp-title">What to review</h2>
+        <ol className="rp-numlist rp-reveal">
+          {page.featuredWork.map((item) => {
+            const path = caseStudyPathFor(item.title);
+            return (
+              <li key={item.title}>
+                <h3>{path ? <Link className="rp-numlist__link" to={path}>{item.title}</Link> : item.title}</h3>
+                <p>{item.reason}</p>
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+    </section>
+  );
 }
 
 export default function CuratedRolePage() {
@@ -116,9 +171,19 @@ export default function CuratedRolePage() {
 
       <nav className="rp-chapters" aria-label={`${page.company} tailored page chapters`}>
         <span>Jump to</span>
-        <a href="#curated-fit">Fit</a>
-        <a href="#curated-proof">Proof</a>
-        <a href="#curated-work">Work</a>
+        {page.proofFirst ? (
+          <>
+            <a href="#curated-proof">Proof</a>
+            <a href="#curated-work">Work</a>
+            <a href="#curated-fit">Fit</a>
+          </>
+        ) : (
+          <>
+            <a href="#curated-fit">Fit</a>
+            <a href="#curated-proof">Proof</a>
+            <a href="#curated-work">Work</a>
+          </>
+        )}
       </nav>
 
       {/* HERO */}
@@ -147,8 +212,27 @@ export default function CuratedRolePage() {
             <p className="rp-work__sub" style={{ marginTop: ".7rem" }}>{page.role}</p>
             <p className="rp-sub">{page.headline}</p>
             <div className="rp-hero__ctas">
-              <a className="rp-cta" href="#curated-fit">See the fit →</a>
-              <Link className="rp-cta rp-cta--ghost" to={page.supportLinks[0]?.path ?? "/case-study/grove"}>View a case study</Link>
+              {page.resumeLink ? (
+                <>
+                  <Link className="rp-cta" to={page.supportLinks[0]?.path ?? "/case-study/grove"}>
+                    {page.caseStudyCtaLabel ?? "Review the first case study"} →
+                  </Link>
+                  <a
+                    className="rp-cta rp-cta--ghost"
+                    href={page.resumeLink.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${page.resumeLink.label.replace(" · PDF ↗", "")} (PDF, opens in new tab)`}
+                  >
+                    {page.resumeLink.label}
+                  </a>
+                </>
+              ) : (
+                <>
+                  <a className="rp-cta" href="#curated-fit">See the fit →</a>
+                  <Link className="rp-cta rp-cta--ghost" to={page.supportLinks[0]?.path ?? "/case-study/grove"}>View a case study</Link>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -176,51 +260,19 @@ export default function CuratedRolePage() {
         </div>
       </section>
 
-      {/* FIT / OVERVIEW */}
-      <section id="curated-fit" className="rp-section">
-        <div className="rp-wrap rp-reveal">
-          <p className="rp-kicker">The short version</p>
-          <h2 className="rp-title">Why I’m a fit for this</h2>
-          {page.intro.map((p) => (
-            <p className="rp-lede" key={p}>{p}</p>
-          ))}
-        </div>
-      </section>
-
-      {/* PROOF */}
-      <section id="curated-proof" className="rp-section rp-section--alt">
-        <div className="rp-wrap">
-          <p className="rp-kicker">Numbers, with sources</p>
-          <h2 className="rp-title">What I’ve already proven</h2>
-          <div className="rp-outcomes rp-reveal">
-            {page.proofPoints.map((pt) => (
-              <div className="rp-stat" key={pt.stat + pt.detail}>
-                <p className="rp-stat__n">{pt.stat}</p>
-                <p className="rp-stat__l">{pt.detail}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FEATURED WORK */}
-      <section id="curated-work" className="rp-section">
-        <div className="rp-wrap">
-          <p className="rp-kicker">Start here</p>
-          <h2 className="rp-title">What to review</h2>
-          <ol className="rp-numlist rp-reveal">
-            {page.featuredWork.map((item) => {
-              const path = caseStudyPathFor(item.title);
-              return (
-                <li key={item.title}>
-                  <h3>{path ? <Link className="rp-numlist__link" to={path}>{item.title}</Link> : item.title}</h3>
-                  <p>{item.reason}</p>
-                </li>
-              );
-            })}
-          </ol>
-        </div>
-      </section>
+      {page.proofFirst ? (
+        <>
+          <ProofSection page={page} />
+          <WorkSection page={page} />
+          <FitSection page={page} />
+        </>
+      ) : (
+        <>
+          <FitSection page={page} />
+          <ProofSection page={page} />
+          <WorkSection page={page} />
+        </>
+      )}
 
       {/* BESPOKE — Meta "obvious vs considered" */}
       {page.slug === "meta-instagram-product-designer" && (
@@ -310,8 +362,20 @@ export default function CuratedRolePage() {
           <h2>Where I’m strongest</h2>
           <p>{page.closing}</p>
           <div className="rp-hero__ctas">
-            <button type="button" className="rp-cta" onClick={() => navigate("/?scrollTo=projects")}>← Back to work</button>
-            <Link className="rp-cta rp-cta--ghost" to="/about">About me</Link>
+            {page.contactFirst ? (
+              <>
+                <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email Hillary →</a>
+                <Link className="rp-cta rp-cta--ghost" to={page.supportLinks[0]?.path ?? "/case-study/grove"}>
+                  {page.caseStudyCtaLabel ?? "Review the first case study"}
+                  {page.caseStudyCtaLabel ? " →" : null}
+                </Link>
+              </>
+            ) : (
+              <>
+                <button type="button" className="rp-cta" onClick={() => navigate("/?scrollTo=projects")}>← Back to work</button>
+                <Link className="rp-cta rp-cta--ghost" to="/about">About me</Link>
+              </>
+            )}
           </div>
         </div>
       </section>

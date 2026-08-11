@@ -45,9 +45,131 @@ export type CuratedPage = {
   closing: string;
   supportLinks: CuratedLink[];
   relatedLinks: CuratedLink[];
+  /** Role-specific conversion controls. Existing pages keep the default
+   *  fit-first order and actions when these values are omitted. */
+  proofFirst?: boolean;
+  caseStudyCtaLabel?: string;
+  proofKicker?: string;
+  resumeLink?: { label: string; path: string };
+  contactFirst?: boolean;
 };
 
 const allCuratedPages: Record<string, CuratedPage> = {
+  "supabase-product-designer": {
+    slug: "supabase-product-designer",
+    company: "Supabase",
+    role: "Product Designer",
+    variant: "care",
+    accent: "#3d6b3f",
+    accentDark: "#7cb069",
+    mapSrc: "/riso/elevation-03.jpg",
+    edition: "struct",
+    badgeLabel: "Selected product evidence",
+    eyebrow: "Working prototypes · complex product systems · reusable patterns",
+    headline: "Built a working React prototype. Improved workflows serving 21,000+ staff.",
+    subhead:
+      "Grove is a functional prototype in Phase 2 of 3. MSK shows implemented workflow changes at 21,000+ staff scale.",
+    meta: [
+      { label: "Target role", value: "Product Designer" },
+      { label: "Lead proof", value: "Functional React prototype · Phase 2 of 3" },
+      { label: "Systems proof", value: "States, permissions, and reusable patterns" },
+      { label: "Working style", value: "Research, written decisions, and working software" },
+    ],
+    intro: [
+      "I work best when research, technical constraints, and product decisions have to meet in something a team can use.",
+      "For Grove, I turned 34 survey responses into a three-feature scope and a functional React prototype. At MSK, one workflow map helped clinical, IT, and operations partners align around implemented changes.",
+    ],
+    proofPoints: [
+      {
+        stat: "11 → 3 features",
+        detail: "kept after a 34-person survey changed Grove's product scope",
+      },
+      {
+        stat: "21,000+",
+        detail: "clinical and administrative staff across the MSK workflows I helped redesign",
+      },
+      {
+        stat: "20%",
+        detail: "organization-wide EMR cost reduction; my workflow redesign contributed inside the larger initiative",
+      },
+    ],
+    featuredWork: [
+      {
+        title: "Grove: cut eleven features to three after research",
+        reason: "A functional React prototype with the research decisions, interactive states, and code boundary visible. Phase 2 of 3; not a shipped product.",
+      },
+      {
+        title: "MSK: moved a paper workaround back into the digital workflow",
+        reason: "A cross-functional workflow map helped clinical, IT, and operations partners align on permissions, states, and implemented changes.",
+      },
+      {
+        title: "Mobbin: documented 200+ screens per app for pattern analysis",
+        reason: "Supporting evidence of close interface analysis, reusable pattern judgment, and documentation built for other product and design teams.",
+      },
+    ],
+    strengths: [
+      "Turn an uncertain product question into a testable React flow",
+      "Map states and permissions before they become handoff gaps",
+      "Write down why scope changed, who it affects, and what remains unbuilt",
+    ],
+    relevantExperience: [
+      "Grove shows that research changed the scope before I built the React prototype.",
+      "MSK shows complex workflow decisions, technical partnership, and results across a large organization.",
+      "Mobbin shows production-pattern fluency and documentation discipline across mature product interfaces.",
+    ],
+    keywords: [
+      "product design",
+      "working prototypes",
+      "user flows",
+      "user research",
+      "usability",
+      "technical constraints",
+      "cross-functional alignment",
+      "product primitives",
+      "React",
+      "AI-assisted prototyping",
+    ],
+    hiringManagerNote:
+      "My developer-tool experience is adjacent, not direct. The relevant proof is a React prototype, documented interaction and system decisions, and implemented internal-workflow changes with technical partners. I would bring that builder discipline while learning Supabase's developer surface.",
+    closing:
+      "I want to help Supabase make complex developer workflows coherent without hiding the system underneath.",
+    supportLinks: [
+      {
+        label: "Grove case study",
+        path: "/case-study/grove",
+        description: "Functional React prototype, research-led scope, interactive states, and a clear record of where AI accelerated implementation.",
+        icon: <SproutIcon />,
+      },
+      {
+        label: "MSK case study",
+        path: "/case-study/msk",
+        description: "Complex workflow redesign, cross-functional alignment, permissions, states, and qualified results.",
+        icon: <MedicalCrossIcon />,
+      },
+      {
+        label: "Mobbin case study",
+        path: "/case-study/mobbin",
+        description: "Pattern analysis and documentation across more than 200 screens per app.",
+        icon: <PencilIcon />,
+      },
+    ],
+    relatedLinks: [
+      {
+        label: "Main portfolio",
+        path: "/",
+        description: "Full product-design portfolio and contact section.",
+        icon: <LaunchIcon />,
+      },
+    ],
+    proofFirst: true,
+    caseStudyCtaLabel: "Review Grove",
+    proofKicker: "Numbers in context",
+    resumeLink: {
+      label: "View Supabase résumé · PDF ↗",
+      path: "/assets/Hillary_Esposito_Supabase_Product_Designer_Resume.pdf",
+    },
+    contactFirst: true,
+  },
   "indyx-ux-product-designer": {
     slug: "indyx-ux-product-designer",
     company: "Indyx",

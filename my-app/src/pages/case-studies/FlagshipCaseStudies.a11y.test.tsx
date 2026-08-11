@@ -12,6 +12,8 @@ import FashionCampaignSystem from "../curated/FashionCampaignSystem";
 import Footer from "../../components/Footer";
 import RecruiterPill from "../../components/RecruiterPill";
 
+let mockCuratedSlug = "meta-instagram-product-designer";
+
 jest.mock("react-router-dom", () => ({
   Link: ({ to, children, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { to: string }) => (
     <a href={to} {...props}>{children}</a>
@@ -19,7 +21,7 @@ jest.mock("react-router-dom", () => ({
   Navigate: () => null,
   useLocation: () => ({ pathname: "/", search: "" }),
   useNavigate: () => jest.fn(),
-  useParams: () => ({ slug: "meta-instagram-product-designer" }),
+  useParams: () => ({ slug: mockCuratedSlug }),
 }), { virtual: true });
 
 jest.mock("../../app/LanguageContext", () => ({
@@ -75,6 +77,8 @@ describe("flagship case-study accessibility", () => {
   afterEach(() => {
     act(() => root.unmount());
     container.remove();
+    mockCuratedSlug = "meta-instagram-product-designer";
+    window.history.replaceState(null, "", "/");
   });
 
   it.each([
@@ -153,6 +157,70 @@ describe("flagship case-study accessibility", () => {
       .toBe("noindex, nofollow, noarchive");
     expect(document.querySelector('link[rel="canonical"]')?.getAttribute("href"))
       .toBe("https://hillaryesposito.org");
+  });
+
+  it("gives Supabase a proof-first recruiter path with role-specific actions", async () => {
+    mockCuratedSlug = "supabase-product-designer";
+    window.history.replaceState(null, "", "/curated/supabase-product-designer");
+
+    await act(async () => {
+      root.render(<CuratedRolePage />);
+    });
+
+    expect(container.querySelector("h1")?.textContent).toBe("Supabase");
+    expect(container.textContent).toContain("Built a working React prototype");
+    expect(container.textContent).toContain("Phase 2 of 3");
+
+    const proof = container.querySelector("#curated-proof");
+    const work = container.querySelector("#curated-work");
+    const fit = container.querySelector("#curated-fit");
+    expect(proof).not.toBeNull();
+    expect(work).not.toBeNull();
+    expect(fit).not.toBeNull();
+    expect(proof!.compareDocumentPosition(work!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(work!.compareDocumentPosition(fit!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    [proof, work, fit].forEach((section) => {
+      expect((section as HTMLElement).style.scrollMarginTop).toBe("9.5rem");
+    });
+    expect(container.textContent).toContain("Numbers in context");
+    expect(container.textContent).toContain("11 → 3 features");
+    expect(container.textContent).not.toContain("34 → 11 → 3");
+
+    const chapterLinks = Array.from(
+      container.querySelectorAll<HTMLAnchorElement>(".rp-chapters a"),
+      (link) => link.textContent,
+    );
+    expect(chapterLinks).toEqual(["Proof", "Work", "Fit"]);
+
+    const links = Array.from(container.querySelectorAll<HTMLAnchorElement>("a"));
+    expect(links.find((link) => link.textContent?.includes("Review Grove"))?.getAttribute("href"))
+      .toBe("/case-study/grove");
+    const resumeLink = links.find((link) => link.textContent?.includes("View Supabase résumé"));
+    expect(resumeLink?.getAttribute("href"))
+      .toBe("/assets/Hillary_Esposito_Supabase_Product_Designer_Resume.pdf");
+    expect(resumeLink?.getAttribute("aria-label"))
+      .toBe("View Supabase résumé (PDF, opens in new tab)");
+    expect(links.find((link) => link.textContent?.includes("Email Hillary"))?.getAttribute("href"))
+      .toBe("mailto:espositohillary@gmail.com");
+    expect(document.querySelector('meta[name="robots"]')?.getAttribute("content"))
+      .toBe("noindex, nofollow, noarchive");
+
+    const results = await axe.run(container, {
+      rules: { "color-contrast": { enabled: false } },
+    });
+    expect(results.violations).toEqual([]);
+  });
+
+  it("keeps existing curated pages on their current fit-first path", async () => {
+    await act(async () => {
+      root.render(<CuratedRolePage />);
+    });
+
+    const fit = container.querySelector("#curated-fit");
+    const proof = container.querySelector("#curated-proof");
+    expect(fit!.compareDocumentPosition(proof!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(container.textContent).toContain("See the fit");
+    expect(container.textContent).toContain("View a case study");
   });
 
   it("keeps painted cartography editorial rather than navigational", async () => {

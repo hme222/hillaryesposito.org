@@ -26,7 +26,7 @@ const CHAPTERS: CaseStudyChapter[] = [
 ];
 
 const APPS: ScreenSequenceItem[] = [
-  { name: "Kikoff", category: "Credit building · proof after every action", image: "/assets/mobbin/kikoff.jpg", alt: "Kikoff credit-building interface from the documented flow", summary: "A twelve-screen sign-up earns its length by showing a score, a plan, and proof after each action." },
+  { name: "Kikoff", category: "Credit building · proof after every action", image: "/assets/mobbin/kikoff.jpg", alt: "Kikoff credit-building interface from the documented flow", summary: "A long sign-up earns its length by showing a score, a plan, and proof after each action." },
   { name: "Polymarket", category: "Prediction markets · odds and risk up front", image: "/assets/mobbin/polymarket.jpg", alt: "Polymarket prediction-market interface from the documented flow", summary: "Odds, settlement rules, and risk stay visible before someone commits money to an uncertain outcome." },
   { name: "Discover", category: "Banking · familiar patterns, findable fine print", image: "/assets/mobbin/discover.jpg", alt: "Discover account interface from the documented flow", summary: "The interface leans on known card and account patterns, then makes the fine print easy to find." },
 ];
@@ -90,7 +90,7 @@ export default function FlagshipMobbin() {
           <div className="fp-cinemaCore fp-cinemaCore--capture" aria-hidden="true">
             <span>CAPTURE</span><i>→</i><span>MAP</span><i>→</i><span>NAME</span><i>→</i><span>VERIFY</span>
           </div>
-          <div className="rp-cinema__artifact rp-cinema__artifact--reminder"><span>First batch</span><b>Messy labels doubled review time.</b></div>
+          <div className="rp-cinema__artifact rp-cinema__artifact--reminder"><span>First batch</span><b>Messy labels sent work back for re-review.</b></div>
           <div className="rp-cinema__artifact rp-cinema__artifact--safety"><span>Correction</span><b>Learn the library’s vocabulary before capturing.</b></div>
           <div className="rp-cinema__bridge">
             <p className="rp-kicker">The work, before the screenshots</p>
