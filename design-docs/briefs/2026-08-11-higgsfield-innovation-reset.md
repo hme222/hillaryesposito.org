@@ -1,7 +1,15 @@
 # Design Brief: Higgsfield Innovation Reset
 
 **Date:** 2026-08-11  
-**Status:** Draft for owner approval before panel exploration
+**Status:** **Approved by Hillary Esposito on 2026-08-11**
+
+## Owner-approved private comparison amendment — 2026-08-12
+
+The original panel assignment remains limited to two candidate public directions. Hillary subsequently requested a third concept derived from Frame of Intent for the private, no-credit comparison lab.
+
+This amendment authorizes **C · Spatial Intent Playground** only as an unlinked, `noindex` diagnostic control. It is not a third public recommendation and does not reverse the rejection of Frame of Intent on the homepage. C may test embodied spatial intent, simulated local/cloud routing, distributed-system recovery, idempotent execution, and receipts only when those ideas are expressed through one simple production task rather than a named methodology, dashboard, infrastructure diagram, or technical explainer.
+
+C cannot graduate to the homepage, a case study, Higgsfield generation, or deployment without a separate owner decision after the private comparison.
 
 ## Problem Statement
 
@@ -35,7 +43,7 @@ Each concept must define:
 
 ## Constraints
 
-- No Frame of Intent, Decision Frame, Impossible Evidence Table interface, or renamed version of those structures.
+- No public Frame of Intent, Decision Frame, Impossible Evidence Table interface, or renamed version of those structures. The private C diagnostic exception above does not authorize public reuse.
 - No named methodology on the homepage.
 - No oversized explainer copy, workflow controls, sliders, endpoint buttons, filter menus, camera-permission gimmicks, or AI feature demos.
 - No self-contained poster composition with headline, artifact, controls, and CTA trapped in one rectangle.

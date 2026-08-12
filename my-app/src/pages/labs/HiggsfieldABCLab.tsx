@@ -1,360 +1,172 @@
-import React, { PointerEvent, useEffect, useMemo, useRef, useState } from "react";
+import React, { PointerEvent, useEffect, useRef, useState } from "react";
 import usePageTitle from "../../hooks/usePageTitle";
 import { useT } from "../../app/LanguageContext";
+import type { StringKey } from "../../i18n/strings";
 import "../../styles/higgsfield-abc-lab.css";
 
-type Concept = "A" | "B" | "C";
-type CPhase = "shape" | "ready" | "finishing" | "complete";
-type Scenario = "load" | "latency" | "consistency" | "unavailable";
+type ProjectId = "msk" | "grove" | "mobbin";
+type Project = {
+  id: ProjectId; n: string; title: string; path: string; img: string;
+  subKey: StringKey; descKey: StringKey; altKey: StringKey;
+};
 
-const MSK_SOURCE = "/assets/msk/mskcc-map-thumb.jpg";
-
-const CONCEPTS: Array<{ id: Concept; name: string; watch: string }> = [
-  { id: "A", name: "The work has weather", watch: "Atmosphere gathers around exact evidence." },
-  { id: "B", name: "The page remembers", watch: "One artifact persists across the route." },
-  { id: "C", name: "Playground", watch: "Direct light around the unchanged map." },
+const PROJECTS: Project[] = [
+  {
+    id: "msk", n: "01", title: "Memorial Sloan Kettering", path: "/case-study/msk",
+    img: "/assets/msk/mskcc-map-thumb.jpg", subKey: "home.proj.msk.subtitle", descKey: "home.riso.mskDesc", altKey: "home.riso.mskAlt",
+  },
+  {
+    id: "grove", n: "02", title: "Grove", path: "/case-study/grove",
+    img: "/assets/grove/grove1.png", subKey: "home.proj.grove.subtitle", descKey: "home.riso.groveDesc", altKey: "home.riso.groveAlt",
+  },
+  {
+    id: "mobbin", n: "03", title: "Mobbin", path: "/case-study/mobbin",
+    img: "/assets/mobbin/discover.jpg", subKey: "home.proj.mobbin.subtitle", descKey: "home.riso.mobbinDesc", altKey: "home.riso.mobbinAlt",
+  },
 ];
 
-export function canonicalIntentId(x: number, y: number, fidelity: "preview" | "high") {
-  const canonicalX = Math.round(Math.max(0, Math.min(100, x)) / 5) * 5;
-  const canonicalY = Math.round(Math.max(0, Math.min(100, y)) / 5) * 5;
-  const input = `msk-map-v1|paper-shadow-light-camera|${canonicalX}:${canonicalY}|${fidelity}`;
-  let hash = 2166136261;
-  for (let i = 0; i < input.length; i += 1) {
-    hash ^= input.charCodeAt(i);
-    hash = Math.imul(hash, 16777619);
+type ViewTransition = { finished: Promise<void>; skipTransition?: () => void };
+type ViewTransitionDocument = Document & {
+  startViewTransition?: (update: () => void | Promise<void>) => ViewTransition;
+};
+
+const DESTINATION_ARTIFACT: Partial<Record<ProjectId, string>> = {
+  grove: "#grove-start .rp-hero__media img",
+  mobbin: "#mobbin-start .fp-capture--3 img",
+};
+const RETURN_KEY = "portfolio-motion-return";
+
+function routeTo(project: Project) {
+  window.history.pushState({ motionSource: "selected-work", project: project.id }, "", project.path);
+  window.dispatchEvent(new PopStateEvent("popstate"));
+}
+
+async function registerTruthfulDestination(project: Project, transitionName: string) {
+  const selector = DESTINATION_ARTIFACT[project.id];
+  if (!selector) return false;
+  const deadline = performance.now() + 180;
+  while (performance.now() < deadline) {
+    const target = document.querySelector<HTMLElement>(selector);
+    const heading = document.querySelector("#main-content h1");
+    if (target && heading) {
+      target.style.viewTransitionName = transitionName;
+      return true;
+    }
+    await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
   }
-  return `MSK-${(hash >>> 0).toString(16).toUpperCase().padStart(8, "0")}`;
+  return false;
 }
 
-function Evidence({ className = "" }: { className?: string }) {
+function IntentRow({ project, reduced }: { project: Project; reduced: boolean }) {
   const t = useT();
-  return (
-    <article className={`habc-evidence ${className}`.trim()} aria-label="Exact Memorial Sloan Kettering selected-work row">
-      <div className="habc-evidence__copy">
-        <p className="habc-evidence__number">01</p>
-        <h3>Memorial Sloan Kettering</h3>
-        <p className="habc-evidence__subtitle">{t("home.proj.msk.subtitle")}</p>
-        <p className="habc-evidence__description">{t("home.riso.mskDesc")}</p>
-      </div>
-      <div className="habc-evidence__thumb">
-        <img src={MSK_SOURCE} alt={t("home.riso.mskAlt")} draggable={false} />
-      </div>
-      <span className="habc-evidence__arrow" aria-hidden="true">→</span>
-    </article>
-  );
-}
+  const rowRef = useRef<HTMLAnchorElement>(null);
+  const thumbRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number | null>(null);
+  const intentTimerRef = useRef<number | null>(null);
+  const [active, setActive] = useState(false);
 
-function MiniA({ reduced }: { reduced: boolean }) {
-  const [run, setRun] = useState(0);
-  const [playing, setPlaying] = useState(false);
-
-  const reveal = () => {
-    setRun((value) => value + 1);
-    setPlaying(true);
-  };
-
-  useEffect(() => {
-    if (!playing || reduced) return;
-    const timer = window.setTimeout(() => setPlaying(false), 9000);
-    return () => window.clearTimeout(timer);
-  }, [playing, reduced, run]);
-
-  return (
-    <section className="habc-mini" aria-labelledby="habc-a-title">
-      <div className="habc-mini__copy">
-        <p className="habc-label">A / 03</p>
-        <h2 id="habc-a-title">The work has weather</h2>
-        <p>Reveal a raking light and registered paper edge.</p>
-      </div>
-      <div className={`habc-stage habc-weather ${playing ? "is-playing" : ""} ${reduced ? "is-reduced" : ""}`} key={run}>
-        <span className="habc-weather__wash habc-weather__wash--one" aria-hidden="true" />
-        <span className="habc-weather__wash habc-weather__wash--two" aria-hidden="true" />
-        <span className="habc-weather__shadow" aria-hidden="true" />
-        <Evidence />
-      </div>
-      <div className="habc-actions">
-        <button type="button" className="habc-action" onClick={reveal}>
-          {run ? "Replay atmosphere" : "Reveal atmosphere"}
-        </button>
-        <p role="status" aria-live="polite">{playing && !reduced ? "Atmosphere moving around the exact artifact." : run ? "Atmosphere revealed." : "Still preview ready."}</p>
-      </div>
-    </section>
-  );
-}
-
-function MiniB({ reduced }: { reduced: boolean }) {
-  const [run, setRun] = useState(0);
-  const [playing, setPlaying] = useState(false);
-
-  const open = () => {
-    setRun((value) => value + 1);
-    setPlaying(true);
-  };
-
-  useEffect(() => {
-    if (!playing || reduced) return;
-    const timer = window.setTimeout(() => setPlaying(false), 9000);
-    return () => window.clearTimeout(timer);
-  }, [playing, reduced, run]);
-
-  return (
-    <section className="habc-mini" aria-labelledby="habc-b-title">
-      <div className="habc-mini__copy">
-        <p className="habc-label">B / 03</p>
-        <h2 id="habc-b-title">The page remembers</h2>
-        <p>Open the project. The map carries your place.</p>
-      </div>
-      <div className={`habc-stage habc-memory ${playing ? "is-playing" : ""} ${reduced ? "is-reduced" : ""}`} key={run}>
-        <div className="habc-memory__index" aria-hidden="true">
-          <span>Selected work</span><i /><span>01</span>
-        </div>
-        <div className="habc-memory__destination" aria-hidden="true">
-          <span>Case study · MSK</span><i /><span>Clinical systems</span>
-          <strong>Making one operational system visible.</strong>
-        </div>
-        <Evidence className="habc-memory__evidence" />
-      </div>
-      <div className="habc-actions">
-        <button type="button" className="habc-action" onClick={open}>
-          {run ? "Replay transition" : "Open project"}
-        </button>
-        <p role="status" aria-live="polite">{playing && !reduced ? "The publication is changing around the artifact." : run ? "Case-study context reached with the artifact preserved." : "Homepage context ready."}</p>
-      </div>
-    </section>
-  );
-}
-
-function MiniC({ reduced, onFirstLookComplete }: { reduced: boolean; onFirstLookComplete: () => void }) {
-  const fieldRef = useRef<HTMLDivElement>(null);
-  const finishTimerRef = useRef<number | null>(null);
-  const [anchor, setAnchor] = useState({ x: 76, y: 28 });
-  const [phase, setPhase] = useState<CPhase>("shape");
-  const [fidelity, setFidelity] = useState<"preview" | "high">("high");
-  const [receipt, setReceipt] = useState<{ id: string; replayed: boolean } | null>(null);
-  const [seenIds, setSeenIds] = useState<string[]>([]);
-  const [scenario, setScenario] = useState<Scenario | null>(null);
-  const [draftChanged, setDraftChanged] = useState(false);
-
-  const moveAnchor = (x: number, y: number) => {
-    setAnchor({ x: Math.max(8, Math.min(92, x)), y: Math.max(10, Math.min(90, y)) });
-    setPhase((current) => current === "shape" ? "ready" : current);
-    if (phase === "finishing" || phase === "complete") setDraftChanged(true);
-  };
-
-  const pointerMove = (event: PointerEvent<HTMLButtonElement>) => {
-    if (!fieldRef.current || event.buttons !== 1) return;
-    const bounds = fieldRef.current.getBoundingClientRect();
-    moveAnchor(((event.clientX - bounds.left) / bounds.width) * 100, ((event.clientY - bounds.top) / bounds.height) * 100);
-  };
-
-  const finish = () => {
-    const id = canonicalIntentId(anchor.x, anchor.y, fidelity);
-    const replayed = seenIds.includes(id);
-    setPhase("finishing");
-    setDraftChanged(false);
-    const complete = () => {
-      finishTimerRef.current = null;
-      setReceipt({ id, replayed });
-      setSeenIds((ids) => ids.includes(id) ? ids : [...ids, id]);
-      setPhase("complete");
-      onFirstLookComplete();
-    };
-    if (finishTimerRef.current !== null) window.clearTimeout(finishTimerRef.current);
-    if (reduced || fidelity === "preview") complete();
-    else finishTimerRef.current = window.setTimeout(complete, 8000);
-  };
-
-  const cancel = () => {
-    if (finishTimerRef.current !== null) window.clearTimeout(finishTimerRef.current);
-    finishTimerRef.current = null;
-    setPhase("ready");
-    setReceipt(null);
-    setDraftChanged(false);
-  };
-
-  const reset = () => {
-    if (finishTimerRef.current !== null) window.clearTimeout(finishTimerRef.current);
-    finishTimerRef.current = null;
-    setAnchor({ x: 76, y: 28 });
-    setPhase("shape");
-    setReceipt(null);
-    setScenario(null);
-    setDraftChanged(false);
+  const move = (event: PointerEvent<HTMLAnchorElement>) => {
+    if (reduced || !rowRef.current || event.pointerType === "touch") return;
+    const bounds = rowRef.current.getBoundingClientRect();
+    const x = Math.max(-10, Math.min(10, (((event.clientX - bounds.left) / bounds.width) - .5) * 20));
+    const y = Math.max(-8, Math.min(8, (((event.clientY - bounds.top) / bounds.height) - .5) * 16));
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    rafRef.current = requestAnimationFrame(() => {
+      rowRef.current?.style.setProperty("--intent-bias-x", `${x}px`);
+      rowRef.current?.style.setProperty("--intent-bias-y", `${y}px`);
+    });
   };
 
   useEffect(() => () => {
-    if (finishTimerRef.current !== null) window.clearTimeout(finishTimerRef.current);
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    if (intentTimerRef.current) window.clearTimeout(intentTimerRef.current);
   }, []);
 
-  const style = useMemo(() => ({ "--anchor-x": `${anchor.x}%`, "--anchor-y": `${anchor.y}%` } as React.CSSProperties), [anchor]);
-  const status = phase === "finishing"
-    ? "Finishing the atmosphere. The evidence remains available."
-    : phase === "complete"
-      ? `${receipt?.replayed ? "Same treatment replayed without another run." : "Treatment finished."} Receipt and evaluator recovery checks are available below.`
-      : phase === "ready"
-        ? "Spatial preview ready to finish."
-        : "Move the atmosphere anchor to begin.";
-
-  const canFinish = phase === "ready" || (phase === "complete" && draftChanged);
-  const actionLabel = phase === "finishing"
-    ? "Cancel finish"
-    : phase === "complete" && !draftChanged
-      ? "Start over"
-      : draftChanged
-        ? "Finish next draft"
-        : "Finish treatment";
-  const actionDisabled = phase === "shape";
-  const action = () => {
-    if (phase === "finishing") cancel();
-    else if (phase === "complete" && !draftChanged) reset();
-    else finish();
-  };
-
   return (
-    <section className="habc-mini" aria-labelledby="habc-c-title">
-      <div className="habc-mini__copy">
-        <p className="habc-label">C / 03 · previously rejected · simplified</p>
-        <h2 id="habc-c-title">Playground</h2>
-        <p>Direct the light. The map and copy never change.</p>
+    <a
+      ref={rowRef}
+      href={project.path}
+      className={`hrm-row ${active ? "is-intent" : ""}`}
+      onPointerEnter={() => { intentTimerRef.current = window.setTimeout(() => setActive(true), 80); }}
+      onPointerMove={move}
+      onPointerLeave={() => { if (intentTimerRef.current) window.clearTimeout(intentTimerRef.current); setActive(false); }}
+      onPointerDown={(event) => { if (event.pointerType === "touch") setActive(true); }}
+      onPointerUp={() => setActive(false)}
+      onPointerCancel={() => setActive(false)}
+      onFocus={() => setActive(true)}
+      onBlur={() => setActive(false)}
+      onClick={(event) => {
+        if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+        const startViewTransition = (document as ViewTransitionDocument).startViewTransition;
+        if (reduced || connection?.saveData || !startViewTransition || !DESTINATION_ARTIFACT[project.id]) return;
+        event.preventDefault();
+        const transitionName = `project-${project.id}`;
+        thumbRef.current?.style.setProperty("view-transition-name", transitionName);
+        sessionStorage.setItem(RETURN_KEY, JSON.stringify({ id: project.id, y: window.scrollY }));
+        try {
+          let transition: ViewTransition | undefined;
+          transition = startViewTransition.call(document, async () => {
+            routeTo(project);
+            const registered = await registerTruthfulDestination(project, transitionName);
+            if (!registered) transition?.skipTransition?.();
+          });
+          transition.finished.finally(() => {
+            document.querySelectorAll<HTMLElement>(`[style*="view-transition-name: ${transitionName}"]`).forEach((element) => element.style.removeProperty("view-transition-name"));
+          });
+        } catch {
+          thumbRef.current?.style.removeProperty("view-transition-name");
+          routeTo(project);
+        }
+      }}
+    >
+      <span className="hrm-row__field" aria-hidden="true" />
+      <div className="hrm-row__copy">
+        <p className="hrm-row__number">{project.n}</p>
+        <h2>{project.title}</h2>
+        <p className="hrm-row__subtitle">{t(project.subKey)}</p>
+        <p className="hrm-row__description">{t(project.descKey)}</p>
       </div>
-      <div
-        ref={fieldRef}
-        className={`habc-stage habc-intent is-${phase} ${reduced ? "is-reduced" : ""}`}
-        style={style}
-      >
-        <span className="habc-intent__material habc-intent__material--one" aria-hidden="true" />
-        <span className="habc-intent__material habc-intent__material--two" aria-hidden="true" />
-        <Evidence />
-        <button
-          type="button"
-          className="habc-anchor"
-          aria-label={`Atmosphere position ${Math.round(anchor.x)} percent across and ${Math.round(anchor.y)} percent down. Use arrow keys or drag.`}
-          onPointerDown={(event) => event.currentTarget.setPointerCapture(event.pointerId)}
-          onPointerMove={pointerMove}
-          onKeyDown={(event) => {
-            const step = event.shiftKey ? 10 : 5;
-            if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(event.key)) event.preventDefault();
-            if (event.key === "ArrowLeft") moveAnchor(anchor.x - step, anchor.y);
-            if (event.key === "ArrowRight") moveAnchor(anchor.x + step, anchor.y);
-            if (event.key === "ArrowUp") moveAnchor(anchor.x, anchor.y - step);
-            if (event.key === "ArrowDown") moveAnchor(anchor.x, anchor.y + step);
-          }}
-        >
-          <span aria-hidden="true" />
-        </button>
-        <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">
-          Position {Math.round(anchor.x)} percent across, {Math.round(anchor.y)} percent down.
-        </p>
-        {draftChanged && <p className="habc-draft">Next draft changed · committed treatment preserved</p>}
-      </div>
-
-      <div className="habc-c-controls">
-        <details className="habc-step-controls">
-          <summary>Use step controls</summary>
-          <div role="group" aria-label="Atmosphere position controls">
-            <button type="button" onClick={() => moveAnchor(anchor.x - 10, anchor.y)}>Left</button>
-            <button type="button" onClick={() => moveAnchor(anchor.x, anchor.y - 10)}>Up</button>
-            <button type="button" onClick={() => moveAnchor(anchor.x, anchor.y + 10)}>Down</button>
-            <button type="button" onClick={() => moveAnchor(anchor.x + 10, anchor.y)}>Right</button>
-          </div>
-        </details>
-        <fieldset className="habc-fidelity" disabled={phase === "finishing"}>
-          <legend>Finish preference</legend>
-          <label><input type="radio" name="fidelity" checked={fidelity === "preview"} onChange={() => setFidelity("preview")} /> Preview now</label>
-          <label><input type="radio" name="fidelity" checked={fidelity === "high"} onChange={() => setFidelity("high")} /> Highest fidelity · about 8 seconds</label>
-          <small>Local simulation · no network or credits</small>
-        </fieldset>
-        <div className="habc-actions">
-          <button type="button" className={`habc-action ${phase === "finishing" || phase === "complete" ? "habc-action--quiet" : ""}`} onClick={action} disabled={actionDisabled || (!canFinish && phase !== "finishing" && phase !== "complete")}>{actionLabel}</button>
-          <p role="status" aria-live="polite">{status}</p>
-        </div>
-      </div>
-
-      {phase === "complete" && receipt && (
-        <section className="habc-receipt" aria-labelledby="habc-receipt-title">
-          <h3 id="habc-receipt-title" className="sr-only">Treatment receipt</h3>
-          <p><span>Protected</span><b>MSK map crop and selected-work words</b></p>
-          <p><span>Changed</span><b>Paper, light, shadow, and camera</b></p>
-          <p><span>Run</span><b>{receipt.replayed ? "Replayed · no duplicate" : "New treatment"}</b></p>
-          <details><summary>Evaluator details</summary><p>Intent {receipt.id} · {fidelity === "high" ? "simulated remote finish" : "local preview"}</p></details>
-        </section>
-      )}
-
-      {phase === "complete" && (
-        <details className="habc-scenarios">
-          <summary>Evaluator recovery checks</summary>
-          <div className="habc-scenarios__choices">
-            {(["load", "latency", "consistency", "unavailable"] as Scenario[]).map((item) => (
-              <button type="button" key={item} aria-pressed={scenario === item} onClick={() => setScenario(item)}>{item}</button>
-            ))}
-          </div>
-          {scenario && <ScenarioMessage scenario={scenario} onRetry={() => setScenario(null)} />}
-        </details>
-      )}
-    </section>
+      <div ref={thumbRef} className="hrm-row__thumb"><img src={project.img} alt={t(project.altKey)} /></div>
+      <span className="hrm-row__arrow" aria-hidden="true">→</span>
+    </a>
   );
 }
 
-function ScenarioMessage({ scenario, onRetry }: { scenario: Scenario; onRetry: () => void }) {
-  const copy: Record<Scenario, string> = {
-    load: "A faster, quieter finish is ready now. The higher-craft finish needs longer.",
-    latency: "The local draft still works. The committed atmosphere is taking about 14 seconds.",
-    consistency: "The evidence is exact. The surrounding material is settling to the committed version.",
-    unavailable: "The remote finish is unavailable. Your local treatment is intact.",
-  };
-  return <div className="habc-scenario" role="status"><p>{copy[scenario]}</p>{scenario === "unavailable" && <button type="button" onClick={onRetry}>Try finish again</button>}</div>;
-}
-
 export default function HiggsfieldABCLab() {
-  usePageTitle("Higgsfield A/B/C private lab");
-  const [concept, setConcept] = useState<Concept>("A");
-  const motionOverrideRef = useRef(false);
+  usePageTitle("Real-context portfolio motion lab");
   const [reduced, setReduced] = useState(() => window.matchMedia("(prefers-reduced-motion: reduce)").matches);
-  const [cComplete, setCComplete] = useState(false);
 
   useEffect(() => {
     const query = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const sync = (event: MediaQueryListEvent) => {
-      if (!motionOverrideRef.current) setReduced(event.matches);
-    };
-    query.addEventListener?.("change", sync);
-    return () => query.removeEventListener?.("change", sync);
+    const update = (event: MediaQueryListEvent) => setReduced(event.matches);
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  }, []);
+
+  useEffect(() => {
+    const saved = sessionStorage.getItem(RETURN_KEY);
+    if (!saved) return;
+    sessionStorage.removeItem(RETURN_KEY);
+    try {
+      const { id, y } = JSON.parse(saved) as { id?: ProjectId; y?: number };
+      if (!id) return;
+      requestAnimationFrame(() => {
+        window.scrollTo(0, typeof y === "number" ? y : 0);
+        document.querySelector<HTMLAnchorElement>(`.hrm-row[href="/case-study/${id}"]`)?.focus({ preventScroll: true });
+      });
+    } catch {
+      // A malformed restoration hint should never interfere with the page.
+    }
   }, []);
 
   return (
-    <main className="riso-page habc-page" lang="en">
-      <header className="habc-header">
-        <div>
-          <p className="habc-label">Private comparison · no generated media</p>
-          <h1>One MSK map. Three motion studies.</h1>
-        </div>
-        <p>Which version makes the redesign easier to recall?</p>
-      </header>
-
-      <nav className="habc-index" aria-label="Higgsfield concepts">
-        {CONCEPTS.map((item) => (
-          <button type="button" key={item.id} className={concept === item.id ? "is-active" : ""} aria-pressed={concept === item.id} onClick={() => setConcept(item.id)}>
-            <span>{item.id}</span><b>{item.name}</b><small>{item.watch}</small>
-          </button>
-        ))}
-      </nav>
-
-      <div className="habc-toolbar">
-        <p aria-live="polite">Viewing {concept} of 3</p>
-        <label><input type="checkbox" checked={reduced} onChange={(event) => { motionOverrideRef.current = true; setReduced(event.target.checked); }} /> Reduced motion</label>
-      </div>
-
-      <div className="habc-shared-stage">
-        {concept === "A" && <MiniA reduced={reduced} />}
-        {concept === "B" && <MiniB reduced={reduced} />}
-        {concept === "C" && <MiniC reduced={reduced} onFirstLookComplete={() => setCComplete(true)} />}
-      </div>
-
-      <footer className="habc-evaluation">
-        <p>Which study keeps the work memorable without competing with it?</p>
-        {cComplete && <p className="habc-evaluation__note">C's evaluator scenarios are now available inside its completed state.</p>}
-      </footer>
+    <main className={`riso-page hrm-page ${reduced ? "is-reduced" : ""}`} lang="en">
+      <header className="hrm-header"><p>Selected work</p><h1>Three products, three different problems</h1></header>
+      <div className="hrm-motion-control"><label><input type="checkbox" checked={reduced} onChange={(event) => setReduced(event.target.checked)} /> Reduced motion</label></div>
+      <section className="hrm-work" aria-label="Selected projects">
+        <div className="hrm-worklist">{PROJECTS.map((project) => <IntentRow key={project.id} project={project} reduced={reduced} />)}</div>
+      </section>
     </main>
   );
 }

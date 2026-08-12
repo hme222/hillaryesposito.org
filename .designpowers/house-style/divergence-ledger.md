@@ -1,5 +1,34 @@
 # Divergence Ledger
 
+## Higgsfield A/B/C private-lab extension — 2026-08-12
+
+### Structural options
+
+Option A: **Three-up gallery** — simultaneous miniatures with one action each. Rejected because equal tiles recreate portfolio-card and poster grammar, and 390px cannot compare motion fairly.
+Option B: **Editorial index + shared stage** — a compact numbered index changes one dominant evidence field while keeping controls and comparison criteria stable. **Chosen.**
+Option C: **Vertical filmstrip** — three stacked experiences in one scroll. Rejected because repeated motion competes with recruiter evidence and creates an unfair first/last-position effect.
+
+### Comparison shell
+
+Default: Three equal cards, tabs in a rounded container, or a media-player playlist.
+Instead: A ruled editorial index with one dominant, borderless stage and a persistent concept position (`A / 03`).
+Reason: It makes the artifact—not the selector—the visual protagonist and gives every concept the same viewport and time budget.
+Validation: At 390 and 1440, only one mini is active; the index consumes less than one quarter of the first viewport; no enclosing card or player timeline appears.
+
+### Concept C
+
+Default: Four anchors, settings, visible routing graph, state dashboard, and technical receipt.
+Instead: One material anchor shapes only spatial qualities; one outcome choice triggers a bounded finish; local/cloud logic is inferred from responsiveness and plain status; the receipt is three short lines.
+Reason: Senior systems judgment should be felt through continuity, recovery, and truth preservation—not explained as infrastructure.
+Validation: A first-time reviewer can complete C from one sentence and recall that evidence remained exact.
+
+### System state
+
+Default: Loading disables the scene or replaces it with a spinner.
+Instead: The committed treatment resolves while the exact artifact and local next draft remain usable; exceptional conditions appear only in a post-comparison evaluator disclosure.
+Reason: Load and latency become product behavior without turning the taste test into a systems demo.
+Validation: Cancellation and cloud-unavailable simulations preserve the spatial state; identical commits return the same stable receipt ID.
+
 ## Frame of Intent structural extension — 2026-08-11
 
 ### Structural options

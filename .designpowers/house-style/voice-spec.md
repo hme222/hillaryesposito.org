@@ -34,5 +34,18 @@ Error GOOD: This private page did not load. Return to selected work and use the 
 Headline BAD: Making technical products easier to understand, use, and extend
 Headline GOOD: Built a working React prototype. Improved workflows serving 21,000+ staff.
 
+## Higgsfield A/B/C private-lab copy
+
+- Instruction copy is one sentence, literal, and under 10 words.
+- Visible system language names the visitor outcome, never infrastructure: `Preview now`, `Finish with highest fidelity`, `Try finish again`.
+- Default receipt answers only: `Protected`, `Changed`, and `Run`.
+- Technical terms such as `idempotent`, `eventual consistency`, `queue`, `hash`, and `cloud route` stay in evaluator-only details.
+
+BAD: Configure an intent envelope and select cloud execution.
+GOOD: Shape the atmosphere. The evidence stays exact.
+
+BAD: Idempotent execution completed from cached cloud result.
+GOOD: Same treatment. Replayed without another run.
+
 Proof BAD: Strong systems thinker and cross-functional collaborator
 Proof GOOD: A workflow map gave clinical, IT, and operations one system failure to resolve together.

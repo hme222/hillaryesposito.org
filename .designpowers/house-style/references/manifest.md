@@ -24,3 +24,13 @@ Evidence: Approved persistent owner taste profile.
 STEAL: The behavioral evidence priorities: working prototypes, complex constraints, research, reusable product primitives, craft at speed, and code with AI.
 IGNORE: Supabase marketing colors, layout, logos, or product-brand imitation.
 Evidence: Verified Ashby listing on 2026-08-11.
+
+## Higgsfield A/B/C private lab contract
+STEAL: Equal evidence, equal time, one action, exact truth boundary, four-beat C journey, and evaluator-only recovery scenarios.
+IGNORE: The temptation to visualize every distributed-system concept at once.
+Evidence: Owner-approved contract dated 2026-08-12.
+
+## Current Riso selected-work and MSK implementation
+STEAL: Existing paper/ink tokens, editorial rules, authentic artifact, clear routes, and warm material restraint.
+IGNORE: Any local recreation, invented workflow copy, or detached poster version of the evidence.
+Evidence: Verified repository source; rendered validation still required.
