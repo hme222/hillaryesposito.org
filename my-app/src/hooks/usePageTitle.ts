@@ -54,7 +54,7 @@ export default function usePageTitle(page?: string) {
     const canonical = isNotFound
       ? ORIGIN
       : `${ORIGIN}${path === "/" ? "" : path}`;
-    const isPrivateCuratedRoute = path.startsWith("/curated/");
+    const isPrivateRoute = path.startsWith("/curated/") || path.startsWith("/lab/");
 
     document.title = title;
     setMeta('meta[name="description"]', "name", "description", description);
@@ -69,7 +69,7 @@ export default function usePageTitle(page?: string) {
       'meta[name="robots"]',
       "name",
       "robots",
-      isPrivateCuratedRoute || isNotFound
+      isPrivateRoute || isNotFound
         ? "noindex, nofollow, noarchive"
         : "index, follow",
     );
