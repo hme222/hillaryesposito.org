@@ -9,6 +9,7 @@ export type DecisionStep = {
 
 type Props = {
   id: string;
+  languageAnchor?: string;
   kicker: string;
   title: string;
   intro: string;
@@ -43,7 +44,7 @@ type Props = {
  * track is the only element measured, so there is nothing to fall out of sync
  * with — no per-step height, no detection band a short step can slip through.
  */
-export default function DecisionStory({ id, kicker, title, intro, steps, visual }: Props) {
+export default function DecisionStory({ id, languageAnchor, kicker, title, intro, steps, visual }: Props) {
   const [active, setActive] = useState(0);
   const trackRef = useRef<HTMLDivElement>(null);
 
@@ -78,7 +79,7 @@ export default function DecisionStory({ id, kicker, title, intro, steps, visual 
   }, [steps.length]);
 
   return (
-    <section className="rp-decisionStory" id={id} aria-labelledby={`${id}-title`}>
+    <section className="rp-decisionStory" id={id} data-language-anchor={languageAnchor} aria-labelledby={`${id}-title`}>
       <div className="rp-wrap">
         <div className="rp-decisionStory__head">
           <p className="rp-kicker">{kicker}</p>

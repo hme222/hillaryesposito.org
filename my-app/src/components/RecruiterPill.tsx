@@ -67,7 +67,7 @@ export default function RecruiterPill() {
                 <div>
                   <p className="recruiter-panel__eyebrow">90-second tour</p>
                   <h2 id="recruiter-panel-title" className="recruiter-panel__title">
-                    Hillary Esposito, Product Designer
+                    Hillary Esposito, Healthcare Product &amp; Service Designer
                   </h2>
                 </div>
                 <button
@@ -83,45 +83,36 @@ export default function RecruiterPill() {
               <div className="recruiter-panel__body">
                 <section className="recruiter-panel__section recruiter-panel__vitals">
                   <div className="recruiter-panel__vitals-grid">
-                    <span>Product Designer</span>
-                    <span>Trustworthy workflows + consumer products</span>
+                    <span>Healthcare Product &amp; Service Designer</span>
+                    <span>Clinical workflows · end-to-end services · research</span>
                     <span>Currently freelancing</span>
                   </div>
                 </section>
 
                 <section className="recruiter-panel__section">
                   <p className="recruiter-panel__label">In one line</p>
-                  <p>I own the whole path a task takes, not just the last screen — research rigor and AI judgment, shaped by six years building software for 21,000 clinicians and staff.</p>
-                </section>
-
-                <section className="recruiter-panel__section">
-                  <p className="recruiter-panel__label">Strengths</p>
-                  <div className="recruiter-panel__chips">
-                    {["Product Research", "Workflow Systems", "AI Judgment", "Consumer Craft"].map((s) => (
-                      <span key={s} className="recruiter-panel__chip">{s}</span>
-                    ))}
-                  </div>
+                  <p>At MSK, a clinical workflow I initiated contributed to a 20% organization-wide electronic medical record cost reduction. I bring 13+ years in healthcare and medical logistics to product, service, and research decisions.</p>
                 </section>
 
                 <section className="recruiter-panel__section">
                   <p className="recruiter-panel__label">Selected work</p>
                   <ul className="recruiter-panel__projects">
                     <li>
-                      <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/grove")}>
-                        <strong>Grove</strong>
-                        <span>Phase-2 functional prototype; core flows ready for moderated testing; social prototype not yet built</span>
-                      </button>
-                    </li>
-                    <li>
                       <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/msk")}>
-                        <strong>MSK Cancer Center</strong>
-                        <span>Dashboard-to-online-EMR workflow redesign; user roles, permissions, workflow states; contributed to a 20% EMR cost reduction</span>
+                        <strong>MSK · A filing queue replaced a four-system workaround</strong>
+                        <span>Mapped across clinical, IT, imaging, and operations; the workflow I initiated contributed to a 20% organization-wide electronic medical record cost reduction</span>
                       </button>
                     </li>
                     <li>
-                      <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/mobbin")}>
-                        <strong>Mobbin</strong>
-                        <span>200+ screens per app across three finance apps; production-ready flow documentation and consumer pattern curation</span>
+                      <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/logistics")}>
+                        <strong>Medical logistics · Resupply, 85% faster</strong>
+                        <span>Redesigned an end-to-end supply service for 5,000+ soldiers across seven aid stations; shared tracking also reduced spending 60%</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/grove")}>
+                        <strong>Grove · Eleven features became three</strong>
+                        <span>Functional prototype, Phase 2 of 3; a 34-person self-report survey narrowed the next build from eleven features to three</span>
                       </button>
                     </li>
                   </ul>

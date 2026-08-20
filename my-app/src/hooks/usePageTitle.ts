@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 
 const BASE = "Hillary Esposito";
-const DEFAULT_TITLE = `${BASE} | Product Designer, end to end`;
+const DEFAULT_TITLE = `${BASE} | Healthcare Product & Service Designer`;
 const DEFAULT_DESCRIPTION =
-  "Product designer who owns the whole path a task takes, not just the last screen \u2014 research rigor and AI judgment, shaped by six years building software for 21,000 clinicians.";
+  "Healthcare product and service designer with 13+ years in cancer-care operations and medical logistics; initiated a clinical workflow that contributed to a 20% organization-wide EMR cost reduction.";
 const ORIGIN = "https://hillaryesposito.org";
 
 const ROUTE_META: Array<{ match: RegExp; description: string; image: string }> = [
@@ -16,7 +16,7 @@ const ROUTE_META: Array<{ match: RegExp; description: string; image: string }> =
   {
     match: /\/case-study\/msk$/,
     description:
-      "A healthcare systems case study: designing clearer operational workflows for more than 21,000 people at Memorial Sloan Kettering.",
+      "How a paper-to-digital workflow initiated at Memorial Sloan Kettering later contributed inside a larger initiative that reduced organization-wide EMR costs by 20%.",
     image: "/assets/msk/mskcc-map.jpg",
   },
   {
@@ -28,7 +28,7 @@ const ROUTE_META: Array<{ match: RegExp; description: string; image: string }> =
   {
     match: /\/about$/,
     description:
-      "About Hillary Esposito: a product designer combining research rigor, systems thinking, consumer craft, and responsible AI judgment.",
+      "About Hillary Esposito: a healthcare product and service designer combining clinical workflow knowledge, service systems, research rigor, and responsible AI judgment.",
     image: "/assets/about/now.jpg",
   },
 ];

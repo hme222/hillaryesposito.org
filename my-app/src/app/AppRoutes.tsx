@@ -1,6 +1,6 @@
 // src/app/AppRoutes.tsx
 import React, { Component, lazy, Suspense, useEffect, useRef, useState } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigationType } from "react-router-dom";
 
 import RisoHome from "../pages/RisoHome";
 import About from "../pages/AboutMe";
@@ -79,9 +79,30 @@ function LazyPage({ name, children }: { name: string; children: React.ReactNode 
 }
 
 function ScrollToTop() {
-  const { pathname, search } = useLocation();
+  const location = useLocation();
+  const { pathname, search, key } = location;
+  const navigationType = useNavigationType();
   const isFirstRender = useRef(true);
   const lastPath = useRef(pathname);
+
+  useEffect(() => {
+    const previous = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
+    return () => {
+      window.history.scrollRestoration = previous;
+    };
+  }, []);
+
+  useEffect(() => {
+    const remember = () => {
+      sessionStorage.setItem(`portfolio-scroll:${pathname}`, String(window.scrollY));
+    };
+    window.addEventListener("scroll", remember, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", remember);
+    };
+  }, [pathname]);
+
   useEffect(() => {
     const params = new URLSearchParams(search);
 
@@ -110,6 +131,34 @@ function ScrollToTop() {
     // When landing on a section (?scrollTo=...), let the page position itself
     // instead of resetting to the top and fighting that scroll.
     if (params.has("scrollTo")) return;
+    if (pathChanged && navigationType === "POP") {
+      const saved = Number(sessionStorage.getItem(`portfolio-scroll:${pathname}`) || 0);
+      // Images and lazy case-study bundles can grow the document after the
+      // first paint. Keep restoring the same history entry until the requested
+      // position is reachable or the layout has had ample time to settle.
+      let attempts = 0;
+      let restoreTimer = 0;
+      const root = document.documentElement;
+      const previousScrollBehavior = root.style.scrollBehavior;
+      root.style.scrollBehavior = "auto";
+      const finish = () => {
+        root.style.scrollBehavior = previousScrollBehavior;
+      };
+      const restore = () => {
+        window.scrollTo({ top: saved, left: 0, behavior: "auto" });
+        attempts += 1;
+        if (attempts < 14) {
+          restoreTimer = window.setTimeout(restore, 100);
+        } else {
+          finish();
+        }
+      };
+      restore();
+      return () => {
+        window.clearTimeout(restoreTimer);
+        finish();
+      };
+    }
     if (pathChanged) window.scrollTo(0, 0);
 
     // Move focus to the main content region on client-side navigation so keyboard
@@ -118,7 +167,7 @@ function ScrollToTop() {
     if (wasFirstRender || !pathChanged) return;
     const main = document.getElementById("main-content");
     main?.focus({ preventScroll: true });
-  }, [pathname, search]);
+  }, [key, navigationType, pathname, search]);
   return null;
 }
 

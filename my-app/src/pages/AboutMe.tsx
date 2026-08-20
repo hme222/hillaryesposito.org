@@ -5,6 +5,7 @@ import usePageTitle from "../hooks/usePageTitle";
 import { useLanguage } from "../app/LanguageContext";
 import { NewsIcon } from "../components/LineIcons";
 import CartoField from "../components/riso/CartoField";
+import CaseStudyChapters, { CaseStudyChapter } from "../components/flagship/CaseStudyChapters";
 import { CLIENT_FEEDBACK, CLIENT_FEEDBACK_ES } from "../data/clientFeedback";
 import "../styles/riso.css";
 import "../styles/riso-page.css";
@@ -29,7 +30,7 @@ const CHAPTERS = [
     heading: "Six years at MSK, optimizing internal operations and designing for 21,000+ clinicians and staff.",
     image: "/assets/about/msk.jpg",
     paragraphs: [
-      "I initiated the EMR workflow redesign behind a 20% organization-wide cost reduction, rewrote the CPR certification material so every certification came in 70% ahead of a deadline that was about to slip, and rebuilt the onboarding program — Epic, HIPAA, compliance — for new administrative staff. This was deep user research before I formally had the vocabulary for it.",
+      "I initiated the EMR workflow redesign that later contributed to a 20% organization-wide cost reduction, rewrote the CPR certification material so every certification came in 70% ahead of a deadline that was about to slip, and rebuilt the onboarding program — Epic, HIPAA, compliance — for new administrative staff. The work relied on operational observation, feedback, and workflow analysis before I had formal UX vocabulary for those practices.",
     ],
     callout: "Systems fail at the point where a real person has to use them.",
     articleLink: {
@@ -70,7 +71,7 @@ const CHAPTERS_ES = [
     heading: "Seis años en MSK, optimizando operaciones internas y diseñando para 21,000+ clínicos y personal.",
     image: "/assets/about/msk.jpg",
     paragraphs: [
-      "Inicié el rediseño de un flujo EMR detrás de una reducción organizacional de 20% en costos, reescribí el material de certificación de RCP para que todas llegaran un 70% antes de un plazo que estaba a punto de aplazarse, y reconstruí el programa de incorporación — Epic, HIPAA, cumplimiento — para el personal administrativo nuevo. Esto fue investigación de usuarios en profundidad antes de que yo tuviera el vocabulario formal para llamarlo así.",
+      "Inicié el rediseño de un flujo EMR que después contribuyó a una reducción organizacional del 20% en costos, reescribí el material de certificación de RCP para que todas llegaran un 70% antes de un plazo que estaba a punto de aplazarse, y reconstruí el programa de incorporación — Epic, HIPAA, cumplimiento — para el personal administrativo nuevo. El trabajo se apoyó en observación operativa, comentarios y análisis de flujos antes de que yo tuviera vocabulario formal de UX para esas prácticas.",
     ],
     callout: "Los sistemas fallan donde una persona real tiene que usarlos.",
     articleLink: {
@@ -101,6 +102,14 @@ export default function About() {
   useFlagshipReveal(rootRef);
   const chapters = isSpanish ? CHAPTERS_ES : CHAPTERS;
   const feedback = isSpanish ? CLIENT_FEEDBACK_ES : CLIENT_FEEDBACK;
+  const pageChapters: CaseStudyChapter[] = [
+    { id: "about-start", label: isSpanish ? "Inicio" : "Start" },
+    { id: "about-pattern", label: isSpanish ? "Enfoque" : "Approach" },
+    { id: "about-story", label: isSpanish ? "Historia" : "Story" },
+    { id: "about-proof", label: isSpanish ? "Prueba" : "Proof" },
+    { id: "about-life", label: isSpanish ? "Fuera del trabajo" : "Outside work" },
+    { id: "about-contact", label: isSpanish ? "Contacto" : "Contact" },
+  ];
 
   return (
     <main className="about-page riso-page" lang={isSpanish ? "es" : "en"} ref={rootRef}>
@@ -108,17 +117,15 @@ export default function About() {
         <Link to="/?scrollTo=projects">{isSpanish ? "Trabajo" : "Work"}</Link> / <span>{isSpanish ? "Sobre mí" : "About"}</span>
       </nav>
 
-      <nav className="rp-chapters" aria-label={isSpanish ? "Capítulos de la página Sobre mí" : "About page chapters"}>
-        <span>{isSpanish ? "Saltar a" : "Jump to"}</span>
-        <a href="#about-pattern">{isSpanish ? "Enfoque" : "Approach"}</a>
-        <a href="#about-story">{isSpanish ? "Historia" : "Story"}</a>
-        <a href="#about-proof">{isSpanish ? "Prueba" : "Proof"}</a>
-        <a href="#about-life">{isSpanish ? "Fuera del trabajo" : "Outside work"}</a>
-        <a href="#about-contact">{isSpanish ? "Contacto" : "Contact"}</a>
-      </nav>
+      <CaseStudyChapters
+        project={isSpanish ? "Sobre mí" : "About"}
+        chapters={pageChapters}
+        ariaLabel={isSpanish ? "Capítulos de la página Sobre mí" : "About page chapters"}
+        jumpLabel={isSpanish ? "Saltar a" : "Jump to"}
+      />
 
       {/* ═ HERO — profile masthead (portrait-led, warm; distinct from Home) ═ */}
-      <header className="rp-hero about-hero-profile">
+      <header className="rp-hero about-hero-profile" id="about-start" data-language-anchor="about-start">
         <CartoField
           mapSrc="/riso/elevation-01.jpg"
           edition="eucalyptus"
@@ -132,7 +139,7 @@ export default function About() {
               <img src="/assets/about/headshot.jpg" alt="Hillary Esposito" />
             </div>
             <figcaption className="about-hero__caption">
-              {isSpanish ? "Hillary Esposito · Diseñadora de producto · Nueva York" : "Hillary Esposito · Product Designer · New York"}
+              {isSpanish ? "Hillary Esposito · Diseñadora de productos y servicios de salud · Nueva York" : "Hillary Esposito · Healthcare Product & Service Designer · New York"}
             </figcaption>
           </figure>
         </div>
@@ -140,20 +147,20 @@ export default function About() {
           <div className="rp-clearing">
             <span className="rp-eyebrow">{isSpanish ? "Sobre mí" : "About"}</span>
             <h1 className="rp-h1">
-              {isSpanish ? "Diseño productos donde los detalles deciden si alguien acierta." : "I design products where the details decide whether anyone gets it right."}
+              {isSpanish ? "Diseño productos y servicios de salud donde cada transferencia importa." : "I design healthcare products and services where every handoff matters."}
             </h1>
             <p className="rp-sub">
               {/* Frames the path as the qualification rather than as a pivot.
                   She did not learn healthcare to design for it — she worked
                   inside the broken workflows first and moved into design to fix
                   them, which is the harder order to come by. */}
-              {isSpanish ? "No soy una diseñadora que aprendió sobre salud. Soy alguien de operaciones: más de 13 años dentro de sistemas donde fallar cuesta — operaciones de atención oncológica, logística médica militar — y pasé al diseño para arreglarlos desde adentro. Cambia el contexto; mi pregunta no: ¿qué necesita una persona para avanzar con confianza?" : "I'm not a designer who learned healthcare. I'm an operations person — 13+ years inside systems where failure had a cost, from cancer-care operations to military medical logistics — who moved into design to fix them from the inside. The context changes; my question does not: what does a person need to move forward with confidence?"}
+              {isSpanish ? "Pasé más de 13 años dentro de operaciones de atención oncológica y logística médica militar antes de dedicarme formalmente al diseño. Ahora convierto esa experiencia en flujos clínicos más claros, servicios integrales y productos que ayudan a las personas a actuar correctamente cuando una falla tiene un costo." : "I spent 13+ years inside cancer-care operations and military medical logistics before moving into formal design. I now turn that experience into clearer clinical workflows, end-to-end services, and products that help people act correctly when failure has a cost."}
             </p>
           </div>
         </div>
       </header>
 
-      <section id="about-pattern" className="rp-section" aria-labelledby="about-pattern-title">
+      <section id="about-pattern" data-language-anchor="about-pattern" className="rp-section" aria-labelledby="about-pattern-title">
         <div className="rp-wrap">
           <p className="rp-kicker">{isSpanish ? "Mi patrón" : "My pattern"}</p>
           <h2 className="rp-title" id="about-pattern-title">
@@ -173,7 +180,7 @@ export default function About() {
       </section>
 
       {/* ═ STORY ════════════════════════════════════════════════════ */}
-      <section id="about-story" className="rp-section rp-section--alt" aria-labelledby="about-story-title">
+      <section id="about-story" data-language-anchor="about-story" className="rp-section rp-section--alt" aria-labelledby="about-story-title">
         <div className="rp-wrap">
           <p className="rp-kicker">{isSpanish ? "Mi historia" : "My story"}</p>
           <h2 className="rp-title" id="about-story-title">{isSpanish ? "Cómo llegué aquí." : "How I got here."}</h2>
@@ -231,7 +238,7 @@ export default function About() {
       </section>
 
       {/* ═ PROOF — the one voice here that is not hers ══════════════ */}
-      <section id="about-proof" className="rp-section" aria-labelledby="about-proof-title">
+      <section id="about-proof" data-language-anchor="about-proof" className="rp-section" aria-labelledby="about-proof-title">
         <div className="rp-wrap">
           <p className="rp-kicker">{isSpanish ? "Feedback de clientes" : "Client feedback"}</p>
           <h2 className="rp-title" id="about-proof-title">
@@ -251,7 +258,7 @@ export default function About() {
       </section>
 
       {/* ═ HUMAN ════════════════════════════════════════════════════ */}
-      <section id="about-life" className="rp-section rp-section--alt" aria-labelledby="about-life-title">
+      <section id="about-life" data-language-anchor="about-life" className="rp-section rp-section--alt" aria-labelledby="about-life-title">
         <div className="rp-wrap">
           <p className="rp-kicker">{isSpanish ? "Fuera del trabajo" : "Outside of work"}</p>
           <h2 className="rp-title" id="about-life-title">
@@ -275,7 +282,7 @@ export default function About() {
       </section>
 
       {/* ═ CTA ══════════════════════════════════════════════════════ */}
-      <section id="about-contact" className="rp-section">
+      <section id="about-contact" data-language-anchor="about-contact" className="rp-section">
         <div className="rp-wrap rp-close">
           <h2>{isSpanish ? "¿Le interesa trabajar conmigo?" : "Interested in working together?"}</h2>
           <p>

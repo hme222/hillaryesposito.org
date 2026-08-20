@@ -12,6 +12,7 @@ type Metric = { n: string; label: string; tag?: string };
 
 export default function EvidenceField({
   id,
+  languageAnchor,
   kicker,
   title,
   intro,
@@ -20,6 +21,7 @@ export default function EvidenceField({
   route,
 }: {
   id: string;
+  languageAnchor?: string;
   kicker: string;
   title: string;
   intro: string;
@@ -28,7 +30,7 @@ export default function EvidenceField({
   route: string[];
 }) {
   return (
-    <section className="rp-section rp-outcomeStage" id={id}>
+    <section className="rp-section rp-outcomeStage" id={id} data-language-anchor={languageAnchor}>
       <div className="rp-wrap">
         <p className="rp-kicker">{kicker}</p>
         <h2 className="rp-title">{title}</h2>

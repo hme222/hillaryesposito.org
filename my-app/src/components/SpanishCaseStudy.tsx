@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useLanguage } from "../app/LanguageContext";
+import { switchLanguageAtCurrentSection, useLanguage } from "../app/LanguageContext";
+import CaseStudyChapters, { CaseStudyChapter } from "./flagship/CaseStudyChapters";
 import usePageTitle from "../hooks/usePageTitle";
 import CartoField from "./riso/CartoField";
 import RisoDefs from "./riso/RisoDefs";
@@ -13,6 +14,7 @@ export type SpanishCaseStudyData = {
   intro: string;
   stats: { label: string; value: string }[];
   sections: {
+    anchor: string;
     eyebrow: string;
     title: string;
     body: string[];
@@ -36,11 +38,19 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
   const navigate = useNavigate();
   const { setLang } = useLanguage();
   const art = projectArt(data.title);
+  const projectKey = data.sections[0]?.anchor.split("-")[0] || "case";
+  const chapters: CaseStudyChapter[] = [
+    { id: `es-${projectKey}-start`, label: "Inicio" },
+    ...data.sections.map((section, index) => ({
+      id: `es-${section.anchor}`,
+      label: section.eyebrow,
+      note: section.title,
+    })),
+  ];
   usePageTitle(`${data.title} — estudio de caso`);
 
   const readInEnglish = () => {
-    setLang("en");
-    window.scrollTo(0, 0);
+    switchLanguageAtCurrentSection(setLang, "en");
   };
 
   return (
@@ -51,14 +61,18 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
         <Link to="/?scrollTo=projects">Trabajo</Link> / <span>{data.title}</span>
       </nav>
 
-      <nav className="rp-chapters" aria-label="Capítulos del estudio de caso">
-        <span aria-hidden="true">Ir a</span>
-        {data.sections.map((section, index) => (
-          <a key={section.title} href={`#es-capitulo-${index + 1}`}>{section.eyebrow}</a>
-        ))}
-      </nav>
+      <CaseStudyChapters
+        project={data.title}
+        chapters={chapters}
+        ariaLabel="Capítulos del estudio de caso"
+        jumpLabel="Ir a"
+      />
 
-      <header className="rp-hero">
+      <header
+        className="rp-hero"
+        id={`es-${projectKey}-start`}
+        data-language-anchor={`${projectKey}-start`}
+      >
         <CartoField
           mapSrc={art.mapSrc}
           edition={art.edition}
@@ -96,7 +110,8 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
 
       {data.sections.map((section, index) => (
         <section
-          id={`es-capitulo-${index + 1}`}
+          id={`es-${section.anchor}`}
+          data-language-anchor={section.anchor}
           className={`rp-section${index % 2 ? " rp-section--alt" : ""}`}
           key={section.title}
         >

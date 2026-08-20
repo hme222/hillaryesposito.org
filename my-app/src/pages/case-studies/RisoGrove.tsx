@@ -31,9 +31,6 @@ const CHAPTERS: CaseStudyChapter[] = [
   { id: "grove-start", label: "Start", note: "One designer, end to end" },
   { id: "grove-brief", label: "Problem", note: "Care should fit a life already happening" },
   { id: "grove-research", label: "Research", note: "34 real opinions" },
-  // "Redesign" used to point here, at the gallery of what the AI built — the
-  // opposite of what the label promised. The gallery is now labelled for what
-  // it is, and the decisions section finally has an anchor of its own.
   { id: "grove-redesign", label: "What AI built", note: "The first version, screen by screen" },
   { id: "grove-decisions", label: "Decisions", note: "Three features, one call each" },
   { id: "grove-override", label: "Human override", note: "Five calls" },
@@ -78,8 +75,6 @@ const LEGS = [
   },
 ];
 
-// Recovered from the earlier version of this case study. The page claimed a
-// survey and never once reported what those people said.
 const SURVEY_FINDINGS = [
   { stat: "74%", label: "picked smart care reminders as a launch dealbreaker — 25 of 34, the clear top answer" },
   { stat: "56%", label: "wanted to point a camera at a plant and have the app just tell them what it is" },
@@ -87,11 +82,6 @@ const SURVEY_FINDINGS = [
   { stat: "2.4", label: "out of 5: how confident new owners felt about light (n=16). Experienced owners rated themselves 3.3" },
 ];
 
-// All eleven features tested, recomputed directly from the survey export
-// (n=34). The chart previously showed nine of eleven with values that could not
-// be produced by any whole number of respondents — the omitted two included the
-// Room/Light Map, which ties for fourth. Charting every option removes both the
-// arithmetic problem and the reason ordinal ranks were banned here.
 const MVP_FEATURES = [
   { feature: "Smart care reminders", pct: 74, tier: "core" },
   { feature: "AI plant identification (camera)", pct: 56, tier: "core" },
@@ -221,6 +211,18 @@ export default function RisoGrove() {
   usePageTitle("Grove — AI Judgment Case Study");
   const { lang } = useLanguage();
 
+  // Let a direct chapter URL land after the lazy route and global route-focus
+  // work have committed. Same-page chapter links already use native anchors;
+  // this closes the cold-load case used for owner review and shared links.
+  useEffect(() => {
+    const targetId = window.location.hash.slice(1);
+    if (!targetId) return;
+    const timer = window.setTimeout(() => {
+      document.getElementById(targetId)?.scrollIntoView({ block: "start", behavior: "auto" });
+    }, 0);
+    return () => window.clearTimeout(timer);
+  }, []);
+
   // Scroll-reveal — fade/rise sections in as they enter view (Carmen-style motion).
   useEffect(() => {
     if (typeof IntersectionObserver === "undefined") return;
@@ -317,7 +319,7 @@ export default function RisoGrove() {
       <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
 
       {/* HERO */}
-      <header className="rp-hero" id="grove-start">
+      <header className="rp-hero" id="grove-start" data-language-anchor="grove-start">
         <CartoField
           mapSrc="/riso/elevation-02.jpg"
           edition="pine"
@@ -327,17 +329,16 @@ export default function RisoGrove() {
         />
         <div className="rp-hero__content">
           <div className="rp-clearing">
-            <span className="rp-eyebrow">Sole designer · research to shipped screens · AI judgment</span>
-            <h1 className="rp-h1">Grove.</h1>
+            <span className="rp-eyebrow">Grove · sole designer · functional prototype</span>
+            <h1 className="rp-h1">Eleven features became three.</h1>
             <span className="rp-readtime">
               <b>7 min</b>
               <span>read · one designer, end to end</span>
             </span>
             <p className="rp-sub">
-              I am the only designer on this. An AI built the plant-care app in one pass — every
-              feature at once — and everything after that is mine: the 5-user test, the 34-person
-              survey, cutting eleven features to three, the five calls where I overruled the model,
-              and the screens. I am <b>rebuilding it around trust</b>. (Phase 2 of 3.)
+              Emergent built eleven plant-care features in one pass. A five-person test showed
+              where people stalled, and a 34-person survey narrowed the next build to three
+              features. I am the sole designer, and <b>Phase 2 is in progress</b>.
             </p>
             <a className="rp-cta" href="#grove-research">
               See the rebuild →
@@ -364,7 +365,7 @@ export default function RisoGrove() {
       <GroveCinematic />
 
       {/* PROBLEM */}
-      <section className="rp-section" id="grove-research">
+      <section className="rp-section" id="grove-research" data-language-anchor="grove-research">
         <div className="rp-wrap">
           <div className="rp-split rp-reveal">
             <div className="rp-split__text">
@@ -397,11 +398,13 @@ export default function RisoGrove() {
             ))}
           </dl>
 
+          <aside className="rp-note rp-reveal" aria-label="Grove research evidence boundary">
+            <span className="rp-note__k">What this evidence can say</span>
+            <p>The survey records self-reported priorities, not observed behavior or market demand. I used it to choose what to build and test next. The earlier five-person usability test exposed overload in the AI-built map; the preserved record does not include session dates or task-level results, so I make no broader claim from it.</p>
+          </aside>
+
           <h3 className="rp-subhead">What they wanted, and what waited</h3>
           <p className="rp-lede">
-            {/* Was "the forums and swaps sitting in the first build". Swaps are
-                in the build; forums never were — they were a survey option, not
-                something Emergent shipped. */}
             All eleven features tested, by share of the 34 who named each a dealbreaker. The top three
             became the core. Everything under it — including the swaps and community groups already
             sitting in the first build — waited.
@@ -448,7 +451,7 @@ export default function RisoGrove() {
       </section>
 
       {/* ONE SYSTEM, EVERY SCREEN */}
-      <section className="rp-section" id="grove-redesign">
+      <section className="rp-section" id="grove-redesign" data-language-anchor="grove-decisions">
         <div className="rp-wrap">
           <p className="rp-kicker">The first version · what Emergent built</p>
           <h2 className="rp-title">Everything the AI built, screen by screen.</h2>
@@ -458,7 +461,7 @@ export default function RisoGrove() {
       </section>
 
       {/* THE REDESIGN — Emergent → focused, evidence-backed direction */}
-      <section className="rp-section" id="grove-decisions">
+      <section className="rp-section" id="grove-decisions" data-language-anchor="grove-decisions">
         <div className="rp-wrap">
           <p className="rp-kicker">The redesign · what changes and why</p>
           <h2 className="rp-title">Three features, one decision each.</h2>
@@ -510,7 +513,7 @@ export default function RisoGrove() {
       </section>
 
       {/* AI DECISION DEEP-DIVE */}
-      <section className="rp-section rp-override" id="grove-override">
+      <section className="rp-section rp-override" id="grove-override" data-language-anchor="grove-override">
         <div className="rp-wrap">
           <p className="rp-kicker">Where I said no to the AI</p>
           <h2 className="rp-title">Reminders that never nag.</h2>
@@ -552,7 +555,7 @@ export default function RisoGrove() {
       </section>
 
       {/* FOUNDATION / SYSTEM — locked principles + to-document slots */}
-      <section className="rp-section" id="grove-system">
+      <section className="rp-section" id="grove-system" data-language-anchor="grove-override">
         <div className="rp-wrap">
           <p className="rp-phase">Foundation <span>· the system</span></p>
           <h2 className="rp-title" style={{ marginTop: ".4rem" }}>The system underneath.</h2>
@@ -597,20 +600,14 @@ export default function RisoGrove() {
       </section>
 
       {/* OUTCOMES */}
-      <section className="rp-section rp-outcomeStage" id="grove-outcomes">
+      <section className="rp-section rp-outcomeStage" id="grove-outcomes" data-language-anchor="grove-outcomes">
         <div className="rp-wrap">
           <p className="rp-kicker">Where it stands</p>
-          <h2 className="rp-title">Judgment, not just screens.</h2>
+          <h2 className="rp-title">A focused prototype with an honest next test.</h2>
           <p className="rp-lede">
-            What exists so far isn’t a prettier app — it’s a more honest first version, a clear
-            hypothesis to test with real people, and a decision log showing where AI accelerates the
-            work and where a human has to overrule it.
+            Phase 2 is a clear hypothesis to test with real people, plus a decision log showing
+            where AI accelerates the work and where a human has to overrule it.
           </p>
-          {/* The bridge between the two halves of this portfolio. Grove and the
-              MSK case study previously sat in separate rooms: one demonstrated
-              AI-uncertainty design, the other clinical consequence, and nothing
-              on the site said they were the same discipline. Stated once, here,
-              where the evidence for both ends already exists. */}
           <p className="rp-bridge">
             <span>Why a plant app</span>
             Teaching a model to say “I’m not sure” — to show its confidence, cite a source, and stop
@@ -654,8 +651,7 @@ export default function RisoGrove() {
         <div className="rp-wrap rp-close">
           <h2>Building a product people have to trust?</h2>
           <p>
-            The difference isn’t using AI — it’s knowing when to trust it and when to say no. That’s
-            the work I want to do more of.
+            I want to keep designing the calls a model should not make.
           </p>
           {/* Same action and wording as MSK and Mobbin — the three studies form
               a loop, so the closing move should not change between them. */}

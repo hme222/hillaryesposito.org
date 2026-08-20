@@ -224,7 +224,7 @@ describe("flagship case-study accessibility", () => {
       container.querySelectorAll<HTMLAnchorElement>(".rp-chapters a"),
       (link) => link.textContent,
     );
-    expect(chapterLinks).toEqual(["Proof", "Work", "Fit"]);
+    expect(chapterLinks).toEqual(["Proof", "Work", "Fit", "Bring + limits", "Contact"]);
 
     const links = Array.from(container.querySelectorAll<HTMLAnchorElement>("a"));
     expect(links.find((link) => link.textContent?.includes("Review Grove"))?.getAttribute("href"))
@@ -255,6 +255,29 @@ describe("flagship case-study accessibility", () => {
     expect(fit!.compareDocumentPosition(proof!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(container.textContent).toContain("See the fit");
     expect(container.textContent).toContain("View a case study");
+  });
+
+  it.each([
+    ["healthcare-product-service-designer", "Healthcare product + service"],
+    ["healthcare-ux-researcher", "Healthcare UX research"],
+    ["the-sill-product-designer", "The Sill"],
+  ])("keeps the %s hiring page evidence-first and noindex", async (slug, expectedText) => {
+    mockCuratedSlug = slug;
+    window.history.replaceState(null, "", `/curated/${slug}`);
+    await act(async () => {
+      root.render(<CuratedRolePage />);
+    });
+
+    expect(container.textContent).toContain(expectedText);
+    expect(document.querySelector('meta[name="robots"]')?.getAttribute("content"))
+      .toBe("noindex, nofollow, noarchive");
+    expect(container.querySelector("#curated-proof")).not.toBeNull();
+    expect(container.querySelector('a[href="mailto:espositohillary@gmail.com"]')).not.toBeNull();
+
+    const results = await axe.run(container, {
+      rules: { "color-contrast": { enabled: false } },
+    });
+    expect(results.violations).toEqual([]);
   });
 
   it("keeps painted cartography editorial rather than navigational", async () => {
@@ -291,14 +314,40 @@ describe("flagship case-study accessibility", () => {
     const dialog = container.querySelector<HTMLDialogElement>(".recruiter-panel");
     expect(dialog?.open).toBe(true);
     expect(dialog?.textContent).toContain("Grove");
-    expect(dialog?.textContent).toContain("MSK Cancer Center");
-    expect(dialog?.textContent).toContain("Mobbin");
+    expect(dialog?.textContent).toContain("MSK · A filing queue replaced a four-system workaround");
+    expect(dialog?.textContent).toContain("Medical logistics · Resupply, 85% faster");
+
+    const projectTitles = Array.from(
+      dialog?.querySelectorAll<HTMLButtonElement>(".recruiter-panel__project strong") || [],
+      (item) => item.textContent,
+    );
+    expect(projectTitles).toEqual([
+      "MSK · A filing queue replaced a four-system workaround",
+      "Medical logistics · Resupply, 85% faster",
+      "Grove · Eleven features became three",
+    ]);
+    expect(dialog?.textContent).toContain("contributed to a 20% organization-wide electronic medical record cost reduction");
+    expect(dialog?.textContent?.toLowerCase()).not.toContain(["functional", "beta"].join(" "));
+    expect(dialog?.textContent?.toLowerCase()).not.toContain(["shipped", "consumer", "app"].join(" "));
 
     const close = dialog?.querySelector<HTMLButtonElement>(
       'button[aria-label="Close recruiter view"]',
     );
     await act(async () => close?.click());
     expect(dialog?.open).toBe(false);
+  });
+
+  it.each([
+    ["MSK", <FlagshipMSK />, "A filing queue replaced a four-system workaround.", "Evidence boundary"],
+    ["Grove", <RisoGrove />, "Eleven features became three.", "What this evidence can say"],
+    ["Mobbin", <FlagshipMobbin />, "200+ screens per app, searchable by task.", "I did not design"],
+  ])("%s leads with an outcome title and visible evidence boundary", async (_name, page, title, boundary) => {
+    await act(async () => {
+      root.render(page);
+    });
+
+    expect(container.querySelector("h1")?.textContent).toBe(title);
+    expect(container.textContent).toContain(boundary);
   });
 
   it("supports the Mobbin gallery and a direct next-project path", async () => {

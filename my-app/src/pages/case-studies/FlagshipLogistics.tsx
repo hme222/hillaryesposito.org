@@ -80,7 +80,7 @@ export default function FlagshipLogistics() {
         <div className="rp-hero__content">
           <div className="rp-clearing">
             <span className="rp-eyebrow">Operations · supply chain · service design under pressure</span>
-            <h1 className="rp-h1">Medical logistics, Iraq.</h1>
+            <h1 className="rp-h1">Medical resupply, 85% faster.</h1>
             <span className="rp-readtime"><b>4 min</b><span>read · deployed 2024</span></span>
             <p className="rp-sub">
               Captain and Medical Logistics Officer, NJ Army National Guard. Deployed with the 44th

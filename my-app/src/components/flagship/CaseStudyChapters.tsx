@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 export type CaseStudyChapter = {
   id: string;
   label: string;
-  note: string;
+  note?: string;
 };
 
 /**
@@ -21,16 +21,23 @@ export type CaseStudyChapter = {
 export default function CaseStudyChapters({
   project,
   chapters,
+  ariaLabel,
+  jumpLabel = "Jump to",
 }: {
   project: string;
   chapters: CaseStudyChapter[];
+  ariaLabel?: string;
+  jumpLabel?: string;
 }) {
   const [active, setActive] = useState<string>("");
+  const activeLockUntil = useRef(0);
+  const jumpTimers = useRef<number[]>([]);
 
   useEffect(() => {
     const ids = chapters.map((chapter) => chapter.id);
     const update = () => {
-      const line = window.innerHeight * 0.35;
+      if (Date.now() < activeLockUntil.current) return;
+      const line = Math.min(240, window.innerHeight * 0.3);
       let current = "";
       for (const id of ids) {
         const el = document.getElementById(id);
@@ -58,15 +65,48 @@ export default function CaseStudyChapters({
     };
   }, [chapters]);
 
+  useEffect(() => () => {
+    jumpTimers.current.forEach((timer) => window.clearTimeout(timer));
+  }, []);
+
+  const jumpTo = (event: React.MouseEvent<HTMLAnchorElement>, chapter: CaseStudyChapter) => {
+    event.preventDefault();
+    setActive(chapter.id);
+    activeLockUntil.current = Date.now() + 1600;
+    jumpTimers.current.forEach((timer) => window.clearTimeout(timer));
+    const expectedPath = window.location.pathname;
+    window.history.replaceState(window.history.state, "", `${expectedPath}${window.location.search}#${chapter.id}`);
+    const move = (focus = false) => {
+      if (window.location.pathname !== expectedPath) return;
+      const target = document.getElementById(chapter.id);
+      if (!target) return;
+      const previous = document.documentElement.style.scrollBehavior;
+      document.documentElement.style.scrollBehavior = "auto";
+      target.scrollIntoView({ block: "start", behavior: "auto" });
+      document.documentElement.style.scrollBehavior = previous;
+      if (focus) {
+        const heading = target.matches("h1, h2") ? target : target.querySelector<HTMLElement>("h1, h2");
+        if (heading) {
+          heading.tabIndex = -1;
+          heading.focus({ preventScroll: true });
+        }
+      }
+    };
+    [0, 120, 320, 650, 1100].forEach((delay, index, delays) => {
+      jumpTimers.current.push(window.setTimeout(() => move(index === delays.length - 1), delay));
+    });
+  };
+
   const current = chapters.find((chapter) => chapter.id === active);
 
   return (
-    <nav className="rp-chapters" aria-label={`${project} case study chapters`}>
-      <span>Jump to</span>
+    <nav className="rp-chapters" aria-label={ariaLabel || `${project} case study chapters`}>
+      <span>{jumpLabel}</span>
       {chapters.slice(1).map((chapter) => (
         <a
           href={`#${chapter.id}`}
           key={chapter.id}
+          onClick={(event) => jumpTo(event, chapter)}
           className={active === chapter.id ? "is-active" : undefined}
           aria-current={active === chapter.id ? "true" : undefined}
         >
@@ -78,7 +118,7 @@ export default function CaseStudyChapters({
           a wall. Hidden from assistive tech because it changes on every scroll —
           announcing it repeatedly would be noise, and `aria-current` plus the
           link text already say where you are. */}
-      {current && (
+      {current?.note && (
         <em className="rp-chapters__note" aria-hidden="true">
           {current.note}
         </em>

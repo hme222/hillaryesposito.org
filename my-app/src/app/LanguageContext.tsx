@@ -23,6 +23,41 @@ export function useLanguage() {
 }
 
 /**
+ * Switch languages without making a reader reconstruct their place.
+ * Case-study sections in both languages expose the same semantic anchor even
+ * when the Spanish version is intentionally shorter.
+ */
+export function switchLanguageAtCurrentSection(
+  setLang: React.Dispatch<React.SetStateAction<Lang>>,
+  next: Lang,
+) {
+  const sections = Array.from(document.querySelectorAll<HTMLElement>("[data-language-anchor]"));
+  const referenceLine = window.innerHeight * 0.35;
+  const current = sections.reduce<HTMLElement | null>((match, section) => {
+    return section.getBoundingClientRect().top <= referenceLine ? section : match;
+  }, sections[0] || null);
+  const anchor = current?.dataset.languageAnchor;
+
+  setLang(next);
+  if (!anchor) return;
+
+  window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(() => {
+      const target = document.querySelector<HTMLElement>(`[data-language-anchor="${anchor}"]`);
+      if (!target) return;
+      const heading = target.matches("h1, h2")
+        ? target
+        : target.querySelector<HTMLElement>("h1, h2");
+      target.scrollIntoView({ block: "start" });
+      if (heading) {
+        heading.tabIndex = -1;
+        heading.focus({ preventScroll: true });
+      }
+    });
+  });
+}
+
+/**
  * Returns t(key, vars?) - looks the key up in the current-language dictionary
  * and falls back to the English default when the translation is missing.
  */

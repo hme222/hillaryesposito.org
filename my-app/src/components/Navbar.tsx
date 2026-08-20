@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useLanguage, useT } from "../app/LanguageContext";
+import { switchLanguageAtCurrentSection, useLanguage, useT } from "../app/LanguageContext";
 import { MenuIcon, XIcon } from "./LineIcons";
 
 type NavbarProps = {
@@ -327,7 +327,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
             lang={lang === "en" ? "es" : "en"}
             aria-label={t("nav.langSwitch")}
             onClick={() => {
-              setLang((l) => (l === "en" ? "es" : "en"));
+              switchLanguageAtCurrentSection(setLang, lang === "en" ? "es" : "en");
               close();
             }}
           >

@@ -1,10 +1,11 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
 import ReadingProgress from "../../components/flagship/ReadingProgress";
 import DecisionStory from "../../components/flagship/DecisionStory";
 import EvidenceField from "../../components/flagship/EvidenceField";
+import MobbinIndexLens from "../../components/flagship/MobbinIndexLens";
 import ScreenSequence, { ScreenSequenceItem } from "../../components/flagship/ScreenSequence";
 import CartoField from "../../components/riso/CartoField";
 import RisoDefs from "../../components/riso/RisoDefs";
@@ -44,6 +45,13 @@ export default function FlagshipMobbin() {
   const rootRef = useRef<HTMLElement>(null);
   useFlagshipReveal(rootRef);
 
+  useEffect(() => {
+    const targetId = window.location.hash.slice(1);
+    if (!targetId) return;
+    const timer = window.setTimeout(() => document.getElementById(targetId)?.scrollIntoView({ block: "start", behavior: "auto" }), 0);
+    return () => window.clearTimeout(timer);
+  }, []);
+
   if (lang === "es") return <SpanishCaseStudy data={MOBBIN_ES} />;
 
   return (
@@ -54,7 +62,7 @@ export default function FlagshipMobbin() {
       <CaseStudyChapters project="Mobbin" chapters={CHAPTERS} />
       <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
 
-      <header className="rp-hero fp-hero" id="mobbin-start">
+      <header className="rp-hero fp-hero" id="mobbin-start" data-language-anchor="mobbin-start">
         <CartoField
           mapSrc="/riso/elevation-04.jpg"
           edition="struct"
@@ -64,13 +72,14 @@ export default function FlagshipMobbin() {
         <div className="rp-grain" />
         <div className="rp-hero__content">
           <div className="rp-clearing">
-            <span className="rp-eyebrow">UX flow documentation · pattern curation</span>
-            <h1 className="rp-h1">Mobbin.</h1>
+            <span className="rp-eyebrow">Mobbin · UX flow documentation · three finance apps</span>
+            <h1 className="rp-h1">200+ screens per app, searchable by task.</h1>
             <span className="rp-readtime"><b>3 min</b><span>read · 3 apps, 200+ screens each</span></span>
             <p className="rp-sub">
               Mobbin is a reference library designers search to see how real apps solve a screen.
               Anyone can screenshot an app. Mobbin hired me to decide what <b>200+ screens per app</b> mean
-              to a designer who will never meet me—and make every step searchable.
+              to a designer who will never meet me—and make every step searchable. I documented
+              Kikoff, Polymarket, and Discover; I did not design those products or Mobbin.
             </p>
             <a className="rp-cta" href="#mobbin-work">Open the capture desk →</a>
           </div>
@@ -84,23 +93,9 @@ export default function FlagshipMobbin() {
       {/* The "Documentation trace" evidence-poster section was removed on
           2026-08-03, matching Grove and MSK. */}
 
-      <section className="rp-cinema fp-cinema fp-cinema--mobbin" id="mobbin-brief" aria-labelledby="mobbin-brief-title">
-        <div className="rp-cinema__sticky">
-          <div className="rp-cinema__wash" aria-hidden="true" />
-          <div className="fp-cinemaCore fp-cinemaCore--capture" aria-hidden="true">
-            <span>CAPTURE</span><i>→</i><span>MAP</span><i>→</i><span>NAME</span><i>→</i><span>VERIFY</span>
-          </div>
-          <div className="rp-cinema__artifact rp-cinema__artifact--reminder"><span>First batch</span><b>Messy labels sent work back for re-review.</b></div>
-          <div className="rp-cinema__artifact rp-cinema__artifact--safety"><span>Correction</span><b>Learn the library’s vocabulary before capturing.</b></div>
-          <div className="rp-cinema__bridge">
-            <p className="rp-kicker">The work, before the screenshots</p>
-            <h2 id="mobbin-brief-title">A useful reference has to survive without its author.</h2>
-            <p>The sequence, label, and note have to make sense to a designer arriving cold. Otherwise it is just a very organized camera roll.</p>
-          </div>
-        </div>
-      </section>
+      <MobbinIndexLens />
 
-      <section className="rp-section" id="mobbin-work">
+      <section className="rp-section" id="mobbin-work" data-language-anchor="mobbin-work">
         <div className="rp-wrap">
           <p className="rp-kicker">The method · judgment before capture</p>
           <h2 className="rp-title">A screenshot is not a flow.</h2>
@@ -115,6 +110,7 @@ export default function FlagshipMobbin() {
 
       <DecisionStory
         id="mobbin-decisions"
+        languageAnchor="mobbin-work"
         kicker="Four calls · one documentation system"
         title="The capture became useful through editing."
         intro="The source app stayed the same. The value came from deciding what to preserve, how to sequence it, and what to call it."
@@ -125,23 +121,12 @@ export default function FlagshipMobbin() {
         visual={() => <div className="fp-sequence__phone fp-sequence__phone--story"><img src="/assets/mobbin/kikoff.jpg" alt="" /></div>}
       />
 
-      <section className="rp-section" id="mobbin-apps">
+      <section className="rp-section" id="mobbin-apps" data-language-anchor="mobbin-outcomes">
         <div className="rp-wrap">
           <p className="rp-kicker">Three apps · three different answers</p>
           <h2 className="rp-title">Same category. Opposite ways to earn confidence.</h2>
           <p className="rp-lede">Putting the apps side by side revealed more than counting screens ever could. A longer flow can feel shorter when every step gives something back.</p>
           <ScreenSequence label="Documented finance app sequence" items={APPS} />
-
-          {/* REMOVED 2026-08-03. A figure headed "One entry, as delivered" sat
-              here: a quoted Kikoff annotation, an entry title, and five Mobbin
-              taxonomy tags. Hillary confirms none of it was hers — the quote was
-              not verbatim, the tags were not the terms she applied, and the
-              entry title was invented. It had been added precisely because this
-              page sells annotation judgment and had no artifact under the claim,
-              which is how the other fabrications on this site got written too.
-              The method steps above are Hillary's own first-person account and
-              stand on their own. If she supplies a real annotation, the
-              .fp-annotation styles are still in flagship-case-study.css. */}
 
           <a
             className="fp-proofLink"
@@ -157,6 +142,7 @@ export default function FlagshipMobbin() {
 
       <EvidenceField
         id="mobbin-outcomes"
+        languageAnchor="mobbin-outcomes"
         kicker="Where it landed · contribution, not ownership"
         title="A searchable record of how three finance products work."
         intro="I documented the source apps for Mobbin’s Finance+ reference library. I did not design Kikoff, Polymarket, Discover, or Mobbin."

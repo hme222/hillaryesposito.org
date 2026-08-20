@@ -225,7 +225,7 @@ function MSKPoster() {
       <div className="evidence-poster__msk-layout">
         <section className="evidence-poster__statement">
           <p className="evidence-poster__problem">The digital workflow had become a paper ritual.</p>
-          <h2>Four systems became two.</h2>
+          <h2>A filing queue replaced a four-system workaround.</h2>
           <p className="evidence-poster__mechanism">
             One dashboard action connected the queue to the online chart.
           </p>

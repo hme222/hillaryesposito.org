@@ -1,5 +1,5 @@
 // src/components/Footer.tsx
-import React, { useState } from "react";
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useLanguage, useT } from "../app/LanguageContext";
 
@@ -20,19 +20,15 @@ import { useLanguage, useT } from "../app/LanguageContext";
  * are the funny ones, and therefore the ones worth a Spanish reader seeing —
  * do not.
  */
-type Credit = { icon: string; label: string; es?: string };
+type Credit = { label: string; es?: string };
 
 const COLOPHONS: Record<string, Credit[]> = {
   "/case-study/grove": [
-    { icon: "🎨", label: "Figma" },
-    { icon: "🤖", label: "Emergent" },
-    { icon: "⚛️", label: "React" },
-    { icon: "⚡", label: "FastAPI" },
-    { icon: "🍃", label: "MongoDB" },
-    { icon: "🗣️", label: "34 real opinions", es: "34 opiniones reales" },
-    { icon: "✋", label: "the word “no”", es: "la palabra «no»" },
-    { icon: "🧘", label: "restraint", es: "contención" },
-    { icon: "☕", label: "caffeine", es: "cafeína" },
+    { label: "Figma" },
+    { label: "Emergent" },
+    { label: "React" },
+    { label: "34 survey responses", es: "34 respuestas de encuesta" },
+    { label: "human override", es: "decisión humana" },
   ],
   // The named disciplines lead. This page's own eyebrow claims service design
   // and process improvement, and the body claims stakeholder alignment, change
@@ -40,40 +36,22 @@ const COLOPHONS: Record<string, Credit[]> = {
   // a search for that work actually uses, without adding a claim the case
   // study does not already make.
   "/case-study/msk": [
-    { icon: "🧭", label: "service design", es: "diseño de servicios" },
-    { icon: "🧵", label: "owning the whole path, not the last screen", es: "hacerme cargo del recorrido completo, no de la última pantalla" },
-    { icon: "📈", label: "process improvement", es: "mejora de procesos" },
-    { icon: "📋", label: "current-state mapping", es: "mapeo del estado actual" },
-    { icon: "🔀", label: "workflow redesign", es: "rediseño de flujos de trabajo" },
-    { icon: "🤝", label: "stakeholder alignment", es: "alineación de stakeholders" },
-    { icon: "🧩", label: "change management", es: "gestión del cambio" },
-    { icon: "🔐", label: "roles and permissions", es: "roles y permisos" },
-    { icon: "🛡️", label: "Epic, HIPAA and compliance training", es: "capacitación en Epic, HIPAA y cumplimiento" },
-    { icon: "📚", label: "instructional design for mixed-ability cohorts", es: "diseño instruccional para grupos con distintos niveles" },
-    { icon: "📊", label: "a Lean Six Sigma green belt", es: "un green belt de Lean Six Sigma" },
-    { icon: "🎓", label: "an MHA", es: "una MHA" },
-    { icon: "👀", label: "shadowing real shifts", es: "observar turnos reales" },
-    { icon: "🗂️", label: "the sticky notes that told the truth", es: "las notas adhesivas que decían la verdad" },
-    { icon: "🏥", label: "six years on the floor", es: "seis años en el piso" },
-    { icon: "☕", label: "caffeine", es: "cafeína" },
+    { label: "service design", es: "diseño de servicios" },
+    { label: "current-state mapping", es: "mapeo del estado actual" },
+    { label: "workflow redesign", es: "rediseño de flujos de trabajo" },
+    { label: "change management", es: "gestión del cambio" },
   ],
   "/case-study/logistics": [
-    { icon: "🎖️", label: "5,000+ soldiers supplied", es: "más de 5,000 soldados abastecidos" },
-    { icon: "📦", label: "$2M in medical supplies", es: "$2M en suministros médicos" },
-    { icon: "🚚", label: "medical supply chain", es: "cadena de suministro médico" },
-    { icon: "🌡️", label: "a cold chain that could not slip", es: "una cadena de frío que no podía fallar" },
-    { icon: "📋", label: "one protocol for seven aid stations", es: "un protocolo para siete estaciones de ayuda" },
-    { icon: "📊", label: "weekly and monthly demand analysis", es: "análisis de demanda semanal y mensual" },
-    { icon: "🤝", label: "three countries and partner militaries", es: "tres países y militares aliados" },
-    { icon: "☕", label: "caffeine", es: "cafeína" },
+    { label: "medical supply chain", es: "cadena de suministro médico" },
+    { label: "cold-chain control", es: "control de cadena de frío" },
+    { label: "seven aid stations", es: "siete estaciones de ayuda" },
+    { label: "demand analysis", es: "análisis de demanda" },
   ],
   "/case-study/mobbin": [
-    { icon: "📱", label: "3 live finance apps", es: "3 apps de finanzas en vivo" },
-    { icon: "🖼️", label: "200+ screens per app", es: "200+ pantallas por app" },
-    { icon: "🏷️", label: "Mobbin’s vocabulary", es: "el vocabulario de Mobbin" },
-    { icon: "✂️", label: "an editor, not a camera", es: "una editora, no una cámara" },
-    { icon: "🗓️", label: "4 months", es: "4 meses" },
-    { icon: "☕", label: "caffeine", es: "cafeína" },
+    { label: "three finance apps", es: "tres apps de finanzas" },
+    { label: "200+ screens per app", es: "200+ pantallas por app" },
+    { label: "Mobbin taxonomy", es: "taxonomía de Mobbin" },
+    { label: "four-month contract", es: "contrato de cuatro meses" },
   ],
 };
 
@@ -82,10 +60,6 @@ export default function Footer() {
   const { lang } = useLanguage();
   const { pathname } = useLocation();
   const credits = COLOPHONS[pathname];
-  // Auto-moving content needs a way to stop it (WCAG 2.2.2). Hover-pause alone
-  // does not serve keyboard or touch, so the banner carries a real control.
-  // Reduced-motion users never see it move; the button is harmless there.
-  const [paused, setPaused] = useState(false);
   const hasAuthoredClose =
     pathname === "/" ||
     pathname === "/about" ||
@@ -135,35 +109,17 @@ export default function Footer() {
 
       <div className="site-footer__base">
         {credits && (
-          <div className={`site-footer__madeWith${paused ? " is-paused" : ""}`}>
+          <div className="site-footer__madeWith">
             <p className="site-footer__madeWithLabel">{t("footer.madeWith")}</p>
-            <div className="site-footer__marquee">
-              {/* The first copy is the real list. The second exists only so the
-                  scroll can loop seamlessly, so it is hidden from the a11y tree
-                  rather than announced twice. */}
-              <ul className="site-footer__track">
+            <div className="site-footer__credits">
+              <ul className="site-footer__creditList">
                 {credits.map((c) => (
                   <li key={c.label}>
-                    <span aria-hidden="true">{c.icon}</span> {lang === "es" && c.es ? c.es : c.label}
-                  </li>
-                ))}
-              </ul>
-              <ul className="site-footer__track" aria-hidden="true">
-                {credits.map((c) => (
-                  <li key={`dup-${c.label}`}>
-                    <span>{c.icon}</span> {lang === "es" && c.es ? c.es : c.label}
+                    {lang === "es" && c.es ? c.es : c.label}
                   </li>
                 ))}
               </ul>
             </div>
-            <button
-              type="button"
-              className="site-footer__marqueeToggle"
-              onClick={() => setPaused((p) => !p)}
-            >
-              {paused ? t("footer.marqueePlay") : t("footer.marqueePause")}
-              <span className="sr-only">{t("footer.marqueeAria")}</span>
-            </button>
           </div>
         )}
         <div className="site-footer__baseRow">

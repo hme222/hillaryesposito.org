@@ -2,6 +2,7 @@ import React, { useEffect, useMemo } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import RisoDefs from "../../components/riso/RisoDefs";
 import CartoField from "../../components/riso/CartoField";
+import CaseStudyChapters, { type CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
 import usePageTitle from "../../hooks/usePageTitle";
 import { useLanguage } from "../../app/LanguageContext";
 import { curatedPages, type CuratedPage } from "../../data/curatedPages";
@@ -19,6 +20,7 @@ import "../../styles/riso-page.css";
 // moment it's named. Items that aren't standalone case studies (e.g. "The
 // 'AI vs mine' calls") match nothing and render as plain text.
 const CASE_STUDY_LINKS: Array<{ match: RegExp; path: string }> = [
+  { match: /\bmedical logistics\b|\blogistics\b/i, path: "/case-study/logistics" },
   { match: /\bmobbin\b/i, path: "/case-study/mobbin" },
   { match: /\bmsk\b/i, path: "/case-study/msk" },
   { match: /\bgrove\b/i, path: "/case-study/grove" },
@@ -121,6 +123,25 @@ export default function CuratedRolePage() {
   const page = useMemo(() => (slug ? curatedPages[slug] : undefined), [slug]);
   usePageTitle(page ? `${page.company}: ${page.role}` : "Page not found");
   const headlineW100 = useLongestWordWidth(page?.company ?? "");
+  const chapters = useMemo<CaseStudyChapter[]>(() => {
+    const middle = page?.proofFirst
+      ? [
+          { id: "curated-proof", label: "Proof" },
+          { id: "curated-work", label: "Work" },
+          { id: "curated-fit", label: "Fit" },
+        ]
+      : [
+          { id: "curated-fit", label: "Fit" },
+          { id: "curated-proof", label: "Proof" },
+          { id: "curated-work", label: "Work" },
+        ];
+    return [
+      { id: "curated-hero", label: "Top" },
+      ...middle,
+      { id: "curated-bring", label: "Bring + limits" },
+      { id: "curated-close", label: "Contact" },
+    ];
+  }, [page?.proofFirst]);
 
   useEffect(() => {
     if (typeof IntersectionObserver === "undefined") return;
@@ -169,25 +190,14 @@ export default function CuratedRolePage() {
         </p>
       )}
 
-      <nav className="rp-chapters" aria-label={`${page.company} tailored page chapters`}>
-        <span>Jump to</span>
-        {page.proofFirst ? (
-          <>
-            <a href="#curated-proof">Proof</a>
-            <a href="#curated-work">Work</a>
-            <a href="#curated-fit">Fit</a>
-          </>
-        ) : (
-          <>
-            <a href="#curated-fit">Fit</a>
-            <a href="#curated-proof">Proof</a>
-            <a href="#curated-work">Work</a>
-          </>
-        )}
-      </nav>
+      <CaseStudyChapters
+        project={page.company}
+        chapters={chapters}
+        ariaLabel={`${page.company} tailored page chapters`}
+      />
 
       {/* HERO */}
-      <header className="rp-hero">
+      <header className="rp-hero" id="curated-hero">
         <CartoField
           mapSrc={page.mapSrc ?? "/riso/elevation-01.jpg"}
           edition={page.edition ?? "pine"}
@@ -328,7 +338,7 @@ export default function CuratedRolePage() {
       )}
 
       {/* STRENGTHS + HIRING NOTE */}
-      <section className="rp-section">
+      <section className="rp-section" id="curated-bring">
         <div className="rp-wrap">
           <div className="rp-split rp-reveal">
             <div className="rp-split__text">
@@ -356,7 +366,7 @@ export default function CuratedRolePage() {
           needs a background section that says something the work list doesn't. */}
 
       {/* CLOSING */}
-      <section className="rp-section">
+      <section className="rp-section" id="curated-close">
         <div className="rp-wrap rp-close">
           <p className="rp-kicker">One last thing</p>
           <h2>Where I’m strongest</h2>

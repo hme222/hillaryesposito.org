@@ -1,36 +1,59 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function GroveCinematic() {
+  const [fanned, setFanned] = useState(false);
+
   return (
-    <section className="rp-cinema" id="grove-brief" aria-labelledby="grove-cinema-title">
-      <div className="rp-cinema__sticky">
-        <div className="rp-cinema__wash" aria-hidden="true" />
-        <img
-          className="rp-cinema__screen"
-          src="/assets/grove/grove1.png"
-          alt="Grove mobile welcome screen"
-        />
-        <div className="rp-cinema__artifact rp-cinema__artifact--reminder" aria-hidden="true">
-          <span>Grove · 8:00 AM</span>
-          <b>One thing today.</b>
-          <p>Your Fiddle Leaf could use a little water.</p>
-        </div>
-        <div className="rp-cinema__artifact rp-cinema__artifact--safety" aria-hidden="true">
-          <span>Pet safety</span>
-          <b>Keep away from cats</b>
-          <p>Source attached. The AI does not get the last word.</p>
-        </div>
-        <div className="rp-cinema__artifact rp-cinema__artifact--note" aria-hidden="true">
-          <span>Research journal · n=34</span>
-          <b>“Peaceful, not stressful.”</b>
-        </div>
-        <div className="rp-cinema__bridge">
+    <section
+      className={`rp-groveStates${fanned ? " is-fanned" : ""}`}
+      id="grove-brief"
+      data-language-anchor="grove-brief"
+      aria-labelledby="grove-states-title"
+    >
+      <div className="rp-wrap rp-groveStates__layout">
+        <div className="rp-groveStates__copy">
           <p className="rp-kicker">The brief, before the screens</p>
-          <h2 id="grove-cinema-title">Care should fit into a life already happening.</h2>
+          <h2 id="grove-states-title">Care should fit into a life already happening.</h2>
           <p>
             One clear task. A reason you can inspect. And no tiny plant trying to guilt you from a
-            lock screen.
+            lock screen. These are real Grove states already documented in this case study.
           </p>
+          <button
+            type="button"
+            className="rp-groveStates__toggle"
+            aria-pressed={fanned}
+            onClick={() => setFanned((current) => !current)}
+          >
+            {fanned ? "Stack the screens" : "Fan out the real screens"}
+            <span aria-hidden="true">{fanned ? " ↙" : " ↗"}</span>
+          </button>
+          <p className="rp-groveStates__status" aria-live="polite">
+            {fanned ? "Four documented Grove screens fanned out." : "Four documented Grove screens stacked."}
+          </p>
+        </div>
+
+        <div className="rp-groveStates__stage">
+          <img
+            className="rp-groveStates__screen rp-groveStates__screen--collection"
+            src="/assets/grove/grove-live-collection.jpg"
+            alt="Grove collection screen"
+          />
+          <img
+            className="rp-groveStates__screen rp-groveStates__screen--care"
+            src="/assets/grove/grove-live-care.jpg"
+            alt="Grove daily care screen"
+          />
+          <img
+            className="rp-groveStates__screen rp-groveStates__screen--journal"
+            src="/assets/grove/grove-live-journal.jpg"
+            alt="Grove care journal screen"
+          />
+          <img
+            className="rp-groveStates__screen rp-groveStates__screen--welcome"
+            src="/assets/grove/grove1.png"
+            alt="Grove welcome screen"
+          />
+          <p className="rp-groveStates__boundary">Real Grove screens · no generated product imagery</p>
         </div>
       </div>
     </section>

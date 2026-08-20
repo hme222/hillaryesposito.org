@@ -1,10 +1,10 @@
 import type { SpanishCaseStudyData } from "../components/SpanishCaseStudy";
 
 export const GROVE_ES: SpanishCaseStudyData = {
-  title: "Grove",
-  meta: "Diseño de producto · Producto con IA · Prototipo funcional",
+  title: "Once funciones se convirtieron en tres",
+  meta: "Grove · Diseño de producto · Prototipo funcional · Fase 2 de 3",
   intro:
-    "Grove es una app de cuidado de plantas. Una herramienta de IA llamada Emergent me construyó la app entera, rápido, llena de funciones. La probé con 5 usuarios y el problema fue evidente: demasiadas cosas, en el orden equivocado. Así que hice una encuesta a 34 personas para encontrar las pocas funciones en las que valía la pena concentrarme, y empecé a rehacerla alrededor de esas: aplazo las funciones sociales que casi nadie pidió y le enseño a la IA a admitir cuando no está segura. Porque cuando una planta es tóxica para un gato, adivinar mal no es una sugerencia. Es un riesgo.",
+    "Grove es una app de cuidado de plantas. Una herramienta de IA llamada Emergent construyó una primera versión rápida y llena de funciones. Una prueba exploratoria con 5 usuarios señaló sobrecarga; el registro conservado no incluye fechas ni resultados por tarea, así que no hago una afirmación más amplia con esa prueba. Después, una encuesta de 34 personas redujo once funciones a las tres prioridades que guían la Fase 2. La encuesta registra prioridades declaradas, no comportamiento observado ni demanda de mercado.",
   stats: [
     { label: "Rol", value: "Diseñadora de producto (en solitario)" },
     { label: "Muestra", value: "34 respuestas de encuesta" },
@@ -13,6 +13,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
   ],
   sections: [
     {
+      anchor: "grove-brief",
       eyebrow: "Dónde empieza esto",
       title: "Los dueños de plantas se olvidan. Y luego se sienten culpables.",
       body: [
@@ -21,11 +22,13 @@ export const GROVE_ES: SpanishCaseStudyData = {
       ],
     },
     {
+      anchor: "grove-research",
       eyebrow: "Investigación",
       title: "Les pregunté a 34 dueños de plantas qué importa de verdad",
       body: [
         "Después de que una prueba con 5 usuarios mostró que la primera versión estaba sobrecargada, hice una encuesta para decidir qué debía conservar el rediseño. 34 personas, desde principiantes hasta coleccionistas serios, respondieron entre el 22 de mayo y el 8 de julio de 2026.",
         "Emergent había construido las funciones sociales dentro de la app. La encuesta dijo que no es por eso que la gente la descarga. Así que hice una pregunta difícil: “Si Grove solo pudiera lanzarse con TRES funciones, ¿cuáles no podrías dejar de tener?” Las tres primeras se construyeron primero. Todo lo demás espera.",
+        "Límite de la evidencia: la encuesta registra prioridades declaradas. La usé para decidir qué construir y probar después, no para afirmar comportamiento observado ni demanda de mercado.",
       ],
       bullets: [
         "Recordatorios inteligentes: la función más pedida (74%), pero solo con límites claros.",
@@ -34,6 +37,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
       ],
     },
     {
+      anchor: "grove-decisions",
       eyebrow: "Producto",
       title: "Agrupé las plantas por dónde viven, no en una sola lista larga",
       body: [
@@ -43,6 +47,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
       ],
     },
     {
+      anchor: "grove-override",
       eyebrow: "Cuando algo sale mal",
       title: "El producto se decide en los momentos difíciles",
       body: [
@@ -50,6 +55,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
       ],
     },
     {
+      anchor: "grove-outcomes",
       eyebrow: "Resultado",
       title: "Un prototipo que muestra criterio, no solo pantallas bonitas",
       body: [
@@ -58,24 +64,25 @@ export const GROVE_ES: SpanishCaseStudyData = {
     },
   ],
   otherProjects: [
-    { title: "MSK Cancer Center", desc: "Seis años rediseñando flujos clínicos, certificación e incorporación de personal para más de 21,000 clínicos y personal administrativo.", path: "/case-study/msk" },
-    { title: "Mobbin", desc: "Más de 200 pantallas de tres apps de finanzas, documentadas como referencias buscables paso a paso para la biblioteca de Mobbin.", path: "/case-study/mobbin" },
+    { title: "Una cola de archivo reemplazó un desvío de cuatro sistemas", desc: "MSK · Seis años rediseñando flujos clínicos para trabajo que alcanzaba a más de 21,000 clínicos y personal administrativo.", path: "/case-study/msk" },
+    { title: "Más de 200 pantallas por app, buscables por tarea", desc: "Mobbin · Más de 200 pantallas por app, documentadas como referencias paso a paso.", path: "/case-study/mobbin" },
   ],
 };
 
 export const MSK_ES: SpanishCaseStudyData = {
-  title: "Memorial Sloan Kettering",
-  meta: "UX y diseño de producto · Sistemas de salud · Herramientas internas",
+  title: "Una cola de archivo reemplazó un desvío de cuatro sistemas",
+  meta: "Memorial Sloan Kettering · UX y diseño de producto · Sistemas de salud",
   intro:
     "Durante seis años en MSK, rediseñé flujos clínicos, certificación e incorporación de personal para sistemas usados por más de 21,000 profesionales clínicos y administrativos. El día de cada clínico gira en torno al EMR: el expediente médico electrónico, la historia clínica digital donde vive toda la información del paciente. Este trabajo muestra diseño aplicado a herramientas internas, permisos, estados y adopción en un entorno de salud real.",
   stats: [
     { label: "Rol", value: "Sistemas de salud → UX y diseño de producto" },
     { label: "Organización", value: "Memorial Sloan Kettering Cancer Center" },
     { label: "Escala", value: "21,000+ clínicos y personal" },
-    { label: "Impacto", value: "20% reducción de costos EMR" },
+    { label: "Impacto", value: "Contribución a una reducción de 20% en costos EMR" },
   ],
   sections: [
     {
+      anchor: "msk-brief",
       eyebrow: "Contexto",
       title: "Diseñar para sistemas donde el error tiene consecuencias",
       body: [
@@ -83,6 +90,7 @@ export const MSK_ES: SpanishCaseStudyData = {
       ],
     },
     {
+      anchor: "msk-workflow",
       eyebrow: "EMR",
       title: "De imprimir y enviar a una acción directa desde el dashboard",
       body: [
@@ -91,10 +99,12 @@ export const MSK_ES: SpanishCaseStudyData = {
       ],
     },
     {
+      anchor: "msk-decisions",
       eyebrow: "Proceso",
       title: "Mapear, probar, alinear y sostener",
       body: [
         "Mapeé el estado actual, encontré puntos de fallo, alineé stakeholders y diseñé cambios que podían sostenerse después del lanzamiento. La adopción importaba tanto como la solución técnica.",
+        "Límite de la evidencia: el registro conserva el flujo, los departamentos, las decisiones y los resultados. No se registraron los conteos de participantes de la observación de turnos, por eso uso la evidencia para explicar decisiones y no para afirmar prevalencia.",
       ],
       bullets: [
         "El flujo EMR necesitó capacitación práctica en el lugar de trabajo porque las personas habían usado la solución alternativa anterior durante años.",
@@ -103,6 +113,7 @@ export const MSK_ES: SpanishCaseStudyData = {
       ],
     },
     {
+      anchor: "msk-outcomes",
       eyebrow: "Resultado",
       title: "Impacto medible en sistemas internos",
       body: [
@@ -111,16 +122,16 @@ export const MSK_ES: SpanishCaseStudyData = {
     },
   ],
   otherProjects: [
-    { title: "Grove", desc: "App de cuidado de plantas con IA. Sola, de la investigación a un prototipo funcional.", path: "/case-study/grove" },
-    { title: "Mobbin", desc: "Más de 200 pantallas de tres apps de finanzas, documentadas como referencias buscables paso a paso para la biblioteca de Mobbin.", path: "/case-study/mobbin" },
+    { title: "Once funciones se convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
+    { title: "Más de 200 pantallas por app, buscables por tarea", desc: "Mobbin · Más de 200 pantallas por app, documentadas como referencias paso a paso.", path: "/case-study/mobbin" },
   ],
 };
 
 export const MOBBIN_ES: SpanishCaseStudyData = {
-  title: "Mobbin",
-  meta: "Documentación de flujos UX · Curaduría de patrones",
+  title: "Más de 200 pantallas por app, buscables por tarea",
+  meta: "Mobbin · Documentación de flujos UX · Curaduría de patrones",
   intro:
-    "Trabajo freelance para Mobbin documentando experiencias móviles de principio a fin. Capturé, organicé y anoté flujos de tres apps de finanzas para una biblioteca de referencia usada por equipos de UX, producto y diseño.",
+    "Trabajo freelance para Mobbin documentando experiencias móviles de principio a fin. Capturé, organicé y anoté flujos de tres apps de finanzas para la biblioteca de referencia Finance+. Documenté Kikoff, Polymarket y Discover; no diseñé esos productos ni Mobbin.",
   stats: [
     { label: "Cliente", value: "Mobbin · Freelance" },
     { label: "Tiempo", value: "mar.–jun. 2026 · 4 meses" },
@@ -129,6 +140,7 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
   ],
   sections: [
     {
+      anchor: "mobbin-brief",
       eyebrow: "Trabajo",
       title: "Documentar flujos es criterio editorial",
       body: [
@@ -136,6 +148,7 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
       ],
     },
     {
+      anchor: "mobbin-work",
       eyebrow: "Método",
       title: "Captura, taxonomía y calidad",
       body: [
@@ -143,6 +156,7 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
       ],
     },
     {
+      anchor: "mobbin-outcomes",
       eyebrow: "Producto",
       title: "Aprender de productos reales fortaleció mi juicio",
       body: [
@@ -151,7 +165,7 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
     },
   ],
   otherProjects: [
-    { title: "Grove", desc: "App de cuidado de plantas con IA. Sola, de la investigación a un prototipo funcional.", path: "/case-study/grove" },
-    { title: "MSK Cancer Center", desc: "Seis años rediseñando flujos clínicos, certificación e incorporación de personal para más de 21,000 clínicos y personal administrativo.", path: "/case-study/msk" },
+    { title: "Once funciones se convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
+    { title: "Una cola de archivo reemplazó un desvío de cuatro sistemas", desc: "MSK · Seis años rediseñando flujos clínicos para trabajo que alcanzaba a más de 21,000 clínicos y personal administrativo.", path: "/case-study/msk" },
   ],
 };

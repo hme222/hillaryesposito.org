@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import RisoDefs from "../components/riso/RisoDefs";
 import CartoField from "../components/riso/CartoField";
 import PhaseIndicator from "../components/riso/PhaseIndicator";
+import GroveLayerTeaser from "../components/riso/GroveLayerTeaser";
 import { CLIENT_FEEDBACK, CLIENT_FEEDBACK_ES } from "../data/clientFeedback";
 import usePageTitle from "../hooks/usePageTitle";
 import { useLanguage, useT } from "../app/LanguageContext";
@@ -19,7 +20,7 @@ import "../styles/riso-page.css";
 const WORK = [
   {
     n: "01",
-    title: "Memorial Sloan Kettering",
+    titleKey: "home.proj.msk.title",
     subKey: "home.proj.msk.subtitle",
     descKey: "home.riso.mskDesc",
     path: "/case-study/msk",
@@ -28,7 +29,16 @@ const WORK = [
   },
   {
     n: "02",
-    title: "Grove",
+    titleKey: "home.proj.logistics.title",
+    subKey: "home.proj.logistics.subtitle",
+    descKey: "home.riso.logisticsDesc",
+    path: "/case-study/logistics",
+    img: "/assets/about/army.jpg",
+    imgAltKey: "home.riso.logisticsAlt",
+  },
+  {
+    n: "03",
+    titleKey: "home.proj.grove.title",
     subKey: "home.proj.grove.subtitle",
     descKey: "home.riso.groveDesc",
     path: "/case-study/grove",
@@ -36,18 +46,9 @@ const WORK = [
     imgAltKey: "home.riso.groveAlt",
     tagKey: "home.riso.groveTag",
   },
-  {
-    n: "03",
-    title: "Mobbin",
-    subKey: "home.proj.mobbin.subtitle",
-    descKey: "home.riso.mobbinDesc",
-    path: "/case-study/mobbin",
-    img: "/assets/mobbin/discover.jpg",
-    imgAltKey: "home.riso.mobbinAlt",
-  },
 ] satisfies Array<{
   n: string;
-  title: string;
+  titleKey: StringKey;
   subKey: StringKey;
   descKey: StringKey;
   path: string;
@@ -57,9 +58,9 @@ const WORK = [
 }>;
 
 const STATS = [
-  { n: "200+", labelKey: "home.stat.patterns", sourceKey: "home.stat.mobbinSource" },
-  { n: "34", labelKey: "home.stat.research", sourceKey: "home.stat.groveSource" },
   { n: "21,000+", labelKey: "home.stat.scale", sourceKey: "home.stat.mskSource" },
+  { n: "85%", labelKey: "home.stat.logistics", sourceKey: "home.stat.logisticsSource" },
+  { n: "34", labelKey: "home.stat.research", sourceKey: "home.stat.groveSource" },
 ] satisfies Array<{ n: string; labelKey: StringKey; sourceKey: StringKey }>;
 
 export default function RisoHome() {
@@ -185,13 +186,13 @@ export default function RisoHome() {
           <h2 className="rp-title" id="home-work-title">{t("home.riso.workTitle")}</h2>
           <div className="rp-worklist">
             {WORK.map((w) => (
-              <Link className="rp-work" to={w.path} key={w.title}>
+              <Link className="rp-work" to={w.path} key={w.path}>
                 <div>
                   <p className="rp-work__n">
                     {w.n}
                     {w.tagKey && <PhaseIndicator current={2} label={t(w.tagKey)} compact />}
                   </p>
-                  <p className="rp-work__title">{w.title}</p>
+                  <p className="rp-work__title">{t(w.titleKey)}</p>
                   <p className="rp-work__sub">{t(w.subKey)}</p>
                   <p className="rp-work__desc">{t(w.descKey)}</p>
                 </div>
@@ -202,8 +203,17 @@ export default function RisoHome() {
               </Link>
             ))}
           </div>
+          <div className="rp-note">
+            <p className="rp-note__k">{t("home.riso.supportingKicker")}</p>
+            <p>
+              {t("home.riso.supportingBody")}{" "}
+              <Link to="/case-study/mobbin">{t("home.riso.supportingLink")}</Link>
+            </p>
+          </div>
         </div>
       </section>
+
+      <GroveLayerTeaser />
 
       {/* WEEKEND DISPATCH: a current-practice signal, deliberately outside the
           three flagship rows. The story and evidence are complete at rest; the

@@ -55,6 +55,348 @@ export type CuratedPage = {
 };
 
 const allCuratedPages: Record<string, CuratedPage> = {
+  "healthcare-product-service-designer": {
+    slug: "healthcare-product-service-designer",
+    company: "Healthcare product + service",
+    role: "Mid-level Product / Service Designer",
+    variant: "care",
+    accent: "#285943",
+    accentDark: "#8dbb9d",
+    mapSrc: "/riso/elevation-03.jpg",
+    edition: "eucalyptus",
+    badgeLabel: "Clinical workflow · end-to-end service · implementation",
+    eyebrow: "Healthcare systems · service design · product delivery",
+    headline: "I spent 13+ years inside the services I now redesign.",
+    subhead:
+      "At MSK, I mapped a clinical workflow that was later implemented. In the Army, I redesigned resupply across seven aid stations. Grove is where I now narrow scope, design interactions, and build.",
+    meta: [
+      { label: "Target role", value: "Healthcare Product / Service Designer" },
+      { label: "Domain", value: "Cancer care · clinical operations · medical logistics" },
+      { label: "Core proof", value: "Current/future state · handoffs · implementation · outcomes" },
+      { label: "Credentials", value: "MHA · Lean Six Sigma Green Belt · Army veteran" },
+    ],
+    intro: [
+      "I learned service design before I had the title for it: follow the whole path a task takes, find the workaround, make ownership visible, and test whether the new process survives without its author in the room.",
+      "At MSK, that meant mapping a paper detour across clinical, IT, imaging, and operations partners and presenting the online workflow that was later implemented. In military medical logistics, it meant redesigning the service behind seven aid stations while cold chain, security, and casualty risk stayed fixed.",
+    ],
+    proofPoints: [
+      {
+        stat: "21,000+",
+        detail: "clinicians and administrative staff across the MSK workflows I helped redesign",
+      },
+      {
+        stat: "20%",
+        detail: "organization-wide EMR cost reduction; my workflow redesign contributed inside the larger initiative",
+      },
+      {
+        stat: "85%",
+        detail: "faster medical resupply across seven aid stations after shared digital tracking",
+      },
+    ],
+    featuredWork: [
+      {
+        title: "MSK: a filing queue replaced a four-system workaround",
+        reason: "Clinical workflow mapping, cross-functional alignment, permissions, implementation, change management, and a qualified organization-level outcome.",
+      },
+      {
+        title: "Medical logistics: resupply, 85% faster",
+        reason: "An end-to-end medical service across people, supplies, seven aid stations, three countries, cold-chain constraints, and measurable time and spending outcomes.",
+      },
+      {
+        title: "Grove: research cut eleven features to three",
+        reason: "A functional consumer prototype showing scope decisions, AI confidence and provenance, accessibility, and an explicit next-test boundary.",
+      },
+    ],
+    strengths: [
+      "Map frontstage tasks to backstage people, systems, permissions, and handoffs",
+      "Translate clinical and operational constraints into product states and service decisions",
+      "Align Product, Engineering, clinical, IT, and operations partners around one visible model",
+      "Carry a workflow through presentation, implementation, training, and adoption",
+    ],
+    relevantExperience: [
+      "I spent six years at MSK across three roles, working with Epic, clinical operations, compliance, onboarding, and internal workflow change.",
+      "In military medicine, I owned the resupply service end to end. Cold chain, security, and casualty risk were fixed constraints, not edge cases.",
+      "With Grove, I handle the current craft: define research, narrow scope, design responsive accessible interactions, and code the prototype.",
+    ],
+    keywords: [
+      "healthcare product design",
+      "service design",
+      "clinical workflows",
+      "journey mapping",
+      "service blueprinting",
+      "current-state mapping",
+      "future-state design",
+      "internal tools",
+      "cross-functional collaboration",
+      "design systems",
+      "accessibility",
+      "implementation",
+    ],
+    hiringManagerNote:
+      "My formal Product Designer title is newer than my healthcare practice. The relevant evidence is unusually direct: I worked inside the clinical and medical services, mapped the workarounds, aligned the teams, presented the change, and later saw it implemented. I pair that domain judgment with current interaction, accessibility, research, and prototype craft.",
+    closing:
+      "I am strongest where a healthcare product is also a service: multiple roles, consequential handoffs, policy and technical constraints, and a person who still has to act correctly at the end.",
+    supportLinks: [
+      {
+        label: "MSK clinical workflow case study",
+        path: "/case-study/msk",
+        description: "Current/future-state mapping, cross-functional implementation, and evidence that lasted through system upgrades.",
+        icon: <MedicalCrossIcon />,
+      },
+      {
+        label: "Medical logistics service-design case study",
+        path: "/case-study/logistics",
+        description: "An end-to-end service redesign for 5,000+ soldiers and seven aid stations.",
+        icon: <HandIcon />,
+      },
+      {
+        label: "Grove product-design case study",
+        path: "/case-study/grove",
+        description: "Research-led product scope, trustworthy AI interactions, accessibility, and a functional React prototype.",
+        icon: <SproutIcon />,
+      },
+    ],
+    relatedLinks: [
+      {
+        label: "Main portfolio",
+        path: "/",
+        description: "Healthcare-first portfolio and contact section.",
+        icon: <LaunchIcon />,
+      },
+    ],
+    proofFirst: true,
+    proofKicker: "Measured outcomes, with attribution",
+    caseStudyCtaLabel: "Review MSK",
+    resumeLink: {
+      label: "View healthcare Product / Service résumé · PDF ↗",
+      path: "/assets/Hillary_Esposito_Healthcare_Product_Service_Designer_Resume.pdf",
+    },
+    contactFirst: true,
+  },
+  "healthcare-ux-researcher": {
+    slug: "healthcare-ux-researcher",
+    company: "Healthcare UX research",
+    role: "UX Researcher · product and service decisions",
+    variant: "care",
+    accent: "#315f54",
+    accentDark: "#91c2b2",
+    mapSrc: "/riso/elevation-01.jpg",
+    edition: "struct",
+    badgeLabel: "Evidence record · decision trace · visible limitations",
+    eyebrow: "Workflow research · evaluative studies · research-to-decision",
+    headline: "Research should change the decision, not decorate the process.",
+    subhead:
+      "A 34-person Grove survey cut the next build from eleven proposed features to three. At MSK, workflow observation gave four departments one process to act on. I also name what the surviving records cannot support.",
+    meta: [
+      { label: "Target lane", value: "Healthcare UXR · conditional evidence" },
+      { label: "Methods shown", value: "Survey · usability study · workflow observation · synthesis" },
+      { label: "Evidence rule", value: "Decision, method, source, change, limitation" },
+      { label: "Next gate", value: "Complete 6–8 participant evaluative study + UXR lead review" },
+    ],
+    intro: [
+      "My research practice grew inside clinical operations: observe where work pauses, trace the handoff, compare the documented process with the real one, and make the failure visible enough for several departments to act on it.",
+      "The portfolio does not pretend every old study record survived. Grove's 34-person survey is dated and bounded as self-report. The earlier five-person usability study identified overload, but its session dates and task-level record are missing, so I make no prevalence or broader behavior claim from it.",
+    ],
+    proofPoints: [
+      {
+        stat: "34",
+        detail: "plant owners in a defined self-report survey conducted May 22–July 8, 2026",
+      },
+      {
+        stat: "11 → 3",
+        detail: "proposed Grove features after the survey changed the product decision",
+      },
+      {
+        stat: "4",
+        detail: "MSK departments aligned through one current/future-state workflow map; observation count was not preserved",
+      },
+    ],
+    featuredWork: [
+      {
+        title: "Grove: one survey changed what I built",
+        reason: "The page separates attitudinal self-report from observed behavior, connects findings to the 11-to-3 scope decision, and states the convenience-sample boundary.",
+      },
+      {
+        title: "MSK: operational observation made a hidden workaround visible",
+        reason: "A research-to-service decision trace across clinical, IT, imaging, and operations, with missing observation counts disclosed rather than reconstructed.",
+      },
+      {
+        title: "Next evidence: confidence, provenance, pet safety, and reminder behavior",
+        reason: "A planned 6–8 participant task-based study. It is a plan, not completed evidence, and it defines the claim boundary before data exists.",
+      },
+    ],
+    strengths: [
+      "Frame research around a product or service decision and the cost of being wrong",
+      "Separate self-report, observed behavior, qualitative explanation, and bounded counts",
+      "Synthesize workarounds and handoffs into a shared current/future-state model",
+      "Write limitations and next evidence into the artifact instead of a presentation footnote",
+    ],
+    relevantExperience: [
+      "Grove contains my cleanest current research record: a dated self-report survey, the decision it changed, a working prototype, and the next study.",
+      "At MSK, I observed the real workflow, brought clinical, IT, imaging, and operations into one current/future-state map, and saw the process implemented. The observation count was not preserved.",
+      "My MHA, public-health degree, and Lean Six Sigma training help me read healthcare systems. They are context, not proof of research rigor.",
+    ],
+    keywords: [
+      "healthcare UX research",
+      "qualitative research",
+      "survey design",
+      "usability testing",
+      "workflow observation",
+      "research synthesis",
+      "journey mapping",
+      "service blueprinting",
+      "research planning",
+      "mixed-method literacy",
+      "stakeholder research",
+      "research limitations",
+    ],
+    hiringManagerNote:
+      "Most of my research experience has been embedded in product and operations roles, not in a five-year UXR title. Grove shows a current survey-to-scope decision; MSK shows workflow research that led to an implemented change. Before I call this a dedicated UXR case, I need to complete the planned Grove study and have a healthcare UXR lead review it.",
+    closing:
+      "I am most useful on healthcare research questions where the real workflow crosses roles, systems, and policy. That is where a team needs findings translated into a product or service decision.",
+    supportLinks: [
+      {
+        label: "Grove research and product-decision case study",
+        path: "/case-study/grove#grove-research",
+        description: "Dated survey, evidence type, scope change, limitations, and planned next test.",
+        icon: <SproutIcon />,
+      },
+      {
+        label: "MSK workflow-research case study",
+        path: "/case-study/msk#msk-workflow",
+        description: "Operational observation, workflow synthesis, cross-functional influence, and implemented change.",
+        icon: <MedicalCrossIcon />,
+      },
+    ],
+    relatedLinks: [
+      {
+        label: "Healthcare Product / Service view",
+        path: "/curated/healthcare-product-service-designer",
+        description: "The primary hiring lane: clinical workflow, service systems, and implementation.",
+        icon: <LaunchIcon />,
+      },
+    ],
+    proofFirst: true,
+    proofKicker: "Evidence type and boundary",
+    caseStudyCtaLabel: "Review Grove research",
+    resumeLink: {
+      label: "View healthcare UXR résumé · PDF ↗",
+      path: "/assets/Hillary_Esposito_Healthcare_UX_Research_Resume.pdf",
+    },
+    contactFirst: true,
+  },
+  "the-sill-product-designer": {
+    slug: "the-sill-product-designer",
+    company: "The Sill",
+    role: "Product / UX Designer · proactive talent introduction",
+    variant: "care",
+    accent: "#3d6b3f",
+    accentDark: "#92bd78",
+    mapSrc: "/riso/elevation-03.jpg",
+    edition: "olive",
+    badgeLabel: "Plant care · consumer product · honest prototype",
+    eyebrow: "Plant education · ongoing care · consumer product judgment",
+    headline: "Grove turns plant-care overwhelm into one calm next action.",
+    subhead:
+      "Checked August 20, 2026: The Sill's official careers page listed no open roles and invited talent-pool introductions. This is a proactive product-design fit note, not an application to a posted opening.",
+    meta: [
+      { label: "Target", value: "The Sill · future Product / UX opportunity" },
+      { label: "Lead proof", value: "Grove functional prototype · Phase 2 of 3" },
+      { label: "Research", value: "34-person self-report survey · 11 → 3 features" },
+      { label: "Product thesis", value: "Help a person choose, understand, and keep a plant alive" },
+    ],
+    intro: [
+      "The Sill's mission joins plant access with horticultural education. Grove works on the next part of that service: once a plant is home, can the owner understand what it needs without guilt, false certainty, or a wall of features?",
+      "I surveyed 34 plant owners, cut an AI-built concept from eleven features to three, and rebuilt the experience around calm reminders, identification that shows confidence and sources, and safety information that appears before a wrong guess can become harm.",
+    ],
+    proofPoints: [
+      {
+        stat: "34",
+        detail: "plant owners surveyed before the redesign; self-report, not observed market demand",
+      },
+      {
+        stat: "11 → 3",
+        detail: "features after research moved care, identification, and light help ahead of social mechanics",
+      },
+      {
+        stat: "Phase 2/3",
+        detail: "functional prototype with a visible decision log and a defined next usability study",
+      },
+    ],
+    featuredWork: [
+      {
+        title: "Grove: plant care without guilt or false certainty",
+        reason: "Consumer onboarding, ongoing care, plant identification, calm notification logic, pet-safety provenance, and an honest prototype boundary.",
+      },
+      {
+        title: "Mobbin: 200+ screens per app, searchable by task",
+        reason: "Supporting evidence of close consumer-interface analysis, taxonomy, onboarding patterns, and production documentation across mature products.",
+      },
+      {
+        title: "The product-service opportunity",
+        reason: "Connect choosing and learning about a plant with the ongoing care experience after delivery. This is an adjacent service hypothesis, not claimed shipped work.",
+      },
+    ],
+    strengths: [
+      "Design calm onboarding and care loops for people who are interested but not yet confident",
+      "Turn plant-owner language and self-reported priorities into product scope",
+      "Design AI identification to show confidence, sources, and a safe stopping point",
+      "Balance education, warmth, accessibility, and consumer interaction craft without gamifying care into anxiety",
+    ],
+    relevantExperience: [
+      "Grove is my plant-care product: research, scope decisions, interaction design, accessibility, and a coded prototype.",
+      "Documenting Mobbin flows trained me to compare consumer onboarding patterns and name them consistently.",
+      "Healthcare and medical logistics taught me to slow down around confident wrong answers. That instinct matters when the answer can affect a pet, plant, or person.",
+    ],
+    keywords: [
+      "consumer product design",
+      "plant care",
+      "horticultural education",
+      "onboarding",
+      "ongoing care",
+      "information architecture",
+      "user research",
+      "usability testing",
+      "AI confidence",
+      "source provenance",
+      "accessibility",
+      "functional prototyping",
+    ],
+    hiringManagerNote:
+      "I have not shipped The Sill's commerce, subscription, fulfillment, or retention systems, and I am not presenting Grove as that experience. The credible fit is category-specific research, a working plant-care product, consumer interaction craft, and a service-design question that begins where the purchase journey ends.",
+    closing:
+      "For a future Product / UX role at The Sill or a similar plant and home-care company, I would bring category commitment, research-led scope, trustworthy AI interaction, and a product view of the full choose-to-care journey.",
+    supportLinks: [
+      {
+        label: "Grove plant-care case study",
+        path: "/case-study/grove",
+        description: "The research, product decisions, AI trust model, and functional prototype behind the plant-care direction.",
+        icon: <SproutIcon />,
+      },
+      {
+        label: "Mobbin consumer-pattern study",
+        path: "/case-study/mobbin",
+        description: "Pattern analysis, taxonomy, and documentation across 200+ screens per finance app.",
+        icon: <PencilIcon />,
+      },
+    ],
+    relatedLinks: [
+      {
+        label: "Main healthcare-first portfolio",
+        path: "/",
+        description: "Full product/service design portfolio and contact section.",
+        icon: <LaunchIcon />,
+      },
+    ],
+    proofFirst: true,
+    proofKicker: "Plant-care evidence, with boundaries",
+    caseStudyCtaLabel: "Review Grove",
+    resumeLink: {
+      label: "View The Sill Product / UX résumé · PDF ↗",
+      path: "/assets/Hillary_Esposito_The_Sill_Product_Designer_Resume.pdf",
+    },
+    contactFirst: true,
+  },
   "supabase-product-designer": {
     slug: "supabase-product-designer",
     company: "Supabase",
@@ -191,7 +533,7 @@ const allCuratedPages: Record<string, CuratedPage> = {
       { label: "Tools", value: "Figma + research + AI-assisted prototyping" },
     ],
     intro: [
-      "Indyx helps people love the wardrobe they already own — catalog it, see it clearly, and get dressed with joy instead of decision fatigue. I've spent the last year building the closest thing to that in a different category: Grove, a consumer app that helps people organize and care for what they already have, and removes the overwhelm that makes them give up.",
+      "Indyx helps people love the wardrobe they already own — catalog it, see it clearly, and get dressed with joy instead of decision fatigue. I've spent the last year building the closest thing to that in a different category: Grove, a functional consumer prototype that helps people organize and care for what they already have, and removes the overwhelm that makes them give up.",
       "The deeper fit is a value, not a category. Indyx's thesis is that “style is a human art that can never be replaced by an algorithm.” In Grove, the defining design work was exactly that: I let an AI build the first version, then overruled it five times to keep a person in charge of the calls that matter. I design consumer products where taste and judgment lead, and research keeps them honest.",
     ],
     proofPoints: [
@@ -200,7 +542,7 @@ const allCuratedPages: Record<string, CuratedPage> = {
       { stat: "5", detail: "calls I overruled the AI on in Grove to keep a human in charge — the same 'human over algorithm' belief Indyx is built on" },
     ],
     featuredWork: [
-      { title: "Grove — a consumer app for what you already own", reason: "Cataloging, calm daily-use flows, and AI-override judgment. The closest analog to Indyx: organize what you own, reduce overwhelm, keep humans in charge." },
+      { title: "Grove — a consumer prototype for what you already own", reason: "Cataloging, calm daily-use flows, and AI-override judgment. The closest analog to Indyx: organize what you own, reduce overwhelm, keep humans in charge." },
       { title: "Mobbin — 200+ screens per app across three finance apps, studied for craft", reason: "Pattern fluency and taste from 200+ screens per app documented across three finance apps — directly useful for cataloging speed and outfit discoverability." },
       { title: "The 'AI vs. mine' calls", reason: "A record of where I let the algorithm accelerate the work and where I overruled it — Indyx's stylist-not-algorithm belief, shown not told." },
     ],
@@ -240,7 +582,7 @@ const allCuratedPages: Record<string, CuratedPage> = {
     closing:
       "For Indyx's UX/Product Designer role, I'd bring consumer interaction craft, research that keeps taste honest, and a genuine belief in human judgment over the algorithm — designing a product that makes getting dressed joyful, intentional, and yours.",
     supportLinks: [
-      { label: "Grove case study", path: "/case-study/grove", description: "A consumer app for what you already own — cataloging, calm daily use, and AI-override judgment.", icon: <SproutIcon /> },
+      { label: "Grove case study", path: "/case-study/grove", description: "A functional consumer prototype for what you already own — cataloging, calm daily use, and AI-override judgment.", icon: <SproutIcon /> },
       { label: "Mobbin case study", path: "/case-study/mobbin", description: "200+ screens per app across three finance apps — pattern fluency and taste.", icon: <PencilIcon /> },
     ],
     relatedLinks: [],
@@ -349,7 +691,7 @@ const allCuratedPages: Record<string, CuratedPage> = {
     meta: [
       { label: "Focus", value: "Complex systems UX" },
       { label: "Strength", value: "Internal tools + product judgment" },
-      { label: "Evidence", value: "21,000+ clinicians and staff, 20% cost reduction, 70% efficiency gain" },
+      { label: "Evidence", value: "21,000+ clinicians and staff, 20% cost reduction contribution, 70% ahead of deadline" },
       { label: "Best fit", value: "High-stakes internal tools and healthcare workflows" },
     ],
     intro: [
@@ -358,7 +700,7 @@ const allCuratedPages: Record<string, CuratedPage> = {
     ],
     proofPoints: [
       { stat: "21,000+", detail: "Clinicians and administrative staff affected by workflow redesign work at Memorial Sloan Kettering" },
-      { stat: "20%", detail: "Organization-wide EMR cost reduction; I led the workflow redesign that contributed to it" },
+      { stat: "20%", detail: "Organization-wide EMR cost reduction; I initiated a workflow redesign that contributed inside a larger initiative" },
       { stat: "70%", detail: "Every CPR certification collected 70% ahead of a deadline that was about to slip, after I rewrote the technical/legal material for the clinicians completing it" },
     ],
     featuredWork: [
@@ -462,7 +804,7 @@ const allCuratedPages: Record<string, CuratedPage> = {
     ],
     proofPoints: [
       { stat: "MSK", detail: "Healthcare systems experience across clinical operations, training, implementation, and workflow redesign" },
-      { stat: "20%", detail: "Organization-wide EMR cost reduction; I led the healthcare workflow redesign that contributed to it" },
+      { stat: "20%", detail: "Organization-wide EMR cost reduction; I initiated a healthcare workflow redesign that contributed inside a larger initiative" },
       { stat: "70%", detail: "Every CPR certification collected 70% ahead of a deadline that was about to slip, after I rewrote the technical/legal material for the clinicians completing it" },
       { stat: "7", detail: "Aid stations coordinated through high-pressure medical logistics workflows across three countries" },
     ],
@@ -568,7 +910,7 @@ const allCuratedPages: Record<string, CuratedPage> = {
       "My strongest fit is the bridge between user needs, operational complexity, data-heavy workflows, and prototype discipline.",
     ],
     proofPoints: [
-      { stat: "20%", detail: "Organization-wide EMR cost reduction at MSK; I led the workflow redesign that contributed to it" },
+      { stat: "20%", detail: "Organization-wide EMR cost reduction at MSK; I initiated a workflow redesign that contributed inside a larger initiative" },
       { stat: "70%", detail: "Every CPR certification collected 70% ahead of a deadline that was about to slip, after I rewrote the technical/legal material for the clinicians completing it" },
       { stat: "85%", detail: "Faster medical resupply after building tracking and reporting workflows" },
       { stat: "60%", detail: "Reduced medical logistics spending through better visibility and process structure" },
@@ -768,7 +1110,7 @@ const allCuratedPages: Record<string, CuratedPage> = {
       "My background is not fintech-first. It is trust-first: healthcare operations, regulated systems, and products where unclear information slows someone down or creates avoidable risk.",
     ],
     proofPoints: [
-      { stat: "20%", detail: "Organization-wide EMR cost reduction; I led the regulated healthcare workflow redesign that contributed to it" },
+      { stat: "20%", detail: "Organization-wide EMR cost reduction; I initiated a regulated healthcare workflow redesign that contributed inside a larger initiative" },
       { stat: "70%", detail: "Every CPR certification collected 70% ahead of a deadline that was about to slip, after I rewrote the technical/legal material for the clinicians completing it" },
       { stat: "85%", detail: "Faster medical resupply after operational tracking improvements" },
       { stat: "60%", detail: "Reduced medical logistics spending through better visibility and coordination" },

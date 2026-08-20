@@ -1,10 +1,11 @@
-import React, { lazy, Suspense, useRef } from "react";
+import React, { lazy, Suspense, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
 import ReadingProgress from "../../components/flagship/ReadingProgress";
 import DecisionStory from "../../components/flagship/DecisionStory";
 import EvidenceField from "../../components/flagship/EvidenceField";
+import MSKFilingReceipt from "../../components/flagship/MSKFilingReceipt";
 import MSKDashboardMockup from "../../components/MSKDashboardMockup";
 import MSKWorkflowMap from "../../components/MSKWorkflowMap";
 import MSKMechanism from "../../components/MSKMechanism";
@@ -21,29 +22,16 @@ import "../../styles/flagship-case-study.css";
 
 const MSKSystemMap = lazy(() => import("../../components/MSKSystemMap"));
 
-// "The contradiction" told the reader a category, not a fact — you had to
-// already know the story for it to mean anything. Every note now states the
-// thing itself. Order follows the page: problem, workflow, the decisions inside
-// one screen, the three systems those decisions shipped in, then the background
-// that made them possible, then what lasted.
 const CHAPTERS: CaseStudyChapter[] = [
   { id: "msk-start", label: "Start", note: "Digital records, printed to be filed digitally" },
   { id: "msk-brief", label: "Problem", note: "A digital workflow became a paper ritual" },
-  { id: "msk-workflow", label: "Workflow", note: "Four systems became two" },
+  { id: "msk-workflow", label: "Workflow", note: "A filing queue replaced the workaround" },
   { id: "msk-decisions", label: "Decisions", note: "The simple button was not simple" },
   { id: "msk-redesigns", label: "Redesigns", note: "The same failure, in two more places" },
   { id: "msk-systems", label: "Background", note: "Why I could see it" },
   { id: "msk-outcomes", label: "Outcomes", note: "Evidence that lasted" },
 ];
 
-// Each role opens the method it gave her. Closed by default: the credentials
-// are real and worth finding, but leading with them turns a work story into a
-// CV. Details, so it works with no JS and is keyboard-operable for free.
-// Checked against the résumé rather than distributed one-per-role for symmetry.
-// Both formal credentials land inside the Office Coordinator window — the MHA
-// finished May 2019 and the Green Belt July 2019, while that role ran Jan 2018
-// to Jan 2020. An earlier version put the master's in the Administrative
-// Assistant years, which the résumé contradicts by eight months.
 const ROLE_METHODS: Record<string, { term: string; body: string }> = {
   "01": {
     term: "Lean Six Sigma Green Belt (Purdue) · Master of Healthcare Administration (Rutgers)",
@@ -51,7 +39,7 @@ const ROLE_METHODS: Record<string, { term: string; body: string }> = {
   },
   "02": {
     term: "Writing for the person who has to act",
-    body: "No certificate for this one. Preparing what leadership decided from taught me to write for the reader who has to act on it — the CPR rewrite came out of that, and so did the presentation that finally got the EMR redesign I had started two years earlier implemented.",
+    body: "No certificate for this one. Turning leadership decisions into clear briefs taught me to write for the person who has to act. The CPR rewrite and the EMR presentation both came from that practice.",
   },
   "03": {
     term: "Training & Facilitation (ATD) · current-state mapping",
@@ -63,9 +51,6 @@ const ROLE_METHODS: Record<string, { term: string; body: string }> = {
 // the sentence is describing rather than a generic row.
 const DECISION_ROW = [0, 4, 2, 3];
 
-// Each body used to restate what the artifact beside it already shows — the
-// mockup carries the ready-to-file state, the permission rule, and the row
-// statuses in full. The text now says only the part the picture cannot.
 const DECISIONS = [
   { n: "01", title: "Show the action only when the record is ready", body: "Staff stop opening records that still need review.", note: "Ready means actionable" },
   { n: "02", title: "Make permission limits visible", body: "View-only roles see status and ownership, not a disabled mystery button.", note: "Permission is product logic" },
@@ -73,8 +58,6 @@ const DECISIONS = [
   { n: "04", title: "Return people to the queue", body: "Staff land back where they started, status updated.", note: "Preserve place and context" },
 ];
 
-// Six years, three roles. This was a 62-word paragraph with three definitions
-// folded into em-dashes; as a rail it reads as the ladder it actually was.
 const ROLES = [
   { n: "01", role: "Office Coordinator", taught: "Where people paused" },
   { n: "02", role: "Administrative Assistant", taught: "How evidence survives a room" },
@@ -109,28 +92,13 @@ const REDESIGNS = [
   },
   {
     n: "02",
-    // CORRECTED 2026-08-03 against Hillary's résumé and her own account. This
-    // card previously described a tracking spreadsheet with no alerts, fixed by
-    // a dashboard that warned at 90/60/30 days. None of that happened. The real
-    // work was optimizing the CPR certification *format*: the material was
-    // written in technical, legal language, and she reformatted it for the
-    // clinicians who had to complete it.
     title: "CPR certification",
     finding: "The material was written in technical, legal language. So few clinicians got through it that the compliance deadline was about to be pushed back.",
     change: "I rewrote it for the people who had to complete it, not the people who wrote it. Every certification came in — 70% ahead of the deadline that was about to slip.",
   },
   {
-    // CORRECTED 2026-08-03. Every detail here was previously wrong: it described
-    // *clinician* onboarding split across five departments, with safety
-    // protocols gating patient contact. The real programme onboarded new
-    // administrative support staff, who have no patient contact at all. The
-    // "what I got wrong" line went with it — it was invented alongside the rest,
-    // and no real one has been supplied.
     n: "03",
     title: "Administrative onboarding",
-    // Epic belongs to the Trainer I Specialist years (2022–24), where Hillary
-    // instructed on it — deliberately not attached to the 2018–20 filing
-    // redesign further up the page, which predates it.
     finding: "Epic, HIPAA, the compliance modules, and the technical and soft skills of the job were taught the same way to every new administrative hire — people who arrived with very different starting points, some fluent with the systems, some never having opened them.",
     change: "I worked with the design team to rebuild the program, then curated the instruction cohort by cohort so a one-to-three-week course met the range of abilities actually in the room.",
   },
@@ -159,6 +127,13 @@ export default function FlagshipMSK() {
   const rootRef = useRef<HTMLElement>(null);
   useFlagshipReveal(rootRef);
 
+  useEffect(() => {
+    const targetId = window.location.hash.slice(1);
+    if (!targetId) return;
+    const timer = window.setTimeout(() => document.getElementById(targetId)?.scrollIntoView({ block: "start", behavior: "auto" }), 0);
+    return () => window.clearTimeout(timer);
+  }, []);
+
   if (lang === "es") return <SpanishCaseStudy data={MSK_ES} />;
 
   return (
@@ -171,7 +146,7 @@ export default function FlagshipMSK() {
       <CaseStudyChapters project="Memorial Sloan Kettering" chapters={CHAPTERS} />
       <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
 
-      <header className="rp-hero fp-hero" id="msk-start">
+      <header className="rp-hero fp-hero" id="msk-start" data-language-anchor="msk-start">
         <CartoField
           mapSrc="/assets/msk/mskcc-map.jpg"
           edition="eucalyptus"
@@ -181,18 +156,14 @@ export default function FlagshipMSK() {
         />
         <div className="rp-hero__content">
           <div className="rp-clearing">
-            <span className="rp-eyebrow">Service design · process improvement · clinical systems</span>
-            <h1 className="rp-h1">Memorial Sloan Kettering.</h1>
+            <span className="rp-eyebrow">Memorial Sloan Kettering · clinical systems</span>
+            <h1 className="rp-h1">A filing queue replaced a four-system workaround.</h1>
             <span className="rp-readtime"><b>6 min</b><span>read · 6 years, 3 roles</span></span>
-            {/* Opens the thread rather than summarizing activities. The second
-                sentence used to list what she did (mapped, aligned, redesigned);
-                it now states what the story is, so every section below has
-                something to be part of. */}
             <p className="rp-sub">
-              Clinicians printed digital records just to file them digitally again. I followed that
-              one workaround through clinical, IT, and operations until it explained the whole
-              system — then found the same failure twice more. Work touching{" "}
-              <b>21,000+ clinicians and staff</b>.
+              Clinicians printed digital records just to file them digitally again. As an office
+              coordinator, I mapped that workaround across clinical, IT, imaging, and operations,
+              then presented the online workflow that was implemented two roles later. It served
+              work touching <b>21,000+ clinicians and staff</b>.
             </p>
             <a className="rp-cta" href="#msk-workflow">See the workflow →</a>
           </div>
@@ -205,43 +176,15 @@ export default function FlagshipMSK() {
         </div>
       </header>
 
-      {/* The "Workflow trace · 30-second scan" poster used to sit here. It was a
-          whole screen restating the before/after that the workflow map below
-          already draws, before the reader had the problem. */}
+      <MSKFilingReceipt />
 
-      <section className="rp-cinema fp-cinema" id="msk-brief" aria-labelledby="msk-brief-title">
-        <div className="rp-cinema__sticky">
-          <div className="rp-cinema__wash" aria-hidden="true" />
-          <div className="fp-cinemaCore fp-cinemaCore--workflow" aria-hidden="true">
-            <div><span>BEFORE</span><b>Dashboard → paper → imaging → EMR</b><small>Four systems for one filing.</small></div>
-            <i>→</i>
-            <div><span>AFTER</span><b>Dashboard → online chart</b><small>The record never leaves the screen.</small></div>
-          </div>
-          <div className="rp-cinema__artifact rp-cinema__artifact--reminder"><span>Floor observation</span><b>People built workarounds because the official path failed.</b></div>
-          <div className="rp-cinema__artifact rp-cinema__artifact--safety"><span>Design constraint</span><b>Roles, permissions, states, and audit trails.</b></div>
-          <div className="rp-cinema__bridge">
-            {/* Kickers across this page were taxonomy labels — they named the
-                type of exhibit ("Primary artifact", "Interaction logic",
-                "Three redesigns", "Six years · three roles") rather than the
-                next beat, which is what made the page read as a process deck
-                instead of one story. Each is now a step in the thread. */}
-            <p className="rp-kicker">It started with a workaround</p>
-            <h2 id="msk-brief-title">The digital workflow had become a paper ritual.</h2>
-            {/* EMR is used five times on this page and was never defined in
-                English — while the Spanish version defines it. Defined here, at
-                first real use, rather than assuming the reader already knows. */}
-            <p>Every clinical day runs through the EMR — the electronic medical record, the digital chart where a patient’s whole history lives. Four systems stood between a clinician and one finished task.</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="rp-section" id="msk-workflow">
+      <section className="rp-section" id="msk-workflow" data-language-anchor="msk-workflow">
         <div className="rp-wrap">
           {/* The "recreated and anonymized" qualifier moved to the figcaption
               below, which already carries it — so the kicker is free to be a
               beat instead of a provenance label. */}
           <p className="rp-kicker">So I counted the steps</p>
-          <h2 className="rp-title">Four systems became two.</h2>
+          <h2 className="rp-title">The filing queue replaced the workaround.</h2>
           <p className="rp-lede">Nobody had written the whole path down. On one page, four departments saw the same failure instead of four versions of it.</p>
           <figure className="fp-workflowFig rp-reveal">
             <MSKWorkflowMap />
@@ -269,6 +212,7 @@ export default function FlagshipMSK() {
 
       <DecisionStory
         id="msk-decisions"
+        languageAnchor="msk-decisions"
         kicker="The fix looked like one button"
         title="The “simple” button carried the whole system."
         intro="One action replaced the three steps that left the system. Everything that made it safe to press had to be legible before anyone pressed it."
@@ -280,22 +224,10 @@ export default function FlagshipMSK() {
         )}
       />
 
-      {/* The three redesigns used to sit after the six-years background, which
-          meant the page spent a section on credibility before it had finished
-          saying what was built. They belong here: the queue decisions above are
-          one of these three, and the outcome numbers below come from all of
-          them. */}
-      <section className="rp-section" id="msk-redesigns">
+      <section className="rp-section" id="msk-redesigns" data-language-anchor="msk-decisions">
         <div className="rp-wrap">
-          {/* This was the break in the thread. "Three redesigns · what actually
-              changed" / "Not one system. Three." announced a list, so the page
-              stopped being a story here and became a portfolio of projects. The
-              same content framed as recurrence — the failure showing up again —
-              keeps the thread running instead of restarting it. */}
           <p className="rp-kicker">Then the same shape turned up again</p>
           <h2 className="rp-title">The same failure, in two more places.</h2>
-          {/* "Same failure" overstated it — the three are not the same mechanism.
-              What repeats is the root cause. */}
           <p className="rp-lede">Once I knew what it looked like, I found it in the CPR certification and in the onboarding program. Same root cause every time: built for the institution, not for the person who had to get through it.</p>
           <div className="fp-redesigns rp-reveal">
             {REDESIGNS.map((r) => (
@@ -311,27 +243,14 @@ export default function FlagshipMSK() {
               </article>
             ))}
           </div>
-          {/* REMOVED 2026-08-03 — the "Transparency beats pretending" plate.
-              Its supporting detail was a certification feed that refreshed once
-              a day and carried a "last refreshed" timestamp. There was no feed
-              and no dashboard; the certification work was a format rewrite. The
-              principle may well be true of something Hillary actually shipped,
-              but it cannot stay attached to evidence that does not exist.
-              Pending: which project, if any, it belongs to. */}
         </div>
       </section>
 
-      <section className="rp-section rp-override" id="msk-systems">
+      <section className="rp-section rp-override" id="msk-systems" data-language-anchor="msk-decisions">
         <div className="rp-wrap">
-          {/* Was "Six years · three roles" — a credentials heading. In the
-              thread this section answers the question the previous one raises:
-              how did she see a pattern three departments had lived with? */}
           <p className="rp-kicker">Why I could see it</p>
           <h2 className="rp-title">I learned the system from the floor up.</h2>
           <p className="rp-lede">You do not spot that pattern from outside a system. I had already sat in three of its seats.</p>
-          {/* Was one 62-word paragraph with three job definitions folded into
-              em-dashes. The progression was the point, so it is drawn as a
-              progression. */}
           <ol className="fp-roleRail rp-reveal" aria-label="Three roles at MSK, in order">
             {ROLES.map((r) => {
               const method = ROLE_METHODS[r.n];
@@ -370,8 +289,10 @@ export default function FlagshipMSK() {
             systems and three departments that did not report to me — not the screen at the end of
             it. The queue above is one screen. The reason it works is everything behind it.
           </p>
-          {/* The credentials that used to sit here as a standalone strip now
-              live inside the role that earned each one, one click away. */}
+          <aside className="rp-note rp-reveal" aria-label="MSK research evidence boundary">
+            <span className="rp-note__k">Evidence boundary</span>
+            <p>The source record preserves the workflow, departments, decisions, and outcomes. Participant counts from shift observation were not recorded, so I use this evidence to explain the decisions—not to claim prevalence.</p>
+          </aside>
           <div className="fp-mapWrap">
             <Suspense fallback={<div className="fp-mapFallback">Tangled systems → mapped → redesigned → trusted</div>}>
               <MSKSystemMap />
@@ -381,14 +302,6 @@ export default function FlagshipMSK() {
         </div>
       </section>
 
-      {/* This section had no single job. Under the heading "What the system
-          taught me" it ran a sustainment thesis, three sustainment facts, a
-          principle about stale data, two general reflections, and an external
-          profile link — five different points, so none of them landed.
-          One job now: the work outlasted the person who built it, here is the
-          evidence, and here is the decision that earned the trust. The two
-          reflections went because the Observe/Align/Redesign cards above
-          already say both things, in the place where they are demonstrated. */}
       <section className="rp-section">
         <div className="rp-wrap">
           <p className="rp-kicker">The real test came later</p>
@@ -420,6 +333,7 @@ export default function FlagshipMSK() {
 
       <EvidenceField
         id="msk-outcomes"
+        languageAnchor="msk-outcomes"
         // "attribution kept intact" moved off the kicker — the `disclaimer`
         // prop below already states it, in its own dedicated line.
         kicker="What it added up to"
