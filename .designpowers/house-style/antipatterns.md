@@ -18,6 +18,7 @@ Review trigger: 2026-11-11 or a material model/system change
 @visual-tell: A spatial playground enclosed by a glowing frame, dashboard shell, or control rail.
 @visual-tell: Persistent infrastructure labels, nodes, route diagrams, spinners, or telemetry competing with the MSK artifact.
 @visual-tell: A receipt styled as a large terminal, data table, or provenance panel.
+@visual-tell: A raw social-media embed, engagement counter, or faux-official transit card standing in for product evidence.
 
 ## Positive replacements
 - Instead of a Supabase imitation, use the existing Riso split hero with one accessible green accent.
@@ -27,6 +28,7 @@ Review trigger: 2026-11-11 or a material model/system change
 - Instead of concept cards, use a numbered editorial index that swaps one shared stage.
 - Instead of a control panel, make the material field respond directly and keep exceptional scenarios behind a post-comparison disclosure.
 - Instead of infrastructure visualization, show continuity of control: instant local response, an honest bounded wait, unchanged evidence, and a short receipt.
+- Instead of social chrome or engagement metrics, extract the verified product decision into the portfolio's ruled editorial language and link to provenance quietly.
 
 ## Approved exceptions
 - Existing non-Supabase curated pages retain their current default CTA and section order. The optional Supabase fields do not rewrite those pages.

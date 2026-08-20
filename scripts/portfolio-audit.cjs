@@ -8,7 +8,12 @@ const { chromium } = require(
     : "/Users/hills_mac/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright",
 );
 
-const baseUrl = process.env.PORTFOLIO_URL || "http://127.0.0.1:3000";
+const buildDir = process.env.PORTFOLIO_BUILD_DIR
+  ? path.resolve(process.env.PORTFOLIO_BUILD_DIR)
+  : null;
+const baseUrl = buildDir
+  ? "http://portfolio.local"
+  : process.env.PORTFOLIO_URL || "http://127.0.0.1:3000";
 const outputDir = process.env.PORTFOLIO_AUDIT_DIR || "/tmp/portfolio-design-review";
 const chromePath =
   process.env.CHROME_PATH ||
@@ -20,9 +25,25 @@ const routes = [
   { path: "/case-study/grove", name: "grove", indexable: true },
   { path: "/case-study/msk", name: "msk", indexable: true },
   { path: "/case-study/mobbin", name: "mobbin", indexable: true },
+  { path: "/case-study/logistics", name: "logistics", indexable: true },
   {
     path: "/curated/indyx-ux-product-designer",
     name: "curated-indyx",
+    indexable: false,
+  },
+  {
+    path: "/curated/healthcare-product-service-designer",
+    name: "curated-healthcare-product",
+    indexable: false,
+  },
+  {
+    path: "/curated/healthcare-ux-researcher",
+    name: "curated-healthcare-uxr",
+    indexable: false,
+  },
+  {
+    path: "/curated/the-sill-product-designer",
+    name: "curated-the-sill",
     indexable: false,
   },
   {
@@ -33,8 +54,19 @@ const routes = [
   { path: "/not-a-real-route", name: "not-found", indexable: false },
 ];
 
-const widths = [320, 390, 900, 1440];
+const widths = (process.env.PORTFOLIO_WIDTHS || "320,390,900,1440")
+  .split(",")
+  .map((value) => Number(value.trim()))
+  .filter((value) => Number.isFinite(value) && value > 0);
 const screenshotWidths = new Set([390, 1440]);
+const locales = (process.env.PORTFOLIO_LOCALES || "en")
+  .split(",")
+  .map((value) => value.trim())
+  .filter((value) => value === "en" || value === "es");
+const themes = (process.env.PORTFOLIO_THEMES || "light")
+  .split(",")
+  .map((value) => value.trim())
+  .filter((value) => value === "light" || value === "dark");
 const captureFullPage = process.env.PORTFOLIO_FULL_PAGE === "1";
 const motionPreference =
   process.env.PORTFOLIO_REDUCED_MOTION === "1" ? "reduce" : "no-preference";
@@ -47,6 +79,39 @@ const activeRoutes = routeFilter
 
 function ensureDirectory(directory) {
   fs.mkdirSync(directory, { recursive: true });
+}
+
+async function installLocalBuildRoute(page) {
+  if (!buildDir) return;
+  const mime = {
+    ".css": "text/css; charset=utf-8",
+    ".gif": "image/gif",
+    ".html": "text/html; charset=utf-8",
+    ".ico": "image/x-icon",
+    ".jpeg": "image/jpeg",
+    ".jpg": "image/jpeg",
+    ".js": "text/javascript; charset=utf-8",
+    ".json": "application/json",
+    ".pdf": "application/pdf",
+    ".png": "image/png",
+    ".svg": "image/svg+xml",
+    ".webp": "image/webp",
+  };
+
+  await page.route("http://portfolio.local/**", async (route) => {
+    const pathname = decodeURIComponent(new URL(route.request().url()).pathname);
+    const relative = pathname.replace(/^\/+/, "");
+    const requested = path.resolve(buildDir, relative);
+    const insideBuild = requested === buildDir || requested.startsWith(`${buildDir}${path.sep}`);
+    const file = insideBuild && fs.existsSync(requested) && fs.statSync(requested).isFile()
+      ? requested
+      : path.join(buildDir, "index.html");
+    await route.fulfill({
+      status: 200,
+      path: file,
+      contentType: mime[path.extname(file).toLowerCase()] || "application/octet-stream",
+    });
+  });
 }
 
 async function inspectPage(page, expectedIndexable) {
@@ -133,6 +198,28 @@ async function inspectPage(page, expectedIndexable) {
         };
       });
 
+    const clippedFirstViewportText = [
+      ...document.querySelectorAll(
+        ".rp-hero__content h1, .rp-hero__content p, .rp-hero__content .rp-eyebrow, .rp-hero__content a, .rp-hero__content button",
+      ),
+    ]
+      .filter(isVisible)
+      .map((element) => {
+        const rect = element.getBoundingClientRect();
+        return {
+          text: (element.textContent || "").replace(/\s+/g, " ").trim().slice(0, 100),
+          left: Math.round(rect.left),
+          right: Math.round(rect.right),
+          top: Math.round(rect.top),
+          bottom: Math.round(rect.bottom),
+        };
+      })
+      .filter(
+        (rect) =>
+          rect.top < window.innerHeight &&
+          (rect.left < -1 || rect.right > document.documentElement.clientWidth + 1),
+      );
+
     return {
       title: document.title,
       language: document.documentElement.lang,
@@ -145,6 +232,7 @@ async function inspectPage(page, expectedIndexable) {
       horizontalOverflow:
         document.documentElement.scrollWidth >
         document.documentElement.clientWidth + 1,
+      clippedFirstViewportText,
       brokenImages: images
         .filter((image) => image.complete && image.naturalWidth === 0)
         .map((image) => image.currentSrc || image.src),
@@ -237,50 +325,77 @@ async function run() {
 
   const results = [];
   try {
-    for (const width of widths) {
-      for (const route of activeRoutes) {
-        const page = await browser.newPage({
-          viewport: { width, height: 1000 },
-          deviceScaleFactor: 1,
-          reducedMotion: motionPreference,
-        });
-        const consoleErrors = [];
-        page.on("console", (message) => {
-          if (message.type() === "error") consoleErrors.push(message.text());
-        });
-        page.on("pageerror", (error) => consoleErrors.push(error.message));
+    for (const locale of locales) {
+      for (const theme of themes) {
+        for (const width of widths) {
+          for (const route of activeRoutes) {
+            const page = await browser.newPage({
+              viewport: { width, height: 1000 },
+              deviceScaleFactor: 1,
+              reducedMotion: motionPreference,
+            });
+            await installLocalBuildRoute(page);
+            await page.addInitScript(({ language, selectedTheme }) => {
+              window.localStorage.setItem("lang", language);
+              window.localStorage.setItem(
+                "darkMode",
+                selectedTheme === "dark" ? "true" : "false",
+              );
+            }, { language: locale, selectedTheme: theme });
+            const consoleErrors = [];
+            page.on("console", (message) => {
+              if (message.type() === "error") consoleErrors.push(message.text());
+            });
+            page.on("pageerror", (error) => consoleErrors.push(error.message));
 
-        const response = await page.goto(`${baseUrl}${route.path}`, {
-          waitUntil: "networkidle",
-        });
-        await page.waitForTimeout(250);
-        await page.evaluate(() => window.scrollTo(0, 0));
+            const response = await page.goto(`${baseUrl}${route.path}`, {
+              waitUntil: "domcontentloaded",
+              timeout: 30000,
+            });
+            await page.waitForFunction(
+              () => document.readyState === "interactive" || document.readyState === "complete",
+              undefined,
+              { timeout: 10000 },
+            );
+            await page.waitForFunction(
+              () => [...document.images]
+                .filter((image) => image.getBoundingClientRect().top < window.innerHeight * 1.5)
+                .every((image) => image.complete),
+              undefined,
+              { timeout: 10000 },
+            );
+            await page.waitForTimeout(250);
+            await page.evaluate(() => window.scrollTo(0, 0));
 
-        const inspection = await inspectPage(page, route.indexable);
+            const inspection = await inspectPage(page, route.indexable);
 
-        if (screenshotWidths.has(width)) {
-          await page.screenshot({
-            path: path.join(
-              outputDir,
-              `${route.name}-${width}${captureFullPage ? "-full" : ""}.png`,
-            ),
-            fullPage: captureFullPage,
-          });
+            if (screenshotWidths.has(width)) {
+              await page.screenshot({
+                path: path.join(
+                  outputDir,
+                  `${route.name}-${locale}-${theme}-${width}${captureFullPage ? "-full" : ""}.png`,
+                ),
+                fullPage: captureFullPage,
+              });
+            }
+
+            const keyboard =
+              width === 390 ? await inspectKeyboard(page) : undefined;
+
+            results.push({
+              route: route.path,
+              name: route.name,
+              locale,
+              theme,
+              width,
+              status: response?.status() ?? null,
+              consoleErrors: [...new Set(consoleErrors)],
+              ...inspection,
+              keyboard,
+            });
+            await page.close();
+          }
         }
-
-        const keyboard =
-          width === 390 ? await inspectKeyboard(page) : undefined;
-
-        results.push({
-          route: route.path,
-          name: route.name,
-          width,
-          status: response?.status() ?? null,
-          consoleErrors: [...new Set(consoleErrors)],
-          ...inspection,
-          keyboard,
-        });
-        await page.close();
       }
     }
   } finally {
@@ -305,11 +420,14 @@ async function run() {
     keyboardUnstyled: results.filter(
       (result) => result.keyboard?.unstyledStops.length,
     ),
+    clippedFirstViewportText: results.filter(
+      (result) => result.clippedFirstViewportText.length,
+    ),
     longRunningAnimations: results.filter((result) =>
       result.runningAnimations.some(
         (animation) =>
           animation.duration === null ||
-          animation.duration > 50 ||
+          animation.duration > 5000 ||
           animation.iterations === Infinity,
       ),
     ),

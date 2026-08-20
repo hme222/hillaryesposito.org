@@ -1,6 +1,86 @@
 # Design State: Full Portfolio Redesign — Hybrid Positioning
 
-_Last updated: 2026-08-11 by owner-approved Frame of Intent build contract_
+_Last updated: 2026-08-20 by healthcare-first hiring verification_
+
+## Active Initiative: Healthcare-First Hiring Positioning
+
+**Problem:** The portfolio passes a general Product/UX recruiter audit, but healthcare and medical-service credibility is not yet the primary hiring story. Equal Product/Service/UXR/plant positioning would dilute role clarity and overstate the surviving UXR evidence.
+
+**Primary audience:** Healthcare and health-tech Product/Service Design recruiters and managers; secondary healthcare UXR leads; targeted plant/lifestyle consumer-product teams.
+
+**Success metric:** The first viewport communicates Healthcare Product & Service Designer + qualified achieved proof + one action; MSK, Medical Logistics, and Grove form the primary public evidence set; three direct-link curated lanes and role-specific resumes reconcile with source evidence; accessibility/build/anti-AI gates pass. Dedicated UXR remains conditional until a complete study and external evidence review exist.
+
+**Approved brief:** `docs/designpowers/briefs/2026-08-20-healthcare-first-hiring-positioning.md`
+
+**Strategy:** `docs/designpowers/strategy/2026-08-20-healthcare-first-hiring-strategy.md`
+
+**Build contract:** `docs/designpowers/builds/2026-08-20-healthcare-first-hiring-build-contract.md`
+
+**Plan:** `docs/designpowers/plans/2026-08-20-healthcare-first-hiring-plan.md`
+
+**UXR evidence plan:** `docs/designpowers/research/2026-08-20-healthcare-uxr-evidence-plan.md`
+
+**House style:** Path B — Reuse / Compose. Existing Riso components, curated renderer, tokens, and voice only; prebuild validator passes.
+
+**Recovery point:** `8ccca07a89d78bbbdee8d7df8428e1563e75c547`; preserve all pre-existing owner and hiring-repair changes.
+
+**Current queue:** Local implementation complete; healthcare Product/Service and plant-consumer positioning advance locally. Fresh production-browser renders and real hiring-manager sessions remain open. Dedicated UXR remains conditional on the planned complete study and external UXR review.
+
+**Readiness review:** `docs/designpowers/reviews/2026-08-20-healthcare-first-hiring-readiness.md`
+
+**Independent reviewer delta:** Blind/fresh anti-AI review passes after seven copy repairs. Neurodiversity review has no remaining Critical or Major findings after moving Selected Work before the Grove teaser and adding active curated-page wayfinding through limitations and contact.
+
+**Open external validation:** Five real healthcare hiring evaluators; one healthcare Product/Service Design manager; one healthcare UXR lead; one representative assistive-technology session; planned 6–8 participant Grove evaluative study.
+
+**Matrix check:** Research/strategy, trust/provenance, design-system compliance, accessibility, localization, and evaluation apply. No invented evidence and representative rendered checks are hard gates.
+
+## Active Initiative: Portfolio Hiring-Decision Repair
+
+**Problem:** The public portfolio's confident presentation outruns its visible proof: achieved outcomes arrive after the first scan, product-team collaboration is difficult to isolate, Grove/MSK/Mobbin claims drift across surfaces, and the 390px Home hero clips its primary proof sentence.
+
+**Primary audience:** Time-boxed product/UX recruiters and hiring managers, research hiring managers, and readers using keyboard, screen reader, zoom, reduced motion, narrow screens, or Spanish content.
+
+**Success metric:** Every locally verifiable applicable recruiter-audit check passes without invented evidence; the first viewport communicates Product Designer + one achieved result + one action; site and résumé claims reconcile; required responsive/accessibility/build gates pass. Real hiring-manager and assistive-technology sessions remain a separate external validation gate.
+
+**Approved brief:** `docs/designpowers/briefs/2026-08-18-portfolio-hiring-decision-repair.md`
+
+**Build contract:** `docs/designpowers/builds/2026-08-18-portfolio-hiring-decision-build-contract.md`
+
+**Plan:** `docs/designpowers/plans/2026-08-18-portfolio-hiring-decision-plan.md`
+
+**Research plan:** `docs/designpowers/research/2026-08-18-portfolio-hiring-validation-plan.md`
+
+**House style:** Path B — Reuse / Compose. Existing Riso components and tokens only; no new component, dependency, token, or visual system.
+
+**Recovery point:** `7c526debb13953ba02a76be6c4bbab3be3129e50`; preserve all pre-existing owner changes and the untracked `my-app/public/assets/journal/` directory.
+
+**Current queue:** Local implementation complete. Product/UX portfolio readiness passes every applicable recruiter check; dedicated UXR readiness remains conditional on real research records and evaluator review. See `docs/designpowers/reviews/2026-08-20-portfolio-hiring-readiness-verification.md`.
+
+**Open external validation:** Five real recruiter/hiring-manager sessions, one product manager/one UXR manager evidence review, and one VoiceOver/NVDA evaluator session. Synthetic review cannot close these gates.
+
+**Matrix check:** Research & strategy, design systems, trust, accessibility, and evals apply. Truth provenance, representative responsive checks, accessible critical flow, recoverability, and real-vs-synthetic validation boundaries are hard gates.
+
+### Completed Slice: The Trip Home — Weekend Dispatch
+
+**Problem:** Surface recent accessibility-first civic-tech work without turning a weekend build into a fourth flagship or embedding LinkedIn.
+
+**Audience and success:** Recruiters and hiring managers can identify the rider problem, Hillary's role, the product rule, and the 22,937-trip finding before following one primary link.
+
+**Brief / contract / plan:** `docs/designpowers/briefs/2026-08-18-weekend-dispatch.md`; `docs/designpowers/builds/2026-08-18-weekend-dispatch-build-contract.md`; `docs/designpowers/plans/2026-08-18-weekend-dispatch-plan.md`.
+
+**Build profile / queue:** Standard / Feature, followed by bounded Visual and Bug review slices.
+
+**Recovery point:** `7c526de`; rollback is deletion of the route-scoped dispatch JSX, CSS, translations, and journal image.
+
+**Preview evidence:** `/tmp/weekend-dispatch-{320,390,640,900,1440}-light.png`, `/tmp/weekend-dispatch-{390,1440}-dark.png`, and focused viewport captures. These temporary files are local review evidence, not repository artifacts.
+
+**Health:** Feature Ready; site-wide Conditional. Production build, 55 tests, focused axe, normal/reduced-motion homepage audits, responsive locks, dark mode, and bilingual reflow pass. House-style final validation passes. The older whole-repository tell budget and an isolated blind anti-AI review remain open outside this slice.
+
+**Interaction addendum (2026-08-20):** Owner approved a cuter weekend-event feel. The visual now includes one optional, bilingual ticket control that traces the already-visible return route and stamps the home marker. It uses native React state and CSS, exposes `aria-pressed` plus a polite completion announcement, retains 44px targeting, never autoplays or loops, and changes immediately under reduced motion.
+
+**MTA visual-alignment addendum (2026-08-20):** Owner requested stronger MTA alignment. The scoped visual field now uses orthogonal subway-map geometry, a single transit-blue route, white station dots, orange gap marks, black information bands, and a yellow ticket accent. Direction bullets use arrows rather than a real service designation, and the mast states “Prototype study · Not live service.” The Riso editorial hierarchy, evidence order, global tokens, and documentary photograph remain intact.
+
+**Landing-page link addendum (2026-08-20):** The filled primary action and documentary image both open `https://hme222.github.io/MTA_Accessibility_Trip_Planning/`, the project landing page linked from Hillary's LinkedIn post. Devpost and LinkedIn remain secondary provenance links.
 
 ## Brief Summary
 **Problem:** Portfolio positions Hillary as Product Designer only, burying process improvement track record and treating AI as a project tag. LinkedIn and portfolio tell different stories.
@@ -145,6 +225,12 @@ Restored: Grove's survey answers (74% reminders, 56% camera ID, 15+ notification
 ## Decisions Log
 | Decision | Rationale | Source |
 |----------|-----------|--------|
+| **APPROVED — healthcare Product & Service Design is the one public identity** | MSK and Medical Logistics supply rare domain credibility, end-to-end workflow/service evidence, implementation, and measurable outcomes. UX research remains a visible capability and direct-link lane, but the missing five-person task/session record prevents a dedicated UXR readiness claim. Grove carries the plant-consumer lane without turning the public homepage into three competing résumés | Hillary approval 2026-08-20; current Hinge Health, Neko Health, Pivotal Health, Rula, Vetcove, The Sill, Gardyn, and Thumbtack market review |
+| **APPROVED — public primary work becomes MSK, Medical Logistics, Grove; Mobbin becomes supporting proof** | This order maps directly to clinical Product/Service Design, high-stakes service systems, and consumer/AI product judgment. Mobbin still proves pattern analysis and documentation but no longer displaces healthcare domain evidence in the primary three | Hillary approval 2026-08-20; portfolio sales-page strategy |
+| **APPROVED — three direct-link role/industry pages reuse one existing renderer** | Healthcare Product/Service, healthcare UXR, and plant-consumer pages can tailor proof order and keywords without changing biography, public navigation, tokens, components, or truth boundaries | Hillary approval 2026-08-20; Path B system compliance |
+| **IMPLEMENTED — The Trip Home as Weekend Dispatch No. 01, not a fourth flagship** | The NYPL/MTA build adds strong current evidence: accessibility-first civic tech, platform-and-direction data logic, a working prototype, named collaboration, and a 22,937-trip finding. The homepage keeps MSK, Grove, and Mobbin as its three primary studies; the dispatch sits after them with one case-study action, quieter Devpost/LinkedIn provenance, a static route-home motif, and a secondary event photograph. No route, embed, dependency, global token, or autoplay was added | owner approval 2026-08-18; `docs/designpowers/reviews/2026-08-18-weekend-dispatch-review.md` |
+| **IMPLEMENTED — one optional route-home ticket interaction** | A 560ms route trace and 260ms home stamp create a small weekend-build payoff. Essential evidence and the return path remain present at rest; native button semantics, bilingual state labels, `aria-pressed`, a live completion message, 44px targeting, and reduced-motion behavior preserve equivalence. No dependency, autoplay, loop, or gesture-only behavior was added | owner approval 2026-08-20; focused interaction test and responsive verification |
+| **IMPLEMENTED — MTA-informed route field without false authority** | Replaced abstract red/green curves with one orthogonal transit-blue line, station dots, orange direction-gap marks, black information bands, and a yellow action accent. A bilingual prototype boundary, arrow direction bullets, and the absence of MTA logos, real route assignments, station names, or service claims keep the reference honest | owner approval 2026-08-20; official MTA map/accessibility references; bilingual rendered audit |
 | **APPROVED DIRECTION AND PRIVATE BUILD — real-context route handoff with bounded row cue** | Hillary approved replacing the isolated motion studies with a real portfolio-context proof. The signature behavior preserves selected-project identity through immediate Home → case-study navigation; a row-bounded cursor/focus/touch response only clarifies which adjacent project is active. Native View Transitions/CSS first, normal-link fallback, ≤560ms desktop/≤420ms mobile, exact evidence, and no credit spend. Approval covers only the private prototype and verification, not public integration or deployment | owner approval 2026-08-12; `design-docs/briefs/2026-08-12-portfolio-motion-intent-reset.md`; `design-docs/builds/2026-08-12-real-context-route-motion-contract.md` |
 | **REJECT CURRENT A/B/C MOTION PREMISE — return to real-context discovery** | Hillary found the Playground confusing and purposeless, and A/B did not explain how they would live in a portfolio where projects are adjacent. The next direction must integrate motion into a real visitor task and make the cause, consequence, next focus, and spatial relationship legible. Cursor-following is now a hypothesis for revealing row-level intent, not an approved effect. Use short product-motion timing and real homepage-to-case-study context; do not continue polishing the isolated lab as the portfolio direction | owner feedback 2026-08-12; `design-docs/briefs/2026-08-12-portfolio-motion-intent-reset.md` |
 | **CONDITIONAL PROTOTYPE — private Higgsfield A/B/C lab implemented; not cleared for public use or credit spend** | The approved no-credit lab now runs on an unlinked lazy route with one exact MSK homepage artifact across A/B/C, equal shared-stage geometry, responsive layouts, reduced motion, deterministic C receipts, cancellation, replay safety, recovery scenarios, and noindex/robots protection. Focused tests pass 7/7, axe reports no structural violations, production build passes, and accessibility re-review has no Critical/Major blockers. The first blind anti-AI failure was materially repaired: mobile now shows the MSK work in the first viewport, self-evaluating rubric copy is removed, A uses a raking-light/registered-edge treatment, and C's first look is simplified. Residual blocker: the blind auditor still rejects C's evaluator-only distributed-system machinery as tool-demo theater. Preserve it only for private evaluation; it cannot graduate to the public portfolio without a new owner decision and passing blind review. No Higgsfield credits spent | `/lab/higgsfield-abc`; `my-app/src/pages/labs/HiggsfieldABCLab.tsx`; `my-app/src/styles/higgsfield-abc-lab.css`; focused test/build output 2026-08-12; blind anti-AI and accessibility re-reviews |
@@ -413,6 +499,17 @@ Restored: Grove's survey answers (74% reminders, 56% camera ID, 15+ notification
 ## Artefact Index
 | Artefact | Path |
 |----------|------|
+| Healthcare-first approved brief | docs/designpowers/briefs/2026-08-20-healthcare-first-hiring-positioning.md |
+| Healthcare-first strategy | docs/designpowers/strategy/2026-08-20-healthcare-first-hiring-strategy.md |
+| Healthcare-first UXR evidence plan | docs/designpowers/research/2026-08-20-healthcare-uxr-evidence-plan.md |
+| Healthcare-first build contract | docs/designpowers/builds/2026-08-20-healthcare-first-hiring-build-contract.md |
+| Healthcare-first implementation plan | docs/designpowers/plans/2026-08-20-healthcare-first-hiring-plan.md |
+| Healthcare-first hiring readiness review | docs/designpowers/reviews/2026-08-20-healthcare-first-hiring-readiness.md |
+| Weekend Dispatch design brief | docs/designpowers/briefs/2026-08-18-weekend-dispatch.md |
+| Weekend Dispatch build contract | docs/designpowers/builds/2026-08-18-weekend-dispatch-build-contract.md |
+| Weekend Dispatch implementation plan | docs/designpowers/plans/2026-08-18-weekend-dispatch-plan.md |
+| Weekend Dispatch recruiter, hiring-manager, Laws of UX, neurodiversity, accessibility, system, and anti-AI review | docs/designpowers/reviews/2026-08-18-weekend-dispatch-review.md |
+| Weekend Dispatch local build health | docs/designpowers/reviews/2026-08-18-weekend-dispatch-health.md |
 | Decision Frame accessibility, privacy, adaptive-input, and failure-state review | docs/designpowers/reviews/2026-08-11-decision-frame-accessibility.md |
 | Decision Frame low-fidelity interaction architecture — proposal | docs/designpowers/strategy/2026-08-11-decision-frame-concept.md |
 | V8 independent Grove + Mobbin craft review | docs/designpowers/reviews/2026-08-10-impossible-evidence-table-v8-craft.md |
@@ -553,6 +650,12 @@ _Items: 21 | Open: 8 | Resolved: 13 | Last reviewed: 2026-08-10_
 | DD-006 | 2026-06-29 | accessibility-reviewer | Minor | .home-proj-card-link:focus-visible explicitly sets outline:none, which is rescued by the !important WCAG patch at the bottom of App.css. The source rule should be deleted — relying on !important to restore a removed affordance is fragile | All keyboard users (if the WCAG patch is ever modified or removed) | Delete `outline: none` from the .home-proj-card-link:hover, .home-proj-card-link:focus-visible block in App.css. See App.css:3822–3827 | Resolved 2026-07-01 | Deleted `outline: none` from the .home-proj-card-link:hover, :focus-visible block (App.css:4058). Global :where() focus-visible rule (App.css:2789, 3px solid var(--focus)) supplies the ring |
 
 ## Handoff Chain
+
+### 2026-08-20 — design strategy → implementation
+> "The public story is now singular: Healthcare Product & Service Designer. Lead with MSK, then Medical Logistics, then Grove; use direct-link pages to tailor healthcare Product/Service, healthcare UXR, and plant-consumer proof without changing the biography. Keep UXR conditional, keep The Sill proactive rather than current-role language, and change proof architecture—not the visual system."
+
+### 2026-08-18 — Designpowers review → Hillary
+> "The Trip Home now works as a compact current-practice signal without displacing MSK, Grove, or Mobbin. Recruiters get the number and next step; hiring managers get the role split, data logic, and ‘warn, never block’ judgment. The interaction is complete at rest, Spanish reflows cleanly, and reduced motion removes the decorative shift. Keep it in this mini-case-study tier unless later evidence earns flagship depth."
 
 ### 2026-08-11 — accessibility-reviewer → design-lead / design-builder / owner (Decision Frame)
 > "The Decision Frame can be accessible, but only as an optional visual instrument over a complete semantic page. Two Critical lines cannot move: camera permission must be explicit, local-only, temporary, and stoppable; and WebGL must never own evidence, qualifiers, or the route. Keep the native range/two endpoint controls as the keyboard, switch, voice, and non-drag equivalent; make reduced-motion and forced-colour states literal and static; then prove denial, Save Data, no-JS, GPU loss, and tracking loss all return the same complete task."
@@ -831,6 +934,27 @@ _Items: 21 | Open: 8 | Resolved: 13 | Last reviewed: 2026-08-10_
 
 ### 2026-06-10 — discovery → design-strategist
 > "Brief approved. Full portfolio redesign: two pillars (UX/Product Design + Process Improvement) with AI as differentiating strength. Current site positions as Product Designer only — needs to surface the ops track record (20-85% gains at MSK and military), weave AI judgment throughout, and align with a LinkedIn strategy that says 'UX Designer × Process Improvement Leader | Healthcare Systems Design.' Keep what works: Luna, orb background, magazine card layout, dark/light mode. Push it elevated and cohesive, WCAG AA, with subtle Gen Z flair. The audience is recruiters scanning in 30 seconds AND UX peers evaluating craft. Credentials (LSS, MHA, military) need homepage visibility. The AI narrative is about judgment — when to use it, when to override it — not 'I use ChatGPT.'"
+
+### 2026-08-20 — interaction design → verified Weekend Dispatch
+> "The dispatch now has one playful weekend-build payoff: a punched-ticket control traces the already-visible route home and stamps the destination. It works by keyboard, touch, and screen reader; the 390px ticket is 190×44px and no longer overlaps the event photograph; reduced motion changes state immediately. The production build and 55 tests pass, the four-width homepage audit is clean, and final house-style validation passes. Site-wide readiness remains Conditional only because the older repository tell budget and blind anti-AI gate are still open."
+
+### 2026-08-20 — MTA alignment + landing-page link → verified Weekend Dispatch
+> "The dispatch visual now borrows MTA subway-map grammar without implying official service: one transit-blue orthogonal route, white station dots, orange direction-gap marks, black information bands, a yellow ticket accent, and an explicit bilingual prototype disclosure. No MTA logo, actual route bullet, station name, or live-service claim appears. The primary action and documentary photograph both open the project landing page from the LinkedIn post; Devpost and LinkedIn remain secondary provenance. The focused interaction test passes 33/33 and the optimized production build compiles."
+
+### 2026-08-20 — owner visual rejection → editorial Dispatch correction
+> "Hillary rejected the literal MTA treatment as ugly. The correction removes the grid, black information bands, direction labels, yellow ticket, floating statistic, heavy frame, and overlapping controls. The real event photograph is now the single visual anchor; one thin transit-blue route and eight orange gap marks cross it as an annotation. The `22,937` finding returns to the story column, and the accessible trace control sits below the image in normal flow. Rendered locks at 390/900/1440 show no overflow, map labels, or floating statistic; the control remains 44px and the photo still opens the landing page."
+
+### 2026-08-20 — owner approval → mostly-hidden Weekend Journal
+> "The second always-open correction was also rejected. The final resting state is a compact journal cover: Weekend Dispatch, The Trip Home, the rider question, and one explicit open/close control. The complete story and imagery render only after activation. The reveal uses a painterly collage of the real NYPL event photo and Hillary's real public project-page hero; blue/orange are registration washes, and every route/map illustration is removed. Enter opens, Space closes, focus stays on the 48px trigger, and the images leave the DOM when closed. Closed/open renders at 390/900/1440 have no overflow; Spanish dark, forced colours, and reduced motion pass; 33/33 focused tests and the production build pass."
+
+### 2026-08-20 — Higgsfield/Seedance Grove teaser → locally verified
+> "The approved homepage treatment keeps the five-second Higgsfield/Seedance atmosphere film intact while compositing the authentic Grove welcome screen as a separate, replaceable DOM layer at the final reveal. It plays once when meaningfully visible, remains silent and non-looping, exposes pause/replay, and collapses to the complete static composition for reduced motion, Save Data, or playback failure. The layout was corrected from a poster-like split into an editorial mast plus full-width material field. Fresh 320/1440 evidence shows no overflow; the focused and flagship accessibility suites pass 35/35, the production build succeeds, final house-style validation passes, and a blind anti-AI reviewer returned PASS. The repository-wide tell scanner still reports older debt outside this slice. Recovery point: `7c526de`. Build contract: `docs/designpowers/builds/2026-08-20-grove-layer-teaser-build-contract.md`. No deploy was performed."
+
+### 2026-08-20 — Grove case-study material proof → locally verified
+> "The first case-study continuation now sits immediately after Grove's hero. It does not replay the homepage film: one direct control separates and reassembles the paper, texture, and collage field while the authentic `/assets/grove/grove1.png` interface remains fixed as an independent product layer. Bounded pointer depth affects only the material; touch skips pointer-following; reduced motion removes spatial transitions; the state change is exposed through `aria-pressed` and a polite status. The initial poster-scale heading was reduced during rendered review so the section reads as a compact bridge into the evidence. Four focused teaser/material tests pass, final house-style validation passes, scoped diff checks are clean, and the production build succeeds. No deploy was performed."
+
+### 2026-08-20 — healthcare-first hiring positioning → locally verified, rendered gate open
+> "The public hiring story now leads with Healthcare Product & Service Designer and MSK → Medical Logistics → Grove. Three no-index hiring pages and three role-specific resume variants support healthcare Product/Service, conditional healthcare UXR, and plant-consumer/The Sill outreach. A blind anti-AI audit passed after seven copy repairs. The neurodiversity review has no remaining Critical or Major findings after Selected Work moved ahead of the Grove teaser and curated pages gained active wayfinding through limitations and contact. TypeScript, 71 tests, production build, registry freshness, final house-style validation, and one-page/link/hash/visual PDF checks pass. Fresh 390/1440 production-browser renders remain open because the environment blocked both the local server and headless Chrome. UXR remains conditional on the planned 6–8 participant study and an independent healthcare UXR review. No deploy, application, or outreach was performed."
 
 ## Pipeline Status
 - [x] Discovery

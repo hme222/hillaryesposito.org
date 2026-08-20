@@ -7,3 +7,9 @@
 # commit that never existed upstream, which failed every GitHub Pages build
 # from 2026-07-18 onward — Pages clones submodules and could not resolve it.
 designpowers/
+
+# Python bytecode from scripts/build-portfolio-resume.py
+scripts/__pycache__/
+
+# Local scratch: intermediate PDF renders and thumbnails
+tmp/

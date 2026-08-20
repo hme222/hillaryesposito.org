@@ -20,6 +20,10 @@ Humor: dry restraint is allowed in personal context; banned in evidence, limitat
 - Research numbers state the method or decision they informed.
 - Outcome numbers preserve initiative-level attribution.
 - Grove is always a functional prototype in Phase 2 of 3, not a beta or shipped product.
+- Public hero proof names an achieved change, not reach alone.
+- MSK separates Hillary's direct work, later implementation, and initiative-level results.
+- Mobbin names the three documented apps and never implies Hillary designed the source products or captured thousands of apps.
+- Research copy names evidence type and a limitation when the distinction changes the claim.
 
 ## Paired examples
 Button BAD: View a case study
@@ -49,3 +53,13 @@ GOOD: Same treatment. Replayed without another run.
 
 Proof BAD: Strong systems thinker and cross-functional collaborator
 Proof GOOD: A workflow map gave clinical, IT, and operations one system failure to resolve together.
+
+## Weekend Dispatch copy
+
+- Lead with the rider's unresolved return trip, not the hackathon format.
+- Keep ownership literal: Jacqueline Gordon led accessibility features; Hillary led product strategy, data logic, and AI-assisted coded prototyping.
+- Pair the 22,937 figure with its scope: scheduled trips affected by eight one-direction accessibility gaps.
+- Use `Explore the working case study`, not `Learn more` or `Check it out`.
+
+Headline BAD: A fun weekend using AI for civic tech
+Headline GOOD: Can a rider know—not guess—whether the trip home is accessible?

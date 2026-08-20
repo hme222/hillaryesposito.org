@@ -34,3 +34,18 @@ Evidence: Owner-approved contract dated 2026-08-12.
 STEAL: Existing paper/ink tokens, editorial rules, authentic artifact, clear routes, and warm material restraint.
 IGNORE: Any local recreation, invented workflow copy, or detached poster version of the evidence.
 Evidence: Verified repository source; rendered validation still required.
+
+## Accessible Transit public case study
+STEAL: The return-trip framing, platform-and-direction data logic, quantified scope, documented uncertainty, and “warn, never block” rule.
+IGNORE: Its standalone microsite styling; this portfolio feature must remain subordinate to the three flagship studies.
+Evidence: Verified public source at `https://hme222.github.io/MTA_Accessibility_Trip_Planning/`, inspected 2026-08-18.
+
+## Hillary's NYPL hackathon LinkedIn post and event photograph
+STEAL: Collaboration attribution, current-practice context, and documentary proof of participation.
+IGNORE: LinkedIn chrome, engagement metrics, feed-card styling, and the event image as a hero.
+Evidence: Verified public post and preview image, inspected 2026-08-18.
+
+## MTA geographic large-print subway map and Accessible Station Lab
+STEAL: Orthogonal route geometry, white station markers, high-contrast black information bands, compact direction labels, accessible-route emphasis, and the principle that geography may be simplified for service clarity.
+IGNORE: MTA logos, actual line assignments, station names, official notice composition, and any wording that could make a portfolio prototype look like current rider guidance.
+Evidence: Verified official MTA map and accessibility pages, inspected 2026-08-20: `https://www.mta.info/map/5341` and `https://www.mta.info/accessibility/stationlab/touchgraphics`.

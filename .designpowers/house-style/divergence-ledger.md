@@ -1,5 +1,92 @@
 # Divergence Ledger
 
+## Public hiring-decision repair — 2026-08-18
+
+### Structural options
+
+Option A: **Outcome-first index** — keep the existing split hero, replace scale-only lead copy with one achieved result, then use outcome-led descriptors in the existing work list. **Chosen.**
+Option B: **Recruiter dossier first** — move the full proof ledger and recruiter panel into the opening viewport. Rejected because it repeats evidence, increases cognitive load, and turns the public portfolio into an application microsite.
+Option C: **Role-lane switcher** — Product Design, UX Design, and UX Research tabs with different project orders. Rejected because the available UXR evidence cannot support an equal public lane and the switcher would hide one canonical identity.
+
+### First viewport
+
+Default: Lead with scale and rely on the next section to show achieved outcomes.
+Instead: Name Product Designer, one qualified achieved result, and one direct work/contact action before the first scroll.
+Reason: The six-second failure is outcome recall, not role recognition.
+Validation: At 320px and 390px in English and Spanish, the role, result, and action are visible or reached without clipping or horizontal scroll.
+
+### Project differentiation
+
+Default: Create new colors, cards, or hero structures for each project.
+Instead: Keep the shared editorial shell and let truthful project artifacts, outcome descriptors, ownership, and status create the distinction.
+Reason: The current system is mature; product proof is the missing carrier.
+Validation: Each Home work link explains why the study earns attention without opening it, while the case-study hero retains its existing project modifier.
+
+### UXR lane
+
+Default: Publish a research case from the current method references to satisfy the role keyword.
+Instead: Keep research as Product Design evidence and publish a validation plan listing the real records required for a dedicated UXR case.
+Reason: A polished but reconstructed research case would fail the portfolio's truth standard.
+Validation: No public copy claims dedicated UXR readiness; the research plan names participants, methods, boundaries, and decision gates for future validation.
+
+## Weekend Dispatch mini case study — 2026-08-18
+
+### Structural options
+
+Option A: **Fourth project row** — add Accessible Transit as `04` inside selected work. Rejected because a weekend build would inherit the same visual weight as six-year and multi-phase studies.
+Option B: **Raw social proof embed** — place the LinkedIn post in a feed-style card. Rejected because login friction, platform chrome, and unstable embed behavior compete with evidence.
+Option C: **Ruled editorial dispatch** — a compact section after selected work with one primary action, a static route-home motif, and supporting provenance. **Chosen.**
+
+### Evidence hierarchy
+
+Default: Lead with the event photograph or engagement metrics.
+Instead: Lead with the return-trip problem, the 22,937-trip finding, Hillary's role, and the “warn, never block” decision; use the event photograph as secondary context.
+Reason: Recruiters and hiring managers need product evidence, not proof that a post exists.
+Validation: The entire evidence summary remains understandable when the photograph is hidden.
+
+### Interaction
+
+Default: Hover reveals the route result, or an animated line explains the concept.
+Instead: The route returns home in the static composition; hover and focus add only a small registration shift.
+Reason: Meaning cannot depend on pointer precision, motion tolerance, or remembering an earlier state.
+Validation: Keyboard, touch, reduced-motion, and no-CSS reading order expose the same claim and actions.
+
+### Interaction addendum — 2026-08-20
+
+Default: Add confetti, autoplay, a looping route, or a hover-only Easter egg to make the hackathon feel fun.
+Instead: Keep the complete dotted return route visible at rest, then let one native ticket-like button trace it home and stamp the destination. The button label, pressed state, and polite status announcement carry the same completion feedback without colour or motion.
+Reason: The project earns one playful action, but recruiter evidence and motion-sensitive access stay primary.
+Validation: The action is repeatable by pointer, keyboard, and touch; completes in under 700ms; has a 44px target and visible focus; and becomes an immediate state change under reduced motion.
+
+### MTA visual alignment — 2026-08-20
+
+Default: Paste an MTA logo onto the Riso collage, assign the prototype an arbitrary subway letter, or reproduce a current service notice closely enough to imply authority.
+Instead: Translate only the useful information grammar: one transit-blue orthogonal line, white station dots, orange gap marks, black label bands, a yellow action accent, and a visible “Prototype study · Not live service” boundary. Direction bullets use arrows, not a real route designation.
+Reason: Familiar transit-map structure makes the project legible faster, while the boundary protects truth and keeps the authored portfolio system visible.
+Validation: The visual remains understandable without colour, contains no logo/station/service claim, preserves the Riso page hierarchy, and passes English/Spanish responsive, keyboard, reduced-motion, dark, and forced-colour checks.
+
+### Weekend Dispatch editorial correction — 2026-08-20
+
+Option A: **Editorial photograph + route annotation** — documentary image as the visual anchor, one thin route gesture over it, quantified finding in the story column, and the control beneath the image. **Chosen.**
+Option B: **Evidence-first typographic poster** — make `22,937` the dominant visual and reduce the photograph to a captioned thumbnail. Rejected because the existing copy column already carries the evidence and the event loses its human weekend-build energy.
+Option C: **Weekend-event zine collage** — overlap the photograph, notes, route fragments, and playful stamps. Rejected because it repeats the clutter and decorative competition Hillary just rejected.
+
+Default: Reproduce a transit map with a grid, label bands, service colours, floating statistic, and ticket-shaped control.
+Instead: Treat MTA language as one editorial annotation: a transit-blue line and eight small orange gaps crossing the real event photograph, with all evidence and controls in normal flow.
+Reason: The portfolio's quiet authority comes from type, whitespace, and documentary evidence; recognizable transit chrome became costume rather than signal.
+Validation: At 390, 900, and 1440px the photograph is the only visual anchor; no label band, grid, floating statistic, heavy frame, or overlapping control remains; the route interaction stays keyboard-operable and reduced-motion safe.
+
+### Weekend Dispatch progressive disclosure — 2026-08-20
+
+Option A: **Journal cover + painterly reveal** — keep title, hook, and one open/close control visible; reveal the story and a collage of the real event photograph with the real project-page capture. **Chosen.**
+Option B: **Collapsed accordion row** — reduce the project to one utilitarian list item. Rejected because it hides too well and loses the weekend-journal personality.
+Option C: **Hover-peek collage** — show fragments on hover and open on click. Rejected because hover is unavailable to touch and creates inconsistent discovery for keyboard users.
+
+Default: Leave a complete fourth mini case study visible or add another decorative route interaction inside it.
+Instead: Make the journal cover the only resting state; one native disclosure button reveals the complete evidence and collage, and that reveal is the playful interaction.
+Reason: Hillary wants the project discoverable but mostly hidden. Progressive disclosure reduces homepage competition while preserving an explicit, reversible path to the full story.
+Validation: Collapsed state contains no project image or long-form evidence; trigger is at least 44px, exposes `aria-expanded`, works with Enter/Space/touch, and retains focus on close; expanded content follows the trigger in DOM order and reduced motion removes the entrance animation.
+
 ## Higgsfield A/B/C private-lab extension — 2026-08-12
 
 ### Structural options
