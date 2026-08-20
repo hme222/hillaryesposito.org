@@ -160,10 +160,12 @@ export default function FlagshipMSK() {
             <h1 className="rp-h1">A filing queue replaced a four-system workaround.</h1>
             <span className="rp-readtime"><b>6 min</b><span>read · 6 years, 3 roles</span></span>
             <p className="rp-sub">
-              Clinicians printed digital records just to file them digitally again. As an office
-              coordinator, I mapped that workaround across clinical, IT, imaging, and operations,
-              then presented the online workflow that was implemented two roles later. It served
-              work touching <b>21,000+ clinicians and staff</b>.
+              Clinicians printed digital records just to file them digitally again — and a record
+              in transit is a record that is not in the chart when the next clinician opens it. As an
+              office coordinator, I mapped that workaround across clinical, IT, imaging, and
+              operations, then presented the online workflow that was implemented two roles later.
+              It served work touching <b>21,000+ clinicians and staff</b>, and it is{" "}
+              <b>still in use through two system upgrades</b>.
             </p>
             <a className="rp-cta" href="#msk-workflow">See the workflow →</a>
           </div>
@@ -190,6 +192,16 @@ export default function FlagshipMSK() {
             <MSKWorkflowMap />
             <figcaption>Recreated current-state and future-state map · no patient data</figcaption>
           </figure>
+          {/* Said once, as a decision. The short "no patient data" labels elsewhere on
+              the page are the reminder; this is the reasoning behind them. */}
+          <div className="rp-note rp-reveal">
+            <p className="rp-note__k">How these artifacts were made</p>
+            <p>
+              Every screen and map here was rebuilt from my own current-state documentation. No
+              protected health information, no exported records, and no reproduction of the vendor
+              interface. Showing the workflow does not require showing a patient, so it does not.
+            </p>
+          </div>
           {/* These two lists are the text alternative for the aria-hidden map,
               so they stay. What went was the pair of paragraphs under them —
               "failure mode" and "design decision" restated the map's own

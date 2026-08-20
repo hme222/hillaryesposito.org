@@ -56,6 +56,13 @@ const ROUTES = [
       "A pattern study documenting more than 200 consumer app screens to understand onboarding, discovery, trust, and interaction craft.",
     image: "/assets/mobbin/discover.jpg",
   },
+  {
+    path: "case-study/logistics",
+    title: "Medical Logistics — Army Operations Case Study | Hillary Esposito",
+    description:
+      "A service design case study: directing medical resupply for 5,000+ soldiers across seven aid stations in three countries, and cutting resupply time by 85%.",
+    image: "/assets/about/army.jpg",
+  },
 ];
 
 const shell = readFileSync(join(DOCS, "index.html"), "utf8");

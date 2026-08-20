@@ -73,7 +73,7 @@ export const MSK_ES: SpanishCaseStudyData = {
   title: "Una cola de archivo reemplazó un desvío de cuatro sistemas",
   meta: "Memorial Sloan Kettering · UX y diseño de producto · Sistemas de salud",
   intro:
-    "Durante seis años en MSK, rediseñé flujos clínicos, certificación e incorporación de personal para sistemas usados por más de 21,000 profesionales clínicos y administrativos. El día de cada clínico gira en torno al EMR: el expediente médico electrónico, la historia clínica digital donde vive toda la información del paciente. Este trabajo muestra diseño aplicado a herramientas internas, permisos, estados y adopción en un entorno de salud real.",
+    "Durante seis años en MSK, rediseñé flujos clínicos, certificación e incorporación de personal para sistemas usados por más de 21,000 profesionales clínicos y administrativos. El día de cada clínico gira en torno al EMR: el expediente médico electrónico, la historia clínica digital donde vive toda la información del paciente. Un registro en tránsito es un registro que no está en la historia clínica cuando el siguiente clínico la abre. El flujo de archivo que propuse sigue en uso después de dos actualizaciones del sistema. Este trabajo muestra diseño aplicado a herramientas internas, permisos, estados y adopción en un entorno de salud real.",
   stats: [
     { label: "Rol", value: "Sistemas de salud → UX y diseño de producto" },
     { label: "Organización", value: "Memorial Sloan Kettering Cancer Center" },
