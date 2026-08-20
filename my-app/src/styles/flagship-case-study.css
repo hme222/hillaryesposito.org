@@ -652,3 +652,42 @@
 .fp-annotation figcaption b { display: block; margin-top: .35rem; font-size: 1rem; }
 .fp-annotation blockquote { margin: 1.1rem 0 0; padding-left: 1rem; border-left: 3px solid var(--coral);
   font-size: .95rem; line-height: 1.65; font-style: italic; color: var(--ink); }
+
+/* ---------- MSK: service blueprint ---------- */
+/* Sits beside the workflow map, answering a different question: not how many
+   steps, but who is holding the record and who can see it. */
+.fp-blueprint { margin: 2rem 0 0; padding: clamp(1rem, 3vw, 1.6rem); border: 1px solid var(--hair);
+  border-radius: var(--r-plate); background: var(--paper); color: var(--ink); }
+
+.fp-blueprint__controls { display: flex; flex-wrap: wrap; align-items: baseline; gap: .9rem 1.4rem;
+  margin-bottom: 1.4rem; }
+.fp-blueprint__switch { display: inline-flex; border: 1px solid var(--hair); border-radius: 4px; overflow: hidden; }
+.fp-blueprint__switch button { min-height: 44px; padding: .55rem 1rem; border: 0; background: transparent;
+  font: .68rem/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2);
+  cursor: pointer; transition: background 160ms ease, color 160ms ease; }
+.fp-blueprint__switch button + button { border-left: 1px solid var(--hair); }
+.fp-blueprint__switch button:hover { background: color-mix(in srgb, var(--coral) 8%, transparent); }
+.fp-blueprint__switch button.is-active { background: var(--ink); color: var(--paper); }
+.fp-blueprint__switch button:focus-visible { outline: 3px solid var(--coral); outline-offset: -3px; }
+.fp-blueprint__status { flex: 1 1 16rem; margin: 0; font-size: .88rem; line-height: 1.5; color: var(--ink-2); }
+
+.fp-blueprint__canvas { overflow-x: auto; }
+.fp-blueprint__canvas svg { display: block; min-width: 620px; overflow: visible; font-family: var(--mono); }
+
+.fp-blueprint__key { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.1rem 1.6rem; margin: 1.8rem 0 0; padding-top: 1.4rem; border-top: 1px solid var(--hair); }
+.fp-blueprint__key dt { font: .62rem/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase;
+  color: var(--coral); margin-bottom: .4rem; }
+.fp-blueprint__key dd { margin: 0; font-size: .92rem; line-height: 1.55; color: var(--ink-2); }
+
+@media (max-width: 720px) {
+  .fp-blueprint__switch { width: 100%; }
+  .fp-blueprint__switch button { flex: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fp-blueprint__switch button { transition: none; }
+}
+
+.fp-blueprintIntro { margin-top: clamp(3rem, 6vw, 4.5rem); }
+.fp-blueprintIntro .rp-title { margin-top: .3rem; }

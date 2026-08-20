@@ -8,6 +8,7 @@ import EvidenceField from "../../components/flagship/EvidenceField";
 import MSKFilingReceipt from "../../components/flagship/MSKFilingReceipt";
 import MSKDashboardMockup from "../../components/MSKDashboardMockup";
 import MSKWorkflowMap from "../../components/MSKWorkflowMap";
+import MSKServiceBlueprint from "../../components/MSKServiceBlueprint";
 import MSKMechanism from "../../components/MSKMechanism";
 import MSKSustainment from "../../components/MSKSustainment";
 import RisoDefs from "../../components/riso/RisoDefs";
@@ -219,6 +220,19 @@ export default function FlagshipMSK() {
               <ol>{WORKFLOW_AFTER.map((step, index) => <li key={step}><b>{String(index + 1).padStart(2, "0")}</b>{step}</li>)}</ol>
             </article>
           </div>
+
+          {/* The step count is the visible change; the handoff is the real one.
+              Same evidence as the map above, re-cut by actor instead of by step. */}
+          <div className="fp-blueprintIntro rp-reveal">
+            <p className="rp-kicker">Then I counted the handoffs</p>
+            <h3 className="rp-title">One step removed a department.</h3>
+            <p className="rp-lede">
+              Six steps to five is the change you can count. The change that mattered is that the
+              record stopped crossing a line no one could see across. Below is the same path drawn
+              by who was holding the record.
+            </p>
+          </div>
+          <MSKServiceBlueprint />
         </div>
       </section>
 

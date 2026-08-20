@@ -13,3 +13,6 @@ scripts/__pycache__/
 
 # Local scratch: intermediate PDF renders and thumbnails
 tmp/
+
+# Root deps were committed into the repo; package.json restores them with `npm i`
+node_modules/
