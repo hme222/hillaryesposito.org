@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import RisoDefs from "../components/riso/RisoDefs";
 import CartoField from "../components/riso/CartoField";
@@ -68,6 +68,7 @@ export default function RisoHome() {
   const { lang } = useLanguage();
   const location = useLocation();
   const navigate = useNavigate();
+  const [dispatchOpen, setDispatchOpen] = useState(false);
 
   // Preserve global shell deep-links such as /?scrollTo=projects when the
   // reader returns from a case study or uses the footer. The Riso homepage is
@@ -201,6 +202,117 @@ export default function RisoHome() {
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* WEEKEND DISPATCH: a current-practice signal, deliberately outside the
+          three flagship rows. The story and evidence are complete at rest; the
+          route drawing is decorative context and the event photograph is provenance. */}
+      <section className="rp-section rp-dispatchSection" id="dispatch" aria-labelledby="home-dispatch-title">
+        <div className="rp-wrap">
+          <article className={`rp-dispatch${dispatchOpen ? " rp-dispatch--open" : ""}`}>
+            <div className="rp-dispatch__cover">
+              <div>
+                <p className="rp-kicker">{t("home.dispatch.eyebrow")}</p>
+                <h2 className="rp-dispatch__title" id="home-dispatch-title">{t("home.dispatch.title")}</h2>
+                <p className="rp-dispatch__question">{t("home.dispatch.question")}</p>
+              </div>
+              <button
+                type="button"
+                className="rp-dispatch__toggle"
+                aria-expanded={dispatchOpen}
+                aria-controls="weekend-dispatch-panel"
+                onClick={() => setDispatchOpen((current) => !current)}
+              >
+                <span aria-hidden="true">+</span>
+                {t(dispatchOpen ? "home.dispatch.closeJournal" : "home.dispatch.openJournal")}
+              </button>
+            </div>
+
+            <div
+              className="rp-dispatch__reveal"
+              id="weekend-dispatch-panel"
+              hidden={!dispatchOpen}
+            >
+              {dispatchOpen && <div className="rp-dispatch__grid">
+              <div className="rp-dispatch__story">
+                <p className="rp-dispatch__body">{t("home.dispatch.body")}</p>
+
+                <div className="rp-dispatch__finding">
+                  <p className="rp-dispatch__label">{t("home.dispatch.findingLabel")}</p>
+                  <div>
+                    <p className="rp-dispatch__findingStat">
+                      <strong>22,937</strong>
+                      <span>{t("home.dispatch.statLabel")}</span>
+                    </p>
+                    <p>{t("home.dispatch.finding")}</p>
+                  </div>
+                </div>
+
+                <p className="rp-dispatch__role">{t("home.dispatch.role")}</p>
+
+                <blockquote className="rp-dispatch__rule">
+                  <p className="rp-dispatch__label">{t("home.dispatch.ruleLabel")}</p>
+                  <p className="rp-dispatch__ruleText">{t("home.dispatch.rule")}</p>
+                  <p>{t("home.dispatch.ruleBody")}</p>
+                </blockquote>
+
+                <div className="rp-dispatch__actions">
+                  <a
+                    className="rp-cta"
+                    href="https://hme222.github.io/MTA_Accessibility_Trip_Planning/"
+                  >
+                    {t("home.dispatch.primary")}
+                  </a>
+                  <div className="rp-dispatch__sources" aria-label={lang === "es" ? "Fuentes del proyecto" : "Project sources"}>
+                    <a href="https://devpost.com/software/nyc-accessible-transit-planning">
+                      {t("home.dispatch.devpost")}
+                    </a>
+                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7495219168997322752/">
+                      {t("home.dispatch.linkedin")}
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="rp-dispatch__visual">
+                <a
+                  className="rp-dispatch__collage"
+                  href="https://hme222.github.io/MTA_Accessibility_Trip_Planning/"
+                  aria-label={t("home.dispatch.photoLink")}
+                >
+                  <figure>
+                    <div className="rp-dispatch__collageField">
+                      <img
+                        className="rp-dispatch__eventPhoto"
+                        src="/assets/journal/nypl-built-for-nyc.jpg"
+                        alt=""
+                        width="800"
+                        height="450"
+                        loading="lazy"
+                      />
+                      <img
+                        className="rp-dispatch__interfaceFragment"
+                        src="/assets/journal/mta-accessible-transit-landing.png"
+                        alt=""
+                        width="1440"
+                        height="900"
+                        loading="lazy"
+                      />
+                      <span className="rp-dispatch__wash rp-dispatch__wash--blue" aria-hidden="true" />
+                      <span className="rp-dispatch__wash rp-dispatch__wash--orange" aria-hidden="true" />
+                      <span className="rp-dispatch__registration" aria-hidden="true">08 / 77,236</span>
+                    </div>
+                    <figcaption>
+                      <span>{t("home.dispatch.photoCaption")}</span>
+                      <span>{t("home.dispatch.prototypeLabel")}</span>
+                    </figcaption>
+                  </figure>
+                </a>
+              </div>
+              </div>}
+            </div>
+          </article>
         </div>
       </section>
 

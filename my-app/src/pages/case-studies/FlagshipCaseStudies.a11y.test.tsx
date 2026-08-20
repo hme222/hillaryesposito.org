@@ -119,6 +119,40 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".rp-recruiter-link")).not.toBeNull();
   });
 
+  it("keeps the weekend journal quiet until a keyboard or touch user opens it", async () => {
+    await act(async () => {
+      root.render(<RisoHome />);
+    });
+
+    const toggle = container.querySelector<HTMLButtonElement>(".rp-dispatch__toggle");
+    const panel = container.querySelector<HTMLElement>("#weekend-dispatch-panel");
+    expect(toggle).not.toBeNull();
+    expect(toggle?.getAttribute("aria-expanded")).toBe("false");
+    expect(panel?.hidden).toBe(true);
+    expect(container.querySelector(".rp-dispatch__collage")).toBeNull();
+    expect(container.textContent).not.toContain("home.dispatch.finding");
+
+    await act(async () => {
+      toggle?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    });
+
+    expect(toggle?.getAttribute("aria-expanded")).toBe("true");
+    expect(panel?.hidden).toBe(false);
+    expect(container.textContent).toContain("home.dispatch.finding");
+    expect(container.textContent).toContain("home.dispatch.prototypeLabel");
+    expect(container.querySelector<HTMLAnchorElement>(".rp-dispatch__collage")?.href).toBe(
+      "https://hme222.github.io/MTA_Accessibility_Trip_Planning/",
+    );
+    expect(container.querySelectorAll(".rp-dispatch__collage img")).toHaveLength(2);
+    expect(container.querySelector(".rp-dispatch__route")).toBeNull();
+
+    await act(async () => {
+      toggle?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    });
+    expect(toggle?.getAttribute("aria-expanded")).toBe("false");
+    expect(panel?.hidden).toBe(true);
+  });
+
   // Every flagship carried a first-scroll "decision trace" evidence poster —
   // a compressed restatement of the case study's own argument, shown before the
   // reader had the argument. All three were removed on 2026-08-03 at Hillary's
