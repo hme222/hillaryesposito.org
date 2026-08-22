@@ -1,4 +1,5 @@
 import React from "react";
+import { MSK_COPY, type MskCopy } from "../data/mskCaseStudy";
 
 /**
  * MSK workflow map — the six-step and five-step paths drawn as a process map.
@@ -18,23 +19,16 @@ import React from "react";
  * lists once rather than the same sequence twice.
  */
 
-type Step = { label: string; lane: "system" | "paper" };
+type Step = { lane: "system" | "paper" };
 
 const BEFORE: Step[] = [
-  { label: "Open queue", lane: "system" },
-  { label: "Find doc", lane: "system" },
-  { label: "Print", lane: "paper" },
-  { label: "Route to imaging", lane: "paper" },
-  { label: "Wait for scan", lane: "paper" },
-  { label: "Re-check filing", lane: "system" },
+  { lane: "system" }, { lane: "system" }, { lane: "paper" },
+  { lane: "paper" }, { lane: "paper" }, { lane: "system" },
 ];
 
 const AFTER: Step[] = [
-  { label: "Open queue", lane: "system" },
-  { label: "Select doc", lane: "system" },
-  { label: "Send to EMR", lane: "system" },
-  { label: "Files in chart", lane: "system" },
-  { label: "Status updated", lane: "system" },
+  { lane: "system" }, { lane: "system" }, { lane: "system" },
+  { lane: "system" }, { lane: "system" },
 ];
 
 const W = 880;
@@ -47,7 +41,7 @@ const ROW_H = 190;
 // than reserving a second full row of empty space.
 const H = ROW_H + LANE_SYSTEM_Y + NODE_H + 26;
 
-function Path({ steps, y0, accent }: { steps: Step[]; y0: number; accent: string }) {
+function Path({ steps, labels, y0, accent }: { steps: Step[]; labels: string[]; y0: number; accent: string }) {
   const gap = (W - 40 - NODE_W) / (steps.length - 1);
   const pos = steps.map((s, i) => ({
     ...s,
@@ -76,7 +70,7 @@ function Path({ steps, y0, accent }: { steps: Step[]; y0: number; accent: string
         );
       })}
       {pos.map((p, i) => (
-        <g key={p.label + i}>
+        <g key={labels[i] + i}>
           <rect
             x={p.x}
             y={p.y}
@@ -97,7 +91,7 @@ function Path({ steps, y0, accent }: { steps: Step[]; y0: number; accent: string
             fill="currentColor"
             fillOpacity={0.85}
           >
-            {p.label}
+            {labels[i]}
           </text>
         </g>
       ))}
@@ -105,7 +99,7 @@ function Path({ steps, y0, accent }: { steps: Step[]; y0: number; accent: string
   );
 }
 
-export default function MSKWorkflowMap() {
+export default function MSKWorkflowMap({ copy = MSK_COPY.en.workflow }: { copy?: MskCopy["workflow"] }) {
   return (
     <div className="fp-workflowMap" aria-hidden="true">
       <svg viewBox={`0 0 ${W} ${H}`} width="100%" role="presentation" focusable="false">
@@ -117,14 +111,14 @@ export default function MSKWorkflowMap() {
           </g>
         ))}
 
-        <text x="0" y="14" fontSize="10" letterSpacing="1.4" fill="var(--coral)">BEFORE · 6 STEPS · LEAVES THE EMR</text>
-        <Path steps={BEFORE} y0={0} accent="var(--coral)" />
+        <text x="0" y="14" fontSize="10" letterSpacing="1.4" fill="var(--coral)">{copy.mapBefore}</text>
+        <Path steps={BEFORE} labels={copy.mapNodesBefore} y0={0} accent="var(--coral)" />
 
-        <text x="0" y={ROW_H + 14} fontSize="10" letterSpacing="1.4" fill="var(--green)">AFTER · 5 STEPS · NEVER LEAVES THE EMR</text>
-        <Path steps={AFTER} y0={ROW_H} accent="var(--green)" />
+        <text x="0" y={ROW_H + 14} fontSize="10" letterSpacing="1.4" fill="var(--green)">{copy.mapAfter}</text>
+        <Path steps={AFTER} labels={copy.mapNodesAfter} y0={ROW_H} accent="var(--green)" />
 
         <text x={W} y={LANE_PAPER_Y + NODE_H + 14} textAnchor="end" fontSize="10" fill="var(--coral)" fillOpacity="0.9">
-          three steps outside the system
+          {copy.mapAside}
         </text>
       </svg>
     </div>

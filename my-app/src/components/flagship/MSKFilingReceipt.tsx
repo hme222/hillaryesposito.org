@@ -1,13 +1,28 @@
 import React, { useEffect, useRef, useState } from "react";
+import { MSK_COPY, type MskCopy } from "../../data/mskCaseStudy";
 
-const STEPS = ["Queue opened", "Role confirmed", "Filed to the online chart", "Returned with status updated"];
+type Copy = MskCopy["receipt"];
 
-export default function MSKFilingReceipt() {
+/**
+ * Copy arrives as a prop so the same interaction runs in both languages.
+ * The English default keeps existing callers (and the visual-echo test)
+ * working without passing anything.
+ */
+export default function MSKFilingReceipt({ copy = MSK_COPY.en.receipt }: { copy?: Copy }) {
   const [step, setStep] = useState(0);
   const [hasRun, setHasRun] = useState(false);
   const timers = useRef<number[]>([]);
 
   useEffect(() => () => timers.current.forEach(window.clearTimeout), []);
+
+  // A language switch mid-animation would leave the status line describing a
+  // step from the other locale, so reset when the copy changes.
+  useEffect(() => {
+    timers.current.forEach(window.clearTimeout);
+    timers.current = [];
+    setStep(0);
+    setHasRun(false);
+  }, [copy]);
 
   const runFiling = () => {
     timers.current.forEach(window.clearTimeout);
@@ -20,10 +35,10 @@ export default function MSKFilingReceipt() {
       return;
     }
 
-    STEPS.forEach((_, index) => {
+    copy.steps.forEach((_, index) => {
       timers.current.push(window.setTimeout(() => {
         setStep(index + 1);
-        if (index === STEPS.length - 1) setHasRun(true);
+        if (index === copy.steps.length - 1) setHasRun(true);
       }, 280 + index * 720));
     });
   };
@@ -32,39 +47,31 @@ export default function MSKFilingReceipt() {
     <section className="fp-receipt" id="msk-brief" data-language-anchor="msk-brief" aria-labelledby="msk-receipt-title">
       <div className="rp-wrap fp-receipt__layout">
         <div className="fp-receipt__copy">
-          <p className="rp-kicker">It started with a workaround</p>
-          <h2 id="msk-receipt-title">The digital workflow had become a paper ritual.</h2>
-          <p>
-            Every clinical day runs through the EMR—the electronic medical record where a patient’s
-            history lives. The online queue kept the filing on screen and returned with its status updated.
-          </p>
+          <p className="rp-kicker">{copy.kicker}</p>
+          <h2 id="msk-receipt-title">{copy.title}</h2>
+          <p>{copy.body}</p>
           <button type="button" className="fp-proofControl" onClick={runFiling}>
-            {hasRun ? "Replay the online path" : "Run the online path"} <span aria-hidden="true">→</span>
+            {hasRun ? copy.replay : copy.run} <span aria-hidden="true">→</span>
           </button>
           <p className="fp-proofStatus" aria-live="polite">
-            {step === 0 ? "Ready to file." : STEPS[step - 1]}
+            {step === 0 ? copy.ready : copy.steps[step - 1]}
           </p>
         </div>
 
         <div className={`fp-receipt__trace step-${step}`} aria-hidden="true">
           <div className="fp-receipt__rail"><span /></div>
           <div className="fp-receipt__token">F</div>
-          {[
-            ["01", "Queue", "Worklist ready"],
-            ["02", "File action", "Role confirmed"],
-            ["03", "Online chart", "Filed"],
-            ["04", "Return", "Status updated"],
-          ].map(([number, label, value], index) => (
-            <div className={`fp-receipt__node${step > index ? " is-complete" : ""}`} key={number}>
-              <span>{number}</span><b>{label}</b><small>{value}</small>
+          {copy.nodes.map((node, index) => (
+            <div className={`fp-receipt__node${step > index ? " is-complete" : ""}`} key={node.n}>
+              <span>{node.n}</span><b>{node.label}</b><small>{node.value}</small>
             </div>
           ))}
           <div className={`fp-receipt__paper${step === 4 ? " is-visible" : ""}`}>
-            <span>QUEUE STATUS</span>
-            <b>FILED</b>
-            <small>Returned to dashboard · status updated</small>
+            <span>{copy.paperLabel}</span>
+            <b>{copy.paperValue}</b>
+            <small>{copy.paperNote}</small>
           </div>
-          <p className="fp-receipt__boundary">Recreated interaction · no patient data</p>
+          <p className="fp-receipt__boundary">{copy.boundary}</p>
         </div>
       </div>
     </section>

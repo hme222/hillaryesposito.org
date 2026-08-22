@@ -1,6 +1,16 @@
 # Portfolio Taste Override
 
-_Last updated: 2026-08-11 from Frame of Intent rejection_
+_Last updated: 2026-08-22 from Weekend Journal train exploration_
+
+## Portfolio motion preference
+
+- Prefer restrained Riso registration motion: a clean, recognizable silhouette, tactile ink misalignment, quiet lateral travel, and enough negative space for the editorial page to remain the protagonist.
+- Use generated motion as a material layer, not as product evidence, navigation, or a realism showcase.
+- For the Weekend Journal train, Exploration 01 is the approved art direction. Preserve its graphic restraint; do not drift toward painterly haze, literal realism, or dense collage noise in refinement.
+
+## Positive evidence
+
+Hillary selected the first of three Higgsfield/Seedance train explorations and responded **“1, LOVE.”** This is an emphatic single-project approval and should guide the production treatment without yet becoming a universal motion rule.
 
 ## Strong anti-pattern
 

@@ -1,4 +1,7 @@
 import React from "react";
+import { MSK_COPY, type MskCopy } from "../data/mskCaseStudy";
+
+type L = MskCopy["redesigns"]["mechanismLabels"];
 
 /**
  * The mechanism under each of the three MSK redesigns, drawn.
@@ -14,21 +17,21 @@ import React from "react";
 
 const INK = "currentColor";
 
-function Filing() {
+function Filing({ l }: { l: L }) {
   // Before: a detour out of the system. After: one hop.
   return (
     <svg viewBox="0 0 260 96" width="100%" role="presentation" focusable="false">
-      <text x="0" y="9" fontSize="7.5" letterSpacing="1" fill="var(--coral)">BEFORE</text>
+      <text x="0" y="9" fontSize="7.5" letterSpacing="1" fill="var(--coral)">{l.before}</text>
       <rect x="0" y="16" width="62" height="22" rx="2" fill="none" stroke={INK} strokeOpacity=".45" />
-      <text x="31" y="30" fontSize="8" textAnchor="middle" fill={INK} fillOpacity=".8">Dashboard</text>
+      <text x="31" y="30" fontSize="8" textAnchor="middle" fill={INK} fillOpacity=".8">{l.dashboard}</text>
       <path d="M62,27 C80,27 80,52 98,52" fill="none" stroke="var(--coral)" strokeWidth="1.5" strokeDasharray="4 3" />
       <rect x="98" y="41" width="62" height="22" rx="2" fill="none" stroke="var(--coral)" strokeDasharray="4 3" />
-      <text x="129" y="55" fontSize="8" textAnchor="middle" fill="var(--coral)">Paper</text>
+      <text x="129" y="55" fontSize="8" textAnchor="middle" fill="var(--coral)">{l.paper}</text>
       <path d="M160,52 C178,52 178,27 196,27" fill="none" stroke="var(--coral)" strokeWidth="1.5" strokeDasharray="4 3" />
       <rect x="196" y="16" width="62" height="22" rx="2" fill="none" stroke={INK} strokeOpacity=".45" />
-      <text x="227" y="30" fontSize="8" textAnchor="middle" fill={INK} fillOpacity=".8">Chart</text>
+      <text x="227" y="30" fontSize="8" textAnchor="middle" fill={INK} fillOpacity=".8">{l.chart}</text>
 
-      <text x="0" y="80" fontSize="7.5" letterSpacing="1" fill="var(--green)">AFTER</text>
+      <text x="0" y="80" fontSize="7.5" letterSpacing="1" fill="var(--green)">{l.after}</text>
       <rect x="0" y="86" width="62" height="10" rx="2" fill="none" stroke="var(--green)" />
       <line x1="62" y1="91" x2="196" y2="91" stroke="var(--green)" strokeWidth="1.5" />
       <rect x="196" y="86" width="62" height="10" rx="2" fill="none" stroke="var(--green)" />
@@ -36,7 +39,7 @@ function Filing() {
   );
 }
 
-function Certification() {
+function Certification({ l }: { l: L }) {
   // REPLACED 2026-08-03. This used to draw a 90/60/30-day expiry alerting
   // timeline, which described a certification dashboard that was never built.
   // The actual work was a format change: dense legal prose rewritten into steps
@@ -49,14 +52,14 @@ function Certification() {
   ];
   return (
     <svg viewBox="0 0 260 108" width="100%" role="presentation" focusable="false">
-      <text x="0" y="9" fontSize="7.5" letterSpacing="1" fill="var(--coral)">BEFORE · LEGAL PROSE</text>
+      <text x="0" y="9" fontSize="7.5" letterSpacing="1" fill="var(--coral)">{l.beforeProse}</text>
       {before.map((y) => (
         <line key={y} x1="0" y1={y + 8} x2={y % 16 === 4 ? 150 : 132} y2={y + 8}
           stroke="var(--coral)" strokeOpacity=".5" strokeWidth="3" />
       ))}
-      <text x="160" y="34" fontSize="7.5" fill="var(--coral)" fillOpacity=".9">one dense block</text>
+      <text x="160" y="34" fontSize="7.5" fill="var(--coral)" fillOpacity=".9">{l.denseBlock}</text>
 
-      <text x="0" y="66" fontSize="7.5" letterSpacing="1" fill="var(--green)">AFTER · STEPS A CLINICIAN CAN FOLLOW</text>
+      <text x="0" y="66" fontSize="7.5" letterSpacing="1" fill="var(--green)">{l.afterSteps}</text>
       {after.map((row, i) => (
         <g key={row.y}>
           <circle cx="3" cy={row.y} r="2.6" fill="var(--green)" />
@@ -68,7 +71,7 @@ function Certification() {
   );
 }
 
-function Onboarding() {
+function Onboarding({ l }: { l: L }) {
   // REPLACED 2026-08-03. This drew five department checklists collapsing into
   // one path gated on safety prerequisites before patient contact — a clinician
   // onboarding flow that never existed. The real program trained new
@@ -82,7 +85,7 @@ function Onboarding() {
   ];
   return (
     <svg viewBox="0 0 260 96" width="100%" role="presentation" focusable="false">
-      <text x="0" y="9" fontSize="7.5" letterSpacing="1" fill="var(--coral)">BEFORE · ONE COURSE FOR EVERY COHORT</text>
+      <text x="0" y="9" fontSize="7.5" letterSpacing="1" fill="var(--coral)">{l.beforeCohort}</text>
 
       {starts.map((s) => (
         <g key={s.y}>
@@ -100,7 +103,7 @@ function Onboarding() {
 
       <line x1="158" y1="40" x2="236" y2="40" stroke="var(--green)" strokeWidth="2" />
       <circle cx="240" cy="40" r="3.2" fill="var(--green)" />
-      <text x="236" y="31" fontSize="7.5" textAnchor="end" fill="var(--green)">same standard</text>
+      <text x="236" y="31" fontSize="7.5" textAnchor="end" fill="var(--green)">{l.sameStandard}</text>
       <text x="0" y="88" fontSize="7.5" fill={INK} fillOpacity=".55">
         instruction curated per cohort · 1–3 weeks
       </text>
@@ -108,18 +111,18 @@ function Onboarding() {
   );
 }
 
-const MAP: Record<string, () => React.ReactElement> = {
+const MAP: Record<string, (props: { l: L }) => React.ReactElement> = {
   "01": Filing,
   "02": Certification,
   "03": Onboarding,
 };
 
-export default function MSKMechanism({ n }: { n: string }) {
+export default function MSKMechanism({ n, labels = MSK_COPY.en.redesigns.mechanismLabels }: { n: string; labels?: L }) {
   const Diagram = MAP[n];
   if (!Diagram) return null;
   return (
     <div className="fp-mechanism" aria-hidden="true">
-      <Diagram />
+      <Diagram l={labels} />
     </div>
   );
 }

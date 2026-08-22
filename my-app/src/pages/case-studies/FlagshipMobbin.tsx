@@ -76,15 +76,13 @@ export default function FlagshipMobbin() {
             <h1 className="rp-h1">200+ screens per app, searchable by task.</h1>
             <span className="rp-readtime"><b>3 min</b><span>read · 3 apps, 200+ screens each</span></span>
             <p className="rp-sub">
-              Mobbin is a reference library designers search to see how real apps solve a screen.
-              Anyone can screenshot an app. Mobbin hired me to decide what <b>200+ screens per app</b> mean
-              to a designer who will never meet me—and make every step searchable. I documented
-              Kikoff, Polymarket, and Discover; I did not design those products or Mobbin.
+              I captured, sequenced, annotated, and labeled <b>200+ screens per app</b> across Kikoff,
+              Polymarket, and Discover. I documented these products; I did not design them or Mobbin.
             </p>
             <a className="rp-cta" href="#mobbin-work">Open the capture desk →</a>
           </div>
         </div>
-        <div className="rp-hero__media fp-heroArt fp-heroArt--mobbin" aria-label="Three finance app screens documented for Mobbin">
+        <div className="rp-hero__media fp-heroArt fp-heroArt--mobbin" aria-label="Three finance app screens documented for Mobbin" data-evidence="true">
           {APPS.map((app, index) => <div className={`fp-capture fp-capture--${index + 1}`} key={app.name}><img src={app.image} alt={index === 0 ? "Three documented finance app interfaces: Kikoff, Polymarket, and Discover" : ""} /></div>)}
           <div className="fp-artifactLabel"><span>CAPTURE LOG · 04 MONTHS</span><b>3 apps · 200+ screens each · one searchable library</b></div>
         </div>
@@ -93,40 +91,40 @@ export default function FlagshipMobbin() {
       {/* The "Documentation trace" evidence-poster section was removed on
           2026-08-03, matching Grove and MSK. */}
 
-      <MobbinIndexLens />
+      <div data-evidence="true"><MobbinIndexLens /></div>
 
       <section className="rp-section" id="mobbin-work" data-language-anchor="mobbin-work">
         <div className="rp-wrap">
           <p className="rp-kicker">The method · judgment before capture</p>
           <h2 className="rp-title">A screenshot is not a flow.</h2>
-          <p className="rp-lede">Over four months, I walked three live finance apps like a real customer, captured each useful state, ordered the steps, and tagged them with Mobbin’s vocabulary.</p>
-          <div className="fp-workSplit rp-reveal">
+          <p className="rp-lede">Walk the task. Keep useful states. Order the sequence. Name it in Mobbin’s vocabulary.</p>
+          <div className="fp-workSplit rp-reveal" data-evidence="true">
             <article><span>The mechanical part</span><h3>Capture the screen</h3><p>Any tool can do this part.</p></article>
-            <article><span>The actual work</span><h3>Decide what travels</h3><p>Which task deserves a full sequence, where the flow begins, what gets cut, and what another designer needs to understand it later.</p></article>
+            <article><span>The actual work</span><h3>Decide what travels</h3><p>Choose the task, sequence, cuts, and searchable label.</p></article>
           </div>
           <div className="fp-journalLine"><span>What I got wrong</span><b>My first batch used my vocabulary. Revisions dropped by half after I learned Mobbin’s.</b></div>
         </div>
       </section>
 
-      <DecisionStory
+      <div data-evidence="true"><DecisionStory
         id="mobbin-decisions"
         languageAnchor="mobbin-work"
         kicker="Four calls · one documentation system"
         title="The capture became useful through editing."
-        intro="The source app stayed the same. The value came from deciding what to preserve, how to sequence it, and what to call it."
+        intro="Preserve the useful state, sequence the task, name it for retrieval."
         steps={STEPS}
         // Mobbin's artifact is a single screenshot with no per-step state to
         // highlight, so it ignores the active index and renders the same frame
         // throughout. The steps still track with the scroll rule.
         visual={() => <div className="fp-sequence__phone fp-sequence__phone--story"><img src="/assets/mobbin/kikoff.jpg" alt="" /></div>}
-      />
+      /></div>
 
       <section className="rp-section" id="mobbin-apps" data-language-anchor="mobbin-outcomes">
         <div className="rp-wrap">
           <p className="rp-kicker">Three apps · three different answers</p>
           <h2 className="rp-title">Same category. Opposite ways to earn confidence.</h2>
-          <p className="rp-lede">Putting the apps side by side revealed more than counting screens ever could. A longer flow can feel shorter when every step gives something back.</p>
-          <ScreenSequence label="Documented finance app sequence" items={APPS} />
+          <p className="rp-lede">Three products, three ways to make financial risk legible.</p>
+          <div data-evidence="true"><ScreenSequence label="Documented finance app sequence" items={APPS} /></div>
 
           <a
             className="fp-proofLink"
@@ -140,7 +138,7 @@ export default function FlagshipMobbin() {
         </div>
       </section>
 
-      <EvidenceField
+      <div data-evidence="true"><EvidenceField
         id="mobbin-outcomes"
         languageAnchor="mobbin-outcomes"
         kicker="Where it landed · contribution, not ownership"
@@ -153,7 +151,7 @@ export default function FlagshipMobbin() {
           { n: "4", label: "months building reusable references for designers" },
         ]}
         route={["Capture the task", "Map the sequence", "Name the pattern", "Make it searchable"]}
-      />
+      /></div>
 
       <section className="rp-section">
         <div className="rp-wrap rp-close">

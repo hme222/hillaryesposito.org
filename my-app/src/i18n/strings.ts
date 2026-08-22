@@ -66,14 +66,14 @@ const en = {
   "home.riso.heroLead":
     "At Memorial Sloan Kettering, a workflow I initiated",
   "home.riso.heroProof": "contributed to a 20% organization-wide electronic medical record cost reduction.",
-  "home.riso.heroClose": "I bring 13+ years in healthcare and medical logistics to product, service, and research decisions.",
+  "home.riso.heroClose": "",
   "home.riso.workTitle": "Healthcare systems, service operations, and one consumer product",
   "home.riso.groveDesc":
-    "A plant-care app an AI built in one pass. I am the only designer on it: I surveyed 34 owners, cut eleven features to three, and rebuilt it around the harder problem — teaching the model to show its confidence, cite a source, and admit when it does not know.",
+    "34-person survey · eleven features narrowed to three · functional prototype.",
   "home.riso.mskDesc":
-    "Six years improving clinical workflows where a wrong answer had a cost. One workflow I initiated later contributed to a 20% organization-wide electronic medical record cost reduction; revised CPR materials brought every certification in 70% before a slipping deadline.",
+    "Four departments · implemented workflow · still used through two system upgrades.",
   "home.riso.logisticsDesc":
-    "An end-to-end medical supply service for 5,000+ soldiers across seven aid stations. Shared digital tracking cut resupply time 85% and spending 60% while cold chain, security, and casualty risk stayed non-negotiable.",
+    "Seven aid stations · shared tracking · resupply time reduced 85%.",
   "home.riso.mobbinDesc":
     "Three finance apps turned into a searchable reference — the work was the taxonomy and the naming, not the screenshots. 200+ screens per app, an editor's judgment on every one.",
   "home.riso.groveAlt": "Grove's calm, plant-first entry screen — the redesign's first finished screen",
@@ -86,20 +86,12 @@ const en = {
   "home.riso.supportingKicker": "Supporting practice",
   "home.riso.supportingBody": "For interaction-pattern analysis and production documentation, I also documented 200+ screens per app across three finance products for Mobbin.",
   "home.riso.supportingLink": "Review the Mobbin study →",
-  "home.layerTeaser.kicker": "Grove material study",
-  "home.layerTeaser.title": "The atmosphere moves. The evidence does not.",
-  "home.layerTeaser.body":
-    "Paper, vellum, and botanical fragments assemble around one real Grove screen. The film can change. The interface cannot.",
-  "home.layerTeaser.link": "See the decisions behind the screen",
-  "home.layerTeaser.pause": "Pause material study",
-  "home.layerTeaser.replay": "Replay material study",
-  "home.layerTeaser.play": "Play material study",
-  "home.layerTeaser.caption": "Generated atmosphere · authentic Grove interface · silent · 5 seconds",
   "home.riso.aboutTitle": "I design for the person under pressure",
   "home.riso.contactKicker": "Get in touch",
   "home.riso.contactBody":
     "If your team is redesigning a clinical workflow, care service, or high-stakes internal tool, let's talk.",
-  "home.dispatch.eyebrow": "Weekend dispatch · No. 01 · Civic technology",
+  "home.dispatch.eyebrow": "Weekend dispatch · No. 01",
+  "home.dispatch.trainAttribution": "Built with MTA Open Data · Independent prototype",
   "home.dispatch.title": "The Trip Home",
   "home.dispatch.question": "Can a rider know, rather than guess, whether the trip home is accessible?",
   "home.dispatch.body":
@@ -158,7 +150,7 @@ const en = {
   "home.proj.mobbin.subtitle": "Mobbin · Freelance UX Flow Documentation",
   "home.proj.grove.title": "Eleven features became three",
   "home.proj.msk.title": "A filing queue replaced a four-system workaround",
-  "home.proj.logistics.title": "Medical resupply, 85% faster",
+  "home.proj.logistics.title": "Medical resupply time reduced 85%",
   "home.proj.mobbin.title": "200+ screens per app, searchable by task",
 
   // ── Home: contact / CTA ──
@@ -221,14 +213,14 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.heroLead":
     "En Memorial Sloan Kettering, un flujo de trabajo que inicié",
   "home.riso.heroProof": "contribuyó a una reducción del 20% en los costos del registro médico electrónico de toda la organización.",
-  "home.riso.heroClose": "Aporto más de 13 años en salud y logística médica a decisiones de producto, servicio e investigación.",
+  "home.riso.heroClose": "",
   "home.riso.workTitle": "Sistemas de salud, operaciones de servicio y un producto de consumo",
   "home.riso.groveDesc":
-    "Una app para el cuidado de plantas que una IA creó de una sola vez. Encuesté a 34 propietarios y la reconstruí alrededor del problema más difícil: enseñarle al modelo a mostrar su confianza, citar su fuente y admitir cuando no sabe.",
+    "Encuesta a 34 personas · once funciones reducidas a tres · prototipo funcional.",
   "home.riso.mskDesc":
-    "Seis años mejorando flujos clínicos donde un error tenía un costo. Un flujo que inicié contribuyó más tarde a una reducción del 20% en los costos del registro médico electrónico de toda la organización; los materiales revisados de RCP permitieron reunir todas las certificaciones un 70% antes de un plazo que se estaba retrasando.",
+    "Cuatro departamentos · flujo implementado · vigente tras dos actualizaciones.",
   "home.riso.logisticsDesc":
-    "Un servicio integral de suministros médicos para más de 5,000 soldados en siete estaciones de ayuda. El seguimiento digital compartido redujo el tiempo de reabastecimiento un 85% y el gasto un 60%, mientras la cadena de frío, la seguridad y el riesgo de bajas seguían siendo innegociables.",
+    "Siete estaciones · seguimiento compartido · reabastecimiento 85% más rápido.",
   "home.riso.mobbinDesc":
     "Tres apps financieras convertidas en una referencia buscable: el trabajo fue la taxonomía y los nombres, no las capturas. Más de 200 pantallas por app, con criterio de editora en cada una.",
   "home.riso.groveAlt": "La pantalla de inicio de Grove, serena y centrada en las plantas — la primera pantalla terminada del rediseño",
@@ -241,20 +233,12 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.supportingKicker": "Práctica complementaria",
   "home.riso.supportingBody": "Como prueba de análisis de patrones de interacción y documentación de producción, también documenté más de 200 pantallas por app en tres productos financieros para Mobbin.",
   "home.riso.supportingLink": "Ver el estudio de Mobbin →",
-  "home.layerTeaser.kicker": "Estudio material de Grove",
-  "home.layerTeaser.title": "La atmósfera se mueve. La evidencia no.",
-  "home.layerTeaser.body":
-    "Papel, vitela y fragmentos botánicos se ensamblan alrededor de una pantalla real de Grove. La película puede cambiar. La interfaz no.",
-  "home.layerTeaser.link": "Ver las decisiones detrás de la pantalla",
-  "home.layerTeaser.pause": "Pausar el estudio material",
-  "home.layerTeaser.replay": "Repetir el estudio material",
-  "home.layerTeaser.play": "Reproducir el estudio material",
-  "home.layerTeaser.caption": "Atmósfera generada · interfaz auténtica de Grove · sin sonido · 5 segundos",
   "home.riso.aboutTitle": "Diseño para la persona que trabaja bajo presión",
   "home.riso.contactKicker": "Contacto",
   "home.riso.contactBody":
     "Si su equipo está rediseñando un flujo clínico, un servicio de atención o una herramienta interna de alto riesgo, hablemos.",
-  "home.dispatch.eyebrow": "Despacho de fin de semana · N.º 01 · Tecnología cívica",
+  "home.dispatch.eyebrow": "Despacho de fin de semana · N.º 01",
+  "home.dispatch.trainAttribution": "Creado con datos abiertos de MTA · Prototipo independiente",
   "home.dispatch.title": "El viaje de regreso",
   "home.dispatch.question": "¿Puede una persona saber, en lugar de adivinar, si el viaje de regreso es accesible?",
   "home.dispatch.body":

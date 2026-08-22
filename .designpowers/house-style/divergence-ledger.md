@@ -1,5 +1,46 @@
 # Divergence Ledger
 
+## Carmen-calibrated visual evidence compression — 2026-08-22
+
+### Structural options
+
+Option A: **Artifact spine** — one dominant screen, workflow, service artifact, or evidence plate leads each chapter; a compact side caption names the decision or limitation. **Chosen.**
+
+Option B: **Contact-sheet dossier** — show many smaller artifacts in dense grids with terse labels. Rejected because equal thumbnails flatten evidence priority and become harder to scan at 390px.
+
+Option C: **Cinematic full-bleed sequence** — alternate nearly silent full-viewport visuals. Rejected because method provenance, accessible linear reading, and comparison between research signal and product decision become fragile.
+
+Default: Reduce words while leaving decorative imagery to imply craft.
+Instead: Replace each told decision, finding, state, or handoff with the actual or truthfully recreated artifact it produced; use words only to direct attention or preserve a boundary.
+Reason: Carmen/Pilgrimz earns visual density through evidence, while current Google and Amazon research roles still require method judgment and product impact to remain legible.
+Validation: Home reaches at least 65% measured visual coverage; every primary case study reaches at least 60%; no consequential claim is prose-only; both target lanes retain 23/23 applicable recruiter checks.
+
+## Weekend Journal scroll-delivery train — 2026-08-22
+
+### Structural options
+
+Option A: **Open-triggered crossing** — run one train only when the journal opens. Rejected because the playful cue remains hidden until after discovery.
+Option B: **Ambient looping banner** — let a tiny train periodically cross above the journal. Rejected because repeated peripheral motion competes with hiring evidence and needs a stop control.
+Option C: **Scroll arrival + open departure** — scroll brings a full-bleed editorial train in, the final car delivers the issue label, and the existing open action releases it. **Chosen.**
+
+Default: Reproduce an official MTA banner with a logo, route bullet, realistic car, or continuous loop.
+Instead: Draw an original stainless-steel/Riso subway, keep it decorative, attribute the open data in live text, and bind one arrival/departure story to existing user intent.
+Reason: The motion now explains discovery, delivery, and opening while avoiding false endorsement and the literal transit chrome previously rejected.
+Validation: Desktop and mobile tell the same story; reduced motion starts at the delivered label; no train state covers content, loops, or changes the journal task.
+
+## Homepage motion background correction — 2026-08-22
+
+### Structural options
+
+Option A: **Standalone Grove film section** — keep the current full-width teaser after Selected Work. Rejected because it falsely binds a site-atmosphere asset to Grove and repeats poster/player grammar.
+Option B: **Homepage environmental layer** — place the film behind existing homepage content, remove Grove UI/copy from it, play once, and preserve paper foreground surfaces. **Chosen.**
+Option C: **Portfolio-wide moving background** — carry the film through homepage and case studies. Rejected because each case study has its own evidence language and background motion would compete with long-form reading.
+
+Default: Explain the generated film as a Grove production artifact and place the authentic app screen inside it.
+Instead: Treat the film as decorative homepage atmosphere; Grove remains only a work item and case study.
+Reason: The media describes the site's visual world, not Grove's product or evidence.
+Validation: No Grove UI, copy, link, or provenance appears in the backdrop; the homepage remains understandable with the media hidden.
+
 ## Public hiring-decision repair — 2026-08-18
 
 ### Structural options
@@ -86,6 +127,15 @@ Default: Leave a complete fourth mini case study visible or add another decorati
 Instead: Make the journal cover the only resting state; one native disclosure button reveals the complete evidence and collage, and that reveal is the playful interaction.
 Reason: Hillary wants the project discoverable but mostly hidden. Progressive disclosure reduces homepage competition while preserving an explicit, reversible path to the full story.
 Validation: Collapsed state contains no project image or long-form evidence; trigger is at least 44px, exposes `aria-expanded`, works with Enter/Space/touch, and retains focus on close; expanded content follows the trigger in DOM order and reduced motion removes the entrance animation.
+
+## Homepage opening film correction — 2026-08-22
+
+Default: Keep a decorative motion texture permanently behind homepage content.
+Instead: Give the film the complete opening viewport once per browser-tab session, then remove it and return to the unchanged portfolio.
+Reason: The persistent treatment obscured the film and made it look causally related to Grove; the opening curtain gives the generated craft one legible moment without contaminating case-study evidence or slowing repeat scans.
+Validation: No portfolio copy, navigation, portrait, or case-study interface appears over the film; the Skip control leaves first and a 560ms paper dissolve prevents the film and homepage textures from becoming a muddy double exposure; reload in the same session does not replay it; reduced motion and Save Data enter directly.
+
+Rejected: Replay the intro on every homepage visit. It would turn authored atmosphere into recruiter friction.
 
 ## Higgsfield A/B/C private-lab extension — 2026-08-12
 

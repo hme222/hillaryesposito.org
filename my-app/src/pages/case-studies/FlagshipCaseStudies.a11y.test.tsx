@@ -69,6 +69,7 @@ describe("flagship case-study accessibility", () => {
   });
 
   beforeEach(() => {
+    window.sessionStorage.setItem("portfolio-opening-film-seen", "true");
     container = document.createElement("div");
     document.body.appendChild(container);
     root = createRoot(container);
@@ -120,6 +121,7 @@ describe("flagship case-study accessibility", () => {
   });
 
   it("keeps the weekend journal quiet until a keyboard or touch user opens it", async () => {
+    window.sessionStorage.setItem("portfolio-opening-film-seen", "true");
     await act(async () => {
       root.render(<RisoHome />);
     });
@@ -131,6 +133,20 @@ describe("flagship case-study accessibility", () => {
     expect(panel?.hidden).toBe(true);
     expect(container.querySelector(".rp-dispatch__collage")).toBeNull();
     expect(container.textContent).not.toContain("home.dispatch.finding");
+    expect(container.querySelector(".rp-dispatchTrain__scene")?.getAttribute("aria-hidden")).toBe("true");
+    expect(container.textContent).toContain("home.dispatch.trainAttribution");
+    expect(container.querySelector(".rp-dispatchTrain img")).toBeNull();
+    const trainVideo = container.querySelector<HTMLVideoElement>(".rp-dispatchTrain__video");
+    expect(trainVideo).not.toBeNull();
+    expect(trainVideo?.muted).toBe(true);
+    expect(trainVideo?.loop).toBe(false);
+    expect(trainVideo?.controls).toBe(false);
+    expect(trainVideo?.getAttribute("playsinline")).not.toBeNull();
+    expect(trainVideo?.getAttribute("aria-hidden")).toBe("true");
+    expect(trainVideo?.querySelector("source")?.getAttribute("src")).toBe(
+      "/assets/video/weekend-journal-riso-train-v1.mp4",
+    );
+    expect(container.querySelectorAll(".rp-dispatchTrain__fallback .rp-dispatchTrain__car")).toHaveLength(4);
 
     await act(async () => {
       toggle?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
@@ -138,6 +154,7 @@ describe("flagship case-study accessibility", () => {
 
     expect(toggle?.getAttribute("aria-expanded")).toBe("true");
     expect(panel?.hidden).toBe(false);
+    expect(container.querySelector(".rp-dispatchTrain")?.classList.contains("rp-dispatchTrain--departed")).toBe(true);
     expect(container.textContent).toContain("home.dispatch.finding");
     expect(container.textContent).toContain("home.dispatch.prototypeLabel");
     expect(container.querySelector<HTMLAnchorElement>(".rp-dispatch__collage")?.href).toBe(
@@ -280,19 +297,19 @@ describe("flagship case-study accessibility", () => {
     expect(results.violations).toEqual([]);
   });
 
-  it("keeps painted cartography editorial rather than navigational", async () => {
+  it("opens directly on portfolio proof without an autoplay interruption", async () => {
+    window.sessionStorage.removeItem("portfolio-opening-film-seen");
     await act(async () => {
       root.render(<RisoHome />);
     });
 
-    const field = container.querySelector<HTMLElement>(".carto--painted");
-    expect(field).not.toBeNull();
-    expect(field?.querySelector(".carto__map--paint")).not.toBeNull();
-    expect(field?.querySelector(".carto__compass")).toBeNull();
-    expect(field?.querySelector(".carto__scale")).toBeNull();
-    expect(field?.querySelector(".carto__grid")).toBeNull();
-    expect(field?.querySelector(".carto__routeline")).toBeNull();
-    expect(field?.querySelector(".carto__pin")).toBeNull();
+    expect(container.querySelector(".rp-openingFilm")).toBeNull();
+    expect(container.querySelector("main h1")).not.toBeNull();
+    expect(container.textContent).not.toContain("85% faster");
+    expect(container.querySelector(".rp-homeBackdrop")).toBeNull();
+    expect(container.querySelector(".rp-layerTeaser")).toBeNull();
+    expect(container.querySelector(".carto--painted")).not.toBeNull();
+    expect(container.querySelector(".carto__map--paint")).not.toBeNull();
 
     await act(async () => {
       root.render(<RisoGrove />);
@@ -315,7 +332,7 @@ describe("flagship case-study accessibility", () => {
     expect(dialog?.open).toBe(true);
     expect(dialog?.textContent).toContain("Grove");
     expect(dialog?.textContent).toContain("MSK · A filing queue replaced a four-system workaround");
-    expect(dialog?.textContent).toContain("Medical logistics · Resupply, 85% faster");
+    expect(dialog?.textContent).toContain("Medical logistics · Resupply time reduced 85%");
 
     const projectTitles = Array.from(
       dialog?.querySelectorAll<HTMLButtonElement>(".recruiter-panel__project strong") || [],
@@ -323,7 +340,7 @@ describe("flagship case-study accessibility", () => {
     );
     expect(projectTitles).toEqual([
       "MSK · A filing queue replaced a four-system workaround",
-      "Medical logistics · Resupply, 85% faster",
+      "Medical logistics · Resupply time reduced 85%",
       "Grove · Eleven features became three",
     ]);
     expect(dialog?.textContent).toContain("contributed to a 20% organization-wide electronic medical record cost reduction");

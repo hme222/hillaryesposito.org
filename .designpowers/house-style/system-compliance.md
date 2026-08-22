@@ -1,12 +1,22 @@
 # System Compliance
 
 Canonical source: portfolio `design-state.md`, `portfolio-overrides/`, `my-app/src/styles/riso.css`, `my-app/src/styles/riso-page.css`, and generated registry
-Registry fingerprint: 734c1d358bc9aeaab3517e6bce97dbe1d0c073a5efa7486994f757830371a5bc
+Registry fingerprint: 50225e71905fed3bac1bef35d2c7ec8eb5695186339f7c2da66fc9da3cfe3061
 Allowed token namespaces: existing `--rp-*`, `--paper-*`, `--ink-*`, `--coral`, and curated `--rp-accent-l` / `--rp-accent-d`
-Allowed components/variants: registry at `docs/design-system/registry.md`; specifically `CuratedRolePage`, `CartoField`, `RisoDefs`, React Router `Link`, existing `rp-hero`, `rp-metagrid`, `rp-outcomes`, `rp-numlist`, `rp-split`, `rp-note`, and `rp-close` compositions
+Allowed components/variants: registry at `design-docs/design-system/registry.md`; specifically `CuratedRolePage`, `CartoField`, `RisoDefs`, React Router `Link`, existing `rp-hero`, `rp-metagrid`, `rp-outcomes`, `rp-numlist`, `rp-split`, `rp-note`, and `rp-close` compositions
 Composition rules: Keep one H1, existing chapter targets, current section classes, semantic lists, descriptive links, noindex behavior, and existing light/dark accent contract. Optional fields may change order and action labels for one page without changing global defaults. Do not add a local component, style file, dependency, token, or Supabase-branded template.
 Documented gaps for the public curated-page system: None. The existing renderer contains every needed primitive; optional data-controlled composition closes the ordering/action gap.
 Escalation owner: Hillary Esposito
+
+## Carmen-calibrated visual evidence compression — 2026-08-22
+
+Valid move: **Reuse / Compose.** Use existing case-study artifact components, `ShowKit` primitives, `figure`/`figcaption`, Riso rules, proof fields, chapter navigation, and current project-specific visuals. No new token, dependency, global component family, or borrowed Carmen styling is authorized.
+
+Composition rules: artifact precedes explanation; every consequential decision or finding is paired with its output; one dominant evidence unit owns each chapter; compact evidence labels may replace paragraphs but cannot remove method, ownership, status, or limitation where those change the claim.
+
+Locked rules: one H1, truthful source boundaries, semantic heading order, descriptive links, 44px targets, visible focus, reduced motion, English/Spanish shell parity, light/dark themes, and the current healthcare-first 23/23 recruiter positioning.
+
+Documented gap: a deterministic visual-share/word-count measurement is needed for the final gate. This is an audit addition, not a new interface pattern.
 
 ## Public hiring-decision repair — 2026-08-18
 
@@ -45,6 +55,14 @@ Valid move: **Compose.** The resting homepage uses only existing type, rule, but
 The revealed collage uses two owned sources: the NYPL event photograph and a capture of Hillary's public project landing page. Blue and orange appear as registration washes, not transit instructions. The separate route SVG, map marks, and route-tracing control are removed.
 
 Locks preserved: one H2, explicit open/close label, `aria-expanded`, `aria-controls`, 48px target, focus retention, reduced motion, English/Spanish parity, source truth, and the landing-page destination. The disclosure is not proposed for global component graduation.
+
+### Scroll-delivery train — owner-approved 2026-08-22
+
+Valid move: **Compose.** One page-local decorative field may connect the existing Selected Work boundary to the existing journal. It reuses the journal state, Riso rules/type/tokens, native React/browser behavior, and scoped `.rp-dispatchTrain*` styles. It does not create a canonical component, token, dependency, route, or interaction primitive.
+
+Locks preserved: the train is `aria-hidden`, scroll never gates content, the native journal disclosure remains the only control, reduced motion shows the delivered label statically, mobile uses two legible cars, and the field cannot cover copy or focus. No MTA logo, route number, station name, live-service language, or endorsement claim is permitted. Attribution is live text: `Built with MTA Open Data · Independent prototype`.
+
+Exploration 01 addendum: the approved Higgsfield/Seedance clip may replace the CSS train's visible surface only inside this carrier. It stays silent, non-looping, and pointer-inert; the CSS train remains the playback-error fallback. The generated film is atmosphere, not MTA evidence or product evidence, and earns no new public provenance claim.
 
 ## Higgsfield A/B/C private-lab proposal
 

@@ -1,6 +1,40 @@
 # Design State: Full Portfolio Redesign — Hybrid Positioning
 
-_Last updated: 2026-08-20 by healthcare-first hiring verification_
+_Last updated: 2026-08-22 by Carmen-calibrated visual evidence planning_
+
+## Active Initiative: Carmen-Calibrated Visual Evidence Compression
+
+**Problem:** The verified healthcare Product/Service and hybrid UXR/Service portfolio still asks readers to reconstruct too much rigor from prose.
+
+**Primary audience:** Time-boxed recruiters, Product/Service Design leaders, hybrid UXR/Service Design leads, and adaptive-access readers.
+
+**Success metric:** Home reaches at least 65% measured evidence coverage; every primary case study reaches at least 60%; every consequential claim is paired with an artifact; visible captions stay compact; both target lanes retain 23/23 applicable recruiter checks.
+
+**Approved brief:** `docs/designpowers/briefs/2026-08-22-carmen-visual-evidence-compression.md`
+
+**Build contract:** `docs/designpowers/builds/2026-08-22-carmen-visual-evidence-build-contract.md` — pending owner approval.
+
+**Plan:** `docs/designpowers/plans/2026-08-22-carmen-visual-evidence-plan.md` — pending owner approval.
+
+**House style:** Path B — Comply. Artifact spine selected; Carmen's evidence behavior is the reference while the Riso identity remains canonical. Prebuild and prestyle validation pending.
+
+**Recovery point:** `e5a3908`; preserve all existing owner/source changes in the dirty worktree. Roll back only initiative-scoped hunks.
+
+**Current queue:** Planning only. No visual-evidence production source edit begins until the contract and plan are approved.
+
+**Matrix check:** Research/strategy, design systems, provenance, accessibility, localization, responsive composition, evaluation, and deployment recovery apply. Truth, accessible equivalents, representative renders, blind anti-AI review, and fixed visual/word thresholds are hard gates.
+
+**Decision log — 2026-08-22:** Hillary approved the Decision-to-pixel editorial approach. Artifact spine chosen; contact-sheet dossier and cinematic full-bleed sequence rejected.
+
+## Active Slice: Weekend Journal Scroll-Delivery Train
+
+**Status:** Direction approved; build contract and implementation plan drafted for owner approval. The approved story is scroll arrival → small issue-label delivery → parked train → departure when the existing journal opens. The train is an original editorial NYC-subway interpretation, full bleed on desktop and two cars on mobile. It remains decorative and logo-free; attribution reads “Built with MTA Open Data · Independent prototype.”
+
+**Contract / plan / grill:** `docs/designpowers/builds/2026-08-22-weekend-journal-train-build-contract.md`; `docs/designpowers/plans/2026-08-22-weekend-journal-train-plan.md`; `docs/designpowers/grills/2026-08-22-weekend-journal-train-synthesis.md`.
+
+**Build loop:** Standard profile; Feature queue pending approval; recovery point `6c49e0e4649d8bd92f318bdf7d9fc085434e86ce` plus pre-existing owner changes; no implementation, commit, or deployment yet.
+
+**Matrix check:** Context/mechanics, accessibility, design-system compliance, and research/strategy apply. Critical-flow access, responsive/rendered evidence, house-style validation, and regression tests remain hard gates.
 
 ## Active Initiative: Healthcare-First Hiring Positioning
 
@@ -24,11 +58,15 @@ _Last updated: 2026-08-20 by healthcare-first hiring verification_
 
 **Recovery point:** `8ccca07a89d78bbbdee8d7df8428e1563e75c547`; preserve all pre-existing owner and hiring-repair changes.
 
-**Current queue:** Local implementation complete; healthcare Product/Service and plant-consumer positioning advance locally. Fresh production-browser renders and real hiring-manager sessions remain open. Dedicated UXR remains conditional on the planned complete study and external UXR review.
+**Current queue:** Healthcare Product/Service and healthcare UXR/Service Design each pass 23/23 applicable recruiter checks locally. The hybrid research lane is explicitly workflow/service-design focused; pure dedicated UXR remains outside this verdict. Real hiring-manager and assistive-technology sessions remain external validation, not rubric failures.
 
 **Readiness review:** `docs/designpowers/reviews/2026-08-20-healthcare-first-hiring-readiness.md`
 
-**Independent reviewer delta:** Blind/fresh anti-AI review passes after seven copy repairs. Neurodiversity review has no remaining Critical or Major findings after moving Selected Work before the Grove teaser and adding active curated-page wayfinding through limitations and contact.
+**Latest 23/23 review:** `design-docs/reviews/2026-08-22-product-uxr-service-design-23-of-23.md`
+
+**Independent reviewer delta:** Blind/fresh anti-AI review passes after seven healthcare-first repairs. A second fresh-context hybrid UXR/service-design audit passed, then its two medium cadence/taxonomy polish findings were repaired and rechecked with no remaining High or Medium tell. Neurodiversity review has no remaining Critical or Major findings after moving Selected Work before the Grove teaser and adding active curated-page wayfinding through limitations and contact.
+
+**Final production verification:** Fresh optimized build passes. The corrected local-build audit covers Home, Product/Service, and UXR/Service at 390px and 1440px with zero overflow, broken images, missing alt, duplicate IDs, heading skips, indexing mismatches, console errors, keyboard visibility/style issues, first-viewport clipping, long-running animations, or undersized targets.
 
 **Open external validation:** Five real healthcare hiring evaluators; one healthcare Product/Service Design manager; one healthcare UXR lead; one representative assistive-technology session; planned 6–8 participant Grove evaluative study.
 
@@ -621,10 +659,11 @@ Restored: Grove's survey answers (74% reminders, 56% camera ID, 15+ notification
 
 ## Design Debt Register
 
-_Items: 21 | Open: 8 | Resolved: 13 | Last reviewed: 2026-08-10_
+_Items: 22 | Open: 9 | Resolved: 13 | Last reviewed: 2026-08-22_
 
 | ID | Date | Source | Severity | What | Who is affected | Suggested fix | Status | Notes |
 |----|------|--------|----------|------|----------------|---------------|--------|-------|
+| DD-022 | 2026-08-22 | verification-before-shipping | Minor | The Weekend Journal train's passive scroll/resize listener cleanup and geometry clamp are verified by source inspection and real browser measurements, but not by an isolated deterministic unit test | Future maintainers if this page-local flourish becomes a shared interaction or its geometry grows more complex | Extract and unit-test the progress calculation plus listener registration/cleanup only if the pattern is reused or materially expanded | Open | Deferred because the pattern is intentionally page-local; focused DOM/accessibility tests, responsive browser evidence, and the production build pass |
 | DD-021 | 2026-08-10 | heuristic-evaluator | Minor | Mobbin V8's enlarged primary capture, two secondary captures, indexed spine, and ownership docket remain information-dense on mobile despite a clear order | Time-boxed recruiters, cognitively overloaded readers, and readers on narrow mobile viewports | Keep the current source/method/ownership hierarchy; any testimonial, named pattern, result, or added metadata must replace existing content rather than accumulate | Open | Mobbin passes static heuristics at 97/100; this is an anti-accretion guardrail, not a current blocker |
 | DD-020 | 2026-08-10 | heuristic-evaluator | Minor | Mobbin V7's three captures plus four-row indexing gate make the mobile evidence region dense even though its hierarchy remains understandable | Time-boxed recruiters, cognitively overloaded readers, and readers on narrow mobile viewports | Preserve the current hierarchy and spacing; do not add a testimonial, named pattern, result, or more metadata to this surface without replacing existing content | Resolved 2026-08-10 | V8 replaces four checklist rows with one indexed spine, enlarges the primary capture, and clarifies seating; the narrower V8 anti-accretion concern continues as DD-021 |
 | DD-019 | 2026-08-10 | heuristic-evaluator | Minor | V6 auxiliary review annotations use disclosed amber `#a36300` at 13px on `#f4eee0` (4.18:1), below the 4.5:1 body-text target | Stakeholders with low vision reading the formal QA/handoff sheet; not visitors to the primary portfolio surface | Darken the auxiliary annotation amber or enlarge/bolden it before treating the proof sheet as a formal accessible handoff artifact | Open | Does not affect the primary V6 interface score or palette; auxiliary review surface only |
@@ -955,6 +994,27 @@ _Items: 21 | Open: 8 | Resolved: 13 | Last reviewed: 2026-08-10_
 
 ### 2026-08-20 — healthcare-first hiring positioning → locally verified, rendered gate open
 > "The public hiring story now leads with Healthcare Product & Service Designer and MSK → Medical Logistics → Grove. Three no-index hiring pages and three role-specific resume variants support healthcare Product/Service, conditional healthcare UXR, and plant-consumer/The Sill outreach. A blind anti-AI audit passed after seven copy repairs. The neurodiversity review has no remaining Critical or Major findings after Selected Work moved ahead of the Grove teaser and curated pages gained active wayfinding through limitations and contact. TypeScript, 71 tests, production build, registry freshness, final house-style validation, and one-page/link/hash/visual PDF checks pass. Fresh 390/1440 production-browser renders remain open because the environment blocked both the local server and headless Chrome. UXR remains conditional on the planned 6–8 participant study and an independent healthcare UXR review. No deploy, application, or outreach was performed."
+
+### 2026-08-22 — Higgsfield/Seedance portfolio system → final private verification
+> "The homepage keeps the approved five-second Higgsfield/Seedance atmosphere film as a subordinate material field while the authentic Grove interface stays independently layered and iPhone-proportioned. The three case-study continuations now use their own evidence grammar: Grove fans four documented product screens with no generated case-study background; MSK traces the established Queue → File action → Online chart → Return language at a deliberate 2.44-second pace; Mobbin reveals task vocabulary in a separate rail so labels never cover source interfaces. Direct mobile anchors gained a 190px sticky-navigation offset. Fresh 390/1440 browser checks show no horizontal overflow, complete media, and 44px controls; 43 focused/accessibility tests pass, final house-style validation passes, scoped diff checks are clean, and the optimized production build succeeds. No deploy or commit was performed."
+
+### 2026-08-22 — owner correction → homepage environmental film
+> "The film is not Grove evidence. Approved direction: remove the standalone Grove teaser and every Grove interface/caption/link from the media treatment; use the existing five-second Seedance film only as a homepage-wide background behind existing content. Case studies, Grove's project row, homepage hierarchy, and all product truth remain unchanged. Motion plays once and becomes a static poster for reduced motion, Save Data, autoplay rejection, or failure. Brief: `docs/designpowers/briefs/2026-08-22-homepage-motion-background.md`. Contract: `docs/designpowers/builds/2026-08-22-homepage-motion-background-build-contract.md`. Plan awaiting execution approval."
+
+### 2026-08-22 — homepage environmental film → locally verified correction
+> "The standalone Grove teaser, Grove interface composite, Grove-specific copy, and teaser controls are removed. The five-second Seedance film now mounts once as a fixed, pointer-inert, `aria-hidden` homepage background; it is muted, non-looping, and replaced by the poster for reduced motion, Save Data, or media failure. The former homepage CartoField was removed so the film is the actual environment, while paper washes preserve the existing editorial hierarchy. Fresh light/dark renders at 390, 900, and desktop show zero horizontal overflow and clear foreground reading. Forty focused/accessibility tests pass, final house-style validation and scoped diff checks pass, the optimized build succeeds, and a fresh-context blind craft review returned PASS with no genuine blocker. MSK and Grove Seedance teasers are approved as a separate next phase; each must derive from its own case-study evidence and may not invent interfaces, patient data, outcomes, or finished product states. No deploy or commit was performed."
+
+### 2026-08-22 — owner correction → once-per-session opening film
+> "The persistent background was rejected because it hid the film and falsely entangled it with Grove. The Seedance film now owns the complete opening viewport once per browser-tab session, then resolves through a 560ms editorial paper dissolve into the unchanged homepage and its restored painted CartoField. The Skip control leaves first, the assembled film settles by 0.8%, and the paper tone briefly separates the two detailed fields before the homepage appears. It contains no Grove interface, case-study copy, CTA, or provenance claim. Skip, Escape, media error, and a 6.5-second failsafe always release the page; reduced-motion and Save Data users enter directly. Forty-two focused/accessibility tests pass, the optimized production build succeeds, and live browser verification confirms the full-frame opening, normal-site reveal, and no replay on same-session reload. MSK and Grove case-specific teasers remain the next independent phase. No deploy or commit was performed."
+
+### 2026-08-22 — owner-approved Weekend Journal train → locally verified
+> "The mostly-hidden Weekend Journal now has one full-bleed editorial arrival before the cover. Scroll brings in four short cars on desktop and two larger cars on mobile; the delivery placard hands off to the live `Weekend dispatch · No. 01` label at the journal grid. Opening the existing disclosure sends the train away in 420ms and reveals evidence immediately. The train contains no logo, route identity, station, service claim, sound, loop, or interactive control; plain text identifies `MTA Open Data` and the independent-prototype boundary. Reduced motion hides the vehicle and leaves the issue label delivered. Browser checks at 320/390/900/1440 show no document overflow or copy/control collision; the focused journal and Home axe tests pass, the production build succeeds, the component registry is current, and final house-style validation passes. The anti-AI review is not blind, and the repository-wide tell scanner still reports inherited debt outside this slice. No commit or deploy was performed."
+
+### 2026-08-22 — owner taste selection → Riso registration train
+> "Of three five-second Higgsfield/Seedance explorations, Hillary emphatically selected Exploration 01: the restrained Riso-registration train. Carry forward the clean silhouette, tactile ink offset, quiet lateral motion, and editorial negative space. Do not refine it toward realism, painterly haze, or dense collage. This selection authorizes the art direction only; no additional generation credits, site integration, commit, or deploy were approved."
+
+### 2026-08-22 — Exploration 01 train → verified portfolio prototype
+> "The approved five-second Riso-registration film now supplies the visual surface inside the existing Weekend Journal scroll carrier. It starts only as the train enters, stays silent and non-looping, pauses on journal open, and leaves the original CSS train underneath as the playback-error fallback; reduced motion still resolves directly to the delivered issue label. Browser evidence at 320/390/900/1440 shows zero document overflow, a legible desktop/tablet train, a compact mobile crop, and a 390px departure fully beyond the viewport while the journal panel opens immediately. The 1.2 MB asset adds no runtime dependency. Thirty-six focused accessibility/interaction tests, the optimized build, final house-style validator, tell check, and scoped diff check pass. Prototype verdict: Ready for owner taste review; deployment readiness remains Conditional because blind anti-default and lived-experience/real-AT review were not run. No additional credits, commit, or deploy."
 
 ## Pipeline Status
 - [x] Discovery

@@ -98,7 +98,9 @@ async function installLocalBuildRoute(page) {
     ".webp": "image/webp",
   };
 
-  await page.route("http://portfolio.local/**", async (route) => {
+  // The production CSP upgrades insecure subresource requests, so match both
+  // the initial HTTP document and any HTTPS-upgraded local assets.
+  await page.route("**://portfolio.local/**", async (route) => {
     const pathname = decodeURIComponent(new URL(route.request().url()).pathname);
     const relative = pathname.replace(/^\/+/, "");
     const requested = path.resolve(buildDir, relative);
@@ -365,6 +367,16 @@ async function run() {
               { timeout: 10000 },
             );
             await page.waitForTimeout(250);
+            if (process.env.PORTFOLIO_WALK_PAGE === "1") {
+              await page.evaluate(async () => {
+                const step = Math.max(320, Math.round(window.innerHeight * 0.75));
+                for (let y = 0; y < document.documentElement.scrollHeight; y += step) {
+                  window.scrollTo(0, y);
+                  await new Promise((resolve) => window.setTimeout(resolve, 45));
+                }
+              });
+              await page.waitForTimeout(200);
+            }
             await page.evaluate(() => window.scrollTo(0, 0));
 
             const inspection = await inspectPage(page, route.indexable);

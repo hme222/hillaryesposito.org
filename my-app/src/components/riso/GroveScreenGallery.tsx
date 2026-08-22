@@ -45,6 +45,7 @@ export default function GroveScreenGallery({ screens }: { screens: Screen[] }) {
         ref={stripRef}
         onScroll={syncCurrent}
         aria-label="Original Grove product screens"
+        tabIndex={0}
       >
         {screens.map((screen) => (
           <figure className="rp-strip__item" key={screen.src}>

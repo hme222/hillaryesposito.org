@@ -63,3 +63,21 @@ Proof GOOD: A workflow map gave clinical, IT, and operations one system failure 
 
 Headline BAD: A fun weekend using AI for civic tech
 Headline GOOD: Can a rider know—not guess—whether the trip home is accessible?
+
+Attribution BAD: Official MTA accessibility planner
+Attribution GOOD: Built with MTA Open Data · Independent prototype
+
+## Visual evidence compression copy
+
+- Captions point to one thing the visual proves. They do not summarize the entire project.
+- Default caption length is 8–24 words. A paragraph may not exceed 45 words.
+- Research evidence keeps method and limitation visible when either changes interpretation.
+- Product/service evidence keeps ownership and status visible when either changes attribution.
+- Prefer labels such as `Observed`, `Changed`, `Implemented`, `Unverified`, and `Next gate` over abstract capability language.
+- Never place essential explanatory text inside a bitmap or video.
+
+Caption BAD: Through extensive collaboration and a human-centered process, I developed a comprehensive workflow that aligned stakeholders and improved efficiency.
+Caption GOOD: Four departments saw one handoff. MSK implemented the digital workflow two roles later.
+
+Research BAD: Research revealed what users wanted and helped prioritize the roadmap.
+Research GOOD: 34-person self-report survey · eleven proposed features became three · behavior still untested.

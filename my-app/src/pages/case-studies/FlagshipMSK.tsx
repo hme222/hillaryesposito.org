@@ -87,21 +87,21 @@ const REDESIGNS = [
   {
     n: "01",
     title: "EMR filing workflow",
-    finding: "A digital record was printed, routed out, then waited to reappear in the chart.",
-    change: "One dashboard action, placed where the decision was already being made.",
-    wrong: "I underestimated change management. Training on their own workstations, during shift changes, fixed it in two weeks.",
+    finding: "Digital record → paper route → missing chart context.",
+    change: "One action where the filing decision already happened.",
+    wrong: "I underestimated change management. Workstation training during shift changes fixed adoption in two weeks.",
   },
   {
     n: "02",
     title: "CPR certification",
-    finding: "The material was written in technical, legal language. So few clinicians got through it that the compliance deadline was about to be pushed back.",
-    change: "I rewrote it for the people who had to complete it, not the people who wrote it. Every certification came in — 70% ahead of the deadline that was about to slip.",
+    finding: "Technical legal copy stalled clinician completion.",
+    change: "Plain-language material brought every certification in 70% before the slipping deadline.",
   },
   {
     n: "03",
     title: "Administrative onboarding",
-    finding: "Epic, HIPAA, the compliance modules, and the technical and soft skills of the job were taught the same way to every new administrative hire — people who arrived with very different starting points, some fluent with the systems, some never having opened them.",
-    change: "I worked with the design team to rebuild the program, then curated the instruction cohort by cohort so a one-to-three-week course met the range of abilities actually in the room.",
+    finding: "One course ignored radically different starting skills.",
+    change: "Cohort-specific instruction adapted a one-to-three-week program to the people in the room.",
   },
 ];
 
@@ -161,17 +161,14 @@ export default function FlagshipMSK() {
             <h1 className="rp-h1">A filing queue replaced a four-system workaround.</h1>
             <span className="rp-readtime"><b>6 min</b><span>read · 6 years, 3 roles</span></span>
             <p className="rp-sub">
-              Clinicians printed digital records just to file them digitally again — and a record
-              in transit is a record that is not in the chart when the next clinician opens it. As an
-              office coordinator, I mapped that workaround across clinical, IT, imaging, and
-              operations, then presented the online workflow that was implemented two roles later.
-              It served work touching <b>21,000+ clinicians and staff</b>, and it is{" "}
-              <b>still in use through two system upgrades</b>.
+              I mapped a paper detour across four departments and presented the digital workflow
+              implemented two roles later. It supported work touching <b>21,000+ people</b> and
+              remains in use through <b>two system upgrades</b>.
             </p>
             <a className="rp-cta" href="#msk-workflow">See the workflow →</a>
           </div>
         </div>
-        <div className="rp-hero__media fp-heroArt fp-heroArt--msk">
+        <div className="rp-hero__media fp-heroArt fp-heroArt--msk" data-evidence="true">
           <div className="fp-artifactLabel"><span>RECREATED ARTIFACT</span><b>Office Coordinator filing queue · no patient data</b></div>
           <div className="fp-dashboardFrame" aria-label="Recreated Office Coordinator filing queue concept">
             <MSKDashboardMockup headingLevel={2} />
@@ -179,7 +176,7 @@ export default function FlagshipMSK() {
         </div>
       </header>
 
-      <MSKFilingReceipt />
+      <div data-evidence="true"><MSKFilingReceipt /></div>
 
       <section className="rp-section" id="msk-workflow" data-language-anchor="msk-workflow">
         <div className="rp-wrap">
@@ -189,7 +186,7 @@ export default function FlagshipMSK() {
           <p className="rp-kicker">So I counted the steps</p>
           <h2 className="rp-title">The filing queue replaced the workaround.</h2>
           <p className="rp-lede">Nobody had written the whole path down. On one page, four departments saw the same failure instead of four versions of it.</p>
-          <figure className="fp-workflowFig rp-reveal">
+          <figure className="fp-workflowFig rp-reveal" data-evidence="true">
             <MSKWorkflowMap />
             <figcaption>Recreated current-state and future-state map · no patient data</figcaption>
           </figure>
@@ -197,17 +194,13 @@ export default function FlagshipMSK() {
               the page are the reminder; this is the reasoning behind them. */}
           <div className="rp-note rp-reveal">
             <p className="rp-note__k">How these artifacts were made</p>
-            <p>
-              Every screen and map here was rebuilt from my own current-state documentation. No
-              protected health information, no exported records, and no reproduction of the vendor
-              interface. Showing the workflow does not require showing a patient, so it does not.
-            </p>
+            <p>Rebuilt from my current-state documentation. No patient data, exported records, or vendor interface.</p>
           </div>
           {/* These two lists are the text alternative for the aria-hidden map,
               so they stay. What went was the pair of paragraphs under them —
               "failure mode" and "design decision" restated the map's own
               labels ("leaves the EMR" / "never leaves the EMR") in prose. */}
-          <div className="fp-workflow rp-reveal">
+          <div className="fp-workflow rp-reveal" data-evidence="true">
             <article>
               <span className="fp-workflow__label">Before · six steps</span>
               <h3>Print, route, wait, check again</h3>
@@ -226,17 +219,13 @@ export default function FlagshipMSK() {
           <div className="fp-blueprintIntro rp-reveal">
             <p className="rp-kicker">Then I counted the handoffs</p>
             <h3 className="rp-title">One step removed a department.</h3>
-            <p className="rp-lede">
-              Six steps to five is the change you can count. The change that mattered is that the
-              record stopped crossing a line no one could see across. Below is the same path drawn
-              by who was holding the record.
-            </p>
+            <p className="rp-lede">The measurable change was six steps to five. The service change was removing an invisible handoff.</p>
           </div>
-          <MSKServiceBlueprint />
+          <div data-evidence="true"><MSKServiceBlueprint /></div>
         </div>
       </section>
 
-      <DecisionStory
+      <div data-evidence="true"><DecisionStory
         id="msk-decisions"
         languageAnchor="msk-decisions"
         kicker="The fix looked like one button"
@@ -248,14 +237,14 @@ export default function FlagshipMSK() {
             <MSKDashboardMockup compact activeRow={DECISION_ROW[active] ?? null} />
           </div>
         )}
-      />
+      /></div>
 
       <section className="rp-section" id="msk-redesigns" data-language-anchor="msk-decisions">
         <div className="rp-wrap">
           <p className="rp-kicker">Then the same shape turned up again</p>
           <h2 className="rp-title">The same failure, in two more places.</h2>
-          <p className="rp-lede">Once I knew what it looked like, I found it in the CPR certification and in the onboarding program. Same root cause every time: built for the institution, not for the person who had to get through it.</p>
-          <div className="fp-redesigns rp-reveal">
+          <p className="rp-lede">The same pattern appeared in certification and onboarding: the institution’s structure obscured the next action.</p>
+          <div className="fp-redesigns rp-reveal" data-evidence="true">
             {REDESIGNS.map((r) => (
               <article key={r.n}>
                 <span className="fp-redesigns__n">{r.n}</span>
@@ -277,7 +266,7 @@ export default function FlagshipMSK() {
           <p className="rp-kicker">Why I could see it</p>
           <h2 className="rp-title">I learned the system from the floor up.</h2>
           <p className="rp-lede">You do not spot that pattern from outside a system. I had already sat in three of its seats.</p>
-          <ol className="fp-roleRail rp-reveal" aria-label="Three roles at MSK, in order">
+          <ol className="fp-roleRail rp-reveal" aria-label="Three roles at MSK, in order" data-evidence="true">
             {ROLES.map((r) => {
               const method = ROLE_METHODS[r.n];
               return (
@@ -299,10 +288,10 @@ export default function FlagshipMSK() {
               );
             })}
           </ol>
-          <div className="fp-systemCards rp-reveal">
-            <article><span>01 · Observe</span><h3>Find the workarounds</h3><p>Shadow real shifts. The sticky notes and personal spreadsheets told the truth the policy map missed.</p></article>
-            <article><span>02 · Align</span><h3>Make the failure shared</h3><p>Current-state maps gave four departments one picture to argue with instead of four email threads.</p></article>
-            <article><span>03 · Redesign</span><h3>Sequence the next action</h3><p>Move the task to where the decision already happens, then make ownership and exceptions visible.</p></article>
+          <div className="fp-systemCards rp-reveal" data-evidence="true">
+            <article><span>01 · Observe</span><h3>Find the workaround</h3><p>Real shifts exposed what policy maps missed.</p></article>
+            <article><span>02 · Align</span><h3>Share one failure</h3><p>Four departments, one current-state map.</p></article>
+            <article><span>03 · Redesign</span><h3>Sequence the action</h3><p>Show ownership, readiness, and exceptions.</p></article>
           </div>
           {/* "Service design" appears in this page's hero eyebrow and nowhere
               else on the site. It had a definition here once and I cut it as
@@ -311,15 +300,13 @@ export default function FlagshipMSK() {
               the workflow map above already proves, rather than a description
               of a method. */}
           <p className="fp-ownership rp-reveal">
-            <b>What service design means here:</b> I own the whole path a task takes — across four
-            systems and three departments that did not report to me — not the screen at the end of
-            it. The queue above is one screen. The reason it works is everything behind it.
+            <b>Service-design scope:</b> the full path across systems, departments, permissions, and handoffs—not only the queue screen.
           </p>
           <aside className="rp-note rp-reveal" aria-label="MSK research evidence boundary">
             <span className="rp-note__k">Evidence boundary</span>
-            <p>The source record preserves the workflow, departments, decisions, and outcomes. Participant counts from shift observation were not recorded, so I use this evidence to explain the decisions—not to claim prevalence.</p>
+            <p>Workflow, departments, decisions, and outcomes survive. Observation counts do not; no prevalence claim is made.</p>
           </aside>
-          <div className="fp-mapWrap">
+          <div className="fp-mapWrap" data-evidence="true">
             <Suspense fallback={<div className="fp-mapFallback">Tangled systems → mapped → redesigned → trusted</div>}>
               <MSKSystemMap />
             </Suspense>
@@ -332,8 +319,8 @@ export default function FlagshipMSK() {
         <div className="rp-wrap">
           <p className="rp-kicker">The real test came later</p>
           <h2 className="rp-title">Most internal tools die quietly. These did not.</h2>
-          <p className="rp-lede">A system upgrade, or the project simply ending — these are what usually finish an internal tool, whatever anyone thought of it at launch. Both of these carried straight on past that.</p>
-          <figure className="fp-sustainmentFig rp-reveal">
+          <p className="rp-lede">Adoption is the launch metric. Sustainment is the service metric.</p>
+          <figure className="fp-sustainmentFig rp-reveal" data-evidence="true">
             <MSKSustainment />
             <figcaption>What each system survived, and where it stands now</figcaption>
           </figure>
@@ -344,27 +331,21 @@ export default function FlagshipMSK() {
               <li key={s.fact}><b>{s.fact}</b><span>{s.what}</span></li>
             ))}
           </ul>
-          <p className="fp-survivedWhy">
-            None of that is luck. The filing queue survived two upgrades because it had stopped
-            being a workaround people maintained by hand — the work was in the system, not in
-            someone's spreadsheet. The certification format outlived its own project by two
-            months, then kept going, because the people it was written for preferred it to what
-            came before.
-          </p>
+          <p className="fp-survivedWhy">The work moved from personal workaround to shared system; the plain-language format stayed useful after its project ended.</p>
           <a className="fp-proofLink" href="https://www.mskcc.org/news/hillary-esposito-s-career-path-military-msk" target="_blank" rel="noopener noreferrer" aria-label="Read Hillary Esposito's career profile in MSK News (opens in new tab)">
             <span>Independent proof · MSK News</span><b className="rp-ext">From the military to Memorial Sloan Kettering</b>
           </a>
         </div>
       </section>
 
-      <EvidenceField
+      <div data-evidence="true"><EvidenceField
         id="msk-outcomes"
         languageAnchor="msk-outcomes"
         // "attribution kept intact" moved off the kicker — the `disclaimer`
         // prop below already states it, in its own dedicated line.
         kicker="What it added up to"
         title="The numbers, and who they belong to."
-        intro="I initiated the dashboard-to-online-EMR workflow redesign as a coordinator and it was implemented off my presentation to the company two roles later, rewrote the CPR certification material for the clinicians completing it, and rebuilt the onboarding program — Epic, HIPAA, compliance, and the technical and soft skills — for new administrative staff."
+        intro="I initiated and presented the filing redesign, rewrote clinician certification material, and rebuilt administrative onboarding with the design team."
         disclaimer="Anonymized evidence · organization-wide results are attributed to the initiative"
         // The same discipline the certification dashboard used on its own data:
         // say what you are looking at before someone has to work it out. All
@@ -376,7 +357,7 @@ export default function FlagshipMSK() {
           { tag: "Led", n: "70%", label: "ahead of deadline — every CPR certification collected early, on a deadline that was about to be pushed back" },
         ]}
         route={["Observe the real work", "Map the failure", "Align the system", "Ship what lasts"]}
-      />
+      /></div>
 
       <section className="rp-section">
         <div className="rp-wrap rp-close">

@@ -1,9 +1,11 @@
 import React from "react";
+import { MSK_COPY, type MskCopy } from "../data/mskCaseStudy";
 
 type MSKDashboardMockupProps = {
   compact?: boolean;
   headingLevel?: 2 | 3;
   activeRow?: number | null;
+  copy?: MskCopy["dashboard"];
 };
 
 // Anonymized recreation. MRNs are masked (last 4 only) — the queue is patient-
@@ -18,48 +20,40 @@ type MSKDashboardMockupProps = {
 //
 // `slug` is explicit rather than derived from the label so the status colors
 // stay bound to meaning, not to wording.
-const rows = [
-  { mrn: "••••4821", received: "Received 2h ago", doc: "Signed consent", status: "Ready to send", slug: "ready-to-file", routed: "Filing queue", action: "Send to EMR" },
-  { mrn: "••••5518", received: "Received 5h ago", doc: "Signed order", status: "Ready to send", slug: "ready-to-file", routed: "Filing queue", action: "Send to EMR" },
-  { mrn: "••••7305", received: "Received 1d ago", doc: "Outside records", status: "Needs review", slug: "needs-review", routed: "Supervisor", action: "Review" },
-  { mrn: "••••1043", received: "Received 1d ago", doc: "Path report", status: "Ready to send", slug: "ready-to-file", routed: "Filing queue", action: "Send to EMR" },
-  { mrn: "••••2960", received: "Received 3d ago", doc: "Discharge summary", status: "In the chart", slug: "filed-to-chart", routed: "Complete", action: "View log" },
-];
+// Row data now lives in data/mskCaseStudy.ts so it can localise.
 
-export default function MSKDashboardMockup({ compact = false, headingLevel = 3, activeRow = null }: MSKDashboardMockupProps) {
+export default function MSKDashboardMockup({ compact = false, headingLevel = 3, activeRow = null, copy = MSK_COPY.en.dashboard }: MSKDashboardMockupProps) {
   const Heading = headingLevel === 2 ? "h2" : "h3";
 
   return (
-    <div className={`msk-dashboard-mockup${compact ? " msk-dashboard-mockup--compact" : ""}`} role="group" aria-label="Anonymized Office Coordinator filing queue mockup">
+    <div className={`msk-dashboard-mockup${compact ? " msk-dashboard-mockup--compact" : ""}`} role="group" aria-label={copy.groupAria}>
       {/* The role used to ride along on the eyebrow, which pushed that line to
           two wrapped rows above the heading and made the whole header read as
           clutter. It is a chip now — same information, one line each. */}
       <div className="msk-dashboard-mockup__topbar">
         <div>
-          <p className="msk-dashboard-mockup__eyebrow">Anonymized internal tool concept</p>
-          <Heading>My filing queue</Heading>
+          <p className="msk-dashboard-mockup__eyebrow">{copy.eyebrow}</p>
+          <Heading>{copy.title}</Heading>
         </div>
         <span className="msk-dashboard-mockup__meta">
-          <span className="msk-dashboard-mockup__role">Office Coordinator view</span>
-          <span className="msk-dashboard-mockup__timestamp">47 in queue · 09:42</span>
+          <span className="msk-dashboard-mockup__role">{copy.roleView}</span>
+          <span className="msk-dashboard-mockup__timestamp">{copy.queueMeta}</span>
         </span>
       </div>
 
       <div className="msk-dashboard-mockup__toolbar" aria-hidden="true">
-        <span>All patients</span>
-        <span>Ready to send</span>
-        <span>Needs review</span>
+        {copy.toolbar.map((filter) => <span key={filter}>{filter}</span>)}
       </div>
 
-      <div className="msk-dashboard-mockup__table" role="table" aria-label="Anonymized patient document filing queue">
+      <div className="msk-dashboard-mockup__table" role="table" aria-label={copy.tableAria} tabIndex={0}>
         <div className="msk-dashboard-mockup__row msk-dashboard-mockup__row--head" role="row">
-          <span role="columnheader">Patient</span>
-          <span role="columnheader">Document</span>
-          <span role="columnheader">Status</span>
-          <span role="columnheader">Routed to</span>
-          <span role="columnheader">Action</span>
+          <span role="columnheader">{copy.columns.patient}</span>
+          <span role="columnheader">{copy.columns.document}</span>
+          <span role="columnheader">{copy.columns.status}</span>
+          <span role="columnheader">{copy.columns.routedTo}</span>
+          <span role="columnheader">{copy.columns.action}</span>
         </div>
-        {rows.map((row, index) => (
+        {copy.rows.map((row, index) => (
           <div
             className={`msk-dashboard-mockup__row${activeRow === index ? " is-active" : ""}`}
             role="row"
@@ -78,7 +72,7 @@ export default function MSKDashboardMockup({ compact = false, headingLevel = 3, 
             </span>
             <span role="cell">{row.routed}</span>
             <span role="cell">
-              <span className={row.action === "Send to EMR" ? "msk-dashboard-action msk-dashboard-action--primary" : "msk-dashboard-action"}>
+              <span className={row.slug === "ready-to-file" ? "msk-dashboard-action msk-dashboard-action--primary" : "msk-dashboard-action"}>
                 {row.action}
               </span>
             </span>
@@ -90,14 +84,13 @@ export default function MSKDashboardMockup({ compact = false, headingLevel = 3, 
           keeps the artifact authentic while staying readable to anyone who has
           never worked in a hospital. */}
       <div className="msk-dashboard-mockup__legend">
-        <span><b>MRN</b> — medical record number, the ID for one patient’s chart. Masked to the last four digits.</span>
-        <span><b>EMR</b> — electronic medical record, the digital chart where a patient’s whole history lives.</span>
+        <span><b>{copy.mrnTerm}</b> — {copy.mrnDef}</span>
+        <span><b>{copy.emrTerm}</b> — {copy.emrDef}</span>
       </div>
 
       <div className="msk-dashboard-mockup__rule">
         <span>
-          Rule: <strong>Send to EMR</strong> appears only when the document is ready and the
-          coordinator's role includes filing rights.
+          {copy.ruleLabel} <strong>{copy.ruleAction}</strong> {copy.rule}
         </span>
       </div>
     </div>

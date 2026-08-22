@@ -1,5 +1,15 @@
 # Reference Manifest
 
+## Carmen Elena Rincón — Pilgrimz case study
+STEAL: The evidence behavior: large screens, before/on-system comparisons, live component specimens, state sequences, and short decision captions that keep pixels adjacent to reasoning.
+IGNORE: Carmen's coral/teal palette, typography, travel imagery, brand voice, component styling, and AI Design OS positioning.
+Evidence: Verified live case study at `https://www.carmen-elena.space/work/pilgrimz`, inspected 2026-08-22; prior local audit measured roughly 60% visual coverage.
+
+## Current Google and Amazon UXR role signals
+STEAL: Method selection, end-to-end research ownership, contextual inquiry, survey/usability evidence, research artifacts, cross-functional prioritization, and findings translated into product or service decisions.
+IGNORE: Senior-year thresholds or specialist requirements not claimed by Hillary's hybrid UXR/service-design lane.
+Evidence: Verified current Google Senior UXR and Amazon AFT/WWGS UXR listings, inspected 2026-08-22.
+
 ## my-app/src/pages/curated/CuratedRolePage.tsx
 STEAL: The split Riso hero, one-H1 hierarchy, chapter navigation, proof field, ordered work list, and private-route recovery behavior.
 IGNORE: The default fit-first order and generic `View a case study` label for this role.
@@ -49,3 +59,8 @@ Evidence: Verified public post and preview image, inspected 2026-08-18.
 STEAL: Orthogonal route geometry, white station markers, high-contrast black information bands, compact direction labels, accessible-route emphasis, and the principle that geography may be simplified for service clarity.
 IGNORE: MTA logos, actual line assignments, station names, official notice composition, and any wording that could make a portfolio prototype look like current rider guidance.
 Evidence: Verified official MTA map and accessibility pages, inspected 2026-08-20: `https://www.mta.info/map/5341` and `https://www.mta.info/accessibility/stationlab/touchgraphics`.
+
+## MTA Open Data program and intellectual-property boundary
+STEAL: Clear source attribution and the invitation to build independent work from public MTA datasets.
+IGNORE: The MTA logo, wordmark treatment, route identities, or any styling that suggests an official or endorsed rider product.
+Evidence: Verified official MTA Open Data feature and MTA intellectual-property language, inspected 2026-08-22: `https://www.mta.info/article/celebrating-2024-mta-open-data-challenge` and `https://www.mta.info/document/121896`.

@@ -48,28 +48,28 @@ const LEGS = [
     // survey asked about, and the two got conflated. Feed, badges, missions,
     // swaps and community groups are all real — verified in grove-frontend.
     detail:
-      "Emergent — the AI tool I used to generate the first build — made Grove in one pass: a social feed, badges, daily “missions,” community groups, plant swaps. Wide, fast, and packed.",
+      "Emergent generated a social feed, badges, missions, groups, and swaps in one pass.",
     impact: "Feature-complete, focus-empty",
   },
   {
     n: "02",
     mission: "A 5-user test showed the map was wrong",
     detail:
-      "People opened it and stalled. The care screen led with a feed and a mission — not their plants. Overloaded, and the priorities were backwards.",
+      "People stalled when care led with a feed and mission—not their plants.",
     impact: "Cluttered, unclear",
   },
   {
     n: "03",
     mission: "A 34-person survey found the three that matter",
     detail:
-      "I asked what actually earns a plant app a spot on the phone: calm reminders, plant ID by camera, real help with light. Forums drew 18%.",
+      "Care reminders, camera ID, and diagnosis led. Forums drew 18%.",
     impact: "3 must-haves, not 30",
   },
   {
     n: "04",
     mission: "Rebuild around the three that matter",
     detail:
-      "Keep only what earns the download: reminders that never nag, an AI that shows its sources, pet-safety warnings, and a person who can always overrule it. Calm, not busy.",
+      "Keep calm reminders, sourced AI, safety warnings, and human override.",
     impact: "Phase 2 of 3",
     now: true,
   },
@@ -119,14 +119,14 @@ const DECISIONS = [
     old: "grove-live-care.jpg",
     oldAlt: "The care screen Emergent built, leading with a daily mission and a feed",
     oldBg: "#f5f0ea",
-    why: "Emergent led with a daily “mission” and a feed. The redesign is one calm morning summary — never a nag.",
+    why: "Replace mission-and-feed urgency with one calm morning summary.",
   },
   {
     feature: "Plant ID by camera",
     old: "grove-live-add.jpg",
     oldAlt: "The add-plant screen Emergent built, giving a single confident identification",
     oldBg: "#31302e",
-    why: "The AI guessed with false confidence. The redesign shows its top guesses, how sure it is, and its sources — a guess, not a verdict.",
+    why: "Show top guesses, confidence, and sources—not one false verdict.",
   },
   {
     feature: "Personality, not points",
@@ -137,7 +137,7 @@ const DECISIONS = [
     // without the invented third item.
     oldAlt: "The personality screen Emergent built, with badges and streaks",
     oldBg: "#f5f0ea",
-    why: "Badges and streaks turned care into paperwork. The redesign keeps the plant’s AI personality and drops the scorekeeping.",
+    why: "Keep plant personality; remove scorekeeping that turns care into paperwork.",
   },
 ];
 
@@ -336,16 +336,15 @@ export default function RisoGrove() {
               <span>read · one designer, end to end</span>
             </span>
             <p className="rp-sub">
-              Emergent built eleven plant-care features in one pass. A five-person test showed
-              where people stalled, and a 34-person survey narrowed the next build to three
-              features. I am the sole designer, and <b>Phase 2 is in progress</b>.
+              A 34-person self-report survey narrowed an eleven-feature AI build to three.
+              I am the sole designer; <b>Phase 2 is in progress</b>.
             </p>
             <a className="rp-cta" href="#grove-research">
               See the rebuild →
             </a>
           </div>
         </div>
-        <div className="rp-hero__media">
+        <div className="rp-hero__media" data-evidence="true">
           <div className="rp-device">
             <img src="/assets/grove/grove1.png" alt="Grove mobile welcome screen" />
           </div>
@@ -362,21 +361,16 @@ export default function RisoGrove() {
           the case study's own argument in a compressed form before the reader
           had the argument. */}
 
-      <GroveCinematic />
+      <div data-evidence="true"><GroveCinematic /></div>
 
       {/* PROBLEM */}
       <section className="rp-section" id="grove-research" data-language-anchor="grove-research">
         <div className="rp-wrap">
-          <div className="rp-split rp-reveal">
+          <div className="rp-split rp-reveal" data-evidence="true">
             <div className="rp-split__text">
               <p className="rp-kicker">Where this starts</p>
               <h2 className="rp-title">Plant parents forget. Then they feel guilty.</h2>
-              <p className="rp-lede">
-                Most people who buy a plant want one thing: keep it alive. They forget to water, or
-                overwater, and either way they feel bad. Grove’s job was never more features — it was to
-                make plant care feel <b>calm, not stressful</b>, and trustworthy where a wrong answer has
-                a cost (a plant that’s toxic to a cat isn’t a suggestion — it’s a risk).
-              </p>
+              <p className="rp-lede">The job: one calm next action, with visible uncertainty when a wrong answer can cause harm.</p>
             </div>
             <div className="rp-split__media">
               <div className="rp-device rp-device--app">
@@ -386,10 +380,8 @@ export default function RisoGrove() {
           </div>
 
           <h3 className="rp-subhead">What those 34 people actually said</h3>
-          <p className="rp-lede">
-            Brand-new owners through serious collectors, answered between May 22 and July 8, 2026. Each picked the three features they considered launch dealbreakers.
-          </p>
-          <dl className="rp-surveyStats rp-reveal">
+          <p className="rp-lede">34 owners · May 22–July 8, 2026 · choose three launch dealbreakers.</p>
+          <dl className="rp-surveyStats rp-reveal" data-evidence="true">
             {SURVEY_FINDINGS.map((f) => (
               <div key={f.stat}>
                 <dt>{f.stat}</dt>
@@ -400,16 +392,12 @@ export default function RisoGrove() {
 
           <aside className="rp-note rp-reveal" aria-label="Grove research evidence boundary">
             <span className="rp-note__k">What this evidence can say</span>
-            <p>The survey records self-reported priorities, not observed behavior or market demand. I used it to choose what to build and test next. The earlier five-person usability test exposed overload in the AI-built map; the preserved record does not include session dates or task-level results, so I make no broader claim from it.</p>
+            <p>Self-report prioritized the next build; it does not prove behavior or demand. Earlier test dates and task records are missing, so no broader claim is made.</p>
           </aside>
 
           <h3 className="rp-subhead">What they wanted, and what waited</h3>
-          <p className="rp-lede">
-            All eleven features tested, by share of the 34 who named each a dealbreaker. The top three
-            became the core. Everything under it — including the swaps and community groups already
-            sitting in the first build — waited.
-          </p>
-          <ol className="rp-rank rp-reveal">
+          <p className="rp-lede">The top three entered the core. Eight features waited.</p>
+          <ol className="rp-rank rp-reveal" data-evidence="true">
             {MVP_FEATURES.map((f) => (
               <li key={f.feature} className={f.tier === "core" ? "is-core" : undefined}>
                 <span className="rp-rank__label">{f.feature}</span>
@@ -420,11 +408,10 @@ export default function RisoGrove() {
             ))}
           </ol>
 
-          <figure className="rp-quoteCard rp-reveal">
+          <figure className="rp-quoteCard rp-reveal" data-evidence="true">
             <blockquote>“Any generative AI in this will remove any sense of trust.”</blockquote>
             <figcaption>
-              A florist, about AI-written care sheets. One sentence, and I shelved a whole feature
-              set. When people tell you the AI is costing them trust, you listen.
+              Florist · unprompted. I removed AI-written care sheets from scope.
             </figcaption>
           </figure>
         </div>
@@ -435,7 +422,7 @@ export default function RisoGrove() {
         <div className="rp-wrap">
           <p className="rp-kicker">The rebuild</p>
           <h2 className="rp-title">Four decisions, from AI-built to worth keeping.</h2>
-          <ol className="rp-route rp-reveal">
+          <ol className="rp-route rp-reveal" data-evidence="true">
             {LEGS.map((leg) => (
               <li className={`rp-leg${leg.now ? " rp-leg--now" : ""}`} key={leg.n}>
                 <span className="rp-leg__pin">{leg.n}</span>
@@ -455,8 +442,8 @@ export default function RisoGrove() {
         <div className="rp-wrap">
           <p className="rp-kicker">The first version · what Emergent built</p>
           <h2 className="rp-title">Everything the AI built, screen by screen.</h2>
-          <p className="rp-lede">One AI pass produced all of this. Move through the screens — <b>this is what I’m redesigning from</b>, not the finished product.</p>
-          <GroveScreenGallery screens={SCREENS} />
+          <p className="rp-lede">Authentic first-build screens—not finished redesigns.</p>
+          <div data-evidence="true"><GroveScreenGallery screens={SCREENS} /></div>
         </div>
       </section>
 
@@ -466,11 +453,9 @@ export default function RisoGrove() {
           <p className="rp-kicker">The redesign · what changes and why</p>
           <h2 className="rp-title">Three features, one decision each.</h2>
           <PhaseIndicator current={2} label="In progress · Phase 2 of 3" />
-          <p className="rp-lede" style={{ marginTop: "1.1rem" }}>
-            Here’s each must-have feature: the screen Emergent built, and what the redesign does instead.
-          </p>
+          <p className="rp-lede" style={{ marginTop: "1.1rem" }}>One existing screen. One evidence-backed change.</p>
           {DECISIONS.map((d) => (
-            <div className="rp-decision rp-reveal" key={d.feature}>
+            <div className="rp-decision rp-reveal" key={d.feature} data-evidence="true">
               <p className="rp-decision__feature">{d.feature}</p>
               <div className="rp-decision__pair">
                 <div className="rp-decision__col">
@@ -488,14 +473,12 @@ export default function RisoGrove() {
           ))}
           <p className="rp-note" style={{ marginTop: "clamp(2rem, 5vw, 3.5rem)" }}>
             <span className="rp-note__k">What remains</span>
-            Every screen shown above is the real Emergent build I’m redesigning from. The direction
-            is decided and traced to the survey; I’m building the high-fidelity redesign screens now,
-            and the social layer isn’t built yet. That’s the honest state of Phase 2 of 3.
+            Authentic first-build screens. High-fidelity redesign and social layer remain unbuilt. Phase 2 of 3.
           </p>
         </div>
       </section>
 
-      <GroveDecisionStory />
+      <div data-evidence="true"><GroveDecisionStory /></div>
 
       {/* FULL-BLEED PULL QUOTE */}
       <section className="rp-quote">
@@ -517,11 +500,8 @@ export default function RisoGrove() {
         <div className="rp-wrap">
           <p className="rp-kicker">Where I said no to the AI</p>
           <h2 className="rp-title">Reminders that never nag.</h2>
-          <p className="rp-lede">
-            The AI wanted urgency — guilt, streaks, “your plant is counting on you.” I said no.
-            Reminders should help, not guilt.
-          </p>
-          <div className="rp-pushback rp-reveal">
+          <p className="rp-lede">Remove guilt. Preserve one useful next action.</p>
+          <div className="rp-pushback rp-reveal" data-evidence="true">
             <div className="rp-notif rp-notif--ai">
               <p className="rp-notif__tag">What the AI wanted</p>
               <div className="rp-notif__card"><span className="rp-notif__app">Grove · now</span><p className="rp-notif__msg">I’m thirsty. Why did you forget me?</p></div>
@@ -536,7 +516,7 @@ export default function RisoGrove() {
           </div>
 
           <h3 className="rp-subhead">All six calls, in full</h3>
-          <div className="rp-accordion rp-reveal">
+          <div className="rp-accordion rp-reveal" data-evidence="true">
             {OVERRIDES.map((o, i) => (
               <details className="rp-acc" key={o.topic}>
                 <summary>
@@ -559,10 +539,10 @@ export default function RisoGrove() {
         <div className="rp-wrap">
           <p className="rp-phase">Foundation <span>· the system</span></p>
           <h2 className="rp-title" style={{ marginTop: ".4rem" }}>The system underneath.</h2>
-          <p className="rp-lede">The decisions that hold Grove together — its palette, type, principles, and three interactive specimens. Click a token to copy it.</p>
-          <GroveSystemLab />
+          <p className="rp-lede">Palette, type, principles, and three interactive specimens.</p>
+          <div data-evidence="true"><GroveSystemLab /></div>
           <h3 className="rp-subhead">Type scale</h3>
-          <div className="rp-typescale">
+          <div className="rp-typescale" data-evidence="true">
             <div className="rp-type">
               <span className="rp-type__label">Display · Archivo 800</span>
               <span style={{ fontSize: "2.1rem", fontWeight: 800, letterSpacing: "-.03em", lineHeight: 1 }}>Calm, not stressful</span>
@@ -578,20 +558,20 @@ export default function RisoGrove() {
           </div>
 
           <h3 className="rp-subhead">Decision log</h3>
-          <div className="rp-code" role="img" aria-label="A decision-log entry: the AI proposed urgency and guilt; the human override was one calm morning summary.">
+          <div className="rp-code" role="img" aria-label="A decision-log entry: the AI proposed urgency and guilt; the human override was one calm morning summary." data-evidence="true">
             <div className="rp-code__bar">
               <span className="rp-code__dot" style={{ background: "#ef8a7a" }} />
               <span className="rp-code__dot" style={{ background: "#e6c07a" }} />
               <span className="rp-code__dot" style={{ background: "#9ccb7a" }} />
               <span className="rp-code__name">decision-log.json</span>
             </div>
-            <pre>
+            <pre tabIndex={0} aria-label="Decision log code sample">
 {"{\n  "}<span className="k">"decision"</span>{": "}<span className="s">"reminders.tone"</span>{",\n  "}<span className="k">"ai_proposed"</span>{": "}<span className="s">"urgency + guilt"</span>{",\n  "}<span className="k">"human_override"</span>{": "}<span className="s">"one calm morning summary"</span>{",\n  "}<span className="k">"rationale"</span>{": "}<span className="s">"guilt-based reminders drive uninstalls"</span>{",\n  "}<span className="k">"overruled"</span>{": "}<span className="b">true</span>{"\n}"}
             </pre>
           </div>
 
           <h3 className="rp-subhead">Locked principles</h3>
-          <div className="rp-foundation rp-reveal">
+          <div className="rp-foundation rp-reveal" data-evidence="true">
             <div className="rp-fcard"><p className="rp-fcard__k">Principle · locked</p><p className="rp-fcard__t">One task a day</p><p className="rp-fcard__d">A new user only ever sees one decision per screen.</p></div>
             <div className="rp-fcard"><p className="rp-fcard__k">Principle · locked</p><p className="rp-fcard__t">Grouped by where they live</p><p className="rp-fcard__d">Plants grouped by room, never one long overwhelming list.</p></div>
             <div className="rp-fcard"><p className="rp-fcard__k">Principle · locked</p><p className="rp-fcard__t">The AI can always be overruled</p><p className="rp-fcard__d">A person has the final call on every automated decision.</p></div>
@@ -604,20 +584,13 @@ export default function RisoGrove() {
         <div className="rp-wrap">
           <p className="rp-kicker">Where it stands</p>
           <h2 className="rp-title">A focused prototype with an honest next test.</h2>
-          <p className="rp-lede">
-            Phase 2 is a clear hypothesis to test with real people, plus a decision log showing
-            where AI accelerates the work and where a human has to overrule it.
-          </p>
+          <p className="rp-lede">Phase 2 is a testable hypothesis plus an explicit human-override record.</p>
           <p className="rp-bridge">
             <span>Why a plant app</span>
-            Teaching a model to say “I’m not sure” — to show its confidence, cite a source, and stop
-            short of a guess — is the same design problem whether the answer is “is this plant toxic
-            to my cat” or “is this the right dose.” I practiced it here because I spent six years in
-            a cancer center, where I watched what happens when a system states something confidently
-            and is wrong. Plants are the low-stakes version of a question I already know the cost of.
+            Confidence, provenance, and human override make uncertainty actionable. Plants are the low-stakes practice ground.
           </p>
           <p className="rp-disclaimer">No invented numbers · Grove is a functional prototype, Phase 2 of 3</p>
-          <div className="rp-outcomes rp-reveal">
+          <div className="rp-outcomes rp-reveal" data-evidence="true">
             {OUTCOMES.map((o) => (
               <div className="rp-stat" key={o.n}>
                 <p className="rp-stat__n">{o.n}</p>
@@ -625,7 +598,7 @@ export default function RisoGrove() {
               </div>
             ))}
           </div>
-          <div className="rp-routeRecap rp-reveal" aria-label="AI versus judgment, in one line">
+          <div className="rp-routeRecap rp-reveal" aria-label="AI versus judgment, in one line" data-evidence="true">
             <span>AI: fast, wide, confident</span>
             <i aria-hidden="true">→</i>
             <span>Me: narrow, calm, accountable</span>
@@ -636,12 +609,7 @@ export default function RisoGrove() {
           </div>
           <div className="rp-note rp-reveal">
             <p className="rp-note__k">What the three phases mean</p>
-            <p>
-              Phase 1 was the first AI-built version and the 34-person survey this redesigns from.
-              Phase 2 is the decisions on this page. Phase 3 is finishing the high-fidelity care and
-              plant-ID screens, testing them with owners, and documenting the edge states. Social
-              discovery stays out until the core care loop earns its place.
-            </p>
+            <p>1: AI build + survey. 2: decisions shown here. 3: high-fidelity screens, owner testing, and edge states.</p>
           </div>
         </div>
       </section>

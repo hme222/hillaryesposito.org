@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import RisoDefs from "../components/riso/RisoDefs";
 import CartoField from "../components/riso/CartoField";
 import PhaseIndicator from "../components/riso/PhaseIndicator";
-import GroveLayerTeaser from "../components/riso/GroveLayerTeaser";
-import { CLIENT_FEEDBACK, CLIENT_FEEDBACK_ES } from "../data/clientFeedback";
 import usePageTitle from "../hooks/usePageTitle";
 import { useLanguage, useT } from "../app/LanguageContext";
 import type { StringKey } from "../i18n/strings";
@@ -70,6 +68,10 @@ export default function RisoHome() {
   const location = useLocation();
   const navigate = useNavigate();
   const [dispatchOpen, setDispatchOpen] = useState(false);
+  const [dispatchTrainDeparted, setDispatchTrainDeparted] = useState(false);
+  const dispatchSectionRef = useRef<HTMLElement>(null);
+  const dispatchTrainRef = useRef<HTMLDivElement>(null);
+  const dispatchTrainVideoRef = useRef<HTMLVideoElement>(null);
 
   // Preserve global shell deep-links such as /?scrollTo=projects when the
   // reader returns from a case study or uses the footer. The Riso homepage is
@@ -87,6 +89,71 @@ export default function RisoHome() {
     return () => timers.forEach((timer) => window.clearTimeout(timer));
   }, [location.search, navigate]);
 
+  useEffect(() => {
+    const section = dispatchSectionRef.current;
+    const trainField = dispatchTrainRef.current;
+    const vehicle = trainField?.querySelector<HTMLElement>(".rp-dispatchTrain__vehicle");
+    const video = dispatchTrainVideoRef.current;
+    const journal = section?.querySelector<HTMLElement>(".rp-wrap");
+    if (!section || !trainField || !vehicle || !journal) return;
+
+    section.dataset.trainEnhanced = "true";
+    const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let frame = 0;
+    let videoStarted = false;
+
+    const placeTrain = () => {
+      frame = 0;
+      if (motionPreference.matches) {
+        if (videoStarted) video?.pause();
+        section.dataset.trainDelivered = "true";
+        return;
+      }
+
+      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+      const fieldTop = trainField.getBoundingClientRect().top;
+      const startLine = viewportHeight * 0.92;
+      const travelWindow = viewportHeight * 0.5;
+      const progress = Math.min(1, Math.max(0, (startLine - fieldTop) / travelWindow));
+      const startX = -vehicle.offsetWidth - 32;
+      const parkedX = Math.max(16, journal.getBoundingClientRect().left);
+      const x = startX + (parkedX - startX) * progress;
+
+      trainField.style.setProperty("--rp-train-x", `${x}px`);
+      section.dataset.trainDelivered = progress >= 0.9 ? "true" : "false";
+
+      if (video && vehicle.offsetWidth > 0 && progress >= 0.08 && !videoStarted) {
+        videoStarted = true;
+        try {
+          const playback = video.play();
+          playback?.catch(() => {
+            trainField.dataset.videoReady = "false";
+          });
+        } catch {
+          trainField.dataset.videoReady = "false";
+        }
+      }
+    };
+
+    const schedulePlacement = () => {
+      if (!frame) frame = window.requestAnimationFrame(placeTrain);
+    };
+
+    placeTrain();
+    window.addEventListener("scroll", schedulePlacement, { passive: true });
+    window.addEventListener("resize", schedulePlacement, { passive: true });
+    motionPreference.addEventListener?.("change", schedulePlacement);
+
+    return () => {
+      window.removeEventListener("scroll", schedulePlacement);
+      window.removeEventListener("resize", schedulePlacement);
+      motionPreference.removeEventListener?.("change", schedulePlacement);
+      if (frame) window.cancelAnimationFrame(frame);
+      delete section.dataset.trainEnhanced;
+      delete section.dataset.trainDelivered;
+    };
+  }, []);
+
   const toContact = () => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     document.getElementById("contact")?.scrollIntoView({
@@ -100,7 +167,7 @@ export default function RisoHome() {
       <RisoDefs />
 
       {/* HERO */}
-      <header className="rp-hero" id="home">
+      <header className="rp-hero" id="home" data-visual="true">
         <CartoField
           mapSrc="/riso/painted-cartography-01.jpg"
           edition="paint"
@@ -113,8 +180,7 @@ export default function RisoHome() {
             <span className="rp-eyebrow">{t("home.riso.eyebrow")}</span>
             <h1 className="rp-h1">{t("home.riso.heroTitle")}</h1>
             <p className="rp-sub">
-              {t("home.riso.heroLead")} <b>{t("home.riso.heroProof")}</b>{" "}
-              {t("home.riso.heroClose")}
+              {t("home.riso.heroLead")} <b>{t("home.riso.heroProof")}</b>
             </p>
             <p className="rp-status">{t("home.status")}</p>
             <div className="rp-hero__ctas">
@@ -149,11 +215,11 @@ export default function RisoHome() {
       </ul>
 
       {/* PROOF */}
-      <section className="rp-section rp-section--alt" aria-labelledby="home-proof-title">
+      <section className="rp-section rp-section--alt" aria-labelledby="home-proof-title" data-visual="true">
         <div className="rp-wrap">
           <p className="rp-kicker">{t("home.riso.proofKicker")}</p>
           <h2 className="rp-title" id="home-proof-title">{t("home.riso.proofTitle")}</h2>
-          <div className="rp-outcomes">
+          <div className="rp-outcomes" data-evidence="true">
             {STATS.map((s) => (
               <div className="rp-stat" key={s.n}>
                 <p className="rp-stat__n">{s.n}</p>
@@ -163,28 +229,15 @@ export default function RisoHome() {
             ))}
           </div>
 
-          {/* The numbers are self-reported; this is the one voice on the site
-              that isn't Hillary's, so it belongs with the proof rather than
-              three pages deep on About. */}
-          {(lang === "es" ? CLIENT_FEEDBACK_ES : CLIENT_FEEDBACK).map((f) => (
-            <figure className="rp-testimonial" key={f.name}>
-              <blockquote>“{f.quote}”</blockquote>
-              <figcaption>
-                <b>{f.name}</b>
-                <span>{f.role}</span>
-                <span>{f.context}</span>
-              </figcaption>
-            </figure>
-          ))}
         </div>
       </section>
 
       {/* SELECTED WORK */}
-      <section className="rp-section" id="projects" aria-labelledby="home-work-title">
+      <section className="rp-section" id="projects" aria-labelledby="home-work-title" data-visual="true">
         <div className="rp-wrap">
           <p className="rp-kicker">{t("home.eyebrow")}</p>
           <h2 className="rp-title" id="home-work-title">{t("home.riso.workTitle")}</h2>
-          <div className="rp-worklist">
+          <div className="rp-worklist" data-evidence="true">
             {WORK.map((w) => (
               <Link className="rp-work" to={w.path} key={w.path}>
                 <div>
@@ -194,36 +247,91 @@ export default function RisoHome() {
                   </p>
                   <p className="rp-work__title">{t(w.titleKey)}</p>
                   <p className="rp-work__sub">{t(w.subKey)}</p>
-                  <p className="rp-work__desc">{t(w.descKey)}</p>
                 </div>
                 <div className="rp-work__thumb">
-                  <img src={w.img} alt={t(w.imgAltKey)} loading="lazy" />
+                  <img src={w.img} alt={t(w.imgAltKey)} loading="eager" decoding="async" />
                 </div>
                 <span className="rp-work__arrow" aria-hidden="true">→</span>
               </Link>
             ))}
           </div>
-          <div className="rp-note">
-            <p className="rp-note__k">{t("home.riso.supportingKicker")}</p>
-            <p>
-              {t("home.riso.supportingBody")}{" "}
-              <Link to="/case-study/mobbin">{t("home.riso.supportingLink")}</Link>
-            </p>
-          </div>
+          <p className="rp-supportingLink">
+            <span>{t("home.riso.supportingKicker")}</span>
+            <Link to="/case-study/mobbin">{t("home.riso.supportingLink")}</Link>
+          </p>
         </div>
       </section>
 
-      <GroveLayerTeaser />
+      {/* The recruiter path resolves before secondary journal/about material. */}
+      <section className="rp-section rp-section--alt" id="contact" aria-labelledby="home-contact-title">
+        <div className="rp-wrap rp-close">
+          <p className="rp-kicker">{t("home.riso.contactKicker")}</p>
+          <h2 id="home-contact-title">{t("home.ctaTitle")}</h2>
+          <p>{t("home.riso.contactBody")}</p>
+          <a className="rp-cta" href="mailto:espositohillary@gmail.com" aria-label={t("home.ctaEmailAria")}>
+            espositohillary@gmail.com →
+          </a>
+        </div>
+      </section>
 
       {/* WEEKEND DISPATCH: a current-practice signal, deliberately outside the
           three flagship rows. The story and evidence are complete at rest; the
           route drawing is decorative context and the event photograph is provenance. */}
-      <section className="rp-section rp-dispatchSection" id="dispatch" aria-labelledby="home-dispatch-title">
+      <section
+        className="rp-section rp-dispatchSection"
+        id="dispatch"
+        aria-labelledby="home-dispatch-title"
+        ref={dispatchSectionRef}
+      >
+        <div
+          className={`rp-dispatchTrain${dispatchTrainDeparted ? " rp-dispatchTrain--departed" : ""}`}
+          ref={dispatchTrainRef}
+        >
+          <div className="rp-dispatchTrain__scene" aria-hidden="true">
+            <span className="rp-dispatchTrain__rail rp-dispatchTrain__rail--upper" />
+            <span className="rp-dispatchTrain__rail rp-dispatchTrain__rail--lower" />
+            <div className="rp-dispatchTrain__vehicle">
+              <video
+                className="rp-dispatchTrain__video"
+                ref={dispatchTrainVideoRef}
+                muted
+                playsInline
+                preload="metadata"
+                aria-hidden="true"
+                onCanPlay={(event) => {
+                  event.currentTarget.closest<HTMLElement>(".rp-dispatchTrain")?.setAttribute("data-video-ready", "true");
+                }}
+                onError={(event) => {
+                  event.currentTarget.closest<HTMLElement>(".rp-dispatchTrain")?.setAttribute("data-video-ready", "false");
+                }}
+              >
+                <source src="/assets/video/weekend-journal-riso-train-v1.mp4" type="video/mp4" />
+              </video>
+              <div className="rp-dispatchTrain__fallback">
+                {[0, 1, 2, 3].map((car) => (
+                  <div
+                    className={`rp-dispatchTrain__car${car === 1 || car === 2 ? " rp-dispatchTrain__car--desktopOnly" : ""}`}
+                    key={car}
+                  >
+                    <span className="rp-dispatchTrain__windowBand">
+                      <i /><i /><i />
+                    </span>
+                    <span className="rp-dispatchTrain__doors" />
+                    <span className="rp-dispatchTrain__ink rp-dispatchTrain__ink--blue" />
+                    <span className="rp-dispatchTrain__ink rp-dispatchTrain__ink--orange" />
+                  </div>
+                ))}
+              </div>
+              <span className="rp-dispatchTrain__placard">{t("home.dispatch.eyebrow")}</span>
+            </div>
+          </div>
+          <p className="rp-dispatchTrain__attribution">{t("home.dispatch.trainAttribution")}</p>
+        </div>
         <div className="rp-wrap">
           <article className={`rp-dispatch${dispatchOpen ? " rp-dispatch--open" : ""}`}>
             <div className="rp-dispatch__cover">
               <div>
-                <p className="rp-kicker">{t("home.dispatch.eyebrow")}</p>
+                <p className="rp-kicker rp-dispatch__issueLabel">{t("home.dispatch.eyebrow")}</p>
                 <h2 className="rp-dispatch__title" id="home-dispatch-title">{t("home.dispatch.title")}</h2>
                 <p className="rp-dispatch__question">{t("home.dispatch.question")}</p>
               </div>
@@ -232,7 +340,15 @@ export default function RisoHome() {
                 className="rp-dispatch__toggle"
                 aria-expanded={dispatchOpen}
                 aria-controls="weekend-dispatch-panel"
-                onClick={() => setDispatchOpen((current) => !current)}
+                onClick={() => {
+                  if (!dispatchOpen) {
+                    if (dispatchTrainVideoRef.current?.offsetWidth) {
+                      dispatchTrainVideoRef.current.pause();
+                    }
+                    setDispatchTrainDeparted(true);
+                  }
+                  setDispatchOpen((current) => !current);
+                }}
               >
                 <span aria-hidden="true">+</span>
                 {t(dispatchOpen ? "home.dispatch.closeJournal" : "home.dispatch.openJournal")}
@@ -332,23 +448,8 @@ export default function RisoHome() {
           <div className="rp-aboutBlock">
             <p className="rp-kicker">{t("home.about.eyebrow")}</p>
             <h2 className="rp-title" id="home-about-title">{t("home.riso.aboutTitle")}</h2>
-            <p className="rp-lede">
-              {t("home.about.blurb")}
-            </p>
             <Link className="rp-cta rp-cta--ghost" to="/about" style={{ marginTop: "1.4rem" }}>{t("home.about.link")}</Link>
           </div>
-        </div>
-      </section>
-
-      {/* CONTACT CTA */}
-      <section className="rp-section rp-section--alt" id="contact" aria-labelledby="home-contact-title">
-        <div className="rp-wrap rp-close">
-          <p className="rp-kicker">{t("home.riso.contactKicker")}</p>
-          <h2 id="home-contact-title">{t("home.ctaTitle")}</h2>
-          <p>{t("home.riso.contactBody")}</p>
-          <a className="rp-cta" href="mailto:espositohillary@gmail.com" aria-label={t("home.ctaEmailAria")}>
-            espositohillary@gmail.com →
-          </a>
         </div>
       </section>
 

@@ -38,20 +38,20 @@ const MOVES = [
   {
     n: "01",
     title: "Move the supply point forward",
-    finding: "The medical warehouse sat far enough back that every resupply run started with a long trip before it started helping anyone.",
-    change: "I spearheaded moving the warehouse — $2M of supplies and equipment — inside an active combat zone. Resupply time dropped 85%.",
+    finding: "Every resupply run began too far from the aid stations.",
+    change: "Moved the $2M supply point forward. Resupply time fell 85%.",
   },
   {
     n: "02",
     title: "One way of asking",
-    finding: "Seven aid stations across three countries each requested and reported in their own format, including alongside other nations' militaries.",
-    change: "I wrote and implemented one communication protocol for all of them. Critical resource deployment got 15% more efficient.",
+    finding: "Seven stations used different request and reporting formats.",
+    change: "One shared protocol made critical-resource deployment 15% more efficient.",
   },
   {
     n: "03",
     title: "Order before it runs out",
-    finding: "Ordering reacted to shortages instead of anticipating them, which is expensive and, on the wrong day, dangerous.",
-    change: "Weekly and monthly consumption analysis turned ordering into forecasting. Spending fell 60% with no loss of availability.",
+    finding: "Ordering reacted to shortages instead of anticipating them.",
+    change: "Weekly and monthly forecasting cut spending 60% without reducing availability.",
   },
 ];
 
@@ -80,18 +80,16 @@ export default function FlagshipLogistics() {
         <div className="rp-hero__content">
           <div className="rp-clearing">
             <span className="rp-eyebrow">Operations · supply chain · service design under pressure</span>
-            <h1 className="rp-h1">Medical resupply, 85% faster, where running out is a casualty risk.</h1>
+            <h1 className="rp-h1">Medical resupply time reduced 85%, where running out is a casualty risk.</h1>
             <span className="rp-readtime"><b>4 min</b><span>read · deployed 2024</span></span>
             <p className="rp-sub">
-              Captain and Medical Logistics Officer, NJ Army National Guard. Deployed with the 44th
-              IBCT, I directed the medical supply chain for <b>5,000+ soldiers</b> and $2M in
-              supplies across seven aid stations in three countries — and cut resupply time by{" "}
-              <b>85%</b>.
+              I directed $2M in medical supply across seven aid stations and three countries for
+              <b> 5,000+ soldiers</b>. The redesigned service cut resupply time <b>85%</b>.
             </p>
             <a className="rp-cta" href="#log-moves">See the three moves →</a>
           </div>
         </div>
-        <div className="rp-hero__media fp-heroArt fp-heroArt--logistics">
+        <div className="rp-hero__media fp-heroArt fp-heroArt--logistics" data-evidence="true">
           <div className="fp-artifactLabel"><span>DEPLOYMENT · 2024</span><b>44th IBCT · seven aid stations · three countries</b></div>
           <figure className="fp-logisticsPhoto">
             <img src="/assets/about/army.jpg" alt="Hillary Esposito in uniform during her deployment as a medical logistics officer" />
@@ -99,7 +97,7 @@ export default function FlagshipLogistics() {
         </div>
       </header>
 
-      <section className="rp-cinema fp-cinema" id="log-brief" aria-labelledby="log-brief-title">
+      <section className="rp-cinema fp-cinema" id="log-brief" aria-labelledby="log-brief-title" data-evidence="true">
         <div className="rp-cinema__sticky">
           <div className="rp-cinema__wash" aria-hidden="true" />
           <div className="fp-cinemaCore fp-cinemaCore--workflow" aria-hidden="true">
@@ -112,17 +110,17 @@ export default function FlagshipLogistics() {
           <div className="rp-cinema__bridge">
             <p className="rp-kicker">Why the process mattered</p>
             <h2 id="log-brief-title">Process failure in a combat zone isn’t an inconvenience. It’s a casualty risk.</h2>
-            <p>Medical logistics means making sure medicine and equipment reach the people treating casualties, before they need it. Every inefficiency in that chain is measured in time, and time is the thing a wounded soldier does not have.</p>
+            <p>Every delay spent the one resource a casualty could not recover: time.</p>
           </div>
         </div>
       </section>
 
-      <section className="rp-section" id="log-moves">
+      <section className="rp-section" id="log-moves" data-evidence="true">
         <div className="rp-wrap">
           <p className="rp-kicker">What I changed</p>
           <h2 className="rp-title">Three moves, three numbers.</h2>
-          <p className="rp-lede">No new equipment and no more people. Each one is a change to where something sat, how it was asked for, or when it was ordered.</p>
-          <div className="fp-redesigns rp-reveal">
+          <p className="rp-lede">No new equipment or people: change location, request, and timing.</p>
+          <div className="fp-redesigns rp-reveal" data-evidence="true">
             {MOVES.map((m) => (
               <article key={m.n}>
                 <span className="fp-redesigns__n">{m.n}</span>
@@ -136,31 +134,28 @@ export default function FlagshipLogistics() {
         </div>
       </section>
 
-      <section className="rp-section rp-override" id="log-constraints">
+      <section className="rp-section rp-override" id="log-constraints" data-evidence="true">
         <div className="rp-wrap">
           <p className="rp-kicker">What made it hard</p>
           <h2 className="rp-title">The constraints were not negotiable.</h2>
-          <p className="rp-lede">Every one of these is the reason a tidier process would not have survived contact.</p>
-          <div className="fp-systemCards rp-reveal">
-            <article><span>01 · Cold chain</span><h3>48 hours, no exceptions</h3><p>Temperature-controlled supplies spoil. A late delivery is not a late delivery — it is a destroyed one.</p></article>
-            <article><span>02 · Multinational</span><h3>Other countries’ militaries</h3><p>Coordination ran across three countries and partner forces, each with their own systems and vocabulary.</p></article>
-            <article><span>03 · Active zone</span><h3>The warehouse move itself</h3><p>Relocating $2M of medical supplies is a plan with no rehearsal and no acceptable failure mode.</p></article>
+          <p className="rp-lede">The future state had to preserve every fixed constraint.</p>
+          <div className="fp-systemCards rp-reveal" data-evidence="true">
+            <article><span>01 · Cold chain</span><h3>Inside 48 hours</h3><p>Late meant unusable.</p></article>
+            <article><span>02 · Multinational</span><h3>Three countries</h3><p>Different systems and vocabulary.</p></article>
+            <article><span>03 · Active zone</span><h3>$2M warehouse move</h3><p>No rehearsal or acceptable failure.</p></article>
           </div>
           <p className="fp-ownership rp-reveal">
-            <b>Why this sits in a design portfolio</b>
-            Every move here is service design: follow the whole path a thing takes, find the step that
-            should not exist, and change the sequence rather than working harder inside it. The
-            difference is only that a slow queue in a hospital costs a morning, and a slow queue here
-            costs something else.
+            <b>Service-design scope</b>
+            People, inventory, requests, handoffs, constraints, ownership, and measurable recovery time.
           </p>
         </div>
       </section>
 
-      <EvidenceField
+      <div data-evidence="true"><EvidenceField
         id="log-outcomes"
         kicker="What it added up to"
         title="Measured in time, money, and things that did not happen."
-        intro="Directed the medical supply chain for a deployed infantry brigade across seven aid stations in three countries, moved the supply point forward inside an active combat zone, standardized how every station asked for what it needed, and replaced reactive ordering with forecasting."
+        intro="Moved the supply point, standardized the request, and replaced reactive ordering with forecasting."
         disclaimer="Figures as reported in Hillary's service record · no unit positions, routes, or locations are described here"
         metrics={[
           { tag: "Led", n: "85%", label: "reduction in medical resupply time after the warehouse moved forward" },
@@ -168,7 +163,7 @@ export default function FlagshipLogistics() {
           { tag: "Led", n: "15%", label: "efficiency gain in critical resource deployment from one shared communication protocol" },
         ]}
         route={["Find the step that should not exist", "Move it", "Standardize the ask", "Forecast the rest"]}
-      />
+      /></div>
 
       <section className="rp-section">
         <div className="rp-wrap rp-close">

@@ -1,6 +1,10 @@
 # Direction Lock
 
 Path: B
+
+## Weekend Journal train material lock — 2026-08-22
+
+Exploration 01 is the approved visual surface: clean subway silhouette, restrained Riso registration, quiet paper field, and lateral movement. Keep the existing full-bleed carrier, live issue-label handoff, and open-triggered departure. The film may crop editorially but must not become a player, poster card, literal service banner, or realism showcase. Native video only; silent, non-looping, pointer-inert, with the CSS train retained as fallback and reduced motion resolving directly to the delivered label.
 Layout topology: split editorial grid
 Primary carrier: type
 Density: row 44px; section 112px; related gap 24px; unrelated gap 64px
@@ -15,6 +19,19 @@ Grid: existing split hero plus `rp-wrap` content grid, max width governed by `ri
 
 Approved by: Hillary Esposito
 Approved on: 2026-08-11
+
+## Carmen-calibrated visual evidence extension — approved 2026-08-22
+
+Path remains **B — Comply**. This pass changes evidence composition, not the portfolio's visual identity.
+
+- **Layout topology:** an artifact spine. Each primary chapter starts with one dominant real or truthfully recreated evidence plate; a short caption sits beside or immediately below it.
+- **Primary carrier:** product screen, workflow map, service artifact, before/after sequence, state matrix, or research evidence plate. Type points to the evidence and never substitutes for it.
+- **Density:** Home targets at least 65% visual coverage; each primary case study targets at least 60%. Visible captions are normally 8–24 words and never exceed 45 words in one paragraph.
+- **Palette, type, radius, depth, and grid:** unchanged Riso tokens and compositions only.
+- **Motion:** unchanged budget. Motion may orient attention but cannot carry a research finding, decision, state, or outcome.
+- **Research caption:** Question · Method · Signal · Decision · Limitation.
+- **Product/service caption:** Constraint · Change · State · Owner · Outcome.
+- **Accessibility:** visuals retain semantic figures, concise visible captions, specific alt text or adjacent long descriptions, and a complete linear reading order.
 
 ## Higgsfield A/B/C private-lab extension — approved 2026-08-12
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { MSK_COPY, type MskCopy } from "../data/mskCaseStudy";
 
 /**
  * Sustainment, drawn as survival.
@@ -24,41 +25,18 @@ type Lane = {
   outcome: string;
 };
 
-const LANES: Lane[] = [
-  {
-    name: "EMR filing workflow",
-    events: [
-      { at: 0.3, label: "system upgrade" },
-      { at: 0.62, label: "system upgrade" },
-    ],
-    outcome: "still in use",
-  },
-  // Restored with the real sustainment fact. The old version of this lane
-  // claimed a "Certification dashboard" that became "the default compliance
-  // tool" — a dashboard that was never built. What actually happened is a
-  // stronger claim: the project ran two months and closed early, and other
-  // administrators kept using the collection method anyway. Surviving your own
-  // project ending is the hardest sustainment test there is.
-  {
-    name: "CPR certification format",
-    events: [{ at: 0.34, label: "project closes early" }],
-    outcome: "still used by other admins",
-  },
-  // The onboarding lane was removed on 2026-08-03 along with the certification
-  // lane. It read "Clinician onboarding" surviving three leadership changes —
-  // but the program trained administrative staff, not clinicians, and the
-  // three-transitions claim belonged to that wrong description. One lane with
-  // evidence is worth more than three with two guesses in them.
-];
+// Lane data now lives in data/mskCaseStudy.ts so it can localise.
 
 const W = 760;
 const LANE_H = 82;
 const LINE_X0 = 4;
 const LINE_X1 = 566;
 const OUTCOME_X = 584;
-const H = LANE_H * LANES.length;
 
-export default function MSKSustainment() {
+
+export default function MSKSustainment({ copy = MSK_COPY.en.sustainment }: { copy?: MskCopy["sustainment"] }) {
+  const LANES = copy.lanes;
+  const H = LANE_H * LANES.length;
   return (
     <div className="fp-sustainment" aria-hidden="true">
       <svg viewBox={`0 0 ${W} ${H}`} width="100%" role="presentation" focusable="false">
@@ -75,7 +53,7 @@ export default function MSKSustainment() {
               <line x1={LINE_X0} y1={lineY} x2={LINE_X1} y2={lineY} stroke="var(--green)" strokeWidth="2" />
               <circle cx={LINE_X0 + 3} cy={lineY} r="4.5" fill="var(--green)" />
               <text x={LINE_X0} y={lineY + 19} fontSize="8.5" letterSpacing="0.8" fill="currentColor" fillOpacity="0.5">
-                SHIPPED
+                {copy.shipped}
               </text>
 
               {/* What it survived. */}

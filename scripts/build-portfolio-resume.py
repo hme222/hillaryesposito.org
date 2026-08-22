@@ -198,9 +198,8 @@ def build_resume(output_path, variant="portfolio"):
             "footer": "HILLARY ESPOSITO · HEALTHCARE PRODUCT + SERVICE DESIGN",
             "summary": (
                 "Healthcare product and service designer with 13+ years inside cancer-care operations and military "
-                "medical logistics. Maps frontstage tasks to backstage people, systems, permissions, and handoffs; "
-                "then carries changes through prototyping, stakeholder alignment, implementation, and adoption. "
-                "Initiated an MSK workflow redesign that contributed inside a larger initiative to a 20% organization-wide "
+                "medical logistics. I map what staff do, where work changes hands, and who owns the next step. I stay "
+                "through prototyping and implementation. An MSK workflow redesign I initiated contributed inside a larger initiative to a 20% organization-wide "
                 "EMR cost reduction. MHA, Lean Six Sigma Green Belt, Army veteran, and bilingual English/Spanish communicator."
             ),
             "skills": (
@@ -213,22 +212,22 @@ def build_resume(output_path, variant="portfolio"):
             ),
         },
         "uxr": {
-            "headline": "HEALTHCARE UX RESEARCH | WORKFLOW, PRODUCT &amp; SERVICE DECISIONS",
-            "title": "Hillary Esposito - Healthcare UX Research Resume",
-            "subject": "Healthcare UX research resume focused on workflow research, evaluative studies, and research-to-decision evidence",
-            "footer": "HILLARY ESPOSITO · HEALTHCARE UX RESEARCH",
+            "headline": "HEALTHCARE UX RESEARCH + SERVICE DESIGN | WORKFLOWS &amp; COMPLEX SERVICES",
+            "title": "Hillary Esposito - Healthcare UX Research and Service Design Resume",
+            "subject": "Healthcare UX research and service design resume focused on workflow research, service mapping, and research-to-decision evidence",
+            "footer": "HILLARY ESPOSITO · HEALTHCARE UXR + SERVICE DESIGN",
             "summary": (
-                "Healthcare UX research and product practitioner with 13+ years inside cancer-care operations and medical "
-                "logistics. Uses workflow observation, stakeholder input, surveys, usability studies, and task analysis to "
-                "change product and service decisions. A 34-person Grove self-report survey narrowed 11 proposed features "
-                "to 3; MSK workflow analysis aligned four departments around an implemented digital process. The Grove "
-                "survey is bounded as self-report; the earlier MSK observation count was not preserved."
+                "Healthcare UX research and service design practitioner with 13+ years inside cancer-care operations and "
+                "medical logistics. Uses workflow observation, stakeholder input, surveys, service mapping, and task analysis "
+                "to change product and service decisions. At Grove, a 34-person self-report survey narrowed eleven proposed "
+                "features to three. At MSK, workflow analysis aligned four departments around an implemented digital process. "
+                "Research claims retain their method and evidence boundaries."
             ),
             "skills": (
                 "<b>Research:</b> research planning, workflow observation, stakeholder interviews, survey synthesis, "
                 "moderated usability testing, task analysis, qualitative synthesis, evidence limitations<br/>"
-                "<b>Decision artifacts:</b> current/future-state maps, journey maps, service blueprints, research-to-scope "
-                "traces, findings and recommendations, functional prototypes<br/>"
+                "<b>Service and decision artifacts:</b> current/future-state maps, journey maps, service blueprints, handoff "
+                "and dependency maps, research-to-scope traces, findings and recommendations, functional prototypes<br/>"
                 "<b>Domain and tools:</b> healthcare operations, Epic/EMR workflows, public health, Figma, FigJam, Miro, "
                 "React prototypes, accessibility, Lean Six Sigma"
             ),

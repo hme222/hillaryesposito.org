@@ -37,7 +37,13 @@ export type CuratedPage = {
   meta: Array<{ label: string; value: string }>;
   intro: string[];
   proofPoints: Array<{ stat: string; detail: string }>;
-  featuredWork: Array<{ title: string; reason: string }>;
+  featuredWork: Array<{
+    title: string;
+    reason: string;
+    image?: string;
+    imageAlt?: string;
+    evidence?: Array<{ label: string; value: string }>;
+  }>;
   strengths: string[];
   relevantExperience: string[];
   keywords: string[];
@@ -50,6 +56,7 @@ export type CuratedPage = {
   proofFirst?: boolean;
   caseStudyCtaLabel?: string;
   proofKicker?: string;
+  proofTitle?: string;
   resumeLink?: { label: string; path: string };
   contactFirst?: boolean;
 };
@@ -68,7 +75,7 @@ const allCuratedPages: Record<string, CuratedPage> = {
     eyebrow: "Healthcare systems · service design · product delivery",
     headline: "I spent 13+ years inside the services I now redesign.",
     subhead:
-      "At MSK, I mapped a clinical workflow that was later implemented. In the Army, I redesigned resupply across seven aid stations. Grove is where I now narrow scope, design interactions, and build.",
+      "Inside clinical operations, I mapped a paper detour that became an implemented digital workflow.",
     meta: [
       { label: "Target role", value: "Healthcare Product / Service Designer" },
       { label: "Domain", value: "Cancer care · clinical operations · medical logistics" },
@@ -76,8 +83,7 @@ const allCuratedPages: Record<string, CuratedPage> = {
       { label: "Credentials", value: "MHA · Lean Six Sigma Green Belt · Army veteran" },
     ],
     intro: [
-      "I learned service design before I had the title for it: follow the whole path a task takes, find the workaround, make ownership visible, and test whether the new process survives without its author in the room.",
-      "At MSK, that meant mapping a paper detour across clinical, IT, imaging, and operations partners and presenting the online workflow that was later implemented. In military medical logistics, it meant redesigning the service behind seven aid stations while cold chain, security, and casualty risk stayed fixed.",
+      "I follow the whole service path, make the workaround and owner visible, then test whether the change survives without its author.",
     ],
     proofPoints: [
       {
@@ -96,15 +102,42 @@ const allCuratedPages: Record<string, CuratedPage> = {
     featuredWork: [
       {
         title: "MSK: a filing queue replaced a four-system workaround",
-        reason: "Clinical workflow mapping, cross-functional alignment, permissions, implementation, change management, and a qualified organization-level outcome.",
+        reason: "A paper detour became one implemented digital workflow.",
+        image: "/assets/msk/mskcc-map-thumb.jpg",
+        imageAlt: "Recreated map of the Memorial Sloan Kettering care network",
+        evidence: [
+          { label: "Constraint", value: "Four departments" },
+          { label: "Change", value: "File from the queue" },
+          { label: "State", value: "Implemented" },
+          { label: "Owner", value: "Initiated + presented" },
+          { label: "Outcome", value: "Used through 2 upgrades" },
+        ],
       },
       {
-        title: "Medical logistics: resupply, 85% faster",
-        reason: "An end-to-end medical service across people, supplies, seven aid stations, three countries, cold-chain constraints, and measurable time and spending outcomes.",
+        title: "Medical logistics: resupply time reduced 85%",
+        reason: "One shared service across seven aid stations.",
+        image: "/assets/about/army.jpg",
+        imageAlt: "Hillary Esposito during her deployment as a medical logistics officer",
+        evidence: [
+          { label: "Constraint", value: "48-hour cold chain" },
+          { label: "Change", value: "Shared tracking" },
+          { label: "State", value: "Deployed" },
+          { label: "Owner", value: "Medical logistics lead" },
+          { label: "Outcome", value: "85% shorter resupply time" },
+        ],
       },
       {
         title: "Grove: research cut eleven features to three",
-        reason: "A functional consumer prototype showing scope decisions, AI confidence and provenance, accessibility, and an explicit next-test boundary.",
+        reason: "Survey evidence narrowed a functional prototype.",
+        image: "/assets/grove/grove1.png",
+        imageAlt: "Grove plant-care prototype home screen",
+        evidence: [
+          { label: "Constraint", value: "AI-built overload" },
+          { label: "Change", value: "11 features → 3" },
+          { label: "State", value: "Phase 2 of 3" },
+          { label: "Owner", value: "Sole designer" },
+          { label: "Outcome", value: "Functional prototype" },
+        ],
       },
     ],
     strengths: [
@@ -133,7 +166,7 @@ const allCuratedPages: Record<string, CuratedPage> = {
       "implementation",
     ],
     hiringManagerNote:
-      "My formal Product Designer title is newer than my healthcare practice. The relevant evidence is unusually direct: I worked inside the clinical and medical services, mapped the workarounds, aligned the teams, presented the change, and later saw it implemented. I pair that domain judgment with current interaction, accessibility, research, and prototype craft.",
+      "My Product Designer title is newer than my healthcare practice. The artifacts show the work: map, align, implement, sustain.",
     closing:
       "I am strongest where a healthcare product is also a service: multiple roles, consequential handoffs, policy and technical constraints, and a person who still has to act correctly at the end.",
     supportLinks: [
@@ -175,27 +208,26 @@ const allCuratedPages: Record<string, CuratedPage> = {
   },
   "healthcare-ux-researcher": {
     slug: "healthcare-ux-researcher",
-    company: "Healthcare UX research",
-    role: "UX Researcher · product and service decisions",
+    company: "Healthcare UX research + service design",
+    role: "UX Researcher / Service Designer · workflows and complex services",
     variant: "care",
     accent: "#315f54",
     accentDark: "#91c2b2",
     mapSrc: "/riso/elevation-01.jpg",
     edition: "struct",
-    badgeLabel: "Evidence record · decision trace · visible limitations",
-    eyebrow: "Workflow research · evaluative studies · research-to-decision",
+    badgeLabel: "What changed · what remains unknown",
+    eyebrow: "Healthcare workflow research + service design",
     headline: "Research should change the decision, not decorate the process.",
     subhead:
-      "A 34-person Grove survey cut the next build from eleven proposed features to three. At MSK, workflow observation gave four departments one process to act on. I also name what the surviving records cannot support.",
+      "A dated self-report survey narrowed Grove’s next build and left its behavioral questions open.",
     meta: [
-      { label: "Target lane", value: "Healthcare UXR · conditional evidence" },
-      { label: "Methods shown", value: "Survey · usability study · workflow observation · synthesis" },
-      { label: "Evidence rule", value: "Decision, method, source, change, limitation" },
+      { label: "Target lane", value: "Healthcare UXR + Service Design" },
+      { label: "Methods shown", value: "Survey · workflow observation · service mapping · synthesis" },
+      { label: "Evidence rule", value: "Method · source · decision · limitation" },
       { label: "Next gate", value: "Complete 6–8 participant evaluative study + UXR lead review" },
     ],
     intro: [
-      "My research practice grew inside clinical operations: observe where work pauses, trace the handoff, compare the documented process with the real one, and make the failure visible enough for several departments to act on it.",
-      "The portfolio does not pretend every old study record survived. Grove's 34-person survey is dated and bounded as self-report. The earlier five-person usability study identified overload, but its session dates and task-level record are missing, so I make no prevalence or broader behavior claim from it.",
+      "I frame the decision, trace the real workflow, separate evidence types, and name what the record cannot support.",
     ],
     proofPoints: [
       {
@@ -203,8 +235,8 @@ const allCuratedPages: Record<string, CuratedPage> = {
         detail: "plant owners in a defined self-report survey conducted May 22–July 8, 2026",
       },
       {
-        stat: "11 → 3",
-        detail: "proposed Grove features after the survey changed the product decision",
+        stat: "Boundary",
+        detail: "MSK workflow observation occurred; the session count was not preserved",
       },
       {
         stat: "4",
@@ -214,21 +246,48 @@ const allCuratedPages: Record<string, CuratedPage> = {
     featuredWork: [
       {
         title: "Grove: one survey changed what I built",
-        reason: "The page separates attitudinal self-report from observed behavior, connects findings to the 11-to-3 scope decision, and states the convenience-sample boundary.",
+        reason: "Self-report changed scope; it did not prove behavior.",
+        image: "/assets/grove/grove1.png",
+        imageAlt: "Grove plant-care prototype home screen",
+        evidence: [
+          { label: "Question", value: "What deserves the next build?" },
+          { label: "Method", value: "34-person survey" },
+          { label: "Signal", value: "Care over community" },
+          { label: "Decision", value: "11 features → 3" },
+          { label: "Limitation", value: "Self-report sample" },
+        ],
       },
       {
         title: "MSK: operational observation made a hidden workaround visible",
-        reason: "A research-to-service decision trace across clinical, IT, imaging, and operations, with missing observation counts disclosed rather than reconstructed.",
+        reason: "A shared map aligned four departments around one failure.",
+        image: "/assets/msk/mskcc-map-thumb.jpg",
+        imageAlt: "Recreated map of the Memorial Sloan Kettering care network",
+        evidence: [
+          { label: "Question", value: "Where does filing stall?" },
+          { label: "Method", value: "Workflow observation" },
+          { label: "Signal", value: "Paper detour" },
+          { label: "Decision", value: "File in the queue" },
+          { label: "Limitation", value: "Count not preserved" },
+        ],
       },
       {
-        title: "Next evidence: confidence, provenance, pet safety, and reminder behavior",
-        reason: "A planned 6–8 participant task-based study. It is a plan, not completed evidence, and it defines the claim boundary before data exists.",
+        title: "Medical logistics: one service across seven aid stations",
+        reason: "Operational service evidence, not formal UXR.",
+        image: "/assets/about/army.jpg",
+        imageAlt: "Hillary Esposito during her deployment as a medical logistics officer",
+        evidence: [
+          { label: "Question", value: "Where does resupply slow?" },
+          { label: "Method", value: "Service operations" },
+          { label: "Signal", value: "Fragmented requests" },
+          { label: "Decision", value: "One protocol" },
+          { label: "Limitation", value: "Not formal UXR" },
+        ],
       },
     ],
     strengths: [
       "Frame research around a product or service decision and the cost of being wrong",
       "Separate self-report, observed behavior, qualitative explanation, and bounded counts",
-      "Synthesize workarounds and handoffs into a shared current/future-state model",
+      "Map frontstage work, backstage systems, handoffs, and decision ownership",
       "Write limitations and next evidence into the artifact instead of a presentation footnote",
     ],
     relevantExperience: [
@@ -246,14 +305,14 @@ const allCuratedPages: Record<string, CuratedPage> = {
       "journey mapping",
       "service blueprinting",
       "research planning",
-      "mixed-method literacy",
+      "service design research",
       "stakeholder research",
       "research limitations",
     ],
     hiringManagerNote:
-      "Most of my research experience has been embedded in product and operations roles, not in a five-year UXR title. Grove shows a current survey-to-scope decision; MSK shows workflow research that led to an implemented change. Before I call this a dedicated UXR case, I need to complete the planned Grove study and have a healthcare UXR lead review it.",
+      "Strongest lane: embedded research for complex services. Grove proves survey-to-scope; MSK proves workflow-to-implementation. Task-level Grove findings remain unclaimed.",
     closing:
-      "I am most useful on healthcare research questions where the real workflow crosses roles, systems, and policy. That is where a team needs findings translated into a product or service decision.",
+      "I am most useful where healthcare research crosses roles, systems, policy, and service delivery. That is where the team needs evidence translated into a product or service decision.",
     supportLinks: [
       {
         label: "Grove research and product-decision case study",
@@ -267,6 +326,12 @@ const allCuratedPages: Record<string, CuratedPage> = {
         description: "Operational observation, workflow synthesis, cross-functional influence, and implemented change.",
         icon: <MedicalCrossIcon />,
       },
+      {
+        label: "Medical logistics service-design case study",
+        path: "/case-study/logistics",
+        description: "An end-to-end service redesign across seven aid stations, with measured time and spending outcomes.",
+        icon: <HandIcon />,
+      },
     ],
     relatedLinks: [
       {
@@ -278,9 +343,10 @@ const allCuratedPages: Record<string, CuratedPage> = {
     ],
     proofFirst: true,
     proofKicker: "Evidence type and boundary",
+    proofTitle: "What the evidence supports",
     caseStudyCtaLabel: "Review Grove research",
     resumeLink: {
-      label: "View healthcare UXR résumé · PDF ↗",
+      label: "View healthcare UXR + Service Design résumé · PDF ↗",
       path: "/assets/Hillary_Esposito_Healthcare_UX_Research_Resume.pdf",
     },
     contactFirst: true,
@@ -912,7 +978,7 @@ const allCuratedPages: Record<string, CuratedPage> = {
     proofPoints: [
       { stat: "20%", detail: "Organization-wide EMR cost reduction at MSK; I initiated a workflow redesign that contributed inside a larger initiative" },
       { stat: "70%", detail: "Every CPR certification collected 70% ahead of a deadline that was about to slip, after I rewrote the technical/legal material for the clinicians completing it" },
-      { stat: "85%", detail: "Faster medical resupply after building tracking and reporting workflows" },
+      { stat: "85%", detail: "Shorter medical resupply time after building tracking and reporting workflows" },
       { stat: "60%", detail: "Reduced medical logistics spending through better visibility and process structure" },
     ],
     featuredWork: [
@@ -998,7 +1064,7 @@ const allCuratedPages: Record<string, CuratedPage> = {
     meta: [
       { label: "Focus", value: "Field workflow and information capture" },
       { label: "Strength", value: "Distributed coordination + mobile product judgment" },
-      { label: "Evidence", value: "7 aid stations, $2M managed, 85% faster resupply" },
+      { label: "Evidence", value: "7 aid stations, $2M managed, resupply time reduced 85%" },
       { label: "Best fit", value: "Tools for teams doing real work under real constraints" },
     ],
     intro: [
@@ -1008,7 +1074,7 @@ const allCuratedPages: Record<string, CuratedPage> = {
     proofPoints: [
       { stat: "7", detail: "Aid stations coordinated through tracking and communication workflows across three countries" },
       { stat: "$2M", detail: "Medical supplies and equipment managed while improving visibility, reporting, and coordination" },
-      { stat: "85%", detail: "Faster resupply after improving field workflow visibility and handoffs" },
+      { stat: "85%", detail: "Shorter resupply time after improving field workflow visibility and handoffs" },
       { stat: "70%", detail: "Every CPR certification collected 70% ahead of a deadline that was about to slip, after I rewrote the technical/legal material for the clinicians completing it" },
     ],
     featuredWork: [
@@ -1112,7 +1178,7 @@ const allCuratedPages: Record<string, CuratedPage> = {
     proofPoints: [
       { stat: "20%", detail: "Organization-wide EMR cost reduction; I initiated a regulated healthcare workflow redesign that contributed inside a larger initiative" },
       { stat: "70%", detail: "Every CPR certification collected 70% ahead of a deadline that was about to slip, after I rewrote the technical/legal material for the clinicians completing it" },
-      { stat: "85%", detail: "Faster medical resupply after operational tracking improvements" },
+      { stat: "85%", detail: "Shorter medical resupply time after operational tracking improvements" },
       { stat: "60%", detail: "Reduced medical logistics spending through better visibility and coordination" },
     ],
     featuredWork: [

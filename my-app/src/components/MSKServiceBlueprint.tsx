@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { MSK_COPY, type MskCopy } from "../data/mskCaseStudy";
 
 /**
  * MSK service blueprint — the filing path drawn as actors and lines, not steps.
@@ -21,7 +22,7 @@ import React, { useState } from "react";
 
 type Lane = "evidence" | "front" | "back" | "support";
 
-type Node = { label: string; lane: Lane; col: number };
+type Node = { lane: Lane; col: number };
 
 /**
  * The support lane is the tell. Before, the EMR holds the record at the start
@@ -29,45 +30,40 @@ type Node = { label: string; lane: Lane; col: number };
  * redesign closed. After, the row is unbroken.
  */
 const BEFORE: Node[] = [
-  { label: "Dashboard queue", lane: "evidence", col: 0 },
-  { label: "Open queue", lane: "front", col: 0 },
-  { label: "Record in the EMR", lane: "support", col: 0 },
-  { label: "Record on screen", lane: "evidence", col: 1 },
-  { label: "Find document", lane: "front", col: 1 },
-  { label: "Printed page", lane: "evidence", col: 2 },
-  { label: "Print the record", lane: "front", col: 2 },
-  { label: "Paper in transit", lane: "evidence", col: 3 },
-  { label: "Route to imaging", lane: "back", col: 3 },
-  { label: "Scan queue", lane: "evidence", col: 4 },
-  { label: "Wait for scan", lane: "back", col: 4 },
-  { label: "Chart entry", lane: "evidence", col: 5 },
-  { label: "Re-check filing", lane: "front", col: 5 },
-  { label: "Back in the EMR", lane: "support", col: 5 },
+  { lane: "evidence", col: 0 },
+  { lane: "front", col: 0 },
+  { lane: "support", col: 0 },
+  { lane: "evidence", col: 1 },
+  { lane: "front", col: 1 },
+  { lane: "evidence", col: 2 },
+  { lane: "front", col: 2 },
+  { lane: "evidence", col: 3 },
+  { lane: "back", col: 3 },
+  { lane: "evidence", col: 4 },
+  { lane: "back", col: 4 },
+  { lane: "evidence", col: 5 },
+  { lane: "front", col: 5 },
+  { lane: "support", col: 5 },
 ];
 
 const AFTER: Node[] = [
-  { label: "Dashboard queue", lane: "evidence", col: 0 },
-  { label: "Open queue", lane: "front", col: 0 },
-  { label: "Record in the EMR", lane: "support", col: 0 },
-  { label: "Record on screen", lane: "evidence", col: 1 },
-  { label: "Select document", lane: "front", col: 1 },
-  { label: "Ready + role checked", lane: "support", col: 1 },
-  { label: "One action", lane: "evidence", col: 2 },
-  { label: "Send to EMR", lane: "front", col: 2 },
-  { label: "Permission allows it", lane: "support", col: 2 },
-  { label: "Chart entry", lane: "evidence", col: 3 },
-  { label: "Files in the chart", lane: "support", col: 3 },
-  { label: "Queue status", lane: "evidence", col: 4 },
-  { label: "Return, status updated", lane: "front", col: 4 },
-  { label: "Still in the EMR", lane: "support", col: 4 },
+  { lane: "evidence", col: 0 },
+  { lane: "front", col: 0 },
+  { lane: "support", col: 0 },
+  { lane: "evidence", col: 1 },
+  { lane: "front", col: 1 },
+  { lane: "support", col: 1 },
+  { lane: "evidence", col: 2 },
+  { lane: "front", col: 2 },
+  { lane: "support", col: 2 },
+  { lane: "evidence", col: 3 },
+  { lane: "support", col: 3 },
+  { lane: "evidence", col: 4 },
+  { lane: "front", col: 4 },
+  { lane: "support", col: 4 },
 ];
 
-const LANES: Array<{ key: Lane; label: string; sub: string }> = [
-  { key: "evidence", label: "Evidence", sub: "What exists" },
-  { key: "front", label: "Coordinator", sub: "Frontstage" },
-  { key: "back", label: "Imaging", sub: "Backstage" },
-  { key: "support", label: "EMR + permissions", sub: "Support" },
-];
+const LANE_ORDER: Lane[] = ["evidence", "front", "back", "support"];
 
 const W = 940;
 const PAD_L = 150;
@@ -90,9 +86,10 @@ function column(index: number, count: number) {
   return { x: PAD_L + index * colW + 5, w: colW - 10 };
 }
 
-export default function MSKServiceBlueprint() {
+export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint }: { copy?: MskCopy["blueprint"] }) {
   const [showAfter, setShowAfter] = useState(false);
   const nodes = showAfter ? AFTER : BEFORE;
+  const labels = showAfter ? copy.nodesAfter : copy.nodesBefore;
 
   const count = Math.max(...nodes.map((n) => n.col)) + 1;
 
@@ -104,14 +101,14 @@ export default function MSKServiceBlueprint() {
   return (
     <div className="fp-blueprint">
       <div className="fp-blueprint__controls">
-        <div className="fp-blueprint__switch" role="group" aria-label="Choose which path the blueprint shows">
+        <div className="fp-blueprint__switch" role="group" aria-label={copy.switchAria}>
           <button
             type="button"
             className={!showAfter ? "is-active" : undefined}
             aria-pressed={!showAfter}
             onClick={() => setShowAfter(false)}
           >
-            Before · one handoff
+            {copy.beforeBtn}
           </button>
           <button
             type="button"
@@ -119,32 +116,30 @@ export default function MSKServiceBlueprint() {
             aria-pressed={showAfter}
             onClick={() => setShowAfter(true)}
           >
-            After · no handoff
+            {copy.afterBtn}
           </button>
         </div>
         <p className="fp-blueprint__status" aria-live="polite">
-          {showAfter
-            ? "The record never leaves the coordinator's line of sight, and the queue reports back."
-            : "For two steps the record sits below the line of visibility, owned by nobody the coordinator can see."}
+          {showAfter ? copy.statusAfter : copy.statusBefore}
         </p>
       </div>
 
       <div className="fp-blueprint__canvas" aria-hidden="true">
         <svg viewBox={`0 0 ${W} ${H}`} width="100%" role="presentation" focusable="false">
           {/* lane labels + rules */}
-          {LANES.map((lane) => (
-            <g key={lane.key}>
-              <text x="0" y={LANE_Y[lane.key] + 15} fontSize="11.5" fill="currentColor" fillOpacity="0.9">
-                {lane.label}
+          {LANE_ORDER.map((lane) => (
+            <g key={lane}>
+              <text x="0" y={LANE_Y[lane] + 15} fontSize="11.5" fill="currentColor" fillOpacity="0.9">
+                {copy.lanes[lane]}
               </text>
-              <text x="0" y={LANE_Y[lane.key] + 29} fontSize="9" letterSpacing="1.1" fill="currentColor" fillOpacity="0.45">
-                {lane.sub.toUpperCase()}
+              <text x="0" y={LANE_Y[lane] + 29} fontSize="9" letterSpacing="1.1" fill="currentColor" fillOpacity="0.45">
+                {copy.laneSubs[lane].toUpperCase()}
               </text>
               <line
                 x1={PAD_L - 10}
-                y1={LANE_Y[lane.key] + NODE_H / 2}
+                y1={LANE_Y[lane] + NODE_H / 2}
                 x2={W}
-                y2={LANE_Y[lane.key] + NODE_H / 2}
+                y2={LANE_Y[lane] + NODE_H / 2}
                 stroke="currentColor"
                 strokeOpacity="0.08"
               />
@@ -172,7 +167,7 @@ export default function MSKServiceBlueprint() {
                 fill="var(--coral)"
                 fillOpacity="0.75"
               >
-                coordinator is waiting
+                {copy.waiting}
               </text>
               <text
                 x={blindFrom.x}
@@ -182,7 +177,7 @@ export default function MSKServiceBlueprint() {
                 fill="var(--coral)"
                 fillOpacity="0.95"
               >
-                NO RETURN SIGNAL — WHICH IS WHY STEP 06 EXISTS
+                {copy.noSignal}
               </text>
             </g>
           )}
@@ -199,7 +194,7 @@ export default function MSKServiceBlueprint() {
             strokeDasharray="6 4"
           />
           <text x="0" y={VIS_LINE_Y - 6} fontSize="9" letterSpacing="1.2" fill="currentColor" fillOpacity="0.55">
-            LINE OF VISIBILITY
+            {copy.visibility}
           </text>
 
           {/* nodes, in evidence/action pairs per column */}
@@ -213,7 +208,7 @@ export default function MSKServiceBlueprint() {
             const isCrossing = node.lane === "back";
 
             return (
-              <g key={`${node.label}-${i}`}>
+              <g key={`${labels[i]}-${i}`}>
                 <rect
                   x={x}
                   y={y}
@@ -234,7 +229,7 @@ export default function MSKServiceBlueprint() {
                   fill="currentColor"
                   fillOpacity={isEvidence ? 0.6 : 0.9}
                 >
-                  {node.label}
+                  {labels[i]}
                 </text>
               </g>
             );
@@ -282,38 +277,17 @@ export default function MSKServiceBlueprint() {
 
       {/* The real text for the drawing. Terse on purpose — the lanes carry it. */}
       <dl className="fp-blueprint__key">
-        <div>
-          <dt>Coordinator · frontstage</dt>
-          <dd>
-            {showAfter
-              ? "Opens the queue, selects the document, sends it to the chart, and lands back on the queue with the status already updated."
-              : "Opens the queue, finds the document, prints it — then has to return later and check whether it was ever filed."}
-          </dd>
-        </div>
-        <div>
-          <dt>Imaging · backstage</dt>
-          <dd>
-            {showAfter
-              ? "Not on this path any more. The department that used to receive paper never enters the filing workflow."
-              : "Receives the paper and scans it. Doing the work correctly, out of sight, with no way to report back into the queue."}
-          </dd>
-        </div>
-        <div>
-          <dt>EMR and permissions · support</dt>
-          <dd>
-            {showAfter
-              ? "Writes the record into the online chart, and exposes the action only when the record is ready and the role allows it."
-              : "Holds the record before it is printed and after it is scanned — but not in between, which is where the gap is."}
-          </dd>
-        </div>
-        <div>
-          <dt>What changed</dt>
-          <dd>
-            {showAfter
-              ? "One department left the path. The record stays above the line of visibility from open to confirmation."
-              : "Six steps, but only one that matters: the moment the record crosses a department line with no signal coming back."}
-          </dd>
-        </div>
+        {([
+          ["frontTerm", "frontAfter", "frontBefore"],
+          ["backTerm", "backAfter", "backBefore"],
+          ["supportTerm", "supportAfter", "supportBefore"],
+          ["changedTerm", "changedAfter", "changedBefore"],
+        ] as const).map(([term, after, before]) => (
+          <div key={term}>
+            <dt>{copy.key[term]}</dt>
+            <dd>{showAfter ? copy.key[after] : copy.key[before]}</dd>
+          </div>
+        ))}
       </dl>
     </div>
   );

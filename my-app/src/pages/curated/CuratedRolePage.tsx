@@ -65,8 +65,8 @@ function FitSection({ page }: { page: CuratedPage }) {
   return (
     <section id="curated-fit" className="rp-section" style={{ scrollMarginTop: "9.5rem" }}>
       <div className="rp-wrap rp-reveal">
-        <p className="rp-kicker">The short version</p>
-        <h2 className="rp-title">Why I’m a fit for this</h2>
+        <p className="rp-kicker">Practice</p>
+        <h2 className="rp-title">How I work</h2>
         {page.intro.map((p) => (
           <p className="rp-lede" key={p}>{p}</p>
         ))}
@@ -80,7 +80,7 @@ function ProofSection({ page }: { page: CuratedPage }) {
     <section id="curated-proof" className="rp-section rp-section--alt" style={{ scrollMarginTop: "9.5rem" }}>
       <div className="rp-wrap">
         <p className="rp-kicker">{page.proofKicker ?? "Numbers, with sources"}</p>
-        <h2 className="rp-title">What I’ve already proven</h2>
+        <h2 className="rp-title">{page.proofTitle ?? "What I’ve already proven"}</h2>
         <div className="rp-outcomes rp-reveal">
           {page.proofPoints.map((pt) => (
             <div className="rp-stat" key={pt.stat + pt.detail}>
@@ -100,13 +100,30 @@ function WorkSection({ page }: { page: CuratedPage }) {
       <div className="rp-wrap">
         <p className="rp-kicker">Start here</p>
         <h2 className="rp-title">What to review</h2>
-        <ol className="rp-numlist rp-reveal">
+        <ol className="curated-evidenceGrid rp-reveal">
           {page.featuredWork.map((item) => {
             const path = caseStudyPathFor(item.title);
             return (
-              <li key={item.title}>
-                <h3>{path ? <Link className="rp-numlist__link" to={path}>{item.title}</Link> : item.title}</h3>
-                <p>{item.reason}</p>
+              <li className="curated-evidenceCard" key={item.title} data-evidence="true">
+                {item.image && (
+                  <figure className="curated-evidenceCard__visual">
+                    <img src={item.image} alt={item.imageAlt ?? ""} loading="lazy" />
+                  </figure>
+                )}
+                <div className="curated-evidenceCard__body">
+                  <h3>{path ? <Link to={path}>{item.title}</Link> : item.title}</h3>
+                  <p>{item.reason}</p>
+                  {item.evidence && (
+                    <dl className="curated-evidenceStrip">
+                      {item.evidence.map((entry) => (
+                        <div key={entry.label}>
+                          <dt>{entry.label}</dt>
+                          <dd>{entry.value}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  )}
+                </div>
               </li>
             );
           })}
@@ -121,10 +138,16 @@ export default function CuratedRolePage() {
   const navigate = useNavigate();
   const { lang } = useLanguage();
   const page = useMemo(() => (slug ? curatedPages[slug] : undefined), [slug]);
+  const isHealthcareLane = slug === "healthcare-product-service-designer" || slug === "healthcare-ux-researcher";
   usePageTitle(page ? `${page.company}: ${page.role}` : "Page not found");
   const headlineW100 = useLongestWordWidth(page?.company ?? "");
   const chapters = useMemo<CaseStudyChapter[]>(() => {
-    const middle = page?.proofFirst
+    const middle = isHealthcareLane
+      ? [
+          { id: "curated-proof", label: "Proof" },
+          { id: "curated-work", label: "Evidence" },
+        ]
+      : page?.proofFirst
       ? [
           { id: "curated-proof", label: "Proof" },
           { id: "curated-work", label: "Work" },
@@ -138,10 +161,10 @@ export default function CuratedRolePage() {
     return [
       { id: "curated-hero", label: "Top" },
       ...middle,
-      { id: "curated-bring", label: "Bring + limits" },
+      ...(!isHealthcareLane ? [{ id: "curated-bring", label: "Bring + limits" }] : []),
       { id: "curated-close", label: "Contact" },
     ];
-  }, [page?.proofFirst]);
+  }, [isHealthcareLane, page?.proofFirst]);
 
   useEffect(() => {
     if (typeof IntersectionObserver === "undefined") return;
@@ -167,7 +190,7 @@ export default function CuratedRolePage() {
 
   return (
     <main
-      className="riso-page"
+      className={`riso-page curated-role curated-role--${page.slug}`}
       aria-label={`${page.company} tailored portfolio page`}
       lang="en"
       style={
@@ -197,7 +220,7 @@ export default function CuratedRolePage() {
       />
 
       {/* HERO */}
-      <header className="rp-hero" id="curated-hero">
+      <header className="rp-hero" id="curated-hero" data-visual="true">
         <CartoField
           mapSrc={page.mapSrc ?? "/riso/elevation-01.jpg"}
           edition={page.edition ?? "pine"}
@@ -259,7 +282,7 @@ export default function CuratedRolePage() {
       {/* META GRID */}
       <section className="rp-section" style={{ paddingBottom: 0 }}>
         <div className="rp-wrap">
-          <div className="rp-metagrid rp-reveal">
+          <div className="rp-metagrid rp-reveal" data-evidence="true">
             {page.meta.map((item) => (
               <div key={item.label}>
                 <p className="rp-metagrid__k">{item.label}</p>
@@ -274,7 +297,7 @@ export default function CuratedRolePage() {
         <>
           <ProofSection page={page} />
           <WorkSection page={page} />
-          <FitSection page={page} />
+          {!isHealthcareLane && <FitSection page={page} />}
         </>
       ) : (
         <>
@@ -338,7 +361,7 @@ export default function CuratedRolePage() {
       )}
 
       {/* STRENGTHS + HIRING NOTE */}
-      <section className="rp-section" id="curated-bring">
+      {!isHealthcareLane && <section className="rp-section" id="curated-bring">
         <div className="rp-wrap">
           <div className="rp-split rp-reveal">
             <div className="rp-split__text">
@@ -356,7 +379,7 @@ export default function CuratedRolePage() {
             </div>
           </div>
         </div>
-      </section>
+      </section>}
 
       {/* "Where the experience comes from" was removed on 2026-07-29. It restated
           "What to review" — on six of the eight pages it described the same
