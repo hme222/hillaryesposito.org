@@ -96,7 +96,7 @@ const allCuratedPages: Record<string, CuratedPage> = {
       },
       {
         stat: "85%",
-        detail: "faster medical resupply across seven aid stations after shared digital tracking",
+        detail: "shorter medical resupply time across seven aid stations after shared digital tracking",
       },
     ],
     featuredWork: [

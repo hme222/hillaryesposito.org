@@ -132,7 +132,7 @@ const en = {
   "home.stat.patterns": "App screens studied per app, across three finance apps",
   "home.stat.research": "People surveyed before I designed anything",
   "home.stat.scale": "People across the MSK workflows I helped redesign",
-  "home.stat.logistics": "Faster medical resupply across seven aid stations",
+  "home.stat.logistics": "Shorter medical resupply time across seven aid stations",
   "home.stat.mobbinSource": "Mobbin pattern study",
   "home.stat.groveSource": "Grove discovery research",
   "home.stat.mskSource": "MSK clinical operations",
