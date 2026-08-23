@@ -14,13 +14,13 @@ _Last updated: 2026-08-23 by Carmen-calibrated visual evidence verification_
 
 **Build contract:** `docs/designpowers/builds/2026-08-22-carmen-visual-evidence-build-contract.md` — approved and implemented.
 
-**Plan:** `docs/designpowers/plans/2026-08-22-carmen-visual-evidence-plan.md` — implementation and local verification complete; production hash verification pending.
+**Plan:** `docs/designpowers/plans/2026-08-22-carmen-visual-evidence-plan.md` — complete.
 
 **House style:** Path B — Comply. Artifact spine selected; Carmen's evidence behavior is the reference while the Riso identity remains canonical. Final validator, tell scan, and component-registry check pass.
 
 **Recovery point:** `e5a3908`; preserve all existing owner/source changes in the dirty worktree. Roll back only initiative-scoped hunks.
 
-**Current queue:** Local health report Ready. Home is 111 body-copy words before Contact; all six hiring-critical surfaces clear their fixed visual-evidence thresholds. TypeScript, 75 tests, optimized build, 12-state axe, 390/900/1440, representative Spanish/dark/reduced-motion, 200%-equivalent reflow, house-style, tell, registry, PDF/link, fresh anti-AI, and neurodiversity implementation gates pass. Production sync, push, and public asset-hash verification remain.
+**Current queue:** Complete. Home is 111 body-copy words before Contact; all six hiring-critical surfaces clear their fixed visual-evidence thresholds. TypeScript, 75 tests, optimized build, 12-state axe, 390/900/1440, representative Spanish/dark/reduced-motion, 200%-equivalent reflow, house-style, tell, registry, PDF/link, fresh anti-AI, and neurodiversity implementation gates pass. GitHub Pages completed successfully and the public root serves the verified `main.8509e559.js` and `main.6090db92.css` assets.
 
 **Matrix check:** Research/strategy, design systems, provenance, accessibility, localization, responsive composition, evaluation, and deployment recovery apply. Truth, accessible equivalents, representative renders, blind anti-AI review, and fixed visual/word thresholds are hard gates.
 
