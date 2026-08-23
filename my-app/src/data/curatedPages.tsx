@@ -235,10 +235,6 @@ const allCuratedPages: Record<string, CuratedPage> = {
         detail: "plant owners in a defined self-report survey conducted May 22–July 8, 2026",
       },
       {
-        stat: "Boundary",
-        detail: "MSK workflow observation occurred; the session count was not preserved",
-      },
-      {
         stat: "4",
         detail: "MSK departments aligned through one current/future-state workflow map; observation count was not preserved",
       },
