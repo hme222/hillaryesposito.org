@@ -24,7 +24,7 @@ Owner decision: closing the Weekend Journal brings the held-frame train back int
 
 **Recovery point:** `78337870e6b005fb2fb5caac16ef11bdcfdba58e`; preserve current owner changes. The approved direct-entry rule supersedes only the opening film's autoplay behavior.
 
-**Current queue:** Implementation and local verification complete. Independent blind recruiter verdict: Advance, with no High or Medium blocker. Release candidate passes 74 tests, 12 masked states, 12 visual-evidence states, 12 axe states, and 24 final responsive/adaptive states. Public deployment and asset-hash confirmation are the remaining release actions.
+**Current queue:** Complete. Independent blind recruiter verdict: Advance, with no High or Medium blocker. The release passes 74 tests, 12 masked states, 12 visual-evidence states, 12 axe states, and 24 final responsive/adaptive states. GitHub Pages serves the verified `main.e2ffe1d1.js` and `main.f13e9f36.css` assets; both public SHA-256 hashes match the frozen audited candidate.
 
 **Matrix check:** Context/mechanics, design systems, accessibility, trust/provenance, localization, evaluation, and deployment recovery apply. Truth boundaries, direct access, fixed masked-body checks, representative renders, fresh anti-AI review, and exact-build deployment are hard gates.
 

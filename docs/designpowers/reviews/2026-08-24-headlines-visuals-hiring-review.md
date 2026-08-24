@@ -39,6 +39,8 @@ Both target lanes pass all 23 applicable checks: clear role, coherent problem sp
 | Generated component registry | Current |
 | Research integrity | Pass; no “85% faster” drift; Grove remains self-report and Phase 2; MSK contribution remains qualified |
 | Independent blind anti-AI/recruiter review | Advance; no High/Medium blocker |
+| Public deployment | Pass; `main.e2ffe1d1.js` and `main.f13e9f36.css` served from `hillaryesposito.org` |
+| Public asset integrity | Pass; live JS SHA-256 `84d8d26d…f63d43` and CSS SHA-256 `07dfb573…e9b16` match the frozen audited candidate |
 | Diff hygiene | `git diff --check` pass |
 
 ## Design critique against the plan

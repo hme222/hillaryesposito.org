@@ -87,7 +87,7 @@
 - [x] Run design critique against this plan and repair material findings.
 - [x] Run TypeScript, full tests, build, axe, responsive/adaptive/localization, research-integrity, House Style, registry, and masked-body gates.
 - [x] Run fresh-context anti-AI review and senior-recruiter visual review.
-- [ ] Deploy only the exact verified build and confirm public asset hashes.
+- [x] Deploy only the exact verified build and confirm public asset hashes.
 
 **Accessibility check:** Keyboard, focus, reduced motion, reflow, dark mode, Spanish, and semantic equivalents must all pass.
 **Dependency check:** Existing repository scripts and GitHub Pages workflow only.
