@@ -1,5 +1,55 @@
 # Divergence Ledger
 
+## Headlines + visuals hiring pass — 2026-08-24
+
+### Structural options
+
+Option A: **Headline evidence lockups** — keep the artifact spine and move role, decision, outcome, state, and limitation into the opening visual field. **Chosen.**
+
+Option B: **Dedicated recruiter gallery** — create a separate visuals-only route. Rejected because it duplicates claims and creates a second maintenance surface.
+
+Option C: **Cinematic visual deck** — replace the primary path with full-viewport scenes. Rejected because it weakens service/research rigor and increases motion/access risk.
+
+Default: Count a passing rubric and readable prose as proof that a fast recruiter understands the case.
+
+Instead: Mask ordinary body paragraphs and require the artifact, headline, metric labels, and actions to carry the hiring decision independently.
+
+Reason: The remaining failure is evidence timing, not missing long-form rigor.
+
+Validation: Home and the three flagship openings pass fixed masked-body requirements at 390px and 1440px; both role lanes retain 23/23; a recruiter-lens review returns Advance.
+
+### Opening film decision reversal
+
+Default: Autoplay the authored film once per browser tab before exposing the portfolio.
+
+Instead: Expose the complete hiring path immediately and offer one explicit “Play opening film” control.
+
+Reason: A visual-authorship signal cannot delay the role, evidence, or action it is meant to strengthen.
+
+Validation: No film appears before action; playback is muted and non-looping; Skip, Escape, end, error, and failsafe restore page scroll and focus to the trigger; reduced-motion users retain the same static hiring evidence.
+
+## Weekend Journal integrated masthead + opening return — 2026-08-23
+
+### Structural options
+
+Option A: **Integrated journal masthead** — train, issue label, title, question, attribution, and open control share one full-bleed paper field; the train crops behind an asymmetric paper wash. **Chosen.**
+
+Option B: **Split cover** — keep train and copy in separate horizontal bands inside one frame. Rejected because the modules remain visually stacked rather than causally joined.
+
+Option C: **Train underline** — reduce the train to a narrow moving strip behind the issue/title line. Rejected because it loses the approved cinematic scale and weakens the journal-cover metaphor.
+
+Default: Place a motion asset in a standalone banner and add an unrelated content card beneath it.
+Instead: Let the motion asset become the journal's cover art and use one typographic field to bind motion, label, title, prompt, control, and provenance.
+Reason: The train should announce this study's editorial identity, not read as transit decoration floating between portfolio sections.
+Validation: No direct train sibling remains above the journal; closed/open states at 320, 390, 900, and 1440 show one cover, legible copy/control, no overflow, and unchanged evidence behavior.
+
+### Portfolio opening
+
+Default: Remove the visual overture to optimize only for immediate scanning.
+Instead: Restore the already-tested visual once per browser-tab session and dissolve into the portfolio, with immediate bypasses for preference, bandwidth, error, Escape, and Skip.
+Reason: The opening establishes Hillary's visual authorship while repeat visitors and access needs retain direct entry.
+Validation: First eligible entry shows the film; same-session revisit, reduced motion, and Save Data do not; the exit has no white flash or lingering overlay.
+
 ## Carmen-calibrated visual evidence compression — 2026-08-22
 
 ### Structural options

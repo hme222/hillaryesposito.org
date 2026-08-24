@@ -31,9 +31,9 @@ const CHAPTERS: CaseStudyChapter[] = [
   { id: "grove-start", label: "Start", note: "One designer, end to end" },
   { id: "grove-brief", label: "Problem", note: "Care should fit a life already happening" },
   { id: "grove-research", label: "Research", note: "34 real opinions" },
-  { id: "grove-redesign", label: "What AI built", note: "The first version, screen by screen" },
+  { id: "grove-redesign", label: "First build", note: "Authentic prototype screens" },
   { id: "grove-decisions", label: "Decisions", note: "Three features, one call each" },
-  { id: "grove-override", label: "Human override", note: "Five calls" },
+  { id: "grove-override", label: "Product calls", note: "Evidence, risk, next test" },
   { id: "grove-system", label: "System", note: "The decisions underneath" },
   { id: "grove-outcomes", label: "Outcomes", note: "No invented numbers" },
 ];
@@ -41,14 +41,14 @@ const CHAPTERS: CaseStudyChapter[] = [
 const LEGS = [
   {
     n: "01",
-    mission: "An AI tool built the whole app",
+    mission: "Emergent generated the first prototype",
     // "forums" was removed on 2026-08-03. Checked against the Grove repo:
     // `git log --all -S"forum"` returns nothing across the whole history, so
     // Emergent never built one. Forums *were* one of the eleven features the
     // survey asked about, and the two got conflated. Feed, badges, missions,
     // swaps and community groups are all real — verified in grove-frontend.
     detail:
-      "Emergent generated a social feed, badges, missions, groups, and swaps in one pass.",
+      "The first pass included a social feed, badges, missions, groups, and swaps.",
     impact: "Feature-complete, focus-empty",
   },
   {
@@ -69,7 +69,7 @@ const LEGS = [
     n: "04",
     mission: "Rebuild around the three that matter",
     detail:
-      "Keep calm reminders, sourced AI, safety warnings, and human override.",
+      "Keep calm reminders, sourced identification, safety warnings, and a final human check.",
     impact: "Phase 2 of 3",
     now: true,
   },
@@ -99,7 +99,7 @@ const MVP_FEATURES = [
 const OUTCOMES = [
   { n: "34", l: "plant owners surveyed before any screen changed" },
   { n: "3", l: "features that earn the download; everything else waits" },
-  { n: "5", l: "AI calls I overruled to keep Grove honest" },
+  { n: "5", l: "product calls made explicit, including one care-logic mistake" },
 ];
 
 const SCREENS = [
@@ -117,14 +117,14 @@ const DECISIONS = [
   {
     feature: "Reminders",
     old: "grove-live-care.jpg",
-    oldAlt: "The care screen Emergent built, leading with a daily mission and a feed",
+    oldAlt: "First-build care screen leading with a daily mission and a feed",
     oldBg: "#f5f0ea",
     why: "Replace mission-and-feed urgency with one calm morning summary.",
   },
   {
     feature: "Plant ID by camera",
     old: "grove-live-add.jpg",
-    oldAlt: "The add-plant screen Emergent built, giving a single confident identification",
+    oldAlt: "First-build add-plant screen giving a single confident identification",
     oldBg: "#31302e",
     why: "Show top guesses, confidence, and sources—not one false verdict.",
   },
@@ -135,21 +135,20 @@ const DECISIONS = [
     // occurrence anywhere in the Grove repo's history. Badges and streaks are
     // real (203 and 56 references in grove-frontend), so the point stands
     // without the invented third item.
-    oldAlt: "The personality screen Emergent built, with badges and streaks",
+    oldAlt: "First-build personality screen with badges and streaks",
     oldBg: "#f5f0ea",
     why: "Keep plant personality; remove scorekeeping that turns care into paperwork.",
   },
 ];
 
-// The calls I overruled the AI on — progressive-disclosure accordion.
-// `next` marks a call I am making now rather than one already in the build.
+// Decisions from the first build, with one correction still being designed.
 const OVERRIDES: Array<{ topic: string; ai: string; me: string; why: string; next?: boolean }> = [
-  { topic: "Reminder tone", ai: "Guilt and urgency — “your plant misses you.”", me: "One calm morning summary.", why: "Notifications are the #1 reason people delete a plant app." },
-  { topic: "Gamification", ai: "Badges and streaks.", me: "An AI plant personality you earn — a feeling, not points.", why: "Care that feels like paperwork is the top reason people quit. A streak also rewards watering every day, and overwatering is the most common way people kill houseplants — the optimal play would kill the subject of the product. The honest cost: calm should show lower 7-day engagement than streaks would. I’d take that trade if 90-day retention holds. If it doesn’t, the mechanic was doing work I underestimated, and I’d rather find that out than assume it." },
+  { topic: "Reminder tone", ai: "Guilt and urgency: “your plant misses you.”", me: "One calm morning summary.", why: "Notifications are the #1 reason people delete a plant app." },
+  { topic: "Gamification", ai: "Badges and streaks.", me: "An AI plant personality you earn: a feeling, not points.", why: "Care that feels like paperwork is the top reason people quit. A streak also rewards watering every day, while overwatering is the most common way people kill houseplants. The optimal play would kill the subject of the product. The honest cost: calm should show lower 7-day engagement than streaks would. I’d take that trade if 90-day retention holds. If it doesn’t, the mechanic was doing work I underestimated, and I’d rather find that out than assume it." },
   { topic: "Plant ID confidence", ai: "One confident answer, every time.", me: "Top guesses, how sure it is, and its sources.", why: "False certainty is the fastest way to lose trust." },
-  { topic: "Pet safety", ai: "Generic care tips.", me: "Toxic-to-pets warnings the moment you add a plant, with sources.", why: "New owners raised it unprompted, before I ever asked. When a plant can hurt a cat, a wrong guess isn’t a suggestion — it’s a risk." },
+  { topic: "Pet safety", ai: "Generic care tips.", me: "Toxic-to-pets warnings the moment you add a plant, with sources.", why: "New owners raised it unprompted, before I ever asked. When a plant can hurt a cat, a wrong guess isn’t a suggestion. It’s a risk." },
   { topic: "Notification frequency", ai: "Nudge whenever engagement dips.", me: "One summary per group; only true emergencies interrupt.", why: "A reminder can never become the reason someone leaves." },
-  { topic: "Watering schedule", next: true, ai: "A fixed calendar — every plant on its own repeating interval, counting days overdue.", me: "The reminder asks you to check, not to water: “Fiddle Leaf — check the top inch.” Two taps: watered, or not yet.", why: "Overwatering kills more houseplants than neglect, and a fixed interval is exactly how it happens. My own care guide already says “water when the top inch is dry” — the reminder engine never caught up to it. Asking you to check makes the reminder correct, makes seasonality free, and turns “smart care reminders” from a label into a mechanism. This is the one I got wrong in the same direction as the AI: I overruled its tone five times and never once its logic." },
+  { topic: "Watering schedule", next: true, ai: "A fixed calendar, with every plant on its own repeating interval and days overdue.", me: "The reminder asks you to check, not to water: “Fiddle Leaf: check the top inch.” Two taps: watered, or not yet.", why: "Overwatering kills more houseplants than neglect, and a fixed interval is exactly how it happens. My own care guide already says “water when the top inch is dry.” The reminder engine never caught up to it. Asking you to check makes the reminder correct, makes seasonality free, and turns “smart care reminders” from a label into a mechanism. This is the one I got wrong in the same direction as the first build: I corrected its tone five times and never once its logic." },
 ];
 
 // Share, then confirm only what actually happened — shared, copied, or a way to
@@ -208,7 +207,7 @@ function ThanksShare() {
 }
 
 export default function RisoGrove() {
-  usePageTitle("Grove — AI Judgment Case Study");
+  usePageTitle("Grove — Research-to-Scope Case Study");
   const { lang } = useLanguage();
 
   // Let a direct chapter URL land after the lazy route and global route-focus
@@ -336,9 +335,15 @@ export default function RisoGrove() {
               <span>read · one designer, end to end</span>
             </span>
             <p className="rp-sub">
-              A 34-person self-report survey narrowed an eleven-feature AI build to three.
+              A 34-person self-report survey narrowed an eleven-feature first build to three.
               I am the sole designer; <b>Phase 2 is in progress</b>.
             </p>
+            <dl className="rp-heroEvidence" aria-label="Grove case evidence at a glance">
+              <div><dt>Role</dt><dd>Sole product designer · end to end</dd></div>
+              <div><dt>Method</dt><dd>34-person self-report survey</dd></div>
+              <div><dt>Decision</dt><dd>11 features → 3 launch priorities</dd></div>
+              <div><dt>State</dt><dd>Phase 2 of 3 · functional prototype</dd></div>
+            </dl>
             <a className="rp-cta" href="#grove-research">
               See the rebuild →
             </a>
@@ -421,7 +426,7 @@ export default function RisoGrove() {
       <section className="rp-section rp-section--alt">
         <div className="rp-wrap">
           <p className="rp-kicker">The rebuild</p>
-          <h2 className="rp-title">Four decisions, from AI-built to worth keeping.</h2>
+          <h2 className="rp-title">Four decisions, from first build to focused next test.</h2>
           <ol className="rp-route rp-reveal" data-evidence="true">
             {LEGS.map((leg) => (
               <li className={`rp-leg${leg.now ? " rp-leg--now" : ""}`} key={leg.n}>
@@ -440,8 +445,8 @@ export default function RisoGrove() {
       {/* ONE SYSTEM, EVERY SCREEN */}
       <section className="rp-section" id="grove-redesign" data-language-anchor="grove-decisions">
         <div className="rp-wrap">
-          <p className="rp-kicker">The first version · what Emergent built</p>
-          <h2 className="rp-title">Everything the AI built, screen by screen.</h2>
+          <p className="rp-kicker">The first working version</p>
+          <h2 className="rp-title">The whole first build, screen by screen.</h2>
           <p className="rp-lede">Authentic first-build screens—not finished redesigns.</p>
           <div data-evidence="true"><GroveScreenGallery screens={SCREENS} /></div>
         </div>
@@ -459,7 +464,7 @@ export default function RisoGrove() {
               <p className="rp-decision__feature">{d.feature}</p>
               <div className="rp-decision__pair">
                 <div className="rp-decision__col">
-                  <span className="rp-decision__tag rp-decision__tag--old">Emergent built</span>
+                  <span className="rp-decision__tag rp-decision__tag--old">First build</span>
                   <div className="rp-device rp-device--app" style={{ background: d.oldBg }}>
                     <img src={`/assets/grove/${d.old}`} alt={d.oldAlt} loading="lazy" />
                   </div>
@@ -498,20 +503,20 @@ export default function RisoGrove() {
       {/* AI DECISION DEEP-DIVE */}
       <section className="rp-section rp-override" id="grove-override" data-language-anchor="grove-override">
         <div className="rp-wrap">
-          <p className="rp-kicker">Where I said no to the AI</p>
-          <h2 className="rp-title">Reminders that never nag.</h2>
+          <p className="rp-kicker">How the evidence changed the build</p>
+          <h2 className="rp-title">Reminders that protect the care task.</h2>
           <p className="rp-lede">Remove guilt. Preserve one useful next action.</p>
           <div className="rp-pushback rp-reveal" data-evidence="true">
             <div className="rp-notif rp-notif--ai">
-              <p className="rp-notif__tag">What the AI wanted</p>
+              <p className="rp-notif__tag">First build</p>
               <div className="rp-notif__card"><span className="rp-notif__app">Grove · now</span><p className="rp-notif__msg">I’m thirsty. Why did you forget me?</p></div>
               <div className="rp-notif__card"><span className="rp-notif__app">Grove · 2h ago</span><p className="rp-notif__msg">Your Pothos is struggling. Don’t let it down.</p></div>
               <div className="rp-notif__card"><span className="rp-notif__app">Grove · 5h ago</span><p className="rp-notif__msg">3 plants are counting on you today.</p></div>
             </div>
             <div className="rp-pushback__vs" aria-hidden="true">instead ↓</div>
             <div className="rp-notif rp-notif--me">
-              <p className="rp-notif__tag">What I’m designing instead</p>
-              <div className="rp-notif__card"><span className="rp-notif__app">Grove · 8:00 AM</span><p className="rp-notif__msg">Good morning. One thing today — your Fiddle Leaf, check the top inch.</p></div>
+              <p className="rp-notif__tag">Next design</p>
+              <div className="rp-notif__card"><span className="rp-notif__app">Grove · 8:00 AM</span><p className="rp-notif__msg">Good morning. One thing today: check the top inch of your Fiddle Leaf.</p></div>
             </div>
           </div>
 
@@ -524,8 +529,8 @@ export default function RisoGrove() {
                   {o.next && <span className="rp-acc__next">designing now</span>}
                 </summary>
                 <div className="rp-acc__body">
-                  <p className="rp-acc__line rp-acc__ai"><b>AI wanted</b>{o.ai}</p>
-                  <p className="rp-acc__line rp-acc__me"><b>I chose</b>{o.me}</p>
+                  <p className="rp-acc__line rp-acc__ai"><b>First build</b>{o.ai}</p>
+                  <p className="rp-acc__line rp-acc__me"><b>{o.next ? "Next design" : "Decision"}</b>{o.me}</p>
                   <p className="rp-acc__why">{o.why}</p>
                 </div>
               </details>
@@ -549,7 +554,7 @@ export default function RisoGrove() {
             </div>
             <div className="rp-type">
               <span className="rp-type__label">Body · Archivo 400</span>
-              <span style={{ fontSize: "1rem", color: "var(--ink-2)" }}>One clear task a day, from a calm morning summary — never a pile of guilt.</span>
+              <span style={{ fontSize: "1rem", color: "var(--ink-2)" }}>One clear task a day. A calm morning summary, never a pile of guilt.</span>
             </div>
             <div className="rp-type">
               <span className="rp-type__label">Label · Space Mono</span>
@@ -557,24 +562,19 @@ export default function RisoGrove() {
             </div>
           </div>
 
-          <h3 className="rp-subhead">Decision log</h3>
-          <div className="rp-code" role="img" aria-label="A decision-log entry: the AI proposed urgency and guilt; the human override was one calm morning summary." data-evidence="true">
-            <div className="rp-code__bar">
-              <span className="rp-code__dot" style={{ background: "#ef8a7a" }} />
-              <span className="rp-code__dot" style={{ background: "#e6c07a" }} />
-              <span className="rp-code__dot" style={{ background: "#9ccb7a" }} />
-              <span className="rp-code__name">decision-log.json</span>
-            </div>
-            <pre tabIndex={0} aria-label="Decision log code sample">
-{"{\n  "}<span className="k">"decision"</span>{": "}<span className="s">"reminders.tone"</span>{",\n  "}<span className="k">"ai_proposed"</span>{": "}<span className="s">"urgency + guilt"</span>{",\n  "}<span className="k">"human_override"</span>{": "}<span className="s">"one calm morning summary"</span>{",\n  "}<span className="k">"rationale"</span>{": "}<span className="s">"guilt-based reminders drive uninstalls"</span>{",\n  "}<span className="k">"overruled"</span>{": "}<span className="b">true</span>{"\n}"}
-            </pre>
-          </div>
+          <h3 className="rp-subhead">The decision record</h3>
+          <dl className="rp-decisionRecord" data-evidence="true">
+            <div><dt>First build</dt><dd>Water on a fixed calendar.</dd></div>
+            <div><dt>What broke</dt><dd>The interface rewarded overwatering.</dd></div>
+            <div><dt>Next design</dt><dd>Check the top inch. Then log watered or not yet.</dd></div>
+            <div><dt>Next test</dt><dd>Plant health and 90-day retention, not reminder taps.</dd></div>
+          </dl>
 
           <h3 className="rp-subhead">Locked principles</h3>
           <div className="rp-foundation rp-reveal" data-evidence="true">
             <div className="rp-fcard"><p className="rp-fcard__k">Principle · locked</p><p className="rp-fcard__t">One task a day</p><p className="rp-fcard__d">A new user only ever sees one decision per screen.</p></div>
             <div className="rp-fcard"><p className="rp-fcard__k">Principle · locked</p><p className="rp-fcard__t">Grouped by where they live</p><p className="rp-fcard__d">Plants grouped by room, never one long overwhelming list.</p></div>
-            <div className="rp-fcard"><p className="rp-fcard__k">Principle · locked</p><p className="rp-fcard__t">The AI can always be overruled</p><p className="rp-fcard__d">A person has the final call on every automated decision.</p></div>
+            <div className="rp-fcard"><p className="rp-fcard__k">Principle · locked</p><p className="rp-fcard__t">Automated advice stays reviewable</p><p className="rp-fcard__d">A person has the final call on every uncertain recommendation.</p></div>
           </div>
         </div>
       </section>
@@ -584,10 +584,10 @@ export default function RisoGrove() {
         <div className="rp-wrap">
           <p className="rp-kicker">Where it stands</p>
           <h2 className="rp-title">A focused prototype with an honest next test.</h2>
-          <p className="rp-lede">Phase 2 is a testable hypothesis plus an explicit human-override record.</p>
+          <p className="rp-lede">Phase 2 is a testable hypothesis plus an explicit decision record.</p>
           <p className="rp-bridge">
             <span>Why a plant app</span>
-            Confidence, provenance, and human override make uncertainty actionable. Plants are the low-stakes practice ground.
+            Confidence, provenance, and review states make uncertainty actionable. Plants are the low-stakes practice ground.
           </p>
           <p className="rp-disclaimer">No invented numbers · Grove is a functional prototype, Phase 2 of 3</p>
           <div className="rp-outcomes rp-reveal" data-evidence="true">
@@ -598,18 +598,13 @@ export default function RisoGrove() {
               </div>
             ))}
           </div>
-          <div className="rp-routeRecap rp-reveal" aria-label="AI versus judgment, in one line" data-evidence="true">
-            <span>AI: fast, wide, confident</span>
-            <i aria-hidden="true">→</i>
-            <span>Me: narrow, calm, accountable</span>
-            <i aria-hidden="true">→</i>
-            <span>3 features kept, 5 calls overruled, 1 in progress</span>
-            <i aria-hidden="true">→</i>
-            <strong>That’s Grove</strong>
-          </div>
+          <p className="rp-routeVerdict rp-reveal" data-evidence="true">
+            <b>I got the care logic wrong before I got the interface right.</b>
+            The next prototype tests whether a check-first reminder protects the plant without costing long-term use.
+          </p>
           <div className="rp-note rp-reveal">
             <p className="rp-note__k">What the three phases mean</p>
-            <p>1: AI build + survey. 2: decisions shown here. 3: high-fidelity screens, owner testing, and edge states.</p>
+            <p>1: first build + survey. 2: decisions shown here. 3: high-fidelity screens, owner testing, and edge states.</p>
           </div>
         </div>
       </section>
@@ -619,7 +614,7 @@ export default function RisoGrove() {
         <div className="rp-wrap rp-close">
           <h2>Building a product people have to trust?</h2>
           <p>
-            I want to keep designing the calls a model should not make.
+            I want to keep designing products that make uncertainty visible and reviewable.
           </p>
           {/* Same action and wording as MSK and Mobbin — the three studies form
               a loop, so the closing move should not change between them. */}

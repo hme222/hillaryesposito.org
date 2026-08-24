@@ -1,6 +1,17 @@
-import React, { act } from "react";
+import React, { act, useRef, useState } from "react";
 import { createRoot, Root } from "react-dom/client";
 import HomepageOpeningFilm from "./HomepageOpeningFilm";
+
+function Harness({ initialOpen = false }: { initialOpen?: boolean }) {
+  const [open, setOpen] = useState(initialOpen);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  return (
+    <>
+      <button ref={triggerRef} type="button" onClick={() => setOpen(true)}>View opening visual</button>
+      <HomepageOpeningFilm open={open} onClose={() => setOpen(false)} returnFocusRef={triggerRef} />
+    </>
+  );
+}
 
 describe("Homepage opening film", () => {
   let container: HTMLDivElement;
@@ -12,7 +23,6 @@ describe("Homepage opening film", () => {
   });
 
   beforeEach(() => {
-    window.sessionStorage.clear();
     Object.defineProperty(HTMLMediaElement.prototype, "pause", {
       configurable: true,
       value: jest.fn(),
@@ -30,21 +40,19 @@ describe("Homepage opening film", () => {
 
   afterAll(() => jest.useRealTimers());
 
-  function setPreferences(reduceMotion: boolean, saveData = false) {
+  function setReducedMotion(reduceMotion: boolean) {
     Object.defineProperty(window, "matchMedia", {
       configurable: true,
       value: () => ({ matches: reduceMotion, addEventListener() {}, removeEventListener() {} }),
     });
-    Object.defineProperty(navigator, "connection", {
-      configurable: true,
-      value: { saveData },
-    });
   }
 
-  it("fills the opening view once without sound, controls, or looping", async () => {
-    setPreferences(false);
-    await act(async () => root.render(<HomepageOpeningFilm />));
+  it("enters the portfolio directly and opens only after the named action", async () => {
+    setReducedMotion(false);
+    await act(async () => root.render(<Harness />));
+    expect(container.querySelector(".rp-openingFilm")).toBeNull();
 
+    await act(async () => container.querySelector<HTMLButtonElement>("button")?.click());
     const film = container.querySelector<HTMLElement>(".rp-openingFilm");
     const video = film?.querySelector<HTMLVideoElement>("video");
     expect(film?.getAttribute("role")).toBe("dialog");
@@ -52,54 +60,42 @@ describe("Homepage opening film", () => {
     expect(video?.muted).toBe(true);
     expect(video?.loop).toBe(false);
     expect(video?.controls).toBe(false);
-    expect(window.sessionStorage.getItem("portfolio-opening-film-seen")).toBe("true");
-
-    await act(async () => video?.dispatchEvent(new Event("ended")));
-    expect(film?.classList.contains("is-exiting")).toBe(true);
-    act(() => jest.advanceTimersByTime(560));
-    expect(container.querySelector(".rp-openingFilm")).toBeNull();
   });
 
-  it("does not replay after it has appeared in the session", async () => {
-    setPreferences(false);
-    window.sessionStorage.setItem("portfolio-opening-film-seen", "true");
-    await act(async () => root.render(<HomepageOpeningFilm />));
-    expect(container.querySelector(".rp-openingFilm")).toBeNull();
-  });
-
-  it.each([
-    [true, false],
-    [false, true],
-  ])("enters the site directly when reduced motion=%s and save data=%s", async (reduceMotion, saveData) => {
-    setPreferences(reduceMotion, saveData);
-    await act(async () => root.render(<HomepageOpeningFilm />));
-    expect(container.querySelector(".rp-openingFilm")).toBeNull();
-  });
-
-  it("allows an immediate skip and releases the page scroll lock", async () => {
-    setPreferences(false);
-    await act(async () => root.render(<HomepageOpeningFilm />));
+  it("returns focus and page scroll after the film ends", async () => {
+    setReducedMotion(false);
+    await act(async () => root.render(<Harness initialOpen />));
+    const trigger = container.querySelector<HTMLButtonElement>("button");
+    const video = container.querySelector<HTMLVideoElement>("video");
     expect(document.documentElement.style.overflow).toBe("hidden");
 
-    await act(async () => container.querySelector<HTMLButtonElement>("button")?.click());
+    await act(async () => video?.dispatchEvent(new Event("ended")));
     act(() => jest.advanceTimersByTime(560));
 
     expect(container.querySelector(".rp-openingFilm")).toBeNull();
     expect(document.documentElement.style.overflow).toBe("");
+    expect(document.activeElement).toBe(trigger);
   });
 
-  it("keeps keyboard focus on Skip and lets Escape reveal the site", async () => {
-    setPreferences(false);
-    await act(async () => root.render(<HomepageOpeningFilm />));
-    const skip = container.querySelector<HTMLButtonElement>(".rp-openingFilm__skip");
+  it("keeps keyboard focus on the return action and lets Escape close", async () => {
+    setReducedMotion(false);
+    await act(async () => root.render(<Harness initialOpen />));
+    const close = container.querySelector<HTMLButtonElement>(".rp-openingFilm__skip");
+    expect(document.activeElement).toBe(close);
 
-    expect(document.activeElement).toBe(skip);
     document.body.focus();
     await act(async () => window.dispatchEvent(new KeyboardEvent("keydown", { key: "Tab" })));
-    expect(document.activeElement).toBe(skip);
+    expect(document.activeElement).toBe(close);
 
     await act(async () => window.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape" })));
     act(() => jest.advanceTimersByTime(560));
     expect(container.querySelector(".rp-openingFilm")).toBeNull();
+  });
+
+  it("shows the static visual instead of motion when reduced motion is requested", async () => {
+    setReducedMotion(true);
+    await act(async () => root.render(<Harness initialOpen />));
+    expect(container.querySelector(".rp-openingFilm__poster")).not.toBeNull();
+    expect(container.querySelector("video")).toBeNull();
   });
 });

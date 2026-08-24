@@ -184,7 +184,8 @@ async function run() {
           localStorage.setItem("darkMode", "false");
         });
         await page.goto(`http://portfolio.local${route}`, { waitUntil: "domcontentloaded" });
-        await page.waitForTimeout(400);
+        await page.waitForSelector("main h1", { timeout: 30000 });
+        await page.waitForTimeout(500);
         results.push({ width, ...(await inspect(page, name)) });
         await page.close();
       }
@@ -192,8 +193,20 @@ async function run() {
   } finally {
     await browser.close();
   }
-  fs.writeFileSync(outputPath, JSON.stringify(results, null, 2));
-  process.stdout.write(`${JSON.stringify(results, null, 2)}\n`);
+  const failures = results.flatMap((result) => {
+    const issues = [];
+    const minimumCoverage = result.route === "home" ? 65 : 60;
+    if (result.words === 0) issues.push("route content did not mount");
+    if (result.evidenceCoverage < minimumCoverage) issues.push(`evidence coverage ${result.evidenceCoverage}% < ${minimumCoverage}%`);
+    if (result.maxParagraphWords > 45) issues.push(`paragraph ${result.maxParagraphWords} words > 45`);
+    if (result.route === "home" && result.wordsBeforeContact > 140) issues.push(`Home words before Contact ${result.wordsBeforeContact} > 140`);
+    if (result.route === "home" && result.workImages?.some((image) => image.naturalWidth === 0)) issues.push("Home work image failed to load");
+    return issues.map((issue) => ({ route: result.route, width: result.width, issue }));
+  });
+  const report = { verdict: failures.length ? "FAIL" : "PASS", results, failures };
+  fs.writeFileSync(outputPath, JSON.stringify(report, null, 2));
+  process.stdout.write(`${JSON.stringify({ verdict: report.verdict, auditedStates: results.length, failures }, null, 2)}\n`);
+  if (failures.length) process.exitCode = 1;
 }
 
 run().catch((error) => {

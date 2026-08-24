@@ -109,7 +109,7 @@ describe("flagship case-study accessibility", () => {
     expect(results.violations).toEqual([]);
   });
 
-  it("keeps the active homepage shell targets and mobile recruiter shortcut intact", async () => {
+  it("keeps the active homepage shell targets and one work-first hero route intact", async () => {
     await act(async () => {
       root.render(<RisoHome />);
     });
@@ -117,7 +117,8 @@ describe("flagship case-study accessibility", () => {
     ["home", "projects", "about", "contact"].forEach((id) => {
       expect(container.querySelector(`#${id}`)).not.toBeNull();
     });
-    expect(container.querySelector(".rp-recruiter-link")).not.toBeNull();
+    expect(container.querySelector('a[href="/case-study/msk"].rp-cta')).not.toBeNull();
+    expect(container.querySelector(".rp-recruiter-link")).toBeNull();
   });
 
   it("keeps the weekend journal quiet until a keyboard or touch user opens it", async () => {
@@ -134,6 +135,9 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".rp-dispatch__collage")).toBeNull();
     expect(container.textContent).not.toContain("home.dispatch.finding");
     expect(container.querySelector(".rp-dispatchTrain__scene")?.getAttribute("aria-hidden")).toBe("true");
+    expect(container.querySelector(".rp-dispatch__masthead .rp-dispatchTrain")).not.toBeNull();
+    expect(container.querySelector(".rp-dispatch__masthead .rp-dispatch__cover")).not.toBeNull();
+    expect(container.querySelector(".rp-dispatchSection > .rp-dispatchTrain")).toBeNull();
     expect(container.textContent).toContain("home.dispatch.trainAttribution");
     expect(container.querySelector(".rp-dispatchTrain img")).toBeNull();
     const trainVideo = container.querySelector<HTMLVideoElement>(".rp-dispatchTrain__video");
@@ -146,6 +150,11 @@ describe("flagship case-study accessibility", () => {
     expect(trainVideo?.querySelector("source")?.getAttribute("src")).toBe(
       "/assets/video/weekend-journal-riso-train-v1.mp4",
     );
+    const pauseTrain = jest.fn();
+    Object.defineProperty(trainVideo, "pause", { configurable: true, value: pauseTrain });
+    Object.defineProperty(trainVideo, "currentTime", { configurable: true, value: 3.9 });
+    await act(async () => trainVideo?.dispatchEvent(new Event("timeupdate", { bubbles: true })));
+    expect(pauseTrain).toHaveBeenCalledTimes(1);
     expect(container.querySelectorAll(".rp-dispatchTrain__fallback .rp-dispatchTrain__car")).toHaveLength(4);
 
     await act(async () => {
@@ -168,6 +177,8 @@ describe("flagship case-study accessibility", () => {
     });
     expect(toggle?.getAttribute("aria-expanded")).toBe("false");
     expect(panel?.hidden).toBe(true);
+    expect(container.querySelector(".rp-dispatchTrain")?.classList.contains("rp-dispatchTrain--departed")).toBe(false);
+    expect(container.querySelector(".rp-dispatchTrain")?.classList.contains("rp-dispatchTrain--returning")).toBe(true);
   });
 
   // Every flagship carried a first-scroll "decision trace" evidence poster —
@@ -195,6 +206,27 @@ describe("flagship case-study accessibility", () => {
     });
 
     expect(container.querySelector(".fp-workflowFig")).not.toBeNull();
+  });
+
+  it("keeps the MSK conceptual hero distinct from evidence and operable without hover", async () => {
+    await act(async () => {
+      root.render(<FlagshipMSK />);
+    });
+
+    const lens = container.querySelector<HTMLElement>(".fp-mskLens");
+    const controls = Array.from(container.querySelectorAll<HTMLButtonElement>(".fp-mskLens__controls button"));
+    expect(lens?.closest("[data-provenance='conceptual']")).not.toBeNull();
+    expect(controls).toHaveLength(3);
+    expect(controls[0].getAttribute("aria-pressed")).toBe("true");
+    expect(container.textContent).toContain("The work began online.");
+
+    await act(async () => {
+      controls[2].dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    });
+
+    expect(lens?.dataset.stage).toBe("queue");
+    expect(controls[2].getAttribute("aria-pressed")).toBe("true");
+    expect(container.textContent).toContain("The decision moved back to the queue.");
   });
 
 
@@ -297,15 +329,26 @@ describe("flagship case-study accessibility", () => {
     expect(results.violations).toEqual([]);
   });
 
-  it("opens directly on portfolio proof without an autoplay interruption", async () => {
-    window.sessionStorage.removeItem("portfolio-opening-film-seen");
+  it("keeps portfolio proof direct and opens the visual only after an explicit action", async () => {
     await act(async () => {
       root.render(<RisoHome />);
     });
 
     expect(container.querySelector(".rp-openingFilm")).toBeNull();
     expect(container.querySelector("main h1")).not.toBeNull();
-    expect(container.textContent).not.toContain("85% faster");
+    expect(container.textContent).toContain("Seven aid stations · shared forecast · 85% shorter resupply time");
+
+    const openingTrigger = container.querySelector<HTMLButtonElement>(".rp-openingVisualTrigger");
+    await act(async () => openingTrigger?.click());
+
+    const opening = container.querySelector<HTMLElement>(".rp-openingFilm");
+    const openingVideo = opening?.querySelector<HTMLVideoElement>("video");
+    expect(opening?.getAttribute("role")).toBe("dialog");
+    expect(opening?.getAttribute("aria-modal")).toBe("true");
+    expect(openingVideo?.autoplay).toBe(true);
+    expect(openingVideo?.muted).toBe(true);
+    expect(openingVideo?.loop).toBe(false);
+    expect(openingVideo?.controls).toBe(false);
     expect(container.querySelector(".rp-homeBackdrop")).toBeNull();
     expect(container.querySelector(".rp-layerTeaser")).toBeNull();
     expect(container.querySelector(".carto--painted")).not.toBeNull();
@@ -315,7 +358,7 @@ describe("flagship case-study accessibility", () => {
       root.render(<RisoGrove />);
     });
     expect(container.textContent).toContain("The rebuild");
-    expect(container.textContent).toContain("Four decisions, from AI-built to worth keeping");
+    expect(container.textContent).toContain("Four decisions, from first build to focused next test");
     expect(container.textContent).not.toContain("Walk the route");
   });
 

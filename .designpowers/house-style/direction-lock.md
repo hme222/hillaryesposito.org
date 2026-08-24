@@ -2,6 +2,23 @@
 
 Path: B
 
+## Headlines + visuals hiring pass — approved 2026-08-24
+
+Path remains **B — Comply**. The portfolio's default Home entry now leads directly to role, outcome, work, and contact. The opening film remains part of the authored system only as an explicit, user-initiated visual; this decision supersedes the 2026-08-23 once-per-tab autoplay rule and preserves every other Weekend Journal masthead decision.
+
+- **Layout topology:** existing artifact spine with compact opening evidence lockups; no recruiter dashboard, gallery route, or duplicate case-study structure.
+- **Primary carrier:** real product screens, workflow maps, service mechanisms, and qualified metric/state labels.
+- **Palette, type, radius, depth, and grid:** unchanged Riso tokens and compositions.
+- **Motion:** no required or automatic prelude. The optional film is muted, non-looping, dismissible by button and Escape, and never carries required hiring evidence.
+- **Copy:** headlines name causal decisions; labels preserve role, owner, state, source, and limitation. Ordinary body paragraphs remain for depth but receive zero credit in the recruiter scan test.
+- **Accessibility:** the page is complete before playback; the film trigger is descriptive and focus returns to it after every exit path.
+
+## Weekend Journal integrated masthead + portfolio opening — approved 2026-08-23
+
+Path remains **B — Comply**. The train, issue label, journal title, question, attribution, and open control form one continuous editorial masthead. The train may crop behind the typographic field, but an asymmetric paper wash must keep type and focus legible. Scroll still delivers the train; opening the journal still releases it; the evidence opens below in normal flow.
+
+The existing portfolio film returns as a once-per-browser-tab full-viewport overture. It exits through a restrained 560ms opacity/transform/filter crossfade into the unchanged homepage. Skip, Escape, reduced motion, Save Data, media failure, and the failsafe remain hard exits. No new motion runtime, media, token, typeface, or component family is authorized.
+
 ## Weekend Journal train material lock — 2026-08-22
 
 Exploration 01 is the approved visual surface: clean subway silhouette, restrained Riso registration, quiet paper field, and lateral movement. Keep the existing full-bleed carrier, live issue-label handoff, and open-triggered departure. The film may crop editorially but must not become a player, poster card, literal service banner, or realism showcase. Native video only; silent, non-looping, pointer-inert, with the CSS train retained as fallback and reduced motion resolving directly to the delivered label.

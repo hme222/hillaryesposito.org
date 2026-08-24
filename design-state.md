@@ -1,6 +1,34 @@
 # Design State: Full Portfolio Redesign — Hybrid Positioning
 
-_Last updated: 2026-08-23 by Carmen-calibrated visual evidence verification_
+_Last updated: 2026-08-24 by headlines-and-visuals hiring pass_
+
+### 2026-08-24 — Weekend Journal close-return interaction
+
+Owner decision: closing the Weekend Journal brings the held-frame train back into its parked masthead position over 520ms. Reopening during the return cancels it and departs immediately. The native disclosure, focus behavior, decorative semantics, scroll arrival, and reduced-motion static state remain unchanged. Focused regression test passes; the repository build is separately blocked by the in-progress explicit-play opening-film call-site mismatch.
+
+## Active Initiative: Headlines + Visuals Hiring Pass
+
+**Problem:** The portfolio is strong when read normally, but MSK and Grove still rely on body copy for first-scan attribution, implementation state, and research boundaries.
+
+**Primary audience:** Senior healthcare and health-tech recruiters, Product/Service Design leaders, hybrid UXR/Service Design leads, and adaptive-access readers.
+
+**Success metric:** With ordinary body paragraphs masked, Home communicates role, qualified outcome, three projects, and one action; each flagship opening communicates Problem · Role · Decision · Outcome/State; both target lanes retain 23/23 applicable checks; a senior-recruiter visual review returns Advance.
+
+**Approved brief:** `docs/designpowers/briefs/2026-08-24-headlines-visuals-hiring-pass.md`
+
+**Build contract:** `docs/designpowers/builds/2026-08-24-headlines-visuals-hiring-build-contract.md`
+
+**Plan:** `docs/designpowers/plans/2026-08-24-headlines-visuals-hiring-plan.md`
+
+**House style:** Path B — Comply; valid system move is Compose. Existing Riso evidence, figure, action, and editorial primitives only.
+
+**Recovery point:** `78337870e6b005fb2fb5caac16ef11bdcfdba58e`; preserve current owner changes. The approved direct-entry rule supersedes only the opening film's autoplay behavior.
+
+**Current queue:** Implementation and local verification complete. Independent blind recruiter verdict: Advance, with no High or Medium blocker. Release candidate passes 74 tests, 12 masked states, 12 visual-evidence states, 12 axe states, and 24 final responsive/adaptive states. Public deployment and asset-hash confirmation are the remaining release actions.
+
+**Matrix check:** Context/mechanics, design systems, accessibility, trust/provenance, localization, evaluation, and deployment recovery apply. Truth boundaries, direct access, fixed masked-body checks, representative renders, fresh anti-AI review, and exact-build deployment are hard gates.
+
+_Previous update: 2026-08-23 by Carmen-calibrated visual evidence verification_
 
 ## Active Initiative: Carmen-Calibrated Visual Evidence Compression
 
@@ -1018,7 +1046,14 @@ _Items: 22 | Open: 9 | Resolved: 13 | Last reviewed: 2026-08-22_
 ### 2026-08-22 — Exploration 01 train → verified portfolio prototype
 > "The approved five-second Riso-registration film now supplies the visual surface inside the existing Weekend Journal scroll carrier. It starts only as the train enters, stays silent and non-looping, pauses on journal open, and leaves the original CSS train underneath as the playback-error fallback; reduced motion still resolves directly to the delivered issue label. Browser evidence at 320/390/900/1440 shows zero document overflow, a legible desktop/tablet train, a compact mobile crop, and a 390px departure fully beyond the viewport while the journal panel opens immediately. The 1.2 MB asset adds no runtime dependency. Thirty-six focused accessibility/interaction tests, the optimized build, final house-style validator, tell check, and scoped diff check pass. Prototype verdict: Ready for owner taste review; deployment readiness remains Conditional because blind anti-default and lived-experience/real-AT review were not run. No additional credits, commit, or deploy."
 
+### 2026-08-24 — integrated Weekend Journal masthead + opening film return → locally verified
+> "The Riso train is no longer a separate banner. It now shares one full-bleed editorial masthead with the issue label, The Trip Home title, rider question, open control, and MTA Open Data attribution. A paper wash protects the reading field while the held 3.8-second train frame stays visible at rest; opening the journal releases the train and exposes the unchanged evidence below. The existing portfolio film is mounted again for the first eligible visit per browser-tab session and exits through a smoother 560ms crossfade; Skip, Escape, reduced motion, Save Data, playback failure, and the failsafe still enter directly. Browser measurements at 320/390/900/1440 show zero horizontal overflow and keep the title/control inside the masthead. Forty-two focused accessibility/interaction tests, the optimized build, all house-style validators, tell checks, and scoped diff checks pass. Verdict: Ready for owner review; deployment remains Conditional pending blind anti-default and lived-experience/real-AT review. No commit or deploy was performed."
+
+### 2026-08-24 — MSK Higgsfield editorial workflow lens → implementation verified, rendered gate conditional
+> "The MSK hero no longer repeats the recreated dashboard used later in the decision story. One 8-credit Higgsfield/Recraft editorial image now frames the causal sequence as three explicit states: digital record, paper ritual, filing queue. Native 48px controls expose each state through `aria-pressed`, visible focus, a polite reading update, touch/keyboard parity, and a reduced-motion transition override. The media is labeled `CONCEPTUAL ILLUSTRATION · ART-DIRECTED IN HIGGSFIELD`, carries no patient data, vendor UI, logo, or metric, and is excluded from the page's evidence attribution; the workflow map, filing receipt, service blueprint, dashboard decision artifact, and outcomes remain unchanged. The browser asset was reduced from a 4.9 MB source PNG to a 366 KB JPEG. The focused interaction and axe tests pass, the optimized build succeeds, final house-style and tell validators pass, and diff checks are clean. Chrome's macOS headless display layer blocked automated desktop/mobile screenshots, so visual readiness remains Conditional until owner review in the open local preview and fresh responsive captures. No commit or deploy was performed. Brief: `docs/designpowers/briefs/2026-08-24-msk-interactive-editorial-hero.md`."
+
 ## Pipeline Status
+
 - [x] Discovery
 - [x] Strategy
 - [x] Taste calibration

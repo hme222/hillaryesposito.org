@@ -3,6 +3,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import RisoDefs from "../components/riso/RisoDefs";
 import CartoField from "../components/riso/CartoField";
 import PhaseIndicator from "../components/riso/PhaseIndicator";
+import HomepageOpeningFilm from "../components/riso/HomepageOpeningFilm";
+import LogisticsMechanism from "../components/LogisticsMechanism";
 import usePageTitle from "../hooks/usePageTitle";
 import { useLanguage, useT } from "../app/LanguageContext";
 import type { StringKey } from "../i18n/strings";
@@ -24,6 +26,7 @@ const WORK = [
     path: "/case-study/msk",
     img: "/assets/msk/mskcc-map-thumb.jpg",
     imgAltKey: "home.riso.mskAlt",
+    visual: "image",
   },
   {
     n: "02",
@@ -31,8 +34,8 @@ const WORK = [
     subKey: "home.proj.logistics.subtitle",
     descKey: "home.riso.logisticsDesc",
     path: "/case-study/logistics",
-    img: "/assets/about/army.jpg",
     imgAltKey: "home.riso.logisticsAlt",
+    visual: "logistics",
   },
   {
     n: "03",
@@ -40,8 +43,9 @@ const WORK = [
     subKey: "home.proj.grove.subtitle",
     descKey: "home.riso.groveDesc",
     path: "/case-study/grove",
-    img: "/assets/grove/grove1.png",
+    img: "/assets/grove/grove-live-care.jpg",
     imgAltKey: "home.riso.groveAlt",
+    visual: "image",
     tagKey: "home.riso.groveTag",
   },
 ] satisfies Array<{
@@ -50,8 +54,9 @@ const WORK = [
   subKey: StringKey;
   descKey: StringKey;
   path: string;
-  img: string;
+  img?: string;
   imgAltKey: StringKey;
+  visual: "image" | "logistics";
   tagKey?: StringKey;
 }>;
 
@@ -61,6 +66,8 @@ const STATS = [
   { n: "34", labelKey: "home.stat.research", sourceKey: "home.stat.groveSource" },
 ] satisfies Array<{ n: string; labelKey: StringKey; sourceKey: StringKey }>;
 
+const DISPATCH_TRAIN_HOLD_SECONDS = 3.8;
+
 export default function RisoHome() {
   usePageTitle();
   const t = useT();
@@ -69,9 +76,13 @@ export default function RisoHome() {
   const navigate = useNavigate();
   const [dispatchOpen, setDispatchOpen] = useState(false);
   const [dispatchTrainDeparted, setDispatchTrainDeparted] = useState(false);
+  const [openingFilmOpen, setOpeningFilmOpen] = useState(false);
+  const openingFilmTriggerRef = useRef<HTMLButtonElement>(null);
+  const [dispatchTrainReturning, setDispatchTrainReturning] = useState(false);
   const dispatchSectionRef = useRef<HTMLElement>(null);
   const dispatchTrainRef = useRef<HTMLDivElement>(null);
   const dispatchTrainVideoRef = useRef<HTMLVideoElement>(null);
+  const dispatchTrainReturnTimerRef = useRef<number | undefined>(undefined);
 
   // Preserve global shell deep-links such as /?scrollTo=projects when the
   // reader returns from a case study or uses the footer. The Riso homepage is
@@ -94,8 +105,8 @@ export default function RisoHome() {
     const trainField = dispatchTrainRef.current;
     const vehicle = trainField?.querySelector<HTMLElement>(".rp-dispatchTrain__vehicle");
     const video = dispatchTrainVideoRef.current;
-    const journal = section?.querySelector<HTMLElement>(".rp-wrap");
-    if (!section || !trainField || !vehicle || !journal) return;
+    const masthead = section?.querySelector<HTMLElement>(".rp-dispatch__masthead");
+    if (!section || !trainField || !vehicle || !masthead) return;
 
     section.dataset.trainEnhanced = "true";
     const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -116,7 +127,9 @@ export default function RisoHome() {
       const travelWindow = viewportHeight * 0.5;
       const progress = Math.min(1, Math.max(0, (startLine - fieldTop) / travelWindow));
       const startX = -vehicle.offsetWidth - 32;
-      const parkedX = Math.max(16, journal.getBoundingClientRect().left);
+      const mastheadRect = masthead.getBoundingClientRect();
+      const fieldRect = trainField.getBoundingClientRect();
+      const parkedX = Math.max(0, mastheadRect.left - fieldRect.left);
       const x = startX + (parkedX - startX) * progress;
 
       trainField.style.setProperty("--rp-train-x", `${x}px`);
@@ -154,6 +167,8 @@ export default function RisoHome() {
     };
   }, []);
 
+  useEffect(() => () => window.clearTimeout(dispatchTrainReturnTimerRef.current), []);
+
   const toContact = () => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     document.getElementById("contact")?.scrollIntoView({
@@ -165,6 +180,11 @@ export default function RisoHome() {
   return (
     <main className="riso-page riso-home">
       <RisoDefs />
+      <HomepageOpeningFilm
+        open={openingFilmOpen}
+        onClose={() => setOpeningFilmOpen(false)}
+        returnFocusRef={openingFilmTriggerRef}
+      />
 
       {/* HERO */}
       <header className="rp-hero" id="home" data-visual="true">
@@ -179,19 +199,20 @@ export default function RisoHome() {
           <div className="rp-clearing">
             <span className="rp-eyebrow">{t("home.riso.eyebrow")}</span>
             <h1 className="rp-h1">{t("home.riso.heroTitle")}</h1>
-            <p className="rp-sub">
+            <p className="rp-sub rp-heroProof">
               {t("home.riso.heroLead")} <b>{t("home.riso.heroProof")}</b>
             </p>
             <p className="rp-status">{t("home.status")}</p>
             <div className="rp-hero__ctas">
-              <button type="button" className="rp-cta" onClick={toContact}>{t("home.getInTouch")} →</button>
-              <Link className="rp-cta rp-cta--ghost" to="/about">{t("home.seeApproach")}</Link>
+              <Link className="rp-cta" to="/case-study/msk">{t("home.riso.primaryWork")} →</Link>
+              <button type="button" className="rp-cta rp-cta--ghost" onClick={toContact}>{t("home.getInTouch")}</button>
               <button
+                ref={openingFilmTriggerRef}
                 type="button"
-                className="rp-recruiter-link"
-                onClick={() => window.dispatchEvent(new CustomEvent("open-recruiter-panel"))}
+                className="rp-heroUtility rp-openingVisualTrigger"
+                onClick={() => setOpeningFilmOpen(true)}
               >
-                {t("recruiter.pill")}{lang === "es" ? " · EN" : ""} · {t("recruiter.seconds")} →
+                {t("home.riso.openingVisual")}
               </button>
             </div>
           </div>
@@ -248,9 +269,16 @@ export default function RisoHome() {
                   <p className="rp-work__title">{t(w.titleKey)}</p>
                   <p className="rp-work__sub">{t(w.subKey)}</p>
                 </div>
-                <div className="rp-work__thumb">
-                  <img src={w.img} alt={t(w.imgAltKey)} loading="eager" decoding="async" />
-                </div>
+                {w.visual === "logistics" ? (
+                  <figure className="rp-work__thumb rp-work__thumb--mechanism" aria-label={t(w.imgAltKey)}>
+                    <LogisticsMechanism n="03" />
+                    <figcaption>{lang === "es" ? "Siete puestos · pronóstico compartido · 85% menos tiempo" : "Seven aid stations · shared forecast · 85% shorter resupply time"}</figcaption>
+                  </figure>
+                ) : (
+                  <div className="rp-work__thumb">
+                    <img src={w.img} alt={t(w.imgAltKey)} loading="eager" decoding="async" />
+                  </div>
+                )}
                 <span className="rp-work__arrow" aria-hidden="true">→</span>
               </Link>
             ))}
@@ -283,76 +311,92 @@ export default function RisoHome() {
         aria-labelledby="home-dispatch-title"
         ref={dispatchSectionRef}
       >
-        <div
-          className={`rp-dispatchTrain${dispatchTrainDeparted ? " rp-dispatchTrain--departed" : ""}`}
-          ref={dispatchTrainRef}
-        >
-          <div className="rp-dispatchTrain__scene" aria-hidden="true">
-            <span className="rp-dispatchTrain__rail rp-dispatchTrain__rail--upper" />
-            <span className="rp-dispatchTrain__rail rp-dispatchTrain__rail--lower" />
-            <div className="rp-dispatchTrain__vehicle">
-              <video
-                className="rp-dispatchTrain__video"
-                ref={dispatchTrainVideoRef}
-                muted
-                playsInline
-                preload="metadata"
-                aria-hidden="true"
-                onCanPlay={(event) => {
-                  event.currentTarget.closest<HTMLElement>(".rp-dispatchTrain")?.setAttribute("data-video-ready", "true");
-                }}
-                onError={(event) => {
-                  event.currentTarget.closest<HTMLElement>(".rp-dispatchTrain")?.setAttribute("data-video-ready", "false");
-                }}
-              >
-                <source src="/assets/video/weekend-journal-riso-train-v1.mp4" type="video/mp4" />
-              </video>
-              <div className="rp-dispatchTrain__fallback">
-                {[0, 1, 2, 3].map((car) => (
-                  <div
-                    className={`rp-dispatchTrain__car${car === 1 || car === 2 ? " rp-dispatchTrain__car--desktopOnly" : ""}`}
-                    key={car}
-                  >
-                    <span className="rp-dispatchTrain__windowBand">
-                      <i /><i /><i />
-                    </span>
-                    <span className="rp-dispatchTrain__doors" />
-                    <span className="rp-dispatchTrain__ink rp-dispatchTrain__ink--blue" />
-                    <span className="rp-dispatchTrain__ink rp-dispatchTrain__ink--orange" />
-                  </div>
-                ))}
-              </div>
-              <span className="rp-dispatchTrain__placard">{t("home.dispatch.eyebrow")}</span>
-            </div>
-          </div>
-          <p className="rp-dispatchTrain__attribution">{t("home.dispatch.trainAttribution")}</p>
-        </div>
         <div className="rp-wrap">
           <article className={`rp-dispatch${dispatchOpen ? " rp-dispatch--open" : ""}`}>
-            <div className="rp-dispatch__cover">
-              <div>
-                <p className="rp-kicker rp-dispatch__issueLabel">{t("home.dispatch.eyebrow")}</p>
-                <h2 className="rp-dispatch__title" id="home-dispatch-title">{t("home.dispatch.title")}</h2>
-                <p className="rp-dispatch__question">{t("home.dispatch.question")}</p>
-              </div>
-              <button
-                type="button"
-                className="rp-dispatch__toggle"
-                aria-expanded={dispatchOpen}
-                aria-controls="weekend-dispatch-panel"
-                onClick={() => {
-                  if (!dispatchOpen) {
-                    if (dispatchTrainVideoRef.current?.offsetWidth) {
-                      dispatchTrainVideoRef.current.pause();
-                    }
-                    setDispatchTrainDeparted(true);
-                  }
-                  setDispatchOpen((current) => !current);
-                }}
+            <div className="rp-dispatch__masthead">
+              <div
+                className={`rp-dispatchTrain${dispatchTrainDeparted ? " rp-dispatchTrain--departed" : ""}${dispatchTrainReturning ? " rp-dispatchTrain--returning" : ""}`}
+                ref={dispatchTrainRef}
               >
-                <span aria-hidden="true">+</span>
-                {t(dispatchOpen ? "home.dispatch.closeJournal" : "home.dispatch.openJournal")}
-              </button>
+                <div className="rp-dispatchTrain__scene" aria-hidden="true">
+                  <span className="rp-dispatchTrain__rail rp-dispatchTrain__rail--upper" />
+                  <span className="rp-dispatchTrain__rail rp-dispatchTrain__rail--lower" />
+                  <div className="rp-dispatchTrain__vehicle">
+                    <video
+                      className="rp-dispatchTrain__video"
+                      ref={dispatchTrainVideoRef}
+                      muted
+                      playsInline
+                      preload="metadata"
+                      aria-hidden="true"
+                      onCanPlay={(event) => {
+                        event.currentTarget.closest<HTMLElement>(".rp-dispatchTrain")?.setAttribute("data-video-ready", "true");
+                      }}
+                      onError={(event) => {
+                        event.currentTarget.closest<HTMLElement>(".rp-dispatchTrain")?.setAttribute("data-video-ready", "false");
+                      }}
+                      onTimeUpdate={(event) => {
+                        if (event.currentTarget.currentTime >= DISPATCH_TRAIN_HOLD_SECONDS) {
+                          event.currentTarget.pause();
+                        }
+                      }}
+                    >
+                      <source src="/assets/video/weekend-journal-riso-train-v1.mp4" type="video/mp4" />
+                    </video>
+                    <div className="rp-dispatchTrain__fallback">
+                      {[0, 1, 2, 3].map((car) => (
+                        <div
+                          className={`rp-dispatchTrain__car${car === 1 || car === 2 ? " rp-dispatchTrain__car--desktopOnly" : ""}`}
+                          key={car}
+                        >
+                          <span className="rp-dispatchTrain__windowBand">
+                            <i /><i /><i />
+                          </span>
+                          <span className="rp-dispatchTrain__doors" />
+                          <span className="rp-dispatchTrain__ink rp-dispatchTrain__ink--blue" />
+                          <span className="rp-dispatchTrain__ink rp-dispatchTrain__ink--orange" />
+                        </div>
+                      ))}
+                    </div>
+                    <span className="rp-dispatchTrain__placard">{t("home.dispatch.eyebrow")}</span>
+                  </div>
+                </div>
+              </div>
+              <div className="rp-dispatch__cover">
+                <div>
+                  <p className="rp-kicker rp-dispatch__issueLabel">{t("home.dispatch.eyebrow")}</p>
+                  <h2 className="rp-dispatch__title" id="home-dispatch-title">{t("home.dispatch.title")}</h2>
+                  <p className="rp-dispatch__question">{t("home.dispatch.question")}</p>
+                </div>
+                <button
+                  type="button"
+                  className="rp-dispatch__toggle"
+                  aria-expanded={dispatchOpen}
+                  aria-controls="weekend-dispatch-panel"
+                  onClick={() => {
+                    if (!dispatchOpen) {
+                      window.clearTimeout(dispatchTrainReturnTimerRef.current);
+                      setDispatchTrainReturning(false);
+                      if (dispatchTrainVideoRef.current?.offsetWidth) {
+                        dispatchTrainVideoRef.current.pause();
+                      }
+                      setDispatchTrainDeparted(true);
+                    } else {
+                      setDispatchTrainDeparted(false);
+                      setDispatchTrainReturning(true);
+                      window.clearTimeout(dispatchTrainReturnTimerRef.current);
+                      dispatchTrainReturnTimerRef.current = window.setTimeout(() => {
+                        setDispatchTrainReturning(false);
+                      }, 520);
+                    }
+                    setDispatchOpen((current) => !current);
+                  }}
+                >
+                  <span aria-hidden="true">+</span>
+                  {t(dispatchOpen ? "home.dispatch.closeJournal" : "home.dispatch.openJournal")}
+                </button>
+              </div>
+              <p className="rp-dispatchTrain__attribution">{t("home.dispatch.trainAttribution")}</p>
             </div>
 
             <div

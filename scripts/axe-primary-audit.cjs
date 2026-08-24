@@ -52,7 +52,7 @@ async function run() {
           localStorage.setItem("darkMode", "false");
         });
         await page.goto(`http://portfolio.local${route}`, { waitUntil: "domcontentloaded" });
-        await page.waitForSelector("main h1", { timeout: 10000 });
+        await page.waitForSelector("main h1", { timeout: 30000 });
         await page.addScriptTag({ content: axeSource });
         const audit = await page.evaluate(async () => window.axe.run(document, {
           runOnly: { type: "tag", values: ["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"] },

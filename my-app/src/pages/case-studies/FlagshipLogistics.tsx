@@ -86,6 +86,12 @@ export default function FlagshipLogistics() {
               I directed $2M in medical supply across seven aid stations and three countries for
               <b> 5,000+ soldiers</b>. The redesigned service cut resupply time <b>85%</b>.
             </p>
+            <dl className="rp-heroEvidence" aria-label="Medical logistics case evidence at a glance">
+              <div><dt>Role</dt><dd>Medical logistics officer · service lead</dd></div>
+              <div><dt>System</dt><dd>Seven aid stations · three countries</dd></div>
+              <div><dt>Decision</dt><dd>Shared forecasting before requests arrived</dd></div>
+              <div><dt>Outcome</dt><dd>Deployed 2024 · 85% shorter resupply time</dd></div>
+            </dl>
             <a className="rp-cta" href="#log-moves">See the three moves →</a>
           </div>
         </div>
@@ -118,9 +124,9 @@ export default function FlagshipLogistics() {
       <section className="rp-section" id="log-moves" data-evidence="true">
         <div className="rp-wrap">
           <p className="rp-kicker">What I changed</p>
-          <h2 className="rp-title">Three moves, three numbers.</h2>
-          <p className="rp-lede">No new equipment or people: change location, request, and timing.</p>
-          <div className="fp-redesigns rp-reveal" data-evidence="true">
+          <h2 className="rp-title">Move the warehouse. Then fix the handoffs.</h2>
+          <p className="rp-lede">The physical move removed the largest delay. A shared request and forecasting kept it from returning.</p>
+          <div className="fp-redesigns fp-redesigns--logistics rp-reveal" data-evidence="true">
             {MOVES.map((m) => (
               <article key={m.n}>
                 <span className="fp-redesigns__n">{m.n}</span>
@@ -139,11 +145,11 @@ export default function FlagshipLogistics() {
           <p className="rp-kicker">What made it hard</p>
           <h2 className="rp-title">The constraints were not negotiable.</h2>
           <p className="rp-lede">The future state had to preserve every fixed constraint.</p>
-          <div className="fp-systemCards rp-reveal" data-evidence="true">
-            <article><span>01 · Cold chain</span><h3>Inside 48 hours</h3><p>Late meant unusable.</p></article>
-            <article><span>02 · Multinational</span><h3>Three countries</h3><p>Different systems and vocabulary.</p></article>
-            <article><span>03 · Active zone</span><h3>$2M warehouse move</h3><p>No rehearsal or acceptable failure.</p></article>
-          </div>
+          <dl className="fp-constraintAnnotations rp-reveal" data-evidence="true">
+            <div><dt>Cold chain · 48 hours</dt><dd>Late meant unusable.</dd></div>
+            <div><dt>Three countries</dt><dd>Different systems and vocabulary.</dd></div>
+            <div><dt>Active zone · $2M move</dt><dd>No rehearsal or acceptable failure.</dd></div>
+          </dl>
           <p className="fp-ownership rp-reveal">
             <b>Service-design scope</b>
             People, inventory, requests, handoffs, constraints, ownership, and measurable recovery time.
@@ -151,7 +157,7 @@ export default function FlagshipLogistics() {
         </div>
       </section>
 
-      <div data-evidence="true"><EvidenceField
+      <div className="fp-logisticsEvidence" data-evidence="true"><EvidenceField
         id="log-outcomes"
         kicker="What it added up to"
         title="Measured in time, money, and things that did not happen."

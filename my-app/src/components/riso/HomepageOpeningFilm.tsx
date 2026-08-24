@@ -1,52 +1,39 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { RefObject, useCallback, useEffect, useRef, useState } from "react";
 
-const SESSION_KEY = "portfolio-opening-film-seen";
 const EXIT_MS = 560;
 const FAILSAFE_MS = 6500;
 
-type NetworkNavigator = Navigator & {
-  connection?: { saveData?: boolean };
+type HomepageOpeningFilmProps = {
+  open: boolean;
+  onClose: () => void;
+  returnFocusRef: RefObject<HTMLButtonElement | null>;
 };
 
-function prefersDirectEntry() {
-  if (typeof window === "undefined") return true;
-  const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
-  const saveData = (navigator as NetworkNavigator).connection?.saveData ?? false;
-  return reduceMotion || saveData;
-}
-
-function shouldShowOpening() {
-  if (prefersDirectEntry()) return false;
-  try {
-    return window.sessionStorage.getItem(SESSION_KEY) !== "true";
-  } catch {
-    return true;
-  }
-}
-
-export default function HomepageOpeningFilm() {
+export default function HomepageOpeningFilm({ open, onClose, returnFocusRef }: HomepageOpeningFilmProps) {
   const closeTimerRef = useRef<number | undefined>(undefined);
   const failsafeTimerRef = useRef<number | undefined>(undefined);
   const exitingRef = useRef(false);
   const skipRef = useRef<HTMLButtonElement | null>(null);
-  const [visible, setVisible] = useState(shouldShowOpening);
   const [exiting, setExiting] = useState(false);
+  const reduceMotion = typeof window !== "undefined"
+    && (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false);
 
   const finish = useCallback(() => {
-    if (!visible || exitingRef.current) return;
+    if (!open || exitingRef.current) return;
     exitingRef.current = true;
     setExiting(true);
     window.clearTimeout(failsafeTimerRef.current);
-    closeTimerRef.current = window.setTimeout(() => setVisible(false), EXIT_MS);
-  }, [visible]);
+    closeTimerRef.current = window.setTimeout(() => {
+      onClose();
+      returnFocusRef.current?.focus({ preventScroll: true });
+    }, EXIT_MS);
+  }, [onClose, open, returnFocusRef]);
 
   useEffect(() => {
-    if (!visible) return;
-
-    try {
-      window.sessionStorage.setItem(SESSION_KEY, "true");
-    } catch {
-      // Storage is optional; the film still gets one safe attempt this load.
+    if (!open) {
+      exitingRef.current = false;
+      setExiting(false);
+      return;
     }
 
     const previousOverflow = document.documentElement.style.overflow;
@@ -69,16 +56,16 @@ export default function HomepageOpeningFilm() {
       window.clearTimeout(closeTimerRef.current);
       window.clearTimeout(failsafeTimerRef.current);
     };
-  }, [finish, visible]);
+  }, [finish, open]);
 
-  if (!visible) return null;
+  if (!open) return null;
 
   return (
     <div
       className={`rp-openingFilm${exiting ? " is-exiting" : ""}`}
       role="dialog"
       aria-modal="true"
-      aria-label="Opening film · five seconds"
+      aria-label="Opening visual · five seconds"
     >
       <img
         className="rp-openingFilm__poster"
@@ -86,22 +73,22 @@ export default function HomepageOpeningFilm() {
         alt=""
         aria-hidden="true"
       />
-      <video
-        className="rp-openingFilm__video"
-        src="/assets/video/grove-layer-assembly-seedance25.mp4"
-        poster="/assets/video/grove-layer-assembly-poster.jpg"
-        autoPlay
-        muted
-        playsInline
-        preload="auto"
-        tabIndex={-1}
-        aria-hidden="true"
-        onEnded={finish}
-        onError={finish}
-      />
+      {!reduceMotion && <video
+          className="rp-openingFilm__video"
+          src="/assets/video/grove-layer-assembly-seedance25.mp4"
+          poster="/assets/video/grove-layer-assembly-poster.jpg"
+          autoPlay
+          muted
+          playsInline
+          preload="metadata"
+          tabIndex={-1}
+          aria-hidden="true"
+          onEnded={finish}
+          onError={finish}
+        />}
       <span className="rp-openingFilm__wash" aria-hidden="true" />
       <button ref={skipRef} className="rp-openingFilm__skip" type="button" onClick={finish}>
-        Skip intro →
+        Return to portfolio →
       </button>
     </div>
   );

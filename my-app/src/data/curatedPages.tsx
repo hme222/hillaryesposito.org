@@ -19,6 +19,9 @@ export type CuratedLink = {
 export type CuratedPage = {
   slug: string;
   company: string;
+  heroTitle?: string;
+  heroTrace?: Array<{ label: string; value: string }>;
+  heroDelivery?: { state: string; tenure: string; impact: string };
   role: string;
   variant: "care" | "finance" | "fashion";
   /** Company-mirror accent — re-inks the coral pop to evoke the company.
@@ -65,6 +68,12 @@ const allCuratedPages: Record<string, CuratedPage> = {
   "healthcare-product-service-designer": {
     slug: "healthcare-product-service-designer",
     company: "Healthcare product + service",
+    heroTitle: "A filing queue replaced a four-system workaround.",
+    heroDelivery: {
+      state: "Implemented",
+      tenure: "Used through 2 system upgrades",
+      impact: "Contributed within a 20% organization-wide EMR cost reduction",
+    },
     role: "Mid-level Product / Service Designer",
     variant: "care",
     accent: "#285943",
@@ -73,9 +82,9 @@ const allCuratedPages: Record<string, CuratedPage> = {
     edition: "eucalyptus",
     badgeLabel: "Clinical workflow · end-to-end service · implementation",
     eyebrow: "Healthcare systems · service design · product delivery",
-    headline: "I spent 13+ years inside the services I now redesign.",
+    headline: "Six years inside MSK operations became one implemented digital workflow.",
     subhead:
-      "Inside clinical operations, I mapped a paper detour that became an implemented digital workflow.",
+      "Implemented and used through two system upgrades. The workflow I initiated contributed within a 20% organization-wide EMR cost reduction.",
     meta: [
       { label: "Target role", value: "Healthcare Product / Service Designer" },
       { label: "Domain", value: "Cancer care · clinical operations · medical logistics" },
@@ -209,6 +218,14 @@ const allCuratedPages: Record<string, CuratedPage> = {
   "healthcare-ux-researcher": {
     slug: "healthcare-ux-researcher",
     company: "Healthcare UX research + service design",
+    heroTitle: "A 34-person survey changed the build from eleven features to three.",
+    heroTrace: [
+      { label: "Question", value: "What deserves the next build?" },
+      { label: "Method", value: "34-person self-report survey · May–July 2026" },
+      { label: "Signal", value: "Care tasks outranked community" },
+      { label: "Decision", value: "11 features → 3" },
+      { label: "Boundary", value: "Self-report, not behavior" },
+    ],
     role: "UX Researcher / Service Designer · workflows and complex services",
     variant: "care",
     accent: "#315f54",
@@ -217,7 +234,7 @@ const allCuratedPages: Record<string, CuratedPage> = {
     edition: "struct",
     badgeLabel: "What changed · what remains unknown",
     eyebrow: "Healthcare workflow research + service design",
-    headline: "Research should change the decision, not decorate the process.",
+    headline: "Self-report narrowed scope; the next study still has to test behavior.",
     subhead:
       "A dated self-report survey narrowed Grove’s next build and left its behavioral questions open.",
     meta: [

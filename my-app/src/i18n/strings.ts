@@ -66,6 +66,8 @@ const en = {
   "home.riso.heroLead":
     "At Memorial Sloan Kettering, a workflow I initiated",
   "home.riso.heroProof": "contributed to a 20% organization-wide electronic medical record cost reduction.",
+  "home.riso.openingVisual": "View opening visual",
+  "home.riso.primaryWork": "Review the MSK workflow",
   "home.riso.heroClose": "",
   "home.riso.workTitle": "Healthcare systems, service operations, and one consumer product",
   "home.riso.groveDesc":
@@ -76,9 +78,9 @@ const en = {
     "Seven aid stations · shared tracking · resupply time reduced 85%.",
   "home.riso.mobbinDesc":
     "Three finance apps turned into a searchable reference — the work was the taxonomy and the naming, not the screenshots. 200+ screens per app, an editor's judgment on every one.",
-  "home.riso.groveAlt": "Grove's calm, plant-first entry screen — the redesign's first finished screen",
+  "home.riso.groveAlt": "Grove daily care screen showing one clear plant-care task and overdue plants first",
   "home.riso.mskAlt": "A recreated map of Memorial Sloan Kettering's care network across the New York region",
-  "home.riso.logisticsAlt": "Hillary Esposito in uniform during her deployment as a medical logistics officer",
+  "home.riso.logisticsAlt": "Service mechanism showing shared forecasting across seven aid stations and an 85% reduction in resupply time",
   "home.riso.mobbinAlt": "One of the third-party app screens documented for Mobbin — a finance app welcome screen",
   "home.riso.groveTag": "Active · Phase 2 of 3",
   "home.riso.proofKicker": "The proof",
@@ -213,6 +215,8 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.heroLead":
     "En Memorial Sloan Kettering, un flujo de trabajo que inicié",
   "home.riso.heroProof": "contribuyó a una reducción del 20% en los costos del registro médico electrónico de toda la organización.",
+  "home.riso.openingVisual": "Ver visual de apertura",
+  "home.riso.primaryWork": "Ver el flujo de trabajo de MSK",
   "home.riso.heroClose": "",
   "home.riso.workTitle": "Sistemas de salud, operaciones de servicio y un producto de consumo",
   "home.riso.groveDesc":
@@ -220,12 +224,12 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.mskDesc":
     "Cuatro departamentos · flujo implementado · vigente tras dos actualizaciones.",
   "home.riso.logisticsDesc":
-    "Siete estaciones · seguimiento compartido · reabastecimiento 85% más rápido.",
+    "Siete estaciones · seguimiento compartido · tiempo de reabastecimiento un 85% menor.",
   "home.riso.mobbinDesc":
     "Tres apps financieras convertidas en una referencia buscable: el trabajo fue la taxonomía y los nombres, no las capturas. Más de 200 pantallas por app, con criterio de editora en cada una.",
-  "home.riso.groveAlt": "La pantalla de inicio de Grove, serena y centrada en las plantas — la primera pantalla terminada del rediseño",
+  "home.riso.groveAlt": "Pantalla de cuidado diario de Grove con una tarea clara y las plantas atrasadas primero",
   "home.riso.mskAlt": "Un mapa recreado de la red de atención de Memorial Sloan Kettering en la región de Nueva York",
-  "home.riso.logisticsAlt": "Hillary Esposito de uniforme durante su despliegue como oficial de logística médica",
+  "home.riso.logisticsAlt": "Mecanismo de servicio con pronóstico compartido entre siete puestos y una reducción del 85% en el tiempo de reabastecimiento",
   "home.riso.mobbinAlt": "Una de más de 200 pantallas de apps de terceros documentadas para Mobbin — la pantalla de bienvenida de una app financiera",
   "home.riso.groveTag": "Activo · Fase 2 de 3",
   "home.riso.proofKicker": "La evidencia",
@@ -297,7 +301,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.proj.mobbin.subtitle": "Mobbin · Documentación freelance de flujos UX",
   "home.proj.grove.title": "Once funciones se convirtieron en tres",
   "home.proj.msk.title": "Una cola de archivo reemplazó un desvío de cuatro sistemas",
-  "home.proj.logistics.title": "Reabastecimiento médico, un 85% más rápido",
+  "home.proj.logistics.title": "Tiempo de reabastecimiento médico reducido un 85%",
   "home.proj.mobbin.title": "Más de 200 pantallas por app, buscables por tarea",
 
   // ── Home: contact / CTA ──

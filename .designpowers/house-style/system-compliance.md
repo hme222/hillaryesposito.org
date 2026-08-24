@@ -8,6 +8,24 @@ Composition rules: Keep one H1, existing chapter targets, current section classe
 Documented gaps for the public curated-page system: None. The existing renderer contains every needed primitive; optional data-controlled composition closes the ordering/action gap.
 Escalation owner: Hillary Esposito
 
+## Headlines + visuals hiring pass — 2026-08-24
+
+Valid move: **Compose.** Reuse the existing Riso hero, outcome, work-link, artifact-label, device, service-mechanism, and native action patterns. The opening film becomes a controlled use of the existing component rather than a new player or mode.
+
+Locks preserved: canonical Riso tokens, one H1, heading order, project routes, evidence truth, research limits, source attribution, light/dark behavior, bilingual shell, responsive locks, reduced motion, focus visibility, and 44px targets.
+
+Registry note: the generated registry must be refreshed after implementation because the current owner worktree changed component fingerprints. No new canonical component, token, dependency, or visual family is authorized.
+
+Composition boundary: headline evidence lockups may combine existing labels, semantic lists, and artifact figures inside current hero grids. They may not become floating résumé chips, generic metric cards, or a separate recruiter interface.
+
+## Weekend Journal integrated masthead + opening return — 2026-08-23
+
+Valid move: **Reuse / Compose.** Reuse the existing `HomepageOpeningFilm`, train carrier/video/fallback, journal disclosure state, Riso type/rule/paper tokens, and route-scoped styles. Re-parent the train inside one `.rp-dispatch__masthead`; do not create a global component, dependency, token, route, or media asset.
+
+Locks preserved: one journal H2; unchanged copy, evidence, links, conditional DOM, `aria-expanded`, and focus behavior; decorative train semantics; live attribution; reduced-motion/Save Data exits; no sound, loop, route mark, station, service claim, logo, or endorsement implication.
+
+Composition boundary: asymmetric paper wash is allowed inside the masthead only to protect copy and focus from the moving crop. The opening film may modify opacity, transform, and filter during its existing 560ms exit only. Neither treatment graduates into the canonical system.
+
 ## Carmen-calibrated visual evidence compression — 2026-08-22
 
 Valid move: **Reuse / Compose.** Use existing case-study artifact components, `ShowKit` primitives, `figure`/`figcaption`, Riso rules, proof fields, chapter navigation, and current project-specific visuals. No new token, dependency, global component family, or borrowed Carmen styling is authorized.

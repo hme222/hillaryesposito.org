@@ -140,7 +140,7 @@ export default function CuratedRolePage() {
   const page = useMemo(() => (slug ? curatedPages[slug] : undefined), [slug]);
   const isHealthcareLane = slug === "healthcare-product-service-designer" || slug === "healthcare-ux-researcher";
   usePageTitle(page ? `${page.company}: ${page.role}` : "Page not found");
-  const headlineW100 = useLongestWordWidth(page?.company ?? "");
+  const headlineW100 = useLongestWordWidth(page?.heroTitle ?? page?.company ?? "");
   const chapters = useMemo<CaseStudyChapter[]>(() => {
     const middle = isHealthcareLane
       ? [
@@ -239,7 +239,7 @@ export default function CuratedRolePage() {
                 className={`rp-h1${headlineW100 ? " rp-h1--fit" : ""}`}
                 style={headlineW100 ? ({ ["--h1-w100" as string]: headlineW100 } as React.CSSProperties) : undefined}
               >
-                {page.company}
+                {page.heroTitle ?? page.company}
               </h1>
             </div>
             <p className="rp-work__sub" style={{ marginTop: ".7rem" }}>{page.role}</p>
@@ -270,12 +270,27 @@ export default function CuratedRolePage() {
           </div>
         </div>
         <div className="rp-hero__media">
-          <div className="rp-clearing" style={{ maxWidth: "34ch" }}>
-            <p className="rp-eyebrow" style={{ marginBottom: ".8rem" }}>{page.badgeLabel}</p>
-            <p style={{ fontSize: "1.05rem", fontWeight: 700, letterSpacing: "-.01em", color: "var(--ink-2)" }}>
-              {page.subhead}
-            </p>
-          </div>
+          {page.heroTrace ? (
+            <dl className="curated-heroTrace" aria-label="Research decision trace" data-evidence="true">
+              {page.heroTrace.map((item) => (
+                <div key={item.label}><dt>{item.label}</dt><dd>{item.value}</dd></div>
+              ))}
+            </dl>
+          ) : page.heroDelivery ? (
+            <figure className="curated-deliveryStamp" aria-label="Delivered product evidence" data-evidence="true">
+              <span>Delivered state</span>
+              <strong>{page.heroDelivery.state}</strong>
+              <b>{page.heroDelivery.tenure}</b>
+              <figcaption>{page.heroDelivery.impact}</figcaption>
+            </figure>
+          ) : (
+            <div className="rp-clearing" style={{ maxWidth: "34ch" }}>
+              <p className="rp-eyebrow" style={{ marginBottom: ".8rem" }}>{page.badgeLabel}</p>
+              <p style={{ fontSize: "1.05rem", fontWeight: 700, letterSpacing: "-.01em", color: "var(--ink-2)" }}>
+                {page.subhead}
+              </p>
+            </div>
+          )}
         </div>
       </header>
 
