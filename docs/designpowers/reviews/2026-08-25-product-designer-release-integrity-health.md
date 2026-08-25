@@ -1,7 +1,7 @@
 # Design Health: Healthcare Product Designer Release Integrity
 
 **Date:** 2026-08-25  
-**Status:** Ready pending final live propagation check  
+**Status:** Ready · live verified  
 **Contract:** `docs/designpowers/builds/2026-08-24-product-designer-release-integrity-build-contract.md`
 
 ## Hiring outcome
@@ -26,6 +26,7 @@
 | Scroll and language recovery | Pass · both widths |
 | Quantitative claim scan | Pass · qualified 20%, 85% shorter, 34-person self-report, prototype boundaries retained |
 | Primary résumé | Pass · one page · tagged PDF · English language metadata · working contact links |
+| Fresh blind healthcare recruiter review | Advance · no High issues · low AI-tell density |
 
 Known jsdom console warnings for canvas and navigation remain non-failing test-environment limitations. They do not appear in the production browser audit.
 
@@ -50,4 +51,6 @@ Known jsdom console warnings for canvas and navigation remain non-failing test-e
 
 ## Live verification
 
-Pending final GitHub Pages propagation check for matching JS/CSS fingerprints, rendered Product Designer copy, quantitative claims, and the tagged résumé download.
+- Home, About, Grove, MSK, Mobbin, Logistics, and the curated Product Designer route all load `main.4e653330.js` and `main.fb668d05.css`.
+- Rendered live copy contains the Product Designer identity, visible 13+ years healthcare moat, exact curated label, qualified 20% contribution, 85% shorter Logistics result, Grove self-report/prototype boundaries, and no “85% faster,” career-transition, or old primary-role wording.
+- The live résumé download remains one page and reports `Tagged: yes`.
