@@ -32,9 +32,10 @@ popd >/dev/null
 # ---- SYNC BUILD -> DOCS ----
 echo "➡️  Syncing $BUILD_DIR -> $DOCS_DIR..."
 
-rm -rf "$DOCS_DIR"
+# `docs/designpowers/` contains tracked review records, not publish output.
+# Delete stale generated files while preserving that documentation tree.
 mkdir -p "$DOCS_DIR"
-cp -R "$BUILD_DIR"/. "$DOCS_DIR"
+rsync -a --delete --exclude='designpowers/' "$BUILD_DIR"/ "$DOCS_DIR"/
 
 # ---- OPTIONAL: ensure .nojekyll (CRA sometimes needs it for assets paths) ----
 # This prevents GitHub Pages from running Jekyll processing.
@@ -59,8 +60,8 @@ echo "hillaryesposito.org" > "$DOCS_DIR/CNAME"
 
 
 # ---- VERIFY THE SYNC ----
-# The sync is `rm -rf docs` + copy, so a file that stops being produced by the
-# build disappears silently. Assert the ones the site cannot work without.
+# The sync deletes stale generated output while preserving `docs/designpowers/`.
+# Assert the files the published site cannot work without.
 echo "➡️  Verifying published files..."
 for f in .nojekyll CNAME 404.html robots.txt sitemap.xml index.html \
          .well-known/security.txt about/index.html case-study/msk/index.html; do

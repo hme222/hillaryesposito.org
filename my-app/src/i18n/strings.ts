@@ -58,7 +58,7 @@ const en = {
   "home.status": "Available for opportunities",
   "home.getInTouch": "Get in touch",
   "home.seeApproach": "See my approach →",
-  "home.riso.eyebrow": "Hillary Esposito · Healthcare Product Designer",
+  "home.riso.eyebrow": "Healthcare Product Designer · 13+ years in healthcare",
   "home.riso.heroTitle": "I design healthcare products from the workflow out.",
   // "Workflow fluency" named a skill without saying what it covers. The
   // durable claim is scope: the whole path a task takes, not the screen at the
@@ -210,7 +210,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.status": "Disponible para nuevas oportunidades",
   "home.getInTouch": "Contácteme",
   "home.seeApproach": "Conozca mi enfoque →",
-  "home.riso.eyebrow": "Hillary Esposito · Diseñadora de productos de salud",
+  "home.riso.eyebrow": "Diseñadora de productos de salud · más de 13 años en salud",
   "home.riso.heroTitle": "Diseño productos de salud desde el flujo de trabajo.",
   "home.riso.heroLead":
     "En Memorial Sloan Kettering, un flujo de trabajo que inicié",

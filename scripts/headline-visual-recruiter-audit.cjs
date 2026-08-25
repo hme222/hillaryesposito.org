@@ -19,6 +19,7 @@ const routes = [
     route: "/",
     required: [
       "design healthcare products from the workflow out",
+      "13+ years in healthcare",
       "contributed to a 20% organization-wide",
       "filing queue replaced a four-system workaround",
       "medical resupply time reduced 85%",
