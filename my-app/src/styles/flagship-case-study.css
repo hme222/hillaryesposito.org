@@ -91,38 +91,6 @@
    than as the thing the case study is about. */
 .fp-heroArt--msk .fp-artifactLabel { position: static; width: min(700px,96%); max-width: min(700px,96%); }
 .fp-heroArt--msk .fp-dashboardFrame { width: min(700px,96%); }
-.fp-mskLens { position: relative; z-index: 2; width: min(760px,96%); margin: 0; }
-.fp-mskLens__visual { position: relative; overflow: hidden; border: 1px solid color-mix(in srgb,var(--green) 28%,var(--hair));
-  border-radius: var(--r-plate); background: #f2ebdd; }
-.fp-mskLens__base,
-.fp-mskLens__focus { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
-.fp-mskLens__base { filter: saturate(.28) contrast(.9); opacity: .62; }
-.fp-mskLens__focus { position: absolute; inset: 0; transition: clip-path 240ms ease; }
-.fp-mskLens[data-stage="record"] .fp-mskLens__focus { clip-path: inset(0 66.666% 0 0); }
-.fp-mskLens[data-stage="ritual"] .fp-mskLens__focus { clip-path: inset(0 33.333% 0 33.333%); }
-.fp-mskLens[data-stage="queue"] .fp-mskLens__focus { clip-path: inset(0 0 0 66.666%); }
-.fp-mskLens__focusFrame { position: absolute; inset-block: 0; left: 0; width: 33.333%; pointer-events: none;
-  border-inline: 2px solid var(--coral); transform: translateX(0); transition: transform 240ms ease; }
-.fp-mskLens[data-stage="ritual"] .fp-mskLens__focusFrame { transform: translateX(100%); }
-.fp-mskLens[data-stage="queue"] .fp-mskLens__focusFrame { transform: translateX(200%); }
-.fp-mskLens__caption { display: grid; gap: .85rem; padding-top: .8rem; }
-.fp-mskLens__provenance { display: grid; gap: .2rem; padding-left: .75rem; border-left: 3px solid var(--coral); }
-.fp-mskLens__provenance span { font: .56rem/1.25 var(--mono); letter-spacing: .1em; color: var(--coral); }
-.fp-mskLens__provenance b { max-width: 64ch; font-size: .74rem; line-height: 1.4; }
-.fp-mskLens__controls { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); border-block: 1px solid var(--hair); }
-.fp-mskLens__controls button { min-height: 48px; padding: .65rem .75rem; border: 0; border-right: 1px solid var(--hair);
-  border-top: 3px solid transparent; border-radius: 0; background: transparent; color: var(--ink); font: 700 .72rem/1.25 var(--sans);
-  text-align: left; cursor: pointer; transition: background 180ms ease,border-color 180ms ease; }
-.fp-mskLens__controls button:last-child { border-right: 0; }
-.fp-mskLens__controls button span { display: block; margin-bottom: .2rem; font: .55rem/1 var(--mono); letter-spacing: .08em; color: var(--muted); }
-.fp-mskLens__controls button:hover { background: color-mix(in srgb,var(--paper-2) 72%,transparent); }
-.fp-mskLens__controls button[aria-pressed="true"] { border-top-color: var(--coral); background: var(--paper-2); }
-.fp-mskLens__controls button:focus-visible { position: relative; z-index: 2; outline: 3px solid var(--coral); outline-offset: 2px; }
-.fp-mskLens__reading { display: grid; grid-template-columns: minmax(150px,.7fr) minmax(0,1.3fr); gap: 1rem; min-height: 3.4rem; }
-.fp-mskLens__reading p,
-.fp-mskLens__reading span { margin: 0; }
-.fp-mskLens__reading p { font-weight: 800; line-height: 1.25; }
-.fp-mskLens__reading span { color: var(--ink-2); font-size: .84rem; line-height: 1.5; }
 /* No max-height. The frame used to clip at 72vh, which cut the mockup off
    mid-row and took the glossary and the rule line with it — the reader was
    told about a rule the artifact no longer showed. */
@@ -640,10 +608,6 @@
   .fp-capture--2 { left: 29%; }
   .fp-capture--3 { right: 2%; }
   .fp-mapWrap > ol { grid-template-columns: 1fr 1fr; }
-  .fp-heroArt--msk { min-height: auto; padding-block: 2rem; }
-  .fp-mskLens { width: 94%; }
-  .fp-mskLens__controls button { padding-inline: .55rem; }
-  .fp-mskLens__reading { grid-template-columns: 1fr; gap: .3rem; }
 }
 
 @media (max-width: 430px) {
@@ -654,7 +618,6 @@
   .fp-capture--3 { right: -3%; }
   .fp-sequence__phone { width: min(230px,70vw); }
   .fp-mapWrap > ol { grid-template-columns: 1fr; }
-  .fp-mskLens__controls button { font-size: .66rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -663,9 +626,7 @@
      820px for the stacked layout. Killing them flattened the fan into three
      overlapping rectangles and turned the arrow back to horizontal inside a
      vertical flow, which is not a removed animation but a wrong direction. */
-  .fp-capture, .fp-cinemaCore, .fp-dashboardFrame,
-  .fp-mskLens__focus, .fp-mskLens__focusFrame,
-  .fp-mskLens__controls button { transition: none !important; }
+  .fp-capture, .fp-cinemaCore, .fp-dashboardFrame { transition: none !important; }
 }
 
 /* Three redesigns — restored mechanism. The outcome metrics named certification

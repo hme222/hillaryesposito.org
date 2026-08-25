@@ -19,14 +19,14 @@ const en = {
   "app.backToTop": "Back to top",
 
   // ── Global footer + recovery ──
-  "footer.eyebrow": "Hillary Esposito · Healthcare Product & Service Designer",
+  "footer.eyebrow": "Hillary Esposito · Healthcare Product Designer",
   "footer.statement": "Functional software, carefully made.",
   "footer.siteAria": "Footer navigation",
   "footer.explore": "Explore",
   "footer.connect": "Connect",
   "footer.email": "Email",
   "footer.githubAria": "GitHub profile (opens in new tab)",
-  "footer.availability": "Available for healthcare product and service design opportunities",
+  "footer.availability": "Available for healthcare product design opportunities",
   "footer.madeWith": "Made with:",
   "notFound.eyebrow": "Wrong turn · useful recovery",
   "notFound.title": "This page wandered off.",
@@ -58,8 +58,8 @@ const en = {
   "home.status": "Available for opportunities",
   "home.getInTouch": "Get in touch",
   "home.seeApproach": "See my approach →",
-  "home.riso.eyebrow": "Hillary Esposito · Healthcare Product & Service Designer",
-  "home.riso.heroTitle": "I design healthcare services from the workflow out.",
+  "home.riso.eyebrow": "Hillary Esposito · Healthcare Product Designer",
+  "home.riso.heroTitle": "I design healthcare products from the workflow out.",
   // "Workflow fluency" named a skill without saying what it covers. The
   // durable claim is scope: the whole path a task takes, not the screen at the
   // end of it — which is what the MSK case study actually demonstrates.
@@ -69,7 +69,7 @@ const en = {
   "home.riso.openingVisual": "View opening visual",
   "home.riso.primaryWork": "Review the MSK workflow",
   "home.riso.heroClose": "",
-  "home.riso.workTitle": "Healthcare systems, service operations, and one consumer product",
+  "home.riso.workTitle": "Healthcare products, enterprise workflows, and one consumer product",
   "home.riso.groveDesc":
     "34-person survey · eleven features narrowed to three · functional prototype.",
   "home.riso.mskDesc":
@@ -127,7 +127,7 @@ const en = {
   // ── Home: mini about ──
   "home.about.eyebrow": "A little about me",
   "home.about.blurb":
-    "I spent 13+ years in cancer-care operations and military medical logistics before moving into product design. At MSK and in the Army, I learned to spot the workaround after a handoff and the permission that stops the next person. I use that experience to design healthcare workflows and working prototypes.",
+    "I bring 13+ years inside cancer-care operations and military medical logistics to healthcare product design. At MSK and in the Army, I learned to spot the workaround after a handoff and the permission that stops the next person. I turn that evidence into clearer workflows, internal tools, and working prototypes.",
   "home.about.link": "More about me →",
 
   // ── Home: proof stats ──
@@ -175,14 +175,14 @@ const es: Partial<Record<StringKey, string>> = {
   "app.backToTop": "Volver arriba",
 
   // ── Global footer + recovery ──
-  "footer.eyebrow": "Hillary Esposito · Diseñadora de productos y servicios de salud",
+  "footer.eyebrow": "Hillary Esposito · Diseñadora de productos de salud",
   "footer.statement": "Software funcional, hecho con cuidado.",
   "footer.siteAria": "Navegación del pie de página",
   "footer.explore": "Explorar",
   "footer.connect": "Contacto",
   "footer.email": "Correo",
   "footer.githubAria": "Perfil de GitHub (se abre en una pestaña nueva)",
-  "footer.availability": "Disponible para oportunidades de diseño de productos y servicios de salud",
+  "footer.availability": "Disponible para oportunidades de diseño de productos de salud",
   "footer.madeWith": "Hecho con:",
   "notFound.eyebrow": "Ruta equivocada · recuperación útil",
   "notFound.title": "Esta página se desvió.",
@@ -210,15 +210,15 @@ const es: Partial<Record<StringKey, string>> = {
   "home.status": "Disponible para nuevas oportunidades",
   "home.getInTouch": "Contácteme",
   "home.seeApproach": "Conozca mi enfoque →",
-  "home.riso.eyebrow": "Hillary Esposito · Diseñadora de productos y servicios de salud",
-  "home.riso.heroTitle": "Diseño servicios de salud desde el flujo de trabajo.",
+  "home.riso.eyebrow": "Hillary Esposito · Diseñadora de productos de salud",
+  "home.riso.heroTitle": "Diseño productos de salud desde el flujo de trabajo.",
   "home.riso.heroLead":
     "En Memorial Sloan Kettering, un flujo de trabajo que inicié",
   "home.riso.heroProof": "contribuyó a una reducción del 20% en los costos del registro médico electrónico de toda la organización.",
   "home.riso.openingVisual": "Ver visual de apertura",
   "home.riso.primaryWork": "Ver el flujo de trabajo de MSK",
   "home.riso.heroClose": "",
-  "home.riso.workTitle": "Sistemas de salud, operaciones de servicio y un producto de consumo",
+  "home.riso.workTitle": "Productos de salud, flujos empresariales y un producto de consumo",
   "home.riso.groveDesc":
     "Encuesta a 34 personas · once funciones reducidas a tres · prototipo funcional.",
   "home.riso.mskDesc":
@@ -276,7 +276,7 @@ const es: Partial<Record<StringKey, string>> = {
   // ── Home: mini about ──
   "home.about.eyebrow": "Un poco sobre mí",
   "home.about.blurb":
-    "Pasé más de 13 años en operaciones de atención oncológica y logística médica militar antes de dedicarme al diseño de producto. En MSK y en el Ejército aprendí a detectar el atajo después de una transferencia y el permiso que detiene a la siguiente persona. Uso esa experiencia para diseñar flujos de salud y prototipos funcionales.",
+    "Aporto más de 13 años en operaciones de atención oncológica y logística médica militar al diseño de productos de salud. En MSK y en el Ejército aprendí a detectar el atajo después de una transferencia y el permiso que detiene a la siguiente persona. Convierto esa evidencia en flujos más claros, herramientas internas y prototipos funcionales.",
   "home.about.link": "Conozca más sobre mí →",
 
   // ── Home: proof stats ──

@@ -48,6 +48,11 @@ touch "$DOCS_DIR/.nojekyll"
 echo "➡️  Prerendering route shells..."
 node scripts/prerender-routes.mjs
 
+# Every public route shell must execute the same frozen build as the homepage.
+# Route-specific metadata may differ; stale JS/CSS fingerprints block release.
+echo "➡️  Verifying route-shell asset parity..."
+node scripts/verify-route-shell-parity.mjs
+
 # ---- ENSURE CUSTOM DOMAIN ----
 echo "➡️  Writing CNAME..."
 echo "hillaryesposito.org" > "$DOCS_DIR/CNAME"
@@ -66,8 +71,8 @@ for f in .nojekyll CNAME 404.html robots.txt sitemap.xml index.html \
 done
 
 # ---- GIT STATUS + COMMIT ----
-echo "➡️  Staging changes (source + docs)..."
-git add "$APP_DIR" "$DOCS_DIR"
+echo "➡️  Staging changes (source + docs + release tooling)..."
+git add "$APP_DIR" "$DOCS_DIR" deploy.sh scripts
 
 # If nothing changed, exit cleanly
 if git diff --cached --quiet; then

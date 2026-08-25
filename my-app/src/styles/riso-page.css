@@ -77,7 +77,7 @@
   width: 1px;
   background: color-mix(in srgb, var(--ink) 22%, transparent);
 }
-.rp-hero__content { position: relative; z-index: 2; min-width: 0; padding: clamp(1.4rem, 4vw, 3.4rem); }
+.rp-hero__content { position: relative; z-index: 2; box-sizing: border-box; min-width: 0; padding: clamp(1.4rem, 4vw, 3.4rem); }
 .rp-clearing {
   box-sizing: border-box;
   background: color-mix(in srgb, var(--paper) 90%, transparent);

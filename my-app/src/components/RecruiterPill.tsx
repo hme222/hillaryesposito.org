@@ -67,7 +67,7 @@ export default function RecruiterPill() {
                 <div>
                   <p className="recruiter-panel__eyebrow">90-second tour</p>
                   <h2 id="recruiter-panel-title" className="recruiter-panel__title">
-                    Hillary Esposito, Healthcare Product &amp; Service Designer
+                    Hillary Esposito, Healthcare Product Designer
                   </h2>
                 </div>
                 <button
@@ -83,15 +83,15 @@ export default function RecruiterPill() {
               <div className="recruiter-panel__body">
                 <section className="recruiter-panel__section recruiter-panel__vitals">
                   <div className="recruiter-panel__vitals-grid">
-                    <span>Healthcare Product &amp; Service Designer</span>
-                    <span>Clinical workflows · end-to-end services · research</span>
+                    <span>Healthcare Product Designer</span>
+                    <span>Enterprise workflows · service design · research</span>
                     <span>Currently freelancing</span>
                   </div>
                 </section>
 
                 <section className="recruiter-panel__section">
                   <p className="recruiter-panel__label">In one line</p>
-                  <p>At MSK, a clinical workflow I initiated contributed to a 20% organization-wide electronic medical record cost reduction. I bring 13+ years in healthcare and medical logistics to product, service, and research decisions.</p>
+                  <p>At MSK, a clinical workflow I initiated contributed to a 20% organization-wide electronic medical record cost reduction. I bring 13+ years in healthcare and medical logistics to product decisions, with service design and research built in.</p>
                 </section>
 
                 <section className="recruiter-panel__section">

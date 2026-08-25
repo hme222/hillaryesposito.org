@@ -67,32 +67,32 @@ export type CuratedPage = {
 const allCuratedPages: Record<string, CuratedPage> = {
   "healthcare-product-service-designer": {
     slug: "healthcare-product-service-designer",
-    company: "Healthcare product + service",
+    company: "Healthcare product design",
     heroTitle: "A filing queue replaced a four-system workaround.",
     heroDelivery: {
       state: "Implemented",
       tenure: "Used through 2 system upgrades",
       impact: "Contributed within a 20% organization-wide EMR cost reduction",
     },
-    role: "Mid-level Product / Service Designer",
+    role: "Mid-level Product Designer · Healthcare enterprise and internal tools",
     variant: "care",
     accent: "#285943",
     accentDark: "#8dbb9d",
     mapSrc: "/riso/elevation-03.jpg",
     edition: "eucalyptus",
-    badgeLabel: "Clinical workflow · end-to-end service · implementation",
-    eyebrow: "Healthcare systems · service design · product delivery",
-    headline: "Six years inside MSK operations became one implemented digital workflow.",
+    badgeLabel: "Clinical workflow · internal tools · service design",
+    eyebrow: "Healthcare enterprise · internal tools · product delivery",
+    headline: "Implemented across four departments and used through two system upgrades.",
     subhead:
       "Implemented and used through two system upgrades. The workflow I initiated contributed within a 20% organization-wide EMR cost reduction.",
     meta: [
-      { label: "Target role", value: "Healthcare Product / Service Designer" },
+      { label: "Target role", value: "Healthcare Product Designer" },
       { label: "Domain", value: "Cancer care · clinical operations · medical logistics" },
       { label: "Core proof", value: "Current/future state · handoffs · implementation · outcomes" },
       { label: "Credentials", value: "MHA · Lean Six Sigma Green Belt · Army veteran" },
     ],
     intro: [
-      "I follow the whole service path, make the workaround and owner visible, then test whether the change survives without its author.",
+      "I design the whole product workflow, make the workaround and owner visible, then test whether the change survives without its author.",
     ],
     proofPoints: [
       {
@@ -175,9 +175,9 @@ const allCuratedPages: Record<string, CuratedPage> = {
       "implementation",
     ],
     hiringManagerNote:
-      "My Product Designer title is newer than my healthcare practice. The artifacts show the work: map, align, implement, sustain.",
+      "I bring 13+ years inside healthcare operations to product decisions about permissions, handoffs, exceptions, implementation, and adoption.",
     closing:
-      "I am strongest where a healthcare product is also a service: multiple roles, consequential handoffs, policy and technical constraints, and a person who still has to act correctly at the end.",
+      "I design healthcare products as complete services: multiple roles, consequential handoffs, policy and technical constraints, and a person who still has to act correctly at the end.",
     supportLinks: [
       {
         label: "MSK clinical workflow case study",
@@ -210,8 +210,8 @@ const allCuratedPages: Record<string, CuratedPage> = {
     proofKicker: "Measured outcomes, with attribution",
     caseStudyCtaLabel: "Review MSK",
     resumeLink: {
-      label: "View healthcare Product / Service résumé · PDF ↗",
-      path: "/assets/Hillary_Esposito_Healthcare_Product_Service_Designer_Resume.pdf",
+      label: "View Healthcare Product Designer résumé · PDF ↗",
+      path: "/assets/Hillary_Esposito_Portfolio_Resume.pdf",
     },
     contactFirst: true,
   },

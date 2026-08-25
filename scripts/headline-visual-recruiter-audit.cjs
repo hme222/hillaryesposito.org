@@ -18,7 +18,7 @@ const routes = [
     name: "home",
     route: "/",
     required: [
-      "design healthcare services from the workflow out",
+      "design healthcare products from the workflow out",
       "contributed to a 20% organization-wide",
       "filing queue replaced a four-system workaround",
       "medical resupply time reduced 85%",
@@ -61,8 +61,8 @@ const routes = [
     name: "healthcare-product",
     route: "/curated/healthcare-product-service-designer",
     required: [
-      "healthcare product + service",
-      "mid-level product / service designer",
+      "healthcare product design",
+      "mid-level product designer · healthcare enterprise and internal tools",
       "20%",
       "85%",
       "implemented",
@@ -134,6 +134,12 @@ async function inspect(page, routeName, required) {
     };
     const normalized = document.body.innerText.replace(/\s+/g, " ").trim().toLowerCase();
     const images = [...document.querySelectorAll("main img")];
+    const heroBounds = [...document.querySelectorAll(".rp-clearing, .rp-eyebrow, .rp-h1, .rp-hero__ctas")]
+      .filter(visible)
+      .map((element) => ({
+        selector: element.className,
+        rect: element.getBoundingClientRect(),
+      }));
     const unresolvedClaims = claims.filter((claim) => !normalized.includes(claim));
     const visibleParagraphs = [...document.querySelectorAll("main p")]
       .filter(visible)
@@ -157,6 +163,9 @@ async function inspect(page, routeName, required) {
       leakedBodyParagraphs,
       horizontalOverflow: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
       brokenImages: images.filter((image) => image.complete && image.naturalWidth === 0).map((image) => image.getAttribute("src")),
+      clippedHeroElements: heroBounds
+        .filter(({ rect }) => rect.left < -1 || rect.right > document.documentElement.clientWidth + 1)
+        .map(({ selector, rect }) => ({ selector, left: Math.round(rect.left), right: Math.round(rect.right) })),
       heroEvidenceItems: document.querySelectorAll(".rp-heroEvidence > div").length,
       openingFilmVisibleBeforeAction: Boolean(openingFilm && visible(openingFilm)),
       homeArtifacts,
@@ -205,6 +214,7 @@ async function run() {
     || result.leakedBodyParagraphs.length
     || result.horizontalOverflow
     || result.brokenImages.length
+    || result.clippedHeroElements.length
     || result.openingFilmVisibleBeforeAction
     || (["msk", "logistics", "grove"].includes(result.name) && result.heroEvidenceItems < 4)
     || (result.name === "home" && (

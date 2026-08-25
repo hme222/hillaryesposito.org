@@ -1,5 +1,5 @@
 // src/app/AppRoutes.tsx
-import React, { Component, lazy, Suspense, useEffect, useRef, useState } from "react";
+import React, { Component, lazy, Suspense, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Routes, Route, useLocation, useNavigationType } from "react-router-dom";
 
 import RisoHome from "../pages/RisoHome";
@@ -84,6 +84,14 @@ function ScrollToTop() {
   const navigationType = useNavigationType();
   const isFirstRender = useRef(true);
   const lastPath = useRef(pathname);
+  const restoringPop = useRef(false);
+  if (navigationType === "POP" && lastPath.current !== pathname) {
+    restoringPop.current = true;
+  }
+  // Capture the destination's saved position during render. The new route's
+  // scroll listener can otherwise observe the browser's interim top position
+  // before the POP restoration effect runs and overwrite the value we need.
+  const savedScrollAtRender = Number(sessionStorage.getItem(`portfolio-scroll:${pathname}`) || 0);
 
   useEffect(() => {
     const previous = window.history.scrollRestoration;
@@ -95,6 +103,7 @@ function ScrollToTop() {
 
   useEffect(() => {
     const remember = () => {
+      if (restoringPop.current || window.location.pathname !== pathname) return;
       sessionStorage.setItem(`portfolio-scroll:${pathname}`, String(window.scrollY));
     };
     window.addEventListener("scroll", remember, { passive: true });
@@ -103,7 +112,7 @@ function ScrollToTop() {
     };
   }, [pathname]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const params = new URLSearchParams(search);
 
     // GitHub Pages deep-link restore: 404.html bounces an unknown path to "/"
@@ -132,7 +141,7 @@ function ScrollToTop() {
     // instead of resetting to the top and fighting that scroll.
     if (params.has("scrollTo")) return;
     if (pathChanged && navigationType === "POP") {
-      const saved = Number(sessionStorage.getItem(`portfolio-scroll:${pathname}`) || 0);
+      const saved = savedScrollAtRender;
       // Images and lazy case-study bundles can grow the document after the
       // first paint. Keep restoring the same history entry until the requested
       // position is reachable or the layout has had ample time to settle.
@@ -143,6 +152,7 @@ function ScrollToTop() {
       root.style.scrollBehavior = "auto";
       const finish = () => {
         root.style.scrollBehavior = previousScrollBehavior;
+        restoringPop.current = false;
       };
       const restore = () => {
         window.scrollTo({ top: saved, left: 0, behavior: "auto" });
@@ -159,7 +169,10 @@ function ScrollToTop() {
         finish();
       };
     }
-    if (pathChanged) window.scrollTo(0, 0);
+    if (pathChanged) {
+      restoringPop.current = false;
+      window.scrollTo(0, 0);
+    }
 
     // Move focus to the main content region on client-side navigation so keyboard
     // and screen-reader users land on the new page instead of a stale control from
@@ -167,7 +180,7 @@ function ScrollToTop() {
     if (wasFirstRender || !pathChanged) return;
     const main = document.getElementById("main-content");
     main?.focus({ preventScroll: true });
-  }, [key, navigationType, pathname, search]);
+  }, [key, navigationType, pathname, savedScrollAtRender, search]);
   return null;
 }
 

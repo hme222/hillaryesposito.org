@@ -139,7 +139,7 @@ export default function About() {
               <img src="/assets/about/headshot.jpg" alt="Hillary Esposito" />
             </div>
             <figcaption className="about-hero__caption">
-              {isSpanish ? "Hillary Esposito · Diseñadora de productos y servicios de salud · Nueva York" : "Hillary Esposito · Healthcare Product & Service Designer · New York"}
+              {isSpanish ? "Hillary Esposito · Diseñadora de productos de salud · Nueva York" : "Hillary Esposito · Healthcare Product Designer · New York"}
             </figcaption>
           </figure>
         </div>
@@ -147,14 +147,10 @@ export default function About() {
           <div className="rp-clearing">
             <span className="rp-eyebrow">{isSpanish ? "Sobre mí" : "About"}</span>
             <h1 className="rp-h1">
-              {isSpanish ? "Diseño productos y servicios de salud donde cada transferencia importa." : "I design healthcare products and services where every handoff matters."}
+              {isSpanish ? "Diseño productos de salud donde cada transferencia importa." : "I design healthcare products where every handoff matters."}
             </h1>
             <p className="rp-sub">
-              {/* Frames the path as the qualification rather than as a pivot.
-                  She did not learn healthcare to design for it — she worked
-                  inside the broken workflows first and moved into design to fix
-                  them, which is the harder order to come by. */}
-              {isSpanish ? "Pasé más de 13 años dentro de operaciones de atención oncológica y logística médica militar antes de dedicarme formalmente al diseño. Ahora convierto esa experiencia en flujos clínicos más claros, servicios integrales y productos que ayudan a las personas a actuar correctamente cuando una falla tiene un costo." : "I spent 13+ years inside cancer-care operations and military medical logistics before moving into formal design. I now turn that experience into clearer clinical workflows, end-to-end services, and products that help people act correctly when failure has a cost."}
+              {isSpanish ? "Aporto más de 13 años dentro de operaciones de atención oncológica y logística médica militar al diseño de productos de salud. Convierto esa experiencia en flujos clínicos más claros, herramientas internas y servicios integrales que ayudan a las personas a actuar correctamente cuando una falla tiene un costo." : "I bring 13+ years inside cancer-care operations and military medical logistics to healthcare product design. I turn that experience into clearer clinical workflows, internal tools, and end-to-end services that help people act correctly when failure has a cost."}
             </p>
           </div>
         </div>

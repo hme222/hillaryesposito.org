@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect, useRef, useState } from "react";
+import React, { lazy, Suspense, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
@@ -122,79 +122,6 @@ const WORKFLOW_AFTER = [
   "Return with status updated",
 ];
 
-const HERO_WORKFLOW_LENSES = [
-  {
-    id: "record",
-    short: "Digital record",
-    title: "The work began online.",
-    body: "Staff opened an online queue, then had to leave it to complete the filing task.",
-  },
-  {
-    id: "ritual",
-    short: "Paper ritual",
-    title: "A digital record became a paper handoff.",
-    body: "Printing and routing the record through Imaging added delay and stripped away chart context.",
-  },
-  {
-    id: "queue",
-    short: "Filing queue",
-    title: "The decision moved back to the queue.",
-    body: "One filing action kept the work in context and returned staff to an updated status.",
-  },
-] as const;
-
-function MSKWorkflowLens() {
-  const [activeLens, setActiveLens] = useState(0);
-  const lens = HERO_WORKFLOW_LENSES[activeLens];
-
-  return (
-    <figure className="fp-mskLens" data-stage={lens.id}>
-      <div className="fp-mskLens__visual">
-        <img
-          className="fp-mskLens__base"
-          src="/assets/msk/msk-editorial-workflow-higgsfield.jpg"
-          alt="Conceptual illustration of a digital record passing through a paper-printing ritual and resolving into an ordered filing queue."
-          loading="eager"
-          decoding="async"
-        />
-        <img
-          className="fp-mskLens__focus"
-          src="/assets/msk/msk-editorial-workflow-higgsfield.jpg"
-          alt=""
-          aria-hidden="true"
-          loading="eager"
-          decoding="async"
-        />
-        <span className="fp-mskLens__focusFrame" aria-hidden="true" />
-      </div>
-      <figcaption className="fp-mskLens__caption">
-        <div className="fp-mskLens__provenance">
-          <span>CONCEPTUAL ILLUSTRATION · ART-DIRECTED IN HIGGSFIELD</span>
-          <b>Use the lens to inspect the workflow change. Recreated artifacts and evidence follow.</b>
-        </div>
-        <div className="fp-mskLens__controls" role="group" aria-label="Inspect the workflow transformation">
-          {HERO_WORKFLOW_LENSES.map((item, index) => (
-            <button
-              key={item.id}
-              type="button"
-              aria-pressed={activeLens === index}
-              aria-controls="msk-workflow-lens-reading"
-              onClick={() => setActiveLens(index)}
-            >
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              {item.short}
-            </button>
-          ))}
-        </div>
-        <div className="fp-mskLens__reading" id="msk-workflow-lens-reading" aria-live="polite">
-          <p>{lens.title}</p>
-          <span>{lens.body}</span>
-        </div>
-      </figcaption>
-    </figure>
-  );
-}
-
 export default function FlagshipMSK() {
   usePageTitle("MSK — Clinical Systems Case Study");
   const { lang } = useLanguage();
@@ -247,8 +174,11 @@ export default function FlagshipMSK() {
             <a className="rp-cta" href="#msk-workflow">See the workflow →</a>
           </div>
         </div>
-        <div className="rp-hero__media fp-heroArt fp-heroArt--msk" data-provenance="conceptual">
-          <MSKWorkflowLens />
+        <div className="rp-hero__media fp-heroArt fp-heroArt--msk" data-evidence="true">
+          <div className="fp-artifactLabel"><span>RECREATED ARTIFACT</span><b>Office Coordinator filing queue · no patient data</b></div>
+          <div className="fp-dashboardFrame" aria-label="Recreated Office Coordinator filing queue concept">
+            <MSKDashboardMockup headingLevel={2} />
+          </div>
         </div>
       </header>
 

@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 
 const BASE = "Hillary Esposito";
-const DEFAULT_TITLE = `${BASE} | Healthcare Product & Service Designer`;
+const DEFAULT_TITLE = `${BASE} | Healthcare Product Designer`;
 const DEFAULT_DESCRIPTION =
-  "Healthcare product and service designer with 13+ years in cancer-care operations and medical logistics; initiated a clinical workflow that contributed to a 20% organization-wide EMR cost reduction.";
+  "Healthcare Product Designer with 13+ years in cancer-care operations and medical logistics; initiated a clinical workflow that contributed to a 20% organization-wide EMR cost reduction.";
 const ORIGIN = "https://hillaryesposito.org";
 
 const ROUTE_META: Array<{ match: RegExp; description: string; image: string }> = [
@@ -28,7 +28,7 @@ const ROUTE_META: Array<{ match: RegExp; description: string; image: string }> =
   {
     match: /\/about$/,
     description:
-      "About Hillary Esposito: a healthcare product and service designer combining clinical workflow knowledge, service systems, research rigor, and responsible AI judgment.",
+      "About Hillary Esposito: a Healthcare Product Designer combining clinical workflow knowledge, service design, research rigor, and responsible AI judgment.",
     image: "/assets/about/now.jpg",
   },
 ];

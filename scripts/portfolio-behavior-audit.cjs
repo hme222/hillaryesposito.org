@@ -22,9 +22,21 @@ async function testBackRestoration(browser, width) {
   await page.waitForSelector("#msk-workflow");
   await page.goBack({ waitUntil: "domcontentloaded" });
   await page.waitForTimeout(1450);
-  const after = await page.evaluate(() => Math.round(window.scrollY));
+  const state = await page.evaluate(() => ({
+    after: Math.round(window.scrollY),
+    storedAfter: Number(sessionStorage.getItem("portfolio-scroll:/")),
+    pathname: window.location.pathname,
+    scrollHeight: document.documentElement.scrollHeight,
+  }));
   await page.close();
-  return { width, before, storedBeforeClick, after, difference: Math.abs(before - after), pass: Math.abs(before - after) <= 1020 };
+  return {
+    width,
+    before,
+    storedBeforeClick,
+    ...state,
+    difference: Math.abs(before - state.after),
+    pass: Math.abs(before - state.after) <= 1020,
+  };
 }
 
 async function testLanguageRecovery(browser, width) {

@@ -208,25 +208,18 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".fp-workflowFig")).not.toBeNull();
   });
 
-  it("keeps the MSK conceptual hero distinct from evidence and operable without hover", async () => {
+  it("keeps the MSK hero on the recreated queue without decorative concepts", async () => {
     await act(async () => {
       root.render(<FlagshipMSK />);
     });
 
-    const lens = container.querySelector<HTMLElement>(".fp-mskLens");
-    const controls = Array.from(container.querySelectorAll<HTMLButtonElement>(".fp-mskLens__controls button"));
-    expect(lens?.closest("[data-provenance='conceptual']")).not.toBeNull();
-    expect(controls).toHaveLength(3);
-    expect(controls[0].getAttribute("aria-pressed")).toBe("true");
-    expect(container.textContent).toContain("The work began online.");
-
-    await act(async () => {
-      controls[2].dispatchEvent(new MouseEvent("click", { bubbles: true }));
-    });
-
-    expect(lens?.dataset.stage).toBe("queue");
-    expect(controls[2].getAttribute("aria-pressed")).toBe("true");
-    expect(container.textContent).toContain("The decision moved back to the queue.");
+    const heroArtifact = container.querySelector<HTMLElement>(".fp-heroArt--msk");
+    expect(heroArtifact?.getAttribute("data-evidence")).toBe("true");
+    expect(heroArtifact?.querySelector(".msk-dashboard-mockup")).not.toBeNull();
+    expect(container.querySelector(".fp-mskHeroPlate__detour")).toBeNull();
+    expect(container.querySelector(".fp-mskLens")).toBeNull();
+    expect(container.querySelector(".fp-mskLens__controls")).toBeNull();
+    expect(container.textContent).toContain("Office Coordinator filing queue · no patient data");
   });
 
 
@@ -307,7 +300,7 @@ describe("flagship case-study accessibility", () => {
   });
 
   it.each([
-    ["healthcare-product-service-designer", "Healthcare product + service"],
+    ["healthcare-product-service-designer", "Healthcare product design"],
     ["healthcare-ux-researcher", "Healthcare UX research"],
     ["the-sill-product-designer", "The Sill"],
   ])("keeps the %s hiring page evidence-first and noindex", async (slug, expectedText) => {

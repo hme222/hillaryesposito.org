@@ -3,6 +3,8 @@
 
 from pathlib import Path
 from shutil import copyfile
+import subprocess
+import sys
 
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_CENTER, TA_LEFT
@@ -408,6 +410,11 @@ def main():
     temp_dir = ROOT / "tmp/pdfs"
     temp_dir.mkdir(parents=True, exist_ok=True)
     for variant, filename in OUTPUTS.items():
+        # The primary portfolio résumé is generated from semantic HTML so the
+        # PDF contains a real structure tree. ReportLab's SimpleDocTemplate
+        # output is visually sound but untagged.
+        if variant == "portfolio":
+            continue
         temp_output = temp_dir / filename
         build_resume(temp_output, variant)
         for base_dir in (ROOT / "my-app/public/assets", ROOT / "docs/assets"):
@@ -415,6 +422,10 @@ def main():
             destination.parent.mkdir(parents=True, exist_ok=True)
             copyfile(temp_output, destination)
             print(destination)
+    subprocess.run(
+        [sys.executable, str(ROOT / "scripts/build-accessible-product-resume.py")],
+        check=True,
+    )
 
 
 if __name__ == "__main__":
