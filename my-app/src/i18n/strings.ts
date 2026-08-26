@@ -66,7 +66,7 @@ const en = {
   "home.riso.heroLead":
     "At Memorial Sloan Kettering, a workflow I initiated",
   "home.riso.heroProof": "contributed to a 20% organization-wide electronic medical record cost reduction.",
-  "home.riso.openingVisual": "View opening visual",
+  "home.riso.openingVisual": "Watch the 40-second portfolio opener",
   "home.riso.primaryWork": "Review the MSK workflow",
   "home.riso.heroClose": "",
   "home.riso.workTitle": "Healthcare products, enterprise workflows, and one consumer product",
@@ -215,7 +215,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.heroLead":
     "En Memorial Sloan Kettering, un flujo de trabajo que inicié",
   "home.riso.heroProof": "contribuyó a una reducción del 20% en los costos del registro médico electrónico de toda la organización.",
-  "home.riso.openingVisual": "Ver visual de apertura",
+  "home.riso.openingVisual": "Ver la apertura del portafolio de 40 segundos",
   "home.riso.primaryWork": "Ver el flujo de trabajo de MSK",
   "home.riso.heroClose": "",
   "home.riso.workTitle": "Productos de salud, flujos empresariales y un producto de consumo",

@@ -5,6 +5,7 @@ import CartoField from "../components/riso/CartoField";
 import PhaseIndicator from "../components/riso/PhaseIndicator";
 import HomepageOpeningFilm from "../components/riso/HomepageOpeningFilm";
 import LogisticsMechanism from "../components/LogisticsMechanism";
+import MSKDashboardMockup from "../components/MSKDashboardMockup";
 import usePageTitle from "../hooks/usePageTitle";
 import { useLanguage, useT } from "../app/LanguageContext";
 import type { StringKey } from "../i18n/strings";
@@ -218,8 +219,20 @@ export default function RisoHome() {
           </div>
         </div>
         <div className="rp-hero__media">
-          <div className="rp-headshot">
-            <img src="/assets/about/headshot.jpg" alt="Hillary Esposito" />
+          <div className="home-heroProofStack" data-evidence="true">
+            <figure className="home-heroArtifact">
+              <div className="home-heroArtifact__label">
+                <span>Implemented healthcare workflow</span>
+                <b>One filing queue replaced a four-system workaround.</b>
+              </div>
+              <div className="home-heroArtifact__frame">
+                <MSKDashboardMockup compact headingLevel={2} />
+              </div>
+              <figcaption>Recreated Office Coordinator queue · no patient data</figcaption>
+            </figure>
+            <div className="rp-headshot rp-headshot--supporting">
+              <img src="/assets/about/headshot.jpg" alt="Hillary Esposito" />
+            </div>
           </div>
         </div>
       </header>

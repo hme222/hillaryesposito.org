@@ -350,8 +350,8 @@ describe("flagship case-study accessibility", () => {
     await act(async () => {
       root.render(<RisoGrove />);
     });
-    expect(container.textContent).toContain("The rebuild");
-    expect(container.textContent).toContain("Four decisions, from first build to focused next test");
+    expect(container.textContent).toContain("Optional artifact set");
+    expect(container.textContent).toContain("Inspect all six authentic first-build screens");
     expect(container.textContent).not.toContain("Walk the route");
   });
 

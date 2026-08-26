@@ -803,6 +803,29 @@
 .rp-acc__ai b { color: var(--coral); } .rp-acc__me b { color: var(--green); }
 .rp-acc__why { color: var(--muted); font-size: .86rem; margin-top: .25rem; }
 
+/* Optional evidence is a deliberate second reading path. The closed state is
+   one ruled row; opening it reveals the full artifact at its natural size. */
+.rp-deepDive { margin: 0; border: 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); background: var(--paper-2); }
+.rp-deepDive > summary {
+  position: relative; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  min-height: 72px; max-width: var(--wrap); margin: 0 auto; padding: 1rem var(--sp-gutter);
+  cursor: pointer; list-style: none; color: var(--ink);
+}
+.rp-deepDive > summary::-webkit-details-marker { display: none; }
+.rp-deepDive > summary span { font: 700 .7rem/1.35 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--coral); }
+.rp-deepDive > summary b { font-size: 1rem; line-height: 1.35; text-align: right; }
+.rp-deepDive > summary::after { content: "+"; flex: 0 0 auto; font: 700 1.4rem/1 var(--mono); color: var(--coral); }
+.rp-deepDive[open] > summary { border-bottom: 1px solid var(--hair); }
+.rp-deepDive[open] > summary::after { content: "−"; }
+.rp-deepDive > summary:focus-visible { outline: 3px solid var(--coral); outline-offset: -4px; }
+.rp-deepDive .rp-section { border: 0; }
+@media (max-width: 760px) {
+  .rp-deepDive > summary { align-items: flex-start; flex-direction: column; min-height: 0; padding-right: 3.5rem; }
+  .rp-deepDive > summary b { text-align: left; }
+  .rp-deepDive > summary::after { position: absolute; right: var(--sp-gutter); top: 50%; transform: translateY(-50%); }
+  .rp-deepDive > summary span { font-size: .75rem; }
+}
+
 /* ---------- roadmap (consolidated placeholders) ---------- */
 .rp-roadmap { margin-top: 1.5rem; display: grid; gap: 0; max-width: 640px; }
 .rp-roadmap__item { display: grid; grid-template-columns: 20px 1fr; gap: .8rem; align-items: baseline; padding: .8rem 0; border-top: 1px solid var(--hair); }
@@ -907,6 +930,17 @@
 .curated-deliveryStamp figcaption { margin-top: 1.4rem; padding-top: 1rem; border-top: 1px solid rgba(244,241,230,.45);
   font: .68rem/1.5 var(--mono); letter-spacing: .04em; }
 @media (prefers-reduced-motion: reduce) { .curated-deliveryStamp { transform: none; } }
+.curated-productArtifact { width: min(680px, 96%); margin: 0; }
+.curated-productArtifact__label {
+  position: relative; z-index: 3; width: min(31rem, 88%); margin: 0 0 -.45rem .75rem;
+  padding: .72rem .9rem; border-left: 3px solid var(--coral);
+  background: color-mix(in srgb, var(--paper) 96%, transparent);
+  box-shadow: 0 12px 28px -22px rgba(0,0,0,.5);
+}
+.curated-productArtifact__label span { display: block; font: 700 .66rem/1.35 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--coral); }
+.curated-productArtifact__label b { display: block; margin-top: .25rem; font-size: .88rem; line-height: 1.35; }
+.curated-productArtifact__frame { position: relative; z-index: 2; overflow: hidden; border: 1px solid var(--hair); background: var(--paper); box-shadow: 0 30px 60px -38px rgba(0,0,0,.6); }
+.curated-productArtifact figcaption { margin-top: .6rem; font: 700 .7rem/1.5 var(--mono); letter-spacing: .03em; color: var(--ink-2); }
 @media (max-width: 820px) {
   .curated-evidenceCard { grid-template-columns: 1fr; min-height: 0; }
   .curated-evidenceCard__visual { min-height: 260px; max-height: 360px; }
@@ -2360,6 +2394,65 @@
   }
   .riso-home .rp-hero__media:hover .rp-headshot { transform: translateY(9%) rotate(.7deg); }
   .spanish-riso-case .rp-hero__media { display: none; }
+
+  /* A recruiter should see a real artifact before the first viewport ends.
+     Headline remains first in the DOM; the visual order promotes its evidence
+     without changing reading or focus order. */
+  .flagship-page .rp-hero__media,
+  .curated-role .rp-hero__media {
+    order: -1;
+    min-height: 280px;
+    max-height: 340px;
+    overflow: hidden;
+    padding: .8rem 1rem;
+  }
+  .flagship-page .rp-hero__content,
+  .curated-role .rp-hero__content { order: 1; }
+  .flagship-page .rp-hero__media .rp-device { height: 310px; width: auto; }
+  .flagship-page .fp-heroArt { min-height: 300px; }
+  .flagship-page .fp-heroArt--msk .fp-dashboardFrame { width: 96%; max-height: 245px; }
+  .flagship-page .fp-heroArt--msk .fp-artifactLabel { width: 96%; padding: .5rem .65rem; }
+  .curated-productArtifact { width: 100%; }
+  .curated-productArtifact__frame { max-height: 220px; }
+  .curated-productArtifact__frame .msk-dashboard-mockup { transform: scale(.8); transform-origin: top left; width: 125%; }
+  .curated-productArtifact__label { margin-left: .25rem; padding: .5rem .65rem; }
+  .curated-productArtifact figcaption { font-size: .75rem; }
+
+  /* Consequential labels stay small but no longer fall below a readable 12px
+     floor on the phone layouts used in the recruiter audit. */
+  .rp-heroEvidence dt,
+  .rp-metagrid__k,
+  .curated-evidenceStrip dt,
+  .curated-heroTrace dt,
+  .rp-work__n,
+  .rp-work__sub,
+  .rp-kicker,
+  .rp-chapter__n,
+  .rp-chapter__proof small,
+  .rp-phase__label,
+  .rp-note__k { font-size: .75rem; }
+  .rp-metagrid__v,
+  .curated-evidenceStrip dd,
+  .curated-heroTrace dd { font-size: .84rem; }
+  .rp-cta,
+  .rp-heroUtility,
+  .rp-eyebrow,
+  .rp-status,
+  .rp-stat__source,
+  .site-footer__label { font-size: .75rem; }
+  .msk-dashboard-mockup--compact .msk-dashboard-mockup__eyebrow,
+  .msk-dashboard-mockup--compact .msk-dashboard-mockup__timestamp,
+  .msk-dashboard-mockup--compact .msk-dashboard-mockup__role,
+  .msk-dashboard-mockup--compact .msk-dashboard-mockup__toolbar span,
+  .msk-dashboard-mockup--compact .msk-dashboard-mockup__row,
+  .msk-dashboard-mockup--compact .msk-dashboard-mockup__row--head,
+  .msk-dashboard-mockup--compact .msk-dashboard-status,
+  .msk-dashboard-mockup--compact .msk-dashboard-action,
+  .msk-dashboard-mockup--compact .msk-dashboard-mockup__mrn small,
+  .msk-dashboard-mockup--compact .msk-dashboard-mockup__legend,
+  .msk-dashboard-mockup--compact .msk-dashboard-mockup__rule { font-size: .75rem; }
+  .curated-role--healthcare-ux-researcher .rp-hero__media { min-height: 300px; max-height: 320px; }
+  .curated-role--healthcare-ux-researcher .rp-h1 { font-size: clamp(2.15rem, 8.8vw, 2.45rem); line-height: .98; }
 }
 
 /* ---------- flagship chapter progress ---------- */
@@ -3227,6 +3320,16 @@
 .rp-chapter__n span { color: var(--muted); }
 .rp-chapter .rp-subhead { margin-top: .7rem; max-width: 26ch; }
 .rp-chapter__body { margin-top: .9rem; max-width: 58ch; color: var(--ink-2); line-height: 1.7; }
+.about-evidenceLedger {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin: 1.35rem 0 0;
+  border-top: 1px solid var(--hair);
+  border-bottom: 1px solid var(--hair);
+}
+.about-evidenceLedger > div { padding: .9rem .55rem .85rem 0; }
+.about-evidenceLedger dt { font-size: clamp(1.2rem, 2.4vw, 1.8rem); font-weight: 850; letter-spacing: -.03em; color: var(--ink); }
+.about-evidenceLedger dd { margin: .25rem 0 0; font: 700 .62rem/1.35 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 /* The callout is the chapter's one line worth remembering — a ruled aside, not
    a tinted card. */
 .rp-chapter__callout {
@@ -3256,6 +3359,8 @@
 @media (max-width: 760px) {
   .rp-split--flip .rp-split__media { order: 0; }
   .rp-chapter .rp-subhead { max-width: none; }
+  .about-evidenceLedger { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .about-evidenceLedger dd { font-size: .75rem; }
 }
 
 /* ---------- badge ---------- */

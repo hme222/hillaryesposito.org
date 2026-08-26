@@ -11,16 +11,28 @@ import "../styles/riso.css";
 import "../styles/riso-page.css";
 
 // ── Story chapters ───────────────────────────────────────────────────────
-const CHAPTERS = [
+type AboutChapter = {
+  id: string;
+  label: string;
+  heading: string;
+  image: string;
+  paragraphs: string[];
+  facts?: Array<{ value: string; label: string }>;
+  callout: string;
+  caseLink?: { path: string; title: string; source: string };
+  articleLink?: { url: string; title: string; source: string };
+};
+
+const CHAPTERS: AboutChapter[] = [
   {
     id: "now",
     label: "What I Do Now",
     heading: "Designing for the person who has to act on it.",
     image: "/assets/about/now.jpg",
     paragraphs: [
-      "Right now I'm freelancing. My most recent contract was a deep study of three finance apps, where I documented more than 200 screens of end-to-end mobile flows, then annotated and tagged each one so thousands of designers could actually find and reuse them.",
-      "It sharpened three things: reading interaction patterns at scale across financial UX, structuring documentation to a strict taxonomy and quality bar, and seeing how differently products answer the same question — why should I believe this.",
-      "AI is part of how I work now, but it stays a tool. I use it to move faster on research and prototyping, then make the calls myself.",
+      "My latest contract mapped and tagged 200+ screens across three finance apps so thousands of designers could find and reuse complete mobile flows.",
+      "It sharpened how I compare patterns at scale, document to a strict taxonomy, and examine how products earn belief.",
+      "AI accelerates research and prototyping. The judgment and authorship stay mine.",
     ],
     callout: "AI moves the work faster. The calls stay mine.",
   },
@@ -30,7 +42,8 @@ const CHAPTERS = [
     heading: "Six years at MSK, optimizing internal operations and designing for 21,000+ clinicians and staff.",
     image: "/assets/about/msk.jpg",
     paragraphs: [
-      "I initiated the EMR workflow redesign that later contributed to a 20% organization-wide cost reduction, rewrote the CPR certification material so every certification came in 70% ahead of a deadline that was about to slip, and rebuilt the onboarding program — Epic, HIPAA, compliance — for new administrative staff. The work relied on operational observation, feedback, and workflow analysis before I had formal UX vocabulary for those practices.",
+      "I initiated an EMR workflow redesign that contributed within a 20% organization-wide cost reduction and survived two system upgrades.",
+      "I also rebuilt CPR certification and administrative onboarding across Epic, HIPAA, and compliance. Operational observation, feedback, and workflow analysis were already the practice—even before I had formal UX vocabulary for it.",
     ],
     callout: "Systems fail at the point where a real person has to use them.",
     articleLink: {
@@ -45,23 +58,31 @@ const CHAPTERS = [
     heading: "Captain and Medical Logistics Officer, NJ Army National Guard.",
     image: "/assets/about/army.jpg",
     paragraphs: [
-      "Medical logistics means making sure medicine and equipment reach the people treating casualties, before they need it. Deployed to Iraq with the 44th IBCT — an infantry brigade of several thousand soldiers — I directed that supply chain for 5,000+ soldiers and $2M in supplies across seven aid stations, the front-line clinics where wounded soldiers are treated first, in three countries. Pioneered digital tracking that cut resupply time 85% and reduced spending 60%. In 2020, activated for New Jersey’s COVID-19 response, I reported from the Joint Surgeon’s Office — the medical command for the state’s National Guard — to the Pentagon on state medical operations.",
+      "In Iraq, I directed medical supply for 5,000+ soldiers across seven aid stations in three countries under a 48-hour cold-chain constraint.",
+      "Shared tracking cut resupply time 85% and spending 60%. In 2020, I reported New Jersey National Guard medical operations to the Pentagon during the COVID-19 response.",
+    ],
+    facts: [
+      { value: "5,000+", label: "soldiers served" },
+      { value: "$2M", label: "medical supply" },
+      { value: "7", label: "aid stations" },
+      { value: "85%", label: "shorter resupply" },
+      { value: "60%", label: "lower spending" },
     ],
     callout: "Process failure in a combat zone isn’t an inconvenience. It’s a casualty risk.",
     caseLink: { path: "/case-study/logistics", title: "Medical logistics, Iraq", source: "Read the case study" },
   },
 ];
 
-const CHAPTERS_ES = [
+const CHAPTERS_ES: AboutChapter[] = [
   {
     id: "now",
     label: "Lo que hago ahora",
     heading: "Diseñar para la persona que tiene que actuar.",
     image: "/assets/about/now.jpg",
     paragraphs: [
-      "Ahora trabajo freelance. Mi contrato más reciente fue un estudio profundo de tres apps de finanzas, donde documenté más de 200 pantallas de flujos móviles de principio a fin, y luego anoté y etiqueté cada una para que miles de diseñadores pudieran encontrarlas y reutilizarlas.",
-      "Afinó tres cosas: leer patrones de interacción a escala en UX financiera, estructurar documentación con una taxonomía y un estándar de calidad estrictos, y ver de qué maneras tan distintas los productos responden a la misma pregunta: por qué debería creerte.",
-      "La IA es parte de cómo trabajo ahora, pero sigue siendo una herramienta. La uso para avanzar más rápido en investigación y prototipos, y las decisiones las tomo yo.",
+      "Mi contrato más reciente mapeó y etiquetó más de 200 pantallas de tres apps financieras para que miles de diseñadores pudieran reutilizar flujos móviles completos.",
+      "Afinó cómo comparo patrones a escala, documento con una taxonomía estricta y evalúo cómo un producto gana credibilidad.",
+      "La IA acelera la investigación y los prototipos. El juicio y la autoría siguen siendo míos.",
     ],
     callout: "La IA acelera el trabajo. Las decisiones siguen siendo mías.",
   },
@@ -71,7 +92,8 @@ const CHAPTERS_ES = [
     heading: "Seis años en MSK, optimizando operaciones internas y diseñando para 21,000+ clínicos y personal.",
     image: "/assets/about/msk.jpg",
     paragraphs: [
-      "Inicié el rediseño de un flujo EMR que después contribuyó a una reducción organizacional del 20% en costos, reescribí el material de certificación de RCP para que todas llegaran un 70% antes de un plazo que estaba a punto de aplazarse, y reconstruí el programa de incorporación — Epic, HIPAA, cumplimiento — para el personal administrativo nuevo. El trabajo se apoyó en observación operativa, comentarios y análisis de flujos antes de que yo tuviera vocabulario formal de UX para esas prácticas.",
+      "Inicié un rediseño de flujo EMR que contribuyó dentro de una reducción organizacional del 20% en costos y sobrevivió dos actualizaciones del sistema.",
+      "También reconstruí la certificación de RCP y la incorporación administrativa en Epic, HIPAA y cumplimiento. La observación operativa, los comentarios y el análisis de flujos ya eran la práctica, aun antes de tener vocabulario formal de UX.",
     ],
     callout: "Los sistemas fallan donde una persona real tiene que usarlos.",
     articleLink: {
@@ -86,7 +108,15 @@ const CHAPTERS_ES = [
     heading: "Capitana y Oficial de Logística Médica, NJ Army National Guard.",
     image: "/assets/about/army.jpg",
     paragraphs: [
-      "La logística médica consiste en lograr que los medicamentos y el equipo lleguen a quienes atienden heridos, antes de que los necesiten. Desplegada en Irak con la 44th IBCT — una brigada de infantería de varios miles de soldados — dirigí esa cadena de suministro para más de 5,000 soldados y $2M en suministros en siete estaciones de ayuda, las clínicas de primera línea donde se atiende primero a los heridos, en tres países. Fui pionera en un sistema de seguimiento digital que redujo el tiempo de reabastecimiento en 85% y el gasto en 60%. En 2020, durante la respuesta de COVID-19 en Nueva Jersey, reporté desde la Oficina del Joint Surgeon al Pentágono sobre operaciones médicas estatales.",
+      "En Irak, dirigí el suministro médico para más de 5,000 soldados en siete estaciones de ayuda y tres países, bajo una restricción de cadena de frío de 48 horas.",
+      "El seguimiento compartido redujo 85% el tiempo de reabastecimiento y 60% el gasto. En 2020, reporté al Pentágono las operaciones médicas de la Guardia Nacional de Nueva Jersey durante la respuesta a COVID-19.",
+    ],
+    facts: [
+      { value: "5,000+", label: "soldados atendidos" },
+      { value: "$2M", label: "suministro médico" },
+      { value: "7", label: "estaciones de ayuda" },
+      { value: "85%", label: "menos tiempo" },
+      { value: "60%", label: "menos gasto" },
     ],
     callout: "Una falla de proceso en zona de combate no es una molestia. Es un riesgo.",
     caseLink: { path: "/case-study/logistics", title: "Logística médica, Irak", source: "Ver el caso de estudio" },
@@ -192,6 +222,16 @@ export default function About() {
                 {chapter.paragraphs.map((paragraph) => (
                   <p className="rp-chapter__body" key={paragraph}>{paragraph}</p>
                 ))}
+                {chapter.facts && (
+                  <dl className="about-evidenceLedger" aria-label={isSpanish ? "Impacto de un vistazo" : "Impact at a glance"} data-evidence="true">
+                    {chapter.facts.map((fact) => (
+                      <div key={fact.label}>
+                        <dt>{fact.value}</dt>
+                        <dd>{fact.label}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
                 <p className="rp-chapter__callout">{chapter.callout}</p>
 
                 {chapter.caseLink && (

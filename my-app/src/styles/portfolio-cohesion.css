@@ -230,9 +230,9 @@
   font-family: var(--shell-sans);
 }
 
-/* Home cover: one painted plate, one portrait, one typographic clearing.
-   The extra map windows, plotted drawings, rail chips, and readout are absent
-   in the component rather than merely covered up. */
+/* Home cover: the implemented workflow is the primary proof; the portrait is
+   a small authorship cue. This keeps the first screen about product delivery,
+   not personal branding. */
 .riso-home .rp-hero {
   grid-template-columns: minmax(0, 1.16fr) minmax(360px, .84fr);
 }
@@ -278,6 +278,58 @@ html[lang="es"] .riso-home .rp-clearing { max-width: 78ch; }
   border-color: color-mix(in srgb, var(--paper) 22%, transparent);
 }
 .riso-home .rp-hero__media:hover .rp-headshot { transform: translateY(1%) rotate(-.6deg); }
+.home-heroProofStack {
+  position: relative;
+  width: min(720px, 96%);
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: clamp(.5rem, 1.5vw, 1rem) clamp(.5rem, 1.5vw, 1rem) clamp(2.5rem, 6vw, 4rem);
+}
+.home-heroArtifact { margin: 0; position: relative; min-width: 0; max-width: 100%; }
+.home-heroArtifact__label {
+  position: relative;
+  z-index: 2;
+  width: min(32rem, 88%);
+  margin: 0 0 -.45rem .75rem;
+  padding: .72rem .9rem;
+  border-left: 3px solid var(--coral);
+  background: color-mix(in srgb, var(--paper) 96%, transparent);
+  box-shadow: 0 12px 28px -22px rgba(0,0,0,.5);
+}
+.home-heroArtifact__label span,
+.home-heroArtifact figcaption {
+  font: 700 .66rem/1.4 var(--mono);
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.home-heroArtifact__label span { color: var(--coral); }
+.home-heroArtifact__label b { display: block; margin-top: .28rem; font-size: .9rem; line-height: 1.35; }
+.home-heroArtifact__frame {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 1px solid var(--hair);
+  background: var(--paper);
+  box-shadow: 0 28px 64px -36px rgba(0,0,0,.55);
+}
+.home-heroArtifact figcaption { margin-top: .55rem; }
+.riso-home .rp-hero__media .rp-headshot--supporting {
+  position: absolute;
+  z-index: 4;
+  right: -.5rem;
+  bottom: .15rem;
+  width: clamp(78px, 16%, 118px);
+  aspect-ratio: 4 / 5;
+  padding: 4px;
+  transform: rotate(2deg);
+  box-shadow: 0 15px 32px -20px rgba(0,0,0,.7);
+}
+.riso-home .rp-hero__media:hover .rp-headshot--supporting { transform: translateY(-2px) rotate(2deg); }
 .rp-eyebrow { max-width: 100%; flex-wrap: wrap; }
 .rp-eyebrow::before { flex: 0 0 auto; }
 
@@ -470,13 +522,38 @@ html[lang="es"] .riso-home .rp-clearing { max-width: 78ch; }
     background: transparent;
   }
   .nav-link--resume:hover { color: var(--shell-coral); background: transparent; }
-  .riso-home .rp-hero { grid-template-columns: 1fr; }
-  .about-page .rp-hero { grid-template-columns: 1fr; }
+  .riso-home .rp-hero { grid-template-columns: minmax(0, 1fr); }
+  .about-page .rp-hero { grid-template-columns: minmax(0, 1fr); }
   .about-page .rp-clearing { max-width: none; }
   .riso-home .rp-clearing,
   html[lang="es"] .riso-home .rp-clearing { max-width: none; }
   /* 13vw sized a four-word headline; the sentence needs a lower ceiling. */
   .riso-home .rp-h1 { font-size: clamp(1.9rem, 8.4vw, 2.9rem); }
+  .riso-home .rp-hero__media {
+    order: -1;
+    min-height: 330px;
+    max-height: 380px;
+    padding: .8rem 1rem .35rem;
+  }
+  .riso-home .rp-hero,
+  .riso-home .rp-hero__content,
+  .riso-home .rp-hero__media { min-width: 0; width: 100%; box-sizing: border-box; }
+  .riso-home .rp-hero__content { order: 1; overflow: hidden; }
+  .riso-home .rp-clearing {
+    width: calc(100vw - 2.8rem);
+    max-width: calc(100vw - 2.8rem);
+    overflow: hidden;
+  }
+  .riso-home .rp-h1 { max-width: 100%; overflow-wrap: anywhere; }
+  .riso-home .rp-hero__ctas { width: 100%; flex-direction: column; align-items: flex-start; }
+  .home-heroProofStack { width: calc(100vw - 2rem); max-width: calc(100vw - 2rem); padding-bottom: 2.5rem; }
+  .home-heroArtifact,
+  .home-heroArtifact__frame { width: 100%; max-width: 100%; }
+  .home-heroArtifact__label { margin-left: .25rem; padding: .55rem .7rem; }
+  .home-heroArtifact__label b { font-size: .82rem; }
+  .home-heroArtifact__frame { max-height: 235px; }
+  .home-heroArtifact__frame .msk-dashboard-mockup { transform: scale(.82); transform-origin: top left; width: 122%; }
+  .riso-home .rp-hero__media .rp-headshot--supporting { right: .25rem; width: 76px; }
   .fashion-system-page .fashion-system-hero { grid-template-columns: 1fr; }
   .fashion-system-page .fashion-key-visual {
     width: 100%;

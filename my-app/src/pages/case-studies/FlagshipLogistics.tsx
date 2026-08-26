@@ -80,7 +80,7 @@ export default function FlagshipLogistics() {
         <div className="rp-hero__content">
           <div className="rp-clearing">
             <span className="rp-eyebrow">Operations · supply chain · service design under pressure</span>
-            <h1 className="rp-h1">Medical resupply time reduced 85%, where running out is a casualty risk.</h1>
+            <h1 className="rp-h1">85% shorter medical resupply time.</h1>
             <span className="rp-readtime"><b>4 min</b><span>read · deployed 2024</span></span>
             <p className="rp-sub">
               I directed $2M in medical supply across seven aid stations and three countries for

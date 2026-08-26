@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
 import ReadingProgress from "../../components/flagship/ReadingProgress";
-import GroveCinematic from "../../components/riso/GroveCinematic";
-import GroveDecisionStory from "../../components/riso/GroveDecisionStory";
 import GroveScreenGallery from "../../components/riso/GroveScreenGallery";
 import GroveSystemLab from "../../components/riso/GroveSystemLab";
 import RisoDefs from "../../components/riso/RisoDefs";
@@ -29,50 +27,10 @@ import "../../styles/riso-page.css";
 // tracking; the component itself renders from the second onward.
 const CHAPTERS: CaseStudyChapter[] = [
   { id: "grove-start", label: "Start", note: "One designer, end to end" },
-  { id: "grove-brief", label: "Problem", note: "Care should fit a life already happening" },
   { id: "grove-research", label: "Research", note: "34 real opinions" },
-  { id: "grove-redesign", label: "First build", note: "Authentic prototype screens" },
   { id: "grove-decisions", label: "Decisions", note: "Three features, one call each" },
   { id: "grove-override", label: "Product calls", note: "Evidence, risk, next test" },
-  { id: "grove-system", label: "System", note: "The decisions underneath" },
   { id: "grove-outcomes", label: "Outcomes", note: "No invented numbers" },
-];
-
-const LEGS = [
-  {
-    n: "01",
-    mission: "Emergent generated the first prototype",
-    // "forums" was removed on 2026-08-03. Checked against the Grove repo:
-    // `git log --all -S"forum"` returns nothing across the whole history, so
-    // Emergent never built one. Forums *were* one of the eleven features the
-    // survey asked about, and the two got conflated. Feed, badges, missions,
-    // swaps and community groups are all real — verified in grove-frontend.
-    detail:
-      "The first pass included a social feed, badges, missions, groups, and swaps.",
-    impact: "Feature-complete, focus-empty",
-  },
-  {
-    n: "02",
-    mission: "A 5-user test showed the map was wrong",
-    detail:
-      "People stalled when care led with a feed and mission—not their plants.",
-    impact: "Cluttered, unclear",
-  },
-  {
-    n: "03",
-    mission: "A 34-person survey found the three that matter",
-    detail:
-      "Care reminders, camera ID, and diagnosis led. Forums drew 18%.",
-    impact: "3 must-haves, not 30",
-  },
-  {
-    n: "04",
-    mission: "Rebuild around the three that matter",
-    detail:
-      "Keep calm reminders, sourced identification, safety warnings, and a final human check.",
-    impact: "Phase 2 of 3",
-    now: true,
-  },
 ];
 
 const SURVEY_FINDINGS = [
@@ -307,7 +265,7 @@ export default function RisoGrove() {
   if (lang === "es") return <SpanishCaseStudy data={GROVE_ES} />;
 
   return (
-    <main className="riso-page" lang="en">
+    <main className="riso-page flagship-page flagship-page--grove" lang="en">
       <RisoDefs />
 
       <nav className="rp-breadcrumb" aria-label="Breadcrumb">
@@ -331,16 +289,16 @@ export default function RisoGrove() {
             <span className="rp-eyebrow">Grove · sole designer · functional prototype</span>
             <h1 className="rp-h1">Eleven features became three.</h1>
             <span className="rp-readtime">
-              <b>7 min</b>
+              <b>5 min</b>
               <span>read · one designer, end to end</span>
             </span>
             <p className="rp-sub">
-              A 34-person self-report survey narrowed an eleven-feature first build to three.
+              A 5-user moderated test showed people got lost; a 34-person survey then narrowed eleven features to three.
               I am the sole designer; <b>Phase 2 is in progress</b>.
             </p>
             <dl className="rp-heroEvidence" aria-label="Grove case evidence at a glance">
               <div><dt>Role</dt><dd>Sole product designer · end to end</dd></div>
-              <div><dt>Method</dt><dd>34-person self-report survey</dd></div>
+              <div><dt>Method</dt><dd>5-user moderated test → 34-person survey</dd></div>
               <div><dt>Decision</dt><dd>11 features → 3 launch priorities</dd></div>
               <div><dt>State</dt><dd>Phase 2 of 3 · functional prototype</dd></div>
             </dl>
@@ -360,14 +318,6 @@ export default function RisoGrove() {
         </div>
       </header>
 
-      {/* The "Grove decision trace" section — static evidence poster plus the
-          optional motion film — was removed on 2026-08-03 at Hillary's request,
-          along with the equivalent sections on MSK and Mobbin. Each restated
-          the case study's own argument in a compressed form before the reader
-          had the argument. */}
-
-      <div data-evidence="true"><GroveCinematic /></div>
-
       {/* PROBLEM */}
       <section className="rp-section" id="grove-research" data-language-anchor="grove-research">
         <div className="rp-wrap">
@@ -384,6 +334,9 @@ export default function RisoGrove() {
             </div>
           </div>
 
+          <h3 className="rp-subhead">A moderated test found the confusion first</h3>
+          <p className="rp-lede">March–May 2026, 5 users: people stalled when care led with a feed and a mission, not their plants. Five people were enough to see something was wrong, not enough to say what to build instead — that's what the survey went on to answer.</p>
+
           <h3 className="rp-subhead">What those 34 people actually said</h3>
           <p className="rp-lede">34 owners · May 22–July 8, 2026 · choose three launch dealbreakers.</p>
           <dl className="rp-surveyStats rp-reveal" data-evidence="true">
@@ -397,7 +350,7 @@ export default function RisoGrove() {
 
           <aside className="rp-note rp-reveal" aria-label="Grove research evidence boundary">
             <span className="rp-note__k">What this evidence can say</span>
-            <p>Self-report prioritized the next build; it does not prove behavior or demand. Earlier test dates and task records are missing, so no broader claim is made.</p>
+            <p>Self-report prioritized the next build; it does not prove behavior or demand. The moderated test that came before it (March–May 2026) showed people were confused, not what to build instead — its task records aren't preserved, so no broader claim is made from either study.</p>
           </aside>
 
           <h3 className="rp-subhead">What they wanted, and what waited</h3>
@@ -422,35 +375,20 @@ export default function RisoGrove() {
         </div>
       </section>
 
-      {/* THE REBUILD */}
-      <section className="rp-section rp-section--alt">
-        <div className="rp-wrap">
-          <p className="rp-kicker">The rebuild</p>
-          <h2 className="rp-title">Four decisions, from first build to focused next test.</h2>
-          <ol className="rp-route rp-reveal" data-evidence="true">
-            {LEGS.map((leg) => (
-              <li className={`rp-leg${leg.now ? " rp-leg--now" : ""}`} key={leg.n}>
-                <span className="rp-leg__pin">{leg.n}</span>
-                <div>
-                  <p className="rp-leg__mission">{leg.mission}</p>
-                  <p className="rp-leg__detail">{leg.detail}</p>
-                  <span className="rp-leg__impact">{leg.impact}</span>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      {/* ONE SYSTEM, EVERY SCREEN */}
-      <section className="rp-section" id="grove-redesign" data-language-anchor="grove-decisions">
-        <div className="rp-wrap">
-          <p className="rp-kicker">The first working version</p>
-          <h2 className="rp-title">The whole first build, screen by screen.</h2>
-          <p className="rp-lede">Authentic first-build screens—not finished redesigns.</p>
-          <div data-evidence="true"><GroveScreenGallery screens={SCREENS} /></div>
-        </div>
-      </section>
+      <details className="rp-deepDive">
+        <summary>
+          <span>Optional artifact set</span>
+          <b>Inspect all six authentic first-build screens</b>
+        </summary>
+        <section className="rp-section" data-language-anchor="grove-decisions">
+          <div className="rp-wrap">
+            <p className="rp-kicker">The first working version</p>
+            <h2 className="rp-title">The complete first build, screen by screen.</h2>
+            <p className="rp-lede">Authentic prototype screens—not finished redesigns.</p>
+            <div data-evidence="true"><GroveScreenGallery screens={SCREENS} /></div>
+          </div>
+        </section>
+      </details>
 
       {/* THE REDESIGN — Emergent → focused, evidence-backed direction */}
       <section className="rp-section" id="grove-decisions" data-language-anchor="grove-decisions">
@@ -483,23 +421,6 @@ export default function RisoGrove() {
         </div>
       </section>
 
-      <div data-evidence="true"><GroveDecisionStory /></div>
-
-      {/* FULL-BLEED PULL QUOTE */}
-      <section className="rp-quote">
-        <blockquote className="rp-reveal">
-          Plant care should feel{" "}
-          <span className="rp-underline">
-            peaceful
-            <svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true">
-              <path pathLength="1" d="M4,13 C50,4 96,18 150,10 C208,3 252,16 296,7" />
-            </svg>
-          </span>
-          , not stressful.
-        </blockquote>
-        <cite>— one plant owner, unprompted, in the survey</cite>
-      </section>
-
       {/* AI DECISION DEEP-DIVE */}
       <section className="rp-section rp-override" id="grove-override" data-language-anchor="grove-override">
         <div className="rp-wrap">
@@ -520,6 +441,15 @@ export default function RisoGrove() {
             </div>
           </div>
 
+          <h3 className="rp-subhead">The trust decision</h3>
+          <p className="rp-lede">
+            A florist, unprompted: “Any generative AI in this will remove any sense of trust.”
+            She wasn't alone—4 of 34 said they'd trust no AI feature in the app at all, and 19 of 34
+            said explaining why the AI made a call is what would earn their trust. Plant ID carried
+            that risk directly, so instead of one confident answer, it shows top guesses, how sure it
+            is, and its sources. False certainty is the fastest way to lose trust.
+          </p>
+
           <h3 className="rp-subhead">All six calls, in full</h3>
           <div className="rp-accordion rp-reveal" data-evidence="true">
             {OVERRIDES.map((o, i) => (
@@ -539,9 +469,16 @@ export default function RisoGrove() {
         </div>
       </section>
 
-      {/* FOUNDATION / SYSTEM — locked principles + to-document slots */}
-      <section className="rp-section" id="grove-system" data-language-anchor="grove-override">
-        <div className="rp-wrap">
+      {/* The specimen library is valuable to a design-systems reviewer, but it
+          is secondary to the research-to-decision story. Keep it inspectable
+          without charging every recruiter the full scroll cost. */}
+      <details className="rp-deepDive rp-deepDive--system">
+        <summary>
+          <span>Optional system detail</span>
+          <b>Inspect the tokens, components, and interaction specimens</b>
+        </summary>
+        <section className="rp-section" data-language-anchor="grove-override">
+          <div className="rp-wrap">
           <p className="rp-phase">Foundation <span>· the system</span></p>
           <h2 className="rp-title" style={{ marginTop: ".4rem" }}>The system underneath.</h2>
           <p className="rp-lede">Palette, type, principles, and three interactive specimens.</p>
@@ -576,8 +513,9 @@ export default function RisoGrove() {
             <div className="rp-fcard"><p className="rp-fcard__k">Principle · locked</p><p className="rp-fcard__t">Grouped by where they live</p><p className="rp-fcard__d">Plants grouped by room, never one long overwhelming list.</p></div>
             <div className="rp-fcard"><p className="rp-fcard__k">Principle · locked</p><p className="rp-fcard__t">Automated advice stays reviewable</p><p className="rp-fcard__d">A person has the final call on every uncertain recommendation.</p></div>
           </div>
-        </div>
-      </section>
+          </div>
+        </section>
+      </details>
 
       {/* OUTCOMES */}
       <section className="rp-section rp-outcomeStage" id="grove-outcomes" data-language-anchor="grove-outcomes">

@@ -255,6 +255,10 @@ const allCuratedPages: Record<string, CuratedPage> = {
         stat: "4",
         detail: "MSK departments aligned through one current/future-state workflow map; observation count was not preserved",
       },
+      {
+        stat: "5",
+        detail: "AI defaults overruled before launch, including a plant-ID answer redesigned to show confidence and sources after a florist said false certainty would remove trust",
+      },
     ],
     featuredWork: [
       {
@@ -321,6 +325,7 @@ const allCuratedPages: Record<string, CuratedPage> = {
       "service design research",
       "stakeholder research",
       "research limitations",
+      "AI trust and calibration",
     ],
     hiringManagerNote:
       "Strongest lane: embedded research for complex services. Grove proves survey-to-scope; MSK proves workflow-to-implementation. Task-level Grove findings remain unclaimed.",

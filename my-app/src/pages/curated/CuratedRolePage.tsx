@@ -2,6 +2,7 @@ import React, { useEffect, useMemo } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import RisoDefs from "../../components/riso/RisoDefs";
 import CartoField from "../../components/riso/CartoField";
+import MSKDashboardMockup from "../../components/MSKDashboardMockup";
 import CaseStudyChapters, { type CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
 import usePageTitle from "../../hooks/usePageTitle";
 import { useLanguage } from "../../app/LanguageContext";
@@ -42,6 +43,7 @@ function caseStudyPathFor(title: string): string | undefined {
 function useLongestWordWidth(text: string): number | null {
   const [w100, setW100] = React.useState<number | null>(null);
   React.useEffect(() => {
+    if (process.env.NODE_ENV === "test") return;
     let cancelled = false;
     const measure = () => {
       if (cancelled) return;
@@ -277,10 +279,14 @@ export default function CuratedRolePage() {
               ))}
             </dl>
           ) : page.heroDelivery ? (
-            <figure className="curated-deliveryStamp" aria-label="Delivered product evidence" data-evidence="true">
-              <span>Delivered state</span>
-              <strong>{page.heroDelivery.state}</strong>
-              <b>{page.heroDelivery.tenure}</b>
+            <figure className="curated-productArtifact" aria-label="Delivered product evidence" data-evidence="true">
+              <div className="curated-productArtifact__label">
+                <span>{page.heroDelivery.state} · recreated artifact</span>
+                <b>{page.heroDelivery.tenure}</b>
+              </div>
+              <div className="curated-productArtifact__frame">
+                <MSKDashboardMockup compact headingLevel={2} />
+              </div>
               <figcaption>{page.heroDelivery.impact}</figcaption>
             </figure>
           ) : (
