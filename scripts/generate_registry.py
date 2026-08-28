@@ -1,0 +1,179 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import argparse
+import hashlib
+import re
+import sys
+from dataclasses import dataclass
+from pathlib import Path
+
+EXTENSIONS = {".js", ".jsx", ".ts", ".tsx", ".vue", ".svelte"}
+SKIP_PARTS = {"node_modules", ".git", "dist", "build", "coverage", ".next"}
+SKIP_SUFFIXES = (".test", ".spec", ".stories", ".story", ".d")
+DEFAULT_DIRS = (
+    "src/components",
+    "src/ui",
+    "src/design-system",
+    "components",
+    "app/components",
+)
+
+
+@dataclass(frozen=True)
+class Component:
+    name: str
+    status: str
+    purpose: str
+    source: str
+
+
+def annotation(text: str, key: str, fallback: str) -> str:
+    match = re.search(rf"@{re.escape(key)}\s*:\s*([^\n*]+)", text, re.IGNORECASE)
+    return " ".join(match.group(1).split()) if match else fallback
+
+
+def nearby_annotation(text: str, pos: int, key: str) -> str | None:
+    """Look for `@key: value` inside the JSDoc-style comment block immediately
+    preceding the export at `pos` (only whitespace allowed between the
+    comment's closing `*/` and the export). Lets a file with several exports
+    (e.g. an icon set or a component kit) carry a distinct annotation per
+    export instead of one file-wide annotation applying to all of them."""
+    block = None
+    for comment in re.finditer(r"/\*\*.*?\*/", text, re.DOTALL):
+        if comment.end() <= pos and text[comment.end():pos].strip() == "":
+            block = comment.group(0)
+    if block is None:
+        return None
+    match = re.search(rf"@{re.escape(key)}\s*:\s*([^\n*]+)", block, re.IGNORECASE)
+    return " ".join(match.group(1).split()) if match else None
+
+
+def exported_names(text: str, fallback: str) -> list[str]:
+    patterns = (
+        r"export\s+(?:default\s+)?(?:async\s+)?(?:function|class)\s+([A-Z][A-Za-z0-9_]*)",
+        r"export\s+(?:const|let|var)\s+([A-Z][A-Za-z0-9_]*)",
+    )
+    names: set[str] = set()
+    for pattern in patterns:
+        names.update(name for name in re.findall(pattern, text) if not name.isupper())
+    if not names and re.fullmatch(r"[A-Z][A-Za-z0-9_]*", fallback):
+        names.add(fallback)
+    return sorted(names)
+
+
+def exported_matches(text: str, fallback: str) -> list[tuple[str, int]]:
+    """Like `exported_names`, but keeps each name's source position so its
+    annotation can be scoped to the nearest preceding comment block."""
+    patterns = (
+        r"export\s+(?:default\s+)?(?:async\s+)?(?:function|class)\s+([A-Z][A-Za-z0-9_]*)",
+        r"export\s+(?:const|let|var)\s+([A-Z][A-Za-z0-9_]*)",
+    )
+    positions: dict[str, int] = {}
+    for pattern in patterns:
+        for m in re.finditer(pattern, text):
+            name = m.group(1)
+            if name.isupper() or name in positions:
+                continue
+            positions[name] = m.start()
+    if not positions and re.fullmatch(r"[A-Z][A-Za-z0-9_]*", fallback):
+        positions[fallback] = 0
+    return sorted(positions.items())
+
+
+def component_files(root: Path, requested: list[str]) -> list[Path]:
+    roots = [root / value for value in requested] if requested else [root / value for value in DEFAULT_DIRS]
+    files: set[Path] = set()
+    for candidate in roots:
+        if not candidate.is_dir():
+            continue
+        for path in candidate.rglob("*"):
+            if not path.is_file() or path.suffix not in EXTENSIONS:
+                continue
+            if any(part in SKIP_PARTS for part in path.parts):
+                continue
+            if path.stem == "index" or path.stem.endswith(SKIP_SUFFIXES):
+                continue
+            files.add(path)
+    return sorted(files)
+
+
+def build_registry(root: Path, requested: list[str]) -> str:
+    files = component_files(root, requested)
+    components: list[Component] = []
+    digest = hashlib.sha256()
+    for path in files:
+        data = path.read_bytes()
+        relative = path.relative_to(root).as_posix()
+        digest.update(relative.encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(data)
+        text = data.decode("utf-8", errors="replace")
+        for name, pos in exported_matches(text, path.stem):
+            status = nearby_annotation(text, pos, "status")
+            if status is None:
+                status = annotation(text, "status", "undocumented")
+            purpose = nearby_annotation(text, pos, "purpose")
+            if purpose is None:
+                purpose = annotation(text, "purpose", "Not documented")
+            components.append(
+                Component(
+                    name=name,
+                    status=status,
+                    purpose=purpose,
+                    source=relative,
+                )
+            )
+
+    counts: dict[str, int] = {}
+    for item in components:
+        counts[item.name] = counts.get(item.name, 0) + 1
+    duplicates = sorted(name for name, count in counts.items() if count > 1)
+
+    lines = [
+        "# Component Registry",
+        "",
+        "> Generated by `design-system-alignment/scripts/generate_registry.py`. Do not edit by hand.",
+        "",
+        f"- Source fingerprint: `{digest.hexdigest()}`",
+        f"- Components discovered: {len(components)}",
+        f"- Duplicate names: {', '.join(duplicates) if duplicates else 'None'}",
+        "",
+        "| Component | Status | Purpose | Source |",
+        "|---|---|---|---|",
+    ]
+    for item in sorted(components, key=lambda value: (value.name.lower(), value.source)):
+        purpose = item.purpose.replace("|", "\\|")
+        status = item.status.replace("|", "\\|")
+        lines.append(f"| `{item.name}` | {status} | {purpose} | `{item.source}` |")
+    lines.append("")
+    return "\n".join(lines)
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Generate a deterministic Markdown registry from component source files.")
+    parser.add_argument("project_root", help="Project root containing component directories.")
+    parser.add_argument("--output", required=True, help="Registry Markdown output path.")
+    parser.add_argument("--component-dir", action="append", default=[], help="Component directory relative to project root. Repeat as needed.")
+    parser.add_argument("--check", action="store_true", help="Exit nonzero when the existing registry is missing or stale.")
+    args = parser.parse_args()
+
+    root = Path(args.project_root).resolve()
+    output = Path(args.output).resolve()
+    generated = build_registry(root, args.component_dir)
+
+    if args.check:
+        if not output.is_file() or output.read_text(encoding="utf-8") != generated:
+            print(f"STALE: {output}", file=sys.stderr)
+            return 1
+        print(f"Current: {output}")
+        return 0
+
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(generated, encoding="utf-8")
+    print(f"Generated {output}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

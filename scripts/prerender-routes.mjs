@@ -74,7 +74,14 @@ function setMeta(html, matcher, replacement) {
 
 let written = 0;
 for (const route of ROUTES) {
-  const url = `${ORIGIN}/${route.path}`;
+  // Trailing slash matches what's actually served: each shell is written to
+  // <route>/index.html, a directory GitHub Pages serves at <route>/, not
+  // <route>. A canonical/og:url without the slash disagrees with the URL
+  // Google's own crawler resolves to, which surfaces as a canonical
+  // mismatch in Search Console (confirmed via URL Inspection on
+  // case-study/logistics — Google picked the slash version over our
+  // declared canonical). Keep this in sync with sitemap.xml.
+  const url = `${ORIGIN}/${route.path}/`;
   let html = shell;
 
   html = html.replace(/<title>[^<]*<\/title>/, `<title>${route.title}</title>`);
@@ -95,3 +102,16 @@ for (const route of ROUTES) {
   console.log(`  prerendered /${route.path}`);
 }
 console.log(`✅ ${written} route shells written`);
+
+// sitemap.xml previously hand-maintained separately from ROUTES, which is
+// exactly how it drifted out of trailing-slash sync with the prerendered
+// shells above. Generate it from the same source instead — one place to
+// add a route, not two to keep in sync.
+const sitemapUrls = [`${ORIGIN}/`, ...ROUTES.map((route) => `${ORIGIN}/${route.path}/`)];
+const sitemap =
+  `<?xml version="1.0" encoding="UTF-8"?>\n` +
+  `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+  sitemapUrls.map((url) => `  <url><loc>${url}</loc></url>`).join("\n") +
+  `\n</urlset>\n`;
+writeFileSync(join(DOCS, "sitemap.xml"), sitemap);
+console.log(`✅ sitemap.xml regenerated (${sitemapUrls.length} URLs)`);

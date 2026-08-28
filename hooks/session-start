@@ -1,6 +1,16 @@
 #!/bin/bash
 # Designpowers session-start hook
-# Injects the using-designpowers skill into every new session
+# Tells the session to invoke the using-designpowers skill via the normal
+# Skill mechanism, instead of pasting the whole skill file into context.
+#
+# Previously this injected the entire using-designpowers/SKILL.md
+# (~192 lines, ~10.8KB, ~2,700+ tokens) as a raw message on every session
+# start — permanently on the desk, every session, whether or not the work
+# that follows is design-related. The skill itself is fetched on demand by
+# the Skill tool when actually invoked, so pre-pasting its content here was
+# pure duplication: the desk, when the whole point of a skill is to be the
+# phone. This hook now sends a one-line instruction instead and lets the
+# normal skill-loading path do the fetching.
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PLUGIN_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
@@ -12,20 +22,20 @@ if [ ! -f "$SKILL_FILE" ]; then
   exit 0
 fi
 
-SKILL_CONTENT=$(cat "$SKILL_FILE" | sed 's/\\/\\\\/g' | sed 's/"/\\"/g' | sed ':a;N;$!ba;s/\n/\\n/g')
+TRIGGER="EXTREMELY_IMPORTANT: Before responding to any user message this session, invoke the using-designpowers skill via the Skill tool. Do not skip it, do not answer first, do not paraphrase it from memory — invoke it so its current content loads."
 
 if [ -n "$CURSOR_SESSION" ]; then
   cat <<EOF
 {
   "role": "system",
-  "content": "EXTREMELY_IMPORTANT: The following skill MUST be followed in this session:\\n\\n${SKILL_CONTENT}"
+  "content": "${TRIGGER}"
 }
 EOF
 else
   cat <<EOF
 {
   "role": "user",
-  "content": "EXTREMELY_IMPORTANT: The following skill MUST be followed in this session:\\n\\n${SKILL_CONTENT}"
+  "content": "${TRIGGER}"
 }
 EOF
 fi
