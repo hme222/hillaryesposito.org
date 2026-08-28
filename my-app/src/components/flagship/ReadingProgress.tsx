@@ -21,6 +21,10 @@ export type ProgressVariant = "chapters" | "rail" | "numeric";
  * changing percentage on every scroll event would be pure noise. The chapter
  * nav already carries location for assistive tech.
  */
+/**
+ * @status: stable
+ * @purpose: Renders a decorative, aria-hidden reading-progress indicator (chapter rail, fill bar, or numeric percentage) showing how much of a long case-study page remains; used on the Navbar and the MSK/Mobbin/logistics/Grove case study pages. Pick this for continuous scroll position — for a discrete named-phase count (e.g. "Phase 2 of 3") use PhaseIndicator instead.
+ */
 export default function ReadingProgress({
   variant = "chapters",
   chapterIds = [],

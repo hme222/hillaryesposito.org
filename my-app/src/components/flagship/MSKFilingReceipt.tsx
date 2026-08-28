@@ -8,6 +8,10 @@ type Copy = MskCopy["receipt"];
  * The English default keeps existing callers (and the visual-echo test)
  * working without passing anything.
  */
+/**
+ * @status: stable
+ * @purpose: Animated, step-by-step "filing receipt" interaction demonstrating the MSK filing workflow, localizable via the `copy` prop; used on the MSK case study page. Pick this for an animated walkthrough — for the literal dashboard recreation use MSKDashboardMockup, for a static before/after diagram use MSKMechanism.
+ */
 export default function MSKFilingReceipt({ copy = MSK_COPY.en.receipt }: { copy?: Copy }) {
   const [step, setStep] = useState(0);
   const [hasRun, setHasRun] = useState(false);

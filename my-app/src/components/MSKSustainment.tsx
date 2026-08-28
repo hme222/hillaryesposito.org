@@ -34,6 +34,10 @@ const LINE_X1 = 566;
 const OUTCOME_X = 584;
 
 
+/**
+ * @status: stable
+ * @purpose: Decorative SVG of per-system survival lanes marking events each MSK system outlasted, used on the MSK case study page. Purely decorative, not a data visualization others should extend — for an actual before/after comparison use MSKMechanism or MSKServiceBlueprint instead.
+ */
 export default function MSKSustainment({ copy = MSK_COPY.en.sustainment }: { copy?: MskCopy["sustainment"] }) {
   const LANES = copy.lanes;
   const H = LANE_H * LANES.length;

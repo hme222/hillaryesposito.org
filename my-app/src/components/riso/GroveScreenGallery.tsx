@@ -6,6 +6,10 @@ type Screen = {
   bg: string;
 };
 
+/**
+ * @status: stable
+ * @purpose: Horizontally-scrolling, navigable strip of Grove product screenshots with captions, used on the Grove case study page. Pick this for a scrollable screenshot strip — for a single-screen-at-a-time viewer with prev/next use ScreenSequence (used on Mobbin), for the toggle-based "fan out" treatment see the currently-unused GroveCinematic.
+ */
 export default function GroveScreenGallery({ screens }: { screens: Screen[] }) {
   const stripRef = useRef<HTMLDivElement>(null);
   const [current, setCurrent] = useState(0);

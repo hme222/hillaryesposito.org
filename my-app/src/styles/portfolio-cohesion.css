@@ -287,25 +287,18 @@ html[lang="es"] .riso-home .rp-clearing { max-width: 78ch; }
   padding: clamp(.5rem, 1.5vw, 1rem) clamp(.5rem, 1.5vw, 1rem) clamp(2.5rem, 6vw, 4rem);
 }
 .home-heroArtifact { margin: 0; position: relative; min-width: 0; max-width: 100%; }
-.home-heroArtifact__label {
-  position: relative;
-  z-index: 2;
-  width: min(32rem, 88%);
-  margin: 0 0 -.45rem .75rem;
-  padding: .72rem .9rem;
-  border-left: 3px solid var(--coral);
-  background: color-mix(in srgb, var(--paper) 96%, transparent);
-  box-shadow: 0 12px 28px -22px rgba(0,0,0,.5);
-}
-.home-heroArtifact__label span,
 .home-heroArtifact figcaption {
+  /* Paper chip: the caption sits directly on the painterly collage, so bare
+     muted text dissolved into the texture (owner-reported 2026-08-27). */
+  display: inline-block;
   font: 700 .66rem/1.4 var(--mono);
   letter-spacing: .07em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--ink-2);
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  border: 1px solid var(--hair);
+  padding: .3rem .55rem;
 }
-.home-heroArtifact__label span { color: var(--coral); }
-.home-heroArtifact__label b { display: block; margin-top: .28rem; font-size: .9rem; line-height: 1.35; }
 .home-heroArtifact__frame {
   position: relative;
   z-index: 1;
@@ -316,6 +309,42 @@ html[lang="es"] .riso-home .rp-clearing { max-width: 78ch; }
   border: 1px solid var(--hair);
   background: var(--paper);
   box-shadow: 0 28px 64px -36px rgba(0,0,0,.55);
+  /* Direction C (design-state.md, 2026-08-27): the card didn't have a hover
+     treatment before this pass — house scale(1.01) + shadow shift, same as
+     every other interactive card on the site, so the artifact reads as
+     something you can act on before the trigger row even loads your eye
+     down to it. Height caps for the expand/collapse state live below and in
+     the ≤760px block; both max-height and transform share this one
+     transition declaration.
+     460px was the first guess for the closed cap; measuring live across
+     761–1440px found the two-column desktop grid actually wraps the
+     condensed caption tallest around 800–900px (541.5px at 900px, 538.3px
+     at 820px — narrower than 1440px but not yet the single-column mobile
+     layout), not at the narrowest or widest point tested. 580px covers the
+     measured worst case with headroom; a width this pass didn't sample could
+     still exceed it, so this is "safe across everything measured," not
+     "proven safe everywhere." */
+  transform: scale(1);
+  max-height: 580px;
+  transition: transform .2s ease, box-shadow .2s ease, max-height .28s ease-out;
+}
+.home-heroArtifact__frame:hover {
+  transform: scale(1.01);
+  box-shadow: 0 34px 72px -34px rgba(0,0,0,.62);
+}
+/* Expanded (5 rows + toolbar + rule) content, measured live the same way:
+   633px at 1440px, 828px at 1024px, 888px at 820px (the same 800–900px zone
+   that peaks for the closed state above, for the same text-wrap reason).
+   940px covers the measured worst case with headroom. Oversizing this cap
+   costs nothing visually — a box with height:auto never grows past its own
+   content just because max-height allows more room, it only ever prevents
+   the content from being clipped. */
+.home-heroArtifact__frame--expanded {
+  max-height: 940px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-heroArtifact__frame { transition: none; }
+  .home-heroArtifact__frame:hover { transform: none; }
 }
 .home-heroArtifact figcaption { margin-top: .55rem; }
 .riso-home .rp-hero__media .rp-headshot--supporting {
@@ -544,15 +573,118 @@ html[lang="es"] .riso-home .rp-clearing { max-width: 78ch; }
     max-width: calc(100vw - 2.8rem);
     overflow: hidden;
   }
-  .riso-home .rp-h1 { max-width: 100%; overflow-wrap: anywhere; }
-  .riso-home .rp-hero__ctas { width: 100%; flex-direction: column; align-items: flex-start; }
-  .home-heroProofStack { width: calc(100vw - 2rem); max-width: calc(100vw - 2rem); padding-bottom: 2.5rem; }
+  .riso-home .rp-h1 { max-width: 100%; overflow-wrap: anywhere; margin-top: .4rem; }
+  .riso-home .rp-heroProof { margin-top: .35rem; }
+  .riso-home .rp-status { margin-top: .15rem; }
+  .riso-home .rp-hero__ctas { width: 100%; flex-direction: column; align-items: flex-start; margin-top: .15rem; }
+  /* This whole block is content-height-driven, not the mobile hero's usual
+     generous rhythm — the media-first mobile order (below) stacks the full
+     artifact ABOVE this text, so every px trimmed here is a px more of the
+     primary CTA visible without scrolling. Verified live: with the pre-cut
+     spacing, the CTA landed ~20px past the fold at 390×844; these values
+     were tuned against that exact measurement, not guessed.
+     Trimmed slightly further (design-builder, 2026-08-27, Direction C): the
+     new "View the full queue" trigger row inside the artifact card needed
+     ~24px more of the closed-card mobile budget than the card had before it
+     existed. Rather than let the card grow and eat into the CTA's fold
+     clearance, these already-flagged "pure vertical cost, no payoff" rules
+     (per the prior pass's own note) gave up the matching ~24px instead —
+     net height at the fold is unchanged, verified live via
+     getBoundingClientRect before/after, not assumed. */
+  .riso-home .rp-hero__content { padding-top: .25rem; }
+  .riso-home .rp-clearing { padding-top: .2rem; }
+  .home-heroProofStack { width: calc(100vw - 2rem); max-width: calc(100vw - 2rem); padding-bottom: .3rem; }
   .home-heroArtifact,
   .home-heroArtifact__frame { width: 100%; max-width: 100%; }
-  .home-heroArtifact__label { margin-left: .25rem; padding: .55rem .7rem; }
-  .home-heroArtifact__label b { font-size: .82rem; }
-  .home-heroArtifact__frame { max-height: 235px; }
-  .home-heroArtifact__frame .msk-dashboard-mockup { transform: scale(.82); transform-origin: top left; width: 122%; }
+  /* Two representative rows on the narrowest viewports, not three. The third
+     (`filed-to-chart`) is still in the DOM and in the desktop/tablet view —
+     it's dropped from render here (not just clipped) so nothing sits visible-
+     but-unreachable behind `overflow:hidden`, which is what a fixed max-height
+     without this rule would otherwise do to row 3 and, worse, to the MRN/EMR
+     disclosure toggle beneath it. */
+  /* Scoped to the collapsed queue only: with the full queue expanded, all five
+     rows are the point — this rule leaking into the expanded state hid the one
+     "Needs review" row while its filter tab sat visible above (owner-visible
+     bug caught 2026-08-27). */
+  .rp-hero__media:not(.rp-hero__media--queueExpanded) .home-heroArtifact__frame .msk-dashboard-mockup__row:nth-child(4) { display: none; }
+  /* 242px → 274px (design-builder, 2026-08-27, Direction C): the closed card
+     now includes the "View the full queue" trigger row. 266px fit the row
+     itself, but left only ~37.6px of real screen space between the MRN/EMR
+     summary above it and this frame's own bottom edge — short of the 44px
+     touch-target floor no matter how the trigger's own margin was
+     distributed inside that fixed envelope (growing margin just moves the
+     chip within the same envelope, it doesn't enlarge it). The extra 8px
+     enlarges the envelope itself; taken back out of the mobile-only spacing
+     rules just above (and the ones a few lines up) rather than left as net
+     growth — see those comments. */
+  .home-heroArtifact__frame { max-height: 290px; }
+  .home-heroArtifact__frame .msk-dashboard-mockup { transform: scale(.74); transform-origin: top left; width: 135%; }
+  /* Mobile disclosure fix (design-lead, 2026-08-27): the frame's own auto
+     height ignores the child's `scale(.74)` transform entirely — transforms
+     only affect paint, not the layout height a parent computes from a child's
+     box — so without an explicit cap the frame would render at the full
+     UNSCALED content height (measured ~418px), not the visually-scaled ~240px
+     it's supposed to show. That's why 242px has to stay a real number rather
+     than `auto`/`max-content`, in both the closed and open states.
+     `:has()` swaps that number the moment the MRN/EMR disclosure is genuinely
+     open (post the accessibility-reviewer CSS-scoping fix in App.css) so the
+     reveal isn't clipped by the same cap that keeps the closed card compact.
+     320px/410px are sized from a live measurement of the open state's actual
+     rendered (post-scale) content height at 390px (~309px), with headroom.
+     No transition: this is a user-initiated, one-time reflow, not a
+     scroll-driven state — a plain height change with the rest of the hero
+     reflowing underneath is the explicitly-accepted outcome here. */
+  /* accessibility-reviewer, 2026-08-27 (Direction C focused audit): these
+     three caps (this rule plus --expanded and --expanded:has() below) were
+     each sized against the REVEALED CONTENT ABOVE the expand/collapse
+     trigger (legend text, or table rows + rule) but never re-measured
+     against the trigger button itself once its own margin-top grew from
+     0.3rem to 1.1rem during the touch-target hit-slop fix (see
+     .home-heroArtifact__expandToggle above) — that fix landed after these
+     numbers were set and nothing re-verified them together. Live
+     getBoundingClientRect() at 390×844 (transitions force-disabled)
+     confirmed the trigger's own visible chip, not just its hit-slop, was
+     genuinely clipped by this frame's overflow:hidden in every state except
+     the plain default (collapsed, legend closed): ~12.3px clipped with the
+     legend open, ~11.3px clipped expanded, ~4.2px clipped with both open —
+     verified both via computed geometry and a live screenshot showing the
+     trigger's button box sliced by the frame's edge. Each cap below grew by
+     enough to cover the measured deficit plus ~9-17px headroom, matching
+     this file's own headroom convention elsewhere. */
+  .home-heroArtifact__frame:has(.msk-dashboard-mockup__legend--details[open]) {
+    max-height: 365px;
+  }
+  .riso-home .rp-hero__media:has(.msk-dashboard-mockup__legend--details[open]) {
+    max-height: 455px;
+  }
+  /* Direction C whole-card expand (design-builder, 2026-08-27): a much bigger
+     reveal than the legend disclosure above (toolbar + 2 more rows + the rule
+     callout, not just two glossary lines), so it gets its own, larger cap.
+     The frame's own auto-height ignores the card's `scale(.74)` transform
+     (same quirk design-lead documented above), so the cap has to be sized
+     against the VISUAL (post-scale) need, not the raw unscaled content: live
+     measurement found ~675.6px of unscaled content, ×0.74 ≈ 500px visual;
+     570px covers that (see accessibility-reviewer's note above the previous
+     rule — the trigger's own footprint needed folding back in here too). */
+  .home-heroArtifact__frame--expanded {
+    max-height: 570px;
+  }
+  .riso-home .rp-hero__media--queueExpanded {
+    max-height: 595px;
+  }
+  /* Both the whole-card expand and the legend disclosure can be open at the
+     same time, adding the glossary's own ~78px visual reveal on top. `:has()`'s
+     specificity is driven by its argument, so the legend-only rule above
+     (0,3,0) would otherwise beat the plain `--expanded` class (0,1,0) and
+     clip the bigger reveal back down to 320px. This compound selector
+     matches the same specificity and comes later in source, so the larger
+     combined cap wins whenever both are open. */
+  .home-heroArtifact__frame--expanded:has(.msk-dashboard-mockup__legend--details[open]) {
+    max-height: 645px;
+  }
+  .riso-home .rp-hero__media--queueExpanded:has(.msk-dashboard-mockup__legend--details[open]) {
+    max-height: 670px;
+  }
   .riso-home .rp-hero__media .rp-headshot--supporting { right: .25rem; width: 76px; }
   .fashion-system-page .fashion-system-hero { grid-template-columns: 1fr; }
   .fashion-system-page .fashion-key-visual {

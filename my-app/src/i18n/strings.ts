@@ -63,12 +63,24 @@ const en = {
   // "Workflow fluency" named a skill without saying what it covers. The
   // durable claim is scope: the whole path a task takes, not the screen at the
   // end of it — which is what the MSK case study actually demonstrates.
+  //
+  // This sentence used to be generic ("a workflow I initiated") while a
+  // separate floating card above the artifact carried the specific claim
+  // ("one filing queue replaced a four-system workaround"). That card is gone
+  // now — two elements telling one story in two registers was exactly the
+  // density the hero pass was asked to fix — and its sentence moved here, so
+  // the proof paragraph states the mechanism and the outcome once, together.
+  // Phrasing was tuned (not just merged) to hold the line count the mobile
+  // hero had before: at 390px this must still clear 4 lines, not 5, or the
+  // primary CTA below it drops below the fold — measured live, not assumed.
   "home.riso.heroLead":
-    "At Memorial Sloan Kettering, a workflow I initiated",
-  "home.riso.heroProof": "contributed to a 20% organization-wide electronic medical record cost reduction.",
-  "home.riso.openingVisual": "Watch the 40-second portfolio opener",
+    "One filing queue replaced a four-system workaround at Memorial Sloan Kettering —",
+  "home.riso.heroProof": "a 20% organization-wide electronic medical record cost reduction.",
+  "home.riso.openingVisual": "Watch the 10-second portfolio opener",
   "home.riso.primaryWork": "Review the MSK workflow",
   "home.riso.heroClose": "",
+  "home.riso.queueExpand": "View the full queue · 5 items",
+  "home.riso.queueCollapse": "Show fewer",
   "home.riso.workTitle": "Healthcare products, enterprise workflows, and one consumer product",
   "home.riso.groveDesc":
     "34-person survey · eleven features narrowed to three · functional prototype.",
@@ -213,11 +225,13 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.eyebrow": "Diseñadora de productos de salud · más de 13 años en salud",
   "home.riso.heroTitle": "Diseño productos de salud desde el flujo de trabajo.",
   "home.riso.heroLead":
-    "En Memorial Sloan Kettering, un flujo de trabajo que inicié",
-  "home.riso.heroProof": "contribuyó a una reducción del 20% en los costos del registro médico electrónico de toda la organización.",
-  "home.riso.openingVisual": "Ver la apertura del portafolio de 40 segundos",
+    "Una cola de archivo reemplazó un desvío de cuatro sistemas en Memorial Sloan Kettering —",
+  "home.riso.heroProof": "una reducción del 20% en los costos del registro médico electrónico de toda la organización.",
+  "home.riso.openingVisual": "Ver la apertura del portafolio de 10 segundos",
   "home.riso.primaryWork": "Ver el flujo de trabajo de MSK",
   "home.riso.heroClose": "",
+  "home.riso.queueExpand": "Ver la cola completa · 5 elementos",
+  "home.riso.queueCollapse": "Mostrar menos",
   "home.riso.workTitle": "Productos de salud, flujos empresariales y un producto de consumo",
   "home.riso.groveDesc":
     "Encuesta a 34 personas · once funciones reducidas a tres · prototipo funcional.",

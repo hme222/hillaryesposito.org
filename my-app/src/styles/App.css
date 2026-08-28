@@ -2178,6 +2178,30 @@ textarea::placeholder {
   white-space: nowrap;
 }
 
+/* Condensed header (hero use): the "anonymized concept · whose seat" caption
+   spans the full width on its own row, since squeezed into a half-width
+   column (as the two-column topbar above does) wrapped awkwardly. Title and
+   timestamp share the row underneath instead. */
+.msk-dashboard-mockup__topbar--condensed {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.3rem;
+}
+.msk-dashboard-mockup__topbar--condensed .msk-dashboard-mockup__eyebrow {
+  white-space: normal;
+}
+.msk-dashboard-mockup__condensedMain {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+.msk-dashboard-mockup__condensedMain :is(h2, h3) { margin: 0; }
+.msk-dashboard-mockup__condensedMain .msk-dashboard-mockup__timestamp {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
 .msk-dashboard-mockup__topbar :is(h2, h3) {
   margin: 0.25rem 0 0;
   color: var(--fg);
@@ -2327,6 +2351,100 @@ textarea::placeholder {
 }
 .msk-dashboard-mockup__legend b { color: var(--fg); font-weight: 700; }
 
+/* The row's bare "MRN" stays screen-reader- and hover-identifiable even when
+   the full glossary below is collapsed behind a disclosure — dotted rather
+   than solid so it doesn't read as a broken link. */
+.msk-dashboard-mockup__mrn abbr {
+  text-decoration-style: dotted;
+  text-decoration-color: var(--muted);
+  text-underline-offset: 2px;
+  cursor: help;
+}
+
+/* Disclosure variant of the legend (hero use): closed by default, native
+   <details>/<summary> so it is keyboard- and screen-reader-operable with no
+   extra JS — same definitions as the always-open block, opened on request. */
+.msk-dashboard-mockup__legend--details {
+  margin-top: 0.75rem;
+  display: block;
+}
+.msk-dashboard-mockup__legend--details > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  list-style: none;
+  cursor: pointer;
+  position: relative;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-0);
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+/* Touch-target floor (accessibility-reviewer, 2026-08-27): the visible chip
+   measures ~24.5px tall on mobile — correct for this compact card, but short
+   of the 44px target this project holds everywhere else. Rather than growing
+   the chip itself (which would make the closed-state card visually heavier),
+   an invisible ::before extends the real tappable/clickable region above and
+   below the visible box. It carries no background/border, so it changes
+   nothing visually; a click anywhere on it still bubbles to <summary> and
+   toggles the native disclosure. Sized asymmetrically (9px above, 11px below)
+   to fit inside the actual measured gaps to the row above and the frame's own
+   edge below at 390px, so it never bleeds into the next element's own hit
+   area. 24.5 + 9 + 11 = 44.5px, clearing the 44px floor with a small margin. */
+.msk-dashboard-mockup__legend--details > summary::before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  right: 0;
+  bottom: -11px;
+  left: 0;
+}
+.msk-dashboard-mockup__legend--details > summary::-webkit-details-marker { display: none; }
+.msk-dashboard-mockup__legend--details > summary::after {
+  content: "+";
+  flex: 0 0 auto;
+  font-weight: 800;
+  color: var(--olive-2);
+}
+.msk-dashboard-mockup__legend--details[open] > summary {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.msk-dashboard-mockup__legend--details[open] > summary::after { content: "\2212"; }
+.msk-dashboard-mockup__legend--details > summary:focus-visible {
+  outline: 2px solid var(--olive-2);
+  outline-offset: 2px;
+}
+/* Bugfix (accessibility-reviewer, 2026-08-27): this descendant-class selector
+   (specificity 0,2,0) was overriding the browser's own
+   `details:not([open]) > *:not(summary) { display: none }` rule (0,1,2),
+   which unconditionally forced `display: grid` on the legend body whether the
+   details was open or closed. The definitions were always in the render tree
+   and only "looked" hidden because the enclosing .home-heroArtifact__frame's
+   overflow:hidden happened to clip them off-screen — toggling open/closed
+   changed nothing. Scoping to [open] restores the actual hide/reveal. */
+.msk-dashboard-mockup__legend--details:not([open]) .msk-dashboard-mockup__legendBody {
+  display: none;
+}
+.msk-dashboard-mockup__legend--details[open] .msk-dashboard-mockup__legendBody {
+  display: grid;
+  gap: 0.3rem;
+  padding: 0.6rem 0.65rem;
+  border: 1px solid var(--border);
+  border-top: 0;
+  border-radius: 0 0 8px 8px;
+  background: var(--surface-0);
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+.msk-dashboard-mockup__legend--details .msk-dashboard-mockup__legendBody b { color: var(--fg); font-weight: 700; }
+
 .msk-dashboard-mockup__rule {
   margin-top: 0.85rem;
   padding: 0.7rem 0.85rem;
@@ -2335,6 +2453,105 @@ textarea::placeholder {
   color: var(--muted);
   font-size: 0.76rem;
   line-height: 1.5;
+}
+
+/* Direction C expand/collapse trigger (design-state.md, 2026-08-27): reuses
+   the MRN/EMR disclosure summary's own chip register above it — quiet, not a
+   second louder control — rather than inventing a new button style. Rendered
+   via MSKDashboardMockup's `expandControl` prop, Home-hero-only. */
+.home-heroArtifact__expandToggle {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+  padding: 0.42rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-0);
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+.home-heroArtifact__expandToggle span {
+  flex: 0 0 auto;
+  color: var(--olive-2);
+  font-weight: 800;
+}
+/* Hit-slop, not a bigger visible chip — same "small visible label, larger
+   invisible tap zone" pattern as the legend summary's own ::before just
+   above (App.css, accessibility-reviewer 2026-08-27), so the closed card
+   doesn't grow visually just to clear the 44px touch-target floor.
+   All the slop goes downward, none upward: the legend summary directly
+   above this trigger already extends ITS OWN hit-slop 11px below its
+   visible edge (the rule just above), and the two visible chips sit only
+   ~3.5px apart at 390px — any upward extension here would land inside the
+   legend's existing tap zone, so a tap near the seam could ambiguously
+   trigger either control. Keeping this one entirely downward (where there
+   is real, measured headroom before the card's own edge) reaches the same
+   44px floor without that risk. */
+.home-heroArtifact__expandToggle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: -24px;
+  left: 0;
+}
+.home-heroArtifact__expandToggle:hover { color: var(--fg); }
+.home-heroArtifact__expandToggle:focus-visible {
+  outline: 2px solid var(--olive-2);
+  outline-offset: 2px;
+}
+/* A settle, not a bounce: presses down slightly, returns to rest on release. */
+.home-heroArtifact__expandToggle:active { transform: scale(0.98); }
+
+/* Restored content (the two additional rows, the toolbar, the rule callout)
+   arrives with a small fade + rise, staggered in the same 90ms increments as
+   the site's scroll-reveal CSS vocabulary (riso-page.css, --rp-reveal-stagger)
+   — same motion language, not a second one, even though this trigger is
+   click-driven rather than scroll-driven. Scoped under the frame's own
+   `--expanded` modifier, which is only ever added after a user click, so
+   this never plays as an on-load animation on first paint. */
+@keyframes rp-queue-row-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+.home-heroArtifact__frame--expanded .msk-dashboard-mockup__toolbar {
+  animation: rp-queue-row-in 0.3s ease-out both;
+}
+/* The table's direct children are, in DOM order: the header row, then the
+   five data rows. rowIndices=[0,2,4] keeps rows at positions 2/4/6 always
+   mounted (no re-animation, no flicker on content that was already visible);
+   expanding inserts two new rows at positions 3 and 5 — those are the only
+   ones this rule can match, by construction of the row order. */
+.home-heroArtifact__frame--expanded .msk-dashboard-mockup__table > .msk-dashboard-mockup__row:nth-child(3) {
+  animation: rp-queue-row-in 0.3s ease-out both;
+  animation-delay: 90ms;
+}
+.home-heroArtifact__frame--expanded .msk-dashboard-mockup__table > .msk-dashboard-mockup__row:nth-child(5) {
+  animation: rp-queue-row-in 0.3s ease-out both;
+  animation-delay: 180ms;
+}
+.home-heroArtifact__frame--expanded .msk-dashboard-mockup__rule {
+  animation: rp-queue-row-in 0.3s ease-out both;
+  animation-delay: 270ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-heroArtifact__expandToggle { transition: none; }
+  .home-heroArtifact__expandToggle:active { transform: none; }
+  .home-heroArtifact__frame--expanded .msk-dashboard-mockup__toolbar,
+  .home-heroArtifact__frame--expanded .msk-dashboard-mockup__table > .msk-dashboard-mockup__row:nth-child(3),
+  .home-heroArtifact__frame--expanded .msk-dashboard-mockup__table > .msk-dashboard-mockup__row:nth-child(5),
+  .home-heroArtifact__frame--expanded .msk-dashboard-mockup__rule {
+    animation: none;
+  }
 }
 
 @media (max-width: 760px) {
@@ -2352,6 +2569,21 @@ textarea::placeholder {
   }
   .msk-dashboard-mockup--compact .msk-dashboard-mockup__row {
     min-width: 0;
+  }
+  /* The trigger row's own footprint is part of the closed-card mobile budget
+     that portfolio-cohesion.css's fixed max-height caps against (design-lead,
+     2026-08-27 mobile disclosure fix round — the frame's auto height ignores
+     the card's scale(.74) transform, so the cap has to stay a real number).
+     Padding tightened here so the closed card doesn't need much room to fit
+     it. margin-top is NOT tightened the same way — measured live at 390px,
+     the legend summary directly above already extends its own hit-slop 11px
+     below its visible edge (App.css, accessibility-reviewer 2026-08-27); a
+     smaller gap here would put this trigger's own visible box inside that
+     zone, so a tap near the seam could land on either control. 1.1rem holds
+     a real, measured buffer past that 11px instead. */
+  .home-heroArtifact__expandToggle {
+    margin-top: 1.1rem;
+    padding: 0.32rem 0.6rem;
   }
 
 
@@ -2447,7 +2679,7 @@ textarea::placeholder {
   font-size: 0.9rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #0a0a0a;                            /* dark text on bright gradient */
+  color: var(--fg);                          /* dark text on bright gradient */
   background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 100%);
   box-shadow: 0 2px 8px color-mix(in srgb, var(--olive-2) 20%, transparent);
 }.hero-btn:hover {
@@ -2457,7 +2689,7 @@ textarea::placeholder {
   transform: translateY(0);
   box-shadow: 0 2px 6px color-mix(in srgb, var(--olive-2) 15%, transparent);
 }.dark-mode .hero-btn {
-  color: #1a0e03 !important;
+  color: var(--on-accent) !important;
   background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 100%);
 }.about-back-btn {
   padding: 0.75rem 1.4rem;

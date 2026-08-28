@@ -109,6 +109,24 @@ describe("flagship case-study accessibility", () => {
     expect(results.violations).toEqual([]);
   });
 
+  it("keeps the MSK button teaser decorative and does not create a false control", async () => {
+    await act(async () => {
+      root.render(<FlagshipMSK />);
+    });
+
+    const threshold = container.querySelector('[data-testid="msk-button-threshold"]');
+    const scene = threshold?.querySelector(".fp-buttonThreshold__scene");
+    const action = threshold?.querySelector(".msk-dashboard-action--primary");
+
+    expect(threshold).not.toBeNull();
+    expect(threshold?.hasAttribute("data-evidence")).toBe(false);
+    expect(scene?.getAttribute("aria-hidden")).toBe("true");
+    expect(action?.tagName).toBe("B");
+    expect(action?.textContent).toBe("Send to EMR");
+    expect(threshold?.textContent).toContain("Readiness · permission · exception owner · return state");
+    expect(threshold?.querySelector("button")).toBeNull();
+  });
+
   it("keeps the active homepage shell targets and one work-first hero route intact", async () => {
     await act(async () => {
       root.render(<RisoHome />);
@@ -179,6 +197,53 @@ describe("flagship case-study accessibility", () => {
     expect(panel?.hidden).toBe(true);
     expect(container.querySelector(".rp-dispatchTrain")?.classList.contains("rp-dispatchTrain--departed")).toBe(false);
     expect(container.querySelector(".rp-dispatchTrain")?.classList.contains("rp-dispatchTrain--returning")).toBe(true);
+  });
+
+  // Direction C (design-state.md, 2026-08-27): the hero's row-preview artifact
+  // is genuinely expandable in place, using the same native aria-expanded /
+  // aria-controls button idiom as the Weekend Dispatch toggle above. The two
+  // hidden rows must be real DOM removal (rowIndices), not an opacity/
+  // visibility trick — this is the decoy-disclosure bug class
+  // accessibility-reviewer already fixed once on this same card.
+  it("keeps the hero queue preview genuinely collapsed, then genuinely expands it", async () => {
+    await act(async () => {
+      root.render(<RisoHome />);
+    });
+
+    const dataRow = () => container.querySelectorAll(".home-heroArtifact__frame .msk-dashboard-mockup__row:not(.msk-dashboard-mockup__row--head)");
+    const trigger = container.querySelector<HTMLButtonElement>(".home-heroArtifact__expandToggle");
+    const table = container.querySelector("#home-hero-queue-table");
+
+    expect(trigger).not.toBeNull();
+    expect(table).not.toBeNull();
+    expect(trigger?.getAttribute("aria-controls")).toBe("home-hero-queue-table");
+    expect(trigger?.getAttribute("aria-expanded")).toBe("false");
+
+    // Collapsed: exactly 3 rows, real DOM absence for the other 2 — not
+    // hidden via CSS. jsdom has no layout engine, so "not perceivable to AT"
+    // here means "not present in the tree at all," the strongest possible
+    // form of that guarantee.
+    expect(dataRow()).toHaveLength(3);
+    expect(container.querySelector(".msk-dashboard-mockup__toolbar")).toBeNull();
+    expect(container.querySelector(".msk-dashboard-mockup__rule")).toBeNull();
+    const collapsedMrns = Array.from(dataRow()).map((row) => row.getAttribute("data-status"));
+    expect(collapsedMrns).toEqual(["ready-to-file", "needs-review", "filed-to-chart"]);
+
+    await act(async () => {
+      trigger?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    });
+
+    expect(trigger?.getAttribute("aria-expanded")).toBe("true");
+    expect(dataRow()).toHaveLength(5);
+    expect(container.querySelector(".msk-dashboard-mockup__toolbar")).not.toBeNull();
+    expect(container.querySelector(".msk-dashboard-mockup__rule")).not.toBeNull();
+
+    await act(async () => {
+      trigger?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    });
+
+    expect(trigger?.getAttribute("aria-expanded")).toBe("false");
+    expect(dataRow()).toHaveLength(3);
   });
 
   // Every flagship carried a first-scroll "decision trace" evidence poster —
@@ -276,6 +341,76 @@ describe("flagship case-study accessibility", () => {
       .toBe("/assets/Hillary_Esposito_Supabase_Product_Designer_Resume.pdf");
     expect(resumeLink?.getAttribute("aria-label"))
       .toBe("View Supabase résumé (PDF, opens in new tab)");
+    expect(links.find((link) => link.textContent?.includes("Email Hillary"))?.getAttribute("href"))
+      .toBe("mailto:espositohillary@gmail.com");
+    expect(document.querySelector('meta[name="robots"]')?.getAttribute("content"))
+      .toBe("noindex, nofollow, noarchive");
+
+    const results = await axe.run(container, {
+      rules: { "color-contrast": { enabled: false } },
+    });
+    expect(results.violations).toEqual([]);
+  });
+
+  it("gives Bank of America a truthful proof-first product-design path", async () => {
+    mockCuratedSlug = "bank-of-america-experience-design-i-product-design";
+    window.history.replaceState(
+      null,
+      "",
+      "/curated/bank-of-america-experience-design-i-product-design",
+    );
+
+    await act(async () => {
+      root.render(<CuratedRolePage />);
+    });
+
+    expect(container.querySelector("h1")?.textContent).toBe("Bank of America");
+    expect(container.textContent).toContain("Experience Design I, Product Design");
+    expect(container.textContent).toContain("3 mobile apps · 200+ screens per app");
+    expect(container.textContent).toContain("25% task-completion gain · 21,000+ staff scale");
+    expect(container.textContent).toContain("11 → 3 features");
+    expect(container.textContent).toContain("Phase 2 of 3");
+
+    const proof = container.querySelector("#curated-proof");
+    const work = container.querySelector("#curated-work");
+    const fit = container.querySelector("#curated-fit");
+    expect(proof).not.toBeNull();
+    expect(work).not.toBeNull();
+    expect(fit).not.toBeNull();
+    expect(proof!.compareDocumentPosition(work!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(work!.compareDocumentPosition(fit!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+
+    const workTitles = Array.from(
+      container.querySelectorAll<HTMLHeadingElement>("#curated-work h3"),
+      (heading) => heading.textContent,
+    );
+    expect(workTitles).toEqual([
+      "Grove: research cut eleven features to three before I built",
+      "Mobbin: made three finance-app journeys searchable by task",
+      "MSK: improved task completion through research and shipped change",
+    ]);
+
+    expect(container.textContent).toContain(
+      "I have not shipped a native banking product or owned an AI agent in a production banking environment.",
+    );
+    expect(container.textContent).not.toMatch(/production AI-agent experience|shipped native banking/i);
+    expect(container.textContent).not.toMatch(/34 (survey|participant|respondent)/i);
+    expect(container.textContent).not.toMatch(/70%|60%|15%/);
+
+    const chapterLinks = Array.from(
+      container.querySelectorAll<HTMLAnchorElement>(".rp-chapters a"),
+      (link) => link.textContent,
+    );
+    expect(chapterLinks).toEqual(["Proof", "Work", "Fit", "Bring + limits", "Contact"]);
+
+    const links = Array.from(container.querySelectorAll<HTMLAnchorElement>("a"));
+    expect(links.find((link) => link.textContent?.includes("Review Grove"))?.getAttribute("href"))
+      .toBe("/case-study/grove");
+    const resumeLink = links.find((link) => link.textContent?.includes("View Bank of America résumé"));
+    expect(resumeLink?.getAttribute("href"))
+      .toBe("/assets/Hillary_Esposito_Bank_of_America_Experience_Design_I_Resume.pdf");
+    expect(resumeLink?.getAttribute("aria-label"))
+      .toBe("View Bank of America résumé (PDF, opens in new tab)");
     expect(links.find((link) => link.textContent?.includes("Email Hillary"))?.getAttribute("href"))
       .toBe("mailto:espositohillary@gmail.com");
     expect(document.querySelector('meta[name="robots"]')?.getAttribute("content"))

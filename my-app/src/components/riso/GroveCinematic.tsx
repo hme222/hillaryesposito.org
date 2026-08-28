@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 
+/**
+ * @status: unused — verify before removing
+ * @purpose: Toggleable "fan out the real screens" section showing documented Grove product states; not imported anywhere in src/ currently (only referenced from its own test file). Overlaps GroveScreenGallery's job (showing Grove screens) — confirm which one the page should use before building a third.
+ */
 export default function GroveCinematic() {
   const [fanned, setFanned] = useState(false);
 

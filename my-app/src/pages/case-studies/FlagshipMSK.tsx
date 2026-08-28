@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect, useRef } from "react";
+import React, { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
@@ -122,6 +122,58 @@ const WORKFLOW_AFTER = [
   "Return with status updated",
 ];
 
+/**
+ * A decorative threshold, not another product interface. The exact action is
+ * HTML and reuses the queue's existing visual class; the surrounding signals
+ * only build anticipation for the complete, accessible decision story below.
+ */
+function MSKButtonThreshold() {
+  const [isVisible, setIsVisible] = useState(false);
+  const thresholdRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const node = thresholdRef.current;
+    if (!node) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
+      setIsVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      setIsVisible(true);
+      observer.disconnect();
+    }, { threshold: 0.42 });
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      id="msk-button-teaser"
+      className={`fp-buttonThreshold${isVisible ? " is-visible" : ""}`}
+      ref={thresholdRef}
+      data-testid="msk-button-threshold"
+    >
+      <div className="fp-buttonThreshold__scene" aria-hidden="true">
+        <span className="fp-buttonThreshold__folio">Readiness · permission · exception owner · return state</span>
+        <span className="fp-buttonThreshold__registration">
+          <i className="fp-buttonThreshold__impression fp-buttonThreshold__impression--01" />
+          <i className="fp-buttonThreshold__impression fp-buttonThreshold__impression--02" />
+          <i className="fp-buttonThreshold__impression fp-buttonThreshold__impression--03" />
+          <i className="fp-buttonThreshold__impression fp-buttonThreshold__impression--04" />
+        </span>
+        <span className="fp-buttonThreshold__socket">
+          <b className="msk-dashboard-action msk-dashboard-action--primary">Send to EMR</b>
+        </span>
+        <span className="fp-buttonThreshold__handoff" />
+      </div>
+    </div>
+  );
+}
+
 export default function FlagshipMSK() {
   usePageTitle("MSK — Clinical Systems Case Study");
   const { lang } = useLanguage();
@@ -231,6 +283,8 @@ export default function FlagshipMSK() {
         </div>
       </section>
 
+      <MSKButtonThreshold />
+
       <div data-evidence="true"><DecisionStory
         id="msk-decisions"
         languageAnchor="msk-decisions"
@@ -272,7 +326,7 @@ export default function FlagshipMSK() {
           <p className="rp-kicker">Why I could see it</p>
           <h2 className="rp-title">I learned the system from the floor up.</h2>
           <p className="rp-lede">You do not spot that pattern from outside a system. I had already sat in three of its seats.</p>
-          <ol className="fp-roleRail rp-reveal" aria-label="Three roles at MSK, in order" data-evidence="true">
+          <ol className="fp-roleRail rp-reveal" aria-label="Three roles at MSK, in order" data-evidence="true" style={{ "--rp-reveal-stagger": "0ms" } as React.CSSProperties}>
             {ROLES.map((r) => {
               const method = ROLE_METHODS[r.n];
               return (
@@ -294,7 +348,7 @@ export default function FlagshipMSK() {
               );
             })}
           </ol>
-          <div className="fp-systemCards rp-reveal" data-evidence="true">
+          <div className="fp-systemCards rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "90ms" } as React.CSSProperties}>
             <article><span>01 · Observe</span><h3>Find the workaround</h3><p>Real shifts exposed what policy maps missed.</p></article>
             <article><span>02 · Align</span><h3>Share one failure</h3><p>Four departments, one current-state map.</p></article>
             <article><span>03 · Redesign</span><h3>Sequence the action</h3><p>Show ownership, readiness, and exceptions.</p></article>
@@ -305,14 +359,14 @@ export default function FlagshipMSK() {
               the replacement: the claim is ownership of the whole path, which
               the workflow map above already proves, rather than a description
               of a method. */}
-          <p className="fp-ownership rp-reveal">
+          <p className="fp-ownership rp-reveal" style={{ "--rp-reveal-stagger": "180ms" } as React.CSSProperties}>
             <b>Service-design scope:</b> the full path across systems, departments, permissions, and handoffs—not only the queue screen.
           </p>
-          <aside className="rp-note rp-reveal" aria-label="MSK research evidence boundary">
+          <aside className="rp-note rp-reveal" aria-label="MSK research evidence boundary" style={{ "--rp-reveal-stagger": "270ms" } as React.CSSProperties}>
             <span className="rp-note__k">Evidence boundary</span>
             <p>Workflow, departments, decisions, and outcomes survive. Observation counts do not; no prevalence claim is made.</p>
           </aside>
-          <div className="fp-mapWrap" data-evidence="true">
+          <div className="fp-mapWrap rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "360ms" } as React.CSSProperties}>
             <Suspense fallback={<div className="fp-mapFallback">Tangled systems → mapped → redesigned → trusted</div>}>
               <MSKSystemMap />
             </Suspense>

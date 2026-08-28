@@ -55,6 +55,10 @@ const COLOPHONS: Record<string, Credit[]> = {
   ],
 };
 
+/**
+ * @status: stable
+ * @purpose: Site-wide footer rendered in app/App.tsx; shows nav links, contact links, and a per-route colophon of build tools/methods for case-study pages.
+ */
 export default function Footer() {
   const t = useT();
   const { lang } = useLanguage();

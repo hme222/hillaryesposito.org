@@ -117,6 +117,10 @@ const MAP: Record<string, (props: { l: L }) => React.ReactElement> = {
   "03": Onboarding,
 };
 
+/**
+ * @status: stable
+ * @purpose: Renders one of three decorative before/after SVG diagrams (filing, certification, onboarding) illustrating the MSK redesign mechanism, selected by the `n` prop; used on the MSK case study page. Pick this for a static before/after diagram — for actor-lane handoffs use MSKServiceBlueprint, for the six/five-step flow use MSKWorkflowMap, for the interactive 3D version use MSKSystemMap. LogisticsMechanism is the same pattern re-implemented for the logistics case study, not shared — check before adding a third.
+ */
 export default function MSKMechanism({ n, labels = MSK_COPY.en.redesigns.mechanismLabels }: { n: string; labels?: L }) {
   const Diagram = MAP[n];
   if (!Diagram) return null;

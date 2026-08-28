@@ -335,6 +335,10 @@ function MobbinPoster() {
   );
 }
 
+/**
+ * @status: unused — verify before removing
+ * @purpose: Dispatches to a Grove/MSK/Mobbin evidence poster (GrovePoster/MSKPoster/MobbinPoster) by `project`; re-exported from components/evidence-media/index.ts but not imported from that barrel anywhere in src/ currently.
+ */
 export function EvidenceMediaPoster({
   project,
   className = "",

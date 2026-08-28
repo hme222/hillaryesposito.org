@@ -7,6 +7,8 @@ import HomepageOpeningFilm from "../components/riso/HomepageOpeningFilm";
 import LogisticsMechanism from "../components/LogisticsMechanism";
 import MSKDashboardMockup from "../components/MSKDashboardMockup";
 import usePageTitle from "../hooks/usePageTitle";
+import useFlagshipReveal from "../hooks/useFlagshipReveal";
+import useFilmExitChoreo from "../hooks/useFilmExitChoreo";
 import { useLanguage, useT } from "../app/LanguageContext";
 import type { StringKey } from "../i18n/strings";
 import "../styles/riso.css";
@@ -69,6 +71,12 @@ const STATS = [
 
 const DISPATCH_TRAIN_HOLD_SECONDS = 3.8;
 
+// The hero artifact's preview state shows one representative row per status
+// (ready-to-send, needs-review, filed-to-chart) instead of all five. Direction
+// C (design-state.md, 2026-08-27) makes that preview genuinely expandable in
+// place instead of a fixed cut — these are the indices the preview keeps.
+const HERO_QUEUE_PREVIEW_ROW_INDICES = [0, 2, 4];
+
 export default function RisoHome() {
   usePageTitle();
   const t = useT();
@@ -76,11 +84,15 @@ export default function RisoHome() {
   const location = useLocation();
   const navigate = useNavigate();
   const [dispatchOpen, setDispatchOpen] = useState(false);
+  const [queueExpanded, setQueueExpanded] = useState(false);
   const [dispatchTrainDeparted, setDispatchTrainDeparted] = useState(false);
   const [openingFilmOpen, setOpeningFilmOpen] = useState(false);
   const openingFilmTriggerRef = useRef<HTMLButtonElement>(null);
   const [dispatchTrainReturning, setDispatchTrainReturning] = useState(false);
   const dispatchSectionRef = useRef<HTMLElement>(null);
+  const rootRef = useRef<HTMLElement>(null);
+  useFlagshipReveal(rootRef);
+  const triggerFilmExitChoreo = useFilmExitChoreo();
   const dispatchTrainRef = useRef<HTMLDivElement>(null);
   const dispatchTrainVideoRef = useRef<HTMLVideoElement>(null);
   const dispatchTrainReturnTimerRef = useRef<number | undefined>(undefined);
@@ -178,12 +190,23 @@ export default function RisoHome() {
     });
   };
 
+  // Direction C (design-state.md, 2026-08-27): the hero artifact's 3-row
+  // preview becomes a full 5-row queue in place, on request, instead of
+  // staying a fixed cut. `navigator.vibrate` is Android Chrome-only — every
+  // other browser/OS simply has no such method, so this is a silent no-op
+  // everywhere else, not haptics this feature depends on.
+  const toggleQueueExpanded = () => {
+    if (navigator.vibrate) navigator.vibrate(10);
+    setQueueExpanded((current) => !current);
+  };
+
   return (
-    <main className="riso-page riso-home">
+    <main className="riso-page riso-home" ref={rootRef}>
       <RisoDefs />
       <HomepageOpeningFilm
         open={openingFilmOpen}
         onClose={() => setOpeningFilmOpen(false)}
+        onExitStart={triggerFilmExitChoreo}
         returnFocusRef={openingFilmTriggerRef}
       />
 
@@ -218,15 +241,55 @@ export default function RisoHome() {
             </div>
           </div>
         </div>
-        <div className="rp-hero__media">
+        <div className={`rp-hero__media${queueExpanded ? " rp-hero__media--queueExpanded" : ""}`}>
           <div className="home-heroProofStack" data-evidence="true">
+            {/* The floating annotation card that used to sit above this frame
+                stated the same "one queue replaced four systems" claim the
+                proof paragraph in the text column now carries directly — two
+                registers for one fact. Cut the card, kept the claim: it moved
+                into the paragraph's own sentence instead of duplicating it in
+                a second, separately-chromed element. The artifact frame is
+                also trimmed for the hero specifically (three representative
+                rows instead of five, one caption line instead of a caption
+                plus a separate role pill, the tab row and rule callout
+                dropped, the MRN/EMR glossary collapsed behind a disclosure)
+                via props scoped to this call only — the full case-study and
+                curated-page renders of this same component are untouched.
+
+                Direction C (design-state.md, 2026-08-27): the preview is now
+                genuinely expandable in place, via the same aria-expanded /
+                aria-controls native-button disclosure idiom the Weekend
+                Dispatch toggle already uses below (not a new pattern). The
+                two hidden rows are conditionally rendered via
+                MSKDashboardMockup's own rowIndices prop — real DOM removal,
+                not opacity/visibility, so they are genuinely absent from the
+                accessibility tree while collapsed. condensedHeader and
+                legendDisclosure stay on in both states; only rowIndices,
+                hideToolbar, and hideRule change. */}
             <figure className="home-heroArtifact">
-              <div className="home-heroArtifact__label">
-                <span>Implemented healthcare workflow</span>
-                <b>One filing queue replaced a four-system workaround.</b>
-              </div>
-              <div className="home-heroArtifact__frame">
-                <MSKDashboardMockup compact headingLevel={2} />
+              <div className={`home-heroArtifact__frame${queueExpanded ? " home-heroArtifact__frame--expanded" : ""}`}>
+                <MSKDashboardMockup
+                  compact
+                  headingLevel={2}
+                  rowIndices={queueExpanded ? undefined : HERO_QUEUE_PREVIEW_ROW_INDICES}
+                  condensedHeader
+                  hideToolbar={!queueExpanded}
+                  legendDisclosure
+                  hideRule={!queueExpanded}
+                  tableId="home-hero-queue-table"
+                  expandControl={
+                    <button
+                      type="button"
+                      className="home-heroArtifact__expandToggle"
+                      aria-expanded={queueExpanded}
+                      aria-controls="home-hero-queue-table"
+                      onClick={toggleQueueExpanded}
+                    >
+                      <span aria-hidden="true">{queueExpanded ? "−" : "+"}</span>
+                      {t(queueExpanded ? "home.riso.queueCollapse" : "home.riso.queueExpand")}
+                    </button>
+                  }
+                />
               </div>
               <figcaption>Recreated Office Coordinator queue · no patient data</figcaption>
             </figure>
@@ -253,7 +316,7 @@ export default function RisoHome() {
         <div className="rp-wrap">
           <p className="rp-kicker">{t("home.riso.proofKicker")}</p>
           <h2 className="rp-title" id="home-proof-title">{t("home.riso.proofTitle")}</h2>
-          <div className="rp-outcomes" data-evidence="true">
+          <div className="rp-outcomes rp-reveal" data-evidence="true">
             {STATS.map((s) => (
               <div className="rp-stat" key={s.n}>
                 <p className="rp-stat__n">{s.n}</p>
@@ -271,7 +334,7 @@ export default function RisoHome() {
         <div className="rp-wrap">
           <p className="rp-kicker">{t("home.eyebrow")}</p>
           <h2 className="rp-title" id="home-work-title">{t("home.riso.workTitle")}</h2>
-          <div className="rp-worklist" data-evidence="true">
+          <div className="rp-worklist rp-reveal" data-evidence="true">
             {WORK.map((w) => (
               <Link className="rp-work" to={w.path} key={w.path}>
                 <div>
@@ -502,7 +565,7 @@ export default function RisoHome() {
       {/* MINI ABOUT */}
       <section className="rp-section" id="about" aria-labelledby="home-about-title">
         <div className="rp-wrap">
-          <div className="rp-aboutBlock">
+          <div className="rp-aboutBlock rp-reveal">
             <p className="rp-kicker">{t("home.about.eyebrow")}</p>
             <h2 className="rp-title" id="home-about-title">{t("home.riso.aboutTitle")}</h2>
             <Link className="rp-cta rp-cta--ghost" to="/about" style={{ marginTop: "1.4rem" }}>{t("home.about.link")}</Link>

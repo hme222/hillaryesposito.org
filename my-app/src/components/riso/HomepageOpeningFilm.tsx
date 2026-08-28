@@ -1,15 +1,31 @@
 import React, { RefObject, useCallback, useEffect, useRef, useState } from "react";
 
-const EXIT_MS = 560;
+// Matches the .rp-openingFilm overlay's own fade in riso-page.css (40ms
+// delay + 260ms duration = clears at 300ms), plus a small buffer before
+// unmounting — shortened from 560ms alongside that overlay fade (owner-
+// reported 2026-08-27: the trickle-down choreo underneath was finishing
+// while still hidden behind a slower-clearing overlay; see that file's
+// comment for the full timing trace).
+const EXIT_MS = 340;
 const FAILSAFE_MS = 6500;
 
 type HomepageOpeningFilmProps = {
   open: boolean;
   onClose: () => void;
   returnFocusRef: RefObject<HTMLButtonElement | null>;
+  // Fires the instant the exit sequence begins (before the EXIT_MS fade
+  // completes) so the page underneath can start its own trickle-down
+  // entrance in step with the film's own dissolve, instead of only after
+  // onClose unmounts it. Optional — a caller that doesn't pass it just
+  // gets the plain crossfade, unchanged.
+  onExitStart?: () => void;
 };
 
-export default function HomepageOpeningFilm({ open, onClose, returnFocusRef }: HomepageOpeningFilmProps) {
+/**
+ * @status: stable
+ * @purpose: Full-screen opening film overlay shown on the home page (pages/RisoHome.tsx), with a timed/skippable exit crossfade and focus restored to the trigger on close.
+ */
+export default function HomepageOpeningFilm({ open, onClose, returnFocusRef, onExitStart }: HomepageOpeningFilmProps) {
   const closeTimerRef = useRef<number | undefined>(undefined);
   const failsafeTimerRef = useRef<number | undefined>(undefined);
   const exitingRef = useRef(false);
@@ -22,12 +38,13 @@ export default function HomepageOpeningFilm({ open, onClose, returnFocusRef }: H
     if (!open || exitingRef.current) return;
     exitingRef.current = true;
     setExiting(true);
+    onExitStart?.();
     window.clearTimeout(failsafeTimerRef.current);
     closeTimerRef.current = window.setTimeout(() => {
       onClose();
       returnFocusRef.current?.focus({ preventScroll: true });
     }, EXIT_MS);
-  }, [onClose, open, returnFocusRef]);
+  }, [onClose, onExitStart, open, returnFocusRef]);
 
   useEffect(() => {
     if (!open) {

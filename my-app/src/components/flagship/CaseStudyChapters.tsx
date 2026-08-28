@@ -18,6 +18,10 @@ export type CaseStudyChapter = {
  * IntersectionObserver threshold: sections here are routinely taller than the
  * viewport, so "30% visible" never becomes true for the tall ones.
  */
+/**
+ * @status: stable
+ * @purpose: Renders a sticky, self-highlighting chapter navigation strip for long case-study pages, used across the case-study, curated, and Spanish case-study pages.
+ */
 export default function CaseStudyChapters({
   project,
   chapters,

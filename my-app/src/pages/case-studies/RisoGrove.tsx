@@ -11,6 +11,7 @@ import PhaseIndicator from "../../components/riso/PhaseIndicator";
 import SpanishCaseStudy from "../../components/SpanishCaseStudy";
 import { GROVE_ES } from "../../data/spanishCaseStudies";
 import usePageTitle from "../../hooks/usePageTitle";
+import { wireRevealObservers } from "../../hooks/useFlagshipReveal";
 import "../../styles/riso.css";
 import "../../styles/riso-page.css";
 
@@ -180,29 +181,22 @@ export default function RisoGrove() {
     return () => window.clearTimeout(timer);
   }, []);
 
-  // Scroll-reveal — fade/rise sections in as they enter view (Carmen-style motion).
+  // Scroll-reveal — fade/rise sections in as they enter view (Carmen-style
+  // motion). Shared with useFlagshipReveal/CuratedRolePage so the reveal +
+  // proximity-armed failsafe logic (and any future fix to it) lives in one
+  // place — see hooks/useFlagshipReveal.ts.
+  useEffect(() => {
+    const root = document.querySelector<HTMLElement>(".riso-page");
+    if (!root) return;
+    return wireRevealObservers(root);
+  }, []);
+
+  // Route legs: highlight + wiggle the pin as each crosses the viewport centre.
+  // Fires once per leg. Toggling meant the wiggle replayed every time someone
+  // scrolled back up to re-find their place — a repeated attention-grab at
+  // exactly the moment attention has already been lost.
   useEffect(() => {
     if (typeof IntersectionObserver === "undefined") return;
-    // Opt in only once the observer is definitely running; the early return
-    // above now leaves content visible instead of hidden forever.
-    document.querySelector<HTMLElement>(".riso-page")?.classList.add("js-reveal");
-    const els = Array.from(document.querySelectorAll<HTMLElement>(".riso-page .rp-reveal"));
-    const io = new IntersectionObserver(
-      (entries) =>
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("is-in");
-            io.unobserve(e.target);
-          }
-        }),
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
-    );
-    els.forEach((el) => io.observe(el));
-
-    // Route legs: highlight + wiggle the pin as each crosses the viewport centre.
-    // Fires once per leg. Toggling meant the wiggle replayed every time someone
-    // scrolled back up to re-find their place — a repeated attention-grab at
-    // exactly the moment attention has already been lost.
     const legs = Array.from(document.querySelectorAll<HTMLElement>(".riso-page .rp-leg"));
     const legIo = new IntersectionObserver(
       (entries) =>
@@ -214,11 +208,7 @@ export default function RisoGrove() {
       { rootMargin: "-42% 0px -42% 0px" }
     );
     legs.forEach((el) => legIo.observe(el));
-
-    return () => {
-      io.disconnect();
-      legIo.disconnect();
-    };
+    return () => legIo.disconnect();
   }, []);
 
   // Scroll-linked hand-drawn underline — draws as the quote rises into view,
@@ -321,7 +311,7 @@ export default function RisoGrove() {
       {/* PROBLEM */}
       <section className="rp-section" id="grove-research" data-language-anchor="grove-research">
         <div className="rp-wrap">
-          <div className="rp-split rp-reveal" data-evidence="true">
+          <div className="rp-split rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "0ms" } as React.CSSProperties}>
             <div className="rp-split__text">
               <p className="rp-kicker">Where this starts</p>
               <h2 className="rp-title">Plant parents forget. Then they feel guilty.</h2>
@@ -339,7 +329,7 @@ export default function RisoGrove() {
 
           <h3 className="rp-subhead">What those 34 people actually said</h3>
           <p className="rp-lede">34 owners · May 22–July 8, 2026 · choose three launch dealbreakers.</p>
-          <dl className="rp-surveyStats rp-reveal" data-evidence="true">
+          <dl className="rp-surveyStats rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "90ms" } as React.CSSProperties}>
             {SURVEY_FINDINGS.map((f) => (
               <div key={f.stat}>
                 <dt>{f.stat}</dt>
@@ -348,14 +338,14 @@ export default function RisoGrove() {
             ))}
           </dl>
 
-          <aside className="rp-note rp-reveal" aria-label="Grove research evidence boundary">
+          <aside className="rp-note rp-reveal" aria-label="Grove research evidence boundary" style={{ "--rp-reveal-stagger": "180ms" } as React.CSSProperties}>
             <span className="rp-note__k">What this evidence can say</span>
             <p>Self-report prioritized the next build; it does not prove behavior or demand. The moderated test that came before it (March–May 2026) showed people were confused, not what to build instead — its task records aren't preserved, so no broader claim is made from either study.</p>
           </aside>
 
           <h3 className="rp-subhead">What they wanted, and what waited</h3>
           <p className="rp-lede">The top three entered the core. Eight features waited.</p>
-          <ol className="rp-rank rp-reveal" data-evidence="true">
+          <ol className="rp-rank rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "270ms" } as React.CSSProperties}>
             {MVP_FEATURES.map((f) => (
               <li key={f.feature} className={f.tier === "core" ? "is-core" : undefined}>
                 <span className="rp-rank__label">{f.feature}</span>
@@ -366,7 +356,7 @@ export default function RisoGrove() {
             ))}
           </ol>
 
-          <figure className="rp-quoteCard rp-reveal" data-evidence="true">
+          <figure className="rp-quoteCard rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "360ms" } as React.CSSProperties}>
             <blockquote>“Any generative AI in this will remove any sense of trust.”</blockquote>
             <figcaption>
               Florist · unprompted. I removed AI-written care sheets from scope.

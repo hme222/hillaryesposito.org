@@ -99,6 +99,10 @@ function Path({ steps, labels, y0, accent }: { steps: Step[]; labels: string[]; 
   );
 }
 
+/**
+ * @status: stable
+ * @purpose: Renders the MSK filing process's six-step (before) and five-step (after) paths as a decorative SVG process map, used standalone on the MSK case study page and embedded inside MSKServiceBlueprint. Pick this for the flow-as-steps view — for actor-lane handoffs wrap it in MSKServiceBlueprint instead of duplicating.
+ */
 export default function MSKWorkflowMap({ copy = MSK_COPY.en.workflow }: { copy?: MskCopy["workflow"] }) {
   return (
     <div className="fp-workflowMap" aria-hidden="true">

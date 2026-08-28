@@ -596,6 +596,162 @@ const allCuratedPages: Record<string, CuratedPage> = {
     },
     contactFirst: true,
   },
+  "bank-of-america-experience-design-i-product-design": {
+    slug: "bank-of-america-experience-design-i-product-design",
+    company: "Bank of America",
+    role: "Experience Design I, Product Design",
+    variant: "finance",
+    accent: "#8b2f34",
+    accentDark: "#e59a9f",
+    mapSrc: "/riso/elevation-03.jpg",
+    edition: "struct",
+    badgeLabel: "Relevant evidence, named honestly",
+    eyebrow: "Research-led product design for complex workflows",
+    headline: "I narrow the problem before I build—and stay with the work through implementation.",
+    subhead:
+      "Start with Grove: research cut an eleven-feature idea to three before I built the responsive prototype. Mobbin is documentation work across finance-app journeys; MSK is implemented workflow change.",
+    heroTrace: [
+      { label: "Grove", value: "Responsive React prototype · Phase 2 of 3" },
+      { label: "Mobbin", value: "3 mobile apps · 200+ screens per app" },
+      { label: "MSK", value: "25% task-completion gain · 21,000+ staff scale" },
+    ],
+    meta: [
+      { label: "Target role", value: "Experience Design I · Product Design" },
+      { label: "Consumer proof", value: "Research, flows, responsive prototype, usability iteration" },
+      { label: "Financial adjacency", value: "Freelance UX documentation across three finance apps" },
+      { label: "Delivery proof", value: "Implemented workflow change with engineering and operations" },
+    ],
+    intro: [
+      "I design from evidence to implementation. Research should change the product decision; the next artifact should make that decision testable for users and technical partners.",
+      "My background is not banking-product employment. Grove is my consumer prototype; Mobbin is documentation work inside finance-app journeys; MSK is the implemented change. My thirteen years in the Army add evidence of accountability in high-stakes systems.",
+    ],
+    proofPoints: [
+      {
+        stat: "11 → 3 features",
+        detail: "kept after plant-owner research changed Grove's MVP scope",
+      },
+      {
+        stat: "3 finance apps",
+        detail: "documented at 200+ screens per app across complete mobile product flows",
+      },
+      {
+        stat: "25% · 21,000+",
+        detail: "task-completion improvement across MSK workflows serving clinical and administrative staff",
+      },
+    ],
+    featuredWork: [
+      {
+        title: "Grove: research cut eleven features to three before I built",
+        reason:
+          "A responsive React consumer-product prototype showing the research decision, task flows, interface states, usability iteration, and the boundary between AI acceleration and my product judgment.",
+        image: "/assets/grove/grove1.png",
+        imageAlt: "Grove plant-care prototype home screen",
+        evidence: [
+          { label: "Decision", value: "11 features → 3" },
+          { label: "Surface", value: "Responsive React" },
+          { label: "State", value: "Phase 2 of 3" },
+          { label: "Owner", value: "Founder + sole designer" },
+          { label: "Outcome", value: "Functional prototype" },
+        ],
+      },
+      {
+        title: "Mobbin: made three finance-app journeys searchable by task",
+        reason:
+          "I captured, sequenced, annotated, and labeled 200+ screens per app across Kikoff, Polymarket, and Discover for Mobbin's Finance+ reference library. I documented these products; I did not design them or Mobbin.",
+        image: "/assets/mobbin/kikoff.jpg",
+        imageAlt: "Mobile finance application screens documented for Mobbin pattern analysis",
+        evidence: [
+          { label: "Role", value: "Freelance documentation" },
+          { label: "Scope", value: "Kikoff · Polymarket · Discover" },
+          { label: "Method", value: "Capture · sequence · annotate · label" },
+          { label: "Output", value: "Finance+ reference library" },
+        ],
+      },
+      {
+        title: "MSK: improved task completion through research and shipped change",
+        reason:
+          "Stakeholder discovery, workflow analysis, usability testing, and engineering partnership improved internal-tool task completion by 25% across workflows serving 21,000+ staff.",
+        image: "/assets/msk/mskcc-map-thumb.jpg",
+        imageAlt: "Recreated map of the Memorial Sloan Kettering care network",
+        evidence: [
+          { label: "Scale", value: "21,000+ staff" },
+          { label: "Method", value: "Research + usability" },
+          { label: "Partners", value: "Engineering + operations" },
+          { label: "State", value: "Implemented change" },
+          { label: "Outcome", value: "25% task-completion gain" },
+        ],
+      },
+    ],
+    strengths: [
+      "Cut scope when research contradicts the first idea",
+      "Map whole workflows, including edge states and recovery",
+      "Write decisions so product and engineering can challenge them",
+      "Use AI to move prototypes faster, then review the interaction, accessibility, and quality myself",
+    ],
+    relevantExperience: [
+      "In Grove, plant-owner research cut the MVP from eleven features to three before I built and tested the responsive prototype.",
+      "For Mobbin, I captured complete finance-app journeys, ordered the states, annotated the flow, and named each entry in the vocabulary another designer would search.",
+      "At MSK, I aligned stakeholders, tested complex workflows, and worked with engineering and operations to deliver measurable change at organizational scale.",
+      "Thirteen years in the Army add evidence of accountability in high-stakes systems; they support the product work rather than replace it.",
+    ],
+    keywords: [
+      "product design",
+      "user-centered design",
+      "consumer experiences",
+      "mobile UX",
+      "responsive web",
+      "user research",
+      "usability testing",
+      "design systems",
+      "visual hierarchy",
+      "prototyping",
+      "cross-functional collaboration",
+      "engineering partnership",
+      "AI-assisted prototyping",
+      "accessibility",
+    ],
+    hiringManagerNote:
+      "I have not shipped a native banking product or owned an AI agent in a production banking environment. The closest inspectable proof is a responsive consumer prototype, freelance documentation across three finance apps, implemented workflow change with engineering partners, and a record of learning complex systems quickly without hiding their constraints.",
+    closing:
+      "I stay close to the messy part of a workflow until the next product decision is clear enough to test and build.",
+    supportLinks: [
+      {
+        label: "Grove consumer-product case study",
+        path: "/case-study/grove",
+        description: "Research-led scope, responsive React prototype, interface states, usability iteration, and AI judgment boundaries.",
+        icon: <SproutIcon />,
+      },
+      {
+        label: "Mobbin UX documentation case study",
+        path: "/case-study/mobbin",
+        description: "How I captured, sequenced, annotated, and labeled three finance-app journeys for Mobbin's Finance+ library.",
+        icon: <PencilIcon />,
+      },
+      {
+        label: "MSK workflow case study",
+        path: "/case-study/msk",
+        description: "User research, usability testing, technical partnership, implementation, and measurable task-completion improvement.",
+        icon: <MedicalCrossIcon />,
+      },
+    ],
+    relatedLinks: [
+      {
+        label: "Main portfolio",
+        path: "/",
+        description: "Full product-design portfolio and contact section.",
+        icon: <LaunchIcon />,
+      },
+    ],
+    proofFirst: true,
+    caseStudyCtaLabel: "Review Grove",
+    proofKicker: "Relevant evidence",
+    proofTitle: "What I would open first",
+    resumeLink: {
+      label: "View Bank of America résumé · PDF ↗",
+      path: "/assets/Hillary_Esposito_Bank_of_America_Experience_Design_I_Resume.pdf",
+    },
+    contactFirst: true,
+  },
   "indyx-ux-product-designer": {
     slug: "indyx-ux-product-designer",
     company: "Indyx",

@@ -15,6 +15,10 @@ const TABS = [
 
 type CopyState = { hex: string; ok: boolean } | null;
 
+/**
+ * @status: stable
+ * @purpose: Interactive design-system demo (color-token swatches, tabbed reminder/plant-ID/pet-safety mini-widgets) for Grove, used on the Grove case study page. Grove-specific and not a generalized system-lab component others should extend.
+ */
 export default function GroveSystemLab() {
   const [copied, setCopied] = useState<CopyState>(null);
   const [tab, setTab] = useState<(typeof TABS)[number]["id"]>("reminder");

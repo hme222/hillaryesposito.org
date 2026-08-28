@@ -8,6 +8,10 @@ export type ScreenSequenceItem = {
   summary: string;
 };
 
+/**
+ * @status: stable
+ * @purpose: Renders a navigable single-screen-at-a-time sequence viewer (image, category, summary) with prev/next controls, used on the Mobbin case study page. Pick this for stepping through screens one at a time — for a horizontally-scrollable strip showing many at once use GroveScreenGallery instead.
+ */
 export default function ScreenSequence({
   label,
   items,

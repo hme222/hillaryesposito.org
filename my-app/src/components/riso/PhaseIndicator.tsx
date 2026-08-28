@@ -12,6 +12,10 @@ import React from "react";
  * assistive tech. This is deliberately NOT a live region — the value never
  * changes while a reader is on the page.
  */
+/**
+ * @status: stable
+ * @purpose: Renders a determinate segmented progress indicator (e.g. "Phase 2 of 3") with a full-text accessible label; used on the home page and the Grove case study page. Pick this for a discrete, named-phase count — for continuous reading position through a long page use ReadingProgress instead.
+ */
 export default function PhaseIndicator({
   current,
   total = 3,

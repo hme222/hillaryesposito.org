@@ -99,6 +99,10 @@ const MAP: Record<string, () => React.ReactElement> = {
   "03": Forecasting,
 };
 
+/**
+ * @status: stable
+ * @purpose: Renders one of three decorative before/after SVG diagrams (warehouse move, shared protocol, forecasting) illustrating a medical-logistics redesign, selected by the `n` prop; used on the logistics case study page.
+ */
 export default function LogisticsMechanism({ n }: { n: string }) {
   const Diagram = MAP[n];
   if (!Diagram) return null;

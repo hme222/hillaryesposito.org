@@ -27,7 +27,11 @@ function Svg({ children, ...rest }: IconProps & { children: React.ReactNode }) {
   );
 }
 
-/** Terminal window - AI coding tools (replaces 🤖 / 💻) */
+/**
+ * Terminal window - AI coding tools (replaces 🤖 / 💻)
+ * @status: stable
+ * @purpose: Terminal-window line icon used for AI-coding-tool links in the curated links data (data/curatedPages.tsx).
+ */
 export const TerminalIcon = (p: IconProps) => (
   <Svg {...p}>
     <rect x="3" y="4.5" width="18" height="15" rx="2.4" />
@@ -36,7 +40,11 @@ export const TerminalIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Pencil - editors / Cursor (replaces ✏️) */
+/**
+ * Pencil - editors / Cursor (replaces ✏️)
+ * @status: stable
+ * @purpose: Pencil line icon used for editor/design-tool links in the curated links data (data/curatedPages.tsx).
+ */
 export const PencilIcon = (p: IconProps) => (
   <Svg {...p}>
     <path d="M17 3.8a2.3 2.3 0 0 1 3.2 3.2L7.6 19.6 3 21l1.4-4.6L17 3.8z" />
@@ -44,7 +52,11 @@ export const PencilIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Up-right arrow - launch / deploy (replaces 🚀) */
+/**
+ * Up-right arrow - launch / deploy (replaces 🚀)
+ * @status: stable
+ * @purpose: Up-right-arrow line icon used for launch/deploy links in the curated links data (data/curatedPages.tsx).
+ */
 export const LaunchIcon = (p: IconProps) => (
   <Svg {...p}>
     <path d="M7 17L17 7" />
@@ -52,7 +64,11 @@ export const LaunchIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Frame / crop marks - design tools, Figma (replaces 🎨) */
+/**
+ * Frame / crop marks - design tools, Figma (replaces 🎨)
+ * @status: unused — verify before removing
+ * @purpose: Frame/crop-marks line icon intended for design-tool links; not imported anywhere in src/ currently.
+ */
 export const FrameIcon = (p: IconProps) => (
   <Svg {...p}>
     <path d="M9 4v16" />
@@ -62,7 +78,11 @@ export const FrameIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Flask - testing / Maze (replaces 🧪) */
+/**
+ * Flask - testing / Maze (replaces 🧪)
+ * @status: unused — verify before removing
+ * @purpose: Flask line icon intended for testing-tool links; not imported anywhere in src/ currently.
+ */
 export const FlaskIcon = (p: IconProps) => (
   <Svg {...p}>
     <path d="M9.5 3.5v5.2L4.8 17a2 2 0 0 0 1.8 3h10.8a2 2 0 0 0 1.8-3l-4.7-8.3V3.5" />
@@ -71,14 +91,22 @@ export const FlaskIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Folder - organizing / taxonomy / FigJam (replaces 🗂️) */
+/**
+ * Folder - organizing / taxonomy / FigJam (replaces 🗂️)
+ * @status: unused — verify before removing
+ * @purpose: Folder line icon intended for organizing/taxonomy links; not imported anywhere in src/ currently.
+ */
 export const FolderIcon = (p: IconProps) => (
   <Svg {...p}>
     <path d="M3.5 7.2A2.2 2.2 0 0 1 5.7 5h3.9l2 2.4h6.7a2.2 2.2 0 0 1 2.2 2.2v7.2a2.2 2.2 0 0 1-2.2 2.2H5.7a2.2 2.2 0 0 1-2.2-2.2V7.2z" />
   </Svg>
 );
 
-/** Phone - mobile apps / Mobbin (replaces 📱) */
+/**
+ * Phone - mobile apps / Mobbin (replaces 📱)
+ * @status: unused — verify before removing
+ * @purpose: Phone line icon intended for mobile-app links; not imported anywhere in src/ currently.
+ */
 export const PhoneIcon = (p: IconProps) => (
   <Svg {...p}>
     <rect x="7" y="3" width="10" height="18" rx="2.4" />
@@ -86,7 +114,11 @@ export const PhoneIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Mobbin - client work / UX flow documentation */
+/**
+ * Mobbin - client work / UX flow documentation
+ * @status: unused — verify before removing
+ * @purpose: Mobbin-logo-style line icon intended for UX flow documentation links; not imported anywhere in src/ currently.
+ */
 export const MobbinIcon = (p: IconProps) => (
   <Svg {...p}>
     <rect x="3.75" y="4.25" width="16.5" height="15.5" rx="4" />
@@ -96,7 +128,11 @@ export const MobbinIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Magnifier - search / live-app research (replaces 🔍) */
+/**
+ * Magnifier - search / live-app research (replaces 🔍)
+ * @status: unused — verify before removing
+ * @purpose: Magnifier line icon intended for search/research links; not imported anywhere in src/ currently.
+ */
 export const MagnifierIcon = (p: IconProps) => (
   <Svg {...p}>
     <circle cx="11" cy="11" r="6.2" />
@@ -104,7 +140,11 @@ export const MagnifierIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Medical cross - MSK / healthcare (replaces 🏥) */
+/**
+ * Medical cross - MSK / healthcare (replaces 🏥)
+ * @status: stable
+ * @purpose: Medical-cross line icon used for MSK/healthcare case-study links in the curated links data (data/curatedPages.tsx).
+ */
 export const MedicalCrossIcon = (p: IconProps) => (
   <Svg {...p}>
     <rect x="4" y="4" width="16" height="16" rx="3.2" />
@@ -113,7 +153,11 @@ export const MedicalCrossIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Sprout - Grove (replaces 🌱) */
+/**
+ * Sprout - Grove (replaces 🌱)
+ * @status: stable
+ * @purpose: Sprout line icon used for Grove case-study links in the curated links data (data/curatedPages.tsx).
+ */
 export const SproutIcon = (p: IconProps) => (
   <Svg {...p}>
     <path d="M12 21v-8" />
@@ -122,7 +166,11 @@ export const SproutIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Leaf - Good Harvest (replaces 🌿) */
+/**
+ * Leaf - Good Harvest (replaces 🌿)
+ * @status: unused — verify before removing
+ * @purpose: Leaf line icon intended for Good Harvest links; not imported anywhere in src/ currently.
+ */
 export const LeafIcon = (p: IconProps) => (
   <Svg {...p}>
     <path d="M18.5 5.5C10.5 5.5 6 11.5 6 19c7.5 0 12.5-6 12.5-13.5z" />
@@ -130,7 +178,11 @@ export const LeafIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Raised hand - "where I pushed back" (replaces ✋) */
+/**
+ * Raised hand - "where I pushed back" (replaces ✋)
+ * @status: stable
+ * @purpose: Raised-hand line icon used for "where I pushed back" links in the curated links data (data/curatedPages.tsx).
+ */
 export const HandIcon = (p: IconProps) => (
   <Svg {...p}>
     <path d="M18 11V6a2 2 0 0 0-4 0v5" />
@@ -140,7 +192,11 @@ export const HandIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Newspaper - press links (replaces 📰) */
+/**
+ * Newspaper - press links (replaces 📰)
+ * @status: stable
+ * @purpose: Newspaper line icon used next to press/media links on the About Me page (pages/AboutMe.tsx).
+ */
 export const NewsIcon = (p: IconProps) => (
   <Svg {...p}>
     <rect x="3.5" y="5" width="17" height="14.5" rx="2.2" />
@@ -151,7 +207,11 @@ export const NewsIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Document with lines - resume / download (replaces 📄) */
+/**
+ * Document with lines - resume / download (replaces 📄)
+ * @status: stable
+ * @purpose: Document line icon used on the "View résumé" button in the recruiter panel (components/RecruiterPill.tsx).
+ */
 export const FileTextIcon = (p: IconProps) => (
   <Svg {...p}>
     <path d="M13 3.5H7A1.8 1.8 0 0 0 5.2 5.3v13.4A1.8 1.8 0 0 0 7 20.5h10a1.8 1.8 0 0 0 1.8-1.8V9.3z" />
@@ -161,7 +221,11 @@ export const FileTextIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Envelope - email (replaces ✉️) */
+/**
+ * Envelope - email (replaces ✉️)
+ * @status: stable
+ * @purpose: Envelope line icon used on the "Email me" button in the recruiter panel (components/RecruiterPill.tsx).
+ */
 export const MailIcon = (p: IconProps) => (
   <Svg {...p}>
     <rect x="3.5" y="5.5" width="17" height="13" rx="2.2" />
@@ -169,7 +233,11 @@ export const MailIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Briefcase - LinkedIn / professional profile (replaces 💼) */
+/**
+ * Briefcase - LinkedIn / professional profile (replaces 💼)
+ * @status: stable
+ * @purpose: Briefcase line icon used on the "LinkedIn" button in the recruiter panel (components/RecruiterPill.tsx).
+ */
 export const BriefcaseIcon = (p: IconProps) => (
   <Svg {...p}>
     <rect x="3.5" y="7.5" width="17" height="12" rx="2.2" />
@@ -178,7 +246,11 @@ export const BriefcaseIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Person - about me / profile (replaces 👤) */
+/**
+ * Person - about me / profile (replaces 👤)
+ * @status: stable
+ * @purpose: Person line icon used on the "About me" button in the recruiter panel (components/RecruiterPill.tsx).
+ */
 export const UserIcon = (p: IconProps) => (
   <Svg {...p}>
     <circle cx="12" cy="8.5" r="3.5" />
@@ -186,7 +258,11 @@ export const UserIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Padlock - password-protected (replaces 🔒) */
+/**
+ * Padlock - password-protected (replaces 🔒)
+ * @status: unused — verify before removing
+ * @purpose: Padlock line icon intended for password-protected content; not imported anywhere in src/ currently.
+ */
 export const LockIcon = (p: IconProps) => (
   <Svg {...p}>
     <rect x="5" y="10.5" width="14" height="9.5" rx="2.2" />
@@ -195,7 +271,11 @@ export const LockIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Hamburger - open menu (replaces ☰) */
+/**
+ * Hamburger - open menu (replaces ☰)
+ * @status: stable
+ * @purpose: Hamburger line icon used for the closed-state mobile menu toggle in the site navbar (components/Navbar.tsx).
+ */
 export const MenuIcon = (p: IconProps) => (
   <Svg {...p}>
     <path d="M4 7h16" />
@@ -204,7 +284,11 @@ export const MenuIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** X - close (replaces ✕) */
+/**
+ * X - close (replaces ✕)
+ * @status: stable
+ * @purpose: X line icon used for the open-state mobile menu toggle (components/Navbar.tsx) and the close button in the recruiter panel (components/RecruiterPill.tsx).
+ */
 export const XIcon = (p: IconProps) => (
   <Svg {...p}>
     <path d="M6 6l12 12" />
@@ -212,7 +296,11 @@ export const XIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Bloom - flowering plant / bouquet (replaces 🌸) */
+/**
+ * Bloom - flowering plant / bouquet (replaces 🌸)
+ * @status: unused — verify before removing
+ * @purpose: Flowering-plant line icon intended for bouquet-related content; not imported anywhere in src/ currently.
+ */
 export const FlowerIcon = (p: IconProps) => (
   <Svg {...p}>
     <circle cx="12" cy="9" r="2.1" />

@@ -44,6 +44,10 @@ type Props = {
  * track is the only element measured, so there is nothing to fall out of sync
  * with — no per-step height, no detection band a short step can slip through.
  */
+/**
+ * @status: stable
+ * @purpose: Sticky-panel decision narrative where a scroll-tracked step list stays alongside a caller-supplied visual that highlights the active step; part of the flagship case-study loop (MSK, Mobbin) and already in use there. Shares its concept with two deliberately-deferred siblings on separate tracks — GroveDecisionStory (Grove case-study loop) and DecisionCard (design-skills/ShowKit loop) — not a collision, just related work on different timelines.
+ */
 export default function DecisionStory({ id, languageAnchor, kicker, title, intro, steps, visual }: Props) {
   const [active, setActive] = useState(0);
   const trackRef = useRef<HTMLDivElement>(null);

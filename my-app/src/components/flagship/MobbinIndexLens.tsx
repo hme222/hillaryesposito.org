@@ -6,6 +6,10 @@ const CAPTURES = [
   { name: "Discover", src: "/assets/mobbin/discover.jpg", tag: "Entry · account access" },
 ];
 
+/**
+ * @status: stable
+ * @purpose: Renders a toggleable "indexed" view demonstrating how Mobbin source-app captures are named by task rather than screenshot number; used on the Mobbin case study page.
+ */
 export default function MobbinIndexLens() {
   const [indexed, setIndexed] = useState(false);
 

@@ -86,6 +86,10 @@ function column(index: number, count: number) {
   return { x: PAD_L + index * colW + 5, w: colW - 10 };
 }
 
+/**
+ * @status: stable
+ * @purpose: Renders the MSK filing path as a toggleable before/after service-blueprint diagram (actor lanes and handoffs), used on the MSK case study page; embeds MSKWorkflowMap internally. Pick this for actor-lane handoffs specifically — for a simpler step-count flow diagram use MSKWorkflowMap directly, for a static mechanism diagram use MSKMechanism.
+ */
 export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint }: { copy?: MskCopy["blueprint"] }) {
   const [showAfter, setShowAfter] = useState(false);
   const nodes = showAfter ? AFTER : BEFORE;

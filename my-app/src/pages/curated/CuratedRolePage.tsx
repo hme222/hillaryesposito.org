@@ -7,6 +7,7 @@ import CaseStudyChapters, { type CaseStudyChapter } from "../../components/flags
 import usePageTitle from "../../hooks/usePageTitle";
 import { useLanguage } from "../../app/LanguageContext";
 import { curatedPages, type CuratedPage } from "../../data/curatedPages";
+import { wireRevealObservers } from "../../hooks/useFlagshipReveal";
 import NotFoundPage from "../NotFoundPage";
 import "../../styles/riso.css";
 import "../../styles/riso-page.css";
@@ -168,24 +169,15 @@ export default function CuratedRolePage() {
     ];
   }, [isHealthcareLane, page?.proofFirst]);
 
+  // Shared with useFlagshipReveal/RisoGrove so the reveal + proximity-armed
+  // failsafe logic lives in one place — see hooks/useFlagshipReveal.ts.
+  // Kept on the `[slug]` dependency (unlike the shared hook's `[rootRef]`)
+  // because this component is reused across curated pages: the content
+  // under `.riso-page` changes on every slug swap and needs re-observing.
   useEffect(() => {
-    if (typeof IntersectionObserver === "undefined") return;
-    // Opt in only once the observer is definitely running; the early return
-    // above now leaves content visible instead of hidden forever.
-    document.querySelector<HTMLElement>(".riso-page")?.classList.add("js-reveal");
-    const els = Array.from(document.querySelectorAll<HTMLElement>(".riso-page .rp-reveal"));
-    const io = new IntersectionObserver(
-      (entries) =>
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("is-in");
-            io.unobserve(e.target);
-          }
-        }),
-      { threshold: 0.1, rootMargin: "0px 0px -8% 0px" }
-    );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
+    const root = document.querySelector<HTMLElement>(".riso-page");
+    if (!root) return;
+    return wireRevealObservers(root);
   }, [slug]);
 
   if (!page) return <NotFoundPage />;

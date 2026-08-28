@@ -422,7 +422,7 @@
 .dark-mode .riso-page { --grid-ink: color-mix(in srgb, var(--green) 16%, transparent); }
 
 /* ---------- section scaffolding ---------- */
-.rp-section { position: relative; padding: clamp(2.6rem, 6vw, 4.5rem) 0; }
+.rp-section { position: relative; padding: clamp(2.6rem, 6vw, 4rem) 0; }
 .rp-section--alt { background: var(--paper-2); border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); }
 .rp-section--alt .rp-kicker,
 .rp-decisionStory__head .rp-kicker { color: var(--ink); }
@@ -437,13 +437,24 @@
   overflow: hidden;
   background: #d9d8cd;
   opacity: 1;
-  transition: opacity 440ms cubic-bezier(.22, 1, .36, 1);
+  transition: opacity 260ms cubic-bezier(.22, 1, .36, 1);
 }
 .rp-openingFilm.is-exiting {
   opacity: 0;
   pointer-events: none;
-  transition-delay: 80ms;
+  transition-delay: 40ms;
 }
+/* 440ms/80ms (owner-reported 2026-08-27: "still feels like the entire page
+   slams in") cleared at t=520ms — 100ms+ after the trickle-down choreo below
+   had already finished animating underneath it (navbar settles ~422ms, hero
+   content ~552ms). The stagger was running hidden behind this still-opaque
+   overlay and was over, or nearly over, before it was ever visible — the
+   curtain lifted on an already-fully-formed page. Shortened so the overlay
+   clears at t=300ms, while the choreo's own timings are untouched: now
+   navbar (122–422ms) and hero content (212–552ms) are still visibly rising
+   into place as/after the curtain lifts, and the artifact (302–662ms)
+   arrives entirely in view. Net result: the curtain itself moves faster,
+   and the trickle it was masking is now the part you actually watch. */
 .rp-openingFilm__poster,
 .rp-openingFilm__video,
 .rp-openingFilm__wash {
@@ -518,6 +529,316 @@
   .rp-openingFilm__skip { transition: none; }
 }
 
+/* ---------- film-exit paper-delivery arrival (round 4, replaces round 3) ---------- */
+/* Owner, after watching a generated reference video of round 3's paper-cut
+   clip-path sweep: "this has nothing to do with what i need... I want a
+   paper feel like the MTA coming in, but for all the parts of the main
+   page." Round 3's translating torn-edge mask (`.riso-home::before`,
+   `rp-cut-failsafe`) is REMOVED, not extended or tuned — its full former
+   implementation and timing trace are preserved in
+   design-docs/design-system/2026-08-26-density-disclosure-strategy.md if
+   this ever needs to be revisited.
+
+   What's borrowed from the Weekend Dispatch train (`.rp-dispatchTrain*`,
+   ~line 1927 below) is deliberately narrow, per the owner's own
+   clarification:
+     - Its ARRIVAL MOTION — a physical object gliding in and decelerating
+       into a settled stop. `--rp-arrival-ease` below is
+       `cubic-bezier(.22, 1, .36, 1)`, lifted verbatim from
+       `.rp-dispatchTrain--returning .rp-dispatchTrain__vehicle`'s own
+       transition — i.e. this is literally the train's own return-arrival
+       curve, already shipped and tuned in this codebase, not a new or
+       train-flavored one-off.
+     - Its PAPER-CRAFT MATERIAL quality — a two-layer (tight + ambient)
+       box-shadow that reads as physical weight while a group is still in
+       transit, resolving to the element's normal resting shadow (or no
+       shadow, for the plain-text/no-chrome groups below) once arrived.
+   What is NOT borrowed: the train's literal subway iconography (rails,
+   window bands, doors, placard). That vocabulary is specific to the
+   Weekend Dispatch section's own "MTA train delivering an issue" concept;
+   reusing it here would be a second, confusing metaphor in the hero.
+
+   Three groups, three independent deliveries, each arriving at its own
+   spot rather than all sliding the same direction:
+     - Navbar          slides down from above   (translateY -100% -> 0)
+     - Hero content    slides in from the left  (translateX  -18% -> 0)
+     - Artifact card   slides in from the right (translateX  +18% -> 0)
+   Nav arrives first — it reads as the page's own frame settling into
+   place — with hero text and the artifact following close enough behind
+   that they land together as one delivery event with two packages, not
+   two unrelated animations. Phases 1 (video) and 2 (video -> background
+   crossfade, the .rp-openingFilm/.is-exiting rules above) are UNCHANGED —
+   still the fast ~300ms real cut from the prior round; this block only
+   replaces what happens after that cut (phase 3).
+
+   Timing (measured from t=0 = onExitStart, the same trigger point every
+   prior round has used — the instant HomepageOpeningFilm's finish() sets
+   exiting=true):
+     Navbar          delay 340ms   duration 620ms   settles  960ms
+     Hero content    delay 560ms   duration 680ms   settles 1240ms
+     Artifact card   delay 680ms   duration 720ms   settles 1400ms
+   340ms matches phase 2's own ~300-340ms clear point (EXIT_MS in
+   HomepageOpeningFilm.tsx / the overlay fade-out above), so nothing here
+   starts moving before the crossfade has actually finished — the same
+   race-the-still-opaque-overlay bug already fixed twice in this feature.
+   Each group starts 220ms/120ms after the PREVIOUS one STARTED (not
+   finished), so the sequence overlaps rather than running as three fully
+   sequential animations, while nav still lands noticeably first. Total
+   settle at 1400ms sits between round 2's snappy 630ms (explicitly
+   rejected: "still doesn't trickle down like i want") and round 3's
+   1640ms mask sweep — appropriate, since a mask sweeping the full
+   viewport needs travel time a direct card-slide doesn't. The individual
+   620-720ms per-group durations already sit at this project's own
+   documented ceiling for "complex choreography" (400-700ms); stretching
+   any single one further to manufacture a slower total would trade away
+   duration discipline for no real gain in how "unhurried" it reads.
+
+   Default: fully visible, no hidden state, no shadow. Everything below
+   only switches on under .rp-filmChoreo, which useFilmExitChoreo.ts adds
+   to <html> for the settle window between the opening film's exit and
+   the page finishing its arrival — same fail-visible contract as the
+   scroll-reveal system below (no JS, a bundle that fails to load, or a
+   hook that never fires all mean .rp-filmChoreo never lands, so nav/hero/
+   artifact are simply never hidden to begin with) and the same
+   gate-class + transition + animation-delay-backstop vocabulary, reused
+   rather than reinvented. Cold direct-entry loads never call
+   useFilmExitChoreo at all (the film only opens on the explicit "watch
+   the opener" click), so this never touches first paint. */
+
+/* box-shadow (added on the moving-state rules below, per group) is not
+   GPU-compositable like opacity/transform — it forces a paint (not a
+   layout reflow) confined to this one small element's box, once per
+   settle. Accepted deliberately for the "paper card" tell; this is the
+   same trade-off this file already makes for hover-lift shadows
+   elsewhere (see the .rp-device/.rp-strip__frame/.rp-ba__frame hover
+   rules and .home-heroArtifact__frame:hover below), not a new pattern.
+   NOTE: a comment was first tried INSIDE the transition value list below
+   (between the transform and box-shadow lines) — live inspection caught
+   that this silently breaks the whole shorthand (the browser computed
+   transition-property/-duration/-timing-function as empty strings, so
+   hero/artifact never entered their hidden state at all, while nav —
+   whose comment-free declaration was unaffected — worked correctly).
+   Moved the explanation up here instead; the property list below is now
+   a plain, comment-free comma list.
+
+   A SECOND real bug, also caught by live inspection, not assumed: every
+   selector below is prefixed `html.rp-filmChoreo` rather than the bare
+   `.rp-filmChoreo` round 3 used. `:root .navbar` (portfolio-cohesion.css)
+   sets the navbar's own `box-shadow: none` and `transition: background-
+   color .2s ease, border-color .2s ease` at EQUAL specificity (0,2,0) to
+   a bare `.rp-filmChoreo .navbar` — and, loaded later in the bundle, it
+   won that tie, silently cancelling this feature's own `transition` and
+   `box-shadow` declarations for the navbar entirely. Confirmed live: with
+   the bare selector, computed `transition-property` on `.navbar` came
+   back as `background-color, border-color` (not `opacity, transform,
+   box-shadow`), so its slide-down would have SNAPPED instantly with no
+   easing and no shadow, instead of gliding — opacity and transform still
+   reached the right end values (nothing else sets those), but with zero
+   animation, which defeats the entire "paper card arriving" point for
+   this one group. Adding the `html` type selector raises specificity to
+   (0,2,1) — same id/class tiers, one more type selector — which beats
+   (0,2,0) regardless of source order, without adding another class or an
+   `!important`. Verified live after the fix: `.navbar`'s computed
+   `transition-property` correctly reads `opacity, transform, box-shadow`
+   and its `box-shadow` picks up this rule's declared value again. */
+html.rp-filmChoreo .navbar,
+html.rp-filmChoreo .rp-hero__content,
+html.rp-filmChoreo .home-heroProofStack {
+  --rp-arrival-ease: cubic-bezier(.22, 1, .36, 1);
+  opacity: 0;
+  /* transition: none is deliberate and load-bearing, not a placeholder —
+     read this before "restoring" a transition here (owner-reported bug,
+     2026-08-27, found via getAnimations() logging in her real browser).
+     The transition/delay for the ARRIVAL lives on the .rp-filmChoreo--go
+     rule below, not here, because putting it on THIS rule made the very
+     first hide invisible: the double-rAF in useFilmExitChoreo.ts adds the
+     go class ~16-50ms after this one, which is far sooner than any
+     --rp-choreo-delay (340-680ms). With a transition-delay on this rule,
+     the browser holds the OLD value (opacity 1) for the whole delay
+     before ever animating toward 0 — so the go class's opacity:1 target
+     landed while the delayed hide hadn't started yet, retargeting 1→1
+     with nothing to animate. The element never actually left opacity 1,
+     so there was nothing to reveal — confirmed live via getAnimations():
+     every transition read `currentTime:0, startTime:null` (still in its
+     pre-play delay) at the exact instant computed opacity read back 1.
+     Fix: this rule snaps hidden instantly (no transition to wait for,
+     nothing visible to the user yet anyway — it's still behind the film
+     overlay at this point), and the go rule below owns the one real
+     transition, so delay/duration only ever gate the reveal, never the
+     hide. */
+  transition: none;
+  /* Backstop: if the "go" class is somehow never applied (a future bug),
+     this snaps the group to its fully-arrived state well after it would
+     have settled anyway, rather than leaving it stuck hidden. */
+  animation: rp-arrival-failsafe 1ms linear 1600ms forwards;
+}
+
+/* Navbar: slides down from fully off-screen above into its normal sticky
+   masthead position. Its true resting state has no box-shadow at all —
+   App.css's `.navbar` is a hairline border-bottom + backdrop blur only
+   (confirmed by inspection, no box-shadow declared on it anywhere) — so
+   the shadow below exists purely for the in-transit "paper card" tell and
+   resolves to `none` once arrived, matching what the navbar actually
+   looks like at rest. rotate(-1deg) is round 5's scrapbook tilt — see the
+   "scrapbook texture pass" comment block below for the register it's
+   drawn from. `transform: none` on the --go rule further down already
+   resolves the rotation to 0 along with the translate, so nothing else
+   needs to change for the group to land dead straight. */
+html.rp-filmChoreo .navbar {
+  --rp-choreo-delay: 340ms;
+  --rp-choreo-dur: 620ms;
+  transform: translateY(-100%) rotate(-1deg);
+  box-shadow: 0 2px 4px rgba(0,0,0,.10), 0 18px 34px -20px rgba(0,0,0,.28);
+}
+
+/* Hero header/text column: slides in from the left. Travel distance is
+   -18% of the ELEMENT'S OWN width (not a fixed px), so it scales with
+   whatever this column actually measures at a given breakpoint instead of
+   reading as barely-there on a wide desktop column or overshooting a
+   narrow mobile one. `.rp-hero__content` has no resting box-shadow either
+   (it's a plain text column, no card chrome) — same shadow-only-while-
+   moving tell as the navbar above. rotate(-1.6deg) is round 5's tilt —
+   same direction as the navbar's but a different amount, so the two don't
+   read as one uniform effect. */
+html.rp-filmChoreo .rp-hero__content {
+  --rp-choreo-delay: 560ms;
+  --rp-choreo-dur: 680ms;
+  transform: translateX(-18%) rotate(-1.6deg);
+  box-shadow: 0 1px 3px rgba(0,0,0,.08), 0 14px 28px -20px rgba(0,0,0,.22);
+}
+
+/* Artifact card (+ supporting headshot) wrapper: slides in from the
+   right, mirroring the hero content's geometry. `.home-heroProofStack`
+   itself carries no resting shadow of its own — that lives permanently on
+   `.home-heroArtifact__frame` inside it (portfolio-cohesion.css) and is
+   completely untouched by this rule, including its own hover
+   scale+shadow. This wrapper-level shadow is added only for the arrival
+   and removed once settled. rotate(1.3deg) is round 5's tilt — opposite
+   sign from the other two groups, so all three groups tilt differently,
+   like three separately-placed scrapbook pieces rather than one effect
+   applied three times. */
+html.rp-filmChoreo .home-heroProofStack {
+  --rp-choreo-delay: 680ms;
+  --rp-choreo-dur: 720ms;
+  transform: translateX(18%) rotate(1.3deg);
+  box-shadow: 0 3px 6px rgba(0,0,0,.12), 0 22px 44px -22px rgba(0,0,0,.34);
+}
+
+html.rp-filmChoreo.rp-filmChoreo--go .navbar,
+html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content,
+html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack {
+  /* The real transition lives here, not on the base hidden-state rule
+     above — see that rule's comment for why. This is a fresh transition
+     starting the moment the go class actually lands, so --rp-choreo-delay
+     genuinely gates the reveal instead of racing a hide that never
+     finished. */
+  transition:
+    opacity var(--rp-choreo-dur, 620ms) var(--rp-arrival-ease),
+    transform var(--rp-choreo-dur, 620ms) var(--rp-arrival-ease),
+    box-shadow var(--rp-choreo-dur, 620ms) ease-out;
+  transition-delay: var(--rp-choreo-delay, 340ms);
+  opacity: 1;
+  transform: none;
+  box-shadow: none;
+  animation: none;
+}
+@keyframes rp-arrival-failsafe { to { opacity: 1; transform: none; box-shadow: none; } }
+
+/* ---------- scrapbook texture pass (round 5) ---------- */
+/* Owner, after seeing round 4's slide-and-settle working: "ok i see the
+   movement but i want the scrap book feel like the video has." She's
+   referencing an earlier-session Higgsfield reference video (a torn-paper
+   cut effect she separately rejected outright as a MECHANISM in round 3 —
+   that direction stays dead; nothing here reintroduces a cut/mask/reveal-
+   through-a-hole idea). What carries over is the reference's MATERIAL
+   QUALITY only: visible paper grain and a tactile "physically placed"
+   imperfection, not a clean vector slide. The tilt each group already
+   picked up above (rotate(-1deg)/(-1.6deg)/(1.3deg)) is half of that;
+   this block is the other half — a brief grain pass during transit,
+   reusing .rp-grain's own SVG feTurbulence technique (~line 54 above)
+   verbatim rather than a new texture asset (Path B).
+
+   Rotation register: drawn from .rp-dispatch__photo's resting tilt
+   (rotate(-.45deg), ~line 1706) and this file's other scrapbook-style
+   tilts (.rp-cinema__artifact -1.2deg/.7deg/-.6deg, .rp-groveStates'
+   fanned state -2deg..2deg) — this file's own established "a few degrees,
+   not a cartoonish wobble" range. -1deg/-1.6deg/1.3deg sits inside that
+   range for all three groups, each a different sign/amount on purpose so
+   the three read as separately-placed pieces, not one uniform effect
+   applied three times. Chose the low end of that range deliberately per
+   the "if in doubt, use LESS" brief instruction, not the high end.
+
+   Both the grain and the tilt exist ONLY while a group is mid-transit
+   (.rp-filmChoreo present, .rp-filmChoreo--go not yet) and resolve to
+   that group's exact original resting appearance — rotate(0), grain
+   opacity 0 — by the time --go lands. Neither is a new addition to any
+   group's settled look; both layer ON TOP of round 4's translate/opacity/
+   shadow motion, replacing nothing in it. Same fail-visible + bug
+   discipline as round 4: transition/delay lives on the --go rule only
+   (never the base hidden rule — see that rule's own comment above for
+   the exact race this avoids), the property list is a plain comment-free
+   comma list (see round 4's "Bug 1"), and every selector is prefixed with
+   the `html` type selector for the same specificity reason as round 4's
+   "Bug 2". */
+html.rp-filmChoreo .navbar::after,
+html.rp-filmChoreo .rp-hero__content::after,
+html.rp-filmChoreo .home-heroProofStack::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+  /* .32 (round 5's first pass) was confirmed present and correctly sized
+     via computed-style inspection, but the owner still couldn't see it —
+     at that opacity, blended, visible for well under a second while the
+     element is also translating and rotating, it was real but
+     imperceptible. Raised to a level that actually reads as grain rather
+     than a rounding error (owner-reported 2026-08-27, second pass). */
+  opacity: .6;
+  transition: none;
+  animation: rp-arrival-grain-failsafe 1ms linear 1600ms forwards;
+}
+/* Dark-mode grain adjustment — same technique .rp-grain already uses for
+   its own dark-mode variant (screen blend, lower opacity, since multiply
+   darkens against a dark background instead of texturing it). `.dark-mode`
+   is set on <html> (app/App.tsx), the same element .rp-filmChoreo is on,
+   so this is a same-element compound selector, not a descendant one. */
+html.dark-mode.rp-filmChoreo .navbar::after,
+html.dark-mode.rp-filmChoreo .rp-hero__content::after,
+html.dark-mode.rp-filmChoreo .home-heroProofStack::after {
+  mix-blend-mode: screen;
+  opacity: .24;
+}
+html.rp-filmChoreo.rp-filmChoreo--go .navbar::after,
+html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after,
+html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
+  transition: opacity var(--rp-choreo-dur, 620ms) ease-out;
+  transition-delay: var(--rp-choreo-delay, 340ms);
+  opacity: 0;
+  animation: none;
+}
+@keyframes rp-arrival-grain-failsafe { to { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html.rp-filmChoreo .navbar,
+  html.rp-filmChoreo .rp-hero__content,
+  html.rp-filmChoreo .home-heroProofStack {
+    opacity: 1; transform: none; box-shadow: none; transition: none; animation: none;
+  }
+  /* Grain overlay: not just faded to 0, removed outright (content: none
+     drops the generated box entirely) — matches this feature's existing
+     minimal-footprint reduced-motion philosophy of "not present" rather
+     than "present but static," and there is no rotation left to neutralize
+     since the rule above already collapses transform to none. */
+  html.rp-filmChoreo .navbar::after,
+  html.rp-filmChoreo .rp-hero__content::after,
+  html.rp-filmChoreo .home-heroProofStack::after {
+    content: none;
+  }
+}
+
 /* Opening evidence is editorial metadata, not a row of metric cards. The
    labels carry role, decision, state, and claim boundaries when body copy is
    skipped, while the compact rules keep the hero's artifact dominant. */
@@ -559,7 +880,7 @@
 .rp-lede b { color: var(--ink); }
 
 /* ---------- the rebuild sequence (journal spine, not mapped route) ---------- */
-.rp-route { list-style: none; margin: 2rem 0 0; padding: 0; position: relative; }
+.rp-route { list-style: none; margin: var(--sp-sm) 0 0; padding: 0; position: relative; }
 .rp-route::before { content: ""; position: absolute; left: 19px; top: 18px; bottom: 18px; width: 3px;
   background: linear-gradient(180deg, color-mix(in srgb, var(--green) 22%, transparent), var(--green) 46%, color-mix(in srgb, var(--coral) 68%, var(--green)));
   clip-path: polygon(20% 0, 84% 7%, 55% 21%, 96% 40%, 44% 58%, 78% 79%, 28% 100%, 0 76%, 31% 54%, 5% 32%); }
@@ -582,7 +903,7 @@
   color: var(--ink); background: color-mix(in srgb, var(--green) 12%, transparent); padding: .3rem .6rem; border-radius: var(--r-plate); }
 
 /* ---------- before / after ---------- */
-.rp-ba { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1.4rem; align-items: center; margin-top: 2rem; }
+.rp-ba { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1.4rem; align-items: center; margin-top: var(--sp-sm); }
 .rp-ba__panel { display: flex; flex-direction: column; align-items: center; gap: .9rem; min-width: 0; }
 .rp-ba__label { font-family: var(--mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--coral); font-weight: 700; }
 .rp-ba__frame { width: 100%; max-width: 230px; aspect-ratio: 9/17.5; border-radius: var(--r-device); border: 1px solid var(--hair);
@@ -681,12 +1002,60 @@
   .rp-readtime::before { margin-top: .42em; }
 }
 
-/* ---------- evidence at rest ---------- */
-.js-reveal .rp-reveal,
-.js-reveal .rp-reveal.is-in { opacity: 1; transform: none; transition: none; }
+/* ---------- scroll reveal ---------- */
+/* Default: visible. The hidden pre-reveal state only switches on under
+   .js-reveal, which useFlagshipReveal (and Grove's/CuratedRolePage's own
+   inline effects, both routed through the same wireRevealObservers()) add
+   to their root ONLY after an IntersectionObserver is confirmed running. No
+   JS, a bundle that fails to load, a hook that never mounts on some future
+   page, or an observer that throws mid-setup all mean .js-reveal never
+   lands — so .rp-reveal has no matching rule at all and the content is
+   simply visible, full stop. A missing observer costs an animation, never
+   the page. (This is what fixed the 2026-07-28 About regression, commit
+   c6f1a46 — restoring it after it was accidentally flattened in b71849dd
+   on 2026-08-20.)
+
+   2026-08-27 fix: the animation-delay failsafe that used to live here was a
+   FIXED 2s timer counted from element mount (page load), not from scroll
+   proximity. Any reader who spent more than ~2s on an earlier section
+   before scrolling — completely normal — would find every below-the-fold
+   block already snapped to .is-in by the time they got there, so the
+   intended fade-in never played; the effect was a no-op at realistic
+   reading pace. The real per-element failsafe now lives in JS
+   (hooks/useFlagshipReveal.ts, wireRevealObservers): a second, much wider
+   IntersectionObserver band arms a short 2.2s countdown only once a block
+   is actually approaching the viewport, so the countdown can never fire
+   before a reader has had a realistic chance to scroll to it. That JS
+   failsafe covers "the real observer never fires for this specific
+   element" — its correct job — without being confused for "the reader
+   hasn't scrolled yet."
+
+   The animation-delay rule below is now a much longer LAST-RESORT backstop
+   for a narrower case JS proximity-timers can't cover on their own: a block
+   that never gets observe() called on it at all (e.g. a future page adds
+   .rp-reveal to something rendered after the initial querySelectorAll
+   pass). No current page does this — confirmed by audit — so this backstop
+   is inert for every block that exists today; real content resolves via
+   the JS observers above, well under this delay. 12s comfortably outlasts
+   realistic pre-scroll dwell + scroll time for any block that IS being
+   observed, so it should never visibly fire in practice — it exists purely
+   so a future mistake in this class still fails toward visible within
+   seconds of the mistake being detectable, not stuck at opacity:0 forever. */
+.js-reveal .rp-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1);
+  transition-delay: var(--rp-reveal-stagger, 0ms);
+  animation: rp-reveal-failsafe 1ms linear 12s forwards;
+}
+.js-reveal .rp-reveal.is-in { opacity: 1; transform: none; animation: none; }
+@keyframes rp-reveal-failsafe { to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal .rp-reveal { opacity: 1; transform: none; transition: none; animation: none; }
+}
 
 /* ---------- AI pushback deep-dive (Grove's judgment) ---------- */
-.rp-pushback { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1.3rem; align-items: center; margin-top: 2rem; }
+.rp-pushback { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1.3rem; align-items: center; margin-top: var(--sp-sm); }
 @media (max-width: 720px) { .rp-pushback { grid-template-columns: 1fr; } }
 .rp-notif { border-radius: var(--r-plate); padding: 1.1rem; border: 1px solid var(--hair); }
 .rp-notif--ai { background: color-mix(in srgb, var(--coral) 7%, var(--paper)); border-color: color-mix(in srgb, var(--coral) 26%, transparent); }
@@ -959,7 +1328,7 @@
 .rp-note__link { display: inline-flex; min-height: 44px; align-items: center; }
 /* Sub-heading inside a long section, so dense stretches read as bounded stops
    rather than one undifferentiated scroll. */
-.rp-subhead { font-size: 1.1rem; font-weight: 800; margin: 2.8rem 0 0; letter-spacing: -.01em; }
+.rp-subhead { font-size: 1.1rem; font-weight: 800; margin: clamp(1.75rem, 4.25vw, 3.25rem) 0 0; letter-spacing: -.01em; }
 .rp-list { margin: 1.4rem 0 0; padding-left: 1.1rem; display: grid; gap: .6rem; }
 .rp-list li { color: var(--ink-2); }
 
@@ -3086,7 +3455,7 @@
 .rp-outcomeStage .rp-stat__tag { color: rgba(244,241,230,.66); }
 .rp-outcomeStage .rp-stat__n { color: #d8e9c7; }
 .rp-outcomeStage .rp-stat__l { color: rgba(244,241,230,.82); }
-.rp-routeRecap { display: flex; align-items: center; flex-wrap: wrap; gap: .55rem .75rem; margin-top: 2rem;
+.rp-routeRecap { display: flex; align-items: center; flex-wrap: wrap; gap: .55rem .75rem; margin-top: var(--sp-sm);
   padding-top: 1.1rem; border-top: 1px solid rgba(244,241,230,.22); font-family: var(--mono);
   font-size: .7rem; letter-spacing: .03em; color: rgba(244,241,230,.76); }
 /* The one place the portfolio connects AI-uncertainty design to clinical
@@ -3101,7 +3470,7 @@
 
 .rp-routeRecap i { color: #ff8171; font-style: normal; }
 .rp-routeRecap strong { color: #f4f1e6; }
-.rp-routeVerdict { max-width: 68ch; margin: 2rem 0 0; padding: 1.2rem 0 0 1rem;
+.rp-routeVerdict { max-width: 68ch; margin: var(--sp-sm) 0 0; padding: 1.2rem 0 0 1rem;
   border-top: 1px solid rgba(244,241,230,.22); border-left: 3px solid #a9d28f;
   color: rgba(244,241,230,.8); font-size: .96rem; line-height: 1.6; }
 .rp-routeVerdict b { display: block; margin-bottom: .25rem; color: #f4f1e6; font-size: 1.12rem; }
@@ -3168,7 +3537,7 @@
   .rp-rank__track { grid-area: track; } .rp-rank__tier { grid-area: tier; text-align: right; }
 }
 
-.rp-quoteCard { margin: 2.4rem 0 0; padding: 1.4rem 1.5rem; border-left: 3px solid var(--coral); background: var(--paper-2); }
+.rp-quoteCard { margin: var(--sp-sm) 0 0; padding: 1.4rem 1.5rem; border-left: 3px solid var(--coral); background: var(--paper-2); }
 .rp-quoteCard blockquote { margin: 0; font-size: clamp(1.15rem, 2.2vw, 1.5rem); line-height: 1.35; letter-spacing: -.015em; font-weight: 700; }
 .rp-quoteCard figcaption { margin-top: .8rem; font-size: .88rem; line-height: 1.6; color: var(--ink-2); }
 

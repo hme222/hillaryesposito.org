@@ -34,6 +34,10 @@ const projectArt = (title: string) => {
   return { mapSrc: "/riso/elevation-04.jpg", edition: "olive" as const };
 };
 
+/**
+ * @status: stable
+ * @purpose: Renders a full Spanish-language case-study page (chapters, sections, stats, riso art) from a SpanishCaseStudyData object, used by the Grove/MSK/Mobbin Spanish case-study routes.
+ */
 export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
   const navigate = useNavigate();
   const { setLang } = useLanguage();

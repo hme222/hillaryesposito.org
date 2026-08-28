@@ -23,6 +23,10 @@ export type Shot = {
 
 /* ─────────────────────────── BeforeAfter ─────────────────────────── */
 
+/**
+ * @status: unused — verify before removing
+ * @purpose: Renders a before/after image toggle with tab controls, crossfading between two required shots; not imported anywhere in src/ currently. Part of the unused ShowKit evidence kit — pick this for comparing exactly two images, not for pointing at regions of one (AnnotatedShot) or listing multiple states (StateMatrix). Note: MSKMechanism/LogisticsMechanism independently reimplement a before/after diagram pattern as static SVG rather than using this.
+ */
 export function BeforeAfter({
   before,
   after,
@@ -68,6 +72,7 @@ export function BeforeAfter({
 
 /* ─────────────────────────── AnnotatedShot ────────────────────────── */
 
+/** @purpose Position and text for one hover/focus hotspot annotation on an AnnotatedShot image. */
 export type Hotspot = {
   /** Position as a % of the image box. */
   x: number;
@@ -76,6 +81,10 @@ export type Hotspot = {
   detail: string;
 };
 
+/**
+ * @status: unused — verify before removing
+ * @purpose: Renders an image with numbered hover/focus hotspot pins plus an always-visible ordered-list fallback of the same annotations; not imported anywhere in src/ currently. Part of the unused ShowKit evidence kit alongside BeforeAfter and StateMatrix — pick this specifically for pointing at regions of one image, not for comparing two images (BeforeAfter) or listing states (StateMatrix).
+ */
 export function AnnotatedShot({
   shot,
   hotspots,
@@ -131,6 +140,10 @@ export function AnnotatedShot({
 
 /* ─────────────────────────── DecisionCard ─────────────────────────── */
 
+/**
+ * @status: unused — verify before removing
+ * @purpose: Renders an AI-suggested-vs-chose reasoning card paired with the shipped screen it produced; not imported anywhere in src/ currently. Deliberately deferred, part of the design-skills/ShowKit loop rather than a case-study narrative — not competing with DecisionStory or GroveDecisionStory, just a different track. Trigger: revisit when that track resumes.
+ */
 export function DecisionCard({
   ai,
   chose,
@@ -172,6 +185,10 @@ export type StateRow = {
   note: string;
 };
 
+/**
+ * @status: unused — verify before removing
+ * @purpose: Renders a list of UI states, each paired with its screenshot and a note, so no state is described without its screen; not imported anywhere in src/ currently. Part of the unused ShowKit evidence kit — pick this for enumerating several states, not for a single region callout (AnnotatedShot) or a two-image comparison (BeforeAfter).
+ */
 export function StateMatrix({ rows }: { rows: StateRow[] }) {
   return (
     <ul className="ck-statematrix">

@@ -18,6 +18,10 @@ const N = COLS * ROWS;
 const smoothstep = (x: number) => x * x * (3 - 2 * x);
 const clamp01 = (x: number) => (x < 0 ? 0 : x > 1 ? 1 : x);
 
+/**
+ * @status: stable
+ * @purpose: Scroll-driven Three.js 3D node graph that reorganizes from a tangled cluster into an ordered blueprint as its section scrolls into view, used on the MSK case study page. Pick this only when a scroll-triggered 3D moment is the point — it's the heaviest component in this family; for a static or simpler alternative use MSKMechanism or MSKServiceBlueprint.
+ */
 export default function MSKSystemMap() {
   const mountRef = useRef<HTMLDivElement | null>(null);
 

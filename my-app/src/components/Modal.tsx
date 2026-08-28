@@ -20,6 +20,10 @@ type ModalProps = {
  * We add: backdrop-click to close, and body scroll-lock while open. This replaces
  * focus-trap-react plus hand-rolled Escape / scroll-lock / focus-restore effects.
  */
+/**
+ * @status: stable
+ * @purpose: Reusable native `<dialog>`-based modal wrapper (focus trap, Escape-to-close, backdrop-click-to-close, body scroll-lock) used by the recruiter panel (components/RecruiterPill.tsx).
+ */
 export default function Modal({
   isOpen,
   onClose,

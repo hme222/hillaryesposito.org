@@ -27,6 +27,10 @@ const STEPS = [
   },
 ];
 
+/**
+ * @status: unused — verify before removing
+ * @purpose: Scroll-tracked, four-step "decision story" (lead with plants, one task, show the guess, let a person overrule it) for Grove; not imported anywhere in src/ currently. Deliberately deferred, not a naming collision — this is Grove's own decision-narrative, part of the Grove case-study loop, separate from the in-use flagship DecisionStory. Trigger: revisit when Grove case-study work resumes.
+ */
 export default function GroveDecisionStory() {
   const [active, setActive] = useState(0);
   const refs = useRef<Array<HTMLElement | null>>([]);

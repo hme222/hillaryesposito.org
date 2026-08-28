@@ -12,6 +12,10 @@ import { FileTextIcon, MailIcon, BriefcaseIcon, UserIcon, XIcon } from "./LineIc
  * Listens for the global `open-recruiter-panel` event so other components
  * (e.g. the hero banner) can open the same panel.
  */
+/**
+ * @status: stable
+ * @purpose: Persistent floating "Recruiter view" pill (mounted in app/App.tsx) that opens a modal panel summarizing selected case studies and contact links.
+ */
 export default function RecruiterPill() {
   const navigate = useNavigate();
   const t = useT();

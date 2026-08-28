@@ -8,6 +8,10 @@ type NavbarProps = {
   setDarkMode: Dispatch<SetStateAction<boolean>>;
 };
 
+/**
+ * @status: stable
+ * @purpose: Site-wide primary navigation bar rendered in app/App.tsx; handles same-page section scrolling, the mobile off-canvas menu, dark-mode toggle, and language switching.
+ */
 export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   const { lang, setLang } = useLanguage();
   const t = useT();

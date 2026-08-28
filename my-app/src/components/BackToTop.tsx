@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useT } from "../app/LanguageContext";
 
+/**
+ * @status: stable
+ * @purpose: Floating "scroll to top" button that fades in after 600px of scroll and smooth-scrolls the page to the top on click (mounted in app/App.tsx).
+ */
 export default function BackToTop() {
   const t = useT();
   const [visible, setVisible] = useState(false);

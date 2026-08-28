@@ -31,6 +31,10 @@ export type CartoFieldProps = {
   photoSrc?: string;
 };
 
+/**
+ * @status: stable
+ * @purpose: Renders a decorative, aria-hidden painted cartographic collage from a real map/elevation image asset with riso duotone ink treatment; used on the home page and the Riso case-study pages.
+ */
 export default function CartoField({
   mapSrc,
   edition = "pine",

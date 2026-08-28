@@ -103,6 +103,190 @@
    fragments rather than a queue. */
 .fp-dashboardFrame--story { width: 100%; }
 
+/* ---------- MSK: one action carrying four system conditions ---------- */
+/* This is a chapter threshold, not product evidence and not another interface.
+   Four misregistered impressions settle around the exact existing action
+   style, then one coral line hands the reader to the real dashboard. */
+.fp-buttonThreshold {
+  overflow: hidden;
+  padding: clamp(.75rem, 1.5vw, 1.25rem) 0 clamp(.5rem, 1vw, .75rem);
+  background: var(--paper-2);
+}
+
+.fp-buttonThreshold__scene {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: clamp(150px, 14vw, 180px);
+  overflow: hidden;
+  border-block: 1px solid color-mix(in srgb, var(--green) 28%, var(--hair));
+  background: color-mix(in srgb, var(--paper-2) 72%, var(--paper));
+}
+
+.fp-buttonThreshold__scene::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: color-mix(in srgb, var(--green) 30%, var(--hair));
+}
+
+.fp-buttonThreshold__folio {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: max(var(--sp-gutter), calc((100% - 1080px) / 2 + var(--sp-gutter)));
+  max-width: 44ch;
+  transform: translateY(-50%);
+  font: 700 clamp(.58rem, .85vw, .7rem)/1.25 var(--mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.fp-buttonThreshold__registration {
+  position: absolute;
+  z-index: 1;
+  left: auto;
+  right: max(var(--sp-gutter), calc((100% - 1080px) / 2 + var(--sp-gutter)));
+  top: 50%;
+  width: clamp(10rem, 16vw, 12rem);
+  height: clamp(4.5rem, 8vw, 6.1rem);
+  transform: translateY(-50%);
+}
+
+.fp-buttonThreshold__impression {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: clamp(8.5rem, 14vw, 11rem);
+  height: clamp(2.5rem, 4vw, 3.2rem);
+  border-radius: 999px;
+  transform-origin: center;
+  mix-blend-mode: multiply;
+}
+
+.fp-buttonThreshold__impression--01 {
+  background: color-mix(in srgb, var(--green) 24%, transparent);
+  transform: translate(-96%, -112%) rotate(-3deg);
+}
+.fp-buttonThreshold__impression--02 {
+  background: color-mix(in srgb, var(--coral) 18%, transparent);
+  transform: translate(-12%, -104%) rotate(2deg);
+}
+.fp-buttonThreshold__impression--03 {
+  border: 1px solid color-mix(in srgb, var(--ink) 22%, transparent);
+  transform: translate(-92%, 8%) rotate(2deg);
+}
+.fp-buttonThreshold__impression--04 {
+  background: color-mix(in srgb, var(--green) 14%, transparent);
+  transform: translate(-8%, 12%) rotate(-2deg);
+}
+
+.fp-buttonThreshold__socket {
+  position: absolute;
+  z-index: 2;
+  left: auto;
+  right: max(var(--sp-gutter), calc((100% - 1080px) / 2 + var(--sp-gutter)));
+  top: 50%;
+  display: grid;
+  justify-items: center;
+  min-width: clamp(10rem, 16vw, 12rem);
+  padding: .7rem;
+  transform: translateY(-50%);
+}
+
+.fp-buttonThreshold__socket .msk-dashboard-action {
+  min-height: 36px;
+  align-items: center;
+  justify-content: center;
+  padding: .55rem .9rem;
+  font-size: clamp(.78rem, 1.15vw, .92rem);
+  cursor: default;
+}
+
+.fp-buttonThreshold__handoff {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  right: max(var(--sp-gutter), calc((100% - 1080px) / 2 + var(--sp-gutter)));
+  top: 50%;
+  width: auto;
+  height: 2px;
+  background: linear-gradient(90deg, var(--coral), color-mix(in srgb, var(--coral) 18%, transparent));
+  opacity: 0;
+  transform: scaleX(.1);
+  transform-origin: left;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fp-buttonThreshold.is-visible .fp-buttonThreshold__impression--01 { animation: fp-buttonThreshold-settle-01 860ms cubic-bezier(.22, 1, .36, 1) forwards; }
+  .fp-buttonThreshold.is-visible .fp-buttonThreshold__impression--02 { animation: fp-buttonThreshold-settle-02 920ms 80ms cubic-bezier(.22, 1, .36, 1) forwards; }
+  .fp-buttonThreshold.is-visible .fp-buttonThreshold__impression--03 { animation: fp-buttonThreshold-settle-03 900ms 160ms cubic-bezier(.22, 1, .36, 1) forwards; }
+  .fp-buttonThreshold.is-visible .fp-buttonThreshold__impression--04 { animation: fp-buttonThreshold-settle-04 960ms 240ms cubic-bezier(.22, 1, .36, 1) forwards; }
+  .fp-buttonThreshold.is-visible .fp-buttonThreshold__handoff {
+    animation: fp-buttonThreshold-handoff 720ms 1.05s cubic-bezier(.22, 1, .36, 1) forwards;
+  }
+}
+
+@keyframes fp-buttonThreshold-settle-01 { to { transform: translate(-68%, -58%) rotate(-.65deg); } }
+@keyframes fp-buttonThreshold-settle-02 { to { transform: translate(-46%, -60%) rotate(.45deg); } }
+@keyframes fp-buttonThreshold-settle-03 { to { transform: translate(-58%, -40%) rotate(.55deg); } }
+@keyframes fp-buttonThreshold-settle-04 { to { transform: translate(-36%, -38%) rotate(-.45deg); } }
+
+@keyframes fp-buttonThreshold-handoff {
+  to { opacity: .72; transform: scaleX(1); }
+}
+
+@media (max-width: 600px) {
+  .fp-buttonThreshold { padding-top: .75rem; }
+  .fp-buttonThreshold__scene { min-height: 130px; }
+  .fp-buttonThreshold__folio {
+    top: 1.1rem;
+    left: var(--sp-gutter);
+    max-width: calc(100% - (2 * var(--sp-gutter)));
+    transform: none;
+  }
+  .fp-buttonThreshold__registration {
+    left: calc(50% - .75rem);
+    right: auto;
+    top: 67%;
+    transform: translate(-50%, -50%);
+  }
+  .fp-buttonThreshold__socket {
+    left: 50%;
+    right: auto;
+    top: 67%;
+    min-width: 10rem;
+    transform: translate(-50%, -50%);
+  }
+  .fp-buttonThreshold__scene::before,
+  .fp-buttonThreshold__handoff { top: 67%; }
+  .fp-buttonThreshold__handoff { right: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fp-buttonThreshold__impression--01 { transform: translate(-68%, -58%) rotate(-.65deg); }
+  .fp-buttonThreshold__impression--02 { transform: translate(-46%, -60%) rotate(.45deg); }
+  .fp-buttonThreshold__impression--03 { transform: translate(-58%, -40%) rotate(.55deg); }
+  .fp-buttonThreshold__impression--04 { transform: translate(-36%, -38%) rotate(-.45deg); }
+  .fp-buttonThreshold__handoff { opacity: .72; transform: scaleX(1); }
+}
+
+.fp-buttonThreshold + [data-evidence="true"] > .rp-decisionStory {
+  padding-top: clamp(2rem, 4vw, 3rem);
+}
+
+@media (forced-colors: active) {
+  .fp-buttonThreshold__scene,
+  .fp-buttonThreshold__socket { background: Canvas; }
+  .fp-buttonThreshold__impression { background: transparent; border: 1px solid CanvasText; mix-blend-mode: normal; }
+  .fp-buttonThreshold__handoff { background: CanvasText; }
+}
+
 .fp-cinema { background: var(--fp-deep); }
 .fp-cinema .rp-cinema__wash { background:
   radial-gradient(circle at 16% 20%,color-mix(in srgb,var(--coral) 26%,transparent),transparent 25%),
@@ -392,7 +576,7 @@
 /* auto-fit rather than a fixed 3: MSK's reflections are a pair since
    "Transparency beats pretending" was promoted out of the row, and a hard
    3-column track left an empty cell. Three items still lay out as three. */
-.fp-systemCards, .fp-reflections { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 1rem; margin-top: 2rem; }
+.fp-systemCards, .fp-reflections { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 1rem; margin-top: var(--sp-sm); }
 
 /* A principle lifted out of the reflections row. Same plate vocabulary as
    rp-quoteCard, sized to lead rather than to annotate. */
@@ -410,7 +594,7 @@
 .fp-systemCards p, .fp-reflections p { margin-top: .55rem; color: rgba(244,241,230,.74); font-size: .88rem; }
 .fp-reflections article { border-color: var(--hair); background: var(--paper); }
 .fp-reflections p { color: var(--muted); }
-.fp-mapWrap { margin-top: 2.5rem; }
+.fp-mapWrap { margin-top: var(--sp-sm); }
 .fp-mapWrap > ol { display: grid; grid-template-columns: repeat(4,1fr); gap: .6rem; list-style: none; margin: .8rem 0 0; padding: 0; }
 .fp-mapWrap > ol li { padding: .55rem; border: 1px solid rgba(244,241,230,.2); border-radius: var(--r-plate); font: .62rem/1.3 var(--mono); text-align: center; }
 .fp-mapFallback { min-height: 260px; display: grid; place-items: center; border: 1px solid rgba(244,241,230,.2); }
@@ -423,7 +607,7 @@
    accents are the fixed dark-panel values rather than themed vars. */
 /* The one place the site says what service design actually is. Sits inside
    .rp-override, so the accents are the fixed dark-panel values. */
-.fp-ownership { max-width: 64ch; margin: 2.4rem 0 0; padding-left: 1rem;
+.fp-ownership { max-width: 64ch; margin: var(--sp-sm) 0 0; padding-left: 1rem;
   border-left: 3px solid #a9d28f; font-size: 1.02rem; line-height: 1.55;
   color: rgba(244,241,230,.86); }
 .fp-ownership b { display: block; margin-bottom: .35rem; font: .62rem/1.2 var(--mono);
