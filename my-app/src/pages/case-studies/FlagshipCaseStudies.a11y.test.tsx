@@ -109,24 +109,6 @@ describe("flagship case-study accessibility", () => {
     expect(results.violations).toEqual([]);
   });
 
-  it("keeps the MSK button teaser decorative and does not create a false control", async () => {
-    await act(async () => {
-      root.render(<FlagshipMSK />);
-    });
-
-    const threshold = container.querySelector('[data-testid="msk-button-threshold"]');
-    const scene = threshold?.querySelector(".fp-buttonThreshold__scene");
-    const action = threshold?.querySelector(".msk-dashboard-action--primary");
-
-    expect(threshold).not.toBeNull();
-    expect(threshold?.hasAttribute("data-evidence")).toBe(false);
-    expect(scene?.getAttribute("aria-hidden")).toBe("true");
-    expect(action?.tagName).toBe("B");
-    expect(action?.textContent).toBe("Send to EMR");
-    expect(threshold?.textContent).toContain("Readiness · permission · exception owner · return state");
-    expect(threshold?.querySelector("button")).toBeNull();
-  });
-
   it("keeps the active homepage shell targets and one work-first hero route intact", async () => {
     await act(async () => {
       root.render(<RisoHome />);
@@ -137,6 +119,31 @@ describe("flagship case-study accessibility", () => {
     });
     expect(container.querySelector('a[href="/case-study/msk"].rp-cta')).not.toBeNull();
     expect(container.querySelector(".rp-recruiter-link")).toBeNull();
+  });
+
+  // The product-led "Draft A" (rotating MSK/Grove/Army showcase) and
+  // "Draft B" (scroll-scrubbed photo/artifact handoff) hero experiments were
+  // both rejected on live owner review (2026-08-29 — "i don't like draft A
+  // or B, just put back my photo next to header"). This asserts the plain
+  // hero that replaced them, and guards against either experiment's control
+  // surface (the draft pill, the scroll-handoff data attributes) creeping
+  // back in without a fresh owner decision.
+  it("keeps the homepage hero plain — photo next to the header, no draft controls", async () => {
+    await act(async () => {
+      root.render(<RisoHome />);
+    });
+
+    const hero = container.querySelector<HTMLElement>(".riso-home .rp-hero");
+    expect(hero?.dataset.heroDraft).toBeUndefined();
+    expect(hero?.dataset.bScrollEnhanced).toBeUndefined();
+    expect(container.querySelector(".rp-heroDraftPill")).toBeNull();
+    expect(container.querySelector(".home-heroShowcase")).toBeNull();
+
+    const photo = container.querySelector<HTMLImageElement>(".rp-hero .rp-headshot img");
+    expect(photo).not.toBeNull();
+    expect(photo?.getAttribute("alt")).toBe("Hillary Esposito");
+    expect(container.querySelector(".rp-hero .home-heroArtifact")).toBeNull();
+    expect(container.querySelector(".rp-hero .msk-dashboard-mockup")).toBeNull();
   });
 
   it("keeps the weekend journal quiet until a keyboard or touch user opens it", async () => {
@@ -199,51 +206,22 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".rp-dispatchTrain")?.classList.contains("rp-dispatchTrain--returning")).toBe(true);
   });
 
-  // Direction C (design-state.md, 2026-08-27): the hero's row-preview artifact
-  // is genuinely expandable in place, using the same native aria-expanded /
-  // aria-controls button idiom as the Weekend Dispatch toggle above. The two
-  // hidden rows must be real DOM removal (rowIndices), not an opacity/
-  // visibility trick — this is the decoy-disclosure bug class
-  // accessibility-reviewer already fixed once on this same card.
-  it("keeps the hero queue preview genuinely collapsed, then genuinely expands it", async () => {
+  // Direction C (design-state.md, 2026-08-27) put an expandable MSK queue
+  // artifact in the homepage hero, replaced 2026-08-28/29 by the Draft A/B
+  // experiments above, then dropped entirely on owner rejection — the hero
+  // carries no dashboard artifact of any kind now (see the plain-hero test
+  // above). This file's own home-work-queue-table (the MSK card further
+  // down the homepage, in the work list) keeps its own coverage separately;
+  // this test now only guards that the retired hero-specific expand/collapse
+  // control doesn't reappear without a fresh owner decision.
+  it("does not put an expandable queue artifact back in the homepage hero", async () => {
     await act(async () => {
       root.render(<RisoHome />);
     });
 
-    const dataRow = () => container.querySelectorAll(".home-heroArtifact__frame .msk-dashboard-mockup__row:not(.msk-dashboard-mockup__row--head)");
-    const trigger = container.querySelector<HTMLButtonElement>(".home-heroArtifact__expandToggle");
-    const table = container.querySelector("#home-hero-queue-table");
-
-    expect(trigger).not.toBeNull();
-    expect(table).not.toBeNull();
-    expect(trigger?.getAttribute("aria-controls")).toBe("home-hero-queue-table");
-    expect(trigger?.getAttribute("aria-expanded")).toBe("false");
-
-    // Collapsed: exactly 3 rows, real DOM absence for the other 2 — not
-    // hidden via CSS. jsdom has no layout engine, so "not perceivable to AT"
-    // here means "not present in the tree at all," the strongest possible
-    // form of that guarantee.
-    expect(dataRow()).toHaveLength(3);
-    expect(container.querySelector(".msk-dashboard-mockup__toolbar")).toBeNull();
-    expect(container.querySelector(".msk-dashboard-mockup__rule")).toBeNull();
-    const collapsedMrns = Array.from(dataRow()).map((row) => row.getAttribute("data-status"));
-    expect(collapsedMrns).toEqual(["ready-to-file", "needs-review", "filed-to-chart"]);
-
-    await act(async () => {
-      trigger?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
-    });
-
-    expect(trigger?.getAttribute("aria-expanded")).toBe("true");
-    expect(dataRow()).toHaveLength(5);
-    expect(container.querySelector(".msk-dashboard-mockup__toolbar")).not.toBeNull();
-    expect(container.querySelector(".msk-dashboard-mockup__rule")).not.toBeNull();
-
-    await act(async () => {
-      trigger?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
-    });
-
-    expect(trigger?.getAttribute("aria-expanded")).toBe("false");
-    expect(dataRow()).toHaveLength(3);
+    expect(container.querySelector(".rp-hero .home-heroArtifact__expandToggle")).toBeNull();
+    expect(container.querySelector("#home-hero-queue-table")).toBeNull();
+    expect(container.querySelector("#home-hero-queue-table-b")).toBeNull();
   });
 
   // Every flagship carried a first-scroll "decision trace" evidence poster —
@@ -262,15 +240,6 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelectorAll(".evidence-media")).toHaveLength(0);
     expect(container.querySelector(".evidence-media-section")).toBeNull();
     expect(container.textContent).not.toMatch(/decision trace/i);
-  });
-
-  // The workflow map is MSK's first-scroll artifact now that the poster is gone.
-  it("MSK leads with the workflow map as its artifact", async () => {
-    await act(async () => {
-      root.render(<FlagshipMSK />);
-    });
-
-    expect(container.querySelector(".fp-workflowFig")).not.toBeNull();
   });
 
   it("keeps the MSK hero on the recreated queue without decorative concepts", async () => {

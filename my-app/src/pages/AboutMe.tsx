@@ -15,7 +15,7 @@ type AboutChapter = {
   id: string;
   label: string;
   heading: string;
-  image: string;
+  image?: string;
   paragraphs: string[];
   facts?: Array<{ value: string; label: string }>;
   callout: string;
@@ -28,7 +28,6 @@ const CHAPTERS: AboutChapter[] = [
     id: "now",
     label: "What I Do Now",
     heading: "Designing for the person who has to act on it.",
-    image: "/assets/about/now.jpg",
     paragraphs: [
       "My latest contract mapped and tagged 200+ screens across three finance apps so thousands of designers could find and reuse complete mobile flows.",
       "It sharpened how I compare patterns at scale, document to a strict taxonomy, and examine how products earn belief.",
@@ -57,9 +56,12 @@ const CHAPTERS: AboutChapter[] = [
     label: "Where My Foundation Was Built",
     heading: "Captain and Medical Logistics Officer, NJ Army National Guard.",
     image: "/assets/about/army.jpg",
+    // Numbers live in the facts ledger below, once — the prose used to
+    // restate every figure (5,000+, seven, 85%, 60%) a second time in the
+    // same breath. Cut here, not duplicated there.
     paragraphs: [
-      "In Iraq, I directed medical supply for 5,000+ soldiers across seven aid stations in three countries under a 48-hour cold-chain constraint.",
-      "Shared tracking cut resupply time 85% and spending 60%. In 2020, I reported New Jersey National Guard medical operations to the Pentagon during the COVID-19 response.",
+      "In Iraq, I directed medical supply across aid stations in three countries, working inside a strict 48-hour cold-chain constraint.",
+      "Shared tracking sharply cut both resupply time and spending. In 2020, I reported New Jersey National Guard medical operations to the Pentagon during the COVID-19 response.",
     ],
     facts: [
       { value: "5,000+", label: "soldiers served" },
@@ -78,7 +80,6 @@ const CHAPTERS_ES: AboutChapter[] = [
     id: "now",
     label: "Lo que hago ahora",
     heading: "Diseñar para la persona que tiene que actuar.",
-    image: "/assets/about/now.jpg",
     paragraphs: [
       "Mi contrato más reciente mapeó y etiquetó más de 200 pantallas de tres apps financieras para que miles de diseñadores pudieran reutilizar flujos móviles completos.",
       "Afinó cómo comparo patrones a escala, documento con una taxonomía estricta y evalúo cómo un producto gana credibilidad.",
@@ -108,8 +109,8 @@ const CHAPTERS_ES: AboutChapter[] = [
     heading: "Capitana y Oficial de Logística Médica, NJ Army National Guard.",
     image: "/assets/about/army.jpg",
     paragraphs: [
-      "En Irak, dirigí el suministro médico para más de 5,000 soldados en siete estaciones de ayuda y tres países, bajo una restricción de cadena de frío de 48 horas.",
-      "El seguimiento compartido redujo 85% el tiempo de reabastecimiento y 60% el gasto. En 2020, reporté al Pentágono las operaciones médicas de la Guardia Nacional de Nueva Jersey durante la respuesta a COVID-19.",
+      "En Irak, dirigí el suministro médico en estaciones de ayuda de tres países, bajo una estricta restricción de cadena de frío de 48 horas.",
+      "El seguimiento compartido redujo notablemente el tiempo de reabastecimiento y el gasto. En 2020, reporté al Pentágono las operaciones médicas de la Guardia Nacional de Nueva Jersey durante la respuesta a COVID-19.",
     ],
     facts: [
       { value: "5,000+", label: "soldados atendidos" },
@@ -180,7 +181,7 @@ export default function About() {
               {isSpanish ? "Diseño productos de salud donde cada transferencia importa." : "I design healthcare products where every handoff matters."}
             </h1>
             <p className="rp-sub">
-              {isSpanish ? "Aporto más de 13 años dentro de operaciones de atención oncológica y logística médica militar al diseño de productos de salud. Convierto esa experiencia en flujos clínicos más claros, herramientas internas y servicios integrales que ayudan a las personas a actuar correctamente cuando una falla tiene un costo." : "I bring 13+ years inside cancer-care operations and military medical logistics to healthcare product design. I turn that experience into clearer clinical workflows, internal tools, and end-to-end services that help people act correctly when failure has a cost."}
+              {isSpanish ? "Aporto más de 13 años en operaciones de atención oncológica y logística médica militar al diseño de productos de salud. Convierto esa experiencia en flujos clínicos más claros, herramientas internas y servicios integrales que ayudan a las personas a actuar correctamente cuando una falla tiene un costo." : "I bring 13+ years in cancer-care operations and military medical logistics to healthcare product design. I turn that experience into clearer clinical workflows, internal tools, and end-to-end services that help people act correctly when failure has a cost."}
             </p>
           </div>
         </div>
@@ -212,7 +213,7 @@ export default function About() {
           <h2 className="rp-title" id="about-story-title">{isSpanish ? "Cómo llegué aquí." : "How I got here."}</h2>
 
           {chapters.map((chapter, index) => (
-            <article className={`rp-split rp-chapter rp-reveal${index % 2 ? " rp-split--flip" : ""}`} key={chapter.id}>
+            <article className={`rp-split rp-chapter rp-reveal${index % 2 ? " rp-split--flip" : ""}${chapter.image ? "" : " rp-split--noMedia"}`} key={chapter.id}>
               <div className="rp-split__text">
                 <p className="rp-chapter__n">
                   {String(index + 1).padStart(2, "0")} / {String(chapters.length).padStart(2, "0")}

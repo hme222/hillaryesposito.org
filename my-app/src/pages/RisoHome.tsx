@@ -27,9 +27,14 @@ const WORK = [
     subKey: "home.proj.msk.subtitle",
     descKey: "home.riso.mskDesc",
     path: "/case-study/msk",
-    img: "/assets/msk/mskcc-map-thumb.jpg",
     imgAltKey: "home.riso.mskAlt",
-    visual: "image",
+    // Was a pin-drop map of MSK's regional locations — geography, not the
+    // product. Swapped for the same filing-queue artifact the hero and case
+    // study use, so the work list shows what was actually designed.
+    visual: "msk",
+    teaserPath: "/case-study/msk#msk-decisions",
+    teaserEn: "The best part: the button that wasn't simple →",
+    teaserEs: "Lo mejor: el botón que no era simple →",
   },
   {
     n: "02",
@@ -59,8 +64,11 @@ const WORK = [
   path: string;
   img?: string;
   imgAltKey: StringKey;
-  visual: "image" | "logistics";
+  visual: "image" | "logistics" | "msk";
   tagKey?: StringKey;
+  teaserPath?: string;
+  teaserEn?: string;
+  teaserEs?: string;
 }>;
 
 const STATS = [
@@ -71,12 +79,6 @@ const STATS = [
 
 const DISPATCH_TRAIN_HOLD_SECONDS = 3.8;
 
-// The hero artifact's preview state shows one representative row per status
-// (ready-to-send, needs-review, filed-to-chart) instead of all five. Direction
-// C (design-state.md, 2026-08-27) makes that preview genuinely expandable in
-// place instead of a fixed cut — these are the indices the preview keeps.
-const HERO_QUEUE_PREVIEW_ROW_INDICES = [0, 2, 4];
-
 export default function RisoHome() {
   usePageTitle();
   const t = useT();
@@ -84,7 +86,6 @@ export default function RisoHome() {
   const location = useLocation();
   const navigate = useNavigate();
   const [dispatchOpen, setDispatchOpen] = useState(false);
-  const [queueExpanded, setQueueExpanded] = useState(false);
   const [dispatchTrainDeparted, setDispatchTrainDeparted] = useState(false);
   const [openingFilmOpen, setOpeningFilmOpen] = useState(false);
   const openingFilmTriggerRef = useRef<HTMLButtonElement>(null);
@@ -190,16 +191,6 @@ export default function RisoHome() {
     });
   };
 
-  // Direction C (design-state.md, 2026-08-27): the hero artifact's 3-row
-  // preview becomes a full 5-row queue in place, on request, instead of
-  // staying a fixed cut. `navigator.vibrate` is Android Chrome-only — every
-  // other browser/OS simply has no such method, so this is a silent no-op
-  // everywhere else, not haptics this feature depends on.
-  const toggleQueueExpanded = () => {
-    if (navigator.vibrate) navigator.vibrate(10);
-    setQueueExpanded((current) => !current);
-  };
-
   return (
     <main className="riso-page riso-home" ref={rootRef}>
       <RisoDefs />
@@ -241,64 +232,17 @@ export default function RisoHome() {
             </div>
           </div>
         </div>
-        <div className={`rp-hero__media${queueExpanded ? " rp-hero__media--queueExpanded" : ""}`}>
-          <div className="home-heroProofStack" data-evidence="true">
-            {/* The floating annotation card that used to sit above this frame
-                stated the same "one queue replaced four systems" claim the
-                proof paragraph in the text column now carries directly — two
-                registers for one fact. Cut the card, kept the claim: it moved
-                into the paragraph's own sentence instead of duplicating it in
-                a second, separately-chromed element. The artifact frame is
-                also trimmed for the hero specifically (three representative
-                rows instead of five, one caption line instead of a caption
-                plus a separate role pill, the tab row and rule callout
-                dropped, the MRN/EMR glossary collapsed behind a disclosure)
-                via props scoped to this call only — the full case-study and
-                curated-page renders of this same component are untouched.
-
-                Direction C (design-state.md, 2026-08-27): the preview is now
-                genuinely expandable in place, via the same aria-expanded /
-                aria-controls native-button disclosure idiom the Weekend
-                Dispatch toggle already uses below (not a new pattern). The
-                two hidden rows are conditionally rendered via
-                MSKDashboardMockup's own rowIndices prop — real DOM removal,
-                not opacity/visibility, so they are genuinely absent from the
-                accessibility tree while collapsed. condensedHeader and
-                legendDisclosure stay on in both states; only rowIndices,
-                hideToolbar, and hideRule change. */}
-            <figure className="home-heroArtifact">
-              <div className={`home-heroArtifact__frame${queueExpanded ? " home-heroArtifact__frame--expanded" : ""}`}>
-                <MSKDashboardMockup
-                  compact
-                  headingLevel={2}
-                  rowIndices={queueExpanded ? undefined : HERO_QUEUE_PREVIEW_ROW_INDICES}
-                  condensedHeader
-                  hideToolbar={!queueExpanded}
-                  legendDisclosure
-                  hideRule={!queueExpanded}
-                  tableId="home-hero-queue-table"
-                  expandControl={
-                    <button
-                      type="button"
-                      className="home-heroArtifact__expandToggle"
-                      aria-expanded={queueExpanded}
-                      aria-controls="home-hero-queue-table"
-                      onClick={toggleQueueExpanded}
-                    >
-                      <span aria-hidden="true">{queueExpanded ? "−" : "+"}</span>
-                      {t(queueExpanded ? "home.riso.queueCollapse" : "home.riso.queueExpand")}
-                    </button>
-                  }
-                />
-              </div>
-              <figcaption>Recreated Office Coordinator queue · no patient data</figcaption>
-            </figure>
-            <Link className="rp-cta home-heroMobileAction" to="/case-study/msk">
-              {t("home.riso.primaryWork")} →
-            </Link>
-            <div className="rp-headshot rp-headshot--supporting">
-              <img src="/assets/about/headshot.jpg" alt="Hillary Esposito" />
-            </div>
+        {/* Simple hero media: photo next to the header text. The dashboard
+            artifact, rotating showcase, and scroll-handoff experiments
+            (2026-08-28/29) were all rejected on live review — this is the
+            plain version, not a fallback state. A same-day sibling commit
+            (260aa25) still had the pre-rejection dashboard markup here
+            (queueExpanded, HERO_QUEUE_PREVIEW_ROW_INDICES, the expand
+            toggle) — dropped during rebase, superseded by the owner's
+            explicit "just put back my photo next to header." */}
+        <div className="rp-hero__media">
+          <div className="rp-headshot">
+            <img src="/assets/about/headshot.jpg" alt="Hillary Esposito" />
           </div>
         </div>
       </header>
@@ -339,27 +283,45 @@ export default function RisoHome() {
           <h2 className="rp-title" id="home-work-title">{t("home.riso.workTitle")}</h2>
           <div className="rp-worklist rp-reveal" data-evidence="true">
             {WORK.map((w) => (
-              <Link className="rp-work" to={w.path} key={w.path}>
-                <div>
-                  <p className="rp-work__n">
-                    {w.n}
-                    {w.tagKey && <PhaseIndicator current={2} label={t(w.tagKey)} compact />}
-                  </p>
-                  <p className="rp-work__title">{t(w.titleKey)}</p>
-                  <p className="rp-work__sub">{t(w.subKey)}</p>
-                </div>
-                {w.visual === "logistics" ? (
-                  <figure className="rp-work__thumb rp-work__thumb--mechanism" aria-label={t(w.imgAltKey)}>
-                    <LogisticsMechanism n="03" />
-                    <figcaption>{lang === "es" ? "Siete puestos · pronóstico compartido · 85% menos tiempo" : "Seven aid stations · shared forecast · 85% shorter resupply time"}</figcaption>
-                  </figure>
-                ) : (
-                  <div className="rp-work__thumb">
-                    <img src={w.img} alt={t(w.imgAltKey)} loading="eager" decoding="async" />
+              <React.Fragment key={w.path}>
+                <Link className="rp-work" to={w.path}>
+                  <div>
+                    <p className="rp-work__n">
+                      {w.n}
+                      {w.tagKey && <PhaseIndicator current={2} label={t(w.tagKey)} compact />}
+                    </p>
+                    <p className="rp-work__title">{t(w.titleKey)}</p>
+                    <p className="rp-work__sub">{t(w.subKey)}</p>
                   </div>
+                  {w.visual === "logistics" ? (
+                    <figure className="rp-work__thumb rp-work__thumb--mechanism" aria-label={t(w.imgAltKey)}>
+                      <LogisticsMechanism n="03" />
+                      <figcaption>{lang === "es" ? "Siete puestos · pronóstico compartido · 85% menos tiempo" : "Seven aid stations · shared forecast · 85% shorter resupply time"}</figcaption>
+                    </figure>
+                  ) : w.visual === "msk" ? (
+                    <figure className="rp-work__thumb rp-work__thumb--dashboard" aria-label={t(w.imgAltKey)}>
+                      <div className="rp-work__thumb--dashboard__frame">
+                        <MSKDashboardMockup compact condensedHeader hideToolbar hideRule rowIndices={[0, 2]} tableId="home-work-queue-table" />
+                      </div>
+                      <figcaption>{lang === "es" ? "Cola de archivo · cuatro sistemas a uno" : "Filing queue · four systems to one"}</figcaption>
+                    </figure>
+                  ) : (
+                    <div className="rp-work__thumb rp-work__thumb--contain">
+                      <img src={w.img} alt={t(w.imgAltKey)} loading="eager" decoding="async" />
+                    </div>
+                  )}
+                  <span className="rp-work__arrow" aria-hidden="true">→</span>
+                </Link>
+                {/* MSK's own decision story ("the simple button") is the
+                    part Hillary flagged as the strongest thing on the
+                    site — this surfaces it as its own hook instead of
+                    leaving it to be found mid-case-study. */}
+                {w.teaserPath && (
+                  <Link className="rp-work__teaser" to={w.teaserPath}>
+                    {lang === "es" ? w.teaserEs : w.teaserEn}
+                  </Link>
                 )}
-                <span className="rp-work__arrow" aria-hidden="true">→</span>
-              </Link>
+              </React.Fragment>
             ))}
           </div>
           <p className="rp-supportingLink">
@@ -374,7 +336,6 @@ export default function RisoHome() {
         <div className="rp-wrap rp-close">
           <p className="rp-kicker">{t("home.riso.contactKicker")}</p>
           <h2 id="home-contact-title">{t("home.ctaTitle")}</h2>
-          <p>{t("home.riso.contactBody")}</p>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com" aria-label={t("home.ctaEmailAria")}>
             espositohillary@gmail.com →
           </a>

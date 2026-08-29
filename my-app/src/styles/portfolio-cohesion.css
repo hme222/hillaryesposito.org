@@ -360,6 +360,7 @@ html[lang="es"] .riso-home .rp-clearing { max-width: 78ch; }
   box-shadow: 0 15px 32px -20px rgba(0,0,0,.7);
 }
 .riso-home .rp-hero__media:hover .rp-headshot--supporting { transform: translateY(-2px) rotate(2deg); }
+
 .rp-eyebrow { max-width: 100%; flex-wrap: wrap; }
 .rp-eyebrow::before { flex: 0 0 auto; }
 
@@ -595,13 +596,13 @@ html[lang="es"] .riso-home .rp-clearing { max-width: 78ch; }
   .riso-home .rp-hero__content { padding-top: .25rem; }
   .riso-home .rp-clearing { padding-top: .2rem; }
   .home-heroProofStack { width: calc(100vw - 2rem); max-width: calc(100vw - 2rem); padding-bottom: .3rem; }
-  .home-heroDesktopPrimary { display: none; }
-  .home-heroMobileAction {
-    display: inline-flex;
-    min-height: 44px;
-    margin-top: .45rem;
-    padding: .55rem .8rem;
-  }
+  /* .home-heroDesktopPrimary hiding on mobile (swapping to a separate
+     .home-heroMobileAction CTA) belonged to the dashboard-hero markup
+     removed 2026-08-29 ("just put back my photo next to header") — there is
+     only one hero CTA now, so it stays visible at every width. Left
+     unhidden here rather than removing the rule outright, since a sibling
+     commit (260aa25) still references these classes; deleting the selector
+     would silently stop applying if that markup ever returns. */
   .home-heroArtifact,
   .home-heroArtifact__frame { width: 100%; max-width: 100%; }
   /* Two representative rows on the narrowest viewports, not three. The third

@@ -81,7 +81,7 @@ const en = {
   "home.riso.heroClose": "",
   "home.riso.queueExpand": "View the full queue · 5 items",
   "home.riso.queueCollapse": "Show fewer",
-  "home.riso.workTitle": "Healthcare products, enterprise workflows, and one consumer product",
+  "home.riso.workTitle": "What I built, and what it proved.",
   "home.riso.groveDesc":
     "34-person survey · eleven features narrowed to three · AI-assisted React prototype with reviewable decisions.",
   "home.riso.mskDesc":
@@ -91,7 +91,7 @@ const en = {
   "home.riso.mobbinDesc":
     "Three finance apps turned into a searchable reference — the work was the taxonomy and the naming, not the screenshots. 200+ screens per app, an editor's judgment on every one.",
   "home.riso.groveAlt": "Grove daily care screen showing one clear plant-care task and overdue plants first",
-  "home.riso.mskAlt": "A recreated map of Memorial Sloan Kettering's care network across the New York region",
+  "home.riso.mskAlt": "Recreated Memorial Sloan Kettering filing queue, showing patient records moving from ready-to-send through filed",
   "home.riso.logisticsAlt": "Service mechanism showing shared forecasting across seven aid stations and an 85% reduction in resupply time",
   "home.riso.mobbinAlt": "One of the third-party app screens documented for Mobbin — a finance app welcome screen",
   "home.riso.groveTag": "Active · Phase 2 of 3",
@@ -139,7 +139,7 @@ const en = {
   // ── Home: mini about ──
   "home.about.eyebrow": "A little about me",
   "home.about.blurb":
-    "I bring 13+ years inside cancer-care operations and military medical logistics to healthcare product design. At MSK and in the Army, I learned to spot the workaround after a handoff and the permission that stops the next person. I turn that evidence into clearer workflows, internal tools, and working prototypes.",
+    "I bring 13+ years in cancer-care operations and military medical logistics to healthcare product design. At MSK and in the Army, I learned to spot the workaround after a handoff and the permission that stops the next person. I turn that evidence into clearer workflows, internal tools, and working prototypes.",
   "home.about.link": "More about me →",
 
   // ── Home: proof stats ──
@@ -158,7 +158,7 @@ const en = {
 
   // ── Home: projects ──
   "home.eyebrow": "Selected work",
-  "home.proj.grove.subtitle": "Grove · Product Design · AI Judgment",
+  "home.proj.grove.subtitle": "Grove · Product Design · Data Analytics & Research",
   "home.proj.msk.subtitle": "Memorial Sloan Kettering · UX & Product Design",
   "home.proj.logistics.subtitle": "Army medical logistics · Service Design",
   "home.proj.mobbin.subtitle": "Mobbin · Freelance UX Flow Documentation",
@@ -232,7 +232,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.heroClose": "",
   "home.riso.queueExpand": "Ver la cola completa · 5 elementos",
   "home.riso.queueCollapse": "Mostrar menos",
-  "home.riso.workTitle": "Productos de salud, flujos empresariales y un producto de consumo",
+  "home.riso.workTitle": "Lo que construí, y lo que demostró.",
   "home.riso.groveDesc":
     "Encuesta a 34 personas · once funciones reducidas a tres · prototipo React asistido por IA con decisiones revisables.",
   "home.riso.mskDesc":
@@ -242,7 +242,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.mobbinDesc":
     "Tres apps financieras convertidas en una referencia buscable: el trabajo fue la taxonomía y los nombres, no las capturas. Más de 200 pantallas por app, con criterio de editora en cada una.",
   "home.riso.groveAlt": "Pantalla de cuidado diario de Grove con una tarea clara y las plantas atrasadas primero",
-  "home.riso.mskAlt": "Un mapa recreado de la red de atención de Memorial Sloan Kettering en la región de Nueva York",
+  "home.riso.mskAlt": "Cola de archivo recreada de Memorial Sloan Kettering, mostrando registros de pacientes desde listos para enviar hasta archivados",
   "home.riso.logisticsAlt": "Mecanismo de servicio con pronóstico compartido entre siete puestos y una reducción del 85% en el tiempo de reabastecimiento",
   "home.riso.mobbinAlt": "Una de más de 200 pantallas de apps de terceros documentadas para Mobbin — la pantalla de bienvenida de una app financiera",
   "home.riso.groveTag": "Activo · Fase 2 de 3",
@@ -309,7 +309,7 @@ const es: Partial<Record<StringKey, string>> = {
 
   // ── Home: projects ──
   "home.eyebrow": "Trabajo seleccionado",
-  "home.proj.grove.subtitle": "Grove · Diseño de producto · Criterio con IA",
+  "home.proj.grove.subtitle": "Grove · Diseño de producto · Análisis de datos e investigación",
   "home.proj.msk.subtitle": "Memorial Sloan Kettering · Diseño UX y de producto",
   "home.proj.logistics.subtitle": "Logística médica del Ejército · Diseño de servicios",
   "home.proj.mobbin.subtitle": "Mobbin · Documentación freelance de flujos UX",

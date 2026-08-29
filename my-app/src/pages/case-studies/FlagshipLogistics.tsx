@@ -96,6 +96,14 @@ export default function FlagshipLogistics() {
           </div>
         </div>
         <div className="rp-hero__media fp-heroArt fp-heroArt--logistics" data-evidence="true">
+          {/* The hero used to be just a label chip floating over a single
+              photo — thin next to MSK's full dashboard artifact next door.
+              This mechanism (the same drawing the "three moves" section
+              uses below) gives the header an actual system to show, not
+              only a portrait. */}
+          <div className="fp-logisticsHeroMechanism">
+            <LogisticsMechanism n="01" />
+          </div>
           <div className="fp-artifactLabel"><span>DEPLOYMENT · 2024</span><b>44th IBCT · seven aid stations · three countries</b></div>
           <figure className="fp-logisticsPhoto">
             <img src="/assets/about/army.jpg" alt="Hillary Esposito in uniform during her deployment as a medical logistics officer" />
