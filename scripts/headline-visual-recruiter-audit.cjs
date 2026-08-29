@@ -20,9 +20,9 @@ const routes = [
     required: [
       "design healthcare products from the workflow out",
       "13+ years in healthcare",
-      "contributed to a 20% organization-wide",
+      "a 20% organization-wide",
       "filing queue replaced a four-system workaround",
-      "medical resupply time reduced 85%",
+      "85% shorter medical resupply time",
       "eleven features became three",
       "espositohillary@gmail.com",
     ],
@@ -41,7 +41,7 @@ const routes = [
     name: "logistics",
     route: "/case-study/logistics",
     required: [
-      "medical resupply time reduced 85%",
+      "85% shorter medical resupply time",
       "medical logistics officer · service lead",
       "seven aid stations · three countries",
       "deployed 2024 · 85% shorter resupply time",
@@ -53,8 +53,9 @@ const routes = [
     required: [
       "eleven features became three",
       "sole product designer · end to end",
-      "34-person self-report survey",
+      "34-person survey",
       "11 features → 3 launch priorities",
+      "working react prototype · ai-assisted implementation",
       "phase 2 of 3 · functional prototype",
     ],
   },
@@ -129,6 +130,7 @@ async function installBuildRoute(page) {
 async function inspect(page, routeName, required) {
   return page.evaluate(({ name, claims }) => {
     const visible = (element) => {
+      if (element.closest("details:not([open])")) return false;
       const style = getComputedStyle(element);
       const rect = element.getBoundingClientRect();
       return style.display !== "none" && style.visibility !== "hidden" && rect.width > 1 && rect.height > 1;

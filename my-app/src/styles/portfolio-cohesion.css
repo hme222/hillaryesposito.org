@@ -347,6 +347,7 @@ html[lang="es"] .riso-home .rp-clearing { max-width: 78ch; }
   .home-heroArtifact__frame:hover { transform: none; }
 }
 .home-heroArtifact figcaption { margin-top: .55rem; }
+.home-heroMobileAction { display: none; }
 .riso-home .rp-hero__media .rp-headshot--supporting {
   position: absolute;
   z-index: 4;
@@ -594,6 +595,13 @@ html[lang="es"] .riso-home .rp-clearing { max-width: 78ch; }
   .riso-home .rp-hero__content { padding-top: .25rem; }
   .riso-home .rp-clearing { padding-top: .2rem; }
   .home-heroProofStack { width: calc(100vw - 2rem); max-width: calc(100vw - 2rem); padding-bottom: .3rem; }
+  .home-heroDesktopPrimary { display: none; }
+  .home-heroMobileAction {
+    display: inline-flex;
+    min-height: 44px;
+    margin-top: .45rem;
+    padding: .55rem .8rem;
+  }
   .home-heroArtifact,
   .home-heroArtifact__frame { width: 100%; max-width: 100%; }
   /* Two representative rows on the narrowest viewports, not three. The third

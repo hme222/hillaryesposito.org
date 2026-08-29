@@ -41,7 +41,7 @@ rsync -a --delete --exclude='designpowers/' "$BUILD_DIR"/ "$DOCS_DIR"/
 # This prevents GitHub Pages from running Jekyll processing.
 touch "$DOCS_DIR/.nojekyll"
 
-# ---- PRERENDER PUBLIC ROUTES ----
+# ---- PRERENDER PUBLIC + APPROVED DIRECT-LINK ROUTES ----
 # Without this every route but "/" resolves to 404.html: a real HTTP 404 with
 # <title>Redirecting...</title>. Humans are fine (the SPA bounce works), but
 # crawlers and link scrapers do not run JS, so the sitemap advertised URLs that
@@ -64,7 +64,8 @@ echo "hillaryesposito.org" > "$DOCS_DIR/CNAME"
 # Assert the files the published site cannot work without.
 echo "➡️  Verifying published files..."
 for f in .nojekyll CNAME 404.html robots.txt sitemap.xml index.html \
-         .well-known/security.txt about/index.html case-study/msk/index.html; do
+         .well-known/security.txt about/index.html case-study/msk/index.html \
+         curated/healthcare-product-service-designer/index.html; do
   if [ ! -e "$DOCS_DIR/$f" ]; then
     echo "❌ $f missing from $DOCS_DIR after sync. Aborting before commit."
     exit 1

@@ -83,7 +83,7 @@ const en = {
   "home.riso.queueCollapse": "Show fewer",
   "home.riso.workTitle": "Healthcare products, enterprise workflows, and one consumer product",
   "home.riso.groveDesc":
-    "34-person survey · eleven features narrowed to three · functional prototype.",
+    "34-person survey · eleven features narrowed to three · AI-assisted React prototype with reviewable decisions.",
   "home.riso.mskDesc":
     "Four departments · implemented workflow · still used through two system upgrades.",
   "home.riso.logisticsDesc":
@@ -234,7 +234,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.queueCollapse": "Mostrar menos",
   "home.riso.workTitle": "Productos de salud, flujos empresariales y un producto de consumo",
   "home.riso.groveDesc":
-    "Encuesta a 34 personas · once funciones reducidas a tres · prototipo funcional.",
+    "Encuesta a 34 personas · once funciones reducidas a tres · prototipo React asistido por IA con decisiones revisables.",
   "home.riso.mskDesc":
     "Cuatro departamentos · flujo implementado · vigente tras dos actualizaciones.",
   "home.riso.logisticsDesc":

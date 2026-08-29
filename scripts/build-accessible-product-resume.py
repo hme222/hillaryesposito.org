@@ -3,6 +3,7 @@
 
 from pathlib import Path
 from shutil import copyfile
+import argparse
 import os
 import subprocess
 import tempfile
@@ -15,7 +16,10 @@ CHROME = Path(
         "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
     )
 )
-FILENAME = "Hillary_Esposito_Portfolio_Resume.pdf"
+FILENAMES = {
+    "portfolio": "Hillary_Esposito_Portfolio_Resume.pdf",
+    "healthcare": "Hillary_Esposito_Healthcare_Product_Service_Designer_Resume.pdf",
+}
 
 
 HTML = """<!doctype html>
@@ -137,17 +141,65 @@ HTML = """<!doctype html>
 """
 
 
-def build_pdf() -> Path:
+def healthcare_html() -> str:
+    """Reuse the proven semantic document shell with healthcare-first content."""
+    html = HTML
+    replacements = {
+        '<meta name="description" content="Healthcare Product Designer résumé focused on enterprise workflows, internal tools, and complex healthcare systems." />':
+            '<meta name="description" content="Healthcare product and service design résumé focused on clinical workflows, care services, and implementation." />',
+        '<title>Hillary Esposito - Healthcare Product Designer Resume</title>':
+            '<title>Hillary Esposito - Healthcare Product and Service Designer Resume</title>',
+        '<p class="role">Healthcare Product Designer · Enterprise Workflows, Internal Tools &amp; Complex Systems</p>':
+            '<p class="role">Healthcare Product &amp; Service Designer · Clinical Workflows &amp; Care Services</p>',
+        'Healthcare Product Designer with 13+ years inside high-stakes healthcare and military systems. Combines frontline observation, workflow analysis, stakeholder input, and technical constraints to design clearer internal tools and testable product flows. At Memorial Sloan Kettering, a workflow redesign I initiated later contributed inside a larger initiative to a 20% organization-wide electronic medical record cost reduction. MHA, Lean Six Sigma Green Belt, U.S. Army veteran, and bilingual English/Spanish communicator.':
+            'Healthcare product and service designer with 13+ years inside cancer-care operations and military medical logistics. I map what staff do, where work changes hands, and who owns the next step. I stay through prototyping and implementation. An MSK workflow redesign I initiated contributed inside a larger initiative to a 20% organization-wide EMR cost reduction. MHA, Lean Six Sigma Green Belt, Army veteran, and bilingual English/Spanish communicator.',
+        '<p><strong>Product and interaction:</strong> information architecture, user flows, wireframes, functional prototypes, interaction states, accessibility, responsive design, design systems, design QA</p>':
+            '<p><strong>Healthcare product/service:</strong> clinical workflows, current/future-state mapping, journey mapping, service blueprinting, internal tools, change management, implementation, accessibility</p>',
+        '<p><strong>Research and service design:</strong> workflow observation, stakeholder interviews, survey synthesis, usability testing, journey mapping, service blueprints, task analysis, scope prioritization</p>':
+            '<p><strong>Product and research:</strong> information architecture, task analysis, stakeholder interviews, workflow observation, survey synthesis, usability testing, functional prototypes, design systems</p>',
+        '<p><strong>Tools and domain:</strong> Figma, FigJam, Miro, Notion, React, HTML/CSS, AI-assisted prototyping, healthcare operations, EMR workflows, Lean Six Sigma</p>':
+            '<p><strong>Tools and domain:</strong> Figma, FigJam, Miro, React, HTML/CSS, Epic/EMR workflows, healthcare operations, medical logistics, Lean Six Sigma</p>',
+        '<h2 id="product-heading">Product design experience</h2>':
+            '<h2 id="product-heading">Current product design</h2>',
+        '<h2 id="healthcare-heading">Healthcare systems and workflow experience</h2>':
+            '<h2 id="healthcare-heading">Healthcare product and service experience</h2>',
+        '<span>Hillary Esposito · Healthcare Product Design</span>':
+            '<span>Hillary Esposito · Healthcare Product + Service Design</span>',
+    }
+    for old, new in replacements.items():
+        if old not in html:
+            raise RuntimeError(f"Semantic résumé source marker changed: {old[:70]}")
+        html = html.replace(old, new, 1)
+
+    product_start = html.index('<section aria-labelledby="product-heading">')
+    product_end = html.index("</section>", product_start) + len("</section>")
+    healthcare_start = html.index('<section aria-labelledby="healthcare-heading">')
+    healthcare_end = html.index("</section>", healthcare_start) + len("</section>")
+    product_section = html[product_start:product_end]
+    healthcare_section = html[healthcare_start:healthcare_end]
+    return (
+        html[:product_start]
+        + healthcare_section
+        + "\n\n    "
+        + product_section
+        + html[healthcare_end:]
+    )
+
+
+def build_pdf(variant: str = "portfolio") -> Path:
     if not CHROME.is_file():
         raise FileNotFoundError(
             f"Chrome was not found at {CHROME}. Set PORTFOLIO_CHROME_BIN to a Chromium executable."
         )
 
-    with tempfile.TemporaryDirectory(prefix="portfolio-resume-") as temp_name:
+    filename = FILENAMES[variant]
+    source_html = HTML if variant == "portfolio" else healthcare_html()
+
+    with tempfile.TemporaryDirectory(prefix=f"{variant}-resume-") as temp_name:
         temp_dir = Path(temp_name)
         html_path = temp_dir / "resume.html"
-        pdf_path = temp_dir / FILENAME
-        html_path.write_text(HTML, encoding="utf-8")
+        pdf_path = temp_dir / filename
+        html_path.write_text(source_html, encoding="utf-8")
 
         subprocess.run(
             [
@@ -168,8 +220,8 @@ def build_pdf() -> Path:
             raise RuntimeError("Chrome completed without producing the résumé PDF.")
 
         destinations = [
-            ROOT / "my-app/public/assets" / FILENAME,
-            ROOT / "docs/assets" / FILENAME,
+            ROOT / "my-app/public/assets" / filename,
+            ROOT / "docs/assets" / filename,
         ]
         for destination in destinations:
             destination.parent.mkdir(parents=True, exist_ok=True)
@@ -178,5 +230,19 @@ def build_pdf() -> Path:
         return destinations[0]
 
 
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--variant",
+        choices=["portfolio", "healthcare", "all"],
+        default="portfolio",
+        help="Semantic résumé variant to export (default: portfolio).",
+    )
+    args = parser.parse_args()
+    variants = FILENAMES if args.variant == "all" else (args.variant,)
+    for variant in variants:
+        build_pdf(variant)
+
+
 if __name__ == "__main__":
-    build_pdf()
+    main()

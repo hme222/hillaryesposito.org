@@ -1181,7 +1181,8 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
   cursor: pointer; list-style: none; color: var(--ink);
 }
 .rp-deepDive > summary::-webkit-details-marker { display: none; }
-.rp-deepDive > summary span { font: 700 .7rem/1.35 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--coral); }
+.rp-deepDive > summary span { font: 700 .7rem/1.35 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: #a52f22; }
+.dark-mode .rp-deepDive > summary span { color: #ff8171; }
 .rp-deepDive > summary b { font-size: 1rem; line-height: 1.35; text-align: right; }
 .rp-deepDive > summary::after { content: "+"; flex: 0 0 auto; font: 700 1.4rem/1 var(--mono); color: var(--coral); }
 .rp-deepDive[open] > summary { border-bottom: 1px solid var(--hair); }
@@ -3275,6 +3276,10 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 .rp-override .rp-notif__card { background: #f1eee4; border-color: rgba(244,241,230,.2); }
 .rp-override .rp-accordion, .rp-override .rp-acc { border-color: rgba(244,241,230,.22); }
 .rp-override .rp-acc summary { color: #f4f1e6; }
+.rp-override .rp-decisionRecord { border-top-color: rgba(244,241,230,.58); }
+.rp-override .rp-decisionRecord > div { border-bottom-color: rgba(244,241,230,.34); }
+.rp-override .rp-decisionRecord dt { color: #ff8171; }
+.rp-override .rp-decisionRecord dd { color: #f4f1e6; }
 @media (max-width: 720px) {
   .rp-override .rp-pushback__vs { transform: none; letter-spacing: .08em; }
 }

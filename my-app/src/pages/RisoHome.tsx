@@ -228,7 +228,7 @@ export default function RisoHome() {
             </p>
             <p className="rp-status">{t("home.status")}</p>
             <div className="rp-hero__ctas">
-              <Link className="rp-cta" to="/case-study/msk">{t("home.riso.primaryWork")} →</Link>
+              <Link className="rp-cta home-heroDesktopPrimary" to="/case-study/msk">{t("home.riso.primaryWork")} →</Link>
               <button type="button" className="rp-cta rp-cta--ghost" onClick={toContact}>{t("home.getInTouch")}</button>
               <button
                 ref={openingFilmTriggerRef}
@@ -293,6 +293,9 @@ export default function RisoHome() {
               </div>
               <figcaption>Recreated Office Coordinator queue · no patient data</figcaption>
             </figure>
+            <Link className="rp-cta home-heroMobileAction" to="/case-study/msk">
+              {t("home.riso.primaryWork")} →
+            </Link>
             <div className="rp-headshot rp-headshot--supporting">
               <img src="/assets/about/headshot.jpg" alt="Hillary Esposito" />
             </div>

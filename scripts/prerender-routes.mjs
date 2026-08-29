@@ -13,21 +13,23 @@
  * Writing <route>/index.html turns each into a real 200 with its own metadata,
  * and the SPA takes over from there exactly as before.
  *
- * Only public routes get a shell. /curated/* is deliberately excluded: those
- * pages are direct-link-only and carry noindex, so giving them a crawlable
- * 200 would publish exactly what they are meant to keep private.
+ * Public routes and approved direct-link recruiter routes get shells. Curated
+ * routes remain noindex/nofollow and stay out of the sitemap; the shell removes
+ * recruiter-link 404 friction without turning them into search landing pages.
  *
  * ROUTE_META below must stay in step with my-app/src/hooks/usePageTitle.ts.
  */
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { join, dirname } from "node:path";
+import { join, dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const DOCS = join(ROOT, "docs");
+const DOCS = process.env.PORTFOLIO_DOCS_DIR
+  ? resolve(process.env.PORTFOLIO_DOCS_DIR)
+  : join(ROOT, "docs");
 const ORIGIN = "https://hillaryesposito.org";
 
-const ROUTES = [
+const PUBLIC_ROUTES = [
   {
     path: "about",
     title: "About | Hillary Esposito",
@@ -65,6 +67,22 @@ const ROUTES = [
   },
 ];
 
+// Direct-link recruiter routes need real 200 shells for hiring teams and link
+// checkers, but remain out of search. They are intentionally excluded from the
+// sitemap and receive an explicit noindex/nofollow directive in their shell.
+const DIRECT_LINK_ROUTES = [
+  {
+    path: "curated/healthcare-product-service-designer",
+    title: "Healthcare product design: Mid-level Product Designer · Healthcare enterprise and internal tools | Hillary Esposito",
+    description:
+      "Healthcare product and service design evidence across clinical workflows, care services, internal tools, and medical logistics.",
+    image: "/assets/msk/mskcc-map-thumb.jpg",
+    robots: "noindex, nofollow",
+  },
+];
+
+const ROUTES = [...PUBLIC_ROUTES, ...DIRECT_LINK_ROUTES];
+
 const shell = readFileSync(join(DOCS, "index.html"), "utf8");
 
 /** Replace a tag's content attribute, or append the tag if the shell lacks it. */
@@ -94,6 +112,9 @@ for (const route of ROUTES) {
   html = setMeta(html, /<meta name="twitter:description" content="[^"]*"\s*\/?>/, `<meta name="twitter:description" content="${route.description}"/>`);
   html = setMeta(html, /<meta name="twitter:image" content="[^"]*"\s*\/?>/, `<meta name="twitter:image" content="${ORIGIN}${route.image}"/>`);
   html = setMeta(html, /<link rel="canonical" href="[^"]*"\s*\/?>/, `<link rel="canonical" href="${url}"/>`);
+  if (route.robots) {
+    html = setMeta(html, /<meta name="robots" content="[^"]*"\s*\/?>/, `<meta name="robots" content="${route.robots}"/>`);
+  }
 
   const dir = join(DOCS, route.path);
   mkdirSync(dir, { recursive: true });
@@ -107,7 +128,7 @@ console.log(`✅ ${written} route shells written`);
 // exactly how it drifted out of trailing-slash sync with the prerendered
 // shells above. Generate it from the same source instead — one place to
 // add a route, not two to keep in sync.
-const sitemapUrls = [`${ORIGIN}/`, ...ROUTES.map((route) => `${ORIGIN}/${route.path}/`)];
+const sitemapUrls = [`${ORIGIN}/`, ...PUBLIC_ROUTES.map((route) => `${ORIGIN}/${route.path}/`)];
 const sitemap =
   `<?xml version="1.0" encoding="UTF-8"?>\n` +
   `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +

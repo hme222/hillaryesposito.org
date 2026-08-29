@@ -410,10 +410,10 @@ def main():
     temp_dir = ROOT / "tmp/pdfs"
     temp_dir.mkdir(parents=True, exist_ok=True)
     for variant, filename in OUTPUTS.items():
-        # The primary portfolio résumé is generated from semantic HTML so the
-        # PDF contains a real structure tree. ReportLab's SimpleDocTemplate
-        # output is visually sound but untagged.
-        if variant == "portfolio":
+        # The primary and healthcare-targeted résumés are generated from
+        # semantic HTML so both PDFs contain a real structure tree. ReportLab's
+        # SimpleDocTemplate output is visually sound but untagged.
+        if variant in {"portfolio", "healthcare"}:
             continue
         temp_output = temp_dir / filename
         build_resume(temp_output, variant)
@@ -423,7 +423,7 @@ def main():
             copyfile(temp_output, destination)
             print(destination)
     subprocess.run(
-        [sys.executable, str(ROOT / "scripts/build-accessible-product-resume.py")],
+        [sys.executable, str(ROOT / "scripts/build-accessible-product-resume.py"), "--variant", "all"],
         check=True,
     )
 

@@ -276,7 +276,7 @@ export default function RisoGrove() {
         />
         <div className="rp-hero__content">
           <div className="rp-clearing">
-            <span className="rp-eyebrow">Grove · sole designer · functional prototype</span>
+            <span className="rp-eyebrow">Grove · sole designer · AI-assisted React prototype</span>
             <h1 className="rp-h1">Eleven features became three.</h1>
             <span className="rp-readtime">
               <b>5 min</b>
@@ -290,6 +290,7 @@ export default function RisoGrove() {
               <div><dt>Role</dt><dd>Sole product designer · end to end</dd></div>
               <div><dt>Method</dt><dd>5-user moderated test → 34-person survey</dd></div>
               <div><dt>Decision</dt><dd>11 features → 3 launch priorities</dd></div>
+              <div><dt>Build</dt><dd>Working React prototype · AI-assisted implementation</dd></div>
               <div><dt>State</dt><dd>Phase 2 of 3 · functional prototype</dd></div>
             </dl>
             <a className="rp-cta" href="#grove-research">
@@ -439,6 +440,14 @@ export default function RisoGrove() {
             that risk directly, so instead of one confident answer, it shows top guesses, how sure it
             is, and its sources. False certainty is the fastest way to lose trust.
           </p>
+
+          <h3 className="rp-subhead">How I built the prototype</h3>
+          <dl className="rp-decisionRecord" data-evidence="true">
+            <div><dt>Source of truth</dt><dd>The working React prototype, not a static handoff artifact.</dd></div>
+            <div><dt>AI's job</dt><dd>Accelerate first-build implementation and help explore alternatives; research still chose what entered the product.</dd></div>
+            <div><dt>My job</dt><dd>Own research, scope, interaction decisions, accessibility, and QA.</dd></div>
+            <div><dt>Boundary</dt><dd>Faster output is not evidence. Uncertain recommendations still need confidence, sources, and human review.</dd></div>
+          </dl>
 
           <h3 className="rp-subhead">All six calls, in full</h3>
           <div className="rp-accordion rp-reveal" data-evidence="true">

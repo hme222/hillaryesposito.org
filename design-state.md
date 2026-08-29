@@ -1,6 +1,14 @@
 # Design State: Full Portfolio Redesign — Hybrid Positioning
 
-_Last updated: 2026-08-24 by headlines-and-visuals hiring pass_
+_Last updated: 2026-08-28 by Codex (portfolio evidence repair release)_
+
+## 2026-08-28 — Portfolio evidence repair + AI-native proof
+
+The verified release preserves `Healthcare Product Designer` as the primary position and uses Grove as supporting proof of AI-native execution: a working React prototype, AI-assisted implementation, human-owned research/scope/accessibility/QA, and explicit confidence, provenance, review, and verification boundaries. It does not rename the role to `AI Designer` from one practitioner article.
+
+Home exposes a 44px `Review the MSK workflow` action in the 390×844 first viewport. The existing three-primary-case hierarchy remains MSK, Medical Logistics, and Grove, with Mobbin under Supporting practice. The healthcare direct-link route receives a 200 static shell while staying `noindex, nofollow` and absent from the sitemap. The healthcare-targeted résumé is one-page, tagged, extractable, and healthcare-first. Grove and MSK have durable research evidence records that preserve unavailable task records, unknown counts, and contribution boundaries.
+
+Verification before release: 90/90 tests, TypeScript, optimized build, 12/12 axe states with zero violations, 12/12 recruiter visual states, final house-style/tell gates, six route-shell parity checks, direct-route 200/noindex/sitemap checks, and PDF semantic/visual inspection. Brief: `design-docs/briefs/2026-08-28-portfolio-repair-ai-native-proof.md`.
 
 ### 2026-08-24 — Weekend Journal close-return interaction
 
