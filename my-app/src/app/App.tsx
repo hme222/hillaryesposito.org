@@ -8,6 +8,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import RecruiterPill from "../components/RecruiterPill";
 import BackToTop from "../components/BackToTop";
+import PortfolioAnalytics from "../analytics/PortfolioAnalytics";
 
 import "../styles/index.css";
 import "../styles/App.css";
@@ -54,6 +55,7 @@ export default function App() {
     <LanguageContext.Provider value={languageValue}>
       <Router>
         <>
+          <PortfolioAnalytics />
           <a href="#main-content" className="sr-only-focusable">{translate(lang, "app.skip")}</a>
 
           <div className= "app">

@@ -76,13 +76,23 @@
     }
     </script>
 
-    <!-- GA4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-058E8SGSMB"></script>
+    <!-- GA4: production hosts only so local previews do not contaminate reports. -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-058E8SGSMB');
+      (function () {
+        var analyticsHosts = ["hillaryesposito.org", "www.hillaryesposito.org"];
+        if (!analyticsHosts.includes(window.location.hostname)) return;
+
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { window.dataLayer.push(arguments); };
+
+        var script = document.createElement("script");
+        script.async = true;
+        script.src = "https://www.googletagmanager.com/gtag/js?id=G-058E8SGSMB";
+        document.head.appendChild(script);
+
+        window.gtag("js", new Date());
+        window.gtag("config", "G-058E8SGSMB");
+      }());
     </script>
   </head>
   <body>
