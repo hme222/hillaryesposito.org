@@ -207,7 +207,7 @@ function MSKPoster() {
           <p>
             Staff had to print a digital record, route the paper to imaging, wait, and return later to
             confirm filing. Hillary redesigned the workflow so one dashboard action connected the queue
-            to the online chart. This changed four systems to two.
+            to the online chart. This replaced a four-department paper route with one action.
           </p>
           <p>The redesigned workflows touched 21,000+ clinicians and staff.</p>
           <p>
@@ -225,7 +225,7 @@ function MSKPoster() {
       <div className="evidence-poster__msk-layout">
         <section className="evidence-poster__statement">
           <p className="evidence-poster__problem">The digital workflow had become a paper ritual.</p>
-          <h2>A filing queue replaced a four-system workaround.</h2>
+          <h2>A filing queue replaced a four-department paper detour.</h2>
           <p className="evidence-poster__mechanism">
             One dashboard action connected the queue to the online chart.
           </p>

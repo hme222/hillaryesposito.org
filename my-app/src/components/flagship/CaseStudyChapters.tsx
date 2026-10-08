@@ -20,7 +20,7 @@ export type CaseStudyChapter = {
  */
 /**
  * @status: stable
- * @purpose: Renders a sticky, self-highlighting chapter navigation strip for long case-study pages, used across the case-study, curated, and Spanish case-study pages.
+ * @purpose: Renders a sticky, self-highlighting chapter navigation strip for long case-study pages, including Spanish case-study pages.
  */
 export default function CaseStudyChapters({
   project,
@@ -35,6 +35,7 @@ export default function CaseStudyChapters({
 }) {
   const [active, setActive] = useState<string>("");
   const activeLockUntil = useRef(0);
+  const stripRef = useRef<HTMLElement>(null);
   const jumpTimers = useRef<number[]>([]);
 
   useEffect(() => {
@@ -103,8 +104,20 @@ export default function CaseStudyChapters({
 
   const current = chapters.find((chapter) => chapter.id === active);
 
+  // On phones the strip scrolls sideways; keep the current chapter visible in
+  // it. Scrolls the strip only, never the page.
+  useEffect(() => {
+    const strip = stripRef.current;
+    const link = strip?.querySelector<HTMLElement>("a.is-active");
+    if (!strip || !link || strip.scrollWidth <= strip.clientWidth) return;
+    const left = link.offsetLeft - strip.offsetLeft;
+    if (left < strip.scrollLeft || left + link.offsetWidth > strip.scrollLeft + strip.clientWidth) {
+      strip.scrollLeft = Math.max(0, left - 16);
+    }
+  }, [active]);
+
   return (
-    <nav className="rp-chapters" aria-label={ariaLabel || `${project} case study chapters`}>
+    <nav ref={stripRef} className="rp-chapters" aria-label={ariaLabel || `${project} case study chapters`}>
       <span>{jumpLabel}</span>
       {chapters.slice(1).map((chapter) => (
         <a

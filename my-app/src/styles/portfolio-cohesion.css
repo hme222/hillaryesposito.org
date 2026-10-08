@@ -405,7 +405,6 @@ html[lang="es"] .riso-home .rp-clearing { max-width: 78ch; }
 .fp-dashboardFrame,
 .fp-cinemaCore--workflow > div,
 .fp-workflow > article,
-.fp-systemCards article,
 .fp-reflections article,
 .fp-workSplit article,
 .fp-sequence__stage,
@@ -433,95 +432,6 @@ html[lang="es"] .riso-home .rp-clearing { max-width: 78ch; }
 }
 .about-page .about-pattern-card { border-left: 3px solid var(--coral); }
 
-/* Fashion is a project artifact, not a separate microsite. Its campaign palette
-   remains project-specific while layout, typography, rules, and containers now
-   follow the shared publication system. */
-.fashion-system-page {
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 0;
-  background: var(--paper);
-}
-.fashion-system-page section { margin-top: 0; }
-.fashion-system-page .fashion-system-hero {
-  gap: 0;
-  grid-template-columns: 1.05fr .95fr;
-}
-.fashion-system-page .fashion-system-hero__copy { align-self: center; }
-.fashion-system-page .fashion-key-visual {
-  width: min(520px, 88%);
-  min-height: min(650px, 70vh);
-  border: 1px solid var(--hair);
-  border-radius: 0;
-  box-shadow: none;
-}
-.fashion-key-visual__image {
-  background:
-    radial-gradient(circle at 58% 20%, rgba(139, 30, 63, 0.28), transparent 28%),
-    linear-gradient(135deg, #33251f 0 39%, #e5d7c8 39% 64%, #17110e 64% 100%);
-}
-.fashion-system-meta {
-  gap: 0;
-  border: 1px solid var(--hair);
-}
-.fashion-system-meta article {
-  min-width: 0;
-  padding: 1.15rem;
-  border: 0;
-  border-right: 1px solid var(--hair);
-  border-radius: 0;
-  background: transparent;
-}
-.fashion-system-meta article:last-child { border-right: 0; }
-.fashion-system-page .fashion-system-section__header { max-width: 720px; }
-.fashion-direction-board,
-.fashion-route-card,
-.fashion-channel,
-.fashion-lookbook__page,
-.fashion-print-grid article,
-.fashion-type-card,
-.fashion-spec-table-wrap,
-.fashion-file-note {
-  border-radius: 0;
-  box-shadow: none;
-}
-.fashion-direction-board {
-  padding: 0;
-  gap: 0;
-  border-color: var(--hair);
-  background: transparent;
-}
-.fashion-direction-board__statement { border-radius: 0; }
-.fashion-direction-board__tiles { gap: 0; }
-.fashion-direction-board__tiles span {
-  border-radius: 0;
-  border-left: 1px solid rgba(255,255,255,.18);
-}
-.fashion-route-grid { gap: 0; border: 1px solid var(--hair); }
-.fashion-route-card {
-  border: 0;
-  border-right: 1px solid var(--hair);
-  background: var(--paper);
-}
-.fashion-route-card:last-child { border-right: 0; }
-.fashion-route-card__visual { border-radius: 0; }
-.fashion-channel-grid { gap: 0; border: 1px solid var(--hair); }
-.fashion-channel {
-  border: 0;
-  border-right: 1px solid var(--hair);
-  border-bottom: 1px solid var(--hair);
-}
-.fashion-channel--hero {
-  background:
-    linear-gradient(180deg, transparent 0 38%, rgba(23,17,14,.92) 100%),
-    linear-gradient(135deg, var(--fashion-bone) 0 38%, var(--fashion-stone) 38% 62%, var(--fashion-espresso) 62% 100%);
-}
-.fashion-system-section--rules { gap: var(--sp-md); }
-.fashion-file-note {
-  border: 1px solid var(--hair);
-  background: var(--paper);
-}
 
 @media (max-width: 768px) {
   :root .navbar {
@@ -695,25 +605,6 @@ html[lang="es"] .riso-home .rp-clearing { max-width: 78ch; }
     max-height: 670px;
   }
   .riso-home .rp-hero__media .rp-headshot--supporting { right: .25rem; width: 76px; }
-  .fashion-system-page .fashion-system-hero { grid-template-columns: 1fr; }
-  .fashion-system-page .fashion-key-visual {
-    width: 100%;
-    min-height: 520px;
-  }
-  .fashion-system-meta { grid-template-columns: 1fr; }
-  .fashion-system-meta article,
-  .fashion-system-meta article:last-child {
-    border-right: 0;
-    border-bottom: 1px solid var(--hair);
-  }
-  .fashion-system-meta article:last-child { border-bottom: 0; }
-  .fashion-route-grid { grid-template-columns: 1fr; }
-  .fashion-route-card,
-  .fashion-route-card:last-child {
-    border-right: 0;
-    border-bottom: 1px solid var(--hair);
-  }
-  .fashion-route-card:last-child { border-bottom: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -722,15 +613,4 @@ html[lang="es"] .riso-home .rp-clearing { max-width: 78ch; }
   .riso-home .rp-hero__media .rp-headshot {
     transition: none !important;
   }
-}
-
-/* Restored after the dead-rule sweep: this paragraph's measure lived in a rule
-   whose sibling selectors had died, so it was collected with them and the copy
-   ran the full hero width. */
-.fashion-system-page .fashion-system-hero__copy > p:not(.fashion-system-kicker) {
-  max-width: 46ch;
-  line-height: 1.7;
-}
-@media (max-width: 760px) {
-  .fashion-system-page .fashion-system-hero__copy > p:not(.fashion-system-kicker) { max-width: 32ch; }
 }

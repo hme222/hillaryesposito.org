@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
@@ -166,24 +166,43 @@ function ThanksShare() {
 }
 
 export default function RisoGrove() {
-  usePageTitle("Grove — Research-to-Scope Case Study");
   const { lang } = useLanguage();
+  usePageTitle("Grove — Research-to-Scope Case Study", lang !== "es");
+
+  const revealHashTarget = useCallback(() => {
+    const targetId = window.location.hash.slice(1);
+    if (!targetId) return;
+    const target = document.getElementById(targetId);
+    if (!target) return;
+
+    const details = target.matches("details")
+      ? target as HTMLDetailsElement
+      : target.closest<HTMLDetailsElement>("details");
+    if (details) details.open = true;
+
+    target.scrollIntoView({ block: "start", behavior: "auto" });
+    if (details) {
+      details.querySelector<HTMLElement>("summary")?.focus({ preventScroll: true });
+    }
+  }, []);
 
   // Let a direct chapter URL land after the lazy route and global route-focus
   // work have committed. Same-page chapter links already use native anchors;
-  // this closes the cold-load case used for owner review and shared links.
+  // this closes the cold-load case used for owner review and shared links. A
+  // target inside native details opens only when explicitly requested; normal
+  // Grove visits preserve the collapsed optional-depth state.
   useEffect(() => {
-    const targetId = window.location.hash.slice(1);
-    if (!targetId) return;
-    const timer = window.setTimeout(() => {
-      document.getElementById(targetId)?.scrollIntoView({ block: "start", behavior: "auto" });
-    }, 0);
-    return () => window.clearTimeout(timer);
-  }, []);
+    const timer = window.setTimeout(revealHashTarget, 0);
+    window.addEventListener("hashchange", revealHashTarget);
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener("hashchange", revealHashTarget);
+    };
+  }, [revealHashTarget]);
 
   // Scroll-reveal — fade/rise sections in as they enter view (Carmen-style
-  // motion). Shared with useFlagshipReveal/CuratedRolePage so the reveal +
-  // proximity-armed failsafe logic (and any future fix to it) lives in one
+  // motion). Shared with useFlagshipReveal so the reveal + proximity-armed
+  // failsafe logic (and any future fix to it) lives in one
   // place — see hooks/useFlagshipReveal.ts.
   useEffect(() => {
     const root = document.querySelector<HTMLElement>(".riso-page");
@@ -283,18 +302,22 @@ export default function RisoGrove() {
               <span>read · one designer, end to end</span>
             </span>
             <p className="rp-sub">
-              A 5-user moderated test showed people got lost; a 34-person survey then narrowed eleven features to three.
-              I am the sole designer; <b>Phase 2 is in progress</b>.
+              An exploratory 5-user test showed people got lost; a 34-person survey then narrowed eleven features to three.
+              I am the sole designer; <b>the redesign and retest are still in progress</b>.
             </p>
             <dl className="rp-heroEvidence" aria-label="Grove case evidence at a glance">
               <div><dt>Role</dt><dd>Sole product designer · end to end</dd></div>
-              <div><dt>Method</dt><dd>5-user moderated test → 34-person survey</dd></div>
+              <div><dt>Method</dt><dd>Exploratory test → 34-person survey</dd></div>
               <div><dt>Decision</dt><dd>11 features → 3 launch priorities</dd></div>
               <div><dt>Build</dt><dd>Working React prototype · AI-assisted implementation</dd></div>
-              <div><dt>State</dt><dd>Phase 2 of 3 · functional prototype</dd></div>
+              <div><dt>State</dt><dd>Phase 2 of 3 · redesign direction · retest pending</dd></div>
             </dl>
-            <a className="rp-cta" href="#grove-research">
-              See the rebuild →
+            <a
+              className="rp-cta"
+              href="#grove-prototype"
+              onClick={() => window.setTimeout(revealHashTarget, 0)}
+            >
+              Try the working browser prototype →
             </a>
           </div>
         </div>
@@ -384,10 +407,10 @@ export default function RisoGrove() {
       {/* THE REDESIGN — Emergent → focused, evidence-backed direction */}
       <section className="rp-section" id="grove-decisions" data-language-anchor="grove-decisions">
         <div className="rp-wrap">
-          <p className="rp-kicker">The redesign · what changes and why</p>
-          <h2 className="rp-title">Three features, one decision each.</h2>
+          <p className="rp-kicker">What the evidence says to build next</p>
+          <h2 className="rp-title">Three features, one testable direction each.</h2>
           <PhaseIndicator current={2} label="In progress · Phase 2 of 3" />
-          <p className="rp-lede" style={{ marginTop: "1.1rem" }}>One existing screen. One evidence-backed change.</p>
+          <p className="rp-lede" style={{ marginTop: "1.1rem" }}>Each direction is paired with the authentic first-build screen it would change. These are not completed redesigns.</p>
           {DECISIONS.map((d) => (
             <div className="rp-decision rp-reveal" key={d.feature} data-evidence="true">
               <p className="rp-decision__feature">{d.feature}</p>
@@ -399,7 +422,7 @@ export default function RisoGrove() {
                   </div>
                 </div>
                 <div className="rp-decision__col rp-decision__col--dir">
-                  <span className="rp-decision__tag rp-decision__tag--new">The decision</span>
+                  <span className="rp-decision__tag rp-decision__tag--new">Direction to test</span>
                   <p className="rp-decision__dirText">{d.why}</p>
                 </div>
               </div>
@@ -407,7 +430,7 @@ export default function RisoGrove() {
           ))}
           <p className="rp-note" style={{ marginTop: "clamp(2rem, 5vw, 3.5rem)" }}>
             <span className="rp-note__k">What remains</span>
-            Authentic first-build screens. High-fidelity redesign and social layer remain unbuilt. Phase 2 of 3.
+            Authentic first-build screens. High-fidelity redesign, edge states, and retest remain unbuilt. Phase 2 of 3.
           </p>
         </div>
       </section>
@@ -471,16 +494,16 @@ export default function RisoGrove() {
       {/* The specimen library is valuable to a design-systems reviewer, but it
           is secondary to the research-to-decision story. Keep it inspectable
           without charging every recruiter the full scroll cost. */}
-      <details className="rp-deepDive rp-deepDive--system">
+      <details className="rp-deepDive rp-deepDive--system" id="grove-prototype">
         <summary>
-          <span>Optional system detail</span>
-          <b>Inspect the tokens, components, and interaction specimens</b>
+          <span>Working browser prototype · React + TypeScript · Phase 2 of 3</span>
+          <b>Try the care, confidence, and safety interactions</b>
         </summary>
-        <section className="rp-section" data-language-anchor="grove-override">
+        <section className="rp-section" data-language-anchor="grove-prototype">
           <div className="rp-wrap">
-          <p className="rp-phase">Foundation <span>· the system</span></p>
-          <h2 className="rp-title" style={{ marginTop: ".4rem" }}>The system underneath.</h2>
-          <p className="rp-lede">Palette, type, principles, and three interactive specimens.</p>
+          <p className="rp-phase">Prototype proof <span>· interactive</span></p>
+          <h2 className="rp-title" style={{ marginTop: ".4rem" }}>Try the working prototype.</h2>
+          <p className="rp-lede">Three keyboard-operable interactions first; tokens and implementation detail follow.</p>
           <div data-evidence="true"><GroveSystemLab /></div>
           <h3 className="rp-subhead">Type scale</h3>
           <div className="rp-typescale" data-evidence="true">
@@ -565,7 +588,7 @@ export default function RisoGrove() {
         <div className="rp-next__inner">
           <div>
             <p className="rp-next__eyebrow">Next case study</p>
-            <p className="rp-next__title">Memorial Sloan Kettering</p>
+            <p className="rp-next__title">Memorial Sloan Kettering</p>
             <p className="rp-next__tag">UX · healthcare systems · 21,000 clinicians and staff</p>
           </div>
           <span className="rp-next__arrow" aria-hidden="true">→</span>

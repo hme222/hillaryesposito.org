@@ -58,7 +58,7 @@ function Duotone({ id, shadow, mid, highlight, table }: { id: string } & Edition
 
 /**
  * @status: stable
- * @purpose: Mounts the SVG risograph duotone `<filter>` definitions (one per brand "edition") once so any page can ink an image via `filter: url(#riso-<edition>)`; used across the riso/case-study/curated pages.
+ * @purpose: Mounts the SVG risograph duotone `<filter>` definitions (one per brand "edition") once so any page can ink an image via `filter: url(#riso-<edition>)`; used across the riso and case-study pages.
  */
 export default function RisoDefs() {
   return (

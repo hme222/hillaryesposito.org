@@ -31,8 +31,10 @@ export default function HomepageOpeningFilm({ open, onClose, returnFocusRef, onE
   const exitingRef = useRef(false);
   const skipRef = useRef<HTMLButtonElement | null>(null);
   const [exiting, setExiting] = useState(false);
-  const reduceMotion = typeof window !== "undefined"
-    && (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false);
+  const [reduceMotion, setReduceMotion] = useState(() => (
+    typeof window !== "undefined"
+      && (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false)
+  ));
 
   const finish = useCallback(() => {
     if (!open || exitingRef.current) return;
@@ -45,6 +47,19 @@ export default function HomepageOpeningFilm({ open, onClose, returnFocusRef, onE
       returnFocusRef.current?.focus({ preventScroll: true });
     }, EXIT_MS);
   }, [onClose, onExitStart, open, returnFocusRef]);
+
+  useEffect(() => {
+    const query = window.matchMedia?.("(prefers-reduced-motion: reduce)");
+    if (!query) return;
+
+    const handleChange = (event: MediaQueryListEvent) => {
+      setReduceMotion(event.matches);
+      if (event.matches && open) finish();
+    };
+
+    query.addEventListener?.("change", handleChange);
+    return () => query.removeEventListener?.("change", handleChange);
+  }, [finish, open]);
 
   useEffect(() => {
     if (!open) {

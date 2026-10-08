@@ -15,8 +15,8 @@ const APPROACH_FAILSAFE_MS = 2200;
 /**
  * Wires up scroll-reveal for every `.rp-reveal` element under `root`: the
  * real reveal-on-intersection observer, plus a proximity-armed failsafe.
- * Shared by useFlagshipReveal and by Grove's and CuratedRolePage's own
- * inline observer effects so the fix applies identically everywhere
+ * Shared by useFlagshipReveal and Grove's own inline observer effect so the
+ * fix applies identically everywhere
  * `.rp-reveal` is used. Returns a cleanup function.
  */
 export function wireRevealObservers(root: HTMLElement): () => void {

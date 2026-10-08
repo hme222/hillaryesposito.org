@@ -1,13 +1,10 @@
-import { curatedPages } from "../data/curatedPages";
-
 /**
  * Contrast regression coverage for the Riso accent system.
  *
  * jsdom has no layout engine, so the axe suite disables `color-contrast`.
  * These pure-math checks guard the tokens that render color text or filled
- * controls: every tailored-page accent (which re-inks `--coral`) and the
- * global fixed controls (recruiter pill + nav accent). If a future accent or
- * control color drops below WCAG AA for normal text, this fails.
+ * controls. If a future control color drops below WCAG AA for normal text,
+ * this fails.
  *
  * Theme paper + on-* foregrounds are the values defined in riso-page.css.
  */
@@ -37,27 +34,6 @@ function contrast(a: string, b: string): number {
 }
 
 describe("Riso accent contrast (WCAG AA, normal text)", () => {
-  const tailored = Object.values(curatedPages).filter((p) => p.accent);
-
-  it.each(tailored.map((p) => [p.company, p]))(
-    "%s light accent passes as text on light paper and behind white",
-    (_company, page) => {
-      const accent = (page as { accent: string }).accent;
-      expect(contrast(accent, LIGHT_PAPER)).toBeGreaterThanOrEqual(AA_NORMAL);
-      expect(contrast(WHITE, accent)).toBeGreaterThanOrEqual(AA_NORMAL);
-    },
-  );
-
-  it.each(tailored.map((p) => [p.company, p]))(
-    "%s dark accent passes as text on dark paper and behind dark ink",
-    (_company, page) => {
-      const accentDark =
-        (page as { accentDark?: string }).accentDark ?? "#ff8c82"; // default dark coral
-      expect(contrast(accentDark, DARK_PAPER)).toBeGreaterThanOrEqual(AA_NORMAL);
-      expect(contrast(DARK_INK, accentDark)).toBeGreaterThanOrEqual(AA_NORMAL);
-    },
-  );
-
   it("global recruiter pill keeps white text over its fixed coral", () => {
     // .recruiter-pill { background: #bd3828; color: #fff } — both themes
     expect(contrast(WHITE, "#bd3828")).toBeGreaterThanOrEqual(AA_NORMAL);

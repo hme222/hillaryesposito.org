@@ -65,44 +65,6 @@ export default function GroveSystemLab() {
 
   return (
     <div className="rp-lab">
-      <section className="rp-lab__tokens" aria-labelledby="grove-color-title">
-        <div className="rp-lab__intro">
-          <p className="rp-kicker">Color · meaning before decoration</p>
-          <h3 id="grove-color-title">A palette with jobs.</h3>
-          <p>Green acts. Amber waits nearby. Rose flags overdue care without turning a plant into a disappointed parent.</p>
-        </div>
-        <div className="rp-swatches">
-          {TOKENS.map((token) => (
-            <button
-              type="button"
-              className={`rp-swatch${copied && copied.hex === token.hex && copied.ok ? " is-copied" : ""}`}
-              key={token.hex}
-              onClick={() => copy(token.hex)}
-              aria-label={`${token.name} ${token.hex}. ${token.use}. Click to copy.`}
-            >
-              <span className="rp-swatch__chip" style={{ background: token.hex }} />
-              <span className="rp-swatch__meta">
-                <span className="rp-swatch__name">{token.name}</span>
-                <span className="rp-swatch__hex">{swatchStatus(token.hex)}</span>
-                <span className="rp-swatch__use"><b>Use:</b> {token.use}</span>
-                <span className="rp-swatch__avoid"><b>Avoid:</b> {token.avoid}</span>
-              </span>
-            </button>
-          ))}
-        </div>
-        <p className="sr-only" role="status" aria-live="polite">
-          {copied ? (copied.ok ? `${copied.hex} copied to clipboard` : `Clipboard unavailable — select ${copied.hex} to copy it`) : ""}
-        </p>
-        <div className="rp-neutral" aria-label="Grove neutral color ramp from ink to paper">
-          {["#20241C", "#45503F", "#66705F", "#C2CBB8", "#DEE4D6", "#F5F0EA"].map((color, index) => (
-            <span key={color} style={{ background: color }} title={color}>
-              <span>{index === 0 ? "ink" : index === 5 ? "paper" : index + 1}</span>
-            </span>
-          ))}
-        </div>
-        <p className="rp-tokenRecipe">ink/900 → paper/50 · the quiet range everything else sits inside</p>
-      </section>
-
       <section className="rp-lab__live" aria-labelledby="grove-live-title">
         <div className="rp-lab__intro">
           <p className="rp-kicker">Live components · try them</p>
@@ -222,6 +184,44 @@ export default function GroveSystemLab() {
 
           <p className="rp-tokenRecipe">surface/paper · type/label · state/{tab} · radius/field-card</p>
         </div>
+      </section>
+
+      <section className="rp-lab__tokens" aria-labelledby="grove-color-title">
+        <div className="rp-lab__intro">
+          <p className="rp-kicker">Color · meaning before decoration</p>
+          <h3 id="grove-color-title">A palette with jobs.</h3>
+          <p>Green acts. Amber waits nearby. Rose flags overdue care without turning a plant into a disappointed parent.</p>
+        </div>
+        <div className="rp-swatches">
+          {TOKENS.map((token) => (
+            <button
+              type="button"
+              className={`rp-swatch${copied && copied.hex === token.hex && copied.ok ? " is-copied" : ""}`}
+              key={token.hex}
+              onClick={() => copy(token.hex)}
+              aria-label={`${token.name} ${token.hex}. ${token.use}. Click to copy.`}
+            >
+              <span className="rp-swatch__chip" style={{ background: token.hex }} />
+              <span className="rp-swatch__meta">
+                <span className="rp-swatch__name">{token.name}</span>
+                <span className="rp-swatch__hex">{swatchStatus(token.hex)}</span>
+                <span className="rp-swatch__use"><b>Use:</b> {token.use}</span>
+                <span className="rp-swatch__avoid"><b>Avoid:</b> {token.avoid}</span>
+              </span>
+            </button>
+          ))}
+        </div>
+        <p className="sr-only" role="status" aria-live="polite">
+          {copied ? (copied.ok ? `${copied.hex} copied to clipboard` : `Clipboard unavailable — select ${copied.hex} to copy it`) : ""}
+        </p>
+        <div className="rp-neutral" aria-label="Grove neutral color ramp from ink to paper">
+          {["#20241C", "#45503F", "#66705F", "#C2CBB8", "#DEE4D6", "#F5F0EA"].map((color, index) => (
+            <span key={color} style={{ background: color }} title={color}>
+              <span>{index === 0 ? "ink" : index === 5 ? "paper" : index + 1}</span>
+            </span>
+          ))}
+        </div>
+        <p className="rp-tokenRecipe">ink/900 → paper/50 · the quiet range everything else sits inside</p>
       </section>
     </div>
   );

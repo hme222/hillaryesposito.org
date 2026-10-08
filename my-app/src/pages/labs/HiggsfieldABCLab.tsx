@@ -162,7 +162,7 @@ export default function HiggsfieldABCLab() {
 
   return (
     <main className={`riso-page hrm-page ${reduced ? "is-reduced" : ""}`} lang="en">
-      <header className="hrm-header"><p>Selected work</p><h1>Three products, three different problems</h1></header>
+      <header className="hrm-header"><p>Selected work</p><h1>Three products, three different problems</h1></header>
       <div className="hrm-motion-control"><label><input type="checkbox" checked={reduced} onChange={(event) => setReduced(event.target.checked)} /> Reduced motion</label></div>
       <section className="hrm-work" aria-label="Selected projects">
         <div className="hrm-worklist">{PROJECTS.map((project) => <IntentRow key={project.id} project={project} reduced={reduced} />)}</div>

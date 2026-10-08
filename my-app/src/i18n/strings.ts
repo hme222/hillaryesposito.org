@@ -64,35 +64,33 @@ const en = {
   // durable claim is scope: the whole path a task takes, not the screen at the
   // end of it — which is what the MSK case study actually demonstrates.
   //
-  // This sentence used to be generic ("a workflow I initiated") while a
-  // separate floating card above the artifact carried the specific claim
-  // ("one filing queue replaced a four-system workaround"). That card is gone
-  // now — two elements telling one story in two registers was exactly the
-  // density the hero pass was asked to fix — and its sentence moved here, so
-  // the proof paragraph states the mechanism and the outcome once, together.
-  // Phrasing was tuned (not just merged) to hold the line count the mobile
-  // hero had before: at 390px this must still clear 4 lines, not 5, or the
-  // primary CTA below it drops below the fold — measured live, not assumed.
+  // Keep the proposal and the later implementation distinct. The prior 20%
+  // clause compressed an organization result into Hillary's personal action.
   "home.riso.heroLead":
-    "One filing queue replaced a four-system workaround at Memorial Sloan Kettering —",
-  "home.riso.heroProof": "a 20% organization-wide electronic medical record cost reduction.",
-  "home.riso.openingVisual": "Watch the 10-second portfolio opener",
+    "At Memorial Sloan Kettering, I traced a paper detour across departments and proposed a digital filing workflow.",
+  "home.riso.heroProof": "IT and UX implemented it after I changed roles.",
+  "home.riso.openingVisual": "Watch the 5-second portfolio opener",
   "home.riso.primaryWork": "Review the MSK workflow",
   "home.riso.heroClose": "",
   "home.riso.queueExpand": "View the full queue · 5 items",
   "home.riso.queueCollapse": "Show fewer",
-  "home.riso.workTitle": "What I built, and what it proved.",
+  "home.riso.workTitle": "Decisions you can inspect",
   "home.riso.groveDesc":
-    "34-person survey · eleven features narrowed to three · AI-assisted React prototype with reviewable decisions.",
+    "My 34-person survey narrowed eleven proposed features to three. I am redesigning the AI-assisted prototype; testing the redesign is next.",
   "home.riso.mskDesc":
-    "Four departments · implemented workflow · still used through two system upgrades.",
+    "I diagnosed the paper detour, checked feasibility across departments, and pitched a digital filing workflow. IT and UX built it after my role changed.",
   "home.riso.logisticsDesc":
-    "Seven aid stations · shared tracking · resupply time reduced 85%.",
+    "I planned and tracked a warehouse relocation that shortened medical resupply time by 85%, then built shared order tracking for seven aid stations.",
+  "home.riso.knowunityDesc":
+    "Voice-in, text-out active recall after study. Interactive mobile prototype with mocked recall; not a shipped Knowunity feature.",
   "home.riso.mobbinDesc":
     "Three finance apps turned into a searchable reference — the work was the taxonomy and the naming, not the screenshots. 200+ screens per app, an editor's judgment on every one.",
   "home.riso.groveAlt": "Grove daily care screen showing one clear plant-care task and overdue plants first",
   "home.riso.mskAlt": "Recreated Memorial Sloan Kettering filing queue, showing patient records moving from ready-to-send through filed",
-  "home.riso.logisticsAlt": "Service mechanism showing shared forecasting across seven aid stations and an 85% reduction in resupply time",
+  "home.riso.logisticsAlt": "Service mechanism diagram contrasting a rear supply point with the warehouse moved forward, beside an 85% reduction in resupply time",
+  "home.riso.knowunityAlt": "Two Say It Back mobile prototype states showing a voice-recall prompt followed by the captured response",
+  "home.riso.knowunityPrototypeAria": "Try the Say It Back interactive prototype (opens in new tab)",
+  "home.riso.knowunitySystemAria": "Review the Say It Back component system (opens in new tab)",
   "home.riso.mobbinAlt": "One of the third-party app screens documented for Mobbin — a finance app welcome screen",
   "home.riso.groveTag": "Active · Phase 2 of 3",
   "home.riso.proofKicker": "The proof",
@@ -150,7 +148,7 @@ const en = {
   "home.stat.mobbinSource": "Mobbin pattern study",
   "home.stat.groveSource": "Grove discovery research",
   "home.stat.mskSource": "MSK clinical operations",
-  "home.stat.logisticsSource": "Army medical logistics service record",
+  "home.stat.logisticsSource": "Army service record · owner-reported",
   "home.trustAria": "Credentials",
   "home.trust.army": "Army Veteran",
   "home.trust.credentials": "MHA + Lean Six Sigma",
@@ -161,15 +159,18 @@ const en = {
   "home.proj.grove.subtitle": "Grove · Product Design · Data Analytics & Research",
   "home.proj.msk.subtitle": "Memorial Sloan Kettering · UX & Product Design",
   "home.proj.logistics.subtitle": "Army medical logistics · Service Design",
+  "home.proj.knowunity.subtitle": "Knowunity · Design sprint · Interactive mobile prototype",
   "home.proj.mobbin.subtitle": "Mobbin · Freelance UX Flow Documentation",
   "home.proj.grove.title": "Eleven features became three",
-  "home.proj.msk.title": "A filing queue replaced a four-system workaround",
+  "home.proj.msk.title": "A filing queue replaced a four-department paper detour",
   "home.proj.logistics.title": "Medical resupply time reduced 85%",
+  "home.proj.knowunity.title": "Say It Back: voice-based active recall",
   "home.proj.mobbin.title": "200+ screens per app, searchable by task",
 
   // ── Home: contact / CTA ──
   "home.ctaTitle": "Building a product where the details decide?",
-  "home.ctaEmailAria": "Send me a note",
+  "contact.note": "Send me a note",
+  "contact.copy": "or copy:",
   "home.linkedinAria": "LinkedIn profile (opens in new tab)",
 
   // ── Recruiter pill (global trigger only - the panel stays English in Phase 1) ──
@@ -225,25 +226,30 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.eyebrow": "Diseñadora de productos de salud · más de 13 años en salud",
   "home.riso.heroTitle": "Diseño productos de salud desde el flujo de trabajo.",
   "home.riso.heroLead":
-    "Una cola de archivo reemplazó un desvío de cuatro sistemas en Memorial Sloan Kettering —",
-  "home.riso.heroProof": "una reducción del 20% en los costos del registro médico electrónico de toda la organización.",
-  "home.riso.openingVisual": "Ver la apertura del portafolio de 10 segundos",
+    "En Memorial Sloan Kettering, rastreé un desvío en papel entre departamentos y propuse un flujo de archivo digital.",
+  "home.riso.heroProof": "Los equipos de TI y UX lo implementaron después de que cambié de puesto.",
+  "home.riso.openingVisual": "Ver la apertura del portafolio de 5 segundos",
   "home.riso.primaryWork": "Ver el flujo de trabajo de MSK",
   "home.riso.heroClose": "",
   "home.riso.queueExpand": "Ver la cola completa · 5 elementos",
   "home.riso.queueCollapse": "Mostrar menos",
-  "home.riso.workTitle": "Lo que construí, y lo que demostró.",
+  "home.riso.workTitle": "Decisiones que puede revisar",
   "home.riso.groveDesc":
-    "Encuesta a 34 personas · once funciones reducidas a tres · prototipo React asistido por IA con decisiones revisables.",
+    "Mi encuesta a 34 personas redujo once funciones propuestas a tres. Estoy rediseñando el prototipo asistido por IA; probar el rediseño es el siguiente paso.",
   "home.riso.mskDesc":
-    "Cuatro departamentos · flujo implementado · vigente tras dos actualizaciones.",
+    "Diagnostiqué el desvío en papel, verifiqué la viabilidad entre departamentos y propuse un flujo de archivo digital. Los equipos de TI y UX lo construyeron después de que cambié de puesto.",
   "home.riso.logisticsDesc":
-    "Siete estaciones · seguimiento compartido · tiempo de reabastecimiento un 85% menor.",
+    "Planifiqué y supervisé una reubicación de almacén que redujo un 85% el tiempo de reabastecimiento médico, y luego creé un seguimiento compartido para siete puestos.",
+  "home.riso.knowunityDesc":
+    "Recuerdo activo después del estudio con voz de entrada y texto de salida. Prototipo móvil interactivo con recuerdo simulado; no es una función publicada de Knowunity.",
   "home.riso.mobbinDesc":
     "Tres apps financieras convertidas en una referencia buscable: el trabajo fue la taxonomía y los nombres, no las capturas. Más de 200 pantallas por app, con criterio de editora en cada una.",
   "home.riso.groveAlt": "Pantalla de cuidado diario de Grove con una tarea clara y las plantas atrasadas primero",
   "home.riso.mskAlt": "Cola de archivo recreada de Memorial Sloan Kettering, mostrando registros de pacientes desde listos para enviar hasta archivados",
-  "home.riso.logisticsAlt": "Mecanismo de servicio con pronóstico compartido entre siete puestos y una reducción del 85% en el tiempo de reabastecimiento",
+  "home.riso.logisticsAlt": "Diagrama de mecanismo de servicio que contrasta un punto de suministro en la retaguardia con el almacén movido al frente, junto a una reducción del 85% en el tiempo de reabastecimiento",
+  "home.riso.knowunityAlt": "Dos estados del prototipo móvil Say It Back que muestran una indicación de recuerdo por voz seguida de la respuesta capturada",
+  "home.riso.knowunityPrototypeAria": "Probar el prototipo interactivo Say It Back (se abre en una pestaña nueva)",
+  "home.riso.knowunitySystemAria": "Revisar el sistema de componentes de Say It Back (se abre en una pestaña nueva)",
   "home.riso.mobbinAlt": "Una de más de 200 pantallas de apps de terceros documentadas para Mobbin — la pantalla de bienvenida de una app financiera",
   "home.riso.groveTag": "Activo · Fase 2 de 3",
   "home.riso.proofKicker": "La evidencia",
@@ -301,7 +307,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.stat.mobbinSource": "Estudio de patrones de Mobbin",
   "home.stat.groveSource": "Investigación de descubrimiento de Grove",
   "home.stat.mskSource": "Operaciones clínicas de MSK",
-  "home.stat.logisticsSource": "Expediente de servicio de logística médica del Ejército",
+  "home.stat.logisticsSource": "Expediente de servicio del Ejército · dato autorreportado",
   "home.trustAria": "Credenciales",
   "home.trust.army": "Veterana del Ejército",
   "home.trust.credentials": "MHA + Lean Six Sigma",
@@ -312,15 +318,18 @@ const es: Partial<Record<StringKey, string>> = {
   "home.proj.grove.subtitle": "Grove · Diseño de producto · Análisis de datos e investigación",
   "home.proj.msk.subtitle": "Memorial Sloan Kettering · Diseño UX y de producto",
   "home.proj.logistics.subtitle": "Logística médica del Ejército · Diseño de servicios",
+  "home.proj.knowunity.subtitle": "Knowunity · Sprint de diseño · Prototipo móvil interactivo",
   "home.proj.mobbin.subtitle": "Mobbin · Documentación freelance de flujos UX",
   "home.proj.grove.title": "Once funciones se convirtieron en tres",
-  "home.proj.msk.title": "Una cola de archivo reemplazó un desvío de cuatro sistemas",
+  "home.proj.msk.title": "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas",
   "home.proj.logistics.title": "Tiempo de reabastecimiento médico reducido un 85%",
+  "home.proj.knowunity.title": "Say It Back: recuerdo activo por voz",
   "home.proj.mobbin.title": "Más de 200 pantallas por app, buscables por tarea",
 
   // ── Home: contact / CTA ──
   "home.ctaTitle": "¿Está creando un producto donde los detalles deciden?",
-  "home.ctaEmailAria": "Envíeme un correo",
+  "contact.note": "Escríbame",
+  "contact.copy": "o copie:",
   "home.linkedinAria": "Perfil de LinkedIn (se abre en una pestaña nueva)",
 
   // ── Recruiter pill ──

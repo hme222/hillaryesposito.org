@@ -6,8 +6,6 @@ import RisoHome from "../pages/RisoHome";
 import About from "../pages/AboutMe";
 import { useLanguage } from "./LanguageContext";
 
-import CuratedRolePage from "../pages/curated/CuratedRolePage";
-import FashionCampaignSystem from "../pages/curated/FashionCampaignSystem";
 import NotFoundPage from "../pages/NotFoundPage";
 import { Navigate } from "react-router-dom";
 
@@ -116,9 +114,8 @@ function ScrollToTop() {
     const params = new URLSearchParams(search);
 
     // GitHub Pages deep-link restore: 404.html bounces an unknown path to "/"
-    // carrying ?p=<path>. This has to run first and bail out — without it the
-    // curated pages are unreachable by direct link, which is the only way they
-    // are ever opened.
+    // carrying ?p=<path>. This has to run first so case-study deep links return
+    // to their intended route.
     const restoredPath = params.get("p");
     if (pathname === "/" && restoredPath?.startsWith("/")) {
       const nextSearch = new URLSearchParams(search);
@@ -193,7 +190,6 @@ const ROUTE_NAMES: Record<string, string> = {
   "/case-study/grove": "Grove case study",
   "/case-study/mobbin": "Mobbin case study",
   "/case-study/logistics": "Medical logistics case study",
-  "/curated/fashion-campaign-system": "Fashion campaign system",
   "/lab/higgsfield-abc": "Higgsfield A B C private lab",
 };
 function RouteAnnouncer() {
@@ -204,7 +200,7 @@ function RouteAnnouncer() {
     // Small delay so the route's real H1 is mounted before we announce it.
     const id = window.setTimeout(() => {
       const heading = document.querySelector<HTMLElement>("#main-content h1")?.textContent?.trim();
-      const fallback = pathname.startsWith("/curated/") ? "Curated role page" : ROUTE_NAMES[pathname] || "Page";
+      const fallback = ROUTE_NAMES[pathname] || "Page";
       setMsg(lang === "es" ? `${heading || fallback} cargada` : `${heading || fallback} loaded`);
     }, 150);
     return () => window.clearTimeout(id);
@@ -231,8 +227,6 @@ export default function AppRoutes() {
       <Route path="/case-study/mobbin" element={<LazyPage name="Mobbin"><FlagshipMobbin /></LazyPage>} />
       <Route path="/case-study/msk" element={<LazyPage name="MSK"><FlagshipMSK /></LazyPage>} />
       <Route path="/case-study/logistics" element={<LazyPage name="Medical logistics"><FlagshipLogistics /></LazyPage>} />
-      <Route path="/curated/fashion-campaign-system" element={<FashionCampaignSystem />} />
-      <Route path="/curated/:slug" element={<CuratedRolePage />} />
       <Route path="/lab/higgsfield-abc" element={<LazyPage name="Higgsfield A B C lab"><HiggsfieldABCLab /></LazyPage>} />
 
       <Route path="*" element={<NotFoundPage />} />

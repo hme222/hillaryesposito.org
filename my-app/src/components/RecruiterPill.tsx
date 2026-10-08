@@ -21,6 +21,7 @@ export default function RecruiterPill() {
   const t = useT();
   const { lang } = useLanguage();
   const [open, setOpen] = useState(false);
+  const [returnFocus, setReturnFocus] = useState<HTMLElement | null>(null);
 
   // Keep the utility out of every opening composition. It appears only after
   // the reader has moved beyond the hero, where it no longer competes with the
@@ -33,7 +34,10 @@ export default function RecruiterPill() {
   }, []);
 
   useEffect(() => {
-    const handler = () => setOpen(true);
+    const handler = (e: Event) => {
+      setReturnFocus((e as CustomEvent<{ returnFocus?: HTMLElement | null }>).detail?.returnFocus ?? null);
+      setOpen(true);
+    };
     window.addEventListener("open-recruiter-panel", handler);
     return () => window.removeEventListener("open-recruiter-panel", handler);
   }, []);
@@ -51,7 +55,10 @@ export default function RecruiterPill() {
       <button
         type="button"
         className={`recruiter-pill${scrolled ? "" : " recruiter-pill--unscrolled"}`}
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          setReturnFocus(null);
+          setOpen(true);
+        }}
         aria-label={t("recruiter.pillAria")}
       >
         {/* Panel content stays English in Phase 1 - only the trigger translates. */}
@@ -64,6 +71,7 @@ export default function RecruiterPill() {
         labelledBy="recruiter-panel-title"
         className="recruiter-panel"
         lang="en"
+        returnFocus={returnFocus}
       >
         {/* Panel content stays English in Phase 1 - only the trigger translates. */}
         <div className="recruiter-panel__inner">
@@ -95,7 +103,7 @@ export default function RecruiterPill() {
 
                 <section className="recruiter-panel__section">
                   <p className="recruiter-panel__label">In one line</p>
-                  <p>At MSK, a clinical workflow I initiated contributed to a 20% organization-wide electronic medical record cost reduction. I bring 13+ years in healthcare and medical logistics to product decisions, with service design and research built in.</p>
+                  <p>At MSK, a clinical workflow I initiated contributed to a larger initiative that cut organization-wide electronic medical record costs 20%. I bring 13+ years in healthcare and medical logistics to product decisions, with service design and research built in.</p>
                 </section>
 
                 <section className="recruiter-panel__section">
@@ -103,8 +111,8 @@ export default function RecruiterPill() {
                   <ul className="recruiter-panel__projects">
                     <li>
                       <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/msk")}>
-                        <strong>MSK · A filing queue replaced a four-system workaround</strong>
-                        <span>Mapped across clinical, IT, imaging, and operations; the workflow I initiated contributed to a 20% organization-wide electronic medical record cost reduction</span>
+                        <strong>MSK · A filing queue replaced a four-department paper detour</strong>
+                        <span>Mapped across clinical, IT, imaging, and operations; the workflow I initiated contributed to a larger initiative that cut organization-wide electronic medical record costs 20%</span>
                       </button>
                     </li>
                     <li>
@@ -121,11 +129,6 @@ export default function RecruiterPill() {
                     </li>
                   </ul>
                 </section>
-
-                {/* Targeted role pages are intentionally unlisted here. The
-                    /curated/:slug routes still resolve, so a tailored page can
-                    be shared with a specific recruiter by direct link - but the
-                    public panel never reveals who is being targeted. */}
 
                 <section className="recruiter-panel__section recruiter-panel__actions">
                   <a className="recruiter-panel__btn recruiter-panel__btn--primary"

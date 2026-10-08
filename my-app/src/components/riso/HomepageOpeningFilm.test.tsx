@@ -98,4 +98,28 @@ describe("Homepage opening film", () => {
     expect(container.querySelector(".rp-openingFilm__poster")).not.toBeNull();
     expect(container.querySelector("video")).toBeNull();
   });
+
+  it("stops an open film when reduced motion is enabled at runtime", async () => {
+    let changeListener: ((event: MediaQueryListEvent) => void) | undefined;
+    Object.defineProperty(window, "matchMedia", {
+      configurable: true,
+      value: () => ({
+        matches: false,
+        addEventListener: (_type: string, listener: (event: MediaQueryListEvent) => void) => {
+          changeListener = listener;
+        },
+        removeEventListener() {},
+      }),
+    });
+
+    await act(async () => root.render(<Harness initialOpen />));
+    expect(container.querySelector("video")).not.toBeNull();
+
+    await act(async () => changeListener?.({ matches: true } as MediaQueryListEvent));
+    expect(container.querySelector(".rp-openingFilm")?.classList.contains("is-exiting")).toBe(true);
+    expect(container.querySelector("video")).toBeNull();
+
+    act(() => jest.advanceTimersByTime(340));
+    expect(container.querySelector(".rp-openingFilm")).toBeNull();
+  });
 });

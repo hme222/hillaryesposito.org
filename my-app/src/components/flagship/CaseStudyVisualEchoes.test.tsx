@@ -37,6 +37,35 @@ describe("case-study visual echoes", () => {
     expect(container.querySelector(".fp-proofStatus")?.textContent).toMatch(/status updated/i);
   });
 
+  it("resolves an in-flight MSK filing sequence when reduced motion turns on", async () => {
+    jest.useFakeTimers();
+    let changeListener: ((event: MediaQueryListEvent) => void) | undefined;
+    Object.defineProperty(window, "matchMedia", {
+      configurable: true,
+      value: () => ({
+        matches: false,
+        addEventListener: (_type: string, listener: (event: MediaQueryListEvent) => void) => {
+          changeListener = listener;
+        },
+        removeEventListener() {},
+      }),
+    });
+
+    await act(async () => root.render(<MSKFilingReceipt />));
+    const button = container.querySelector<HTMLButtonElement>(".fp-proofControl");
+    await act(async () => button?.click());
+    act(() => jest.advanceTimersByTime(500));
+    expect(container.querySelector(".fp-receipt__trace")?.classList.contains("step-1")).toBe(true);
+
+    await act(async () => changeListener?.({ matches: true } as MediaQueryListEvent));
+    expect(container.querySelector(".fp-receipt__trace")?.classList.contains("step-4")).toBe(true);
+    expect(container.querySelector(".fp-proofStatus")?.textContent).toMatch(/status updated/i);
+
+    act(() => jest.advanceTimersByTime(5000));
+    expect(container.querySelector(".fp-receipt__trace")?.classList.contains("step-4")).toBe(true);
+    jest.useRealTimers();
+  });
+
   it("adds metadata beside untouched Mobbin captures", async () => {
     await act(async () => root.render(<MobbinIndexLens />));
     const button = container.querySelector<HTMLButtonElement>(".fp-proofControl");

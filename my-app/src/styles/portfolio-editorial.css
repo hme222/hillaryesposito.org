@@ -1,13 +1,9 @@
-.about-page,
-.curated-page,
-.fashion-system-page {
+.about-page {
   --editorial-deep: #1d2a22;
   --editorial-signal: var(--accent-warm, #946420);
 }
 
-.about-page section[id],
-.curated-page section[id],
-.fashion-system-page section[id] {
+.about-page section[id] {
   scroll-margin-top: 150px;
 }
 
@@ -165,9 +161,11 @@
   align-items: center;
 }
 /* Plain journal label instead of Home's dark eyebrow plate. */
+/* --ink, not --muted: the label sits on a 62% clearing over the collage,
+   where --muted measured 4.06:1 light / 3.45:1 dark (--ink-2: 3.94 dark). */
 .about-page .about-hero-profile .rp-eyebrow {
   background: transparent;
-  color: var(--muted);
+  color: var(--ink);
   padding: 0 0 .1rem;
 }
 .about-page .about-hero-profile::after { display: none; }
@@ -196,7 +194,13 @@
   letter-spacing: .11em;
   text-transform: uppercase;
   color: var(--muted);
-  padding-left: .15rem;
+  /* Sits straight on the collage, which no single text colour clears in both
+     themes (was 2.92:1 light, 1.09:1 dark) — so it gets a paper plate, the
+     surface --muted is tuned for. */
+  align-self: flex-start;
+  background: var(--paper);
+  padding: .3rem .5rem;
+  border-radius: var(--r-plate);
 }
 .about-page .about-hero-profile .rp-clearing {
   max-width: 34ch;
@@ -220,54 +224,7 @@
 }
 
 
-/* Curated pages: recruiter brief as an evidence dossier. */
-.curated-page .curated-hero {
-  border-bottom: 1px solid color-mix(in srgb, currentColor 16%, transparent);
-}
-.curated-page .curated-hero h1 {
-  font-family: var(--font-editorial);
-  font-size: clamp(3rem, 8vw, 7.2rem);
-  letter-spacing: -.036em;
-  line-height: .99;
-}
-.curated-page .gh-meta-strip {
-  margin-top: 0;
-  border-top: 0;
-}
-.curated-page > section {
-  padding-block: var(--sp-2xl);
-  border-top: 1px solid color-mix(in srgb, currentColor 14%, transparent);
-}
-.curated-page .curated-proof-grid {
-  gap: 0;
-  border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
-}
-.curated-page .curated-proof-card {
-  min-height: 190px;
-  border: 0;
-  border-right: 1px solid color-mix(in srgb, currentColor 18%, transparent);
-  border-radius: 0;
-  box-shadow: none;
-}
-.curated-page .curated-proof-card:last-child { border-right: 0; }
-.curated-page .curated-proof-card__stat {
-  font-family: var(--font-editorial);
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  letter-spacing: -.03em;
-}
-.curated-page .curated-sequence {
-  border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent);
-}
-.curated-page .curated-sequence__item {
-  border: 0;
-  border-bottom: 1px solid color-mix(in srgb, currentColor 18%, transparent);
-  border-radius: 0;
-  background: transparent;
-}
-.curated-page .curated-link-card {
-  border-radius: var(--r-plate);
-}.dark-mode .about-page,
-.dark-mode .curated-page {
+.dark-mode .about-page {
   --editorial-deep: #0f1712;
 }
 
@@ -279,14 +236,6 @@
 
   .about-page .about-story-card__image { min-height: 340px; }
   .about-page .about-story-card__content { min-height: 420px; }
-
-  .curated-page .curated-proof-grid { grid-template-columns: 1fr; }
-  .curated-page .curated-proof-card,
-  .curated-page .curated-proof-card:last-child {
-    border-right: 0;
-    border-bottom: 1px solid color-mix(in srgb, currentColor 18%, transparent);
-  }
-  .curated-page .curated-proof-card:last-child { border-bottom: 0; }
 
 }
 
@@ -509,11 +458,12 @@
 }
 .not-found__copy { padding-bottom: clamp(1rem, 5vw, 5rem); }
 .not-found h1 {
-  text-wrap: balance;
+  /* 6rem in a 530px column stranded "off." on its own line. */
+  text-wrap: pretty;
   margin: 0 0 1.25rem;
   font-family: "Archivo", -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 850;
-  font-size: clamp(2.8rem, 6vw, 6rem);
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
   letter-spacing: -.022em;
   line-height: .98;
 }
