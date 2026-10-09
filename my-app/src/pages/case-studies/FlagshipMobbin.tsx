@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
 import ReadingProgress from "../../components/flagship/ReadingProgress";
+import ShareCaseStudy from "../../components/flagship/ShareCaseStudy";
 import DecisionStory from "../../components/flagship/DecisionStory";
 import EvidenceField from "../../components/flagship/EvidenceField";
 import MobbinIndexLens from "../../components/flagship/MobbinIndexLens";
@@ -158,6 +159,7 @@ export default function FlagshipMobbin() {
           <h2>Need someone who can see the pattern and explain why it matters?</h2>
           <p>Two hundred screens later, I am very good at spotting when “common pattern” actually means “habit nobody questioned.”</p>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Send me a note →</a>
+          <ShareCaseStudy title="Mobbin — a case study by Hillary Esposito" />
         </div>
       </section>
 

@@ -2673,11 +2673,10 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 /* ---------- thanks + share + woohoo ---------- */
 .rp-thanks .rp-title { text-wrap: balance; }
 .rp-shareRow { display: flex; align-items: center; flex-wrap: wrap; gap: .3rem; margin-top: 1.5rem; }
-.rp-share { font: inherit; font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 700;
-  color: var(--on-green); background: var(--green); border: 0; border-radius: var(--r-plate); min-height: 44px; padding: .72rem 1.15rem; cursor: pointer; display: inline-flex; align-items: center; gap: .5rem;
-  box-shadow: 0 6px 18px color-mix(in srgb, var(--green) 34%, transparent); transition: transform .2s ease, filter .2s ease; }
-.rp-share:hover { filter: brightness(1.07); transform: translateY(-2px); }
-.rp-share:active { transform: translateY(0) scale(.96); }
+/* The share control is the ghost CTA (.rp-cta.rp-cta--ghost) on all four case
+   studies — it used to be a third, green rounded button style on Grove alone.
+   Only the <button> resets the CTA rules don't cover live here. */
+.rp-share { cursor: pointer; line-height: 1.2; }
 .rp-woohoo { display: inline-flex; align-items: center; gap: .4rem; margin-left: .7rem; font-family: var(--mono); font-size: .74rem; color: var(--green);
   opacity: 0; transform: translateY(6px) scale(.9); transition: opacity .3s ease, transform .3s ease; pointer-events: none; }
 .rp-woohoo.show { opacity: 1; transform: none; animation: rp-pop .55s cubic-bezier(.2,1.7,.4,1); }

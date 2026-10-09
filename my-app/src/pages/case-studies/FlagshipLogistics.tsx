@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
 import ReadingProgress from "../../components/flagship/ReadingProgress";
+import ShareCaseStudy from "../../components/flagship/ShareCaseStudy";
 import EvidenceField from "../../components/flagship/EvidenceField";
 import LogisticsMechanism from "../../components/LogisticsMechanism";
 import RisoDefs from "../../components/riso/RisoDefs";
@@ -198,6 +199,7 @@ export default function FlagshipLogistics() {
           <h2>Need someone who has done this where it counted?</h2>
           <p>I have run a supply chain where being wrong had a cost, and redesigned clinical systems where the same was true. The instinct transfers: find the workaround, make it visible, and change the sequence.</p>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Send me a note →</a>
+          <ShareCaseStudy title="Medical logistics — a case study by Hillary Esposito" />
         </div>
       </section>
 
