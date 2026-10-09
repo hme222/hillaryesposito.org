@@ -115,6 +115,8 @@ const STATS = [
 
 const DISPATCH_TRAIN_HOLD_SECONDS = 3.8;
 
+const OPENING_FILM_SEEN_KEY = "portfolio:opening-film-seen";
+
 export default function RisoHome() {
   usePageTitle();
   const t = useT();
@@ -123,7 +125,22 @@ export default function RisoHome() {
   const navigate = useNavigate();
   const [dispatchOpen, setDispatchOpen] = useState(false);
   const [dispatchTrainDeparted, setDispatchTrainDeparted] = useState(false);
-  const [openingFilmOpen, setOpeningFilmOpen] = useState(false);
+  // Plays once per browser tab on a plain homepage visit (owner decision
+  // 2026-10-09, reversing the 2026-08-24 button-only rule). Never for reduced
+  // motion, never over a deep link to a homepage section, never on a refresh
+  // or return in the same tab. The "Watch" button still replays it.
+  const [openingFilmOpen, setOpeningFilmOpen] = useState(() => {
+    try {
+      if (typeof window === "undefined") return false;
+      if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return false;
+      if (window.location.hash || new URLSearchParams(window.location.search).has("scrollTo")) return false;
+      if (window.sessionStorage.getItem(OPENING_FILM_SEEN_KEY)) return false;
+      window.sessionStorage.setItem(OPENING_FILM_SEEN_KEY, "1");
+      return true;
+    } catch {
+      return false;
+    }
+  });
   const openingFilmTriggerRef = useRef<HTMLButtonElement>(null);
   const [dispatchTrainReturning, setDispatchTrainReturning] = useState(false);
   const dispatchSectionRef = useRef<HTMLElement>(null);
