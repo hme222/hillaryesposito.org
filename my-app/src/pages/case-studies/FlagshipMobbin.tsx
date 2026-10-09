@@ -40,6 +40,17 @@ const STEPS = [
   { n: "04", title: "Write for someone I will never meet", body: "Each annotation has to explain what the screen does, where it sits, and why the pattern matters without the source app open.", note: "Context must travel" },
 ];
 
+// Which documented app sits beside each decision. Index into APPS. The pairing
+// is by what each screen actually shows, nothing is claimed beyond that:
+// 01 Kikoff's entry screen, the first screen of the walk the step describes.
+// 02 Polymarket's live board, a working state with odds up front: the kind of
+//    screen that earns its place over a splash.
+// 03 Discover's welcome, which labels its flows with the words people already
+//    search for (Login, Register, Open an Account).
+// 04 Back to Kikoff: the closing step is about the annotation standing alone,
+//    so the frame returns to the screen the walk started on.
+const STEP_APP = [0, 1, 2, 0];
+
 export default function FlagshipMobbin() {
   const { lang } = useLanguage();
   usePageTitle("Mobbin — UX Flow Documentation Case Study", lang !== "es");
@@ -114,10 +125,19 @@ export default function FlagshipMobbin() {
         title="The capture became useful through editing."
         intro="Preserve the useful state, sequence the task, name it for retrieval."
         steps={STEPS}
-        // Mobbin's artifact is a single screenshot with no per-step state to
-        // highlight, so it ignores the active index and renders the same frame
-        // throughout. The steps still track with the scroll rule.
-        visual={() => <div className="fp-sequence__phone fp-sequence__phone--story"><img src="/assets/mobbin/kikoff.jpg" alt="" /></div>}
+        // All three documented screens are mounted in one fixed-ratio frame and
+        // the active step picks which one is visible (see STEP_APP), so the
+        // swap is a crossfade with no decode flash and no height change.
+        // Inactive frames are hidden from assistive tech; the visible one keeps
+        // its app's alt text from APPS.
+        visual={(active) => (
+          <div className="fp-sequence__phone fp-sequence__phone--story fp-sequence__phone--stack">
+            {APPS.map((app, index) => {
+              const on = STEP_APP[active] === index;
+              return <img key={app.name} src={app.image} alt={app.alt} className={on ? "is-on" : undefined} aria-hidden={!on} />;
+            })}
+          </div>
+        )}
       /></div>
 
       <section className="rp-section" id="mobbin-apps" data-language-anchor="mobbin-outcomes">

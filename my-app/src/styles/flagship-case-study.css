@@ -1694,6 +1694,12 @@
   border-radius: var(--r-device); background: #f7f5ef; box-shadow: 0 28px 58px -28px rgba(0,0,0,.55); }
 .fp-sequence__phone img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .fp-sequence__phone--story { width: min(250px,64%); z-index: 1; }
+/* Decision-story frame: every documented screen is mounted and stacked, and
+   the active step turns one on. The frame's aspect-ratio sets the height, so
+   switching screens cannot shift layout. */
+.fp-sequence__phone--stack { position: relative; }
+.fp-sequence__phone--stack img { position: absolute; inset: 0; opacity: 0; transition: opacity .35s ease; }
+.fp-sequence__phone--stack img.is-on { opacity: 1; }
 .fp-sequence__copy h3 { margin: .45rem 0 0; font-size: var(--ts-title); line-height: 1.05; }
 /* Coral on the tinted sequence panel measured 4.27:1; the darker small-text coral clears it. */
 .fp-sequence__copy .rp-kicker { color: var(--coral-text); }
@@ -1773,6 +1779,8 @@
      overlapping rectangles and turned the arrow back to horizontal inside a
      vertical flow, which is not a removed animation but a wrong direction. */
   .fp-capture, .fp-cinemaCore, .fp-dashboardFrame { transition: none !important; }
+  /* The stacked decision-story frame swaps screens with a plain cut. */
+  .fp-sequence__phone--stack img { transition: none; }
 }
 
 /* Three redesigns — restored mechanism. The outcome metrics named certification
