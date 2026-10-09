@@ -113,10 +113,10 @@
   width: min(940px,76vw); min-height: 260px; color: var(--fp-light); }
 .fp-cinemaCore--workflow > div { width: min(330px,30vw); padding: 1.2rem; border: 1px solid rgba(244,241,230,.24); border-radius: var(--r-plate);
   background: rgba(244,241,230,.07); backdrop-filter: blur(8px); }
-.fp-cinemaCore span { display: block; font: .6rem/1.2 var(--mono); letter-spacing: .12em; color: #ff8a78; }
+.fp-cinemaCore span { display: block; font: .6rem/1.2 var(--mono); letter-spacing: .12em; color: var(--coral-on-dark); }
 .fp-cinemaCore b { display: block; margin-top: .45rem; font-size: clamp(1rem,2vw,1.4rem); line-height: 1.25; }
 .fp-cinemaCore small { display: block; margin-top: .55rem; color: rgba(244,241,230,.68); }
-.fp-cinemaCore > i { font-style: normal; color: #ff8a78; font-size: 1.6rem; }
+.fp-cinemaCore > i { font-style: normal; color: var(--coral-on-dark); font-size: 1.6rem; }
 .fp-cinemaCore--capture { font: 800 clamp(1rem,3vw,2.2rem)/1 var(--mono); letter-spacing: .08em; }
 .fp-cinemaCore--capture span { color: var(--fp-light); }
 .fp-cinema--mobbin .rp-cinema__wash { background:
@@ -138,7 +138,7 @@
   align-items: center;
 }
 .fp-receipt__copy { max-width: 34rem; }
-.fp-receipt__copy .rp-kicker { color: #ff8a78; }
+.fp-receipt__copy .rp-kicker { color: var(--coral-on-dark); }
 .fp-receipt__copy h2,
 .fp-indexLens__copy h2 {
   max-width: 16ch;
@@ -200,7 +200,7 @@
   height: 1px;
   background: rgba(244,241,230,.2);
 }
-.fp-receipt__rail span { display: block; width: 0; height: 100%; background: #ff8a78; transition: width 580ms ease; }
+.fp-receipt__rail span { display: block; width: 0; height: 100%; background: var(--coral-on-dark); transition: width 580ms ease; }
 .fp-receipt__trace.step-1 .fp-receipt__rail span { width: 12%; }
 .fp-receipt__trace.step-2 .fp-receipt__rail span { width: 38%; }
 .fp-receipt__trace.step-3 .fp-receipt__rail span { width: 68%; }
@@ -214,10 +214,10 @@
   height: 34px;
   display: grid;
   place-items: center;
-  border: 1px solid #ff8a78;
+  border: 1px solid var(--coral-on-dark);
   border-radius: 50%;
   background: var(--fp-deep-2);
-  color: #ff8a78;
+  color: var(--coral-on-dark);
   font: 800 .68rem/1 var(--mono);
   transition: left 620ms cubic-bezier(.22,1,.36,1);
 }
@@ -1599,7 +1599,7 @@
   min-height: 44px; list-style: none; cursor: pointer;
   font: .6rem/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: #a9d28f; }
 .fp-roleRail__method summary::-webkit-details-marker { display: none; }
-.fp-roleRail__method summary:focus-visible { outline: 3px solid #ff8a78; outline-offset: 3px; }
+.fp-roleRail__method summary:focus-visible { outline: 3px solid var(--coral-on-dark); outline-offset: 3px; }
 .fp-roleRail__method summary:hover .fp-roleRail__summaryLabel { text-decoration: underline; }
 .fp-roleRail__chev { width: 7px; height: 7px; border-right: 1.5px solid currentColor;
   border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg);
@@ -1681,7 +1681,7 @@
 /* --coral flips with the site theme, but .rp-override's background is pinned
    dark in both themes. Labels inside it must use the fixed override accent or
    they render at 2.46:1 in light mode. */
-.rp-override .fp-workSplit span, .rp-override .fp-journalLine span { color: #ff8171; }
+.rp-override .fp-workSplit span, .rp-override .fp-journalLine span { color: var(--coral-on-dark); }
 .fp-workSplit h3 { margin: .5rem 0 0; font-size: 1.15rem; }
 .fp-workSplit p { margin-top: .5rem; color: var(--muted); }
 
@@ -1713,7 +1713,7 @@
    themed tokens; the .rp-override variant keeps the fixed dark-panel accents. */
 .fp-journalLine { display: grid; gap: .4rem; max-width: 760px; margin-top: 2rem; padding: 1rem 1.1rem; border-left: 3px solid var(--coral); background: var(--paper-2); }
 .fp-journalLine b { color: var(--ink); font-size: .95rem; }
-.rp-override .fp-journalLine { border-left-color: #ff8171; background: rgba(244,241,230,.07); }
+.rp-override .fp-journalLine { border-left-color: var(--coral-on-dark); background: rgba(244,241,230,.07); }
 .rp-override .fp-journalLine b { color: #f4f1e6; }
 
 .flagship-page--msk .rp-outcomeStage { background:

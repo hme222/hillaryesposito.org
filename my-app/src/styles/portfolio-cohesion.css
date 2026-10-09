@@ -47,6 +47,13 @@
   --shell-hair: #b7c1ae;
   --shell-coral: #bd3828;
   --shell-green: #3d6b3f;
+  /* Coral for text and accents on stages that stay dark in BOTH themes
+     (.rp-override, .rp-outcomeStage, .fp-cinema, .fp-receipt). --coral flips
+     with the theme and measured 1.87–2.35:1 on those panels, so they carried
+     their own literal — typed two ways (#ff8a78 / #ff8171) across two files.
+     One value, one name. 5.7:1 on the #17321b override panel; re-measure
+     before lightening. Exported as color.semantic.fixed.coral-on-dark. */
+  --coral-on-dark: #ff8171;
   --shell-mono: "Space Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --shell-sans: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
 }
