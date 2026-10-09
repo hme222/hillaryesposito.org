@@ -28,9 +28,6 @@ component? If yes, it belongs on the shelf (the files above), not in this one.
 - A new component in an existing family (the MSK visualization set, Grove's
   case-study set-pieces, the Decision trio) is allowed only after checking
   `registry.md` for why the existing siblings don't already cover it.
-- The `fashion-system-page`'s local palette may merge into the global tokens
-  only as a deliberate decision, not a find-and-replace — see
-  `tokens/drift-audit.md`.
 
 ## Open
 - Adopting `ai-interface-patterns` / `voice-interaction-design` vocabulary —

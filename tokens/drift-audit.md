@@ -24,13 +24,6 @@ Both have code comments confirming intent; changing these to `var(--fg)`/`var(--
 
 **Trigger to revisit:** only if the design intent behind either component changes — not a scheduled task.
 
-## ✕ Excluded — coincidental match, different system
-
-**`App.css` `.fashion-system-page`** (`--fashion-label`, `--fashion-action`, and the `.fashion-artifact--editorial` gradient) uses `#3d5a1e`, `#d9a55e`, and `#15120c` — numerically identical to `--olive-3`, dark `--olive-2`, and dark `--bg`. But this block defines its own bespoke local palette (`--fashion-paper`, `--fashion-bone`, `--fashion-stone`, `--fashion-espresso`, `--fashion-oxblood`, `--fashion-gold`, …) for what reads as a self-contained case-study demo composition, not the portfolio's own theme. Folding it into the global tokens would couple a demo artifact's colors to the real brand palette on a coincidence.
-
-**Reason for exclusion:** different semantic system, matching value looks accidental.
-**Trigger to revisit:** ask before merging — if it turns out `--fashion-label`/`--fashion-action` really is meant to track the site's olive tokens, that's a one-line change, but it's a decision, not a find-and-replace.
-
 ## ✕ Excluded — Riso illustration palette
 
 `riso-page.css` alone contributes roughly 150 of the ~184 unique hex values in

@@ -1,12 +1,23 @@
 # System Compliance
 
-Canonical source: portfolio `design-state.md`, `portfolio-overrides/`, `my-app/src/styles/riso.css`, `my-app/src/styles/riso-page.css`, and generated registry
-Registry fingerprint: 50225e71905fed3bac1bef35d2c7ec8eb5695186339f7c2da66fc9da3cfe3061
-Allowed token namespaces: existing `--rp-*`, `--paper-*`, `--ink-*`, `--coral`, and curated `--rp-accent-l` / `--rp-accent-d`
-Allowed components/variants: registry at `design-docs/design-system/registry.md`; specifically `CuratedRolePage`, `CartoField`, `RisoDefs`, React Router `Link`, existing `rp-hero`, `rp-metagrid`, `rp-outcomes`, `rp-numlist`, `rp-split`, `rp-note`, and `rp-close` compositions
-Composition rules: Keep one H1, existing chapter targets, current section classes, semantic lists, descriptive links, noindex behavior, and existing light/dark accent contract. Optional fields may change order and action labels for one page without changing global defaults. Do not add a local component, style file, dependency, token, or Supabase-branded template.
-Documented gaps for the public curated-page system: None. The existing renderer contains every needed primitive; optional data-controlled composition closes the ordering/action gap.
-Escalation owner: Hillary Esposito
+## Grove browser-prototype proof — 2026-08-31
+
+Valid move: **Compose.** Reuse `rp-work__teaser`, `rp-cta`, the native `rp-deepDive` details/summary composition, and the existing `GroveSystemLab`. No new component, token, dependency, route, or visual family is required.
+
+Locks preserved: healthcare-first role, three-primary-case hierarchy, one H1, English/Spanish shell, content truth, Grove Phase 2 boundary, semantic links, native disclosure state, keyboard operation, visible focus, reduced motion, responsive reflow, and unrelated owner work.
+
+Registry status: inherited stale state was present before this slice because the owner worktree contains unrelated component changes. This slice does not create or rename a component; final verification must distinguish inherited staleness from slice-caused drift.
+
+
+## Flagship craft repair — 2026-08-26
+
+Valid move: **Reuse / Compose.** Existing Riso hero, clearing, artifact-label, queue, service-mechanism, product-state, research-trace, chapter, evidence-field, and curated-renderer primitives cover the approved hierarchy repair. No new canonical component, token namespace, dependency, or visual family is needed.
+
+Composition rules: the first mobile viewport pairs the headline with one inspectable evidence crop; consequential ownership, state, method, decision, and limitation values use the body-text floor; Product leads with a delivered artifact; UXR leads with a question-to-decision trace; shared materials remain consistent while project evidence topology differs.
+
+Locks preserved: one H1, source/ownership/privacy boundaries, English/Spanish shell, light/dark, reduced motion, forced colours, semantic heading order, visible focus, 44px targets, existing routes, and qualified claims.
+
+Registry status: regenerated from current `my-app` source on 2026-08-26 and verified current. AI-ready context adapter is N/A for this repository because it is a portfolio consumer, not the canonical reusable Designpowers package; reconsider only if the local Riso system becomes a separately versioned cross-repository product.
 
 ## Headlines + visuals hiring pass — 2026-08-24
 
@@ -91,3 +102,17 @@ Locks preserved: public routes and navigation, homepage content and styling, sem
 Proposal boundary: one lazy lab page and one root-scoped lab stylesheet. No new global tokens, dependency, registry graduation, public link, or component-system claim. Rollback is deletion of the lazy route, page, stylesheet, and focused tests.
 
 Scoped exception to the earlier curated-page restriction: the approved lab may add its isolated page component and stylesheet because it is not a Supabase curated-page change. Those files may consume canonical tokens but cannot modify or graduate them.
+## MSK Registered Routing Peel preview — 2026-08-30
+
+Valid move: **Compose.** Reuse the existing verified MSK workflow copy, `figure`/`figcaption` evidence pattern, Riso semantic tokens, registration marks, paper surfaces, and adjacent semantic ordered lists. The preview is route-scoped and does not create a canonical component family, global token, dependency, media asset, or interaction primitive.
+
+Locks preserved: exact six-step/five-step language; no-patient-data provenance; one H1 and existing chapter order; semantic text alternative; light/dark behavior; mobile reflow; colour-independent labels; reduced-motion equivalence because the preview is static; no generative alteration of evidence.
+
+Composition boundary: one static registered-paper object replaces only the standalone workflow map. The ordered lists and service blueprint remain unchanged for this taste checkpoint. Higgsfield/Seedance credit use, motion, and production integration remain outside the approved slice.
+## MSK “The Detour” no-credit animatic — 2026-08-30
+
+Valid move: **Compose.** Reuse the exact `MSKDashboardMockup` visual vocabulary, verified queue/status/action copy, Riso paper/ink/coral/green tokens, native buttons, figure semantics, and route-scoped CSS. Do not graduate the animatic into a reusable media-player family.
+
+Locks preserved: no patient data; no invented vendor UI; one H1 and existing chapter order; button threshold/decision story/workflow lists/service blueprint unchanged; light/dark and responsive support; visible focus; 44px controls; reduced-motion complete at rest; no autoplay, loop, sound, or motion-gated evidence.
+
+Composition boundary: one full-bleed teaser replaces only the rejected registered-peel figure. Exact evidence stays deterministic and decorative to assistive technology. No generated asset, dependency, global token, analytics, credit spend, commit, or deployment.

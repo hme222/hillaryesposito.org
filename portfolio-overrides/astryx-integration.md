@@ -69,9 +69,9 @@ anti-references in the taste profile.
   forced. Keep as-is.
 - **EN/ES i18n** (`useT()`, `SpanishCaseStudy`), `lang` switching — no Astryx
   localization story.
-- **The editorial voice, the recruiter panel's content contract, curated
-  `/curated/:slug` routes, the one-off gradient/tilt/stagger flourishes** — these
-  are what keep the site from reading as a generic AI prototype.
+- **The editorial voice, the recruiter panel's content contract, and the
+  one-off gradient/tilt/stagger flourishes** — these are what keep the site from
+  reading as a generic AI prototype.
 
 ## Non-negotiables to preserve through any rebuild
 

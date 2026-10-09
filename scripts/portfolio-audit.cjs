@@ -26,31 +26,6 @@ const routes = [
   { path: "/case-study/msk", name: "msk", indexable: true },
   { path: "/case-study/mobbin", name: "mobbin", indexable: true },
   { path: "/case-study/logistics", name: "logistics", indexable: true },
-  {
-    path: "/curated/indyx-ux-product-designer",
-    name: "curated-indyx",
-    indexable: false,
-  },
-  {
-    path: "/curated/healthcare-product-service-designer",
-    name: "curated-healthcare-product",
-    indexable: false,
-  },
-  {
-    path: "/curated/healthcare-ux-researcher",
-    name: "curated-healthcare-uxr",
-    indexable: false,
-  },
-  {
-    path: "/curated/the-sill-product-designer",
-    name: "curated-the-sill",
-    indexable: false,
-  },
-  {
-    path: "/curated/fashion-campaign-system",
-    name: "fashion",
-    indexable: false,
-  },
   { path: "/not-a-real-route", name: "not-found", indexable: false },
 ];
 

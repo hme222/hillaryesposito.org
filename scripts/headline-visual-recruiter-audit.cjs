@@ -59,28 +59,6 @@ const routes = [
       "phase 2 of 3 · functional prototype",
     ],
   },
-  {
-    name: "healthcare-product",
-    route: "/curated/healthcare-product-service-designer",
-    required: [
-      "healthcare product design",
-      "mid-level product designer · healthcare enterprise and internal tools",
-      "20%",
-      "85%",
-      "implemented",
-    ],
-  },
-  {
-    name: "healthcare-uxr",
-    route: "/curated/healthcare-ux-researcher",
-    required: [
-      "healthcare ux research + service design",
-      "ux researcher / service designer",
-      "34-person survey",
-      "self-report sample",
-      "not formal uxr",
-    ],
-  },
 ];
 
 const maskCss = `

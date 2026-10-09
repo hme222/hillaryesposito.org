@@ -18,8 +18,6 @@ const routes = [
   ["msk", "/case-study/msk"],
   ["logistics", "/case-study/logistics"],
   ["grove", "/case-study/grove"],
-  ["healthcare-product", "/curated/healthcare-product-service-designer"],
-  ["healthcare-uxr", "/curated/healthcare-ux-researcher"],
 ];
 
 async function installBuildRoute(page) {

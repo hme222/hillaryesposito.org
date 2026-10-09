@@ -2,6 +2,17 @@
 
 Path: B
 
+## Grove browser-prototype proof — approved 2026-08-31
+
+Path remains **B — Comply**. The existing working Grove interaction lab becomes directly reachable from Home and the Grove hero. The prototype is the evidence; no developer console, code-window motif, technology badge wall, new route, or separate visual system is authorized.
+
+- **Layout topology:** existing selected-work annotation plus existing native system-detail disclosure.
+- **Primary carrier:** the three working care, confidence, and safety interactions.
+- **Palette, type, radius, depth, and grid:** unchanged Riso tokens and compositions.
+- **Motion:** none added; hash navigation opens and focuses the native disclosure without animation.
+- **Copy:** `working browser prototype`, `React + TypeScript`, and `Phase 2 of 3`; never shipped, beta, production product, or engineering-role positioning.
+- **Accessibility:** descriptive link purpose, native details/summary semantics, visible focus, keyboard-operable tabs, Spanish-safe routing, and ordinary collapsed state.
+
 ## Headlines + visuals hiring pass — approved 2026-08-24
 
 Path remains **B — Comply**. The portfolio's default Home entry now leads directly to role, outcome, work, and contact. The opening film remains part of the authored system only as an explicit, user-initiated visual; this decision supersedes the 2026-08-23 once-per-tab autoplay rule and preserves every other Weekend Journal masthead decision.
