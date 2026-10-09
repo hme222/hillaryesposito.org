@@ -1716,11 +1716,13 @@
 .rp-override .fp-journalLine { border-left-color: var(--coral-on-dark); background: rgba(244,241,230,.07); }
 .rp-override .fp-journalLine b { color: #f4f1e6; }
 
-.flagship-page--msk .rp-outcomeStage { background:
+/* background-color + background-image, not the shorthand: the solid colour is
+   what contrast tooling reads (see .rp-outcomeStage in riso-page.css). */
+.flagship-page--msk .rp-outcomeStage { background-color: var(--fp-deep); background-image:
   radial-gradient(circle at 78% 24%,rgba(201,88,67,.2),transparent 25%),
   repeating-linear-gradient(90deg,transparent 0 76px,rgba(244,241,230,.035) 77px 78px),
   linear-gradient(135deg,#234b44,#102b27 74%); }
-.flagship-page--mobbin .rp-outcomeStage { background:
+.flagship-page--mobbin .rp-outcomeStage { background-color: var(--fp-deep); background-image:
   radial-gradient(circle at 78% 20%,rgba(181,151,78,.18),transparent 24%),
   repeating-linear-gradient(0deg,transparent 0 42px,rgba(244,241,230,.035) 43px 44px),
   linear-gradient(135deg,#30322e,#171815 74%); }

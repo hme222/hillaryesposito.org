@@ -3524,8 +3524,16 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
   var(--paper); }
 
 /* ---------- outcomes as a deep evidence field ---------- */
+/* The gradient paints the whole stage, so the solid background-color under it
+   never shows; it is there so getComputedStyle / contrast tooling see the dark
+   surface the cream text actually sits on instead of the page paper. Keep it
+   as background-color + background-image, not the `background:` shorthand,
+   which would reset the colour to transparent. The fallback is .flagship-page's
+   default --fp-deep (flagship-case-study.css): Grove carries the class but does
+   not import that sheet, so the variable is undefined there. */
 .rp-outcomeStage { position: relative; overflow: hidden; min-height: 74vh; display: grid; align-items: center; color: #f4f1e6;
-  background:
+  background-color: var(--fp-deep, #19321f);
+  background-image:
   radial-gradient(circle at 76% 20%, rgba(198,138,46,.22),transparent 24%),
   radial-gradient(circle at 18% 76%, rgba(239,83,64,.16),transparent 28%),
   linear-gradient(135deg,#264529,#152717 72%); }
