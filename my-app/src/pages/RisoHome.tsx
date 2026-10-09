@@ -9,7 +9,6 @@ import MSKDashboardMockup from "../components/MSKDashboardMockup";
 import usePageTitle from "../hooks/usePageTitle";
 import useFlagshipReveal from "../hooks/useFlagshipReveal";
 import useFilmExitChoreo from "../hooks/useFilmExitChoreo";
-import { useUISfx } from "../hooks/useUISfx";
 import { useLanguage, useT } from "../app/LanguageContext";
 import type { StringKey } from "../i18n/strings";
 import "../styles/riso.css";
@@ -119,7 +118,6 @@ const DISPATCH_TRAIN_HOLD_SECONDS = 3.8;
 export default function RisoHome() {
   usePageTitle();
   const t = useT();
-  const { play } = useUISfx();
   const { lang } = useLanguage();
   const location = useLocation();
   const navigate = useNavigate();
@@ -308,10 +306,7 @@ export default function RisoHome() {
                 ref={openingFilmTriggerRef}
                 type="button"
                 className="rp-heroUtility rp-openingVisualTrigger"
-                onClick={() => {
-                  play("open");
-                  setOpeningFilmOpen(true);
-                }}
+                onClick={() => setOpeningFilmOpen(true)}
               >
                 {t("home.riso.openingVisual")}
               </button>
