@@ -66,6 +66,13 @@ const WORK: WorkItem[] = [
     path: "/case-study/logistics",
     imgAltKey: "home.riso.logisticsAlt",
     visual: "logistics",
+    // Same wording as the Logistics hero's own CTA; the Spanish anchor is the
+    // condensed Spanish study's id for the same section (SpanishCaseStudy
+    // prefixes every anchor with "es-").
+    teaserPath: "/case-study/logistics#log-moves",
+    teaserPathEs: "/case-study/logistics#es-log-moves",
+    teaserEn: "See the three moves →",
+    teaserEs: "Ver los tres cambios →",
   },
   {
     n: "03",
