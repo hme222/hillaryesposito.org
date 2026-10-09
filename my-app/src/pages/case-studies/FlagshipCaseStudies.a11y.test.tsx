@@ -606,7 +606,7 @@ describe("flagship case-study accessibility", () => {
     const summary = details?.querySelector<HTMLElement>("summary");
     expect(details?.open).toBe(true);
     expect(document.activeElement).toBe(summary);
-    expect(summary?.textContent).toContain("Working browser prototype · React + TypeScript · Phase 2 of 3");
+    expect(summary?.textContent).toContain("Prototype on this page · React + TypeScript · Phase 2 of 3");
   });
 
   it("does not insert a completion modal into the case-study reading path", async () => {
