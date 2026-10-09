@@ -94,7 +94,7 @@ export default function FlagshipLogistics() {
         <div className="rp-hero__content">
           <div className="rp-clearing">
             <span className="rp-eyebrow">Operations · supply chain · service design under pressure</span>
-            <h1 className="rp-h1">85% shorter medical resupply time.</h1>
+            <h1 className="rp-h1">85% shorter medical resupply{"\u00a0"}time.</h1>
             <span className="rp-readtime"><b>4 min</b><span>read · deployed 2024</span></span>
             <p className="rp-sub">
               I planned and tracked a $2M warehouse relocation serving seven aid stations across three countries.

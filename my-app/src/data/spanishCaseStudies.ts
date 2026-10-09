@@ -175,7 +175,8 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
 // on the English page; nothing is added. Section anchors match the English
 // chapter ids so the language switch and homepage stat links land in place.
 export const LOGISTICS_ES: SpanishCaseStudyData = {
-  title: "Tiempo de reabastecimiento médico reducido un 85%",
+  // Worded to break into multi-word lines; "reabastecimiento" alone filled a line.
+  title: "El reabastecimiento médico tardó un\u00a085% menos",
   meta: "Logística médica del Ejército · Operaciones · Diseño de servicios · 2024",
   intro:
     "Como oficial de logística médica, planifiqué y di seguimiento a la reubicación de un almacén de $2M que abastecía a siete estaciones de ayuda en tres países. Según mi expediente de servicio, el reabastecimiento pasó de 1–2 meses a 1–2 semanas, resumido como un 85% menos de tiempo. Son cifras reportadas por mí; no se conservaron los periodos ni los métodos de medición.",

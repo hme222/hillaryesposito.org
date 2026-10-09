@@ -210,7 +210,7 @@ export default function FlagshipMSK() {
         <div className="rp-hero__content">
           <div className="rp-clearing">
             <span className="rp-eyebrow">Memorial Sloan Kettering · clinical systems</span>
-            <h1 className="rp-h1">A filing queue replaced a four-department paper{"\u00a0"}detour.</h1>
+            <h1 className="rp-h1">A filing <span className="rp-keep">queue replaced</span> <span className="rp-keep">a four-department</span> paper{"\u00a0"}detour.</h1>
             <span className="rp-readtime"><b>6 min</b><span>read · 6 years, 3 roles</span></span>
             <p className="rp-sub">
               I diagnosed and mapped a paper detour across four departments, checked feasibility,

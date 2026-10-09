@@ -109,6 +109,14 @@
    Scoped off .riso-home so the homepage hero keeps its display scale. */
 .riso-page:not(.riso-home) .rp-hero .rp-clearing { max-width: min(44rem, 100%); }
 .riso-page:not(.riso-home) .rp-hero .rp-h1 { font-size: clamp(2rem, 3.1vw, 2.8rem); max-width: 100%; }
+/* Phones: the hero column is ~310px, about 15 characters of a 32px title, so
+   case-study titles stranded single words ("department", "medical"). A
+   slightly smaller size plus .rp-keep word pairs keeps every line multi-word
+   from 320 to 480. .rp-keep only binds here; wider screens wrap normally. */
+@media (max-width: 480px) {
+  .riso-page:not(.riso-home) .rp-hero .rp-h1 { font-size: clamp(1.6rem, 7.4vw, 2rem); }
+  .rp-keep { white-space: nowrap; }
+}
 @media (max-width: 760px) {
   /* `balance` equalises line lengths, which is precisely how the last word ends
      up alone. `pretty` optimises the last line instead. */
