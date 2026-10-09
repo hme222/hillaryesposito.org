@@ -1,8 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "create-react-app",
-  "buildCommand": "npm run build && PORTFOLIO_DOCS_DIR=build node ../scripts/prerender-routes.mjs",
+  "buildCommand": "npm run build && node ../scripts/prerender-routes.mjs && node ../scripts/verify-route-shell-parity.mjs",
   "outputDirectory": "build",
   "trailingSlash": true,
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }

@@ -221,7 +221,6 @@ def build_pdf(variant: str = "portfolio") -> Path:
 
         destinations = [
             ROOT / "my-app/public/assets" / filename,
-            ROOT / "docs/assets" / filename,
         ]
         for destination in destinations:
             destination.parent.mkdir(parents=True, exist_ok=True)
