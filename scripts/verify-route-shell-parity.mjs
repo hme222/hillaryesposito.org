@@ -8,16 +8,15 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const DOCS = process.env.PORTFOLIO_DOCS_DIR
-  ? resolve(process.env.PORTFOLIO_DOCS_DIR)
-  : join(ROOT, "docs");
+const DOCS = process.env.PORTFOLIO_BUILD_DIR
+  ? resolve(process.env.PORTFOLIO_BUILD_DIR)
+  : join(ROOT, "my-app", "build");
 const ROUTES = [
   "about",
   "case-study/grove",
   "case-study/msk",
   "case-study/mobbin",
   "case-study/logistics",
-  "curated/healthcare-product-service-designer",
 ];
 
 function assets(html) {

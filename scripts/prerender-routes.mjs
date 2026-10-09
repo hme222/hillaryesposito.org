@@ -2,16 +2,13 @@
 /**
  * Static shells for the public routes.
  *
- * GitHub Pages has no server-side routing, so /case-study/msk was resolving to
- * 404.html — served with a real HTTP 404 and a <title>Redirecting...</title>.
- * People never noticed, because the SPA bounce puts them on the right page. But
- * crawlers and link scrapers do not run JavaScript, so:
+ * Runs after `npm run build` (see my-app/vercel.json). Without it, every route
+ * is served the root index.html, so crawlers and link scrapers — which do not
+ * run JavaScript — see the homepage's title, description, and canonical on
+ * every case study, and a shared case-study link previews as the homepage.
  *
- *   - the sitemap advertised five URLs and four of them returned 404
- *   - every case-study link shared with a recruiter produced no preview card
- *
- * Writing <route>/index.html turns each into a real 200 with its own metadata,
- * and the SPA takes over from there exactly as before.
+ * Writing <route>/index.html gives each its own metadata, and the SPA takes
+ * over from there.
  *
  * ROUTE_META below must stay in step with my-app/src/hooks/usePageTitle.ts.
  */
@@ -20,9 +17,9 @@ import { join, dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const DOCS = process.env.PORTFOLIO_DOCS_DIR
-  ? resolve(process.env.PORTFOLIO_DOCS_DIR)
-  : join(ROOT, "docs");
+const DOCS = process.env.PORTFOLIO_BUILD_DIR
+  ? resolve(process.env.PORTFOLIO_BUILD_DIR)
+  : join(ROOT, "my-app", "build");
 const ORIGIN = "https://hillaryesposito.org";
 
 const PUBLIC_ROUTES = [
@@ -75,8 +72,8 @@ function setMeta(html, matcher, replacement) {
 let written = 0;
 for (const route of ROUTES) {
   // Trailing slash matches what's actually served: each shell is written to
-  // <route>/index.html, a directory GitHub Pages serves at <route>/, not
-  // <route>. A canonical/og:url without the slash disagrees with the URL
+  // <route>/index.html, and vercel.json's trailingSlash redirects <route> to
+  // <route>/. A canonical/og:url without the slash disagrees with the URL
   // Google's own crawler resolves to, which surfaces as a canonical
   // mismatch in Search Console (confirmed via URL Inspection on
   // case-study/logistics — Google picked the slash version over our

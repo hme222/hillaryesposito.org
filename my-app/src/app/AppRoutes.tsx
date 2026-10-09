@@ -113,19 +113,6 @@ function ScrollToTop() {
   useLayoutEffect(() => {
     const params = new URLSearchParams(search);
 
-    // GitHub Pages deep-link restore: 404.html bounces an unknown path to "/"
-    // carrying ?p=<path>. This has to run first so case-study deep links return
-    // to their intended route.
-    const restoredPath = params.get("p");
-    if (pathname === "/" && restoredPath?.startsWith("/")) {
-      const nextSearch = new URLSearchParams(search);
-      nextSearch.delete("p");
-      const query = nextSearch.toString();
-      window.history.replaceState(null, "", `${restoredPath}${query ? `?${query}` : ""}`);
-      window.dispatchEvent(new PopStateEvent("popstate"));
-      return;
-    }
-
     const wasFirstRender = isFirstRender.current;
     // A search-only change (anchor nav) is not a route change and must not
     // reset scroll or steal focus. The effect has to observe `search` for the

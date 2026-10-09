@@ -417,7 +417,7 @@ def main():
             continue
         temp_output = temp_dir / filename
         build_resume(temp_output, variant)
-        for base_dir in (ROOT / "my-app/public/assets", ROOT / "docs/assets"):
+        for base_dir in (ROOT / "my-app/public/assets",):
             destination = base_dir / filename
             destination.parent.mkdir(parents=True, exist_ok=True)
             copyfile(temp_output, destination)
