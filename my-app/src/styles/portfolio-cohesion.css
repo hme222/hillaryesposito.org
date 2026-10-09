@@ -248,7 +248,16 @@
    down so it lands on three. Spanish runs longer, so it gets more room. */
 .riso-home .rp-clearing { max-width: 72ch; }
 html[lang="es"] .riso-home .rp-clearing { max-width: 78ch; }
-.riso-home .rp-h1 { font-size: clamp(2.4rem, 4.6vw, 4.4rem); }
+/* It still stranded "healthcare" alone at 390 and 1440: the clearing is a grid
+   column (660px at 1440) and "I design healthcare" at 4.4rem ran 700px. Same
+   fit technique as .rp-h1--fit in riso-page.css, except --h1-w100 here is the
+   longest phrase that must share a line ("I design healthcare" / "healthcare
+   products", ~1005px at a 100px reference), not the longest word. The display
+   clamp stays the ceiling; the fit only ever brings the size down, so every
+   line keeps at least two words at any width. Measured, not assumed: see the
+   2026-10-09 panel3 report for the per-width line splits. */
+.riso-home .rp-h1Fit { --h1-w100: 1010; }
+.riso-home .rp-h1 { font-size: min(clamp(2.4rem, 4.6vw, 4.4rem), calc(100cqi * 100 / var(--h1-w100))); }
 .riso-home .carto--paint .carto__map--base {
   inset: 0;
   opacity: .72 !important;
@@ -476,7 +485,7 @@ html[lang="es"] .riso-home .rp-clearing { max-width: 78ch; }
   .riso-home .rp-clearing,
   html[lang="es"] .riso-home .rp-clearing { max-width: none; }
   /* 13vw sized a four-word headline; the sentence needs a lower ceiling. */
-  .riso-home .rp-h1 { font-size: clamp(1.9rem, 8.4vw, 2.9rem); }
+  .riso-home .rp-h1 { font-size: min(clamp(1.9rem, 8.4vw, 2.9rem), calc(100cqi * 100 / var(--h1-w100))); }
   .riso-home .rp-hero__media {
     order: -1;
     min-height: 330px;
@@ -492,7 +501,9 @@ html[lang="es"] .riso-home .rp-clearing { max-width: 78ch; }
     max-width: calc(100vw - 2.8rem);
     overflow: hidden;
   }
-  .riso-home .rp-h1 { max-width: 100%; overflow-wrap: anywhere; margin-top: .4rem; }
+  /* No overflow-wrap: anywhere — the fit sizing above means nothing can
+     overflow, and `anywhere` is what let words split mid-syllable. */
+  .riso-home .rp-h1 { max-width: 100%; margin-top: .4rem; }
   .riso-home .rp-heroProof { margin-top: .35rem; }
   .riso-home .rp-status { margin-top: .15rem; }
   .riso-home .rp-hero__ctas { width: 100%; flex-direction: column; align-items: flex-start; margin-top: .15rem; }

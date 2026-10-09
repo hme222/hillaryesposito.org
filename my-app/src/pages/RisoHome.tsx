@@ -284,7 +284,12 @@ export default function RisoHome() {
         <div className="rp-hero__content">
           <div className="rp-clearing">
             <span className="rp-eyebrow">{t("home.riso.eyebrow")}</span>
-            <h1 className="rp-h1">{t("home.riso.heroTitle")}</h1>
+            {/* .rp-h1Fit is the container the headline's fit sizing measures
+                against (portfolio-cohesion.css) — not .rp-clearing itself,
+                which collapses under inline-size containment. */}
+            <div className="rp-h1Fit">
+              <h1 className="rp-h1">{t("home.riso.heroTitle")}</h1>
+            </div>
             <p className="rp-sub rp-heroProof">
               {t("home.riso.heroLead")} <b>{t("home.riso.heroProof")}</b>
             </p>
