@@ -442,7 +442,7 @@ export default function RisoGrove() {
           without charging every recruiter the full scroll cost. */}
       <details className="rp-deepDive rp-deepDive--system" id="grove-prototype">
         <summary>
-          <span>Working browser prototype · React + TypeScript · Phase 2 of 3</span>
+          <span>Prototype on this page · React + TypeScript · Phase 2 of 3</span>
           <b>Try the care, confidence, and safety interactions</b>
         </summary>
         <section className="rp-section" data-language-anchor="grove-prototype">
