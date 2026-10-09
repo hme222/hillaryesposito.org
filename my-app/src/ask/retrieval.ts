@@ -151,6 +151,8 @@ type Doc = {
   entry: KnowledgeEntry;
   tf: Map<string, number>;
   length: number;
+  /** Tokens in the passage text alone (the label is shared by its section). */
+  textTokens: number;
 };
 
 export type AskIndex = {
@@ -173,14 +175,15 @@ export function buildIndex(entries: KnowledgeEntry[], lang: AskLang): AskIndex {
     const add = (t: string, w: number) => tf.set(t, (tf.get(t) ?? 0) + w);
     // Passages carry their own language; labels and quotes may be English
     // inside the Spanish file, so stem by the entry's language.
-    tokenize(entry.text, entry.lang).forEach((t) => add(t, 1));
+    const textTokens = tokenize(entry.text, entry.lang);
+    textTokens.forEach((t) => add(t, 1));
     tokenize(entry.source.label, lang).forEach((t) => add(t, LABEL_WEIGHT));
     let length = 0;
     tf.forEach((w, t) => {
       length += w;
       df.set(t, (df.get(t) ?? 0) + 1);
     });
-    return { entry, tf, length };
+    return { entry, tf, length, textTokens: textTokens.length };
   });
   const avgLength = docs.reduce((sum, d) => sum + d.length, 0) / Math.max(1, docs.length);
   const vocab = Array.from(df.keys());
@@ -201,6 +204,9 @@ const B = 0.25;
 const PREFIX_MIN = 5;
 const EXPANSION_WEIGHT = 0.8;
 const LEAD_BONUS = 1.08;
+/** Passages under this many text tokens are labels or kickers, not sentences. */
+const FRAGMENT_TOKENS = 6;
+const FRAGMENT_PENALTY = 0.82;
 
 export type SearchHit = { entry: KnowledgeEntry; score: number };
 
@@ -278,6 +284,9 @@ export function search(index: AskIndex, query: string, options: SearchOptions = 
     // Editorial prior: the first passage of a section is its lead, so on a
     // near-tie ("What is Grove?") it should outrank a fragment from mid-section.
     if (score > 0 && /:0$/.test(doc.entry.id)) score *= LEAD_BONUS;
+    // A kicker like "Service design · process improvement" matches every token
+    // it has; a sentence that says what she did should still outrank it.
+    if (score > 0 && doc.textTokens < FRAGMENT_TOKENS) score *= FRAGMENT_PENALTY;
     return { doc, score, grounding: totalWeight ? coveredWeight / totalWeight : 0 };
   });
 

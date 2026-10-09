@@ -156,10 +156,17 @@ export default function RecruiterPill() {
                   </button>
                   <button type="button" className="recruiter-panel__btn"
                      onClick={() => {
-                       // Close this panel first; the native dialog hands focus
-                       // back to the pill, which the Ask dialog then restores to.
+                       // Close this panel and hand the Ask dialog the same
+                       // return-focus target this panel was given. Opened from
+                       // the pill that is null and the native dialog restores
+                       // focus to the pill synchronously on close; opened from
+                       // the mobile menu it is the hamburger, which this panel's
+                       // async `close` event would otherwise focus only after
+                       // the Ask dialog had captured this (now hidden) button.
                        setOpen(false);
-                       window.dispatchEvent(new CustomEvent("open-ask", { detail: { entry: "recruiter" } }));
+                       window.dispatchEvent(
+                         new CustomEvent("open-ask", { detail: { entry: "recruiter", returnFocus } })
+                       );
                      }}>
                     <AskBirdIcon className="recruiter-panel__btn-icon recruiter-panel__btn-icon--bird" /> Ask a question
                   </button>
