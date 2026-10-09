@@ -14,6 +14,9 @@ function getReducedMotionPreference() {
  * A route-scoped, deterministic animatic for the MSK workflow chapter.
  * The film surface is decorative: the exact ordered workflow immediately
  * after it remains the semantic evidence and complete text alternative.
+ *
+ * @status: stable
+ * @purpose: Eight-second deterministic animatic ("The Detour") for the MSK workflow chapter (pages/case-studies/FlagshipMSK.tsx), with poster, play, pause, resume and replay controls and a reduced-motion path that shows the completed frame immediately. Decorative only — the exact ordered workflow rendered after it stays the semantic evidence. Pick this for the one timed film moment; for a static decorative before/after preview of the same workflow use MSKRegisteredRoutingPeel, for the semantic step diagram use MSKWorkflowMap, and for the scroll-driven 3D moment use MSKSystemMap.
  */
 export default function MSKTheDetour() {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(getReducedMotionPreference);
