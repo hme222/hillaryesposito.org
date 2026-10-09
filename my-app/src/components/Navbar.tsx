@@ -2,7 +2,6 @@ import React, { Dispatch, SetStateAction, useEffect, useRef, useState } from "re
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { switchLanguageAtCurrentSection, useLanguage, useT } from "../app/LanguageContext";
 import { MenuIcon, XIcon } from "./LineIcons";
-import { useUISfx } from "../hooks/useUISfx";
 
 type NavbarProps = {
   darkMode: boolean;
@@ -16,8 +15,6 @@ type NavbarProps = {
 export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   const { lang, setLang } = useLanguage();
   const t = useT();
-  const { play, toggleEnabled, isEnabled } = useUISfx();
-  const [sfxOn, setSfxOn] = useState(() => isEnabled());
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("home");
   const navigate = useNavigate();
@@ -313,7 +310,6 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
             type="button"
             aria-label={darkMode ? t("nav.themeToLight") : t("nav.themeToDark")}
             onClick={() => {
-              play(darkMode ? "toggle-off" : "toggle-on");
               setDarkMode((d) => !d);
               close();
             }}
@@ -326,35 +322,6 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
             ) : (
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-              </svg>
-            )}
-          </button>
-        </li>
-
-        {/* SFX demo (2026-08-31 spike, not a shipped decision) — opt-in, off by default */}
-        <li>
-          <button
-            className="theme-btn"
-            type="button"
-            aria-pressed={sfxOn}
-            aria-label={sfxOn ? "Turn interface sound off" : "Turn interface sound on (demo)"}
-            title={sfxOn ? "Sound: on (zen pack, demo)" : "Sound: off"}
-            onClick={() => {
-              const next = toggleEnabled();
-              setSfxOn(next);
-              close();
-            }}
-          >
-            {sfxOn ? (
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M4 9v6h4l5 4V5L8 9H4Z" />
-                <path d="M17.5 8.5a5 5 0 0 1 0 7" />
-                <path d="M20 6a8.5 8.5 0 0 1 0 12" />
-              </svg>
-            ) : (
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M4 9v6h4l5 4V5L8 9H4Z" />
-                <path d="M18 9l4 6M22 9l-4 6" />
               </svg>
             )}
           </button>
