@@ -28,43 +28,6 @@ function Svg({ children, ...rest }: IconProps & { children: React.ReactNode }) {
 }
 
 /**
- * Terminal window - AI coding tools (replaces 🤖 / 💻)
- * @status: stable
- * @purpose: Terminal-window line icon used for AI-coding-tool links in the curated links data (data/curatedPages.tsx).
- */
-export const TerminalIcon = (p: IconProps) => (
-  <Svg {...p}>
-    <rect x="3" y="4.5" width="18" height="15" rx="2.4" />
-    <path d="M7 9.5l2.6 2.5L7 14.5" />
-    <path d="M12.5 14.5H17" />
-  </Svg>
-);
-
-/**
- * Pencil - editors / Cursor (replaces ✏️)
- * @status: stable
- * @purpose: Pencil line icon used for editor/design-tool links in the curated links data (data/curatedPages.tsx).
- */
-export const PencilIcon = (p: IconProps) => (
-  <Svg {...p}>
-    <path d="M17 3.8a2.3 2.3 0 0 1 3.2 3.2L7.6 19.6 3 21l1.4-4.6L17 3.8z" />
-    <path d="M14.8 6l3.2 3.2" />
-  </Svg>
-);
-
-/**
- * Up-right arrow - launch / deploy (replaces 🚀)
- * @status: stable
- * @purpose: Up-right-arrow line icon used for launch/deploy links in the curated links data (data/curatedPages.tsx).
- */
-export const LaunchIcon = (p: IconProps) => (
-  <Svg {...p}>
-    <path d="M7 17L17 7" />
-    <path d="M9 7h8v8" />
-  </Svg>
-);
-
-/**
  * Frame / crop marks - design tools, Figma (replaces 🎨)
  * @status: unused — verify before removing
  * @purpose: Frame/crop-marks line icon intended for design-tool links; not imported anywhere in src/ currently.
@@ -141,32 +104,6 @@ export const MagnifierIcon = (p: IconProps) => (
 );
 
 /**
- * Medical cross - MSK / healthcare (replaces 🏥)
- * @status: stable
- * @purpose: Medical-cross line icon used for MSK/healthcare case-study links in the curated links data (data/curatedPages.tsx).
- */
-export const MedicalCrossIcon = (p: IconProps) => (
-  <Svg {...p}>
-    <rect x="4" y="4" width="16" height="16" rx="3.2" />
-    <path d="M12 8.2v7.6" />
-    <path d="M8.2 12h7.6" />
-  </Svg>
-);
-
-/**
- * Sprout - Grove (replaces 🌱)
- * @status: stable
- * @purpose: Sprout line icon used for Grove case-study links in the curated links data (data/curatedPages.tsx).
- */
-export const SproutIcon = (p: IconProps) => (
-  <Svg {...p}>
-    <path d="M12 21v-8" />
-    <path d="M12 13c0-3.5-2.6-5.8-6.2-5.8 0 3.5 2.6 5.8 6.2 5.8z" />
-    <path d="M12 11.5c0-2.9 2.2-4.9 5.3-4.9 0 2.9-2.2 4.9-5.3 4.9z" />
-  </Svg>
-);
-
-/**
  * Leaf - Good Harvest (replaces 🌿)
  * @status: unused — verify before removing
  * @purpose: Leaf line icon intended for Good Harvest links; not imported anywhere in src/ currently.
@@ -175,20 +112,6 @@ export const LeafIcon = (p: IconProps) => (
   <Svg {...p}>
     <path d="M18.5 5.5C10.5 5.5 6 11.5 6 19c7.5 0 12.5-6 12.5-13.5z" />
     <path d="M6 19c2.8-4.6 5.8-7.9 9.7-10.4" />
-  </Svg>
-);
-
-/**
- * Raised hand - "where I pushed back" (replaces ✋)
- * @status: stable
- * @purpose: Raised-hand line icon used for "where I pushed back" links in the curated links data (data/curatedPages.tsx).
- */
-export const HandIcon = (p: IconProps) => (
-  <Svg {...p}>
-    <path d="M18 11V6a2 2 0 0 0-4 0v5" />
-    <path d="M14 10V4a2 2 0 0 0-4 0v2" />
-    <path d="M10 10.5V6a2 2 0 0 0-4 0v8" />
-    <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15" />
   </Svg>
 );
 

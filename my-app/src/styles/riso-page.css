@@ -8,13 +8,21 @@
   --paper-2: #dee4d6;
   --ink: #20241c;
   --ink-2: #45503f;
-  --muted: #5d6656;
+  /* #5d6656 measured 4.39:1 against the About page's painted map composite
+     (#e4dcc8) — the token's own --paper is lighter than what actually paints.
+     Darkened 10/255 to clear 4.5 on every surface, worst case now 4.66. */
+  --muted: #596253;
   --hair: #c2cbb8;
   --green: #3d6b3f;
   /* tailored pages override --coral per theme via --rp-accent-l / --rp-accent-d
      (inline styles can't be theme-aware, so the accent is passed as a raw value
      and resolved to --coral here, keeping dark-mode text contrast intact) */
   --coral: var(--rp-accent-l, #bd3828);
+  /* Coral at label sizes measured 4.08:1 on the About composite. Decorative
+     coral (borders, fills, rules) is unchanged; text-sized coral resolves
+     through --coral-text, which darkens whatever the page's accent is rather
+     than hard-coding one, so the per-role brand mirror still works. */
+  --coral-text: color-mix(in srgb, var(--coral) 88%, var(--ink));
   --on-coral: #fff;
   --on-green: #fff;
   --mono: "Space Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
@@ -47,7 +55,7 @@
 .riso-page p, .riso-page li, .riso-page blockquote, .riso-page td { font-family: var(--sans); }
 .dark-mode .riso-page {
   --paper: #14150e; --paper-2: #191b10; --ink: #ece7d4; --ink-2: #b9b596;
-  --muted: #a9a582; --hair: #33351f; --green: #7cb069; --coral: var(--rp-accent-d, #ff8c82); --on-coral: #14150e; --on-green: #14150e;
+  --muted: #a9a582; --hair: #33351f; --green: #7cb069; --coral: var(--rp-accent-d, #ff8c82); --coral-text: var(--coral); --on-coral: #14150e; --on-green: #14150e;
 }
 
 .rp-wrap { max-width: 1080px; margin: 0 auto; padding: 0 var(--sp-gutter); }
@@ -92,9 +100,32 @@
 }
 .rp-h1 { font-size: clamp(2.6rem, 7vw, 4.6rem); line-height: 1.0; letter-spacing: -.024em; font-weight: 850; margin: .8rem 0 0; text-wrap: balance; }
 
+/* Case-study hero headlines stranded their last word on every flagship and on
+   Grove. The cause was not wrapping: `.rp-clearing` caps at 40ch and `ch`
+   resolves against the BODY font-size, so the plate measured ~302px while the
+   headline ran to 73.6px — four characters a line. `text-wrap: balance` cannot
+   help a box that never knew how big its own headline was. Size the plate in
+   rem against the hero column and give the headline a ceiling that fits it.
+   Scoped off .riso-home so the homepage hero keeps its display scale. */
+.riso-page:not(.riso-home) .rp-hero .rp-clearing { max-width: min(44rem, 100%); }
+.riso-page:not(.riso-home) .rp-hero .rp-h1 { font-size: clamp(2rem, 3.1vw, 2.8rem); max-width: 100%; }
+/* Phones: the hero column is ~310px, about 15 characters of a 32px title, so
+   case-study titles stranded single words ("department", "medical"). A
+   slightly smaller size plus .rp-keep word pairs keeps every line multi-word
+   from 320 to 480. .rp-keep only binds here; wider screens wrap normally. */
+@media (max-width: 480px) {
+  .riso-page:not(.riso-home) .rp-hero .rp-h1 { font-size: clamp(1.6rem, 7.4vw, 2rem); }
+  .rp-keep { white-space: nowrap; }
+}
+@media (max-width: 760px) {
+  /* `balance` equalises line lengths, which is precisely how the last word ends
+     up alone. `pretty` optimises the last line instead. */
+  .riso-page:not(.riso-home) .rp-hero .rp-h1 { text-wrap: pretty; }
+}
+
 /* Headline that fits its plate rather than breaking out of it.
    `--h1-w100` is the measured pixel width of the longest unbreakable word at a
-   100px reference size (set in CuratedRolePage). The largest size that still
+   100px reference size. The largest size that still
    fits the container is therefore 100 × containerWidth / w100 — exact for any
    name, where a shared em-per-character ratio was not: Archivo 850 runs 0.61em
    per character for "Instagram" but 0.75em for "CompanyCam". */
@@ -427,7 +458,7 @@
 .rp-section--alt .rp-kicker,
 .rp-decisionStory__head .rp-kicker { color: var(--ink); }
 .rp-kicker { font-family: var(--mono); font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--coral); font-weight: 700; }
-.rp-title { font-size: var(--ts-title); font-weight: 850; letter-spacing: -.015em; margin: .5rem 0 0; text-wrap: balance; }
+.rp-title { font-size: var(--ts-title); font-weight: 850; line-height: 1.05; letter-spacing: -.015em; margin: .5rem 0 0; text-wrap: balance; }
 
 /* ---------- homepage opening film ---------- */
 .rp-openingFilm {
@@ -860,7 +891,8 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
   font: 700 .55rem/1.2 var(--mono);
   letter-spacing: .1em;
   text-transform: uppercase;
-  color: var(--coral);
+  /* 8.8px over a translucent clearing: the plain coral measured 4.08–4.45:1. */
+  color: var(--coral-text);
 }
 .rp-heroEvidence dd {
   margin: .28rem 0 0;
@@ -945,7 +977,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 
 /* ---------- closing CTA ---------- */
 .rp-close { text-align: left; }
-.rp-close h2 { font-size: var(--ts-title); font-weight: 850; letter-spacing: -.015em; margin: 0; text-wrap: balance; }
+.rp-close h2 { font-size: var(--ts-title); font-weight: 850; line-height: 1.05; letter-spacing: -.015em; margin: 0; text-wrap: balance; }
 .rp-close p { color: var(--ink-2); margin: .8rem 0 1.4rem; max-width: 52ch; }
 
 /* ---------- two-column split: words + relevant screen ---------- */
@@ -1004,8 +1036,8 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 
 /* ---------- scroll reveal ---------- */
 /* Default: visible. The hidden pre-reveal state only switches on under
-   .js-reveal, which useFlagshipReveal (and Grove's/CuratedRolePage's own
-   inline effects, both routed through the same wireRevealObservers()) add
+   .js-reveal, which useFlagshipReveal and Grove's inline effect (both routed
+   through the same wireRevealObservers()) add
    to their root ONLY after an IntersectionObserver is confirmed running. No
    JS, a bundle that fails to load, a hook that never mounts on some future
    page, or an observer that throws mid-setup all mean .js-reveal never
@@ -1075,7 +1107,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
   font-family: var(--mono); font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; color: var(--coral);
   background: color-mix(in srgb, var(--coral) 8%, var(--paper)); border: 1px solid color-mix(in srgb, var(--coral) 30%, transparent);
   padding: .35rem .7rem; border-radius: var(--r-plate); }
-.rp-inprogress::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--coral); animation: rp-pulse 2s ease-in-out infinite; }
+.rp-inprogress::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--coral); animation: rp-pulse 2s ease-in-out 2; }
 @keyframes rp-pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
 @media (prefers-reduced-motion: reduce) { .rp-inprogress::before { animation: none; } }
 
@@ -1239,7 +1271,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 /* nav logo mark — nudge the olive dot toward the coral system */
 .navbar .lm-accent { fill: var(--nav-accent); }
 
-/* ---------- curated: meta grid, chips, numbered list, hiring note ---------- */
+/* ---------- shared metadata, chips, numbered list, and notes ---------- */
 .rp-metagrid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 1.1rem 1.5rem; align-items: start;
   background: var(--paper); border: 1px solid var(--hair); border-radius: var(--r-plate); padding: 1.3rem 1.5rem; }
 @media (max-width: 760px) { .rp-metagrid { grid-template-columns: repeat(2,1fr); } }
@@ -1258,68 +1290,6 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 .rp-numlist__link:hover, .rp-numlist__link:focus-visible { color: var(--coral); }
 .rp-numlist p { color: var(--ink-2); font-size: .93rem; margin: 0; }
 
-/* Curated healthcare routes are evidence dossiers, not cover letters. */
-.curated-evidenceGrid {
-  list-style: none;
-  margin: 1.8rem 0 0;
-  padding: 0;
-  display: grid;
-  gap: clamp(1.25rem, 3vw, 2rem);
-}
-.curated-evidenceCard {
-  display: grid;
-  grid-template-columns: minmax(240px, .82fr) minmax(0, 1.18fr);
-  min-height: clamp(360px, 40vw, 500px);
-  border: 1px solid var(--hair);
-  background: var(--paper);
-  overflow: hidden;
-}
-.curated-evidenceCard__visual { margin: 0; min-height: 100%; background: var(--paper-2); }
-.curated-evidenceCard__visual img { width: 100%; height: 100%; min-height: 100%; object-fit: cover; display: block; filter: saturate(.82) contrast(1.04); }
-.curated-evidenceCard__body { padding: clamp(1.25rem, 3vw, 2.25rem); display: flex; flex-direction: column; justify-content: center; }
-.curated-evidenceCard h3 { margin: 0; font-size: clamp(1.35rem, 2.6vw, 2.15rem); line-height: 1.05; letter-spacing: -.025em; }
-.curated-evidenceCard h3 a { display: inline-flex; align-items: center; min-height: 44px; color: inherit; text-decoration-color: var(--coral); text-underline-offset: .16em; }
-.curated-evidenceCard__body > p { margin: .8rem 0 0; color: var(--ink-2); max-width: 38ch; }
-.curated-evidenceStrip { margin: clamp(1.4rem, 3vw, 2.2rem) 0 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid var(--hair); }
-.curated-evidenceStrip > div { padding: .85rem .55rem .2rem 0; }
-.curated-evidenceStrip dt { font: 700 .58rem/1.2 var(--mono); letter-spacing: .09em; text-transform: uppercase; color: var(--coral); }
-.curated-evidenceStrip dd { margin: .36rem 0 0; font-size: .76rem; line-height: 1.35; color: var(--ink-2); }
-.curated-heroTrace { width: min(560px, 86%); margin: 0; padding: clamp(1.2rem, 3vw, 2rem);
-  border-top: 3px solid var(--coral); background: color-mix(in srgb, var(--paper) 92%, transparent); }
-.curated-heroTrace > div { display: grid; grid-template-columns: minmax(6rem, .7fr) minmax(0, 1.7fr);
-  gap: 1rem; padding: .8rem 0; border-bottom: 1px solid var(--hair); }
-.curated-heroTrace > div:last-child { border-bottom: 0; }
-.curated-heroTrace dt { font: 700 .6rem/1.3 var(--mono); letter-spacing: .09em; text-transform: uppercase; color: var(--coral); }
-.curated-heroTrace dd { margin: 0; font-size: .88rem; line-height: 1.4; color: var(--ink); }
-@media (max-width: 560px) { .curated-heroTrace > div { grid-template-columns: 1fr; gap: .25rem; } }
-.curated-deliveryStamp { width: min(430px, 78%); margin: 0; padding: clamp(1.3rem, 4vw, 2.4rem);
-  color: #f4f1e6; background: var(--green); border: 2px solid var(--ink); box-shadow: 10px 10px 0 color-mix(in srgb, var(--coral) 72%, transparent); transform: rotate(-.8deg); }
-.curated-deliveryStamp span { display: block; font: 700 .62rem/1.3 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
-.curated-deliveryStamp strong { display: block; margin-top: .7rem; font-size: clamp(2.5rem, 6vw, 5rem); line-height: .9; letter-spacing: -.04em; }
-.curated-deliveryStamp b { display: block; margin-top: 1rem; font-size: 1.05rem; line-height: 1.3; }
-.curated-deliveryStamp figcaption { margin-top: 1.4rem; padding-top: 1rem; border-top: 1px solid rgba(244,241,230,.45);
-  font: .68rem/1.5 var(--mono); letter-spacing: .04em; }
-@media (prefers-reduced-motion: reduce) { .curated-deliveryStamp { transform: none; } }
-.curated-productArtifact { width: min(680px, 96%); margin: 0; }
-.curated-productArtifact__label {
-  position: relative; z-index: 3; width: min(31rem, 88%); margin: 0 0 -.45rem .75rem;
-  padding: .72rem .9rem; border-left: 3px solid var(--coral);
-  background: color-mix(in srgb, var(--paper) 96%, transparent);
-  box-shadow: 0 12px 28px -22px rgba(0,0,0,.5);
-}
-.curated-productArtifact__label span { display: block; font: 700 .66rem/1.35 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--coral); }
-.curated-productArtifact__label b { display: block; margin-top: .25rem; font-size: .88rem; line-height: 1.35; }
-.curated-productArtifact__frame { position: relative; z-index: 2; overflow: hidden; border: 1px solid var(--hair); background: var(--paper); box-shadow: 0 30px 60px -38px rgba(0,0,0,.6); }
-.curated-productArtifact figcaption { margin-top: .6rem; font: 700 .7rem/1.5 var(--mono); letter-spacing: .03em; color: var(--ink-2); }
-@media (max-width: 820px) {
-  .curated-evidenceCard { grid-template-columns: 1fr; min-height: 0; }
-  .curated-evidenceCard__visual { min-height: 260px; max-height: 360px; }
-  .curated-evidenceStrip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@media (max-width: 460px) {
-  .curated-evidenceCard__visual { min-height: 230px; }
-  .curated-evidenceStrip { grid-template-columns: 1fr 1fr; }
-}
 .rp-note { background: color-mix(in srgb, var(--coral) 7%, var(--paper)); border: 1px solid color-mix(in srgb, var(--coral) 26%, transparent);
   border-radius: var(--r-plate); padding: 1.4rem; align-self: start; }
 /* display:block so the label reads the same whether it is authored as a span or
@@ -1434,7 +1404,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 .rp-work__n { font-family: var(--mono); font-size: .68rem; color: var(--coral); font-weight: 700; display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
 .rp-work__tag { font-family: var(--mono); font-size: .58rem; letter-spacing: .08em; text-transform: uppercase; color: var(--green);
   border: 1px solid color-mix(in srgb, var(--green) 40%, transparent); border-radius: 999px; padding: .12rem .5rem; }
-.rp-work__title { font-size: var(--ts-title); font-weight: 850; letter-spacing: -.015em; margin: .3rem 0 .25rem; text-wrap: balance; }
+.rp-work__title { font-size: var(--ts-title); font-weight: 850; line-height: 1.05; letter-spacing: -.015em; margin: .3rem 0 .25rem; text-wrap: balance; }
 .rp-work__sub { font-family: var(--mono); font-size: .64rem; letter-spacing: .06em; text-transform: uppercase; color: var(--green); }
 .rp-work__desc { color: var(--ink-2); margin: .75rem 0 0; max-width: 52ch; font-size: .95rem; }
 /* Surfaces the MSK "simple button" decision story as its own hook — a small
@@ -1444,7 +1414,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  margin: -.6rem 0 0;
+  margin: 0;
   padding: 0 .25rem clamp(1rem, 2vw, 1.4rem);
   border-bottom: 1px solid var(--hair);
   font: 700 .68rem/1.3 var(--mono);
@@ -1454,6 +1424,9 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
   text-underline-offset: .28em;
 }
 .rp-work__teaser:hover { color: var(--ink); }
+/* The teaser's own rule closes the row, so the row above drops its divider —
+   otherwise that line ran straight through the link text. */
+.rp-work:has(+ .rp-work__teaser) { border-bottom: 0; }
 /* Editorial "contact sheet" crop: a thin-ruled plate with near-square corners
    and no shadow — a truthful artifact glimpse, not a floating card. */
 .rp-work__thumb { flex: 0 0 auto; width: clamp(112px, 15vw, 168px); aspect-ratio: 4 / 3; overflow: hidden;
@@ -1463,7 +1436,11 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 .rp-work:hover .rp-work__thumb img { transform: scale(1.03); }
 .rp-supportingLink { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
 .rp-supportingLink > span { font: 700 .62rem/1.3 var(--mono); letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
-.rp-supportingLink a { min-height: 44px; display: inline-flex; align-items: center; color: var(--ink); text-underline-offset: .2em; }
+/* Same treatment as .rp-work__teaser: the "Supporting practice" kicker
+   carries the demotion, not a quieter link style. */
+.rp-supportingLink a { min-height: 44px; display: inline-flex; align-items: center; font: 700 .68rem/1.3 var(--mono);
+  letter-spacing: .04em; color: var(--coral); text-decoration: underline; text-underline-offset: .28em; }
+.rp-supportingLink a:hover { color: var(--ink); }
 .riso-home .rp-work {
   grid-template-columns: minmax(0, 1fr) minmax(320px, .82fr) auto;
   min-height: clamp(300px, 30vw, 390px);
@@ -1527,6 +1504,46 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
   pointer-events: none;
 }
 .riso-home .rp-work__thumb--dashboard figcaption {
+  margin: 0;
+  font: 700 .6rem/1.4 var(--mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+/* The Knowunity row shows two real prototype states as a compact flow. The
+   screens stay uncropped; the surrounding plate belongs to the portfolio,
+   while the dark phone surfaces remain visibly the product's own system. */
+.riso-home .rp-work__thumb--knowunity {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: .6rem;
+  margin: 0;
+  padding: clamp(.7rem, 1.8vw, 1.1rem);
+  background:
+    linear-gradient(var(--grid-ink) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-ink) 1px, transparent 1px),
+    var(--paper-2);
+  background-size: 24px 24px;
+}
+.rp-work__thumb--knowunity__flow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(.5rem, 1.2vw, .9rem);
+  min-height: 0;
+  overflow: hidden;
+}
+.rp-work__thumb--knowunity__flow img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: contain;
+  object-position: center;
+  border: 1px solid color-mix(in srgb, var(--ink) 32%, transparent);
+  background: #080a15;
+  transform: none;
+}
+.rp-work:hover .rp-work__thumb--knowunity__flow img { transform: none; }
+.riso-home .rp-work__thumb--knowunity figcaption {
   margin: 0;
   font: 700 .6rem/1.4 var(--mono);
   letter-spacing: .08em;
@@ -2310,12 +2327,12 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
   text-transform: uppercase;
   transition: opacity 140ms linear;
 }
+/* Sits below the masthead, not inside it: the train's rails run along the
+   band's bottom 25px, and an overlaid credit had them striking through it. */
 .rp-dispatchTrain__attribution {
-  position: absolute;
-  z-index: 4;
-  right: max(var(--sp-gutter), calc((100vw - 1080px) / 2 + var(--sp-gutter)));
-  bottom: .55rem;
   margin: 0;
+  padding-block: .55rem;
+  text-align: right;
   color: var(--muted);
   font-family: var(--mono);
   font-size: .62rem;
@@ -2340,7 +2357,9 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
   padding: clamp(2rem, 4.5vw, 4rem) var(--sp-gutter) clamp(2.2rem, 4vw, 3.4rem);
 }
 .rp-dispatch__cover .rp-dispatch__title {
-  max-width: 10ch;
+  /* 14ch, not 10ch: the title is "The Trip Home" — 13 characters — so a 10ch
+     box stranded "Home" at every width. */
+  max-width: 14ch;
   margin-top: .45rem;
   font-size: var(--ts-title);
   line-height: .96;
@@ -2534,13 +2553,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
   .rp-dispatchTrain__fallback { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .rp-dispatchTrain__car { width: auto; height: 100%; }
   .rp-dispatchTrain__car--desktopOnly { display: none; }
-  .rp-dispatchTrain__attribution {
-    right: auto;
-    bottom: .45rem;
-    left: var(--sp-gutter);
-    max-width: calc(100% - (2 * var(--sp-gutter)));
-    text-align: left;
-  }
+  .rp-dispatchTrain__attribution { text-align: left; }
   .rp-dispatch__cover {
     grid-template-columns: minmax(0, 1fr);
     align-items: start;
@@ -2549,8 +2562,9 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
     padding: 1.5rem var(--sp-gutter) 2.8rem;
   }
   .rp-dispatch__cover .rp-dispatch__title {
-    max-width: 9ch;
-    font-size: clamp(2.55rem, 14vw, 3.65rem);
+    /* 9ch stranded "Home" on its own line; the title is 13 characters. */
+    max-width: 14ch;
+    font-size: clamp(2.4rem, 12vw, 3.4rem);
   }
   .rp-dispatch__cover .rp-dispatch__question {
     max-width: 31ch;
@@ -2594,7 +2608,13 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 }
 
 .rp-stat__source {
-  margin: .65rem 0 0;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin: .25rem 0 0;
+  text-decoration: underline;
+  text-decoration-color: var(--hair);
+  text-underline-offset: .25em;
   font-family: var(--mono);
   font-size: .62rem;
   line-height: 1.4;
@@ -2602,6 +2622,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
   text-transform: uppercase;
   color: var(--muted);
 }
+.rp-stat__source:hover { color: var(--ink); text-decoration-color: currentColor; }
 
 .rp-about-plate {
   position: relative;
@@ -2693,14 +2714,21 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 .rp-chapters__note { margin-left: auto; padding-left: 1rem; color: var(--muted);
   font-style: italic; letter-spacing: .02em; text-transform: none; }
 @media (max-width: 900px) { .rp-chapters__note { display: none; } }
+/* Phones: one sideways-scrolling row. Wrapping made the sticky strip two rows
+   (102px), so nav + strip held 21% of an 844px screen while reading. The
+   "Jump to" label goes; the nav's aria-label still names the strip. */
 @media (max-width: 760px) {
   .rp-chapters {
-    flex-wrap: wrap;
-    overflow: visible;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
     margin-bottom: .4rem;
     padding-bottom: .2rem;
   }
-  .rp-chapters span, .rp-chapters a { flex: 0 0 auto; }
+  .rp-chapters::-webkit-scrollbar { display: none; }
+  .rp-chapters > span { display: none; }
+  .rp-chapters a { flex: 0 0 auto; }
 }
 
 /* ---------- skill tags ---------- */
@@ -2737,8 +2765,11 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
    arrow was already giving on the compositor. The arrow now carries it alone,
    travelling slightly further to keep the same sense of the row opening up. */
 .rp-next__eyebrow { font-family: var(--mono); font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; color: var(--on-coral); }
-.rp-next__title { font-size: var(--ts-title); font-weight: 850; letter-spacing: -.015em; margin: .35rem 0 0; color: var(--on-coral); }
+.rp-next__title { font-size: var(--ts-title); font-weight: 850; line-height: 1.05; letter-spacing: -.015em; margin: .35rem 0 0; color: var(--on-coral); text-wrap: pretty; }
 .rp-next__tag { font-family: var(--mono); font-size: .62rem; letter-spacing: .06em; text-transform: uppercase; color: var(--on-coral); }
+/* The legacy `.dark-mode p` rule in App.css outranks these single-class
+   selectors and painted peach text on the coral band (1.54:1). */
+.dark-mode .rp-next p { color: var(--on-coral); }
 .rp-next__arrow { font-size: 1.8rem; color: var(--on-coral); transition: transform var(--dur) var(--ease-soft); flex: 0 0 auto; }
 .rp-next:hover .rp-next__arrow { transform: translateX(10px); }
 
@@ -2827,32 +2858,22 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
   /* A recruiter should see a real artifact before the first viewport ends.
      Headline remains first in the DOM; the visual order promotes its evidence
      without changing reading or focus order. */
-  .flagship-page .rp-hero__media,
-  .curated-role .rp-hero__media {
+  .flagship-page .rp-hero__media {
     order: -1;
     min-height: 280px;
     max-height: 340px;
     overflow: hidden;
     padding: .8rem 1rem;
   }
-  .flagship-page .rp-hero__content,
-  .curated-role .rp-hero__content { order: 1; }
+  .flagship-page .rp-hero__content { order: 1; }
   .flagship-page .rp-hero__media .rp-device { height: 310px; width: auto; }
   .flagship-page .fp-heroArt { min-height: 300px; }
   .flagship-page .fp-heroArt--msk .fp-dashboardFrame { width: 96%; max-height: 245px; }
   .flagship-page .fp-heroArt--msk .fp-artifactLabel { width: 96%; padding: .5rem .65rem; }
-  .curated-productArtifact { width: 100%; }
-  .curated-productArtifact__frame { max-height: 220px; }
-  .curated-productArtifact__frame .msk-dashboard-mockup { transform: scale(.8); transform-origin: top left; width: 125%; }
-  .curated-productArtifact__label { margin-left: .25rem; padding: .5rem .65rem; }
-  .curated-productArtifact figcaption { font-size: .75rem; }
-
   /* Consequential labels stay small but no longer fall below a readable 12px
      floor on the phone layouts used in the recruiter audit. */
   .rp-heroEvidence dt,
   .rp-metagrid__k,
-  .curated-evidenceStrip dt,
-  .curated-heroTrace dt,
   .rp-work__n,
   .rp-work__sub,
   .rp-kicker,
@@ -2860,9 +2881,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
   .rp-chapter__proof small,
   .rp-phase__label,
   .rp-note__k { font-size: .75rem; }
-  .rp-metagrid__v,
-  .curated-evidenceStrip dd,
-  .curated-heroTrace dd { font-size: .84rem; }
+  .rp-metagrid__v { font-size: .84rem; }
   .rp-cta,
   .rp-heroUtility,
   .rp-eyebrow,
@@ -2880,8 +2899,6 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
   .msk-dashboard-mockup--compact .msk-dashboard-mockup__mrn small,
   .msk-dashboard-mockup--compact .msk-dashboard-mockup__legend,
   .msk-dashboard-mockup--compact .msk-dashboard-mockup__rule { font-size: .75rem; }
-  .curated-role--healthcare-ux-researcher .rp-hero__media { min-height: 300px; max-height: 320px; }
-  .curated-role--healthcare-ux-researcher .rp-h1 { font-size: clamp(2.15rem, 8.8vw, 2.45rem); line-height: .98; }
 }
 
 /* ---------- flagship chapter progress ---------- */
@@ -3333,6 +3350,10 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 .rp-override .rp-notif--ai { background: rgba(239,83,64,.09); }
 .rp-override .rp-notif--me { background: rgba(124,176,105,.09); }
 .rp-override .rp-notif__card { background: #f1eee4; border-color: rgba(244,241,230,.2); }
+/* The card stays light in both themes, so its text is pinned to the light
+   palette's ink/muted instead of tokens that flip in dark mode (was 1.15:1). */
+.rp-override .rp-notif__card .rp-notif__msg { color: #20241c; }
+.rp-override .rp-notif__card .rp-notif__app { color: #596253; }
 .rp-override .rp-accordion, .rp-override .rp-acc { border-color: rgba(244,241,230,.22); }
 .rp-override .rp-acc summary { color: #f4f1e6; }
 .rp-override .rp-decisionRecord { border-top-color: rgba(244,241,230,.58); }
@@ -3450,14 +3471,14 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
   padding: .85rem 0 .85rem 1rem; border-left: 3px solid var(--hair);
   transition: border-color .3s ease, background-color .3s ease; opacity: 1; }
 .rp-decisionStory__steps li.is-active { border-left-color: var(--coral); opacity: 1; }
-.rp-decisionStory__n { font-family: var(--mono); font-size: .68rem; line-height: 1.6; color: var(--coral); }
+.rp-decisionStory__n { font-family: var(--mono); font-size: .68rem; line-height: 1.6; color: var(--coral-text); }
 .rp-decisionStory__steps h3 { margin: 0; font-size: clamp(1.02rem, 1.5vw, 1.22rem);
   line-height: 1.2; letter-spacing: -.012em; }
 .rp-decisionStory__steps p { margin: .3rem 0 0; font-size: .88rem; line-height: 1.45; color: var(--ink-2); }
 .rp-decisionStory__logline { display: flex; align-items: baseline; gap: .5rem; margin-top: .4rem; }
 .rp-decisionStory__logline span { flex: 0 0 auto; white-space: nowrap;
   font-family: var(--mono); font-size: .55rem;
-  letter-spacing: .1em; text-transform: uppercase; color: var(--coral); }
+  letter-spacing: .1em; text-transform: uppercase; color: var(--coral-text); }
 .rp-decisionStory__logline b { font-size: .82rem; color: var(--ink); }
 
 .rp-decisionStory__visual { position: relative; overflow: hidden;
@@ -3515,6 +3536,9 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 .rp-outcomeStage .rp-title, .rp-outcomeStage .rp-lede { color: #f4f1e6; }
 .rp-outcomeStage .rp-lede { color: rgba(244,241,230,.78); }
 .rp-outcomeStage .rp-disclaimer { color: rgba(244,241,230,.7); }
+/* Fixed dark stage: kickers take the panel's dark-surface coral, as
+   .rp-override does — the page coral measured 1.87–2.35:1 here. */
+.rp-outcomeStage .rp-kicker { color: #ff8171; }
 .rp-outcomeStage .rp-stat { background: rgba(244,241,230,.08); border-color: rgba(244,241,230,.22); backdrop-filter: blur(8px); }
 .rp-outcomeStage .rp-stat__tag { color: rgba(244,241,230,.66); }
 .rp-outcomeStage .rp-stat__n { color: #d8e9c7; }
@@ -3669,11 +3693,17 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
    .riso-page covers both, since the flagships carry both classes. */
 .riso-page section[id],
 .riso-page header[id],
+.riso-page details[id],
 .riso-page .rp-decisionStory[id] { scroll-margin-top: 138px; }
 @media (max-width: 900px) {
   .riso-page section[id],
   .riso-page header[id],
+  .riso-page details[id],
   .riso-page .rp-decisionStory[id] { scroll-margin-top: 150px; }
+  /* A focused details summary has its own 44px+ control row. Give it the
+     existing Grove disclosure clearance so wrapped chapter labels cannot
+     cover the first line or focus outline on narrow screens. */
+  .riso-page details[id] { scroll-margin-top: 190px; }
 }
 
 /* ---------- reading progress ---------- */
@@ -3752,7 +3782,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 .rp-chapter__n {
   display: flex; align-items: baseline; gap: .75rem;
   font-family: var(--mono); font-size: .62rem; letter-spacing: .1em;
-  text-transform: uppercase; color: var(--coral);
+  text-transform: uppercase; color: var(--coral-text);
 }
 .rp-chapter__n span { color: var(--muted); }
 .rp-chapter .rp-subhead { margin-top: .7rem; max-width: 26ch; }
@@ -3842,12 +3872,14 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 /* ---------- phase indicator ---------- */
 /* Determinate progress. Replaces "Phase 2 of 3" repeated in prose. */
 .rp-phase { display: inline-flex; align-items: center; gap: .55rem; }
-.rp-phase__track { display: inline-flex; gap: 3px; }
+/* Done vs remaining differs in shape as well as colour (solid block vs thin
+   rule), so the compact bar still reads with no colour and no label. */
+.rp-phase__track { display: inline-flex; align-items: center; gap: 3px; }
 .rp-phase__seg {
-  width: 14px; height: 3px;
-  background: color-mix(in srgb, var(--ink) 18%, transparent);
+  width: 14px; height: 1px;
+  background: color-mix(in srgb, var(--ink) 55%, transparent);
 }
-.rp-phase__seg.is-done { background: var(--coral); }
+.rp-phase__seg.is-done { height: 5px; background: var(--coral); }
 .rp-phase__label {
   font-family: var(--mono); font-size: .58rem; letter-spacing: .09em;
   text-transform: uppercase; color: var(--muted);

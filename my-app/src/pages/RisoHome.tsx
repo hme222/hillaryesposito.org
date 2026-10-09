@@ -9,6 +9,7 @@ import MSKDashboardMockup from "../components/MSKDashboardMockup";
 import usePageTitle from "../hooks/usePageTitle";
 import useFlagshipReveal from "../hooks/useFlagshipReveal";
 import useFilmExitChoreo from "../hooks/useFilmExitChoreo";
+import { useUISfx } from "../hooks/useUISfx";
 import { useLanguage, useT } from "../app/LanguageContext";
 import type { StringKey } from "../i18n/strings";
 import "../styles/riso.css";
@@ -20,7 +21,28 @@ import "../styles/riso-page.css";
  * Replaces the old centered particle-backdrop hero.
  */
 
-const WORK = [
+type WorkItem = {
+  n: string;
+  titleKey: StringKey;
+  subKey: StringKey;
+  descKey: StringKey;
+  path?: string;
+  externalHref?: string;
+  externalAriaKey?: StringKey;
+  img?: string;
+  imgSecondary?: string;
+  imgAltKey: StringKey;
+  visual: "image" | "logistics" | "msk" | "knowunity";
+  tagKey?: StringKey;
+  teaserPath?: string;
+  teaserPathEs?: string;
+  teaserExternalHref?: string;
+  teaserAriaKey?: StringKey;
+  teaserEn?: string;
+  teaserEs?: string;
+};
+
+const WORK: WorkItem[] = [
   {
     n: "01",
     titleKey: "home.proj.msk.title",
@@ -55,33 +77,42 @@ const WORK = [
     imgAltKey: "home.riso.groveAlt",
     visual: "image",
     tagKey: "home.riso.groveTag",
+    teaserPath: "/case-study/grove#grove-prototype",
+    teaserPathEs: "/case-study/grove",
+    teaserEn: "Try the working browser prototype →",
+    teaserEs: "Ver el prototipo funcional en el navegador →",
   },
-] satisfies Array<{
-  n: string;
-  titleKey: StringKey;
-  subKey: StringKey;
-  descKey: StringKey;
-  path: string;
-  img?: string;
-  imgAltKey: StringKey;
-  visual: "image" | "logistics" | "msk";
-  tagKey?: StringKey;
-  teaserPath?: string;
-  teaserEn?: string;
-  teaserEs?: string;
-}>;
+  {
+    n: "04",
+    titleKey: "home.proj.knowunity.title",
+    subKey: "home.proj.knowunity.subtitle",
+    descKey: "home.riso.knowunityDesc",
+    externalHref: "https://knowunity-voice-recall.vercel.app/",
+    externalAriaKey: "home.riso.knowunityPrototypeAria",
+    img: "/assets/knowunity/say-it-back-prompt.png",
+    imgSecondary: "/assets/knowunity/say-it-back-response.png",
+    imgAltKey: "home.riso.knowunityAlt",
+    visual: "knowunity",
+    teaserExternalHref: "https://6aab3391f5b820296b53b3e5-vmipdkjlqe.chromatic.com/?path=/docs/components-appbar--docs",
+    teaserAriaKey: "home.riso.knowunitySystemAria",
+    teaserEn: "Review the component system ↗",
+    teaserEs: "Revisar el sistema de componentes ↗",
+  },
+];
 
+// Each source links to the section that carries the number's scope and limits.
 const STATS = [
-  { n: "21,000+", labelKey: "home.stat.scale", sourceKey: "home.stat.mskSource" },
-  { n: "85%", labelKey: "home.stat.logistics", sourceKey: "home.stat.logisticsSource" },
-  { n: "34", labelKey: "home.stat.research", sourceKey: "home.stat.groveSource" },
-] satisfies Array<{ n: string; labelKey: StringKey; sourceKey: StringKey }>;
+  { n: "21,000+", labelKey: "home.stat.scale", sourceKey: "home.stat.mskSource", path: "/case-study/msk", anchor: "msk-outcomes" },
+  { n: "85%", labelKey: "home.stat.logistics", sourceKey: "home.stat.logisticsSource", path: "/case-study/logistics", anchor: "log-outcomes" },
+  { n: "34", labelKey: "home.stat.research", sourceKey: "home.stat.groveSource", path: "/case-study/grove", anchor: "grove-research" },
+] satisfies Array<{ n: string; labelKey: StringKey; sourceKey: StringKey; path: string; anchor: string }>;
 
 const DISPATCH_TRAIN_HOLD_SECONDS = 3.8;
 
 export default function RisoHome() {
   usePageTitle();
   const t = useT();
+  const { play } = useUISfx();
   const { lang } = useLanguage();
   const location = useLocation();
   const navigate = useNavigate();
@@ -191,6 +222,46 @@ export default function RisoHome() {
     });
   };
 
+  const renderWorkContents = (work: WorkItem) => (
+    <>
+      <div>
+        <p className="rp-work__n">
+          {work.n}
+          {work.tagKey && <PhaseIndicator current={2} label={t(work.tagKey)} compact />}
+        </p>
+        <p className="rp-work__title">{t(work.titleKey)}</p>
+        <p className="rp-work__sub">{t(work.subKey)}</p>
+        <p className="rp-work__desc">{t(work.descKey)}</p>
+      </div>
+      {work.visual === "logistics" ? (
+        <figure className="rp-work__thumb rp-work__thumb--mechanism" aria-label={t(work.imgAltKey)}>
+          <LogisticsMechanism n="01" />
+          <figcaption>{lang === "es" ? "Almacén movido al frente · 85% menos tiempo de reabastecimiento" : "Warehouse moved forward · 85% shorter resupply time"}</figcaption>
+        </figure>
+      ) : work.visual === "msk" ? (
+        <figure className="rp-work__thumb rp-work__thumb--dashboard" aria-label={t(work.imgAltKey)}>
+          <div className="rp-work__thumb--dashboard__frame">
+            <MSKDashboardMockup compact condensedHeader hideToolbar hideRule rowIndices={[0, 2]} tableId="home-work-queue-table" />
+          </div>
+          <figcaption>{lang === "es" ? "Cola de archivo · cuatro áreas a una" : "Filing queue · four departments to one"}</figcaption>
+        </figure>
+      ) : work.visual === "knowunity" ? (
+        <figure className="rp-work__thumb rp-work__thumb--knowunity" aria-label={t(work.imgAltKey)}>
+          <div className="rp-work__thumb--knowunity__flow" aria-hidden="true">
+            <img src={work.img} alt="" loading="eager" decoding="async" />
+            <img src={work.imgSecondary} alt="" loading="eager" decoding="async" />
+          </div>
+          <figcaption>{lang === "es" ? "Indicación → respuesta capturada · recuerdo simulado" : "Prompt → captured response · mocked recall"}</figcaption>
+        </figure>
+      ) : (
+        <div className="rp-work__thumb rp-work__thumb--contain">
+          <img src={work.img} alt={t(work.imgAltKey)} loading="eager" decoding="async" />
+        </div>
+      )}
+      <span className="rp-work__arrow" aria-hidden="true">{work.externalHref ? "↗" : "→"}</span>
+    </>
+  );
+
   return (
     <main className="riso-page riso-home" ref={rootRef}>
       <RisoDefs />
@@ -225,7 +296,10 @@ export default function RisoHome() {
                 ref={openingFilmTriggerRef}
                 type="button"
                 className="rp-heroUtility rp-openingVisualTrigger"
-                onClick={() => setOpeningFilmOpen(true)}
+                onClick={() => {
+                  play("open");
+                  setOpeningFilmOpen(true);
+                }}
               >
                 {t("home.riso.openingVisual")}
               </button>
@@ -268,7 +342,12 @@ export default function RisoHome() {
               <div className="rp-stat" key={s.n}>
                 <p className="rp-stat__n">{s.n}</p>
                 <p className="rp-stat__l">{t(s.labelKey)}</p>
-                <p className="rp-stat__source">{t(s.sourceKey)}</p>
+                <Link
+                  className="rp-stat__source"
+                  to={`${s.path}#${lang === "es" ? "es-" : ""}${s.anchor}`}
+                >
+                  {t(s.sourceKey)}<span aria-hidden="true"> →</span>
+                </Link>
               </div>
             ))}
           </div>
@@ -283,44 +362,44 @@ export default function RisoHome() {
           <h2 className="rp-title" id="home-work-title">{t("home.riso.workTitle")}</h2>
           <div className="rp-worklist rp-reveal" data-evidence="true">
             {WORK.map((w) => (
-              <React.Fragment key={w.path}>
-                <Link className="rp-work" to={w.path}>
-                  <div>
-                    <p className="rp-work__n">
-                      {w.n}
-                      {w.tagKey && <PhaseIndicator current={2} label={t(w.tagKey)} compact />}
-                    </p>
-                    <p className="rp-work__title">{t(w.titleKey)}</p>
-                    <p className="rp-work__sub">{t(w.subKey)}</p>
-                  </div>
-                  {w.visual === "logistics" ? (
-                    <figure className="rp-work__thumb rp-work__thumb--mechanism" aria-label={t(w.imgAltKey)}>
-                      <LogisticsMechanism n="03" />
-                      <figcaption>{lang === "es" ? "Siete puestos · pronóstico compartido · 85% menos tiempo" : "Seven aid stations · shared forecast · 85% shorter resupply time"}</figcaption>
-                    </figure>
-                  ) : w.visual === "msk" ? (
-                    <figure className="rp-work__thumb rp-work__thumb--dashboard" aria-label={t(w.imgAltKey)}>
-                      <div className="rp-work__thumb--dashboard__frame">
-                        <MSKDashboardMockup compact condensedHeader hideToolbar hideRule rowIndices={[0, 2]} tableId="home-work-queue-table" />
-                      </div>
-                      <figcaption>{lang === "es" ? "Cola de archivo · cuatro sistemas a uno" : "Filing queue · four systems to one"}</figcaption>
-                    </figure>
-                  ) : (
-                    <div className="rp-work__thumb rp-work__thumb--contain">
-                      <img src={w.img} alt={t(w.imgAltKey)} loading="eager" decoding="async" />
-                    </div>
-                  )}
-                  <span className="rp-work__arrow" aria-hidden="true">→</span>
-                </Link>
-                {/* MSK's own decision story ("the simple button") is the
-                    part Hillary flagged as the strongest thing on the
-                    site — this surfaces it as its own hook instead of
-                    leaving it to be found mid-case-study. */}
-                {w.teaserPath && (
-                  <Link className="rp-work__teaser" to={w.teaserPath}>
-                    {lang === "es" ? w.teaserEs : w.teaserEn}
+              <React.Fragment key={w.path ?? w.externalHref}>
+                {w.externalHref ? (
+                  <a
+                    className="rp-work"
+                    href={w.externalHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={w.externalAriaKey ? t(w.externalAriaKey) : undefined}
+                  >
+                    {renderWorkContents(w)}
+                  </a>
+                ) : (
+                  <Link className="rp-work" to={w.path ?? "/"}>
+                    {renderWorkContents(w)}
                   </Link>
                 )}
+                {/* Project-specific hooks surface one high-value decision or
+                    working proof point without turning it into a fourth work
+                    row. Spanish prototype links stay on the condensed Spanish
+                    case study because the full interaction lab is English. */}
+                {w.teaserExternalHref ? (
+                  <a
+                    className="rp-work__teaser"
+                    href={w.teaserExternalHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={w.teaserAriaKey ? t(w.teaserAriaKey) : undefined}
+                  >
+                    {lang === "es" ? w.teaserEs : w.teaserEn}
+                  </a>
+                ) : w.teaserPath ? (
+                  <Link
+                    className="rp-work__teaser"
+                    to={lang === "es" && w.teaserPathEs ? w.teaserPathEs : w.teaserPath}
+                  >
+                    {lang === "es" ? w.teaserEs : w.teaserEn}
+                  </Link>
+                ) : null}
               </React.Fragment>
             ))}
           </div>
@@ -336,9 +415,12 @@ export default function RisoHome() {
         <div className="rp-wrap rp-close">
           <p className="rp-kicker">{t("home.riso.contactKicker")}</p>
           <h2 id="home-contact-title">{t("home.ctaTitle")}</h2>
-          <a className="rp-cta" href="mailto:espositohillary@gmail.com" aria-label={t("home.ctaEmailAria")}>
-            espositohillary@gmail.com →
+          {/* One label for the contact action site-wide; the address stays
+              visible and selectable so a missing mail client never dead-ends. */}
+          <a className="rp-cta" href="mailto:espositohillary@gmail.com">
+            {t("contact.note")} →
           </a>
+          <p>{t("contact.copy")} espositohillary@gmail.com</p>
         </div>
       </section>
 
@@ -436,8 +518,8 @@ export default function RisoHome() {
                   {t(dispatchOpen ? "home.dispatch.closeJournal" : "home.dispatch.openJournal")}
                 </button>
               </div>
-              <p className="rp-dispatchTrain__attribution">{t("home.dispatch.trainAttribution")}</p>
             </div>
+            <p className="rp-dispatchTrain__attribution">{t("home.dispatch.trainAttribution")}</p>
 
             <div
               className="rp-dispatch__reveal"

@@ -7,8 +7,7 @@ type MSKDashboardMockupProps = {
   activeRow?: number | null;
   copy?: MskCopy["dashboard"];
   /** Show only these row indices (into `copy.rows`), in this order. Omit to
-   *  render every row — the case-study and curated-page views still need the
-   *  full set (FlagshipMSK's decision trace indexes into it by position).
+   *  render every row so FlagshipMSK's decision trace can index the full set.
    *  Used by the Home hero to show one representative row per status instead
    *  of all five, without touching the shared row data. */
   rowIndices?: number[];
@@ -32,8 +31,7 @@ type MSKDashboardMockupProps = {
   hideRule?: boolean;
   /** Stable id placed on the `role="table"` wrapper so an external trigger
    *  elsewhere on the page can `aria-controls` it. Home-hero-only — case
-   *  studies and curated pages don't pass this, so they never render a
-   *  duplicate id. */
+   *  studies don't pass this, so they never render a duplicate id. */
   tableId?: string;
   /** Optional control rendered as the last element inside the card, still
    *  inside `.msk-dashboard-mockup` so it inherits the same mobile
@@ -60,7 +58,7 @@ type MSKDashboardMockupProps = {
 
 /**
  * @status: stable
- * @purpose: Anonymized recreation of the MSK filing work-queue dashboard (masked MRNs, status rows); used on the home hero, the MSK case study, and curated role pages. Pick this for the literal dashboard-as-artifact — for a step-by-step animated demo of the same workflow use MSKFilingReceipt, for a static mechanism diagram use MSKMechanism.
+ * @purpose: Anonymized recreation of the MSK filing work-queue dashboard (masked MRNs, status rows); used on the home hero and MSK case study. Pick this for the literal dashboard-as-artifact — for a step-by-step animated demo of the same workflow use MSKFilingReceipt, for a static mechanism diagram use MSKMechanism.
  */
 export default function MSKDashboardMockup({
   compact = false,

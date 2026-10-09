@@ -3,16 +3,15 @@ import { createRoot, Root } from "react-dom/client";
 import axe from "axe-core";
 import FlagshipMSK from "./FlagshipMSK";
 import FlagshipMobbin from "./FlagshipMobbin";
+import FlagshipLogistics from "./FlagshipLogistics";
 import RisoGrove from "./RisoGrove";
 import RisoHome from "../RisoHome";
 import About from "../AboutMe";
 import NotFoundPage from "../NotFoundPage";
-import CuratedRolePage from "../curated/CuratedRolePage";
-import FashionCampaignSystem from "../curated/FashionCampaignSystem";
 import Footer from "../../components/Footer";
 import RecruiterPill from "../../components/RecruiterPill";
 
-let mockCuratedSlug = "meta-instagram-product-designer";
+let mockLang = "en";
 
 jest.mock("react-router-dom", () => ({
   Link: ({ to, children, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { to: string }) => (
@@ -21,11 +20,10 @@ jest.mock("react-router-dom", () => ({
   Navigate: () => null,
   useLocation: () => ({ pathname: "/", search: "" }),
   useNavigate: () => jest.fn(),
-  useParams: () => ({ slug: mockCuratedSlug }),
 }), { virtual: true });
 
 jest.mock("../../app/LanguageContext", () => ({
-  useLanguage: () => ({ lang: "en" }),
+  useLanguage: () => ({ lang: mockLang, setLang: jest.fn() }),
   useT: () => (key: string) => key,
 }));
 
@@ -59,6 +57,10 @@ describe("flagship case-study accessibility", () => {
         removeEventListener() {},
       }),
     });
+    Object.defineProperty(HTMLElement.prototype, "scrollIntoView", {
+      configurable: true,
+      value: jest.fn(),
+    });
     HTMLDialogElement.prototype.showModal = function showModal() {
       this.setAttribute("open", "");
     };
@@ -78,19 +80,18 @@ describe("flagship case-study accessibility", () => {
   afterEach(() => {
     act(() => root.unmount());
     container.remove();
-    mockCuratedSlug = "meta-instagram-product-designer";
+    mockLang = "en";
     window.history.replaceState(null, "", "/");
   });
 
   it.each([
     ["MSK", <FlagshipMSK />],
     ["Mobbin", <FlagshipMobbin />],
+    ["Medical logistics", <FlagshipLogistics />],
     ["Grove", <RisoGrove />],
     ["Home", <RisoHome />],
     ["About", <About />],
     ["404 recovery", <NotFoundPage />],
-    ["Curated role", <CuratedRolePage />],
-    ["Fashion campaign", <FashionCampaignSystem />],
     ["Global footer", <Footer />],
     ["Recruiter entry point", <RecruiterPill />],
   ])("%s has no detectable structural accessibility violations", async (_name, page) => {
@@ -109,6 +110,69 @@ describe("flagship case-study accessibility", () => {
     expect(results.violations).toEqual([]);
   });
 
+  it("keeps the MSK teaser decorative while exact workflow evidence remains adjacent", async () => {
+    await act(async () => {
+      root.render(<FlagshipMSK />);
+    });
+
+    const detour = container.querySelector("[data-testid='msk-the-detour']");
+    const exactSteps = container.querySelector(".fp-workflow[data-evidence='true']");
+
+    expect(detour).not.toBeNull();
+    expect(detour?.querySelector(".fp-detour__stage")?.getAttribute("aria-hidden")).toBe("true");
+    expect(detour?.textContent).toContain("Ready to send");
+    expect(detour?.textContent).toContain("Send to EMR");
+    expect(detour?.textContent).toContain("Filed · status updated");
+    expect(detour?.textContent).toContain("The “simple” button");
+    expect(detour?.textContent).not.toContain("Office Coordinator filing queue");
+    expect(detour?.textContent).not.toContain("Signed consent");
+    expect(container.querySelector(".fp-workflowFilm")).toBeNull();
+    expect(container.querySelector(".fp-workflowFilm video")).toBeNull();
+    expect(exactSteps?.textContent).toContain("Print the digital record");
+    expect(exactSteps?.textContent).toContain("Choose Send to EMR");
+  });
+
+  it("states the MSK proposal-to-implementation boundary before outcome metrics", async () => {
+    await act(async () => {
+      root.render(<FlagshipMSK />);
+    });
+
+    const hero = container.querySelector("#msk-start");
+    expect(hero?.textContent).toContain("IT and UX implemented it after I changed roles");
+    expect(hero?.textContent).toContain("Diagnose · map · validate feasibility · pitch");
+    expect(hero?.textContent).not.toContain("20%");
+    expect(hero?.textContent).not.toContain("two system upgrades");
+    expect(container.textContent).toContain("not attributed solely to this filing workflow");
+  });
+
+  it("labels Grove redesign work as testable direction with retest pending", async () => {
+    await act(async () => {
+      root.render(<RisoGrove />);
+    });
+
+    const hero = container.querySelector("#grove-start");
+    expect(hero?.textContent).toContain("redesign direction · retest pending");
+    expect(container.textContent).toContain("These are not completed redesigns");
+    expect(container.querySelectorAll(".rp-decision__tag--new")).toHaveLength(3);
+    container.querySelectorAll(".rp-decision__tag--new").forEach((label) => {
+      expect(label.textContent).toBe("Direction to test");
+    });
+  });
+
+  it("ties each logistics result to its mechanism and owner-reported source", async () => {
+    await act(async () => {
+      root.render(<FlagshipLogistics />);
+    });
+
+    const hero = container.querySelector("#log-start");
+    expect(hero?.textContent).toContain("1–2 months to 1–2 weeks");
+    expect(hero?.textContent).toContain("owner-reported service record");
+    expect(container.textContent).toContain("measurement periods and methods are not preserved");
+    expect(container.textContent).toContain("Relocation85%");
+    expect(container.textContent).toContain("Order status60%");
+    expect(container.textContent).toContain("Protocol15%");
+  });
+
   it("keeps the active homepage shell targets and one work-first hero route intact", async () => {
     await act(async () => {
       root.render(<RisoHome />);
@@ -119,6 +183,49 @@ describe("flagship case-study accessibility", () => {
     });
     expect(container.querySelector('a[href="/case-study/msk"].rp-cta')).not.toBeNull();
     expect(container.querySelector(".rp-recruiter-link")).toBeNull();
+  });
+
+  it("exposes Grove's working browser prototype from Home without a dead Spanish hash", async () => {
+    await act(async () => {
+      root.render(<RisoHome />);
+    });
+
+    const englishPrototype = Array.from(container.querySelectorAll<HTMLAnchorElement>(".rp-work__teaser"))
+      .find((link) => link.textContent?.includes("working browser prototype"));
+    expect(englishPrototype?.getAttribute("href")).toBe("/case-study/grove#grove-prototype");
+
+    mockLang = "es";
+    await act(async () => {
+      root.render(<RisoHome />);
+    });
+
+    const spanishPrototype = Array.from(container.querySelectorAll<HTMLAnchorElement>(".rp-work__teaser"))
+      .find((link) => link.textContent?.includes("prototipo funcional"));
+    expect(spanishPrototype?.getAttribute("href")).toBe("/case-study/grove");
+  });
+
+  it("adds Knowunity as an equal evidence row using the public prototype alias", async () => {
+    await act(async () => {
+      root.render(<RisoHome />);
+    });
+
+    const rows = Array.from(container.querySelectorAll<HTMLAnchorElement>(".rp-work"));
+    expect(rows).toHaveLength(4);
+
+    const prototype = rows.find((link) => link.href === "https://knowunity-voice-recall.vercel.app/");
+    expect(prototype?.getAttribute("target")).toBe("_blank");
+    expect(prototype?.getAttribute("rel")).toBe("noopener noreferrer");
+    expect(prototype?.getAttribute("aria-label")).toBe("home.riso.knowunityPrototypeAria");
+    expect(prototype?.textContent).toContain("home.riso.knowunityDesc");
+    expect(prototype?.querySelectorAll(".rp-work__thumb--knowunity img")).toHaveLength(2);
+
+    const system = container.querySelector<HTMLAnchorElement>(
+      '.rp-work__teaser[href*="chromatic.com/?path=/docs/components-appbar--docs"]',
+    );
+    expect(system?.getAttribute("target")).toBe("_blank");
+    expect(system?.getAttribute("aria-label")).toBe("home.riso.knowunitySystemAria");
+    expect(container.innerHTML).not.toContain("knowunity-voice-recall-o2c9s7oro");
+    expect(container.innerHTML).not.toContain("vercel.com/hillary-esposito-s-projects");
   });
 
   // The product-led "Draft A" (rotating MSK/Grove/Army showcase) and
@@ -242,6 +349,22 @@ describe("flagship case-study accessibility", () => {
     expect(container.textContent).not.toMatch(/decision trace/i);
   });
 
+  // Owner rejected both the generated workflow film and static registered peel,
+  // then approved the no-credit, user-controlled "The Detour" animatic. The
+  // ordered lists remain the evidence; the stage is only a visual hook.
+  it("MSK uses the user-controlled Detour animatic without generated media", async () => {
+    await act(async () => {
+      root.render(<FlagshipMSK />);
+    });
+
+    expect(container.querySelector(".fp-workflowFilm")).toBeNull();
+    expect(container.querySelector(".fp-routingPeelFig")).toBeNull();
+    expect(container.querySelector("[data-testid='msk-the-detour']")).not.toBeNull();
+    expect(container.querySelector("[data-testid='msk-the-detour'] video")).toBeNull();
+    expect(container.querySelector("button[aria-label^='Play The Detour']")).not.toBeNull();
+    expect(container.querySelector(".fp-workflow[data-evidence='true']")).not.toBeNull();
+  });
+
   it("keeps the MSK hero on the recreated queue without decorative concepts", async () => {
     await act(async () => {
       root.render(<FlagshipMSK />);
@@ -269,162 +392,6 @@ describe("flagship case-study accessibility", () => {
       .toBe("https://hillaryesposito.org");
   });
 
-  it("gives Supabase a proof-first recruiter path with role-specific actions", async () => {
-    mockCuratedSlug = "supabase-product-designer";
-    window.history.replaceState(null, "", "/curated/supabase-product-designer");
-
-    await act(async () => {
-      root.render(<CuratedRolePage />);
-    });
-
-    expect(container.querySelector("h1")?.textContent).toBe("Supabase");
-    expect(container.textContent).toContain("Built a working React prototype");
-    expect(container.textContent).toContain("Phase 2 of 3");
-
-    const proof = container.querySelector("#curated-proof");
-    const work = container.querySelector("#curated-work");
-    const fit = container.querySelector("#curated-fit");
-    expect(proof).not.toBeNull();
-    expect(work).not.toBeNull();
-    expect(fit).not.toBeNull();
-    expect(proof!.compareDocumentPosition(work!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
-    expect(work!.compareDocumentPosition(fit!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
-    [proof, work, fit].forEach((section) => {
-      expect((section as HTMLElement).style.scrollMarginTop).toBe("9.5rem");
-    });
-    expect(container.textContent).toContain("Numbers in context");
-    expect(container.textContent).toContain("11 → 3 features");
-    expect(container.textContent).not.toContain("34 → 11 → 3");
-
-    const chapterLinks = Array.from(
-      container.querySelectorAll<HTMLAnchorElement>(".rp-chapters a"),
-      (link) => link.textContent,
-    );
-    expect(chapterLinks).toEqual(["Proof", "Work", "Fit", "Bring + limits", "Contact"]);
-
-    const links = Array.from(container.querySelectorAll<HTMLAnchorElement>("a"));
-    expect(links.find((link) => link.textContent?.includes("Review Grove"))?.getAttribute("href"))
-      .toBe("/case-study/grove");
-    const resumeLink = links.find((link) => link.textContent?.includes("View Supabase résumé"));
-    expect(resumeLink?.getAttribute("href"))
-      .toBe("/assets/Hillary_Esposito_Supabase_Product_Designer_Resume.pdf");
-    expect(resumeLink?.getAttribute("aria-label"))
-      .toBe("View Supabase résumé (PDF, opens in new tab)");
-    expect(links.find((link) => link.textContent?.includes("Email Hillary"))?.getAttribute("href"))
-      .toBe("mailto:espositohillary@gmail.com");
-    expect(document.querySelector('meta[name="robots"]')?.getAttribute("content"))
-      .toBe("noindex, nofollow, noarchive");
-
-    const results = await axe.run(container, {
-      rules: { "color-contrast": { enabled: false } },
-    });
-    expect(results.violations).toEqual([]);
-  });
-
-  it("gives Bank of America a truthful proof-first product-design path", async () => {
-    mockCuratedSlug = "bank-of-america-experience-design-i-product-design";
-    window.history.replaceState(
-      null,
-      "",
-      "/curated/bank-of-america-experience-design-i-product-design",
-    );
-
-    await act(async () => {
-      root.render(<CuratedRolePage />);
-    });
-
-    expect(container.querySelector("h1")?.textContent).toBe("Bank of America");
-    expect(container.textContent).toContain("Experience Design I, Product Design");
-    expect(container.textContent).toContain("3 mobile apps · 200+ screens per app");
-    expect(container.textContent).toContain("25% task-completion gain · 21,000+ staff scale");
-    expect(container.textContent).toContain("11 → 3 features");
-    expect(container.textContent).toContain("Phase 2 of 3");
-
-    const proof = container.querySelector("#curated-proof");
-    const work = container.querySelector("#curated-work");
-    const fit = container.querySelector("#curated-fit");
-    expect(proof).not.toBeNull();
-    expect(work).not.toBeNull();
-    expect(fit).not.toBeNull();
-    expect(proof!.compareDocumentPosition(work!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
-    expect(work!.compareDocumentPosition(fit!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
-
-    const workTitles = Array.from(
-      container.querySelectorAll<HTMLHeadingElement>("#curated-work h3"),
-      (heading) => heading.textContent,
-    );
-    expect(workTitles).toEqual([
-      "Grove: research cut eleven features to three before I built",
-      "Mobbin: made three finance-app journeys searchable by task",
-      "MSK: improved task completion through research and shipped change",
-    ]);
-
-    expect(container.textContent).toContain(
-      "I have not shipped a native banking product or owned an AI agent in a production banking environment.",
-    );
-    expect(container.textContent).not.toMatch(/production AI-agent experience|shipped native banking/i);
-    expect(container.textContent).not.toMatch(/34 (survey|participant|respondent)/i);
-    expect(container.textContent).not.toMatch(/70%|60%|15%/);
-
-    const chapterLinks = Array.from(
-      container.querySelectorAll<HTMLAnchorElement>(".rp-chapters a"),
-      (link) => link.textContent,
-    );
-    expect(chapterLinks).toEqual(["Proof", "Work", "Fit", "Bring + limits", "Contact"]);
-
-    const links = Array.from(container.querySelectorAll<HTMLAnchorElement>("a"));
-    expect(links.find((link) => link.textContent?.includes("Review Grove"))?.getAttribute("href"))
-      .toBe("/case-study/grove");
-    const resumeLink = links.find((link) => link.textContent?.includes("View Bank of America résumé"));
-    expect(resumeLink?.getAttribute("href"))
-      .toBe("/assets/Hillary_Esposito_Bank_of_America_Experience_Design_I_Resume.pdf");
-    expect(resumeLink?.getAttribute("aria-label"))
-      .toBe("View Bank of America résumé (PDF, opens in new tab)");
-    expect(links.find((link) => link.textContent?.includes("Email Hillary"))?.getAttribute("href"))
-      .toBe("mailto:espositohillary@gmail.com");
-    expect(document.querySelector('meta[name="robots"]')?.getAttribute("content"))
-      .toBe("noindex, nofollow, noarchive");
-
-    const results = await axe.run(container, {
-      rules: { "color-contrast": { enabled: false } },
-    });
-    expect(results.violations).toEqual([]);
-  });
-
-  it("keeps existing curated pages on their current fit-first path", async () => {
-    await act(async () => {
-      root.render(<CuratedRolePage />);
-    });
-
-    const fit = container.querySelector("#curated-fit");
-    const proof = container.querySelector("#curated-proof");
-    expect(fit!.compareDocumentPosition(proof!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
-    expect(container.textContent).toContain("See the fit");
-    expect(container.textContent).toContain("View a case study");
-  });
-
-  it.each([
-    ["healthcare-product-service-designer", "Healthcare product design"],
-    ["healthcare-ux-researcher", "Healthcare UX research"],
-    ["the-sill-product-designer", "The Sill"],
-  ])("keeps the %s hiring page evidence-first and noindex", async (slug, expectedText) => {
-    mockCuratedSlug = slug;
-    window.history.replaceState(null, "", `/curated/${slug}`);
-    await act(async () => {
-      root.render(<CuratedRolePage />);
-    });
-
-    expect(container.textContent).toContain(expectedText);
-    expect(document.querySelector('meta[name="robots"]')?.getAttribute("content"))
-      .toBe("noindex, nofollow, noarchive");
-    expect(container.querySelector("#curated-proof")).not.toBeNull();
-    expect(container.querySelector('a[href="mailto:espositohillary@gmail.com"]')).not.toBeNull();
-
-    const results = await axe.run(container, {
-      rules: { "color-contrast": { enabled: false } },
-    });
-    expect(results.violations).toEqual([]);
-  });
 
   it("keeps portfolio proof direct and opens the visual only after an explicit action", async () => {
     await act(async () => {
@@ -433,7 +400,7 @@ describe("flagship case-study accessibility", () => {
 
     expect(container.querySelector(".rp-openingFilm")).toBeNull();
     expect(container.querySelector("main h1")).not.toBeNull();
-    expect(container.textContent).toContain("Seven aid stations · shared forecast · 85% shorter resupply time");
+    expect(container.textContent).toContain("Warehouse moved forward · 85% shorter resupply time");
 
     const openingTrigger = container.querySelector<HTMLButtonElement>(".rp-openingVisualTrigger");
     await act(async () => openingTrigger?.click());
@@ -471,7 +438,7 @@ describe("flagship case-study accessibility", () => {
     const dialog = container.querySelector<HTMLDialogElement>(".recruiter-panel");
     expect(dialog?.open).toBe(true);
     expect(dialog?.textContent).toContain("Grove");
-    expect(dialog?.textContent).toContain("MSK · A filing queue replaced a four-system workaround");
+    expect(dialog?.textContent).toContain("MSK · A filing queue replaced a four-department paper detour");
     expect(dialog?.textContent).toContain("Medical logistics · Resupply time reduced 85%");
 
     const projectTitles = Array.from(
@@ -479,11 +446,11 @@ describe("flagship case-study accessibility", () => {
       (item) => item.textContent,
     );
     expect(projectTitles).toEqual([
-      "MSK · A filing queue replaced a four-system workaround",
+      "MSK · A filing queue replaced a four-department paper detour",
       "Medical logistics · Resupply time reduced 85%",
       "Grove · Eleven features became three",
     ]);
-    expect(dialog?.textContent).toContain("contributed to a 20% organization-wide electronic medical record cost reduction");
+    expect(dialog?.textContent).toContain("contributed to a larger initiative that cut organization-wide electronic medical record costs 20%");
     expect(dialog?.textContent?.toLowerCase()).not.toContain(["functional", "beta"].join(" "));
     expect(dialog?.textContent?.toLowerCase()).not.toContain(["shipped", "consumer", "app"].join(" "));
 
@@ -495,7 +462,7 @@ describe("flagship case-study accessibility", () => {
   });
 
   it.each([
-    ["MSK", <FlagshipMSK />, "A filing queue replaced a four-system workaround.", "Evidence boundary"],
+    ["MSK", <FlagshipMSK />, "A filing queue replaced a four-department paper\u00a0detour.", "Evidence boundary"],
     ["Grove", <RisoGrove />, "Eleven features became three.", "What this evidence can say"],
     ["Mobbin", <FlagshipMobbin />, "200+ screens per app, searchable by task.", "I did not design"],
   ])("%s leads with an outcome title and visible evidence boundary", async (_name, page, title, boundary) => {
@@ -505,6 +472,17 @@ describe("flagship case-study accessibility", () => {
 
     expect(container.querySelector("h1")?.textContent).toBe(title);
     expect(container.textContent).toContain(boundary);
+  });
+
+  it("keeps MSK's workflow chapter focused on evidence instead of repeating its process", async () => {
+    await act(async () => {
+      root.render(<FlagshipMSK />);
+    });
+
+    expect(container.textContent).toContain("One map made four departments see the same failure.");
+    expect(container.querySelector(".fp-systemCards")).toBeNull();
+    expect(container.textContent).toContain("Service-design scope:");
+    expect(container.textContent).toContain("Observation counts do not; no prevalence claim is made.");
   });
 
   it("supports the Mobbin gallery and a direct next-project path", async () => {
@@ -552,6 +530,34 @@ describe("flagship case-study accessibility", () => {
     expect(sources?.hidden).toBe(false);
   });
 
+  it("keeps Grove prototype detail optional on ordinary visits", async () => {
+    await act(async () => {
+      root.render(<RisoGrove />);
+    });
+
+    const details = container.querySelector<HTMLDetailsElement>("#grove-prototype");
+    const heroAction = container.querySelector<HTMLAnchorElement>('a[href="#grove-prototype"]');
+    expect(details).not.toBeNull();
+    expect(details?.open).toBe(false);
+    expect(heroAction?.textContent).toContain("Try the working browser prototype");
+  });
+
+  it("opens and focuses Grove's native prototype disclosure from a direct hash", async () => {
+    window.history.replaceState(null, "", "/case-study/grove#grove-prototype");
+    await act(async () => {
+      root.render(<RisoGrove />);
+    });
+    await act(async () => {
+      await new Promise((resolve) => window.setTimeout(resolve, 10));
+    });
+
+    const details = container.querySelector<HTMLDetailsElement>("#grove-prototype");
+    const summary = details?.querySelector<HTMLElement>("summary");
+    expect(details?.open).toBe(true);
+    expect(document.activeElement).toBe(summary);
+    expect(summary?.textContent).toContain("Working browser prototype · React + TypeScript · Phase 2 of 3");
+  });
+
   it("does not insert a completion modal into the case-study reading path", async () => {
     await act(async () => {
       root.render(<FlagshipMobbin />);
@@ -567,8 +573,6 @@ describe("flagship case-study accessibility", () => {
     ["MSK", <FlagshipMSK />],
     ["Mobbin", <FlagshipMobbin />],
     ["About", <About />],
-    ["Curated role", <CuratedRolePage />],
-    ["Fashion campaign", <FashionCampaignSystem />],
   ])("%s chapter shortcuts resolve to real sections", async (_name, page) => {
     await act(async () => {
       root.render(page);

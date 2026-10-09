@@ -30,9 +30,17 @@ export default function HomepageOpeningFilm({ open, onClose, returnFocusRef, onE
   const failsafeTimerRef = useRef<number | undefined>(undefined);
   const exitingRef = useRef(false);
   const skipRef = useRef<HTMLButtonElement | null>(null);
+  const filmRef = useRef<HTMLDivElement | null>(null);
+  const inertedRef = useRef<HTMLElement[]>([]);
+  const releaseInert = useCallback(() => {
+    inertedRef.current.forEach((element) => { element.inert = false; });
+    inertedRef.current = [];
+  }, []);
   const [exiting, setExiting] = useState(false);
-  const reduceMotion = typeof window !== "undefined"
-    && (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false);
+  const [reduceMotion, setReduceMotion] = useState(() => (
+    typeof window !== "undefined"
+      && (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false)
+  ));
 
   const finish = useCallback(() => {
     if (!open || exitingRef.current) return;
@@ -42,9 +50,25 @@ export default function HomepageOpeningFilm({ open, onClose, returnFocusRef, onE
     window.clearTimeout(failsafeTimerRef.current);
     closeTimerRef.current = window.setTimeout(() => {
       onClose();
+      // The trigger is still inert until React re-renders; release it first or
+      // focus falls to <body>.
+      releaseInert();
       returnFocusRef.current?.focus({ preventScroll: true });
     }, EXIT_MS);
-  }, [onClose, onExitStart, open, returnFocusRef]);
+  }, [onClose, onExitStart, open, releaseInert, returnFocusRef]);
+
+  useEffect(() => {
+    const query = window.matchMedia?.("(prefers-reduced-motion: reduce)");
+    if (!query) return;
+
+    const handleChange = (event: MediaQueryListEvent) => {
+      setReduceMotion(event.matches);
+      if (event.matches && open) finish();
+    };
+
+    query.addEventListener?.("change", handleChange);
+    return () => query.removeEventListener?.("change", handleChange);
+  }, [finish, open]);
 
   useEffect(() => {
     if (!open) {
@@ -55,6 +79,21 @@ export default function HomepageOpeningFilm({ open, onClose, returnFocusRef, onE
 
     const previousOverflow = document.documentElement.style.overflow;
     document.documentElement.style.overflow = "hidden";
+
+    // aria-modal is only a hint: screen-reader browse mode could still reach
+    // the hero and nav behind the film. Make everything outside the film's
+    // own branch inert while it plays, and undo exactly what we set.
+    const inerted = inertedRef.current;
+    for (let node: HTMLElement | null = filmRef.current; node && node !== document.body; node = node.parentElement) {
+      const parent: HTMLElement | null = node.parentElement;
+      if (!parent) break;
+      for (const sibling of Array.from(parent.children)) {
+        if (sibling !== node && sibling instanceof HTMLElement && !sibling.inert) {
+          sibling.inert = true;
+          inerted.push(sibling);
+        }
+      }
+    }
     failsafeTimerRef.current = window.setTimeout(finish, FAILSAFE_MS);
     skipRef.current?.focus({ preventScroll: true });
 
@@ -69,16 +108,18 @@ export default function HomepageOpeningFilm({ open, onClose, returnFocusRef, onE
 
     return () => {
       document.documentElement.style.overflow = previousOverflow;
+      releaseInert();
       window.removeEventListener("keydown", onKeyDown);
       window.clearTimeout(closeTimerRef.current);
       window.clearTimeout(failsafeTimerRef.current);
     };
-  }, [finish, open]);
+  }, [finish, open, releaseInert]);
 
   if (!open) return null;
 
   return (
     <div
+      ref={filmRef}
       className={`rp-openingFilm${exiting ? " is-exiting" : ""}`}
       role="dialog"
       aria-modal="true"

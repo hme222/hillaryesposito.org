@@ -7,7 +7,7 @@ import React from "react";
  * locations. Nothing here depicts an actual site, route, or unit position —
  * each drawing shows only the *shape* of a change Hillary has already stated
  * publicly (the warehouse move, one shared protocol across seven aid stations
- * in three countries, forecasting from weekly and monthly data). Anything more
+ * in three countries, shared real-time order status). Anything more
  * specific would be both invented and inappropriate to publish.
  *
  * Decorative: the finding and change text sits beside each one, so these are
@@ -76,12 +76,12 @@ function Forecasting() {
   const bars = [24, 34, 20, 40, 28, 44, 30];
   return (
     <svg viewBox="0 0 260 96" width="100%" role="presentation" focusable="false">
-      <text x="0" y="9" fontSize="7.5" letterSpacing="1" fill="var(--coral)">BEFORE · ORDER WHEN IT RUNS OUT</text>
+      <text x="0" y="9" fontSize="7.5" letterSpacing="1" fill="var(--coral)">BEFORE · NO ONE SEES ORDER STATUS</text>
       <path d="M0,34 H210" fill="none" stroke="var(--coral)" strokeOpacity=".4" strokeWidth="1" strokeDasharray="3 3" />
       <circle cx="196" cy="34" r="3.4" fill="var(--coral)" />
       <text x="214" y="36.5" fontSize="7" fill="var(--coral)">stockout</text>
 
-      <text x="0" y="62" fontSize="7.5" letterSpacing="1" fill="var(--green)">AFTER · WEEKLY + MONTHLY DEMAND</text>
+      <text x="0" y="62" fontSize="7.5" letterSpacing="1" fill="var(--green)">AFTER · SHARED REAL-TIME STATUS</text>
       {bars.map((h, i) => (
         <rect key={i} x={4 + i * 15} y={92 - h * 0.6} width="8" height={h * 0.6} rx="1.5"
           fill="var(--green)" fillOpacity={0.35 + (i % 3) * 0.2} />
@@ -101,7 +101,7 @@ const MAP: Record<string, () => React.ReactElement> = {
 
 /**
  * @status: stable
- * @purpose: Renders one of three decorative before/after SVG diagrams (warehouse move, shared protocol, forecasting) illustrating a medical-logistics redesign, selected by the `n` prop; used on the logistics case study page.
+ * @purpose: Renders one of three decorative before/after SVG diagrams (warehouse move, shared protocol, order statusting) illustrating a medical-logistics redesign, selected by the `n` prop; used on the logistics case study page.
  */
 export default function LogisticsMechanism({ n }: { n: string }) {
   const Diagram = MAP[n];

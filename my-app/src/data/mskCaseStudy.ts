@@ -200,14 +200,14 @@ const en: MskCopy = {
 
   hero: {
     eyebrow: "Memorial Sloan Kettering · clinical systems",
-    title: "A filing queue replaced a four-system workaround.",
+    title: "A filing queue replaced a four-department paper detour.",
     readTime: "6 min",
     readMeta: "read · 6 years, 3 roles",
     ledeOpen:
       "Clinicians printed digital records just to file them digitally again — and a record in transit is a record that is not in the chart when the next clinician opens it. As an office coordinator, I mapped that workaround across clinical, IT, imaging, and operations, then presented the online workflow that was implemented two roles later. It served work touching ",
     ledeScale: "21,000+ clinicians and staff",
     ledeMiddle: ", and it is ",
-    ledeSustain: "still in use through two system upgrades",
+    ledeSustain: "owner-reported as adopted organization-wide",
     ledeClose: ".",
     cta: "See the workflow →",
     artifactTag: "RECREATED ARTIFACT",
@@ -238,7 +238,7 @@ const en: MskCopy = {
 
   workflow: {
     kicker: "So I counted the steps",
-    title: "The filing queue replaced the workaround.",
+    title: "One map made four departments see the same failure.",
     lede:
       "Nobody had written the whole path down. On one page, four departments saw the same failure instead of four versions of it.",
     figcaption: "Recreated current-state and future-state map · no patient data",
@@ -376,7 +376,7 @@ const en: MskCopy = {
         title: "EMR filing workflow",
         finding: "A digital record was printed, routed out, then waited to reappear in the chart.",
         change: "One dashboard action, placed where the decision was already being made.",
-        wrong: "I underestimated change management. Training on their own workstations, during shift changes, fixed it in two weeks.",
+        wrong: "I misjudged how small it would look to IT. They deprioritized it as not worth the effort, and I had to keep raising it to get it built.",
       },
       {
         n: "02",
@@ -410,7 +410,7 @@ const en: MskCopy = {
       {
         n: "01", role: "Office Coordinator", taught: "Where people paused",
         term: "Lean Six Sigma Green Belt (Purdue) · Master of Healthcare Administration (Rutgers)",
-        body: "Both finished in this seat, while I was running a clinic's paperwork. The Green Belt is the lens that showed four systems doing the work of two; the MHA is why the redesign survived budget talks and leadership changes.",
+        body: "Both finished in this seat, while I was running a clinic's paperwork. The Green Belt is the lens that showed one filing task crossing four departments; the MHA is why the redesign survived budget talks and leadership changes.",
       },
       {
         n: "02", role: "Administrative Assistant", taught: "How evidence survives a room",
@@ -430,7 +430,7 @@ const en: MskCopy = {
     ],
     ownershipLabel: "What service design means here:",
     ownershipBody:
-      "I own the whole path a task takes — across four systems and three departments that did not report to me — not the screen at the end of it. The queue above is one screen. The reason it works is everything behind it.",
+      "I own the whole path a task takes — across four departments that did not report to me — not the screen at the end of it. The queue above is one screen. The reason it works is everything behind it.",
     boundaryAria: "MSK research evidence boundary",
     boundaryLabel: "Evidence boundary",
     boundaryBody:
@@ -460,8 +460,8 @@ const en: MskCopy = {
       },
     ],
     survived: [
-      { fact: "EMR filing workflow", what: "Adopted organization-wide, and still in use through two system upgrades" },
-      { fact: "CPR certification format", what: "A two-month project that closed early — other admins still use the collection method today" },
+      { fact: "EMR filing workflow", what: "Owner-reported as adopted organization-wide" },
+      { fact: "CPR certification format", what: "Department compliant a month before the original deadline — no extension needed" },
     ],
     why:
       "None of that is luck. The filing queue survived two upgrades because it had stopped being a workaround people maintained by hand — the work was in the system, not in someone's spreadsheet. The certification format outlived its own project by two months, then kept going, because the people it was written for preferred it to what came before.",
@@ -508,14 +508,14 @@ const es: MskCopy = {
 
   hero: {
     eyebrow: "Memorial Sloan Kettering · sistemas clínicos",
-    title: "Una cola de archivo reemplazó un desvío de cuatro sistemas.",
+    title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas.",
     readTime: "6 min",
     readMeta: "de lectura · 6 años, 3 puestos",
     ledeOpen:
       "El personal clínico imprimía registros digitales solo para volver a archivarlos digitalmente — y un registro en tránsito es un registro que no está en la historia clínica cuando el siguiente clínico la abre. En el puesto de coordinación de oficina, mapeé ese desvío entre las áreas clínica, de TI, de imagenología y de operaciones, y luego presenté el flujo en línea que se implementó dos puestos después. Sirvió a un trabajo que alcanzaba a ",
     ledeScale: "más de 21,000 clínicos y personal administrativo",
     ledeMiddle: ", y ",
-    ledeSustain: "sigue en uso tras dos actualizaciones del sistema",
+    ledeSustain: "reportado por la organización como adoptado en toda la institución",
     ledeClose: ".",
     cta: "Ver el flujo →",
     artifactTag: "ARTEFACTO RECREADO",
@@ -684,7 +684,7 @@ const es: MskCopy = {
         title: "Flujo de archivo del EMR",
         finding: "Un registro digital se imprimía, se enviaba fuera y luego esperaba para reaparecer en la historia clínica.",
         change: "Una sola acción en el panel, puesta donde la decisión ya se estaba tomando.",
-        wrong: "Subestimé la gestión del cambio. Capacitar en sus propias estaciones de trabajo, durante los cambios de turno, lo resolvió en dos semanas.",
+        wrong: "Calculé mal lo pequeño que le parecería a TI. Lo despriorizaron porque no valía el esfuerzo, y tuve que seguir insistiendo para que se construyera.",
       },
       {
         n: "02",
@@ -718,7 +718,7 @@ const es: MskCopy = {
       {
         n: "01", role: "Coordinación de oficina", taught: "Dónde se detenía la gente",
         term: "Lean Six Sigma Green Belt (Purdue) · Maestría en Administración de Salud (Rutgers)",
-        body: "Terminé ambas en este puesto, mientras llevaba el papeleo de una clínica. El Green Belt es la lente que mostró cuatro sistemas haciendo el trabajo de dos; la maestría es la razón por la que el rediseño sobrevivió a las discusiones de presupuesto y a los cambios de liderazgo.",
+        body: "Terminé ambas en este puesto, mientras llevaba el papeleo de una clínica. El Green Belt es la lente que mostró una tarea de archivo cruzando cuatro áreas; la maestría es la razón por la que el rediseño sobrevivió a las discusiones de presupuesto y a los cambios de liderazgo.",
       },
       {
         n: "02", role: "Asistencia administrativa", taught: "Cómo sobrevive la evidencia a una sala",
@@ -738,7 +738,7 @@ const es: MskCopy = {
     ],
     ownershipLabel: "Qué significa aquí el diseño de servicios:",
     ownershipBody:
-      "Me hago cargo de toda la ruta que recorre una tarea — a través de cuatro sistemas y tres áreas que no me reportaban — no de la pantalla del final. La cola de arriba es una pantalla. La razón por la que funciona es todo lo que está detrás.",
+      "Me hago cargo de toda la ruta que recorre una tarea — a través de cuatro áreas que no me reportaban — no de la pantalla del final. La cola de arriba es una pantalla. La razón por la que funciona es todo lo que está detrás.",
     boundaryAria: "Límite de evidencia de la investigación en MSK",
     boundaryLabel: "Límite de la evidencia",
     boundaryBody:
@@ -768,11 +768,11 @@ const es: MskCopy = {
       },
     ],
     survived: [
-      { fact: "Flujo de archivo del EMR", what: "Adoptado en toda la organización, y todavía en uso tras dos actualizaciones del sistema" },
-      { fact: "Formato de certificación de RCP", what: "Un proyecto de dos meses que cerró antes de tiempo — otras personas administrativas siguen usando hoy el método de recolección" },
+      { fact: "Flujo de archivo del EMR", what: "Reportado por la organización como adoptado en toda la institución" },
+      { fact: "Formato de certificación de RCP", what: "Área conforme un mes antes de la fecha límite original — sin prórroga" },
     ],
     why:
-      "Nada de eso es suerte. La cola de archivo sobrevivió a dos actualizaciones porque había dejado de ser un desvío que la gente mantenía a mano — el trabajo estaba en el sistema, no en la hoja de cálculo de alguien. El formato de certificación sobrevivió dos meses a su propio proyecto, y luego siguió, porque las personas para quienes se escribió lo preferían a lo que había antes.",
+      "Nada de eso es suerte. La cola de archivo se adoptó porque había dejado de ser un desvío que la gente mantenía a mano — el trabajo estaba en el sistema, no en la hoja de cálculo de alguien. El formato de certificación sobrevivió dos meses a su propio proyecto, y luego siguió, porque las personas para quienes se escribió lo preferían a lo que había antes.",
     proofLabel: "Prueba independiente · MSK News",
     proofTitle: "Del ejército a Memorial Sloan Kettering",
     proofAria: "Leer el perfil de carrera de Hillary Esposito en MSK News (se abre en una pestaña nueva)",

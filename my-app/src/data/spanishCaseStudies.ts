@@ -64,21 +64,22 @@ export const GROVE_ES: SpanishCaseStudyData = {
     },
   ],
   otherProjects: [
-    { title: "Una cola de archivo reemplazó un desvío de cuatro sistemas", desc: "MSK · Seis años rediseñando flujos clínicos para trabajo que alcanzaba a más de 21,000 clínicos y personal administrativo.", path: "/case-study/msk" },
+    { title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas", desc: "MSK · Seis años rediseñando flujos clínicos para trabajo que alcanzaba a más de 21,000 clínicos y personal administrativo.", path: "/case-study/msk" },
     { title: "Más de 200 pantallas por app, buscables por tarea", desc: "Mobbin · Más de 200 pantallas por app, documentadas como referencias paso a paso.", path: "/case-study/mobbin" },
   ],
 };
 
 export const MSK_ES: SpanishCaseStudyData = {
-  title: "Una cola de archivo reemplazó un desvío de cuatro sistemas",
+  title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas",
   meta: "Memorial Sloan Kettering · UX y diseño de producto · Sistemas de salud",
   intro:
-    "Durante seis años en MSK, rediseñé flujos clínicos, certificación e incorporación de personal para sistemas usados por más de 21,000 profesionales clínicos y administrativos. El día de cada clínico gira en torno al EMR: el expediente médico electrónico, la historia clínica digital donde vive toda la información del paciente. Un registro en tránsito es un registro que no está en la historia clínica cuando el siguiente clínico la abre. El flujo de archivo que propuse sigue en uso después de dos actualizaciones del sistema. Este trabajo muestra diseño aplicado a herramientas internas, permisos, estados y adopción en un entorno de salud real.",
+    "Durante seis años en MSK, trabajé en flujos clínicos, certificación e incorporación de personal para sistemas cuyo alcance incluía a más de 21,000 profesionales clínicos y administrativos. En el flujo de archivo, diagnostiqué y mapeé un desvío en papel, verifiqué su viabilidad y propuse una solución digital. Los equipos de TI y UX la implementaron después de que cambié de puesto. Este trabajo muestra diseño aplicado a herramientas internas, permisos, estados y adopción en un entorno de salud real.",
   stats: [
     { label: "Rol", value: "Sistemas de salud → UX y diseño de producto" },
     { label: "Organización", value: "Memorial Sloan Kettering Cancer Center" },
     { label: "Escala", value: "21,000+ clínicos y personal" },
-    { label: "Impacto", value: "Contribución a una reducción de 20% en costos EMR" },
+    { label: "Contribución", value: "Diagnóstico · mapa · viabilidad · propuesta" },
+    { label: "Implementación", value: "Construida después por TI y UX" },
   ],
   sections: [
     {
@@ -117,7 +118,7 @@ export const MSK_ES: SpanishCaseStudyData = {
       eyebrow: "Resultado",
       title: "Impacto medible en sistemas internos",
       body: [
-        "El trabajo contribuyó a una reducción de 20% en costos relacionados con EMR; todas las certificaciones de RCP se recogieron un 70% antes del plazo; y el programa de incorporación del personal administrativo se rediseñó para el rango de habilidades de cada cohorte.",
+        "La iniciativa organizacional más amplia reportó una reducción de 20% en costos relacionados con EMR; no atribuyo ese resultado únicamente a la cola de archivo y el registro conservado no incluye el período ni la definición de costos. En mi trabajo directo, todas las certificaciones de RCP se recogieron un 70% antes del plazo y el programa de incorporación del personal administrativo se rediseñó para el rango de habilidades de cada cohorte.",
       ],
     },
   ],
@@ -166,6 +167,76 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
   ],
   otherProjects: [
     { title: "Once funciones se convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
-    { title: "Una cola de archivo reemplazó un desvío de cuatro sistemas", desc: "MSK · Seis años rediseñando flujos clínicos para trabajo que alcanzaba a más de 21,000 clínicos y personal administrativo.", path: "/case-study/msk" },
+    { title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas", desc: "MSK · Seis años rediseñando flujos clínicos para trabajo que alcanzaba a más de 21,000 clínicos y personal administrativo.", path: "/case-study/msk" },
+  ],
+};
+
+// Condensed from FlagshipLogistics.tsx. Every figure and limit here is already
+// on the English page; nothing is added. Section anchors match the English
+// chapter ids so the language switch and homepage stat links land in place.
+export const LOGISTICS_ES: SpanishCaseStudyData = {
+  // Worded to break into multi-word lines; "reabastecimiento" alone filled a line.
+  title: "El reabastecimiento médico tardó un\u00a085% menos",
+  meta: "Logística médica del Ejército · Operaciones · Diseño de servicios · 2024",
+  intro:
+    "Como oficial de logística médica, planifiqué y di seguimiento a la reubicación de un almacén de $2M que abastecía a siete estaciones de ayuda en tres países. Según mi expediente de servicio, el reabastecimiento pasó de 1–2 meses a 1–2 semanas, resumido como un 85% menos de tiempo. Son cifras reportadas por mí; no se conservaron los periodos ni los métodos de medición.",
+  stats: [
+    { label: "Rol", value: "Oficial de logística médica · líder de reubicación y servicio" },
+    { label: "Escala", value: "5,000+ soldados · $2M en suministros" },
+    { label: "Sistema", value: "Siete estaciones de ayuda · tres países" },
+    { label: "Resultado", value: "85% menos tiempo tras la reubicación · dato autorreportado" },
+  ],
+  sections: [
+    {
+      anchor: "log-brief",
+      eyebrow: "Por qué importaba el proceso",
+      title: "En una zona de combate, una falla de proceso no es una molestia. Es un riesgo de bajas.",
+      body: [
+        "El trabajo: tener medicinas y equipo listos antes de que se necesiten, no después de que alguien los pida. Lo que estaba en juego: una estación de ayuda sin suministros, que es donde primero se atiende a los soldados heridos.",
+        "Cada retraso gastaba el único recurso que un herido no puede recuperar: tiempo.",
+      ],
+    },
+    {
+      anchor: "log-moves",
+      eyebrow: "Lo que cambié",
+      title: "Mover el almacén. Después, arreglar los traspasos.",
+      body: [
+        "La mudanza física eliminó el retraso más grande. Una solicitud compartida y un estado de pedidos visible evitaron que volviera.",
+      ],
+      bullets: [
+        "Acercar el punto de suministro: cada reabastecimiento empezaba demasiado lejos de las estaciones de ayuda. Planifiqué y di seguimiento a la mudanza de $2M. Según lo reportado, el tiempo pasó de 1–2 meses a 1–2 semanas (85% menos).",
+        "Una sola forma de pedir: siete estaciones usaban formatos distintos de solicitud y de reporte. Creé un protocolo de solicitud compartido; el expediente reporta un 15% más de eficiencia al desplegar recursos críticos.",
+        "Pedir antes de que se acabe: nadie veía el estado de los pedidos, así que unos sitios pedían de más y otros se quedaban sin nada. Creé un estado de pedidos compartido en tiempo real; el expediente reporta un 60% menos de gasto sin perder disponibilidad.",
+      ],
+    },
+    {
+      anchor: "log-constraints",
+      eyebrow: "Lo que lo hizo difícil",
+      title: "Las restricciones no eran negociables.",
+      body: ["El nuevo proceso tenía que respetar cada restricción fija."],
+      bullets: [
+        "Cadena de frío · 48 horas: llegar tarde significaba que ya no servía.",
+        "Tres países: sistemas y vocabulario distintos.",
+        "Zona activa · mudanza de $2M: sin ensayo y sin margen de error.",
+      ],
+    },
+    {
+      anchor: "log-outcomes",
+      eyebrow: "En qué se tradujo",
+      title: "Medido en tiempo, dinero y cosas que no pasaron.",
+      body: [
+        "Moví el punto de suministro, estandaricé la solicitud e hice visible el estado de los pedidos.",
+        "Límite de la evidencia: son cifras de mi expediente de servicio, reportadas por mí; no se conservaron los periodos ni los métodos de medición. Aquí no se describen posiciones, rutas ni ubicaciones de unidades.",
+      ],
+      bullets: [
+        "85%: reducción reportada del tiempo de reabastecimiento médico después de acercar el almacén.",
+        "60%: reducción reportada del gasto, cuando el estado compartido de pedidos acabó con los pedidos de más y los faltantes.",
+        "15%: mejora reportada de eficiencia al desplegar recursos críticos con un solo protocolo de comunicación.",
+      ],
+    },
+  ],
+  otherProjects: [
+    { title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas", desc: "MSK · Seis años rediseñando flujos clínicos para trabajo que alcanzaba a más de 21,000 clínicos y personal administrativo.", path: "/case-study/msk" },
+    { title: "Once funciones se convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
   ],
 };

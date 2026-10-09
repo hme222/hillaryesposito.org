@@ -43,8 +43,14 @@ function setMeta(selector: string, attribute: "name" | "property", value: string
   node.content = content;
 }
 
-export default function usePageTitle(page?: string) {
+/**
+ * `enabled: false` lets a page that hands off to another view (the English
+ * case studies rendering their Spanish version) leave the title to that view.
+ * Child effects run first, so an always-on parent would overwrite it.
+ */
+export default function usePageTitle(page?: string, enabled = true) {
   useEffect(() => {
+    if (!enabled) return;
     const title = page ? `${page} | ${BASE}` : DEFAULT_TITLE;
     const path = window.location.pathname.replace(/\/+$/, "") || "/";
     const routeMeta = ROUTE_META.find((item) => item.match.test(path));
@@ -54,7 +60,7 @@ export default function usePageTitle(page?: string) {
     const canonical = isNotFound
       ? ORIGIN
       : `${ORIGIN}${path === "/" ? "" : path}`;
-    const isPrivateRoute = path.startsWith("/curated/") || path.startsWith("/lab/");
+    const isPrivateRoute = path.startsWith("/lab/");
 
     document.title = title;
     setMeta('meta[name="description"]', "name", "description", description);
@@ -81,5 +87,5 @@ export default function usePageTitle(page?: string) {
       document.head.appendChild(canonicalLink);
     }
     canonicalLink.href = canonical;
-  }, [page]);
+  }, [page, enabled]);
 }

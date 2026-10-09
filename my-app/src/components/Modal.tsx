@@ -8,6 +8,8 @@ type ModalProps = {
   /** class applied to the <dialog> so callers style the panel. */
   className?: string;
   lang?: string;
+  /** Focus target on close when the invoker is gone (e.g. inside a closed menu). */
+  returnFocus?: HTMLElement | null;
   children: React.ReactNode;
 };
 
@@ -30,6 +32,7 @@ export default function Modal({
   labelledBy,
   className,
   lang,
+  returnFocus,
   children,
 }: ModalProps) {
   const ref = useRef<HTMLDialogElement>(null);
@@ -56,6 +59,7 @@ export default function Modal({
     };
     const onCloseEv = () => {
       document.body.style.overflow = "";
+      returnFocus?.focus();
     };
     dlg.addEventListener("cancel", onCancel);
     dlg.addEventListener("close", onCloseEv);
@@ -63,7 +67,7 @@ export default function Modal({
       dlg.removeEventListener("cancel", onCancel);
       dlg.removeEventListener("close", onCloseEv);
     };
-  }, [onClose]);
+  }, [onClose, returnFocus]);
 
   // A click that lands on the dialog element itself is a click on the ::backdrop
   // (content sits in child elements), so it closes.

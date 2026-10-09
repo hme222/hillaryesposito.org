@@ -7,7 +7,7 @@ import DecisionStory from "../../components/flagship/DecisionStory";
 import EvidenceField from "../../components/flagship/EvidenceField";
 import MSKFilingReceipt from "../../components/flagship/MSKFilingReceipt";
 import MSKDashboardMockup from "../../components/MSKDashboardMockup";
-import MSKWorkflowMap from "../../components/MSKWorkflowMap";
+import MSKTheDetour from "../../components/MSKTheDetour";
 import MSKServiceBlueprint from "../../components/MSKServiceBlueprint";
 import MSKMechanism from "../../components/MSKMechanism";
 import MSKSustainment from "../../components/MSKSustainment";
@@ -36,7 +36,7 @@ const CHAPTERS: CaseStudyChapter[] = [
 const ROLE_METHODS: Record<string, { term: string; body: string }> = {
   "01": {
     term: "Lean Six Sigma Green Belt (Purdue) · Master of Healthcare Administration (Rutgers)",
-    body: "Both finished in this seat, while I was running a clinic's paperwork. The Green Belt is the lens that showed four systems doing the work of two; the MHA is why the redesign survived budget talks and leadership changes.",
+    body: "Both finished in this seat, while I was running a clinic's paperwork. The Green Belt is the lens that showed one filing task crossing four departments; the MHA is why the redesign survived budget talks and leadership changes.",
   },
   "02": {
     term: "Writing for the person who has to act",
@@ -68,8 +68,8 @@ const ROLES = [
 // The text equivalent of the sustainment timeline. Each line states what the
 // system survived and that it is still standing — the claim, not just a label.
 const SURVIVED = [
-  { fact: "EMR filing workflow", what: "Adopted organization-wide, and still in use through two system upgrades" },
-  { fact: "CPR certification format", what: "A two-month project that closed early — other admins still use the collection method today" },
+  { fact: "EMR filing workflow", what: "Owner-reported as adopted organization-wide" },
+  { fact: "CPR certification format", what: "Department compliant a month before the original deadline — no extension needed" },
   // "Clinician onboarding — still in use after three leadership transitions"
   // was removed on 2026-08-03. The programme was not clinician onboarding, and
   // the three-transitions claim was attached to that wrong description; nothing
@@ -89,7 +89,7 @@ const REDESIGNS = [
     title: "EMR filing workflow",
     finding: "Digital record → paper route → missing chart context.",
     change: "One action where the filing decision already happened.",
-    wrong: "I underestimated change management. Workstation training during shift changes fixed adoption in two weeks.",
+    wrong: "I misjudged how small it would look to IT. They deprioritized it as not worth the effort, and I had to keep raising it to get it built.",
   },
   {
     n: "02",
@@ -175,8 +175,8 @@ function MSKButtonThreshold() {
 }
 
 export default function FlagshipMSK() {
-  usePageTitle("MSK — Clinical Systems Case Study");
   const { lang } = useLanguage();
+  usePageTitle("MSK — Clinical Systems Case Study", lang !== "es");
   const rootRef = useRef<HTMLElement>(null);
   useFlagshipReveal(rootRef);
 
@@ -210,18 +210,17 @@ export default function FlagshipMSK() {
         <div className="rp-hero__content">
           <div className="rp-clearing">
             <span className="rp-eyebrow">Memorial Sloan Kettering · clinical systems</span>
-            <h1 className="rp-h1">A filing queue replaced a four-system workaround.</h1>
+            <h1 className="rp-h1">A filing <span className="rp-keep">queue replaced</span> <span className="rp-keep">a four-department</span> paper{"\u00a0"}detour.</h1>
             <span className="rp-readtime"><b>6 min</b><span>read · 6 years, 3 roles</span></span>
             <p className="rp-sub">
-              I mapped a paper detour across four departments and presented the digital workflow
-              implemented two roles later. It supported work touching <b>21,000+ people</b> and
-              remains in use through <b>two system upgrades</b>.
+              I diagnosed and mapped a paper detour across four departments, checked feasibility,
+              and pitched a digital filing workflow. <b>IT and UX implemented it after I changed roles.</b>
             </p>
             <dl className="rp-heroEvidence" aria-label="MSK case evidence at a glance">
               <div><dt>Role</dt><dd>Service design · process improvement · UX/product</dd></div>
-              <div><dt>Decision</dt><dd>Replace the four-system detour with one filing queue</dd></div>
-              <div><dt>State</dt><dd>Implemented · still in use through two upgrades</dd></div>
-              <div><dt>Qualified impact</dt><dd>Contributed to 20% organization-wide EMR cost reduction</dd></div>
+              <div><dt>My contribution</dt><dd>Diagnose · map · validate feasibility · pitch</dd></div>
+              <div><dt>Implementation</dt><dd>Built later by IT and UX after my role changed</dd></div>
+              <div><dt>Evidence</dt><dd>Patient-free reconstruction from my current-state documentation</dd></div>
             </dl>
             <a className="rp-cta" href="#msk-workflow">See the workflow →</a>
           </div>
@@ -242,11 +241,10 @@ export default function FlagshipMSK() {
               below, which already carries it — so the kicker is free to be a
               beat instead of a provenance label. */}
           <p className="rp-kicker">So I counted the steps</p>
-          <h2 className="rp-title">The filing queue replaced the workaround.</h2>
-          <p className="rp-lede">Nobody had written the whole path down. On one page, four departments saw the same failure instead of four versions of it.</p>
-          <figure className="fp-workflowFig rp-reveal" data-evidence="true">
-            <MSKWorkflowMap />
-            <figcaption>Recreated current-state and future-state map · no patient data</figcaption>
+          <h2 className="rp-title">One map made four departments see the same failure.</h2>
+          <figure className="fp-detourFig rp-reveal">
+            <MSKTheDetour />
+            <figcaption>Deterministic animatic · recreated queue geometry · no patient data</figcaption>
           </figure>
           {/* Said once, as a decision. The short "no patient data" labels elsewhere on
               the page are the reminder; this is the reasoning behind them. */}
@@ -348,25 +346,20 @@ export default function FlagshipMSK() {
               );
             })}
           </ol>
-          <div className="fp-systemCards rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "90ms" } as React.CSSProperties}>
-            <article><span>01 · Observe</span><h3>Find the workaround</h3><p>Real shifts exposed what policy maps missed.</p></article>
-            <article><span>02 · Align</span><h3>Share one failure</h3><p>Four departments, one current-state map.</p></article>
-            <article><span>03 · Redesign</span><h3>Sequence the action</h3><p>Show ownership, readiness, and exceptions.</p></article>
-          </div>
           {/* "Service design" appears in this page's hero eyebrow and nowhere
               else on the site. It had a definition here once and I cut it as
               abstract, which left the discipline named and unsupported. This is
               the replacement: the claim is ownership of the whole path, which
               the workflow map above already proves, rather than a description
               of a method. */}
-          <p className="fp-ownership rp-reveal" style={{ "--rp-reveal-stagger": "180ms" } as React.CSSProperties}>
+          <p className="fp-ownership rp-reveal" style={{ "--rp-reveal-stagger": "90ms" } as React.CSSProperties}>
             <b>Service-design scope:</b> the full path across systems, departments, permissions, and handoffs—not only the queue screen.
           </p>
-          <aside className="rp-note rp-reveal" aria-label="MSK research evidence boundary" style={{ "--rp-reveal-stagger": "270ms" } as React.CSSProperties}>
+          <aside className="rp-note rp-reveal" aria-label="MSK research evidence boundary" style={{ "--rp-reveal-stagger": "180ms" } as React.CSSProperties}>
             <span className="rp-note__k">Evidence boundary</span>
             <p>Workflow, departments, decisions, and outcomes survive. Observation counts do not; no prevalence claim is made.</p>
           </aside>
-          <div className="fp-mapWrap rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "360ms" } as React.CSSProperties}>
+          <div className="fp-mapWrap rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "270ms" } as React.CSSProperties}>
             <Suspense fallback={<div className="fp-mapFallback">Tangled systems → mapped → redesigned → trusted</div>}>
               <MSKSystemMap />
             </Suspense>
@@ -406,14 +399,14 @@ export default function FlagshipMSK() {
         kicker="What it added up to"
         title="The numbers, and who they belong to."
         intro="I initiated and presented the filing redesign, rewrote clinician certification material, and rebuilt administrative onboarding with the design team."
-        disclaimer="Anonymized evidence · organization-wide results are attributed to the initiative"
+        disclaimer="Anonymized evidence · owner-reported outcomes · the 20% figure belongs to a larger organization-wide initiative, not the filing queue alone; original period and cost definition are not preserved"
         // The same discipline the certification dashboard used on its own data:
         // say what you are looking at before someone has to work it out. All
         // three read as equal tiles otherwise, and "organization-wide" made the
         // most qualified number sound like the biggest one.
         metrics={[
-          { tag: "Scale", n: "21,000+", label: "clinicians and administrative staff across the workflows I redesigned" },
-          { tag: "Contributed to", n: "20%", label: "organization-wide EMR cost reduction, inside a larger initiative" },
+          { tag: "Scope", n: "21,000+", label: "clinicians and administrative staff across the workflows in scope — not queue adoption" },
+          { tag: "Initiative result", n: "20%", label: "organization-wide EMR cost reduction; not attributed solely to this filing workflow" },
           { tag: "Led", n: "70%", label: "ahead of deadline — every CPR certification collected early, on a deadline that was about to be pushed back" },
         ]}
         route={["Observe the real work", "Map the failure", "Align the system", "Ship what lasts"]}

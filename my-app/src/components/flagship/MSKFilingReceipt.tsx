@@ -19,6 +19,20 @@ export default function MSKFilingReceipt({ copy = MSK_COPY.en.receipt }: { copy?
 
   useEffect(() => () => timers.current.forEach(window.clearTimeout), []);
 
+  useEffect(() => {
+    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const handleChange = (event: MediaQueryListEvent) => {
+      if (!event.matches || timers.current.length === 0) return;
+      timers.current.forEach(window.clearTimeout);
+      timers.current = [];
+      setStep(copy.steps.length);
+      setHasRun(true);
+    };
+
+    query.addEventListener?.("change", handleChange);
+    return () => query.removeEventListener?.("change", handleChange);
+  }, [copy.steps.length]);
+
   // A language switch mid-animation would leave the status line describing a
   // step from the other locale, so reset when the copy changes.
   useEffect(() => {
@@ -34,7 +48,7 @@ export default function MSKFilingReceipt({ copy = MSK_COPY.en.receipt }: { copy?
     setStep(0);
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setStep(4);
+      setStep(copy.steps.length);
       setHasRun(true);
       return;
     }

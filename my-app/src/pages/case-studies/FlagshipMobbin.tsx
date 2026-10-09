@@ -40,8 +40,8 @@ const STEPS = [
 ];
 
 export default function FlagshipMobbin() {
-  usePageTitle("Mobbin — UX Flow Documentation Case Study");
   const { lang } = useLanguage();
+  usePageTitle("Mobbin — UX Flow Documentation Case Study", lang !== "es");
   const rootRef = useRef<HTMLElement>(null);
   useFlagshipReveal(rootRef);
 

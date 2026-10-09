@@ -41,7 +41,7 @@ const CHAPTERS: AboutChapter[] = [
     heading: "Six years at MSK, optimizing internal operations and designing for 21,000+ clinicians and staff.",
     image: "/assets/about/msk.jpg",
     paragraphs: [
-      "I initiated an EMR workflow redesign that contributed within a 20% organization-wide cost reduction and survived two system upgrades.",
+      "I initiated an EMR workflow redesign that contributed within a 20% organization-wide cost reduction. IT and UX built it after my role changed.",
       "I also rebuilt CPR certification and administrative onboarding across Epic, HIPAA, and compliance. Operational observation, feedback, and workflow analysis were already the practice—even before I had formal UX vocabulary for it.",
     ],
     callout: "Systems fail at the point where a real person has to use them.",
@@ -93,7 +93,7 @@ const CHAPTERS_ES: AboutChapter[] = [
     heading: "Seis años en MSK, optimizando operaciones internas y diseñando para 21,000+ clínicos y personal.",
     image: "/assets/about/msk.jpg",
     paragraphs: [
-      "Inicié un rediseño de flujo EMR que contribuyó dentro de una reducción organizacional del 20% en costos y sobrevivió dos actualizaciones del sistema.",
+      "Inicié un rediseño de flujo EMR que contribuyó dentro de una reducción organizacional del 20% en costos. TI y UX lo construyeron después de que cambié de rol.",
       "También reconstruí la certificación de RCP y la incorporación administrativa en Epic, HIPAA y cumplimiento. La observación operativa, los comentarios y el análisis de flujos ya eran la práctica, aun antes de tener vocabulario formal de UX.",
     ],
     callout: "Los sistemas fallan donde una persona real tiene que usarlos.",
@@ -326,9 +326,9 @@ export default function About() {
             {isSpanish ? "Abierta a roles de UX y diseño de producto en salud, organizaciones con misión y entornos operativamente complejos. También abierta a freelance y colaboraciones." : "Open to UX and product design roles in healthcare, mission-driven organizations, and operationally complex environments. Also open to freelance and collaborations."}
           </p>
           <div className="rp-hero__ctas">
-            <button type="button" className="rp-cta" onClick={() => navigate("/?scrollTo=contact")}>
-              {isSpanish ? "Contácteme" : "Get in touch"} →
-            </button>
+            <a className="rp-cta" href="mailto:espositohillary@gmail.com">
+              {isSpanish ? "Escríbame" : "Send me a note"} →
+            </a>
             <button type="button" className="rp-cta rp-cta--ghost" onClick={() => navigate("/?scrollTo=projects")}>
               ← {isSpanish ? "Volver al trabajo" : "Back to work"}
             </button>

@@ -1,5 +1,44 @@
 # Divergence Ledger
 
+## Four-project Home with Knowunity - 2026-09-24
+
+### Structural options
+
+Option A: **One evidence spine** - extend the established full-width selected-work row to four projects. Each row carries contribution/status copy, one inspectable artifact, and a route. **Chosen by Hillary on 2026-09-24.**
+
+Option B: **Product proof first** - give MSK and Knowunity large lead positions, then show Grove and Logistics in a compact supporting tier. Strong product-role signal, but structural size may falsely imply weaker value in the supporting work.
+
+Option C: **Two kinds of systems** - group Knowunity/Grove as product and interaction systems, and MSK/Logistics as clinical and operational systems. Clarifies range, but adds taxonomy before the reader has seen the evidence and weakens direct comparison.
+
+Default: Add a fourth equal card to a responsive two-column portfolio grid or create a visual style specifically for the new sprint.
+Instead: Reuse the existing linear `rp-work` evidence row and let Knowunity's real prototype, explicit sprint status, and component-system decisions create distinction.
+Reason: The portfolio system is mature, the current repeated row already supports another entry, and the reference analysis favors proximity between claim and proof over a new gallery treatment.
+Validation: At 390, 900, and 1440 widths, four entries remain legible in one reading order; the external prototype action is distinct from the internal case route; no empty placeholder is published; EN/ES and keyboard paths expose the same project/status; Knowunity cannot be mistaken for a shipped feature.
+
+Preview: `docs/designpowers/previews/portfolio-four-project-structure/index.html`.
+
+Implementation: Knowunity is appended as project 04 so the previously published MSK → Logistics → Grove order is preserved. Its equal `rp-work` row shows two uncropped prototype states, opens the public Vercel alias as the primary route, exposes the Chromatic component system as optional depth, and states `mocked recall` plus `not a shipped Knowunity feature` in visible copy. No new component family, dependency, animation, or internal case-study route was added.
+
+## MSK button threshold teaser — 2026-08-27
+
+### Structural options
+
+Option A: **Button threshold** — one full-width system-pressure field immediately before the existing decision story. The real HTML action label stays protected at the center and the composition resolves into the dashboard. **Chosen.**
+
+Option B: **Embedded prelude** — add an introductory beat inside the sticky decision story. Rejected because it lengthens and complicates an already successful interaction.
+
+Option C: **Inline margin film** — place a small moving visual beside the heading. Rejected because it reads as decoration and cannot carry the intended consequence.
+
+### Carrier
+
+Default: Make an AI-generated film, abstract poster, control rail, or invented dashboard the visual protagonist.
+
+Instead: Let four asymmetric Riso impressions converge around the exact HTML `Send to EMR` label; name readiness, permission, exception ownership, and return state in one folio; then hand attention to the unchanged real dashboard.
+
+Reason: The chapter needs anticipation, not another interface. The action becomes memorable while product evidence remains exact and dominant.
+
+Validation: At 390 and 1440px in light plus 1440px dark, the flat field has zero overflow, the decision content enters in the same viewport, and no generated or decorative layer contains patient data, controls, or invented UI. Reduced motion shows the final composition immediately; the existing decision story remains the next semantic and visual beat.
+
 ## Headlines + visuals hiring pass — 2026-08-24
 
 ### Structural options
@@ -283,3 +322,103 @@ Default: Generic global résumé and no direct contact action in the curated-pag
 Instead: `View Supabase résumé` in the hero and `Email Hillary` in the close.
 Reason: Remove application-path friction without changing public navigation.
 Validation: Résumé opens the role-specific PDF in a new tab; email uses a visible `mailto:` link.
+## MSK workflow signature visual — Registered Routing Peel (2026-08-30)
+
+**Owner result:** Rejected after live no-credit preview. The paper treatment remained visibly organized as a labeled workflow chart. Do not animate or spend credits on this topology. Preserve only the truth boundary and the lesson that material styling cannot rescue process-diagram grammar when the required experience is cinematic anticipation.
+
+### Structural options
+
+Option A: **Single-document theatre** — follow one record through a cinematic before/after transformation. Rejected for the preview because meaning and credibility become dependent on timing and generative material behavior.
+
+Option B: **One document, two timelines** — unfold the same record through a semantic editorial evidence strip. Rejected because the page already explains the workflow three times and another sequence would improve polish more than authorship.
+
+Option C: **Registered Routing Peel** — print the six-step paper detour on a perforated upper layer that lifts from the same registration edge and reveals the five-step in-system path beneath. **Chosen for a no-credit static preview.**
+
+Default: Add a decorative film or another set of diagram cards to make the workflow feel more visual.
+
+Instead: Make the exact workflow one project-specific physical evidence object whose construction carries the causal argument before motion.
+
+Reason: The work's senior decision is not that paper moved; it is that one departmental detour left the system and was removed. Shared registration, occlusion, and reveal make that relationship visible without generated text or explanatory animation.
+
+Validation: At 390 and 1440px, a static screenshot must show both `BEFORE · 6 STEPS · LEAVES THE EMR` and `AFTER · 5 STEPS · NEVER LEAVES THE EMR`, keep labels readable, preserve the adjacent semantic ordered lists, and communicate the removed detour in a six-second scan.
+## MSK cinematic hook — “The Detour” (2026-08-30)
+
+### Structural options
+
+Option A: **Prestige-documentary teaser — The Detour**. Macro evidence, one physical departure, short material montage, hard return to the filed queue, and one title frame. **Chosen.**
+
+Option B: **Product-launch film — The Button**. Crisp interface crops and high-speed product editing. Rejected because it risks reading as a polished SaaS advertisement instead of a consequential healthcare service story.
+
+Option C: **Clinical suspense — The Missing Status**. Use darkness and absence as the main event. Rejected because it could sensationalize routine clinical operations and make the portfolio feel like a medical drama.
+
+Default: Explain the full process inside the visual through steps, before/after labels, or a beautiful system diagram.
+
+Instead: Follow one exact record through a cinematic consequence, then return visitors to the existing semantic evidence below.
+
+Reason: Hillary wants a professional movie-preview hook. The trailer earns attention through shot scale, editing, light, and one reveal; the case study earns trust through the unchanged evidence that follows.
+
+Validation: Poster frame creates interest without chart grammar; explicit playback exposes the queue → detour → filed relationship; reduced motion resolves to complete key art; 390/1440 renders have no overflow.
+# Grove browser-prototype proof — 2026-08-31
+
+## Structural options
+
+Option A: Surface the existing proof through the homepage teaser pattern, Grove hero action, and native disclosure. **Chosen.**
+
+Option B: Create a dedicated Grove prototype route. Rejected because it duplicates the case-study narrative, adds maintenance, and dilutes the three-primary-case path.
+
+Option C: Add prototype labels only. Rejected because a label asks recruiters to trust a claim they could verify directly.
+
+Default: Mention React in case-study metadata and leave the interactive specimens inside optional system detail.
+
+Instead: Put one descriptive action on the Home row and Grove hero; direct links open and focus the existing native disclosure.
+
+Reason: The portfolio already contains the proof. The gap is discoverability, not capability or visual styling.
+
+Validation: English and Spanish Home paths resolve truthfully; the English direct hash opens/focuses the prototype; ordinary Grove visits remain collapsed; no new token, dependency, route, or component family appears.
+# MSK protected-interface storyboard — selected 2026-09-08
+
+## Structural options
+
+1. **Fully generated interface film** — generated image is the carrier; rejected because UI truth and causality cannot be reliably protected.
+2. **Protected-interface cinematography** — exact queue and button are the carrier; AI is a textless atmospheric plate behind them. **Selected.**
+3. **Deterministic interaction only** — real interface proof without AI; retained as the reduced-motion and low-data equivalent.
+
+Default: Ask Seedance to generate the complete product film.
+
+Instead: Composite exact interface layers over a generated textless cinematography plate.
+
+Reason: The button is the digital improvement; the record must visibly remain inside the system while the obsolete handoff disappears.
+
+Validation: In a silent three-second scan, a reviewer says “the button removed the paper handoff,” and the final still communicates the same claim without motion.
+
+# MSK `Under the Button` keyframe — selected 2026-09-10
+
+## Structural options
+
+1. **Detour film** — the record travels through paper/scanner impressions; rejected because it reverses the product claim.
+2. **Disappearing handoff** — the old workflow fades behind the fixed queue; rejected because the workaround still owns the story.
+3. **Under the Button** — the exact digital action opens onto the readiness, permission, exception, and return-state architecture beneath it. **Selected.**
+
+Default: Explain the transformation through steps, panels, or a before/after workflow.
+
+Instead: Use one macro cutaway composition with the authentic action as the control surface and four aligned structural layers beneath it.
+
+Reason: Hillary's accomplishment was making complex systems design feel like one simple digital action.
+
+Validation: Without a caption, the still reads as “substantial engineered logic beneath one simple button,” not as a process chart or paper workflow.
+
+# Flagship project tints — recorded 2026-10-08
+
+## Structural options
+
+1. **One palette everywhere** — every page paints the Riso `--paper/--ink/--green/--coral`; rejected because MSK and Mobbin would read as Grove reskinned.
+2. **Per-project accent only** — swap `--coral` and keep the Riso paper; rejected because a new red on the old paper reads as drift, not a theme.
+3. **Per-project palette** — `.flagship-page--msk` and `.flagship-page--mobbin` retint paper, ink, hair, green and coral together (`my-app/src/styles/flagship-case-study.css:11-57`). **Selected** (shipped before this entry; recorded after the 2026-10-07 panel found it undocumented).
+
+Default: One coral (`#bd3828` light / `#ff8c82` dark) on every route.
+
+Instead: MSK paints `#a64031` / `#ff7d67`; Mobbin paints `#ad3e2e` / `#ff7865`. Home, About, Logistics and Grove keep the Riso coral.
+
+Reason: Per the file header, "project themes change semantic tokens, artifacts, and pacing without cloning the botanical identity." The coral moves with the rest of that project's palette, so the CTA and next-case band change red as you cross from one project to the next.
+
+Validation: On MSK and Mobbin every coral element (CTA, eyebrow dot, progress fill, next-case band) resolves to that page's value, never a mix with the Riso coral; the next-case band changes colour at the project boundary. Retire this entry if the tints are ever folded back into one coral.

@@ -68,8 +68,7 @@ export default function Footer() {
     pathname === "/" ||
     pathname === "/about" ||
     pathname.startsWith("/case-study/") ||
-    pathname.startsWith("/riso/") ||
-    pathname.startsWith("/curated/");
+    pathname.startsWith("/riso/");
 
   return (
     <footer
