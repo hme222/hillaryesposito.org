@@ -1,0 +1,939 @@
+{
+  "note": "Retrieval eval for Ask about the work. In-scope items list acceptable passage ids (any one in the top 3 counts). Out-of-scope items must come back not covered. Expected ids were chosen by reading the knowledge files, not by running the engine; do not edit answers to make the test pass.",
+  "questions": [
+    {
+      "id": "r01",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "What service design work did she do at MSK?",
+      "expect": [
+        "en:msk-start:0",
+        "en:msk-systems:7",
+        "en:msk-outcomes:0",
+        "en:resume-msk-admin:0",
+        "en:about-story:7",
+        "en:msk-start:1"
+      ]
+    },
+    {
+      "id": "r02",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "How did she use UX as a Training Facilitator?",
+      "expect": [
+        "en:msk-systems:5",
+        "en:msk-systems:6",
+        "en:msk-redesigns:5",
+        "en:msk-redesigns:6",
+        "en:resume-msk-trainer:0",
+        "en:about-story:8",
+        "en:notes-msk:6",
+        "en:notes-msk:7"
+      ],
+      "note": "Batch 2 added the Trainer/Facilitator interview notes; they answer this more directly than the page fragments."
+    },
+    {
+      "id": "r03",
+      "audience": "developer",
+      "lang": "en",
+      "question": "How is this site built?",
+      "expect": [
+        "en:quote-portfolio:3",
+        "en:build:0"
+      ]
+    },
+    {
+      "id": "r04",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "How many years has she worked in healthcare?",
+      "expect": [
+        "en:about-start:1",
+        "en:resume-summary:0",
+        "en:about-story:6"
+      ]
+    },
+    {
+      "id": "r05",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "What did she own at MSK?",
+      "expect": [
+        "en:msk-outcomes:0",
+        "en:about-story:7",
+        "en:resume-msk-admin:0",
+        "en:msk-start:0",
+        "en:resume-summary:1"
+      ]
+    },
+    {
+      "id": "r06",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "What was the 20% cost reduction?",
+      "expect": [
+        "en:msk-outcomes:4",
+        "en:about-story:7",
+        "en:resume-summary:1",
+        "en:msk-outcomes:2"
+      ]
+    },
+    {
+      "id": "r07",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "Is she a veteran?",
+      "expect": [
+        "en:resume-summary:2",
+        "en:about-story:11"
+      ]
+    },
+    {
+      "id": "r08",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "What did she do in the Army?",
+      "expect": [
+        "en:about-story:11",
+        "en:about-story:12",
+        "en:resume-army:1",
+        "en:log-start:0",
+        "en:resume-army:0"
+      ]
+    },
+    {
+      "id": "r09",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "How much faster was medical resupply?",
+      "expect": [
+        "en:log-start:4",
+        "en:log-moves:3",
+        "en:log-outcomes:3",
+        "en:resume-army:0",
+        "en:log-start:0"
+      ]
+    },
+    {
+      "id": "r10",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "What degrees does she have?",
+      "expect": [
+        "en:resume-education:0",
+        "en:msk-systems:1",
+        "en:resume-summary:2"
+      ]
+    },
+    {
+      "id": "r11",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "Does she speak Spanish?",
+      "expect": [
+        "en:resume-summary:2"
+      ]
+    },
+    {
+      "id": "r12",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "What tools does she use?",
+      "expect": [
+        "en:resume-skills:2"
+      ]
+    },
+    {
+      "id": "r13",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "Is she open to freelance work?",
+      "expect": [
+        "en:about-contact:0"
+      ]
+    },
+    {
+      "id": "r14",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "How can I contact her?",
+      "expect": [
+        "en:resume-contact:0",
+        "en:about-contact:0"
+      ]
+    },
+    {
+      "id": "r15",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "What did she do for Mobbin?",
+      "expect": [
+        "en:mobbin-start:0",
+        "en:resume-mobbin:0",
+        "en:mobbin-outcomes:1",
+        "en:about-story:1",
+        "en:mobbin-outcomes:3"
+      ]
+    },
+    {
+      "id": "r16",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "Did she design the Kikoff app?",
+      "expect": [
+        "en:mobbin-outcomes:1",
+        "en:mobbin-start:0",
+        "en:mobbin-brief:3",
+        "en:resume-mobbin:1",
+        "en:resume-mobbin:0"
+      ]
+    },
+    {
+      "id": "r17",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "What is Grove?",
+      "expect": [
+        "en:grove-outcomes:1",
+        "en:grove-start:0",
+        "en:grove-outcomes:2",
+        "en:resume-grove:0",
+        "en:grove-start:1"
+      ]
+    },
+    {
+      "id": "r18",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "How many people did she survey for Grove?",
+      "expect": [
+        "en:grove-start:0",
+        "en:grove-research:4",
+        "en:grove-outcomes:3",
+        "en:resume-grove:0",
+        "en:grove-start:2",
+        "en:grove-research:3"
+      ]
+    },
+    {
+      "id": "r19",
+      "audience": "ux-designer",
+      "lang": "en",
+      "question": "Why do people delete plant apps?",
+      "expect": [
+        "en:grove-override:13",
+        "en:grove-research:7"
+      ]
+    },
+    {
+      "id": "r20",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "What phase is Grove in?",
+      "expect": [
+        "en:grove-start:5",
+        "en:grove-outcomes:2",
+        "en:grove-decisions:5",
+        "en:grove-outcomes:8",
+        "en:grove-outcomes:7"
+      ]
+    },
+    {
+      "id": "r21",
+      "audience": "ux-designer",
+      "lang": "en",
+      "question": "What did she get wrong?",
+      "expect": [
+        "en:msk-redesigns:4",
+        "en:grove-outcomes:6",
+        "en:grove-outcomes:5"
+      ]
+    },
+    {
+      "id": "r22",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "Who built the MSK filing workflow?",
+      "expect": [
+        "en:msk-start:3",
+        "en:msk-start:0",
+        "en:about-story:7",
+        "en:resume-msk-admin:0"
+      ]
+    },
+    {
+      "id": "r23",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "What is she reading?",
+      "expect": [
+        "en:about-life:1"
+      ]
+    },
+    {
+      "id": "r24",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "Where is she based?",
+      "expect": [
+        "en:about-start:0",
+        "en:resume-contact:0"
+      ]
+    },
+    {
+      "id": "r25",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "How did the CPR certification rewrite go?",
+      "expect": [
+        "en:msk-redesigns:6",
+        "en:msk-outcomes:5",
+        "en:resume-msk-admin:1",
+        "en:about-story:8",
+        "en:msk-redesigns:5",
+        "en:notes-msk:4",
+        "en:notes-msk:5"
+      ],
+      "note": "Batch 2 added the CPR deadline notes."
+    },
+    {
+      "id": "r26",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "What was the cold chain constraint?",
+      "expect": [
+        "en:about-story:12"
+      ]
+    },
+    {
+      "id": "r27",
+      "audience": "ux-designer",
+      "lang": "en",
+      "question": "How does Grove handle AI uncertainty?",
+      "expect": [
+        "en:grove-decisions:3",
+        "en:grove-override:18",
+        "en:grove-prototype:22",
+        "en:grove-prototype:8",
+        "en:grove-override:10",
+        "en:grove-outcomes:1",
+        "en:grove-prototype:21"
+      ]
+    },
+    {
+      "id": "r28",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "What does the Mobbin client say about her?",
+      "expect": [
+        "en:about-proof:0",
+        "en:about-proof:1"
+      ]
+    },
+    {
+      "id": "r29",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "Which EMR did she train staff on?",
+      "expect": [
+        "en:msk-systems:6",
+        "en:msk-systems:5",
+        "en:about-story:8",
+        "en:resume-msk-trainer:0"
+      ]
+    },
+    {
+      "id": "d01",
+      "audience": "developer",
+      "lang": "en",
+      "question": "What is the tech stack?",
+      "expect": [
+        "en:quote-portfolio:3",
+        "en:build:0"
+      ]
+    },
+    {
+      "id": "d02",
+      "audience": "developer",
+      "lang": "en",
+      "question": "Was the Grove prototype built in React?",
+      "expect": [
+        "en:grove-start:4",
+        "en:grove-override:7",
+        "en:resume-skills:2"
+      ]
+    },
+    {
+      "id": "d03",
+      "audience": "developer",
+      "lang": "en",
+      "question": "Which AI tools helped build the site?",
+      "expect": [
+        "en:quote-portfolio:3"
+      ]
+    },
+    {
+      "id": "d04",
+      "audience": "developer",
+      "lang": "en",
+      "question": "Is the Grove prototype keyboard operable?",
+      "expect": [
+        "en:grove-prototype:1"
+      ]
+    },
+    {
+      "id": "u01",
+      "audience": "ux-designer",
+      "lang": "en",
+      "question": "How were the Mobbin screens named?",
+      "expect": [
+        "en:mobbin-decisions:8",
+        "en:mobbin-decisions:9",
+        "en:mobbin-decisions:10",
+        "en:mobbin-brief:1",
+        "en:mobbin-work:1",
+        "en:mobbin-outcomes:2"
+      ]
+    },
+    {
+      "id": "u02",
+      "audience": "ux-designer",
+      "lang": "en",
+      "question": "Why group plants by room?",
+      "expect": [
+        "en:grove-prototype:19",
+        "en:grove-prototype:20"
+      ]
+    },
+    {
+      "id": "u03",
+      "audience": "ux-designer",
+      "lang": "en",
+      "question": "What color system does Grove use?",
+      "expect": [
+        "en:grove-prototype:11",
+        "en:grove-prototype:12",
+        "en:grove-prototype:13"
+      ]
+    },
+    {
+      "id": "u04",
+      "audience": "ux-designer",
+      "lang": "en",
+      "question": "What is her design process?",
+      "expect": [
+        "en:about-pattern:0",
+        "en:about-pattern:1",
+        "en:about-pattern:2",
+        "en:about-pattern:3",
+        "en:msk-outcomes:1",
+        "en:resume-skills:1"
+      ]
+    },
+    {
+      "id": "u05",
+      "audience": "ux-designer",
+      "lang": "en",
+      "question": "What did the florist say about generative AI?",
+      "expect": [
+        "en:grove-research:20",
+        "en:grove-research:21",
+        "en:grove-override:6"
+      ]
+    },
+    {
+      "id": "s01",
+      "audience": "recruiter",
+      "lang": "es",
+      "question": "¿Qué trabajo de diseño de servicios hizo en MSK?",
+      "expect": [
+        "es:es-msk-start:0",
+        "es:es-msk-decisions:0",
+        "es:resume-msk-admin:0",
+        "es:about-story:7",
+        "es:es-msk-brief:0"
+      ]
+    },
+    {
+      "id": "s02",
+      "audience": "recruiter",
+      "lang": "es",
+      "question": "¿Cómo aplicó UX como facilitadora de capacitación?",
+      "expect": [
+        "es:es-msk-decisions:2",
+        "es:es-msk-decisions:3",
+        "es:es-msk-decisions:4",
+        "es:resume-msk-trainer:0",
+        "es:about-story:8"
+      ]
+    },
+    {
+      "id": "s03",
+      "audience": "developer",
+      "lang": "es",
+      "question": "¿Cómo está construido este sitio?",
+      "expect": [
+        "es:quote-portfolio:3",
+        "es:build:0"
+      ]
+    },
+    {
+      "id": "s04",
+      "audience": "recruiter",
+      "lang": "es",
+      "question": "¿Cuánto se redujo el tiempo de reabastecimiento?",
+      "expect": [
+        "es:es-log-outcomes:2",
+        "es:resume-army:0",
+        "es:es-log-moves:1",
+        "es:es-log-start:0",
+        "es:about-story:13"
+      ]
+    },
+    {
+      "id": "s05",
+      "audience": "recruiter",
+      "lang": "es",
+      "question": "¿A cuántas personas encuestó para Grove?",
+      "expect": [
+        "es:resume-grove:0",
+        "es:es-grove-research:0",
+        "es:es-grove-start:0"
+      ]
+    },
+    {
+      "id": "s06",
+      "audience": "recruiter",
+      "lang": "es",
+      "question": "¿Es veterana del ejército?",
+      "expect": [
+        "es:resume-summary:2",
+        "es:about-story:11"
+      ]
+    },
+    {
+      "id": "s07",
+      "audience": "recruiter",
+      "lang": "es",
+      "question": "¿Qué hizo para Mobbin?",
+      "expect": [
+        "es:es-mobbin-start:0",
+        "es:resume-mobbin:0",
+        "es:about-story:1",
+        "es:es-mobbin-brief:0"
+      ]
+    },
+    {
+      "id": "s08",
+      "audience": "recruiter",
+      "lang": "es",
+      "question": "¿Qué estudió?",
+      "expect": [
+        "es:resume-education:0",
+        "es:resume-summary:2"
+      ]
+    },
+    {
+      "id": "s09",
+      "audience": "recruiter",
+      "lang": "es",
+      "question": "¿Habla inglés y español?",
+      "expect": [
+        "es:resume-summary:2"
+      ]
+    },
+    {
+      "id": "s10",
+      "audience": "recruiter",
+      "lang": "es",
+      "question": "¿Qué herramientas usa?",
+      "expect": [
+        "es:resume-skills:2"
+      ]
+    },
+    {
+      "id": "s11",
+      "audience": "recruiter",
+      "lang": "es",
+      "question": "¿Quién construyó el flujo de archivo en MSK?",
+      "expect": [
+        "es:es-msk-start:0",
+        "es:about-story:7",
+        "es:resume-msk-admin:0",
+        "es:es-msk-workflow:0"
+      ]
+    },
+    {
+      "id": "s12",
+      "audience": "recruiter",
+      "lang": "es",
+      "question": "¿Qué es Grove?",
+      "expect": [
+        "es:es-grove-start:0",
+        "es:es-grove-brief:0"
+      ]
+    },
+    {
+      "id": "s13",
+      "audience": "ux-designer",
+      "lang": "es",
+      "question": "¿Por qué agrupa las plantas por dónde viven?",
+      "expect": [
+        "es:es-grove-decisions:0"
+      ]
+    },
+    {
+      "id": "s14",
+      "audience": "recruiter",
+      "lang": "es",
+      "question": "¿Cuál fue la restricción de la cadena de frío?",
+      "expect": [
+        "es:es-log-constraints:1",
+        "es:about-story:12"
+      ]
+    },
+    {
+      "id": "s15",
+      "audience": "recruiter",
+      "lang": "es",
+      "question": "¿Cómo puedo contactarla?",
+      "expect": [
+        "es:resume-contact:0",
+        "es:about-contact:0"
+      ]
+    },
+    {
+      "id": "o01",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "What's her salary?",
+      "expect": "out_of_scope"
+    },
+    {
+      "id": "o02",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "Did she work at Google?",
+      "expect": [
+        "en:resume-education:1"
+      ],
+      "note": "Reclassified in-scope: the corpus mentions Google only as a UX Design Certificate, so the sources can answer (the model should say no employer is listed)."
+    },
+    {
+      "id": "o03",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "What's her phone number?",
+      "expect": "out_of_scope"
+    },
+    {
+      "id": "o04",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "How old is she?",
+      "expect": "out_of_scope"
+    },
+    {
+      "id": "o05",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "Does she have children?",
+      "expect": "out_of_scope"
+    },
+    {
+      "id": "o06",
+      "audience": "developer",
+      "lang": "en",
+      "question": "What's the weather in New York today?",
+      "expect": "out_of_scope"
+    },
+    {
+      "id": "o07",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "Can you write me a cover letter?",
+      "expect": "out_of_scope"
+    },
+    {
+      "id": "o08",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "Who is the president of the United States?",
+      "expect": "out_of_scope"
+    },
+    {
+      "id": "o09",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "What is her home address?",
+      "expect": "out_of_scope"
+    },
+    {
+      "id": "o10",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "Did she work at Apple or Meta?",
+      "expect": "out_of_scope"
+    },
+    {
+      "id": "o11",
+      "audience": "ux-designer",
+      "lang": "en",
+      "question": "What is her favourite font?",
+      "expect": "out_of_scope"
+    },
+    {
+      "id": "o12",
+      "audience": "recruiter",
+      "lang": "es",
+      "question": "¿Cuál es su edad?",
+      "expect": "out_of_scope"
+    },
+    {
+      "id": "o13",
+      "audience": "recruiter",
+      "lang": "es",
+      "question": "¿Cuánto gana?",
+      "expect": "out_of_scope",
+      "note": "Known retrieval leak: \"gana\" (earns) is a homograph of \"gana credibilidad\" in about-story:2; the model gate catches it.",
+      "known_leak": true
+    },
+    {
+      "id": "o14",
+      "audience": "recruiter",
+      "lang": "es",
+      "question": "¿Trabajó en Google?",
+      "expect": [
+        "es:resume-education:1"
+      ],
+      "note": "Reclassified in-scope, see o02."
+    },
+    {
+      "id": "o15",
+      "audience": "recruiter",
+      "lang": "es",
+      "question": "¿Cuál es su número de teléfono?",
+      "expect": "out_of_scope"
+    },
+    {
+      "id": "o16",
+      "audience": "recruiter",
+      "lang": "es",
+      "question": "¿Está casada?",
+      "expect": "out_of_scope"
+    },
+    {
+      "id": "o17",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "Did she work at Amazon?",
+      "expect": "out_of_scope"
+    },
+    {
+      "id": "o18",
+      "audience": "recruiter",
+      "lang": "es",
+      "question": "¿Trabajó en Amazon?",
+      "expect": "out_of_scope"
+    },
+    {
+      "id": "o19",
+      "audience": "recruiter",
+      "lang": "es",
+      "question": "¿Cuál es su salario?",
+      "expect": "out_of_scope"
+    },
+    {
+      "id": "b01",
+      "audience": "developer",
+      "lang": "en",
+      "question": "What tools did she use to build the site?",
+      "expect": [
+        "en:quote-portfolio:3",
+        "en:build:0"
+      ]
+    },
+    {
+      "id": "b02",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "Did she use AI at MSK?",
+      "expect": [
+        "en:notes-msk:8"
+      ]
+    },
+    {
+      "id": "b03",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "What did she pitch at the Process Improvement Fair?",
+      "expect": [
+        "en:notes-msk:1",
+        "en:notes-msk:3"
+      ]
+    },
+    {
+      "id": "b04",
+      "audience": "ux-designer",
+      "lang": "en",
+      "question": "What inspired the look?",
+      "expect": [
+        "en:quote-portfolio:1"
+      ]
+    },
+    {
+      "id": "b05",
+      "audience": "developer",
+      "lang": "es",
+      "question": "¿Cómo está construido el sitio?",
+      "expect": [
+        "es:build:0",
+        "es:quote-portfolio:3",
+        "es:build:1"
+      ]
+    },
+    {
+      "id": "b06",
+      "audience": "ux-designer",
+      "lang": "en",
+      "question": "What would she do differently with the portfolio?",
+      "expect": [
+        "en:quote-portfolio:4"
+      ]
+    },
+    {
+      "id": "b07",
+      "audience": "developer",
+      "lang": "en",
+      "question": "Does the site have automated tests?",
+      "expect": [
+        "en:build:6"
+      ]
+    },
+    {
+      "id": "b08",
+      "audience": "developer",
+      "lang": "en",
+      "question": "Where is the Grove Storybook?",
+      "expect": [
+        "en:build:storybook"
+      ]
+    },
+    {
+      "id": "b09",
+      "audience": "recruiter",
+      "lang": "es",
+      "question": "¿Usó IA en el trabajo de logística?",
+      "expect": [
+        "es:notes-logistics:7"
+      ]
+    },
+    {
+      "id": "b10",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "How did she handle the CPR certification deadline?",
+      "expect": [
+        "en:notes-msk:4",
+        "en:notes-msk:5",
+        "en:msk-redesigns:6",
+        "en:resume-msk-admin:1"
+      ]
+    },
+    {
+      "id": "b11",
+      "audience": "ux-designer",
+      "lang": "en",
+      "question": "What was the trivia warm-up for?",
+      "expect": [
+        "en:notes-msk:7"
+      ]
+    },
+    {
+      "id": "b12",
+      "audience": "recruiter",
+      "lang": "es",
+      "question": "¿Qué herramienta de IA construyó la primera versión de Grove?",
+      "expect": [
+        "es:notes-grove:0",
+        "es:es-grove-start:0"
+      ]
+    },
+    {
+      "id": "b13",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "Which result does the 60% cost reduction belong to?",
+      "expect": [
+        "en:notes-logistics:4",
+        "en:log-moves:7",
+        "en:log-outcomes:4"
+      ]
+    },
+    {
+      "id": "b14",
+      "audience": "developer",
+      "lang": "en",
+      "question": "Which analytics events does the site record?",
+      "expect": [
+        "en:build:10"
+      ]
+    },
+    {
+      "id": "b15",
+      "audience": "developer",
+      "lang": "en",
+      "question": "Is the site bilingual?",
+      "expect": [
+        "en:build:8",
+        "en:resume-summary:2"
+      ]
+    },
+    {
+      "id": "b16",
+      "audience": "ux-designer",
+      "lang": "es",
+      "question": "¿Qué inspiró el estilo visual?",
+      "expect": [
+        "es:quote-portfolio:1"
+      ]
+    },
+    {
+      "id": "b17",
+      "audience": "developer",
+      "lang": "en",
+      "question": "Where is the site hosted?",
+      "expect": [
+        "en:build:1",
+        "en:quote-portfolio:3"
+      ]
+    },
+    {
+      "id": "b18",
+      "audience": "recruiter",
+      "lang": "en",
+      "question": "Did she build the SharePoint tracking system herself?",
+      "expect": [
+        "en:notes-logistics:3"
+      ]
+    },
+    {
+      "id": "b19",
+      "audience": "developer",
+      "lang": "es",
+      "question": "¿Qué tokens de diseño usa el sitio?",
+      "expect": [
+        "es:build:4"
+      ]
+    },
+    {
+      "id": "b20",
+      "audience": "ux-designer",
+      "lang": "en",
+      "question": "Why no flashy header?",
+      "expect": [
+        "en:quote-portfolio:2"
+      ]
+    }
+  ]
+}

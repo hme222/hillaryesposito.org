@@ -179,6 +179,33 @@ const en = {
   "recruiter.pill": "Recruiter view",
   "recruiter.pillAria": "Open recruiter view: 90-second tour",
   "recruiter.seconds": "90 sec",
+
+  // ── Ask about the work ──
+  // A search tool that writes clearly, not a persona: no "AI" badge, no
+  // first person for Hillary, every answer with its sources.
+  "ask.nav": "Ask",
+  "ask.navSuffix": "about the work",
+  "ask.title": "Ask about the work",
+  "ask.intro": "Answers come from the résumé and the published pages, each with its source.",
+  "ask.startersLabel": "Try one of these",
+  "ask.starter1": "What service design work did she do at MSK?",
+  "ask.starter2": "How did she use UX as a Training Facilitator?",
+  "ask.starter3": "How is this site built?",
+  "ask.starter4": "What inspired the look?",
+  "ask.inputLabel": "Your question",
+  "ask.submit": "Find the answer",
+  "ask.thinking": "Finding the passage…",
+  "ask.answerLabel": "Answer",
+  "ask.sources": "Sources",
+  "ask.passagesTitle": "What the portfolio says",
+  "ask.notCoveredTitle": "That isn't covered in the portfolio.",
+  "ask.notCoveredRelated": "Closest pages",
+  "ask.notCoveredEmail": "Ask Hillary directly:",
+  "ask.failedTitle": "The question tool didn't load.",
+  "ask.failedBody": "Reload the page, or email Hillary:",
+  "ask.opensNewTab": "(opens in new tab)",
+  "ask.close": "Close",
+  "ask.recruiterLink": "Ask a question",
 } as const;
 
 export type StringKey = keyof typeof en;
@@ -338,6 +365,31 @@ const es: Partial<Record<StringKey, string>> = {
   "recruiter.pill": "Vista para reclutadores",
   "recruiter.pillAria": "Abrir la vista para reclutadores: resumen de proyectos en 90 segundos",
   "recruiter.seconds": "90 seg",
+
+  // ── Ask about the work ──
+  "ask.nav": "Preguntar",
+  "ask.navSuffix": "sobre el trabajo",
+  "ask.title": "Pregunte sobre el trabajo",
+  "ask.intro": "Las respuestas salen del currículum y de las páginas publicadas, cada una con su fuente.",
+  "ask.startersLabel": "Pruebe una de estas",
+  "ask.starter1": "¿Qué trabajo de diseño de servicios hizo en MSK?",
+  "ask.starter2": "¿Cómo aplicó UX como facilitadora de capacitación?",
+  "ask.starter3": "¿Cómo está construido este sitio?",
+  "ask.starter4": "¿Qué inspiró el estilo visual?",
+  "ask.inputLabel": "Su pregunta",
+  "ask.submit": "Buscar la respuesta",
+  "ask.thinking": "Buscando el pasaje…",
+  "ask.answerLabel": "Respuesta",
+  "ask.sources": "Fuentes",
+  "ask.passagesTitle": "Lo que dice el portafolio",
+  "ask.notCoveredTitle": "Eso no está en el portafolio.",
+  "ask.notCoveredRelated": "Páginas más cercanas",
+  "ask.notCoveredEmail": "Pregúntele a Hillary directamente:",
+  "ask.failedTitle": "La herramienta de preguntas no cargó.",
+  "ask.failedBody": "Recargue la página o escríbale a Hillary:",
+  "ask.opensNewTab": "(se abre en una pestaña nueva)",
+  "ask.close": "Cerrar",
+  "ask.recruiterLink": "Hacer una pregunta",
 };
 
 export const STRINGS: { en: typeof en; es: Partial<Record<StringKey, string>> } = { en, es };

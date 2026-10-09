@@ -4,7 +4,12 @@ type PortfolioEventName =
   | "resume_open"
   | "contact_click"
   | "linkedin_click"
-  | "case_study_open";
+  | "case_study_open"
+  // "Ask about the work": counts only. The question text is never sent.
+  | "ask_open"
+  | "ask_answered"
+  | "ask_not_covered"
+  | "ask_source_click";
 
 type PortfolioEvent = {
   name: PortfolioEventName;

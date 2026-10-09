@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Modal from "./Modal";
 import { useLanguage, useT } from "../app/LanguageContext";
 import { FileTextIcon, MailIcon, BriefcaseIcon, UserIcon, XIcon } from "./LineIcons";
+import AskBirdIcon from "./ask/AskBirdIcon";
 
 /**
  * Persistent floating "Recruiter view" pill that appears on every page.
@@ -152,6 +153,22 @@ export default function RecruiterPill() {
                   <button type="button" className="recruiter-panel__btn"
                      onClick={() => go("/about")}>
                     <UserIcon className="recruiter-panel__btn-icon" /> About me
+                  </button>
+                  <button type="button" className="recruiter-panel__btn"
+                     onClick={() => {
+                       // Close this panel and hand the Ask dialog the same
+                       // return-focus target this panel was given. Opened from
+                       // the pill that is null and the native dialog restores
+                       // focus to the pill synchronously on close; opened from
+                       // the mobile menu it is the hamburger, which this panel's
+                       // async `close` event would otherwise focus only after
+                       // the Ask dialog had captured this (now hidden) button.
+                       setOpen(false);
+                       window.dispatchEvent(
+                         new CustomEvent("open-ask", { detail: { entry: "recruiter", returnFocus } })
+                       );
+                     }}>
+                    <AskBirdIcon className="recruiter-panel__btn-icon recruiter-panel__btn-icon--bird" /> Ask a question
                   </button>
                 </section>
 

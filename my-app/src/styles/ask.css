@@ -1,0 +1,375 @@
+/* ============================================================
+   Ask about the work — dialog, nav entry, bird.
+   The dialog carries `.riso-page` so --paper/--ink/--coral/--coral-text/
+   --on-coral/--mono/--sans resolve in both themes (riso-page.css). Nothing
+   here introduces a colour; every value is a token or a mix of tokens.
+   ============================================================ */
+
+/* ---------- nav entry ---------- */
+/* The navbar sits outside any Riso-scoped page, so --coral is not defined
+   there. Resolve it the way riso-page.css does (same --rp-accent-l/-d hooks,
+   same fallbacks) — the recruiter panel's --rp-coral is the precedent. */
+.nav-link--ask {
+  --coral: var(--rp-accent-l, #bd3828);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.dark-mode .nav-link--ask {
+  --coral: var(--rp-accent-d, #ff8c82);
+}
+.nav-link__bird {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+@media (max-width: 768px) {
+  .nav-link--ask {
+    min-height: 44px;
+  }
+}
+.recruiter-panel .recruiter-panel__btn-icon--bird {
+  --coral: var(--rp-coral);
+  width: 1.3em;
+  height: 1.3em;
+}
+
+/* ---------- dialog box ---------- */
+.ask-dialog {
+  --focus: var(--coral);
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(600px, calc(100vw - 2rem));
+  max-width: none;
+  max-height: min(calc(100dvh - 2rem), 860px);
+  padding: 0;
+  border: 1.5px solid var(--ink);
+  border-radius: 4px;
+  box-shadow: 8px 8px 0 color-mix(in srgb, var(--coral) 18%, transparent);
+  overflow: hidden;
+  z-index: 1101;
+  animation: askRise 0.26s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.ask-dialog:not([open]) {
+  display: none;
+}
+.ask-dialog::backdrop {
+  background: color-mix(in srgb, var(--ink) 55%, transparent);
+  animation: askFade 0.2s ease-out;
+}
+.dark-mode .ask-dialog::backdrop {
+  background: color-mix(in srgb, var(--paper) 72%, transparent);
+}
+@keyframes askRise {
+  from { transform: translateY(8px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes askFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.ask-dialog__inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: inherit;
+}
+
+/* ---------- header ---------- */
+.ask-dialog__header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem 1rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
+}
+.ask-dialog__title {
+  margin: 0;
+  font-family: var(--sans);
+  font-weight: 850;
+  font-size: clamp(1.2rem, 1rem + 1.2vw, 1.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.ask-dialog__close {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid color-mix(in srgb, var(--ink) 30%, transparent);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+.ask-dialog__close:hover {
+  border-color: var(--coral);
+  background: color-mix(in srgb, var(--coral) 10%, transparent);
+}
+
+/* ---------- bird ---------- */
+.ask-bird {
+  width: 80px;
+  height: auto;
+  display: block;
+  transform-origin: 50% 92%;
+  /* One slow gesture per state change, never a loop. */
+  transition: transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.ask-bird--thinking {
+  transform: rotate(-6deg);
+}
+/* Charcoal legs vanish on near-black paper; lift the cut-out off the page. */
+.dark-mode .ask-bird {
+  filter: drop-shadow(0 1px 0 color-mix(in srgb, var(--ink) 55%, transparent))
+    drop-shadow(0 6px 14px color-mix(in srgb, var(--ink) 22%, transparent));
+}
+@media (prefers-reduced-motion: reduce) {
+  .ask-dialog,
+  .ask-dialog::backdrop {
+    animation: none;
+  }
+  .ask-bird {
+    transition: none;
+  }
+  .ask-bird--thinking {
+    transform: none;
+  }
+}
+
+/* ---------- body ---------- */
+.ask-dialog__body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 1rem 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+.ask-dialog__intro {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.ask-kicker {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--coral-text);
+}
+
+/* starter questions: real buttons, full-width targets */
+.ask-starters {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+.ask-starter {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.6rem 0.85rem;
+  text-align: left;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  line-height: 1.35;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--paper-2) 60%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ink) 28%, transparent);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+.ask-starter:hover:not(:disabled) {
+  border-color: var(--coral);
+  background: color-mix(in srgb, var(--coral) 8%, transparent);
+}
+.ask-starter:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+/* question field */
+.ask-form {
+  display: grid;
+  gap: 0.45rem;
+}
+.ask-form__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.ask-input {
+  flex: 1 1 220px;
+  min-height: 44px;
+  padding: 0.55rem 0.8rem;
+  font-family: var(--sans);
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  border-radius: 4px;
+}
+.ask-submit {
+  flex: 0 0 auto;
+  border: 0;
+  cursor: pointer;
+}
+.ask-submit:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+/* ---------- result (live region) ---------- */
+.ask-result {
+  display: grid;
+  gap: 0.75rem;
+}
+.ask-result:empty {
+  display: none;
+}
+.ask-result__status {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.ask-result__heading {
+  margin-top: 0.25rem;
+}
+.ask-result__title {
+  margin: 0.25rem 0 0;
+  font-family: var(--sans);
+  font-weight: 800;
+  font-size: 1.1rem;
+  line-height: 1.25;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.ask-answer {
+  margin: 0.25rem 0 0;
+  padding: 0.85rem 1rem;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--paper-2) 70%, transparent);
+  border-left: 3px solid var(--coral);
+  border-radius: 0 4px 4px 0;
+}
+.ask-sources,
+.ask-related {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.7rem;
+}
+.ask-source {
+  padding-left: 0.85rem;
+  border-left: 2px solid color-mix(in srgb, var(--ink) 25%, transparent);
+  display: grid;
+  gap: 0.3rem;
+}
+.ask-source__text {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.ask-source__label,
+.ask-related a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--coral-text);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  text-decoration-thickness: 1px;
+  line-height: 1.4;
+}
+span.ask-source__label {
+  text-decoration: none;
+  color: var(--muted);
+}
+.ask-source__label:hover,
+.ask-related a:hover {
+  color: var(--ink);
+}
+.ask-quote {
+  margin: 0;
+  display: grid;
+  gap: 0.3rem;
+}
+.ask-quote__text {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink);
+  font-style: italic;
+  quotes: "\201C" "\201D";
+}
+.ask-quote__text::before {
+  content: open-quote;
+}
+.ask-quote__text::after {
+  content: close-quote;
+}
+.ask-quote__attribution {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.ask-result__email {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+.ask-email {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  word-break: break-all;
+}
+
+@media (max-width: 480px) {
+  .ask-dialog {
+    width: calc(100vw - 1rem);
+    max-height: calc(100dvh - 1rem);
+  }
+  .ask-dialog__header {
+    padding: 0.9rem 1rem 0.8rem;
+    gap: 0.75rem;
+  }
+  .ask-bird {
+    width: 64px;
+  }
+  .ask-dialog__body {
+    padding: 0.9rem 1rem 1.25rem;
+  }
+  .ask-submit {
+    flex-basis: 100%;
+    justify-content: center;
+  }
+}
