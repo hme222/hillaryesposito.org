@@ -1,0 +1,1040 @@
+{
+ "version": 1,
+ "note": "Batch 1 — approved by Hillary 2026-10-09: published Spanish pages (verbatim) + Spanish résumé translations approved line by line.",
+ "entries": [
+  {
+   "id": "es:es-msk-start:0",
+   "lang": "es",
+   "text": "Durante seis años en MSK, trabajé en flujos clínicos, certificación e incorporación de personal para sistemas cuyo alcance incluía a más de 21,000 profesionales clínicos y administrativos. En el flujo de archivo, diagnostiqué y mapeé un desvío en papel, verifiqué su viabilidad y propuse una solución digital. Los equipos de TI y UX la implementaron después de que cambié de puesto. Este trabajo muestra diseño aplicado a herramientas internas, permisos, estados y adopción en un entorno de salud real.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso MSK · Una cola de archivo reemplazó un desvío de papel entre cuatro áreas",
+    "url": "/case-study/msk/#es-msk-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-msk-start:1",
+   "lang": "es",
+   "text": "Esta es una versión condensada. El estudio completo está disponible en inglés.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso MSK · Una cola de archivo reemplazó un desvío de papel entre cuatro áreas",
+    "url": "/case-study/msk/#es-msk-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-msk-brief:0",
+   "lang": "es",
+   "text": "El trabajo no era hacer pantallas bonitas. Era entender dónde fallaba el flujo real, alinear a clínicos, líderes e IT, y cambiar herramientas que las personas usaban bajo presión.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso MSK · Diseñar para sistemas donde el error tiene consecuencias",
+    "url": "/case-study/msk/#es-msk-brief"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-msk-workflow:0",
+   "lang": "es",
+   "text": "El rediseño de EMR consistió en agregar una acción directa en el dashboard que llevaba al EMR en línea. Antes, el equipo imprimía, enviaba a otro sitio y esperaba que se archivara. Después, el flujo redujo pasos y quitó trabajo duplicado.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso MSK · De imprimir y enviar a una acción directa desde el dashboard",
+    "url": "/case-study/msk/#es-msk-workflow"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-msk-workflow:1",
+   "lang": "es",
+   "text": "La decisión de UI fue mostrar estado, responsabilidad y acción en el mismo lugar, pero exponer la acción directa solo cuando el registro estaba listo y la persona tenía permiso.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso MSK · De imprimir y enviar a una acción directa desde el dashboard",
+    "url": "/case-study/msk/#es-msk-workflow"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-msk-decisions:0",
+   "lang": "es",
+   "text": "Mapeé el estado actual, encontré puntos de fallo, alineé stakeholders y diseñé cambios que podían sostenerse después del lanzamiento. La adopción importaba tanto como la solución técnica.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso MSK · Mapear, probar, alinear y sostener",
+    "url": "/case-study/msk/#es-msk-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-msk-decisions:1",
+   "lang": "es",
+   "text": "Límite de la evidencia: el registro conserva el flujo, los departamentos, las decisiones y los resultados. No se registraron los conteos de participantes de la observación de turnos, por eso uso la evidencia para explicar decisiones y no para afirmar prevalencia.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso MSK · Mapear, probar, alinear y sostener",
+    "url": "/case-study/msk/#es-msk-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-msk-decisions:2",
+   "lang": "es",
+   "text": "El flujo EMR necesitó capacitación práctica en el lugar de trabajo porque las personas habían usado la solución alternativa anterior durante años.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso MSK · Mapear, probar, alinear y sostener",
+    "url": "/case-study/msk/#es-msk-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-msk-decisions:3",
+   "lang": "es",
+   "text": "El material de certificación de RCP estaba en lenguaje técnico y legal, y tan poca gente lo completaba que el plazo estaba a punto de aplazarse. Lo reescribí para los clínicos que tenían que completarlo: llegaron todas las certificaciones, un 70% antes del plazo.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso MSK · Mapear, probar, alinear y sostener",
+    "url": "/case-study/msk/#es-msk-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-msk-decisions:4",
+   "lang": "es",
+   "text": "El programa de incorporación para personal administrativo nuevo — Epic, HIPAA, los módulos de cumplimiento y las habilidades técnicas y blandas del puesto — se reconstruyó con el equipo de diseño y se curó cohorte por cohorte, para el rango real de habilidades que llegaba.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso MSK · Mapear, probar, alinear y sostener",
+    "url": "/case-study/msk/#es-msk-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-msk-outcomes:0",
+   "lang": "es",
+   "text": "La iniciativa organizacional más amplia reportó una reducción de 20% en costos relacionados con EMR; no atribuyo ese resultado únicamente a la cola de archivo y el registro conservado no incluye el período ni la definición de costos. En mi trabajo directo, todas las certificaciones de RCP se recogieron un 70% antes del plazo y el programa de incorporación del personal administrativo se rediseñó para el rango de habilidades de cada cohorte.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso MSK · Impacto medible en sistemas internos",
+    "url": "/case-study/msk/#es-msk-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-log-start:0",
+   "lang": "es",
+   "text": "Como oficial de logística médica, planifiqué y di seguimiento a la reubicación de un almacén de $2M que abastecía a siete estaciones de ayuda en tres países. Según mi expediente de servicio, el reabastecimiento pasó de 1–2 meses a 1–2 semanas, resumido como un 85% menos de tiempo. Son cifras reportadas por mí; no se conservaron los periodos ni los métodos de medición.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso de logística médica · El reabastecimiento médico tardó un 85% menos",
+    "url": "/case-study/logistics/#es-log-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-log-start:1",
+   "lang": "es",
+   "text": "Esta es una versión condensada. El estudio completo está disponible en inglés.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso de logística médica · El reabastecimiento médico tardó un 85% menos",
+    "url": "/case-study/logistics/#es-log-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-log-brief:0",
+   "lang": "es",
+   "text": "POR QUÉ IMPORTABA EL PROCESO",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso de logística médica · En una zona de combate, una falla de proceso no es una molestia. Es un riesgo de bajas.",
+    "url": "/case-study/logistics/#es-log-brief"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-log-brief:1",
+   "lang": "es",
+   "text": "El trabajo: tener medicinas y equipo listos antes de que se necesiten, no después de que alguien los pida. Lo que estaba en juego: una estación de ayuda sin suministros, que es donde primero se atiende a los soldados heridos.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso de logística médica · En una zona de combate, una falla de proceso no es una molestia. Es un riesgo de bajas.",
+    "url": "/case-study/logistics/#es-log-brief"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-log-brief:2",
+   "lang": "es",
+   "text": "Cada retraso gastaba el único recurso que un herido no puede recuperar: tiempo.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso de logística médica · En una zona de combate, una falla de proceso no es una molestia. Es un riesgo de bajas.",
+    "url": "/case-study/logistics/#es-log-brief"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-log-moves:0",
+   "lang": "es",
+   "text": "La mudanza física eliminó el retraso más grande. Una solicitud compartida y un estado de pedidos visible evitaron que volviera.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso de logística médica · Mover el almacén. Después, arreglar los traspasos.",
+    "url": "/case-study/logistics/#es-log-moves"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-log-moves:1",
+   "lang": "es",
+   "text": "Acercar el punto de suministro: cada reabastecimiento empezaba demasiado lejos de las estaciones de ayuda. Planifiqué y di seguimiento a la mudanza de $2M. Según lo reportado, el tiempo pasó de 1–2 meses a 1–2 semanas (85% menos).",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso de logística médica · Mover el almacén. Después, arreglar los traspasos.",
+    "url": "/case-study/logistics/#es-log-moves"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-log-moves:2",
+   "lang": "es",
+   "text": "Una sola forma de pedir: siete estaciones usaban formatos distintos de solicitud y de reporte. Creé un protocolo de solicitud compartido; el expediente reporta un 15% más de eficiencia al desplegar recursos críticos.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso de logística médica · Mover el almacén. Después, arreglar los traspasos.",
+    "url": "/case-study/logistics/#es-log-moves"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-log-moves:3",
+   "lang": "es",
+   "text": "Pedir antes de que se acabe: nadie veía el estado de los pedidos, así que unos sitios pedían de más y otros se quedaban sin nada. Creé un estado de pedidos compartido en tiempo real; el expediente reporta un 60% menos de gasto sin perder disponibilidad.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso de logística médica · Mover el almacén. Después, arreglar los traspasos.",
+    "url": "/case-study/logistics/#es-log-moves"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-log-constraints:0",
+   "lang": "es",
+   "text": "El nuevo proceso tenía que respetar cada restricción fija.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso de logística médica · Las restricciones no eran negociables.",
+    "url": "/case-study/logistics/#es-log-constraints"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-log-constraints:1",
+   "lang": "es",
+   "text": "Cadena de frío · 48 horas: llegar tarde significaba que ya no servía.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso de logística médica · Las restricciones no eran negociables.",
+    "url": "/case-study/logistics/#es-log-constraints"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-log-constraints:2",
+   "lang": "es",
+   "text": "Tres países: sistemas y vocabulario distintos.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso de logística médica · Las restricciones no eran negociables.",
+    "url": "/case-study/logistics/#es-log-constraints"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-log-constraints:3",
+   "lang": "es",
+   "text": "Zona activa · mudanza de $2M: sin ensayo y sin margen de error.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso de logística médica · Las restricciones no eran negociables.",
+    "url": "/case-study/logistics/#es-log-constraints"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-log-outcomes:0",
+   "lang": "es",
+   "text": "Moví el punto de suministro, estandaricé la solicitud e hice visible el estado de los pedidos.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso de logística médica · Medido en tiempo, dinero y cosas que no pasaron.",
+    "url": "/case-study/logistics/#es-log-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-log-outcomes:1",
+   "lang": "es",
+   "text": "Límite de la evidencia: son cifras de mi expediente de servicio, reportadas por mí; no se conservaron los periodos ni los métodos de medición. Aquí no se describen posiciones, rutas ni ubicaciones de unidades.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso de logística médica · Medido en tiempo, dinero y cosas que no pasaron.",
+    "url": "/case-study/logistics/#es-log-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-log-outcomes:2",
+   "lang": "es",
+   "text": "85%: reducción reportada del tiempo de reabastecimiento médico después de acercar el almacén.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso de logística médica · Medido en tiempo, dinero y cosas que no pasaron.",
+    "url": "/case-study/logistics/#es-log-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-log-outcomes:3",
+   "lang": "es",
+   "text": "60%: reducción reportada del gasto, cuando el estado compartido de pedidos acabó con los pedidos de más y los faltantes.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso de logística médica · Medido en tiempo, dinero y cosas que no pasaron.",
+    "url": "/case-study/logistics/#es-log-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-log-outcomes:4",
+   "lang": "es",
+   "text": "15%: mejora reportada de eficiencia al desplegar recursos críticos con un solo protocolo de comunicación.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso de logística médica · Medido en tiempo, dinero y cosas que no pasaron.",
+    "url": "/case-study/logistics/#es-log-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-grove-start:0",
+   "lang": "es",
+   "text": "Grove es una app de cuidado de plantas. Una herramienta de IA llamada Emergent construyó una primera versión rápida y llena de funciones. Una prueba exploratoria con 5 usuarios señaló sobrecarga; el registro conservado no incluye fechas ni resultados por tarea, así que no hago una afirmación más amplia con esa prueba. Después, una encuesta de 34 personas redujo once funciones a las tres prioridades que guían la Fase 2. La encuesta registra prioridades declaradas, no comportamiento observado ni demanda de mercado.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso Grove · Once funciones se convirtieron en tres",
+    "url": "/case-study/grove/#es-grove-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-grove-start:1",
+   "lang": "es",
+   "text": "Esta es una versión condensada. El estudio completo está disponible en inglés.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso Grove · Once funciones se convirtieron en tres",
+    "url": "/case-study/grove/#es-grove-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-grove-brief:0",
+   "lang": "es",
+   "text": "La mayoría de la gente que compra una planta quiere una sola cosa: mantenerla viva. Pero se olvidan de regarla, o la riegan de más, y de cualquier forma se sienten mal. Les pregunté a 34 dueños de plantas qué haría que una app de plantas se ganara un lugar en su teléfono. La respuesta más común: “Los consejos son demasiado genéricos, no toman en cuenta mi casa.” Lo que más rápido hace que borren una app, dicho por 11 de 34 sin que se lo preguntara: demasiadas notificaciones. Una persona resumió todo el trabajo en seis palabras: “El cuidado de plantas debería sentirse tranquilo, no estresante.”",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso Grove · Los dueños de plantas se olvidan. Y luego se sienten culpables.",
+    "url": "/case-study/grove/#es-grove-brief"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-grove-brief:1",
+   "lang": "es",
+   "text": "El punto débil: en lo que peor están los dueños nuevos es en la luz — dónde poner una planta, y por qué. Ninguna app grande lo enseña. Los dueños nuevos calificaron su confianza sobre la luz en 2.4 de 5 (n=16); los experimentados, en 3.3, y pidió, sin que se lo preguntara, una app que “me diga exactamente dónde colocar una planta.” Ahí, más la confianza, es donde Grove gana o no gana.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso Grove · Los dueños de plantas se olvidan. Y luego se sienten culpables.",
+    "url": "/case-study/grove/#es-grove-brief"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-grove-research:0",
+   "lang": "es",
+   "text": "Después de que una prueba con 5 usuarios mostró que la primera versión estaba sobrecargada, hice una encuesta para decidir qué debía conservar el rediseño. 34 personas, desde principiantes hasta coleccionistas serios, respondieron entre el 22 de mayo y el 8 de julio de 2026.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso Grove · Les pregunté a 34 dueños de plantas qué importa de verdad",
+    "url": "/case-study/grove/#es-grove-research"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-grove-research:1",
+   "lang": "es",
+   "text": "Emergent había construido las funciones sociales dentro de la app. La encuesta dijo que no es por eso que la gente la descarga. Así que hice una pregunta difícil: “Si Grove solo pudiera lanzarse con TRES funciones, ¿cuáles no podrías dejar de tener?” Las tres primeras se construyeron primero. Todo lo demás espera.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso Grove · Les pregunté a 34 dueños de plantas qué importa de verdad",
+    "url": "/case-study/grove/#es-grove-research"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-grove-research:2",
+   "lang": "es",
+   "text": "Límite de la evidencia: la encuesta registra prioridades declaradas. La usé para decidir qué construir y probar después, no para afirmar comportamiento observado ni demanda de mercado.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso Grove · Les pregunté a 34 dueños de plantas qué importa de verdad",
+    "url": "/case-study/grove/#es-grove-research"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-grove-research:3",
+   "lang": "es",
+   "text": "Recordatorios inteligentes: la función más pedida (74%), pero solo con límites claros.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso Grove · Les pregunté a 34 dueños de plantas qué importa de verdad",
+    "url": "/case-study/grove/#es-grove-research"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-grove-research:4",
+   "lang": "es",
+   "text": "Identificar la planta con la cámara (56%) y diagnóstico por foto: esenciales, pero tenían que mostrar cuánta confianza tienen y sus fuentes.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso Grove · Les pregunté a 34 dueños de plantas qué importa de verdad",
+    "url": "/case-study/grove/#es-grove-research"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-grove-research:5",
+   "lang": "es",
+   "text": "Las advertencias para plantas tóxicas para mascotas (dueños nuevos las pidieron solos, sin que se lo preguntara) y la educación sobre la luz pasaron a ser parte del núcleo de confianza, aunque yo ni siquiera las había construido.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso Grove · Les pregunté a 34 dueños de plantas qué importa de verdad",
+    "url": "/case-study/grove/#es-grove-research"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-grove-decisions:0",
+   "lang": "es",
+   "text": "Otras apps meten todas las plantas en una sola lista larga. Abruma — ¿por dónde empiezas? Grove agrupa las plantas por dónde viven: la ventana de la cocina, el estante de la sala, la recámara. Cada pantalla responde una sola pregunta: ¿qué grupo estoy viendo? Un usuario nuevo solo ve una tarea al día.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso Grove · Agrupé las plantas por dónde viven, no en una sola lista larga",
+    "url": "/case-study/grove/#es-grove-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-grove-decisions:1",
+   "lang": "es",
+   "text": "También anoté las cinco decisiones donde le dije que no a la IA: el tono que hace sentir culpa, las recompensas tipo juego, la falsa certeza al identificar una planta, la seguridad para mascotas, y las notificaciones demasiado frecuentes. Cada una respaldada por lo que dijo la encuesta.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso Grove · Agrupé las plantas por dónde viven, no en una sola lista larga",
+    "url": "/case-study/grove/#es-grove-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-grove-decisions:2",
+   "lang": "es",
+   "text": "Hay una sexta, y es la que estoy diseñando ahora. La IA armó un calendario de riego: cada planta con su intervalo fijo. Pero regar de más mata más plantas de interior que olvidarlas, y un intervalo fijo es justo como pasa. El recordatorio va a pedirte que revises, no que riegues: “Ficus lirado — revisa la primera pulgada de tierra.” Mi propia guía de cuidado ya lo decía; el motor de recordatorios no se había puesto al día.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso Grove · Agrupé las plantas por dónde viven, no en una sola lista larga",
+    "url": "/case-study/grove/#es-grove-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-grove-override:0",
+   "lang": "es",
+   "text": "Cuando todo sale bien, cualquier app se ve bien. La prueba real son los momentos difíciles: la pantalla vacía, cuando la IA no está segura, volver después de varios días sin que te haga sentir culpa, la advertencia de una planta tóxica para mascotas, y el límite de notificaciones. Esos detalles deciden si la app se siente útil o estresante.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso Grove · El producto se decide en los momentos difíciles",
+    "url": "/case-study/grove/#es-grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-grove-outcomes:0",
+   "lang": "es",
+   "text": "Lo que quedó no fue solo una app bonita. Fue una definición más honesta de la primera versión, una hipótesis clara para las pruebas con personas reales, y un registro de decisiones que muestra dónde la IA acelera el trabajo y dónde un humano tiene que corregirla. La diferencia no es usar IA. Es saber cuándo confiar en ella y cuándo decir que no.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso Grove · Un prototipo que muestra criterio, no solo pantallas bonitas",
+    "url": "/case-study/grove/#es-grove-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-mobbin-start:0",
+   "lang": "es",
+   "text": "Trabajo freelance para Mobbin documentando experiencias móviles de principio a fin. Capturé, organicé y anoté flujos de tres apps de finanzas para la biblioteca de referencia Finance+. Documenté Kikoff, Polymarket y Discover; no diseñé esos productos ni Mobbin.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso Mobbin · Más de 200 pantallas por app, buscables por tarea",
+    "url": "/case-study/mobbin/#es-mobbin-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-mobbin-start:1",
+   "lang": "es",
+   "text": "Esta es una versión condensada. El estudio completo está disponible en inglés.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso Mobbin · Más de 200 pantallas por app, buscables por tarea",
+    "url": "/case-study/mobbin/#es-mobbin-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-mobbin-brief:0",
+   "lang": "es",
+   "text": "El trabajo no era capturar pantallas al azar. Era caminar productos reales como usuaria, entender secuencias completas, identificar patrones reutilizables y escribir anotaciones útiles para diseñadores que llegarían sin contexto.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso Mobbin · Documentar flujos es criterio editorial",
+    "url": "/case-study/mobbin/#es-mobbin-brief"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-mobbin-work:0",
+   "lang": "es",
+   "text": "Organicé onboarding, rutas de conversión, puntos de entrada a funciones, comportamientos de interacción y estados especiales. Revisé cada flujo para claridad, completitud y precisión.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso Mobbin · Captura, taxonomía y calidad",
+    "url": "/case-study/mobbin/#es-mobbin-work"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-mobbin-outcomes:0",
+   "lang": "es",
+   "text": "Estudiar cómo apps líderes estructuran información, guían usuarios y reducen fricción fortaleció mi criterio de producto. También me enseñó a nombrar patrones según cómo otros diseñadores los buscarían.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso Mobbin · Aprender de productos reales fortaleció mi juicio",
+    "url": "/case-study/mobbin/#es-mobbin-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:about-start:0",
+   "lang": "es",
+   "text": "HILLARY ESPOSITO · DISEÑADORA DE PRODUCTOS DE SALUD · NUEVA YORK",
+   "source": {
+    "type": "page",
+    "label": "Sobre mí · Diseño productos de salud donde cada transferencia importa.",
+    "url": "/about/#about-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:about-start:1",
+   "lang": "es",
+   "text": "Aporto más de 13 años en operaciones de atención oncológica y logística médica militar al diseño de productos de salud. Convierto esa experiencia en flujos clínicos más claros, herramientas internas y servicios integrales que ayudan a las personas a actuar correctamente cuando una falla tiene un costo.",
+   "source": {
+    "type": "page",
+    "label": "Sobre mí · Diseño productos de salud donde cada transferencia importa.",
+    "url": "/about/#about-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:about-pattern:0",
+   "lang": "es",
+   "text": "Busco primero el atajo. La nota adhesiva, la hoja de cálculo personal, el paso que todos se saltan. Ahí vive el proceso real, y nunca está en el documento del proceso.",
+   "source": {
+    "type": "page",
+    "label": "Sobre mí · Entro en sistemas complejos y encuentro dónde se rompe la confianza.",
+    "url": "/about/#about-pattern"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:about-pattern:1",
+   "lang": "es",
+   "text": "Averiguo quién paga cuando falla. Un clínico entre pacientes, un soldado esperando reabastecimiento, alguien cuya planta murió. El costo decide cuánta certeza le debe el diseño.",
+   "source": {
+    "type": "page",
+    "label": "Sobre mí · Entro en sistemas complejos y encuentro dónde se rompe la confianza.",
+    "url": "/about/#about-pattern"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:about-pattern:2",
+   "lang": "es",
+   "text": "Hago que la falla sea compartida antes de mejorarla. Cuatro áreas con cuatro versiones del problema rechazarán la misma solución de cuatro maneras.",
+   "source": {
+    "type": "page",
+    "label": "Sobre mí · Entro en sistemas complejos y encuentro dónde se rompe la confianza.",
+    "url": "/about/#about-pattern"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:about-pattern:3",
+   "lang": "es",
+   "text": "Compruebo si sobrevive sin mí. Si necesita que yo lo explique para funcionar, no está terminado.",
+   "source": {
+    "type": "page",
+    "label": "Sobre mí · Entro en sistemas complejos y encuentro dónde se rompe la confianza.",
+    "url": "/about/#about-pattern"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:about-story:0",
+   "lang": "es",
+   "text": "Diseñar para la persona que tiene que actuar.",
+   "source": {
+    "type": "page",
+    "label": "Sobre mí · Cómo llegué aquí.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:about-story:1",
+   "lang": "es",
+   "text": "Mi contrato más reciente mapeó y etiquetó más de 200 pantallas de tres apps financieras para que miles de diseñadores pudieran reutilizar flujos móviles completos.",
+   "source": {
+    "type": "page",
+    "label": "Sobre mí · Cómo llegué aquí.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:about-story:2",
+   "lang": "es",
+   "text": "Afinó cómo comparo patrones a escala, documento con una taxonomía estricta y evalúo cómo un producto gana credibilidad.",
+   "source": {
+    "type": "page",
+    "label": "Sobre mí · Cómo llegué aquí.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:about-story:3",
+   "lang": "es",
+   "text": "La IA acelera la investigación y los prototipos. El juicio y la autoría siguen siendo míos.",
+   "source": {
+    "type": "page",
+    "label": "Sobre mí · Cómo llegué aquí.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:about-story:4",
+   "lang": "es",
+   "text": "La IA acelera el trabajo. Las decisiones siguen siendo mías.",
+   "source": {
+    "type": "page",
+    "label": "Sobre mí · Cómo llegué aquí.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:about-story:5",
+   "lang": "es",
+   "text": "02 / 03 DONDE CONSTRUÍ MI PRÁCTICA",
+   "source": {
+    "type": "page",
+    "label": "Sobre mí · Cómo llegué aquí.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:about-story:6",
+   "lang": "es",
+   "text": "Seis años en MSK, optimizando operaciones internas y diseñando para 21,000+ clínicos y personal.",
+   "source": {
+    "type": "page",
+    "label": "Sobre mí · Cómo llegué aquí.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:about-story:7",
+   "lang": "es",
+   "text": "Inicié un rediseño de flujo EMR que contribuyó dentro de una reducción organizacional del 20% en costos. TI y UX lo construyeron después de que cambié de rol.",
+   "source": {
+    "type": "page",
+    "label": "Sobre mí · Cómo llegué aquí.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:about-story:8",
+   "lang": "es",
+   "text": "También reconstruí la certificación de RCP y la incorporación administrativa en Epic, HIPAA y cumplimiento. La observación operativa, los comentarios y el análisis de flujos ya eran la práctica, aun antes de tener vocabulario formal de UX.",
+   "source": {
+    "type": "page",
+    "label": "Sobre mí · Cómo llegué aquí.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:about-story:9",
+   "lang": "es",
+   "text": "Los sistemas fallan donde una persona real tiene que usarlos.",
+   "source": {
+    "type": "page",
+    "label": "Sobre mí · Cómo llegué aquí.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:about-story:10",
+   "lang": "es",
+   "text": "03 / 03 DONDE CONSTRUÍ MI BASE",
+   "source": {
+    "type": "page",
+    "label": "Sobre mí · Cómo llegué aquí.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:about-story:11",
+   "lang": "es",
+   "text": "Capitana y Oficial de Logística Médica, NJ Army National Guard.",
+   "source": {
+    "type": "page",
+    "label": "Sobre mí · Cómo llegué aquí.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:about-story:12",
+   "lang": "es",
+   "text": "En Irak, dirigí el suministro médico en estaciones de ayuda de tres países, bajo una estricta restricción de cadena de frío de 48 horas.",
+   "source": {
+    "type": "page",
+    "label": "Sobre mí · Cómo llegué aquí.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:about-story:13",
+   "lang": "es",
+   "text": "El seguimiento compartido redujo notablemente el tiempo de reabastecimiento y el gasto. En 2020, reporté al Pentágono las operaciones médicas de la Guardia Nacional de Nueva Jersey durante la respuesta a COVID-19.",
+   "source": {
+    "type": "page",
+    "label": "Sobre mí · Cómo llegué aquí.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:about-story:14",
+   "lang": "es",
+   "text": "Una falla de proceso en zona de combate no es una molestia. Es un riesgo.",
+   "source": {
+    "type": "page",
+    "label": "Sobre mí · Cómo llegué aquí.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:about-proof:0",
+   "lang": "es",
+   "text": "“Hillary fue puntual, comunicativa y diligente para asegurar que cada pantalla e interacción se capturara con un estándar alto.”",
+   "source": {
+    "type": "page",
+    "label": "Sobre mí · Cómo los clientes describen trabajar conmigo.",
+    "url": "/about/#about-proof"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:about-proof:1",
+   "lang": "es",
+   "text": "Lynette Yap Content and Community @ Mobbin Recomendación de cliente, proyecto freelance de documentación de flujos UX",
+   "source": {
+    "type": "page",
+    "label": "Sobre mí · Cómo los clientes describen trabajar conmigo.",
+    "url": "/about/#about-proof"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:about-life:0",
+   "lang": "es",
+   "text": "Rutinas que me mantienen clara y con los pies en la tierra.",
+   "source": {
+    "type": "page",
+    "label": "Sobre mí · Correr, leer y Luna la gata.",
+    "url": "/about/#about-life"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:about-life:1",
+   "lang": "es",
+   "text": "LEYENDO AHORA Pensar en sistemas, de Donella Meadows — el texto de referencia sobre por qué los sistemas se resisten a los arreglos evidentes.",
+   "source": {
+    "type": "page",
+    "label": "Sobre mí · Correr, leer y Luna la gata.",
+    "url": "/about/#about-life"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:about-contact:0",
+   "lang": "es",
+   "text": "Abierta a roles de UX y diseño de producto en salud, organizaciones con misión y entornos operativamente complejos. También abierta a freelance y colaboraciones.",
+   "source": {
+    "type": "page",
+    "label": "Sobre mí · ¿Le interesa trabajar conmigo?",
+    "url": "/about/#about-contact"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:resume-summary:0",
+   "lang": "es",
+   "text": "Diseñadora de productos de salud con más de 13 años en sistemas militares y de salud de alto riesgo. Combina la observación en primera línea, el análisis de flujos de trabajo, las aportaciones de las partes interesadas y las restricciones técnicas para diseñar herramientas internas más claras y flujos de producto que se pueden probar.",
+   "source": {
+    "type": "resume",
+    "label": "Currículum (traducción aprobada) · Resumen profesional",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:resume-summary:1",
+   "lang": "es",
+   "text": "En Memorial Sloan Kettering, un rediseño de flujo de trabajo que inicié contribuyó después, dentro de una iniciativa más amplia, a una reducción del 20% en los costos del expediente médico electrónico en toda la organización.",
+   "source": {
+    "type": "resume",
+    "label": "Currículum (traducción aprobada) · Resumen profesional",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:resume-summary:2",
+   "lang": "es",
+   "text": "Maestría en Administración de Servicios de Salud (MHA), Green Belt de Lean Six Sigma, veterana del Ejército de EE. UU. y comunicadora bilingüe en inglés y español.",
+   "source": {
+    "type": "resume",
+    "label": "Currículum (traducción aprobada) · Resumen profesional",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:resume-skills:0",
+   "lang": "es",
+   "text": "Producto e interacción: arquitectura de información, flujos de usuario, wireframes, prototipos funcionales, estados de interacción, accesibilidad, diseño responsivo, sistemas de diseño, control de calidad del diseño.",
+   "source": {
+    "type": "resume",
+    "label": "Currículum (traducción aprobada) · Habilidades principales",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:resume-skills:1",
+   "lang": "es",
+   "text": "Investigación y diseño de servicios: observación de flujos de trabajo, entrevistas con partes interesadas, síntesis de encuestas, pruebas de usabilidad, mapas de recorrido, blueprints de servicio, análisis de tareas, priorización del alcance.",
+   "source": {
+    "type": "resume",
+    "label": "Currículum (traducción aprobada) · Habilidades principales",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:resume-skills:2",
+   "lang": "es",
+   "text": "Herramientas y dominio: Figma, FigJam, Miro, Notion, React, HTML/CSS, prototipado asistido por IA, operaciones de salud, flujos de expedientes médicos electrónicos, Lean Six Sigma.",
+   "source": {
+    "type": "resume",
+    "label": "Currículum (traducción aprobada) · Habilidades principales",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:resume-grove:0",
+   "lang": "es",
+   "text": "Reduje 11 funciones propuestas a 3 tras sintetizar una encuesta autodeclarada de 34 personas, y luego traduje las prioridades en arquitectura de información, estados de interacción y un prototipo funcional en React.",
+   "source": {
+    "type": "resume",
+    "label": "Currículum (traducción aprobada) · Fundadora, diseñadora de producto y desarrolladora · Grove",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:resume-grove:1",
+   "lang": "es",
+   "text": "Me encargo de la planificación de la investigación, el alcance del producto, el diseño de interacción responsivo, la accesibilidad, la implementación del prototipo y la iteración. El prototipo no se presenta como un producto de consumo lanzado.",
+   "source": {
+    "type": "resume",
+    "label": "Currículum (traducción aprobada) · Fundadora, diseñadora de producto y desarrolladora · Grove",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:resume-mobbin:0",
+   "lang": "es",
+   "text": "Documenté más de 200 pantallas móviles por app en Kikoff, Polymarket y Discover, mapeando la navegación, los patrones de interacción, la jerarquía visual y el microcopy para una biblioteca reutilizable de referencias de UX.",
+   "source": {
+    "type": "resume",
+    "label": "Currículum (traducción aprobada) · Diseñadora de contenido, por contrato · Mobbin",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:resume-mobbin:1",
+   "lang": "es",
+   "text": "Apliqué una taxonomía coherente para que los equipos de producto y diseño pudieran comparar flujos completos de apps financieras. El encargo abarcó la documentación, no la propiedad de los productos.",
+   "source": {
+    "type": "resume",
+    "label": "Currículum (traducción aprobada) · Diseñadora de contenido, por contrato · Mobbin",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:resume-msk-trainer:0",
+   "lang": "es",
+   "text": "Reconstruí la incorporación administrativa en Epic, HIPAA, cumplimiento normativo y flujos de trabajo específicos de cada puesto para una organización de más de 21,000 personas.",
+   "source": {
+    "type": "resume",
+    "label": "Currículum (traducción aprobada) · Capacitadora / Especialista · Memorial Sloan Kettering",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:resume-msk-trainer:1",
+   "lang": "es",
+   "text": "Colaboré con equipos clínicos, de TI, de imagenología y de operaciones para aclarar responsabilidades, excepciones y traspasos en procesos internos complejos.",
+   "source": {
+    "type": "resume",
+    "label": "Currículum (traducción aprobada) · Capacitadora / Especialista · Memorial Sloan Kettering",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:resume-msk-admin:0",
+   "lang": "es",
+   "text": "Mapeé un flujo de trabajo de papel a expediente médico electrónico en cuatro departamentos y presenté el rediseño. MSK lo implementó dos puestos después, dentro de una iniciativa más amplia que redujo un 20% los costos del expediente médico electrónico en toda la organización.",
+   "source": {
+    "type": "resume",
+    "label": "Currículum (traducción aprobada) · Asistente administrativa / Coordinadora de oficina · Memorial Sloan Kettering",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:resume-msk-admin:1",
+   "lang": "es",
+   "text": "Reescribí material técnico y legal de certificación en RCP en torno a las preguntas y traspasos de los clínicos, lo que permitió reunir todas las certificaciones con un 70% de antelación respecto a una fecha límite en riesgo.",
+   "source": {
+    "type": "resume",
+    "label": "Currículum (traducción aprobada) · Asistente administrativa / Coordinadora de oficina · Memorial Sloan Kettering",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:resume-army:0",
+   "lang": "es",
+   "text": "Reduje un 85% el tiempo de reabastecimiento médico y un 60% el gasto, y mejoré un 15% la coordinación de despliegue en siete estaciones de ayuda en tres países mediante flujos compartidos de seguimiento y reporte.",
+   "source": {
+    "type": "resume",
+    "label": "Currículum (traducción aprobada) · Oficial comisionada · Guardia Nacional del Ejército de Nueva Jersey",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:resume-army:1",
+   "lang": "es",
+   "text": "Dirigí la logística médica para más de 5,000 soldados y $2M en suministros en Irak, mientras asumía un puesto vacante de Oficial de Operaciones Médicas y reportaba las operaciones médicas al Pentágono.",
+   "source": {
+    "type": "resume",
+    "label": "Currículum (traducción aprobada) · Oficial comisionada · Guardia Nacional del Ejército de Nueva Jersey",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:resume-education:0",
+   "lang": "es",
+   "text": "Educación: Maestría en Administración de Servicios de Salud, con honores, Rutgers University; Licenciatura en Ciencias, Salud Pública, Rutgers University; Grado asociado en Ciencias, Valley Forge Military College.",
+   "source": {
+    "type": "resume",
+    "label": "Currículum (traducción aprobada) · Educación y credenciales",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:resume-education:1",
+   "lang": "es",
+   "text": "Credenciales: Certificado de Diseño UX de Google; Green Belt de Lean Six Sigma, Purdue; bootcamps de UX, análisis de datos e ingeniería de software, Noble Desktop.",
+   "source": {
+    "type": "resume",
+    "label": "Currículum (traducción aprobada) · Educación y credenciales",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:resume-contact:0",
+   "lang": "es",
+   "text": "Nueva York · espositohillary@gmail.com · hillaryesposito.org · linkedin.com/in/hillaryesposito",
+   "source": {
+    "type": "resume",
+    "label": "Currículum (traducción aprobada) · Contacto",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  }
+ ]
+}
