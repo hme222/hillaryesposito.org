@@ -422,3 +422,15 @@ Instead: MSK paints `#a64031` / `#ff7d67`; Mobbin paints `#ad3e2e` / `#ff7865`. 
 Reason: Per the file header, "project themes change semantic tokens, artifacts, and pacing without cloning the botanical identity." The coral moves with the rest of that project's palette, so the CTA and next-case band change red as you cross from one project to the next.
 
 Validation: On MSK and Mobbin every coral element (CTA, eyebrow dot, progress fill, next-case band) resolves to that page's value, never a mix with the Riso coral; the next-case band changes colour at the project boundary. Retire this entry if the tints are ever folded back into one coral.
+
+# Opening film autoplay restored, once per tab — 2026-10-09
+
+Supersedes "Opening film decision reversal" (2026-08-24) for autoplay only.
+
+Default (2026-08-24): Expose the hiring path immediately; the film plays only from the "Watch the 5-second portfolio opener" button.
+
+Instead: Play the film once per browser tab on a plain homepage visit. Never under prefers-reduced-motion, never over a deep link to a homepage section (hash or ?scrollTo=), never on a refresh or return in the same tab (sessionStorage `portfolio:opening-film-seen`). The button still replays it.
+
+Reason: Owner direction (Hillary, 2026-10-09) after asking why the opener no longer starts on refresh: she chose to trade a few seconds of the first visit for the authored visual moment. The exceptions keep the 2026-08-24 rule's intent where it matters most — reduced-motion users, recruiters sent to a specific section, and repeat views.
+
+Validation (2026-10-09, production build in Chrome): first visit plays; refresh in the same tab does not; a new tab does; reduced motion does not; `/#contact` does not; Skip closes it, returns focus to the Watch button and leaves nothing inert; the button replays it.
