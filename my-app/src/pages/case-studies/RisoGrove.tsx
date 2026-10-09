@@ -450,6 +450,19 @@ export default function RisoGrove() {
           <p className="rp-phase">Prototype proof <span>· interactive</span></p>
           <h2 className="rp-title" style={{ marginTop: ".4rem" }}>Try the working prototype.</h2>
           <p className="rp-lede">Three keyboard-operable interactions first; tokens and implementation detail follow.</p>
+          {/* The app's own components, documented in Storybook from the Grove
+              repo (deployed separately at grove-ui.hillaryesposito.org). */}
+          <p>
+            <a
+              className="rp-cta rp-cta--ghost"
+              href="https://grove-ui.hillaryesposito.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Review the Grove component system in Storybook (opens in new tab)"
+            >
+              <span className="rp-ext">Review the component system</span>
+            </a>
+          </p>
           <div data-evidence="true"><GroveSystemLab /></div>
           <h3 className="rp-subhead">Type scale</h3>
           <div className="rp-typescale" data-evidence="true">
