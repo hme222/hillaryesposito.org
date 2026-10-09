@@ -13,10 +13,6 @@
  * Writing <route>/index.html turns each into a real 200 with its own metadata,
  * and the SPA takes over from there exactly as before.
  *
- * Public routes and approved direct-link recruiter routes get shells. Curated
- * routes remain noindex/nofollow and stay out of the sitemap; the shell removes
- * recruiter-link 404 friction without turning them into search landing pages.
- *
  * ROUTE_META below must stay in step with my-app/src/hooks/usePageTitle.ts.
  */
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -39,7 +35,7 @@ const PUBLIC_ROUTES = [
   },
   {
     path: "case-study/grove",
-    title: "Grove — Risograph Cartography | Hillary Esposito",
+    title: "Grove — Research-to-Scope Case Study | Hillary Esposito",
     description:
       "How Hillary redesigned Grove, a functional plant-care prototype, through discovery research, calmer interaction design, and explicit AI judgment.",
     image: "/assets/grove/grove1.png",
@@ -67,21 +63,7 @@ const PUBLIC_ROUTES = [
   },
 ];
 
-// Direct-link recruiter routes need real 200 shells for hiring teams and link
-// checkers, but remain out of search. They are intentionally excluded from the
-// sitemap and receive an explicit noindex/nofollow directive in their shell.
-const DIRECT_LINK_ROUTES = [
-  {
-    path: "curated/healthcare-product-service-designer",
-    title: "Healthcare product design: Mid-level Product Designer · Healthcare enterprise and internal tools | Hillary Esposito",
-    description:
-      "Healthcare product and service design evidence across clinical workflows, care services, internal tools, and medical logistics.",
-    image: "/assets/msk/mskcc-map-thumb.jpg",
-    robots: "noindex, nofollow",
-  },
-];
-
-const ROUTES = [...PUBLIC_ROUTES, ...DIRECT_LINK_ROUTES];
+const ROUTES = PUBLIC_ROUTES;
 
 const shell = readFileSync(join(DOCS, "index.html"), "utf8");
 
