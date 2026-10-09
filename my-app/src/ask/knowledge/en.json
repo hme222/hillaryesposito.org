@@ -1,6 +1,6 @@
 {
  "version": 1,
- "note": "Batch 1 — approved by Hillary 2026-10-09: published pages (verbatim) + résumé (verbatim, phone excluded).",
+ "note": "Batches 1–3 approved by Hillary 2026-10-09. quote:true entries are her verbatim words — show with attribution, never paraphrase.",
  "entries": [
   {
    "id": "en:msk-start:0",
@@ -2993,6 +2993,440 @@
     "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
    },
    "batch": 1
+  },
+  {
+   "id": "en:notes-msk:0",
+   "lang": "en",
+   "text": "She noticed staff printing physician and patient messages that already existed in the system, then waiting for them to be filed back in.",
+   "source": {
+    "type": "interview-notes",
+    "label": "MSK · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/msk/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-msk:1",
+   "lang": "en",
+   "text": "She checked the change with each affected department, then pitched it at MSK's yearly Process Improvement Fair. IT and UX built the \"send to EMR\" button later, after her role changed.",
+   "source": {
+    "type": "interview-notes",
+    "label": "MSK · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/msk/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-msk:2",
+   "lang": "en",
+   "text": "IT first treated it as low priority, an easy fix that was still real work on their plate, and she kept raising it until it was scheduled.",
+   "source": {
+    "type": "interview-notes",
+    "label": "MSK · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/msk/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-msk:3",
+   "lang": "en",
+   "text": "Her pitch included projected printing savings, estimated from financial data at the time. It's a projection, not a measured result.",
+   "source": {
+    "type": "interview-notes",
+    "label": "MSK · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/msk/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-msk:4",
+   "lang": "en",
+   "text": "On CPR certifications, the team's default fix was to extend the deadline by four months. Instead she worked with physicians to rewrite the language so it was clearer and matched legal requirements, and the developer and UX teams implemented it.",
+   "source": {
+    "type": "interview-notes",
+    "label": "MSK · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/msk/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-msk:5",
+   "lang": "en",
+   "text": "Every certification came in before the original deadline, with no extension needed.",
+   "source": {
+    "type": "interview-notes",
+    "label": "MSK · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/msk/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-msk:6",
+   "lang": "en",
+   "text": "As a Trainer/Facilitator, she gathered how lessons were landing with each class and brought that to the design team, who adjusted them, for example treating managers and senior leaders differently.",
+   "source": {
+    "type": "interview-notes",
+    "label": "MSK · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/msk/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-msk:7",
+   "lang": "en",
+   "text": "She added a 5-minute trivia warm-up before each session to put the room in a learning mindset. Evaluation scores rose overall; no specific percentage was recorded.",
+   "source": {
+    "type": "interview-notes",
+    "label": "MSK · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/msk/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-msk:8",
+   "lang": "en",
+   "text": "AI was not part of her MSK work (2018–2024).",
+   "source": {
+    "type": "interview-notes",
+    "label": "MSK · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/msk/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-logistics:0",
+   "lang": "en",
+   "text": "When she arrived, resupply took 1–2 months to reach sites. She built the case to move the warehouse closer, so the most vulnerable sites could be resupplied in 1–2 weeks.",
+   "source": {
+    "type": "interview-notes",
+    "label": "Medical logistics · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/logistics/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-logistics:1",
+   "lang": "en",
+   "text": "She planned the move in phases, from most to least essential, splitting personnel so every site kept getting resupplied during it. The move finished a month ahead of schedule.",
+   "source": {
+    "type": "interview-notes",
+    "label": "Medical logistics · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/logistics/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-logistics:2",
+   "lang": "en",
+   "text": "She did physical labor during the move alongside her team.",
+   "source": {
+    "type": "interview-notes",
+    "label": "Medical logistics · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/logistics/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-logistics:3",
+   "lang": "en",
+   "text": "When sites asked to track their own orders, she personally built a SharePoint system showing every site what it had ordered and its status, plus slideshow training on how to order and what each status meant.",
+   "source": {
+    "type": "interview-notes",
+    "label": "Medical logistics · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/logistics/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-logistics:4",
+   "lang": "en",
+   "text": "The 85% figure belongs to the warehouse relocation. The 60% cost reduction belongs to the order-visibility system, which stopped sites over-ordering or running out.",
+   "source": {
+    "type": "interview-notes",
+    "label": "Medical logistics · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/logistics/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-logistics:5",
+   "lang": "en",
+   "text": "Some supplies, such as vaccines, had to arrive within 48 hours at a set temperature. She tracked those missions, filed the critical paperwork, and once ran a mission herself to give a burnt-out team a break.",
+   "source": {
+    "type": "interview-notes",
+    "label": "Medical logistics · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/logistics/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-logistics:6",
+   "lang": "en",
+   "text": "For the time-critical deliveries, every deadline was met.",
+   "source": {
+    "type": "interview-notes",
+    "label": "Medical logistics · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/logistics/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-logistics:7",
+   "lang": "en",
+   "text": "No AI was involved in the logistics work.",
+   "source": {
+    "type": "interview-notes",
+    "label": "Medical logistics · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/logistics/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-grove:0",
+   "lang": "en",
+   "text": "Grove's first build was made with an AI tool, Emergent. Exploratory testing showed information-architecture problems and too many features, because the AI added features without planning the structure.",
+   "source": {
+    "type": "interview-notes",
+    "label": "Grove · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/grove/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-grove:1",
+   "lang": "en",
+   "text": "She designed and interpreted the 34-person survey herself, with no AI involved in that part.",
+   "source": {
+    "type": "interview-notes",
+    "label": "Grove · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/grove/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-grove:2",
+   "lang": "en",
+   "text": "She followed the survey data over her own enthusiasm as a plant lover, prioritising what a new user needs first.",
+   "source": {
+    "type": "interview-notes",
+    "label": "Grove · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/grove/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-grove:3",
+   "lang": "en",
+   "text": "If she started over, she'd scope AI to one specific UI pathway at a time, which is how the current redesign works.",
+   "source": {
+    "type": "interview-notes",
+    "label": "Grove · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/grove/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-grove:4",
+   "lang": "en",
+   "text": "Status: the survey is done and 11 features are narrowed to 3. The redesign is in progress one pathway at a time, and the usability retest hasn't run yet.",
+   "source": {
+    "type": "interview-notes",
+    "label": "Grove · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/grove/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:build:0",
+   "lang": "en",
+   "text": "The site is built with React 18 and TypeScript, on Create React App, with React Router for navigation.",
+   "source": {
+    "type": "repo",
+    "label": "How this site is built · source code",
+    "url": "https://github.com/hme222/hillaryesposito.org"
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:build:1",
+   "lang": "en",
+   "text": "It's hosted on Vercel. Every push builds a preview, and merging to main deploys the live site.",
+   "source": {
+    "type": "repo",
+    "label": "How this site is built · source code",
+    "url": "https://github.com/hme222/hillaryesposito.org"
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:build:2",
+   "lang": "en",
+   "text": "Each page gets its own pre-built HTML file at build time, so link previews and search engines see the right title and description for every case study.",
+   "source": {
+    "type": "repo",
+    "label": "How this site is built · source code",
+    "url": "https://github.com/hme222/hillaryesposito.org"
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:build:3",
+   "lang": "en",
+   "text": "A build check confirms every page loads the same code bundle, so no page ships stale code.",
+   "source": {
+    "type": "repo",
+    "label": "How this site is built · source code",
+    "url": "https://github.com/hme222/hillaryesposito.org"
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:build:4",
+   "lang": "en",
+   "text": "The visual system runs on design tokens (tokens/tokens.json) and CSS custom properties: paper, ink, coral and green, set in Archivo and Space Mono.",
+   "source": {
+    "type": "repo",
+    "label": "How this site is built · source code",
+    "url": "https://github.com/hme222/hillaryesposito.org"
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:build:5",
+   "lang": "en",
+   "text": "A component registry documents every component's status and purpose. An automated check fails if it falls out of date.",
+   "source": {
+    "type": "repo",
+    "label": "How this site is built · source code",
+    "url": "https://github.com/hme222/hillaryesposito.org"
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:build:6",
+   "lang": "en",
+   "text": "The site has 82 automated tests across 9 files, including accessibility checks on the case studies.",
+   "source": {
+    "type": "repo",
+    "label": "How this site is built · source code",
+    "url": "https://github.com/hme222/hillaryesposito.org"
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:build:7",
+   "lang": "en",
+   "text": "For accessibility: a skip link, keyboard-operable dialogs that keep focus inside while open, support for reduced motion, and touch targets of at least 44px.",
+   "source": {
+    "type": "repo",
+    "label": "How this site is built · source code",
+    "url": "https://github.com/hme222/hillaryesposito.org"
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:build:8",
+   "lang": "en",
+   "text": "The site is fully bilingual. Spanish visitors get condensed Spanish case studies, plus a link to the full English version.",
+   "source": {
+    "type": "repo",
+    "label": "How this site is built · source code",
+    "url": "https://github.com/hme222/hillaryesposito.org"
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:build:9",
+   "lang": "en",
+   "text": "The MSK system map uses Three.js. Motion uses Framer Motion and CSS.",
+   "source": {
+    "type": "repo",
+    "label": "How this site is built · source code",
+    "url": "https://github.com/hme222/hillaryesposito.org"
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:build:10",
+   "lang": "en",
+   "text": "Analytics record only four events: résumé opens, contact clicks, LinkedIn clicks and case-study opens.",
+   "source": {
+    "type": "repo",
+    "label": "How this site is built · source code",
+    "url": "https://github.com/hme222/hillaryesposito.org"
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:build:storybook",
+   "lang": "en",
+   "text": "Grove's component library is documented in Storybook (version 8, also on Vercel) at grove-ui.hillaryesposito.org, with 18 stories built from the app's real data.",
+   "source": {
+    "type": "page",
+    "label": "Grove UI · Storybook",
+    "url": "https://grove-ui.hillaryesposito.org/"
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:quote-portfolio:0",
+   "lang": "en",
+   "text": "I wanted my portfolio to showcase my design thinking, creating thoughtful moments in small details.",
+   "quote": true,
+   "source": {
+    "type": "interview-quote",
+    "label": "In Hillary's words · Interview, Oct 2026",
+    "url": null
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:quote-portfolio:1",
+   "lang": "en",
+   "text": "I wanted to show my journey through a map, while having the warm feel undertones and collage-like style.",
+   "quote": true,
+   "source": {
+    "type": "interview-quote",
+    "label": "In Hillary's words · Interview, Oct 2026",
+    "url": null
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:quote-portfolio:2",
+   "lang": "en",
+   "text": "I kept a traditional style instead of a flashy header, I wanted my case study work to speak more than the opener.",
+   "quote": true,
+   "source": {
+    "type": "interview-quote",
+    "label": "In Hillary's words · Interview, Oct 2026",
+    "url": null
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:quote-portfolio:3",
+   "lang": "en",
+   "text": "I initially started everything from scratch, but as I played around with different tools I decided to have Claude help me build out the rest of it, along with Codex and Higgsfield. I use React, TypeScript and Vercel. I've recently integrated Storybook to show more of my design work as well.",
+   "quote": true,
+   "source": {
+    "type": "interview-quote",
+    "label": "In Hillary's words · Interview, Oct 2026",
+    "url": null
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:quote-portfolio:4",
+   "lang": "en",
+   "text": "I think I would create a storyboard specifically for my site, really spending more time on some details fine-tuned. I also would love to have more of a playground vs. traditional site.",
+   "quote": true,
+   "source": {
+    "type": "interview-quote",
+    "label": "In Hillary's words · Interview, Oct 2026",
+    "url": null
+   },
+   "batch": 3
   }
  ]
 }
