@@ -19,8 +19,6 @@ const routes = [
   ["msk", "/case-study/msk"],
   ["logistics", "/case-study/logistics"],
   ["grove", "/case-study/grove"],
-  ["healthcare-product", "/curated/healthcare-product-service-designer"],
-  ["healthcare-uxr", "/curated/healthcare-ux-researcher"],
 ];
 const routeFilter = process.env.VISUAL_EVIDENCE_ROUTES
   ? new Set(process.env.VISUAL_EVIDENCE_ROUTES.split(",").map((value) => value.trim()))
@@ -64,7 +62,7 @@ async function inspect(page, routeName) {
     };
     const words = (text) => (text.match(/[\p{L}\p{N}][\p{L}\p{N}'’+%–—-]*/gu) || []).length;
     const main = document.querySelector("main");
-    const contact = document.querySelector("#contact, #curated-close");
+    const contact = document.querySelector("#contact");
     const bodyText = main?.innerText || "";
     const bodyCopy = main
       ? [...main.querySelectorAll("p, li, dd, figcaption, blockquote")]

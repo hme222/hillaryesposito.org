@@ -461,6 +461,57 @@ describe("flagship case-study accessibility", () => {
     expect(dialog?.open).toBe(false);
   });
 
+  it("wraps Tab and Shift+Tab inside the open recruiter panel", async () => {
+    await act(async () => {
+      root.render(<RecruiterPill />);
+    });
+    const trigger = container.querySelector<HTMLButtonElement>(".recruiter-pill");
+    await act(async () => trigger?.click());
+
+    const dialog = container.querySelector<HTMLDialogElement>(".recruiter-panel");
+    expect(dialog?.open).toBe(true);
+    const tabbables = Array.from(
+      dialog?.querySelectorAll<HTMLElement>("a[href], button:not([disabled])") || [],
+    );
+    const first = tabbables[0];
+    const last = tabbables[tabbables.length - 1];
+    expect(first?.getAttribute("aria-label")).toBe("Close recruiter view");
+    expect(last?.textContent).toBe("espositohillary@gmail.com");
+
+    const press = (target: Element, shiftKey: boolean) => {
+      const event = new KeyboardEvent("keydown", { key: "Tab", shiftKey, bubbles: true, cancelable: true });
+      target.dispatchEvent(event);
+      return event.defaultPrevented;
+    };
+
+    // Tab from the last control wraps to the first.
+    last.focus();
+    expect(document.activeElement).toBe(last);
+    expect(press(last, false)).toBe(true);
+    expect(document.activeElement).toBe(first);
+
+    // Shift+Tab from the first control wraps to the last.
+    expect(press(first, true)).toBe(true);
+    expect(document.activeElement).toBe(last);
+
+    // Mid-panel Tab is left to the browser.
+    tabbables[1].focus();
+    expect(press(tabbables[1], false)).toBe(false);
+    expect(document.activeElement).toBe(tabbables[1]);
+
+    // Focus that has fallen to <body> is pulled back in.
+    (document.activeElement as HTMLElement).blur();
+    expect(document.activeElement).toBe(document.body);
+    expect(press(document.body, false)).toBe(true);
+    expect(document.activeElement).toBe(first);
+
+    // Nothing is intercepted once the panel is closed.
+    await act(async () => first.click());
+    expect(dialog?.open).toBe(false);
+    last.focus();
+    expect(press(last, false)).toBe(false);
+  });
+
   it.each([
     ["MSK", <FlagshipMSK />, "A filing queue replaced a four-department paper\u00a0detour.", "Evidence boundary"],
     ["Grove", <RisoGrove />, "Eleven features became three.", "What this evidence can say"],

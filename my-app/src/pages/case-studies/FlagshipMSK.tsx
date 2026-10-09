@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
 import ReadingProgress from "../../components/flagship/ReadingProgress";
+import ShareCaseStudy from "../../components/flagship/ShareCaseStudy";
 import DecisionStory from "../../components/flagship/DecisionStory";
 import EvidenceField from "../../components/flagship/EvidenceField";
 import MSKFilingReceipt from "../../components/flagship/MSKFilingReceipt";
@@ -417,6 +418,7 @@ export default function FlagshipMSK() {
           <h2>Designing a system people cannot afford to distrust?</h2>
           <p>I know how to find the workaround, make it visible, and turn it into a product decision a complicated organization can actually ship.</p>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Send me a note →</a>
+          <ShareCaseStudy title="MSK — a case study by Hillary Esposito" />
         </div>
       </section>
 

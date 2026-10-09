@@ -1,5 +1,15 @@
 # Voice Specification
 
+## Grove browser-prototype proof — 2026-08-31
+
+Prototype actions name the object and behavior, not a vague invitation.
+
+Button BAD: View interactive experience
+Button GOOD: Try the working browser prototype
+
+Proof BAD: Full-stack AI product built end to end
+Proof GOOD: Working browser prototype · React + TypeScript · Phase 2 of 3
+
 ## Register
 Sentence length: 3 to 24 words
 Contractions: yes

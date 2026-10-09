@@ -1,8 +1,9 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
 import ReadingProgress from "../../components/flagship/ReadingProgress";
+import ShareCaseStudy from "../../components/flagship/ShareCaseStudy";
 import GroveScreenGallery from "../../components/riso/GroveScreenGallery";
 import GroveSystemLab from "../../components/riso/GroveSystemLab";
 import RisoDefs from "../../components/riso/RisoDefs";
@@ -109,61 +110,6 @@ const OVERRIDES: Array<{ topic: string; ai: string; me: string; why: string; nex
   { topic: "Notification frequency", ai: "Nudge whenever engagement dips.", me: "One summary per group; only true emergencies interrupt.", why: "A reminder can never become the reason someone leaves." },
   { topic: "Watering schedule", next: true, ai: "A fixed calendar, with every plant on its own repeating interval and days overdue.", me: "The reminder asks you to check, not to water: “Fiddle Leaf: check the top inch.” Two taps: watered, or not yet.", why: "Overwatering kills more houseplants than neglect, and a fixed interval is exactly how it happens. My own care guide already says “water when the top inch is dry.” The reminder engine never caught up to it. Asking you to check makes the reminder correct, makes seasonality free, and turns “smart care reminders” from a label into a mechanism. This is the one I got wrong in the same direction as the first build: I corrected its tone five times and never once its logic." },
 ];
-
-// Share, then confirm only what actually happened — shared, copied, or a way to
-// recover. Cancelling the share sheet says nothing celebratory.
-type ShareOutcome = "shared" | "copied" | "error" | null;
-// Icon and text are separate so the emoji can be hidden from screen readers —
-// this string is announced through an aria-live region.
-const SHARE_MESSAGE: Record<Exclude<ShareOutcome, null>, { icon?: string; text: string }> = {
-  shared: { icon: "🌱", text: "thanks for sharing." },
-  copied: { icon: "🌱", text: "link copied." },
-  error: { text: "Couldn’t copy the link — you can copy it from the address bar." },
-};
-function ThanksShare() {
-  const [outcome, setOutcome] = useState<ShareOutcome>(null);
-  const share = async () => {
-    const url = window.location.href;
-    const copyLink = async () => {
-      if (!navigator.clipboard?.writeText) return false;
-      try {
-        await navigator.clipboard.writeText(url);
-        return true;
-      } catch {
-        return false;
-      }
-    };
-
-    let next: ShareOutcome;
-    try {
-      if (navigator.share) {
-        await navigator.share({ title: "Grove — a case study by Hillary Esposito", url });
-        next = "shared";
-      } else {
-        next = (await copyLink()) ? "copied" : "error";
-      }
-    } catch (err) {
-      // Dismissing the share sheet is not a failure — say nothing at all.
-      if ((err as Error)?.name === "AbortError") { setOutcome(null); return; }
-      // The sheet exists but refused to open, which is the common desktop case.
-      // Fall back to the clipboard rather than telling the reader to do it by hand.
-      next = (await copyLink()) ? "copied" : "error";
-    }
-    setOutcome(next);
-    window.setTimeout(() => setOutcome(null), 3200);
-  };
-  return (
-    <div className="rp-shareRow">
-      <button type="button" className="rp-share" onClick={share}>Share this case study →</button>
-      <span className={`rp-woohoo${outcome ? " show" : ""}`} aria-live="polite">
-        {outcome && SHARE_MESSAGE[outcome].icon && (
-          <span aria-hidden="true">{SHARE_MESSAGE[outcome].icon}</span>
-        )}
-        {outcome ? SHARE_MESSAGE[outcome].text : ""}
-      </span>
-    </div>
-  );
-}
 
 export default function RisoGrove() {
   const { lang } = useLanguage();
@@ -579,7 +525,7 @@ export default function RisoGrove() {
           {/* Same action and wording as MSK and Mobbin — the three studies form
               a loop, so the closing move should not change between them. */}
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Send me a note →</a>
-          <ThanksShare />
+          <ShareCaseStudy title="Grove — a case study by Hillary Esposito" icon="🌱" />
         </div>
       </section>
 

@@ -59,7 +59,9 @@ const en = {
   "home.getInTouch": "Get in touch",
   "home.seeApproach": "See my approach →",
   "home.riso.eyebrow": "Healthcare Product Designer · 13+ years in healthcare",
-  "home.riso.heroTitle": "I design healthcare products from the workflow out.",
+  // The non-breaking space keeps "out." from ever stranding on its own line;
+  // the words are unchanged.
+  "home.riso.heroTitle": "I design healthcare products from the workflow out.",
   // "Workflow fluency" named a skill without saying what it covers. The
   // durable claim is scope: the whole path a task takes, not the screen at the
   // end of it — which is what the MSK case study actually demonstrates.
@@ -224,7 +226,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.getInTouch": "Contácteme",
   "home.seeApproach": "Conozca mi enfoque →",
   "home.riso.eyebrow": "Diseñadora de productos de salud · más de 13 años en salud",
-  "home.riso.heroTitle": "Diseño productos de salud desde el flujo de trabajo.",
+  "home.riso.heroTitle": "Diseño productos de salud desde el flujo de trabajo.",
   "home.riso.heroLead":
     "En Memorial Sloan Kettering, rastreé un desvío en papel entre departamentos y propuse un flujo de archivo digital.",
   "home.riso.heroProof": "Los equipos de TI y UX lo implementaron después de que cambié de puesto.",

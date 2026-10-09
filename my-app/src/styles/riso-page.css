@@ -1214,7 +1214,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 }
 .rp-deepDive > summary::-webkit-details-marker { display: none; }
 .rp-deepDive > summary span { font: 700 .7rem/1.35 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: #a52f22; }
-.dark-mode .rp-deepDive > summary span { color: #ff8171; }
+.dark-mode .rp-deepDive > summary span { color: var(--coral-on-dark); }
 .rp-deepDive > summary b { font-size: 1rem; line-height: 1.35; text-align: right; }
 .rp-deepDive > summary::after { content: "+"; flex: 0 0 auto; font: 700 1.4rem/1 var(--mono); color: var(--coral); }
 .rp-deepDive[open] > summary { border-bottom: 1px solid var(--hair); }
@@ -2673,11 +2673,10 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 /* ---------- thanks + share + woohoo ---------- */
 .rp-thanks .rp-title { text-wrap: balance; }
 .rp-shareRow { display: flex; align-items: center; flex-wrap: wrap; gap: .3rem; margin-top: 1.5rem; }
-.rp-share { font: inherit; font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 700;
-  color: var(--on-green); background: var(--green); border: 0; border-radius: var(--r-plate); min-height: 44px; padding: .72rem 1.15rem; cursor: pointer; display: inline-flex; align-items: center; gap: .5rem;
-  box-shadow: 0 6px 18px color-mix(in srgb, var(--green) 34%, transparent); transition: transform .2s ease, filter .2s ease; }
-.rp-share:hover { filter: brightness(1.07); transform: translateY(-2px); }
-.rp-share:active { transform: translateY(0) scale(.96); }
+/* The share control is the ghost CTA (.rp-cta.rp-cta--ghost) on all four case
+   studies — it used to be a third, green rounded button style on Grove alone.
+   Only the <button> resets the CTA rules don't cover live here. */
+.rp-share { cursor: pointer; line-height: 1.2; }
 .rp-woohoo { display: inline-flex; align-items: center; gap: .4rem; margin-left: .7rem; font-family: var(--mono); font-size: .74rem; color: var(--green);
   opacity: 0; transform: translateY(6px) scale(.9); transition: opacity .3s ease, transform .3s ease; pointer-events: none; }
 .rp-woohoo.show { opacity: 1; transform: none; animation: rp-pop .55s cubic-bezier(.2,1.7,.4,1); }
@@ -3321,7 +3320,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 .rp-cinema__artifact--safety { transform: rotate(.7deg); }
 .rp-cinema__artifact--note { transform: rotate(-.6deg); }
 .rp-cinema__artifact--note b { font-family: var(--sans); color: var(--green); }
-.rp-cinema__bridge .rp-kicker { color: #ff8a78; }
+.rp-cinema__bridge .rp-kicker { color: var(--coral-on-dark); }
 .rp-cinema__bridge h2 { margin: .45rem 0 0; font-size: clamp(1.8rem,4vw,3.3rem); line-height: 1.1; letter-spacing: -.021em; text-wrap: balance; }
 .rp-cinema__bridge > p:last-child { margin-top: .85rem; max-width: 44ch; color: rgba(244,241,230,.78); }
 @media (max-width: 760px) {
@@ -3343,7 +3342,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 .rp-override { background: #17321b; color: #f4f1e6; border-top: 1px solid rgba(244,241,230,.18); border-bottom: 1px solid rgba(244,241,230,.18); }
 .rp-override .rp-title, .rp-override .rp-lede, .rp-override .rp-acc__line { color: #f4f1e6; }
 .rp-override .rp-lede, .rp-override .rp-acc__why { color: rgba(244,241,230,.76); }
-.rp-override .rp-kicker, .rp-override .rp-notif--ai .rp-notif__tag { color: #ff8171; }
+.rp-override .rp-kicker, .rp-override .rp-notif--ai .rp-notif__tag { color: var(--coral-on-dark); }
 .rp-override .rp-notif--me .rp-notif__tag, .rp-override .rp-acc__num, .rp-override .rp-acc__me b { color: #a9d28f; }
 .rp-override .rp-pushback__vs { color: rgba(244,241,230,.62); }
 .rp-override .rp-notif { border-color: rgba(244,241,230,.18); }
@@ -3358,7 +3357,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 .rp-override .rp-acc summary { color: #f4f1e6; }
 .rp-override .rp-decisionRecord { border-top-color: rgba(244,241,230,.58); }
 .rp-override .rp-decisionRecord > div { border-bottom-color: rgba(244,241,230,.34); }
-.rp-override .rp-decisionRecord dt { color: #ff8171; }
+.rp-override .rp-decisionRecord dt { color: var(--coral-on-dark); }
 .rp-override .rp-decisionRecord dd { color: #f4f1e6; }
 @media (max-width: 720px) {
   .rp-override .rp-pushback__vs { transform: none; letter-spacing: .08em; }
@@ -3525,8 +3524,16 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
   var(--paper); }
 
 /* ---------- outcomes as a deep evidence field ---------- */
+/* The gradient paints the whole stage, so the solid background-color under it
+   never shows; it is there so getComputedStyle / contrast tooling see the dark
+   surface the cream text actually sits on instead of the page paper. Keep it
+   as background-color + background-image, not the `background:` shorthand,
+   which would reset the colour to transparent. The fallback is .flagship-page's
+   default --fp-deep (flagship-case-study.css): Grove carries the class but does
+   not import that sheet, so the variable is undefined there. */
 .rp-outcomeStage { position: relative; overflow: hidden; min-height: 74vh; display: grid; align-items: center; color: #f4f1e6;
-  background:
+  background-color: var(--fp-deep, #19321f);
+  background-image:
   radial-gradient(circle at 76% 20%, rgba(198,138,46,.22),transparent 24%),
   radial-gradient(circle at 18% 76%, rgba(239,83,64,.16),transparent 28%),
   linear-gradient(135deg,#264529,#152717 72%); }
@@ -3538,7 +3545,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 .rp-outcomeStage .rp-disclaimer { color: rgba(244,241,230,.7); }
 /* Fixed dark stage: kickers take the panel's dark-surface coral, as
    .rp-override does — the page coral measured 1.87–2.35:1 here. */
-.rp-outcomeStage .rp-kicker { color: #ff8171; }
+.rp-outcomeStage .rp-kicker { color: var(--coral-on-dark); }
 .rp-outcomeStage .rp-stat { background: rgba(244,241,230,.08); border-color: rgba(244,241,230,.22); backdrop-filter: blur(8px); }
 .rp-outcomeStage .rp-stat__tag { color: rgba(244,241,230,.66); }
 .rp-outcomeStage .rp-stat__n { color: #d8e9c7; }
@@ -3556,7 +3563,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
   letter-spacing: .09em; text-transform: uppercase; color: #a9d28f; }
 @media (forced-colors: active) { .rp-bridge { border-left-color: CanvasText; } }
 
-.rp-routeRecap i { color: #ff8171; font-style: normal; }
+.rp-routeRecap i { color: var(--coral-on-dark); font-style: normal; }
 .rp-routeRecap strong { color: #f4f1e6; }
 .rp-routeVerdict { max-width: 68ch; margin: var(--sp-sm) 0 0; padding: 1.2rem 0 0 1rem;
   border-top: 1px solid rgba(244,241,230,.22); border-left: 3px solid #a9d28f;
