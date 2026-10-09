@@ -7,6 +7,7 @@ import { Lang, translate } from "../i18n/strings";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import RecruiterPill from "../components/RecruiterPill";
+import AskDialog from "../components/ask/AskDialog";
 import BackToTop from "../components/BackToTop";
 import PortfolioAnalytics from "../analytics/PortfolioAnalytics";
 
@@ -67,6 +68,9 @@ export default function App() {
           </div>
 
           <RecruiterPill />
+          {/* After RecruiterPill on purpose: when its "Ask a question" link
+              fires, the panel's close effect runs before this dialog opens. */}
+          <AskDialog />
           <BackToTop />
         </>
       </Router>

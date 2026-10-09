@@ -2,6 +2,7 @@ import React, { Dispatch, SetStateAction, useEffect, useRef, useState } from "re
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { switchLanguageAtCurrentSection, useLanguage, useT } from "../app/LanguageContext";
 import { MenuIcon, XIcon } from "./LineIcons";
+import AskBirdIcon from "./ask/AskBirdIcon";
 
 type NavbarProps = {
   darkMode: boolean;
@@ -269,6 +270,28 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
           >
             {t("nav.resume")}
           </a>
+        </li>
+
+        <li>
+          <button
+            type="button"
+            className="nav-link nav-link--ask"
+            onClick={() => {
+              const fromMenu = menuOpen;
+              close();
+              // From the mobile menu the trigger is hidden once the menu
+              // closes, so hand the dialog the hamburger to return focus to.
+              window.dispatchEvent(
+                new CustomEvent("open-ask", {
+                  detail: { returnFocus: fromMenu ? hamburgerRef.current : null, entry: fromMenu ? "menu" : "nav" },
+                })
+              );
+            }}
+          >
+            <AskBirdIcon className="nav-link__bird" />
+            <span>{t("ask.nav")}</span>
+            <span className="sr-only"> {t("ask.navSuffix")}</span>
+          </button>
         </li>
 
         <li className="nav-recruiter-entry">
