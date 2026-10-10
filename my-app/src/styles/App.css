@@ -597,8 +597,11 @@ select:focus {
    this 44px-tall, full-width toggle that reads as a doubled border instead
    of a ring - pull it inside instead. `:where()` carries no specificity, so
    matching its own !important needs equal-or-higher specificity on this
-   selector, which `.nav-settings__toggle:focus-visible` already has. */
-.nav-settings__toggle:focus-visible {
+   selector, which `.nav-settings__toggle:focus-visible` already has.
+   Dock items sit edge to edge, so an outside ring would cover the
+   neighbouring label; they take the same inset ring. */
+.nav-settings__toggle:focus-visible,
+.nav-dock__item:focus-visible {
   outline-offset: -3px !important;
 }
 .nav-settings__langCode {

@@ -2699,11 +2699,11 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
    the fallback if a long case-study title still doesn't fit. */
 .rp-breadcrumb { max-width: 1080px; margin: 0 auto; padding: 1.1rem var(--sp-gutter) 0;
   font-family: var(--mono); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
-  display: flex; align-items: center; flex-wrap: nowrap; gap: .1rem;
+  display: flex; align-items: center; flex-wrap: nowrap; gap: .5rem;
   overflow-x: auto; scrollbar-width: none; }
 .rp-breadcrumb::-webkit-scrollbar { display: none; }
 .rp-breadcrumb a, .rp-breadcrumb span { flex: 0 0 auto; white-space: nowrap; }
-.rp-breadcrumb a { color: var(--muted); text-decoration: none; display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; }
+.rp-breadcrumb a { color: var(--muted); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
 .rp-breadcrumb a:hover { color: var(--green); }
 .rp-breadcrumb__name { font-weight: 700; }
 .rp-breadcrumb span { color: var(--ink); }
