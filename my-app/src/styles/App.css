@@ -453,6 +453,16 @@ select:focus {
 
 
 
+/* Wraps the standalone ask-bird button, the hamburger, and the nav list, so
+   `.navbar`'s own `justify-content: space-between` still only has two
+   children (logo, nav-controls) at every width - adding the bird button as a
+   third direct child of .navbar would have thrown that spacing off. */
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
 /* RIGHT SIDE DESKTOP MENU */
 .nav-menu {
   display: flex;

@@ -5,9 +5,10 @@ import React from "react";
  * design-docs/media/ask-bird/bird-icon.svg: ink outline and eye via
  * currentColor, paper fill from the page surface, one coral route line across
  * the wing via --coral (which ask.css provides outside Riso-scoped pages).
- * Decorative: the word beside it carries the meaning.
+ * Decorative: the accessible name on the button that wraps it carries the
+ * meaning.
  * @status: stable
- * @purpose: 24px line-drawing of the "Ask about the work" paper bird, used beside the "Ask" label in the navbar (components/Navbar.tsx) and on the recruiter panel's "Ask a question" button (components/RecruiterPill.tsx); currentColor outline plus a coral route line, decorative only.
+ * @purpose: 24px line-drawing of the "Ask about the work" paper bird, decorative only (currentColor outline plus a coral route line). Used by the standalone nav bird button (components/ask/AskBirdNav.tsx), the plain-text "Ask about the work" item kept inside the mobile menu (components/Navbar.tsx), and the recruiter panel's "Ask a question" button (components/RecruiterPill.tsx).
  */
 export default function AskBirdIcon({ className }: { className?: string }) {
   return (

@@ -1,0 +1,174 @@
+import React, { act } from "react";
+import { createRoot, Root } from "react-dom/client";
+import AskBirdNav from "./AskBirdNav";
+
+const LABEL_SEEN_KEY = "portfolio:ask-label-seen";
+
+let mockPathname = "/";
+
+jest.mock("react-router-dom", () => ({
+  useLocation: () => ({ pathname: mockPathname }),
+}));
+
+jest.mock("../../app/LanguageContext", () => ({
+  useT: () => (key: string) => key,
+}));
+
+describe("AskBirdNav", () => {
+  let container: HTMLDivElement;
+  let root: Root;
+
+  beforeAll(() => {
+    (globalThis as typeof globalThis & { IS_REACT_ACT_ENVIRONMENT: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
+  });
+
+  function setReducedMotion(reduceMotion: boolean) {
+    Object.defineProperty(window, "matchMedia", {
+      configurable: true,
+      value: () => ({ matches: reduceMotion, addEventListener() {}, removeEventListener() {} }),
+    });
+  }
+
+  beforeEach(() => {
+    jest.useFakeTimers();
+    setReducedMotion(false);
+    mockPathname = "/";
+    window.localStorage.removeItem(LABEL_SEEN_KEY);
+    container = document.createElement("div");
+    document.body.appendChild(container);
+    root = createRoot(container);
+  });
+
+  afterEach(() => {
+    act(() => root.unmount());
+    container.remove();
+    jest.clearAllTimers();
+    jest.useRealTimers();
+  });
+
+  function button() {
+    return container.querySelector<HTMLButtonElement>(".ask-bird-nav");
+  }
+
+  function label() {
+    return container.querySelector<HTMLElement>(".ask-bird-nav__label");
+  }
+
+  it("exposes the accessible name 'Ask about the work' via aria-label", async () => {
+    await act(async () => root.render(<AskBirdNav />));
+    // useT is mocked to the identity function, so the key itself stands in
+    // for the EN string "Ask about the work" / ES "Pregunte sobre el trabajo".
+    expect(button()?.getAttribute("aria-label")).toBe("ask.title");
+    expect(button()?.getAttribute("title")).toBe("ask.title");
+  });
+
+  it("dispatches open-ask with entry 'nav' on click", async () => {
+    await act(async () => root.render(<AskBirdNav />));
+    const handler = jest.fn();
+    window.addEventListener("open-ask", handler);
+    await act(async () => button()?.click());
+    expect(handler).toHaveBeenCalledTimes(1);
+    const detail = (handler.mock.calls[0][0] as CustomEvent).detail;
+    expect(detail.entry).toBe("nav");
+    window.removeEventListener("open-ask", handler);
+  });
+
+  it("shows the first-visit label once, then never again on a later visit", async () => {
+    await act(async () => root.render(<AskBirdNav />));
+    expect(label()).toBeTruthy();
+    expect(label()?.classList.contains("is-visible")).toBe(false);
+
+    act(() => jest.advanceTimersByTime(600));
+    expect(label()?.classList.contains("is-visible")).toBe(true);
+
+    act(() => jest.advanceTimersByTime(6000));
+    expect(label()?.classList.contains("is-visible")).toBe(false);
+    expect(window.localStorage.getItem(LABEL_SEEN_KEY)).toBe("1");
+
+    // Simulate a later visit: unmount and mount a fresh instance. The seen
+    // key now set means the label never mounts at all.
+    act(() => root.unmount());
+    container.remove();
+    container = document.createElement("div");
+    document.body.appendChild(container);
+    root = createRoot(container);
+    await act(async () => root.render(<AskBirdNav />));
+    act(() => jest.advanceTimersByTime(7000));
+    expect(label()).toBeNull();
+  });
+
+  it("hides the first-visit label immediately when the dialog opens", async () => {
+    await act(async () => root.render(<AskBirdNav />));
+    act(() => jest.advanceTimersByTime(600));
+    expect(label()?.classList.contains("is-visible")).toBe(true);
+
+    await act(async () => {
+      window.dispatchEvent(new CustomEvent("open-ask", { detail: { entry: "recruiter" } }));
+    });
+    expect(label()?.classList.contains("is-visible")).toBe(false);
+    expect(window.localStorage.getItem(LABEL_SEEN_KEY)).toBe("1");
+  });
+
+  it("hops once on a client-side route change, then settles", async () => {
+    await act(async () => root.render(<AskBirdNav />));
+    expect(button()?.classList.contains("is-hopping")).toBe(false);
+
+    mockPathname = "/about";
+    await act(async () => root.render(<AskBirdNav />));
+    expect(button()?.classList.contains("is-hopping")).toBe(true);
+
+    act(() => jest.advanceTimersByTime(450));
+    expect(button()?.classList.contains("is-hopping")).toBe(false);
+  });
+
+  it("does not hop on the very first page load", async () => {
+    mockPathname = "/case-study/msk";
+    await act(async () => root.render(<AskBirdNav />));
+    expect(button()?.classList.contains("is-hopping")).toBe(false);
+  });
+
+  // React's onMouseEnter/onMouseLeave are synthesized from native
+  // "mouseover"/"mouseout" (which bubble, unlike mouseenter/mouseleave) via
+  // the delegated listener on the root container - dispatch those directly,
+  // the same events RTL's fireEvent.mouseOver/mouseOut would dispatch.
+  it("tilts on hover and focus, settling on leave/blur", async () => {
+    await act(async () => root.render(<AskBirdNav />));
+    const el = button();
+    await act(async () => {
+      el?.dispatchEvent(new MouseEvent("mouseover", { bubbles: true, relatedTarget: null }));
+    });
+    expect(el?.classList.contains("is-tilted")).toBe(true);
+
+    await act(async () => {
+      el?.dispatchEvent(new MouseEvent("mouseout", { bubbles: true, relatedTarget: null }));
+    });
+    expect(el?.classList.contains("is-tilted")).toBe(false);
+
+    await act(async () => {
+      el?.focus();
+    });
+    expect(el?.classList.contains("is-tilted")).toBe(true);
+
+    await act(async () => {
+      el?.blur();
+    });
+    expect(el?.classList.contains("is-tilted")).toBe(false);
+  });
+
+  it("reduced motion: no hop and no tilt classes ever applied", async () => {
+    setReducedMotion(true);
+    await act(async () => root.render(<AskBirdNav />));
+    const el = button();
+
+    await act(async () => {
+      el?.dispatchEvent(new MouseEvent("mouseover", { bubbles: true, relatedTarget: null }));
+    });
+    expect(el?.classList.contains("is-tilted")).toBe(false);
+
+    mockPathname = "/projects";
+    await act(async () => root.render(<AskBirdNav />));
+    expect(el?.classList.contains("is-hopping")).toBe(false);
+    act(() => jest.advanceTimersByTime(450));
+    expect(el?.classList.contains("is-hopping")).toBe(false);
+  });
+});

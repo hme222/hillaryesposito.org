@@ -3,6 +3,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { switchLanguageAtCurrentSection, useLanguage, useT } from "../app/LanguageContext";
 import { MenuIcon, XIcon } from "./LineIcons";
 import AskBirdIcon from "./ask/AskBirdIcon";
+import AskBirdNav from "./ask/AskBirdNav";
 
 type NavbarProps = {
   darkMode: boolean;
@@ -209,23 +210,29 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
         <span className="logo-text">Hillary Esposito</span>
       </button>
 
-      <button
-        ref={hamburgerRef}
-        className="hamburger"
-        type="button"
-        aria-label={menuOpen ? t("nav.menuClose") : t("nav.menuOpen")}
-        aria-expanded={menuOpen}
-        aria-controls="primary-menu"
-        onClick={() => setMenuOpen((m) => !m)}
-      >
-        {menuOpen ? <XIcon /> : <MenuIcon />}
-      </button>
+      <div className="nav-controls">
+        {/* Standalone bird button: always visible (desktop row and mobile top
+            bar), independent of the collapsible menu below. The plain-text
+            "Ask about the work" item stays inside that menu for mobile. */}
+        <AskBirdNav />
 
-      <ul
-        ref={menuRef}
-        id="primary-menu"
-        className={`nav-menu ${menuOpen ? "open" : ""}`}
-      >
+        <button
+          ref={hamburgerRef}
+          className="hamburger"
+          type="button"
+          aria-label={menuOpen ? t("nav.menuClose") : t("nav.menuOpen")}
+          aria-expanded={menuOpen}
+          aria-controls="primary-menu"
+          onClick={() => setMenuOpen((m) => !m)}
+        >
+          {menuOpen ? <XIcon /> : <MenuIcon />}
+        </button>
+
+        <ul
+          ref={menuRef}
+          id="primary-menu"
+          className={`nav-menu ${menuOpen ? "open" : ""}`}
+        >
         <li>
           <button
             type="button"
@@ -272,18 +279,19 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
           </a>
         </li>
 
-        <li>
+        {/* Text entry for the mobile menu list only (hidden on desktop in
+            ask.css - the standalone AskBirdNav button above is the desktop
+            entry point). Always opened from inside the open mobile menu, so
+            return focus to the hamburger once it closes. */}
+        <li className="nav-ask-text-entry">
           <button
             type="button"
             className="nav-link nav-link--ask"
             onClick={() => {
-              const fromMenu = menuOpen;
               close();
-              // From the mobile menu the trigger is hidden once the menu
-              // closes, so hand the dialog the hamburger to return focus to.
               window.dispatchEvent(
                 new CustomEvent("open-ask", {
-                  detail: { returnFocus: fromMenu ? hamburgerRef.current : null, entry: fromMenu ? "menu" : "nav" },
+                  detail: { returnFocus: hamburgerRef.current, entry: "menu" },
                 })
               );
             }}
@@ -367,7 +375,8 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
             {t("nav.langCode")}
           </button>
         </li>
-      </ul>
+        </ul>
+      </div>
     </nav>
   );
 }
