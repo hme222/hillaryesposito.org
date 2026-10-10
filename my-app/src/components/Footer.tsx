@@ -63,12 +63,18 @@ export default function Footer() {
   const t = useT();
   const { lang } = useLanguage();
   const { pathname } = useLocation();
-  const credits = COLOPHONS[pathname];
+  // Production (vercel.json: "trailingSlash": true) serves every route with
+  // a trailing slash, so a full page load or refresh on e.g. /about lands on
+  // /about/ - strip it before comparing, the same idiom Navbar.tsx and
+  // usePageTitle.ts already use, or a direct visit never matches either
+  // lookup below.
+  const normalizedPath = pathname.replace(/\/+$/, "") || "/";
+  const credits = COLOPHONS[normalizedPath];
   const hasAuthoredClose =
-    pathname === "/" ||
-    pathname === "/about" ||
-    pathname.startsWith("/case-study/") ||
-    pathname.startsWith("/riso/");
+    normalizedPath === "/" ||
+    normalizedPath === "/about" ||
+    normalizedPath.startsWith("/case-study/") ||
+    normalizedPath.startsWith("/riso/");
 
   return (
     <footer

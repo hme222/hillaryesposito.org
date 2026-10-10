@@ -1,7 +1,7 @@
 // src/components/NavSettingsPopover.tsx
 import React, { Dispatch, SetStateAction, useEffect, useId, useRef, useState } from "react";
 import { switchLanguageAtCurrentSection, useLanguage, useT } from "../app/LanguageContext";
-import { GearIcon } from "./LineIcons";
+import { SettingsSlidersIcon } from "./LineIcons";
 
 type NavSettingsPopoverProps = {
   darkMode: boolean;
@@ -88,7 +88,14 @@ export default function NavSettingsPopover({ darkMode, setDarkMode }: NavSetting
         title={t("nav.settings")}
         onClick={() => setOpen((o) => !o)}
       >
-        <GearIcon className="nav-settings__icon" />
+        <SettingsSlidersIcon className="nav-settings__icon" strokeWidth={1.5} />
+        {/* The current language, visible as text - not just the gloss in the
+            popover's own toggle - so the trigger discloses what it holds
+            (theme + language) rather than only a generic settings glyph.
+            lang is already "en"/"es"; no extra translation key needed. */}
+        <span className="nav-settings__triggerLangCode" aria-hidden="true">
+          {lang.toUpperCase()}
+        </span>
       </button>
 
       {open && (
@@ -96,6 +103,7 @@ export default function NavSettingsPopover({ darkMode, setDarkMode }: NavSetting
           id={popoverId}
           ref={popoverRef}
           className="nav-settings__popover"
+          role="group"
           aria-label={t("nav.settingsAria")}
         >
           <button

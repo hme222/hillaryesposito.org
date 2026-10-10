@@ -81,30 +81,10 @@ export default function RecruiterPanel() {
             <p>At MSK, a clinical workflow I initiated contributed to a larger initiative that cut organization-wide electronic medical record costs 20%. I bring 13+ years in healthcare and medical logistics to product decisions, with service design and research built in.</p>
           </section>
 
-          <section className="recruiter-panel__section">
-            <p className="recruiter-panel__label">Selected work</p>
-            <ul className="recruiter-panel__projects">
-              <li>
-                <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/msk")}>
-                  <strong>MSK · A filing queue replaced a four-department paper detour</strong>
-                  <span>Mapped across clinical, IT, imaging, and operations; the workflow I initiated contributed to a larger initiative that cut organization-wide electronic medical record costs 20%</span>
-                </button>
-              </li>
-              <li>
-                <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/logistics")}>
-                  <strong>Medical logistics · Resupply time reduced 85%</strong>
-                  <span>Redesigned an end-to-end supply service for 5,000+ soldiers across seven aid stations; shared tracking also reduced spending 60%</span>
-                </button>
-              </li>
-              <li>
-                <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/grove")}>
-                  <strong>Grove · Eleven features became three</strong>
-                  <span>Functional prototype, Phase 2 of 3; a 34-person self-report survey narrowed the next build from eleven features to three</span>
-                </button>
-              </li>
-            </ul>
-          </section>
-
+          {/* Moved ahead of "Selected work" so "View résumé" - the action a
+              recruiter most often comes here for - lands in the panel's
+              first viewport at both 390×844 and 1440×900, instead of
+              requiring a scroll past the project list first. */}
           <section className="recruiter-panel__section recruiter-panel__actions">
             <a className="recruiter-panel__btn recruiter-panel__btn--primary"
                href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"
@@ -142,6 +122,30 @@ export default function RecruiterPanel() {
                }}>
               <AskBirdIcon className="recruiter-panel__btn-icon recruiter-panel__btn-icon--bird" /> Ask a question
             </button>
+          </section>
+
+          <section className="recruiter-panel__section">
+            <p className="recruiter-panel__label">Selected work</p>
+            <ul className="recruiter-panel__projects">
+              <li>
+                <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/msk")}>
+                  <strong>MSK · A filing queue replaced a four-department paper detour</strong>
+                  <span>Mapped across clinical, IT, imaging, and operations; the workflow I initiated contributed to a larger initiative that cut organization-wide electronic medical record costs 20%</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/logistics")}>
+                  <strong>Medical logistics · Resupply time reduced 85%</strong>
+                  <span>Redesigned an end-to-end supply service for 5,000+ soldiers across seven aid stations; shared tracking also reduced spending 60%</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/grove")}>
+                  <strong>Grove · Eleven features became three</strong>
+                  <span>Functional prototype, Phase 2 of 3; a 34-person self-report survey narrowed the next build from eleven features to three</span>
+                </button>
+              </li>
+            </ul>
           </section>
 
           {/* Visible, selectable address so the mailto never silent-fails. */}

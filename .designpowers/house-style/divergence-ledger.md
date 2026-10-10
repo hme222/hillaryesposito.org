@@ -434,3 +434,18 @@ Instead: Play the film once per browser tab on a plain homepage visit. Never und
 Reason: Owner direction (Hillary, 2026-10-09) after asking why the opener no longer starts on refresh: she chose to trade a few seconds of the first visit for the authored visual moment. The exceptions keep the 2026-08-24 rule's intent where it matters most — reduced-motion users, recruiters sent to a specific section, and repeat views.
 
 Validation (2026-10-09, production build in Chrome): first visit plays; refresh in the same tab does not; a new tab does; reduced motion does not; `/#contact` does not; Skip closes it, returns focus to the Watch button and leaves nothing inert; the button replays it.
+
+# Route dock: sentence-case nav labels over mono caps - 2026-10-10
+
+## Structural options
+
+1. **Match the chrome** - set `.nav-dock__item` labels (Work, About, Ask) in the site's mono-caps register, same as breadcrumbs, chapter nav, and eyebrows. Rejected: every nav label would need letter-spacing/uppercase tuning to stay legible at the 44px touch-target sizes the dock enforces, and primary navigation read noticeably colder and more "systems" in a live comparison.
+2. **Sentence-case Archivo, matching reference convention** - keep the dock's labels in the same sentence-case sans the hero/body text already uses. **Selected** (shipped with the original dock build, `ae9e688`; recorded here during the first fix round after two independent reviews both flagged it as an unexplained inconsistency).
+
+Default: One type register for all navigational/metadata chrome (mono caps), per the site's general house style.
+
+Instead: The nav dock's own item labels stay sentence-case Archivo while the rest of the chrome (breadcrumbs, `.rp-chapters`, eyebrows) stays mono caps.
+
+Reason: Research behind the dock's original build (`reference_portfolio_inspiration` - alexwidua, jakub.kr, glenn.me, abstract.systems, cali.so, lfs.gd) found all six reference portfolios use sentence-case sans labels specifically for primary navigation, reserving mono/caps treatment for metadata (timestamps, tags, breadcrumbs). The dock is primary navigation, not metadata, so it keeps the register that convention uses rather than the metadata register the rest of the chrome uses.
+
+Validation: Not re-tested visually this round (no mono-caps variant was built to compare) - this entry records a decision to keep the original build's choice deliberately, per the fix-round brief's explicit instruction, rather than a new finding. Documented here, in `design-docs/taste/2026-10-09-ask-about-the-work-taste.md`, and in `design-state.md`'s Decisions Log so the next review doesn't re-flag it as undocumented drift.

@@ -4,26 +4,7 @@ import { useT } from "../../app/LanguageContext";
 import AskBirdIcon from "./AskBirdIcon";
 import "../../styles/ask.css";
 
-const LABEL_SEEN_KEY = "portfolio:ask-label-seen";
-const LABEL_SHOW_DELAY_MS = 600;
-const LABEL_VISIBLE_MS = 6000;
 const HOP_MS = 450;
-
-function hasSeenLabel(): boolean {
-  try {
-    return window.localStorage.getItem(LABEL_SEEN_KEY) === "1";
-  } catch {
-    return false;
-  }
-}
-
-function markLabelSeen(): void {
-  try {
-    window.localStorage.setItem(LABEL_SEEN_KEY, "1");
-  } catch {
-    /* storage blocked (private mode, quota) - nothing more to do */
-  }
-}
 
 function prefersReducedMotion(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -31,56 +12,17 @@ function prefersReducedMotion(): boolean {
 
 /**
  * @status: stable
- * @purpose: "Ask" item in the nav dock (components/Navbar.tsx) - a 24px paper bird on a short coral route line, beside the visible word "Ask". Hops once along the route on client-side route change, tilts its head on hover/focus, and shows an extra first-visit-only teaching label (localStorage `portfolio:ask-label-seen`) that fades in then out, or hides the moment the dialog opens. Dispatches the same `open-ask` CustomEvent the rest of the feature uses; all motion is skipped under prefers-reduced-motion.
+ * @purpose: "Ask" item in the nav dock (components/Navbar.tsx) - a 22px paper bird beside the visible word "Ask". Hops once along the route on client-side route change, tilts its head on hover/focus. Dispatches the `open-ask` CustomEvent the rest of the feature uses, passing the button itself as `returnFocus` so Escape (from the dialog, or from the recruiter panel's "Ask a question" handoff) returns focus here instead of <body>. All motion is skipped under prefers-reduced-motion.
  */
 export default function AskBirdNav() {
   const t = useT();
   const location = useLocation();
   const prevPathRef = useRef(location.pathname);
   const hopTimeoutRef = useRef<number | undefined>(undefined);
-  const showTimeoutRef = useRef<number | undefined>(undefined);
-  const hideTimeoutRef = useRef<number | undefined>(undefined);
 
   const [hopping, setHopping] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
-  const [labelVisible, setLabelVisible] = useState(false);
-  const [labelMounted, setLabelMounted] = useState(false);
-
-  // First-visit label: show once, ~600ms after mount, then hide ~6s later -
-  // or immediately the first time the dialog opens, whichever comes first.
-  // Never shown again once `portfolio:ask-label-seen` is set. Timing is the
-  // same under reduced motion; only the CSS fade is removed there (ask.css).
-  useEffect(() => {
-    if (hasSeenLabel()) return;
-    setLabelMounted(true);
-    showTimeoutRef.current = window.setTimeout(() => {
-      setLabelVisible(true);
-      hideTimeoutRef.current = window.setTimeout(() => {
-        setLabelVisible(false);
-        markLabelSeen();
-      }, LABEL_VISIBLE_MS);
-    }, LABEL_SHOW_DELAY_MS);
-
-    return () => {
-      window.clearTimeout(showTimeoutRef.current);
-      window.clearTimeout(hideTimeoutRef.current);
-    };
-  }, []);
-
-  // Any open of the dialog (this button, the mobile menu item, or the
-  // recruiter panel) dismisses the first-visit label immediately and marks
-  // it seen, so it never reappears on a later visit.
-  useEffect(() => {
-    const onOpen = () => {
-      window.clearTimeout(showTimeoutRef.current);
-      window.clearTimeout(hideTimeoutRef.current);
-      setLabelVisible(false);
-      markLabelSeen();
-    };
-    window.addEventListener("open-ask", onOpen);
-    return () => window.removeEventListener("open-ask", onOpen);
-  }, []);
 
   // One short hop along the route on client-side navigation - never on the
   // first page load (prevPathRef already holds the starting pathname).
@@ -104,29 +46,22 @@ export default function AskBirdNav() {
       className={`nav-dock__item ask-bird-nav${hopping ? " is-hopping" : ""}${tilted ? " is-tilted" : ""}`}
       aria-label={askLabel}
       title={askLabel}
-      onClick={() => {
-        window.dispatchEvent(new CustomEvent("open-ask", { detail: { entry: "nav" } }));
+      onClick={(e) => {
+        window.dispatchEvent(
+          new CustomEvent("open-ask", { detail: { entry: "nav", returnFocus: e.currentTarget } })
+        );
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onFocus={() => setFocused(true)}
       onBlur={() => setFocused(false)}
     >
-      <span className="ask-bird-nav__route" aria-hidden="true">
-        <span className="ask-bird-nav__dot" />
-        <span className="ask-bird-nav__line" />
-      </span>
       <AskBirdIcon className="ask-bird-nav__bird" />
       {/* The dock's other items (Work, About, Settings) all carry a visible
           sentence-case label, so this one does too - "Ask" stays a prefix of
           the fuller aria-label above, keeping the visible label contained in
           the accessible name. */}
       <span className="ask-bird-nav__text">{t("ask.nav")}</span>
-      {labelMounted && (
-        <span className={`ask-bird-nav__label${labelVisible ? " is-visible" : ""}`} aria-hidden="true">
-          {t("ask.nav")}
-        </span>
-      )}
     </button>
   );
 }

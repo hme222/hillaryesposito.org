@@ -145,7 +145,7 @@ export default function About() {
   return (
     <main className="about-page riso-page" lang={isSpanish ? "es" : "en"} ref={rootRef}>
       <nav className="rp-breadcrumb" aria-label={isSpanish ? "Migas de pan" : "Breadcrumb"}>
-        <Link to="/?scrollTo=projects">{isSpanish ? "Trabajo" : "Work"}</Link> / <span>{isSpanish ? "Sobre mí" : "About"}</span>
+        <Link to="/" className="rp-breadcrumb__name" title="Hillary Esposito">Hillary Esposito</Link> / <Link to="/?scrollTo=projects">{isSpanish ? "Trabajo" : "Work"}</Link> / <span>{isSpanish ? "Sobre mí" : "About"}</span>
       </nav>
 
       <CaseStudyChapters

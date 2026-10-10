@@ -2,8 +2,6 @@ import React, { act } from "react";
 import { createRoot, Root } from "react-dom/client";
 import AskBirdNav from "./AskBirdNav";
 
-const LABEL_SEEN_KEY = "portfolio:ask-label-seen";
-
 let mockPathname = "/";
 
 // `virtual: true` because this environment's Jest/jest-resolve fails to
@@ -39,7 +37,6 @@ describe("AskBirdNav", () => {
     jest.useFakeTimers();
     setReducedMotion(false);
     mockPathname = "/";
-    window.localStorage.removeItem(LABEL_SEEN_KEY);
     container = document.createElement("div");
     document.body.appendChild(container);
     root = createRoot(container);
@@ -56,10 +53,6 @@ describe("AskBirdNav", () => {
     return container.querySelector<HTMLButtonElement>(".ask-bird-nav");
   }
 
-  function label() {
-    return container.querySelector<HTMLElement>(".ask-bird-nav__label");
-  }
-
   it("exposes the accessible name 'Ask about the work' via aria-label", async () => {
     await act(async () => root.render(<AskBirdNav />));
     // useT is mocked to the identity function, so the key itself stands in
@@ -68,7 +61,7 @@ describe("AskBirdNav", () => {
     expect(button()?.getAttribute("title")).toBe("ask.title");
   });
 
-  it("dispatches open-ask with entry 'nav' on click", async () => {
+  it("dispatches open-ask with entry 'nav' and the button as returnFocus on click", async () => {
     await act(async () => root.render(<AskBirdNav />));
     const handler = jest.fn();
     window.addEventListener("open-ask", handler);
@@ -76,43 +69,8 @@ describe("AskBirdNav", () => {
     expect(handler).toHaveBeenCalledTimes(1);
     const detail = (handler.mock.calls[0][0] as CustomEvent).detail;
     expect(detail.entry).toBe("nav");
+    expect(detail.returnFocus).toBe(button());
     window.removeEventListener("open-ask", handler);
-  });
-
-  it("shows the first-visit label once, then never again on a later visit", async () => {
-    await act(async () => root.render(<AskBirdNav />));
-    expect(label()).toBeTruthy();
-    expect(label()?.classList.contains("is-visible")).toBe(false);
-
-    act(() => jest.advanceTimersByTime(600));
-    expect(label()?.classList.contains("is-visible")).toBe(true);
-
-    act(() => jest.advanceTimersByTime(6000));
-    expect(label()?.classList.contains("is-visible")).toBe(false);
-    expect(window.localStorage.getItem(LABEL_SEEN_KEY)).toBe("1");
-
-    // Simulate a later visit: unmount and mount a fresh instance. The seen
-    // key now set means the label never mounts at all.
-    act(() => root.unmount());
-    container.remove();
-    container = document.createElement("div");
-    document.body.appendChild(container);
-    root = createRoot(container);
-    await act(async () => root.render(<AskBirdNav />));
-    act(() => jest.advanceTimersByTime(7000));
-    expect(label()).toBeNull();
-  });
-
-  it("hides the first-visit label immediately when the dialog opens", async () => {
-    await act(async () => root.render(<AskBirdNav />));
-    act(() => jest.advanceTimersByTime(600));
-    expect(label()?.classList.contains("is-visible")).toBe(true);
-
-    await act(async () => {
-      window.dispatchEvent(new CustomEvent("open-ask", { detail: { entry: "recruiter" } }));
-    });
-    expect(label()?.classList.contains("is-visible")).toBe(false);
-    expect(window.localStorage.getItem(LABEL_SEEN_KEY)).toBe("1");
   });
 
   it("hops once on a client-side route change, then settles", async () => {

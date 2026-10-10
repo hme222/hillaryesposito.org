@@ -195,7 +195,7 @@ export default function FlagshipMSK() {
       <RisoDefs />
 
       <nav className="rp-breadcrumb" aria-label="Breadcrumb">
-        <Link to="/">Work</Link> / <span>Memorial Sloan Kettering</span>
+        <Link to="/" className="rp-breadcrumb__name" title="Hillary Esposito">Hillary Esposito</Link> / <Link to="/">Work</Link> / <span>Memorial Sloan Kettering</span>
       </nav>
       <CaseStudyChapters project="Memorial Sloan Kettering" chapters={CHAPTERS} />
       <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />

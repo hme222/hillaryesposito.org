@@ -11,6 +11,11 @@ type NavbarProps = {
 
 type ActiveKey = "work" | "about" | null;
 
+// Candidate section ids for the home-page scroll tracker below. This is a
+// set, not an order - see the effect's comment for why the walk order is
+// derived live from the DOM instead of trusted from this list.
+const SECTION_IDS = ["home", "projects", "about", "contact"];
+
 /**
  * @status: stable
  * @purpose: Printed route dock - the site's primary navigation (rendered in app/App.tsx): a sticky, transparent full-width `<nav>` (reserving the same flow height the old full-width bar did) holding one visible, top-centre, detached pill cluster (Home mark, Work, About, the Ask bird, and a Settings disclosure for theme/language) with a sliding "printed route marker" behind whichever item is active. Same layout on desktop and phone - no hamburger, no off-canvas menu. Handles same-page section scrolling and case-study/About active-state tracking; Settings owns the dark-mode and language toggles that used to sit loose in the old full-width bar.
@@ -62,19 +67,29 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   // the viewport, so an IntersectionObserver threshold is unreliable (30% of a
   // tall section is never visible at once) - instead pick the last section whose
   // top has scrolled above a reference line ~a third down the viewport.
+  //
+  // "Last" means last in actual DOM order, not last in this list: on the home
+  // page #contact sits before #about (RisoHome.tsx), so a hard-coded
+  // ["home","projects","about","contact"] walk order would re-overwrite
+  // `current` back to "contact" every time both it and #about were above the
+  // line, and About would never win. Sort the candidates by their live
+  // document position on every measurement instead of trusting source order,
+  // so a future section reorder can't reintroduce the same bug silently.
   useEffect(() => {
     if (!isHome) {
       setActiveSection("");
       return;
     }
 
-    const ids = ["home", "projects", "about", "contact"];
     const measure = () => {
       const line = window.innerHeight * 0.35;
+      const sections = SECTION_IDS
+        .map((id) => document.getElementById(id))
+        .filter((el): el is HTMLElement => !!el)
+        .sort((a, b) => (a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1));
       let current = "home";
-      for (const id of ids) {
-        const el = document.getElementById(id);
-        if (el && el.getBoundingClientRect().top <= line) current = id;
+      for (const el of sections) {
+        if (el.getBoundingClientRect().top <= line) current = el.id;
       }
       setActiveSection(current);
     };
@@ -116,6 +131,18 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
     width: 0,
     visible: false,
   });
+  // Geometry-only for the very first measurement; CSS keys its transition
+  // off `data-settled`. Flipping that attribute true in the SAME commit as
+  // the first real geometry wouldn't work - the transition that applies to
+  // a style change is the one in effect at the new computed style, so if
+  // data-settled already said "true" by the time x/width changed, the
+  // marker would still animate in from the home mark once. Flipping it a
+  // commit later, once geometry is already stable and nothing else is
+  // changing, means the attribute toggle itself has nothing to animate.
+  const [settled, setSettled] = useState(false);
+  useEffect(() => {
+    setSettled(true);
+  }, []);
 
   useLayoutEffect(() => {
     const track = trackRef.current;
@@ -155,13 +182,14 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
                 type="button"
                 className="nav-dock__item nav-dock__item--home"
                 aria-label={t("nav.logoAria")}
+                title="Hillary Esposito"
                 onClick={() => {
                   navigate("/");
                   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
                   window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
                 }}
               >
-                <svg className="logo-mark" width="22" height="22" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                <svg className="logo-mark" width="20" height="20" viewBox="0 0 32 32" fill="none" aria-hidden="true">
                   <path d="M5 13.5 Q15.5 30 27.5 13 Q24 17 19 18.6 Q12 20.4 5 13.5 Z" fill="currentColor" />
                   <circle className="lm-accent" cx="15.5" cy="10.2" r="3.1" />
                 </svg>
@@ -203,6 +231,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
           <span
             className="nav-dock__marker"
             aria-hidden="true"
+            data-settled={settled || undefined}
             style={{
               transform: `translateX(${marker.x}px)`,
               width: `${marker.width}px`,

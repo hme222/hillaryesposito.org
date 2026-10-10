@@ -73,12 +73,22 @@ export default function Modal({
   children,
 }: ModalProps) {
   const ref = useRef<HTMLDialogElement>(null);
+  // Fallback invoker, captured the moment this dialog opens. `returnFocus`
+  // is the caller's explicit choice and always wins when given; this only
+  // covers callers that open the dialog without one (e.g. an event with no
+  // `returnFocus` in its detail) - otherwise Escape leaves focus on <body>.
+  // Re-read on every open rather than trusted once, since whatever had
+  // focus can be removed from the document (or itself closed, e.g. a menu
+  // item inside a popover that also closes) by the time the dialog closes.
+  const fallbackFocusRef = useRef<HTMLElement | null>(null);
 
   // Drive the native dialog from React state.
   useEffect(() => {
     const dlg = ref.current;
     if (!dlg) return;
     if (isOpen && !dlg.open) {
+      const active = document.activeElement;
+      fallbackFocusRef.current = active instanceof HTMLElement && active !== document.body ? active : null;
       dlg.showModal();
       document.body.style.overflow = "hidden";
     } else if (!isOpen && dlg.open) {
@@ -96,7 +106,14 @@ export default function Modal({
     };
     const onCloseEv = () => {
       document.body.style.overflow = "";
-      returnFocus?.focus();
+      const target = returnFocus ?? fallbackFocusRef.current;
+      // Skip a target that's no longer connected to the document (removed)
+      // or that now sits inside a closed/inert ancestor (e.g. a menu that
+      // closed itself) - focusing it would silently drop focus to <body>
+      // anyway, so leave it there deliberately rather than throw.
+      if (target && target.isConnected && !target.closest("[hidden],[inert]")) {
+        target.focus();
+      }
     };
     dlg.addEventListener("cancel", onCancel);
     dlg.addEventListener("close", onCloseEv);

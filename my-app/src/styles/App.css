@@ -370,16 +370,23 @@ select:focus {
   pointer-events: none; /* only the pill inside is interactive */
 }
 .nav-dock__pill {
+  /* Containing block for its own ::after (the opening film's transient
+     grain overlay, riso-page.css) - without it, that absolutely-positioned
+     pseudo would anchor to `.navbar` (the next positioned ancestor) and
+     cover the full-width bar instead of just the pill. */
+  position: relative;
   pointer-events: auto;
   display: inline-flex;
   max-width: calc(100vw - 2 * var(--page-pad));
   padding: 0.3rem 0.35rem;
-  background: color-mix(in srgb, var(--surface-0) 92%, transparent);
+  /* Opaque paper, no blur - this is a print pill, not a glass one. See
+     portfolio-cohesion.css (loads last) for why it's the one sanctioned
+     floating object and for the flat offset shadow it actually prints
+     with; this is only the light-mode fallback if that file is ever
+     absent. */
+  background: var(--surface-0);
   border: 1px solid var(--border-strong, var(--border));
   border-radius: 999px;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 10px 28px -14px rgba(0, 0, 0, 0.3);
 }
 .nav-dock__track {
   position: relative;
@@ -401,21 +408,33 @@ select:focus {
   flex-shrink: 0;
 }
 
-/* The printed route marker: a flat ink pill sliding behind the active item.
-   Transform + width only (position/left never moves), so the slide stays on
-   the compositor. Reuses the site's own green/coral Riso tokens at reduced
-   opacity - no new colour. */
+/* The printed route marker: a flat ink pill sliding behind the active item,
+   printed in the full green (not a tint - a tint measured 1.23:1 against
+   the pill, well under the 3:1 a non-text UI element needs on its own).
+   `left` never moves (transform only handles the slide); `width` does
+   change on an active-item change, which forces layout on this one small
+   absolutely-positioned element - a real cost, but not a compositor-only
+   animation, so that's not claimed here. It only runs on a nav
+   highlight change (rare, user-paced), never a scroll-driven or looping
+   animation, which is where that cost would actually matter. The fill
+   itself, and its coral registration layer (::before/::after), come from
+   portfolio-cohesion.css's shell tokens (loads last); this is only the
+   light-mode fallback if that file is ever absent.
+   First measurement: see `data-settled` below and Navbar.tsx - geometry
+   is set without a transition on mount, so the marker doesn't visibly
+   stretch out from the home mark once before settling on the real active
+   item. */
 .nav-dock__marker {
   position: absolute;
   top: 2px;
   left: 0;
   bottom: 2px;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--shell-green, var(--olive-2)) 16%, transparent);
-  /* A hair of registration offset, like the second ink printed slightly off
-     its mate - subtle, not a glow or a shadow. */
-  box-shadow: 1px 0 0 color-mix(in srgb, var(--shell-coral, #bd3828) 35%, transparent);
+  background: var(--shell-green, var(--olive-2));
   transition: transform 220ms ease-out, width 220ms ease-out, opacity 150ms ease-out;
+}
+.nav-dock__marker:not([data-settled]) {
+  transition: none;
 }
 
 .nav-dock__item {
@@ -425,7 +444,15 @@ select:focus {
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
-  min-height: 40px;
+  /* The WCAG 2.2 AA touch-target floor, as an actual hit-area box rather
+     than padding that happened to add up to it - every item (icon-only
+     home/settings included) meets this at every width, down to 320px.
+     Room for that at the smallest widths comes from tightening the pill's
+     own outer padding and the gap between items, and from dropping the
+     Ask item's decorative route line (ask.css) - never from shrinking an
+     item below this floor. */
+  min-width: 44px;
+  min-height: 44px;
   padding: 0.45rem 0.8rem;
   border-radius: 999px;
   border: none;
@@ -444,10 +471,11 @@ select:focus {
 .nav-dock__item:hover {
   color: var(--fg);
 }
-.nav-dock__item:focus-visible {
-  outline: 2px solid var(--focus);
-  outline-offset: 2px;
-}
+/* No local :focus-visible rule here: the global `:where(...):focus-visible
+   { outline ... !important }` rule (below, "Focus" section) always wins
+   over this one regardless of specificity, because it's !important and
+   this wasn't - so this rule used to be dead weight. The dock gets the
+   same visible ring as everything else by default. */
 .nav-dock__item[aria-current] {
   color: var(--fg);
 }
@@ -474,7 +502,6 @@ select:focus {
     gap: 0;
   }
   .nav-dock__item {
-    min-height: 44px;
     padding: 0.4rem 0.45rem;
     font-size: 0.84rem;
     gap: 0.3rem;
@@ -484,18 +511,24 @@ select:focus {
   }
 }
 
-/* The dock must fit at 360px without wrapping or horizontal scroll - the
-   WCAG 2.2 target-size floor (≥24px, met everywhere above) still allows
-   tightening further than the 44px *touch* target below 400px, where every
-   pixel of horizontal footprint matters. Verified live at 360×844. */
+/* The dock must fit at 320px without wrapping or horizontal scroll, in both
+   EN and ES - every item still meets the 44×44 floor declared on
+   `.nav-dock__item` above (never traded away here). What gives way instead:
+   the pill's own outer padding, the already-zero item gap, and each item's
+   *internal* padding/font-size once its label is wider than 44px on its
+   own (About/Acerca de, Ask/Preguntar) - none of that touches the enforced
+   minimum box. Verified live at 320×844 and 360×844, both languages. */
 @media (max-width: 400px) {
   .nav-dock__pill {
-    padding: 0.2rem 0.15rem;
+    padding: 0.1rem 0.08rem;
   }
   .nav-dock__item {
-    padding: 0.4rem 0.35rem;
-    font-size: 0.8rem;
-    gap: 0.25rem;
+    padding: 0.3rem 0.22rem;
+    font-size: 0.76rem;
+    gap: 0.18rem;
+  }
+  .nav-dock__item--home {
+    padding: 0.28rem;
   }
 }
 
@@ -510,17 +543,29 @@ select:focus {
   position: relative;
 }
 .nav-settings__icon {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
+}
+.nav-settings__triggerLangCode {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: inherit;
 }
 .nav-settings__popover {
   position: absolute;
-  top: calc(100% + 0.6rem);
+  /* Measured from the pill, not the button: the button already sits inset
+     inside the pill's own padding, so anchoring to `100%` of the button
+     left a ~0.6rem gap that was really closer to 0.35rem once the pill's
+     bottom padding was subtracted. Anchoring the popover to the pill
+     itself and letting it overflow past the button's own box keeps the
+     visible gap the single `top` value below actually says. */
+  top: calc(100% + 0.95rem);
   right: 0;
   display: grid;
   gap: 0.1rem;
   min-width: 15rem;
-  padding: 0.35rem;
+  padding: 0.5rem;
   background: var(--surface-1);
   border: 1px solid var(--border-strong, var(--border));
   border-radius: var(--radius-md);
@@ -547,9 +592,14 @@ select:focus {
 .nav-settings__toggle:hover {
   background: color-mix(in srgb, var(--fg) 7%, transparent);
 }
+/* The global focus rule (`:where(...):focus-visible { outline ...
+   !important }`) draws a 3px ring 4px outside the control by default. On
+   this 44px-tall, full-width toggle that reads as a doubled border instead
+   of a ring - pull it inside instead. `:where()` carries no specificity, so
+   matching its own !important needs equal-or-higher specificity on this
+   selector, which `.nav-settings__toggle:focus-visible` already has. */
 .nav-settings__toggle:focus-visible {
-  outline: 2px solid var(--focus);
-  outline-offset: 2px;
+  outline-offset: -3px !important;
 }
 .nav-settings__langCode {
   display: inline-flex;
@@ -1193,22 +1243,15 @@ textarea::placeholder {
   cursor: not-allowed;
 }
 
-/* ---------- Nav dock (dark mode) ---------- */
-/* `.navbar` itself carries no background any more (see the NAV DOCK section
-   above) - only `.nav-dock__pill` does, so dark mode only needs to retint
-   that pill and the item/marker colours, not fight a `.navbar` background
-   war the way the old full-width bar did. */
-:root.dark-mode .nav-dock__pill {
-  background: color-mix(in srgb, var(--surface-0) 90%, transparent);
-  border-color: var(--border-strong, var(--border));
-}
-:root.dark-mode .nav-dock__item {
-  color: var(--text-2);
-}
-:root.dark-mode .nav-dock__item:hover,
-:root.dark-mode .nav-dock__item[aria-current] {
-  color: var(--text-1);
-}
+/* Nav dock dark-mode skin lives in portfolio-cohesion.css's `.dark-mode
+   .nav-dock__*` rules (loads last), not here. A `:root.dark-mode` block
+   used to live at this exact spot and always won regardless of load order
+   - `:root.dark-mode .nav-dock__pill` is (0,3,0) specificity (`:root` +
+   `.dark-mode` + the class), strictly higher than cohesion.css's plain
+   `.dark-mode .nav-dock__pill` at (0,2,0) - so the shell palette never
+   actually rendered in dark mode; this peach-toned block always did,
+   silently, no matter which file loaded last. Deleted rather than
+   retinted, so there's exactly one dark-mode source of truth again. */
 
 
 /* ── Masked scroll-reveal (armed by useReveal; visible by default) ─────── */
@@ -3256,28 +3299,12 @@ textarea::placeholder {
   color: var(--focus) !important;
 }
 
-/* The floating-island masthead was removed on 2026-07-28. Nothing ever applied
-   `.is-floating`, so the condensing pill never ran; portfolio-cohesion.css
-   states the shipped intent — "one masthead, one behavior: a stable editorial
-   rule rather than a transparent bar that turns into a floating island
-   mid-scroll." Its transition also animated max-width/margin/padding/top,
-   which would have forced layout on a sticky, always-present element.
-   `.navbar:not(.is-floating)` below is now simply `.navbar`. */
-
-/* Desktop: at the top the bar recedes to the rule, so the masthead reads as
-   part of the page rather than a floating chrome layer. */
-@media (min-width: 769px) {
-  .navbar {
-    background: transparent !important;
-    border-bottom-color: transparent !important;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-  }
-
-
-}
+/* The floating-island masthead (and the one-off desktop `.navbar` padding
+   override that used to live here, re-shrinking it to 0.5rem top/bottom at
+   ≥769px) was removed on 2026-07-28 and 2026-10-10 respectively. That
+   override was the reason the dock pill sat at a different y on desktop
+   than on phone - the dock has exactly one top padding now (`.navbar`'s own
+   0.85rem, above), at every width. */
 
 .tools-used__icon {
   display: inline-flex;

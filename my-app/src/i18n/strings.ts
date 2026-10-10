@@ -209,7 +209,12 @@ const en = {
   "ask.recruiterLink": "Ask a question",
   // Quiet link near the starters - opens the recruiter panel instead of
   // querying the engine, so it must read as a different kind of action.
-  "ask.ninetySecondLink": "The 90-second version",
+  // Same text as the hero's own link to the same panel (home.riso.recruiterTourLink)
+  // - one name for one destination, said the same way everywhere it's offered.
+  "ask.ninetySecondLink": "Open the 90-second tour",
+  // Hero, next to "Watch the 5-second portfolio opener" - a second, quieter
+  // entry point to the same recruiter panel the Ask dialog's link above opens.
+  "home.riso.recruiterTourLink": "Open the 90-second tour",
 } as const;
 
 export type StringKey = keyof typeof en;
@@ -262,6 +267,9 @@ const es: Partial<Record<StringKey, string>> = {
     "En Memorial Sloan Kettering, rastreé un desvío en papel entre departamentos y propuse un flujo de archivo digital.",
   "home.riso.heroProof": "Los equipos de TI y UX lo implementaron después de que cambié de puesto.",
   "home.riso.openingVisual": "Ver la apertura del portafolio de 5 segundos",
+  // The panel itself stays English-only (lang="en") - the ES link says so,
+  // the same way ask.ninetySecondLink does below.
+  "home.riso.recruiterTourLink": "Abrir el recorrido de 90 segundos (en inglés)",
   "home.riso.primaryWork": "Ver el flujo de trabajo de MSK",
   "home.riso.heroClose": "",
   "home.riso.queueExpand": "Ver la cola completa · 5 elementos",
@@ -393,7 +401,7 @@ const es: Partial<Record<StringKey, string>> = {
   "ask.opensNewTab": "(se abre en una pestaña nueva)",
   "ask.close": "Cerrar",
   "ask.recruiterLink": "Hacer una pregunta",
-  "ask.ninetySecondLink": "La versión de 90 segundos",
+  "ask.ninetySecondLink": "Abrir el recorrido de 90 segundos (en inglés)",
 };
 
 export const STRINGS: { en: typeof en; es: Partial<Record<StringKey, string>> } = { en, es };

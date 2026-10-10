@@ -9,8 +9,6 @@
  * Theme paper + on-* foregrounds are the values defined in riso-page.css.
  */
 
-const LIGHT_PAPER = "#e8ece3";
-const DARK_PAPER = "#14150e";
 const WHITE = "#ffffff"; // light-mode --on-coral
 const DARK_INK = "#14150e"; // dark-mode --on-coral
 const AA_NORMAL = 4.5;
@@ -37,18 +35,6 @@ describe("Riso accent contrast (WCAG AA, normal text)", () => {
   it("global recruiter pill keeps white text over its fixed coral", () => {
     // .recruiter-pill { background: #bd3828; color: #fff } — both themes
     expect(contrast(WHITE, "#bd3828")).toBeGreaterThanOrEqual(AA_NORMAL);
-  });
-
-  it("nav link accent text passes on the nav surface in both themes", () => {
-    // --nav-accent text sits on the themed nav surface
-    expect(contrast("#bd3828", LIGHT_PAPER)).toBeGreaterThanOrEqual(AA_NORMAL);
-    expect(contrast("#ff8c82", DARK_PAPER)).toBeGreaterThanOrEqual(AA_NORMAL);
-  });
-
-  it("resume-hover fill keeps its --nav-accent-ink readable in both themes", () => {
-    // light: white on #bd3828 ; dark: #14150e on #ff8c82
-    expect(contrast(WHITE, "#bd3828")).toBeGreaterThanOrEqual(AA_NORMAL);
-    expect(contrast(DARK_INK, "#ff8c82")).toBeGreaterThanOrEqual(AA_NORMAL);
   });
 
   it("green control text (--on-green) passes on the themed green", () => {

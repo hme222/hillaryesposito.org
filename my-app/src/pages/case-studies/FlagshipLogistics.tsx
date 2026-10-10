@@ -80,7 +80,7 @@ export default function FlagshipLogistics() {
       <RisoDefs />
 
       <nav className="rp-breadcrumb" aria-label="Breadcrumb">
-        <Link to="/">Work</Link> / <span>Medical logistics</span>
+        <Link to="/" className="rp-breadcrumb__name" title="Hillary Esposito">Hillary Esposito</Link> / <Link to="/">Work</Link> / <span>Medical logistics</span>
       </nav>
       <CaseStudyChapters project="Medical logistics" chapters={CHAPTERS} />
       <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />

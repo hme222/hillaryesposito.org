@@ -70,7 +70,7 @@ export default function FlagshipMobbin() {
     <main className="riso-page flagship-page flagship-page--mobbin" lang="en" ref={rootRef}>
       <RisoDefs />
 
-      <nav className="rp-breadcrumb" aria-label="Breadcrumb"><Link to="/">Work</Link> / <span>Mobbin</span></nav>
+      <nav className="rp-breadcrumb" aria-label="Breadcrumb"><Link to="/" className="rp-breadcrumb__name" title="Hillary Esposito">Hillary Esposito</Link> / <Link to="/">Work</Link> / <span>Mobbin</span></nav>
       <CaseStudyChapters project="Mobbin" chapters={CHAPTERS} />
       <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
 

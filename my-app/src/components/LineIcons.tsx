@@ -220,15 +220,25 @@ export const XIcon = (p: IconProps) => (
 );
 
 /**
- * Gear - settings / preferences (replaces the old theme + language controls
- * living loose in the nav)
+ * Sliders - settings / preferences (replaces the old theme + language
+ * controls living loose in the nav). Deliberately NOT a gear: an earlier
+ * version drew a circle with eight radiating rays - the exact silhouette
+ * the popover's own light-mode sun icon already uses one click away,
+ * so the trigger and one of the things it reveals read as the same glyph.
+ * Three sliders share no shape with either theme icon (sun or moon).
  * @status: stable
- * @purpose: Settings-gear line icon used on the nav dock's settings button (components/Navbar.tsx), which opens the dark-mode/language popover (components/NavSettingsPopover.tsx).
+ * @purpose: Settings-sliders line icon used on the nav dock's settings button (components/Navbar.tsx), which opens the dark-mode/language popover (components/NavSettingsPopover.tsx).
  */
-export const GearIcon = (p: IconProps) => (
+export const SettingsSlidersIcon = (p: IconProps) => (
   <Svg {...p}>
-    <circle cx="12" cy="12" r="3" />
-    <path d="M12 4.6v2.3M12 17.1v2.3M19.4 12h-2.3M6.9 12H4.6M17.14 6.86l-1.63 1.63M8.49 15.51l-1.63 1.63M17.14 17.14l-1.63-1.63M8.49 8.49L6.86 6.86" />
+    <path d="M4 7h7" />
+    <circle cx="14.2" cy="7" r="2.1" />
+    <path d="M17.3 7H20" />
+    <path d="M4 12h2.7" />
+    <circle cx="9.8" cy="12" r="2.1" />
+    <path d="M12.9 12H20" />
+    <path d="M4 17h10.7" />
+    <circle cx="17.5" cy="17" r="2.1" />
   </Svg>
 );
 

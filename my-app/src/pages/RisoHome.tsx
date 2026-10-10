@@ -327,6 +327,21 @@ export default function RisoHome() {
               >
                 {t("home.riso.openingVisual")}
               </button>
+              {/* A second, quieter entry point to the recruiter panel, visible
+                  without going through Ask first (the Ask dialog keeps its
+                  own link to the same panel - see AskDialog.tsx). Same text,
+                  same destination, named once in strings.ts. */}
+              <button
+                type="button"
+                className="rp-heroUtility rp-recruiterTourTrigger"
+                onClick={(e) => {
+                  window.dispatchEvent(
+                    new CustomEvent("open-recruiter-panel", { detail: { returnFocus: e.currentTarget } })
+                  );
+                }}
+              >
+                {t("home.riso.recruiterTourLink")}
+              </button>
             </div>
           </div>
         </div>

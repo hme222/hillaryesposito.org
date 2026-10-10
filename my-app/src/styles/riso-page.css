@@ -671,8 +671,18 @@
    (0,2,0) regardless of source order, without adding another class or an
    `!important`. Verified live after the fix: `.navbar`'s computed
    `transition-property` correctly reads `opacity, transform, box-shadow`
-   and its `box-shadow` picks up this rule's declared value again. */
-html.rp-filmChoreo .navbar,
+   and its `box-shadow` picks up this rule's declared value again.
+
+   Historical note (2026-10-10): this group's selector retargeted from
+   `.navbar` to `.nav-dock__pill` when the route dock made `.navbar` itself
+   fully transparent and `.nav-dock__pill` the one actual paper object (see
+   that rule's own comment below). The bug and fix above both happened on
+   `.navbar` and are left as-written for the record; the `html` prefix is
+   kept on the new selector too, though `.nav-dock__pill`'s own resting rule
+   (portfolio-cohesion.css, (0,1,0)) doesn't force the issue the way
+   `.navbar`'s did - keeping the same vocabulary across all three groups
+   matters more here than trimming a now-unnecessary type selector. */
+html.rp-filmChoreo .nav-dock__pill,
 html.rp-filmChoreo .rp-hero__content,
 html.rp-filmChoreo .home-heroProofStack {
   --rp-arrival-ease: cubic-bezier(.22, 1, .36, 1);
@@ -704,18 +714,24 @@ html.rp-filmChoreo .home-heroProofStack {
   animation: rp-arrival-failsafe 1ms linear 1600ms forwards;
 }
 
-/* Navbar: slides down from fully off-screen above into its normal sticky
-   masthead position. Its true resting state has no box-shadow at all —
-   App.css's `.navbar` is a hairline border-bottom + backdrop blur only
-   (confirmed by inspection, no box-shadow declared on it anywhere) — so
-   the shadow below exists purely for the in-transit "paper card" tell and
-   resolves to `none` once arrived, matching what the navbar actually
-   looks like at rest. rotate(-1deg) is round 5's scrapbook tilt — see the
-   "scrapbook texture pass" comment block below for the register it's
-   drawn from. `transform: none` on the --go rule further down already
-   resolves the rotation to 0 along with the translate, so nothing else
-   needs to change for the group to land dead straight. */
-html.rp-filmChoreo .navbar {
+/* Nav dock pill: slides down from fully off-screen above into its normal
+   sticky position. This used to target `.navbar` itself, back when
+   `.navbar` was the full-width visible masthead; the route dock (2026-10-10)
+   made `.navbar` a fully transparent flow-height reservation with no paper,
+   border, or shadow of its own - `.nav-dock__pill` is the one actual paper
+   object now, so that's what the "paper card arriving" tell (and the grain
+   pass below) animates. Its true resting state has its own flat offset
+   shadow (portfolio-cohesion.css), not none - the box-shadow below is a
+   different, larger in-transit shadow for the in-flight tell, and the --go
+   rule further down still resolves it to `none` momentarily before the
+   resting shadow (a plain CSS property, not part of this transition list)
+   simply applies again at its normal specificity. rotate(-1deg) is round
+   5's scrapbook tilt — see the "scrapbook texture pass" comment block below
+   for the register it's drawn from. `transform: none` on the --go rule
+   further down already resolves the rotation to 0 along with the
+   translate, so nothing else needs to change for the group to land dead
+   straight. */
+html.rp-filmChoreo .nav-dock__pill {
   --rp-choreo-delay: 340ms;
   --rp-choreo-dur: 620ms;
   transform: translateY(-100%) rotate(-1deg);
@@ -755,7 +771,7 @@ html.rp-filmChoreo .home-heroProofStack {
   box-shadow: 0 3px 6px rgba(0,0,0,.12), 0 22px 44px -22px rgba(0,0,0,.34);
 }
 
-html.rp-filmChoreo.rp-filmChoreo--go .navbar,
+html.rp-filmChoreo.rp-filmChoreo--go .nav-dock__pill,
 html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content,
 html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack {
   /* The real transition lives here, not on the base hidden-state rule
@@ -811,12 +827,16 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack {
    comma list (see round 4's "Bug 1"), and every selector is prefixed with
    the `html` type selector for the same specificity reason as round 4's
    "Bug 2". */
-html.rp-filmChoreo .navbar::after,
+html.rp-filmChoreo .nav-dock__pill::after,
 html.rp-filmChoreo .rp-hero__content::after,
 html.rp-filmChoreo .home-heroProofStack::after {
   content: "";
   position: absolute;
   inset: 0;
+  /* The pill is rounded, unlike the full-width bar this used to sit on -
+     without this, the grain texture would show as a sharp-cornered
+     rectangle poking past the pill's own rounded ends. */
+  border-radius: inherit;
   z-index: 2;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
@@ -836,13 +856,13 @@ html.rp-filmChoreo .home-heroProofStack::after {
    darkens against a dark background instead of texturing it). `.dark-mode`
    is set on <html> (app/App.tsx), the same element .rp-filmChoreo is on,
    so this is a same-element compound selector, not a descendant one. */
-html.dark-mode.rp-filmChoreo .navbar::after,
+html.dark-mode.rp-filmChoreo .nav-dock__pill::after,
 html.dark-mode.rp-filmChoreo .rp-hero__content::after,
 html.dark-mode.rp-filmChoreo .home-heroProofStack::after {
   mix-blend-mode: screen;
   opacity: .24;
 }
-html.rp-filmChoreo.rp-filmChoreo--go .navbar::after,
+html.rp-filmChoreo.rp-filmChoreo--go .nav-dock__pill::after,
 html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after,
 html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
   transition: opacity var(--rp-choreo-dur, 620ms) ease-out;
@@ -853,7 +873,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 @keyframes rp-arrival-grain-failsafe { to { opacity: 0; } }
 
 @media (prefers-reduced-motion: reduce) {
-  html.rp-filmChoreo .navbar,
+  html.rp-filmChoreo .nav-dock__pill,
   html.rp-filmChoreo .rp-hero__content,
   html.rp-filmChoreo .home-heroProofStack {
     opacity: 1; transform: none; box-shadow: none; transition: none; animation: none;
@@ -863,7 +883,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
      minimal-footprint reduced-motion philosophy of "not present" rather
      than "present but static," and there is no rotation left to neutralize
      since the rule above already collapses transform to none. */
-  html.rp-filmChoreo .navbar::after,
+  html.rp-filmChoreo .nav-dock__pill::after,
   html.rp-filmChoreo .rp-hero__content::after,
   html.rp-filmChoreo .home-heroProofStack::after {
     content: none;
@@ -1252,11 +1272,10 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 /* The route dock replaced the old wordmark/nav-link/resume-pill markup this
    block used to skin (and the floating "Recruiter view" pill below it) -
    its job now lives in portfolio-cohesion.css's `.nav-dock__*` rules, next
-   to the rest of that file's shell-token skin. `--nav-accent`/`-ink` stay
-   defined here only because a future component could still reasonably key
-   off a theme-aware coral the way this one did. */
-.navbar { --nav-accent: #bd3828; --nav-accent-ink: #fff; }
-.dark-mode .navbar { --nav-accent: #ff8c82; --nav-accent-ink: #14150e; }
+   to the rest of that file's shell-token skin. `--nav-accent`/`-ink`, once
+   defined here for a theme-aware coral, had no reader left anywhere in
+   src/ (confirmed via grep before removing) - deleted along with the
+   accentContrast.test.tsx cases that existed only to guard their values. */
 
 /* ---------- shared metadata, chips, numbered list, and notes ---------- */
 .rp-metagrid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 1.1rem 1.5rem; align-items: start;
@@ -2671,11 +2690,26 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 @media (prefers-reduced-motion: reduce) { .rp-woohoo.show { animation: none; } }
 
 /* ---------- breadcrumb ---------- */
+/* Flex + nowrap, not the block-level text flow this used to be: the trail
+   now carries the name ahead of "Work", and wrapping that onto its own
+   line at narrow widths is exactly the stranded-word orphan the house
+   style bans for headlines - the same bar here. The font-size step at
+   ≤400px is the first line of defence; `overflow-x: auto` (the same
+   pattern `.rp-chapters` below uses for its own narrow-width overflow) is
+   the fallback if a long case-study title still doesn't fit. */
 .rp-breadcrumb { max-width: 1080px; margin: 0 auto; padding: 1.1rem var(--sp-gutter) 0;
-  font-family: var(--mono); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  font-family: var(--mono); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+  display: flex; align-items: center; flex-wrap: nowrap; gap: .1rem;
+  overflow-x: auto; scrollbar-width: none; }
+.rp-breadcrumb::-webkit-scrollbar { display: none; }
+.rp-breadcrumb a, .rp-breadcrumb span { flex: 0 0 auto; white-space: nowrap; }
 .rp-breadcrumb a { color: var(--muted); text-decoration: none; display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; }
 .rp-breadcrumb a:hover { color: var(--green); }
+.rp-breadcrumb__name { font-weight: 700; }
 .rp-breadcrumb span { color: var(--ink); }
+@media (max-width: 400px) {
+  .rp-breadcrumb { font-size: .58rem; letter-spacing: .06em; }
+}
 
 /* Sticky so the reader can always see where they are on a long study, and so
    losing your place costs a glance instead of a re-scan. The paper background

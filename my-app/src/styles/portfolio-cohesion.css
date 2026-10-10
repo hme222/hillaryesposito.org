@@ -3,7 +3,16 @@
 
    Canonical shared vocabulary for the current Riso/editorial system.
    This file intentionally loads last so retired global treatments cannot
-   reintroduce floating pills, frosted islands, soft cards, or mixed type.
+   reintroduce frosted islands, soft drop-shadow cards, or mixed type.
+
+   One exception, by design, not by drift: the nav dock's pill
+   (`.nav-dock__*` below) is the single sanctioned floating/detached
+   element on the page. Primary wayfinding has to stay reachable over
+   whatever's scrolling underneath it - that's a job nothing else on a
+   flat print site needs to do, and it's also why the pill still has to
+   read as print (opaque paper, flat offset shadow) rather than glass
+   (blur, soft shadow) to earn the exception. Nothing else gets to float;
+   this is the one controls layer that must.
    ============================================================ */
 
 :root {
@@ -79,24 +88,51 @@
    over App.css's structural rule for `.navbar`/`.nav-dock__*`. Direction C
    superseded the previous "one stable full-width masthead, never a floating
    pill" decision recorded here (owner-approved pivot, 2026-10-10) - the dock
-   is deliberately the detached, top-centre pill the old comment ruled out. */
+   is deliberately the detached, top-centre pill the old comment ruled out,
+   and it's the one sanctioned floating/elevated object on an otherwise flat
+   print site: primary wayfinding has to stay reachable over whatever's
+   scrolling underneath it, which is exactly the job nothing else on the
+   page needs to do. It reads as print, not glass, to earn that exception -
+   opaque paper and a flat offset shadow (the shell's own hairline-plus-
+   offset language), never a blur. */
+/* `--shell-paper`/`--shell-hair` already flip per theme (the `.dark-mode`
+   block at the top of this file) - one rule covers both. */
 .nav-dock__pill {
-  background: color-mix(in srgb, var(--shell-paper) 94%, transparent);
+  background: var(--shell-paper);
   border-color: var(--shell-hair);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 2px 2px 0 color-mix(in srgb, var(--shell-ink) 14%, transparent);
 }
-.dark-mode .nav-dock__pill {
-  background: color-mix(in srgb, var(--shell-paper) 90%, transparent);
-  border-color: var(--shell-hair);
+/* `.navbar` itself is still fully transparent (App.css) outside the pill,
+   so page content - a case study's dark hero headline, the MSK queue's
+   column headers - was showing straight through that band on scroll,
+   right above the case-study `rp-chapters` sticky strip (riso-page.css,
+   `top: 74px`). A paper fade behind the pill (never in front of it - see
+   the z-index below) closes that gap without needing the two sticky
+   layers to agree on an exact shared offset. */
+.navbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    to bottom,
+    var(--shell-paper) 0%,
+    color-mix(in srgb, var(--shell-paper) 80%, transparent) 70%,
+    transparent 100%
+  );
+  pointer-events: none;
 }
 .nav-dock__item {
   color: var(--shell-ink-2);
   font-family: var(--shell-sans);
 }
-.nav-dock__item:hover,
-.nav-dock__item[aria-current] {
+.nav-dock__item:hover {
   color: var(--shell-ink);
+}
+/* The active item sits over the marker's own opaque fill (below), not the
+   pill's paper - it needs the marker's on-color, not the pill's ink. */
+.nav-dock__item[aria-current] {
+  color: var(--shell-paper);
 }
 .nav-dock__item--home {
   color: var(--shell-green);
@@ -107,9 +143,29 @@
 .nav-dock__item--home .lm-accent {
   fill: var(--shell-coral);
 }
+/* Printed flat, in the full shell green, so the marker carries its own
+   ≥3:1 contrast against the pill rather than a 16%-tint that measured
+   1.23:1. The registration layer below (::before, painted first) is a
+   second coral "ink" offset 1px,1px behind the green plate - a hair of
+   misregistration, like the second pass of a two-colour print run, not a
+   glow or drop shadow. */
 .nav-dock__marker {
-  background: color-mix(in srgb, var(--shell-green) 16%, transparent);
-  box-shadow: 1px 0 0 color-mix(in srgb, var(--shell-coral) 35%, transparent);
+  background: none;
+}
+.nav-dock__marker::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: color-mix(in srgb, var(--shell-coral) 22%, transparent);
+  transform: translate(1px, 1px);
+}
+.nav-dock__marker::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--shell-green);
 }
 
 .nav-settings__popover {
@@ -540,7 +596,12 @@ html[lang="es"] .riso-home .rp-clearing { max-width: 78ch; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .navbar,
+  /* `.navbar` used to be listed here too, for the floating-island masthead
+     that transitioned background/padding on scroll. That masthead is gone
+     (App.css) and `.navbar` itself carries no `transition` property any
+     more, so the rule had nothing left to disable - dead weight, not a
+     guard. The dock's own motion (`.nav-dock__marker`) has its own
+     reduced-motion rule in App.css. */
   .riso-home .rp-hero__media .rp-headshot {
     transition: none !important;
   }

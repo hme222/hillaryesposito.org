@@ -19,52 +19,23 @@
    class (App.css) - this rule only adds what's specific to the bird. */
 .ask-bird-nav {
   --coral: var(--rp-accent-l, #bd3828);
+  /* The bird's wing fill reads against the dock pill, not a page
+     background - resolve it to the same shell paper the pill itself is
+     printed on (portfolio-cohesion.css), in both themes. */
+  --paper: var(--shell-paper);
   position: relative;
 }
 .dark-mode .ask-bird-nav {
   --coral: var(--rp-accent-d, #ff8c82);
 }
 
-/* The route: a short coral line with a start dot, like a path on a folded
-   map, running into the bird's feet. Spacing between it, the bird, and the
-   text label comes from `.nav-dock__item`'s own flex gap, so this adds no
-   margin of its own. */
-.ask-bird-nav__route {
-  display: inline-flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-.ask-bird-nav__dot {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--coral);
-  flex-shrink: 0;
-}
-.ask-bird-nav__line {
-  width: 22px;
-  height: 1.5px;
-  margin-left: 2px;
-  background: var(--coral);
-}
-@media (min-width: 769px) {
-  .ask-bird-nav__line {
-    width: 32px;
-  }
-}
-/* Below 400px, every item's horizontal footprint is tight (see App.css's
-   360px-fit rule); the route is the one purely decorative part of this
-   item (aria-hidden, not the only carrier of any state per the taste
-   spec), so it's what gives way first. The bird and the visible "Ask"
-   text stay at every width. */
-@media (max-width: 400px) {
-  .ask-bird-nav__route {
-    display: none;
-  }
-}
+/* The bird already carries the route (a coral line across the wing, drawn
+   into AskBirdIcon) - no separate decorative route line beside it. One
+   optical size with the rest of the dock's icons (cog 20px, home mark
+   20px): 22px. */
 .ask-bird-nav__bird {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   flex-shrink: 0;
   transform-origin: 50% 88%;
   /* One slow gesture per state change, never a loop - same rule as the
@@ -91,32 +62,6 @@
   }
 }
 
-/* First-visit label: decorative duplicate of the button's accessible name
-   (aria-hidden), positioned below the button so it never shifts or overlaps
-   the logo, hamburger, or nav-menu items at any width. */
-.ask-bird-nav__label {
-  position: absolute;
-  top: calc(100% + 0.35rem);
-  right: 0.2rem;
-  padding: 0.2rem 0.5rem;
-  font-family: var(--font-head);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--fg);
-  background: var(--bg);
-  border: 1px solid var(--border-strong, var(--border));
-  border-radius: 4px;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 300ms ease;
-}
-.ask-bird-nav__label.is-visible {
-  opacity: 1;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .ask-bird-nav__bird {
     transition: none;
@@ -126,9 +71,6 @@
   }
   .ask-bird-nav.is-hopping .ask-bird-nav__bird {
     animation: none;
-  }
-  .ask-bird-nav__label {
-    transition: none;
   }
 }
 

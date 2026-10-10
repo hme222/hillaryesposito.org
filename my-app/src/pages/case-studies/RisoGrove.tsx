@@ -224,7 +224,7 @@ export default function RisoGrove() {
       <RisoDefs />
 
       <nav className="rp-breadcrumb" aria-label="Breadcrumb">
-        <Link to="/">Work</Link> / <span>Grove</span>
+        <Link to="/" className="rp-breadcrumb__name" title="Hillary Esposito">Hillary Esposito</Link> / <Link to="/">Work</Link> / <span>Grove</span>
       </nav>
 
       <CaseStudyChapters project="Grove" chapters={CHAPTERS} />

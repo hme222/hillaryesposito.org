@@ -62,7 +62,7 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
       <RisoDefs />
 
       <nav className="rp-breadcrumb" aria-label="Migas de pan">
-        <Link to="/?scrollTo=projects">Trabajo</Link> / <span>{data.title}</span>
+        <Link to="/" className="rp-breadcrumb__name" title="Hillary Esposito">Hillary Esposito</Link> / <Link to="/?scrollTo=projects">Trabajo</Link> / <span>{data.title}</span>
       </nav>
 
       <CaseStudyChapters

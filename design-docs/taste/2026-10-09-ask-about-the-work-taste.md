@@ -136,3 +136,60 @@ still text. See `design-docs/strategy/2026-10-09-ask-about-the-work-strategy.md`
 for the "tool, not a trick" principle this stays inside: still no sparkle,
 no persona, no simulated typing - just a bird finding its way across the
 same map, a little more visibly than before.
+
+## Amendment (2026-10-10): route dock fix round
+
+Second review pass on commit `ae9e688` (the printed route dock) scored
+Craft 5 / Coherence 4 / UX 5 / Accessibility 5, with the touch-target hard
+gate failing. This fix round closed every Must-fix and Craft/Coherence
+finding; the changes below are the ones that revise this taste doc or the
+"never the messenger" nav-entry amendment above, not a full changelog
+(see `design-state.md`'s Decisions Log for that).
+
+- **The first-visit teaching label is retired, not kept.** The amendment
+  above justified it as teaching a first-time visitor what the standalone
+  icon does, "once." In practice the dock's Ask item already carries a
+  visible "Ask" / "Preguntar" text label at every width (never icon-only -
+  that was true even before this fix round), so the duplicate decorative
+  label taught nothing a sighted visitor couldn't already read off the
+  button itself. Removed along with its `localStorage` flag, its CSS, and
+  its tests. The "Never the messenger" principle now reads simply: the
+  bird carries no text of its own, full stop - no first-visit exception.
+- **The route line is gone from beside the bird, not from the bird.** The
+  "route is the detail" principle (thin coral line across the wings) still
+  holds inside `AskBirdIcon` itself - that line is drawn into the SVG and
+  unchanged. What's removed is the *separate* decorative dot-and-line
+  element that used to sit beside the icon in the nav
+  (`.ask-bird-nav__route`); the bird already carries its own route, so a
+  second one next to it was redundant chrome, and dropping it also freed
+  real width the 44px touch-target fix needed at 320px.
+- **Icon optical size set to 22px**, one size down from the dialog's own
+  nav-icon comment ("24px (nav)") and aligned with the rest of the dock's
+  icon family now that the dock has one: cog/sliders 20px, home mark 20px,
+  bird 22px (the bird reads slightly larger on purpose - it's the one
+  character in an otherwise geometric set).
+- **The bird's wing fill now resolves to the dock's own paper** (`--paper:
+  var(--shell-paper)` on `.ask-bird-nav`) instead of the page `--bg` it
+  fell back to before - the nav sits outside any Riso-scoped page, and the
+  fallback predates the dock having a paper colour of its own to key off.
+
+No change to the Emotional Target, the four Aesthetic Principles' core
+tests, the States table, or the Craft Standards' ink/registration/motion
+rules - this amendment only retires the one teaching-label exception the
+previous amendment carved out, and brings sizing in line with the dock
+that now surrounds the bird.
+
+## Decision recorded, not changed: sentence-case dock labels
+
+The dock's own item labels ("Work", "About", "Ask") stay sentence-case
+Archivo while the rest of the site's chrome (breadcrumbs, chapter nav,
+eyebrows) is mono caps. This was a deliberate choice at the dock's original
+build, re-examined and kept during this fix round rather than "fixed" into
+mono caps for consistency: research behind the original build found all
+six reference portfolios in `reference_portfolio_inspiration` (alexwidua,
+jakub.kr, glenn.me, abstract.systems, cali.so, lfs.gd) use sentence-case
+sans labels for primary navigation specifically, reserving mono/caps
+treatment for metadata (breadcrumbs, timestamps, tags) - the dock is
+primary navigation, not metadata, so it keeps the register that
+convention uses. See `design-docs/design-system/registry.md` and
+`design-state.md`'s Decisions Log for the dock's full build record.
