@@ -104,3 +104,35 @@ and legs — rather than the two-ink green/coral print first proposed.
   in build review.
 - Dark theme: add a soft paper drop shadow in CSS (charcoal legs vanish on
   near-black; the bird is decorative so nothing is lost).
+
+## Amendment (2026-10-10): the nav entry becomes a standalone bird
+
+Owner direction, Hillary 2026-10-10: "standalone, kinda moving" - option 3,
+"travels the route." The nav item is no longer the text "Ask" with a small
+bird riding beside it; it's the bird itself, perched on a short route line,
+with no visible text label in steady state. This evolves two of the
+Aesthetic Principles above rather than replacing them:
+
+- **Small and still** still holds as the resting default - the bird does not
+  idle-animate, loop, or breathe. What changes is that a page change now
+  earns one short hop (≤450ms, ease-out, once) along the route line, and
+  hover/focus earns a small head-tilt (≤250ms) - both are still single
+  gestures tied to a real state change, not attention-seeking loops. The "10
+  seconds idle, nothing moves" test still passes with the dialog closed and
+  the nav bird at rest.
+- **Never the messenger** still holds - the bird carries no text of its own
+  in its resting or moving states. The one exception, scoped tightly: a
+  first-visit-only "Ask" / "Preguntar" label (decorative, `aria-hidden`,
+  duplicate of the button's own accessible name) that fades in once, fades
+  out after ~6 seconds or the moment the dialog first opens, and then never
+  shows again (`localStorage` flag). It exists to teach a first-time visitor
+  what the standalone icon does, once - it is not the bird speaking, and it
+  never returns.
+
+Implementation: `src/components/ask/AskBirdNav.tsx` (desktop + mobile top
+bar); the plain-text "Ask about the work" item from the original nav design
+survives unchanged inside the mobile hamburger menu, where list items are
+still text. See `design-docs/strategy/2026-10-09-ask-about-the-work-strategy.md`
+for the "tool, not a trick" principle this stays inside: still no sparkle,
+no persona, no simulated typing - just a bird finding its way across the
+same map, a little more visibly than before.
