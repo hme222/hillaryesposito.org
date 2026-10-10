@@ -61,7 +61,7 @@ function getTabbables(root: HTMLElement): HTMLElement[] {
 }
 /**
  * @status: stable
- * @purpose: Reusable native `<dialog>`-based modal wrapper (focus trap, Escape-to-close, backdrop-click-to-close, body scroll-lock) used by the recruiter panel (components/RecruiterPill.tsx).
+ * @purpose: Reusable native `<dialog>`-based modal wrapper (focus trap, Escape-to-close, backdrop-click-to-close, body scroll-lock) used by the recruiter panel (components/RecruiterPanel.tsx).
  */
 export default function Modal({
   isOpen,

@@ -31,7 +31,7 @@ function prefersReducedMotion(): boolean {
 
 /**
  * @status: stable
- * @purpose: Standalone "Ask about the work" nav control - a 24px paper bird perched on a short coral route line, rendered beside the hamburger in components/Navbar.tsx (desktop and the mobile top bar; the plain-text "Ask about the work" item stays inside the mobile menu list separately). Hops once along the route on client-side route change, tilts its head on hover/focus, and shows a first-visit-only "Ask" label (localStorage `portfolio:ask-label-seen`) that fades in then out or hides the moment the dialog opens. Dispatches the same `open-ask` CustomEvent the rest of the feature uses; all motion is skipped under prefers-reduced-motion.
+ * @purpose: "Ask" item in the nav dock (components/Navbar.tsx) - a 24px paper bird on a short coral route line, beside the visible word "Ask". Hops once along the route on client-side route change, tilts its head on hover/focus, and shows an extra first-visit-only teaching label (localStorage `portfolio:ask-label-seen`) that fades in then out, or hides the moment the dialog opens. Dispatches the same `open-ask` CustomEvent the rest of the feature uses; all motion is skipped under prefers-reduced-motion.
  */
 export default function AskBirdNav() {
   const t = useT();
@@ -101,7 +101,7 @@ export default function AskBirdNav() {
   return (
     <button
       type="button"
-      className={`ask-bird-nav${hopping ? " is-hopping" : ""}${tilted ? " is-tilted" : ""}`}
+      className={`nav-dock__item ask-bird-nav${hopping ? " is-hopping" : ""}${tilted ? " is-tilted" : ""}`}
       aria-label={askLabel}
       title={askLabel}
       onClick={() => {
@@ -117,6 +117,11 @@ export default function AskBirdNav() {
         <span className="ask-bird-nav__line" />
       </span>
       <AskBirdIcon className="ask-bird-nav__bird" />
+      {/* The dock's other items (Work, About, Settings) all carry a visible
+          sentence-case label, so this one does too - "Ask" stays a prefix of
+          the fuller aria-label above, keeping the visible label contained in
+          the accessible name. */}
+      <span className="ask-bird-nav__text">{t("ask.nav")}</span>
       {labelMounted && (
         <span className={`ask-bird-nav__label${labelVisible ? " is-visible" : ""}`} aria-hidden="true">
           {t("ask.nav")}

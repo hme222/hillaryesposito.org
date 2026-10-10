@@ -78,7 +78,7 @@ function revealAnchor(id: string) {
 
 /**
  * @status: stable
- * @purpose: The "Ask about the work" dialog (mounted once in app/App.tsx on the shared Modal): starter questions, a labelled question field, client-side retrieval over the approved knowledge passages, an optional Claude answer from /api/ask, and five states (idle, thinking, answered with sources, passages when the answer step is unavailable, not covered with related links and email). Opened by the `open-ask` CustomEvent from the navbar, mobile menu and recruiter panel; never speaks as Hillary.
+ * @purpose: The "Ask about the work" dialog (mounted once in app/App.tsx on the shared Modal): starter questions, a quiet "The 90-second version" link that closes this dialog and opens the recruiter panel instead of querying the engine, a labelled question field, client-side retrieval over the approved knowledge passages, an optional Claude answer from /api/ask, and five states (idle, thinking, answered with sources, passages when the answer step is unavailable, not covered with related links and email). Opened by the `open-ask` CustomEvent from the nav dock's Ask item and the recruiter panel; never speaks as Hillary.
  */
 export default function AskDialog() {
   const t = useT();
@@ -312,6 +312,16 @@ export default function AskDialog() {
               </li>
             ))}
           </ul>
+
+          {/* A different kind of action from the starters above - this opens
+              the recruiter panel instead of querying the engine, so it stays
+              a quiet link rather than another starter-shaped button. */}
+          <button type="button" className="ask-ninety-link" onClick={() => {
+            close();
+            window.dispatchEvent(new CustomEvent("open-recruiter-panel", { detail: { returnFocus } }));
+          }}>
+            {t("ask.ninetySecondLink")}
+          </button>
 
           <form className="ask-form" onSubmit={onSubmit}>
             <label className="ask-kicker" htmlFor="ask-question">

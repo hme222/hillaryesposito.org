@@ -8,7 +8,7 @@ import React from "react";
  * Decorative: the accessible name on the button that wraps it carries the
  * meaning.
  * @status: stable
- * @purpose: 24px line-drawing of the "Ask about the work" paper bird, decorative only (currentColor outline plus a coral route line). Used by the standalone nav bird button (components/ask/AskBirdNav.tsx), the plain-text "Ask about the work" item kept inside the mobile menu (components/Navbar.tsx), and the recruiter panel's "Ask a question" button (components/RecruiterPill.tsx).
+ * @purpose: 24px line-drawing of the "Ask about the work" paper bird, decorative only (currentColor outline plus a coral route line). Used by the nav dock's Ask item (components/ask/AskBirdNav.tsx) and the recruiter panel's "Ask a question" button (components/RecruiterPanel.tsx).
  */
 export default function AskBirdIcon({ className }: { className?: string }) {
   return (

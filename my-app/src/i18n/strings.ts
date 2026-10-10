@@ -16,7 +16,6 @@ export type Lang = "en" | "es";
 const en = {
   // ── App shell ──
   "app.skip": "Skip to main content",
-  "app.backToTop": "Back to top",
 
   // ── Global footer + recovery ──
   "footer.eyebrow": "Hillary Esposito · Healthcare Product Designer",
@@ -34,17 +33,18 @@ const en = {
   "notFound.home": "Return home",
   "notFound.work": "Browse selected work →",
 
-  // ── Navbar ──
+  // ── Nav dock ──
   "nav.ariaPrimary": "Primary navigation",
   "nav.logoAria": "Go to home",
-  "nav.menuOpen": "Open menu",
-  "nav.menuClose": "Close menu",
+  // Footer still uses these (its own column of links, uppercased in the
+  // source string on purpose — unrelated to the dock below).
   "nav.home": "HOME",
   "nav.work": "WORK",
   "nav.about": "ABOUT",
-  "nav.contact": "CONTACT",
-  // Accented and sentence-case in the source; the nav uppercases it in CSS.
-  // Unaccented "RESUME" reads as the verb to a screen reader.
+  // The dock's own labels: sentence case, no CSS uppercasing, separate keys
+  // from the footer's so changing one never silently changes the other.
+  "nav.dockWork": "Work",
+  "nav.dockAbout": "About",
   "nav.resume": "Résumé",
   "nav.resumeAria": "View résumé (opens in new tab)",
   "nav.themeToDark": "Switch to dark mode",
@@ -53,6 +53,8 @@ const en = {
   // so the "en" entry is deliberately Spanish (and vice versa).
   "nav.langSwitch": "Cambiar a español",
   "nav.langCode": "ES",
+  "nav.settings": "Settings",
+  "nav.settingsAria": "Settings: theme and language",
 
   // ── Home: hero ──
   "home.status": "Available for opportunities",
@@ -184,7 +186,6 @@ const en = {
   // A search tool that writes clearly, not a persona: no "AI" badge, no
   // first person for Hillary, every answer with its sources.
   "ask.nav": "Ask",
-  "ask.navSuffix": "about the work",
   "ask.title": "Ask about the work",
   "ask.intro": "Answers come from the résumé and the published pages, each with its source.",
   "ask.startersLabel": "Try one of these",
@@ -206,6 +207,9 @@ const en = {
   "ask.opensNewTab": "(opens in new tab)",
   "ask.close": "Close",
   "ask.recruiterLink": "Ask a question",
+  // Quiet link near the starters - opens the recruiter panel instead of
+  // querying the engine, so it must read as a different kind of action.
+  "ask.ninetySecondLink": "The 90-second version",
 } as const;
 
 export type StringKey = keyof typeof en;
@@ -214,7 +218,6 @@ export type StringKey = keyof typeof en;
 const es: Partial<Record<StringKey, string>> = {
   // ── App shell ──
   "app.skip": "Saltar al contenido principal",
-  "app.backToTop": "Volver arriba",
 
   // ── Global footer + recovery ──
   "footer.eyebrow": "Hillary Esposito · Diseñadora de productos de salud",
@@ -232,21 +235,22 @@ const es: Partial<Record<StringKey, string>> = {
   "notFound.home": "Volver al inicio",
   "notFound.work": "Ver trabajo seleccionado →",
 
-  // ── Navbar ──
+  // ── Nav dock ──
   "nav.ariaPrimary": "Navegación principal",
   "nav.logoAria": "Ir al inicio",
-  "nav.menuOpen": "Abrir menú",
-  "nav.menuClose": "Cerrar menú",
   "nav.home": "INICIO",
   "nav.work": "TRABAJO",
   "nav.about": "SOBRE MÍ",
-  "nav.contact": "CONTACTO",
+  "nav.dockWork": "Trabajo",
+  "nav.dockAbout": "Acerca de",
   "nav.resume": "CV",
   "nav.resumeAria": "Ver CV (se abre en una pestaña nueva)",
   "nav.themeToDark": "Cambiar a modo oscuro",
   "nav.themeToLight": "Cambiar a modo claro",
   "nav.langSwitch": "Switch to English",
   "nav.langCode": "EN",
+  "nav.settings": "Configuración",
+  "nav.settingsAria": "Configuración: tema e idioma",
 
   // ── Home: hero ──
   "home.status": "Disponible para nuevas oportunidades",
@@ -368,7 +372,6 @@ const es: Partial<Record<StringKey, string>> = {
 
   // ── Ask about the work ──
   "ask.nav": "Preguntar",
-  "ask.navSuffix": "sobre el trabajo",
   "ask.title": "Pregunte sobre el trabajo",
   "ask.intro": "Las respuestas salen del currículum y de las páginas publicadas, cada una con su fuente.",
   "ask.startersLabel": "Pruebe una de estas",
@@ -390,6 +393,7 @@ const es: Partial<Record<StringKey, string>> = {
   "ask.opensNewTab": "(se abre en una pestaña nueva)",
   "ask.close": "Cerrar",
   "ask.recruiterLink": "Hacer una pregunta",
+  "ask.ninetySecondLink": "La versión de 90 segundos",
 };
 
 export const STRINGS: { en: typeof en; es: Partial<Record<StringKey, string>> } = { en, es };

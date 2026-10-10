@@ -6,9 +6,15 @@ const LABEL_SEEN_KEY = "portfolio:ask-label-seen";
 
 let mockPathname = "/";
 
+// `virtual: true` because this environment's Jest/jest-resolve fails to
+// resolve the real "react-router-dom" package from this file's directory
+// (pre-existing, reproduces on a clean checkout with no code changes at all -
+// confirmed via `git stash` before this fix landed). The same symptom never
+// surfaces elsewhere because every other suite that touches the router
+// mocks it the same virtual way (see FlagshipCaseStudies.a11y.test.tsx).
 jest.mock("react-router-dom", () => ({
   useLocation: () => ({ pathname: mockPathname }),
-}));
+}), { virtual: true });
 
 jest.mock("../../app/LanguageContext", () => ({
   useT: () => (key: string) => key,

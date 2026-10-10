@@ -133,7 +133,7 @@ export const NewsIcon = (p: IconProps) => (
 /**
  * Document with lines - resume / download (replaces 📄)
  * @status: stable
- * @purpose: Document line icon used on the "View résumé" button in the recruiter panel (components/RecruiterPill.tsx).
+ * @purpose: Document line icon used on the "View résumé" button in the recruiter panel (components/RecruiterPanel.tsx).
  */
 export const FileTextIcon = (p: IconProps) => (
   <Svg {...p}>
@@ -147,7 +147,7 @@ export const FileTextIcon = (p: IconProps) => (
 /**
  * Envelope - email (replaces ✉️)
  * @status: stable
- * @purpose: Envelope line icon used on the "Email me" button in the recruiter panel (components/RecruiterPill.tsx).
+ * @purpose: Envelope line icon used on the "Email me" button in the recruiter panel (components/RecruiterPanel.tsx).
  */
 export const MailIcon = (p: IconProps) => (
   <Svg {...p}>
@@ -159,7 +159,7 @@ export const MailIcon = (p: IconProps) => (
 /**
  * Briefcase - LinkedIn / professional profile (replaces 💼)
  * @status: stable
- * @purpose: Briefcase line icon used on the "LinkedIn" button in the recruiter panel (components/RecruiterPill.tsx).
+ * @purpose: Briefcase line icon used on the "LinkedIn" button in the recruiter panel (components/RecruiterPanel.tsx).
  */
 export const BriefcaseIcon = (p: IconProps) => (
   <Svg {...p}>
@@ -172,7 +172,7 @@ export const BriefcaseIcon = (p: IconProps) => (
 /**
  * Person - about me / profile (replaces 👤)
  * @status: stable
- * @purpose: Person line icon used on the "About me" button in the recruiter panel (components/RecruiterPill.tsx).
+ * @purpose: Person line icon used on the "About me" button in the recruiter panel (components/RecruiterPanel.tsx).
  */
 export const UserIcon = (p: IconProps) => (
   <Svg {...p}>
@@ -196,8 +196,8 @@ export const LockIcon = (p: IconProps) => (
 
 /**
  * Hamburger - open menu (replaces ☰)
- * @status: stable
- * @purpose: Hamburger line icon used for the closed-state mobile menu toggle in the site navbar (components/Navbar.tsx).
+ * @status: unused — verify before removing
+ * @purpose: Hamburger line icon formerly used for the mobile menu toggle in the site navbar; the route dock (components/Navbar.tsx) has no hamburger or off-canvas menu at any width, so this is not imported anywhere in src/ currently.
  */
 export const MenuIcon = (p: IconProps) => (
   <Svg {...p}>
@@ -210,12 +210,25 @@ export const MenuIcon = (p: IconProps) => (
 /**
  * X - close (replaces ✕)
  * @status: stable
- * @purpose: X line icon used for the open-state mobile menu toggle (components/Navbar.tsx) and the close button in the recruiter panel (components/RecruiterPill.tsx).
+ * @purpose: X line icon used for the close buttons on the recruiter panel (components/RecruiterPanel.tsx) and the Ask dialog (components/ask/AskDialog.tsx).
  */
 export const XIcon = (p: IconProps) => (
   <Svg {...p}>
     <path d="M6 6l12 12" />
     <path d="M18 6L6 18" />
+  </Svg>
+);
+
+/**
+ * Gear - settings / preferences (replaces the old theme + language controls
+ * living loose in the nav)
+ * @status: stable
+ * @purpose: Settings-gear line icon used on the nav dock's settings button (components/Navbar.tsx), which opens the dark-mode/language popover (components/NavSettingsPopover.tsx).
+ */
+export const GearIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <circle cx="12" cy="12" r="3" />
+    <path d="M12 4.6v2.3M12 17.1v2.3M19.4 12h-2.3M6.9 12H4.6M17.14 6.86l-1.63 1.63M8.49 15.51l-1.63 1.63M17.14 17.14l-1.63-1.63M8.49 8.49L6.86 6.86" />
   </Svg>
 );
 

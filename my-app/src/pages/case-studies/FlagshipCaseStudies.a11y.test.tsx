@@ -9,7 +9,7 @@ import RisoHome from "../RisoHome";
 import About from "../AboutMe";
 import NotFoundPage from "../NotFoundPage";
 import Footer from "../../components/Footer";
-import RecruiterPill from "../../components/RecruiterPill";
+import RecruiterPanel from "../../components/RecruiterPanel";
 
 let mockLang = "en";
 
@@ -93,7 +93,7 @@ describe("flagship case-study accessibility", () => {
     ["About", <About />],
     ["404 recovery", <NotFoundPage />],
     ["Global footer", <Footer />],
-    ["Recruiter entry point", <RecruiterPill />],
+    ["Recruiter panel", <RecruiterPanel />],
   ])("%s has no detectable structural accessibility violations", async (_name, page) => {
     await act(async () => {
       root.render(page);
@@ -428,12 +428,16 @@ describe("flagship case-study accessibility", () => {
 
   it("opens a complete, dismissible recruiter scan path", async () => {
     await act(async () => {
-      root.render(<RecruiterPill />);
+      root.render(<RecruiterPanel />);
     });
 
-    const trigger = container.querySelector<HTMLButtonElement>(".recruiter-pill");
-    expect(trigger).not.toBeNull();
-    await act(async () => trigger?.click());
+    // The panel has no trigger of its own any more - the route dock dropped
+    // the floating "Recruiter view" pill, so this fires the same
+    // `open-recruiter-panel` CustomEvent the Ask dialog's "90-second
+    // version" link dispatches.
+    await act(async () => {
+      window.dispatchEvent(new CustomEvent("open-recruiter-panel", { detail: {} }));
+    });
 
     const dialog = container.querySelector<HTMLDialogElement>(".recruiter-panel");
     expect(dialog?.open).toBe(true);
@@ -463,10 +467,11 @@ describe("flagship case-study accessibility", () => {
 
   it("wraps Tab and Shift+Tab inside the open recruiter panel", async () => {
     await act(async () => {
-      root.render(<RecruiterPill />);
+      root.render(<RecruiterPanel />);
     });
-    const trigger = container.querySelector<HTMLButtonElement>(".recruiter-pill");
-    await act(async () => trigger?.click());
+    await act(async () => {
+      window.dispatchEvent(new CustomEvent("open-recruiter-panel", { detail: {} }));
+    });
 
     const dialog = container.querySelector<HTMLDialogElement>(".recruiter-panel");
     expect(dialog?.open).toBe(true);

@@ -1,43 +1,47 @@
-import React, { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { switchLanguageAtCurrentSection, useLanguage, useT } from "../app/LanguageContext";
-import { MenuIcon, XIcon } from "./LineIcons";
-import AskBirdIcon from "./ask/AskBirdIcon";
+import { useLanguage, useT } from "../app/LanguageContext";
 import AskBirdNav from "./ask/AskBirdNav";
+import NavSettingsPopover from "./NavSettingsPopover";
 
 type NavbarProps = {
   darkMode: boolean;
   setDarkMode: Dispatch<SetStateAction<boolean>>;
 };
 
+type ActiveKey = "work" | "about" | null;
+
 /**
  * @status: stable
- * @purpose: Site-wide primary navigation bar rendered in app/App.tsx; handles same-page section scrolling, the mobile off-canvas menu, dark-mode toggle, and language switching.
+ * @purpose: Printed route dock - the site's primary navigation (rendered in app/App.tsx): a sticky, transparent full-width `<nav>` (reserving the same flow height the old full-width bar did) holding one visible, top-centre, detached pill cluster (Home mark, Work, About, the Ask bird, and a Settings disclosure for theme/language) with a sliding "printed route marker" behind whichever item is active. Same layout on desktop and phone - no hamburger, no off-canvas menu. Handles same-page section scrolling and case-study/About active-state tracking; Settings owns the dark-mode and language toggles that used to sit loose in the old full-width bar.
  */
 export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
-  const { lang, setLang } = useLanguage();
   const t = useT();
-  const [menuOpen, setMenuOpen] = useState(false);
+  const { lang } = useLanguage();
   const [activeSection, setActiveSection] = useState<string>("home");
   const navigate = useNavigate();
   const location = useLocation();
-  const menuRef = useRef<HTMLUListElement>(null);
-  const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const dockRef = useRef<HTMLElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const workRef = useRef<HTMLButtonElement>(null);
+  const aboutRef = useRef<HTMLAnchorElement>(null);
+  // Production (vercel.json: "trailingSlash": true) serves every route with
+  // a trailing slash, so a full page load or refresh on /about lands on
+  // /about/ - strip it before comparing, the same idiom usePageTitle.ts
+  // already uses, or a direct visit never lit up the About item or its
+  // aria-current (caught live via Playwright against the built/served site,
+  // not assumed).
+  const normalizedPath = location.pathname.replace(/\/+$/, "") || "/";
   const isHome =
-    location.pathname === "/" ||
-    location.pathname === "" ||
-    location.pathname === "/index.html";
-
-  function close() {
-    setMenuOpen(false);
-  }
+    normalizedPath === "/" ||
+    normalizedPath === "" ||
+    normalizedPath === "/index.html";
 
   // Same-page section nav, fully independent of the hash router.
   // These are <button>s (no href), so the router never intercepts them.
   // On the home page we scroll directly; from any other route we send the
   // user home with a ?scrollTo param that Home reads on mount.
   function scrollToSection(id: string) {
-    close();
     if (!isHome) {
       navigate("/?scrollTo=" + id);
       return;
@@ -45,8 +49,11 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
 
     const el = document.getElementById(id);
     if (!el) return;
-    const navHeight = 80;
-    const y = el.getBoundingClientRect().top + window.scrollY - navHeight;
+    // Measured live rather than a fixed constant: the dock is a compact
+    // floating pill whose height can change slightly across breakpoints
+    // (touch-target padding on phone), unlike the old full-width bar.
+    const navHeight = dockRef.current?.getBoundingClientRect().height ?? 80;
+    const y = el.getBoundingClientRect().top + window.scrollY - navHeight - 12;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     window.scrollTo({ top: y, behavior: reduceMotion ? "auto" : "smooth" });
   }
@@ -95,287 +102,114 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
     };
   }, [location.pathname]);
 
-  useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+  const isOnCaseStudy = normalizedPath.startsWith("/case-study");
+  const workActive = activeSection === "projects" || isOnCaseStudy;
+  const aboutActive = !workActive && (normalizedPath === "/about" || activeSection === "about");
+  const activeKey: ActiveKey = workActive ? "work" : aboutActive ? "about" : null;
 
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [menuOpen]);
+  // The printed route marker: a flat ink pill that slides behind whichever
+  // item is active, measured against the track it sits in rather than
+  // hard-coded, so it tracks real layout (font load, language length
+  // changes, breakpoint changes) instead of an assumed width.
+  const [marker, setMarker] = useState<{ x: number; width: number; visible: boolean }>({
+    x: 0,
+    width: 0,
+    visible: false,
+  });
 
-  // The full-screen mobile menu behaves like a modal surface. Keep page
-  // content and floating utilities out of the accessibility tree while it is
-  // open, then restore them exactly when it closes.
-  useEffect(() => {
-    const targets = [
-      document.getElementById("main-content"),
-      document.querySelector<HTMLElement>(".site-footer"),
-      document.querySelector<HTMLElement>(".recruiter-pill"),
-      document.querySelector<HTMLElement>(".back-to-top"),
-    ].filter((target): target is HTMLElement => Boolean(target));
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    targets.forEach((target) => {
-      target.inert = isMobile && menuOpen;
-    });
-    return () => targets.forEach((target) => {
-      target.inert = false;
-    });
-  }, [menuOpen]);
+  useLayoutEffect(() => {
+    const track = trackRef.current;
+    const target = activeKey === "work" ? workRef.current : activeKey === "about" ? aboutRef.current : null;
 
-  // The mobile menu is an off-canvas drawer (translated off-screen when closed
-  // but still in the DOM). Mark it `inert` while closed on mobile so its links
-  // leave the tab order and accessibility tree - otherwise keyboard users tab
-  // into invisible off-screen links. On desktop the menu is inline and always
-  // interactive, so inert must never apply there.
-  useEffect(() => {
-    const apply = () => {
-      const el = menuRef.current;
-      if (!el) return;
-      const isMobile = window.matchMedia("(max-width: 768px)").matches;
-      el.inert = isMobile && !menuOpen;
-    };
-    apply();
-    window.addEventListener("resize", apply);
-    return () => window.removeEventListener("resize", apply);
-  }, [menuOpen]);
-
-  useEffect(() => {
-    close();
-  }, [location.pathname]);
-
-  // Mobile menu: Escape to close (restoring focus to the toggle), move focus
-  // into the menu on open, and trap Tab within it while it's open.
-  useEffect(() => {
-    if (!menuOpen) return;
-    const menu = menuRef.current;
-    const focusables = menu
-      ? Array.from(
-          menu.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')
-        )
-      : [];
-    focusables[0]?.focus();
-
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        e.preventDefault();
-        close();
-        hamburgerRef.current?.focus();
+    const recalc = () => {
+      if (!track || !target) {
+        setMarker((m) => (m.visible ? { ...m, visible: false } : m));
         return;
       }
-      if (e.key === "Tab" && focusables.length) {
-        const first = focusables[0];
-        const last = focusables[focusables.length - 1];
-        if (e.shiftKey && document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        } else if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
-      }
+      const trackRect = track.getBoundingClientRect();
+      const targetRect = target.getBoundingClientRect();
+      setMarker({ x: targetRect.left - trackRect.left, width: targetRect.width, visible: true });
     };
-    document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
-  }, [menuOpen]);
 
-  const isOnCaseStudy = location.pathname.startsWith("/case-study");
-
-  function navClass(section: string) {
-    if (section === "projects" && isOnCaseStudy) return "nav-link is-active";
-    if (activeSection === section) return "nav-link is-active";
-    return "nav-link";
-  }
+    recalc();
+    window.addEventListener("resize", recalc);
+    // Labels re-measure once webfonts finish loading - the dock mounts
+    // before "Switzer"/the label font is guaranteed ready, so the very
+    // first measurement can be a system-font width.
+    document.fonts?.ready.then(recalc).catch(() => {});
+    return () => window.removeEventListener("resize", recalc);
+    // Depend on `lang` (a primitive), not `t` - `t` is a function, and its
+    // identity only has to stay stable across renders by convention (it
+    // does in the real LanguageContext, memoized on `lang`), not by
+    // contract. Keying off the primitive avoids ever re-running this effect
+    // every render if that memoization assumption is wrong.
+  }, [activeKey, lang]);
 
   return (
-    <nav className="navbar" aria-label={t("nav.ariaPrimary")}>
-      <button
-        className="logo"
-        type="button"
-        aria-label={t("nav.logoAria")}
-        onClick={() => {
-          close();
-          navigate("/");
-          const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-          window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
-        }}
-      >
-        <svg className="logo-mark" width="23" height="23" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-          <path d="M5 13.5 Q15.5 30 27.5 13 Q24 17 19 18.6 Q12 20.4 5 13.5 Z" fill="currentColor" />
-          <circle className="lm-accent" cx="15.5" cy="10.2" r="3.1" />
-        </svg>
-        <span className="logo-text">Hillary Esposito</span>
-      </button>
+    <nav ref={dockRef} className="navbar nav-dock" aria-label={t("nav.ariaPrimary")}>
+      <div className="nav-dock__pill">
+        <div className="nav-dock__track" ref={trackRef}>
+          <ul className="nav-dock__items">
+            <li>
+              <button
+                type="button"
+                className="nav-dock__item nav-dock__item--home"
+                aria-label={t("nav.logoAria")}
+                onClick={() => {
+                  navigate("/");
+                  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+                  window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+                }}
+              >
+                <svg className="logo-mark" width="22" height="22" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                  <path d="M5 13.5 Q15.5 30 27.5 13 Q24 17 19 18.6 Q12 20.4 5 13.5 Z" fill="currentColor" />
+                  <circle className="lm-accent" cx="15.5" cy="10.2" r="3.1" />
+                </svg>
+              </button>
+            </li>
 
-      <div className="nav-controls">
-        {/* Standalone bird button: always visible (desktop row and mobile top
-            bar), independent of the collapsible menu below. The plain-text
-            "Ask about the work" item stays inside that menu for mobile. */}
-        <AskBirdNav />
+            <li>
+              <button
+                ref={workRef}
+                type="button"
+                className="nav-dock__item"
+                aria-current={workActive ? "true" : undefined}
+                onClick={() => scrollToSection("projects")}
+              >
+                {t("nav.dockWork")}
+              </button>
+            </li>
 
-        <button
-          ref={hamburgerRef}
-          className="hamburger"
-          type="button"
-          aria-label={menuOpen ? t("nav.menuClose") : t("nav.menuOpen")}
-          aria-expanded={menuOpen}
-          aria-controls="primary-menu"
-          onClick={() => setMenuOpen((m) => !m)}
-        >
-          {menuOpen ? <XIcon /> : <MenuIcon />}
-        </button>
+            <li>
+              <Link
+                ref={aboutRef}
+                to="/about"
+                className="nav-dock__item"
+                aria-current={normalizedPath === "/about" ? "page" : aboutActive ? "true" : undefined}
+              >
+                {t("nav.dockAbout")}
+              </Link>
+            </li>
 
-        <ul
-          ref={menuRef}
-          id="primary-menu"
-          className={`nav-menu ${menuOpen ? "open" : ""}`}
-        >
-        <li>
-          <button
-            type="button"
-            className={navClass("projects")}
-            aria-current={activeSection === "projects" || isOnCaseStudy ? "true" : undefined}
-            onClick={() => scrollToSection("projects")}
-          >
-            {t("nav.work")}
-          </button>
-        </li>
+            <li>
+              <AskBirdNav />
+            </li>
 
-        <li>
-          <Link
-            to="/about"
-            className={`nav-link nav-link--about${location.pathname === "/about" || activeSection === "about" ? " is-active" : ""}`}
-            aria-current={location.pathname === "/about" ? "page" : activeSection === "about" ? "true" : undefined}
-            onClick={close}
-          >
-            {t("nav.about")}
-          </Link>
-        </li>
+            <li>
+              <NavSettingsPopover darkMode={darkMode} setDarkMode={setDarkMode} />
+            </li>
+          </ul>
 
-        <li>
-          <button
-            type="button"
-            className={navClass("contact")}
-            aria-current={activeSection === "contact" ? "true" : undefined}
-            onClick={() => scrollToSection("contact")}
-          >
-            {t("nav.contact")}
-          </button>
-        </li>
-
-        <li>
-          <a
-            href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"
-            className="nav-link nav-link--resume"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={t("nav.resumeAria")}
-            onClick={close}
-          >
-            {t("nav.resume")}
-          </a>
-        </li>
-
-        {/* Text entry for the mobile menu list only (hidden on desktop in
-            ask.css - the standalone AskBirdNav button above is the desktop
-            entry point). Always opened from inside the open mobile menu, so
-            return focus to the hamburger once it closes. */}
-        <li className="nav-ask-text-entry">
-          <button
-            type="button"
-            className="nav-link nav-link--ask"
-            onClick={() => {
-              close();
-              window.dispatchEvent(
-                new CustomEvent("open-ask", {
-                  detail: { returnFocus: hamburgerRef.current, entry: "menu" },
-                })
-              );
+          <span
+            className="nav-dock__marker"
+            aria-hidden="true"
+            style={{
+              transform: `translateX(${marker.x}px)`,
+              width: `${marker.width}px`,
+              opacity: marker.visible ? 1 : 0,
             }}
-          >
-            <AskBirdIcon className="nav-link__bird" />
-            <span>{t("ask.nav")}</span>
-            <span className="sr-only"> {t("ask.navSuffix")}</span>
-          </button>
-        </li>
-
-        <li className="nav-recruiter-entry">
-          <button
-            type="button"
-            className="nav-link nav-link--recruiter"
-            onClick={() => {
-              close();
-              // The menu item that opened the panel is hidden once the menu
-              // closes, so hand the panel the hamburger to return focus to.
-              window.dispatchEvent(
-                new CustomEvent("open-recruiter-panel", {
-                  detail: { returnFocus: hamburgerRef.current },
-                })
-              );
-            }}
-          >
-            {t("recruiter.pill")}
-          </button>
-        </li>
-
-        <li className="nav-back-to-top-entry">
-          <button
-            type="button"
-            className="nav-link nav-link--back-to-top"
-            onClick={() => {
-              close();
-              const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-              window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
-            }}
-          >
-            {t("app.backToTop")}
-          </button>
-        </li>
-
-        <li>
-          <button
-            className="theme-btn"
-            type="button"
-            aria-label={darkMode ? t("nav.themeToLight") : t("nav.themeToDark")}
-            onClick={() => {
-              setDarkMode((d) => !d);
-              close();
-            }}
-          >
-            {darkMode ? (
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="4.2" />
-                <path d="M12 2v2.2M12 19.8V22M4.22 4.22l1.56 1.56M18.22 18.22l1.56 1.56M2 12h2.2M19.8 12H22M4.22 19.78l1.56-1.56M18.22 5.78l1.56-1.56" />
-              </svg>
-            ) : (
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-              </svg>
-            )}
-          </button>
-        </li>
-
-        <li>
-          {/* Language toggle - shows the language you'd switch TO. The label
-              (and lang attr) are in that target language so screen readers
-              pronounce it correctly. */}
-          <button
-            className="theme-btn lang-btn"
-            type="button"
-            lang={lang === "en" ? "es" : "en"}
-            aria-label={t("nav.langSwitch")}
-            onClick={() => {
-              switchLanguageAtCurrentSection(setLang, lang === "en" ? "es" : "en");
-              close();
-            }}
-          >
-            {t("nav.langCode")}
-          </button>
-        </li>
-        </ul>
+          />
+        </div>
       </div>
     </nav>
   );

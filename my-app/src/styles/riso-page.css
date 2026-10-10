@@ -1249,27 +1249,14 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
    case-study system (Archivo wordmark, Space Mono links, coral accent).
    Every page is now riso, so these load globally.
    ============================================================ */
-.navbar .logo-text { font-family: "Archivo", -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 800; letter-spacing: -.01em; }
-.navbar .logo-tagline { font-family: "Space Mono", ui-monospace, monospace; letter-spacing: .14em; text-transform: uppercase; }
-/* Coral accent, theme-aware: a dark coral on the light nav / light coral on the
-   dark nav so link text hits 4.5:1 both ways; --nav-accent-ink flips the
-   foreground on filled coral surfaces (resume hover, recruiter pill). */
+/* The route dock replaced the old wordmark/nav-link/resume-pill markup this
+   block used to skin (and the floating "Recruiter view" pill below it) -
+   its job now lives in portfolio-cohesion.css's `.nav-dock__*` rules, next
+   to the rest of that file's shell-token skin. `--nav-accent`/`-ink` stay
+   defined here only because a future component could still reasonably key
+   off a theme-aware coral the way this one did. */
 .navbar { --nav-accent: #bd3828; --nav-accent-ink: #fff; }
 .dark-mode .navbar { --nav-accent: #ff8c82; --nav-accent-ink: #14150e; }
-.navbar .nav-link { font-family: "Space Mono", ui-monospace, monospace; text-transform: uppercase; letter-spacing: .1em; font-size: .72rem; }
-.navbar .nav-link::after { background: var(--nav-accent); }
-.navbar .nav-link:hover { color: var(--nav-accent); }
-.navbar .nav-link.is-active { color: var(--nav-accent); }
-.navbar .nav-link.is-active::after { background: var(--nav-accent); }
-.navbar .nav-link--resume { font-family: "Space Mono", ui-monospace, monospace; text-transform: uppercase; letter-spacing: .08em; }
-.navbar .nav-link--resume:hover { background: var(--nav-accent); border-color: var(--nav-accent); color: var(--nav-accent-ink); }
-/* Recruiter pill keeps a fixed dark coral in both themes — it is a self-contained
-   filled control, so white text clears 4.5:1 (5.58:1) regardless of the page behind it. */
-.recruiter-pill, .recruiter-pill--unscrolled { min-height: 44px; background: #bd3828 !important; color: #fff !important; border-color: #bd3828 !important; box-shadow: 0 8px 22px -6px rgba(189,56,40,.5) !important; }
-.recruiter-pill:hover { filter: brightness(1.07); }
-.recruiter-pill__icon { color: #fff !important; }
-/* nav logo mark — nudge the olive dot toward the coral system */
-.navbar .lm-accent { fill: var(--nav-accent); }
 
 /* ---------- shared metadata, chips, numbered list, and notes ---------- */
 .rp-metagrid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 1.1rem 1.5rem; align-items: start;

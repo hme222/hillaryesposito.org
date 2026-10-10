@@ -383,12 +383,6 @@
   font-size: clamp(2rem, 3.5vw, 3.7rem);
 }
 
-.recruiter-pill {
-  border: 1px solid color-mix(in srgb, white 38%, transparent);
-  border-radius: var(--r-plate);
-  text-transform: uppercase;
-  letter-spacing: .12em;
-}
 .recruiter-panel {
   width: min(520px, 100vw);
   height: 100dvh;
@@ -528,7 +522,6 @@
 
 
 @media (prefers-reduced-motion: reduce) {
-  .recruiter-pill,
   .recruiter-panel__project {
     transition: none;
   }
