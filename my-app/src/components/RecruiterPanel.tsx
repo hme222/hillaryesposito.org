@@ -9,13 +9,16 @@ import AskBirdIcon from "./ask/AskBirdIcon";
  * A slide-out panel with a 90-second project breakdown. It has no trigger of
  * its own - the route dock dropped the floating "Recruiter view" pill, so
  * this just listens for the global `open-recruiter-panel` event and renders
- * the panel. Current dispatchers: the Ask dialog's "The 90-second version"
- * link (components/ask/AskDialog.tsx); any future one (e.g. a hero banner)
- * can dispatch the same event without this component changing.
+ * the panel. Current dispatchers, all the same "Open the 90-second tour"
+ * text and event shape: the Ask dialog's own link
+ * (components/ask/AskDialog.tsx), the home hero's quiet utility link
+ * (pages/RisoHome.tsx), and the breadcrumb row on every case-study page,
+ * the Spanish case-study component, and About - any future one can
+ * dispatch the same event without this component changing.
  */
 /**
  * @status: stable
- * @purpose: Recruiter panel (mounted in app/App.tsx) - a modal summarizing selected case studies and contact links. Renders only the panel; it listens for the global `open-recruiter-panel` CustomEvent rather than owning a trigger of its own (the route dock replaced the old floating "Recruiter view" pill with the Ask dialog's "The 90-second version" link).
+ * @purpose: Recruiter panel (mounted in app/App.tsx) - a modal summarizing selected case studies and contact links. Renders only the panel; it listens for the global `open-recruiter-panel` CustomEvent rather than owning a trigger of its own (the route dock replaced the old floating "Recruiter view" pill with the Ask dialog's "Open the 90-second tour" link).
  */
 export default function RecruiterPanel() {
   const navigate = useNavigate();
@@ -53,8 +56,17 @@ export default function RecruiterPanel() {
         <header className="recruiter-panel__header">
           <div>
             <p className="recruiter-panel__eyebrow">90-second tour</p>
+            {/* Explicit break at the real phrase boundary (name, then role) -
+                CLAUDE.md bans a headline that wraps into an orphaned single
+                word on its own line, which plain wrapping did here at both
+                1440 and 390 (the panel is a fixed-width slide-out, so its
+                content column is roughly the same measure at every
+                viewport). The CSS clamp on `.recruiter-panel__title` keeps
+                "Healthcare Product Designer" itself on one line at the
+                panel's narrowest width instead of this break accidentally
+                creating its own second, three-line wrap. */}
             <h2 id="recruiter-panel-title" className="recruiter-panel__title">
-              Hillary Esposito, Healthcare Product Designer
+              Hillary Esposito,<br />Healthcare Product Designer
             </h2>
           </div>
           <button
@@ -112,7 +124,7 @@ export default function RecruiterPanel() {
                onClick={() => {
                  // Close this panel and hand the Ask dialog the same
                  // return-focus target this panel was given - see
-                 // AskDialog's symmetric handoff for the "90-second version"
+                 // AskDialog's symmetric handoff for the "Open the 90-second tour"
                  // link for why this stays an explicit value rather than
                  // null.
                  setOpen(false);

@@ -50,12 +50,16 @@
 .ask-bird-nav.is-hopping .ask-bird-nav__bird {
   animation: askBirdNavHop 450ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
+/* Start and end at rest (the bird's un-animated resting transform is
+   translate(0,0) rotate(0deg)) - starting at translate(-7px,0) used to jump
+   there the instant the `is-hopping` class landed, a hard discontinuity from
+   the resting position rather than a hop beginning from it. */
 @keyframes askBirdNavHop {
   0% {
-    transform: translate(-7px, 0) rotate(0deg);
+    transform: translate(0, 0) rotate(0deg);
   }
   45% {
-    transform: translate(-2px, -5px) rotate(-4deg);
+    transform: translate(2px, -5px) rotate(-4deg);
   }
   100% {
     transform: translate(0, 0) rotate(0deg);

@@ -80,11 +80,21 @@ describe("Navbar (printed route dock)", () => {
     const items = Array.from(container.querySelectorAll(".nav-dock__items > li"));
     expect(items).toHaveLength(5);
     expect(items[0].querySelector(".nav-dock__item--home")).not.toBeNull();
-    expect(items[1].querySelector("button")?.textContent).toBe("nav.dockWork");
+    expect(items[1].querySelector("a")?.textContent).toBe("nav.dockWork");
     expect(items[2].querySelector("a")?.getAttribute("href")).toBe("/about");
     expect(items[2].querySelector("a")?.textContent).toBe("nav.dockAbout");
     expect(items[3].querySelector(".ask-bird-nav")).not.toBeNull();
     expect(items[4].querySelector(".nav-dock__item--settings")).not.toBeNull();
+  });
+
+  it("Home and Work are real links, not button-only controls", async () => {
+    await render();
+    const home = container.querySelector(".nav-dock__item--home");
+    expect(home?.tagName).toBe("A");
+    expect(home?.getAttribute("href")).toBe("/");
+    const work = Array.from(container.querySelectorAll("a")).find((a) => a.textContent === "nav.dockWork");
+    expect(work?.tagName).toBe("A");
+    expect(work?.getAttribute("href")).toBe("/?scrollTo=projects");
   });
 
   it("has no résumé, contact, recruiter, or back-to-top items", async () => {
@@ -116,10 +126,10 @@ describe("Navbar (printed route dock)", () => {
     await render();
     const marker = container.querySelector<HTMLElement>(".nav-dock__marker");
     expect(marker?.style.opacity).toBe("1");
-    const workButton = Array.from(container.querySelectorAll("button")).find(
-      (b) => b.textContent === "nav.dockWork"
+    const workLink = Array.from(container.querySelectorAll("a")).find(
+      (a) => a.textContent === "nav.dockWork"
     );
-    expect(workButton?.getAttribute("aria-current")).toBe("true");
+    expect(workLink?.getAttribute("aria-current")).toBe("true");
   });
 
   it("shows the marker on About for a trailing-slash /about/ URL (production serves every route this way)", async () => {
@@ -131,23 +141,52 @@ describe("Navbar (printed route dock)", () => {
     expect(aboutLink?.getAttribute("aria-current")).toBe("page");
   });
 
-  it("Work navigates with ?scrollTo=projects from a non-home route", async () => {
+  it("Work is a real link to ?scrollTo=projects from a non-home route (no manual scroll intercept)", async () => {
     mockPathname = "/about";
     await render();
-    const workButton = Array.from(container.querySelectorAll("button")).find(
-      (b) => b.textContent === "nav.dockWork"
-    );
-    await act(async () => workButton?.click());
-    expect(mockNavigate).toHaveBeenCalledWith("/?scrollTo=projects");
+    const workLink = Array.from(container.querySelectorAll("a")).find(
+      (a) => a.textContent === "nav.dockWork"
+    ) as HTMLAnchorElement | undefined;
+    expect(workLink?.getAttribute("href")).toBe("/?scrollTo=projects");
+    // Away from home, the Link's own navigation should run - clicking it
+    // must NOT call preventDefault (which the component only does when
+    // already on the home page).
+    const event = new MouseEvent("click", { bubbles: true, cancelable: true });
+    await act(async () => {
+      workLink?.dispatchEvent(event);
+    });
+    expect(event.defaultPrevented).toBe(false);
   });
 
-  it("the Home item navigates to / and has no visible name text", async () => {
+  it("Work intercepts the click and scrolls directly when already on home", async () => {
+    mockPathname = "/";
+    await render();
+    const workLink = Array.from(container.querySelectorAll("a")).find(
+      (a) => a.textContent === "nav.dockWork"
+    ) as HTMLAnchorElement | undefined;
+    const event = new MouseEvent("click", { bubbles: true, cancelable: true });
+    await act(async () => {
+      workLink?.dispatchEvent(event);
+    });
+    expect(event.defaultPrevented).toBe(true);
+  });
+
+  it("the Home item is a real link to / with no visible name text", async () => {
     mockPathname = "/about";
     await render();
-    const home = container.querySelector<HTMLButtonElement>(".nav-dock__item--home");
+    const home = container.querySelector<HTMLAnchorElement>(".nav-dock__item--home");
+    expect(home?.tagName).toBe("A");
+    expect(home?.getAttribute("href")).toBe("/");
     expect(home?.getAttribute("aria-label")).toBe("nav.logoAria");
     expect(home?.textContent?.trim()).toBe("");
-    await act(async () => home?.click());
-    expect(mockNavigate).toHaveBeenCalledWith("/");
+  });
+
+  it("marks the Home item aria-current=page and shows the marker on it when on / at the top", async () => {
+    mockPathname = "/";
+    await render();
+    const home = container.querySelector(".nav-dock__item--home");
+    expect(home?.getAttribute("aria-current")).toBe("page");
+    const marker = container.querySelector<HTMLElement>(".nav-dock__marker");
+    expect(marker?.style.opacity).toBe("1");
   });
 });

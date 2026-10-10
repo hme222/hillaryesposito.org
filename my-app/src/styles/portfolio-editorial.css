@@ -394,11 +394,27 @@
   padding: 1.75rem clamp(1.25rem, 5vw, 2.5rem) 1.5rem;
 }
 .recruiter-panel__title {
+  /* Explicit break at the real phrase boundary (name, then role) lives in
+     the markup (RecruiterPanel.tsx: "Hillary Esposito,<br/>Healthcare
+     Product Designer") - CLAUDE.md bans a headline wrapping into an
+     orphaned single word on its own line, which plain natural wrapping did
+     here at both 1440 and 390 (this rule, not App.css's same-named one,
+     is the one that actually wins the cascade - loaded after it with equal
+     specificity). `text-wrap: balance` alone doesn't guarantee that: it
+     only rebalances lines natural wrapping ALREADY produced, it can't force
+     a break at a specific word. The fixed size below (down from
+     `var(--ts-title)`, ~25.6px at 390) is the largest that keeps
+     "Healthcare Product Designer" itself on ONE line within the panel's
+     narrowest real content width (390 viewport, ~289px after the header's
+     padding and close button) - confirmed live, ~23px of margin to spare.
+     The panel never exceeds 520px regardless of viewport, so this same
+     fixed size reads comfortably smaller at 1440 too, never needing a
+     second breakpoint. */
   text-wrap: balance;
   font-family: var(--font-editorial);
-  font-size: var(--ts-title);
+  font-size: 1.1875rem;
   letter-spacing: -.024em;
-  line-height: 1;
+  line-height: 1.15;
 }
 .recruiter-panel__close {
   border: 1px solid var(--border);

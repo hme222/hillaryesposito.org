@@ -145,6 +145,47 @@ describe("flagship case-study accessibility", () => {
     expect(container.textContent).toContain("not attributed solely to this filing workflow");
   });
 
+  it("the breadcrumb row's tour trigger dispatches open-recruiter-panel with returnFocus (EN and ES)", async () => {
+    await act(async () => {
+      root.render(<FlagshipMSK />);
+    });
+    const handler = jest.fn();
+    window.addEventListener("open-recruiter-panel", handler);
+    const trigger = container.querySelector<HTMLButtonElement>(".rp-breadcrumbTour");
+    expect(trigger?.textContent).toBe("Open the 90-second tour");
+    await act(async () => trigger?.click());
+    expect(handler).toHaveBeenCalledTimes(1);
+    const detail = (handler.mock.calls[0][0] as CustomEvent).detail;
+    expect(detail.returnFocus).toBe(trigger);
+    window.removeEventListener("open-recruiter-panel", handler);
+
+    // Same control, ES case study (SpanishCaseStudy.tsx) - the string is
+    // the translated one, and the breadcrumb's own final crumb uses the
+    // short organisation name, not the page's full headline.
+    mockLang = "es";
+    await act(async () => {
+      root.render(<FlagshipMSK />);
+    });
+    const esTrigger = container.querySelector<HTMLButtonElement>(".rp-breadcrumbTour");
+    expect(esTrigger?.textContent).toBe("Abrir el recorrido de 90 segundos (en inglés)");
+    const breadcrumb = container.querySelector(".rp-breadcrumb");
+    expect(breadcrumb?.textContent).toContain("Memorial Sloan Kettering");
+    expect(breadcrumb?.textContent).not.toContain("Una cola de archivo reemplazó");
+  });
+
+  it("About's breadcrumb row also carries the tour trigger", async () => {
+    await act(async () => {
+      root.render(<About />);
+    });
+    const trigger = container.querySelector<HTMLButtonElement>(".rp-breadcrumbTour");
+    expect(trigger?.textContent).toBe("Open the 90-second tour");
+    const handler = jest.fn();
+    window.addEventListener("open-recruiter-panel", handler);
+    await act(async () => trigger?.click());
+    expect(handler).toHaveBeenCalledTimes(1);
+    window.removeEventListener("open-recruiter-panel", handler);
+  });
+
   it("labels Grove redesign work as testable direction with retest pending", async () => {
     await act(async () => {
       root.render(<RisoGrove />);

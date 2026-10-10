@@ -78,7 +78,7 @@ function revealAnchor(id: string) {
 
 /**
  * @status: stable
- * @purpose: The "Ask about the work" dialog (mounted once in app/App.tsx on the shared Modal): starter questions, a quiet "The 90-second version" link that closes this dialog and opens the recruiter panel instead of querying the engine, a labelled question field, client-side retrieval over the approved knowledge passages, an optional Claude answer from /api/ask, and five states (idle, thinking, answered with sources, passages when the answer step is unavailable, not covered with related links and email). Opened by the `open-ask` CustomEvent from the nav dock's Ask item and the recruiter panel; never speaks as Hillary.
+ * @purpose: The "Ask about the work" dialog (mounted once in app/App.tsx on the shared Modal): starter questions, a quiet "Open the 90-second tour" link that closes this dialog and opens the recruiter panel instead of querying the engine, a labelled question field, client-side retrieval over the approved knowledge passages, an optional Claude answer from /api/ask, and five states (idle, thinking, answered with sources, passages when the answer step is unavailable, not covered with related links and email). Opened by the `open-ask` CustomEvent from the nav dock's Ask item and the recruiter panel; never speaks as Hillary.
  */
 export default function AskDialog() {
   const t = useT();

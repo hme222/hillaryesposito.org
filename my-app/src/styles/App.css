@@ -347,6 +347,18 @@ select:focus {
   align-items: center;
   z-index: 9999;
 } /* ========================= NAV DOCK ========================= */
+:root {
+  /* The pill's own real bottom edge, as a distance from the viewport top
+     (Navbar.tsx sets this from `.nav-dock__pill`'s own
+     `getBoundingClientRect().bottom` on mount, resize, and webfont load) -
+     so anything sitting just under the dock - the case-study
+     `.rp-chapters` sticky strip (riso-page.css) is the one example today -
+     can derive its own offset from this one value instead of a hard-coded
+     px guess that silently drifts whenever the pill's own padding changes
+     at a breakpoint. The static fallback below is only for the instant
+     before that JS measurement runs. */
+  --dock-h: 69px;
+}
 /* Direction C: a detached, top-centre pill cluster, not a full-width bar.
    `.navbar` itself stays `position: sticky; top: 0; width: 100%` and fully
    transparent - its only job is reserving the flow height a header always
@@ -360,7 +372,11 @@ select:focus {
   position: sticky;
   top: 0;
   width: 100%;
-  padding: 0.85rem var(--page-pad);
+  /* `--sp-gutter`, not `--page-pad` - the dock is a compact floating pill,
+     not a full-width bar whose content needs to line up with the page's own
+     text measure. `--page-pad` is wider than it needs at the narrow end,
+     eating into the room the pill needs for its own touch targets. */
+  padding: 0.85rem var(--sp-gutter);
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -377,7 +393,7 @@ select:focus {
   position: relative;
   pointer-events: auto;
   display: inline-flex;
-  max-width: calc(100vw - 2 * var(--page-pad));
+  max-width: calc(100vw - 2 * var(--sp-gutter));
   padding: 0.3rem 0.35rem;
   /* Opaque paper, no blur - this is a print pill, not a glass one. See
      portfolio-cohesion.css (loads last) for why it's the one sanctioned
@@ -484,15 +500,16 @@ select:focus {
   padding: 0.5rem;
   color: var(--olive-2);
 }
-.dark-mode .nav-dock__item--home {
-  color: var(--olive-1);
-}
 .nav-dock__item--home:hover {
   color: var(--olive-2);
 }
-.dark-mode .nav-dock__item--home:hover {
-  color: var(--olive-1);
-}
+/* No `.dark-mode .nav-dock__item--home` override here on purpose: it used
+   to beat portfolio-cohesion.css's `.nav-dock__item--home { color:
+   var(--shell-green) }` on specificity alone (two classes vs one) even
+   though that file loads last, so dark mode kept painting the home mark
+   `--olive-1` (a peach, not the shell green) regardless of theme. Deleting
+   it lets the lower-specificity shell-token rule win in both themes, the
+   same way the light-mode rule above already does. */
 
 @media (max-width: 480px) {
   .nav-dock__pill {
@@ -514,13 +531,23 @@ select:focus {
 /* The dock must fit at 320px without wrapping or horizontal scroll, in both
    EN and ES - every item still meets the 44×44 floor declared on
    `.nav-dock__item` above (never traded away here). What gives way instead:
-   the pill's own outer padding, the already-zero item gap, and each item's
-   *internal* padding/font-size once its label is wider than 44px on its
-   own (About/Acerca de, Ask/Preguntar) - none of that touches the enforced
-   minimum box. Verified live at 320×844 and 360×844, both languages. */
-@media (max-width: 400px) {
+   the pill's own outer padding, each item's *internal* padding/font-size
+   once its label is wider than 44px on its own (About/Acerca de, Ask/
+   Preguntar), and - unlike the tier above - a small deliberate 2px item gap
+   rather than zero: at this width the items' own horizontal padding is thin
+   enough that zero gap read as adjacent labels/targets merging into one
+   shape, so the marker's own fill is inset 1px on this tier too
+   (portfolio-cohesion.css) rather than filling the item's full box edge to
+   edge. Moved from 400px to 360px (2026-10-10, fix round 2) - at 400px this
+   tier's own tighter padding was reaching down into 390px, where it left
+   only ~9.9px between adjacent labels; 480px's looser padding (zero gap,
+   more internal padding) already clears 12px there on its own. */
+@media (max-width: 360px) {
   .nav-dock__pill {
     padding: 0.1rem 0.08rem;
+  }
+  .nav-dock__items {
+    gap: 2px;
   }
   .nav-dock__item {
     padding: 0.3rem 0.22rem;
@@ -554,12 +581,13 @@ select:focus {
 }
 .nav-settings__popover {
   position: absolute;
-  /* Measured from the pill, not the button: the button already sits inset
-     inside the pill's own padding, so anchoring to `100%` of the button
-     left a ~0.6rem gap that was really closer to 0.35rem once the pill's
-     bottom padding was subtracted. Anchoring the popover to the pill
-     itself and letting it overflow past the button's own box keeps the
-     visible gap the single `top` value below actually says. */
+  /* `.nav-settings` (the button's own wrapper, not the pill) is the nearest
+     positioned ancestor - it carries its own `position: relative` above,
+     which is what `100%` below actually measures from. An earlier version
+     of this comment claimed the popover anchored to the pill itself; it
+     never did, and nothing here needs it to - the wrapper's box already
+     matches the button's own, so `top`/`right` read the same as anchoring
+     to the button would. */
   top: calc(100% + 0.95rem);
   right: 0;
   display: grid;
@@ -568,8 +596,11 @@ select:focus {
   padding: 0.5rem;
   background: var(--surface-1);
   border: 1px solid var(--border-strong, var(--border));
-  border-radius: var(--radius-md);
-  box-shadow: 0 10px 28px -10px rgba(0, 0, 0, 0.3);
+  border-radius: var(--r-plate, var(--radius-md));
+  /* Flat print shadow, matching the pill's own (portfolio-cohesion.css) -
+     a soft blurred rgba shadow read as the one glass/card object on an
+     otherwise flat print page. */
+  box-shadow: 2px 2px 0 color-mix(in srgb, var(--shell-ink, var(--fg)) 14%, transparent);
   z-index: 1002;
 }
 .nav-settings__toggle {
@@ -586,6 +617,10 @@ select:focus {
   font-size: 0.88rem;
   font-weight: 500;
   text-align: left;
+  /* The ES theme row ("Cambiar a modo oscuro") must stay one line at 390px -
+     the popover's own min-width above gives it room; this stops it wrapping
+     if a future label is still longer than that floor accounts for. */
+  white-space: nowrap;
   cursor: pointer;
   transition: background-color 0.15s ease;
 }
@@ -604,19 +639,24 @@ select:focus {
 .nav-dock__item:focus-visible {
   outline-offset: -3px !important;
 }
-.nav-settings__langCode {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.2em;
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--muted);
+/* One fixed-width column for every toggle's leading glyph (the theme
+   icon's own raw <svg>, and the language row's GlobeIcon) so both rows'
+   labels start at the same x regardless of which glyph is wider - matches
+   the trigger's own icon box (`.nav-settings__icon`, 20px; this one's 18px
+   to match the raw theme SVGs already hard-coded at that size). */
+.nav-settings__toggle-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
 }
 @media (max-width: 480px) {
   .nav-settings__popover {
     right: -0.3rem;
-    min-width: 13rem;
+    /* Wide enough for the longest row at this width without wrapping - the
+       ES theme row ("Cambiar a modo oscuro") was wrapping onto a second
+       line inside the previous 13rem floor once the icon column and the
+       toggle's own horizontal padding were subtracted from it. */
+    min-width: 15.5rem;
   }
 }
 
@@ -1598,6 +1638,12 @@ textarea::placeholder {
   background: var(--rp-coral);
 }
 .recruiter-panel__title {
+  /* Never actually applied: portfolio-editorial.css declares the same
+     selector at equal specificity and loads after this file, so its rule
+     wins the cascade for every property below - that file (not this one)
+     carries the real fix for the title's line-break/size. Left as the
+     light-mode-fallback-style baseline only, matching this file's own
+     stated convention for the dock rules above. */
   margin: 0;
   font-family: "Archivo", -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 850;

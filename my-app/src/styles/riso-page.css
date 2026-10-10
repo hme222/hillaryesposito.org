@@ -790,6 +790,21 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack {
   animation: none;
 }
 @keyframes rp-arrival-failsafe { to { opacity: 1; transform: none; box-shadow: none; } }
+/* The shared rule and keyframe above both resolve to `box-shadow: none`,
+   which is correct for `.rp-hero__content`/`.home-heroProofStack` (neither
+   has a resting shadow of its own) but wrong for `.nav-dock__pill`, whose
+   true resting state is its own flat offset shadow (portfolio-cohesion.css),
+   not none - landing on `none` for even one frame/one failsafe path let the
+   shadow visibly pop in a beat after the pill itself did. Both overrides
+   below share this rule's selectors' specificity and come later in source,
+   so they win without needing `!important`. */
+html.rp-filmChoreo.rp-filmChoreo--go .nav-dock__pill {
+  box-shadow: 2px 2px 0 color-mix(in srgb, var(--shell-ink) 14%, transparent);
+}
+html.rp-filmChoreo .nav-dock__pill {
+  animation: rp-arrival-failsafe-pill 1ms linear 1600ms forwards;
+}
+@keyframes rp-arrival-failsafe-pill { to { opacity: 1; transform: none; box-shadow: 2px 2px 0 color-mix(in srgb, var(--shell-ink) 14%, transparent); } }
 
 /* ---------- scrapbook texture pass (round 5) ---------- */
 /* Owner, after seeing round 4's slide-and-settle working: "ok i see the
@@ -1332,7 +1347,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 }
 .rp-recruiter-link:hover { color: var(--coral); text-underline-offset: .5em; }
 .rp-heroUtility { display: inline-flex; align-items: center; min-height: 44px; padding: .45rem .2rem;
-  border: 0; background: transparent; color: var(--muted); font: 700 .62rem/1.3 var(--mono);
+  border: 0; background: transparent; color: var(--muted); font: 700 .75rem/1.3 var(--mono);
   letter-spacing: .07em; text-transform: uppercase; text-decoration: underline;
   text-decoration-thickness: 1px; text-underline-offset: .32em; cursor: pointer; }
 .rp-heroUtility:hover { color: var(--ink); text-underline-offset: .48em; }
@@ -2697,9 +2712,27 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
    ≤400px is the first line of defence; `overflow-x: auto` (the same
    pattern `.rp-chapters` below uses for its own narrow-width overflow) is
    the fallback if a long case-study title still doesn't fit. */
-.rp-breadcrumb { max-width: 1080px; margin: 0 auto; padding: 1.1rem var(--sp-gutter) 0;
+/* Row wrapping the breadcrumb trail and the quiet recruiter-tour trigger
+   (`.rp-breadcrumbTour` below) that sits at the end of it on every case-study
+   page and About. `flex-wrap: wrap` on the OUTER row, not on `.rp-breadcrumb`
+   itself, is deliberate: the trail keeps its own internal nowrap+scroll
+   behaviour for a long title (unchanged), while the trigger - a differently-
+   sized, differently-purposed control - drops to its own line on a narrow
+   phone instead of either overflowing or getting squeezed into the trail's
+   horizontal scroller with it. */
+.rp-breadcrumbRow {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 1.1rem var(--sp-gutter) 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem;
+}
+.rp-breadcrumb { max-width: none; margin: 0; padding: 0;
   font-family: var(--mono); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
   display: flex; align-items: center; flex-wrap: nowrap; gap: .5rem;
+  flex: 1 1 auto; min-width: 0;
   overflow-x: auto; scrollbar-width: none; }
 .rp-breadcrumb::-webkit-scrollbar { display: none; }
 .rp-breadcrumb a, .rp-breadcrumb span { flex: 0 0 auto; white-space: nowrap; }
@@ -2707,14 +2740,24 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 .rp-breadcrumb a:hover { color: var(--green); }
 .rp-breadcrumb__name { font-weight: 700; }
 .rp-breadcrumb span { color: var(--ink); }
+/* Reuses `.rp-heroUtility` (the hero's own "Open the 90-second tour" link)
+   wholesale for type/underline/touch-target - only positioning is added
+   here. `flex: 0 0 auto` so the row above wraps it to its own line rather
+   than shrinking it or forcing the breadcrumb trail to scroll alongside
+   it. */
+.rp-breadcrumbTour { flex: 0 0 auto; padding-block: 0; }
 @media (max-width: 400px) {
   .rp-breadcrumb { font-size: .58rem; letter-spacing: .06em; }
 }
 
 /* Sticky so the reader can always see where they are on a long study, and so
    losing your place costs a glance instead of a re-scan. The paper background
-   is required now that content scrolls underneath it. */
-.rp-chapters { position: sticky; top: 74px; z-index: 5;
+   is required now that content scrolls underneath it. `top` derives from
+   `--dock-h` (the dock's own real measured height, set in Navbar.tsx) plus
+   2px for the pill's own flat offset shadow and 12px of intended clearance
+   below it - one shared value instead of a hard-coded 74px that only ever
+   matched one breakpoint and silently drifted at every other. */
+.rp-chapters { position: sticky; top: calc(var(--dock-h, 74px) + 14px); z-index: 5;
   max-width: 1080px; margin: .35rem auto 1rem; padding: .3rem var(--sp-gutter);
   display: flex; align-items: center; flex-wrap: wrap; gap: .35rem .55rem; font-family: var(--mono);
   font-size: .69rem; letter-spacing: .035em;

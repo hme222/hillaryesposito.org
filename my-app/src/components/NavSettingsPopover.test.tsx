@@ -71,6 +71,25 @@ describe("NavSettingsPopover", () => {
     expect(popover()).toBeNull();
   });
 
+  it("the trigger's accessible name contains its own visible language code (WCAG 2.5.3)", async () => {
+    await render();
+    const visibleCode = button()?.querySelector(".nav-settings__triggerLangCode")?.textContent;
+    expect(visibleCode).toBe("EN");
+    expect(button()?.getAttribute("aria-label")).toContain(visibleCode as string);
+    // Not aria-hidden any more - the visible text itself should also be
+    // reachable in the accessible-name computation, not just duplicated
+    // into the aria-label by hand.
+    expect(button()?.querySelector(".nav-settings__triggerLangCode")?.getAttribute("aria-hidden")).toBeNull();
+  });
+
+  it("the popover's language row uses a globe icon, not a second language-code chip", async () => {
+    await render();
+    await open();
+    const languageToggle = popover()?.querySelectorAll("button")[1];
+    expect(languageToggle?.querySelector(".nav-settings__langCode")).toBeNull();
+    expect(languageToggle?.querySelector(".nav-settings__toggle-icon")).not.toBeNull();
+  });
+
   it("opens on click, moves focus to the first control, and toggles closed on a second click", async () => {
     await render();
     await open();

@@ -9,7 +9,7 @@ type NavbarProps = {
   setDarkMode: Dispatch<SetStateAction<boolean>>;
 };
 
-type ActiveKey = "work" | "about" | null;
+type ActiveKey = "home" | "work" | "about" | null;
 
 // Candidate section ids for the home-page scroll tracker below. This is a
 // set, not an order - see the effect's comment for why the walk order is
@@ -28,7 +28,8 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   const location = useLocation();
   const dockRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const workRef = useRef<HTMLButtonElement>(null);
+  const homeRef = useRef<HTMLAnchorElement>(null);
+  const workRef = useRef<HTMLAnchorElement>(null);
   const aboutRef = useRef<HTMLAnchorElement>(null);
   // Production (vercel.json: "trailingSlash": true) serves every route with
   // a trailing slash, so a full page load or refresh on /about lands on
@@ -42,10 +43,13 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
     normalizedPath === "" ||
     normalizedPath === "/index.html";
 
-  // Same-page section nav, fully independent of the hash router.
-  // These are <button>s (no href), so the router never intercepts them.
-  // On the home page we scroll directly; from any other route we send the
-  // user home with a ?scrollTo param that Home reads on mount.
+  // Same-page section nav. Home and Work are real `<Link>`s now (so a
+  // right-click/open-in-new-tab, or landing on the page without JS, still
+  // gets somewhere real) - their own onClick handlers call this directly and
+  // preventDefault when already on the home page, bypassing the router for
+  // the scroll. From any OTHER route, the Link's own navigation runs
+  // instead, sending the user home with a ?scrollTo param that Home reads
+  // on mount.
   function scrollToSection(id: string) {
     if (!isHome) {
       navigate("/?scrollTo=" + id);
@@ -120,7 +124,11 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   const isOnCaseStudy = normalizedPath.startsWith("/case-study");
   const workActive = activeSection === "projects" || isOnCaseStudy;
   const aboutActive = !workActive && (normalizedPath === "/about" || activeSection === "about");
-  const activeKey: ActiveKey = workActive ? "work" : aboutActive ? "about" : null;
+  // Home gets the marker too, when the home page is scrolled to its own top
+  // section - it's a real nav state (the user is "at Home"), not just the
+  // logo/wordmark it used to be treated as.
+  const homeActive = !workActive && !aboutActive && isHome && activeSection === "home";
+  const activeKey: ActiveKey = workActive ? "work" : aboutActive ? "about" : homeActive ? "home" : null;
 
   // The printed route marker: a flat ink pill that slides behind whichever
   // item is active, measured against the track it sits in rather than
@@ -140,13 +148,50 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   // commit later, once geometry is already stable and nothing else is
   // changing, means the attribute toggle itself has nothing to animate.
   const [settled, setSettled] = useState(false);
+  // Re-run every time the marker's visibility flips, not just once on mount:
+  // the mount-only version left `settled` true forever after the first
+  // paint, so any LATER hide-then-reappear (leaving every tracked section,
+  // e.g. on /ask, then coming back) replayed the same stretch-from-stale-
+  // geometry bug the mount guard was meant to prevent. Hiding resets
+  // `settled` to false immediately (the marker is invisible - nothing to
+  // see animate); the next time it becomes visible, that commit's geometry
+  // paints with `settled` already false (no transition - see the CSS
+  // `:not([data-settled])` rule), and only once that's painted does this
+  // effect flip `settled` back to true, one commit later, with nothing left
+  // for the attribute flip itself to animate. A continuous slide (visible
+  // the whole time, just a new x/width target) never hits this branch, so
+  // slides between items keep animating exactly as before.
   useEffect(() => {
-    setSettled(true);
-  }, []);
+    if (!marker.visible) {
+      setSettled(false);
+      return;
+    }
+    // One real animation frame, not a plain synchronous flip: a passive
+    // effect calling `setSettled(true)` directly can land close enough
+    // behind the layout effect's own geometry commit (sub-millisecond,
+    // confirmed live via instrumented traces) that the browser never gets
+    // a distinct style recalc/paint at `settled=false` to lock in
+    // "transition: none" for - the geometry and the settled flip end up
+    // read together as one change, animating anyway. Waiting a real
+    // `requestAnimationFrame` guarantees at least one paint happens at the
+    // new geometry while still unsettled before this flips it back on.
+    const id = window.requestAnimationFrame(() => setSettled(true));
+    return () => window.cancelAnimationFrame(id);
+  }, [marker.visible]);
+
+  // Holds whatever `recalc` the effect below most recently created, so the
+  // mount-only webfont-ready subscription (further down) can always call
+  // the CURRENT one instead of a stale closure bound to whichever
+  // `activeKey` happened to be active when fonts finished loading.
+  const recalcRef = useRef<() => void>(() => {});
 
   useLayoutEffect(() => {
     const track = trackRef.current;
-    const target = activeKey === "work" ? workRef.current : activeKey === "about" ? aboutRef.current : null;
+    const target =
+      activeKey === "work" ? workRef.current
+      : activeKey === "about" ? aboutRef.current
+      : activeKey === "home" ? homeRef.current
+      : null;
 
     const recalc = () => {
       if (!track || !target) {
@@ -158,12 +203,9 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
       setMarker({ x: targetRect.left - trackRect.left, width: targetRect.width, visible: true });
     };
 
+    recalcRef.current = recalc;
     recalc();
     window.addEventListener("resize", recalc);
-    // Labels re-measure once webfonts finish loading - the dock mounts
-    // before "Switzer"/the label font is guaranteed ready, so the very
-    // first measurement can be a system-font width.
-    document.fonts?.ready.then(recalc).catch(() => {});
     return () => window.removeEventListener("resize", recalc);
     // Depend on `lang` (a primitive), not `t` - `t` is a function, and its
     // identity only has to stay stable across renders by convention (it
@@ -172,40 +214,101 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
     // every render if that memoization assumption is wrong.
   }, [activeKey, lang]);
 
+  // Labels re-measure once webfonts finish loading - the dock mounts before
+  // "Switzer"/the label font is guaranteed ready, so the very first
+  // measurement can be a system-font width. Mount-only (`[]`), not part of
+  // the effect above: `document.fonts.ready` is a promise that resolves
+  // ONCE, early in the page's life, but calling `.then()` on an
+  // ALREADY-resolved promise still queues its callback as a fresh microtask
+  // every time - subscribing inside the per-`activeKey` effect above meant
+  // every later nav change (not just the first) re-queued one of these,
+  // landing a beat after that change's own `settled` had already flipped
+  // back to true and firing a redundant `setMarker` call while the marker
+  // was legitimately settled - which is to say, with a real transition
+  // active - reigniting exactly the stretch this file exists to prevent.
+  // Confirmed live via instrumented traces: every `activeKey` change was
+  // producing a second, late `recalc()` call whose own `settled` read back
+  // `true`, immediately after the correct first call's `false`.
+  useEffect(() => {
+    document.fonts?.ready.then(() => recalcRef.current()).catch(() => {});
+  }, []);
+
+  // Publish the pill's own real bottom edge (distance from the viewport top,
+  // not `.navbar`'s own box) as a CSS custom property, so sticky secondary
+  // nav (the case-study `.rp-chapters` strip) can derive its offset from one
+  // shared value instead of a hard-coded px guess that silently drifts
+  // whenever the pill's padding changes at a breakpoint (riso-page.css reads
+  // `--dock-h`). Deliberately the PILL's own rect, not `.navbar`'s: `.navbar`
+  // reserves extra flow height below the pill (its own bottom padding, same
+  // as its top) that the pill itself doesn't occupy - measuring the navbar
+  // instead counted that empty padding as part of the "dock", pushing the
+  // chapters strip noticeably further down than the intended ~12-14px past
+  // the pill's actual visible edge. Same resize/font-ready triggers as the
+  // marker's own remeasure above, since both react to the same layout
+  // changes.
+  useLayoutEffect(() => {
+    const publishDockHeight = () => {
+      const bottom = document.querySelector(".nav-dock__pill")?.getBoundingClientRect().bottom;
+      if (bottom) document.documentElement.style.setProperty("--dock-h", `${bottom}px`);
+    };
+    publishDockHeight();
+    window.addEventListener("resize", publishDockHeight);
+    document.fonts?.ready.then(publishDockHeight).catch(() => {});
+    return () => window.removeEventListener("resize", publishDockHeight);
+  }, []);
+
   return (
     <nav ref={dockRef} className="navbar nav-dock" aria-label={t("nav.ariaPrimary")}>
       <div className="nav-dock__pill">
         <div className="nav-dock__track" ref={trackRef}>
           <ul className="nav-dock__items">
             <li>
-              <button
-                type="button"
+              <Link
+                ref={homeRef}
+                to="/"
                 className="nav-dock__item nav-dock__item--home"
                 aria-label={t("nav.logoAria")}
                 title="Hillary Esposito"
-                onClick={() => {
-                  navigate("/");
-                  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-                  window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+                aria-current={homeActive ? "page" : undefined}
+                onClick={(e) => {
+                  // Already home: a normal Link click would still push the
+                  // same route onto history, but it does nothing for the one
+                  // thing clicking the home mark while already home should
+                  // do - scroll back to the top. Handle that ourselves and
+                  // skip the router; from anywhere else, let the Link
+                  // navigate normally.
+                  if (isHome) {
+                    e.preventDefault();
+                    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+                    window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+                  }
                 }}
               >
                 <svg className="logo-mark" width="20" height="20" viewBox="0 0 32 32" fill="none" aria-hidden="true">
                   <path d="M5 13.5 Q15.5 30 27.5 13 Q24 17 19 18.6 Q12 20.4 5 13.5 Z" fill="currentColor" />
                   <circle className="lm-accent" cx="15.5" cy="10.2" r="3.1" />
                 </svg>
-              </button>
+              </Link>
             </li>
 
             <li>
-              <button
+              <Link
                 ref={workRef}
-                type="button"
+                to="/?scrollTo=projects"
                 className="nav-dock__item"
                 aria-current={workActive ? "true" : undefined}
-                onClick={() => scrollToSection("projects")}
+                onClick={(e) => {
+                  // Already home: scroll directly instead of letting the
+                  // Link round-trip through a URL param the home page has
+                  // to read back out on mount.
+                  if (isHome) {
+                    e.preventDefault();
+                    scrollToSection("projects");
+                  }
+                }}
               >
                 {t("nav.dockWork")}
-              </button>
+              </Link>
             </li>
 
             <li>

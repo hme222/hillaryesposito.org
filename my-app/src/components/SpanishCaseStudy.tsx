@@ -10,6 +10,11 @@ import "../styles/riso-page.css";
 
 export type SpanishCaseStudyData = {
   title: string;
+  /** Short organisation/product name for the breadcrumb trail's final crumb
+   * - matches the EN case study's own short crumb (e.g. "Memorial Sloan
+   * Kettering", "Grove", "Mobbin") instead of the full, much longer
+   * headline `title` carries for the page's own H1 and <title>. */
+  breadcrumb: string;
   meta: string;
   intro: string;
   stats: { label: string; value: string }[];
@@ -61,9 +66,20 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
     <main className="riso-page spanish-riso-case" aria-label={`${data.title}, estudio de caso`} lang="es">
       <RisoDefs />
 
-      <nav className="rp-breadcrumb" aria-label="Migas de pan">
-        <Link to="/" className="rp-breadcrumb__name" title="Hillary Esposito">Hillary Esposito</Link> / <Link to="/?scrollTo=projects">Trabajo</Link> / <span>{data.title}</span>
-      </nav>
+      <div className="rp-breadcrumbRow">
+        <nav className="rp-breadcrumb" aria-label="Migas de pan">
+          <Link to="/" className="rp-breadcrumb__name" title="Hillary Esposito">Hillary Esposito</Link> / <Link to="/?scrollTo=projects">Trabajo</Link> / <span>{data.breadcrumb}</span>
+        </nav>
+        <button
+          type="button"
+          className="rp-heroUtility rp-breadcrumbTour"
+          onClick={(e) =>
+            window.dispatchEvent(new CustomEvent("open-recruiter-panel", { detail: { returnFocus: e.currentTarget } }))
+          }
+        >
+          Abrir el recorrido de 90 segundos (en inglés)
+        </button>
+      </div>
 
       <CaseStudyChapters
         project={data.title}

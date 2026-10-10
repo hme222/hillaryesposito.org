@@ -439,7 +439,7 @@ Validation (2026-10-09, production build in Chrome): first visit plays; refresh 
 
 ## Structural options
 
-1. **Match the chrome** - set `.nav-dock__item` labels (Work, About, Ask) in the site's mono-caps register, same as breadcrumbs, chapter nav, and eyebrows. Rejected: every nav label would need letter-spacing/uppercase tuning to stay legible at the 44px touch-target sizes the dock enforces, and primary navigation read noticeably colder and more "systems" in a live comparison.
+1. **Match the chrome** - set `.nav-dock__item` labels (Work, About, Ask) in the site's mono-caps register, same as breadcrumbs, chapter nav, and eyebrows. Rejected: every nav label would need letter-spacing/uppercase tuning to stay legible at the 44px touch-target sizes the dock enforces, and the reference research behind option 2 below had already settled on sentence-case for primary navigation specifically - no mono-caps variant of the dock was ever built to compare live. (Corrected 2026-10-10, fix round 2: an earlier version of this line claimed the mono-caps option "read noticeably colder... in a live comparison" - no such comparison happened, as the Validation line below has said all along.)
 2. **Sentence-case Archivo, matching reference convention** - keep the dock's labels in the same sentence-case sans the hero/body text already uses. **Selected** (shipped with the original dock build, `ae9e688`; recorded here during the first fix round after two independent reviews both flagged it as an unexplained inconsistency).
 
 Default: One type register for all navigational/metadata chrome (mono caps), per the site's general house style.

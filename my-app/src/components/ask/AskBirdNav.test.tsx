@@ -56,7 +56,7 @@ describe("AskBirdNav", () => {
   it("exposes the accessible name 'Ask about the work' via aria-label", async () => {
     await act(async () => root.render(<AskBirdNav />));
     // useT is mocked to the identity function, so the key itself stands in
-    // for the EN string "Ask about the work" / ES "Pregunte sobre el trabajo".
+    // for the EN string "Ask about the work" / ES "Preguntar sobre el trabajo".
     expect(button()?.getAttribute("aria-label")).toBe("ask.title");
     expect(button()?.getAttribute("title")).toBe("ask.title");
   });

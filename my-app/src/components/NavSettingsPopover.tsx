@@ -1,7 +1,7 @@
 // src/components/NavSettingsPopover.tsx
 import React, { Dispatch, SetStateAction, useEffect, useId, useRef, useState } from "react";
 import { switchLanguageAtCurrentSection, useLanguage, useT } from "../app/LanguageContext";
-import { SettingsSlidersIcon } from "./LineIcons";
+import { SettingsSlidersIcon, GlobeIcon } from "./LineIcons";
 
 type NavSettingsPopoverProps = {
   darkMode: boolean;
@@ -84,7 +84,7 @@ export default function NavSettingsPopover({ darkMode, setDarkMode }: NavSetting
         className="nav-dock__item nav-dock__item--settings"
         aria-expanded={open}
         aria-controls={popoverId}
-        aria-label={t("nav.settingsAria")}
+        aria-label={`${t("nav.settingsAria")} (${lang.toUpperCase()})`}
         title={t("nav.settings")}
         onClick={() => setOpen((o) => !o)}
       >
@@ -92,8 +92,13 @@ export default function NavSettingsPopover({ darkMode, setDarkMode }: NavSetting
         {/* The current language, visible as text - not just the gloss in the
             popover's own toggle - so the trigger discloses what it holds
             (theme + language) rather than only a generic settings glyph.
-            lang is already "en"/"es"; no extra translation key needed. */}
-        <span className="nav-settings__triggerLangCode" aria-hidden="true">
+            lang is already "en"/"es"; no extra translation key needed. Not
+            aria-hidden: WCAG 2.5.3 (Label in Name) needs this visible code
+            inside the accessible name, so the name above composes it in
+            explicitly rather than relying on this text alone (an aria-label
+            on the button always wins name computation over its visible
+            content, hidden or not). */}
+        <span className="nav-settings__triggerLangCode">
           {lang.toUpperCase()}
         </span>
       </button>
@@ -112,12 +117,12 @@ export default function NavSettingsPopover({ darkMode, setDarkMode }: NavSetting
             onClick={() => setDarkMode((d) => !d)}
           >
             {darkMode ? (
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <svg className="nav-settings__toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <circle cx="12" cy="12" r="4.2" />
                 <path d="M12 2v2.2M12 19.8V22M4.22 4.22l1.56 1.56M18.22 18.22l1.56 1.56M2 12h2.2M19.8 12H22M4.22 19.78l1.56-1.56M18.22 5.78l1.56-1.56" />
               </svg>
             ) : (
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <svg className="nav-settings__toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
               </svg>
             )}
@@ -130,7 +135,12 @@ export default function NavSettingsPopover({ darkMode, setDarkMode }: NavSetting
             lang={lang === "en" ? "es" : "en"}
             onClick={() => switchLanguageAtCurrentSection(setLang, lang === "en" ? "es" : "en")}
           >
-            <span className="nav-settings__langCode" aria-hidden="true">{t("nav.langCode")}</span>
+            {/* A globe, not a language code chip: the trigger already shows
+                the CURRENT language as a code (lang.toUpperCase() above) -
+                this row means "switch to", a different thing, and showing
+                a code here too (even a different one) read as the same
+                control said two ways. One glyph, one meaning each. */}
+            <GlobeIcon className="nav-settings__toggle-icon" aria-hidden="true" />
             <span>{t("nav.langSwitch")}</span>
           </button>
         </div>

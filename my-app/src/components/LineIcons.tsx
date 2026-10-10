@@ -258,3 +258,17 @@ export const FlowerIcon = (p: IconProps) => (
     <path d="M12 16c-1.6-1.2-3.2-1.1-3.9.2" />
   </Svg>
 );
+
+/**
+ * Globe - meridians on a sphere, language/translate (replaces the settings
+ * popover's "ES"/"EN" text chip)
+ * @status: stable
+ * @purpose: Globe/translate line icon used for the language row in the nav dock's settings popover (components/NavSettingsPopover.tsx) - the row now carries one meaning (switch TO this language) instead of doubling as a second, differently-meant language code next to the trigger's own visible current-language code.
+ */
+export const GlobeIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <circle cx="12" cy="12" r="8.4" />
+    <path d="M3.6 12h16.8" />
+    <path d="M12 3.6c2.4 2.3 3.7 5.4 3.7 8.4s-1.3 6.1-3.7 8.4c-2.4-2.3-3.7-5.4-3.7-8.4s1.3-6.1 3.7-8.4Z" />
+  </Svg>
+);

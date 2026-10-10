@@ -79,9 +79,20 @@ export default function FlagshipLogistics() {
     <main className="riso-page flagship-page flagship-page--logistics" lang="en" ref={rootRef}>
       <RisoDefs />
 
-      <nav className="rp-breadcrumb" aria-label="Breadcrumb">
-        <Link to="/" className="rp-breadcrumb__name" title="Hillary Esposito">Hillary Esposito</Link> / <Link to="/">Work</Link> / <span>Medical logistics</span>
-      </nav>
+      <div className="rp-breadcrumbRow">
+        <nav className="rp-breadcrumb" aria-label="Breadcrumb">
+          <Link to="/" className="rp-breadcrumb__name" title="Hillary Esposito">Hillary Esposito</Link> / <Link to="/?scrollTo=projects">Work</Link> / <span>Medical logistics</span>
+        </nav>
+        <button
+          type="button"
+          className="rp-heroUtility rp-breadcrumbTour"
+          onClick={(e) =>
+            window.dispatchEvent(new CustomEvent("open-recruiter-panel", { detail: { returnFocus: e.currentTarget } }))
+          }
+        >
+          Open the 90-second tour
+        </button>
+      </div>
       <CaseStudyChapters project="Medical logistics" chapters={CHAPTERS} />
       <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
 

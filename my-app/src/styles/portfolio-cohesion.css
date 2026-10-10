@@ -102,26 +102,15 @@
   border-color: var(--shell-hair);
   box-shadow: 2px 2px 0 color-mix(in srgb, var(--shell-ink) 14%, transparent);
 }
-/* `.navbar` itself is still fully transparent (App.css) outside the pill,
-   so page content - a case study's dark hero headline, the MSK queue's
-   column headers - was showing straight through that band on scroll,
-   right above the case-study `rp-chapters` sticky strip (riso-page.css,
-   `top: 74px`). A paper fade behind the pill (never in front of it - see
-   the z-index below) closes that gap without needing the two sticky
-   layers to agree on an exact shared offset. */
-.navbar::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(
-    to bottom,
-    var(--shell-paper) 0%,
-    color-mix(in srgb, var(--shell-paper) 80%, transparent) 70%,
-    transparent 100%
-  );
-  pointer-events: none;
-}
+/* No `.navbar::before` paper band here (deleted 2026-10-10, fix round 2):
+   `.nav-dock__pill` is opaque paper already - the band sat BEHIND it across
+   the whole transparent `.navbar` row, well past the pill's own edges, so
+   scrolling page content ghosted straight through that full-width strip
+   instead of just closing a gap above the pill. The actual gap this was
+   meant to close - the case-study `rp-chapters` sticky strip sitting too
+   close under the pill - is fixed properly below (its own `top` now derives
+   from `--dock-h`, set in Navbar.tsx, instead of the two sticky layers
+   needing to agree on a hard-coded shared offset). */
 .nav-dock__item {
   color: var(--shell-ink-2);
   font-family: var(--shell-sans);
@@ -146,9 +135,14 @@
 /* Printed flat, in the full shell green, so the marker carries its own
    ≥3:1 contrast against the pill rather than a 16%-tint that measured
    1.23:1. The registration layer below (::before, painted first) is a
-   second coral "ink" offset 1px,1px behind the green plate - a hair of
-   misregistration, like the second pass of a two-colour print run, not a
-   glow or drop shadow. */
+   second coral "ink" offset 2px,2px behind the green plate, at the same
+   2px the pill's own flat offset shadow uses - the two now read as one
+   printing register rather than two unrelated offsets - and at 45% so it
+   actually reads at 1x instead of disappearing into the paper at the 22%
+   this started at. It only ever peeks out from the green plate's own
+   offset edge, never under the active label's centred text, so the
+   active-item text's contrast is still measured against the green fill
+   alone (5.2:1 light / 7.23:1 dark, both ≥4.5:1) - unchanged by this. */
 .nav-dock__marker {
   background: none;
 }
@@ -157,8 +151,8 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: color-mix(in srgb, var(--shell-coral) 22%, transparent);
-  transform: translate(1px, 1px);
+  background: color-mix(in srgb, var(--shell-coral) 45%, transparent);
+  transform: translate(2px, 2px);
 }
 .nav-dock__marker::after {
   content: "";
@@ -166,6 +160,18 @@
   inset: 0;
   border-radius: inherit;
   background: var(--shell-green);
+}
+/* At the tightest dock tier (App.css, ≤360px) items sit only 2px apart -
+   insetting the marker's own visible fill 1px on every side keeps it from
+   visually touching/merging with the unmarked neighbour across that gap.
+   The marker's own box (position, transform, width) stays exactly what
+   Navbar.tsx measured off the active item's real rect - only the two fill
+   layers drawn inside it shrink in by 1px. */
+@media (max-width: 360px) {
+  .nav-dock__marker::before,
+  .nav-dock__marker::after {
+    inset: 1px;
+  }
 }
 
 .nav-settings__popover {
@@ -458,8 +464,14 @@ html[lang="es"] .riso-home .rp-clearing { max-width: 78ch; }
   .riso-home .rp-h1 { font-size: min(clamp(1.9rem, 8.4vw, 2.9rem), calc(100cqi * 100 / var(--h1-w100))); }
   .riso-home .rp-hero__media {
     order: -1;
-    min-height: 330px;
-    max-height: 380px;
+    /* Trimmed from 330-380px (2026-10-10, fix round 2): the recruiter-tour
+       link - the hero's own quiet entry point to the panel - needs to land
+       inside the first 844px viewport below the two primary CTAs, and the
+       photo was the one block in this stack with real room to give (it's
+       decorative, not copy, so shrinking it doesn't touch any text/line-
+       wrap concern CLAUDE.md's headline rules are about). */
+    min-height: 200px;
+    max-height: 230px;
     padding: .8rem 1rem .35rem;
   }
   .riso-home .rp-hero,

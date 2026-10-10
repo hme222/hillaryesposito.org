@@ -36,11 +36,11 @@ const en = {
   // ── Nav dock ──
   "nav.ariaPrimary": "Primary navigation",
   "nav.logoAria": "Go to home",
-  // Footer still uses these (its own column of links, uppercased in the
-  // source string on purpose — unrelated to the dock below).
-  "nav.home": "HOME",
-  "nav.work": "WORK",
-  "nav.about": "ABOUT",
+  // Footer still uses these (its own column of links) - separate keys from
+  // the dock's below so changing one never silently changes the other.
+  "nav.home": "Home",
+  "nav.work": "Work",
+  "nav.about": "About",
   // The dock's own labels: sentence case, no CSS uppercasing, separate keys
   // from the footer's so changing one never silently changes the other.
   "nav.dockWork": "Work",
@@ -243,11 +243,13 @@ const es: Partial<Record<StringKey, string>> = {
   // ── Nav dock ──
   "nav.ariaPrimary": "Navegación principal",
   "nav.logoAria": "Ir al inicio",
-  "nav.home": "INICIO",
-  "nav.work": "TRABAJO",
-  "nav.about": "SOBRE MÍ",
+  "nav.home": "Inicio",
+  "nav.work": "Trabajo",
+  "nav.about": "Sobre mí",
   "nav.dockWork": "Trabajo",
-  "nav.dockAbout": "Acerca de",
+  // One Spanish name for "About" across the site - this used to say "Acerca
+  // de" while the footer and breadcrumbs said "Sobre mí" for the same page.
+  "nav.dockAbout": "Sobre mí",
   "nav.resume": "CV",
   "nav.resumeAria": "Ver CV (se abre en una pestaña nueva)",
   "nav.themeToDark": "Cambiar a modo oscuro",
@@ -380,7 +382,13 @@ const es: Partial<Record<StringKey, string>> = {
 
   // ── Ask about the work ──
   "ask.nav": "Preguntar",
-  "ask.title": "Pregunte sobre el trabajo",
+  // Must stay a true prefix of "ask.nav" above (WCAG 2.5.3, Label in Name):
+  // the nav bird's accessible name is this string, and its visible label is
+  // "ask.nav" alone - "Pregunte" (imperative) didn't start with "Preguntar"
+  // (infinitive), so a screen-reader user voicing the visible label couldn't
+  // match it to the control's name. The English case already passes this -
+  // "Ask about the work" starts with "Ask".
+  "ask.title": "Preguntar sobre el trabajo",
   "ask.intro": "Las respuestas salen del currículum y de las páginas publicadas, cada una con su fuente.",
   "ask.startersLabel": "Pruebe una de estas",
   "ask.starter1": "¿Qué trabajo de diseño de servicios hizo en MSK?",
