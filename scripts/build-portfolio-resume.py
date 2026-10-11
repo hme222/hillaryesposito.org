@@ -241,8 +241,8 @@ def build_resume(output_path, variant="portfolio"):
             "footer": "HILLARY ESPOSITO · PLANT + CONSUMER PRODUCT DESIGN",
             "summary": (
                 "Product/UX designer building Grove, a functional plant-care prototype in Phase 2 of 3. Synthesized a "
-                "34-person self-report survey to cut 11 proposed features to 3, then redesigned care, plant identification, "
-                "confidence, sources, and pet-safety decisions around calm ongoing use. Brings consumer interaction craft, "
+                "34-person self-report survey to cut 11 proposed features to 3, then defined directions for care, plant "
+                "identification, confidence, sources, and pet safety around calm ongoing use. Brings consumer interaction craft, "
                 "accessibility, coded prototyping, and 13+ years designing for trust in high-stakes systems."
             ),
             "skills": (
@@ -275,7 +275,7 @@ def build_resume(output_path, variant="portfolio"):
             styles["headline"],
         ),
         Paragraph(
-            'New York City | 908-616-2712 | '
+            'New York City | '
             '<a href="mailto:espositohillary@gmail.com" color="#285943">espositohillary@gmail.com</a> | '
             '<a href="https://hillaryesposito.org" color="#285943">hillaryesposito.org</a> | '
             '<a href="https://www.linkedin.com/in/hillaryesposito" color="#285943">linkedin.com/in/hillaryesposito</a>',

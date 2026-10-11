@@ -57,7 +57,7 @@ HTML = """<!doctype html>
     <h1>Hillary Esposito</h1>
     <p class="role">Healthcare Product Designer · Enterprise Workflows, Internal Tools &amp; Complex Systems</p>
     <address>
-      New York City · 908-616-2712 ·
+      New York City ·
       <a href="mailto:espositohillary@gmail.com">espositohillary@gmail.com</a> ·
       <a href="https://hillaryesposito.org">hillaryesposito.org</a> ·
       <a href="https://www.linkedin.com/in/hillaryesposito">linkedin.com/in/hillaryesposito</a>
