@@ -133,7 +133,7 @@ export const NewsIcon = (p: IconProps) => (
 /**
  * Document with lines - resume / download (replaces 📄)
  * @status: stable
- * @purpose: Document line icon used on the "View résumé" button in the recruiter panel (components/RecruiterPill.tsx).
+ * @purpose: Document line icon used on the "View résumé" button in the recruiter panel (components/RecruiterPanel.tsx).
  */
 export const FileTextIcon = (p: IconProps) => (
   <Svg {...p}>
@@ -147,7 +147,7 @@ export const FileTextIcon = (p: IconProps) => (
 /**
  * Envelope - email (replaces ✉️)
  * @status: stable
- * @purpose: Envelope line icon used on the "Email me" button in the recruiter panel (components/RecruiterPill.tsx).
+ * @purpose: Envelope line icon used on the "Email me" button in the recruiter panel (components/RecruiterPanel.tsx).
  */
 export const MailIcon = (p: IconProps) => (
   <Svg {...p}>
@@ -159,7 +159,7 @@ export const MailIcon = (p: IconProps) => (
 /**
  * Briefcase - LinkedIn / professional profile (replaces 💼)
  * @status: stable
- * @purpose: Briefcase line icon used on the "LinkedIn" button in the recruiter panel (components/RecruiterPill.tsx).
+ * @purpose: Briefcase line icon used on the "LinkedIn" button in the recruiter panel (components/RecruiterPanel.tsx).
  */
 export const BriefcaseIcon = (p: IconProps) => (
   <Svg {...p}>
@@ -172,7 +172,7 @@ export const BriefcaseIcon = (p: IconProps) => (
 /**
  * Person - about me / profile (replaces 👤)
  * @status: stable
- * @purpose: Person line icon used on the "About me" button in the recruiter panel (components/RecruiterPill.tsx).
+ * @purpose: Person line icon used on the "About me" button in the recruiter panel (components/RecruiterPanel.tsx).
  */
 export const UserIcon = (p: IconProps) => (
   <Svg {...p}>
@@ -196,8 +196,8 @@ export const LockIcon = (p: IconProps) => (
 
 /**
  * Hamburger - open menu (replaces ☰)
- * @status: stable
- * @purpose: Hamburger line icon used for the closed-state mobile menu toggle in the site navbar (components/Navbar.tsx).
+ * @status: unused — verify before removing
+ * @purpose: Hamburger line icon formerly used for the mobile menu toggle in the site navbar; the route dock (components/Navbar.tsx) has no hamburger or off-canvas menu at any width, so this is not imported anywhere in src/ currently.
  */
 export const MenuIcon = (p: IconProps) => (
   <Svg {...p}>
@@ -210,12 +210,35 @@ export const MenuIcon = (p: IconProps) => (
 /**
  * X - close (replaces ✕)
  * @status: stable
- * @purpose: X line icon used for the open-state mobile menu toggle (components/Navbar.tsx) and the close button in the recruiter panel (components/RecruiterPill.tsx).
+ * @purpose: X line icon used for the close buttons on the recruiter panel (components/RecruiterPanel.tsx) and the Ask dialog (components/ask/AskDialog.tsx).
  */
 export const XIcon = (p: IconProps) => (
   <Svg {...p}>
     <path d="M6 6l12 12" />
     <path d="M18 6L6 18" />
+  </Svg>
+);
+
+/**
+ * Sliders - settings / preferences (replaces the old theme + language
+ * controls living loose in the nav). Deliberately NOT a gear: an earlier
+ * version drew a circle with eight radiating rays - the exact silhouette
+ * the popover's own light-mode sun icon already uses one click away,
+ * so the trigger and one of the things it reveals read as the same glyph.
+ * Three sliders share no shape with either theme icon (sun or moon).
+ * @status: stable
+ * @purpose: Settings-sliders line icon used on the nav dock's settings button (components/Navbar.tsx), which opens the dark-mode/language popover (components/NavSettingsPopover.tsx).
+ */
+export const SettingsSlidersIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="M4 7h7" />
+    <circle cx="14.2" cy="7" r="2.1" />
+    <path d="M17.3 7H20" />
+    <path d="M4 12h2.7" />
+    <circle cx="9.8" cy="12" r="2.1" />
+    <path d="M12.9 12H20" />
+    <path d="M4 17h10.7" />
+    <circle cx="17.5" cy="17" r="2.1" />
   </Svg>
 );
 
@@ -233,5 +256,19 @@ export const FlowerIcon = (p: IconProps) => (
     <path d="M14.1 10.4C16 11.4 17.6 10.9 17.8 9.4 18 8.2 16.5 7.3 14.7 7.9" />
     <path d="M12 11v10" />
     <path d="M12 16c-1.6-1.2-3.2-1.1-3.9.2" />
+  </Svg>
+);
+
+/**
+ * Globe - meridians on a sphere, language/translate (replaces the settings
+ * popover's "ES"/"EN" text chip)
+ * @status: stable
+ * @purpose: Globe/translate line icon used for the language row in the nav dock's settings popover (components/NavSettingsPopover.tsx) - the row now carries one meaning (switch TO this language) instead of doubling as a second, differently-meant language code next to the trigger's own visible current-language code.
+ */
+export const GlobeIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <circle cx="12" cy="12" r="8.4" />
+    <path d="M3.6 12h16.8" />
+    <path d="M12 3.6c2.4 2.3 3.7 5.4 3.7 8.4s-1.3 6.1-3.7 8.4c-2.4-2.3-3.7-5.4-3.7-8.4s1.3-6.1 3.7-8.4Z" />
   </Svg>
 );

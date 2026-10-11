@@ -57,18 +57,24 @@ const COLOPHONS: Record<string, Credit[]> = {
 
 /**
  * @status: stable
- * @purpose: Site-wide footer rendered in app/App.tsx; shows nav links, contact links, and a per-route colophon of build tools/methods for case-study pages.
+ * @purpose: Site-wide footer rendered in app/App.tsx; shows nav links, contact links (email, résumé PDF, LinkedIn, GitHub), and a per-route colophon of build tools/methods for case-study pages.
  */
 export default function Footer() {
   const t = useT();
   const { lang } = useLanguage();
   const { pathname } = useLocation();
-  const credits = COLOPHONS[pathname];
+  // Production (vercel.json: "trailingSlash": true) serves every route with
+  // a trailing slash, so a full page load or refresh on e.g. /about lands on
+  // /about/ - strip it before comparing, the same idiom Navbar.tsx and
+  // usePageTitle.ts already use, or a direct visit never matches either
+  // lookup below.
+  const normalizedPath = pathname.replace(/\/+$/, "") || "/";
+  const credits = COLOPHONS[normalizedPath];
   const hasAuthoredClose =
-    pathname === "/" ||
-    pathname === "/about" ||
-    pathname.startsWith("/case-study/") ||
-    pathname.startsWith("/riso/");
+    normalizedPath === "/" ||
+    normalizedPath === "/about" ||
+    normalizedPath.startsWith("/case-study/") ||
+    normalizedPath.startsWith("/riso/");
 
   return (
     <footer
@@ -91,6 +97,14 @@ export default function Footer() {
         <div className="site-footer__column">
           <p className="site-footer__label">{t("footer.connect")}</p>
           <a href="mailto:espositohillary@gmail.com">{t("footer.email")}</a>
+          <a
+            href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t("nav.resumeAria")}
+          >
+            {t("nav.resume")}
+          </a>
           <a
             href="https://www.linkedin.com/in/hillaryesposito/"
             target="_blank"

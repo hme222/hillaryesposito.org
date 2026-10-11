@@ -5,33 +5,77 @@
    here introduces a colour; every value is a token or a mix of tokens.
    ============================================================ */
 
-/* ---------- nav entry ---------- */
-/* The navbar sits outside any Riso-scoped page, so --coral is not defined
-   there. Resolve it the way riso-page.css does (same --rp-accent-l/-d hooks,
-   same fallbacks) — the recruiter panel's --rp-coral is the precedent. */
-.nav-link--ask {
-  --coral: var(--rp-accent-l, #bd3828);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-}
-.dark-mode .nav-link--ask {
-  --coral: var(--rp-accent-d, #ff8c82);
-}
-.nav-link__bird {
-  width: 24px;
-  height: 24px;
-  flex-shrink: 0;
-}
-@media (max-width: 768px) {
-  .nav-link--ask {
-    min-height: 44px;
-  }
-}
 .recruiter-panel .recruiter-panel__btn-icon--bird {
   --coral: var(--rp-coral);
   width: 1.3em;
   height: 1.3em;
+}
+
+/* ---------- nav dock: Ask item (bird + visible "Ask" label) ---------- */
+/* The navbar sits outside any Riso-scoped page, so --coral is not defined
+   there. Resolve it the way the recruiter panel's --rp-coral does (same
+   --rp-accent-l/-d hooks, same fallbacks). Layout (display, padding,
+   min-height, colour, hover/focus) comes from the shared `.nav-dock__item`
+   class (App.css) - this rule only adds what's specific to the bird. */
+.ask-bird-nav {
+  --coral: var(--rp-accent-l, #bd3828);
+  /* The bird's wing fill reads against the dock pill, not a page
+     background - resolve it to the same shell paper the pill itself is
+     printed on (portfolio-cohesion.css), in both themes. */
+  --paper: var(--shell-paper);
+  position: relative;
+}
+.dark-mode .ask-bird-nav {
+  --coral: var(--rp-accent-d, #ff8c82);
+}
+
+/* The bird already carries the route (a coral line across the wing, drawn
+   into AskBirdIcon) - no separate decorative route line beside it. One
+   optical size with the rest of the dock's icons (cog 20px, home mark
+   20px): 22px. */
+.ask-bird-nav__bird {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  transform-origin: 50% 88%;
+  /* One slow gesture per state change, never a loop - same rule as the
+     dialog's bird (.ask-bird above). */
+  transition: transform 250ms ease-out;
+}
+/* Hover / keyboard focus: a small head-tilt, settling on leave/blur. */
+.ask-bird-nav.is-tilted .ask-bird-nav__bird {
+  transform: rotate(6deg);
+}
+/* One short hop along the route on client-side navigation; never a loop. */
+.ask-bird-nav.is-hopping .ask-bird-nav__bird {
+  animation: askBirdNavHop 450ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+/* Start and end at rest (the bird's un-animated resting transform is
+   translate(0,0) rotate(0deg)) - starting at translate(-7px,0) used to jump
+   there the instant the `is-hopping` class landed, a hard discontinuity from
+   the resting position rather than a hop beginning from it. */
+@keyframes askBirdNavHop {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  45% {
+    transform: translate(2px, -5px) rotate(-4deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ask-bird-nav__bird {
+    transition: none;
+  }
+  .ask-bird-nav.is-tilted .ask-bird-nav__bird {
+    transform: none;
+  }
+  .ask-bird-nav.is-hopping .ask-bird-nav__bird {
+    animation: none;
+  }
 }
 
 /* ---------- dialog box ---------- */
@@ -199,6 +243,29 @@
 .ask-starter:disabled {
   opacity: 0.6;
   cursor: progress;
+}
+
+/* A different kind of action from the starters above (opens the recruiter
+   panel instead of querying the engine), so it stays a quiet underlined
+   link rather than another starter-shaped button. */
+.ask-ninety-link {
+  justify-self: start;
+  min-height: 44px;
+  padding: 0.3rem 0;
+  display: inline-flex;
+  align-items: center;
+  background: none;
+  border: none;
+  color: var(--coral-text);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+.ask-ninety-link:hover {
+  color: var(--ink);
 }
 
 /* question field */

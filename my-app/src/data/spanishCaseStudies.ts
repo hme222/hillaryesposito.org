@@ -2,6 +2,7 @@ import type { SpanishCaseStudyData } from "../components/SpanishCaseStudy";
 
 export const GROVE_ES: SpanishCaseStudyData = {
   title: "Once funciones se convirtieron en tres",
+  breadcrumb: "Grove",
   meta: "Grove · Diseño de producto · Prototipo funcional · Fase 2 de 3",
   intro:
     "Grove es una app de cuidado de plantas. Una herramienta de IA llamada Emergent construyó una primera versión rápida y llena de funciones. Una prueba exploratoria con 5 usuarios señaló sobrecarga; el registro conservado no incluye fechas ni resultados por tarea, así que no hago una afirmación más amplia con esa prueba. Después, una encuesta de 34 personas redujo once funciones a las tres prioridades que guían la Fase 2. La encuesta registra prioridades declaradas, no comportamiento observado ni demanda de mercado.",
@@ -71,6 +72,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
 
 export const MSK_ES: SpanishCaseStudyData = {
   title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas",
+  breadcrumb: "Memorial Sloan Kettering",
   meta: "Memorial Sloan Kettering · UX y diseño de producto · Sistemas de salud",
   intro:
     "Durante seis años en MSK, trabajé en flujos clínicos, certificación e incorporación de personal para sistemas cuyo alcance incluía a más de 21,000 profesionales clínicos y administrativos. En el flujo de archivo, diagnostiqué y mapeé un desvío en papel, verifiqué su viabilidad y propuse una solución digital. Los equipos de TI y UX la implementaron después de que cambié de puesto. Este trabajo muestra diseño aplicado a herramientas internas, permisos, estados y adopción en un entorno de salud real.",
@@ -130,6 +132,7 @@ export const MSK_ES: SpanishCaseStudyData = {
 
 export const MOBBIN_ES: SpanishCaseStudyData = {
   title: "Más de 200 pantallas por app, buscables por tarea",
+  breadcrumb: "Mobbin",
   meta: "Mobbin · Documentación de flujos UX · Curaduría de patrones",
   intro:
     "Trabajo freelance para Mobbin documentando experiencias móviles de principio a fin. Capturé, organicé y anoté flujos de tres apps de finanzas para la biblioteca de referencia Finance+. Documenté Kikoff, Polymarket y Discover; no diseñé esos productos ni Mobbin.",
@@ -175,6 +178,7 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
 // on the English page; nothing is added. Section anchors match the English
 // chapter ids so the language switch and homepage stat links land in place.
 export const LOGISTICS_ES: SpanishCaseStudyData = {
+  breadcrumb: "Logística médica del Ejército",
   // Worded to break into multi-word lines; "reabastecimiento" alone filled a line.
   title: "El reabastecimiento médico tardó un\u00a085% menos",
   meta: "Logística médica del Ejército · Operaciones · Diseño de servicios · 2024",

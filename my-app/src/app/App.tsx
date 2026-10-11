@@ -6,9 +6,8 @@ import { LanguageContext } from "./LanguageContext";
 import { Lang, translate } from "../i18n/strings";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import RecruiterPill from "../components/RecruiterPill";
+import RecruiterPanel from "../components/RecruiterPanel";
 import AskDialog from "../components/ask/AskDialog";
-import BackToTop from "../components/BackToTop";
 import PortfolioAnalytics from "../analytics/PortfolioAnalytics";
 
 import "../styles/index.css";
@@ -67,11 +66,10 @@ export default function App() {
             <Footer />
           </div>
 
-          <RecruiterPill />
-          {/* After RecruiterPill on purpose: when its "Ask a question" link
+          <RecruiterPanel />
+          {/* After RecruiterPanel on purpose: when its "Ask a question" link
               fires, the panel's close effect runs before this dialog opens. */}
           <AskDialog />
-          <BackToTop />
         </>
       </Router>
     </LanguageContext.Provider>

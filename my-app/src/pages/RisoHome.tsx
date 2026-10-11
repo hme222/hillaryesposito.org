@@ -319,6 +319,24 @@ export default function RisoHome() {
             <div className="rp-hero__ctas">
               <Link className="rp-cta home-heroDesktopPrimary" to="/case-study/msk">{t("home.riso.primaryWork")} →</Link>
               <button type="button" className="rp-cta rp-cta--ghost" onClick={toContact}>{t("home.getInTouch")}</button>
+              {/* A second, quieter entry point to the recruiter panel, visible
+                  without going through Ask first (the Ask dialog keeps its
+                  own link to the same panel - see AskDialog.tsx). Same text,
+                  same destination, named once in strings.ts. Ordered directly
+                  after the two primary CTAs (ahead of the opener link below)
+                  so it lands inside the first mobile viewport at 390×844 -
+                  after the opener, it fell below the fold there. */}
+              <button
+                type="button"
+                className="rp-heroUtility rp-recruiterTourTrigger"
+                onClick={(e) => {
+                  window.dispatchEvent(
+                    new CustomEvent("open-recruiter-panel", { detail: { returnFocus: e.currentTarget } })
+                  );
+                }}
+              >
+                {t("home.riso.recruiterTourLink")}
+              </button>
               <button
                 ref={openingFilmTriggerRef}
                 type="button"

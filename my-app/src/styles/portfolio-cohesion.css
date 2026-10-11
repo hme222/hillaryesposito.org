@@ -3,7 +3,16 @@
 
    Canonical shared vocabulary for the current Riso/editorial system.
    This file intentionally loads last so retired global treatments cannot
-   reintroduce floating pills, frosted islands, soft cards, or mixed type.
+   reintroduce frosted islands, soft drop-shadow cards, or mixed type.
+
+   One exception, by design, not by drift: the nav dock's pill
+   (`.nav-dock__*` below) is the single sanctioned floating/detached
+   element on the page. Primary wayfinding has to stay reachable over
+   whatever's scrolling underneath it - that's a job nothing else on a
+   flat print site needs to do, and it's also why the pill still has to
+   read as print (opaque paper, flat offset shadow) rather than glass
+   (blur, soft shadow) to earn the exception. Nothing else gets to float;
+   this is the one controls layer that must.
    ============================================================ */
 
 :root {
@@ -74,117 +83,109 @@
   color: var(--shell-ink);
 }
 
-/* One masthead, one behavior: a stable editorial rule rather than a
-   transparent bar that turns into a floating island mid-scroll. */
-/* `:root .navbar` rather than `.navbar`: this rule has to out-rank
-   `.dark-mode .navbar` in App.css, which it does at (0,2,0). It used to get
-   that weight from `.navbar:not(.is-floating)`, removed with the floating
-   masthead — dropping to a bare `.navbar` silently changed the dark navbar's
-   text color. */
-:root .navbar {
-  width: 100%;
-  max-width: none;
-  min-height: 64px;
-  margin: 0;
-  top: 0;
-  gap: 2rem;
-  padding: .65rem max(var(--sp-gutter), calc((100% - 1280px) / 2));
-  justify-content: space-between;
+/* The route dock's final skin: paper/ink/coral/green from this file's own
+   shell tokens (the canonical palette everything else here uses), layered
+   over App.css's structural rule for `.navbar`/`.nav-dock__*`. Direction C
+   superseded the previous "one stable full-width masthead, never a floating
+   pill" decision recorded here (owner-approved pivot, 2026-10-10) - the dock
+   is deliberately the detached, top-centre pill the old comment ruled out,
+   and it's the one sanctioned floating/elevated object on an otherwise flat
+   print site: primary wayfinding has to stay reachable over whatever's
+   scrolling underneath it, which is exactly the job nothing else on the
+   page needs to do. It reads as print, not glass, to earn that exception -
+   opaque paper and a flat offset shadow (the shell's own hairline-plus-
+   offset language), never a blur. */
+/* `--shell-paper`/`--shell-hair` already flip per theme (the `.dark-mode`
+   block at the top of this file) - one rule covers both. */
+.nav-dock__pill {
+  background: var(--shell-paper);
+  border-color: var(--shell-hair);
+  box-shadow: 2px 2px 0 color-mix(in srgb, var(--shell-ink) 14%, transparent);
+}
+/* No `.navbar::before` paper band here (deleted 2026-10-10, fix round 2):
+   `.nav-dock__pill` is opaque paper already - the band sat BEHIND it across
+   the whole transparent `.navbar` row, well past the pill's own edges, so
+   scrolling page content ghosted straight through that full-width strip
+   instead of just closing a gap above the pill. The actual gap this was
+   meant to close - the case-study `rp-chapters` sticky strip sitting too
+   close under the pill - is fixed properly below (its own `top` now derives
+   from `--dock-h`, set in Navbar.tsx, instead of the two sticky layers
+   needing to agree on a hard-coded shared offset). */
+.nav-dock__item {
+  color: var(--shell-ink-2);
+  font-family: var(--shell-sans);
+}
+.nav-dock__item:hover {
   color: var(--shell-ink);
-  background: color-mix(in srgb, var(--shell-paper) 96%, transparent) !important;
-  border: 0 !important;
-  border-bottom: 1px solid var(--shell-hair) !important;
-  border-radius: 0;
-  box-shadow: none;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition: background-color .2s ease, border-color .2s ease;
+}
+/* The active item sits over the marker's own opaque fill (below), not the
+   pill's paper - it needs the marker's on-color, not the pill's ink. */
+.nav-dock__item[aria-current] {
+  color: var(--shell-paper);
+}
+.nav-dock__item--home {
+  color: var(--shell-green);
+}
+.nav-dock__item--home:hover {
+  color: var(--shell-green);
+}
+.nav-dock__item--home .lm-accent {
+  fill: var(--shell-coral);
+}
+/* Printed flat, in the full shell green, so the marker carries its own
+   ≥3:1 contrast against the pill rather than a 16%-tint that measured
+   1.23:1. The registration layer below (::before, painted first) is a
+   second coral "ink" offset 2px,2px behind the green plate, at the same
+   2px the pill's own flat offset shadow uses - the two now read as one
+   printing register rather than two unrelated offsets - and at 45% so it
+   actually reads at 1x instead of disappearing into the paper at the 22%
+   this started at. It only ever peeks out from the green plate's own
+   offset edge, never under the active label's centred text, so the
+   active-item text's contrast is still measured against the green fill
+   alone (5.2:1 light / 7.23:1 dark, both ≥4.5:1) - unchanged by this. */
+.nav-dock__marker {
+  background: none;
+}
+.nav-dock__marker::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: color-mix(in srgb, var(--shell-coral) 45%, transparent);
+  transform: translate(2px, 2px);
+}
+.nav-dock__marker::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--shell-green);
+}
+/* At the tightest dock tier (App.css, ≤360px) items sit only 2px apart -
+   insetting the marker's own visible fill 1px on every side keeps it from
+   visually touching/merging with the unmarked neighbour across that gap.
+   The marker's own box (position, transform, width) stays exactly what
+   Navbar.tsx measured off the active item's real rect - only the two fill
+   layers drawn inside it shrink in by 1px. */
+@media (max-width: 360px) {
+  .nav-dock__marker::before,
+  .nav-dock__marker::after {
+    inset: 1px;
+  }
 }
 
-.logo {
-  gap: .55rem;
-  min-height: 44px;
-  padding-block: .25rem;
-  color: var(--shell-ink);
-  transform: none;
+.nav-settings__popover {
+  background: var(--shell-paper);
+  border-color: var(--shell-hair);
 }
-.logo:hover { transform: none; }
-.logo-mark { width: 20px; height: 20px; color: var(--shell-green); }
-.logo-mark .lm-accent { fill: var(--shell-coral); }
-.logo-text {
+.nav-settings__toggle {
   color: var(--shell-ink);
   font-family: var(--shell-sans);
-  font-size: .78rem;
-  font-weight: 800;
-  letter-spacing: .035em;
-  text-transform: uppercase;
 }
-.logo-divider,
-.logo-tagline,
-.logo-textblock { display: none; }
+.nav-settings__toggle:hover {
+  background: color-mix(in srgb, var(--shell-ink) 7%, transparent);
+}
 
-.nav-menu { gap: clamp(1rem, 2.4vw, 2.2rem); }
-.nav-link,
-.theme-btn,
-.lang-btn {
-  color: var(--shell-ink);
-  font-family: var(--shell-mono);
-  font-size: .66rem;
-  font-weight: 700;
-  letter-spacing: .09em;
-}
-.nav-link {
-  min-width: 44px;
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-}
-.nav-link::after {
-  bottom: 5px;
-  height: 1px;
-  background: var(--shell-coral);
-}
-.nav-link.is-active::after { width: 100%; }
-.nav-link:hover { opacity: 1; color: var(--shell-coral); }
-.nav-link--resume {
-  padding: .45rem .75rem;
-  border: 1px solid var(--shell-ink);
-  border-radius: 0;
-}
-.nav-link--resume::after { display: none; }
-.nav-link--resume:hover { color: var(--shell-paper); background: var(--shell-ink); }
-.theme-btn { min-width: 44px; min-height: 44px; padding: 0; }
-.theme-btn:hover { color: var(--shell-coral); transform: none; }
-
-/* Utility controls wait until the authored opening composition is behind the
-   reader. This applies at every width, not only mobile. */
-.recruiter-pill--unscrolled {
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none;
-  transform: translateY(6px);
-}
-.recruiter-pill,
-.recruiter-pill--unscrolled {
-  border: 1px solid var(--shell-coral) !important;
-  border-radius: 0 !important;
-  background: var(--shell-coral) !important;
-  color: #fff !important;
-  box-shadow: 4px 4px 0 color-mix(in srgb, var(--shell-coral) 20%, transparent) !important;
-  font-family: var(--shell-mono);
-  font-size: .66rem;
-  letter-spacing: .08em;
-}
-.recruiter-pill:hover { transform: translateY(-2px); }
-.back-to-top {
-  border-radius: 0 !important;
-  border: 1px solid var(--shell-ink) !important;
-  background: var(--shell-paper) !important;
-  color: var(--shell-ink) !important;
-  box-shadow: none !important;
-}
 .not-found__primary {
   border: 0;
   border-radius: 0;
@@ -450,35 +451,10 @@ html[lang="es"] .riso-home .rp-clearing { max-width: 78ch; }
 
 
 @media (max-width: 768px) {
-  :root .navbar {
-    min-height: 64px;
-    padding: .6rem 1rem;
-    background: var(--shell-paper) !important;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-  }
-  .nav-menu {
-    align-items: stretch;
-    gap: 0;
-    padding: 5.5rem 1.25rem 2rem;
-    background: var(--shell-paper);
-    color: var(--shell-ink);
-  }
-  .nav-menu li { width: 100%; border-bottom: 1px solid var(--shell-hair); }
-  .nav-menu .nav-link,
-  .nav-menu .theme-btn {
-    width: 100%;
-    min-height: 58px;
-    justify-content: flex-start;
-    color: var(--shell-ink);
-    font-size: .78rem;
-    text-align: left;
-  }
-  .nav-link--resume {
-    border: 0;
-    background: transparent;
-  }
-  .nav-link--resume:hover { color: var(--shell-coral); background: transparent; }
+  /* The route dock is the same cluster at every width (no hamburger, no
+     off-canvas panel) - App.css's own 480px query already covers its only
+     phone-specific sizing (bigger touch targets, tighter pill padding), so
+     nothing dock-related needs to live in this 768px breakpoint any more. */
   .riso-home .rp-hero { grid-template-columns: minmax(0, 1fr); }
   .about-page .rp-hero { grid-template-columns: minmax(0, 1fr); }
   .about-page .rp-clearing { max-width: none; }
@@ -488,8 +464,14 @@ html[lang="es"] .riso-home .rp-clearing { max-width: 78ch; }
   .riso-home .rp-h1 { font-size: min(clamp(1.9rem, 8.4vw, 2.9rem), calc(100cqi * 100 / var(--h1-w100))); }
   .riso-home .rp-hero__media {
     order: -1;
-    min-height: 330px;
-    max-height: 380px;
+    /* Trimmed from 330-380px (2026-10-10, fix round 2): the recruiter-tour
+       link - the hero's own quiet entry point to the panel - needs to land
+       inside the first 844px viewport below the two primary CTAs, and the
+       photo was the one block in this stack with real room to give (it's
+       decorative, not copy, so shrinking it doesn't touch any text/line-
+       wrap concern CLAUDE.md's headline rules are about). */
+    min-height: 200px;
+    max-height: 230px;
     padding: .8rem 1rem .35rem;
   }
   .riso-home .rp-hero,
@@ -626,8 +608,12 @@ html[lang="es"] .riso-home .rp-clearing { max-width: 78ch; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .navbar,
-  .recruiter-pill,
+  /* `.navbar` used to be listed here too, for the floating-island masthead
+     that transitioned background/padding on scroll. That masthead is gone
+     (App.css) and `.navbar` itself carries no `transition` property any
+     more, so the rule had nothing left to disable - dead weight, not a
+     guard. The dock's own motion (`.nav-dock__marker`) has its own
+     reduced-motion rule in App.css. */
   .riso-home .rp-hero__media .rp-headshot {
     transition: none !important;
   }

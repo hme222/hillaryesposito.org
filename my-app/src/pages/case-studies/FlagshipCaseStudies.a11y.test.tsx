@@ -9,7 +9,7 @@ import RisoHome from "../RisoHome";
 import About from "../AboutMe";
 import NotFoundPage from "../NotFoundPage";
 import Footer from "../../components/Footer";
-import RecruiterPill from "../../components/RecruiterPill";
+import RecruiterPanel from "../../components/RecruiterPanel";
 
 let mockLang = "en";
 
@@ -93,7 +93,7 @@ describe("flagship case-study accessibility", () => {
     ["About", <About />],
     ["404 recovery", <NotFoundPage />],
     ["Global footer", <Footer />],
-    ["Recruiter entry point", <RecruiterPill />],
+    ["Recruiter panel", <RecruiterPanel />],
   ])("%s has no detectable structural accessibility violations", async (_name, page) => {
     await act(async () => {
       root.render(page);
@@ -143,6 +143,47 @@ describe("flagship case-study accessibility", () => {
     expect(hero?.textContent).not.toContain("20%");
     expect(hero?.textContent).not.toContain("two system upgrades");
     expect(container.textContent).toContain("not attributed solely to this filing workflow");
+  });
+
+  it("the breadcrumb row's tour trigger dispatches open-recruiter-panel with returnFocus (EN and ES)", async () => {
+    await act(async () => {
+      root.render(<FlagshipMSK />);
+    });
+    const handler = jest.fn();
+    window.addEventListener("open-recruiter-panel", handler);
+    const trigger = container.querySelector<HTMLButtonElement>(".rp-breadcrumbTour");
+    expect(trigger?.textContent).toBe("Open the 90-second tour");
+    await act(async () => trigger?.click());
+    expect(handler).toHaveBeenCalledTimes(1);
+    const detail = (handler.mock.calls[0][0] as CustomEvent).detail;
+    expect(detail.returnFocus).toBe(trigger);
+    window.removeEventListener("open-recruiter-panel", handler);
+
+    // Same control, ES case study (SpanishCaseStudy.tsx) - the string is
+    // the translated one, and the breadcrumb's own final crumb uses the
+    // short organisation name, not the page's full headline.
+    mockLang = "es";
+    await act(async () => {
+      root.render(<FlagshipMSK />);
+    });
+    const esTrigger = container.querySelector<HTMLButtonElement>(".rp-breadcrumbTour");
+    expect(esTrigger?.textContent).toBe("Abrir el recorrido de 90 segundos (en inglés)");
+    const breadcrumb = container.querySelector(".rp-breadcrumb");
+    expect(breadcrumb?.textContent).toContain("Memorial Sloan Kettering");
+    expect(breadcrumb?.textContent).not.toContain("Una cola de archivo reemplazó");
+  });
+
+  it("About's breadcrumb row also carries the tour trigger", async () => {
+    await act(async () => {
+      root.render(<About />);
+    });
+    const trigger = container.querySelector<HTMLButtonElement>(".rp-breadcrumbTour");
+    expect(trigger?.textContent).toBe("Open the 90-second tour");
+    const handler = jest.fn();
+    window.addEventListener("open-recruiter-panel", handler);
+    await act(async () => trigger?.click());
+    expect(handler).toHaveBeenCalledTimes(1);
+    window.removeEventListener("open-recruiter-panel", handler);
   });
 
   it("labels Grove redesign work as testable direction with retest pending", async () => {
@@ -428,12 +469,16 @@ describe("flagship case-study accessibility", () => {
 
   it("opens a complete, dismissible recruiter scan path", async () => {
     await act(async () => {
-      root.render(<RecruiterPill />);
+      root.render(<RecruiterPanel />);
     });
 
-    const trigger = container.querySelector<HTMLButtonElement>(".recruiter-pill");
-    expect(trigger).not.toBeNull();
-    await act(async () => trigger?.click());
+    // The panel has no trigger of its own any more - the route dock dropped
+    // the floating "Recruiter view" pill, so this fires the same
+    // `open-recruiter-panel` CustomEvent the Ask dialog's "90-second
+    // version" link dispatches.
+    await act(async () => {
+      window.dispatchEvent(new CustomEvent("open-recruiter-panel", { detail: {} }));
+    });
 
     const dialog = container.querySelector<HTMLDialogElement>(".recruiter-panel");
     expect(dialog?.open).toBe(true);
@@ -463,10 +508,11 @@ describe("flagship case-study accessibility", () => {
 
   it("wraps Tab and Shift+Tab inside the open recruiter panel", async () => {
     await act(async () => {
-      root.render(<RecruiterPill />);
+      root.render(<RecruiterPanel />);
     });
-    const trigger = container.querySelector<HTMLButtonElement>(".recruiter-pill");
-    await act(async () => trigger?.click());
+    await act(async () => {
+      window.dispatchEvent(new CustomEvent("open-recruiter-panel", { detail: {} }));
+    });
 
     const dialog = container.querySelector<HTMLDialogElement>(".recruiter-panel");
     expect(dialog?.open).toBe(true);
