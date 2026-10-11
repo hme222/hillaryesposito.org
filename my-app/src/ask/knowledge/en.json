@@ -1,0 +1,3432 @@
+{
+ "version": 1,
+ "note": "Batches 1–3 approved by Hillary 2026-10-09. quote:true entries are her verbatim words — show with attribution, never paraphrase.",
+ "entries": [
+  {
+   "id": "en:msk-start:0",
+   "lang": "en",
+   "text": "I diagnosed and mapped a paper detour across four departments, checked feasibility, and pitched a digital filing workflow. IT and UX implemented it after I changed roles.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · A filing queue replaced a four-department paper detour.",
+    "url": "/case-study/msk/#msk-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-start:1",
+   "lang": "en",
+   "text": "Service design · process improvement · UX/product",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · A filing queue replaced a four-department paper detour.",
+    "url": "/case-study/msk/#msk-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-start:2",
+   "lang": "en",
+   "text": "Diagnose · map · validate feasibility · pitch",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · A filing queue replaced a four-department paper detour.",
+    "url": "/case-study/msk/#msk-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-start:3",
+   "lang": "en",
+   "text": "Built later by IT and UX after my role changed",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · A filing queue replaced a four-department paper detour.",
+    "url": "/case-study/msk/#msk-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-start:4",
+   "lang": "en",
+   "text": "Patient-free reconstruction from my current-state documentation",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · A filing queue replaced a four-department paper detour.",
+    "url": "/case-study/msk/#msk-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-start:5",
+   "lang": "en",
+   "text": "ANONYMIZED INTERNAL TOOL CONCEPT",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · A filing queue replaced a four-department paper detour.",
+    "url": "/case-study/msk/#msk-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-brief:0",
+   "lang": "en",
+   "text": "IT STARTED WITH A WORKAROUND",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The digital workflow had become a paper ritual.",
+    "url": "/case-study/msk/#msk-brief"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-brief:1",
+   "lang": "en",
+   "text": "Every clinical day runs through the EMR—the electronic medical record where a patient’s history lives. The online queue kept the filing on screen and returned with its status updated.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The digital workflow had become a paper ritual.",
+    "url": "/case-study/msk/#msk-brief"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-workflow:0",
+   "lang": "en",
+   "text": "DETERMINISTIC ANIMATIC · RECREATED QUEUE GEOMETRY · NO PATIENT DATA",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · One map made four departments see the same failure.",
+    "url": "/case-study/msk/#msk-workflow"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-workflow:1",
+   "lang": "en",
+   "text": "HOW THESE ARTIFACTS WERE MADE",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · One map made four departments see the same failure.",
+    "url": "/case-study/msk/#msk-workflow"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-workflow:2",
+   "lang": "en",
+   "text": "Rebuilt from my current-state documentation. No patient data, exported records, or vendor interface.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · One map made four departments see the same failure.",
+    "url": "/case-study/msk/#msk-workflow"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-workflow:3",
+   "lang": "en",
+   "text": "Print, route, wait, check again",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · One map made four departments see the same failure.",
+    "url": "/case-study/msk/#msk-workflow"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-workflow:4",
+   "lang": "en",
+   "text": "01 Open the dashboard queue",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · One map made four departments see the same failure.",
+    "url": "/case-study/msk/#msk-workflow"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-workflow:5",
+   "lang": "en",
+   "text": "03 Print the digital record",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · One map made four departments see the same failure.",
+    "url": "/case-study/msk/#msk-workflow"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-workflow:6",
+   "lang": "en",
+   "text": "05 Wait for it to be scanned",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · One map made four departments see the same failure.",
+    "url": "/case-study/msk/#msk-workflow"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-workflow:7",
+   "lang": "en",
+   "text": "06 Return later to confirm filing",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · One map made four departments see the same failure.",
+    "url": "/case-study/msk/#msk-workflow"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-workflow:8",
+   "lang": "en",
+   "text": "File from the queue, return with status",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · One map made four departments see the same failure.",
+    "url": "/case-study/msk/#msk-workflow"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-workflow:9",
+   "lang": "en",
+   "text": "01 Open the dashboard queue",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · One map made four departments see the same failure.",
+    "url": "/case-study/msk/#msk-workflow"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-workflow:10",
+   "lang": "en",
+   "text": "04 It files inside the online chart",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · One map made four departments see the same failure.",
+    "url": "/case-study/msk/#msk-workflow"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-workflow:11",
+   "lang": "en",
+   "text": "05 Return with status updated",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · One map made four departments see the same failure.",
+    "url": "/case-study/msk/#msk-workflow"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-workflow:12",
+   "lang": "en",
+   "text": "THEN I COUNTED THE HANDOFFS",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · One map made four departments see the same failure.",
+    "url": "/case-study/msk/#msk-workflow"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-workflow:13",
+   "lang": "en",
+   "text": "One step removed a department.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · One map made four departments see the same failure.",
+    "url": "/case-study/msk/#msk-workflow"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-workflow:14",
+   "lang": "en",
+   "text": "The measurable change was six steps to five. The service change was removing an invisible handoff.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · One map made four departments see the same failure.",
+    "url": "/case-study/msk/#msk-workflow"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-workflow:15",
+   "lang": "en",
+   "text": "For two steps the record sits below the line of visibility, owned by nobody the coordinator can see.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · One map made four departments see the same failure.",
+    "url": "/case-study/msk/#msk-workflow"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-workflow:16",
+   "lang": "en",
+   "text": "Opens the queue, finds the document, prints it — then has to return later and check whether it was ever filed.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · One map made four departments see the same failure.",
+    "url": "/case-study/msk/#msk-workflow"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-workflow:17",
+   "lang": "en",
+   "text": "Receives the paper and scans it. Doing the work correctly, out of sight, with no way to report back into the queue.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · One map made four departments see the same failure.",
+    "url": "/case-study/msk/#msk-workflow"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-workflow:18",
+   "lang": "en",
+   "text": "EMR AND PERMISSIONS · SUPPORT",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · One map made four departments see the same failure.",
+    "url": "/case-study/msk/#msk-workflow"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-workflow:19",
+   "lang": "en",
+   "text": "Holds the record before it is printed and after it is scanned — but not in between, which is where the gap is.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · One map made four departments see the same failure.",
+    "url": "/case-study/msk/#msk-workflow"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-workflow:20",
+   "lang": "en",
+   "text": "Six steps, but only one that matters: the moment the record crosses a department line with no signal coming back.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · One map made four departments see the same failure.",
+    "url": "/case-study/msk/#msk-workflow"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-decisions:0",
+   "lang": "en",
+   "text": "THE FIX LOOKED LIKE ONE BUTTON",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The “simple” button carried the whole system.",
+    "url": "/case-study/msk/#msk-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-decisions:1",
+   "lang": "en",
+   "text": "One action replaced the three steps that left the system. Everything that made it safe to press had to be legible before anyone pressed it.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The “simple” button carried the whole system.",
+    "url": "/case-study/msk/#msk-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-decisions:2",
+   "lang": "en",
+   "text": "01 Show the action only when the record is ready Staff stop opening records that still need review. DECISION LOG Ready means actionable",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The “simple” button carried the whole system.",
+    "url": "/case-study/msk/#msk-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-decisions:3",
+   "lang": "en",
+   "text": "Show the action only when the record is ready",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The “simple” button carried the whole system.",
+    "url": "/case-study/msk/#msk-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-decisions:4",
+   "lang": "en",
+   "text": "Staff stop opening records that still need review.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The “simple” button carried the whole system.",
+    "url": "/case-study/msk/#msk-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-decisions:5",
+   "lang": "en",
+   "text": "DECISION LOG Ready means actionable",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The “simple” button carried the whole system.",
+    "url": "/case-study/msk/#msk-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-decisions:6",
+   "lang": "en",
+   "text": "02 Make permission limits visible View-only roles see status and ownership, not a disabled mystery button. DECISION LOG Permission is product logic",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The “simple” button carried the whole system.",
+    "url": "/case-study/msk/#msk-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-decisions:7",
+   "lang": "en",
+   "text": "Make permission limits visible",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The “simple” button carried the whole system.",
+    "url": "/case-study/msk/#msk-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-decisions:8",
+   "lang": "en",
+   "text": "View-only roles see status and ownership, not a disabled mystery button.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The “simple” button carried the whole system.",
+    "url": "/case-study/msk/#msk-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-decisions:9",
+   "lang": "en",
+   "text": "DECISION LOG Permission is product logic",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The “simple” button carried the whole system.",
+    "url": "/case-study/msk/#msk-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-decisions:10",
+   "lang": "en",
+   "text": "03 Separate blocked from not started Exceptions get a reason and an owner, so the backlog stops hiding them. DECISION LOG Blocked needs an owner",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The “simple” button carried the whole system.",
+    "url": "/case-study/msk/#msk-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-decisions:11",
+   "lang": "en",
+   "text": "Separate blocked from not started",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The “simple” button carried the whole system.",
+    "url": "/case-study/msk/#msk-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-decisions:12",
+   "lang": "en",
+   "text": "Exceptions get a reason and an owner, so the backlog stops hiding them.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The “simple” button carried the whole system.",
+    "url": "/case-study/msk/#msk-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-decisions:13",
+   "lang": "en",
+   "text": "DECISION LOG Blocked needs an owner",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The “simple” button carried the whole system.",
+    "url": "/case-study/msk/#msk-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-decisions:14",
+   "lang": "en",
+   "text": "04 Return people to the queue Staff land back where they started, status updated. DECISION LOG Preserve place and context",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The “simple” button carried the whole system.",
+    "url": "/case-study/msk/#msk-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-decisions:15",
+   "lang": "en",
+   "text": "Return people to the queue",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The “simple” button carried the whole system.",
+    "url": "/case-study/msk/#msk-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-decisions:16",
+   "lang": "en",
+   "text": "Staff land back where they started, status updated.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The “simple” button carried the whole system.",
+    "url": "/case-study/msk/#msk-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-decisions:17",
+   "lang": "en",
+   "text": "DECISION LOG Preserve place and context",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The “simple” button carried the whole system.",
+    "url": "/case-study/msk/#msk-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-decisions:18",
+   "lang": "en",
+   "text": "ANONYMIZED INTERNAL TOOL CONCEPT",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The “simple” button carried the whole system.",
+    "url": "/case-study/msk/#msk-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-redesigns:0",
+   "lang": "en",
+   "text": "THEN THE SAME SHAPE TURNED UP AGAIN",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The same failure, in two more places.",
+    "url": "/case-study/msk/#msk-redesigns"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-redesigns:1",
+   "lang": "en",
+   "text": "The same pattern appeared in certification and onboarding: the institution’s structure obscured the next action.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The same failure, in two more places.",
+    "url": "/case-study/msk/#msk-redesigns"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-redesigns:2",
+   "lang": "en",
+   "text": "Digital record → paper route → missing chart context.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The same failure, in two more places.",
+    "url": "/case-study/msk/#msk-redesigns"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-redesigns:3",
+   "lang": "en",
+   "text": "One action where the filing decision already happened.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The same failure, in two more places.",
+    "url": "/case-study/msk/#msk-redesigns"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-redesigns:4",
+   "lang": "en",
+   "text": "WHAT I GOT WRONG I misjudged how small it would look to IT. They deprioritized it as not worth the effort, and I had to keep raising it to get it built.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The same failure, in two more places.",
+    "url": "/case-study/msk/#msk-redesigns"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-redesigns:5",
+   "lang": "en",
+   "text": "Technical legal copy stalled clinician completion.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The same failure, in two more places.",
+    "url": "/case-study/msk/#msk-redesigns"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-redesigns:6",
+   "lang": "en",
+   "text": "Plain-language material brought every certification in 70% before the slipping deadline.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The same failure, in two more places.",
+    "url": "/case-study/msk/#msk-redesigns"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-redesigns:7",
+   "lang": "en",
+   "text": "One course ignored radically different starting skills.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The same failure, in two more places.",
+    "url": "/case-study/msk/#msk-redesigns"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-redesigns:8",
+   "lang": "en",
+   "text": "Cohort-specific instruction adapted a one-to-three-week program to the people in the room.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The same failure, in two more places.",
+    "url": "/case-study/msk/#msk-redesigns"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-systems:0",
+   "lang": "en",
+   "text": "You do not spot that pattern from outside a system. I had already sat in three of its seats.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · I learned the system from the floor up.",
+    "url": "/case-study/msk/#msk-systems"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-systems:1",
+   "lang": "en",
+   "text": "01 Office Coordinator Where people paused THE METHOD IT GAVE ME Lean Six Sigma Green Belt (Purdue) · Master of Healthcare Administration (Rutgers) Both finished in this seat, while I was running a clinic's paperwork. The Green Belt is the lens that showed one filing task crossing four departments; the MHA is why the redesign survived budget talks and leadership changes.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · I learned the system from the floor up.",
+    "url": "/case-study/msk/#msk-systems"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-systems:2",
+   "lang": "en",
+   "text": "Both finished in this seat, while I was running a clinic's paperwork. The Green Belt is the lens that showed one filing task crossing four departments; the MHA is why the redesign survived budget talks and leadership changes.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · I learned the system from the floor up.",
+    "url": "/case-study/msk/#msk-systems"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-systems:3",
+   "lang": "en",
+   "text": "02 Administrative Assistant How evidence survives a room THE METHOD IT GAVE ME Writing for the person who has to act No certificate for this one. Turning leadership decisions into clear briefs taught me to write for the person who has to act. The CPR rewrite and the EMR presentation both came from that practice.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · I learned the system from the floor up.",
+    "url": "/case-study/msk/#msk-systems"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-systems:4",
+   "lang": "en",
+   "text": "No certificate for this one. Turning leadership decisions into clear briefs taught me to write for the person who has to act. The CPR rewrite and the EMR presentation both came from that practice.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · I learned the system from the floor up.",
+    "url": "/case-study/msk/#msk-systems"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-systems:5",
+   "lang": "en",
+   "text": "03 Trainer I Specialist The authority to redesign it THE METHOD IT GAVE ME Training & Facilitation (ATD) · current-state mapping I instructed on Epic, HIPAA, and the compliance modules. Owning how staff were taught the system meant documenting what actually happens, not what the policy says — and the gap between the two is where the design work lives.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · I learned the system from the floor up.",
+    "url": "/case-study/msk/#msk-systems"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-systems:6",
+   "lang": "en",
+   "text": "I instructed on Epic, HIPAA, and the compliance modules. Owning how staff were taught the system meant documenting what actually happens, not what the policy says — and the gap between the two is where the design work lives.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · I learned the system from the floor up.",
+    "url": "/case-study/msk/#msk-systems"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-systems:7",
+   "lang": "en",
+   "text": "SERVICE-DESIGN SCOPE: the full path across systems, departments, permissions, and handoffs—not only the queue screen.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · I learned the system from the floor up.",
+    "url": "/case-study/msk/#msk-systems"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-systems:8",
+   "lang": "en",
+   "text": "Workflow, departments, decisions, and outcomes survive. Observation counts do not; no prevalence claim is made.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · I learned the system from the floor up.",
+    "url": "/case-study/msk/#msk-systems"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-outcomes:0",
+   "lang": "en",
+   "text": "I initiated and presented the filing redesign, rewrote clinician certification material, and rebuilt administrative onboarding with the design team.",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The numbers, and who they belong to.",
+    "url": "/case-study/msk/#msk-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-outcomes:1",
+   "lang": "en",
+   "text": "Observe the real work → Map the failure → Align the system → Ship what lasts",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The numbers, and who they belong to.",
+    "url": "/case-study/msk/#msk-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-outcomes:2",
+   "lang": "en",
+   "text": "ANONYMIZED EVIDENCE · OWNER-REPORTED OUTCOMES · THE 20% FIGURE BELONGS TO A LARGER ORGANIZATION-WIDE INITIATIVE, NOT THE FILING QUEUE ALONE; ORIGINAL PERIOD AND COST DEFINITION ARE NOT PRESERVED",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The numbers, and who they belong to.",
+    "url": "/case-study/msk/#msk-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-outcomes:3",
+   "lang": "en",
+   "text": "clinicians and administrative staff across the workflows in scope — not queue adoption",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The numbers, and who they belong to.",
+    "url": "/case-study/msk/#msk-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-outcomes:4",
+   "lang": "en",
+   "text": "organization-wide EMR cost reduction; not attributed solely to this filing workflow",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The numbers, and who they belong to.",
+    "url": "/case-study/msk/#msk-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:msk-outcomes:5",
+   "lang": "en",
+   "text": "ahead of deadline — every CPR certification collected early, on a deadline that was about to be pushed back",
+   "source": {
+    "type": "page",
+    "label": "MSK case study · The numbers, and who they belong to.",
+    "url": "/case-study/msk/#msk-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:log-start:0",
+   "lang": "en",
+   "text": "I planned and tracked a $2M warehouse relocation serving seven aid stations across three countries. The service record reports resupply changing from 1–2 months to 1–2 weeks, summarized as 85% shorter.",
+   "source": {
+    "type": "page",
+    "label": "Medical logistics case study · 85% shorter medical resupply time.",
+    "url": "/case-study/logistics/#log-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:log-start:1",
+   "lang": "en",
+   "text": "Medical logistics officer · relocation and service lead",
+   "source": {
+    "type": "page",
+    "label": "Medical logistics case study · 85% shorter medical resupply time.",
+    "url": "/case-study/logistics/#log-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:log-start:2",
+   "lang": "en",
+   "text": "Seven aid stations · three countries",
+   "source": {
+    "type": "page",
+    "label": "Medical logistics case study · 85% shorter medical resupply time.",
+    "url": "/case-study/logistics/#log-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:log-start:3",
+   "lang": "en",
+   "text": "Plan the move · build shared tracking · train the handoffs",
+   "source": {
+    "type": "page",
+    "label": "Medical logistics case study · 85% shorter medical resupply time.",
+    "url": "/case-study/logistics/#log-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:log-start:4",
+   "lang": "en",
+   "text": "85% shorter after relocation · owner-reported service record",
+   "source": {
+    "type": "page",
+    "label": "Medical logistics case study · 85% shorter medical resupply time.",
+    "url": "/case-study/logistics/#log-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:log-brief:0",
+   "lang": "en",
+   "text": "Every delay spent the one resource a casualty could not recover: time.",
+   "source": {
+    "type": "page",
+    "label": "Medical logistics case study · Process failure in a combat zone isn’t an inconvenience. It’s a casualty risk.",
+    "url": "/case-study/logistics/#log-brief"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:log-moves:0",
+   "lang": "en",
+   "text": "The physical move removed the largest delay. A shared request and visible order status kept it from returning.",
+   "source": {
+    "type": "page",
+    "label": "Medical logistics case study · Move the warehouse. Then fix the handoffs.",
+    "url": "/case-study/logistics/#log-moves"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:log-moves:1",
+   "lang": "en",
+   "text": "Move the supply point forward",
+   "source": {
+    "type": "page",
+    "label": "Medical logistics case study · Move the warehouse. Then fix the handoffs.",
+    "url": "/case-study/logistics/#log-moves"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:log-moves:2",
+   "lang": "en",
+   "text": "Every resupply run began too far from the aid stations.",
+   "source": {
+    "type": "page",
+    "label": "Medical logistics case study · Move the warehouse. Then fix the handoffs.",
+    "url": "/case-study/logistics/#log-moves"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:log-moves:3",
+   "lang": "en",
+   "text": "Planned and tracked the $2M move forward. Owner-reported resupply time changed from 1–2 months to 1–2 weeks, summarized as 85% shorter.",
+   "source": {
+    "type": "page",
+    "label": "Medical logistics case study · Move the warehouse. Then fix the handoffs.",
+    "url": "/case-study/logistics/#log-moves"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:log-moves:4",
+   "lang": "en",
+   "text": "Seven stations used different request and reporting formats.",
+   "source": {
+    "type": "page",
+    "label": "Medical logistics case study · Move the warehouse. Then fix the handoffs.",
+    "url": "/case-study/logistics/#log-moves"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:log-moves:5",
+   "lang": "en",
+   "text": "Built one shared request protocol; the service record reports a 15% efficiency gain in critical-resource deployment.",
+   "source": {
+    "type": "page",
+    "label": "Medical logistics case study · Move the warehouse. Then fix the handoffs.",
+    "url": "/case-study/logistics/#log-moves"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:log-moves:6",
+   "lang": "en",
+   "text": "No one could see order status, so sites over-ordered or ran out.",
+   "source": {
+    "type": "page",
+    "label": "Medical logistics case study · Move the warehouse. Then fix the handoffs.",
+    "url": "/case-study/logistics/#log-moves"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:log-moves:7",
+   "lang": "en",
+   "text": "Built shared real-time order status; the service record reports 60% lower spending while maintaining availability.",
+   "source": {
+    "type": "page",
+    "label": "Medical logistics case study · Move the warehouse. Then fix the handoffs.",
+    "url": "/case-study/logistics/#log-moves"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:log-constraints:0",
+   "lang": "en",
+   "text": "The future state had to preserve every fixed constraint.",
+   "source": {
+    "type": "page",
+    "label": "Medical logistics case study · The constraints were not negotiable.",
+    "url": "/case-study/logistics/#log-constraints"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:log-constraints:1",
+   "lang": "en",
+   "text": "Different systems and vocabulary.",
+   "source": {
+    "type": "page",
+    "label": "Medical logistics case study · The constraints were not negotiable.",
+    "url": "/case-study/logistics/#log-constraints"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:log-constraints:2",
+   "lang": "en",
+   "text": "No rehearsal or acceptable failure.",
+   "source": {
+    "type": "page",
+    "label": "Medical logistics case study · The constraints were not negotiable.",
+    "url": "/case-study/logistics/#log-constraints"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:log-constraints:3",
+   "lang": "en",
+   "text": "SERVICE-DESIGN SCOPE People, inventory, requests, handoffs, constraints, ownership, and measurable recovery time.",
+   "source": {
+    "type": "page",
+    "label": "Medical logistics case study · The constraints were not negotiable.",
+    "url": "/case-study/logistics/#log-constraints"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:log-outcomes:0",
+   "lang": "en",
+   "text": "Moved the supply point, standardized the request, and made order status visible.",
+   "source": {
+    "type": "page",
+    "label": "Medical logistics case study · Measured in time, money, and things that did not happen.",
+    "url": "/case-study/logistics/#log-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:log-outcomes:1",
+   "lang": "en",
+   "text": "Find the step that should not exist → Move it → Standardize the ask → Make the status visible",
+   "source": {
+    "type": "page",
+    "label": "Medical logistics case study · Measured in time, money, and things that did not happen.",
+    "url": "/case-study/logistics/#log-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:log-outcomes:2",
+   "lang": "en",
+   "text": "OWNER-REPORTED FIGURES FROM HILLARY'S SERVICE RECORD · MEASUREMENT PERIODS AND METHODS ARE NOT PRESERVED · NO UNIT POSITIONS, ROUTES, OR LOCATIONS ARE DESCRIBED HERE",
+   "source": {
+    "type": "page",
+    "label": "Medical logistics case study · Measured in time, money, and things that did not happen.",
+    "url": "/case-study/logistics/#log-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:log-outcomes:3",
+   "lang": "en",
+   "text": "reported reduction in medical resupply time after the warehouse moved forward",
+   "source": {
+    "type": "page",
+    "label": "Medical logistics case study · Measured in time, money, and things that did not happen.",
+    "url": "/case-study/logistics/#log-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:log-outcomes:4",
+   "lang": "en",
+   "text": "reported reduction in spending after shared real-time order status stopped over-ordering and stockouts",
+   "source": {
+    "type": "page",
+    "label": "Medical logistics case study · Measured in time, money, and things that did not happen.",
+    "url": "/case-study/logistics/#log-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:log-outcomes:5",
+   "lang": "en",
+   "text": "reported efficiency gain in critical-resource deployment from one shared communication protocol",
+   "source": {
+    "type": "page",
+    "label": "Medical logistics case study · Measured in time, money, and things that did not happen.",
+    "url": "/case-study/logistics/#log-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-start:0",
+   "lang": "en",
+   "text": "An exploratory 5-user test showed people got lost; a 34-person survey then narrowed eleven features to three. I am the sole designer; the redesign and retest are still in progress.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Eleven features became three.",
+    "url": "/case-study/grove/#grove-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-start:1",
+   "lang": "en",
+   "text": "Sole product designer · end to end",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Eleven features became three.",
+    "url": "/case-study/grove/#grove-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-start:2",
+   "lang": "en",
+   "text": "Exploratory test → 34-person survey",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Eleven features became three.",
+    "url": "/case-study/grove/#grove-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-start:3",
+   "lang": "en",
+   "text": "11 features → 3 launch priorities",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Eleven features became three.",
+    "url": "/case-study/grove/#grove-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-start:4",
+   "lang": "en",
+   "text": "Working React prototype · AI-assisted implementation",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Eleven features became three.",
+    "url": "/case-study/grove/#grove-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-start:5",
+   "lang": "en",
+   "text": "Phase 2 of 3 · redesign direction · retest pending",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Eleven features became three.",
+    "url": "/case-study/grove/#grove-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-research:0",
+   "lang": "en",
+   "text": "The job: one calm next action, with visible uncertainty when a wrong answer can cause harm.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Plant parents forget. Then they feel guilty.",
+    "url": "/case-study/grove/#grove-research"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-research:1",
+   "lang": "en",
+   "text": "A moderated test found the confusion first",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Plant parents forget. Then they feel guilty.",
+    "url": "/case-study/grove/#grove-research"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-research:2",
+   "lang": "en",
+   "text": "March–May 2026, 5 users: people stalled when care led with a feed and a mission, not their plants. Five people were enough to see something was wrong, not enough to say what to build instead — that's what the survey went on to answer.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Plant parents forget. Then they feel guilty.",
+    "url": "/case-study/grove/#grove-research"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-research:3",
+   "lang": "en",
+   "text": "What those 34 people actually said",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Plant parents forget. Then they feel guilty.",
+    "url": "/case-study/grove/#grove-research"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-research:4",
+   "lang": "en",
+   "text": "34 owners · May 22–July 8, 2026 · choose three launch dealbreakers.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Plant parents forget. Then they feel guilty.",
+    "url": "/case-study/grove/#grove-research"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-research:5",
+   "lang": "en",
+   "text": "picked smart care reminders as a launch dealbreaker — 25 of 34, the clear top answer",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Plant parents forget. Then they feel guilty.",
+    "url": "/case-study/grove/#grove-research"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-research:6",
+   "lang": "en",
+   "text": "wanted to point a camera at a plant and have the app just tell them what it is",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Plant parents forget. Then they feel guilty.",
+    "url": "/case-study/grove/#grove-research"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-research:7",
+   "lang": "en",
+   "text": "of 34 named notification volume, unprompted, as what would make them delete it — the most-cited reason by far",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Plant parents forget. Then they feel guilty.",
+    "url": "/case-study/grove/#grove-research"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-research:8",
+   "lang": "en",
+   "text": "out of 5: how confident new owners felt about light (n=16). Experienced owners rated themselves 3.3",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Plant parents forget. Then they feel guilty.",
+    "url": "/case-study/grove/#grove-research"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-research:9",
+   "lang": "en",
+   "text": "Self-report prioritized the next build; it does not prove behavior or demand. The moderated test that came before it (March–May 2026) showed people were confused, not what to build instead — its task records aren't preserved, so no broader claim is made from either study.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Plant parents forget. Then they feel guilty.",
+    "url": "/case-study/grove/#grove-research"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-research:10",
+   "lang": "en",
+   "text": "What they wanted, and what waited",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Plant parents forget. Then they feel guilty.",
+    "url": "/case-study/grove/#grove-research"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-research:11",
+   "lang": "en",
+   "text": "The top three entered the core. Eight features waited.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Plant parents forget. Then they feel guilty.",
+    "url": "/case-study/grove/#grove-research"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-research:12",
+   "lang": "en",
+   "text": "Smart care reminders 74% CORE",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Plant parents forget. Then they feel guilty.",
+    "url": "/case-study/grove/#grove-research"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-research:13",
+   "lang": "en",
+   "text": "AI plant identification (camera) 56% CORE",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Plant parents forget. Then they feel guilty.",
+    "url": "/case-study/grove/#grove-research"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-research:14",
+   "lang": "en",
+   "text": "AI photo diagnosis 50% CORE",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Plant parents forget. Then they feel guilty.",
+    "url": "/case-study/grove/#grove-research"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-research:15",
+   "lang": "en",
+   "text": "Growth photo journal 24% LATER",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Plant parents forget. Then they feel guilty.",
+    "url": "/case-study/grove/#grove-research"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-research:16",
+   "lang": "en",
+   "text": "Stylized room / light map 24% LATER",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Plant parents forget. Then they feel guilty.",
+    "url": "/case-study/grove/#grove-research"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-research:17",
+   "lang": "en",
+   "text": "Greenhouse encyclopedia 21% LATER",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Plant parents forget. Then they feel guilty.",
+    "url": "/case-study/grove/#grove-research"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-research:18",
+   "lang": "en",
+   "text": "Community forums 18% LATER",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Plant parents forget. Then they feel guilty.",
+    "url": "/case-study/grove/#grove-research"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-research:19",
+   "lang": "en",
+   "text": "Verified swapping 9% LATER",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Plant parents forget. Then they feel guilty.",
+    "url": "/case-study/grove/#grove-research"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-research:20",
+   "lang": "en",
+   "text": "“Any generative AI in this will remove any sense of trust.”",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Plant parents forget. Then they feel guilty.",
+    "url": "/case-study/grove/#grove-research"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-research:21",
+   "lang": "en",
+   "text": "Florist · unprompted. I removed AI-written care sheets from scope.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Plant parents forget. Then they feel guilty.",
+    "url": "/case-study/grove/#grove-research"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-decisions:0",
+   "lang": "en",
+   "text": "WHAT THE EVIDENCE SAYS TO BUILD NEXT",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Three features, one testable direction each.",
+    "url": "/case-study/grove/#grove-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-decisions:1",
+   "lang": "en",
+   "text": "Each direction is paired with the authentic first-build screen it would change. These are not completed redesigns.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Three features, one testable direction each.",
+    "url": "/case-study/grove/#grove-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-decisions:2",
+   "lang": "en",
+   "text": "Replace mission-and-feed urgency with one calm morning summary.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Three features, one testable direction each.",
+    "url": "/case-study/grove/#grove-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-decisions:3",
+   "lang": "en",
+   "text": "Show top guesses, confidence, and sources—not one false verdict.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Three features, one testable direction each.",
+    "url": "/case-study/grove/#grove-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-decisions:4",
+   "lang": "en",
+   "text": "Keep plant personality; remove scorekeeping that turns care into paperwork.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Three features, one testable direction each.",
+    "url": "/case-study/grove/#grove-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-decisions:5",
+   "lang": "en",
+   "text": "WHAT REMAINS Authentic first-build screens. High-fidelity redesign, edge states, and retest remain unbuilt. Phase 2 of 3.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Three features, one testable direction each.",
+    "url": "/case-study/grove/#grove-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:0",
+   "lang": "en",
+   "text": "HOW THE EVIDENCE CHANGED THE BUILD",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:1",
+   "lang": "en",
+   "text": "Remove guilt. Preserve one useful next action.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:2",
+   "lang": "en",
+   "text": "I’m thirsty. Why did you forget me?",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:3",
+   "lang": "en",
+   "text": "Your Pothos is struggling. Don’t let it down.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:4",
+   "lang": "en",
+   "text": "3 plants are counting on you today.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:5",
+   "lang": "en",
+   "text": "Good morning. One thing today: check the top inch of your Fiddle Leaf.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:6",
+   "lang": "en",
+   "text": "A florist, unprompted: “Any generative AI in this will remove any sense of trust.” She wasn't alone—4 of 34 said they'd trust no AI feature in the app at all, and 19 of 34 said explaining why the AI made a call is what would earn their trust. Plant ID carried that risk directly, so instead of one confident answer, it shows top guesses, how sure it is, and its sources. False certainty is the fastest way to lose trust.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:7",
+   "lang": "en",
+   "text": "The working React prototype, not a static handoff artifact.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:8",
+   "lang": "en",
+   "text": "Accelerate first-build implementation and help explore alternatives; research still chose what entered the product.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:9",
+   "lang": "en",
+   "text": "Own research, scope, interaction decisions, accessibility, and QA.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:10",
+   "lang": "en",
+   "text": "Faster output is not evidence. Uncertain recommendations still need confidence, sources, and human review.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:11",
+   "lang": "en",
+   "text": "FIRST BUILDGuilt and urgency: “your plant misses you.”",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:12",
+   "lang": "en",
+   "text": "DECISIONOne calm morning summary.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:13",
+   "lang": "en",
+   "text": "Notifications are the #1 reason people delete a plant app.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:14",
+   "lang": "en",
+   "text": "FIRST BUILDBadges and streaks.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:15",
+   "lang": "en",
+   "text": "DECISIONAn AI plant personality you earn: a feeling, not points.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:16",
+   "lang": "en",
+   "text": "Care that feels like paperwork is the top reason people quit. A streak also rewards watering every day, while overwatering is the most common way people kill houseplants. The optimal play would kill the subject of the product. The honest cost: calm should show lower 7-day engagement than streaks would. I’d take that trade if 90-day retention holds. If it doesn’t, the mechanic was doing work I underestimated, and I’d rather find that out than assume it.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:17",
+   "lang": "en",
+   "text": "FIRST BUILDOne confident answer, every time.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:18",
+   "lang": "en",
+   "text": "DECISIONTop guesses, how sure it is, and its sources.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:19",
+   "lang": "en",
+   "text": "False certainty is the fastest way to lose trust.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:20",
+   "lang": "en",
+   "text": "FIRST BUILDGeneric care tips.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:21",
+   "lang": "en",
+   "text": "DECISIONToxic-to-pets warnings the moment you add a plant, with sources.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:22",
+   "lang": "en",
+   "text": "New owners raised it unprompted, before I ever asked. When a plant can hurt a cat, a wrong guess isn’t a suggestion. It’s a risk.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:23",
+   "lang": "en",
+   "text": "FIRST BUILDNudge whenever engagement dips.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:24",
+   "lang": "en",
+   "text": "DECISIONOne summary per group; only true emergencies interrupt.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:25",
+   "lang": "en",
+   "text": "A reminder can never become the reason someone leaves.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:26",
+   "lang": "en",
+   "text": "FIRST BUILDA fixed calendar, with every plant on its own repeating interval and days overdue.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:27",
+   "lang": "en",
+   "text": "NEXT DESIGNThe reminder asks you to check, not to water: “Fiddle Leaf: check the top inch.” Two taps: watered, or not yet.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-override:28",
+   "lang": "en",
+   "text": "Overwatering kills more houseplants than neglect, and a fixed interval is exactly how it happens. My own care guide already says “water when the top inch is dry.” The reminder engine never caught up to it. Asking you to check makes the reminder correct, makes seasonality free, and turns “smart care reminders” from a label into a mechanism. This is the one I got wrong in the same direction as the first build: I corrected its tone five times and never once its logic.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Reminders that protect the care task.",
+    "url": "/case-study/grove/#grove-override"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-prototype:0",
+   "lang": "en",
+   "text": "PROTOTYPE PROOF · INTERACTIVE",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Try the working prototype.",
+    "url": "/case-study/grove/#grove-prototype"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-prototype:1",
+   "lang": "en",
+   "text": "Three keyboard-operable interactions first; tokens and implementation detail follow.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Try the working prototype.",
+    "url": "/case-study/grove/#grove-prototype"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-prototype:2",
+   "lang": "en",
+   "text": "REVIEW THE COMPONENT SYSTEM",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Try the working prototype.",
+    "url": "/case-study/grove/#grove-prototype"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-prototype:3",
+   "lang": "en",
+   "text": "LIVE COMPONENTS · TRY THEM",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Try the working prototype.",
+    "url": "/case-study/grove/#grove-prototype"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-prototype:4",
+   "lang": "en",
+   "text": "The system has to survive a tap.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Try the working prototype.",
+    "url": "/case-study/grove/#grove-prototype"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-prototype:5",
+   "lang": "en",
+   "text": "Three small trust tests: one calm task, one honest guess, and one warning with a way to check it.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Try the working prototype.",
+    "url": "/case-study/grove/#grove-prototype"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-prototype:6",
+   "lang": "en",
+   "text": "Interactive reconstruction · built from the research and decision log, not a shipped-product claim.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Try the working prototype.",
+    "url": "/case-study/grove/#grove-prototype"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-prototype:7",
+   "lang": "en",
+   "text": "Your Fiddle Leaf could use a little water.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Try the working prototype.",
+    "url": "/case-study/grove/#grove-prototype"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-prototype:8",
+   "lang": "en",
+   "text": "Reconstructed from Grove's research and decision log, not a live model. In the prototype this confidence pattern comes from a plant-ID model; the specimen shows the trust behavior — a ranked guess with a way to verify, never a silent verdict.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Try the working prototype.",
+    "url": "/case-study/grove/#grove-prototype"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-prototype:9",
+   "lang": "en",
+   "text": "Grove flags the risk now and links the source. You still make the call.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Try the working prototype.",
+    "url": "/case-study/grove/#grove-prototype"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-prototype:10",
+   "lang": "en",
+   "text": "surface/paper · type/label · state/reminder · radius/field-card",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Try the working prototype.",
+    "url": "/case-study/grove/#grove-prototype"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-prototype:11",
+   "lang": "en",
+   "text": "COLOR · MEANING BEFORE DECORATION",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Try the working prototype.",
+    "url": "/case-study/grove/#grove-prototype"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-prototype:12",
+   "lang": "en",
+   "text": "Green acts. Amber waits nearby. Rose flags overdue care without turning a plant into a disappointed parent.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Try the working prototype.",
+    "url": "/case-study/grove/#grove-prototype"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-prototype:13",
+   "lang": "en",
+   "text": "ink/900 → paper/50 · the quiet range everything else sits inside",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Try the working prototype.",
+    "url": "/case-study/grove/#grove-prototype"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-prototype:14",
+   "lang": "en",
+   "text": "Water on a fixed calendar.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Try the working prototype.",
+    "url": "/case-study/grove/#grove-prototype"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-prototype:15",
+   "lang": "en",
+   "text": "The interface rewarded overwatering.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Try the working prototype.",
+    "url": "/case-study/grove/#grove-prototype"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-prototype:16",
+   "lang": "en",
+   "text": "Check the top inch. Then log watered or not yet.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Try the working prototype.",
+    "url": "/case-study/grove/#grove-prototype"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-prototype:17",
+   "lang": "en",
+   "text": "Plant health and 90-day retention, not reminder taps.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Try the working prototype.",
+    "url": "/case-study/grove/#grove-prototype"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-prototype:18",
+   "lang": "en",
+   "text": "A new user only ever sees one decision per screen.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Try the working prototype.",
+    "url": "/case-study/grove/#grove-prototype"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-prototype:19",
+   "lang": "en",
+   "text": "Grouped by where they live",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Try the working prototype.",
+    "url": "/case-study/grove/#grove-prototype"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-prototype:20",
+   "lang": "en",
+   "text": "Plants grouped by room, never one long overwhelming list.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Try the working prototype.",
+    "url": "/case-study/grove/#grove-prototype"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-prototype:21",
+   "lang": "en",
+   "text": "Automated advice stays reviewable",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Try the working prototype.",
+    "url": "/case-study/grove/#grove-prototype"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-prototype:22",
+   "lang": "en",
+   "text": "A person has the final call on every uncertain recommendation.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · Try the working prototype.",
+    "url": "/case-study/grove/#grove-prototype"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-outcomes:0",
+   "lang": "en",
+   "text": "Phase 2 is a testable hypothesis plus an explicit decision record.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · A focused prototype with an honest next test.",
+    "url": "/case-study/grove/#grove-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-outcomes:1",
+   "lang": "en",
+   "text": "WHY A PLANT APP Confidence, provenance, and review states make uncertainty actionable. Plants are the low-stakes practice ground.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · A focused prototype with an honest next test.",
+    "url": "/case-study/grove/#grove-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-outcomes:2",
+   "lang": "en",
+   "text": "NO INVENTED NUMBERS · GROVE IS A FUNCTIONAL PROTOTYPE, PHASE 2 OF 3",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · A focused prototype with an honest next test.",
+    "url": "/case-study/grove/#grove-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-outcomes:3",
+   "lang": "en",
+   "text": "plant owners surveyed before any screen changed",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · A focused prototype with an honest next test.",
+    "url": "/case-study/grove/#grove-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-outcomes:4",
+   "lang": "en",
+   "text": "features that earn the download; everything else waits",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · A focused prototype with an honest next test.",
+    "url": "/case-study/grove/#grove-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-outcomes:5",
+   "lang": "en",
+   "text": "product calls made explicit, including one care-logic mistake",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · A focused prototype with an honest next test.",
+    "url": "/case-study/grove/#grove-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-outcomes:6",
+   "lang": "en",
+   "text": "I got the care logic wrong before I got the interface right. The next prototype tests whether a check-first reminder protects the plant without costing long-term use.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · A focused prototype with an honest next test.",
+    "url": "/case-study/grove/#grove-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-outcomes:7",
+   "lang": "en",
+   "text": "WHAT THE THREE PHASES MEAN",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · A focused prototype with an honest next test.",
+    "url": "/case-study/grove/#grove-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:grove-outcomes:8",
+   "lang": "en",
+   "text": "1: first build + survey. 2: decisions shown here. 3: high-fidelity screens, owner testing, and edge states.",
+   "source": {
+    "type": "page",
+    "label": "Grove case study · A focused prototype with an honest next test.",
+    "url": "/case-study/grove/#grove-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-start:0",
+   "lang": "en",
+   "text": "I captured, sequenced, annotated, and labeled 200+ screens per app across Kikoff, Polymarket, and Discover. I documented these products; I did not design them or Mobbin.",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · 200+ screens per app, searchable by task.",
+    "url": "/case-study/mobbin/#mobbin-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-brief:0",
+   "lang": "en",
+   "text": "A CAPTURE HAS TO BE FINDABLE LATER",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · Name the task, not just the app.",
+    "url": "/case-study/mobbin/#mobbin-brief"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-brief:1",
+   "lang": "en",
+   "text": "Mobbin users search for a task—sign in, browse, open an account—not for a screenshot number. I kept each source capture untouched, then named the task beside it using the library’s vocabulary.",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · Name the task, not just the app.",
+    "url": "/case-study/mobbin/#mobbin-brief"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-brief:2",
+   "lang": "en",
+   "text": "Three raw source captures.",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · Name the task, not just the app.",
+    "url": "/case-study/mobbin/#mobbin-brief"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-brief:3",
+   "lang": "en",
+   "text": "Source interfaces documented, not designed, by Hillary",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · Name the task, not just the app.",
+    "url": "/case-study/mobbin/#mobbin-brief"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-work:0",
+   "lang": "en",
+   "text": "THE METHOD · JUDGMENT BEFORE CAPTURE",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · A screenshot is not a flow.",
+    "url": "/case-study/mobbin/#mobbin-work"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-work:1",
+   "lang": "en",
+   "text": "Walk the task. Keep useful states. Order the sequence. Name it in Mobbin’s vocabulary.",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · A screenshot is not a flow.",
+    "url": "/case-study/mobbin/#mobbin-work"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-work:2",
+   "lang": "en",
+   "text": "Any tool can do this part.",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · A screenshot is not a flow.",
+    "url": "/case-study/mobbin/#mobbin-work"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-work:3",
+   "lang": "en",
+   "text": "Choose the task, sequence, cuts, and searchable label.",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · A screenshot is not a flow.",
+    "url": "/case-study/mobbin/#mobbin-work"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-decisions:0",
+   "lang": "en",
+   "text": "FOUR CALLS · ONE DOCUMENTATION SYSTEM",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · The capture became useful through editing.",
+    "url": "/case-study/mobbin/#mobbin-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-decisions:1",
+   "lang": "en",
+   "text": "Preserve the useful state, sequence the task, name it for retrieval.",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · The capture became useful through editing.",
+    "url": "/case-study/mobbin/#mobbin-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-decisions:2",
+   "lang": "en",
+   "text": "01 Capture the whole task Walk the app like a real person, including empty states, errors, and the screens that only make sense in sequence. DECISION LOG A flow, not a pile",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · The capture became useful through editing.",
+    "url": "/case-study/mobbin/#mobbin-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-decisions:3",
+   "lang": "en",
+   "text": "Walk the app like a real person, including empty states, errors, and the screens that only make sense in sequence.",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · The capture became useful through editing.",
+    "url": "/case-study/mobbin/#mobbin-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-decisions:4",
+   "lang": "en",
+   "text": "DECISION LOG A flow, not a pile",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · The capture became useful through editing.",
+    "url": "/case-study/mobbin/#mobbin-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-decisions:5",
+   "lang": "en",
+   "text": "02 Cut what will not help Marketing splashes did not earn the same space as sign-up, payment, account, or recovery flows. Completeness still needs an editor. DECISION LOG Useful beats exhaustive",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · The capture became useful through editing.",
+    "url": "/case-study/mobbin/#mobbin-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-decisions:6",
+   "lang": "en",
+   "text": "Marketing splashes did not earn the same space as sign-up, payment, account, or recovery flows. Completeness still needs an editor.",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · The capture became useful through editing.",
+    "url": "/case-study/mobbin/#mobbin-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-decisions:7",
+   "lang": "en",
+   "text": "DECISION LOG Useful beats exhaustive",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · The capture became useful through editing.",
+    "url": "/case-study/mobbin/#mobbin-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-decisions:8",
+   "lang": "en",
+   "text": "03 Name it in Mobbin’s language A pattern is findable only when the label matches the words another designer will search, not the words I happen to prefer. DECISION LOG Search words are design",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · The capture became useful through editing.",
+    "url": "/case-study/mobbin/#mobbin-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-decisions:9",
+   "lang": "en",
+   "text": "Name it in Mobbin’s language",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · The capture became useful through editing.",
+    "url": "/case-study/mobbin/#mobbin-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-decisions:10",
+   "lang": "en",
+   "text": "A pattern is findable only when the label matches the words another designer will search, not the words I happen to prefer.",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · The capture became useful through editing.",
+    "url": "/case-study/mobbin/#mobbin-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-decisions:11",
+   "lang": "en",
+   "text": "DECISION LOG Search words are design",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · The capture became useful through editing.",
+    "url": "/case-study/mobbin/#mobbin-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-decisions:12",
+   "lang": "en",
+   "text": "04 Write for someone I will never meet Each annotation has to explain what the screen does, where it sits, and why the pattern matters without the source app open. DECISION LOG Context must travel",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · The capture became useful through editing.",
+    "url": "/case-study/mobbin/#mobbin-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-decisions:13",
+   "lang": "en",
+   "text": "Write for someone I will never meet",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · The capture became useful through editing.",
+    "url": "/case-study/mobbin/#mobbin-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-decisions:14",
+   "lang": "en",
+   "text": "Each annotation has to explain what the screen does, where it sits, and why the pattern matters without the source app open.",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · The capture became useful through editing.",
+    "url": "/case-study/mobbin/#mobbin-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-decisions:15",
+   "lang": "en",
+   "text": "DECISION LOG Context must travel",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · The capture became useful through editing.",
+    "url": "/case-study/mobbin/#mobbin-decisions"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-apps:0",
+   "lang": "en",
+   "text": "THREE APPS · THREE DIFFERENT ANSWERS",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · Same category. Opposite ways to earn confidence.",
+    "url": "/case-study/mobbin/#mobbin-apps"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-apps:1",
+   "lang": "en",
+   "text": "Three products, three ways to make financial risk legible.",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · Same category. Opposite ways to earn confidence.",
+    "url": "/case-study/mobbin/#mobbin-apps"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-apps:2",
+   "lang": "en",
+   "text": "CREDIT BUILDING · PROOF AFTER EVERY ACTION",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · Same category. Opposite ways to earn confidence.",
+    "url": "/case-study/mobbin/#mobbin-apps"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-apps:3",
+   "lang": "en",
+   "text": "A long sign-up earns its length by showing a score, a plan, and proof after each action.",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · Same category. Opposite ways to earn confidence.",
+    "url": "/case-study/mobbin/#mobbin-apps"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-outcomes:0",
+   "lang": "en",
+   "text": "WHERE IT LANDED · CONTRIBUTION, NOT OWNERSHIP",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · A searchable record of how three finance products work.",
+    "url": "/case-study/mobbin/#mobbin-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-outcomes:1",
+   "lang": "en",
+   "text": "I documented the source apps for Mobbin’s Finance+ reference library. I did not design Kikoff, Polymarket, Discover, or Mobbin.",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · A searchable record of how three finance products work.",
+    "url": "/case-study/mobbin/#mobbin-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-outcomes:2",
+   "lang": "en",
+   "text": "Capture the task → Map the sequence → Name the pattern → Make it searchable",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · A searchable record of how three finance products work.",
+    "url": "/case-study/mobbin/#mobbin-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-outcomes:3",
+   "lang": "en",
+   "text": "FREELANCE APP-CAPTURE WORK · SOURCE-PRODUCT OWNERSHIP STAYS WITH EACH COMPANY",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · A searchable record of how three finance products work.",
+    "url": "/case-study/mobbin/#mobbin-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-outcomes:4",
+   "lang": "en",
+   "text": "screens per app — captured, sequenced, annotated, and labeled across three apps",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · A searchable record of how three finance products work.",
+    "url": "/case-study/mobbin/#mobbin-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-outcomes:5",
+   "lang": "en",
+   "text": "live finance apps documented, each earning confidence a different way",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · A searchable record of how three finance products work.",
+    "url": "/case-study/mobbin/#mobbin-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:mobbin-outcomes:6",
+   "lang": "en",
+   "text": "months building reusable references for designers",
+   "source": {
+    "type": "page",
+    "label": "Mobbin case study · A searchable record of how three finance products work.",
+    "url": "/case-study/mobbin/#mobbin-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:about-start:0",
+   "lang": "en",
+   "text": "HILLARY ESPOSITO · HEALTHCARE PRODUCT DESIGNER · NEW YORK",
+   "source": {
+    "type": "page",
+    "label": "About · I design healthcare products where every handoff matters.",
+    "url": "/about/#about-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:about-start:1",
+   "lang": "en",
+   "text": "I bring 13+ years in cancer-care operations and military medical logistics to healthcare product design. I turn that experience into clearer clinical workflows, internal tools, and end-to-end services that help people act correctly when failure has a cost.",
+   "source": {
+    "type": "page",
+    "label": "About · I design healthcare products where every handoff matters.",
+    "url": "/about/#about-start"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:about-pattern:0",
+   "lang": "en",
+   "text": "I look for the workaround first. The sticky note, the personal spreadsheet, the step everyone skips. That is where the real process lives, and it is never in the process document.",
+   "source": {
+    "type": "page",
+    "label": "About · I enter complex systems and find where trust breaks.",
+    "url": "/about/#about-pattern"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:about-pattern:1",
+   "lang": "en",
+   "text": "I find out who pays when it breaks. A clinician between patients, a soldier waiting on resupply, someone whose plant died. The cost decides how much certainty the design owes them.",
+   "source": {
+    "type": "page",
+    "label": "About · I enter complex systems and find where trust breaks.",
+    "url": "/about/#about-pattern"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:about-pattern:2",
+   "lang": "en",
+   "text": "I make the failure shared before I make it better. Four departments carrying four models of the problem will reject the same solution four different ways.",
+   "source": {
+    "type": "page",
+    "label": "About · I enter complex systems and find where trust breaks.",
+    "url": "/about/#about-pattern"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:about-pattern:3",
+   "lang": "en",
+   "text": "I check whether it survives without me. If it needs me there to explain it, it is not finished.",
+   "source": {
+    "type": "page",
+    "label": "About · I enter complex systems and find where trust breaks.",
+    "url": "/about/#about-pattern"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:about-story:0",
+   "lang": "en",
+   "text": "Designing for the person who has to act on it.",
+   "source": {
+    "type": "page",
+    "label": "About · How I got here.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:about-story:1",
+   "lang": "en",
+   "text": "My latest contract mapped and tagged 200+ screens across three finance apps so thousands of designers could find and reuse complete mobile flows.",
+   "source": {
+    "type": "page",
+    "label": "About · How I got here.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:about-story:2",
+   "lang": "en",
+   "text": "It sharpened how I compare patterns at scale, document to a strict taxonomy, and examine how products earn belief.",
+   "source": {
+    "type": "page",
+    "label": "About · How I got here.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:about-story:3",
+   "lang": "en",
+   "text": "AI accelerates research and prototyping. The judgment and authorship stay mine.",
+   "source": {
+    "type": "page",
+    "label": "About · How I got here.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:about-story:4",
+   "lang": "en",
+   "text": "AI moves the work faster. The calls stay mine.",
+   "source": {
+    "type": "page",
+    "label": "About · How I got here.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:about-story:5",
+   "lang": "en",
+   "text": "02 / 03 WHERE I BUILT MY PRACTICE",
+   "source": {
+    "type": "page",
+    "label": "About · How I got here.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:about-story:6",
+   "lang": "en",
+   "text": "Six years at MSK, optimizing internal operations and designing for 21,000+ clinicians and staff.",
+   "source": {
+    "type": "page",
+    "label": "About · How I got here.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:about-story:7",
+   "lang": "en",
+   "text": "I initiated an EMR workflow redesign that contributed within a 20% organization-wide cost reduction. IT and UX built it after my role changed.",
+   "source": {
+    "type": "page",
+    "label": "About · How I got here.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:about-story:8",
+   "lang": "en",
+   "text": "I also rebuilt CPR certification and administrative onboarding across Epic, HIPAA, and compliance. Operational observation, feedback, and workflow analysis were already the practice—even before I had formal UX vocabulary for it.",
+   "source": {
+    "type": "page",
+    "label": "About · How I got here.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:about-story:9",
+   "lang": "en",
+   "text": "Systems fail at the point where a real person has to use them.",
+   "source": {
+    "type": "page",
+    "label": "About · How I got here.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:about-story:10",
+   "lang": "en",
+   "text": "03 / 03 WHERE MY FOUNDATION WAS BUILT",
+   "source": {
+    "type": "page",
+    "label": "About · How I got here.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:about-story:11",
+   "lang": "en",
+   "text": "Captain and Medical Logistics Officer, NJ Army National Guard.",
+   "source": {
+    "type": "page",
+    "label": "About · How I got here.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:about-story:12",
+   "lang": "en",
+   "text": "In Iraq, I directed medical supply across aid stations in three countries, working inside a strict 48-hour cold-chain constraint.",
+   "source": {
+    "type": "page",
+    "label": "About · How I got here.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:about-story:13",
+   "lang": "en",
+   "text": "Shared tracking sharply cut both resupply time and spending. In 2020, I reported New Jersey National Guard medical operations to the Pentagon during the COVID-19 response.",
+   "source": {
+    "type": "page",
+    "label": "About · How I got here.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:about-story:14",
+   "lang": "en",
+   "text": "Process failure in a combat zone isn’t an inconvenience. It’s a casualty risk.",
+   "source": {
+    "type": "page",
+    "label": "About · How I got here.",
+    "url": "/about/#about-story"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:about-proof:0",
+   "lang": "en",
+   "text": "“Hillary was timely, communicative, and diligent in ensuring that every screen and interaction was captured to a high standard.”",
+   "source": {
+    "type": "page",
+    "label": "About · How clients describe working with me.",
+    "url": "/about/#about-proof"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:about-proof:1",
+   "lang": "en",
+   "text": "Lynette Yap Content and Community @ Mobbin Client recommendation, freelance UX flow documentation project",
+   "source": {
+    "type": "page",
+    "label": "About · How clients describe working with me.",
+    "url": "/about/#about-proof"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:about-life:0",
+   "lang": "en",
+   "text": "Routines that keep me clear and grounded.",
+   "source": {
+    "type": "page",
+    "label": "About · Running, reading, and Luna the cat.",
+    "url": "/about/#about-life"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:about-life:1",
+   "lang": "en",
+   "text": "READING NOW Thinking in Systems, Donella Meadows — the standard text on why systems resist the obvious fix.",
+   "source": {
+    "type": "page",
+    "label": "About · Running, reading, and Luna the cat.",
+    "url": "/about/#about-life"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:about-contact:0",
+   "lang": "en",
+   "text": "Open to UX and product design roles in healthcare, mission-driven organizations, and operationally complex environments. Also open to freelance and collaborations.",
+   "source": {
+    "type": "page",
+    "label": "About · Interested in working together?",
+    "url": "/about/#about-contact"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:resume-summary:0",
+   "lang": "en",
+   "text": "Healthcare Product Designer with 13+ years inside high-stakes healthcare and military systems. Combines frontline observation, workflow analysis, stakeholder input, and technical constraints to design clearer internal tools and testable product flows.",
+   "source": {
+    "type": "resume",
+    "label": "Résumé · Professional summary",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:resume-summary:1",
+   "lang": "en",
+   "text": "At Memorial Sloan Kettering, a workflow redesign I initiated later contributed inside a larger initiative to a 20% organization-wide electronic medical record cost reduction.",
+   "source": {
+    "type": "resume",
+    "label": "Résumé · Professional summary",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:resume-summary:2",
+   "lang": "en",
+   "text": "MHA, Lean Six Sigma Green Belt, U.S. Army veteran, and bilingual English/Spanish communicator.",
+   "source": {
+    "type": "resume",
+    "label": "Résumé · Professional summary",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:resume-skills:0",
+   "lang": "en",
+   "text": "Product and interaction: information architecture, user flows, wireframes, functional prototypes, interaction states, accessibility, responsive design, design systems, design QA",
+   "source": {
+    "type": "resume",
+    "label": "Résumé · Core skills",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:resume-skills:1",
+   "lang": "en",
+   "text": "Research and service design: workflow observation, stakeholder interviews, survey synthesis, usability testing, journey mapping, service blueprints, task analysis, scope prioritization",
+   "source": {
+    "type": "resume",
+    "label": "Résumé · Core skills",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:resume-skills:2",
+   "lang": "en",
+   "text": "Tools and domain: Figma, FigJam, Miro, Notion, React, HTML/CSS, AI-assisted prototyping, healthcare operations, EMR workflows, Lean Six Sigma",
+   "source": {
+    "type": "resume",
+    "label": "Résumé · Core skills",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:resume-grove:0",
+   "lang": "en",
+   "text": "Narrowed 11 proposed features to 3 after synthesizing a 34-person self-report survey, then translated the priorities into information architecture, interaction states, and a functional React prototype.",
+   "source": {
+    "type": "resume",
+    "label": "Résumé · Founder, Product Designer, Developer · Grove Plant Care (Independent product · 2025–Present · Functional prototype, Phase 2 of 3)",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:resume-grove:1",
+   "lang": "en",
+   "text": "Own research planning, product scope, responsive interaction design, accessibility, prototype implementation, and iteration. The prototype is not presented as a shipped consumer product.",
+   "source": {
+    "type": "resume",
+    "label": "Résumé · Founder, Product Designer, Developer · Grove Plant Care (Independent product · 2025–Present · Functional prototype, Phase 2 of 3)",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:resume-mobbin:0",
+   "lang": "en",
+   "text": "Documented 200+ mobile screens per app across Kikoff, Polymarket, and Discover, mapping navigation, interaction patterns, visual hierarchy, and microcopy for a reusable UX reference library.",
+   "source": {
+    "type": "resume",
+    "label": "Résumé · Content Designer, Contract · Mobbin (Remote · March–June 2026)",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:resume-mobbin:1",
+   "lang": "en",
+   "text": "Applied a consistent taxonomy so product and design teams could compare complete finance-app flows. The assignment covered documentation, not ownership of the products.",
+   "source": {
+    "type": "resume",
+    "label": "Résumé · Content Designer, Contract · Mobbin (Remote · March–June 2026)",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:resume-msk-trainer:0",
+   "lang": "en",
+   "text": "Rebuilt administrative onboarding across Epic, HIPAA, compliance, and role-specific workflows for a 21,000+ person organization.",
+   "source": {
+    "type": "resume",
+    "label": "Résumé · Trainer / Specialist · Memorial Sloan Kettering Cancer Center (New York, NY · January 2022–July 2024)",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:resume-msk-trainer:1",
+   "lang": "en",
+   "text": "Partnered with clinical, IT, imaging, and operations stakeholders to clarify ownership, exceptions, and handoffs across complex internal processes.",
+   "source": {
+    "type": "resume",
+    "label": "Résumé · Trainer / Specialist · Memorial Sloan Kettering Cancer Center (New York, NY · January 2022–July 2024)",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:resume-msk-admin:0",
+   "lang": "en",
+   "text": "Mapped a paper-to-digital EMR workflow across four departments and presented the redesign. MSK implemented it two roles later inside a broader initiative that reduced organization-wide EMR costs by 20%.",
+   "source": {
+    "type": "resume",
+    "label": "Résumé · Administrative Assistant / Office Coordinator · Memorial Sloan Kettering Cancer Center (New York, NY · 2018–2022)",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:resume-msk-admin:1",
+   "lang": "en",
+   "text": "Rewrote technical and legal CPR certification material around clinician questions and handoffs, enabling every certification to be collected 70% ahead of an at-risk deadline.",
+   "source": {
+    "type": "resume",
+    "label": "Résumé · Administrative Assistant / Office Coordinator · Memorial Sloan Kettering Cancer Center (New York, NY · 2018–2022)",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:resume-army:0",
+   "lang": "en",
+   "text": "Cut medical resupply time by 85% and spending by 60%, and improved deployment coordination by 15% across seven aid stations in three countries through shared tracking and reporting workflows.",
+   "source": {
+    "type": "resume",
+    "label": "Résumé · Commissioned Officer · NJ Army National Guard (2013–2026 · Platoon Leader, Company Commander, Brigade Medical Supply Officer)",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:resume-army:1",
+   "lang": "en",
+   "text": "Directed medical logistics for 5,000+ soldiers and $2M in supplies in Iraq while absorbing a vacant Medical Operations Officer role and reporting medical operations to the Pentagon.",
+   "source": {
+    "type": "resume",
+    "label": "Résumé · Commissioned Officer · NJ Army National Guard (2013–2026 · Platoon Leader, Company Commander, Brigade Medical Supply Officer)",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:resume-education:0",
+   "lang": "en",
+   "text": "Education: Master of Healthcare Administration, with honors, Rutgers University; Bachelor of Science, Public Health, Rutgers University; Associate of Science, Valley Forge Military College",
+   "source": {
+    "type": "resume",
+    "label": "Résumé · Education and credentials",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:resume-education:1",
+   "lang": "en",
+   "text": "Credentials: Google UX Design Certificate; Lean Six Sigma Green Belt, Purdue; UX, Data Analytics, and Software Engineering Bootcamps, Noble Desktop",
+   "source": {
+    "type": "resume",
+    "label": "Résumé · Education and credentials",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:resume-contact:0",
+   "lang": "en",
+   "text": "New York City · espositohillary@gmail.com · hillaryesposito.org · linkedin.com/in/hillaryesposito",
+   "source": {
+    "type": "resume",
+    "label": "Résumé · Contact",
+    "url": "/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+   },
+   "batch": 1
+  },
+  {
+   "id": "en:notes-msk:0",
+   "lang": "en",
+   "text": "She noticed staff printing physician and patient messages that already existed in the system, then waiting for them to be filed back in.",
+   "source": {
+    "type": "interview-notes",
+    "label": "MSK · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/msk/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-msk:1",
+   "lang": "en",
+   "text": "She checked the change with each affected department, then pitched it at MSK's yearly Process Improvement Fair. IT and UX built the \"send to EMR\" button later, after her role changed.",
+   "source": {
+    "type": "interview-notes",
+    "label": "MSK · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/msk/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-msk:2",
+   "lang": "en",
+   "text": "IT first treated it as low priority, an easy fix that was still real work on their plate, and she kept raising it until it was scheduled.",
+   "source": {
+    "type": "interview-notes",
+    "label": "MSK · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/msk/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-msk:3",
+   "lang": "en",
+   "text": "Her pitch included projected printing savings, estimated from financial data at the time. It's a projection, not a measured result.",
+   "source": {
+    "type": "interview-notes",
+    "label": "MSK · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/msk/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-msk:4",
+   "lang": "en",
+   "text": "On CPR certifications, the team's default fix was to extend the deadline by four months. Instead she worked with physicians to rewrite the language so it was clearer and matched legal requirements, and the developer and UX teams implemented it.",
+   "source": {
+    "type": "interview-notes",
+    "label": "MSK · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/msk/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-msk:5",
+   "lang": "en",
+   "text": "Every certification came in before the original deadline, with no extension needed.",
+   "source": {
+    "type": "interview-notes",
+    "label": "MSK · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/msk/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-msk:6",
+   "lang": "en",
+   "text": "As a Trainer/Facilitator, she gathered how lessons were landing with each class and brought that to the design team, who adjusted them, for example treating managers and senior leaders differently.",
+   "source": {
+    "type": "interview-notes",
+    "label": "MSK · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/msk/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-msk:7",
+   "lang": "en",
+   "text": "She added a 5-minute trivia warm-up before each session to put the room in a learning mindset. Evaluation scores rose overall; no specific percentage was recorded.",
+   "source": {
+    "type": "interview-notes",
+    "label": "MSK · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/msk/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-msk:8",
+   "lang": "en",
+   "text": "AI was not part of her MSK work (2018–2024).",
+   "source": {
+    "type": "interview-notes",
+    "label": "MSK · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/msk/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-logistics:0",
+   "lang": "en",
+   "text": "When she arrived, resupply took 1–2 months to reach sites. She built the case to move the warehouse closer, so the most vulnerable sites could be resupplied in 1–2 weeks.",
+   "source": {
+    "type": "interview-notes",
+    "label": "Medical logistics · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/logistics/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-logistics:1",
+   "lang": "en",
+   "text": "She planned the move in phases, from most to least essential, splitting personnel so every site kept getting resupplied during it. The move finished a month ahead of schedule.",
+   "source": {
+    "type": "interview-notes",
+    "label": "Medical logistics · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/logistics/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-logistics:2",
+   "lang": "en",
+   "text": "She did physical labor during the move alongside her team.",
+   "source": {
+    "type": "interview-notes",
+    "label": "Medical logistics · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/logistics/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-logistics:3",
+   "lang": "en",
+   "text": "When sites asked to track their own orders, she personally built a SharePoint system showing every site what it had ordered and its status, plus slideshow training on how to order and what each status meant.",
+   "source": {
+    "type": "interview-notes",
+    "label": "Medical logistics · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/logistics/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-logistics:4",
+   "lang": "en",
+   "text": "The 85% figure belongs to the warehouse relocation. The 60% cost reduction belongs to the order-visibility system, which stopped sites over-ordering or running out.",
+   "source": {
+    "type": "interview-notes",
+    "label": "Medical logistics · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/logistics/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-logistics:5",
+   "lang": "en",
+   "text": "Some supplies, such as vaccines, had to arrive within 48 hours at a set temperature. She tracked those missions, filed the critical paperwork, and once ran a mission herself to give a burnt-out team a break.",
+   "source": {
+    "type": "interview-notes",
+    "label": "Medical logistics · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/logistics/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-logistics:6",
+   "lang": "en",
+   "text": "For the time-critical deliveries, every deadline was met.",
+   "source": {
+    "type": "interview-notes",
+    "label": "Medical logistics · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/logistics/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-logistics:7",
+   "lang": "en",
+   "text": "No AI was involved in the logistics work.",
+   "source": {
+    "type": "interview-notes",
+    "label": "Medical logistics · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/logistics/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-grove:0",
+   "lang": "en",
+   "text": "Grove's first build was made with an AI tool, Emergent. Exploratory testing showed information-architecture problems and too many features, because the AI added features without planning the structure.",
+   "source": {
+    "type": "interview-notes",
+    "label": "Grove · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/grove/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-grove:1",
+   "lang": "en",
+   "text": "She designed and interpreted the 34-person survey herself, with no AI involved in that part.",
+   "source": {
+    "type": "interview-notes",
+    "label": "Grove · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/grove/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-grove:2",
+   "lang": "en",
+   "text": "She followed the survey data over her own enthusiasm as a plant lover, prioritising what a new user needs first.",
+   "source": {
+    "type": "interview-notes",
+    "label": "Grove · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/grove/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-grove:3",
+   "lang": "en",
+   "text": "If she started over, she'd scope AI to one specific UI pathway at a time, which is how the current redesign works.",
+   "source": {
+    "type": "interview-notes",
+    "label": "Grove · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/grove/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:notes-grove:4",
+   "lang": "en",
+   "text": "Status: the survey is done and 11 features are narrowed to 3. The redesign is in progress one pathway at a time, and the usability retest hasn't run yet.",
+   "source": {
+    "type": "interview-notes",
+    "label": "Grove · from Hillary's interview (approved Oct 2026)",
+    "url": "/case-study/grove/"
+   },
+   "batch": 2
+  },
+  {
+   "id": "en:build:0",
+   "lang": "en",
+   "text": "The site is built with React 18 and TypeScript, on Create React App, with React Router for navigation.",
+   "source": {
+    "type": "repo",
+    "label": "How this site is built · source code",
+    "url": "https://github.com/hme222/hillaryesposito.org"
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:build:1",
+   "lang": "en",
+   "text": "It's hosted on Vercel. Every push builds a preview, and merging to main deploys the live site.",
+   "source": {
+    "type": "repo",
+    "label": "How this site is built · source code",
+    "url": "https://github.com/hme222/hillaryesposito.org"
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:build:2",
+   "lang": "en",
+   "text": "Each page gets its own pre-built HTML file at build time, so link previews and search engines see the right title and description for every case study.",
+   "source": {
+    "type": "repo",
+    "label": "How this site is built · source code",
+    "url": "https://github.com/hme222/hillaryesposito.org"
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:build:3",
+   "lang": "en",
+   "text": "A build check confirms every page loads the same code bundle, so no page ships stale code.",
+   "source": {
+    "type": "repo",
+    "label": "How this site is built · source code",
+    "url": "https://github.com/hme222/hillaryesposito.org"
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:build:4",
+   "lang": "en",
+   "text": "The visual system runs on design tokens (tokens/tokens.json) and CSS custom properties: paper, ink, coral and green, set in Archivo and Space Mono.",
+   "source": {
+    "type": "repo",
+    "label": "How this site is built · source code",
+    "url": "https://github.com/hme222/hillaryesposito.org"
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:build:5",
+   "lang": "en",
+   "text": "A component registry documents every component's status and purpose. An automated check fails if it falls out of date.",
+   "source": {
+    "type": "repo",
+    "label": "How this site is built · source code",
+    "url": "https://github.com/hme222/hillaryesposito.org"
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:build:6",
+   "lang": "en",
+   "text": "The site has 82 automated tests across 9 files, including accessibility checks on the case studies.",
+   "source": {
+    "type": "repo",
+    "label": "How this site is built · source code",
+    "url": "https://github.com/hme222/hillaryesposito.org"
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:build:7",
+   "lang": "en",
+   "text": "For accessibility: a skip link, keyboard-operable dialogs that keep focus inside while open, support for reduced motion, and touch targets of at least 44px.",
+   "source": {
+    "type": "repo",
+    "label": "How this site is built · source code",
+    "url": "https://github.com/hme222/hillaryesposito.org"
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:build:8",
+   "lang": "en",
+   "text": "The site is fully bilingual. Spanish visitors get condensed Spanish case studies, plus a link to the full English version.",
+   "source": {
+    "type": "repo",
+    "label": "How this site is built · source code",
+    "url": "https://github.com/hme222/hillaryesposito.org"
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:build:9",
+   "lang": "en",
+   "text": "The MSK system map uses Three.js. Motion uses Framer Motion and CSS.",
+   "source": {
+    "type": "repo",
+    "label": "How this site is built · source code",
+    "url": "https://github.com/hme222/hillaryesposito.org"
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:build:10",
+   "lang": "en",
+   "text": "Analytics record only four events: résumé opens, contact clicks, LinkedIn clicks and case-study opens.",
+   "source": {
+    "type": "repo",
+    "label": "How this site is built · source code",
+    "url": "https://github.com/hme222/hillaryesposito.org"
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:build:storybook",
+   "lang": "en",
+   "text": "Grove's component library is documented in Storybook (version 8, also on Vercel) at grove-ui.hillaryesposito.org, with 18 stories built from the app's real data.",
+   "source": {
+    "type": "page",
+    "label": "Grove UI · Storybook",
+    "url": "https://grove-ui.hillaryesposito.org/"
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:quote-portfolio:0",
+   "lang": "en",
+   "text": "I wanted my portfolio to showcase my design thinking, creating thoughtful moments in small details.",
+   "quote": true,
+   "source": {
+    "type": "interview-quote",
+    "label": "In Hillary's words · Interview, Oct 2026",
+    "url": null
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:quote-portfolio:1",
+   "lang": "en",
+   "text": "I wanted to show my journey through a map, while having the warm feel undertones and collage-like style.",
+   "quote": true,
+   "source": {
+    "type": "interview-quote",
+    "label": "In Hillary's words · Interview, Oct 2026",
+    "url": null
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:quote-portfolio:2",
+   "lang": "en",
+   "text": "I kept a traditional style instead of a flashy header, I wanted my case study work to speak more than the opener.",
+   "quote": true,
+   "source": {
+    "type": "interview-quote",
+    "label": "In Hillary's words · Interview, Oct 2026",
+    "url": null
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:quote-portfolio:3",
+   "lang": "en",
+   "text": "I initially started everything from scratch, but as I played around with different tools I decided to have Claude help me build out the rest of it, along with Codex and Higgsfield. I use React, TypeScript and Vercel. I've recently integrated Storybook to show more of my design work as well.",
+   "quote": true,
+   "source": {
+    "type": "interview-quote",
+    "label": "In Hillary's words · Interview, Oct 2026",
+    "url": null
+   },
+   "batch": 3
+  },
+  {
+   "id": "en:quote-portfolio:4",
+   "lang": "en",
+   "text": "I think I would create a storyboard specifically for my site, really spending more time on some details fine-tuned. I also would love to have more of a playground vs. traditional site.",
+   "quote": true,
+   "source": {
+    "type": "interview-quote",
+    "label": "In Hillary's words · Interview, Oct 2026",
+    "url": null
+   },
+   "batch": 3
+  }
+ ]
+}

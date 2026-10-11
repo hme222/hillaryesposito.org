@@ -1,6 +1,43 @@
 # Design State: Full Portfolio Redesign — Hybrid Positioning
 
-_Last updated: 2026-09-26 by Codex (reference refinement Phases 1-4; prior checkpoints preserved)_
+_Last updated: 2026-10-09 by Claude (Ask about the work — brief approved; prior checkpoints preserved)_
+
+## Active Initiative: "Ask about the work" — grounded answer engine (brief approved 2026-10-09)
+
+**Brief:** `design-docs/briefs/2026-10-09-ask-about-the-work.md` (approved by Hillary 2026-10-09, both languages).
+
+**Problem:** recruiters, developers and UX designers each want one specific answer (role/scope, how the site is built, what inspired a page) without reading a whole case study — and a fabricated answer is a claim-truth failure, not a quality issue.
+
+**Primary personas:** recruiter on a phone under time pressure; developer evaluating the build; UX designer asking about inspiration and decisions. Ability spectrum: screen reader, keyboard-only, second-language reader (EN/ES), divided attention.
+
+**Success metric:** zero sentences not traceable to a cited passage on a ~40-question EN/ES test set; correct passage in top 3 for ≥80% in-scope; 100% "not covered" on out-of-scope; clean fallback with no key; all rubric gates at 390/1440.
+
+**Direction:** Approach C. Verbatim knowledge passages (résumé + published pages + approved how-it's-made/inspiration entries) → in-browser retrieval (free, always on) → Claude writes a short answer only from retrieved passages, citing them, via a Vercel serverless function with `ANTHROPIC_API_KEY` in Vercel env (Hillary reports the key is added; not yet verified — verify via a key-present health check, never by exposing the key). Fallback to retrieved passages when AI is unavailable. Does not explain its own intelligence.
+
+**Decisions:**
+- 2026-10-09 — Approach C chosen over retrieval-only (A) and AI-only (B): works at $0, claim-safe by construction, AI adds conversation without becoming the source of truth. Source: user direction.
+- 2026-10-09 — Dev/UX-designer knowledge drafted from verifiable repo facts and design docs, approved by Hillary entry by entry. Source: user direction.
+- 2026-10-09 — English and Spanish in v1. Source: user direction.
+- 2026-10-09 — Do not store question text; aggregate counts only. Source: brief.
+
+- 2026-10-09 — Strategy approved (`design-docs/strategy/2026-10-09-ask-about-the-work-strategy.md`): principles Sources before sentences; "Not covered" is a designed answer; A tool, not a trick; The same answer for everyone. Placement: nav "Ask" item + mobile menu, plus one "Ask a question" link in the recruiter panel, both opening one dialog on the existing Modal. Source: user direction.
+- 2026-10-09 — Hillary wants the feature "cute and fitting the portfolio visually". Tension with principle 3 (no persona) to reconcile in design-taste. Source: user direction.
+
+- 2026-10-09 — "Cute" resolved: a small risograph-printed critter (e.g. sprout) on the Ask entry and in the dialog's idle / thinking / not-covered states; it never speaks — answers stay plain and sourced. Counts as the project's one Gen Z flair moment (taste profile). Principle 3 kept. Source: user direction.
+
+- 2026-10-09 — Interview supplements the knowledge base: Hillary's answers become approved passages in her own words, quoted with attribution ("In Hillary's words: …", source "Interview, Oct 2026"); the AI writes around them in plain third person and never imitates her voice. Placeholder quotes shown in option previews are NOT her words and must not be used. Source: user direction.
+
+- 2026-10-09 — Portfolio-site interview complete (`design-docs/case-study-stories/portfolio-site.md`); Q4 quote, paraphrase-back and four EN/ES starter questions approved. Q6 shapes starters: MSK service design (most asked), UX as a Training Facilitator (Hillary's wish), how the site is built, what inspired the look. Source: user direction.
+
+- 2026-10-09 — Taste calibrated (`design-docs/taste/2026-10-09-ask-about-the-work-taste.md`): the critter is a **paper-map bird** — two Riso inks (green + coral) slightly off-register, map fold creases, one coral route line across the wings; small and still; never the messenger. Anti-reference: Duolingo-owl energy. States: nav 24px static; idle; thinking (one slow head-tilt); not covered (tucks head, wing points to links). Reduced motion → static pose per state. Source: user direction.
+
+**Taste profile (feature):** emotional target "a quiet travelling companion"; quality flagship; principles Printed not rendered · The route is the detail · Small and still · Never the messenger.
+
+- 2026-10-09 — Bird art final: same cut-paper style as the Weekend Dispatch train (user direction), generated on Higgsfield; idle + not-covered poses as raster WebP (`my-app/public/assets/ask/`), thinking = CSS tilt of idle, 24px nav icon as SVG line drawing. Details in the taste doc's "Final art". Source: user direction.
+
+**Open questions:** none blocking. Next: knowledge entries in approval batches (1: résumé + published case-study passages; 2: interview quotes; 3: how-it's-made facts) → writing-design-plans → build.
+
+**Handoff chain:** discovery (orchestrator) → design-strategy (placement, flows) → knowledge-base drafting + approval → writing-design-plans → build.
 
 ## Reference Refinement Initiative — Phase 1 Approved 2026-09-18
 
