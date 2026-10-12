@@ -111,6 +111,23 @@
    close under the pill - is fixed properly below (its own `top` now derives
    from `--dock-h`, set in Navbar.tsx, instead of the two sticky layers
    needing to agree on a hard-coded shared offset). */
+/* The page runs up behind the dock (owner direction, 2026-10-12): the
+   `.navbar` row stops reserving its own strip and each page pads its top by
+   the same amount, so content sits exactly where it did while the page's
+   own background (the home hero's map, every other page's paper) fills the
+   space around the pill instead of the body's plain color. The row's height
+   is the pill's bottom (`--dock-h`, measured in Navbar.tsx) plus `.navbar`'s
+   0.85rem bottom padding. */
+:root {
+  --dock-flow: calc(var(--dock-h) + 0.85rem);
+}
+.navbar {
+  margin-bottom: calc(-1 * var(--dock-flow));
+}
+.riso-page:not(.riso-home),
+.riso-home > .rp-hero {
+  padding-top: var(--dock-flow);
+}
 .nav-dock__item {
   color: var(--shell-ink-2);
   font-family: var(--shell-sans);
@@ -473,6 +490,11 @@ html[lang="es"] .riso-home .rp-clearing { max-width: 78ch; }
     min-height: 200px;
     max-height: 230px;
     padding: .8rem 1rem .35rem;
+    /* The portrait is taller than this capped box and spills over its top.
+       The hero's own top edge used to crop that; now the hero runs up behind
+       the dock, so crop at the box's top instead (sides and bottom untouched,
+       hover tilt and shadow included). */
+    clip-path: inset(0 -100vw -100vw -100vw);
   }
   .riso-home .rp-hero,
   .riso-home .rp-hero__content,
