@@ -14,8 +14,9 @@ type Props = {
   title: string;
   intro: string;
   steps: DecisionStep[];
-  /** Receives the active step index so the artifact can highlight its own row. */
-  visual: (activeIndex: number) => ReactNode;
+  /** Receives the active step index so the artifact can highlight its own row,
+   *  or null below the sticky breakpoint, where every step reads as active. */
+  visual: (activeIndex: number | null) => ReactNode;
 };
 
 /**
@@ -48,8 +49,25 @@ type Props = {
  * @status: stable
  * @purpose: Sticky-panel decision narrative where a scroll-tracked step list stays alongside a caller-supplied visual that highlights the active step; part of the flagship case-study loop (MSK, Mobbin) and already in use there. Shares its concept with two deliberately-deferred siblings on separate tracks — GroveDecisionStory (Grove case-study loop) and DecisionCard (design-skills/ShowKit loop) — not a collision, just related work on different timelines.
  */
+// Matches the `max-width: 900px` block in riso-page.css that unpins the panel.
+const STACKED_QUERY = "(max-width: 900px)";
+
 export default function DecisionStory({ id, languageAnchor, kicker, title, intro, steps, visual }: Props) {
   const [active, setActive] = useState(0);
+  // Below the breakpoint the panel stacks: steps above, artifact below, never
+  // on screen together, and every step styled as active. A scroll-driven
+  // highlight there pointed at a row whose step had already scrolled away
+  // (motion review 2026-10-12), so the visual gets no active index at all.
+  const [stacked, setStacked] = useState(() => (
+    typeof window !== "undefined" && (window.matchMedia?.(STACKED_QUERY).matches ?? false)
+  ));
+  useEffect(() => {
+    const query = window.matchMedia?.(STACKED_QUERY);
+    if (!query) return;
+    const onChange = (event: MediaQueryListEvent) => setStacked(event.matches);
+    query.addEventListener?.("change", onChange);
+    return () => query.removeEventListener?.("change", onChange);
+  }, []);
   const trackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -108,7 +126,7 @@ export default function DecisionStory({ id, languageAnchor, kicker, title, intro
                 </li>
               ))}
             </ol>
-            <div className="rp-decisionStory__visual">{visual(active)}</div>
+            <div className="rp-decisionStory__visual">{visual(stacked ? null : active)}</div>
           </div>
         </div>
       </div>

@@ -115,14 +115,23 @@ export default function GroveSystemLab() {
                   <option value="peace">Bedroom · Peace Lily</option>
                 </select>
               </label>
-              <h4>{reminderDone ? "Done. That was enough." : "One thing today."}</h4>
-              <p>{reminderDone
-                ? "Your care log is updated. No streak. No confetti. Your plant is still fine."
-                : plant === "pothos"
-                  ? "Your Pothos is due for a quick soil check."
-                  : plant === "peace"
-                    ? "Your Peace Lily could use a little water."
-                    : "Your Fiddle Leaf could use a little water."}</p>
+              {/* Both states share one grid cell so the card holds the taller
+                  one's height: swapping in the longer "done" copy used to grow
+                  the card by a line (+26px) with no transition. */}
+              <div className="rp-demoCard__swap">
+                <div aria-hidden={reminderDone} className={reminderDone ? "is-off" : undefined}>
+                  <h4>One thing today.</h4>
+                  <p>{plant === "pothos"
+                    ? "Your Pothos is due for a quick soil check."
+                    : plant === "peace"
+                      ? "Your Peace Lily could use a little water."
+                      : "Your Fiddle Leaf could use a little water."}</p>
+                </div>
+                <div aria-hidden={!reminderDone} className={reminderDone ? undefined : "is-off"}>
+                  <h4>Done. That was enough.</h4>
+                  <p>Your care log is updated. No streak. No confetti. Your plant is still fine.</p>
+                </div>
+              </div>
               <button type="button" onClick={() => setReminderDone((value) => !value)}>
                 {reminderDone ? "Undo care" : "Log care"}
               </button>

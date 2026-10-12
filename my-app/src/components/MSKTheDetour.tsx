@@ -173,7 +173,7 @@ export default function MSKTheDetour() {
       </div>
 
       <div className="fp-detour__controls">
-        <span className="fp-detour__folio">The Detour · 8 seconds · no sound</span>
+        <span className="fp-detour__folio">{prefersReducedMotion ? "The Detour · resolved frame" : "The Detour · 8 seconds · no sound"}</span>
         {!prefersReducedMotion && playback === "poster" && (
           <button type="button" onClick={playFromStart} aria-label="Play The Detour, an eight-second sequence">
             Play sequence

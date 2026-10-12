@@ -144,7 +144,7 @@ export default function FlagshipMobbin() {
         visual={(active) => (
           <div className="fp-sequence__phone fp-sequence__phone--story fp-sequence__phone--stack">
             {APPS.map((app, index) => {
-              const on = STEP_APP[active] === index;
+              const on = (active === null ? 0 : STEP_APP[active]) === index;
               return <img key={app.name} src={app.image} alt={app.alt} className={on ? "is-on" : undefined} aria-hidden={!on} />;
             })}
           </div>

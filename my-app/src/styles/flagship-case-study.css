@@ -318,8 +318,8 @@
 }
 .fp-indexLens.is-indexed .fp-indexLens__index { opacity: 1; transform: translateY(0); }
 .fp-indexLens__index > div { min-width: 0; padding-left: .55rem; border-left: 2px solid var(--coral); }
-.fp-indexLens__index span { display: block; font: .56rem/1.2 var(--mono); letter-spacing: .06em; color: var(--muted); }
-.fp-indexLens__index b { display: block; margin-top: .25rem; font-size: .68rem; line-height: 1.35; }
+.fp-indexLens__index span { display: block; font: .68rem/1.2 var(--mono); letter-spacing: .06em; color: var(--muted); }
+.fp-indexLens__index b { display: block; margin-top: .25rem; font-size: .78rem; line-height: 1.35; }
 .fp-indexLens__rule {
   position: absolute;
   left: 5%;
@@ -351,7 +351,7 @@
   .fp-indexLens__desk { min-height: 390px; width: calc(100% + 1.2rem); margin-left: -.6rem; gap: .45rem; }
   .fp-indexLens__capture { flex-basis: 32%; }
   .fp-indexLens__index > div { padding-left: .35rem; }
-  .fp-indexLens__index b { font-size: .64rem; }
+  .fp-indexLens__index b { font-size: .72rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1014,7 +1014,7 @@
 .fp-detour__status {
   position: relative;
   z-index: 1;
-  font: 800 clamp(1.35rem, 3.6vw, 3.9rem)/.94 var(--display, sans-serif);
+  font: 800 clamp(1.35rem, 3.6vw, 3.9rem)/.94 var(--sans);
   letter-spacing: -.045em;
   text-wrap: balance;
 }
@@ -1162,7 +1162,7 @@
 }
 .fp-detour__endTitle strong {
   display: block;
-  font: 800 clamp(2rem, 5.3vw, 5.8rem)/.88 var(--display, sans-serif);
+  font: 800 clamp(2rem, 5.3vw, 5.8rem)/.88 var(--sans);
   letter-spacing: -.055em;
   text-wrap: balance;
 }
@@ -1768,10 +1768,13 @@
 
 @media (max-width: 430px) {
   .fp-heroArt { min-height: 560px; }
-  .fp-capture { width: 48%; }
-  .fp-capture--1 { left: 0; }
-  .fp-capture--2 { left: 27%; }
-  .fp-capture--3 { right: -3%; }
+  /* The fanned phones' rotation pushed the outer two past the edge (-21px
+     and +33px at 390). Measured: 40% wide with 7% insets lands them at
+     9px and 381px. */
+  .fp-capture { width: 40%; }
+  .fp-capture--1 { left: 7%; }
+  .fp-capture--2 { left: 30%; }
+  .fp-capture--3 { right: 7%; }
   .fp-sequence__phone { width: min(230px,70vw); }
   .fp-mapWrap > ol { grid-template-columns: 1fr; }
 }
@@ -2010,12 +2013,12 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .fp-buttonThreshold.is-visible .fp-buttonThreshold__impression--01 { animation: fp-buttonThreshold-settle-01 860ms cubic-bezier(.22, 1, .36, 1) forwards; }
-  .fp-buttonThreshold.is-visible .fp-buttonThreshold__impression--02 { animation: fp-buttonThreshold-settle-02 920ms 80ms cubic-bezier(.22, 1, .36, 1) forwards; }
-  .fp-buttonThreshold.is-visible .fp-buttonThreshold__impression--03 { animation: fp-buttonThreshold-settle-03 900ms 160ms cubic-bezier(.22, 1, .36, 1) forwards; }
-  .fp-buttonThreshold.is-visible .fp-buttonThreshold__impression--04 { animation: fp-buttonThreshold-settle-04 960ms 240ms cubic-bezier(.22, 1, .36, 1) forwards; }
+  .fp-buttonThreshold.is-visible .fp-buttonThreshold__impression--01 { animation: fp-buttonThreshold-settle-01 560ms cubic-bezier(.22, 1, .36, 1) forwards; }
+  .fp-buttonThreshold.is-visible .fp-buttonThreshold__impression--02 { animation: fp-buttonThreshold-settle-02 600ms 60ms cubic-bezier(.22, 1, .36, 1) forwards; }
+  .fp-buttonThreshold.is-visible .fp-buttonThreshold__impression--03 { animation: fp-buttonThreshold-settle-03 600ms 120ms cubic-bezier(.22, 1, .36, 1) forwards; }
+  .fp-buttonThreshold.is-visible .fp-buttonThreshold__impression--04 { animation: fp-buttonThreshold-settle-04 640ms 180ms cubic-bezier(.22, 1, .36, 1) forwards; }
   .fp-buttonThreshold.is-visible .fp-buttonThreshold__handoff {
-    animation: fp-buttonThreshold-handoff 720ms 1.05s cubic-bezier(.22, 1, .36, 1) forwards;
+    animation: fp-buttonThreshold-handoff 600ms .82s cubic-bezier(.22, 1, .36, 1) forwards;
   }
 }
 

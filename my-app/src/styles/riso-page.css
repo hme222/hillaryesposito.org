@@ -14,10 +14,11 @@
   --muted: #596253;
   --hair: #c2cbb8;
   --green: #3d6b3f;
-  /* tailored pages override --coral per theme via --rp-accent-l / --rp-accent-d
-     (inline styles can't be theme-aware, so the accent is passed as a raw value
-     and resolved to --coral here, keeping dark-mode text contrast intact) */
-  --coral: var(--rp-accent-l, #bd3828);
+  /* Bound to the shell token (portfolio-cohesion.css), which flips with the
+     theme. The --rp-accent-l/-d hooks this used to read belonged to the
+     tailored role pages removed 2026-10-09; nothing set them, so every page
+     was painting the fallback literal. */
+  --coral: var(--shell-coral);
   /* Coral at label sizes measured 4.08:1 on the About composite. Decorative
      coral (borders, fills, rules) is unchanged; text-sized coral resolves
      through --coral-text, which darkens whatever the page's accent is rather
@@ -55,7 +56,7 @@
 .riso-page p, .riso-page li, .riso-page blockquote, .riso-page td { font-family: var(--sans); }
 .dark-mode .riso-page {
   --paper: #14150e; --paper-2: #191b10; --ink: #ece7d4; --ink-2: #b9b596;
-  --muted: #a9a582; --hair: #33351f; --green: #7cb069; --coral: var(--rp-accent-d, #ff8c82); --coral-text: var(--coral); --on-coral: #14150e; --on-green: #14150e;
+  --muted: #a9a582; --hair: #33351f; --green: #7cb069; --coral: var(--shell-coral); --coral-text: var(--coral); --on-coral: #14150e; --on-green: #14150e;
 }
 
 .rp-wrap { max-width: 1080px; margin: 0 auto; padding: 0 var(--sp-gutter); }
@@ -687,7 +688,7 @@
    matters more here than trimming a now-unnecessary type selector. */
 html.rp-filmChoreo .nav-dock__pill,
 html.rp-filmChoreo .rp-hero__content,
-html.rp-filmChoreo .home-heroProofStack {
+html.rp-filmChoreo .rp-hero__media {
   --rp-arrival-ease: cubic-bezier(.22, 1, .36, 1);
   opacity: 0;
   /* transition: none is deliberate and load-bearing, not a placeholder —
@@ -767,16 +768,22 @@ html.rp-filmChoreo .rp-hero__content {
    sign from the other two groups, so all three groups tilt differently,
    like three separately-placed scrapbook pieces rather than one effect
    applied three times. */
-html.rp-filmChoreo .home-heroProofStack {
+/* Retargeted 2026-10-12 from `.home-heroProofStack`, which no longer exists
+   (the hero became headshot-only), so this group had silently stopped
+   animating: the headshot popped in while nav and copy glided. Unlike the
+   old card stack, .rp-hero__media is a full-height transparent column, so
+   it takes the slide and fade only - an arrival shadow or grain overlay on
+   it would draw a hero-sized rectangle. */
+html.rp-filmChoreo .rp-hero__media {
   --rp-choreo-delay: 680ms;
   --rp-choreo-dur: 720ms;
   transform: translateX(18%) rotate(1.3deg);
-  box-shadow: 0 3px 6px rgba(0,0,0,.12), 0 22px 44px -22px rgba(0,0,0,.34);
+  box-shadow: none;
 }
 
 html.rp-filmChoreo.rp-filmChoreo--go .nav-dock__pill,
 html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content,
-html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack {
+html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__media {
   /* The real transition lives here, not on the base hidden-state rule
      above — see that rule's comment for why. This is a fresh transition
      starting the moment the go class actually lands, so --rp-choreo-delay
@@ -794,7 +801,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack {
 }
 @keyframes rp-arrival-failsafe { to { opacity: 1; transform: none; box-shadow: none; } }
 /* The shared rule and keyframe above both resolve to `box-shadow: none`,
-   which is correct for `.rp-hero__content`/`.home-heroProofStack` (neither
+   which is correct for `.rp-hero__content`/`.rp-hero__media` (neither
    has a resting shadow of its own) but wrong for `.nav-dock__pill`, whose
    true resting state is its own flat offset shadow (portfolio-cohesion.css),
    not none - landing on `none` for even one frame/one failsafe path let the
@@ -846,8 +853,7 @@ html.rp-filmChoreo .nav-dock__pill {
    the `html` type selector for the same specificity reason as round 4's
    "Bug 2". */
 html.rp-filmChoreo .nav-dock__pill::after,
-html.rp-filmChoreo .rp-hero__content::after,
-html.rp-filmChoreo .home-heroProofStack::after {
+html.rp-filmChoreo .rp-hero__content::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -875,14 +881,12 @@ html.rp-filmChoreo .home-heroProofStack::after {
    is set on <html> (app/App.tsx), the same element .rp-filmChoreo is on,
    so this is a same-element compound selector, not a descendant one. */
 html.dark-mode.rp-filmChoreo .nav-dock__pill::after,
-html.dark-mode.rp-filmChoreo .rp-hero__content::after,
-html.dark-mode.rp-filmChoreo .home-heroProofStack::after {
+html.dark-mode.rp-filmChoreo .rp-hero__content::after {
   mix-blend-mode: screen;
   opacity: .24;
 }
 html.rp-filmChoreo.rp-filmChoreo--go .nav-dock__pill::after,
-html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after,
-html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
+html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   transition: opacity var(--rp-choreo-dur, 620ms) ease-out;
   transition-delay: var(--rp-choreo-delay, 340ms);
   opacity: 0;
@@ -893,7 +897,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 @media (prefers-reduced-motion: reduce) {
   html.rp-filmChoreo .nav-dock__pill,
   html.rp-filmChoreo .rp-hero__content,
-  html.rp-filmChoreo .home-heroProofStack {
+  html.rp-filmChoreo .rp-hero__media {
     opacity: 1; transform: none; box-shadow: none; transition: none; animation: none;
   }
   /* Grain overlay: not just faded to 0, removed outright (content: none
@@ -902,8 +906,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
      than "present but static," and there is no rotation left to neutralize
      since the rule above already collapses transform to none. */
   html.rp-filmChoreo .nav-dock__pill::after,
-  html.rp-filmChoreo .rp-hero__content::after,
-  html.rp-filmChoreo .home-heroProofStack::after {
+  html.rp-filmChoreo .rp-hero__content::after {
     content: none;
   }
 }
@@ -1355,6 +1358,10 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
   text-decoration-thickness: 1px; text-underline-offset: .32em; cursor: pointer; }
 .rp-heroUtility:hover { color: var(--ink); text-underline-offset: .48em; }
 .rp-heroUtility:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+/* The opener is video; with reduced motion on it could only show a still
+   for 6.5s with no explanation (motion review 2026-10-12), so the replay
+   button isn't offered at all. The autoplay already skips reduced motion. */
+@media (prefers-reduced-motion: reduce) { .rp-openingVisualTrigger { display: none; } }
 .riso-home .rp-clearing { max-width: 44ch; }
 .rp-headshot { width: min(340px, 78%); aspect-ratio: 4/5; border-radius: var(--r-plate); overflow: hidden; border: 1px solid var(--hair);
   box-shadow: 0 2px 6px rgba(0,0,0,.12), 0 30px 60px -20px rgba(0,0,0,.35); transition: transform .45s cubic-bezier(.2,.8,.2,1); }
@@ -2603,8 +2610,14 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rp-dispatchTrain__scene { display: none; }
+  /* The scene used to be hidden outright, leaving ~320px of empty paper in
+     the masthead (motion review 2026-10-12). Keep it, drop the video, and
+     park the CSS fallback train in its delivered position with no motion. */
   .rp-dispatchTrain__video { display: none; }
+  .rp-dispatchTrain__fallback { opacity: 1 !important; transition: none; }
+  .rp-dispatchTrain:not(.rp-dispatchTrain--departed) .rp-dispatchTrain__vehicle { transform: none; }
+  .rp-dispatchTrain__vehicle,
+  .rp-dispatchTrain--departed .rp-dispatchTrain__vehicle { transition: none; }
   .rp-dispatchTrain__placard { transition: none; }
   .rp-dispatchTrain--returning .rp-dispatchTrain__vehicle { transition: none; }
   .rp-dispatch__issueLabel { opacity: 1 !important; transition: none; }
@@ -2936,6 +2949,10 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
     padding: .8rem 1rem;
   }
   .flagship-page .rp-hero__content { order: 1; }
+  /* Logistics stacks a diagram, a label and the deployment photo in this
+     340px box; the photo was squeezed to a 49px strip. The diagram repeats
+     in move 01 below, so on phones the hero keeps the photo and its label. */
+  .flagship-page .fp-heroArt--logistics .fp-logisticsHeroMechanism { display: none; }
   .flagship-page .rp-hero__media .rp-device { height: 310px; width: auto; }
   .flagship-page .fp-heroArt { min-height: 300px; }
   .flagship-page .fp-heroArt--msk .fp-dashboardFrame { width: 96%; max-height: 245px; }
@@ -3472,6 +3489,9 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 .rp-demoCard { width: min(460px,100%); padding: clamp(1.2rem,4vw,2rem); border: 1px solid var(--hair); border-radius: var(--r-plate);
   background: #f5f0ea; color: #20241c; box-shadow: 0 18px 48px -26px rgba(0,0,0,.42); }
 .rp-demoCard__eyebrow { font-family: var(--mono); font-size: .6rem; letter-spacing: .09em; text-transform: uppercase; color: #66705f; }
+.rp-demoCard__swap { display: grid; }
+.rp-demoCard__swap > div { grid-area: 1 / 1; }
+.rp-demoCard__swap > .is-off { visibility: hidden; }
 .rp-demoCard h4 { margin: .55rem 0 0; font-size: clamp(1.25rem,3vw,1.7rem); line-height: 1.08; letter-spacing: -.015em; }
 .rp-demoCard p { margin-top: .55rem; color: #45503f; }
 .rp-demoCard button { min-height: 44px; margin-top: 1.15rem; padding: .65rem 1rem; border: 0; border-radius: var(--r-plate);

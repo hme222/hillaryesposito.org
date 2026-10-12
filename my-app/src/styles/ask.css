@@ -13,20 +13,17 @@
 
 /* ---------- nav dock: Ask item (bird + visible "Ask" label) ---------- */
 /* The navbar sits outside any Riso-scoped page, so --coral is not defined
-   there. Resolve it the way the recruiter panel's --rp-coral does (same
-   --rp-accent-l/-d hooks, same fallbacks). Layout (display, padding,
+   there. Bind it to the shell token, which already flips with the theme.
+   Layout (display, padding,
    min-height, colour, hover/focus) comes from the shared `.nav-dock__item`
    class (App.css) - this rule only adds what's specific to the bird. */
 .ask-bird-nav {
-  --coral: var(--rp-accent-l, #bd3828);
+  --coral: var(--shell-coral);
   /* The bird's wing fill reads against the dock pill, not a page
      background - resolve it to the same shell paper the pill itself is
      printed on (portfolio-cohesion.css), in both themes. */
   --paper: var(--shell-paper);
   position: relative;
-}
-.dark-mode .ask-bird-nav {
-  --coral: var(--rp-accent-d, #ff8c82);
 }
 
 /* The bird already carries the route (a coral line across the wing, drawn

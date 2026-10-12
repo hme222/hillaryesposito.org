@@ -304,7 +304,7 @@ export default function FlagshipMSK() {
         steps={DECISIONS}
         visual={(active) => (
           <div className="fp-dashboardFrame fp-dashboardFrame--story">
-            <MSKDashboardMockup compact activeRow={DECISION_ROW[active] ?? null} />
+            <MSKDashboardMockup compact activeRow={active === null ? null : DECISION_ROW[active] ?? null} />
           </div>
         )}
       /></div>

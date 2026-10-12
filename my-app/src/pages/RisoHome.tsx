@@ -505,7 +505,7 @@ export default function RisoHome() {
                         }
                       }}
                     >
-                      <source src="/assets/video/weekend-journal-riso-train-v1.mp4" type="video/mp4" />
+                      <source src="/assets/video/weekend-journal-riso-train-v2.mp4" type="video/mp4" />
                     </video>
                     <div className="rp-dispatchTrain__fallback">
                       {[0, 1, 2, 3].map((car) => (

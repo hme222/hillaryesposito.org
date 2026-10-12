@@ -29,8 +29,19 @@ export default function ScreenSequence({
   return (
     <div className="fp-sequence" aria-label={label}>
       <div className="fp-sequence__stage">
-        <div className="fp-sequence__phone">
-          <img src={item.image} alt={item.alt} />
+        {/* Every screen mounted and stacked, the current one turned on - the
+            same crossfade DecisionStory's phone uses. Swapping one <img src>
+            cut hard between apps with a decode flash. */}
+        <div className="fp-sequence__phone fp-sequence__phone--stack">
+          {items.map((entry, index) => (
+            <img
+              key={entry.name}
+              src={entry.image}
+              alt={entry.alt}
+              className={index === current ? "is-on" : undefined}
+              aria-hidden={index !== current}
+            />
+          ))}
         </div>
         <div className="fp-sequence__copy" aria-live="polite">
           <p className="rp-kicker">{item.category}</p>

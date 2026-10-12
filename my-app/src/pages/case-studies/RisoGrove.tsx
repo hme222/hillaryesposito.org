@@ -466,7 +466,7 @@ export default function RisoGrove() {
           <p>
             <a
               className="rp-cta rp-cta--ghost"
-              href="https://grove-ui.hillaryesposito.org/"
+              href="https://grove-ui.hillaryesposito.org/?path=/story/grove-plantcard--healthy"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Review the Grove component system in Storybook (opens in new tab)"

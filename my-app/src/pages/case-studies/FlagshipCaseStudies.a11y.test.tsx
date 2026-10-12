@@ -321,7 +321,7 @@ describe("flagship case-study accessibility", () => {
     expect(trainVideo?.getAttribute("playsinline")).not.toBeNull();
     expect(trainVideo?.getAttribute("aria-hidden")).toBe("true");
     expect(trainVideo?.querySelector("source")?.getAttribute("src")).toBe(
-      "/assets/video/weekend-journal-riso-train-v1.mp4",
+      "/assets/video/weekend-journal-riso-train-v2.mp4",
     );
     const pauseTrain = jest.fn();
     Object.defineProperty(trainVideo, "pause", { configurable: true, value: pauseTrain });

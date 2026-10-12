@@ -5,7 +5,7 @@ import { XIcon } from "../LineIcons";
 import { useLanguage, useT } from "../../app/LanguageContext";
 import { sendPortfolioEvent } from "../../analytics/PortfolioAnalytics";
 import type { AskApiResponse, AskLang, KnowledgeEntry } from "../../ask/types";
-import { useBirdPose } from "./useBirdPose";
+import { useBirdState } from "./useBirdPose";
 import "../../styles/ask.css";
 
 const EMAIL = "espositohillary@gmail.com";
@@ -92,7 +92,7 @@ export default function AskDialog() {
   const inputRef = useRef<HTMLInputElement>(null);
   const seqRef = useRef(0);
   const abortRef = useRef<AbortController | null>(null);
-  const birdPose = useBirdPose(view.kind);
+  const { pose: birdPose, settledKind: birdKind } = useBirdState(view.kind);
 
   useEffect(() => {
     const handler = (e: Event) => {
@@ -222,7 +222,7 @@ export default function AskDialog() {
   const starters = [t("ask.starter1"), t("ask.starter2"), t("ask.starter3"), t("ask.starter4")];
   const thinking = view.kind === "thinking";
   const hasAnswer = view.kind === "answered" || view.kind === "passages";
-  const birdSrc = view.kind === "not-covered" ? "bird-not-covered" : "bird-idle";
+  const birdSrc = birdKind === "not-covered" ? "bird-not-covered" : "bird-idle";
 
   const renderSourceLink = (entry: KnowledgeEntry) => {
     const { url, label } = entry.source;

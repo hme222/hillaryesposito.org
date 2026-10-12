@@ -74,6 +74,8 @@ const en = {
     "At Memorial Sloan Kettering, I traced a paper detour across departments and proposed a digital filing workflow.",
   "home.riso.heroProof": "IT and UX implemented it after I changed roles.",
   "home.riso.openingVisual": "Watch the 5-second portfolio opener",
+  "home.riso.openingFilmLabel": "Opening visual · five seconds",
+  "home.riso.openingFilmSkip": "Return to portfolio →",
   "home.riso.primaryWork": "Review the MSK workflow",
   "home.riso.heroClose": "",
   "home.riso.queueExpand": "View the full queue · 5 items",
@@ -269,6 +271,8 @@ const es: Partial<Record<StringKey, string>> = {
     "En Memorial Sloan Kettering, rastreé un desvío en papel entre departamentos y propuse un flujo de archivo digital.",
   "home.riso.heroProof": "Los equipos de TI y UX lo implementaron después de que cambié de puesto.",
   "home.riso.openingVisual": "Ver la apertura del portafolio de 5 segundos",
+  "home.riso.openingFilmLabel": "Apertura visual · cinco segundos",
+  "home.riso.openingFilmSkip": "Volver al portafolio →",
   // The panel itself stays English-only (lang="en") - the ES link says so,
   // the same way ask.ninetySecondLink does below.
   "home.riso.recruiterTourLink": "Abrir el recorrido de 90 segundos (en inglés)",
