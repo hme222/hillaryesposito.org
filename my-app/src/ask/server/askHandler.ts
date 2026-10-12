@@ -11,21 +11,22 @@
 // ever see approved passages. The visitor's question is untrusted and is
 // wrapped in delimiters the system prompt tells the model to treat as data.
 
-import Anthropic from "@anthropic-ai/sdk";
-import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
+import OpenAI from "openai";
+import { zodTextFormat } from "openai/helpers/zod";
 import { z } from "zod";
 import en from "../knowledge/en.json";
 import es from "../knowledge/es.json";
 import type { AskLang, KnowledgeEntry, KnowledgeFile } from "../types";
 
 /** Hillary chose this model for cost and speed. Do not change it here. */
-export const ASK_MODEL = "claude-haiku-4-5";
+export const ASK_MODEL = "gpt-5-mini";
 export const MAX_QUESTION_CHARS = 300;
 export const MAX_IDS = 8;
-export const MAX_TOKENS = 500;
+/** Covers the model's (minimal) reasoning tokens as well as the 1-3 sentence answer. */
+export const MAX_TOKENS = 1000;
 /**
  * Best-effort, per warm instance. The hard ceiling on spend is the limit
- * Hillary sets in the Anthropic console, not this map.
+ * Hillary sets in the OpenAI dashboard, not this map.
  */
 export const RATE_LIMIT = { perMinute: 10, perDay: 60 };
 
@@ -65,7 +66,7 @@ export type AskResponse = {
 };
 
 /** The slice of the SDK client the handler uses; tests pass a fake. */
-export type AskClient = Pick<Anthropic, "messages">;
+export type AskClient = Pick<OpenAI, "responses">;
 
 export type AskDeps = {
   /** Returns null when no API key is configured. */
@@ -180,20 +181,25 @@ export function createAskHandler(deps: AskDeps) {
     }
 
     try {
-      const message = await client.messages.parse({
+      const response = await client.responses.parse({
         model: ASK_MODEL,
-        max_tokens: MAX_TOKENS,
-        // Static prefix; may sit under the model's minimum cacheable size, which is fine.
-        system: [{ type: "text", text: SYSTEM_PROMPT, cache_control: { type: "ephemeral" } }],
-        messages: [{ role: "user", content: buildUserMessage(passages, parsed.question, parsed.lang) }],
-        output_config: { format: zodOutputFormat(AnswerSchema) },
+        max_output_tokens: MAX_TOKENS,
+        reasoning: { effort: "minimal" },
+        // Static prefix first so OpenAI's automatic prompt caching can reuse it.
+        instructions: SYSTEM_PROMPT,
+        input: buildUserMessage(passages, parsed.question, parsed.lang),
+        text: { format: zodTextFormat(AnswerSchema, "ask_answer") },
+        // Don't keep visitor questions on OpenAI's side beyond the request.
+        store: false,
       });
 
-      if (message.stop_reason === "refusal" || message.stop_reason === "max_tokens") {
-        log(`ask fallback reason=stop_${message.stop_reason}`);
-        return fallback(200, `stop_${message.stop_reason}`);
+      if (response.status === "incomplete") {
+        const reason = response.incomplete_details?.reason ?? "unknown";
+        log(`ask fallback reason=incomplete_${reason}`);
+        return fallback(200, `incomplete_${reason}`);
       }
-      const output = message.parsed_output;
+      // A refusal comes back as a refusal content part, so there is no parsed output.
+      const output = response.output_parsed;
       if (!output) {
         log("ask fallback reason=unparsed");
         return fallback(200, "unparsed");
@@ -209,15 +215,15 @@ export function createAskHandler(deps: AskDeps) {
       log(`ask answered citations=${citations.length} lang=${parsed.lang}`);
       return { status: 200, body: { covered: true, answer: output.answer.trim(), citations } };
     } catch (error) {
-      if (error instanceof Anthropic.RateLimitError) {
+      if (error instanceof OpenAI.RateLimitError) {
         log("ask fallback reason=api_rate_limit");
         return fallback(429, "api_rate_limit");
       }
-      if (error instanceof Anthropic.APIConnectionError) {
+      if (error instanceof OpenAI.APIConnectionError) {
         log("ask fallback reason=api_connection");
         return fallback(502, "api_connection");
       }
-      if (error instanceof Anthropic.APIError) {
+      if (error instanceof OpenAI.APIError) {
         log(`ask fallback reason=api_error status=${error.status ?? "unknown"}`);
         return fallback(502, "api_error");
       }

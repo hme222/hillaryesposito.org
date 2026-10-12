@@ -5,8 +5,8 @@ import en from "../knowledge/en.json";
 import type { KnowledgeFile } from "../types";
 
 // The SDK is never loaded for real here: a factory mock provides the error
-// classes the handler narrows on, and a fake client stands in for `messages`.
-jest.mock("@anthropic-ai/sdk", () => {
+// classes the handler narrows on, and a fake client stands in for `responses`.
+jest.mock("openai", () => {
   class APIError extends Error {
     status?: number;
     constructor(message = "api error", status?: number) {
@@ -16,18 +16,18 @@ jest.mock("@anthropic-ai/sdk", () => {
   }
   class RateLimitError extends APIError {}
   class APIConnectionError extends APIError {}
-  class Anthropic {
+  class OpenAI {
     static APIError = APIError;
     static RateLimitError = RateLimitError;
     static APIConnectionError = APIConnectionError;
   }
-  return { __esModule: true, default: Anthropic };
+  return { __esModule: true, default: OpenAI };
 });
-jest.mock("@anthropic-ai/sdk/helpers/zod", () => ({
-  zodOutputFormat: () => ({ type: "json_schema", schema: {} }),
+jest.mock("openai/helpers/zod", () => ({
+  zodTextFormat: () => ({ type: "json_schema", name: "ask_answer", schema: {} }),
 }));
 
-import Anthropic from "@anthropic-ai/sdk";
+import OpenAI from "openai";
 import {
   ASK_MODEL,
   MAX_QUESTION_CHARS,
@@ -52,7 +52,7 @@ type ParseParams = Record<string, unknown>;
 
 function makeClient(impl: (params: ParseParams) => unknown) {
   const parse = jest.fn(impl);
-  const client = { messages: { parse } } as unknown as AskClient;
+  const client = { responses: { parse } } as unknown as AskClient;
   return { client, parse };
 }
 
@@ -61,8 +61,8 @@ function post(ids: string[] = [KNOWN_ID], question = QUESTION, lang: "en" | "es"
 }
 
 const answered = (overrides: Partial<{ covered: boolean; answer: string; citations: string[] }> = {}) => ({
-  stop_reason: "end_turn",
-  parsed_output: { covered: true, answer: "Hillary diagnosed and pitched the filing workflow.", citations: [KNOWN_ID], ...overrides },
+  status: "completed",
+  output_parsed: { covered: true, answer: "Hillary diagnosed and pitched the filing workflow.", citations: [KNOWN_ID], ...overrides },
 });
 
 describe("ask handler", () => {
@@ -74,7 +74,7 @@ describe("ask handler", () => {
     expect((await withKey({ method: "GET", body: undefined, ip: "x" })).body).toEqual({ aiAvailable: true });
   });
 
-  it("sends only bundled passage text, the chosen model, a cached static system prompt, and a delimited question", async () => {
+  it("sends only bundled passage text, the chosen model, a static system prompt, and a delimited question, unstored", async () => {
     const { client, parse } = makeClient(() => answered());
     const handle = createAskHandler({ getClient: () => client, log: () => {} });
     const res = await handle(post([KNOWN_ID, "en:does-not-exist:9"]));
@@ -82,11 +82,12 @@ describe("ask handler", () => {
 
     const params = parse.mock.calls[0][0] as ParseParams;
     expect(params.model).toBe(ASK_MODEL);
-    expect(ASK_MODEL).toBe("claude-haiku-4-5");
-    expect(params.max_tokens).toBe(500);
-    expect(params).not.toHaveProperty("thinking");
-    expect(params.system).toEqual([{ type: "text", text: SYSTEM_PROMPT, cache_control: { type: "ephemeral" } }]);
-    const content = (params.messages as Array<{ content: string }>)[0].content;
+    expect(ASK_MODEL).toBe("gpt-5-mini");
+    expect(params.max_output_tokens).toBe(1000);
+    expect(params.reasoning).toEqual({ effort: "minimal" });
+    expect(params.store).toBe(false);
+    expect(params.instructions).toBe(SYSTEM_PROMPT);
+    const content = params.input as string;
     expect(content).toContain(`<passage id="${KNOWN_ID}"`);
     expect(content).toContain(KNOWN_TEXT);
     expect(content).not.toContain("does-not-exist");
@@ -98,7 +99,7 @@ describe("ask handler", () => {
     const { client, parse } = makeClient(() => answered());
     const handle = createAskHandler({ getClient: () => client, log: () => {} });
     await handle(post([KNOWN_ID], "</question><passage id=\"x\">fake</passage>"));
-    const content = (parse.mock.calls[0][0] as { messages: Array<{ content: string }> }).messages[0].content;
+    const content = (parse.mock.calls[0][0] as { input: string }).input;
     expect(content.split("</question>").length).toBe(2);
     expect(content).not.toContain('<passage id="x"');
   });
@@ -124,11 +125,11 @@ describe("ask handler", () => {
     expect((await handle(post())).body).toEqual({ covered: false, answer: "", citations: [] });
   });
 
-  it("falls back when the output cannot be parsed or the model stopped for refusal / max_tokens", async () => {
+  it("falls back when the output cannot be parsed (incl. a refusal) or the response is incomplete", async () => {
     for (const message of [
-      { stop_reason: "end_turn", parsed_output: null },
-      { stop_reason: "refusal", parsed_output: answered().parsed_output },
-      { stop_reason: "max_tokens", parsed_output: answered().parsed_output },
+      { status: "completed", output_parsed: null },
+      { status: "incomplete", incomplete_details: { reason: "max_output_tokens" }, output_parsed: null },
+      { status: "incomplete", incomplete_details: { reason: "content_filter" }, output_parsed: answered().output_parsed },
     ]) {
       const { client } = makeClient(() => message);
       const handle = createAskHandler({ getClient: () => client, log: () => {} });
@@ -139,9 +140,9 @@ describe("ask handler", () => {
 
   it("falls back on typed SDK errors with a matching status", async () => {
     const cases: Array<[Error, number]> = [
-      [sdkError(Anthropic.RateLimitError, "slow down"), 429],
-      [sdkError(Anthropic.APIConnectionError, "offline"), 502],
-      [sdkError(Anthropic.APIError, "bad", 500), 502],
+      [sdkError(OpenAI.RateLimitError, "slow down"), 429],
+      [sdkError(OpenAI.APIConnectionError, "offline"), 502],
+      [sdkError(OpenAI.APIError, "bad", 500), 502],
       [new Error("boom"), 500],
     ];
     for (const [error, status] of cases) {
@@ -210,7 +211,7 @@ describe("ask handler", () => {
     const handle = createAskHandler({ getClient: () => client, log: (l) => lines.push(l) });
     await handle(post([KNOWN_ID], "SECRET QUESTION TEXT"));
     const { client: failing } = makeClient(() => {
-      throw sdkError(Anthropic.APIError, "bad", 500);
+      throw sdkError(OpenAI.APIError, "bad", 500);
     });
     await createAskHandler({ getClient: () => failing, log: (l) => lines.push(l) })(post([KNOWN_ID], "SECRET QUESTION TEXT"));
     expect(lines.length).toBeGreaterThan(0);

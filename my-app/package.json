@@ -4,8 +4,8 @@
   "homepage": "https://hillaryesposito.org",
   "private": true,
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.133.0",
     "framer-motion": "^12.25.0",
+    "openai": "^7.32.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-helmet": "^6.1.0",

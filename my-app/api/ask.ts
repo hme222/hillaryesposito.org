@@ -1,17 +1,17 @@
 // Vercel Node function for "Ask about the work". Thin adapter: everything
 // testable lives in src/ask/server/askHandler.ts. The API key is read by the
-// SDK from ANTHROPIC_API_KEY (a Vercel environment variable) and never leaves
+// SDK from OPENAI_API_KEY (a Vercel environment variable) and never leaves
 // this process.
 import type { IncomingMessage, ServerResponse } from "node:http";
-import Anthropic from "@anthropic-ai/sdk";
+import OpenAI from "openai";
 import { createAskHandler } from "../src/ask/server/askHandler";
 
-let client: Anthropic | null = null;
+let client: OpenAI | null = null;
 
 const handle = createAskHandler({
   getClient: () => {
-    if (!process.env.ANTHROPIC_API_KEY) return null;
-    if (!client) client = new Anthropic({ timeout: 15_000, maxRetries: 1 });
+    if (!process.env.OPENAI_API_KEY) return null;
+    if (!client) client = new OpenAI({ timeout: 15_000, maxRetries: 1 });
     return client;
   },
 });
