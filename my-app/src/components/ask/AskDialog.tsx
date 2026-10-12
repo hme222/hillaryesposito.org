@@ -306,6 +306,28 @@ export default function AskDialog() {
         <div className="ask-dialog__body">
           <p className="ask-dialog__intro">{t("ask.intro")}</p>
 
+          <form className="ask-form" onSubmit={onSubmit}>
+            <label className="ask-kicker" htmlFor="ask-question">
+              {t("ask.inputLabel")}
+            </label>
+            <div className="ask-form__row">
+              <input
+                ref={inputRef}
+                id="ask-question"
+                className="ask-input"
+                type="text"
+                value={question}
+                onChange={(e) => setQuestion(e.target.value)}
+                maxLength={MAX_QUESTION_CHARS}
+                autoComplete="off"
+                enterKeyHint="search"
+              />
+              <button type="submit" className="rp-cta ask-submit" disabled={thinking}>
+                {t("ask.submit")}
+              </button>
+            </div>
+          </form>
+
           <p className="ask-kicker" id="ask-starters-label">
             {t("ask.startersLabel")}
           </p>
@@ -328,28 +350,6 @@ export default function AskDialog() {
           }}>
             {t("ask.ninetySecondLink")}
           </button>
-
-          <form className="ask-form" onSubmit={onSubmit}>
-            <label className="ask-kicker" htmlFor="ask-question">
-              {t("ask.inputLabel")}
-            </label>
-            <div className="ask-form__row">
-              <input
-                ref={inputRef}
-                id="ask-question"
-                className="ask-input"
-                type="text"
-                value={question}
-                onChange={(e) => setQuestion(e.target.value)}
-                maxLength={MAX_QUESTION_CHARS}
-                autoComplete="off"
-                enterKeyHint="search"
-              />
-              <button type="submit" className="rp-cta ask-submit" disabled={thinking}>
-                {t("ask.submit")}
-              </button>
-            </div>
-          </form>
 
           <div className="ask-result" role="status" aria-live="polite" aria-atomic="true" aria-label={t("ask.answerLabel")}>
             {view.kind === "thinking" && <p className="ask-result__status">{t("ask.thinking")}</p>}
