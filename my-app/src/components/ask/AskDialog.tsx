@@ -5,6 +5,7 @@ import { XIcon } from "../LineIcons";
 import { useLanguage, useT } from "../../app/LanguageContext";
 import { sendPortfolioEvent } from "../../analytics/PortfolioAnalytics";
 import type { AskApiResponse, AskLang, KnowledgeEntry } from "../../ask/types";
+import { useBirdPose } from "./useBirdPose";
 import "../../styles/ask.css";
 
 const EMAIL = "espositohillary@gmail.com";
@@ -91,6 +92,7 @@ export default function AskDialog() {
   const inputRef = useRef<HTMLInputElement>(null);
   const seqRef = useRef(0);
   const abortRef = useRef<AbortController | null>(null);
+  const birdPose = useBirdPose(view.kind);
 
   useEffect(() => {
     const handler = (e: Event) => {
@@ -279,16 +281,20 @@ export default function AskDialog() {
     >
       <div className="ask-dialog__inner" data-analytics-location="ask">
         <header className="ask-dialog__header">
-          <img
-            className={`ask-bird${thinking ? " ask-bird--thinking" : ""}`}
-            src={`/assets/ask/${birdSrc}@160.webp`}
-            srcSet={`/assets/ask/${birdSrc}@160.webp 1x, /assets/ask/${birdSrc}@320.webp 2x`}
-            width={80}
-            height={67}
-            alt=""
-            aria-hidden="true"
-            decoding="async"
-          />
+          <span className={`ask-bird ask-bird--${birdPose}`} aria-hidden="true">
+            {(["bird-idle", "bird-not-covered"] as const).map((pose) => (
+              <img
+                key={pose}
+                className={`ask-bird__pose${pose === birdSrc ? " is-shown" : ""}`}
+                src={`/assets/ask/${pose}@160.webp`}
+                srcSet={`/assets/ask/${pose}@160.webp 1x, /assets/ask/${pose}@320.webp 2x`}
+                width={80}
+                height={67}
+                alt=""
+                decoding="async"
+              />
+            ))}
+          </span>
           <h2 id="ask-dialog-title" className="ask-dialog__title">
             {t("ask.title")}
           </h2>

@@ -159,15 +159,46 @@
 
 /* ---------- bird ---------- */
 .ask-bird {
+  position: relative;
   width: 80px;
-  height: auto;
+  flex-shrink: 0;
   display: block;
   transform-origin: 50% 92%;
   /* One slow gesture per state change, never a loop. */
   transition: transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-.ask-bird--thinking {
+/* Two poses stacked; the not-covered tuck fades over the idle bird. */
+.ask-bird__pose {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transition: opacity 320ms ease-out;
+}
+.ask-bird__pose + .ask-bird__pose {
+  position: absolute;
+  inset: 0;
+}
+.ask-bird__pose.is-shown {
+  opacity: 1;
+}
+.ask-bird--tilt {
   transform: rotate(-6deg);
+}
+/* Answer landed: one small hop out of the tilt, then rest. */
+.ask-bird--hop {
+  animation: askBirdHop 450ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@keyframes askBirdHop {
+  0% {
+    transform: rotate(-6deg);
+  }
+  45% {
+    transform: translateY(-6px) rotate(2deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
 }
 /* Charcoal legs vanish on near-black paper; lift the cut-out off the page. */
 .dark-mode .ask-bird {
@@ -179,11 +210,15 @@
   .ask-dialog::backdrop {
     animation: none;
   }
-  .ask-bird {
+  .ask-bird,
+  .ask-bird__pose {
     transition: none;
   }
-  .ask-bird--thinking {
+  .ask-bird--tilt {
     transform: none;
+  }
+  .ask-bird--hop {
+    animation: none;
   }
 }
 
