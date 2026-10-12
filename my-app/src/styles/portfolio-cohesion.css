@@ -124,7 +124,9 @@
 .navbar {
   margin-bottom: calc(-1 * var(--dock-flow));
 }
-.riso-page:not(.riso-home),
+/* `main.` keeps the Ask dialog (which borrows `.riso-page` for its palette)
+   from picking up the page's top padding. */
+main.riso-page:not(.riso-home),
 .riso-home > .rp-hero {
   padding-top: var(--dock-flow);
 }

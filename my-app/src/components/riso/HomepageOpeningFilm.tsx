@@ -42,7 +42,10 @@ export default function HomepageOpeningFilm({ open, onClose, returnFocusRef, onE
       && (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false)
   ));
 
-  const finish = useCallback(() => {
+  // Only a keyboard exit (Escape, or Enter/Space on Skip) should land with a
+  // visible ring. When the film ends on its own, the visitor hasn't touched
+  // anything yet, and a ring on the trigger reads as a stray selection.
+  const finish = useCallback((byKeyboard = false) => {
     if (!open || exitingRef.current) return;
     exitingRef.current = true;
     setExiting(true);
@@ -53,7 +56,7 @@ export default function HomepageOpeningFilm({ open, onClose, returnFocusRef, onE
       // The trigger is still inert until React re-renders; release it first or
       // focus falls to <body>.
       releaseInert();
-      returnFocusRef.current?.focus({ preventScroll: true });
+      returnFocusRef.current?.focus({ preventScroll: true, focusVisible: byKeyboard } as FocusOptions);
     }, EXIT_MS);
   }, [onClose, onExitStart, open, releaseInert, returnFocusRef]);
 
@@ -94,11 +97,11 @@ export default function HomepageOpeningFilm({ open, onClose, returnFocusRef, onE
         }
       }
     }
-    failsafeTimerRef.current = window.setTimeout(finish, FAILSAFE_MS);
+    failsafeTimerRef.current = window.setTimeout(() => finish(), FAILSAFE_MS);
     skipRef.current?.focus({ preventScroll: true });
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") finish();
+      if (event.key === "Escape") finish(true);
       if (event.key === "Tab") {
         event.preventDefault();
         skipRef.current?.focus({ preventScroll: true });
@@ -141,11 +144,11 @@ export default function HomepageOpeningFilm({ open, onClose, returnFocusRef, onE
           preload="metadata"
           tabIndex={-1}
           aria-hidden="true"
-          onEnded={finish}
-          onError={finish}
+          onEnded={() => finish()}
+          onError={() => finish()}
         />}
       <span className="rp-openingFilm__wash" aria-hidden="true" />
-      <button ref={skipRef} className="rp-openingFilm__skip" type="button" onClick={finish}>
+      <button ref={skipRef} className="rp-openingFilm__skip" type="button" onClick={(event) => finish(event.detail === 0)}>
         Return to portfolio →
       </button>
     </div>

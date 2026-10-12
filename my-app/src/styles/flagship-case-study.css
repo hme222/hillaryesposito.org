@@ -1728,6 +1728,10 @@
   radial-gradient(circle at 78% 24%,rgba(201,88,67,.2),transparent 25%),
   repeating-linear-gradient(90deg,transparent 0 76px,rgba(244,241,230,.035) 77px 78px),
   linear-gradient(135deg,#234b44,#102b27 74%); }
+/* MSK's teal stage is lighter where the kicker sits: --coral-on-dark measured
+   3.99:1 on #234b44 and 3.57:1 inside the coral glow. The stage's own light
+   ink holds above 4.5:1 across the whole gradient. */
+.flagship-page--msk .rp-outcomeStage .rp-kicker { color: #f4f1e6; }
 .flagship-page--mobbin .rp-outcomeStage { background-color: var(--fp-deep); background-image:
   radial-gradient(circle at 78% 20%,rgba(181,151,78,.18),transparent 24%),
   repeating-linear-gradient(0deg,transparent 0 42px,rgba(244,241,230,.035) 43px 44px),

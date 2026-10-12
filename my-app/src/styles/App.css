@@ -299,11 +299,11 @@ select,
 textarea {
   font: inherit;
 } /* Accessibility focus */
-button:focus,
-a:focus,
-input:focus,
-textarea:focus,
-select:focus {
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 3px;
 } /* Screen-reader helpers */
@@ -1236,11 +1236,11 @@ body {
 :where(a, button, input, select, textarea, [tabindex]):focus {
   outline: none;
 }
-.dark-mode button:focus,
-.dark-mode a:focus,
-.dark-mode input:focus,
-.dark-mode textarea:focus,
-.dark-mode select:focus {
+.dark-mode button:focus-visible,
+.dark-mode a:focus-visible,
+.dark-mode input:focus-visible,
+.dark-mode textarea:focus-visible,
+.dark-mode select:focus-visible {
   outline-color: var(--focus);
 }
 

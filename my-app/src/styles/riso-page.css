@@ -138,6 +138,9 @@
   overflow-wrap: normal;
 }
 .rp-sub { font-size: clamp(1rem, 1.6vw, 1.18rem); color: var(--ink); margin: 1rem 0 0; max-width: 42ch; }
+/* App.css's `.dark-mode p` (0,1,1) outranked the line above and dimmed the
+   lede to --text-3 over translucent clearings — 4.0:1 on the About map. */
+.riso-page .rp-sub { color: var(--ink); }
 .rp-sub b { color: var(--green); }
 .rp-hero__media { position: relative; height: 100%; display: flex; align-items: center; justify-content: center;
   padding: var(--sp-sm); background:
@@ -2738,6 +2741,10 @@ html.rp-filmChoreo.rp-filmChoreo--go .home-heroProofStack::after {
 .rp-breadcrumb a, .rp-breadcrumb span { flex: 0 0 auto; white-space: nowrap; }
 .rp-breadcrumb a { color: var(--muted); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
 .rp-breadcrumb a:hover { color: var(--green); }
+/* "Work" measured 25px wide. Padding grows the hit area to 44+; the equal
+   negative margin keeps the text where it was. The first crumb is skipped:
+   its left padding would sit outside the scroller and be clipped anyway. */
+.rp-breadcrumb a:not(:first-child) { padding-inline: 10px; margin-inline: -10px; }
 .rp-breadcrumb__name { font-weight: 700; }
 .rp-breadcrumb span { color: var(--ink); }
 /* Reuses `.rp-heroUtility` (the hero's own "Open the 90-second tour" link)
