@@ -200,6 +200,8 @@ export default function AskDialog() {
 
   function onStarter(text: string) {
     setQuestion(text);
+    // The starters hide once an answer lands; keep focus somewhere that stays.
+    inputRef.current?.focus();
     void ask(text);
   }
 
@@ -219,6 +221,7 @@ export default function AskDialog() {
 
   const starters = [t("ask.starter1"), t("ask.starter2"), t("ask.starter3"), t("ask.starter4")];
   const thinking = view.kind === "thinking";
+  const hasAnswer = view.kind === "answered" || view.kind === "passages";
   const birdSrc = view.kind === "not-covered" ? "bird-not-covered" : "bird-idle";
 
   const renderSourceLink = (entry: KnowledgeEntry) => {
@@ -328,20 +331,26 @@ export default function AskDialog() {
             </div>
           </form>
 
-          <p className="ask-kicker" id="ask-starters-label">
-            {t("ask.startersLabel")}
-          </p>
-          <ul className="ask-starters" aria-labelledby="ask-starters-label">
-            {starters.map((s) => (
-              <li key={s}>
-                <button type="button" className="ask-starter" onClick={() => onStarter(s)} disabled={thinking}>
-                  {s}
-                </button>
-              </li>
-            ))}
-          </ul>
+          {/* Hidden once there's an answer so it sits right under the field;
+              kept for not covered / failed, where another question helps. */}
+          {!hasAnswer && (
+            <>
+              <p className="ask-kicker" id="ask-starters-label">
+                {t("ask.startersLabel")}
+              </p>
+              <ul className="ask-starters" aria-labelledby="ask-starters-label">
+                {starters.map((s) => (
+                  <li key={s}>
+                    <button type="button" className="ask-starter" onClick={() => onStarter(s)} disabled={thinking}>
+                      {s}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
 
-          {/* A different kind of action from the starters above - this opens
+          {/* A different kind of action from the starters - this opens
               the recruiter panel instead of querying the engine, so it stays
               a quiet link rather than another starter-shaped button. */}
           <button type="button" className="ask-ninety-link" onClick={() => {
