@@ -3,6 +3,7 @@ import { createRoot, Root } from "react-dom/client";
 import Footer from "./Footer";
 
 let mockPathname = "/";
+const mockNavigate = jest.fn();
 
 jest.mock(
   "react-router-dom",
@@ -12,6 +13,7 @@ jest.mock(
       Link: ({ to, children, ...props }: { to: string; children: React.ReactNode }) =>
         ReactLib.createElement("a", { href: to, ...props }, children),
       useLocation: () => ({ pathname: mockPathname }),
+      useNavigate: () => mockNavigate,
     };
   },
   { virtual: true }
@@ -32,6 +34,7 @@ describe("Footer", () => {
 
   beforeEach(() => {
     mockPathname = "/";
+    mockNavigate.mockReset();
     container = document.createElement("div");
     document.body.appendChild(container);
     root = createRoot(container);
@@ -79,5 +82,29 @@ describe("Footer", () => {
       root.render(<Footer />);
     });
     expect(container.textContent).toContain("Emergent");
+  });
+
+  it("on the home page, the Explore column's opener button dispatches open-opening-film with returnFocus", async () => {
+    const handler = jest.fn();
+    window.addEventListener("open-opening-film", handler);
+    await act(async () => {
+      root.render(<Footer />);
+    });
+    const trigger = container.querySelector<HTMLButtonElement>(".site-footer__column .rp-openingVisualTrigger");
+    expect(trigger?.textContent).toBe("home.riso.openingVisual");
+    act(() => trigger?.click());
+    window.removeEventListener("open-opening-film", handler);
+    expect(handler).toHaveBeenCalledTimes(1);
+    expect((handler.mock.calls[0][0] as CustomEvent).detail.returnFocus).toBe(trigger);
+    expect(mockNavigate).not.toHaveBeenCalled();
+  });
+
+  it("on another route, the opener button navigates home and asks for the film", async () => {
+    mockPathname = "/about/";
+    await act(async () => {
+      root.render(<Footer />);
+    });
+    act(() => container.querySelector<HTMLButtonElement>(".rp-openingVisualTrigger")?.click());
+    expect(mockNavigate).toHaveBeenCalledWith("/", { state: { openOpeningFilm: true } });
   });
 });

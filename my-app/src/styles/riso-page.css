@@ -3911,6 +3911,9 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-chapter__proof:hover { background: color-mix(in srgb, var(--coral) 6%, transparent); }
 .rp-chapter__proof b { display: block; font-size: .9rem; }
 .rp-chapter__proof small { display: block; margin-top: .15rem; font-family: var(--mono); font-size: .6rem; letter-spacing: .08em; color: var(--muted); }
+/* About's "My pattern" list: one compact proof link under each item — same
+   coral-edged link, a single line instead of a title + source pair. */
+.rp-chapter__proof--inline { display: flex; width: fit-content; margin-top: .55rem; padding: .45rem .8rem; }
 /* Square plate with a hairline, matching the project index — not a rounded card. */
 .rp-chapter__plate { border: 1px solid var(--hair); background: var(--paper-2); }
 .rp-chapter__plate img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }

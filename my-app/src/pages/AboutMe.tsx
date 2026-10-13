@@ -41,7 +41,7 @@ const CHAPTERS: AboutChapter[] = [
     heading: "Six years at MSK, optimizing internal operations and designing for 21,000+ clinicians and staff.",
     image: "/assets/about/msk.jpg",
     paragraphs: [
-      "I initiated an EMR workflow redesign that contributed within a 20% organization-wide cost reduction. IT and UX built it after my role changed.",
+      "I initiated an EMR workflow redesign that contributed within a 20% organization-wide cost reduction. IT and UX built it after I changed roles.",
       "I also rebuilt CPR certification and administrative onboarding across Epic, HIPAA, and compliance. Operational observation, feedback, and workflow analysis were already the practice—even before I had formal UX vocabulary for it.",
     ],
     callout: "Systems fail at the point where a real person has to use them.",
@@ -71,7 +71,7 @@ const CHAPTERS: AboutChapter[] = [
       { value: "60%", label: "lower spending" },
     ],
     callout: "Process failure in a combat zone isn’t an inconvenience. It’s a casualty risk.",
-    caseLink: { path: "/case-study/logistics", title: "Medical logistics, Iraq", source: "Read the case study" },
+    caseLink: { path: "/case-study/logistics", title: "Medical logistics, Iraq", source: "Review the case study" },
   },
 ];
 
@@ -93,7 +93,7 @@ const CHAPTERS_ES: AboutChapter[] = [
     heading: "Seis años en MSK, optimizando operaciones internas y diseñando para 21,000+ clínicos y personal.",
     image: "/assets/about/msk.jpg",
     paragraphs: [
-      "Inicié un rediseño de flujo EMR que contribuyó dentro de una reducción organizacional del 20% en costos. TI y UX lo construyeron después de que cambié de rol.",
+      "Inicié un rediseño de flujo EMR que contribuyó dentro de una reducción organizacional del 20% en costos. TI y UX lo construyeron después de que cambié de puesto.",
       "También reconstruí la certificación de RCP y la incorporación administrativa en Epic, HIPAA y cumplimiento. La observación operativa, los comentarios y el análisis de flujos ya eran la práctica, aun antes de tener vocabulario formal de UX.",
     ],
     callout: "Los sistemas fallan donde una persona real tiene que usarlos.",
@@ -120,15 +120,25 @@ const CHAPTERS_ES: AboutChapter[] = [
       { value: "60%", label: "menos gasto" },
     ],
     callout: "Una falla de proceso en zona de combate no es una molestia. Es un riesgo.",
-    caseLink: { path: "/case-study/logistics", title: "Logística médica, Irak", source: "Ver el caso de estudio" },
+    caseLink: { path: "/case-study/logistics", title: "Logística médica, Irak", source: "Ver el estudio de caso" },
   },
 ];
 
+// One proof link per "My pattern" item, in list order. Spanish case studies
+// render through SpanishCaseStudy, whose anchors carry an `es-` prefix; it has
+// no sustainment section, so item 04 lands on its outcomes instead.
+const PATTERN_PROOF = [
+  { en: "See the workaround →", es: "Ver el desvío →", path: "/case-study/msk#msk-brief", pathEs: "/case-study/msk#es-msk-brief" },
+  { en: "See the casualty risk →", es: "Ver el riesgo de bajas →", path: "/case-study/logistics#log-brief", pathEs: "/case-study/logistics#es-log-brief" },
+  { en: "See the one map →", es: "Ver el mapa →", path: "/case-study/msk#msk-workflow", pathEs: "/case-study/msk#es-msk-workflow" },
+  { en: "See what lasted →", es: "Ver lo que perduró →", path: "/case-study/msk#msk-sustainment", pathEs: "/case-study/msk#es-msk-outcomes" },
+];
+
 export default function About() {
-  usePageTitle("About");
   const { lang } = useLanguage();
   const navigate = useNavigate();
   const isSpanish = lang === "es";
+  usePageTitle(isSpanish ? "Sobre mí" : "About");
   const rootRef = useRef<HTMLElement>(null);
   useFlagshipReveal(rootRef);
   const chapters = isSpanish ? CHAPTERS_ES : CHAPTERS;
@@ -209,10 +219,30 @@ export default function About() {
               without MSK's evidence under it. These are the judgment calls rather
               than the stages — things that are true of this practice specifically. */}
           <ol className="rp-list rp-patternList rp-reveal">
-            <li>{isSpanish ? "Busco primero el atajo. La nota adhesiva, la hoja de cálculo personal, el paso que todos se saltan. Ahí vive el proceso real, y nunca está en el documento del proceso." : "I look for the workaround first. The sticky note, the personal spreadsheet, the step everyone skips. That is where the real process lives, and it is never in the process document."}</li>
-            <li>{isSpanish ? "Averiguo quién paga cuando falla. Un clínico entre pacientes, un soldado esperando reabastecimiento, alguien cuya planta murió. El costo decide cuánta certeza le debe el diseño." : "I find out who pays when it breaks. A clinician between patients, a soldier waiting on resupply, someone whose plant died. The cost decides how much certainty the design owes them."}</li>
-            <li>{isSpanish ? "Hago que la falla sea compartida antes de mejorarla. Cuatro áreas con cuatro versiones del problema rechazarán la misma solución de cuatro maneras." : "I make the failure shared before I make it better. Four departments carrying four models of the problem will reject the same solution four different ways."}</li>
-            <li>{isSpanish ? "Compruebo si sobrevive sin mí. Si necesita que yo lo explique para funcionar, no está terminado." : "I check whether it survives without me. If it needs me there to explain it, it is not finished."}</li>
+            <li>
+              {isSpanish ? "Busco primero el atajo. La nota adhesiva, la hoja de cálculo personal, el paso que todos se saltan. Ahí vive el proceso real, y nunca está en el documento del proceso." : "I look for the workaround first. The sticky note, the personal spreadsheet, the step everyone skips. That is where the real process lives, and it is never in the process document."}
+              <Link to={isSpanish ? PATTERN_PROOF[0].pathEs : PATTERN_PROOF[0].path} className="rp-chapter__proof rp-chapter__proof--inline">
+                <b>{isSpanish ? PATTERN_PROOF[0].es : PATTERN_PROOF[0].en}</b>
+              </Link>
+            </li>
+            <li>
+              {isSpanish ? "Averiguo quién paga cuando falla. Un clínico entre pacientes, un soldado esperando reabastecimiento, alguien cuya planta murió. El costo decide cuánta certeza le debe el diseño." : "I find out who pays when it breaks. A clinician between patients, a soldier waiting on resupply, someone whose plant died. The cost decides how much certainty the design owes them."}
+              <Link to={isSpanish ? PATTERN_PROOF[1].pathEs : PATTERN_PROOF[1].path} className="rp-chapter__proof rp-chapter__proof--inline">
+                <b>{isSpanish ? PATTERN_PROOF[1].es : PATTERN_PROOF[1].en}</b>
+              </Link>
+            </li>
+            <li>
+              {isSpanish ? "Hago que la falla sea compartida antes de mejorarla. Cuatro áreas con cuatro versiones del problema rechazarán la misma solución de cuatro maneras." : "I make the failure shared before I make it better. Four departments carrying four models of the problem will reject the same solution four different ways."}
+              <Link to={isSpanish ? PATTERN_PROOF[2].pathEs : PATTERN_PROOF[2].path} className="rp-chapter__proof rp-chapter__proof--inline">
+                <b>{isSpanish ? PATTERN_PROOF[2].es : PATTERN_PROOF[2].en}</b>
+              </Link>
+            </li>
+            <li>
+              {isSpanish ? "Compruebo si sobrevive sin mí. Si necesita que yo lo explique para funcionar, no está terminado." : "I check whether it survives without me. If it needs me there to explain it, it is not finished."}
+              <Link to={isSpanish ? PATTERN_PROOF[3].pathEs : PATTERN_PROOF[3].path} className="rp-chapter__proof rp-chapter__proof--inline">
+                <b>{isSpanish ? PATTERN_PROOF[3].es : PATTERN_PROOF[3].en}</b>
+              </Link>
+            </li>
           </ol>
         </div>
       </section>
@@ -338,7 +368,7 @@ export default function About() {
           </p>
           <div className="rp-hero__ctas">
             <a className="rp-cta" href="mailto:espositohillary@gmail.com">
-              {isSpanish ? "Escríbame" : "Send me a note"} →
+              {isSpanish ? "Escríbame" : "Email me"} →
             </a>
             <button type="button" className="rp-cta rp-cta--ghost" onClick={() => navigate("/?scrollTo=projects")}>
               ← {isSpanish ? "Volver al trabajo" : "Back to work"}

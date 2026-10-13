@@ -102,7 +102,7 @@ export default function FlagshipMobbin() {
               I captured, sequenced, annotated, and labeled <b>200+ screens per app</b> across Kikoff,
               Polymarket, and Discover. I documented these products; I did not design them or Mobbin.
             </p>
-            <a className="rp-cta" href="#mobbin-work">Open the capture desk →</a>
+            <a className="rp-cta" href="#mobbin-work">See the capture method →</a>
           </div>
         </div>
         <div className="rp-hero__media fp-heroArt fp-heroArt--mobbin" aria-label="Three finance app screens documented for Mobbin" data-evidence="true">
@@ -173,7 +173,7 @@ export default function FlagshipMobbin() {
       <div data-evidence="true"><EvidenceField
         id="mobbin-outcomes"
         languageAnchor="mobbin-outcomes"
-        kicker="Where it landed · contribution, not ownership"
+        kicker="What it added up to"
         title="A searchable record of how three finance products work."
         intro="I documented the source apps for Mobbin’s Finance+ reference library. I did not design Kikoff, Polymarket, Discover, or Mobbin."
         disclaimer="Freelance app-capture work · source-product ownership stays with each company"
@@ -189,12 +189,12 @@ export default function FlagshipMobbin() {
         <div className="rp-wrap rp-close">
           <h2>Need someone who can see the pattern and explain why it matters?</h2>
           <p>Two hundred screens later, I am very good at spotting when “common pattern” actually means “habit nobody questioned.”</p>
-          <a className="rp-cta" href="mailto:espositohillary@gmail.com">Send me a note →</a>
+          <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
           <ShareCaseStudy title="Mobbin — a case study by Hillary Esposito" />
         </div>
       </section>
 
-      <Link className="rp-next" to="/case-study/grove"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Grove</p><p className="rp-next__tag">AI judgment · plant care · human override</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
+      <Link className="rp-next" to="/case-study/grove"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Grove</p><p className="rp-next__tag">Plant-care prototype · Phase 2 of 3</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
     </main>
   );
 }

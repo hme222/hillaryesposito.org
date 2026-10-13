@@ -217,7 +217,7 @@ const en: MskCopy = {
 
   receipt: {
     kicker: "It started with a workaround",
-    title: "The digital workflow had become a paper ritual.",
+    title: "A digital workflow became a paper\u00a0ritual.",
     body:
       "Every clinical day runs through the EMR—the electronic medical record where a patient’s history lives. The online queue kept the filing on screen and returned with its status updated.",
     run: "Run the online path",
@@ -483,9 +483,9 @@ const en: MskCopy = {
       "I initiated the dashboard-to-online-EMR workflow redesign as a coordinator and it was implemented off my presentation to the company two roles later, rewrote the CPR certification material for the clinicians completing it, and rebuilt the onboarding program — Epic, HIPAA, compliance, and the technical and soft skills — for new administrative staff.",
     disclaimer: "Anonymized evidence · organization-wide results are attributed to the initiative",
     metrics: [
+      { tag: "Led", n: "70%", label: "ahead of deadline — every CPR certification came in early, on a deadline about to be pushed back" },
       { tag: "Scale", n: "21,000+", label: "clinicians and administrative staff across the workflows I redesigned" },
       { tag: "Contributed to", n: "20%", label: "organization-wide EMR cost reduction, inside a larger initiative" },
-      { tag: "Led", n: "70%", label: "ahead of deadline — every CPR certification collected early, on a deadline that was about to be pushed back" },
     ],
     route: ["Observe the real work", "Map the failure", "Align the system", "Ship what lasts"],
   },
@@ -493,9 +493,9 @@ const en: MskCopy = {
   close: {
     title: "Designing a system people cannot afford to distrust?",
     body: "I know how to find the workaround, make it visible, and turn it into a product decision a complicated organization can actually ship.",
-    cta: "Send me a note →",
+    cta: "Email me →",
   },
-  next: { eyebrow: "Next case study", title: "Mobbin", tag: "UX flow documentation · 200+ screens" },
+  next: { eyebrow: "Next case study", title: "Mobbin", tag: "UX flow documentation · 200+ screens per app" },
 };
 
 const es: MskCopy = {
@@ -531,7 +531,7 @@ const es: MskCopy = {
 
   receipt: {
     kicker: "Empezó con un desvío",
-    title: "El flujo digital se había vuelto un ritual de papel.",
+    title: "Un flujo digital se volvió un ritual de\u00a0papel.",
     body:
       "Cada jornada clínica pasa por el EMR: el expediente médico electrónico, donde vive la historia de un paciente. La cola en línea mantuvo el archivo en pantalla y regresó con su estado actualizado.",
     run: "Recorrer la ruta en línea",
@@ -791,9 +791,9 @@ const es: MskCopy = {
       "Inicié el rediseño del flujo del panel al EMR en línea desde el puesto de coordinación, y se implementó a partir de mi presentación a la organización dos puestos después; reescribí el material de certificación de RCP para el personal clínico que debía completarlo; y reconstruí el programa de incorporación — Epic, HIPAA, cumplimiento y las habilidades técnicas y blandas — para el nuevo personal administrativo.",
     disclaimer: "Evidencia anonimizada · los resultados de toda la organización se atribuyen a la iniciativa",
     metrics: [
+      { tag: "Dirigí", n: "70%", label: "antes del plazo — todas las certificaciones de RCP recolectadas temprano, en un plazo que estaba por posponerse" },
       { tag: "Escala", n: "21,000+", label: "clínicos y personal administrativo en los flujos que rediseñé" },
       { tag: "Contribuí a", n: "20%", label: "reducción de costos del EMR en toda la organización, dentro de una iniciativa mayor" },
-      { tag: "Dirigí", n: "70%", label: "antes del plazo — todas las certificaciones de RCP recolectadas temprano, en un plazo que estaba por posponerse" },
     ],
     route: ["Observar el trabajo real", "Mapear la falla", "Alinear el sistema", "Lanzar lo que dura"],
   },
@@ -801,9 +801,9 @@ const es: MskCopy = {
   close: {
     title: "¿Diseñando un sistema en el que la gente no puede permitirse desconfiar?",
     body: "Sé cómo encontrar el desvío, hacerlo visible y convertirlo en una decisión de producto que una organización complicada de verdad pueda lanzar.",
-    cta: "Escríbeme →",
+    cta: "Escríbame →",
   },
-  next: { eyebrow: "Siguiente estudio de caso", title: "Mobbin", tag: "Documentación de flujos UX · más de 200 pantallas" },
+  next: { eyebrow: "Siguiente estudio de caso", title: "Mobbin", tag: "Documentación de flujos UX · más de 200 pantallas por app" },
 };
 
 export const MSK_COPY: Record<Lang, MskCopy> = { en, es };

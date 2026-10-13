@@ -380,7 +380,7 @@ export default function RisoGrove() {
                   </div>
                 </div>
                 <div className="rp-decision__col rp-decision__col--dir">
-                  <span className="rp-decision__tag rp-decision__tag--new">Direction to test</span>
+                  <span className="rp-decision__tag rp-decision__tag--new">Next design</span>
                   <p className="rp-decision__dirText">{d.why}</p>
                 </div>
               </div>
@@ -443,7 +443,7 @@ export default function RisoGrove() {
                 </summary>
                 <div className="rp-acc__body">
                   <p className="rp-acc__line rp-acc__ai"><b>First build</b>{o.ai}</p>
-                  <p className="rp-acc__line rp-acc__me"><b>{o.next ? "Next design" : "Decision"}</b>{o.me}</p>
+                  <p className="rp-acc__line rp-acc__me"><b>Next design</b>{o.me}</p>
                   <p className="rp-acc__why">{o.why}</p>
                 </div>
               </details>
@@ -475,7 +475,7 @@ export default function RisoGrove() {
               rel="noopener noreferrer"
               aria-label="Review the Grove component system in Storybook (opens in new tab)"
             >
-              <span className="rp-ext">Review the component system</span>
+              <span className="rp-ext">Review the Grove component system</span>
             </a>
           </p>
           <div data-evidence="true"><GroveSystemLab /></div>
@@ -552,18 +552,18 @@ export default function RisoGrove() {
           </p>
           {/* Same action and wording as MSK and Mobbin — the three studies form
               a loop, so the closing move should not change between them. */}
-          <a className="rp-cta" href="mailto:espositohillary@gmail.com">Send me a note →</a>
+          <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
           <ShareCaseStudy title="Grove — a case study by Hillary Esposito" icon="🌱" />
         </div>
       </section>
 
       {/* NEXT CASE STUDY */}
-      <Link className="rp-next" to="/case-study/msk">
+      <Link className="rp-next" to="/case-study/logistics">
         <div className="rp-next__inner">
           <div>
             <p className="rp-next__eyebrow">Next case study</p>
-            <p className="rp-next__title">Memorial Sloan Kettering</p>
-            <p className="rp-next__tag">UX · healthcare systems · 21,000 clinicians and staff</p>
+            <p className="rp-next__title">Medical logistics</p>
+            <p className="rp-next__tag">Army operations · seven aid stations, three countries</p>
           </div>
           <span className="rp-next__arrow" aria-hidden="true">→</span>
         </div>

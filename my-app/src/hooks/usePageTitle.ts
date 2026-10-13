@@ -1,7 +1,10 @@
 import { useEffect } from "react";
+import type { Lang } from "../i18n/strings";
 
 const BASE = "Hillary Esposito";
 const DEFAULT_TITLE = `${BASE} | Healthcare Product Designer`;
+const DEFAULT_TITLE_ES = `${BASE} | Diseñadora de productos de salud`;
+const NOT_FOUND_PAGES = new Set(["Page not found", "Página no encontrada"]);
 const DEFAULT_DESCRIPTION =
   "Healthcare Product Designer with 13+ years in cancer-care operations and medical logistics; initiated a clinical workflow that contributed to a 20% organization-wide EMR cost reduction.";
 const ORIGIN = "https://hillaryesposito.org";
@@ -47,16 +50,19 @@ function setMeta(selector: string, attribute: "name" | "property", value: string
  * `enabled: false` lets a page that hands off to another view (the English
  * case studies rendering their Spanish version) leave the title to that view.
  * Child effects run first, so an always-on parent would overwrite it.
+ *
+ * `lang` only picks the default (no-`page`) title; a caller with a `page`
+ * passes it already in the visitor's language.
  */
-export default function usePageTitle(page?: string, enabled = true) {
+export default function usePageTitle(page?: string, enabled = true, lang: Lang = "en") {
   useEffect(() => {
     if (!enabled) return;
-    const title = page ? `${page} | ${BASE}` : DEFAULT_TITLE;
+    const title = page ? `${page} | ${BASE}` : lang === "es" ? DEFAULT_TITLE_ES : DEFAULT_TITLE;
     const path = window.location.pathname.replace(/\/+$/, "") || "/";
     const routeMeta = ROUTE_META.find((item) => item.match.test(path));
     const description = routeMeta?.description ?? DEFAULT_DESCRIPTION;
     const image = `${ORIGIN}${routeMeta?.image ?? "/riso/painted-cartography-01.jpg"}`;
-    const isNotFound = page === "Page not found";
+    const isNotFound = page !== undefined && NOT_FOUND_PAGES.has(page);
     const canonical = isNotFound
       ? ORIGIN
       : `${ORIGIN}${path === "/" ? "" : path}`;
@@ -87,5 +93,5 @@ export default function usePageTitle(page?: string, enabled = true) {
       document.head.appendChild(canonicalLink);
     }
     canonicalLink.href = canonical;
-  }, [page, enabled]);
+  }, [page, enabled, lang]);
 }

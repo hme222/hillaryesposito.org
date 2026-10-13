@@ -54,8 +54,8 @@ const WORK: WorkItem[] = [
     // study use, so the work list shows what was actually designed.
     visual: "msk",
     teaserPath: "/case-study/msk#msk-decisions",
-    teaserEn: "The best part: the button that wasn't simple →",
-    teaserEs: "Lo mejor: el botón que no era simple →",
+    teaserEn: "See the button that wasn't simple →",
+    teaserEs: "Ver el botón que no era simple →",
   },
   {
     n: "02",
@@ -101,8 +101,8 @@ const WORK: WorkItem[] = [
     visual: "knowunity",
     teaserExternalHref: "https://6aab3391f5b820296b53b3e5-vmipdkjlqe.chromatic.com/?path=/docs/components-appbar--docs",
     teaserAriaKey: "home.riso.knowunitySystemAria",
-    teaserEn: "Review the component system ↗",
-    teaserEs: "Revisar el sistema de componentes ↗",
+    teaserEn: "Review the Say It Back component system ↗",
+    teaserEs: "Ver el sistema de componentes de Say It Back ↗",
   },
 ];
 
@@ -118,9 +118,9 @@ const DISPATCH_TRAIN_HOLD_SECONDS = 3.8;
 const OPENING_FILM_SEEN_KEY = "portfolio:opening-film-seen";
 
 export default function RisoHome() {
-  usePageTitle();
   const t = useT();
   const { lang } = useLanguage();
+  usePageTitle(undefined, true, lang);
   const location = useLocation();
   const navigate = useNavigate();
   const [dispatchOpen, setDispatchOpen] = useState(false);
@@ -128,7 +128,7 @@ export default function RisoHome() {
   // Plays once per browser tab on a plain homepage visit (owner decision
   // 2026-10-09, reversing the 2026-08-24 button-only rule). Never for reduced
   // motion, never over a deep link to a homepage section, never on a refresh
-  // or return in the same tab. The "Watch" button still replays it.
+  // or return in the same tab. The footer's "Watch" button still replays it.
   const [openingFilmOpen, setOpeningFilmOpen] = useState(() => {
     try {
       if (typeof window === "undefined") return false;
@@ -141,7 +141,11 @@ export default function RisoHome() {
       return false;
     }
   });
-  const openingFilmTriggerRef = useRef<HTMLButtonElement>(null);
+  // The replay trigger lives in the global footer, not on this page. It
+  // dispatches `open-opening-film` (same pattern as `open-recruiter-panel`)
+  // with itself as `returnFocus`; from another route it navigates here with
+  // `state.openOpeningFilm` instead, and focus is left at the page top.
+  const openingFilmTriggerRef = useRef<HTMLButtonElement | null>(null);
   const [dispatchTrainReturning, setDispatchTrainReturning] = useState(false);
   const dispatchSectionRef = useRef<HTMLElement>(null);
   const rootRef = useRef<HTMLElement>(null);
@@ -236,13 +240,22 @@ export default function RisoHome() {
 
   useEffect(() => () => window.clearTimeout(dispatchTrainReturnTimerRef.current), []);
 
-  const toContact = () => {
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    document.getElementById("contact")?.scrollIntoView({
-      behavior: reduceMotion ? "auto" : "smooth",
-      block: "start",
-    });
-  };
+  useEffect(() => {
+    const handler = (event: Event) => {
+      const detail = (event as CustomEvent<{ returnFocus?: HTMLButtonElement | null }>).detail;
+      openingFilmTriggerRef.current = detail?.returnFocus ?? null;
+      setOpeningFilmOpen(true);
+    };
+    window.addEventListener("open-opening-film", handler);
+    return () => window.removeEventListener("open-opening-film", handler);
+  }, []);
+
+  useEffect(() => {
+    if (!(location.state as { openOpeningFilm?: boolean } | null)?.openOpeningFilm) return;
+    openingFilmTriggerRef.current = null;
+    setOpeningFilmOpen(true);
+    navigate(`${location.pathname}${location.search}${location.hash}`, { replace: true, state: null });
+  }, [location.state, location.pathname, location.search, location.hash, navigate]);
 
   const renderWorkContents = (work: WorkItem) => (
     <>
@@ -318,14 +331,13 @@ export default function RisoHome() {
             <p className="rp-status">{t("home.status")}</p>
             <div className="rp-hero__ctas">
               <Link className="rp-cta home-heroDesktopPrimary" to="/case-study/msk">{t("home.riso.primaryWork")} →</Link>
-              <button type="button" className="rp-cta rp-cta--ghost" onClick={toContact}>{t("home.getInTouch")}</button>
               {/* A second, quieter entry point to the recruiter panel, visible
                   without going through Ask first (the Ask dialog keeps its
                   own link to the same panel - see AskDialog.tsx). Same text,
-                  same destination, named once in strings.ts. Ordered directly
-                  after the two primary CTAs (ahead of the opener link below)
-                  so it lands inside the first mobile viewport at 390×844 -
-                  after the opener, it fell below the fold there. */}
+                  same destination, named once in strings.ts. The hero ends
+                  on exactly these two actions; the 5-second opener replay
+                  lives in the footer's Explore column (Footer.tsx) and
+                  reaches the film through the `open-opening-film` event. */}
               <button
                 type="button"
                 className="rp-heroUtility rp-recruiterTourTrigger"
@@ -336,14 +348,6 @@ export default function RisoHome() {
                 }}
               >
                 {t("home.riso.recruiterTourLink")}
-              </button>
-              <button
-                ref={openingFilmTriggerRef}
-                type="button"
-                className="rp-heroUtility rp-openingVisualTrigger"
-                onClick={() => setOpeningFilmOpen(true)}
-              >
-                {t("home.riso.openingVisual")}
               </button>
             </div>
           </div>

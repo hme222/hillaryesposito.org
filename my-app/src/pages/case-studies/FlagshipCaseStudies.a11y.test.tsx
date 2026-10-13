@@ -129,7 +129,7 @@ describe("flagship case-study accessibility", () => {
     });
 
     const hero = container.querySelector("#msk-start");
-    expect(hero?.textContent).toContain("IT and UX implemented it after I changed roles");
+    expect(hero?.textContent).toContain("IT and UX built it after I changed roles");
     expect(hero?.textContent).toContain("Diagnose · map · validate feasibility · pitch");
     expect(hero?.textContent).not.toContain("20%");
     expect(hero?.textContent).not.toContain("two system upgrades");
@@ -187,7 +187,7 @@ describe("flagship case-study accessibility", () => {
     expect(container.textContent).toContain("These are not completed redesigns");
     expect(container.querySelectorAll(".rp-decision__tag--new")).toHaveLength(3);
     container.querySelectorAll(".rp-decision__tag--new").forEach((label) => {
-      expect(label.textContent).toBe("Direction to test");
+      expect(label.textContent).toBe("Next design");
     });
   });
 
@@ -432,8 +432,17 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector("main h1")).not.toBeNull();
     expect(container.textContent).toContain("Warehouse moved forward · 85% shorter resupply time");
 
-    const openingTrigger = container.querySelector<HTMLButtonElement>(".rp-openingVisualTrigger");
-    await act(async () => openingTrigger?.click());
+    // The hero ends on exactly two actions; the opener replay moved to the
+    // global footer, which reaches the film through `open-opening-film`.
+    const heroActions = container.querySelectorAll(".rp-hero__ctas > a, .rp-hero__ctas > button");
+    expect(Array.from(heroActions, (el) => el.textContent)).toEqual([
+      "home.riso.primaryWork →",
+      "home.riso.recruiterTourLink",
+    ]);
+    expect(container.querySelector(".rp-hero .rp-openingVisualTrigger")).toBeNull();
+    await act(async () => {
+      window.dispatchEvent(new CustomEvent("open-opening-film", { detail: {} }));
+    });
 
     const opening = container.querySelector<HTMLElement>(".rp-openingFilm");
     const openingVideo = opening?.querySelector<HTMLVideoElement>("video");

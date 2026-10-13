@@ -228,7 +228,7 @@ export default function FlagshipMSK() {
             <span className="rp-readtime"><b>6 min</b><span>read · 6 years, 3 roles</span></span>
             <p className="rp-sub">
               I diagnosed and mapped a paper detour across four departments, checked feasibility,
-              and pitched a digital filing workflow. <b>IT and UX implemented it after I changed roles.</b>
+              and pitched a digital filing workflow. <b>IT and UX built it after I changed roles.</b>
             </p>
             <dl className="rp-heroEvidence" aria-label="MSK case evidence at a glance">
               <div><dt>Role</dt><dd>Service design · process improvement · UX/product</dd></div>
@@ -381,7 +381,7 @@ export default function FlagshipMSK() {
         </div>
       </section>
 
-      <section className="rp-section">
+      <section className="rp-section" id="msk-sustainment" data-language-anchor="msk-outcomes">
         <div className="rp-wrap">
           <p className="rp-kicker">The real test came later</p>
           <h2 className="rp-title">Most internal tools die quietly. These did not.</h2>
@@ -418,9 +418,9 @@ export default function FlagshipMSK() {
         // three read as equal tiles otherwise, and "organization-wide" made the
         // most qualified number sound like the biggest one.
         metrics={[
+          { tag: "Led", n: "70%", label: "ahead of deadline — every CPR certification came in early, on a deadline about to be pushed back" },
           { tag: "Scope", n: "21,000+", label: "clinicians and administrative staff across the workflows in scope — not queue adoption" },
           { tag: "Initiative result", n: "20%", label: "organization-wide EMR cost reduction; not attributed solely to this filing workflow" },
-          { tag: "Led", n: "70%", label: "ahead of deadline — every CPR certification collected early, on a deadline that was about to be pushed back" },
         ]}
         route={["Observe the real work", "Map the failure", "Align the system", "Ship what lasts"]}
       /></div>
@@ -429,12 +429,12 @@ export default function FlagshipMSK() {
         <div className="rp-wrap rp-close">
           <h2>Designing a system people cannot afford to distrust?</h2>
           <p>I know how to find the workaround, make it visible, and turn it into a product decision a complicated organization can actually ship.</p>
-          <a className="rp-cta" href="mailto:espositohillary@gmail.com">Send me a note →</a>
+          <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
           <ShareCaseStudy title="MSK — a case study by Hillary Esposito" />
         </div>
       </section>
 
-      <Link className="rp-next" to="/case-study/mobbin"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Mobbin</p><p className="rp-next__tag">UX flow documentation · 200+ screens</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
+      <Link className="rp-next" to="/case-study/mobbin"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Mobbin</p><p className="rp-next__tag">UX flow documentation · 200+ screens per app</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
     </main>
   );
 }

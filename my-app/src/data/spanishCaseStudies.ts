@@ -44,7 +44,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
       body: [
         "Otras apps meten todas las plantas en una sola lista larga. Abruma — ¿por dónde empiezas? Grove agrupa las plantas por dónde viven: la ventana de la cocina, el estante de la sala, la recámara. Cada pantalla responde una sola pregunta: ¿qué grupo estoy viendo? Un usuario nuevo solo ve una tarea al día.",
         "También anoté las cuatro decisiones donde le dije que no a la IA: el tono que hace sentir culpa, las recompensas tipo juego, la falsa certeza al identificar una planta y la seguridad para mascotas. Cada una respaldada por lo que dijo la encuesta. La quinta es un error mío: la lógica del calendario de riego, que todavía estoy corrigiendo.",
-        "Hay una sexta, y es la que estoy diseñando ahora. La IA armó un calendario de riego: cada planta con su intervalo fijo. Pero regar de más mata más plantas de interior que olvidarlas, y un intervalo fijo es justo como pasa. El recordatorio va a pedirte que revises, no que riegues: “Ficus lirado — revisa la primera pulgada de tierra.” Mi propia guía de cuidado ya lo decía; el motor de recordatorios no se había puesto al día.",
+        "Esa quinta es la que estoy diseñando ahora. La IA armó un calendario de riego: cada planta con su intervalo fijo. Pero regar de más mata más plantas de interior que olvidarlas, y un intervalo fijo es justo como pasa. El recordatorio va a pedirte que revises, no que riegues: “Ficus lirado — revisa la primera pulgada de tierra.” Mi propia guía de cuidado ya lo decía; el motor de recordatorios no se había puesto al día.",
       ],
     },
     {
@@ -52,7 +52,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
       eyebrow: "Cuando algo sale mal",
       title: "El producto se decide en los momentos difíciles",
       body: [
-        "Cuando todo sale bien, cualquier app se ve bien. La prueba real son los momentos difíciles: la pantalla vacía, cuando la IA no está segura, volver después de varios días sin que te haga sentir culpa, la advertencia de una planta tóxica para mascotas, y el límite de notificaciones. Esos detalles deciden si la app se siente útil o estresante.",
+        "Cuando todo sale bien, cualquier app se ve bien. La prueba real son los momentos difíciles: la pantalla vacía, cuando la IA no está segura, volver después de varios días sin que te haga sentir culpa, la advertencia de una planta tóxica para mascotas, y el tono de los recordatorios. Esos detalles deciden si la app se siente útil o estresante.",
       ],
     },
     {
@@ -161,7 +161,7 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
     },
     {
       anchor: "mobbin-outcomes",
-      eyebrow: "Producto",
+      eyebrow: "Resultado",
       title: "Aprender de productos reales fortaleció mi juicio",
       body: [
         "Estudiar cómo apps líderes estructuran información, guían usuarios y reducen fricción fortaleció mi criterio de producto. También me enseñó a nombrar patrones según cómo otros diseñadores los buscarían.",
@@ -194,7 +194,7 @@ export const LOGISTICS_ES: SpanishCaseStudyData = {
     {
       anchor: "log-brief",
       eyebrow: "Por qué importaba el proceso",
-      title: "En una zona de combate, una falla de proceso no es una molestia. Es un riesgo de bajas.",
+      title: "Una entrega tardía es un riesgo de\u00a0bajas.",
       body: [
         "El trabajo: tener medicinas y equipo listos antes de que se necesiten, no después de que alguien los pida. Lo que estaba en juego: una estación de ayuda sin suministros, que es donde primero se atiende a los soldados heridos.",
         "Cada retraso gastaba el único recurso que un herido no puede recuperar: tiempo.",
@@ -226,7 +226,7 @@ export const LOGISTICS_ES: SpanishCaseStudyData = {
     },
     {
       anchor: "log-outcomes",
-      eyebrow: "En qué se tradujo",
+      eyebrow: "A cuánto sumó",
       title: "Medido en tiempo, dinero y cosas que no pasaron.",
       body: [
         "Moví el punto de suministro, estandaricé la solicitud e hice visible el estado de los pedidos.",

@@ -5,7 +5,7 @@
   {
    "id": "en:msk-start:0",
    "lang": "en",
-   "text": "I diagnosed and mapped a paper detour across four departments, checked feasibility, and pitched a digital filing workflow. IT and UX implemented it after I changed roles.",
+   "text": "I diagnosed and mapped a paper detour across four departments, checked feasibility, and pitched a digital filing workflow. IT and UX built it after I changed roles.",
    "source": {
     "type": "page",
     "label": "MSK case study · A filing queue replaced a four-department paper detour.",
@@ -74,7 +74,7 @@
    "text": "IT STARTED WITH A WORKAROUND",
    "source": {
     "type": "page",
-    "label": "MSK case study · The digital workflow had become a paper ritual.",
+    "label": "MSK case study · A digital workflow became a paper ritual.",
     "url": "/case-study/msk/#msk-brief"
    },
    "batch": 1
@@ -85,7 +85,7 @@
    "text": "Every clinical day runs through the EMR—the electronic medical record where a patient’s history lives. The online queue kept the filing on screen and returned with its status updated.",
    "source": {
     "type": "page",
-    "label": "MSK case study · The digital workflow had become a paper ritual.",
+    "label": "MSK case study · A digital workflow became a paper ritual.",
     "url": "/case-study/msk/#msk-brief"
    },
    "batch": 1
@@ -786,7 +786,7 @@
   {
    "id": "en:msk-outcomes:5",
    "lang": "en",
-   "text": "ahead of deadline — every CPR certification collected early, on a deadline that was about to be pushed back",
+   "text": "ahead of deadline — every CPR certification came in early, on a deadline about to be pushed back",
    "source": {
     "type": "page",
     "label": "MSK case study · The numbers, and who they belong to.",
@@ -855,7 +855,7 @@
    "text": "Every delay spent the one resource a casualty could not recover: time.",
    "source": {
     "type": "page",
-    "label": "Medical logistics case study · Process failure in a combat zone isn’t an inconvenience. It’s a casualty risk.",
+    "label": "Medical logistics case study · A late delivery is a casualty risk.",
     "url": "/case-study/logistics/#log-brief"
    },
    "batch": 1
@@ -2612,7 +2612,7 @@
   {
    "id": "en:about-story:7",
    "lang": "en",
-   "text": "I initiated an EMR workflow redesign that contributed within a 20% organization-wide cost reduction. IT and UX built it after my role changed.",
+   "text": "I initiated an EMR workflow redesign that contributed within a 20% organization-wide cost reduction. IT and UX built it after I changed roles.",
    "source": {
     "type": "page",
     "label": "About · How I got here.",

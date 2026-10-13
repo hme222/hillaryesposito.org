@@ -105,7 +105,7 @@ export default function FlagshipLogistics() {
         />
         <div className="rp-hero__content">
           <div className="rp-clearing">
-            <span className="rp-eyebrow">Operations · supply chain · service design under pressure</span>
+            <span className="rp-eyebrow">Army medical logistics · service design under pressure</span>
             <h1 className="rp-h1">85% shorter medical resupply{"\u00a0"}time.</h1>
             <span className="rp-readtime"><b>4 min</b><span>read · deployed 2024</span></span>
             <p className="rp-sub">
@@ -149,7 +149,7 @@ export default function FlagshipLogistics() {
           <div className="rp-cinema__artifact rp-cinema__artifact--safety"><span>Constraint</span><b>Cold chain deliveries inside 48 hours.</b></div>
           <div className="rp-cinema__bridge">
             <p className="rp-kicker">Why the process mattered</p>
-            <h2 id="log-brief-title">Process failure in a combat zone isn’t an inconvenience. It’s a casualty risk.</h2>
+            <h2 id="log-brief-title">A late delivery is a casualty{"\u00a0"}risk.</h2>
             <p>Every delay spent the one resource a casualty could not recover: time.</p>
           </div>
         </div>
@@ -209,12 +209,12 @@ export default function FlagshipLogistics() {
         <div className="rp-wrap rp-close">
           <h2>Need someone who has done this where it counted?</h2>
           <p>I have run a supply chain where being wrong had a cost, and redesigned clinical systems where the same was true. The instinct transfers: find the workaround, make it visible, and change the sequence.</p>
-          <a className="rp-cta" href="mailto:espositohillary@gmail.com">Send me a note →</a>
+          <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
           <ShareCaseStudy title="Medical logistics — a case study by Hillary Esposito" />
         </div>
       </section>
 
-      <Link className="rp-next" to="/case-study/msk"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Memorial Sloan Kettering</p><p className="rp-next__tag">Clinical systems · six years, three roles</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
+      <Link className="rp-next" to="/case-study/msk"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Memorial Sloan Kettering</p><p className="rp-next__tag">Clinical systems · 21,000+ clinicians and staff</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
     </main>
   );
 }

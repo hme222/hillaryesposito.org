@@ -306,6 +306,25 @@
   text-underline-offset: .25em;
 }
 .site-footer__column a:hover { text-decoration: underline; }
+/* The opener replay (Footer.tsx) is a button, not a link — it changes this
+   page rather than leaving it — but it sits in the Explore list and reads as
+   one of its rows. */
+.site-footer__action {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--fg);
+  font: inherit;
+  font-size: .9rem;
+  text-align: start;
+  text-underline-offset: .25em;
+  cursor: pointer;
+}
+.site-footer__action:hover { text-decoration: underline; }
 /* The dark closing band. Previously a separate black slab floated above the
    whole footer on Grove and repeated the copyright; the band now IS the
    footer's base row, so it sits directly under the statement and carries the

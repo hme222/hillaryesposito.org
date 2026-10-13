@@ -151,7 +151,7 @@
    "text": "POR QUÉ IMPORTABA EL PROCESO",
    "source": {
     "type": "page",
-    "label": "Estudio de caso de logística médica · En una zona de combate, una falla de proceso no es una molestia. Es un riesgo de bajas.",
+    "label": "Estudio de caso de logística médica · Una entrega tardía es un riesgo de bajas.",
     "url": "/case-study/logistics/#es-log-brief"
    },
    "batch": 1
@@ -162,7 +162,7 @@
    "text": "El trabajo: tener medicinas y equipo listos antes de que se necesiten, no después de que alguien los pida. Lo que estaba en juego: una estación de ayuda sin suministros, que es donde primero se atiende a los soldados heridos.",
    "source": {
     "type": "page",
-    "label": "Estudio de caso de logística médica · En una zona de combate, una falla de proceso no es una molestia. Es un riesgo de bajas.",
+    "label": "Estudio de caso de logística médica · Una entrega tardía es un riesgo de bajas.",
     "url": "/case-study/logistics/#es-log-brief"
    },
    "batch": 1
@@ -173,7 +173,7 @@
    "text": "Cada retraso gastaba el único recurso que un herido no puede recuperar: tiempo.",
    "source": {
     "type": "page",
-    "label": "Estudio de caso de logística médica · En una zona de combate, una falla de proceso no es una molestia. Es un riesgo de bajas.",
+    "label": "Estudio de caso de logística médica · Una entrega tardía es un riesgo de bajas.",
     "url": "/case-study/logistics/#es-log-brief"
    },
    "batch": 1
@@ -456,7 +456,7 @@
   {
    "id": "es:es-grove-decisions:2",
    "lang": "es",
-   "text": "Hay una sexta, y es la que estoy diseñando ahora. La IA armó un calendario de riego: cada planta con su intervalo fijo. Pero regar de más mata más plantas de interior que olvidarlas, y un intervalo fijo es justo como pasa. El recordatorio va a pedirte que revises, no que riegues: “Ficus lirado — revisa la primera pulgada de tierra.” Mi propia guía de cuidado ya lo decía; el motor de recordatorios no se había puesto al día.",
+   "text": "Esa quinta es la que estoy diseñando ahora. La IA armó un calendario de riego: cada planta con su intervalo fijo. Pero regar de más mata más plantas de interior que olvidarlas, y un intervalo fijo es justo como pasa. El recordatorio va a pedirte que revises, no que riegues: “Ficus lirado — revisa la primera pulgada de tierra.” Mi propia guía de cuidado ya lo decía; el motor de recordatorios no se había puesto al día.",
    "source": {
     "type": "page",
     "label": "Estudio de caso Grove · Agrupé las plantas por dónde viven, no en una sola lista larga",
@@ -467,7 +467,7 @@
   {
    "id": "es:es-grove-override:0",
    "lang": "es",
-   "text": "Cuando todo sale bien, cualquier app se ve bien. La prueba real son los momentos difíciles: la pantalla vacía, cuando la IA no está segura, volver después de varios días sin que te haga sentir culpa, la advertencia de una planta tóxica para mascotas, y el límite de notificaciones. Esos detalles deciden si la app se siente útil o estresante.",
+   "text": "Cuando todo sale bien, cualquier app se ve bien. La prueba real son los momentos difíciles: la pantalla vacía, cuando la IA no está segura, volver después de varios días sin que te haga sentir culpa, la advertencia de una planta tóxica para mascotas, y el tono de los recordatorios. Esos detalles deciden si la app se siente útil o estresante.",
    "source": {
     "type": "page",
     "label": "Estudio de caso Grove · El producto se decide en los momentos difíciles",
@@ -687,7 +687,7 @@
   {
    "id": "es:about-story:7",
    "lang": "es",
-   "text": "Inicié un rediseño de flujo EMR que contribuyó dentro de una reducción organizacional del 20% en costos. TI y UX lo construyeron después de que cambié de rol.",
+   "text": "Inicié un rediseño de flujo EMR que contribuyó dentro de una reducción organizacional del 20% en costos. TI y UX lo construyeron después de que cambié de puesto.",
    "source": {
     "type": "page",
     "label": "Sobre mí · Cómo llegué aquí.",

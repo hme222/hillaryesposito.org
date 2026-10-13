@@ -249,12 +249,19 @@ main.riso-page:not(.riso-home),
   font-weight: 800;
   letter-spacing: -.025em;
 }
-.site-footer__column a {
+.site-footer__column a,
+.site-footer__column .site-footer__action {
   min-height: 44px;
   display: inline-flex;
   align-items: center;
   color: var(--shell-ink);
   font-family: var(--shell-sans);
+}
+/* Same rule as riso-page.css's .rp-openingVisualTrigger: with reduced motion
+   the opener could only show a still, so the footer doesn't offer it. Lives
+   here, after the display rule above, so it wins on every route. */
+@media (prefers-reduced-motion: reduce) {
+  .site-footer__column .site-footer__action.rp-openingVisualTrigger { display: none; }
 }
 
 /* Home cover: the implemented workflow is the primary proof; the portrait is

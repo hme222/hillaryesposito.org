@@ -56,7 +56,7 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
       note: section.title,
     })),
   ];
-  usePageTitle(`${data.title} — estudio de caso`);
+  usePageTitle(`${data.breadcrumb} — estudio de caso`);
 
   const readInEnglish = () => {
     switchLanguageAtCurrentSection(setLang, "en");
@@ -172,7 +172,7 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
 
       <section className="rp-section">
         <div className="rp-wrap rp-close">
-          <p className="rp-kicker">Hablemos</p>
+          <p className="rp-kicker">Contacto</p>
           <h2>¿Quiere hablar sobre este tipo de trabajo?</h2>
           <p>Puedo explicar el proceso, las decisiones y lo que aprendí con más detalle.</p>
           <div className="rp-hero__ctas">

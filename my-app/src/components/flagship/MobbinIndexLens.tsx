@@ -30,7 +30,7 @@ export default function MobbinIndexLens() {
             aria-pressed={indexed}
             onClick={() => setIndexed((current) => !current)}
           >
-            {indexed ? "Hide the task labels" : "Show the task labels"} <span aria-hidden="true">↗</span>
+            {indexed ? "Hide the task labels" : "Show the task labels"}
           </button>
           <p className="fp-proofStatus" aria-live="polite">
             {indexed ? "Task labels visible beside three untouched source captures." : "Three raw source captures."}
