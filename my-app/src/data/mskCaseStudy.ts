@@ -444,19 +444,25 @@ const en: MskCopy = {
     kicker: "The real test came later",
     title: "Most internal tools die quietly. These did not.",
     lede:
-      "A system upgrade, or the project simply ending — these are what usually finish an internal tool, whatever anyone thought of it at launch. Both of these carried straight on past that.",
-    figcaption: "What each system survived, and where it stands now",
+      "Adoption is the launch metric. Sustainment is the service metric.",
+    // Claim audit 2026-10-13: the lanes used to say "system upgrade" ×2,
+    // "still in use" and "still used by other admins" — claims Hillary cut on
+    // 2026-09-27 (msk.md F2/F3: no source; she was not present after launch).
+    // The drawing kept them after the text list was corrected. Lanes now carry
+    // only what msk.md supports: the handoff, organization-wide adoption
+    // (owner-reported, Q5/F2), and compliance a month early (Q3/Q5).
+    figcaption: "What happened after each one shipped",
     shipped: "SHIPPED",
     lanes: [
       {
         name: "EMR filing workflow",
-        events: [{ at: 0.3, label: "system upgrade" }, { at: 0.62, label: "system upgrade" }],
-        outcome: "still in use",
+        events: [{ at: 0.42, label: "handed to IT and UX" }],
+        outcome: "adopted organization-wide",
       },
       {
         name: "CPR certification format",
-        events: [{ at: 0.34, label: "project closes early" }],
-        outcome: "still used by other admins",
+        events: [{ at: 0.5, label: "compliant a month early" }],
+        outcome: "no extension needed",
       },
     ],
     survived: [
@@ -464,7 +470,7 @@ const en: MskCopy = {
       { fact: "CPR certification format", what: "Department compliant a month before the original deadline — no extension needed" },
     ],
     why:
-      "None of that is luck. The filing queue survived two upgrades because it had stopped being a workaround people maintained by hand — the work was in the system, not in someone's spreadsheet. The certification format outlived its own project by two months, then kept going, because the people it was written for preferred it to what came before.",
+      "The work moved from personal workaround to shared system; the plain-language format got the department compliant before the deadline.",
     proofLabel: "Independent proof · MSK News",
     proofTitle: "From the military to Memorial Sloan Kettering",
     proofAria: "Read Hillary Esposito's career profile in MSK News (opens in new tab)",
@@ -752,27 +758,27 @@ const es: MskCopy = {
     kicker: "La prueba de verdad llegó después",
     title: "Casi todas las herramientas internas mueren en silencio. Estas no.",
     lede:
-      "Una actualización del sistema, o que el proyecto simplemente termine — eso es lo que normalmente acaba con una herramienta interna, sin importar lo que se pensara de ella al lanzarla. Estas dos siguieron de largo.",
-    figcaption: "Qué sobrevivió cada sistema, y dónde está hoy",
+      "La adopción mide el lanzamiento. La permanencia mide el servicio.",
+    figcaption: "Qué pasó después de lanzar cada uno",
     shipped: "LANZADO",
     lanes: [
       {
         name: "Flujo de archivo del EMR",
-        events: [{ at: 0.3, label: "actualización del sistema" }, { at: 0.62, label: "actualización del sistema" }],
-        outcome: "sigue en uso",
+        events: [{ at: 0.42, label: "entregado a TI y UX" }],
+        outcome: "adoptado en toda la institución",
       },
       {
         name: "Formato de certificación de RCP",
-        events: [{ at: 0.34, label: "el proyecto cierra antes" }],
-        outcome: "lo siguen usando otras áreas administrativas",
+        events: [{ at: 0.5, label: "conforme un mes antes" }],
+        outcome: "sin prórroga",
       },
     ],
     survived: [
-      { fact: "Flujo de archivo del EMR", what: "Reportado por la organización como adoptado en toda la institución" },
+      { fact: "Flujo de archivo del EMR", what: "Adoptado en toda la institución, según lo que reporta Hillary" },
       { fact: "Formato de certificación de RCP", what: "Área conforme un mes antes de la fecha límite original — sin prórroga" },
     ],
     why:
-      "Nada de eso es suerte. La cola de archivo se adoptó porque había dejado de ser un desvío que la gente mantenía a mano — el trabajo estaba en el sistema, no en la hoja de cálculo de alguien. El formato de certificación sobrevivió dos meses a su propio proyecto, y luego siguió, porque las personas para quienes se escribió lo preferían a lo que había antes.",
+      "El trabajo pasó de un desvío personal a un sistema compartido; el formato en lenguaje sencillo dejó al área conforme antes de la fecha límite.",
     proofLabel: "Prueba independiente · MSK News",
     proofTitle: "Del ejército a Memorial Sloan Kettering",
     proofAria: "Leer el perfil de carrera de Hillary Esposito en MSK News (se abre en una pestaña nueva)",

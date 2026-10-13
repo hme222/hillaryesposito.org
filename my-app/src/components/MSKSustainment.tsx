@@ -11,7 +11,7 @@ import { MSK_COPY, type MskCopy } from "../data/mskCaseStudy";
  *
  * Sustainment is a claim about time: the thing kept running past the events
  * that normally kill an internal tool. That is a shape, so it is drawn as one.
- * Each system gets a lane; the coral ticks are the events it survived; the
+ * Each system gets a lane; the coral ticks are what happened after launch; the
  * line continues past all of them.
  *
  * Decorative — the same three facts sit in the list beside it as real text, so

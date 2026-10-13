@@ -1215,7 +1215,7 @@
   {
    "id": "en:grove-research:8",
    "lang": "en",
-   "text": "out of 5: how confident new owners felt about light (n=16). Experienced owners rated themselves 3.3",
+   "text": "out of 5: how confident new owners felt about light (n=12). Experienced owners rated themselves 3.4 (n=14)",
    "source": {
     "type": "page",
     "label": "Grove case study · Plant parents forget. Then they feel guilty.",
@@ -1677,7 +1677,7 @@
   {
    "id": "en:grove-override:22",
    "lang": "en",
-   "text": "New owners raised it unprompted, before I ever asked. When a plant can hurt a cat, a wrong guess isn’t a suggestion. It’s a risk.",
+   "text": "4 of 12 new owners picked pet safety as one of the most stressful parts of plant care. When a plant can hurt a cat, a wrong guess isn’t a suggestion. It’s a risk.",
    "source": {
     "type": "page",
     "label": "Grove case study · Reminders that protect the care task.",
@@ -3305,7 +3305,7 @@
   {
    "id": "en:build:6",
    "lang": "en",
-   "text": "The site has 82 automated tests across 9 files, including accessibility checks on the case studies.",
+   "text": "The site has 150 automated tests across 19 files, including accessibility checks on the case studies.",
    "source": {
     "type": "repo",
     "label": "How this site is built · source code",
@@ -3349,7 +3349,7 @@
   {
    "id": "en:build:10",
    "lang": "en",
-   "text": "Analytics record only four events: résumé opens, contact clicks, LinkedIn clicks and case-study opens.",
+   "text": "Analytics record eight events: résumé opens, contact clicks, LinkedIn clicks and case-study opens, plus four for Ask (opened, answered, not covered, source clicked). The site doesn't log the questions themselves.",
    "source": {
     "type": "repo",
     "label": "How this site is built · source code",

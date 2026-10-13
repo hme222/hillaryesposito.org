@@ -346,7 +346,7 @@
   {
    "id": "es:es-grove-brief:0",
    "lang": "es",
-   "text": "La mayoría de la gente que compra una planta quiere una sola cosa: mantenerla viva. Pero se olvidan de regarla, o la riegan de más, y de cualquier forma se sienten mal. Les pregunté a 34 dueños de plantas qué haría que una app de plantas se ganara un lugar en su teléfono. La respuesta más común: “Los consejos son demasiado genéricos, no toman en cuenta mi casa.” Lo que más rápido hace que borren una app, dicho por 11 de 34 sin que se lo preguntara: demasiadas notificaciones. Una persona resumió todo el trabajo en seis palabras: “El cuidado de plantas debería sentirse tranquilo, no estresante.”",
+   "text": "La mayoría de la gente que compra una planta quiere una sola cosa: mantenerla viva. Pero se olvidan de regarla, o la riegan de más, y de cualquier forma se sienten mal. Les pregunté a 34 dueños de plantas qué haría que una app de plantas se ganara un lugar en su teléfono. Una de las dos respuestas más comunes: “Los consejos son demasiado genéricos, no toman en cuenta mi casa.” Lo que más rápido hace que borren una app, dicho por 11 de 34 sin que se lo preguntara: demasiadas notificaciones. Una persona lo resumió así: “El cuidado de plantas debería sentirse tranquilo y sano, no estresante.”",
    "source": {
     "type": "page",
     "label": "Estudio de caso Grove · Los dueños de plantas se olvidan. Y luego se sienten culpables.",
@@ -357,7 +357,7 @@
   {
    "id": "es:es-grove-brief:1",
    "lang": "es",
-   "text": "El punto débil: en lo que peor están los dueños nuevos es en la luz — dónde poner una planta, y por qué. Ninguna app grande lo enseña. Los dueños nuevos calificaron su confianza sobre la luz en 2.4 de 5 (n=16); los experimentados, en 3.3, y pidió, sin que se lo preguntara, una app que “me diga exactamente dónde colocar una planta.” Ahí, más la confianza, es donde Grove gana o no gana.",
+   "text": "El punto débil: en lo que peor están los dueños nuevos es en la luz — dónde poner una planta, y por qué. Ninguna app grande lo enseña. Los dueños nuevos calificaron su confianza sobre la luz en 2.4 de 5 (n=12); los experimentados, en 3.4 (n=14). Ahí, más la confianza, es donde Grove gana o no gana.",
    "source": {
     "type": "page",
     "label": "Estudio de caso Grove · Los dueños de plantas se olvidan. Y luego se sienten culpables.",
@@ -379,7 +379,7 @@
   {
    "id": "es:es-grove-research:1",
    "lang": "es",
-   "text": "Emergent había construido las funciones sociales dentro de la app. La encuesta dijo que no es por eso que la gente la descarga. Así que hice una pregunta difícil: “Si Grove solo pudiera lanzarse con TRES funciones, ¿cuáles no podrías dejar de tener?” Las tres primeras se construyeron primero. Todo lo demás espera.",
+   "text": "Emergent había construido las funciones sociales dentro de la app. La encuesta dijo que no es por eso que la gente la descarga. Así que hice una pregunta difícil: “Si Grove solo pudiera lanzarse con TRES funciones, ¿cuáles no podrías dejar de tener?” El rediseño empieza por esas tres. Todo lo demás espera.",
    "source": {
     "type": "page",
     "label": "Estudio de caso Grove · Les pregunté a 34 dueños de plantas qué importa de verdad",
@@ -423,7 +423,7 @@
   {
    "id": "es:es-grove-research:5",
    "lang": "es",
-   "text": "Las advertencias para plantas tóxicas para mascotas (dueños nuevos las pidieron solos, sin que se lo preguntara) y la educación sobre la luz pasaron a ser parte del núcleo de confianza, aunque yo ni siquiera las había construido.",
+   "text": "Las advertencias para plantas tóxicas para mascotas (4 de 12 dueños nuevos las marcaron entre lo más estresante del cuidado) y la educación sobre la luz pasaron a ser parte del núcleo de confianza, aunque yo ni siquiera las había construido.",
    "source": {
     "type": "page",
     "label": "Estudio de caso Grove · Les pregunté a 34 dueños de plantas qué importa de verdad",
@@ -1347,7 +1347,7 @@
   {
    "id": "es:build:6",
    "lang": "es",
-   "text": "El sitio tiene 82 pruebas automatizadas en 9 archivos, incluidas pruebas de accesibilidad en los estudios de caso.",
+   "text": "El sitio tiene 150 pruebas automatizadas en 19 archivos, incluidas pruebas de accesibilidad en los estudios de caso.",
    "source": {
     "type": "repo",
     "label": "Cómo está construido el sitio · código fuente",
@@ -1391,7 +1391,7 @@
   {
    "id": "es:build:10",
    "lang": "es",
-   "text": "La analítica registra solo cuatro eventos: aperturas del currículum, clics de contacto, clics en LinkedIn y aperturas de estudios de caso.",
+   "text": "La analítica registra ocho eventos: aperturas del currículum, clics de contacto, clics en LinkedIn y aperturas de estudios de caso, más cuatro de Preguntar (abierto, respondido, no cubierto, clic en una fuente). El sitio no registra las preguntas.",
    "source": {
     "type": "repo",
     "label": "Cómo está construido el sitio · código fuente",

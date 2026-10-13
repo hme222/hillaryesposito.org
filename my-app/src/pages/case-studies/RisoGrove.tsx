@@ -39,7 +39,9 @@ const SURVEY_FINDINGS = [
   { stat: "74%", label: "picked smart care reminders as a launch dealbreaker — 25 of 34, the clear top answer" },
   { stat: "56%", label: "wanted to point a camera at a plant and have the app just tell them what it is" },
   { stat: "11", label: "of 34 named notification volume, unprompted, as what would make them delete it — the most-cited reason by far" },
-  { stat: "2.4", label: "out of 5: how confident new owners felt about light (n=16). Experienced owners rated themselves 3.3" },
+  // Recomputed from the raw export 2026-10-13: new owners n=12, mean 2.42;
+  // experienced n=14, mean 3.43 (was printed as "n=16" and "3.3").
+  { stat: "2.4", label: "out of 5: how confident new owners felt about light (n=12). Experienced owners rated themselves 3.4 (n=14)" },
 ];
 
 const MVP_FEATURES = [
@@ -59,7 +61,7 @@ const MVP_FEATURES = [
 const OUTCOMES = [
   { n: "34", l: "plant owners surveyed before any screen changed" },
   { n: "3", l: "features that earn the download; everything else waits" },
-  { n: "5", l: "product calls made explicit, including one care-logic mistake" },
+  { n: "6", l: "product calls made explicit, including one care-logic mistake" },
 ];
 
 const SCREENS = [
@@ -106,7 +108,7 @@ const OVERRIDES: Array<{ topic: string; ai: string; me: string; why: string; nex
   { topic: "Reminder tone", ai: "Guilt and urgency: “your plant misses you.”", me: "One calm morning summary.", why: "Notifications are the #1 reason people delete a plant app." },
   { topic: "Gamification", ai: "Badges and streaks.", me: "An AI plant personality you earn: a feeling, not points.", why: "Care that feels like paperwork is the top reason people quit. A streak also rewards watering every day, while overwatering is the most common way people kill houseplants. The optimal play would kill the subject of the product. The honest cost: calm should show lower 7-day engagement than streaks would. I’d take that trade if 90-day retention holds. If it doesn’t, the mechanic was doing work I underestimated, and I’d rather find that out than assume it." },
   { topic: "Plant ID confidence", ai: "One confident answer, every time.", me: "Top guesses, how sure it is, and its sources.", why: "False certainty is the fastest way to lose trust." },
-  { topic: "Pet safety", ai: "Generic care tips.", me: "Toxic-to-pets warnings the moment you add a plant, with sources.", why: "New owners raised it unprompted, before I ever asked. When a plant can hurt a cat, a wrong guess isn’t a suggestion. It’s a risk." },
+  { topic: "Pet safety", ai: "Generic care tips.", me: "Toxic-to-pets warnings the moment you add a plant, with sources.", why: "4 of 12 new owners picked pet safety as one of the most stressful parts of plant care. When a plant can hurt a cat, a wrong guess isn’t a suggestion. It’s a risk." },
   { topic: "Notification frequency", ai: "Nudge whenever engagement dips.", me: "One summary per group; only true emergencies interrupt.", why: "A reminder can never become the reason someone leaves." },
   { topic: "Watering schedule", next: true, ai: "A fixed calendar, with every plant on its own repeating interval and days overdue.", me: "The reminder asks you to check, not to water: “Fiddle Leaf: check the top inch.” Two taps: watered, or not yet.", why: "Overwatering kills more houseplants than neglect, and a fixed interval is exactly how it happens. My own care guide already says “water when the top inch is dry.” The reminder engine never caught up to it. Asking you to check makes the reminder correct, makes seasonality free, and turns “smart care reminders” from a label into a mechanism. This is the one I got wrong in the same direction as the first build: I corrected its tone five times and never once its logic." },
 ];

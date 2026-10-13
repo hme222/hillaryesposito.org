@@ -66,8 +66,8 @@ const ROLES = [
   { n: "03", role: "Trainer I Specialist", taught: "The authority to redesign it" },
 ];
 
-// The text equivalent of the sustainment timeline. Each line states what the
-// system survived and that it is still standing — the claim, not just a label.
+// The text equivalent of the sustainment timeline: what happened after each
+// system shipped, limited to what msk.md supports (see the lanes' comment).
 const SURVIVED = [
   { fact: "EMR filing workflow", what: "Owner-reported as adopted organization-wide" },
   { fact: "CPR certification format", what: "Department compliant a month before the original deadline — no extension needed" },
@@ -387,7 +387,7 @@ export default function FlagshipMSK() {
           <p className="rp-lede">Adoption is the launch metric. Sustainment is the service metric.</p>
           <figure className="fp-sustainmentFig rp-reveal" data-evidence="true">
             <MSKSustainment />
-            <figcaption>What each system survived, and where it stands now</figcaption>
+            <figcaption>What happened after each one shipped</figcaption>
           </figure>
           {/* The real text for the drawing above, and the exact claim on each
               lane. Deliberately terse — the timeline is doing the work. */}
@@ -396,7 +396,7 @@ export default function FlagshipMSK() {
               <li key={s.fact}><b>{s.fact}</b><span>{s.what}</span></li>
             ))}
           </ul>
-          <p className="fp-survivedWhy">The work moved from personal workaround to shared system; the plain-language format stayed useful after its project ended.</p>
+          <p className="fp-survivedWhy">The work moved from personal workaround to shared system; the plain-language format got the department compliant before the deadline.</p>
           <a className="fp-proofLink" href="https://www.mskcc.org/news/hillary-esposito-s-career-path-military-msk" target="_blank" rel="noopener noreferrer" aria-label="Read Hillary Esposito's career profile in MSK News (opens in new tab)">
             <span>Independent proof · MSK News</span><b className="rp-ext">From the military to Memorial Sloan Kettering</b>
           </a>
