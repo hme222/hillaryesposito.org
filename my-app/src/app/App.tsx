@@ -2,6 +2,8 @@ import React, { useEffect, useMemo, useState } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import AppRoutes from "./AppRoutes";
+import AppErrorBoundary from "./AppErrorBoundary";
+import { safeGet, safeSet } from "./safeStorage";
 import { LanguageContext } from "./LanguageContext";
 import { Lang, translate } from "../i18n/strings";
 import Navbar from "../components/Navbar";
@@ -22,7 +24,7 @@ export default function App() {
   // mount-ordering dependency between a read-effect and a write-effect. Same
   // pattern as `lang` below.
   const [darkMode, setDarkMode] = useState<boolean>(() => {
-    const saved = localStorage.getItem("darkMode");
+    const saved = safeGet("local", "darkMode");
     if (saved !== null) return saved === "true";
     return window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
@@ -30,19 +32,19 @@ export default function App() {
   // Language preference (Phase 1: home + nav). Read once, synchronously, so
   // the first paint is already in the saved language - no EN→ES flash.
   const [lang, setLang] = useState<Lang>(() =>
-    localStorage.getItem("lang") === "es" ? "es" : "en"
+    safeGet("local", "lang") === "es" ? "es" : "en"
   );
 
   // Persist theme preference + apply class globally
   useEffect(() => {
-    localStorage.setItem("darkMode", JSON.stringify(darkMode));
+    safeSet("local", "darkMode", JSON.stringify(darkMode));
     document.documentElement.classList.toggle("dark-mode", darkMode);
   }, [darkMode]);
 
   // Persist language + keep <html lang> in sync (a11y: screen readers switch
   // pronunciation based on the document language).
   useEffect(() => {
-    localStorage.setItem("lang", lang);
+    safeSet("local", "lang", lang);
     document.documentElement.lang = lang;
   }, [lang]);
 
@@ -53,6 +55,7 @@ export default function App() {
 
   return (
     <LanguageContext.Provider value={languageValue}>
+      <AppErrorBoundary>
       <Router>
         <>
           <PortfolioAnalytics />
@@ -72,6 +75,7 @@ export default function App() {
           <AskDialog />
         </>
       </Router>
+      </AppErrorBoundary>
     </LanguageContext.Provider>
   );
 }

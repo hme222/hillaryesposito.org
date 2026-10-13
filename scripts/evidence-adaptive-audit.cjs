@@ -2,11 +2,7 @@
 
 const fs = require("node:fs");
 const path = require("node:path");
-const { chromium } = require(
-  process.env.CODEX_NODE_MODULES
-    ? path.join(process.env.CODEX_NODE_MODULES, "playwright")
-    : "/Users/hills_mac/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright",
-);
+const { chromium } = require("playwright-core");
 
 const baseUrl = process.env.PORTFOLIO_URL || "http://127.0.0.1:3000";
 const outputDir = process.env.EVIDENCE_AUDIT_DIR || "/tmp/evidence-adaptive-audit";

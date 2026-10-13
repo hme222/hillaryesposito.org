@@ -5,6 +5,7 @@ import { Routes, Route, useLocation, useNavigationType } from "react-router-dom"
 import RisoHome from "../pages/RisoHome";
 import About from "../pages/AboutMe";
 import { useLanguage } from "./LanguageContext";
+import { safeGet, safeSet } from "./safeStorage";
 
 import NotFoundPage from "../pages/NotFoundPage";
 import { Navigate } from "react-router-dom";
@@ -89,7 +90,7 @@ function ScrollToTop() {
   // Capture the destination's saved position during render. The new route's
   // scroll listener can otherwise observe the browser's interim top position
   // before the POP restoration effect runs and overwrite the value we need.
-  const savedScrollAtRender = Number(sessionStorage.getItem(`portfolio-scroll:${pathname}`) || 0);
+  const savedScrollAtRender = Number(safeGet("session", `portfolio-scroll:${pathname}`) || 0);
 
   useEffect(() => {
     const previous = window.history.scrollRestoration;
@@ -102,7 +103,7 @@ function ScrollToTop() {
   useEffect(() => {
     const remember = () => {
       if (restoringPop.current || window.location.pathname !== pathname) return;
-      sessionStorage.setItem(`portfolio-scroll:${pathname}`, String(window.scrollY));
+      safeSet("session", `portfolio-scroll:${pathname}`, String(window.scrollY));
     };
     window.addEventListener("scroll", remember, { passive: true });
     return () => {

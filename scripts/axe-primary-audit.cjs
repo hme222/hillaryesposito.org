@@ -2,15 +2,11 @@
 
 const fs = require("node:fs");
 const path = require("node:path");
-const { chromium } = require(
-  process.env.CODEX_NODE_MODULES
-    ? path.join(process.env.CODEX_NODE_MODULES, "playwright")
-    : "/Users/hills_mac/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright",
-);
+const { chromium } = require("playwright-core");
 
 const root = path.resolve(__dirname, "..");
 const buildDir = path.resolve(process.env.PORTFOLIO_BUILD_DIR || path.join(root, "my-app/build"));
-const axeSource = fs.readFileSync(path.join(root, "my-app/node_modules/axe-core/axe.min.js"), "utf8");
+const axeSource = fs.readFileSync(require.resolve("axe-core/axe.min.js"), "utf8");
 const chromePath = process.env.CHROME_PATH || "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 const outputPath = process.env.AXE_REPORT || "/tmp/axe-primary-audit.json";
 const routes = [

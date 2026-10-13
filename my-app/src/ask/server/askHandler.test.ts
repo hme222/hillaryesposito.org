@@ -205,6 +205,25 @@ describe("ask handler", () => {
     expect(allow("a")).toBe(true);
   });
 
+  it("honors the shared limiter before spending an OpenAI call", async () => {
+    const { client, parse } = makeClient(() => answered());
+    const lines: string[] = [];
+    let verdict: "ok" | "client" | "budget" = "client";
+    const handle = createAskHandler({
+      getClient: () => client,
+      log: (l) => lines.push(l),
+      sharedLimit: async () => verdict,
+    });
+    expect((await handle(post())).status).toBe(429);
+    verdict = "budget";
+    const spent = await handle(post());
+    expect(spent.status).toBe(429);
+    expect(spent.body).toMatchObject({ fallback: true, reason: "daily_budget" });
+    expect(parse).not.toHaveBeenCalled();
+    verdict = "ok";
+    expect((await handle(post())).status).toBe(200);
+  });
+
   it("never logs the question text", async () => {
     const lines: string[] = [];
     const { client } = makeClient(() => answered());

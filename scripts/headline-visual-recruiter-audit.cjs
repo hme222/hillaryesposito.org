@@ -2,11 +2,7 @@
 
 const fs = require("node:fs");
 const path = require("node:path");
-const { chromium } = require(
-  process.env.CODEX_NODE_MODULES
-    ? path.join(process.env.CODEX_NODE_MODULES, "playwright")
-    : "/Users/hills_mac/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright",
-);
+const { chromium } = require("playwright-core");
 
 const buildDir = path.resolve(process.env.PORTFOLIO_BUILD_DIR || path.join(__dirname, "../my-app/build"));
 const outputDir = process.env.HEADLINE_VISUAL_AUDIT_DIR || "/tmp/headline-visual-recruiter-audit";

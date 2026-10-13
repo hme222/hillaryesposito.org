@@ -74,6 +74,12 @@ export type AskDeps = {
   now?: () => number;
   /** Receives count-only lines. Never the question text. */
   log?: (line: string) => void;
+  /**
+   * Optional limiter shared across instances (see sharedRateLimit.ts). Must not
+   * throw: when it can't decide it answers "ok" and the per-instance limiter
+   * stays the only guard.
+   */
+  sharedLimit?: (ip: string) => Promise<"ok" | "client" | "budget">;
 };
 
 type Bucket = { minuteStart: number; minuteCount: number; dayStart: number; dayCount: number };
@@ -85,7 +91,15 @@ export function createRateLimiter(now: () => number, limits = RATE_LIMIT) {
   const buckets = new Map<string, Bucket>();
   return function allow(ip: string): boolean {
     const t = now();
-    if (buckets.size > 5000) buckets.clear(); // memory guard on a long-lived instance
+    if (buckets.size > 5000) {
+      // Memory guard on a long-lived instance. Drop only buckets whose day
+      // window has lapsed, so a flood of new keys can't reset live limits.
+      for (const [key, bucket] of buckets) if (t - bucket.dayStart >= DAY) buckets.delete(key);
+      // Still full of live buckets: leave them alone and let this new key
+      // through untracked. Evicting would let a flood reset real limits; the
+      // shared limiter (sharedRateLimit.ts) is what counts it instead.
+      if (buckets.size > 5000 && !buckets.has(ip)) return true;
+    }
     const b = buckets.get(ip) ?? { minuteStart: t, minuteCount: 0, dayStart: t, dayCount: 0 };
     if (t - b.minuteStart >= MINUTE) {
       b.minuteStart = t;
@@ -160,6 +174,18 @@ export function createAskHandler(deps: AskDeps) {
     if (!allow(req.ip)) {
       log("ask rate_limited");
       return fallback(429, "rate_limited");
+    }
+
+    if (deps.sharedLimit) {
+      const verdict = await deps.sharedLimit(req.ip);
+      if (verdict === "client") {
+        log("ask rate_limited shared");
+        return fallback(429, "rate_limited");
+      }
+      if (verdict === "budget") {
+        log("ask daily_budget_reached");
+        return fallback(429, "daily_budget");
+      }
     }
 
     const client = deps.getClient();

@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { chromium } = require('/Users/hills_mac/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const { chromium } = require('playwright-core');
 const outputDir = path.resolve(__dirname, '../design-docs/generation-inputs/msk-evidence-trailer');
 fs.mkdirSync(outputDir, { recursive: true });
 

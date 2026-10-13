@@ -17,8 +17,11 @@ Please do not publicly disclose the issue before I have had a chance to review i
 
 ## Site Scope
 
-This is a static portfolio hosted on GitHub Pages. It does not handle payments,
-accounts, medical records, or private user transactions.
+This is a portfolio hosted on Vercel. It is a static React site plus one
+serverless endpoint, "Ask about the work", which answers from the published
+portfolio content using the OpenAI API. It does not store visitor questions. It
+does not handle payments, accounts, medical records, or private user
+transactions.
 
 Protected case studies are redacted portfolio content. Password gates on static
 sites are not a substitute for true access control, so confidential NDA material
