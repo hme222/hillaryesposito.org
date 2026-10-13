@@ -995,7 +995,10 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   border-top: 1px solid var(--hair);
   border-bottom: 1px solid var(--hair);
 }
-@media (max-width: 720px) { .rp-outcomes { grid-template-columns: 1fr; } }
+/* Two tiles (Grove while its decision table is off) fill the row instead of
+   leaving an empty third cell. */
+.rp-outcomes--two { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 720px) { .rp-outcomes, .rp-outcomes--two { grid-template-columns: 1fr; } }
 .rp-stat {
   background: color-mix(in srgb, var(--paper) 74%, transparent);
   border: 0;
@@ -2812,6 +2815,25 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   .rp-chapters::-webkit-scrollbar { display: none; }
   .rp-chapters > span { display: none; }
   .rp-chapters a { flex: 0 0 auto; }
+  /* The row runs past the screen edge with no scrollbar, so a chapter cut at
+     the edge read as the end of the list. Fade the last 32px before the edge
+     (or before the pinned length cue) to say "more this way"; the fade drops
+     once the last chapter is fully in view (.is-at-end, set in
+     CaseStudyChapters). */
+  .rp-chapters {
+    --rp-strip-cue: 0px;
+    -webkit-mask-image: linear-gradient(to right, black calc(100% - var(--rp-strip-cue) - 32px), transparent calc(100% - var(--rp-strip-cue)), black calc(100% - var(--rp-strip-cue)));
+    mask-image: linear-gradient(to right, black calc(100% - var(--rp-strip-cue) - 32px), transparent calc(100% - var(--rp-strip-cue)), black calc(100% - var(--rp-strip-cue)));
+  }
+  /* With the length cue pinned at the right, the strip drops its right
+     padding so the cue sits flush to the screen edge: sticky positioning
+     stops at the padding edge, which let a cut-off chapter name show in the
+     16px past the cue. The cue carries that padding itself instead. */
+  .rp-chapters:has(.rp-progress--strip) {
+    padding-right: 0;
+    --rp-strip-cue: calc(var(--rp-cue-w) + var(--sp-gutter));
+  }
+  .rp-chapters.is-at-end { -webkit-mask-image: none; mask-image: none; }
 }
 
 /* ---------- skill tags ---------- */
@@ -2957,6 +2979,23 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   .flagship-page .fp-heroArt { min-height: 300px; }
   .flagship-page .fp-heroArt--msk .fp-dashboardFrame { width: 96%; max-height: 245px; }
   .flagship-page .fp-heroArt--msk .fp-artifactLabel { width: 96%; padding: .5rem .65rem; }
+  /* MSK hero on phones: the five-column queue scrolled sideways inside a
+     clipped frame, so STATUS / ROUTED TO / ACTION were cut at the edge. The
+     hero shows the first three columns (who, what, where it stands); the full
+     five-column queue appears again in the decisions section. A shorter frame
+     also lifts the H1 well inside the first screen while the artifact still
+     comes first. */
+  .flagship-page .fp-heroArt--msk { min-height: 0; max-height: 320px; }
+  .flagship-page .fp-heroArt--msk .fp-dashboardFrame { max-height: 240px; }
+  /* The filter chips and the role/timestamp line took the frame's height
+     before the first queue row; the rows are the artifact. */
+  .flagship-page .fp-heroArt--msk .msk-dashboard-mockup__toolbar,
+  .flagship-page .fp-heroArt--msk .msk-dashboard-mockup__meta { display: none; }
+  .flagship-page .fp-heroArt--msk .msk-dashboard-mockup__row {
+    min-width: 0;
+    grid-template-columns: 1.2fr .9fr 1fr;
+  }
+  .flagship-page .fp-heroArt--msk .msk-dashboard-mockup__row > :nth-child(n + 4) { display: none; }
   /* Consequential labels stay small but no longer fall below a readable 12px
      floor on the phone layouts used in the recruiter audit. */
   .rp-heroEvidence dt,
@@ -3857,12 +3896,52 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-progress__label span { font-size: .55rem; letter-spacing: .12em; text-transform: uppercase; }
 .rp-progress--numeric .rp-progress__label { padding-right: .2rem; }
 
-/* Below the tablet breakpoint the sticky chapter strip already occupies the
-   orientation job, and screen edges are too tight for a second marker. */
-@media (max-width: 900px) { .rp-progress { display: none; } }
+/* Below the tablet breakpoint the screen edges are too tight for the fixed
+   rail, so the length cue moves into the sticky chapter strip: the number
+   alone, pinned to the strip's right end (CaseStudyChapters renders it with
+   variant="strip"). On wide screens the strip copy stays hidden. */
+.rp-progress--strip { display: none; }
+/* Fits "100% left" in the strip's type. Shared by the cue and the fade. */
+.rp-chapters { --rp-cue-w: 5.6rem; }
+@media (max-width: 900px) {
+  .rp-progress { display: none; }
+  .rp-progress.rp-progress--strip {
+    position: sticky;
+    right: 0;
+    top: auto;
+    z-index: 1;
+    transform: none;
+    display: flex;
+    flex: 0 0 auto;
+    align-self: stretch;
+    justify-content: flex-end;
+    width: var(--rp-cue-w);
+    box-sizing: border-box;
+    margin-left: auto;
+    padding: 0;
+    opacity: 1;
+    visibility: visible;
+    background: var(--paper);
+  }
+  .rp-progress--strip .rp-progress__label { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .rp-progress--strip .rp-progress__label b { display: inline; font-size: .69rem; margin-right: .3em; }
+}
+/* Phones: the strip scrolls sideways and has dropped its right padding (see
+   the .rp-chapters phone block), so the cue carries the gutter itself. */
+@media (max-width: 760px) {
+  .rp-progress.rp-progress--strip {
+    width: calc(var(--rp-cue-w) + var(--sp-gutter));
+    padding-right: var(--sp-gutter);
+  }
+}
 /* The fill is a position readout, not an animation. Reduced motion keeps the
-   value and drops only the reveal transition. */
-@media (prefers-reduced-motion: reduce) { .rp-progress { transition: none; } }
+   value and drops the reveal and fill transitions. */
+@media (prefers-reduced-motion: reduce) {
+  .rp-progress,
+  .rp-progress__fill,
+  .rp-chapters a,
+  .rp-chapters a.is-active { transition: none; }
+}
 
 /* ---------- about: story chapters in the riso system ---------- */
 /* About used to run a riso hero over an older card system: soft cards, its own

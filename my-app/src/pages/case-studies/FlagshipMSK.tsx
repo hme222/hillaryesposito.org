@@ -29,7 +29,7 @@ const CHAPTERS: CaseStudyChapter[] = [
   { id: "msk-workflow", label: "Workflow", note: "A filing queue replaced the workaround" },
   { id: "msk-decisions", label: "Decisions", note: "The simple button was not simple" },
   { id: "msk-redesigns", label: "Redesigns", note: "The same failure, in two more places" },
-  { id: "msk-systems", label: "Background", note: "Why I could see it" },
+  { id: "msk-systems", label: "Context", note: "Why I could see it" },
   { id: "msk-outcomes", label: "Outcomes", note: "Evidence that lasted" },
 ];
 
@@ -210,7 +210,7 @@ export default function FlagshipMSK() {
           Open the 90-second tour
         </button>
       </div>
-      <CaseStudyChapters project="Memorial Sloan Kettering" chapters={CHAPTERS} />
+      <CaseStudyChapters project="Memorial Sloan Kettering" chapters={CHAPTERS} progress />
       <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
 
       <header className="rp-hero fp-hero" id="msk-start" data-language-anchor="msk-start">
@@ -233,7 +233,7 @@ export default function FlagshipMSK() {
             <dl className="rp-heroEvidence" aria-label="MSK case evidence at a glance">
               <div><dt>Role</dt><dd>Service design · process improvement · UX/product</dd></div>
               <div><dt>My contribution</dt><dd>Diagnose · map · validate feasibility · pitch</dd></div>
-              <div><dt>Implementation</dt><dd>Built later by IT and UX after my role changed</dd></div>
+              <div><dt>Implementation</dt><dd>Built later by IT and UX, after I changed roles</dd></div>
               <div><dt>Evidence</dt><dd>Patient-free reconstruction from memory of my current-state documentation</dd></div>
             </dl>
             <a className="rp-cta" href="#msk-workflow">See the workflow →</a>

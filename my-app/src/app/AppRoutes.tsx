@@ -47,7 +47,7 @@ class LazyRouteBoundary extends Component<
                 Reload case study
               </button>
               <a className="not-found__secondary" href="/?scrollTo=projects">
-                Browse selected work →
+                See the selected work →
               </a>
             </div>
           </div>
@@ -77,20 +77,31 @@ function LazyPage({ name, children }: { name: string; children: React.ReactNode 
   );
 }
 
-function ScrollToTop() {
+export function ScrollToTop() {
   const location = useLocation();
   const { pathname, search, key } = location;
   const navigationType = useNavigationType();
   const isFirstRender = useRef(true);
   const lastPath = useRef(pathname);
   const restoringPop = useRef(false);
-  if (navigationType === "POP" && lastPath.current !== pathname) {
-    restoringPop.current = true;
-  }
   // Capture the destination's saved position during render. The new route's
   // scroll listener can otherwise observe the browser's interim top position
   // before the POP restoration effect runs and overwrite the value we need.
   const savedScrollAtRender = Number(safeGet("session", `portfolio-scroll:${pathname}`) || 0);
+  // A reload or a discarded tab coming back is the first render of this
+  // history entry with the same path. scrollRestoration is manual, so put the
+  // reader back where they were unless a hash or ?scrollTo= asks for a section.
+  // Decided once, on the very first render, so a later re-render can't flip it
+  // and cancel the restore loop through the effect cleanup.
+  const firstRenderRestore = useRef<boolean | null>(null);
+  if (firstRenderRestore.current === null) {
+    firstRenderRestore.current =
+      !location.hash && !new URLSearchParams(search).has("scrollTo") && savedScrollAtRender > 0;
+  }
+  const restoreOnFirstRender = isFirstRender.current && firstRenderRestore.current;
+  if ((navigationType === "POP" && lastPath.current !== pathname) || restoreOnFirstRender) {
+    restoringPop.current = true;
+  }
 
   useEffect(() => {
     const previous = window.history.scrollRestoration;
@@ -125,7 +136,7 @@ function ScrollToTop() {
     // When landing on a section (?scrollTo=...), let the page position itself
     // instead of resetting to the top and fighting that scroll.
     if (params.has("scrollTo")) return;
-    if (pathChanged && navigationType === "POP") {
+    if ((pathChanged && navigationType === "POP") || (wasFirstRender && firstRenderRestore.current)) {
       const saved = savedScrollAtRender;
       // Images and lazy case-study bundles can grow the document after the
       // first paint. Keep restoring the same history entry until the requested

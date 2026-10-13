@@ -2178,6 +2178,9 @@ textarea::placeholder {
 @media (prefers-reduced-motion: no-preference) {
   .msk-dashboard-mockup__row { transition: background 0.3s ease, box-shadow 0.3s ease; }
 }
+@media (prefers-reduced-motion: reduce) {
+  .msk-dashboard-mockup__row { transition: none; }
+}
 @media (forced-colors: active) {
   .msk-dashboard-mockup__row.is-active { outline: 2px solid Highlight; outline-offset: -2px; }
 }

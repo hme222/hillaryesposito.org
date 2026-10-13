@@ -314,7 +314,7 @@ const es: Partial<Record<StringKey, string>> = {
     "En un hackathon de NYPL, Jacqueline Gordon y yo usamos datos de MTA y NYC Open Data para crear un prototipo funcional que verifica el acceso al metro por plataforma y dirección, además de las rampas cercanas.",
   "home.dispatch.findingLabel": "Lo que revelaron los datos",
   "home.dispatch.finding":
-    "Un viaje hereda el riesgo de cada parada en la que se detiene: ocho andenes accesibles en una sola dirección ponen en riesgo el viaje de regreso de 22.937 de los 77.236 viajes programados del sistema.",
+    "Un viaje hereda el riesgo de cada parada en la que se detiene: ocho andenes accesibles en una sola dirección ponen en riesgo el viaje de regreso de 22,937 de los 77,236 viajes programados del sistema.",
   "home.dispatch.role":
     "Jacqueline dirigió las funciones de accesibilidad. Yo dirigí la estrategia de producto, la lógica de datos y el prototipado en código asistido por IA.",
   "home.dispatch.ruleLabel": "La regla del producto",
@@ -347,7 +347,7 @@ const es: Partial<Record<StringKey, string>> = {
   // ── Home: proof stats ──
   "home.stat.patterns": "Pantallas documentadas por app, en tres apps financieras",
   "home.stat.research": "Personas encuestadas antes de diseñar nada",
-  "home.stat.scale": "Clínicos y personal administrativo en los flujos incluidos en el alcance",
+  "home.stat.scale": "Personal clínico y administrativo en los flujos incluidos",
   "home.stat.logistics": "Reabastecimiento médico más rápido en siete estaciones de ayuda",
   "home.stat.mobbinSource": "Estudio de patrones de Mobbin",
   "home.stat.groveSource": "Investigación de descubrimiento de Grove",
@@ -367,7 +367,9 @@ const es: Partial<Record<StringKey, string>> = {
   "home.proj.mobbin.subtitle": "Mobbin · Documentación freelance de flujos UX",
   "home.proj.grove.title": "Once funciones se convirtieron en tres",
   "home.proj.msk.title": "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas",
-  "home.proj.logistics.title": "Tiempo de reabastecimiento médico reducido un 85%",
+  // Same wording as the Spanish case-study title. "Tiempo de reabastecimiento
+  // médico reducido" left "médico" alone on its own line at 320, 375 and 1280.
+  "home.proj.logistics.title": "El reabastecimiento médico tardó un\u00a085%\u00a0menos",
   "home.proj.knowunity.title": "Say It Back: recuerdo activo por voz",
   "home.proj.mobbin.title": "Más de 200 pantallas por app, buscables por tarea",
 

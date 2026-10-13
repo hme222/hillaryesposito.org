@@ -93,7 +93,7 @@ export default function FlagshipLogistics() {
           Open the 90-second tour
         </button>
       </div>
-      <CaseStudyChapters project="Medical logistics" chapters={CHAPTERS} />
+      <CaseStudyChapters project="Medical logistics" chapters={CHAPTERS} progress />
       <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
 
       <header className="rp-hero fp-hero" id="log-start">

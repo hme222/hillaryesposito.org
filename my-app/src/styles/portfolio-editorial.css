@@ -530,7 +530,9 @@
 }
 
 @media (max-width: 760px) {
-  .site-footer { padding-bottom: 6.5rem; }
+  /* The dark base row ends the page. The old 6.5rem cleared a bottom-docked
+     nav that now sits at the top, and left an empty band under the footer. */
+  .site-footer { padding-bottom: 0; }
   .site-footer__grid { grid-template-columns: 1fr 1fr; }
   .site-footer--compact .site-footer__grid { grid-template-columns: 1fr 1fr; }
   .site-footer__lead { grid-column: 1 / -1; }

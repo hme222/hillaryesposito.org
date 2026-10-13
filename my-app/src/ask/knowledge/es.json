@@ -27,7 +27,7 @@
   {
    "id": "es:es-msk-brief:0",
    "lang": "es",
-   "text": "El trabajo no era hacer pantallas bonitas. Era entender dónde fallaba el flujo real, alinear a clínicos, líderes e IT, y cambiar herramientas que las personas usaban bajo presión.",
+   "text": "El trabajo no era hacer pantallas bonitas. Era entender dónde fallaba el flujo real, alinear a clínicos, líderes y TI, y cambiar herramientas que las personas usaban bajo presión.",
    "source": {
     "type": "page",
     "label": "Estudio de caso MSK · Diseñar para sistemas donde el error tiene consecuencias",
@@ -379,7 +379,7 @@
   {
    "id": "es:es-grove-research:1",
    "lang": "es",
-   "text": "Emergent había construido las funciones sociales dentro de la app. La encuesta dijo que no es por eso que la gente la descarga. Así que hice una pregunta difícil: “Si Grove solo pudiera lanzarse con TRES funciones, ¿cuáles no podrías dejar de tener?” El rediseño empieza por esas tres. Todo lo demás espera.",
+   "text": "Emergent había construido las funciones sociales dentro de la app. La encuesta dijo que no es por eso que la gente la descarga. Así que hice una pregunta difícil: “Si Grove solo pudiera lanzarse con TRES funciones, ¿cuáles no podría dejar de tener?” El rediseño empieza por esas tres. Todo lo demás espera.",
    "source": {
     "type": "page",
     "label": "Estudio de caso Grove · Les pregunté a 34 dueños de plantas qué importa de verdad",
@@ -434,7 +434,7 @@
   {
    "id": "es:es-grove-decisions:0",
    "lang": "es",
-   "text": "Otras apps meten todas las plantas en una sola lista larga. Abruma — ¿por dónde empiezas? Grove agrupa las plantas por dónde viven: la ventana de la cocina, el estante de la sala, la recámara. Cada pantalla responde una sola pregunta: ¿qué grupo estoy viendo? Un usuario nuevo solo ve una tarea al día.",
+   "text": "Otras apps meten todas las plantas en una sola lista larga. Abruma — ¿por dónde empieza? Grove agrupa las plantas por dónde viven: la ventana de la cocina, el estante de la sala, la recámara. Cada pantalla responde una sola pregunta: ¿qué grupo estoy viendo? Un usuario nuevo solo ve una tarea al día.",
    "source": {
     "type": "page",
     "label": "Estudio de caso Grove · Agrupé las plantas por dónde viven, no en una sola lista larga",
@@ -456,7 +456,7 @@
   {
    "id": "es:es-grove-decisions:2",
    "lang": "es",
-   "text": "Esa quinta es la que estoy diseñando ahora. La IA armó un calendario de riego: cada planta con su intervalo fijo. Pero regar de más mata más plantas de interior que olvidarlas, y un intervalo fijo es justo como pasa. El recordatorio va a pedirte que revises, no que riegues: “Ficus lirado — revisa la primera pulgada de tierra.” Mi propia guía de cuidado ya lo decía; el motor de recordatorios no se había puesto al día.",
+   "text": "Esa quinta es la que estoy diseñando ahora. La IA armó un calendario de riego: cada planta con su intervalo fijo. Pero regar de más mata más plantas de interior que olvidarlas, y un intervalo fijo es justo como pasa. El recordatorio le va a pedir que revise, no que riegue: “Ficus lirado — revise la primera pulgada de tierra.” Mi propia guía de cuidado ya lo decía; el motor de recordatorios no se había puesto al día.",
    "source": {
     "type": "page",
     "label": "Estudio de caso Grove · Agrupé las plantas por dónde viven, no en una sola lista larga",
@@ -467,7 +467,7 @@
   {
    "id": "es:es-grove-override:0",
    "lang": "es",
-   "text": "Cuando todo sale bien, cualquier app se ve bien. La prueba real son los momentos difíciles: la pantalla vacía, cuando la IA no está segura, volver después de varios días sin que te haga sentir culpa, la advertencia de una planta tóxica para mascotas, y el tono de los recordatorios. Esos detalles deciden si la app se siente útil o estresante.",
+   "text": "Cuando todo sale bien, cualquier app se ve bien. La prueba real son los momentos difíciles: la pantalla vacía, cuando la IA no está segura, volver después de varios días sin que le haga sentir culpa, la advertencia de una planta tóxica para mascotas, y el tono de los recordatorios. Esos detalles deciden si la app se siente útil o estresante.",
    "source": {
     "type": "page",
     "label": "Estudio de caso Grove · El producto se decide en los momentos difíciles",

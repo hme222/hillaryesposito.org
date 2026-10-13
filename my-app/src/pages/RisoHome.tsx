@@ -262,7 +262,7 @@ export default function RisoHome() {
       <div>
         <p className="rp-work__n">
           {work.n}
-          {work.tagKey && <PhaseIndicator current={2} label={t(work.tagKey)} compact />}
+          {work.tagKey && <PhaseIndicator current={2} label={t(work.tagKey)} />}
         </p>
         <p className="rp-work__title">{t(work.titleKey)}</p>
         <p className="rp-work__sub">{t(work.subKey)}</p>

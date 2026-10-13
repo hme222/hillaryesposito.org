@@ -11,7 +11,7 @@
  *
  * Rules for editing:
  * - Every claim must exist in both locales or in neither. The numbers are
- *   identical; only the separators localise (22.937 vs 22,937 style).
+ *   identical, and Spanish uses the Latin American comma separator (22,937).
  * - Spanish avoids gendering the first person. Verbs carry the meaning
  *   ("rediseñé", "mapeé") so no adjective has to pick a gender.
  * - Diagram labels live here too. A Spanish reader should not meet English
@@ -194,7 +194,7 @@ const en: MskCopy = {
     { id: "msk-workflow", label: "Workflow", note: "A filing queue replaced the workaround" },
     { id: "msk-decisions", label: "Decisions", note: "The simple button was not simple" },
     { id: "msk-redesigns", label: "Redesigns", note: "The same failure, in two more places" },
-    { id: "msk-systems", label: "Background", note: "Why I could see it" },
+    { id: "msk-systems", label: "Context", note: "Why I could see it" },
     { id: "msk-outcomes", label: "Outcomes", note: "Evidence that lasted" },
   ],
 

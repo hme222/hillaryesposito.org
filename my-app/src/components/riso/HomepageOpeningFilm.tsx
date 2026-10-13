@@ -13,7 +13,7 @@ const EXIT_MS = 340;
 // before that timer fired, so visitors got a 7s still and no film).
 // START_GUARD_MS closes the overlay if playback hasn't begun; once it has,
 // the clip gets its own remaining length plus PLAY_GRACE_MS.
-const START_GUARD_MS = 2500;
+const START_GUARD_MS = 1200;
 const PLAY_GRACE_MS = 1000;
 const PLAY_FALLBACK_MS = 6000;
 // H.264 with the moov atom up front, so playback starts mid-download and

@@ -82,7 +82,7 @@ export default function FlagshipMobbin() {
           Open the 90-second tour
         </button>
       </div>
-      <CaseStudyChapters project="Mobbin" chapters={CHAPTERS} />
+      <CaseStudyChapters project="Mobbin" chapters={CHAPTERS} progress />
       <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
 
       <header className="rp-hero fp-hero" id="mobbin-start" data-language-anchor="mobbin-start">

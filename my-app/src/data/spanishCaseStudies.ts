@@ -28,7 +28,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
       title: "Les pregunté a 34 dueños de plantas qué importa de verdad",
       body: [
         "Después de que una prueba con 5 usuarios mostró que la primera versión estaba sobrecargada, hice una encuesta para decidir qué debía conservar el rediseño. 34 personas, desde principiantes hasta coleccionistas serios, respondieron entre el 22 de mayo y el 8 de julio de 2026.",
-        "Emergent había construido las funciones sociales dentro de la app. La encuesta dijo que no es por eso que la gente la descarga. Así que hice una pregunta difícil: “Si Grove solo pudiera lanzarse con TRES funciones, ¿cuáles no podrías dejar de tener?” El rediseño empieza por esas tres. Todo lo demás espera.",
+        "Emergent había construido las funciones sociales dentro de la app. La encuesta dijo que no es por eso que la gente la descarga. Así que hice una pregunta difícil: “Si Grove solo pudiera lanzarse con TRES funciones, ¿cuáles no podría dejar de tener?” El rediseño empieza por esas tres. Todo lo demás espera.",
         "Límite de la evidencia: la encuesta registra prioridades declaradas. La usé para decidir qué construir y probar después, no para afirmar comportamiento observado ni demanda de mercado.",
       ],
       bullets: [
@@ -42,9 +42,9 @@ export const GROVE_ES: SpanishCaseStudyData = {
       eyebrow: "Producto",
       title: "Agrupé las plantas por dónde viven, no en una sola lista larga",
       body: [
-        "Otras apps meten todas las plantas en una sola lista larga. Abruma — ¿por dónde empiezas? Grove agrupa las plantas por dónde viven: la ventana de la cocina, el estante de la sala, la recámara. Cada pantalla responde una sola pregunta: ¿qué grupo estoy viendo? Un usuario nuevo solo ve una tarea al día.",
+        "Otras apps meten todas las plantas en una sola lista larga. Abruma — ¿por dónde empieza? Grove agrupa las plantas por dónde viven: la ventana de la cocina, el estante de la sala, la recámara. Cada pantalla responde una sola pregunta: ¿qué grupo estoy viendo? Un usuario nuevo solo ve una tarea al día.",
         "También anoté las cuatro decisiones donde le dije que no a la IA: el tono que hace sentir culpa, las recompensas tipo juego, la falsa certeza al identificar una planta y la seguridad para mascotas. Cada una respaldada por lo que dijo la encuesta. La quinta es un error mío: la lógica del calendario de riego, que todavía estoy corrigiendo.",
-        "Esa quinta es la que estoy diseñando ahora. La IA armó un calendario de riego: cada planta con su intervalo fijo. Pero regar de más mata más plantas de interior que olvidarlas, y un intervalo fijo es justo como pasa. El recordatorio va a pedirte que revises, no que riegues: “Ficus lirado — revisa la primera pulgada de tierra.” Mi propia guía de cuidado ya lo decía; el motor de recordatorios no se había puesto al día.",
+        "Esa quinta es la que estoy diseñando ahora. La IA armó un calendario de riego: cada planta con su intervalo fijo. Pero regar de más mata más plantas de interior que olvidarlas, y un intervalo fijo es justo como pasa. El recordatorio le va a pedir que revise, no que riegue: “Ficus lirado — revise la primera pulgada de tierra.” Mi propia guía de cuidado ya lo decía; el motor de recordatorios no se había puesto al día.",
       ],
     },
     {
@@ -52,7 +52,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
       eyebrow: "Cuando algo sale mal",
       title: "El producto se decide en los momentos difíciles",
       body: [
-        "Cuando todo sale bien, cualquier app se ve bien. La prueba real son los momentos difíciles: la pantalla vacía, cuando la IA no está segura, volver después de varios días sin que te haga sentir culpa, la advertencia de una planta tóxica para mascotas, y el tono de los recordatorios. Esos detalles deciden si la app se siente útil o estresante.",
+        "Cuando todo sale bien, cualquier app se ve bien. La prueba real son los momentos difíciles: la pantalla vacía, cuando la IA no está segura, volver después de varios días sin que le haga sentir culpa, la advertencia de una planta tóxica para mascotas, y el tono de los recordatorios. Esos detalles deciden si la app se siente útil o estresante.",
       ],
     },
     {
@@ -89,7 +89,7 @@ export const MSK_ES: SpanishCaseStudyData = {
       eyebrow: "Contexto",
       title: "Diseñar para sistemas donde el error tiene consecuencias",
       body: [
-        "El trabajo no era hacer pantallas bonitas. Era entender dónde fallaba el flujo real, alinear a clínicos, líderes e IT, y cambiar herramientas que las personas usaban bajo presión.",
+        "El trabajo no era hacer pantallas bonitas. Era entender dónde fallaba el flujo real, alinear a clínicos, líderes y TI, y cambiar herramientas que las personas usaban bajo presión.",
       ],
     },
     {

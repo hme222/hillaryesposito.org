@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-export type ProgressVariant = "chapters" | "rail" | "numeric";
+export type ProgressVariant = "chapters" | "rail" | "numeric" | "strip";
 
 /**
  * How much of this case study is left.
@@ -16,6 +16,9 @@ export type ProgressVariant = "chapters" | "rail" | "numeric";
  *    flattened into equal slices.
  *  - "rail" — fill and percentage, no structure.
  *  - "numeric" — the percentage alone.
+ *  - "strip" — the percentage alone, set inline at the end of the phone
+ *    chapter strip (CaseStudyChapters), where the fixed rail has no room.
+ *    Always visible, so the strip's width never jumps when it appears.
  *
  * aria-hidden throughout: scroll position is not actionable, and announcing a
  * changing percentage on every scroll event would be pure noise. The chapter
@@ -23,19 +26,22 @@ export type ProgressVariant = "chapters" | "rail" | "numeric";
  */
 /**
  * @status: stable
- * @purpose: Renders a decorative, aria-hidden reading-progress indicator (chapter rail, fill bar, or numeric percentage) showing how much of a long case-study page remains; used on the Navbar and the MSK/Mobbin/logistics/Grove case study pages. Pick this for continuous scroll position — for a discrete named-phase count (e.g. "Phase 2 of 3") use PhaseIndicator instead.
+ * @purpose: Renders a decorative, aria-hidden reading-progress indicator (chapter rail, fill bar, numeric percentage, or the "strip" percentage set inside the phone chapter strip by CaseStudyChapters) showing how much of a long case-study page remains; used on the MSK/Mobbin/logistics/Grove case study pages. Pick this for continuous scroll position — for a discrete named-phase count (e.g. "Phase 2 of 3") use PhaseIndicator instead.
  */
 export default function ReadingProgress({
   variant = "chapters",
   chapterIds = [],
+  leftLabel = "left",
 }: {
   variant?: ProgressVariant;
   chapterIds?: string[];
+  leftLabel?: string;
 }) {
   const [read, setRead] = useState(0);
   const [shown, setShown] = useState(false);
   const [ticks, setTicks] = useState<number[]>([]);
   const frame = useRef(0);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   // Tick positions are absolute document offsets: they do not change while
   // scrolling, only when the layout does. Measuring them per frame meant a
@@ -62,7 +68,18 @@ export default function ReadingProgress({
   useEffect(() => {
     const measure = () => {
       const doc = document.documentElement;
-      const max = doc.scrollHeight - window.innerHeight;
+      let max = doc.scrollHeight - window.innerHeight;
+      // The strip copy rides inside the sticky chapter strip, which scrolls
+      // away with the end of the case-study content, before the footer. Count
+      // to that point so the last value a reader can see is "0% left".
+      const strip = variant === "strip" ? rootRef.current?.closest<HTMLElement>(".rp-chapters") : null;
+      const container = strip?.parentElement;
+      if (strip && container) {
+        const stickyTop = parseFloat(getComputedStyle(strip).top) || 0;
+        const releaseAt =
+          container.getBoundingClientRect().bottom + window.scrollY - stickyTop - strip.offsetHeight;
+        if (releaseAt > 0) max = Math.min(max, releaseAt);
+      }
       setRead(max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0);
       // Reveal only once the opening composition is behind the reader — the
       // same rule the other utility controls follow.
@@ -83,16 +100,17 @@ export default function ReadingProgress({
       window.removeEventListener("resize", measure);
       if (frame.current) window.cancelAnimationFrame(frame.current);
     };
-  }, []);
+  }, [variant]);
 
   const left = Math.max(0, Math.round((1 - read) * 100));
 
   return (
     <div
+      ref={rootRef}
       className={`rp-progress rp-progress--${variant}${shown ? " is-shown" : ""}`}
       aria-hidden="true"
     >
-      {variant !== "numeric" && (
+      {variant !== "numeric" && variant !== "strip" && (
         <div className="rp-progress__track">
           <div className="rp-progress__fill" style={{ transform: `scaleY(${read})` }} />
           {variant === "chapters" &&
@@ -103,7 +121,7 @@ export default function ReadingProgress({
       )}
       <p className="rp-progress__label">
         <b>{left}%</b>
-        <span>left</span>
+        <span>{leftLabel}</span>
       </p>
     </div>
   );

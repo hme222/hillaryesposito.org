@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import ReadingProgress from "./ReadingProgress";
 
 export type CaseStudyChapter = {
   id: string;
@@ -27,13 +28,21 @@ export default function CaseStudyChapters({
   chapters,
   ariaLabel,
   jumpLabel = "Jump to",
+  leftLabel = "left",
+  progress = false,
 }: {
   project: string;
   chapters: CaseStudyChapter[];
   ariaLabel?: string;
   jumpLabel?: string;
+  /** Word after the phone length cue's percentage ("NN% left"). */
+  leftLabel?: string;
+  /** Show the "NN% left" length cue at the strip's end below 900px. Pages
+      that carry the fixed ReadingProgress rail on desktop turn this on. */
+  progress?: boolean;
 }) {
   const [active, setActive] = useState<string>("");
+  const [atEnd, setAtEnd] = useState(false);
   const activeLockUntil = useRef(0);
   const stripRef = useRef<HTMLElement>(null);
   const jumpTimers = useRef<number[]>([]);
@@ -106,18 +115,43 @@ export default function CaseStudyChapters({
 
   // On phones the strip scrolls sideways; keep the current chapter visible in
   // it. Scrolls the strip only, never the page.
+  // Back above the first linked chapter there is no active link; return the
+  // strip to its start so it reads from the beginning again.
   useEffect(() => {
     const strip = stripRef.current;
-    const link = strip?.querySelector<HTMLElement>("a.is-active");
-    if (!strip || !link || strip.scrollWidth <= strip.clientWidth) return;
+    if (!strip || strip.scrollWidth <= strip.clientWidth) return;
+    const link = strip.querySelector<HTMLElement>("a.is-active");
+    if (!link) {
+      strip.scrollLeft = 0;
+      return;
+    }
     const left = link.offsetLeft - strip.offsetLeft;
     if (left < strip.scrollLeft || left + link.offsetWidth > strip.scrollLeft + strip.clientWidth) {
       strip.scrollLeft = Math.max(0, left - 16);
     }
   }, [active]);
 
+  // The phone strip fades at its right edge to show it scrolls; the fade goes
+  // once the last chapter is fully in view.
+  useEffect(() => {
+    const strip = stripRef.current;
+    if (!strip) return;
+    const check = () => setAtEnd(strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 2);
+    check();
+    strip.addEventListener("scroll", check, { passive: true });
+    window.addEventListener("resize", check);
+    return () => {
+      strip.removeEventListener("scroll", check);
+      window.removeEventListener("resize", check);
+    };
+  }, [chapters]);
+
   return (
-    <nav ref={stripRef} className="rp-chapters" aria-label={ariaLabel || `${project} case study chapters`}>
+    <nav
+      ref={stripRef}
+      className={`rp-chapters${atEnd ? " is-at-end" : ""}`}
+      aria-label={ariaLabel || `${project} case study chapters`}
+    >
       <span>{jumpLabel}</span>
       {chapters.slice(1).map((chapter) => (
         <a
@@ -140,6 +174,9 @@ export default function CaseStudyChapters({
           {current.note}
         </em>
       )}
+      {/* Phones and tablets: the fixed rail is hidden there, so the length cue
+          rides at the strip's right end instead. Hidden on wide screens. */}
+      {progress && <ReadingProgress variant="strip" leftLabel={leftLabel} />}
     </nav>
   );
 }

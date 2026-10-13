@@ -58,11 +58,20 @@ const MVP_FEATURES = [
   { feature: "Wishlist tracker", pct: 3, tier: "post" },
 ];
 
-const OUTCOMES = [
+// The full five-call decision table ("All five calls, in full") is off the
+// page for now - owner's call, 2026-10-13; she is reworking it and will add it
+// back in the next few weeks. Flip this to true to restore it. The OVERRIDES
+// data below stays intact for that. While it is off, the "5 product calls"
+// outcome tile hides too: pet safety appears nowhere else on the page, so the
+// five calls would not all be visible to back the number.
+const SHOW_DECISION_TABLE = false;
+
+const OUTCOMES: Array<{ n: string; l: string; needsDecisionTable?: boolean }> = [
   { n: "34", l: "plant owners surveyed before any screen changed" },
   { n: "3", l: "features that earn the download; everything else waits" },
-  { n: "5", l: "product calls made explicit, including one care-logic mistake" },
+  { n: "5", l: "product calls made explicit, including one care-logic mistake", needsDecisionTable: true },
 ];
+const VISIBLE_OUTCOMES = OUTCOMES.filter((o) => SHOW_DECISION_TABLE || !o.needsDecisionTable);
 
 const SCREENS = [
   { src: "grove-live-collection.jpg", cap: "Your collection", bg: "#f5f0ea" },
@@ -239,7 +248,7 @@ export default function RisoGrove() {
         </button>
       </div>
 
-      <CaseStudyChapters project="Grove" chapters={CHAPTERS} />
+      <CaseStudyChapters project="Grove" chapters={CHAPTERS} progress />
       <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
 
       {/* HERO */}
@@ -433,22 +442,26 @@ export default function RisoGrove() {
             <div><dt>Boundary</dt><dd>Faster output is not evidence. Uncertain recommendations still need confidence, sources, and human review.</dd></div>
           </dl>
 
-          <h3 className="rp-subhead">All five calls, in full</h3>
-          <div className="rp-accordion rp-reveal" data-evidence="true">
-            {OVERRIDES.map((o, i) => (
-              <details className="rp-acc" key={o.topic}>
-                <summary>
-                  <span className="rp-acc__num">{String(i + 1).padStart(2, "0")}</span> {o.topic}
-                  {o.next && <span className="rp-acc__next">designing now</span>}
-                </summary>
-                <div className="rp-acc__body">
-                  <p className="rp-acc__line rp-acc__ai"><b>First build</b>{o.ai}</p>
-                  <p className="rp-acc__line rp-acc__me"><b>Next design</b>{o.me}</p>
-                  <p className="rp-acc__why">{o.why}</p>
-                </div>
-              </details>
-            ))}
-          </div>
+          {SHOW_DECISION_TABLE && (
+            <>
+              <h3 className="rp-subhead">All five calls, in full</h3>
+              <div className="rp-accordion rp-reveal" data-evidence="true">
+                {OVERRIDES.map((o, i) => (
+                  <details className="rp-acc" key={o.topic}>
+                    <summary>
+                      <span className="rp-acc__num">{String(i + 1).padStart(2, "0")}</span> {o.topic}
+                      {o.next && <span className="rp-acc__next">designing now</span>}
+                    </summary>
+                    <div className="rp-acc__body">
+                      <p className="rp-acc__line rp-acc__ai"><b>First build</b>{o.ai}</p>
+                      <p className="rp-acc__line rp-acc__me"><b>Next design</b>{o.me}</p>
+                      <p className="rp-acc__why">{o.why}</p>
+                    </div>
+                  </details>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </section>
 
@@ -524,8 +537,11 @@ export default function RisoGrove() {
             Confidence, provenance, and review states make uncertainty actionable. Plants are the low-stakes practice ground.
           </p>
           <p className="rp-disclaimer">No invented numbers · Grove is a functional prototype, Phase 2 of 3</p>
-          <div className="rp-outcomes rp-reveal" data-evidence="true">
-            {OUTCOMES.map((o) => (
+          <div
+            className={`rp-outcomes rp-reveal${VISIBLE_OUTCOMES.length === 2 ? " rp-outcomes--two" : ""}`}
+            data-evidence="true"
+          >
+            {VISIBLE_OUTCOMES.map((o) => (
               <div className="rp-stat" key={o.n}>
                 <p className="rp-stat__n">{o.n}</p>
                 <p className="rp-stat__l">{o.l}</p>
