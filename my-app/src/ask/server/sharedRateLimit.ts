@@ -58,13 +58,16 @@ export function createSharedLimiter(opts: SharedLimitOptions = {}) {
       const res = await doFetch(`${url}/pipeline`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+        // No "NX" on EXPIRE: it needs Redis 7, and on an older server the
+        // option errors while INCR still succeeds, so keys would never expire.
+        // Key names already change every window, so re-setting a TTL is harmless.
         body: JSON.stringify([
           ["INCR", minuteKey],
-          ["EXPIRE", minuteKey, String(MINUTE_S * 2), "NX"],
+          ["EXPIRE", minuteKey, String(MINUTE_S * 2)],
           ["INCR", dayKey],
-          ["EXPIRE", dayKey, String(DAY_S * 2), "NX"],
+          ["EXPIRE", dayKey, String(DAY_S * 2)],
           ["INCR", globalKey],
-          ["EXPIRE", globalKey, String(DAY_S * 2), "NX"],
+          ["EXPIRE", globalKey, String(DAY_S * 2)],
         ]),
         signal: controller.signal,
       });
