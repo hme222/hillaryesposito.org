@@ -8,7 +8,6 @@ import DecisionStory from "../../components/flagship/DecisionStory";
 import EvidenceField from "../../components/flagship/EvidenceField";
 import MSKFilingReceipt from "../../components/flagship/MSKFilingReceipt";
 import MSKDashboardMockup from "../../components/MSKDashboardMockup";
-import MSKTheDetour from "../../components/MSKTheDetour";
 import MSKServiceBlueprint from "../../components/MSKServiceBlueprint";
 import MSKMechanism from "../../components/MSKMechanism";
 import MSKSustainment from "../../components/MSKSustainment";
@@ -257,10 +256,9 @@ export default function FlagshipMSK() {
               beat instead of a provenance label. */}
           <p className="rp-kicker">So I counted the steps</p>
           <h2 className="rp-title">One map made four departments see the same failure.</h2>
-          <figure className="fp-detourFig rp-reveal">
-            <MSKTheDetour />
-            <figcaption>Deterministic animatic · recreated queue geometry · no patient data</figcaption>
-          </figure>
+          {/* "The Detour" animatic was removed 2026-10-13 at the owner's direction
+              (the deterministic version was rejected at taste review on
+              2026-08-31; the generated video was scrapped the same day). */}
           {/* Said once, as a decision. The short "no patient data" labels elsewhere on
               the page are the reminder; this is the reasoning behind them. */}
           <div className="rp-note rp-reveal">

@@ -110,24 +110,15 @@ describe("flagship case-study accessibility", () => {
     expect(results.violations).toEqual([]);
   });
 
-  it("keeps the MSK teaser decorative while exact workflow evidence remains adjacent", async () => {
+  it("keeps the exact MSK workflow evidence with no Detour animatic", async () => {
     await act(async () => {
       root.render(<FlagshipMSK />);
     });
 
-    const detour = container.querySelector("[data-testid='msk-the-detour']");
+    // The Detour animatic was removed 2026-10-13 (owner direction).
     const exactSteps = container.querySelector(".fp-workflow[data-evidence='true']");
-
-    expect(detour).not.toBeNull();
-    expect(detour?.querySelector(".fp-detour__stage")?.getAttribute("aria-hidden")).toBe("true");
-    expect(detour?.textContent).toContain("Ready to send");
-    expect(detour?.textContent).toContain("Send to EMR");
-    expect(detour?.textContent).toContain("Filed · status updated");
-    expect(detour?.textContent).toContain("The “simple” button");
-    expect(detour?.textContent).not.toContain("Office Coordinator filing queue");
-    expect(detour?.textContent).not.toContain("Signed consent");
+    expect(container.querySelector("[data-testid='msk-the-detour']")).toBeNull();
     expect(container.querySelector(".fp-workflowFilm")).toBeNull();
-    expect(container.querySelector(".fp-workflowFilm video")).toBeNull();
     expect(exactSteps?.textContent).toContain("Print the digital record");
     expect(exactSteps?.textContent).toContain("Choose Send to EMR");
   });
@@ -390,19 +381,17 @@ describe("flagship case-study accessibility", () => {
     expect(container.textContent).not.toMatch(/decision trace/i);
   });
 
-  // Owner rejected both the generated workflow film and static registered peel,
-  // then approved the no-credit, user-controlled "The Detour" animatic. The
-  // ordered lists remain the evidence; the stage is only a visual hook.
-  it("MSK uses the user-controlled Detour animatic without generated media", async () => {
+  // Owner rejected the generated workflow film and the static registered peel,
+  // then removed "The Detour" animatic too (2026-10-13). The ordered lists are
+  // the workflow evidence on their own.
+  it("MSK carries no workflow film, peel, or Detour animatic", async () => {
     await act(async () => {
       root.render(<FlagshipMSK />);
     });
 
     expect(container.querySelector(".fp-workflowFilm")).toBeNull();
     expect(container.querySelector(".fp-routingPeelFig")).toBeNull();
-    expect(container.querySelector("[data-testid='msk-the-detour']")).not.toBeNull();
-    expect(container.querySelector("[data-testid='msk-the-detour'] video")).toBeNull();
-    expect(container.querySelector("button[aria-label^='Play The Detour']")).not.toBeNull();
+    expect(container.querySelector("[data-testid='msk-the-detour']")).toBeNull();
     expect(container.querySelector(".fp-workflow[data-evidence='true']")).not.toBeNull();
   });
 

@@ -100,7 +100,7 @@ HTML = """<!doctype html>
     <section aria-labelledby="healthcare-heading">
       <h2 id="healthcare-heading">Healthcare systems and workflow experience</h2>
       <article aria-labelledby="trainer-role">
-        <h3 id="trainer-role">Trainer / Specialist · Memorial Sloan Kettering Cancer Center</h3>
+        <h3 id="trainer-role">Trainer I Specialist · Memorial Sloan Kettering Cancer Center</h3>
         <p class="meta">New York, NY · January 2022–July 2024</p>
         <ul>
           <li>Rebuilt administrative onboarding across Epic, HIPAA, compliance, and role-specific workflows for a 21,000+ person organization.</li>

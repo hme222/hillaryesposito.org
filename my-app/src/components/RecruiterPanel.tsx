@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Modal from "./Modal";
 import { FileTextIcon, MailIcon, BriefcaseIcon, UserIcon, XIcon } from "./LineIcons";
 import AskBirdIcon from "./ask/AskBirdIcon";
+import { ASK_ENABLED } from "./ask/askEnabled";
 
 /**
  * A slide-out panel with a 90-second project breakdown. It has no trigger of
@@ -120,7 +121,7 @@ export default function RecruiterPanel() {
                onClick={() => go("/about")}>
               <UserIcon className="recruiter-panel__btn-icon" /> About me
             </button>
-            <button type="button" className="recruiter-panel__btn"
+            {ASK_ENABLED && <button type="button" className="recruiter-panel__btn"
                onClick={() => {
                  // Close this panel and hand the Ask dialog the same
                  // return-focus target this panel was given - see
@@ -133,7 +134,7 @@ export default function RecruiterPanel() {
                  );
                }}>
               <AskBirdIcon className="recruiter-panel__btn-icon recruiter-panel__btn-icon--bird" /> Ask a question
-            </button>
+            </button>}
           </section>
 
           <section className="recruiter-panel__section">

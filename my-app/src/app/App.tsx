@@ -10,6 +10,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import RecruiterPanel from "../components/RecruiterPanel";
 import AskDialog from "../components/ask/AskDialog";
+import { ASK_ENABLED } from "../components/ask/askEnabled";
 import PortfolioAnalytics from "../analytics/PortfolioAnalytics";
 
 import "../styles/index.css";
@@ -72,7 +73,7 @@ export default function App() {
           <RecruiterPanel />
           {/* After RecruiterPanel on purpose: when its "Ask a question" link
               fires, the panel's close effect runs before this dialog opens. */}
-          <AskDialog />
+          {ASK_ENABLED && <AskDialog />}
         </>
       </Router>
       </AppErrorBoundary>

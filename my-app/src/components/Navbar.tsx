@@ -2,6 +2,7 @@ import React, { Dispatch, SetStateAction, useEffect, useLayoutEffect, useRef, us
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useLanguage, useT } from "../app/LanguageContext";
 import AskBirdNav from "./ask/AskBirdNav";
+import { ASK_ENABLED } from "./ask/askEnabled";
 import NavSettingsPopover from "./NavSettingsPopover";
 
 type NavbarProps = {
@@ -322,9 +323,11 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
               </Link>
             </li>
 
-            <li>
-              <AskBirdNav />
-            </li>
+            {ASK_ENABLED && (
+              <li>
+                <AskBirdNav />
+              </li>
+            )}
 
             <li>
               <NavSettingsPopover darkMode={darkMode} setDarkMode={setDarkMode} />

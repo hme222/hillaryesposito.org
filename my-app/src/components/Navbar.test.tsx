@@ -75,16 +75,18 @@ describe("Navbar (printed route dock)", () => {
     expect(container.querySelector('[aria-label="nav.menuOpen"]')).toBeNull();
   });
 
-  it("renders the dock items in tab order: Home, Work, About, Ask, Settings", async () => {
+  // Ask is switched off (components/ask/askEnabled.ts, 2026-10-13); when it
+  // comes back, its item sits between About and Settings again.
+  it("renders the dock items in tab order: Home, Work, About, Settings", async () => {
     await render();
     const items = Array.from(container.querySelectorAll(".nav-dock__items > li"));
-    expect(items).toHaveLength(5);
+    expect(items).toHaveLength(4);
     expect(items[0].querySelector(".nav-dock__item--home")).not.toBeNull();
     expect(items[1].querySelector("a")?.textContent).toBe("nav.dockWork");
     expect(items[2].querySelector("a")?.getAttribute("href")).toBe("/about");
     expect(items[2].querySelector("a")?.textContent).toBe("nav.dockAbout");
-    expect(items[3].querySelector(".ask-bird-nav")).not.toBeNull();
-    expect(items[4].querySelector(".nav-dock__item--settings")).not.toBeNull();
+    expect(container.querySelector(".ask-bird-nav")).toBeNull();
+    expect(items[3].querySelector(".nav-dock__item--settings")).not.toBeNull();
   });
 
   it("Home and Work are real links, not button-only controls", async () => {

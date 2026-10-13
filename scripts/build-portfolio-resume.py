@@ -329,7 +329,7 @@ def build_resume(output_path, variant="portfolio"):
         role(
             story,
             styles,
-            "Trainer / Specialist",
+            "Trainer I Specialist",
             "Memorial Sloan Kettering Cancer Center",
             "New York, NY | Jan 2022 - Jul 2024",
             [
