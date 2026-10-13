@@ -2480,7 +2480,7 @@
   {
    "id": "en:about-start:1",
    "lang": "en",
-   "text": "I bring 13+ years in cancer-care operations and military medical logistics to healthcare product design. I turn that experience into clearer clinical workflows, internal tools, and end-to-end services that help people act correctly when failure has a cost.",
+   "text": "Thirteen-plus years in cancer-care operations and military medical logistics, now in healthcare product design: clinical workflows and internal tools for the moment a wrong step has a cost.",
    "source": {
     "type": "page",
     "label": "About · I design healthcare products where every handoff matters.",
@@ -2533,67 +2533,23 @@
    "batch": 1
   },
   {
-   "id": "en:about-story:0",
-   "lang": "en",
-   "text": "Designing for the person who has to act on it.",
-   "source": {
-    "type": "page",
-    "label": "About · How I got here.",
-    "url": "/about/#about-story"
-   },
-   "batch": 1
-  },
-  {
-   "id": "en:about-story:1",
-   "lang": "en",
-   "text": "My latest contract mapped and tagged 200+ screens across three finance apps so thousands of designers could find and reuse complete mobile flows.",
-   "source": {
-    "type": "page",
-    "label": "About · How I got here.",
-    "url": "/about/#about-story"
-   },
-   "batch": 1
-  },
-  {
-   "id": "en:about-story:2",
-   "lang": "en",
-   "text": "It sharpened how I compare patterns at scale, document to a strict taxonomy, and examine how products earn belief.",
-   "source": {
-    "type": "page",
-    "label": "About · How I got here.",
-    "url": "/about/#about-story"
-   },
-   "batch": 1
-  },
-  {
-   "id": "en:about-story:3",
-   "lang": "en",
-   "text": "AI accelerates research and prototyping. The judgment and authorship stay mine.",
-   "source": {
-    "type": "page",
-    "label": "About · How I got here.",
-    "url": "/about/#about-story"
-   },
-   "batch": 1
-  },
-  {
-   "id": "en:about-story:4",
+   "id": "en:about-pattern:4",
    "lang": "en",
    "text": "AI moves the work faster. The calls stay mine.",
    "source": {
     "type": "page",
-    "label": "About · How I got here.",
-    "url": "/about/#about-story"
+    "label": "About · I enter complex systems and find where trust breaks.",
+    "url": "/about/#about-pattern"
    },
    "batch": 1
   },
   {
    "id": "en:about-story:5",
    "lang": "en",
-   "text": "02 / 03 WHERE I BUILT MY PRACTICE",
+   "text": "01 / 02 MSK",
    "source": {
     "type": "page",
-    "label": "About · How I got here.",
+    "label": "About · Where it comes from",
     "url": "/about/#about-story"
    },
    "batch": 1
@@ -2601,10 +2557,10 @@
   {
    "id": "en:about-story:6",
    "lang": "en",
-   "text": "Six years at MSK, optimizing internal operations and designing for 21,000+ clinicians and staff.",
+   "text": "Six years at MSK, designing for 21,000+ clinicians and staff.",
    "source": {
     "type": "page",
-    "label": "About · How I got here.",
+    "label": "About · Where it comes from",
     "url": "/about/#about-story"
    },
    "batch": 1
@@ -2615,7 +2571,7 @@
    "text": "I initiated an EMR workflow redesign that contributed within a 20% organization-wide cost reduction. IT and UX built it after I changed roles.",
    "source": {
     "type": "page",
-    "label": "About · How I got here.",
+    "label": "About · Where it comes from",
     "url": "/about/#about-story"
    },
    "batch": 1
@@ -2623,10 +2579,10 @@
   {
    "id": "en:about-story:8",
    "lang": "en",
-   "text": "I also rebuilt CPR certification and administrative onboarding across Epic, HIPAA, and compliance. Operational observation, feedback, and workflow analysis were already the practice—even before I had formal UX vocabulary for it.",
+   "text": "I also rebuilt CPR certification and administrative onboarding across Epic, HIPAA, and compliance.",
    "source": {
     "type": "page",
-    "label": "About · How I got here.",
+    "label": "About · Where it comes from",
     "url": "/about/#about-story"
    },
    "batch": 1
@@ -2637,7 +2593,7 @@
    "text": "Systems fail at the point where a real person has to use them.",
    "source": {
     "type": "page",
-    "label": "About · How I got here.",
+    "label": "About · Where it comes from",
     "url": "/about/#about-story"
    },
    "batch": 1
@@ -2645,10 +2601,10 @@
   {
    "id": "en:about-story:10",
    "lang": "en",
-   "text": "03 / 03 WHERE MY FOUNDATION WAS BUILT",
+   "text": "02 / 02 ARMY",
    "source": {
     "type": "page",
-    "label": "About · How I got here.",
+    "label": "About · Where it comes from",
     "url": "/about/#about-story"
    },
    "batch": 1
@@ -2659,7 +2615,7 @@
    "text": "Captain and Medical Logistics Officer, NJ Army National Guard.",
    "source": {
     "type": "page",
-    "label": "About · How I got here.",
+    "label": "About · Where it comes from",
     "url": "/about/#about-story"
    },
    "batch": 1
@@ -2667,32 +2623,10 @@
   {
    "id": "en:about-story:12",
    "lang": "en",
-   "text": "In Iraq, I directed medical supply across aid stations in three countries, working inside a strict 48-hour cold-chain constraint.",
+   "text": "In Iraq I ran medical supply for aid stations in three countries under a 48-hour cold-chain limit. In 2020 I reported the New Jersey National Guard's COVID-19 medical operations to the Pentagon.",
    "source": {
     "type": "page",
-    "label": "About · How I got here.",
-    "url": "/about/#about-story"
-   },
-   "batch": 1
-  },
-  {
-   "id": "en:about-story:13",
-   "lang": "en",
-   "text": "Shared tracking sharply cut both resupply time and spending. In 2020, I reported New Jersey National Guard medical operations to the Pentagon during the COVID-19 response.",
-   "source": {
-    "type": "page",
-    "label": "About · How I got here.",
-    "url": "/about/#about-story"
-   },
-   "batch": 1
-  },
-  {
-   "id": "en:about-story:14",
-   "lang": "en",
-   "text": "Process failure in a combat zone isn’t an inconvenience. It’s a casualty risk.",
-   "source": {
-    "type": "page",
-    "label": "About · How I got here.",
+    "label": "About · Where it comes from",
     "url": "/about/#about-story"
    },
    "batch": 1
@@ -2720,20 +2654,9 @@
    "batch": 1
   },
   {
-   "id": "en:about-life:0",
-   "lang": "en",
-   "text": "Routines that keep me clear and grounded.",
-   "source": {
-    "type": "page",
-    "label": "About · Running, reading, and Luna the cat.",
-    "url": "/about/#about-life"
-   },
-   "batch": 1
-  },
-  {
    "id": "en:about-life:1",
    "lang": "en",
-   "text": "READING NOW Thinking in Systems, Donella Meadows — the standard text on why systems resist the obvious fix.",
+   "text": "READING NOW Thinking in Systems, Donella Meadows.",
    "source": {
     "type": "page",
     "label": "About · Running, reading, and Luna the cat.",
@@ -2744,7 +2667,7 @@
   {
    "id": "en:about-contact:0",
    "lang": "en",
-   "text": "Open to UX and product design roles in healthcare, mission-driven organizations, and operationally complex environments. Also open to freelance and collaborations.",
+   "text": "Open to UX and product design roles in healthcare and other operationally complex environments, and to freelance work.",
    "source": {
     "type": "page",
     "label": "About · Interested in working together?",

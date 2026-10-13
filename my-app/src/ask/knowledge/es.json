@@ -555,7 +555,7 @@
   {
    "id": "es:about-start:1",
    "lang": "es",
-   "text": "Aporto más de 13 años en operaciones de atención oncológica y logística médica militar al diseño de productos de salud. Convierto esa experiencia en flujos clínicos más claros, herramientas internas y servicios integrales que ayudan a las personas a actuar correctamente cuando una falla tiene un costo.",
+   "text": "Más de trece años en operaciones de atención oncológica y logística médica militar, ahora en diseño de productos de salud: flujos clínicos y herramientas internas para el momento en que un paso equivocado tiene un costo.",
    "source": {
     "type": "page",
     "label": "Sobre mí · Diseño productos de salud donde cada transferencia importa.",
@@ -608,67 +608,23 @@
    "batch": 1
   },
   {
-   "id": "es:about-story:0",
-   "lang": "es",
-   "text": "Diseñar para la persona que tiene que actuar.",
-   "source": {
-    "type": "page",
-    "label": "Sobre mí · Cómo llegué aquí.",
-    "url": "/about/#about-story"
-   },
-   "batch": 1
-  },
-  {
-   "id": "es:about-story:1",
-   "lang": "es",
-   "text": "Mi contrato más reciente mapeó y etiquetó más de 200 pantallas de tres apps financieras para que miles de diseñadores pudieran reutilizar flujos móviles completos.",
-   "source": {
-    "type": "page",
-    "label": "Sobre mí · Cómo llegué aquí.",
-    "url": "/about/#about-story"
-   },
-   "batch": 1
-  },
-  {
-   "id": "es:about-story:2",
-   "lang": "es",
-   "text": "Afinó cómo comparo patrones a escala, documento con una taxonomía estricta y evalúo cómo un producto gana credibilidad.",
-   "source": {
-    "type": "page",
-    "label": "Sobre mí · Cómo llegué aquí.",
-    "url": "/about/#about-story"
-   },
-   "batch": 1
-  },
-  {
-   "id": "es:about-story:3",
-   "lang": "es",
-   "text": "La IA acelera la investigación y los prototipos. El juicio y la autoría siguen siendo míos.",
-   "source": {
-    "type": "page",
-    "label": "Sobre mí · Cómo llegué aquí.",
-    "url": "/about/#about-story"
-   },
-   "batch": 1
-  },
-  {
-   "id": "es:about-story:4",
+   "id": "es:about-pattern:4",
    "lang": "es",
    "text": "La IA acelera el trabajo. Las decisiones siguen siendo mías.",
    "source": {
     "type": "page",
-    "label": "Sobre mí · Cómo llegué aquí.",
-    "url": "/about/#about-story"
+    "label": "Sobre mí · Entro en sistemas complejos y encuentro dónde se rompe la confianza.",
+    "url": "/about/#about-pattern"
    },
    "batch": 1
   },
   {
    "id": "es:about-story:5",
    "lang": "es",
-   "text": "02 / 03 DONDE CONSTRUÍ MI PRÁCTICA",
+   "text": "01 / 02 MSK",
    "source": {
     "type": "page",
-    "label": "Sobre mí · Cómo llegué aquí.",
+    "label": "Sobre mí · De dónde viene",
     "url": "/about/#about-story"
    },
    "batch": 1
@@ -676,10 +632,10 @@
   {
    "id": "es:about-story:6",
    "lang": "es",
-   "text": "Seis años en MSK, optimizando operaciones internas y diseñando para 21,000+ clínicos y personal.",
+   "text": "Seis años en MSK, diseñando para 21,000+ clínicos y personal.",
    "source": {
     "type": "page",
-    "label": "Sobre mí · Cómo llegué aquí.",
+    "label": "Sobre mí · De dónde viene",
     "url": "/about/#about-story"
    },
    "batch": 1
@@ -690,7 +646,7 @@
    "text": "Inicié un rediseño de flujo EMR que contribuyó dentro de una reducción organizacional del 20% en costos. TI y UX lo construyeron después de que cambié de puesto.",
    "source": {
     "type": "page",
-    "label": "Sobre mí · Cómo llegué aquí.",
+    "label": "Sobre mí · De dónde viene",
     "url": "/about/#about-story"
    },
    "batch": 1
@@ -698,10 +654,10 @@
   {
    "id": "es:about-story:8",
    "lang": "es",
-   "text": "También reconstruí la certificación de RCP y la incorporación administrativa en Epic, HIPAA y cumplimiento. La observación operativa, los comentarios y el análisis de flujos ya eran la práctica, aun antes de tener vocabulario formal de UX.",
+   "text": "También reconstruí la certificación de RCP y la incorporación administrativa en Epic, HIPAA y cumplimiento.",
    "source": {
     "type": "page",
-    "label": "Sobre mí · Cómo llegué aquí.",
+    "label": "Sobre mí · De dónde viene",
     "url": "/about/#about-story"
    },
    "batch": 1
@@ -712,7 +668,7 @@
    "text": "Los sistemas fallan donde una persona real tiene que usarlos.",
    "source": {
     "type": "page",
-    "label": "Sobre mí · Cómo llegué aquí.",
+    "label": "Sobre mí · De dónde viene",
     "url": "/about/#about-story"
    },
    "batch": 1
@@ -720,10 +676,10 @@
   {
    "id": "es:about-story:10",
    "lang": "es",
-   "text": "03 / 03 DONDE CONSTRUÍ MI BASE",
+   "text": "02 / 02 EJÉRCITO",
    "source": {
     "type": "page",
-    "label": "Sobre mí · Cómo llegué aquí.",
+    "label": "Sobre mí · De dónde viene",
     "url": "/about/#about-story"
    },
    "batch": 1
@@ -734,7 +690,7 @@
    "text": "Capitana y Oficial de Logística Médica, NJ Army National Guard.",
    "source": {
     "type": "page",
-    "label": "Sobre mí · Cómo llegué aquí.",
+    "label": "Sobre mí · De dónde viene",
     "url": "/about/#about-story"
    },
    "batch": 1
@@ -742,32 +698,10 @@
   {
    "id": "es:about-story:12",
    "lang": "es",
-   "text": "En Irak, dirigí el suministro médico en estaciones de ayuda de tres países, bajo una estricta restricción de cadena de frío de 48 horas.",
+   "text": "En Irak dirigí el suministro médico para estaciones de ayuda en tres países bajo un límite de cadena de frío de 48 horas. En 2020 reporté al Pentágono las operaciones médicas de la Guardia Nacional de Nueva Jersey durante la COVID-19.",
    "source": {
     "type": "page",
-    "label": "Sobre mí · Cómo llegué aquí.",
-    "url": "/about/#about-story"
-   },
-   "batch": 1
-  },
-  {
-   "id": "es:about-story:13",
-   "lang": "es",
-   "text": "El seguimiento compartido redujo notablemente el tiempo de reabastecimiento y el gasto. En 2020, reporté al Pentágono las operaciones médicas de la Guardia Nacional de Nueva Jersey durante la respuesta a COVID-19.",
-   "source": {
-    "type": "page",
-    "label": "Sobre mí · Cómo llegué aquí.",
-    "url": "/about/#about-story"
-   },
-   "batch": 1
-  },
-  {
-   "id": "es:about-story:14",
-   "lang": "es",
-   "text": "Una falla de proceso en zona de combate no es una molestia. Es un riesgo.",
-   "source": {
-    "type": "page",
-    "label": "Sobre mí · Cómo llegué aquí.",
+    "label": "Sobre mí · De dónde viene",
     "url": "/about/#about-story"
    },
    "batch": 1
@@ -795,20 +729,9 @@
    "batch": 1
   },
   {
-   "id": "es:about-life:0",
-   "lang": "es",
-   "text": "Rutinas que me mantienen clara y con los pies en la tierra.",
-   "source": {
-    "type": "page",
-    "label": "Sobre mí · Correr, leer y Luna la gata.",
-    "url": "/about/#about-life"
-   },
-   "batch": 1
-  },
-  {
    "id": "es:about-life:1",
    "lang": "es",
-   "text": "LEYENDO AHORA Pensar en sistemas, de Donella Meadows — el texto de referencia sobre por qué los sistemas se resisten a los arreglos evidentes.",
+   "text": "LEYENDO AHORA Pensar en sistemas, de Donella Meadows.",
    "source": {
     "type": "page",
     "label": "Sobre mí · Correr, leer y Luna la gata.",
@@ -819,7 +742,7 @@
   {
    "id": "es:about-contact:0",
    "lang": "es",
-   "text": "Abierta a roles de UX y diseño de producto en salud, organizaciones con misión y entornos operativamente complejos. También abierta a freelance y colaboraciones.",
+   "text": "Abierta a roles de UX y diseño de producto en salud y otros entornos operativamente complejos, y a trabajo freelance.",
    "source": {
     "type": "page",
     "label": "Sobre mí · ¿Le interesa trabajar conmigo?",

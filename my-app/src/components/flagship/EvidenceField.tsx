@@ -12,7 +12,7 @@ type Metric = { n: string; label: string; tag?: string };
 
 /**
  * @status: stable
- * @purpose: Renders a labeled row of metric numbers (each with an optional attribution tag) plus an intro and disclaimer; used on the MSK, Mobbin, and logistics case study pages.
+ * @purpose: Renders a labeled row of metric numbers (each with an optional attribution tag) plus an intro and disclaimer; used on the MSK, Mobbin, logistics, and Knowunity case study pages.
  */
 export default function EvidenceField({
   id,
@@ -53,7 +53,9 @@ export default function EvidenceField({
           ))}
         </p>
         <p className="rp-disclaimer">{disclaimer}</p>
-        <div className="rp-outcomes rp-reveal">
+        {/* Two numbers share the row, as Grove's two outcomes do; the default
+            three-column grid left a third of it empty. */}
+        <div className={`rp-outcomes rp-reveal${metrics.length === 2 ? " rp-outcomes--two" : ""}`}>
           {metrics.map((metric) => (
             <div className="rp-stat" key={`${metric.n}-${metric.label}`}>
               {metric.tag && <p className="rp-stat__tag">{metric.tag}</p>}

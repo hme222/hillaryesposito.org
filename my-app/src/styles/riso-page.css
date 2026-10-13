@@ -146,7 +146,9 @@
 .rp-hero__media { position: relative; height: 100%; display: flex; align-items: center; justify-content: center;
   padding: var(--sp-sm); background:
     radial-gradient(120% 90% at 70% 40%, color-mix(in srgb, var(--green) 8%, transparent), transparent 60%); }
-.rp-device { position: relative; width: min(270px, 68%); aspect-ratio: 9/17.5; border-radius: var(--r-device);
+/* 430/932: Grove's hero capture (grove1.png, a 430×932 phone screen). The
+   old 9/17.5 frame letterboxed it with a paper band top and bottom. */
+.rp-device { position: relative; width: min(270px, 68%); aspect-ratio: 430/932; border-radius: var(--r-device);
   border: 1px solid var(--hair); background: #f5f0ea; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,.12), 0 30px 60px -20px rgba(0,0,0,.35); }
 .rp-device::before { content: ""; position: absolute; top: 11px; left: 50%; transform: translateX(-50%); width: 42px; height: 5px;
   background: rgba(0,0,0,.18); border-radius: 99px; z-index: 2; }
@@ -1566,10 +1568,16 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   min-height: 0;
   overflow: hidden;
 }
+/* The img box takes the capture's own 390×844 screen ratio, so its border is
+   the phone's edge, not a letterbox around a smaller screen. */
 .rp-work__thumb--knowunity__flow img {
-  width: 100%;
+  justify-self: center;
+  width: auto;
+  max-width: 100%;
   height: 100%;
+  aspect-ratio: 390 / 844;
   min-height: 0;
+  border-radius: 10px;
   object-fit: contain;
   object-position: center;
   border: 1px solid color-mix(in srgb, var(--ink) 32%, transparent);
@@ -2772,6 +2780,12 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 @media (max-width: 400px) {
   .rp-breadcrumb { font-size: .58rem; letter-spacing: .06em; }
 }
+/* Long final crumbs ("Memorial Sloan Kettering", "Logística médica del
+   Ejército") were cut off inside a scroller with a hidden scrollbar and no
+   other affordance. On phones the trail wraps instead. */
+@media (max-width: 760px) {
+  .rp-breadcrumb { flex-wrap: wrap; row-gap: 0; overflow-x: visible; }
+}
 
 /* Sticky so the reader can always see where they are on a long study, and so
    losing your place costs a glance instead of a re-scan. The paper background
@@ -2976,6 +2990,19 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
      in move 01 below, so on phones the hero keeps the photo and its label. */
   .flagship-page .fp-heroArt--logistics .fp-logisticsHeroMechanism { display: none; }
   .flagship-page .rp-hero__media .rp-device { height: 310px; width: auto; }
+  /* At the captures' true 390/844 ratio the fanned Mobbin phones ran past the
+     340px box's bottom edge; narrower, all three frames show whole. */
+  .flagship-page .fp-heroArt--mobbin .fp-capture { width: 28%; }
+  .flagship-page .fp-heroArt--mobbin .fp-capture--1 { top: 12%; }
+  .flagship-page .fp-heroArt--mobbin .fp-capture--3 { top: 13%; }
+  .flagship-page .fp-heroArt--mobbin .fp-capture--1 { left: 9%; }
+  .flagship-page .fp-heroArt--mobbin .fp-capture--2 { left: 36%; }
+  .flagship-page .fp-heroArt--mobbin .fp-capture--3 { right: 9%; }
+  /* Knowunity's hero phone is sized by height so the whole screen fits the
+     340px box instead of being cropped top and bottom. */
+  .flagship-page .fp-heroArt--knowunity { gap: .6rem; }
+  .flagship-page .fp-heroArt--knowunity .fp-sequence__phone--hero { height: 232px; width: auto; border-radius: 16px; }
+  .flagship-page .fp-heroArt--knowunity .fp-artifactLabel { padding: .45rem .65rem; }
   .flagship-page .fp-heroArt { min-height: 300px; }
   .flagship-page .fp-heroArt--msk .fp-dashboardFrame { width: 96%; max-height: 245px; }
   .flagship-page .fp-heroArt--msk .fp-artifactLabel { width: 96%; padding: .5rem .65rem; }
@@ -4009,6 +4036,10 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   position: absolute; left: 0; top: .15em;
   font-family: var(--mono); font-size: .68rem; color: var(--coral);
 }
+/* Closing line under the pattern list, aligned with the items' text. */
+.rp-patternCallout { max-width: 62ch; margin-top: 1.6rem; margin-left: 2.4rem; }
+/* About's story heading is the kicker itself (the H2 line was cut). */
+h2.rp-kicker { margin: 0 0 .4rem; line-height: 1.3; }
 @media (max-width: 760px) {
   .rp-split--flip .rp-split__media { order: 0; }
   .rp-chapter .rp-subhead { max-width: none; }

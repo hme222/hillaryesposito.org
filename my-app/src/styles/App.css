@@ -2103,7 +2103,10 @@ textarea::placeholder {
   justify-content: space-between;
   gap: 0.75rem;
 }
-.msk-dashboard-mockup__condensedMain :is(h2, h3) { margin: 0; }
+/* A fixed-width graphic: the title stays on one line and the timestamp wraps
+   under it on the narrowest phones, rather than stranding "queue" (320px). */
+.msk-dashboard-mockup__condensedMain { flex-wrap: wrap; row-gap: 0.1rem; }
+.msk-dashboard-mockup__condensedMain :is(h2, h3) { margin: 0; white-space: nowrap; }
 .msk-dashboard-mockup__condensedMain .msk-dashboard-mockup__timestamp {
   flex: 0 0 auto;
   white-space: nowrap;
@@ -2239,6 +2242,13 @@ textarea::placeholder {
   color: var(--muted);
   background: var(--surface-1);
   border: 1px solid var(--border);
+}
+/* On the narrowest phones the three-column queue's pills ("Ready to send",
+   "Send to EMR") ran 5–46px past the table edge and were clipped. They wrap
+   inside their cell instead. */
+@media (max-width: 420px) {
+  .msk-dashboard-status,
+  .msk-dashboard-action { width: auto; white-space: normal; }
 }
 
 .msk-dashboard-action--primary {

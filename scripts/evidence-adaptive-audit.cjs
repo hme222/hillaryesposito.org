@@ -14,6 +14,7 @@ const projects = [
   { name: "grove", path: "/case-study/grove", target: "#grove-override" },
   { name: "msk", path: "/case-study/msk", target: "#msk-workflow" },
   { name: "mobbin", path: "/case-study/mobbin", target: "#mobbin-work" },
+  { name: "knowunity", path: "/case-study/knowunity", target: "#knowunity-decisions" },
 ];
 
 const allModes = [

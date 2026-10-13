@@ -29,6 +29,12 @@ const ROUTE_META: Array<{ match: RegExp; description: string; image: string }> =
     image: "/assets/mobbin/discover.jpg",
   },
   {
+    match: /\/case-study\/knowunity$/,
+    description:
+      "A design-sprint case study: a voice active-recall prototype for Knowunity where a clean pass quotes the student's own words back as the proof. Recall is mocked.",
+    image: "/assets/knowunity/say-it-back-pass.jpg",
+  },
+  {
     match: /\/about$/,
     description:
       "About Hillary Esposito: a Healthcare Product Designer combining clinical workflow knowledge, service design, research rigor, and responsible AI judgment.",

@@ -18,31 +18,20 @@ type AboutChapter = {
   image?: string;
   paragraphs: string[];
   facts?: Array<{ value: string; label: string }>;
-  callout: string;
+  callout?: string;
   caseLink?: { path: string; title: string; source: string };
   articleLink?: { url: string; title: string; source: string };
 };
 
 const CHAPTERS: AboutChapter[] = [
   {
-    id: "now",
-    label: "What I Do Now",
-    heading: "Designing for the person who has to act on it.",
-    paragraphs: [
-      "My latest contract mapped and tagged 200+ screens across three finance apps so thousands of designers could find and reuse complete mobile flows.",
-      "It sharpened how I compare patterns at scale, document to a strict taxonomy, and examine how products earn belief.",
-      "AI accelerates research and prototyping. The judgment and authorship stay mine.",
-    ],
-    callout: "AI moves the work faster. The calls stay mine.",
-  },
-  {
     id: "msk",
-    label: "Where I Built My Practice",
-    heading: "Six years at MSK, optimizing internal operations and designing for 21,000+ clinicians and staff.",
+    label: "MSK",
+    heading: "Six years at MSK, designing for 21,000+ clinicians and staff.",
     image: "/assets/about/msk.jpg",
     paragraphs: [
       "I initiated an EMR workflow redesign that contributed within a 20% organization-wide cost reduction. IT and UX built it after I changed roles.",
-      "I also rebuilt CPR certification and administrative onboarding across Epic, HIPAA, and compliance. Operational observation, feedback, and workflow analysis were already the practice—even before I had formal UX vocabulary for it.",
+      "I also rebuilt CPR certification and administrative onboarding across Epic, HIPAA, and compliance.",
     ],
     callout: "Systems fail at the point where a real person has to use them.",
     articleLink: {
@@ -53,15 +42,14 @@ const CHAPTERS: AboutChapter[] = [
   },
   {
     id: "army",
-    label: "Where My Foundation Was Built",
+    label: "Army",
     heading: "Captain and Medical Logistics Officer, NJ Army National Guard.",
     image: "/assets/about/army.jpg",
     // Numbers live in the facts ledger below, once — the prose used to
     // restate every figure (5,000+, seven, 85%, 60%) a second time in the
     // same breath. Cut here, not duplicated there.
     paragraphs: [
-      "In Iraq, I directed medical supply across aid stations in three countries, working inside a strict 48-hour cold-chain constraint.",
-      "Shared tracking sharply cut both resupply time and spending. In 2020, I reported New Jersey National Guard medical operations to the Pentagon during the COVID-19 response.",
+      "In Iraq I ran medical supply for aid stations in three countries under a 48-hour cold-chain limit. In 2020 I reported the New Jersey National Guard's COVID-19 medical operations to the Pentagon.",
     ],
     facts: [
       { value: "5,000+", label: "soldiers served" },
@@ -70,31 +58,19 @@ const CHAPTERS: AboutChapter[] = [
       { value: "85%", label: "shorter resupply" },
       { value: "60%", label: "lower spending" },
     ],
-    callout: "Process failure in a combat zone isn’t an inconvenience. It’s a casualty risk.",
     caseLink: { path: "/case-study/logistics", title: "Medical logistics, Iraq", source: "Review the case study" },
   },
 ];
 
 const CHAPTERS_ES: AboutChapter[] = [
   {
-    id: "now",
-    label: "Lo que hago ahora",
-    heading: "Diseñar para la persona que tiene que actuar.",
-    paragraphs: [
-      "Mi contrato más reciente mapeó y etiquetó más de 200 pantallas de tres apps financieras para que miles de diseñadores pudieran reutilizar flujos móviles completos.",
-      "Afinó cómo comparo patrones a escala, documento con una taxonomía estricta y evalúo cómo un producto gana credibilidad.",
-      "La IA acelera la investigación y los prototipos. El juicio y la autoría siguen siendo míos.",
-    ],
-    callout: "La IA acelera el trabajo. Las decisiones siguen siendo mías.",
-  },
-  {
     id: "msk",
-    label: "Donde construí mi práctica",
-    heading: "Seis años en MSK, optimizando operaciones internas y diseñando para 21,000+ clínicos y personal.",
+    label: "MSK",
+    heading: "Seis años en MSK, diseñando para 21,000+ clínicos y personal.",
     image: "/assets/about/msk.jpg",
     paragraphs: [
       "Inicié un rediseño de flujo EMR que contribuyó dentro de una reducción organizacional del 20% en costos. TI y UX lo construyeron después de que cambié de puesto.",
-      "También reconstruí la certificación de RCP y la incorporación administrativa en Epic, HIPAA y cumplimiento. La observación operativa, los comentarios y el análisis de flujos ya eran la práctica, aun antes de tener vocabulario formal de UX.",
+      "También reconstruí la certificación de RCP y la incorporación administrativa en Epic, HIPAA y cumplimiento.",
     ],
     callout: "Los sistemas fallan donde una persona real tiene que usarlos.",
     articleLink: {
@@ -105,12 +81,11 @@ const CHAPTERS_ES: AboutChapter[] = [
   },
   {
     id: "army",
-    label: "Donde construí mi base",
+    label: "Ejército",
     heading: "Capitana y Oficial de Logística Médica, NJ Army National Guard.",
     image: "/assets/about/army.jpg",
     paragraphs: [
-      "En Irak, dirigí el suministro médico en estaciones de ayuda de tres países, bajo una estricta restricción de cadena de frío de 48 horas.",
-      "El seguimiento compartido redujo notablemente el tiempo de reabastecimiento y el gasto. En 2020, reporté al Pentágono las operaciones médicas de la Guardia Nacional de Nueva Jersey durante la respuesta a COVID-19.",
+      "En Irak dirigí el suministro médico para estaciones de ayuda en tres países bajo un límite de cadena de frío de 48 horas. En 2020 reporté al Pentágono las operaciones médicas de la Guardia Nacional de Nueva Jersey durante la COVID-19.",
     ],
     facts: [
       { value: "5,000+", label: "soldados atendidos" },
@@ -119,7 +94,6 @@ const CHAPTERS_ES: AboutChapter[] = [
       { value: "85%", label: "menos tiempo" },
       { value: "60%", label: "menos gasto" },
     ],
-    callout: "Una falla de proceso en zona de combate no es una molestia. Es un riesgo.",
     caseLink: { path: "/case-study/logistics", title: "Logística médica, Irak", source: "Ver el estudio de caso" },
   },
 ];
@@ -199,10 +173,10 @@ export default function About() {
           <div className="rp-clearing">
             <span className="rp-eyebrow">{isSpanish ? "Sobre mí" : "About"}</span>
             <h1 className="rp-h1">
-              {isSpanish ? "Diseño productos de salud donde cada transferencia importa." : "I design healthcare products where every handoff matters."}
+              {isSpanish ? "Diseño productos de salud donde cada transferencia\u00a0importa." : "I design healthcare products where every handoff\u00a0matters."}
             </h1>
             <p className="rp-sub">
-              {isSpanish ? "Aporto más de 13 años en operaciones de atención oncológica y logística médica militar al diseño de productos de salud. Convierto esa experiencia en flujos clínicos más claros, herramientas internas y servicios integrales que ayudan a las personas a actuar correctamente cuando una falla tiene un costo." : "I bring 13+ years in cancer-care operations and military medical logistics to healthcare product design. I turn that experience into clearer clinical workflows, internal tools, and end-to-end services that help people act correctly when failure has a cost."}
+              {isSpanish ? "Más de trece años en operaciones de atención oncológica y logística médica militar, ahora en diseño de productos de salud: flujos clínicos y herramientas internas para el momento en que un paso equivocado tiene un costo." : "Thirteen-plus years in cancer-care operations and military medical logistics, now in healthcare product design: clinical workflows and internal tools for the moment a wrong step has a cost."}
             </p>
           </div>
         </div>
@@ -244,17 +218,23 @@ export default function About() {
               </Link>
             </li>
           </ol>
+          {/* The one line kept from the cut "What I Do Now" story (2026-10-13):
+              it closes the pattern rather than opening a chapter of its own. */}
+          <p className="rp-chapter__callout rp-patternCallout">
+            {isSpanish ? "La IA acelera el trabajo. Las decisiones siguen siendo mías." : "AI moves the work faster. The calls stay mine."}
+          </p>
         </div>
       </section>
 
       {/* ═ STORY ════════════════════════════════════════════════════ */}
       <section id="about-story" data-language-anchor="about-story" className="rp-section rp-section--alt" aria-labelledby="about-story-title">
         <div className="rp-wrap">
-          <p className="rp-kicker">{isSpanish ? "Mi historia" : "My story"}</p>
-          <h2 className="rp-title" id="about-story-title">{isSpanish ? "Cómo llegué aquí." : "How I got here."}</h2>
+          {/* The "How I got here." H2 was cut (2026-10-13); the kicker stays the
+              section's heading so the story's h3s still sit under an h2. */}
+          <h2 className="rp-kicker" id="about-story-title">{isSpanish ? "De dónde viene" : "Where it comes from"}</h2>
 
           {chapters.map((chapter, index) => (
-            <article className={`rp-split rp-chapter rp-reveal${index % 2 ? " rp-split--flip" : ""}${chapter.image ? "" : " rp-split--noMedia"}`} key={chapter.id}>
+            <article className={`rp-split rp-chapter rp-reveal${index % 2 ? "" : " rp-split--flip"}${chapter.image ? "" : " rp-split--noMedia"}`} key={chapter.id}>
               <div className="rp-split__text">
                 <p className="rp-chapter__n">
                   {String(index + 1).padStart(2, "0")} / {String(chapters.length).padStart(2, "0")}
@@ -274,7 +254,7 @@ export default function About() {
                     ))}
                   </dl>
                 )}
-                <p className="rp-chapter__callout">{chapter.callout}</p>
+                {chapter.callout && <p className="rp-chapter__callout">{chapter.callout}</p>}
 
                 {chapter.caseLink && (
                   <Link to={chapter.caseLink.path} className="rp-chapter__proof">
@@ -342,18 +322,13 @@ export default function About() {
           <h2 className="rp-title" id="about-life-title">
             {isSpanish ? "Correr, leer y Luna la gata." : "Running, reading, and Luna the cat."}
           </h2>
-          <p className="rp-lede">
-            {isSpanish ? "Rutinas que me mantienen clara y con los pies en la tierra." : "Routines that keep me clear and grounded."}
-          </p>
           {/* Currently reading, stated as currently reading. This is the honest
               home for it: crediting it on the MSK colophon would claim a book
               started in 2026 shaped work done years earlier. */}
           <p className="rp-nowReading">
             <span>{isSpanish ? "Leyendo ahora" : "Reading now"}</span>
             <b>
-              {isSpanish
-                ? "Pensar en sistemas, de Donella Meadows — el texto de referencia sobre por qué los sistemas se resisten a los arreglos evidentes."
-                : "Thinking in Systems, Donella Meadows — the standard text on why systems resist the obvious fix."}
+              {isSpanish ? "Pensar en sistemas, de Donella Meadows." : "Thinking in Systems, Donella Meadows."}
             </b>
           </p>
         </div>
@@ -364,7 +339,7 @@ export default function About() {
         <div className="rp-wrap rp-close">
           <h2>{isSpanish ? "¿Le interesa trabajar conmigo?" : "Interested in working together?"}</h2>
           <p>
-            {isSpanish ? "Abierta a roles de UX y diseño de producto en salud, organizaciones con misión y entornos operativamente complejos. También abierta a freelance y colaboraciones." : "Open to UX and product design roles in healthcare, mission-driven organizations, and operationally complex environments. Also open to freelance and collaborations."}
+            {isSpanish ? "Abierta a roles de UX y diseño de producto en salud y otros entornos operativamente complejos, y a trabajo freelance." : "Open to UX and product design roles in healthcare and other operationally complex environments, and to freelance work."}
           </p>
           <div className="rp-hero__ctas">
             <a className="rp-cta" href="mailto:espositohillary@gmail.com">

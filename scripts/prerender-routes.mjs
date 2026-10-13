@@ -58,6 +58,13 @@ const PUBLIC_ROUTES = [
       "A service design case study: directing medical resupply for 5,000+ soldiers across seven aid stations in three countries, and cutting resupply time by 85%.",
     image: "/assets/about/army.jpg",
   },
+  {
+    path: "case-study/knowunity",
+    title: "Knowunity — Voice Active Recall Case Study | Hillary Esposito",
+    description:
+      "A design-sprint case study: a voice active-recall prototype for Knowunity where a clean pass quotes the student's own words back as the proof. Recall is mocked.",
+    image: "/assets/knowunity/say-it-back-pass.jpg",
+  },
 ];
 
 const ROUTES = PUBLIC_ROUTES;

@@ -93,16 +93,17 @@ const WORK: WorkItem[] = [
     titleKey: "home.proj.knowunity.title",
     subKey: "home.proj.knowunity.subtitle",
     descKey: "home.riso.knowunityDesc",
-    externalHref: "https://knowunity-voice-recall.vercel.app/",
-    externalAriaKey: "home.riso.knowunityPrototypeAria",
-    img: "/assets/knowunity/say-it-back-prompt.png",
-    imgSecondary: "/assets/knowunity/say-it-back-response.png",
+    // The row opens the case study, like rows 01–03; the live prototype is the
+    // teaser, and the Storybook link lives in the case study's Build section.
+    path: "/case-study/knowunity",
+    img: "/assets/knowunity/say-it-back-question.webp",
+    imgSecondary: "/assets/knowunity/say-it-back-pass.webp",
     imgAltKey: "home.riso.knowunityAlt",
     visual: "knowunity",
-    teaserExternalHref: "https://6aab3391f5b820296b53b3e5-vmipdkjlqe.chromatic.com/?path=/docs/components-appbar--docs",
-    teaserAriaKey: "home.riso.knowunitySystemAria",
-    teaserEn: "Review the Say It Back component system ↗",
-    teaserEs: "Ver el sistema de componentes de Say It Back ↗",
+    teaserExternalHref: "https://knowunity-voice-recall.vercel.app/",
+    teaserAriaKey: "home.riso.knowunityPrototypeAria",
+    teaserEn: "Try the prototype ↗",
+    teaserEs: "Probar el prototipo ↗",
   },
 ];
 
@@ -283,10 +284,10 @@ export default function RisoHome() {
       ) : work.visual === "knowunity" ? (
         <figure className="rp-work__thumb rp-work__thumb--knowunity" aria-label={t(work.imgAltKey)}>
           <div className="rp-work__thumb--knowunity__flow" aria-hidden="true">
-            <img src={work.img} alt="" loading="eager" decoding="async" />
-            <img src={work.imgSecondary} alt="" loading="eager" decoding="async" />
+            <img src={work.img} alt="" width={780} height={1688} loading="lazy" decoding="async" />
+            <img src={work.imgSecondary} alt="" width={780} height={1688} loading="lazy" decoding="async" />
           </div>
-          <figcaption>{lang === "es" ? "Indicación → respuesta capturada · recuerdo simulado" : "Prompt → captured response · mocked recall"}</figcaption>
+          <figcaption>{lang === "es" ? "Pregunta → acierto · recuerdo simulado" : "Prompt → pass · mocked recall"}</figcaption>
         </figure>
       ) : (
         <div className="rp-work__thumb rp-work__thumb--contain">

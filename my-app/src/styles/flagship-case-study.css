@@ -959,6 +959,10 @@
 .fp-ownership b { display: block; margin-bottom: .35rem; font: .62rem/1.2 var(--mono);
   letter-spacing: .09em; text-transform: uppercase; color: #a9d28f; }
 @media (forced-colors: active) { .fp-ownership { border-left-color: CanvasText; } }
+/* The same aside on light paper (Knowunity's Build section): themed tokens,
+   since the fixed dark-panel values above measure near 1:1 on --paper. */
+.fp-ownership--paper { border-left-color: var(--green); color: var(--ink-2); }
+.fp-ownership--paper b { color: var(--coral-text); }
 
 .fp-discipline { margin-top: 2.5rem; padding-top: 1.8rem; border-top: 1px solid rgba(244,241,230,.2); }
 /* A credential strip, not a third row of plates. The role rail and the system
@@ -1066,13 +1070,31 @@
 
 /* Mobbin capture desk */
 .fp-heroArt--mobbin { overflow: hidden; }
-.fp-capture { position: absolute; width: min(230px,31%); aspect-ratio: 9/17.5; overflow: hidden; border: 1px solid var(--hair);
+/* 390/844: the screen of the 390×844 viewport every capture here was taken at
+   (Mobbin 900×1949, Knowunity 780×1688). The old 9/17.5 cropped ~10% off the
+   bottom of each screen. */
+.fp-capture { position: absolute; width: min(230px,31%); aspect-ratio: 390/844; overflow: hidden; border: 1px solid var(--hair);
   border-radius: var(--r-device); background: #f7f5ef; box-shadow: 0 26px 54px -28px rgba(0,0,0,.58); }
 .fp-capture img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .fp-capture--1 { left: 10%; top: 16%; transform: rotate(-7deg); }
 .fp-capture--2 { left: 37%; top: 9%; z-index: 2; transform: rotate(1deg); }
 .fp-capture--3 { right: 8%; top: 20%; transform: rotate(7deg); }
 .fp-heroArt--mobbin .fp-artifactLabel { left: 6%; bottom: 5%; }
+/* Knowunity — one phone in the hero, label as a folio caption under it (the
+   Logistics pattern), so nothing floats over the screen the copy quotes. */
+.fp-heroArt--knowunity { flex-direction: column; gap: .9rem; }
+.fp-heroArt--knowunity .fp-artifactLabel { position: static; width: min(300px,86%); max-width: min(300px,86%); }
+.fp-heroArt--knowunity .fp-sequence__phone--hero { width: min(260px,58%); margin: 0; }
+/* Dark captures: if a frame ever letterboxes, the gap reads as screen, not paper. */
+.flagship-page--knowunity .fp-sequence__phone { background: var(--fp-deep-2); }
+/* Four constraints read as two pairs; the shared three-column grid left one
+   stranded on its own row. */
+.fp-constraintKicker { margin-top: var(--sp-sm); }
+.fp-constraintAnnotations.fp-constraintAnnotations--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 700px) { .fp-constraintAnnotations.fp-constraintAnnotations--four { grid-template-columns: 1fr; } }
+.fp-knowunityChange { padding-top: var(--sp-md); }
+.fp-knowunityChange .fp-journalLine { margin-top: 0; }
+.fp-knowunityMockNote { max-width: 62ch; margin: 1rem 0 0; color: var(--muted); font-size: .88rem; line-height: 1.5; }
 .fp-workSplit { display: grid; grid-template-columns: .75fr 1.25fr; gap: 1rem; margin-top: 2rem; }
 .fp-workSplit article { padding: 1.4rem; border: 1px solid var(--hair); border-radius: var(--r-plate); background: var(--paper); }
 .fp-workSplit article:last-child { border-left: 4px solid var(--coral); }
@@ -1089,7 +1111,7 @@
   min-height: 600px; padding: var(--sp-sm); border: 1px solid var(--hair); border-radius: var(--r-plate); background:
   linear-gradient(var(--hair) 1px,transparent 1px),linear-gradient(90deg,var(--hair) 1px,transparent 1px),var(--paper-2);
   background-size: 30px 30px; }
-.fp-sequence__phone { width: min(310px,76%); aspect-ratio: 9/17.5; margin: 0 auto; overflow: hidden; border: 1px solid var(--hair);
+.fp-sequence__phone { width: min(310px,76%); aspect-ratio: 390/844; margin: 0 auto; overflow: hidden; border: 1px solid var(--hair);
   border-radius: var(--r-device); background: #f7f5ef; box-shadow: 0 28px 58px -28px rgba(0,0,0,.55); }
 .fp-sequence__phone img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .fp-sequence__phone--story { width: min(250px,64%); z-index: 1; }
@@ -1262,7 +1284,9 @@
 .fp-blueprint__switch button:focus-visible { outline: 3px solid var(--coral); outline-offset: -3px; }
 .fp-blueprint__status { flex: 1 1 16rem; margin: 0; font-size: .88rem; line-height: 1.5; color: var(--ink-2); }
 
-.fp-blueprint__canvas { overflow-x: auto; }
+/* An intentional sideways scroller below 620px: the thin themed scrollbar
+   (same as Grove's screen strip) is its visible affordance. */
+.fp-blueprint__canvas { overflow-x: auto; scrollbar-width: thin; scrollbar-color: var(--green) var(--paper-2); padding-bottom: .4rem; }
 .fp-blueprint__canvas svg { display: block; min-width: 620px; overflow: visible; font-family: var(--mono); }
 
 .fp-blueprint__key { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));

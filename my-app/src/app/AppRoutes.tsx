@@ -17,6 +17,7 @@ const FlagshipMobbin = lazy(() => import("../pages/case-studies/FlagshipMobbin")
 const RisoGrove = lazy(() => import("../pages/case-studies/RisoGrove"));
 const FlagshipMSK = lazy(() => import("../pages/case-studies/FlagshipMSK"));
 const FlagshipLogistics = lazy(() => import("../pages/case-studies/FlagshipLogistics"));
+const FlagshipKnowunity = lazy(() => import("../pages/case-studies/FlagshipKnowunity"));
 const HiggsfieldABCLab = lazy(() => import("../pages/labs/HiggsfieldABCLab"));
 
 class LazyRouteBoundary extends Component<
@@ -189,6 +190,7 @@ const ROUTE_NAMES: Record<string, string> = {
   "/case-study/grove": "Grove case study",
   "/case-study/mobbin": "Mobbin case study",
   "/case-study/logistics": "Medical logistics case study",
+  "/case-study/knowunity": "Knowunity case study",
   "/lab/higgsfield-abc": "Higgsfield A B C private lab",
 };
 function RouteAnnouncer() {
@@ -226,6 +228,7 @@ export default function AppRoutes() {
       <Route path="/case-study/mobbin" element={<LazyPage name="Mobbin"><FlagshipMobbin /></LazyPage>} />
       <Route path="/case-study/msk" element={<LazyPage name="MSK"><FlagshipMSK /></LazyPage>} />
       <Route path="/case-study/logistics" element={<LazyPage name="Medical logistics"><FlagshipLogistics /></LazyPage>} />
+      <Route path="/case-study/knowunity" element={<LazyPage name="Knowunity"><FlagshipKnowunity /></LazyPage>} />
       <Route path="/lab/higgsfield-abc" element={<LazyPage name="Higgsfield A B C lab"><HiggsfieldABCLab /></LazyPage>} />
 
       <Route path="*" element={<NotFoundPage />} />

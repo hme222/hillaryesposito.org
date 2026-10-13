@@ -4,6 +4,7 @@ import axe from "axe-core";
 import FlagshipMSK from "./FlagshipMSK";
 import FlagshipMobbin from "./FlagshipMobbin";
 import FlagshipLogistics from "./FlagshipLogistics";
+import FlagshipKnowunity from "./FlagshipKnowunity";
 import RisoGrove from "./RisoGrove";
 import RisoHome from "../RisoHome";
 import About from "../AboutMe";
@@ -88,6 +89,7 @@ describe("flagship case-study accessibility", () => {
     ["MSK", <FlagshipMSK />],
     ["Mobbin", <FlagshipMobbin />],
     ["Medical logistics", <FlagshipLogistics />],
+    ["Knowunity", <FlagshipKnowunity />],
     ["Grove", <RisoGrove />],
     ["Home", <RisoHome />],
     ["About", <About />],
@@ -236,7 +238,7 @@ describe("flagship case-study accessibility", () => {
     expect(spanishPrototype?.getAttribute("href")).toBe("/case-study/grove");
   });
 
-  it("adds Knowunity as an equal evidence row using the public prototype alias", async () => {
+  it("opens the Knowunity case study from Home row 04, with the live prototype as its teaser", async () => {
     await act(async () => {
       root.render(<RisoHome />);
     });
@@ -244,20 +246,73 @@ describe("flagship case-study accessibility", () => {
     const rows = Array.from(container.querySelectorAll<HTMLAnchorElement>(".rp-work"));
     expect(rows).toHaveLength(4);
 
-    const prototype = rows.find((link) => link.href === "https://knowunity-voice-recall.vercel.app/");
+    const row = rows.find((link) => link.getAttribute("href") === "/case-study/knowunity");
+    expect(row).toBeDefined();
+    expect(row?.getAttribute("target")).toBeNull();
+    expect(row?.textContent).toContain("home.riso.knowunityDesc");
+    expect(row?.querySelectorAll(".rp-work__thumb--knowunity img")).toHaveLength(2);
+
+    const prototype = container.querySelector<HTMLAnchorElement>('.rp-work__teaser[href="https://knowunity-voice-recall.vercel.app/"]');
+    expect(prototype?.textContent).toBe("Try the prototype ↗");
     expect(prototype?.getAttribute("target")).toBe("_blank");
     expect(prototype?.getAttribute("rel")).toBe("noopener noreferrer");
     expect(prototype?.getAttribute("aria-label")).toBe("home.riso.knowunityPrototypeAria");
-    expect(prototype?.textContent).toContain("home.riso.knowunityDesc");
-    expect(prototype?.querySelectorAll(".rp-work__thumb--knowunity img")).toHaveLength(2);
-
-    const system = container.querySelector<HTMLAnchorElement>(
-      '.rp-work__teaser[href*="chromatic.com/?path=/docs/components-appbar--docs"]',
-    );
-    expect(system?.getAttribute("target")).toBe("_blank");
-    expect(system?.getAttribute("aria-label")).toBe("home.riso.knowunitySystemAria");
+    // The Storybook link moved into the case study's Build section.
+    expect(container.innerHTML).not.toContain("chromatic.com");
     expect(container.innerHTML).not.toContain("knowunity-voice-recall-o2c9s7oro");
     expect(container.innerHTML).not.toContain("vercel.com/hillary-esposito-s-projects");
+
+    mockLang = "es";
+    await act(async () => {
+      root.render(<RisoHome />);
+    });
+    const esPrototype = container.querySelector<HTMLAnchorElement>('.rp-work__teaser[href="https://knowunity-voice-recall.vercel.app/"]');
+    expect(esPrototype?.textContent).toBe("Probar el prototipo ↗");
+  });
+
+  it("states the Knowunity limits and keeps Knowunity's internal numbers off the page", async () => {
+    await act(async () => {
+      root.render(<FlagshipKnowunity />);
+    });
+
+    expect(container.querySelector("h1")?.textContent).toBe("The student's own words are the\u00a0proof.");
+    ["knowunity-start", "knowunity-brief", "knowunity-decisions", "knowunity-prototype", "knowunity-outcomes"].forEach((id) => {
+      expect(container.querySelector(`#${id}`)).not.toBeNull();
+    });
+    expect(container.querySelectorAll(".rp-decisionStory__visual img")).toHaveLength(4);
+    expect(container.querySelectorAll(".rp-decisionStory__visual img.is-on")).toHaveLength(1);
+    expect(container.querySelectorAll(".rp-outcomes--two .rp-stat")).toHaveLength(2);
+    expect(container.textContent).toContain("recall is mocked");
+    expect(container.textContent).toContain("no student testing");
+    expect(container.textContent).not.toContain("instead of praise");
+    ["642,000", "15.2%", "16.6%", "57.2%", "25%", "70%"].forEach((n) => expect(container.textContent).not.toContain(n));
+
+    const storybook = container.querySelector<HTMLAnchorElement>('a[href*="chromatic.com"]');
+    expect(storybook?.getAttribute("target")).toBe("_blank");
+    expect(storybook?.getAttribute("aria-label")).toBe("Open the Say It Back Storybook (opens in new tab)");
+    expect(container.querySelector(".rp-next")?.getAttribute("href")).toBe("/case-study/logistics");
+  });
+
+  it("renders the condensed Spanish Knowunity study", async () => {
+    mockLang = "es";
+    await act(async () => {
+      root.render(<FlagshipKnowunity />);
+    });
+
+    expect(container.querySelector("main")?.getAttribute("lang")).toBe("es");
+    expect(container.querySelector("h1")?.textContent).toContain("Las propias palabras del estudiante");
+    expect(container.querySelector(".rp-breadcrumb")?.textContent).toContain("Knowunity");
+    expect(container.querySelector("#es-knowunity-decisions")).not.toBeNull();
+    expect(container.textContent).not.toContain("en lugar de elogiarlo");
+  });
+
+  it("sends Grove's next-case-study band to Knowunity", async () => {
+    await act(async () => {
+      root.render(<RisoGrove />);
+    });
+    const next = container.querySelector<HTMLAnchorElement>(".rp-next");
+    expect(next?.getAttribute("href")).toBe("/case-study/knowunity");
+    expect(next?.textContent).toContain("Knowunity");
   });
 
   // The product-led "Draft A" (rotating MSK/Grove/Army showcase) and
@@ -667,6 +722,7 @@ describe("flagship case-study accessibility", () => {
     ["Grove", <RisoGrove />],
     ["MSK", <FlagshipMSK />],
     ["Mobbin", <FlagshipMobbin />],
+    ["Knowunity", <FlagshipKnowunity />],
     ["About", <About />],
   ])("%s chapter shortcuts resolve to real sections", async (_name, page) => {
     await act(async () => {

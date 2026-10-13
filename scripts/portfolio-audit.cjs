@@ -22,6 +22,7 @@ const routes = [
   { path: "/case-study/msk", name: "msk", indexable: true },
   { path: "/case-study/mobbin", name: "mobbin", indexable: true },
   { path: "/case-study/logistics", name: "logistics", indexable: true },
+  { path: "/case-study/knowunity", name: "knowunity", indexable: true },
   { path: "/not-a-real-route", name: "not-found", indexable: false },
 ];
 

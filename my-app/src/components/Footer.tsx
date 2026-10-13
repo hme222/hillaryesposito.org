@@ -53,6 +53,14 @@ const COLOPHONS: Record<string, Credit[]> = {
     { label: "Mobbin taxonomy", es: "taxonomía de Mobbin" },
     { label: "four-month contract", es: "contrato de cuatro meses" },
   ],
+  // Literal build tooling, like Grove's, plus whose parts these were and who
+  // wrote the code — all stated on the case study itself.
+  "/case-study/knowunity": [
+    { label: "Next.js" },
+    { label: "Storybook" },
+    { label: "Knowunity's Figma kit and Knowie art", es: "kit de Figma y arte de Knowie de Knowunity" },
+    { label: "Claude Code wrote most of the code from my specs", es: "Claude Code escribió la mayor parte del código a partir de mis especificaciones" },
+  ],
 };
 
 /**

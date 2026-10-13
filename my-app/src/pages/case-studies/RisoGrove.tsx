@@ -476,7 +476,7 @@ export default function RisoGrove() {
         <section className="rp-section" data-language-anchor="grove-prototype">
           <div className="rp-wrap">
           <p className="rp-phase">Prototype proof <span>· interactive</span></p>
-          <h2 className="rp-title" style={{ marginTop: ".4rem" }}>Try the working prototype.</h2>
+          <h2 className="rp-title" style={{ marginTop: ".4rem" }}>Try the working{"\u00a0"}prototype.</h2>
           <p className="rp-lede">Three keyboard-operable interactions first; tokens and implementation detail follow.</p>
           {/* The app's own components, documented in Storybook from the Grove
               repo (deployed separately at grove-ui.hillaryesposito.org). */}
@@ -574,12 +574,12 @@ export default function RisoGrove() {
       </section>
 
       {/* NEXT CASE STUDY */}
-      <Link className="rp-next" to="/case-study/logistics">
+      <Link className="rp-next" to="/case-study/knowunity">
         <div className="rp-next__inner">
           <div>
             <p className="rp-next__eyebrow">Next case study</p>
-            <p className="rp-next__title">Medical logistics</p>
-            <p className="rp-next__tag">Army operations · seven aid stations, three countries</p>
+            <p className="rp-next__title">Knowunity</p>
+            <p className="rp-next__tag">Say It Back · voice recall prototype, design sprint</p>
           </div>
           <span className="rp-next__arrow" aria-hidden="true">→</span>
         </div>

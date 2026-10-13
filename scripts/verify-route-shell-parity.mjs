@@ -17,6 +17,7 @@ const ROUTES = [
   "case-study/msk",
   "case-study/mobbin",
   "case-study/logistics",
+  "case-study/knowunity",
 ];
 
 function assets(html) {

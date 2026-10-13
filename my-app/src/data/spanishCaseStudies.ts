@@ -67,6 +67,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
   otherProjects: [
     { title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas", desc: "MSK · Seis años rediseñando flujos clínicos para trabajo que alcanzaba a más de 21,000 clínicos y personal administrativo.", path: "/case-study/msk" },
     { title: "Más de 200 pantallas por app, buscables por tarea", desc: "Mobbin · Más de 200 pantallas por app, documentadas como referencias paso a paso.", path: "/case-study/mobbin" },
+    { title: "Las propias palabras del estudiante son la prueba", desc: "Knowunity · Prototipo de recuerdo activo por voz, de un sprint de diseño; recuerdo simulado.", path: "/case-study/knowunity" },
   ],
 };
 
@@ -87,7 +88,7 @@ export const MSK_ES: SpanishCaseStudyData = {
     {
       anchor: "msk-brief",
       eyebrow: "Contexto",
-      title: "Diseñar para sistemas donde el error tiene consecuencias",
+      title: "Diseñar para sistemas donde el error tiene\u00a0consecuencias",
       body: [
         "El trabajo no era hacer pantallas bonitas. Era entender dónde fallaba el flujo real, alinear a clínicos, líderes y TI, y cambiar herramientas que las personas usaban bajo presión.",
       ],
@@ -242,5 +243,75 @@ export const LOGISTICS_ES: SpanishCaseStudyData = {
   otherProjects: [
     { title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas", desc: "MSK · Seis años rediseñando flujos clínicos para trabajo que alcanzaba a más de 21,000 clínicos y personal administrativo.", path: "/case-study/msk" },
     { title: "Once funciones se convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
+  ],
+};
+
+// Condensed from FlagshipKnowunity.tsx. Nothing is added beyond the English
+// page; Knowunity's internal numbers stay off both. Section anchors match the
+// English chapter ids so the language switch lands in place.
+export const KNOWUNITY_ES: SpanishCaseStudyData = {
+  title: "Las propias palabras del estudiante son la\u00a0prueba",
+  breadcrumb: "Knowunity",
+  meta: "Knowunity · Sprint de diseño · Prototipo móvil interactivo · Recuerdo simulado",
+  intro:
+    "Un estudiante dice una definición en voz alta y Knowie responde por texto. Cuando acierta, Knowie le cita sus propias palabras como prueba. Lo diseñé en un sprint de diseño de Yummy Labs de dos semanas y media, con el brief real de Knowunity, y lo construí como prototipo funcional sobre su kit de componentes. El reconocimiento de voz es simulado y no se probó con estudiantes; no es una función publicada de Knowunity.",
+  stats: [
+    { label: "Rol", value: "Participación individual · sprint de diseño de Yummy Labs · brief y kit de Knowunity" },
+    { label: "Brief", value: "Voz de entrada, texto de salida · iOS, 390px, modo oscuro · recuerdo simulado" },
+    { label: "Mi parte", value: "Flujos y decisiones · prototipo codificado · catálogo en Storybook" },
+    { label: "Resultado", value: "Insignia Design Sprint de Yummy Labs · revisado por Knowunity · no publicado" },
+  ],
+  sections: [
+    {
+      anchor: "knowunity-brief",
+      eyebrow: "Dónde empieza esto",
+      title: "Ver el material no es saberlo.",
+      body: [
+        "Después de repasar, el estudiante vio el material, pero no ha demostrado que pueda recuperarlo. Los cuestionarios prueban reconocimiento. Nada le pide que lo diga.",
+        "El brief de Knowunity pedía una señal sentida de “esto ya lo sé”, ganada y no afirmada. Las metas, en palabras: que más estudiantes que ven el paso lo empiecen, y que más de los que empiezan lo terminen.",
+        "A mitad del sprint, Knowunity publicó una versión ligera en beta. El brief pedía tratarla como el primer intento de un equipo y encontrar la versión más fuerte, no copiarla.",
+      ],
+      bullets: [
+        "Voz de entrada, texto de salida: Knowie nunca habla.",
+        "Pulsar para hablar: el estudiante inicia y detiene la grabación. Nadie adivina cuándo terminó.",
+        "Nunca atrapar al estudiante: cada acción obligatoria tiene salida, incluso para quien no puede hablar en ese momento.",
+        "Juzgar con generosidad: un “incorrecto” falso cuesta más aquí que en opción múltiple.",
+      ],
+    },
+    {
+      anchor: "knowunity-decisions",
+      eyebrow: "Cuatro decisiones",
+      title: "Quien demuestra es el estudiante, no Knowie.",
+      body: ["Devolver las palabras. Ofrecer los fallos. Pedir el micrófono cuando hace falta. Decir en qué punto va."],
+      bullets: [
+        "Devolver las palabras: cuando acierta, Knowie le cita su propia transcripción como prueba. Ver su propia explicación correcta es evidencia de que puede recuperarla, y son las palabras que usará en el examen.",
+        "Ofrecer los fallos, no reencolarlos: un término fallado volvía al final de la serie. Ahora la sesión pasa directo al resumen, que empieza con “Practicar lo que fallé”. Cada fila dice por qué está ahí y recomienda un ejercicio o repetirlo.",
+        "Pedir el micrófono cuando hace falta: primero la pregunta. La hoja de permiso se abre encima al primer toque del micrófono, no como pantalla entre una introducción y la pregunta uno. La pantalla de introducción desapareció.",
+        "Decir en qué punto va: una pista en el primer fallo, una pista de completar el hueco en el segundo, la respuesta en el tercero. El título de la tarjeta lo dice: “Un intento más y le muestro la respuesta”. Nada desaparece sin aviso.",
+      ],
+    },
+    {
+      anchor: "knowunity-prototype",
+      eyebrow: "Cómo lo construí",
+      title: "Un prototipo funcional, no una presentación.",
+      body: [
+        "Knowunity aportó a Knowie, la fuente Greed, su kit de Figma y acceso a la app y a la beta. Yo hice los flujos, las decisiones y el código: un prototipo en Next.js con 43 rutas, a 390px en modo oscuro, y un catálogo en Storybook sobre su kit. Cada pantalla es una página real a la que se llega tocando.",
+        "IA en la construcción: yo diseñé y dirigí. Claude Code escribió la mayor parte del código de Next.js y Storybook a partir de mis especificaciones y de los componentes de Figma de Knowunity.",
+        "Lo que cambiaría: poner antes una versión con reconocimiento de voz real frente a estudiantes reales. El recuerdo fue simulado todo el tiempo.",
+      ],
+    },
+    {
+      anchor: "knowunity-outcomes",
+      eyebrow: "Resultado",
+      title: "Una insignia, una revisión y una simulación que aún necesita\u00a0estudiantes.",
+      body: [
+        "Yummy Labs otorgó a la entrada una insignia Design Sprint y Knowunity revisó el trabajo. El reconocimiento de voz es simulado: cuánto tiempo se mantiene el micrófono decide el resultado. No hubo pruebas con estudiantes. No es una función publicada de Knowunity, y aquí no se publican cifras internas de Knowunity.",
+        "El siguiente paso es una versión con reconocimiento de voz real frente a estudiantes. Prefiero decirlo así, claramente, antes que dejar que una simulación pase por prueba.",
+      ],
+    },
+  ],
+  otherProjects: [
+    { title: "Once funciones se convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
+    { title: "El reabastecimiento médico tardó un 85% menos", desc: "Logística médica del Ejército · siete estaciones de ayuda, tres países.", path: "/case-study/logistics" },
   ],
 };
