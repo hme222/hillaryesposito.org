@@ -268,7 +268,7 @@ const en: MskCopy = {
     mapNodesAfter: ["Open queue", "Select doc", "Send to EMR", "Files in chart", "Status updated"],
     provenanceKicker: "How these artifacts were made",
     provenanceBody:
-      "Every screen and map here was rebuilt from my own current-state documentation. No protected health information, no exported records, and no reproduction of the vendor interface. Showing the workflow does not require showing a patient, so it does not.",
+      "Every screen and map here was rebuilt from memory of my own current-state documentation; the original notes didn't survive. No protected health information, no exported records, and no reproduction of the vendor interface. Showing the workflow does not require showing a patient, so it does not.",
   },
 
   blueprint: {
@@ -355,7 +355,7 @@ const en: MskCopy = {
     kicker: "The fix looked like one button",
     title: "The “simple” button carried the whole system.",
     intro:
-      "One action replaced the three steps that left the system. Everything that made it safe to press had to be legible before anyone pressed it.",
+      "One action replaced the three steps that left the system. IT and UX built the real one after I changed roles; the four rules below are how this recreation makes it safe to press. My portfolio design, not MSK's specification.",
     steps: [
       { n: "01", title: "Show the action only when the record is ready", body: "Staff stop opening records that still need review.", note: "Ready means actionable" },
       { n: "02", title: "Make permission limits visible", body: "View-only roles see status and ownership, not a disabled mystery button.", note: "Permission is product logic" },
@@ -410,7 +410,7 @@ const en: MskCopy = {
       {
         n: "01", role: "Office Coordinator", taught: "Where people paused",
         term: "Lean Six Sigma Green Belt (Purdue) · Master of Healthcare Administration (Rutgers)",
-        body: "Both finished in this seat, while I was running a clinic's paperwork. The Green Belt is the lens that showed one filing task crossing four departments; the MHA is why the redesign survived budget talks and leadership changes.",
+        body: "Both finished in this seat, while I was running a clinic's paperwork. The Green Belt is the lens that showed one filing task crossing four departments.",
       },
       {
         n: "02", role: "Administrative Assistant", taught: "How evidence survives a room",
@@ -435,9 +435,9 @@ const en: MskCopy = {
     boundaryLabel: "Evidence boundary",
     boundaryBody:
       "The source record preserves the workflow, departments, decisions, and outcomes. Participant counts from shift observation were not recorded, so I use this evidence to explain the decisions—not to claim prevalence.",
-    mapFallback: "Tangled systems → mapped → redesigned → trusted",
+    mapFallback: "Tangled systems → mapped → redesigned → adopted",
     mapStagesAria: "Clinical system transformation stages",
-    mapStages: ["Tangled systems", "Mapped", "Redesigned", "Trusted by clinicians"],
+    mapStages: ["Tangled systems", "Mapped", "Redesigned", "Adopted organization-wide"],
   },
 
   sustainment: {
@@ -582,7 +582,7 @@ const es: MskCopy = {
     mapNodesAfter: ["Abrir cola", "Elegir doc.", "Enviar al EMR", "Archiva en historia", "Estado actualizado"],
     provenanceKicker: "Cómo se hicieron estos artefactos",
     provenanceBody:
-      "Cada pantalla y cada mapa aquí se reconstruyeron a partir de mi propia documentación del estado actual. Sin información de salud protegida, sin registros exportados y sin reproducir la interfaz del proveedor. Mostrar el flujo no exige mostrar a un paciente, así que no lo hace.",
+      "Cada pantalla y cada mapa aquí se reconstruyeron de memoria a partir de mi propia documentación del estado actual; las notas originales no se conservaron. Sin información de salud protegida, sin registros exportados y sin reproducir la interfaz del proveedor. Mostrar el flujo no exige mostrar a un paciente, así que no lo hace.",
   },
 
   blueprint: {
@@ -669,7 +669,7 @@ const es: MskCopy = {
     kicker: "El arreglo parecía un solo botón",
     title: "El botón “simple” cargaba con todo el sistema.",
     intro:
-      "Una acción reemplazó los tres pasos que salían del sistema. Todo lo que hacía seguro presionarlo tenía que ser legible antes de que alguien lo presionara.",
+      "Una acción reemplazó los tres pasos que salían del sistema. TI y UX construyeron el botón real después de que cambié de puesto; las cuatro reglas de abajo son cómo esta recreación lo hace seguro de presionar. Es mi diseño para el portafolio, no la especificación de MSK.",
     steps: [
       { n: "01", title: "Mostrar la acción solo cuando el registro está listo", body: "El personal deja de abrir registros que aún necesitan revisión.", note: "Listo significa accionable" },
       { n: "02", title: "Hacer visibles los límites de permiso", body: "Los puestos de solo lectura ven estado y responsabilidad, no un botón desactivado y misterioso.", note: "El permiso es lógica de producto" },
@@ -724,7 +724,7 @@ const es: MskCopy = {
       {
         n: "01", role: "Coordinación de oficina", taught: "Dónde se detenía la gente",
         term: "Lean Six Sigma Green Belt (Purdue) · Maestría en Administración de Salud (Rutgers)",
-        body: "Terminé ambas en este puesto, mientras llevaba el papeleo de una clínica. El Green Belt es la lente que mostró una tarea de archivo cruzando cuatro áreas; la maestría es la razón por la que el rediseño sobrevivió a las discusiones de presupuesto y a los cambios de liderazgo.",
+        body: "Terminé ambas en este puesto, mientras llevaba el papeleo de una clínica. El Green Belt es la lente que mostró una tarea de archivo cruzando cuatro áreas.",
       },
       {
         n: "02", role: "Asistencia administrativa", taught: "Cómo sobrevive la evidencia a una sala",
@@ -749,9 +749,9 @@ const es: MskCopy = {
     boundaryLabel: "Límite de la evidencia",
     boundaryBody:
       "El registro original conserva el flujo, las áreas, las decisiones y los resultados. Los conteos de participantes de la observación de turnos no se registraron, así que uso esta evidencia para explicar las decisiones, no para afirmar una prevalencia.",
-    mapFallback: "Sistemas enredados → mapeados → rediseñados → confiables",
+    mapFallback: "Sistemas enredados → mapeados → rediseñados → adoptados",
     mapStagesAria: "Etapas de transformación del sistema clínico",
-    mapStages: ["Sistemas enredados", "Mapeados", "Rediseñados", "Con la confianza del personal clínico"],
+    mapStages: ["Sistemas enredados", "Mapeados", "Rediseñados", "Adoptado en toda la institución"],
   },
 
   sustainment: {

@@ -210,3 +210,11 @@ to New Jersey National Guard COVID-19 response in 2020.
 **Answer: two separate deployments, both true.** Pentagon reporting
 happened in both. Not a contradiction. Recorded so future audits stop
 flagging it.
+
+## Claim audit — 2026-10-13 (answers from Hillary)
+
+- **$2M:** the relocated warehouse held essentially all of the $2M in
+  supplies, so "$2M in supplies" and "$2M move" are both true.
+- **Seven aid stations each used different request/reporting formats**
+  before the shared protocol — confirmed.
+- **Rank:** Captain (Army rank dates from 2019).

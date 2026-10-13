@@ -20,7 +20,7 @@ export const CLIENT_FEEDBACK: ClientFeedback[] = [
       "Hillary was timely, communicative, and diligent in ensuring that every screen and interaction was captured to a high standard.",
     name: "Lynette Yap",
     role: "Content and Community @ Mobbin",
-    context: "Client recommendation, freelance UX flow documentation project",
+    context: "Client recommendation, 2026, freelance UX flow documentation project",
   },
 ];
 
@@ -30,6 +30,6 @@ export const CLIENT_FEEDBACK_ES: ClientFeedback[] = [
       "Hillary fue puntual, comunicativa y diligente para asegurar que cada pantalla e interacción se capturara con un estándar alto.",
     name: "Lynette Yap",
     role: "Content and Community @ Mobbin",
-    context: "Recomendación de cliente, proyecto freelance de documentación de flujos UX",
+    context: "Recomendación de cliente, 2026, proyecto freelance de documentación de flujos UX",
   },
 ];

@@ -262,3 +262,30 @@ weeks."* That is a first-person adoption fix, which cannot coexist with
 Q5's "she was not present for it". Introduced 2026-08-03 in `32b067a`.
 Replaced with this file's own record: IT deprioritized the idea as too
 small a fix for the effort, and she kept raising it.
+
+## Claim audit — 2026-10-13 (answers from Hillary)
+
+Audit ran against the résumé scripts, this file, MSK News, and `git log -S`.
+
+- **Button rules** (show only when ready, visible permission limits, blocked
+  vs. not started, return to queue): *"these are settings for my portfolio
+  not a part of the button msk case."* They are the recreation's design.
+  The decisions intro now says IT and UX built the real button and these are
+  her portfolio design, not MSK's spec. Ask entries carry the same label.
+- **Paper route:** records went to imaging/scanning. The imaging step and
+  "six steps to five" stand.
+- **Admin onboarding length:** one to three weeks — confirmed.
+- **"The MHA is why the redesign survived budget talks and leadership
+  changes":** cut (she was not present after launch). Green Belt and MHA were
+  both finished as Office Coordinator — confirmed.
+- **ATD Training & Facilitation:** she holds it — keep.
+- **Current-state documentation:** she made it but no longer has it. Labels
+  now say the screens and maps were rebuilt from memory of it.
+- **Title:** "Trainer I Specialist" is the real title (the résumé's
+  "Trainer / Specialist" is the variant to fix, if anything).
+- **MSK start year:** 2018 (MSK News's "four years ago" was loose).
+- **Deployment:** 2024 deployment was on military leave from the Trainer role.
+- **Map stage "Trusted by clinicians":** → "Adopted organization-wide".
+- **Sustainment drawing:** lanes no longer show the F2/F3 cut claims; they
+  show the handoff to IT and UX, organization-wide adoption (owner-reported),
+  and compliance a month early.

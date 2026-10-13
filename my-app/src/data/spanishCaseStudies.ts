@@ -5,7 +5,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
   breadcrumb: "Grove",
   meta: "Grove · Diseño de producto · Prototipo funcional · Fase 2 de 3",
   intro:
-    "Grove es una app de cuidado de plantas. Una herramienta de IA llamada Emergent construyó una primera versión rápida y llena de funciones. Una prueba exploratoria con 5 usuarios señaló sobrecarga; el registro conservado no incluye fechas ni resultados por tarea, así que no hago una afirmación más amplia con esa prueba. Después, una encuesta de 34 personas redujo once funciones a las tres prioridades que guían la Fase 2. La encuesta registra prioridades declaradas, no comportamiento observado ni demanda de mercado.",
+    "Grove es una app de cuidado de plantas. Una herramienta de IA llamada Emergent construyó una primera versión rápida y llena de funciones. Una prueba exploratoria con 5 usuarios, entre marzo y mayo de 2026, señaló sobrecarga; el registro conservado no incluye resultados por tarea, así que no hago una afirmación más amplia con esa prueba. Después, una encuesta de 34 personas redujo once funciones a las tres prioridades que guían la Fase 2. La encuesta registra prioridades declaradas, no comportamiento observado ni demanda de mercado.",
   stats: [
     { label: "Rol", value: "Diseñadora de producto (en solitario)" },
     { label: "Muestra", value: "34 respuestas de encuesta" },
@@ -43,7 +43,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
       title: "Agrupé las plantas por dónde viven, no en una sola lista larga",
       body: [
         "Otras apps meten todas las plantas en una sola lista larga. Abruma — ¿por dónde empiezas? Grove agrupa las plantas por dónde viven: la ventana de la cocina, el estante de la sala, la recámara. Cada pantalla responde una sola pregunta: ¿qué grupo estoy viendo? Un usuario nuevo solo ve una tarea al día.",
-        "También anoté las cinco decisiones donde le dije que no a la IA: el tono que hace sentir culpa, las recompensas tipo juego, la falsa certeza al identificar una planta, la seguridad para mascotas, y las notificaciones demasiado frecuentes. Cada una respaldada por lo que dijo la encuesta.",
+        "También anoté las cuatro decisiones donde le dije que no a la IA: el tono que hace sentir culpa, las recompensas tipo juego, la falsa certeza al identificar una planta y la seguridad para mascotas. Cada una respaldada por lo que dijo la encuesta. La quinta es un error mío: la lógica del calendario de riego, que todavía estoy corrigiendo.",
         "Hay una sexta, y es la que estoy diseñando ahora. La IA armó un calendario de riego: cada planta con su intervalo fijo. Pero regar de más mata más plantas de interior que olvidarlas, y un intervalo fijo es justo como pasa. El recordatorio va a pedirte que revises, no que riegues: “Ficus lirado — revisa la primera pulgada de tierra.” Mi propia guía de cuidado ya lo decía; el motor de recordatorios no se había puesto al día.",
       ],
     },

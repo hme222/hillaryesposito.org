@@ -108,3 +108,17 @@ retest not yet run.
 - TODO: headline/positioning language not yet written against
   `positioning.md` — Track B/range framing, not competing with MSK/Logistics
   on stakes it doesn't have
+
+## Claim audit — 2026-10-13 (answers from Hillary)
+
+- **"First build" notifications** ("Why did you forget me?", "counting on
+  you", "your plant misses you"): illustrative, not Emergent copy (no trace in
+  any Grove commit). Relabeled "The tone, illustrated"; the table row keeps
+  "Guilt and urgency." without the quote.
+- **"Nudge whenever engagement dips":** row removed. Five product calls now.
+- **Usability test:** March–May 2026, 5 users — confirmed; Spanish now matches.
+- **"Corrected its tone five times":** confirmed.
+- **Recomputed from the raw export:** light confidence new owners n=12 mean
+  2.42, experienced n=14 mean 3.43; pet safety was a checkbox — 4 of 12 new
+  owners picked it as among the most stressful parts of care (not unprompted);
+  "exactly where to place a plant" was picked by 2 people, neither new.

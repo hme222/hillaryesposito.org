@@ -125,7 +125,7 @@ export default function FlagshipMobbin() {
             <article><span>The mechanical part</span><h3>Capture the screen</h3><p>Any tool can do this part.</p></article>
             <article><span>The actual work</span><h3>Decide what travels</h3><p>Choose the task, sequence, cuts, and searchable label.</p></article>
           </div>
-          <div className="fp-journalLine"><span>What I got wrong</span><b>My first batch used my vocabulary. Revisions dropped by half after I learned Mobbin’s.</b></div>
+          <div className="fp-journalLine"><span>What I got wrong</span><b>My first batch used my vocabulary. Revisions dropped once I learned Mobbin’s.</b></div>
         </div>
       </section>
 

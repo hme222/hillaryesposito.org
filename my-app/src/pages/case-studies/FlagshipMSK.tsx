@@ -37,7 +37,7 @@ const CHAPTERS: CaseStudyChapter[] = [
 const ROLE_METHODS: Record<string, { term: string; body: string }> = {
   "01": {
     term: "Lean Six Sigma Green Belt (Purdue) · Master of Healthcare Administration (Rutgers)",
-    body: "Both finished in this seat, while I was running a clinic's paperwork. The Green Belt is the lens that showed one filing task crossing four departments; the MHA is why the redesign survived budget talks and leadership changes.",
+    body: "Both finished in this seat, while I was running a clinic's paperwork. The Green Belt is the lens that showed one filing task crossing four departments.",
   },
   "02": {
     term: "Writing for the person who has to act",
@@ -53,6 +53,9 @@ const ROLE_METHODS: Record<string, { term: string; body: string }> = {
 // the sentence is describing rather than a generic row.
 const DECISION_ROW = [0, 4, 2, 3];
 
+// Claim audit 2026-10-13: Hillary confirmed these four rules are the
+// portfolio recreation's design, not part of the button MSK built (IT and UX
+// implemented it after she changed roles). The intro says so; keep it that way.
 const DECISIONS = [
   { n: "01", title: "Show the action only when the record is ready", body: "Staff stop opening records that still need review.", note: "Ready means actionable" },
   { n: "02", title: "Make permission limits visible", body: "View-only roles see status and ownership, not a disabled mystery button.", note: "Permission is product logic" },
@@ -232,7 +235,7 @@ export default function FlagshipMSK() {
               <div><dt>Role</dt><dd>Service design · process improvement · UX/product</dd></div>
               <div><dt>My contribution</dt><dd>Diagnose · map · validate feasibility · pitch</dd></div>
               <div><dt>Implementation</dt><dd>Built later by IT and UX after my role changed</dd></div>
-              <div><dt>Evidence</dt><dd>Patient-free reconstruction from my current-state documentation</dd></div>
+              <div><dt>Evidence</dt><dd>Patient-free reconstruction from memory of my current-state documentation</dd></div>
             </dl>
             <a className="rp-cta" href="#msk-workflow">See the workflow →</a>
           </div>
@@ -262,7 +265,7 @@ export default function FlagshipMSK() {
               the page are the reminder; this is the reasoning behind them. */}
           <div className="rp-note rp-reveal">
             <p className="rp-note__k">How these artifacts were made</p>
-            <p>Rebuilt from my current-state documentation. No patient data, exported records, or vendor interface.</p>
+            <p>Rebuilt from memory of my current-state documentation. No patient data, exported records, or vendor interface.</p>
           </div>
           {/* These two lists are the text alternative for the aria-hidden map,
               so they stay. What went was the pair of paragraphs under them —
@@ -300,7 +303,7 @@ export default function FlagshipMSK() {
         languageAnchor="msk-decisions"
         kicker="The fix looked like one button"
         title="The “simple” button carried the whole system."
-        intro="One action replaced the three steps that left the system. Everything that made it safe to press had to be legible before anyone pressed it."
+        intro="One action replaced the three steps that left the system. IT and UX built the real one after I changed roles; the four rules below are how this recreation makes it safe to press. My portfolio design, not MSK's specification."
         steps={DECISIONS}
         visual={(active) => (
           <div className="fp-dashboardFrame fp-dashboardFrame--story">
@@ -372,10 +375,10 @@ export default function FlagshipMSK() {
             <p>Workflow, departments, decisions, and outcomes survive. Observation counts do not; no prevalence claim is made.</p>
           </aside>
           <div className="fp-mapWrap rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "270ms" } as React.CSSProperties}>
-            <Suspense fallback={<div className="fp-mapFallback">Tangled systems → mapped → redesigned → trusted</div>}>
+            <Suspense fallback={<div className="fp-mapFallback">Tangled systems → mapped → redesigned → adopted</div>}>
               <MSKSystemMap />
             </Suspense>
-            <ol aria-label="Clinical system transformation stages"><li>Tangled systems</li><li>Mapped</li><li>Redesigned</li><li>Trusted by clinicians</li></ol>
+            <ol aria-label="Clinical system transformation stages"><li>Tangled systems</li><li>Mapped</li><li>Redesigned</li><li>Adopted organization-wide</li></ol>
           </div>
         </div>
       </section>

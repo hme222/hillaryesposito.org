@@ -61,7 +61,7 @@ const MVP_FEATURES = [
 const OUTCOMES = [
   { n: "34", l: "plant owners surveyed before any screen changed" },
   { n: "3", l: "features that earn the download; everything else waits" },
-  { n: "6", l: "product calls made explicit, including one care-logic mistake" },
+  { n: "5", l: "product calls made explicit, including one care-logic mistake" },
 ];
 
 const SCREENS = [
@@ -105,11 +105,10 @@ const DECISIONS = [
 
 // Decisions from the first build, with one correction still being designed.
 const OVERRIDES: Array<{ topic: string; ai: string; me: string; why: string; next?: boolean }> = [
-  { topic: "Reminder tone", ai: "Guilt and urgency: “your plant misses you.”", me: "One calm morning summary.", why: "Notifications are the #1 reason people delete a plant app." },
+  { topic: "Reminder tone", ai: "Guilt and urgency.", me: "One calm morning summary.", why: "Notifications are the #1 reason people delete a plant app." },
   { topic: "Gamification", ai: "Badges and streaks.", me: "An AI plant personality you earn: a feeling, not points.", why: "Care that feels like paperwork is the top reason people quit. A streak also rewards watering every day, while overwatering is the most common way people kill houseplants. The optimal play would kill the subject of the product. The honest cost: calm should show lower 7-day engagement than streaks would. I’d take that trade if 90-day retention holds. If it doesn’t, the mechanic was doing work I underestimated, and I’d rather find that out than assume it." },
   { topic: "Plant ID confidence", ai: "One confident answer, every time.", me: "Top guesses, how sure it is, and its sources.", why: "False certainty is the fastest way to lose trust." },
   { topic: "Pet safety", ai: "Generic care tips.", me: "Toxic-to-pets warnings the moment you add a plant, with sources.", why: "4 of 12 new owners picked pet safety as one of the most stressful parts of plant care. When a plant can hurt a cat, a wrong guess isn’t a suggestion. It’s a risk." },
-  { topic: "Notification frequency", ai: "Nudge whenever engagement dips.", me: "One summary per group; only true emergencies interrupt.", why: "A reminder can never become the reason someone leaves." },
   { topic: "Watering schedule", next: true, ai: "A fixed calendar, with every plant on its own repeating interval and days overdue.", me: "The reminder asks you to check, not to water: “Fiddle Leaf: check the top inch.” Two taps: watered, or not yet.", why: "Overwatering kills more houseplants than neglect, and a fixed interval is exactly how it happens. My own care guide already says “water when the top inch is dry.” The reminder engine never caught up to it. Asking you to check makes the reminder correct, makes seasonality free, and turns “smart care reminders” from a label into a mechanism. This is the one I got wrong in the same direction as the first build: I corrected its tone five times and never once its logic." },
 ];
 
@@ -402,7 +401,10 @@ export default function RisoGrove() {
           <p className="rp-lede">Remove guilt. Preserve one useful next action.</p>
           <div className="rp-pushback rp-reveal" data-evidence="true">
             <div className="rp-notif rp-notif--ai">
-              <p className="rp-notif__tag">First build</p>
+              {/* Claim audit 2026-10-13: these three are illustrations of the guilt
+                  tone, not copy from the Emergent build (no trace in the Grove repo;
+                  Hillary confirmed). Labeled as such. */}
+              <p className="rp-notif__tag">The tone, illustrated</p>
               <div className="rp-notif__card"><span className="rp-notif__app">Grove · now</span><p className="rp-notif__msg">I’m thirsty. Why did you forget me?</p></div>
               <div className="rp-notif__card"><span className="rp-notif__app">Grove · 2h ago</span><p className="rp-notif__msg">Your Pothos is struggling. Don’t let it down.</p></div>
               <div className="rp-notif__card"><span className="rp-notif__app">Grove · 5h ago</span><p className="rp-notif__msg">3 plants are counting on you today.</p></div>
@@ -431,7 +433,7 @@ export default function RisoGrove() {
             <div><dt>Boundary</dt><dd>Faster output is not evidence. Uncertain recommendations still need confidence, sources, and human review.</dd></div>
           </dl>
 
-          <h3 className="rp-subhead">All six calls, in full</h3>
+          <h3 className="rp-subhead">All five calls, in full</h3>
           <div className="rp-accordion rp-reveal" data-evidence="true">
             {OVERRIDES.map((o, i) => (
               <details className="rp-acc" key={o.topic}>

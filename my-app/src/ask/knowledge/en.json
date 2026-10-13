@@ -49,7 +49,7 @@
   {
    "id": "en:msk-start:4",
    "lang": "en",
-   "text": "Patient-free reconstruction from my current-state documentation",
+   "text": "Patient-free reconstruction from memory of my current-state documentation",
    "source": {
     "type": "page",
     "label": "MSK case study · A filing queue replaced a four-department paper detour.",
@@ -115,7 +115,7 @@
   {
    "id": "en:msk-workflow:2",
    "lang": "en",
-   "text": "Rebuilt from my current-state documentation. No patient data, exported records, or vendor interface.",
+   "text": "Rebuilt from memory of my current-state documentation. No patient data, exported records, or vendor interface.",
    "source": {
     "type": "page",
     "label": "MSK case study · One map made four departments see the same failure.",
@@ -335,7 +335,7 @@
   {
    "id": "en:msk-decisions:1",
    "lang": "en",
-   "text": "One action replaced the three steps that left the system. Everything that made it safe to press had to be legible before anyone pressed it.",
+   "text": "One action replaced the three steps that left the system. IT and UX built the real one after I changed roles; the four rules below are how this recreation makes it safe to press. My portfolio design, not MSK's specification.",
    "source": {
     "type": "page",
     "label": "MSK case study · The “simple” button carried the whole system.",
@@ -346,7 +346,7 @@
   {
    "id": "en:msk-decisions:2",
    "lang": "en",
-   "text": "01 Show the action only when the record is ready Staff stop opening records that still need review. DECISION LOG Ready means actionable",
+   "text": "MSK recreation rule (portfolio design, not MSK's spec): 01 Show the action only when the record is ready Staff stop opening records that still need review. DECISION LOG Ready means actionable",
    "source": {
     "type": "page",
     "label": "MSK case study · The “simple” button carried the whole system.",
@@ -390,7 +390,7 @@
   {
    "id": "en:msk-decisions:6",
    "lang": "en",
-   "text": "02 Make permission limits visible View-only roles see status and ownership, not a disabled mystery button. DECISION LOG Permission is product logic",
+   "text": "MSK recreation rule (portfolio design, not MSK's spec): 02 Make permission limits visible View-only roles see status and ownership, not a disabled mystery button. DECISION LOG Permission is product logic",
    "source": {
     "type": "page",
     "label": "MSK case study · The “simple” button carried the whole system.",
@@ -434,7 +434,7 @@
   {
    "id": "en:msk-decisions:10",
    "lang": "en",
-   "text": "03 Separate blocked from not started Exceptions get a reason and an owner, so the backlog stops hiding them. DECISION LOG Blocked needs an owner",
+   "text": "MSK recreation rule (portfolio design, not MSK's spec): 03 Separate blocked from not started Exceptions get a reason and an owner, so the backlog stops hiding them. DECISION LOG Blocked needs an owner",
    "source": {
     "type": "page",
     "label": "MSK case study · The “simple” button carried the whole system.",
@@ -478,7 +478,7 @@
   {
    "id": "en:msk-decisions:14",
    "lang": "en",
-   "text": "04 Return people to the queue Staff land back where they started, status updated. DECISION LOG Preserve place and context",
+   "text": "MSK recreation rule (portfolio design, not MSK's spec): 04 Return people to the queue Staff land back where they started, status updated. DECISION LOG Preserve place and context",
    "source": {
     "type": "page",
     "label": "MSK case study · The “simple” button carried the whole system.",
@@ -643,7 +643,7 @@
   {
    "id": "en:msk-systems:1",
    "lang": "en",
-   "text": "01 Office Coordinator Where people paused THE METHOD IT GAVE ME Lean Six Sigma Green Belt (Purdue) · Master of Healthcare Administration (Rutgers) Both finished in this seat, while I was running a clinic's paperwork. The Green Belt is the lens that showed one filing task crossing four departments; the MHA is why the redesign survived budget talks and leadership changes.",
+   "text": "01 Office Coordinator Where people paused THE METHOD IT GAVE ME Lean Six Sigma Green Belt (Purdue) · Master of Healthcare Administration (Rutgers) Both finished in this seat, while I was running a clinic's paperwork. The Green Belt is the lens that showed one filing task crossing four departments.",
    "source": {
     "type": "page",
     "label": "MSK case study · I learned the system from the floor up.",
@@ -654,7 +654,7 @@
   {
    "id": "en:msk-systems:2",
    "lang": "en",
-   "text": "Both finished in this seat, while I was running a clinic's paperwork. The Green Belt is the lens that showed one filing task crossing four departments; the MHA is why the redesign survived budget talks and leadership changes.",
+   "text": "Both finished in this seat, while I was running a clinic's paperwork. The Green Belt is the lens that showed one filing task crossing four departments.",
    "source": {
     "type": "page",
     "label": "MSK case study · I learned the system from the floor up.",
@@ -1457,7 +1457,7 @@
   {
    "id": "en:grove-override:2",
    "lang": "en",
-   "text": "I’m thirsty. Why did you forget me?",
+   "text": "Illustration of the guilt tone (not copy from the app): I’m thirsty. Why did you forget me?",
    "source": {
     "type": "page",
     "label": "Grove case study · Reminders that protect the care task.",
@@ -1468,7 +1468,7 @@
   {
    "id": "en:grove-override:3",
    "lang": "en",
-   "text": "Your Pothos is struggling. Don’t let it down.",
+   "text": "Illustration of the guilt tone (not copy from the app): Your Pothos is struggling. Don’t let it down.",
    "source": {
     "type": "page",
     "label": "Grove case study · Reminders that protect the care task.",
@@ -1479,7 +1479,7 @@
   {
    "id": "en:grove-override:4",
    "lang": "en",
-   "text": "3 plants are counting on you today.",
+   "text": "Illustration of the guilt tone (not copy from the app): 3 plants are counting on you today.",
    "source": {
     "type": "page",
     "label": "Grove case study · Reminders that protect the care task.",
@@ -1556,7 +1556,7 @@
   {
    "id": "en:grove-override:11",
    "lang": "en",
-   "text": "FIRST BUILDGuilt and urgency: “your plant misses you.”",
+   "text": "FIRST BUILDGuilt and urgency.",
    "source": {
     "type": "page",
     "label": "Grove case study · Reminders that protect the care task.",
@@ -1678,39 +1678,6 @@
    "id": "en:grove-override:22",
    "lang": "en",
    "text": "4 of 12 new owners picked pet safety as one of the most stressful parts of plant care. When a plant can hurt a cat, a wrong guess isn’t a suggestion. It’s a risk.",
-   "source": {
-    "type": "page",
-    "label": "Grove case study · Reminders that protect the care task.",
-    "url": "/case-study/grove/#grove-override"
-   },
-   "batch": 1
-  },
-  {
-   "id": "en:grove-override:23",
-   "lang": "en",
-   "text": "FIRST BUILDNudge whenever engagement dips.",
-   "source": {
-    "type": "page",
-    "label": "Grove case study · Reminders that protect the care task.",
-    "url": "/case-study/grove/#grove-override"
-   },
-   "batch": 1
-  },
-  {
-   "id": "en:grove-override:24",
-   "lang": "en",
-   "text": "DECISIONOne summary per group; only true emergencies interrupt.",
-   "source": {
-    "type": "page",
-    "label": "Grove case study · Reminders that protect the care task.",
-    "url": "/case-study/grove/#grove-override"
-   },
-   "batch": 1
-  },
-  {
-   "id": "en:grove-override:25",
-   "lang": "en",
-   "text": "A reminder can never become the reason someone leaves.",
    "source": {
     "type": "page",
     "label": "Grove case study · Reminders that protect the care task.",
@@ -2744,7 +2711,7 @@
   {
    "id": "en:about-proof:1",
    "lang": "en",
-   "text": "Lynette Yap Content and Community @ Mobbin Client recommendation, freelance UX flow documentation project",
+   "text": "Lynette Yap Content and Community @ Mobbin Client recommendation, 2026, freelance UX flow documentation project",
    "source": {
     "type": "page",
     "label": "About · How clients describe working with me.",

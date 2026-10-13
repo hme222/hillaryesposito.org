@@ -324,7 +324,7 @@
   {
    "id": "es:es-grove-start:0",
    "lang": "es",
-   "text": "Grove es una app de cuidado de plantas. Una herramienta de IA llamada Emergent construyó una primera versión rápida y llena de funciones. Una prueba exploratoria con 5 usuarios señaló sobrecarga; el registro conservado no incluye fechas ni resultados por tarea, así que no hago una afirmación más amplia con esa prueba. Después, una encuesta de 34 personas redujo once funciones a las tres prioridades que guían la Fase 2. La encuesta registra prioridades declaradas, no comportamiento observado ni demanda de mercado.",
+   "text": "Grove es una app de cuidado de plantas. Una herramienta de IA llamada Emergent construyó una primera versión rápida y llena de funciones. Una prueba exploratoria con 5 usuarios, entre marzo y mayo de 2026, señaló sobrecarga; el registro conservado no incluye resultados por tarea, así que no hago una afirmación más amplia con esa prueba. Después, una encuesta de 34 personas redujo once funciones a las tres prioridades que guían la Fase 2. La encuesta registra prioridades declaradas, no comportamiento observado ni demanda de mercado.",
    "source": {
     "type": "page",
     "label": "Estudio de caso Grove · Once funciones se convirtieron en tres",
@@ -445,7 +445,7 @@
   {
    "id": "es:es-grove-decisions:1",
    "lang": "es",
-   "text": "También anoté las cinco decisiones donde le dije que no a la IA: el tono que hace sentir culpa, las recompensas tipo juego, la falsa certeza al identificar una planta, la seguridad para mascotas, y las notificaciones demasiado frecuentes. Cada una respaldada por lo que dijo la encuesta.",
+   "text": "También anoté las cuatro decisiones donde le dije que no a la IA: el tono que hace sentir culpa, las recompensas tipo juego, la falsa certeza al identificar una planta y la seguridad para mascotas. Cada una respaldada por lo que dijo la encuesta. La quinta es un error mío: la lógica del calendario de riego, que todavía estoy corrigiendo.",
    "source": {
     "type": "page",
     "label": "Estudio de caso Grove · Agrupé las plantas por dónde viven, no en una sola lista larga",
@@ -786,7 +786,7 @@
   {
    "id": "es:about-proof:1",
    "lang": "es",
-   "text": "Lynette Yap Content and Community @ Mobbin Recomendación de cliente, proyecto freelance de documentación de flujos UX",
+   "text": "Lynette Yap Content and Community @ Mobbin Recomendación de cliente, 2026, proyecto freelance de documentación de flujos UX",
    "source": {
     "type": "page",
     "label": "Sobre mí · Cómo los clientes describen trabajar conmigo.",
