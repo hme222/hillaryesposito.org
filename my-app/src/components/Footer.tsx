@@ -94,6 +94,10 @@ export default function Footer() {
         <div className="site-footer__lead">
           <p className="site-footer__eyebrow">{t("footer.eyebrow")}</p>
           <p className="site-footer__statement">{t("footer.statement")}</p>
+          <p className="site-footer__signoff">
+            {t("footer.signoff")}{" "}
+            <a href="mailto:espositohillary@gmail.com">{t("footer.signoffLink")}</a>
+          </p>
         </div>
 
         <nav className="site-footer__column" aria-label={t("footer.siteAria")}>

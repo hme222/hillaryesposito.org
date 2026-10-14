@@ -397,6 +397,14 @@
   grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(9rem, .7fr));
   padding-bottom: var(--sp-sm);
 }
+.site-footer__signoff {
+  margin: var(--sp-sm) 0 0;
+}
+.site-footer__signoff a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
 .site-footer--compact .site-footer__statement {
   text-wrap: balance;
   font-size: clamp(2rem, 3.5vw, 3.7rem);

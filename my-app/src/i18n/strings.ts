@@ -19,7 +19,9 @@ const en = {
 
   // ── Global footer + recovery ──
   "footer.eyebrow": "Hillary Esposito · Healthcare Product Designer",
-  "footer.statement": "Functional software, carefully made.",
+  "footer.statement": "Made by someone who's filed the paperwork.",
+  "footer.signoff": "Still here?",
+  "footer.signoffLink": "Email me.",
   "footer.siteAria": "Footer navigation",
   "footer.explore": "Explore",
   "footer.connect": "Contact",
@@ -228,7 +230,9 @@ const es: Partial<Record<StringKey, string>> = {
 
   // ── Global footer + recovery ──
   "footer.eyebrow": "Hillary Esposito · Diseñadora de productos de salud",
-  "footer.statement": "Software funcional, hecho con cuidado.",
+  "footer.statement": "Hecho por alguien que ya llenó el papeleo.",
+  "footer.signoff": "¿Sigue aquí?",
+  "footer.signoffLink": "Escríbame.",
   "footer.siteAria": "Navegación del pie de página",
   "footer.explore": "Explorar",
   "footer.connect": "Contacto",
