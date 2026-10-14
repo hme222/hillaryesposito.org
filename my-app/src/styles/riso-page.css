@@ -2782,7 +2782,10 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
    here. `flex: 0 0 auto` so the row above wraps it to its own line rather
    than shrinking it or forcing the breadcrumb trail to scroll alongside
    it. */
-.rp-breadcrumbTour { flex: 0 0 auto; padding-block: 0; }
+/* max-width: the Spanish label ("Abrir el recorrido de 90 segundos (en
+   inglés)") is wider than a 320–375px row; capped, it wraps inside the button
+   instead of running past the screen edge. */
+.rp-breadcrumbTour { flex: 0 0 auto; max-width: 100%; padding-block: 0; text-align: start; }
 @media (max-width: 400px) {
   .rp-breadcrumb { font-size: .58rem; letter-spacing: .06em; }
 }
