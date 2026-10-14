@@ -50,8 +50,10 @@ describe("Footer", () => {
       root.render(<Footer />);
     });
 
-    const email = container.querySelector<HTMLAnchorElement>('a[href="mailto:espositohillary@gmail.com"]');
-    expect(email?.textContent).toBe("footer.email");
+    const emails = Array.from(
+      container.querySelectorAll<HTMLAnchorElement>('a[href="mailto:espositohillary@gmail.com"]')
+    ).map((a) => a.textContent);
+    expect(emails).toEqual(["footer.signoffLink", "footer.email"]);
 
     const resume = container.querySelector<HTMLAnchorElement>(
       'a[href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"]'
