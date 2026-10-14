@@ -14,6 +14,7 @@ import MSKSustainment from "../../components/MSKSustainment";
 import RisoDefs from "../../components/riso/RisoDefs";
 import CartoField from "../../components/riso/CartoField";
 import SpanishCaseStudy from "../../components/SpanishCaseStudy";
+import Term from "../../components/Term";
 import { MSK_ES } from "../../data/spanishCaseStudies";
 import useFlagshipReveal from "../../hooks/useFlagshipReveal";
 import usePageTitle from "../../hooks/usePageTitle";
@@ -24,7 +25,7 @@ import "../../styles/flagship-case-study.css";
 const MSKSystemMap = lazy(() => import("../../components/MSKSystemMap"));
 
 const CHAPTERS: CaseStudyChapter[] = [
-  { id: "msk-start", label: "Start", note: "Digital records, printed to be filed digitally" },
+  { id: "msk-start", label: "Start", note: "Portal messages, printed to reach the chart" },
   { id: "msk-brief", label: "Problem", note: "A digital workflow became a paper ritual" },
   { id: "msk-workflow", label: "Workflow", note: "A filing queue replaced the workaround" },
   { id: "msk-decisions", label: "Decisions", note: "The simple button was not simple" },
@@ -36,7 +37,7 @@ const CHAPTERS: CaseStudyChapter[] = [
 const ROLE_METHODS: Record<string, { term: string; body: string }> = {
   "01": {
     term: "Lean Six Sigma Green Belt (Purdue) · Master of Healthcare Administration (Rutgers)",
-    body: "Both finished in this seat, while I was running a clinic's paperwork. The Green Belt is the lens that showed one filing task crossing four departments.",
+    body: "Both finished in this seat, while I was running a clinic's paperwork. The Green Belt, a process-improvement certification, is the lens that showed one filing task crossing four departments.",
   },
   "02": {
     term: "Writing for the person who has to act",
@@ -44,7 +45,7 @@ const ROLE_METHODS: Record<string, { term: string; body: string }> = {
   },
   "03": {
     term: "Training & Facilitation (ATD) · current-state mapping",
-    body: "I instructed on Epic, HIPAA, and the compliance modules. Owning how staff were taught the system meant documenting what actually happens, not what the policy says — and the gap between the two is where the design work lives.",
+    body: "I instructed on Epic (the record software), HIPAA (the patient-privacy law), and the compliance modules. Owning how staff were taught the system meant documenting what actually happens, not what the policy says — and the gap between the two is where the design work lives.",
   },
 };
 
@@ -70,8 +71,11 @@ const ROLES = [
 
 // The text equivalent of the sustainment timeline: what happened after each
 // system shipped, limited to what msk.md supports (see the lanes' comment).
-const SURVIVED = [
-  { fact: "EMR filing workflow", what: "Owner-reported as adopted organization-wide" },
+const SURVIVED: { fact: string; what: React.ReactNode }[] = [
+  {
+    fact: "EMR filing workflow",
+    what: <><Term def="My own record, not independently measured.">Owner-reported</Term> as adopted organization-wide</>,
+  },
   { fact: "CPR certification format", what: "Department compliant a month before the original deadline — no extension needed" },
   // "Clinician onboarding — still in use after three leadership transitions"
   // was removed on 2026-08-03. The programme was not clinician onboarding, and
@@ -80,25 +84,26 @@ const SURVIVED = [
 ];
 
 // Restored from the earlier case study. The outcome metrics named certification
-// and onboarding but the page no longer said what actually changed in either —
-// the "70% efficiency gain" was a number with no mechanism under it.
+// and onboarding but the page no longer said what actually changed in either.
+// 2026-10-14: the CPR card leads with the month-early result; the 70% is gone
+// from every page (msk.md, review answer 3).
 // Each card carries a drawn mechanism (MSKMechanism). The diagrams already show
 // the detour and the one hop, the 90/60/30 warnings against expiry, and five
 // checklists collapsing into one gated path — so `change` says the thing the
 // drawing cannot, and stops narrating the thing it can.
-const REDESIGNS = [
+const REDESIGNS: { n: string; title: React.ReactNode; finding: string; change: string; wrong?: string }[] = [
   {
     n: "01",
-    title: "EMR filing workflow",
-    finding: "Digital record → paper route → missing chart context.",
+    title: <><Term def="Electronic medical record: the patient’s chart.">EMR</Term> filing workflow</>,
+    finding: "Portal message → paper route → missing chart context.",
     change: "One action where the filing decision already happened.",
     wrong: "I misjudged how small it would look to IT. They deprioritized it as not worth the effort, and I had to keep raising it to get it built.",
   },
   {
     n: "02",
     title: "CPR certification",
-    finding: "Technical legal copy stalled clinician completion.",
-    change: "Plain-language material brought every certification in 70% before the slipping deadline.",
+    finding: "Technical, legal copy kept clinicians from finishing CPR (cardiopulmonary resuscitation) certification.",
+    change: "The whole department certified a month before the original deadline, with no 4-month extension.",
   },
   {
     n: "03",
@@ -110,18 +115,18 @@ const REDESIGNS = [
 
 const WORKFLOW_BEFORE = [
   "Open the dashboard queue",
-  "Find the document",
-  "Print the digital record",
-  "Route paper to imaging",
+  "Find the message",
+  "Print the portal message",
+  "Route the paper to HIM (health information management)",
   "Wait for it to be scanned",
   "Return later to confirm filing",
 ];
 
 const WORKFLOW_AFTER = [
   "Open the dashboard queue",
-  "Select the document",
+  "Select the message",
   "Choose Send to EMR",
-  "It files inside the online chart",
+  "It files to the patient’s chart",
   "Return with status updated",
 ];
 
@@ -228,12 +233,13 @@ export default function FlagshipMSK() {
             <span className="rp-readtime"><b>6 min</b><span>read · 6 years, 3 roles</span></span>
             <p className="rp-sub">
               I diagnosed and mapped a paper detour across four departments, checked feasibility,
-              and pitched a digital filing workflow. <b>IT and UX built it after I changed roles.</b>
+              and pitched a digital filing workflow. <b>Information technology (IT) and user experience (UX) teams built it after I changed roles.</b>
             </p>
             <dl className="rp-heroEvidence" aria-label="MSK case evidence at a glance">
               <div><dt>Role</dt><dd>Service design · process improvement · UX/product</dd></div>
+              <div><dt>MSK roles</dt><dd>Office Coordinator → Administrative Assistant → Trainer I Specialist</dd></div>
               <div><dt>My contribution</dt><dd>Diagnose · map · validate feasibility · pitch</dd></div>
-              <div><dt>Implementation</dt><dd>Built later by IT and UX, after I changed roles</dd></div>
+              <div><dt>Implementation</dt><dd>Built later by <Term def="Information technology: the team that owns the systems.">IT</Term> and <Term def="User experience: the team that designs how the system works for the people using it.">UX</Term>, after I changed roles</dd></div>
               <div><dt>Evidence</dt><dd>Patient-free reconstruction from memory of my current-state documentation</dd></div>
             </dl>
             <a className="rp-cta" href="#msk-workflow">See the workflow →</a>
@@ -288,7 +294,7 @@ export default function FlagshipMSK() {
           <div className="fp-blueprintIntro rp-reveal">
             <p className="rp-kicker">Then I counted the handoffs</p>
             <h3 className="rp-title">One step removed a department.</h3>
-            <p className="rp-lede">The measurable change was six steps to five. The service change was removing an invisible handoff.</p>
+            <p className="rp-lede">The measurable change was six steps to five. The service change was removing an invisible handoff. Frontstage is work the coordinator can see; backstage happens out of sight, below the line of visibility.</p>
           </div>
           <div data-evidence="true"><MSKServiceBlueprint /></div>
         </div>
@@ -384,8 +390,8 @@ export default function FlagshipMSK() {
       <section className="rp-section" id="msk-sustainment" data-language-anchor="msk-outcomes">
         <div className="rp-wrap">
           <p className="rp-kicker">The real test came later</p>
-          <h2 className="rp-title">Most internal tools die quietly. These did not.</h2>
-          <p className="rp-lede">Adoption is the launch metric. Sustainment is the service metric.</p>
+          <h2 className="rp-title">I left before launch. Here’s what happened next.</h2>
+          <p className="rp-lede">I handed the workflow to IT and UX, who built it. It was adopted organization-wide (owner-reported: my own record, not independently measured).</p>
           <figure className="fp-sustainmentFig rp-reveal" data-evidence="true">
             <MSKSustainment />
             <figcaption>What happened after each one shipped</figcaption>
@@ -412,23 +418,27 @@ export default function FlagshipMSK() {
         kicker="What it added up to"
         title="The numbers, and who they belong to."
         intro="I initiated and presented the filing redesign, rewrote clinician certification material, and rebuilt administrative onboarding with the design team."
-        disclaimer="Anonymized evidence · owner-reported outcomes · the 20% figure belongs to a larger organization-wide initiative, not the filing queue alone; original period and cost definition are not preserved"
+        disclaimer="Anonymized evidence · owner-reported outcomes · the 20% figure belongs to a larger organization-wide initiative, not the filing queue alone; original period and cost definition are not preserved · the ~$1M/year is a projection from my pitch, not measured savings"
         // The same discipline the certification dashboard used on its own data:
         // say what you are looking at before someone has to work it out. All
         // three read as equal tiles otherwise, and "organization-wide" made the
         // most qualified number sound like the biggest one.
+        // Four tiles since 2026-10-14 (msk.md, review answers 3–4): the
+        // month-early CPR result leads, and the ~$1M/year sits beside the 20%
+        // and 21,000+ as a labelled projection, never as measured savings.
         metrics={[
-          { tag: "Led", n: "70%", label: "ahead of deadline — every CPR certification came in early, on a deadline about to be pushed back" },
+          { tag: "Led", n: "1 month", label: "early: the whole department certified before the original deadline, with no 4-month extension" },
           { tag: "Scope", n: "21,000+", label: "clinicians and administrative staff across the workflows in scope — not queue adoption" },
           { tag: "Initiative result", n: "20%", label: "organization-wide EMR cost reduction; not attributed solely to this filing workflow" },
+          { tag: "Projection", n: "~$1M/year", label: "projected paper savings in my Process Improvement Fair pitch, not measured savings" },
         ]}
         route={["Observe the real work", "Map the failure", "Align the system", "Ship what lasts"]}
       /></div>
 
       <section className="rp-section">
         <div className="rp-wrap rp-close">
-          <h2>Designing a system people cannot afford to distrust?</h2>
-          <p>I know how to find the workaround, make it visible, and turn it into a product decision a complicated organization can actually ship.</p>
+          <h2>I find the workaround. Then I get it built.</h2>
+          <p>I map it so every department sees the same failure, then turn it into a decision the organization will build.</p>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
           <ShareCaseStudy title="MSK — a case study by Hillary Esposito" />
         </div>

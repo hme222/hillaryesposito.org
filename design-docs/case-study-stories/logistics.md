@@ -218,3 +218,20 @@ flagging it.
 - **Seven aid stations each used different request/reporting formats**
   before the shared protocol — confirmed.
 - **Rank:** Captain (Army rank dates from 2019).
+
+## 2026-10-14 review — applied
+
+Item 17 of Hillary's 2026-10-14 review, applied on the `copy-review` branch.
+Each of the three move cards gained one sentence, sourced only from this file:
+
+- Move 01: the phased move, most essential first, with personnel split so
+  no aid station went unsupplied (Q1/Q2 Chapter 1).
+- Move 02: training each site on how to order and what each order status
+  meant (Q1/Draft brief Chapter 2).
+- Move 03: "going black" as the failure the shared order status was built
+  against. This file defines it as running out of supplies (Q5 Chapter 2),
+  so the copy says that. The review brief glossed it as "losing contact";
+  that reading is not in this file and was not used. **Confirm with Hillary.**
+
+Hero contribution line: "Plan the move · build shared tracking · train the
+handoffs" → "Plan the move · one request protocol · shared order status".

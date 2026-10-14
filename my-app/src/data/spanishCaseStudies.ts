@@ -19,7 +19,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
       title: "Los dueños de plantas se olvidan. Y luego se sienten culpables.",
       body: [
         "La mayoría de la gente que compra una planta quiere una sola cosa: mantenerla viva. Pero se olvidan de regarla, o la riegan de más, y de cualquier forma se sienten mal. Les pregunté a 34 dueños de plantas qué haría que una app de plantas se ganara un lugar en su teléfono. Una de las dos respuestas más comunes: “Los consejos son demasiado genéricos, no toman en cuenta mi casa.” Lo que más rápido hace que borren una app, dicho por 11 de 34 sin que se lo preguntara: demasiadas notificaciones. Una persona lo resumió así: “El cuidado de plantas debería sentirse tranquilo y sano, no estresante.”",
-        "El punto débil: en lo que peor están los dueños nuevos es en la luz — dónde poner una planta, y por qué. Ninguna app grande lo enseña. Los dueños nuevos calificaron su confianza sobre la luz en 2.4 de 5 (n=12); los experimentados, en 3.4 (n=14). Ahí, más la confianza, es donde Grove gana o no gana.",
+        "El punto débil: en lo que peor están los dueños nuevos es en la luz — dónde poner una planta, y por qué. Ninguna app grande lo enseña. Los dueños nuevos calificaron su confianza sobre la luz en 2.4 de 5 (12 personas); los experimentados, en 3.4 (14 personas). Ahí, más la confianza, es donde Grove gana o no gana.",
       ],
     },
     {
@@ -69,6 +69,10 @@ export const GROVE_ES: SpanishCaseStudyData = {
     { title: "Más de 200 pantallas por app, buscables por tarea", desc: "Mobbin · Más de 200 pantallas por app, documentadas como referencias paso a paso.", path: "/case-study/mobbin" },
     { title: "Las propias palabras del estudiante son la prueba", desc: "Knowunity · Prototipo de recuerdo activo por voz, de un sprint de diseño; recuerdo simulado.", path: "/case-study/knowunity" },
   ],
+  close: {
+    title: "Diseño los estados de duda.",
+    body: "Las mejores opciones, qué tan segura está y de dónde salió: la identificación de plantas de Grove es mi versión pequeña de un problema que también tienen las herramientas clínicas.",
+  },
 };
 
 export const MSK_ES: SpanishCaseStudyData = {
@@ -76,11 +80,12 @@ export const MSK_ES: SpanishCaseStudyData = {
   breadcrumb: "Memorial Sloan Kettering",
   meta: "Memorial Sloan Kettering · UX y diseño de producto · Sistemas de salud",
   intro:
-    "Durante seis años en MSK, trabajé en flujos clínicos, certificación e incorporación de personal para sistemas cuyo alcance incluía a más de 21,000 profesionales clínicos y administrativos. En el flujo de archivo, diagnostiqué y mapeé un desvío en papel, verifiqué su viabilidad y propuse una solución digital. Los equipos de TI y UX la implementaron después de que cambié de puesto. Este trabajo muestra diseño aplicado a herramientas internas, permisos, estados y adopción en un entorno de salud real.",
+    "Durante seis años en MSK, en tres puestos, trabajé en flujos clínicos, certificación e incorporación de personal para sistemas cuyo alcance incluía a más de 21,000 profesionales clínicos y administrativos. Los mensajes del portal de pacientes vivían en el portal, no en la historia clínica, así que el personal los imprimía para escanearlos. Mapeé ese desvío entre cuatro áreas, verifiqué su viabilidad y propuse una solución digital. Los equipos de TI (tecnología de la información) y UX (experiencia de usuario) la implementaron después de que cambié de puesto.",
   stats: [
     { label: "Rol", value: "Sistemas de salud → UX y diseño de producto" },
     { label: "Organización", value: "Memorial Sloan Kettering Cancer Center" },
     { label: "Escala", value: "21,000+ clínicos y personal" },
+    { label: "Puestos en MSK", value: "Coordinación de oficina → Asistencia administrativa → Especialista de capacitación I" },
     { label: "Contribución", value: "Diagnóstico · mapa · viabilidad · propuesta" },
     { label: "Implementación", value: "Construida después por TI y UX" },
   ],
@@ -91,6 +96,7 @@ export const MSK_ES: SpanishCaseStudyData = {
       title: "Diseñar para sistemas donde el error tiene\u00a0consecuencias",
       body: [
         "El trabajo no era hacer pantallas bonitas. Era entender dónde fallaba el flujo real, alinear a clínicos, líderes y TI, y cambiar herramientas que las personas usaban bajo presión.",
+        "Cada mensaje impreso es una oportunidad de que la información del paciente circule, se archive en la historia equivocada o se pierda antes de la siguiente consulta.",
       ],
     },
     {
@@ -98,7 +104,7 @@ export const MSK_ES: SpanishCaseStudyData = {
       eyebrow: "EMR",
       title: "De imprimir y enviar a una acción directa desde el dashboard",
       body: [
-        "El rediseño de EMR consistió en agregar una acción directa en el dashboard que llevaba al EMR en línea. Antes, el equipo imprimía, enviaba a otro sitio y esperaba que se archivara. Después, el flujo redujo pasos y quitó trabajo duplicado.",
+        "El rediseño consistió en agregar una acción directa en el panel que archivaba el mensaje en el expediente médico electrónico (EMR), la historia del paciente. Antes, el personal imprimía el mensaje, lo enviaba a HIM (gestión de información de salud, el equipo que escanea documentos a la historia) y esperaba que se archivara. Después, el flujo pasó de seis pasos a cinco y un área salió del circuito.",
         "La decisión de UI fue mostrar estado, responsabilidad y acción en el mismo lugar, pero exponer la acción directa solo cuando el registro estaba listo y la persona tenía permiso.",
       ],
     },
@@ -112,8 +118,16 @@ export const MSK_ES: SpanishCaseStudyData = {
       ],
       bullets: [
         "El flujo EMR necesitó capacitación práctica en el lugar de trabajo porque las personas habían usado la solución alternativa anterior durante años.",
-        "El material de certificación de RCP estaba en lenguaje técnico y legal, y tan poca gente lo completaba que el plazo estaba a punto de aplazarse. Lo reescribí para los clínicos que tenían que completarlo: llegaron todas las certificaciones, un 70% antes del plazo.",
-        "El programa de incorporación para personal administrativo nuevo — Epic, HIPAA, los módulos de cumplimiento y las habilidades técnicas y blandas del puesto — se reconstruyó con el equipo de diseño y se curó cohorte por cohorte, para el rango real de habilidades que llegaba.",
+        "El material de certificación de RCP (reanimación cardiopulmonar) estaba en lenguaje técnico y legal, y tan poca gente lo completaba que el equipo planeaba una prórroga de 4 meses. Lo reescribí para los clínicos que tenían que completarlo: toda el área se certificó un mes antes de la fecha límite original, sin la prórroga.",
+        "El programa de incorporación para personal administrativo nuevo — Epic (el software del expediente), HIPAA (la ley de privacidad del paciente), los módulos de cumplimiento y las habilidades técnicas y blandas del puesto — se reconstruyó con el equipo de diseño y se curó cohorte por cohorte, para el rango real de habilidades que llegaba.",
+      ],
+    },
+    {
+      anchor: "msk-sustainment",
+      eyebrow: "Después",
+      title: "Me fui antes del lanzamiento. Esto es lo que pasó después.",
+      body: [
+        "Entregué el flujo a TI y UX, que lo construyeron. Se adoptó en toda la institución (dato autorreportado: mi propio registro, no una medición independiente).",
       ],
     },
     {
@@ -121,7 +135,9 @@ export const MSK_ES: SpanishCaseStudyData = {
       eyebrow: "Resultado",
       title: "Impacto medible en sistemas internos",
       body: [
-        "La iniciativa organizacional más amplia reportó una reducción de 20% en costos relacionados con EMR; no atribuyo ese resultado únicamente a la cola de archivo y el registro conservado no incluye el período ni la definición de costos. En mi trabajo directo, todas las certificaciones de RCP se recogieron un 70% antes del plazo y el programa de incorporación del personal administrativo se rediseñó para el rango de habilidades de cada cohorte.",
+        "En mi trabajo directo, toda el área se certificó en RCP un mes antes de la fecha límite original, sin la prórroga de 4 meses, y el programa de incorporación del personal administrativo se rediseñó para el rango de habilidades de cada cohorte.",
+        "La iniciativa organizacional más amplia reportó una reducción de 20% en costos relacionados con el EMR; no atribuyo ese resultado únicamente a la cola de archivo y el registro conservado no incluye el período ni la definición de costos.",
+        "En mi propuesta para la Feria de Mejora de Procesos proyecté un ahorro de ~$1M al año en papel. Es una proyección de esa propuesta, no un ahorro medido.",
       ],
     },
   ],
@@ -129,12 +145,16 @@ export const MSK_ES: SpanishCaseStudyData = {
     { title: "Once funciones se convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
     { title: "Más de 200 pantallas por app, buscables por tarea", desc: "Mobbin · Más de 200 pantallas por app, documentadas como referencias paso a paso.", path: "/case-study/mobbin" },
   ],
+  close: {
+    title: "Encuentro el desvío. Después logro que se construya.",
+    body: "Lo mapeo para que cada área vea la misma falla, y luego lo convierto en una decisión que la organización va a construir.",
+  },
 };
 
 export const MOBBIN_ES: SpanishCaseStudyData = {
   title: "Más de 200 pantallas por app, buscables por tarea",
   breadcrumb: "Mobbin",
-  meta: "Mobbin · Documentación de flujos UX · Curaduría de patrones",
+  meta: "Mobbin · Documentación de flujos de experiencia de usuario (UX) · Curaduría de patrones",
   intro:
     "Trabajo freelance para Mobbin documentando experiencias móviles de principio a fin. Capturé, organicé y anoté flujos de tres apps de finanzas para la biblioteca de referencia Finance+. Documenté Kikoff, Polymarket y Discover; no diseñé esos productos ni Mobbin.",
   stats: [
@@ -173,6 +193,10 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
     { title: "Once funciones se convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
     { title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas", desc: "MSK · Seis años rediseñando flujos clínicos para trabajo que alcanzaba a más de 21,000 clínicos y personal administrativo.", path: "/case-study/msk" },
   ],
+  close: {
+    title: "Después de 200 pantallas por app, distingo un hábito de un patrón.",
+    body: "Algunos “patrones comunes” son hábitos que nadie cuestionó. Puedo decirle cuáles.",
+  },
 };
 
 // Condensed from FlagshipLogistics.tsx. Every figure and limit here is already
@@ -209,9 +233,9 @@ export const LOGISTICS_ES: SpanishCaseStudyData = {
         "La mudanza física eliminó el retraso más grande. Una solicitud compartida y un estado de pedidos visible evitaron que volviera.",
       ],
       bullets: [
-        "Acercar el punto de suministro: cada reabastecimiento empezaba demasiado lejos de las estaciones de ayuda. Planifiqué y di seguimiento a la mudanza de $2M. Según lo reportado, el tiempo pasó de 1–2 meses a 1–2 semanas (85% menos).",
-        "Una sola forma de pedir: siete estaciones usaban formatos distintos de solicitud y de reporte. Creé un protocolo de solicitud compartido; el expediente reporta un 15% más de eficiencia al desplegar recursos críticos.",
-        "Pedir antes de que se acabe: nadie veía el estado de los pedidos, así que unos sitios pedían de más y otros se quedaban sin nada. Creé un estado de pedidos compartido en tiempo real; el expediente reporta un 60% menos de gasto sin perder disponibilidad.",
+        "Acercar el punto de suministro: cada reabastecimiento empezaba demasiado lejos de las estaciones de ayuda. Planifiqué y di seguimiento a la mudanza de $2M. La hice por fases, de lo más esencial a lo menos, y dividí al personal para que ninguna estación de ayuda se quedara sin suministro durante la mudanza. Según lo reportado, el tiempo pasó de 1–2 meses a 1–2 semanas (85% menos).",
+        "Una sola forma de pedir: siete estaciones usaban formatos distintos de solicitud y de reporte. Creé un protocolo de solicitud compartido y capacité a cada sitio en cómo pedir y qué significaba cada estado del pedido; el expediente reporta un 15% más de eficiencia al desplegar recursos críticos.",
+        "Pedir antes de que se acabe: nadie veía el estado de los pedidos, así que unos sitios pedían de más y otros se quedaban sin nada. Creé un estado de pedidos compartido en tiempo real; el expediente reporta un 60% menos de gasto sin perder disponibilidad. La falla contra la que lo diseñé: un sitio que “se queda en negro”, sin suministros.",
       ],
     },
     {
@@ -244,6 +268,10 @@ export const LOGISTICS_ES: SpanishCaseStudyData = {
     { title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas", desc: "MSK · Seis años rediseñando flujos clínicos para trabajo que alcanzaba a más de 21,000 clínicos y personal administrativo.", path: "/case-study/msk" },
     { title: "Once funciones se convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
   ],
+  close: {
+    title: "Las cadenas de suministro y los flujos clínicos fallan de la misma manera.",
+    body: "En ambos, encontré el paso que no debería existir y cambié la secuencia.",
+  },
 };
 
 // Condensed from FlagshipKnowunity.tsx. Nothing is added beyond the English
@@ -254,7 +282,7 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
   breadcrumb: "Knowunity",
   meta: "Knowunity · Sprint de diseño · Prototipo móvil interactivo · Recuerdo simulado",
   intro:
-    "Un estudiante dice una definición en voz alta y Knowie responde por texto. Cuando acierta, Knowie le cita sus propias palabras como prueba. Lo diseñé en un sprint de diseño de Yummy Labs de dos semanas y media, con el brief real de Knowunity, y lo construí como prototipo funcional sobre su kit de componentes. El reconocimiento de voz es simulado y no se probó con estudiantes; no es una función publicada de Knowunity.",
+    "Un estudiante dice una definición en voz alta y Knowie responde por texto. Cuando acierta, Knowie le cita sus propias palabras como prueba. Lo diseñé en un sprint de diseño de Yummy Labs de dos semanas y media, con el brief de Knowunity, y lo construí como prototipo funcional sobre su kit de componentes. El reconocimiento de voz es simulado y no se probó con estudiantes; no es una función publicada de Knowunity.",
   stats: [
     { label: "Rol", value: "Participación individual · sprint de diseño de Yummy Labs · brief y kit de Knowunity" },
     { label: "Brief", value: "Voz de entrada, texto de salida · iOS, 390px, modo oscuro · recuerdo simulado" },
@@ -295,9 +323,9 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
       eyebrow: "Cómo lo construí",
       title: "Un prototipo funcional, no una presentación.",
       body: [
-        "Knowunity aportó a Knowie, la fuente Greed, su kit de Figma y acceso a la app y a la beta. Yo hice los flujos, las decisiones y el código: un prototipo en Next.js con 43 rutas, a 390px en modo oscuro, y un catálogo en Storybook sobre su kit. Cada pantalla es una página real a la que se llega tocando.",
+        "Knowunity aportó a Knowie, la fuente Greed, su kit de Figma y acceso a la app y a la beta. Yo hice los flujos, las decisiones y el código: un prototipo en Next.js con 43 rutas, a 390px en modo oscuro, y un catálogo en Storybook sobre su kit. Cada pantalla es una página a la que se llega tocando.",
         "IA en la construcción: yo diseñé y dirigí. Claude Code escribió la mayor parte del código de Next.js y Storybook a partir de mis especificaciones y de los componentes de Figma de Knowunity.",
-        "Lo que cambiaría: poner antes una versión con reconocimiento de voz real frente a estudiantes reales. El recuerdo fue simulado todo el tiempo.",
+        "Lo que cambiaría: poner antes una versión con reconocimiento de voz real frente a estudiantes. El recuerdo fue simulado todo el tiempo.",
       ],
     },
     {
@@ -306,7 +334,7 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
       title: "Una insignia, una revisión y una simulación que aún necesita\u00a0estudiantes.",
       body: [
         "Yummy Labs otorgó a la entrada una insignia Design Sprint y Knowunity revisó el trabajo. El reconocimiento de voz es simulado: cuánto tiempo se mantiene el micrófono decide el resultado. No hubo pruebas con estudiantes. No es una función publicada de Knowunity, y aquí no se publican cifras internas de Knowunity.",
-        "El siguiente paso es una versión con reconocimiento de voz real frente a estudiantes. Prefiero decirlo así, claramente, antes que dejar que una simulación pase por prueba.",
+        "El siguiente paso es una versión con reconocimiento de voz real frente a estudiantes.",
       ],
     },
   ],
@@ -314,4 +342,8 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
     { title: "Once funciones se convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
     { title: "El reabastecimiento médico tardó un 85% menos", desc: "Logística médica del Ejército · siete estaciones de ayuda, tres países.", path: "/case-study/logistics" },
   ],
+  close: {
+    title: "Hago prototipos para encontrar la siguiente prueba.",
+    body: "Say It Back muestra cómo trabajo: construirlo, decir qué es simulado y nombrar la siguiente prueba.",
+  },
 };

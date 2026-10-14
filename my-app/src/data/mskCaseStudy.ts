@@ -189,7 +189,7 @@ const en: MskCopy = {
   breadcrumb: { work: "Work", here: "Memorial Sloan Kettering" },
   jumpLabel: "Jump to",
   chapters: [
-    { id: "msk-start", label: "Start", note: "Digital records, printed to be filed digitally" },
+    { id: "msk-start", label: "Start", note: "Portal messages, printed to reach the chart" },
     { id: "msk-brief", label: "Problem", note: "A digital workflow became a paper ritual" },
     { id: "msk-workflow", label: "Workflow", note: "A filing queue replaced the workaround" },
     { id: "msk-decisions", label: "Decisions", note: "The simple button was not simple" },
@@ -204,7 +204,7 @@ const en: MskCopy = {
     readTime: "6 min",
     readMeta: "read · 6 years, 3 roles",
     ledeOpen:
-      "Clinicians printed digital records just to file them digitally again — and a record in transit is a record that is not in the chart when the next clinician opens it. As an office coordinator, I mapped that workaround across clinical, IT, imaging, and operations, then presented the online workflow that was implemented two roles later. It served work touching ",
+      "Patient-portal messages lived in the portal, not the patient's chart, so staff printed them to be scanned in. As an office coordinator, I mapped that workaround across clinical, IT, HIM (health information management, the team that scans documents into charts), and operations, then presented the online workflow that was implemented two roles later. It served work touching ",
     ledeScale: "21,000+ clinicians and staff",
     ledeMiddle: ", and it is ",
     ledeSustain: "owner-reported as adopted organization-wide",
@@ -219,7 +219,7 @@ const en: MskCopy = {
     kicker: "It started with a workaround",
     title: "A digital workflow became a paper\u00a0ritual.",
     body:
-      "Every clinical day runs through the EMR—the electronic medical record where a patient’s history lives. The online queue kept the filing on screen and returned with its status updated.",
+      "Patient-portal messages (patients’ questions and clinicians’ replies) lived in the portal, not in the patient’s chart, the electronic medical record (EMR), so staff printed them to be scanned into the chart. Every printed message is a chance for patient information to travel, get filed to the wrong chart, or go missing before the next visit.",
     run: "Run the online path",
     replay: "Replay the online path",
     ready: "Ready to file.",
@@ -248,24 +248,24 @@ const en: MskCopy = {
     afterHeading: "File from the queue, return with status",
     before: [
       "Open the dashboard queue",
-      "Find the document",
-      "Print the digital record",
-      "Route paper to imaging",
+      "Find the message",
+      "Print the portal message",
+      "Route the paper to HIM",
       "Wait for it to be scanned",
       "Return later to confirm filing",
     ],
     after: [
       "Open the dashboard queue",
-      "Select the document",
+      "Select the message",
       "Choose Send to EMR",
-      "It files inside the online chart",
+      "It files to the patient’s chart",
       "Return with status updated",
     ],
     mapBefore: "BEFORE · 6 STEPS · LEAVES THE EMR",
     mapAfter: "AFTER · 5 STEPS · NEVER LEAVES THE EMR",
     mapAside: "three steps outside the system",
-    mapNodesBefore: ["Open queue", "Find doc", "Print", "Route to imaging", "Wait for scan", "Re-check filing"],
-    mapNodesAfter: ["Open queue", "Select doc", "Send to EMR", "Files in chart", "Status updated"],
+    mapNodesBefore: ["Open queue", "Find message", "Print", "Route to HIM", "Wait for scan", "Re-check filing"],
+    mapNodesAfter: ["Open queue", "Select message", "Send to EMR", "Files in chart", "Status updated"],
     provenanceKicker: "How these artifacts were made",
     provenanceBody:
       "Every screen and map here was rebuilt from memory of my own current-state documentation; the original notes didn't survive. No protected health information, no exported records, and no reproduction of the vendor interface. Showing the workflow does not require showing a patient, so it does not.",
@@ -275,80 +275,85 @@ const en: MskCopy = {
     introKicker: "Then I counted the handoffs",
     introTitle: "One step removed a department.",
     introLede:
-      "Six steps to five is the change you can count. The change that mattered is that the record stopped crossing a line no one could see across. Below is the same path drawn by who was holding the record.",
+      "Six steps to five is the change you can count. The change that mattered is that the message stopped crossing a line no one could see across. Below is the same path drawn by who was holding it.",
     beforeBtn: "Before · one handoff",
     afterBtn: "After · no handoff",
     statusBefore:
-      "For two steps the record sits below the line of visibility, owned by nobody the coordinator can see.",
-    statusAfter: "The record never leaves the coordinator's line of sight, and the queue reports back.",
-    lanes: { evidence: "Evidence", front: "Coordinator", back: "Imaging", support: "EMR + permissions" },
-    laneSubs: { evidence: "What exists", front: "Frontstage", back: "Backstage", support: "Support" },
+      "For two steps the message sits below the line of visibility, owned by nobody the coordinator can see.",
+    statusAfter: "The message never leaves the coordinator's line of sight, and the queue reports back.",
+    // The four departments (msk.md, 2026-10-14 answer 6): clinical writes the
+    // message, operations is the coordinator, HIM scans paper, IT owns the
+    // portal, the EMR, and permissions.
+    lanes: { evidence: "Clinical message", front: "Coordinator", back: "HIM · document imaging", support: "Portal + EMR" },
+    laneSubs: { evidence: "What exists", front: "Operations · front", back: "Backstage", support: "IT · support" },
     visibility: "LINE OF VISIBILITY",
     waiting: "coordinator is waiting",
     noSignal: "NO RETURN SIGNAL — WHICH IS WHY STEP 06 EXISTS",
     nodesBefore: [
-      "Dashboard queue", "Open queue", "Record in the EMR",
-      "Record on screen", "Find document",
-      "Printed page", "Print the record",
-      "Paper in transit", "Route to imaging",
+      "Dashboard queue", "Open queue", "In the portal",
+      "Message on screen", "Find message",
+      "Printed page", "Print the message",
+      "Paper in transit", "Route to HIM",
       "Scan queue", "Wait for scan",
-      "Chart entry", "Re-check filing", "Back in the EMR",
+      "Chart entry", "Re-check filing", "Now in the EMR",
     ],
     nodesAfter: [
-      "Dashboard queue", "Open queue", "Record in the EMR",
-      "Record on screen", "Select document", "Ready + role checked",
+      "Dashboard queue", "Open queue", "In the portal",
+      "Message on screen", "Select message", "Ready + role checked",
       "One action", "Send to EMR", "Permission allows it",
       "Chart entry", "Files in the chart",
-      "Queue status", "Return, status updated", "Still in the EMR",
+      "Queue status", "Return, status updated", "Now in the EMR",
     ],
     key: {
-      frontTerm: "Coordinator · frontstage",
+      frontTerm: "Coordinator (operations) · frontstage",
       frontBefore:
-        "Opens the queue, finds the document, prints it — then has to return later and check whether it was ever filed.",
+        "Opens the queue, finds the message, prints it — then has to return later and check whether it was ever filed.",
       frontAfter:
-        "Opens the queue, selects the document, sends it to the chart, and lands back on the queue with the status already updated.",
-      backTerm: "Imaging · backstage",
+        "Opens the queue, selects the message, sends it to the chart, and lands back on the queue with the status already updated.",
+      backTerm: "HIM (document imaging) · backstage",
       backBefore:
         "Receives the paper and scans it. Doing the work correctly, out of sight, with no way to report back into the queue.",
       backAfter:
         "Not on this path any more. The department that used to receive paper never enters the filing workflow.",
-      supportTerm: "EMR and permissions · support",
+      supportTerm: "IT: portal, EMR, and permissions · support",
       supportBefore:
-        "Holds the record before it is printed and after it is scanned — but not in between, which is where the gap is.",
+        "Holds the message in the portal before it is printed and in the chart after it is scanned — but not in between, which is where the gap is.",
       supportAfter:
-        "Writes the record into the online chart, and exposes the action only when the record is ready and the role allows it.",
+        "Writes the message into the chart, and exposes the action only when the message is ready and the role allows it.",
       changedTerm: "What changed",
       changedBefore:
-        "Six steps, but only one that matters: the moment the record crosses a department line with no signal coming back.",
+        "Six steps, but only one that matters: the moment the message crosses a department line with no signal coming back.",
       changedAfter:
-        "One department left the path. The record stays above the line of visibility from open to confirmation.",
+        "One department left the path. The message stays above the line of visibility from open to confirmation.",
     },
     switchAria: "Choose which path the blueprint shows",
   },
 
   dashboard: {
     groupAria: "Anonymized Office Coordinator filing queue mockup",
-    tableAria: "Anonymized patient document filing queue",
+    tableAria: "Anonymized patient-message filing queue",
     eyebrow: "Anonymized internal tool concept",
     title: "My filing queue",
     roleView: "Office Coordinator view",
     queueMeta: "47 in queue · 09:42",
     toolbar: ["All patients", "Ready to send", "Needs review"],
-    columns: { patient: "Patient", document: "Document", status: "Status", routedTo: "Routed to", action: "Action" },
+    columns: { patient: "Patient", document: "Message", status: "Status", routedTo: "Routed to", action: "Action" },
     rows: [
-      { mrn: "••••4821", received: "Received 2h ago", doc: "Signed consent", status: "Ready to send", slug: "ready-to-file", routed: "Filing queue", action: "Send to EMR" },
-      { mrn: "••••5518", received: "Received 5h ago", doc: "Signed order", status: "Ready to send", slug: "ready-to-file", routed: "Filing queue", action: "Send to EMR" },
-      { mrn: "••••7305", received: "Received 1d ago", doc: "Outside records", status: "Needs review", slug: "needs-review", routed: "Supervisor", action: "Review" },
-      { mrn: "••••1043", received: "Received 1d ago", doc: "Path report", status: "Ready to send", slug: "ready-to-file", routed: "Filing queue", action: "Send to EMR" },
-      { mrn: "••••2960", received: "Received 3d ago", doc: "Discharge summary", status: "In the chart", slug: "filed-to-chart", routed: "Complete", action: "View log" },
+      // Portal messages only (msk.md, 2026-10-14 answer 2): what got printed
+      // was patient messages and clinician replies, not documents.
+      { mrn: "••••4821", received: "Received 2h ago", doc: "Patient message", status: "Ready to send", slug: "ready-to-file", routed: "Filing queue", action: "Send to EMR" },
+      { mrn: "••••5518", received: "Received 5h ago", doc: "Physician reply", status: "Ready to send", slug: "ready-to-file", routed: "Filing queue", action: "Send to EMR" },
+      { mrn: "••••7305", received: "Received 1d ago", doc: "Care team note", status: "Needs review", slug: "needs-review", routed: "Supervisor", action: "Review" },
+      { mrn: "••••1043", received: "Received 1d ago", doc: "Patient reply", status: "Ready to send", slug: "ready-to-file", routed: "Filing queue", action: "Send to EMR" },
+      { mrn: "••••2960", received: "Received 3d ago", doc: "Nurse reply", status: "In the chart", slug: "filed-to-chart", routed: "Complete", action: "View log" },
     ],
     mrnTerm: "MRN",
     mrnDef: "medical record number, the ID for one patient’s chart. Masked to the last four digits.",
     emrTerm: "EMR",
-    emrDef: "electronic medical record, the digital chart where a patient’s whole history lives.",
+    emrDef: "electronic medical record, the patient’s chart. Portal messages sit outside it until they are filed.",
     ruleLabel: "Rule:",
     ruleAction: "Send to EMR",
-    rule: "appears only when the document is ready and the coordinator's role includes filing rights.",
+    rule: "appears only when the message is ready and the coordinator's role includes filing rights.",
   },
 
   decisions: {
@@ -374,15 +379,15 @@ const en: MskCopy = {
       {
         n: "01",
         title: "EMR filing workflow",
-        finding: "A digital record was printed, routed out, then waited to reappear in the chart.",
+        finding: "A portal message was printed, routed to HIM, then waited to appear in the chart.",
         change: "One dashboard action, placed where the decision was already being made.",
         wrong: "I misjudged how small it would look to IT. They deprioritized it as not worth the effort, and I had to keep raising it to get it built.",
       },
       {
         n: "02",
         title: "CPR certification",
-        finding: "The material was written in technical, legal language. So few clinicians got through it that the compliance deadline was about to be pushed back.",
-        change: "I rewrote it for the people who had to complete it, not the people who wrote it. Every certification came in — 70% ahead of the deadline that was about to slip.",
+        finding: "The CPR (cardiopulmonary resuscitation) material was written in technical, legal language. So few clinicians got through it that the team planned a 4-month extension.",
+        change: "I rewrote it for the people who had to complete it. The whole department certified a month before the original deadline, with no 4-month extension.",
       },
       {
         n: "03",
@@ -410,7 +415,7 @@ const en: MskCopy = {
       {
         n: "01", role: "Office Coordinator", taught: "Where people paused",
         term: "Lean Six Sigma Green Belt (Purdue) · Master of Healthcare Administration (Rutgers)",
-        body: "Both finished in this seat, while I was running a clinic's paperwork. The Green Belt is the lens that showed one filing task crossing four departments.",
+        body: "Both finished in this seat, while I was running a clinic's paperwork. The Green Belt, a process-improvement certification, is the lens that showed one filing task crossing four departments.",
       },
       {
         n: "02", role: "Administrative Assistant", taught: "How evidence survives a room",
@@ -420,7 +425,7 @@ const en: MskCopy = {
       {
         n: "03", role: "Trainer I Specialist", taught: "The authority to redesign it",
         term: "Training & Facilitation (ATD) · current-state mapping",
-        body: "I instructed on Epic, HIPAA, and the compliance modules. Owning how staff were taught the system meant documenting what actually happens, not what the policy says — and the gap between the two is where the design work lives.",
+        body: "I instructed on Epic (the record software), HIPAA (the patient-privacy law), and the compliance modules. Owning how staff were taught the system meant documenting what actually happens, not what the policy says — and the gap between the two is where the design work lives.",
       },
     ],
     cards: [
@@ -442,9 +447,9 @@ const en: MskCopy = {
 
   sustainment: {
     kicker: "The real test came later",
-    title: "Most internal tools die quietly. These did not.",
+    title: "I left before launch. Here’s what happened next.",
     lede:
-      "Adoption is the launch metric. Sustainment is the service metric.",
+      "I handed the workflow to IT and UX, who built it. It was adopted organization-wide (owner-reported: my own record, not independently measured).",
     // Claim audit 2026-10-13: the lanes used to say "system upgrade" ×2,
     // "still in use" and "still used by other admins" — claims Hillary cut on
     // 2026-09-27 (msk.md F2/F3: no source; she was not present after launch).
@@ -481,18 +486,19 @@ const en: MskCopy = {
     title: "The numbers, and who they belong to.",
     intro:
       "I initiated the dashboard-to-online-EMR workflow redesign as a coordinator and it was implemented off my presentation to the company two roles later, rewrote the CPR certification material for the clinicians completing it, and rebuilt the onboarding program — Epic, HIPAA, compliance, and the technical and soft skills — for new administrative staff.",
-    disclaimer: "Anonymized evidence · organization-wide results are attributed to the initiative",
+    disclaimer: "Anonymized evidence · organization-wide results are attributed to the initiative · the ~$1M/year is a projection from my pitch, not measured savings",
     metrics: [
-      { tag: "Led", n: "70%", label: "ahead of deadline — every CPR certification came in early, on a deadline about to be pushed back" },
+      { tag: "Led", n: "1 month", label: "early: the whole department certified before the original deadline, with no 4-month extension" },
       { tag: "Scale", n: "21,000+", label: "clinicians and administrative staff across the workflows I redesigned" },
       { tag: "Contributed to", n: "20%", label: "organization-wide EMR cost reduction, inside a larger initiative" },
+      { tag: "Projection", n: "~$1M/year", label: "projected paper savings in my Process Improvement Fair pitch, not measured savings" },
     ],
     route: ["Observe the real work", "Map the failure", "Align the system", "Ship what lasts"],
   },
 
   close: {
-    title: "Designing a system people cannot afford to distrust?",
-    body: "I know how to find the workaround, make it visible, and turn it into a product decision a complicated organization can actually ship.",
+    title: "I find the workaround. Then I get it built.",
+    body: "I map it so every department sees the same failure, then turn it into a decision the organization will build.",
     cta: "Email me →",
   },
   next: { eyebrow: "Next case study", title: "Mobbin", tag: "UX flow documentation · 200+ screens per app" },
@@ -503,7 +509,7 @@ const es: MskCopy = {
   breadcrumb: { work: "Trabajo", here: "Memorial Sloan Kettering" },
   jumpLabel: "Ir a",
   chapters: [
-    { id: "msk-start", label: "Inicio", note: "Registros digitales, impresos para archivarse digitalmente" },
+    { id: "msk-start", label: "Inicio", note: "Mensajes del portal, impresos para llegar a la historia" },
     { id: "msk-brief", label: "Problema", note: "Un flujo digital se volvió un ritual de papel" },
     { id: "msk-workflow", label: "Flujo", note: "Una cola de archivo reemplazó el desvío" },
     { id: "msk-decisions", label: "Decisiones", note: "El botón simple no era simple" },
@@ -518,7 +524,7 @@ const es: MskCopy = {
     readTime: "6 min",
     readMeta: "de lectura · 6 años, 3 puestos",
     ledeOpen:
-      "El personal clínico imprimía registros digitales solo para volver a archivarlos digitalmente — y un registro en tránsito es un registro que no está en la historia clínica cuando el siguiente clínico la abre. En el puesto de coordinación de oficina, mapeé ese desvío entre las áreas clínica, de TI, de imagenología y de operaciones, y luego presenté el flujo en línea que se implementó dos puestos después. Sirvió a un trabajo que alcanzaba a ",
+      "Los mensajes del portal de pacientes vivían en el portal, no en la historia clínica, así que el personal los imprimía para escanearlos. En el puesto de coordinación de oficina, mapeé ese desvío entre las áreas clínica, de TI, de HIM (gestión de información de salud, el equipo que escanea documentos a la historia) y de operaciones, y luego presenté el flujo en línea que se implementó dos puestos después. Sirvió a un trabajo que alcanzaba a ",
     ledeScale: "más de 21,000 clínicos y personal administrativo",
     ledeMiddle: ", y ",
     ledeSustain: "reportado por la organización como adoptado en toda la institución",
@@ -533,7 +539,7 @@ const es: MskCopy = {
     kicker: "Empezó con un desvío",
     title: "Un flujo digital se volvió un ritual de\u00a0papel.",
     body:
-      "Cada jornada clínica pasa por el EMR: el expediente médico electrónico, donde vive la historia de un paciente. La cola en línea mantuvo el archivo en pantalla y regresó con su estado actualizado.",
+      "Los mensajes del portal de pacientes (las preguntas de los pacientes y las respuestas del personal clínico) vivían en el portal, no en la historia del paciente, el expediente médico electrónico (EMR), así que el personal los imprimía para escanearlos a la historia. Cada mensaje impreso es una oportunidad de que la información del paciente circule, se archive en la historia equivocada o se pierda antes de la siguiente consulta.",
     run: "Recorrer la ruta en línea",
     replay: "Repetir la ruta en línea",
     ready: "Listo para archivar.",
@@ -562,24 +568,24 @@ const es: MskCopy = {
     afterHeading: "Archivar desde la cola, volver con el estado",
     before: [
       "Abrir la cola del panel",
-      "Encontrar el documento",
-      "Imprimir el registro digital",
-      "Enviar el papel a imagenología",
+      "Encontrar el mensaje",
+      "Imprimir el mensaje del portal",
+      "Enviar el papel a HIM",
       "Esperar a que lo escaneen",
       "Volver después a confirmar el archivo",
     ],
     after: [
       "Abrir la cola del panel",
-      "Seleccionar el documento",
+      "Seleccionar el mensaje",
       "Elegir Enviar al EMR",
-      "Se archiva dentro de la historia en línea",
+      "Se archiva en la historia del paciente",
       "Volver con el estado actualizado",
     ],
     mapBefore: "ANTES · 6 PASOS · SALE DEL EMR",
     mapAfter: "DESPUÉS · 5 PASOS · NUNCA SALE DEL EMR",
     mapAside: "tres pasos fuera del sistema",
-    mapNodesBefore: ["Abrir cola", "Buscar doc.", "Imprimir", "Enviar a imagen.", "Esperar escaneo", "Revisar archivo"],
-    mapNodesAfter: ["Abrir cola", "Elegir doc.", "Enviar al EMR", "Archiva en historia", "Estado actualizado"],
+    mapNodesBefore: ["Abrir cola", "Buscar mensaje", "Imprimir", "Enviar a HIM", "Esperar escaneo", "Revisar archivo"],
+    mapNodesAfter: ["Abrir cola", "Elegir mensaje", "Enviar al EMR", "Archiva en historia", "Estado actualizado"],
     provenanceKicker: "Cómo se hicieron estos artefactos",
     provenanceBody:
       "Cada pantalla y cada mapa aquí se reconstruyeron de memoria a partir de mi propia documentación del estado actual; las notas originales no se conservaron. Sin información de salud protegida, sin registros exportados y sin reproducir la interfaz del proveedor. Mostrar el flujo no exige mostrar a un paciente, así que no lo hace.",
@@ -589,80 +595,80 @@ const es: MskCopy = {
     introKicker: "Luego conté los traspasos",
     introTitle: "Un paso eliminó un área entera.",
     introLede:
-      "De seis pasos a cinco es el cambio que se puede contar. El cambio que importó es que el registro dejó de cruzar una línea que nadie podía ver. Abajo está la misma ruta, dibujada según quién tenía el registro en la mano.",
+      "De seis pasos a cinco es el cambio que se puede contar. El cambio que importó es que el mensaje dejó de cruzar una línea que nadie podía ver. Abajo está la misma ruta, dibujada según quién tenía el mensaje en la mano.",
     beforeBtn: "Antes · un traspaso",
     afterBtn: "Después · sin traspaso",
     statusBefore:
-      "Durante dos pasos el registro queda bajo la línea de visibilidad, en manos de nadie que la coordinación pueda ver.",
-    statusAfter: "El registro nunca sale de la vista de la coordinación, y la cola informa de vuelta.",
-    lanes: { evidence: "Evidencia", front: "Coordinación", back: "Imagenología", support: "EMR + permisos" },
-    laneSubs: { evidence: "Lo que existe", front: "Escenario visible", back: "Trastienda", support: "Soporte" },
+      "Durante dos pasos el mensaje queda bajo la línea de visibilidad, en manos de nadie que la coordinación pueda ver.",
+    statusAfter: "El mensaje nunca sale de la vista de la coordinación, y la cola informa de vuelta.",
+    lanes: { evidence: "Mensaje clínico", front: "Coordinación", back: "HIM · imágenes", support: "Portal + EMR" },
+    laneSubs: { evidence: "Lo que existe", front: "Operaciones · frente", back: "Trastienda", support: "TI · soporte" },
     visibility: "LÍNEA DE VISIBILIDAD",
     waiting: "la coordinación espera",
     noSignal: "SIN SEÑAL DE VUELTA — POR ESO EXISTE EL PASO 06",
     nodesBefore: [
-      "Cola del panel", "Abrir la cola", "Registro en el EMR",
-      "Registro en pantalla", "Buscar documento",
-      "Página impresa", "Imprimir el registro",
-      "Papel en tránsito", "Enviar a imagenología",
+      "Cola del panel", "Abrir la cola", "En el portal",
+      "Mensaje en pantalla", "Buscar mensaje",
+      "Página impresa", "Imprimir el mensaje",
+      "Papel en tránsito", "Enviar a HIM",
       "Cola de escaneo", "Esperar el escaneo",
-      "Entrada en la historia", "Revisar el archivo", "De vuelta en el EMR",
+      "Entrada en la historia", "Revisar el archivo", "Ya en el EMR",
     ],
     nodesAfter: [
-      "Cola del panel", "Abrir la cola", "Registro en el EMR",
-      "Registro en pantalla", "Seleccionar documento", "Listo + permiso verificado",
+      "Cola del panel", "Abrir la cola", "En el portal",
+      "Mensaje en pantalla", "Seleccionar mensaje", "Listo + permiso verificado",
       "Una acción", "Enviar al EMR", "El permiso lo autoriza",
       "Entrada en la historia", "Se archiva en la historia",
-      "Estado de la cola", "Volver, estado actualizado", "Sigue en el EMR",
+      "Estado de la cola", "Volver, estado actualizado", "Ya en el EMR",
     ],
     key: {
-      frontTerm: "Coordinación · escenario visible",
+      frontTerm: "Coordinación (operaciones) · escenario visible",
       frontBefore:
-        "Abre la cola, busca el documento, lo imprime — y después tiene que volver a revisar si alguna vez se archivó.",
+        "Abre la cola, busca el mensaje, lo imprime — y después tiene que volver a revisar si alguna vez se archivó.",
       frontAfter:
-        "Abre la cola, selecciona el documento, lo envía a la historia y regresa a la cola con el estado ya actualizado.",
-      backTerm: "Imagenología · trastienda",
+        "Abre la cola, selecciona el mensaje, lo envía a la historia y regresa a la cola con el estado ya actualizado.",
+      backTerm: "HIM (imágenes de documentos) · trastienda",
       backBefore:
         "Recibe el papel y lo escanea. Hace el trabajo bien, fuera de la vista, y sin manera de informar de vuelta a la cola.",
       backAfter:
         "Ya no está en esta ruta. El área que antes recibía papel nunca entra al flujo de archivo.",
-      supportTerm: "EMR y permisos · soporte",
+      supportTerm: "TI: portal, EMR y permisos · soporte",
       supportBefore:
-        "Tiene el registro antes de imprimirlo y después de escanearlo — pero no en medio, que es justo donde está el hueco.",
+        "Tiene el mensaje en el portal antes de imprimirlo y en la historia después de escanearlo — pero no en medio, que es justo donde está el hueco.",
       supportAfter:
-        "Escribe el registro en la historia en línea y muestra la acción solo cuando el registro está listo y el permiso lo autoriza.",
+        "Escribe el mensaje en la historia y muestra la acción solo cuando el mensaje está listo y el permiso lo autoriza.",
       changedTerm: "Qué cambió",
       changedBefore:
-        "Seis pasos, pero solo uno importa: el momento en que el registro cruza la línea de un área sin que vuelva ninguna señal.",
+        "Seis pasos, pero solo uno importa: el momento en que el mensaje cruza la línea de un área sin que vuelva ninguna señal.",
       changedAfter:
-        "Un área salió de la ruta. El registro se queda por encima de la línea de visibilidad desde que se abre hasta que se confirma.",
+        "Un área salió de la ruta. El mensaje se queda por encima de la línea de visibilidad desde que se abre hasta que se confirma.",
     },
     switchAria: "Elegir qué ruta muestra el plano de servicio",
   },
 
   dashboard: {
     groupAria: "Maqueta anonimizada de la cola de archivo de coordinación de oficina",
-    tableAria: "Cola anonimizada de archivo de documentos de pacientes",
+    tableAria: "Cola anonimizada de archivo de mensajes de pacientes",
     eyebrow: "Concepto anonimizado de herramienta interna",
     title: "Mi cola de archivo",
     roleView: "Vista de coordinación de oficina",
     queueMeta: "47 en la cola · 09:42",
     toolbar: ["Todos los pacientes", "Listo para enviar", "Requiere revisión"],
-    columns: { patient: "Paciente", document: "Documento", status: "Estado", routedTo: "Enviado a", action: "Acción" },
+    columns: { patient: "Paciente", document: "Mensaje", status: "Estado", routedTo: "Enviado a", action: "Acción" },
     rows: [
-      { mrn: "••••4821", received: "Recibido hace 2 h", doc: "Consentimiento firmado", status: "Listo para enviar", slug: "ready-to-file", routed: "Cola de archivo", action: "Enviar al EMR" },
-      { mrn: "••••5518", received: "Recibido hace 5 h", doc: "Orden firmada", status: "Listo para enviar", slug: "ready-to-file", routed: "Cola de archivo", action: "Enviar al EMR" },
-      { mrn: "••••7305", received: "Recibido hace 1 d", doc: "Registros externos", status: "Requiere revisión", slug: "needs-review", routed: "Supervisión", action: "Revisar" },
-      { mrn: "••••1043", received: "Recibido hace 1 d", doc: "Informe de patología", status: "Listo para enviar", slug: "ready-to-file", routed: "Cola de archivo", action: "Enviar al EMR" },
-      { mrn: "••••2960", received: "Recibido hace 3 d", doc: "Resumen de alta", status: "En la historia", slug: "filed-to-chart", routed: "Completo", action: "Ver registro" },
+      { mrn: "••••4821", received: "Recibido hace 2 h", doc: "Mensaje del paciente", status: "Listo para enviar", slug: "ready-to-file", routed: "Cola de archivo", action: "Enviar al EMR" },
+      { mrn: "••••5518", received: "Recibido hace 5 h", doc: "Respuesta del médico", status: "Listo para enviar", slug: "ready-to-file", routed: "Cola de archivo", action: "Enviar al EMR" },
+      { mrn: "••••7305", received: "Recibido hace 1 d", doc: "Nota del equipo de atención", status: "Requiere revisión", slug: "needs-review", routed: "Supervisión", action: "Revisar" },
+      { mrn: "••••1043", received: "Recibido hace 1 d", doc: "Respuesta del paciente", status: "Listo para enviar", slug: "ready-to-file", routed: "Cola de archivo", action: "Enviar al EMR" },
+      { mrn: "••••2960", received: "Recibido hace 3 d", doc: "Respuesta de enfermería", status: "En la historia", slug: "filed-to-chart", routed: "Completo", action: "Ver registro" },
     ],
     mrnTerm: "MRN",
     mrnDef: "número de expediente médico, el identificador de la historia de un paciente. Enmascarado a los últimos cuatro dígitos.",
     emrTerm: "EMR",
-    emrDef: "expediente médico electrónico, la historia digital donde vive todo el historial de un paciente.",
+    emrDef: "expediente médico electrónico, la historia del paciente. Los mensajes del portal quedan fuera hasta que se archivan.",
     ruleLabel: "Regla:",
     ruleAction: "Enviar al EMR",
-    rule: "aparece solo cuando el documento está listo y el puesto de coordinación tiene permisos de archivo.",
+    rule: "aparece solo cuando el mensaje está listo y el puesto de coordinación tiene permisos de archivo.",
   },
 
   decisions: {
@@ -688,15 +694,15 @@ const es: MskCopy = {
       {
         n: "01",
         title: "Flujo de archivo del EMR",
-        finding: "Un registro digital se imprimía, se enviaba fuera y luego esperaba para reaparecer en la historia clínica.",
+        finding: "Un mensaje del portal se imprimía, se enviaba a HIM y luego esperaba para aparecer en la historia clínica.",
         change: "Una sola acción en el panel, puesta donde la decisión ya se estaba tomando.",
         wrong: "Calculé mal lo pequeño que le parecería a TI. Lo despriorizaron porque no valía el esfuerzo, y tuve que seguir insistiendo para que se construyera.",
       },
       {
         n: "02",
         title: "Certificación de RCP",
-        finding: "El material estaba escrito en lenguaje técnico y legal. Tan poca gente clínica lo completaba que el plazo de cumplimiento estaba a punto de posponerse.",
-        change: "Lo reescribí para las personas que tenían que completarlo, no para quienes lo redactaron. Llegaron todas las certificaciones — un 70% antes del plazo que estaba por incumplirse.",
+        finding: "El material de RCP (reanimación cardiopulmonar) estaba escrito en lenguaje técnico y legal. Tan poca gente clínica lo completaba que el equipo planeaba una prórroga de 4 meses.",
+        change: "Lo reescribí para las personas que tenían que completarlo. Toda el área se certificó un mes antes de la fecha límite original, sin la prórroga de 4 meses.",
       },
       {
         n: "03",
@@ -724,7 +730,7 @@ const es: MskCopy = {
       {
         n: "01", role: "Coordinación de oficina", taught: "Dónde se detenía la gente",
         term: "Lean Six Sigma Green Belt (Purdue) · Maestría en Administración de Salud (Rutgers)",
-        body: "Terminé ambas en este puesto, mientras llevaba el papeleo de una clínica. El Green Belt es la lente que mostró una tarea de archivo cruzando cuatro áreas.",
+        body: "Terminé ambas en este puesto, mientras llevaba el papeleo de una clínica. El Green Belt, una certificación de mejora de procesos, es la lente que mostró una tarea de archivo cruzando cuatro áreas.",
       },
       {
         n: "02", role: "Asistencia administrativa", taught: "Cómo sobrevive la evidencia a una sala",
@@ -734,7 +740,7 @@ const es: MskCopy = {
       {
         n: "03", role: "Especialista de capacitación I", taught: "La autoridad para rediseñarlo",
         term: "Capacitación y facilitación (ATD) · mapeo del estado actual",
-        body: "Di instrucción sobre Epic, HIPAA y los módulos de cumplimiento. Hacerme cargo de cómo se le enseñaba el sistema al personal significó documentar lo que de verdad pasa, no lo que dice la política — y la brecha entre las dos es donde vive el trabajo de diseño.",
+        body: "Di instrucción sobre Epic (el software del expediente), HIPAA (la ley de privacidad del paciente) y los módulos de cumplimiento. Hacerme cargo de cómo se le enseñaba el sistema al personal significó documentar lo que de verdad pasa, no lo que dice la política — y la brecha entre las dos es donde vive el trabajo de diseño.",
       },
     ],
     cards: [
@@ -756,9 +762,9 @@ const es: MskCopy = {
 
   sustainment: {
     kicker: "La prueba de verdad llegó después",
-    title: "Casi todas las herramientas internas mueren en silencio. Estas no.",
+    title: "Me fui antes del lanzamiento. Esto es lo que pasó después.",
     lede:
-      "La adopción mide el lanzamiento. La permanencia mide el servicio.",
+      "Entregué el flujo a TI y UX, que lo construyeron. Se adoptó en toda la institución (dato autorreportado: mi propio registro, no una medición independiente).",
     figcaption: "Qué pasó después de lanzar cada uno",
     shipped: "LANZADO",
     lanes: [
@@ -789,18 +795,19 @@ const es: MskCopy = {
     title: "Los números, y a quién pertenecen.",
     intro:
       "Inicié el rediseño del flujo del panel al EMR en línea desde el puesto de coordinación, y se implementó a partir de mi presentación a la organización dos puestos después; reescribí el material de certificación de RCP para el personal clínico que debía completarlo; y reconstruí el programa de incorporación — Epic, HIPAA, cumplimiento y las habilidades técnicas y blandas — para el nuevo personal administrativo.",
-    disclaimer: "Evidencia anonimizada · los resultados de toda la organización se atribuyen a la iniciativa",
+    disclaimer: "Evidencia anonimizada · los resultados de toda la organización se atribuyen a la iniciativa · los ~$1M/año son una proyección de mi propuesta, no un ahorro medido",
     metrics: [
-      { tag: "Dirigí", n: "70%", label: "antes del plazo — todas las certificaciones de RCP recolectadas temprano, en un plazo que estaba por posponerse" },
+      { tag: "Dirigí", n: "1 mes", label: "antes: toda el área se certificó antes de la fecha límite original, sin la prórroga de 4 meses" },
       { tag: "Escala", n: "21,000+", label: "clínicos y personal administrativo en los flujos que rediseñé" },
       { tag: "Contribuí a", n: "20%", label: "reducción de costos del EMR en toda la organización, dentro de una iniciativa mayor" },
+      { tag: "Proyección", n: "~$1M/año", label: "ahorro proyectado en papel en mi propuesta para la Feria de Mejora de Procesos, no un ahorro medido" },
     ],
     route: ["Observar el trabajo real", "Mapear la falla", "Alinear el sistema", "Lanzar lo que dura"],
   },
 
   close: {
-    title: "¿Diseñando un sistema en el que la gente no puede permitirse desconfiar?",
-    body: "Sé cómo encontrar el desvío, hacerlo visible y convertirlo en una decisión de producto que una organización complicada de verdad pueda lanzar.",
+    title: "Encuentro el desvío. Después logro que se construya.",
+    body: "Lo mapeo para que cada área vea la misma falla, y luego lo convierto en una decisión que la organización va a construir.",
     cta: "Escríbame →",
   },
   next: { eyebrow: "Siguiente estudio de caso", title: "Mobbin", tag: "Documentación de flujos UX · más de 200 pantallas por app" },

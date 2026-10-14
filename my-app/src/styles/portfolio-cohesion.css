@@ -282,8 +282,15 @@ html[lang="es"] .riso-home .rp-clearing { max-width: 78ch; }
    products", ~1005px at a 100px reference), not the longest word. The display
    clamp stays the ceiling; the fit only ever brings the size down, so every
    line keeps at least two words at any width. Measured, not assumed: see the
-   2026-10-09 panel3 report for the per-width line splits. */
-.riso-home .rp-h1Fit { --h1-w100: 1010; }
+   2026-10-09 panel3 report for the per-width line splits.
+   2026-10-14: the headline became "I design the workflow before the screen."
+   RisoHome sets each real phrase in a no-wrap span, so lines only break
+   between phrases. --h1-w100 is now the longest phrase ("before the screen.",
+   811px at 100px; "antes que la pantalla.", 942px), scaled by the same 1.185
+   safety margin the old value carried over its measured 852px. */
+.riso-home .rp-h1Fit { --h1-w100: 961; }
+html[lang="es"] .riso-home .rp-h1Fit { --h1-w100: 1116; }
+.riso-home .rp-h1Phrase { white-space: nowrap; }
 .riso-home .rp-h1 { font-size: min(clamp(2.4rem, 4.6vw, 4.4rem), calc(100cqi * 100 / var(--h1-w100))); }
 .riso-home .carto--paint .carto__map--base {
   inset: 0;

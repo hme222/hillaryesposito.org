@@ -30,9 +30,9 @@ import "../../styles/riso-page.css";
 const CHAPTERS: CaseStudyChapter[] = [
   { id: "grove-start", label: "Start", note: "One designer, end to end" },
   { id: "grove-research", label: "Research", note: "34 real opinions" },
-  { id: "grove-decisions", label: "Decisions", note: "Three features, one call each" },
-  { id: "grove-override", label: "Product calls", note: "Evidence, risk, next test" },
-  { id: "grove-outcomes", label: "Outcomes", note: "No invented numbers" },
+  { id: "grove-decisions", label: "Decisions", note: "Three features, one decision each" },
+  { id: "grove-override", label: "Product decisions", note: "Evidence, risk, next test" },
+  { id: "grove-outcomes", label: "Outcomes", note: "What’s built, what’s next" },
 ];
 
 const SURVEY_FINDINGS = [
@@ -41,7 +41,7 @@ const SURVEY_FINDINGS = [
   { stat: "11", label: "of 34 named notification volume, unprompted, as what would make them delete it — the most-cited reason by far" },
   // Recomputed from the raw export 2026-10-13: new owners n=12, mean 2.42;
   // experienced n=14, mean 3.43 (was printed as "n=16" and "3.3").
-  { stat: "2.4", label: "out of 5: how confident new owners felt about light (n=12). Experienced owners rated themselves 3.4 (n=14)" },
+  { stat: "2.4", label: "out of 5: how confident new owners felt about light (12 people). Experienced owners rated themselves 3.4 (14 people)" },
 ];
 
 const MVP_FEATURES = [
@@ -359,13 +359,13 @@ export default function RisoGrove() {
       <details className="rp-deepDive">
         <summary>
           <span>Optional artifact set</span>
-          <b>Inspect all six authentic first-build screens</b>
+          <b>Inspect all six first-build screens</b>
         </summary>
         <section className="rp-section" data-language-anchor="grove-decisions">
           <div className="rp-wrap">
             <p className="rp-kicker">The first working version</p>
             <h2 className="rp-title">The complete first build, screen by screen.</h2>
-            <p className="rp-lede">Authentic prototype screens—not finished redesigns.</p>
+            <p className="rp-lede">Prototype screens, not finished redesigns.</p>
             <div data-evidence="true"><GroveScreenGallery screens={SCREENS} /></div>
           </div>
         </section>
@@ -377,7 +377,7 @@ export default function RisoGrove() {
           <p className="rp-kicker">What the evidence says to build next</p>
           <h2 className="rp-title">Three features, one testable direction each.</h2>
           <PhaseIndicator current={2} label="In progress · Phase 2 of 3" />
-          <p className="rp-lede" style={{ marginTop: "1.1rem" }}>Each direction is paired with the authentic first-build screen it would change. These are not completed redesigns.</p>
+          <p className="rp-lede" style={{ marginTop: "1.1rem" }}>Each direction is paired with the first-build screen it would change. These are not completed redesigns.</p>
           {DECISIONS.map((d) => (
             <div className="rp-decision rp-reveal" key={d.feature} data-evidence="true">
               <p className="rp-decision__feature">{d.feature}</p>
@@ -397,7 +397,7 @@ export default function RisoGrove() {
           ))}
           <p className="rp-note" style={{ marginTop: "clamp(2rem, 5vw, 3.5rem)" }}>
             <span className="rp-note__k">What remains</span>
-            Authentic first-build screens. High-fidelity redesign, edge states, and retest remain unbuilt. Phase 2 of 3.
+            First-build screens. High-fidelity redesign, edge states, and retest remain unbuilt. Phase 2 of 3.
           </p>
         </div>
       </section>
@@ -536,7 +536,7 @@ export default function RisoGrove() {
             <span>Why a plant app</span>
             Confidence, provenance, and review states make uncertainty actionable. Plants are the low-stakes practice ground.
           </p>
-          <p className="rp-disclaimer">No invented numbers · Grove is a functional prototype, Phase 2 of 3</p>
+          <p className="rp-disclaimer">Grove is a functional prototype, Phase 2 of 3</p>
           <div
             className={`rp-outcomes rp-reveal${VISIBLE_OUTCOMES.length === 2 ? " rp-outcomes--two" : ""}`}
             data-evidence="true"
@@ -562,9 +562,9 @@ export default function RisoGrove() {
       {/* CLOSING CTA */}
       <section className="rp-section">
         <div className="rp-wrap rp-close">
-          <h2>Building a product people have to trust?</h2>
+          <h2>I design the ‘not sure’ states.</h2>
           <p>
-            I want to keep designing products that make uncertainty visible and reviewable.
+            Top guesses, how sure it is, and where that came from: Grove’s plant ID is my small version of a problem clinical tools have too.
           </p>
           {/* Same action and wording as MSK and Mobbin — the three studies form
               a loop, so the closing move should not change between them. */}

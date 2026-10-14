@@ -9,6 +9,7 @@ import LogisticsMechanism from "../../components/LogisticsMechanism";
 import RisoDefs from "../../components/riso/RisoDefs";
 import CartoField from "../../components/riso/CartoField";
 import SpanishCaseStudy from "../../components/SpanishCaseStudy";
+import Term from "../../components/Term";
 import { LOGISTICS_ES } from "../../data/spanishCaseStudies";
 import useFlagshipReveal from "../../hooks/useFlagshipReveal";
 import usePageTitle from "../../hooks/usePageTitle";
@@ -20,10 +21,11 @@ import "../../styles/flagship-case-study.css";
  * Medical logistics, Iraq — the operations case study.
  *
  * Sourced entirely from what Hillary has already published on the About page
- * and from her résumé: 44th IBCT, 5,000+ soldiers, $2M in supplies, seven aid
+ * and from her résumé: 44th Infantry Brigade Combat Team, 5,000+ soldiers, $2M in supplies, seven aid
  * stations in three countries, 85% resupply reduction, 60% spending reduction,
  * a 15% efficiency gain from one communication protocol, cold chain inside 48
- * hours. Nothing is added beyond that.
+ * hours. Nothing is added beyond that. The one-sentence additions to the move
+ * cards (2026-10-14) come only from design-docs/case-study-stories/logistics.md.
  *
  * Deliberately absent: unit positions, site locations, routes, dates beyond the
  * deployment year, and anything resembling a real system screen. The diagrams
@@ -38,24 +40,24 @@ const CHAPTERS: CaseStudyChapter[] = [
   { id: "log-outcomes", label: "Outcomes", note: "What it cost to be wrong" },
 ];
 
-const MOVES = [
+const MOVES: { n: string; title: string; finding: string; change: React.ReactNode }[] = [
   {
     n: "01",
     title: "Move the supply point forward",
     finding: "Every resupply run began too far from the aid stations.",
-    change: "Planned and tracked the $2M move forward. Owner-reported resupply time changed from 1–2 months to 1–2 weeks, summarized as 85% shorter.",
+    change: <>Planned and tracked the $2M move forward, in phases from most essential to least, with personnel split so no aid station went unsupplied during the move. <Term def="My own record, not independently measured.">Owner-reported</Term> resupply time changed from 1–2 months to 1–2 weeks, summarized as 85% shorter.</>,
   },
   {
     n: "02",
     title: "One way of asking",
     finding: "Seven stations used different request and reporting formats.",
-    change: "Built one shared request protocol; the service record reports a 15% efficiency gain in critical-resource deployment.",
+    change: "Built one shared request protocol and trained each site on how to order and what each order status meant; the service record reports a 15% efficiency gain in critical-resource deployment.",
   },
   {
     n: "03",
     title: "Order before it runs out",
     finding: "No one could see order status, so sites over-ordered or ran out.",
-    change: "Built shared real-time order status; the service record reports 60% lower spending while maintaining availability.",
+    change: "Built shared real-time order status; the service record reports 60% lower spending while maintaining availability. The failure it was built against: a site “going black,” out of supplies.",
   },
 ];
 
@@ -115,8 +117,8 @@ export default function FlagshipLogistics() {
             <dl className="rp-heroEvidence" aria-label="Medical logistics case evidence at a glance">
               <div><dt>Role</dt><dd>Medical logistics officer · relocation and service lead</dd></div>
               <div><dt>System</dt><dd>Seven aid stations · three countries</dd></div>
-              <div><dt>My contribution</dt><dd>Plan the move · build shared tracking · train the handoffs</dd></div>
-              <div><dt>Outcome</dt><dd>85% shorter after relocation · owner-reported service record</dd></div>
+              <div><dt>My contribution</dt><dd>Plan the move · one request protocol · shared order status</dd></div>
+              <div><dt>Outcome</dt><dd>85% shorter after relocation · owner-reported: my own service record, not independently measured</dd></div>
             </dl>
             <a className="rp-cta" href="#log-moves">See the three moves →</a>
           </div>
@@ -130,7 +132,7 @@ export default function FlagshipLogistics() {
           <div className="fp-logisticsHeroMechanism">
             <LogisticsMechanism n="01" />
           </div>
-          <div className="fp-artifactLabel"><span>DEPLOYMENT · 2024</span><b>44th IBCT · seven aid stations · three countries</b></div>
+          <div className="fp-artifactLabel"><span>DEPLOYMENT · 2024</span><b>44th Infantry Brigade Combat Team · seven aid stations · three countries</b></div>
           <figure className="fp-logisticsPhoto">
             <img src="/assets/about/army.jpg" alt="Hillary Esposito in uniform during her deployment as a medical logistics officer" />
           </figure>
@@ -207,8 +209,8 @@ export default function FlagshipLogistics() {
 
       <section className="rp-section">
         <div className="rp-wrap rp-close">
-          <h2>Need someone who has done this where it counted?</h2>
-          <p>I have run a supply chain where being wrong had a cost, and redesigned clinical systems where the same was true. The instinct transfers: find the workaround, make it visible, and change the sequence.</p>
+          <h2>Supply lines and clinic workflows break the same way.</h2>
+          <p>In both, I found the step that should not exist and changed the sequence.</p>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
           <ShareCaseStudy title="Medical logistics — a case study by Hillary Esposito" />
         </div>

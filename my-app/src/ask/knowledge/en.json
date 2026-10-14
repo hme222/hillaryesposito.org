@@ -5,7 +5,7 @@
   {
    "id": "en:msk-start:0",
    "lang": "en",
-   "text": "I diagnosed and mapped a paper detour across four departments, checked feasibility, and pitched a digital filing workflow. IT and UX built it after I changed roles.",
+   "text": "I diagnosed and mapped a paper detour across four departments, checked feasibility, and pitched a digital filing workflow. Information technology (IT) and user experience (UX) teams built it after I changed roles.",
    "source": {
     "type": "page",
     "label": "MSK case study · A filing queue replaced a four-department paper detour.",
@@ -82,7 +82,7 @@
   {
    "id": "en:msk-brief:1",
    "lang": "en",
-   "text": "Every clinical day runs through the EMR—the electronic medical record where a patient’s history lives. The online queue kept the filing on screen and returned with its status updated.",
+   "text": "Patient-portal messages (patients’ questions and clinicians’ replies) lived in the portal, not in the patient’s chart, the electronic medical record (EMR), so staff printed them to be scanned into the chart. Every printed message is a chance for patient information to travel, get filed to the wrong chart, or go missing before the next visit.",
    "source": {
     "type": "page",
     "label": "MSK case study · A digital workflow became a paper ritual.",
@@ -148,7 +148,7 @@
   {
    "id": "en:msk-workflow:5",
    "lang": "en",
-   "text": "03 Print the digital record",
+   "text": "03 Print the portal message",
    "source": {
     "type": "page",
     "label": "MSK case study · One map made four departments see the same failure.",
@@ -203,7 +203,7 @@
   {
    "id": "en:msk-workflow:10",
    "lang": "en",
-   "text": "04 It files inside the online chart",
+   "text": "04 It files to the patient’s chart",
    "source": {
     "type": "page",
     "label": "MSK case study · One map made four departments see the same failure.",
@@ -555,7 +555,7 @@
   {
    "id": "en:msk-redesigns:2",
    "lang": "en",
-   "text": "Digital record → paper route → missing chart context.",
+   "text": "Portal message → paper route → missing chart context.",
    "source": {
     "type": "page",
     "label": "MSK case study · The same failure, in two more places.",
@@ -588,7 +588,7 @@
   {
    "id": "en:msk-redesigns:5",
    "lang": "en",
-   "text": "Technical legal copy stalled clinician completion.",
+   "text": "Technical, legal copy kept clinicians from finishing CPR (cardiopulmonary resuscitation) certification.",
    "source": {
     "type": "page",
     "label": "MSK case study · The same failure, in two more places.",
@@ -599,7 +599,7 @@
   {
    "id": "en:msk-redesigns:6",
    "lang": "en",
-   "text": "Plain-language material brought every certification in 70% before the slipping deadline.",
+   "text": "The whole department certified a month before the original deadline, with no 4-month extension.",
    "source": {
     "type": "page",
     "label": "MSK case study · The same failure, in two more places.",
@@ -643,7 +643,7 @@
   {
    "id": "en:msk-systems:1",
    "lang": "en",
-   "text": "01 Office Coordinator Where people paused THE METHOD IT GAVE ME Lean Six Sigma Green Belt (Purdue) · Master of Healthcare Administration (Rutgers) Both finished in this seat, while I was running a clinic's paperwork. The Green Belt is the lens that showed one filing task crossing four departments.",
+   "text": "01 Office Coordinator Where people paused THE METHOD IT GAVE ME Lean Six Sigma Green Belt (Purdue) · Master of Healthcare Administration (Rutgers) Both finished in this seat, while I was running a clinic's paperwork. The Green Belt, a process-improvement certification, is the lens that showed one filing task crossing four departments.",
    "source": {
     "type": "page",
     "label": "MSK case study · I learned the system from the floor up.",
@@ -654,7 +654,7 @@
   {
    "id": "en:msk-systems:2",
    "lang": "en",
-   "text": "Both finished in this seat, while I was running a clinic's paperwork. The Green Belt is the lens that showed one filing task crossing four departments.",
+   "text": "Both finished in this seat, while I was running a clinic's paperwork. The Green Belt, a process-improvement certification, is the lens that showed one filing task crossing four departments.",
    "source": {
     "type": "page",
     "label": "MSK case study · I learned the system from the floor up.",
@@ -687,7 +687,7 @@
   {
    "id": "en:msk-systems:5",
    "lang": "en",
-   "text": "03 Trainer I Specialist The authority to redesign it THE METHOD IT GAVE ME Training & Facilitation (ATD) · current-state mapping I instructed on Epic, HIPAA, and the compliance modules. Owning how staff were taught the system meant documenting what actually happens, not what the policy says — and the gap between the two is where the design work lives.",
+   "text": "03 Trainer I Specialist The authority to redesign it THE METHOD IT GAVE ME Training & Facilitation (ATD) · current-state mapping I instructed on Epic (the record software), HIPAA (the patient-privacy law), and the compliance modules. Owning how staff were taught the system meant documenting what actually happens, not what the policy says — and the gap between the two is where the design work lives.",
    "source": {
     "type": "page",
     "label": "MSK case study · I learned the system from the floor up.",
@@ -698,7 +698,7 @@
   {
    "id": "en:msk-systems:6",
    "lang": "en",
-   "text": "I instructed on Epic, HIPAA, and the compliance modules. Owning how staff were taught the system meant documenting what actually happens, not what the policy says — and the gap between the two is where the design work lives.",
+   "text": "I instructed on Epic (the record software), HIPAA (the patient-privacy law), and the compliance modules. Owning how staff were taught the system meant documenting what actually happens, not what the policy says — and the gap between the two is where the design work lives.",
    "source": {
     "type": "page",
     "label": "MSK case study · I learned the system from the floor up.",
@@ -830,7 +830,7 @@
   {
    "id": "en:log-start:3",
    "lang": "en",
-   "text": "Plan the move · build shared tracking · train the handoffs",
+   "text": "Plan the move · one request protocol · shared order status",
    "source": {
     "type": "page",
     "label": "Medical logistics case study · 85% shorter medical resupply time.",
@@ -841,7 +841,7 @@
   {
    "id": "en:log-start:4",
    "lang": "en",
-   "text": "85% shorter after relocation · owner-reported service record",
+   "text": "85% shorter after relocation · owner-reported: my own service record, not independently measured",
    "source": {
     "type": "page",
     "label": "Medical logistics case study · 85% shorter medical resupply time.",
@@ -896,7 +896,7 @@
   {
    "id": "en:log-moves:3",
    "lang": "en",
-   "text": "Planned and tracked the $2M move forward. Owner-reported resupply time changed from 1–2 months to 1–2 weeks, summarized as 85% shorter.",
+   "text": "Planned and tracked the $2M move forward, in phases from most essential to least, with personnel split so no aid station went unsupplied during the move. Owner-reported resupply time changed from 1–2 months to 1–2 weeks, summarized as 85% shorter.",
    "source": {
     "type": "page",
     "label": "Medical logistics case study · Move the warehouse. Then fix the handoffs.",
@@ -918,7 +918,7 @@
   {
    "id": "en:log-moves:5",
    "lang": "en",
-   "text": "Built one shared request protocol; the service record reports a 15% efficiency gain in critical-resource deployment.",
+   "text": "Built one shared request protocol and trained each site on how to order and what each order status meant; the service record reports a 15% efficiency gain in critical-resource deployment.",
    "source": {
     "type": "page",
     "label": "Medical logistics case study · Move the warehouse. Then fix the handoffs.",
@@ -940,7 +940,7 @@
   {
    "id": "en:log-moves:7",
    "lang": "en",
-   "text": "Built shared real-time order status; the service record reports 60% lower spending while maintaining availability.",
+   "text": "Built shared real-time order status; the service record reports 60% lower spending while maintaining availability. The failure it was built against: a site “going black,” out of supplies.",
    "source": {
     "type": "page",
     "label": "Medical logistics case study · Move the warehouse. Then fix the handoffs.",
@@ -1215,7 +1215,7 @@
   {
    "id": "en:grove-research:8",
    "lang": "en",
-   "text": "out of 5: how confident new owners felt about light (n=12). Experienced owners rated themselves 3.4 (n=14)",
+   "text": "out of 5: how confident new owners felt about light (12 people). Experienced owners rated themselves 3.4 (14 people)",
    "source": {
     "type": "page",
     "label": "Grove case study · Plant parents forget. Then they feel guilty.",
@@ -1380,7 +1380,7 @@
   {
    "id": "en:grove-decisions:1",
    "lang": "en",
-   "text": "Each direction is paired with the authentic first-build screen it would change. These are not completed redesigns.",
+   "text": "Each direction is paired with the first-build screen it would change. These are not completed redesigns.",
    "source": {
     "type": "page",
     "label": "Grove case study · Three features, one testable direction each.",
@@ -2557,7 +2557,7 @@
   {
    "id": "en:about-story:6",
    "lang": "en",
-   "text": "Six years at MSK, designing for 21,000+ clinicians and staff.",
+   "text": "Six years at MSK in three roles.",
    "source": {
     "type": "page",
     "label": "About · Where it comes from",
@@ -2568,7 +2568,7 @@
   {
    "id": "en:about-story:7",
    "lang": "en",
-   "text": "I initiated an EMR workflow redesign that contributed within a 20% organization-wide cost reduction. IT and UX built it after I changed roles.",
+   "text": "I initiated an electronic medical record (EMR) workflow redesign for work reaching 21,000+ clinicians and staff; it contributed to a 20% organization-wide cost reduction. Information technology (IT) and user experience (UX) teams built it after I changed roles.",
    "source": {
     "type": "page",
     "label": "About · Where it comes from",
@@ -2579,7 +2579,7 @@
   {
    "id": "en:about-story:8",
    "lang": "en",
-   "text": "I also rebuilt CPR certification and administrative onboarding across Epic, HIPAA, and compliance.",
+   "text": "I also rebuilt CPR (cardiopulmonary resuscitation) certification and administrative onboarding across Epic (the record software), HIPAA (the patient-privacy law), and compliance.",
    "source": {
     "type": "page",
     "label": "About · Where it comes from",
@@ -2667,10 +2667,10 @@
   {
    "id": "en:about-contact:0",
    "lang": "en",
-   "text": "Open to UX and product design roles in healthcare and other operationally complex environments, and to freelance work.",
+   "text": "Open to healthcare product design roles, and to freelance work.",
    "source": {
     "type": "page",
-    "label": "About · Interested in working together?",
+    "label": "About · Hiring for healthcare product design?",
     "url": "/about/#about-contact"
    },
    "batch": 1

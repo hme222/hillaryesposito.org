@@ -5,7 +5,7 @@
   {
    "id": "es:es-msk-start:0",
    "lang": "es",
-   "text": "Durante seis años en MSK, trabajé en flujos clínicos, certificación e incorporación de personal para sistemas cuyo alcance incluía a más de 21,000 profesionales clínicos y administrativos. En el flujo de archivo, diagnostiqué y mapeé un desvío en papel, verifiqué su viabilidad y propuse una solución digital. Los equipos de TI y UX la implementaron después de que cambié de puesto. Este trabajo muestra diseño aplicado a herramientas internas, permisos, estados y adopción en un entorno de salud real.",
+   "text": "Durante seis años en MSK, en tres puestos, trabajé en flujos clínicos, certificación e incorporación de personal para sistemas cuyo alcance incluía a más de 21,000 profesionales clínicos y administrativos. Los mensajes del portal de pacientes vivían en el portal, no en la historia clínica, así que el personal los imprimía para escanearlos. Mapeé ese desvío entre cuatro áreas, verifiqué su viabilidad y propuse una solución digital. Los equipos de TI (tecnología de la información) y UX (experiencia de usuario) la implementaron después de que cambié de puesto.",
    "source": {
     "type": "page",
     "label": "Estudio de caso MSK · Una cola de archivo reemplazó un desvío de papel entre cuatro áreas",
@@ -38,7 +38,7 @@
   {
    "id": "es:es-msk-workflow:0",
    "lang": "es",
-   "text": "El rediseño de EMR consistió en agregar una acción directa en el dashboard que llevaba al EMR en línea. Antes, el equipo imprimía, enviaba a otro sitio y esperaba que se archivara. Después, el flujo redujo pasos y quitó trabajo duplicado.",
+   "text": "El rediseño consistió en agregar una acción directa en el panel que archivaba el mensaje en el expediente médico electrónico (EMR), la historia del paciente. Antes, el personal imprimía el mensaje, lo enviaba a HIM (gestión de información de salud, el equipo que escanea documentos a la historia) y esperaba que se archivara. Después, el flujo pasó de seis pasos a cinco y un área salió del circuito.",
    "source": {
     "type": "page",
     "label": "Estudio de caso MSK · De imprimir y enviar a una acción directa desde el dashboard",
@@ -93,7 +93,7 @@
   {
    "id": "es:es-msk-decisions:3",
    "lang": "es",
-   "text": "El material de certificación de RCP estaba en lenguaje técnico y legal, y tan poca gente lo completaba que el plazo estaba a punto de aplazarse. Lo reescribí para los clínicos que tenían que completarlo: llegaron todas las certificaciones, un 70% antes del plazo.",
+   "text": "El material de certificación de RCP (reanimación cardiopulmonar) estaba en lenguaje técnico y legal, y tan poca gente lo completaba que el equipo planeaba una prórroga de 4 meses. Lo reescribí para los clínicos que tenían que completarlo: toda el área se certificó un mes antes de la fecha límite original, sin la prórroga.",
    "source": {
     "type": "page",
     "label": "Estudio de caso MSK · Mapear, probar, alinear y sostener",
@@ -104,7 +104,7 @@
   {
    "id": "es:es-msk-decisions:4",
    "lang": "es",
-   "text": "El programa de incorporación para personal administrativo nuevo — Epic, HIPAA, los módulos de cumplimiento y las habilidades técnicas y blandas del puesto — se reconstruyó con el equipo de diseño y se curó cohorte por cohorte, para el rango real de habilidades que llegaba.",
+   "text": "El programa de incorporación para personal administrativo nuevo — Epic (el software del expediente), HIPAA (la ley de privacidad del paciente), los módulos de cumplimiento y las habilidades técnicas y blandas del puesto — se reconstruyó con el equipo de diseño y se curó cohorte por cohorte, para el rango real de habilidades que llegaba.",
    "source": {
     "type": "page",
     "label": "Estudio de caso MSK · Mapear, probar, alinear y sostener",
@@ -115,7 +115,29 @@
   {
    "id": "es:es-msk-outcomes:0",
    "lang": "es",
-   "text": "La iniciativa organizacional más amplia reportó una reducción de 20% en costos relacionados con EMR; no atribuyo ese resultado únicamente a la cola de archivo y el registro conservado no incluye el período ni la definición de costos. En mi trabajo directo, todas las certificaciones de RCP se recogieron un 70% antes del plazo y el programa de incorporación del personal administrativo se rediseñó para el rango de habilidades de cada cohorte.",
+   "text": "En mi trabajo directo, toda el área se certificó en RCP un mes antes de la fecha límite original, sin la prórroga de 4 meses, y el programa de incorporación del personal administrativo se rediseñó para el rango de habilidades de cada cohorte.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso MSK · Impacto medible en sistemas internos",
+    "url": "/case-study/msk/#es-msk-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-msk-outcomes:1",
+   "lang": "es",
+   "text": "La iniciativa organizacional más amplia reportó una reducción de 20% en costos relacionados con el EMR; no atribuyo ese resultado únicamente a la cola de archivo y el registro conservado no incluye el período ni la definición de costos.",
+   "source": {
+    "type": "page",
+    "label": "Estudio de caso MSK · Impacto medible en sistemas internos",
+    "url": "/case-study/msk/#es-msk-outcomes"
+   },
+   "batch": 1
+  },
+  {
+   "id": "es:es-msk-outcomes:2",
+   "lang": "es",
+   "text": "En mi propuesta para la Feria de Mejora de Procesos proyecté un ahorro de ~$1M al año en papel. Es una proyección de esa propuesta, no un ahorro medido.",
    "source": {
     "type": "page",
     "label": "Estudio de caso MSK · Impacto medible en sistemas internos",
@@ -192,7 +214,7 @@
   {
    "id": "es:es-log-moves:1",
    "lang": "es",
-   "text": "Acercar el punto de suministro: cada reabastecimiento empezaba demasiado lejos de las estaciones de ayuda. Planifiqué y di seguimiento a la mudanza de $2M. Según lo reportado, el tiempo pasó de 1–2 meses a 1–2 semanas (85% menos).",
+   "text": "Acercar el punto de suministro: cada reabastecimiento empezaba demasiado lejos de las estaciones de ayuda. Planifiqué y di seguimiento a la mudanza de $2M. La hice por fases, de lo más esencial a lo menos, y dividí al personal para que ninguna estación de ayuda se quedara sin suministro durante la mudanza. Según lo reportado, el tiempo pasó de 1–2 meses a 1–2 semanas (85% menos).",
    "source": {
     "type": "page",
     "label": "Estudio de caso de logística médica · Mover el almacén. Después, arreglar los traspasos.",
@@ -203,7 +225,7 @@
   {
    "id": "es:es-log-moves:2",
    "lang": "es",
-   "text": "Una sola forma de pedir: siete estaciones usaban formatos distintos de solicitud y de reporte. Creé un protocolo de solicitud compartido; el expediente reporta un 15% más de eficiencia al desplegar recursos críticos.",
+   "text": "Una sola forma de pedir: siete estaciones usaban formatos distintos de solicitud y de reporte. Creé un protocolo de solicitud compartido y capacité a cada sitio en cómo pedir y qué significaba cada estado del pedido; el expediente reporta un 15% más de eficiencia al desplegar recursos críticos.",
    "source": {
     "type": "page",
     "label": "Estudio de caso de logística médica · Mover el almacén. Después, arreglar los traspasos.",
@@ -214,7 +236,7 @@
   {
    "id": "es:es-log-moves:3",
    "lang": "es",
-   "text": "Pedir antes de que se acabe: nadie veía el estado de los pedidos, así que unos sitios pedían de más y otros se quedaban sin nada. Creé un estado de pedidos compartido en tiempo real; el expediente reporta un 60% menos de gasto sin perder disponibilidad.",
+   "text": "Pedir antes de que se acabe: nadie veía el estado de los pedidos, así que unos sitios pedían de más y otros se quedaban sin nada. Creé un estado de pedidos compartido en tiempo real; el expediente reporta un 60% menos de gasto sin perder disponibilidad. La falla contra la que lo diseñé: un sitio que “se queda en negro”, sin suministros.",
    "source": {
     "type": "page",
     "label": "Estudio de caso de logística médica · Mover el almacén. Después, arreglar los traspasos.",
@@ -357,7 +379,7 @@
   {
    "id": "es:es-grove-brief:1",
    "lang": "es",
-   "text": "El punto débil: en lo que peor están los dueños nuevos es en la luz — dónde poner una planta, y por qué. Ninguna app grande lo enseña. Los dueños nuevos calificaron su confianza sobre la luz en 2.4 de 5 (n=12); los experimentados, en 3.4 (n=14). Ahí, más la confianza, es donde Grove gana o no gana.",
+   "text": "El punto débil: en lo que peor están los dueños nuevos es en la luz — dónde poner una planta, y por qué. Ninguna app grande lo enseña. Los dueños nuevos calificaron su confianza sobre la luz en 2.4 de 5 (12 personas); los experimentados, en 3.4 (14 personas). Ahí, más la confianza, es donde Grove gana o no gana.",
    "source": {
     "type": "page",
     "label": "Estudio de caso Grove · Los dueños de plantas se olvidan. Y luego se sienten culpables.",
@@ -632,7 +654,7 @@
   {
    "id": "es:about-story:6",
    "lang": "es",
-   "text": "Seis años en MSK, diseñando para 21,000+ clínicos y personal.",
+   "text": "Seis años en MSK en tres puestos.",
    "source": {
     "type": "page",
     "label": "Sobre mí · De dónde viene",
@@ -643,7 +665,7 @@
   {
    "id": "es:about-story:7",
    "lang": "es",
-   "text": "Inicié un rediseño de flujo EMR que contribuyó dentro de una reducción organizacional del 20% en costos. TI y UX lo construyeron después de que cambié de puesto.",
+   "text": "Inicié un rediseño del flujo del expediente médico electrónico (EMR) para un trabajo que alcanzaba a más de 21,000 clínicos y personal; contribuyó a una reducción organizacional del 20% en costos. Los equipos de tecnología de la información (TI) y de experiencia de usuario (UX) lo construyeron después de que cambié de puesto.",
    "source": {
     "type": "page",
     "label": "Sobre mí · De dónde viene",
@@ -654,7 +676,7 @@
   {
    "id": "es:about-story:8",
    "lang": "es",
-   "text": "También reconstruí la certificación de RCP y la incorporación administrativa en Epic, HIPAA y cumplimiento.",
+   "text": "También reconstruí la certificación de RCP (reanimación cardiopulmonar) y la incorporación administrativa en Epic (el software del expediente), HIPAA (la ley de privacidad del paciente) y cumplimiento.",
    "source": {
     "type": "page",
     "label": "Sobre mí · De dónde viene",
@@ -742,10 +764,10 @@
   {
    "id": "es:about-contact:0",
    "lang": "es",
-   "text": "Abierta a roles de UX y diseño de producto en salud y otros entornos operativamente complejos, y a trabajo freelance.",
+   "text": "Abierta a roles de diseño de productos de salud, y a trabajo freelance.",
    "source": {
     "type": "page",
-    "label": "Sobre mí · ¿Le interesa trabajar conmigo?",
+    "label": "Sobre mí · ¿Busca a alguien para diseño de productos de salud?",
     "url": "/about/#about-contact"
    },
    "batch": 1

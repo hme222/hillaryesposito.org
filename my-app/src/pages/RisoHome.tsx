@@ -6,6 +6,7 @@ import PhaseIndicator from "../components/riso/PhaseIndicator";
 import HomepageOpeningFilm from "../components/riso/HomepageOpeningFilm";
 import LogisticsMechanism from "../components/LogisticsMechanism";
 import MSKDashboardMockup from "../components/MSKDashboardMockup";
+import { glossTerms } from "../components/Term";
 import usePageTitle from "../hooks/usePageTitle";
 import useFlagshipReveal from "../hooks/useFlagshipReveal";
 import useFilmExitChoreo from "../hooks/useFilmExitChoreo";
@@ -54,8 +55,8 @@ const WORK: WorkItem[] = [
     // study use, so the work list shows what was actually designed.
     visual: "msk",
     teaserPath: "/case-study/msk#msk-decisions",
-    teaserEn: "See the button that wasn't simple →",
-    teaserEs: "Ver el botón que no era simple →",
+    teaserEn: "See why one button needed four rules →",
+    teaserEs: "Ver por qué un botón necesitó cuatro reglas →",
   },
   {
     n: "02",
@@ -113,6 +114,44 @@ const STATS = [
   { n: "85%", labelKey: "home.stat.logistics", sourceKey: "home.stat.logisticsSource", path: "/case-study/logistics", anchor: "log-outcomes" },
   { n: "34", labelKey: "home.stat.research", sourceKey: "home.stat.groveSource", path: "/case-study/grove", anchor: "grove-research" },
 ] satisfies Array<{ n: string; labelKey: StringKey; sourceKey: StringKey; path: string; anchor: string }>;
+
+// Home's glossary: each short form gets one tap/hover definition, at its first
+// appearance (2026-10-14 review, item 12). NYPL is spelled out in the dispatch
+// body instead, so it needs none.
+const GLOSSARY = {
+  en: {
+    IT: "Information technology: the team that owns the hospital's systems.",
+    UX: "User experience: the team that designs how a system works for the people using it.",
+    MHA: "Master of Healthcare Administration, a graduate degree in running health systems.",
+    "Lean Six Sigma": "Lean Six Sigma Green Belt, a process-improvement certification.",
+    MTA: "Metropolitan Transportation Authority, New York's transit agency.",
+  },
+  es: {
+    TI: "Tecnología de la información: el equipo a cargo de los sistemas del hospital.",
+    UX: "Experiencia de usuario: el equipo que diseña cómo funciona un sistema para quienes lo usan.",
+    MHA: "Maestría en Administración de Salud, un posgrado en gestión de sistemas de salud.",
+    "Lean Six Sigma": "Green Belt de Lean Six Sigma, una certificación de mejora de procesos.",
+    MTA: "Autoridad Metropolitana de Transporte, la agencia de transporte de Nueva York.",
+  },
+} as const;
+
+// The headline's real phrases. Each is set no-wrap so a line can only break
+// between them (CLAUDE.md: never a stranded word, break at a phrase). If the
+// translated title stops matching, it renders as plain text instead.
+const HERO_PHRASES = {
+  en: ["I design", "the workflow", "before the screen."],
+  es: ["Diseño", "el flujo de trabajo", "antes que la pantalla."],
+} as const;
+
+function heroTitle(title: string, phrases: readonly string[]): React.ReactNode {
+  if (title !== phrases.join(" ")) return title;
+  return phrases.map((phrase, index) => (
+    <React.Fragment key={phrase}>
+      {index > 0 && " "}
+      <span className="rp-h1Phrase">{phrase}</span>
+    </React.Fragment>
+  ));
+}
 
 const DISPATCH_TRAIN_HOLD_SECONDS = 3.8;
 
@@ -258,6 +297,8 @@ export default function RisoHome() {
     navigate(`${location.pathname}${location.search}${location.hash}`, { replace: true, state: null });
   }, [location.state, location.pathname, location.search, location.hash, navigate]);
 
+  const glossary: Record<string, string> = GLOSSARY[lang === "es" ? "es" : "en"];
+
   const renderWorkContents = (work: WorkItem) => (
     <>
       <div>
@@ -324,10 +365,10 @@ export default function RisoHome() {
                 against (portfolio-cohesion.css) — not .rp-clearing itself,
                 which collapses under inline-size containment. */}
             <div className="rp-h1Fit">
-              <h1 className="rp-h1">{t("home.riso.heroTitle")}</h1>
+              <h1 className="rp-h1">{heroTitle(t("home.riso.heroTitle"), HERO_PHRASES[lang === "es" ? "es" : "en"])}</h1>
             </div>
             <p className="rp-sub rp-heroProof">
-              {t("home.riso.heroLead")} <b>{t("home.riso.heroProof")}</b>
+              {t("home.riso.heroLead")} <b>{glossTerms(t("home.riso.heroProof"), glossary)}</b>
             </p>
             <p className="rp-status">{t("home.status")}</p>
             <div className="rp-hero__ctas">
@@ -351,6 +392,12 @@ export default function RisoHome() {
                 {t("home.riso.recruiterTourLink")}
               </button>
             </div>
+            {/* Career-switch context, directly under the actions: quiet, in the
+                site's existing note style, never a banner (2026-10-14, item 15). */}
+            <aside className="rp-note rp-careerNote" aria-labelledby="home-career-switch">
+              <p className="rp-note__k" id="home-career-switch">{t("home.riso.careerSwitchTitle")}</p>
+              <p>{t("home.riso.careerSwitchBody")}</p>
+            </aside>
           </div>
         </div>
         {/* Simple hero media: photo next to the header text. The dashboard
@@ -375,7 +422,7 @@ export default function RisoHome() {
           repeated here — they are the work list directly below. */}
       <ul className="rp-trustStrip" aria-label={t("home.trustAria")}>
         {(["home.trust.credentials", "home.trust.army", "home.trust.bilingual"] as StringKey[]).map((key) => (
-          <li key={key}>{t(key)}</li>
+          <li key={key}>{glossTerms(t(key), glossary)}</li>
         ))}
       </ul>
 
@@ -566,7 +613,7 @@ export default function RisoHome() {
                 </button>
               </div>
             </div>
-            <p className="rp-dispatchTrain__attribution">{t("home.dispatch.trainAttribution")}</p>
+            <p className="rp-dispatchTrain__attribution">{glossTerms(t("home.dispatch.trainAttribution"), glossary)}</p>
 
             <div
               className="rp-dispatch__reveal"

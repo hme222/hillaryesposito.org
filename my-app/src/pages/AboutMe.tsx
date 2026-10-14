@@ -27,11 +27,13 @@ const CHAPTERS: AboutChapter[] = [
   {
     id: "msk",
     label: "MSK",
-    heading: "Six years at MSK, designing for 21,000+ clinicians and staff.",
+    heading: "Six years at MSK in three roles.",
     image: "/assets/about/msk.jpg",
+    // First uses on this page, so each short form is spelled out once
+    // (2026-10-14 review, item 12).
     paragraphs: [
-      "I initiated an EMR workflow redesign that contributed within a 20% organization-wide cost reduction. IT and UX built it after I changed roles.",
-      "I also rebuilt CPR certification and administrative onboarding across Epic, HIPAA, and compliance.",
+      "I initiated an electronic medical record (EMR) workflow redesign for work reaching 21,000+ clinicians and staff; it contributed to a 20% organization-wide cost reduction. Information technology (IT) and user experience (UX) teams built it after I changed roles.",
+      "I also rebuilt CPR (cardiopulmonary resuscitation) certification and administrative onboarding across Epic (the record software), HIPAA (the patient-privacy law), and compliance.",
     ],
     callout: "Systems fail at the point where a real person has to use them.",
     articleLink: {
@@ -66,11 +68,11 @@ const CHAPTERS_ES: AboutChapter[] = [
   {
     id: "msk",
     label: "MSK",
-    heading: "Seis años en MSK, diseñando para 21,000+ clínicos y personal.",
+    heading: "Seis años en MSK en tres puestos.",
     image: "/assets/about/msk.jpg",
     paragraphs: [
-      "Inicié un rediseño de flujo EMR que contribuyó dentro de una reducción organizacional del 20% en costos. TI y UX lo construyeron después de que cambié de puesto.",
-      "También reconstruí la certificación de RCP y la incorporación administrativa en Epic, HIPAA y cumplimiento.",
+      "Inicié un rediseño del flujo del expediente médico electrónico (EMR) para un trabajo que alcanzaba a más de 21,000 clínicos y personal; contribuyó a una reducción organizacional del 20% en costos. Los equipos de tecnología de la información (TI) y de experiencia de usuario (UX) lo construyeron después de que cambié de puesto.",
+      "También reconstruí la certificación de RCP (reanimación cardiopulmonar) y la incorporación administrativa en Epic (el software del expediente), HIPAA (la ley de privacidad del paciente) y cumplimiento.",
     ],
     callout: "Los sistemas fallan donde una persona real tiene que usarlos.",
     articleLink: {
@@ -99,13 +101,13 @@ const CHAPTERS_ES: AboutChapter[] = [
 ];
 
 // One proof link per "My pattern" item, in list order. Spanish case studies
-// render through SpanishCaseStudy, whose anchors carry an `es-` prefix; it has
-// no sustainment section, so item 04 lands on its outcomes instead.
+// render through SpanishCaseStudy, whose anchors carry an `es-` prefix; the
+// Spanish MSK study has its own sustainment section since 2026-10-14.
 const PATTERN_PROOF = [
   { en: "See the workaround →", es: "Ver el desvío →", path: "/case-study/msk#msk-brief", pathEs: "/case-study/msk#es-msk-brief" },
   { en: "See the casualty risk →", es: "Ver el riesgo de bajas →", path: "/case-study/logistics#log-brief", pathEs: "/case-study/logistics#es-log-brief" },
   { en: "See the one map →", es: "Ver el mapa →", path: "/case-study/msk#msk-workflow", pathEs: "/case-study/msk#es-msk-workflow" },
-  { en: "See what lasted →", es: "Ver lo que perduró →", path: "/case-study/msk#msk-sustainment", pathEs: "/case-study/msk#es-msk-outcomes" },
+  { en: "See what lasted →", es: "Ver lo que perduró →", path: "/case-study/msk#msk-sustainment", pathEs: "/case-study/msk#es-msk-sustainment" },
 ];
 
 export default function About() {
@@ -337,9 +339,9 @@ export default function About() {
       {/* ═ CTA ══════════════════════════════════════════════════════ */}
       <section id="about-contact" data-language-anchor="about-contact" className="rp-section">
         <div className="rp-wrap rp-close">
-          <h2>{isSpanish ? "¿Le interesa trabajar conmigo?" : "Interested in working together?"}</h2>
+          <h2>{isSpanish ? "¿Busca a alguien para diseño de productos de salud?" : "Hiring for healthcare product design?"}</h2>
           <p>
-            {isSpanish ? "Abierta a roles de UX y diseño de producto en salud y otros entornos operativamente complejos, y a trabajo freelance." : "Open to UX and product design roles in healthcare and other operationally complex environments, and to freelance work."}
+            {isSpanish ? "Abierta a roles de diseño de productos de salud, y a trabajo freelance." : "Open to healthcare product design roles, and to freelance work."}
           </p>
           <div className="rp-hero__ctas">
             <a className="rp-cta" href="mailto:espositohillary@gmail.com">

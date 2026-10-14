@@ -289,3 +289,40 @@ Audit ran against the résumé scripts, this file, MSK News, and `git log -S`.
 - **Sustainment drawing:** lanes no longer show the F2/F3 cut claims; they
   show the handoff to IT and UX, organization-wide adoption (owner-reported),
   and compliance a month early.
+
+## 2026-10-14 review answers (from Hillary's interview)
+
+Raw answers, applied site-wide on the `copy-review` branch. The résumé PDFs
+were out of scope for this pass.
+
+1. **What got printed:** patient-portal messages (patient messages and
+   clinician replies). They lived in the portal, not the patient's chart,
+   and were printed so they could be scanned into the chart. Copy must make
+   that clear in one sentence. No vendor product named beyond what the page
+   already said (Epic is fine where already used).
+2. **Mock queue rows:** messages only (Patient message, Physician reply,
+   Care team note, Patient reply, Nurse reply for the fifth row). Masked MRN
+   pattern kept; the EMR glossary entry now says portal messages sit outside
+   the chart until filed.
+3. **The 70%:** removed from every site page (case study, outcomes tile,
+   Spanish, Ask). Lead with: the whole department certified a month before
+   the original deadline, with no 4-month extension. This resolves F3's open
+   TODO by retiring the number rather than defining the deadline.
+4. **~$1M/year:** shown as an outcome tile beside the 20% and 21,000+, always
+   labelled as a projection from her Process Improvement Fair pitch, never as
+   measured savings (consistent with Q5).
+5. **Sustainment:** headline "I left before launch. Here's what happened
+   next." Body: handoff to IT and UX, adopted organization-wide
+   (owner-reported). "Adoption is the launch metric. Sustainment is the
+   service metric." is cut.
+6. **The four departments:** clinical, IT, HIM (health information
+   management, the document-imaging team), and operations. The blueprint
+   labels all four ("Imaging" became "HIM · document imaging"); the recruiter
+   panel matches.
+7. **Risk framing:** one general-domain sentence is allowed, with no MSK
+   incident claimed: "Every printed message is a chance for patient
+   information to travel, get filed to the wrong chart, or go missing before
+   the next visit."
+8. **Titles:** Office Coordinator → Administrative Assistant → Trainer I
+   Specialist, now in the MSK hero evidence list. About's MSK chapter heading
+   is "Six years at MSK in three roles."

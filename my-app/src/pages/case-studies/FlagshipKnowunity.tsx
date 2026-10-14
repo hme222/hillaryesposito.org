@@ -38,9 +38,9 @@ const CAPTURE_W = 780;
 const CAPTURE_H = 1688;
 
 const CHAPTERS: CaseStudyChapter[] = [
-  { id: "knowunity-start", label: "Start", note: "One sprint, solo, on a real brief" },
+  { id: "knowunity-start", label: "Start", note: "One sprint, solo, on Knowunity’s brief" },
   { id: "knowunity-brief", label: "Problem", note: "Seen it is not the same as knowing it" },
-  { id: "knowunity-decisions", label: "Decisions", note: "Four calls, one loop" },
+  { id: "knowunity-decisions", label: "Decisions", note: "Four decisions, one loop" },
   { id: "knowunity-prototype", label: "Build", note: "43 routes, mocked recall" },
   { id: "knowunity-outcomes", label: "Outcomes", note: "A badge, a review, no students yet" },
 ];
@@ -135,7 +135,7 @@ export default function FlagshipKnowunity() {
             <p className="rp-sub">
               A student says a definition out loud. Knowie answers in text. On a clean pass, Knowie quotes the
               student's <b>own words</b> back as the proof. I designed it in a 2.5-week Yummy Labs design sprint on
-              Knowunity's real brief and built it as a working prototype on their component kit.
+              Knowunity's brief and built it as a working prototype on their component kit.
             </p>
             <dl className="rp-heroEvidence" aria-label="Knowunity case evidence at a glance">
               <div><dt>Role</dt><dd>Solo entry · Yummy Labs design sprint · Knowunity's brief and kit</dd></div>
@@ -143,7 +143,7 @@ export default function FlagshipKnowunity() {
               <div><dt>My contribution</dt><dd>Flows and decisions · coded prototype · Storybook catalog</dd></div>
               <div><dt>Outcome</dt><dd>Yummy Labs Design Sprint Badge · reviewed by Knowunity · not a shipped feature</dd></div>
             </dl>
-            <a className="rp-cta" href="#knowunity-decisions">See the four calls →</a>
+            <a className="rp-cta" href="#knowunity-decisions">See the four decisions →</a>
           </div>
         </div>
         <div className="rp-hero__media fp-heroArt fp-heroArt--knowunity" data-evidence="true">
@@ -180,7 +180,7 @@ export default function FlagshipKnowunity() {
       <div data-evidence="true"><DecisionStory
         id="knowunity-decisions"
         languageAnchor="knowunity-decisions"
-        kicker="Four calls · one loop"
+        kicker="Four decisions · one loop"
         title="The student does the proving, not Knowie."
         intro="Echo the words. Offer the misses. Ask for the mic when it's needed. Say where you are."
         steps={STEPS}
@@ -210,17 +210,17 @@ export default function FlagshipKnowunity() {
         )}
       /></div>
       <div className="rp-wrap fp-knowunityChange">
-        <div className="fp-journalLine"><span>What I'd change</span><b>Put a real speech-to-text version in front of real students earlier. Recall was mocked the whole way.</b></div>
+        <div className="fp-journalLine"><span>What I'd change</span><b>Put a real speech-to-text version in front of students earlier. Recall was mocked the whole way.</b></div>
       </div>
 
       <section className="rp-section" id="knowunity-prototype" data-language-anchor="knowunity-prototype">
         <div className="rp-wrap">
           <p className="rp-kicker">Mine, on their kit</p>
           <h2 className="rp-title">A working prototype, not a deck.</h2>
-          <p className="rp-lede">Every screen is a real page at its own route, reached by tapping. Storybook is the component catalog.</p>
+          <p className="rp-lede">Every screen is a page at its own route, reached by tapping. Storybook is the component catalog.</p>
           <div className="fp-workSplit rp-reveal" data-evidence="true">
             <article><span>Knowunity supplied</span><h3>The brand and the parts</h3><p>Knowie, the Greed font, their Figma kit, and access to the live app and the beta.</p></article>
-            <article><span>I did</span><h3>The flows, the calls, the code</h3><p>Next.js prototype, 43 routes, 390px dark mode, plus a Storybook catalog built on their kit.</p></article>
+            <article><span>I did</span><h3>The flows, the decisions, the code</h3><p>Next.js prototype, 43 routes, 390px dark mode, plus a Storybook catalog built on their kit.</p></article>
           </div>
           <p className="fp-ownership fp-ownership--paper rp-reveal">
             <b>AI in the build</b>
@@ -247,15 +247,15 @@ export default function FlagshipKnowunity() {
         disclaimer="Design-sprint prototype · recall is mocked: no speech recognition, hold time decides the result · no student testing · not a shipped Knowunity feature · Knowunity's internal numbers are not published here"
         metrics={[
           { tag: "Build", n: "43", label: "routes in the working prototype, every screen reached by tapping, none by typing a URL" },
-          { tag: "Sprint", n: "2.5", label: "weeks, solo, on Knowunity's real brief and component kit" },
+          { tag: "Sprint", n: "2.5", label: "weeks, solo, on Knowunity's brief and component kit" },
         ]}
         route={["Meet it where the quiz ends", "Say it back", "See your own words", "Practice what you missed"]}
       /></div>
 
       <section className="rp-section">
         <div className="rp-wrap rp-close">
-          <h2>Need a product that proves something instead of claiming it?</h2>
-          <p>The next step here is a real speech-to-text build in front of students. I would rather say that plainly than let a mock stand in for proof.</p>
+          <h2>I prototype to find the next test.</h2>
+          <p>Say It Back shows how I work: build it, say what’s mocked, name the next test.</p>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
           <ShareCaseStudy title="Knowunity — a case study by Hillary Esposito" />
         </div>

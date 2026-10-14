@@ -1000,7 +1000,9 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 /* Two tiles (Grove while its decision table is off) fill the row instead of
    leaving an empty third cell. */
 .rp-outcomes--two { grid-template-columns: repeat(2, 1fr); }
-@media (max-width: 720px) { .rp-outcomes, .rp-outcomes--two { grid-template-columns: 1fr; } }
+/* Four tiles (MSK) sit two by two rather than leaving one alone on a row. */
+.rp-outcomes--four { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 720px) { .rp-outcomes, .rp-outcomes--two, .rp-outcomes--four { grid-template-columns: 1fr; } }
 .rp-stat {
   background: color-mix(in srgb, var(--paper) 74%, transparent);
   border: 0;
@@ -1009,6 +1011,8 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   padding: 1.3rem 1.2rem;
 }
 .rp-stat:first-child { border-left: 0; }
+.rp-outcomes--four .rp-stat:nth-child(odd) { border-left: 0; }
+.rp-outcomes--four .rp-stat:nth-child(n+3) { border-top: 1px solid var(--hair); }
 @media (max-width: 720px) {
   .rp-stat { border-left: 0; border-top: 1px solid var(--hair); }
   .rp-stat:first-child { border-top: 0; }
@@ -4108,3 +4112,52 @@ h2.rp-kicker { margin: 0 0 .4rem; line-height: 1.3; }
   line-height: 1;
   color: var(--coral);
 }
+
+/* ---------- glossary term (components/Term.tsx) ---------- */
+/* A later use of a short form, or a label too tight for the long form. The
+   trigger keeps the text's own size and line height; the 44px tap area is an
+   invisible ::after so it never pushes the line apart. */
+/* Doubled class selectors (0,2,0) so a host's generic `span` rule, such as
+   `.fp-survived span { display: block }`, can't restyle the term or its tip. */
+.term.term { position: relative; display: inline; margin: 0; font-size: inherit; color: inherit; line-height: inherit; }
+.term__trigger {
+  position: relative; display: inline; margin: 0; padding: 0; border: 0;
+  background: none; color: inherit; font: inherit; letter-spacing: inherit;
+  text-transform: inherit; line-height: inherit; cursor: help;
+  text-decoration: underline dotted; text-decoration-thickness: 1.5px;
+  text-underline-offset: .22em; text-decoration-color: var(--coral);
+}
+.term__trigger::after {
+  content: ""; position: absolute; left: 50%; top: 50%;
+  width: max(100%, 44px); height: 44px; transform: translate(-50%, -50%);
+}
+.term__trigger:focus-visible { outline: 2px solid var(--coral); outline-offset: 2px; border-radius: 2px; }
+.term__tip.term__tip {
+  display: none; margin: 0; position: absolute; z-index: 40; left: 0; top: calc(100% + .45rem);
+  width: max-content; max-width: min(17rem, calc(100vw - 2rem));
+  padding: .55rem .7rem; border-radius: 4px;
+  background: var(--ink); color: var(--paper);
+  font-family: var(--sans); font-size: .82rem; font-weight: 400;
+  font-style: normal; line-height: 1.45; letter-spacing: normal; text-transform: none;
+  text-align: left; white-space: normal;
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--ink) 28%, transparent);
+}
+.term__tip.term__tip[data-open="true"] { display: block; animation: term-in .14s ease-out; }
+@keyframes term-in { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .term__tip.term__tip[data-open="true"] { animation: none; } }
+@media (forced-colors: active) {
+  .term__tip.term__tip { border: 1px solid CanvasText; background: Canvas; color: CanvasText; }
+}
+
+/* ---------- home: career-switch note under the hero actions ---------- */
+/* The existing .rp-note, made quieter: lighter fill, tighter padding, the
+   label in sentence case so it reads as a line, not a banner. */
+.rp-careerNote {
+  max-width: 44ch; margin-top: 1.25rem; padding: .85rem 1rem;
+  background: color-mix(in srgb, var(--coral) 4%, var(--paper));
+}
+.rp-careerNote .rp-note__k {
+  margin-bottom: .3rem; font-family: var(--sans); font-size: .92rem; font-weight: 750;
+  letter-spacing: -.005em; text-transform: none; line-height: 1.35;
+}
+.rp-careerNote p:not(.rp-note__k) { font-size: .9rem; line-height: 1.5; }

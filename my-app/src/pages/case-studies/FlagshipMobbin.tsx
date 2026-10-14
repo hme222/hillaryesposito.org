@@ -11,6 +11,7 @@ import ScreenSequence, { ScreenSequenceItem } from "../../components/flagship/Sc
 import CartoField from "../../components/riso/CartoField";
 import RisoDefs from "../../components/riso/RisoDefs";
 import SpanishCaseStudy from "../../components/SpanishCaseStudy";
+import Term from "../../components/Term";
 import { MOBBIN_ES } from "../../data/spanishCaseStudies";
 import useFlagshipReveal from "../../hooks/useFlagshipReveal";
 import usePageTitle from "../../hooks/usePageTitle";
@@ -95,7 +96,7 @@ export default function FlagshipMobbin() {
         <div className="rp-grain" />
         <div className="rp-hero__content">
           <div className="rp-clearing">
-            <span className="rp-eyebrow">Mobbin · UX flow documentation · three finance apps</span>
+            <span className="rp-eyebrow">Mobbin · <Term def="User experience: how a product works for the people using it.">UX</Term> flow documentation · three finance apps</span>
             <h1 className="rp-h1">200+ screens per app, searchable by task.</h1>
             <span className="rp-readtime"><b>3 min</b><span>read · 3 apps, 200+ screens each</span></span>
             <p className="rp-sub">
@@ -132,7 +133,7 @@ export default function FlagshipMobbin() {
       <div data-evidence="true"><DecisionStory
         id="mobbin-decisions"
         languageAnchor="mobbin-work"
-        kicker="Four calls · one documentation system"
+        kicker="Four decisions · one documentation system"
         title="The capture became useful through editing."
         intro="Preserve the useful state, sequence the task, name it for retrieval."
         steps={STEPS}
@@ -187,8 +188,8 @@ export default function FlagshipMobbin() {
 
       <section className="rp-section">
         <div className="rp-wrap rp-close">
-          <h2>Need someone who can see the pattern and explain why it matters?</h2>
-          <p>Two hundred screens later, I am very good at spotting when “common pattern” actually means “habit nobody questioned.”</p>
+          <h2>After 200 screens per app, I know a habit from a pattern.</h2>
+          <p>Some ‘common patterns’ are habits nobody questioned. I can tell you which.</p>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
           <ShareCaseStudy title="Mobbin — a case study by Hillary Esposito" />
         </div>

@@ -25,7 +25,7 @@ const en = {
   "footer.connect": "Contact",
   "footer.email": "Email",
   "footer.githubAria": "GitHub profile (opens in new tab)",
-  "footer.availability": "Available for healthcare product design opportunities",
+  "footer.availability": "Open to healthcare product design roles",
   "footer.madeWith": "Made with:",
   "notFound.eyebrow": "404 · Page not found",
   "notFound.title": "This page wandered off.",
@@ -57,12 +57,10 @@ const en = {
   "nav.settingsAria": "Settings: theme and language",
 
   // ── Home: hero ──
-  "home.status": "Available for opportunities",
+  "home.status": "Open to healthcare product design roles",
   "home.seeApproach": "See my approach →",
   "home.riso.eyebrow": "Healthcare Product Designer · 13+ years in healthcare",
-  // The non-breaking space keeps "out." from ever stranding on its own line;
-  // the words are unchanged.
-  "home.riso.heroTitle": "I design healthcare products from the workflow out.",
+  "home.riso.heroTitle": "I design the workflow before the screen.",
   // "Workflow fluency" named a skill without saying what it covers. The
   // durable claim is scope: the whole path a task takes, not the screen at the
   // end of it — which is what the MSK case study actually demonstrates.
@@ -71,7 +69,11 @@ const en = {
   // clause compressed an organization result into Hillary's personal action.
   "home.riso.heroLead":
     "At Memorial Sloan Kettering, I traced a four-department paper detour and proposed the queue that replaced it.",
-  "home.riso.heroProof": "IT and UX built it after I changed roles, for work touching 21,000+ clinicians and staff.",
+  // The hero lede above is the one place on Home that explains the paper
+  // detour (2026-10-14 review, item 13); the work row and teaser don't repeat it.
+  "home.riso.heroProof": "IT and UX built it after I changed roles. The workflows in scope reach 21,000+ clinicians and staff.",
+  "home.riso.careerSwitchTitle": "From healthcare operations to product design.",
+  "home.riso.careerSwitchBody": "I spent 13+ years running the workflows I now design: MSK admin and training roles, and Army medical logistics.",
   "home.riso.openingVisual": "Watch the 5-second opener",
   "home.riso.openingFilmLabel": "Opening visual · five seconds",
   "home.riso.openingFilmSkip": "Skip →",
@@ -83,22 +85,22 @@ const en = {
   "home.riso.groveDesc":
     "My 34-person survey narrowed eleven proposed features to three. I am redesigning the AI-assisted prototype; testing the redesign is next.",
   "home.riso.mskDesc":
-    "I diagnosed the paper detour, checked feasibility across departments, and pitched a digital filing workflow. IT and UX built it after I changed roles.",
+    "I mapped the detour across four departments and pitched the digital filing workflow that replaced it. Six steps became five, and one department left the loop.",
   "home.riso.logisticsDesc":
     "I planned and tracked a warehouse relocation that shortened medical resupply time by 85%, then built shared order tracking for seven aid stations.",
   "home.riso.knowunityDesc":
-    "Voice-in, text-out active recall after study. Interactive mobile prototype with mocked recall; not a shipped Knowunity feature.",
+    "Students say a definition out loud and get their own words quoted back as proof. Solo 2.5-week sprint on Knowunity's brief and kit; recall mocked, not shipped.",
   "home.riso.mobbinDesc":
     "Three finance apps turned into a searchable reference — the work was the taxonomy and the naming, not the screenshots. 200+ screens per app, an editor's judgment on every one.",
   "home.riso.groveAlt": "Grove daily care screen showing one clear plant-care task and overdue plants first",
-  "home.riso.mskAlt": "Recreated Memorial Sloan Kettering filing queue, showing patient records moving from ready-to-send through filed",
+  "home.riso.mskAlt": "Recreated Memorial Sloan Kettering filing queue, showing patient-portal messages moving from ready-to-send through filed",
   "home.riso.logisticsAlt": "Service mechanism diagram contrasting a rear supply point with the warehouse moved forward, beside an 85% reduction in resupply time",
   "home.riso.knowunityAlt": "Two Say It Back mobile prototype states: a voice-recall question, then the pass screen quoting the student's own words back",
   "home.riso.knowunityPrototypeAria": "Try the Say It Back interactive prototype (opens in new tab)",
   "home.riso.mobbinAlt": "One of the third-party app screens documented for Mobbin — a finance app welcome screen",
   "home.riso.groveTag": "Active · Phase 2 of 3",
   "home.riso.proofKicker": "The proof",
-  "home.riso.proofTitle": "Every number here has a source",
+  "home.riso.proofTitle": "The numbers, with their sources.",
   "home.riso.supportingKicker": "Supporting practice",
   "home.riso.supportingBody": "For interaction-pattern analysis and production documentation, I also documented 200+ screens per app across three finance products for Mobbin.",
   "home.riso.supportingLink": "Review the Mobbin case study →",
@@ -111,7 +113,7 @@ const en = {
   "home.dispatch.title": "The Trip Home",
   "home.dispatch.question": "Can a rider know, rather than guess, whether the trip home is accessible?",
   "home.dispatch.body":
-    "At an NYPL hackathon, Jacqueline Gordon and I used MTA and NYC Open Data to build a working prototype that checks subway access by platform and direction, plus nearby curb ramps.",
+    "At a New York Public Library (NYPL) hackathon, Jacqueline Gordon and I used MTA and NYC Open Data to build a working prototype that checks subway access by platform and direction, plus nearby curb ramps.",
   "home.dispatch.findingLabel": "What the data exposed",
   "home.dispatch.finding":
     "A trip inherits the risk of every stop it calls at, so eight one-direction platforms put a return-trip hazard on 22,937 of the system's 77,236 scheduled trips.",
@@ -135,8 +137,8 @@ const en = {
   "home.dispatch.routeOutbound": "Outbound",
   "home.dispatch.routeReturn": "Return home",
   "home.dispatch.routeGaps": "8 direction gaps",
-  "home.dispatch.openJournal": "Open the weekend journal",
-  "home.dispatch.closeJournal": "Close the weekend journal",
+  "home.dispatch.openJournal": "Open the dispatch",
+  "home.dispatch.closeJournal": "Close the dispatch",
 
   // ── Home: mini about ──
   "home.about.eyebrow": "A little about me",
@@ -168,18 +170,18 @@ const en = {
   "home.proj.grove.title": "Eleven features became three",
   "home.proj.msk.title": "A filing queue replaced a four-department paper detour",
   "home.proj.logistics.title": "Medical resupply time reduced 85%",
-  "home.proj.knowunity.title": "Say It Back: voice-based active recall",
+  "home.proj.knowunity.title": "The student’s own words are the proof",
   "home.proj.mobbin.title": "200+ screens per app, searchable by task",
 
   // ── Home: contact / CTA ──
-  "home.ctaTitle": "Building a product where the details decide?",
+  "home.ctaTitle": "Redesigning a clinical workflow or a high-stakes internal tool?",
   "contact.note": "Email me",
   "contact.copy": "or copy:",
   "home.linkedinAria": "LinkedIn profile (opens in new tab)",
 
   // ── Recruiter pill (global trigger only - the panel stays English in Phase 1) ──
-  "recruiter.pill": "Recruiter view",
-  "recruiter.pillAria": "Open recruiter view: 90-second tour",
+  "recruiter.pill": "90-second tour",
+  "recruiter.pillAria": "Open the 90-second tour",
   "recruiter.seconds": "90 sec",
 
   // ── Ask about the work ──
@@ -232,7 +234,7 @@ const es: Partial<Record<StringKey, string>> = {
   "footer.connect": "Contacto",
   "footer.email": "Correo",
   "footer.githubAria": "Perfil de GitHub (se abre en una pestaña nueva)",
-  "footer.availability": "Disponible para oportunidades de diseño de productos de salud",
+  "footer.availability": "Abierta a roles de diseño de productos de salud",
   "footer.madeWith": "Hecho con:",
   "notFound.eyebrow": "404 · Página no encontrada",
   "notFound.title": "Esta página se desvió.",
@@ -260,13 +262,15 @@ const es: Partial<Record<StringKey, string>> = {
   "nav.settingsAria": "Configuración: tema e idioma",
 
   // ── Home: hero ──
-  "home.status": "Disponible para nuevas oportunidades",
+  "home.status": "Abierta a roles de diseño de productos de salud",
   "home.seeApproach": "Conozca mi enfoque →",
   "home.riso.eyebrow": "Diseñadora de productos de salud · más de 13 años en salud",
-  "home.riso.heroTitle": "Diseño productos de salud desde el flujo de trabajo.",
+  "home.riso.heroTitle": "Diseño el flujo de trabajo antes que la pantalla.",
   "home.riso.heroLead":
     "En Memorial Sloan Kettering, rastreé un desvío en papel entre cuatro áreas y propuse la cola que lo reemplazó.",
-  "home.riso.heroProof": "TI y UX la construyeron después de que cambié de puesto, para trabajo que alcanzaba a más de 21,000 clínicos y personal.",
+  "home.riso.heroProof": "TI y UX la construyeron después de que cambié de puesto. Los flujos incluidos alcanzan a más de 21,000 clínicos y personal.",
+  "home.riso.careerSwitchTitle": "De operaciones de salud a diseño de producto.",
+  "home.riso.careerSwitchBody": "Pasé más de 13 años dirigiendo los flujos que ahora diseño: puestos administrativos y de capacitación en MSK, y logística médica del Ejército.",
   "home.riso.openingVisual": "Ver la apertura de 5 segundos",
   "home.riso.openingFilmLabel": "Apertura visual · cinco segundos",
   "home.riso.openingFilmSkip": "Saltar →",
@@ -281,22 +285,22 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.groveDesc":
     "Mi encuesta a 34 personas redujo once funciones propuestas a tres. Estoy rediseñando el prototipo asistido por IA; probar el rediseño es el siguiente paso.",
   "home.riso.mskDesc":
-    "Diagnostiqué el desvío en papel, verifiqué la viabilidad entre departamentos y propuse un flujo de archivo digital. TI y UX lo construyeron después de que cambié de puesto.",
+    "Mapeé el desvío entre cuatro áreas y propuse el flujo de archivo digital que lo reemplazó. Seis pasos se volvieron cinco, y un área salió del circuito.",
   "home.riso.logisticsDesc":
     "Planifiqué y supervisé una reubicación de almacén que redujo un 85% el tiempo de reabastecimiento médico, y luego creé un seguimiento compartido para siete puestos.",
   "home.riso.knowunityDesc":
-    "Recuerdo activo después del estudio con voz de entrada y texto de salida. Prototipo móvil interactivo con recuerdo simulado; no es una función publicada de Knowunity.",
+    "Los estudiantes dicen una definición en voz alta y reciben sus propias palabras citadas como prueba. Sprint individual de 2.5 semanas con el brief y el kit de Knowunity; recuerdo simulado, no publicado.",
   "home.riso.mobbinDesc":
     "Tres apps financieras convertidas en una referencia buscable: el trabajo fue la taxonomía y los nombres, no las capturas. Más de 200 pantallas por app, con criterio de editora en cada una.",
   "home.riso.groveAlt": "Pantalla de cuidado diario de Grove con una tarea clara y las plantas atrasadas primero",
-  "home.riso.mskAlt": "Cola de archivo recreada de Memorial Sloan Kettering, mostrando registros de pacientes desde listos para enviar hasta archivados",
+  "home.riso.mskAlt": "Cola de archivo recreada de Memorial Sloan Kettering, mostrando mensajes del portal de pacientes desde listos para enviar hasta archivados",
   "home.riso.logisticsAlt": "Diagrama de mecanismo de servicio que contrasta un punto de suministro en la retaguardia con el almacén movido al frente, junto a una reducción del 85% en el tiempo de reabastecimiento",
   "home.riso.knowunityAlt": "Dos estados del prototipo móvil Say It Back: una pregunta de recuerdo por voz y luego la pantalla de acierto que cita las propias palabras del estudiante",
   "home.riso.knowunityPrototypeAria": "Probar el prototipo interactivo Say It Back (se abre en una pestaña nueva)",
   "home.riso.mobbinAlt": "Una de más de 200 pantallas de apps de terceros documentadas para Mobbin — la pantalla de bienvenida de una app financiera",
   "home.riso.groveTag": "Activo · Fase 2 de 3",
   "home.riso.proofKicker": "La evidencia",
-  "home.riso.proofTitle": "Cada número aquí tiene una fuente",
+  "home.riso.proofTitle": "Los números, con sus fuentes.",
   "home.riso.supportingKicker": "Práctica complementaria",
   "home.riso.supportingBody": "Como prueba de análisis de patrones de interacción y documentación de producción, también documenté más de 200 pantallas por app en tres productos financieros para Mobbin.",
   "home.riso.supportingLink": "Ver el estudio de caso de Mobbin →",
@@ -309,7 +313,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.dispatch.title": "El viaje de regreso",
   "home.dispatch.question": "¿Puede una persona saber, en lugar de adivinar, si el viaje de regreso es accesible?",
   "home.dispatch.body":
-    "En un hackathon de NYPL, Jacqueline Gordon y yo usamos datos de MTA y NYC Open Data para crear un prototipo funcional que verifica el acceso al metro por plataforma y dirección, además de las rampas cercanas.",
+    "En un hackathon de la Biblioteca Pública de Nueva York (NYPL), Jacqueline Gordon y yo usamos datos de MTA y NYC Open Data para crear un prototipo funcional que verifica el acceso al metro por plataforma y dirección, además de las rampas cercanas.",
   "home.dispatch.findingLabel": "Lo que revelaron los datos",
   "home.dispatch.finding":
     "Un viaje hereda el riesgo de cada parada en la que se detiene: ocho andenes accesibles en una sola dirección ponen en riesgo el viaje de regreso de 22,937 de los 77,236 viajes programados del sistema.",
@@ -333,8 +337,8 @@ const es: Partial<Record<StringKey, string>> = {
   "home.dispatch.routeOutbound": "Ida",
   "home.dispatch.routeReturn": "Regreso a casa",
   "home.dispatch.routeGaps": "8 brechas por dirección",
-  "home.dispatch.openJournal": "Abrir el diario del fin de semana",
-  "home.dispatch.closeJournal": "Cerrar el diario del fin de semana",
+  "home.dispatch.openJournal": "Abrir el despacho",
+  "home.dispatch.closeJournal": "Cerrar el despacho",
 
   // ── Home: mini about ──
   "home.about.eyebrow": "Un poco sobre mí",
@@ -368,18 +372,18 @@ const es: Partial<Record<StringKey, string>> = {
   // Same wording as the Spanish case-study title. "Tiempo de reabastecimiento
   // médico reducido" left "médico" alone on its own line at 320, 375 and 1280.
   "home.proj.logistics.title": "El reabastecimiento médico tardó un\u00a085%\u00a0menos",
-  "home.proj.knowunity.title": "Say It Back: recuerdo activo por voz",
+  "home.proj.knowunity.title": "Las propias palabras del estudiante son la prueba",
   "home.proj.mobbin.title": "Más de 200 pantallas por app, buscables por tarea",
 
   // ── Home: contact / CTA ──
-  "home.ctaTitle": "¿Está creando un producto donde los detalles deciden?",
+  "home.ctaTitle": "¿Está rediseñando un flujo clínico o una herramienta interna de alto riesgo?",
   "contact.note": "Escríbame",
   "contact.copy": "o copie:",
   "home.linkedinAria": "Perfil de LinkedIn (se abre en una pestaña nueva)",
 
   // ── Recruiter pill ──
-  "recruiter.pill": "Vista para reclutadores",
-  "recruiter.pillAria": "Abrir la vista para reclutadores: resumen de proyectos en 90 segundos",
+  "recruiter.pill": "Recorrido de 90 segundos",
+  "recruiter.pillAria": "Abrir el recorrido de 90 segundos (en inglés)",
   "recruiter.seconds": "90 seg",
 
   // ── Ask about the work ──

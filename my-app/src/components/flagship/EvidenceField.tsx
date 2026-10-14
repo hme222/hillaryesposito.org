@@ -3,9 +3,10 @@ import React from "react";
 /**
  * `tag` is what Hillary's role in the number was — "Led", "Contributed to",
  * "Scale". Optional, because it only earns its place where attribution differs
- * between the numbers in a set. On MSK it does: the 70% is hers outright while
- * the 20% is an organization-wide figure she contributed to, and buried at the
- * end of a label sentence that distinction was invisible to anyone scanning.
+ * between the numbers in a set. On MSK it does: the month-early CPR result is
+ * hers outright, the 20% is an organization-wide figure she contributed to, and
+ * the ~$1M/year is a projection from her pitch. Buried at the end of a label
+ * sentence, that distinction was invisible to anyone scanning.
  * Mobbin's three are uniformly hers, so it stays off there.
  */
 type Metric = { n: string; label: string; tag?: string };
@@ -54,8 +55,9 @@ export default function EvidenceField({
         </p>
         <p className="rp-disclaimer">{disclaimer}</p>
         {/* Two numbers share the row, as Grove's two outcomes do; the default
-            three-column grid left a third of it empty. */}
-        <div className={`rp-outcomes rp-reveal${metrics.length === 2 ? " rp-outcomes--two" : ""}`}>
+            three-column grid left a third of it empty. Four (MSK) sit two by
+            two, so no tile is left alone on a second row. */}
+        <div className={`rp-outcomes rp-reveal${metrics.length === 2 ? " rp-outcomes--two" : metrics.length === 4 ? " rp-outcomes--four" : ""}`}>
           {metrics.map((metric) => (
             <div className="rp-stat" key={`${metric.n}-${metric.label}`}>
               {metric.tag && <p className="rp-stat__tag">{metric.tag}</p>}

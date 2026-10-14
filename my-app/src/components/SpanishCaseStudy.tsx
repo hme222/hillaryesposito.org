@@ -27,6 +27,9 @@ export type SpanishCaseStudyData = {
   }[];
   /** Links to the other case studies, for case-to-case navigation (parity with the English MoreWork). */
   otherProjects?: { title: string; desc: string; path: string }[];
+  /** The page's own closing statement, matching the English page's closer.
+   *  Omit to fall back to the generic contact prompt. */
+  close?: { title: string; body: string };
 };
 
 type SpanishCaseStudyProps = {
@@ -173,8 +176,8 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
       <section className="rp-section">
         <div className="rp-wrap rp-close">
           <p className="rp-kicker">Contacto</p>
-          <h2>¿Quiere hablar sobre este tipo de trabajo?</h2>
-          <p>Puedo explicar el proceso, las decisiones y lo que aprendí con más detalle.</p>
+          <h2>{data.close?.title ?? "¿Quiere hablar sobre este tipo de trabajo?"}</h2>
+          <p>{data.close?.body ?? "Puedo explicar el proceso, las decisiones y lo que aprendí con más detalle."}</p>
           <div className="rp-hero__ctas">
             <a href="mailto:espositohillary@gmail.com" className="rp-cta">Escríbame →</a>
             <button type="button" className="rp-cta rp-cta--ghost" onClick={() => navigate("/?scrollTo=projects")}>

@@ -121,7 +121,7 @@ describe("flagship case-study accessibility", () => {
     const exactSteps = container.querySelector(".fp-workflow[data-evidence='true']");
     expect(container.querySelector("[data-testid='msk-the-detour']")).toBeNull();
     expect(container.querySelector(".fp-workflowFilm")).toBeNull();
-    expect(exactSteps?.textContent).toContain("Print the digital record");
+    expect(exactSteps?.textContent).toContain("Print the portal message");
     expect(exactSteps?.textContent).toContain("Choose Send to EMR");
   });
 
@@ -131,11 +131,19 @@ describe("flagship case-study accessibility", () => {
     });
 
     const hero = container.querySelector("#msk-start");
-    expect(hero?.textContent).toContain("IT and UX built it after I changed roles");
+    expect(hero?.textContent).toContain("user experience (UX) teams built it after I changed roles");
+    expect(hero?.textContent).toContain("Office Coordinator → Administrative Assistant → Trainer I Specialist");
     expect(hero?.textContent).toContain("Diagnose · map · validate feasibility · pitch");
     expect(hero?.textContent).not.toContain("20%");
     expect(hero?.textContent).not.toContain("two system upgrades");
     expect(container.textContent).toContain("not attributed solely to this filing workflow");
+    // 2026-10-14 review: the 70% is gone, the month-early result leads, and the
+    // ~$1M/year is labelled as a projection from the pitch.
+    expect(container.textContent).not.toContain("70%");
+    expect(container.textContent).toContain("with no 4-month extension");
+    expect(container.textContent).toContain("~$1M/year");
+    expect(container.textContent).toContain("projected paper savings in my Process Improvement Fair pitch, not measured savings");
+    expect(container.querySelectorAll("#msk-outcomes .rp-outcomes--four .rp-stat")).toHaveLength(4);
   });
 
   it("the breadcrumb row's tour trigger dispatches open-recruiter-panel with returnFocus (EN and ES)", async () => {
@@ -200,7 +208,7 @@ describe("flagship case-study accessibility", () => {
 
     const hero = container.querySelector("#log-start");
     expect(hero?.textContent).toContain("1–2 months to 1–2 weeks");
-    expect(hero?.textContent).toContain("owner-reported service record");
+    expect(hero?.textContent).toContain("owner-reported: my own service record, not independently measured");
     expect(container.textContent).toContain("measurement periods and methods are not preserved");
     expect(container.textContent).toContain("Relocation85%");
     expect(container.textContent).toContain("Order status60%");
@@ -340,7 +348,7 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".rp-hero .msk-dashboard-mockup")).toBeNull();
   });
 
-  it("keeps the weekend journal quiet until a keyboard or touch user opens it", async () => {
+  it("keeps the weekend dispatch quiet until a keyboard or touch user opens it", async () => {
     window.sessionStorage.setItem("portfolio-opening-film-seen", "true");
     await act(async () => {
       root.render(<RisoHome />);
@@ -516,7 +524,7 @@ describe("flagship case-study accessibility", () => {
       root.render(<RisoGrove />);
     });
     expect(container.textContent).toContain("Optional artifact set");
-    expect(container.textContent).toContain("Inspect all six authentic first-build screens");
+    expect(container.textContent).toContain("Inspect all six first-build screens");
     expect(container.textContent).not.toContain("Walk the route");
   });
 
@@ -553,7 +561,7 @@ describe("flagship case-study accessibility", () => {
     expect(dialog?.textContent?.toLowerCase()).not.toContain(["shipped", "consumer", "app"].join(" "));
 
     const close = dialog?.querySelector<HTMLButtonElement>(
-      'button[aria-label="Close recruiter view"]',
+      'button[aria-label="Close the 90-second tour"]',
     );
     await act(async () => close?.click());
     expect(dialog?.open).toBe(false);
@@ -574,7 +582,7 @@ describe("flagship case-study accessibility", () => {
     );
     const first = tabbables[0];
     const last = tabbables[tabbables.length - 1];
-    expect(first?.getAttribute("aria-label")).toBe("Close recruiter view");
+    expect(first?.getAttribute("aria-label")).toBe("Close the 90-second tour");
     expect(last?.textContent).toBe("espositohillary@gmail.com");
 
     const press = (target: Element, shiftKey: boolean) => {

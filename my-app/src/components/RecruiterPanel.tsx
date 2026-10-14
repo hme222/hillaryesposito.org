@@ -74,7 +74,7 @@ export default function RecruiterPanel() {
             type="button"
             className="recruiter-panel__close"
             onClick={() => setOpen(false)}
-            aria-label="Close recruiter view"
+            aria-label="Close the 90-second tour"
           >
             <XIcon />
           </button>
@@ -142,7 +142,7 @@ export default function RecruiterPanel() {
               <li>
                 <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/msk")}>
                   <strong>MSK · A filing queue replaced a four-department paper detour</strong>
-                  <span>Mapped across clinical, IT, imaging, and operations; the workflow I initiated contributed to a larger initiative that cut organization-wide electronic medical record costs 20%</span>
+                  <span>Mapped across clinical, IT, HIM (document imaging), and operations; the workflow I initiated contributed to a larger initiative that cut organization-wide electronic medical record costs 20%</span>
                 </button>
               </li>
               <li>
