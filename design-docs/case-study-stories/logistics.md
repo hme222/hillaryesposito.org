@@ -231,7 +231,8 @@ Each of the three move cards gained one sentence, sourced only from this file:
 - Move 03: "going black" as the failure the shared order status was built
   against. This file defines it as running out of supplies (Q5 Chapter 2),
   so the copy says that. The review brief glossed it as "losing contact";
-  that reading is not in this file and was not used. **Confirm with Hillary.**
+  that reading is not in this file and was not used. **Confirmed by Hillary
+  2026-10-14: "going black" means running out of supplies.**
 
 Hero contribution line: "Plan the move · build shared tracking · train the
 handoffs" → "Plan the move · one request protocol · shared order status".
