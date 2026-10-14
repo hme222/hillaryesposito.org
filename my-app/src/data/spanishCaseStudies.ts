@@ -117,7 +117,6 @@ export const MSK_ES: SpanishCaseStudyData = {
         "Límite de la evidencia: el registro conserva el flujo, los departamentos, las decisiones y los resultados. No se registraron los conteos de participantes de la observación de turnos, por eso uso la evidencia para explicar decisiones y no para afirmar prevalencia.",
       ],
       bullets: [
-        "El flujo EMR necesitó capacitación práctica en el lugar de trabajo porque las personas habían usado la solución alternativa anterior durante años.",
         "El material de certificación de RCP (reanimación cardiopulmonar) estaba en lenguaje técnico y legal, y tan poca gente lo completaba que el equipo planeaba una prórroga de 4 meses. Lo reescribí para los clínicos que tenían que completarlo: toda el área se certificó un mes antes de la fecha límite original, sin la prórroga.",
         "El programa de incorporación para personal administrativo nuevo — Epic (el software del expediente), HIPAA (la ley de privacidad del paciente), los módulos de cumplimiento y las habilidades técnicas y blandas del puesto — se reconstruyó con el equipo de diseño y se curó cohorte por cohorte, para el rango real de habilidades que llegaba.",
       ],
