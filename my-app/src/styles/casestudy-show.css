@@ -209,59 +209,6 @@
   .ck-decision { grid-template-columns: 1fr; }
 }
 
-/* ── Tap-path (Good Harvest 7→4) ───────────────────────────────────── */
-.gh-tap-path {
-  margin-top: 1.5rem;
-  display: grid;
-  gap: 0.75rem;
-  max-width: 520px;
-}
-.gh-tap-path__row {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.gh-tap-path__label {
-  flex: 0 0 auto;
-  width: 6.5rem;
-  font-family: var(--font-head);
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--text-2, color-mix(in srgb, var(--fg) 66%, transparent));
-}
-.gh-tap-path__dots {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  flex-wrap: wrap;
-}
-.gh-tap-dot {
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--fg) 16%, transparent);
-  position: relative;
-}
-.gh-tap-dot + .gh-tap-dot::before {
-  content: "";
-  position: absolute;
-  right: 100%;
-  top: 50%;
-  width: 0.55rem;
-  height: 2px;
-  transform: translateY(-50%);
-  background: color-mix(in srgb, var(--fg) 16%, transparent);
-}
-.gh-tap-dot--on {
-  background: var(--accent-warm, #946420);
-}
-.gh-tap-dot--on + .gh-tap-dot--on::before {
-  background: var(--accent-warm, #946420);
-}
-.gh-tap-path__row--after .gh-tap-path__label {
-  color: var(--accent-warm, #946420);
-}
-
 /* ── Mobbin anatomy entry screenshot ───────────────────────────────── */
 .mobbin-example-shot {
   margin: 0 0 1.25rem;
