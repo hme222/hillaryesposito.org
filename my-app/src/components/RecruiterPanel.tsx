@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Modal from "./Modal";
-import { FileTextIcon, MailIcon, BriefcaseIcon, UserIcon, XIcon } from "./LineIcons";
+import { FileText, Mail, Briefcase, User, X } from "lucide-react";
 import AskBirdIcon from "./ask/AskBirdIcon";
 import { ASK_ENABLED } from "./ask/askEnabled";
 
@@ -76,7 +76,7 @@ export default function RecruiterPanel() {
             onClick={() => setOpen(false)}
             aria-label="Close the 90-second tour"
           >
-            <XIcon />
+            <X size="1em" strokeWidth={1.6} aria-hidden="true" focusable="false" />
           </button>
         </header>
 
@@ -103,22 +103,22 @@ export default function RecruiterPanel() {
                target="_blank"
                rel="noopener noreferrer"
                aria-label="View résumé (opens in new tab)">
-              <FileTextIcon className="recruiter-panel__btn-icon" /> View résumé
+              <FileText className="recruiter-panel__btn-icon" size="1em" strokeWidth={1.6} aria-hidden="true" focusable="false" /> View résumé
             </a>
             <a className="recruiter-panel__btn"
                href="mailto:espositohillary@gmail.com">
-              <MailIcon className="recruiter-panel__btn-icon" /> Email me
+              <Mail className="recruiter-panel__btn-icon" size="1em" strokeWidth={1.6} aria-hidden="true" focusable="false" /> Email me
             </a>
             <a className="recruiter-panel__btn"
                href="https://www.linkedin.com/in/hillaryesposito/"
                target="_blank"
                rel="noopener noreferrer"
                aria-label="LinkedIn (opens in new tab)">
-              <BriefcaseIcon className="recruiter-panel__btn-icon" /> LinkedIn
+              <Briefcase className="recruiter-panel__btn-icon" size="1em" strokeWidth={1.6} aria-hidden="true" focusable="false" /> LinkedIn
             </a>
             <button type="button" className="recruiter-panel__btn"
                onClick={() => go("/about")}>
-              <UserIcon className="recruiter-panel__btn-icon" /> About me
+              <User className="recruiter-panel__btn-icon" size="1em" strokeWidth={1.6} aria-hidden="true" focusable="false" /> About me
             </button>
             {ASK_ENABLED && <button type="button" className="recruiter-panel__btn"
                onClick={() => {

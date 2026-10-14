@@ -1,7 +1,7 @@
 // src/components/NavSettingsPopover.tsx
 import React, { Dispatch, SetStateAction, useEffect, useId, useRef, useState } from "react";
 import { switchLanguageAtCurrentSection, useLanguage, useT } from "../app/LanguageContext";
-import { SettingsSlidersIcon, GlobeIcon } from "./LineIcons";
+import { SlidersHorizontal, Globe } from "lucide-react";
 
 type NavSettingsPopoverProps = {
   darkMode: boolean;
@@ -88,7 +88,7 @@ export default function NavSettingsPopover({ darkMode, setDarkMode }: NavSetting
         title={t("nav.settings")}
         onClick={() => setOpen((o) => !o)}
       >
-        <SettingsSlidersIcon className="nav-settings__icon" strokeWidth={1.5} />
+        <SlidersHorizontal className="nav-settings__icon" size="1em" strokeWidth={1.5} aria-hidden="true" focusable="false" />
         {/* The current language, visible as text - not just the gloss in the
             popover's own toggle - so the trigger discloses what it holds
             (theme + language) rather than only a generic settings glyph.
@@ -140,7 +140,7 @@ export default function NavSettingsPopover({ darkMode, setDarkMode }: NavSetting
                 this row means "switch to", a different thing, and showing
                 a code here too (even a different one) read as the same
                 control said two ways. One glyph, one meaning each. */}
-            <GlobeIcon className="nav-settings__toggle-icon" aria-hidden="true" />
+            <Globe className="nav-settings__toggle-icon" size="1em" strokeWidth={1.6} aria-hidden="true" focusable="false" />
             <span>{t("nav.langSwitch")}</span>
           </button>
         </div>

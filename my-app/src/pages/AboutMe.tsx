@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useFlagshipReveal from "../hooks/useFlagshipReveal";
 import usePageTitle from "../hooks/usePageTitle";
 import { useLanguage } from "../app/LanguageContext";
-import { NewsIcon } from "../components/LineIcons";
+import { Newspaper } from "lucide-react";
 import CartoField from "../components/riso/CartoField";
 import CaseStudyChapters, { CaseStudyChapter } from "../components/flagship/CaseStudyChapters";
 import { CLIENT_FEEDBACK, CLIENT_FEEDBACK_ES } from "../data/clientFeedback";
@@ -196,7 +196,7 @@ export default function About() {
               than the stages — things that are true of this practice specifically. */}
           <ol className="rp-list rp-patternList rp-reveal">
             <li>
-              {isSpanish ? "Busco primero el atajo. La nota adhesiva, la hoja de cálculo personal, el paso que todos se saltan. Ahí vive el proceso real, y nunca está en el documento del proceso." : "I look for the workaround first. The sticky note, the personal spreadsheet, the step everyone skips. That is where the real process lives, and it is never in the process document."}
+              {isSpanish ? "La nota adhesiva, la hoja de cálculo personal, el paso que todos se saltan. Ahí vive el proceso real, y nunca está en el documento del proceso." : "The sticky note, the personal spreadsheet, the step everyone skips. That is where the real process lives, and it is never in the process document."}
               <Link to={isSpanish ? PATTERN_PROOF[0].pathEs : PATTERN_PROOF[0].path} className="rp-chapter__proof rp-chapter__proof--inline">
                 <b>{isSpanish ? PATTERN_PROOF[0].es : PATTERN_PROOF[0].en}</b>
               </Link>
@@ -260,7 +260,7 @@ export default function About() {
 
                 {chapter.caseLink && (
                   <Link to={chapter.caseLink.path} className="rp-chapter__proof">
-                    <span aria-hidden="true"><NewsIcon /></span>
+                    <span aria-hidden="true"><Newspaper size="1em" strokeWidth={1.6} aria-hidden="true" focusable="false" /></span>
                     <span>
                       <b>{chapter.caseLink.title}</b>
                       <small>{chapter.caseLink.source}</small>
@@ -276,7 +276,7 @@ export default function About() {
                     className="rp-chapter__proof"
                     aria-label={`${isSpanish ? "Leer artículo" : "Read article"}: ${chapter.articleLink.title} (${isSpanish ? "se abre en una pestaña nueva" : "opens in a new tab"})`}
                   >
-                    <span aria-hidden="true"><NewsIcon /></span>
+                    <span aria-hidden="true"><Newspaper size="1em" strokeWidth={1.6} aria-hidden="true" focusable="false" /></span>
                     <span>
                       <b lang={isSpanish ? "en" : undefined}>{chapter.articleLink.title}</b>
                       <small className="rp-ext">{chapter.articleLink.source}</small>

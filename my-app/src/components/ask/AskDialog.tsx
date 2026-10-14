@@ -1,7 +1,7 @@
 import React, { FormEvent, useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Modal from "../Modal";
-import { XIcon } from "../LineIcons";
+import { X } from "lucide-react";
 import { useLanguage, useT } from "../../app/LanguageContext";
 import { sendPortfolioEvent } from "../../analytics/PortfolioAnalytics";
 import type { AskApiResponse, AskLang, KnowledgeEntry } from "../../ask/types";
@@ -302,7 +302,7 @@ export default function AskDialog() {
             {t("ask.title")}
           </h2>
           <button type="button" className="ask-dialog__close" onClick={close} aria-label={t("ask.close")}>
-            <XIcon />
+            <X size="1em" strokeWidth={1.6} aria-hidden="true" focusable="false" />
           </button>
         </header>
 
