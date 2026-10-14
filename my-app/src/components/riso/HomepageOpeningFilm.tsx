@@ -19,10 +19,11 @@ const PLAY_FALLBACK_MS = 6000;
 // H.264 with the moov atom up front, so playback starts mid-download and
 // every browser can decode it. The film is soft paper texture, so it holds up
 // far below its display size. Owner direction 2026-10-13: "make the opening
-// video even smaller so it always loads" — desktop dropped from 360p (1.3 MB)
-// to 480×272 (0.63 MB), phones from 272p (0.6 MB) to 400×224 (0.17 MB).
-const FILM_SRC = "/assets/video/grove-layer-assembly-desktop-272.mp4";
-const FILM_SRC_PHONE = "/assets/video/grove-layer-assembly-phone-224.mp4";
+// video even smaller so it always loads"; 2026-10-14: the 480×272 cut looked
+// soft. Re-encoded with x264 veryslow, which keeps the size and the sharpness:
+// desktop 1280×720 (0.77 MB), phones 640×360 (0.29 MB).
+const FILM_SRC = "/assets/video/grove-layer-assembly-desktop-720.mp4";
+const FILM_SRC_PHONE = "/assets/video/grove-layer-assembly-phone-360.mp4";
 const PHONE_QUERY = "(max-width: 760px)";
 
 type HomepageOpeningFilmProps = {
