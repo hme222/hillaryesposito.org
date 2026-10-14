@@ -273,9 +273,9 @@ const en: MskCopy = {
 
   blueprint: {
     introKicker: "Then I counted the handoffs",
-    introTitle: "One step removed a department.",
+    introTitle: "Six steps became five. One department left the loop.",
     introLede:
-      "Six steps to five is the change you can count. The change that mattered is that the message stopped crossing a line no one could see across. Below is the same path drawn by who was holding it.",
+      "The visible change is one fewer step. The service change is one fewer department touching the record. Below is the same path drawn by who was holding it.",
     beforeBtn: "Before · one handoff",
     afterBtn: "After · no handoff",
     statusBefore:
@@ -358,7 +358,7 @@ const en: MskCopy = {
 
   decisions: {
     kicker: "The fix looked like one button",
-    title: "The “simple” button carried the whole system.",
+    title: "One button, four rules.",
     intro:
       "One action replaced the three steps that left the system. IT and UX built the real one after I changed roles; the four rules below are how this recreation makes it safe to press. My portfolio design, not MSK's specification.",
     steps: [
@@ -370,10 +370,10 @@ const en: MskCopy = {
   },
 
   redesigns: {
-    kicker: "Then the same shape turned up again",
+    kicker: "Then it turned up twice more",
     title: "The same failure, in two more places.",
     lede:
-      "Once I knew what it looked like, I found it in the CPR certification and in the onboarding program. Same root cause every time: built for the institution, not for the person who had to get through it.",
+      "Certification and onboarding had the same problem: the next action was buried.",
     wrongLabel: "What I got wrong",
     items: [
       {
@@ -407,7 +407,7 @@ const en: MskCopy = {
 
   systems: {
     kicker: "Why I could see it",
-    title: "I learned the system from the floor up.",
+    title: "I did the jobs before I redesigned them.",
     lede: "You do not spot that pattern from outside a system. I had already sat in three of its seats.",
     rolesAria: "Three roles at MSK, in order",
     methodLabel: "The method it gave me",
@@ -418,7 +418,7 @@ const en: MskCopy = {
         body: "Both finished in this seat, while I was running a clinic's paperwork. The Green Belt, a process-improvement certification, is the lens that showed one filing task crossing four departments.",
       },
       {
-        n: "02", role: "Administrative Assistant", taught: "How evidence survives a room",
+        n: "02", role: "Administrative Assistant", taught: "How to brief people who have to act",
         term: "Writing for the person who has to act",
         body: "No certificate for this one. Turning leadership decisions into clear briefs taught me to write for the person who has to act. The CPR rewrite and the EMR presentation both came from that practice.",
       },
@@ -440,9 +440,9 @@ const en: MskCopy = {
     boundaryLabel: "Evidence boundary",
     boundaryBody:
       "The source record preserves the workflow, departments, decisions, and outcomes. Participant counts from shift observation were not recorded, so I use this evidence to explain the decisions—not to claim prevalence.",
-    mapFallback: "Tangled systems → mapped → redesigned → adopted",
+    mapFallback: "Four departments, one task → mapped → redesigned → adopted",
     mapStagesAria: "Clinical system transformation stages",
-    mapStages: ["Tangled systems", "Mapped", "Redesigned", "Adopted organization-wide"],
+    mapStages: ["Four departments, one task", "Mapped", "Redesigned", "Adopted organization-wide"],
   },
 
   sustainment: {
@@ -493,7 +493,7 @@ const en: MskCopy = {
       { tag: "Contributed to", n: "20%", label: "organization-wide EMR cost reduction, inside a larger initiative" },
       { tag: "Projection", n: "~$1M/year", label: "projected paper savings in my Process Improvement Fair pitch, not measured savings" },
     ],
-    route: ["Observe the real work", "Map the failure", "Align the system", "Ship what lasts"],
+    route: ["Observe the real work", "Map the failure", "Align the system", "Get it built"],
   },
 
   close: {
@@ -593,9 +593,9 @@ const es: MskCopy = {
 
   blueprint: {
     introKicker: "Luego conté los traspasos",
-    introTitle: "Un paso eliminó un área entera.",
+    introTitle: "Seis pasos se volvieron cinco. Un área salió del circuito.",
     introLede:
-      "De seis pasos a cinco es el cambio que se puede contar. El cambio que importó es que el mensaje dejó de cruzar una línea que nadie podía ver. Abajo está la misma ruta, dibujada según quién tenía el mensaje en la mano.",
+      "El cambio visible es un paso menos. El cambio en el servicio es un área menos tocando el expediente. Abajo está la misma ruta, dibujada según quién tenía el mensaje en la mano.",
     beforeBtn: "Antes · un traspaso",
     afterBtn: "Después · sin traspaso",
     statusBefore:
@@ -673,7 +673,7 @@ const es: MskCopy = {
 
   decisions: {
     kicker: "El arreglo parecía un solo botón",
-    title: "El botón “simple” cargaba con todo el sistema.",
+    title: "Un botón, cuatro reglas.",
     intro:
       "Una acción reemplazó los tres pasos que salían del sistema. TI y UX construyeron el botón real después de que cambié de puesto; las cuatro reglas de abajo son cómo esta recreación lo hace seguro de presionar. Es mi diseño para el portafolio, no la especificación de MSK.",
     steps: [
@@ -685,10 +685,10 @@ const es: MskCopy = {
   },
 
   redesigns: {
-    kicker: "Y luego apareció la misma forma otra vez",
+    kicker: "Luego apareció dos veces más",
     title: "La misma falla, en dos lugares más.",
     lede:
-      "Una vez que supe cómo se veía, la encontré en la certificación de RCP y en el programa de incorporación. La misma causa de fondo cada vez: hecho para la institución, no para la persona que tenía que atravesarlo.",
+      "La certificación y la incorporación tenían el mismo problema: el siguiente paso estaba escondido.",
     wrongLabel: "En qué me equivoqué",
     items: [
       {
@@ -722,7 +722,7 @@ const es: MskCopy = {
 
   systems: {
     kicker: "Por qué pude verlo",
-    title: "Aprendí el sistema desde el piso hacia arriba.",
+    title: "Hice los trabajos antes de rediseñarlos.",
     lede: "Ese patrón no se ve desde fuera de un sistema. Yo ya me había sentado en tres de sus sillas.",
     rolesAria: "Tres puestos en MSK, en orden",
     methodLabel: "El método que me dio",
@@ -733,7 +733,7 @@ const es: MskCopy = {
         body: "Terminé ambas en este puesto, mientras llevaba el papeleo de una clínica. El Green Belt, una certificación de mejora de procesos, es la lente que mostró una tarea de archivo cruzando cuatro áreas.",
       },
       {
-        n: "02", role: "Asistencia administrativa", taught: "Cómo sobrevive la evidencia a una sala",
+        n: "02", role: "Asistencia administrativa", taught: "Cómo informar a quien tiene que actuar",
         term: "Escribir para quien tiene que actuar",
         body: "Aquí no hay certificado. Convertir decisiones de liderazgo en informes claros me enseñó a escribir para la persona que tiene que actuar. La reescritura de RCP y la presentación del EMR salieron de esa práctica.",
       },
@@ -755,9 +755,9 @@ const es: MskCopy = {
     boundaryLabel: "Límite de la evidencia",
     boundaryBody:
       "El registro original conserva el flujo, las áreas, las decisiones y los resultados. Los conteos de participantes de la observación de turnos no se registraron, así que uso esta evidencia para explicar las decisiones, no para afirmar una prevalencia.",
-    mapFallback: "Sistemas enredados → mapeados → rediseñados → adoptados",
+    mapFallback: "Cuatro áreas, una tarea → mapeados → rediseñados → adoptados",
     mapStagesAria: "Etapas de transformación del sistema clínico",
-    mapStages: ["Sistemas enredados", "Mapeados", "Rediseñados", "Adoptado en toda la institución"],
+    mapStages: ["Cuatro áreas, una tarea", "Mapeados", "Rediseñados", "Adoptado en toda la institución"],
   },
 
   sustainment: {
@@ -802,7 +802,7 @@ const es: MskCopy = {
       { tag: "Contribuí a", n: "20%", label: "reducción de costos del EMR en toda la organización, dentro de una iniciativa mayor" },
       { tag: "Proyección", n: "~$1M/año", label: "ahorro proyectado en papel en mi propuesta para la Feria de Mejora de Procesos, no un ahorro medido" },
     ],
-    route: ["Observar el trabajo real", "Mapear la falla", "Alinear el sistema", "Lanzar lo que dura"],
+    route: ["Observar el trabajo real", "Mapear la falla", "Alinear el sistema", "Lograr que se construya"],
   },
 
   close: {

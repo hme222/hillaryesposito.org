@@ -953,6 +953,8 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 }
 .rp-lede { color: var(--ink-2); max-width: 64ch; margin: 1rem 0 0; font-size: 1.02rem; }
 .rp-lede b { color: var(--ink); }
+/* Supporting paragraphs under a section lede: one lede per section, the rest read as body. */
+.rp-body { color: var(--ink-2); max-width: 64ch; margin: .8rem 0 0; font-size: .96rem; line-height: 1.65; }
 
 /* ---------- the rebuild sequence (journal spine, not mapped route) ---------- */
 .rp-route { list-style: none; margin: var(--sp-sm) 0 0; padding: 0; position: relative; }
@@ -3499,7 +3501,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 /* ---------- the human override is the differentiator ---------- */
 .rp-override { background: #17321b; color: #f4f1e6; border-top: 1px solid rgba(244,241,230,.18); border-bottom: 1px solid rgba(244,241,230,.18); }
 .rp-override .rp-title, .rp-override .rp-lede, .rp-override .rp-acc__line { color: #f4f1e6; }
-.rp-override .rp-lede, .rp-override .rp-acc__why { color: rgba(244,241,230,.76); }
+.rp-override .rp-lede, .rp-override .rp-body, .rp-override .rp-acc__why { color: rgba(244,241,230,.76); }
 .rp-override .rp-kicker, .rp-override .rp-notif--ai .rp-notif__tag { color: var(--coral-on-dark); }
 .rp-override .rp-notif--me .rp-notif__tag, .rp-override .rp-acc__num, .rp-override .rp-acc__me b { color: #a9d28f; }
 .rp-override .rp-pushback__vs { color: rgba(244,241,230,.62); }

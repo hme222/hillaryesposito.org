@@ -32,10 +32,10 @@ const CHAPTERS: AboutChapter[] = [
     // First uses on this page, so each short form is spelled out once
     // (2026-10-14 review, item 12).
     paragraphs: [
-      "I initiated an electronic medical record (EMR) workflow redesign for work reaching 21,000+ clinicians and staff; it contributed to a 20% organization-wide cost reduction. Information technology (IT) and user experience (UX) teams built it after I changed roles.",
+      "I started the electronic medical record (EMR) filing redesign; it was one part of an organization-wide effort that cut EMR costs 20%. Information technology (IT) and user experience (UX) teams built it after I changed roles.",
       "I also rebuilt CPR (cardiopulmonary resuscitation) certification and administrative onboarding across Epic (the record software), HIPAA (the patient-privacy law), and compliance.",
     ],
-    callout: "Systems fail at the point where a real person has to use them.",
+    callout: "Systems fail where a real person has to use them.",
     articleLink: {
       url: "https://www.mskcc.org/news/hillary-esposito-s-career-path-military-msk",
       title: "Hillary Esposito’s Career Path: From the Military to MSK",
@@ -55,9 +55,9 @@ const CHAPTERS: AboutChapter[] = [
     ],
     facts: [
       { value: "5,000+", label: "soldiers served" },
-      { value: "$2M", label: "medical supply" },
+      { value: "$2M", label: "in medical supply" },
       { value: "7", label: "aid stations" },
-      { value: "85%", label: "shorter resupply" },
+      { value: "85%", label: "shorter medical resupply time" },
       { value: "60%", label: "lower spending" },
     ],
     caseLink: { path: "/case-study/logistics", title: "Medical logistics, Iraq", source: "Review the case study" },
@@ -71,7 +71,7 @@ const CHAPTERS_ES: AboutChapter[] = [
     heading: "Seis años en MSK en tres puestos.",
     image: "/assets/about/msk.jpg",
     paragraphs: [
-      "Inicié un rediseño del flujo del expediente médico electrónico (EMR) para un trabajo que alcanzaba a más de 21,000 clínicos y personal; contribuyó a una reducción organizacional del 20% en costos. Los equipos de tecnología de la información (TI) y de experiencia de usuario (UX) lo construyeron después de que cambié de puesto.",
+      "Inicié el rediseño del archivo en el expediente médico electrónico (EMR); fue una parte de un esfuerzo de toda la organización que redujo un 20% los costos del EMR. Los equipos de tecnología de la información (TI) y de experiencia de usuario (UX) lo construyeron después de que cambié de puesto.",
       "También reconstruí la certificación de RCP (reanimación cardiopulmonar) y la incorporación administrativa en Epic (el software del expediente), HIPAA (la ley de privacidad del paciente) y cumplimiento.",
     ],
     callout: "Los sistemas fallan donde una persona real tiene que usarlos.",
@@ -91,9 +91,9 @@ const CHAPTERS_ES: AboutChapter[] = [
     ],
     facts: [
       { value: "5,000+", label: "soldados atendidos" },
-      { value: "$2M", label: "suministro médico" },
+      { value: "$2M", label: "en suministro médico" },
       { value: "7", label: "estaciones de ayuda" },
-      { value: "85%", label: "menos tiempo" },
+      { value: "85%", label: "menos tiempo de reabastecimiento médico" },
       { value: "60%", label: "menos gasto" },
     ],
     caseLink: { path: "/case-study/logistics", title: "Logística médica, Irak", source: "Ver el estudio de caso" },
@@ -188,7 +188,7 @@ export default function About() {
         <div className="rp-wrap">
           <p className="rp-kicker">{isSpanish ? "Mi patrón" : "My pattern"}</p>
           <h2 className="rp-title" id="about-pattern-title">
-            {isSpanish ? "Entro en sistemas complejos y encuentro dónde se rompe la confianza." : "I enter complex systems and find where trust breaks."}
+            {isSpanish ? "Busco primero el atajo." : "I look for the workaround first."}
           </h2>
           {/* Rewritten from a four-step observe/map/design/measure list. That was
               generic process language, and it restated MSK's Observe/Align/Redesign
@@ -233,7 +233,7 @@ export default function About() {
         <div className="rp-wrap">
           {/* The "How I got here." H2 was cut (2026-10-13); the kicker stays the
               section's heading so the story's h3s still sit under an h2. */}
-          <h2 className="rp-kicker" id="about-story-title">{isSpanish ? "De dónde viene" : "Where it comes from"}</h2>
+          <h2 className="rp-kicker" id="about-story-title">{isSpanish ? "Antes del diseño: MSK y el Ejército." : "Before design: MSK and the Army."}</h2>
 
           {chapters.map((chapter, index) => (
             <article className={`rp-split rp-chapter rp-reveal${index % 2 ? "" : " rp-split--flip"}${chapter.image ? "" : " rp-split--noMedia"}`} key={chapter.id}>

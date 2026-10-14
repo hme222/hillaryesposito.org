@@ -460,7 +460,6 @@
       "lang": "es",
       "question": "¿Cómo aplicó UX como facilitadora de capacitación?",
       "expect": [
-        "es:es-msk-decisions:2",
         "es:es-msk-decisions:3",
         "es:es-msk-decisions:4",
         "es:resume-msk-trainer:0",

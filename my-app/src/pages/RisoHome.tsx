@@ -708,6 +708,7 @@ export default function RisoHome() {
           <div className="rp-aboutBlock rp-reveal">
             <p className="rp-kicker">{t("home.about.eyebrow")}</p>
             <h2 className="rp-title" id="home-about-title">{t("home.riso.aboutTitle")}</h2>
+            <p className="rp-sub">{t("home.about.blurb")}</p>
             <Link className="rp-cta rp-cta--ghost" to="/about" style={{ marginTop: "1.4rem" }}>{t("home.about.link")}</Link>
           </div>
         </div>

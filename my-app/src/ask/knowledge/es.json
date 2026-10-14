@@ -80,17 +80,6 @@
    "batch": 1
   },
   {
-   "id": "es:es-msk-decisions:2",
-   "lang": "es",
-   "text": "El flujo EMR necesitó capacitación práctica en el lugar de trabajo porque las personas habían usado la solución alternativa anterior durante años.",
-   "source": {
-    "type": "page",
-    "label": "Estudio de caso MSK · Mapear, probar, alinear y sostener",
-    "url": "/case-study/msk/#es-msk-decisions"
-   },
-   "batch": 1
-  },
-  {
    "id": "es:es-msk-decisions:3",
    "lang": "es",
    "text": "El material de certificación de RCP (reanimación cardiopulmonar) estaba en lenguaje técnico y legal, y tan poca gente lo completaba que el equipo planeaba una prórroga de 4 meses. Lo reescribí para los clínicos que tenían que completarlo: toda el área se certificó un mes antes de la fecha límite original, sin la prórroga.",
@@ -192,7 +181,7 @@
   {
    "id": "es:es-log-brief:2",
    "lang": "es",
-   "text": "Cada retraso gastaba el único recurso que un herido no puede recuperar: tiempo.",
+   "text": "Una estación de ayuda es donde primero se atiende a los soldados heridos.",
    "source": {
     "type": "page",
     "label": "Estudio de caso de logística médica · Una entrega tardía es un riesgo de bajas.",
@@ -225,7 +214,7 @@
   {
    "id": "es:es-log-moves:2",
    "lang": "es",
-   "text": "Una sola forma de pedir: siete estaciones usaban formatos distintos de solicitud y de reporte. Creé un protocolo de solicitud compartido y capacité a cada sitio en cómo pedir y qué significaba cada estado del pedido; el expediente reporta un 15% más de eficiencia al desplegar recursos críticos.",
+   "text": "Una sola forma de pedir: siete estaciones usaban formatos distintos de solicitud y de reporte. Creé un protocolo de solicitud compartido y capacité a cada sitio en cómo pedir y qué significaba cada estado del pedido; el expediente reporta que los suministros críticos llegaron a las estaciones con un 15% más de eficiencia.",
    "source": {
     "type": "page",
     "label": "Estudio de caso de logística médica · Mover el almacén. Después, arreglar los traspasos.",
@@ -245,23 +234,12 @@
    "batch": 1
   },
   {
-   "id": "es:es-log-constraints:0",
-   "lang": "es",
-   "text": "El nuevo proceso tenía que respetar cada restricción fija.",
-   "source": {
-    "type": "page",
-    "label": "Estudio de caso de logística médica · Las restricciones no eran negociables.",
-    "url": "/case-study/logistics/#es-log-constraints"
-   },
-   "batch": 1
-  },
-  {
    "id": "es:es-log-constraints:1",
    "lang": "es",
    "text": "Cadena de frío · 48 horas: llegar tarde significaba que ya no servía.",
    "source": {
     "type": "page",
-    "label": "Estudio de caso de logística médica · Las restricciones no eran negociables.",
+    "label": "Estudio de caso de logística médica · Tres restricciones que no cambiaban.",
     "url": "/case-study/logistics/#es-log-constraints"
    },
    "batch": 1
@@ -272,7 +250,7 @@
    "text": "Tres países: sistemas y vocabulario distintos.",
    "source": {
     "type": "page",
-    "label": "Estudio de caso de logística médica · Las restricciones no eran negociables.",
+    "label": "Estudio de caso de logística médica · Tres restricciones que no cambiaban.",
     "url": "/case-study/logistics/#es-log-constraints"
    },
    "batch": 1
@@ -283,7 +261,7 @@
    "text": "Zona activa · mudanza de $2M: sin ensayo y sin margen de error.",
    "source": {
     "type": "page",
-    "label": "Estudio de caso de logística médica · Las restricciones no eran negociables.",
+    "label": "Estudio de caso de logística médica · Tres restricciones que no cambiaban.",
     "url": "/case-study/logistics/#es-log-constraints"
    },
    "batch": 1
@@ -335,7 +313,7 @@
   {
    "id": "es:es-log-outcomes:4",
    "lang": "es",
-   "text": "15%: mejora reportada de eficiencia al desplegar recursos críticos con un solo protocolo de comunicación.",
+   "text": "15%: según lo reportado, los suministros críticos llegaron a las estaciones con más eficiencia tras un solo protocolo de comunicación.",
    "source": {
     "type": "page",
     "label": "Estudio de caso de logística médica · Medido en tiempo, dinero y cosas que no pasaron.",
@@ -379,7 +357,7 @@
   {
    "id": "es:es-grove-brief:1",
    "lang": "es",
-   "text": "El punto débil: en lo que peor están los dueños nuevos es en la luz — dónde poner una planta, y por qué. Ninguna app grande lo enseña. Los dueños nuevos calificaron su confianza sobre la luz en 2.4 de 5 (12 personas); los experimentados, en 3.4 (14 personas). Ahí, más la confianza, es donde Grove gana o no gana.",
+   "text": "El punto débil: en lo que peor están los dueños nuevos es en la luz — dónde poner una planta, y por qué. Ninguna app grande lo enseña. Los dueños nuevos calificaron su confianza para darles la luz del sol correcta en 2.4 de 5 (12 personas); los experimentados, en 3.4 (14 personas). Ahí, más la confianza, es donde Grove gana o no gana.",
    "source": {
     "type": "page",
     "label": "Estudio de caso Grove · Los dueños de plantas se olvidan. Y luego se sienten culpables.",
@@ -503,7 +481,7 @@
    "text": "Lo que quedó no fue solo una app bonita. Fue una definición más honesta de la primera versión, una hipótesis clara para las pruebas con personas reales, y un registro de decisiones que muestra dónde la IA acelera el trabajo y dónde un humano tiene que corregirla. La diferencia no es usar IA. Es saber cuándo confiar en ella y cuándo decir que no.",
    "source": {
     "type": "page",
-    "label": "Estudio de caso Grove · Un prototipo que muestra criterio, no solo pantallas bonitas",
+    "label": "Estudio de caso Grove · Fase 2 de 3: el rediseño está decidido; la nueva prueba es lo siguiente",
     "url": "/case-study/grove/#es-grove-outcomes"
    },
    "batch": 1
@@ -511,7 +489,7 @@
   {
    "id": "es:es-mobbin-start:0",
    "lang": "es",
-   "text": "Trabajo freelance para Mobbin documentando experiencias móviles de principio a fin. Capturé, organicé y anoté flujos de tres apps de finanzas para la biblioteca de referencia Finance+. Documenté Kikoff, Polymarket y Discover; no diseñé esos productos ni Mobbin.",
+   "text": "Mobbin es una biblioteca de capturas de apps donde los diseñadores buscan ejemplos. Trabajo freelance para Mobbin documentando experiencias móviles de principio a fin. Capturé, organicé y anoté flujos de tres apps de finanzas para la biblioteca de referencia Finance+. Documenté Kikoff, Polymarket y Discover; no diseñé esos productos ni Mobbin.",
    "source": {
     "type": "page",
     "label": "Estudio de caso Mobbin · Más de 200 pantallas por app, buscables por tarea",
@@ -591,7 +569,7 @@
    "text": "Busco primero el atajo. La nota adhesiva, la hoja de cálculo personal, el paso que todos se saltan. Ahí vive el proceso real, y nunca está en el documento del proceso.",
    "source": {
     "type": "page",
-    "label": "Sobre mí · Entro en sistemas complejos y encuentro dónde se rompe la confianza.",
+    "label": "Sobre mí · Busco primero el atajo.",
     "url": "/about/#about-pattern"
    },
    "batch": 1
@@ -602,7 +580,7 @@
    "text": "Averiguo quién paga cuando falla. Un clínico entre pacientes, un soldado esperando reabastecimiento, alguien cuya planta murió. El costo decide cuánta certeza le debe el diseño.",
    "source": {
     "type": "page",
-    "label": "Sobre mí · Entro en sistemas complejos y encuentro dónde se rompe la confianza.",
+    "label": "Sobre mí · Busco primero el atajo.",
     "url": "/about/#about-pattern"
    },
    "batch": 1
@@ -613,7 +591,7 @@
    "text": "Hago que la falla sea compartida antes de mejorarla. Cuatro áreas con cuatro versiones del problema rechazarán la misma solución de cuatro maneras.",
    "source": {
     "type": "page",
-    "label": "Sobre mí · Entro en sistemas complejos y encuentro dónde se rompe la confianza.",
+    "label": "Sobre mí · Busco primero el atajo.",
     "url": "/about/#about-pattern"
    },
    "batch": 1
@@ -624,7 +602,7 @@
    "text": "Compruebo si sobrevive sin mí. Si necesita que yo lo explique para funcionar, no está terminado.",
    "source": {
     "type": "page",
-    "label": "Sobre mí · Entro en sistemas complejos y encuentro dónde se rompe la confianza.",
+    "label": "Sobre mí · Busco primero el atajo.",
     "url": "/about/#about-pattern"
    },
    "batch": 1
@@ -635,7 +613,7 @@
    "text": "La IA acelera el trabajo. Las decisiones siguen siendo mías.",
    "source": {
     "type": "page",
-    "label": "Sobre mí · Entro en sistemas complejos y encuentro dónde se rompe la confianza.",
+    "label": "Sobre mí · Busco primero el atajo.",
     "url": "/about/#about-pattern"
    },
    "batch": 1

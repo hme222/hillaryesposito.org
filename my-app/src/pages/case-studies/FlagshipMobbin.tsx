@@ -98,8 +98,9 @@ export default function FlagshipMobbin() {
           <div className="rp-clearing">
             <span className="rp-eyebrow">Mobbin · <Term def="User experience: how a product works for the people using it.">UX</Term> flow documentation · three finance apps</span>
             <h1 className="rp-h1">200+ screens per app, searchable by task.</h1>
-            <span className="rp-readtime"><b>3 min</b><span>read · 3 apps, 200+ screens each</span></span>
+            <span className="rp-readtime"><b>3 min</b><span>read · four-month contract</span></span>
             <p className="rp-sub">
+              Mobbin is a library of app screenshots designers search for examples.
               I captured, sequenced, annotated, and labeled <b>200+ screens per app</b> across Kikoff,
               Polymarket, and Discover. I documented these products; I did not design them or Mobbin.
             </p>
@@ -108,7 +109,7 @@ export default function FlagshipMobbin() {
         </div>
         <div className="rp-hero__media fp-heroArt fp-heroArt--mobbin" aria-label="Three finance app screens documented for Mobbin" data-evidence="true">
           {APPS.map((app, index) => <div className={`fp-capture fp-capture--${index + 1}`} key={app.name}><img src={app.image} alt={index === 0 ? "Three documented finance app interfaces: Kikoff, Polymarket, and Discover" : ""} /></div>)}
-          <div className="fp-artifactLabel"><span>CAPTURE LOG · 04 MONTHS</span><b>3 apps · 200+ screens each · one searchable library</b></div>
+          <div className="fp-artifactLabel"><span>CAPTURE LOG · 4 MONTHS</span><b>3 apps · 200+ screens each · one searchable library</b></div>
         </div>
       </header>
 
@@ -134,7 +135,7 @@ export default function FlagshipMobbin() {
         id="mobbin-decisions"
         languageAnchor="mobbin-work"
         kicker="Four decisions · one documentation system"
-        title="The capture became useful through editing."
+        title="Editing is the work."
         intro="Preserve the useful state, sequence the task, name it for retrieval."
         steps={STEPS}
         // All three documented screens are mounted in one fixed-ratio frame and
@@ -154,9 +155,8 @@ export default function FlagshipMobbin() {
 
       <section className="rp-section" id="mobbin-apps" data-language-anchor="mobbin-outcomes">
         <div className="rp-wrap">
-          <p className="rp-kicker">Three apps · three different answers</p>
-          <h2 className="rp-title">Same category. Opposite ways to earn confidence.</h2>
-          <p className="rp-lede">Three products, three ways to make financial risk legible.</p>
+          <p className="rp-kicker">The apps</p>
+          <h2 className="rp-title">Kikoff proves, Polymarket discloses, Discover keeps it familiar.</h2>
           <div data-evidence="true"><ScreenSequence label="Documented finance app sequence" items={APPS} /></div>
 
           <a

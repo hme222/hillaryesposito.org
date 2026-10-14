@@ -37,7 +37,7 @@ const CHAPTERS: CaseStudyChapter[] = [
   { id: "log-brief", label: "Problem", note: "A late delivery is a casualty risk" },
   { id: "log-moves", label: "Moves", note: "Three changes, three numbers" },
   { id: "log-constraints", label: "Constraints", note: "Cold chain, 48 hours" },
-  { id: "log-outcomes", label: "Outcomes", note: "What it cost to be wrong" },
+  { id: "log-outcomes", label: "Outcomes", note: "Time, money, stockouts" },
 ];
 
 const MOVES: { n: string; title: string; finding: string; change: React.ReactNode }[] = [
@@ -51,7 +51,7 @@ const MOVES: { n: string; title: string; finding: string; change: React.ReactNod
     n: "02",
     title: "One way of asking",
     finding: "Seven stations used different request and reporting formats.",
-    change: "Built one shared request protocol and trained each site on how to order and what each order status meant; the service record reports a 15% efficiency gain in critical-resource deployment.",
+    change: "Built one shared request protocol and trained each site on how to order and what each order status meant; the service record reports that critical supplies reached the stations 15% more efficiently.",
   },
   {
     n: "03",
@@ -107,7 +107,7 @@ export default function FlagshipLogistics() {
         />
         <div className="rp-hero__content">
           <div className="rp-clearing">
-            <span className="rp-eyebrow">Army medical logistics · service design under pressure</span>
+            <span className="rp-eyebrow">Army medical logistics · Iraq · service design</span>
             <h1 className="rp-h1">85% shorter medical resupply{"\u00a0"}time.</h1>
             <span className="rp-readtime"><b>4 min</b><span>read · deployed 2024</span></span>
             <p className="rp-sub">
@@ -145,14 +145,14 @@ export default function FlagshipLogistics() {
           <div className="fp-cinemaCore fp-cinemaCore--workflow" aria-hidden="true">
             <div><span>THE JOB</span><b>Medicine and equipment, before it is needed</b><small>Not after someone asks.</small></div>
             <i>→</i>
-            <div><span>THE STAKE</span><b>An aid station that runs out</b><small>Where wounded soldiers are treated first.</small></div>
+            <div><span>THE STAKE</span><b>An aid station that runs out</b></div>
           </div>
           <div className="rp-cinema__artifact rp-cinema__artifact--reminder"><span>Scale</span><b>5,000+ soldiers, $2M in supplies, seven aid stations.</b></div>
           <div className="rp-cinema__artifact rp-cinema__artifact--safety"><span>Constraint</span><b>Cold chain deliveries inside 48 hours.</b></div>
           <div className="rp-cinema__bridge">
-            <p className="rp-kicker">Why the process mattered</p>
+            <p className="rp-kicker">Why speed mattered</p>
             <h2 id="log-brief-title">A late delivery is a casualty{"\u00a0"}risk.</h2>
-            <p>Every delay spent the one resource a casualty could not recover: time.</p>
+            <p>An aid station is where wounded soldiers are treated first.</p>
           </div>
         </div>
       </section>
@@ -179,8 +179,7 @@ export default function FlagshipLogistics() {
       <section className="rp-section rp-override" id="log-constraints" data-evidence="true">
         <div className="rp-wrap">
           <p className="rp-kicker">What made it hard</p>
-          <h2 className="rp-title">The constraints were not negotiable.</h2>
-          <p className="rp-lede">The future state had to preserve every fixed constraint.</p>
+          <h2 className="rp-title">Three constraints that did not move.</h2>
           <dl className="fp-constraintAnnotations rp-reveal" data-evidence="true">
             <div><dt>Cold chain · 48 hours</dt><dd>Late meant unusable.</dd></div>
             <div><dt>Three countries</dt><dd>Different systems and vocabulary.</dd></div>
@@ -188,7 +187,7 @@ export default function FlagshipLogistics() {
           </dl>
           <p className="fp-ownership rp-reveal">
             <b>Service-design scope</b>
-            People, inventory, requests, handoffs, constraints, ownership, and measurable recovery time.
+            People, inventory, requests, and handoffs, and how long recovery took.
           </p>
         </div>
       </section>
@@ -202,7 +201,7 @@ export default function FlagshipLogistics() {
         metrics={[
           { tag: "Relocation", n: "85%", label: "reported reduction in medical resupply time after the warehouse moved forward" },
           { tag: "Order status", n: "60%", label: "reported reduction in spending after shared real-time order status stopped over-ordering and stockouts" },
-          { tag: "Protocol", n: "15%", label: "reported efficiency gain in critical-resource deployment from one shared communication protocol" },
+          { tag: "Protocol", n: "15%", label: "reported: critical supplies reached the stations more efficiently after one shared communication protocol" },
         ]}
         route={["Find the step that should not exist", "Move it", "Standardize the ask", "Make the status visible"]}
       /></div>

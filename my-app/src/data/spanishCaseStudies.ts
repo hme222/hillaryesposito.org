@@ -19,7 +19,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
       title: "Los dueños de plantas se olvidan. Y luego se sienten culpables.",
       body: [
         "La mayoría de la gente que compra una planta quiere una sola cosa: mantenerla viva. Pero se olvidan de regarla, o la riegan de más, y de cualquier forma se sienten mal. Les pregunté a 34 dueños de plantas qué haría que una app de plantas se ganara un lugar en su teléfono. Una de las dos respuestas más comunes: “Los consejos son demasiado genéricos, no toman en cuenta mi casa.” Lo que más rápido hace que borren una app, dicho por 11 de 34 sin que se lo preguntara: demasiadas notificaciones. Una persona lo resumió así: “El cuidado de plantas debería sentirse tranquilo y sano, no estresante.”",
-        "El punto débil: en lo que peor están los dueños nuevos es en la luz — dónde poner una planta, y por qué. Ninguna app grande lo enseña. Los dueños nuevos calificaron su confianza sobre la luz en 2.4 de 5 (12 personas); los experimentados, en 3.4 (14 personas). Ahí, más la confianza, es donde Grove gana o no gana.",
+        "El punto débil: en lo que peor están los dueños nuevos es en la luz — dónde poner una planta, y por qué. Ninguna app grande lo enseña. Los dueños nuevos calificaron su confianza para darles la luz del sol correcta en 2.4 de 5 (12 personas); los experimentados, en 3.4 (14 personas). Ahí, más la confianza, es donde Grove gana o no gana.",
       ],
     },
     {
@@ -58,7 +58,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
     {
       anchor: "grove-outcomes",
       eyebrow: "Resultado",
-      title: "Un prototipo que muestra criterio, no solo pantallas bonitas",
+      title: "Fase 2 de 3: el rediseño está decidido; la nueva prueba es lo siguiente",
       body: [
         "Lo que quedó no fue solo una app bonita. Fue una definición más honesta de la primera versión, una hipótesis clara para las pruebas con personas reales, y un registro de decisiones que muestra dónde la IA acelera el trabajo y dónde un humano tiene que corregirla. La diferencia no es usar IA. Es saber cuándo confiar en ella y cuándo decir que no.",
       ],
@@ -155,7 +155,7 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
   breadcrumb: "Mobbin",
   meta: "Mobbin · Documentación de flujos de experiencia de usuario (UX) · Curaduría de patrones",
   intro:
-    "Trabajo freelance para Mobbin documentando experiencias móviles de principio a fin. Capturé, organicé y anoté flujos de tres apps de finanzas para la biblioteca de referencia Finance+. Documenté Kikoff, Polymarket y Discover; no diseñé esos productos ni Mobbin.",
+    "Mobbin es una biblioteca de capturas de apps donde los diseñadores buscan ejemplos. Trabajo freelance para Mobbin documentando experiencias móviles de principio a fin. Capturé, organicé y anoté flujos de tres apps de finanzas para la biblioteca de referencia Finance+. Documenté Kikoff, Polymarket y Discover; no diseñé esos productos ni Mobbin.",
   stats: [
     { label: "Cliente", value: "Mobbin · Freelance" },
     { label: "Tiempo", value: "mar.–jun. 2026 · 4 meses" },
@@ -217,11 +217,11 @@ export const LOGISTICS_ES: SpanishCaseStudyData = {
   sections: [
     {
       anchor: "log-brief",
-      eyebrow: "Por qué importaba el proceso",
+      eyebrow: "Por qué importaba la rapidez",
       title: "Una entrega tardía es un riesgo de\u00a0bajas.",
       body: [
-        "El trabajo: tener medicinas y equipo listos antes de que se necesiten, no después de que alguien los pida. Lo que estaba en juego: una estación de ayuda sin suministros, que es donde primero se atiende a los soldados heridos.",
-        "Cada retraso gastaba el único recurso que un herido no puede recuperar: tiempo.",
+        "El trabajo: tener medicinas y equipo listos antes de que se necesiten, no después de que alguien los pida. Lo que estaba en juego: una estación de ayuda sin suministros.",
+        "Una estación de ayuda es donde primero se atiende a los soldados heridos.",
       ],
     },
     {
@@ -233,15 +233,15 @@ export const LOGISTICS_ES: SpanishCaseStudyData = {
       ],
       bullets: [
         "Acercar el punto de suministro: cada reabastecimiento empezaba demasiado lejos de las estaciones de ayuda. Planifiqué y di seguimiento a la mudanza de $2M. La hice por fases, de lo más esencial a lo menos, y dividí al personal para que ninguna estación de ayuda se quedara sin suministro durante la mudanza. Según lo reportado, el tiempo pasó de 1–2 meses a 1–2 semanas (85% menos).",
-        "Una sola forma de pedir: siete estaciones usaban formatos distintos de solicitud y de reporte. Creé un protocolo de solicitud compartido y capacité a cada sitio en cómo pedir y qué significaba cada estado del pedido; el expediente reporta un 15% más de eficiencia al desplegar recursos críticos.",
+        "Una sola forma de pedir: siete estaciones usaban formatos distintos de solicitud y de reporte. Creé un protocolo de solicitud compartido y capacité a cada sitio en cómo pedir y qué significaba cada estado del pedido; el expediente reporta que los suministros críticos llegaron a las estaciones con un 15% más de eficiencia.",
         "Pedir antes de que se acabe: nadie veía el estado de los pedidos, así que unos sitios pedían de más y otros se quedaban sin nada. Creé un estado de pedidos compartido en tiempo real; el expediente reporta un 60% menos de gasto sin perder disponibilidad. La falla contra la que lo diseñé: un sitio que “se queda en negro”, sin suministros.",
       ],
     },
     {
       anchor: "log-constraints",
       eyebrow: "Lo que lo hizo difícil",
-      title: "Las restricciones no eran negociables.",
-      body: ["El nuevo proceso tenía que respetar cada restricción fija."],
+      title: "Tres restricciones que no cambiaban.",
+      body: [],
       bullets: [
         "Cadena de frío · 48 horas: llegar tarde significaba que ya no servía.",
         "Tres países: sistemas y vocabulario distintos.",
@@ -259,7 +259,7 @@ export const LOGISTICS_ES: SpanishCaseStudyData = {
       bullets: [
         "85%: reducción reportada del tiempo de reabastecimiento médico después de acercar el almacén.",
         "60%: reducción reportada del gasto, cuando el estado compartido de pedidos acabó con los pedidos de más y los faltantes.",
-        "15%: mejora reportada de eficiencia al desplegar recursos críticos con un solo protocolo de comunicación.",
+        "15%: según lo reportado, los suministros críticos llegaron a las estaciones con más eficiencia tras un solo protocolo de comunicación.",
       ],
     },
   ],
@@ -281,7 +281,7 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
   breadcrumb: "Knowunity",
   meta: "Knowunity · Sprint de diseño · Prototipo móvil interactivo · Recuerdo simulado",
   intro:
-    "Un estudiante dice una definición en voz alta y Knowie responde por texto. Cuando acierta, Knowie le cita sus propias palabras como prueba. Lo diseñé en un sprint de diseño de Yummy Labs de dos semanas y media, con el brief de Knowunity, y lo construí como prototipo funcional sobre su kit de componentes. El reconocimiento de voz es simulado y no se probó con estudiantes; no es una función publicada de Knowunity.",
+    "Knowunity es una app de estudio para estudiantes. Un estudiante dice una definición en voz alta; Knowie, el asistente de Knowunity, responde por texto. Cuando acierta, le cita sus propias palabras como prueba. Sprint individual de dos semanas y media de Yummy Labs con el brief de Knowunity; prototipo funcional sobre su kit de componentes. El reconocimiento de voz es simulado y no se probó con estudiantes; no es una función publicada de Knowunity.",
   stats: [
     { label: "Rol", value: "Participación individual · sprint de diseño de Yummy Labs · brief y kit de Knowunity" },
     { label: "Brief", value: "Voz de entrada, texto de salida · iOS, 390px, modo oscuro · recuerdo simulado" },
@@ -295,7 +295,7 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
       title: "Ver el material no es saberlo.",
       body: [
         "Después de repasar, el estudiante vio el material, pero no ha demostrado que pueda recuperarlo. Los cuestionarios prueban reconocimiento. Nada le pide que lo diga.",
-        "El brief de Knowunity pedía una señal sentida de “esto ya lo sé”, ganada y no afirmada. Las metas, en palabras: que más estudiantes que ven el paso lo empiecen, y que más de los que empiezan lo terminen.",
+        "El brief de Knowunity pedía una sensación de “esto ya lo sé”. Las metas, en palabras: que más estudiantes que ven el paso lo empiecen, y que más de los que empiezan lo terminen.",
         "A mitad del sprint, Knowunity publicó una versión ligera en beta. El brief pedía tratarla como el primer intento de un equipo y encontrar la versión más fuerte, no copiarla.",
       ],
       bullets: [
@@ -322,7 +322,7 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
       eyebrow: "Cómo lo construí",
       title: "Un prototipo funcional, no una presentación.",
       body: [
-        "Knowunity aportó a Knowie, la fuente Greed, su kit de Figma y acceso a la app y a la beta. Yo hice los flujos, las decisiones y el código: un prototipo en Next.js con 43 rutas, a 390px en modo oscuro, y un catálogo en Storybook sobre su kit. Cada pantalla es una página a la que se llega tocando.",
+        "Knowunity aportó a Knowie, la fuente Greed, su kit de Figma y acceso a la app y a la beta. Yo hice los flujos, las decisiones y el código: un prototipo en Next.js con 43 rutas, a 390px en modo oscuro, y un catálogo en Storybook sobre su kit. Cada pantalla es su propia ruta, a la que se llega tocando.",
         "IA en la construcción: yo diseñé y dirigí. Claude Code escribió la mayor parte del código de Next.js y Storybook a partir de mis especificaciones y de los componentes de Figma de Knowunity.",
         "Lo que cambiaría: poner antes una versión con reconocimiento de voz real frente a estudiantes. El recuerdo fue simulado todo el tiempo.",
       ],
@@ -333,7 +333,7 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
       title: "Una insignia, una revisión y una simulación que aún necesita\u00a0estudiantes.",
       body: [
         "Yummy Labs otorgó a la entrada una insignia Design Sprint y Knowunity revisó el trabajo. El reconocimiento de voz es simulado: cuánto tiempo se mantiene el micrófono decide el resultado. No hubo pruebas con estudiantes. No es una función publicada de Knowunity, y aquí no se publican cifras internas de Knowunity.",
-        "El siguiente paso es una versión con reconocimiento de voz real frente a estudiantes.",
+        "Siguiente paso: una versión con reconocimiento de voz frente a estudiantes.",
       ],
     },
   ],

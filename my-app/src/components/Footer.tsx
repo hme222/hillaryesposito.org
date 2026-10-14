@@ -63,6 +63,11 @@ const COLOPHONS: Record<string, Credit[]> = {
   ],
 };
 
+// These two credit disciplines, not tools, so "Made with:" would misdescribe
+// them. Grove and Knowunity list literal build tooling; Mobbin keeps "Made
+// with:" as approved in the 2026-10-14 copy review.
+const METHOD_COLOPHONS = new Set(["/case-study/msk", "/case-study/logistics"]);
+
 /**
  * @status: stable
  * @purpose: Site-wide footer rendered in app/App.tsx; shows nav links (plus the button that replays the home page opening film), contact links (email, résumé PDF, LinkedIn, GitHub), and a per-route colophon of build tools/methods for case-study pages.
@@ -160,7 +165,9 @@ export default function Footer() {
       <div className="site-footer__base">
         {credits && (
           <div className="site-footer__madeWith">
-            <p className="site-footer__madeWithLabel">{t("footer.madeWith")}</p>
+            <p className="site-footer__madeWithLabel">
+              {t(METHOD_COLOPHONS.has(normalizedPath) ? "footer.methods" : "footer.madeWith")}
+            </p>
             <div className="site-footer__credits">
               <ul className="site-footer__creditList">
                 {credits.map((c) => (

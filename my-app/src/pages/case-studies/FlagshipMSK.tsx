@@ -65,7 +65,7 @@ const DECISIONS = [
 
 const ROLES = [
   { n: "01", role: "Office Coordinator", taught: "Where people paused" },
-  { n: "02", role: "Administrative Assistant", taught: "How evidence survives a room" },
+  { n: "02", role: "Administrative Assistant", taught: "How to brief people who have to act" },
   { n: "03", role: "Trainer I Specialist", taught: "The authority to redesign it" },
 ];
 
@@ -240,7 +240,7 @@ export default function FlagshipMSK() {
               <div><dt>MSK roles</dt><dd>Office Coordinator → Administrative Assistant → Trainer I Specialist</dd></div>
               <div><dt>My contribution</dt><dd>Diagnose · map · validate feasibility · pitch</dd></div>
               <div><dt>Implementation</dt><dd>Built later by <Term def="Information technology: the team that owns the systems.">IT</Term> and <Term def="User experience: the team that designs how the system works for the people using it.">UX</Term>, after I changed roles</dd></div>
-              <div><dt>Evidence</dt><dd>Patient-free reconstruction from memory of my current-state documentation</dd></div>
+              <div><dt>Evidence</dt><dd>Rebuilt from memory of my current-state documentation · no patient data</dd></div>
             </dl>
             <a className="rp-cta" href="#msk-workflow">See the workflow →</a>
           </div>
@@ -293,8 +293,8 @@ export default function FlagshipMSK() {
               Same evidence as the map above, re-cut by actor instead of by step. */}
           <div className="fp-blueprintIntro rp-reveal">
             <p className="rp-kicker">Then I counted the handoffs</p>
-            <h3 className="rp-title">One step removed a department.</h3>
-            <p className="rp-lede">The measurable change was six steps to five. The service change was removing an invisible handoff. Frontstage is work the coordinator can see; backstage happens out of sight, below the line of visibility.</p>
+            <h3 className="rp-title">Six steps became five. One department left the loop.</h3>
+            <p className="rp-lede">The visible change is one fewer step. The service change is one fewer department touching the record. Frontstage is work the coordinator can see; backstage happens out of sight, below the line of visibility.</p>
           </div>
           <div data-evidence="true"><MSKServiceBlueprint /></div>
         </div>
@@ -306,7 +306,7 @@ export default function FlagshipMSK() {
         id="msk-decisions"
         languageAnchor="msk-decisions"
         kicker="The fix looked like one button"
-        title="The “simple” button carried the whole system."
+        title="One button, four rules."
         intro="One action replaced the three steps that left the system. IT and UX built the real one after I changed roles; the four rules below are how this recreation makes it safe to press. My portfolio design, not MSK's specification."
         steps={DECISIONS}
         visual={(active) => (
@@ -318,9 +318,9 @@ export default function FlagshipMSK() {
 
       <section className="rp-section" id="msk-redesigns" data-language-anchor="msk-decisions">
         <div className="rp-wrap">
-          <p className="rp-kicker">Then the same shape turned up again</p>
+          <p className="rp-kicker">Then it turned up twice more</p>
           <h2 className="rp-title">The same failure, in two more places.</h2>
-          <p className="rp-lede">The same pattern appeared in certification and onboarding: the institution’s structure obscured the next action.</p>
+          <p className="rp-lede">Certification and onboarding had the same problem: the next action was buried.</p>
           <div className="fp-redesigns rp-reveal" data-evidence="true">
             {REDESIGNS.map((r) => (
               <article key={r.n}>
@@ -341,7 +341,7 @@ export default function FlagshipMSK() {
       <section className="rp-section rp-override" id="msk-systems" data-language-anchor="msk-decisions">
         <div className="rp-wrap">
           <p className="rp-kicker">Why I could see it</p>
-          <h2 className="rp-title">I learned the system from the floor up.</h2>
+          <h2 className="rp-title">I did the jobs before I redesigned them.</h2>
           <p className="rp-lede">You do not spot that pattern from outside a system. I had already sat in three of its seats.</p>
           <ol className="fp-roleRail rp-reveal" aria-label="Three roles at MSK, in order" data-evidence="true" style={{ "--rp-reveal-stagger": "0ms" } as React.CSSProperties}>
             {ROLES.map((r) => {
@@ -379,10 +379,10 @@ export default function FlagshipMSK() {
             <p>Workflow, departments, decisions, and outcomes survive. Observation counts do not; no prevalence claim is made.</p>
           </aside>
           <div className="fp-mapWrap rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "270ms" } as React.CSSProperties}>
-            <Suspense fallback={<div className="fp-mapFallback">Tangled systems → mapped → redesigned → adopted</div>}>
+            <Suspense fallback={<div className="fp-mapFallback">Four departments, one task → mapped → redesigned → adopted</div>}>
               <MSKSystemMap />
             </Suspense>
-            <ol aria-label="Clinical system transformation stages"><li>Tangled systems</li><li>Mapped</li><li>Redesigned</li><li>Adopted organization-wide</li></ol>
+            <ol aria-label="Clinical system transformation stages"><li>Four departments, one task</li><li>Mapped</li><li>Redesigned</li><li>Adopted organization-wide</li></ol>
           </div>
         </div>
       </section>
@@ -432,7 +432,7 @@ export default function FlagshipMSK() {
           { tag: "Initiative result", n: "20%", label: "organization-wide EMR cost reduction; not attributed solely to this filing workflow" },
           { tag: "Projection", n: "~$1M/year", label: "projected paper savings in my Process Improvement Fair pitch, not measured savings" },
         ]}
-        route={["Observe the real work", "Map the failure", "Align the system", "Ship what lasts"]}
+        route={["Observe the real work", "Map the failure", "Align the system", "Get it built"]}
       /></div>
 
       <section className="rp-section">

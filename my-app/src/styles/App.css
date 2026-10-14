@@ -937,13 +937,15 @@ select:focus-visible {
 .dark-mode .cs-toggle-link {
   color: var(--focus);
 } /* ========================= FOOTER ========================= */
+/* Left-aligned at every width: footer text is read, not admired, and a
+   ragged centered column is harder to scan (2026-10-14 review). */
 .site-footer {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   gap: 1.2rem;
   padding: 2rem 1rem;
-  text-align: center;
+  text-align: start;
 }
 
  /*======================== ABOUT PAGE (SITE-NATIVE) ========================= */ /* Page wrapper */

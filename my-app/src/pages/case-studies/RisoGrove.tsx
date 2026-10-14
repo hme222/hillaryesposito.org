@@ -31,7 +31,7 @@ const CHAPTERS: CaseStudyChapter[] = [
   { id: "grove-start", label: "Start", note: "One designer, end to end" },
   { id: "grove-research", label: "Research", note: "34 real opinions" },
   { id: "grove-decisions", label: "Decisions", note: "Three features, one decision each" },
-  { id: "grove-override", label: "Product decisions", note: "Evidence, risk, next test" },
+  { id: "grove-override", label: "Product decisions", note: "What changed and why" },
   { id: "grove-outcomes", label: "Outcomes", note: "What’s built, what’s next" },
 ];
 
@@ -41,7 +41,7 @@ const SURVEY_FINDINGS = [
   { stat: "11", label: "of 34 named notification volume, unprompted, as what would make them delete it — the most-cited reason by far" },
   // Recomputed from the raw export 2026-10-13: new owners n=12, mean 2.42;
   // experienced n=14, mean 3.43 (was printed as "n=16" and "3.3").
-  { stat: "2.4", label: "out of 5: how confident new owners felt about light (12 people). Experienced owners rated themselves 3.4 (14 people)" },
+  { stat: "2.4", label: "out of 5: how confident new owners felt about getting sunlight right (12 people). Experienced owners rated themselves 3.4 (14 people)" },
 ];
 
 const MVP_FEATURES = [
@@ -266,7 +266,7 @@ export default function RisoGrove() {
             <h1 className="rp-h1">Eleven features became three.</h1>
             <span className="rp-readtime">
               <b>5 min</b>
-              <span>read · one designer, end to end</span>
+              <span>read · Phase 2 of 3</span>
             </span>
             <p className="rp-sub">
               An exploratory 5-user test showed people got lost; a 34-person survey then narrowed eleven features to three.
@@ -318,7 +318,7 @@ export default function RisoGrove() {
           <h3 className="rp-subhead">A moderated test found the confusion first</h3>
           <p className="rp-lede">March–May 2026, 5 users: people stalled when care led with a feed and a mission, not their plants. Five people were enough to see something was wrong, not enough to say what to build instead — that's what the survey went on to answer.</p>
 
-          <h3 className="rp-subhead">What those 34 people actually said</h3>
+          <h3 className="rp-subhead">What 34 plant owners said</h3>
           <p className="rp-lede">34 owners · May 22–July 8, 2026 · choose three launch dealbreakers.</p>
           <dl className="rp-surveyStats rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "90ms" } as React.CSSProperties}>
             {SURVEY_FINDINGS.map((f) => (
@@ -406,7 +406,7 @@ export default function RisoGrove() {
       <section className="rp-section rp-override" id="grove-override" data-language-anchor="grove-override">
         <div className="rp-wrap">
           <p className="rp-kicker">How the evidence changed the build</p>
-          <h2 className="rp-title">Reminders that protect the care task.</h2>
+          <h2 className="rp-title">One calm reminder instead of three guilty ones.</h2>
           <p className="rp-lede">Remove guilt. Preserve one useful next action.</p>
           <div className="rp-pushback rp-reveal" data-evidence="true">
             <div className="rp-notif rp-notif--ai">
@@ -530,11 +530,11 @@ export default function RisoGrove() {
       <section className="rp-section rp-outcomeStage" id="grove-outcomes" data-language-anchor="grove-outcomes">
         <div className="rp-wrap">
           <p className="rp-kicker">Where it stands</p>
-          <h2 className="rp-title">A focused prototype with an honest next test.</h2>
-          <p className="rp-lede">Phase 2 is a testable hypothesis plus an explicit decision record.</p>
+          <h2 className="rp-title">Phase 2 of 3: the redesign is decided, the retest is next.</h2>
+          <p className="rp-lede">Three features scoped. One care-logic mistake found. Retest pending.</p>
           <p className="rp-bridge">
             <span>Why a plant app</span>
-            Confidence, provenance, and review states make uncertainty actionable. Plants are the low-stakes practice ground.
+            Uncertain recommendations, sources to check, a human final call: the same problems as a clinical tool, at plant-level stakes.
           </p>
           <p className="rp-disclaimer">Grove is a functional prototype, Phase 2 of 3</p>
           <div

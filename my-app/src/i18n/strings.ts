@@ -29,6 +29,7 @@ const en = {
   "footer.githubAria": "GitHub profile (opens in new tab)",
   "footer.availability": "Open to healthcare product design roles",
   "footer.madeWith": "Made with:",
+  "footer.methods": "Methods:",
   "notFound.eyebrow": "404 · Page not found",
   "notFound.title": "This page wandered off.",
   "notFound.body": "The link may be outdated, but the work is still here. Return to the portfolio or browse the selected work.",
@@ -61,7 +62,7 @@ const en = {
   // ── Home: hero ──
   "home.status": "Open to healthcare product design roles",
   "home.seeApproach": "See my approach →",
-  "home.riso.eyebrow": "Healthcare Product Designer · 13+ years in healthcare",
+  "home.riso.eyebrow": "Healthcare Product Designer · 13+ years in healthcare operations",
   "home.riso.heroTitle": "I design the workflow before the screen.",
   // "Workflow fluency" named a skill without saying what it covers. The
   // durable claim is scope: the whole path a task takes, not the screen at the
@@ -85,7 +86,7 @@ const en = {
   "home.riso.queueCollapse": "Show fewer",
   "home.riso.workTitle": "Decisions you can inspect",
   "home.riso.groveDesc":
-    "My 34-person survey narrowed eleven proposed features to three. I am redesigning the AI-assisted prototype; testing the redesign is next.",
+    "My 34-person survey narrowed eleven proposed features to three. The redesign is in progress; the retest comes next.",
   "home.riso.mskDesc":
     "I mapped the detour across four departments and pitched the digital filing workflow that replaced it. Six steps became five, and one department left the loop.",
   "home.riso.logisticsDesc":
@@ -103,10 +104,10 @@ const en = {
   "home.riso.groveTag": "Active · Phase 2 of 3",
   "home.riso.proofKicker": "The proof",
   "home.riso.proofTitle": "The numbers, with their sources.",
-  "home.riso.supportingKicker": "Supporting practice",
+  "home.riso.supportingKicker": "Also documented · Mobbin, 200+ screens per app",
   "home.riso.supportingBody": "For interaction-pattern analysis and production documentation, I also documented 200+ screens per app across three finance products for Mobbin.",
   "home.riso.supportingLink": "Review the Mobbin case study →",
-  "home.riso.aboutTitle": "I design for the person under pressure",
+  "home.riso.aboutTitle": "I design for the clinician between patients.",
   "home.riso.contactKicker": "Contact",
   "home.riso.contactBody":
     "If your team is redesigning a clinical workflow, care service, or high-stakes internal tool, let's talk.",
@@ -143,9 +144,9 @@ const en = {
   "home.dispatch.closeJournal": "Close the dispatch",
 
   // ── Home: mini about ──
-  "home.about.eyebrow": "A little about me",
+  "home.about.eyebrow": "About",
   "home.about.blurb":
-    "I bring 13+ years in cancer-care operations and military medical logistics to healthcare product design. At MSK and in the Army, I learned to spot the workaround after a handoff and the permission that stops the next person. I turn that evidence into clearer workflows, internal tools, and working prototypes.",
+    "13+ years in cancer-care operations and military medical logistics.",
   "home.about.link": "More about me →",
 
   // ── Home: proof stats ──
@@ -159,19 +160,19 @@ const en = {
   "home.stat.logisticsSource": "Army service record · owner-reported",
   "home.trustAria": "Credentials",
   "home.trust.army": "Army Veteran",
-  "home.trust.credentials": "MHA + Lean Six Sigma",
+  "home.trust.credentials": "MHA · Lean Six Sigma Green Belt",
   "home.trust.bilingual": "Bilingual EN/ES",
 
   // ── Home: projects ──
   "home.eyebrow": "Selected work",
-  "home.proj.grove.subtitle": "Grove · Product Design · Data Analytics & Research",
+  "home.proj.grove.subtitle": "Grove · Product design · Research to scope",
   "home.proj.msk.subtitle": "Memorial Sloan Kettering · UX & Product Design",
   "home.proj.logistics.subtitle": "Army medical logistics · Service Design",
   "home.proj.knowunity.subtitle": "Knowunity · Design sprint · Interactive mobile prototype",
   "home.proj.mobbin.subtitle": "Mobbin · Freelance UX Flow Documentation",
   "home.proj.grove.title": "Eleven features became three",
   "home.proj.msk.title": "A filing queue replaced a four-department paper detour",
-  "home.proj.logistics.title": "Medical resupply time reduced 85%",
+  "home.proj.logistics.title": "85% shorter medical resupply time",
   "home.proj.knowunity.title": "The student’s own words are the proof",
   "home.proj.mobbin.title": "200+ screens per app, searchable by task",
 
@@ -240,6 +241,7 @@ const es: Partial<Record<StringKey, string>> = {
   "footer.githubAria": "Perfil de GitHub (se abre en una pestaña nueva)",
   "footer.availability": "Abierta a roles de diseño de productos de salud",
   "footer.madeWith": "Hecho con:",
+  "footer.methods": "Métodos:",
   "notFound.eyebrow": "404 · Página no encontrada",
   "notFound.title": "Esta página se desvió.",
   "notFound.body": "Puede que el enlace esté desactualizado, pero el trabajo sigue aquí. Vuelva al portafolio o explore el trabajo seleccionado.",
@@ -268,7 +270,7 @@ const es: Partial<Record<StringKey, string>> = {
   // ── Home: hero ──
   "home.status": "Abierta a roles de diseño de productos de salud",
   "home.seeApproach": "Conozca mi enfoque →",
-  "home.riso.eyebrow": "Diseñadora de productos de salud · más de 13 años en salud",
+  "home.riso.eyebrow": "Diseñadora de productos de salud · más de 13 años en operaciones de salud",
   "home.riso.heroTitle": "Diseño el flujo de trabajo antes que la pantalla.",
   "home.riso.heroLead":
     "En Memorial Sloan Kettering, rastreé un desvío en papel entre cuatro áreas y propuse la cola que lo reemplazó.",
@@ -287,7 +289,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.queueCollapse": "Mostrar menos",
   "home.riso.workTitle": "Decisiones que puede revisar",
   "home.riso.groveDesc":
-    "Mi encuesta a 34 personas redujo once funciones propuestas a tres. Estoy rediseñando el prototipo asistido por IA; probar el rediseño es el siguiente paso.",
+    "Mi encuesta a 34 personas redujo once funciones propuestas a tres. El rediseño está en curso; la nueva prueba viene después.",
   "home.riso.mskDesc":
     "Mapeé el desvío entre cuatro áreas y propuse el flujo de archivo digital que lo reemplazó. Seis pasos se volvieron cinco, y un área salió del circuito.",
   "home.riso.logisticsDesc":
@@ -305,10 +307,10 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.groveTag": "Activo · Fase 2 de 3",
   "home.riso.proofKicker": "La evidencia",
   "home.riso.proofTitle": "Los números, con sus fuentes.",
-  "home.riso.supportingKicker": "Práctica complementaria",
+  "home.riso.supportingKicker": "También documentado · Mobbin, más de 200 pantallas por app",
   "home.riso.supportingBody": "Como prueba de análisis de patrones de interacción y documentación de producción, también documenté más de 200 pantallas por app en tres productos financieros para Mobbin.",
   "home.riso.supportingLink": "Ver el estudio de caso de Mobbin →",
-  "home.riso.aboutTitle": "Diseño para la persona que trabaja bajo presión",
+  "home.riso.aboutTitle": "Diseño para el personal clínico entre un paciente y otro.",
   "home.riso.contactKicker": "Contacto",
   "home.riso.contactBody":
     "Si su equipo está rediseñando un flujo clínico, un servicio de atención o una herramienta interna de alto riesgo, hablemos.",
@@ -345,9 +347,9 @@ const es: Partial<Record<StringKey, string>> = {
   "home.dispatch.closeJournal": "Cerrar el despacho",
 
   // ── Home: mini about ──
-  "home.about.eyebrow": "Un poco sobre mí",
+  "home.about.eyebrow": "Sobre mí",
   "home.about.blurb":
-    "Aporto más de 13 años en operaciones de atención oncológica y logística médica militar al diseño de productos de salud. En MSK y en el Ejército aprendí a detectar el atajo después de una transferencia y el permiso que detiene a la siguiente persona. Convierto esa evidencia en flujos más claros, herramientas internas y prototipos funcionales.",
+    "Más de 13 años en operaciones de atención oncológica y logística médica militar.",
   "home.about.link": "Conozca más sobre mí →",
 
   // ── Home: proof stats ──
@@ -361,12 +363,12 @@ const es: Partial<Record<StringKey, string>> = {
   "home.stat.logisticsSource": "Expediente de servicio del Ejército · dato autorreportado",
   "home.trustAria": "Credenciales",
   "home.trust.army": "Veterana del Ejército",
-  "home.trust.credentials": "MHA + Lean Six Sigma",
+  "home.trust.credentials": "MHA · Green Belt de Lean Six Sigma",
   "home.trust.bilingual": "Bilingüe EN/ES",
 
   // ── Home: projects ──
   "home.eyebrow": "Trabajo seleccionado",
-  "home.proj.grove.subtitle": "Grove · Diseño de producto · Análisis de datos e investigación",
+  "home.proj.grove.subtitle": "Grove · Diseño de producto · De la investigación al alcance",
   "home.proj.msk.subtitle": "Memorial Sloan Kettering · Diseño UX y de producto",
   "home.proj.logistics.subtitle": "Logística médica del Ejército · Diseño de servicios",
   "home.proj.knowunity.subtitle": "Knowunity · Sprint de diseño · Prototipo móvil interactivo",
