@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { switchLanguageAtCurrentSection, useLanguage } from "../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "./flagship/CaseStudyChapters";
+import CaseStudyReel, { CaseStudyReelData } from "./flagship/CaseStudyReel";
 import usePageTitle from "../hooks/usePageTitle";
 import CartoField from "./riso/CartoField";
 import RisoDefs from "./riso/RisoDefs";
@@ -30,6 +31,8 @@ export type SpanishCaseStudyData = {
     title: string;
     body: string[];
     bullets?: string[];
+    /** A user-started video shown after the section copy (Knowunity's reel). */
+    reel?: CaseStudyReelData;
   }[];
   /** Links to the other case studies, for case-to-case navigation (parity with the English MoreWork). */
   otherProjects?: { title: string; desc: string; path: string }[];
@@ -157,6 +160,7 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
                 {section.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
               </ul>
             )}
+            {section.reel && <CaseStudyReel reel={section.reel} />}
           </div>
         </section>
       ))}

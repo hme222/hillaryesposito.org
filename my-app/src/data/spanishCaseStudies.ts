@@ -422,6 +422,28 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
         "IA en la construcción: yo diseñé y dirigí. Claude Code escribió la mayor parte del código de Next.js y Storybook a partir de mis especificaciones y de los componentes de Figma de Knowunity.",
         "Lo que cambiaría: poner antes una versión con reconocimiento de voz real frente a estudiantes. El recuerdo fue simulado todo el tiempo.",
       ],
+      // Same asset as the English page. The reel's on-screen text is in
+      // English; the list translates it and the note says so.
+      reel: {
+        src: "/assets/knowunity/say-it-back-sizzle-720.mp4",
+        poster: "/assets/knowunity/say-it-back-sizzle-poster.jpg",
+        kicker: "El video de 52 segundos",
+        label: "Say It Back, el video de 52 segundos",
+        caption: "El prototipo sobre el kit de Knowunity. El recuerdo es simulado: no hay reconocimiento de voz real.",
+        transcriptSummary: "Qué muestra el video",
+        transcript: [
+          "Knowie le indica por dónde empezar",
+          "Explíquelo con sus propias palabras",
+          "Dígalo en voz alta. Knowie escucha.",
+          "Revise lo que oyó. Diga qué tan seguro está.",
+          "Las propias palabras del estudiante son la prueba",
+          "Dos tipos de error. Dos tipos de ayuda. (El micrófono no lo captó / A medias)",
+          "Vea lo que retuvo",
+          "Luego recupere lo que falló",
+          "Tarjeta final: Say It Back — Explíquelo. Demuestre que lo retuvo.",
+        ],
+        transcriptNote: "Solo música, sin narración. El texto en pantalla está en inglés.",
+      },
     },
     {
       anchor: "knowunity-outcomes",

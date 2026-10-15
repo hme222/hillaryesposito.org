@@ -1113,6 +1113,20 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-acc__line { font-size: .92rem; }
 .rp-acc__line b { font-family: var(--mono); font-size: .64rem; letter-spacing: .06em; text-transform: uppercase; margin-right: .55rem; }
 .rp-acc__ai b { color: var(--coral); } .rp-acc__me b { color: var(--green); }
+
+/* CaseStudyReel: a user-started video in a 16:9 plate. The frame takes the
+   wrap's width up to 860px so it never overflows at 320, and the disclosure
+   below reuses the .rp-acc summary styling. */
+.rp-reel { max-width: 860px; margin: var(--sp-sm) 0 0; }
+.rp-reel__kicker { margin: 0 0 .6rem; font-family: var(--mono); font-size: .68rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+.rp-reel__plate { border: 1px solid var(--hair); border-radius: var(--r-plate); overflow: hidden; background: var(--ink); }
+.rp-reel__video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+.rp-reel__caption { margin: .7rem 0 0; max-width: 62ch; color: var(--muted); font-size: .88rem; line-height: 1.5; }
+.rp-reel__transcript { margin-top: .4rem; }
+.rp-reel__transcript summary { font-size: .95rem; min-height: 44px; }
+.rp-reel__lines { margin: 0; padding-left: 1.2rem; display: grid; gap: .35rem; font-size: .92rem; line-height: 1.45; }
+.rp-reel__note { margin: .4rem 0 0; color: var(--muted); font-size: .85rem; }
 .rp-acc__why { color: var(--muted); font-size: .86rem; margin-top: .25rem; }
 
 /* Optional evidence is a deliberate second reading path. The closed state is

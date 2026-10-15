@@ -314,6 +314,38 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".rp-next")?.getAttribute("href")).toBe("/case-study/logistics");
   });
 
+  it.each([
+    ["en", "#knowunity-prototype", "Say It Back, the 52-second reel", "What the reel shows", "Recall is mocked: no real speech recognition.", "Music only; no narration."],
+    ["es", "#es-knowunity-prototype", "Say It Back, el video de 52 segundos", "Qué muestra el video", "El recuerdo es simulado: no hay reconocimiento de voz real.", "Solo música, sin narración."],
+  ])("plays the Knowunity reel only on request, with a text alternative (%s)", async (lang, sectionId, label, summary, caption, note) => {
+    mockLang = lang;
+    await act(async () => {
+      root.render(<FlagshipKnowunity />);
+    });
+
+    const videos = container.querySelectorAll<HTMLVideoElement>(`${sectionId} video`);
+    expect(videos).toHaveLength(1);
+    const video = videos[0];
+    expect(video.hasAttribute("controls")).toBe(true);
+    expect(video.hasAttribute("autoplay")).toBe(false);
+    expect(video.hasAttribute("loop")).toBe(false);
+    expect(video.hasAttribute("muted")).toBe(false);
+    expect(video.getAttribute("preload")).toBe("none");
+    expect(video.hasAttribute("playsinline")).toBe(true);
+    expect(video.getAttribute("poster")).toBe("/assets/knowunity/say-it-back-sizzle-poster.jpg");
+    expect(video.querySelector("source")?.getAttribute("src")).toBe("/assets/knowunity/say-it-back-sizzle-720.mp4");
+    expect(video.getAttribute("aria-label")).toBe(label);
+    const describedBy = video.getAttribute("aria-describedby") || "";
+    expect(document.getElementById(describedBy)?.textContent).toContain(caption);
+
+    const details = container.querySelector(`${sectionId} details.rp-reel__transcript`);
+    expect(details?.querySelector("summary")?.textContent).toBe(summary);
+    const lines = details?.querySelectorAll("ol li") || [];
+    expect(lines).toHaveLength(9);
+    expect(lines[lines.length - 1]?.textContent).toContain("Say It Back");
+    expect(details?.textContent).toContain(note);
+  });
+
   it("rebuilds the Spanish MSK study on the English chapters, with Home's four-rules link landing", async () => {
     mockLang = "es";
     await act(async () => {

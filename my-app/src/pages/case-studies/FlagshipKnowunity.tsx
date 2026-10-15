@@ -4,6 +4,7 @@ import { useLanguage, useT } from "../../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
 import ReadingProgress from "../../components/flagship/ReadingProgress";
 import ShareCaseStudy from "../../components/flagship/ShareCaseStudy";
+import CaseStudyReel, { CaseStudyReelData } from "../../components/flagship/CaseStudyReel";
 import DecisionStory from "../../components/flagship/DecisionStory";
 import EvidenceField from "../../components/flagship/EvidenceField";
 import CartoField from "../../components/riso/CartoField";
@@ -51,6 +52,32 @@ const FRAMES = [
   { src: "/assets/knowunity/say-it-back-mic-primer.webp", alt: "Mic permission sheet opening over the first question" },
   { src: "/assets/knowunity/say-it-back-second-miss.webp", alt: "Second-miss card headed One more go, then I'll show you the answer" },
 ];
+
+// The sizzle reel: 1280×720, 52s, H.264 with a music bed and no narration,
+// so the on-screen lines below are its full text alternative.
+const REEL_SRC = "/assets/knowunity/say-it-back-sizzle-720.mp4";
+const REEL_POSTER = "/assets/knowunity/say-it-back-sizzle-poster.jpg";
+
+const REEL: CaseStudyReelData = {
+  src: REEL_SRC,
+  poster: REEL_POSTER,
+  kicker: "The 52-second reel",
+  label: "Say It Back, the 52-second reel",
+  caption: "The prototype on Knowunity's kit. Recall is mocked: no real speech recognition.",
+  transcriptSummary: "What the reel shows",
+  transcript: [
+    "Knowie points the way in",
+    "Explain it in your own words",
+    "Talk it through. Knowie listens.",
+    "Check what it heard. Say how sure you are.",
+    "Their own words are the proof",
+    "Two kinds of wrong. Two kinds of help. (Mic missed it / Half right)",
+    "See what stuck",
+    "Then win back the misses",
+    "End card: Say It Back — Explain it. Prove it stuck.",
+  ],
+  transcriptNote: "Music only; no narration.",
+};
 
 const STEPS = [
   {
@@ -227,6 +254,7 @@ export default function FlagshipKnowunity() {
             <b>AI in the build</b>
             I designed and directed. Claude Code wrote most of the Next.js and Storybook code from my specs and Knowunity's Figma components.
           </p>
+          <CaseStudyReel reel={REEL} />
           <div className="rp-hero__ctas">
             <a className="rp-cta" href={PROTOTYPE_URL} target="_blank" rel="noopener noreferrer">
               <span className="rp-ext">Try the prototype</span><span className="sr-only">{t("a11y.newTab")}</span>
