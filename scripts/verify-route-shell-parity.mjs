@@ -17,6 +17,7 @@ const ROUTES = [
   "case-study/msk",
   "case-study/mobbin",
   "case-study/logistics",
+  "case-study/ux-woman",
   "case-study/knowunity",
 ];
 

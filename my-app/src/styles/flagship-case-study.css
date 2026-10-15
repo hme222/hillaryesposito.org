@@ -1499,3 +1499,31 @@
   .fp-buttonThreshold__impression { background: transparent; border: 1px solid CanvasText; mix-blend-mode: normal; }
   .fp-buttonThreshold__handoff { background: CanvasText; }
 }
+
+/* UX Woman — the evidence ledger stands in for a product screenshot: the zeros
+   are part of the claim, so each row is a label and a number at equal weight.
+   The same markup fills the hero and the Home work row. */
+.fp-heroArt--uxwoman { flex-direction: column; gap: .9rem; }
+.fp-heroArt--uxwoman .fp-artifactLabel { position: static; width: min(420px,92%); max-width: min(420px,92%); }
+.fp-ledger { width: min(420px,92%); margin: 0; padding: .4rem 1.1rem; border: 1px solid var(--hair);
+  border-radius: var(--r-plate); background: var(--paper); }
+.fp-ledger > div { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+  padding: .65rem 0; border-bottom: 1px solid var(--hair); }
+.fp-ledger > div:last-child { border-bottom: 0; }
+.fp-ledger dt { font: 700 .66rem/1.35 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.fp-ledger dd { margin: 0; font: 700 1.6rem/1 var(--mono); color: var(--ink); }
+.fp-findings { display: grid; gap: 0; max-width: 760px; margin: 2rem 0 0; padding: 0; list-style: none; counter-reset: finding; }
+.fp-findings li { position: relative; padding: 1.1rem 0 1.1rem 2.6rem; border-top: 1px solid var(--hair); counter-increment: finding; }
+.fp-findings li::before { content: counter(finding, decimal-leading-zero); position: absolute; left: 0; top: 1.25rem;
+  font: 700 .66rem/1.2 var(--mono); letter-spacing: .1em; color: var(--coral-text); }
+.fp-findings h3 { margin: 0; font-size: 1.1rem; }
+.fp-findings p { margin: .4rem 0 0; color: var(--muted); font-size: .95rem; line-height: 1.5; }
+.fp-findings .fp-findings__confidence { color: var(--ink-2); }
+.fp-findings__confidence span { font: 700 .6rem/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--coral-text); }
+.fp-pretotypes { display: grid; gap: .75rem; max-width: 760px; margin: 2rem 0 0; padding: 0; list-style: none; }
+.fp-pretotypes li { display: grid; grid-template-columns: 2.2rem minmax(0,1fr); gap: .9rem; padding: 1rem 1.1rem;
+  border: 1px solid var(--hair); border-radius: var(--r-plate); background: var(--paper); }
+.fp-pretotypes li > span { font: 700 .66rem/1.6 var(--mono); letter-spacing: .1em; color: var(--coral-text); }
+.fp-pretotypes h3 { margin: 0; font-size: 1.05rem; }
+.fp-pretotypes p { margin: .35rem 0 0; color: var(--muted); font-size: .92rem; line-height: 1.5; }
+.fp-pretotypeNote { max-width: 62ch; margin: 1rem 0 0; color: var(--muted); font-size: .88rem; line-height: 1.5; }

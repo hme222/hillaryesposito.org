@@ -59,6 +59,13 @@ const PUBLIC_ROUTES = [
     image: "/assets/about/army.jpg",
   },
   {
+    path: "case-study/ux-woman",
+    title: "UX Woman — Healthcare Research Case Study | Hillary Esposito",
+    description:
+      "A healthcare research case study: six healthcare interviews and one adjacent HR interview point to a hypothesis about who owns the next step. No patient interviews yet; five pretotypes designed, none run.",
+    image: "/assets/about/now.jpg",
+  },
+  {
     path: "case-study/knowunity",
     title: "Knowunity — Voice Active Recall Case Study | Hillary Esposito",
     description:

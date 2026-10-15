@@ -574,12 +574,12 @@ export default function RisoGrove() {
       </section>
 
       {/* NEXT CASE STUDY */}
-      <Link className="rp-next" to="/case-study/knowunity">
+      <Link className="rp-next" to="/case-study/ux-woman">
         <div className="rp-next__inner">
           <div>
             <p className="rp-next__eyebrow">Next case study</p>
-            <p className="rp-next__title">Knowunity</p>
-            <p className="rp-next__tag">Say It Back · voice recall prototype, design sprint</p>
+            <p className="rp-next__title">UX Woman</p>
+            <p className="rp-next__tag">Healthcare research · seven interviews, research phase</p>
           </div>
           <span className="rp-next__arrow" aria-hidden="true">→</span>
         </div>

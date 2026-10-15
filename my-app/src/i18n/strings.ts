@@ -91,6 +91,8 @@ const en = {
     "I mapped the detour across four departments and pitched the digital filing workflow that replaced it. Six steps became five, and one department left the loop.",
   "home.riso.logisticsDesc":
     "I planned and tracked a warehouse relocation that shortened medical resupply time by 85%, then built shared order tracking for seven aid stations.",
+  "home.riso.uxwomanDesc":
+    "Six healthcare interviews and one adjacent HR interview point to one hypothesis: staff and patients cannot see who owns the next step. No patient interviews yet, five pretotypes designed and none run. Active, research phase.",
   "home.riso.knowunityDesc":
     "Students say a definition out loud and get their own words quoted back as proof. Selected for a Yummy Labs design sprint with Knowunity: solo, 2.5 weeks, on their brief and kit. Recall mocked, not shipped.",
   "home.riso.mobbinDesc":
@@ -98,6 +100,7 @@ const en = {
   "home.riso.groveAlt": "Grove daily care screen showing one clear plant-care task and overdue plants first",
   "home.riso.mskAlt": "Recreated Memorial Sloan Kettering filing queue, showing patient-portal messages moving from ready-to-send through filed",
   "home.riso.logisticsAlt": "Service mechanism diagram contrasting a rear supply point with the warehouse moved forward, beside an 85% reduction in resupply time",
+  "home.riso.uxwomanAlt": "Evidence ledger: 6 healthcare interviews, 1 adjacent HR interview, 0 patient interviews, 5 pretotypes designed, 0 run",
   "home.riso.knowunityAlt": "Two Say It Back mobile prototype states: a voice-recall question, then the pass screen quoting the student's own words back",
   "home.riso.knowunityPrototypeAria": "Try the Say It Back interactive prototype (opens in new tab)",
   "home.riso.mobbinAlt": "One of the third-party app screens documented for Mobbin — a finance app welcome screen",
@@ -168,11 +171,13 @@ const en = {
   "home.proj.grove.subtitle": "Grove · Product design · Research to scope",
   "home.proj.msk.subtitle": "Memorial Sloan Kettering · UX & Product Design",
   "home.proj.logistics.subtitle": "Army medical logistics · Service Design",
+  "home.proj.uxwoman.subtitle": "UX Woman · Healthcare research · Research phase",
   "home.proj.knowunity.subtitle": "Knowunity · Design sprint · Interactive mobile prototype",
   "home.proj.mobbin.subtitle": "Mobbin · Freelance UX Flow Documentation",
   "home.proj.grove.title": "Eleven features became three",
   "home.proj.msk.title": "A filing queue replaced a four-department paper detour",
   "home.proj.logistics.title": "85% shorter medical resupply time",
+  "home.proj.uxwoman.title": "Seven interviews, one hypothesis",
   "home.proj.knowunity.title": "The student’s own words are the proof",
   "home.proj.mobbin.title": "200+ screens per app, searchable by task",
 
@@ -294,6 +299,8 @@ const es: Partial<Record<StringKey, string>> = {
     "Mapeé el desvío entre cuatro áreas y propuse el flujo de archivo digital que lo reemplazó. Seis pasos se volvieron cinco, y un área salió del circuito.",
   "home.riso.logisticsDesc":
     "Planifiqué y supervisé una reubicación de almacén que redujo un 85% el tiempo de reabastecimiento médico, y luego creé un seguimiento compartido para siete puestos.",
+  "home.riso.uxwomanDesc":
+    "Seis entrevistas de salud y una adyacente de RR. HH. apuntan a una hipótesis: el personal y los pacientes no ven quién tiene el siguiente paso. Aún sin entrevistas con pacientes; cinco pretotipos diseñados y ninguno ejecutado. Activo, fase de investigación.",
   "home.riso.knowunityDesc":
     "Los estudiantes dicen una definición en voz alta y reciben sus propias palabras citadas como prueba. Seleccionada para un sprint de diseño de Yummy Labs con Knowunity: individual, 2.5 semanas, con su brief y su kit. Recuerdo simulado, no publicado.",
   "home.riso.mobbinDesc":
@@ -301,6 +308,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.groveAlt": "Pantalla de cuidado diario de Grove con una tarea clara y las plantas atrasadas primero",
   "home.riso.mskAlt": "Cola de archivo recreada de Memorial Sloan Kettering, mostrando mensajes del portal de pacientes desde listos para enviar hasta archivados",
   "home.riso.logisticsAlt": "Diagrama de mecanismo de servicio que contrasta un punto de suministro en la retaguardia con el almacén movido al frente, junto a una reducción del 85% en el tiempo de reabastecimiento",
+  "home.riso.uxwomanAlt": "Registro de evidencia: 6 entrevistas de salud, 1 entrevista adyacente de RR. HH., 0 entrevistas con pacientes, 5 pretotipos diseñados, 0 ejecutados",
   "home.riso.knowunityAlt": "Dos estados del prototipo móvil Say It Back: una pregunta de recuerdo por voz y luego la pantalla de acierto que cita las propias palabras del estudiante",
   "home.riso.knowunityPrototypeAria": "Probar el prototipo interactivo Say It Back (se abre en una pestaña nueva)",
   "home.riso.mobbinAlt": "Una de más de 200 pantallas de apps de terceros documentadas para Mobbin — la pantalla de bienvenida de una app financiera",
@@ -371,6 +379,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.proj.grove.subtitle": "Grove · Diseño de producto · De la investigación al alcance",
   "home.proj.msk.subtitle": "Memorial Sloan Kettering · Diseño UX y de producto",
   "home.proj.logistics.subtitle": "Logística médica del Ejército · Diseño de servicios",
+  "home.proj.uxwoman.subtitle": "UX Woman · Investigación en salud · Fase de investigación",
   "home.proj.knowunity.subtitle": "Knowunity · Sprint de diseño · Prototipo móvil interactivo",
   "home.proj.mobbin.subtitle": "Mobbin · Documentación freelance de flujos UX",
   "home.proj.grove.title": "Once funciones se convirtieron en tres",
@@ -378,6 +387,7 @@ const es: Partial<Record<StringKey, string>> = {
   // Same wording as the Spanish case-study title. "Tiempo de reabastecimiento
   // médico reducido" left "médico" alone on its own line at 320, 375 and 1280.
   "home.proj.logistics.title": "El reabastecimiento médico tardó un\u00a085%\u00a0menos",
+  "home.proj.uxwoman.title": "Siete entrevistas, una hipótesis",
   "home.proj.knowunity.title": "Las propias palabras del estudiante son la prueba",
   "home.proj.mobbin.title": "Más de 200 pantallas por app, buscables por tarea",
 

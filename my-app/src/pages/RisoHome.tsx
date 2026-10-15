@@ -7,6 +7,7 @@ import HomepageOpeningFilm from "../components/riso/HomepageOpeningFilm";
 import LogisticsMechanism from "../components/LogisticsMechanism";
 import MSKDashboardMockup from "../components/MSKDashboardMockup";
 import { glossTerms } from "../components/Term";
+import { UXWOMAN_LEDGER } from "../data/uxWomanCaseStudy";
 import usePageTitle from "../hooks/usePageTitle";
 import useFlagshipReveal from "../hooks/useFlagshipReveal";
 import useFilmExitChoreo from "../hooks/useFilmExitChoreo";
@@ -32,7 +33,7 @@ type WorkItem = {
   img?: string;
   imgSecondary?: string;
   imgAltKey: StringKey;
-  visual: "image" | "logistics" | "msk" | "knowunity";
+  visual: "image" | "logistics" | "msk" | "knowunity" | "uxwoman";
   tagKey?: StringKey;
   teaserPath?: string;
   teaserPathEs?: string;
@@ -91,6 +92,19 @@ const WORK: WorkItem[] = [
   },
   {
     n: "04",
+    titleKey: "home.proj.uxwoman.title",
+    subKey: "home.proj.uxwoman.subtitle",
+    descKey: "home.riso.uxwomanDesc",
+    path: "/case-study/ux-woman",
+    imgAltKey: "home.riso.uxwomanAlt",
+    visual: "uxwoman",
+    teaserPath: "/case-study/ux-woman#uxwoman-findings",
+    teaserPathEs: "/case-study/ux-woman#es-uxwoman-findings",
+    teaserEn: "See the five findings →",
+    teaserEs: "Ver los cinco hallazgos →",
+  },
+  {
+    n: "05",
     titleKey: "home.proj.knowunity.title",
     subKey: "home.proj.knowunity.subtitle",
     descKey: "home.riso.knowunityDesc",
@@ -329,6 +343,15 @@ export default function RisoHome() {
             <img src={work.imgSecondary} alt="" width={780} height={1688} loading="lazy" decoding="async" />
           </div>
           <figcaption>{lang === "es" ? "Pregunta → acierto · recuerdo simulado" : "Prompt → pass · mocked recall"}</figcaption>
+        </figure>
+      ) : work.visual === "uxwoman" ? (
+        <figure className="rp-work__thumb rp-work__thumb--ledger" aria-label={t(work.imgAltKey)}>
+          <dl className="fp-ledger" aria-hidden="true">
+            {UXWOMAN_LEDGER.map((row) => (
+              <div key={row.en}><dt>{lang === "es" ? row.es : row.en}</dt><dd>{row.n}</dd></div>
+            ))}
+          </dl>
+          <figcaption>{lang === "es" ? "Evidencia hasta hoy · solo entrevistas y diseños" : "Evidence to date · interviews and designs only"}</figcaption>
         </figure>
       ) : (
         <div className="rp-work__thumb rp-work__thumb--contain">

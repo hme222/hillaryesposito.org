@@ -5,6 +5,7 @@ import FlagshipMSK from "./FlagshipMSK";
 import FlagshipMobbin from "./FlagshipMobbin";
 import FlagshipLogistics from "./FlagshipLogistics";
 import FlagshipKnowunity from "./FlagshipKnowunity";
+import FlagshipUxWoman from "./FlagshipUxWoman";
 import RisoGrove from "./RisoGrove";
 import RisoHome from "../RisoHome";
 import About from "../AboutMe";
@@ -90,6 +91,7 @@ describe("flagship case-study accessibility", () => {
     ["Mobbin", <FlagshipMobbin />],
     ["Medical logistics", <FlagshipLogistics />],
     ["Knowunity", <FlagshipKnowunity />],
+    ["UX Woman", <FlagshipUxWoman />],
     ["Grove", <RisoGrove />],
     ["Home", <RisoHome />],
     ["About", <About />],
@@ -246,13 +248,13 @@ describe("flagship case-study accessibility", () => {
     expect(spanishPrototype?.getAttribute("href")).toBe("/case-study/grove");
   });
 
-  it("opens the Knowunity case study from Home row 04, with the live prototype as its teaser", async () => {
+  it("opens the Knowunity case study from Home row 05, with the live prototype as its teaser", async () => {
     await act(async () => {
       root.render(<RisoHome />);
     });
 
     const rows = Array.from(container.querySelectorAll<HTMLAnchorElement>(".rp-work"));
-    expect(rows).toHaveLength(4);
+    expect(rows).toHaveLength(5);
 
     const row = rows.find((link) => link.getAttribute("href") === "/case-study/knowunity");
     expect(row).toBeDefined();
@@ -314,13 +316,69 @@ describe("flagship case-study accessibility", () => {
     expect(container.textContent).not.toContain("en lugar de elogiarlo");
   });
 
-  it("sends Grove's next-case-study band to Knowunity", async () => {
+  it("opens the UX Woman case study from Home row 04", async () => {
+    await act(async () => {
+      root.render(<RisoHome />);
+    });
+    const row = Array.from(container.querySelectorAll<HTMLAnchorElement>(".rp-work")).find((link) => link.getAttribute("href") === "/case-study/ux-woman");
+    expect(row).toBeDefined();
+    expect(row?.textContent).toContain("home.riso.uxwomanDesc");
+    expect(row?.querySelectorAll(".fp-ledger > div")).toHaveLength(5);
+    const teaser = container.querySelector<HTMLAnchorElement>('.rp-work__teaser[href="/case-study/ux-woman#uxwoman-findings"]');
+    expect(teaser?.textContent).toBe("See the five findings →");
+
+    mockLang = "es";
+    await act(async () => {
+      root.render(<RisoHome />);
+    });
+    const esTeaser = container.querySelector<HTMLAnchorElement>('.rp-work__teaser[href="/case-study/ux-woman#es-uxwoman-findings"]');
+    expect(esTeaser?.textContent).toBe("Ver los cinco hallazgos →");
+  });
+
+  it("states the UX Woman limits and never names an interviewee", async () => {
+    await act(async () => {
+      root.render(<FlagshipUxWoman />);
+    });
+    expect(container.querySelector("h1")?.textContent).toContain("Seven interviews");
+    ["uxwoman-start", "uxwoman-problem", "uxwoman-research", "uxwoman-findings", "uxwoman-pretotypes", "uxwoman-next"].forEach((id) => {
+      expect(container.querySelector(`#${id}`)).not.toBeNull();
+    });
+    expect(container.querySelectorAll(".fp-findings li")).toHaveLength(5);
+    expect(container.querySelectorAll(".fp-pretotypes li")).toHaveLength(5);
+    const text = container.textContent || "";
+    ["No patient interview stream", "not healthcare validation", "hypothesis", "Five pretotypes designed. None run.", "Secondary research", "UserTesting"].forEach((phrase) => {
+      expect(text).toContain(phrase);
+    });
+    ["Mario", "Shawn", "Michaela", "Remy", "Saranya", "Natasha", "Mount Sinai", "leverage", "seamless"].forEach((word) => {
+      expect(text).not.toContain(word);
+    });
+  });
+
+  it("renders the condensed Spanish UX Woman study", async () => {
+    mockLang = "es";
+    await act(async () => {
+      root.render(<FlagshipUxWoman />);
+    });
+    expect(container.querySelector(".rp-breadcrumb")?.textContent).toContain("UX Woman");
+    expect(container.querySelector("#es-uxwoman-findings")).not.toBeNull();
+    expect(container.textContent).toContain("No hay un flujo de entrevistas con pacientes");
+    expect(container.textContent).toContain("ninguno ejecutado");
+  });
+
+  it("sends UX Woman's next-case-study band to Knowunity", async () => {
+    await act(async () => {
+      root.render(<FlagshipUxWoman />);
+    });
+    expect(container.querySelector(".rp-next")?.getAttribute("href")).toBe("/case-study/knowunity");
+  });
+
+  it("sends Grove's next-case-study band to UX Woman", async () => {
     await act(async () => {
       root.render(<RisoGrove />);
     });
     const next = container.querySelector<HTMLAnchorElement>(".rp-next");
-    expect(next?.getAttribute("href")).toBe("/case-study/knowunity");
-    expect(next?.textContent).toContain("Knowunity");
+    expect(next?.getAttribute("href")).toBe("/case-study/ux-woman");
+    expect(next?.textContent).toContain("UX Woman");
   });
 
   // The product-led "Draft A" (rotating MSK/Grove/Army showcase) and
@@ -731,6 +789,7 @@ describe("flagship case-study accessibility", () => {
     ["MSK", <FlagshipMSK />],
     ["Mobbin", <FlagshipMobbin />],
     ["Knowunity", <FlagshipKnowunity />],
+    ["UX Woman", <FlagshipUxWoman />],
     ["About", <About />],
   ])("%s chapter shortcuts resolve to real sections", async (_name, page) => {
     await act(async () => {

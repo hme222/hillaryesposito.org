@@ -346,3 +346,91 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
     body: "Say It Back muestra cómo trabajo: construirlo, decir qué es simulado y nombrar la siguiente prueba.",
   },
 };
+
+// Condensed from FlagshipUxWoman.tsx. Nothing is added beyond the English
+// page: no outcome, no patient claim. Interviewees stay anonymized, by role
+// only. Section anchors match the English chapter ids so the language switch
+// lands in place.
+export const UXWOMAN_ES: SpanishCaseStudyData = {
+  title: "¿Quién tiene el siguiente paso? Siete entrevistas, una hipótesis.",
+  breadcrumb: "UX Woman",
+  meta: "UX Woman · Investigación en salud · Activo, fase de investigación",
+  intro:
+    "En seis entrevistas de salud, el personal describió atención en espera mientras nadie podía ver quién tenía el siguiente paso. Lo trato como una hipótesis. La evidencia aún no muestra un solo problema compartido, así que el siguiente paso es reconstruir casos reales antes de construir nada.",
+  stats: [
+    { label: "Evidencia", value: "Seis entrevistas de salud · una entrevista adyacente de RR. HH. · ninguna entrevista con pacientes" },
+    { label: "Mi parte", value: "Planes de entrevista · reclutamiento por conducta · síntesis · cinco diseños de pretotipo" },
+    { label: "Estado", value: "Activo · fase de investigación · cinco pretotipos diseñados, ninguno ejecutado" },
+    { label: "Siguiente", value: "Reconstruir casos reales y luego decidir qué construir" },
+  ],
+  sections: [
+    {
+      anchor: "uxwoman-problem",
+      eyebrow: "Dónde empieza esto",
+      title: "El personal y los pacientes no ven quién actúa después.",
+      body: [
+        "Cuando la atención espera por la cobertura, el papeleo o un documento faltante, personas de distintos roles describieron no saber quién tenía el siguiente paso.",
+        "Esa señal se repite, pero los mecanismos difieren: un mensaje mal dirigido, una llamada de revisión de utilización, una cola de autorizaciones que nadie ve. Es una hipótesis por probar, no una necesidad validada.",
+      ],
+    },
+    {
+      anchor: "uxwoman-research",
+      eyebrow: "Qué hice",
+      title: "Siete entrevistas, reclutadas por lo que la gente hace.",
+      body: [
+        "Recluté por conducta, no por cargo. Cada entrevista cuenta una vez.",
+        "Seis entrevistas de salud: servicios financieros al paciente, operaciones de ingresos, asistente médico de ortopedia, enfermera de revisión de utilización, psiquiatra y una persona que fue responsable de servicios al afiliado en un plan de salud. Una persona también habló desde su experiencia personal como paciente.",
+        "No hay un flujo de entrevistas con pacientes. Lo que sé de los pacientes es de segunda mano, salvo ese testimonio. Una séptima entrevista, adyacente, con una persona a cargo de RR. HH. trató sobre la verificación de fuentes de IA. No valida nada en salud.",
+        "Investigación secundaria: un análisis de flujos de IA e información en hospitales grandes, con informes federales y encuestas profesionales. Muestra patrones del sistema, no lo que necesita un hospital en particular. Las sesiones del estudio se hacen en UserTesting.",
+      ],
+    },
+    {
+      anchor: "uxwoman-findings",
+      eyebrow: "Lo que mostraron las entrevistas",
+      title: "Cinco señales, cada una con su nivel de confianza.",
+      body: [
+        "Un nivel dice qué tan directamente las entrevistas respaldan una afirmación, no cuántas personas la dijeron. Todo es exploratorio y de autorreporte.",
+      ],
+      bullets: [
+        "El trabajo cruza roles y organizaciones a mano. Confianza: moderada en que importa en varios flujos; baja en que sea una sola falla compartida.",
+        "La información debe ajustarse al caso. Confianza: moderada como observación entre casos.",
+        "Las barreras de cobertura pueden interrumpir la atención. Confianza: moderada en que los actores ven el riesgo; baja en cuán común es y en la experiencia del paciente.",
+        "Las personas conservan el juicio y el trabajo de recuperación. Confianza: alta en que hay trabajo humano; baja en que sea una necesidad sin atender o que la automatización la resuelva.",
+        "La experiencia con IA varía. Confianza: alta en que difiere; la IA es una herramienta posible para una tarea, no el problema compartido.",
+        "Lo que no puedo afirmar: un solo problema compartido, cuán común es cada problema, ni que los traspasos causen los retrasos.",
+      ],
+    },
+    {
+      anchor: "uxwoman-pretotypes",
+      eyebrow: "Pruebas baratas, diseñadas",
+      title: "Cinco pretotipos diseñados. Ninguno ejecutado.",
+      body: [
+        "Cada uno intenta refutar su propia premisa. Son cinco pruebas separadas, no cinco funciones de un solo producto. Cada una tiene una condición de parada: si añade papeleo sin cambiar una acción siguiente, se detiene.",
+      ],
+      bullets: [
+        "Tarjetas “¿Qué significa este estado?”: ¿puede un afiliado distinguir una recomendación de una aprobación y ver su propio siguiente paso?",
+        "Navegador de cobertura en contexto: ¿ayuda más una guía en el momento de una tarea de cobertura que una biblioteca general de seguros?",
+        "Recibo de traspaso de información faltante: ¿nombrar lo que falta y quién lo debe reduce la ambigüedad entre roles?",
+        "Hoja de evidencia para la carta de necesidad médica: ¿ayuda una lista de fuentes y revisor a preparar o revisar una carta?",
+        "Sesión con un navegador humano: cuando la información es confusa o delicada, ¿una persona resuelve algo que el autoservicio no?",
+      ],
+    },
+    {
+      anchor: "uxwoman-next",
+      eyebrow: "Dónde está",
+      title: "Una hipótesis, no un producto.",
+      body: [
+        "Activo, fase de investigación. Seis entrevistas de salud, más una adyacente de RR. HH. que no valida nada en salud. Cero de cinco pretotipos ejecutados: los cinco están diseñados y ninguno ha producido evidencia.",
+        "Siguiente paso: reconstruir casos reales recientes, con las mismas preguntas neutrales para cada persona, antes de elegir qué construir.",
+      ],
+    },
+  ],
+  otherProjects: [
+    { title: "Las propias palabras del estudiante son la prueba", desc: "Knowunity · Sprint de diseño, recuerdo por voz simulado.", path: "/case-study/knowunity" },
+    { title: "Once funciones se convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
+  ],
+  close: {
+    title: "Reviso la premisa antes de construir.",
+    body: "UX Woman muestra cómo trabajo: decir qué respalda la evidencia, calificarla y nombrar la siguiente prueba.",
+  },
+};

@@ -55,6 +55,12 @@ const COLOPHONS: Record<string, Credit[]> = {
   ],
   // Literal build tooling, like Grove's, plus whose parts these were and who
   // wrote the code — all stated on the case study itself.
+  "/case-study/ux-woman": [
+    { label: "recruiting by behavior", es: "reclutamiento por conducta" },
+    { label: "interview synthesis", es: "síntesis de entrevistas" },
+    { label: "confidence ratings", es: "niveles de confianza" },
+    { label: "pretotyping", es: "pretotipado" },
+  ],
   "/case-study/knowunity": [
     { label: "Next.js" },
     { label: "Storybook" },
@@ -63,10 +69,10 @@ const COLOPHONS: Record<string, Credit[]> = {
   ],
 };
 
-// These two credit disciplines, not tools, so "Made with:" would misdescribe
+// These three credit disciplines, not tools, so "Made with:" would misdescribe
 // them. Grove and Knowunity list literal build tooling; Mobbin keeps "Made
 // with:" as approved in the 2026-10-14 copy review.
-const METHOD_COLOPHONS = new Set(["/case-study/msk", "/case-study/logistics"]);
+const METHOD_COLOPHONS = new Set(["/case-study/msk", "/case-study/logistics", "/case-study/ux-woman"]);
 
 /**
  * @status: stable

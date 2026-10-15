@@ -29,6 +29,12 @@ const ROUTE_META: Array<{ match: RegExp; description: string; image: string }> =
     image: "/assets/mobbin/discover.jpg",
   },
   {
+    match: /\/case-study\/ux-woman$/,
+    description:
+      "A healthcare research case study: six healthcare interviews and one adjacent HR interview point to a hypothesis about who owns the next step. No patient interviews yet; five pretotypes designed, none run.",
+    image: "/assets/about/now.jpg",
+  },
+  {
     match: /\/case-study\/knowunity$/,
     description:
       "A design-sprint case study: a voice active-recall prototype for Knowunity where a clean pass quotes the student's own words back as the proof. Recall is mocked.",
