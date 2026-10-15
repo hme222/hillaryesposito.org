@@ -48,11 +48,10 @@
   --footer-icon-hover-bg: #0a66c2;
   --footer-icon-hover-color: #ffffff;
 
-  /* Radii */
-  --radius-xl: 16px;
+  /* Radii. Plate/control/device radii are --r-* in portfolio-cohesion.css.
+     This one stays: the MSK system-map frame is the only 12px corner, and
+     no --r-* token matches it. */
   --radius-lg: 12px;
-  --radius-md: 8px;
-  --radius-sm: 4px;
 
   /* Shadows */
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 8px 20px rgba(0, 0, 0, 0.03);
@@ -536,7 +535,7 @@ select:focus-visible {
   padding: 0.5rem;
   background: var(--surface-1);
   border: 1px solid var(--border-strong, var(--border));
-  border-radius: var(--r-plate, var(--radius-md));
+  border-radius: var(--r-plate);
   /* Flat print shadow, matching the pill's own (portfolio-cohesion.css) -
      a soft blurred rgba shadow read as the one glass/card object on an
      otherwise flat print page. */
@@ -550,7 +549,7 @@ select:focus-visible {
   min-height: 44px;
   padding: 0.4rem 0.6rem;
   border: none;
-  border-radius: var(--radius-sm);
+  border-radius: var(--r-plate);
   background: none;
   color: var(--fg);
   font-family: var(--font-head);
@@ -1022,7 +1021,7 @@ textarea::placeholder {
 .recruiter-panel__close {
   width: 44px;
   height: 44px;
-  border-radius: 3px;
+  border-radius: var(--r-control);
   background: transparent;
   border: 1px solid var(--border);
   color: var(--fg);
@@ -1165,7 +1164,7 @@ textarea::placeholder {
   gap: 0.5rem;
   min-height: 46px;
   padding: 0.75rem 1.25rem;
-  border-radius: 3px;
+  border-radius: var(--r-control);
   text-decoration: none;
   font-family: "Space Mono", ui-monospace, monospace;
   font-weight: 700;

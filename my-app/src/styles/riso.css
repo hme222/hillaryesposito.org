@@ -80,7 +80,7 @@
 .riso-rail span {
   background: color-mix(in srgb, var(--ink) 58%, transparent);
   padding: 1px 5px;
-  border-radius: 3px;
+  border-radius: var(--r-control);
 }
 
 /* ---- a section that hosts a collage + clearing ---- */
@@ -100,7 +100,7 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   padding: 0.35rem 0.7rem;
-  border-radius: 4px;
+  border-radius: var(--r-plate);
 }
 .riso-eyebrow::before {
   content: "";
