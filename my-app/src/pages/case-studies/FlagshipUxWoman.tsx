@@ -8,6 +8,7 @@ import EvidenceField from "../../components/flagship/EvidenceField";
 import CartoField from "../../components/riso/CartoField";
 import RisoDefs from "../../components/riso/RisoDefs";
 import SpanishCaseStudy from "../../components/SpanishCaseStudy";
+import Term from "../../components/Term";
 import { UXWOMAN_ES } from "../../data/spanishCaseStudies";
 import { UXWOMAN_LEDGER } from "../../data/uxWomanCaseStudy";
 import useFlagshipReveal from "../../hooks/useFlagshipReveal";
@@ -18,6 +19,9 @@ import "../../styles/flagship-case-study.css";
 
 /**
  * UX Woman — healthcare research case study, research phase.
+ *
+ * Story file: design-docs/case-study-stories/ux-woman.md (what UX Woman is,
+ * Hillary's role, and the page's research facts, 2026-10-15).
  *
  * Source of truth: the UX Woman research folder (overall interview patterns
  * 2026-10-13, five pretotypes 2026-10-11, large-hospital AI gap scan
@@ -34,12 +38,12 @@ const CHAPTERS: CaseStudyChapter[] = [
   { id: "uxwoman-start", label: "Start", note: "Research phase, active" },
   { id: "uxwoman-problem", label: "Problem", note: "Who owns the next step?" },
   { id: "uxwoman-research", label: "Research", note: "Six healthcare interviews" },
-  { id: "uxwoman-findings", label: "Findings", note: "Five signals, rated" },
+  { id: "uxwoman-findings", label: "Findings", note: "Five findings, rated" },
   { id: "uxwoman-pretotypes", label: "Pretotypes", note: "Five designed, none run" },
-  { id: "uxwoman-next", label: "Next step", note: "Real cases before building" },
+  { id: "uxwoman-next", label: "Next step", note: "Recent cases before building" },
 ];
 
-const FINDINGS = [
+const FINDINGS: { title: string; body: React.ReactNode; confidence: string }[] = [
   {
     title: "Work crosses roles and organizations by hand",
     body: "Messages reached the wrong role. Clinical teams were paged. Clinic, pharmacy, and insurer called each other again.",
@@ -62,7 +66,7 @@ const FINDINGS = [
   },
   {
     title: "AI experience varies",
-    body: "One person found AI-assisted drafting easier. Others had little or no AI in the workflow.",
+    body: <>One person found <Term def="Artificial intelligence: software that drafts, sorts, or predicts from data.">AI</Term>-assisted drafting easier. Others had little or no AI in the workflow.</>,
     confidence: "High that experience differs. AI is a possible tool for one task, not the shared problem.",
   },
 ];
@@ -120,18 +124,19 @@ export default function FlagshipUxWoman() {
         <div className="rp-hero__content">
           <div className="rp-clearing">
             <span className="rp-eyebrow">UX Woman · Healthcare research · Active, research phase</span>
-            <h1 className="rp-h1">Who owns the next{" "}step? Six healthcare{" "}interviews, one{" "}hypothesis.</h1>
-            <span className="rp-readtime"><b>4 min</b><span>read · nothing built or tested yet</span></span>
+            <h1 className="rp-h1">Six healthcare interviews point to one{"\u00a0"}hypothesis.</h1>
+            <span className="rp-readtime"><b>4 min</b><span>read · research phase, 2026</span></span>
             <p className="rp-sub">
-              In six healthcare interviews, staff described care waiting while no one could see who owned the next
+              UX Woman is a 7-month, mentor-led UX design accelerator. In six healthcare interviews, staff described care waiting while no one could see who owned the next
               step. I'm treating that as a <b>hypothesis</b>. The evidence does not yet show one shared problem, so the
-              next step is reconstructing real cases before building anything.
+              next step is reconstructing recent cases before building anything.
             </p>
             <dl className="rp-heroEvidence" aria-label="UX Woman case evidence at a glance">
-              <div><dt>Evidence</dt><dd>Six healthcare interviews · one adjacent HR interview · no dedicated patient interviews</dd></div>
+              <div><dt>Role</dt><dd>Sole researcher · UX Woman UX Design Accelerator · 2026</dd></div>
+              <div><dt>Evidence</dt><dd>Six healthcare interviews · one adjacent human-resources (HR) interview · no dedicated patient interviews</dd></div>
               <div><dt>My contribution</dt><dd>Interview plans · recruiting by behavior · synthesis · five pretotype designs</dd></div>
               <div><dt>Status</dt><dd>Active · research phase · five pretotypes designed, none run</dd></div>
-              <div><dt>Next</dt><dd>Reconstruct real cases, then decide what to build</dd></div>
+              <div><dt>Next</dt><dd>Reconstruct recent cases, then decide what to build</dd></div>
             </dl>
             <a className="rp-cta" href="#uxwoman-findings">See the five findings →</a>
           </div>
@@ -151,7 +156,7 @@ export default function FlagshipUxWoman() {
           <p className="rp-kicker">Where this starts</p>
           <h2 className="rp-title">Staff and patients cannot see who acts next.</h2>
           <p className="rp-lede">When care waits on coverage, paperwork, or a missing document, people in different roles described not knowing who owned the next step.</p>
-          <p className="rp-body">That signal recurs, but the mechanisms differ: a misrouted message, a utilization-review page, an authorization queue no one can see. It is a hypothesis to test, not a validated need.</p>
+          <p className="rp-body">That finding recurs, but the mechanisms differ: a misrouted message, a utilization-review page, an authorization queue no one can see. It is a hypothesis to test, not a validated need.</p>
         </div>
       </section>
 
@@ -159,7 +164,7 @@ export default function FlagshipUxWoman() {
         <div className="rp-wrap">
           <p className="rp-kicker">What I did</p>
           <h2 className="rp-title">Six healthcare interviews, recruited by what people do.</h2>
-          <p className="rp-lede">I recruited by behavior, not job title. Each interview counts once. Study sessions run on UserTesting.</p>
+          <p className="rp-lede">I recruited by behavior, not job title. Each interview counts once. Interviews with healthcare professionals and stakeholders.</p>
           <div className="fp-workSplit rp-reveal">
             <article>
               <span>Healthcare · 6</span>
@@ -169,7 +174,7 @@ export default function FlagshipUxWoman() {
             <article>
               <span>Limits · stated up front</span>
               <h3>No patient interview stream</h3>
-              <p>What I know about patients is secondhand, apart from that one account. A seventh, adjacent interview with an HR director covered checking AI sources. It is not healthcare validation. No PHI was collected, and participants are anonymized.</p>
+              <p>What I know about patients is secondhand, apart from that one account. A seventh, adjacent interview with an <Term def="Human resources: the team that handles hiring, pay, and staff policy.">HR</Term> director covered checking artificial intelligence (AI) sources. It is not healthcare validation. No protected health information (PHI) was collected, and participants are anonymized.</p>
             </article>
           </div>
           <p className="fp-ownership fp-ownership--paper rp-reveal">
@@ -182,7 +187,7 @@ export default function FlagshipUxWoman() {
       <section className="rp-section" id="uxwoman-findings" data-language-anchor="uxwoman-findings" data-evidence="true">
         <div className="rp-wrap">
           <p className="rp-kicker">What the interviews showed</p>
-          <h2 className="rp-title">Five signals, each rated for confidence.</h2>
+          <h2 className="rp-title">Five findings, each rated for confidence.</h2>
           <p className="rp-lede">A rating says how directly the accounts support a claim, not how many people said it. All of it is exploratory and self-reported.</p>
           <ol className="fp-findings rp-reveal">
             {FINDINGS.map((finding) => (
@@ -222,13 +227,13 @@ export default function FlagshipUxWoman() {
         languageAnchor="uxwoman-next"
         kicker="Where it stands"
         title="A hypothesis, not a product."
-        intro="Active, research phase. Next I reconstruct recent real cases, asking each person the same neutral questions, before choosing anything to build."
+        intro="Active, research phase. Next I reconstruct recent cases, asking each person the same neutral questions, before choosing anything to build."
         disclaimer="Exploratory, qualitative, self-reported · six healthcare interviews and one adjacent HR interview · no dedicated patient interviews · no pretotype run · the large-hospital scan is secondary research"
         metrics={[
-          { tag: "Interviews", n: "6", label: "healthcare interviews, plus one adjacent HR interview that is not healthcare validation" },
-          { tag: "Pretotypes", n: "0 of 5", label: "run so far. All five are designed; none has produced evidence yet" },
+          { tag: "Method", n: "6", label: "healthcare interviews, plus one adjacent HR interview that is not healthcare validation" },
+          { tag: "Status", n: "0 of 5", label: "run so far. All five are designed; none has produced evidence yet" },
         ]}
-        route={["Recruit by behavior", "Rate confidence", "Reconstruct real cases", "Then build"]}
+        route={["Recruit by behavior", "Rate confidence", "Reconstruct recent cases", "Then build"]}
       /></div>
 
       <section className="rp-section">

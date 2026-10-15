@@ -365,7 +365,7 @@ describe("flagship case-study accessibility", () => {
     expect(container.textContent).not.toContain("en lugar de elogiarlo");
   });
 
-  it("opens the UX Woman case study from Home row 04", async () => {
+  it("opens the UX Woman case study from Home row 02", async () => {
     await act(async () => {
       root.render(<RisoHome />);
     });
@@ -388,16 +388,19 @@ describe("flagship case-study accessibility", () => {
     await act(async () => {
       root.render(<FlagshipUxWoman />);
     });
-    expect(container.querySelector("h1")?.textContent).toMatch(/Six healthcare\s+interviews/);
+    expect(container.querySelector("h1")?.textContent).toBe("Six healthcare interviews point to one\u00a0hypothesis.");
+    expect(container.querySelector(".rp-heroEvidence dt")?.textContent).toBe("Role");
+    expect(container.querySelector(".rp-heroEvidence dd")?.textContent).toBe("Sole researcher · UX Woman UX Design Accelerator · 2026");
     ["uxwoman-start", "uxwoman-problem", "uxwoman-research", "uxwoman-findings", "uxwoman-pretotypes", "uxwoman-next"].forEach((id) => {
       expect(container.querySelector(`#${id}`)).not.toBeNull();
     });
     expect(container.querySelectorAll(".fp-findings li")).toHaveLength(5);
     expect(container.querySelectorAll(".fp-pretotypes li")).toHaveLength(5);
     const text = container.textContent || "";
-    ["No patient interview stream", "not healthcare validation", "hypothesis", "Five pretotypes designed. None run.", "Secondary research", "UserTesting"].forEach((phrase) => {
+    ["No patient interview stream", "not healthcare validation", "hypothesis", "Five pretotypes designed. None run.", "Secondary research", "UX Woman is a 7-month, mentor-led UX design accelerator.", "Interviews with healthcare professionals and stakeholders.", "Five findings, each rated for confidence.", "read · research phase, 2026", "human-resources (HR)", "protected health information (PHI)", "artificial intelligence (AI)"].forEach((phrase) => {
       expect(text).toContain(phrase);
     });
+    ["UserTesting", "real cases", "Five signals"].forEach((phrase) => expect(text).not.toContain(phrase));
     ["Mario", "Shawn", "Michaela", "Remy", "Saranya", "Natasha", "Mount Sinai", "leverage", "seamless"].forEach((word) => {
       expect(text).not.toContain(word);
     });
@@ -410,6 +413,9 @@ describe("flagship case-study accessibility", () => {
     });
     expect(container.querySelector(".rp-breadcrumb")?.textContent).toContain("UX Woman");
     expect(container.querySelector("#es-uxwoman-findings")).not.toBeNull();
+    expect(container.querySelector("h1")?.textContent).toBe("Seis entrevistas de salud apuntan a una\u00a0hipótesis.");
+    expect(container.textContent).toContain("UX Woman es una aceleradora de diseño UX de 7 meses, guiada por mentores.");
+    ["UserTesting", "casos reales", "señales"].forEach((phrase) => expect(container.textContent).not.toContain(phrase));
     expect(container.textContent).toContain("No hay un flujo de entrevistas con pacientes");
     expect(container.textContent).toContain("ninguno ejecutado");
   });

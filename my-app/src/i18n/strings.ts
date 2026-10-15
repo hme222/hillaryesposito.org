@@ -105,7 +105,7 @@ const en = {
   "home.riso.logisticsDesc":
     "I planned and tracked a warehouse relocation that took medical resupply from 1–2 months to 1–2 weeks, then built shared order tracking for seven aid stations.",
   "home.riso.uxwomanDesc":
-    "Six healthcare interviews and one adjacent HR interview point to one hypothesis: staff and patients cannot see who owns the next step. No dedicated patient interviews yet, five pretotypes designed and none run. Active, research phase.",
+    "I ran six healthcare interviews and one adjacent HR interview; they point to one hypothesis: staff and patients cannot see who owns the next step. No dedicated patient interviews yet; five pretotypes designed, none run. Active, research phase.",
   "home.riso.knowunityDesc":
     "Students say a definition out loud and get their own words quoted back as proof. Selected for a Yummy Labs design sprint with Knowunity: solo, 2.5 weeks, on their brief and kit. Recall mocked, not shipped.",
   "home.riso.mobbinDesc":
@@ -326,7 +326,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.logisticsDesc":
     "Planifiqué y supervisé una reubicación de almacén que llevó el reabastecimiento médico de 1–2 meses a 1–2 semanas, y luego creé un seguimiento compartido para siete puestos.",
   "home.riso.uxwomanDesc":
-    "Seis entrevistas de salud y una adyacente de RR. HH. apuntan a una hipótesis: el personal y los pacientes no ven quién tiene el siguiente paso. Aún sin entrevistas dedicadas con pacientes; cinco pretotipos diseñados y ninguno ejecutado. Activo, fase de investigación.",
+    "Hice seis entrevistas de salud y una adyacente de RR. HH.; apuntan a una hipótesis: el personal y los pacientes no ven quién tiene el siguiente paso. Aún sin entrevistas dedicadas con pacientes; cinco pretotipos diseñados, ninguno ejecutado. Activo, fase de investigación.",
   "home.riso.knowunityDesc":
     "Los estudiantes dicen una definición en voz alta y reciben sus propias palabras citadas como prueba. Seleccionada para un sprint de diseño de Yummy Labs con Knowunity: individual, 2.5 semanas, con su brief y su kit. Recuerdo simulado, no publicado.",
   "home.riso.mobbinDesc":

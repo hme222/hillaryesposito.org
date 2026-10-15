@@ -581,7 +581,7 @@ export default function RisoGrove() {
           <div>
             <p className="rp-next__eyebrow">Next case study</p>
             <p className="rp-next__title">UX Woman</p>
-            <p className="rp-next__tag">Healthcare research · six healthcare interviews, research phase</p>
+            <p className="rp-next__tag">Healthcare research · six interviews, research phase</p>
           </div>
           <span className="rp-next__arrow" aria-hidden="true">→</span>
         </div>

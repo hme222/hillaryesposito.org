@@ -13,7 +13,7 @@ type Metric = { n: string; label: string; tag?: string };
 
 /**
  * @status: stable
- * @purpose: Renders a labeled row of metric numbers (each with an optional attribution tag) plus an intro and disclaimer; used on the MSK, Mobbin, logistics, and Knowunity case study pages.
+ * @purpose: Renders a labeled row of metric numbers (each with an optional attribution tag) plus an intro and disclaimer; used on the MSK, Mobbin, logistics, Knowunity, and UX Woman case study pages.
  */
 export default function EvidenceField({
   id,

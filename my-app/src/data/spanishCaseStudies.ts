@@ -448,16 +448,17 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
 // only. Section anchors match the English chapter ids so the language switch
 // lands in place.
 export const UXWOMAN_ES: SpanishCaseStudyData = {
-  title: "¿Quién tiene el siguiente paso? Seis entrevistas de salud, una hipótesis.",
+  title: "Seis entrevistas de salud apuntan a una\u00a0hipótesis.",
   breadcrumb: "UX Woman",
   meta: "UX Woman · Investigación en salud · Activo, fase de investigación",
   intro:
-    "En seis entrevistas de salud, el personal describió atención en espera mientras nadie podía ver quién tenía el siguiente paso. Lo trato como una hipótesis. La evidencia aún no muestra un solo problema compartido, así que el siguiente paso es reconstruir casos reales antes de construir nada.",
+    "UX Woman es una aceleradora de diseño UX de 7 meses, guiada por mentores. En seis entrevistas de salud, el personal describió atención en espera mientras nadie podía ver quién tenía el siguiente paso. Lo trato como una hipótesis. La evidencia aún no muestra un solo problema compartido, así que el siguiente paso es reconstruir casos recientes antes de construir nada.",
   stats: [
-    { label: "Evidencia", value: "Seis entrevistas de salud · una entrevista adyacente de RR. HH. · ninguna entrevista dedicada con pacientes" },
+    { label: "Rol", value: "Única investigadora · Aceleradora de diseño UX de UX Woman · 2026" },
+    { label: "Evidencia", value: "Seis entrevistas de salud · una entrevista adyacente de recursos humanos (RR. HH.) · ninguna entrevista dedicada con pacientes" },
     { label: "Mi parte", value: "Planes de entrevista · reclutamiento por conducta · síntesis · cinco diseños de pretotipo" },
     { label: "Estado", value: "Activo · fase de investigación · cinco pretotipos diseñados, ninguno ejecutado" },
-    { label: "Siguiente", value: "Reconstruir casos reales y luego decidir qué construir" },
+    { label: "Siguiente", value: "Reconstruir casos recientes y luego decidir qué construir" },
   ],
   sections: [
     {
@@ -466,7 +467,7 @@ export const UXWOMAN_ES: SpanishCaseStudyData = {
       title: "El personal y los pacientes no ven quién actúa después.",
       body: [
         "Cuando la atención espera por la cobertura, el papeleo o un documento faltante, personas de distintos roles describieron no saber quién tenía el siguiente paso.",
-        "Esa señal se repite, pero los mecanismos difieren: un mensaje mal dirigido, una llamada de revisión de utilización, una cola de autorizaciones que nadie ve. Es una hipótesis por probar, no una necesidad validada.",
+        "Ese hallazgo se repite, pero los mecanismos difieren: un mensaje mal dirigido, una llamada de revisión de utilización, una cola de autorizaciones que nadie ve. Es una hipótesis por probar, no una necesidad validada.",
       ],
     },
     {
@@ -474,16 +475,16 @@ export const UXWOMAN_ES: SpanishCaseStudyData = {
       eyebrow: "Qué hice",
       title: "Seis entrevistas de salud, reclutadas por lo que la gente hace.",
       body: [
-        "Recluté por conducta, no por cargo. Cada entrevista cuenta una vez. Las sesiones del estudio se hacen en UserTesting.",
+        "Recluté por conducta, no por cargo. Cada entrevista cuenta una vez. Entrevistas con profesionales y actores del sector salud.",
         "Seis entrevistas de salud: servicios financieros al paciente, operaciones de ingresos, asistente médico de ortopedia, enfermera de revisión de utilización, psiquiatra y una persona que fue responsable de servicios al afiliado en un plan de salud. Una persona también habló desde su experiencia personal como paciente.",
-        "No hay un flujo de entrevistas con pacientes. Lo que sé de los pacientes es de segunda mano, salvo ese testimonio. Una séptima entrevista, adyacente, con una persona a cargo de RR. HH. trató sobre la verificación de fuentes de IA. No valida nada en salud. No se recopiló información de salud protegida (PHI) y las personas participantes están anonimizadas.",
+        "No hay un flujo de entrevistas con pacientes. Lo que sé de los pacientes es de segunda mano, salvo ese testimonio. Una séptima entrevista, adyacente, con una persona a cargo de RR. HH. trató sobre la verificación de fuentes de inteligencia artificial (IA). No valida nada en salud. No se recopiló información de salud protegida (PHI) y las personas participantes están anonimizadas.",
         "Investigación secundaria: un análisis de flujos de IA e información en hospitales grandes, con informes federales y encuestas profesionales. Muestra patrones del sistema, no lo que necesita un hospital en particular.",
       ],
     },
     {
       anchor: "uxwoman-findings",
       eyebrow: "Lo que mostraron las entrevistas",
-      title: "Cinco señales, cada una con su nivel de confianza.",
+      title: "Cinco hallazgos, cada uno con su nivel de confianza.",
       body: [
         "Un nivel dice qué tan directamente las entrevistas respaldan una afirmación, no cuántas personas la dijeron. Todo es exploratorio y de autorreporte.",
       ],
@@ -517,7 +518,7 @@ export const UXWOMAN_ES: SpanishCaseStudyData = {
       title: "Una hipótesis, no un producto.",
       body: [
         "Activo, fase de investigación. Seis entrevistas de salud, más una adyacente de RR. HH. que no valida nada en salud. Cero de cinco pretotipos ejecutados: los cinco están diseñados y ninguno ha producido evidencia.",
-        "Siguiente paso: reconstruir casos reales recientes, con las mismas preguntas neutrales para cada persona, antes de elegir qué construir.",
+        "Siguiente paso: reconstruir casos recientes, con las mismas preguntas neutrales para cada persona, antes de elegir qué construir.",
       ],
     },
   ],

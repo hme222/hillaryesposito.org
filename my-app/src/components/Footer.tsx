@@ -53,14 +53,16 @@ const COLOPHONS: Record<string, Credit[]> = {
     { label: "Mobbin taxonomy", es: "taxonomía de Mobbin" },
     { label: "four-month contract", es: "contrato de cuatro meses" },
   ],
-  // Literal build tooling, like Grove's, plus whose parts these were and who
-  // wrote the code — all stated on the case study itself.
+  // Research methods, not build tools: nothing is built yet. Each one is
+  // stated on the UX Woman case study itself.
   "/case-study/ux-woman": [
     { label: "recruiting by behavior", es: "reclutamiento por conducta" },
     { label: "interview synthesis", es: "síntesis de entrevistas" },
     { label: "confidence ratings", es: "niveles de confianza" },
     { label: "pretotyping", es: "pretotipado" },
   ],
+  // Literal build tooling, like Grove's, plus whose parts these were and who
+  // wrote the code — all stated on the case study itself.
   "/case-study/knowunity": [
     { label: "Next.js" },
     { label: "Storybook" },

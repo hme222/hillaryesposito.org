@@ -149,7 +149,7 @@ export default function RecruiterPanel() {
               <li>
                 <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/ux-woman")}>
                   <strong>UX Woman · Six healthcare interviews, one hypothesis</strong>
-                  <span>Interviews across revenue operations, orthopedics, utilization review, psychiatry, and health-plan member services; staff and patients cannot see who owns the next step. A hypothesis, not a finding: five pretotypes designed, none run</span>
+                  <span>Six roles: patient financial services, revenue operations, orthopedic physician assistant, utilization-review nurse, psychiatrist, and former health-plan member services; staff and patients cannot see who owns the next step. A hypothesis, not a conclusion: five pretotypes designed, none run</span>
                 </button>
               </li>
               <li>

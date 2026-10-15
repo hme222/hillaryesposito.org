@@ -26,7 +26,7 @@ export type ProgressVariant = "chapters" | "rail" | "numeric" | "strip";
  */
 /**
  * @status: stable
- * @purpose: Renders a decorative, aria-hidden reading-progress indicator (chapter rail, fill bar, numeric percentage, or the "strip" percentage set inside the phone chapter strip by CaseStudyChapters) showing how much of a long case-study page remains; used on the MSK/Mobbin/logistics/Grove case study pages. Pick this for continuous scroll position — for a discrete named-phase count (e.g. "Phase 2 of 3") use PhaseIndicator instead.
+ * @purpose: Renders a decorative, aria-hidden reading-progress indicator (chapter rail, fill bar, numeric percentage, or the "strip" percentage set inside the phone chapter strip by CaseStudyChapters) showing how much of a long case-study page remains; used on the MSK/Mobbin/logistics/Grove/Knowunity/UX Woman case study pages. Pick this for continuous scroll position — for a discrete named-phase count (e.g. "Phase 2 of 3") use PhaseIndicator instead.
  */
 export default function ReadingProgress({
   variant = "chapters",
