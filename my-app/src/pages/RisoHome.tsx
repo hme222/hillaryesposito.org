@@ -38,7 +38,6 @@ type WorkItem = {
   tagKey?: StringKey;
   teaserPath?: string;
   teaserPathEs?: string;
-  teaserExternalHref?: string;
   teaserEn?: string;
   teaserEs?: string;
 };
@@ -110,16 +109,18 @@ const WORK: WorkItem[] = [
     titleKey: "home.proj.knowunity.title",
     subKey: "home.proj.knowunity.subtitle",
     descKey: "home.riso.knowunityDesc",
-    // The row opens the case study, like rows 01–03; the live prototype is the
-    // teaser, and the Storybook link lives in the case study's Build section.
+    // The row opens the case study, like the other rows. Since 2026-10-15 the
+    // teaser points into the case study's decisions too; the live prototype
+    // and the Storybook link live in the case study itself.
     path: "/case-study/knowunity",
     img: "/assets/knowunity/say-it-back-question.webp",
     imgSecondary: "/assets/knowunity/say-it-back-pass.webp",
     imgAltKey: "home.riso.knowunityAlt",
     visual: "knowunity",
-    teaserExternalHref: "https://knowunity-voice-recall.vercel.app/",
-    teaserEn: "Try the prototype",
-    teaserEs: "Probar el prototipo",
+    teaserPath: "/case-study/knowunity#knowunity-decisions",
+    teaserPathEs: "/case-study/knowunity#es-knowunity-decisions",
+    teaserEn: "See the four decisions →",
+    teaserEs: "Ver las cuatro decisiones →",
   },
 ];
 
@@ -498,18 +499,10 @@ export default function RisoHome() {
                 {/* Project-specific hooks surface one high-value decision or
                     working proof point without turning it into a fourth work
                     row. Spanish prototype links stay on the condensed Spanish
-                    case study because the full interaction lab is English. */}
-                {w.teaserExternalHref ? (
-                  <a
-                    className="rp-work__teaser"
-                    href={w.teaserExternalHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span className="rp-ext">{lang === "es" ? w.teaserEs : w.teaserEn}</span>
-                    <span className="sr-only">{t("a11y.newTab")}</span>
-                  </a>
-                ) : w.teaserPath ? (
+                    case study because the full interaction lab is English.
+                    Every teaser stays on the site; external prototypes are
+                    linked from inside their case studies. */}
+                {w.teaserPath ? (
                   <Link
                     className="rp-work__teaser"
                     to={lang === "es" && w.teaserPathEs ? w.teaserPathEs : w.teaserPath}

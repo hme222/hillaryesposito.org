@@ -249,7 +249,7 @@ describe("flagship case-study accessibility", () => {
     expect(spanishPrototype?.getAttribute("href")).toBe("/case-study/grove");
   });
 
-  it("opens the Knowunity case study from Home row 05, with the live prototype as its teaser", async () => {
+  it("opens the Knowunity case study from Home row 05, with a teaser into its four decisions", async () => {
     await act(async () => {
       root.render(<RisoHome />);
     });
@@ -263,15 +263,12 @@ describe("flagship case-study accessibility", () => {
     expect(row?.textContent).toContain("home.riso.knowunityDesc");
     expect(row?.querySelectorAll(".rp-work__thumb--knowunity img")).toHaveLength(2);
 
-    const prototype = container.querySelector<HTMLAnchorElement>('.rp-work__teaser[href="https://knowunity-voice-recall.vercel.app/"]');
-    // WCAG 2.5.3: the visible text is the accessible name; the new-tab notice
-    // is appended in a visually hidden span, and the ↗ glyph comes from .rp-ext.
-    expect(prototype?.querySelector(".rp-ext")?.textContent).toBe("Try the prototype");
-    expect(prototype?.querySelector(".sr-only")?.textContent).toBe("a11y.newTab");
-    expect(prototype?.getAttribute("target")).toBe("_blank");
-    expect(prototype?.getAttribute("rel")).toBe("noopener noreferrer");
-    expect(prototype?.hasAttribute("aria-label")).toBe(false);
-    // The Storybook link moved into the case study's Build section.
+    // The teaser stays on the site (2026-10-15, call 3); the external
+    // prototype and the Storybook link live in the case study.
+    const teaser = container.querySelector<HTMLAnchorElement>('.rp-work__teaser[href="/case-study/knowunity#knowunity-decisions"]');
+    expect(teaser?.textContent).toBe("See the four decisions →");
+    expect(teaser?.getAttribute("target")).toBeNull();
+    expect(container.innerHTML).not.toContain("knowunity-voice-recall.vercel.app");
     expect(container.innerHTML).not.toContain("chromatic.com");
     expect(container.innerHTML).not.toContain("knowunity-voice-recall-o2c9s7oro");
     expect(container.innerHTML).not.toContain("vercel.com/hillary-esposito-s-projects");
@@ -280,8 +277,8 @@ describe("flagship case-study accessibility", () => {
     await act(async () => {
       root.render(<RisoHome />);
     });
-    const esPrototype = container.querySelector<HTMLAnchorElement>('.rp-work__teaser[href="https://knowunity-voice-recall.vercel.app/"]');
-    expect(esPrototype?.querySelector(".rp-ext")?.textContent).toBe("Probar el prototipo");
+    const esTeaser = container.querySelector<HTMLAnchorElement>('.rp-work__teaser[href="/case-study/knowunity#es-knowunity-decisions"]');
+    expect(esTeaser?.textContent).toBe("Ver las cuatro decisiones →");
   });
 
   it("states the Knowunity limits and keeps Knowunity's internal numbers off the page", async () => {
