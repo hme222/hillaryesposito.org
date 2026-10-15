@@ -4,8 +4,8 @@ import { MSK_COPY, type MskCopy } from "../data/mskCaseStudy";
 /**
  * MSK service blueprint — the filing path drawn as actors and lines, not steps.
  *
- * Why this exists alongside MSKWorkflowMap: the workflow map answers "how many
- * steps," which is a process question. A blueprint answers "who is holding the
+ * A step count answers "how many steps," which is a process question. A
+ * blueprint answers "who is holding the
  * record, and who can see it" — which is the question that actually explains
  * why the old path failed. Six steps to five is the visible change. One
  * cross-department handoff to none is the real one.
@@ -88,7 +88,7 @@ function column(index: number, count: number) {
 
 /**
  * @status: stable
- * @purpose: Renders the MSK filing path as a toggleable before/after service-blueprint diagram (actor lanes and handoffs), used on the MSK case study page; embeds MSKWorkflowMap internally. Pick this for actor-lane handoffs specifically — for a simpler step-count flow diagram use MSKWorkflowMap directly, for a static mechanism diagram use MSKMechanism.
+ * @purpose: Renders the MSK filing path as a toggleable before/after service-blueprint diagram (actor lanes and handoffs), used on the MSK case study page. Pick this for actor-lane handoffs specifically — for a static mechanism diagram use MSKMechanism.
  */
 export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint }: { copy?: MskCopy["blueprint"] }) {
   const [showAfter, setShowAfter] = useState(false);

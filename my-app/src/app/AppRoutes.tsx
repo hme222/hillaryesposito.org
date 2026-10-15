@@ -20,7 +20,6 @@ const FlagshipMSK = lazy(() => import("../pages/case-studies/FlagshipMSK"));
 const FlagshipLogistics = lazy(() => import("../pages/case-studies/FlagshipLogistics"));
 const FlagshipKnowunity = lazy(() => import("../pages/case-studies/FlagshipKnowunity"));
 const FlagshipUxWoman = lazy(() => import("../pages/case-studies/FlagshipUxWoman"));
-const HiggsfieldABCLab = lazy(() => import("../pages/labs/HiggsfieldABCLab"));
 
 class LazyRouteBoundary extends Component<
   { children: React.ReactNode; name: string; lang: Lang },
@@ -197,7 +196,6 @@ const ROUTE_NAMES: Record<string, string> = {
   "/case-study/logistics": "Medical logistics case study",
   "/case-study/knowunity": "Knowunity case study",
   "/case-study/ux-woman": "UX Woman case study",
-  "/lab/higgsfield-abc": "Higgsfield A B C private lab",
 };
 function RouteAnnouncer() {
   const { pathname } = useLocation();
@@ -236,7 +234,6 @@ export default function AppRoutes() {
       <Route path="/case-study/logistics" element={<LazyPage name="Medical logistics" nameEs="Logística médica"><FlagshipLogistics /></LazyPage>} />
       <Route path="/case-study/knowunity" element={<LazyPage name="Knowunity"><FlagshipKnowunity /></LazyPage>} />
       <Route path="/case-study/ux-woman" element={<LazyPage name="UX Woman"><FlagshipUxWoman /></LazyPage>} />
-      <Route path="/lab/higgsfield-abc" element={<LazyPage name="Higgsfield A B C lab" nameEs="Laboratorio Higgsfield A B C"><HiggsfieldABCLab /></LazyPage>} />
 
       <Route path="*" element={<NotFoundPage />} />
     </Routes>

@@ -47,7 +47,7 @@ type Props = {
  */
 /**
  * @status: stable
- * @purpose: Sticky-panel decision narrative where a scroll-tracked step list stays alongside a caller-supplied visual that highlights the active step; part of the flagship case-study loop (MSK, Mobbin) and already in use there. Shares its concept with two deliberately-deferred siblings on separate tracks — GroveDecisionStory (Grove case-study loop) and DecisionCard (design-skills/ShowKit loop) — not a collision, just related work on different timelines.
+ * @purpose: Sticky-panel decision narrative where a scroll-tracked step list stays alongside a caller-supplied visual that highlights the active step; part of the flagship case-study loop (MSK, Mobbin) and already in use there. The only decision-story component; reuse it rather than adding a sibling.
  */
 // Matches the `max-width: 900px` block in riso-page.css that unpins the panel.
 const STACKED_QUERY = "(max-width: 900px)";

@@ -13,9 +13,7 @@ import AskDialog from "../components/ask/AskDialog";
 import { ASK_ENABLED } from "../components/ask/askEnabled";
 import PortfolioAnalytics from "../analytics/PortfolioAnalytics";
 
-import "../styles/index.css";
 import "../styles/App.css";
-import "../styles/casestudy-show.css";
 import "../styles/portfolio-editorial.css";
 import "../styles/portfolio-cohesion.css";
 

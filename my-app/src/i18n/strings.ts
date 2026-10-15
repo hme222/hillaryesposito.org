@@ -68,13 +68,11 @@ const en = {
   // The language toggle is labelled in the language you'd switch TO,
   // so the "en" entry is deliberately Spanish (and vice versa).
   "nav.langSwitch": "Cambiar a español",
-  "nav.langCode": "ES",
   "nav.settings": "Settings",
   "nav.settingsAria": "Settings: theme and language",
 
   // ── Home: hero ──
   "home.status": "Open to healthcare product design roles",
-  "home.seeApproach": "See my approach →",
   "home.riso.eyebrow": "Healthcare Product Designer · Army veteran, MSK operations and training",
   "home.riso.heroTitle": "I design the workflow before the screen.",
   // "Workflow fluency" named a skill without saying what it covers. The
@@ -94,9 +92,6 @@ const en = {
   "home.riso.openingFilmLabel": "Opening visual · five seconds",
   "home.riso.openingFilmSkip": "Skip →",
   "home.riso.primaryWork": "Review the MSK case study",
-  "home.riso.heroClose": "",
-  "home.riso.queueExpand": "View the full queue · 5 items",
-  "home.riso.queueCollapse": "Show fewer",
   "home.riso.workTitle": "Decisions you can inspect",
   "home.riso.groveDesc":
     "A competitive analysis, a five-user test of the original prototype, and a 34-person survey narrowed eleven features to three. The redesign is in progress; the retest comes next.",
@@ -108,24 +103,18 @@ const en = {
     "I ran six healthcare interviews and one adjacent HR interview; they point to one hypothesis: staff and patients cannot see who owns the next step. No dedicated patient interviews yet; five pretotypes designed, none run. Active, research phase.",
   "home.riso.knowunityDesc":
     "Students say a definition out loud and get their own words quoted back as proof. Selected for a Yummy Labs design sprint with Knowunity: solo, 2.5 weeks, on their brief and kit. Recall mocked, not shipped.",
-  "home.riso.mobbinDesc":
-    "Three finance apps turned into a searchable reference — the work was the taxonomy and the naming, not the screenshots. 200+ screens per app, an editor's judgment on every one.",
   "home.riso.groveAlt": "Grove daily care screen showing one clear plant-care task and overdue plants first",
   "home.riso.mskAlt": "Recreated Memorial Sloan Kettering filing queue, showing patient-portal messages moving from ready-to-send through filed",
   "home.riso.logisticsAlt": "Service mechanism diagram contrasting a rear supply point with the warehouse moved forward, beside resupply time falling from months to weeks",
   "home.riso.uxwomanAlt": "Evidence ledger: 6 healthcare interviews, 1 adjacent HR interview, 0 patient interviews, 5 pretotypes designed, 0 run",
   "home.riso.knowunityAlt": "Two Say It Back mobile prototype states: a voice-recall question, then the pass screen quoting the student's own words back",
-  "home.riso.mobbinAlt": "One of the third-party app screens documented for Mobbin — a finance app welcome screen",
   "home.riso.groveTag": "Active · Phase 2 of 3",
   "home.riso.proofKicker": "The proof",
   "home.riso.proofTitle": "The numbers, with their sources.",
   "home.riso.supportingKicker": "Also documented · Mobbin, 200+ screens per app",
-  "home.riso.supportingBody": "For interaction-pattern analysis and production documentation, I also documented 200+ screens per app across three finance products for Mobbin.",
   "home.riso.supportingLink": "Review the Mobbin case study →",
   "home.riso.aboutTitle": "I design for the clinician between patients.",
   "home.riso.contactKicker": "Contact",
-  "home.riso.contactBody":
-    "If your team is redesigning a clinical workflow, care service, or high-stakes internal tool, let's talk.",
   "home.dispatch.eyebrow": "Weekend dispatch · No. 01",
   "home.dispatch.trainAttribution": "Built with MTA Open Data · Independent prototype",
   "home.dispatch.title": "The Trip Home",
@@ -144,17 +133,10 @@ const en = {
   "home.dispatch.primary": "Explore the working case study",
   "home.dispatch.devpost": "Read the Devpost entry",
   "home.dispatch.linkedin": "Read the build note on LinkedIn",
-  "home.dispatch.photoAlt": "Participants building projects at NYPL's Built for NYC AI hackathon",
   "home.dispatch.photoCaption": "NYPL · Built for NYC AI Hackathon",
   "home.dispatch.photoLink": "Try the accessible transit prototype",
   "home.dispatch.statLabel": "scheduled trips affected",
-  "home.dispatch.routePlay": "Trace the return trip →",
-  "home.dispatch.routeReset": "Made it home ✓ · reset",
-  "home.dispatch.routeStatus": "The return route reached home.",
   "home.dispatch.prototypeLabel": "Prototype study · Not live service",
-  "home.dispatch.routeOutbound": "Outbound",
-  "home.dispatch.routeReturn": "Return home",
-  "home.dispatch.routeGaps": "8 direction gaps",
   "home.dispatch.openJournal": "Open the dispatch",
   "home.dispatch.closeJournal": "Close the dispatch",
 
@@ -165,11 +147,9 @@ const en = {
   "home.about.link": "More about me →",
 
   // ── Home: proof stats ──
-  "home.stat.patterns": "App screens studied per app, across three finance apps",
   "home.stat.research": "People surveyed before I designed anything",
   "home.stat.scale": "Clinicians and administrative staff across the workflows in scope",
   "home.stat.logistics": "Medical resupply across seven aid stations",
-  "home.stat.mobbinSource": "Mobbin pattern study",
   "home.stat.groveSource": "Grove discovery research",
   "home.stat.mskSource": "MSK clinical operations",
   "home.stat.logisticsSource": "Army service record",
@@ -189,13 +169,11 @@ const en = {
   "home.proj.logistics.subtitle": "Army medical logistics · Service Design",
   "home.proj.uxwoman.subtitle": "UX Woman · Healthcare research · Research phase",
   "home.proj.knowunity.subtitle": "Knowunity · Design sprint · Interactive mobile prototype",
-  "home.proj.mobbin.subtitle": "Mobbin · Freelance UX Flow Documentation",
   "home.proj.grove.title": "Eleven features became three",
   "home.proj.msk.title": "A filing queue replaced a four-department paper detour",
   "home.proj.logistics.title": "Medical resupply went from months to weeks",
   "home.proj.uxwoman.title": "Six healthcare interviews, one hypothesis",
   "home.proj.knowunity.title": "The student’s own words are the proof",
-  "home.proj.mobbin.title": "200+ screens per app, searchable by task",
 
   // ── Home: contact / CTA ──
   "home.ctaTitle": "Redesigning a clinical workflow or a high-stakes internal tool?",
@@ -204,9 +182,6 @@ const en = {
   "home.linkedinAria": "LinkedIn profile (opens in new tab)",
 
   // ── Recruiter pill (global trigger only - the panel stays English in Phase 1) ──
-  "recruiter.pill": "90-second tour",
-  "recruiter.pillAria": "Open the 90-second tour",
-  "recruiter.seconds": "90 sec",
 
   // ── Ask about the work ──
   // A search tool that writes clearly, not a persona: no "AI" badge, no
@@ -294,13 +269,11 @@ const es: Partial<Record<StringKey, string>> = {
   "nav.themeToDark": "Cambiar a modo oscuro",
   "nav.themeToLight": "Cambiar a modo claro",
   "nav.langSwitch": "Switch to English",
-  "nav.langCode": "EN",
   "nav.settings": "Configuración",
   "nav.settingsAria": "Configuración: tema e idioma",
 
   // ── Home: hero ──
   "home.status": "Abierta a roles de diseño de productos de salud",
-  "home.seeApproach": "Conozca mi enfoque →",
   "home.riso.eyebrow": "Diseñadora de productos de salud · Veterana del Ejército, operaciones y capacitación en MSK",
   "home.riso.heroTitle": "Diseño el flujo de trabajo antes que la pantalla.",
   "home.riso.heroLead":
@@ -315,9 +288,6 @@ const es: Partial<Record<StringKey, string>> = {
   // the same way ask.ninetySecondLink does below.
   "home.riso.recruiterTourLink": "Abrir el recorrido de 90 segundos (en inglés)",
   "home.riso.primaryWork": "Ver el estudio de caso de MSK",
-  "home.riso.heroClose": "",
-  "home.riso.queueExpand": "Ver la cola completa · 5 elementos",
-  "home.riso.queueCollapse": "Mostrar menos",
   "home.riso.workTitle": "Decisiones que puede revisar",
   "home.riso.groveDesc":
     "Un análisis competitivo, una prueba con cinco usuarios del prototipo original y una encuesta a 34 personas redujeron once funciones a tres. El rediseño está en curso; la nueva prueba viene después.",
@@ -329,24 +299,18 @@ const es: Partial<Record<StringKey, string>> = {
     "Hice seis entrevistas de salud y una adyacente de RR. HH.; apuntan a una hipótesis: el personal y los pacientes no ven quién tiene el siguiente paso. Aún sin entrevistas dedicadas con pacientes; cinco pretotipos diseñados, ninguno ejecutado. Activo, fase de investigación.",
   "home.riso.knowunityDesc":
     "Los estudiantes dicen una definición en voz alta y reciben sus propias palabras citadas como prueba. Seleccionada para un sprint de diseño de Yummy Labs con Knowunity: individual, 2.5 semanas, con su brief y su kit. Recuerdo simulado, no publicado.",
-  "home.riso.mobbinDesc":
-    "Tres apps financieras convertidas en una referencia buscable: el trabajo fue la taxonomía y los nombres, no las capturas. Más de 200 pantallas por app, con criterio de editora en cada una.",
   "home.riso.groveAlt": "Pantalla de cuidado diario de Grove con una tarea clara y las plantas atrasadas primero",
   "home.riso.mskAlt": "Cola de archivo recreada de Memorial Sloan Kettering, mostrando mensajes del portal de pacientes desde listos para enviar hasta archivados",
   "home.riso.logisticsAlt": "Diagrama de mecanismo de servicio que contrasta un punto de suministro en la retaguardia con el almacén movido al frente, junto al tiempo de reabastecimiento bajando de meses a semanas",
   "home.riso.uxwomanAlt": "Registro de evidencia: 6 entrevistas de salud, 1 entrevista adyacente de RR. HH., 0 entrevistas con pacientes, 5 pretotipos diseñados, 0 ejecutados",
   "home.riso.knowunityAlt": "Dos estados del prototipo móvil Say It Back: una pregunta de recuerdo por voz y luego la pantalla de acierto que cita las propias palabras del estudiante",
-  "home.riso.mobbinAlt": "Una de más de 200 pantallas de apps de terceros documentadas para Mobbin — la pantalla de bienvenida de una app financiera",
   "home.riso.groveTag": "Activo · Fase 2 de 3",
   "home.riso.proofKicker": "La evidencia",
   "home.riso.proofTitle": "Los números, con sus fuentes.",
   "home.riso.supportingKicker": "También documentado · Mobbin, más de 200 pantallas por app",
-  "home.riso.supportingBody": "Como prueba de análisis de patrones de interacción y documentación de producción, también documenté más de 200 pantallas por app en tres productos financieros para Mobbin.",
   "home.riso.supportingLink": "Ver el estudio de caso de Mobbin →",
   "home.riso.aboutTitle": "Diseño para el personal clínico entre un paciente y otro.",
   "home.riso.contactKicker": "Contacto",
-  "home.riso.contactBody":
-    "Si su equipo está rediseñando un flujo clínico, un servicio de atención o una herramienta interna de alto riesgo, hablemos.",
   "home.dispatch.eyebrow": "Despacho de fin de semana · N.º 01",
   "home.dispatch.trainAttribution": "Creado con datos abiertos de MTA · Prototipo independiente",
   "home.dispatch.title": "El viaje de regreso",
@@ -365,17 +329,10 @@ const es: Partial<Record<StringKey, string>> = {
   "home.dispatch.primary": "Ver el estudio de caso funcional",
   "home.dispatch.devpost": "Leer la entrada en Devpost",
   "home.dispatch.linkedin": "Leer la nota del proyecto en LinkedIn",
-  "home.dispatch.photoAlt": "Participantes creando proyectos en el hackathon Built for NYC AI de NYPL",
   "home.dispatch.photoCaption": "NYPL · Hackathon Built for NYC AI",
   "home.dispatch.photoLink": "Probar el prototipo de transporte accesible",
   "home.dispatch.statLabel": "viajes programados afectados",
-  "home.dispatch.routePlay": "Trazar el viaje de regreso →",
-  "home.dispatch.routeReset": "Llegó a casa ✓ · reiniciar",
-  "home.dispatch.routeStatus": "La ruta de regreso llegó a casa.",
   "home.dispatch.prototypeLabel": "Estudio de prototipo · No es servicio en vivo",
-  "home.dispatch.routeOutbound": "Ida",
-  "home.dispatch.routeReturn": "Regreso a casa",
-  "home.dispatch.routeGaps": "8 brechas por dirección",
   "home.dispatch.openJournal": "Abrir el despacho",
   "home.dispatch.closeJournal": "Cerrar el despacho",
 
@@ -386,11 +343,9 @@ const es: Partial<Record<StringKey, string>> = {
   "home.about.link": "Conozca más sobre mí →",
 
   // ── Home: proof stats ──
-  "home.stat.patterns": "Pantallas documentadas por app, en tres apps financieras",
   "home.stat.research": "Personas encuestadas antes de diseñar nada",
   "home.stat.scale": "Personal clínico y administrativo en los flujos incluidos",
   "home.stat.logistics": "Reabastecimiento médico en siete estaciones de ayuda",
-  "home.stat.mobbinSource": "Estudio de patrones de Mobbin",
   "home.stat.groveSource": "Investigación de descubrimiento de Grove",
   "home.stat.mskSource": "Operaciones clínicas de MSK",
   "home.stat.logisticsSource": "Expediente de servicio del Ejército",
@@ -409,7 +364,6 @@ const es: Partial<Record<StringKey, string>> = {
   "home.proj.logistics.subtitle": "Logística médica del Ejército · Diseño de servicios",
   "home.proj.uxwoman.subtitle": "UX Woman · Investigación en salud · Fase de investigación",
   "home.proj.knowunity.subtitle": "Knowunity · Sprint de diseño · Prototipo móvil interactivo",
-  "home.proj.mobbin.subtitle": "Mobbin · Documentación freelance de flujos UX",
   "home.proj.grove.title": "Once funciones se convirtieron en tres",
   "home.proj.msk.title": "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas",
   // Same wording as the Spanish case-study title. "Tiempo de reabastecimiento
@@ -417,7 +371,6 @@ const es: Partial<Record<StringKey, string>> = {
   "home.proj.logistics.title": "El reabastecimiento médico pasó de meses a\u00a0semanas",
   "home.proj.uxwoman.title": "Seis entrevistas de salud, una hipótesis",
   "home.proj.knowunity.title": "Las propias palabras del estudiante son la prueba",
-  "home.proj.mobbin.title": "Más de 200 pantallas por app, buscables por tarea",
 
   // ── Home: contact / CTA ──
   "home.ctaTitle": "¿Está rediseñando un flujo clínico o una herramienta interna de alto riesgo?",
@@ -426,9 +379,6 @@ const es: Partial<Record<StringKey, string>> = {
   "home.linkedinAria": "Perfil de LinkedIn (se abre en una pestaña nueva)",
 
   // ── Recruiter pill ──
-  "recruiter.pill": "Recorrido de 90 segundos",
-  "recruiter.pillAria": "Abrir el recorrido de 90 segundos (en inglés)",
-  "recruiter.seconds": "90 seg",
 
   // ── Ask about the work ──
   "ask.nav": "Preguntar",
