@@ -10,6 +10,9 @@ type ModalProps = {
   lang?: string;
   /** Focus target on close when the invoker is gone (e.g. inside a closed menu). */
   returnFocus?: HTMLElement | null;
+  /** Move focus to the labelling element (give it tabIndex={-1}) on open, so a
+   *  screen reader starts at the title instead of on the first control. */
+  focusLabelOnOpen?: boolean;
   children: React.ReactNode;
 };
 
@@ -70,6 +73,7 @@ export default function Modal({
   className,
   lang,
   returnFocus,
+  focusLabelOnOpen = false,
   children,
 }: ModalProps) {
   const ref = useRef<HTMLDialogElement>(null);
@@ -91,10 +95,14 @@ export default function Modal({
       fallbackFocusRef.current = active instanceof HTMLElement && active !== document.body ? active : null;
       dlg.showModal();
       document.body.style.overflow = "hidden";
+      if (focusLabelOnOpen && labelledBy) {
+        const label = document.getElementById(labelledBy);
+        if (label && dlg.contains(label)) label.focus();
+      }
     } else if (!isOpen && dlg.open) {
       dlg.close();
     }
-  }, [isOpen]);
+  }, [isOpen, focusLabelOnOpen, labelledBy]);
 
   // Native Escape (`cancel`) → notify parent; on any `close`, restore scroll.
   useEffect(() => {
@@ -142,8 +150,12 @@ export default function Modal({
       const last = tabbables[tabbables.length - 1];
       const active = document.activeElement as HTMLElement | null;
       const inside = !!active && active !== dlg && dlg.contains(active);
+      // A focused title (tabIndex -1) is inside but not in the tab order;
+      // Shift+Tab from it would leave the dialog, so treat it like `first`.
+      const beforeFirst = inside && active !== null && !tabbables.includes(active) &&
+        !!(active.compareDocumentPosition(first) & Node.DOCUMENT_POSITION_FOLLOWING);
       if (e.shiftKey) {
-        if (!inside || active === first) {
+        if (!inside || active === first || beforeFirst) {
           e.preventDefault();
           last.focus();
         }

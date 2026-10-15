@@ -164,9 +164,8 @@ export default function FlagshipMobbin() {
             href="https://mobbin.com/finance"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="View Mobbin's Finance+ library (opens in new tab)"
           >
-            <span>Verify it · Mobbin Finance+</span><b>The library these screens went into →</b>
+            <span>Verify it · Mobbin Finance+</span><b className="rp-ext">The library these screens went into</b><span className="sr-only"> (opens in new tab)</span>
           </a>
         </div>
       </section>

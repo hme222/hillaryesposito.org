@@ -8,6 +8,7 @@ import LogisticsMechanism from "../components/LogisticsMechanism";
 import MSKDashboardMockup from "../components/MSKDashboardMockup";
 import { glossTerms } from "../components/Term";
 import { UXWOMAN_LEDGER } from "../data/uxWomanCaseStudy";
+import { MSK_COPY } from "../data/mskCaseStudy";
 import usePageTitle from "../hooks/usePageTitle";
 import useFlagshipReveal from "../hooks/useFlagshipReveal";
 import useFilmExitChoreo from "../hooks/useFilmExitChoreo";
@@ -38,7 +39,6 @@ type WorkItem = {
   teaserPath?: string;
   teaserPathEs?: string;
   teaserExternalHref?: string;
-  teaserAriaKey?: StringKey;
   teaserEn?: string;
   teaserEs?: string;
 };
@@ -116,9 +116,8 @@ const WORK: WorkItem[] = [
     imgAltKey: "home.riso.knowunityAlt",
     visual: "knowunity",
     teaserExternalHref: "https://knowunity-voice-recall.vercel.app/",
-    teaserAriaKey: "home.riso.knowunityPrototypeAria",
-    teaserEn: "Try the prototype ↗",
-    teaserEs: "Probar el prototipo ↗",
+    teaserEn: "Try the prototype",
+    teaserEs: "Probar el prototipo",
   },
 ];
 
@@ -332,7 +331,7 @@ export default function RisoHome() {
       ) : work.visual === "msk" ? (
         <figure className="rp-work__thumb rp-work__thumb--dashboard" aria-label={t(work.imgAltKey)}>
           <div className="rp-work__thumb--dashboard__frame">
-            <MSKDashboardMockup compact condensedHeader hideToolbar hideRule rowIndices={[0, 2]} tableId="home-work-queue-table" />
+            <MSKDashboardMockup compact condensedHeader hideToolbar hideRule rowIndices={[0, 2]} tableId="home-work-queue-table" copy={MSK_COPY[lang === "es" ? "es" : "en"].dashboard} />
           </div>
           <figcaption>{lang === "es" ? "Cola de archivo · cuatro áreas a una" : "Filing queue · four departments to one"}</figcaption>
         </figure>
@@ -358,7 +357,6 @@ export default function RisoHome() {
           <img src={work.img} alt={t(work.imgAltKey)} loading="eager" decoding="async" />
         </div>
       )}
-      <span className="rp-work__arrow" aria-hidden="true">{work.externalHref ? "↗" : "→"}</span>
     </>
   );
 
@@ -383,7 +381,7 @@ export default function RisoHome() {
         />
         <div className="rp-hero__content">
           <div className="rp-clearing">
-            <span className="rp-eyebrow">{t("home.riso.eyebrow")}</span>
+            <span className="rp-eyebrow"><span className="rp-eyebrow__text">{t("home.riso.eyebrow").replace(" · ", "\u00a0· ")}</span></span>
             {/* .rp-h1Fit is the container the headline's fit sizing measures
                 against (portfolio-cohesion.css) — not .rp-clearing itself,
                 which collapses under inline-size containment. */}
@@ -505,9 +503,9 @@ export default function RisoHome() {
                     href={w.teaserExternalHref}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={w.teaserAriaKey ? t(w.teaserAriaKey) : undefined}
                   >
-                    {lang === "es" ? w.teaserEs : w.teaserEn}
+                    <span className="rp-ext">{lang === "es" ? w.teaserEs : w.teaserEn}</span>
+                    <span className="sr-only">{t("a11y.newTab")}</span>
                   </a>
                 ) : w.teaserPath ? (
                   <Link
@@ -671,14 +669,14 @@ export default function RisoHome() {
                     className="rp-cta"
                     href="https://hme222.github.io/MTA_Accessibility_Trip_Planning/"
                   >
-                    {t("home.dispatch.primary")}
+                    <span className="rp-ext">{t("home.dispatch.primary")}</span>
                   </a>
                   <div className="rp-dispatch__sources" aria-label={lang === "es" ? "Fuentes del proyecto" : "Project sources"}>
                     <a href="https://devpost.com/software/nyc-accessible-transit-planning">
-                      {t("home.dispatch.devpost")}
+                      <span className="rp-ext">{t("home.dispatch.devpost")}</span>
                     </a>
                     <a href="https://www.linkedin.com/feed/update/urn:li:activity:7495219168997322752/">
-                      {t("home.dispatch.linkedin")}
+                      <span className="rp-ext">{t("home.dispatch.linkedin")}</span>
                     </a>
                   </div>
                 </div>

@@ -17,6 +17,9 @@ import { useLanguage } from "../app/LanguageContext";
 
 const INK = "currentColor";
 
+// Small labels are solid ink at fontSize 9: at 390px the 260-unit viewBox
+// renders ~1.07x, so 9 units is ~9.6px. The old 7-unit, 55%-opacity labels
+// were ~7.5px and under 4.5:1.
 // SVG text the case-study captions sit beside. Spanish uses the usted
 // register the rest of the site uses; the numbers stay as they are.
 const LABELS = {
@@ -58,18 +61,18 @@ function WarehouseMove({ l }: { l: Labels }) {
     <svg viewBox="0 0 260 96" width="100%" role="presentation" focusable="false">
       <text x="0" y="9" fontSize="7.5" letterSpacing="1" fill="var(--coral)">{l.moveBefore}</text>
       <circle cx="6" cy="30" r="4" fill="var(--coral)" />
-      <text x="14" y="23" fontSize="7" fill={INK} fillOpacity=".55">{l.supply}</text>
+      <text x="14" y="23" fontSize="9" fill={INK}>{l.supply}</text>
       <path d="M12,30 H210" fill="none" stroke="var(--coral)" strokeWidth="1.5" strokeDasharray="4 3" />
       <path d="M204,26 l6,4 l-6,4" fill="none" stroke="var(--coral)" strokeWidth="1.5" />
-      <text x="214" y="32.5" fontSize="7" fill={INK} fillOpacity=".55">{l.aid}</text>
+      <text x="214" y="32.5" fontSize="9" fill={INK}>{l.aid}</text>
 
       <text x="0" y="66" fontSize="7.5" letterSpacing="1" fill="var(--green)">{l.moveAfter}</text>
       <circle cx="130" cy="86" r="4" fill="var(--green)" />
-      <text x="112" y="78" fontSize="7" fill={INK} fillOpacity=".55">{l.supply}</text>
+      <text x="112" y="78" fontSize="9" fill={INK}>{l.supply}</text>
       <path d="M136,86 H210" fill="none" stroke="var(--green)" strokeWidth="2" />
       <path d="M204,82 l6,4 l-6,4" fill="none" stroke="var(--green)" strokeWidth="2" />
-      <text x="214" y="88.5" fontSize="7" fill={INK} fillOpacity=".55">{l.aid}</text>
-      <text x="0" y="88.5" fontSize="7" fill="var(--green)">{l.moveResult}</text>
+      <text x="214" y="88.5" fontSize="9" fill={INK}>{l.aid}</text>
+      <text x="0" y="89" fontSize="9" fill="var(--green)">{l.moveResult}</text>
     </svg>
   );
 }
@@ -100,7 +103,7 @@ function OneProtocol({ l }: { l: Labels }) {
         <circle key={`a-${i}`} cx={8 + i * 20} cy="78" r="2.6" fill="var(--green)" />
       ))}
       <path d="M8,78 H128" fill="none" stroke="var(--green)" strokeWidth="2" />
-      <text x="152" y="80.5" fontSize="7" fill={INK} fillOpacity=".55">{l.protocolResult}</text>
+      <text x="134" y="81" fontSize="9" fill={INK}>{l.protocolResult}</text>
     </svg>
   );
 }
@@ -114,7 +117,7 @@ function Forecasting({ l }: { l: Labels }) {
       <text x="0" y="9" fontSize="7.5" letterSpacing="1" fill="var(--coral)">{l.statusBefore}</text>
       <path d="M0,34 H210" fill="none" stroke="var(--coral)" strokeOpacity=".4" strokeWidth="1" strokeDasharray="3 3" />
       <circle cx="196" cy="34" r="3.4" fill="var(--coral)" />
-      <text x="214" y="36.5" fontSize="7" fill="var(--coral)">{l.stockout}</text>
+      <text x="210" y="37" fontSize="9" fill="var(--coral)">{l.stockout}</text>
 
       <text x="0" y="62" fontSize="7.5" letterSpacing="1" fill="var(--green)">{l.statusAfter}</text>
       {bars.map((h, i) => (
@@ -123,7 +126,7 @@ function Forecasting({ l }: { l: Labels }) {
       ))}
       <path d="M116,74 H170" fill="none" stroke="var(--green)" strokeWidth="2" />
       <path d="M164,70 l6,4 l-6,4" fill="none" stroke="var(--green)" strokeWidth="2" />
-      <text x="176" y="76.5" fontSize="7" fill="var(--green)">{l.statusResult}</text>
+      <text x="176" y="77" fontSize="9" fill="var(--green)">{l.statusResult}</text>
     </svg>
   );
 }

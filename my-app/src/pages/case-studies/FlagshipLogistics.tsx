@@ -142,9 +142,9 @@ export default function FlagshipLogistics() {
       <section className="rp-cinema fp-cinema" id="log-brief" aria-labelledby="log-brief-title" data-evidence="true">
         <div className="rp-cinema__sticky">
           <div className="rp-cinema__wash" aria-hidden="true" />
-          <div className="fp-cinemaCore fp-cinemaCore--workflow" aria-hidden="true">
+          <div className="fp-cinemaCore fp-cinemaCore--workflow">
             <div><span>THE JOB</span><b>Medicine and equipment, before it is needed</b><small>Not after someone asks.</small></div>
-            <i>→</i>
+            <i aria-hidden="true">→</i>
             <div><span>THE STAKE</span><b>An aid station that runs out</b></div>
           </div>
           <div className="rp-cinema__artifact rp-cinema__artifact--reminder"><span>Scale</span><b>5,000+ soldiers, $2M in supplies, seven aid stations.</b></div>

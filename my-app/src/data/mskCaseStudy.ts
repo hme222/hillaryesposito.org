@@ -44,7 +44,8 @@ export type MskCopy = {
 
   receipt: {
     kicker: string;
-    title: string;
+    /** Two phrase lines; desktop sets each on its own line (no stranded word). */
+    titleLines: [string, string];
     body: string;
     run: string;
     replay: string;
@@ -217,7 +218,7 @@ const en: MskCopy = {
 
   receipt: {
     kicker: "It started with a workaround",
-    title: "A digital workflow became a paper\u00a0ritual.",
+    titleLines: ["A digital workflow", "became a paper\u00a0ritual."],
     body:
       "Patient-portal messages (patients’ questions and clinicians’ replies) lived in the portal, not in the patient’s chart, the electronic medical record (EMR), so staff printed them to be scanned into the chart. Every printed message is a chance for patient information to travel, get filed to the wrong chart, or go missing before the next visit.",
     run: "Run the online path",
@@ -537,7 +538,7 @@ const es: MskCopy = {
 
   receipt: {
     kicker: "Empezó con un desvío",
-    title: "Un flujo digital se volvió un ritual de\u00a0papel.",
+    titleLines: ["Un flujo digital", "se volvió un ritual de\u00a0papel."],
     body:
       "Los mensajes del portal de pacientes (las preguntas de los pacientes y las respuestas del personal clínico) vivían en el portal, no en la historia del paciente, el expediente médico electrónico (EMR), así que el personal los imprimía para escanearlos a la historia. Cada mensaje impreso es una oportunidad de que la información del paciente circule, se archive en la historia equivocada o se pierda antes de la siguiente consulta.",
     run: "Recorrer la ruta en línea",

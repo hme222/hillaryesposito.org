@@ -66,7 +66,10 @@ export default function MSKFilingReceipt({ copy = MSK_COPY.en.receipt }: { copy?
       <div className="rp-wrap fp-receipt__layout">
         <div className="fp-receipt__copy">
           <p className="rp-kicker">{copy.kicker}</p>
-          <h2 id="msk-receipt-title">{copy.title}</h2>
+          <h2 id="msk-receipt-title">
+            <span className="fp-receipt__titleLine">{copy.titleLines[0]}</span>{" "}
+            <span className="fp-receipt__titleLine">{copy.titleLines[1]}</span>
+          </h2>
           <p>{copy.body}</p>
           <button type="button" className="fp-proofControl" onClick={runFiling}>
             {hasRun ? copy.replay : copy.run} <span aria-hidden="true">→</span>

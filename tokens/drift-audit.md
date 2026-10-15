@@ -43,6 +43,18 @@ they are not.
 **Trigger to revisit:** if the same green/cream family gets deliberately reused
 in a second piece, promote the 3–5 repeating values into `color.global` then.
 
+## Contrast pass — label sizes and fixed panels (2026-10-15)
+
+No new tokens. Recorded so the next audit doesn't re-flag these.
+
+| File | Change | Why |
+|---|---|---|
+| `riso-page.css` `.rp-outcomeStage` | Gradient start `#264529` → `#1c3520` (one-off illustration value, not a token) | `--coral-on-dark` kickers measured 4.39:1 on the old start and 3.92:1 inside the coral glow. Rendered pixels after: median 5.75:1, 5th percentile 4.64–4.91:1 on Grove, Logistics, Knowunity, UX Woman, and Mobbin. The only pixels under 4.5 sit on the decorative 1px ring hairlines. |
+| `flagship-case-study.css` `.fp-cinemaCore span` | `var(--coral-on-dark)` → `color-mix(var(--fp-light) 86%, transparent)` | This span is now exposed to assistive tech (Logistics), and the label reads as stage ink. Measured 5.4–6.9:1. It drops out of the coral-on-dark consolidation above. |
+| `flagship-case-study.css` `.fp-receipt__node span` | `rgba(244,241,230,.55)` → `color-mix(var(--fp-light) 82%, var(--fp-deep-2))` | Solid label ink on the fixed MSK panel. 8.79:1. |
+| `riso-page.css` `.rp-decisionRecord dt` | `var(--coral)` → `var(--coral-text)` | Raw coral at label size. 4.96:1 light, 11.46:1 dark. |
+| `riso-page.css` `.rp-demoCard h4` / `p` (dark) | Pinned `#20241c` / `#45503f` under `.dark-mode` | Fixed cream card (see the demo palette note). App.css `.dark-mode h4/p` painted light text on it. 13.93:1 / 7.50:1. |
+
 ## Two accidental duplicates, still unresolved
 
 `#C68A2E`/`#c68a2e` and `#BC5A78`/`#bc5a78` each appear once in different

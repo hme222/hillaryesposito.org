@@ -16,6 +16,9 @@ export type Lang = "en" | "es";
 const en = {
   // ── App shell ──
   "app.skip": "Skip to main content",
+  // Appended in a visually hidden span to links that open a new tab, so the
+  // accessible name starts with the visible text (WCAG 2.5.3).
+  "a11y.newTab": " (opens in new tab)",
 
   // ── Global footer + recovery ──
   "footer.eyebrow": "Hillary Esposito · Healthcare Product Designer",
@@ -35,6 +38,16 @@ const en = {
   "notFound.body": "The link may be outdated, but the work is still here. Return to the portfolio or browse the selected work.",
   "notFound.home": "Return home",
   "notFound.work": "See the selected work →",
+  // Error boundaries (app-wide and per lazy case study) and the chunk loader.
+  "recovery.appTitle": "This page did not load.",
+  "recovery.appBody": "Reload it, or return to the selected work. If it keeps failing, email me.",
+  "recovery.appReload": "Reload page",
+  "recovery.email": "Email me",
+  "recovery.caseEyebrow": "Case study recovery",
+  "recovery.caseTitle": "{name} did not load.",
+  "recovery.caseBody": "The page bundle may have been interrupted. Reload it, or return to selected work.",
+  "recovery.caseReload": "Reload case study",
+  "recovery.caseLoading": "Loading {name} case study…",
 
   // ── Nav dock ──
   "nav.ariaPrimary": "Primary navigation",
@@ -102,7 +115,6 @@ const en = {
   "home.riso.logisticsAlt": "Service mechanism diagram contrasting a rear supply point with the warehouse moved forward, beside an 85% reduction in resupply time",
   "home.riso.uxwomanAlt": "Evidence ledger: 6 healthcare interviews, 1 adjacent HR interview, 0 patient interviews, 5 pretotypes designed, 0 run",
   "home.riso.knowunityAlt": "Two Say It Back mobile prototype states: a voice-recall question, then the pass screen quoting the student's own words back",
-  "home.riso.knowunityPrototypeAria": "Try the Say It Back interactive prototype (opens in new tab)",
   "home.riso.mobbinAlt": "One of the third-party app screens documented for Mobbin — a finance app welcome screen",
   "home.riso.groveTag": "Active · Phase 2 of 3",
   "home.riso.proofKicker": "The proof",
@@ -129,9 +141,9 @@ const en = {
   "home.dispatch.rule": "Warn, never block.",
   "home.dispatch.ruleBody":
     "Accessibility can be permanent, temporary, or uncertain. The planner explains the risk without hiding the route.",
-  "home.dispatch.primary": "Explore the working case study ↗",
-  "home.dispatch.devpost": "Read the Devpost entry ↗",
-  "home.dispatch.linkedin": "Read the build note on LinkedIn ↗",
+  "home.dispatch.primary": "Explore the working case study",
+  "home.dispatch.devpost": "Read the Devpost entry",
+  "home.dispatch.linkedin": "Read the build note on LinkedIn",
   "home.dispatch.photoAlt": "Participants building projects at NYPL's Built for NYC AI hackathon",
   "home.dispatch.photoCaption": "NYPL · Built for NYC AI Hackathon",
   "home.dispatch.photoLink": "Try the accessible transit prototype",
@@ -233,6 +245,7 @@ export type StringKey = keyof typeof en;
 const es: Partial<Record<StringKey, string>> = {
   // ── App shell ──
   "app.skip": "Saltar al contenido principal",
+  "a11y.newTab": " (se abre en una pestaña nueva)",
 
   // ── Global footer + recovery ──
   "footer.eyebrow": "Hillary Esposito · Diseñadora de productos de salud",
@@ -248,10 +261,19 @@ const es: Partial<Record<StringKey, string>> = {
   "footer.madeWith": "Hecho con:",
   "footer.methods": "Métodos:",
   "notFound.eyebrow": "404 · Página no encontrada",
-  "notFound.title": "Esta página se desvió.",
+  "notFound.title": "Esta página se\u00a0desvió.",
   "notFound.body": "Puede que el enlace esté desactualizado, pero el trabajo sigue aquí. Vuelva al portafolio o explore el trabajo seleccionado.",
   "notFound.home": "Volver al inicio",
   "notFound.work": "Ver el trabajo seleccionado →",
+  "recovery.appTitle": "Esta página no se cargó.",
+  "recovery.appBody": "Vuelva a cargarla o regrese al trabajo seleccionado. Si sigue fallando, escríbame.",
+  "recovery.appReload": "Recargar la página",
+  "recovery.email": "Escríbame",
+  "recovery.caseEyebrow": "Recuperación del estudio de caso",
+  "recovery.caseTitle": "{name} no se cargó.",
+  "recovery.caseBody": "Es posible que la carga de la página se haya interrumpido. Vuelva a cargarla o regrese al trabajo seleccionado.",
+  "recovery.caseReload": "Recargar el estudio de caso",
+  "recovery.caseLoading": "Cargando el estudio de caso de {name}…",
 
   // ── Nav dock ──
   "nav.ariaPrimary": "Navegación principal",
@@ -310,7 +332,6 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.logisticsAlt": "Diagrama de mecanismo de servicio que contrasta un punto de suministro en la retaguardia con el almacén movido al frente, junto a una reducción del 85% en el tiempo de reabastecimiento",
   "home.riso.uxwomanAlt": "Registro de evidencia: 6 entrevistas de salud, 1 entrevista adyacente de RR. HH., 0 entrevistas con pacientes, 5 pretotipos diseñados, 0 ejecutados",
   "home.riso.knowunityAlt": "Dos estados del prototipo móvil Say It Back: una pregunta de recuerdo por voz y luego la pantalla de acierto que cita las propias palabras del estudiante",
-  "home.riso.knowunityPrototypeAria": "Probar el prototipo interactivo Say It Back (se abre en una pestaña nueva)",
   "home.riso.mobbinAlt": "Una de más de 200 pantallas de apps de terceros documentadas para Mobbin — la pantalla de bienvenida de una app financiera",
   "home.riso.groveTag": "Activo · Fase 2 de 3",
   "home.riso.proofKicker": "La evidencia",
@@ -337,9 +358,9 @@ const es: Partial<Record<StringKey, string>> = {
   "home.dispatch.rule": "Advertir, nunca bloquear.",
   "home.dispatch.ruleBody":
     "La accesibilidad puede ser permanente, temporal o incierta. El planificador explica el riesgo sin ocultar la ruta.",
-  "home.dispatch.primary": "Ver el estudio de caso funcional ↗",
-  "home.dispatch.devpost": "Leer la entrada en Devpost ↗",
-  "home.dispatch.linkedin": "Leer la nota del proyecto en LinkedIn ↗",
+  "home.dispatch.primary": "Ver el estudio de caso funcional",
+  "home.dispatch.devpost": "Leer la entrada en Devpost",
+  "home.dispatch.linkedin": "Leer la nota del proyecto en LinkedIn",
   "home.dispatch.photoAlt": "Participantes creando proyectos en el hackathon Built for NYC AI de NYPL",
   "home.dispatch.photoCaption": "NYPL · Hackathon Built for NYC AI",
   "home.dispatch.photoLink": "Probar el prototipo de transporte accesible",

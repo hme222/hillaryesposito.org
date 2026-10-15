@@ -274,12 +274,12 @@ export default function About() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="rp-chapter__proof"
-                    aria-label={`${isSpanish ? "Leer artículo" : "Read article"}: ${chapter.articleLink.title} (${isSpanish ? "se abre en una pestaña nueva" : "opens in a new tab"})`}
                   >
                     <span aria-hidden="true"><Newspaper size="1em" strokeWidth={1.6} aria-hidden="true" focusable="false" /></span>
                     <span>
-                      <b lang={isSpanish ? "en" : undefined}>{chapter.articleLink.title}</b>
-                      <small className="rp-ext">{chapter.articleLink.source}</small>
+                      <b lang={isSpanish ? "en" : undefined} className="rp-ext">{chapter.articleLink.title}</b>
+                      <small>{chapter.articleLink.source}</small>
+                      <span className="sr-only">{isSpanish ? " (se abre en una pestaña nueva)" : " (opens in new tab)"}</span>
                     </span>
                   </a>
                 )}

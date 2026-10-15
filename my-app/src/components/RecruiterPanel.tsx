@@ -51,6 +51,7 @@ export default function RecruiterPanel() {
       className="recruiter-panel"
       lang="en"
       returnFocus={returnFocus}
+      focusLabelOnOpen
     >
       {/* Panel content stays English in Phase 1 - only the trigger translates. */}
       <div className="recruiter-panel__inner">
@@ -66,7 +67,7 @@ export default function RecruiterPanel() {
                 "Healthcare Product Designer" itself on one line at the
                 panel's narrowest width instead of this break accidentally
                 creating its own second, three-line wrap. */}
-            <h2 id="recruiter-panel-title" className="recruiter-panel__title">
+            <h2 id="recruiter-panel-title" className="recruiter-panel__title" tabIndex={-1}>
               Hillary Esposito,<br />Healthcare Product Designer
             </h2>
           </div>

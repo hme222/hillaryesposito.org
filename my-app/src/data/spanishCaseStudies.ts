@@ -1,7 +1,7 @@
 import type { SpanishCaseStudyData } from "../components/SpanishCaseStudy";
 
 export const GROVE_ES: SpanishCaseStudyData = {
-  title: "Once funciones se convirtieron en tres",
+  title: "Once funciones se convirtieron en tres.",
   breadcrumb: "Grove",
   meta: "Grove · Diseño de producto · Prototipo funcional · Fase 2 de 3",
   intro:
@@ -25,7 +25,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
     {
       anchor: "grove-research",
       eyebrow: "Investigación",
-      title: "Les pregunté a 34 dueños de plantas qué importa de verdad",
+      title: "Les pregunté a 34 dueños de plantas qué importa de verdad.",
       body: [
         "Después de que una prueba con 5 usuarios mostró que la primera versión estaba sobrecargada, hice una encuesta para decidir qué debía conservar el rediseño. 34 personas, desde principiantes hasta coleccionistas serios, respondieron entre el 22 de mayo y el 8 de julio de 2026.",
         "Emergent había construido las funciones sociales dentro de la app. La encuesta dijo que no es por eso que la gente la descarga. Así que hice una pregunta difícil: “Si Grove solo pudiera lanzarse con TRES funciones, ¿cuáles no podría dejar de tener?” El rediseño empieza por esas tres. Todo lo demás espera.",
@@ -40,7 +40,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
     {
       anchor: "grove-decisions",
       eyebrow: "Producto",
-      title: "Agrupé las plantas por dónde viven, no en una sola lista larga",
+      title: "Agrupé las plantas por dónde viven, no en una sola lista larga.",
       body: [
         "Otras apps meten todas las plantas en una sola lista larga. Abruma — ¿por dónde empieza? Grove agrupa las plantas por dónde viven: la ventana de la cocina, el estante de la sala, la recámara. Cada pantalla responde una sola pregunta: ¿qué grupo estoy viendo? Un usuario nuevo solo ve una tarea al día.",
         "También anoté las cuatro decisiones donde le dije que no a la IA: el tono que hace sentir culpa, las recompensas tipo juego, la falsa certeza al identificar una planta y la seguridad para mascotas. Cada una respaldada por lo que dijo la encuesta. La quinta es un error mío: la lógica del calendario de riego, que todavía estoy corrigiendo.",
@@ -50,7 +50,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
     {
       anchor: "grove-override",
       eyebrow: "Cuando algo sale mal",
-      title: "El producto se decide en los momentos difíciles",
+      title: "El producto se decide en los momentos difíciles.",
       body: [
         "Cuando todo sale bien, cualquier app se ve bien. La prueba real son los momentos difíciles: la pantalla vacía, cuando la IA no está segura, volver después de varios días sin que le haga sentir culpa, la advertencia de una planta tóxica para mascotas, y el tono de los recordatorios. Esos detalles deciden si la app se siente útil o estresante.",
       ],
@@ -58,7 +58,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
     {
       anchor: "grove-outcomes",
       eyebrow: "Resultado",
-      title: "Fase 2 de 3: el rediseño está decidido; la nueva prueba es lo siguiente",
+      title: "Fase 2 de 3: el rediseño está decidido; la nueva prueba es lo siguiente.",
       body: [
         "Lo que quedó no fue solo una app bonita. Fue una definición más honesta de la primera versión, una hipótesis clara para las pruebas con personas reales, y un registro de decisiones que muestra dónde la IA acelera el trabajo y dónde un humano tiene que corregirla. La diferencia no es usar IA. Es saber cuándo confiar en ella y cuándo decir que no.",
       ],
@@ -76,9 +76,9 @@ export const GROVE_ES: SpanishCaseStudyData = {
 };
 
 export const MSK_ES: SpanishCaseStudyData = {
-  title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas",
+  title: "Una cola de archivo reemplazó un desvío de papel entre cuatro\u00a0áreas.",
   breadcrumb: "Memorial Sloan Kettering",
-  meta: "Memorial Sloan Kettering · UX y diseño de producto · Sistemas de salud",
+  meta: "Memorial Sloan Kettering · UX y producto · Sistemas de\u00a0salud",
   intro:
     "Durante seis años en MSK, en tres puestos, trabajé en flujos clínicos, certificación e incorporación de personal para sistemas cuyo alcance incluía a más de 21,000 profesionales clínicos y administrativos. Los mensajes del portal de pacientes vivían en el portal, no en la historia clínica, así que el personal los imprimía para escanearlos. Mapeé ese desvío entre cuatro áreas, verifiqué su viabilidad y propuse una solución digital. Los equipos de TI (tecnología de la información) y UX (experiencia de usuario) la implementaron después de que cambié de puesto.",
   stats: [
@@ -93,7 +93,7 @@ export const MSK_ES: SpanishCaseStudyData = {
     {
       anchor: "msk-brief",
       eyebrow: "Contexto",
-      title: "Diseñar para sistemas donde el error tiene\u00a0consecuencias",
+      title: "Diseñar para sistemas donde el error tiene\u00a0consecuencias.",
       body: [
         "El trabajo no era hacer pantallas bonitas. Era entender dónde fallaba el flujo real, alinear a clínicos, líderes y TI, y cambiar herramientas que las personas usaban bajo presión.",
         "Cada mensaje impreso es una oportunidad de que la información del paciente circule, se archive en la historia equivocada o se pierda antes de la siguiente consulta.",
@@ -102,7 +102,7 @@ export const MSK_ES: SpanishCaseStudyData = {
     {
       anchor: "msk-workflow",
       eyebrow: "EMR",
-      title: "De imprimir y enviar a una acción directa desde el dashboard",
+      title: "De imprimir y enviar a una acción directa desde el dashboard.",
       body: [
         "El rediseño consistió en agregar una acción directa en el panel que archivaba el mensaje en el expediente médico electrónico (EMR), la historia del paciente. Antes, el personal imprimía el mensaje, lo enviaba a HIM (gestión de información de salud, el equipo que escanea documentos a la historia) y esperaba que se archivara. Después, el flujo pasó de seis pasos a cinco y un área salió del circuito.",
         "La decisión de UI fue mostrar estado, responsabilidad y acción en el mismo lugar, pero exponer la acción directa solo cuando el registro estaba listo y la persona tenía permiso.",
@@ -111,7 +111,7 @@ export const MSK_ES: SpanishCaseStudyData = {
     {
       anchor: "msk-decisions",
       eyebrow: "Proceso",
-      title: "Mapear, probar, alinear y sostener",
+      title: "Mapear, probar, alinear y sostener.",
       body: [
         "Mapeé el estado actual, encontré puntos de fallo, alineé stakeholders y diseñé cambios que podían sostenerse después del lanzamiento. La adopción importaba tanto como la solución técnica.",
         "Límite de la evidencia: el registro conserva el flujo, los departamentos, las decisiones y los resultados. No se registraron los conteos de participantes de la observación de turnos, por eso uso la evidencia para explicar decisiones y no para afirmar prevalencia.",
@@ -132,7 +132,7 @@ export const MSK_ES: SpanishCaseStudyData = {
     {
       anchor: "msk-outcomes",
       eyebrow: "Resultado",
-      title: "Impacto medible en sistemas internos",
+      title: "Impacto medible en sistemas internos.",
       body: [
         "En mi trabajo directo, toda el área se certificó en RCP un mes antes de la fecha límite original, sin la prórroga de 4 meses, y reconstruí los itinerarios de aprendizaje de la incorporación administrativa con el equipo de diseño, probándolos con distintas cohortes, para el rango de habilidades de cada una.",
         "La iniciativa organizacional más amplia reportó una reducción de 20% en costos relacionados con el EMR; no atribuyo ese resultado únicamente a la cola de archivo y el registro conservado no incluye el período ni la definición de costos.",
@@ -151,7 +151,7 @@ export const MSK_ES: SpanishCaseStudyData = {
 };
 
 export const MOBBIN_ES: SpanishCaseStudyData = {
-  title: "Más de 200 pantallas por app, buscables por tarea",
+  title: "Más de 200 pantallas por app, buscables por tarea.",
   breadcrumb: "Mobbin",
   meta: "Mobbin · Documentación de flujos de experiencia de usuario (UX) · Curaduría de patrones",
   intro:
@@ -166,7 +166,7 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
     {
       anchor: "mobbin-brief",
       eyebrow: "Trabajo",
-      title: "Documentar flujos es criterio editorial",
+      title: "Documentar flujos es criterio editorial.",
       body: [
         "El trabajo no era capturar pantallas al azar. Era caminar productos reales como usuaria, entender secuencias completas, identificar patrones reutilizables y escribir anotaciones útiles para diseñadores que llegarían sin contexto.",
       ],
@@ -174,7 +174,7 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
     {
       anchor: "mobbin-work",
       eyebrow: "Método",
-      title: "Captura, taxonomía y calidad",
+      title: "Captura, taxonomía y calidad.",
       body: [
         "Organicé onboarding, rutas de conversión, puntos de entrada a funciones, comportamientos de interacción y estados especiales. Revisé cada flujo para claridad, completitud y precisión.",
       ],
@@ -182,7 +182,7 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
     {
       anchor: "mobbin-outcomes",
       eyebrow: "Resultado",
-      title: "Aprender de productos reales fortaleció mi juicio",
+      title: "Aprender de productos reales fortaleció mi juicio.",
       body: [
         "Estudiar cómo apps líderes estructuran información, guían usuarios y reducen fricción fortaleció mi criterio de producto. También me enseñó a nombrar patrones según cómo otros diseñadores los buscarían.",
       ],
@@ -204,7 +204,7 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
 export const LOGISTICS_ES: SpanishCaseStudyData = {
   breadcrumb: "Logística médica del Ejército",
   // Worded to break into multi-word lines; "reabastecimiento" alone filled a line.
-  title: "El reabastecimiento médico tardó un\u00a085% menos",
+  title: "El reabastecimiento médico tardó un\u00a085%\u00a0menos.",
   meta: "Logística médica del Ejército · Operaciones · Diseño de servicios · 2024",
   intro:
     "Como oficial de logística médica, planifiqué y di seguimiento a la reubicación de un almacén de $2M que abastecía a siete estaciones de ayuda en tres países. Según mi expediente de servicio, el reabastecimiento pasó de 1–2 meses a 1–2 semanas, resumido como un 85% menos de tiempo. Son cifras reportadas por mí; no se conservaron los periodos ni los métodos de medición.",
@@ -277,7 +277,7 @@ export const LOGISTICS_ES: SpanishCaseStudyData = {
 // page; Knowunity's internal numbers stay off both. Section anchors match the
 // English chapter ids so the language switch lands in place.
 export const KNOWUNITY_ES: SpanishCaseStudyData = {
-  title: "Las propias palabras del estudiante son la\u00a0prueba",
+  title: "Las propias palabras del estudiante son la\u00a0prueba.",
   breadcrumb: "Knowunity",
   meta: "Knowunity · Sprint de diseño · Prototipo móvil interactivo · Recuerdo simulado",
   intro:

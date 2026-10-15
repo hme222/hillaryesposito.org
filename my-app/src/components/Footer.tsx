@@ -147,7 +147,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             aria-label={t("nav.resumeAria")}
           >
-            {t("nav.resume")}
+            <span className="rp-ext">{t("nav.resume")}</span>
           </a>
           <a
             href="https://www.linkedin.com/in/hillaryesposito/"

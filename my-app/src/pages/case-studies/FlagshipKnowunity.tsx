@@ -228,11 +228,11 @@ export default function FlagshipKnowunity() {
             I designed and directed. Claude Code wrote most of the Next.js and Storybook code from my specs and Knowunity's Figma components.
           </p>
           <div className="rp-hero__ctas">
-            <a className="rp-cta" href={PROTOTYPE_URL} target="_blank" rel="noopener noreferrer" aria-label={t("home.riso.knowunityPrototypeAria")}>
-              Try the prototype ↗
+            <a className="rp-cta" href={PROTOTYPE_URL} target="_blank" rel="noopener noreferrer">
+              <span className="rp-ext">Try the prototype</span><span className="sr-only">{t("a11y.newTab")}</span>
             </a>
-            <a className="rp-cta rp-cta--ghost" href={STORYBOOK_URL} target="_blank" rel="noopener noreferrer" aria-label="Open the Say It Back Storybook (opens in new tab)">
-              Open the Storybook ↗
+            <a className="rp-cta rp-cta--ghost" href={STORYBOOK_URL} target="_blank" rel="noopener noreferrer">
+              <span className="rp-ext">Open the Storybook</span><span className="sr-only">{t("a11y.newTab")}</span>
             </a>
           </div>
           <p className="fp-knowunityMockNote">No speech recognition: how long you hold the mic decides the result. Question 2's first try is scripted to mishear so that state is always seen.</p>

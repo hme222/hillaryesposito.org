@@ -68,10 +68,19 @@
 .rp-eyebrow { display: inline-flex; align-items: center; gap: .5rem; background: var(--ink); color: var(--paper);
   font-family: var(--mono); font-size: .66rem; letter-spacing: .18em; text-transform: uppercase; padding: .35rem .7rem; border-radius: 0; }
 .rp-eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--coral); }
+/* Home's eyebrow is long enough to wrap on phones; balance keeps the last
+   line from being one stranded word ("training", "MSK"). */
+.rp-eyebrow__text { min-width: 0; flex: 0 1 auto; text-wrap: balance; }
 .rp-cta { display: inline-flex; align-items: center; gap: .5rem; background: var(--coral); color: var(--on-coral);
   font-family: var(--mono); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 700;
   min-height: 44px; padding: .68rem 1.1rem; border-radius: 0; text-decoration: none; box-shadow: 5px 5px 0 color-mix(in srgb, var(--coral) 16%, transparent); }
-.rp-cta:hover { filter: brightness(1.06); }
+/* One hover grammar for filled and ghost CTAs: a riso registration shift. The
+   plate lifts a pixel up-left and leaves an ink offset behind it. The old
+   brightness(1.06) was imperceptible, and the ghost inverted to an ink fill,
+   so the two buttons answered a hover in two different ways. */
+.rp-cta { transition: transform 120ms ease, box-shadow 120ms ease; }
+.rp-cta:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--ink); }
+@media (prefers-reduced-motion: reduce) { .rp-cta { transition: none; } }
 
 /* ---------- HERO ---------- */
 .rp-hero { position: relative; overflow: hidden; border-bottom: 1.5px solid var(--ink); background: var(--paper);
@@ -1022,7 +1031,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 /* Hillary's role in the number, above the number. Small and unemphatic on
    purpose — it is a qualifier, not a boast, and it has to be readable before
    the eye moves on rather than competing with the figure. */
-.rp-stat__tag { margin: 0 0 .5rem; font-family: var(--mono); font-size: .58rem;
+.rp-stat__tag { margin: 0 0 .5rem; font-family: var(--mono); font-size: .72rem;
   letter-spacing: .11em; text-transform: uppercase; color: var(--muted); }
 .rp-stat__n { font-size: var(--ts-stat); font-weight: 850; letter-spacing: -.015em; color: var(--green); line-height: 1; }
 .rp-stat__l { color: var(--ink-2); margin-top: .5rem; font-size: .92rem; }
@@ -1216,7 +1225,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-decisionRecord { max-width: 760px; margin: 1.7rem 0 0; border-top: 2px solid var(--ink); }
 .rp-decisionRecord > div { display: grid; grid-template-columns: minmax(8rem, .7fr) minmax(0, 2fr); gap: 1rem;
   padding: .9rem 0; border-bottom: 1px solid var(--hair); }
-.rp-decisionRecord dt { font: 700 .62rem/1.3 var(--mono); letter-spacing: .09em; text-transform: uppercase; color: var(--coral); }
+.rp-decisionRecord dt { font: 700 .72rem/1.3 var(--mono); letter-spacing: .09em; text-transform: uppercase; color: var(--coral-text); }
 .rp-decisionRecord dd { margin: 0; font-size: .96rem; line-height: 1.45; color: var(--ink); }
 @media (max-width: 560px) { .rp-decisionRecord > div { grid-template-columns: 1fr; gap: .3rem; } }
 
@@ -1344,7 +1353,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 /* ---------- home: hero CTAs + headshot ---------- */
 .rp-hero__ctas { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.4rem; }
 .rp-cta--ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); box-shadow: none; }
-.rp-cta--ghost:hover { background: var(--ink); color: var(--paper); filter: none; }
+.rp-cta--ghost:hover { background: transparent; color: var(--ink); }
 .rp-recruiter-link {
   display: none;
   align-items: center;
@@ -2194,7 +2203,8 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   --transit-blue: #0039a6;
   --transit-orange: #ff6319;
   --rp-train-x: calc(-100% - 2rem);
-  padding-block: 0 clamp(2rem, 5vw, 4rem);
+  /* Bottom matches the sibling .rp-section rhythm. */
+  padding-block: 0 clamp(2.6rem, 6vw, 4rem);
   overflow: hidden;
 }
 .rp-dispatch__masthead {
@@ -2612,7 +2622,8 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   .rp-dispatch__cover .rp-dispatch__title {
     /* 9ch stranded "Home" on its own line; the title is 13 characters. */
     max-width: 14ch;
-    font-size: clamp(2.4rem, 12vw, 3.4rem);
+    /* 12vw set it larger on a phone than the desktop title. */
+    font-size: clamp(2rem, 8vw, 2.5rem);
   }
   .rp-dispatch__cover .rp-dispatch__question {
     max-width: 31ch;
@@ -2842,12 +2853,28 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
      the edge read as the end of the list. Fade the last 32px before the edge
      (or before the pinned length cue) to say "more this way"; the fade drops
      once the last chapter is fully in view (.is-at-end, set in
-     CaseStudyChapters). */
+     CaseStudyChapters).
+     The fade is painted, not masked: a mask-image made the strip itself
+     transparent there, so the page scrolling underneath bled through. The
+     ::after is a sticky flex item ordered between the links and the cue, with
+     a negative margin so it takes no room in the row. */
   .rp-chapters {
     --rp-strip-cue: 0px;
-    -webkit-mask-image: linear-gradient(to right, black calc(100% - var(--rp-strip-cue) - 32px), transparent calc(100% - var(--rp-strip-cue)), black calc(100% - var(--rp-strip-cue)));
-    mask-image: linear-gradient(to right, black calc(100% - var(--rp-strip-cue) - 32px), transparent calc(100% - var(--rp-strip-cue)), black calc(100% - var(--rp-strip-cue)));
+    background: var(--paper);
   }
+  .rp-chapters::after {
+    content: "";
+    order: 1;
+    position: sticky;
+    right: var(--rp-strip-cue);
+    z-index: 1;
+    flex: 0 0 32px;
+    align-self: stretch;
+    margin-left: calc(-32px - .55rem);
+    background: linear-gradient(to right, color-mix(in srgb, var(--paper) 0%, transparent), var(--paper));
+    pointer-events: none;
+  }
+  .rp-chapters .rp-progress--strip { order: 2; }
   /* With the length cue pinned at the right, the strip drops its right
      padding so the cue sits flush to the screen edge: sticky positioning
      stops at the padding edge, which let a cut-off chapter name show in the
@@ -2856,7 +2883,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
     padding-right: 0;
     --rp-strip-cue: calc(var(--rp-cue-w) + var(--sp-gutter));
   }
-  .rp-chapters.is-at-end { -webkit-mask-image: none; mask-image: none; }
+  .rp-chapters.is-at-end::after { display: none; }
 }
 
 /* ---------- skill tags ---------- */
@@ -2874,7 +2901,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 
 /* ---------- "no invented numbers" disclaimer ---------- */
 .rp-disclaimer { display: inline-flex; align-items: center; gap: .5rem; margin: 1rem 0 0; font-family: var(--mono);
-  font-size: .64rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  font-size: .8rem; letter-spacing: 0; text-transform: none; color: var(--muted); }
 .rp-disclaimer::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
 
 /* ---------- feature list (social 3-item) ---------- */
@@ -2910,7 +2937,9 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 /* ---------- interactive color swatches (live component) ---------- */
 .rp-swatches { display: flex; gap: .7rem; flex-wrap: wrap; margin-top: 1.5rem; }
 .rp-swatch { border: 1px solid var(--hair); border-radius: var(--r-plate); overflow: hidden; cursor: pointer; background: var(--paper);
-  width: 158px; text-align: left; padding: 0; transition: transform .2s ease, box-shadow .2s ease; font: inherit; }
+  width: 158px; text-align: left; padding: 0; transition: transform .2s ease, box-shadow .2s ease; font: inherit;
+  /* A <button> defaults to buttontext (black), which vanished on the dark-mode paper. */
+  color: var(--ink); }
 .rp-swatch:hover { transform: translateY(-3px); box-shadow: 0 10px 24px -8px rgba(0,0,0,.28); }
 .rp-swatch:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
 .rp-swatch__chip { display: block; height: 58px; }
@@ -3554,10 +3583,10 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   linear-gradient(color-mix(in srgb,var(--hair) 34%,transparent) 1px, transparent 1px),
   linear-gradient(90deg,color-mix(in srgb,var(--hair) 34%,transparent) 1px, transparent 1px);
   background-size: 24px 24px; }
-.rp-demo__tabs { width: fit-content; display: flex; padding: 4px; gap: 3px; border: 1px solid var(--hair); border-radius: var(--r-plate); background: var(--paper); }
-.rp-demo__tabs button { min-height: 44px; padding: .55rem 1rem; border: 0; border-radius: var(--r-plate); background: transparent;
+.rp-demo__tabs { width: fit-content; display: flex; padding: 4px; gap: 3px; border: 1px solid var(--hair); border-radius: var(--r-control); background: var(--paper); }
+.rp-demo__tabs button { min-height: 44px; padding: .55rem 1rem; border: 0; border-radius: var(--r-control); background: transparent;
   color: var(--muted); font: 700 .72rem/1 var(--mono); letter-spacing: .03em; cursor: pointer; }
-.rp-demo__tabs button[aria-selected="true"] { color: var(--on-green); background: var(--green); }
+.rp-demo__tabs button[aria-selected="true"] { color: var(--paper); background: var(--ink); }
 .rp-demo__tabs button:focus-visible, .rp-demoCard button:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
 .rp-demo__panel { min-height: 320px; display: grid; place-items: center; padding: clamp(1.4rem,5vw,3.5rem) 0; outline: 0; }
 .rp-demo__panel[hidden] { display: none; }
@@ -3567,6 +3596,11 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-demoCard__swap { display: grid; }
 .rp-demoCard__swap > div { grid-area: 1 / 1; }
 .rp-demoCard__swap > .is-off { visibility: hidden; }
+/* The demo card is a fixed cream surface in both themes; App.css's
+   `.dark-mode h4`/`.dark-mode p` would otherwise paint light text on it. */
+.rp-demoCard h4, .dark-mode .rp-demoCard h4 { color: #20241c; }
+.dark-mode .rp-demoCard p { color: #45503f; }
+.dark-mode .rp-demoSelect select { background: #f5f0ea; color: #20241c; border-color: #c2cbb8; }
 .rp-demoCard h4 { margin: .55rem 0 0; font-size: clamp(1.25rem,3vw,1.7rem); line-height: 1.08; letter-spacing: -.015em; }
 .rp-demoCard p { margin-top: .55rem; color: #45503f; }
 .rp-demoCard button { min-height: 44px; margin-top: 1.15rem; padding: .65rem 1rem; border: 0; border-radius: var(--r-plate);
@@ -3702,7 +3736,9 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   background-image:
   radial-gradient(circle at 76% 20%, rgba(198,138,46,.22),transparent 24%),
   radial-gradient(circle at 18% 76%, rgba(239,83,64,.16),transparent 28%),
-  linear-gradient(135deg,#264529,#152717 72%); }
+  /* Start darkened from #264529: --coral-on-dark measured 4.39:1 on it and
+     3.92:1 inside the coral glow. #1c3520 clears 5.46 / 4.70. */
+  linear-gradient(135deg,#1c3520,#152717 72%); }
 .rp-outcomeStage::before { content: ""; position: absolute; inset: 0; opacity: .22; pointer-events: none; background-image:
   repeating-radial-gradient(ellipse at 78% 112%,transparent 0 64px,rgba(244,241,230,.38) 65px 66px,transparent 67px 106px); }
 .rp-outcomeStage .rp-wrap { position: relative; z-index: 1; }
@@ -4112,6 +4148,9 @@ h2.rp-kicker { margin: 0 0 .4rem; line-height: 1.3; }
    readers are shown once. */
 .rp-ext::after {
   content: "↗";
+  /* Empty alt text: Chrome otherwise folds generated content into the link's
+     accessible name ("Try the prototype ↗"). */
+  content: "↗" / "";
   margin-left: .3em;
   font-size: .85em;
   line-height: 1;

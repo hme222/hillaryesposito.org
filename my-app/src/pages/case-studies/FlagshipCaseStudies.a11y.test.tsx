@@ -263,10 +263,13 @@ describe("flagship case-study accessibility", () => {
     expect(row?.querySelectorAll(".rp-work__thumb--knowunity img")).toHaveLength(2);
 
     const prototype = container.querySelector<HTMLAnchorElement>('.rp-work__teaser[href="https://knowunity-voice-recall.vercel.app/"]');
-    expect(prototype?.textContent).toBe("Try the prototype ↗");
+    // WCAG 2.5.3: the visible text is the accessible name; the new-tab notice
+    // is appended in a visually hidden span, and the ↗ glyph comes from .rp-ext.
+    expect(prototype?.querySelector(".rp-ext")?.textContent).toBe("Try the prototype");
+    expect(prototype?.querySelector(".sr-only")?.textContent).toBe("a11y.newTab");
     expect(prototype?.getAttribute("target")).toBe("_blank");
     expect(prototype?.getAttribute("rel")).toBe("noopener noreferrer");
-    expect(prototype?.getAttribute("aria-label")).toBe("home.riso.knowunityPrototypeAria");
+    expect(prototype?.hasAttribute("aria-label")).toBe(false);
     // The Storybook link moved into the case study's Build section.
     expect(container.innerHTML).not.toContain("chromatic.com");
     expect(container.innerHTML).not.toContain("knowunity-voice-recall-o2c9s7oro");
@@ -277,7 +280,7 @@ describe("flagship case-study accessibility", () => {
       root.render(<RisoHome />);
     });
     const esPrototype = container.querySelector<HTMLAnchorElement>('.rp-work__teaser[href="https://knowunity-voice-recall.vercel.app/"]');
-    expect(esPrototype?.textContent).toBe("Probar el prototipo ↗");
+    expect(esPrototype?.querySelector(".rp-ext")?.textContent).toBe("Probar el prototipo");
   });
 
   it("states the Knowunity limits and keeps Knowunity's internal numbers off the page", async () => {
@@ -299,7 +302,8 @@ describe("flagship case-study accessibility", () => {
 
     const storybook = container.querySelector<HTMLAnchorElement>('a[href*="chromatic.com"]');
     expect(storybook?.getAttribute("target")).toBe("_blank");
-    expect(storybook?.getAttribute("aria-label")).toBe("Open the Say It Back Storybook (opens in new tab)");
+    expect(storybook?.hasAttribute("aria-label")).toBe(false);
+    expect(storybook?.querySelector(".rp-ext")?.textContent).toBe("Open the Storybook");
     expect(container.querySelector(".rp-next")?.getAttribute("href")).toBe("/case-study/logistics");
   });
 

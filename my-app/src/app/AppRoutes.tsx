@@ -6,6 +6,7 @@ import RisoHome from "../pages/RisoHome";
 import About from "../pages/AboutMe";
 import { useLanguage } from "./LanguageContext";
 import { safeGet, safeSet } from "./safeStorage";
+import { translate, type Lang } from "../i18n/strings";
 
 import NotFoundPage from "../pages/NotFoundPage";
 import { Navigate } from "react-router-dom";
@@ -22,7 +23,7 @@ const FlagshipUxWoman = lazy(() => import("../pages/case-studies/FlagshipUxWoman
 const HiggsfieldABCLab = lazy(() => import("../pages/labs/HiggsfieldABCLab"));
 
 class LazyRouteBoundary extends Component<
-  { children: React.ReactNode; name: string },
+  { children: React.ReactNode; name: string; lang: Lang },
   { failed: boolean }
 > {
   state = { failed: false };
@@ -33,23 +34,24 @@ class LazyRouteBoundary extends Component<
 
   render() {
     if (this.state.failed) {
+      const { lang, name } = this.props;
       return (
         <main className="not-found" role="alert">
           <div className="not-found__number" aria-hidden="true">↻</div>
           <div className="not-found__copy">
-            <p className="not-found__eyebrow">Case study recovery</p>
-            <h1>{this.props.name} did not load.</h1>
-            <p>The page bundle may have been interrupted. Reload it, or return to selected work.</p>
+            <p className="not-found__eyebrow">{translate(lang, "recovery.caseEyebrow")}</p>
+            <h1>{translate(lang, "recovery.caseTitle", { name })}</h1>
+            <p>{translate(lang, "recovery.caseBody")}</p>
             <div className="not-found__actions">
               <button
                 type="button"
                 className="not-found__primary"
                 onClick={() => window.location.reload()}
               >
-                Reload case study
+                {translate(lang, "recovery.caseReload")}
               </button>
               <a className="not-found__secondary" href="/?scrollTo=projects">
-                See the selected work →
+                {translate(lang, "notFound.work")}
               </a>
             </div>
           </div>
@@ -62,14 +64,16 @@ class LazyRouteBoundary extends Component<
 
 // Every lazily-loaded case study gets the same treatment: an error boundary for
 // a chunk that fails to arrive, and an announced loading state for the gap
-// before it does.
-function LazyPage({ name, children }: { name: string; children: React.ReactNode }) {
+// before it does. `nameEs` covers the one case-study name that translates.
+function LazyPage({ name, nameEs, children }: { name: string; nameEs?: string; children: React.ReactNode }) {
+  const { lang } = useLanguage();
+  const label = lang === "es" && nameEs ? nameEs : name;
   return (
-    <LazyRouteBoundary name={name}>
+    <LazyRouteBoundary name={label} lang={lang}>
       <Suspense
         fallback={
           <div className="case-study-loader" role="status" aria-live="polite">
-            Loading {name} case study…
+            {translate(lang, "recovery.caseLoading", { name: label })}
           </div>
         }
       >
@@ -229,10 +233,10 @@ export default function AppRoutes() {
       <Route path="/riso/grove" element={<Navigate to="/case-study/grove" replace />} />
       <Route path="/case-study/mobbin" element={<LazyPage name="Mobbin"><FlagshipMobbin /></LazyPage>} />
       <Route path="/case-study/msk" element={<LazyPage name="MSK"><FlagshipMSK /></LazyPage>} />
-      <Route path="/case-study/logistics" element={<LazyPage name="Medical logistics"><FlagshipLogistics /></LazyPage>} />
+      <Route path="/case-study/logistics" element={<LazyPage name="Medical logistics" nameEs="Logística médica"><FlagshipLogistics /></LazyPage>} />
       <Route path="/case-study/knowunity" element={<LazyPage name="Knowunity"><FlagshipKnowunity /></LazyPage>} />
       <Route path="/case-study/ux-woman" element={<LazyPage name="UX Woman"><FlagshipUxWoman /></LazyPage>} />
-      <Route path="/lab/higgsfield-abc" element={<LazyPage name="Higgsfield A B C lab"><HiggsfieldABCLab /></LazyPage>} />
+      <Route path="/lab/higgsfield-abc" element={<LazyPage name="Higgsfield A B C lab" nameEs="Laboratorio Higgsfield A B C"><HiggsfieldABCLab /></LazyPage>} />
 
       <Route path="*" element={<NotFoundPage />} />
     </Routes>

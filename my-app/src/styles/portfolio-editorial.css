@@ -399,6 +399,9 @@
 }
 .site-footer__signoff {
   margin: var(--sp-sm) 0 0;
+  /* The global `p` rule set this in the serif body face; the rest of the
+     footer is the shell sans. */
+  font-family: var(--shell-sans);
 }
 .site-footer__signoff a {
   display: inline-flex;
@@ -493,7 +496,10 @@
   transform: translateX(-.08em);
   user-select: none;
 }
-.not-found__copy { padding-bottom: clamp(1rem, 5vw, 5rem); }
+/* Grid items default to min-width: auto, so the 404 numeral and the h1 held
+   the single column wider than a 390px viewport. */
+.not-found > * { min-width: 0; }
+.not-found__copy { max-width: 100%; padding-bottom: clamp(1rem, 5vw, 5rem); }
 .not-found h1 {
   /* 6rem in a 530px column stranded "off." on its own line. */
   text-wrap: pretty;

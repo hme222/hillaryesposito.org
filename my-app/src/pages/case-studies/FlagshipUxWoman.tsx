@@ -72,7 +72,7 @@ const PRETOTYPES = [
   { title: "Coverage-in-context navigator", asks: "Does guidance at the moment of one coverage task help more than a general insurance library?" },
   { title: "Missing-information handoff receipt", asks: "Does naming the missing item and who owes it reduce ambiguity between roles?" },
   { title: "Letter-of-medical-necessity evidence sheet", asks: "Does a source-and-reviewer checklist help staff prepare or check a letter?" },
-  { title: "Human navigator session", asks: "When information is confusing or sensitive, does a person solve something self-service doesn't?" },
+  { title: "Human navigator\u00a0session", asks: "When information is confusing or sensitive, does a person solve something self-service doesn't?" },
 ];
 
 export default function FlagshipUxWoman() {

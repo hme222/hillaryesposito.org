@@ -404,8 +404,8 @@ export default function FlagshipMSK() {
             ))}
           </ul>
           <p className="fp-survivedWhy">The work moved from personal workaround to shared system; the plain-language format got the department compliant before the deadline.</p>
-          <a className="fp-proofLink" href="https://www.mskcc.org/news/hillary-esposito-s-career-path-military-msk" target="_blank" rel="noopener noreferrer" aria-label="Read Hillary Esposito's career profile in MSK News (opens in new tab)">
-            <span>Independent proof · MSK News</span><b className="rp-ext">From the military to Memorial Sloan Kettering</b>
+          <a className="fp-proofLink" href="https://www.mskcc.org/news/hillary-esposito-s-career-path-military-msk" target="_blank" rel="noopener noreferrer">
+            <span>Independent proof · MSK News</span><b className="rp-ext">From the military to Memorial Sloan Kettering</b><span className="sr-only"> (opens in new tab)</span>
           </a>
         </div>
       </section>

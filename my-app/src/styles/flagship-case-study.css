@@ -79,7 +79,9 @@
 .fp-artifactLabel { position: absolute; z-index: 4; max-width: 250px; padding: .7rem .8rem; border: 1px solid var(--hair);
   border-left: 3px solid var(--coral); border-radius: 3px 8px 8px 3px; background: color-mix(in srgb,var(--paper) 94%,transparent);
   box-shadow: 0 14px 32px -20px rgba(0,0,0,.45); }
-.fp-artifactLabel span { display: block; font: .54rem/1.2 var(--mono); letter-spacing: .1em; color: var(--coral); }
+/* The coral rule on the left carries the accent; the label itself is ink so it
+   reads over the hero art (coral at .54rem measured under 4.5:1). */
+.fp-artifactLabel span { display: block; font: .72rem/1.2 var(--mono); letter-spacing: .1em; color: var(--ink); }
 .fp-artifactLabel b { display: block; margin-top: .25rem; font-size: .72rem; line-height: 1.35; }
 /* Mobbin's artifact is a photo, so a tag floated over it costs nothing. MSK's
    is a dense text mockup whose last two blocks — the MRN/HIM glossary and the
@@ -113,7 +115,7 @@
   width: min(940px,76vw); min-height: 260px; color: var(--fp-light); }
 .fp-cinemaCore--workflow > div { width: min(330px,30vw); padding: 1.2rem; border: 1px solid rgba(244,241,230,.24); border-radius: var(--r-plate);
   background: rgba(244,241,230,.07); backdrop-filter: blur(8px); }
-.fp-cinemaCore span { display: block; font: .6rem/1.2 var(--mono); letter-spacing: .12em; color: var(--coral-on-dark); }
+.fp-cinemaCore span { display: block; font: .72rem/1.2 var(--mono); letter-spacing: .12em; color: color-mix(in srgb, var(--fp-light) 86%, transparent); }
 .fp-cinemaCore b { display: block; margin-top: .45rem; font-size: clamp(1rem,2vw,1.4rem); line-height: 1.25; }
 .fp-cinemaCore small { display: block; margin-top: .55rem; color: rgba(244,241,230,.68); }
 .fp-cinemaCore > i { font-style: normal; color: var(--coral-on-dark); font-size: 1.6rem; }
@@ -155,6 +157,15 @@
   line-height: 1.7;
 }
 .fp-receipt__copy > p:not(.rp-kicker):not(.fp-proofStatus) { color: rgba(244,241,230,.76); }
+/* Desktop sets the headline as its two phrase lines ("A digital workflow /
+   became a paper ritual."). At 16ch in the 260px-min column it broke into
+   four lines at 1440. The copy column widens and each phrase holds one line;
+   below 1024 the lines run inline and wrap with text-wrap: balance. */
+@media (min-width: 1024px) {
+  .fp-receipt__layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); }
+  .fp-receipt__copy h2 { max-width: none; font-size: clamp(2rem, 2.9vw, 3.1rem); }
+  .fp-receipt__titleLine { display: block; white-space: nowrap; }
+}
 .fp-proofControl {
   min-height: 44px;
   margin-top: 1.6rem;
@@ -233,7 +244,7 @@
   transition: background-color 480ms ease, border-color 480ms ease;
 }
 .fp-receipt__node + .fp-receipt__node { border-left: 1px solid rgba(244,241,230,.16); }
-.fp-receipt__node span { font: .58rem/1 var(--mono); letter-spacing: .08em; color: rgba(244,241,230,.55); }
+.fp-receipt__node span { font: .72rem/1 var(--mono); letter-spacing: .08em; color: color-mix(in srgb, var(--fp-light) 82%, var(--fp-deep-2)); }
 .fp-receipt__node b { display: block; margin-top: 2.7rem; font-size: .86rem; }
 .fp-receipt__node small { display: block; margin-top: .25rem; color: rgba(244,241,230,.58); }
 .fp-receipt__node.is-complete { background: color-mix(in srgb, var(--green) 26%, var(--fp-deep-2)); border-color: rgba(244,241,230,.4); }
@@ -1134,7 +1145,7 @@
    system-lab tabs and missed these; a 999px pill is the one shape the editorial
    vocabulary reserves for genuine status tags. */
 .fp-sequence__dots button { min-height: 44px; padding: .55rem .8rem; border: 1px solid var(--hair); border-radius: var(--r-control); background: var(--paper); color: var(--ink); font: .62rem/1 var(--mono); cursor: pointer; }
-.fp-sequence__dots button.is-active { border-color: var(--green); background: var(--green); color: var(--paper); }
+.fp-sequence__dots button.is-active { border-color: var(--ink); background: var(--ink); color: var(--paper); }
 
 /* The journal line now sits on light paper in the method section, so it uses
    themed tokens; the .rp-override variant keeps the fixed dark-panel accents. */
@@ -1274,7 +1285,9 @@
 
 .fp-blueprint__controls { display: flex; flex-wrap: wrap; align-items: baseline; gap: .9rem 1.4rem;
   margin-bottom: 1.4rem; }
-.fp-blueprint__switch { display: inline-flex; border: 1px solid var(--hair); border-radius: 4px; overflow: hidden; }
+/* Segmented controls share one shape and one selected fill across MSK,
+   Mobbin, and Grove: --r-control corners, ink fill, paper text. */
+.fp-blueprint__switch { display: inline-flex; border: 1px solid var(--hair); border-radius: var(--r-control); overflow: hidden; }
 .fp-blueprint__switch button { min-height: 44px; padding: .55rem 1rem; border: 0; background: transparent;
   font: .68rem/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2);
   cursor: pointer; transition: background 160ms ease, color 160ms ease; }
