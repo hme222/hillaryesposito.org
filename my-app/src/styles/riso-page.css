@@ -2308,7 +2308,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 /* ---------- interactive color swatches (live component) ---------- */
 .rp-swatches { display: flex; gap: .7rem; flex-wrap: wrap; margin-top: 1.5rem; }
 .rp-swatch { border: 1px solid var(--hair); border-radius: var(--r-plate); overflow: hidden; cursor: pointer; background: var(--paper);
-  width: 158px; text-align: left; padding: 0; transition: transform .2s ease, box-shadow .2s ease; font: inherit;
+  width: 158px; text-align: left; padding: 0; transition: transform var(--dur-fast) ease, box-shadow var(--dur-fast) ease; font: inherit;
   /* A <button> defaults to buttontext (black), which vanished on the dark-mode paper. */
   color: var(--ink); }
 .rp-swatch:hover { transform: translateY(-3px); box-shadow: 0 10px 24px -8px rgba(0,0,0,.28); }

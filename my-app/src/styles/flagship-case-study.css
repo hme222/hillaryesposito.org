@@ -392,7 +392,7 @@
 .fp-roleRail__method summary:hover .fp-roleRail__summaryLabel { text-decoration: underline; }
 .fp-roleRail__chev { width: 7px; height: 7px; border-right: 1.5px solid currentColor;
   border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg);
-  transition: transform .2s ease; }
+  transition: transform var(--dur-fast) ease; }
 .fp-roleRail__method[open] .fp-roleRail__chev { transform: translateY(1px) rotate(-135deg); }
 .fp-roleRail__method > div { padding: .8rem .9rem; margin-top: .1rem;
   border-left: 2px solid rgba(169,210,143,.5); background: rgba(244,241,230,.05); }

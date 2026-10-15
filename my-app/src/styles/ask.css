@@ -97,7 +97,7 @@
 }
 .ask-dialog::backdrop {
   background: color-mix(in srgb, var(--ink) 55%, transparent);
-  animation: askFade 0.2s ease-out;
+  animation: askFade var(--dur-fast) ease-out;
 }
 .dark-mode .ask-dialog::backdrop {
   background: color-mix(in srgb, var(--paper) 72%, transparent);
@@ -147,7 +147,7 @@
   background: transparent;
   color: var(--ink);
   cursor: pointer;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  transition: border-color var(--dur-fast) ease, background-color var(--dur-fast) ease;
 }
 .ask-dialog__close:hover {
   border-color: var(--coral);
@@ -266,7 +266,7 @@
   border: 1px solid color-mix(in srgb, var(--ink) 28%, transparent);
   border-radius: 4px;
   cursor: pointer;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  transition: border-color var(--dur-fast) ease, background-color var(--dur-fast) ease;
 }
 .ask-starter:hover:not(:disabled) {
   border-color: var(--coral);
