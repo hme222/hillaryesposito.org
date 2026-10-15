@@ -2223,6 +2223,11 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
      headline — read straight through the strip as a ghosted second layer.
      97% keeps the frosted edge without the bleed. */
   background: color-mix(in srgb, var(--paper) 97%, transparent); backdrop-filter: blur(6px); }
+/* Case-study reading mode (hooks/useCaseStudyChrome.ts): with the dock
+   tucked, the strip pins to the very top as the single bar. `top` moves with
+   the dock's own slide, and only once the hook allows motion. */
+.cs-chrome--tucked .rp-chapters { top: 0; }
+.cs-chrome--animate .rp-chapters { transition: top var(--dur-fast) var(--ease-soft); }
 .rp-chapters span { color: var(--muted); margin-right: .15rem; }
 .rp-chapters a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--hair);
   min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; padding: 0 .2rem; }
@@ -2697,9 +2702,13 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
    they cannot come apart the way the previous version did. */
 /* The artifact gets the larger share. At a 500px cap the queue was cramped
    enough that the header, legend and rule all read as clutter. */
-.rp-decisionStory__panel { position: sticky; top: 136px; display: grid;
+/* `--cs-chrome-h` is the visible top chrome (dock + chapter strip, or the
+   strip alone while the dock is tucked), set by hooks/useCaseStudyChrome.ts;
+   the fallback is the old fixed 136px. */
+.rp-decisionStory__panel { position: sticky; top: calc(var(--cs-chrome-h, 128px) + 8px); display: grid;
   grid-template-columns: minmax(0, .8fr) minmax(0, 620px); gap: clamp(1.5rem, 3vw, 2.4rem);
   align-items: start; }
+.cs-chrome--animate .rp-decisionStory__panel { transition: top var(--dur-fast) var(--ease-soft); }
 
 .rp-decisionStory__steps { list-style: none; margin: 0; padding: 0; display: grid; gap: .25rem; }
 /* The rule is the position indicator. Every step keeps its text at all times —
@@ -2944,6 +2953,31 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
      existing Grove disclosure clearance so wrapped chapter labels cannot
      cover the first line or focus outline on narrow screens. */
   .riso-page details[id] { scroll-margin-top: 190px; }
+}
+/* Case-study routes: the chrome height changes as the dock tucks and
+   returns, so every jump target clears whatever is showing right now
+   (`--cs-chrome-h`, set by hooks/useCaseStudyChrome.ts) plus a 12px gap.
+   That includes the language switch's `[data-language-anchor]` targets.
+   Read at scroll time, so a chapter link that tucks the dock first lands
+   below the strip alone. Prefixed with `html.cs-chrome` to outrank the fixed
+   values above and in flagship-case-study.css, which stay as the fallback
+   off these routes and before the hook runs. */
+html.cs-chrome .riso-page section[id],
+html.cs-chrome .riso-page header[id],
+html.cs-chrome .riso-page details[id],
+html.cs-chrome .riso-page [data-language-anchor],
+html.cs-chrome .riso-page .rp-decisionStory[id],
+html.cs-chrome .riso-page .rp-hero[id],
+html.cs-chrome .riso-page .rp-cinema[id],
+html.cs-chrome .riso-page .fp-receipt[id],
+html.cs-chrome .riso-page .fp-indexLens[id] { scroll-margin-top: calc(var(--cs-chrome-h) + 12px); }
+@media (max-width: 900px) {
+  /* Keeps the extra room a focused summary's control row needs (see above). */
+  html.cs-chrome .riso-page details[id] { scroll-margin-top: calc(var(--cs-chrome-h) + 52px); }
+}
+@media (max-width: 760px) {
+  html.cs-chrome .riso-page .fp-receipt[id],
+  html.cs-chrome .riso-page .fp-indexLens[id] { scroll-margin-top: calc(var(--cs-chrome-h) + 52px); }
 }
 
 /* ---------- reading progress ---------- */

@@ -343,6 +343,19 @@ select:focus-visible {
   border: none;
   pointer-events: none; /* only the pill inside is interactive */
 }
+/* Case-study reading mode (hooks/useCaseStudyChrome.ts sets these classes on
+   <html>, case-study routes only). Scrolling down tucks the dock above the
+   viewport so the chapter strip is the one bar; transform only, so the dock
+   stays in the tab order and in the accessibility tree. Focus inside it
+   brings it straight back - the hook does this too; `:focus-within` covers
+   the frame before its listener runs. No transition until the hook adds
+   `--animate` (never under reduced motion, never on first paint). */
+.cs-chrome--tucked .navbar:not(:focus-within) {
+  transform: translateY(-100%);
+}
+.cs-chrome--animate .navbar {
+  transition: transform var(--dur-fast) var(--ease-soft);
+}
 .nav-dock__pill {
   /* Containing block for its own ::after (the opening film's transient
      grain overlay, riso-page.css) - without it, that absolutely-positioned

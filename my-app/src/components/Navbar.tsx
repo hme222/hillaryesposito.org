@@ -4,6 +4,7 @@ import { useLanguage, useT } from "../app/LanguageContext";
 import AskBirdNav from "./ask/AskBirdNav";
 import { ASK_ENABLED } from "./ask/askEnabled";
 import NavSettingsPopover from "./NavSettingsPopover";
+import { useCaseStudyChrome } from "../hooks/useCaseStudyChrome";
 
 type NavbarProps = {
   darkMode: boolean;
@@ -19,7 +20,7 @@ const SECTION_IDS = ["home", "projects", "about", "contact"];
 
 /**
  * @status: stable
- * @purpose: Printed route dock - the site's primary navigation (rendered in app/App.tsx): a sticky, transparent full-width `<nav>` (reserving the same flow height the old full-width bar did) holding one visible, top-centre, detached pill cluster (Home mark, Work, About, the Ask bird, and a Settings disclosure for theme/language) with a sliding "printed route marker" behind whichever item is active. Same layout on desktop and phone - no hamburger, no off-canvas menu. Handles same-page section scrolling and case-study/About active-state tracking; Settings owns the dark-mode and language toggles that used to sit loose in the old full-width bar.
+ * @purpose: Printed route dock - the site's primary navigation (rendered in app/App.tsx): a sticky, transparent full-width `<nav>` (reserving the same flow height the old full-width bar did) holding one visible, top-centre, detached pill cluster (Home mark, Work, About, the Ask bird, and a Settings disclosure for theme/language) with a sliding "printed route marker" behind whichever item is active. Same layout on desktop and phone - no hamburger, no off-canvas menu. Handles same-page section scrolling and case-study/About active-state tracking; Settings owns the dark-mode and language toggles that used to sit loose in the old full-width bar. On case-study routes only, useCaseStudyChrome tucks the dock while the reader scrolls down (the chapter strip pins to the top as the single bar) and returns it on scroll up, focus, or an open menu/tour.
  */
 export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   const t = useT();
@@ -249,7 +250,12 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   // changes.
   useLayoutEffect(() => {
     const publishDockHeight = () => {
-      const bottom = document.querySelector(".nav-dock__pill")?.getBoundingClientRect().bottom;
+      // Relative to `.navbar`'s own top, which is 0 whenever it is in place -
+      // so a resize while the case-study controller has the dock tucked
+      // (translated off-screen) still publishes the untucked height.
+      const pill = document.querySelector(".nav-dock__pill");
+      const bar = pill?.closest(".navbar");
+      const bottom = pill ? pill.getBoundingClientRect().bottom - (bar?.getBoundingClientRect().top ?? 0) : 0;
       if (bottom) document.documentElement.style.setProperty("--dock-h", `${bottom}px`);
     };
     publishDockHeight();
@@ -257,6 +263,10 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
     document.fonts?.ready.then(publishDockHeight).catch(() => {});
     return () => window.removeEventListener("resize", publishDockHeight);
   }, []);
+
+  // Case studies only: tuck the dock while reading down, bring it back on a
+  // deliberate scroll up. See hooks/useCaseStudyChrome.ts.
+  useCaseStudyChrome(dockRef, location.pathname, location.hash);
 
   return (
     <nav ref={dockRef} className="navbar nav-dock" aria-label={t("nav.ariaPrimary")}>
