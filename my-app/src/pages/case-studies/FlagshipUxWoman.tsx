@@ -169,7 +169,7 @@ export default function FlagshipUxWoman() {
             <article>
               <span>Limits · stated up front</span>
               <h3>No patient interview stream</h3>
-              <p>What I know about patients is secondhand, apart from that one account. A seventh, adjacent interview with an HR director covered checking AI sources. It is not healthcare validation.</p>
+              <p>What I know about patients is secondhand, apart from that one account. A seventh, adjacent interview with an HR director covered checking AI sources. It is not healthcare validation. No PHI was collected, and participants are anonymized.</p>
             </article>
           </div>
           <p className="fp-ownership fp-ownership--paper rp-reveal">

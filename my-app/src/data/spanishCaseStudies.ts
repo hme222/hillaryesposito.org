@@ -380,7 +380,7 @@ export const UXWOMAN_ES: SpanishCaseStudyData = {
       body: [
         "Recluté por conducta, no por cargo. Cada entrevista cuenta una vez. Las sesiones del estudio se hacen en UserTesting.",
         "Seis entrevistas de salud: servicios financieros al paciente, operaciones de ingresos, asistente médico de ortopedia, enfermera de revisión de utilización, psiquiatra y una persona que fue responsable de servicios al afiliado en un plan de salud. Una persona también habló desde su experiencia personal como paciente.",
-        "No hay un flujo de entrevistas con pacientes. Lo que sé de los pacientes es de segunda mano, salvo ese testimonio. Una séptima entrevista, adyacente, con una persona a cargo de RR. HH. trató sobre la verificación de fuentes de IA. No valida nada en salud.",
+        "No hay un flujo de entrevistas con pacientes. Lo que sé de los pacientes es de segunda mano, salvo ese testimonio. Una séptima entrevista, adyacente, con una persona a cargo de RR. HH. trató sobre la verificación de fuentes de IA. No valida nada en salud. No se recopiló información de salud protegida (PHI) y las personas participantes están anonimizadas.",
         "Investigación secundaria: un análisis de flujos de IA e información en hospitales grandes, con informes federales y encuestas profesionales. Muestra patrones del sistema, no lo que necesita un hospital en particular.",
       ],
     },
