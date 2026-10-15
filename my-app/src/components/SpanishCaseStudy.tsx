@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { switchLanguageAtCurrentSection, useLanguage } from "../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "./flagship/CaseStudyChapters";
+import CaseStudyCredential, { CaseStudyCredentialData } from "./flagship/CaseStudyCredential";
 import CaseStudyReel, { CaseStudyReelData } from "./flagship/CaseStudyReel";
 import usePageTitle from "../hooks/usePageTitle";
 import CartoField from "./riso/CartoField";
@@ -33,6 +34,8 @@ export type SpanishCaseStudyData = {
     bullets?: string[];
     /** A user-started video shown after the section copy (Knowunity's reel). */
     reel?: CaseStudyReelData;
+    /** A thumbnail credential with its verification link (Knowunity's badge). */
+    credential?: CaseStudyCredentialData;
   }[];
   /** Links to the other case studies, for case-to-case navigation (parity with the English MoreWork). */
   otherProjects?: { title: string; desc: string; path: string }[];
@@ -161,6 +164,7 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
               </ul>
             )}
             {section.reel && <CaseStudyReel reel={section.reel} />}
+            {section.credential && <CaseStudyCredential credential={section.credential} />}
           </div>
         </section>
       ))}

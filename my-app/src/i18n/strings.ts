@@ -102,7 +102,7 @@ const en = {
   "home.riso.uxwomanDesc":
     "I ran six healthcare interviews and one adjacent HR interview; they point to one hypothesis: staff and patients cannot see who owns the next step. No dedicated patient interviews yet; five pretotypes designed, none run. Active, research phase.",
   "home.riso.knowunityDesc":
-    "Students say a definition out loud and get their own words quoted back as proof. Selected for a Yummy Labs design sprint with Knowunity: solo, 2.5 weeks, on their brief and kit. Recall mocked, not shipped.",
+    "Students say a definition out loud and get their own words quoted back as proof. Selected for the Yummy Labs AI Design Sprint with Knowunity: solo, 2.5 weeks, on their brief and kit. Recall mocked, not shipped.",
   "home.riso.groveAlt": "Grove daily care screen showing one clear plant-care task and overdue plants first",
   "home.riso.mskAlt": "Recreated Memorial Sloan Kettering filing queue, showing patient-portal messages moving from ready-to-send through filed",
   "home.riso.logisticsAlt": "Service mechanism diagram contrasting a rear supply point with the warehouse moved forward, beside resupply time falling from months to weeks",
@@ -298,7 +298,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.uxwomanDesc":
     "Hice seis entrevistas de salud y una adyacente de RR. HH.; apuntan a una hipótesis: el personal y los pacientes no ven quién tiene el siguiente paso. Aún sin entrevistas dedicadas con pacientes; cinco pretotipos diseñados, ninguno ejecutado. Activo, fase de investigación.",
   "home.riso.knowunityDesc":
-    "Los estudiantes dicen una definición en voz alta y reciben sus propias palabras citadas como prueba. Seleccionada para un sprint de diseño de Yummy Labs con Knowunity: individual, 2.5 semanas, con su brief y su kit. Recuerdo simulado, no publicado.",
+    "Los estudiantes dicen una definición en voz alta y reciben sus propias palabras citadas como prueba. Seleccionada para el Yummy Labs AI Design Sprint con Knowunity: individual, 2.5 semanas, con su brief y su kit. Recuerdo simulado, no publicado.",
   "home.riso.groveAlt": "Pantalla de cuidado diario de Grove con una tarea clara y las plantas atrasadas primero",
   "home.riso.mskAlt": "Cola de archivo recreada de Memorial Sloan Kettering, mostrando mensajes del portal de pacientes desde listos para enviar hasta archivados",
   "home.riso.logisticsAlt": "Diagrama de mecanismo de servicio que contrasta un punto de suministro en la retaguardia con el almacén movido al frente, junto al tiempo de reabastecimiento bajando de meses a semanas",

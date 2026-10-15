@@ -1,4 +1,5 @@
 import type { SpanishCaseStudyData } from "../components/SpanishCaseStudy";
+import { KNOWUNITY_BADGE_ASSET } from "./knowunityBadge";
 
 export const GROVE_ES: SpanishCaseStudyData = {
   title: "Once funciones se convirtieron en tres.",
@@ -377,12 +378,12 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
   breadcrumb: "Knowunity",
   meta: "Knowunity · Sprint de diseño · Prototipo móvil interactivo · Recuerdo simulado",
   intro:
-    "Knowunity es una app de estudio para estudiantes. Un estudiante dice una definición en voz alta; Knowie, el asistente de Knowunity, responde por texto. Cuando acierta, le cita sus propias palabras como prueba. Sprint individual de dos semanas y media de Yummy Labs con el brief de Knowunity; prototipo funcional sobre su kit de componentes. El reconocimiento de voz es simulado y no se probó con estudiantes; no es una función publicada de Knowunity.",
+    "Knowunity es una app de estudio para estudiantes. Un estudiante dice una definición en voz alta; Knowie, el asistente de Knowunity, responde por texto. Cuando acierta, le cita sus propias palabras como prueba. Participación individual de dos semanas y media en el Yummy Labs AI Design Sprint, con el brief de Knowunity; prototipo funcional sobre su kit de componentes. El reconocimiento de voz es simulado y no se probó con estudiantes; no es una función publicada de Knowunity.",
   stats: [
-    { label: "Rol", value: "Participación individual · sprint de diseño de Yummy Labs · brief y kit de Knowunity" },
+    { label: "Rol", value: "Participación individual · Yummy Labs AI Design Sprint · brief y kit de Knowunity" },
     { label: "Brief", value: "Voz de entrada, texto de salida · iOS, 390px, modo oscuro · recuerdo simulado" },
     { label: "Mi parte", value: "Flujos y decisiones · prototipo codificado · catálogo en Storybook" },
-    { label: "Resultado", value: "Insignia Design Sprint de Yummy Labs · revisado por Knowunity · no publicado" },
+    { label: "Resultado", value: "Insignia AI Design Sprinter de Yummy Labs · revisado por Knowunity · no publicado" },
   ],
   sections: [
     {
@@ -450,9 +451,16 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
       eyebrow: "Resultado",
       title: "Una insignia, una revisión y una simulación que aún necesita\u00a0estudiantes.",
       body: [
-        "Yummy Labs otorgó a la entrada una insignia Design Sprint y Knowunity revisó el trabajo. El reconocimiento de voz es simulado: cuánto tiempo se mantiene el micrófono decide el resultado. No hubo pruebas con estudiantes. No es una función publicada de Knowunity, y aquí no se publican cifras internas de Knowunity.",
+        "Yummy Labs otorgó a la entrada su insignia AI Design Sprinter y Knowunity revisó el trabajo. El reconocimiento de voz es simulado: cuánto tiempo se mantiene el micrófono decide el resultado. No hubo pruebas con estudiantes. No es una función publicada de Knowunity, y aquí no se publican cifras internas de Knowunity.",
         "Siguiente paso: una versión con reconocimiento de voz frente a estudiantes.",
       ],
+      credential: {
+        ...KNOWUNITY_BADGE_ASSET,
+        alt: "Insignia de Yummy Labs: Hillary Esposito, AI Design Sprinter, completó el Yummy Labs AI Design Sprint en colaboración con Knowunity, septiembre de 2026.",
+        caption: "Insignia AI Design Sprinter · Yummy Labs AI Design Sprint, en colaboración con Knowunity · sept. 2026",
+        linkLabel: "Verificar en LinkedIn",
+        newTabLabel: " (se abre en una pestaña nueva)",
+      },
     },
   ],
   otherProjects: [

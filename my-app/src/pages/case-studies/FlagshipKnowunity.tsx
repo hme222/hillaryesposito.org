@@ -4,12 +4,14 @@ import { useLanguage, useT } from "../../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
 import ReadingProgress from "../../components/flagship/ReadingProgress";
 import ShareCaseStudy from "../../components/flagship/ShareCaseStudy";
+import CaseStudyCredential, { CaseStudyCredentialData } from "../../components/flagship/CaseStudyCredential";
 import CaseStudyReel, { CaseStudyReelData } from "../../components/flagship/CaseStudyReel";
 import DecisionStory from "../../components/flagship/DecisionStory";
 import EvidenceField from "../../components/flagship/EvidenceField";
 import CartoField from "../../components/riso/CartoField";
 import RisoDefs from "../../components/riso/RisoDefs";
 import SpanishCaseStudy from "../../components/SpanishCaseStudy";
+import { KNOWUNITY_BADGE_ASSET } from "../../data/knowunityBadge";
 import { KNOWUNITY_ES } from "../../data/spanishCaseStudies";
 import useFlagshipReveal from "../../hooks/useFlagshipReveal";
 import usePageTitle from "../../hooks/usePageTitle";
@@ -77,6 +79,13 @@ const REEL: CaseStudyReelData = {
     "End card: Say It Back — Explain it. Prove it stuck.",
   ],
   transcriptNote: "Music only; no narration.",
+};
+
+const BADGE: Omit<CaseStudyCredentialData, "newTabLabel"> = {
+  ...KNOWUNITY_BADGE_ASSET,
+  alt: "Yummy Labs badge: Hillary Esposito, AI Design Sprinter, completed the Yummy Labs AI Design Sprint in partnership with Knowunity, September 2026.",
+  caption: "AI Design Sprinter badge · Yummy Labs AI Design Sprint, in partnership with Knowunity · Sept 2026",
+  linkLabel: "Verify on LinkedIn",
 };
 
 const STEPS = [
@@ -162,14 +171,14 @@ export default function FlagshipKnowunity() {
             <p className="rp-sub">
               Knowunity is a study app for students. A student says a definition out loud; Knowunity's assistant,
               Knowie, replies in text. On a clean pass it quotes the student's <b>own words</b> back as
-              the{"\u00a0"}proof. Solo, 2.5-week Yummy Labs sprint on Knowunity's brief; working prototype on their
+              the{"\u00a0"}proof. Solo, 2.5-week Yummy Labs AI Design Sprint on Knowunity's brief; working prototype on their
               component kit.
             </p>
             <dl className="rp-heroEvidence" aria-label="Knowunity case evidence at a glance">
-              <div><dt>Role</dt><dd>Solo entry · Yummy Labs design sprint · Knowunity's brief and kit</dd></div>
+              <div><dt>Role</dt><dd>Solo entry · Yummy Labs AI Design Sprint · Knowunity's brief and kit</dd></div>
               <div><dt>Brief</dt><dd>Voice in, text out · iOS, 390px, dark mode · recall mocked: no speech recognition, hold time decides the result</dd></div>
               <div><dt>My contribution</dt><dd>Flows and decisions · coded prototype · Storybook catalog</dd></div>
-              <div><dt>Outcome</dt><dd>Yummy Labs Design Sprint Badge · reviewed by Knowunity · not a shipped feature</dd></div>
+              <div><dt>Outcome</dt><dd>Yummy Labs AI Design Sprinter badge · reviewed by Knowunity · not a shipped feature</dd></div>
             </dl>
             <a className="rp-cta" href="#knowunity-decisions">See the four decisions →</a>
           </div>
@@ -272,13 +281,14 @@ export default function FlagshipKnowunity() {
         languageAnchor="knowunity-outcomes"
         kicker="What it added up to"
         title="A badge, a review, and a mock that still needs students."
-        intro="Yummy Labs awarded the entry a Design Sprint Badge and Knowunity reviewed the work. Recall is mocked and no students have tested it. Next: a speech-to-text build in front of students."
+        intro="Yummy Labs awarded the entry its AI Design Sprinter badge and Knowunity reviewed the work. Recall is mocked and no students have tested it. Next: a speech-to-text build in front of students."
         disclaimer="Design-sprint prototype · recall is mocked: no speech recognition, hold time decides the result · no student testing · not a shipped Knowunity feature · Knowunity's internal numbers are not published here"
         metrics={[
           { tag: "Build", n: "43", label: "routes in the working prototype, every screen reached by tapping, none by typing a URL" },
           { tag: "Sprint", n: "2.5", label: "weeks, solo, on Knowunity's brief and component kit" },
         ]}
         route={["Meet it where the quiz ends", "Say it back", "See your own words", "Practice what you missed"]}
+        aside={<CaseStudyCredential credential={{ ...BADGE, newTabLabel: t("a11y.newTab") }} />}
       /></div>
 
       <section className="rp-section">

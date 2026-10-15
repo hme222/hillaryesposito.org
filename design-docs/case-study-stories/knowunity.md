@@ -75,7 +75,7 @@ program using Knowunity's brief, kickoff and assets; she worked **solo** ("we"
 / "our" meant the sprint's participants).
 **Outcome:** "We got a Badge from Yummy Labs and Know Unity reviewed our work."
 → for the page: Yummy Labs awarded her a badge; Knowunity reviewed the work.
-TODO: badge name, and whether Knowunity's review feedback can be quoted.
+Resolved (see Validation): AI Design Sprinter badge; review feedback not quoted.
 **Limitations to state plainly (Hillary chose):** recall is mocked (no real
 speech recognition or judging); no student testing.
 **Status (from the repo, `docs/current-state.md`, 2026-10-13):** working
@@ -119,7 +119,8 @@ they'll use in the exam. (TODO: her own phrasing.)
 students earlier; recall was mocked.
 
 **Result + status (Q5):** Yummy Labs awarded a badge; Knowunity reviewed the
-work. (TODO: badge name; whether review feedback can be quoted.) Working
+work. (Badge name resolved below: AI Design Sprinter badge. Review feedback
+is not quoted.) Working
 prototype, 43 routes. Limits stated plainly: recall is mocked, no student
 testing. Not a shipped Knowunity feature.
 
@@ -128,8 +129,10 @@ my specs and Knowunity's components.
 
 ## Validation (2026-10-13)
 
-- Badge: **Design Sprint Badge** from Yummy Labs. Knowunity's review is not
-  quoted.
+- Badge: **AI Design Sprinter badge** from the **Yummy Labs AI Design Sprint**,
+  in partnership with Knowunity, Sept 2026 (verifiable on Hillary's LinkedIn
+  certifications; shown as a thumbnail in the page's outcomes). Knowunity's
+  review is not quoted.
 - Paraphrase-back: when asked to confirm the cold paraphrase, Hillary pointed
   to `~/Desktop/Knowunity/docs/code-history.md` (2,040 lines, 144 dated
   entries; entries marked "designer" are her decisions, e.g. 2026-10-12 step

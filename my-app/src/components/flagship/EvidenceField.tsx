@@ -25,6 +25,7 @@ export default function EvidenceField({
   metrics,
   route,
   leadMetric = false,
+  aside,
 }: {
   id: string;
   languageAnchor?: string;
@@ -36,7 +37,20 @@ export default function EvidenceField({
   route: string[];
   /** Give the first metric the lead-number column and scale (.rp-outcomes--lead). */
   leadMetric?: boolean;
+  /** Small proof that sits beside the tiles (Knowunity's badge). Stacks under them on phones. */
+  aside?: React.ReactNode;
 }) {
+  const outcomes = (
+    <div className={`rp-outcomes rp-reveal${metrics.length === 2 ? " rp-outcomes--two" : metrics.length === 4 ? " rp-outcomes--four" : ""}${leadMetric ? " rp-outcomes--lead" : ""}`}>
+      {metrics.map((metric) => (
+        <div className="rp-stat" key={`${metric.n}-${metric.label}`}>
+          {metric.tag && <p className="rp-stat__tag">{metric.tag}</p>}
+          <p className="rp-stat__n">{metric.n}</p>
+          <p className="rp-stat__l">{metric.label}</p>
+        </div>
+      ))}
+    </div>
+  );
   return (
     <section className="rp-section rp-outcomeStage" id={id} data-language-anchor={languageAnchor}>
       <div className="rp-wrap">
@@ -60,15 +74,12 @@ export default function EvidenceField({
         {/* Two numbers share the row, as Grove's two outcomes do; the default
             three-column grid left a third of it empty. Four (MSK) sit two by
             two, so no tile is left alone on a second row. */}
-        <div className={`rp-outcomes rp-reveal${metrics.length === 2 ? " rp-outcomes--two" : metrics.length === 4 ? " rp-outcomes--four" : ""}${leadMetric ? " rp-outcomes--lead" : ""}`}>
-          {metrics.map((metric) => (
-            <div className="rp-stat" key={`${metric.n}-${metric.label}`}>
-              {metric.tag && <p className="rp-stat__tag">{metric.tag}</p>}
-              <p className="rp-stat__n">{metric.n}</p>
-              <p className="rp-stat__l">{metric.label}</p>
-            </div>
-          ))}
-        </div>
+        {aside ? (
+          <div className="rp-outcomesRow">
+            {outcomes}
+            {aside}
+          </div>
+        ) : outcomes}
       </div>
     </section>
   );

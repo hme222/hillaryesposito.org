@@ -12,6 +12,7 @@ import About from "../AboutMe";
 import NotFoundPage from "../NotFoundPage";
 import Footer from "../../components/Footer";
 import RecruiterPanel from "../../components/RecruiterPanel";
+import { STRINGS } from "../../i18n/strings";
 
 let mockLang = "en";
 
@@ -346,6 +347,58 @@ describe("flagship case-study accessibility", () => {
     expect(lines).toHaveLength(9);
     expect(lines[lines.length - 1]?.textContent).toContain("Say It Back");
     expect(details?.textContent).toContain(note);
+  });
+
+  it.each([
+    [
+      "en",
+      "#knowunity-outcomes",
+      "Yummy Labs badge: Hillary Esposito, AI Design Sprinter, completed the Yummy Labs AI Design Sprint in partnership with Knowunity, September 2026.",
+      "AI Design Sprinter badge · Yummy Labs AI Design Sprint, in partnership with Knowunity · Sept 2026",
+      "Verify on LinkedIn",
+      // useT is mocked to return keys; the real EN value is checked below.
+      "a11y.newTab",
+    ],
+    [
+      "es",
+      "#es-knowunity-outcomes",
+      "Insignia de Yummy Labs: Hillary Esposito, AI Design Sprinter, completó el Yummy Labs AI Design Sprint en colaboración con Knowunity, septiembre de 2026.",
+      "Insignia AI Design Sprinter · Yummy Labs AI Design Sprint, en colaboración con Knowunity · sept. 2026",
+      "Verificar en LinkedIn",
+      " (se abre en una pestaña nueva)",
+    ],
+  ])("shows the Yummy Labs badge in the Knowunity outcomes with a LinkedIn proof link (%s)", async (lang, sectionId, alt, caption, linkLabel, srText) => {
+    mockLang = lang;
+    await act(async () => {
+      root.render(<FlagshipKnowunity />);
+    });
+
+    const figures = container.querySelectorAll(`${sectionId} figure.rp-credential`);
+    expect(figures).toHaveLength(1);
+    const figure = figures[0];
+    const img = figure.querySelector("img");
+    expect(img?.getAttribute("src")).toBe("/assets/knowunity/yummy-labs-ai-design-sprint-badge.webp");
+    expect(img?.getAttribute("alt")).toBe(alt);
+    expect(img?.getAttribute("width")).toBe("400");
+    expect(img?.getAttribute("height")).toBe("562");
+    expect(img?.getAttribute("loading")).toBe("lazy");
+    expect(figure.querySelector("figcaption")?.textContent).toBe(caption);
+
+    const link = figure.querySelector<HTMLAnchorElement>("a.rp-credential__link");
+    expect(link?.getAttribute("href")).toBe(
+      "https://www.linkedin.com/in/hillaryesposito/overlay/Certifications/1086549019/treasury/?profileId=ACoAABkCpnQBfUuhzFswmc5sF4D5ItxfujJMg2o",
+    );
+    expect(link?.getAttribute("target")).toBe("_blank");
+    expect(link?.getAttribute("rel")).toContain("noopener");
+    expect(link?.querySelector(".rp-ext")?.textContent).toBe(linkLabel);
+    expect(link?.querySelector(".sr-only")?.textContent).toBe(srText);
+    expect(STRINGS.en["a11y.newTab"]).toBe(" (opens in new tab)");
+
+    // The badge's own name replaces the old "Design Sprint Badge" wording.
+    expect(container.textContent).not.toMatch(/Design Sprint Badge|insignia Design Sprint /);
+    expect(container.textContent).toContain(lang === "en" ? "AI Design Sprinter badge" : "insignia AI Design Sprinter");
+    // Skill tags stay in the image, not the page text.
+    expect(figure.textContent).not.toMatch(/Prompt|Vibe|Figma/i);
   });
 
   it("rebuilds the Spanish MSK study on the English chapters, with Home's four-rules link landing", async () => {
