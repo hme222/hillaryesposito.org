@@ -146,6 +146,12 @@ export default function RecruiterPanel() {
                 </button>
               </li>
               <li>
+                <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/ux-woman")}>
+                  <strong>UX Woman · Six healthcare interviews, one hypothesis</strong>
+                  <span>Interviews across revenue operations, orthopedics, utilization review, psychiatry, and health-plan member services; staff and patients cannot see who owns the next step. A hypothesis, not a finding: five pretotypes designed, none run</span>
+                </button>
+              </li>
+              <li>
                 <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/logistics")}>
                   <strong>Medical logistics · Resupply time reduced 85%</strong>
                   <span>Redesigned an end-to-end supply service for 5,000+ soldiers across seven aid stations; shared tracking also reduced spending 60%</span>

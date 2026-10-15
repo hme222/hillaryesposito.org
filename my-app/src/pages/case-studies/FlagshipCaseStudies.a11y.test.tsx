@@ -611,6 +611,7 @@ describe("flagship case-study accessibility", () => {
     );
     expect(projectTitles).toEqual([
       "MSK · A filing queue replaced a four-department paper detour",
+      "UX Woman · Six healthcare interviews, one hypothesis",
       "Medical logistics · Resupply time reduced 85%",
       "Grove · Eleven features became three",
     ]);
