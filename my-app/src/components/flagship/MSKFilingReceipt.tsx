@@ -1,7 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import MSKDashboardMockup from "../MSKDashboardMockup";
 import { MSK_COPY, type MskCopy } from "../../data/mskCaseStudy";
 
 type Copy = MskCopy["receipt"];
+type DashboardCopy = MskCopy["dashboard"];
+
+// Indices into `dashboard.rows` (data/mskCaseStudy.ts): row 0 is a patient
+// message waiting with "Ready to send"; row 4 is the queue's filed state,
+// "In the chart". The demo files row 0, so the filed row borrows row 4's
+// status, route, and action but keeps row 0's patient and message. Otherwise
+// the masked MRN would change mid-demo and read as a different patient.
+const READY_INDEX = 0;
+const FILED_INDEX = 4;
 
 /**
  * Copy arrives as a prop so the same interaction runs in both languages.
@@ -10,9 +20,16 @@ type Copy = MskCopy["receipt"];
  */
 /**
  * @status: stable
- * @purpose: Animated, step-by-step "filing receipt" interaction demonstrating the MSK filing workflow, localizable via the `copy` prop; used on the MSK case study page. Pick this for an animated walkthrough — for the literal dashboard recreation use MSKDashboardMockup, for a static before/after diagram use MSKMechanism.
+ * @purpose: Animated, step-by-step "filing receipt" interaction demonstrating the MSK filing workflow, ending in one real queue row (via MSKDashboardMockup) that flips from "Ready to send" to "In the chart"; localizable via the `copy` and `dashboardCopy` props; used on the MSK case study page. Pick this for an animated walkthrough — for the literal dashboard recreation use MSKDashboardMockup, for a static before/after diagram use MSKMechanism.
  */
-export default function MSKFilingReceipt({ copy = MSK_COPY.en.receipt }: { copy?: Copy }) {
+export default function MSKFilingReceipt({
+  copy = MSK_COPY.en.receipt,
+  dashboardCopy = MSK_COPY.en.dashboard,
+}: {
+  copy?: Copy;
+  /** The queue copy in the same language as `copy`. */
+  dashboardCopy?: DashboardCopy;
+}) {
   const [step, setStep] = useState(0);
   const [hasRun, setHasRun] = useState(false);
   const timers = useRef<number[]>([]);
@@ -41,6 +58,17 @@ export default function MSKFilingReceipt({ copy = MSK_COPY.en.receipt }: { copy?
     setStep(0);
     setHasRun(false);
   }, [copy]);
+
+  // Two rows: the waiting message, then the same message once filed.
+  const queueCopy = useMemo<DashboardCopy>(() => {
+    const ready = dashboardCopy.rows[READY_INDEX];
+    const filed = dashboardCopy.rows[FILED_INDEX];
+    return {
+      ...dashboardCopy,
+      rows: [ready, { ...ready, status: filed.status, slug: filed.slug, routed: filed.routed, action: filed.action }],
+    };
+  }, [dashboardCopy]);
+  const isFiled = step === copy.steps.length;
 
   const runFiling = () => {
     timers.current.forEach(window.clearTimeout);
@@ -79,19 +107,23 @@ export default function MSKFilingReceipt({ copy = MSK_COPY.en.receipt }: { copy?
           </p>
         </div>
 
-        <div className={`fp-receipt__trace step-${step}`} aria-hidden="true">
-          <div className="fp-receipt__rail"><span /></div>
-          <div className="fp-receipt__token">F</div>
-          {copy.nodes.map((node, index) => (
-            <div className={`fp-receipt__node${step > index ? " is-complete" : ""}`} key={node.n}>
-              <span>{node.n}</span><b>{node.label}</b><small>{node.value}</small>
-            </div>
-          ))}
-          <div className={`fp-receipt__paper${step === 4 ? " is-visible" : ""}`}>
-            <span>{copy.paperLabel}</span>
-            <b>{copy.paperValue}</b>
-            <small>{copy.paperNote}</small>
-          </div>
+        {/* The demo ends where the real work ended: the same queue row, now
+            filed (2026-10-15, call 5). The table stays readable to assistive
+            tech; the polite status line above announces each step. */}
+        <div className={`fp-receipt__queue step-${step}${isFiled ? " is-filed" : ""}`}>
+          <MSKDashboardMockup
+            compact
+            condensedHeader
+            hideToolbar
+            hideRule
+            legendDisclosure
+            rowIndices={[isFiled ? 1 : 0]}
+            activeRow={0}
+            copy={queueCopy}
+          />
+          <p className="fp-receipt__stepLine" aria-hidden="true">
+            {step === 0 ? copy.ready : copy.steps[step - 1]}
+          </p>
           <p className="fp-receipt__boundary">{copy.boundary}</p>
         </div>
       </div>

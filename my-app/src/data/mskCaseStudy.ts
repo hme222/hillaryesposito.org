@@ -51,10 +51,6 @@ export type MskCopy = {
     replay: string;
     ready: string;
     steps: string[];
-    nodes: { n: string; label: string; value: string }[];
-    paperLabel: string;
-    paperValue: string;
-    paperNote: string;
     boundary: string;
   };
 
@@ -116,6 +112,8 @@ export type MskCopy = {
     rows: { mrn: string; received: string; doc: string; status: string; slug: string; routed: string; action: string }[];
     mrnTerm: string; mrnDef: string;
     emrTerm: string; emrDef: string;
+    /** Summary text when the MRN/EMR legend is a closed disclosure. */
+    legendSummary: string;
     ruleLabel: string; ruleAction: string; rule: string;
   };
 
@@ -225,15 +223,6 @@ const en: MskCopy = {
     replay: "Replay the online path",
     ready: "Ready to file.",
     steps: ["Queue opened", "Role confirmed", "Filed to the online chart", "Returned with status updated"],
-    nodes: [
-      { n: "01", label: "Queue", value: "Worklist ready" },
-      { n: "02", label: "File action", value: "Role confirmed" },
-      { n: "03", label: "Online chart", value: "Filed" },
-      { n: "04", label: "Return", value: "Status updated" },
-    ],
-    paperLabel: "QUEUE STATUS",
-    paperValue: "FILED",
-    paperNote: "Returned to dashboard · status updated",
     boundary: "Recreated interaction · no patient data",
   },
 
@@ -352,6 +341,7 @@ const en: MskCopy = {
     mrnDef: "medical record number, the ID for one patient’s chart. Masked to the last four digits.",
     emrTerm: "EMR",
     emrDef: "electronic medical record, the patient’s chart. Portal messages sit outside it until they are filed.",
+    legendSummary: "What these terms mean",
     ruleLabel: "Rule:",
     ruleAction: "Send to EMR",
     rule: "appears only when the message is ready and the coordinator's role includes filing rights.",
@@ -545,15 +535,6 @@ const es: MskCopy = {
     replay: "Repetir la ruta en línea",
     ready: "Listo para archivar.",
     steps: ["Cola abierta", "Permiso confirmado", "Archivado en la historia en línea", "Regreso con el estado actualizado"],
-    nodes: [
-      { n: "01", label: "Cola", value: "Lista de trabajo lista" },
-      { n: "02", label: "Acción de archivo", value: "Permiso confirmado" },
-      { n: "03", label: "Historia en línea", value: "Archivado" },
-      { n: "04", label: "Regreso", value: "Estado actualizado" },
-    ],
-    paperLabel: "ESTADO DE LA COLA",
-    paperValue: "ARCHIVADO",
-    paperNote: "Regresó al panel · estado actualizado",
     boundary: "Interacción recreada · sin datos de pacientes",
   },
 
@@ -667,6 +648,7 @@ const es: MskCopy = {
     mrnDef: "número de expediente médico, el identificador de la historia de un paciente. Enmascarado a los últimos cuatro dígitos.",
     emrTerm: "EMR",
     emrDef: "expediente médico electrónico, la historia del paciente. Los mensajes del portal quedan fuera hasta que se archivan.",
+    legendSummary: "Qué significan estos términos",
     ruleLabel: "Regla:",
     ruleAction: "Enviar al EMR",
     rule: "aparece solo cuando el mensaje está listo y el puesto de coordinación tiene permisos de archivo.",

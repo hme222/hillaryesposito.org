@@ -173,7 +173,7 @@ export default function MSKDashboardMockup({
         <details className="msk-dashboard-mockup__legend msk-dashboard-mockup__legend--details">
           <summary>
             <span>{copy.mrnTerm} · {copy.emrTerm}</span>
-            <b>What these terms mean</b>
+            <b>{copy.legendSummary}</b>
           </summary>
           <div className="msk-dashboard-mockup__legendBody">{legendBody}</div>
         </details>
