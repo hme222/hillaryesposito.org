@@ -178,7 +178,7 @@ export default function About() {
               {isSpanish ? "Diseño productos de salud donde cada transferencia\u00a0importa." : "I design healthcare products where every handoff\u00a0matters."}
             </h1>
             <p className="rp-sub">
-              {isSpanish ? "Más de trece años en operaciones de atención oncológica y logística médica militar, ahora en diseño de productos de salud: flujos clínicos y herramientas internas para el momento en que un paso equivocado tiene un costo." : "Thirteen-plus years in cancer-care operations and military medical logistics, now in healthcare product design: clinical workflows and internal tools for the moment a wrong step has a cost."}
+              {isSpanish ? "Seis años en operaciones de atención oncológica y más de 13 años de servicio en el Ejército, ahora en diseño de productos de salud: flujos clínicos y herramientas internas para el momento en que un paso equivocado tiene un costo." : "Six years in cancer-care operations and 13+ years of Army service, now in healthcare product design: clinical workflows and internal tools for the moment a wrong step has a cost."}
             </p>
           </div>
         </div>

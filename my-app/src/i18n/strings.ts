@@ -89,7 +89,7 @@ const en = {
   // detour (2026-10-14 review, item 13); the work row and teaser don't repeat it.
   "home.riso.heroProof": "IT and UX built it after I changed roles. The workflows in scope reach 21,000+ clinicians and staff.",
   "home.riso.careerSwitchTitle": "From healthcare operations to product design.",
-  "home.riso.careerSwitchBody": "I ran the workflows I now design: MSK admin and training roles, and Army medical logistics.",
+  "home.riso.careerSwitchBody": "Six years running MSK admin and training workflows, and 13+ years of Army service in medical logistics, before designing for them.",
   "home.riso.openingVisual": "Watch the 5-second opener",
   "home.riso.openingFilmLabel": "Opening visual · five seconds",
   "home.riso.openingFilmSkip": "Skip →",
@@ -307,7 +307,7 @@ const es: Partial<Record<StringKey, string>> = {
     "En Memorial Sloan Kettering, rastreé un desvío en papel entre cuatro áreas y propuse la cola que lo reemplazó.",
   "home.riso.heroProof": "TI y UX la construyeron después de que cambié de puesto. Los flujos incluidos alcanzan a más de 21,000 clínicos y personal.",
   "home.riso.careerSwitchTitle": "De operaciones de salud a diseño de producto.",
-  "home.riso.careerSwitchBody": "Dirigí los flujos que ahora diseño: puestos administrativos y de capacitación en MSK, y logística médica del Ejército.",
+  "home.riso.careerSwitchBody": "Seis años a cargo de flujos administrativos y de capacitación en MSK, y más de 13 años de servicio en el Ejército en logística médica, antes de diseñar para ellos.",
   "home.riso.openingVisual": "Ver la apertura de 5 segundos",
   "home.riso.openingFilmLabel": "Apertura visual · cinco segundos",
   "home.riso.openingFilmSkip": "Saltar →",
