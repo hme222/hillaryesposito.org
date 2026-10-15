@@ -15,6 +15,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
   sections: [
     {
       anchor: "grove-brief",
+      chapter: "Problema",
       eyebrow: "Dónde empieza esto",
       title: "Los dueños de plantas se olvidan. Y luego se sienten culpables.",
       body: [
@@ -24,6 +25,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
     },
     {
       anchor: "grove-research",
+      chapter: "Investigación",
       eyebrow: "Investigación",
       title: "Les pregunté a 34 dueños de plantas qué importa de verdad.",
       body: [
@@ -39,6 +41,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
     },
     {
       anchor: "grove-decisions",
+      chapter: "Decisiones",
       eyebrow: "Producto",
       title: "Agrupé las plantas por dónde viven, no en una sola lista larga.",
       body: [
@@ -49,6 +52,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
     },
     {
       anchor: "grove-override",
+      chapter: "Cambios",
       eyebrow: "Cuando algo sale mal",
       title: "El producto se decide en los momentos difíciles.",
       body: [
@@ -57,6 +61,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
     },
     {
       anchor: "grove-outcomes",
+      chapter: "Resultados",
       eyebrow: "Resultado",
       title: "Fase 2 de 3: el rediseño está decidido; la nueva prueba es lo siguiente.",
       body: [

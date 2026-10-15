@@ -412,6 +412,21 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".rp-next")?.getAttribute("href")).toBe("/case-study/knowunity");
   });
 
+  it("names Grove's chapters Problem → Research → Decisions → Changes → Outcomes, in both languages", async () => {
+    await act(async () => {
+      root.render(<RisoGrove />);
+    });
+    expect(Array.from(container.querySelectorAll(".rp-chapters a"), (a) => a.textContent)).toEqual(["Research", "Decisions", "Changes", "Outcomes"]);
+    expect(container.querySelector("#grove-override")).not.toBeNull();
+
+    mockLang = "es";
+    await act(async () => {
+      root.render(<RisoGrove />);
+    });
+    expect(Array.from(container.querySelectorAll(".rp-chapters a"), (a) => a.textContent)).toEqual(["Problema", "Investigación", "Decisiones", "Cambios", "Resultados"]);
+    expect(container.querySelector("#es-grove-override")).not.toBeNull();
+  });
+
   it("sends Grove's next-case-study band to UX Woman", async () => {
     await act(async () => {
       root.render(<RisoGrove />);
