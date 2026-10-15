@@ -136,7 +136,6 @@ body.dark-mode,
 } /* Nav dock dark-mode colours live with the rest of the dock rules
      (search NAV DOCK below) now that the dock has its own item/pill
      classes instead of .nav-link/.theme-btn/.hamburger. */
-/* ========================================================= NIGHT MODE ALIGNMENT PATCH (unify surfaces + remove hardcodes) Paste after your :root and .dark-mode token blocks ========================================================= */ /* 1) Add shared “surface” tokens (light + dark) */
 /* Surface / text / input / footer tokens are consolidated into the two token
    blocks at the top of this file. */
 /* Large-screen typography scale.
@@ -146,24 +145,17 @@ body.dark-mode,
    text stranded in a huge viewport. Purely additive above the 1440 lock. */
 @media (min-width: 1500px) {
   html { font-size: 106.25%; } /* ~17px */
-
-
 }
 
 
 @media (min-width: 1900px) {
   html { font-size: 112.5%; } /* ~18px */
-
-
 }
 
 
 @media (min-width: 2400px) {
   html { font-size: 118.75%; } /* ~19px */
-
-
 }
-
 
 
 /* Global reduced-motion safety net. Per-component rules below still fine-tune
@@ -179,72 +171,24 @@ body.dark-mode,
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-
-
 }
-
 
 
 /* 2) Normalize global surfaces */
 body {
   background: var(--surface-0);
   color: var(--text-1);
-}.feature,
-.media-card {
+}.feature {
   background: var(--surface-1);
   border: 1px solid var(--border);
-} /* 3) Kill the biggest offender: hard-coded dark brown project card */
-.project-card {
-  background: var(--surface-1);
-  border: 1px solid var(--border);
-}
-.dark-mode .project-card {
-  /* REMOVE: background: #36220c; */
-  background: var(--surface-1);
-  border-color: var(--border);
-  box-shadow: var(--shadow-md);
-} /* Make project-media match the same night palette */
-.project-media {
-  background:
-    radial-gradient(
-      circle at 20% 40%,
-      color-mix(in srgb, var(--focus) 14%, transparent),
-      transparent 60%
-    ),
-    radial-gradient(
-      circle at 85% 70%,
-      color-mix(in srgb, var(--focus) 10%, transparent),
-      transparent 60%
-    ),
-    var(--surface-1);
-}
-.dark-mode .project-media {
-  background:
-    radial-gradient(
-      circle at 20% 40%,
-      rgba(235, 163, 82, 0.14),
-      transparent 60%
-    ),
-    radial-gradient(
-      circle at 85% 70%,
-      rgba(235, 163, 82, 0.1),
-      transparent 60%
-    ),
-    var(--surface-1);
-}.case-study p,
-.case-study li,
-.about-intro {
+} /* Make project-media match the same night palette */.case-study p,
+.case-study li {
   color: var(--text-3);
-}
-.project-body p,
-.cs-media figcaption {
-  color: var(--text-2);
 }select {
   background: var(--input-bg);
   color: var(--text-1);
   border-color: var(--input-border);
 }
-/* 7) Navbar backdrop consistency (night mode can look “separate”) */
 /* ========================= RESET + BASE ========================= */
 * {
   margin: 0;
@@ -268,8 +212,6 @@ blockquote {
 }h1,
 h2,
 h3,
-.about-title,
-.about-growth-title,
 .case-study h1,
 .case-study h2,
 .case-study h3 {
@@ -281,8 +223,7 @@ figcaption,
 .recruiter-panel p {
   text-wrap: pretty;
   overflow-wrap: break-word;
-}.about-intro,
-.case-study .meta {
+}.case-study .meta {
   text-wrap: balance;
 }
 a {
@@ -659,28 +600,7 @@ select:focus-visible {
   }
 }
 
-
-.hero-btn {
-  padding: 1rem 2.25rem;
-  background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 100%);
-  color: #fff;
-  border: none;
-  border-radius: 3px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-  transition:
-    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.hero-btn:hover {
-  transform: translateY(-2px) scale(1.015);
-  box-shadow: 0 8px 20px rgba(107, 142, 35, 0.22);
-} /* Shared “card” styling used by features */
+ /* Shared “card” styling used by features */
 .feature {
   background: var(--card);
   padding: 2rem;
@@ -709,10 +629,6 @@ select:focus-visible {
   position: relative;
 }
 
-@keyframes gradient-shift {
-  0%, 100% { background-position: 0% center; }
-  50% { background-position: 100% center; }
-}
 
 .section {
   display: none;
@@ -723,81 +639,6 @@ select:focus-visible {
 .projects {
   padding: 40px var(--page-pad) 60px;
   background: var(--bg);
-}
-.project-card {
-  background: var(--bg);
-  border-radius: 26px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 0;
-  overflow: hidden;
-  cursor: pointer;
-  box-shadow: var(--shadow-sm);
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
-}
-.dark-mode .project-card {
-  background: #36220c;
-  border-color: rgba(248, 210, 183, 0.18);
-  box-shadow: var(--shadow-md);
-}
-.project-card:hover {
-  transform: translateY(-2px) scale(1.01);
-  box-shadow: var(--shadow-md);
-}
-.project-media {
-  height: 170px;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(
-    135deg,
-    rgba(235, 163, 82, 0.25),
-    rgba(186, 128, 63, 0.2)
-  );
-}
-.dark-mode .project-media {
-  background: linear-gradient(
-    135deg,
-    rgba(235, 163, 82, 0.2),
-    rgba(26, 14, 3, 0)
-  );
-}
-.project-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.project-icon {
-  font-size: 2.25rem;
-  width: 58px;
-  height: 58px;
-  border-radius: 16px;
-  display: grid;
-  place-items: center;
-  background: rgba(255, 255, 255, 0.65);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-.dark-mode .project-icon {
-  background: rgba(54, 34, 12, 0.85);
-  border-color: rgba(248, 210, 183, 0.22);
-}
-.project-body {
-  padding: 1.4rem 1.5rem 1.6rem;
-}
-.project-body h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.4rem;
-  letter-spacing: 0.4px;
-}
-.project-body p {
-  color: color-mix(in srgb, var(--fg) 65%, transparent);
-  line-height: 1.55;
-  font-size: 0.98rem; /* Clamp */
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  overflow: hidden; /* Modern spec (helps in some browsers) */
-  line-clamp: 3;
 }
 
 
@@ -860,82 +701,8 @@ select:focus-visible {
   margin-top: 0;
   color: var(--olive-2);
 }
-.media-card {
-  background: var(--bg);
-  border-radius: 18px;
-  padding: 1rem;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: var(--shadow-md);
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-.dark-mode .media-card {
-  background: var(--card);
-  border-color: var(--border);
-  box-shadow: var(--shadow-md);
-}
-.media-link {
-  display: block;
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background: rgba(0, 0, 0, 0.02);
-}
-.dark-mode .media-link {
-  border-color: rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.03);
-}
-.media-card img {
-  width: 100%;
-  height: 220px;
-  object-fit: contain;
-}
-@media (max-width: 600px) {
-  .media-card img {
-    height: 190px;
-  }
 
-
-}
-
-
-.cs-media figcaption {
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: var(--muted);
-}
-.cs-actions {
-  margin-top: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-.cs-link {
-  font-size: 0.9rem;
-  font-weight: 700;
-  text-decoration: none;
-  color: var(--olive-2);
-}
-.cs-link:hover {
-  text-decoration: underline;
-}
-.cs-toggle-link {
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  color: var(--olive-2);
-  font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  cursor: pointer;
-}
-.dark-mode .cs-link,
-.dark-mode .cs-toggle-link {
-  color: var(--focus);
-} /* ========================= FOOTER ========================= */
+ /* ========================= FOOTER ========================= */
 /* Left-aligned at every width: footer text is read, not admired, and a
    ragged centered column is harder to scan (2026-10-14 review). */
 .site-footer {
@@ -952,82 +719,22 @@ select:focus-visible {
   min-height: 100vh;
   background: var(--bg);
   color: var(--fg);
-}.about-hero,
-.about-life,
-.about-growth,
-.about-cta {
+}.about-life {
   width: min(var(--case-max), calc(100% - 2 * var(--page-pad)));
   margin: 0 auto;
-} /* Give About the same “page rhythm” as case studies */
-.about-hero {
-  padding: 20px 0 20px;
-  display: flex;
-  align-items: center;
-  gap: 3rem;
-}
-/* The band the knot-nav rests in. Sits between the lede and the copy so the
-   resolved row of balls + nav words has clear space of its own (no collision
-   with the positioning line or the description). The balls still play their
-   full-height tangle behind everything; group.position.y ≈ 0 lands the resting
-   row in this centered band. */
-.hero-knot-band {
-  width: 100%;
-  /* Sized for the small decorative knot now (not a full nav row), so the resting
-     dots nestle between the tagline and the copy rather than floating in a void. */
-  height: clamp(76px, 10vh, 112px);
-  flex: none;
-  pointer-events: none;
-}
-@media (max-width: 768px), (pointer: coarse) {
-  /* Nav labels are hidden on mobile (hamburger handles nav), so the band only
-     needs to give the decorative resting row a little breathing room. */
-  .hero-knot-band {
-    height: clamp(72px, 12vh, 110px);
-  }
-
-
-}
-
-@media (max-width: 768px) {
-  .hero-knot-band {
-    height: clamp(44px, 8vh, 72px);
-  }
-
-
 }
 
 
-/* In the split layout the knot owns its panel - full strength, no mask. */
-.hero-knot {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  /* Receives hover for the cursor-parallax tilt (it owns its own panel, so this
-     doesn't block any content behind it). */
-  pointer-events: auto;
-}
-.hero-knot canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
 /* Knot-as-nav. WorkflowKnot projects each labelled node's live 3D position to
    2D and writes it to the element's `transform`, so the label is pinned exactly
    to its node (top:0/left:0 + a translate set in JS, offset so the dot sits on
    the node and the label rides just above it). */
-.hero-knot-stage {
-  position: absolute;
-  inset: 0;
-}
 @media (max-width: 860px) {
   /* Tighten the space under the knot on stacked/mobile layouts. */
   .hero {
     padding-bottom: 24px;
   }
-
-
 }
-
 
 
 /* ── Large screens: scale the hero up and let case studies fill the width.
@@ -1040,155 +747,23 @@ select:focus-visible {
 .case-study li {
     max-width: 74ch;
   }
-
-
 }
 
 
-@media (max-width: 768px) {
-  .about-hero {
-    flex-direction: column-reverse;
-    gap: 2rem;
-  }
-
-
-}
-
-.about-life,
-.about-growth,
-.about-cta {
+.about-life {
   padding: 56px 0;
-} /* Intro line should look like your muted hero copy */
-.about-intro {
-  font-size: 1.1rem;
-  color: var(--muted);
-  line-height: 1.9;
-  max-width: 68ch;
 } /* Title should match your brand gradient language */
-.about-title {
-  font-family: var(--font-head);
-  font-weight: 700;
-  letter-spacing: -1px;
-  line-height: 1.1;
-  margin-top: 18px;
-  font-size: clamp(2rem, 4vw, 3rem);
-  background: linear-gradient(
-    135deg,
-    var(--olive-1) 0%,
-    var(--olive-2) 55%,
-    var(--olive-3) 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.about-life-title,
-.about-growth-title {
+.about-life-title {
   font-size: 1.75rem;
   font-weight: 600;
   margin-bottom: 1.25rem;
 }
 
-.about-feedback-card {
-  position: relative;
-  margin: 0;
-  padding: clamp(1.35rem, 3vw, 2rem);
-}
-
-.about-feedback-card blockquote {
-  margin: 0;
-  color: var(--fg);
-  font-family: var(--font-head);
-  font-size: clamp(1.08rem, 2vw, 1.35rem);
-  line-height: 1.55;
-}
-
-.about-feedback-card figcaption {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  margin-top: 1.25rem;
-  color: var(--muted);
-  font-size: 0.9rem;
-  line-height: 1.5;
-}
-
-.about-feedback-card figcaption strong {
-  color: var(--fg);
-  font-size: 0.95rem;
-}
-
-.about-cta-simple {
-  background:
-    radial-gradient(circle at 20% 30%, rgba(128, 128, 0, 0.1), transparent 55%),
-    radial-gradient(circle at 85% 70%, rgba(107, 142, 35, 0.1), transparent 55%),
-    var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-md), var(--shadow-olive);
-  padding: 2.5rem;
-  text-align: center;
-  max-width: 640px;
-  margin: 0 auto;
-}
 
 /* floating animation */
-@keyframes lunaFloat {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(14px);
-  }
-}
 
 /* tail wag */
-@keyframes lunaTail {
-  0% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(-6deg);
-  }
-  50% {
-    transform: rotate(6deg);
-  }
-  75% {
-    transform: rotate(-4deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
 
-
-
-
-/* =========================================================
-   DARK MODE + BASELINE ACCESSIBILITY
-   ---------------------------------------------------------
-   Consolidated 2026-07-28 from seven stacked "paste at the VERY
-   BOTTOM" patches — three generations of the same dark-mode fixes,
-   ~670 lines. Those patches resolved conflicts by cascade order
-   rather than specificity, which is why they carried 36 !important
-   declarations between them.
-
-   Most of what they styled no longer renders. Checked against the
-   live DOM on all six routes: .projects, .project-card,
-   .project-media, .project-icon, .project-body, .media-card,
-   .media-link, .case-study, .highlight, .feature, .cs-link,
-   .cs-toggle-link, .cs-media, .about-intro, .hero-btn and .hero
-   match zero elements. Those rules are gone.
-
-   Also gone: every `body.dark-mode` and `.app.dark-mode` selector.
-   The theme class is toggled on documentElement (App.tsx:38), so it
-   lands on <html> — `body.dark-mode` never matched anything, and one
-   entire patch block was written in it.
-
-   What survives is written once, at the value it actually resolved
-   to. Only two !important declarations remain, each with a reason.
-   ========================================================= */
 
 /* ---------- Dark mode: surfaces and copy ---------- */
 .dark-mode {
@@ -1298,160 +873,7 @@ textarea::placeholder {
    retinted, so there's exactly one dark-mode source of truth again. */
 
 
-/* ── Masked scroll-reveal (armed by useReveal; visible by default) ─────── */
-/* Hiding only applies once JS adds .reveal-ready to the root, so a no-JS or
-   reduced-motion render leaves every heading fully visible. */
-.reveal-ready .reveal {
-  opacity: 0;
-  transform: translateY(22px);
-  clip-path: inset(0 0 100% 0);
-  will-change: opacity, transform, clip-path;
-}
-
-.reveal-ready .reveal.is-visible {
-  opacity: 1;
-  transform: none;
-  clip-path: inset(0 0 0 0);
-  transition: opacity 0.7s ease,
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-    clip-path 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal-ready .reveal {
-    opacity: 1;
-    transform: none;
-    clip-path: none;
-    transition: none;
-  }
-
-
-}
-
-
-
 /* ── More Work slider: drag-to-scroll + magnetic arrows ───────────────── */
-.morework-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.morework-arrows {
-  display: flex;
-  gap: 0.6rem;
-  flex-shrink: 0;
-}
-
-.morework-arrow {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  border: 1px solid var(--border-strong, var(--border));
-  background: var(--card);
-  color: var(--fg);
-  display: grid;
-  place-items: center;
-  padding: 0;
-  cursor: pointer;
-  box-shadow: var(--shadow-sm);
-  /* magnetic offset (--mx/--my) is set in JS on hover */
-  transform: translate(var(--mx, 0px), var(--my, 0px));
-  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
-    background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
-    opacity 0.2s ease;
-}
-
-.morework-arrow__inner {
-  display: grid;
-  place-items: center;
-  /* leans a touch further than the button for a sense of depth on the pull */
-  transform: translate(calc(var(--mx, 0px) * 0.35), calc(var(--my, 0px) * 0.35));
-  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.morework-arrow:hover:not(:disabled) {
-  background: var(--olive-2);
-  border-color: var(--olive-2);
-  color: #fff;
-}
-
-.morework-arrow:disabled {
-  opacity: 0.3;
-  cursor: default;
-  box-shadow: none;
-}
-
-.morework-arrow:focus-visible {
-  outline: 2px solid var(--focus);
-  outline-offset: 3px;
-}
-
-.morework-stage {
-  position: relative;
-}
-.morework-fade {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 56px;
-  pointer-events: none;
-  z-index: 1;
-}
-.morework-fade--right {
-  right: 0;
-  background: linear-gradient(to right, transparent, var(--bg));
-}
-.morework-fade--left {
-  left: 0;
-  background: linear-gradient(to left, transparent, var(--bg));
-}
-
-.morework-viewport {
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  cursor: grab;
-}
-
-.morework-viewport::-webkit-scrollbar {
-  display: none;
-}
-
-.morework-viewport:active {
-  cursor: grabbing;
-}
-
-.morework-track {
-  display: flex;
-  gap: 1.5rem;
-  /* Room for the project-card drop shadow - the viewport clips overflow-y, so
-     without this the cards read as visually cut off at the bottom. */
-  padding: 0.5rem 0.25rem 2.25rem;
-}
-
-.morework-card {
-  flex: 0 0 min(320px, 78vw);
-  scroll-snap-align: start;
-  user-select: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .morework-arrow,
-  .morework-arrow__inner {
-    transition: none;
-    transform: none !important;
-  }
-  .morework-viewport {
-    scroll-behavior: auto;
-  }
-
-
-}
 
 
  
@@ -1475,53 +897,12 @@ textarea::placeholder {
   .case-study h1 {
     font-size: clamp(2.5rem, 13vw, 3.1rem);
   }
-
-
 }
 
-
-
-/* Dark mode - tools used block */
-.dark-mode .tools-used {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
-  border-color: rgba(255, 255, 255, 0.1);
-}
-.dark-mode .tools-used__eyebrow {
-  color: var(--focus, #ffb866);
-}
 
 /* ─────────────────────────────────────────────
    HOME - tertiary recruiter shortcut
    ───────────────────────────────────────────── */
-.home-recruiter-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  padding: 0.5rem 0;
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.35em;
-  color: var(--muted);
-  transition: color 0.2s ease, text-underline-offset 0.2s ease;
-}
-.home-recruiter-link:hover {
-  color: var(--fg);
-  text-underline-offset: 0.5em;
-}
-@media (min-width: 769px) {
-  .home-recruiter-link { display: none; }
-
-
-}
-
 
 
 .case-study-loader {
@@ -1539,7 +920,6 @@ textarea::placeholder {
    only from the Ask dialog's "The 90-second version" link, and nothing
    replaced back-to-top (none of the reference navs has one). Their CSS went
    with them - the panel itself (.recruiter-panel*) keeps its styling below. */
-
 
 
 /* Slide-out panel - a native <dialog>. Reset the UA dialog box, then position
@@ -1594,8 +974,6 @@ textarea::placeholder {
 @media (prefers-reduced-motion: reduce) {
   .recruiter-panel { animation: none; }
   .recruiter-panel::backdrop { animation: none; }
-
-
 }
 
 
@@ -1690,21 +1068,6 @@ textarea::placeholder {
   margin: 0;
 }
 /* Strengths + vitals → squared, thin-ruled mono tags (no soft pills). */
-.recruiter-panel__chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-}
-.recruiter-panel__chip {
-  font-family: "Space Mono", ui-monospace, monospace;
-  font-size: 0.64rem;
-  letter-spacing: 0.04em;
-  padding: 0.34rem 0.62rem;
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--fg);
-  border-radius: 2px;
-}
 .recruiter-panel__vitals-grid {
   display: flex;
   flex-wrap: wrap;
@@ -1841,97 +1204,9 @@ textarea::placeholder {
   color: #14150e;
 }
 
-/* ── Tools Used (prominent "what + why") ── */
-.tools-used {
-  margin: 3rem 0 3.5rem;
-  padding: 2rem 1.75rem;
-  border-radius: 14px;
-  background: linear-gradient(135deg, rgba(120, 140, 90, 0.08), rgba(120, 140, 90, 0.02));
-  border: 1px solid rgba(120, 140, 90, 0.18);
-}
-.tools-used__eyebrow {
-  font-size: 0.78rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--olive-2, #5a7a2e);
-  margin: 0 0 0.35rem;
-  font-weight: 600;
-}
-.tools-used__heading {
-  margin: 0 0 1.5rem;
-  font-size: 1.75rem;
-  line-height: 1.25;
-}
-.tools-used__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1rem;
-}
-.tools-used__card {
-  padding: 1.25rem 1.25rem 1.1rem;
-  border-radius: 10px;
-}
-.tools-used__header {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 0.5rem;
-}
-.tools-used__icon {
-  font-size: 1.5rem;
-  line-height: 1;
-}
-.tools-used__name {
-  margin: 0;
-  font-size: 1.05rem;
-  color: var(--fg);
-}
-.tools-used__why {
-  margin: 0;
-  font-size: 0.92rem;
-  line-height: 1.6;
-  color: var(--muted);
-}
-
-/* =========================================================
-   ABOUT PAGE - ADDITIONS
-   Append to App.css (below existing .about-page rules).
-   Zero conflicts with existing tokens or layout.
-   ========================================================= */
 
 /* ── Back button row ── */
-.about-back-row {
-  padding: 0 var(--page-pad);
-  max-width: var(--case-max);
-  margin: 30px auto 1rem;
-}
 
-.about-back-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  background: none;
-  border: 1.5px solid var(--border);
-  border-radius: 999px;
-  padding: 0.55rem 1.1rem;
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--fg);
-  cursor: pointer;
-  letter-spacing: 0.02em;
-  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
-}
-
-.about-back-btn:hover {
-  border-color: var(--olive-2);
-  color: var(--olive-2);
-  transform: translateX(-3px);
-}
-
-@keyframes statusPulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.5; transform: scale(0.85); }
-}
 
 /* ════════════════════════════════════════════════════════════════
    COHESIVE INTERACTION LANGUAGE
@@ -1945,37 +1220,8 @@ textarea::placeholder {
   --dur-fast: 0.2s;
   --dur: 0.34s;
   --glow: color-mix(in srgb, var(--olive-2) 16%, transparent);
-}.hero-btn,
-.about-back-btn {
-  transition: transform var(--dur) var(--ease-spring),
-    box-shadow var(--dur) var(--ease-soft),
-    border-color var(--dur) var(--ease-soft),
-    color var(--dur) var(--ease-soft) !important;
-}
-.hero-btn:hover {
-  transform: translateY(-2px) scale(1.015) !important;
-  box-shadow: 0 8px 20px color-mix(in srgb, var(--olive-2) 22%, transparent) !important;
-}.about-back-btn:hover {
-  transform: translateY(-4px) !important;
-  box-shadow: 0 0 0 5px var(--glow);
-}
-@media (prefers-reduced-motion: reduce) {.hero-btn,
-.about-back-btn {
-    transition: none !important;
-  }.hero-btn:hover,
-.about-back-btn:hover {
-    transform: none !important;
-  }
-
-
 }
 
-
-
-@keyframes expertiseScroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
 
 .msk-dashboard-mockup {
   width: 100%;
@@ -2364,62 +1610,6 @@ textarea::placeholder {
   line-height: 1.5;
 }
 
-/* Direction C expand/collapse trigger (design-state.md, 2026-08-27): reuses
-   the MRN/EMR disclosure summary's own chip register above it — quiet, not a
-   second louder control — rather than inventing a new button style. Rendered
-   via MSKDashboardMockup's `expandControl` prop, Home-hero-only. */
-.home-heroArtifact__expandToggle {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.6rem;
-  margin-top: 0.5rem;
-  padding: 0.42rem 0.65rem;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface-0);
-  color: var(--muted);
-  font: inherit;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  cursor: pointer;
-  position: relative;
-  transition: transform 0.15s ease, color 0.15s ease;
-}
-.home-heroArtifact__expandToggle span {
-  flex: 0 0 auto;
-  color: var(--olive-2);
-  font-weight: 800;
-}
-/* Hit-slop, not a bigger visible chip — same "small visible label, larger
-   invisible tap zone" pattern as the legend summary's own ::before just
-   above (App.css, accessibility-reviewer 2026-08-27), so the closed card
-   doesn't grow visually just to clear the 44px touch-target floor.
-   All the slop goes downward, none upward: the legend summary directly
-   above this trigger already extends ITS OWN hit-slop 11px below its
-   visible edge (the rule just above), and the two visible chips sit only
-   ~3.5px apart at 390px — any upward extension here would land inside the
-   legend's existing tap zone, so a tap near the seam could ambiguously
-   trigger either control. Keeping this one entirely downward (where there
-   is real, measured headroom before the card's own edge) reaches the same
-   44px floor without that risk. */
-.home-heroArtifact__expandToggle::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: -24px;
-  left: 0;
-}
-.home-heroArtifact__expandToggle:hover { color: var(--fg); }
-.home-heroArtifact__expandToggle:focus-visible {
-  outline: 2px solid var(--olive-2);
-  outline-offset: 2px;
-}
-/* A settle, not a bounce: presses down slightly, returns to rest on release. */
-.home-heroArtifact__expandToggle:active { transform: scale(0.98); }
 
 /* Restored content (the two additional rows, the toolbar, the rule callout)
    arrives with a small fade + rise, staggered in the same 90ms increments as
@@ -2428,40 +1618,11 @@ textarea::placeholder {
    click-driven rather than scroll-driven. Scoped under the frame's own
    `--expanded` modifier, which is only ever added after a user click, so
    this never plays as an on-load animation on first paint. */
-@keyframes rp-queue-row-in {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: none; }
-}
-.home-heroArtifact__frame--expanded .msk-dashboard-mockup__toolbar {
-  animation: rp-queue-row-in 0.3s ease-out both;
-}
 /* The table's direct children are, in DOM order: the header row, then the
    five data rows. rowIndices=[0,2,4] keeps rows at positions 2/4/6 always
    mounted (no re-animation, no flicker on content that was already visible);
    expanding inserts two new rows at positions 3 and 5 — those are the only
    ones this rule can match, by construction of the row order. */
-.home-heroArtifact__frame--expanded .msk-dashboard-mockup__table > .msk-dashboard-mockup__row:nth-child(3) {
-  animation: rp-queue-row-in 0.3s ease-out both;
-  animation-delay: 90ms;
-}
-.home-heroArtifact__frame--expanded .msk-dashboard-mockup__table > .msk-dashboard-mockup__row:nth-child(5) {
-  animation: rp-queue-row-in 0.3s ease-out both;
-  animation-delay: 180ms;
-}
-.home-heroArtifact__frame--expanded .msk-dashboard-mockup__rule {
-  animation: rp-queue-row-in 0.3s ease-out both;
-  animation-delay: 270ms;
-}
-@media (prefers-reduced-motion: reduce) {
-  .home-heroArtifact__expandToggle { transition: none; }
-  .home-heroArtifact__expandToggle:active { transform: none; }
-  .home-heroArtifact__frame--expanded .msk-dashboard-mockup__toolbar,
-  .home-heroArtifact__frame--expanded .msk-dashboard-mockup__table > .msk-dashboard-mockup__row:nth-child(3),
-  .home-heroArtifact__frame--expanded .msk-dashboard-mockup__table > .msk-dashboard-mockup__row:nth-child(5),
-  .home-heroArtifact__frame--expanded .msk-dashboard-mockup__rule {
-    animation: none;
-  }
-}
 
 @media (max-width: 760px) {
   .msk-dashboard-mockup__topbar {
@@ -2479,25 +1640,7 @@ textarea::placeholder {
   .msk-dashboard-mockup--compact .msk-dashboard-mockup__row {
     min-width: 0;
   }
-  /* The trigger row's own footprint is part of the closed-card mobile budget
-     that portfolio-cohesion.css's fixed max-height caps against (design-lead,
-     2026-08-27 mobile disclosure fix round — the frame's auto height ignores
-     the card's scale(.74) transform, so the cap has to stay a real number).
-     Padding tightened here so the closed card doesn't need much room to fit
-     it. margin-top is NOT tightened the same way — measured live at 390px,
-     the legend summary directly above already extends its own hit-slop 11px
-     below its visible edge (App.css, accessibility-reviewer 2026-08-27); a
-     smaller gap here would put this trigger's own visible box inside that
-     zone, so a tap near the seam could land on either control. 1.1rem holds
-     a real, measured buffer past that 11px instead. */
-  .home-heroArtifact__expandToggle {
-    margin-top: 1.1rem;
-    padding: 0.32rem 0.6rem;
-  }
-
-
 }
-
 
 
 @media (max-width: 900px) {
@@ -2505,10 +1648,7 @@ textarea::placeholder {
     max-width: 100%;
     transform: none;
   }
-
-
 }
-
 
 
 .dark-mode .msk-dashboard-status--ready-to-file {
@@ -2544,730 +1684,30 @@ textarea::placeholder {
 }
 
 
-@media (max-width: 700px) { /* prevent overflow on tiny screens */
-
-
-}
-
-.btn-icon,
-.hero-btn,
-.about-back-btn,
-.cs-toggle-link {
-  appearance: none;
-  background: color-mix(in srgb, var(--olive-2) 10%, var(--card));
-  color: var(--olive-2);
-  border: 1px solid color-mix(in srgb, var(--olive-2) 28%, var(--border));
-  border-radius: 999px;
-  padding: 0.7rem 1rem;
-  font: inherit;
-  font-size: 0.92rem;
-  font-weight: 700;
-  line-height: 1.2;
-  cursor: pointer;
-  transition:
-    transform 0.18s ease,
-    background 0.18s ease,
-    border-color 0.18s ease,
-    box-shadow 0.18s ease,
-    color 0.18s ease;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-}.hero-btn:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-  pointer-events: none;
-}.btn-icon:focus-visible,
-.hero-btn:focus-visible,
-.about-back-btn:focus-visible,
-.cs-toggle-link:focus-visible {
-  outline: 3px solid var(--olive-2);
-  outline-offset: 3px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-}.hero-btn {
-  padding: 0.85rem 2rem;
-  border-radius: 999px;
-  font-size: 0.9rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--fg);                          /* dark text on bright gradient */
-  background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 100%);
-  box-shadow: 0 2px 8px color-mix(in srgb, var(--olive-2) 20%, transparent);
-}.hero-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 24px color-mix(in srgb, var(--olive-2) 35%, transparent);
-}.hero-btn:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 6px color-mix(in srgb, var(--olive-2) 15%, transparent);
-}.dark-mode .hero-btn {
-  color: var(--on-accent) !important;
-  background: linear-gradient(135deg, var(--olive-1) 0%, var(--olive-2) 100%);
-}.about-back-btn {
-  padding: 0.75rem 1.4rem;
-  border-radius: 999px;
-  font-size: 0.88rem;
-  letter-spacing: 0.04em;
-  color: var(--fg);
-  border: 1.5px solid var(--border);
-  background: transparent;
-}.about-back-btn:hover {
-  border-color: var(--olive-2);
-  color: var(--olive-2);
-  background: color-mix(in srgb, var(--olive-2) 6%, transparent);
-  box-shadow: 0 4px 14px color-mix(in srgb, var(--olive-2) 12%, transparent);
-}.about-back-btn:active {
-  transform: scale(0.98);
-}.dark-mode .about-back-btn {
-  color: var(--text-1);
-  border-color: var(--border);
-}.dark-mode .about-back-btn:hover {
-  border-color: var(--focus);
-  color: var(--focus);
-  background: color-mix(in srgb, var(--focus) 8%, transparent);
-}
-
-/* ← directional back variant */
-.about-back-btn {
-  font-size: 0.88rem;
-  padding: 0.55rem 1.1rem;
-}
-
-.about-back-btn:hover {
-  transform: translateX(-3px);
-}.cs-toggle-link {
-  padding: 0.15rem 0;
-  border-radius: 0;
-  font-size: inherit;
-  font-weight: 700;
-  color: var(--olive-2);
-  background: transparent;
-  border: none;
-  text-decoration: underline;
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: 4px;
-  text-decoration-color: color-mix(in srgb, var(--olive-2) 40%, transparent);
-  letter-spacing: 0;
-}.cs-toggle-link:hover {
-  text-decoration-color: var(--olive-2);
-  text-decoration-thickness: 2px;
-  opacity: 0.85;
-}.cs-toggle-link:active {
-  opacity: 0.7;
-}.dark-mode .cs-toggle-link {
-  background: color-mix(in srgb, var(--focus) 10%, var(--card));
-  color: var(--focus);
-  border-color: color-mix(in srgb, var(--focus) 30%, var(--border));
-}.dark-mode .cs-toggle-link:hover {
-  background: color-mix(in srgb, var(--focus) 16%, var(--card));
-  border-color: color-mix(in srgb, var(--focus) 48%, var(--border));
-}
-
-/* ════════════════════════════════════════
-   VARIANT 4 - ICON (square chip)
-   Used: btn-icon
-════════════════════════════════════════ */
-.btn-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  padding: 0;
-  font-size: 1rem;
-  color: var(--fg);
-  border: 1.5px solid var(--border);
-  background: var(--card);
-  flex-shrink: 0;
-}
-
-.btn-icon:hover {
-  border-color: var(--olive-2);
-  color: var(--olive-2);
-  background: color-mix(in srgb, var(--olive-2) 6%, transparent);
-  transform: translateY(-1px);
-}
-
-.btn-icon:active {
-  transform: scale(0.95);
-}
-
-.dark-mode .btn-icon {
-  color: var(--text-1);
-  border-color: var(--border);
-  background: color-mix(in srgb, var(--surface-2) 60%, transparent);
-}
-
-.dark-mode .btn-icon:hover {
-  border-color: var(--focus);
-  color: var(--focus);
-  background: color-mix(in srgb, var(--focus) 8%, transparent);
-}
-
-/* =========================================================
-   ABOUT PAGE - NEW SECTION ADDITIONS
-   Append to App.css below existing about-page rules.
-   Adds: .about-agenda, .about-career-timeline, .about-edu-grid
-   ========================================================= */
-
-/* ── Shared eyebrow label (reused across sections) ── */
-.about-agenda__eyebrow {
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-weight: 700;
-  color: var(--olive-2);
-  margin: 0 0 0.5rem;
-}
-
-/* ══════════════════════════════════════
-   AGENDA SECTION - "what I bring"
-══════════════════════════════════════ */
-.about-agenda {
-  width: min(var(--case-max), calc(100% - 2 * var(--page-pad)));
-  margin: 0 auto;
-  padding: 56px 0;
-}
-
-/* =========================================================
-   RECRUITER SKIM CARD
-   Append to App.css.
-   Replace src/components/RecruiterSkimCard.tsx with the
-   new version to get these class names.
-   ========================================================= */
-
-/* ── Outer card ── */
-.rsc {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-left: 4px solid var(--olive-2);
-  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
-  padding: 1.75rem 2rem;
-  margin-bottom: 2.5rem;
-  box-shadow: var(--shadow-sm);
-}
-
-
-.dark-mode .rsc {
-  border-left-color: var(--focus);
-  background: var(--card);
-  border-color: var(--border);
-  border-left-color: var(--focus);
-}
-
-/* ── Responsive ── */
-@media (max-width: 700px) {
-  .rsc {
-    padding: 1.25rem 1.25rem 1.25rem 1.5rem;
-  }
-
-
-}
-
-
-.about-story-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
-}
-
-.about-story-card {
-  padding: 1.75rem;
-  border-radius: var(--radius-lg);
-}
-
-.about-story-card__heading {
-  margin: 0;
-  font-size: 1.15rem;
-  line-height: 1.35;
-  font-weight: 600;
-  color: var(--fg);
-}
-
-.about-story-card__layout {
-  display: flex;
-  gap: 1.5rem;
-  align-items: stretch;
-}
-.about-story-card__image {
-  flex-shrink: 0;
-  width: 220px;
-  border-radius: 12px;
-  overflow: hidden;
-}
-.about-story-card__image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.about-story-card__content {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-}
-@media (max-width: 700px) {
-  .about-story-card__layout {
-    flex-direction: column;
-  }
-  .about-story-card__image {
-    width: 100%;
-    max-height: none;
-    aspect-ratio: 4 / 3;
-  }
-  .about-story-card__image img {
-    object-position: center 30%;
-  }
-
-
-}
-
-
-.about-story-card__callout {
-  margin-top: 1.2rem;
-  padding: 1rem 1.15rem;
-  border-left: 3px solid var(--olive-2);
-  border-radius: 0 12px 12px 0;
-  background: color-mix(in srgb, var(--olive-2) 6%, var(--card));
-  border-top: 1px solid var(--border);
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-
-.about-story-card__callout p {
-  margin: 0;
-  font-size: 0.92rem;
-  line-height: 1.65;
-  font-weight: 600;
-  color: var(--fg);
-}
-
-/* ── Responsive ── */
-@media (max-width: 700px) {
-  .about-story-card {
-    padding: 1.3rem;
-  }
-
-  .about-story-card__heading {
-    font-size: 1.02rem;
-  }
-
-
-}
-
-
-
-/* ── Meta bespoke: loud vs considered (consumer-craft proof) ── */
-.meta-craft {
-  display: flex;
-  align-items: stretch;
-  gap: clamp(0.75rem, 3vw, 2rem);
-  margin-top: 1.5rem;
-}
-@media (max-width: 620px) {
-  .meta-craft { flex-direction: column; }
-
-
-}
-
-
-
 /* ── Auto-playing app demo (device + numbered chapter index) ── */
 #grove-app-tour {
   scroll-margin-top: 96px;
 }
-.grove-demo {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: clamp(1.75rem, 5vw, 4.5rem);
-  align-items: center;
-  margin: 0;
-}
-.grove-demo__stage {
-  display: flex;
-  justify-content: center;
-}
-.grove-demo__device {
-  position: relative;
-  width: min(300px, 64vw);
-  aspect-ratio: 9 / 14;
-  border-radius: 32px;
-  border: 1px solid var(--border);
-  overflow: hidden;
-  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: var(--shadow-md), var(--shadow-olive);
-}
-.grove-demo__screen {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  opacity: 0;
-  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.grove-demo__chapters {
-  margin: 0;
-  max-width: 480px;
-}
-.grove-demo__list {
-  display: flex;
-  flex-direction: column;
-}
-.grove-demo__chapter {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 1.1rem;
-  align-items: start;
-  width: 100%;
-  text-align: left;
-  background: none;
-  border: 0;
-  border-top: 1px solid var(--border);
-  cursor: pointer;
-  padding: 1.05rem 0.5rem;
-  color: var(--text-2);
-  transition: color 0.3s ease, opacity 0.3s ease;
-  opacity: 0.72;
-}
-.grove-demo__chapter:first-child {
-  border-top: 0;
-}
-.grove-demo__chapter:hover {
-  color: var(--text-1);
-  opacity: 1;
-}
-.grove-demo__chapter.is-active {
-  color: var(--text-1);
-  opacity: 1;
-}
-.grove-demo__index {
-  font-size: 0.76rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  padding-top: 0.28rem;
-  font-variant-numeric: tabular-nums;
-  transition: color 0.3s ease;
-}
-.grove-demo__chapter.is-active .grove-demo__index {
-  color: var(--olive-2);
-}
-.grove-demo__body {
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
-  min-width: 0;
-}
-.grove-demo__label {
-  font-size: 1.05rem;
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-}
-.grove-demo__note {
-  font-size: 0.87rem;
-  line-height: 1.55;
-  color: var(--muted);
-  max-width: 44ch;
-}
-.grove-demo__rail {
-  position: relative;
-  height: 3px;
-  width: 100%;
-  max-width: 230px;
-  margin-top: 0.4rem;
-  background: var(--border);
-  border-radius: 99px;
-  overflow: hidden;
-}
-.grove-demo__fill {
-  position: absolute;
-  inset: 0;
-  transform: scaleX(0);
-  transform-origin: left center;
-  background: var(--olive-2);
-  border-radius: 99px;
-  will-change: transform;
-}
-.grove-demo__controls {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 1.15rem;
-  padding-left: 0.5rem;
-}
-.grove-demo__toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  min-height: 44px;
-  font-size: 0.76rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--text-1);
-  background: none;
-  border: 1px solid var(--border-strong);
-  border-radius: 99px;
-  padding: 0.42rem 0.9rem;
-  cursor: pointer;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
-}
-.grove-demo__toggle:hover {
-  border-color: var(--olive-2);
-  background: color-mix(in srgb, var(--olive-2) 8%, transparent);
-}
-.grove-demo__status {
-  font-size: 0.7rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-@media (max-width: 760px) {
-  .grove-demo {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    justify-items: center;
-  }
-  .grove-demo__chapters {
-    max-width: none;
-    width: 100%;
-  }
-
-
-}
-
-
-@media (prefers-reduced-motion: reduce) {
-  .grove-demo__screen,
-  .grove-demo__device {
-    transition: none;
-  }
-
-
-}
-
 
 
 /* Prototype-vs-survey gallery (StateMatrix from ShowKit) — each decision shown
    next to the actual screen it was made against. */
-.ck-statematrix {
-  list-style: none;
-  margin: 1.75rem 0 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.5rem;
-}
-.ck-state {
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
-  min-width: 0;
-}
-.ck-state__shot {
-  margin: 0;
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: #f5f0ea;
-  box-shadow: var(--shadow-sm);
-}
-.ck-state__shot img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-}
-.ck-state__body {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-.ck-state__name {
-  margin: 0;
-  color: var(--olive-2);
-  font-family: var(--font-head);
-  font-size: 0.95rem;
-  font-weight: 800;
-}
-.ck-state__note {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.9rem;
-  line-height: 1.55;
-}
-@media (max-width: 760px) {
-  .ck-statematrix {
-    grid-template-columns: 1fr;
-    max-width: 380px;
-  }
-
-
-}
 
 .case-study section[id] {
   /* Clear BOTH sticky layers: the navbar (~74px) and the jump-nav pill that
      sticks just below it (~48px), so an anchored section never lands hidden. */
   scroll-margin-top: 140px;
 }
-.cs-jump-nav {
-  position: sticky;
-  top: 74px;
-  z-index: 20;
-  width: min(var(--case-max), calc(100% - 2 * var(--page-pad)));
-  margin: 0 auto 2.25rem;
-  padding: 0.55rem;
-  display: flex;
-  gap: 0.45rem;
-  align-items: center;
-  overflow-x: auto;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  /* Higher opacity so page content doesn't slice through the frosted pill mid-scroll. */
-  background: color-mix(in srgb, var(--surface-0) 94%, transparent);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  box-shadow: var(--shadow-sm);
-}
-.cs-jump-nav a {
-  flex: 0 0 auto;
-  min-height: 36px;
-  padding: 0.55rem 0.9rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  color: var(--text-2);
-  font-family: var(--font-head);
-  font-size: 0.82rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-.cs-jump-nav a:hover,
-.cs-jump-nav a:focus-visible {
-  background: color-mix(in srgb, var(--olive-2) 12%, transparent);
-  color: var(--fg);
-}
 /* Section currently in view - solid pill so the reader can see where they are. */
-.cs-jump-nav a.is-active {
-  background: var(--olive-2);
-  color: var(--bg);
-}
-.cs-jump-nav a.is-active:hover,
-.cs-jump-nav a.is-active:focus-visible {
-  background: var(--olive-2);
-  color: var(--bg);
-}
-@media (max-width: 640px) {
-  .cs-jump-nav {
-    top: 68px;
-    width: calc(100% - 1.5rem);
-    margin-bottom: 1.75rem;
-    border-radius: 18px;
-  }
 
 
-}
-
-
-
-
-.about-pattern-card {
-  padding: clamp(1.4rem, 3vw, 2rem);
-}.case-study .msk-dashboard-mockup {
+.case-study .msk-dashboard-mockup {
   letter-spacing: 0;
 }.case-study section {
   scroll-margin-top: 112px;
 }
 
 /* ── Progressive disclosure for dense case-study detail ── */
-.content-disclosure {
-  margin-top: 1rem;
-  max-width: 42rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  background: color-mix(in srgb, var(--surface-1) 82%, transparent);
-  overflow: clip;
-}
-
-.content-disclosure summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  min-height: 44px;
-  padding: 0.9rem 1rem;
-  color: var(--fg);
-  cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 700;
-  line-height: 1.35;
-  list-style: none;
-}
-
-.content-disclosure summary::-webkit-details-marker {
-  display: none;
-}
-
-.content-disclosure summary:hover {
-  background: color-mix(in srgb, var(--olive-2) 7%, transparent);
-}
-
-.content-disclosure summary:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: -3px;
-}
-
-.content-disclosure__chevron {
-  flex: 0 0 auto;
-  color: var(--olive-2);
-  font-size: 1.15rem;
-  line-height: 1;
-  transform: rotate(0deg);
-  transition: transform 180ms ease;
-}
-
-.content-disclosure[open] .content-disclosure__chevron {
-  transform: rotate(180deg);
-}
-
-.content-disclosure__body {
-  padding: 0 1rem 1rem;
-  color: var(--muted);
-  animation: disclosureFade 180ms ease-out;
-}
-
-.content-disclosure__body > *:first-child {
-  margin-top: 0;
-}
-
-.content-disclosure__body > *:last-child {
-  margin-bottom: 0;
-}
-
-@keyframes disclosureFade {
-  from {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .content-disclosure__chevron {
-    transition: none;
-  }
-  .content-disclosure__body {
-    animation: none;
-  }
-
-
-}
-
 
 
 /* ════════════════════════════════════════════
@@ -3284,34 +1724,14 @@ textarea::placeholder {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-
-
 }
-.case-study h1,
-.about-title {
+.case-study h1 {
   background: none !important;
   -webkit-text-fill-color: var(--olive-2) !important;
   color: var(--olive-2) !important;
-}.dark-mode .case-study h1,
-.dark-mode .about-title {
+}.dark-mode .case-study h1 {
   -webkit-text-fill-color: var(--focus) !important;
   color: var(--focus) !important;
-}
-
-/* The floating-island masthead (and the one-off desktop `.navbar` padding
-   override that used to live here, re-shrinking it to 0.5rem top/bottom at
-   ≥769px) was removed on 2026-07-28 and 2026-10-10 respectively. That
-   override was the reason the dock pill sat at a different y on desktop
-   than on phone - the dock has exactly one top padding now (`.navbar`'s own
-   0.85rem, above), at every width. */
-
-.tools-used__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}.tools-used__icon,
-.project-icon {
-  color: var(--olive-2);
 }
 
 
@@ -3345,42 +1765,7 @@ textarea::placeholder {
     overflow-wrap: anywhere;
     text-wrap: balance;
   }
-
-  .cs-jump-nav {
-    width: 100%;
-    max-width: 100%;
-    margin-inline: 0;
-  }
-
-
 }
-
-
-
-/* Final minimalist mobile hero containment. */
-@media (max-width: 640px) {
-
-  .about-hero {
-    width: min(var(--case-max), calc(100% - 2 * var(--page-pad)));
-    max-width: calc(100% - 2 * var(--page-pad));
-    min-width: 0;
-    box-sizing: border-box;
-    overflow-x: clip;
-  }
-
-  .about-intro {
-    width: min(100%, 31ch);
-    max-width: calc(100vw - 2rem);
-    text-wrap: pretty;
-    overflow-wrap: break-word;
-  }.about-title {
-    max-width: calc(100vw - 2rem);
-    overflow-wrap: break-word;
-  }
-
-
-}
-
 
 
 /* ============================================================
@@ -3410,10 +1795,7 @@ textarea::placeholder {
     --line-body: 1.68;
     --line-heading: 1.02;
   }
-
-
 }
-
 
 
 @media (min-width: 641px) and (max-width: 1100px) {
@@ -3434,10 +1816,7 @@ textarea::placeholder {
     --type-body: 1rem;
     --type-lede: 1.08rem;
   }
-
-
 }
-
 
 
 @media (min-width: 1101px) {
@@ -3454,20 +1833,15 @@ textarea::placeholder {
     --type-body: 1rem;
     --type-lede: 1.12rem;
   }
-
-
 }
-
 
 
 body {
   font-size: var(--type-body);
-}.about-title,
-.case-study h1 {
+}.case-study h1 {
   font-size: var(--type-hero-title);
   line-height: var(--line-heading);
-}.about-growth-title,
-.case-study h2 {
+}.case-study h2 {
   font-size: var(--type-section-title);
   line-height: 1.08;
 }.feature h3,
@@ -3478,15 +1852,11 @@ body {
 .case-study li {
   font-size: var(--type-body);
   line-height: var(--line-body);
-}.about-intro,
-.case-study .meta {
+}.case-study .meta {
   max-width: var(--measure-tight);
-}.about-cta,
-.case-study section {
+}.case-study section {
   scroll-margin-top: 96px;
-}.feature,
-.about-story-card,
-.media-card {
+}.feature {
   padding: var(--card-pad);
 }
 
@@ -3526,14 +1896,9 @@ select {
   font-size: var(--type-xl);
   letter-spacing: var(--tracking-tight);
   line-height: 1.12;
-}.content-disclosure__body {
-  font-size: var(--type-sm);
-}.about-agenda__eyebrow {
-  letter-spacing: var(--tracking-label);
 }
 
-.case-study .meta,
-.about-agenda__eyebrow {
+.case-study .meta {
   letter-spacing: var(--tracking-label);
 }.feature h3 {
   letter-spacing: var(--tracking-normal);
@@ -3545,10 +1910,7 @@ select {
     --measure-tight: 30ch;
     --type-xl: clamp(1.55rem, 6vw, 2rem);
     --type-2xl: clamp(2rem, 8vw, 2.6rem);
-  }.case-study h2,
-.about-growth-title {
+  }.case-study h2 {
     line-height: 1.16;
   }
-
-
 }
