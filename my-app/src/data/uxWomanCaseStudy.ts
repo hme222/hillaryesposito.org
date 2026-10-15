@@ -13,7 +13,7 @@ export type UxWomanLedgerRow = { n: string; en: string; es: string };
 export const UXWOMAN_LEDGER: UxWomanLedgerRow[] = [
   { n: "6", en: "Healthcare interviews", es: "Entrevistas de salud" },
   { n: "1", en: "Adjacent HR interview", es: "Entrevista adyacente de RR. HH." },
-  { n: "0", en: "Patient interviews", es: "Entrevistas con pacientes" },
+  { n: "0", en: "Dedicated patient interviews", es: "Entrevistas dedicadas con pacientes" },
   { n: "5", en: "Pretotypes designed", es: "Pretotipos diseñados" },
   { n: "0", en: "Pretotypes run", es: "Pretotipos ejecutados" },
 ];

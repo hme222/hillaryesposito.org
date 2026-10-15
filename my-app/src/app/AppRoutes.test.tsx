@@ -83,7 +83,7 @@ describe("AppRoutes", () => {
         await new Promise((resolve) => setTimeout(resolve, 25));
       });
     }
-    expect(container.querySelector("h1")?.textContent).toContain("Seven interviews");
+    expect(container.querySelector("h1")?.textContent).toMatch(/Six healthcare\s+interviews/);
     expect(container.querySelector(".flagship-page--uxwoman")).not.toBeNull();
     act(() => root.unmount());
     container.remove();

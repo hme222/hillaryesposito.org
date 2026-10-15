@@ -339,7 +339,7 @@ describe("flagship case-study accessibility", () => {
     await act(async () => {
       root.render(<FlagshipUxWoman />);
     });
-    expect(container.querySelector("h1")?.textContent).toContain("Seven interviews");
+    expect(container.querySelector("h1")?.textContent).toMatch(/Six healthcare\s+interviews/);
     ["uxwoman-start", "uxwoman-problem", "uxwoman-research", "uxwoman-findings", "uxwoman-pretotypes", "uxwoman-next"].forEach((id) => {
       expect(container.querySelector(`#${id}`)).not.toBeNull();
     });

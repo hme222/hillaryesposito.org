@@ -33,7 +33,7 @@ import "../../styles/flagship-case-study.css";
 const CHAPTERS: CaseStudyChapter[] = [
   { id: "uxwoman-start", label: "Start", note: "Research phase, active" },
   { id: "uxwoman-problem", label: "Problem", note: "Who owns the next step?" },
-  { id: "uxwoman-research", label: "Research", note: "Seven interviews, no patients" },
+  { id: "uxwoman-research", label: "Research", note: "Six healthcare interviews" },
   { id: "uxwoman-findings", label: "Findings", note: "Five signals, rated" },
   { id: "uxwoman-pretotypes", label: "Pretotypes", note: "Five designed, none run" },
   { id: "uxwoman-next", label: "Next step", note: "Real cases before building" },
@@ -120,7 +120,7 @@ export default function FlagshipUxWoman() {
         <div className="rp-hero__content">
           <div className="rp-clearing">
             <span className="rp-eyebrow">UX Woman · Healthcare research · Active, research phase</span>
-            <h1 className="rp-h1">Who owns the next{" "}step? Seven interviews, one{" "}hypothesis.</h1>
+            <h1 className="rp-h1">Who owns the next{" "}step? Six healthcare{" "}interviews, one{" "}hypothesis.</h1>
             <span className="rp-readtime"><b>4 min</b><span>read · nothing built or tested yet</span></span>
             <p className="rp-sub">
               In six healthcare interviews, staff described care waiting while no one could see who owned the next
@@ -128,7 +128,7 @@ export default function FlagshipUxWoman() {
               next step is reconstructing real cases before building anything.
             </p>
             <dl className="rp-heroEvidence" aria-label="UX Woman case evidence at a glance">
-              <div><dt>Evidence</dt><dd>Six healthcare interviews · one adjacent HR interview · no patient interviews</dd></div>
+              <div><dt>Evidence</dt><dd>Six healthcare interviews · one adjacent HR interview · no dedicated patient interviews</dd></div>
               <div><dt>My contribution</dt><dd>Interview plans · recruiting by behavior · synthesis · five pretotype designs</dd></div>
               <div><dt>Status</dt><dd>Active · research phase · five pretotypes designed, none run</dd></div>
               <div><dt>Next</dt><dd>Reconstruct real cases, then decide what to build</dd></div>
@@ -158,8 +158,8 @@ export default function FlagshipUxWoman() {
       <section className="rp-section" id="uxwoman-research" data-language-anchor="uxwoman-research" data-evidence="true">
         <div className="rp-wrap">
           <p className="rp-kicker">What I did</p>
-          <h2 className="rp-title">Seven interviews, recruited by what people do.</h2>
-          <p className="rp-lede">I recruited by behavior, not job title. Each interview counts once.</p>
+          <h2 className="rp-title">Six healthcare interviews, recruited by what people do.</h2>
+          <p className="rp-lede">I recruited by behavior, not job title. Each interview counts once. Study sessions run on UserTesting.</p>
           <div className="fp-workSplit rp-reveal">
             <article>
               <span>Healthcare · 6</span>
@@ -174,7 +174,7 @@ export default function FlagshipUxWoman() {
           </div>
           <p className="fp-ownership fp-ownership--paper rp-reveal">
             <b>Secondary research</b>
-            A scan of AI and information workflows in large hospitals, from federal data briefs and professional surveys. It shows system-level patterns, not what any one hospital needs. Study sessions run on UserTesting.
+            A scan of AI and information workflows in large hospitals, from federal data briefs and professional surveys. It shows system-level patterns, not what any one hospital needs.
           </p>
         </div>
       </section>
@@ -223,7 +223,7 @@ export default function FlagshipUxWoman() {
         kicker="Where it stands"
         title="A hypothesis, not a product."
         intro="Active, research phase. Next I reconstruct recent real cases, asking each person the same neutral questions, before choosing anything to build."
-        disclaimer="Exploratory, qualitative, self-reported · six healthcare interviews and one adjacent HR interview · no patient interviews · no pretotype run · the large-hospital scan is secondary research"
+        disclaimer="Exploratory, qualitative, self-reported · six healthcare interviews and one adjacent HR interview · no dedicated patient interviews · no pretotype run · the large-hospital scan is secondary research"
         metrics={[
           { tag: "Interviews", n: "6", label: "healthcare interviews, plus one adjacent HR interview that is not healthcare validation" },
           { tag: "Pretotypes", n: "0 of 5", label: "run so far. All five are designed; none has produced evidence yet" },

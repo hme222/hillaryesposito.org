@@ -352,13 +352,13 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
 // only. Section anchors match the English chapter ids so the language switch
 // lands in place.
 export const UXWOMAN_ES: SpanishCaseStudyData = {
-  title: "¿Quién tiene el siguiente paso? Siete entrevistas, una hipótesis.",
+  title: "¿Quién tiene el siguiente paso? Seis entrevistas de salud, una hipótesis.",
   breadcrumb: "UX Woman",
   meta: "UX Woman · Investigación en salud · Activo, fase de investigación",
   intro:
     "En seis entrevistas de salud, el personal describió atención en espera mientras nadie podía ver quién tenía el siguiente paso. Lo trato como una hipótesis. La evidencia aún no muestra un solo problema compartido, así que el siguiente paso es reconstruir casos reales antes de construir nada.",
   stats: [
-    { label: "Evidencia", value: "Seis entrevistas de salud · una entrevista adyacente de RR. HH. · ninguna entrevista con pacientes" },
+    { label: "Evidencia", value: "Seis entrevistas de salud · una entrevista adyacente de RR. HH. · ninguna entrevista dedicada con pacientes" },
     { label: "Mi parte", value: "Planes de entrevista · reclutamiento por conducta · síntesis · cinco diseños de pretotipo" },
     { label: "Estado", value: "Activo · fase de investigación · cinco pretotipos diseñados, ninguno ejecutado" },
     { label: "Siguiente", value: "Reconstruir casos reales y luego decidir qué construir" },
@@ -376,12 +376,12 @@ export const UXWOMAN_ES: SpanishCaseStudyData = {
     {
       anchor: "uxwoman-research",
       eyebrow: "Qué hice",
-      title: "Siete entrevistas, reclutadas por lo que la gente hace.",
+      title: "Seis entrevistas de salud, reclutadas por lo que la gente hace.",
       body: [
-        "Recluté por conducta, no por cargo. Cada entrevista cuenta una vez.",
+        "Recluté por conducta, no por cargo. Cada entrevista cuenta una vez. Las sesiones del estudio se hacen en UserTesting.",
         "Seis entrevistas de salud: servicios financieros al paciente, operaciones de ingresos, asistente médico de ortopedia, enfermera de revisión de utilización, psiquiatra y una persona que fue responsable de servicios al afiliado en un plan de salud. Una persona también habló desde su experiencia personal como paciente.",
         "No hay un flujo de entrevistas con pacientes. Lo que sé de los pacientes es de segunda mano, salvo ese testimonio. Una séptima entrevista, adyacente, con una persona a cargo de RR. HH. trató sobre la verificación de fuentes de IA. No valida nada en salud.",
-        "Investigación secundaria: un análisis de flujos de IA e información en hospitales grandes, con informes federales y encuestas profesionales. Muestra patrones del sistema, no lo que necesita un hospital en particular. Las sesiones del estudio se hacen en UserTesting.",
+        "Investigación secundaria: un análisis de flujos de IA e información en hospitales grandes, con informes federales y encuestas profesionales. Muestra patrones del sistema, no lo que necesita un hospital en particular.",
       ],
     },
     {

@@ -92,7 +92,7 @@ const en = {
   "home.riso.logisticsDesc":
     "I planned and tracked a warehouse relocation that shortened medical resupply time by 85%, then built shared order tracking for seven aid stations.",
   "home.riso.uxwomanDesc":
-    "Six healthcare interviews and one adjacent HR interview point to one hypothesis: staff and patients cannot see who owns the next step. No patient interviews yet, five pretotypes designed and none run. Active, research phase.",
+    "Six healthcare interviews and one adjacent HR interview point to one hypothesis: staff and patients cannot see who owns the next step. No dedicated patient interviews yet, five pretotypes designed and none run. Active, research phase.",
   "home.riso.knowunityDesc":
     "Students say a definition out loud and get their own words quoted back as proof. Selected for a Yummy Labs design sprint with Knowunity: solo, 2.5 weeks, on their brief and kit. Recall mocked, not shipped.",
   "home.riso.mobbinDesc":
@@ -177,7 +177,7 @@ const en = {
   "home.proj.grove.title": "Eleven features became three",
   "home.proj.msk.title": "A filing queue replaced a four-department paper detour",
   "home.proj.logistics.title": "85% shorter medical resupply time",
-  "home.proj.uxwoman.title": "Seven interviews, one hypothesis",
+  "home.proj.uxwoman.title": "Six healthcare interviews, one hypothesis",
   "home.proj.knowunity.title": "The student’s own words are the proof",
   "home.proj.mobbin.title": "200+ screens per app, searchable by task",
 
@@ -300,7 +300,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.logisticsDesc":
     "Planifiqué y supervisé una reubicación de almacén que redujo un 85% el tiempo de reabastecimiento médico, y luego creé un seguimiento compartido para siete puestos.",
   "home.riso.uxwomanDesc":
-    "Seis entrevistas de salud y una adyacente de RR. HH. apuntan a una hipótesis: el personal y los pacientes no ven quién tiene el siguiente paso. Aún sin entrevistas con pacientes; cinco pretotipos diseñados y ninguno ejecutado. Activo, fase de investigación.",
+    "Seis entrevistas de salud y una adyacente de RR. HH. apuntan a una hipótesis: el personal y los pacientes no ven quién tiene el siguiente paso. Aún sin entrevistas dedicadas con pacientes; cinco pretotipos diseñados y ninguno ejecutado. Activo, fase de investigación.",
   "home.riso.knowunityDesc":
     "Los estudiantes dicen una definición en voz alta y reciben sus propias palabras citadas como prueba. Seleccionada para un sprint de diseño de Yummy Labs con Knowunity: individual, 2.5 semanas, con su brief y su kit. Recuerdo simulado, no publicado.",
   "home.riso.mobbinDesc":
@@ -387,7 +387,7 @@ const es: Partial<Record<StringKey, string>> = {
   // Same wording as the Spanish case-study title. "Tiempo de reabastecimiento
   // médico reducido" left "médico" alone on its own line at 320, 375 and 1280.
   "home.proj.logistics.title": "El reabastecimiento médico tardó un\u00a085%\u00a0menos",
-  "home.proj.uxwoman.title": "Siete entrevistas, una hipótesis",
+  "home.proj.uxwoman.title": "Seis entrevistas de salud, una hipótesis",
   "home.proj.knowunity.title": "Las propias palabras del estudiante son la prueba",
   "home.proj.mobbin.title": "Más de 200 pantallas por app, buscables por tarea",
 
