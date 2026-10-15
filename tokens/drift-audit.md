@@ -55,8 +55,69 @@ No new tokens. Recorded so the next audit doesn't re-flag these.
 | `riso-page.css` `.rp-decisionRecord dt` | `var(--coral)` → `var(--coral-text)` | Raw coral at label size. 4.96:1 light, 11.46:1 dark. |
 | `riso-page.css` `.rp-demoCard h4` / `p` (dark) | Pinned `#20241c` / `#45503f` under `.dark-mode` | Fixed cream card (see the demo palette note). App.css `.dark-mode h4/p` painted light text on it. 13.93:1 / 7.50:1. |
 
-## Two accidental duplicates, still unresolved
+## Design-value cleanup (2026-10-15)
 
-`#C68A2E`/`#c68a2e` and `#BC5A78`/`#bc5a78` each appear once in different
-casing — almost certainly the same color typed twice. Left for you to confirm
-which file/casing is correct rather than guessing.
+Invisible to visitors: every swap below resolves to the same computed value.
+Checked with full-page captures of all 9 routes (EN/ES, 390/1440,
+light/dark, plus open disclosures, tabs, toggles, recruiter panel, settings
+popover, glossary tooltip) against two baselines; remaining pixel
+differences are font-rasterization and hero-video noise that also appear
+between the two baselines.
+
+### New tokens
+
+| Token | Value | Where | Replaced |
+|---|---|---|---|
+| `--mint-on-dark` | `#a9d28f` | `portfolio-cohesion.css` `:root` | 10 literals + 2 `rgba(169,210,143,α)` in `riso-page.css` / `flagship-case-study.css` |
+| `--ink-on-dark` | `#f4f1e6` | `portfolio-cohesion.css` `:root` | 14 literals + 46 `rgba(244,241,230,α)`; `--fp-light` now points at it |
+| `--status-ready` / `-bg` / `-edge` | `#4f6d1f` / `#edf5dc` / `#7aa02f` | `App.css` `:root` | MSK queue chip + row edge |
+| `--status-review` / `-bg` / `-edge` | `#8a5a00` / `#fff2ce` / `#c98a2b` | `App.css` `:root` | same |
+| `--status-filed` / `-bg` / `-edge` | `#315a75` / `#deeff8` / `#4f88a8` | `App.css` `:root` | same |
+| dark `--status-*` / `-bg` | `#d8f1a3`, `#ffd889`, `#b9dcf0` on `rgba(91,123,45,.34)`, `rgba(186,128,63,.28)`, `rgba(85,128,151,.3)` | `App.css` `.dark-mode` | the three `.dark-mode .msk-dashboard-status--*` rules (deleted) |
+| `--grove-amber` / `--grove-rose` | `#c68a2e` / `#bc5a78` | `riso-page.css` `.riso-page` | resolves the casing duplicates below |
+
+Alphas use `color-mix(in srgb, var(--token) N%, transparent)`, which
+computes to the same rgba.
+
+### Resolved: the two casing duplicates
+
+`#C68A2E`/`#c68a2e` and `#BC5A78`/`#bc5a78` were the same colours: Grove's
+"Due amber" and "Overdue rose" (the hexes `GroveSystemLab.tsx` displays as
+swatches, where uppercase is display text and stays). The CSS now reads
+`var(--grove-amber)` / `var(--grove-rose)`.
+
+### `--rp-coral` (recruiter panel)
+
+`#bd3828` light / `#ff8c82` dark were exactly `--shell-coral` in both themes,
+so `--rp-coral` is now `var(--shell-coral)` and the `.dark-mode
+.recruiter-panel` override is gone. Same computed colours, so no exception
+is needed.
+
+### Other bindings
+
+- Radius: `--radius-sm` → `--r-plate` (both 4px); `--radius-md`/`--radius-xl`
+  deleted (no users); literal `4px`/`3px` corners → `--r-plate`/`--r-control`.
+  `--radius-lg` (12px, one use on `.msk-systemmap`) stays: no `--r-*` match.
+- Motion: 18 durations of exactly `0.2s` → `var(--dur-fast)`. No `0.34s`
+  durations existed (the two `340ms` are delays).
+- Spacing: five section clamps that were exact copies of `--sp-md`,
+  `--sp-lg`, `--sp-2xl` now use the tokens.
+
+### Left literal, on purpose
+
+- **`color: #fff` sites** (`App.css` recruiter buttons and
+  `.msk-dashboard-action--primary`; `riso-page.css` `.rp-quote cite`,
+  `.rp-override .rp-acc__next`, `.rp-neutral`, the Grove demo button). The
+  only white tokens are `--on-coral`/`--on-green`, which flip to `#14150e`
+  in dark mode, and `--footer-icon-*`, which mean something else. Binding
+  would change dark-mode colour or the meaning.
+- **Repeated durations with no exact token:** `0.3s`/`.3s` (4 rules),
+  `140ms` (4, the Weekend Dispatch reveal), `220ms` (3), `320ms` (3),
+  `120ms` (2). Candidates for a `--dur-*` step if motion gets a pass.
+- **Radius `10px` (3 uses) and `16px` (2):** no token at those values.
+- **Spacing clamps** that sit between tokens (e.g. `clamp(2.5rem, 6vw,
+  6rem)`, 6px off `--sp-lg` at 1440). Card-level `clamp(.7rem, 1.8vw,
+  1.1rem)` repeats 3 times but is component padding, not section spacing.
+
+**Trigger to revisit:** any change to `--dur-fast`, `--r-plate`, or the
+fixed dark stages' backgrounds.

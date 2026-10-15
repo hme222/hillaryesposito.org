@@ -5,7 +5,7 @@
 .flagship-page {
   --fp-deep: #19321f;
   --fp-deep-2: #102115;
-  --fp-light: #f4f1e6;
+  --fp-light: var(--ink-on-dark);
 }
 
 .flagship-page--msk {
@@ -113,11 +113,11 @@
   linear-gradient(135deg,var(--fp-deep),var(--fp-deep-2)); }
 .fp-cinemaCore { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; gap: var(--sp-sm);
   width: min(940px,76vw); min-height: 260px; color: var(--fp-light); }
-.fp-cinemaCore--workflow > div { width: min(330px,30vw); padding: 1.2rem; border: 1px solid rgba(244,241,230,.24); border-radius: var(--r-plate);
-  background: rgba(244,241,230,.07); backdrop-filter: blur(8px); }
+.fp-cinemaCore--workflow > div { width: min(330px,30vw); padding: 1.2rem; border: 1px solid color-mix(in srgb, var(--ink-on-dark) 24%, transparent); border-radius: var(--r-plate);
+  background: color-mix(in srgb, var(--ink-on-dark) 7%, transparent); backdrop-filter: blur(8px); }
 .fp-cinemaCore span { display: block; font: .72rem/1.2 var(--mono); letter-spacing: .12em; color: color-mix(in srgb, var(--fp-light) 86%, transparent); }
 .fp-cinemaCore b { display: block; margin-top: .45rem; font-size: clamp(1rem,2vw,1.4rem); line-height: 1.25; }
-.fp-cinemaCore small { display: block; margin-top: .55rem; color: rgba(244,241,230,.68); }
+.fp-cinemaCore small { display: block; margin-top: .55rem; color: color-mix(in srgb, var(--ink-on-dark) 68%, transparent); }
 .fp-cinemaCore > i { font-style: normal; color: var(--coral-on-dark); font-size: 1.6rem; }
 
 /* ---------- MSK: one filing, one receipt ---------- */
@@ -150,7 +150,7 @@
   max-width: 48ch;
   line-height: 1.7;
 }
-.fp-receipt__copy > p:not(.rp-kicker):not(.fp-proofStatus) { color: rgba(244,241,230,.76); }
+.fp-receipt__copy > p:not(.rp-kicker):not(.fp-proofStatus) { color: color-mix(in srgb, var(--ink-on-dark) 76%, transparent); }
 /* Desktop sets the headline as its two phrase lines ("A digital workflow /
    became a paper ritual."). At 16ch in the 260px-min column it broke into
    four lines at 1440. The copy column widens and each phrase holds one line;
@@ -203,10 +203,10 @@
 }
 .fp-receipt__queue .msk-dashboard-status,
 .fp-receipt__queue .msk-dashboard-action { transition: background-color 320ms ease, color 320ms ease, border-color 320ms ease; }
-.fp-receipt__stepLine { margin: .9rem 0 0; font: 700 .72rem/1.3 var(--mono); letter-spacing: .06em; color: rgba(244,241,230,.82); }
+.fp-receipt__stepLine { margin: .9rem 0 0; font: 700 .72rem/1.3 var(--mono); letter-spacing: .06em; color: color-mix(in srgb, var(--ink-on-dark) 82%, transparent); }
 .fp-receipt__boundary,
 .fp-indexLens__boundary { position: absolute; margin: 0; font: .56rem/1.3 var(--mono); letter-spacing: .06em; }
-.fp-receipt__boundary { left: 0; bottom: 0; color: rgba(244,241,230,.62); }
+.fp-receipt__boundary { left: 0; bottom: 0; color: color-mix(in srgb, var(--ink-on-dark) 62%, transparent); }
 
 /* ---------- Mobbin: source capture + separate index ---------- */
 .fp-indexLens {
@@ -337,8 +337,8 @@
    it has to say which of the three it belongs to. */
 .fp-mapWrap { margin-top: var(--sp-sm); }
 .fp-mapWrap > ol { display: grid; grid-template-columns: repeat(4,1fr); gap: .6rem; list-style: none; margin: .8rem 0 0; padding: 0; }
-.fp-mapWrap > ol li { padding: .55rem; border: 1px solid rgba(244,241,230,.2); border-radius: var(--r-plate); font: .62rem/1.3 var(--mono); text-align: center; }
-.fp-mapFallback { min-height: 260px; display: grid; place-items: center; border: 1px solid rgba(244,241,230,.2); }
+.fp-mapWrap > ol li { padding: .55rem; border: 1px solid color-mix(in srgb, var(--ink-on-dark) 20%, transparent); border-radius: var(--r-plate); font: .62rem/1.3 var(--mono); text-align: center; }
+.fp-mapFallback { min-height: 260px; display: grid; place-items: center; border: 1px solid color-mix(in srgb, var(--ink-on-dark) 20%, transparent); }
 .fp-proofLink { display: grid; gap: .2rem; max-width: 620px; min-height: 72px; margin-top: 2rem; padding: 1rem 1.1rem;
   border: 1px solid var(--hair); border-left: 4px solid var(--coral); border-radius: var(--r-plate); color: var(--ink); text-decoration: none; }
 .fp-proofLink span { font: .6rem/1.2 var(--mono); letter-spacing: .08em; color: var(--coral); text-transform: uppercase; }
@@ -349,10 +349,10 @@
 /* The one place the site says what service design actually is. Sits inside
    .rp-override, so the accents are the fixed dark-panel values. */
 .fp-ownership { max-width: 64ch; margin: var(--sp-sm) 0 0; padding-left: 1rem;
-  border-left: 3px solid #a9d28f; font-size: 1.02rem; line-height: 1.55;
-  color: rgba(244,241,230,.86); }
+  border-left: 3px solid var(--mint-on-dark); font-size: 1.02rem; line-height: 1.55;
+  color: color-mix(in srgb, var(--ink-on-dark) 86%, transparent); }
 .fp-ownership b { display: block; margin-bottom: .35rem; font: .62rem/1.2 var(--mono);
-  letter-spacing: .09em; text-transform: uppercase; color: #a9d28f; }
+  letter-spacing: .09em; text-transform: uppercase; color: var(--mint-on-dark); }
 @media (forced-colors: active) { .fp-ownership { border-left-color: CanvasText; } }
 /* The same aside on light paper (Knowunity's Build section): themed tokens,
    since the fixed dark-panel values above measure near 1:1 on --paper. */
@@ -367,14 +367,14 @@
 .fp-roleRail { position: relative; display: grid; grid-template-columns: repeat(3,minmax(0,1fr));
   gap: 1rem; list-style: none; margin: 1.8rem 0 0; padding: 0; }
 .fp-roleRail::before { content: ""; position: absolute; top: 11px; left: 8%; right: 8%;
-  border-top: 1px dashed rgba(244,241,230,.28); }
+  border-top: 1px dashed color-mix(in srgb, var(--ink-on-dark) 28%, transparent); }
 .fp-roleRail li { position: relative; padding-top: 2rem; }
 .fp-roleRail__n { position: absolute; top: 0; left: 0; display: inline-flex; align-items: center;
-  justify-content: center; min-width: 22px; padding: 0 .3rem; border: 1px solid rgba(244,241,230,.3);
+  justify-content: center; min-width: 22px; padding: 0 .3rem; border: 1px solid color-mix(in srgb, var(--ink-on-dark) 30%, transparent);
   border-radius: 999px; background: var(--fp-deep, #24291f);
-  font: .58rem/1.9 var(--mono); letter-spacing: .06em; color: #a9d28f; }
+  font: .58rem/1.9 var(--mono); letter-spacing: .06em; color: var(--mint-on-dark); }
 .fp-roleRail b { display: block; font-size: 1.02rem; line-height: 1.25; }
-.fp-roleRail__taught { display: block; margin-top: .35rem; font-size: .86rem; color: rgba(244,241,230,.74); }
+.fp-roleRail__taught { display: block; margin-top: .35rem; font-size: .86rem; color: color-mix(in srgb, var(--ink-on-dark) 74%, transparent); }
 
 /* Each role hides the method it gave her. <details> rather than a scripted
    toggle: keyboard and screen-reader behavior comes free and it survives with
@@ -386,7 +386,7 @@
 .fp-roleRail__method:not([open]) > div { display: none; }
 .fp-roleRail__method summary { display: flex; align-items: center; gap: .4rem;
   min-height: 44px; list-style: none; cursor: pointer;
-  font: .6rem/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: #a9d28f; }
+  font: .6rem/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--mint-on-dark); }
 .fp-roleRail__method summary::-webkit-details-marker { display: none; }
 .fp-roleRail__method summary:focus-visible { outline: 3px solid var(--coral-on-dark); outline-offset: 3px; }
 .fp-roleRail__method summary:hover .fp-roleRail__summaryLabel { text-decoration: underline; }
@@ -395,9 +395,9 @@
   transition: transform var(--dur-fast) ease; }
 .fp-roleRail__method[open] .fp-roleRail__chev { transform: translateY(1px) rotate(-135deg); }
 .fp-roleRail__method > div { padding: .8rem .9rem; margin-top: .1rem;
-  border-left: 2px solid rgba(169,210,143,.5); background: rgba(244,241,230,.05); }
-.fp-roleRail__method b { font-size: .82rem; color: #a9d28f; }
-.fp-roleRail__method p { margin: .35rem 0 0; font-size: .82rem; line-height: 1.5; color: rgba(244,241,230,.74); }
+  border-left: 2px solid color-mix(in srgb, var(--mint-on-dark) 50%, transparent); background: color-mix(in srgb, var(--ink-on-dark) 5%, transparent); }
+.fp-roleRail__method b { font-size: .82rem; color: var(--mint-on-dark); }
+.fp-roleRail__method p { margin: .35rem 0 0; font-size: .82rem; line-height: 1.5; color: color-mix(in srgb, var(--ink-on-dark) 74%, transparent); }
 @media (prefers-reduced-motion: reduce) {
   .fp-roleRail__chev { transition: none; }
 }
@@ -526,22 +526,22 @@
    themed tokens; the .rp-override variant keeps the fixed dark-panel accents. */
 .fp-journalLine { display: grid; gap: .4rem; max-width: 760px; margin-top: 2rem; padding: 1rem 1.1rem; border-left: 3px solid var(--coral); background: var(--paper-2); }
 .fp-journalLine b { color: var(--ink); font-size: .95rem; }
-.rp-override .fp-journalLine { border-left-color: var(--coral-on-dark); background: rgba(244,241,230,.07); }
-.rp-override .fp-journalLine b { color: #f4f1e6; }
+.rp-override .fp-journalLine { border-left-color: var(--coral-on-dark); background: color-mix(in srgb, var(--ink-on-dark) 7%, transparent); }
+.rp-override .fp-journalLine b { color: var(--ink-on-dark); }
 
 /* background-color + background-image, not the shorthand: the solid colour is
    what contrast tooling reads (see .rp-outcomeStage in riso-page.css). */
 .flagship-page--msk .rp-outcomeStage { background-color: var(--fp-deep); background-image:
   radial-gradient(circle at 78% 24%,rgba(201,88,67,.2),transparent 25%),
-  repeating-linear-gradient(90deg,transparent 0 76px,rgba(244,241,230,.035) 77px 78px),
+  repeating-linear-gradient(90deg,transparent 0 76px,color-mix(in srgb, var(--ink-on-dark) 3.5%, transparent) 77px 78px),
   linear-gradient(135deg,#234b44,#102b27 74%); }
 /* MSK's teal stage is lighter where the kicker sits: --coral-on-dark measured
    3.99:1 on #234b44 and 3.57:1 inside the coral glow. The stage's own light
    ink holds above 4.5:1 across the whole gradient. */
-.flagship-page--msk .rp-outcomeStage .rp-kicker { color: #f4f1e6; }
+.flagship-page--msk .rp-outcomeStage .rp-kicker { color: var(--ink-on-dark); }
 .flagship-page--mobbin .rp-outcomeStage { background-color: var(--fp-deep); background-image:
   radial-gradient(circle at 78% 20%,rgba(181,151,78,.18),transparent 24%),
-  repeating-linear-gradient(0deg,transparent 0 42px,rgba(244,241,230,.035) 43px 44px),
+  repeating-linear-gradient(0deg,transparent 0 42px,color-mix(in srgb, var(--ink-on-dark) 3.5%, transparent) 43px 44px),
   linear-gradient(135deg,#30322e,#171815 74%); }
 .flagship-page--mobbin .rp-override { background: #262925; }
 
@@ -625,10 +625,10 @@
 }
 
 .fp-constraintAnnotations { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem 1.6rem; margin: 2rem 0 0; border-top: 1px solid rgba(244,241,230,.24); }
-.fp-constraintAnnotations > div { padding: 1rem 0 0 .9rem; border-left: 2px solid rgba(169,210,143,.55); }
-.fp-constraintAnnotations dt { font: 700 .62rem/1.35 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: #a9d28f; }
-.fp-constraintAnnotations dd { margin: .4rem 0 0; color: rgba(244,241,230,.74); font-size: .86rem; line-height: 1.45; }
+  gap: 1rem 1.6rem; margin: 2rem 0 0; border-top: 1px solid color-mix(in srgb, var(--ink-on-dark) 24%, transparent); }
+.fp-constraintAnnotations > div { padding: 1rem 0 0 .9rem; border-left: 2px solid color-mix(in srgb, var(--mint-on-dark) 55%, transparent); }
+.fp-constraintAnnotations dt { font: 700 .62rem/1.35 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--mint-on-dark); }
+.fp-constraintAnnotations dd { margin: .4rem 0 0; color: color-mix(in srgb, var(--ink-on-dark) 74%, transparent); font-size: .86rem; line-height: 1.45; }
 @media (max-width: 700px) { .fp-constraintAnnotations { grid-template-columns: 1fr; } }
 
 /* The lead-number scale moved to the shared .rp-outcomes--lead modifier

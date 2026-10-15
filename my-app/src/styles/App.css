@@ -48,6 +48,17 @@
   --footer-icon-hover-bg: #0a66c2;
   --footer-icon-hover-color: #ffffff;
 
+  /* MSK queue status (MSKDashboardMockup): chip text, chip fill, row edge */
+  --status-ready: #4f6d1f;
+  --status-ready-bg: #edf5dc;
+  --status-ready-edge: #7aa02f;
+  --status-review: #8a5a00;
+  --status-review-bg: #fff2ce;
+  --status-review-edge: #c98a2b;
+  --status-filed: #315a75;
+  --status-filed-bg: #deeff8;
+  --status-filed-edge: #4f88a8;
+
   /* Radii. Plate/control/device radii are --r-* in portfolio-cohesion.css.
      This one stays: the MSK system-map frame is the only 12px corner, and
      no --r-* token matches it. */
@@ -127,6 +138,14 @@ body.dark-mode,
   --footer-icon-color: #e6edf3;
   --footer-icon-hover-bg: #0a66c2;
   --footer-icon-hover-color: #ffffff;
+
+  /* MSK queue status chips on the dark ground (row edges keep their light values) */
+  --status-ready: #d8f1a3;
+  --status-ready-bg: rgba(91, 123, 45, 0.34);
+  --status-review: #ffd889;
+  --status-review-bg: rgba(186, 128, 63, 0.28);
+  --status-filed: #b9dcf0;
+  --status-filed-bg: rgba(85, 128, 151, 0.3);
 
   /* Shadows */
   --shadow-sm: 0 10px 28px rgba(0, 0, 0, 0.55);
@@ -940,14 +959,13 @@ textarea::placeholder {
   color: inherit;
   /* Editorial system: Archivo display + a theme-aware coral accent, matching the
      rest of the Riso portfolio instead of the old serif/olive panel styling. */
-  --rp-coral: #bd3828;
+  --rp-coral: var(--shell-coral); /* #bd3828 light / #ff8c82 dark */
   font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   z-index: 1101;
   box-shadow: -20px 0 60px rgba(0, 0, 0, 0.25);
   overflow: hidden;
   animation: recruiterSlide 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-.dark-mode .recruiter-panel { --rp-coral: #ff8c82; }
 /* Author rule wins over the UA `dialog:not([open]){display:none}`, so restate it. */
 .recruiter-panel:not([open]) {
   display: none;
@@ -1397,9 +1415,9 @@ textarea::placeholder {
 }
 
 /* Status-colored left accent — the way real clinical worklists cue state at a glance. */
-.msk-dashboard-mockup__row[data-status="ready-to-file"] { border-left-color: #7aa02f; }
-.msk-dashboard-mockup__row[data-status="needs-review"] { border-left-color: #c98a2b; }
-.msk-dashboard-mockup__row[data-status="filed-to-chart"] { border-left-color: #4f88a8; }
+.msk-dashboard-mockup__row[data-status="ready-to-file"] { border-left-color: var(--status-ready-edge); }
+.msk-dashboard-mockup__row[data-status="needs-review"] { border-left-color: var(--status-review-edge); }
+.msk-dashboard-mockup__row[data-status="filed-to-chart"] { border-left-color: var(--status-filed-edge); }
 .msk-dashboard-mockup__row[data-status]:hover {
   background: color-mix(in srgb, var(--olive-2) 6%, transparent);
 }
@@ -1444,18 +1462,18 @@ textarea::placeholder {
 }
 
 .msk-dashboard-status--ready-to-file {
-  color: #4f6d1f;
-  background: #edf5dc;
+  color: var(--status-ready);
+  background: var(--status-ready-bg);
 }
 
 .msk-dashboard-status--needs-review {
-  color: #8a5a00;
-  background: #fff2ce;
+  color: var(--status-review);
+  background: var(--status-review-bg);
 }
 
 .msk-dashboard-status--filed-to-chart {
-  color: #315a75;
-  background: #deeff8;
+  color: var(--status-filed);
+  background: var(--status-filed-bg);
 }
 
 .msk-dashboard-mockup__mrn {
@@ -1649,21 +1667,6 @@ textarea::placeholder {
   }
 }
 
-
-.dark-mode .msk-dashboard-status--ready-to-file {
-  color: #d8f1a3;
-  background: rgba(91, 123, 45, 0.34);
-}
-
-.dark-mode .msk-dashboard-status--needs-review {
-  color: #ffd889;
-  background: rgba(186, 128, 63, 0.28);
-}
-
-.dark-mode .msk-dashboard-status--filed-to-chart {
-  color: #b9dcf0;
-  background: rgba(85, 128, 151, 0.3);
-}
 .msk-systemmap {
   width: 100%;
   height: clamp(360px, 46vw, 480px);

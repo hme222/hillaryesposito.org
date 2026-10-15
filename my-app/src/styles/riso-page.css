@@ -26,6 +26,10 @@
   --coral-text: color-mix(in srgb, var(--coral) 88%, var(--ink));
   --on-coral: #fff;
   --on-green: #fff;
+  /* Grove's due/overdue reminder colours (GroveSystemLab's "Due amber" and
+     "Overdue rose" swatches). Not theme-dependent. */
+  --grove-amber: #c68a2e;
+  --grove-rose: #bc5a78;
   --mono: "Space Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --sans: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   /* Tighten to a 2-family system — Archivo (display + body) + Space Mono
@@ -1062,9 +1066,9 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-fcard__t { font-size: 1.02rem; font-weight: 750; margin: .4rem 0 .3rem; }
 .rp-fcard__d { font-size: .88rem; color: var(--muted); }
 /* principle cards reflect Grove's palette */
-.rp-foundation .rp-fcard:nth-child(2) { border-left-color: #C68A2E; }
+.rp-foundation .rp-fcard:nth-child(2) { border-left-color: var(--grove-amber); }
 .rp-foundation .rp-fcard:nth-child(2) .rp-fcard__k { color: var(--ink); }
-.rp-foundation .rp-fcard:nth-child(3) { border-left-color: #BC5A78; }
+.rp-foundation .rp-fcard:nth-child(3) { border-left-color: var(--grove-rose); }
 .rp-foundation .rp-fcard:nth-child(3) .rp-fcard__k { color: var(--ink); }
 
 /* Grove's decision evidence uses the portfolio's ruled editorial language. */
@@ -1076,7 +1080,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 @media (max-width: 560px) { .rp-decisionRecord > div { grid-template-columns: 1fr; gap: .3rem; } }
 
 /* ---------- full-bleed pull quote ---------- */
-.rp-quote { background: var(--green); color: #f4f1e6; padding: var(--sp-xl) var(--sp-gutter); text-align: center; }
+.rp-quote { background: var(--green); color: var(--ink-on-dark); padding: var(--sp-xl) var(--sp-gutter); text-align: center; }
 .rp-quote blockquote { max-width: 18ch; margin: 0 auto; font-size: clamp(1.9rem,5.4vw,3.6rem); font-weight: 850; letter-spacing: -.018em; line-height: 1.14; text-wrap: balance; }
 .rp-quote cite { display: block; margin-top: 1.5rem; font-family: var(--mono); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; font-style: normal; color: #fff; }
 /* hand-drawn underline that draws in on scroll */
@@ -1518,7 +1522,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   background:
     linear-gradient(90deg, transparent 23px, rgba(18, 18, 15, .06) 24px, transparent 25px),
     linear-gradient(0deg, transparent 23px, rgba(18, 18, 15, .06) 24px, transparent 25px),
-    #f4f1e6;
+    var(--ink-on-dark);
   background-size: 48px 48px;
 }
 
@@ -2470,7 +2474,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
    the section after it. The paper-to-transparent scrim at the top edge is gone
    too — the dark field now meets the hero as a clean cut (owner direction,
    superseding the 2026-07-23 "clean gradient transition" note). */
-.rp-cinema { position: relative; margin-top: -1px; background: #192619; color: #f4f1e6; }
+.rp-cinema { position: relative; margin-top: -1px; background: #192619; color: var(--ink-on-dark); }
 .rp-cinema::before { content: none; }
 .rp-cinema::after { content: none; }
 /* overflow stays visible so an enlarged bridge heading cannot be clipped
@@ -2517,7 +2521,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-cinema__wash::after { content: ""; position: absolute; inset: 0; opacity: .26; mix-blend-mode: screen;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='.8'/%3E%3C/svg%3E"); }
 .rp-cinema__artifact { width: min(320px, 100%); padding: 1rem 1.05rem; color: var(--ink);
-  background: rgba(244,241,230,.94); border: 1px solid rgba(244,241,230,.62); border-radius: var(--r-plate);
+  background: color-mix(in srgb, var(--ink-on-dark) 94%, transparent); border: 1px solid color-mix(in srgb, var(--ink-on-dark) 62%, transparent); border-radius: var(--r-plate);
   box-shadow: 0 22px 48px -26px rgba(0,0,0,.72); backdrop-filter: blur(10px); }
 .rp-cinema__artifact span { font-family: var(--mono); font-size: .58rem; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
 .rp-cinema__artifact b { display: block; margin-top: .35rem; font-size: 1rem; line-height: 1.3; }
@@ -2537,7 +2541,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-cinema__artifact--safety { transform: rotate(.7deg); }
 .rp-cinema__bridge .rp-kicker { color: var(--coral-on-dark); }
 .rp-cinema__bridge h2 { margin: .45rem 0 0; font-size: clamp(1.8rem,4vw,3.3rem); line-height: 1.1; letter-spacing: -.021em; text-wrap: balance; }
-.rp-cinema__bridge > p:last-child { margin-top: .85rem; max-width: 44ch; color: rgba(244,241,230,.78); }
+.rp-cinema__bridge > p:last-child { margin-top: .85rem; max-width: 44ch; color: color-mix(in srgb, var(--ink-on-dark) 78%, transparent); }
 @media (max-width: 760px) {
   .rp-cinema { min-height: auto; padding: 4.5rem 1rem 3rem; }
   /* One column on phones, copy first. Explicit rows again: in source order the
@@ -2552,26 +2556,26 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 }
 
 /* ---------- the human override is the differentiator ---------- */
-.rp-override { background: #17321b; color: #f4f1e6; border-top: 1px solid rgba(244,241,230,.18); border-bottom: 1px solid rgba(244,241,230,.18); }
-.rp-override .rp-title, .rp-override .rp-lede, .rp-override .rp-acc__line { color: #f4f1e6; }
-.rp-override .rp-lede, .rp-override .rp-body, .rp-override .rp-acc__why { color: rgba(244,241,230,.76); }
+.rp-override { background: #17321b; color: var(--ink-on-dark); border-top: 1px solid color-mix(in srgb, var(--ink-on-dark) 18%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--ink-on-dark) 18%, transparent); }
+.rp-override .rp-title, .rp-override .rp-lede, .rp-override .rp-acc__line { color: var(--ink-on-dark); }
+.rp-override .rp-lede, .rp-override .rp-body, .rp-override .rp-acc__why { color: color-mix(in srgb, var(--ink-on-dark) 76%, transparent); }
 .rp-override .rp-kicker, .rp-override .rp-notif--ai .rp-notif__tag { color: var(--coral-on-dark); }
-.rp-override .rp-notif--me .rp-notif__tag, .rp-override .rp-acc__num, .rp-override .rp-acc__me b { color: #a9d28f; }
-.rp-override .rp-pushback__vs { color: rgba(244,241,230,.62); }
-.rp-override .rp-notif { border-color: rgba(244,241,230,.18); }
+.rp-override .rp-notif--me .rp-notif__tag, .rp-override .rp-acc__num, .rp-override .rp-acc__me b { color: var(--mint-on-dark); }
+.rp-override .rp-pushback__vs { color: color-mix(in srgb, var(--ink-on-dark) 62%, transparent); }
+.rp-override .rp-notif { border-color: color-mix(in srgb, var(--ink-on-dark) 18%, transparent); }
 .rp-override .rp-notif--ai { background: rgba(239,83,64,.09); }
 .rp-override .rp-notif--me { background: rgba(124,176,105,.09); }
-.rp-override .rp-notif__card { background: #f1eee4; border-color: rgba(244,241,230,.2); }
+.rp-override .rp-notif__card { background: #f1eee4; border-color: color-mix(in srgb, var(--ink-on-dark) 20%, transparent); }
 /* The card stays light in both themes, so its text is pinned to the light
    palette's ink/muted instead of tokens that flip in dark mode (was 1.15:1). */
 .rp-override .rp-notif__card .rp-notif__msg { color: #20241c; }
 .rp-override .rp-notif__card .rp-notif__app { color: #596253; }
-.rp-override .rp-accordion, .rp-override .rp-acc { border-color: rgba(244,241,230,.22); }
-.rp-override .rp-acc summary { color: #f4f1e6; }
-.rp-override .rp-decisionRecord { border-top-color: rgba(244,241,230,.58); }
-.rp-override .rp-decisionRecord > div { border-bottom-color: rgba(244,241,230,.34); }
+.rp-override .rp-accordion, .rp-override .rp-acc { border-color: color-mix(in srgb, var(--ink-on-dark) 22%, transparent); }
+.rp-override .rp-acc summary { color: var(--ink-on-dark); }
+.rp-override .rp-decisionRecord { border-top-color: color-mix(in srgb, var(--ink-on-dark) 58%, transparent); }
+.rp-override .rp-decisionRecord > div { border-bottom-color: color-mix(in srgb, var(--ink-on-dark) 34%, transparent); }
 .rp-override .rp-decisionRecord dt { color: var(--coral-on-dark); }
-.rp-override .rp-decisionRecord dd { color: #f4f1e6; }
+.rp-override .rp-decisionRecord dd { color: var(--ink-on-dark); }
 @media (max-width: 720px) {
   .rp-override .rp-pushback__vs { transform: none; letter-spacing: .08em; }
 }
@@ -2634,7 +2638,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-demoSelect select { width: 100%; min-height: 44px; padding: .55rem 2.2rem .55rem .7rem; border: 1px solid #c2cbb8;
   border-radius: var(--r-plate); background: #f5f0ea; color: #20241c; font: .78rem/1.2 var(--mono); }
 .rp-demoSelect select:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
-.rp-demoCard--safety { border-left: 5px solid #bc5a78; }
+.rp-demoCard--safety { border-left: 5px solid var(--grove-rose); }
 .rp-demoCard--safety.is-checked { border-left-color: #3a6b2e; }
 .rp-confidence { display: grid; gap: .6rem; margin-top: 1rem; }
 .rp-confidence span { position: relative; display: block; overflow: hidden; padding: .55rem .65rem; border: 1px solid #c2cbb8; border-radius: var(--r-plate);
@@ -2742,7 +2746,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
    which would reset the colour to transparent. The fallback is .flagship-page's
    default --fp-deep (flagship-case-study.css): Grove carries the class but does
    not import that sheet, so the variable is undefined there. */
-.rp-outcomeStage { position: relative; overflow: hidden; min-height: 74vh; display: grid; align-items: center; color: #f4f1e6;
+.rp-outcomeStage { position: relative; overflow: hidden; min-height: 74vh; display: grid; align-items: center; color: var(--ink-on-dark);
   background-color: var(--fp-deep, #19321f);
   background-image:
   radial-gradient(circle at 76% 20%, rgba(198,138,46,.22),transparent 24%),
@@ -2751,47 +2755,47 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
      3.92:1 inside the coral glow. #1c3520 clears 5.46 / 4.70. */
   linear-gradient(135deg,#1c3520,#152717 72%); }
 .rp-outcomeStage::before { content: ""; position: absolute; inset: 0; opacity: .22; pointer-events: none; background-image:
-  repeating-radial-gradient(ellipse at 78% 112%,transparent 0 64px,rgba(244,241,230,.38) 65px 66px,transparent 67px 106px); }
+  repeating-radial-gradient(ellipse at 78% 112%,transparent 0 64px,color-mix(in srgb, var(--ink-on-dark) 38%, transparent) 65px 66px,transparent 67px 106px); }
 .rp-outcomeStage .rp-wrap { position: relative; z-index: 1; }
-.rp-outcomeStage .rp-title, .rp-outcomeStage .rp-lede { color: #f4f1e6; }
-.rp-outcomeStage .rp-lede { color: rgba(244,241,230,.78); }
-.rp-outcomeStage .rp-disclaimer { color: rgba(244,241,230,.7); }
+.rp-outcomeStage .rp-title, .rp-outcomeStage .rp-lede { color: var(--ink-on-dark); }
+.rp-outcomeStage .rp-lede { color: color-mix(in srgb, var(--ink-on-dark) 78%, transparent); }
+.rp-outcomeStage .rp-disclaimer { color: color-mix(in srgb, var(--ink-on-dark) 70%, transparent); }
 /* Phase bar under a dark outcome title (Grove): light rule, light label. */
 .rp-outcomeStage .rp-phase { margin-top: .9rem; }
-.rp-outcomeStage .rp-phase__seg { background: rgba(244,241,230,.55); }
+.rp-outcomeStage .rp-phase__seg { background: color-mix(in srgb, var(--ink-on-dark) 55%, transparent); }
 .rp-outcomeStage .rp-phase__seg.is-done { background: var(--coral-on-dark); }
-.rp-outcomeStage .rp-phase__label { color: rgba(244,241,230,.78); }
+.rp-outcomeStage .rp-phase__label { color: color-mix(in srgb, var(--ink-on-dark) 78%, transparent); }
 /* Fixed dark stage: kickers take the panel's dark-surface coral, as
    .rp-override does — the page coral measured 1.87–2.35:1 here. */
 .rp-outcomeStage .rp-kicker { color: var(--coral-on-dark); }
-.rp-outcomeStage .rp-stat { background: rgba(244,241,230,.08); border-color: rgba(244,241,230,.22); backdrop-filter: blur(8px); }
-.rp-outcomeStage .rp-stat__tag { color: rgba(244,241,230,.66); }
+.rp-outcomeStage .rp-stat { background: color-mix(in srgb, var(--ink-on-dark) 8%, transparent); border-color: color-mix(in srgb, var(--ink-on-dark) 22%, transparent); backdrop-filter: blur(8px); }
+.rp-outcomeStage .rp-stat__tag { color: color-mix(in srgb, var(--ink-on-dark) 66%, transparent); }
 .rp-outcomeStage .rp-stat__n { color: #d8e9c7; }
-.rp-outcomeStage .rp-stat__l { color: rgba(244,241,230,.82); }
+.rp-outcomeStage .rp-stat__l { color: color-mix(in srgb, var(--ink-on-dark) 82%, transparent); }
 .rp-routeRecap { display: flex; align-items: center; flex-wrap: wrap; gap: .55rem .75rem; margin-top: var(--sp-sm);
-  padding-top: 1.1rem; border-top: 1px solid rgba(244,241,230,.22); font-family: var(--mono);
-  font-size: .7rem; letter-spacing: .03em; color: rgba(244,241,230,.76); }
+  padding-top: 1.1rem; border-top: 1px solid color-mix(in srgb, var(--ink-on-dark) 22%, transparent); font-family: var(--mono);
+  font-size: .7rem; letter-spacing: .03em; color: color-mix(in srgb, var(--ink-on-dark) 76%, transparent); }
 /* The one place the portfolio connects AI-uncertainty design to clinical
    consequence. Sits inside .rp-outcomeStage, so the accents are the fixed
    dark-panel values. */
 .rp-bridge { max-width: 68ch; margin: 1.8rem 0 0; padding-left: 1rem;
-  border-left: 3px solid #a9d28f; font-size: 1rem; line-height: 1.6;
-  color: rgba(244,241,230,.86); }
+  border-left: 3px solid var(--mint-on-dark); font-size: 1rem; line-height: 1.6;
+  color: color-mix(in srgb, var(--ink-on-dark) 86%, transparent); }
 .rp-bridge span { display: block; margin-bottom: .35rem; font: .62rem/1.2 var(--mono);
-  letter-spacing: .09em; text-transform: uppercase; color: #a9d28f; }
+  letter-spacing: .09em; text-transform: uppercase; color: var(--mint-on-dark); }
 @media (forced-colors: active) { .rp-bridge { border-left-color: CanvasText; } }
 
 .rp-routeRecap i { color: var(--coral-on-dark); font-style: normal; }
-.rp-routeRecap strong { color: #f4f1e6; }
+.rp-routeRecap strong { color: var(--ink-on-dark); }
 .rp-routeVerdict { max-width: 68ch; margin: var(--sp-sm) 0 0; padding: 1.2rem 0 0 1rem;
-  border-top: 1px solid rgba(244,241,230,.22); border-left: 3px solid #a9d28f;
-  color: rgba(244,241,230,.8); font-size: .96rem; line-height: 1.6; }
-.rp-routeVerdict b { display: block; margin-bottom: .25rem; color: #f4f1e6; font-size: 1.12rem; }
+  border-top: 1px solid color-mix(in srgb, var(--ink-on-dark) 22%, transparent); border-left: 3px solid var(--mint-on-dark);
+  color: color-mix(in srgb, var(--ink-on-dark) 80%, transparent); font-size: .96rem; line-height: 1.6; }
+.rp-routeVerdict b { display: block; margin-bottom: .25rem; color: var(--ink-on-dark); font-size: 1.12rem; }
 /* Above the numbers rather than after them: an orientation line, not a finale.
    No top rule and no emphasised final step — nothing here should read as the
    conclusion the section is building to. */
 .rp-routeRecap--lede { margin: .9rem 0 0; padding-top: 0; border-top: 0;
-  font-size: .66rem; color: rgba(244,241,230,.6); }
+  font-size: .66rem; color: color-mix(in srgb, var(--ink-on-dark) 60%, transparent); }
 @media (max-width: 560px) {
   .rp-routeRecap { display: grid; grid-template-columns: 1fr; }
   .rp-routeRecap i { transform: rotate(90deg); width: min-content; margin-left: .35rem; }
