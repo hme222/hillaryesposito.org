@@ -56,6 +56,8 @@ const WORK: WorkItem[] = [
     // study use, so the work list shows what was actually designed.
     visual: "msk",
     teaserPath: "/case-study/msk#msk-decisions",
+    // The condensed Spanish study has the same four rules under its own id.
+    teaserPathEs: "/case-study/msk#es-msk-decisions",
     teaserEn: "See why one button needed four rules →",
     teaserEs: "Ver por qué un botón necesitó cuatro reglas →",
   },

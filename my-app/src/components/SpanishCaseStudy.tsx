@@ -20,6 +20,12 @@ export type SpanishCaseStudyData = {
   stats: { label: string; value: string }[];
   sections: {
     anchor: string;
+    /** Chapter-strip label, so the Spanish chapters can carry the English
+     *  page's chapter names while `eyebrow` keeps the section's own kicker.
+     *  `false` leaves the section out of the strip, the way the English MSK
+     *  page keeps its sustainment section out of its chapters. Omit to fall
+     *  back to `eyebrow`. */
+    chapter?: string | false;
     eyebrow: string;
     title: string;
     body: string[];
@@ -53,11 +59,13 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
   const projectKey = data.sections[0]?.anchor.split("-")[0] || "case";
   const chapters: CaseStudyChapter[] = [
     { id: `es-${projectKey}-start`, label: "Inicio" },
-    ...data.sections.map((section, index) => ({
-      id: `es-${section.anchor}`,
-      label: section.eyebrow,
-      note: section.title,
-    })),
+    ...data.sections
+      .filter((section) => section.chapter !== false)
+      .map((section) => ({
+        id: `es-${section.anchor}`,
+        label: section.chapter || section.eyebrow,
+        note: section.title,
+      })),
   ];
   usePageTitle(`${data.breadcrumb} — estudio de caso`);
 

@@ -316,7 +316,7 @@ export default function FlagshipMSK() {
         )}
       /></div>
 
-      <section className="rp-section" id="msk-redesigns" data-language-anchor="msk-decisions">
+      <section className="rp-section" id="msk-redesigns" data-language-anchor="msk-redesigns">
         <div className="rp-wrap">
           <p className="rp-kicker">Then it turned up twice more</p>
           <h2 className="rp-title">The same failure, in two more places.</h2>
@@ -338,7 +338,7 @@ export default function FlagshipMSK() {
         </div>
       </section>
 
-      <section className="rp-section rp-override" id="msk-systems" data-language-anchor="msk-decisions">
+      <section className="rp-section rp-override" id="msk-systems" data-language-anchor="msk-systems">
         <div className="rp-wrap">
           <p className="rp-kicker">Why I could see it</p>
           <h2 className="rp-title">I did the jobs before I redesigned them.</h2>
@@ -387,7 +387,7 @@ export default function FlagshipMSK() {
         </div>
       </section>
 
-      <section className="rp-section" id="msk-sustainment" data-language-anchor="msk-outcomes">
+      <section className="rp-section" id="msk-sustainment" data-language-anchor="msk-sustainment">
         <div className="rp-wrap">
           <p className="rp-kicker">The real test came later</p>
           <h2 className="rp-title">I left before launch. Here’s what happened next.</h2>

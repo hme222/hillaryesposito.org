@@ -75,68 +75,121 @@ export const GROVE_ES: SpanishCaseStudyData = {
   },
 };
 
+// Condensed from FlagshipMSK.tsx, chapter by chapter (rebuilt 2026-10-15).
+// Every claim is already on the English page; nothing is added. Chapter names
+// match the English page's; section anchors match its ids, so Home's
+// "cuatro reglas" link (#es-msk-decisions), the About proof links, and the
+// language switch all land in place. Sustainment stays out of the chapter
+// strip, as it does in English.
 export const MSK_ES: SpanishCaseStudyData = {
-  title: "Una cola de archivo reemplazó un desvío de papel entre cuatro\u00a0áreas.",
+  title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas.",
   breadcrumb: "Memorial Sloan Kettering",
-  meta: "Memorial Sloan Kettering · UX y producto · Sistemas de\u00a0salud",
+  meta: "Memorial Sloan Kettering · sistemas clínicos",
   intro:
-    "Durante seis años en MSK, en tres puestos, trabajé en flujos clínicos, certificación e incorporación de personal para sistemas cuyo alcance incluía a más de 21,000 profesionales clínicos y administrativos. Los mensajes del portal de pacientes vivían en el portal, no en la historia clínica, así que el personal los imprimía para escanearlos. Mapeé ese desvío entre cuatro áreas, verifiqué su viabilidad y propuse una solución digital. Los equipos de TI (tecnología de la información) y UX (experiencia de usuario) la implementaron después de que cambié de puesto.",
+    "Los mensajes del portal de pacientes vivían en el portal, no en la historia clínica, así que el personal los imprimía para escanearlos. Diagnostiqué y mapeé ese desvío de papel entre cuatro áreas (clínica, TI, HIM y operaciones), verifiqué su viabilidad y propuse un flujo de archivo digital. Los equipos de tecnología de la información (TI) y de experiencia de usuario (UX) lo construyeron después de que cambié de puesto.",
   stats: [
-    { label: "Rol", value: "Sistemas de salud → UX y diseño de producto" },
-    { label: "Organización", value: "Memorial Sloan Kettering Cancer Center" },
-    { label: "Escala", value: "21,000+ clínicos y personal" },
-    { label: "Puestos en MSK", value: "Coordinación de oficina → Asistencia administrativa → Facilitadora de capacitación (luego Especialista de capacitación I)" },
-    { label: "Contribución", value: "Diagnóstico · mapa · viabilidad · propuesta" },
-    { label: "Implementación", value: "Construida después por TI y UX" },
+    { label: "Rol", value: "Diseño de servicios · mejora de procesos · UX/producto" },
+    { label: "Puestos en MSK", value: "Coordinadora de oficina → Asistente administrativa → Facilitadora de capacitación (luego Especialista de capacitación I)" },
+    { label: "Mi contribución", value: "Diagnosticar · mapear · validar la viabilidad · proponer" },
+    { label: "Implementación", value: "Construida después por TI y UX, cuando ya había cambiado de puesto" },
+    { label: "Evidencia", value: "Reconstruida de memoria a partir de mi documentación del estado actual · sin datos de pacientes" },
   ],
   sections: [
     {
       anchor: "msk-brief",
-      eyebrow: "Contexto",
-      title: "Diseñar para sistemas donde el error tiene\u00a0consecuencias.",
+      chapter: "Problema",
+      eyebrow: "Empezó con un desvío",
+      title: "Un flujo digital se volvió un ritual de papel.",
       body: [
-        "El trabajo no era hacer pantallas bonitas. Era entender dónde fallaba el flujo real, alinear a clínicos, líderes y TI, y cambiar herramientas que las personas usaban bajo presión.",
+        "Los mensajes del portal de pacientes (las preguntas de los pacientes y las respuestas del personal clínico) vivían en el portal, no en la historia del paciente, el expediente médico electrónico (EMR). Así que el personal los imprimía para escanearlos a la historia.",
         "Cada mensaje impreso es una oportunidad de que la información del paciente circule, se archive en la historia equivocada o se pierda antes de la siguiente consulta.",
       ],
     },
     {
       anchor: "msk-workflow",
-      eyebrow: "EMR",
-      title: "De imprimir y enviar a una acción directa desde el dashboard.",
+      chapter: "Flujo",
+      eyebrow: "Así que conté los pasos",
+      title: "Un mapa hizo que cuatro áreas vieran la misma falla.",
       body: [
-        "El rediseño consistió en agregar una acción directa en el panel que archivaba el mensaje en el expediente médico electrónico (EMR), la historia del paciente. Antes, el personal imprimía el mensaje, lo enviaba a HIM (gestión de información de salud, el equipo que escanea documentos a la historia) y esperaba que se archivara. Después, el flujo pasó de seis pasos a cinco y un área salió del circuito.",
-        "La decisión de UI fue mostrar estado, responsabilidad y acción en el mismo lugar, pero exponer la acción directa solo cuando el registro estaba listo y la persona tenía permiso.",
+        "Seis pasos se volvieron cinco. Un área salió del circuito. El cambio visible es un paso menos; el cambio en el servicio es un área menos tocando el expediente.",
+        "Cómo se hicieron estos artefactos: reconstruidos de memoria a partir de mi documentación del estado actual. Sin datos de pacientes, registros exportados ni la interfaz del proveedor.",
+      ],
+      bullets: [
+        "Antes · seis pasos: abrir la cola del panel, encontrar el mensaje, imprimirlo, enviar el papel a HIM (gestión de información de salud, el equipo que escanea documentos a la historia), esperar el escaneo y volver después a confirmar el archivo.",
+        "Después · cinco pasos: abrir la cola del panel, seleccionar el mensaje, elegir Enviar al EMR, que se archive en la historia del paciente y volver con el estado actualizado.",
       ],
     },
     {
       anchor: "msk-decisions",
-      eyebrow: "Proceso",
-      title: "Mapear, probar, alinear y sostener.",
+      chapter: "Decisiones",
+      eyebrow: "El arreglo parecía un solo botón",
+      title: "Un botón, cuatro reglas.",
       body: [
-        "Mapeé el estado actual, encontré puntos de fallo, alineé stakeholders y diseñé cambios que podían sostenerse después del lanzamiento. La adopción importaba tanto como la solución técnica.",
-        "Límite de la evidencia: el registro conserva el flujo, los departamentos, las decisiones y los resultados. No se registraron los conteos de participantes de la observación de turnos, por eso uso la evidencia para explicar decisiones y no para afirmar prevalencia.",
+        "Una acción reemplazó los tres pasos que salían del sistema. TI y UX construyeron el botón real después de que cambié de puesto; las cuatro reglas son cómo esta recreación lo hace seguro de presionar. Es mi diseño para el portafolio, no la especificación de MSK.",
       ],
       bullets: [
-        "El material de certificación de RCP (reanimación cardiopulmonar) estaba en lenguaje técnico y legal, y tan poca gente lo completaba que el equipo planeaba una prórroga de 4 meses. Lo reescribí para los clínicos que tenían que completarlo: toda el área se certificó un mes antes de la fecha límite original, sin la prórroga.",
-        "El programa de incorporación para personal administrativo nuevo — Epic (el software del expediente), HIPAA (la ley de privacidad del paciente), los módulos de cumplimiento y las habilidades técnicas y blandas del puesto — se reconstruyó con el equipo de diseño y se curó cohorte por cohorte, para el rango real de habilidades que llegaba.",
+        "Mostrar la acción solo cuando el registro está listo: el personal deja de abrir registros que aún necesitan revisión.",
+        "Hacer visibles los límites de permiso: los puestos de solo lectura ven el estado y quién es responsable, no un botón desactivado y misterioso.",
+        "Separar lo bloqueado de lo no iniciado: las excepciones reciben un motivo y una persona responsable, para que el rezago deje de esconderlas.",
+        "Devolver a la gente a la cola: el personal regresa a donde empezó, con el estado actualizado.",
+      ],
+    },
+    {
+      anchor: "msk-redesigns",
+      chapter: "Rediseños",
+      eyebrow: "Luego apareció dos veces más",
+      title: "La misma falla, en dos lugares más.",
+      body: ["La certificación y la incorporación tenían el mismo problema: el siguiente paso estaba escondido."],
+      bullets: [
+        "Flujo de archivo del EMR: mensaje del portal → ruta en papel → historia sin contexto. Una sola acción donde la decisión de archivo ya ocurría. En qué me equivoqué: calculé mal lo pequeño que le parecería a TI. Lo despriorizaron porque no valía el esfuerzo, y tuve que seguir insistiendo para que se construyera.",
+        "Certificación de RCP (reanimación cardiopulmonar): el lenguaje técnico y legal impedía que el personal clínico la terminara. Toda el área se certificó un mes antes de la fecha límite original, sin la prórroga de 4 meses.",
+        "Incorporación administrativa: un solo curso ignoraba puntos de partida muy distintos. La instrucción por cohorte adaptó un programa de una a tres semanas a las personas en la sala.",
+      ],
+    },
+    {
+      anchor: "msk-systems",
+      chapter: "Contexto",
+      eyebrow: "Por qué pude verlo",
+      title: "Hice los trabajos antes de rediseñarlos.",
+      body: [
+        "Ese patrón no se ve desde fuera de un sistema. Yo ya había ocupado tres de sus puestos.",
+        "Alcance del diseño de servicios: la ruta completa a través de sistemas, áreas, permisos y traspasos, no solo la pantalla de la cola.",
+        "Límite de la evidencia: se conservan el flujo, las áreas, las decisiones y los resultados. Los conteos de la observación no; no afirmo una prevalencia.",
+      ],
+      bullets: [
+        "01 · Coordinadora de oficina: dónde se detenía la gente. En este puesto terminé el Lean Six Sigma Green Belt (Purdue), una certificación de mejora de procesos, y la Maestría en Administración de Salud (Rutgers). El Green Belt es la lente que mostró una tarea de archivo cruzando cuatro áreas.",
+        "02 · Asistente administrativa: cómo informar a quien tiene que actuar. Convertir decisiones de liderazgo en informes claros me enseñó a escribir para esa persona. La reescritura de RCP y la presentación del EMR salieron de esa práctica.",
+        "03 · Facilitadora de capacitación: la autoridad para rediseñarlo. Di instrucción sobre Epic (el software del expediente), HIPAA (la ley de privacidad del paciente) y los módulos de cumplimiento. Hacerme cargo de cómo se enseñaba el sistema significó documentar lo que de verdad pasa, no lo que dice la política.",
       ],
     },
     {
       anchor: "msk-sustainment",
-      eyebrow: "Después",
+      chapter: false,
+      eyebrow: "La prueba de verdad llegó después",
       title: "Me fui antes del lanzamiento. Esto es lo que pasó después.",
       body: [
         "Entregué el flujo a TI y UX, que lo construyeron. Se adoptó en toda la institución (dato autorreportado: mi propio registro, no una medición independiente).",
+        "El trabajo pasó de un desvío personal a un sistema compartido; el formato en lenguaje sencillo dejó al área conforme antes de la fecha límite.",
+      ],
+      bullets: [
+        "Flujo de archivo del EMR: adoptado en toda la institución, según mi propio registro.",
+        "Formato de certificación de RCP: área conforme un mes antes de la fecha límite original, sin prórroga.",
       ],
     },
     {
       anchor: "msk-outcomes",
-      eyebrow: "Resultado",
-      title: "Impacto medible en sistemas internos.",
+      chapter: "Resultados",
+      eyebrow: "A cuánto sumó",
+      title: "Los números, y a quién pertenecen.",
       body: [
-        "En mi trabajo directo, toda el área se certificó en RCP un mes antes de la fecha límite original, sin la prórroga de 4 meses, y reconstruí los itinerarios de aprendizaje de la incorporación administrativa con el equipo de diseño, probándolos con distintas cohortes, para el rango de habilidades de cada una.",
-        "La iniciativa organizacional más amplia reportó una reducción de 20% en costos relacionados con el EMR; no atribuyo ese resultado únicamente a la cola de archivo y el registro conservado no incluye el período ni la definición de costos.",
-        "En mi propuesta para la Feria de Mejora de Procesos proyecté un ahorro de ~$1M al año en papel. Es una proyección de esa propuesta, no un ahorro medido.",
+        "Inicié y presenté el rediseño del archivo, reescribí el material de certificación clínica y reconstruí con el equipo de diseño los itinerarios de aprendizaje de la incorporación administrativa, probándolos con distintas cohortes.",
+        "Evidencia anonimizada · resultados autorreportados · el 20% pertenece a una iniciativa más amplia de toda la organización, no solo a la cola de archivo; no se conservan el período ni la definición de costos · los ~$1M/año son una proyección de mi propuesta, no un ahorro medido.",
+      ],
+      bullets: [
+        "Dirigí · 1 mes antes: toda el área se certificó antes de la fecha límite original, sin la prórroga de 4 meses.",
+        "Alcance · 21,000+: clínicos y personal administrativo en los flujos incluidos; no es la adopción de la cola.",
+        "Resultado de la iniciativa · 20%: reducción de costos del EMR en toda la organización; no se atribuye solo a este flujo de archivo.",
+        "Proyección · ~$1M/año: ahorro proyectado en papel en mi propuesta para la Feria de Mejora de Procesos, no un ahorro medido.",
       ],
     },
   ],
@@ -150,41 +203,79 @@ export const MSK_ES: SpanishCaseStudyData = {
   },
 };
 
+// Condensed from FlagshipMobbin.tsx and MobbinIndexLens.tsx, chapter by
+// chapter (rebuilt 2026-10-15). Nothing is added beyond the English page;
+// chapter names and section anchors match it.
 export const MOBBIN_ES: SpanishCaseStudyData = {
   title: "Más de 200 pantallas por app, buscables por tarea.",
   breadcrumb: "Mobbin",
-  meta: "Mobbin · Documentación de flujos de experiencia de usuario (UX) · Curaduría de patrones",
+  meta: "Mobbin · Documentación de flujos de experiencia de usuario (UX) · tres apps financieras",
   intro:
-    "Mobbin es una biblioteca de capturas de apps donde los diseñadores buscan ejemplos. Trabajo freelance para Mobbin documentando experiencias móviles de principio a fin. Capturé, organicé y anoté flujos de tres apps de finanzas para la biblioteca de referencia Finance+. Documenté Kikoff, Polymarket y Discover; no diseñé esos productos ni Mobbin.",
+    "Mobbin es una biblioteca de capturas de apps donde los diseñadores buscan ejemplos. Capturé, ordené, anoté y etiqueté más de 200 pantallas por app en Kikoff, Polymarket y Discover. Documenté estos productos; no los diseñé, ni diseñé Mobbin.",
   stats: [
-    { label: "Cliente", value: "Mobbin · Freelance" },
-    { label: "Tiempo", value: "mar.–jun. 2026 · 4 meses" },
-    { label: "Entrega", value: "3 apps · 200+ pantallas cada una" },
-    { label: "Ubicación", value: "Remoto" },
+    { label: "Cliente", value: "Mobbin · trabajo freelance" },
+    { label: "Tiempo", value: "Contrato de cuatro meses" },
+    { label: "Entrega", value: "3 apps · más de 200 pantallas cada una · una biblioteca buscable" },
   ],
   sections: [
     {
       anchor: "mobbin-brief",
-      eyebrow: "Trabajo",
-      title: "Documentar flujos es criterio editorial.",
+      chapter: "Problema",
+      eyebrow: "Una captura tiene que encontrarse después",
+      title: "Nombrar la tarea, no solo la app.",
       body: [
-        "El trabajo no era capturar pantallas al azar. Era caminar productos reales como usuaria, entender secuencias completas, identificar patrones reutilizables y escribir anotaciones útiles para diseñadores que llegarían sin contexto.",
+        "Quienes usan Mobbin buscan una tarea (iniciar sesión, explorar, abrir una cuenta), no un número de captura. Dejé cada captura original intacta y nombré la tarea a su lado con el vocabulario de la biblioteca.",
       ],
     },
     {
       anchor: "mobbin-work",
-      eyebrow: "Método",
-      title: "Captura, taxonomía y calidad.",
+      chapter: "Método",
+      eyebrow: "El método · criterio antes de capturar",
+      title: "Una captura no es un flujo.",
       body: [
-        "Organicé onboarding, rutas de conversión, puntos de entrada a funciones, comportamientos de interacción y estados especiales. Revisé cada flujo para claridad, completitud y precisión.",
+        "Recorrer la tarea. Conservar los estados útiles. Ordenar la secuencia. Nombrarla con el vocabulario de Mobbin.",
+        "La parte mecánica es capturar la pantalla; cualquier herramienta puede hacerlo. El trabajo real es decidir qué viaja: la tarea, la secuencia, los recortes y una etiqueta que se pueda buscar.",
+        "En qué me equivoqué: mi primer lote usó mi vocabulario. Las revisiones bajaron cuando aprendí el de Mobbin.",
+      ],
+    },
+    {
+      anchor: "mobbin-decisions",
+      chapter: "Decisiones",
+      eyebrow: "Cuatro decisiones · un sistema de documentación",
+      title: "Editar es el trabajo.",
+      body: ["Conservar el estado útil, ordenar la tarea y nombrarla para que se encuentre."],
+      bullets: [
+        "Capturar la tarea completa: recorrer la app como una persona real, incluidos los estados vacíos, los errores y las pantallas que solo tienen sentido en secuencia.",
+        "Recortar lo que no ayuda: las pantallas de marketing no merecían el mismo espacio que los flujos de registro, pago, cuenta o recuperación. Lo completo también necesita una editora.",
+        "Nombrarlo en el lenguaje de Mobbin: un patrón solo se encuentra cuando la etiqueta coincide con las palabras que otro diseñador va a buscar, no con las que yo prefiero.",
+        "Escribir para alguien que nunca voy a conocer: cada anotación explica qué hace la pantalla, dónde está y por qué importa el patrón, sin tener la app abierta.",
+      ],
+    },
+    {
+      anchor: "mobbin-apps",
+      chapter: "Apps",
+      eyebrow: "Las apps",
+      title: "Kikoff demuestra, Polymarket transparenta, Discover lo mantiene familiar.",
+      body: ["Las pantallas están en Mobbin Finance+, la biblioteca a la que se integraron."],
+      bullets: [
+        "Kikoff · construcción de crédito: un registro largo se gana su extensión mostrando un puntaje, un plan y una prueba después de cada acción.",
+        "Polymarket · mercados de predicción: las probabilidades, las reglas de liquidación y el riesgo quedan a la vista antes de que alguien arriesgue dinero en un resultado incierto.",
+        "Discover · banca: la interfaz se apoya en patrones conocidos de tarjetas y cuentas, y luego hace fácil encontrar la letra pequeña.",
       ],
     },
     {
       anchor: "mobbin-outcomes",
-      eyebrow: "Resultado",
-      title: "Aprender de productos reales fortaleció mi juicio.",
+      chapter: "Resultados",
+      eyebrow: "A cuánto sumó",
+      title: "Un registro buscable de cómo funcionan tres productos financieros.",
       body: [
-        "Estudiar cómo apps líderes estructuran información, guían usuarios y reducen fricción fortaleció mi criterio de producto. También me enseñó a nombrar patrones según cómo otros diseñadores los buscarían.",
+        "Documenté las apps de origen para la biblioteca de referencia Finance+ de Mobbin. No diseñé Kikoff, Polymarket, Discover ni Mobbin.",
+        "Trabajo freelance de captura de apps · la propiedad de cada producto sigue siendo de su empresa.",
+      ],
+      bullets: [
+        "200+: pantallas por app, capturadas, ordenadas, anotadas y etiquetadas en tres apps.",
+        "3: apps financieras en uso documentadas, y cada una se gana la confianza de una forma distinta.",
+        "4: meses construyendo referencias reutilizables para diseñadores.",
       ],
     },
   ],

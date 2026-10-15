@@ -133,7 +133,7 @@ export default function FlagshipMobbin() {
 
       <div data-evidence="true"><DecisionStory
         id="mobbin-decisions"
-        languageAnchor="mobbin-work"
+        languageAnchor="mobbin-decisions"
         kicker="Four decisions · one documentation system"
         title="Editing is the work."
         intro="Preserve the useful state, sequence the task, name it for retrieval."
@@ -153,7 +153,7 @@ export default function FlagshipMobbin() {
         )}
       /></div>
 
-      <section className="rp-section" id="mobbin-apps" data-language-anchor="mobbin-outcomes">
+      <section className="rp-section" id="mobbin-apps" data-language-anchor="mobbin-apps">
         <div className="rp-wrap">
           <p className="rp-kicker">The apps</p>
           <h2 className="rp-title">Kikoff proves, Polymarket discloses, Discover keeps it familiar.</h2>

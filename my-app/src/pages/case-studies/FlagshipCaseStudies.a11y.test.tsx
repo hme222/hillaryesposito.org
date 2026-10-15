@@ -308,6 +308,44 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".rp-next")?.getAttribute("href")).toBe("/case-study/logistics");
   });
 
+  it("rebuilds the Spanish MSK study on the English chapters, with Home's four-rules link landing", async () => {
+    mockLang = "es";
+    await act(async () => {
+      root.render(<FlagshipMSK />);
+    });
+    const chapterLinks = Array.from(container.querySelectorAll<HTMLAnchorElement>(".rp-chapters a"), (a) => a.textContent);
+    expect(chapterLinks).toEqual(["Problema", "Flujo", "Decisiones", "Rediseños", "Contexto", "Resultados"]);
+    ["es-msk-start", "es-msk-brief", "es-msk-workflow", "es-msk-decisions", "es-msk-redesigns", "es-msk-systems", "es-msk-sustainment", "es-msk-outcomes"].forEach((id) => {
+      expect(container.querySelector(`#${id}`)).not.toBeNull();
+    });
+    expect(container.querySelector("#es-msk-decisions")?.getAttribute("data-language-anchor")).toBe("msk-decisions");
+    expect(container.querySelectorAll("#es-msk-decisions li")).toHaveLength(4);
+    const text = container.textContent || "";
+    ["portal de pacientes", "un mes antes de la fecha límite original", "proyección", "Me fui antes del lanzamiento. Esto es lo que pasó después.", "clínica, TI, HIM y operaciones"].forEach((phrase) => {
+      expect(text).toContain(phrase);
+    });
+    expect(text).not.toContain("70%");
+
+    await act(async () => {
+      root.render(<RisoHome />);
+    });
+    const teaser = container.querySelector<HTMLAnchorElement>('.rp-work__teaser[href="/case-study/msk#es-msk-decisions"]');
+    expect(teaser?.textContent).toBe("Ver por qué un botón necesitó cuatro reglas →");
+  });
+
+  it("rebuilds the Spanish Mobbin study on the English chapters", async () => {
+    mockLang = "es";
+    await act(async () => {
+      root.render(<FlagshipMobbin />);
+    });
+    const chapterLinks = Array.from(container.querySelectorAll<HTMLAnchorElement>(".rp-chapters a"), (a) => a.textContent);
+    expect(chapterLinks).toEqual(["Problema", "Método", "Decisiones", "Apps", "Resultados"]);
+    const text = container.textContent || "";
+    expect(text).toContain("Mobbin es una biblioteca de capturas de apps");
+    expect(text).toContain("Kikoff demuestra, Polymarket transparenta, Discover lo mantiene familiar.");
+    ["Remoto", "mar.–jun."].forEach((phrase) => expect(text).not.toContain(phrase));
+  });
+
   it("renders the condensed Spanish Knowunity study", async () => {
     mockLang = "es";
     await act(async () => {
