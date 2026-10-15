@@ -178,7 +178,7 @@ def build_resume(output_path, variant="portfolio"):
             "subject": "Product design resume focused on healthcare systems, internal tools, and complex workflows",
             "footer": "HILLARY ESPOSITO · PRODUCT DESIGN",
             "summary": (
-                "Product designer with 13+ years working inside high-stakes healthcare and military systems. "
+                "Product designer with six years inside a cancer center and 13+ years of Army service. "
                 "Turns frontline observation, workflow analysis, stakeholder input, and technical constraints into "
                 "clearer internal tools and testable product flows. Initiated an MSK workflow redesign that later "
                 "contributed to a 20% organization-wide EMR cost reduction. MHA, Lean Six Sigma Green Belt, U.S. "
@@ -199,8 +199,8 @@ def build_resume(output_path, variant="portfolio"):
             "subject": "Healthcare product and service design resume focused on clinical workflows and end-to-end services",
             "footer": "HILLARY ESPOSITO · HEALTHCARE PRODUCT + SERVICE DESIGN",
             "summary": (
-                "Healthcare product and service designer with 13+ years inside cancer-care operations and military "
-                "medical logistics. I map what staff do, where work changes hands, and who owns the next step. I stay "
+                "Healthcare product and service designer with six years inside cancer-care operations and 13+ years of Army "
+                "service, including medical logistics. I map what staff do, where work changes hands, and who owns the next step. I stay "
                 "through prototyping and implementation. An MSK workflow redesign I initiated contributed inside a larger initiative to a 20% organization-wide "
                 "EMR cost reduction. MHA, Lean Six Sigma Green Belt, Army veteran, and bilingual English/Spanish communicator."
             ),
@@ -219,8 +219,8 @@ def build_resume(output_path, variant="portfolio"):
             "subject": "Healthcare UX research and service design resume focused on workflow research, service mapping, and research-to-decision evidence",
             "footer": "HILLARY ESPOSITO · HEALTHCARE UXR + SERVICE DESIGN",
             "summary": (
-                "Healthcare UX research and service design practitioner with 13+ years inside cancer-care operations and "
-                "medical logistics. Uses workflow observation, stakeholder input, surveys, service mapping, and task analysis "
+                "Healthcare UX research and service design practitioner with six years inside cancer-care operations and 13+ years of Army "
+                "service, including medical logistics. Uses workflow observation, stakeholder input, surveys, service mapping, and task analysis "
                 "to change product and service decisions. At Grove, a 34-person self-report survey narrowed eleven proposed "
                 "features to three. At MSK, workflow analysis aligned four departments around an implemented digital process. "
                 "Research claims retain their method and evidence boundaries."
@@ -243,7 +243,7 @@ def build_resume(output_path, variant="portfolio"):
                 "Product/UX designer building Grove, a functional plant-care prototype in Phase 2 of 3. Synthesized a "
                 "34-person self-report survey to cut 11 proposed features to 3, then defined directions for care, plant "
                 "identification, confidence, sources, and pet safety around calm ongoing use. Brings consumer interaction craft, "
-                "accessibility, coded prototyping, and 13+ years designing for trust in high-stakes systems."
+                "accessibility, coded prototyping, and experience designing for trust in high-stakes systems at a cancer center and in the Army."
             ),
             "skills": (
                 "<b>Consumer product:</b> onboarding, information architecture, care loops, notification strategy, "

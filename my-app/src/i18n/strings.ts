@@ -76,7 +76,7 @@ const en = {
   // detour (2026-10-14 review, item 13); the work row and teaser don't repeat it.
   "home.riso.heroProof": "IT and UX built it after I changed roles. The workflows in scope reach 21,000+ clinicians and staff.",
   "home.riso.careerSwitchTitle": "From healthcare operations to product design.",
-  "home.riso.careerSwitchBody": "I spent 13+ years running the workflows I now design: MSK admin and training roles, and Army medical logistics.",
+  "home.riso.careerSwitchBody": "I ran the workflows I now design: MSK admin and training roles, and Army medical logistics.",
   "home.riso.openingVisual": "Watch the 5-second opener",
   "home.riso.openingFilmLabel": "Opening visual · five seconds",
   "home.riso.openingFilmSkip": "Skip →",
@@ -149,7 +149,7 @@ const en = {
   // ── Home: mini about ──
   "home.about.eyebrow": "About",
   "home.about.blurb":
-    "13+ years in cancer-care operations and military medical logistics.",
+    "Six years in cancer-care operations and training, plus Army medical logistics.",
   "home.about.link": "More about me →",
 
   // ── Home: proof stats ──
@@ -281,7 +281,7 @@ const es: Partial<Record<StringKey, string>> = {
     "En Memorial Sloan Kettering, rastreé un desvío en papel entre cuatro áreas y propuse la cola que lo reemplazó.",
   "home.riso.heroProof": "TI y UX la construyeron después de que cambié de puesto. Los flujos incluidos alcanzan a más de 21,000 clínicos y personal.",
   "home.riso.careerSwitchTitle": "De operaciones de salud a diseño de producto.",
-  "home.riso.careerSwitchBody": "Pasé más de 13 años dirigiendo los flujos que ahora diseño: puestos administrativos y de capacitación en MSK, y logística médica del Ejército.",
+  "home.riso.careerSwitchBody": "Dirigí los flujos que ahora diseño: puestos administrativos y de capacitación en MSK, y logística médica del Ejército.",
   "home.riso.openingVisual": "Ver la apertura de 5 segundos",
   "home.riso.openingFilmLabel": "Apertura visual · cinco segundos",
   "home.riso.openingFilmSkip": "Saltar →",
@@ -357,7 +357,7 @@ const es: Partial<Record<StringKey, string>> = {
   // ── Home: mini about ──
   "home.about.eyebrow": "Sobre mí",
   "home.about.blurb":
-    "Más de 13 años en operaciones de atención oncológica y logística médica militar.",
+    "Seis años en operaciones y capacitación oncológica, además de logística médica del Ejército.",
   "home.about.link": "Conozca más sobre mí →",
 
   // ── Home: proof stats ──

@@ -90,7 +90,7 @@ export default function RecruiterPanel() {
 
           <section className="recruiter-panel__section">
             <p className="recruiter-panel__label">In one line</p>
-            <p>At MSK, a clinical workflow I initiated contributed to a larger initiative that cut organization-wide electronic medical record costs 20%. I bring 13+ years in healthcare and medical logistics to product decisions, with service design and research built in.</p>
+            <p>At MSK, a clinical workflow I initiated contributed to a larger initiative that cut organization-wide electronic medical record costs 20%. I bring six years inside a cancer center and 13+ years of Army service to product decisions, with service design and research built in.</p>
           </section>
 
           {/* Moved ahead of "Selected work" so "View résumé" - the action a
