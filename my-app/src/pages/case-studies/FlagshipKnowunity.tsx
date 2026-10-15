@@ -33,7 +33,7 @@ import "../../styles/flagship-case-study.css";
  * prototype, 2026-10-13.
  */
 
-const PROTOTYPE_URL = "https://knowunity-voice-recall.vercel.app/";
+const PROTOTYPE_URL = "https://knowunity-voice-recall-eight.vercel.app/";
 const STORYBOOK_URL = "https://6aab3391f5b820296b53b3e5-vmipdkjlqe.chromatic.com/?path=/docs/components-appbar--docs";
 const CAPTURE_W = 780;
 const CAPTURE_H = 1688;

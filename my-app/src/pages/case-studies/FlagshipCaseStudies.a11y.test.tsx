@@ -277,9 +277,8 @@ describe("flagship case-study accessibility", () => {
     const teaser = container.querySelector<HTMLAnchorElement>('.rp-work__teaser[href="/case-study/knowunity#knowunity-decisions"]');
     expect(teaser?.textContent).toBe("See the four decisions →");
     expect(teaser?.getAttribute("target")).toBeNull();
-    expect(container.innerHTML).not.toContain("knowunity-voice-recall.vercel.app");
+    expect(container.innerHTML).not.toContain("knowunity-voice-recall");
     expect(container.innerHTML).not.toContain("chromatic.com");
-    expect(container.innerHTML).not.toContain("knowunity-voice-recall-o2c9s7oro");
     expect(container.innerHTML).not.toContain("vercel.com/hillary-esposito-s-projects");
 
     mockLang = "es";
@@ -311,6 +310,9 @@ describe("flagship case-study accessibility", () => {
     expect(storybook?.getAttribute("target")).toBe("_blank");
     expect(storybook?.hasAttribute("aria-label")).toBe(false);
     expect(storybook?.querySelector(".rp-ext")?.textContent).toBe("Open the Storybook");
+    // The public production domain; the older alias lands on a stale build.
+    const prototype = container.querySelector<HTMLAnchorElement>('a[href*="knowunity-voice-recall"]');
+    expect(prototype?.getAttribute("href")).toBe("https://knowunity-voice-recall-eight.vercel.app/");
     expect(container.querySelector(".rp-next")?.getAttribute("href")).toBe("/case-study/logistics");
   });
 

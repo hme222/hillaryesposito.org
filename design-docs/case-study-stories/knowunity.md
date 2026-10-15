@@ -4,7 +4,7 @@ Raw material, not finished copy. Interview started 2026-10-13 via the
 case-study-interview skill. Sources alongside this file: the project repo at
 `~/Desktop/Knowunity` (README, SPEC.md, docs/design-brief.md,
 docs/sprint-context.md, 78 commits 2026-09-11 → 2026-10-13), the live
-prototype https://knowunity-voice-recall.vercel.app/, and the Chromatic
+prototype https://knowunity-voice-recall-eight.vercel.app/, and the Chromatic
 Storybook linked from Home row 04.
 
 ## Q1: What was the problem, in the terms it was described at the time?
