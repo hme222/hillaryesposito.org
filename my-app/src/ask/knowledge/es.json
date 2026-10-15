@@ -137,10 +137,10 @@
   {
    "id": "es:es-log-start:0",
    "lang": "es",
-   "text": "Como oficial de logística médica, planifiqué y di seguimiento a la reubicación de un almacén de $2M que abastecía a siete estaciones de ayuda en tres países. Según mi expediente de servicio, el reabastecimiento pasó de 1–2 meses a 1–2 semanas, resumido como un 85% menos de tiempo. Son cifras reportadas por mí; no se conservaron los periodos ni los métodos de medición.",
+   "text": "Como oficial de logística médica, planifiqué y di seguimiento a la reubicación de un almacén de $2M que abastecía a siete estaciones de ayuda en tres países. El reabastecimiento pasó de 1–2 meses a 1–2 semanas. Son cifras reportadas por mí; no se conservaron los periodos ni los métodos de medición.",
    "source": {
     "type": "page",
-    "label": "Estudio de caso de logística médica · El reabastecimiento médico tardó un 85% menos",
+    "label": "Estudio de caso de logística médica · El reabastecimiento pasó de meses a semanas",
     "url": "/case-study/logistics/#es-log-start"
    },
    "batch": 1
@@ -151,7 +151,7 @@
    "text": "Esta es una versión condensada. El estudio completo está disponible en inglés.",
    "source": {
     "type": "page",
-    "label": "Estudio de caso de logística médica · El reabastecimiento médico tardó un 85% menos",
+    "label": "Estudio de caso de logística médica · El reabastecimiento pasó de meses a semanas",
     "url": "/case-study/logistics/#es-log-start"
    },
    "batch": 1
@@ -203,7 +203,7 @@
   {
    "id": "es:es-log-moves:1",
    "lang": "es",
-   "text": "Acercar el punto de suministro: cada reabastecimiento empezaba demasiado lejos de las estaciones de ayuda. Planifiqué y di seguimiento a la mudanza de $2M. La hice por fases, de lo más esencial a lo menos, y dividí al personal para que ninguna estación de ayuda se quedara sin suministro durante la mudanza. Según lo reportado, el tiempo pasó de 1–2 meses a 1–2 semanas (85% menos).",
+   "text": "Acercar el punto de suministro: cada reabastecimiento empezaba demasiado lejos de las estaciones de ayuda. Planifiqué y di seguimiento a la mudanza de $2M. La hice por fases, de lo más esencial a lo menos, y dividí al personal para que ninguna estación de ayuda se quedara sin suministro durante la mudanza. Según lo reportado, el tiempo pasó de 1–2 meses a 1–2 semanas.",
    "source": {
     "type": "page",
     "label": "Estudio de caso de logística médica · Mover el almacén. Después, arreglar los traspasos.",
@@ -291,7 +291,7 @@
   {
    "id": "es:es-log-outcomes:2",
    "lang": "es",
-   "text": "85%: reducción reportada del tiempo de reabastecimiento médico después de acercar el almacén.",
+   "text": "1–2 semanas: tiempo reportado de reabastecimiento médico después de acercar el almacén, antes 1–2 meses · 85% más rápido según mi expediente de servicio.",
    "source": {
     "type": "page",
     "label": "Estudio de caso de logística médica · Medido en tiempo, dinero y cosas que no pasaron.",

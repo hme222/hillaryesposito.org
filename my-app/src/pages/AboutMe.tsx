@@ -48,7 +48,7 @@ const CHAPTERS: AboutChapter[] = [
     heading: "Captain and Medical Logistics Officer, NJ Army National Guard.",
     image: "/assets/about/army.jpg",
     // Numbers live in the facts ledger below, once — the prose used to
-    // restate every figure (5,000+, seven, 85%, 60%) a second time in the
+    // restate every figure (5,000+, seven, 1–2 weeks, 60%) a second time in the
     // same breath. Cut here, not duplicated there.
     paragraphs: [
       "In Iraq I ran medical supply for aid stations in three countries under a 48-hour cold-chain limit. In 2020 I reported the New Jersey National Guard's COVID-19 medical operations to the Pentagon.",
@@ -57,7 +57,7 @@ const CHAPTERS: AboutChapter[] = [
       { value: "5,000+", label: "soldiers served" },
       { value: "$2M", label: "in medical supply" },
       { value: "7", label: "aid stations" },
-      { value: "85%", label: "shorter medical resupply time" },
+      { value: "1–2 wk", label: "medical resupply, down from 1–2 months" },
       { value: "60%", label: "lower spending" },
     ],
     caseLink: { path: "/case-study/logistics", title: "Medical logistics, Iraq", source: "Review the case study" },
@@ -93,7 +93,7 @@ const CHAPTERS_ES: AboutChapter[] = [
       { value: "5,000+", label: "soldados atendidos" },
       { value: "$2M", label: "en suministro médico" },
       { value: "7", label: "estaciones de ayuda" },
-      { value: "85%", label: "menos tiempo de reabastecimiento médico" },
+      { value: "1–2 sem.", label: "de reabastecimiento médico, antes 1–2 meses" },
       { value: "60%", label: "menos gasto" },
     ],
     caseLink: { path: "/case-study/logistics", title: "Logística médica, Irak", source: "Ver el estudio de caso" },

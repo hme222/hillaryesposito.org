@@ -124,9 +124,9 @@ const WORK: WorkItem[] = [
 // Each source links to the section that carries the number's scope and limits.
 const STATS = [
   { n: "21,000+", labelKey: "home.stat.scale", sourceKey: "home.stat.mskSource", path: "/case-study/msk", anchor: "msk-outcomes" },
-  { n: "85%", labelKey: "home.stat.logistics", sourceKey: "home.stat.logisticsSource", path: "/case-study/logistics", anchor: "log-outcomes" },
+  { n: "1–2\u00a0mo →\u00a01–2\u00a0wk", nEs: "1–2\u00a0meses →\u00a01–2\u00a0sem.", labelKey: "home.stat.logistics", sourceKey: "home.stat.logisticsSource", path: "/case-study/logistics", anchor: "log-outcomes" },
   { n: "34", labelKey: "home.stat.research", sourceKey: "home.stat.groveSource", path: "/case-study/grove", anchor: "grove-research" },
-] satisfies Array<{ n: string; labelKey: StringKey; sourceKey: StringKey; path: string; anchor: string }>;
+] satisfies Array<{ n: string; nEs?: string; labelKey: StringKey; sourceKey: StringKey; path: string; anchor: string }>;
 
 // Home's glossary: each short form gets one tap/hover definition, at its first
 // appearance (2026-10-14 review, item 12). NYPL is spelled out in the dispatch
@@ -326,7 +326,7 @@ export default function RisoHome() {
       {work.visual === "logistics" ? (
         <figure className="rp-work__thumb rp-work__thumb--mechanism" aria-label={t(work.imgAltKey)}>
           <LogisticsMechanism n="01" />
-          <figcaption>{lang === "es" ? "Almacén movido al frente · 85% menos tiempo de reabastecimiento" : "Warehouse moved forward · 85% shorter resupply time"}</figcaption>
+          <figcaption>{lang === "es" ? "Almacén movido al frente · de meses a semanas" : "Warehouse moved forward · months to weeks"}</figcaption>
         </figure>
       ) : work.visual === "msk" ? (
         <figure className="rp-work__thumb rp-work__thumb--dashboard" aria-label={t(work.imgAltKey)}>
@@ -455,7 +455,7 @@ export default function RisoHome() {
           <div className="rp-outcomes rp-reveal" data-evidence="true">
             {STATS.map((s) => (
               <div className="rp-stat" key={s.n}>
-                <p className="rp-stat__n">{s.n}</p>
+                <p className="rp-stat__n">{lang === "es" && s.nEs ? s.nEs : s.n}</p>
                 <p className="rp-stat__l">{t(s.labelKey)}</p>
                 <Link
                   className="rp-stat__source"

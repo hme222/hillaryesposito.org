@@ -154,7 +154,7 @@ export default function RecruiterPanel() {
               </li>
               <li>
                 <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/logistics")}>
-                  <strong>Medical logistics · Resupply time reduced 85%</strong>
+                  <strong>Medical logistics · Resupply went from months to weeks</strong>
                   <span>Redesigned an end-to-end supply service for 5,000+ soldiers across seven aid stations; shared tracking also reduced spending 60%</span>
                 </button>
               </li>

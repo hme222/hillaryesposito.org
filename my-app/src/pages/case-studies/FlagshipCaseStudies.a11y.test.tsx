@@ -210,9 +210,10 @@ describe("flagship case-study accessibility", () => {
 
     const hero = container.querySelector("#log-start");
     expect(hero?.textContent).toContain("1–2 months to 1–2 weeks");
-    expect(hero?.textContent).toContain("owner-reported: my own service record, not independently measured");
+    expect(hero?.querySelector("h1")?.textContent).toBe("Resupply went from months to\u00a0weeks.");
+    expect(hero?.textContent).toContain("85% faster in my service record (owner-reported)");
     expect(container.textContent).toContain("measurement periods and methods are not preserved");
-    expect(container.textContent).toContain("Relocation85%");
+    expect(container.textContent).toContain("Relocation1–2 wk");
     expect(container.textContent).toContain("Order status60%");
     expect(container.textContent).toContain("Protocol15%");
   });
@@ -555,7 +556,7 @@ describe("flagship case-study accessibility", () => {
 
     expect(container.querySelector(".rp-openingFilm")).toBeNull();
     expect(container.querySelector("main h1")).not.toBeNull();
-    expect(container.textContent).toContain("Warehouse moved forward · 85% shorter resupply time");
+    expect(container.textContent).toContain("Warehouse moved forward · months to weeks");
 
     // The hero ends on exactly two actions; the opener replay moved to the
     // global footer, which reaches the film through `open-opening-film`.
@@ -607,7 +608,7 @@ describe("flagship case-study accessibility", () => {
     expect(dialog?.open).toBe(true);
     expect(dialog?.textContent).toContain("Grove");
     expect(dialog?.textContent).toContain("MSK · A filing queue replaced a four-department paper detour");
-    expect(dialog?.textContent).toContain("Medical logistics · Resupply time reduced 85%");
+    expect(dialog?.textContent).toContain("Medical logistics · Resupply went from months to weeks");
 
     const projectTitles = Array.from(
       dialog?.querySelectorAll<HTMLButtonElement>(".recruiter-panel__project strong") || [],
@@ -616,7 +617,7 @@ describe("flagship case-study accessibility", () => {
     expect(projectTitles).toEqual([
       "MSK · A filing queue replaced a four-department paper detour",
       "UX Woman · Six healthcare interviews, one hypothesis",
-      "Medical logistics · Resupply time reduced 85%",
+      "Medical logistics · Resupply went from months to weeks",
       "Grove · Eleven features became three",
     ]);
     expect(dialog?.textContent).toContain("contributed to a larger initiative that cut organization-wide electronic medical record costs 20%");

@@ -103,7 +103,7 @@ const en = {
   "home.riso.mskDesc":
     "I mapped the detour across four departments and pitched the digital filing workflow that replaced it. Six steps became five, and one department left the loop.",
   "home.riso.logisticsDesc":
-    "I planned and tracked a warehouse relocation that shortened medical resupply time by 85%, then built shared order tracking for seven aid stations.",
+    "I planned and tracked a warehouse relocation that took medical resupply from 1–2 months to 1–2 weeks, then built shared order tracking for seven aid stations.",
   "home.riso.uxwomanDesc":
     "Six healthcare interviews and one adjacent HR interview point to one hypothesis: staff and patients cannot see who owns the next step. No dedicated patient interviews yet, five pretotypes designed and none run. Active, research phase.",
   "home.riso.knowunityDesc":
@@ -112,7 +112,7 @@ const en = {
     "Three finance apps turned into a searchable reference — the work was the taxonomy and the naming, not the screenshots. 200+ screens per app, an editor's judgment on every one.",
   "home.riso.groveAlt": "Grove daily care screen showing one clear plant-care task and overdue plants first",
   "home.riso.mskAlt": "Recreated Memorial Sloan Kettering filing queue, showing patient-portal messages moving from ready-to-send through filed",
-  "home.riso.logisticsAlt": "Service mechanism diagram contrasting a rear supply point with the warehouse moved forward, beside an 85% reduction in resupply time",
+  "home.riso.logisticsAlt": "Service mechanism diagram contrasting a rear supply point with the warehouse moved forward, beside resupply time falling from months to weeks",
   "home.riso.uxwomanAlt": "Evidence ledger: 6 healthcare interviews, 1 adjacent HR interview, 0 patient interviews, 5 pretotypes designed, 0 run",
   "home.riso.knowunityAlt": "Two Say It Back mobile prototype states: a voice-recall question, then the pass screen quoting the student's own words back",
   "home.riso.mobbinAlt": "One of the third-party app screens documented for Mobbin — a finance app welcome screen",
@@ -168,7 +168,7 @@ const en = {
   "home.stat.patterns": "App screens studied per app, across three finance apps",
   "home.stat.research": "People surveyed before I designed anything",
   "home.stat.scale": "Clinicians and administrative staff across the workflows in scope",
-  "home.stat.logistics": "Shorter medical resupply time across seven aid stations",
+  "home.stat.logistics": "Medical resupply across seven aid stations",
   "home.stat.mobbinSource": "Mobbin pattern study",
   "home.stat.groveSource": "Grove discovery research",
   "home.stat.mskSource": "MSK clinical operations",
@@ -188,7 +188,7 @@ const en = {
   "home.proj.mobbin.subtitle": "Mobbin · Freelance UX Flow Documentation",
   "home.proj.grove.title": "Eleven features became three",
   "home.proj.msk.title": "A filing queue replaced a four-department paper detour",
-  "home.proj.logistics.title": "85% shorter medical resupply time",
+  "home.proj.logistics.title": "Medical resupply went from months to weeks",
   "home.proj.uxwoman.title": "Six healthcare interviews, one hypothesis",
   "home.proj.knowunity.title": "The student’s own words are the proof",
   "home.proj.mobbin.title": "200+ screens per app, searchable by task",
@@ -320,7 +320,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.mskDesc":
     "Mapeé el desvío entre cuatro áreas y propuse el flujo de archivo digital que lo reemplazó. Seis pasos se volvieron cinco, y un área salió del circuito.",
   "home.riso.logisticsDesc":
-    "Planifiqué y supervisé una reubicación de almacén que redujo un 85% el tiempo de reabastecimiento médico, y luego creé un seguimiento compartido para siete puestos.",
+    "Planifiqué y supervisé una reubicación de almacén que llevó el reabastecimiento médico de 1–2 meses a 1–2 semanas, y luego creé un seguimiento compartido para siete puestos.",
   "home.riso.uxwomanDesc":
     "Seis entrevistas de salud y una adyacente de RR. HH. apuntan a una hipótesis: el personal y los pacientes no ven quién tiene el siguiente paso. Aún sin entrevistas dedicadas con pacientes; cinco pretotipos diseñados y ninguno ejecutado. Activo, fase de investigación.",
   "home.riso.knowunityDesc":
@@ -329,7 +329,7 @@ const es: Partial<Record<StringKey, string>> = {
     "Tres apps financieras convertidas en una referencia buscable: el trabajo fue la taxonomía y los nombres, no las capturas. Más de 200 pantallas por app, con criterio de editora en cada una.",
   "home.riso.groveAlt": "Pantalla de cuidado diario de Grove con una tarea clara y las plantas atrasadas primero",
   "home.riso.mskAlt": "Cola de archivo recreada de Memorial Sloan Kettering, mostrando mensajes del portal de pacientes desde listos para enviar hasta archivados",
-  "home.riso.logisticsAlt": "Diagrama de mecanismo de servicio que contrasta un punto de suministro en la retaguardia con el almacén movido al frente, junto a una reducción del 85% en el tiempo de reabastecimiento",
+  "home.riso.logisticsAlt": "Diagrama de mecanismo de servicio que contrasta un punto de suministro en la retaguardia con el almacén movido al frente, junto al tiempo de reabastecimiento bajando de meses a semanas",
   "home.riso.uxwomanAlt": "Registro de evidencia: 6 entrevistas de salud, 1 entrevista adyacente de RR. HH., 0 entrevistas con pacientes, 5 pretotipos diseñados, 0 ejecutados",
   "home.riso.knowunityAlt": "Dos estados del prototipo móvil Say It Back: una pregunta de recuerdo por voz y luego la pantalla de acierto que cita las propias palabras del estudiante",
   "home.riso.mobbinAlt": "Una de más de 200 pantallas de apps de terceros documentadas para Mobbin — la pantalla de bienvenida de una app financiera",
@@ -385,7 +385,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.stat.patterns": "Pantallas documentadas por app, en tres apps financieras",
   "home.stat.research": "Personas encuestadas antes de diseñar nada",
   "home.stat.scale": "Personal clínico y administrativo en los flujos incluidos",
-  "home.stat.logistics": "Reabastecimiento médico más rápido en siete estaciones de ayuda",
+  "home.stat.logistics": "Reabastecimiento médico en siete estaciones de ayuda",
   "home.stat.mobbinSource": "Estudio de patrones de Mobbin",
   "home.stat.groveSource": "Investigación de descubrimiento de Grove",
   "home.stat.mskSource": "Operaciones clínicas de MSK",
@@ -407,7 +407,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.proj.msk.title": "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas",
   // Same wording as the Spanish case-study title. "Tiempo de reabastecimiento
   // médico reducido" left "médico" alone on its own line at 320, 375 and 1280.
-  "home.proj.logistics.title": "El reabastecimiento médico tardó un\u00a085%\u00a0menos",
+  "home.proj.logistics.title": "El reabastecimiento médico pasó de meses a\u00a0semanas",
   "home.proj.uxwoman.title": "Seis entrevistas de salud, una hipótesis",
   "home.proj.knowunity.title": "Las propias palabras del estudiante son la prueba",
   "home.proj.mobbin.title": "Más de 200 pantallas por app, buscables por tarea",

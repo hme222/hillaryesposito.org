@@ -55,7 +55,7 @@ const PUBLIC_ROUTES = [
     path: "case-study/logistics",
     title: "Medical Logistics — Army Operations Case Study | Hillary Esposito",
     description:
-      "A service design case study: directing medical resupply for 5,000+ soldiers across seven aid stations in three countries, and cutting resupply time by 85%.",
+      "A service design case study: directing medical resupply for 5,000+ soldiers across seven aid stations in three countries, where resupply went from 1–2 months to 1–2 weeks.",
     image: "/assets/about/army.jpg",
   },
   {

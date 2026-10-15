@@ -22,10 +22,13 @@ import "../../styles/flagship-case-study.css";
  *
  * Sourced entirely from what Hillary has already published on the About page
  * and from her résumé: 44th Infantry Brigade Combat Team, 5,000+ soldiers, $2M in supplies, seven aid
- * stations in three countries, 85% resupply reduction, 60% spending reduction,
+ * stations in three countries, resupply from 1–2 months to 1–2 weeks (85% in
+ * the service record), 60% spending reduction,
  * a 15% efficiency gain from one communication protocol, cold chain inside 48
  * hours. Nothing is added beyond that. The one-sentence additions to the move
  * cards (2026-10-14) come only from design-docs/case-study-stories/logistics.md.
+ * Since 2026-10-15 the page leads with the 1–2 months → 1–2 weeks range the
+ * record supports; the 85% is a small attributed line (same file).
  *
  * Deliberately absent: unit positions, site locations, routes, dates beyond the
  * deployment year, and anything resembling a real system screen. The diagrams
@@ -45,7 +48,7 @@ const MOVES: { n: string; title: string; finding: string; change: React.ReactNod
     n: "01",
     title: "Move the supply point forward",
     finding: "Every resupply run began too far from the aid stations.",
-    change: <>Planned and tracked the $2M move forward, in phases from most essential to least, with personnel split so no aid station went unsupplied during the move. <Term def="My own record, not independently measured.">Owner-reported</Term> resupply time changed from 1–2 months to 1–2 weeks, summarized as 85% shorter.</>,
+    change: <>Planned and tracked the $2M move forward, in phases from most essential to least, with personnel split so no aid station went unsupplied during the move. <Term def="My own record, not independently measured.">Owner-reported</Term> resupply time changed from 1–2 months to 1–2 weeks.</>,
   },
   {
     n: "02",
@@ -67,7 +70,7 @@ export default function FlagshipLogistics() {
   const rootRef = useRef<HTMLElement>(null);
   useFlagshipReveal(rootRef);
 
-  // Deep links (e.g. the homepage 85% stat) land on their section.
+  // Deep links (e.g. the homepage resupply stat) land on their section.
   useEffect(() => {
     const targetId = window.location.hash.slice(1);
     if (!targetId) return;
@@ -108,17 +111,17 @@ export default function FlagshipLogistics() {
         <div className="rp-hero__content">
           <div className="rp-clearing">
             <span className="rp-eyebrow">Army medical logistics · Iraq · service design</span>
-            <h1 className="rp-h1">85% shorter medical resupply{"\u00a0"}time.</h1>
+            <h1 className="rp-h1">Resupply went from months to{"\u00a0"}weeks.</h1>
             <span className="rp-readtime"><b>4 min</b><span>read · deployed 2024</span></span>
             <p className="rp-sub">
               I planned and tracked a $2M warehouse relocation serving seven aid stations across three countries.
-              The service record reports resupply changing from <b>1–2 months to 1–2 weeks</b>, summarized as 85% shorter.
+              Resupply went from <b>1–2 months to 1–2 weeks</b>.
             </p>
             <dl className="rp-heroEvidence" aria-label="Medical logistics case evidence at a glance">
               <div><dt>Role</dt><dd>Medical logistics officer · relocation and service lead</dd></div>
               <div><dt>System</dt><dd>Seven aid stations · three countries</dd></div>
               <div><dt>My contribution</dt><dd>Plan the move · one request protocol · shared order status</dd></div>
-              <div><dt>Outcome</dt><dd>85% shorter after relocation · owner-reported: my own service record, not independently measured</dd></div>
+              <div><dt>Outcome</dt><dd>85% faster in my service record (owner-reported)</dd></div>
             </dl>
             <a className="rp-cta" href="#log-moves">See the three moves →</a>
           </div>
@@ -199,7 +202,7 @@ export default function FlagshipLogistics() {
         intro="Moved the supply point, standardized the request, and made order status visible."
         disclaimer="Owner-reported figures from Hillary's service record · measurement periods and methods are not preserved · no unit positions, routes, or locations are described here"
         metrics={[
-          { tag: "Relocation", n: "85%", label: "reported reduction in medical resupply time after the warehouse moved forward" },
+          { tag: "Relocation", n: "1–2 wk", label: "reported medical resupply time after the warehouse moved forward, down from 1–2 months · 85% faster in my service record" },
           { tag: "Order status", n: "60%", label: "reported reduction in spending after shared real-time order status stopped over-ordering and stockouts" },
           { tag: "Protocol", n: "15%", label: "reported: critical supplies reached the stations more efficiently after one shared communication protocol" },
         ]}

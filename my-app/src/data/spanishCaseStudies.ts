@@ -204,15 +204,15 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
 export const LOGISTICS_ES: SpanishCaseStudyData = {
   breadcrumb: "Logística médica del Ejército",
   // Worded to break into multi-word lines; "reabastecimiento" alone filled a line.
-  title: "El reabastecimiento médico tardó un\u00a085%\u00a0menos.",
+  title: "El reabastecimiento pasó de meses a\u00a0semanas.",
   meta: "Logística médica del Ejército · Operaciones · Diseño de servicios · 2024",
   intro:
-    "Como oficial de logística médica, planifiqué y di seguimiento a la reubicación de un almacén de $2M que abastecía a siete estaciones de ayuda en tres países. Según mi expediente de servicio, el reabastecimiento pasó de 1–2 meses a 1–2 semanas, resumido como un 85% menos de tiempo. Son cifras reportadas por mí; no se conservaron los periodos ni los métodos de medición.",
+    "Como oficial de logística médica, planifiqué y di seguimiento a la reubicación de un almacén de $2M que abastecía a siete estaciones de ayuda en tres países. El reabastecimiento pasó de 1–2 meses a 1–2 semanas. Son cifras reportadas por mí; no se conservaron los periodos ni los métodos de medición.",
   stats: [
     { label: "Rol", value: "Oficial de logística médica · líder de reubicación y servicio" },
     { label: "Escala", value: "5,000+ soldados · $2M en suministros" },
     { label: "Sistema", value: "Siete estaciones de ayuda · tres países" },
-    { label: "Resultado", value: "85% menos tiempo tras la reubicación · dato autorreportado" },
+    { label: "Resultado", value: "85% más rápido según mi expediente de servicio (dato autorreportado)" },
   ],
   sections: [
     {
@@ -232,7 +232,7 @@ export const LOGISTICS_ES: SpanishCaseStudyData = {
         "La mudanza física eliminó el retraso más grande. Una solicitud compartida y un estado de pedidos visible evitaron que volviera.",
       ],
       bullets: [
-        "Acercar el punto de suministro: cada reabastecimiento empezaba demasiado lejos de las estaciones de ayuda. Planifiqué y di seguimiento a la mudanza de $2M. La hice por fases, de lo más esencial a lo menos, y dividí al personal para que ninguna estación de ayuda se quedara sin suministro durante la mudanza. Según lo reportado, el tiempo pasó de 1–2 meses a 1–2 semanas (85% menos).",
+        "Acercar el punto de suministro: cada reabastecimiento empezaba demasiado lejos de las estaciones de ayuda. Planifiqué y di seguimiento a la mudanza de $2M. La hice por fases, de lo más esencial a lo menos, y dividí al personal para que ninguna estación de ayuda se quedara sin suministro durante la mudanza. Según lo reportado, el tiempo pasó de 1–2 meses a 1–2 semanas.",
         "Una sola forma de pedir: siete estaciones usaban formatos distintos de solicitud y de reporte. Creé un protocolo de solicitud compartido y capacité a cada sitio en cómo pedir y qué significaba cada estado del pedido; el expediente reporta que los suministros críticos llegaron a las estaciones con un 15% más de eficiencia.",
         "Pedir antes de que se acabe: nadie veía el estado de los pedidos, así que unos sitios pedían de más y otros se quedaban sin nada. Creé un estado de pedidos compartido en tiempo real; el expediente reporta un 60% menos de gasto sin perder disponibilidad. La falla contra la que lo diseñé: un sitio que “se queda en negro”, sin suministros.",
       ],
@@ -257,7 +257,7 @@ export const LOGISTICS_ES: SpanishCaseStudyData = {
         "Límite de la evidencia: son cifras de mi expediente de servicio, reportadas por mí; no se conservaron los periodos ni los métodos de medición. Aquí no se describen posiciones, rutas ni ubicaciones de unidades.",
       ],
       bullets: [
-        "85%: reducción reportada del tiempo de reabastecimiento médico después de acercar el almacén.",
+        "1–2 semanas: tiempo reportado de reabastecimiento médico después de acercar el almacén, antes 1–2 meses · 85% más rápido según mi expediente de servicio.",
         "60%: reducción reportada del gasto, cuando el estado compartido de pedidos acabó con los pedidos de más y los faltantes.",
         "15%: según lo reportado, los suministros críticos llegaron a las estaciones con más eficiencia tras un solo protocolo de comunicación.",
       ],
@@ -339,7 +339,7 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
   ],
   otherProjects: [
     { title: "Once funciones se convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
-    { title: "El reabastecimiento médico tardó un 85% menos", desc: "Logística médica del Ejército · siete estaciones de ayuda, tres países.", path: "/case-study/logistics" },
+    { title: "El reabastecimiento médico pasó de meses a semanas", desc: "Logística médica del Ejército · siete estaciones de ayuda, tres países.", path: "/case-study/logistics" },
   ],
   close: {
     title: "Hago prototipos para encontrar la siguiente prueba.",

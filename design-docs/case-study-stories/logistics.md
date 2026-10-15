@@ -236,3 +236,22 @@ Each of the three move cards gained one sentence, sourced only from this file:
 
 Hero contribution line: "Plan the move · build shared tracking · train the
 handoffs" → "Plan the move · one request protocol · shared order status".
+
+## 2026-10-15 decision — lead with the range, not the 85%
+
+Hillary's call 1 of her 2026-10-15 review. The service record supports
+"1–2 months to 1–2 weeks"; the 85% is a summary of that range. The site now
+leads with the range:
+
+- Logistics H1: "Resupply went from months to weeks." (ES: "El
+  reabastecimiento pasó de meses a semanas.")
+- Hero sub states "from 1–2 months to 1–2 weeks"; the 85% moves to one small
+  attributed line in the hero evidence: "85% faster in my service record
+  (owner-reported)".
+- One phrasing site-wide for the row/ledger title: "Medical resupply went
+  from months to weeks" (Home work row, About ledger, recruiter panel,
+  Spanish next-project links).
+- Home proof tile big value: "1–2 mo → 1–2 wk".
+- The résumé passages in the Ask knowledge base still quote the résumé's own
+  "Cut medical resupply time by 85%" line verbatim; they are quotes of the
+  résumé, not site copy.
