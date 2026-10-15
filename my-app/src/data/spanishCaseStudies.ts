@@ -272,7 +272,7 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
       anchor: "mobbin-outcomes",
       chapter: "Resultados",
       eyebrow: "A cuánto sumó",
-      title: "Un registro buscable de cómo funcionan tres productos financieros.",
+      title: "Un registro buscable de cómo funcionan tres productos\u00a0financieros.",
       body: [
         "Documenté las apps de origen para la biblioteca de referencia Finance+ de Mobbin. No diseñé Kikoff, Polymarket, Discover ni Mobbin.",
         "Trabajo freelance de captura de apps · la propiedad de cada producto sigue siendo de su empresa.",

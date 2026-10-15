@@ -57,7 +57,9 @@ const CHAPTERS: AboutChapter[] = [
       { value: "5,000+", label: "soldiers served" },
       { value: "$2M", label: "in medical supply" },
       { value: "7", label: "aid stations" },
-      { value: "1–2 wk", label: "medical resupply, down from 1–2 months" },
+      // The unit rides in the label: "1–2 wk" / "1–2 sem." did not fit the
+      // five-column ledger at 1440.
+      { value: "1–\u20602", label: "weeks for medical resupply, down from 1–2 months" },
       { value: "60%", label: "lower spending" },
     ],
     caseLink: { path: "/case-study/logistics", title: "Medical logistics, Iraq", source: "Review the case study" },
@@ -93,7 +95,7 @@ const CHAPTERS_ES: AboutChapter[] = [
       { value: "5,000+", label: "soldados atendidos" },
       { value: "$2M", label: "en suministro médico" },
       { value: "7", label: "estaciones de ayuda" },
-      { value: "1–2 sem.", label: "de reabastecimiento médico, antes 1–2 meses" },
+      { value: "1–\u20602", label: "semanas de reabastecimiento médico, antes 1–2 meses" },
       { value: "60%", label: "menos gasto" },
     ],
     caseLink: { path: "/case-study/logistics", title: "Logística médica, Irak", source: "Ver el estudio de caso" },

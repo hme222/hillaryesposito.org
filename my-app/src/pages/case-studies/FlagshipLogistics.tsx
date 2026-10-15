@@ -202,7 +202,7 @@ export default function FlagshipLogistics() {
         intro="Moved the supply point, standardized the request, and made order status visible."
         disclaimer="Owner-reported figures from Hillary's service record · measurement periods and methods are not preserved · no unit positions, routes, or locations are described here"
         metrics={[
-          { tag: "Relocation", n: "1–2 wk", label: "reported medical resupply time after the warehouse moved forward, down from 1–2 months · 85% faster in my service record" },
+          { tag: "Relocation", n: "1–\u20602\u00a0wk", label: "reported medical resupply time after the warehouse moved forward, down from 1–2 months · 85% faster in my service record" },
           { tag: "Order status", n: "60%", label: "reported reduction in spending after shared real-time order status stopped over-ordering and stockouts" },
           { tag: "Protocol", n: "15%", label: "reported: critical supplies reached the stations more efficiently after one shared communication protocol" },
         ]}

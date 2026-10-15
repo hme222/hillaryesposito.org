@@ -213,7 +213,7 @@ describe("flagship case-study accessibility", () => {
     expect(hero?.querySelector("h1")?.textContent).toBe("Resupply went from months to\u00a0weeks.");
     expect(hero?.textContent).toContain("85% faster in my service record (owner-reported)");
     expect(container.textContent).toContain("measurement periods and methods are not preserved");
-    expect(container.textContent).toContain("Relocation1–2 wk");
+    expect(container.textContent).toContain("Relocation1–\u20602\u00a0wk");
     expect(container.textContent).toContain("Order status60%");
     expect(container.textContent).toContain("Protocol15%");
   });
@@ -236,7 +236,7 @@ describe("flagship case-study accessibility", () => {
     });
     const stats = Array.from(container.querySelectorAll(".rp-outcomes .rp-stat"));
     expect(stats.map((s) => s.querySelector(".rp-stat__tag")?.textContent)).toEqual(["home.stat.scaleTag", "home.stat.logisticsTag", "home.stat.researchTag"]);
-    expect(stats[1].querySelector(".rp-stat__n")?.textContent).toBe("1–2\u00a0mo →\u00a01–2\u00a0wk");
+    expect(stats[1].querySelector(".rp-stat__n")?.textContent).toBe("1–\u20602\u00a0mo\u00a0→ 1–\u20602\u00a0wk");
   });
 
   it("exposes Grove's working browser prototype from Home without a dead Spanish hash", async () => {
