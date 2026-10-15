@@ -66,9 +66,11 @@ const MVP_FEATURES = [
 // five calls would not all be visible to back the number.
 const SHOW_DECISION_TABLE = false;
 
+// "3" leads (2026-10-15, call 5): the decision is the result; the 34 is how
+// it was reached.
 const OUTCOMES: Array<{ n: string; l: string; needsDecisionTable?: boolean }> = [
-  { n: "34", l: "plant owners surveyed before any screen changed" },
   { n: "3", l: "features that earn the download; everything else waits" },
+  { n: "34", l: "plant owners surveyed before any screen changed" },
   { n: "5", l: "product calls made explicit, including one care-logic mistake", needsDecisionTable: true },
 ];
 const VISIBLE_OUTCOMES = OUTCOMES.filter((o) => SHOW_DECISION_TABLE || !o.needsDecisionTable);
@@ -531,14 +533,14 @@ export default function RisoGrove() {
         <div className="rp-wrap">
           <p className="rp-kicker">Where it stands</p>
           <h2 className="rp-title">Phase 2 of 3: the redesign is decided, the retest is next.</h2>
+          <PhaseIndicator current={2} total={3} label="Functional prototype · Phase 2 of 3" />
           <p className="rp-lede">Three features scoped. One care-logic mistake found. Retest pending.</p>
           <p className="rp-bridge">
             <span>Why a plant app</span>
             Uncertain recommendations, sources to check, a human final call: the same problems as a clinical tool, at plant-level stakes.
           </p>
-          <p className="rp-disclaimer">Grove is a functional prototype, Phase 2 of 3</p>
           <div
-            className={`rp-outcomes rp-reveal${VISIBLE_OUTCOMES.length === 2 ? " rp-outcomes--two" : ""}`}
+            className={`rp-outcomes rp-outcomes--lead rp-reveal${VISIBLE_OUTCOMES.length === 2 ? " rp-outcomes--two" : ""}`}
             data-evidence="true"
           >
             {VISIBLE_OUTCOMES.map((o) => (
@@ -554,7 +556,7 @@ export default function RisoGrove() {
           </p>
           <div className="rp-note rp-reveal">
             <p className="rp-note__k">What the three phases mean</p>
-            <p>1: first build + survey. 2: decisions shown here. 3: high-fidelity screens, owner testing, and edge states.</p>
+            <p>Grove is a functional prototype in Phase 2 of 3. 1: first build + survey. 2: decisions shown here. 3: high-fidelity screens, owner testing, and edge states.</p>
           </div>
         </div>
       </section>

@@ -207,6 +207,7 @@ export default function FlagshipLogistics() {
           { tag: "Protocol", n: "15%", label: "reported: critical supplies reached the stations more efficiently after one shared communication protocol" },
         ]}
         route={["Find the step that should not exist", "Move it", "Standardize the ask", "Make the status visible"]}
+        leadMetric
       /></div>
 
       <section className="rp-section">

@@ -1014,6 +1014,13 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 /* Four tiles (MSK) sit two by two rather than leaving one alone on a row. */
 .rp-outcomes--four { grid-template-columns: repeat(2, 1fr); }
 @media (max-width: 720px) { .rp-outcomes, .rp-outcomes--two, .rp-outcomes--four { grid-template-columns: 1fr; } }
+/* Lead number: the first tile is the headline result and gets the column and
+   the scale to say so. Shared by Logistics and Grove (was Logistics-only). */
+.rp-outcomes--lead { grid-template-columns: 1.45fr 1fr 1fr; }
+.rp-outcomes--lead.rp-outcomes--two { grid-template-columns: 1.45fr 1fr; }
+.rp-outcomes--lead .rp-stat:first-child { border-width: 2px; }
+.rp-outcomes--lead .rp-stat:first-child .rp-stat__n { font-size: clamp(4.5rem, 10vw, 8rem); }
+@media (max-width: 720px) { .rp-outcomes--lead, .rp-outcomes--lead.rp-outcomes--two { grid-template-columns: 1fr; } }
 .rp-stat {
   background: color-mix(in srgb, var(--paper) 74%, transparent);
   border: 0;
@@ -3745,6 +3752,11 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-outcomeStage .rp-title, .rp-outcomeStage .rp-lede { color: #f4f1e6; }
 .rp-outcomeStage .rp-lede { color: rgba(244,241,230,.78); }
 .rp-outcomeStage .rp-disclaimer { color: rgba(244,241,230,.7); }
+/* Phase bar under a dark outcome title (Grove): light rule, light label. */
+.rp-outcomeStage .rp-phase { margin-top: .9rem; }
+.rp-outcomeStage .rp-phase__seg { background: rgba(244,241,230,.55); }
+.rp-outcomeStage .rp-phase__seg.is-done { background: var(--coral-on-dark); }
+.rp-outcomeStage .rp-phase__label { color: rgba(244,241,230,.78); }
 /* Fixed dark stage: kickers take the panel's dark-surface coral, as
    .rp-override does — the page coral measured 1.87–2.35:1 here. */
 .rp-outcomeStage .rp-kicker { color: var(--coral-on-dark); }

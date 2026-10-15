@@ -1195,10 +1195,8 @@
 .fp-constraintAnnotations dd { margin: .4rem 0 0; color: rgba(244,241,230,.74); font-size: .86rem; line-height: 1.45; }
 @media (max-width: 700px) { .fp-constraintAnnotations { grid-template-columns: 1fr; } }
 
-.fp-logisticsEvidence .rp-outcomes { grid-template-columns: 1.45fr 1fr 1fr; }
-.fp-logisticsEvidence .rp-stat:first-child { border-width: 2px; }
-.fp-logisticsEvidence .rp-stat:first-child .rp-stat__n { font-size: clamp(4.5rem, 10vw, 8rem); }
-@media (max-width: 700px) { .fp-logisticsEvidence .rp-outcomes { grid-template-columns: 1fr; } }
+/* The lead-number scale moved to the shared .rp-outcomes--lead modifier
+   (riso-page.css), used by Logistics and Grove. */
 
 /* One delivered annotation, restored. The old page showed an entry whole —
    screen, tags, and the verbatim note — which was the only direct evidence of

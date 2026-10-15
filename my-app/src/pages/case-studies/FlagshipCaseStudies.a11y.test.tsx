@@ -427,6 +427,19 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector("#es-grove-override")).not.toBeNull();
   });
 
+  it("leads Grove's outcomes with the 3 features under a phase bar", async () => {
+    await act(async () => {
+      root.render(<RisoGrove />);
+    });
+    const outcomes = container.querySelector("#grove-outcomes");
+    expect(outcomes?.querySelector('.rp-phase__track[aria-label="Functional prototype · Phase 2 of 3"]')).not.toBeNull();
+    expect(outcomes?.querySelector(".rp-disclaimer")).toBeNull();
+    expect(outcomes?.querySelector(".rp-outcomes--lead")).not.toBeNull();
+    expect(Array.from(outcomes?.querySelectorAll(".rp-stat__n") || [], (n) => n.textContent)).toEqual(["3", "34"]);
+    expect(outcomes?.textContent).toContain("functional prototype in Phase 2 of 3");
+    expect(outcomes?.textContent).toContain("What the three phases mean");
+  });
+
   it("sends Grove's next-case-study band to UX Woman", async () => {
     await act(async () => {
       root.render(<RisoGrove />);
