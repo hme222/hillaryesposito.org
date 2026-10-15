@@ -230,6 +230,15 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".rp-recruiter-link")).toBeNull();
   });
 
+  it("tags each Home proof number with Hillary's role in it", async () => {
+    await act(async () => {
+      root.render(<RisoHome />);
+    });
+    const stats = Array.from(container.querySelectorAll(".rp-outcomes .rp-stat"));
+    expect(stats.map((s) => s.querySelector(".rp-stat__tag")?.textContent)).toEqual(["home.stat.scaleTag", "home.stat.logisticsTag", "home.stat.researchTag"]);
+    expect(stats[1].querySelector(".rp-stat__n")?.textContent).toBe("1–2\u00a0mo →\u00a01–2\u00a0wk");
+  });
+
   it("exposes Grove's working browser prototype from Home without a dead Spanish hash", async () => {
     await act(async () => {
       root.render(<RisoHome />);
