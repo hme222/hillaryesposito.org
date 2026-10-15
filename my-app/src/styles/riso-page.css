@@ -3053,14 +3053,19 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-chapter__n span { color: var(--muted); }
 .rp-chapter .rp-subhead { margin-top: .7rem; max-width: 26ch; }
 .rp-chapter__body { margin-top: .9rem; max-width: 58ch; color: var(--ink-2); line-height: 1.7; }
+/* Five equal columns, but never narrower than the widest unbreakable thing in
+   them: at 1440 the ledger sits in a ~506px column, so "5,000+" (100px) and
+   Spanish "REABASTECIMIENTO" (107px) used to overrun their ~92px cells into
+   the next one. A real column gap replaces the old padding-right. */
 .about-evidenceLedger {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(min-content, 1fr));
+  column-gap: .9rem;
   margin: 1.35rem 0 0;
   border-top: 1px solid var(--hair);
   border-bottom: 1px solid var(--hair);
 }
-.about-evidenceLedger > div { padding: .9rem .55rem .85rem 0; }
+.about-evidenceLedger > div { padding: .9rem 0 .85rem; }
 .about-evidenceLedger dt { font-size: clamp(1.2rem, 2.4vw, 1.8rem); font-weight: 850; letter-spacing: -.03em; color: var(--ink); }
 .about-evidenceLedger dd { margin: .25rem 0 0; font: 700 .62rem/1.35 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 /* The callout is the chapter's one line worth remembering — a ruled aside, not
