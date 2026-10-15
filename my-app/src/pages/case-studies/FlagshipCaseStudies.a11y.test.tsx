@@ -132,7 +132,7 @@ describe("flagship case-study accessibility", () => {
 
     const hero = container.querySelector("#msk-start");
     expect(hero?.textContent).toContain("user experience (UX) teams built it after I changed roles");
-    expect(hero?.textContent).toContain("Office Coordinator → Administrative Assistant → Trainer I Specialist");
+    expect(hero?.textContent).toContain("Office Coordinator → Administrative Assistant → Training Facilitator (retitled Trainer I Specialist)");
     expect(hero?.textContent).toContain("Diagnose · map · validate feasibility · pitch");
     expect(hero?.textContent).not.toContain("20%");
     expect(hero?.textContent).not.toContain("two system upgrades");

@@ -100,10 +100,10 @@ HTML = """<!doctype html>
     <section aria-labelledby="healthcare-heading">
       <h2 id="healthcare-heading">Healthcare systems and workflow experience</h2>
       <article aria-labelledby="trainer-role">
-        <h3 id="trainer-role">Trainer I Specialist · Memorial Sloan Kettering Cancer Center</h3>
+        <h3 id="trainer-role">Training Facilitator (retitled Trainer I Specialist) · Memorial Sloan Kettering Cancer Center</h3>
         <p class="meta">New York, NY · January 2022–July 2024</p>
         <ul>
-          <li>Rebuilt administrative onboarding across Epic, HIPAA, compliance, and role-specific workflows for a 21,000+ person organization.</li>
+          <li>Rebuilt the learning tracks for administrative onboarding across Epic, HIPAA, compliance, and role-specific workflows for a 21,000+ person organization.</li>
           <li>Partnered with clinical, IT, imaging, and operations stakeholders to clarify ownership, exceptions, and handoffs across complex internal processes.</li>
         </ul>
       </article>

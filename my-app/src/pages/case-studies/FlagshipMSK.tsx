@@ -66,7 +66,7 @@ const DECISIONS = [
 const ROLES = [
   { n: "01", role: "Office Coordinator", taught: "Where people paused" },
   { n: "02", role: "Administrative Assistant", taught: "How to brief people who have to act" },
-  { n: "03", role: "Trainer I Specialist", taught: "The authority to redesign it" },
+  { n: "03", role: "Training Facilitator", taught: "The authority to redesign it" },
 ];
 
 // The text equivalent of the sustainment timeline: what happened after each
@@ -237,7 +237,7 @@ export default function FlagshipMSK() {
             </p>
             <dl className="rp-heroEvidence" aria-label="MSK case evidence at a glance">
               <div><dt>Role</dt><dd>Service design · process improvement · UX/product</dd></div>
-              <div><dt>MSK roles</dt><dd>Office Coordinator → Administrative Assistant → Trainer I Specialist</dd></div>
+              <div><dt>MSK roles</dt><dd>Office Coordinator → Administrative Assistant → Training Facilitator (retitled Trainer I Specialist)</dd></div>
               <div><dt>My contribution</dt><dd>Diagnose · map · validate feasibility · pitch</dd></div>
               <div><dt>Implementation</dt><dd>Built later by <Term def="Information technology: the team that owns the systems.">IT</Term> and <Term def="User experience: the team that designs how the system works for the people using it.">UX</Term>, after I changed roles</dd></div>
               <div><dt>Evidence</dt><dd>Rebuilt from memory of my current-state documentation · no patient data</dd></div>
@@ -417,7 +417,7 @@ export default function FlagshipMSK() {
         // prop below already states it, in its own dedicated line.
         kicker="What it added up to"
         title="The numbers, and who they belong to."
-        intro="I initiated and presented the filing redesign, rewrote clinician certification material, and rebuilt administrative onboarding with the design team."
+        intro="I initiated and presented the filing redesign, rewrote clinician certification material, and rebuilt the learning tracks for administrative onboarding with the design team, testing them with different learner cohorts."
         disclaimer="Anonymized evidence · owner-reported outcomes · the 20% figure belongs to a larger organization-wide initiative, not the filing queue alone; original period and cost definition are not preserved · the ~$1M/year is a projection from my pitch, not measured savings"
         // The same discipline the certification dashboard used on its own data:
         // say what you are looking at before someone has to work it out. All

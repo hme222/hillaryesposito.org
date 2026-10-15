@@ -86,13 +86,13 @@ const en = {
   "home.riso.queueCollapse": "Show fewer",
   "home.riso.workTitle": "Decisions you can inspect",
   "home.riso.groveDesc":
-    "My 34-person survey narrowed eleven proposed features to three. The redesign is in progress; the retest comes next.",
+    "A competitive analysis, a five-user test of the original prototype, and a 34-person survey narrowed eleven features to three. The redesign is in progress; the retest comes next.",
   "home.riso.mskDesc":
     "I mapped the detour across four departments and pitched the digital filing workflow that replaced it. Six steps became five, and one department left the loop.",
   "home.riso.logisticsDesc":
     "I planned and tracked a warehouse relocation that shortened medical resupply time by 85%, then built shared order tracking for seven aid stations.",
   "home.riso.knowunityDesc":
-    "Students say a definition out loud and get their own words quoted back as proof. Solo 2.5-week sprint on Knowunity's brief and kit; recall mocked, not shipped.",
+    "Students say a definition out loud and get their own words quoted back as proof. Selected for a Yummy Labs design sprint with Knowunity: solo, 2.5 weeks, on their brief and kit. Recall mocked, not shipped.",
   "home.riso.mobbinDesc":
     "Three finance apps turned into a searchable reference — the work was the taxonomy and the naming, not the screenshots. 200+ screens per app, an editor's judgment on every one.",
   "home.riso.groveAlt": "Grove daily care screen showing one clear plant-care task and overdue plants first",
@@ -289,13 +289,13 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.queueCollapse": "Mostrar menos",
   "home.riso.workTitle": "Decisiones que puede revisar",
   "home.riso.groveDesc":
-    "Mi encuesta a 34 personas redujo once funciones propuestas a tres. El rediseño está en curso; la nueva prueba viene después.",
+    "Un análisis competitivo, una prueba con cinco usuarios del prototipo original y una encuesta a 34 personas redujeron once funciones a tres. El rediseño está en curso; la nueva prueba viene después.",
   "home.riso.mskDesc":
     "Mapeé el desvío entre cuatro áreas y propuse el flujo de archivo digital que lo reemplazó. Seis pasos se volvieron cinco, y un área salió del circuito.",
   "home.riso.logisticsDesc":
     "Planifiqué y supervisé una reubicación de almacén que redujo un 85% el tiempo de reabastecimiento médico, y luego creé un seguimiento compartido para siete puestos.",
   "home.riso.knowunityDesc":
-    "Los estudiantes dicen una definición en voz alta y reciben sus propias palabras citadas como prueba. Sprint individual de 2.5 semanas con el brief y el kit de Knowunity; recuerdo simulado, no publicado.",
+    "Los estudiantes dicen una definición en voz alta y reciben sus propias palabras citadas como prueba. Seleccionada para un sprint de diseño de Yummy Labs con Knowunity: individual, 2.5 semanas, con su brief y su kit. Recuerdo simulado, no publicado.",
   "home.riso.mobbinDesc":
     "Tres apps financieras convertidas en una referencia buscable: el trabajo fue la taxonomía y los nombres, no las capturas. Más de 200 pantallas por app, con criterio de editora en cada una.",
   "home.riso.groveAlt": "Pantalla de cuidado diario de Grove con una tarea clara y las plantas atrasadas primero",

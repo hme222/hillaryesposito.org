@@ -85,7 +85,7 @@ export const MSK_ES: SpanishCaseStudyData = {
     { label: "Rol", value: "Sistemas de salud → UX y diseño de producto" },
     { label: "Organización", value: "Memorial Sloan Kettering Cancer Center" },
     { label: "Escala", value: "21,000+ clínicos y personal" },
-    { label: "Puestos en MSK", value: "Coordinación de oficina → Asistencia administrativa → Especialista de capacitación I" },
+    { label: "Puestos en MSK", value: "Coordinación de oficina → Asistencia administrativa → Facilitadora de capacitación (luego Especialista de capacitación I)" },
     { label: "Contribución", value: "Diagnóstico · mapa · viabilidad · propuesta" },
     { label: "Implementación", value: "Construida después por TI y UX" },
   ],
@@ -134,7 +134,7 @@ export const MSK_ES: SpanishCaseStudyData = {
       eyebrow: "Resultado",
       title: "Impacto medible en sistemas internos",
       body: [
-        "En mi trabajo directo, toda el área se certificó en RCP un mes antes de la fecha límite original, sin la prórroga de 4 meses, y el programa de incorporación del personal administrativo se rediseñó para el rango de habilidades de cada cohorte.",
+        "En mi trabajo directo, toda el área se certificó en RCP un mes antes de la fecha límite original, sin la prórroga de 4 meses, y reconstruí los itinerarios de aprendizaje de la incorporación administrativa con el equipo de diseño, probándolos con distintas cohortes, para el rango de habilidades de cada una.",
         "La iniciativa organizacional más amplia reportó una reducción de 20% en costos relacionados con el EMR; no atribuyo ese resultado únicamente a la cola de archivo y el registro conservado no incluye el período ni la definición de costos.",
         "En mi propuesta para la Feria de Mejora de Procesos proyecté un ahorro de ~$1M al año en papel. Es una proyección de esa propuesta, no un ahorro medido.",
       ],

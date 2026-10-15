@@ -423,7 +423,7 @@ const en: MskCopy = {
         body: "No certificate for this one. Turning leadership decisions into clear briefs taught me to write for the person who has to act. The CPR rewrite and the EMR presentation both came from that practice.",
       },
       {
-        n: "03", role: "Trainer I Specialist", taught: "The authority to redesign it",
+        n: "03", role: "Training Facilitator", taught: "The authority to redesign it",
         term: "Training & Facilitation (ATD) · current-state mapping",
         body: "I instructed on Epic (the record software), HIPAA (the patient-privacy law), and the compliance modules. Owning how staff were taught the system meant documenting what actually happens, not what the policy says — and the gap between the two is where the design work lives.",
       },
@@ -738,7 +738,7 @@ const es: MskCopy = {
         body: "Aquí no hay certificado. Convertir decisiones de liderazgo en informes claros me enseñó a escribir para la persona que tiene que actuar. La reescritura de RCP y la presentación del EMR salieron de esa práctica.",
       },
       {
-        n: "03", role: "Especialista de capacitación I", taught: "La autoridad para rediseñarlo",
+        n: "03", role: "Facilitadora de capacitación", taught: "La autoridad para rediseñarlo",
         term: "Capacitación y facilitación (ATD) · mapeo del estado actual",
         body: "Di instrucción sobre Epic (el software del expediente), HIPAA (la ley de privacidad del paciente) y los módulos de cumplimiento. Hacerme cargo de cómo se le enseñaba el sistema al personal significó documentar lo que de verdad pasa, no lo que dice la política — y la brecha entre las dos es donde vive el trabajo de diseño.",
       },

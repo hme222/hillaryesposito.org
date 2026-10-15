@@ -281,8 +281,11 @@ Audit ran against the résumé scripts, this file, MSK News, and `git log -S`.
 - **ATD Training & Facilitation:** she holds it — keep.
 - **Current-state documentation:** she made it but no longer has it. Labels
   now say the screens and maps were rebuilt from memory of it.
-- **Title:** "Trainer I Specialist" is the real title (the résumé's
-  "Trainer / Specialist" is the variant to fix, if anything).
+- **Title (updated 2026-10-14):** she held **Training Facilitator** on the
+  Training and Compliance Team. MSK retitled the role "Trainer I Specialist"
+  after she left, so both are correct. Site copy says Training Facilitator and
+  names the retitle once in the hero roles list. The résumé PDF and its build
+  scripts still say Trainer I Specialist and have not been regenerated.
 - **MSK start year:** 2018 (MSK News's "four years ago" was loose).
 - **Deployment:** 2024 deployment was on military leave from the Trainer role.
 - **Map stage "Trusted by clinicians":** → "Adopted organization-wide".
