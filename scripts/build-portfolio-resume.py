@@ -220,7 +220,7 @@ def build_resume(output_path, variant="portfolio"):
             "summary": (
                 "Healthcare UX research and service design practitioner with six years at a cancer center (MSK) and 13+ years of Army "
                 "service, including medical logistics. Uses workflow observation, stakeholder input, surveys, service mapping, and task analysis "
-                "to change product and service decisions. At Grove, a 34-person self-report survey narrowed eleven proposed "
+                "to change product and service decisions. At Grove, a 35-person self-report survey narrowed twelve proposed "
                 "features to three. At MSK, workflow analysis aligned four departments around an implemented digital process. "
                 "Research claims retain their method and evidence boundaries."
             ),
@@ -240,7 +240,7 @@ def build_resume(output_path, variant="portfolio"):
             "footer": "HILLARY ESPOSITO · PLANT + CONSUMER PRODUCT DESIGN",
             "summary": (
                 "Product/UX designer building Grove, a functional plant-care prototype in Phase 2 of 3. Synthesized a "
-                "34-person self-report survey to cut 11 proposed features to 3, then defined directions for care, plant "
+                "35-person self-report survey to cut 12 proposed features to 3, then defined directions for care, plant "
                 "identification, confidence, sources, and pet safety around calm ongoing use. Brings consumer interaction craft, "
                 "accessibility, coded prototyping, and experience designing for trust in high-stakes systems at a cancer center and in the Army."
             ),
@@ -331,7 +331,7 @@ def build_resume(output_path, variant="portfolio"):
             "Grove - Plant Care App",
             "Independent product | 2025 - Present | Functional prototype, Phase 2 of 3",
             [
-                "Narrowed 11 proposed features to 3 after synthesizing a 34-person self-report survey, then translated the priorities into information architecture, interaction states, and a functional React prototype.",
+                "Narrowed 12 proposed features to 3 after synthesizing a 35-person self-report survey, then translated the priorities into information architecture, interaction states, and a functional React prototype.",
                 "Owns research planning, product scope, responsive interaction design, accessibility, prototype implementation, and iteration; prototype is not presented as a shipped consumer product.",
             ],
         )

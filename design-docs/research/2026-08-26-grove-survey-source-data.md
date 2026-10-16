@@ -4,7 +4,7 @@
 
 **What this is:** the raw export behind the Grove case study's "34-person survey" claim. Saved here so the numbers on [RisoGrove.tsx](../../my-app/src/pages/case-studies/RisoGrove.tsx) trace back to a real file, not just a remembered summary.
 
-- **Raw export:** [2026-08-26-grove-survey-raw-export.tsv](2026-08-26-grove-survey-raw-export.tsv) — 34 respondents, May 22–July 8, 2026.
+- **Raw export:** raw export removed 2026-10-16 (contained emails); anonymized data: ~/Documents/Grove/docs/research/data/grove-concept-survey-2026-anonymized.csv — 34 respondents, May 22–July 8, 2026.
 - **Method:** self-report survey (Google Form export), covering feature prioritization, plant-care confidence, and AI trust. Not a moderated study — see the case study's own evidence-boundary note for what self-report can and can't claim.
 
 ## AI-trust findings (counted directly from the export, 2026-08-26)
