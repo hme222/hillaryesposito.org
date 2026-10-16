@@ -111,7 +111,7 @@ HTML = """<!doctype html>
         <p class="meta">New York, NY · January 2022–July 2024</p>
         <ul>
           <li>Rebuilt the learning tracks for administrative onboarding across Epic, HIPAA, compliance, and role-specific workflows for a 21,000+ person organization.</li>
-          <li>Partnered with clinical, IT, imaging, and operations stakeholders to clarify ownership, exceptions, and handoffs across complex internal processes.</li>
+          <li>Partnered with clinical, IT, HIM (health information management), and operations stakeholders to clarify ownership, exceptions, and handoffs across complex internal processes.</li>
         </ul>
       </article>
       <article aria-labelledby="coordinator-role">

@@ -345,7 +345,7 @@ def build_resume(output_path, variant="portfolio"):
             "New York, NY | Jan 2022 - Jul 2024",
             [
                 "Rebuilt the learning tracks for administrative onboarding across Epic, HIPAA, compliance, and role-specific workflows using staff feedback, clearer sequencing, and reusable training materials for a 21,000+ person organization.",
-                "Partnered with clinical, IT, imaging, and operations stakeholders to clarify ownership, exceptions, and handoffs across complex internal processes.",
+                "Partnered with clinical, IT, HIM (health information management), and operations stakeholders to clarify ownership, exceptions, and handoffs across complex internal processes.",
             ],
         )
         role(
