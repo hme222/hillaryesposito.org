@@ -130,7 +130,7 @@ const STATS = [
   // Word joiners (U+2060) stop the line breaking after the en dash; the
   // only break left is after the arrow, so the range splits at its phrase.
   { n: "1–\u20602\u00a0mo\u00a0→ 1–\u20602\u00a0wk", nEs: "1–\u20602\u00a0meses\u00a0→ 1–\u20602\u00a0sem.", tagKey: "home.stat.logisticsTag", labelKey: "home.stat.logistics", sourceKey: "home.stat.logisticsSource", path: "/case-study/logistics", anchor: "log-outcomes" },
-  { n: "34", tagKey: "home.stat.researchTag", labelKey: "home.stat.research", sourceKey: "home.stat.groveSource", path: "/case-study/grove", anchor: "grove-research" },
+  { n: "35", tagKey: "home.stat.researchTag", labelKey: "home.stat.research", sourceKey: "home.stat.groveSource", path: "/case-study/grove", anchor: "grove-research" },
 ] satisfies Array<{ n: string; nEs?: string; tagKey: StringKey; labelKey: StringKey; sourceKey: StringKey; path: string; anchor: string }>;
 
 // Home's glossary: each short form gets one tap/hover definition, at its first

@@ -128,7 +128,7 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
                   window.dispatchEvent(new CustomEvent("open-recruiter-panel", { detail: { returnFocus: e.currentTarget } }))
                 }
               >
-                Abrir el recorrido de 90 segundos (en inglés)
+                Recorrido de 90 segundos (inglés)
               </button>
             </div>
           </div>

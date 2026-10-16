@@ -175,7 +175,7 @@ describe("flagship case-study accessibility", () => {
       root.render(<FlagshipMSK />);
     });
     const esTrigger = container.querySelector<HTMLButtonElement>(".rp-hero__ctas .rp-heroTour");
-    expect(esTrigger?.textContent).toBe("Abrir el recorrido de 90 segundos (en inglés)");
+    expect(esTrigger?.textContent).toBe("Recorrido de 90 segundos (inglés)");
     const breadcrumb = container.querySelector(".rp-breadcrumb");
     expect(breadcrumb?.textContent).toContain("Memorial Sloan Kettering");
     expect(breadcrumb?.textContent).not.toContain("Una cola de archivo reemplazó");
@@ -541,7 +541,7 @@ describe("flagship case-study accessibility", () => {
     expect(outcomes?.querySelector('.rp-phase__track[aria-label="Functional prototype · Phase 2 of 3"]')).not.toBeNull();
     expect(outcomes?.querySelector(".rp-disclaimer")).toBeNull();
     expect(outcomes?.querySelector(".rp-outcomes--lead")).not.toBeNull();
-    expect(Array.from(outcomes?.querySelectorAll(".rp-stat__n") || [], (n) => n.textContent)).toEqual(["3", "34"]);
+    expect(Array.from(outcomes?.querySelectorAll(".rp-stat__n") || [], (n) => n.textContent)).toEqual(["3", "35"]);
     expect(outcomes?.textContent).toContain("functional prototype in Phase 2 of 3");
     expect(outcomes?.textContent).toContain("What the three phases mean");
   });
@@ -793,7 +793,7 @@ describe("flagship case-study accessibility", () => {
       "MSK · A filing queue replaced a four-department paper detour",
       "UX Woman · Six healthcare interviews, one hypothesis",
       "Medical logistics · Resupply went from months to weeks",
-      "Grove · Eleven features became three",
+      "Grove · Twelve features became three",
     ]);
     expect(dialog?.textContent).toContain("contributed to a larger initiative that cut organization-wide electronic medical record costs 20%");
     expect(dialog?.textContent?.toLowerCase()).not.toContain(["functional", "beta"].join(" "));
@@ -860,7 +860,7 @@ describe("flagship case-study accessibility", () => {
 
   it.each([
     ["MSK", <FlagshipMSK />, "A filing queue replaced a four-department paper\u00a0detour.", "How these artifacts were made"],
-    ["Grove", <RisoGrove />, "Eleven features became three.", "What this evidence can say"],
+    ["Grove", <RisoGrove />, "Twelve features became three.", "What this evidence can say"],
     ["Mobbin", <FlagshipMobbin />, "200+ screens per app, searchable by task.", "I did not design"],
   ])("%s leads with an outcome title and visible evidence boundary", async (_name, page, title, boundary) => {
     await act(async () => {

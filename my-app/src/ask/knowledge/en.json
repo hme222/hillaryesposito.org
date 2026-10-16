@@ -1050,10 +1050,10 @@
   {
    "id": "en:grove-start:0",
    "lang": "en",
-   "text": "An exploratory 5-user test showed people got lost; a 34-person survey then narrowed eleven features to three. I am the sole designer; the redesign and retest are still in progress.",
+   "text": "An exploratory 5-user test showed people got lost; a 35-person survey then narrowed twelve features to three. I am the sole designer; the redesign and retest are still in progress.",
    "source": {
     "type": "page",
-    "label": "Grove case study · Eleven features became three.",
+    "label": "Grove case study · Twelve features became three.",
     "url": "/case-study/grove/#grove-start"
    },
    "batch": 1
@@ -1064,7 +1064,7 @@
    "text": "Sole product designer · end to end",
    "source": {
     "type": "page",
-    "label": "Grove case study · Eleven features became three.",
+    "label": "Grove case study · Twelve features became three.",
     "url": "/case-study/grove/#grove-start"
    },
    "batch": 1
@@ -1072,10 +1072,10 @@
   {
    "id": "en:grove-start:2",
    "lang": "en",
-   "text": "Exploratory test → 34-person survey",
+   "text": "Exploratory test → 35-person survey",
    "source": {
     "type": "page",
-    "label": "Grove case study · Eleven features became three.",
+    "label": "Grove case study · Twelve features became three.",
     "url": "/case-study/grove/#grove-start"
    },
    "batch": 1
@@ -1083,10 +1083,10 @@
   {
    "id": "en:grove-start:3",
    "lang": "en",
-   "text": "11 features → 3 launch priorities",
+   "text": "12 features → 3 launch priorities",
    "source": {
     "type": "page",
-    "label": "Grove case study · Eleven features became three.",
+    "label": "Grove case study · Twelve features became three.",
     "url": "/case-study/grove/#grove-start"
    },
    "batch": 1
@@ -1097,7 +1097,7 @@
    "text": "Working React prototype · AI-assisted implementation",
    "source": {
     "type": "page",
-    "label": "Grove case study · Eleven features became three.",
+    "label": "Grove case study · Twelve features became three.",
     "url": "/case-study/grove/#grove-start"
    },
    "batch": 1
@@ -1108,7 +1108,7 @@
    "text": "Phase 2 of 3 · redesign direction · retest pending",
    "source": {
     "type": "page",
-    "label": "Grove case study · Eleven features became three.",
+    "label": "Grove case study · Twelve features became three.",
     "url": "/case-study/grove/#grove-start"
    },
    "batch": 1
@@ -1149,7 +1149,7 @@
   {
    "id": "en:grove-research:3",
    "lang": "en",
-   "text": "What 34 plant owners said",
+   "text": "What 35 people said",
    "source": {
     "type": "page",
     "label": "Grove case study · Plant parents forget. Then they feel guilty.",
@@ -1160,7 +1160,7 @@
   {
    "id": "en:grove-research:4",
    "lang": "en",
-   "text": "34 owners · May 22–July 8, 2026 · choose three launch dealbreakers.",
+   "text": "35 people · May 22–Sept 24, 2026 · 29 plant owners, 3 florists, 3 bouquet buyers · choose three launch dealbreakers.",
    "source": {
     "type": "page",
     "label": "Grove case study · Plant parents forget. Then they feel guilty.",
@@ -1171,7 +1171,7 @@
   {
    "id": "en:grove-research:5",
    "lang": "en",
-   "text": "picked smart care reminders as a launch dealbreaker — 25 of 34, the clear top answer",
+   "text": "picked smart care reminders as a launch dealbreaker — 26 of 35, the clear top answer",
    "source": {
     "type": "page",
     "label": "Grove case study · Plant parents forget. Then they feel guilty.",
@@ -1193,7 +1193,7 @@
   {
    "id": "en:grove-research:7",
    "lang": "en",
-   "text": "of 34 named notification volume, unprompted, as what would make them delete it — the most-cited reason by far",
+   "text": "of 35 named notification volume, unprompted, as what would make them delete it — the most-cited reason by far",
    "source": {
     "type": "page",
     "label": "Grove case study · Plant parents forget. Then they feel guilty.",
@@ -1259,7 +1259,7 @@
   {
    "id": "en:grove-research:13",
    "lang": "en",
-   "text": "AI plant identification (camera) 56% CORE",
+   "text": "AI plant identification (camera) 54% CORE",
    "source": {
     "type": "page",
     "label": "Grove case study · Plant parents forget. Then they feel guilty.",
@@ -1270,7 +1270,7 @@
   {
    "id": "en:grove-research:14",
    "lang": "en",
-   "text": "AI photo diagnosis 50% CORE",
+   "text": "AI photo diagnosis 49% CORE",
    "source": {
     "type": "page",
     "label": "Grove case study · Plant parents forget. Then they feel guilty.",
@@ -1281,7 +1281,7 @@
   {
    "id": "en:grove-research:15",
    "lang": "en",
-   "text": "Growth photo journal 24% LATER",
+   "text": "Growth photo journal 23% LATER",
    "source": {
     "type": "page",
     "label": "Grove case study · Plant parents forget. Then they feel guilty.",
@@ -1292,7 +1292,7 @@
   {
    "id": "en:grove-research:16",
    "lang": "en",
-   "text": "Stylized room / light map 24% LATER",
+   "text": "Stylized room / light map 23% LATER",
    "source": {
     "type": "page",
     "label": "Grove case study · Plant parents forget. Then they feel guilty.",
@@ -1303,7 +1303,7 @@
   {
    "id": "en:grove-research:17",
    "lang": "en",
-   "text": "Greenhouse encyclopedia 21% LATER",
+   "text": "Greenhouse encyclopedia 20% LATER",
    "source": {
     "type": "page",
     "label": "Grove case study · Plant parents forget. Then they feel guilty.",
@@ -1314,7 +1314,7 @@
   {
    "id": "en:grove-research:18",
    "lang": "en",
-   "text": "Community forums 18% LATER",
+   "text": "Community forums 17% LATER",
    "source": {
     "type": "page",
     "label": "Grove case study · Plant parents forget. Then they feel guilty.",
@@ -1490,7 +1490,7 @@
   {
    "id": "en:grove-override:6",
    "lang": "en",
-   "text": "A florist, unprompted: “Any generative AI in this will remove any sense of trust.” She wasn't alone—4 of 34 said they'd trust no AI feature in the app at all, and 19 of 34 said explaining why the AI made a call is what would earn their trust. Plant ID carried that risk directly, so instead of one confident answer, it shows top guesses, how sure it is, and its sources. False certainty is the fastest way to lose trust.",
+   "text": "A florist, unprompted: “Any generative AI in this will remove any sense of trust.” She wasn't alone—5 of 35 said they'd trust no AI feature in the app at all, and 20 of 35 said explaining why the AI made a call is what would earn their trust. Plant ID carried that risk directly, so instead of one confident answer, it shows top guesses, how sure it is, and its sources. False certainty is the fastest way to lose trust.",
    "source": {
     "type": "page",
     "label": "Grove case study · One calm reminder instead of three guilty ones.",
@@ -1666,7 +1666,7 @@
   {
    "id": "en:grove-override:22",
    "lang": "en",
-   "text": "4 of 12 new owners picked pet safety as one of the most stressful parts of plant care. When a plant can hurt a cat, a wrong guess isn’t a suggestion. It’s a risk.",
+   "text": "4 of 11 new owners who answered picked pet safety as one of the most stressful parts of plant care. When a plant can hurt a cat, a wrong guess isn’t a suggestion. It’s a risk.",
    "source": {
     "type": "page",
     "label": "Grove case study · One calm reminder instead of three guilty ones.",
@@ -1996,7 +1996,7 @@
   {
    "id": "en:grove-outcomes:3",
    "lang": "en",
-   "text": "plant owners surveyed before any screen changed",
+   "text": "people surveyed before any screen changed",
    "source": {
     "type": "page",
     "label": "Grove case study · Phase 2 of 3: the redesign is decided, the retest is next.",
@@ -3063,7 +3063,7 @@
   {
    "id": "en:notes-grove:1",
    "lang": "en",
-   "text": "She designed and interpreted the 34-person survey herself, with no AI involved in that part.",
+   "text": "She designed and interpreted the 35-person survey herself, with no AI involved in that part.",
    "source": {
     "type": "interview-notes",
     "label": "Grove · from Hillary's interview (approved Oct 2026)",
@@ -3096,7 +3096,7 @@
   {
    "id": "en:notes-grove:4",
    "lang": "en",
-   "text": "Status: the survey is done and 11 features are narrowed to 3. The redesign is in progress one pathway at a time, and the usability retest hasn't run yet.",
+   "text": "Status: the survey is done and 12 features are narrowed to 3. The redesign is in progress one pathway at a time, and the usability retest hasn't run yet.",
    "source": {
     "type": "interview-notes",
     "label": "Grove · from Hillary's interview (approved Oct 2026)",

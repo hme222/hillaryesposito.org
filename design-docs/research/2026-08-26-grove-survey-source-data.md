@@ -1,5 +1,7 @@
 # Grove survey — source data and resolved AI-trust findings
 
+> **Superseded 2026-10-16.** The survey now has 35 responses (May 22–Sept 24, 2026). The source of truth is the Grove repo's `docs/research/findings/2026-grove-concept-survey.md` and `docs/research/scripts/survey_stats.py`. The 34-row counts below describe this older export only; current trust counts are no AI feature 5/35, explain-why 20/35, verified 17/35, confidence 15/35, photos 13/35, sources 12/35, AI-written frustration 7/35.
+
 **What this is:** the raw export behind the Grove case study's "34-person survey" claim. Saved here so the numbers on [RisoGrove.tsx](../../my-app/src/pages/case-studies/RisoGrove.tsx) trace back to a real file, not just a remembered summary.
 
 - **Raw export:** [2026-08-26-grove-survey-raw-export.tsv](2026-08-26-grove-survey-raw-export.tsv) — 34 respondents, May 22–July 8, 2026.

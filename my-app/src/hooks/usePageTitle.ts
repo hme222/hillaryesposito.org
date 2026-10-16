@@ -13,7 +13,7 @@ const ROUTE_META: Array<{ match: RegExp; description: string; image: string }> =
   {
     match: /\/case-study\/grove$/,
     description:
-      "How Hillary redesigned Grove, a functional plant-care prototype, through discovery research, calmer interaction design, and explicit AI judgment.",
+      "How a 35-person survey narrowed Grove, a functional plant-care prototype, from twelve features to three, with calmer interaction design and explicit AI judgment.",
     image: "/assets/grove/grove1.png",
   },
   {

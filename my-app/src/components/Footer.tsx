@@ -27,7 +27,7 @@ const COLOPHONS: Record<string, Credit[]> = {
     { label: "Figma" },
     { label: "Emergent" },
     { label: "React" },
-    { label: "34 survey responses", es: "34 respuestas de encuesta" },
+    { label: "35 survey responses", es: "35 respuestas de encuesta" },
     { label: "human override", es: "decisión humana" },
   ],
   // The named disciplines lead. This page's own eyebrow claims service design

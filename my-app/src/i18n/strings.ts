@@ -94,7 +94,7 @@ const en = {
   "home.riso.primaryWork": "Review the MSK case study",
   "home.riso.workTitle": "Decisions you can inspect",
   "home.riso.groveDesc":
-    "A competitive analysis, a five-user test of the original prototype, and a 34-person survey narrowed eleven features to three. The redesign is in progress; the retest comes next.",
+    "A competitive analysis, a five-user test of the original prototype, and a 35-person survey narrowed twelve features to three. The redesign is in progress; the retest comes next.",
   "home.riso.mskDesc":
     "I mapped the detour across four departments and pitched the digital filing workflow that replaced it. Six steps became five, and one department left the loop.",
   "home.riso.logisticsDesc":
@@ -169,7 +169,7 @@ const en = {
   "home.proj.logistics.subtitle": "Army medical logistics · Service Design",
   "home.proj.uxwoman.subtitle": "UX Woman · Healthcare research · Research phase",
   "home.proj.knowunity.subtitle": "Knowunity · Design sprint · Interactive mobile prototype",
-  "home.proj.grove.title": "Eleven features became three",
+  "home.proj.grove.title": "Twelve features became three",
   "home.proj.msk.title": "A filing queue replaced a four-department paper detour",
   "home.proj.logistics.title": "Medical resupply went from months to weeks",
   "home.proj.uxwoman.title": "Six healthcare interviews, one hypothesis",
@@ -290,7 +290,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.primaryWork": "Ver el estudio de caso de MSK",
   "home.riso.workTitle": "Decisiones que puede revisar",
   "home.riso.groveDesc":
-    "Un análisis competitivo, una prueba con cinco usuarios del prototipo original y una encuesta a 34 personas redujeron once funciones a tres. El rediseño está en curso; la nueva prueba viene después.",
+    "Un análisis competitivo, una prueba con cinco usuarios del prototipo original y una encuesta a 35 personas redujeron doce funciones a tres. El rediseño está en curso; la nueva prueba viene después.",
   "home.riso.mskDesc":
     "Mapeé el desvío entre cuatro áreas y propuse el flujo de archivo digital que lo reemplazó. Seis pasos se volvieron cinco, y un área salió del circuito.",
   "home.riso.logisticsDesc":
@@ -364,7 +364,9 @@ const es: Partial<Record<StringKey, string>> = {
   "home.proj.logistics.subtitle": "Logística médica del Ejército · Diseño de servicios",
   "home.proj.uxwoman.subtitle": "UX Woman · Investigación en salud · Fase de investigación",
   "home.proj.knowunity.subtitle": "Knowunity · Sprint de diseño · Prototipo móvil interactivo",
-  "home.proj.grove.title": "Once funciones se convirtieron en tres",
+  // No-break space keeps "se convirtieron" together, so the title breaks after
+  // "funciones" instead of stranding "se" at the end of line one.
+  "home.proj.grove.title": "Doce funciones se\u00a0convirtieron en tres",
   "home.proj.msk.title": "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas",
   // Same wording as the Spanish case-study title. "Tiempo de reabastecimiento
   // médico reducido" left "médico" alone on its own line at 320, 375 and 1280.

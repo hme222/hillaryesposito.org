@@ -14,7 +14,7 @@ regulated-systems stakes, doesn't need to.
 Grove started to see what features were resonating, via exploratory
 usability testing on a prototype built through AI vibe-coding (Emergent).
 Once built, realized there were real information-architecture issues and
-too wide a range of features — unfocused. Ran a 34-person survey to find
+too wide a range of features — unfocused. Ran a 35-person survey to find
 out what actually resonated with target users, combining attitudinal and
 behavioral signals. Currently redesigning around the features that
 mattered; usability testing on the redesign is still ahead.
@@ -28,7 +28,7 @@ finished."
 
 The AI tooling (Emergent), in adding features, didn't plan the information
 architecture well — that's the origin of the sprawl/unfocused-feature
-problem, not her own early scope decision. She designed the 34-person
+problem, not her own early scope decision. She designed the 35-person
 survey and interpreted the results herself; no AI involved in that part.
 
 **Disclosure framing (confirmed, keep as-is):** not "AI made this easy" —
@@ -51,8 +51,8 @@ hindsight: it's the actual approach being used in the current redesign.
 
 ## Q5: Honest current status
 
-Confirmed accurate: 34-person survey complete (attitudinal + behavioral),
-eleven proposed features narrowed to three, redesign in progress and
+Confirmed accurate: 35-person survey complete (attitudinal + behavioral),
+twelve proposed features narrowed to three, redesign in progress and
 scoped to one UI pathway at a time, usability retest not yet run.
 
 ## Q6: AI disclosure
@@ -85,10 +85,10 @@ well; that's the direct origin of the sprawl. The catch and the fix were
 hers — not "AI made this easy," but AI's output showing exactly where it
 falls short, and her diagnosing it.
 
-**Research:** designed and ran a 34-person survey herself (no AI involved),
+**Research:** designed and ran a 35-person survey herself (no AI involved),
 combining attitudinal and behavioral signals, specifically to check her
 own bias as an enthusiast ("huge plant lady") against what a new user
-actually needs first. Eleven proposed features narrowed to three.
+actually needs first. Twelve proposed features narrowed to three.
 
 **Decision:** prioritized a validated MVP for new users over her own
 instinct about which features mattered most.
@@ -122,3 +122,19 @@ retest not yet run.
   2.42, experienced n=14 mean 3.43; pet safety was a checkbox — 4 of 12 new
   owners picked it as among the most stressful parts of care (not unprompted);
   "exactly where to place a plant" was picked by 2 people, neither new.
+
+## Recompute — 2026-10-16 (35 responses)
+
+Source: the Grove repo's `docs/research/findings/2026-grove-concept-survey.md`
+and `docs/research/scripts/survey_stats.py` (anonymized CSV, 35 responses,
+May 22–Sept 24, 2026: 29 plant owners, 3 florists, 3 bouquet buyers). The late
+response moved reminders to 26 of 35 and gave the florist QR care pages its
+first vote, so the trade-off now lists twelve features ("Twelve features became
+three"). Launch picks: reminders 74%, camera ID 54%, AI diagnosis 49%, journal
+23%, light map 23%, Greenhouse 20%, forums 17%, bulk logging 14%, bouquet
+scanner 11%, swapping 9%, wishlist 3%, QR pages 3%. Notifications as delete
+trigger 11 of 35. AI trust: no AI feature 5 of 35; explain-why 20, verified 17,
+confidence 15, photos 13, sources 12; AI-written frustration 7 of 35. Pet
+safety 4 of 11 new owners who answered. Light confidence unchanged (2.4, 12
+people vs 3.4, 14 people; groups from the "relationship with plants"
+question).

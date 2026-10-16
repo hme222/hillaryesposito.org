@@ -36,26 +36,33 @@ const CHAPTERS: CaseStudyChapter[] = [
 ];
 
 const SURVEY_FINDINGS = [
-  { stat: "74%", label: "picked smart care reminders as a launch dealbreaker — 25 of 34, the clear top answer" },
-  { stat: "56%", label: "wanted to point a camera at a plant and have the app just tell them what it is" },
-  { stat: "11", label: "of 34 named notification volume, unprompted, as what would make them delete it — the most-cited reason by far" },
-  // Recomputed from the raw export 2026-10-13: new owners n=12, mean 2.42;
-  // experienced n=14, mean 3.43 (was printed as "n=16" and "3.3").
+  { stat: "74%", label: "picked smart care reminders as a launch dealbreaker — 26 of 35, the clear top answer" },
+  { stat: "54%", label: "wanted to point a camera at a plant and have the app just tell them what it is" },
+  { stat: "11", label: "of 35 named notification volume, unprompted, as what would make them delete it — the most-cited reason by far" },
+  // Recomputed 2026-10-16 from all 35 responses with the Grove repo's
+  // docs/research/scripts/survey_stats.py. Groups come from the "relationship
+  // with plants" question: new owners answered 12 of 13, mean 2.42;
+  // experienced answered 14 of 14, mean 3.43 (was printed as "n=16" and "3.3").
   { stat: "2.4", label: "out of 5: how confident new owners felt about getting sunlight right (12 people). Experienced owners rated themselves 3.4 (14 people)" },
 ];
 
+// Launch-dealbreaker picks ("choose three"), percent of all 35 responses,
+// rounded half up. Recomputed 2026-10-16 with the Grove repo's
+// docs/research/scripts/survey_stats.py; the late response added the
+// florist QR pages row (0 -> 1), so the trade-off now lists twelve features.
 const MVP_FEATURES = [
   { feature: "Smart care reminders", pct: 74, tier: "core" },
-  { feature: "AI plant identification (camera)", pct: 56, tier: "core" },
-  { feature: "AI photo diagnosis", pct: 50, tier: "core" },
-  { feature: "Growth photo journal", pct: 24, tier: "post" },
-  { feature: "Stylized room / light map", pct: 24, tier: "post" },
-  { feature: "Greenhouse encyclopedia", pct: 21, tier: "post" },
-  { feature: "Community forums", pct: 18, tier: "post" },
-  { feature: "Bulk logging", pct: 15, tier: "post" },
-  { feature: "Bouquet scanner", pct: 9, tier: "post" },
+  { feature: "AI plant identification (camera)", pct: 54, tier: "core" },
+  { feature: "AI photo diagnosis", pct: 49, tier: "core" },
+  { feature: "Growth photo journal", pct: 23, tier: "post" },
+  { feature: "Stylized room / light map", pct: 23, tier: "post" },
+  { feature: "Greenhouse encyclopedia", pct: 20, tier: "post" },
+  { feature: "Community forums", pct: 17, tier: "post" },
+  { feature: "Bulk logging", pct: 14, tier: "post" },
+  { feature: "Bouquet scanner", pct: 11, tier: "post" },
   { feature: "Verified swapping", pct: 9, tier: "post" },
   { feature: "Wishlist tracker", pct: 3, tier: "post" },
+  { feature: "Florist-branded bouquet care pages (QR)", pct: 3, tier: "post" },
 ];
 
 const CORE_FEATURES = MVP_FEATURES.filter((f) => f.tier === "core");
@@ -82,11 +89,11 @@ const renderRankRow = (f: (typeof MVP_FEATURES)[number]) => (
 // five calls would not all be visible to back the number.
 const SHOW_DECISION_TABLE = false;
 
-// "3" leads (2026-10-15, call 5): the decision is the result; the 34 is how
+// "3" leads (2026-10-15, call 5): the decision is the result; the 35 is how
 // it was reached.
 const OUTCOMES: Array<{ n: string; l: string; needsDecisionTable?: boolean }> = [
   { n: "3", l: "features that earn the download; everything else waits" },
-  { n: "34", l: "plant owners surveyed before any screen changed" },
+  { n: "35", l: "people surveyed before any screen changed" },
   { n: "5", l: "product calls made explicit, including one care-logic mistake", needsDecisionTable: true },
 ];
 const VISIBLE_OUTCOMES = OUTCOMES.filter((o) => SHOW_DECISION_TABLE || !o.needsDecisionTable);
@@ -135,7 +142,7 @@ const OVERRIDES: Array<{ topic: string; ai: string; me: string; why: string; nex
   { topic: "Reminder tone", ai: "Guilt and urgency.", me: "One calm morning summary.", why: "Notifications are the #1 reason people delete a plant app." },
   { topic: "Gamification", ai: "Badges and streaks.", me: "An AI plant personality you earn: a feeling, not points.", why: "Care that feels like paperwork is the top reason people quit. A streak also rewards watering every day, while overwatering is the most common way people kill houseplants. The optimal play would kill the subject of the product. The honest cost: calm should show lower 7-day engagement than streaks would. I’d take that trade if 90-day retention holds. If it doesn’t, the mechanic was doing work I underestimated, and I’d rather find that out than assume it." },
   { topic: "Plant ID confidence", ai: "One confident answer, every time.", me: "Top guesses, how sure it is, and its sources.", why: "False certainty is the fastest way to lose trust." },
-  { topic: "Pet safety", ai: "Generic care tips.", me: "Toxic-to-pets warnings the moment you add a plant, with sources.", why: "4 of 12 new owners picked pet safety as one of the most stressful parts of plant care. When a plant can hurt a cat, a wrong guess isn’t a suggestion. It’s a risk." },
+  { topic: "Pet safety", ai: "Generic care tips.", me: "Toxic-to-pets warnings the moment you add a plant, with sources.", why: "4 of 11 new owners who answered picked pet safety as one of the most stressful parts of plant care. When a plant can hurt a cat, a wrong guess isn’t a suggestion. It’s a risk." },
   { topic: "Watering schedule", next: true, ai: "A fixed calendar, with every plant on its own repeating interval and days overdue.", me: "The reminder asks you to check, not to water: “Fiddle Leaf: check the top inch.” Two taps: watered, or not yet.", why: "Overwatering kills more houseplants than neglect, and a fixed interval is exactly how it happens. My own care guide already says “water when the top inch is dry.” The reminder engine never caught up to it. Asking you to check makes the reminder correct, makes seasonality free, and turns “smart care reminders” from a label into a mechanism. This is the one I got wrong in the same direction as the first build: I corrected its tone five times and never once its logic." },
 ];
 
@@ -272,19 +279,19 @@ export default function RisoGrove() {
         <div className="rp-hero__content">
           <div className="rp-clearing">
             <span className="rp-eyebrow">Grove · sole designer · AI-assisted React prototype</span>
-            <h1 className="rp-h1">Eleven features became three.</h1>
+            <h1 className="rp-h1">Twelve features became three.</h1>
             <span className="rp-readtime">
               <b>5 min</b>
               <span>read · Phase 2 of 3</span>
             </span>
             <p className="rp-sub">
-              An exploratory 5-user test showed people got lost; a 34-person survey then narrowed eleven features to three.
+              An exploratory 5-user test showed people got lost; a 35-person survey then narrowed twelve features to three.
               I am the sole designer; <b>the redesign and retest are still in progress</b>.
             </p>
             <dl className="rp-heroEvidence" aria-label="Grove case evidence at a glance">
               <div><dt>Role</dt><dd>Sole product designer · end to end</dd></div>
-              <div><dt>Method</dt><dd>Exploratory test → 34-person survey</dd></div>
-              <div><dt>Decision</dt><dd>11 features → 3 launch priorities</dd></div>
+              <div><dt>Method</dt><dd>Exploratory test → 35-person survey</dd></div>
+              <div><dt>Decision</dt><dd>12 features → 3 launch priorities</dd></div>
               <div><dt>Build</dt><dd>Working React prototype · AI-assisted implementation</dd></div>
               <div><dt>State</dt><dd>Phase 2 of 3 · redesign direction · retest pending</dd></div>
             </dl>
@@ -340,8 +347,8 @@ export default function RisoGrove() {
           <h3 className="rp-subhead">A moderated test found the confusion first</h3>
           <p className="rp-lede">March–May 2026, 5 users: people stalled when care led with a feed and a mission, not their plants. Five people were enough to see something was wrong, not enough to say what to build instead — that's what the survey went on to answer.</p>
 
-          <h3 className="rp-subhead">What 34 plant owners said</h3>
-          <p className="rp-lede">34 owners · May 22–July 8, 2026 · choose three launch dealbreakers.</p>
+          <h3 className="rp-subhead">What 35 people said</h3>
+          <p className="rp-lede">35 people · May 22–Sept 24, 2026 · 29 plant owners, 3 florists, 3 bouquet buyers · choose three launch dealbreakers.</p>
           <dl className="rp-surveyStats rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "90ms" } as React.CSSProperties}>
             {SURVEY_FINDINGS.map((f) => (
               <div key={f.stat}>
@@ -454,7 +461,7 @@ export default function RisoGrove() {
           <h3 className="rp-subhead">The trust decision</h3>
           <p className="rp-lede">
             A florist, unprompted: “Any generative AI in this will remove any sense of trust.”
-            She wasn't alone—4 of 34 said they'd trust no AI feature in the app at all, and 19 of 34
+            She wasn't alone—5 of 35 said they'd trust no AI feature in the app at all, and 20 of 35
             said explaining why the AI made a call is what would earn their trust. Plant ID carried
             that risk directly, so instead of one confident answer, it shows top guesses, how sure it
             is, and its sources. False certainty is the fastest way to lose trust.

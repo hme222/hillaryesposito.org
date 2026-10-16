@@ -2,14 +2,15 @@ import type { SpanishCaseStudyData } from "../components/SpanishCaseStudy";
 import { KNOWUNITY_BADGE_ASSET } from "./knowunityBadge";
 
 export const GROVE_ES: SpanishCaseStudyData = {
-  title: "Once funciones se convirtieron en tres.",
+  // No-break space: the line breaks after "funciones", never stranding "se".
+  title: "Doce funciones se\u00a0convirtieron en tres.",
   breadcrumb: "Grove",
   meta: "Grove · Diseño de producto · Prototipo funcional · Fase 2 de 3",
   intro:
-    "Grove es una app de cuidado de plantas. Una herramienta de IA llamada Emergent construyó una primera versión rápida y llena de funciones. Una prueba exploratoria con 5 usuarios, entre marzo y mayo de 2026, señaló sobrecarga; el registro conservado no incluye resultados por tarea, así que no hago una afirmación más amplia con esa prueba. Después, una encuesta de 34 personas redujo once funciones a las tres prioridades que guían la Fase 2. La encuesta registra prioridades declaradas, no comportamiento observado ni demanda de mercado.",
+    "Grove es una app de cuidado de plantas. Una herramienta de IA llamada Emergent construyó una primera versión rápida y llena de funciones. Una prueba exploratoria con 5 usuarios, entre marzo y mayo de 2026, señaló sobrecarga; el registro conservado no incluye resultados por tarea, así que no hago una afirmación más amplia con esa prueba. Después, una encuesta de 35 personas redujo doce funciones a las tres prioridades que guían la Fase 2. La encuesta registra prioridades declaradas, no comportamiento observado ni demanda de mercado.",
   stats: [
     { label: "Rol", value: "Diseñadora de producto (en solitario)" },
-    { label: "Muestra", value: "34 respuestas de encuesta" },
+    { label: "Muestra", value: "35 respuestas de encuesta" },
     { label: "Tiempo", value: "Fase 2 de 3" },
     { label: "Estado", value: "Rediseño en curso" },
   ],
@@ -20,7 +21,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
       eyebrow: "Dónde empieza esto",
       title: "Los dueños de plantas se olvidan. Y luego se sienten culpables.",
       body: [
-        "La mayoría de la gente que compra una planta quiere una sola cosa: mantenerla viva. Pero se olvidan de regarla, o la riegan de más, y de cualquier forma se sienten mal. Les pregunté a 34 dueños de plantas qué haría que una app de plantas se ganara un lugar en su teléfono. Una de las dos respuestas más comunes: “Los consejos son demasiado genéricos, no toman en cuenta mi casa.” Lo que más rápido hace que borren una app, dicho por 11 de 34 sin que se lo preguntara: demasiadas notificaciones. Una persona lo resumió así: “El cuidado de plantas debería sentirse tranquilo y sano, no estresante.”",
+        "La mayoría de la gente que compra una planta quiere una sola cosa: mantenerla viva. Pero se olvidan de regarla, o la riegan de más, y de cualquier forma se sienten mal. Les pregunté a 35 personas qué haría que una app de plantas se ganara un lugar en su teléfono. Una de las dos respuestas más comunes: “Los consejos son demasiado genéricos, no toman en cuenta mi casa.” Lo que más rápido hace que borren una app, dicho por 11 de 35 sin que se lo preguntara: demasiadas notificaciones. Una persona lo resumió así: “El cuidado de plantas debería sentirse tranquilo y sano, no estresante.”",
         "El punto débil: en lo que peor están los dueños nuevos es en la luz — dónde poner una planta, y por qué. Ninguna app grande lo enseña. Los dueños nuevos calificaron su confianza para darles la luz del sol correcta en 2.4 de 5 (12 personas); los experimentados, en 3.4 (14 personas). Ahí, más la confianza, es donde Grove gana o no gana.",
       ],
     },
@@ -28,16 +29,16 @@ export const GROVE_ES: SpanishCaseStudyData = {
       anchor: "grove-research",
       chapter: "Investigación",
       eyebrow: "Investigación",
-      title: "Les pregunté a 34 dueños de plantas qué importa de verdad.",
+      title: "Les pregunté a 35 personas qué importa de verdad.",
       body: [
-        "Después de que una prueba con 5 usuarios mostró que la primera versión estaba sobrecargada, hice una encuesta para decidir qué debía conservar el rediseño. 34 personas, desde principiantes hasta coleccionistas serios, respondieron entre el 22 de mayo y el 8 de julio de 2026.",
+        "Después de que una prueba con 5 usuarios mostró que la primera versión estaba sobrecargada, hice una encuesta para decidir qué debía conservar el rediseño. 35 personas, desde principiantes hasta coleccionistas serios, respondieron entre el 22 de mayo y el 24 de septiembre de 2026: 29 dueños de plantas, 3 floristas y 3 compradores de ramos.",
         "Emergent había construido las funciones sociales dentro de la app. La encuesta dijo que no es por eso que la gente la descarga. Así que hice una pregunta difícil: “Si Grove solo pudiera lanzarse con TRES funciones, ¿cuáles no podría dejar de tener?” El rediseño empieza por esas tres. Todo lo demás espera.",
         "Límite de la evidencia: la encuesta registra prioridades declaradas. La usé para decidir qué construir y probar después, no para afirmar comportamiento observado ni demanda de mercado.",
       ],
       bullets: [
         "Recordatorios inteligentes: la función más pedida (74%), pero solo con límites claros.",
-        "Identificar la planta con la cámara (56%) y diagnóstico por foto: esenciales, pero tenían que mostrar cuánta confianza tienen y sus fuentes.",
-        "Las advertencias para plantas tóxicas para mascotas (4 de 12 dueños nuevos las marcaron entre lo más estresante del cuidado) y la educación sobre la luz pasaron a ser parte del núcleo de confianza, aunque yo ni siquiera las había construido.",
+        "Identificar la planta con la cámara (54%) y diagnóstico por foto: esenciales, pero tenían que mostrar cuánta confianza tienen y sus fuentes.",
+        "Las advertencias para plantas tóxicas para mascotas (4 de 11 dueños nuevos que respondieron las marcaron entre lo más estresante del cuidado) y la educación sobre la luz pasaron a ser parte del núcleo de confianza, aunque yo ni siquiera las había construido.",
       ],
     },
     {
@@ -199,7 +200,7 @@ export const MSK_ES: SpanishCaseStudyData = {
     },
   ],
   otherProjects: [
-    { title: "Once funciones se convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
+    { title: "Doce funciones se\u00a0convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
     { title: "Más de 200 pantallas por app, buscables por tarea", desc: "Mobbin · Más de 200 pantallas por app, documentadas como referencias paso a paso.", path: "/case-study/mobbin" },
   ],
   close: {
@@ -285,7 +286,7 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
     },
   ],
   otherProjects: [
-    { title: "Once funciones se convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
+    { title: "Doce funciones se\u00a0convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
     { title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas", desc: "MSK · Seis años rediseñando flujos clínicos para trabajo que alcanzaba a más de 21,000 clínicos y personal administrativo.", path: "/case-study/msk" },
   ],
   close: {
@@ -360,7 +361,7 @@ export const LOGISTICS_ES: SpanishCaseStudyData = {
   ],
   otherProjects: [
     { title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas", desc: "MSK · Seis años rediseñando flujos clínicos para trabajo que alcanzaba a más de 21,000 clínicos y personal administrativo.", path: "/case-study/msk" },
-    { title: "Once funciones se convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
+    { title: "Doce funciones se\u00a0convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
   ],
   close: {
     title: "Las cadenas de suministro y los flujos clínicos fallan de la misma manera.",
@@ -462,7 +463,7 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
     },
   ],
   otherProjects: [
-    { title: "Once funciones se convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
+    { title: "Doce funciones se\u00a0convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
     { title: "El reabastecimiento médico pasó de meses a semanas", desc: "Logística médica del Ejército · siete estaciones de ayuda, tres países.", path: "/case-study/logistics" },
   ],
   close: {
@@ -551,7 +552,7 @@ export const UXWOMAN_ES: SpanishCaseStudyData = {
   ],
   otherProjects: [
     { title: "Las propias palabras del estudiante son la prueba", desc: "Knowunity · Sprint de diseño, recuerdo por voz simulado.", path: "/case-study/knowunity" },
-    { title: "Once funciones se convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
+    { title: "Doce funciones se\u00a0convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
   ],
   close: {
     title: "Reviso la premisa antes de construir.",
