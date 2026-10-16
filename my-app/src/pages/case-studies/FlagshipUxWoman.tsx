@@ -100,15 +100,6 @@ export default function FlagshipUxWoman() {
 
       <div className="rp-breadcrumbRow">
         <nav className="rp-breadcrumb" aria-label="Breadcrumb"><Link to="/" className="rp-breadcrumb__name" title="Hillary Esposito">Hillary Esposito</Link> / <Link to="/?scrollTo=projects">Work</Link> / <span>UX Woman</span></nav>
-        <button
-          type="button"
-          className="rp-heroUtility rp-breadcrumbTour"
-          onClick={(e) =>
-            window.dispatchEvent(new CustomEvent("open-recruiter-panel", { detail: { returnFocus: e.currentTarget } }))
-          }
-        >
-          Open the 90-second tour
-        </button>
       </div>
       <CaseStudyChapters project="UX Woman" chapters={CHAPTERS} progress />
       <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
@@ -138,7 +129,20 @@ export default function FlagshipUxWoman() {
               <div><dt>Status</dt><dd>Active · research phase · five pretotypes designed, none run</dd></div>
               <div><dt>Next</dt><dd>Reconstruct recent cases, then decide what to build</dd></div>
             </dl>
-            <a className="rp-cta" href="#uxwoman-findings">See the five findings →</a>
+            {/* The tour sits beside the hero action, not in the breadcrumb row,
+                which pushed the H1 down on phones (2026-10-16). */}
+            <div className="rp-hero__ctas rp-hero__ctas--tour">
+              <a className="rp-cta" href="#uxwoman-findings">See the five findings →</a>
+              <button
+                type="button"
+                className="rp-heroUtility rp-heroTour"
+                onClick={(e) =>
+                  window.dispatchEvent(new CustomEvent("open-recruiter-panel", { detail: { returnFocus: e.currentTarget } }))
+                }
+              >
+                Open the 90-second tour
+              </button>
+            </div>
           </div>
         </div>
         <div className="rp-hero__media fp-heroArt fp-heroArt--uxwoman" data-evidence="true">

@@ -855,7 +855,6 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   font-weight: 700;
   line-height: 1.35;
 }
-.rp-heroEvidence + .rp-cta { margin-top: 1rem; }
 @media (max-width: 440px) {
   .rp-heroEvidence { grid-template-columns: 1fr; }
   .rp-heroEvidence > div,
@@ -2210,6 +2209,11 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
    inglés)") is wider than a 320–375px row; capped, it wraps inside the button
    instead of running past the screen edge. */
 .rp-breadcrumbTour { flex: 0 0 auto; max-width: 100%; padding-block: 0; text-align: start; }
+/* Case studies: the same trigger beside the hero's primary action. Moved out
+   of the breadcrumb row (2026-10-16), where its own wrapped line pushed the
+   H1 toward the fold at 390×844. */
+.rp-heroTour { max-width: 100%; text-align: start; text-wrap: balance; }
+.rp-hero__ctas--tour { align-items: center; margin-top: 1rem; }
 @media (max-width: 400px) {
   .rp-breadcrumb { font-size: .58rem; letter-spacing: .06em; }
 }

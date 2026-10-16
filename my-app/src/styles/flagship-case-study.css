@@ -67,7 +67,6 @@
 /* The clearing/H1 pair is fixed once for every case-study hero in
    riso-page.css § HERO — Grove uses the bare .rp-hero, so a .fp-hero rule
    would have fixed three heroes and missed one. */
-.fp-hero .rp-sub + .rp-cta { margin-top: 1rem; }
 /* 10ch and a 4.35rem ceiling suit one-word titles (Grove., Mobbin.). "Memorial
    Sloan Kettering." is three long words, and at that size the single word
    "Kettering." was wider than the 40ch clearing itself, so it rendered outside

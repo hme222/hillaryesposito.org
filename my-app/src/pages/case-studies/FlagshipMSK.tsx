@@ -205,15 +205,6 @@ export default function FlagshipMSK() {
         <nav className="rp-breadcrumb" aria-label="Breadcrumb">
           <Link to="/" className="rp-breadcrumb__name" title="Hillary Esposito">Hillary Esposito</Link> / <Link to="/?scrollTo=projects">Work</Link> / <span>Memorial Sloan Kettering</span>
         </nav>
-        <button
-          type="button"
-          className="rp-heroUtility rp-breadcrumbTour"
-          onClick={(e) =>
-            window.dispatchEvent(new CustomEvent("open-recruiter-panel", { detail: { returnFocus: e.currentTarget } }))
-          }
-        >
-          Open the 90-second tour
-        </button>
       </div>
       <CaseStudyChapters project="Memorial Sloan Kettering" chapters={CHAPTERS} progress />
       <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
@@ -241,7 +232,20 @@ export default function FlagshipMSK() {
               <div><dt>MSK roles</dt><dd>Office Coordinator → Administrative Assistant → Training Facilitator (retitled Trainer I Specialist)</dd></div>
               <div><dt>Role</dt><dd>Service design · process improvement · UX/product</dd></div>
             </dl>
-            <a className="rp-cta" href="#msk-workflow">See the workflow →</a>
+            {/* The tour sits beside the hero action, not in the breadcrumb row,
+                which pushed the H1 down on phones (2026-10-16). */}
+            <div className="rp-hero__ctas rp-hero__ctas--tour">
+              <a className="rp-cta" href="#msk-workflow">See the workflow →</a>
+              <button
+                type="button"
+                className="rp-heroUtility rp-heroTour"
+                onClick={(e) =>
+                  window.dispatchEvent(new CustomEvent("open-recruiter-panel", { detail: { returnFocus: e.currentTarget } }))
+                }
+              >
+                Open the 90-second tour
+              </button>
+            </div>
           </div>
         </div>
         <div className="rp-hero__media fp-heroArt fp-heroArt--msk" data-evidence="true">

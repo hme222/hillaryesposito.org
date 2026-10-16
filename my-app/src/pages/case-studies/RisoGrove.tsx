@@ -255,15 +255,6 @@ export default function RisoGrove() {
         <nav className="rp-breadcrumb" aria-label="Breadcrumb">
           <Link to="/" className="rp-breadcrumb__name" title="Hillary Esposito">Hillary Esposito</Link> / <Link to="/?scrollTo=projects">Work</Link> / <span>Grove</span>
         </nav>
-        <button
-          type="button"
-          className="rp-heroUtility rp-breadcrumbTour"
-          onClick={(e) =>
-            window.dispatchEvent(new CustomEvent("open-recruiter-panel", { detail: { returnFocus: e.currentTarget } }))
-          }
-        >
-          Open the 90-second tour
-        </button>
       </div>
 
       <CaseStudyChapters project="Grove" chapters={CHAPTERS} progress />
@@ -297,13 +288,26 @@ export default function RisoGrove() {
               <div><dt>Build</dt><dd>Working React prototype · AI-assisted implementation</dd></div>
               <div><dt>State</dt><dd>Phase 2 of 3 · redesign direction · retest pending</dd></div>
             </dl>
-            <a
-              className="rp-cta"
-              href="#grove-prototype"
-              onClick={() => window.setTimeout(revealHashTarget, 0)}
-            >
-              Try the working browser prototype →
-            </a>
+            {/* The tour sits beside the hero action, not in the breadcrumb row,
+                which pushed the H1 down on phones (2026-10-16). */}
+            <div className="rp-hero__ctas rp-hero__ctas--tour">
+              <a
+                className="rp-cta"
+                href="#grove-prototype"
+                onClick={() => window.setTimeout(revealHashTarget, 0)}
+              >
+                Try the working browser prototype →
+              </a>
+              <button
+                type="button"
+                className="rp-heroUtility rp-heroTour"
+                onClick={(e) =>
+                  window.dispatchEvent(new CustomEvent("open-recruiter-panel", { detail: { returnFocus: e.currentTarget } }))
+                }
+              >
+                Open the 90-second tour
+              </button>
+            </div>
           </div>
         </div>
         <div className="rp-hero__media" data-evidence="true">

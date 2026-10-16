@@ -142,15 +142,6 @@ export default function FlagshipKnowunity() {
 
       <div className="rp-breadcrumbRow">
         <nav className="rp-breadcrumb" aria-label="Breadcrumb"><Link to="/" className="rp-breadcrumb__name" title="Hillary Esposito">Hillary Esposito</Link> / <Link to="/?scrollTo=projects">Work</Link> / <span>Knowunity</span></nav>
-        <button
-          type="button"
-          className="rp-heroUtility rp-breadcrumbTour"
-          onClick={(e) =>
-            window.dispatchEvent(new CustomEvent("open-recruiter-panel", { detail: { returnFocus: e.currentTarget } }))
-          }
-        >
-          Open the 90-second tour
-        </button>
       </div>
       <CaseStudyChapters project="Knowunity" chapters={CHAPTERS} progress />
       <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
@@ -180,7 +171,20 @@ export default function FlagshipKnowunity() {
               <div><dt>My contribution</dt><dd>Flows and decisions · coded prototype · Storybook catalog</dd></div>
               <div><dt>Outcome</dt><dd>Yummy Labs AI Design Sprinter badge · reviewed by Knowunity · not a shipped feature</dd></div>
             </dl>
-            <a className="rp-cta" href="#knowunity-decisions">See the four decisions →</a>
+            {/* The tour sits beside the hero action, not in the breadcrumb row,
+                which pushed the H1 down on phones (2026-10-16). */}
+            <div className="rp-hero__ctas rp-hero__ctas--tour">
+              <a className="rp-cta" href="#knowunity-decisions">See the four decisions →</a>
+              <button
+                type="button"
+                className="rp-heroUtility rp-heroTour"
+                onClick={(e) =>
+                  window.dispatchEvent(new CustomEvent("open-recruiter-panel", { detail: { returnFocus: e.currentTarget } }))
+                }
+              >
+                Open the 90-second tour
+              </button>
+            </div>
           </div>
         </div>
         <div className="rp-hero__media fp-heroArt fp-heroArt--knowunity" data-evidence="true">

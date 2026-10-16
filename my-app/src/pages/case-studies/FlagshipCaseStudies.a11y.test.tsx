@@ -150,13 +150,16 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelectorAll("#msk-outcomes .rp-outcomes--four .rp-stat")).toHaveLength(4);
   });
 
-  it("the breadcrumb row's tour trigger dispatches open-recruiter-panel with returnFocus (EN and ES)", async () => {
+  it("the hero's tour trigger dispatches open-recruiter-panel with returnFocus (EN and ES)", async () => {
     await act(async () => {
       root.render(<FlagshipMSK />);
     });
     const handler = jest.fn();
     window.addEventListener("open-recruiter-panel", handler);
-    const trigger = container.querySelector<HTMLButtonElement>(".rp-breadcrumbTour");
+    // Moved from the breadcrumb row to the hero actions (2026-10-16) so the
+    // H1 starts higher on phones.
+    expect(container.querySelector(".rp-breadcrumbRow button")).toBeNull();
+    const trigger = container.querySelector<HTMLButtonElement>(".rp-hero__ctas .rp-heroTour");
     expect(trigger?.textContent).toBe("Open the 90-second tour");
     await act(async () => trigger?.click());
     expect(handler).toHaveBeenCalledTimes(1);
@@ -171,7 +174,7 @@ describe("flagship case-study accessibility", () => {
     await act(async () => {
       root.render(<FlagshipMSK />);
     });
-    const esTrigger = container.querySelector<HTMLButtonElement>(".rp-breadcrumbTour");
+    const esTrigger = container.querySelector<HTMLButtonElement>(".rp-hero__ctas .rp-heroTour");
     expect(esTrigger?.textContent).toBe("Abrir el recorrido de 90 segundos (en inglés)");
     const breadcrumb = container.querySelector(".rp-breadcrumb");
     expect(breadcrumb?.textContent).toContain("Memorial Sloan Kettering");

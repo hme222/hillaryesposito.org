@@ -73,15 +73,6 @@ export default function FlagshipMobbin() {
 
       <div className="rp-breadcrumbRow">
         <nav className="rp-breadcrumb" aria-label="Breadcrumb"><Link to="/" className="rp-breadcrumb__name" title="Hillary Esposito">Hillary Esposito</Link> / <Link to="/?scrollTo=projects">Work</Link> / <span>Mobbin</span></nav>
-        <button
-          type="button"
-          className="rp-heroUtility rp-breadcrumbTour"
-          onClick={(e) =>
-            window.dispatchEvent(new CustomEvent("open-recruiter-panel", { detail: { returnFocus: e.currentTarget } }))
-          }
-        >
-          Open the 90-second tour
-        </button>
       </div>
       <CaseStudyChapters project="Mobbin" chapters={CHAPTERS} progress />
       <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
@@ -104,7 +95,20 @@ export default function FlagshipMobbin() {
               I captured, sequenced, annotated, and labeled <b>200+ screens per app</b> across Kikoff,
               Polymarket, and Discover. I documented these products; I did not design them or Mobbin.
             </p>
-            <a className="rp-cta" href="#mobbin-work">See the capture method →</a>
+            {/* The tour sits beside the hero action, not in the breadcrumb row,
+                which pushed the H1 down on phones (2026-10-16). */}
+            <div className="rp-hero__ctas rp-hero__ctas--tour">
+              <a className="rp-cta" href="#mobbin-work">See the capture method →</a>
+              <button
+                type="button"
+                className="rp-heroUtility rp-heroTour"
+                onClick={(e) =>
+                  window.dispatchEvent(new CustomEvent("open-recruiter-panel", { detail: { returnFocus: e.currentTarget } }))
+                }
+              >
+                Open the 90-second tour
+              </button>
+            </div>
           </div>
         </div>
         <div className="rp-hero__media fp-heroArt fp-heroArt--mobbin" aria-label="Three finance app screens documented for Mobbin" data-evidence="true">
