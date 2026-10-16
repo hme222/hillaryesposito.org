@@ -67,7 +67,7 @@ HTML = """<!doctype html>
   <main>
     <section aria-labelledby="summary-heading">
       <h2 id="summary-heading">Professional summary</h2>
-      <p>Healthcare Product Designer with six years inside a cancer center and 13+ years of Army service. Combines frontline observation, workflow analysis, stakeholder input, and technical constraints to design clearer internal tools and testable product flows. At Memorial Sloan Kettering, a workflow redesign I initiated later contributed inside a larger initiative to a 20% organization-wide electronic medical record cost reduction. MHA, Lean Six Sigma Green Belt, U.S. Army veteran, and bilingual English/Spanish communicator.</p>
+      <p>Healthcare Product Designer with six years at a cancer center (MSK) and 13+ years of Army service. I turn frontline observation, workflow analysis, stakeholder input, and technical constraints into clearer internal tools and testable product flows. At MSK, a workflow redesign I initiated contributed to a 20% organization-wide electronic medical record (EMR) cost reduction, as part of a larger initiative. MHA, Lean Six Sigma Green Belt, U.S. Army veteran, and bilingual English/Spanish communicator.</p>
     </section>
 
     <section class="skills" aria-labelledby="skills-heading">
@@ -85,6 +85,13 @@ HTML = """<!doctype html>
         <ul>
           <li>Narrowed 11 proposed features to 3 after synthesizing a 34-person self-report survey, then translated the priorities into information architecture, interaction states, and a functional React prototype.</li>
           <li>Own research planning, product scope, responsive interaction design, accessibility, prototype implementation, and iteration. The prototype is not presented as a shipped consumer product.</li>
+        </ul>
+      </article>
+      <article aria-labelledby="knowunity-role">
+        <h3 id="knowunity-role">Product Designer, Solo Entry · Yummy Labs AI Design Sprint, in partnership with Knowunity</h3>
+        <p class="meta">September 2026 · AI Design Sprinter badge · Working prototype</p>
+        <ul>
+          <li>Designed a voice active-recall step for students and built it as a working prototype on Knowunity's component kit with AI coding tools. Recall is mocked and untested with students; not a shipped Knowunity feature.</li>
         </ul>
       </article>
       <article aria-labelledby="mobbin-role">
@@ -108,18 +115,20 @@ HTML = """<!doctype html>
         </ul>
       </article>
       <article aria-labelledby="coordinator-role">
-        <h3 id="coordinator-role">Administrative Assistant / Office Coordinator · Memorial Sloan Kettering Cancer Center</h3>
+        <h3 id="coordinator-role">Office Coordinator → Administrative Assistant · Memorial Sloan Kettering Cancer Center</h3>
         <p class="meta">New York, NY · 2018–2022</p>
         <ul>
-          <li>Mapped a paper-to-digital EMR workflow across four departments and presented the redesign. MSK implemented it two roles later inside a broader initiative that reduced organization-wide EMR costs by 20%.</li>
-          <li>Rewrote technical and legal CPR certification material around clinician questions and handoffs, enabling every certification to be collected 70% ahead of an at-risk deadline.</li>
+          <li>Found patient-portal messages being printed so they could be scanned into the chart. Checked a fix with clinical, IT, HIM, and operations, then pitched a button that files them straight to the chart (pitch projected ~$1M/year).</li>
+          <li>IT and UX built the button after I changed roles. It contributed to an organization-wide initiative that cut EMR costs 20%.</li>
+          <li>Rewrote CPR certification language with physicians and legal. The department certified a month before the original deadline, no extension.</li>
         </ul>
       </article>
       <article aria-labelledby="army-role">
         <h3 id="army-role">Commissioned Officer · NJ Army National Guard</h3>
         <p class="meta">2013–2026 · Platoon Leader, Company Commander, Brigade Medical Supply Officer</p>
         <ul>
-          <li>Cut medical resupply time by 85% and spending by 60%, and improved deployment coordination by 15% across seven aid stations in three countries through shared tracking and reporting workflows.</li>
+          <li>Cut medical resupply from 1–2 months to 1–2 weeks (85% faster per service record) by moving the warehouse into a combat zone.</li>
+          <li>Built real-time order-status tracking for seven aid stations in three countries. Sites stopped over-ordering and running out, cutting spending 60%; deployment coordination improved 15%.</li>
           <li>Directed medical logistics for 5,000+ soldiers and $2M in supplies in Iraq while absorbing a vacant Medical Operations Officer role and reporting medical operations to the Pentagon.</li>
         </ul>
       </article>
@@ -134,7 +143,7 @@ HTML = """<!doctype html>
 
   <footer aria-label="Document information">
     <span>Hillary Esposito · Healthcare Product Design</span>
-    <span>Updated August 2026</span>
+    <span>Updated October 2026</span>
   </footer>
 </body>
 </html>
@@ -151,8 +160,8 @@ def healthcare_html() -> str:
             '<title>Hillary Esposito - Healthcare Product and Service Designer Resume</title>',
         '<p class="role">Healthcare Product Designer · Enterprise Workflows, Internal Tools &amp; Complex Systems</p>':
             '<p class="role">Healthcare Product &amp; Service Designer · Clinical Workflows &amp; Care Services</p>',
-        'Healthcare Product Designer with six years inside a cancer center and 13+ years of Army service. Combines frontline observation, workflow analysis, stakeholder input, and technical constraints to design clearer internal tools and testable product flows. At Memorial Sloan Kettering, a workflow redesign I initiated later contributed inside a larger initiative to a 20% organization-wide electronic medical record cost reduction. MHA, Lean Six Sigma Green Belt, U.S. Army veteran, and bilingual English/Spanish communicator.':
-            'Healthcare product and service designer with six years inside cancer-care operations and 13+ years of Army service, including medical logistics. I map what staff do, where work changes hands, and who owns the next step. I stay through prototyping and implementation. An MSK workflow redesign I initiated contributed inside a larger initiative to a 20% organization-wide EMR cost reduction. MHA, Lean Six Sigma Green Belt, Army veteran, and bilingual English/Spanish communicator.',
+        'Healthcare Product Designer with six years at a cancer center (MSK) and 13+ years of Army service. I turn frontline observation, workflow analysis, stakeholder input, and technical constraints into clearer internal tools and testable product flows. At MSK, a workflow redesign I initiated contributed to a 20% organization-wide electronic medical record (EMR) cost reduction, as part of a larger initiative. MHA, Lean Six Sigma Green Belt, U.S. Army veteran, and bilingual English/Spanish communicator.':
+            'Healthcare product and service designer with six years at a cancer center (MSK) and 13+ years of Army service, including medical logistics. I map what staff do, where work changes hands, and who owns the next step. I stay through prototyping and implementation. At MSK, a workflow redesign I initiated contributed to a 20% organization-wide electronic medical record (EMR) cost reduction, as part of a larger initiative. MHA, Lean Six Sigma Green Belt, Army veteran, and bilingual English/Spanish communicator.',
         '<p><strong>Product and interaction:</strong> information architecture, user flows, wireframes, functional prototypes, interaction states, accessibility, responsive design, design systems, design QA</p>':
             '<p><strong>Healthcare product/service:</strong> clinical workflows, current/future-state mapping, journey mapping, service blueprinting, internal tools, change management, implementation, accessibility</p>',
         '<p><strong>Research and service design:</strong> workflow observation, stakeholder interviews, survey synthesis, usability testing, journey mapping, service blueprints, task analysis, scope prioritization</p>':

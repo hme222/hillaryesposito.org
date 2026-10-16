@@ -2,7 +2,6 @@
 """Build the evidence-safe, ATS-readable portfolio resume PDF."""
 
 from pathlib import Path
-from shutil import copyfile
 import subprocess
 import sys
 
@@ -164,7 +163,7 @@ def page_decor(canvas, doc):
     canvas.setFont("Helvetica", 6.8)
     canvas.setFillColor(MUTED)
     canvas.drawString(doc.leftMargin, 0.27 * inch, getattr(doc, "footer_label", "HILLARY ESPOSITO · PRODUCT DESIGN"))
-    canvas.drawRightString(LETTER[0] - doc.rightMargin, 0.27 * inch, "UPDATED AUGUST 2026")
+    canvas.drawRightString(LETTER[0] - doc.rightMargin, 0.27 * inch, "UPDATED OCTOBER 2026")
     canvas.restoreState()
 
 
@@ -178,11 +177,11 @@ def build_resume(output_path, variant="portfolio"):
             "subject": "Product design resume focused on healthcare systems, internal tools, and complex workflows",
             "footer": "HILLARY ESPOSITO · PRODUCT DESIGN",
             "summary": (
-                "Product designer with six years inside a cancer center and 13+ years of Army service. "
-                "Turns frontline observation, workflow analysis, stakeholder input, and technical constraints into "
-                "clearer internal tools and testable product flows. Initiated an MSK workflow redesign that later "
-                "contributed to a 20% organization-wide EMR cost reduction. MHA, Lean Six Sigma Green Belt, U.S. "
-                "Army veteran, and bilingual English/Spanish communicator."
+                "Product designer with six years at a cancer center (MSK) and 13+ years of Army service. "
+                "I turn frontline observation, workflow analysis, stakeholder input, and technical constraints into "
+                "clearer internal tools and testable product flows. At MSK, a workflow redesign I initiated "
+                "contributed to a 20% organization-wide EMR cost reduction, as part of a larger initiative. MHA, "
+                "Lean Six Sigma Green Belt, U.S. Army veteran, and bilingual English/Spanish communicator."
             ),
             "skills": (
                 "<b>Product and interaction:</b> information architecture, user flows, wireframes, functional prototypes, "
@@ -199,10 +198,10 @@ def build_resume(output_path, variant="portfolio"):
             "subject": "Healthcare product and service design resume focused on clinical workflows and end-to-end services",
             "footer": "HILLARY ESPOSITO · HEALTHCARE PRODUCT + SERVICE DESIGN",
             "summary": (
-                "Healthcare product and service designer with six years inside cancer-care operations and 13+ years of Army "
+                "Healthcare product and service designer with six years at a cancer center (MSK) and 13+ years of Army "
                 "service, including medical logistics. I map what staff do, where work changes hands, and who owns the next step. I stay "
-                "through prototyping and implementation. An MSK workflow redesign I initiated contributed inside a larger initiative to a 20% organization-wide "
-                "EMR cost reduction. MHA, Lean Six Sigma Green Belt, Army veteran, and bilingual English/Spanish communicator."
+                "through prototyping and implementation. At MSK, a workflow redesign I initiated contributed to a 20% organization-wide "
+                "EMR cost reduction, as part of a larger initiative. MHA, Lean Six Sigma Green Belt, Army veteran, and bilingual English/Spanish communicator."
             ),
             "skills": (
                 "<b>Healthcare product/service:</b> clinical workflows, current/future-state mapping, journey mapping, "
@@ -219,7 +218,7 @@ def build_resume(output_path, variant="portfolio"):
             "subject": "Healthcare UX research and service design resume focused on workflow research, service mapping, and research-to-decision evidence",
             "footer": "HILLARY ESPOSITO · HEALTHCARE UXR + SERVICE DESIGN",
             "summary": (
-                "Healthcare UX research and service design practitioner with six years inside cancer-care operations and 13+ years of Army "
+                "Healthcare UX research and service design practitioner with six years at a cancer center (MSK) and 13+ years of Army "
                 "service, including medical logistics. Uses workflow observation, stakeholder input, surveys, service mapping, and task analysis "
                 "to change product and service decisions. At Grove, a 34-person self-report survey narrowed eleven proposed "
                 "features to three. At MSK, workflow analysis aligned four departments around an implemented digital process. "
@@ -312,6 +311,18 @@ def build_resume(output_path, variant="portfolio"):
             ],
         )
 
+    def add_knowunity():
+        role(
+            story,
+            styles,
+            "Product Designer, Solo Entry",
+            "Yummy Labs AI Design Sprint, in partnership with Knowunity",
+            "September 2026 | AI Design Sprinter badge | Working prototype",
+            [
+                "Designed a voice active-recall step for students and built it as a working prototype on Knowunity's component kit with AI coding tools. Recall is mocked and untested with students; not a shipped Knowunity feature.",
+            ],
+        )
+
     def add_grove():
         role(
             story,
@@ -340,12 +351,13 @@ def build_resume(output_path, variant="portfolio"):
         role(
             story,
             styles,
-            "Administrative Assistant / Office Coordinator",
+            "Office Coordinator → Administrative Assistant",
             "Memorial Sloan Kettering Cancer Center",
             "New York, NY | 2018 - 2022",
             [
-                "Mapped a paper-to-digital EMR workflow across four departments and presented the redesign. MSK implemented it two roles later as part of a broader initiative that reduced organization-wide EMR costs by 20%.",
-                "Rewrote technical and legal CPR certification material around clinician questions and handoffs, enabling every certification to be collected 70% ahead of a deadline that had been at risk of slipping.",
+                "Found patient-portal messages being printed so they could be scanned into the chart. Checked a fix with clinical, IT, HIM, and operations, then pitched a button that files them straight to the chart (pitch projected ~$1M/year).",
+                "IT and UX built the button after I changed roles. It contributed to an organization-wide initiative that cut EMR costs 20%.",
+                "Rewrote CPR certification language with physicians and legal. The department certified a month before the original deadline, no extension.",
             ],
         )
 
@@ -357,7 +369,8 @@ def build_resume(output_path, variant="portfolio"):
             "NJ Army National Guard",
             "2013 - 2026 | Platoon Leader, Company Commander, Brigade Medical Supply Officer",
             [
-                "Cut medical resupply time by 85% and spending by 60%, and improved deployment coordination by 15% across seven aid stations in three countries through shared tracking and reporting workflows.",
+                "Cut medical resupply from 1–2 months to 1–2 weeks (85% faster per service record) by moving the warehouse into a combat zone.",
+                "Built real-time order-status tracking for seven aid stations in three countries. Sites stopped over-ordering and running out, cutting spending 60%; deployment coordination improved 15%.",
                 "Directed medical logistics for 5,000+ soldiers and $2M in supplies in Iraq while absorbing a vacant Medical Operations Officer role and reporting medical operations to the Pentagon.",
             ],
         )
@@ -368,6 +381,7 @@ def build_resume(output_path, variant="portfolio"):
         add_army()
         section(story, styles, "Current Product Design")
         add_grove()
+        add_knowunity()
         add_mobbin()
     elif variant == "uxr":
         section(story, styles, "Research and Product Evidence")
@@ -386,8 +400,9 @@ def build_resume(output_path, variant="portfolio"):
         add_army()
     else:
         section(story, styles, "Product Design Experience")
-        add_mobbin()
         add_grove()
+        add_knowunity()
+        add_mobbin()
         section(story, styles, "Systems and Healthcare Experience")
         add_msk()
         add_army()
@@ -415,13 +430,12 @@ def main():
         # SimpleDocTemplate output is visually sound but untagged.
         if variant in {"portfolio", "healthcare"}:
             continue
+        # The UX Research and The Sill variants were retired from the public
+        # site on 2026-10-15. They still build, but only into tmp/pdfs
+        # (gitignored) for private use; never copy them into public/assets.
         temp_output = temp_dir / filename
         build_resume(temp_output, variant)
-        for base_dir in (ROOT / "my-app/public/assets",):
-            destination = base_dir / filename
-            destination.parent.mkdir(parents=True, exist_ok=True)
-            copyfile(temp_output, destination)
-            print(destination)
+        print(temp_output)
     subprocess.run(
         [sys.executable, str(ROOT / "scripts/build-accessible-product-resume.py"), "--variant", "all"],
         check=True,
