@@ -210,7 +210,7 @@ const en: MskCopy = {
     ledeClose: ".",
     cta: "See the workflow →",
     artifactTag: "RECREATED ARTIFACT",
-    artifactName: "Office Coordinator filing queue · no patient data",
+    artifactName: "Office Coordinator filing queue",
     dashboardAria: "Recreated Office Coordinator filing queue concept",
   },
 
@@ -223,7 +223,7 @@ const en: MskCopy = {
     replay: "Replay the online path",
     ready: "Ready to file.",
     steps: ["Queue opened", "Role confirmed", "Filed to the online chart", "Returned with status updated"],
-    boundary: "Recreated interaction · no patient data",
+    boundary: "Recreated interaction",
   },
 
   workflow: {
@@ -522,7 +522,7 @@ const es: MskCopy = {
     ledeClose: ".",
     cta: "Ver el flujo →",
     artifactTag: "ARTEFACTO RECREADO",
-    artifactName: "Cola de archivo de coordinación · sin datos de pacientes",
+    artifactName: "Cola de archivo de coordinación",
     dashboardAria: "Concepto recreado de la cola de archivo de coordinación de oficina",
   },
 
@@ -535,7 +535,7 @@ const es: MskCopy = {
     replay: "Repetir la ruta en línea",
     ready: "Listo para archivar.",
     steps: ["Cola abierta", "Permiso confirmado", "Archivado en la historia en línea", "Regreso con el estado actualizado"],
-    boundary: "Interacción recreada · sin datos de pacientes",
+    boundary: "Interacción recreada",
   },
 
   workflow: {

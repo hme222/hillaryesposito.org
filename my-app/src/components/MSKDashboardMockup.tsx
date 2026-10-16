@@ -22,9 +22,11 @@ type MSKDashboardMockupProps = {
   hideToolbar?: boolean;
   /** Render the MRN/EMR glossary as a closed-by-default native disclosure
    *  instead of an always-visible block — same information, opt-in depth.
-   *  Home-hero-only; the full case-study view keeps it always open since a
-   *  reader there has already committed to the deep read. */
+   *  Used on Home and in every MSK case-study placement (2026-10-16). */
   legendDisclosure?: boolean;
+  /** Drop the "anonymized concept" eyebrow. The MSK case study shows it once,
+   *  on the hero's queue; later placements on the same page skip it. */
+  hideEyebrow?: boolean;
   /** Hide the "Rule: ..." conditional-logic callout. It's internal business
    *  logic explaining the action button, not primary evidence — genuinely
    *  optional depth in a 5-second hero scan. Home-hero-only. */
@@ -69,6 +71,7 @@ export default function MSKDashboardMockup({
   condensedHeader = false,
   hideToolbar = false,
   legendDisclosure = false,
+  hideEyebrow = false,
   hideRule = false,
   tableId,
   expandControl,
@@ -97,7 +100,7 @@ export default function MSKDashboardMockup({
         // card's width, so it wrapped ugly. Stacking gives the caption the
         // whole width it needs and still reads as one header, not two.
         <div className="msk-dashboard-mockup__topbar msk-dashboard-mockup__topbar--condensed">
-          <p className="msk-dashboard-mockup__eyebrow">{copy.eyebrow} · {copy.roleView}</p>
+          <p className="msk-dashboard-mockup__eyebrow">{hideEyebrow ? copy.roleView : `${copy.eyebrow} · ${copy.roleView}`}</p>
           <div className="msk-dashboard-mockup__condensedMain">
             <Heading>{copy.title}</Heading>
             <span className="msk-dashboard-mockup__timestamp">{copy.queueMeta}</span>
@@ -106,7 +109,7 @@ export default function MSKDashboardMockup({
       ) : (
         <div className="msk-dashboard-mockup__topbar">
           <div>
-            <p className="msk-dashboard-mockup__eyebrow">{copy.eyebrow}</p>
+            {!hideEyebrow && <p className="msk-dashboard-mockup__eyebrow">{copy.eyebrow}</p>}
             <Heading>{copy.title}</Heading>
           </div>
           <span className="msk-dashboard-mockup__meta">

@@ -136,7 +136,8 @@ describe("flagship case-study accessibility", () => {
     const hero = container.querySelector("#msk-start");
     expect(hero?.textContent).toContain("user experience (UX) teams built it after I changed roles");
     expect(hero?.textContent).toContain("Office Coordinator → Administrative Assistant → Training Facilitator (retitled Trainer I Specialist)");
-    expect(hero?.textContent).toContain("Diagnose · map · validate feasibility · pitch");
+    // The sub carries the contribution; the evidence list no longer restates it.
+    expect(hero?.textContent).toContain("checked feasibility, and pitched a digital filing workflow");
     expect(hero?.textContent).not.toContain("20%");
     expect(hero?.textContent).not.toContain("two system upgrades");
     expect(container.textContent).toContain("not attributed solely to this filing workflow");
@@ -697,7 +698,10 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".fp-mskHeroPlate__detour")).toBeNull();
     expect(container.querySelector(".fp-mskLens")).toBeNull();
     expect(container.querySelector(".fp-mskLens__controls")).toBeNull();
-    expect(container.textContent).toContain("Office Coordinator filing queue · no patient data");
+    expect(container.textContent).toContain("Office Coordinator filing queue");
+    // Provenance is stated once on the page (density pass, 2026-10-16).
+    expect(container.textContent?.toLowerCase().split("no patient data").length).toBe(2);
+    expect(container.textContent?.toLowerCase().split("anonymized internal tool concept").length).toBe(2);
   });
 
 
@@ -852,7 +856,7 @@ describe("flagship case-study accessibility", () => {
   });
 
   it.each([
-    ["MSK", <FlagshipMSK />, "A filing queue replaced a four-department paper\u00a0detour.", "Evidence boundary"],
+    ["MSK", <FlagshipMSK />, "A filing queue replaced a four-department paper\u00a0detour.", "How these artifacts were made"],
     ["Grove", <RisoGrove />, "Eleven features became three.", "What this evidence can say"],
     ["Mobbin", <FlagshipMobbin />, "200+ screens per app, searchable by task.", "I did not design"],
   ])("%s leads with an outcome title and visible evidence boundary", async (_name, page, title, boundary) => {
@@ -872,7 +876,7 @@ describe("flagship case-study accessibility", () => {
     expect(container.textContent).toContain("One map made four departments see the same failure.");
     expect(container.querySelector(".fp-systemCards")).toBeNull();
     expect(container.textContent).toContain("Service-design scope:");
-    expect(container.textContent).toContain("Observation counts do not; no prevalence claim is made.");
+    expect(container.textContent).toContain("observation counts don’t, so no prevalence claim is made.");
   });
 
   it("supports the Mobbin gallery and a direct next-project path", async () => {

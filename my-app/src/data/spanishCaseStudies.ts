@@ -94,11 +94,10 @@ export const MSK_ES: SpanishCaseStudyData = {
   intro:
     "Los mensajes del portal de pacientes vivían en el portal, no en la historia clínica, así que el personal los imprimía para escanearlos. Diagnostiqué y mapeé ese desvío de papel entre cuatro áreas (clínica, TI, HIM y operaciones), verifiqué su viabilidad y propuse un flujo de archivo digital. Los equipos de tecnología de la información (TI) y de experiencia de usuario (UX) lo construyeron después de que cambié de puesto.",
   stats: [
-    { label: "Rol", value: "Diseño de servicios · mejora de procesos · UX/producto" },
+    // Two rows, matching the English hero (2026-10-16): the rest restated the
+    // intro and the workflow section's provenance note.
     { label: "Puestos en MSK", value: "Coordinadora de oficina → Asistente administrativa → Facilitadora de capacitación (luego Especialista de capacitación I)" },
-    { label: "Mi contribución", value: "Diagnosticar · mapear · validar la viabilidad · proponer" },
-    { label: "Implementación", value: "Construida después por TI y UX, cuando ya había cambiado de puesto" },
-    { label: "Evidencia", value: "Reconstruida de memoria a partir de mi documentación del estado actual · sin datos de pacientes" },
+    { label: "Rol", value: "Diseño de servicios · mejora de procesos · UX/producto" },
   ],
   sections: [
     {

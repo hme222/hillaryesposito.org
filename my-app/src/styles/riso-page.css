@@ -842,10 +842,10 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 }
 .rp-heroEvidence > div:nth-last-child(-n + 2) { border-bottom: 0; }
 .rp-heroEvidence dt {
-  font: 700 .55rem/1.2 var(--mono);
-  letter-spacing: .1em;
+  font: 700 .68rem/1.25 var(--mono);
+  letter-spacing: .08em;
   text-transform: uppercase;
-  /* 8.8px over a translucent clearing: the plain coral measured 4.08–4.45:1. */
+  /* Over a translucent clearing the plain coral measured 4.08–4.45:1. */
   color: var(--coral-text);
 }
 .rp-heroEvidence dd {

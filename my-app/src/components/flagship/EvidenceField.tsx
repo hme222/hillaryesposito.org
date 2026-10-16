@@ -34,7 +34,8 @@ export default function EvidenceField({
   intro: string;
   disclaimer: string;
   metrics: Metric[];
-  route: string[];
+  /** Optional method recap above the outcomes. MSK dropped it (2026-10-16). */
+  route?: string[];
   /** Give the first metric the lead-number column and scale (.rp-outcomes--lead). */
   leadMetric?: boolean;
   /** Small proof that sits beside the tiles (Knowunity's badge). Stacks under them on phones. */
@@ -62,6 +63,7 @@ export default function EvidenceField({
             durable thing a designer can sell right now; the numbers and the
             judgment behind them are the point. So the sequence runs above the
             outcomes as a short orientation line, and the evidence closes. */}
+        {route && route.length > 0 && (
         <p className="rp-routeRecap rp-routeRecap--lede" aria-label="How the work ran">
           {route.map((item, index) => (
             <React.Fragment key={item}>
@@ -70,6 +72,7 @@ export default function EvidenceField({
             </React.Fragment>
           ))}
         </p>
+        )}
         <p className="rp-disclaimer">{disclaimer}</p>
         {/* Two numbers share the row, as Grove's two outcomes do; the default
             three-column grid left a third of it empty. Four (MSK) sit two by

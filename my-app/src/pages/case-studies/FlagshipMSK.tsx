@@ -236,19 +236,18 @@ export default function FlagshipMSK() {
               and pitched a digital filing workflow. <b>Information technology (IT) and user experience (UX) teams built it after I changed roles.</b>
             </p>
             <dl className="rp-heroEvidence" aria-label="MSK case evidence at a glance">
-              <div><dt>Role</dt><dd>Service design · process improvement · UX/product</dd></div>
+              {/* Two rows since 2026-10-16: contribution, implementation, and
+                  evidence restated the sub above and the provenance note below. */}
               <div><dt>MSK roles</dt><dd>Office Coordinator → Administrative Assistant → Training Facilitator (retitled Trainer I Specialist)</dd></div>
-              <div><dt>My contribution</dt><dd>Diagnose · map · validate feasibility · pitch</dd></div>
-              <div><dt>Implementation</dt><dd>Built later by <Term def="Information technology: the team that owns the systems.">IT</Term> and <Term def="User experience: the team that designs how the system works for the people using it.">UX</Term>, after I changed roles</dd></div>
-              <div><dt>Evidence</dt><dd>Rebuilt from memory of my current-state documentation · no patient data</dd></div>
+              <div><dt>Role</dt><dd>Service design · process improvement · UX/product</dd></div>
             </dl>
             <a className="rp-cta" href="#msk-workflow">See the workflow →</a>
           </div>
         </div>
         <div className="rp-hero__media fp-heroArt fp-heroArt--msk" data-evidence="true">
-          <div className="fp-artifactLabel"><span>RECREATED ARTIFACT</span><b>Office Coordinator filing queue · no patient data</b></div>
+          <div className="fp-artifactLabel"><span>RECREATED ARTIFACT</span><b>Office Coordinator filing queue</b></div>
           <div className="fp-dashboardFrame" aria-label="Recreated Office Coordinator filing queue concept">
-            <MSKDashboardMockup headingLevel={2} />
+            <MSKDashboardMockup headingLevel={2} legendDisclosure />
           </div>
         </div>
       </header>
@@ -265,11 +264,13 @@ export default function FlagshipMSK() {
           {/* "The Detour" animatic was removed 2026-10-13 at the owner's direction
               (the deterministic version was rejected at taste review on
               2026-08-31; the generated video was scrapped the same day). */}
-          {/* Said once, as a decision. The short "no patient data" labels elsewhere on
-              the page are the reminder; this is the reasoning behind them. */}
+          {/* Provenance, said once for the whole page (2026-10-16): the hero's
+              artifact label names the recreation; this note carries the
+              "no patient data" boundary and what the evidence can and cannot
+              claim (the former "Evidence boundary" aside). */}
           <div className="rp-note rp-reveal">
             <p className="rp-note__k">How these artifacts were made</p>
-            <p>Rebuilt from memory of my current-state documentation. No patient data, exported records, or vendor interface.</p>
+            <p>Rebuilt from memory of my current-state documentation. No patient data, exported records, or vendor interface. The workflow, departments, decisions, and outcomes survive; observation counts don’t, so no prevalence claim is made.</p>
           </div>
           {/* These two lists are the text alternative for the aria-hidden map,
               so they stay. What went was the pair of paragraphs under them —
@@ -311,7 +312,7 @@ export default function FlagshipMSK() {
         steps={DECISIONS}
         visual={(active) => (
           <div className="fp-dashboardFrame fp-dashboardFrame--story">
-            <MSKDashboardMockup compact activeRow={active === null ? null : DECISION_ROW[active] ?? null} />
+            <MSKDashboardMockup compact hideEyebrow legendDisclosure activeRow={active === null ? null : DECISION_ROW[active] ?? null} />
           </div>
         )}
       /></div>
@@ -374,10 +375,6 @@ export default function FlagshipMSK() {
           <p className="fp-ownership rp-reveal" style={{ "--rp-reveal-stagger": "90ms" } as React.CSSProperties}>
             <b>Service-design scope:</b> the full path across systems, departments, permissions, and handoffs—not only the queue screen.
           </p>
-          <aside className="rp-note rp-reveal" aria-label="MSK research evidence boundary" style={{ "--rp-reveal-stagger": "180ms" } as React.CSSProperties}>
-            <span className="rp-note__k">Evidence boundary</span>
-            <p>Workflow, departments, decisions, and outcomes survive. Observation counts do not; no prevalence claim is made.</p>
-          </aside>
           <div className="fp-mapWrap rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "270ms" } as React.CSSProperties}>
             <Suspense fallback={<div className="fp-mapFallback">Four departments, one task → mapped → redesigned → adopted</div>}>
               <MSKSystemMap />
@@ -403,7 +400,6 @@ export default function FlagshipMSK() {
               <li key={s.fact}><b>{s.fact}</b><span>{s.what}</span></li>
             ))}
           </ul>
-          <p className="fp-survivedWhy">The work moved from personal workaround to shared system; the plain-language format got the department compliant before the deadline.</p>
           <a className="fp-proofLink" href="https://www.mskcc.org/news/hillary-esposito-s-career-path-military-msk" target="_blank" rel="noopener noreferrer">
             <span>Independent proof · MSK News</span><b className="rp-ext">From the military to Memorial Sloan Kettering</b><span className="sr-only"> (opens in new tab)</span>
           </a>
@@ -417,7 +413,7 @@ export default function FlagshipMSK() {
         // prop below already states it, in its own dedicated line.
         kicker="What it added up to"
         title="The numbers, and who they belong to."
-        intro="I initiated and presented the filing redesign, rewrote clinician certification material, and rebuilt the learning tracks for administrative onboarding with the design team, testing them with different learner cohorts."
+        intro="The tag above each number says whose result it is."
         disclaimer="Anonymized evidence · owner-reported outcomes · the 20% figure belongs to a larger organization-wide initiative, not the filing queue alone; original period and cost definition are not preserved · the ~$1M/year is a projection from my pitch, not measured savings"
         // The same discipline the certification dashboard used on its own data:
         // say what you are looking at before someone has to work it out. All
@@ -432,7 +428,6 @@ export default function FlagshipMSK() {
           { tag: "Initiative result", n: "20%", label: "organization-wide EMR cost reduction; not attributed solely to this filing workflow" },
           { tag: "Projection", n: "~$1M/year", label: "projected paper savings in my Process Improvement Fair pitch, not measured savings" },
         ]}
-        route={["Observe the real work", "Map the failure", "Align the system", "Get it built"]}
       /></div>
 
       <section className="rp-section">
