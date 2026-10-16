@@ -127,7 +127,6 @@ export default function FlagshipUxWoman() {
               <div><dt>Evidence</dt><dd>Six healthcare interviews · one adjacent human-resources (HR) interview · no dedicated patient interviews</dd></div>
               <div><dt>My contribution</dt><dd>Interview plans · recruiting by behavior · synthesis · five pretotype designs</dd></div>
               <div><dt>Status</dt><dd>Active · research phase · five pretotypes designed, none run</dd></div>
-              <div><dt>Next</dt><dd>Reconstruct recent cases, then decide what to build</dd></div>
             </dl>
             {/* The tour sits beside the hero action, not in the breadcrumb row,
                 which pushed the H1 down on phones (2026-10-16). */}

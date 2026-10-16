@@ -307,7 +307,6 @@ export const LOGISTICS_ES: SpanishCaseStudyData = {
   stats: [
     { label: "Rol", value: "Oficial de logística médica · líder de reubicación y servicio" },
     { label: "Escala", value: "5,000+ soldados · $2M en suministros" },
-    { label: "Sistema", value: "Siete estaciones de ayuda · tres países" },
     { label: "Resultado", value: "85% más rápido según mi expediente de servicio (dato autorreportado)" },
   ],
   sections: [
@@ -487,7 +486,6 @@ export const UXWOMAN_ES: SpanishCaseStudyData = {
     { label: "Evidencia", value: "Seis entrevistas de salud · una entrevista adyacente de recursos humanos (RR. HH.) · ninguna entrevista dedicada con pacientes" },
     { label: "Mi parte", value: "Planes de entrevista · reclutamiento por conducta · síntesis · cinco diseños de pretotipo" },
     { label: "Estado", value: "Activo · fase de investigación · cinco pretotipos diseñados, ninguno ejecutado" },
-    { label: "Siguiente", value: "Reconstruir casos recientes y luego decidir qué construir" },
   ],
   sections: [
     {

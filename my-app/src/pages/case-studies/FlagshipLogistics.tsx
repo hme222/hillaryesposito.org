@@ -110,7 +110,6 @@ export default function FlagshipLogistics() {
             </p>
             <dl className="rp-heroEvidence" aria-label="Medical logistics case evidence at a glance">
               <div><dt>Role</dt><dd>Medical logistics officer · relocation and service lead</dd></div>
-              <div><dt>System</dt><dd>Seven aid stations · three countries</dd></div>
               <div><dt>My contribution</dt><dd>Plan the move · one request protocol · shared order status</dd></div>
               <div><dt>Outcome</dt><dd>85% faster in my service record (owner-reported)</dd></div>
             </dl>

@@ -840,7 +840,10 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   padding: .7rem .8rem .72rem 0;
   border-bottom: 1px solid var(--hair);
 }
-.rp-heroEvidence > div:nth-last-child(-n + 2) { border-bottom: 0; }
+/* Last grid row only: the final item, plus the one before it when that one
+   opens the row (left column). Odd counts (Logistics' three) stay ruled. */
+.rp-heroEvidence > div:last-child,
+.rp-heroEvidence > div:nth-child(odd):nth-last-child(2) { border-bottom: 0; }
 .rp-heroEvidence dt {
   font: 700 .68rem/1.25 var(--mono);
   letter-spacing: .08em;
@@ -858,7 +861,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 @media (max-width: 440px) {
   .rp-heroEvidence { grid-template-columns: 1fr; }
   .rp-heroEvidence > div,
-  .rp-heroEvidence > div:nth-last-child(-n + 2) { border-bottom: 1px solid var(--hair); }
+  .rp-heroEvidence > div:nth-child(odd):nth-last-child(2) { border-bottom: 1px solid var(--hair); }
   .rp-heroEvidence > div:last-child { border-bottom: 0; }
 }
 .rp-lede { color: var(--ink-2); max-width: 64ch; margin: var(--sp-sm) 0 0; font-size: 1.02rem; }
