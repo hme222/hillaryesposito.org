@@ -437,7 +437,6 @@ html[lang="es"] .riso-home .rp-h1Fit { --h1-w100: 1116; }
      overflow, and `anywhere` is what let words split mid-syllable. */
   .riso-home .rp-h1 { max-width: 100%; margin-top: .4rem; }
   .riso-home .rp-heroProof { margin-top: .35rem; }
-  .riso-home .rp-status { margin-top: .15rem; }
   .riso-home .rp-hero__ctas { width: 100%; flex-direction: column; align-items: flex-start; margin-top: .15rem; }
   /* This whole block is content-height-driven, not the mobile hero's usual
      generous rhythm — the media-first mobile order (below) stacks the full

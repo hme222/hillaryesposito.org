@@ -143,7 +143,7 @@ const en = {
   // ── Home: mini about ──
   "home.about.eyebrow": "About",
   "home.about.blurb":
-    "Six years in cancer-care operations and training, plus Army medical logistics.",
+    "In 2020 I reported the New Jersey National Guard's COVID-19 medical operations to the Pentagon.",
   "home.about.link": "More about me →",
 
   // ── Home: proof stats ──
@@ -339,7 +339,7 @@ const es: Partial<Record<StringKey, string>> = {
   // ── Home: mini about ──
   "home.about.eyebrow": "Sobre mí",
   "home.about.blurb":
-    "Seis años en operaciones y capacitación oncológica, además de logística médica del Ejército.",
+    "En 2020 reporté al Pentágono las operaciones médicas de la Guardia Nacional de Nueva Jersey durante la COVID-19.",
   "home.about.link": "Conozca más sobre mí →",
 
   // ── Home: proof stats ──

@@ -331,14 +331,12 @@ export default function RisoHome() {
       {work.visual === "logistics" ? (
         <figure className="rp-work__thumb rp-work__thumb--mechanism" aria-label={t(work.imgAltKey)}>
           <LogisticsMechanism n="01" />
-          <figcaption>{lang === "es" ? "Almacén movido al frente · de meses a semanas" : "Warehouse moved forward · months to weeks"}</figcaption>
         </figure>
       ) : work.visual === "msk" ? (
         <figure className="rp-work__thumb rp-work__thumb--dashboard" aria-label={t(work.imgAltKey)}>
           <div className="rp-work__thumb--dashboard__frame">
             <MSKDashboardMockup compact condensedHeader hideToolbar hideRule rowIndices={[0, 2]} tableId="home-work-queue-table" copy={MSK_COPY[lang === "es" ? "es" : "en"].dashboard} />
           </div>
-          <figcaption>{lang === "es" ? "Cola de archivo · cuatro áreas a una" : "Filing queue · four departments to one"}</figcaption>
         </figure>
       ) : work.visual === "knowunity" ? (
         <figure className="rp-work__thumb rp-work__thumb--knowunity" aria-label={t(work.imgAltKey)}>
@@ -346,7 +344,6 @@ export default function RisoHome() {
             <img src={work.img} alt="" width={780} height={1688} loading="lazy" decoding="async" />
             <img src={work.imgSecondary} alt="" width={780} height={1688} loading="lazy" decoding="async" />
           </div>
-          <figcaption>{lang === "es" ? "Pregunta → acierto · recuerdo simulado" : "Prompt → pass · mocked recall"}</figcaption>
         </figure>
       ) : work.visual === "uxwoman" ? (
         <figure className="rp-work__thumb rp-work__thumb--ledger" aria-label={t(work.imgAltKey)}>
@@ -355,7 +352,6 @@ export default function RisoHome() {
               <div key={row.en}><dt>{lang === "es" ? row.es : row.en}</dt><dd>{row.n}</dd></div>
             ))}
           </dl>
-          <figcaption>{lang === "es" ? "Evidencia hasta hoy · solo entrevistas y diseños" : "Evidence to date · interviews and designs only"}</figcaption>
         </figure>
       ) : (
         <div className="rp-work__thumb rp-work__thumb--contain">
@@ -386,7 +382,12 @@ export default function RisoHome() {
         />
         <div className="rp-hero__content">
           <div className="rp-clearing">
-            <span className="rp-eyebrow"><span className="rp-eyebrow__text">{t("home.riso.eyebrow").replace(" · ", "\u00a0· ")}</span></span>
+            {/* Availability rides the eyebrow as its second line instead of a
+                separate status row under the proof (density pass, 2026-10-16). */}
+            <span className="rp-eyebrow rp-eyebrow--twoLine">
+              <span className="rp-eyebrow__text">{t("home.riso.eyebrow").replace(" · ", "\u00a0· ")}</span>{" "}
+              <span className="rp-eyebrow__status">{t("home.status")}</span>
+            </span>
             {/* .rp-h1Fit is the container the headline's fit sizing measures
                 against (portfolio-cohesion.css) — not .rp-clearing itself,
                 which collapses under inline-size containment. */}
@@ -396,7 +397,6 @@ export default function RisoHome() {
             <p className="rp-sub rp-heroProof">
               {t("home.riso.heroLead")} <b>{glossTerms(t("home.riso.heroProof"), glossary)}</b>
             </p>
-            <p className="rp-status">{t("home.status")}</p>
             <div className="rp-hero__ctas">
               <Link className="rp-cta home-heroDesktopPrimary" to="/case-study/msk">{t("home.riso.primaryWork")} →</Link>
               {/* A second, quieter entry point to the recruiter panel, visible

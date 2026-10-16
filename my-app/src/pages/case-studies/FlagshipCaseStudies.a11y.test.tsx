@@ -721,7 +721,10 @@ describe("flagship case-study accessibility", () => {
 
     expect(container.querySelector(".rp-openingFilm")).toBeNull();
     expect(container.querySelector("main h1")).not.toBeNull();
-    expect(container.textContent).toContain("Warehouse moved forward · months to weeks");
+    // Work-row thumbnails carry their meaning in the figure aria-label; the
+    // visible captions repeated the row category and were cut (2026-10-16).
+    expect(container.querySelector(".rp-work__thumb--mechanism")?.getAttribute("aria-label")).toBeTruthy();
+    expect(container.querySelector(".rp-work__thumb figcaption")).toBeNull();
 
     // The hero ends on exactly two actions; the opener replay moved to the
     // global footer, which reaches the film through `open-opening-film`.
