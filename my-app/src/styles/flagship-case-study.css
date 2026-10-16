@@ -122,7 +122,7 @@
 
 /* ---------- MSK: one filing, one receipt ---------- */
 .fp-receipt {
-  padding: var(--sp-2xl) 0;
+  padding-block: var(--sp-xl);
   overflow: hidden;
   background: var(--fp-deep);
   color: var(--fp-light);
@@ -539,6 +539,9 @@
    3.99:1 on #234b44 and 3.57:1 inside the coral glow. The stage's own light
    ink holds above 4.5:1 across the whole gradient. */
 .flagship-page--msk .rp-outcomeStage .rp-kicker { color: var(--ink-on-dark); }
+/* MSK's outcomes ride the shared section rhythm (--sp-xl) instead of a 74vh
+   floor, which left an empty band around four tiles. */
+.flagship-page--msk .rp-outcomeStage { min-height: 0; }
 .flagship-page--mobbin .rp-outcomeStage { background-color: var(--fp-deep); background-image:
   radial-gradient(circle at 78% 20%,rgba(181,151,78,.18),transparent 24%),
   repeating-linear-gradient(0deg,transparent 0 42px,color-mix(in srgb, var(--ink-on-dark) 3.5%, transparent) 43px 44px),
@@ -853,7 +856,7 @@
 }
 
 .fp-buttonThreshold + [data-evidence="true"] > .rp-decisionStory {
-  padding-top: clamp(2rem, 4vw, 3rem);
+  padding-top: var(--sp-md);
 }
 
 @media (forced-colors: active) {

@@ -363,7 +363,9 @@
 .dark-mode .riso-page { --grid-ink: color-mix(in srgb, var(--green) 16%, transparent); }
 
 /* ---------- section scaffolding ---------- */
-.rp-section { position: relative; padding: clamp(2.6rem, 6vw, 4rem) 0; }
+/* One section rhythm: --sp-xl top and bottom. .rp-decisionStory keeps
+   --sp-2xl as the page's single movement break. */
+.rp-section { position: relative; padding-block: var(--sp-xl); }
 .rp-section--alt { background: var(--paper-2); border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); }
 .rp-section--alt .rp-kicker,
 .rp-decisionStory__head .rp-kicker { color: var(--ink); }
@@ -855,7 +857,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   .rp-heroEvidence > div:nth-last-child(-n + 2) { border-bottom: 1px solid var(--hair); }
   .rp-heroEvidence > div:last-child { border-bottom: 0; }
 }
-.rp-lede { color: var(--ink-2); max-width: 64ch; margin: 1rem 0 0; font-size: 1.02rem; }
+.rp-lede { color: var(--ink-2); max-width: 64ch; margin: var(--sp-sm) 0 0; font-size: 1.02rem; }
 .rp-lede b { color: var(--ink); }
 /* Supporting paragraphs under a section lede: one lede per section, the rest read as body. */
 .rp-body { color: var(--ink-2); max-width: 64ch; margin: .8rem 0 0; font-size: .96rem; line-height: 1.65; }
