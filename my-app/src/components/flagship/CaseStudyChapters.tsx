@@ -4,7 +4,6 @@ import ReadingProgress from "./ReadingProgress";
 export type CaseStudyChapter = {
   id: string;
   label: string;
-  note?: string;
 };
 
 /**
@@ -111,8 +110,6 @@ export default function CaseStudyChapters({
     });
   };
 
-  const current = chapters.find((chapter) => chapter.id === active);
-
   // On phones the strip scrolls sideways; keep the current chapter visible in
   // it. Scrolls the strip only, never the page.
   // Back above the first linked chapter there is no active link; return the
@@ -164,16 +161,6 @@ export default function CaseStudyChapters({
           {chapter.label}
         </a>
       ))}
-      {/* The authored note for wherever you currently are. Shown for the active
-          chapter only: attaching one to every link would turn a scan strip into
-          a wall. Hidden from assistive tech because it changes on every scroll —
-          announcing it repeatedly would be noise, and `aria-current` plus the
-          link text already say where you are. */}
-      {current?.note && (
-        <em className="rp-chapters__note" aria-hidden="true">
-          {current.note}
-        </em>
-      )}
       {/* Phones and tablets: the fixed rail is hidden there, so the length cue
           rides at the strip's right end instead. Hidden on wide screens. */}
       {progress && <ReadingProgress variant="strip" leftLabel={leftLabel} />}

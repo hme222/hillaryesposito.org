@@ -2260,11 +2260,6 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 /* Current chapter. Weight carries it as well as color, so the state survives
    grayscale, forced colors, and color-vision differences. */
 .rp-chapters a.is-active { color: var(--ink); font-weight: 700; border-bottom-color: var(--ink); }
-/* The active chapter's authored note. Pushed to its own end of the strip so it
-   reads as context for where you are, not as another link. */
-.rp-chapters__note { margin-left: auto; padding-left: 1rem; color: var(--muted);
-  font-style: italic; letter-spacing: .02em; text-transform: none; }
-@media (max-width: 900px) { .rp-chapters__note { display: none; } }
 /* Phones: one sideways-scrolling row. Wrapping made the sticky strip two rows
    (102px), so nav + strip held 21% of an 844px screen while reading. The
    "Jump to" label goes; the nav's aria-label still names the strip. */

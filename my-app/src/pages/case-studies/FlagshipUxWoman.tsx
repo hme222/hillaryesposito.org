@@ -35,12 +35,12 @@ import "../../styles/flagship-case-study.css";
  */
 
 const CHAPTERS: CaseStudyChapter[] = [
-  { id: "uxwoman-start", label: "Start", note: "Research phase, active" },
-  { id: "uxwoman-problem", label: "Problem", note: "Who owns the next step?" },
-  { id: "uxwoman-research", label: "Research", note: "Six healthcare interviews" },
-  { id: "uxwoman-findings", label: "Findings", note: "Five findings, rated" },
-  { id: "uxwoman-pretotypes", label: "Pretotypes", note: "Five designed, none run" },
-  { id: "uxwoman-next", label: "Next step", note: "Recent cases before building" },
+  { id: "uxwoman-start", label: "Start" },
+  { id: "uxwoman-problem", label: "Problem" },
+  { id: "uxwoman-research", label: "Research" },
+  { id: "uxwoman-findings", label: "Findings" },
+  { id: "uxwoman-pretotypes", label: "Pretotypes" },
+  { id: "uxwoman-next", label: "Next step" },
 ];
 
 const FINDINGS: { title: string; body: React.ReactNode; confidence: string }[] = [

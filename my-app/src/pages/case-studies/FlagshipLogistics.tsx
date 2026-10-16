@@ -36,11 +36,11 @@ import "../../styles/flagship-case-study.css";
  */
 
 const CHAPTERS: CaseStudyChapter[] = [
-  { id: "log-start", label: "Start", note: "Supply for 5,000+ soldiers" },
-  { id: "log-brief", label: "Problem", note: "A late delivery is a casualty risk" },
-  { id: "log-moves", label: "Moves", note: "Three changes, three numbers" },
-  { id: "log-constraints", label: "Constraints", note: "Cold chain, 48 hours" },
-  { id: "log-outcomes", label: "Outcomes", note: "Time, money, stockouts" },
+  { id: "log-start", label: "Start" },
+  { id: "log-brief", label: "Problem" },
+  { id: "log-moves", label: "Moves" },
+  { id: "log-constraints", label: "Constraints" },
+  { id: "log-outcomes", label: "Outcomes" },
 ];
 
 const MOVES: { n: string; title: string; finding: string; change: React.ReactNode }[] = [

@@ -24,7 +24,7 @@ export type MskCopy = {
   pageTitle: string;
   breadcrumb: { work: string; here: string };
   jumpLabel: string;
-  chapters: { id: string; label: string; note: string }[];
+  chapters: { id: string; label: string }[];
 
   hero: {
     eyebrow: string;
@@ -188,13 +188,13 @@ const en: MskCopy = {
   breadcrumb: { work: "Work", here: "Memorial Sloan Kettering" },
   jumpLabel: "Jump to",
   chapters: [
-    { id: "msk-start", label: "Start", note: "Portal messages, printed to reach the chart" },
-    { id: "msk-brief", label: "Problem", note: "A digital workflow became a paper ritual" },
-    { id: "msk-workflow", label: "Workflow", note: "A filing queue replaced the workaround" },
-    { id: "msk-decisions", label: "Decisions", note: "The simple button was not simple" },
-    { id: "msk-redesigns", label: "Redesigns", note: "The same failure, in two more places" },
-    { id: "msk-systems", label: "Context", note: "Why I could see it" },
-    { id: "msk-outcomes", label: "Outcomes", note: "Evidence that lasted" },
+    { id: "msk-start", label: "Start" },
+    { id: "msk-brief", label: "Problem" },
+    { id: "msk-workflow", label: "Workflow" },
+    { id: "msk-decisions", label: "Decisions" },
+    { id: "msk-redesigns", label: "Redesigns" },
+    { id: "msk-systems", label: "Context" },
+    { id: "msk-outcomes", label: "Outcomes" },
   ],
 
   hero: {
@@ -500,13 +500,13 @@ const es: MskCopy = {
   breadcrumb: { work: "Trabajo", here: "Memorial Sloan Kettering" },
   jumpLabel: "Ir a",
   chapters: [
-    { id: "msk-start", label: "Inicio", note: "Mensajes del portal, impresos para llegar a la historia" },
-    { id: "msk-brief", label: "Problema", note: "Un flujo digital se volvió un ritual de papel" },
-    { id: "msk-workflow", label: "Flujo", note: "Una cola de archivo reemplazó el desvío" },
-    { id: "msk-decisions", label: "Decisiones", note: "El botón simple no era simple" },
-    { id: "msk-redesigns", label: "Rediseños", note: "La misma falla, en dos lugares más" },
-    { id: "msk-systems", label: "Contexto", note: "Por qué pude verlo" },
-    { id: "msk-outcomes", label: "Resultados", note: "Evidencia que duró" },
+    { id: "msk-start", label: "Inicio" },
+    { id: "msk-brief", label: "Problema" },
+    { id: "msk-workflow", label: "Flujo" },
+    { id: "msk-decisions", label: "Decisiones" },
+    { id: "msk-redesigns", label: "Rediseños" },
+    { id: "msk-systems", label: "Contexto" },
+    { id: "msk-outcomes", label: "Resultados" },
   ],
 
   hero: {

@@ -25,13 +25,13 @@ import "../../styles/flagship-case-study.css";
 const MSKSystemMap = lazy(() => import("../../components/MSKSystemMap"));
 
 const CHAPTERS: CaseStudyChapter[] = [
-  { id: "msk-start", label: "Start", note: "Portal messages, printed to reach the chart" },
-  { id: "msk-brief", label: "Problem", note: "A digital workflow became a paper ritual" },
-  { id: "msk-workflow", label: "Workflow", note: "A filing queue replaced the workaround" },
-  { id: "msk-decisions", label: "Decisions", note: "The simple button was not simple" },
-  { id: "msk-redesigns", label: "Redesigns", note: "The same failure, in two more places" },
-  { id: "msk-systems", label: "Context", note: "Why I could see it" },
-  { id: "msk-outcomes", label: "Outcomes", note: "Evidence that lasted" },
+  { id: "msk-start", label: "Start" },
+  { id: "msk-brief", label: "Problem" },
+  { id: "msk-workflow", label: "Workflow" },
+  { id: "msk-decisions", label: "Decisions" },
+  { id: "msk-redesigns", label: "Redesigns" },
+  { id: "msk-systems", label: "Context" },
+  { id: "msk-outcomes", label: "Outcomes" },
 ];
 
 const ROLE_METHODS: Record<string, { term: string; body: string }> = {

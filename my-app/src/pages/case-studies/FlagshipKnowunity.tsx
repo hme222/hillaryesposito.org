@@ -41,11 +41,11 @@ const CAPTURE_W = 780;
 const CAPTURE_H = 1688;
 
 const CHAPTERS: CaseStudyChapter[] = [
-  { id: "knowunity-start", label: "Start", note: "One sprint, solo, on Knowunity’s brief" },
-  { id: "knowunity-brief", label: "Problem", note: "Seeing it isn't knowing it" },
-  { id: "knowunity-decisions", label: "Decisions", note: "Four decisions, one loop" },
-  { id: "knowunity-prototype", label: "Build", note: "43 routes, mocked recall" },
-  { id: "knowunity-outcomes", label: "Outcomes", note: "A badge, a review, no students yet" },
+  { id: "knowunity-start", label: "Start" },
+  { id: "knowunity-brief", label: "Problem" },
+  { id: "knowunity-decisions", label: "Decisions" },
+  { id: "knowunity-prototype", label: "Build" },
+  { id: "knowunity-outcomes", label: "Outcomes" },
 ];
 
 const FRAMES = [

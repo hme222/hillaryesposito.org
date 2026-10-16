@@ -70,7 +70,6 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
       .map((section) => ({
         id: `es-${section.anchor}`,
         label: section.chapter || section.eyebrow,
-        note: section.title,
       })),
   ];
   usePageTitle(`${data.breadcrumb} — estudio de caso`);

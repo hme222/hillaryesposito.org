@@ -28,11 +28,11 @@ import "../../styles/riso-page.css";
 // chapter highlighting for free. The first entry anchors the hero for active
 // tracking; the component itself renders from the second onward.
 const CHAPTERS: CaseStudyChapter[] = [
-  { id: "grove-start", label: "Problem", note: "One designer, end to end" },
-  { id: "grove-research", label: "Research", note: "34 real opinions" },
-  { id: "grove-decisions", label: "Decisions", note: "Three features, one decision each" },
-  { id: "grove-override", label: "Changes", note: "What changed and why" },
-  { id: "grove-outcomes", label: "Outcomes", note: "What’s built, what’s next" },
+  { id: "grove-start", label: "Problem" },
+  { id: "grove-research", label: "Research" },
+  { id: "grove-decisions", label: "Decisions" },
+  { id: "grove-override", label: "Changes" },
+  { id: "grove-outcomes", label: "Outcomes" },
 ];
 
 const SURVEY_FINDINGS = [
