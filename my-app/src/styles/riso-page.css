@@ -1214,6 +1214,9 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 /* Sub-heading inside a long section, so dense stretches read as bounded stops
    rather than one undifferentiated scroll. */
 .rp-subhead { font-size: 1.1rem; font-weight: 800; margin: clamp(1.75rem, 4.25vw, 3.25rem) 0 0; letter-spacing: -.01em; }
+/* A lede under a subhead belongs to it: keep the pair close (the section-level
+   --sp-sm lede gap is for title → lede). */
+.rp-subhead + .rp-lede { margin-top: .6rem; }
 .rp-list { margin: 1.4rem 0 0; padding-left: 1.1rem; display: grid; gap: .6rem; }
 .rp-list li { color: var(--ink-2); }
 
