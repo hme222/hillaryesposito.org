@@ -58,6 +58,22 @@ const MVP_FEATURES = [
   { feature: "Wishlist tracker", pct: 3, tier: "post" },
 ];
 
+const CORE_FEATURES = MVP_FEATURES.filter((f) => f.tier === "core");
+const LATER_FEATURES = MVP_FEATURES.filter((f) => f.tier !== "core");
+
+const COUNT_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"];
+/** Spelled-out count for running copy; falls back to digits past twelve. */
+const countWord = (n: number) => COUNT_WORDS[n] ?? String(n);
+
+const renderRankRow = (f: (typeof MVP_FEATURES)[number]) => (
+  <li key={f.feature} className={f.tier === "core" ? "is-core" : undefined}>
+    <span className="rp-rank__label">{f.feature}</span>
+    <span className="rp-rank__track" aria-hidden="true"><i style={{ width: `${f.pct}%` }} /></span>
+    <b className="rp-rank__pct">{f.pct}%</b>
+    <span className={`rp-badge rp-badge--tier${f.tier === "core" ? " is-core" : ""}`}>{f.tier === "core" ? "Core" : "Later"}</span>
+  </li>
+);
+
 // The full five-call decision table ("All five calls, in full") is off the
 // page for now - owner's call, 2026-10-13; she is reworking it and will add it
 // back in the next few weeks. Flip this to true to restore it. The OVERRIDES
@@ -337,17 +353,21 @@ export default function RisoGrove() {
           </aside>
 
           <h3 className="rp-subhead">What they wanted, and what waited</h3>
-          <p className="rp-lede">The top three entered the core. Eight features waited.</p>
+          <p className="rp-lede">The top {countWord(CORE_FEATURES.length)} entered the core.</p>
+          {/* Core rows stay visible; the rest fold behind a native disclosure
+              (density pass, 2026-10-16). Counts derive from MVP_FEATURES so the
+              summary stays true when the survey data updates. */}
           <ol className="rp-rank rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "270ms" } as React.CSSProperties}>
-            {MVP_FEATURES.map((f) => (
-              <li key={f.feature} className={f.tier === "core" ? "is-core" : undefined}>
-                <span className="rp-rank__label">{f.feature}</span>
-                <span className="rp-rank__track" aria-hidden="true"><i style={{ width: `${f.pct}%` }} /></span>
-                <b className="rp-rank__pct">{f.pct}%</b>
-                <span className={`rp-badge rp-badge--tier${f.tier === "core" ? " is-core" : ""}`}>{f.tier === "core" ? "Core" : "Later"}</span>
-              </li>
-            ))}
+            {CORE_FEATURES.map(renderRankRow)}
           </ol>
+          {LATER_FEATURES.length > 0 && (
+            <details className="rp-acc rp-rankMore">
+              <summary>Show the {countWord(LATER_FEATURES.length)} that waited</summary>
+              <ol className="rp-rank" start={CORE_FEATURES.length + 1}>
+                {LATER_FEATURES.map(renderRankRow)}
+              </ol>
+            </details>
+          )}
 
           <figure className="rp-quoteCard rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "360ms" } as React.CSSProperties}>
             <blockquote>“Any generative AI in this will remove any sense of trust.”</blockquote>

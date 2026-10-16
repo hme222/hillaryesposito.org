@@ -2882,6 +2882,10 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-rank__track i { display: block; height: 100%; background: color-mix(in srgb, var(--ink) 26%, transparent); }
 .rp-rank li.is-core .rp-rank__track i { background: var(--green); }
 .rp-rank__pct { font-family: var(--mono); font-size: .8rem; text-align: right; }
+/* Grove: the features that waited, behind the shared .rp-acc disclosure. */
+.rp-rankMore { margin-top: .9rem; border-top: 1px solid var(--hair); max-width: none; }
+.rp-rankMore summary { min-height: 44px; padding-block: .6rem; font-size: .95rem; }
+.rp-rankMore > .rp-rank { margin: 0 0 1rem; }
 @media (max-width: 700px) {
   .rp-rank li { grid-template-columns: minmax(0, 1fr) 3rem; grid-template-areas: "label pct" "track tier"; }
   .rp-rank__label { grid-area: label; } .rp-rank__pct { grid-area: pct; }
