@@ -495,7 +495,11 @@ export default function RisoHome() {
                     {renderWorkContents(w)}
                   </a>
                 ) : (
-                  <Link className="rp-work" to={w.path ?? "/"}>
+                  <Link
+                    className="rp-work"
+                    to={w.path ?? "/"}
+                    aria-label={`${t(w.titleKey)} — ${t("home.riso.workLinkSuffix")}`}
+                  >
                     {renderWorkContents(w)}
                   </Link>
                 )}

@@ -244,6 +244,24 @@ describe("flagship case-study accessibility", () => {
     expect(stats[1].querySelector(".rp-stat__n")?.textContent).toBe("1–\u20602\u00a0mo\u00a0→ 1–\u20602\u00a0wk");
   });
 
+  it("gives each Home work card a concise, visible-title-first link name", async () => {
+    await act(async () => {
+      root.render(<RisoHome />);
+    });
+
+    const rows = Array.from(container.querySelectorAll<HTMLAnchorElement>(".rp-work"));
+    expect(rows).toHaveLength(5);
+    rows.forEach((row) => {
+      const visibleTitle = row.querySelector(".rp-work__title")?.textContent;
+      const accessibleName = row.getAttribute("aria-label");
+      expect(visibleTitle).toBeTruthy();
+      expect(accessibleName).toBe(`${visibleTitle} — home.riso.workLinkSuffix`);
+      expect(accessibleName?.length).toBeLessThan(100);
+    });
+    expect(STRINGS.en["home.riso.workLinkSuffix"]).toBe("case study");
+    expect(STRINGS.es["home.riso.workLinkSuffix"]).toBe("estudio de caso");
+  });
+
   it("exposes Grove's working browser prototype from Home without a dead Spanish hash", async () => {
     await act(async () => {
       root.render(<RisoHome />);
@@ -869,6 +887,33 @@ describe("flagship case-study accessibility", () => {
 
     expect(container.querySelector("h1")?.textContent).toBe(title);
     expect(container.textContent).toContain(boundary);
+  });
+
+  it.each([
+    ["MSK", <FlagshipMSK />],
+    ["Medical logistics", <FlagshipLogistics />],
+    ["Grove", <RisoGrove />],
+    ["Mobbin", <FlagshipMobbin />],
+    ["Knowunity", <FlagshipKnowunity />],
+    ["UX Woman", <FlagshipUxWoman />],
+  ])("%s keeps outcome, context, and orientation evidence ahead of the hero artifact in source order", async (_name, page) => {
+    await act(async () => {
+      root.render(page);
+    });
+
+    const hero = container.querySelector<HTMLElement>(".rp-hero");
+    const clearing = hero?.querySelector<HTMLElement>(".rp-clearing");
+    const h1 = clearing?.querySelector("h1");
+    const eyebrow = clearing?.querySelector(".rp-eyebrow");
+    const orientationEnd = clearing?.querySelector(".rp-heroEvidence") || clearing?.querySelector(".rp-sub");
+    const artifact = hero?.querySelector(".rp-hero__media");
+    const precedes = (first: Element | null | undefined, second: Element | null | undefined) =>
+      Boolean(first && second && (first.compareDocumentPosition(second) & Node.DOCUMENT_POSITION_FOLLOWING));
+
+    expect(clearing?.firstElementChild).toBe(h1);
+    expect(precedes(h1, eyebrow)).toBe(true);
+    expect(precedes(h1, artifact)).toBe(true);
+    expect(precedes(orientationEnd, artifact)).toBe(true);
   });
 
   it("keeps MSK's workflow chapter focused on evidence instead of repeating its process", async () => {

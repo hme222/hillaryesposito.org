@@ -87,8 +87,8 @@ export default function FlagshipMobbin() {
         <div className="rp-grain" />
         <div className="rp-hero__content">
           <div className="rp-clearing">
-            <span className="rp-eyebrow">Mobbin · <Term def="User experience: how a product works for the people using it.">UX</Term> flow documentation · three finance apps</span>
             <h1 className="rp-h1">200+ screens per app, searchable by task.</h1>
+            <span className="rp-eyebrow">Mobbin · <Term def="User experience: how a product works for the people using it.">UX</Term> flow documentation · three finance apps</span>
             <span className="rp-readtime"><b>3 min</b><span>read · four-month contract</span></span>
             <p className="rp-sub">
               Mobbin is a library of app screenshots designers search for examples.

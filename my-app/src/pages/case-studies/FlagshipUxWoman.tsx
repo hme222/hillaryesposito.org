@@ -114,8 +114,8 @@ export default function FlagshipUxWoman() {
         <div className="rp-grain" />
         <div className="rp-hero__content">
           <div className="rp-clearing">
-            <span className="rp-eyebrow">UX Woman · Healthcare research · Active, research phase</span>
             <h1 className="rp-h1">Six healthcare interviews point to one{"\u00a0"}hypothesis.</h1>
+            <span className="rp-eyebrow">UX Woman · Healthcare research · Active, research phase</span>
             <span className="rp-readtime"><b>4 min</b><span>read · research phase, 2026</span></span>
             <p className="rp-sub">
               UX Woman is a 7-month, mentor-led UX design accelerator. In six healthcare interviews, staff described care waiting while no one could see who owned the next

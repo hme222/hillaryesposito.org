@@ -117,6 +117,17 @@
   min-width: 0;
   max-width: 40ch;
 }
+/* Flagship source order starts with the H1 so the case outcome is also first
+   for nonvisual readers. Desktop keeps the established eyebrow-first editorial
+   presentation; the narrow-layout rule below swaps only those two visual
+   positions to match the source order. */
+.flagship-page .rp-clearing { display: flex; flex-direction: column; }
+.flagship-page .rp-eyebrow { order: 1; align-self: flex-start; }
+.flagship-page .rp-h1 { order: 2; }
+.flagship-page .rp-readtime { order: 3; }
+.flagship-page .rp-sub { order: 4; }
+.flagship-page .rp-heroEvidence { order: 5; }
+.flagship-page .rp-hero__ctas { order: 6; }
 .rp-h1 { font-size: clamp(2.6rem, 7vw, 4.6rem); line-height: 1.0; letter-spacing: -.024em; font-weight: 850; margin: .8rem 0 0; text-wrap: balance; }
 
 /* Case-study hero headlines stranded their last word on every flagship and on
@@ -2380,7 +2391,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 }
 
 /* ---------- responsive hero ---------- */
-@media (max-width: 760px) {
+@media (max-width: 760px), (orientation: landscape) and (max-width: 900px) and (max-height: 500px) {
   .rp-hero { grid-template-columns: minmax(0, 1fr); min-height: auto; }
   .rp-hero::after { display: none; }
   .rp-hero__media { order: 2; min-width: 0; min-height: 60vh; }
@@ -2399,17 +2410,25 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   .riso-home .rp-hero__media:hover .rp-headshot { transform: translateY(9%) rotate(.7deg); }
   .spanish-riso-case .rp-hero__media { display: none; }
 
-  /* A recruiter should see a real artifact before the first viewport ends.
-     Headline remains first in the DOM; the visual order promotes its evidence
-     without changing reading or focus order. */
+  /* Direct entrants need the project name, Hillary's contribution, and the
+     evidence state before they interpret the artifact. The old `order:-1`
+     promoted the visual above the title, leaving the H1 around 630–670px on a
+     390×844 screen. Keep visual and DOM order aligned: orientation first,
+     artifact second. */
   .flagship-page .rp-hero__media {
-    order: -1;
+    order: 2;
     min-height: 280px;
     max-height: 340px;
     overflow: hidden;
     padding: .8rem 1rem;
   }
   .flagship-page .rp-hero__content { order: 1; }
+  /* Put the actual case-study title at the top of the mobile orientation
+     plate. The project/domain eyebrow remains immediately below it as context;
+     on wider screens the established eyebrow-first editorial order is
+     unchanged. */
+  .flagship-page .rp-h1 { order: 1; margin-top: 0; }
+  .flagship-page .rp-eyebrow { order: 2; align-self: stretch; margin-top: .8rem; }
   /* Logistics stacks a diagram, a label and the deployment photo in this
      340px box; the photo was squeezed to a 49px strip. The diagram repeats
      in move 01 below, so on phones the hero keeps the photo and its label. */
@@ -2435,8 +2454,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
      clipped frame, so STATUS / ROUTED TO / ACTION were cut at the edge. The
      hero shows the first three columns (who, what, where it stands); the full
      five-column queue appears again in the decisions section. A shorter frame
-     also lifts the H1 well inside the first screen while the artifact still
-     comes first. */
+     keeps the artifact compact immediately after the orientation evidence. */
   .flagship-page .fp-heroArt--msk { min-height: 0; max-height: 320px; }
   .flagship-page .fp-heroArt--msk .fp-dashboardFrame { max-height: 240px; }
   /* The filter chips and the role/timestamp line took the frame's height

@@ -101,8 +101,8 @@ export default function FlagshipLogistics() {
         />
         <div className="rp-hero__content">
           <div className="rp-clearing">
-            <span className="rp-eyebrow">Army medical logistics · Iraq · service design</span>
             <h1 className="rp-h1">Resupply went from months to{"\u00a0"}weeks.</h1>
+            <span className="rp-eyebrow">Army medical logistics · Iraq · service design</span>
             <span className="rp-readtime"><b>4 min</b><span>read · deployed 2024</span></span>
             <p className="rp-sub">
               I planned and tracked a $2M warehouse relocation serving seven aid stations across three countries.

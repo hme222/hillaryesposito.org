@@ -278,8 +278,8 @@ export default function RisoGrove() {
         />
         <div className="rp-hero__content">
           <div className="rp-clearing">
-            <span className="rp-eyebrow">Grove · sole designer · AI-assisted React prototype</span>
             <h1 className="rp-h1">Twelve features became three.</h1>
+            <span className="rp-eyebrow">Grove · sole designer · AI-assisted React prototype</span>
             <span className="rp-readtime">
               <b>5 min</b>
               <span>read · Phase 2 of 3</span>

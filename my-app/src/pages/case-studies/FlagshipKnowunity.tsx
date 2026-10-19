@@ -156,8 +156,8 @@ export default function FlagshipKnowunity() {
         <div className="rp-grain" />
         <div className="rp-hero__content">
           <div className="rp-clearing">
-            <span className="rp-eyebrow">Knowunity · Say It Back · design-sprint prototype</span>
             <h1 className="rp-h1">The student's own words are the{" "}proof.</h1>
+            <span className="rp-eyebrow">Knowunity · Say It Back · design-sprint prototype</span>
             <span className="rp-readtime"><b>4 min</b><span>read · 2.5-week sprint, solo</span></span>
             <p className="rp-sub">
               Knowunity is a study app for students. A student says a definition out loud; Knowunity's assistant,
