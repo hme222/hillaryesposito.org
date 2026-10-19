@@ -324,7 +324,7 @@
   {
    "id": "es:es-grove-start:0",
    "lang": "es",
-   "text": "Grove es una app de cuidado de plantas. Una herramienta de IA llamada Emergent construyó una primera versión rápida y llena de funciones. Una prueba exploratoria con 5 usuarios, entre marzo y mayo de 2026, señaló sobrecarga; el registro conservado no incluye resultados por tarea, así que no hago una afirmación más amplia con esa prueba. Después, una encuesta de 35 personas redujo doce funciones a las tres prioridades que guían la Fase 2. La encuesta registra prioridades declaradas, no comportamiento observado ni demanda de mercado.",
+   "text": "Grove es una app de cuidado de plantas. Una herramienta de IA llamada Emergent construyó una primera versión rápida y llena de funciones. Una prueba exploratoria con 5 usuarios, entre marzo y mayo de 2026, señaló sobrecarga; el registro conservado no incluye resultados por tarea, así que no hago una afirmación más amplia con esa prueba. Después, una encuesta de 37 personas redujo doce funciones a las tres prioridades que guían la Fase 2. La encuesta registra prioridades declaradas, no comportamiento observado ni demanda de mercado.",
    "source": {
     "type": "page",
     "label": "Estudio de caso Grove · Doce funciones se convirtieron en tres",
@@ -346,7 +346,7 @@
   {
    "id": "es:es-grove-brief:0",
    "lang": "es",
-   "text": "La mayoría de la gente que compra una planta quiere una sola cosa: mantenerla viva. Pero se olvidan de regarla, o la riegan de más, y de cualquier forma se sienten mal. Les pregunté a 35 personas qué haría que una app de plantas se ganara un lugar en su teléfono. Una de las dos respuestas más comunes: “Los consejos son demasiado genéricos, no toman en cuenta mi casa.” Lo que más rápido hace que borren una app, dicho por 11 de 35 sin que se lo preguntara: demasiadas notificaciones. Una persona lo resumió así: “El cuidado de plantas debería sentirse tranquilo y sano, no estresante.”",
+   "text": "La mayoría de la gente que compra una planta quiere una sola cosa: mantenerla viva. Pero se olvidan de regarla, o la riegan de más, y de cualquier forma se sienten mal. Les pregunté a 37 personas qué haría que una app de plantas se ganara un lugar en su teléfono. Una de las dos respuestas más comunes: “Los consejos son demasiado genéricos, no toman en cuenta mi casa.” Lo que más rápido hace que borren una app, dicho por 12 de 37 sin que se lo preguntara: demasiadas notificaciones. Una persona lo resumió así: “El cuidado de plantas debería sentirse tranquilo y sano, no estresante.”",
    "source": {
     "type": "page",
     "label": "Estudio de caso Grove · Los dueños de plantas se olvidan. Y luego se sienten culpables.",
@@ -357,7 +357,7 @@
   {
    "id": "es:es-grove-brief:1",
    "lang": "es",
-   "text": "El punto débil: en lo que peor están los dueños nuevos es en la luz — dónde poner una planta, y por qué. Ninguna app grande lo enseña. Los dueños nuevos calificaron su confianza para darles la luz del sol correcta en 2.4 de 5 (12 personas); los experimentados, en 3.4 (14 personas). Ahí, más la confianza, es donde Grove gana o no gana.",
+   "text": "El punto débil: en lo que peor están los dueños nuevos es en la luz — dónde poner una planta, y por qué. Ninguna app grande lo enseña. Los dueños nuevos calificaron su confianza para darles la luz del sol correcta en 2.4 de 5 (13 personas); los experimentados, en 3.4 (14 personas). Ahí, más la confianza, es donde Grove gana o no gana.",
    "source": {
     "type": "page",
     "label": "Estudio de caso Grove · Los dueños de plantas se olvidan. Y luego se sienten culpables.",
@@ -368,10 +368,10 @@
   {
    "id": "es:es-grove-research:0",
    "lang": "es",
-   "text": "Después de que una prueba con 5 usuarios mostró que la primera versión estaba sobrecargada, hice una encuesta para decidir qué debía conservar el rediseño. 35 personas, desde principiantes hasta coleccionistas serios, respondieron entre el 22 de mayo y el 24 de septiembre de 2026: 29 dueños de plantas, 3 floristas y 3 compradores de ramos.",
+   "text": "Después de que una prueba con 5 usuarios mostró que la primera versión estaba sobrecargada, hice una encuesta para decidir qué debía conservar el rediseño. 37 personas, desde principiantes hasta coleccionistas serios, respondieron entre el 22 de mayo y el 16 de octubre de 2026: 31 dueños y cuidadores de plantas, 3 floristas y 3 compradores de ramos.",
    "source": {
     "type": "page",
-    "label": "Estudio de caso Grove · Les pregunté a 35 personas qué importa de verdad",
+    "label": "Estudio de caso Grove · Les pregunté a 37 personas qué importa de verdad",
     "url": "/case-study/grove/#es-grove-research"
    },
    "batch": 1
@@ -382,7 +382,7 @@
    "text": "Emergent había construido las funciones sociales dentro de la app. La encuesta dijo que no es por eso que la gente la descarga. Así que hice una pregunta difícil: “Si Grove solo pudiera lanzarse con TRES funciones, ¿cuáles no podría dejar de tener?” El rediseño empieza por esas tres. Todo lo demás espera.",
    "source": {
     "type": "page",
-    "label": "Estudio de caso Grove · Les pregunté a 35 personas qué importa de verdad",
+    "label": "Estudio de caso Grove · Les pregunté a 37 personas qué importa de verdad",
     "url": "/case-study/grove/#es-grove-research"
    },
    "batch": 1
@@ -393,7 +393,7 @@
    "text": "Límite de la evidencia: la encuesta registra prioridades declaradas. La usé para decidir qué construir y probar después, no para afirmar comportamiento observado ni demanda de mercado.",
    "source": {
     "type": "page",
-    "label": "Estudio de caso Grove · Les pregunté a 35 personas qué importa de verdad",
+    "label": "Estudio de caso Grove · Les pregunté a 37 personas qué importa de verdad",
     "url": "/case-study/grove/#es-grove-research"
    },
    "batch": 1
@@ -401,10 +401,10 @@
   {
    "id": "es:es-grove-research:3",
    "lang": "es",
-   "text": "Recordatorios inteligentes: la función más pedida (74%), pero solo con límites claros.",
+   "text": "Recordatorios inteligentes: la función más pedida (76%), pero solo con límites claros.",
    "source": {
     "type": "page",
-    "label": "Estudio de caso Grove · Les pregunté a 35 personas qué importa de verdad",
+    "label": "Estudio de caso Grove · Les pregunté a 37 personas qué importa de verdad",
     "url": "/case-study/grove/#es-grove-research"
    },
    "batch": 1
@@ -415,7 +415,7 @@
    "text": "Identificar la planta con la cámara (54%) y diagnóstico por foto: esenciales, pero tenían que mostrar cuánta confianza tienen y sus fuentes.",
    "source": {
     "type": "page",
-    "label": "Estudio de caso Grove · Les pregunté a 35 personas qué importa de verdad",
+    "label": "Estudio de caso Grove · Les pregunté a 37 personas qué importa de verdad",
     "url": "/case-study/grove/#es-grove-research"
    },
    "batch": 1
@@ -423,10 +423,10 @@
   {
    "id": "es:es-grove-research:5",
    "lang": "es",
-   "text": "Las advertencias para plantas tóxicas para mascotas (4 de 11 dueños nuevos que respondieron las marcaron entre lo más estresante del cuidado) y la educación sobre la luz pasaron a ser parte del núcleo de confianza, aunque yo ni siquiera las había construido.",
+   "text": "Las advertencias para plantas tóxicas para mascotas (4 de 12 dueños nuevos que respondieron las marcaron entre lo más estresante del cuidado) y la educación sobre la luz pasaron a ser parte del núcleo de confianza, aunque yo ni siquiera las había construido.",
    "source": {
     "type": "page",
-    "label": "Estudio de caso Grove · Les pregunté a 35 personas qué importa de verdad",
+    "label": "Estudio de caso Grove · Les pregunté a 37 personas qué importa de verdad",
     "url": "/case-study/grove/#es-grove-research"
    },
    "batch": 1
@@ -819,7 +819,7 @@
   {
    "id": "es:resume-grove:0",
    "lang": "es",
-   "text": "Reduje 12 funciones propuestas a 3 tras sintetizar una encuesta autodeclarada de 35 personas, y luego traduje las prioridades en arquitectura de información, estados de interacción y un prototipo funcional en React.",
+   "text": "Reduje 12 funciones propuestas a 3 tras sintetizar una encuesta autodeclarada de 37 personas, y luego traduje las prioridades en arquitectura de información, estados de interacción y un prototipo funcional en React.",
    "source": {
     "type": "resume",
     "label": "Currículum (traducción aprobada) · Fundadora, diseñadora de producto y desarrolladora · Grove",
@@ -1160,7 +1160,7 @@
   {
    "id": "es:notes-grove:1",
    "lang": "es",
-   "text": "Ella diseñó e interpretó la encuesta de 35 personas, sin IA en esa parte.",
+   "text": "Ella diseñó e interpretó la encuesta de 37 personas, sin IA en esa parte.",
    "source": {
     "type": "interview-notes",
     "label": "Grove · de la entrevista con Hillary (aprobado oct. 2026)",

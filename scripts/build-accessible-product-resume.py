@@ -83,7 +83,7 @@ HTML = """<!doctype html>
         <h3 id="grove-role">Founder, Product Designer, Developer · Grove Plant Care</h3>
         <p class="meta">Independent product · 2025–Present · Functional prototype, Phase 2 of 3</p>
         <ul>
-          <li>Narrowed 12 proposed features to 3 after synthesizing a 35-person self-report survey, then translated the priorities into information architecture, interaction states, and a functional React prototype.</li>
+          <li>Narrowed 12 proposed features to 3 after synthesizing a 37-person self-report survey, then translated the priorities into information architecture, interaction states, and a functional React prototype.</li>
           <li>Own research planning, product scope, responsive interaction design, accessibility, prototype implementation, and iteration. The prototype is not presented as a shipped consumer product.</li>
         </ul>
       </article>

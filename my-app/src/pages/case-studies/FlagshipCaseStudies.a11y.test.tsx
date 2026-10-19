@@ -559,7 +559,7 @@ describe("flagship case-study accessibility", () => {
     expect(outcomes?.querySelector('.rp-phase__track[aria-label="Functional prototype · Phase 2 of 3"]')).not.toBeNull();
     expect(outcomes?.querySelector(".rp-disclaimer")).toBeNull();
     expect(outcomes?.querySelector(".rp-outcomes--lead")).not.toBeNull();
-    expect(Array.from(outcomes?.querySelectorAll(".rp-stat__n") || [], (n) => n.textContent)).toEqual(["3", "35"]);
+    expect(Array.from(outcomes?.querySelectorAll(".rp-stat__n") || [], (n) => n.textContent)).toEqual(["3", "37"]);
     expect(outcomes?.textContent).toContain("functional prototype in Phase 2 of 3");
     expect(outcomes?.textContent).toContain("What the three phases mean");
   });

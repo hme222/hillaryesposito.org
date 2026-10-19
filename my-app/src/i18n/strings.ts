@@ -95,7 +95,7 @@ const en = {
   "home.riso.workTitle": "Decisions you can inspect",
   "home.riso.workLinkSuffix": "case study",
   "home.riso.groveDesc":
-    "A competitive analysis, a five-user test of the original prototype, and a 35-person survey narrowed twelve features to three. The redesign is in progress; the retest comes next.",
+    "A competitive analysis, a five-user test of the original prototype, and a 37-person survey narrowed twelve features to three. The redesign is in progress; the retest comes next.",
   "home.riso.mskDesc":
     "I mapped the detour across four departments and pitched the digital filing workflow that replaced it. Six steps became five, and one department left the loop.",
   "home.riso.logisticsDesc":
@@ -292,7 +292,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.workTitle": "Decisiones que puede revisar",
   "home.riso.workLinkSuffix": "estudio de caso",
   "home.riso.groveDesc":
-    "Un análisis competitivo, una prueba con cinco usuarios del prototipo original y una encuesta a 35 personas redujeron doce funciones a tres. El rediseño está en curso; la nueva prueba viene después.",
+    "Un análisis competitivo, una prueba con cinco usuarios del prototipo original y una encuesta a 37 personas redujeron doce funciones a tres. El rediseño está en curso; la nueva prueba viene después.",
   "home.riso.mskDesc":
     "Mapeé el desvío entre cuatro áreas y propuse el flujo de archivo digital que lo reemplazó. Seis pasos se volvieron cinco, y un área salió del circuito.",
   "home.riso.logisticsDesc":

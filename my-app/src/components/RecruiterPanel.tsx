@@ -161,7 +161,7 @@ export default function RecruiterPanel() {
               <li>
                 <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/grove")}>
                   <strong>Grove · Twelve features became three</strong>
-                  <span>Functional prototype, Phase 2 of 3; a 35-person self-report survey narrowed the next build from twelve features to three</span>
+                  <span>Functional prototype, Phase 2 of 3; a 37-person self-report survey narrowed the next build from twelve features to three</span>
                 </button>
               </li>
             </ul>
