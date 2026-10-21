@@ -1315,19 +1315,9 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 }
 .rp-deepDive > summary::-webkit-details-marker { display: none; }
 .rp-deepDive__copy {
-  display: grid;
-  grid-template-columns: minmax(12rem, .7fr) minmax(0, 1.3fr);
-  gap: .45rem clamp(1rem, 3vw, 2rem);
-  align-items: center;
+  display: block;
   min-width: 0;
 }
-.rp-deepDive__meta {
-  font: 700 .7rem/1.35 var(--mono);
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--coral-text);
-}
-.dark-mode .rp-deepDive__meta { color: var(--coral-on-dark); }
 .rp-deepDive__title { min-width: 0; font-size: 1rem; line-height: 1.35; overflow-wrap: anywhere; }
 .rp-deepDive__state {
   display: inline-grid;
@@ -1351,17 +1341,12 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 @media (hover: hover) {
   .rp-deepDive > summary:hover { background: color-mix(in srgb, var(--coral) 8%, transparent); }
 }
-@media (max-width: 760px) {
-  .rp-deepDive__copy { grid-template-columns: minmax(0, 1fr); }
-  .rp-deepDive__meta { font-size: .75rem; }
-}
 @media (max-width: 360px) {
   .rp-deepDive > summary { grid-template-columns: minmax(0, 1fr) 44px; }
 }
 @media (forced-colors: active) {
   .rp-deepDive { border-color: CanvasText; }
   .rp-deepDive > summary:focus-visible { outline-color: Highlight; }
-  .rp-deepDive__meta,
   .rp-deepDive__state { color: LinkText; }
 }
 

@@ -184,7 +184,6 @@ export default function FlagshipLogistics() {
       <details className="rp-deepDive">
         <summary>
           <span className="rp-deepDive__copy">
-            <span className="rp-deepDive__meta">Optional operations evidence</span>
             <b className="rp-deepDive__title">Inspect the logistics constraints and mechanisms</b>
           </span>
           <span className="rp-deepDive__state" aria-hidden="true">

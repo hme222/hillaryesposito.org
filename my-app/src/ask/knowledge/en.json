@@ -1127,7 +1127,7 @@
   {
    "id": "en:grove-research:1",
    "lang": "en",
-   "text": "A moderated test found the confusion first",
+   "text": "Five people found the problem. Thirty-seven chose what came next.",
    "source": {
     "type": "page",
     "label": "Grove case study · Plant parents forget. Then they feel guilty.",
@@ -1138,29 +1138,7 @@
   {
    "id": "en:grove-research:2",
    "lang": "en",
-   "text": "March–May 2026, 5 users: people stalled when care led with a feed and a mission, not their plants. Five people were enough to see something was wrong, not enough to say what to build instead — that's what the survey went on to answer.",
-   "source": {
-    "type": "page",
-    "label": "Grove case study · Plant parents forget. Then they feel guilty.",
-    "url": "/case-study/grove/#grove-research"
-   },
-   "batch": 1
-  },
-  {
-   "id": "en:grove-research:3",
-   "lang": "en",
-   "text": "What 37 people said",
-   "source": {
-    "type": "page",
-    "label": "Grove case study · Plant parents forget. Then they feel guilty.",
-    "url": "/case-study/grove/#grove-research"
-   },
-   "batch": 1
-  },
-  {
-   "id": "en:grove-research:4",
-   "lang": "en",
-   "text": "37 people · May 22–Oct 16, 2026 · 31 plant owners and caretakers, 3 florists, 3 bouquet buyers · choose three launch dealbreakers.",
+   "text": "From March to May 2026, five moderated sessions showed that people stalled when care led with a feed and a mission, not their plants. Then, from May 22 to October 16, 37 people answered a self-report survey: 31 plant owners and caretakers, three florists, and three bouquet buyers. Each chose three launch dealbreakers.",
    "source": {
     "type": "page",
     "label": "Grove case study · Plant parents forget. Then they feel guilty.",

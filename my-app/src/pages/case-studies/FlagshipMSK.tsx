@@ -300,7 +300,6 @@ export default function FlagshipMSK() {
       <details className="rp-deepDive">
         <summary>
           <span className="rp-deepDive__copy">
-            <span className="rp-deepDive__meta">Optional service-design evidence</span>
             <b className="rp-deepDive__title">Inspect the complete service blueprint</b>
           </span>
           <span className="rp-deepDive__state" aria-hidden="true">
@@ -341,7 +340,6 @@ export default function FlagshipMSK() {
       <details className="rp-deepDive">
         <summary>
           <span className="rp-deepDive__copy">
-            <span className="rp-deepDive__meta">Optional related work and role history</span>
             <b className="rp-deepDive__title">See the related MSK workflow redesigns</b>
           </span>
           <span className="rp-deepDive__state" aria-hidden="true">

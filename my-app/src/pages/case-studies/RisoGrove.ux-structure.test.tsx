@@ -60,6 +60,6 @@ describe("Grove recruiter-scan structure", () => {
     expect(ledger?.textContent).toContain("remove scorekeeping");
     expect(decisions.querySelectorAll(".rp-decision")).toHaveLength(1);
     expect(decisions.querySelectorAll(".rp-device img")).toHaveLength(1);
-    expect(decisions.textContent).toContain("High-fidelity redesign, edge states, and retest remain unbuilt");
+    expect(decisions.textContent).toContain("Still unbuilt: high-fidelity redesign, edge states, and retest");
   });
 });

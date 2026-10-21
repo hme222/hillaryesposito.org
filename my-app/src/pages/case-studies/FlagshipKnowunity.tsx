@@ -267,7 +267,6 @@ export default function FlagshipKnowunity() {
       <details className="rp-deepDive">
         <summary>
           <span className="rp-deepDive__copy">
-            <span className="rp-deepDive__meta">Optional implementation evidence</span>
             <b className="rp-deepDive__title">Inspect all Knowunity implementation decisions</b>
           </span>
           <span className="rp-deepDive__state" aria-hidden="true">

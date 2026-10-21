@@ -306,7 +306,6 @@ export default function RisoGrove() {
         <div className="rp-wrap">
           <div className="rp-split rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "0ms" } as React.CSSProperties}>
             <div className="rp-split__text">
-              <p className="rp-kicker">Where this starts</p>
               <h2 className="rp-title">Plant parents forget. Then they feel guilty.</h2>
               <p className="rp-lede">The job: one calm next action, with visible uncertainty when a wrong answer can cause harm.</p>
             </div>
@@ -317,11 +316,8 @@ export default function RisoGrove() {
             </div>
           </div>
 
-          <h3 className="rp-subhead">A moderated test found the confusion first</h3>
-          <p className="rp-lede">March–May 2026, 5 users: people stalled when care led with a feed and a mission, not their plants. Five people were enough to see something was wrong, not enough to say what to build instead — that's what the survey went on to answer.</p>
-
-          <h3 className="rp-subhead">What 37 people said</h3>
-          <p className="rp-lede">37 people · May 22–Oct 16, 2026 · 31 plant owners and caretakers, 3 florists, 3 bouquet buyers · choose three launch dealbreakers.</p>
+          <h3 className="rp-subhead">Five people found the problem. Thirty-seven chose what came next.</h3>
+          <p className="rp-lede">From March to May 2026, five moderated sessions showed that people stalled when care led with a feed and a mission, not their plants. Then, from May 22 to October 16, 37 people answered a self-report survey: 31 plant owners and caretakers, three florists, and three bouquet buyers. Each chose three launch dealbreakers.</p>
           <dl className="rp-surveyStats rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "90ms" } as React.CSSProperties}>
             {SURVEY_FINDINGS.map((f) => (
               <div key={f.stat}>
@@ -331,10 +327,9 @@ export default function RisoGrove() {
             ))}
           </dl>
 
-          <aside className="rp-note rp-reveal" aria-label="Grove research evidence boundary" style={{ "--rp-reveal-stagger": "180ms" } as React.CSSProperties}>
-            <span className="rp-note__k">What this evidence can say</span>
-            <p>Self-report prioritized the next build; it does not prove behavior or demand. The moderated test showed confusion, but its task records are not preserved.</p>
-          </aside>
+          <p className="rp-lede rp-reveal" style={{ "--rp-reveal-stagger": "180ms" } as React.CSSProperties}>
+            <strong>Limit:</strong> self-report prioritized the next build; it does not prove behavior or demand. The moderated test showed confusion, but its task records are not preserved.
+          </p>
 
           <h3 className="rp-subhead">What they wanted, and what waited</h3>
           <p className="rp-lede">The top {countWord(CORE_FEATURES.length)} entered the core.</p>
@@ -349,7 +344,6 @@ export default function RisoGrove() {
       <details className="rp-deepDive">
         <summary>
           <span className="rp-deepDive__copy">
-            <span className="rp-deepDive__meta">Optional research depth and artifact set</span>
             <b className="rp-deepDive__title">Inspect Grove's complete research evidence</b>
           </span>
           <span className="rp-deepDive__state" aria-hidden="true">
@@ -386,7 +380,6 @@ export default function RisoGrove() {
       {/* THE REDESIGN — Emergent → focused, evidence-backed direction */}
       <section className="rp-section" id="grove-decisions" data-language-anchor="grove-decisions">
         <div className="rp-wrap">
-          <p className="rp-kicker">What the evidence says to build next</p>
           <h2 className="rp-title">Three features, one testable direction each.</h2>
           <PhaseIndicator current={2} label="In progress · Phase 2 of 3" />
           <p className="rp-lede" style={{ marginTop: "1.1rem" }}>The three directions stay visible together. They are decisions for the next prototype, not completed redesigns.</p>
@@ -412,9 +405,8 @@ export default function RisoGrove() {
               </figcaption>
             </div>
           </figure>
-          <p className="rp-note" style={{ marginTop: "clamp(2rem, 5vw, 3.5rem)" }}>
-            <span className="rp-note__k">What remains</span>
-            First-build screens. High-fidelity redesign, edge states, and retest remain unbuilt. Phase 2 of 3.
+          <p className="rp-lede" style={{ marginTop: "clamp(2rem, 5vw, 3.5rem)" }}>
+            <strong>Still unbuilt:</strong> high-fidelity redesign, edge states, and retest. The visible screens are from the first build; this is Phase 2 of 3.
           </p>
         </div>
       </section>
@@ -422,7 +414,6 @@ export default function RisoGrove() {
       {/* AI DECISION DEEP-DIVE */}
       <section className="rp-section rp-override" id="grove-override" data-language-anchor="grove-override">
         <div className="rp-wrap">
-          <p className="rp-kicker">How the evidence changed the build</p>
           <h2 className="rp-title">One calm reminder instead of three guilty ones.</h2>
           <p className="rp-lede">Remove guilt. Preserve one useful next action.</p>
           <div className="rp-pushback rp-reveal" data-evidence="true">
@@ -460,7 +451,6 @@ export default function RisoGrove() {
       <details className="rp-deepDive rp-deepDive--system" id="grove-prototype">
         <summary>
           <span className="rp-deepDive__copy">
-            <span className="rp-deepDive__meta">Prototype on this page · React + TypeScript · Phase 2 of 3</span>
             <b className="rp-deepDive__title">Try the full Grove prototype system</b>
           </span>
           <span className="rp-deepDive__state" aria-hidden="true">
@@ -552,7 +542,6 @@ export default function RisoGrove() {
       {/* OUTCOMES */}
       <section className="rp-section rp-outcomeStage" id="grove-outcomes" data-language-anchor="grove-outcomes">
         <div className="rp-wrap">
-          <p className="rp-kicker">Where it stands</p>
           <h2 className="rp-title">The redesign is decided. Retest next.</h2>
           <PhaseIndicator current={2} total={3} label="Functional prototype · Phase 2 of 3" />
           <p className="rp-lede">Three features scoped. One care-logic mistake found. Retest pending.</p>

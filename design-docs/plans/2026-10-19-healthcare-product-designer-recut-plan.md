@@ -1,7 +1,7 @@
 # Healthcare Product Designer Recut — Implementation Plan
 
 _Date: 2026-10-19_  
-_Status: Visual refinement checkpoint approved; locally verified and ready for the next bounded recut slice_
+_Status: Task 12 complete and locally verified; external recruiter and assistive-technology validation remain_
 _Profile: Standard_  
 _Recovery HEAD: `dcc42f8f7f5596864840a9bb2a5bc97f72251dd4`_
 
@@ -168,6 +168,23 @@ Run and document:
 Repair failures in the Bug queue, rerun the smallest affected checks, then rerun the release gates.
 
 **Result — 2026-10-21:** Pass locally with one documented taste-system exception. The full suite passes 232/232; the final flagship accessibility matrix passes 76/76; TypeScript, optimized build, registry freshness, house-style final, tell scan, and diff checks pass. Live responsive checks cover 320, 390, 720 short-landscape / 200%-equivalent width, 900, and 1440 with no horizontal overflow. The recruiter panel keeps résumé, email, Selected work, and MSK in its first 390×844 viewport. Native disclosures toggle with Space; representative dark mode passes and the user state was restored. Fresh blind anti-AI review passed entry to Visual refinement. The strict `design-taste-frontend` lint remains red on the established Riso eyebrow/mono/hairline/numbering language; the exception and raw-versus-capped scores are recorded in `design-docs/reviews/2026-10-21-healthcare-recut-design-taste-frontend.md`. Real recruiter and assistive-technology sessions remain external validation.
+
+### Task 12 — recruiter-density continuation
+
+**Queue:** Visual
+
+**Owner direction:** Approved by Hillary's 2026-10-21 instruction to move forward with the recut after shipping the verified checkpoint.
+
+- Remove the redundant category line above each native disclosure title; the specific title and visible Open/Close state must still name the action without a generic `Optional … evidence` preamble.
+- Compress Grove's repeated five-person and 37-person explanation into one chronological research statement while preserving dates, sample composition, method limits, ranked findings, Phase 2 state, and next test.
+- Convert Grove's evidence-limit and unfinished-work cards into plain reading-flow statements so the truth boundary stays visible without adding another micro-label or ruled box.
+- Keep numbering where it conveys rank, chronological interaction, or a real procedure. Do not perform a global Riso restyle or remove product-interface labels.
+
+**Accessibility:** summary controls retain native semantics, specific accessible names, visible state, 44px targets, focus treatment, and forced-colours behavior. Grove keeps its heading order and all evidence boundaries in the default path.
+
+**Verification:** focused disclosure/structure tests, full flagship accessibility matrix, TypeScript, production build, registry freshness, house-style/tell checks, diff checks, and rendered 390/1440 Grove plus one secondary-case disclosure check.
+
+**Result — 2026-10-21:** Pass. Eight redundant disclosure category lines were removed across six cases while every specific summary title and Open/Close state remained. Grove's research setup is one chronological passage with method, dates, sample composition, limitations, ranked findings, Phase 2 state, and next test still visible. The visible evidence-limit and unfinished-work cards are now plain statements in the reading flow. Rendered 390px Grove and Medical Logistics plus 1440px Grove show no horizontal overflow; disclosure controls remain 72px high with 44px state targets. The full suite passes 232/232, the flagship accessibility matrix passes 76/76, Ask retrieval remains 94.7% top-three / 100% covered, and TypeScript, optimized build, registry, house-style final, tell scan, and diff checks pass. A fresh context-isolated anti-AI review returned Pass with 0 High, 0 Medium, and 0 Low findings; tell density is Low. Review: `design-docs/reviews/2026-10-21-healthcare-recut-density-continuation.md`.
 
 ## Default-path evaluation checklist
 

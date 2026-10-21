@@ -205,7 +205,7 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelectorAll('.rp-decisionRecord[aria-label="Grove\'s three next-design directions"] dt')).toHaveLength(3);
     expect(container.querySelectorAll(".rp-decision")).toHaveLength(1);
     expect(container.querySelectorAll(".rp-decision img")).toHaveLength(1);
-    expect(container.textContent).toContain("High-fidelity redesign, edge states, and retest remain unbuilt");
+    expect(container.textContent).toContain("Still unbuilt: high-fidelity redesign, edge states, and retest");
   });
 
   it("ties each logistics result to its mechanism and owner-reported source", async () => {
@@ -801,7 +801,7 @@ describe("flagship case-study accessibility", () => {
     await act(async () => {
       root.render(<RisoGrove />);
     });
-    expect(container.textContent).toContain("Optional research depth and artifact set");
+    expect(container.querySelectorAll(".rp-deepDive__meta")).toHaveLength(0);
     expect(container.textContent).toContain("Inspect Grove's complete research evidence");
     expect(container.textContent).toContain("Try the full Grove prototype system");
     expect(container.textContent).not.toContain("Walk the route");
@@ -903,7 +903,7 @@ describe("flagship case-study accessibility", () => {
 
   it.each([
     ["MSK", <FlagshipMSK />, "One queue. Four teams.", "How these artifacts were made"],
-    ["Grove", <RisoGrove />, "Twelve features became three.", "What this evidence can say"],
+    ["Grove", <RisoGrove />, "Twelve features became three.", "self-report prioritized the next build"],
     ["Mobbin", <FlagshipMobbin />, "200+ screens per app, searchable by task.", "I did not design"],
   ])("%s leads with an outcome title and visible evidence boundary", async (_name, page, title, boundary) => {
     await act(async () => {
@@ -1018,7 +1018,8 @@ describe("flagship case-study accessibility", () => {
     const summary = details?.querySelector<HTMLElement>("summary");
     expect(details?.open).toBe(false);
     expect(document.activeElement).not.toBe(summary);
-    expect(summary?.textContent).toContain("Prototype on this page · React + TypeScript · Phase 2 of 3");
+    expect(summary?.textContent).toContain("Try the full Grove prototype system");
+    expect(summary?.textContent).not.toContain("Prototype on this page");
   });
 
   it("does not insert a completion modal into the case-study reading path", async () => {

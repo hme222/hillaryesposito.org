@@ -193,7 +193,6 @@ export default function FlagshipUxWoman() {
       <details className="rp-deepDive">
         <summary>
           <span className="rp-deepDive__copy">
-            <span className="rp-deepDive__meta">Optional research evidence</span>
             <b className="rp-deepDive__title">Review all five findings and pretotypes</b>
           </span>
           <span className="rp-deepDive__state" aria-hidden="true">

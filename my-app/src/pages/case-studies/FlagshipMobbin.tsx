@@ -158,7 +158,6 @@ export default function FlagshipMobbin() {
       <details className="rp-deepDive">
         <summary>
           <span className="rp-deepDive__copy">
-            <span className="rp-deepDive__meta">Optional documentation evidence</span>
             <b className="rp-deepDive__title">Explore the complete three-app capture archive</b>
           </span>
           <span className="rp-deepDive__state" aria-hidden="true">
