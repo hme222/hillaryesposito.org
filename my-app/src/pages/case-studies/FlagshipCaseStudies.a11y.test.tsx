@@ -200,12 +200,12 @@ describe("flagship case-study accessibility", () => {
     });
 
     const hero = container.querySelector("#grove-start");
-    expect(hero?.textContent).toContain("redesign direction · retest pending");
-    expect(container.textContent).toContain("These are not completed redesigns");
-    expect(container.querySelectorAll(".rp-decision__tag--new")).toHaveLength(3);
-    container.querySelectorAll(".rp-decision__tag--new").forEach((label) => {
-      expect(label.textContent).toBe("Next design");
-    });
+    expect(hero?.textContent).toContain("redesign directions set; high-fidelity screens and retest remain");
+    expect(container.textContent).toContain("not completed redesigns");
+    expect(container.querySelectorAll('.rp-decisionRecord[aria-label="Grove\'s three next-design directions"] dt')).toHaveLength(3);
+    expect(container.querySelectorAll(".rp-decision")).toHaveLength(1);
+    expect(container.querySelectorAll(".rp-decision img")).toHaveLength(1);
+    expect(container.textContent).toContain("High-fidelity redesign, edge states, and retest remain unbuilt");
   });
 
   it("ties each logistics result to its mechanism and owner-reported source", async () => {
@@ -348,7 +348,9 @@ describe("flagship case-study accessibility", () => {
       root.render(<FlagshipKnowunity />);
     });
 
-    const videos = container.querySelectorAll<HTMLVideoElement>(`${sectionId} video`);
+    const reelRoot = container.querySelector(sectionId);
+    expect(reelRoot?.closest("details")).toBeNull();
+    const videos = reelRoot?.querySelectorAll<HTMLVideoElement>("video") ?? [];
     expect(videos).toHaveLength(1);
     const video = videos[0];
     expect(video.hasAttribute("controls")).toBe(true);
@@ -363,7 +365,7 @@ describe("flagship case-study accessibility", () => {
     const describedBy = video.getAttribute("aria-describedby") || "";
     expect(document.getElementById(describedBy)?.textContent).toContain(caption);
 
-    const details = container.querySelector(`${sectionId} details.rp-reel__transcript`);
+    const details = reelRoot?.querySelector("details.rp-reel__transcript");
     expect(details?.querySelector("summary")?.textContent).toBe(summary);
     const lines = details?.querySelectorAll("ol li") || [];
     expect(lines).toHaveLength(9);
@@ -483,7 +485,7 @@ describe("flagship case-study accessibility", () => {
     expect(row?.textContent).toContain("home.riso.uxwomanDesc");
     expect(row?.querySelectorAll(".fp-ledger > div")).toHaveLength(5);
     const teaser = container.querySelector<HTMLAnchorElement>('.rp-work__teaser[href="/case-study/ux-woman#uxwoman-findings"]');
-    expect(teaser?.textContent).toBe("See the five findings →");
+    expect(teaser?.textContent).toBe("See the strongest findings →");
 
     mockLang = "es";
     await act(async () => {
@@ -506,7 +508,7 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelectorAll(".fp-findings li")).toHaveLength(5);
     expect(container.querySelectorAll(".fp-pretotypes li")).toHaveLength(5);
     const text = container.textContent || "";
-    ["No patient interview stream", "not healthcare validation", "hypothesis", "Five pretotypes designed. None run.", "Secondary research", "UX Woman is a 7-month, mentor-led UX design accelerator.", "Interviews with healthcare professionals and stakeholders.", "Five findings, each rated for confidence.", "read · research phase, 2026", "human-resources (HR)", "protected health information (PHI)", "artificial intelligence (AI)"].forEach((phrase) => {
+    ["No patient interview stream", "not healthcare validation", "hypothesis", "Five pretotypes designed. None run.", "Secondary research", "UX Woman is a 7-month, mentor-led UX design accelerator.", "Interviews with healthcare professionals and stakeholders.", "Three strongest findings, each rated for confidence.", "read · research phase, 2026", "human-resources (HR)", "protected health information (PHI)", "artificial intelligence (AI)"].forEach((phrase) => {
       expect(text).toContain(phrase);
     });
     ["UserTesting", "real cases", "Five signals"].forEach((phrase) => expect(text).not.toContain(phrase));
@@ -529,11 +531,31 @@ describe("flagship case-study accessibility", () => {
     expect(container.textContent).toContain("ninguno ejecutado");
   });
 
-  it("sends UX Woman's next-case-study band to Knowunity", async () => {
+  it("sends UX Woman's next-case-study band to supporting documentation", async () => {
     await act(async () => {
       root.render(<FlagshipUxWoman />);
     });
-    expect(container.querySelector(".rp-next")?.getAttribute("href")).toBe("/case-study/knowunity");
+    const next = container.querySelector(".rp-next");
+    expect(next?.getAttribute("href")).toBe("/case-study/mobbin");
+    expect(next?.textContent).toContain("Supporting documentation");
+  });
+
+  it.each([
+    ["MSK", <FlagshipMSK />, "/case-study/grove", "Grove", "Plant-care prototype · Phase 2 of 3"],
+    ["Grove", <RisoGrove />, "/case-study/knowunity", "Knowunity", "Design sprint · mocked voice recall, not shipped"],
+    ["Knowunity", <FlagshipKnowunity />, "/case-study/logistics", "Medical logistics", "Army operations · seven aid stations, three countries"],
+    ["Medical logistics", <FlagshipLogistics />, "/case-study/ux-woman", "UX Woman", "Supporting research · six interviews, research phase"],
+    ["UX Woman", <FlagshipUxWoman />, "/case-study/mobbin", "Mobbin", "Supporting documentation · 200+ screens per app"],
+    ["Mobbin", <FlagshipMobbin />, "/case-study/msk", "Memorial Sloan\u00a0Kettering", "Clinical systems · 21,000+ clinicians and staff"],
+  ])("keeps the approved next-case sequence from %s", async (_name, page, href, title, tag) => {
+    await act(async () => {
+      root.render(page);
+    });
+
+    const next = container.querySelector<HTMLAnchorElement>(".rp-next");
+    expect(next?.getAttribute("href")).toBe(href);
+    expect(next?.querySelector(".rp-next__title")?.textContent).toBe(title);
+    expect(next?.querySelector(".rp-next__tag")?.textContent).toBe(tag);
   });
 
   it("names Grove's chapters Problem → Research → Decisions → Changes → Outcomes, in both languages", async () => {
@@ -564,13 +586,13 @@ describe("flagship case-study accessibility", () => {
     expect(outcomes?.textContent).toContain("What the three phases mean");
   });
 
-  it("sends Grove's next-case-study band to UX Woman", async () => {
+  it("sends Grove's next-case-study band to Knowunity", async () => {
     await act(async () => {
       root.render(<RisoGrove />);
     });
     const next = container.querySelector<HTMLAnchorElement>(".rp-next");
-    expect(next?.getAttribute("href")).toBe("/case-study/ux-woman");
-    expect(next?.textContent).toContain("UX Woman");
+    expect(next?.getAttribute("href")).toBe("/case-study/knowunity");
+    expect(next?.textContent).toContain("Knowunity");
   });
 
   // The product-led "Draft A" (rotating MSK/Grove/Army showcase) and
@@ -753,7 +775,7 @@ describe("flagship case-study accessibility", () => {
 
     // The hero ends on exactly two actions; the opener replay moved to the
     // global footer, which reaches the film through `open-opening-film`.
-    const heroActions = container.querySelectorAll(".rp-hero__ctas > a, .rp-hero__ctas > button");
+    const heroActions = container.querySelectorAll(".rp-hero .rp-hero__ctas > a, .rp-hero .rp-hero__ctas > button");
     expect(Array.from(heroActions, (el) => el.textContent)).toEqual([
       "home.riso.primaryWork →",
       "home.riso.recruiterTourLink",
@@ -779,8 +801,9 @@ describe("flagship case-study accessibility", () => {
     await act(async () => {
       root.render(<RisoGrove />);
     });
-    expect(container.textContent).toContain("Optional artifact set");
-    expect(container.textContent).toContain("Inspect all six first-build screens");
+    expect(container.textContent).toContain("Optional research depth and artifact set");
+    expect(container.textContent).toContain("Inspect Grove's complete research evidence");
+    expect(container.textContent).toContain("Try the full Grove prototype system");
     expect(container.textContent).not.toContain("Walk the route");
   });
 
@@ -801,7 +824,7 @@ describe("flagship case-study accessibility", () => {
     expect(dialog?.open).toBe(true);
     expect(dialog?.textContent).toContain("Grove");
     expect(dialog?.textContent).toContain("MSK · A filing queue replaced a four-department paper detour");
-    expect(dialog?.textContent).toContain("Medical logistics · Resupply went from months to weeks");
+    expect(dialog?.textContent).toContain("Operational delivery · Medical logistics · Resupply went from months to weeks");
 
     const projectTitles = Array.from(
       dialog?.querySelectorAll<HTMLButtonElement>(".recruiter-panel__project strong") || [],
@@ -809,11 +832,13 @@ describe("flagship case-study accessibility", () => {
     );
     expect(projectTitles).toEqual([
       "MSK · A filing queue replaced a four-department paper detour",
-      "UX Woman · Six healthcare interviews, one hypothesis",
-      "Medical logistics · Resupply went from months to weeks",
       "Grove · Twelve features became three",
+      "Knowunity · The student's own words are the proof",
+      "Operational delivery · Medical logistics · Resupply went from months to weeks",
+      "UX Woman · Six healthcare interviews, one hypothesis",
+      "Mobbin · 200+ screens per app, searchable by task",
     ]);
-    expect(dialog?.textContent).toContain("contributed to a larger initiative that cut organization-wide electronic medical record costs 20%");
+    expect(dialog?.textContent).toContain("I initiated the workflow. MSK’s IT and UX teams implemented it later; the 20% result belongs to the larger initiative.");
     expect(dialog?.textContent?.toLowerCase()).not.toContain(["functional", "beta"].join(" "));
     expect(dialog?.textContent?.toLowerCase()).not.toContain(["shipped", "consumer", "app"].join(" "));
 
@@ -840,7 +865,7 @@ describe("flagship case-study accessibility", () => {
     const first = tabbables[0];
     const last = tabbables[tabbables.length - 1];
     expect(first?.getAttribute("aria-label")).toBe("Close the 90-second tour");
-    expect(last?.textContent).toBe("espositohillary@gmail.com");
+    expect(last?.textContent?.trim()).toBe("About me");
 
     const press = (target: Element, shiftKey: boolean) => {
       const event = new KeyboardEvent("keydown", { key: "Tab", shiftKey, bubbles: true, cancelable: true });
@@ -941,9 +966,9 @@ describe("flagship case-study accessibility", () => {
     expect(container.textContent).toContain("02 / 03");
     expect(container.textContent).toContain("Polymarket");
     const nextProject = Array.from(container.querySelectorAll<HTMLAnchorElement>("a")).find(
-      (link) => link.textContent?.includes("Next case study") && link.textContent?.includes("Grove"),
+      (link) => link.textContent?.includes("Next case study") && link.textContent?.includes("Memorial Sloan"),
     );
-    expect(nextProject?.getAttribute("href")).toBe("/case-study/grove");
+    expect(nextProject?.getAttribute("href")).toBe("/case-study/msk");
   });
 
   it("Grove system lab mounts every tab panel and toggles a real source disclosure", async () => {
@@ -984,19 +1009,15 @@ describe("flagship case-study accessibility", () => {
     expect(heroAction?.textContent).toContain("Try the working browser prototype");
   });
 
-  it("opens and focuses Grove's native prototype disclosure from a direct hash", async () => {
+  it("leaves Grove hash disclosure ownership to the shared chrome without focus theft", async () => {
     window.history.replaceState(null, "", "/case-study/grove#grove-prototype");
     await act(async () => {
       root.render(<RisoGrove />);
     });
-    await act(async () => {
-      await new Promise((resolve) => window.setTimeout(resolve, 10));
-    });
-
     const details = container.querySelector<HTMLDetailsElement>("#grove-prototype");
     const summary = details?.querySelector<HTMLElement>("summary");
-    expect(details?.open).toBe(true);
-    expect(document.activeElement).toBe(summary);
+    expect(details?.open).toBe(false);
+    expect(document.activeElement).not.toBe(summary);
     expect(summary?.textContent).toContain("Prototype on this page · React + TypeScript · Phase 2 of 3");
   });
 

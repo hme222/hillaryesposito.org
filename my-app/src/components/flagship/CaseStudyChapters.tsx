@@ -45,6 +45,7 @@ export default function CaseStudyChapters({
   const activeLockUntil = useRef(0);
   const stripRef = useRef<HTMLElement>(null);
   const jumpTimers = useRef<number[]>([]);
+  const removeJumpCancelListeners = useRef<() => void>(() => {});
 
   useEffect(() => {
     const ids = chapters.map((chapter) => chapter.id);
@@ -80,6 +81,7 @@ export default function CaseStudyChapters({
 
   useEffect(() => () => {
     jumpTimers.current.forEach((timer) => window.clearTimeout(timer));
+    removeJumpCancelListeners.current();
   }, []);
 
   const jumpTo = (event: React.MouseEvent<HTMLAnchorElement>, chapter: CaseStudyChapter) => {
@@ -87,6 +89,8 @@ export default function CaseStudyChapters({
     setActive(chapter.id);
     activeLockUntil.current = Date.now() + 1600;
     jumpTimers.current.forEach((timer) => window.clearTimeout(timer));
+    jumpTimers.current = [];
+    removeJumpCancelListeners.current();
     const expectedPath = window.location.pathname;
     window.history.replaceState(window.history.state, "", `${expectedPath}${window.location.search}#${chapter.id}`);
     const move = (focus = false) => {
@@ -105,9 +109,39 @@ export default function CaseStudyChapters({
         }
       }
     };
-    [0, 120, 320, 650, 1100].forEach((delay, index, delays) => {
-      jumpTimers.current.push(window.setTimeout(() => move(index === delays.length - 1), delay));
+
+    // Native link activation reports detail === 0 for keyboard and assistive-
+    // technology clicks. Move focus promptly for that path so the destination
+    // is announced, but never let a later layout-settling retry take focus
+    // back after the reader has continued. Pointer activation keeps focus
+    // where the browser puts it and uses the same scroll behavior.
+    move(event.detail === 0);
+    [120, 320, 650, 1100].forEach((delay) => {
+      jumpTimers.current.push(window.setTimeout(() => move(), delay));
     });
+
+    // The retries only compensate for images/layout settling. Any newer
+    // wheel, touch, pointer, or keyboard input is a stronger expression of
+    // intent, so stop correcting the viewport immediately and let active
+    // chapter tracking resume.
+    const cancelSettling = () => {
+      jumpTimers.current.forEach((timer) => window.clearTimeout(timer));
+      jumpTimers.current = [];
+      activeLockUntil.current = 0;
+      removeJumpCancelListeners.current();
+    };
+    const listenerOptions: AddEventListenerOptions = { capture: true, once: true };
+    window.addEventListener("wheel", cancelSettling, listenerOptions);
+    window.addEventListener("touchstart", cancelSettling, listenerOptions);
+    window.addEventListener("pointerdown", cancelSettling, listenerOptions);
+    window.addEventListener("keydown", cancelSettling, listenerOptions);
+    removeJumpCancelListeners.current = () => {
+      window.removeEventListener("wheel", cancelSettling, true);
+      window.removeEventListener("touchstart", cancelSettling, true);
+      window.removeEventListener("pointerdown", cancelSettling, true);
+      window.removeEventListener("keydown", cancelSettling, true);
+      removeJumpCancelListeners.current = () => {};
+    };
   };
 
   // On phones the strip scrolls sideways; keep the current chapter visible in

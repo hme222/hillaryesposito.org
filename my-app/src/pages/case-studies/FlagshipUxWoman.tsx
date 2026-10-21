@@ -131,7 +131,7 @@ export default function FlagshipUxWoman() {
             {/* The tour sits beside the hero action, not in the breadcrumb row,
                 which pushed the H1 down on phones (2026-10-16). */}
             <div className="rp-hero__ctas rp-hero__ctas--tour">
-              <a className="rp-cta" href="#uxwoman-findings">See the five findings →</a>
+              <a className="rp-cta" href="#uxwoman-findings">See the strongest findings →</a>
               <button
                 type="button"
                 className="rp-heroUtility rp-heroTour"
@@ -168,32 +168,17 @@ export default function FlagshipUxWoman() {
           <p className="rp-kicker">What I did</p>
           <h2 className="rp-title">Six healthcare interviews, recruited by what people do.</h2>
           <p className="rp-lede">I recruited by behavior, not job title. Each interview counts once. Interviews with healthcare professionals and stakeholders.</p>
-          <div className="fp-workSplit rp-reveal">
-            <article>
-              <span>Healthcare · 6</span>
-              <h3>Six roles, one per interview</h3>
-              <p>Patient financial services, revenue operations, orthopedic physician assistant, utilization-review nurse, psychiatrist, and former health-plan member services. One also spoke from personal experience as a patient.</p>
-            </article>
-            <article>
-              <span>Limits · stated up front</span>
-              <h3>No patient interview stream</h3>
-              <p>What I know about patients is secondhand, apart from that one account. A seventh, adjacent interview with an <Term def="Human resources: the team that handles hiring, pay, and staff policy.">HR</Term> director covered checking artificial intelligence (AI) sources. It is not healthcare validation. No protected health information (PHI) was collected, and participants are anonymized.</p>
-            </article>
-          </div>
-          <p className="fp-ownership fp-ownership--paper rp-reveal">
-            <b>Secondary research</b>
-            A scan of AI and information workflows in large hospitals, from federal data briefs and professional surveys. It shows system-level patterns, not what any one hospital needs.
-          </p>
+          <p className="rp-body">Six roles described recent healthcare workflows. Participants are anonymized, no protected health information was collected, and there is no dedicated patient interview stream.</p>
         </div>
       </section>
 
       <section className="rp-section" id="uxwoman-findings" data-language-anchor="uxwoman-findings" data-evidence="true">
         <div className="rp-wrap">
           <p className="rp-kicker">What the interviews showed</p>
-          <h2 className="rp-title">Five findings, each rated for confidence.</h2>
+          <h2 className="rp-title">Three strongest findings, each rated for confidence.</h2>
           <p className="rp-lede">A rating says how directly the accounts support a claim, not how many people said it. All of it is exploratory and self-reported.</p>
           <ol className="fp-findings rp-reveal">
-            {FINDINGS.map((finding) => (
+            {FINDINGS.slice(0, 3).map((finding) => (
               <li key={finding.title}>
                 <h3>{finding.title}</h3>
                 <p>{finding.body}</p>
@@ -205,25 +190,68 @@ export default function FlagshipUxWoman() {
         </div>
       </section>
 
-      <section className="rp-section" id="uxwoman-pretotypes" data-language-anchor="uxwoman-pretotypes" data-evidence="true">
-        <div className="rp-wrap">
-          <p className="rp-kicker">Cheap tests, designed</p>
-          <h2 className="rp-title">Five pretotypes designed. None run.</h2>
-          <p className="rp-lede">Each tries to disprove its own premise. They are five separate tests, not five features of one product.</p>
-          <ol className="fp-pretotypes rp-reveal">
-            {PRETOTYPES.map((item, index) => (
-              <li key={item.title}>
-                <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-                <div>
-                  <h3>{item.title}</h3>
-                  <p>{item.asks}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-          <p className="fp-pretotypeNote">Each has a stop condition. If it adds paperwork without changing a next action, it stops.</p>
-        </div>
-      </section>
+      <details className="rp-deepDive">
+        <summary>
+          <span className="rp-deepDive__copy">
+            <span className="rp-deepDive__meta">Optional research evidence</span>
+            <b className="rp-deepDive__title">Review all five findings and pretotypes</b>
+          </span>
+          <span className="rp-deepDive__state" aria-hidden="true">
+            <span className="rp-deepDive__stateClosed">Open</span>
+            <span className="rp-deepDive__stateOpen">Close</span>
+          </span>
+        </summary>
+        <section className="rp-section" data-evidence="true">
+          <div className="rp-wrap">
+            <p className="rp-kicker">Participant and secondary-research detail</p>
+            <div className="fp-workSplit rp-reveal">
+              <article>
+                <span>Healthcare · 6</span>
+                <h3>Six roles, one per interview</h3>
+                <p>Patient financial services, revenue operations, orthopedic physician assistant, utilization-review nurse, psychiatrist, and former health-plan member services. One also spoke from personal experience as a patient.</p>
+              </article>
+              <article>
+                <span>Limits · stated up front</span>
+                <h3>No patient interview stream</h3>
+                <p>What I know about patients is secondhand, apart from that one account. A seventh, adjacent interview with an <Term def="Human resources: the team that handles hiring, pay, and staff policy.">HR</Term> director covered checking artificial intelligence (AI) sources. It is not healthcare validation. No protected health information (PHI) was collected, and participants are anonymized.</p>
+              </article>
+            </div>
+            <p className="fp-ownership fp-ownership--paper rp-reveal">
+              <b>Secondary research</b>
+              A scan of AI and information workflows in large hospitals, from federal data briefs and professional surveys. It shows system-level patterns, not what any one hospital needs.
+            </p>
+            <p className="rp-kicker">Two additional findings</p>
+            <ol className="fp-findings rp-reveal" start={4}>
+              {FINDINGS.slice(3).map((finding) => (
+                <li key={finding.title}>
+                  <h3>{finding.title}</h3>
+                  <p>{finding.body}</p>
+                  <p className="fp-findings__confidence"><span>Confidence</span> {finding.confidence}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+        <section className="rp-section" id="uxwoman-pretotypes" data-language-anchor="uxwoman-pretotypes" data-evidence="true">
+          <div className="rp-wrap">
+            <p className="rp-kicker">Cheap tests, designed</p>
+            <h2 className="rp-title">Five pretotypes designed. None run.</h2>
+            <p className="rp-lede">Each tries to disprove its own premise. They are five separate tests, not five features of one product.</p>
+            <ol className="fp-pretotypes rp-reveal">
+              {PRETOTYPES.map((item, index) => (
+                <li key={item.title}>
+                  <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p>{item.asks}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <p className="fp-pretotypeNote">Each has a stop condition. If it adds paperwork without changing a next action, it stops.</p>
+          </div>
+        </section>
+      </details>
 
       <div data-evidence="true"><EvidenceField
         id="uxwoman-next"
@@ -248,7 +276,7 @@ export default function FlagshipUxWoman() {
         </div>
       </section>
 
-      <Link className="rp-next" to="/case-study/knowunity"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Knowunity</p><p className="rp-next__tag">Design sprint · mocked voice recall, not shipped</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
+      <Link className="rp-next" to="/case-study/mobbin"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Mobbin</p><p className="rp-next__tag">Supporting documentation · 200+ screens per app</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
     </main>
   );
 }

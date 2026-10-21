@@ -105,11 +105,83 @@ function readDockBottom(): number {
 }
 
 /**
+ * Reveal an exact fragment target when a highlights-first case study has put
+ * it inside a native disclosure. The browser still owns scrolling, focus and
+ * history; this only changes the nearest enclosing <details>' open state.
+ */
+export function openHashTargetDisclosure(hash: string): boolean {
+  if (!hash || hash === "#") return false;
+
+  let id: string;
+  try {
+    id = decodeURIComponent(hash.slice(1));
+  } catch {
+    return false;
+  }
+
+  const target = id ? document.getElementById(id) : null;
+  const disclosure = target?.closest<HTMLDetailsElement>("details:not([open])") ?? null;
+  if (!disclosure) return false;
+
+  disclosure.open = true;
+  return true;
+}
+
+/**
  * Wires the controller to the dock `<nav>` for the current route. No-op (and
  * fully cleaned up) off the case-study routes, so Home/About/404 are untouched.
  */
 export function useCaseStudyChrome(navRef: RefObject<HTMLElement>, pathname: string, hash = ""): void {
   const enabled = isCaseStudyPath(pathname);
+
+  useEffect(() => {
+    if (!enabled) return;
+
+    // React Router supplies the initial hash. Navigation events take over for
+    // native same-page links and browser Back/forward. Watching child mounts
+    // covers a direct arrival whose lazy case-study chunk is not in the DOM on
+    // the Navbar's first effect pass.
+    let revealedHash = "";
+    const reveal = (candidate = window.location.hash || hash) => {
+      if (!candidate || candidate === "#" || candidate === revealedHash) return;
+      let id: string;
+      try {
+        id = decodeURIComponent(candidate.slice(1));
+      } catch {
+        return;
+      }
+      const target = id ? document.getElementById(id) : null;
+      if (!target) return;
+      openHashTargetDisclosure(candidate);
+      revealedHash = candidate;
+      // Direct case-study routes mount lazily, after the browser's native
+      // fragment pass. Complete the expected arrival for both visible chapter
+      // targets and targets inside disclosures, without changing history or
+      // keyboard focus. The hash guard prevents later DOM mutations from
+      // dragging the reader back to the target.
+      window.requestAnimationFrame(() =>
+        target?.scrollIntoView?.({ block: "start", behavior: "auto" })
+      );
+    };
+    const onHistoryChange = () => {
+      revealedHash = "";
+      reveal(window.location.hash);
+    };
+
+    reveal();
+    const observer = typeof MutationObserver === "function"
+      ? new MutationObserver(() => reveal())
+      : null;
+    observer?.observe(document.body, { childList: true, subtree: true });
+    window.addEventListener("hashchange", onHistoryChange);
+    window.addEventListener("popstate", onHistoryChange);
+
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener("hashchange", onHistoryChange);
+      window.removeEventListener("popstate", onHistoryChange);
+    };
+  }, [enabled, pathname, hash]);
 
   useEffect(() => {
     if (!enabled) return;
@@ -183,9 +255,19 @@ export function useCaseStudyChrome(navRef: RefObject<HTMLElement>, pathname: str
     const onClickCapture = (event: MouseEvent) => {
       const link = (event.target as Element | null)?.closest?.<HTMLAnchorElement>('a[href^="#"]');
       if (!link || (nav && nav.contains(link))) return;
-      const id = decodeURIComponent(link.getAttribute("href")!.slice(1));
+      const href = link.getAttribute("href")!;
+      let id: string;
+      try {
+        id = decodeURIComponent(href.slice(1));
+      } catch {
+        return;
+      }
       const target = id ? document.getElementById(id) : null;
       if (!target) return;
+      // CaseStudyChapters prevents the native jump and updates the URL with
+      // history.replaceState, which emits neither hashchange nor popstate.
+      // Reveal before it measures and scrolls the destination.
+      openHashTargetDisclosure(href);
       const strip = document.querySelector<HTMLElement>(".rp-chapters");
       const landing = target.getBoundingClientRect().top + window.scrollY - (strip?.offsetHeight ?? 0);
       if (landing <= TUCK_AFTER_PX) return;

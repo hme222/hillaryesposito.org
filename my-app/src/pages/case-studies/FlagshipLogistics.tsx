@@ -173,7 +173,6 @@ export default function FlagshipLogistics() {
               <article key={m.n}>
                 <span className="fp-redesigns__n">{m.n}</span>
                 <h3>{m.title}</h3>
-                <LogisticsMechanism n={m.n} />
                 <p className="fp-redesigns__finding">{m.finding}</p>
                 <p className="fp-redesigns__change">{m.change}</p>
               </article>
@@ -182,21 +181,42 @@ export default function FlagshipLogistics() {
         </div>
       </section>
 
-      <section className="rp-section rp-override" id="log-constraints" data-evidence="true">
-        <div className="rp-wrap">
-          <p className="rp-kicker">What made it hard</p>
-          <h2 className="rp-title">Three constraints that did not move.</h2>
-          <dl className="fp-constraintAnnotations rp-reveal" data-evidence="true">
-            <div><dt>Cold chain · 48 hours</dt><dd>Late meant unusable.</dd></div>
-            <div><dt>Three countries</dt><dd>Different systems and vocabulary.</dd></div>
-            <div><dt>Active zone · $2M move</dt><dd>No rehearsal or acceptable failure.</dd></div>
-          </dl>
-          <p className="fp-ownership rp-reveal">
-            <b>Service-design scope</b>
-            People, inventory, requests, and handoffs, and how long recovery took.
-          </p>
-        </div>
-      </section>
+      <details className="rp-deepDive">
+        <summary>
+          <span className="rp-deepDive__copy">
+            <span className="rp-deepDive__meta">Optional operations evidence</span>
+            <b className="rp-deepDive__title">Inspect the logistics constraints and mechanisms</b>
+          </span>
+          <span className="rp-deepDive__state" aria-hidden="true">
+            <span className="rp-deepDive__stateClosed">Open</span>
+            <span className="rp-deepDive__stateOpen">Close</span>
+          </span>
+        </summary>
+        <section className="rp-section rp-override" id="log-constraints" data-evidence="true">
+          <div className="rp-wrap">
+            <p className="rp-kicker">What made it hard</p>
+            <h2 className="rp-title">Three constraints that did not move.</h2>
+            <dl className="fp-constraintAnnotations rp-reveal" data-evidence="true">
+              <div><dt>Cold chain · 48 hours</dt><dd>Late meant unusable.</dd></div>
+              <div><dt>Three countries</dt><dd>Different systems and vocabulary.</dd></div>
+              <div><dt>Active zone · $2M move</dt><dd>No rehearsal or acceptable failure.</dd></div>
+            </dl>
+            <p className="fp-ownership rp-reveal">
+              <b>Service-design scope</b>
+              People, inventory, requests, and handoffs, and how long recovery took.
+            </p>
+            <div className="fp-redesigns fp-redesigns--logistics rp-reveal" data-evidence="true">
+              {MOVES.map((m) => (
+                <article key={m.n}>
+                  <span className="fp-redesigns__n">{m.n}</span>
+                  <h3>{m.title}</h3>
+                  <LogisticsMechanism n={m.n} />
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      </details>
 
       <div className="fp-logisticsEvidence" data-evidence="true"><EvidenceField
         id="log-outcomes"
@@ -222,7 +242,7 @@ export default function FlagshipLogistics() {
         </div>
       </section>
 
-      <Link className="rp-next" to="/case-study/msk"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Memorial Sloan Kettering</p><p className="rp-next__tag">Clinical systems · 21,000+ clinicians and staff</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
+      <Link className="rp-next" to="/case-study/ux-woman"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">UX Woman</p><p className="rp-next__tag">Supporting research · six interviews, research phase</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
     </main>
   );
 }

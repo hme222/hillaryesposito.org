@@ -226,11 +226,11 @@ export default function FlagshipMSK() {
               I diagnosed and mapped a paper detour across four departments, checked feasibility,
               and pitched a digital filing workflow. <b>Information technology (IT) and user experience (UX) teams built it after I changed roles.</b>
             </p>
-            <dl className="rp-heroEvidence" aria-label="MSK case evidence at a glance">
+            <dl className="rp-heroEvidence rp-heroEvidence--workflow" aria-label="MSK case evidence at a glance">
               {/* Two rows since 2026-10-16: contribution, implementation, and
                   evidence restated the sub above and the provenance note below. */}
-              <div><dt>MSK roles</dt><dd>Office Coordinator → Administrative Assistant → Training Facilitator (retitled Trainer I Specialist)</dd></div>
-              <div><dt>Role</dt><dd>Service design · process improvement · UX/product</dd></div>
+              <div><dt>Role progression</dt><dd>Office Coordinator → Administrative Assistant → Training Facilitator (retitled Trainer I Specialist)</dd></div>
+              <div><dt>Contribution</dt><dd>Service design · process improvement · UX/product</dd></div>
             </dl>
             {/* The tour sits beside the hero action, not in the breadcrumb row,
                 which pushed the H1 down on phones (2026-10-16). */}
@@ -294,16 +294,33 @@ export default function FlagshipMSK() {
             </article>
           </div>
 
-          {/* The step count is the visible change; the handoff is the real one.
-              Same evidence as the map above, re-cut by actor instead of by step. */}
-          <div className="fp-blueprintIntro rp-reveal">
-            <p className="rp-kicker">Then I counted the handoffs</p>
-            <h3 className="rp-title">Six steps became five. One department left the loop.</h3>
-            <p className="rp-lede">The visible change is one fewer step. The service change is one fewer department touching the record. Frontstage is work the coordinator can see; backstage happens out of sight, below the line of visibility.</p>
-          </div>
-          <div data-evidence="true"><MSKServiceBlueprint /></div>
         </div>
       </section>
+
+      <details className="rp-deepDive">
+        <summary>
+          <span className="rp-deepDive__copy">
+            <span className="rp-deepDive__meta">Optional service-design evidence</span>
+            <b className="rp-deepDive__title">Inspect the complete service blueprint</b>
+          </span>
+          <span className="rp-deepDive__state" aria-hidden="true">
+            <span className="rp-deepDive__stateClosed">Open</span>
+            <span className="rp-deepDive__stateOpen">Close</span>
+          </span>
+        </summary>
+        <section className="rp-section">
+          <div className="rp-wrap">
+            {/* The step count is the visible change; the handoff is the real one.
+                Same evidence as the map above, re-cut by actor instead of by step. */}
+            <div className="fp-blueprintIntro rp-reveal">
+              <p className="rp-kicker">Then I counted the handoffs</p>
+              <h3 className="rp-title">Six steps became five. One department left the loop.</h3>
+              <p className="rp-lede">The visible change is one fewer step. The service change is one fewer department touching the record. Frontstage is work the coordinator can see; backstage happens out of sight, below the line of visibility.</p>
+            </div>
+            <div data-evidence="true"><MSKServiceBlueprint /></div>
+          </div>
+        </section>
+      </details>
 
       <MSKButtonThreshold />
 
@@ -321,72 +338,84 @@ export default function FlagshipMSK() {
         )}
       /></div>
 
-      <section className="rp-section" id="msk-redesigns" data-language-anchor="msk-redesigns">
-        <div className="rp-wrap">
-          <p className="rp-kicker">Then it turned up twice more</p>
-          <h2 className="rp-title">The same failure, in two more places.</h2>
-          <p className="rp-lede">Certification and onboarding had the same problem: the next action was buried.</p>
-          <div className="fp-redesigns rp-reveal" data-evidence="true">
-            {REDESIGNS.map((r) => (
-              <article key={r.n}>
-                <span className="fp-redesigns__n">{r.n}</span>
-                <h3>{r.title}</h3>
-                <MSKMechanism n={r.n} />
-                <p className="fp-redesigns__finding">{r.finding}</p>
-                <p className="fp-redesigns__change">{r.change}</p>
-                {r.wrong && (
-                  <p className="fp-redesigns__wrong"><b>What I got wrong</b>{r.wrong}</p>
-                )}
-              </article>
-            ))}
+      <details className="rp-deepDive">
+        <summary>
+          <span className="rp-deepDive__copy">
+            <span className="rp-deepDive__meta">Optional related work and role history</span>
+            <b className="rp-deepDive__title">See the related MSK workflow redesigns</b>
+          </span>
+          <span className="rp-deepDive__state" aria-hidden="true">
+            <span className="rp-deepDive__stateClosed">Open</span>
+            <span className="rp-deepDive__stateOpen">Close</span>
+          </span>
+        </summary>
+        <section className="rp-section" id="msk-redesigns" data-language-anchor="msk-redesigns">
+          <div className="rp-wrap">
+            <p className="rp-kicker">Then it turned up twice more</p>
+            <h2 className="rp-title">The same failure, in two more places.</h2>
+            <p className="rp-lede">Certification and onboarding had the same problem: the next action was buried.</p>
+            <div className="fp-redesigns rp-reveal" data-evidence="true">
+              {REDESIGNS.map((r) => (
+                <article key={r.n}>
+                  <span className="fp-redesigns__n">{r.n}</span>
+                  <h3>{r.title}</h3>
+                  <MSKMechanism n={r.n} />
+                  <p className="fp-redesigns__finding">{r.finding}</p>
+                  <p className="fp-redesigns__change">{r.change}</p>
+                  {r.wrong && (
+                    <p className="fp-redesigns__wrong"><b>What I got wrong</b>{r.wrong}</p>
+                  )}
+                </article>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="rp-section rp-override" id="msk-systems" data-language-anchor="msk-systems">
-        <div className="rp-wrap">
-          <p className="rp-kicker">Why I could see it</p>
-          <h2 className="rp-title">I did the jobs before I redesigned them.</h2>
-          <p className="rp-lede">You do not spot that pattern from outside a system. I had already sat in three of its seats.</p>
-          <ol className="fp-roleRail rp-reveal" aria-label="Three roles at MSK, in order" data-evidence="true" style={{ "--rp-reveal-stagger": "0ms" } as React.CSSProperties}>
-            {ROLES.map((r) => {
-              const method = ROLE_METHODS[r.n];
-              return (
-                <li key={r.n}>
-                  <span className="fp-roleRail__n">{r.n}</span>
-                  <b>{r.role}</b>
-                  <span className="fp-roleRail__taught">{r.taught}</span>
-                  <details className="fp-roleRail__method">
-                    <summary>
-                      <span className="fp-roleRail__summaryLabel">The method it gave me</span>
-                      <span className="fp-roleRail__chev" aria-hidden="true" />
-                    </summary>
-                    <div>
-                      <b>{method.term}</b>
-                      <p>{method.body}</p>
-                    </div>
-                  </details>
-                </li>
-              );
-            })}
-          </ol>
-          {/* "Service design" appears in this page's hero eyebrow and nowhere
-              else on the site. It had a definition here once and I cut it as
-              abstract, which left the discipline named and unsupported. This is
-              the replacement: the claim is ownership of the whole path, which
-              the workflow map above already proves, rather than a description
-              of a method. */}
-          <p className="fp-ownership rp-reveal" style={{ "--rp-reveal-stagger": "90ms" } as React.CSSProperties}>
-            <b>Service-design scope:</b> the full path across systems, departments, permissions, and handoffs—not only the queue screen.
-          </p>
-          <div className="fp-mapWrap rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "270ms" } as React.CSSProperties}>
-            <Suspense fallback={<div className="fp-mapFallback">Four departments, one task → mapped → redesigned → adopted</div>}>
-              <MSKSystemMap />
-            </Suspense>
-            <ol aria-label="Clinical system transformation stages"><li>Four departments, one task</li><li>Mapped</li><li>Redesigned</li><li>Adopted organization-wide</li></ol>
+        <section className="rp-section rp-override" id="msk-systems" data-language-anchor="msk-systems">
+          <div className="rp-wrap">
+            <p className="rp-kicker">Why I could see it</p>
+            <h2 className="rp-title">I did the jobs before I redesigned them.</h2>
+            <p className="rp-lede">You do not spot that pattern from outside a system. I had already sat in three of its seats.</p>
+            <ol className="fp-roleRail rp-reveal" aria-label="Three roles at MSK, in order" data-evidence="true" style={{ "--rp-reveal-stagger": "0ms" } as React.CSSProperties}>
+              {ROLES.map((r) => {
+                const method = ROLE_METHODS[r.n];
+                return (
+                  <li key={r.n}>
+                    <span className="fp-roleRail__n">{r.n}</span>
+                    <b>{r.role}</b>
+                    <span className="fp-roleRail__taught">{r.taught}</span>
+                    <details className="fp-roleRail__method">
+                      <summary>
+                        <span className="fp-roleRail__summaryLabel">The method it gave me</span>
+                        <span className="fp-roleRail__chev" aria-hidden="true" />
+                      </summary>
+                      <div>
+                        <b>{method.term}</b>
+                        <p>{method.body}</p>
+                      </div>
+                    </details>
+                  </li>
+                );
+              })}
+            </ol>
+            {/* "Service design" appears in this page's hero eyebrow and nowhere
+                else on the site. It had a definition here once and I cut it as
+                abstract, which left the discipline named and unsupported. This is
+                the replacement: the claim is ownership of the whole path, which
+                the workflow map above already proves, rather than a description
+                of a method. */}
+            <p className="fp-ownership rp-reveal" style={{ "--rp-reveal-stagger": "90ms" } as React.CSSProperties}>
+              <b>Service-design scope:</b> the full path across systems, departments, permissions, and handoffs—not only the queue screen.
+            </p>
+            <div className="fp-mapWrap rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "270ms" } as React.CSSProperties}>
+              <Suspense fallback={<div className="fp-mapFallback">Four departments, one task → mapped → redesigned → adopted</div>}>
+                <MSKSystemMap />
+              </Suspense>
+              <ol aria-label="Clinical system transformation stages"><li>Four departments, one task</li><li>Mapped</li><li>Redesigned</li><li>Adopted organization-wide</li></ol>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </details>
 
       <section className="rp-section" id="msk-sustainment" data-language-anchor="msk-sustainment">
         <div className="rp-wrap">
@@ -443,7 +472,7 @@ export default function FlagshipMSK() {
         </div>
       </section>
 
-      <Link className="rp-next" to="/case-study/mobbin"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Mobbin</p><p className="rp-next__tag">UX flow documentation · 200+ screens per app</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
+      <Link className="rp-next" to="/case-study/grove"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Grove</p><p className="rp-next__tag">Plant-care prototype · Phase 2 of 3</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
     </main>
   );
 }

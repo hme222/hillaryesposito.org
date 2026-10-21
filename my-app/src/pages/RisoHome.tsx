@@ -36,10 +36,13 @@ type WorkItem = {
   imgAltKey: StringKey;
   visual: "image" | "logistics" | "msk" | "knowunity" | "uxwoman";
   tagKey?: StringKey;
+  evidenceLabelEn?: string;
+  evidenceLabelEs?: string;
   teaserPath?: string;
   teaserPathEs?: string;
   teaserEn?: string;
   teaserEs?: string;
+  tier: "primary" | "supporting";
 };
 
 const WORK: WorkItem[] = [
@@ -54,6 +57,7 @@ const WORK: WorkItem[] = [
     // product. Swapped for the same filing-queue artifact the hero and case
     // study use, so the work list shows what was actually designed.
     visual: "msk",
+    tier: "primary",
     teaserPath: "/case-study/msk#msk-decisions",
     // The condensed Spanish study has the same four rules under its own id.
     teaserPathEs: "/case-study/msk#es-msk-decisions",
@@ -62,35 +66,6 @@ const WORK: WorkItem[] = [
   },
   {
     n: "02",
-    titleKey: "home.proj.uxwoman.title",
-    subKey: "home.proj.uxwoman.subtitle",
-    descKey: "home.riso.uxwomanDesc",
-    path: "/case-study/ux-woman",
-    imgAltKey: "home.riso.uxwomanAlt",
-    visual: "uxwoman",
-    teaserPath: "/case-study/ux-woman#uxwoman-findings",
-    teaserPathEs: "/case-study/ux-woman#es-uxwoman-findings",
-    teaserEn: "See the five findings →",
-    teaserEs: "Ver los cinco hallazgos →",
-  },
-  {
-    n: "03",
-    titleKey: "home.proj.logistics.title",
-    subKey: "home.proj.logistics.subtitle",
-    descKey: "home.riso.logisticsDesc",
-    path: "/case-study/logistics",
-    imgAltKey: "home.riso.logisticsAlt",
-    visual: "logistics",
-    // Same wording as the Logistics hero's own CTA; the Spanish anchor is the
-    // condensed Spanish study's id for the same section (SpanishCaseStudy
-    // prefixes every anchor with "es-").
-    teaserPath: "/case-study/logistics#log-moves",
-    teaserPathEs: "/case-study/logistics#es-log-moves",
-    teaserEn: "See the three moves →",
-    teaserEs: "Ver los tres cambios →",
-  },
-  {
-    n: "04",
     titleKey: "home.proj.grove.title",
     subKey: "home.proj.grove.subtitle",
     descKey: "home.riso.groveDesc",
@@ -98,6 +73,7 @@ const WORK: WorkItem[] = [
     img: "/assets/grove/grove-live-care.jpg",
     imgAltKey: "home.riso.groveAlt",
     visual: "image",
+    tier: "primary",
     tagKey: "home.riso.groveTag",
     teaserPath: "/case-study/grove#grove-prototype",
     teaserPathEs: "/case-study/grove",
@@ -105,7 +81,7 @@ const WORK: WorkItem[] = [
     teaserEs: "Ver el prototipo funcional en el navegador →",
   },
   {
-    n: "05",
+    n: "03",
     titleKey: "home.proj.knowunity.title",
     subKey: "home.proj.knowunity.subtitle",
     descKey: "home.riso.knowunityDesc",
@@ -117,12 +93,51 @@ const WORK: WorkItem[] = [
     imgSecondary: "/assets/knowunity/say-it-back-pass.webp",
     imgAltKey: "home.riso.knowunityAlt",
     visual: "knowunity",
+    tier: "primary",
     teaserPath: "/case-study/knowunity#knowunity-decisions",
     teaserPathEs: "/case-study/knowunity#es-knowunity-decisions",
     teaserEn: "See the four decisions →",
     teaserEs: "Ver las cuatro decisiones →",
   },
+  {
+    n: "04",
+    titleKey: "home.proj.logistics.title",
+    subKey: "home.proj.logistics.subtitle",
+    descKey: "home.riso.logisticsDesc",
+    path: "/case-study/logistics",
+    imgAltKey: "home.riso.logisticsAlt",
+    visual: "logistics",
+    tier: "supporting",
+    evidenceLabelEn: "Operational delivery",
+    evidenceLabelEs: "Entrega operativa",
+    // Same wording as the Logistics hero's own CTA; the Spanish anchor is the
+    // condensed Spanish study's id for the same section (SpanishCaseStudy
+    // prefixes every anchor with "es-").
+    teaserPath: "/case-study/logistics#log-moves",
+    teaserPathEs: "/case-study/logistics#es-log-moves",
+    teaserEn: "See the three moves →",
+    teaserEs: "Ver los tres cambios →",
+  },
+  {
+    n: "05",
+    titleKey: "home.proj.uxwoman.title",
+    subKey: "home.proj.uxwoman.subtitle",
+    descKey: "home.riso.uxwomanDesc",
+    path: "/case-study/ux-woman",
+    imgAltKey: "home.riso.uxwomanAlt",
+    visual: "uxwoman",
+    tier: "supporting",
+    evidenceLabelEn: "Supporting research · active",
+    evidenceLabelEs: "Investigación de apoyo · activa",
+    teaserPath: "/case-study/ux-woman#uxwoman-findings",
+    teaserPathEs: "/case-study/ux-woman#es-uxwoman-findings",
+    teaserEn: "See the strongest findings →",
+    teaserEs: "Ver los cinco hallazgos →",
+  },
 ];
+
+const PRIMARY_WORK = WORK.filter((work) => work.tier === "primary");
+const SUPPORTING_WORK = WORK.filter((work) => work.tier === "supporting");
 
 // Each source links to the section that carries the number's scope and limits.
 const STATS = [
@@ -323,6 +338,9 @@ export default function RisoHome() {
         <p className="rp-work__n">
           {work.n}
           {work.tagKey && <PhaseIndicator current={2} label={t(work.tagKey)} />}
+          {work.evidenceLabelEn && (
+            <span>{lang === "es" ? work.evidenceLabelEs : work.evidenceLabelEn}</span>
+          )}
         </p>
         <p className="rp-work__title">{t(work.titleKey)}</p>
         <p className="rp-work__sub">{t(work.subKey)}</p>
@@ -361,6 +379,47 @@ export default function RisoHome() {
     </>
   );
 
+  const renderWorkItem = (work: WorkItem) => {
+    const supporting = work.tier === "supporting";
+    const workClassName = `rp-work${supporting ? " rp-work--supporting" : ""}`;
+
+    return (
+      <React.Fragment key={work.path ?? work.externalHref}>
+        {work.externalHref ? (
+          <a
+            className={workClassName}
+            href={work.externalHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={work.externalAriaKey ? t(work.externalAriaKey) : undefined}
+          >
+            {renderWorkContents(work)}
+          </a>
+        ) : (
+          <Link
+            className={workClassName}
+            to={work.path ?? "/"}
+            aria-label={`${t(work.titleKey)} — ${t("home.riso.workLinkSuffix")}`}
+          >
+            {renderWorkContents(work)}
+          </Link>
+        )}
+        {/* Project-specific hooks surface one high-value decision or working
+            proof point without turning it into a peer case row. Spanish
+            prototype links stay on the condensed Spanish case study because
+            the full interaction lab is English. */}
+        {work.teaserPath ? (
+          <Link
+            className={`rp-work__teaser${supporting ? " rp-work__teaser--supporting" : ""}`}
+            to={lang === "es" && work.teaserPathEs ? work.teaserPathEs : work.teaserPath}
+          >
+            {lang === "es" ? work.teaserEs : work.teaserEn}
+          </Link>
+        ) : null}
+      </React.Fragment>
+    );
+  };
+
   return (
     <main className="riso-page riso-home" ref={rootRef}>
       <RisoDefs />
@@ -395,7 +454,7 @@ export default function RisoHome() {
               <h1 className="rp-h1">{heroTitle(t("home.riso.heroTitle"), HERO_PHRASES[lang === "es" ? "es" : "en"])}</h1>
             </div>
             <p className="rp-sub rp-heroProof">
-              {t("home.riso.heroLead")} <b>{glossTerms(t("home.riso.heroProof"), glossary)}</b>
+              {t("home.riso.heroLead")} <b>{glossTerms(t("home.riso.heroProof"), glossary, { tabStop: false })}</b>
             </p>
             <div className="rp-hero__ctas">
               <Link className="rp-cta home-heroDesktopPrimary" to="/case-study/msk">{t("home.riso.primaryWork")} →</Link>
@@ -457,7 +516,7 @@ export default function RisoHome() {
         <div className="rp-wrap">
           <p className="rp-kicker">{t("home.riso.proofKicker")}</p>
           <h2 className="rp-title" id="home-proof-title">{t("home.riso.proofTitle")}</h2>
-          <div className="rp-outcomes rp-reveal" data-evidence="true">
+          <div className="rp-outcomes rp-outcomes--lead rp-reveal" data-evidence="true">
             {STATS.map((s) => (
               <div className="rp-stat" key={s.n}>
                 <p className="rp-stat__tag">{t(s.tagKey)}</p>
@@ -481,49 +540,30 @@ export default function RisoHome() {
         <div className="rp-wrap">
           <p className="rp-kicker">{t("home.eyebrow")}</p>
           <h2 className="rp-title" id="home-work-title">{t("home.riso.workTitle")}</h2>
-          <div className="rp-worklist rp-reveal" data-evidence="true">
-            {WORK.map((w) => (
-              <React.Fragment key={w.path ?? w.externalHref}>
-                {w.externalHref ? (
-                  <a
-                    className="rp-work"
-                    href={w.externalHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={w.externalAriaKey ? t(w.externalAriaKey) : undefined}
-                  >
-                    {renderWorkContents(w)}
-                  </a>
-                ) : (
-                  <Link
-                    className="rp-work"
-                    to={w.path ?? "/"}
-                    aria-label={`${t(w.titleKey)} — ${t("home.riso.workLinkSuffix")}`}
-                  >
-                    {renderWorkContents(w)}
-                  </Link>
-                )}
-                {/* Project-specific hooks surface one high-value decision or
-                    working proof point without turning it into a fourth work
-                    row. Spanish prototype links stay on the condensed Spanish
-                    case study because the full interaction lab is English.
-                    Every teaser stays on the site; external prototypes are
-                    linked from inside their case studies. */}
-                {w.teaserPath ? (
-                  <Link
-                    className="rp-work__teaser"
-                    to={lang === "es" && w.teaserPathEs ? w.teaserPathEs : w.teaserPath}
-                  >
-                    {lang === "es" ? w.teaserEs : w.teaserEn}
-                  </Link>
-                ) : null}
-              </React.Fragment>
-            ))}
-          </div>
-          <p className="rp-supportingLink">
-            <span>{t("home.riso.supportingKicker")}</span>
-            <Link to="/case-study/mobbin">{t("home.riso.supportingLink")}</Link>
-          </p>
+          <section className="rp-workGroup" aria-labelledby="home-primary-cases-title">
+            <h3 className="rp-kicker rp-workGroup__title" id="home-primary-cases-title">
+              {lang === "es" ? "Casos principales de producto" : "Primary product cases"}
+            </h3>
+            <div className="rp-worklist rp-reveal" data-evidence="true">
+              {PRIMARY_WORK.map(renderWorkItem)}
+            </div>
+          </section>
+
+          <section
+            className="rp-workGroup rp-workGroup--supporting"
+            aria-labelledby="home-supporting-cases-title"
+          >
+            <h3 className="rp-kicker rp-workGroup__title" id="home-supporting-cases-title">
+              {lang === "es" ? "Evidencia de apoyo" : "Supporting evidence"}
+            </h3>
+            <div className="rp-worklist rp-worklist--supporting rp-reveal" data-evidence="true">
+              {SUPPORTING_WORK.map(renderWorkItem)}
+            </div>
+            <p className="rp-supportingLink">
+              <span>{t("home.riso.supportingKicker")}</span>
+              <Link to="/case-study/mobbin">{t("home.riso.supportingLink")}</Link>
+            </p>
+          </section>
         </div>
       </section>
 
@@ -532,11 +572,22 @@ export default function RisoHome() {
         <div className="rp-wrap rp-close">
           <p className="rp-kicker">{t("home.riso.contactKicker")}</p>
           <h2 id="home-contact-title">{t("home.ctaTitle")}</h2>
-          {/* One label for the contact action site-wide; the address stays
-              visible and selectable so a missing mail client never dead-ends. */}
-          <a className="rp-cta" href="mailto:espositohillary@gmail.com">
-            {t("contact.note")} →
-          </a>
+          {/* The hiring actions stay adjacent; the address remains visible
+              and selectable so a missing mail client never dead-ends. */}
+          <div className="rp-hero__ctas">
+            <a className="rp-cta" href="mailto:espositohillary@gmail.com">
+              {t("contact.note")} →
+            </a>
+            <a
+              className="rp-cta rp-cta--ghost"
+              href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t("nav.resumeAria")}
+            >
+              {lang === "es" ? "Ver CV" : "View résumé"} →
+            </a>
+          </div>
           <p>{t("contact.copy")} espositohillary@gmail.com</p>
         </div>
       </section>

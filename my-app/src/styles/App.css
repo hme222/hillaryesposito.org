@@ -1083,7 +1083,7 @@ textarea::placeholder {
 }
 .recruiter-panel__label {
   font-family: "Space Mono", ui-monospace, monospace;
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 700;

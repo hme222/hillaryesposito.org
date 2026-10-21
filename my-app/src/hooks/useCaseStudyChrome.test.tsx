@@ -4,6 +4,7 @@ import {
   chromeHeight,
   isCaseStudyPath,
   nextChromeState,
+  openHashTargetDisclosure,
   useCaseStudyChrome,
   ChromeState,
   DOWN_DELTA_PX,
@@ -95,8 +96,27 @@ function Harness({ path, hash = "" }: { path: string; hash?: string }) {
       <div id="main-content">
         <nav className="rp-chapters">
           <a href="#far">Far</a>
+          <a
+            href="#hidden-target"
+            onClick={(event) => {
+              event.preventDefault();
+              window.history.replaceState(null, "", "#hidden-target");
+            }}
+          >
+            Hidden evidence
+          </a>
         </nav>
         <section id="far">Far section</section>
+        <button id="focus-keeper" type="button">Keep focus here</button>
+        <section id="visible-target">Visible target</section>
+        <details data-testid="target-disclosure">
+          <summary>Target evidence</summary>
+          <section id="hidden-target">Hidden target</section>
+        </details>
+        <details data-testid="unrelated-disclosure">
+          <summary>Unrelated evidence</summary>
+          <section id="other-hidden-target">Other hidden target</section>
+        </details>
       </div>
     </>
   );
@@ -137,10 +157,15 @@ describe("useCaseStudyChrome", () => {
   beforeEach(() => {
     jest.useFakeTimers();
     matchesReduce = false;
+    window.history.replaceState(null, "", "/case-study/msk");
     Object.defineProperty(window, "scrollY", { configurable: true, value: 0 });
     jest.spyOn(window, "requestAnimationFrame").mockImplementation((cb) => {
       cb(0);
       return 0;
+    });
+    Object.defineProperty(HTMLElement.prototype, "scrollIntoView", {
+      configurable: true,
+      value: jest.fn(),
     });
     window.matchMedia = jest.fn().mockImplementation((query: string) => ({
       matches: query.includes("reduce") ? matchesReduce : false,
@@ -215,6 +240,63 @@ describe("useCaseStudyChrome", () => {
   it("starts tucked on a deep link so the hash target clears the strip alone", () => {
     render(<Harness path="/case-study/ux-woman" hash="#far" />);
     expect(root.classList.contains("cs-chrome--tucked")).toBe(true);
+  });
+
+  it("opens the nearest closed disclosure for an exact hidden target on entry", () => {
+    const { container } = render(<Harness path="/case-study/msk" hash="#hidden-target" />);
+    expect(container.querySelector<HTMLDetailsElement>('[data-testid="target-disclosure"]')?.open).toBe(true);
+    expect(container.querySelector<HTMLDetailsElement>('[data-testid="unrelated-disclosure"]')?.open).toBe(false);
+    expect(HTMLElement.prototype.scrollIntoView).toHaveBeenCalledWith({ block: "start", behavior: "auto" });
+  });
+
+  it("leaves disclosures alone for visible and missing targets", () => {
+    const visible = render(<Harness path="/case-study/msk" hash="#visible-target" />).container;
+    expect(visible.querySelector<HTMLDetailsElement>('[data-testid="target-disclosure"]')?.open).toBe(false);
+    expect(visible.querySelector<HTMLDetailsElement>('[data-testid="unrelated-disclosure"]')?.open).toBe(false);
+    expect(HTMLElement.prototype.scrollIntoView).toHaveBeenCalledWith({ block: "start", behavior: "auto" });
+
+    expect(openHashTargetDisclosure("#missing-target")).toBe(false);
+    expect(visible.querySelector<HTMLDetailsElement>('[data-testid="target-disclosure"]')?.open).toBe(false);
+    expect(visible.querySelector<HTMLDetailsElement>('[data-testid="unrelated-disclosure"]')?.open).toBe(false);
+  });
+
+  it("responds to same-page hash and history changes without stealing focus", () => {
+    const { container } = render(<Harness path="/case-study/msk" />);
+    const focusKeeper = container.querySelector<HTMLButtonElement>("#focus-keeper")!;
+    const targetDisclosure = container.querySelector<HTMLDetailsElement>('[data-testid="target-disclosure"]')!;
+    const unrelatedDisclosure = container.querySelector<HTMLDetailsElement>('[data-testid="unrelated-disclosure"]')!;
+
+    act(() => focusKeeper.focus());
+    expect(document.activeElement).toBe(focusKeeper);
+
+    act(() => {
+      window.history.pushState(null, "", "#hidden-target");
+      window.dispatchEvent(new HashChangeEvent("hashchange"));
+    });
+    expect(targetDisclosure.open).toBe(true);
+    expect(unrelatedDisclosure.open).toBe(false);
+    expect(document.activeElement).toBe(focusKeeper);
+
+    act(() => {
+      window.history.replaceState(null, "", "#other-hidden-target");
+      window.dispatchEvent(new PopStateEvent("popstate"));
+    });
+    expect(unrelatedDisclosure.open).toBe(true);
+    expect(document.activeElement).toBe(focusKeeper);
+  });
+
+  it("reveals a chapter target before replaceState-based jump handling", () => {
+    const { container } = render(<Harness path="/case-study/msk" />);
+    const targetDisclosure = container.querySelector<HTMLDetailsElement>('[data-testid="target-disclosure"]')!;
+    const unrelatedDisclosure = container.querySelector<HTMLDetailsElement>('[data-testid="unrelated-disclosure"]')!;
+
+    act(() => {
+      container.querySelector<HTMLAnchorElement>('a[href="#hidden-target"]')!.click();
+    });
+
+    expect(window.location.hash).toBe("#hidden-target");
+    expect(targetDisclosure.open).toBe(true);
+    expect(unrelatedDisclosure.open).toBe(false);
   });
 
   it("allows transitions only after first paint, and never under reduced motion", () => {

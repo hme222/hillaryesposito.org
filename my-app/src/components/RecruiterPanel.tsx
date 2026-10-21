@@ -89,27 +89,90 @@ export default function RecruiterPanel() {
             </div>
           </section>
 
-          <section className="recruiter-panel__section">
-            <p className="recruiter-panel__label">In one line</p>
-            <p>At MSK, a clinical workflow I initiated contributed to a larger initiative that cut organization-wide electronic medical record costs 20%. I bring six years inside a cancer center and 13+ years of Army service to product decisions, with service design and research built in.</p>
+          <section className="recruiter-panel__section recruiter-panel__intro" aria-labelledby="recruiter-panel-intro-title">
+            <h3 className="recruiter-panel__label" id="recruiter-panel-intro-title">In one line</h3>
+            <p>I turn complex healthcare workflows into testable product decisions. That judgment comes from six years at MSK and 13+ years of Army service.</p>
           </section>
 
-          {/* Moved ahead of "Selected work" so "View résumé" - the action a
-              recruiter most often comes here for - lands in the panel's
-              first viewport at both 390×844 and 1440×900, instead of
-              requiring a scroll past the project list first. */}
-          <section className="recruiter-panel__section recruiter-panel__actions">
-            <a className="recruiter-panel__btn recruiter-panel__btn--primary"
-               href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"
-               target="_blank"
-               rel="noopener noreferrer"
-               aria-label="View résumé (opens in new tab)">
-              <FileText className="recruiter-panel__btn-icon" size="1em" strokeWidth={1.6} aria-hidden="true" focusable="false" /> View résumé
-            </a>
-            <a className="recruiter-panel__btn"
-               href="mailto:espositohillary@gmail.com">
-              <Mail className="recruiter-panel__btn-icon" size="1em" strokeWidth={1.6} aria-hidden="true" focusable="false" /> Email me
-            </a>
+          {/* Résumé and email are the two hiring actions. Keeping only this
+              pair before the work makes the first project visible in the
+              initial mobile viewport; broader exploration follows the work. */}
+          <section className="recruiter-panel__section recruiter-panel__primaryActionsSection" aria-label="Hiring actions">
+            <div className="recruiter-panel__primaryActions">
+              <a className="recruiter-panel__btn recruiter-panel__btn--primary"
+                 href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 aria-label="View résumé (opens in new tab)">
+                <FileText className="recruiter-panel__btn-icon" size="1em" strokeWidth={1.6} aria-hidden="true" focusable="false" /> View résumé
+              </a>
+              <a className="recruiter-panel__btn"
+                 href="mailto:espositohillary@gmail.com">
+                <Mail className="recruiter-panel__btn-icon" size="1em" strokeWidth={1.6} aria-hidden="true" focusable="false" /> Email me
+              </a>
+            </div>
+            {/* Visible, selectable address so the mailto never silent-fails. */}
+            <p className="recruiter-panel__email">
+              or copy: <a href="mailto:espositohillary@gmail.com">espositohillary@gmail.com</a>
+            </p>
+          </section>
+
+          <section className="recruiter-panel__section" aria-labelledby="recruiter-panel-selected-title">
+            <h3 className="recruiter-panel__label" id="recruiter-panel-selected-title">Selected work</h3>
+            <ul className="recruiter-panel__projects">
+              <li>
+                <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/msk")}>
+                  <strong>MSK · A filing queue replaced a four-department paper detour</strong>
+                  <span className="recruiter-panel__project-proof">Mapped the workflow across clinical, IT, document imaging, and operations.</span>
+                  <span className="recruiter-panel__project-status">I initiated the workflow. MSK’s IT and UX teams implemented it later; the 20% result belongs to the larger initiative.</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/grove")}>
+                  <strong>Grove · Twelve features became three</strong>
+                  <span className="recruiter-panel__project-proof">An exploratory 5-user test and 37-person self-report survey narrowed the next build from twelve features to three.</span>
+                  <span className="recruiter-panel__project-status">Functional prototype, Phase 2 of 3. Retest pending.</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/knowunity")}>
+                  <strong>Knowunity · The student's own words are the proof</strong>
+                  <span className="recruiter-panel__project-proof">Solo 2.5-week design sprint with a coded prototype and Storybook catalog, reviewed by Knowunity.</span>
+                  <span className="recruiter-panel__project-status">Built from Knowunity’s brief and component kit. No student testing; not shipped.</span>
+                </button>
+              </li>
+            </ul>
+          </section>
+
+          <section className="recruiter-panel__section" aria-labelledby="recruiter-panel-supporting-title">
+            <h3 className="recruiter-panel__label" id="recruiter-panel-supporting-title">Supporting evidence</h3>
+            <ul className="recruiter-panel__projects">
+              <li>
+                <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/logistics")}>
+                  <strong>Operational delivery · Medical logistics · Resupply went from months to weeks</strong>
+                  <span className="recruiter-panel__project-proof">Redesigned an end-to-end supply service for 5,000+ soldiers across seven aid stations; shared tracking also reduced spending 60%.</span>
+                  <span className="recruiter-panel__project-status">Owner-reported outcomes; original measurement periods and methods are not preserved.</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/ux-woman")}>
+                  <strong>UX Woman · Six healthcare interviews, one hypothesis</strong>
+                  <span className="recruiter-panel__project-proof">Six roles surfaced one repeated gap: staff and patients cannot see who owns the next step.</span>
+                  <span className="recruiter-panel__project-status">Working hypothesis. Five pretotypes designed; none run.</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/mobbin")}>
+                  <strong>Mobbin · 200+ screens per app, searchable by task</strong>
+                  <span className="recruiter-panel__project-proof">Captured, sequenced, annotated, and labeled Kikoff, Polymarket, and Discover during a four-month contract.</span>
+                  <span className="recruiter-panel__project-status">Documentation and taxonomy work. I did not design the source products.</span>
+                </button>
+              </li>
+            </ul>
+          </section>
+
+          <section className="recruiter-panel__section recruiter-panel__actions recruiter-panel__actions--secondary" aria-labelledby="recruiter-panel-more-title">
+            <h3 className="recruiter-panel__label" id="recruiter-panel-more-title">More ways to explore</h3>
             <a className="recruiter-panel__btn"
                href="https://www.linkedin.com/in/hillaryesposito/"
                target="_blank"
@@ -136,41 +199,6 @@ export default function RecruiterPanel() {
               <AskBirdIcon className="recruiter-panel__btn-icon recruiter-panel__btn-icon--bird" /> Ask a question
             </button>}
           </section>
-
-          <section className="recruiter-panel__section">
-            <p className="recruiter-panel__label">Selected work</p>
-            <ul className="recruiter-panel__projects">
-              <li>
-                <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/msk")}>
-                  <strong>MSK · A filing queue replaced a four-department paper detour</strong>
-                  <span>Mapped across clinical, IT, HIM (document imaging), and operations; the workflow I initiated contributed to a larger initiative that cut organization-wide electronic medical record costs 20%</span>
-                </button>
-              </li>
-              <li>
-                <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/ux-woman")}>
-                  <strong>UX Woman · Six healthcare interviews, one hypothesis</strong>
-                  <span>Six roles: patient financial services, revenue operations, orthopedic physician assistant, utilization-review nurse, psychiatrist, and former health-plan member services; staff and patients cannot see who owns the next step. A hypothesis, not a conclusion: five pretotypes designed, none run</span>
-                </button>
-              </li>
-              <li>
-                <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/logistics")}>
-                  <strong>Medical logistics · Resupply went from months to weeks</strong>
-                  <span>Redesigned an end-to-end supply service for 5,000+ soldiers across seven aid stations; shared tracking also reduced spending 60%</span>
-                </button>
-              </li>
-              <li>
-                <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/grove")}>
-                  <strong>Grove · Twelve features became three</strong>
-                  <span>Functional prototype, Phase 2 of 3; a 37-person self-report survey narrowed the next build from twelve features to three</span>
-                </button>
-              </li>
-            </ul>
-          </section>
-
-          {/* Visible, selectable address so the mailto never silent-fails. */}
-          <p className="recruiter-panel__email">
-            or copy: <a href="mailto:espositohillary@gmail.com">espositohillary@gmail.com</a>
-          </p>
         </div>
       </div>
     </Modal>

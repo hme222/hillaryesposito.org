@@ -18,7 +18,17 @@ import React, { useEffect, useId, useLayoutEffect, useRef, useState } from "reac
  * @status: stable
  * @purpose: Inline glossary term: a dotted-underline button whose definition opens on hover, keyboard focus, or tap (pinned), and is always exposed as the button's accessible description via aria-describedby. Escape and an outside tap close it; it clamps itself inside the viewport, has a 44px tap area, and skips its fade under reduced motion. Use it for a later use of a short form on a page that already spelled it out, or in a label too tight for the long form. One per term per page. For the MSK queue's own MRN/EMR legend, use MSKDashboardMockup's built-in glossary instead.
  */
-export default function Term({ children, def }: { children: React.ReactNode; def: string }) {
+export default function Term({
+  children,
+  def,
+  tabStop = true,
+}: {
+  children: React.ReactNode;
+  def: string;
+  /** False keeps the term out of the Tab order (hover, tap and the accessible
+   *  description still work), so a hero's main action is the first stop. */
+  tabStop?: boolean;
+}) {
   const reactId = useId();
   const tipId = `term-${reactId.replace(/[^a-zA-Z0-9_-]/g, "")}`;
   const wrapRef = useRef<HTMLSpanElement>(null);
@@ -89,6 +99,7 @@ export default function Term({ children, def }: { children: React.ReactNode; def
         type="button"
         className="term__trigger"
         aria-describedby={tipId}
+        tabIndex={tabStop ? undefined : -1}
         onFocus={(event) => {
           // Keyboard focus opens it. A tap or click also focuses the button,
           // so pointer focus leaves opening to the click, which can toggle.
@@ -129,7 +140,11 @@ export default function Term({ children, def }: { children: React.ReactNode; def
  * Wrap the first occurrence of each listed term in a Term, leaving the rest of
  * the string as plain text. For translated strings that arrive as one value.
  */
-export function glossTerms(text: string, terms: Record<string, string>): React.ReactNode[] {
+export function glossTerms(
+  text: string,
+  terms: Record<string, string>,
+  options: { tabStop?: boolean } = {}
+): React.ReactNode[] {
   const found = Object.keys(terms)
     .map((term) => {
       const match = new RegExp(`(^|[^\\p{L}\\p{N}])(${term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})(?![\\p{L}\\p{N}])`, "u").exec(text);
@@ -143,7 +158,7 @@ export function glossTerms(text: string, terms: Record<string, string>): React.R
   found.forEach(({ term, index }) => {
     if (index < cursor) return;
     out.push(text.slice(cursor, index));
-    out.push(<Term key={`${term}-${index}`} def={terms[term]}>{term}</Term>);
+    out.push(<Term key={`${term}-${index}`} def={terms[term]} tabStop={options.tabStop}>{term}</Term>);
     cursor = index + term.length;
   });
   out.push(text.slice(cursor));

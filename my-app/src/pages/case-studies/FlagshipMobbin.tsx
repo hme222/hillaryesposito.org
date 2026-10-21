@@ -120,8 +120,6 @@ export default function FlagshipMobbin() {
       {/* The "Documentation trace" evidence-poster section was removed on
           2026-08-03, matching Grove and MSK. */}
 
-      <div data-evidence="true"><MobbinIndexLens /></div>
-
       <section className="rp-section" id="mobbin-work" data-language-anchor="mobbin-work">
         <div className="rp-wrap">
           <p className="rp-kicker">The method · judgment before capture</p>
@@ -157,22 +155,35 @@ export default function FlagshipMobbin() {
         )}
       /></div>
 
-      <section className="rp-section" id="mobbin-apps" data-language-anchor="mobbin-apps">
-        <div className="rp-wrap">
-          <p className="rp-kicker">The apps</p>
-          <h2 className="rp-title">Kikoff proves, Polymarket discloses, Discover keeps it familiar.</h2>
-          <div data-evidence="true"><ScreenSequence label="Documented finance app sequence" items={APPS} /></div>
+      <details className="rp-deepDive">
+        <summary>
+          <span className="rp-deepDive__copy">
+            <span className="rp-deepDive__meta">Optional documentation evidence</span>
+            <b className="rp-deepDive__title">Explore the complete three-app capture archive</b>
+          </span>
+          <span className="rp-deepDive__state" aria-hidden="true">
+            <span className="rp-deepDive__stateClosed">Open</span>
+            <span className="rp-deepDive__stateOpen">Close</span>
+          </span>
+        </summary>
+        <div data-evidence="true"><MobbinIndexLens /></div>
+        <section className="rp-section" id="mobbin-apps" data-language-anchor="mobbin-apps">
+          <div className="rp-wrap">
+            <p className="rp-kicker">The apps</p>
+            <h2 className="rp-title">Kikoff proves, Polymarket discloses, Discover keeps it familiar.</h2>
+            <div data-evidence="true"><ScreenSequence label="Documented finance app sequence" items={APPS} /></div>
 
-          <a
-            className="fp-proofLink"
-            href="https://mobbin.com/finance"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span>Verify it · Mobbin Finance+</span><b className="rp-ext">The library these screens went into</b><span className="sr-only"> (opens in new tab)</span>
-          </a>
-        </div>
-      </section>
+            <a
+              className="fp-proofLink"
+              href="https://mobbin.com/finance"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>Verify it · Mobbin Finance+</span><b className="rp-ext">The library these screens went into</b><span className="sr-only"> (opens in new tab)</span>
+            </a>
+          </div>
+        </section>
+      </details>
 
       <div data-evidence="true"><EvidenceField
         id="mobbin-outcomes"
@@ -198,7 +209,7 @@ export default function FlagshipMobbin() {
         </div>
       </section>
 
-      <Link className="rp-next" to="/case-study/grove"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Grove</p><p className="rp-next__tag">Plant-care prototype · Phase 2 of 3</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
+      <Link className="rp-next" to="/case-study/msk"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Memorial Sloan Kettering</p><p className="rp-next__tag">Clinical systems · 21,000+ clinicians and staff</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
     </main>
   );
 }

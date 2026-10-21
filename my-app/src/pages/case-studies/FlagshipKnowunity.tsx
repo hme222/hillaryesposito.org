@@ -160,16 +160,11 @@ export default function FlagshipKnowunity() {
             <span className="rp-eyebrow">Knowunity · Say It Back · design-sprint prototype</span>
             <span className="rp-readtime"><b>4 min</b><span>read · 2.5-week sprint, solo</span></span>
             <p className="rp-sub">
-              Knowunity is a study app for students. A student says a definition out loud; Knowunity's assistant,
-              Knowie, replies in text. On a clean pass it quotes the student's <b>own words</b> back as
-              the{"\u00a0"}proof. Solo, 2.5-week Yummy Labs AI Design Sprint on Knowunity's brief; working prototype on their
-              component kit.
+              After a student says a definition aloud, Knowie answers in text and quotes the student’s own words back as proof. I designed the flow and built the prototype in a solo 2.5-week sprint.
             </p>
-            <dl className="rp-heroEvidence" aria-label="Knowunity case evidence at a glance">
-              <div><dt>Role</dt><dd>Solo entry · Yummy Labs AI Design Sprint · Knowunity's brief and kit</dd></div>
-              <div><dt>Brief</dt><dd>Voice in, text out · iOS, 390px, dark mode · recall mocked: no speech recognition, hold time decides the result</dd></div>
-              <div><dt>My contribution</dt><dd>Flows and decisions · coded prototype · Storybook catalog</dd></div>
-              <div><dt>Outcome</dt><dd>Yummy Labs AI Design Sprinter badge · reviewed by Knowunity · not a shipped feature</dd></div>
+            <dl className="rp-heroEvidence rp-heroEvidence--boundary" aria-label="Knowunity build and evidence boundary">
+              <div><dt>Built by me</dt><dd>Four interaction decisions · coded prototype · Storybook catalog</dd></div>
+              <div><dt>Boundary</dt><dd>Knowunity supplied the brief and kit · recall mocked · no student testing · not shipped</dd></div>
             </dl>
             {/* The tour sits beside the hero action, not in the breadcrumb row,
                 which pushed the H1 down on phones (2026-10-16). */}
@@ -197,7 +192,7 @@ export default function FlagshipKnowunity() {
               decoding="async"
             />
           </div>
-          <div className="fp-artifactLabel"><span>DESIGN SPRINT · 2026</span><b>Working Next.js prototype · 43 routes · recall mocked</b></div>
+          <div className="fp-artifactLabel"><span>DESIGN SPRINT · 2026</span><b>Working Next.js prototype · recall mocked</b></div>
         </div>
       </header>
 
@@ -208,13 +203,6 @@ export default function FlagshipKnowunity() {
           <p className="rp-lede">After revising, a student has seen the material but hasn't proved they can pull it back out. Quizzes test recognition. Nothing makes them say it.</p>
           <p className="rp-body">Knowunity's brief asked for a felt “I actually know this now.” The goals, in words: more students who see the step start it, and more of those who start it finish it.</p>
           <p className="rp-body">Mid-sprint, Knowunity shipped a light beta. The brief said to treat it as one team's first pass and find where the stronger version is, not copy it.</p>
-          <p className="rp-kicker fp-constraintKicker">What did not move</p>
-          <dl className="fp-constraintAnnotations fp-constraintAnnotations--four rp-reveal">
-            <div><dt>Voice in, text out</dt><dd>Knowie never speaks.</dd></div>
-            <div><dt>Push to talk</dt><dd>The student starts and stops the recording. No guessing when they're done.</dd></div>
-            <div><dt>Never trap the student</dt><dd>Every required action has a way out, including for someone who can't speak right now.</dd></div>
-            <div><dt>Judge generously</dt><dd>A false “wrong” costs more here than in multiple choice.</dd></div>
-          </dl>
         </div>
       </section>
 
@@ -261,12 +249,8 @@ export default function FlagshipKnowunity() {
           <p className="rp-lede">Every screen is its own route, reached by tapping. Storybook is the component catalog.</p>
           <div className="fp-workSplit rp-reveal" data-evidence="true">
             <article><span>Knowunity supplied</span><h3>The brand and the parts</h3><p>Knowie, the Greed font, their Figma kit, and access to the live app and the beta.</p></article>
-            <article><span>I did</span><h3>The flows, the decisions, the code</h3><p>Next.js prototype, 43 routes, 390px dark mode, plus a Storybook catalog built on their kit.</p></article>
+            <article><span>I did</span><h3>The flows, the decisions, the direction</h3><p>Next.js prototype, 43 routes, 390px dark mode, plus a Storybook catalog built on their kit; implementation was AI-assisted.</p></article>
           </div>
-          <p className="fp-ownership fp-ownership--paper rp-reveal">
-            <b>AI in the build</b>
-            I designed and directed. Claude Code wrote most of the Next.js and Storybook code from my specs and Knowunity's Figma components.
-          </p>
           <CaseStudyReel reel={REEL} />
           <div className="rp-hero__ctas">
             <a className="rp-cta" href={PROTOTYPE_URL} target="_blank" rel="noopener noreferrer">
@@ -279,6 +263,34 @@ export default function FlagshipKnowunity() {
           <p className="fp-knowunityMockNote">No speech recognition: how long you hold the mic decides the result. Question 2's first try is scripted to mishear so that state is always seen.</p>
         </div>
       </section>
+
+      <details className="rp-deepDive">
+        <summary>
+          <span className="rp-deepDive__copy">
+            <span className="rp-deepDive__meta">Optional implementation evidence</span>
+            <b className="rp-deepDive__title">Inspect all Knowunity implementation decisions</b>
+          </span>
+          <span className="rp-deepDive__state" aria-hidden="true">
+            <span className="rp-deepDive__stateClosed">Open</span>
+            <span className="rp-deepDive__stateOpen">Close</span>
+          </span>
+        </summary>
+        <section className="rp-section">
+          <div className="rp-wrap">
+            <p className="rp-kicker fp-constraintKicker">What did not move</p>
+            <dl className="fp-constraintAnnotations fp-constraintAnnotations--four rp-reveal">
+              <div><dt>Voice in, text out</dt><dd>Knowie never speaks.</dd></div>
+              <div><dt>Push to talk</dt><dd>The student starts and stops the recording. No guessing when they're done.</dd></div>
+              <div><dt>Never trap the student</dt><dd>Every required action has a way out, including for someone who can't speak right now.</dd></div>
+              <div><dt>Judge generously</dt><dd>A false “wrong” costs more here than in multiple choice.</dd></div>
+            </dl>
+            <p className="fp-ownership fp-ownership--paper rp-reveal">
+              <b>AI in the build</b>
+              I designed and directed. Claude Code wrote most of the Next.js and Storybook code from my specs and Knowunity's Figma components.
+            </p>
+          </div>
+        </section>
+      </details>
 
       <div data-evidence="true"><EvidenceField
         id="knowunity-outcomes"

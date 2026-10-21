@@ -79,3 +79,34 @@ describe("Term", () => {
     expect(container.querySelector(".term__trigger")).toBeNull();
   });
 });
+
+describe("Term tabStop", () => {
+  let container: HTMLDivElement;
+  let root: Root;
+
+  beforeAll(() => {
+    (globalThis as typeof globalThis & { IS_REACT_ACT_ENVIRONMENT: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
+  });
+  beforeEach(() => {
+    container = document.createElement("div");
+    document.body.appendChild(container);
+    root = createRoot(container);
+  });
+  afterEach(() => {
+    act(() => root.unmount());
+    container.remove();
+  });
+
+  it("keeps a term in the Tab order by default and out of it when tabStop is false", async () => {
+    await act(async () => root.render(<p><Term def="One.">A</Term> <Term def="Two." tabStop={false}>B</Term></p>));
+    const [first, second] = Array.from(container.querySelectorAll<HTMLButtonElement>(".term__trigger"));
+    expect(first.hasAttribute("tabindex")).toBe(false);
+    expect(second.getAttribute("tabindex")).toBe("-1");
+    expect(second.getAttribute("aria-describedby")).toBeTruthy();
+  });
+
+  it("passes tabStop through glossTerms", async () => {
+    await act(async () => root.render(<p>{glossTerms("Built by IT.", { IT: "Information technology." }, { tabStop: false })}</p>));
+    expect(container.querySelector(".term__trigger")!.getAttribute("tabindex")).toBe("-1");
+  });
+});

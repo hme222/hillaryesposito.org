@@ -312,11 +312,40 @@
   border-top: 1px solid var(--border);
 }
 .recruiter-panel__vitals { padding-top: 0; border-top: 0; }
+.recruiter-panel__intro {
+  margin-bottom: 1rem;
+  padding-top: .9rem;
+  padding-bottom: 1rem;
+}
+.recruiter-panel__primaryActionsSection {
+  margin-bottom: 1.25rem;
+  padding-top: 0;
+  padding-bottom: 1.1rem;
+  border-top: 0;
+}
+.recruiter-panel__primaryActions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .55rem;
+}
+.recruiter-panel__primaryActions .recruiter-panel__btn {
+  padding-inline: .65rem;
+}
+.recruiter-panel__primaryActionsSection .recruiter-panel__email {
+  margin-top: .45rem;
+}
 .recruiter-panel__project {
   border-radius: 0;
   border-width: 0 0 1px;
   background: transparent;
   padding: 1rem 0;
+}
+.recruiter-panel__project::after { grid-row: 1 / -1; }
+.recruiter-panel__project-status {
+  margin-top: .2rem;
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: .75rem !important;
+  line-height: 1.45 !important;
 }
 .recruiter-panel__project:first-child { border-top: 1px solid var(--border); }
 .recruiter-panel__project:hover {

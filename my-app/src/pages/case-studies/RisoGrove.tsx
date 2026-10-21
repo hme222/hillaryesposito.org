@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
@@ -137,6 +137,11 @@ const DECISIONS = [
   },
 ];
 
+// The three directions are compared together below. One representative
+// first-build artifact then anchors the transition into the detailed reminder
+// decision, instead of charging recruiters three full screen-height repeats.
+const FEATURED_DECISION = DECISIONS[0];
+
 // Decisions from the first build, with one correction still being designed.
 const OVERRIDES: Array<{ topic: string; ai: string; me: string; why: string; next?: boolean }> = [
   { topic: "Reminder tone", ai: "Guilt and urgency.", me: "One calm morning summary.", why: "Notifications are the #1 reason people delete a plant app." },
@@ -149,37 +154,6 @@ const OVERRIDES: Array<{ topic: string; ai: string; me: string; why: string; nex
 export default function RisoGrove() {
   const { lang } = useLanguage();
   usePageTitle("Grove — Research-to-Scope Case Study", lang !== "es");
-
-  const revealHashTarget = useCallback(() => {
-    const targetId = window.location.hash.slice(1);
-    if (!targetId) return;
-    const target = document.getElementById(targetId);
-    if (!target) return;
-
-    const details = target.matches("details")
-      ? target as HTMLDetailsElement
-      : target.closest<HTMLDetailsElement>("details");
-    if (details) details.open = true;
-
-    target.scrollIntoView({ block: "start", behavior: "auto" });
-    if (details) {
-      details.querySelector<HTMLElement>("summary")?.focus({ preventScroll: true });
-    }
-  }, []);
-
-  // Let a direct chapter URL land after the lazy route and global route-focus
-  // work have committed. Same-page chapter links already use native anchors;
-  // this closes the cold-load case used for owner review and shared links. A
-  // target inside native details opens only when explicitly requested; normal
-  // Grove visits preserve the collapsed optional-depth state.
-  useEffect(() => {
-    const timer = window.setTimeout(revealHashTarget, 0);
-    window.addEventListener("hashchange", revealHashTarget);
-    return () => {
-      window.clearTimeout(timer);
-      window.removeEventListener("hashchange", revealHashTarget);
-    };
-  }, [revealHashTarget]);
 
   // Scroll-reveal — fade/rise sections in as they enter view (Carmen-style
   // motion). Shared with useFlagshipReveal so the reveal + proximity-armed
@@ -285,23 +259,22 @@ export default function RisoGrove() {
               <span>read · Phase 2 of 3</span>
             </span>
             <p className="rp-sub">
-              An exploratory 5-user test showed people got lost; a 37-person survey then narrowed twelve features to three.
-              I am the sole designer; <b>the redesign and retest are still in progress</b>.
+              I tested the first build with 5 people, then used a 37-person self-report survey to rank what earned the next build. The evidence cut twelve features to three.
             </p>
-            <dl className="rp-heroEvidence" aria-label="Grove case evidence at a glance">
-              <div><dt>Role</dt><dd>Sole product designer · end to end</dd></div>
-              <div><dt>Method</dt><dd>Exploratory test → 37-person survey</dd></div>
-              <div><dt>Decision</dt><dd>12 features → 3 launch priorities</dd></div>
-              <div><dt>Build</dt><dd>Working React prototype · AI-assisted implementation</dd></div>
-              <div><dt>State</dt><dd>Phase 2 of 3 · redesign direction · retest pending</dd></div>
-            </dl>
+            <div className="rp-heroEvidence rp-heroEvidence--trace" aria-label="Grove research-to-priority trace">
+              <ol>
+                <li><span>01 · 5-user test</span><b>Found navigation confusion</b></li>
+                <li><span>02 · 37-person survey</span><b>Ranked launch dealbreakers</b></li>
+                <li><span>03 · 3 priorities</span><b>Reminders · plant ID · personality</b></li>
+              </ol>
+              <p><span>Current state</span>Phase 2 of 3 · redesign directions set; high-fidelity screens and retest remain.</p>
+            </div>
             {/* The tour sits beside the hero action, not in the breadcrumb row,
                 which pushed the H1 down on phones (2026-10-16). */}
             <div className="rp-hero__ctas rp-hero__ctas--tour">
               <a
                 className="rp-cta"
                 href="#grove-prototype"
-                onClick={() => window.setTimeout(revealHashTarget, 0)}
               >
                 Try the working browser prototype →
               </a>
@@ -360,42 +333,48 @@ export default function RisoGrove() {
 
           <aside className="rp-note rp-reveal" aria-label="Grove research evidence boundary" style={{ "--rp-reveal-stagger": "180ms" } as React.CSSProperties}>
             <span className="rp-note__k">What this evidence can say</span>
-            <p>Self-report prioritized the next build; it does not prove behavior or demand. The moderated test that came before it (March–May 2026) showed people were confused, not what to build instead — its task records aren't preserved, so no broader claim is made from either study.</p>
+            <p>Self-report prioritized the next build; it does not prove behavior or demand. The moderated test showed confusion, but its task records are not preserved.</p>
           </aside>
 
           <h3 className="rp-subhead">What they wanted, and what waited</h3>
           <p className="rp-lede">The top {countWord(CORE_FEATURES.length)} entered the core.</p>
-          {/* Core rows stay visible; the rest fold behind a native disclosure
-              (density pass, 2026-10-16). Counts derive from MVP_FEATURES so the
-              summary stays true when the survey data updates. */}
+          {/* Core rows stay visible; lower-ranked evidence moves into the
+              research disclosure below. Counts still derive from MVP_FEATURES. */}
           <ol className="rp-rank rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "270ms" } as React.CSSProperties}>
             {CORE_FEATURES.map(renderRankRow)}
           </ol>
-          {LATER_FEATURES.length > 0 && (
-            <details className="rp-acc rp-rankMore">
-              <summary>Show the {countWord(LATER_FEATURES.length)} that waited</summary>
-              <ol className="rp-rank" start={CORE_FEATURES.length + 1}>
-                {LATER_FEATURES.map(renderRankRow)}
-              </ol>
-            </details>
-          )}
-
-          <figure className="rp-quoteCard rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "360ms" } as React.CSSProperties}>
-            <blockquote>“Any generative AI in this will remove any sense of trust.”</blockquote>
-            <figcaption>
-              Florist · unprompted. I removed AI-written care sheets from scope.
-            </figcaption>
-          </figure>
         </div>
       </section>
 
       <details className="rp-deepDive">
         <summary>
-          <span>Optional artifact set</span>
-          <b>Inspect all six first-build screens</b>
+          <span className="rp-deepDive__copy">
+            <span className="rp-deepDive__meta">Optional research depth and artifact set</span>
+            <b className="rp-deepDive__title">Inspect Grove's complete research evidence</b>
+          </span>
+          <span className="rp-deepDive__state" aria-hidden="true">
+            <span className="rp-deepDive__stateClosed">Open</span>
+            <span className="rp-deepDive__stateOpen">Close</span>
+          </span>
         </summary>
-        <section className="rp-section" data-language-anchor="grove-decisions">
+        <section className="rp-section">
           <div className="rp-wrap">
+            {LATER_FEATURES.length > 0 && (
+              <>
+                <h3 className="rp-subhead">The {countWord(LATER_FEATURES.length)} that waited</h3>
+                <ol className="rp-rank" start={CORE_FEATURES.length + 1}>
+                  {LATER_FEATURES.map(renderRankRow)}
+                </ol>
+              </>
+            )}
+
+            <figure className="rp-quoteCard rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "360ms" } as React.CSSProperties}>
+              <blockquote>“Any generative AI in this will remove any sense of trust.”</blockquote>
+              <figcaption>
+                Florist · unprompted. I removed AI-written care sheets from scope.
+              </figcaption>
+            </figure>
+
             <p className="rp-kicker">The first working version</p>
             <h2 className="rp-title">The complete first build, screen by screen.</h2>
             <p className="rp-lede">Prototype screens, not finished redesigns.</p>
@@ -410,24 +389,29 @@ export default function RisoGrove() {
           <p className="rp-kicker">What the evidence says to build next</p>
           <h2 className="rp-title">Three features, one testable direction each.</h2>
           <PhaseIndicator current={2} label="In progress · Phase 2 of 3" />
-          <p className="rp-lede" style={{ marginTop: "1.1rem" }}>Each direction is paired with the first-build screen it would change. These are not completed redesigns.</p>
-          {DECISIONS.map((d) => (
-            <div className="rp-decision rp-reveal" key={d.feature} data-evidence="true">
-              <p className="rp-decision__feature">{d.feature}</p>
-              <div className="rp-decision__pair">
-                <div className="rp-decision__col">
-                  <span className="rp-decision__tag rp-decision__tag--old">First build</span>
-                  <div className="rp-device rp-device--app" style={{ background: d.oldBg }}>
-                    <img src={`/assets/grove/${d.old}`} alt={d.oldAlt} loading="lazy" />
-                  </div>
-                </div>
-                <div className="rp-decision__col rp-decision__col--dir">
-                  <span className="rp-decision__tag rp-decision__tag--new">Next design</span>
-                  <p className="rp-decision__dirText">{d.why}</p>
+          <p className="rp-lede" style={{ marginTop: "1.1rem" }}>The three directions stay visible together. They are decisions for the next prototype, not completed redesigns.</p>
+          <dl className="rp-decisionRecord rp-decisionRecord--grove rp-reveal" aria-label="Grove's three next-design directions" data-evidence="true">
+            {DECISIONS.map((decision) => (
+              <div key={decision.feature}>
+                <dt>{decision.feature}</dt>
+                <dd>{decision.why}</dd>
+              </div>
+            ))}
+          </dl>
+          <figure className="rp-decision rp-reveal" data-evidence="true">
+            <div className="rp-decision__pair">
+              <div className="rp-decision__col">
+                <span className="rp-decision__tag rp-decision__tag--old">Representative first-build artifact</span>
+                <div className="rp-device rp-device--app" style={{ background: FEATURED_DECISION.oldBg }}>
+                  <img src={`/assets/grove/${FEATURED_DECISION.old}`} alt={FEATURED_DECISION.oldAlt} loading="lazy" />
                 </div>
               </div>
+              <figcaption className="rp-decision__col rp-decision__col--dir">
+                <span className="rp-decision__tag rp-decision__tag--new">Why this one leads</span>
+                <p className="rp-decision__dirText">The reminder screen carries the clearest research-to-design change. The next chapter shows how its tone and care logic change.</p>
+              </figcaption>
             </div>
-          ))}
+          </figure>
           <p className="rp-note" style={{ marginTop: "clamp(2rem, 5vw, 3.5rem)" }}>
             <span className="rp-note__k">What remains</span>
             First-build screens. High-fidelity redesign, edge states, and retest remain unbuilt. Phase 2 of 3.
@@ -467,6 +451,28 @@ export default function RisoGrove() {
             is, and its sources. False certainty is the fastest way to lose trust.
           </p>
 
+        </div>
+      </section>
+
+      {/* The specimen library is valuable to a design-systems reviewer, but it
+          is secondary to the research-to-decision story. Keep it inspectable
+          without charging every recruiter the full scroll cost. */}
+      <details className="rp-deepDive rp-deepDive--system" id="grove-prototype">
+        <summary>
+          <span className="rp-deepDive__copy">
+            <span className="rp-deepDive__meta">Prototype on this page · React + TypeScript · Phase 2 of 3</span>
+            <b className="rp-deepDive__title">Try the full Grove prototype system</b>
+          </span>
+          <span className="rp-deepDive__state" aria-hidden="true">
+            <span className="rp-deepDive__stateClosed">Open</span>
+            <span className="rp-deepDive__stateOpen">Close</span>
+          </span>
+        </summary>
+        <section className="rp-section" data-language-anchor="grove-prototype">
+          <div className="rp-wrap">
+          <p className="rp-phase">Prototype proof <span>· interactive</span></p>
+          <h2 className="rp-title" style={{ marginTop: ".4rem" }}>Try the working{"\u00a0"}prototype.</h2>
+          <p className="rp-lede">Three keyboard-operable interactions first; tokens and implementation detail follow.</p>
           <h3 className="rp-subhead">How I built the prototype</h3>
           <dl className="rp-decisionRecord" data-evidence="true">
             <div><dt>Source of truth</dt><dd>The working React prototype, not a static handoff artifact.</dd></div>
@@ -495,22 +501,6 @@ export default function RisoGrove() {
               </div>
             </>
           )}
-        </div>
-      </section>
-
-      {/* The specimen library is valuable to a design-systems reviewer, but it
-          is secondary to the research-to-decision story. Keep it inspectable
-          without charging every recruiter the full scroll cost. */}
-      <details className="rp-deepDive rp-deepDive--system" id="grove-prototype">
-        <summary>
-          <span>Prototype on this page · React + TypeScript · Phase 2 of 3</span>
-          <b>Try the care, confidence, and safety interactions</b>
-        </summary>
-        <section className="rp-section" data-language-anchor="grove-prototype">
-          <div className="rp-wrap">
-          <p className="rp-phase">Prototype proof <span>· interactive</span></p>
-          <h2 className="rp-title" style={{ marginTop: ".4rem" }}>Try the working{"\u00a0"}prototype.</h2>
-          <p className="rp-lede">Three keyboard-operable interactions first; tokens and implementation detail follow.</p>
           {/* The app's own components, documented in Storybook from the Grove
               repo (deployed separately at grove-ui.hillaryesposito.org). */}
           <p>
@@ -599,20 +589,20 @@ export default function RisoGrove() {
           <p>
             Top guesses, how sure it is, and where that came from: Grove’s plant ID is my small version of a problem clinical tools have too.
           </p>
-          {/* Same action and wording as MSK and Mobbin — the three studies form
-              a loop, so the closing move should not change between them. */}
+          {/* The closing action stays consistent across the complete case-study
+              sequence so the next step remains predictable. */}
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
           <ShareCaseStudy title="Grove — a case study by Hillary Esposito" icon="🌱" />
         </div>
       </section>
 
       {/* NEXT CASE STUDY */}
-      <Link className="rp-next" to="/case-study/ux-woman">
+      <Link className="rp-next" to="/case-study/knowunity">
         <div className="rp-next__inner">
           <div>
             <p className="rp-next__eyebrow">Next case study</p>
-            <p className="rp-next__title">UX Woman</p>
-            <p className="rp-next__tag">Healthcare research · six interviews, research phase</p>
+            <p className="rp-next__title">Knowunity</p>
+            <p className="rp-next__tag">Design sprint · mocked voice recall, not shipped</p>
           </div>
           <span className="rp-next__arrow" aria-hidden="true">→</span>
         </div>
