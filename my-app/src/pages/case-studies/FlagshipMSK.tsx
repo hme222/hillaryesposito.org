@@ -219,7 +219,7 @@ export default function FlagshipMSK() {
         />
         <div className="rp-hero__content">
           <div className="rp-clearing">
-            <h1 className="rp-h1">A filing <span className="rp-keep">queue replaced</span> <span className="rp-keep">a four-department</span> paper{"\u00a0"}detour.</h1>
+            <h1 className="rp-h1">One queue. Four teams.</h1>
             <span className="rp-eyebrow">Memorial Sloan Kettering · clinical systems</span>
             <span className="rp-readtime"><b>6 min</b><span>read · 6 years, 3 roles</span></span>
             <p className="rp-sub">
@@ -229,8 +229,8 @@ export default function FlagshipMSK() {
             <dl className="rp-heroEvidence rp-heroEvidence--workflow" aria-label="MSK case evidence at a glance">
               {/* Two rows since 2026-10-16: contribution, implementation, and
                   evidence restated the sub above and the provenance note below. */}
-              <div><dt>Role progression</dt><dd>Office Coordinator → Administrative Assistant → Training Facilitator (retitled Trainer I Specialist)</dd></div>
-              <div><dt>Contribution</dt><dd>Service design · process improvement · UX/product</dd></div>
+              <div><dt>Role route</dt><dd>Office Coordinator → Administrative Assistant → Training Facilitator (retitled Trainer I Specialist)</dd></div>
+              <div><dt>Design thread</dt><dd>Service design → process improvement → UX/product</dd></div>
             </dl>
             {/* The tour sits beside the hero action, not in the breadcrumb row,
                 which pushed the H1 down on phones (2026-10-16). */}

@@ -1,7 +1,7 @@
 # Healthcare Product Designer Recut — Implementation Plan
 
 _Date: 2026-10-19_  
-_Status: Feature structure and UX correction pass complete; awaiting owner approval for Visual queue_  
+_Status: Visual refinement checkpoint approved; locally verified and ready for the next bounded recut slice_
 _Profile: Standard_  
 _Recovery HEAD: `dcc42f8f7f5596864840a9bb2a5bc97f72251dd4`_
 
@@ -126,7 +126,7 @@ The initial verdict was **Revise before Visual queue**. The 2026-10-20 correctio
 5. Restructure Grove's three product directions into one accessible scan-first comparison while keeping the evidence boundary, trust decision, Phase 2 state, limitation, and next test visible.
 6. Replace or validate `Delivery Evidence` with plain recruiter-facing language and split clause-heavy panel summaries into a proof line plus a status/limitation line.
 
-**Acceptance:** met. The checkpoint's five Major findings are resolved; the specified Home hierarchy, first mobile panel viewport, next-case sequence, delayed-focus regression, Grove evidence spine, recruiter-panel heading navigation, and user-input cancellation pass rendered, automated, heuristic, and accessibility re-checks. Hillary must still approve the corrected structure before Task 10.
+**Acceptance:** met. The checkpoint's five Major findings are resolved; the specified Home hierarchy, first mobile panel viewport, next-case sequence, delayed-focus regression, Grove evidence spine, recruiter-panel heading navigation, and user-input cancellation pass rendered, automated, heuristic, and accessibility re-checks. Hillary approved entry to Task 10 on 2026-10-21.
 
 ## Visual queue
 
@@ -140,6 +140,8 @@ The initial verdict was **Revise before Visual queue**. The 2026-10-20 correctio
 - Add no decorative treatment that competes with product evidence.
 
 **Acceptance:** the shared pattern feels coherent without making all six cases look structurally identical.
+
+**Result — 2026-10-21:** Pass. The shared native disclosure gained explicit Open/Close state, stronger wrapping/focus behavior, and 72px minimum summary rows. The three primary openings now use visibly different evidence compositions: MSK workflow handoff, Grove research progression, and Knowunity build/boundary fields. All three H1s hold to two lines at 320 and 390, and live browser checks found no horizontal overflow. A fresh blind anti-AI pass approved entry to refinement; the added `design-taste-frontend` review removed the newly introduced 01/02/03 hero ledger and exposed the remaining deliberate Riso-system conflict for later system-level review.
 
 ## Verification and Bug queue
 
@@ -164,6 +166,8 @@ Run and document:
 15. Design-state and review-record update.
 
 Repair failures in the Bug queue, rerun the smallest affected checks, then rerun the release gates.
+
+**Result — 2026-10-21:** Pass locally with one documented taste-system exception. The full suite passes 232/232; the final flagship accessibility matrix passes 76/76; TypeScript, optimized build, registry freshness, house-style final, tell scan, and diff checks pass. Live responsive checks cover 320, 390, 720 short-landscape / 200%-equivalent width, 900, and 1440 with no horizontal overflow. The recruiter panel keeps résumé, email, Selected work, and MSK in its first 390×844 viewport. Native disclosures toggle with Space; representative dark mode passes and the user state was restored. Fresh blind anti-AI review passed entry to Visual refinement. The strict `design-taste-frontend` lint remains red on the established Riso eyebrow/mono/hairline/numbering language; the exception and raw-versus-capped scores are recorded in `design-docs/reviews/2026-10-21-healthcare-recut-design-taste-frontend.md`. Real recruiter and assistive-technology sessions remain external validation.
 
 ## Default-path evaluation checklist
 

@@ -263,11 +263,11 @@ export default function RisoGrove() {
             </p>
             <div className="rp-heroEvidence rp-heroEvidence--trace" aria-label="Grove research-to-priority trace">
               <ol>
-                <li><span>01 · 5-user test</span><b>Found navigation confusion</b></li>
-                <li><span>02 · 37-person survey</span><b>Ranked launch dealbreakers</b></li>
-                <li><span>03 · 3 priorities</span><b>Reminders · plant ID · personality</b></li>
+                <li><b>5 people</b><span>exposed the navigation problem</span></li>
+                <li><b>37 people</b><span>ranked the launch dealbreakers</span></li>
+                <li><b>3 directions</b><span>earned the next build</span></li>
               </ol>
-              <p><span>Current state</span>Phase 2 of 3 · redesign directions set; high-fidelity screens and retest remain.</p>
+              <p><b>Next</b><span>High-fidelity screens, edge states, and a retest.</span></p>
             </div>
             {/* The tour sits beside the hero action, not in the breadcrumb row,
                 which pushed the H1 down on phones (2026-10-16). */}
@@ -553,7 +553,7 @@ export default function RisoGrove() {
       <section className="rp-section rp-outcomeStage" id="grove-outcomes" data-language-anchor="grove-outcomes">
         <div className="rp-wrap">
           <p className="rp-kicker">Where it stands</p>
-          <h2 className="rp-title">Phase 2 of 3: the redesign is decided, the retest is next.</h2>
+          <h2 className="rp-title">The redesign is decided. Retest next.</h2>
           <PhaseIndicator current={2} total={3} label="Functional prototype · Phase 2 of 3" />
           <p className="rp-lede">Three features scoped. One care-logic mistake found. Retest pending.</p>
           <p className="rp-bridge">
@@ -592,7 +592,7 @@ export default function RisoGrove() {
           {/* The closing action stays consistent across the complete case-study
               sequence so the next step remains predictable. */}
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
-          <ShareCaseStudy title="Grove — a case study by Hillary Esposito" icon="🌱" />
+          <ShareCaseStudy title="Grove — a case study by Hillary Esposito" />
         </div>
       </section>
 

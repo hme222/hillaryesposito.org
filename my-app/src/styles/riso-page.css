@@ -167,7 +167,10 @@
 /* App.css's `.dark-mode p` (0,1,1) outranked the line above and dimmed the
    lede to --text-3 over translucent clearings — 4.0:1 on the About map. */
 .riso-page .rp-sub { color: var(--ink); }
-.rp-sub b { color: var(--green); }
+/* Pure --green measured 4.54:1 on the translucent hero card, 0.04 over the AA
+   floor and moving with the backdrop. Pulled 30% toward --ink (6.0:1 there);
+   it still reads green, and flips correctly in dark mode. */
+.rp-sub b { color: color-mix(in srgb, var(--green) 70%, var(--ink)); }
 .rp-hero__media { position: relative; height: 100%; display: flex; align-items: center; justify-content: center;
   padding: var(--sp-sm); background:
     radial-gradient(120% 90% at 70% 40%, color-mix(in srgb, var(--green) 8%, transparent), transparent 60%); }
@@ -869,77 +872,125 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   font-weight: 700;
   line-height: 1.35;
 }
-.rp-heroEvidence--workflow,
-.rp-heroEvidence--boundary { grid-template-columns: 1fr; }
-.rp-heroEvidence--workflow > div,
-.rp-heroEvidence--boundary > div {
-  display: grid;
-  grid-template-columns: minmax(8rem, .7fr) minmax(0, 2fr);
-  gap: 1rem;
-  align-items: baseline;
+.rp-heroEvidence--workflow {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  border-block: 0;
 }
-.rp-heroEvidence--workflow > div:nth-child(odd):nth-last-child(2),
-.rp-heroEvidence--boundary > div:nth-child(odd):nth-last-child(2) { border-bottom: 1px solid var(--hair); }
-.rp-heroEvidence--workflow dd,
-.rp-heroEvidence--boundary dd { margin-top: 0; }
-.rp-heroEvidence--trace { display: block; }
-.rp-heroEvidence--trace ol {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin: 0;
+.rp-heroEvidence--workflow > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+  align-items: baseline;
   padding: 0;
+  border: 0;
+}
+.rp-heroEvidence--workflow dt {
+  font: 800 clamp(.78rem, 1.3vw, .9rem)/1.25 var(--sans);
+  letter-spacing: 0;
+  text-transform: none;
+}
+.rp-heroEvidence--workflow dt::after { content: " →"; color: var(--green); }
+.rp-heroEvidence--workflow dd { margin: 0; font-size: clamp(.76rem, 1.25vw, .86rem); }
+
+.rp-heroEvidence--boundary {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .55rem;
+  border-block: 0;
+}
+.rp-heroEvidence--boundary > div {
+  display: block;
+  padding: .8rem;
+  border: 0;
+  background: color-mix(in srgb, var(--green) 10%, var(--paper));
+}
+.rp-heroEvidence--boundary > div + div { background: color-mix(in srgb, var(--coral) 9%, var(--paper)); }
+.rp-heroEvidence--boundary dt {
+  font: 800 clamp(.78rem, 1.3vw, .9rem)/1.25 var(--sans);
+  letter-spacing: 0;
+  text-transform: none;
+}
+.rp-heroEvidence--boundary dd { margin-top: .25rem; font-size: clamp(.76rem, 1.25vw, .86rem); }
+.rp-heroEvidence--trace {
+  display: block;
+  border-block: 0;
+}
+.rp-heroEvidence--trace ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .55rem 1.8rem;
+  margin: 0;
+  padding: .8rem 0 .35rem;
   list-style: none;
 }
 .rp-heroEvidence--trace li {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .3rem;
   min-width: 0;
-  padding: .72rem .8rem .76rem 0;
-  border-right: 1px solid var(--hair);
+  padding: 0;
 }
-.rp-heroEvidence--trace li + li { padding-left: .8rem; }
-.rp-heroEvidence--trace li:last-child { border-right: 0; }
-.rp-heroEvidence--trace li span,
-.rp-heroEvidence--trace > p span {
-  display: block;
-  font: 700 .68rem/1.25 var(--mono);
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--coral-text);
+.rp-heroEvidence--trace li:not(:last-child)::after {
+  content: "→";
+  margin-left: 1.25rem;
+  color: var(--green);
+  font-weight: 800;
 }
 .rp-heroEvidence--trace li b {
-  display: block;
-  margin-top: .3rem;
-  font-size: clamp(.7rem, 1.25vw, .8rem);
+  color: var(--coral-text);
+  font-size: clamp(.88rem, 1.4vw, 1.02rem);
+  line-height: 1.2;
+}
+.rp-heroEvidence--trace li span { font-size: clamp(.76rem, 1.25vw, .86rem); line-height: 1.35; }
+.rp-heroEvidence--trace > p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .3rem;
+  margin: 0;
+  padding: .35rem 0 .8rem;
+  color: var(--ink);
+  font-size: clamp(.76rem, 1.25vw, .86rem);
   line-height: 1.35;
 }
-.rp-heroEvidence--trace > p {
-  display: grid;
-  grid-template-columns: minmax(8rem, .7fr) minmax(0, 2fr);
-  gap: 1rem;
-  margin: 0;
-  padding: .72rem .8rem .76rem 0;
-  border-top: 1px solid var(--hair);
-  color: var(--ink);
-  font-size: clamp(.7rem, 1.25vw, .8rem);
-  font-weight: 700;
-  line-height: 1.35;
+.rp-heroEvidence--trace > p b { color: var(--green); }
+@media (min-width: 561px) {
+  .rp-heroEvidence--trace ol {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .rp-heroEvidence--trace li {
+    display: block;
+    position: relative;
+    padding-right: 1.25rem;
+  }
+  .rp-heroEvidence--trace li b,
+  .rp-heroEvidence--trace li span { display: block; }
+  .rp-heroEvidence--trace li span { margin-top: .18rem; }
+  .rp-heroEvidence--trace li:not(:last-child)::after {
+    position: absolute;
+    top: .05rem;
+    right: 0;
+    margin-left: 0;
+  }
 }
 @media (max-width: 440px) {
   .rp-heroEvidence { grid-template-columns: 1fr; }
   .rp-heroEvidence > div,
   .rp-heroEvidence > div:nth-child(odd):nth-last-child(2) { border-bottom: 1px solid var(--hair); }
   .rp-heroEvidence > div:last-child { border-bottom: 0; }
+  .rp-heroEvidence--workflow > div,
+  .rp-heroEvidence--workflow > div:nth-child(odd):nth-last-child(2),
+  .rp-heroEvidence--boundary > div,
+  .rp-heroEvidence--boundary > div:nth-child(odd):nth-last-child(2) { border-bottom: 0; }
 }
 @media (max-width: 560px) {
-  .rp-heroEvidence--workflow > div,
-  .rp-heroEvidence--boundary > div,
-  .rp-heroEvidence--trace > p { grid-template-columns: 1fr; gap: .3rem; }
-  .rp-heroEvidence--trace ol { grid-template-columns: 1fr; }
-  .rp-heroEvidence--trace li,
-  .rp-heroEvidence--trace li + li {
-    padding: .72rem 0 .76rem;
-    border-right: 0;
-    border-bottom: 1px solid var(--hair);
-  }
+  .rp-heroEvidence--boundary { grid-template-columns: 1fr; }
+  .rp-heroEvidence--trace ol { align-items: flex-start; gap: .45rem 1rem; }
+  .rp-heroEvidence--trace li:not(:last-child)::after { margin-left: .7rem; }
 }
 .rp-lede { color: var(--ink-2); max-width: 64ch; margin: var(--sp-sm) 0 0; font-size: 1.02rem; }
 .rp-lede b { color: var(--ink); }
@@ -1350,6 +1401,9 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-subhead + .rp-lede { margin-top: .6rem; }
 .rp-list { margin: 1.4rem 0 0; padding-left: 1.1rem; display: grid; gap: .6rem; }
 .rp-list li { color: var(--ink-2); }
+/* The Spanish scaffold's bullets sat at the full column (~810px) under
+   paragraphs held to .rp-lede's 64ch; same measure for both. */
+.spanish-riso-case .rp-list { max-width: 64ch; }
 
 /* ---------- home: hero CTAs + headshot ---------- */
 .rp-hero__ctas { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.4rem; }
@@ -1577,15 +1631,18 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 @media (max-width: 760px) {
   .riso-home .rp-work { grid-template-columns: 1fr auto; min-height: 0; }
   .riso-home .rp-work__thumb { width: 100%; max-width: none; }
+  /* The artifact is the evidence, so it gets the full column under the text
+     rather than a ~110px crop beside it (rows 04 and 05 were unreadable). */
   .riso-home .rp-work--supporting {
-    grid-template-columns: minmax(0, 1fr) minmax(96px, 36%);
+    grid-template-columns: minmax(0, 1fr) auto;
     gap: 1rem;
   }
   .riso-home .rp-work--supporting .rp-work__thumb {
-    grid-column: 2;
+    grid-column: 1 / -1;
     width: 100%;
-    margin-top: 0;
+    margin-top: .4rem;
   }
+  .riso-home .rp-work--supporting .rp-work__thumb--ledger { aspect-ratio: auto; }
 }
 @media (max-width: 620px) {
   .rp-work__arrow {

@@ -14,5 +14,8 @@ scripts/__pycache__/
 # Local scratch: intermediate PDF renders and thumbnails
 tmp/
 
+# Local visual-audit output from design-taste-frontend.
+.taste-skill/
+
 # Root deps were committed into the repo; package.json restores them with `npm i`
 node_modules/

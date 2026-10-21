@@ -480,7 +480,7 @@ const en: MskCopy = {
     disclaimer: "Anonymized evidence · organization-wide results are attributed to the initiative · the ~$1M/year is a projection from my pitch, not measured savings",
     metrics: [
       { tag: "Led", n: "1 month", label: "early: the whole department certified before the original deadline, with no 4-month extension" },
-      { tag: "Scale", n: "21,000+", label: "clinicians and administrative staff across the workflows I redesigned" },
+      { tag: "Scale", n: "21,000+", label: "clinicians and administrative staff across the workflows in scope" },
       { tag: "Contributed to", n: "20%", label: "organization-wide EMR cost reduction, inside a larger initiative" },
       { tag: "Projection", n: "~$1M/year", label: "projected paper savings in my Process Improvement Fair pitch, not measured savings" },
     ],

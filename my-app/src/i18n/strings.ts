@@ -22,7 +22,7 @@ const en = {
 
   // ── Global footer + recovery ──
   "footer.eyebrow": "Hillary Esposito · Healthcare Product Designer",
-  "footer.statement": "Made by someone who's filed the paperwork.",
+  "footer.statement": "Healthcare design that does the paperwork.",
   "footer.signoff": "Still here?",
   "footer.signoffLink": "Email me.",
   "footer.siteAria": "Footer navigation",

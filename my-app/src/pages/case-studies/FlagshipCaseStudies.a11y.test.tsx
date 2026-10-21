@@ -200,7 +200,7 @@ describe("flagship case-study accessibility", () => {
     });
 
     const hero = container.querySelector("#grove-start");
-    expect(hero?.textContent).toContain("redesign directions set; high-fidelity screens and retest remain");
+    expect(hero?.textContent).toContain("High-fidelity screens, edge states, and a retest");
     expect(container.textContent).toContain("not completed redesigns");
     expect(container.querySelectorAll('.rp-decisionRecord[aria-label="Grove\'s three next-design directions"] dt')).toHaveLength(3);
     expect(container.querySelectorAll(".rp-decision")).toHaveLength(1);
@@ -317,7 +317,7 @@ describe("flagship case-study accessibility", () => {
       root.render(<FlagshipKnowunity />);
     });
 
-    expect(container.querySelector("h1")?.textContent).toBe("The student's own words are the\u00a0proof.");
+    expect(container.querySelector("h1")?.textContent).toBe("Their own words are the proof.");
     ["knowunity-start", "knowunity-brief", "knowunity-decisions", "knowunity-prototype", "knowunity-outcomes"].forEach((id) => {
       expect(container.querySelector(`#${id}`)).not.toBeNull();
     });
@@ -902,7 +902,7 @@ describe("flagship case-study accessibility", () => {
   });
 
   it.each([
-    ["MSK", <FlagshipMSK />, "A filing queue replaced a four-department paper\u00a0detour.", "How these artifacts were made"],
+    ["MSK", <FlagshipMSK />, "One queue. Four teams.", "How these artifacts were made"],
     ["Grove", <RisoGrove />, "Twelve features became three.", "What this evidence can say"],
     ["Mobbin", <FlagshipMobbin />, "200+ screens per app, searchable by task.", "I did not design"],
   ])("%s leads with an outcome title and visible evidence boundary", async (_name, page, title, boundary) => {

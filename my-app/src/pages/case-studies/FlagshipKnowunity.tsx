@@ -156,15 +156,15 @@ export default function FlagshipKnowunity() {
         <div className="rp-grain" />
         <div className="rp-hero__content">
           <div className="rp-clearing">
-            <h1 className="rp-h1">The student's own words are the{" "}proof.</h1>
+            <h1 className="rp-h1">Their own words are the proof.</h1>
             <span className="rp-eyebrow">Knowunity · Say It Back · design-sprint prototype</span>
             <span className="rp-readtime"><b>4 min</b><span>read · 2.5-week sprint, solo</span></span>
             <p className="rp-sub">
               After a student says a definition aloud, Knowie answers in text and quotes the student’s own words back as proof. I designed the flow and built the prototype in a solo 2.5-week sprint.
             </p>
             <dl className="rp-heroEvidence rp-heroEvidence--boundary" aria-label="Knowunity build and evidence boundary">
-              <div><dt>Built by me</dt><dd>Four interaction decisions · coded prototype · Storybook catalog</dd></div>
-              <div><dt>Boundary</dt><dd>Knowunity supplied the brief and kit · recall mocked · no student testing · not shipped</dd></div>
+              <div><dt>Built here</dt><dd>Four interaction decisions · coded prototype · Storybook catalog</dd></div>
+              <div><dt>Not proved</dt><dd>Recall mocked · no student testing · not shipped</dd></div>
             </dl>
             {/* The tour sits beside the hero action, not in the breadcrumb row,
                 which pushed the H1 down on phones (2026-10-16). */}
