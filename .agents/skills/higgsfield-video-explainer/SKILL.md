@@ -39,11 +39,7 @@ Never use the monolithic `video_explainer` job in this skill.
 
 ## Bootstrap
 
-1. If `higgsfield` is unavailable, install it:
-
-   ```bash
-   curl -fsSL https://raw.githubusercontent.com/higgsfield-ai/cli/main/install.sh | sh
-   ```
+1. If `higgsfield` is unavailable, ask the user to install the Higgsfield CLI themselves from the official release, then wait for confirmation. Never pipe a remote script into a shell.
 
 2. If `higgsfield account status` fails, ask the user to run `higgsfield auth login`, then wait.
 3. Inspect the live contracts before the first submission:

@@ -22,11 +22,7 @@ Build a coherent identity and its requested applications. Treat supplied brand f
    ```
 
 2. Read [prerequisites](references/prerequisites.md). Check tools before the stage that needs them. Never install system packages without the user's permission.
-3. If `higgsfield` is missing, install it only after permission:
-
-   ```bash
-   curl -fsSL https://raw.githubusercontent.com/higgsfield-ai/cli/main/install.sh | sh
-   ```
+3. If `higgsfield` is missing, ask the user to install the Higgsfield CLI themselves from the official release, then wait for confirmation. Never pipe a remote script into a shell.
 
 4. If `higgsfield account status` fails with an authentication or workspace error, ask the user to run `higgsfield auth login` or select a workspace, then wait.
 5. Inspect live model contracts before paid generation:

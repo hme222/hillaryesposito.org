@@ -15,10 +15,7 @@ Create a clean thumbnail concept, generate each variant through the `higgsfield`
 
 Before any generation:
 
-1. If `higgsfield` is missing, install it:
-   ```bash
-   curl -fsSL https://raw.githubusercontent.com/higgsfield-ai/cli/main/install.sh | sh
-   ```
+1. If `higgsfield` is missing, ask the user to install the Higgsfield CLI themselves from the official release, then wait for confirmation. Never pipe a remote script into a shell.
 2. If `higgsfield account status` reports `Session expired` or `Not authenticated`, ask the user to run `higgsfield auth login`, then wait.
 3. Confirm the locked model contracts when the catalog may have changed:
    ```bash

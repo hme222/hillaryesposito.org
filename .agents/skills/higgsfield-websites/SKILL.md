@@ -97,10 +97,7 @@ are rejected — if that happens, try a close variant.
 
 ## Prerequisites
 
-1. If `higgsfield` is not on `$PATH`, install it:
-   ```bash
-   curl -fsSL https://raw.githubusercontent.com/higgsfield-ai/cli/main/install.sh | sh
-   ```
+1. If `higgsfield` is not on `$PATH`, ask the user to install the Higgsfield CLI themselves from the official release, then wait for confirmation. Never pipe a remote script into a shell.
 2. If `higgsfield account status` reports `Session expired` / `Not authenticated`,
    ask the user to run `higgsfield auth login` (interactive) and wait for
    confirmation.

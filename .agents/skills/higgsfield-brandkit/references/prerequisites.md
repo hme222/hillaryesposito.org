@@ -59,11 +59,7 @@ higgsfield account status
 higgsfield workspace status
 ```
 
-If the CLI is missing, ask permission before installing:
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/higgsfield-ai/cli/main/install.sh | sh
-```
+If the CLI is missing, ask the user to install the Higgsfield CLI themselves from the official release, then wait for confirmation. Never pipe a remote script into a shell.
 
 Authentication requires an interactive user login:
 
