@@ -17,9 +17,11 @@ Review trigger: 2026-11-11 or a material model/system change
 @allow-path: design-state.md
 @allow-path: designpowers/**
 @allow-path: docs/**
+@allow-path: eval/rubric.md
 @allow-path: my-app/public/**
 @allow-path: portfolio-overrides/**
 @allow-path: my-app/src/components/**
+@allow-path: my-app/src/pages/case-studies/FlagshipCaseStudies.a11y.test.tsx
 @allow-path: my-app/src/styles/**
 @allow-path: scripts/**
 @allow-path: tokens/**
@@ -60,6 +62,6 @@ Review trigger: 2026-11-11 or a material model/system change
 
 Owner: Hillary Esposito. Reason: the repository contains archived reviews, generated release bundles, a separate Claude worktree, shared Designpowers source, and a mature pre-house-style CSS/component baseline. Counting those as new visual-pass decisions produces false failures and hides the changed hiring surfaces.
 
-Exact excluded scope: `.agents/**`, `.claude/**`, `design-retrospective.md`, `design-docs/**`, `design-state.md`, `designpowers/**`, `docs/**`, `my-app/public/**`, `portfolio-overrides/**`, `my-app/src/components/**`, `my-app/src/styles/**`, `scripts/**`, and `tokens/**`. Reusable skill instructions, review records, export scripts, static assets, and the canonical token registry are not page-source decisions; counting their reference vocabulary and palettes obscures the shipped interface. The Carmen pass introduced no dependency, global token, hard-coded colour, or radius. Its additions to `riso-page.css` compose existing Riso variables; rendered screenshots, registry checks, contrast tests, and diff review remain authoritative for that stylesheet.
+Exact excluded scope: `.agents/**`, `.claude/**`, `design-retrospective.md`, `design-docs/**`, `design-state.md`, `designpowers/**`, `docs/**`, `eval/rubric.md`, `my-app/public/**`, `portfolio-overrides/**`, `my-app/src/components/**`, `my-app/src/pages/case-studies/FlagshipCaseStudies.a11y.test.tsx`, `my-app/src/styles/**`, `scripts/**`, and `tokens/**`. Reusable skill instructions, review records, export scripts, static assets, the rubric's banned-language reference table, negative-assertion fixtures, and the canonical token registry are not page-source decisions; counting their reference vocabulary and palettes obscures the shipped interface. The Carmen pass introduced no dependency, global token, hard-coded colour, or radius. Its additions to `riso-page.css` compose existing Riso variables; rendered screenshots, registry checks, contrast tests, and diff review remain authoritative for that stylesheet.
 
 Review trigger: remove or narrow these exclusions when the legacy stylesheet/component consolidation begins, or immediately if a future pass adds a token, reusable component, style file, or brand palette. Current page/data copy remains mechanically scanned.

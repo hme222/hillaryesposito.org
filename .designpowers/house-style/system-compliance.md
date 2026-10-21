@@ -1,5 +1,15 @@
 # System Compliance
 
+## Healthcare Product Designer recut — UX correction slice — 2026-10-20
+
+Valid move: **Reuse / Compose.** Reuse the full `rp-work` evidence row for three primary cases, the existing compact supporting-link language for supporting evidence, RecruiterPanel's current sections/actions/projects, `rp-decisionRecord` for Grove's three-direction comparison, native links/buttons, and the shared chapter navigation. No new component family, token, dependency, route, or visual system is required.
+
+Locks preserved: MSK-first healthcare positioning; visible ownership, status, method, attribution, outcome, and limitation boundaries; adjacent résumé/email access; canonical routes and hashes; native disclosures; one H1; English/Spanish shell behavior; 44px targets; visible focus; reduced motion; light/dark; responsive reflow; and the repaired mobile case orientation.
+
+Composition rules: three primary Home cases retain artifact-led rows; supporting evidence uses lower material weight and an explicit labelled region; the recruiter tour exposes two hiring actions before work and secondary utilities after work; Grove compares three decisions in one semantic ledger with one representative first-build artifact.
+
+Registry status: source registry is current at the pre-build checkpoint. The slice composes page-level patterns and repairs shared behavior; regenerate only if a registered component fingerprint changes.
+
 ## Grove browser-prototype proof — 2026-08-31
 
 Valid move: **Compose.** Reuse `rp-work__teaser`, `rp-cta`, the native `rp-deepDive` details/summary composition, and the existing `GroveSystemLab`. No new component, token, dependency, route, or visual family is required.

@@ -1,5 +1,49 @@
 # Divergence Ledger
 
+## Healthcare Product Designer recut — UX correction slice — 2026-10-20
+
+### Home hierarchy
+
+Option A: **Keep five full selected-work rows.** Rejected because shared region, scale, and artifact weight communicate five flagships despite small support labels.
+
+Option B: **Reduce every project to one compact index.** Rejected because it removes the inspectable artifact proof that makes MSK, Grove, and Knowunity persuasive.
+
+Option C: **Three primary artifact rows plus a compact supporting region.** **Selected.** MSK, Grove, and Knowunity retain the established full evidence row. Medical Logistics, UX Woman, and Mobbin remain public in a separately labelled supporting region with lower visual weight.
+
+Default: Use one repeated work-card grammar and rely on order or badges to communicate priority.
+
+Instead: Let semantic grouping and material scale agree on which three cases carry the primary Healthcare Product Designer claim.
+
+Validation: labelled regions exist in the DOM; primary and supporting cases remain keyboard-reachable; 390/1440 renders show a real hierarchy without horizontal overflow; all routes and evidence boundaries remain intact.
+
+### RecruiterPanel priority
+
+Option A: **All utility actions before work.** Rejected because `Selected work` begins at the bottom edge of the first 390×844 viewport.
+
+Option B: **Work before every action.** Rejected because it reverses Hillary's approved request to keep résumé and email immediately available to recruiters.
+
+Option C: **Two hiring actions, then work, then secondary utilities.** **Selected.** View résumé and Email me stay adjacent and early; selected work follows; LinkedIn, About, and Ask become secondary utilities after the work list.
+
+Default: Give every recruiter action the same full-width weight before showing evidence.
+
+Instead: Prioritize the two hiring actions and the work proof; retain secondary paths without letting them delay the tour.
+
+Validation: first 390×844 viewport contains role, one proof statement, résumé, email, `Selected work`, and the MSK title; visual and keyboard order match.
+
+### Grove decision comparison
+
+Option A: **Three repeated screen-and-direction blocks.** Rejected because it charges three full artifact-height scans for one comparison task.
+
+Option B: **Tabs or accordion with one direction visible.** Rejected because it hides required evidence and adds interaction to a recruiter scan.
+
+Option C: **One scan-first decision ledger plus one strongest artifact.** **Selected.** The three feature directions remain visible together; the reminder screen becomes the single representative first-build artifact because the following chapter develops that decision.
+
+Default: Give every direction a full-size screen to prove equal care.
+
+Instead: Compare all three decisions in one semantic ledger and let one artifact anchor the transition into the detailed trust/tone decision.
+
+Validation: all three features and directions remain visible; the Phase 2 boundary, limitation, trust decision, and next test stay outside disclosures; Grove's default rendered height decreases without treating height alone as success.
+
 ## Four-project Home with Knowunity - 2026-09-24
 
 ### Structural options

@@ -60,3 +60,29 @@ supports Track A or Track B (the AIRR draft used it as Track-A-adjacent
 "AI analysis" evidence; the portfolio case study reads more Track-B/craft —
 worth resolving explicitly in that project's own interview rather than
 assumed here).
+
+## Supersession — Healthcare Product Designer recut
+
+_Approved direction: 2026-10-19._
+
+The Track A decision above remains useful evidence about Hillary's wedge, but
+it no longer defines the public case-study hierarchy. The active target is
+**Healthcare Product Designer**.
+
+- **Primary digital-product sequence:** MSK → Grove → Knowunity.
+- **Prominent delivery proof:** Medical Logistics remains always visible for
+  direct ownership, system change, and qualified operating outcomes; it is not
+  presented as a co-primary digital-product case.
+- **Supporting healthcare research:** UX Woman remains active research until a
+  pretotype runs.
+- **Supporting taxonomy/documentation proof:** Mobbin demonstrates structured
+  analysis and client delivery, not product ownership.
+
+Operator trust in high-stakes systems remains a differentiating throughline,
+especially in MSK and Logistics. It is now the wedge inside a Healthcare
+Product Designer story rather than the portfolio's standalone role label.
+
+The portfolio must continue to state the unresolved evidence gap plainly: it
+does not yet show a directly owned digital product through release, observed
+behavior, revision, and measured result. The recut may improve hiring clarity;
+it may not rewrite that boundary.
