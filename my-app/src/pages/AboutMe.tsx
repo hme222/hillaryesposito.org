@@ -5,7 +5,6 @@ import usePageTitle from "../hooks/usePageTitle";
 import { useLanguage } from "../app/LanguageContext";
 import { Newspaper } from "lucide-react";
 import CartoField from "../components/riso/CartoField";
-import CaseStudyChapters, { CaseStudyChapter } from "../components/flagship/CaseStudyChapters";
 import { CLIENT_FEEDBACK, CLIENT_FEEDBACK_ES } from "../data/clientFeedback";
 import "../styles/riso.css";
 import "../styles/riso-page.css";
@@ -121,39 +120,8 @@ export default function About() {
   useFlagshipReveal(rootRef);
   const chapters = isSpanish ? CHAPTERS_ES : CHAPTERS;
   const feedback = isSpanish ? CLIENT_FEEDBACK_ES : CLIENT_FEEDBACK;
-  const pageChapters: CaseStudyChapter[] = [
-    { id: "about-start", label: isSpanish ? "Inicio" : "Start" },
-    { id: "about-pattern", label: isSpanish ? "Enfoque" : "Approach" },
-    { id: "about-story", label: isSpanish ? "Historia" : "Story" },
-    { id: "about-proof", label: isSpanish ? "Prueba" : "Proof" },
-    { id: "about-life", label: isSpanish ? "Fuera del trabajo" : "Outside work" },
-    { id: "about-contact", label: isSpanish ? "Contacto" : "Contact" },
-  ];
-
   return (
     <main className="about-page riso-page" lang={isSpanish ? "es" : "en"} ref={rootRef}>
-      <div className="rp-breadcrumbRow">
-        <nav className="rp-breadcrumb" aria-label={isSpanish ? "Migas de pan" : "Breadcrumb"}>
-          <Link to="/" className="rp-breadcrumb__name" title="Hillary Esposito">Hillary Esposito</Link> / <Link to="/?scrollTo=projects">{isSpanish ? "Trabajo" : "Work"}</Link> / <span>{isSpanish ? "Sobre mí" : "About"}</span>
-        </nav>
-        <button
-          type="button"
-          className="rp-heroUtility rp-breadcrumbTour"
-          onClick={(e) =>
-            window.dispatchEvent(new CustomEvent("open-recruiter-panel", { detail: { returnFocus: e.currentTarget } }))
-          }
-        >
-          {isSpanish ? "Abrir el recorrido de 90 segundos (en inglés)" : "Open the 90-second tour"}
-        </button>
-      </div>
-
-      <CaseStudyChapters
-        project={isSpanish ? "Sobre mí" : "About"}
-        chapters={pageChapters}
-        ariaLabel={isSpanish ? "Capítulos de la página Sobre mí" : "About page chapters"}
-        jumpLabel={isSpanish ? "Saltar a" : "Jump to"}
-      />
-
       {/* ═ HERO — profile masthead (portrait-led, warm; distinct from Home) ═ */}
       <header className="rp-hero about-hero-profile" id="about-start" data-language-anchor="about-start">
         <CartoField
@@ -182,6 +150,17 @@ export default function About() {
             <p className="rp-sub">
               {isSpanish ? "Seis años en operaciones de atención oncológica y más de 13 años de servicio en el Ejército, ahora en diseño de productos de salud: flujos clínicos y herramientas internas para el momento en que un paso equivocado tiene un costo." : "Six years in cancer-care operations and 13+ years of Army service, now in healthcare product design: clinical workflows and internal tools for the moment a wrong step has a cost."}
             </p>
+            <div className="rp-hero__ctas">
+              <button
+                type="button"
+                className="rp-heroUtility rp-recruiterTourTrigger"
+                onClick={(e) =>
+                  window.dispatchEvent(new CustomEvent("open-recruiter-panel", { detail: { returnFocus: e.currentTarget } }))
+                }
+              >
+                {isSpanish ? "Abrir el recorrido de 90 segundos (en inglés)" : "Open the 90-second tour"}
+              </button>
+            </div>
           </div>
         </div>
       </header>

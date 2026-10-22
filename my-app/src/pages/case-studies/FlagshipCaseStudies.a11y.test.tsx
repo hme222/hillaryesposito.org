@@ -181,11 +181,13 @@ describe("flagship case-study accessibility", () => {
     expect(breadcrumb?.textContent).not.toContain("Una cola de archivo reemplazó");
   });
 
-  it("About's breadcrumb row also carries the tour trigger", async () => {
+  it("About uses the top-level page shell and carries the tour trigger in its hero", async () => {
     await act(async () => {
       root.render(<About />);
     });
-    const trigger = container.querySelector<HTMLButtonElement>(".rp-breadcrumbTour");
+    expect(container.querySelector(".rp-breadcrumbRow")).toBeNull();
+    expect(container.querySelector(".rp-chapters")).toBeNull();
+    const trigger = container.querySelector<HTMLButtonElement>(".rp-hero__ctas .rp-recruiterTourTrigger");
     expect(trigger?.textContent).toBe("Open the 90-second tour");
     const handler = jest.fn();
     window.addEventListener("open-recruiter-panel", handler);
@@ -1038,7 +1040,6 @@ describe("flagship case-study accessibility", () => {
     ["Mobbin", <FlagshipMobbin />],
     ["Knowunity", <FlagshipKnowunity />],
     ["UX Woman", <FlagshipUxWoman />],
-    ["About", <About />],
   ])("%s chapter shortcuts resolve to real sections", async (_name, page) => {
     await act(async () => {
       root.render(page);
