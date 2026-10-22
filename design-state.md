@@ -1,5 +1,15 @@
 # Design State: Full Portfolio Redesign — Hybrid Positioning
 
+## 2026-10-22 — Mount Sinai overall audit and About navigation consistency
+
+**Status:** About navigation fix implemented locally and verified; Mount Sinai role-specific portfolio audit complete. The valid system move was Reuse/Compose: About keeps the shared global route dock, removes case-study-only breadcrumb/chapter chrome, and relocates the existing 90-second-tour control into the hero. No token, component, route, or case-study navigation changed.
+
+**Evidence:** Home/About dock geometry is pixel-identical at 390px and 1440px; About has one primary nav, correct active state, no breadcrumb or chapter strip, no overflow, and a 44px tour target. All eight public routes pass one-H1/one-primary-nav, email/résumé, overflow, broken-image, duplicate-ID, and console-error checks at 390×844 and 1440×900. The full suite passes 231/231, the optimized production build compiles, the generated component registry is current, and the project-specific tell checker passes. Local release gates are complete; no deployment was requested.
+
+**Audit verdict:** strong Mount Sinai Digital Product Designer fit (8.3/10). Lead with MSK; keep Grove and Knowunity as the other primary cases; keep Medical Logistics and UX Woman supporting. Honest gaps are dedicated patient research, direct software-vendor/Product Owner collaboration, Mural/UserTesting/Jira/Confluence evidence, and formal direct-product-design tenure. Do not recut or invent evidence to cover them.
+
+**Blind-review limitation:** fresh anti-AI, neurodiversity, and accessibility subreviews were dispatched but could not run because the account hit its temporary subagent usage limit. The same lenses were completed directly and are explicitly labeled not blind in `design-docs/reviews/2026-10-22-mount-sinai-overall-portfolio-audit.md`.
+
 _Last updated: 2026-10-21 by Codex (Healthcare Product Designer recut visual-refinement checkpoint; prior checkpoints preserved)_
 
 ## Active Initiative: Ask about the work (grounded answer engine)
