@@ -420,6 +420,15 @@ export default function FlagshipMSK() {
           <p className="rp-kicker">The real test came later</p>
           <h2 className="rp-title">I left before launch. Here’s what happened next.</h2>
           <p className="rp-lede">I handed the workflow to IT and UX, who built it. It was adopted organization-wide (owner-reported: my own record, not independently measured).</p>
+          {/* Added 2026-10-22 (portfolio review, UXfolio 2026 ch. 4.3): the
+              outcome is owner-reported and no post-launch measurement is
+              known, so the page says what would have shown it. Hillary
+              confirmed nothing was measured to her knowledge; no result is
+              claimed here. */}
+          <div className="rp-note rp-reveal">
+            <p className="rp-note__k">What I would have measured</p>
+            <p>No one measured it that I know of. I would have tracked minutes from a message arriving to it sitting in the chart, messages filed to the wrong chart, and pages printed.</p>
+          </div>
           <figure className="fp-sustainmentFig rp-reveal" data-evidence="true">
             <MSKSustainment />
             <figcaption>What happened after each one shipped</figcaption>

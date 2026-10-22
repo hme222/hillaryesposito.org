@@ -72,7 +72,14 @@ function LazyPage({ name, nameEs, children }: { name: string; nameEs?: string; c
       <Suspense
         fallback={
           <div className="case-study-loader" role="status" aria-live="polite">
-            {translate(lang, "recovery.caseLoading", { name: label })}
+            <p className="case-study-loader__label">{translate(lang, "recovery.caseLoading", { name: label })}</p>
+            {/* A hero-shaped skeleton instead of a lone sentence, so the
+                page holds its layout and the footer does not jump when the
+                chunk lands (portfolio review 2026-10-22, UXfolio ch. 2.3). */}
+            <span className="case-study-loader__bar case-study-loader__bar--title" aria-hidden="true" />
+            <span className="case-study-loader__bar case-study-loader__bar--title case-study-loader__bar--short" aria-hidden="true" />
+            <span className="case-study-loader__bar" aria-hidden="true" />
+            <span className="case-study-loader__bar case-study-loader__bar--short" aria-hidden="true" />
           </div>
         }
       >

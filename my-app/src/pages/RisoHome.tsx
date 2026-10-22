@@ -42,7 +42,7 @@ type WorkItem = {
   teaserPathEs?: string;
   teaserEn?: string;
   teaserEs?: string;
-  tier: "primary" | "supporting";
+  tier: "primary" | "supporting" | "more";
 };
 
 const WORK: WorkItem[] = [
@@ -126,7 +126,7 @@ const WORK: WorkItem[] = [
     path: "/case-study/ux-woman",
     imgAltKey: "home.riso.uxwomanAlt",
     visual: "uxwoman",
-    tier: "supporting",
+    tier: "more",
     evidenceLabelEn: "Supporting research · active",
     evidenceLabelEs: "Investigación de apoyo · activa",
     teaserPath: "/case-study/ux-woman#uxwoman-findings",
@@ -138,6 +138,7 @@ const WORK: WorkItem[] = [
 
 const PRIMARY_WORK = WORK.filter((work) => work.tier === "primary");
 const SUPPORTING_WORK = WORK.filter((work) => work.tier === "supporting");
+const MORE_WORK = WORK.filter((work) => work.tier === "more");
 
 // Each source links to the section that carries the number's scope and limits.
 const STATS = [
@@ -380,7 +381,7 @@ export default function RisoHome() {
   );
 
   const renderWorkItem = (work: WorkItem) => {
-    const supporting = work.tier === "supporting";
+    const supporting = work.tier !== "primary";
     const workClassName = `rp-work${supporting ? " rp-work--supporting" : ""}`;
 
     return (
@@ -559,39 +560,33 @@ export default function RisoHome() {
             <div className="rp-worklist rp-worklist--supporting rp-reveal" data-evidence="true">
               {SUPPORTING_WORK.map(renderWorkItem)}
             </div>
+          </section>
+
+          {/* More work (2026-10-22): the home list stops at four cases
+              (UXfolio 2026, ch. 3.3: 71% prefer three or four). Everything
+              else stays one click away instead of competing for the first
+              four-minute read. The content is still in the page, so the
+              Dispatch's train effect and the recruiter panel keep working. */}
+          <details
+            className="rp-deepDive rp-moreWork"
+            onToggle={() => window.dispatchEvent(new Event("resize"))}
+          >
+            <summary>
+              <span className="rp-deepDive__copy">
+                <b className="rp-deepDive__title">{t("home.riso.moreWork")}</b>
+              </span>
+              <span className="rp-deepDive__state" aria-hidden="true">
+                <span className="rp-deepDive__stateClosed">{lang === "es" ? "Abrir" : "Open"}</span>
+                <span className="rp-deepDive__stateOpen">{lang === "es" ? "Cerrar" : "Close"}</span>
+              </span>
+            </summary>
+            <div className="rp-worklist rp-worklist--supporting" data-evidence="true">
+              {MORE_WORK.map(renderWorkItem)}
+            </div>
             <p className="rp-supportingLink">
               <span>{t("home.riso.supportingKicker")}</span>
               <Link to="/case-study/mobbin">{t("home.riso.supportingLink")}</Link>
             </p>
-          </section>
-        </div>
-      </section>
-
-      {/* The recruiter path resolves before secondary journal/about material. */}
-      <section className="rp-section rp-section--alt" id="contact" aria-labelledby="home-contact-title">
-        <div className="rp-wrap rp-close">
-          <p className="rp-kicker">{t("home.riso.contactKicker")}</p>
-          <h2 id="home-contact-title">{t("home.ctaTitle")}</h2>
-          {/* The hiring actions stay adjacent; the address remains visible
-              and selectable so a missing mail client never dead-ends. */}
-          <div className="rp-hero__ctas">
-            <a className="rp-cta" href="mailto:espositohillary@gmail.com">
-              {t("contact.note")} →
-            </a>
-            <a
-              className="rp-cta rp-cta--ghost"
-              href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={t("nav.resumeAria")}
-            >
-              {lang === "es" ? "Ver CV" : "View résumé"} →
-            </a>
-          </div>
-          <p>{t("contact.copy")} espositohillary@gmail.com</p>
-        </div>
-      </section>
-
       {/* WEEKEND DISPATCH: a current-practice signal, deliberately outside the
           three flagship rows. The story and evidence are complete at rest; the
           route drawing is decorative context and the event photograph is provenance. */}
@@ -773,6 +768,34 @@ export default function RisoHome() {
               </div>}
             </div>
           </article>
+        </div>
+      </section>
+          </details>
+        </div>
+      </section>
+
+      {/* The recruiter path resolves before secondary journal/about material. */}
+      <section className="rp-section rp-section--alt" id="contact" aria-labelledby="home-contact-title">
+        <div className="rp-wrap rp-close">
+          <p className="rp-kicker">{t("home.riso.contactKicker")}</p>
+          <h2 id="home-contact-title">{t("home.ctaTitle")}</h2>
+          {/* The hiring actions stay adjacent; the address remains visible
+              and selectable so a missing mail client never dead-ends. */}
+          <div className="rp-hero__ctas">
+            <a className="rp-cta" href="mailto:espositohillary@gmail.com">
+              {t("contact.note")} →
+            </a>
+            <a
+              className="rp-cta rp-cta--ghost"
+              href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t("nav.resumeAria")}
+            >
+              {lang === "es" ? "Ver CV" : "View résumé"} →
+            </a>
+          </div>
+          <p>{t("contact.copy")} espositohillary@gmail.com</p>
         </div>
       </section>
 

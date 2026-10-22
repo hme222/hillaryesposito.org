@@ -259,7 +259,7 @@ export default function RisoGrove() {
               <span>read · Phase 2 of 3</span>
             </span>
             <p className="rp-sub">
-              I tested the first build with 5 people, then used a 37-person self-report survey to rank what earned the next build. The evidence cut twelve features to three.
+              Emergent, an AI app builder, made the first build. I tested it with 5 people, then used a 37-person self-report survey to rank what earned the next build. The evidence cut twelve features to three.
             </p>
             <div className="rp-heroEvidence rp-heroEvidence--trace" aria-label="Grove research-to-priority trace">
               <ol>

@@ -176,6 +176,7 @@ export const MSK_ES: SpanishCaseStudyData = {
       body: [
         "Entregué el flujo a TI y UX, que lo construyeron. Se adoptó en toda la institución (dato autorreportado: mi propio registro, no una medición independiente).",
         "El trabajo pasó de un desvío personal a un sistema compartido; el formato en lenguaje sencillo dejó al área conforme antes de la fecha límite.",
+        "Lo que habría medido: nadie lo midió, que yo sepa. Habría seguido tres cosas: los minutos desde que llega un mensaje hasta que está en el expediente, los mensajes archivados en el expediente equivocado y las páginas impresas.",
       ],
       bullets: [
         "Flujo de archivo del EMR: adoptado en toda la institución, según mi propio registro.",

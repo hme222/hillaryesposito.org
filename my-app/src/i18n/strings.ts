@@ -112,6 +112,7 @@ const en = {
   "home.riso.groveTag": "Active · Phase 2 of 3",
   "home.riso.proofKicker": "The proof",
   "home.riso.proofTitle": "The numbers, with their sources.",
+  "home.riso.moreWork": "More work",
   "home.riso.supportingKicker": "Also documented · Mobbin, 200+ screens per app",
   "home.riso.supportingLink": "Review the Mobbin case study →",
   "home.riso.aboutTitle": "I design for the clinician between patients.",
@@ -148,7 +149,7 @@ const en = {
   "home.about.link": "More about me →",
 
   // ── Home: proof stats ──
-  "home.stat.research": "People surveyed before I designed anything",
+  "home.stat.research": "People surveyed before the redesign",
   "home.stat.scale": "Clinicians and administrative staff across the workflows in scope",
   "home.stat.logistics": "Medical resupply across seven aid stations",
   "home.stat.groveSource": "Grove discovery research",
@@ -309,6 +310,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.groveTag": "Activo · Fase 2 de 3",
   "home.riso.proofKicker": "La evidencia",
   "home.riso.proofTitle": "Los números, con sus fuentes.",
+  "home.riso.moreWork": "Más trabajo",
   "home.riso.supportingKicker": "También documentado · Mobbin, más de 200 pantallas por app",
   "home.riso.supportingLink": "Ver el estudio de caso de Mobbin →",
   "home.riso.aboutTitle": "Diseño para el personal clínico entre un paciente y otro.",
@@ -345,7 +347,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.about.link": "Conozca más sobre mí →",
 
   // ── Home: proof stats ──
-  "home.stat.research": "Personas encuestadas antes de diseñar nada",
+  "home.stat.research": "Personas encuestadas antes del rediseño",
   "home.stat.scale": "Personal clínico y administrativo en los flujos incluidos",
   "home.stat.logistics": "Reabastecimiento médico en siete estaciones de ayuda",
   "home.stat.groveSource": "Investigación de descubrimiento de Grove",
