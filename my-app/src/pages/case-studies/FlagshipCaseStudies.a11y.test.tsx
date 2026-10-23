@@ -246,7 +246,7 @@ describe("flagship case-study accessibility", () => {
     expect(stats[1].querySelector(".rp-stat__n")?.textContent).toBe("1–\u20602\u00a0mo\u00a0→ 1–\u20602\u00a0wk");
   });
 
-  it("gives each Home work card a concise, visible-title-first link name", async () => {
+  it("names each Home work card from visible copy without hiding its description", async () => {
     await act(async () => {
       root.render(<RisoHome />);
     });
@@ -254,14 +254,18 @@ describe("flagship case-study accessibility", () => {
     const rows = Array.from(container.querySelectorAll<HTMLAnchorElement>(".rp-work"));
     expect(rows).toHaveLength(5);
     rows.forEach((row) => {
-      const visibleTitle = row.querySelector(".rp-work__title")?.textContent;
-      const accessibleName = row.getAttribute("aria-label");
-      expect(visibleTitle).toBeTruthy();
-      expect(accessibleName).toBe(`${visibleTitle} — home.riso.workLinkSuffix`);
-      expect(accessibleName?.length).toBeLessThan(100);
+      const visibleTitle = row.querySelector<HTMLElement>(".rp-work__title");
+      const description = row.querySelector<HTMLElement>(".rp-work__desc");
+      expect(visibleTitle?.id).toBeTruthy();
+      expect(row.getAttribute("aria-label")).toBeNull();
+      expect(row.getAttribute("aria-labelledby")).toBe(visibleTitle?.id);
+      expect(row.getAttribute("aria-describedby")?.split(" ")).toContain(description?.id);
     });
-    expect(STRINGS.en["home.riso.workLinkSuffix"]).toBe("case study");
-    expect(STRINGS.es["home.riso.workLinkSuffix"]).toBe("estudio de caso");
+
+    const mskCard = rows.find((row) => row.getAttribute("href") === "/case-study/msk");
+    expect(mskCard?.querySelector('[role="table"]')).toBeNull();
+    expect(mskCard?.querySelector('[tabindex="0"]')).toBeNull();
+    expect(mskCard?.querySelector(".msk-dashboard-mockup")?.getAttribute("aria-hidden")).toBe("true");
   });
 
   it("exposes Grove's working browser prototype from Home without a dead Spanish hash", async () => {
@@ -363,6 +367,10 @@ describe("flagship case-study accessibility", () => {
     expect(video.hasAttribute("playsinline")).toBe(true);
     expect(video.getAttribute("poster")).toBe("/assets/knowunity/say-it-back-sizzle-poster.jpg");
     expect(video.querySelector("source")?.getAttribute("src")).toBe("/assets/knowunity/say-it-back-sizzle-720.mp4");
+    const captions = video.querySelector("track[kind='captions']");
+    expect(captions?.getAttribute("src")).toBe("/assets/knowunity/say-it-back-sizzle-captions-en.vtt");
+    expect(captions?.getAttribute("srclang")).toBe("en");
+    expect(captions?.hasAttribute("default")).toBe(true);
     expect(video.getAttribute("aria-label")).toBe(label);
     const describedBy = video.getAttribute("aria-describedby") || "";
     expect(document.getElementById(describedBy)?.textContent).toContain(caption);
@@ -686,8 +694,8 @@ describe("flagship case-study accessibility", () => {
   // artifact in the homepage hero, replaced 2026-08-28/29 by the Draft A/B
   // experiments above, then dropped entirely on owner rejection — the hero
   // carries no dashboard artifact of any kind now (see the plain-hero test
-  // above). This file's own home-work-queue-table (the MSK card further
-  // down the homepage, in the work list) keeps its own coverage separately;
+  // above). The decorative, non-focusable queue preview in the MSK work card
+  // further down the homepage keeps its own coverage separately;
   // this test now only guards that the retired hero-specific expand/collapse
   // control doesn't reappear without a fresh owner decision.
   it("does not put an expandable queue artifact back in the homepage hero", async () => {
@@ -744,6 +752,11 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".fp-mskLens")).toBeNull();
     expect(container.querySelector(".fp-mskLens__controls")).toBeNull();
     expect(container.textContent).toContain("Office Coordinator filing queue");
+    const mockupTitles = Array.from(container.querySelectorAll<HTMLElement>(".msk-dashboard-mockup__title"));
+    expect(mockupTitles.length).toBeGreaterThan(0);
+    expect(mockupTitles.every((title) => title.tagName === "P")).toBe(true);
+    expect(Array.from(container.querySelectorAll("h2, h3"), (heading) => heading.textContent))
+      .not.toContain("My filing queue");
     // Provenance is stated once on the page (density pass, 2026-10-16).
     expect(container.textContent?.toLowerCase().split("no patient data").length).toBe(2);
     expect(container.textContent?.toLowerCase().split("anonymized internal tool concept").length).toBe(2);
@@ -770,8 +783,10 @@ describe("flagship case-study accessibility", () => {
 
     expect(container.querySelector(".rp-openingFilm")).toBeNull();
     expect(container.querySelector("main h1")).not.toBeNull();
-    // Work-row thumbnails carry their meaning in the figure aria-label; the
-    // visible captions repeated the row category and were cut (2026-10-16).
+    // Informational work-row thumbnails carry their meaning in the figure
+    // aria-label; MSK's redundant nested queue is decorative and covered by
+    // the dedicated Home-card test above. Visible captions repeated the row
+    // category and were cut (2026-10-16).
     expect(container.querySelector(".rp-work__thumb--mechanism")?.getAttribute("aria-label")).toBeTruthy();
     expect(container.querySelector(".rp-work__thumb figcaption")).toBeNull();
 

@@ -59,10 +59,12 @@ const FRAMES = [
 // so the on-screen lines below are its full text alternative.
 const REEL_SRC = "/assets/knowunity/say-it-back-sizzle-720.mp4";
 const REEL_POSTER = "/assets/knowunity/say-it-back-sizzle-poster.jpg";
+const REEL_CAPTIONS = "/assets/knowunity/say-it-back-sizzle-captions-en.vtt";
 
 const REEL: CaseStudyReelData = {
   src: REEL_SRC,
   poster: REEL_POSTER,
+  captionsSrc: REEL_CAPTIONS,
   kicker: "The 52-second reel",
   label: "Say It Back, the 52-second reel",
   caption: "The prototype on Knowunity's kit. Recall is mocked: no real speech recognition.",

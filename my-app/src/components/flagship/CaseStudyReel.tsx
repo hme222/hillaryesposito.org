@@ -3,6 +3,8 @@ import React, { useId } from "react";
 export type CaseStudyReelData = {
   src: string;
   poster: string;
+  /** Synchronized WebVTT captions for speech and meaningful audio. */
+  captionsSrc: string;
   /** Short visible label above the frame. */
   kicker: string;
   /** Accessible name for the video. */
@@ -21,8 +23,8 @@ export type CaseStudyReelData = {
  * Plays only when the visitor presses play: no autoplay, no loop, nothing
  * fetched until then (preload="none"), so reduced-motion preferences are
  * respected by default. The reel has a music bed and no speech, so the
- * on-screen lines in the disclosure are its text alternative and no
- * captions track is needed.
+ * on-screen lines remain available in the disclosure while a synchronized
+ * captions track identifies the meaningful music/audio cues during playback.
  *
  * @status: stable
  * @purpose: User-started case-study video (native controls, poster, never autoplays) in a 16:9 plate with a visible caption and a details disclosure listing the reel's on-screen lines; used on the Knowunity case study, English and Spanish. The Home dispatch train and HomepageOpeningFilm are decorative/scripted videos, not this.
@@ -45,6 +47,7 @@ export default function CaseStudyReel({ reel }: { reel: CaseStudyReelData }) {
           aria-describedby={captionId}
         >
           <source src={reel.src} type="video/mp4" />
+          <track kind="captions" src={reel.captionsSrc} srcLang="en" label="English captions" default />
         </video>
       </div>
       <figcaption className="rp-reel__caption" id={captionId}>{reel.caption}</figcaption>

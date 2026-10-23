@@ -428,6 +428,7 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
       reel: {
         src: "/assets/knowunity/say-it-back-sizzle-720.mp4",
         poster: "/assets/knowunity/say-it-back-sizzle-poster.jpg",
+        captionsSrc: "/assets/knowunity/say-it-back-sizzle-captions-en.vtt",
         kicker: "El video de 52 segundos",
         label: "Say It Back, el video de 52 segundos",
         caption: "El prototipo sobre el kit de Knowunity. El recuerdo es simulado: no hay reconocimiento de voz real.",

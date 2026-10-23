@@ -63,7 +63,7 @@
 }
 .about-page .about-hero__caption {
   font-family: var(--mono);
-  font-size: .64rem;
+  font-size: .8125rem;
   letter-spacing: .11em;
   text-transform: uppercase;
   color: var(--muted);
@@ -129,7 +129,7 @@
 .not-found__eyebrow {
   margin: 0 0 1rem;
   color: var(--olive-2);
-  font-size: .68rem;
+  font-size: .8125rem;
   font-weight: 700;
   letter-spacing: .15em;
   line-height: 1.4;
@@ -196,7 +196,7 @@
   margin: 0;
   color: inherit;
   opacity: .62;
-  font-size: .72rem;
+  font-size: .8125rem;
   letter-spacing: .04em;
 }
 /* Compact case-study credits in the closing band. */
@@ -212,7 +212,7 @@
   flex: 0 0 auto;
   margin: 0;
   font-family: var(--font-mono, ui-monospace, monospace);
-  font-size: .7rem;
+  font-size: .8125rem;
   letter-spacing: .12em;
   text-transform: uppercase;
   opacity: .6;
@@ -229,7 +229,7 @@
   padding: 0;
   list-style: none;
   font-family: var(--font-mono, ui-monospace, monospace);
-  font-size: .76rem;
+  font-size: .8125rem;
 }
 
 @media (max-width: 700px) {
@@ -344,7 +344,7 @@
 .recruiter-panel__project-status {
   margin-top: .2rem;
   font-family: "Space Mono", ui-monospace, monospace;
-  font-size: .75rem !important;
+  font-size: .8125rem !important;
   line-height: 1.45 !important;
 }
 .recruiter-panel__project:first-child { border-top: 1px solid var(--border); }

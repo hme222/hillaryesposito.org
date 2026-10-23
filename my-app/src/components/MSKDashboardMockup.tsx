@@ -3,7 +3,13 @@ import { MSK_COPY, type MskCopy } from "../data/mskCaseStudy";
 
 type MSKDashboardMockupProps = {
   compact?: boolean;
+  /** Use a real heading only when this artifact itself starts a document
+   *  section. Most placements already sit under an H2/H3, so the visual title
+   *  defaults to paragraph semantics and does not pollute the page outline. */
   headingLevel?: 2 | 3;
+  /** Home-card thumbnails are a redundant visual preview inside a link. In
+   *  that context the mockup must not expose a second table or focus stop. */
+  decorative?: boolean;
   activeRow?: number | null;
   copy?: MskCopy["dashboard"];
   /** Show only these row indices (into `copy.rows`), in this order. Omit to
@@ -64,7 +70,8 @@ type MSKDashboardMockupProps = {
  */
 export default function MSKDashboardMockup({
   compact = false,
-  headingLevel = 3,
+  headingLevel,
+  decorative = false,
   activeRow = null,
   copy = MSK_COPY.en.dashboard,
   rowIndices,
@@ -76,7 +83,9 @@ export default function MSKDashboardMockup({
   tableId,
   expandControl,
 }: MSKDashboardMockupProps) {
-  const Heading = headingLevel === 2 ? "h2" : "h3";
+  const title = headingLevel
+    ? React.createElement(headingLevel === 2 ? "h2" : "h3", { className: "msk-dashboard-mockup__title" }, copy.title)
+    : <p className="msk-dashboard-mockup__title">{copy.title}</p>;
   const visibleRows = rowIndices ? rowIndices.map((i) => copy.rows[i]).filter(Boolean) : copy.rows;
   const legendBody = (
     <>
@@ -86,7 +95,12 @@ export default function MSKDashboardMockup({
   );
 
   return (
-    <div className={`msk-dashboard-mockup${compact ? " msk-dashboard-mockup--compact" : ""}`} role="group" aria-label={copy.groupAria}>
+    <div
+      className={`msk-dashboard-mockup${compact ? " msk-dashboard-mockup--compact" : ""}`}
+      role={decorative ? undefined : "group"}
+      aria-label={decorative ? undefined : copy.groupAria}
+      aria-hidden={decorative || undefined}
+    >
       {/* The role used to ride along on the eyebrow, which pushed that line to
           two wrapped rows above the heading and made the whole header read as
           clutter. It is a chip now — same information, one line each.
@@ -102,7 +116,7 @@ export default function MSKDashboardMockup({
         <div className="msk-dashboard-mockup__topbar msk-dashboard-mockup__topbar--condensed">
           <p className="msk-dashboard-mockup__eyebrow">{hideEyebrow ? copy.roleView : `${copy.eyebrow} · ${copy.roleView}`}</p>
           <div className="msk-dashboard-mockup__condensedMain">
-            <Heading>{copy.title}</Heading>
+            {title}
             <span className="msk-dashboard-mockup__timestamp">{copy.queueMeta}</span>
           </div>
         </div>
@@ -110,7 +124,7 @@ export default function MSKDashboardMockup({
         <div className="msk-dashboard-mockup__topbar">
           <div>
             {!hideEyebrow && <p className="msk-dashboard-mockup__eyebrow">{copy.eyebrow}</p>}
-            <Heading>{copy.title}</Heading>
+            {title}
           </div>
           <span className="msk-dashboard-mockup__meta">
             <span className="msk-dashboard-mockup__role">{copy.roleView}</span>
@@ -125,40 +139,42 @@ export default function MSKDashboardMockup({
         </div>
       )}
 
-      <div className="msk-dashboard-mockup__table" id={tableId} role="table" aria-label={copy.tableAria} tabIndex={0}>
-        <div className="msk-dashboard-mockup__row msk-dashboard-mockup__row--head" role="row">
-          <span role="columnheader">{copy.columns.patient}</span>
-          <span role="columnheader">{copy.columns.document}</span>
-          <span role="columnheader">{copy.columns.status}</span>
-          <span role="columnheader">{copy.columns.routedTo}</span>
-          <span role="columnheader">{copy.columns.action}</span>
+      <div
+        className="msk-dashboard-mockup__table"
+        id={tableId}
+        role={decorative ? undefined : "table"}
+        aria-label={decorative ? undefined : copy.tableAria}
+        tabIndex={decorative ? undefined : 0}
+      >
+        <div className="msk-dashboard-mockup__row msk-dashboard-mockup__row--head" role={decorative ? undefined : "row"}>
+          <span role={decorative ? undefined : "columnheader"}>{copy.columns.patient}</span>
+          <span role={decorative ? undefined : "columnheader"}>{copy.columns.document}</span>
+          <span role={decorative ? undefined : "columnheader"}>{copy.columns.status}</span>
+          <span role={decorative ? undefined : "columnheader"}>{copy.columns.routedTo}</span>
+          <span role={decorative ? undefined : "columnheader"}>{copy.columns.action}</span>
         </div>
         {visibleRows.map((row, index) => (
           <div
             className={`msk-dashboard-mockup__row${activeRow === index ? " is-active" : ""}`}
-            role="row"
+            role={decorative ? undefined : "row"}
             key={row.mrn}
             data-status={row.slug}
           >
-            <span role="cell" className="msk-dashboard-mockup__mrn">
-              {/* `title` alone is an unreliable accessible-name source: it is
-                  opt-in/inconsistent across screen readers, invisible on
-                  touch, and unreachable by keyboard focus. `aria-label` is
-                  read every time, by every AT, regardless of verbosity
-                  settings — kept alongside `title` rather than replacing it,
-                  so the dotted-underline hover affordance for sighted mouse
-                  users is unchanged. (accessibility-reviewer, 2026-08-27) */}
-              <span><abbr title={copy.mrnDef} aria-label={`${copy.mrnTerm}, ${copy.mrnDef}`}>{copy.mrnTerm}</abbr> {row.mrn}</span>
+            <span role={decorative ? undefined : "cell"} className="msk-dashboard-mockup__mrn">
+              {/* The native abbreviation keeps the dotted-underline expansion
+                  for pointer users; the plain MRN term is also defined in the
+                  visible glossary directly below the table. */}
+              <span><abbr title={copy.mrnDef}>{copy.mrnTerm}</abbr> {row.mrn}</span>
               <small>{row.received}</small>
             </span>
-            <span role="cell">{row.doc}</span>
-            <span role="cell">
+            <span role={decorative ? undefined : "cell"}>{row.doc}</span>
+            <span role={decorative ? undefined : "cell"}>
               <span className={`msk-dashboard-status msk-dashboard-status--${row.slug}`}>
                 {row.status}
               </span>
             </span>
-            <span role="cell">{row.routed}</span>
-            <span role="cell">
+            <span role={decorative ? undefined : "cell"}>{row.routed}</span>
+            <span role={decorative ? undefined : "cell"}>
               <span className={row.slug === "ready-to-file" ? "msk-dashboard-action msk-dashboard-action--primary" : "msk-dashboard-action"}>
                 {row.action}
               </span>

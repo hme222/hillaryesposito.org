@@ -333,32 +333,34 @@ export default function RisoHome() {
 
   const glossary: Record<string, string> = GLOSSARY[lang === "es" ? "es" : "en"];
 
-  const renderWorkContents = (work: WorkItem) => (
+  const renderWorkContents = (work: WorkItem) => {
+    const idRoot = `home-work-${work.n}`;
+    return (
     <>
       <div>
         {/* The 01-05 numbers are gone (portfolio critique 2026-10-23): the
             cases are ranked by relevance, not steps in a sequence. The status
             label stays because it carries information. */}
         {(work.tagKey || work.evidenceLabelEn) && (
-          <p className="rp-work__n">
+          <p className="rp-work__n" id={`${idRoot}-status`}>
             {work.tagKey && <PhaseIndicator current={2} label={t(work.tagKey)} />}
             {work.evidenceLabelEn && (
               <span>{lang === "es" ? work.evidenceLabelEs : work.evidenceLabelEn}</span>
             )}
           </p>
         )}
-        <p className="rp-work__title">{t(work.titleKey)}</p>
-        <p className="rp-work__sub">{t(work.subKey)}</p>
-        <p className="rp-work__desc">{t(work.descKey)}</p>
+        <p className="rp-work__title" id={`${idRoot}-title`}>{t(work.titleKey)}</p>
+        <p className="rp-work__sub" id={`${idRoot}-subtitle`}>{t(work.subKey)}</p>
+        <p className="rp-work__desc" id={`${idRoot}-description`}>{t(work.descKey)}</p>
       </div>
       {work.visual === "logistics" ? (
         <figure className="rp-work__thumb rp-work__thumb--mechanism" aria-label={t(work.imgAltKey)}>
           <LogisticsMechanism n="01" />
         </figure>
       ) : work.visual === "msk" ? (
-        <figure className="rp-work__thumb rp-work__thumb--dashboard" aria-label={t(work.imgAltKey)}>
+        <figure className="rp-work__thumb rp-work__thumb--dashboard" aria-hidden="true">
           <div className="rp-work__thumb--dashboard__frame">
-            <MSKDashboardMockup compact condensedHeader hideToolbar hideRule rowIndices={[0, 2]} tableId="home-work-queue-table" copy={MSK_COPY[lang === "es" ? "es" : "en"].dashboard} />
+            <MSKDashboardMockup decorative compact condensedHeader hideToolbar hideRule rowIndices={[0, 2]} copy={MSK_COPY[lang === "es" ? "es" : "en"].dashboard} />
           </div>
         </figure>
       ) : work.visual === "knowunity" ? (
@@ -382,11 +384,18 @@ export default function RisoHome() {
         </div>
       )}
     </>
-  );
+    );
+  };
 
   const renderWorkItem = (work: WorkItem) => {
     const supporting = work.tier !== "primary";
     const workClassName = `rp-work${supporting ? " rp-work--supporting" : ""}`;
+    const idRoot = `home-work-${work.n}`;
+    const descriptionIds = [
+      (work.tagKey || work.evidenceLabelEn) ? `${idRoot}-status` : null,
+      `${idRoot}-subtitle`,
+      `${idRoot}-description`,
+    ].filter(Boolean).join(" ");
 
     return (
       <React.Fragment key={work.path ?? work.externalHref}>
@@ -396,7 +405,8 @@ export default function RisoHome() {
             href={work.externalHref}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={work.externalAriaKey ? t(work.externalAriaKey) : undefined}
+            aria-labelledby={`${idRoot}-title`}
+            aria-describedby={descriptionIds}
           >
             {renderWorkContents(work)}
           </a>
@@ -404,7 +414,8 @@ export default function RisoHome() {
           <Link
             className={workClassName}
             to={work.path ?? "/"}
-            aria-label={`${t(work.titleKey)} — ${t("home.riso.workLinkSuffix")}`}
+            aria-labelledby={`${idRoot}-title`}
+            aria-describedby={descriptionIds}
           >
             {renderWorkContents(work)}
           </Link>

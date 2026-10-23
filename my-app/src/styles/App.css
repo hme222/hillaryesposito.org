@@ -1042,7 +1042,7 @@ textarea::placeholder {
   align-items: center;
   gap: 0.5rem;
   font-family: "Space Mono", ui-monospace, monospace;
-  font-size: 0.62rem;
+  font-size: 0.8125rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   font-weight: 700;
@@ -1105,7 +1105,7 @@ textarea::placeholder {
 }
 .recruiter-panel__label {
   font-family: "Space Mono", ui-monospace, monospace;
-  font-size: 0.7rem;
+  font-size: 0.8125rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 700;
@@ -1131,7 +1131,7 @@ textarea::placeholder {
   border: 1px solid var(--border);
   border-radius: 2px;
   padding: 0.36rem 0.7rem;
-  font-size: 0.64rem;
+  font-size: 0.8125rem;
   letter-spacing: 0.03em;
   color: var(--muted);
 }
@@ -1197,7 +1197,7 @@ textarea::placeholder {
 .recruiter-panel__email {
   margin: 1rem 0 0;
   font-family: "Space Mono", ui-monospace, monospace;
-  font-size: 0.72rem;
+  font-size: 0.8125rem;
   color: var(--muted);
 }
 .recruiter-panel__email a {
@@ -1393,13 +1393,13 @@ textarea::placeholder {
 /* A fixed-width graphic: the title stays on one line and the timestamp wraps
    under it on the narrowest phones, rather than stranding "queue" (320px). */
 .msk-dashboard-mockup__condensedMain { flex-wrap: wrap; row-gap: 0.1rem; }
-.msk-dashboard-mockup__condensedMain :is(h2, h3) { margin: 0; white-space: nowrap; }
+.msk-dashboard-mockup__condensedMain .msk-dashboard-mockup__title { margin: 0; white-space: nowrap; }
 .msk-dashboard-mockup__condensedMain .msk-dashboard-mockup__timestamp {
   flex: 0 0 auto;
   white-space: nowrap;
 }
 
-.msk-dashboard-mockup__topbar :is(h2, h3) {
+.msk-dashboard-mockup__topbar .msk-dashboard-mockup__title {
   margin: 0.25rem 0 0;
   color: var(--fg);
   font-size: clamp(1rem, 1.6vw, 1.2rem);

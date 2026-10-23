@@ -251,7 +251,7 @@ export default function FlagshipMSK() {
         <div className="rp-hero__media fp-heroArt fp-heroArt--msk" data-evidence="true">
           <div className="fp-artifactLabel"><span>RECREATED ARTIFACT</span><b>Office Coordinator filing queue</b></div>
           <div className="fp-dashboardFrame" aria-label="Recreated Office Coordinator filing queue concept">
-            <MSKDashboardMockup headingLevel={2} legendDisclosure />
+            <MSKDashboardMockup legendDisclosure />
           </div>
         </div>
       </header>

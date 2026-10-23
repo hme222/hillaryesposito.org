@@ -36,6 +36,9 @@
      (labels/data). Overrides the global serif --font-body inside riso pages. */
   --font-body: var(--sans);
   --font-editorial: var(--sans);
+  /* Recruiter-relevant metadata, evidence qualifiers, status, provenance,
+     and wayfinding never drop below 13px at the default 16px root. */
+  --rp-type-floor: .8125rem;
   --grid-ink: color-mix(in srgb, var(--green) 9%, transparent);
   color: var(--ink);
   font-family: var(--sans);
@@ -70,7 +73,7 @@
 .dark-mode .rp-grain { mix-blend-mode: screen; opacity: .14; }
 
 .rp-eyebrow { display: inline-flex; align-items: center; gap: .5rem; background: var(--ink); color: var(--paper);
-  font-family: var(--mono); font-size: .66rem; letter-spacing: .18em; text-transform: uppercase; padding: .35rem .7rem; border-radius: 0; }
+  font-family: var(--mono); font-size: var(--rp-type-floor); letter-spacing: .14em; text-transform: uppercase; padding: .35rem .7rem; border-radius: 0; }
 .rp-eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--coral); }
 /* Home's eyebrow is long enough to wrap on phones; balance keeps the last
    line from being one stranded word ("training", "MSK"). */
@@ -388,7 +391,7 @@
 .rp-section--alt { background: var(--paper-2); border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); }
 .rp-section--alt .rp-kicker,
 .rp-decisionStory__head .rp-kicker { color: var(--ink); }
-.rp-kicker { font-family: var(--mono); font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--coral); font-weight: 700; }
+.rp-kicker { font-family: var(--mono); font-size: var(--rp-type-floor); letter-spacing: .12em; text-transform: uppercase; color: var(--coral); font-weight: 700; }
 .rp-title { font-size: var(--ts-title); font-weight: 850; line-height: 1.05; letter-spacing: -.015em; margin: .5rem 0 0; text-wrap: balance; }
 
 /* ---------- homepage opening film ---------- */
@@ -859,7 +862,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-heroEvidence > div:last-child,
 .rp-heroEvidence > div:nth-child(odd):nth-last-child(2) { border-bottom: 0; }
 .rp-heroEvidence dt {
-  font: 700 .68rem/1.25 var(--mono);
+  font: 700 var(--rp-type-floor)/1.25 var(--mono);
   letter-spacing: .08em;
   text-transform: uppercase;
   /* Over a translucent clearing the plain coral measured 4.08–4.45:1. */
@@ -868,7 +871,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-heroEvidence dd {
   margin: .28rem 0 0;
   color: var(--ink);
-  font-size: clamp(.7rem, 1.25vw, .8rem);
+  font-size: clamp(var(--rp-type-floor), 1.25vw, .86rem);
   font-weight: 700;
   line-height: 1.35;
 }
@@ -892,7 +895,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   text-transform: none;
 }
 .rp-heroEvidence--workflow dt::after { content: " →"; color: var(--green); }
-.rp-heroEvidence--workflow dd { margin: 0; font-size: clamp(.76rem, 1.25vw, .86rem); }
+.rp-heroEvidence--workflow dd { margin: 0; font-size: clamp(var(--rp-type-floor), 1.25vw, .86rem); }
 
 .rp-heroEvidence--boundary {
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -911,7 +914,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   letter-spacing: 0;
   text-transform: none;
 }
-.rp-heroEvidence--boundary dd { margin-top: .25rem; font-size: clamp(.76rem, 1.25vw, .86rem); }
+.rp-heroEvidence--boundary dd { margin-top: .25rem; font-size: clamp(var(--rp-type-floor), 1.25vw, .86rem); }
 .rp-heroEvidence--trace {
   display: block;
   border-block: 0;
@@ -944,7 +947,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   font-size: clamp(.88rem, 1.4vw, 1.02rem);
   line-height: 1.2;
 }
-.rp-heroEvidence--trace li span { font-size: clamp(.76rem, 1.25vw, .86rem); line-height: 1.35; }
+.rp-heroEvidence--trace li span { font-size: clamp(var(--rp-type-floor), 1.25vw, .86rem); line-height: 1.35; }
 .rp-heroEvidence--trace > p {
   display: flex;
   flex-wrap: wrap;
@@ -952,7 +955,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   margin: 0;
   padding: .35rem 0 .8rem;
   color: var(--ink);
-  font-size: clamp(.76rem, 1.25vw, .86rem);
+  font-size: clamp(var(--rp-type-floor), 1.25vw, .86rem);
   line-height: 1.35;
 }
 .rp-heroEvidence--trace > p b { color: var(--green); }
@@ -1040,7 +1043,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 /* Hillary's role in the number, above the number. Small and unemphatic on
    purpose — it is a qualifier, not a boast, and it has to be readable before
    the eye moves on rather than competing with the figure. */
-.rp-stat__tag { margin: 0 0 .5rem; font-family: var(--mono); font-size: .72rem;
+.rp-stat__tag { margin: 0 0 .5rem; font-family: var(--mono); font-size: var(--rp-type-floor);
   letter-spacing: .11em; text-transform: uppercase; color: var(--muted); }
 .rp-stat__n { font-size: var(--ts-stat); font-weight: 850; letter-spacing: -.015em; color: var(--green); line-height: 1; }
 .rp-stat__l { color: var(--ink-2); margin-top: .5rem; font-size: .92rem; }
@@ -1079,7 +1082,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-strip__frame { aspect-ratio: 9/17.5; border-radius: var(--r-device); border: 1px solid var(--hair); overflow: hidden;
   background: #f5f0ea; box-shadow: 0 2px 6px rgba(0,0,0,.1), 0 16px 34px -14px rgba(0,0,0,.28); }
 .rp-strip__frame img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; }
-.rp-strip__cap { margin-top: .55rem; font-family: var(--mono); font-size: .64rem; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+.rp-strip__cap { margin-top: .55rem; font-family: var(--mono); font-size: var(--rp-type-floor); letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
 .rp-gallery__controls { display: none; }
 @media (max-width: 780px) {
   .rp-gallery__controls { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: .65rem;
@@ -1095,7 +1098,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 
 /* ---------- reading time ---------- */
 .rp-readtime { display: inline-flex; align-items: center; gap: .4rem; margin-top: .9rem;
-  font-family: var(--mono); font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  font-family: var(--mono); font-size: var(--rp-type-floor); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .rp-readtime b { color: var(--ink); white-space: nowrap; flex: 0 0 auto; }
 .rp-readtime::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
 @media (max-width: 360px) {
@@ -1271,7 +1274,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
    wrap's width up to 860px so it never overflows at 320, and the disclosure
    below reuses the .rp-acc summary styling. */
 .rp-reel { max-width: 860px; margin: var(--sp-sm) 0 0; }
-.rp-reel__kicker { margin: 0 0 .6rem; font-family: var(--mono); font-size: .68rem; font-weight: 700;
+.rp-reel__kicker { margin: 0 0 .6rem; font-family: var(--mono); font-size: var(--rp-type-floor); font-weight: 700;
   letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
 .rp-reel__plate { border: 1px solid var(--hair); border-radius: var(--r-plate); overflow: hidden; background: var(--ink); }
 .rp-reel__video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
@@ -1287,7 +1290,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-credential__plate { padding: .45rem; border: 1px solid var(--hair); border-radius: var(--r-plate);
   background: color-mix(in srgb, var(--paper) 74%, transparent); }
 .rp-credential__img { display: block; width: 100%; height: auto; }
-.rp-credential__caption { margin: .6rem 0 0; color: var(--muted); font-size: .78rem; line-height: 1.45; text-wrap: pretty; }
+.rp-credential__caption { margin: .6rem 0 0; color: var(--muted); font-size: var(--rp-type-floor); line-height: 1.45; text-wrap: pretty; }
 .rp-credential__link { display: inline-flex; align-items: center; min-height: 44px; color: var(--ink); font-size: .85rem;
   font-weight: 600; text-decoration: underline; text-underline-offset: .2em; text-decoration-thickness: 1px; }
 .rp-credential__link:hover { text-decoration-thickness: 2px; }
@@ -1367,7 +1370,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   background: var(--paper); border: 1px solid var(--hair); border-radius: var(--r-plate); padding: 1.3rem 1.5rem; }
 @media (max-width: 760px) { .rp-metagrid { grid-template-columns: repeat(2,1fr); } }
 @media (max-width: 460px) { .rp-metagrid { grid-template-columns: 1fr; } }
-.rp-metagrid__k { font-family: var(--mono); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.rp-metagrid__k { font-family: var(--mono); font-size: var(--rp-type-floor); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 .rp-metagrid__v { font-weight: 650; font-size: .92rem; margin-top: .3rem; line-height: 1.4; }
 /* Linked "what to review" titles carry a persistent coral underline so it's clear
    which items open a case study and which are plain descriptions. */
@@ -1376,7 +1379,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   border-radius: var(--r-plate); padding: 1.4rem; align-self: start; }
 /* display:block so the label reads the same whether it is authored as a span or
    a p — it appears as both, and an inline span silently dropped its margin. */
-.rp-note__k { display: block; font-family: var(--mono); font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); margin: 0 0 .5rem; }
+.rp-note__k { display: block; font-family: var(--mono); font-size: var(--rp-type-floor); letter-spacing: .08em; text-transform: uppercase; color: var(--ink); margin: 0 0 .5rem; }
 .rp-note p { margin: 0; color: var(--ink-2); }
 /* Sub-heading inside a long section, so dense stretches read as bounded stops
    rather than one undifferentiated scroll. */
@@ -1453,9 +1456,9 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-work > div:first-child { transition: transform var(--dur) var(--ease-soft); }
 .rp-work:hover { background: color-mix(in srgb, var(--green) 5%, transparent); }
 .rp-work:hover > div:first-child { transform: translateX(.75rem); }
-.rp-work__n { font-family: var(--mono); font-size: .68rem; color: var(--coral); font-weight: 700; display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+.rp-work__n { font-family: var(--mono); font-size: var(--rp-type-floor); color: var(--coral); font-weight: 700; display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
 .rp-work__title { font-size: var(--ts-title); font-weight: 850; line-height: 1.05; letter-spacing: -.015em; margin: .3rem 0 .25rem; text-wrap: balance; }
-.rp-work__sub { font-family: var(--mono); font-size: .64rem; letter-spacing: .06em; text-transform: uppercase; color: var(--green); }
+.rp-work__sub { font-family: var(--mono); font-size: var(--rp-type-floor); letter-spacing: .05em; text-transform: uppercase; color: var(--green); }
 .rp-work__desc { color: var(--ink-2); margin: .75rem 0 0; max-width: 52ch; font-size: .95rem; }
 /* Surfaces the MSK "simple button" decision story as its own hook — a small
    annotation riding the bottom edge of the row it belongs to, not a full
@@ -1467,7 +1470,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   margin: 0;
   padding: 0 .25rem clamp(1rem, 2vw, 1.4rem);
   border-bottom: 1px solid var(--hair);
-  font: 700 .68rem/1.3 var(--mono);
+  font: 700 var(--rp-type-floor)/1.3 var(--mono);
   letter-spacing: .04em;
   color: var(--coral);
   text-decoration: underline;
@@ -1485,10 +1488,10 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   filter: saturate(.96); transition: transform var(--dur) var(--ease-soft); }
 .rp-work:hover .rp-work__thumb img { transform: scale(1.03); }
 .rp-supportingLink { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
-.rp-supportingLink > span { font: 700 .62rem/1.3 var(--mono); letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
+.rp-supportingLink > span { font: 700 var(--rp-type-floor)/1.3 var(--mono); letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
 /* Same treatment as .rp-work__teaser: the "Supporting practice" kicker
    carries the demotion, not a quieter link style. */
-.rp-supportingLink a { min-height: 44px; display: inline-flex; align-items: center; font: 700 .68rem/1.3 var(--mono);
+.rp-supportingLink a { min-height: 44px; display: inline-flex; align-items: center; font: 700 var(--rp-type-floor)/1.3 var(--mono);
   letter-spacing: .04em; color: var(--coral); text-decoration: underline; text-underline-offset: .28em; }
 .rp-supportingLink a:hover { color: var(--ink); }
 .riso-home .rp-work {
@@ -2044,7 +2047,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   text-align: right;
   color: var(--muted);
   font-family: var(--mono);
-  font-size: .62rem;
+  font-size: var(--rp-type-floor);
   line-height: 1.3;
   letter-spacing: .04em;
 }
@@ -2332,7 +2335,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   text-decoration-color: var(--hair);
   text-underline-offset: .25em;
   font-family: var(--mono);
-  font-size: .62rem;
+  font-size: var(--rp-type-floor);
   line-height: 1.4;
   letter-spacing: .06em;
   text-transform: uppercase;
@@ -2346,7 +2349,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   margin: .55rem auto 0;
   padding: .7rem var(--sp-gutter);
   font-family: var(--mono);
-  font-size: .67rem;
+  font-size: var(--rp-type-floor);
   line-height: 1.55;
   color: var(--ink-2);
   border-block: 1px solid var(--hair);
@@ -2396,7 +2399,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   gap: .5rem;
 }
 .rp-breadcrumb { max-width: none; margin: 0; padding: 0;
-  font-family: var(--mono); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+  font-family: var(--mono); font-size: var(--rp-type-floor); letter-spacing: .06em; text-transform: uppercase; color: var(--muted);
   display: flex; align-items: center; flex-wrap: nowrap; gap: .5rem;
   flex: 1 1 auto; min-width: 0;
   overflow-x: auto; scrollbar-width: none; }
@@ -2425,7 +2428,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-heroTour { max-width: 100%; text-align: start; text-wrap: balance; }
 .rp-hero__ctas--tour { align-items: center; margin-top: 1rem; }
 @media (max-width: 400px) {
-  .rp-breadcrumb { font-size: .58rem; letter-spacing: .06em; }
+  .rp-breadcrumb { font-size: var(--rp-type-floor); letter-spacing: .04em; }
 }
 /* Long final crumbs ("Memorial Sloan Kettering", "Logística médica del
    Ejército") were cut off inside a scroller with a hidden scrollbar and no
@@ -2444,7 +2447,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-chapters { position: sticky; top: calc(var(--dock-h, 74px) + 14px); z-index: 5;
   max-width: 1080px; margin: .35rem auto 1rem; padding: .3rem var(--sp-gutter);
   display: flex; align-items: center; flex-wrap: wrap; gap: .35rem .55rem; font-family: var(--mono);
-  font-size: .69rem; letter-spacing: .035em;
+  font-size: var(--rp-type-floor); letter-spacing: .025em;
   /* 92% let dark artifact text — the MSK queue's column headers, the hero
      headline — read straight through the strip as a ghosted second layer.
      97% keeps the frosted edge without the bleed. */
@@ -2524,7 +2527,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 
 /* ---------- "no invented numbers" disclaimer ---------- */
 .rp-disclaimer { display: inline-flex; align-items: center; gap: .5rem; margin: 1rem 0 0; font-family: var(--mono);
-  font-size: .8rem; letter-spacing: 0; text-transform: none; color: var(--muted); }
+  font-size: var(--rp-type-floor); letter-spacing: 0; text-transform: none; color: var(--muted); }
 .rp-disclaimer::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
 
 
@@ -2662,7 +2665,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
     grid-template-columns: 1.2fr .9fr 1fr;
   }
   .flagship-page .fp-heroArt--msk .msk-dashboard-mockup__row > :nth-child(n + 4) { display: none; }
-  /* Consequential labels stay small but no longer fall below a readable 12px
+  /* Consequential labels stay compact but no longer fall below the 13px
      floor on the phone layouts used in the recruiter audit. */
   .rp-heroEvidence dt,
   .rp-metagrid__k,
@@ -2672,13 +2675,13 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   .rp-chapter__n,
   .rp-chapter__proof small,
   .rp-phase__label,
-  .rp-note__k { font-size: .75rem; }
+  .rp-note__k { font-size: var(--rp-type-floor); }
   .rp-metagrid__v { font-size: .84rem; }
   .rp-cta,
   .rp-heroUtility,
   .rp-eyebrow,
   .rp-stat__source,
-  .site-footer__label { font-size: .75rem; }
+  .site-footer__label { font-size: var(--rp-type-floor); }
   .msk-dashboard-mockup--compact .msk-dashboard-mockup__eyebrow,
   .msk-dashboard-mockup--compact .msk-dashboard-mockup__timestamp,
   .msk-dashboard-mockup--compact .msk-dashboard-mockup__role,
@@ -2689,7 +2692,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   .msk-dashboard-mockup--compact .msk-dashboard-action,
   .msk-dashboard-mockup--compact .msk-dashboard-mockup__mrn small,
   .msk-dashboard-mockup--compact .msk-dashboard-mockup__legend,
-  .msk-dashboard-mockup--compact .msk-dashboard-mockup__rule { font-size: .75rem; }
+  .msk-dashboard-mockup--compact .msk-dashboard-mockup__rule { font-size: var(--rp-type-floor); }
 }
 
 
@@ -3080,7 +3083,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   max-width: 1080px; margin: 0 auto; padding: .85rem var(--sp-gutter);
   display: flex; flex-wrap: wrap; gap: .45rem 1.5rem; list-style: none;
   border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair);
-  font-family: var(--mono); font-size: .66rem; letter-spacing: .08em;
+  font-family: var(--mono); font-size: var(--rp-type-floor); letter-spacing: .06em;
   text-transform: uppercase; color: var(--ink-2);
 }
 
@@ -3334,7 +3337,7 @@ html.cs-chrome .riso-page .fp-indexLens[id] { scroll-margin-top: calc(var(--cs-c
 .rp-split--noMedia .rp-split__text { max-width: 62ch; }
 .rp-chapter__n {
   display: flex; align-items: baseline; gap: .75rem;
-  font-family: var(--mono); font-size: .62rem; letter-spacing: .1em;
+  font-family: var(--mono); font-size: var(--rp-type-floor); letter-spacing: .08em;
   text-transform: uppercase; color: var(--coral-text);
 }
 .rp-chapter__n span { color: var(--muted); }
@@ -3354,7 +3357,7 @@ html.cs-chrome .riso-page .fp-indexLens[id] { scroll-margin-top: calc(var(--cs-c
 }
 .about-evidenceLedger > div { padding: .9rem 0 .85rem; }
 .about-evidenceLedger dt { font-size: clamp(1.2rem, 2.4vw, 1.8rem); font-weight: 850; letter-spacing: -.03em; color: var(--ink); }
-.about-evidenceLedger dd { margin: .25rem 0 0; font: 700 .62rem/1.35 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.about-evidenceLedger dd { margin: .25rem 0 0; font: 700 var(--rp-type-floor)/1.35 var(--mono); letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
 /* The callout is the chapter's one line worth remembering — a ruled aside, not
    a tinted card. */
 .rp-chapter__callout {
@@ -3370,7 +3373,7 @@ html.cs-chrome .riso-page .fp-indexLens[id] { scroll-margin-top: calc(var(--cs-c
 }
 .rp-chapter__proof:hover { background: color-mix(in srgb, var(--coral) 6%, transparent); }
 .rp-chapter__proof b { display: block; font-size: .9rem; }
-.rp-chapter__proof small { display: block; margin-top: .15rem; font-family: var(--mono); font-size: .6rem; letter-spacing: .08em; color: var(--muted); }
+.rp-chapter__proof small { display: block; margin-top: .15rem; font-family: var(--mono); font-size: var(--rp-type-floor); letter-spacing: .06em; color: var(--muted); }
 /* About's "My pattern" list: one compact proof link under each item — same
    coral-edged link, a single line instead of a title + source pair. */
 .rp-chapter__proof--inline { display: flex; width: fit-content; margin-top: .55rem; padding: .45rem .8rem; }
@@ -3416,7 +3419,7 @@ h2.rp-kicker { margin: 0 0 .4rem; line-height: 1.3; }
   border: 1px solid var(--hair);
   border-radius: var(--r-control);
   font-family: var(--mono);
-  font-size: .58rem;
+  font-size: var(--rp-type-floor);
   letter-spacing: .09em;
   text-transform: uppercase;
   color: var(--muted);
@@ -3438,7 +3441,7 @@ h2.rp-kicker { margin: 0 0 .4rem; line-height: 1.3; }
 }
 .rp-phase__seg.is-done { height: 5px; background: var(--coral); }
 .rp-phase__label {
-  font-family: var(--mono); font-size: .58rem; letter-spacing: .09em;
+  font-family: var(--mono); font-size: var(--rp-type-floor); letter-spacing: .07em;
   text-transform: uppercase; color: var(--muted);
 }
 .rp-phase--compact .rp-phase__seg { width: 10px; }
