@@ -528,3 +528,21 @@ html[lang="es"] .riso-home .rp-h1Fit { --h1-w100: 1116; }
   letter-spacing: 0;
   text-transform: none;
 }
+
+/* One voice for actions: text links, source links and toggles follow the
+   buttons into sentence-case Archivo instead of 10px mono caps. The
+   supporting-link label is a label, so it joins the 13px kicker group. */
+.rp-work__teaser,
+.rp-stat__source,
+.rp-supportingLink a,
+.rp-dispatch__toggle,
+.rp-deepDive__state {
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.rp-supportingLink > span {
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+}
