@@ -336,13 +336,17 @@ export default function RisoHome() {
   const renderWorkContents = (work: WorkItem) => (
     <>
       <div>
-        <p className="rp-work__n">
-          {work.n}
-          {work.tagKey && <PhaseIndicator current={2} label={t(work.tagKey)} />}
-          {work.evidenceLabelEn && (
-            <span>{lang === "es" ? work.evidenceLabelEs : work.evidenceLabelEn}</span>
-          )}
-        </p>
+        {/* The 01-05 numbers are gone (portfolio critique 2026-10-23): the
+            cases are ranked by relevance, not steps in a sequence. The status
+            label stays because it carries information. */}
+        {(work.tagKey || work.evidenceLabelEn) && (
+          <p className="rp-work__n">
+            {work.tagKey && <PhaseIndicator current={2} label={t(work.tagKey)} />}
+            {work.evidenceLabelEn && (
+              <span>{lang === "es" ? work.evidenceLabelEs : work.evidenceLabelEn}</span>
+            )}
+          </p>
+        )}
         <p className="rp-work__title">{t(work.titleKey)}</p>
         <p className="rp-work__sub">{t(work.subKey)}</p>
         <p className="rp-work__desc">{t(work.descKey)}</p>
@@ -515,7 +519,6 @@ export default function RisoHome() {
       {/* PROOF */}
       <section className="rp-section rp-section--alt" aria-labelledby="home-proof-title" data-visual="true">
         <div className="rp-wrap">
-          <p className="rp-kicker">{t("home.riso.proofKicker")}</p>
           <h2 className="rp-title" id="home-proof-title">{t("home.riso.proofTitle")}</h2>
           <div className="rp-outcomes rp-outcomes--lead rp-reveal" data-evidence="true">
             {STATS.map((s) => (
@@ -539,7 +542,6 @@ export default function RisoHome() {
       {/* SELECTED WORK */}
       <section className="rp-section" id="projects" aria-labelledby="home-work-title" data-visual="true">
         <div className="rp-wrap">
-          <p className="rp-kicker">{t("home.eyebrow")}</p>
           <h2 className="rp-title" id="home-work-title">{t("home.riso.workTitle")}</h2>
           <section className="rp-workGroup" aria-labelledby="home-primary-cases-title">
             <h3 className="rp-kicker rp-workGroup__title" id="home-primary-cases-title">
@@ -777,7 +779,6 @@ export default function RisoHome() {
       {/* The recruiter path resolves before secondary journal/about material. */}
       <section className="rp-section rp-section--alt" id="contact" aria-labelledby="home-contact-title">
         <div className="rp-wrap rp-close">
-          <p className="rp-kicker">{t("home.riso.contactKicker")}</p>
           <h2 id="home-contact-title">{t("home.ctaTitle")}</h2>
           {/* The hiring actions stay adjacent; the address remains visible
               and selectable so a missing mail client never dead-ends. */}
@@ -803,7 +804,6 @@ export default function RisoHome() {
       <section className="rp-section" id="about" aria-labelledby="home-about-title">
         <div className="rp-wrap">
           <div className="rp-aboutBlock rp-reveal">
-            <p className="rp-kicker">{t("home.about.eyebrow")}</p>
             <h2 className="rp-title" id="home-about-title">{t("home.riso.aboutTitle")}</h2>
             <p className="rp-sub">{t("home.about.blurb")}</p>
             <Link className="rp-cta rp-cta--ghost" to="/about" style={{ marginTop: "1.4rem" }}>{t("home.about.link")}</Link>

@@ -510,3 +510,21 @@ html[lang="es"] .riso-home .rp-h1Fit { --h1-w100: 1116; }
     transition: none !important;
   }
 }
+
+/* Quieter microtype (portfolio critique 2026-10-23). The mono, uppercase,
+   tracked labels ran at 10 to 11px and every CTA shouted. Labels move to
+   13px with less tracking so the headline leads; CTAs become sentence-case
+   Archivo. Scoped overrides, no token changes. */
+.rp-kicker,
+.rp-work__n,
+.rp-work__sub {
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+}
+.rp-cta,
+.rp-heroUtility {
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
