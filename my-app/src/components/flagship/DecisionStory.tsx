@@ -10,10 +10,13 @@ export type DecisionStep = {
 type Props = {
   id: string;
   languageAnchor?: string;
-  kicker: string;
+  kicker?: string;
   title: string;
   intro: string;
   steps: DecisionStep[];
+  /** Decorative sequence labels can be omitted when the ordered list already
+   *  communicates sequence and the page needs a quieter editorial rhythm. */
+  showStepNumbers?: boolean;
   /** Receives the active step index so the artifact can highlight its own row,
    *  or null below the sticky breakpoint, where every step reads as active. */
   visual: (activeIndex: number | null) => ReactNode;
@@ -52,7 +55,7 @@ type Props = {
 // Matches the `max-width: 900px` block in riso-page.css that unpins the panel.
 const STACKED_QUERY = "(max-width: 900px)";
 
-export default function DecisionStory({ id, languageAnchor, kicker, title, intro, steps, visual }: Props) {
+export default function DecisionStory({ id, languageAnchor, kicker, title, intro, steps, showStepNumbers = true, visual }: Props) {
   const [active, setActive] = useState(0);
   // Below the breakpoint the panel stacks: steps above, artifact below, never
   // on screen together, and every step styled as active. A scroll-driven
@@ -101,10 +104,10 @@ export default function DecisionStory({ id, languageAnchor, kicker, title, intro
   }, [steps.length]);
 
   return (
-    <section className="rp-decisionStory" id={id} data-language-anchor={languageAnchor} aria-labelledby={`${id}-title`}>
+    <section className={`rp-decisionStory${showStepNumbers ? "" : " rp-decisionStory--quiet"}`} id={id} data-language-anchor={languageAnchor} aria-labelledby={`${id}-title`}>
       <div className="rp-wrap">
         <div className="rp-decisionStory__head">
-          <p className="rp-kicker">{kicker}</p>
+          {kicker && <p className="rp-kicker">{kicker}</p>}
           <h2 id={`${id}-title`} className="rp-title">{title}</h2>
           <p className="rp-lede">{intro}</p>
         </div>
@@ -114,12 +117,12 @@ export default function DecisionStory({ id, languageAnchor, kicker, title, intro
             <ol className="rp-decisionStory__steps">
               {steps.map((step, index) => (
                 <li key={step.n} className={index === active ? "is-active" : undefined}>
-                  <span className="rp-decisionStory__n">{step.n}</span>
+                  {showStepNumbers && <span className="rp-decisionStory__n">{step.n}</span>}
                   <div>
                     <h3>{step.title}</h3>
                     <p>{step.body}</p>
                     <p className="rp-decisionStory__logline">
-                      <span>Decision log</span>
+                      {showStepNumbers && <span>Decision log</span>}
                       <b>{step.note}</b>
                     </p>
                   </div>

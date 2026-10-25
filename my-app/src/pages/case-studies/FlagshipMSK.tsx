@@ -220,8 +220,7 @@ export default function FlagshipMSK() {
         <div className="rp-hero__content">
           <div className="rp-clearing">
             <h1 className="rp-h1">One queue. Four teams.</h1>
-            <span className="rp-eyebrow">Memorial Sloan Kettering · clinical systems</span>
-            <span className="rp-readtime"><b>6 min</b><span>read · 6 years, 3 roles</span></span>
+            <p className="fp-contextLine">Memorial Sloan Kettering · Clinical systems · 6-minute read · Six years across three roles</p>
             <p className="rp-sub">
               I diagnosed and mapped a paper detour across four departments, checked feasibility,
               and pitched a digital filing workflow. <b>Information technology (IT) and user experience (UX) teams built it after I changed roles.</b>
@@ -238,7 +237,7 @@ export default function FlagshipMSK() {
           </div>
         </div>
         <div className="rp-hero__media fp-heroArt fp-heroArt--msk" data-evidence="true">
-          <div className="fp-artifactLabel"><span>RECREATED ARTIFACT</span><b>Office Coordinator filing queue</b></div>
+          <div className="fp-artifactLabel"><span>Recreated artifact</span><b>Office Coordinator filing queue</b></div>
           <div className="fp-dashboardFrame" aria-label="Recreated Office Coordinator filing queue concept">
             <MSKDashboardMockup legendDisclosure />
           </div>
@@ -252,7 +251,6 @@ export default function FlagshipMSK() {
           {/* The "recreated and anonymized" qualifier moved to the figcaption
               below, which already carries it — so the kicker is free to be a
               beat instead of a provenance label. */}
-          <p className="rp-kicker">So I counted the steps</p>
           <h2 className="rp-title">One map made four departments see the same failure.</h2>
           {/* "The Detour" animatic was removed 2026-10-13 at the owner's direction
               (the deterministic version was rejected at taste review on
@@ -273,13 +271,13 @@ export default function FlagshipMSK() {
             <article>
               <span className="fp-workflow__label">Before · six steps</span>
               <h3>Print, route, wait, check again</h3>
-              <ol>{WORKFLOW_BEFORE.map((step, index) => <li key={step}><b>{String(index + 1).padStart(2, "0")}</b>{step}</li>)}</ol>
+              <ol>{WORKFLOW_BEFORE.map((step, index) => <li key={step}><b>{index + 1}</b>{step}</li>)}</ol>
             </article>
             <i aria-hidden="true">→</i>
             <article className="fp-workflow__after">
               <span className="fp-workflow__label">After · five steps</span>
               <h3>File from the queue, return with status</h3>
-              <ol>{WORKFLOW_AFTER.map((step, index) => <li key={step}><b>{String(index + 1).padStart(2, "0")}</b>{step}</li>)}</ol>
+              <ol>{WORKFLOW_AFTER.map((step, index) => <li key={step}><b>{index + 1}</b>{step}</li>)}</ol>
             </article>
           </div>
 
@@ -301,7 +299,6 @@ export default function FlagshipMSK() {
             {/* The step count is the visible change; the handoff is the real one.
                 Same evidence as the map above, re-cut by actor instead of by step. */}
             <div className="fp-blueprintIntro rp-reveal">
-              <p className="rp-kicker">Then I counted the handoffs</p>
               <h3 className="rp-title">Six steps became five. One department left the loop.</h3>
               <p className="rp-lede">The visible change is one fewer step. The service change is one fewer department touching the record. Frontstage is work the coordinator can see; backstage happens out of sight, below the line of visibility.</p>
             </div>
@@ -315,10 +312,10 @@ export default function FlagshipMSK() {
       <div data-evidence="true"><DecisionStory
         id="msk-decisions"
         languageAnchor="msk-decisions"
-        kicker="The fix looked like one button"
         title="One button, four rules."
         intro="One action replaced the three steps that left the system. IT and UX built the real one after I changed roles; the four rules below are how this recreation makes it safe to press. My portfolio design, not MSK's specification."
         steps={DECISIONS}
+        showStepNumbers={false}
         visual={(active) => (
           <div className="fp-dashboardFrame fp-dashboardFrame--story">
             <MSKDashboardMockup compact hideEyebrow legendDisclosure activeRow={active === null ? null : DECISION_ROW[active] ?? null} />
@@ -338,7 +335,6 @@ export default function FlagshipMSK() {
         </summary>
         <section className="rp-section" id="msk-redesigns" data-language-anchor="msk-redesigns">
           <div className="rp-wrap">
-            <p className="rp-kicker">Then it turned up twice more</p>
             <h2 className="rp-title">The same failure, in two more places.</h2>
             <p className="rp-lede">Certification and onboarding had the same problem: the next action was buried.</p>
             <div className="fp-redesigns rp-reveal" data-evidence="true">
@@ -360,7 +356,6 @@ export default function FlagshipMSK() {
 
         <section className="rp-section rp-override" id="msk-systems" data-language-anchor="msk-systems">
           <div className="rp-wrap">
-            <p className="rp-kicker">Why I could see it</p>
             <h2 className="rp-title">I did the jobs before I redesigned them.</h2>
             <p className="rp-lede">You do not spot that pattern from outside a system. I had already sat in three of its seats.</p>
             <ol className="fp-roleRail rp-reveal" aria-label="Three roles at MSK, in order" data-evidence="true" style={{ "--rp-reveal-stagger": "0ms" } as React.CSSProperties}>
@@ -406,7 +401,6 @@ export default function FlagshipMSK() {
 
       <section className="rp-section" id="msk-sustainment" data-language-anchor="msk-sustainment">
         <div className="rp-wrap">
-          <p className="rp-kicker">The real test came later</p>
           <h2 className="rp-title">I left before launch. Here’s what happened next.</h2>
           <p className="rp-lede">I handed the workflow to IT and UX, who built it. It was adopted organization-wide (owner-reported: my own record, not independently measured).</p>
           {/* Added 2026-10-22 (portfolio review, UXfolio 2026 ch. 4.3): the
@@ -438,9 +432,6 @@ export default function FlagshipMSK() {
       <div data-evidence="true"><EvidenceField
         id="msk-outcomes"
         languageAnchor="msk-outcomes"
-        // "attribution kept intact" moved off the kicker — the `disclaimer`
-        // prop below already states it, in its own dedicated line.
-        kicker="What it added up to"
         title="The numbers, and who they belong to."
         intro="The tag above each number says whose result it is."
         disclaimer="Anonymized evidence · owner-reported outcomes · the 20% figure belongs to a larger organization-wide initiative, not the filing queue alone; original period and cost definition are not preserved · the ~$1M/year is a projection from my pitch, not measured savings"

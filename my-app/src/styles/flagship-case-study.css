@@ -105,6 +105,27 @@
    fragments rather than a queue. */
 .fp-dashboardFrame--story { width: 100%; }
 
+/* Evidence-first restraint for MSK: the recreated interface keeps its own UI
+   boundaries; the portfolio adds one plain provenance rule, not another card. */
+.flagship-page--msk .fp-heroArt::before { content: none; }
+.flagship-page--msk .fp-artifactLabel {
+  border: 0;
+  border-left: 4px solid var(--coral);
+  border-radius: 0;
+  background: var(--paper);
+  box-shadow: none;
+}
+.flagship-page--msk .fp-artifactLabel span {
+  font-family: var(--sans);
+  letter-spacing: 0;
+  text-transform: none;
+}
+.flagship-page--msk .fp-dashboardFrame {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
 .fp-cinema { background: var(--fp-deep); }
 .fp-cinema .rp-cinema__wash { background:
   radial-gradient(circle at 16% 20%,color-mix(in srgb,var(--coral) 26%,transparent),transparent 25%),
@@ -158,6 +179,14 @@
   .fp-receipt__layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); }
   .fp-receipt__copy h2 { max-width: none; font-size: clamp(2rem, 2.9vw, 3.1rem); }
   .fp-receipt__titleLine { display: block; white-space: nowrap; }
+}
+@media (max-width: 1023px) {
+  .flagship-page--msk .fp-receipt__layout { grid-template-columns: minmax(0, 1fr); }
+  .flagship-page--msk .fp-receipt__copy { max-width: 46rem; }
+  .flagship-page--msk .fp-receipt__copy h2 {
+    max-width: none;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+  }
 }
 .fp-proofControl {
   min-height: 44px;
@@ -328,6 +357,13 @@
 .fp-workflow ol { list-style: none; margin: 1rem 0 0; padding: 0; }
 .fp-workflow li { display: grid; grid-template-columns: 2rem 1fr; gap: .5rem; padding: .6rem 0; border-top: 1px solid var(--hair); font-size: .9rem; }
 .fp-workflow li b { font: .65rem/1.5 var(--mono); color: var(--green); }
+.flagship-page--msk .fp-workflow__label {
+  font-family: var(--sans);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.flagship-page--msk .fp-workflow li b { font-family: var(--sans); font-size: .82rem; }
 .fp-workflow article > p:last-child { margin-top: .8rem; color: var(--muted); font-size: .84rem; }
 
 

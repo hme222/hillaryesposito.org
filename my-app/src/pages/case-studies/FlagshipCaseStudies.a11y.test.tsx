@@ -933,14 +933,14 @@ describe("flagship case-study accessibility", () => {
     const hero = container.querySelector<HTMLElement>(".rp-hero");
     const clearing = hero?.querySelector<HTMLElement>(".rp-clearing");
     const h1 = clearing?.querySelector("h1");
-    const eyebrow = clearing?.querySelector(".rp-eyebrow");
+    const context = clearing?.querySelector(".rp-eyebrow, .fp-contextLine");
     const orientationEnd = clearing?.querySelector(".rp-heroEvidence") || clearing?.querySelector(".rp-sub");
     const artifact = hero?.querySelector(".rp-hero__media");
     const precedes = (first: Element | null | undefined, second: Element | null | undefined) =>
       Boolean(first && second && (first.compareDocumentPosition(second) & Node.DOCUMENT_POSITION_FOLLOWING));
 
     expect(clearing?.firstElementChild).toBe(h1);
-    expect(precedes(h1, eyebrow)).toBe(true);
+    expect(precedes(h1, context)).toBe(true);
     expect(precedes(h1, artifact)).toBe(true);
     expect(precedes(orientationEnd, artifact)).toBe(true);
   });

@@ -1,5 +1,13 @@
 # Design State: Full Portfolio Redesign — Hybrid Positioning
 
+## 2026-10-24 — Design-taste fix round implemented
+
+**Status:** Implemented locally from Hillary's “make fixes” direction after the fresh design-taste critique. The governing brief is `design-docs/briefs/2026-10-24-design-taste-fix-round.md`.
+
+**Direction:** Evidence-first restraint. Preserve the risograph identity and truthful healthcare/workflow evidence while removing redundant UI-like labels, decorative sequence numbers, repeated grid-paper frames, and identical flagship-row compositions. MSK stays balanced, Grove becomes artifact-led, and Knowunity becomes flow-led. The MSK hero must stack at tablet widths instead of compressing into a narrow desktop rail.
+
+**Verification:** Home and MSK were inspected at 1440, 768, and 390 and every generated screenshot was reviewed. The MSK tablet hero now stacks cleanly with a one-line 768px title; its receipt headline no longer trips the tablet/mobile long-headline rule. Home's visible micro-label count fell from 11 to 4 and its resting shadows from 3 to 2; MSK fell from 15 to 14 strict inspector failures. The remaining inspector failures are known site-wide house-style debt (global mono wayfinding, collage gradients, rules/outlined evidence components, long established headlines, and inspector false positives for live-region/active-nav text), so the strict design-taste gate remains conditional rather than reported as zero. Full Jest passes 231/231, including axe-backed flagship accessibility coverage; the component registry is current; TypeScript/build compilation succeeds; and the optimized production build completes.
+
 ## 2026-10-22 — Mount Sinai overall audit and About navigation consistency
 
 **Status:** About navigation fix implemented locally and verified; Mount Sinai role-specific portfolio audit complete. The valid system move was Reuse/Compose: About keeps the shared global route dock, removes case-study-only breadcrumb/chapter chrome, and relocates the existing 90-second-tour control into the hero. No token, component, route, or case-study navigation changed.

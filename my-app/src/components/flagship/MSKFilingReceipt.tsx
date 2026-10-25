@@ -93,7 +93,6 @@ export default function MSKFilingReceipt({
     <section className="fp-receipt" id="msk-brief" data-language-anchor="msk-brief" aria-labelledby="msk-receipt-title">
       <div className="rp-wrap fp-receipt__layout">
         <div className="fp-receipt__copy">
-          <p className="rp-kicker">{copy.kicker}</p>
           <h2 id="msk-receipt-title">
             <span className="fp-receipt__titleLine">{copy.titleLines[0]}</span>{" "}
             <span className="fp-receipt__titleLine">{copy.titleLines[1]}</span>

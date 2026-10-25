@@ -29,7 +29,7 @@ export default function EvidenceField({
 }: {
   id: string;
   languageAnchor?: string;
-  kicker: string;
+  kicker?: string;
   title: string;
   intro: string;
   disclaimer: string;
@@ -55,7 +55,7 @@ export default function EvidenceField({
   return (
     <section className="rp-section rp-outcomeStage" id={id} data-language-anchor={languageAnchor}>
       <div className="rp-wrap">
-        <p className="rp-kicker">{kicker}</p>
+        {kicker && <p className="rp-kicker">{kicker}</p>}
         <h2 className="rp-title">{title}</h2>
         <p className="rp-lede">{intro}</p>
         {/* The route used to be the last thing on the page — a four-step method

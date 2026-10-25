@@ -389,7 +389,7 @@ export default function RisoHome() {
 
   const renderWorkItem = (work: WorkItem) => {
     const supporting = work.tier !== "primary";
-    const workClassName = `rp-work${supporting ? " rp-work--supporting" : ""}`;
+    const workClassName = `rp-work rp-work--${work.visual} rp-work--${work.tier}${supporting ? " rp-work--supporting" : ""}`;
     const idRoot = `home-work-${work.n}`;
     const descriptionIds = [
       (work.tagKey || work.evidenceLabelEn) ? `${idRoot}-status` : null,
@@ -459,10 +459,10 @@ export default function RisoHome() {
           <div className="rp-clearing">
             {/* Availability rides the eyebrow as its second line instead of a
                 separate status row under the proof (density pass, 2026-10-16). */}
-            <span className="rp-eyebrow rp-eyebrow--twoLine">
+            <p className="rp-contextLine">
               <span className="rp-eyebrow__text">{t("home.riso.eyebrow").replace(" · ", "\u00a0· ")}</span>{" "}
               <span className="rp-eyebrow__status">{t("home.status")}</span>
-            </span>
+            </p>
             {/* .rp-h1Fit is the container the headline's fit sizing measures
                 against (portfolio-cohesion.css) — not .rp-clearing itself,
                 which collapses under inline-size containment. */}
@@ -555,7 +555,7 @@ export default function RisoHome() {
         <div className="rp-wrap">
           <h2 className="rp-title" id="home-work-title">{t("home.riso.workTitle")}</h2>
           <section className="rp-workGroup" aria-labelledby="home-primary-cases-title">
-            <h3 className="rp-kicker rp-workGroup__title" id="home-primary-cases-title">
+            <h3 className="sr-only" id="home-primary-cases-title">
               {lang === "es" ? "Casos principales de producto" : "Primary product cases"}
             </h3>
             <div className="rp-worklist rp-reveal" data-evidence="true">

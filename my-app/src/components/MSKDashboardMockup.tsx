@@ -97,6 +97,7 @@ export default function MSKDashboardMockup({
   return (
     <div
       className={`msk-dashboard-mockup${compact ? " msk-dashboard-mockup--compact" : ""}`}
+      data-ui="product-interface"
       role={decorative ? undefined : "group"}
       aria-label={decorative ? undefined : copy.groupAria}
       aria-hidden={decorative || undefined}

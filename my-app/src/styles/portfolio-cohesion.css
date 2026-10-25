@@ -309,10 +309,8 @@ html[lang="es"] .riso-home .rp-h1Fit { --h1-w100: 1116; }
 .riso-home .carto__paperWash { opacity: .42; }
 .riso-home .carto__halftone { opacity: .16; }
 .riso-home .carto__grain { opacity: .12; }
-/* Portrait sits ON TOP of the collage as a solid mounted print — not blended
-   into it (multiply washed the photo out against the light paper). A warm paper
-   mount + thin rule + soft shadow gives it a real frame; the photo keeps its
-   natural color. */
+/* Portrait sits on the collage as a solid mounted print. The paper mount and
+   tonal edge are enough separation; it does not need a floating-card shadow. */
 .riso-home .rp-hero__media .rp-headshot {
   width: min(360px, 78%);
   transform: translateY(3%) rotate(-.6deg);
@@ -322,7 +320,7 @@ html[lang="es"] .riso-home .rp-h1Fit { --h1-w100: 1116; }
   padding: 9px;
   border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
   border-radius: var(--r-plate);
-  box-shadow: 0 2px 6px rgba(0,0,0,.14), 0 34px 60px -28px rgba(0,0,0,.42);
+  box-shadow: none;
 }
 .riso-home .rp-hero__media .rp-headshot img {
   filter: none;
