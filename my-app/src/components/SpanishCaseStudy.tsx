@@ -115,20 +115,9 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
             <p className="rp-language-note rp-language-note--inline">
               Esta es una versión condensada. El estudio completo está disponible en inglés.
             </p>
-            {/* The tour sits beside the hero action, not in the breadcrumb row,
-                which pushed the H1 down on phones (2026-10-16). */}
-            <div className="rp-hero__ctas rp-hero__ctas--tour">
+            <div className="rp-hero__ctas">
               <button type="button" className="rp-cta" onClick={readInEnglish}>
                 Leer el estudio completo en inglés →
-              </button>
-              <button
-                type="button"
-                className="rp-heroUtility rp-heroTour"
-                onClick={(e) =>
-                  window.dispatchEvent(new CustomEvent("open-recruiter-panel", { detail: { returnFocus: e.currentTarget } }))
-                }
-              >
-                Recorrido de 90 segundos (inglés)
               </button>
             </div>
           </div>

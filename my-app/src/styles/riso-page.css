@@ -142,6 +142,19 @@
    Scoped off .riso-home so the homepage hero keeps its display scale. */
 .riso-page:not(.riso-home) .rp-hero .rp-clearing { max-width: min(44rem, 100%); }
 .riso-page:not(.riso-home) .rp-hero .rp-h1 { font-size: clamp(2rem, 3.1vw, 2.8rem); max-width: 100%; }
+/* Supporting cases open with the evidence artifact, not the flagship template.
+   Source order remains title-first for assistive technology; only the wider
+   visual composition changes. Mobile keeps the orientation-first text order. */
+@media (min-width: 761px) {
+  .flagship-page--mobbin .rp-hero,
+  .flagship-page--uxwoman .rp-hero { grid-template-columns: .95fr 1.05fr; }
+  .flagship-page--mobbin .rp-hero::after,
+  .flagship-page--uxwoman .rp-hero::after { left: 47.5%; }
+  .flagship-page--mobbin .rp-hero__content,
+  .flagship-page--uxwoman .rp-hero__content { grid-column: 2; grid-row: 1; }
+  .flagship-page--mobbin .rp-hero__media,
+  .flagship-page--uxwoman .rp-hero__media { grid-column: 1; grid-row: 1; }
+}
 /* Phones: the hero column is ~310px, about 15 characters of a 32px title, so
    case-study titles stranded single words ("department", "medical"). A
    slightly smaller size plus .rp-keep word pairs keeps every line multi-word
@@ -2381,14 +2394,8 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
    ≤400px is the first line of defence; `overflow-x: auto` (the same
    pattern `.rp-chapters` below uses for its own narrow-width overflow) is
    the fallback if a long case-study title still doesn't fit. */
-/* Row wrapping the breadcrumb trail and the quiet recruiter-tour trigger
-   (`.rp-breadcrumbTour` below) that sits at the end of it on every case-study
-   page and About. `flex-wrap: wrap` on the OUTER row, not on `.rp-breadcrumb`
-   itself, is deliberate: the trail keeps its own internal nowrap+scroll
-   behaviour for a long title (unchanged), while the trigger - a differently-
-   sized, differently-purposed control - drops to its own line on a narrow
-   phone instead of either overflowing or getting squeezed into the trail's
-   horizontal scroller with it. */
+/* Outer flex row preserves the breadcrumb's internal nowrap/scroll behaviour
+   while allowing any future adjacent utility to wrap independently. */
 .rp-breadcrumbRow {
   max-width: 1080px;
   margin: 0 auto;
@@ -2413,20 +2420,6 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-breadcrumb a:not(:first-child) { padding-inline: 10px; margin-inline: -10px; }
 .rp-breadcrumb__name { font-weight: 700; }
 .rp-breadcrumb span { color: var(--ink); }
-/* Reuses `.rp-heroUtility` (the hero's own "Open the 90-second tour" link)
-   wholesale for type/underline/touch-target - only positioning is added
-   here. `flex: 0 0 auto` so the row above wraps it to its own line rather
-   than shrinking it or forcing the breadcrumb trail to scroll alongside
-   it. */
-/* max-width: the Spanish label ("Abrir el recorrido de 90 segundos (en
-   inglés)") is wider than a 320–375px row; capped, it wraps inside the button
-   instead of running past the screen edge. */
-.rp-breadcrumbTour { flex: 0 0 auto; max-width: 100%; padding-block: 0; text-align: start; }
-/* Case studies: the same trigger beside the hero's primary action. Moved out
-   of the breadcrumb row (2026-10-16), where its own wrapped line pushed the
-   H1 toward the fold at 390×844. */
-.rp-heroTour { max-width: 100%; text-align: start; text-wrap: balance; }
-.rp-hero__ctas--tour { align-items: center; margin-top: 1rem; }
 @media (max-width: 400px) {
   .rp-breadcrumb { font-size: var(--rp-type-floor); letter-spacing: .04em; }
 }
@@ -2523,6 +2516,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   border-top: 1px solid var(--hair); padding-top: 1rem; }
 .rp-type:first-child { border-top: 0; padding-top: 0; }
 .rp-type__label { font-family: var(--mono); font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.rp-type__sampleLabel { font-family: var(--mono); font-size: var(--rp-type-floor); letter-spacing: .14em; text-transform: uppercase; }
 @media (max-width: 520px) { .rp-type { grid-template-columns: 1fr; gap: .3rem; } }
 
 /* ---------- "no invented numbers" disclaimer ---------- */
@@ -2538,9 +2532,9 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 /* The hover used to widen `gap` as well, which forces layout for a cue the
    arrow was already giving on the compositor. The arrow now carries it alone,
    travelling slightly further to keep the same sense of the row opening up. */
-.rp-next__eyebrow { font-family: var(--mono); font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; color: var(--on-coral); }
+.rp-next__eyebrow { font-family: var(--mono); font-size: var(--rp-type-floor); letter-spacing: .09em; text-transform: uppercase; color: var(--on-coral); }
 .rp-next__title { font-size: var(--ts-title); font-weight: 850; line-height: 1.05; letter-spacing: -.015em; margin: .35rem 0 0; color: var(--on-coral); text-wrap: pretty; }
-.rp-next__tag { font-family: var(--mono); font-size: .62rem; letter-spacing: .06em; text-transform: uppercase; color: var(--on-coral); }
+.rp-next__tag { font-family: var(--mono); font-size: var(--rp-type-floor); letter-spacing: .05em; text-transform: uppercase; color: var(--on-coral); }
 /* The legacy `.dark-mode p` rule in App.css outranks these single-class
    selectors and painted peach text on the coral band (1.54:1). */
 .dark-mode .rp-next p { color: var(--on-coral); }
@@ -3035,15 +3029,15 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-outcomeStage .rp-credential__link .rp-ext::after { color: var(--coral-on-dark); }
 .rp-routeRecap { display: flex; align-items: center; flex-wrap: wrap; gap: .55rem .75rem; margin-top: var(--sp-sm);
   padding-top: 1.1rem; border-top: 1px solid color-mix(in srgb, var(--ink-on-dark) 22%, transparent); font-family: var(--mono);
-  font-size: .7rem; letter-spacing: .03em; color: color-mix(in srgb, var(--ink-on-dark) 76%, transparent); }
+  font-size: var(--rp-type-floor); letter-spacing: .025em; color: color-mix(in srgb, var(--ink-on-dark) 76%, transparent); }
 /* The one place the portfolio connects AI-uncertainty design to clinical
    consequence. Sits inside .rp-outcomeStage, so the accents are the fixed
    dark-panel values. */
 .rp-bridge { max-width: 68ch; margin: 1.8rem 0 0; padding-left: 1rem;
   border-left: 3px solid var(--mint-on-dark); font-size: 1rem; line-height: 1.6;
   color: color-mix(in srgb, var(--ink-on-dark) 86%, transparent); }
-.rp-bridge span { display: block; margin-bottom: .35rem; font: .62rem/1.2 var(--mono);
-  letter-spacing: .09em; text-transform: uppercase; color: var(--mint-on-dark); }
+.rp-bridge span { display: block; margin-bottom: .35rem; font: var(--rp-type-floor)/1.25 var(--mono);
+  letter-spacing: .07em; text-transform: uppercase; color: var(--mint-on-dark); }
 @media (forced-colors: active) { .rp-bridge { border-left-color: CanvasText; } }
 
 .rp-routeRecap i { color: var(--coral-on-dark); font-style: normal; }
@@ -3056,7 +3050,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
    No top rule and no emphasised final step — nothing here should read as the
    conclusion the section is building to. */
 .rp-routeRecap--lede { margin: .9rem 0 0; padding-top: 0; border-top: 0;
-  font-size: .66rem; color: color-mix(in srgb, var(--ink-on-dark) 60%, transparent); }
+  font-size: var(--rp-type-floor); color: color-mix(in srgb, var(--ink-on-dark) 60%, transparent); }
 @media (max-width: 560px) {
   .rp-routeRecap { display: grid; grid-template-columns: 1fr; }
   .rp-routeRecap i { transform: rotate(90deg); width: min-content; margin-left: .35rem; }
@@ -3510,6 +3504,63 @@ h2.rp-kicker { margin: 0 0 .4rem; line-height: 1.3; }
 }
 .rp-careerNote p:not(.rp-note__k) { font-size: .9rem; line-height: 1.5; }
 
+/* Portfolio evidence is read under time pressure. Keep annotations, decision
+   logs, and prototype controls at the same 13px minimum as the core metadata
+   system instead of letting individual case studies invent microtype. */
+.rp-heroNote span,
+.rp-heroNote b,
+.rp-cinema__artifact span,
+.rp-cinema__artifact p,
+.rp-specimenTruth,
+.rp-swatch__avoid,
+.rp-swatch__use b,
+.rp-swatch__avoid b,
+.rp-neutral > span > span,
+.rp-tokenRecipe,
+.rp-demo__tabs button,
+.rp-demoCard__eyebrow,
+.rp-demoCard button,
+.rp-demoSelect span,
+.rp-demoSelect select,
+.rp-confidence span,
+.rp-decisionStory__n,
+.rp-decisionStory__logline span,
+.rp-rank__pct,
+.rp-nowReading span,
+.rp-testimonial figcaption span,
+.rp-progress__label b,
+.rp-progress__label span,
+.rp-patternList li::before {
+  font-size: var(--rp-type-floor);
+}
+
+.rp-decisionRecord dt,
+.rp-decision__tag,
+.rp-notif__tag,
+.rp-notif__app,
+.rp-pushback__vs,
+.rp-phase > span,
+.rp-swatch__hex,
+.rp-type__label,
+.rp-type > span,
+.rp-fcard__k,
+.rp-dispatchTrain__placard {
+  font-size: var(--rp-type-floor);
+}
+
+.rp-progress--strip .rp-progress__label b,
+.rp-gallery__controls button,
+.rp-gallery__controls p {
+  font-size: var(--rp-type-floor);
+}
+
+@media (max-width: 430px) {
+  .rp-demo__tabs button,
+  .rp-heroNote--reminder b {
+    font-size: var(--rp-type-floor);
+  }
+}
+
 /* Home row for UX Woman: the evidence ledger on the same gridded plate as the
    Knowunity row, with its mono caption. */
 .riso-home .rp-work__thumb--ledger {
@@ -3527,5 +3578,5 @@ h2.rp-kicker { margin: 0 0 .4rem; line-height: 1.3; }
 }
 .riso-home .rp-work__thumb--ledger .fp-ledger { width: 100%; align-self: center; padding: .15rem .8rem; }
 .riso-home .rp-work__thumb--ledger .fp-ledger > div { padding: .3rem 0; }
-.riso-home .rp-work__thumb--ledger .fp-ledger dt { font-size: .56rem; }
+.riso-home .rp-work__thumb--ledger .fp-ledger dt { font-size: var(--rp-type-floor); }
 .riso-home .rp-work__thumb--ledger .fp-ledger dd { font-size: 1rem; }

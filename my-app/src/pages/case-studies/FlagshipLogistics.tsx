@@ -113,19 +113,8 @@ export default function FlagshipLogistics() {
               <div><dt>My contribution</dt><dd>Plan the move · one request protocol · shared order status</dd></div>
               <div><dt>Outcome</dt><dd>85% faster in my service record (owner-reported)</dd></div>
             </dl>
-            {/* The tour sits beside the hero action, not in the breadcrumb row,
-                which pushed the H1 down on phones (2026-10-16). */}
-            <div className="rp-hero__ctas rp-hero__ctas--tour">
+            <div className="rp-hero__ctas">
               <a className="rp-cta" href="#log-moves">See the three moves →</a>
-              <button
-                type="button"
-                className="rp-heroUtility rp-heroTour"
-                onClick={(e) =>
-                  window.dispatchEvent(new CustomEvent("open-recruiter-panel", { detail: { returnFocus: e.currentTarget } }))
-                }
-              >
-                Open the 90-second tour
-              </button>
             </div>
           </div>
         </div>

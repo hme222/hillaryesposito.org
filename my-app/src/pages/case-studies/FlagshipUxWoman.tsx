@@ -116,31 +116,15 @@ export default function FlagshipUxWoman() {
           <div className="rp-clearing">
             <h1 className="rp-h1">Six healthcare interviews point to one{"\u00a0"}hypothesis.</h1>
             <span className="rp-eyebrow">UX Woman · Healthcare research · Active, research phase</span>
-            <span className="rp-readtime"><b>4 min</b><span>read · research phase, 2026</span></span>
             <p className="rp-sub">
-              UX Woman is a 7-month, mentor-led UX design accelerator. In six healthcare interviews, staff described care waiting while no one could see who owned the next
-              step. I'm treating that as a <b>hypothesis</b>. The evidence does not yet show one shared problem, so the
-              next step is reconstructing recent cases before building anything.
+              UX Woman is a 7-month, mentor-led UX design accelerator. Six healthcare interviews surfaced a repeated ownership gap. I’m treating it as a <b>hypothesis</b>; next I’m reconstructing recent cases before building.
             </p>
             <dl className="rp-heroEvidence" aria-label="UX Woman case evidence at a glance">
               <div><dt>Role</dt><dd>Sole researcher · UX Woman UX Design Accelerator · 2026</dd></div>
-              <div><dt>Evidence</dt><dd>Six healthcare interviews · one adjacent human-resources (HR) interview · no dedicated patient interviews</dd></div>
               <div><dt>My contribution</dt><dd>Interview plans · recruiting by behavior · synthesis · five pretotype designs</dd></div>
-              <div><dt>Status</dt><dd>Active · research phase · five pretotypes designed, none run</dd></div>
             </dl>
-            {/* The tour sits beside the hero action, not in the breadcrumb row,
-                which pushed the H1 down on phones (2026-10-16). */}
-            <div className="rp-hero__ctas rp-hero__ctas--tour">
+            <div className="rp-hero__ctas">
               <a className="rp-cta" href="#uxwoman-findings">See the strongest findings →</a>
-              <button
-                type="button"
-                className="rp-heroUtility rp-heroTour"
-                onClick={(e) =>
-                  window.dispatchEvent(new CustomEvent("open-recruiter-panel", { detail: { returnFocus: e.currentTarget } }))
-                }
-              >
-                Open the 90-second tour
-              </button>
             </div>
           </div>
         </div>
@@ -150,7 +134,7 @@ export default function FlagshipUxWoman() {
               <div key={row.en}><dt>{row.en}</dt><dd>{row.n}</dd></div>
             ))}
           </dl>
-          <div className="fp-artifactLabel"><span>RESEARCH PHASE · 2026</span><b>Evidence to date: interviews and pretotype designs only</b></div>
+          <div className="fp-artifactLabel"><span>RESEARCH PHASE · 2026</span><b>Interview and pretotype ledger</b></div>
         </div>
       </header>
 
@@ -159,7 +143,7 @@ export default function FlagshipUxWoman() {
           <p className="rp-kicker">Where this starts</p>
           <h2 className="rp-title">Staff and patients cannot see who acts next.</h2>
           <p className="rp-lede">When care waits on coverage, paperwork, or a missing document, people in different roles described not knowing who owned the next step.</p>
-          <p className="rp-body">That finding recurs, but the mechanisms differ: a misrouted message, a utilization-review page, an authorization queue no one can see. It is a hypothesis to test, not a validated need.</p>
+          <p className="rp-body">The mechanisms differed: a misrouted message, a utilization-review page, an authorization queue no one could see.</p>
         </div>
       </section>
 
@@ -176,7 +160,7 @@ export default function FlagshipUxWoman() {
         <div className="rp-wrap">
           <p className="rp-kicker">What the interviews showed</p>
           <h2 className="rp-title">Three strongest findings, each rated for confidence.</h2>
-          <p className="rp-lede">A rating says how directly the accounts support a claim, not how many people said it. All of it is exploratory and self-reported.</p>
+          <p className="rp-lede">A rating says how directly the accounts support a claim, not how many people said it.</p>
           <ol className="fp-findings rp-reveal">
             {FINDINGS.slice(0, 3).map((finding) => (
               <li key={finding.title}>
@@ -186,7 +170,6 @@ export default function FlagshipUxWoman() {
               </li>
             ))}
           </ol>
-          <div className="fp-journalLine"><span>What I can't claim</span><b>One shared problem, how common any issue is, or that handoffs cause the delays.</b></div>
         </div>
       </section>
 

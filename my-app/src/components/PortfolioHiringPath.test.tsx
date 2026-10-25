@@ -66,7 +66,7 @@ describe("healthcare product designer hiring path", () => {
     container.remove();
   });
 
-  it("orders the three primary cases and separates supporting evidence", async () => {
+  it("keeps the tour to three selected cases and links to the full work index", async () => {
     await act(async () => root.render(<RecruiterPanel />));
     await act(async () => {
       window.dispatchEvent(new CustomEvent("open-recruiter-panel", { detail: {} }));
@@ -75,20 +75,16 @@ describe("healthcare product designer hiring path", () => {
     const dialog = container.querySelector<HTMLDialogElement>(".recruiter-panel")!;
     const labels = Array.from(dialog.querySelectorAll("h3.recruiter-panel__label"));
     const selected = labels.find((label) => label.textContent === "Selected work")?.closest("section")!;
-    const supporting = labels.find((label) => label.textContent === "Supporting evidence")?.closest("section")!;
 
     expect(Array.from(selected.querySelectorAll("strong"), (item) => item.textContent)).toEqual([
       "MSK · A filing queue replaced a four-department paper detour",
       "Grove · Twelve features became three",
       "Knowunity · The student's own words are the proof",
     ]);
-    expect(Array.from(supporting.querySelectorAll("strong"), (item) => item.textContent)).toEqual([
-      "Operational delivery · Medical logistics · Resupply went from months to weeks",
-      "UX Woman · Six healthcare interviews, one hypothesis",
-      "Mobbin · 200+ screens per app, searchable by task",
-    ]);
-    expect(selected.textContent).toContain("Retest pending");
-    expect(selected.textContent).toContain("No student testing; not shipped");
+    expect(labels.some((label) => label.textContent === "Supporting evidence")).toBe(false);
+    expect(selected.textContent).toContain("Five tests and a 37-person survey");
+    expect(selected.textContent).toContain("speech recognition remains mocked");
+    expect(selected.querySelector(".recruiter-panel__allWork")?.textContent).toContain("See all work");
 
     const resume = dialog.querySelector<HTMLAnchorElement>('a[href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"]');
     const email = dialog.querySelector<HTMLAnchorElement>('a[href="mailto:espositohillary@gmail.com"]');
@@ -96,7 +92,6 @@ describe("healthcare product designer hiring path", () => {
     expect(resume?.getAttribute("target")).toBe("_blank");
     expect(email?.textContent).toContain("Email me");
     expect(selected.getAttribute("aria-labelledby")).toBe("recruiter-panel-selected-title");
-    expect(supporting.getAttribute("aria-labelledby")).toBe("recruiter-panel-supporting-title");
   });
 
   it("keeps Email, résumé, and a selectable address together in Home Contact", async () => {

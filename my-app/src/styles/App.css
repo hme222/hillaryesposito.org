@@ -545,7 +545,7 @@ select:focus-visible {
   height: 20px;
 }
 .nav-settings__triggerLangCode {
-  font-size: 0.7rem;
+  font-size: var(--rp-type-floor, 0.8125rem);
   font-weight: 700;
   letter-spacing: 0.04em;
   color: inherit;
@@ -1221,7 +1221,7 @@ textarea::placeholder {
   text-decoration: none;
   font-family: "Space Mono", ui-monospace, monospace;
   font-weight: 700;
-  font-size: 0.72rem;
+  font-size: 0.8125rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   border: 1px solid var(--border);
@@ -1298,20 +1298,20 @@ textarea::placeholder {
 }
 
 .msk-dashboard-mockup--compact .msk-dashboard-mockup__eyebrow {
-  font-size: 0.68rem;
+  font-size: var(--rp-type-floor, 0.8125rem);
   line-height: 1.45;
 }
 
 .msk-dashboard-mockup--compact .msk-dashboard-mockup__timestamp {
   max-width: 8rem;
-  font-size: 0.68rem;
+  font-size: var(--rp-type-floor, 0.8125rem);
 }
 
 .msk-dashboard-mockup--compact .msk-dashboard-mockup__row {
   grid-template-columns: 1fr 0.95fr 0.72fr;
   gap: 0.5rem;
   padding: 0.64rem 0.65rem;
-  font-size: 0.72rem;
+  font-size: var(--rp-type-floor, 0.8125rem);
 }
 
 .msk-dashboard-mockup--compact .msk-dashboard-mockup__row > :nth-child(2),
@@ -1322,7 +1322,7 @@ textarea::placeholder {
 .msk-dashboard-mockup--compact .msk-dashboard-status,
 .msk-dashboard-mockup--compact .msk-dashboard-action {
   padding: 0.22rem 0.38rem;
-  font-size: 0.62rem;
+  font-size: var(--rp-type-floor, 0.8125rem);
 }
 
 .msk-dashboard-mockup__topbar {
@@ -1337,7 +1337,7 @@ textarea::placeholder {
 .msk-dashboard-mockup__timestamp {
   margin: 0;
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: var(--rp-type-floor, 0.8125rem);
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -1366,7 +1366,7 @@ textarea::placeholder {
   border-radius: 999px;
   background: color-mix(in srgb, var(--olive-2) 9%, transparent);
   color: var(--fg);
-  font-size: 0.66rem;
+  font-size: var(--rp-type-floor, 0.8125rem);
   font-weight: 750;
   letter-spacing: 0.04em;
   white-space: nowrap;
@@ -1419,7 +1419,7 @@ textarea::placeholder {
   border-radius: 999px;
   color: var(--muted);
   background: var(--surface-0);
-  font-size: 0.72rem;
+  font-size: var(--rp-type-floor, 0.8125rem);
   font-weight: 700;
 }
 
@@ -1440,7 +1440,7 @@ textarea::placeholder {
   border-top: 1px solid var(--border);
   border-left: 3px solid transparent;
   color: var(--fg);
-  font-size: 0.78rem;
+  font-size: var(--rp-type-floor, 0.8125rem);
   line-height: 1.3;
   transition: background-color var(--dur-fast) var(--ease-soft, ease);
 }
@@ -1478,7 +1478,7 @@ textarea::placeholder {
 .msk-dashboard-mockup__row--head {
   color: var(--muted);
   background: color-mix(in srgb, var(--olive-2) 7%, var(--surface-0));
-  font-size: 0.7rem;
+  font-size: var(--rp-type-floor, 0.8125rem);
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -1492,7 +1492,7 @@ textarea::placeholder {
   padding: 0.26rem 0.5rem;
   border-radius: 999px;
   white-space: nowrap;
-  font-size: 0.72rem;
+  font-size: var(--rp-type-floor, 0.8125rem);
   font-weight: 800;
 }
 
@@ -1520,7 +1520,7 @@ textarea::placeholder {
 }
 .msk-dashboard-mockup__mrn small {
   color: var(--muted);
-  font-size: 0.66rem;
+  font-size: var(--rp-type-floor, 0.8125rem);
   font-weight: 500;
   letter-spacing: 0;
 }
@@ -1553,7 +1553,7 @@ textarea::placeholder {
   display: grid;
   gap: 0.3rem;
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: var(--rp-type-floor, 0.8125rem);
   line-height: 1.45;
 }
 .msk-dashboard-mockup__legend b { color: var(--fg); font-weight: 700; }
@@ -1588,7 +1588,7 @@ textarea::placeholder {
   border-radius: 8px;
   background: var(--surface-0);
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: var(--rp-type-floor, 0.8125rem);
   font-weight: 700;
   letter-spacing: 0.02em;
 }
@@ -1647,7 +1647,7 @@ textarea::placeholder {
   border-radius: 0 0 8px 8px;
   background: var(--surface-0);
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: var(--rp-type-floor, 0.8125rem);
   line-height: 1.45;
 }
 .msk-dashboard-mockup__legend--details .msk-dashboard-mockup__legendBody b { color: var(--fg); font-weight: 700; }
@@ -1658,7 +1658,7 @@ textarea::placeholder {
   border-radius: 10px;
   background: color-mix(in srgb, var(--olive-2) 8%, var(--surface-0));
   color: var(--muted);
-  font-size: 0.76rem;
+  font-size: var(--rp-type-floor, 0.8125rem);
   line-height: 1.5;
 }
 

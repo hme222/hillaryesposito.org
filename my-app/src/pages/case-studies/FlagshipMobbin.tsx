@@ -89,25 +89,13 @@ export default function FlagshipMobbin() {
           <div className="rp-clearing">
             <h1 className="rp-h1">200+ screens per app, searchable by task.</h1>
             <span className="rp-eyebrow">Mobbin · <Term def="User experience: how a product works for the people using it.">UX</Term> flow documentation · three finance apps</span>
-            <span className="rp-readtime"><b>3 min</b><span>read · four-month contract</span></span>
             <p className="rp-sub">
               Mobbin is a library of app screenshots designers search for examples.
               I captured, sequenced, annotated, and labeled <b>200+ screens per app</b> across Kikoff,
               Polymarket, and Discover. I documented these products; I did not design them or Mobbin.
             </p>
-            {/* The tour sits beside the hero action, not in the breadcrumb row,
-                which pushed the H1 down on phones (2026-10-16). */}
-            <div className="rp-hero__ctas rp-hero__ctas--tour">
+            <div className="rp-hero__ctas">
               <a className="rp-cta" href="#mobbin-work">See the capture method →</a>
-              <button
-                type="button"
-                className="rp-heroUtility rp-heroTour"
-                onClick={(e) =>
-                  window.dispatchEvent(new CustomEvent("open-recruiter-panel", { detail: { returnFocus: e.currentTarget } }))
-                }
-              >
-                Open the 90-second tour
-              </button>
             </div>
           </div>
         </div>

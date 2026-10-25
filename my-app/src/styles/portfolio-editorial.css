@@ -310,6 +310,7 @@
   margin-bottom: 2rem;
   padding-top: 1.25rem;
   border-top: 1px solid var(--border);
+  border-bottom: 0;
 }
 .recruiter-panel__vitals { padding-top: 0; border-top: 0; }
 .recruiter-panel__intro {
@@ -352,6 +353,7 @@
   padding-inline: .75rem;
   background: color-mix(in srgb, var(--olive-2) 9%, transparent);
 }
+.recruiter-panel__allWork { margin-top: .9rem; }
 .recruiter-panel__btn { border-radius: var(--r-plate); }
 
 .not-found {

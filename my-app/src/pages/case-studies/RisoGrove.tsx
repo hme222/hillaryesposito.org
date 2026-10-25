@@ -269,24 +269,10 @@ export default function RisoGrove() {
               </ol>
               <p><b>Next</b><span>High-fidelity screens, edge states, and a retest.</span></p>
             </div>
-            {/* The tour sits beside the hero action, not in the breadcrumb row,
-                which pushed the H1 down on phones (2026-10-16). */}
-            <div className="rp-hero__ctas rp-hero__ctas--tour">
-              <a
-                className="rp-cta"
-                href="#grove-prototype"
-              >
-                Try the working browser prototype →
+            <div className="rp-hero__ctas">
+              <a className="rp-cta" href="#grove-research">
+                See how twelve became three →
               </a>
-              <button
-                type="button"
-                className="rp-heroUtility rp-heroTour"
-                onClick={(e) =>
-                  window.dispatchEvent(new CustomEvent("open-recruiter-panel", { detail: { returnFocus: e.currentTarget } }))
-                }
-              >
-                Open the 90-second tour
-              </button>
             </div>
           </div>
         </div>
@@ -517,7 +503,7 @@ export default function RisoGrove() {
             </div>
             <div className="rp-type">
               <span className="rp-type__label">Label · Space Mono</span>
-              <span style={{ fontFamily: "var(--mono)", textTransform: "uppercase", letterSpacing: ".14em", fontSize: ".78rem" }}>Healthy · due · overdue</span>
+              <span className="rp-type__sampleLabel">Healthy · due · overdue</span>
             </div>
           </div>
 

@@ -168,19 +168,10 @@ export default function FlagshipKnowunity() {
               <div><dt>Built here</dt><dd>Four interaction decisions · coded prototype · Storybook catalog</dd></div>
               <div><dt>Not proved</dt><dd>Recall mocked · no student testing · not shipped</dd></div>
             </dl>
-            {/* The tour sits beside the hero action, not in the breadcrumb row,
-                which pushed the H1 down on phones (2026-10-16). */}
-            <div className="rp-hero__ctas rp-hero__ctas--tour">
-              <a className="rp-cta" href="#knowunity-decisions">See the four decisions →</a>
-              <button
-                type="button"
-                className="rp-heroUtility rp-heroTour"
-                onClick={(e) =>
-                  window.dispatchEvent(new CustomEvent("open-recruiter-panel", { detail: { returnFocus: e.currentTarget } }))
-                }
-              >
-                Open the 90-second tour
-              </button>
+            <div className="rp-hero__ctas">
+              <a className="rp-cta" href={PROTOTYPE_URL} target="_blank" rel="noopener noreferrer">
+                Try the working prototype <span aria-hidden="true">↗</span><span className="sr-only">{t("a11y.newTab")}</span>
+              </a>
             </div>
           </div>
         </div>

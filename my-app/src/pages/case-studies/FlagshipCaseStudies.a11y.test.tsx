@@ -150,32 +150,22 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelectorAll("#msk-outcomes .rp-outcomes--four .rp-stat")).toHaveLength(4);
   });
 
-  it("the hero's tour trigger dispatches open-recruiter-panel with returnFocus (EN and ES)", async () => {
+  it("keeps the recruiter tour off case-study heroes and gives each hero one project action", async () => {
     await act(async () => {
       root.render(<FlagshipMSK />);
     });
-    const handler = jest.fn();
-    window.addEventListener("open-recruiter-panel", handler);
-    // Moved from the breadcrumb row to the hero actions (2026-10-16) so the
-    // H1 starts higher on phones.
     expect(container.querySelector(".rp-breadcrumbRow button")).toBeNull();
-    const trigger = container.querySelector<HTMLButtonElement>(".rp-hero__ctas .rp-heroTour");
-    expect(trigger?.textContent).toBe("Open the 90-second tour");
-    await act(async () => trigger?.click());
-    expect(handler).toHaveBeenCalledTimes(1);
-    const detail = (handler.mock.calls[0][0] as CustomEvent).detail;
-    expect(detail.returnFocus).toBe(trigger);
-    window.removeEventListener("open-recruiter-panel", handler);
+    expect(container.querySelector(".rp-heroTour")).toBeNull();
+    const action = container.querySelector<HTMLAnchorElement>('.rp-hero__ctas a[href="#msk-brief"]');
+    expect(action?.textContent).toBe("Run the filing path →");
 
-    // Same control, ES case study (SpanishCaseStudy.tsx) - the string is
-    // the translated one, and the breadcrumb's own final crumb uses the
-    // short organisation name, not the page's full headline.
+    // Spanish keeps one action back to the complete English case study.
     mockLang = "es";
     await act(async () => {
       root.render(<FlagshipMSK />);
     });
-    const esTrigger = container.querySelector<HTMLButtonElement>(".rp-hero__ctas .rp-heroTour");
-    expect(esTrigger?.textContent).toBe("Recorrido de 90 segundos (inglés)");
+    expect(container.querySelector(".rp-heroTour")).toBeNull();
+    expect(container.querySelector(".rp-hero__ctas")?.textContent).toContain("Leer el estudio completo en inglés");
     const breadcrumb = container.querySelector(".rp-breadcrumb");
     expect(breadcrumb?.textContent).toContain("Memorial Sloan Kettering");
     expect(breadcrumb?.textContent).not.toContain("Una cola de archivo reemplazó");
@@ -518,7 +508,7 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelectorAll(".fp-findings li")).toHaveLength(5);
     expect(container.querySelectorAll(".fp-pretotypes li")).toHaveLength(5);
     const text = container.textContent || "";
-    ["No patient interview stream", "not healthcare validation", "hypothesis", "Five pretotypes designed. None run.", "Secondary research", "UX Woman is a 7-month, mentor-led UX design accelerator.", "Interviews with healthcare professionals and stakeholders.", "Three strongest findings, each rated for confidence.", "read · research phase, 2026", "human-resources (HR)", "protected health information (PHI)", "artificial intelligence (AI)"].forEach((phrase) => {
+    ["No patient interview stream", "not healthcare validation", "hypothesis", "Five pretotypes designed. None run.", "Secondary research", "UX Woman is a 7-month, mentor-led UX design accelerator.", "Interviews with healthcare professionals and stakeholders.", "Three strongest findings, each rated for confidence.", "Human resources: the team that handles hiring, pay, and staff policy.", "protected health information (PHI)", "artificial intelligence (AI)"].forEach((phrase) => {
       expect(text).toContain(phrase);
     });
     ["UserTesting", "real cases", "Five signals"].forEach((phrase) => expect(text).not.toContain(phrase));
@@ -841,7 +831,7 @@ describe("flagship case-study accessibility", () => {
     expect(dialog?.open).toBe(true);
     expect(dialog?.textContent).toContain("Grove");
     expect(dialog?.textContent).toContain("MSK · A filing queue replaced a four-department paper detour");
-    expect(dialog?.textContent).toContain("Operational delivery · Medical logistics · Resupply went from months to weeks");
+    expect(dialog?.textContent).toContain("See all work");
 
     const projectTitles = Array.from(
       dialog?.querySelectorAll<HTMLButtonElement>(".recruiter-panel__project strong") || [],
@@ -851,11 +841,8 @@ describe("flagship case-study accessibility", () => {
       "MSK · A filing queue replaced a four-department paper detour",
       "Grove · Twelve features became three",
       "Knowunity · The student's own words are the proof",
-      "Operational delivery · Medical logistics · Resupply went from months to weeks",
-      "UX Woman · Six healthcare interviews, one hypothesis",
-      "Mobbin · 200+ screens per app, searchable by task",
     ]);
-    expect(dialog?.textContent).toContain("I initiated the workflow. MSK’s IT and UX teams implemented it later; the 20% result belongs to the larger initiative.");
+    expect(dialog?.textContent).toContain("I mapped the four-department workaround and pitched the queue that IT and UX later built.");
     expect(dialog?.textContent?.toLowerCase()).not.toContain(["functional", "beta"].join(" "));
     expect(dialog?.textContent?.toLowerCase()).not.toContain(["shipped", "consumer", "app"].join(" "));
 
@@ -1020,10 +1007,11 @@ describe("flagship case-study accessibility", () => {
     });
 
     const details = container.querySelector<HTMLDetailsElement>("#grove-prototype");
-    const heroAction = container.querySelector<HTMLAnchorElement>('a[href="#grove-prototype"]');
+    const heroAction = container.querySelector<HTMLAnchorElement>('#grove-start a[href="#grove-research"]');
     expect(details).not.toBeNull();
     expect(details?.open).toBe(false);
-    expect(heroAction?.textContent).toContain("Try the working browser prototype");
+    expect(container.querySelector('a[href="#grove-prototype"]')).toBeNull();
+    expect(heroAction?.textContent).toContain("See how twelve became three");
   });
 
   it("leaves Grove hash disclosure ownership to the shared chrome without focus theft", async () => {
