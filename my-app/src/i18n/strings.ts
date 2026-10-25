@@ -74,7 +74,7 @@ const en = {
   // ── Home: hero ──
   "home.status": "Open to healthcare product design roles",
   "home.riso.eyebrow": "Healthcare Product Designer · Army veteran, MSK operations and training",
-  "home.riso.heroTitle": "I design the workflow before the screen.",
+  "home.riso.heroTitle": "I design workflows before screens.",
   // "Workflow fluency" named a skill without saying what it covers. The
   // durable claim is scope: the whole path a task takes, not the screen at the
   // end of it — which is what the MSK case study actually demonstrates.
@@ -172,13 +172,13 @@ const en = {
   "home.proj.uxwoman.subtitle": "UX Woman · Healthcare research · Research phase",
   "home.proj.knowunity.subtitle": "Knowunity · Design sprint · Interactive mobile prototype",
   "home.proj.grove.title": "Twelve features became three",
-  "home.proj.msk.title": "A filing queue replaced a four-department paper detour",
+  "home.proj.msk.title": "A filing queue replaced the paper detour",
   "home.proj.logistics.title": "Medical resupply went from months to weeks",
   "home.proj.uxwoman.title": "Six healthcare interviews, one hypothesis",
   "home.proj.knowunity.title": "The student’s own words are the proof",
 
   // ── Home: contact / CTA ──
-  "home.ctaTitle": "Redesigning a clinical workflow or a high-stakes internal tool?",
+  "home.ctaTitle": "Building a clinical workflow or internal tool?",
   "contact.note": "Email me",
   "contact.copy": "or copy:",
   "home.linkedinAria": "LinkedIn profile (opens in new tab)",
@@ -277,7 +277,7 @@ const es: Partial<Record<StringKey, string>> = {
   // ── Home: hero ──
   "home.status": "Abierta a roles de diseño de productos de salud",
   "home.riso.eyebrow": "Diseñadora de productos de salud · Veterana del Ejército, operaciones y capacitación en MSK",
-  "home.riso.heroTitle": "Diseño el flujo de trabajo antes que la pantalla.",
+  "home.riso.heroTitle": "Diseño flujos antes que pantallas.",
   "home.riso.heroLead":
     "En Memorial Sloan Kettering, rastreé un desvío en papel entre cuatro áreas y propuse la cola que lo reemplazó.",
   "home.riso.heroProof": "TI y UX la construyeron después de que cambié de puesto. Los flujos incluidos alcanzan a más de 21,000 clínicos y personal.",
@@ -371,7 +371,7 @@ const es: Partial<Record<StringKey, string>> = {
   // No-break space keeps "se convirtieron" together, so the title breaks after
   // "funciones" instead of stranding "se" at the end of line one.
   "home.proj.grove.title": "Doce funciones se\u00a0convirtieron en tres",
-  "home.proj.msk.title": "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas",
+  "home.proj.msk.title": "Una cola de archivo reemplazó el desvío en papel",
   // Same wording as the Spanish case-study title. "Tiempo de reabastecimiento
   // médico reducido" left "médico" alone on its own line at 320, 375 and 1280.
   "home.proj.logistics.title": "El reabastecimiento médico pasó de meses a\u00a0semanas",
@@ -379,7 +379,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.proj.knowunity.title": "Las propias palabras del estudiante son la prueba",
 
   // ── Home: contact / CTA ──
-  "home.ctaTitle": "¿Está rediseñando un flujo clínico o una herramienta interna de alto riesgo?",
+  "home.ctaTitle": "¿Está creando un flujo clínico o una herramienta interna?",
   "contact.note": "Escríbame",
   "contact.copy": "o copie:",
   "home.linkedinAria": "Perfil de LinkedIn (se abre en una pestaña nueva)",

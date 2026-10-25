@@ -3784,3 +3784,176 @@ h2.rp-kicker { margin: 0 0 .4rem; line-height: 1.3; }
     gap: .2rem;
   }
 }
+
+/* ---------- 2026-10-25 strict editorial cleanup ----------
+   Home and the MSK flagship use real artifacts, type scale, and tonal fields
+   for hierarchy. Decorative gradients, hairline furniture, and monospace
+   metadata were competing with that evidence and have been removed here. */
+body:has(.riso-home),
+body:has(.flagship-page--msk) { background: #edf1ed; }
+
+body:has(.riso-home) *:not([data-ui], [data-ui] *),
+body:has(.flagship-page--msk) *:not([data-ui], [data-ui] *) {
+  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+body:has(.riso-home) .site-footer__eyebrow,
+body:has(.riso-home) .site-footer__label,
+body:has(.flagship-page--msk) .site-footer__eyebrow,
+body:has(.flagship-page--msk) .site-footer__label {
+  font-size: .875rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+body:has(.riso-home) .site-footer__grid,
+body:has(.flagship-page--msk) .site-footer__grid {
+  grid-template-columns: minmax(0, 1fr) minmax(8rem, .7fr) minmax(8rem, .7fr) !important;
+}
+body:has(.riso-home) .site-footer__column:last-child,
+body:has(.flagship-page--msk) .site-footer__column:last-child {
+  align-items: flex-end;
+  text-align: right;
+}
+body:has(.riso-home) .msk-dashboard-mockup,
+body:has(.flagship-page--msk) .msk-dashboard-mockup {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif !important;
+}
+body:has(.flagship-page--msk) .nav-dock__item[aria-current] {
+  border-radius: 999px;
+  background: var(--shell-green);
+  color: #fff;
+}
+
+.riso-home,
+.flagship-page--msk {
+  --paper: #edf1ed;
+  --paper-2: #e0e7e0;
+  --hair: transparent;
+  --coral: #a52346;
+  --coral-text: #821a38;
+  --on-coral: #fff;
+}
+
+.riso-home *:not(.carto__map, [data-ui], [data-ui] *),
+.flagship-page--msk *:not(.carto__map, [data-ui], [data-ui] *) {
+  background-image: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+.riso-home *:not([data-ui], [data-ui] *),
+.flagship-page--msk *:not([data-ui], [data-ui] *) { font-family: var(--sans) !important; }
+
+.riso-home .carto,
+.flagship-page--msk .carto { background: var(--paper-2); }
+.riso-home .carto__paperWash,
+.riso-home .carto__paintPlate,
+.riso-home .carto__fragment,
+.riso-home .carto__ink,
+.riso-home .carto__halftone,
+.riso-home .carto__grain,
+.riso-home .carto__cursorGlow,
+.flagship-page--msk .carto__paperWash,
+.flagship-page--msk .carto__paintPlate,
+.flagship-page--msk .carto__fragment,
+.flagship-page--msk .carto__ink,
+.flagship-page--msk .carto__halftone,
+.flagship-page--msk .carto__grain,
+.flagship-page--msk .carto__cursorGlow { display: none; }
+
+.riso-home .rp-contextLine { margin-top: 1rem; }
+.riso-home .rp-h1Phrase { white-space: normal; }
+.riso-home .rp-h1 {
+  max-width: 20ch;
+  font-size: clamp(2.1rem, 3.6vw, 3.25rem);
+}
+.riso-home .rp-trustStrip { max-width: 1280px; justify-content: space-between; }
+.riso-home .msk-dashboard-mockup,
+.flagship-page--msk .msk-dashboard-mockup { background-image: none !important; }
+.riso-home .rp-stat__tag,
+.flagship-page--msk .rp-stat__tag {
+  margin: .55rem 0 0;
+  font-size: .875rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.riso-home .rp-work__n { margin-top: .8rem; }
+.riso-home .rp-work__sub,
+.riso-home .rp-work__n,
+.riso-home .rp-supportingLink > span,
+.riso-home .rp-supportingLink a,
+.riso-home .rp-dispatch__issueLabel,
+.riso-home .rp-dispatchTrain__attribution,
+.flagship-page--msk .rp-breadcrumb,
+.flagship-page--msk .rp-chapters,
+.flagship-page--msk .rp-next__tag {
+  letter-spacing: 0;
+  text-transform: none;
+}
+.riso-home p,
+.riso-home li,
+.riso-home blockquote,
+.flagship-page--msk p,
+.flagship-page--msk li,
+.flagship-page--msk blockquote { font-size: max(1rem, var(--rp-type-floor)); }
+
+.riso-home .rp-work--supporting .rp-work__desc,
+.riso-home .rp-careerNote p:not(.rp-note__k),
+.riso-home .rp-stat__l { font-size: 1rem; }
+
+.riso-home .rp-dispatchTrain__vehicle { box-shadow: none; }
+.riso-home .rp-dispatch__masthead::before,
+.riso-home .rp-dispatchTrain__rail,
+.riso-home .rp-dispatch__wash { display: none; }
+
+.riso-home details:not([open]) > :not(summary),
+.flagship-page--msk details:not([open]) > :not(summary) { display: none !important; }
+
+.flagship-page--msk .rp-chapters {
+  background: #edf1ed;
+  backdrop-filter: none;
+}
+.flagship-page--msk .rp-next { background: #a52346; }
+.flagship-page--msk .rp-next__tag { margin-top: .45rem; }
+
+/* The strict light-theme palette is declared late in this file, so restore the
+   established dark-theme contract at the same cascade layer. Product UI
+   reconstructions keep their own light canvas for fidelity and readability. */
+.dark-mode body:has(.riso-home),
+.dark-mode body:has(.flagship-page--msk) { background: #101512; }
+
+.dark-mode .riso-home,
+.dark-mode .flagship-page--msk {
+  --paper: #141a16;
+  --paper-2: #1c2520;
+  --ink: #edf1ec;
+  --ink-2: #c6d0ca;
+  --muted: #aab7b0;
+  --coral: #ff6d8e;
+  --coral-text: #ff9eb4;
+  --on-coral: #141a16;
+}
+
+.dark-mode .flagship-page--msk .rp-chapters { background: #141a16; }
+.dark-mode .flagship-page--msk .rp-next { background: #a52346; }
+
+@media (max-width: 600px) {
+  .riso-home .rp-h1 {
+    max-width: 20ch;
+    font-size: clamp(1.75rem, 7.1vw, 2rem);
+  }
+  .riso-home .rp-work__title,
+  .riso-home .rp-close h2,
+  .flagship-page--msk .rp-title { font-size: 1.45rem; }
+  .flagship-page--msk .rp-chapters {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+  body:has(.riso-home) .site-footer__grid,
+  body:has(.flagship-page--msk) .site-footer__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(7rem, .75fr) !important;
+  }
+  body:has(.riso-home) .site-footer__lead,
+  body:has(.flagship-page--msk) .site-footer__lead { grid-column: 1 / -1; }
+}

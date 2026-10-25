@@ -34,3 +34,12 @@ Healthcare product-design recruiters and hiring managers scanning for workflow j
 ## Out of scope
 
 New portfolio claims or imagery, a full recut of supporting cases, replacement of the global risograph identity, and changes to published project evidence.
+
+## Final verification — 2026-10-25
+
+- Strict inspector: Home 0 FAIL / 4 WARN; MSK 0 FAIL / 5 WARN across 1440px, 768px, and 390px.
+- Visual review: all generated fold and full-page captures reviewed; no clipped evidence, horizontal overflow, or broken responsive hierarchy.
+- Accessibility/regression suite: 231/231 tests pass, including axe-backed flagship checks.
+- Design-system registry: regenerated after the evidence-field structure changed and rechecked as current.
+- Dark mode: late strict-cleanup tokens have explicit dark-theme counterparts; reconstructed product UI retains its light interface canvas.
+- Accepted warnings: the optional homepage opener is not forced into the recruiter scan; MSK deliberately uses privacy-safe recreated workflow artifacts instead of stock people/clinical footage; the cream flag matches light-on-dark type; remaining mobile size/alignment notices are warning-only and visually intact.

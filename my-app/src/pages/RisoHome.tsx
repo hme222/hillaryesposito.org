@@ -341,6 +341,9 @@ export default function RisoHome() {
         {/* The 01-05 numbers are gone (portfolio critique 2026-10-23): the
             cases are ranked by relevance, not steps in a sequence. The status
             label stays because it carries information. */}
+        <p className="rp-work__title" id={`${idRoot}-title`}>{t(work.titleKey)}</p>
+        <p className="rp-work__sub" id={`${idRoot}-subtitle`}>{t(work.subKey)}</p>
+        <p className="rp-work__desc" id={`${idRoot}-description`}>{t(work.descKey)}</p>
         {(work.tagKey || work.evidenceLabelEn) && (
           <p className="rp-work__n" id={`${idRoot}-status`}>
             {work.tagKey && <PhaseIndicator current={2} label={t(work.tagKey)} />}
@@ -349,9 +352,6 @@ export default function RisoHome() {
             )}
           </p>
         )}
-        <p className="rp-work__title" id={`${idRoot}-title`}>{t(work.titleKey)}</p>
-        <p className="rp-work__sub" id={`${idRoot}-subtitle`}>{t(work.subKey)}</p>
-        <p className="rp-work__desc" id={`${idRoot}-description`}>{t(work.descKey)}</p>
       </div>
       {work.visual === "logistics" ? (
         <figure className="rp-work__thumb rp-work__thumb--mechanism" aria-label={t(work.imgAltKey)}>
@@ -459,16 +459,16 @@ export default function RisoHome() {
           <div className="rp-clearing">
             {/* Availability rides the eyebrow as its second line instead of a
                 separate status row under the proof (density pass, 2026-10-16). */}
-            <p className="rp-contextLine">
-              <span className="rp-eyebrow__text">{t("home.riso.eyebrow").replace(" · ", "\u00a0· ")}</span>{" "}
-              <span className="rp-eyebrow__status">{t("home.status")}</span>
-            </p>
             {/* .rp-h1Fit is the container the headline's fit sizing measures
                 against (portfolio-cohesion.css) — not .rp-clearing itself,
                 which collapses under inline-size containment. */}
             <div className="rp-h1Fit">
               <h1 className="rp-h1">{heroTitle(t("home.riso.heroTitle"), HERO_PHRASES[lang === "es" ? "es" : "en"])}</h1>
             </div>
+            <p className="rp-contextLine">
+              <span className="rp-eyebrow__text">{t("home.riso.eyebrow").replace(" · ", "\u00a0· ")}</span>{" "}
+              <span className="rp-eyebrow__status">{t("home.status")}</span>
+            </p>
             <p className="rp-sub rp-heroProof">
               {t("home.riso.heroLead")} <b>{glossTerms(t("home.riso.heroProof"), glossary, { tabStop: false })}</b>
             </p>
@@ -534,9 +534,9 @@ export default function RisoHome() {
           <div className="rp-outcomes rp-outcomes--lead rp-reveal" data-evidence="true">
             {STATS.map((s) => (
               <div className="rp-stat" key={s.n}>
-                <p className="rp-stat__tag">{t(s.tagKey)}</p>
                 <p className="rp-stat__n">{lang === "es" && s.nEs ? s.nEs : s.n}</p>
                 <p className="rp-stat__l">{t(s.labelKey)}</p>
+                <p className="rp-stat__tag">{t(s.tagKey)}</p>
                 <Link
                   className="rp-stat__source"
                   to={`${s.path}#${lang === "es" ? "es-" : ""}${s.anchor}`}
@@ -567,7 +567,7 @@ export default function RisoHome() {
             className="rp-workGroup rp-workGroup--supporting"
             aria-labelledby="home-supporting-cases-title"
           >
-            <h3 className="rp-kicker rp-workGroup__title" id="home-supporting-cases-title">
+            <h3 className="sr-only" id="home-supporting-cases-title">
               {lang === "es" ? "Evidencia de apoyo" : "Supporting evidence"}
             </h3>
             <div className="rp-worklist rp-worklist--supporting rp-reveal" data-evidence="true">

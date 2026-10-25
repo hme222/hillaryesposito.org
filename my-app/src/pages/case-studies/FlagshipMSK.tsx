@@ -251,7 +251,7 @@ export default function FlagshipMSK() {
           {/* The "recreated and anonymized" qualifier moved to the figcaption
               below, which already carries it — so the kicker is free to be a
               beat instead of a provenance label. */}
-          <h2 className="rp-title">One map made four departments see the same failure.</h2>
+          <h2 className="rp-title">One map exposed the shared failure.</h2>
           {/* "The Detour" animatic was removed 2026-10-13 at the owner's direction
               (the deterministic version was rejected at taste review on
               2026-08-31; the generated video was scrapped the same day). */}
@@ -340,7 +340,6 @@ export default function FlagshipMSK() {
             <div className="fp-redesigns rp-reveal" data-evidence="true">
               {REDESIGNS.map((r) => (
                 <article key={r.n}>
-                  <span className="fp-redesigns__n">{r.n}</span>
                   <h3>{r.title}</h3>
                   <MSKMechanism n={r.n} />
                   <p className="fp-redesigns__finding">{r.finding}</p>
@@ -363,7 +362,6 @@ export default function FlagshipMSK() {
                 const method = ROLE_METHODS[r.n];
                 return (
                   <li key={r.n}>
-                    <span className="fp-roleRail__n">{r.n}</span>
                     <b>{r.role}</b>
                     <span className="fp-roleRail__taught">{r.taught}</span>
                     <details className="fp-roleRail__method">
@@ -459,7 +457,7 @@ export default function FlagshipMSK() {
         </div>
       </section>
 
-      <Link className="rp-next" to="/case-study/grove"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Grove</p><p className="rp-next__tag">Plant-care prototype · Phase 2 of 3</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
+      <Link className="rp-next" to="/case-study/grove"><div className="rp-next__inner"><div><p className="rp-next__title">Grove</p><p className="rp-next__tag">Next case study · Plant-care prototype · Phase 2 of 3</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
     </main>
   );
 }

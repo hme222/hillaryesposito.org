@@ -956,3 +956,25 @@
 .fp-buttonThreshold__socket .msk-dashboard-action {
   font-size: var(--rp-type-floor);
 }
+
+/* ---------- 2026-10-25 MSK strict-gate cleanup ---------- */
+.flagship-page--msk {
+  --coral: #a52346;
+  --ink-2: #354840;
+}
+.flagship-page--msk .msk-dashboard-mockup {
+  background-color: #f7f8f6 !important;
+  background-image: none !important;
+}
+.flagship-page--msk .rp-outcomeStage .rp-stat { backdrop-filter: none; }
+.flagship-page--msk .fp-buttonThreshold__folio,
+.flagship-page--msk .fp-sustainmentFig figcaption {
+  font-family: var(--sans);
+  font-size: .875rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+@media (max-width: 600px) {
+  .flagship-page--msk .fp-workflow > i { display: none; }
+}

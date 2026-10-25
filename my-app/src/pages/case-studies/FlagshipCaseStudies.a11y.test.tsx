@@ -210,9 +210,9 @@ describe("flagship case-study accessibility", () => {
     expect(hero?.querySelector("h1")?.textContent).toBe("Resupply went from months to\u00a0weeks.");
     expect(hero?.textContent).toContain("85% faster in my service record (owner-reported)");
     expect(container.textContent).toContain("measurement periods and methods are not preserved");
-    expect(container.textContent).toContain("Relocation1–\u20602\u00a0wk");
-    expect(container.textContent).toContain("Order status60%");
-    expect(container.textContent).toContain("Protocol15%");
+    expect(container.textContent).toContain("1–\u20602\u00a0wkreported medical resupply time");
+    expect(container.textContent).toContain("60%reported reduction in spending");
+    expect(container.textContent).toContain("15%reported: critical supplies");
   });
 
   it("keeps the active homepage shell targets and one work-first hero route intact", async () => {
@@ -541,7 +541,7 @@ describe("flagship case-study accessibility", () => {
   });
 
   it.each([
-    ["MSK", <FlagshipMSK />, "/case-study/grove", "Grove", "Plant-care prototype · Phase 2 of 3"],
+    ["MSK", <FlagshipMSK />, "/case-study/grove", "Grove", "Next case study · Plant-care prototype · Phase 2 of 3"],
     ["Grove", <RisoGrove />, "/case-study/knowunity", "Knowunity", "Design sprint · mocked voice recall, not shipped"],
     ["Knowunity", <FlagshipKnowunity />, "/case-study/logistics", "Medical logistics", "Army operations · seven aid stations, three countries"],
     ["Medical logistics", <FlagshipLogistics />, "/case-study/ux-woman", "UX Woman", "Supporting research · six interviews, research phase"],
@@ -950,7 +950,7 @@ describe("flagship case-study accessibility", () => {
       root.render(<FlagshipMSK />);
     });
 
-    expect(container.textContent).toContain("One map made four departments see the same failure.");
+    expect(container.textContent).toContain("One map exposed the shared failure.");
     expect(container.querySelector(".fp-systemCards")).toBeNull();
     expect(container.textContent).toContain("Service-design scope:");
     expect(container.textContent).toContain("observation counts don’t, so no prevalence claim is made.");

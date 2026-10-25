@@ -45,9 +45,9 @@ export default function EvidenceField({
     <div className={`rp-outcomes rp-reveal${metrics.length === 2 ? " rp-outcomes--two" : metrics.length === 4 ? " rp-outcomes--four" : ""}${leadMetric ? " rp-outcomes--lead" : ""}`}>
       {metrics.map((metric) => (
         <div className="rp-stat" key={`${metric.n}-${metric.label}`}>
-          {metric.tag && <p className="rp-stat__tag">{metric.tag}</p>}
           <p className="rp-stat__n">{metric.n}</p>
           <p className="rp-stat__l">{metric.label}</p>
+          {metric.tag && <p className="rp-stat__tag">{metric.tag}</p>}
         </div>
       ))}
     </div>

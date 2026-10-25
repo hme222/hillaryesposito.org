@@ -2,11 +2,11 @@
 
 ## 2026-10-24 — Design-taste fix round implemented
 
-**Status:** Implemented locally from Hillary's “make fixes” direction after the fresh design-taste critique. The governing brief is `design-docs/briefs/2026-10-24-design-taste-fix-round.md`.
+**Status:** Final fix round verified for shipping from Hillary's “make fixes” direction after the fresh design-taste critique. The governing brief is `design-docs/briefs/2026-10-24-design-taste-fix-round.md`.
 
 **Direction:** Evidence-first restraint. Preserve the risograph identity and truthful healthcare/workflow evidence while removing redundant UI-like labels, decorative sequence numbers, repeated grid-paper frames, and identical flagship-row compositions. MSK stays balanced, Grove becomes artifact-led, and Knowunity becomes flow-led. The MSK hero must stack at tablet widths instead of compressing into a narrow desktop rail.
 
-**Verification:** Home and MSK were inspected at 1440, 768, and 390 and every generated screenshot was reviewed. The MSK tablet hero now stacks cleanly with a one-line 768px title; its receipt headline no longer trips the tablet/mobile long-headline rule. Home's visible micro-label count fell from 11 to 4 and its resting shadows from 3 to 2; MSK fell from 15 to 14 strict inspector failures. The remaining inspector failures are known site-wide house-style debt (global mono wayfinding, collage gradients, rules/outlined evidence components, long established headlines, and inspector false positives for live-region/active-nav text), so the strict design-taste gate remains conditional rather than reported as zero. Full Jest passes 231/231, including axe-backed flagship accessibility coverage; the component registry is current; TypeScript/build compilation succeeds; and the optimized production build completes.
+**Verification:** Home and MSK were inspected at 1440, 768, and 390 and every generated screenshot was reviewed. Both now clear the strict design-taste gate at **0 FAIL**: Home reports four non-blocking warnings and MSK five. The remaining warnings are either intentional recruiter-path choices or scanner limitations: the calm homepage does not force its optional opener; MSK uses privacy-safe reconstructed artifacts rather than stock clinical photography or footage; the cream detector is matching light text on a dark evidence field, not the page palette; and the remaining mobile size/alignment notices do not produce clipping or broken hierarchy in the reviewed captures. Dark-mode tokens are explicitly restored after the late strict-cleanup layer and were rendered in local headless Chrome. Full Jest passes 231/231, including axe-backed flagship accessibility coverage; the component registry is current; and the optimized production build completes successfully.
 
 ## 2026-10-22 — Mount Sinai overall audit and About navigation consistency
 
@@ -18,7 +18,7 @@
 
 **Blind-review limitation:** fresh anti-AI, neurodiversity, and accessibility subreviews were dispatched but could not run because the account hit its temporary subagent usage limit. The same lenses were completed directly and are explicitly labeled not blind in `design-docs/reviews/2026-10-22-mount-sinai-overall-portfolio-audit.md`.
 
-_Last updated: 2026-10-21 by Codex (Healthcare Product Designer recut visual-refinement checkpoint; prior checkpoints preserved)_
+_Last updated: 2026-10-25 by Codex (strict design-taste green gate; prior checkpoints preserved)_
 
 ## Active Initiative: Ask about the work (grounded answer engine)
 
