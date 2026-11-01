@@ -131,7 +131,7 @@ const WORK: WorkItem[] = [
     evidenceLabelEs: "Investigación de apoyo · activa",
     teaserPath: "/case-study/ux-woman#uxwoman-findings",
     teaserPathEs: "/case-study/ux-woman#es-uxwoman-findings",
-    teaserEn: "See the strongest findings →",
+    teaserEn: "See the findings →",
     teaserEs: "Ver los cinco hallazgos →",
   },
 ];

@@ -114,17 +114,17 @@ export default function FlagshipUxWoman() {
         <div className="rp-grain" />
         <div className="rp-hero__content">
           <div className="rp-clearing">
-            <h1 className="rp-h1">Six healthcare interviews point to one{"\u00a0"}hypothesis.</h1>
-            <span className="rp-eyebrow">UX Woman · Healthcare research · Active, research phase</span>
+            <h1 className="rp-h1">Six healthcare interviews suggest one hypothesis to{"\u00a0"}test.</h1>
+            <span className="rp-eyebrow">UX Woman · Healthcare research · Research phase</span>
             <p className="rp-sub">
-              UX Woman is a 7-month, mentor-led UX design accelerator. Six healthcare interviews surfaced a repeated ownership gap. I’m treating it as a <b>hypothesis</b>; next I’m reconstructing recent cases before building.
+              UX Woman is a 7-month, mentor-led UX design accelerator. In six healthcare interviews, staff described unclear ownership of next steps, through different mechanisms. My <b>hypothesis</b>: when care waits on an administrative step, the people involved can’t see who acts next. It is untested, and no patient was interviewed.
             </p>
             <dl className="rp-heroEvidence" aria-label="UX Woman case evidence at a glance">
               <div><dt>Role</dt><dd>Sole researcher · UX Woman UX Design Accelerator · 2026</dd></div>
-              <div><dt>My contribution</dt><dd>Interview plans · recruiting by behavior · synthesis · five pretotype designs</dd></div>
+              <div><dt>My contribution</dt><dd>Interview plans · recruitment screener · synthesis · five pretotype designs</dd></div>
             </dl>
             <div className="rp-hero__ctas">
-              <a className="rp-cta" href="#uxwoman-findings">See the strongest findings →</a>
+              <a className="rp-cta" href="#uxwoman-findings">See the findings →</a>
             </div>
           </div>
         </div>
@@ -141,25 +141,25 @@ export default function FlagshipUxWoman() {
       <section className="rp-section rp-override" id="uxwoman-problem" data-language-anchor="uxwoman-problem" data-evidence="true">
         <div className="rp-wrap">
           <p className="rp-kicker">Where this starts</p>
-          <h2 className="rp-title">Staff and patients cannot see who acts next.</h2>
-          <p className="rp-lede">When care waits on coverage, paperwork, or a missing document, people in different roles described not knowing who owned the next step.</p>
-          <p className="rp-body">The mechanisms differed: a misrouted message, a utilization-review page, an authorization queue no one could see.</p>
+          <h2 className="rp-title">Staff described not knowing who acts next.</h2>
+          <p className="rp-lede">When care waits on coverage, paperwork, or a missing document, staff in different roles described unclear ownership of the next step.</p>
+          <p className="rp-body">The mechanisms differed: a misrouted message, a utilization-review page, an authorization queue members could not see (secondhand, from a former health-plan employee). No patient was interviewed.</p>
         </div>
       </section>
 
       <section className="rp-section" id="uxwoman-research" data-language-anchor="uxwoman-research" data-evidence="true">
         <div className="rp-wrap">
           <p className="rp-kicker">What I did</p>
-          <h2 className="rp-title">Six healthcare interviews, recruited by what people do.</h2>
-          <p className="rp-lede">I recruited by behavior, not job title. Each interview counts once. Interviews with healthcare professionals and stakeholders.</p>
-          <p className="rp-body">Six roles described recent healthcare workflows. Participants are anonymized, no protected health information was collected, and there is no dedicated patient interview stream.</p>
+          <h2 className="rp-title">Six healthcare interviews, one per role.</h2>
+          <p className="rp-lede">Each interview counts once. Interviews with healthcare professionals and stakeholders.</p>
+          <p className="rp-body">Six roles described healthcare workflows. Participants are anonymized, no protected health information was collected, and there is no dedicated patient interview stream.</p>
         </div>
       </section>
 
       <section className="rp-section" id="uxwoman-findings" data-language-anchor="uxwoman-findings" data-evidence="true">
         <div className="rp-wrap">
           <p className="rp-kicker">What the interviews showed</p>
-          <h2 className="rp-title">Three strongest findings, each rated for confidence.</h2>
+          <h2 className="rp-title">Three findings, each rated for confidence.</h2>
           <p className="rp-lede">A rating says how directly the accounts support a claim, not how many people said it.</p>
           <ol className="fp-findings rp-reveal">
             {FINDINGS.slice(0, 3).map((finding) => (
@@ -218,7 +218,7 @@ export default function FlagshipUxWoman() {
           <div className="rp-wrap">
             <p className="rp-kicker">Cheap tests, designed</p>
             <h2 className="rp-title">Five pretotypes designed. None run.</h2>
-            <p className="rp-lede">Each tries to disprove its own premise. They are five separate tests, not five features of one product.</p>
+            <p className="rp-lede">They are five separate tests, not five features of one product.</p>
             <ol className="fp-pretotypes rp-reveal">
               {PRETOTYPES.map((item, index) => (
                 <li key={item.title}>
@@ -240,7 +240,7 @@ export default function FlagshipUxWoman() {
         languageAnchor="uxwoman-next"
         kicker="Where it stands"
         title="A hypothesis, not a product."
-        intro="Active, research phase. Next I reconstruct recent cases, asking each person the same neutral questions, before choosing anything to build."
+        intro="Research phase. Planned next: reconstruct recent cases, asking each person the same neutral questions, before choosing anything to build. Recruitment waits on protocol and governance review."
         disclaimer="Exploratory, qualitative, self-reported · six healthcare interviews and one adjacent HR interview · no dedicated patient interviews · no pretotype run · the large-hospital scan is secondary research"
         metrics={[
           { tag: "Method", n: "6", label: "healthcare interviews, plus one adjacent HR interview that is not healthcare validation" },

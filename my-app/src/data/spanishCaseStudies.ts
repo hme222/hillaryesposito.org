@@ -479,33 +479,33 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
 // only. Section anchors match the English chapter ids so the language switch
 // lands in place.
 export const UXWOMAN_ES: SpanishCaseStudyData = {
-  title: "Seis entrevistas de salud apuntan a una\u00a0hipótesis.",
+  title: "Seis entrevistas de salud sugieren una hipótesis por probar.",
   breadcrumb: "UX Woman",
-  meta: "UX Woman · Investigación en salud · Activo, fase de investigación",
+  meta: "UX Woman · Investigación en salud · Fase de investigación",
   intro:
-    "UX Woman es una aceleradora de diseño UX de 7 meses, guiada por mentores. En seis entrevistas de salud, el personal describió atención en espera mientras nadie podía ver quién tenía el siguiente paso. Lo trato como una hipótesis. La evidencia aún no muestra un solo problema compartido, así que el siguiente paso es reconstruir casos recientes antes de construir nada.",
+    "UX Woman es una aceleradora de diseño UX de 7 meses, guiada por mentores. En seis entrevistas de salud, el personal describió una titularidad poco clara de los siguientes pasos, con mecanismos distintos. Mi hipótesis: cuando la atención espera por un trámite administrativo, quienes participan no ven quién actúa después. No está probada y no se entrevistó a ningún paciente.",
   stats: [
     { label: "Rol", value: "Única investigadora · Aceleradora de diseño UX de UX Woman · 2026" },
     { label: "Evidencia", value: "Seis entrevistas de salud · una entrevista adyacente de recursos humanos (RR. HH.) · ninguna entrevista dedicada con pacientes" },
-    { label: "Mi parte", value: "Planes de entrevista · reclutamiento por conducta · síntesis · cinco diseños de pretotipo" },
-    { label: "Estado", value: "Activo · fase de investigación · cinco pretotipos diseñados, ninguno ejecutado" },
+    { label: "Mi parte", value: "Planes de entrevista · filtro de reclutamiento · síntesis · cinco diseños de pretotipo" },
+    { label: "Estado", value: "Fase de investigación · cinco pretotipos diseñados, ninguno ejecutado" },
   ],
   sections: [
     {
       anchor: "uxwoman-problem",
       eyebrow: "Dónde empieza esto",
-      title: "El personal y los pacientes no ven quién actúa después.",
+      title: "El personal describió no saber quién actúa después.",
       body: [
-        "Cuando la atención espera por la cobertura, el papeleo o un documento faltante, personas de distintos roles describieron no saber quién tenía el siguiente paso.",
-        "Ese hallazgo se repite, pero los mecanismos difieren: un mensaje mal dirigido, una llamada de revisión de utilización, una cola de autorizaciones que nadie ve. Es una hipótesis por probar, no una necesidad validada.",
+        "Cuando la atención espera por la cobertura, el papeleo o un documento faltante, personal de distintos roles describió una titularidad poco clara del siguiente paso.",
+        "Los mecanismos difieren: un mensaje mal dirigido, una llamada de revisión de utilización, una cola de autorizaciones que los afiliados no podían ver (de segunda mano, según una persona que trabajó en un plan de salud). No se entrevistó a ningún paciente. Es una hipótesis por probar, no una necesidad validada.",
       ],
     },
     {
       anchor: "uxwoman-research",
       eyebrow: "Qué hice",
-      title: "Seis entrevistas de salud, reclutadas por lo que la gente hace.",
+      title: "Seis entrevistas de salud, una por rol.",
       body: [
-        "Recluté por conducta, no por cargo. Cada entrevista cuenta una vez. Entrevistas con profesionales y actores del sector salud.",
+        "Cada entrevista cuenta una vez. Entrevistas con profesionales y actores del sector salud.",
         "Seis entrevistas de salud: servicios financieros al paciente, operaciones de ingresos, asistente médico de ortopedia, enfermera de revisión de utilización, psiquiatra y una persona que fue responsable de servicios al afiliado en un plan de salud. Una persona también habló desde su experiencia personal como paciente.",
         "No hay un flujo de entrevistas con pacientes. Lo que sé de los pacientes es de segunda mano, salvo ese testimonio. Una séptima entrevista, adyacente, con una persona a cargo de RR. HH. trató sobre la verificación de fuentes de inteligencia artificial (IA). No valida nada en salud. No se recopiló información de salud protegida (PHI) y las personas participantes están anonimizadas.",
         "Investigación secundaria: un análisis de flujos de IA e información en hospitales grandes, con informes federales y encuestas profesionales. Muestra patrones del sistema, no lo que necesita un hospital en particular.",
@@ -532,7 +532,7 @@ export const UXWOMAN_ES: SpanishCaseStudyData = {
       eyebrow: "Pruebas baratas, diseñadas",
       title: "Cinco pretotipos diseñados. Ninguno ejecutado.",
       body: [
-        "Cada uno intenta refutar su propia premisa. Son cinco pruebas separadas, no cinco funciones de un solo producto. Cada una tiene una condición de parada: si añade papeleo sin cambiar una acción siguiente, se detiene.",
+        "Son cinco pruebas separadas, no cinco funciones de un solo producto. Cada una tiene una condición de parada: si añade papeleo sin cambiar una acción siguiente, se detiene.",
       ],
       bullets: [
         "Tarjetas “¿Qué significa este estado?”: ¿puede un afiliado distinguir una recomendación de una aprobación y ver su propio siguiente paso?",
@@ -547,8 +547,8 @@ export const UXWOMAN_ES: SpanishCaseStudyData = {
       eyebrow: "Dónde está",
       title: "Una hipótesis, no un producto.",
       body: [
-        "Activo, fase de investigación. Seis entrevistas de salud, más una adyacente de RR. HH. que no valida nada en salud. Cero de cinco pretotipos ejecutados: los cinco están diseñados y ninguno ha producido evidencia.",
-        "Siguiente paso: reconstruir casos recientes, con las mismas preguntas neutrales para cada persona, antes de elegir qué construir.",
+        "Fase de investigación. Seis entrevistas de salud, más una adyacente de RR. HH. que no valida nada en salud. Cero de cinco pretotipos ejecutados: los cinco están diseñados y ninguno ha producido evidencia.",
+        "Planificado: reconstruir casos recientes, con las mismas preguntas neutrales para cada persona, antes de elegir qué construir. El reclutamiento espera la revisión del protocolo y de gobernanza.",
       ],
     },
   ],
