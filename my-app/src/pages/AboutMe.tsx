@@ -31,10 +31,10 @@ const CHAPTERS: AboutChapter[] = [
     // First uses on this page, so each short form is spelled out once
     // (2026-10-14 review, item 12).
     paragraphs: [
-      "I started the electronic medical record (EMR) filing redesign; it was one part of an organization-wide effort that cut EMR costs 20%. Information technology (IT) and user experience (UX) teams built it after I changed roles.",
+      "I started the electronic medical record (EMR) filing redesign; it contributed to a broader organization-wide initiative that reduced EMR costs by 20%. Information technology (IT) and user experience (UX) teams built it after I changed roles.",
       "I also rebuilt CPR (cardiopulmonary resuscitation) certification and administrative onboarding across Epic (the record software), HIPAA (the patient-privacy law), and compliance.",
     ],
-    callout: "Systems fail where a real person has to use them.",
+    callout: "A filing task crossed four departments. I had worked three roles at MSK before I could see it.",
     articleLink: {
       url: "https://www.mskcc.org/news/hillary-esposito-s-career-path-military-msk",
       title: "Hillary Esposito’s Career Path: From the Military to MSK",
@@ -72,10 +72,10 @@ const CHAPTERS_ES: AboutChapter[] = [
     heading: "Seis años en MSK en tres puestos.",
     image: "/assets/about/msk.jpg",
     paragraphs: [
-      "Inicié el rediseño del archivo en el expediente médico electrónico (EMR); fue una parte de un esfuerzo de toda la organización que redujo un 20% los costos del EMR. Los equipos de tecnología de la información (TI) y de experiencia de usuario (UX) lo construyeron después de que cambié de puesto.",
+      "Inicié el rediseño del archivo en el expediente médico electrónico (EMR); contribuyó a una iniciativa más amplia de toda la organización que redujo un 20% los costos del EMR. Los equipos de tecnología de la información (TI) y de experiencia de usuario (UX) lo construyeron después de que cambié de puesto.",
       "También reconstruí la certificación de RCP (reanimación cardiopulmonar) y la incorporación administrativa en Epic (el software del expediente), HIPAA (la ley de privacidad del paciente) y cumplimiento.",
     ],
-    callout: "Los sistemas fallan donde una persona real tiene que usarlos.",
+    callout: "Una tarea de archivo cruzaba cuatro áreas. Había trabajado tres puestos en MSK antes de poder verlo.",
     articleLink: {
       url: "https://www.mskcc.org/news/hillary-esposito-s-career-path-military-msk",
       title: "Hillary Esposito’s Career Path: From the Military to MSK",
@@ -204,7 +204,7 @@ export default function About() {
           {/* The one line kept from the cut "What I Do Now" story (2026-10-13):
               it closes the pattern rather than opening a chapter of its own. */}
           <p className="rp-chapter__callout rp-patternCallout">
-            {isSpanish ? "La IA acelera el trabajo. Las decisiones siguen siendo mías." : "AI moves the work faster. The calls stay mine."}
+            {isSpanish ? "La IA aceleró las compilaciones de Grove y Knowunity. La corrección de la lógica de cuidado y el orden del permiso del micrófono fueron decisiones mías." : "AI moved the Grove and Knowunity builds faster. The care-logic fix and the mic-permission order were my calls."}
           </p>
         </div>
       </section>

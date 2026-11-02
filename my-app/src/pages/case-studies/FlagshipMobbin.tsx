@@ -36,9 +36,9 @@ const APPS: ScreenSequenceItem[] = [
 
 const STEPS = [
   { n: "01", title: "Capture the whole task", body: "Walk the app like a real person, including empty states, errors, and the screens that only make sense in sequence.", note: "A flow, not a pile" },
-  { n: "02", title: "Cut what will not help", body: "Marketing splashes did not earn the same space as sign-up, payment, account, or recovery flows. Completeness still needs an editor.", note: "Useful beats exhaustive" },
-  { n: "03", title: "Name it in Mobbin’s language", body: "A pattern is findable only when the label matches the words another designer will search, not the words I happen to prefer.", note: "Search words are design" },
-  { n: "04", title: "Write for someone I will never meet", body: "Each annotation has to explain what the screen does, where it sits, and why the pattern matters without the source app open.", note: "Context must travel" },
+  { n: "02", title: "Cut what will not help", body: "Marketing splashes did not earn the same space as sign-up, payment, account, or recovery flows. Completeness still needs an editor.", note: "Splashes cut, task flows kept" },
+  { n: "03", title: "Name it in Mobbin’s language", body: "A pattern is findable only when the label matches the words another designer will search, not the words I happen to prefer.", note: "Mobbin’s words cut my revisions" },
+  { n: "04", title: "Write for someone I will never meet", body: "Each annotation has to explain what the screen does, where it sits, and why the pattern matters without the source app open.", note: "Annotations work with the app closed" },
 ];
 
 // Which documented app sits beside each decision. Index into APPS. The pairing
@@ -189,8 +189,8 @@ export default function FlagshipMobbin() {
 
       <section className="rp-section">
         <div className="rp-wrap rp-close">
-          <h2>After 200 screens per app, I know a habit from a pattern.</h2>
-          <p>Some ‘common patterns’ are habits nobody questioned. I can tell you which.</p>
+          <h2>After 200 screens per app, I notice how a flow earns trust.</h2>
+          <p>Kikoff shows proof after each action, Polymarket shows risk before you commit, Discover makes the fine print findable.</p>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
           <ShareCaseStudy title="Mobbin — a case study by Hillary Esposito" />
         </div>

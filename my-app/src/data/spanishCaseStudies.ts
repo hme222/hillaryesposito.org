@@ -164,7 +164,7 @@ export const MSK_ES: SpanishCaseStudyData = {
       ],
       bullets: [
         "01 · Coordinadora de oficina: dónde se detenía la gente. En este puesto terminé el Lean Six Sigma Green Belt (Purdue), una certificación de mejora de procesos, y la Maestría en Administración de Salud (Rutgers). El Green Belt es la lente que mostró una tarea de archivo cruzando cuatro áreas.",
-        "02 · Asistente administrativa: cómo informar a quien tiene que actuar. Convertir decisiones de liderazgo en informes claros me enseñó a escribir para esa persona. La reescritura de RCP y la presentación del EMR salieron de esa práctica.",
+        "02 · Asistente administrativa: cómo informar a quien tiene que actuar. Un texto técnico y legal impedía que los clínicos terminaran la certificación de RCP. Lo reescribí para quien tiene que actuar, y el departamento se certificó un mes antes del plazo original.",
         "03 · Facilitadora de capacitación: la autoridad para rediseñarlo. Di instrucción sobre Epic (el software del expediente), HIPAA (la ley de privacidad del paciente) y los módulos de cumplimiento. Hacerme cargo de cómo se enseñaba el sistema significó documentar lo que de verdad pasa, no lo que dice la política.",
       ],
     },
@@ -174,12 +174,12 @@ export const MSK_ES: SpanishCaseStudyData = {
       eyebrow: "La prueba de verdad llegó después",
       title: "Me fui antes del lanzamiento. Esto es lo que pasó después.",
       body: [
-        "Entregué el flujo a TI y UX, que lo construyeron. Se adoptó en toda la institución (dato autorreportado: mi propio registro, no una medición independiente).",
+        "Entregué el flujo a TI y UX, que lo construyeron. El botón se agregó al sistema de producción y lo vi mientras capacitaba a nuevos empleados.",
         "El trabajo pasó de un desvío personal a un sistema compartido; el formato en lenguaje sencillo dejó al área conforme antes de la fecha límite.",
         "Lo que habría medido: nadie lo midió, que yo sepa. Habría seguido tres cosas: los minutos desde que llega un mensaje hasta que está en el expediente, los mensajes archivados en el expediente equivocado y las páginas impresas.",
       ],
       bullets: [
-        "Flujo de archivo del EMR: adoptado en toda la institución, según mi propio registro.",
+        "Flujo de archivo del EMR: el botón se agregó al sistema de producción y lo vi mientras capacitaba a nuevos empleados.",
         "Formato de certificación de RCP: área conforme un mes antes de la fecha límite original, sin prórroga.",
       ],
     },
@@ -291,8 +291,8 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
     { title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas", desc: "MSK · Seis años rediseñando flujos clínicos para trabajo que alcanzaba a más de 21,000 clínicos y personal administrativo.", path: "/case-study/msk" },
   ],
   close: {
-    title: "Después de 200 pantallas por app, distingo un hábito de un patrón.",
-    body: "Algunos “patrones comunes” son hábitos que nadie cuestionó. Puedo decirle cuáles.",
+    title: "Después de 200 pantallas por app, noto cómo un flujo se gana la confianza.",
+    body: "Kikoff muestra prueba tras cada acción, Polymarket muestra el riesgo antes de comprometerse y Discover hace fácil encontrar la letra pequeña.",
   },
 };
 
@@ -330,7 +330,7 @@ export const LOGISTICS_ES: SpanishCaseStudyData = {
       ],
       bullets: [
         "Acercar el punto de suministro: cada reabastecimiento empezaba demasiado lejos de las estaciones de ayuda. Planifiqué y di seguimiento a la mudanza de $2M. La hice por fases, de lo más esencial a lo menos, y dividí al personal para que ninguna estación de ayuda se quedara sin suministro durante la mudanza. Según lo reportado, el tiempo pasó de 1–2 meses a 1–2 semanas.",
-        "Una sola forma de pedir: siete estaciones usaban formatos distintos de solicitud y de reporte. Creé un protocolo de solicitud compartido y capacité a cada sitio en cómo pedir y qué significaba cada estado del pedido; el expediente reporta que los suministros críticos llegaron a las estaciones con un 15% más de eficiencia.",
+        "Una sola forma de pedir: siete estaciones usaban formatos distintos de solicitud y de reporte. Creé un protocolo de solicitud compartido y capacité a cada sitio en cómo pedir y qué significaba cada estado del pedido; el expediente reporta que la eficiencia para llevar suministros críticos a las estaciones mejoró 15%; no se conserva cómo se midió.",
         "Pedir antes de que se acabe: nadie veía el estado de los pedidos, así que unos sitios pedían de más y otros se quedaban sin nada. Creé un estado de pedidos compartido en tiempo real; el expediente reporta un 60% menos de gasto sin perder disponibilidad. La falla contra la que lo diseñé: un sitio que “se queda en negro”, sin suministros.",
       ],
     },
@@ -356,7 +356,7 @@ export const LOGISTICS_ES: SpanishCaseStudyData = {
       bullets: [
         "1–2 semanas: tiempo reportado de reabastecimiento médico después de acercar el almacén, antes 1–2 meses · 85% más rápido según mi expediente de servicio.",
         "60%: reducción reportada del gasto, cuando el estado compartido de pedidos acabó con los pedidos de más y los faltantes.",
-        "15%: según lo reportado, los suministros críticos llegaron a las estaciones con más eficiencia tras un solo protocolo de comunicación.",
+        "15%: según lo reportado, la eficiencia para llevar suministros críticos a las estaciones mejoró tras un solo protocolo de comunicación.",
       ],
     },
   ],
@@ -366,7 +366,7 @@ export const LOGISTICS_ES: SpanishCaseStudyData = {
   ],
   close: {
     title: "Las cadenas de suministro y los flujos clínicos fallan de la misma manera.",
-    body: "En ambos, encontré el paso que no debería existir y cambié la secuencia.",
+    body: "Cada reabastecimiento empezaba demasiado lejos de las estaciones de ayuda. Un trámite de archivo salía del expediente a papel. En ambos moví el paso que no correspondía.",
   },
 };
 
@@ -404,11 +404,11 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
     },
     {
       anchor: "knowunity-decisions",
-      eyebrow: "Cuatro decisiones",
+      eyebrow: "Cuatro decisiones · criterio de diseño, no hallazgos de pruebas",
       title: "Quien demuestra es el estudiante, no Knowie.",
-      body: ["Devolver las palabras. Ofrecer los fallos. Pedir el micrófono cuando hace falta. Decir en qué punto va."],
+      body: ["Nada obliga al estudiante a decirlo. Así que: devolver las palabras, ofrecer los fallos, pedir el micrófono cuando hace falta, decir en qué punto va."],
       bullets: [
-        "Devolver las palabras: cuando acierta, Knowie le cita su propia transcripción como prueba. Ver su propia explicación correcta es evidencia de que puede recuperarla, y son las palabras que usará en el examen.",
+        "Devolver las palabras: cuando acierta, Knowie le cita su propia transcripción como prueba. Mi razonamiento, aún sin probar con estudiantes: ver su propia explicación correcta es evidencia de que puede recuperarla, y son las palabras que usará en el examen.",
         "Ofrecer los fallos, no reencolarlos: un término fallado volvía al final de la serie. Ahora la sesión pasa directo al resumen, que empieza con “Practicar lo que fallé”. Cada fila dice por qué está ahí y recomienda un ejercicio o repetirlo.",
         "Pedir el micrófono cuando hace falta: primero la pregunta. La hoja de permiso se abre encima al primer toque del micrófono, no como pantalla entre una introducción y la pregunta uno. La pantalla de introducción desapareció.",
         "Decir en qué punto va: una pista en el primer fallo, una pista de completar el hueco en el segundo, la respuesta en el tercero. El título de la tarjeta lo dice: “Un intento más y le muestro la respuesta”. Nada desaparece sin aviso.",

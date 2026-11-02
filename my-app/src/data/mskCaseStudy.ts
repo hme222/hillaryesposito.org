@@ -205,8 +205,8 @@ const en: MskCopy = {
     ledeOpen:
       "Patient-portal messages lived in the portal, not the patient's chart, so staff printed them to be scanned in. As an office coordinator, I mapped that workaround across clinical, IT, HIM (health information management, the team that scans documents into charts), and operations, then presented the online workflow that was implemented two roles later. It served work touching ",
     ledeScale: "21,000+ clinicians and staff",
-    ledeMiddle: ", and it is ",
-    ledeSustain: "owner-reported as adopted organization-wide",
+    ledeMiddle: ", and ",
+    ledeSustain: "I later saw it in the production system while training new employees",
     ledeClose: ".",
     cta: "See the workflow →",
     artifactTag: "RECREATED ARTIFACT",
@@ -411,7 +411,7 @@ const en: MskCopy = {
       {
         n: "02", role: "Administrative Assistant", taught: "How to brief people who have to act",
         term: "Writing for the person who has to act",
-        body: "No certificate for this one. Turning leadership decisions into clear briefs taught me to write for the person who has to act. The CPR rewrite and the EMR presentation both came from that practice.",
+        body: "No certificate for this one. Technical, legal copy kept clinicians from finishing CPR certification. I rewrote it for the person who has to act, and the department certified a month before the original deadline.",
       },
       {
         n: "03", role: "Training Facilitator", taught: "The authority to redesign it",
@@ -431,29 +431,29 @@ const en: MskCopy = {
     boundaryLabel: "Evidence boundary",
     boundaryBody:
       "The source record preserves the workflow, departments, decisions, and outcomes. Participant counts from shift observation were not recorded, so I use this evidence to explain the decisions—not to claim prevalence.",
-    mapFallback: "Four departments, one task → mapped → redesigned → adopted",
+    mapFallback: "Four departments, one task → mapped → redesigned → in production",
     mapStagesAria: "Clinical system transformation stages",
-    mapStages: ["Four departments, one task", "Mapped", "Redesigned", "Adopted organization-wide"],
+    mapStages: ["Four departments, one task", "Mapped", "Redesigned", "In production"],
   },
 
   sustainment: {
     kicker: "The real test came later",
     title: "I left before launch. Here’s what happened next.",
     lede:
-      "I handed the workflow to IT and UX, who built it. It was adopted organization-wide (owner-reported: my own record, not independently measured).",
+      "I handed the workflow to IT and UX, who built it. The button was added to the production system, and I saw it while training new employees.",
     // Claim audit 2026-10-13: the lanes used to say "system upgrade" ×2,
     // "still in use" and "still used by other admins" — claims Hillary cut on
     // 2026-09-27 (msk.md F2/F3: no source; she was not present after launch).
     // The drawing kept them after the text list was corrected. Lanes now carry
-    // only what msk.md supports: the handoff, organization-wide adoption
-    // (owner-reported, Q5/F2), and compliance a month early (Q3/Q5).
+    // only what the sources support: the handoff, the button in production
+    // (seen first-hand while training; register 2026-11-01), and compliance a month early (Q3/Q5).
     figcaption: "What happened after each one shipped",
     shipped: "SHIPPED",
     lanes: [
       {
         name: "EMR filing workflow",
         events: [{ at: 0.42, label: "handed to IT and UX" }],
-        outcome: "adopted organization-wide",
+        outcome: "added to the production system",
       },
       {
         name: "CPR certification format",
@@ -462,7 +462,7 @@ const en: MskCopy = {
       },
     ],
     survived: [
-      { fact: "EMR filing workflow", what: "Owner-reported as adopted organization-wide" },
+      { fact: "EMR filing workflow", what: "Added to the production system; I saw it while training new employees" },
       { fact: "CPR certification format", what: "Department compliant a month before the original deadline — no extension needed" },
     ],
     why:
@@ -518,7 +518,7 @@ const es: MskCopy = {
       "Los mensajes del portal de pacientes vivían en el portal, no en la historia clínica, así que el personal los imprimía para escanearlos. En el puesto de coordinación de oficina, mapeé ese desvío entre las áreas clínica, de TI, de HIM (gestión de información de salud, el equipo que escanea documentos a la historia) y de operaciones, y luego presenté el flujo en línea que se implementó dos puestos después. Sirvió a un trabajo que alcanzaba a ",
     ledeScale: "más de 21,000 clínicos y personal administrativo",
     ledeMiddle: ", y ",
-    ledeSustain: "reportado por la organización como adoptado en toda la institución",
+    ledeSustain: "después lo vi en el sistema de producción mientras capacitaba a nuevos empleados",
     ledeClose: ".",
     cta: "Ver el flujo →",
     artifactTag: "ARTEFACTO RECREADO",
@@ -738,23 +738,23 @@ const es: MskCopy = {
     boundaryLabel: "Límite de la evidencia",
     boundaryBody:
       "El registro original conserva el flujo, las áreas, las decisiones y los resultados. Los conteos de participantes de la observación de turnos no se registraron, así que uso esta evidencia para explicar las decisiones, no para afirmar una prevalencia.",
-    mapFallback: "Cuatro áreas, una tarea → mapeados → rediseñados → adoptados",
+    mapFallback: "Cuatro áreas, una tarea → mapeados → rediseñados → en producción",
     mapStagesAria: "Etapas de transformación del sistema clínico",
-    mapStages: ["Cuatro áreas, una tarea", "Mapeados", "Rediseñados", "Adoptado en toda la institución"],
+    mapStages: ["Cuatro áreas, una tarea", "Mapeados", "Rediseñados", "En producción"],
   },
 
   sustainment: {
     kicker: "La prueba de verdad llegó después",
     title: "Me fui antes del lanzamiento. Esto es lo que pasó después.",
     lede:
-      "Entregué el flujo a TI y UX, que lo construyeron. Se adoptó en toda la institución (dato autorreportado: mi propio registro, no una medición independiente).",
+      "Entregué el flujo a TI y UX, que lo construyeron. El botón se agregó al sistema de producción y lo vi mientras capacitaba a nuevos empleados.",
     figcaption: "Qué pasó después de lanzar cada uno",
     shipped: "LANZADO",
     lanes: [
       {
         name: "Flujo de archivo del EMR",
         events: [{ at: 0.42, label: "entregado a TI y UX" }],
-        outcome: "adoptado en toda la institución",
+        outcome: "agregado al sistema de producción",
       },
       {
         name: "Formato de certificación de RCP",
@@ -763,7 +763,7 @@ const es: MskCopy = {
       },
     ],
     survived: [
-      { fact: "Flujo de archivo del EMR", what: "Adoptado en toda la institución, según lo que reporta Hillary" },
+      { fact: "Flujo de archivo del EMR", what: "Agregado al sistema de producción; lo vi mientras capacitaba a nuevos empleados" },
       { fact: "Formato de certificación de RCP", what: "Área conforme un mes antes de la fecha límite original — sin prórroga" },
     ],
     why:

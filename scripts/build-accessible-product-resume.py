@@ -119,7 +119,7 @@ HTML = """<!doctype html>
         <p class="meta">New York, NY · 2018–2022</p>
         <ul>
           <li>Found patient-portal messages being printed so they could be scanned into the chart. Checked a fix with clinical, IT, HIM, and operations, then pitched a button that files them straight to the chart (pitch projected ~$1M/year).</li>
-          <li>IT and UX built the button after I changed roles. It contributed to an organization-wide initiative that cut EMR costs 20%.</li>
+          <li>IT and UX built the button after I changed roles. It contributed to a broader organization-wide initiative that reduced EMR costs by 20%.</li>
           <li>Rewrote CPR certification language with physicians and legal. The department certified a month before the original deadline, no extension.</li>
         </ul>
       </article>

@@ -115,7 +115,7 @@ Read in this pass: `AboutMe.tsx` (all copy), JSX prose in every case study, Grov
 
 Now: "Systems fail where a real person has to use them."
 Gap: could sit on any project. The story paragraphs beside it do carry specifics (four departments, CPR, EMR, 20%).
-Draft: "A filing task crossed four departments because nobody sat in all four seats. I had sat in three." (Source: MSK `:359`, "I had already sat in three of its seats." `[confirm]` "nobody sat in all four" before using it.)
+Draft: "A filing task crossed four departments. I had worked three roles at MSK before I could see it." (Sources: MSK `:359`, and "Six years across three roles" at `:223`. CORRECTED: my first draft said "nobody sat in all four seats," which the page does not support. The three roles are not the four departments.)
 
 ### A2. About closer: "AI moves the work faster. The calls stay mine." (`:207`, ES `:207`)
 
@@ -126,7 +126,7 @@ Draft: "AI moved the Grove and Knowunity builds faster. The care-logic fix and t
 
 Now: "After 200 screens per app, I know a habit from a pattern. Some 'common patterns' are habits nobody questioned. I can tell you which."
 Gap: the strongest claim on the page, with no example. "I can tell you which" invites the question and doesn't answer it.
-Draft: "After 200 screens per app, I know a habit from a pattern. [one named habit, the app it appeared in, and what the better pattern did]." `[confirm]` Only Hillary can supply the example. If none holds up, cut to: "After 200 screens per app, I know which flows earn their length." (The Kikoff line, `:32`, supports that.)
+Draft (from the page's own findings, `:32-34`, `:160`, `:184`): "After 200 screens per app, I notice how a flow earns trust. Kikoff proves, Polymarket discloses, Discover stays familiar." Hillary says Mobbin gave her an eye for patterns in flows, and this puts the claim where the evidence already is. The "habit nobody questioned" line stays only if she can name one habit. `[confirm]`
 
 ### A4. Logistics closer (`FlagshipLogistics.tsx:226-227`)
 
@@ -158,3 +158,9 @@ Every flagged English line has a Spanish twin: MSK "taught me" (`:167`), Mobbin 
 
 Replace the draft intro with a link to the stated problem:
 > Four decisions, each answering one gap. Nothing makes a student say it, so each lets them prove it. Judgment calls, not test findings.
+
+## Resolved by interview (2026-11-02)
+
+- Mobbin step 01: my premise was wrong. Hillary captured single screens and full flows, so the note "A flow, not a pile" stays as is.
+- Grove "Grouped by where they live": based on the five moderated sessions. Card now cites "navigation confusion" (from the 2026-10-25 audit record). Hillary gave no session specifics; add them if she has them.
+- Grove quit claim: verified against the 37-response export with `survey_stats.py`. 11 of 13 who answered chose "administrative chore" (85%); only 13 answered, so the page now says "11 of the 13 who answered."

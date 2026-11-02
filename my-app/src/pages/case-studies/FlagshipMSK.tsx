@@ -41,7 +41,7 @@ const ROLE_METHODS: Record<string, { term: string; body: string }> = {
   },
   "02": {
     term: "Writing for the person who has to act",
-    body: "No certificate for this one. Turning leadership decisions into clear briefs taught me to write for the person who has to act. The CPR rewrite and the EMR presentation both came from that practice.",
+    body: "No certificate for this one. Technical, legal copy kept clinicians from finishing CPR certification. I rewrote it for the person who has to act, and the department certified a month before the original deadline.",
   },
   "03": {
     term: "Training & Facilitation (ATD) · current-state mapping",
@@ -74,7 +74,7 @@ const ROLES = [
 const SURVIVED: { fact: string; what: React.ReactNode }[] = [
   {
     fact: "EMR filing workflow",
-    what: <><Term def="My own record, not independently measured.">Owner-reported</Term> as adopted organization-wide</>,
+    what: "Added to the production system; I saw it while training new employees",
   },
   { fact: "CPR certification format", what: "Department compliant a month before the original deadline — no extension needed" },
   // "Clinician onboarding — still in use after three leadership transitions"
@@ -388,10 +388,10 @@ export default function FlagshipMSK() {
               <b>Service-design scope:</b> the full path across systems, departments, permissions, and handoffs—not only the queue screen.
             </p>
             <div className="fp-mapWrap rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "270ms" } as React.CSSProperties}>
-              <Suspense fallback={<div className="fp-mapFallback">Four departments, one task → mapped → redesigned → adopted</div>}>
+              <Suspense fallback={<div className="fp-mapFallback">Four departments, one task → mapped → redesigned → in production</div>}>
                 <MSKSystemMap />
               </Suspense>
-              <ol aria-label="Clinical system transformation stages"><li>Four departments, one task</li><li>Mapped</li><li>Redesigned</li><li>Adopted organization-wide</li></ol>
+              <ol aria-label="Clinical system transformation stages"><li>Four departments, one task</li><li>Mapped</li><li>Redesigned</li><li>In production</li></ol>
             </div>
           </div>
         </section>
@@ -400,7 +400,7 @@ export default function FlagshipMSK() {
       <section className="rp-section" id="msk-sustainment" data-language-anchor="msk-sustainment">
         <div className="rp-wrap">
           <h2 className="rp-title">I left before launch. Here’s what happened next.</h2>
-          <p className="rp-lede">I handed the workflow to IT and UX, who built it. It was adopted organization-wide (owner-reported: my own record, not independently measured).</p>
+          <p className="rp-lede">I handed the workflow to IT and UX, who built it. The button was added to the production system, and I saw it while training new employees.</p>
           {/* Added 2026-10-22 (portfolio review, UXfolio 2026 ch. 4.3): the
               outcome is owner-reported and no post-launch measurement is
               known, so the page says what would have shown it. Hillary

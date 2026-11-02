@@ -94,7 +94,7 @@ const STEPS = [
   {
     n: "01",
     title: "Echo the words back",
-    body: "On a clean pass, Knowie quotes the student's own transcript back as the proof. Seeing your own correct explanation is evidence you can retrieve it. Those are also the words you'll use in the exam.",
+    body: "On a clean pass, Knowie quotes the student's own transcript back as the proof. My reasoning, untested with students: seeing your own correct explanation is evidence you can retrieve it. Those are also the words you'll use in the exam.",
     note: "Proof, not praise",
   },
   {
@@ -202,9 +202,9 @@ export default function FlagshipKnowunity() {
       <div data-evidence="true"><DecisionStory
         id="knowunity-decisions"
         languageAnchor="knowunity-decisions"
-        kicker="Four decisions · one loop"
+        kicker="Four decisions · design-sprint judgment calls, not test findings"
         title="The student does the proving, not Knowie."
-        intro="Echo the words. Offer the misses. Ask for the mic when it's needed. Say where you are."
+        intro="Nothing makes a student say it. So: echo the words, offer the misses, ask for the mic when it's needed, say where you are."
         steps={STEPS}
         // Same stacked crossfade as Mobbin: every capture is mounted in one
         // fixed-ratio frame and the active step turns one on, so the swap has
