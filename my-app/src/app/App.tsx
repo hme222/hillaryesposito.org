@@ -11,6 +11,7 @@ import Footer from "../components/Footer";
 import RecruiterPanel from "../components/RecruiterPanel";
 import AskDialog from "../components/ask/AskDialog";
 import { ASK_ENABLED } from "../components/ask/askEnabled";
+import { Analytics } from "@vercel/analytics/react";
 import PortfolioAnalytics from "../analytics/PortfolioAnalytics";
 
 import "../styles/App.css";
@@ -58,6 +59,7 @@ export default function App() {
       <Router>
         <>
           <PortfolioAnalytics />
+          <Analytics />
           <a href="#main-content" className="sr-only-focusable">{translate(lang, "app.skip")}</a>
 
           <div className= "app">
