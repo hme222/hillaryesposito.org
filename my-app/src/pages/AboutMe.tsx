@@ -34,7 +34,7 @@ const CHAPTERS: AboutChapter[] = [
       "I started the electronic medical record (EMR) filing redesign; it contributed to a broader organization-wide initiative that reduced EMR costs by 20%. Information technology (IT) and user experience (UX) teams built it after I changed roles.",
       "I also rebuilt CPR (cardiopulmonary resuscitation) certification and administrative onboarding across Epic (the record software), HIPAA (the patient-privacy law), and compliance.",
     ],
-    callout: "A filing task crossed four departments. I had worked three roles at MSK before I could see it.",
+    callout: "A filing task crossed four departments. I saw it from inside the job.",
     articleLink: {
       url: "https://www.mskcc.org/news/hillary-esposito-s-career-path-military-msk",
       title: "Hillary Esposito’s Career Path: From the Military to MSK",
@@ -75,7 +75,7 @@ const CHAPTERS_ES: AboutChapter[] = [
       "Inicié el rediseño del archivo en el expediente médico electrónico (EMR); contribuyó a una iniciativa más amplia de toda la organización que redujo un 20% los costos del EMR. Los equipos de tecnología de la información (TI) y de experiencia de usuario (UX) lo construyeron después de que cambié de puesto.",
       "También reconstruí la certificación de RCP (reanimación cardiopulmonar) y la incorporación administrativa en Epic (el software del expediente), HIPAA (la ley de privacidad del paciente) y cumplimiento.",
     ],
-    callout: "Una tarea de archivo cruzaba cuatro áreas. Había trabajado tres puestos en MSK antes de poder verlo.",
+    callout: "Una tarea de archivo cruzaba cuatro áreas. La vi desde adentro del trabajo.",
     articleLink: {
       url: "https://www.mskcc.org/news/hillary-esposito-s-career-path-military-msk",
       title: "Hillary Esposito’s Career Path: From the Military to MSK",

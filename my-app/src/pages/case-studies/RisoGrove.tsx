@@ -517,8 +517,8 @@ export default function RisoGrove() {
 
           <h3 className="rp-subhead">Locked principles</h3>
           <div className="rp-foundation rp-reveal" data-evidence="true">
-            <div className="rp-fcard"><p className="rp-fcard__k">Principle · locked</p><p className="rp-fcard__t">One task a day</p><p className="rp-fcard__d">A new user only ever sees one decision per screen. Five sessions showed people stalled when care led with a feed and a mission.</p></div>
-            <div className="rp-fcard"><p className="rp-fcard__k">Principle · locked</p><p className="rp-fcard__t">Grouped by where they live</p><p className="rp-fcard__d">Plants grouped by room, never one long overwhelming list. Five moderated sessions exposed navigation confusion.</p></div>
+            <div className="rp-fcard"><p className="rp-fcard__k">Principle · locked</p><p className="rp-fcard__t">One task a day</p><p className="rp-fcard__d">A new user only ever sees one decision per screen. Five moderated sessions showed people stalled when care led with a feed and a mission.</p></div>
+            <div className="rp-fcard"><p className="rp-fcard__k">Principle · locked</p><p className="rp-fcard__t">Grouped by where they live</p><p className="rp-fcard__d">Plants grouped by room, never one long overwhelming list. Based on the five moderated sessions; task records are not preserved.</p></div>
             <div className="rp-fcard"><p className="rp-fcard__k">Principle · locked</p><p className="rp-fcard__t">Automated advice stays reviewable</p><p className="rp-fcard__d">A person has the final call on every uncertain recommendation. Plant ID shows top guesses with confidence and sources, not one verdict.</p></div>
           </div>
           </div>

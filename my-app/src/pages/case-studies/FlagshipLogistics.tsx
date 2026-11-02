@@ -54,7 +54,7 @@ const MOVES: { n: string; title: string; finding: string; change: React.ReactNod
     n: "02",
     title: "One way of asking",
     finding: "Seven stations used different request and reporting formats.",
-    change: "Built one shared request protocol and trained each site on how to order and what each order status meant; the service record reports a 15% efficiency gain in getting critical supplies to the stations; how it was measured is not preserved.",
+    change: "Built one shared request protocol and trained each site on how to order and what each order status meant; the service record reports a 15% efficiency gain in getting critical supplies to the stations. How it was measured is not preserved.",
   },
   {
     n: "03",
@@ -224,7 +224,7 @@ export default function FlagshipLogistics() {
       <section className="rp-section">
         <div className="rp-wrap rp-close">
           <h2>Supply lines and clinic workflows break the same way.</h2>
-          <p>A supply run began too far from the aid stations. A chart filing left the record for paper. In both, I moved the step that did not belong.</p>
+          <p>A supply run began too far from the aid stations. Portal messages took a paper route and lost their chart context. In both, I moved the step that did not belong.</p>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
           <ShareCaseStudy title="Medical logistics — a case study by Hillary Esposito" />
         </div>

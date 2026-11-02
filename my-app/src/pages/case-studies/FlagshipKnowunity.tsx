@@ -202,7 +202,7 @@ export default function FlagshipKnowunity() {
       <div data-evidence="true"><DecisionStory
         id="knowunity-decisions"
         languageAnchor="knowunity-decisions"
-        kicker="Four decisions · design-sprint judgment calls, not test findings"
+        kicker="Four decisions · my calls, not test findings"
         title="The student does the proving, not Knowie."
         intro="Nothing makes a student say it. So: echo the words, offer the misses, ask for the mic when it's needed, say where you are."
         steps={STEPS}

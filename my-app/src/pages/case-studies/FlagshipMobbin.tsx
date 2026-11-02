@@ -38,7 +38,7 @@ const STEPS = [
   { n: "01", title: "Capture the whole task", body: "Walk the app like a real person, including empty states, errors, and the screens that only make sense in sequence.", note: "A flow, not a pile" },
   { n: "02", title: "Cut what will not help", body: "Marketing splashes did not earn the same space as sign-up, payment, account, or recovery flows. Completeness still needs an editor.", note: "Splashes cut, task flows kept" },
   { n: "03", title: "Name it in Mobbin’s language", body: "A pattern is findable only when the label matches the words another designer will search, not the words I happen to prefer.", note: "Mobbin’s words cut my revisions" },
-  { n: "04", title: "Write for someone I will never meet", body: "Each annotation has to explain what the screen does, where it sits, and why the pattern matters without the source app open.", note: "Annotations work with the app closed" },
+  { n: "04", title: "Write for someone I will never meet", body: "Each annotation has to explain what the screen does, where it sits, and why the pattern matters without the source app open.", note: "Readable with the app closed" },
 ];
 
 // Which documented app sits beside each decision. Index into APPS. The pairing

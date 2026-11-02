@@ -330,7 +330,7 @@ export const LOGISTICS_ES: SpanishCaseStudyData = {
       ],
       bullets: [
         "Acercar el punto de suministro: cada reabastecimiento empezaba demasiado lejos de las estaciones de ayuda. Planifiqué y di seguimiento a la mudanza de $2M. La hice por fases, de lo más esencial a lo menos, y dividí al personal para que ninguna estación de ayuda se quedara sin suministro durante la mudanza. Según lo reportado, el tiempo pasó de 1–2 meses a 1–2 semanas.",
-        "Una sola forma de pedir: siete estaciones usaban formatos distintos de solicitud y de reporte. Creé un protocolo de solicitud compartido y capacité a cada sitio en cómo pedir y qué significaba cada estado del pedido; el expediente reporta que la eficiencia para llevar suministros críticos a las estaciones mejoró 15%; no se conserva cómo se midió.",
+        "Una sola forma de pedir: siete estaciones usaban formatos distintos de solicitud y de reporte. Creé un protocolo de solicitud compartido y capacité a cada sitio en cómo pedir y qué significaba cada estado del pedido; el expediente reporta que la eficiencia para llevar suministros críticos a las estaciones mejoró 15%. No se conserva cómo se midió.",
         "Pedir antes de que se acabe: nadie veía el estado de los pedidos, así que unos sitios pedían de más y otros se quedaban sin nada. Creé un estado de pedidos compartido en tiempo real; el expediente reporta un 60% menos de gasto sin perder disponibilidad. La falla contra la que lo diseñé: un sitio que “se queda en negro”, sin suministros.",
       ],
     },
@@ -366,7 +366,7 @@ export const LOGISTICS_ES: SpanishCaseStudyData = {
   ],
   close: {
     title: "Las cadenas de suministro y los flujos clínicos fallan de la misma manera.",
-    body: "Cada reabastecimiento empezaba demasiado lejos de las estaciones de ayuda. Un trámite de archivo salía del expediente a papel. En ambos moví el paso que no correspondía.",
+    body: "Cada reabastecimiento empezaba demasiado lejos de las estaciones de ayuda. Los mensajes del portal tomaban una ruta de papel y perdían el contexto del expediente. En ambos moví el paso que no correspondía.",
   },
 };
 
@@ -404,7 +404,7 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
     },
     {
       anchor: "knowunity-decisions",
-      eyebrow: "Cuatro decisiones · criterio de diseño, no hallazgos de pruebas",
+      eyebrow: "Cuatro decisiones · mi criterio, no pruebas",
       title: "Quien demuestra es el estudiante, no Knowie.",
       body: ["Nada obliga al estudiante a decirlo. Así que: devolver las palabras, ofrecer los fallos, pedir el micrófono cuando hace falta, decir en qué punto va."],
       bullets: [
