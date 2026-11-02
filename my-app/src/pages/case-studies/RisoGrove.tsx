@@ -13,7 +13,6 @@ import SpanishCaseStudy from "../../components/SpanishCaseStudy";
 import { GROVE_ES } from "../../data/spanishCaseStudies";
 import usePageTitle from "../../hooks/usePageTitle";
 import { wireRevealObservers } from "../../hooks/useFlagshipReveal";
-import "../../styles/riso.css";
 import "../../styles/riso-page.css";
 
 /**
@@ -485,9 +484,9 @@ export default function RisoGrove() {
               href="https://grove-ui.hillaryesposito.org/?path=/story/grove-plantcard--healthy"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Review the Grove component system in Storybook (opens in new tab)"
+              aria-label="Open the Grove Storybook (opens in new tab)"
             >
-              <span className="rp-ext">Review the Grove component system</span>
+              <span className="rp-ext">Open the Storybook</span>
             </a>
           </p>
           <div data-evidence="true"><GroveSystemLab /></div>
@@ -560,7 +559,7 @@ export default function RisoGrove() {
       {/* CLOSING CTA */}
       <section className="rp-section">
         <div className="rp-wrap rp-close">
-          <h2>I design the ‘not sure’ states.</h2>
+          <h2>I design the ‘not sure’ states.</h2>
           <p>
             Top guesses, how sure it is, and where that came from: Grove’s plant ID is my small version of a problem clinical tools have too.
           </p>

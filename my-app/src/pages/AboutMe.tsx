@@ -6,7 +6,6 @@ import { useLanguage } from "../app/LanguageContext";
 import { Newspaper } from "lucide-react";
 import CartoField from "../components/riso/CartoField";
 import { CLIENT_FEEDBACK, CLIENT_FEEDBACK_ES } from "../data/clientFeedback";
-import "../styles/riso.css";
 import "../styles/riso-page.css";
 
 // ── Story chapters ───────────────────────────────────────────────────────

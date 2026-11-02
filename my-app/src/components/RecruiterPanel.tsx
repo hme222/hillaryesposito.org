@@ -74,7 +74,7 @@ export default function RecruiterPanel() {
           <section className="recruiter-panel__section recruiter-panel__vitals">
             <div className="recruiter-panel__vitals-grid">
               <span>Enterprise workflows · service design · research</span>
-              <span>Currently freelancing</span>
+              <span>Open to roles and freelance</span>
             </div>
           </section>
 

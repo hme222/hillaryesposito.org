@@ -15,7 +15,6 @@ import { KNOWUNITY_BADGE_ASSET } from "../../data/knowunityBadge";
 import { KNOWUNITY_ES } from "../../data/spanishCaseStudies";
 import useFlagshipReveal from "../../hooks/useFlagshipReveal";
 import usePageTitle from "../../hooks/usePageTitle";
-import "../../styles/riso.css";
 import "../../styles/riso-page.css";
 import "../../styles/flagship-case-study.css";
 
@@ -242,12 +241,12 @@ export default function FlagshipKnowunity() {
           <p className="rp-lede">Every screen is its own route, reached by tapping. Storybook is the component catalog.</p>
           <div className="fp-workSplit rp-reveal" data-evidence="true">
             <article><span>Knowunity supplied</span><h3>The brand and the parts</h3><p>Knowie, the Greed font, their Figma kit, and access to the live app and the beta.</p></article>
-            <article><span>I did</span><h3>The flows, the decisions, the direction</h3><p>Next.js prototype, 43 routes, 390px dark mode, plus a Storybook catalog built on their kit; implementation was AI-assisted.</p></article>
+            <article><span>I did</span><h3>The flows, the decisions, the direction</h3><p>Next.js prototype, 43 routes, 390px dark mode, plus a Storybook catalog built on their kit; implementation was AI-assisted.</p></article>
           </div>
           <CaseStudyReel reel={REEL} />
           <div className="rp-hero__ctas">
             <a className="rp-cta" href={PROTOTYPE_URL} target="_blank" rel="noopener noreferrer">
-              <span className="rp-ext">Try the prototype</span><span className="sr-only">{t("a11y.newTab")}</span>
+              <span className="rp-ext">Try the working prototype</span><span className="sr-only">{t("a11y.newTab")}</span>
             </a>
             <a className="rp-cta rp-cta--ghost" href={STORYBOOK_URL} target="_blank" rel="noopener noreferrer">
               <span className="rp-ext">Open the Storybook</span><span className="sr-only">{t("a11y.newTab")}</span>

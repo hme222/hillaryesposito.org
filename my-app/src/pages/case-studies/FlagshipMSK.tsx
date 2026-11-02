@@ -18,7 +18,6 @@ import Term from "../../components/Term";
 import { MSK_ES } from "../../data/spanishCaseStudies";
 import useFlagshipReveal from "../../hooks/useFlagshipReveal";
 import usePageTitle from "../../hooks/usePageTitle";
-import "../../styles/riso.css";
 import "../../styles/riso-page.css";
 import "../../styles/flagship-case-study.css";
 

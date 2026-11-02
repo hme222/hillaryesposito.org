@@ -14,7 +14,6 @@ import useFlagshipReveal from "../hooks/useFlagshipReveal";
 import useFilmExitChoreo from "../hooks/useFilmExitChoreo";
 import { useLanguage, useT } from "../app/LanguageContext";
 import type { StringKey } from "../i18n/strings";
-import "../styles/riso.css";
 import "../styles/riso-page.css";
 
 /**

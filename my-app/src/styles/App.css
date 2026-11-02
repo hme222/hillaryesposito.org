@@ -1286,7 +1286,32 @@ textarea::placeholder {
   background:
     linear-gradient(180deg, color-mix(in srgb, var(--surface-0) 92%, transparent), color-mix(in srgb, var(--surface-1) 96%, transparent));
   box-shadow: var(--shadow-md);
-  font-family: var(--font-ui, Inter, system-ui, sans-serif);
+  font-family: var(--shell-sans);
+  /* The product reconstruction keeps its own light canvas in both themes
+     (riso-page.css, "keep their own light canvas"). Pin the tokens it reads
+     to their light values so the ink, chips and primary action cannot flip
+     with the page theme: dark text on a light plate, olive (not amber) Send. */
+  --bg: #faf9f7;
+  --fg: #0a0a0a;
+  --muted: #645e5a;
+  --card: #f5f3f0;
+  --border: rgba(0, 0, 0, 0.08);
+  --olive-1: #7c8c3c;
+  --olive-2: #5a7a2e;
+  --olive-3: #3d5a1e;
+  --surface-0: #faf9f7;
+  --surface-1: #f5f3f0;
+  --surface-2: #ece9e4;
+  --on-accent: #fff;
+  --text-1: #0a0a0a;
+  --text-2: color-mix(in srgb, #0a0a0a 72%, transparent);
+  --text-3: #645e5a; /* .dark-mode p/li read --text-3 */
+  --status-ready: #4f6d1f;
+  --status-ready-bg: #edf5dc;
+  --status-review: #8a5a00;
+  --status-review-bg: #fff2ce;
+  --status-filed: #315a75;
+  --status-filed-bg: #deeff8;
 }
 
 .msk-dashboard-mockup--compact {
@@ -1543,8 +1568,6 @@ textarea::placeholder {
   color: #fff;
   background: var(--olive-2);
   border-color: var(--olive-2);
-}.dark-mode .msk-dashboard-action--primary {
-  color: var(--on-accent, #1a0e03);
 }
 
 /* Plain-language key for the hospital shorthand in the queue above. Quieter
@@ -1584,6 +1607,7 @@ textarea::placeholder {
   list-style: none;
   cursor: pointer;
   position: relative;
+  min-height: 44px; /* touch target floor */
   padding: 0.45rem 0.65rem;
   border: 1px solid var(--border);
   border-radius: 8px;

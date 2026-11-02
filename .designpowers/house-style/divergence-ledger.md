@@ -493,3 +493,10 @@ Instead: The nav dock's own item labels stay sentence-case Archivo while the res
 Reason: Research behind the dock's original build (`reference_portfolio_inspiration` - alexwidua, jakub.kr, glenn.me, abstract.systems, cali.so, lfs.gd) found all six reference portfolios use sentence-case sans labels specifically for primary navigation, reserving mono/caps treatment for metadata (timestamps, tags, breadcrumbs). The dock is primary navigation, not metadata, so it keeps the register that convention uses rather than the metadata register the rest of the chrome uses.
 
 Validation: Not re-tested visually this round (no mono-caps variant was built to compare) - this entry records a decision to keep the original build's choice deliberately, per the fix-round brief's explicit instruction, rather than a new finding. Documented here, in `design-docs/taste/2026-10-09-ask-about-the-work-taste.md`, and in `design-state.md`'s Decisions Log so the next review doesn't re-flag it as undocumented drift.
+
+## 2026-11-02 panel-critique fixes
+
+- MSK dashboard mock and the Logistics scope plate are fixed-light plates in both themes. Their tokens are pinned to the light palette values on the component, so dark mode no longer flips their ink, chips or primary action (olive, not amber).
+- MSK `.rp-next` binds to `var(--coral)` in both themes. The earlier `#a52346` literals are gone. MSK's light coral is still `#a52346` via `.flagship-page--msk`; its dark coral now follows the Home dark value.
+- `.rp-kicker` uses `--coral-text` so kickers clear 4.5:1 on tinted sections.
+- Deferred, not decided: whether Home and MSK keep sentence-case chrome (breadcrumbs, chapter strip, next-case tag) while the other six pages keep mono caps. The 2026-10-24 ledger entry says mono caps stays; shipped CSS differs.

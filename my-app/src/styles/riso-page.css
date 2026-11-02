@@ -103,7 +103,9 @@
    so the two buttons answered a hover in two different ways. */
 .rp-cta { transition: transform 120ms ease, box-shadow 120ms ease; }
 .rp-cta:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--ink); }
-@media (prefers-reduced-motion: reduce) { .rp-cta { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .rp-cta { transition: none; }
+  .rp-work > div:first-child, .rp-work__arrow { transition: none; }
+  .rp-work:hover > div:first-child, .rp-work:hover .rp-work__arrow { transform: none; } }
 
 /* ---------- HERO ---------- */
 .rp-hero { position: relative; overflow: hidden; border-bottom: 1.5px solid var(--ink); background: var(--paper);
@@ -420,7 +422,7 @@
 .rp-section--alt { background: var(--paper-2); border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); }
 .rp-section--alt .rp-kicker,
 .rp-decisionStory__head .rp-kicker { color: var(--ink); }
-.rp-kicker { font-family: var(--mono); font-size: var(--rp-type-floor); letter-spacing: .12em; text-transform: uppercase; color: var(--coral); font-weight: 700; }
+.rp-kicker { font-family: var(--mono); font-size: var(--rp-type-floor); letter-spacing: .12em; text-transform: uppercase; color: var(--coral-text); font-weight: 700; }
 .rp-title { font-size: var(--ts-title); font-weight: 850; line-height: 1.05; letter-spacing: -.015em; margin: .5rem 0 0; text-wrap: balance; }
 
 /* ---------- homepage opening film ---------- */
@@ -1342,7 +1344,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-deepDive { margin: 0; border: 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); background: var(--paper-2); }
 .rp-deepDive > summary {
   position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: clamp(.75rem, 2vw, 1.5rem);
-  min-height: 72px; max-width: var(--wrap); margin: 0 auto; padding: 1rem var(--sp-gutter);
+  min-height: 72px; max-width: 1080px; margin: 0 auto; padding: 1rem var(--sp-gutter);
   cursor: pointer; list-style: none; color: var(--ink);
 }
 .rp-deepDive > summary::-webkit-details-marker { display: none; }
@@ -2859,12 +2861,12 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   linear-gradient(145deg, #243d25 0%, #172417 58%, #101810 100%); }
 .rp-cinema__wash::after { content: ""; position: absolute; inset: 0; opacity: .26; mix-blend-mode: screen;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='.8'/%3E%3C/svg%3E"); }
-.rp-cinema__artifact { width: min(320px, 100%); padding: 1rem 1.05rem; color: var(--ink);
+.rp-cinema__artifact { width: min(320px, 100%); padding: 1rem 1.05rem; color: #20241c; /* plate is always light: bind ink to the plate, not the theme */
   background: color-mix(in srgb, var(--ink-on-dark) 94%, transparent); border: 1px solid color-mix(in srgb, var(--ink-on-dark) 62%, transparent); border-radius: var(--r-plate);
   box-shadow: 0 22px 48px -26px rgba(0,0,0,.72); backdrop-filter: blur(10px); }
-.rp-cinema__artifact span { font-family: var(--mono); font-size: .58rem; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
+.rp-cinema__artifact span { font-family: var(--mono); font-size: .58rem; letter-spacing: .09em; text-transform: uppercase; color: #596253; }
 .rp-cinema__artifact b { display: block; margin-top: .35rem; font-size: 1rem; line-height: 1.3; }
-.rp-cinema__artifact p { margin-top: .25rem; font-size: .78rem; line-height: 1.45; color: var(--ink-2); }
+.rp-cinema__artifact p { margin-top: .25rem; font-size: .78rem; line-height: 1.45; color: #354840; }
 /* Copy owns column 1 and every visual owns columns 2–3, each on its own row.
    Explicit placement rather than source order, because the plates are authored
    before the bridge on every case study — and because a cell each is what makes
@@ -3132,6 +3134,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-outcomeStage .rp-credential__link { color: var(--ink-on-dark); }
 .rp-outcomeStage .rp-credential__link:focus-visible { outline-color: var(--coral-on-dark); }
 .rp-outcomeStage .rp-credential__link .rp-ext::after { color: var(--coral-on-dark); }
+.rp-cta:not(.rp-cta--ghost) .rp-ext::after { color: currentColor; }
 .rp-routeRecap { display: flex; align-items: center; flex-wrap: wrap; gap: .55rem .75rem; margin-top: var(--sp-sm);
   padding-top: 1.1rem; border-top: 1px solid color-mix(in srgb, var(--ink-on-dark) 22%, transparent); font-family: var(--mono);
   font-size: var(--rp-type-floor); letter-spacing: .025em; color: color-mix(in srgb, var(--ink-on-dark) 76%, transparent); }
@@ -3710,6 +3713,9 @@ h2.rp-kicker { margin: 0 0 .4rem; line-height: 1.3; }
 .flagship-page--msk .rp-cta:hover {
   transform: none;
   box-shadow: none;
+  filter: brightness(1.12);
+  text-decoration: underline;
+  text-underline-offset: .22em;
 }
 
 .flagship-page--msk .rp-heroEvidence--workflow {
@@ -3914,7 +3920,7 @@ body:has(.flagship-page--msk) .nav-dock__item[aria-current] {
   background: #edf1ed;
   backdrop-filter: none;
 }
-.flagship-page--msk .rp-next { background: #a52346; }
+.flagship-page--msk .rp-next { background: var(--coral); }
 .flagship-page--msk .rp-next__tag { margin-top: .45rem; }
 
 /* The strict light-theme palette is declared late in this file, so restore the
@@ -3936,7 +3942,7 @@ body:has(.flagship-page--msk) .nav-dock__item[aria-current] {
 }
 
 .dark-mode .flagship-page--msk .rp-chapters { background: #141a16; }
-.dark-mode .flagship-page--msk .rp-next { background: #a52346; }
+.dark-mode .flagship-page--msk .rp-next { background: var(--coral); }
 
 @media (max-width: 600px) {
   .riso-home .rp-h1 {
@@ -3946,10 +3952,6 @@ body:has(.flagship-page--msk) .nav-dock__item[aria-current] {
   .riso-home .rp-work__title,
   .riso-home .rp-close h2,
   .flagship-page--msk .rp-title { font-size: 1.45rem; }
-  .flagship-page--msk .rp-chapters {
-    flex-wrap: wrap;
-    overflow-x: visible;
-  }
   body:has(.riso-home) .site-footer__grid,
   body:has(.flagship-page--msk) .site-footer__grid {
     grid-template-columns: minmax(0, 1fr) minmax(7rem, .75fr) !important;

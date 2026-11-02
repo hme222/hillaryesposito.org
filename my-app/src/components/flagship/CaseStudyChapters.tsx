@@ -55,7 +55,9 @@ export default function CaseStudyChapters({
       let current = "";
       for (const id of ids) {
         const el = document.getElementById(id);
-        if (el && el.getBoundingClientRect().top <= line) current = id;
+        // A chapter inside a closed <details> has no box (0x0 at top 0), so it
+        // would win the scan on arrival. Skip anything that is not laid out.
+        if (el && el.getClientRects().length > 0 && el.getBoundingClientRect().top <= line) current = id;
       }
       setActive(current);
     };
@@ -78,6 +80,21 @@ export default function CaseStudyChapters({
       if (frame) window.cancelAnimationFrame(frame);
     };
   }, [chapters]);
+
+  // On a phone the strip scrolls sideways. Keep the chapter the reader is in
+  // visible, clear of the fixed progress cue at the strip's right edge, without
+  // scrolling the page (scrollIntoView would).
+  useEffect(() => {
+    const strip = stripRef.current;
+    if (!strip || !active || strip.scrollWidth <= strip.clientWidth) return;
+    const link = strip.querySelector<HTMLElement>(`a[href$="#${active}"]`);
+    if (!link) return;
+    const cue = 110;
+    const left = link.offsetLeft;
+    const right = left + link.offsetWidth;
+    if (right > strip.scrollLeft + strip.clientWidth - cue) strip.scrollLeft = right - strip.clientWidth + cue;
+    else if (left < strip.scrollLeft) strip.scrollLeft = left;
+  }, [active]);
 
   useEffect(() => () => {
     jumpTimers.current.forEach((timer) => window.clearTimeout(timer));

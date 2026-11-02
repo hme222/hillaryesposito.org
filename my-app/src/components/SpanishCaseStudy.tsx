@@ -7,7 +7,6 @@ import CaseStudyReel, { CaseStudyReelData } from "./flagship/CaseStudyReel";
 import usePageTitle from "../hooks/usePageTitle";
 import CartoField from "./riso/CartoField";
 import RisoDefs from "./riso/RisoDefs";
-import "../styles/riso.css";
 import "../styles/riso-page.css";
 
 export type SpanishCaseStudyData = {
