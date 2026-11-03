@@ -13,6 +13,7 @@ import AskDialog from "../components/ask/AskDialog";
 import { ASK_ENABLED } from "../components/ask/askEnabled";
 import { Analytics } from "@vercel/analytics/react";
 import PortfolioAnalytics from "../analytics/PortfolioAnalytics";
+import GsapMotion from "../motion/GsapMotion";
 
 import "../styles/App.css";
 import "../styles/portfolio-editorial.css";
@@ -59,6 +60,7 @@ export default function App() {
       <Router>
         <>
           <PortfolioAnalytics />
+          <GsapMotion />
           <Analytics debug={false} />
           <a href="#main-content" className="sr-only-focusable">{translate(lang, "app.skip")}</a>
 

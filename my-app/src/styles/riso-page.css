@@ -3203,7 +3203,12 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
    without reporting a single answer, and asserted a roadmap without showing
    what drove it. Percentages only — never ordinal ranks, since nine of the
    eleven tested features are charted and a position would not match the bars. */
-.rp-surveyStats { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin: 1.4rem 0 0; }
+.rp-surveyStats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 1.4rem 0 0; }
+/* The finding that set the scope leads; the other three read as supporting numbers. */
+.rp-surveyStats > div:first-child { grid-column: 1 / -1; padding: 1.6rem 1.4rem; }
+.rp-surveyStats > div:first-child dt { font-size: clamp(4rem, 9vw, 7rem); }
+.rp-surveyStats > div:first-child dd { font-size: 1.05rem; max-width: 52ch; }
+@media (max-width: 760px) { .rp-surveyStats { grid-template-columns: 1fr; } }
 .rp-surveyStats > div { padding: 1.1rem; border: 1px solid var(--hair); background: var(--paper-2); }
 .rp-surveyStats dt { font-size: var(--ts-stat); font-weight: 800; letter-spacing: -.03em; line-height: 1; color: var(--green); }
 .rp-surveyStats dd { margin: .55rem 0 0; font-size: .88rem; line-height: 1.5; color: var(--ink-2); }
