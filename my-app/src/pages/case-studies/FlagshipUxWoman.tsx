@@ -71,7 +71,7 @@ const FINDINGS: { title: string; body: React.ReactNode; confidence: string }[] =
 ];
 
 const PRETOTYPES = [
-  { title: "“What\u00a0does\u00a0this\u00a0status\u00a0mean?” cards", asks: "Can a member tell a recommendation from an approval, and see their own next step?" },
+  { title: "“What does this status mean?” cards", asks: "Can a member tell a recommendation from an approval, and see their own next step?" },
   { title: "Coverage-in-context navigator", asks: "Does guidance at the moment of one coverage task help more than a general insurance library?" },
   { title: "Missing-information handoff receipt", asks: "Does naming the missing item and who owes it reduce ambiguity between roles?" },
   { title: "Letter-of-medical-necessity evidence sheet", asks: "Does a source-and-reviewer checklist help staff prepare or check a letter?" },

@@ -219,7 +219,7 @@ export default function FlagshipMSK() {
         <div className="rp-hero__content">
           <div className="rp-clearing">
             <h1 className="rp-h1">One queue. Four teams.</h1>
-            <p className="fp-contextLine">Memorial Sloan Kettering · Clinical systems · 6-minute read · Six years across three roles</p>
+            <p className="fp-contextLine">Memorial Sloan Kettering · Clinical systems · 6‑minute read · Six years across three roles</p>
             <p className="rp-sub">
               I diagnosed and mapped a paper detour across four departments, checked feasibility,
               and pitched a digital filing workflow. <b>Information technology (IT) and user experience (UX) teams built it after I changed roles.</b>

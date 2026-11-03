@@ -507,3 +507,9 @@ Validation: Not re-tested visually this round (no mono-caps variant was built to
 - Chosen from five options (current, Bricolage + Instrument Sans, Fraunces + Figtree, Cabinet Grotesk + General Sans, Newsreader + Instrument Sans) because it keeps the taste-profile rule "product-native sans first" while dropping the mono caps that read as a default portfolio.
 - Chrome (breadcrumbs, chapter strip, eyebrows, kickers, read times, badges, captions, definition terms, log tags, next-case tag, footer labels) is sentence-case sans on all eight pages. Supersedes the 2026-10-24 "mono caps stays" line. Tracked caps remain only inside product reconstructions (MSK mock, Grove demo card and type scale, Logistics scope plate, notification cards).
 - `--mono` and `--shell-mono` are kept as names but resolve to the sans stack, so existing label rules still resolve.
+
+## 2026-11-03 correction: Home coral
+
+- Home no longer declares its own coral. It uses the shared shell coral (`#bd3828` light, the dark shell value in dark mode), like About, Grove, Knowunity, Logistics and UX Woman. The "Home keeps the Riso coral" and "Home dark coral follows MSK" lines above are superseded.
+- MSK keeps its own coral, declared once in `flagship-case-study.css` (`#a52346` light, `#ff7d67` dark). Per-case-study palettes (Mobbin `#ad3e2e`, MSK) remain deliberate; Home is the front door and sits on the shared one.
+- The 2026-11-02 line saying MSK's dark coral "follows the Home dark value" was wrong; MSK dark coral is `#ff7d67`.

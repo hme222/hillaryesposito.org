@@ -90,4 +90,11 @@ Caption BAD: Through extensive collaboration and a human-centered process, I dev
 Caption GOOD: Four departments saw one handoff. MSK implemented the digital workflow two roles later.
 
 Research BAD: Research revealed what users wanted and helped prioritize the roadmap.
-Research GOOD: 34-person self-report survey · eleven proposed features became three · behavior still untested.
+Research GOOD: 37-person self-report survey · twelve proposed features became three · behavior still untested.
+
+## Links that name where they go
+
+- `Review the <project> case study →` opens a whole case study.
+- `See the <artifact> →` deep-links to one artifact inside a case (the four decisions, the findings, the one map).
+- Do not use "Review" for an anchored link or "See" for a whole case. A reader should know from the verb whether they are leaving the page.
+

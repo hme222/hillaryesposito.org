@@ -213,7 +213,7 @@ export default function About() {
         <div className="rp-wrap">
           {/* The "How I got here." H2 was cut (2026-10-13); the kicker stays the
               section's heading so the story's h3s still sit under an h2. */}
-          <h2 className="rp-kicker" id="about-story-title">{isSpanish ? "Antes del diseño: MSK y el Ejército." : "Before design: MSK and the Army."}</h2>
+          <h2 className="rp-title" id="about-story-title">{isSpanish ? "Antes del diseño: MSK y el Ejército." : "Before design: MSK and the Army."}</h2>
 
           {chapters.map((chapter, index) => (
             <article className={`rp-split rp-chapter rp-reveal${index % 2 ? "" : " rp-split--flip"}${chapter.image ? "" : " rp-split--noMedia"}`} key={chapter.id}>

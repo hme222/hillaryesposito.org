@@ -992,8 +992,13 @@ textarea::placeholder {
   margin: 0;
   padding: 0;
   border: 0;
+  /* Bound to the shell tokens the nav and page chrome use, so the tour reads
+     as part of the site in both themes instead of the legacy warm palette. */
+  --fg: var(--shell-ink);
+  --muted: var(--shell-ink-2);
+  --border: var(--shell-hair);
   border-left: 1px solid var(--border);
-  background: var(--bg, #fff);
+  background: var(--shell-paper);
   color: inherit;
   /* Editorial system: Archivo display + a theme-aware coral accent, matching the
      rest of the Riso portfolio instead of the old serif/olive panel styling. */
@@ -1046,8 +1051,7 @@ textarea::placeholder {
   gap: 0.5rem;
   font-family: var(--shell-sans);
   font-size: 0.8125rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  letter-spacing: 0;
   font-weight: 700;
   color: var(--muted);
   margin: 0 0 0.55rem;
@@ -1109,8 +1113,7 @@ textarea::placeholder {
 .recruiter-panel__label {
   font-family: var(--shell-sans);
   font-size: 0.8125rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  letter-spacing: 0;
   font-weight: 700;
   color: var(--rp-coral);
   margin: 0 0 0.7rem;
@@ -1225,8 +1228,7 @@ textarea::placeholder {
   font-family: var(--shell-sans);
   font-weight: 700;
   font-size: 0.8125rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  letter-spacing: 0;
   border: 1px solid var(--border);
   color: var(--fg);
   background: transparent;
@@ -1288,6 +1290,7 @@ textarea::placeholder {
   background:
     linear-gradient(180deg, color-mix(in srgb, var(--surface-0) 92%, transparent), color-mix(in srgb, var(--surface-1) 96%, transparent));
   box-shadow: var(--shadow-md);
+  background-color: var(--surface-0); /* opaque base under the translucent gradient */
   font-family: var(--shell-sans);
   /* The product reconstruction keeps its own light canvas in both themes
      (riso-page.css, "keep their own light canvas"). Pin the tokens it reads
@@ -1566,6 +1569,9 @@ textarea::placeholder {
   .msk-dashboard-action { width: auto; white-space: normal; }
 }
 
+/* The standalone button (outside the mock) pins the same olive, not the
+   theme's amber. */
+.msk-dashboard-action { --olive-2: #5a7a2e; --on-accent: #fff; }
 .msk-dashboard-action--primary {
   color: #fff;
   background: var(--olive-2);

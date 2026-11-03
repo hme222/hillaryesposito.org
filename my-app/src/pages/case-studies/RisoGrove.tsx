@@ -484,7 +484,7 @@ export default function RisoGrove() {
               href="https://grove-ui.hillaryesposito.org/?path=/story/grove-plantcard--healthy"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Open the Grove Storybook (opens in new tab)"
+              aria-label="Open the Storybook (opens in new tab)"
             >
               <span className="rp-ext">Open the Storybook</span>
             </a>

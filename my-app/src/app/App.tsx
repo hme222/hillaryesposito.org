@@ -59,7 +59,7 @@ export default function App() {
       <Router>
         <>
           <PortfolioAnalytics />
-          <Analytics />
+          <Analytics debug={false} />
           <a href="#main-content" className="sr-only-focusable">{translate(lang, "app.skip")}</a>
 
           <div className= "app">

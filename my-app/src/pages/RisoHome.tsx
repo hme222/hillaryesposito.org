@@ -172,8 +172,8 @@ const GLOSSARY = {
 // between them (CLAUDE.md: never a stranded word, break at a phrase). If the
 // translated title stops matching, it renders as plain text instead.
 const HERO_PHRASES = {
-  en: ["I design", "the workflow", "before the screen."],
-  es: ["Diseño", "el flujo de trabajo", "antes que la pantalla."],
+  en: ["I design workflows", "before screens."],
+  es: ["Diseño flujos", "antes que pantallas."],
 } as const;
 
 function heroTitle(title: string, phrases: readonly string[]): React.ReactNode {

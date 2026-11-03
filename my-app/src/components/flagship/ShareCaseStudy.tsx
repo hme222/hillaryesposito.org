@@ -11,7 +11,7 @@ const SHARE_MESSAGE: Record<Exclude<ShareOutcome, null>, string> = {
 
 /**
  * @status: stable
- * @purpose: "Share this case study →" control in the closing contact section of all four case studies (RisoGrove, FlagshipMSK, FlagshipLogistics, FlagshipMobbin). Opens the native share sheet when the browser has one and falls back to copying the current URL, then confirms the real outcome in a polite live region. Styled as the site's ghost CTA (rp-cta rp-cta--ghost) so it is not a third button style. Pick this for sharing the page itself; the hero/closing mailto action stays a plain .rp-cta anchor, and in-page section links stay native anchors.
+ * @purpose: "Share this case study →" control in the closing contact section of all six case studies (RisoGrove, FlagshipMSK, FlagshipKnowunity, FlagshipLogistics, FlagshipUxWoman, FlagshipMobbin). Opens the native share sheet when the browser has one and falls back to copying the current URL, then confirms the real outcome in a polite live region. Styled as the site's ghost CTA (rp-cta rp-cta--ghost) so it is not a third button style. Pick this for sharing the page itself; the hero/closing mailto action stays a plain .rp-cta anchor, and in-page section links stay native anchors.
  */
 export default function ShareCaseStudy({ title }: {
   /** Title passed to the native share sheet. */

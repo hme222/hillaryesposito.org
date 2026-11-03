@@ -16,7 +16,7 @@
   --muted: #536760;
   --hair: #bdcac2;
   --green: #315f55;
-  --coral: #a64031;
+  --coral: #a52346;
   --fp-deep: #183a35;
   --fp-deep-2: #0e2824;
 }
@@ -348,7 +348,7 @@
    to the in-EMR sheet beneath; it is not a player, comparison card, or UI mock. */
 
 
-.fp-workflow { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: var(--sp-sm); margin-top: 2.2rem; }
+.fp-workflow { display: grid; grid-template-columns: 1fr auto 1fr; align-items: start; gap: var(--sp-sm); margin-top: 2.2rem; }
 .fp-workflow > article { padding: clamp(1rem,3vw,1.6rem); border: 1px solid var(--hair); border-radius: var(--r-plate); background: var(--paper); }
 .fp-workflow > i { font-style: normal; color: var(--coral); font-size: 1.8rem; }
 .fp-workflow__after { border-color: color-mix(in srgb,var(--green) 45%,var(--hair)) !important; }
@@ -376,7 +376,7 @@
 .fp-mapFallback { min-height: 260px; display: grid; place-items: center; border: 1px solid color-mix(in srgb, var(--ink-on-dark) 20%, transparent); }
 .fp-proofLink { display: grid; gap: .2rem; max-width: 620px; min-height: 72px; margin-top: 2rem; padding: 1rem 1.1rem;
   border: 1px solid var(--hair); border-left: 4px solid var(--coral); border-radius: var(--r-plate); color: var(--ink); text-decoration: none; }
-.fp-proofLink span { font: .6rem/1.2 var(--mono); letter-spacing: .08em; color: var(--coral); text-transform: uppercase; }
+.fp-proofLink span { font: .6rem/1.2 var(--mono); letter-spacing: .08em; color: var(--coral-text); text-transform: uppercase; }
 
 /* Service design + process improvement — the discipline behind the MSK work,
    named plainly so the vocabulary is findable. Sits inside .rp-override, so the
@@ -660,10 +660,10 @@
 }
 
 .fp-constraintAnnotations { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem 1.6rem; margin: 2rem 0 0; border-top: 1px solid color-mix(in srgb, var(--ink-on-dark) 24%, transparent); }
-.fp-constraintAnnotations > div { padding: 1rem 0 0 .9rem; border-left: 2px solid color-mix(in srgb, var(--mint-on-dark) 55%, transparent); }
-.fp-constraintAnnotations dt { font: 700 .62rem/1.35 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--mint-on-dark); }
-.fp-constraintAnnotations dd { margin: .4rem 0 0; color: color-mix(in srgb, var(--ink-on-dark) 74%, transparent); font-size: .86rem; line-height: 1.45; }
+  gap: 1rem 1.6rem; margin: 2rem 0 0; border-top: 1px solid var(--hair); }
+.fp-constraintAnnotations > div { padding: 1rem 0 0 .9rem; border-left: 2px solid color-mix(in srgb, var(--green) 55%, transparent); }
+.fp-constraintAnnotations dt { font: 700 .62rem/1.35 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--green); }
+.fp-constraintAnnotations dd { margin: .4rem 0 0; color: var(--ink-2); font-size: .86rem; line-height: 1.45; }
 @media (max-width: 700px) { .fp-constraintAnnotations { grid-template-columns: 1fr; } }
 
 /* The lead-number scale moved to the shared .rp-outcomes--lead modifier
@@ -959,7 +959,6 @@
 
 /* ---------- 2026-10-25 MSK strict-gate cleanup ---------- */
 .flagship-page--msk {
-  --coral: #a52346;
   --ink-2: #354840;
 }
 .flagship-page--msk .msk-dashboard-mockup {
