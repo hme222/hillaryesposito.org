@@ -344,7 +344,7 @@
 .recruiter-panel__project::after { grid-row: 1 / -1; }
 .recruiter-panel__project-status {
   margin-top: .2rem;
-  font-family: "Space Mono", ui-monospace, monospace;
+  font-family: var(--shell-sans);
   font-size: .8125rem !important;
   line-height: 1.45 !important;
 }
@@ -371,7 +371,7 @@
 .not-found__number {
   align-self: center;
   color: color-mix(in srgb, var(--olive-2) 22%, transparent);
-  font-family: "Archivo", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--shell-sans);
   font-weight: 850;
   font-size: clamp(10rem, 29vw, 28rem);
   letter-spacing: -.03em;
@@ -387,7 +387,7 @@
   /* 6rem in a 530px column stranded "off." on its own line. */
   text-wrap: pretty;
   margin: 0 0 1.25rem;
-  font-family: "Archivo", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--shell-sans);
   font-weight: 850;
   font-size: clamp(2.4rem, 4vw, 3.6rem);
   letter-spacing: -.022em;
@@ -396,7 +396,7 @@
 .not-found__copy > p:not(.not-found__eyebrow) {
   max-width: 48ch;
   color: var(--muted);
-  font-family: "Archivo", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--shell-sans);
   line-height: 1.7;
 }
 .not-found__actions {
@@ -412,7 +412,7 @@
   display: inline-flex;
   align-items: center;
   color: var(--fg);
-  font-family: "Space Mono", ui-monospace, monospace;
+  font-family: var(--shell-sans);
   font-size: .74rem;
   font-weight: 700;
   letter-spacing: .08em;

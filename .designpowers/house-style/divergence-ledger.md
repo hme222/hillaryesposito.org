@@ -500,3 +500,10 @@ Validation: Not re-tested visually this round (no mono-caps variant was built to
 - MSK `.rp-next` binds to `var(--coral)` in both themes. The earlier `#a52346` literals are gone. MSK's light coral is still `#a52346` via `.flagship-page--msk`; its dark coral now follows the Home dark value.
 - `.rp-kicker` uses `--coral-text` so kickers clear 4.5:1 on tinted sections.
 - Deferred, not decided: whether Home and MSK keep sentence-case chrome (breadcrumbs, chapter strip, next-case tag) while the other six pages keep mono caps. The 2026-10-24 ledger entry says mono caps stays; shipped CSS differs.
+
+## 2026-11-03 type system and chrome
+
+- Typefaces: Bricolage Grotesque (display) + Instrument Sans (body and UI). Replaces Archivo + Space Mono. Spectral stays for quotes and human moments. Grove's documented type scale still names and renders Archivo and Space Mono, because it describes Grove's own system.
+- Chosen from five options (current, Bricolage + Instrument Sans, Fraunces + Figtree, Cabinet Grotesk + General Sans, Newsreader + Instrument Sans) because it keeps the taste-profile rule "product-native sans first" while dropping the mono caps that read as a default portfolio.
+- Chrome (breadcrumbs, chapter strip, eyebrows, kickers, read times, badges, captions, definition terms, log tags, next-case tag, footer labels) is sentence-case sans on all eight pages. Supersedes the 2026-10-24 "mono caps stays" line. Tracked caps remain only inside product reconstructions (MSK mock, Grove demo card and type scale, Logistics scope plate, notification cards).
+- `--mono` and `--shell-mono` are kept as names but resolve to the sans stack, so existing label rules still resolve.

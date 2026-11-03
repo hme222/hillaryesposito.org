@@ -30,8 +30,12 @@
      "Overdue rose" swatches). Not theme-dependent. */
   --grove-amber: #c68a2e;
   --grove-rose: #bc5a78;
-  --mono: "Space Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  --sans: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  /* One family system: Bricolage Grotesque for display, Instrument Sans for
+     everything else. --mono is kept as a name so existing label rules still
+     resolve, but it is Instrument Sans now (the mono caps were the generic part). */
+  --display: "Bricolage Grotesque", "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --sans: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --mono: var(--sans);
   /* Tighten to a 2-family system — Archivo (display + body) + Space Mono
      (labels/data). Overrides the global serif --font-body inside riso pages. */
   --font-body: var(--sans);
@@ -3800,7 +3804,7 @@ body:has(.flagship-page--msk) { background: #edf1ed; }
 
 body:has(.riso-home) *:not([data-ui], [data-ui] *),
 body:has(.flagship-page--msk) *:not([data-ui], [data-ui] *) {
-  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif !important;
+  font-family: var(--sans) !important;
   box-shadow: none !important;
   border-color: transparent !important;
 }
@@ -3959,3 +3963,109 @@ body:has(.flagship-page--msk) .nav-dock__item[aria-current] {
   body:has(.riso-home) .site-footer__lead,
   body:has(.flagship-page--msk) .site-footer__lead { grid-column: 1 / -1; }
 }
+
+/* ---------- 2026-11-03 one type system, one chrome ---------- */
+/* Display face for headings. Body and UI inherit --sans. */
+h1, h2, h3, h4,
+.rp-h1, .rp-title, .rp-stat__n {
+  font-family: var(--shell-display);
+}
+
+/* Home and MSK force the body face onto every descendant with !important
+   (the two rules above, near .site-footer). Headings opt back out of that. */
+.riso-home :is(h1, h2, h3, h4, .rp-h1, .rp-title, .rp-stat__n),
+.flagship-page--msk :is(h1, h2, h3, h4, .rp-h1, .rp-title, .rp-stat__n),
+body:has(.riso-home) :is(h1, h2, h3, h4, .rp-h1, .rp-title, .rp-stat__n),
+body:has(.flagship-page--msk) :is(h1, h2, h3, h4, .rp-h1, .rp-title, .rp-stat__n) {
+  font-family: var(--shell-display) !important;
+}
+
+/* Chrome is sentence-case sans on all eight pages. Home and MSK used to be the
+   only two; the other six kept tracked mono caps, which read as two products.
+   Tracked caps stay only where a label sits inside a product reconstruction. */
+.rp-breadcrumb,
+.rp-chapters,
+.rp-chapters a,
+.rp-note__k,
+.rp-stat__tag,
+.rp-stat__source,
+.rp-next__eyebrow,
+.rp-next__tag,
+.rp-work__sub,
+.rp-work__n,
+.rp-workGroup__title,
+.rp-trustStrip,
+.rp-supportingLink > span,
+.rp-supportingLink a,
+.rp-dispatch__issueLabel,
+.rp-dispatchTrain__attribution,
+.rp-eyebrow,
+.rp-kicker,
+body .site-footer__eyebrow,
+body .site-footer__label {
+  font-family: var(--sans);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Page-level labels (read times, badges, captions, definition terms, log tags)
+   follow the same sentence-case rule as the chrome above. Labels inside product
+   reconstructions (.msk-dashboard-mockup, .rp-demoCard, .rp-cinema__artifact,
+   .rp-typescale, notification cards) keep their tracked caps: that is the
+   product's voice, not the site's. */
+#root :is(
+  .fp-proofLink span, .rp-bridge span, .rp-progress__label span, .fp-sequence__controls button,
+  .fp-blueprint button, .fp-blueprint__switch *,
+  .rp-progress__label,
+  .rp-readtime,
+  .rp-readtime *,
+  .rp-badge,
+  .rp-strip__cap,
+  .rp-phase,
+  .rp-phase__label,
+  .rp-decisionRecord dt,
+  .rp-decision__tag,
+  .rp-fcard__k,
+  .rp-swatch__use,
+  .rp-swatch__avoid,
+  .rp-bridge,
+  .rp-reel,
+  .rp-reel__kicker,
+  .rp-decisionStory__logline,
+  .rp-heroEvidence dt,
+  .fp-blueprint__key dt,
+  .fp-blueprint__switch,
+  .fp-redesigns__wrong b,
+  .fp-roleRail__summaryLabel,
+  .fp-ownership b,
+  .fp-proofLink,
+  .fp-journalLine,
+  .fp-journalLine span,
+  .fp-workSplit > span,
+  .fp-workSplit span:first-child,
+  .fp-constraintAnnotations dt,
+  .fp-ledger dt,
+  .fp-findings__confidence,
+  .fp-sequence__controls,
+  .about-hero__caption,
+  .rp-split__text,
+  .rp-chapter__n,
+  .about-evidenceLedger dd,
+  .rp-nowReading,
+  .site-footer__madeWith,
+  .site-footer__madeWithLabel,
+  .rp-notif > p,
+  .rp-swatch__use b,
+  .rp-swatch__avoid b,
+  .site-footer__madeWith *,
+  .fp-blueprint__key *
+) {
+  font-family: var(--sans);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Grove's documented type scale shows Grove's own faces, not this site's. */
+.rp-type:nth-child(1) > span:not(.rp-type__label),
+.rp-type:nth-child(2) > span:not(.rp-type__label) { font-family: "Archivo", sans-serif; }
+.rp-type:nth-child(3) > .rp-type__sampleLabel { font-family: "Space Mono", monospace; letter-spacing: .14em; text-transform: uppercase; }

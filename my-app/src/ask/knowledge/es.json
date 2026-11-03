@@ -1248,7 +1248,7 @@
   {
    "id": "es:build:4",
    "lang": "es",
-   "text": "El sistema visual funciona con tokens de diseño (tokens/tokens.json) y propiedades personalizadas de CSS: papel, tinta, coral y verde, con las tipografías Archivo y Space Mono.",
+   "text": "El sistema visual funciona con tokens de diseño (tokens/tokens.json) y propiedades personalizadas de CSS: papel, tinta, coral y verde, con las tipografías Bricolage Grotesque e Instrument Sans.",
    "source": {
     "type": "repo",
     "label": "Cómo está construido el sitio · código fuente",

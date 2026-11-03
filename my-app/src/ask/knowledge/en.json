@@ -3129,7 +3129,7 @@
   {
    "id": "en:build:4",
    "lang": "en",
-   "text": "The visual system runs on design tokens (tokens/tokens.json) and CSS custom properties: paper, ink, coral and green, set in Archivo and Space Mono.",
+   "text": "The visual system runs on design tokens (tokens/tokens.json) and CSS custom properties: paper, ink, coral and green, set in Bricolage Grotesque and Instrument Sans.",
    "source": {
     "type": "repo",
     "label": "How this site is built · source code",
