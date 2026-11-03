@@ -100,7 +100,7 @@ export default function FlagshipMobbin() {
         </div>
         <div className="rp-hero__media fp-heroArt fp-heroArt--mobbin" aria-label="Three finance app screens documented for Mobbin" data-evidence="true">
           {APPS.map((app, index) => <div className={`fp-capture fp-capture--${index + 1}`} key={app.name}><img src={app.image} alt={index === 0 ? "Three documented finance app interfaces: Kikoff, Polymarket, and Discover" : ""} /></div>)}
-          <div className="fp-artifactLabel"><span>CAPTURE LOG · 4 MONTHS</span><b>3 apps · 200+ screens each · one searchable library</b></div>
+          <div className="fp-artifactLabel"><span>Capture log · 4 months</span><b>3 apps · 200+ screens each · one searchable library</b></div>
         </div>
       </header>
 

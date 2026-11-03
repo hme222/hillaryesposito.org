@@ -1,4 +1,3 @@
-@import url("https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700&display=swap");
 
 :root {
   /* One type system: Bricolage Grotesque for display, Instrument Sans for body
@@ -1246,19 +1245,13 @@ textarea::placeholder {
 }
 .recruiter-panel__btn--primary {
   background: var(--rp-coral);
-  color: #fff;
+  color: var(--on-coral);
   border-color: var(--rp-coral);
-}
-.dark-mode .recruiter-panel__btn--primary {
-  color: #14150e;
 }
 .recruiter-panel__btn--primary:hover {
   filter: brightness(1.06);
   background: var(--rp-coral);
-  color: #fff;
-}
-.dark-mode .recruiter-panel__btn--primary:hover {
-  color: #14150e;
+  color: var(--on-coral);
 }
 
 

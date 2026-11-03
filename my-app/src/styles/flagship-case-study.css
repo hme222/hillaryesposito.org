@@ -80,7 +80,7 @@
   box-shadow: 0 14px 32px -20px rgba(0,0,0,.45); }
 /* The coral rule on the left carries the accent; the label itself is ink so it
    reads over the hero art (coral at .54rem measured under 4.5:1). */
-.fp-artifactLabel span { display: block; font: var(--rp-type-floor)/1.2 var(--mono); letter-spacing: .08em; color: var(--ink); }
+.fp-artifactLabel span { display: block; font: var(--rp-type-floor)/1.2 var(--mono); letter-spacing: 0; color: var(--ink); }
 .fp-artifactLabel b { display: block; margin-top: .25rem; font-size: var(--rp-type-floor); line-height: 1.35; }
 /* Mobbin's artifact is a photo, so a tag floated over it costs nothing. MSK's
    is a dense text mockup whose last two blocks — the MRN/HIM glossary and the

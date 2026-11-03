@@ -157,7 +157,7 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".rp-breadcrumbRow button")).toBeNull();
     expect(container.querySelector(".rp-heroTour")).toBeNull();
     const action = container.querySelector<HTMLAnchorElement>('.rp-hero__ctas a[href="#msk-brief"]');
-    expect(action?.textContent).toBe("Run the filing path →");
+    expect(action?.textContent).toBe("See the filing path →");
 
     // Spanish keeps one action back to the complete English case study.
     mockLang = "es";
@@ -541,7 +541,7 @@ describe("flagship case-study accessibility", () => {
   });
 
   it.each([
-    ["MSK", <FlagshipMSK />, "/case-study/grove", "Grove", "Next case study · Plant-care prototype · Phase 2 of 3"],
+    ["MSK", <FlagshipMSK />, "/case-study/grove", "Grove", "Plant-care prototype · Phase 2 of 3"],
     ["Grove", <RisoGrove />, "/case-study/knowunity", "Knowunity", "Design sprint · mocked voice recall, not shipped"],
     ["Knowunity", <FlagshipKnowunity />, "/case-study/logistics", "Medical logistics", "Army operations · seven aid stations, three countries"],
     ["Medical logistics", <FlagshipLogistics />, "/case-study/ux-woman", "UX Woman", "Supporting research · six interviews, research phase"],

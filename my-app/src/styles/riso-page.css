@@ -2560,7 +2560,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-chapters span { color: var(--muted); margin-right: .15rem; }
 .rp-chapters a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--hair);
   min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; padding: 0 .2rem; }
-.rp-chapters a:hover, .rp-chapters a:focus-visible { color: var(--coral); border-bottom-color: var(--coral); }
+.rp-chapters a:hover, .rp-chapters a:focus-visible { color: var(--green); border-bottom-color: var(--green); }
 /* Current chapter. Weight carries it as well as color, so the state survives
    grayscale, forced colors, and color-vision differences. */
 .rp-chapters a.is-active { color: var(--ink); font-weight: 700; border-bottom-color: var(--ink); }
@@ -3810,8 +3810,6 @@ body:has(.flagship-page--msk) { background: #edf1ed; }
 body:has(.riso-home) *:not([data-ui], [data-ui] *),
 body:has(.flagship-page--msk) *:not([data-ui], [data-ui] *) {
   font-family: var(--sans) !important;
-  box-shadow: none !important;
-  border-color: transparent !important;
 }
 body:has(.riso-home) .site-footer__eyebrow,
 body:has(.riso-home) .site-footer__label,
@@ -3820,15 +3818,6 @@ body:has(.flagship-page--msk) .site-footer__label {
   font-size: .875rem;
   letter-spacing: 0;
   text-transform: none;
-}
-body:has(.riso-home) .site-footer__grid,
-body:has(.flagship-page--msk) .site-footer__grid {
-  grid-template-columns: minmax(0, 1fr) minmax(8rem, .7fr) minmax(8rem, .7fr) !important;
-}
-body:has(.riso-home) .site-footer__column:last-child,
-body:has(.flagship-page--msk) .site-footer__column:last-child {
-  align-items: flex-end;
-  text-align: right;
 }
 body:has(.riso-home) .msk-dashboard-mockup,
 body:has(.flagship-page--msk) .msk-dashboard-mockup {
@@ -3849,8 +3838,6 @@ body:has(.flagship-page--msk) .nav-dock__item[aria-current] {
 .riso-home *:not(.carto__map, [data-ui], [data-ui] *),
 .flagship-page--msk *:not(.carto__map, [data-ui], [data-ui] *) {
   background-image: none !important;
-  box-shadow: none !important;
-  border-color: transparent !important;
 }
 
 .riso-home *:not([data-ui], [data-ui] *),
@@ -3926,7 +3913,6 @@ body:has(.flagship-page--msk) .nav-dock__item[aria-current] {
   backdrop-filter: none;
 }
 .flagship-page--msk .rp-next { background: var(--coral); }
-.flagship-page--msk .rp-next__tag { margin-top: .45rem; }
 
 /* The strict light-theme palette is declared late in this file, so restore the
    established dark-theme contract at the same cascade layer. Product UI
@@ -3954,12 +3940,6 @@ body:has(.flagship-page--msk) .nav-dock__item[aria-current] {
   .riso-home .rp-work__title,
   .riso-home .rp-close h2,
   .flagship-page--msk .rp-title { font-size: 1.45rem; }
-  body:has(.riso-home) .site-footer__grid,
-  body:has(.flagship-page--msk) .site-footer__grid {
-    grid-template-columns: minmax(0, 1fr) minmax(7rem, .75fr) !important;
-  }
-  body:has(.riso-home) .site-footer__lead,
-  body:has(.flagship-page--msk) .site-footer__lead { grid-column: 1 / -1; }
 }
 
 /* ---------- 2026-11-03 one type system, one chrome ---------- */
@@ -4012,7 +3992,7 @@ body .site-footer__label {
    .rp-typescale, notification cards) keep their tracked caps: that is the
    product's voice, not the site's. */
 #root :is(
-  .fp-proofLink span, .rp-bridge span, .rp-progress__label span, .fp-sequence__controls button,
+  .rp-decisionStory__logline span, .fp-proofLink span, .rp-bridge span, .rp-progress__label span, .fp-sequence__controls button,
   .fp-blueprint button, .fp-blueprint__switch *,
   .rp-progress__label,
   .rp-readtime,
@@ -4074,4 +4054,19 @@ body .site-footer__label {
   .rp-progress--strip .rp-progress__label { display: none; }
 }
 /* One next-case band: MSK's title collapsed to body size under its scope. */
-.flagship-page--msk .rp-next__title { font-size: clamp(1.6rem, 3vw, 2.5rem); }
+.flagship-page--msk .rp-next__tag { font-size: var(--rp-type-floor); }
+
+/* Round-three fixes. */
+/* Phone chapter strip: fade the right edge so the clipped last chapter reads as overflow. */
+@media (max-width: 600px) {
+  .rp-chapters { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 2.5rem), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 2.5rem), transparent); }
+  /* Home: keep the hero plate off the portrait's collar. */
+  .riso-home .rp-hero__media .rp-headshot { max-height: 100%; overflow: hidden; }
+  .riso-home .rp-hero__media .rp-headshot img { height: 100%; object-fit: cover; object-position: 50% 15%; }
+}
+/* The reading-progress number sits on a plate so it reads over dark stages too. */
+.rp-progress__label { background: var(--paper); padding: .2rem .35rem; border: 1px solid var(--hair); border-radius: 4px; }
+/* MSK hero lines up with the other five: plate top meets the artifact label top. */
+.flagship-page--msk .rp-hero { align-items: start; }
+
+.flagship-page--msk .rp-next .rp-next__title { font-size: var(--ts-title); }

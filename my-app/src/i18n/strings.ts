@@ -34,7 +34,7 @@ const en = {
   "footer.madeWith": "Made with:",
   "footer.methods": "Methods:",
   "notFound.eyebrow": "404 · Page not found",
-  "notFound.title": "This page wandered off.",
+  "notFound.title": "This page wandered off.",
   "notFound.body": "The link may be outdated, but the work is still here. Return to the portfolio or browse the selected work.",
   "notFound.home": "Return home",
   "notFound.work": "See the selected work →",
@@ -82,7 +82,7 @@ const en = {
   // Keep the proposal and the later implementation distinct. The prior 20%
   // clause compressed an organization result into Hillary's personal action.
   "home.riso.heroLead":
-    "At Memorial Sloan Kettering, I traced a four-department paper detour and proposed the queue that replaced it.",
+    "At Memorial Sloan Kettering, I traced a four-department paper detour that kept patient messages out of the chart, and proposed the queue that replaced it.",
   // The hero lede above is the one place on Home that explains the paper
   // detour (2026-10-14 review, item 13); the work row and teaser don't repeat it.
   "home.riso.heroProof": "IT and UX built it after I changed roles. The workflows in scope reach 21,000+ clinicians and staff.",
@@ -279,7 +279,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.eyebrow": "Diseñadora de productos de salud · Veterana del Ejército, operaciones y capacitación en MSK",
   "home.riso.heroTitle": "Diseño flujos antes que pantallas.",
   "home.riso.heroLead":
-    "En Memorial Sloan Kettering, rastreé un desvío en papel entre cuatro áreas y propuse la cola que lo reemplazó.",
+    "En Memorial Sloan Kettering, rastreé un desvío en papel entre cuatro áreas que dejaba los mensajes de pacientes fuera del expediente, y propuse la cola que lo reemplazó.",
   "home.riso.heroProof": "TI y UX la construyeron después de que cambié de puesto. Los flujos incluidos alcanzan a más de 21,000 clínicos y personal.",
   "home.riso.careerSwitchTitle": "De operaciones de salud a diseño de producto.",
   "home.riso.careerSwitchBody": "Seis años a cargo de flujos administrativos y de capacitación en MSK, y más de 13 años de servicio en el Ejército en logística médica, antes de diseñar para ellos.",

@@ -133,7 +133,7 @@ export default function FlagshipUxWoman() {
               <div key={row.en}><dt>{row.en}</dt><dd>{row.n}</dd></div>
             ))}
           </dl>
-          <div className="fp-artifactLabel"><span>RESEARCH PHASE · 2026</span><b>Interview and pretotype ledger</b></div>
+          <div className="fp-artifactLabel"><span>Research phase · 2026</span><b>Interview and pretotype ledger</b></div>
         </div>
       </header>
 

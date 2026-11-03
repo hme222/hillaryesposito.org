@@ -219,7 +219,8 @@ export default function FlagshipMSK() {
         <div className="rp-hero__content">
           <div className="rp-clearing">
             <h1 className="rp-h1">One queue. Four teams.</h1>
-            <p className="fp-contextLine">Memorial Sloan Kettering · Clinical systems · 6‑minute read · Six years across three roles</p>
+            <span className="rp-eyebrow">Memorial Sloan Kettering · Clinical systems · six years, three roles</span>
+            <span className="rp-readtime"><b>6 min</b><span>read · built by IT and UX after I changed roles</span></span>
             <p className="rp-sub">
               I diagnosed and mapped a paper detour across four departments, checked feasibility,
               and pitched a digital filing workflow. <b>Information technology (IT) and user experience (UX) teams built it after I changed roles.</b>
@@ -231,7 +232,7 @@ export default function FlagshipMSK() {
               <div><dt>Design thread</dt><dd>Service design → process improvement → UX/product</dd></div>
             </dl>
             <div className="rp-hero__ctas">
-              <a className="rp-cta" href="#msk-brief">Run the filing path →</a>
+              <a className="rp-cta" href="#msk-brief">See the filing path →</a>
             </div>
           </div>
         </div>
@@ -456,7 +457,7 @@ export default function FlagshipMSK() {
         </div>
       </section>
 
-      <Link className="rp-next" to="/case-study/grove"><div className="rp-next__inner"><div><p className="rp-next__title">Grove</p><p className="rp-next__tag">Next case study · Plant-care prototype · Phase 2 of 3</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
+      <Link className="rp-next" to="/case-study/grove"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Grove</p><p className="rp-next__tag">Plant-care prototype · Phase 2 of 3</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
     </main>
   );
 }

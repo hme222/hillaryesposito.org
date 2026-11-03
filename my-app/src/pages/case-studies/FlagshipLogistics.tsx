@@ -126,7 +126,7 @@ export default function FlagshipLogistics() {
           <div className="fp-logisticsHeroMechanism">
             <LogisticsMechanism n="01" />
           </div>
-          <div className="fp-artifactLabel"><span>DEPLOYMENT · 2024</span><b>44th Infantry Brigade Combat Team · seven aid stations · three countries</b></div>
+          <div className="fp-artifactLabel"><span>Deployment · 2024</span><b>44th Infantry Brigade Combat Team · seven aid stations · three countries</b></div>
           <figure className="fp-logisticsPhoto">
             <img src="/assets/about/army.jpg" alt="Hillary Esposito in uniform during her deployment as a medical logistics officer" />
           </figure>

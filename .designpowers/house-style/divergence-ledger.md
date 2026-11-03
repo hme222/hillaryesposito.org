@@ -513,3 +513,11 @@ Validation: Not re-tested visually this round (no mono-caps variant was built to
 - Home no longer declares its own coral. It uses the shared shell coral (`#bd3828` light, the dark shell value in dark mode), like About, Grove, Knowunity, Logistics and UX Woman. The "Home keeps the Riso coral" and "Home dark coral follows MSK" lines above are superseded.
 - MSK keeps its own coral, declared once in `flagship-case-study.css` (`#a52346` light, `#ff7d67` dark). Per-case-study palettes (Mobbin `#ad3e2e`, MSK) remain deliberate; Home is the front door and sits on the shared one.
 - The 2026-11-02 line saying MSK's dark coral "follows the Home dark value" was wrong; MSK dark coral is `#ff7d67`.
+
+## 2026-11-03 round three
+
+- Removed the Home/MSK-only rules that stripped borders and shadows (`border-color: transparent !important`, `box-shadow: none !important`) and re-proportioned the footer. Ghost buttons, chapter-strip rules and the footer now match on all eight pages. The decorative `background-image: none` on Home/MSK stays.
+- MSK hero uses the same eyebrow chip and read-time row as the other five. Its next-case band has the shared eyebrow, tag size and title scale.
+- Hero art labels and "Decision log" are sentence case.
+- Still deliberate, not drift: Knowunity/Logistics/UX Woman/Mobbin hero art label spans stay tracked at 0; About's eyebrow is a plain journal label (no chip) and its mobile hero order is text first; UX Woman and Mobbin heroes are mirrored (plate right) because their lead artifact is a ledger or capture log. Logistics is not mirrored. Revisit if the mirror rule should apply to all research and documentation cases.
+- Not done this round: Grove research stat hierarchy and caption rewrite, one shared grid for the three Home work rows, one shared hero-evidence component, merging MSKMechanism and LogisticsMechanism, and a token export script. The audit and tokens.json are still dated 2026-10-15.

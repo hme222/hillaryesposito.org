@@ -35,9 +35,9 @@ class LazyRouteBoundary extends Component<
     if (this.state.failed) {
       const { lang, name } = this.props;
       return (
-        <main className="not-found" role="alert">
+        <main className="not-found">
           <div className="not-found__number" aria-hidden="true">↻</div>
-          <div className="not-found__copy">
+          <div className="not-found__copy" role="alert">
             <p className="not-found__eyebrow">{translate(lang, "recovery.caseEyebrow")}</p>
             <h1>{translate(lang, "recovery.caseTitle", { name })}</h1>
             <p>{translate(lang, "recovery.caseBody")}</p>
@@ -209,12 +209,23 @@ function RouteAnnouncer() {
   const { lang } = useLanguage();
   const [msg, setMsg] = useState("");
   useEffect(() => {
-    // Small delay so the route's real H1 is mounted before we announce it.
-    const id = window.setTimeout(() => {
+    // Announce only once the route's real H1 exists. A lazy route shows its
+    // own loading status first, and a failed chunk shows an alert: in both
+    // cases "loaded" would be wrong, so keep waiting or stay silent.
+    let tries = 0;
+    let id = 0;
+    const check = () => {
+      tries += 1;
+      if (document.querySelector("main[role='alert'], .not-found__copy[role='alert']")) return;
       const heading = document.querySelector<HTMLElement>("#main-content h1")?.textContent?.trim();
-      const fallback = ROUTE_NAMES[pathname] || "Page";
-      setMsg(lang === "es" ? `${heading || fallback} cargada` : `${heading || fallback} loaded`);
-    }, 150);
+      const loading = document.querySelector(".case-study-loader");
+      if (heading && !loading) {
+        setMsg(lang === "es" ? `${heading} cargada` : `${heading} loaded`);
+        return;
+      }
+      if (tries < 40) id = window.setTimeout(check, 150);
+    };
+    id = window.setTimeout(check, 150);
     return () => window.clearTimeout(id);
   }, [lang, pathname]);
   return (

@@ -27,9 +27,9 @@ export default class AppErrorBoundary extends Component<
     const lang = storedLang();
     const t = (key: Parameters<typeof translate>[1]) => translate(lang, key);
     return (
-      <main className="not-found" role="alert" lang={lang}>
+      <main className="not-found" lang={lang}>
         <div className="not-found__number" aria-hidden="true">↻</div>
-        <div className="not-found__copy">
+        <div className="not-found__copy" role="alert">
           <h1>{t("recovery.appTitle")}</h1>
           <p>{t("recovery.appBody")}</p>
           <div className="not-found__actions">
