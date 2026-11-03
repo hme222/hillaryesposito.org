@@ -92,7 +92,7 @@ const en = {
   "home.riso.openingFilmLabel": "Opening visual · five seconds",
   "home.riso.openingFilmSkip": "Skip →",
   "home.riso.primaryWork": "Review the MSK case study",
-  "home.riso.workTitle": "Decisions you can inspect.",
+  "home.riso.workTitle": "Selected work.",
   "home.riso.workLinkSuffix": "case study",
   "home.riso.groveDesc":
     "A competitive analysis, a five-user test of the original prototype, and a 37-person survey narrowed twelve features to three. The redesign is in progress; the retest comes next.",
@@ -290,7 +290,7 @@ const es: Partial<Record<StringKey, string>> = {
   // the same way ask.ninetySecondLink does below.
   "home.riso.recruiterTourLink": "Abrir el recorrido de 90 segundos (en inglés)",
   "home.riso.primaryWork": "Ver el estudio de caso de MSK",
-  "home.riso.workTitle": "Decisiones que puede revisar.",
+  "home.riso.workTitle": "Trabajo seleccionado.",
   "home.riso.workLinkSuffix": "estudio de caso",
   "home.riso.groveDesc":
     "Un análisis competitivo, una prueba con cinco usuarios del prototipo original y una encuesta a 37 personas redujeron doce funciones a tres. El rediseño está en curso; la nueva prueba viene después.",

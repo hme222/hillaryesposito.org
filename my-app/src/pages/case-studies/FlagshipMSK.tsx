@@ -44,7 +44,7 @@ const ROLE_METHODS: Record<string, { term: string; body: string }> = {
   },
   "03": {
     term: "Training & Facilitation (ATD) · current-state mapping",
-    body: "I instructed on Epic (the record software), HIPAA (the patient-privacy law), and the compliance modules. Owning how staff were taught the system meant documenting what actually happens, not what the policy says — and the gap between the two is where the design work lives.",
+    body: "I instructed on Epic (the record software), HIPAA (the patient-privacy law), and the compliance modules. Owning how staff were taught the system meant documenting what actually happens, not what the policy says, and the gap between the two is where the design work lives.",
   },
 };
 
@@ -75,7 +75,7 @@ const SURVIVED: { fact: string; what: React.ReactNode }[] = [
     fact: "EMR filing workflow",
     what: "Added to the production system; I saw it while training new employees",
   },
-  { fact: "CPR certification format", what: "Department compliant a month before the original deadline — no extension needed" },
+  { fact: "CPR certification format", what: "Department compliant a month before the original deadline, no extension needed" },
   // "Clinician onboarding — still in use after three leadership transitions"
   // was removed on 2026-08-03. The programme was not clinician onboarding, and
   // the three-transitions claim was attached to that wrong description; nothing
@@ -183,7 +183,7 @@ function MSKButtonThreshold() {
 
 export default function FlagshipMSK() {
   const { lang } = useLanguage();
-  usePageTitle("MSK — Clinical Systems Case Study", lang !== "es");
+  usePageTitle("MSK: Clinical Systems Case Study", lang !== "es");
   const rootRef = useRef<HTMLElement>(null);
   useFlagshipReveal(rootRef);
 
@@ -260,7 +260,7 @@ export default function FlagshipMSK() {
               "no patient data" boundary and what the evidence can and cannot
               claim (the former "Evidence boundary" aside). */}
           <div className="rp-note rp-reveal">
-            <p className="rp-note__k">How these artifacts were made</p>
+            <p className="rp-note__k">How I made these screens</p>
             <p>Rebuilt from memory of my current-state documentation. No patient data, exported records, or vendor interface. The workflow, departments, decisions, and outcomes survive; observation counts don’t, so no prevalence claim is made.</p>
           </div>
           {/* These two lists are the text alternative for the aria-hidden map,
@@ -385,13 +385,13 @@ export default function FlagshipMSK() {
                 the workflow map above already proves, rather than a description
                 of a method. */}
             <p className="fp-ownership rp-reveal" style={{ "--rp-reveal-stagger": "90ms" } as React.CSSProperties}>
-              <b>Service-design scope:</b> the full path across systems, departments, permissions, and handoffs—not only the queue screen.
+              <b>Service-design scope:</b> the full path across systems, departments, permissions, and handoffs, not only the queue screen.
             </p>
             <div className="fp-mapWrap rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "270ms" } as React.CSSProperties}>
               <Suspense fallback={<div className="fp-mapFallback">Four departments, one task → mapped → redesigned → in production</div>}>
                 <MSKSystemMap />
               </Suspense>
-              <ol aria-label="Clinical system transformation stages"><li>Four departments, one task</li><li>Mapped</li><li>Redesigned</li><li>In production</li></ol>
+              <ol aria-label="Stages of the change"><li>Four departments, one task</li><li>Mapped</li><li>Redesigned</li><li>In production</li></ol>
             </div>
           </div>
         </section>
@@ -430,7 +430,7 @@ export default function FlagshipMSK() {
       <div data-evidence="true"><EvidenceField
         id="msk-outcomes"
         languageAnchor="msk-outcomes"
-        title="The numbers, and who they belong to."
+        title="The numbers, and whose they are."
         intro="The tag above each number says whose result it is."
         disclaimer="Anonymized evidence · owner-reported outcomes · the 20% figure belongs to a larger organization-wide initiative, not the filing queue alone; original period and cost definition are not preserved · the ~$1M/year is a projection from my pitch, not measured savings"
         // The same discipline the certification dashboard used on its own data:
@@ -442,7 +442,7 @@ export default function FlagshipMSK() {
         // and 21,000+ as a labelled projection, never as measured savings.
         metrics={[
           { tag: "Led", n: "1 month", label: "early: the whole department certified before the original deadline, with no 4-month extension" },
-          { tag: "Scope", n: "21,000+", label: "clinicians and administrative staff across the workflows in scope — not queue adoption" },
+          { tag: "Scope", n: "21,000+", label: "clinicians and administrative staff across the workflows in scope, not queue adoption" },
           { tag: "Initiative result", n: "20%", label: "organization-wide EMR cost reduction; not attributed solely to this filing workflow" },
           { tag: "Projection", n: "~$1M/year", label: "projected paper savings in my Process Improvement Fair pitch, not measured savings" },
         ]}
@@ -453,7 +453,7 @@ export default function FlagshipMSK() {
           <h2>I find the workaround. Then I get it built.</h2>
           <p>I map it so every department sees the same failure, then turn it into a decision the organization will build.</p>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
-          <ShareCaseStudy title="MSK — a case study by Hillary Esposito" />
+          <ShareCaseStudy title="MSK: a case study by Hillary Esposito" />
         </div>
       </section>
 

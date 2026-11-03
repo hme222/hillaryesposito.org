@@ -71,7 +71,7 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
         label: section.chapter || section.eyebrow,
       })),
   ];
-  usePageTitle(`${data.breadcrumb} — estudio de caso`);
+  usePageTitle(`${data.breadcrumb}: estudio de caso`);
 
   const readInEnglish = () => {
     switchLanguageAtCurrentSection(setLang, "en");

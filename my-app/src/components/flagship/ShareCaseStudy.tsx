@@ -6,7 +6,7 @@ type ShareOutcome = "shared" | "copied" | "error" | null;
 const SHARE_MESSAGE: Record<Exclude<ShareOutcome, null>, string> = {
   shared: "thanks for sharing.",
   copied: "link copied.",
-  error: "Couldn’t copy the link — you can copy it from the address bar.",
+  error: "Couldn’t copy the link. You can copy it from the address bar.",
 };
 
 /**

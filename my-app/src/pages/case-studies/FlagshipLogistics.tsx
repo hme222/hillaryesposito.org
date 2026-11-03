@@ -65,7 +65,7 @@ const MOVES: { n: string; title: string; finding: string; change: React.ReactNod
 
 export default function FlagshipLogistics() {
   const { lang } = useLanguage();
-  usePageTitle("Medical Logistics — Army Operations Case Study", lang !== "es");
+  usePageTitle("Medical Logistics: Army Operations Case Study", lang !== "es");
   const rootRef = useRef<HTMLElement>(null);
   useFlagshipReveal(rootRef);
 
@@ -172,7 +172,7 @@ export default function FlagshipLogistics() {
       <details className="rp-deepDive">
         <summary>
           <span className="rp-deepDive__copy">
-            <b className="rp-deepDive__title">Inspect the logistics constraints and mechanisms</b>
+            <b className="rp-deepDive__title">See what made it hard and what I changed</b>
           </span>
           <span className="rp-deepDive__state" aria-hidden="true">
             <span className="rp-deepDive__stateClosed">Open</span>
@@ -225,7 +225,7 @@ export default function FlagshipLogistics() {
           <h2>Supply lines and clinic workflows break the same way.</h2>
           <p>A supply run began too far from the aid stations. Portal messages took a paper route and lost their chart context. In both, I moved the step that did not belong.</p>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
-          <ShareCaseStudy title="Medical logistics — a case study by Hillary Esposito" />
+          <ShareCaseStudy title="Medical logistics: a case study by Hillary Esposito" />
         </div>
       </section>
 

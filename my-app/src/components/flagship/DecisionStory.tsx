@@ -122,7 +122,7 @@ export default function DecisionStory({ id, languageAnchor, kicker, title, intro
                     <h3>{step.title}</h3>
                     <p>{step.body}</p>
                     <p className="rp-decisionStory__logline">
-                      {showStepNumbers && <span>Decision log</span>}
+                      {showStepNumbers && <span>Decisions</span>}
                       <b>{step.note}</b>
                     </p>
                   </div>

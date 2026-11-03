@@ -56,7 +56,7 @@ const FINDINGS: { title: string; body: React.ReactNode; confidence: string }[] =
   {
     title: "Coverage barriers may interrupt care",
     body: "Surgery readiness, discharge, and medication access came up. Staff and a former health-plan employee reported these; no patient outcome was observed.",
-    confidence: "Moderate that stakeholders see the risk. Low on how common it is and on patient experience.",
+    confidence: "Moderate that people in several roles see the risk. Low on how common it is and on patient experience.",
   },
   {
     title: "People keep the judgment and recovery work",
@@ -72,7 +72,7 @@ const FINDINGS: { title: string; body: React.ReactNode; confidence: string }[] =
 
 const PRETOTYPES = [
   { title: "“What does this status mean?” cards", asks: "Can a member tell a recommendation from an approval, and see their own next step?" },
-  { title: "Coverage-in-context navigator", asks: "Does guidance at the moment of one coverage task help more than a general insurance library?" },
+  { title: "Coverage-in-context navigator", asks: "Does guidance at the moment of one coverage task beat a general insurance library?" },
   { title: "Missing-information handoff receipt", asks: "Does naming the missing item and who owes it reduce ambiguity between roles?" },
   { title: "Letter-of-medical-necessity evidence sheet", asks: "Does a source-and-reviewer checklist help staff prepare or check a letter?" },
   { title: "Human navigator\u00a0session", asks: "When information is confusing or sensitive, does a person solve something self-service doesn't?" },
@@ -80,7 +80,7 @@ const PRETOTYPES = [
 
 export default function FlagshipUxWoman() {
   const { lang } = useLanguage();
-  usePageTitle("UX Woman — Healthcare Research Case Study", lang !== "es");
+  usePageTitle("UX Woman: Healthcare Research Case Study", lang !== "es");
   const rootRef = useRef<HTMLElement>(null);
   useFlagshipReveal(rootRef);
 
@@ -133,7 +133,7 @@ export default function FlagshipUxWoman() {
               <div key={row.en}><dt>{row.en}</dt><dd>{row.n}</dd></div>
             ))}
           </dl>
-          <div className="fp-artifactLabel"><span>Research phase · 2026</span><b>Interview and pretotype ledger</b></div>
+          <div className="fp-artifactLabel"><span>Research phase · 2026</span><b>Interviews and tests so far</b></div>
         </div>
       </header>
 
@@ -253,7 +253,7 @@ export default function FlagshipUxWoman() {
           <h2>I check the premise before I build.</h2>
           <p>UX Woman shows how I work: say what the evidence supports, rate it, and name the next test.</p>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
-          <ShareCaseStudy title="UX Woman — a case study by Hillary Esposito" />
+          <ShareCaseStudy title="UX Woman: a case study by Hillary Esposito" />
         </div>
       </section>
 

@@ -555,7 +555,7 @@ export default function RisoHome() {
           <h2 className="rp-title" id="home-work-title">{t("home.riso.workTitle")}</h2>
           <section className="rp-workGroup" aria-labelledby="home-primary-cases-title">
             <h3 className="sr-only" id="home-primary-cases-title">
-              {lang === "es" ? "Casos principales de producto" : "Primary product cases"}
+              {lang === "es" ? "Casos de estudio principales" : "Main case studies"}
             </h3>
             <div className="rp-worklist rp-reveal" data-evidence="true">
               {PRIMARY_WORK.map(renderWorkItem)}
@@ -567,7 +567,7 @@ export default function RisoHome() {
             aria-labelledby="home-supporting-cases-title"
           >
             <h3 className="sr-only" id="home-supporting-cases-title">
-              {lang === "es" ? "Evidencia de apoyo" : "Supporting evidence"}
+              {lang === "es" ? "Más trabajo" : "More work"}
             </h3>
             <div className="rp-worklist rp-worklist--supporting rp-reveal" data-evidence="true">
               {SUPPORTING_WORK.map(renderWorkItem)}

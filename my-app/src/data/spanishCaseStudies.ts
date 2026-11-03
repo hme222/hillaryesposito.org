@@ -22,7 +22,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
       title: "Los dueños de plantas se olvidan. Y luego se sienten culpables.",
       body: [
         "La mayoría de la gente que compra una planta quiere una sola cosa: mantenerla viva. Pero se olvidan de regarla, o la riegan de más, y de cualquier forma se sienten mal. Les pregunté a 37 personas qué haría que una app de plantas se ganara un lugar en su teléfono. Una de las dos respuestas más comunes: “Los consejos son demasiado genéricos, no toman en cuenta mi casa.” Lo que más rápido hace que borren una app, dicho por 12 de 37 sin que se lo preguntara: demasiadas notificaciones. Una persona lo resumió así: “El cuidado de plantas debería sentirse tranquilo y sano, no estresante.”",
-        "El punto débil: en lo que peor están los dueños nuevos es en la luz — dónde poner una planta, y por qué. Ninguna app grande lo enseña. Los dueños nuevos calificaron su confianza para darles la luz del sol correcta en 2.4 de 5 (13 personas); los experimentados, en 3.4 (14 personas). Ahí, más la confianza, es donde Grove gana o no gana.",
+        "El punto débil: en lo que peor están los dueños nuevos es en la luz, dónde poner una planta, y por qué. Ninguna app grande lo enseña. Los dueños nuevos calificaron su confianza para darles la luz del sol correcta en 2.4 de 5 (13 personas); los experimentados, en 3.4 (14 personas). Ahí, más la confianza, es donde Grove gana o no gana.",
       ],
     },
     {
@@ -47,9 +47,9 @@ export const GROVE_ES: SpanishCaseStudyData = {
       eyebrow: "Producto",
       title: "Agrupé las plantas por dónde viven, no en una sola lista larga.",
       body: [
-        "Otras apps meten todas las plantas en una sola lista larga. Abruma — ¿por dónde empieza? Grove agrupa las plantas por dónde viven: la ventana de la cocina, el estante de la sala, la recámara. Cada pantalla responde una sola pregunta: ¿qué grupo estoy viendo? Un usuario nuevo solo ve una tarea al día.",
+        "Otras apps meten todas las plantas en una sola lista larga. Abruma, ¿por dónde empieza? Grove agrupa las plantas por dónde viven: la ventana de la cocina, el estante de la sala, la recámara. Cada pantalla responde una sola pregunta: ¿qué grupo estoy viendo? Un usuario nuevo solo ve una tarea al día.",
         "También anoté las cuatro decisiones donde le dije que no a la IA: el tono que hace sentir culpa, las recompensas tipo juego, la falsa certeza al identificar una planta y la seguridad para mascotas. Cada una respaldada por lo que dijo la encuesta. La quinta es un error mío: la lógica del calendario de riego, que todavía estoy corrigiendo.",
-        "Esa quinta es la que estoy diseñando ahora. La IA armó un calendario de riego: cada planta con su intervalo fijo. Pero regar de más mata más plantas de interior que olvidarlas, y un intervalo fijo es justo como pasa. El recordatorio le va a pedir que revise, no que riegue: “Ficus lirado — revise la primera pulgada de tierra.” Mi propia guía de cuidado ya lo decía; el motor de recordatorios no se había puesto al día.",
+        "Esa quinta es la que estoy diseñando ahora. La IA armó un calendario de riego: cada planta con su intervalo fijo. Pero regar de más mata más plantas de interior que olvidarlas, y un intervalo fijo es justo como pasa. El recordatorio le va a pedir que revise, no que riegue: “Ficus lirado, revise la primera pulgada de tierra.” Mi propia guía de cuidado ya lo decía; el motor de recordatorios no se había puesto al día.",
       ],
     },
     {
@@ -404,7 +404,7 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
     },
     {
       anchor: "knowunity-decisions",
-      eyebrow: "Cuatro decisiones · mi criterio, no pruebas",
+      eyebrow: "Cuatro decisiones que tomé, aún sin probar",
       title: "Quien demuestra es el estudiante, no Knowie.",
       body: ["Nada obliga al estudiante a decirlo. Así que: devolver las palabras, ofrecer los fallos, pedir el micrófono cuando hace falta, decir en qué punto va."],
       bullets: [
@@ -442,7 +442,7 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
           "Dos tipos de error. Dos tipos de ayuda. (El micrófono no lo captó / A medias)",
           "Vea lo que retuvo",
           "Luego recupere lo que falló",
-          "Tarjeta final: Say It Back — Explíquelo. Demuestre que lo retuvo.",
+          "Tarjeta final: Say It Back: Explíquelo. Demuestre que lo retuvo.",
         ],
         transcriptNote: "Solo música, sin narración. El texto en pantalla está en inglés.",
       },

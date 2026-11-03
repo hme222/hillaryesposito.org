@@ -184,7 +184,7 @@ export type MskCopy = {
 };
 
 const en: MskCopy = {
-  pageTitle: "MSK — Clinical Systems Case Study",
+  pageTitle: "MSK: Clinical Systems Case Study",
   breadcrumb: { work: "Work", here: "Memorial Sloan Kettering" },
   jumpLabel: "Jump to",
   chapters: [
@@ -256,7 +256,7 @@ const en: MskCopy = {
     mapAside: "three steps outside the system",
     mapNodesBefore: ["Open queue", "Find message", "Print", "Route to HIM", "Wait for scan", "Re-check filing"],
     mapNodesAfter: ["Open queue", "Select message", "Send to EMR", "Files in chart", "Status updated"],
-    provenanceKicker: "How these artifacts were made",
+    provenanceKicker: "How I made these screens",
     provenanceBody:
       "Every screen and map here was rebuilt from memory of my own current-state documentation; the original notes didn't survive. No protected health information, no exported records, and no reproduction of the vendor interface. Showing the workflow does not require showing a patient, so it does not.",
   },
@@ -278,7 +278,7 @@ const en: MskCopy = {
     laneSubs: { evidence: "What exists", front: "Operations · front", back: "Backstage", support: "IT · support" },
     visibility: "LINE OF VISIBILITY",
     waiting: "coordinator is waiting",
-    noSignal: "NO RETURN SIGNAL — WHICH IS WHY STEP 06 EXISTS",
+    noSignal: "No return signal, which is why step 6 exists",
     nodesBefore: [
       "Dashboard queue", "Open queue", "In the portal",
       "Message on screen", "Find message",
@@ -297,7 +297,7 @@ const en: MskCopy = {
     key: {
       frontTerm: "Coordinator (operations) · frontstage",
       frontBefore:
-        "Opens the queue, finds the message, prints it — then has to return later and check whether it was ever filed.",
+        "Opens the queue, finds the message, prints it, then has to return later and check whether it was ever filed.",
       frontAfter:
         "Opens the queue, selects the message, sends it to the chart, and lands back on the queue with the status already updated.",
       backTerm: "HIM (document imaging) · backstage",
@@ -307,7 +307,7 @@ const en: MskCopy = {
         "Not on this path any more. The department that used to receive paper never enters the filing workflow.",
       supportTerm: "IT: portal, EMR, and permissions · support",
       supportBefore:
-        "Holds the message in the portal before it is printed and in the chart after it is scanned — but not in between, which is where the gap is.",
+        "Holds the message in the portal before it is printed and in the chart after it is scanned, but not in between, which is where the gap is.",
       supportAfter:
         "Writes the message into the chart, and exposes the action only when the message is ready and the role allows it.",
       changedTerm: "What changed",
@@ -383,7 +383,7 @@ const en: MskCopy = {
       {
         n: "03",
         title: "Administrative onboarding",
-        finding: "Epic, HIPAA, the compliance modules, and the technical and soft skills of the job were taught the same way to every new administrative hire — people who arrived with very different starting points, some fluent with the systems, some never having opened them.",
+        finding: "Epic, HIPAA, the compliance modules, and the technical and soft skills of the job were taught the same way to every new administrative hire, people who arrived with very different starting points, some fluent with the systems, some never having opened them.",
         change: "I worked with the design team to rebuild the program, then curated the instruction cohort by cohort so a one-to-three-week course met the range of abilities actually in the room.",
       },
     ],
@@ -416,7 +416,7 @@ const en: MskCopy = {
       {
         n: "03", role: "Training Facilitator", taught: "The authority to redesign it",
         term: "Training & Facilitation (ATD) · current-state mapping",
-        body: "I instructed on Epic (the record software), HIPAA (the patient-privacy law), and the compliance modules. Owning how staff were taught the system meant documenting what actually happens, not what the policy says — and the gap between the two is where the design work lives.",
+        body: "I instructed on Epic (the record software), HIPAA (the patient-privacy law), and the compliance modules. Owning how staff were taught the system meant documenting what actually happens, not what the policy says, and the gap between the two is where the design work lives.",
       },
     ],
     cards: [
@@ -426,13 +426,13 @@ const en: MskCopy = {
     ],
     ownershipLabel: "What service design means here:",
     ownershipBody:
-      "I own the whole path a task takes — across four departments that did not report to me — not the screen at the end of it. The queue above is one screen. The reason it works is everything behind it.",
-    boundaryAria: "MSK research evidence boundary",
+      "I own the whole path a task takes, across four departments that did not report to me, not the screen at the end of it. The queue above is one screen. The reason it works is everything behind it.",
+    boundaryAria: "What the research does and does not show",
     boundaryLabel: "Evidence boundary",
     boundaryBody:
-      "The source record preserves the workflow, departments, decisions, and outcomes. Participant counts from shift observation were not recorded, so I use this evidence to explain the decisions—not to claim prevalence.",
+      "The source record preserves the workflow, departments, decisions, and outcomes. Participant counts from shift observation were not recorded, so I use this evidence to explain the decisions, not to claim prevalence.",
     mapFallback: "Four departments, one task → mapped → redesigned → in production",
-    mapStagesAria: "Clinical system transformation stages",
+    mapStagesAria: "Stages of the change",
     mapStages: ["Four departments, one task", "Mapped", "Redesigned", "In production"],
   },
 
@@ -463,7 +463,7 @@ const en: MskCopy = {
     ],
     survived: [
       { fact: "EMR filing workflow", what: "Added to the production system; I saw it while training new employees" },
-      { fact: "CPR certification format", what: "Department compliant a month before the original deadline — no extension needed" },
+      { fact: "CPR certification format", what: "Department compliant a month before the original deadline, no extension needed" },
     ],
     why:
       "The work moved from personal workaround to shared system; the plain-language format got the department compliant before the deadline.",
@@ -474,9 +474,9 @@ const en: MskCopy = {
 
   outcomes: {
     kicker: "What it added up to",
-    title: "The numbers, and who they belong to.",
+    title: "The numbers, and whose they are.",
     intro:
-      "I initiated the dashboard-to-online-EMR workflow redesign as a coordinator and it was implemented off my presentation to the company two roles later, rewrote the CPR certification material for the clinicians completing it, and rebuilt the onboarding program — Epic, HIPAA, compliance, and the technical and soft skills — for new administrative staff.",
+      "I initiated the dashboard-to-online-EMR workflow redesign as a coordinator and it was implemented off my presentation to the company two roles later, rewrote the CPR certification material for the clinicians completing it, and rebuilt the onboarding program, Epic, HIPAA, compliance, and the technical and soft skills, for new administrative staff.",
     disclaimer: "Anonymized evidence · organization-wide results are attributed to the initiative · the ~$1M/year is a projection from my pitch, not measured savings",
     metrics: [
       { tag: "Led", n: "1 month", label: "early: the whole department certified before the original deadline, with no 4-month extension" },
@@ -496,7 +496,7 @@ const en: MskCopy = {
 };
 
 const es: MskCopy = {
-  pageTitle: "MSK — Estudio de caso de sistemas clínicos",
+  pageTitle: "MSK: Estudio de caso de sistemas clínicos",
   breadcrumb: { work: "Trabajo", here: "Memorial Sloan Kettering" },
   jumpLabel: "Ir a",
   chapters: [
@@ -587,7 +587,7 @@ const es: MskCopy = {
     laneSubs: { evidence: "Lo que existe", front: "Operaciones · frente", back: "Trastienda", support: "TI · soporte" },
     visibility: "LÍNEA DE VISIBILIDAD",
     waiting: "la coordinación espera",
-    noSignal: "SIN SEÑAL DE VUELTA — POR ESO EXISTE EL PASO 06",
+    noSignal: "Sin señal de vuelta, por eso existe el paso 6",
     nodesBefore: [
       "Cola del panel", "Abrir la cola", "En el portal",
       "Mensaje en pantalla", "Buscar mensaje",
@@ -606,7 +606,7 @@ const es: MskCopy = {
     key: {
       frontTerm: "Coordinación (operaciones) · escenario visible",
       frontBefore:
-        "Abre la cola, busca el mensaje, lo imprime — y después tiene que volver a revisar si alguna vez se archivó.",
+        "Abre la cola, busca el mensaje, lo imprime, y después tiene que volver a revisar si alguna vez se archivó.",
       frontAfter:
         "Abre la cola, selecciona el mensaje, lo envía a la historia y regresa a la cola con el estado ya actualizado.",
       backTerm: "HIM (imágenes de documentos) · trastienda",
@@ -616,7 +616,7 @@ const es: MskCopy = {
         "Ya no está en esta ruta. El área que antes recibía papel nunca entra al flujo de archivo.",
       supportTerm: "TI: portal, EMR y permisos · soporte",
       supportBefore:
-        "Tiene el mensaje en el portal antes de imprimirlo y en la historia después de escanearlo — pero no en medio, que es justo donde está el hueco.",
+        "Tiene el mensaje en el portal antes de imprimirlo y en la historia después de escanearlo, pero no en medio, que es justo donde está el hueco.",
       supportAfter:
         "Escribe el mensaje en la historia y muestra la acción solo cuando el mensaje está listo y el permiso lo autoriza.",
       changedTerm: "Qué cambió",
@@ -690,7 +690,7 @@ const es: MskCopy = {
       {
         n: "03",
         title: "Incorporación administrativa",
-        finding: "Epic, HIPAA, los módulos de cumplimiento y las habilidades técnicas y blandas del puesto se enseñaban igual a cada nueva persona administrativa — gente que llegaba con puntos de partida muy distintos, algunas con soltura en los sistemas y otras que nunca los habían abierto.",
+        finding: "Epic, HIPAA, los módulos de cumplimiento y las habilidades técnicas y blandas del puesto se enseñaban igual a cada nueva persona administrativa, gente que llegaba con puntos de partida muy distintos, algunas con soltura en los sistemas y otras que nunca los habían abierto.",
         change: "Trabajé con el equipo de diseño para reconstruir el programa y luego ajusté la instrucción cohorte por cohorte, para que un curso de una a tres semanas respondiera al rango de habilidades que de verdad había en la sala.",
       },
     ],
@@ -723,7 +723,7 @@ const es: MskCopy = {
       {
         n: "03", role: "Facilitadora de capacitación", taught: "La autoridad para rediseñarlo",
         term: "Capacitación y facilitación (ATD) · mapeo del estado actual",
-        body: "Di instrucción sobre Epic (el software del expediente), HIPAA (la ley de privacidad del paciente) y los módulos de cumplimiento. Hacerme cargo de cómo se le enseñaba el sistema al personal significó documentar lo que de verdad pasa, no lo que dice la política — y la brecha entre las dos es donde vive el trabajo de diseño.",
+        body: "Di instrucción sobre Epic (el software del expediente), HIPAA (la ley de privacidad del paciente) y los módulos de cumplimiento. Hacerme cargo de cómo se le enseñaba el sistema al personal significó documentar lo que de verdad pasa, no lo que dice la política, y la brecha entre las dos es donde vive el trabajo de diseño.",
       },
     ],
     cards: [
@@ -733,7 +733,7 @@ const es: MskCopy = {
     ],
     ownershipLabel: "Qué significa aquí el diseño de servicios:",
     ownershipBody:
-      "Me hago cargo de toda la ruta que recorre una tarea — a través de cuatro áreas que no me reportaban — no de la pantalla del final. La cola de arriba es una pantalla. La razón por la que funciona es todo lo que está detrás.",
+      "Me hago cargo de toda la ruta que recorre una tarea, a través de cuatro áreas que no me reportaban, no de la pantalla del final. La cola de arriba es una pantalla. La razón por la que funciona es todo lo que está detrás.",
     boundaryAria: "Límite de evidencia de la investigación en MSK",
     boundaryLabel: "Límite de la evidencia",
     boundaryBody:
@@ -764,7 +764,7 @@ const es: MskCopy = {
     ],
     survived: [
       { fact: "Flujo de archivo del EMR", what: "Agregado al sistema de producción; lo vi mientras capacitaba a nuevos empleados" },
-      { fact: "Formato de certificación de RCP", what: "Área conforme un mes antes de la fecha límite original — sin prórroga" },
+      { fact: "Formato de certificación de RCP", what: "Área conforme un mes antes de la fecha límite original, sin prórroga" },
     ],
     why:
       "El trabajo pasó de un desvío personal a un sistema compartido; el formato en lenguaje sencillo dejó al área conforme antes de la fecha límite.",
@@ -777,7 +777,7 @@ const es: MskCopy = {
     kicker: "A cuánto sumó",
     title: "Los números, y a quién pertenecen.",
     intro:
-      "Inicié el rediseño del flujo del panel al EMR en línea desde el puesto de coordinación, y se implementó a partir de mi presentación a la organización dos puestos después; reescribí el material de certificación de RCP para el personal clínico que debía completarlo; y reconstruí el programa de incorporación — Epic, HIPAA, cumplimiento y las habilidades técnicas y blandas — para el nuevo personal administrativo.",
+      "Inicié el rediseño del flujo del panel al EMR en línea desde el puesto de coordinación, y se implementó a partir de mi presentación a la organización dos puestos después; reescribí el material de certificación de RCP para el personal clínico que debía completarlo; y reconstruí el programa de incorporación, Epic, HIPAA, cumplimiento y las habilidades técnicas y blandas, para el nuevo personal administrativo.",
     disclaimer: "Evidencia anonimizada · los resultados de toda la organización se atribuyen a la iniciativa · los ~$1M/año son una proyección de mi propuesta, no un ahorro medido",
     metrics: [
       { tag: "Dirigí", n: "1 mes", label: "antes: toda el área se certificó antes de la fecha límite original, sin la prórroga de 4 meses" },

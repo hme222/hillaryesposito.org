@@ -56,7 +56,7 @@ export default function GroveScreenGallery({ screens }: { screens: Screen[] }) {
             <div className="rp-strip__frame rp-strip__frame--app" style={{ background: screen.bg }}>
               <img
                 src={`/assets/grove/${screen.src}`}
-                alt={`Grove — ${screen.cap}`}
+                alt={`Grove: ${screen.cap}`}
                 loading="lazy"
               />
             </div>

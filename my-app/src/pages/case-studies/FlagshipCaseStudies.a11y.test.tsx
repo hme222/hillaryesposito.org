@@ -906,7 +906,7 @@ describe("flagship case-study accessibility", () => {
   });
 
   it.each([
-    ["MSK", <FlagshipMSK />, "One queue. Four teams.", "How these artifacts were made"],
+    ["MSK", <FlagshipMSK />, "One queue. Four teams.", "How I made these screens"],
     ["Grove", <RisoGrove />, "Twelve features became three.", "self-report prioritized the next build"],
     ["Mobbin", <FlagshipMobbin />, "200+ screens per app, searchable by task.", "I did not design"],
   ])("%s leads with an outcome title and visible evidence boundary", async (_name, page, title, boundary) => {

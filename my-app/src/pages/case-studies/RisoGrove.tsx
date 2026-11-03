@@ -35,9 +35,9 @@ const CHAPTERS: CaseStudyChapter[] = [
 ];
 
 const SURVEY_FINDINGS = [
-  { stat: "76%", label: "picked smart care reminders as a launch dealbreaker — 28 of 37, the clear top answer" },
+  { stat: "76%", label: "picked smart care reminders as a launch dealbreaker, 28 of 37, the clear top answer" },
   { stat: "54%", label: "wanted to point a camera at a plant and have the app just tell them what it is" },
-  { stat: "12", label: "of 37 named notification volume, unprompted, as what would make them delete it — the most-cited reason by far" },
+  { stat: "12", label: "of 37 named notification volume, unprompted, as what would make them delete it, the most-cited reason by far" },
   // Recomputed 2026-10-19 from all 37 responses with the Grove repo's
   // docs/research/scripts/survey_stats.py. Groups come from the "relationship
   // with plants" question: new owners answered 13 of 14, mean 2.38;
@@ -80,7 +80,7 @@ const renderRankRow = (f: (typeof MVP_FEATURES)[number]) => (
   </li>
 );
 
-// The full five-call decision table ("All five calls, in full") is off the
+// The full five-call decision table ("All five decisions") is off the
 // page for now - owner's call, 2026-10-13; she is reworking it and will add it
 // back in the next few weeks. Flip this to true to restore it. The OVERRIDES
 // data below stays intact for that. While it is off, the "5 product calls"
@@ -121,7 +121,7 @@ const DECISIONS = [
     old: "grove-live-add.jpg",
     oldAlt: "First-build add-plant screen giving a single confident identification",
     oldBg: "#31302e",
-    why: "Show top guesses, confidence, and sources—not one false verdict.",
+    why: "Show top guesses, confidence, and sources, not one false verdict.",
   },
   {
     feature: "Personality, not points",
@@ -152,7 +152,7 @@ const OVERRIDES: Array<{ topic: string; ai: string; me: string; why: string; nex
 
 export default function RisoGrove() {
   const { lang } = useLanguage();
-  usePageTitle("Grove — Research-to-Scope Case Study", lang !== "es");
+  usePageTitle("Grove: Research-to-Scope Case Study", lang !== "es");
 
   // Scroll-reveal — fade/rise sections in as they enter view (Carmen-style
   // motion). Shared with useFlagshipReveal so the reveal + proximity-armed
@@ -296,7 +296,7 @@ export default function RisoGrove() {
             </div>
             <div className="rp-split__media">
               <div className="rp-device rp-device--app">
-                <img src="/assets/grove/grove-live-care.jpg" alt="Grove daily care — one clear task a day, overdue plants surface first, no shaming" />
+                <img src="/assets/grove/grove-live-care.jpg" alt="Grove daily care: one clear task a day, overdue plants surface first, no shaming" />
               </div>
             </div>
           </div>
@@ -379,7 +379,7 @@ export default function RisoGrove() {
           <figure className="rp-decision rp-reveal" data-evidence="true">
             <div className="rp-decision__pair">
               <div className="rp-decision__col">
-                <span className="rp-decision__tag rp-decision__tag--old">Representative first-build artifact</span>
+                <span className="rp-decision__tag rp-decision__tag--old">First-build screen</span>
                 <div className="rp-device rp-device--app" style={{ background: FEATURED_DECISION.oldBg }}>
                   <img src={`/assets/grove/${FEATURED_DECISION.old}`} alt={FEATURED_DECISION.oldAlt} loading="lazy" />
                 </div>
@@ -421,7 +421,7 @@ export default function RisoGrove() {
           <h3 className="rp-subhead">The trust decision</h3>
           <p className="rp-lede">
             A florist, unprompted: “Any generative AI in this will remove any sense of trust.”
-            She wasn't alone—5 of 37 said they'd trust no AI feature in the app at all, and 22 of 37
+            She wasn't alone, 5 of 37 said they'd trust no AI feature in the app at all, and 22 of 37
             said explaining why the AI made a call is what would earn their trust. Plant ID carried
             that risk directly, so instead of one confident answer, it shows top guesses, how sure it
             is, and its sources. False certainty is the fastest way to lose trust.
@@ -458,7 +458,7 @@ export default function RisoGrove() {
 
           {SHOW_DECISION_TABLE && (
             <>
-              <h3 className="rp-subhead">All five calls, in full</h3>
+              <h3 className="rp-subhead">All five decisions</h3>
               <div className="rp-accordion rp-reveal" data-evidence="true">
                 {OVERRIDES.map((o, i) => (
                   <details className="rp-acc" key={o.topic}>
@@ -506,7 +506,7 @@ export default function RisoGrove() {
             </div>
           </div>
 
-          <h3 className="rp-subhead">The decision record</h3>
+          <h3 className="rp-subhead">What I decided</h3>
           <dl className="rp-decisionRecord" data-evidence="true">
             <div><dt>First build</dt><dd>Water on a fixed calendar.</dd></div>
             <div><dt>What broke</dt><dd>The interface rewarded overwatering.</dd></div>
@@ -514,7 +514,7 @@ export default function RisoGrove() {
             <div><dt>Next test</dt><dd>Plant health and 90-day retention, not reminder taps.</dd></div>
           </dl>
 
-          <h3 className="rp-subhead">Locked principles</h3>
+          <h3 className="rp-subhead">Rules I kept</h3>
           <div className="rp-foundation rp-reveal" data-evidence="true">
             <div className="rp-fcard"><p className="rp-fcard__k">Principle · locked</p><p className="rp-fcard__t">One task a day</p><p className="rp-fcard__d">A new user only ever sees one decision per screen. Five moderated sessions showed people stalled when care led with a feed and a mission.</p></div>
             <div className="rp-fcard"><p className="rp-fcard__k">Principle · locked</p><p className="rp-fcard__t">Grouped by where they live</p><p className="rp-fcard__d">Plants grouped by room, never one long overwhelming list. Based on the five moderated sessions; task records are not preserved.</p></div>
@@ -566,7 +566,7 @@ export default function RisoGrove() {
           {/* The closing action stays consistent across the complete case-study
               sequence so the next step remains predictable. */}
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
-          <ShareCaseStudy title="Grove — a case study by Hillary Esposito" />
+          <ShareCaseStudy title="Grove: a case study by Hillary Esposito" />
         </div>
       </section>
 

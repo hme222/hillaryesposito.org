@@ -53,7 +53,7 @@ const STEP_APP = [0, 1, 2, 0];
 
 export default function FlagshipMobbin() {
   const { lang } = useLanguage();
-  usePageTitle("Mobbin — UX Flow Documentation Case Study", lang !== "es");
+  usePageTitle("Mobbin: UX Flow Documentation Case Study", lang !== "es");
   const rootRef = useRef<HTMLElement>(null);
   useFlagshipReveal(rootRef);
 
@@ -145,7 +145,7 @@ export default function FlagshipMobbin() {
       <details className="rp-deepDive">
         <summary>
           <span className="rp-deepDive__copy">
-            <b className="rp-deepDive__title">Explore the complete three-app capture archive</b>
+            <b className="rp-deepDive__title">See every screen I captured</b>
           </span>
           <span className="rp-deepDive__state" aria-hidden="true">
             <span className="rp-deepDive__stateClosed">Open</span>
@@ -179,7 +179,7 @@ export default function FlagshipMobbin() {
         intro="I documented the source apps for Mobbin’s Finance+ reference library. I did not design Kikoff, Polymarket, Discover, or Mobbin."
         disclaimer="Freelance app-capture work · source-product ownership stays with each company"
         metrics={[
-          { n: "200+", label: "screens per app — captured, sequenced, annotated, and labeled across three apps" },
+          { n: "200+", label: "screens per app, captured, sequenced, annotated, and labeled across three apps" },
           { n: "3", label: "live finance apps documented, each earning confidence a different way" },
           { n: "4", label: "months building reusable references for designers" },
         ]}
@@ -191,7 +191,7 @@ export default function FlagshipMobbin() {
           <h2>After 200 screens per app, I notice how a flow earns trust.</h2>
           <p>Kikoff shows proof after each action, Polymarket shows risk before you commit, Discover makes the fine print findable.</p>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
-          <ShareCaseStudy title="Mobbin — a case study by Hillary Esposito" />
+          <ShareCaseStudy title="Mobbin: a case study by Hillary Esposito" />
         </div>
       </section>
 

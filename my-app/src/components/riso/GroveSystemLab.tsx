@@ -166,7 +166,7 @@ export default function GroveSystemLab() {
                 <p>
                   Reconstructed from Grove's research and decision log, not a live model. In the
                   prototype this confidence pattern comes from a plant-ID model; the specimen shows
-                  the <b>trust behavior</b> — a ranked guess with a way to verify, never a silent
+                  the <b>trust behavior</b>, a ranked guess with a way to verify, never a silent
                   verdict.
                 </p>
               </div>
@@ -221,7 +221,7 @@ export default function GroveSystemLab() {
           ))}
         </div>
         <p className="sr-only" role="status" aria-live="polite">
-          {copied ? (copied.ok ? `${copied.hex} copied to clipboard` : `Clipboard unavailable — select ${copied.hex} to copy it`) : ""}
+          {copied ? (copied.ok ? `${copied.hex} copied to clipboard` : `Clipboard unavailable. Select ${copied.hex} to copy it`) : ""}
         </p>
         <div className="rp-neutral" aria-label="Grove neutral color ramp from ink to paper">
           {["#20241C", "#45503F", "#66705F", "#C2CBB8", "#DEE4D6", "#F5F0EA"].map((color, index) => (

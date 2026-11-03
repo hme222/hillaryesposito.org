@@ -77,7 +77,7 @@ const REEL: CaseStudyReelData = {
     "Two kinds of wrong. Two kinds of help. (Mic missed it / Half right)",
     "See what stuck",
     "Then win back the misses",
-    "End card: Say It Back — Explain it. Prove it stuck.",
+    "End card: Say It Back: Explain it. Prove it stuck.",
   ],
   transcriptNote: "Music only; no narration.",
 };
@@ -124,7 +124,7 @@ const STEP_FRAME = [0, 1, 2, 3];
 export default function FlagshipKnowunity() {
   const { lang } = useLanguage();
   const t = useT();
-  usePageTitle("Knowunity — Voice Active Recall Case Study", lang !== "es");
+  usePageTitle("Knowunity: Voice Active Recall Case Study", lang !== "es");
   const rootRef = useRef<HTMLElement>(null);
   useFlagshipReveal(rootRef);
 
@@ -163,7 +163,7 @@ export default function FlagshipKnowunity() {
             <p className="rp-sub">
               After a student says a definition aloud, Knowie answers in text and quotes the student’s own words back as proof. I designed the flow and built the prototype in a solo 2.5‑week sprint.
             </p>
-            <dl className="rp-heroEvidence rp-heroEvidence--boundary" aria-label="Knowunity build and evidence boundary">
+            <dl className="rp-heroEvidence rp-heroEvidence--boundary" aria-label="What I built and what is untested">
               <div><dt>Built here</dt><dd>Four interaction decisions · coded prototype · Storybook catalog</dd></div>
               <div><dt>Not proved</dt><dd>Recall mocked · no student testing · not shipped</dd></div>
             </dl>
@@ -201,7 +201,7 @@ export default function FlagshipKnowunity() {
       <div data-evidence="true"><DecisionStory
         id="knowunity-decisions"
         languageAnchor="knowunity-decisions"
-        kicker="Four decisions · my calls, not test findings"
+        kicker="Four decisions · I made these, not yet tested"
         title="The student does the proving, not Knowie."
         intro="Nothing makes a student say it. So: echo the words, offer the misses, ask for the mic when it's needed, say where you are."
         steps={STEPS}
@@ -259,7 +259,7 @@ export default function FlagshipKnowunity() {
       <details className="rp-deepDive">
         <summary>
           <span className="rp-deepDive__copy">
-            <b className="rp-deepDive__title">Inspect all Knowunity implementation decisions</b>
+            <b className="rp-deepDive__title">See how I built it</b>
           </span>
           <span className="rp-deepDive__state" aria-hidden="true">
             <span className="rp-deepDive__stateClosed">Open</span>
@@ -303,7 +303,7 @@ export default function FlagshipKnowunity() {
           <h2>I prototype to find the next test.</h2>
           <p>Say It Back shows how I work: build it, say what’s mocked, name the next test.</p>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
-          <ShareCaseStudy title="Knowunity — a case study by Hillary Esposito" />
+          <ShareCaseStudy title="Knowunity: a case study by Hillary Esposito" />
         </div>
       </section>
 

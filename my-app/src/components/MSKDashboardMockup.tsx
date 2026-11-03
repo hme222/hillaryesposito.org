@@ -89,8 +89,8 @@ export default function MSKDashboardMockup({
   const visibleRows = rowIndices ? rowIndices.map((i) => copy.rows[i]).filter(Boolean) : copy.rows;
   const legendBody = (
     <>
-      <span><b>{copy.mrnTerm}</b> — {copy.mrnDef}</span>
-      <span><b>{copy.emrTerm}</b> — {copy.emrDef}</span>
+      <span><b>{copy.mrnTerm}</b>: {copy.mrnDef}</span>
+      <span><b>{copy.emrTerm}</b>: {copy.emrDef}</span>
     </>
   );
 
