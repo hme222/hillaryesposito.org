@@ -6,6 +6,7 @@ import ReadingProgress from "../../components/flagship/ReadingProgress";
 import ShareCaseStudy from "../../components/flagship/ShareCaseStudy";
 import EvidenceField from "../../components/flagship/EvidenceField";
 import ConfidenceMap, { ConfidenceRow } from "../../components/flagship/ConfidenceMap";
+import BuildGates from "../../components/flagship/BuildGates";
 import CartoField from "../../components/riso/CartoField";
 import RisoDefs from "../../components/riso/RisoDefs";
 import SpanishCaseStudy from "../../components/SpanishCaseStudy";
@@ -50,6 +51,16 @@ const CONFIDENCE_ROWS: ConfidenceRow[] = [
   { finding: "Coverage barriers may interrupt care", observed: { level: "Moderate", claim: "that people in several roles see the risk" }, limit: { level: "Low", claim: "on how common it is and on patient experience" } },
   { finding: "People keep the judgment and recovery work", observed: { level: "High", claim: "that human work is present" }, limit: { level: "Low", claim: "that it is an unmet need, or that automation answers it" } },
   { finding: "AI experience varies", observed: { level: "High", claim: "that experience differs" } },
+];
+
+// From the project's own decision gate (handoff, 2026-10-21). None has been met:
+// the case reconstruction study has been planned, not run.
+const BUILD_GATES = [
+  { text: "A patient or caregiver describes a recent coverage or paperwork event, and the care problem that followed it.", status: "Not yet shown" },
+  { text: "The people who handle that event confirm it from their side of the work.", status: "Not yet shown" },
+  { text: "Someone already owns the step, and I can name what a new tool would replace.", status: "Not yet shown" },
+  { text: "There is an outcome I can measure safely.", status: "Not yet shown" },
+  { text: "Privacy is settled: fictional or authorized de-identified cases only.", status: "Not yet shown" },
 ];
 
 const FINDINGS: { title: string; body: React.ReactNode; confidence: string }[] = [
@@ -258,6 +269,16 @@ export default function FlagshipUxWoman() {
         ]}
         route={["Recruit by behavior", "Rate confidence", "Reconstruct recent cases", "Then build"]}
       /></div>
+
+      <section className="rp-section" aria-label="What would make me build">
+        <div className="rp-wrap">
+          <BuildGates
+            heading="What would make me build"
+            intro="Nothing gets built until one pathway clears all five. The first one to study is outpatient medication access when coverage changes. It is a candidate, not a finding."
+            gates={BUILD_GATES}
+          />
+        </div>
+      </section>
 
       <section className="rp-section">
         <div className="rp-wrap rp-close">

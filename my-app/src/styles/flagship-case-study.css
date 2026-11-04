@@ -1009,3 +1009,15 @@
 .fp-statusBoard tr.is-alert td { font-weight: 700; color: var(--coral-text); }
 .fp-statusBoard tr.is-alert .fp-statusBoard__mark { color: var(--coral-text); }
 .fp-statusBoard__read { margin: 1rem 0 0; font-size: .95rem; line-height: 1.5; color: var(--ink-2); max-width: 60ch; }
+
+/* ---------- Build gates (UX Woman) ---------- */
+.fp-gates { max-width: 760px; margin: 0; }
+.fp-gates__h { margin: 0; font-size: var(--ts-heading); line-height: 1.1; }
+.fp-gates__intro { margin: .7rem 0 0; max-width: 56ch; color: var(--ink-2); line-height: 1.5; }
+.fp-gates__list { margin: 1.4rem 0 0; padding: 0; list-style: none; counter-reset: gate; border-top: 2px solid var(--ink); }
+.fp-gates__list li { counter-increment: gate; display: grid; grid-template-columns: 2.2rem 1fr auto; gap: .4rem 1rem; align-items: start; padding: 1rem 0; border-bottom: 1px solid var(--hair); }
+.fp-gates__list li::before { content: counter(gate); font-weight: 800; color: var(--muted); }
+.fp-gates__text { line-height: 1.45; }
+.fp-gates__status { white-space: nowrap; font-weight: 700; font-size: .9rem; color: var(--ink); }
+.fp-gates__mark { margin-right: .4em; color: var(--muted); }
+@media (max-width: 640px) { .fp-gates__list li { grid-template-columns: 2.2rem 1fr; } .fp-gates__status { grid-column: 2; } }

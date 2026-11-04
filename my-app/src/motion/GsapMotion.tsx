@@ -88,6 +88,11 @@ function build(root: Document) {
     }
   }
 
+  // Build gates: each condition steps in.
+  q(".fp-gates").forEach((el) => {
+    gsap.from(el.querySelectorAll("li"), { y: 14, opacity: 0.3, duration: 0.5, ease: "power2.out", stagger: 0.08, scrollTrigger: enter(el, "top 85%") });
+  });
+
   // Order status board: rows step in when the board arrives.
   q(".fp-statusBoard").forEach((el) => {
     gsap.from(el.querySelectorAll("tbody tr"), { y: 12, opacity: 0.3, duration: 0.5, ease: "power2.out", stagger: 0.06, scrollTrigger: enter(el, "top 85%") });
