@@ -88,6 +88,11 @@ function build(root: Document) {
     }
   }
 
+  // Order status board: rows step in when the board arrives.
+  q(".fp-statusBoard").forEach((el) => {
+    gsap.from(el.querySelectorAll("tbody tr"), { y: 12, opacity: 0.3, duration: 0.5, ease: "power2.out", stagger: 0.06, scrollTrigger: enter(el, "top 85%") });
+  });
+
   // Confidence map: each level bar fills left to right as the table arrives.
   q(".fp-confidence").forEach((el) => {
     gsap.from(el.querySelectorAll(".fp-confidence__bar i"), { scaleX: 0, transformOrigin: "left center", duration: 0.5, ease: "power2.out", stagger: 0.03, scrollTrigger: enter(el, "top 85%") });

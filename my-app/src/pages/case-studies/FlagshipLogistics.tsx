@@ -6,6 +6,7 @@ import ReadingProgress from "../../components/flagship/ReadingProgress";
 import ShareCaseStudy from "../../components/flagship/ShareCaseStudy";
 import EvidenceField from "../../components/flagship/EvidenceField";
 import LogisticsMechanism from "../../components/LogisticsMechanism";
+import OrderStatusBoard from "../../components/flagship/OrderStatusBoard";
 import RisoDefs from "../../components/riso/RisoDefs";
 import CartoField from "../../components/riso/CartoField";
 import SpanishCaseStudy from "../../components/SpanishCaseStudy";
@@ -166,6 +167,7 @@ export default function FlagshipLogistics() {
               </article>
             ))}
           </div>
+          <OrderStatusBoard />
         </div>
       </section>
 

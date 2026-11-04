@@ -69,6 +69,12 @@ export default function MSKFilingReceipt({
     };
   }, [dashboardCopy]);
   const isFiled = step === copy.steps.length;
+  // Once the message is filed, the queue is one shorter. The change shows up
+  // in the count, not only in the row's colour.
+  const shownCopy = useMemo<DashboardCopy>(() => {
+    if (!isFiled) return queueCopy;
+    return { ...queueCopy, queueMeta: queueCopy.queueMeta.replace(/^(\d+)/, (m) => String(Math.max(0, parseInt(m, 10) - 1))) };
+  }, [isFiled, queueCopy]);
 
   const runFiling = () => {
     timers.current.forEach(window.clearTimeout);
@@ -119,7 +125,7 @@ export default function MSKFilingReceipt({
             legendDisclosure
             rowIndices={[isFiled ? 1 : 0]}
             activeRow={0}
-            copy={queueCopy}
+            copy={shownCopy}
           />
           <p className="fp-receipt__stepLine" aria-hidden="true">
             {step === 0 ? copy.ready : copy.steps[step - 1]}
