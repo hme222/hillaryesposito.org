@@ -335,6 +335,21 @@ export const LOGISTICS_ES: SpanishCaseStudyData = {
       ],
     },
     {
+      anchor: "log-status",
+      chapter: false,
+      eyebrow: "Cómo se ve",
+      title: "El estado de los pedidos, antes y después.",
+      body: [
+        "Recreado para explicar la idea. No es el sistema original y no hay datos reales.",
+        "Antes: siete formas de pedir, y nadie podía ver un pedido. Una estación se enteraba de que no tenía suministros cuando ya se le habían acabado.",
+        "Después: cada estación usa un solo formato de solicitud, y una estación con poco inventario se ve antes de que se acabe.",
+      ],
+      bullets: [
+        "Antes, estaciones 1 a 6: estado no visible. Estación 7: sin suministros, descubierto tarde.",
+        "Después, estaciones 1 a 7: recibido, en tránsito, aprobado, solicitado, en tránsito, recibido y, en la estación 7, queda poco: pedir ahora.",
+      ],
+    },
+    {
       anchor: "log-constraints",
       eyebrow: "Lo que lo hizo difícil",
       title: "Tres restricciones que no cambiaban.",
@@ -549,6 +564,22 @@ export const UXWOMAN_ES: SpanishCaseStudyData = {
       body: [
         "Fase de investigación. Seis entrevistas de salud, más una adyacente de RR. HH. que no valida nada en salud. Cero de cinco pretotipos ejecutados: los cinco están diseñados y ninguno ha producido evidencia.",
         "Planificado: reconstruir casos recientes, con las mismas preguntas neutrales para cada persona, antes de elegir qué construir. El reclutamiento espera la revisión del protocolo y de gobernanza.",
+      ],
+    },
+    {
+      anchor: "uxwoman-gates",
+      chapter: false,
+      eyebrow: "Antes de construir",
+      title: "Qué haría que lo construya.",
+      body: [
+        "Nada se construye hasta que una vía cumpla las cinco condiciones. La primera por estudiar es el acceso a medicamentos ambulatorios cuando cambia la cobertura. Es un candidato, no un hallazgo.",
+      ],
+      bullets: [
+        "Un paciente o una persona cuidadora describe un evento reciente de cobertura o papeleo, y el problema de atención que vino después. Aún no demostrado.",
+        "Las personas que manejan ese evento lo confirman desde su parte del trabajo. Aún no demostrado.",
+        "Alguien ya es responsable de ese paso, y puedo nombrar qué reemplazaría una herramienta nueva. Aún no demostrado.",
+        "Hay un resultado que puedo medir con seguridad. Aún no demostrado.",
+        "La privacidad está resuelta: solo casos ficticios o desidentificados con autorización. Aún no demostrado.",
       ],
     },
   ],
