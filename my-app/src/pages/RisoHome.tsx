@@ -839,6 +839,21 @@ export default function RisoHome() {
             closeLabel={t("home.fold.close")}
             hashIds={["about"]}
           >
+            <figure className="rp-aboutPhoto">
+              <img
+                src="https://images.unsplash.com/photo-1533038590840-1cde6e668a91?auto=format&fit=crop&w=1200&q=70"
+                alt=""
+                loading="lazy"
+                width={1200}
+                height={400}
+              />
+              <figcaption>
+                {lang === "es" ? "Foto: " : "Photo: "}
+                <a href="https://unsplash.com/@anniespratt" target="_blank" rel="noopener noreferrer">Annie Spratt</a>
+                {" / "}
+                <a href="https://unsplash.com/photos/hX_hf2lPpUU" target="_blank" rel="noopener noreferrer">Unsplash</a>
+              </figcaption>
+            </figure>
             <div className="rp-aboutBlock">
               <p className="rp-sub">{t("home.about.blurb")}</p>
               <Link className="rp-cta rp-cta--ghost" to="/about" style={{ marginTop: "1.4rem" }}>{t("home.about.link")}</Link>

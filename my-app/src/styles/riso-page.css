@@ -4095,3 +4095,9 @@ body .site-footer__label {
   .rp-fold__hint { transition: none; }
 }
 .rp-fold__body .rp-careerNote { margin-top: 0; font-size: .9375rem; line-height: 1.5; }
+
+/* Decorative photo in the About fold: hotlinked, credited under the image. */
+.rp-aboutPhoto { margin: 0 0 1.5rem; }
+.rp-aboutPhoto img { display: block; width: 100%; height: clamp(160px, 28vw, 280px); object-fit: cover; border-radius: var(--r-plate, 4px); background: var(--paper-2); }
+.rp-aboutPhoto figcaption { margin-top: .4rem; color: var(--muted); font-size: .8125rem; line-height: 1.4; }
+.rp-aboutPhoto figcaption a { color: inherit; text-decoration: underline; text-underline-offset: 2px; min-height: 24px; }
