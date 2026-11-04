@@ -197,7 +197,7 @@
   border-radius: 0;
   background: transparent;
   color: inherit;
-  font: 750 .72rem/1.2 var(--mono);
+  font: 700 .72rem/1.2 var(--mono);
   letter-spacing: .035em;
   cursor: pointer;
 }
@@ -353,9 +353,9 @@
 .fp-workflow > i { font-style: normal; color: var(--coral); font-size: 1.8rem; }
 .fp-workflow__after { border-color: color-mix(in srgb,var(--green) 45%,var(--hair)) !important; }
 .fp-workflow__label { font: .62rem/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--coral); }
-.fp-workflow h3 { margin: .5rem 0 0; font-size: 1.15rem; }
+.fp-workflow h3 { margin: .5rem 0 0; font-size: 1.125rem; }
 .fp-workflow ol { list-style: none; margin: 1rem 0 0; padding: 0; }
-.fp-workflow li { display: grid; grid-template-columns: 2rem 1fr; gap: .5rem; padding: .6rem 0; border-top: 1px solid var(--hair); font-size: .9rem; }
+.fp-workflow li { display: grid; grid-template-columns: 2rem 1fr; gap: .5rem; padding: .6rem 0; border-top: 1px solid var(--hair); font-size: .9375rem; }
 .fp-workflow li b { font: .65rem/1.5 var(--mono); color: var(--green); }
 .flagship-page--msk .fp-workflow__label {
   font-family: var(--sans);
@@ -363,8 +363,8 @@
   letter-spacing: 0;
   text-transform: none;
 }
-.flagship-page--msk .fp-workflow li b { font-family: var(--sans); font-size: .82rem; }
-.fp-workflow article > p:last-child { margin-top: .8rem; color: var(--muted); font-size: .84rem; }
+.flagship-page--msk .fp-workflow li b { font-family: var(--sans); font-size: .8125rem; }
+.fp-workflow article > p:last-child { margin-top: .8rem; color: var(--muted); font-size: .8125rem; }
 
 
 /* Names the redesign the principle came out of. It now sits under the three
@@ -384,7 +384,7 @@
 /* The one place the site says what service design actually is. Sits inside
    .rp-override, so the accents are the fixed dark-panel values. */
 .fp-ownership { max-width: 64ch; margin: var(--sp-sm) 0 0; padding-left: 1rem;
-  border-left: 3px solid var(--mint-on-dark); font-size: 1.02rem; line-height: 1.55;
+  border-left: 3px solid var(--mint-on-dark); font-size: 1rem; line-height: 1.55;
   color: color-mix(in srgb, var(--ink-on-dark) 86%, transparent); }
 .fp-ownership b { display: block; margin-bottom: .35rem; font: var(--rp-type-floor)/1.25 var(--mono);
   letter-spacing: .07em; text-transform: uppercase; color: var(--mint-on-dark); }
@@ -408,8 +408,8 @@
   justify-content: center; min-width: 22px; padding: 0 .3rem; border: 1px solid color-mix(in srgb, var(--ink-on-dark) 30%, transparent);
   border-radius: 999px; background: var(--fp-deep, #24291f);
   font: .58rem/1.9 var(--mono); letter-spacing: .06em; color: var(--mint-on-dark); }
-.fp-roleRail b { display: block; font-size: 1.02rem; line-height: 1.25; }
-.fp-roleRail__taught { display: block; margin-top: .35rem; font-size: .86rem; color: color-mix(in srgb, var(--ink-on-dark) 74%, transparent); }
+.fp-roleRail b { display: block; font-size: 1rem; line-height: 1.25; }
+.fp-roleRail__taught { display: block; margin-top: .35rem; font-size: .9375rem; color: color-mix(in srgb, var(--ink-on-dark) 74%, transparent); }
 
 /* Each role hides the method it gave her. <details> rather than a scripted
    toggle: keyboard and screen-reader behavior comes free and it survives with
@@ -431,8 +431,8 @@
 .fp-roleRail__method[open] .fp-roleRail__chev { transform: translateY(1px) rotate(-135deg); }
 .fp-roleRail__method > div { padding: .8rem .9rem; margin-top: .1rem;
   border-left: 2px solid color-mix(in srgb, var(--mint-on-dark) 50%, transparent); background: color-mix(in srgb, var(--ink-on-dark) 5%, transparent); }
-.fp-roleRail__method b { font-size: .82rem; color: var(--mint-on-dark); }
-.fp-roleRail__method p { margin: .35rem 0 0; font-size: .82rem; line-height: 1.5; color: color-mix(in srgb, var(--ink-on-dark) 74%, transparent); }
+.fp-roleRail__method b { font-size: .8125rem; color: var(--mint-on-dark); }
+.fp-roleRail__method p { margin: .35rem 0 0; font-size: .8125rem; line-height: 1.5; color: color-mix(in srgb, var(--ink-on-dark) 74%, transparent); }
 @media (prefers-reduced-motion: reduce) {
   .fp-roleRail__chev { transition: none; }
 }
@@ -458,7 +458,7 @@
 .fp-survived { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px,100%),1fr));
   gap: .5rem 1.6rem; list-style: none; margin: 1.1rem 0 0; padding: 0; }
 .fp-survived li { padding-left: .9rem; border-left: 2px solid color-mix(in srgb,var(--green) 55%,transparent); }
-.fp-survived b { display: block; font-size: .84rem; line-height: 1.3; }
+.fp-survived b { display: block; font-size: .8125rem; line-height: 1.3; }
 .fp-survived span { display: block; margin-top: .2rem; font-size: .8rem; line-height: 1.45; color: var(--muted); }
 @media (forced-colors: active) {
   .fp-survived li { border-left-color: CanvasText; }
@@ -512,7 +512,7 @@
 @media (max-width: 700px) { .fp-constraintAnnotations.fp-constraintAnnotations--four { grid-template-columns: 1fr; } }
 .fp-knowunityChange { padding-top: var(--sp-md); }
 .fp-knowunityChange .fp-journalLine { margin-top: 0; }
-.fp-knowunityMockNote { max-width: 62ch; margin: 1rem 0 0; color: var(--muted); font-size: .88rem; line-height: 1.5; }
+.fp-knowunityMockNote { max-width: 62ch; margin: 1rem 0 0; color: var(--muted); font-size: .9375rem; line-height: 1.5; }
 .fp-workSplit { display: grid; grid-template-columns: .75fr 1.25fr; gap: 1rem; margin-top: 2rem; }
 .fp-workSplit article { padding: 1.4rem; border: 1px solid var(--hair); border-radius: var(--r-plate); background: var(--paper); }
 .fp-workSplit article:last-child { border-left: 4px solid var(--coral); }
@@ -521,7 +521,7 @@
    dark in both themes. Labels inside it must use the fixed override accent or
    they render at 2.46:1 in light mode. */
 .rp-override .fp-workSplit span, .rp-override .fp-journalLine span { color: var(--coral-on-dark); }
-.fp-workSplit h3 { margin: .5rem 0 0; font-size: 1.15rem; }
+.fp-workSplit h3 { margin: .5rem 0 0; font-size: 1.125rem; }
 .fp-workSplit p { margin-top: .5rem; color: var(--muted); }
 
 .fp-sequence { margin-top: 2rem; }
@@ -557,7 +557,7 @@
 /* The journal line now sits on light paper in the method section, so it uses
    themed tokens; the .rp-override variant keeps the fixed dark-panel accents. */
 .fp-journalLine { display: grid; gap: .4rem; max-width: 760px; margin-top: 2rem; padding: 1rem 1.1rem; border-left: 3px solid var(--coral); background: var(--paper-2); }
-.fp-journalLine b { color: var(--ink); font-size: .95rem; }
+.fp-journalLine b { color: var(--ink); font-size: .9375rem; }
 .rp-override .fp-journalLine { border-left-color: var(--coral-on-dark); background: color-mix(in srgb, var(--ink-on-dark) 7%, transparent); }
 .rp-override .fp-journalLine b { color: var(--ink-on-dark); }
 
@@ -634,11 +634,11 @@
 .fp-redesigns { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; margin-top: 2rem; }
 .fp-redesigns article { padding: 1.3rem; border: 1px solid var(--hair); background: var(--paper); }
 .fp-redesigns__n { font: .62rem/1.2 var(--mono); letter-spacing: .1em; color: var(--coral); }
-.fp-redesigns h3 { margin: .5rem 0 0; font-size: 1.08rem; line-height: 1.25; }
-.fp-redesigns__finding { margin-top: .7rem; font-size: .88rem; line-height: 1.6; color: var(--muted); }
-.fp-redesigns__change { margin-top: .7rem; font-size: .9rem; line-height: 1.6; color: var(--ink); }
+.fp-redesigns h3 { margin: .5rem 0 0; font-size: 1.125rem; line-height: 1.25; }
+.fp-redesigns__finding { margin-top: .7rem; font-size: .9375rem; line-height: 1.6; color: var(--muted); }
+.fp-redesigns__change { margin-top: .7rem; font-size: .9375rem; line-height: 1.6; color: var(--ink); }
 .fp-redesigns__wrong { margin-top: .9rem; padding-top: .8rem; border-top: 1px solid var(--hair);
-  font-size: .85rem; line-height: 1.6; color: var(--ink-2); }
+  font-size: .8125rem; line-height: 1.6; color: var(--ink-2); }
 .fp-redesigns__wrong b { display: block; font: .6rem/1.2 var(--mono); letter-spacing: .1em;
   text-transform: uppercase; color: var(--coral); margin-bottom: .4rem; }
 
@@ -663,7 +663,7 @@
   gap: 1rem 1.6rem; margin: 2rem 0 0; border-top: 1px solid var(--hair); }
 .fp-constraintAnnotations > div { padding: 1rem 0 0 .9rem; border-left: 2px solid color-mix(in srgb, var(--green) 55%, transparent); }
 .fp-constraintAnnotations dt { font: 700 .62rem/1.35 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--green); }
-.fp-constraintAnnotations dd { margin: .4rem 0 0; color: var(--ink-2); font-size: .86rem; line-height: 1.45; }
+.fp-constraintAnnotations dd { margin: .4rem 0 0; color: var(--ink-2); font-size: .9375rem; line-height: 1.45; }
 @media (max-width: 700px) { .fp-constraintAnnotations { grid-template-columns: 1fr; } }
 
 /* The lead-number scale moved to the shared .rp-outcomes--lead modifier
@@ -688,7 +688,7 @@
 .fp-blueprint__switch button:hover { background: color-mix(in srgb, var(--coral) 8%, transparent); }
 .fp-blueprint__switch button.is-active { background: var(--ink); color: var(--paper); }
 .fp-blueprint__switch button:focus-visible { outline: 3px solid var(--coral); outline-offset: -3px; }
-.fp-blueprint__status { flex: 1 1 16rem; margin: 0; font-size: .88rem; line-height: 1.5; color: var(--ink-2); }
+.fp-blueprint__status { flex: 1 1 16rem; margin: 0; font-size: .9375rem; line-height: 1.5; color: var(--ink-2); }
 
 /* An intentional sideways scroller below 620px: the thin themed scrollbar
    (same as Grove's screen strip) is its visible affordance. */
@@ -699,7 +699,7 @@
   gap: 1.1rem 1.6rem; margin: 1.8rem 0 0; padding-top: 1.4rem; border-top: 1px solid var(--hair); }
 .fp-blueprint__key dt { font: .62rem/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase;
   color: var(--coral); margin-bottom: .4rem; }
-.fp-blueprint__key dd { margin: 0; font-size: .92rem; line-height: 1.55; color: var(--ink-2); }
+.fp-blueprint__key dd { margin: 0; font-size: .9375rem; line-height: 1.55; color: var(--ink-2); }
 
 @media (max-width: 720px) {
   .fp-blueprint__switch { width: 100%; }
@@ -914,17 +914,17 @@
 .fp-findings li { position: relative; padding: 1.1rem 0 1.1rem 2.6rem; border-top: 1px solid var(--hair); counter-increment: finding; }
 .fp-findings li::before { content: counter(finding, decimal-leading-zero); position: absolute; left: 0; top: 1.25rem;
   font: 700 .66rem/1.2 var(--mono); letter-spacing: .1em; color: var(--coral-text); }
-.fp-findings h3 { margin: 0; font-size: 1.1rem; }
-.fp-findings p { margin: .4rem 0 0; color: var(--muted); font-size: .95rem; line-height: 1.5; }
+.fp-findings h3 { margin: 0; font-size: 1.125rem; }
+.fp-findings p { margin: .4rem 0 0; color: var(--muted); font-size: .9375rem; line-height: 1.5; }
 .fp-findings .fp-findings__confidence { color: var(--ink-2); }
 .fp-findings__confidence span { font: 700 var(--rp-type-floor)/1.25 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--coral-text); }
 .fp-pretotypes { display: grid; gap: .75rem; max-width: 760px; margin: 2rem 0 0; padding: 0; list-style: none; }
 .fp-pretotypes li { display: grid; grid-template-columns: 2.2rem minmax(0,1fr); gap: .9rem; padding: 1rem 1.1rem;
   border: 1px solid var(--hair); border-radius: var(--r-plate); background: var(--paper); }
 .fp-pretotypes li > span { font: 700 var(--rp-type-floor)/1.6 var(--mono); letter-spacing: .08em; color: var(--coral-text); }
-.fp-pretotypes h3 { margin: 0; font-size: 1.05rem; }
-.fp-pretotypes p { margin: .35rem 0 0; color: var(--muted); font-size: .92rem; line-height: 1.5; }
-.fp-pretotypeNote { max-width: 62ch; margin: 1rem 0 0; color: var(--muted); font-size: .88rem; line-height: 1.5; }
+.fp-pretotypes h3 { margin: 0; font-size: 1rem; }
+.fp-pretotypes p { margin: .35rem 0 0; color: var(--muted); font-size: .9375rem; line-height: 1.5; }
+.fp-pretotypeNote { max-width: 62ch; margin: 1rem 0 0; color: var(--muted); font-size: .9375rem; line-height: 1.5; }
 
 /* Recruiter-readability lock: evidence metadata must survive a fast scan on a
    laptop without asking the reader to zoom. These are labels and controls,
@@ -969,7 +969,7 @@
 .flagship-page--msk .fp-buttonThreshold__folio,
 .flagship-page--msk .fp-sustainmentFig figcaption {
   font-family: var(--sans);
-  font-size: .875rem;
+  font-size: .9375rem;
   letter-spacing: 0;
   text-transform: none;
 }
@@ -980,7 +980,7 @@
 
 /* ---------- Confidence map (UX Woman) ---------- */
 .fp-confidence { margin: 2rem 0 0; max-width: 980px; overflow-x: auto; }
-.fp-confidence table { width: 100%; border-collapse: collapse; font-size: .95rem; line-height: 1.4; }
+.fp-confidence table { width: 100%; border-collapse: collapse; font-size: .9375rem; line-height: 1.4; }
 .fp-confidence caption { text-align: left; padding: 0 0 .8rem; font-weight: 700; color: var(--ink); }
 .fp-confidence thead th { text-align: left; padding: .6rem .9rem .6rem 0; font-size: var(--rp-type-floor); font-weight: 600; color: var(--muted); border-bottom: 2px solid var(--ink); }
 .fp-confidence tbody th, .fp-confidence tbody td { text-align: left; vertical-align: top; padding: 1rem .9rem 1rem 0; border-bottom: 1px solid var(--hair); font-weight: 400; }
@@ -998,17 +998,17 @@
 .fp-statusBoard__head { display: flex; flex-wrap: wrap; gap: .8rem 1.2rem; align-items: center; justify-content: space-between; margin: 0 0 1rem; }
 .fp-statusBoard__note { margin: 0; font-size: var(--rp-type-floor); color: var(--muted); max-width: 34ch; }
 .fp-statusBoard__switch { display: inline-flex; border: 1px solid var(--ink); }
-.fp-statusBoard__switch button { min-height: 44px; padding: .5rem .9rem; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: .9rem; cursor: pointer; }
+.fp-statusBoard__switch button { min-height: 44px; padding: .5rem .9rem; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: .9375rem; cursor: pointer; }
 .fp-statusBoard__switch button + button { border-left: 1px solid var(--ink); }
 .fp-statusBoard__switch button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
-.fp-statusBoard table { width: 100%; border-collapse: collapse; font-size: .98rem; }
+.fp-statusBoard table { width: 100%; border-collapse: collapse; font-size: .9375rem; }
 .fp-statusBoard thead th { text-align: left; padding: .5rem .8rem .5rem 0; font-size: var(--rp-type-floor); font-weight: 600; color: var(--muted); border-bottom: 2px solid var(--ink); }
 .fp-statusBoard tbody th, .fp-statusBoard tbody td { text-align: left; padding: .7rem .8rem .7rem 0; border-bottom: 1px solid var(--hair); font-weight: 400; }
 .fp-statusBoard tbody th { font-weight: 700; width: 34%; }
 .fp-statusBoard__mark { display: inline-block; width: 1.3rem; font-weight: 800; color: var(--muted); }
 .fp-statusBoard tr.is-alert td { font-weight: 700; color: var(--coral-text); }
 .fp-statusBoard tr.is-alert .fp-statusBoard__mark { color: var(--coral-text); }
-.fp-statusBoard__read { margin: 1rem 0 0; font-size: .95rem; line-height: 1.5; color: var(--ink-2); max-width: 60ch; }
+.fp-statusBoard__read { margin: 1rem 0 0; font-size: .9375rem; line-height: 1.5; color: var(--ink-2); max-width: 60ch; }
 
 /* ---------- Build gates (UX Woman) ---------- */
 .fp-gates { max-width: 760px; margin: 0; }
@@ -1018,6 +1018,6 @@
 .fp-gates__list li { counter-increment: gate; display: grid; grid-template-columns: 2.2rem 1fr auto; gap: .4rem 1rem; align-items: start; padding: 1rem 0; border-bottom: 1px solid var(--hair); }
 .fp-gates__list li::before { content: counter(gate); font-weight: 800; color: var(--muted); }
 .fp-gates__text { line-height: 1.45; }
-.fp-gates__status { white-space: nowrap; font-weight: 700; font-size: .9rem; color: var(--ink); }
+.fp-gates__status { white-space: nowrap; font-weight: 700; font-size: .9375rem; color: var(--ink); }
 .fp-gates__mark { margin-right: .4em; color: var(--muted); }
 @media (max-width: 640px) { .fp-gates__list li { grid-template-columns: 2.2rem 1fr; } .fp-gates__status { grid-column: 2; } }

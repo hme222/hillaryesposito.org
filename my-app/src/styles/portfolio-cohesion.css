@@ -543,7 +543,7 @@ html[lang="es"] .riso-home .rp-h1Fit { --h1-w100: 1116; }
 .rp-dispatch__toggle,
 .rp-deepDive__state {
   font-family: var(--sans);
-  font-size: 0.875rem;
+  font-size: .9375rem;
   letter-spacing: 0;
   text-transform: none;
 }

@@ -92,7 +92,7 @@
 .fp-contextLine {
   margin: 0;
   color: var(--ink-2);
-  font: 650 .9rem/1.45 var(--sans);
+  font: 650 .9375rem/1.45 var(--sans);
   letter-spacing: -.005em;
   text-wrap: balance;
 }
@@ -154,7 +154,7 @@
 .flagship-page--msk .rp-sub { order: 3; }
 .flagship-page--msk .rp-heroEvidence { order: 4; }
 .flagship-page--msk .rp-hero__ctas { order: 5; }
-.rp-h1 { font-size: clamp(2.6rem, 7vw, 4.6rem); line-height: 1.0; letter-spacing: -.024em; font-weight: 850; margin: .8rem 0 0; text-wrap: balance; }
+.rp-h1 { font-size: clamp(2.6rem, 7vw, 4.6rem); line-height: 1.0; letter-spacing: -.024em; font-weight: 800; margin: .8rem 0 0; text-wrap: balance; }
 
 /* Case-study hero headlines stranded their last word on every flagship and on
    Grove. The cause was not wrapping: `.rp-clearing` caps at 40ch and `ch`
@@ -428,7 +428,7 @@
 .rp-section--alt .rp-kicker,
 .rp-decisionStory__head .rp-kicker { color: var(--ink); }
 .rp-kicker { font-family: var(--mono); font-size: var(--rp-type-floor); letter-spacing: .12em; text-transform: uppercase; color: var(--coral-text); font-weight: 700; }
-.rp-title { font-size: var(--ts-title); font-weight: 850; line-height: 1.05; letter-spacing: -.015em; margin: .5rem 0 0; text-wrap: balance; }
+.rp-title { font-size: var(--ts-title); font-weight: 800; line-height: 1.05; letter-spacing: -.015em; margin: .5rem 0 0; text-wrap: balance; }
 
 /* ---------- homepage opening film ---------- */
 .rp-openingFilm {
@@ -1031,10 +1031,10 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   .rp-heroEvidence--trace ol { align-items: flex-start; gap: .45rem 1rem; }
   .rp-heroEvidence--trace li:not(:last-child)::after { margin-left: .7rem; }
 }
-.rp-lede { color: var(--ink-2); max-width: 64ch; margin: var(--sp-sm) 0 0; font-size: 1.02rem; }
+.rp-lede { color: var(--ink-2); max-width: 64ch; margin: var(--sp-sm) 0 0; font-size: 1rem; }
 .rp-lede b { color: var(--ink); }
 /* Supporting paragraphs under a section lede: one lede per section, the rest read as body. */
-.rp-body { color: var(--ink-2); max-width: 64ch; margin: .8rem 0 0; font-size: .96rem; line-height: 1.65; }
+.rp-body { color: var(--ink-2); max-width: 64ch; margin: .8rem 0 0; font-size: .9375rem; line-height: 1.65; }
 
 /* ---------- the rebuild sequence (journal spine, not mapped route) ---------- */
 .rp-leg { display: grid; grid-template-columns: 40px 1fr; gap: 1.2rem; align-items: start; padding: 1rem 0; position: relative; }
@@ -1081,12 +1081,12 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
    the eye moves on rather than competing with the figure. */
 .rp-stat__tag { margin: 0 0 .5rem; font-family: var(--mono); font-size: var(--rp-type-floor);
   letter-spacing: .11em; text-transform: uppercase; color: var(--muted); }
-.rp-stat__n { font-size: var(--ts-stat); font-weight: 850; letter-spacing: -.015em; color: var(--green); line-height: 1; }
-.rp-stat__l { color: var(--ink-2); margin-top: .5rem; font-size: .92rem; }
+.rp-stat__n { font-size: var(--ts-stat); font-weight: 800; letter-spacing: -.015em; color: var(--green); line-height: 1; }
+.rp-stat__l { color: var(--ink-2); margin-top: .5rem; font-size: .9375rem; }
 
 /* ---------- closing CTA ---------- */
 .rp-close { text-align: left; }
-.rp-close h2 { font-size: var(--ts-title); font-weight: 850; line-height: 1.05; letter-spacing: -.015em; margin: 0; text-wrap: balance; }
+.rp-close h2 { font-size: var(--ts-title); font-weight: 800; line-height: 1.05; letter-spacing: -.015em; margin: 0; text-wrap: balance; }
 .rp-close p { color: var(--ink-2); margin: .8rem 0 1.4rem; max-width: 52ch; }
 
 /* ---------- two-column split: words + relevant screen ---------- */
@@ -1206,7 +1206,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-notif__card { background: var(--paper); border: 1px solid var(--hair); border-radius: var(--r-plate); padding: .7rem .85rem; margin-bottom: .55rem; box-shadow: 0 1px 2px rgba(0,0,0,.05); }
 .rp-notif__card:last-child { margin-bottom: 0; }
 .rp-notif__app { font-family: var(--mono); font-size: .56rem; letter-spacing: .06em; color: var(--muted); }
-.rp-notif__msg { font-size: .88rem; margin: .2rem 0 0; color: var(--ink); }
+.rp-notif__msg { font-size: .9375rem; margin: .2rem 0 0; color: var(--ink); }
 .rp-pushback__vs { font-family: var(--mono); font-size: .72rem; letter-spacing: .12em; color: var(--muted); text-align: center; }
 @media (max-width: 720px) { .rp-pushback__vs { transform: rotate(90deg); } }
 
@@ -1229,7 +1229,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-decision__tag--old { color: var(--muted); }
 .rp-decision__tag--new { color: var(--green); }
 .rp-decision__col--dir { align-items: flex-start; justify-content: center; text-align: left; }
-.rp-decision__dirText { max-width: 42ch; margin: 0; color: var(--ink-2); font-size: 1.02rem; line-height: 1.55; }
+.rp-decision__dirText { max-width: 42ch; margin: 0; color: var(--ink-2); font-size: 1rem; line-height: 1.55; }
 .rp-decision__dirText b { color: var(--ink); }
 @media (max-width: 760px) { .rp-decision__col--dir { align-items: center; text-align: center; } }
 
@@ -1239,8 +1239,8 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-fcard { border: 1px solid var(--hair); border-radius: var(--r-plate); padding: 1.3rem; background: var(--paper);
   border-left: 3px solid var(--green); }
 .rp-fcard__k { font-family: var(--mono); font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; color: var(--green); }
-.rp-fcard__t { font-size: 1.02rem; font-weight: 750; margin: .4rem 0 .3rem; }
-.rp-fcard__d { font-size: .88rem; color: var(--muted); }
+.rp-fcard__t { font-size: 1rem; font-weight: 700; margin: .4rem 0 .3rem; }
+.rp-fcard__d { font-size: .9375rem; color: var(--muted); }
 /* principle cards reflect Grove's palette */
 .rp-foundation .rp-fcard:nth-child(2) { border-left-color: var(--grove-amber); }
 .rp-foundation .rp-fcard:nth-child(2) .rp-fcard__k { color: var(--ink); }
@@ -1252,7 +1252,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-decisionRecord > div { display: grid; grid-template-columns: minmax(8rem, .7fr) minmax(0, 2fr); gap: 1rem;
   padding: .9rem 0; border-bottom: 1px solid var(--hair); }
 .rp-decisionRecord dt { font: 700 .72rem/1.3 var(--mono); letter-spacing: .09em; text-transform: uppercase; color: var(--coral-text); }
-.rp-decisionRecord dd { margin: 0; font-size: .96rem; line-height: 1.45; color: var(--ink); }
+.rp-decisionRecord dd { margin: 0; font-size: .9375rem; line-height: 1.45; color: var(--ink); }
 @media (max-width: 560px) { .rp-decisionRecord > div { grid-template-columns: 1fr; gap: .3rem; } }
 @media (min-width: 900px) {
   .rp-decisionRecord--grove {
@@ -1273,7 +1273,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 
 /* ---------- full-bleed pull quote ---------- */
 .rp-quote { background: var(--green); color: var(--ink-on-dark); padding: var(--sp-xl) var(--sp-gutter); text-align: center; }
-.rp-quote blockquote { max-width: 18ch; margin: 0 auto; font-size: clamp(1.9rem,5.4vw,3.6rem); font-weight: 850; letter-spacing: -.018em; line-height: 1.14; text-wrap: balance; }
+.rp-quote blockquote { max-width: 18ch; margin: 0 auto; font-size: clamp(1.9rem,5.4vw,3.6rem); font-weight: 800; letter-spacing: -.018em; line-height: 1.14; text-wrap: balance; }
 .rp-quote cite { display: block; margin-top: 1.5rem; font-family: var(--mono); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; font-style: normal; color: #fff; }
 /* hand-drawn underline that draws in on scroll */
 .rp-underline { position: relative; white-space: nowrap; }
@@ -1284,9 +1284,9 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 /* ---------- accordion (progressive disclosure) ---------- */
 .rp-accordion { margin-top: 1.7rem; border-top: 1px solid var(--hair); max-width: 720px; }
 .rp-acc { border-bottom: 1px solid var(--hair); }
-.rp-acc summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 1rem; padding: 1.1rem 0; font-weight: 750; font-size: 1.02rem; }
+.rp-acc summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 1rem; padding: 1.1rem 0; font-weight: 700; font-size: 1rem; }
 .rp-acc summary::-webkit-details-marker { display: none; }
-.rp-acc summary::before { content: "+"; font-family: var(--mono); color: var(--coral); font-size: 1.15rem; width: 1ch; }
+.rp-acc summary::before { content: "+"; font-family: var(--mono); color: var(--coral); font-size: 1.125rem; width: 1ch; }
 .rp-acc[open] summary::before { content: "\2013"; }
 .rp-acc summary:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
 .rp-acc__num { font-family: var(--mono); font-size: .72rem; color: var(--green); }
@@ -1302,7 +1302,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
    explicitly; the same fix applies to .fp-roleRail__method on MSK. */
 .rp-acc:not([open]) > .rp-acc__body { display: none; }
 .rp-acc__body { padding: 0 0 1.3rem 2.15rem; display: grid; gap: .4rem; }
-.rp-acc__line { font-size: .92rem; }
+.rp-acc__line { font-size: .9375rem; }
 .rp-acc__line b { font-family: var(--mono); font-size: .64rem; letter-spacing: .06em; text-transform: uppercase; margin-right: .55rem; }
 .rp-acc__ai b { color: var(--coral); } .rp-acc__me b { color: var(--green); }
 
@@ -1314,11 +1314,11 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
 .rp-reel__plate { border: 1px solid var(--hair); border-radius: var(--r-plate); overflow: hidden; background: var(--ink); }
 .rp-reel__video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
-.rp-reel__caption { margin: .7rem 0 0; max-width: 62ch; color: var(--muted); font-size: .88rem; line-height: 1.5; }
+.rp-reel__caption { margin: .7rem 0 0; max-width: 62ch; color: var(--muted); font-size: .9375rem; line-height: 1.5; }
 .rp-reel__transcript { margin-top: .4rem; }
-.rp-reel__transcript summary { font-size: .95rem; min-height: 44px; }
-.rp-reel__lines { margin: 0; padding-left: 1.2rem; display: grid; gap: .35rem; font-size: .92rem; line-height: 1.45; }
-.rp-reel__note { margin: .4rem 0 0; color: var(--muted); font-size: .85rem; }
+.rp-reel__transcript summary { font-size: .9375rem; min-height: 44px; }
+.rp-reel__lines { margin: 0; padding-left: 1.2rem; display: grid; gap: .35rem; font-size: .9375rem; line-height: 1.45; }
+.rp-reel__note { margin: .4rem 0 0; color: var(--muted); font-size: .8125rem; }
 
 /* Credential thumbnail (CaseStudyCredential). Backs an outcome claim, so it
    stays thumbnail-sized beside the tiles and never out-weighs the numbers. */
@@ -1327,7 +1327,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   background: color-mix(in srgb, var(--paper) 74%, transparent); }
 .rp-credential__img { display: block; width: 100%; height: auto; }
 .rp-credential__caption { margin: .6rem 0 0; color: var(--muted); font-size: var(--rp-type-floor); line-height: 1.45; text-wrap: pretty; }
-.rp-credential__link { display: inline-flex; align-items: center; min-height: 44px; color: var(--ink); font-size: .85rem;
+.rp-credential__link { display: inline-flex; align-items: center; min-height: 44px; color: var(--ink); font-size: .8125rem;
   font-weight: 600; text-decoration: underline; text-underline-offset: .2em; text-decoration-thickness: 1px; }
 .rp-credential__link:hover { text-decoration-thickness: 2px; }
 .rp-credential__link:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
@@ -1342,7 +1342,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   .rp-outcomesRow { grid-template-columns: minmax(0, 1fr); }
   .rp-outcomesRow .rp-credential { max-width: 180px; }
 }
-.rp-acc__why { color: var(--muted); font-size: .86rem; margin-top: .25rem; }
+.rp-acc__why { color: var(--muted); font-size: .9375rem; margin-top: .25rem; }
 
 /* Optional evidence is a deliberate second reading path. The closed state is
    one ruled row; opening it reveals the full artifact at its natural size. */
@@ -1405,7 +1405,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 @media (max-width: 760px) { .rp-metagrid { grid-template-columns: repeat(2,1fr); } }
 @media (max-width: 460px) { .rp-metagrid { grid-template-columns: 1fr; } }
 .rp-metagrid__k { font-family: var(--mono); font-size: var(--rp-type-floor); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
-.rp-metagrid__v { font-weight: 650; font-size: .92rem; margin-top: .3rem; line-height: 1.4; }
+.rp-metagrid__v { font-weight: 650; font-size: .9375rem; margin-top: .3rem; line-height: 1.4; }
 /* Linked "what to review" titles carry a persistent coral underline so it's clear
    which items open a case study and which are plain descriptions. */
 
@@ -1417,7 +1417,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-note p { margin: 0; color: var(--ink-2); }
 /* Sub-heading inside a long section, so dense stretches read as bounded stops
    rather than one undifferentiated scroll. */
-.rp-subhead { font-size: 1.1rem; font-weight: 800; margin: clamp(1.75rem, 4.25vw, 3.25rem) 0 0; letter-spacing: -.01em; }
+.rp-subhead { font-size: 1.125rem; font-weight: 800; margin: clamp(1.75rem, 4.25vw, 3.25rem) 0 0; letter-spacing: -.01em; }
 /* A lede under a subhead belongs to it: keep the pair close (the section-level
    --sp-sm lede gap is for title → lede). */
 .rp-subhead + .rp-lede { margin-top: .6rem; }
@@ -1491,9 +1491,9 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-work:hover { background: color-mix(in srgb, var(--green) 5%, transparent); }
 .rp-work:hover > div:first-child { transform: translateX(.75rem); }
 .rp-work__n { font-family: var(--mono); font-size: var(--rp-type-floor); color: var(--coral); font-weight: 700; display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
-.rp-work__title { font-size: var(--ts-title); font-weight: 850; line-height: 1.05; letter-spacing: -.015em; margin: .3rem 0 .25rem; text-wrap: balance; }
+.rp-work__title { font-size: var(--ts-title); font-weight: 800; line-height: 1.05; letter-spacing: -.015em; margin: .3rem 0 .25rem; text-wrap: balance; }
 .rp-work__sub { font-family: var(--mono); font-size: var(--rp-type-floor); letter-spacing: .05em; text-transform: uppercase; color: var(--green); }
-.rp-work__desc { color: var(--ink-2); margin: .75rem 0 0; max-width: 52ch; font-size: .95rem; }
+.rp-work__desc { color: var(--ink-2); margin: .75rem 0 0; max-width: 52ch; font-size: .9375rem; }
 /* Surfaces the MSK "simple button" decision story as its own hook — a small
    annotation riding the bottom edge of the row it belongs to, not a full
    peer row of its own. */
@@ -1550,7 +1550,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 }
 .riso-home .rp-work--supporting .rp-work__desc {
   max-width: 58ch;
-  font-size: .875rem;
+  font-size: .9375rem;
 }
 .riso-home .rp-work--supporting .rp-work__thumb {
   width: min(28vw, 300px);
@@ -1816,7 +1816,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   line-height: 1.65;
 }
 .rp-dispatch__body { margin: 1.25rem 0 0; }
-.rp-dispatch__role { margin: 1.1rem 0 0; font-size: .92rem; }
+.rp-dispatch__role { margin: 1.1rem 0 0; font-size: .9375rem; }
 .rp-dispatch__finding {
   display: grid;
   grid-template-columns: minmax(120px, .34fr) minmax(0, 1fr);
@@ -1839,10 +1839,10 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   color: var(--ink);
   font-size: var(--ts-heading);
   line-height: 1.1;
-  font-weight: 850;
+  font-weight: 800;
   letter-spacing: -.02em;
 }
-.rp-dispatch__rule > p:last-child { color: var(--ink-2); font-size: .9rem; line-height: 1.55; }
+.rp-dispatch__rule > p:last-child { color: var(--ink-2); font-size: .9375rem; line-height: 1.55; }
 .rp-dispatch__actions { margin-top: 1.5rem; }
 .rp-dispatch__sources {
   display: flex;
@@ -2399,7 +2399,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   }
   .rp-dispatch__cover .rp-dispatch__question {
     max-width: 31ch;
-    font-size: 1.05rem;
+    font-size: 1rem;
   }
   .rp-dispatch__toggle { justify-self: start; }
   .rp-dispatch__collageField { aspect-ratio: .9 / 1; }
@@ -2638,7 +2638,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
    arrow was already giving on the compositor. The arrow now carries it alone,
    travelling slightly further to keep the same sense of the row opening up. */
 .rp-next__eyebrow { font-family: var(--mono); font-size: var(--rp-type-floor); letter-spacing: .09em; text-transform: uppercase; color: var(--on-coral); }
-.rp-next__title { font-size: var(--ts-title); font-weight: 850; line-height: 1.05; letter-spacing: -.015em; margin: .35rem 0 0; color: var(--on-coral); text-wrap: pretty; }
+.rp-next__title { font-size: var(--ts-title); font-weight: 800; line-height: 1.05; letter-spacing: -.015em; margin: .35rem 0 0; color: var(--on-coral); text-wrap: pretty; }
 .rp-next__tag { font-family: var(--mono); font-size: var(--rp-type-floor); letter-spacing: .05em; text-transform: uppercase; color: var(--on-coral); }
 /* The legacy `.dark-mode p` rule in App.css outranks these single-class
    selectors and painted peach text on the coral band (1.54:1). */
@@ -2647,7 +2647,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-next:hover .rp-next__arrow { transform: translateX(10px); }
 
 /* ---------- phase eyebrow ---------- */
-.rp-phase { font-family: var(--mono); font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 700;
+.rp-phase { font-family: var(--mono); font-size: .8125rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 700;
   color: var(--green); display: inline-flex; align-items: center; gap: .5rem; }
 .rp-phase span { color: var(--muted); font-weight: 400; }
 
@@ -2661,10 +2661,10 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-swatch:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
 .rp-swatch__chip { display: block; height: 58px; }
 .rp-swatch__meta { display: block; padding: .55rem .65rem .65rem; }
-.rp-swatch__name { display: block; font-size: .82rem; font-weight: 700; margin-bottom: .12rem; }
+.rp-swatch__name { display: block; font-size: .8125rem; font-weight: 700; margin-bottom: .12rem; }
 .rp-swatch__hex { font-family: var(--mono); font-size: .66rem; color: var(--muted); letter-spacing: .02em; }
 .rp-swatch.is-copied .rp-swatch__hex { color: var(--green); }
-.rp-swatch__use { display: block; margin-top: .3rem; font-size: .68rem; color: var(--muted); line-height: 1.35; }
+.rp-swatch__use { display: block; margin-top: .3rem; font-size: .8125rem; color: var(--muted); line-height: 1.35; }
 
 
 /* ---------- hover micro-interactions (Carmen-style) ---------- */
@@ -2775,7 +2775,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   .rp-chapter__proof small,
   .rp-phase__label,
   .rp-note__k { font-size: var(--rp-type-floor); }
-  .rp-metagrid__v { font-size: .84rem; }
+  .rp-metagrid__v { font-size: .8125rem; }
   .rp-cta,
   .rp-heroUtility,
   .rp-eyebrow,
@@ -2944,7 +2944,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-lab .rp-swatches { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); margin-top: 1.5rem; }
 .rp-lab .rp-swatch { width: auto; min-height: 210px; }
 .rp-swatch__avoid { display: block; margin-top: .28rem; font-size: .68rem; color: var(--muted); line-height: 1.35; }
-.rp-swatch__use b, .rp-swatch__avoid b { font-family: var(--mono); font-size: .58rem; letter-spacing: .04em; text-transform: uppercase; }
+.rp-swatch__use b, .rp-swatch__avoid b { font-family: var(--mono); font-size: .8125rem; letter-spacing: .04em; text-transform: uppercase; }
 .rp-neutral { display: grid; grid-template-columns: repeat(6,1fr); margin-top: 1rem; overflow: hidden; border: 1px solid var(--hair); border-radius: var(--r-plate); }
 .rp-neutral > span { min-height: 62px; display: flex; align-items: end; padding: .35rem; }
 .rp-neutral > span > span { font-family: var(--mono); font-size: .52rem; color: #fff; }
@@ -2980,7 +2980,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-demoCard.is-done { border-color: #3a6b2e; }
 .rp-demoSources { margin-top: 1rem; padding: .85rem 1rem; border-left: 3px solid #3a6b2e; background: rgba(58,107,46,.07); border-radius: 0 7px 7px 0; }
 .rp-demoSources[hidden] { display: none; }
-.rp-demoSources p { margin: 0; font-size: .82rem; color: #45503f; }
+.rp-demoSources p { margin: 0; font-size: .8125rem; color: #45503f; }
 .rp-demoSelect { display: grid; gap: .3rem; margin: .9rem 0 1rem; max-width: 320px; }
 .rp-demoSelect span { font-family: var(--mono); font-size: .58rem; letter-spacing: .08em; text-transform: uppercase; color: #66705f; }
 .rp-demoSelect select { width: 100%; min-height: 44px; padding: .55rem 2.2rem .55rem .7rem; border: 1px solid #c2cbb8;
@@ -3050,12 +3050,12 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-decisionStory__n { font-family: var(--mono); font-size: .68rem; line-height: 1.6; color: var(--coral-text); }
 .rp-decisionStory__steps h3 { margin: 0; font-size: clamp(1.02rem, 1.5vw, 1.22rem);
   line-height: 1.2; letter-spacing: -.012em; }
-.rp-decisionStory__steps p { margin: .3rem 0 0; font-size: .88rem; line-height: 1.45; color: var(--ink-2); }
+.rp-decisionStory__steps p { margin: .3rem 0 0; font-size: .9375rem; line-height: 1.45; color: var(--ink-2); }
 .rp-decisionStory__logline { display: flex; align-items: baseline; gap: .5rem; margin-top: .4rem; }
 .rp-decisionStory__logline span { flex: 0 0 auto; white-space: nowrap;
   font-family: var(--mono); font-size: .55rem;
   letter-spacing: .1em; text-transform: uppercase; color: var(--coral-text); }
-.rp-decisionStory__logline b { font-size: .82rem; color: var(--ink); }
+.rp-decisionStory__logline b { font-size: .8125rem; color: var(--ink); }
 
 .rp-decisionStory__visual { position: relative; overflow: hidden;
   border: 1px solid var(--hair); border-radius: var(--r-plate); padding: clamp(1rem, 2.5vw, 1.6rem);
@@ -3159,8 +3159,8 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-routeRecap strong { color: var(--ink-on-dark); }
 .rp-routeVerdict { max-width: 68ch; margin: var(--sp-sm) 0 0; padding: 1.2rem 0 0 1rem;
   border-top: 1px solid color-mix(in srgb, var(--ink-on-dark) 22%, transparent); border-left: 3px solid var(--mint-on-dark);
-  color: color-mix(in srgb, var(--ink-on-dark) 80%, transparent); font-size: .96rem; line-height: 1.6; }
-.rp-routeVerdict b { display: block; margin-bottom: .25rem; color: var(--ink-on-dark); font-size: 1.12rem; }
+  color: color-mix(in srgb, var(--ink-on-dark) 80%, transparent); font-size: .9375rem; line-height: 1.6; }
+.rp-routeVerdict b { display: block; margin-bottom: .25rem; color: var(--ink-on-dark); font-size: 1.125rem; }
 /* Above the numbers rather than after them: an orientation line, not a finale.
    No top rule and no emphasised final step — nothing here should read as the
    conclusion the section is building to. */
@@ -3205,24 +3205,24 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 /* The finding that set the scope leads; the other three read as supporting numbers. */
 .rp-surveyStats > div:first-child { grid-column: 1 / -1; padding: 1.6rem 1.4rem; }
 .rp-surveyStats > div:first-child dt { font-size: clamp(4rem, 9vw, 7rem); }
-.rp-surveyStats > div:first-child dd { font-size: 1.05rem; max-width: 52ch; }
+.rp-surveyStats > div:first-child dd { font-size: 1rem; max-width: 52ch; }
 @media (max-width: 760px) { .rp-surveyStats { grid-template-columns: 1fr; } }
 .rp-surveyStats > div { padding: 1.1rem; border: 1px solid var(--hair); background: var(--paper-2); }
 .rp-surveyStats dt { font-size: var(--ts-stat); font-weight: 800; letter-spacing: -.03em; line-height: 1; color: var(--green); }
-.rp-surveyStats dd { margin: .55rem 0 0; font-size: .88rem; line-height: 1.5; color: var(--ink-2); }
+.rp-surveyStats dd { margin: .55rem 0 0; font-size: .9375rem; line-height: 1.5; color: var(--ink-2); }
 
 .rp-rank { list-style: none; margin: 1.4rem 0 0; padding: 0; display: grid; gap: .5rem; }
 .rp-rank li { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) 3.2rem 4rem; gap: .9rem;
   align-items: center; padding: .55rem 0; border-top: 1px solid var(--hair); }
 .rp-rank li:first-child { border-top: 0; }
-.rp-rank__label { font-size: .92rem; }
+.rp-rank__label { font-size: .9375rem; }
 .rp-rank__track { height: 8px; background: color-mix(in srgb, var(--ink) 8%, transparent); }
 .rp-rank__track i { display: block; height: 100%; background: color-mix(in srgb, var(--ink) 26%, transparent); }
 .rp-rank li.is-core .rp-rank__track i { background: var(--green); }
 .rp-rank__pct { font-family: var(--mono); font-size: .8rem; text-align: right; }
 /* Grove: the features that waited, behind the shared .rp-acc disclosure. */
 .rp-rankMore { margin-top: .9rem; border-top: 1px solid var(--hair); max-width: none; }
-.rp-rankMore summary { min-height: 44px; padding-block: .6rem; font-size: .95rem; }
+.rp-rankMore summary { min-height: 44px; padding-block: .6rem; font-size: .9375rem; }
 .rp-rankMore > .rp-rank { margin: 0 0 1rem; }
 @media (max-width: 700px) {
   .rp-rank li { grid-template-columns: minmax(0, 1fr) 3rem; grid-template-areas: "label pct" "track tier"; }
@@ -3232,7 +3232,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 
 .rp-quoteCard { margin: var(--sp-sm) 0 0; padding: 1.4rem 1.5rem; border-left: 3px solid var(--coral); background: var(--paper-2); }
 .rp-quoteCard blockquote { margin: 0; font-size: clamp(1.15rem, 2.2vw, 1.5rem); line-height: 1.35; letter-spacing: -.015em; font-weight: 700; }
-.rp-quoteCard figcaption { margin-top: .8rem; font-size: .88rem; line-height: 1.6; color: var(--ink-2); }
+.rp-quoteCard figcaption { margin-top: .8rem; font-size: .9375rem; line-height: 1.6; color: var(--ink-2); }
 
 /* ---------- home: client testimonial ---------- */
 /* Sits with the proof stats deliberately. Those numbers are self-reported;
@@ -3244,14 +3244,14 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   border-left: 2px solid color-mix(in srgb, var(--green) 55%, transparent); }
 .rp-nowReading span { display: block; font-family: var(--mono); font-size: .58rem;
   letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
-.rp-nowReading b { display: block; margin-top: .3rem; font-size: .92rem;
+.rp-nowReading b { display: block; margin-top: .3rem; font-size: .9375rem;
   font-weight: 600; line-height: 1.5; color: var(--ink-2); }
 @media (forced-colors: active) { .rp-nowReading { border-left-color: CanvasText; } }
 
 .rp-testimonial { margin: 2.2rem 0 0; padding: 1.5rem 1.6rem; border: 1px solid var(--hair); border-left: 3px solid var(--coral); background: var(--paper); }
 .rp-testimonial blockquote { margin: 0; font-size: clamp(1.05rem, 2vw, 1.3rem); line-height: 1.5; letter-spacing: -.012em; }
 .rp-testimonial figcaption { display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem .8rem; margin-top: 1rem; }
-.rp-testimonial figcaption b { font-size: .92rem; }
+.rp-testimonial figcaption b { font-size: .9375rem; }
 .rp-testimonial figcaption span { font-family: var(--mono); font-size: .66rem; letter-spacing: .06em; color: var(--muted); }
 
 /* ---------- forced colors (Windows High Contrast) ---------- */
@@ -3470,14 +3470,14 @@ html.cs-chrome .riso-page .fp-indexLens[id] { scroll-margin-top: calc(var(--cs-c
   border-bottom: 1px solid var(--hair);
 }
 .about-evidenceLedger > div { padding: .9rem 0 .85rem; }
-.about-evidenceLedger dt { font-size: clamp(1.2rem, 2.4vw, 1.8rem); font-weight: 850; letter-spacing: -.03em; color: var(--ink); }
+.about-evidenceLedger dt { font-size: clamp(1.2rem, 2.4vw, 1.8rem); font-weight: 800; letter-spacing: -.03em; color: var(--ink); }
 .about-evidenceLedger dd { margin: .25rem 0 0; font: 700 var(--rp-type-floor)/1.35 var(--mono); letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
 /* The callout is the chapter's one line worth remembering — a ruled aside, not
    a tinted card. */
 .rp-chapter__callout {
   margin-top: 1.2rem; padding-left: 1rem;
   border-left: 2px solid var(--coral);
-  font-size: 1.02rem; line-height: 1.5; color: var(--ink);
+  font-size: 1rem; line-height: 1.5; color: var(--ink);
 }
 .rp-chapter__proof {
   display: inline-flex; align-items: center; gap: .7rem;
@@ -3486,7 +3486,7 @@ html.cs-chrome .riso-page .fp-indexLens[id] { scroll-margin-top: calc(var(--cs-c
   color: var(--ink); text-decoration: none;
 }
 .rp-chapter__proof:hover { background: color-mix(in srgb, var(--coral) 6%, transparent); }
-.rp-chapter__proof b { display: block; font-size: .9rem; }
+.rp-chapter__proof b { display: block; font-size: .9375rem; }
 .rp-chapter__proof small { display: block; margin-top: .15rem; font-family: var(--mono); font-size: var(--rp-type-floor); letter-spacing: .06em; color: var(--muted); }
 /* About's "My pattern" list: one compact proof link under each item — same
    coral-edged link, a single line instead of a title + source pair. */
@@ -3599,7 +3599,7 @@ h2.rp-kicker { margin: 0 0 .4rem; line-height: 1.3; }
   width: max-content; max-width: min(17rem, calc(100vw - 2rem));
   padding: .55rem .7rem; border-radius: var(--r-plate);
   background: var(--ink); color: var(--paper);
-  font-family: var(--sans); font-size: .82rem; font-weight: 400;
+  font-family: var(--sans); font-size: .8125rem; font-weight: 400;
   font-style: normal; line-height: 1.45; letter-spacing: normal; text-transform: none;
   text-align: left; white-space: normal;
   box-shadow: 0 6px 18px color-mix(in srgb, var(--ink) 28%, transparent);
@@ -3619,10 +3619,10 @@ h2.rp-kicker { margin: 0 0 .4rem; line-height: 1.3; }
   background: color-mix(in srgb, var(--coral) 4%, var(--paper));
 }
 .rp-careerNote .rp-note__k {
-  margin-bottom: .3rem; font-family: var(--sans); font-size: .92rem; font-weight: 750;
+  margin-bottom: .3rem; font-family: var(--sans); font-size: .9375rem; font-weight: 700;
   letter-spacing: -.005em; text-transform: none; line-height: 1.35;
 }
-.rp-careerNote p:not(.rp-note__k) { font-size: .9rem; line-height: 1.5; }
+.rp-careerNote p:not(.rp-note__k) { font-size: .9375rem; line-height: 1.5; }
 
 /* Portfolio evidence is read under time pressure. Keep annotations, decision
    logs, and prototype controls at the same 13px minimum as the core metadata
@@ -3717,7 +3717,7 @@ h2.rp-kicker { margin: 0 0 .4rem; line-height: 1.3; }
   border: 0;
   box-shadow: none;
   font-family: var(--sans);
-  font-size: .88rem;
+  font-size: .9375rem;
   letter-spacing: 0;
   text-transform: none;
 }
@@ -3818,7 +3818,7 @@ body:has(.riso-home) .site-footer__eyebrow,
 body:has(.riso-home) .site-footer__label,
 body:has(.flagship-page--msk) .site-footer__eyebrow,
 body:has(.flagship-page--msk) .site-footer__label {
-  font-size: .875rem;
+  font-size: .9375rem;
   letter-spacing: 0;
   text-transform: none;
 }
@@ -3875,7 +3875,7 @@ body:has(.flagship-page--msk) .nav-dock__item[aria-current] {
 .riso-home .rp-stat__tag,
 .flagship-page--msk .rp-stat__tag {
   margin: .55rem 0 0;
-  font-size: .875rem;
+  font-size: .9375rem;
   letter-spacing: 0;
   text-transform: none;
 }
