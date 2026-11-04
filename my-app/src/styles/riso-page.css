@@ -4105,3 +4105,11 @@ body .site-footer__label {
 /* Closed-row titles read as section headings: display face, one step up. */
 .rp-deepDive__title { font-weight: 800; font-size: 1.5rem; line-height: 1.1; letter-spacing: -.01em; }
 @media (max-width: 600px) { .rp-deepDive__title { font-size: 1.25rem; } }
+
+/* Availability sits directly under the photo as a small pill. */
+.rp-heroStatus {
+  display: inline-flex; align-items: center; gap: .55rem; margin: .9rem 0 0; padding: .4rem .8rem;
+  background: var(--paper-2); color: var(--ink); border: 1px solid var(--hair); border-radius: 999px;
+  font-family: var(--shell-sans); font-size: .8125rem; font-weight: 600; line-height: 1.3;
+}
+.rp-heroStatus::before { content: ""; flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--green); }

@@ -466,8 +466,7 @@ export default function RisoHome() {
               <h1 className="rp-h1">{heroTitle(t("home.riso.heroTitle"), HERO_PHRASES[lang === "es" ? "es" : "en"])}</h1>
             </div>
             <p className="rp-contextLine">
-              <span className="rp-eyebrow__text">{t("home.riso.eyebrow").replace(" · ", "\u00a0· ")}</span>{" "}
-              <span className="rp-eyebrow__status">{t("home.status")}</span>
+              <span className="rp-eyebrow__text">{t("home.riso.eyebrow").replace(" · ", "\u00a0· ")}</span>
             </p>
             <p className="rp-sub rp-heroProof">
               {t("home.riso.heroLead")} <b>{glossTerms(t("home.riso.heroProof"), glossary, { tabStop: false })}</b>
@@ -518,6 +517,7 @@ export default function RisoHome() {
           <div className="rp-headshot">
             <img src="/assets/about/headshot.jpg" alt="Hillary Esposito" />
           </div>
+          <p className="rp-heroStatus">{t("home.status")}</p>
         </div>
       </header>
 
