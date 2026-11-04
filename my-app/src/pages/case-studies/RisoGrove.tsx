@@ -301,6 +301,22 @@ export default function RisoGrove() {
             </div>
           </div>
 
+          <figure className="rp-stockPhoto rp-reveal" data-evidence="true">
+            <img
+              src="https://images.unsplash.com/photo-1533038590840-1cde6e668a91?auto=format&fit=crop&w=1200&q=70"
+              alt=""
+              loading="lazy"
+              width={1200}
+              height={400}
+            />
+            <figcaption>
+              Grove is for people new to plant care. Stock photo, not a Grove screen. Photo:{" "}
+              <a href="https://unsplash.com/@anniespratt" target="_blank" rel="noopener noreferrer">Annie Spratt</a>
+              {" / "}
+              <a href="https://unsplash.com/photos/hX_hf2lPpUU" target="_blank" rel="noopener noreferrer">Unsplash</a>
+            </figcaption>
+          </figure>
+
           <h3 className="rp-subhead">Five people found the problem. Thirty-seven chose what came next.</h3>
           <p className="rp-lede">From March to May 2026, five moderated sessions showed that people stalled when care led with a feed and a mission, not their plants. Then, from May 22 to October 16, 37 people answered a self-report survey: 31 plant owners and caretakers, three florists, and three bouquet buyers. Each chose three launch dealbreakers.</p>
           <dl className="rp-surveyStats rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "90ms" } as React.CSSProperties}>
