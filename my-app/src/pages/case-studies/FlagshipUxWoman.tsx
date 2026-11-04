@@ -5,6 +5,7 @@ import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/C
 import ReadingProgress from "../../components/flagship/ReadingProgress";
 import ShareCaseStudy from "../../components/flagship/ShareCaseStudy";
 import EvidenceField from "../../components/flagship/EvidenceField";
+import ConfidenceMap, { ConfidenceRow } from "../../components/flagship/ConfidenceMap";
 import CartoField from "../../components/riso/CartoField";
 import RisoDefs from "../../components/riso/RisoDefs";
 import SpanishCaseStudy from "../../components/SpanishCaseStudy";
@@ -40,6 +41,15 @@ const CHAPTERS: CaseStudyChapter[] = [
   { id: "uxwoman-findings", label: "Findings" },
   { id: "uxwoman-pretotypes", label: "Pretotypes" },
   { id: "uxwoman-next", label: "Next step" },
+];
+
+// Levels are the ones each finding's own confidence line already states.
+const CONFIDENCE_ROWS: ConfidenceRow[] = [
+  { finding: "Work crosses roles and organizations by hand", observed: { level: "Moderate", claim: "that it matters in several workflows" }, limit: { level: "Low", claim: "that it is one shared failure" } },
+  { finding: "Information has to fit the case", observed: { level: "Moderate", claim: "as a cross-case observation" } },
+  { finding: "Coverage barriers may interrupt care", observed: { level: "Moderate", claim: "that people in several roles see the risk" }, limit: { level: "Low", claim: "on how common it is and on patient experience" } },
+  { finding: "People keep the judgment and recovery work", observed: { level: "High", claim: "that human work is present" }, limit: { level: "Low", claim: "that it is an unmet need, or that automation answers it" } },
+  { finding: "AI experience varies", observed: { level: "High", claim: "that experience differs" } },
 ];
 
 const FINDINGS: { title: string; body: React.ReactNode; confidence: string }[] = [
@@ -160,6 +170,7 @@ export default function FlagshipUxWoman() {
           <p className="rp-kicker">What the interviews showed</p>
           <h2 className="rp-title">Three findings, each rated for confidence.</h2>
           <p className="rp-lede">A rating says how directly the accounts support a claim, not how many people said it.</p>
+          <ConfidenceMap caption="How strongly the interviews support each finding" rows={CONFIDENCE_ROWS} />
           <ol className="fp-findings rp-reveal">
             {FINDINGS.slice(0, 3).map((finding) => (
               <li key={finding.title}>

@@ -88,6 +88,11 @@ function build(root: Document) {
     }
   }
 
+  // Confidence map: each level bar fills left to right as the table arrives.
+  q(".fp-confidence").forEach((el) => {
+    gsap.from(el.querySelectorAll(".fp-confidence__bar i"), { scaleX: 0, transformOrigin: "left center", duration: 0.5, ease: "power2.out", stagger: 0.03, scrollTrigger: enter(el, "top 85%") });
+  });
+
   // Case-study artifacts ease in as they arrive.
   q(".fp-artifactLabel, .fp-dashboardFrame, .rp-device, .fp-heroArt").forEach((el) => {
     gsap.from(el, { y: 36, opacity: 0.3, duration: 0.9, ease: "power3.out", scrollTrigger: enter(el, "top 92%") });

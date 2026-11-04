@@ -977,3 +977,18 @@
 @media (max-width: 600px) {
   .flagship-page--msk .fp-workflow > i { display: none; }
 }
+
+/* ---------- Confidence map (UX Woman) ---------- */
+.fp-confidence { margin: 2rem 0 0; max-width: 980px; overflow-x: auto; }
+.fp-confidence table { width: 100%; border-collapse: collapse; font-size: .95rem; line-height: 1.4; }
+.fp-confidence caption { text-align: left; padding: 0 0 .8rem; font-weight: 700; color: var(--ink); }
+.fp-confidence thead th { text-align: left; padding: .6rem .9rem .6rem 0; font-size: var(--rp-type-floor); font-weight: 600; color: var(--muted); border-bottom: 2px solid var(--ink); }
+.fp-confidence tbody th, .fp-confidence tbody td { text-align: left; vertical-align: top; padding: 1rem .9rem 1rem 0; border-bottom: 1px solid var(--hair); font-weight: 400; }
+.fp-confidence tbody th { font-weight: 700; color: var(--ink); width: 28%; }
+.fp-confidence__cell { display: grid; grid-template-columns: auto 1fr; gap: .7rem; align-items: start; }
+.fp-confidence__bar { display: inline-flex; gap: 3px; margin-top: .35rem; }
+.fp-confidence__bar i { display: block; width: 14px; height: 8px; background: transparent; border: 1px solid var(--ink); }
+.fp-confidence__bar i.is-on { background: var(--ink); }
+.fp-confidence__text b { margin-right: .25em; }
+.fp-confidence__none { color: var(--muted); }
+@media (max-width: 760px) { .fp-confidence table { min-width: 640px; } }
