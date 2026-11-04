@@ -6,6 +6,7 @@ import PhaseIndicator from "../components/riso/PhaseIndicator";
 import HomepageOpeningFilm from "../components/riso/HomepageOpeningFilm";
 import LogisticsMechanism from "../components/LogisticsMechanism";
 import MSKDashboardMockup from "../components/MSKDashboardMockup";
+import HomeFold from "../components/HomeFold";
 import { glossTerms } from "../components/Term";
 import { UXWOMAN_LEDGER } from "../data/uxWomanCaseStudy";
 import { MSK_COPY } from "../data/mskCaseStudy";
@@ -494,10 +495,15 @@ export default function RisoHome() {
             </div>
             {/* Career-switch context, directly under the actions: quiet, in the
                 site's existing note style, never a banner (2026-10-14, item 15). */}
-            <aside className="rp-note rp-careerNote" aria-labelledby="home-career-switch">
-              <p className="rp-note__k" id="home-career-switch">{t("home.riso.careerSwitchTitle")}</p>
-              <p>{t("home.riso.careerSwitchBody")}</p>
-            </aside>
+            <HomeFold
+              id="home-career-fold"
+              title={t("home.riso.careerSwitchTitle")}
+              hint={t("home.fold.career.hint")}
+              openLabel={t("home.fold.open")}
+              closeLabel={t("home.fold.close")}
+            >
+              <p className="rp-careerNote">{t("home.riso.careerSwitchBody")}</p>
+            </HomeFold>
           </div>
         </div>
         {/* Simple hero media: photo next to the header text. The dashboard
@@ -553,6 +559,15 @@ export default function RisoHome() {
       <section className="rp-section" id="projects" aria-labelledby="home-work-title" data-visual="true">
         <div className="rp-wrap">
           <h2 className="rp-title" id="home-work-title">{t("home.riso.workTitle")}</h2>
+          <HomeFold
+            id="home-work-fold"
+            title={t("home.fold.work.title")}
+            summary={t("home.fold.work.summary")}
+            hint={t("home.fold.work.hint")}
+            openLabel={t("home.fold.open")}
+            closeLabel={t("home.fold.close")}
+            hashIds={["projects"]}
+          >
           <section className="rp-workGroup" aria-labelledby="home-primary-cases-title">
             <h3 className="sr-only" id="home-primary-cases-title">
               {lang === "es" ? "Casos de estudio principales" : "Main case studies"}
@@ -599,6 +614,11 @@ export default function RisoHome() {
               <span>{t("home.riso.supportingKicker")}</span>
               <Link to="/case-study/mobbin">{t("home.riso.supportingLink")}</Link>
             </p>
+          </details>
+          </HomeFold>
+        </div>
+      </section>
+
       {/* WEEKEND DISPATCH: a current-practice signal, deliberately outside the
           three flagship rows. The story and evidence are complete at rest; the
           route drawing is decorative context and the event photograph is provenance. */}
@@ -782,9 +802,6 @@ export default function RisoHome() {
           </article>
         </div>
       </section>
-          </details>
-        </div>
-      </section>
 
       {/* The recruiter path resolves before secondary journal/about material. */}
       <section className="rp-section rp-section--alt" id="contact" aria-labelledby="home-contact-title">
@@ -813,11 +830,20 @@ export default function RisoHome() {
       {/* MINI ABOUT */}
       <section className="rp-section" id="about" aria-labelledby="home-about-title">
         <div className="rp-wrap">
-          <div className="rp-aboutBlock rp-reveal">
-            <h2 className="rp-title" id="home-about-title">{t("home.riso.aboutTitle")}</h2>
-            <p className="rp-sub">{t("home.about.blurb")}</p>
-            <Link className="rp-cta rp-cta--ghost" to="/about" style={{ marginTop: "1.4rem" }}>{t("home.about.link")}</Link>
-          </div>
+          <h2 className="sr-only" id="home-about-title">{t("home.riso.aboutTitle")}</h2>
+          <HomeFold
+            id="home-about-fold"
+            title={t("home.riso.aboutTitle")}
+            hint={t("home.fold.about.hint")}
+            openLabel={t("home.fold.open")}
+            closeLabel={t("home.fold.close")}
+            hashIds={["about"]}
+          >
+            <div className="rp-aboutBlock">
+              <p className="rp-sub">{t("home.about.blurb")}</p>
+              <Link className="rp-cta rp-cta--ghost" to="/about" style={{ marginTop: "1.4rem" }}>{t("home.about.link")}</Link>
+            </div>
+          </HomeFold>
         </div>
       </section>
 

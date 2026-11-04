@@ -1363,9 +1363,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   place-items: center;
   min-width: 44px;
   min-height: 44px;
-  font: 700 .7rem/1 var(--mono);
-  letter-spacing: .04em;
-  text-transform: uppercase;
+  font: 600 .8125rem/1 var(--shell-sans);
   color: var(--coral-text);
 }
 .dark-mode .rp-deepDive__state { color: var(--coral-on-dark); }
@@ -4075,3 +4073,23 @@ body .site-footer__label {
 .flagship-page--msk .rp-hero { align-items: start; }
 
 .flagship-page--msk .rp-next .rp-next__title { font-size: var(--ts-title); }
+
+/* Home folds: a closed ruled row with a one-line summary. The hint shows on
+   hover or keyboard focus only; everything in it is also in the opened body. */
+.rp-fold__summary { display: block; margin-top: .2rem; color: var(--ink-2); font-size: .9375rem; line-height: 1.4; }
+.rp-fold__hint {
+  display: block; max-height: 0; overflow: hidden; opacity: 0; color: var(--muted);
+  font-size: .9375rem; line-height: 1.4;
+  transition: max-height .2s ease, opacity .2s ease, margin-top .2s ease;
+}
+.rp-fold > summary:focus-visible .rp-fold__hint { max-height: 4rem; opacity: 1; margin-top: .25rem; }
+@media (hover: hover) {
+  .rp-fold > summary:hover .rp-fold__hint { max-height: 4rem; opacity: 1; margin-top: .25rem; }
+}
+.rp-fold[open] .rp-fold__hint { display: none; }
+.rp-fold__body { max-width: 1080px; margin: 0 auto; padding: var(--sp-gutter); }
+.rp-fold .rp-fold__body .rp-worklist { margin-top: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .rp-fold__hint { transition: none; }
+}
+.rp-fold__body .rp-careerNote { margin-top: 0; font-size: .9375rem; line-height: 1.5; }
