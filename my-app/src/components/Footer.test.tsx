@@ -53,7 +53,7 @@ describe("Footer", () => {
     const emails = Array.from(
       container.querySelectorAll<HTMLAnchorElement>('a[href="mailto:espositohillary@gmail.com"]')
     ).map((a) => a.textContent);
-    expect(emails).toEqual(["footer.signoffLink", "footer.email"]);
+    expect(emails).toEqual(["footer.email"]);
 
     const resume = container.querySelector<HTMLAnchorElement>(
       'a[href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"]'
@@ -86,13 +86,13 @@ describe("Footer", () => {
     expect(container.textContent).toContain("Emergent");
   });
 
-  it("on the home page, the Explore column's opener button dispatches open-opening-film with returnFocus", async () => {
+  it("on the home page, the footer's opener button dispatches open-opening-film with returnFocus", async () => {
     const handler = jest.fn();
     window.addEventListener("open-opening-film", handler);
     await act(async () => {
       root.render(<Footer />);
     });
-    const trigger = container.querySelector<HTMLButtonElement>(".site-footer__column .rp-openingVisualTrigger");
+    const trigger = container.querySelector<HTMLButtonElement>(".site-footer__links .rp-openingVisualTrigger");
     expect(trigger?.textContent).toBe("home.riso.openingVisual");
     act(() => trigger?.click());
     window.removeEventListener("open-opening-film", handler);

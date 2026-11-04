@@ -140,15 +140,6 @@ const PRIMARY_WORK = WORK.filter((work) => work.tier === "primary");
 const SUPPORTING_WORK = WORK.filter((work) => work.tier === "supporting");
 const MORE_WORK = WORK.filter((work) => work.tier === "more");
 
-// Each source links to the section that carries the number's scope and limits.
-const STATS = [
-  { n: "21,000+", tagKey: "home.stat.scaleTag", labelKey: "home.stat.scale", sourceKey: "home.stat.mskSource", path: "/case-study/msk", anchor: "msk-outcomes" },
-  // Word joiners (U+2060) stop the line breaking after the en dash; the
-  // only break left is after the arrow, so the range splits at its phrase.
-  { n: "1–\u20602\u00a0mo\u00a0→ 1–\u20602\u00a0wk", nEs: "1–\u20602\u00a0meses\u00a0→ 1–\u20602\u00a0sem.", tagKey: "home.stat.logisticsTag", labelKey: "home.stat.logistics", sourceKey: "home.stat.logisticsSource", path: "/case-study/logistics", anchor: "log-outcomes" },
-  { n: "37", tagKey: "home.stat.researchTag", labelKey: "home.stat.research", sourceKey: "home.stat.groveSource", path: "/case-study/grove", anchor: "grove-research" },
-] satisfies Array<{ n: string; nEs?: string; tagKey: StringKey; labelKey: StringKey; sourceKey: StringKey; path: string; anchor: string }>;
-
 // Home's glossary: each short form gets one tap/hover definition, at its first
 // appearance (2026-10-14 review, item 12). NYPL is spelled out in the dispatch
 // body instead, so it needs none.
@@ -520,40 +511,6 @@ export default function RisoHome() {
           <p className="rp-heroStatus">{t("home.status")}</p>
         </div>
       </header>
-
-      {/* CREDENTIAL STRIP — recovered from the previous design. The standing
-          decision is that Lean Six Sigma, the MHA, and military service belong
-          on the homepage rather than buried in About; the rebuild had dropped
-          them from every public page. MSK/Mobbin/Grove are deliberately not
-          repeated here — they are the work list directly below. */}
-      <ul className="rp-trustStrip" aria-label={t("home.trustAria")}>
-        {(["home.trust.credentials", "home.trust.army", "home.trust.bilingual"] as StringKey[]).map((key) => (
-          <li key={key}>{glossTerms(t(key), glossary)}</li>
-        ))}
-      </ul>
-
-      {/* PROOF */}
-      <section className="rp-section rp-section--alt" aria-labelledby="home-proof-title" data-visual="true">
-        <div className="rp-wrap">
-          <h2 className="rp-title" id="home-proof-title">{t("home.riso.proofTitle")}</h2>
-          <div className="rp-outcomes rp-outcomes--lead rp-reveal" data-evidence="true">
-            {STATS.map((s) => (
-              <div className="rp-stat" key={s.n}>
-                <p className="rp-stat__n">{lang === "es" && s.nEs ? s.nEs : s.n}</p>
-                <p className="rp-stat__l">{t(s.labelKey)}</p>
-                <p className="rp-stat__tag">{t(s.tagKey)}</p>
-                <Link
-                  className="rp-stat__source"
-                  to={`${s.path}#${lang === "es" ? "es-" : ""}${s.anchor}`}
-                >
-                  {t(s.sourceKey)}<span aria-hidden="true"> →</span>
-                </Link>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
 
       {/* SELECTED WORK */}
       <section className="rp-section" id="projects" aria-labelledby="home-work-title" data-visual="true">

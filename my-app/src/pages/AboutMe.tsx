@@ -160,6 +160,11 @@ export default function About() {
                 {isSpanish ? "Abrir el recorrido de 90 segundos (en inglés)" : "Open the 90-second tour"}
               </button>
             </div>
+            <ul className="rp-trustStrip" aria-label={isSpanish ? "Credenciales" : "Credentials"}>
+              <li>{isSpanish ? "MHA · Green Belt de Lean Six Sigma" : "MHA · Lean Six Sigma Green Belt"}</li>
+              <li>{isSpanish ? "Veterana del Ejército" : "Army Veteran"}</li>
+              <li>{isSpanish ? "Bilingüe EN/ES" : "Bilingual EN/ES"}</li>
+            </ul>
           </div>
         </div>
       </header>

@@ -473,3 +473,19 @@
   letter-spacing: -.026em;
 }
 .about-page .about-hero-profile .rp-sub { max-width: 52ch; }
+
+/* One quiet footer row: copyright on the left, links on the right. The top
+   nav already carries Home, Work and About, and the page's own close carries
+   the invitation to write, so the footer no longer repeats either. */
+.site-footer__links { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem 1.25rem; }
+.site-footer__links a,
+.site-footer__links .site-footer__action {
+  min-height: 44px; display: inline-flex; align-items: center;
+  font: 600 .8125rem/1.3 var(--shell-sans); color: inherit; background: none; border: 0; padding: 0; cursor: pointer;
+  text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px;
+}
+.site-footer__links a:hover,
+.site-footer__links .site-footer__action:hover { text-decoration-thickness: 2px; }
+.site-footer__links a:focus-visible,
+.site-footer__links .site-footer__action:focus-visible { outline: 3px solid var(--coral-on-dark, var(--coral)); outline-offset: 2px; }
+@media (max-width: 720px) { .site-footer__baseRow { align-items: flex-start; } }

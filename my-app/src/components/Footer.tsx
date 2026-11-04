@@ -103,73 +103,6 @@ export default function Footer() {
       id="site-footer"
       className={`site-footer${hasAuthoredClose ? " site-footer--compact" : ""}`}
     >
-      <div className="site-footer__grid">
-        <div className="site-footer__lead">
-          <p className="site-footer__eyebrow">{t("footer.eyebrow")}</p>
-          <p className="site-footer__statement">{t("footer.statement")}</p>
-          <p className="site-footer__signoff">
-            {t("footer.signoff")}{" "}
-            <a href="mailto:espositohillary@gmail.com">{t("footer.signoffLink")}</a>
-          </p>
-        </div>
-
-        <nav className="site-footer__column" aria-label={t("footer.siteAria")}>
-          <p className="site-footer__label">{t("footer.explore")}</p>
-          <Link to="/">{t("nav.home")}</Link>
-          <Link to="/?scrollTo=projects">{t("nav.work")}</Link>
-          <Link to="/about">{t("nav.about")}</Link>
-          {/* Replays the home page's opening film. The film's state lives in
-              pages/RisoHome.tsx, so on the home page this dispatches
-              `open-opening-film` (focus returns here on close); elsewhere it
-              navigates home and asks RisoHome to open it via route state.
-              Hidden under reduced motion (.rp-openingVisualTrigger). */}
-          <button
-            type="button"
-            className="site-footer__action rp-openingVisualTrigger"
-            onClick={(e) => {
-              if (normalizedPath === "/") {
-                window.dispatchEvent(
-                  new CustomEvent("open-opening-film", { detail: { returnFocus: e.currentTarget } })
-                );
-              } else {
-                navigate("/", { state: { openOpeningFilm: true } });
-              }
-            }}
-          >
-            {t("home.riso.openingVisual")}
-          </button>
-        </nav>
-
-        <div className="site-footer__column">
-          <p className="site-footer__label">{t("footer.connect")}</p>
-          <a href="mailto:espositohillary@gmail.com">{t("footer.email")}</a>
-          <a
-            href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={t("nav.resumeAria")}
-          >
-            <span className="rp-ext">{t("nav.resume")}</span>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/hillaryesposito/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={t("home.linkedinAria")}
-          >
-            <span className="rp-ext">LinkedIn</span>
-          </a>
-          <a
-            href="https://github.com/hme222"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={t("footer.githubAria")}
-          >
-            <span className="rp-ext">GitHub</span>
-          </a>
-        </div>
-      </div>
-
       <div className="site-footer__base">
         {credits && (
           <div className="site-footer__madeWith">
@@ -189,7 +122,53 @@ export default function Footer() {
         )}
         <div className="site-footer__baseRow">
           <p>© 2026 Hillary Esposito</p>
-          <p>{t("footer.availability")}</p>
+          <nav className="site-footer__links" aria-label={t("footer.connect")}>
+            <a href="mailto:espositohillary@gmail.com">{t("footer.email")}</a>
+            <a
+              href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t("nav.resumeAria")}
+            >
+              <span className="rp-ext">{t("nav.resume")}</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/hillaryesposito/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t("home.linkedinAria")}
+            >
+              <span className="rp-ext">LinkedIn</span>
+            </a>
+            <a
+              href="https://github.com/hme222"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t("footer.githubAria")}
+            >
+              <span className="rp-ext">GitHub</span>
+            </a>
+            {/* Replays the home page's opening film. The film's state lives in
+                pages/RisoHome.tsx, so on the home page this dispatches
+                `open-opening-film` (focus returns here on close); elsewhere it
+                navigates home and asks RisoHome to open it via route state.
+                Hidden under reduced motion (.rp-openingVisualTrigger). */}
+            <button
+              type="button"
+              className="site-footer__action rp-openingVisualTrigger"
+              onClick={(e) => {
+                if (normalizedPath === "/") {
+                  window.dispatchEvent(
+                    new CustomEvent("open-opening-film", { detail: { returnFocus: e.currentTarget } })
+                  );
+                } else {
+                  navigate("/", { state: { openOpeningFilm: true } });
+                }
+              }}
+            >
+              {t("home.riso.openingVisual")}
+            </button>
+          </nav>
         </div>
       </div>
     </footer>

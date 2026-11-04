@@ -227,13 +227,12 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".rp-recruiter-link")).toBeNull();
   });
 
-  it("tags each Home proof number with Hillary's role in it", async () => {
+  it("keeps the numbers section and the credentials strip off Home", async () => {
     await act(async () => {
       root.render(<RisoHome />);
     });
-    const stats = Array.from(container.querySelectorAll(".rp-outcomes .rp-stat"));
-    expect(stats.map((s) => s.querySelector(".rp-stat__tag")?.textContent)).toEqual(["home.stat.scaleTag", "home.stat.logisticsTag", "home.stat.researchTag"]);
-    expect(stats[1].querySelector(".rp-stat__n")?.textContent).toBe("1–\u20602\u00a0mo\u00a0→ 1–\u20602\u00a0wk");
+    expect(container.querySelector(".rp-outcomes .rp-stat")).toBeNull();
+    expect(container.querySelector(".rp-trustStrip")).toBeNull();
   });
 
   it("names each Home work card from visible copy without hiding its description", async () => {
