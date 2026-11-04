@@ -3950,16 +3950,16 @@ body:has(.flagship-page--msk) .nav-dock__item[aria-current] {
 /* ---------- 2026-11-03 one type system, one chrome ---------- */
 /* Display face for headings. Body and UI inherit --sans. */
 h1, h2, h3, h4,
-.rp-h1, .rp-title, .rp-stat__n {
+.rp-h1, .rp-title, .rp-stat__n, .rp-work__title, .rp-deepDive__title {
   font-family: var(--shell-display);
 }
 
 /* Home and MSK force the body face onto every descendant with !important
    (the two rules above, near .site-footer). Headings opt back out of that. */
-.riso-home :is(h1, h2, h3, h4, .rp-h1, .rp-title, .rp-stat__n),
-.flagship-page--msk :is(h1, h2, h3, h4, .rp-h1, .rp-title, .rp-stat__n),
-body:has(.riso-home) :is(h1, h2, h3, h4, .rp-h1, .rp-title, .rp-stat__n),
-body:has(.flagship-page--msk) :is(h1, h2, h3, h4, .rp-h1, .rp-title, .rp-stat__n) {
+.riso-home :is(h1, h2, h3, h4, .rp-h1, .rp-title, .rp-stat__n, .rp-work__title, .rp-deepDive__title),
+.flagship-page--msk :is(h1, h2, h3, h4, .rp-h1, .rp-title, .rp-stat__n, .rp-work__title, .rp-deepDive__title),
+body:has(.riso-home) :is(h1, h2, h3, h4, .rp-h1, .rp-title, .rp-stat__n, .rp-work__title, .rp-deepDive__title),
+body:has(.flagship-page--msk) :is(h1, h2, h3, h4, .rp-h1, .rp-title, .rp-stat__n, .rp-work__title, .rp-deepDive__title) {
   font-family: var(--shell-display) !important;
 }
 
@@ -4101,3 +4101,7 @@ body .site-footer__label {
 .rp-aboutPhoto img { display: block; width: 100%; height: clamp(160px, 28vw, 280px); object-fit: cover; border-radius: var(--r-plate, 4px); background: var(--paper-2); }
 .rp-aboutPhoto figcaption { margin-top: .4rem; color: var(--muted); font-size: .8125rem; line-height: 1.4; }
 .rp-aboutPhoto figcaption a { color: inherit; text-decoration: underline; text-underline-offset: 2px; min-height: 24px; }
+
+/* Closed-row titles read as section headings: display face, one step up. */
+.rp-deepDive__title { font-weight: 800; font-size: 1.5rem; line-height: 1.1; letter-spacing: -.01em; }
+@media (max-width: 600px) { .rp-deepDive__title { font-size: 1.25rem; } }
