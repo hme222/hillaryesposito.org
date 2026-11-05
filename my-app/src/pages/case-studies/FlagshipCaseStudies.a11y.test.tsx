@@ -150,14 +150,14 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelectorAll("#msk-outcomes .rp-outcomes--four .rp-stat")).toHaveLength(4);
   });
 
-  it("keeps the recruiter tour off case-study heroes and gives each hero one project action", async () => {
+  it("keeps the recruiter tour off case-study heroes and adds no same-page jump button", async () => {
     await act(async () => {
       root.render(<FlagshipMSK />);
     });
     expect(container.querySelector(".rp-breadcrumbRow button")).toBeNull();
     expect(container.querySelector(".rp-heroTour")).toBeNull();
-    const action = container.querySelector<HTMLAnchorElement>('.rp-hero__ctas a[href="#msk-brief"]');
-    expect(action?.textContent).toBe("See the filing path →");
+    // No same-page jump button in the hero: the story starts right below it.
+    expect(container.querySelector('.rp-hero__ctas a[href="#msk-brief"]')).toBeNull();
 
     // Spanish keeps one action back to the complete English case study.
     mockLang = "es";
@@ -171,19 +171,13 @@ describe("flagship case-study accessibility", () => {
     expect(breadcrumb?.textContent).not.toContain("Una cola de archivo reemplazó");
   });
 
-  it("About uses the top-level page shell and carries the tour trigger in its hero", async () => {
+  it("About uses the top-level page shell and has no tour button in its hero", async () => {
     await act(async () => {
       root.render(<About />);
     });
     expect(container.querySelector(".rp-breadcrumbRow")).toBeNull();
     expect(container.querySelector(".rp-chapters")).toBeNull();
-    const trigger = container.querySelector<HTMLButtonElement>(".rp-hero__ctas .rp-recruiterTourTrigger");
-    expect(trigger?.textContent).toBe("Open the 90-second tour");
-    const handler = jest.fn();
-    window.addEventListener("open-recruiter-panel", handler);
-    await act(async () => trigger?.click());
-    expect(handler).toHaveBeenCalledTimes(1);
-    window.removeEventListener("open-recruiter-panel", handler);
+    expect(container.querySelector(".rp-recruiterTourTrigger")).toBeNull();
   });
 
   it("labels Grove redesign work as testable direction with retest pending", async () => {
@@ -192,7 +186,7 @@ describe("flagship case-study accessibility", () => {
     });
 
     const hero = container.querySelector("#grove-start");
-    expect(hero?.textContent).toContain("High-fidelity screens, edge states, and a retest");
+    expect(hero?.textContent).toContain("3 directions");
     expect(container.textContent).toContain("not completed redesigns");
     expect(container.querySelectorAll('.rp-decisionRecord[aria-label="Grove\'s three next-design directions"] dt')).toHaveLength(3);
     expect(container.querySelectorAll(".rp-decision")).toHaveLength(1);
@@ -208,8 +202,8 @@ describe("flagship case-study accessibility", () => {
     const hero = container.querySelector("#log-start");
     expect(hero?.textContent).toContain("1–2 months to 1–2 weeks");
     expect(hero?.querySelector("h1")?.textContent).toBe("Resupply went from months to\u00a0weeks.");
-    expect(hero?.textContent).toContain("85% faster in my service record (owner-reported)");
-    expect(container.textContent).toContain("measurement periods and methods are not preserved");
+    expect(container.textContent).toContain("85% faster in my service record");
+    expect(container.textContent).toContain("Measurement periods and methods are not preserved");
     expect(container.textContent).toContain("1–\u20602\u00a0wkreported medical resupply time");
     expect(container.textContent).toContain("60%reported reduction in spending");
     expect(container.textContent).toContain("15%reported: critical supplies");
@@ -223,7 +217,8 @@ describe("flagship case-study accessibility", () => {
     ["home", "projects", "about", "contact"].forEach((id) => {
       expect(container.querySelector(`#${id}`)).not.toBeNull();
     });
-    expect(container.querySelector('a[href="/case-study/msk"].rp-cta')).not.toBeNull();
+    // The hero has no buttons; the MSK case study is reached from the work list.
+    expect(container.querySelector('a[href="/case-study/msk"]')).not.toBeNull();
     expect(container.querySelector(".rp-recruiter-link")).toBeNull();
   });
 
@@ -779,13 +774,10 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".rp-work__thumb--mechanism")?.getAttribute("aria-label")).toBeTruthy();
     expect(container.querySelector(".rp-work__thumb figcaption")).toBeNull();
 
-    // The hero ends on exactly two actions; the opener replay moved to the
-    // global footer, which reaches the film through `open-opening-film`.
-    const heroActions = container.querySelectorAll(".rp-hero .rp-hero__ctas > a, .rp-hero .rp-hero__ctas > button");
-    expect(Array.from(heroActions, (el) => el.textContent)).toEqual([
-      "home.riso.primaryWork →",
-      "home.riso.recruiterTourLink",
-    ]);
+    // The hero carries no buttons: the work list is the next thing on the page.
+    // The opener replay lives in the global footer, which reaches the film
+    // through `open-opening-film`.
+    expect(container.querySelectorAll(".rp-hero .rp-hero__ctas > a, .rp-hero .rp-hero__ctas > button")).toHaveLength(0);
     expect(container.querySelector(".rp-hero .rp-openingVisualTrigger")).toBeNull();
     await act(async () => {
       window.dispatchEvent(new CustomEvent("open-opening-film", { detail: {} }));
@@ -1010,7 +1002,7 @@ describe("flagship case-study accessibility", () => {
     expect(details).not.toBeNull();
     expect(details?.open).toBe(false);
     expect(container.querySelector('a[href="#grove-prototype"]')).toBeNull();
-    expect(heroAction?.textContent).toContain("See how twelve became three");
+    expect(heroAction).toBeNull();
   });
 
   it("leaves Grove hash disclosure ownership to the shared chrome without focus theft", async () => {

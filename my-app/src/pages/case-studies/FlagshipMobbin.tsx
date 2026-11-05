@@ -93,9 +93,6 @@ export default function FlagshipMobbin() {
               I captured, sequenced, annotated, and labeled <b>200+ screens per app</b> across Kikoff,
               Polymarket, and Discover. I documented these products; I did not design them or Mobbin.
             </p>
-            <div className="rp-hero__ctas">
-              <a className="rp-cta" href="#mobbin-work">See the capture method →</a>
-            </div>
           </div>
         </div>
         <div className="rp-hero__media fp-heroArt fp-heroArt--mobbin" aria-label="Three finance app screens documented for Mobbin" data-evidence="true">
@@ -177,7 +174,7 @@ export default function FlagshipMobbin() {
         kicker="What it added up to"
         title="A searchable record of how three finance products work."
         intro="I documented the source apps for Mobbin’s Finance+ reference library. I did not design Kikoff, Polymarket, Discover, or Mobbin."
-        disclaimer="Freelance app-capture work · source-product ownership stays with each company"
+        disclaimer="Freelance app-capture work."
         metrics={[
           { n: "200+", label: "screens per app, captured, sequenced, annotated, and labeled across three apps" },
           { n: "3", label: "live finance apps documented, each earning confidence a different way" },

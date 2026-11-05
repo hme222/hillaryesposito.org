@@ -253,10 +253,6 @@ export default function RisoGrove() {
           <div className="rp-clearing">
             <h1 className="rp-h1">Twelve features became three.</h1>
             <span className="rp-eyebrow">Grove · sole designer · AI-assisted React prototype</span>
-            <span className="rp-readtime">
-              <b>5 min</b>
-              <span>read · Phase 2 of 3</span>
-            </span>
             <p className="rp-sub">
               Emergent, an AI app builder, made the first build. I tested it with 5 people, then used a 37-person self-report survey to rank what earned the next build. The evidence cut twelve features to three.
             </p>
@@ -266,12 +262,6 @@ export default function RisoGrove() {
                 <li><b>37 people</b><span>ranked the launch dealbreakers</span></li>
                 <li><b>3 directions</b><span>earned the next build</span></li>
               </ol>
-              <p><b>Next</b><span>High-fidelity screens, edge states, and a retest.</span></p>
-            </div>
-            <div className="rp-hero__ctas">
-              <a className="rp-cta" href="#grove-research">
-                See how twelve became three →
-              </a>
             </div>
           </div>
         </div>

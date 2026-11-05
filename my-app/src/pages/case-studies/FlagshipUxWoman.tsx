@@ -143,9 +143,6 @@ export default function FlagshipUxWoman() {
               <div><dt>Role</dt><dd>Sole researcher · UX Woman UX Design Accelerator · 2026</dd></div>
               <div><dt>My contribution</dt><dd>Interview plans · recruitment screener · synthesis · five pretotype designs</dd></div>
             </dl>
-            <div className="rp-hero__ctas">
-              <a className="rp-cta" href="#uxwoman-findings">See the findings →</a>
-            </div>
           </div>
         </div>
         <div className="rp-hero__media fp-heroArt fp-heroArt--uxwoman" data-evidence="true">
@@ -283,7 +280,6 @@ export default function FlagshipUxWoman() {
       <section className="rp-section">
         <div className="rp-wrap rp-close">
           <h2>I check the premise before I build.</h2>
-          <p>UX Woman shows how I work: say what the evidence supports, rate it, and name the next test.</p>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
           <ShareCaseStudy title="UX Woman: a case study by Hillary Esposito" />
         </div>

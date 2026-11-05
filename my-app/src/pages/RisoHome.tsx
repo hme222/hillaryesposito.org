@@ -463,27 +463,6 @@ export default function RisoHome() {
             <p className="rp-sub rp-heroProof">
               {t("home.riso.heroLead")} <b>{glossTerms(t("home.riso.heroProof"), glossary, { tabStop: false })}</b>
             </p>
-            <div className="rp-hero__ctas">
-              <Link className="rp-cta home-heroDesktopPrimary" to="/case-study/msk">{t("home.riso.primaryWork")} →</Link>
-              {/* A second, quieter entry point to the recruiter panel, visible
-                  without going through Ask first (the Ask dialog keeps its
-                  own link to the same panel - see AskDialog.tsx). Same text,
-                  same destination, named once in strings.ts. The hero ends
-                  on exactly these two actions; the 5-second opener replay
-                  lives in the footer's Explore column (Footer.tsx) and
-                  reaches the film through the `open-opening-film` event. */}
-              <button
-                type="button"
-                className="rp-heroUtility rp-recruiterTourTrigger"
-                onClick={(e) => {
-                  window.dispatchEvent(
-                    new CustomEvent("open-recruiter-panel", { detail: { returnFocus: e.currentTarget } })
-                  );
-                }}
-              >
-                {t("home.riso.recruiterTourLink")}
-              </button>
-            </div>
             {/* Career-switch context, directly under the actions: quiet, in the
                 site's existing note style, never a banner (2026-10-14, item 15). */}
             <HomeFold

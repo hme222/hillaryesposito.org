@@ -480,12 +480,6 @@
   box-shadow: 0 28px 60px -34px rgba(0,0,0,.5);
 }
 .fp-logisticsHeroMechanism svg { display: block; width: 100%; overflow: visible; }
-.fp-logisticsPhoto { width: min(560px,86%); margin: 0; overflow: hidden;
-  border: 1px solid color-mix(in srgb,var(--green) 28%,var(--hair)); border-radius: var(--r-plate);
-  box-shadow: 0 34px 70px -34px rgba(0,0,0,.55); }
-.fp-logisticsPhoto img { display: block; width: 100%; aspect-ratio: 1284 / 715;
-  object-fit: cover; object-position: center; }
-
 /* Mobbin capture desk */
 .fp-heroArt--mobbin { overflow: hidden; }
 /* 390/844: the screen of the 390×844 viewport every capture here was taken at

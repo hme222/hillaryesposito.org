@@ -177,9 +177,6 @@ export default function FlagshipMSK() {
                   evidence restated the sub above and the provenance note below. */}
               <div><dt>Role route</dt><dd>Office Coordinator → Administrative Assistant → Training Facilitator (retitled Trainer I Specialist)</dd></div>
             </dl>
-            <div className="rp-hero__ctas">
-              <a className="rp-cta" href="#msk-brief">See the filing path →</a>
-            </div>
           </div>
         </div>
         <div className="rp-hero__media fp-heroArt fp-heroArt--msk" data-evidence="true">

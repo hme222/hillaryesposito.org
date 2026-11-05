@@ -103,34 +103,23 @@ export default function FlagshipLogistics() {
           <div className="rp-clearing">
             <h1 className="rp-h1">Resupply went from months to{"\u00a0"}weeks.</h1>
             <span className="rp-eyebrow">Army medical logistics · Iraq · service design</span>
-            <span className="rp-readtime"><b>4 min</b><span>read · deployed 2024</span></span>
             <p className="rp-sub">
               I planned and tracked a $2M warehouse relocation serving seven aid stations across three countries.
               Resupply went from <b>1–2 months to 1–2 weeks</b>.
             </p>
             <dl className="rp-heroEvidence" aria-label="Medical logistics case evidence at a glance">
               <div><dt>Role</dt><dd>Medical logistics officer · relocation and service lead</dd></div>
-              <div><dt>My contribution</dt><dd>Plan the move · one request protocol · shared order status</dd></div>
-              <div><dt>Outcome</dt><dd>85% faster in my service record (owner-reported)</dd></div>
             </dl>
-            <div className="rp-hero__ctas">
-              <a className="rp-cta" href="#log-moves">See the three moves →</a>
-            </div>
           </div>
         </div>
         <div className="rp-hero__media fp-heroArt fp-heroArt--logistics" data-evidence="true">
-          {/* The hero used to be just a label chip floating over a single
-              photo — thin next to MSK's full dashboard artifact next door.
-              This mechanism (the same drawing the "three moves" section
-              uses below) gives the header an actual system to show, not
-              only a portrait. */}
+          {/* The hero shows the mechanism (the same drawing the "three moves"
+              section uses below). The portrait was removed at the owner's
+              request, 2026-11-04. */}
           <div className="fp-logisticsHeroMechanism">
             <LogisticsMechanism n="01" />
           </div>
           <div className="fp-artifactLabel"><span>Deployment · 2024</span><b>44th Infantry Brigade Combat Team · seven aid stations · three countries</b></div>
-          <figure className="fp-logisticsPhoto">
-            <img src="/assets/about/army.jpg" alt="Hillary Esposito in uniform during her deployment as a medical logistics officer" />
-          </figure>
         </div>
       </header>
 
@@ -211,8 +200,8 @@ export default function FlagshipLogistics() {
         id="log-outcomes"
         kicker="What it added up to"
         title="Measured in time, money, and things that did not happen."
-        intro="Moved the supply point, standardized the request, and made order status visible."
-        disclaimer="Owner-reported figures from Hillary's service record · measurement periods and methods are not preserved · no unit positions, routes, or locations are described here"
+        intro="Owner-reported figures from my service record."
+        disclaimer="Measurement periods and methods are not preserved. No unit positions, routes, or locations are described here."
         metrics={[
           { tag: "Relocation", n: "1–\u20602\u00a0wk", label: "reported medical resupply time after the warehouse moved forward, down from 1–2 months · 85% faster in my service record" },
           { tag: "Order status", n: "60%", label: "reported reduction in spending after shared real-time order status stopped over-ordering and stockouts" },

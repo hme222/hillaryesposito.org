@@ -150,17 +150,6 @@ export default function About() {
             <p className="rp-sub">
               {isSpanish ? "Seis años en operaciones de atención oncológica y más de 13 años de servicio en el Ejército, ahora en diseño de productos de salud: flujos clínicos y herramientas internas para el momento en que un paso equivocado tiene un costo." : "Six years in cancer-care operations and 13+ years of Army service, now in healthcare product design: clinical workflows and internal tools for the moment a wrong step has a cost."}
             </p>
-            <div className="rp-hero__ctas">
-              <button
-                type="button"
-                className="rp-heroUtility rp-recruiterTourTrigger"
-                onClick={(e) =>
-                  window.dispatchEvent(new CustomEvent("open-recruiter-panel", { detail: { returnFocus: e.currentTarget } }))
-                }
-              >
-                {isSpanish ? "Abrir el recorrido de 90 segundos (en inglés)" : "Open the 90-second tour"}
-              </button>
-            </div>
             <ul className="rp-trustStrip" aria-label={isSpanish ? "Credenciales" : "Credentials"}>
               <li>{isSpanish ? "MHA · Green Belt de Lean Six Sigma" : "MHA · Lean Six Sigma Green Belt"}</li>
               <li>{isSpanish ? "Veterana del Ejército" : "Army Veteran"}</li>

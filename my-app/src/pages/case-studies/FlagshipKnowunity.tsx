@@ -159,7 +159,6 @@ export default function FlagshipKnowunity() {
           <div className="rp-clearing">
             <h1 className="rp-h1">Their own words are the proof.</h1>
             <span className="rp-eyebrow">Knowunity · Say It Back · design-sprint prototype</span>
-            <span className="rp-readtime"><b>4 min</b><span>read · 2.5‑week sprint, solo</span></span>
             <p className="rp-sub">
               After a student says a definition aloud, Knowie answers in text and quotes the student’s own words back as proof. I designed the flow and built the prototype in a solo 2.5‑week sprint.
             </p>
@@ -301,7 +300,6 @@ export default function FlagshipKnowunity() {
       <section className="rp-section">
         <div className="rp-wrap rp-close">
           <h2>I prototype to find the next test.</h2>
-          <p>Say It Back shows how I work: build it, say what’s mocked, name the next test.</p>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
           <ShareCaseStudy title="Knowunity: a case study by Hillary Esposito" />
         </div>
