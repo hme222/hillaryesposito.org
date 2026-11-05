@@ -85,27 +85,11 @@ describe("Footer", () => {
     expect(container.querySelector(".site-footer__madeWith")).toBeNull();
   });
 
-  it("on the home page, the footer's opener button dispatches open-opening-film with returnFocus", async () => {
-    const handler = jest.fn();
-    window.addEventListener("open-opening-film", handler);
+  it("has no opening-film replay button", async () => {
     await act(async () => {
       root.render(<Footer />);
     });
-    const trigger = container.querySelector<HTMLButtonElement>(".site-footer__links .rp-openingVisualTrigger");
-    expect(trigger?.textContent).toBe("home.riso.openingVisual");
-    act(() => trigger?.click());
-    window.removeEventListener("open-opening-film", handler);
-    expect(handler).toHaveBeenCalledTimes(1);
-    expect((handler.mock.calls[0][0] as CustomEvent).detail.returnFocus).toBe(trigger);
+    expect(container.querySelector(".rp-openingVisualTrigger")).toBeNull();
     expect(mockNavigate).not.toHaveBeenCalled();
-  });
-
-  it("on another route, the opener button navigates home and asks for the film", async () => {
-    mockPathname = "/about/";
-    await act(async () => {
-      root.render(<Footer />);
-    });
-    act(() => container.querySelector<HTMLButtonElement>(".rp-openingVisualTrigger")?.click());
-    expect(mockNavigate).toHaveBeenCalledWith("/", { state: { openOpeningFilm: true } });
   });
 });

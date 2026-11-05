@@ -760,7 +760,7 @@ describe("flagship case-study accessibility", () => {
   });
 
 
-  it("keeps portfolio proof direct and opens the visual only after an explicit action", async () => {
+  it("keeps portfolio proof direct, with no opening film", async () => {
     await act(async () => {
       root.render(<RisoHome />);
     });
@@ -775,22 +775,12 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".rp-work__thumb figcaption")).toBeNull();
 
     // The hero carries no buttons: the work list is the next thing on the page.
-    // The opener replay lives in the global footer, which reaches the film
-    // through `open-opening-film`.
     expect(container.querySelectorAll(".rp-hero .rp-hero__ctas > a, .rp-hero .rp-hero__ctas > button")).toHaveLength(0);
-    expect(container.querySelector(".rp-hero .rp-openingVisualTrigger")).toBeNull();
+    // There is no opening film any more, from a click or from an event.
     await act(async () => {
       window.dispatchEvent(new CustomEvent("open-opening-film", { detail: {} }));
     });
-
-    const opening = container.querySelector<HTMLElement>(".rp-openingFilm");
-    const openingVideo = opening?.querySelector<HTMLVideoElement>("video");
-    expect(opening?.getAttribute("role")).toBe("dialog");
-    expect(opening?.getAttribute("aria-modal")).toBe("true");
-    expect(openingVideo?.autoplay).toBe(true);
-    expect(openingVideo?.muted).toBe(true);
-    expect(openingVideo?.loop).toBe(false);
-    expect(openingVideo?.controls).toBe(false);
+    expect(container.querySelector(".rp-openingFilm")).toBeNull();
     expect(container.querySelector(".rp-homeBackdrop")).toBeNull();
     expect(container.querySelector(".rp-layerTeaser")).toBeNull();
     expect(container.querySelector(".carto--painted")).not.toBeNull();

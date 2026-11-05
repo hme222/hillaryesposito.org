@@ -3,7 +3,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import RisoDefs from "../components/riso/RisoDefs";
 import CartoField from "../components/riso/CartoField";
 import PhaseIndicator from "../components/riso/PhaseIndicator";
-import HomepageOpeningFilm from "../components/riso/HomepageOpeningFilm";
 import LogisticsMechanism from "../components/LogisticsMechanism";
 import MSKDashboardMockup from "../components/MSKDashboardMockup";
 import CopyEmail from "../components/CopyEmail";
@@ -13,7 +12,6 @@ import { UXWOMAN_LEDGER } from "../data/uxWomanCaseStudy";
 import { MSK_COPY } from "../data/mskCaseStudy";
 import usePageTitle from "../hooks/usePageTitle";
 import useFlagshipReveal from "../hooks/useFlagshipReveal";
-import useFilmExitChoreo from "../hooks/useFilmExitChoreo";
 import { useLanguage, useT } from "../app/LanguageContext";
 import type { StringKey } from "../i18n/strings";
 import "../styles/riso-page.css";
@@ -181,7 +179,6 @@ function heroTitle(title: string, phrases: readonly string[]): React.ReactNode {
 
 const DISPATCH_TRAIN_HOLD_SECONDS = 3.8;
 
-const OPENING_FILM_SEEN_KEY = "portfolio:opening-film-seen";
 
 export default function RisoHome() {
   const t = useT();
@@ -191,32 +188,10 @@ export default function RisoHome() {
   const navigate = useNavigate();
   const [dispatchOpen, setDispatchOpen] = useState(false);
   const [dispatchTrainDeparted, setDispatchTrainDeparted] = useState(false);
-  // Plays once per browser tab on a plain homepage visit (owner decision
-  // 2026-10-09, reversing the 2026-08-24 button-only rule). Never for reduced
-  // motion, never over a deep link to a homepage section, never on a refresh
-  // or return in the same tab. The footer's "Watch" button still replays it.
-  const [openingFilmOpen, setOpeningFilmOpen] = useState(() => {
-    try {
-      if (typeof window === "undefined") return false;
-      if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return false;
-      if (window.location.hash || new URLSearchParams(window.location.search).has("scrollTo")) return false;
-      if (window.sessionStorage.getItem(OPENING_FILM_SEEN_KEY)) return false;
-      window.sessionStorage.setItem(OPENING_FILM_SEEN_KEY, "1");
-      return true;
-    } catch {
-      return false;
-    }
-  });
-  // The replay trigger lives in the global footer, not on this page. It
-  // dispatches `open-opening-film` (same pattern as `open-recruiter-panel`)
-  // with itself as `returnFocus`; from another route it navigates here with
-  // `state.openOpeningFilm` instead, and focus is left at the page top.
-  const openingFilmTriggerRef = useRef<HTMLButtonElement | null>(null);
   const [dispatchTrainReturning, setDispatchTrainReturning] = useState(false);
   const dispatchSectionRef = useRef<HTMLElement>(null);
   const rootRef = useRef<HTMLElement>(null);
   useFlagshipReveal(rootRef);
-  const triggerFilmExitChoreo = useFilmExitChoreo();
   const dispatchTrainRef = useRef<HTMLDivElement>(null);
   const dispatchTrainVideoRef = useRef<HTMLVideoElement>(null);
   const dispatchTrainReturnTimerRef = useRef<number | undefined>(undefined);
@@ -306,22 +281,6 @@ export default function RisoHome() {
 
   useEffect(() => () => window.clearTimeout(dispatchTrainReturnTimerRef.current), []);
 
-  useEffect(() => {
-    const handler = (event: Event) => {
-      const detail = (event as CustomEvent<{ returnFocus?: HTMLButtonElement | null }>).detail;
-      openingFilmTriggerRef.current = detail?.returnFocus ?? null;
-      setOpeningFilmOpen(true);
-    };
-    window.addEventListener("open-opening-film", handler);
-    return () => window.removeEventListener("open-opening-film", handler);
-  }, []);
-
-  useEffect(() => {
-    if (!(location.state as { openOpeningFilm?: boolean } | null)?.openOpeningFilm) return;
-    openingFilmTriggerRef.current = null;
-    setOpeningFilmOpen(true);
-    navigate(`${location.pathname}${location.search}${location.hash}`, { replace: true, state: null });
-  }, [location.state, location.pathname, location.search, location.hash, navigate]);
 
   const glossary: Record<string, string> = GLOSSARY[lang === "es" ? "es" : "en"];
 
@@ -431,12 +390,6 @@ export default function RisoHome() {
   return (
     <main className="riso-page riso-home" ref={rootRef}>
       <RisoDefs />
-      <HomepageOpeningFilm
-        open={openingFilmOpen}
-        onClose={() => setOpeningFilmOpen(false)}
-        onExitStart={triggerFilmExitChoreo}
-        returnFocusRef={openingFilmTriggerRef}
-      />
 
       {/* HERO */}
       <header className="rp-hero" id="home" data-visual="true">
