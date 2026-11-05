@@ -5,6 +5,7 @@ import usePageTitle from "../hooks/usePageTitle";
 import { useLanguage } from "../app/LanguageContext";
 import { Newspaper } from "lucide-react";
 import CartoField from "../components/riso/CartoField";
+import CopyEmail from "../components/CopyEmail";
 import { CLIENT_FEEDBACK, CLIENT_FEEDBACK_ES } from "../data/clientFeedback";
 import "../styles/riso-page.css";
 
@@ -336,6 +337,7 @@ export default function About() {
               ← {isSpanish ? "Volver al trabajo" : "Back to work"}
             </button>
           </div>
+          <CopyEmail />
         </div>
       </section>
     </main>

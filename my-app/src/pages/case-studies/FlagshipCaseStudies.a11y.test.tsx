@@ -952,7 +952,7 @@ describe("flagship case-study accessibility", () => {
     expect(container.textContent).toContain("One map exposed the shared failure.");
     expect(container.querySelector(".fp-systemCards")).toBeNull();
     expect(container.textContent).toContain("Service-design scope:");
-    expect(container.textContent).toContain("observation counts don’t, so no prevalence claim is made.");
+    expect(container.textContent).toContain("I make no claim about how often this happened.");
   });
 
   it("supports the Mobbin gallery and a direct next-project path", async () => {

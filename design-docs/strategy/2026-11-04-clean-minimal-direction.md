@@ -24,6 +24,10 @@ Rendered text of each page at 1280px, every closed section opened (2026-11-04, b
 - **Chrome stacks up.** A case page carries a breadcrumb, an eyebrow, a read time, a chapter strip, a progress bar, a "next" band and a footer with three columns. Home carried a credentials strip, a numbers section, a work section, a dispatch, a contact band and an About row, all before the footer.
 - **Headings run to 19 on one page.** UX Woman and MSK have more headings than a reader can hold, so the page reads as a list of labels, not a story.
 
+## Correction after the MSK pilot
+
+The counts above opened every closed section, so they overstate what a reader sees at load. Measured again on MSK with closed sections left closed: about 715 words, of which about 450 are prose and the rest sit inside recreated screens and diagrams. That is already near the budget. The redundancy is not mostly length. It is the same claim in several places (who built the button, the paper detour, "Send to EMR" in four renditions of the queue) and the chrome around it. The pilot therefore cut repeats, not paragraphs, and the budgets below should be read as ceilings for text at load.
+
 ## Taste profile
 
 **Emotional target:** calm and exact. A reader finishes a case knowing what changed and how she knows, without having to decode the page.

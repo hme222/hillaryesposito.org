@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect, useRef, useState } from "react";
+import React, { lazy, Suspense, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
@@ -129,58 +129,6 @@ const WORKFLOW_AFTER = [
   "Return with status updated",
 ];
 
-/**
- * A decorative threshold, not another product interface. The exact action is
- * HTML and reuses the queue's existing visual class; the surrounding signals
- * only build anticipation for the complete, accessible decision story below.
- */
-function MSKButtonThreshold() {
-  const [isVisible, setIsVisible] = useState(false);
-  const thresholdRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const node = thresholdRef.current;
-    if (!node) return;
-
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
-      setIsVisible(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      if (!entries.some((entry) => entry.isIntersecting)) return;
-      setIsVisible(true);
-      observer.disconnect();
-    }, { threshold: 0.42 });
-
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div
-      id="msk-button-teaser"
-      className={`fp-buttonThreshold${isVisible ? " is-visible" : ""}`}
-      ref={thresholdRef}
-      data-testid="msk-button-threshold"
-    >
-      <div className="fp-buttonThreshold__scene" aria-hidden="true">
-        <span className="fp-buttonThreshold__folio">Readiness · permission · exception owner · return state</span>
-        <span className="fp-buttonThreshold__registration">
-          <i className="fp-buttonThreshold__impression fp-buttonThreshold__impression--01" />
-          <i className="fp-buttonThreshold__impression fp-buttonThreshold__impression--02" />
-          <i className="fp-buttonThreshold__impression fp-buttonThreshold__impression--03" />
-          <i className="fp-buttonThreshold__impression fp-buttonThreshold__impression--04" />
-        </span>
-        <span className="fp-buttonThreshold__socket">
-          <b className="msk-dashboard-action msk-dashboard-action--primary">Send to EMR</b>
-        </span>
-        <span className="fp-buttonThreshold__handoff" />
-      </div>
-    </div>
-  );
-}
-
 export default function FlagshipMSK() {
   const { lang } = useLanguage();
   usePageTitle("MSK: Clinical Systems Case Study", lang !== "es");
@@ -220,7 +168,6 @@ export default function FlagshipMSK() {
           <div className="rp-clearing">
             <h1 className="rp-h1">One queue. Four teams.</h1>
             <span className="rp-eyebrow">Memorial Sloan Kettering · Clinical systems · six years, three roles</span>
-            <span className="rp-readtime"><b>6 min</b><span>read · built by IT and UX after I changed roles</span></span>
             <p className="rp-sub">
               I diagnosed and mapped a paper detour across four departments, checked feasibility,
               and pitched a digital filing workflow. <b>Information technology (IT) and user experience (UX) teams built it after I changed roles.</b>
@@ -229,7 +176,6 @@ export default function FlagshipMSK() {
               {/* Two rows since 2026-10-16: contribution, implementation, and
                   evidence restated the sub above and the provenance note below. */}
               <div><dt>Role route</dt><dd>Office Coordinator → Administrative Assistant → Training Facilitator (retitled Trainer I Specialist)</dd></div>
-              <div><dt>Design thread</dt><dd>Service design → process improvement → UX/product</dd></div>
             </dl>
             <div className="rp-hero__ctas">
               <a className="rp-cta" href="#msk-brief">See the filing path →</a>
@@ -261,7 +207,7 @@ export default function FlagshipMSK() {
               claim (the former "Evidence boundary" aside). */}
           <div className="rp-note rp-reveal">
             <p className="rp-note__k">How I made these screens</p>
-            <p>Rebuilt from memory of my current-state documentation. No patient data, exported records, or vendor interface. The workflow, departments, decisions, and outcomes survive; observation counts don’t, so no prevalence claim is made.</p>
+            <p>Rebuilt from memory of my current-state documentation. No patient data, exported records, or vendor interface. Observation counts didn’t survive, so I make no claim about how often this happened.</p>
           </div>
           {/* These two lists are the text alternative for the aria-hidden map,
               so they stay. What went was the pair of paragraphs under them —
@@ -307,13 +253,11 @@ export default function FlagshipMSK() {
         </section>
       </details>
 
-      <MSKButtonThreshold />
-
       <div data-evidence="true"><DecisionStory
         id="msk-decisions"
         languageAnchor="msk-decisions"
         title="One button, four rules."
-        intro="One action replaced the three steps that left the system. IT and UX built the real one after I changed roles; the four rules below are how this recreation makes it safe to press. My portfolio design, not MSK's specification."
+        intro="One action replaced the three steps that left the system. These four rules are my portfolio design for making it safe to press, not MSK's specification."
         steps={DECISIONS}
         showStepNumbers={false}
         visual={(active) => (
@@ -400,7 +344,6 @@ export default function FlagshipMSK() {
       <section className="rp-section" id="msk-sustainment" data-language-anchor="msk-sustainment">
         <div className="rp-wrap">
           <h2 className="rp-title">I left before launch. Here’s what happened next.</h2>
-          <p className="rp-lede">I handed the workflow to IT and UX, who built it. The button was added to the production system, and I saw it while training new employees.</p>
           {/* Added 2026-10-22 (portfolio review, UXfolio 2026 ch. 4.3): the
               outcome is owner-reported and no post-launch measurement is
               known, so the page says what would have shown it. Hillary
@@ -430,9 +373,9 @@ export default function FlagshipMSK() {
       <div data-evidence="true"><EvidenceField
         id="msk-outcomes"
         languageAnchor="msk-outcomes"
-        title="The numbers, and whose they are."
-        intro="The tag above each number says whose result it is."
-        disclaimer="Anonymized evidence · owner-reported outcomes · the 20% figure belongs to a larger organization-wide initiative, not the filing queue alone; original period and cost definition are not preserved · the ~$1M/year is a projection from my pitch, not measured savings"
+        title="The numbers."
+        intro="Each tag says whose result it is."
+        disclaimer="Anonymized, owner-reported. The original period and cost definition for the 20% were not preserved."
         // The same discipline the certification dashboard used on its own data:
         // say what you are looking at before someone has to work it out. All
         // three read as equal tiles otherwise, and "organization-wide" made the
@@ -451,7 +394,6 @@ export default function FlagshipMSK() {
       <section className="rp-section">
         <div className="rp-wrap rp-close">
           <h2>I find the workaround. Then I get it built.</h2>
-          <p>I map it so every department sees the same failure, then turn it into a decision the organization will build.</p>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
           <ShareCaseStudy title="MSK: a case study by Hillary Esposito" />
         </div>

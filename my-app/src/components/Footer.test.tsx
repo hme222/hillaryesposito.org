@@ -69,7 +69,7 @@ describe("Footer", () => {
   // a trailing slash - both the compact-footer check and the per-route
   // colophon lookup compare against the raw pathname, so a direct load or
   // refresh on a trailing-slash URL used to miss both.
-  it("normalises a trailing slash for the compact footer and the colophon lookup", async () => {
+  it("normalises a trailing slash for the compact footer", async () => {
     mockPathname = "/about/";
     await act(async () => {
       root.render(<Footer />);
@@ -78,12 +78,11 @@ describe("Footer", () => {
     expect(footer?.classList.contains("site-footer--compact")).toBe(true);
   });
 
-  it("shows the Grove colophon for a trailing-slash case-study URL", async () => {
-    mockPathname = "/case-study/grove/";
+  it("shows no per-case credits line", async () => {
     await act(async () => {
       root.render(<Footer />);
     });
-    expect(container.textContent).toContain("Emergent");
+    expect(container.querySelector(".site-footer__madeWith")).toBeNull();
   });
 
   it("on the home page, the footer's opener button dispatches open-opening-film with returnFocus", async () => {

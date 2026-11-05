@@ -1,80 +1,7 @@
 // src/components/Footer.tsx
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useLanguage, useT } from "../app/LanguageContext";
-
-/**
- * Per-route colophon.
- *
- * A page built with something worth crediting contributes a credits list into
- * the footer's dark base band, rather than stacking a second dark slab above
- * the footer and repeating the copyright.
- *
- * Every entry must be traceable to something the case study itself states.
- * Grove's list is literal build tooling. MSK and Mobbin did not ship from a
- * toolchain worth listing, so theirs credit the methods and materials those
- * pages already claim — never a tool Hillary has not said she used.
- *
- * Labels carry a Spanish variant because these pages render inside the
- * bilingual shell. Product names stay untranslated; the human entries — which
- * are the funny ones, and therefore the ones worth a Spanish reader seeing —
- * do not.
- */
-type Credit = { label: string; es?: string };
-
-const COLOPHONS: Record<string, Credit[]> = {
-  "/case-study/grove": [
-    { label: "Figma" },
-    { label: "Emergent" },
-    { label: "React" },
-    { label: "37 survey responses", es: "37 respuestas de encuesta" },
-    { label: "human override", es: "decisión humana" },
-  ],
-  // The named disciplines lead. This page's own eyebrow claims service design
-  // and process improvement, and the body claims stakeholder alignment, change
-  // management, and workflow redesign — so the colophon says them in the words
-  // a search for that work actually uses, without adding a claim the case
-  // study does not already make.
-  "/case-study/msk": [
-    { label: "service design", es: "diseño de servicios" },
-    { label: "current-state mapping", es: "mapeo del estado actual" },
-    { label: "workflow redesign", es: "rediseño de flujos de trabajo" },
-    { label: "change management", es: "gestión del cambio" },
-  ],
-  "/case-study/logistics": [
-    { label: "medical supply chain", es: "cadena de suministro médico" },
-    { label: "cold-chain control", es: "control de cadena de frío" },
-    { label: "seven aid stations", es: "siete estaciones de ayuda" },
-    { label: "demand analysis", es: "análisis de demanda" },
-  ],
-  "/case-study/mobbin": [
-    { label: "three finance apps", es: "tres apps de finanzas" },
-    { label: "200+ screens per app", es: "200+ pantallas por app" },
-    { label: "Mobbin taxonomy", es: "taxonomía de Mobbin" },
-    { label: "four-month contract", es: "contrato de cuatro meses" },
-  ],
-  // Research methods, not build tools: nothing is built yet. Each one is
-  // stated on the UX Woman case study itself.
-  "/case-study/ux-woman": [
-    { label: "recruiting by behavior", es: "reclutamiento por conducta" },
-    { label: "interview synthesis", es: "síntesis de entrevistas" },
-    { label: "confidence ratings", es: "niveles de confianza" },
-    { label: "pretotyping", es: "pretotipado" },
-  ],
-  // Literal build tooling, like Grove's, plus whose parts these were and who
-  // wrote the code — all stated on the case study itself.
-  "/case-study/knowunity": [
-    { label: "Next.js" },
-    { label: "Storybook" },
-    { label: "Knowunity's Figma kit and Knowie art", es: "kit de Figma y arte de Knowie de Knowunity" },
-    { label: "Claude Code wrote most of the code from my specs", es: "Claude Code escribió la mayor parte del código a partir de mis especificaciones" },
-  ],
-};
-
-// These three credit disciplines, not tools, so "Made with:" would misdescribe
-// them. Grove and Knowunity list literal build tooling; Mobbin keeps "Made
-// with:" as approved in the 2026-10-14 copy review.
-const METHOD_COLOPHONS = new Set(["/case-study/msk", "/case-study/logistics", "/case-study/ux-woman"]);
+import { useT } from "../app/LanguageContext";
 
 /**
  * @status: stable
@@ -82,7 +9,6 @@ const METHOD_COLOPHONS = new Set(["/case-study/msk", "/case-study/logistics", "/
  */
 export default function Footer() {
   const t = useT();
-  const { lang } = useLanguage();
   const { pathname } = useLocation();
   const navigate = useNavigate();
   // Production (vercel.json: "trailingSlash": true) serves every route with
@@ -91,7 +17,6 @@ export default function Footer() {
   // usePageTitle.ts already use, or a direct visit never matches either
   // lookup below.
   const normalizedPath = pathname.replace(/\/+$/, "") || "/";
-  const credits = COLOPHONS[normalizedPath];
   const hasAuthoredClose =
     normalizedPath === "/" ||
     normalizedPath === "/about" ||
@@ -104,22 +29,6 @@ export default function Footer() {
       className={`site-footer${hasAuthoredClose ? " site-footer--compact" : ""}`}
     >
       <div className="site-footer__base">
-        {credits && (
-          <div className="site-footer__madeWith">
-            <p className="site-footer__madeWithLabel">
-              {t(METHOD_COLOPHONS.has(normalizedPath) ? "footer.methods" : "footer.madeWith")}
-            </p>
-            <div className="site-footer__credits">
-              <ul className="site-footer__creditList">
-                {credits.map((c) => (
-                  <li key={c.label}>
-                    {lang === "es" && c.es ? c.es : c.label}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        )}
         <div className="site-footer__baseRow">
           <p>© 2026 Hillary Esposito</p>
           <nav className="site-footer__links" aria-label={t("footer.connect")}>

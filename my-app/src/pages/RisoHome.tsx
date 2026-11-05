@@ -6,6 +6,7 @@ import PhaseIndicator from "../components/riso/PhaseIndicator";
 import HomepageOpeningFilm from "../components/riso/HomepageOpeningFilm";
 import LogisticsMechanism from "../components/LogisticsMechanism";
 import MSKDashboardMockup from "../components/MSKDashboardMockup";
+import CopyEmail from "../components/CopyEmail";
 import HomeFold from "../components/HomeFold";
 import { glossTerms } from "../components/Term";
 import { UXWOMAN_LEDGER } from "../data/uxWomanCaseStudy";
@@ -780,7 +781,7 @@ export default function RisoHome() {
               {lang === "es" ? "Ver CV" : "View résumé"} →
             </a>
           </div>
-          <p>{t("contact.copy")} espositohillary@gmail.com</p>
+          <CopyEmail />
         </div>
       </section>
 
