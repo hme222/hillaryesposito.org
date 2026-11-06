@@ -4241,3 +4241,20 @@ body .riso-home .rp-hero .rp-clearing {
   width: max(calc(clamp(3.25rem, 9.5vw, 7.5rem) * 3.75 + 4rem), 32rem);
   max-width: 100%;
 }
+
+/* Case-study "Read more": a quiet disclosure under a headline and visual. */
+.rp-more { margin: 1rem 0 0; }
+.rp-more > summary {
+  display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; cursor: pointer; list-style: none;
+  color: var(--coral-text, var(--coral)); font-family: var(--shell-sans); font-size: .9375rem; font-weight: 600;
+}
+.dark-mode .rp-more > summary { color: var(--coral-on-dark, var(--coral)); }
+.rp-more > summary::-webkit-details-marker { display: none; }
+.rp-more > summary::after { content: "+"; font-size: 1.25rem; line-height: 1; }
+.rp-more[open] > summary::after { content: "−"; }
+.rp-more__open { display: none; }
+.rp-more[open] .rp-more__closed { display: none; }
+.rp-more[open] .rp-more__open { display: inline; }
+.rp-more > summary:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+.rp-more__body { margin-top: .5rem; }
+.rp-more__body > :first-child { margin-top: 0; }

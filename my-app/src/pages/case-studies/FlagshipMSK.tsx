@@ -6,6 +6,7 @@ import ReadingProgress from "../../components/flagship/ReadingProgress";
 import ShareCaseStudy from "../../components/flagship/ShareCaseStudy";
 import DecisionStory from "../../components/flagship/DecisionStory";
 import EvidenceField from "../../components/flagship/EvidenceField";
+import CaseMore from "../../components/CaseMore";
 import MSKFilingReceipt from "../../components/flagship/MSKFilingReceipt";
 import MSKDashboardMockup from "../../components/MSKDashboardMockup";
 import MSKServiceBlueprint from "../../components/MSKServiceBlueprint";
@@ -203,10 +204,6 @@ export default function FlagshipMSK() {
               artifact label names the recreation; this note carries the
               "no patient data" boundary and what the evidence can and cannot
               claim (the former "Evidence boundary" aside). */}
-          <div className="rp-note rp-reveal">
-            <p className="rp-note__k">How I made these screens</p>
-            <p>Rebuilt from memory of my current-state documentation. No patient data, exported records, or vendor interface. Observation counts didn’t survive, so I make no claim about how often this happened.</p>
-          </div>
           {/* These two lists are the text alternative for the aria-hidden map,
               so they stay. What went was the pair of paragraphs under them —
               "failure mode" and "design decision" restated the map's own
@@ -224,6 +221,12 @@ export default function FlagshipMSK() {
               <ol>{WORKFLOW_AFTER.map((step, index) => <li key={step}><b>{index + 1}</b>{step}</li>)}</ol>
             </article>
           </div>
+          <CaseMore label="How I made these screens">
+            <div className="rp-note rp-reveal">
+              <p className="rp-note__k">How I made these screens</p>
+              <p>Rebuilt from memory of my current-state documentation. No patient data, exported records, or vendor interface. Observation counts didn’t survive, so I make no claim about how often this happened.</p>
+            </div>
+          </CaseMore>
 
         </div>
       </section>
@@ -347,24 +350,26 @@ export default function FlagshipMSK() {
               known, so the page says what would have shown it. Hillary
               confirmed nothing was measured to her knowledge; no result is
               claimed here. */}
-          <div className="rp-note rp-reveal">
-            <p className="rp-note__k">What I would have measured</p>
-            <p>No one measured it that I know of. I would have tracked minutes from a message arriving to it sitting in the chart, messages filed to the wrong chart, and pages printed.</p>
-          </div>
           <figure className="fp-sustainmentFig rp-reveal" data-evidence="true">
             <MSKSustainment />
             <figcaption>What happened after each one shipped</figcaption>
           </figure>
-          {/* The real text for the drawing above, and the exact claim on each
-              lane. Deliberately terse — the timeline is doing the work. */}
-          <ul className="fp-survived">
-            {SURVIVED.map((s) => (
-              <li key={s.fact}><b>{s.fact}</b><span>{s.what}</span></li>
-            ))}
-          </ul>
-          <a className="fp-proofLink" href="https://www.mskcc.org/news/hillary-esposito-s-career-path-military-msk" target="_blank" rel="noopener noreferrer">
-            <span>Independent proof · MSK News</span><b className="rp-ext">From the military to Memorial Sloan Kettering</b><span className="sr-only"> (opens in new tab)</span>
-          </a>
+          <CaseMore label="What happened and how I know">
+            <div className="rp-note rp-reveal">
+              <p className="rp-note__k">What I would have measured</p>
+              <p>No one measured it that I know of. I would have tracked minutes from a message arriving to it sitting in the chart, messages filed to the wrong chart, and pages printed.</p>
+            </div>
+            {/* The real text for the drawing above, and the exact claim on each
+                lane. Deliberately terse — the timeline is doing the work. */}
+            <ul className="fp-survived">
+              {SURVIVED.map((s) => (
+                <li key={s.fact}><b>{s.fact}</b><span>{s.what}</span></li>
+              ))}
+            </ul>
+            <a className="fp-proofLink" href="https://www.mskcc.org/news/hillary-esposito-s-career-path-military-msk" target="_blank" rel="noopener noreferrer">
+              <span>Independent proof · MSK News</span><b className="rp-ext">From the military to Memorial Sloan Kettering</b><span className="sr-only"> (opens in new tab)</span>
+            </a>
+          </CaseMore>
         </div>
       </section>
 
