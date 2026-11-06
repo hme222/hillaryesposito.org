@@ -4280,21 +4280,28 @@ body .riso-home .rp-hero .rp-clearing {
 }
 .rp-hero__media .rp-device:not(.rp-device--app) img { border-radius: 36px; }
 
-/* ---------- Airy spacing, piloted on Home and MSK ----------
+/* ---------- Airy spacing, applied to Home and all six case studies ----------
    Direction B from the 2026-11-06 spacing debate: more space between
    sections, and one consistent gap from a headline to what follows.
    --sp-xl is the standard section padding-block (portfolio-cohesion.css);
-   raising it here moves every .rp-section on these two pages together. */
+   raising it here moves every .rp-section on these pages together. */
 .riso-home,
-.flagship-page--msk {
+.flagship-page {
   --sp-xl: clamp(4rem, 9vw, 8rem);
   --rp-headline-gap: clamp(1.25rem, 2.4vw, 2rem);
 }
 .riso-home .rp-wrap > .rp-title + :not(details):not(.rp-more),
-.flagship-page--msk .rp-wrap > .rp-title + :not(details):not(.rp-more),
-.flagship-page--msk .rp-wrap > h2 + :not(details):not(.rp-more) {
+.flagship-page .rp-wrap > .rp-title + :not(details):not(.rp-more),
+.flagship-page .rp-wrap > h2 + :not(details):not(.rp-more) {
   margin-top: var(--rp-headline-gap);
 }
 /* The two headline blocks that set their own gap join the same one. */
-.flagship-page--msk .rp-decisionStory__head > .rp-title + .rp-lede,
-body .flagship-page--msk .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-gap); }
+.flagship-page .rp-decisionStory__head > .rp-title + .rp-lede,
+body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-gap); }
+/* A fold that sits straight under a headline keeps the same headline gap. */
+.flagship-page .rp-wrap > .rp-title + .rp-more { margin-top: var(--rp-headline-gap); }
+
+/* MSK landing: the text panel centers against the queue instead of hanging at
+   the top of a tall column, and the headline gets room above its label chip. */
+.flagship-page--msk .fp-hero { align-items: center; }
+.flagship-page--msk .fp-hero .rp-eyebrow { margin-top: .9rem; }
