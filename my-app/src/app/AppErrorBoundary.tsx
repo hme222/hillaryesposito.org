@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { translate, type Lang } from "../i18n/strings";
 import { safeGet } from "./safeStorage";
+import CopyEmail from "../components/CopyEmail";
 
 // Last-resort boundary above the whole app. LazyRouteBoundary covers a chunk
 // that fails to load; this covers anything else that throws during render, so
@@ -46,6 +47,7 @@ export default class AppErrorBoundary extends Component<
             <a className="not-found__secondary" href="mailto:espositohillary@gmail.com">
               {t("recovery.email")}
             </a>
+            <CopyEmail compact lang={lang} />
           </div>
         </div>
       </main>

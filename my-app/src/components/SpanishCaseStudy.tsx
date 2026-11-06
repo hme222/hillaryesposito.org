@@ -8,6 +8,7 @@ import usePageTitle from "../hooks/usePageTitle";
 import CartoField from "./riso/CartoField";
 import RisoDefs from "./riso/RisoDefs";
 import "../styles/riso-page.css";
+import CopyEmail from "./CopyEmail";
 
 export type SpanishCaseStudyData = {
   title: string;
@@ -191,6 +192,7 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
               ← Volver al trabajo
             </button>
           </div>
+          <CopyEmail />
         </div>
       </section>
     </main>

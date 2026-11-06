@@ -2,6 +2,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { useT } from "../app/LanguageContext";
+import CopyEmail from "./CopyEmail";
 
 /**
  * @status: stable
@@ -30,8 +31,8 @@ export default function Footer() {
       <div className="site-footer__base">
         <div className="site-footer__baseRow">
           <p>© 2026 Hillary Esposito</p>
+          <CopyEmail compact />
           <nav className="site-footer__links" aria-label={t("footer.connect")}>
-            <a href="mailto:espositohillary@gmail.com">{t("footer.email")}</a>
             <a
               href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"
               target="_blank"

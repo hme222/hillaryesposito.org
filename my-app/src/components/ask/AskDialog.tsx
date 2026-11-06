@@ -7,8 +7,8 @@ import { sendPortfolioEvent } from "../../analytics/PortfolioAnalytics";
 import type { AskApiResponse, AskLang, KnowledgeEntry } from "../../ask/types";
 import { useBirdState } from "./useBirdPose";
 import "../../styles/ask.css";
+import CopyEmail from "../CopyEmail";
 
-const EMAIL = "espositohillary@gmail.com";
 const MAX_QUESTION_CHARS = 300;
 const API = "/api/ask";
 
@@ -267,11 +267,7 @@ export default function AskDialog() {
     </li>
   );
 
-  const emailLink = (
-    <a className="ask-email" href={`mailto:${EMAIL}`}>
-      {EMAIL}
-    </a>
-  );
+  const emailLink = <CopyEmail compact />;
 
   return (
     <Modal

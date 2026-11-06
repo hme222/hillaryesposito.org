@@ -20,6 +20,7 @@ import useFlagshipReveal from "../../hooks/useFlagshipReveal";
 import usePageTitle from "../../hooks/usePageTitle";
 import "../../styles/riso-page.css";
 import "../../styles/flagship-case-study.css";
+import CopyEmail from "../../components/CopyEmail";
 
 const MSKSystemMap = lazy(() => import("../../components/MSKSystemMap"));
 
@@ -392,6 +393,7 @@ export default function FlagshipMSK() {
         <div className="rp-wrap rp-close">
           <h2>I find the workaround. Then I get it built.</h2>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
+          <CopyEmail />
           <ShareCaseStudy title="MSK: a case study by Hillary Esposito" />
         </div>
       </section>

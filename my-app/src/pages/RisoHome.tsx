@@ -4,7 +4,10 @@ import RisoDefs from "../components/riso/RisoDefs";
 import CartoField from "../components/riso/CartoField";
 import CopyEmail from "../components/CopyEmail";
 import HomeFold from "../components/HomeFold";
+import MSKDashboardMockup from "../components/MSKDashboardMockup";
 import WorkIndex from "../components/WorkIndex";
+import type { WorkIndexItem } from "../components/WorkIndex";
+import { MSK_COPY } from "../data/mskCaseStudy";
 import { glossTerms } from "../components/Term";
 import usePageTitle from "../hooks/usePageTitle";
 import useFlagshipReveal from "../hooks/useFlagshipReveal";
@@ -163,6 +166,24 @@ export default function RisoHome() {
 
   const glossary: Record<string, string> = GLOSSARY[lang === "es" ? "es" : "en"];
 
+  const WORK_VISUALS: Record<string, React.ReactNode> = {
+    "01": (
+      <div className="rp-index__shot rp-index__shot--msk">
+        <MSKDashboardMockup decorative compact condensedHeader hideToolbar hideRule rowIndices={[0, 2]} copy={MSK_COPY[lang === "es" ? "es" : "en"].dashboard} />
+      </div>
+    ),
+    "02": <img className="rp-index__shot rp-index__shot--cover" src="/assets/grove/grove-live-care.jpg" alt="" width={1200} height={900} loading="lazy" decoding="async" />,
+    "03": (
+      <div className="rp-index__shot rp-index__shot--phones">
+        <img src="/assets/knowunity/say-it-back-question.webp" alt="" width={780} height={1688} loading="lazy" decoding="async" />
+        <img src="/assets/knowunity/say-it-back-pass.webp" alt="" width={780} height={1688} loading="lazy" decoding="async" />
+      </div>
+    ),
+  };
+  const WORK_ITEMS: WorkIndexItem[] = WORK.map((work) => ({
+    n: work.n, title: t(work.titleKey), sub: t(work.subKey), desc: t(work.descKey), to: work.path, visual: WORK_VISUALS[work.n],
+  }));
+
   return (
     <main className="riso-page riso-home" ref={rootRef}>
       <RisoDefs />
@@ -218,199 +239,204 @@ export default function RisoHome() {
       <section className="rp-section" id="projects" aria-labelledby="home-work-title" data-visual="true">
         <div className="rp-wrap">
           <h2 className="rp-title" id="home-work-title">{t("home.riso.workTitle")}</h2>
-          <WorkIndex
-            label={t("home.riso.workTitle")}
-            total={t("home.index.total")}
-            items={WORK.map((work) => ({ n: work.n, title: t(work.titleKey), sub: t(work.subKey), desc: t(work.descKey), to: work.path }))}
-          />
-          <p className="rp-supportingLink">
-            <span>{t("home.riso.supportingKicker")}</span>
-            <Link to="/case-study/mobbin">{t("home.riso.supportingLink")}</Link>
-          </p>
-        </div>
-      </section>
-
-      {/* WEEKEND DISPATCH: a current-practice signal, deliberately outside the
-          three flagship rows. The story and evidence are complete at rest; the
-          route drawing is decorative context and the event photograph is provenance. */}
-      <section
-        className="rp-section rp-dispatchSection"
-        id="dispatch"
-        aria-labelledby="home-dispatch-title"
-        ref={dispatchSectionRef}
-      >
-        <div className="rp-wrap">
-          <article className={`rp-dispatch${dispatchOpen ? " rp-dispatch--open" : ""}`}>
-            <div className="rp-dispatch__masthead">
-              <div
-                className={`rp-dispatchTrain${dispatchTrainDeparted ? " rp-dispatchTrain--departed" : ""}${dispatchTrainReturning ? " rp-dispatchTrain--returning" : ""}`}
-                ref={dispatchTrainRef}
-              >
-                <div className="rp-dispatchTrain__scene" aria-hidden="true">
-                  <span className="rp-dispatchTrain__rail rp-dispatchTrain__rail--upper" />
-                  <span className="rp-dispatchTrain__rail rp-dispatchTrain__rail--lower" />
-                  <div className="rp-dispatchTrain__vehicle">
-                    <video
-                      className="rp-dispatchTrain__video"
-                      ref={dispatchTrainVideoRef}
-                      muted
-                      playsInline
-                      preload="metadata"
-                      aria-hidden="true"
-                      onCanPlay={(event) => {
-                        event.currentTarget.closest<HTMLElement>(".rp-dispatchTrain")?.setAttribute("data-video-ready", "true");
-                      }}
-                      onError={(event) => {
-                        event.currentTarget.closest<HTMLElement>(".rp-dispatchTrain")?.setAttribute("data-video-ready", "false");
-                      }}
-                      onTimeUpdate={(event) => {
-                        if (event.currentTarget.currentTime >= DISPATCH_TRAIN_HOLD_SECONDS) {
-                          event.currentTarget.pause();
-                        }
-                      }}
-                    >
-                      <source src="/assets/video/weekend-journal-riso-train-v2.mp4" type="video/mp4" />
-                    </video>
-                    <div className="rp-dispatchTrain__fallback">
-                      {[0, 1, 2, 3].map((car) => (
-                        <div
-                          className={`rp-dispatchTrain__car${car === 1 || car === 2 ? " rp-dispatchTrain__car--desktopOnly" : ""}`}
-                          key={car}
-                        >
-                          <span className="rp-dispatchTrain__windowBand">
-                            <i /><i /><i />
-                          </span>
-                          <span className="rp-dispatchTrain__doors" />
-                          <span className="rp-dispatchTrain__ink rp-dispatchTrain__ink--blue" />
-                          <span className="rp-dispatchTrain__ink rp-dispatchTrain__ink--orange" />
-                        </div>
-                      ))}
-                    </div>
-                    <span className="rp-dispatchTrain__placard">{t("home.dispatch.eyebrow")}</span>
-                  </div>
-                </div>
-              </div>
-              <div className="rp-dispatch__cover">
-                <div>
-                  <p className="rp-kicker rp-dispatch__issueLabel">{t("home.dispatch.eyebrow")}</p>
-                  <h2 className="rp-dispatch__title" id="home-dispatch-title">{t("home.dispatch.title")}</h2>
-                  <p className="rp-dispatch__question">{t("home.dispatch.question")}</p>
-                </div>
-                <button
-                  type="button"
-                  className="rp-dispatch__toggle"
-                  aria-expanded={dispatchOpen}
-                  aria-controls="weekend-dispatch-panel"
-                  onClick={() => {
-                    if (!dispatchOpen) {
-                      window.clearTimeout(dispatchTrainReturnTimerRef.current);
-                      setDispatchTrainReturning(false);
-                      if (dispatchTrainVideoRef.current?.offsetWidth) {
-                        dispatchTrainVideoRef.current.pause();
-                      }
-                      setDispatchTrainDeparted(true);
-                    } else {
-                      setDispatchTrainDeparted(false);
-                      setDispatchTrainReturning(true);
-                      window.clearTimeout(dispatchTrainReturnTimerRef.current);
-                      dispatchTrainReturnTimerRef.current = window.setTimeout(() => {
-                        setDispatchTrainReturning(false);
-                      }, 520);
-                    }
-                    setDispatchOpen((current) => !current);
-                  }}
-                >
-                  <span aria-hidden="true">+</span>
-                  {t(dispatchOpen ? "home.dispatch.closeJournal" : "home.dispatch.openJournal")}
-                </button>
-              </div>
-            </div>
-            <p className="rp-dispatchTrain__attribution">{glossTerms(t("home.dispatch.trainAttribution"), glossary)}</p>
-
-            <div
-              className="rp-dispatch__reveal"
-              id="weekend-dispatch-panel"
-              hidden={!dispatchOpen}
+          <WorkIndex label={t("home.riso.workTitle")} total={t("home.index.total")} items={WORK_ITEMS.slice(0, 3)} />
+          {/* Supporting work (Logistics, UX Woman, Mobbin and the Weekend Dispatch)
+              stays one click away behind a plus, so the visual list shows only the lead three. */}
+          <HomeFold
+            id="home-more-work"
+            title={t("home.index.more")}
+            hint={t("home.index.moreHint")}
+            openLabel=""
+            closeLabel=""
+            hashIds={["dispatch"]}
+          >
+            <WorkIndex label={t("home.index.more")} items={WORK_ITEMS.slice(3)} />
+            <p className="rp-supportingLink">
+              <span>{t("home.riso.supportingKicker")}</span>
+              <Link to="/case-study/mobbin">{t("home.riso.supportingLink")}</Link>
+            </p>
+            {/* WEEKEND DISPATCH: a current-practice signal, deliberately outside the
+                three flagship rows. The story and evidence are complete at rest; the
+                route drawing is decorative context and the event photograph is provenance. */}
+            <section
+              className="rp-section rp-dispatchSection"
+              id="dispatch"
+              aria-labelledby="home-dispatch-title"
+              ref={dispatchSectionRef}
             >
-              {dispatchOpen && <div className="rp-dispatch__grid">
-              <div className="rp-dispatch__story">
-                <p className="rp-dispatch__body">{t("home.dispatch.body")}</p>
-
-                <div className="rp-dispatch__finding">
-                  <p className="rp-dispatch__label">{t("home.dispatch.findingLabel")}</p>
-                  <div>
-                    <p className="rp-dispatch__findingStat">
-                      <strong>22,937</strong>
-                      <span>{t("home.dispatch.statLabel")}</span>
-                    </p>
-                    <p>{t("home.dispatch.finding")}</p>
-                  </div>
-                </div>
-
-                <p className="rp-dispatch__role">{t("home.dispatch.role")}</p>
-
-                <blockquote className="rp-dispatch__rule">
-                  <p className="rp-dispatch__label">{t("home.dispatch.ruleLabel")}</p>
-                  <p className="rp-dispatch__ruleText">{t("home.dispatch.rule")}</p>
-                  <p>{t("home.dispatch.ruleBody")}</p>
-                </blockquote>
-
-                <div className="rp-dispatch__actions">
-                  <a
-                    className="rp-cta"
-                    href="https://hme222.github.io/MTA_Accessibility_Trip_Planning/"
-                  >
-                    <span className="rp-ext">{t("home.dispatch.primary")}</span>
-                  </a>
-                  <div className="rp-dispatch__sources" aria-label={lang === "es" ? "Fuentes del proyecto" : "Project sources"}>
-                    <a href="https://devpost.com/software/nyc-accessible-transit-planning">
-                      <span className="rp-ext">{t("home.dispatch.devpost")}</span>
-                    </a>
-                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7495219168997322752/">
-                      <span className="rp-ext">{t("home.dispatch.linkedin")}</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="rp-dispatch__visual">
-                <a
-                  className="rp-dispatch__collage"
-                  href="https://hme222.github.io/MTA_Accessibility_Trip_Planning/"
-                  aria-label={t("home.dispatch.photoLink")}
-                >
-                  <figure>
-                    <div className="rp-dispatch__collageField">
-                      <img
-                        className="rp-dispatch__eventPhoto"
-                        src="/assets/journal/nypl-built-for-nyc.jpg"
-                        alt=""
-                        width="800"
-                        height="450"
-                        loading="lazy"
-                      />
-                      <img
-                        className="rp-dispatch__interfaceFragment"
-                        src="/assets/journal/mta-accessible-transit-landing.png"
-                        alt=""
-                        width="1440"
-                        height="900"
-                        loading="lazy"
-                      />
-                      <span className="rp-dispatch__wash rp-dispatch__wash--blue" aria-hidden="true" />
-                      <span className="rp-dispatch__wash rp-dispatch__wash--orange" aria-hidden="true" />
-                      <span className="rp-dispatch__registration" aria-hidden="true">08 / 77,236</span>
+                <article className={`rp-dispatch${dispatchOpen ? " rp-dispatch--open" : ""}`}>
+                  <div className="rp-dispatch__masthead">
+                    <div
+                      className={`rp-dispatchTrain${dispatchTrainDeparted ? " rp-dispatchTrain--departed" : ""}${dispatchTrainReturning ? " rp-dispatchTrain--returning" : ""}`}
+                      ref={dispatchTrainRef}
+                    >
+                      <div className="rp-dispatchTrain__scene" aria-hidden="true">
+                        <span className="rp-dispatchTrain__rail rp-dispatchTrain__rail--upper" />
+                        <span className="rp-dispatchTrain__rail rp-dispatchTrain__rail--lower" />
+                        <div className="rp-dispatchTrain__vehicle">
+                          <video
+                            className="rp-dispatchTrain__video"
+                            ref={dispatchTrainVideoRef}
+                            muted
+                            playsInline
+                            preload="metadata"
+                            aria-hidden="true"
+                            onCanPlay={(event) => {
+                              event.currentTarget.closest<HTMLElement>(".rp-dispatchTrain")?.setAttribute("data-video-ready", "true");
+                            }}
+                            onError={(event) => {
+                              event.currentTarget.closest<HTMLElement>(".rp-dispatchTrain")?.setAttribute("data-video-ready", "false");
+                            }}
+                            onTimeUpdate={(event) => {
+                              if (event.currentTarget.currentTime >= DISPATCH_TRAIN_HOLD_SECONDS) {
+                                event.currentTarget.pause();
+                              }
+                            }}
+                          >
+                            <source src="/assets/video/weekend-journal-riso-train-v2.mp4" type="video/mp4" />
+                          </video>
+                          <div className="rp-dispatchTrain__fallback">
+                            {[0, 1, 2, 3].map((car) => (
+                              <div
+                                className={`rp-dispatchTrain__car${car === 1 || car === 2 ? " rp-dispatchTrain__car--desktopOnly" : ""}`}
+                                key={car}
+                              >
+                                <span className="rp-dispatchTrain__windowBand">
+                                  <i /><i /><i />
+                                </span>
+                                <span className="rp-dispatchTrain__doors" />
+                                <span className="rp-dispatchTrain__ink rp-dispatchTrain__ink--blue" />
+                                <span className="rp-dispatchTrain__ink rp-dispatchTrain__ink--orange" />
+                              </div>
+                            ))}
+                          </div>
+                          <span className="rp-dispatchTrain__placard">{t("home.dispatch.eyebrow")}</span>
+                        </div>
+                      </div>
                     </div>
-                    <figcaption>
-                      <span>{t("home.dispatch.photoCaption")}</span>
-                      <span>{t("home.dispatch.prototypeLabel")}</span>
-                    </figcaption>
-                  </figure>
-                </a>
-              </div>
-              </div>}
-            </div>
-          </article>
+                    <div className="rp-dispatch__cover">
+                      <div>
+                        <p className="rp-kicker rp-dispatch__issueLabel">{t("home.dispatch.eyebrow")}</p>
+                        <h2 className="rp-dispatch__title" id="home-dispatch-title">{t("home.dispatch.title")}</h2>
+                        <p className="rp-dispatch__question">{t("home.dispatch.question")}</p>
+                      </div>
+                      <button
+                        type="button"
+                        className="rp-dispatch__toggle"
+                        aria-expanded={dispatchOpen}
+                        aria-controls="weekend-dispatch-panel"
+                        onClick={() => {
+                          if (!dispatchOpen) {
+                            window.clearTimeout(dispatchTrainReturnTimerRef.current);
+                            setDispatchTrainReturning(false);
+                            if (dispatchTrainVideoRef.current?.offsetWidth) {
+                              dispatchTrainVideoRef.current.pause();
+                            }
+                            setDispatchTrainDeparted(true);
+                          } else {
+                            setDispatchTrainDeparted(false);
+                            setDispatchTrainReturning(true);
+                            window.clearTimeout(dispatchTrainReturnTimerRef.current);
+                            dispatchTrainReturnTimerRef.current = window.setTimeout(() => {
+                              setDispatchTrainReturning(false);
+                            }, 520);
+                          }
+                          setDispatchOpen((current) => !current);
+                        }}
+                      >
+                        <span aria-hidden="true">+</span>
+                        {t(dispatchOpen ? "home.dispatch.closeJournal" : "home.dispatch.openJournal")}
+                      </button>
+                    </div>
+                  </div>
+                  <p className="rp-dispatchTrain__attribution">{glossTerms(t("home.dispatch.trainAttribution"), glossary)}</p>
+
+                  <div
+                    className="rp-dispatch__reveal"
+                    id="weekend-dispatch-panel"
+                    hidden={!dispatchOpen}
+                  >
+                    {dispatchOpen && <div className="rp-dispatch__grid">
+                    <div className="rp-dispatch__story">
+                      <p className="rp-dispatch__body">{t("home.dispatch.body")}</p>
+
+                      <div className="rp-dispatch__finding">
+                        <p className="rp-dispatch__label">{t("home.dispatch.findingLabel")}</p>
+                        <div>
+                          <p className="rp-dispatch__findingStat">
+                            <strong>22,937</strong>
+                            <span>{t("home.dispatch.statLabel")}</span>
+                          </p>
+                          <p>{t("home.dispatch.finding")}</p>
+                        </div>
+                      </div>
+
+                      <p className="rp-dispatch__role">{t("home.dispatch.role")}</p>
+
+                      <blockquote className="rp-dispatch__rule">
+                        <p className="rp-dispatch__label">{t("home.dispatch.ruleLabel")}</p>
+                        <p className="rp-dispatch__ruleText">{t("home.dispatch.rule")}</p>
+                        <p>{t("home.dispatch.ruleBody")}</p>
+                      </blockquote>
+
+                      <div className="rp-dispatch__actions">
+                        <a
+                          className="rp-cta"
+                          href="https://hme222.github.io/MTA_Accessibility_Trip_Planning/"
+                        >
+                          <span className="rp-ext">{t("home.dispatch.primary")}</span>
+                        </a>
+                        <div className="rp-dispatch__sources" aria-label={lang === "es" ? "Fuentes del proyecto" : "Project sources"}>
+                          <a href="https://devpost.com/software/nyc-accessible-transit-planning">
+                            <span className="rp-ext">{t("home.dispatch.devpost")}</span>
+                          </a>
+                          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7495219168997322752/">
+                            <span className="rp-ext">{t("home.dispatch.linkedin")}</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="rp-dispatch__visual">
+                      <a
+                        className="rp-dispatch__collage"
+                        href="https://hme222.github.io/MTA_Accessibility_Trip_Planning/"
+                        aria-label={t("home.dispatch.photoLink")}
+                      >
+                        <figure>
+                          <div className="rp-dispatch__collageField">
+                            <img
+                              className="rp-dispatch__eventPhoto"
+                              src="/assets/journal/nypl-built-for-nyc.jpg"
+                              alt=""
+                              width="800"
+                              height="450"
+                              loading="lazy"
+                            />
+                            <img
+                              className="rp-dispatch__interfaceFragment"
+                              src="/assets/journal/mta-accessible-transit-landing.png"
+                              alt=""
+                              width="1440"
+                              height="900"
+                              loading="lazy"
+                            />
+                            <span className="rp-dispatch__wash rp-dispatch__wash--blue" aria-hidden="true" />
+                            <span className="rp-dispatch__wash rp-dispatch__wash--orange" aria-hidden="true" />
+                            <span className="rp-dispatch__registration" aria-hidden="true">08 / 77,236</span>
+                          </div>
+                          <figcaption>
+                            <span>{t("home.dispatch.photoCaption")}</span>
+                            <span>{t("home.dispatch.prototypeLabel")}</span>
+                          </figcaption>
+                        </figure>
+                      </a>
+                    </div>
+                    </div>}
+                  </div>
+                </article>
+            </section>
+          </HomeFold>
         </div>
       </section>
 
@@ -435,26 +461,6 @@ export default function RisoHome() {
             </a>
           </div>
           <CopyEmail />
-        </div>
-      </section>
-
-      {/* MINI ABOUT */}
-      <section className="rp-section" id="about" aria-labelledby="home-about-title">
-        <div className="rp-wrap">
-          <h2 className="sr-only" id="home-about-title">{t("home.riso.aboutTitle")}</h2>
-          <HomeFold
-            id="home-about-fold"
-            title={t("home.riso.aboutTitle")}
-            hint={t("home.fold.about.hint")}
-            openLabel={t("home.fold.open")}
-            closeLabel={t("home.fold.close")}
-            hashIds={["about"]}
-          >
-            <div className="rp-aboutBlock">
-              <p className="rp-sub">{t("home.about.blurb")}</p>
-              <Link className="rp-cta rp-cta--ghost" to="/about" style={{ marginTop: "1.4rem" }}>{t("home.about.link")}</Link>
-            </div>
-          </HomeFold>
         </div>
       </section>
 

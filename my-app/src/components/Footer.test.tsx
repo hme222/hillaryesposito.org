@@ -45,7 +45,7 @@ describe("Footer", () => {
     container.remove();
   });
 
-  it("has both the email link and a résumé PDF link that opens in a new tab", async () => {
+  it("shows the email address as a link with a Copy button, and a résumé PDF link that opens in a new tab", async () => {
     await act(async () => {
       root.render(<Footer />);
     });
@@ -53,7 +53,8 @@ describe("Footer", () => {
     const emails = Array.from(
       container.querySelectorAll<HTMLAnchorElement>('a[href="mailto:espositohillary@gmail.com"]')
     ).map((a) => a.textContent);
-    expect(emails).toEqual(["footer.email"]);
+    expect(emails).toEqual(["espositohillary@gmail.com"]);
+    expect(Array.from(container.querySelectorAll("button")).map((b) => b.textContent)).toContain("Copy");
 
     const resume = container.querySelector<HTMLAnchorElement>(
       'a[href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"]'

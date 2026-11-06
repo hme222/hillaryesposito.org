@@ -17,6 +17,7 @@ import useFlagshipReveal from "../../hooks/useFlagshipReveal";
 import usePageTitle from "../../hooks/usePageTitle";
 import "../../styles/riso-page.css";
 import "../../styles/flagship-case-study.css";
+import CopyEmail from "../../components/CopyEmail";
 
 /**
  * UX Woman — healthcare research case study, research phase.
@@ -281,6 +282,7 @@ export default function FlagshipUxWoman() {
         <div className="rp-wrap rp-close">
           <h2>I check the premise before I build.</h2>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
+          <CopyEmail />
           <ShareCaseStudy title="UX Woman: a case study by Hillary Esposito" />
         </div>
       </section>

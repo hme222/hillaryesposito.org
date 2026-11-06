@@ -16,6 +16,7 @@ import useFlagshipReveal from "../../hooks/useFlagshipReveal";
 import usePageTitle from "../../hooks/usePageTitle";
 import "../../styles/riso-page.css";
 import "../../styles/flagship-case-study.css";
+import CopyEmail from "../../components/CopyEmail";
 
 /**
  * Medical logistics, Iraq — the operations case study.
@@ -216,6 +217,7 @@ export default function FlagshipLogistics() {
           <h2>Supply lines and clinic workflows break the same way.</h2>
           <p>A supply run began too far from the aid stations. Portal messages took a paper route and lost their chart context. In both, I moved the step that did not belong.</p>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
+          <CopyEmail />
           <ShareCaseStudy title="Medical logistics: a case study by Hillary Esposito" />
         </div>
       </section>

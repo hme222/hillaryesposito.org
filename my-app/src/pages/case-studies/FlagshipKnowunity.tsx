@@ -17,6 +17,7 @@ import useFlagshipReveal from "../../hooks/useFlagshipReveal";
 import usePageTitle from "../../hooks/usePageTitle";
 import "../../styles/riso-page.css";
 import "../../styles/flagship-case-study.css";
+import CopyEmail from "../../components/CopyEmail";
 
 /**
  * Knowunity — Say It Back, the design-sprint case study.
@@ -301,6 +302,7 @@ export default function FlagshipKnowunity() {
         <div className="rp-wrap rp-close">
           <h2>I prototype to find the next test.</h2>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
+          <CopyEmail />
           <ShareCaseStudy title="Knowunity: a case study by Hillary Esposito" />
         </div>
       </section>

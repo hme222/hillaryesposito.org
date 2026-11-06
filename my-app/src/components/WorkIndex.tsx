@@ -10,6 +10,8 @@ export type WorkIndexItem = {
   /** What the case study shows. Appears on hover or focus, and is read by screen readers as the link's description. */
   desc: string;
   to: string;
+  /** Optional picture shown to the right of the row. Decorative: the row's title already names the case. */
+  visual?: React.ReactNode;
 };
 
 /**
@@ -19,23 +21,24 @@ export type WorkIndexItem = {
 export default function WorkIndex({ items, label, total }: {
   /** Names the list for screen readers. */
   label: string;
-  /** Shown after the count, such as "5 case studies". */
-  total: string;
+  /** Shown above the list, such as "Five case studies". Omit for a continuation list. */
+  total?: string;
   items: WorkIndexItem[];
 }) {
   return (
     <div className="rp-index">
-      <p className="rp-index__total">{total}</p>
+      {total ? <p className="rp-index__total">{total}</p> : null}
       <ol className="rp-index__list" aria-label={label}>
         {items.map((item) => (
           <li key={item.n}>
-            <Link className="rp-index__row" to={item.to} aria-describedby={`work-index-${item.n}-desc`}>
+            <Link className={`rp-index__row${item.visual ? " rp-index__row--visual" : ""}`} to={item.to} aria-describedby={`work-index-${item.n}-desc`}>
               <span className="rp-index__n" aria-hidden="true">{item.n}</span>
               <span className="rp-index__main">
                 <b className="rp-index__title">{item.title}</b>
                 <span className="rp-index__sub">{item.sub}</span>
                 <span className="rp-index__desc" id={`work-index-${item.n}-desc`}>{item.desc}</span>
               </span>
+              {item.visual ? <span className="rp-index__visual" aria-hidden="true">{item.visual}</span> : null}
               <span className="rp-index__arrow" aria-hidden="true">→</span>
             </Link>
           </li>

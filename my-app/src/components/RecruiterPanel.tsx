@@ -5,6 +5,7 @@ import Modal from "./Modal";
 import { FileText, Mail, Briefcase, User, X } from "lucide-react";
 import AskBirdIcon from "./ask/AskBirdIcon";
 import { ASK_ENABLED } from "./ask/askEnabled";
+import CopyEmail from "./CopyEmail";
 
 /**
  * @status: stable
@@ -101,9 +102,7 @@ export default function RecruiterPanel() {
               </a>
             </div>
             {/* Visible, selectable address so the mailto never silent-fails. */}
-            <p className="recruiter-panel__email">
-              or copy: <a href="mailto:espositohillary@gmail.com">espositohillary@gmail.com</a>
-            </p>
+            <CopyEmail compact lang="en" />
           </section>
 
           <section className="recruiter-panel__section" aria-labelledby="recruiter-panel-selected-title">

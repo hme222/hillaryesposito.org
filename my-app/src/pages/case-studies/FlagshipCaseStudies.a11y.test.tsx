@@ -214,7 +214,7 @@ describe("flagship case-study accessibility", () => {
       root.render(<RisoHome />);
     });
 
-    ["home", "projects", "about", "contact"].forEach((id) => {
+    ["home", "projects", "contact"].forEach((id) => {
       expect(container.querySelector(`#${id}`)).not.toBeNull();
     });
     // The hero has no buttons; the MSK case study is reached from the work list.

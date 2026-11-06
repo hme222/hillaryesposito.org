@@ -11,6 +11,8 @@ import CartoField from "../../components/riso/CartoField";
 import PhaseIndicator from "../../components/riso/PhaseIndicator";
 import SpanishCaseStudy from "../../components/SpanishCaseStudy";
 import { GROVE_ES } from "../../data/spanishCaseStudies";
+import AsciiBloom from "../../components/AsciiBloom";
+import CopyEmail from "../../components/CopyEmail";
 import usePageTitle from "../../hooks/usePageTitle";
 import { wireRevealObservers } from "../../hooks/useFlagshipReveal";
 import "../../styles/riso-page.css";
@@ -291,21 +293,11 @@ export default function RisoGrove() {
             </div>
           </div>
 
-          <figure className="rp-stockPhoto rp-reveal" data-evidence="true">
-            <img
-              src="https://images.unsplash.com/photo-1533038590840-1cde6e668a91?auto=format&fit=crop&w=1200&q=70"
-              alt=""
-              loading="lazy"
-              width={1200}
-              height={400}
-            />
-            <figcaption>
-              Grove is for people new to plant care. Stock photo, not a Grove screen. Photo:{" "}
-              <a href="https://unsplash.com/@anniespratt" target="_blank" rel="noopener noreferrer">Annie Spratt</a>
-              {" / "}
-              <a href="https://unsplash.com/photos/hX_hf2lPpUU" target="_blank" rel="noopener noreferrer">Unsplash</a>
-            </figcaption>
-          </figure>
+          <AsciiBloom
+            label="A bunch of three flowers drawn in text characters, growing and opening"
+            caption="Grove is for people new to plant care."
+            replayLabel="Grow it again"
+          />
 
           <h3 className="rp-subhead">Five people found the problem. Thirty-seven chose what came next.</h3>
           <p className="rp-lede">From March to May 2026, five moderated sessions showed that people stalled when care led with a feed and a mission, not their plants. Then, from May 22 to October 16, 37 people answered a self-report survey: 31 plant owners and caretakers, three florists, and three bouquet buyers. Each chose three launch dealbreakers.</p>
@@ -572,6 +564,7 @@ export default function RisoGrove() {
           {/* The closing action stays consistent across the complete case-study
               sequence so the next step remains predictable. */}
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
+          <CopyEmail />
           <ShareCaseStudy title="Grove: a case study by Hillary Esposito" />
         </div>
       </section>
