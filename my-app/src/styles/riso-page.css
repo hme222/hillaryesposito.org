@@ -4302,6 +4302,7 @@ body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-g
 .flagship-page .rp-wrap > .rp-title + .rp-more { margin-top: var(--rp-headline-gap); }
 
 /* MSK landing: the text panel centers against the queue instead of hanging at
-   the top of a tall column, and the headline gets room above its label chip. */
+   the top of a tall column, and the label chip moves above the headline like the other five cases. */
 .flagship-page--msk .fp-hero { align-items: center; }
-.flagship-page--msk .fp-hero .rp-eyebrow { margin-top: .9rem; }
+/* The label chip sits above the headline here, as on the other five cases. */
+.flagship-page--msk .fp-hero .rp-h1 { order: 2; margin-top: .8rem; }
