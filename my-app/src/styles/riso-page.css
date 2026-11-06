@@ -4231,3 +4231,6 @@ body:has(.riso-home) .riso-home .rp-index__n {
 .rp-copyEmail--compact { margin-top: 0; gap: .35rem .6rem; }
 .rp-copyEmail--compact .rp-copyEmail__address { font-size: .875rem; }
 .site-footer__baseRow .rp-copyEmail { font-size: .875rem; }
+
+/* The role line is now a short sentence; balance keeps it off a stranded last word. */
+.riso-home .rp-nameSplash__role { text-wrap: balance; max-width: 22ch; }

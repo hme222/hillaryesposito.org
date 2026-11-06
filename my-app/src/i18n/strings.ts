@@ -77,6 +77,7 @@ const en = {
   //
   // Keep the proposal and the later implementation distinct. The prior 20%
   // clause compressed an organization result into Hillary's personal action.
+  "home.riso.heroTitle": "I design workflows before screens.",
   "home.riso.heroLead":
     "At Memorial Sloan Kettering, I proposed the queue that replaced a four-department paper detour.",
   // The hero lede above is the one place on Home that explains the paper
@@ -267,6 +268,7 @@ const es: Partial<Record<StringKey, string>> = {
 
   // ── Home: hero ──
   "home.status": "Abierta a roles de diseño de productos de salud",
+  "home.riso.heroTitle": "Diseño flujos antes que pantallas.",
   "home.riso.heroLead":
     "En Memorial Sloan Kettering, propuse la cola que reemplazó un desvío en papel entre cuatro áreas.",
   // The panel itself stays English-only (lang="en") - the ES link says so,

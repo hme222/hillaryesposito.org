@@ -213,7 +213,7 @@ export default function RisoHome() {
                   <span className="rp-nameSplash__word">Esposito</span>
                 </span>
                 <span className="sr-only">, </span>
-                <span className="rp-nameSplash__role">{lang === "es" ? "Diseñadora UX" : "UX designer"}</span>
+                <span className="rp-nameSplash__role">{t("home.riso.heroTitle")}</span>
               </h1>
             </div>
             <p className="rp-sub rp-heroProof">{t("home.riso.heroLead")}</p>
