@@ -17,6 +17,7 @@ import usePageTitle from "../../hooks/usePageTitle";
 import "../../styles/riso-page.css";
 import "../../styles/flagship-case-study.css";
 import CopyEmail from "../../components/CopyEmail";
+import CaseMore from "../../components/CaseMore";
 
 /**
  * Medical logistics, Iraq — the operations case study.
@@ -146,7 +147,6 @@ export default function FlagshipLogistics() {
         <div className="rp-wrap">
           <p className="rp-kicker">What I changed</p>
           <h2 className="rp-title">Move the warehouse. Then fix the handoffs.</h2>
-          <p className="rp-lede">The physical move removed the largest delay. A shared request and visible order status kept it from returning.</p>
           <div className="fp-redesigns fp-redesigns--logistics rp-reveal" data-evidence="true">
             {MOVES.map((m) => (
               <article key={m.n}>
@@ -158,6 +158,9 @@ export default function FlagshipLogistics() {
             ))}
           </div>
           <OrderStatusBoard />
+          <CaseMore label="Why the move came first">
+            <p className="rp-lede">The physical move removed the largest delay. A shared request and visible order status kept it from returning.</p>
+          </CaseMore>
         </div>
       </section>
 
@@ -215,7 +218,9 @@ export default function FlagshipLogistics() {
       <section className="rp-section">
         <div className="rp-wrap rp-close">
           <h2>Supply lines and clinic workflows break the same way.</h2>
-          <p>A supply run began too far from the aid stations. Portal messages took a paper route and lost their chart context. In both, I moved the step that did not belong.</p>
+          <CaseMore label="How this connects to clinic work">
+            <p>A supply run began too far from the aid stations. Portal messages took a paper route and lost their chart context. In both, I moved the step that did not belong.</p>
+          </CaseMore>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
           <CopyEmail />
           <ShareCaseStudy title="Medical logistics: a case study by Hillary Esposito" />

@@ -12,6 +12,7 @@ import PhaseIndicator from "../../components/riso/PhaseIndicator";
 import SpanishCaseStudy from "../../components/SpanishCaseStudy";
 import { GROVE_ES } from "../../data/spanishCaseStudies";
 import CopyEmail from "../../components/CopyEmail";
+import CaseMore from "../../components/CaseMore";
 import usePageTitle from "../../hooks/usePageTitle";
 import { wireRevealObservers } from "../../hooks/useFlagshipReveal";
 import "../../styles/riso-page.css";
@@ -309,7 +310,6 @@ export default function RisoGrove() {
           </figure>
 
           <h3 className="rp-subhead">Five people found the problem. Thirty-seven chose what came next.</h3>
-          <p className="rp-lede">From March to May 2026, five moderated sessions showed that people stalled when care led with a feed and a mission, not their plants. Then, from May 22 to October 16, 37 people answered a self-report survey: 31 plant owners and caretakers, three florists, and three bouquet buyers. Each chose three launch dealbreakers.</p>
           <dl className="rp-surveyStats rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "90ms" } as React.CSSProperties}>
             {SURVEY_FINDINGS.map((f) => (
               <div key={f.stat}>
@@ -318,6 +318,9 @@ export default function RisoGrove() {
               </div>
             ))}
           </dl>
+          <CaseMore label="Who took part and when">
+            <p className="rp-lede">From March to May 2026, five moderated sessions showed that people stalled when care led with a feed and a mission, not their plants. Then, from May 22 to October 16, 37 people answered a self-report survey: 31 plant owners and caretakers, three florists, and three bouquet buyers. Each chose three launch dealbreakers.</p>
+          </CaseMore>
 
           <p className="rp-lede rp-reveal" style={{ "--rp-reveal-stagger": "180ms" } as React.CSSProperties}>
             <strong>Limit:</strong> self-report prioritized the next build; it does not prove behavior or demand. The moderated test showed confusion, but its task records are not preserved.
@@ -397,9 +400,11 @@ export default function RisoGrove() {
               </figcaption>
             </div>
           </figure>
-          <p className="rp-lede" style={{ marginTop: "clamp(2rem, 5vw, 3.5rem)" }}>
-            <strong>Still unbuilt:</strong> high-fidelity redesign, edge states, and retest. The visible screens are from the first build; this is Phase 2 of 3.
-          </p>
+          <CaseMore label="What is still unbuilt">
+            <p className="rp-lede" style={{ marginTop: "clamp(2rem, 5vw, 3.5rem)" }}>
+              <strong>Still unbuilt:</strong> high-fidelity redesign, edge states, and retest. The visible screens are from the first build; this is Phase 2 of 3.
+            </p>
+          </CaseMore>
         </div>
       </section>
 
@@ -425,14 +430,16 @@ export default function RisoGrove() {
             </div>
           </div>
 
-          <h3 className="rp-subhead">The trust decision</h3>
-          <p className="rp-lede">
-            A florist, unprompted: “Any generative AI in this will remove any sense of trust.”
-            She wasn't alone, 5 of 37 said they'd trust no AI feature in the app at all, and 22 of 37
-            said explaining why the AI made a call is what would earn their trust. Plant ID carried
-            that risk directly, so instead of one confident answer, it shows top guesses, how sure it
-            is, and its sources. False certainty is the fastest way to lose trust.
-          </p>
+          <CaseMore label="Why plant ID shows its sources">
+            <h3 className="rp-subhead">The trust decision</h3>
+            <p className="rp-lede">
+              A florist, unprompted: “Any generative AI in this will remove any sense of trust.”
+              She wasn't alone, 5 of 37 said they'd trust no AI feature in the app at all, and 22 of 37
+              said explaining why the AI made a call is what would earn their trust. Plant ID carried
+              that risk directly, so instead of one confident answer, it shows top guesses, how sure it
+              is, and its sources. False certainty is the fastest way to lose trust.
+            </p>
+          </CaseMore>
 
         </div>
       </section>
@@ -537,10 +544,6 @@ export default function RisoGrove() {
           <h2 className="rp-title">The redesign is decided. Retest next.</h2>
           <PhaseIndicator current={2} total={3} label="Functional prototype · Phase 2 of 3" />
           <p className="rp-lede">Three features scoped. One care-logic mistake found. Retest pending.</p>
-          <p className="rp-bridge">
-            <span>Why a plant app</span>
-            Uncertain recommendations, sources to check, a human final call: the same problems as a clinical tool, at plant-level stakes.
-          </p>
           <div
             className={`rp-outcomes rp-outcomes--lead rp-reveal${VISIBLE_OUTCOMES.length === 2 ? " rp-outcomes--two" : ""}`}
             data-evidence="true"
@@ -556,10 +559,16 @@ export default function RisoGrove() {
             <b>I got the care logic wrong before I got the interface right.</b>
             The next prototype tests whether a check-first reminder protects the plant without costing long-term use.
           </p>
-          <div className="rp-note rp-reveal">
-            <p className="rp-note__k">What the three phases mean</p>
-            <p>Grove is a functional prototype in Phase 2 of 3. 1: first build + survey. 2: decisions shown here. 3: high-fidelity screens, owner testing, and edge states.</p>
-          </div>
+          <CaseMore label="Why a plant app, and what the phases mean">
+            <p className="rp-bridge">
+              <span>Why a plant app</span>
+              Uncertain recommendations, sources to check, a human final call: the same problems as a clinical tool, at plant-level stakes.
+            </p>
+            <div className="rp-note rp-reveal">
+              <p className="rp-note__k">What the three phases mean</p>
+              <p>Grove is a functional prototype in Phase 2 of 3. 1: first build + survey. 2: decisions shown here. 3: high-fidelity screens, owner testing, and edge states.</p>
+            </div>
+          </CaseMore>
         </div>
       </section>
 

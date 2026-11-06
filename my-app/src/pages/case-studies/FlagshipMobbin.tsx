@@ -18,6 +18,7 @@ import usePageTitle from "../../hooks/usePageTitle";
 import "../../styles/riso-page.css";
 import "../../styles/flagship-case-study.css";
 import CopyEmail from "../../components/CopyEmail";
+import CaseMore from "../../components/CaseMore";
 
 const CHAPTERS: CaseStudyChapter[] = [
   { id: "mobbin-start", label: "Start" },
@@ -109,12 +110,14 @@ export default function FlagshipMobbin() {
         <div className="rp-wrap">
           <p className="rp-kicker">The method · judgment before capture</p>
           <h2 className="rp-title">A screenshot is not a flow.</h2>
-          <p className="rp-lede">Walk the task. Keep useful states. Order the sequence. Name it in Mobbin’s vocabulary.</p>
           <div className="fp-workSplit rp-reveal" data-evidence="true">
             <article><span>The mechanical part</span><h3>Capture the screen</h3><p>Any tool can do this part.</p></article>
             <article><span>The actual work</span><h3>Decide what travels</h3><p>Choose the task, sequence, cuts, and searchable label.</p></article>
           </div>
-          <div className="fp-journalLine"><span>What I got wrong</span><b>My first batch used my vocabulary. Revisions dropped once I learned Mobbin’s.</b></div>
+          <CaseMore label="How I worked and what I got wrong">
+            <p className="rp-lede">Walk the task. Keep useful states. Order the sequence. Name it in Mobbin’s vocabulary.</p>
+            <div className="fp-journalLine"><span>What I got wrong</span><b>My first batch used my vocabulary. Revisions dropped once I learned Mobbin’s.</b></div>
+          </CaseMore>
         </div>
       </section>
 

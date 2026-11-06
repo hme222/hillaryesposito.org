@@ -4258,3 +4258,24 @@ body .riso-home .rp-hero .rp-clearing {
 .rp-more > summary:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
 .rp-more__body { margin-top: .5rem; }
 .rp-more__body > :first-child { margin-top: 0; }
+
+/* Grove's hero capture is a real phone screen, so it gets a phone's frame:
+   a dark bezel, deeper corners, a camera pill and a thin edge highlight.
+   Without them the dark welcome screen read as a flat box. The in-app
+   captures (.rp-device--app) are browser views and keep the plain card. */
+.rp-hero__media .rp-device:not(.rp-device--app) {
+  --rp-bezel: color-mix(in srgb, black 86%, var(--green));
+  box-sizing: border-box;
+  border: 9px solid var(--rp-bezel);
+  border-radius: 46px;
+  background: var(--rp-bezel);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, white 14%, transparent),
+    0 0 0 1px color-mix(in srgb, white 10%, transparent),
+    0 2px 6px rgba(0, 0, 0, .12),
+    0 30px 60px -20px rgba(0, 0, 0, .35);
+}
+.rp-hero__media .rp-device:not(.rp-device--app)::before {
+  top: 9px; width: 58px; height: 16px; background: var(--rp-bezel); opacity: 1;
+}
+.rp-hero__media .rp-device:not(.rp-device--app) img { border-radius: 36px; }

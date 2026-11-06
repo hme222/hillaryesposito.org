@@ -8,6 +8,7 @@ import CaseStudyCredential, { CaseStudyCredentialData } from "../../components/f
 import CaseStudyReel, { CaseStudyReelData } from "../../components/flagship/CaseStudyReel";
 import DecisionStory from "../../components/flagship/DecisionStory";
 import EvidenceField from "../../components/flagship/EvidenceField";
+import CaseMore from "../../components/CaseMore";
 import CartoField from "../../components/riso/CartoField";
 import RisoDefs from "../../components/riso/RisoDefs";
 import SpanishCaseStudy from "../../components/SpanishCaseStudy";
@@ -192,9 +193,11 @@ export default function FlagshipKnowunity() {
         <div className="rp-wrap">
           <p className="rp-kicker">Where this starts</p>
           <h2 className="rp-title">Seeing the material is not knowing it.</h2>
-          <p className="rp-lede">After revising, a student has seen the material but hasn't proved they can pull it back out. Quizzes test recognition. Nothing makes them say it.</p>
-          <p className="rp-body">Knowunity's brief asked for a felt “I actually know this now.” The goals, in words: more students who see the step start it, and more of those who start it finish it.</p>
-          <p className="rp-body">Mid-sprint, Knowunity shipped a light beta. The brief said to treat it as one team's first pass and find where the stronger version is, not copy it.</p>
+          <CaseMore label="What the brief asked for">
+            <p className="rp-lede">After revising, a student has seen the material but hasn't proved they can pull it back out. Quizzes test recognition. Nothing makes them say it.</p>
+            <p className="rp-body">Knowunity's brief asked for a felt “I actually know this now.” The goals, in words: more students who see the step start it, and more of those who start it finish it.</p>
+            <p className="rp-body">Mid-sprint, Knowunity shipped a light beta. The brief said to treat it as one team's first pass and find where the stronger version is, not copy it.</p>
+          </CaseMore>
         </div>
       </section>
 
@@ -238,12 +241,14 @@ export default function FlagshipKnowunity() {
         <div className="rp-wrap">
           <p className="rp-kicker">Mine, on their kit</p>
           <h2 className="rp-title">A working prototype, not a deck.</h2>
-          <p className="rp-lede">Every screen is its own route, reached by tapping. Storybook is the component catalog.</p>
           <div className="fp-workSplit rp-reveal" data-evidence="true">
             <article><span>Knowunity supplied</span><h3>The brand and the parts</h3><p>Knowie, the Greed font, their Figma kit, and access to the live app and the beta.</p></article>
             <article><span>I did</span><h3>The flows, the decisions, the direction</h3><p>Next.js prototype, 43 routes, 390px dark mode, plus a Storybook catalog built on their kit; implementation was AI-assisted.</p></article>
           </div>
           <CaseStudyReel reel={REEL} />
+          <CaseMore label="How the prototype works">
+            <p className="rp-lede">Every screen is its own route, reached by tapping. Storybook is the component catalog.</p>
+          </CaseMore>
           <div className="rp-hero__ctas">
             <a className="rp-cta" href={PROTOTYPE_URL} target="_blank" rel="noopener noreferrer">
               <span className="rp-ext">Try the working prototype</span><span className="sr-only">{t("a11y.newTab")}</span>

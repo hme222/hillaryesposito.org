@@ -18,6 +18,7 @@ import usePageTitle from "../../hooks/usePageTitle";
 import "../../styles/riso-page.css";
 import "../../styles/flagship-case-study.css";
 import CopyEmail from "../../components/CopyEmail";
+import CaseMore from "../../components/CaseMore";
 
 /**
  * UX Woman — healthcare research case study, research phase.
@@ -160,8 +161,10 @@ export default function FlagshipUxWoman() {
         <div className="rp-wrap">
           <p className="rp-kicker">Where this starts</p>
           <h2 className="rp-title">Staff described not knowing who acts next.</h2>
-          <p className="rp-lede">When care waits on coverage, paperwork, or a missing document, staff in different roles described unclear ownership of the next step.</p>
-          <p className="rp-body">The mechanisms differed: a misrouted message, a utilization-review page, an authorization queue members could not see (secondhand, from a former health-plan employee). No patient was interviewed.</p>
+          <CaseMore label="What staff described">
+            <p className="rp-lede">When care waits on coverage, paperwork, or a missing document, staff in different roles described unclear ownership of the next step.</p>
+            <p className="rp-body">The mechanisms differed: a misrouted message, a utilization-review page, an authorization queue members could not see (secondhand, from a former health-plan employee). No patient was interviewed.</p>
+          </CaseMore>
         </div>
       </section>
 
@@ -180,15 +183,17 @@ export default function FlagshipUxWoman() {
           <h2 className="rp-title">Three findings, each rated for confidence.</h2>
           <p className="rp-lede">A rating says how directly the accounts support a claim, not how many people said it.</p>
           <ConfidenceMap caption="How strongly the interviews support each finding" rows={CONFIDENCE_ROWS} />
-          <ol className="fp-findings rp-reveal">
-            {FINDINGS.slice(0, 3).map((finding) => (
-              <li key={finding.title}>
-                <h3>{finding.title}</h3>
-                <p>{finding.body}</p>
-                <p className="fp-findings__confidence"><span>Confidence</span> {finding.confidence}</p>
-              </li>
-            ))}
-          </ol>
+          <CaseMore label="What each finding is based on">
+            <ol className="fp-findings rp-reveal">
+              {FINDINGS.slice(0, 3).map((finding) => (
+                <li key={finding.title}>
+                  <h3>{finding.title}</h3>
+                  <p>{finding.body}</p>
+                  <p className="fp-findings__confidence"><span>Confidence</span> {finding.confidence}</p>
+                </li>
+              ))}
+            </ol>
+          </CaseMore>
         </div>
       </section>
 
