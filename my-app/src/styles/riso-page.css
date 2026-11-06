@@ -4210,15 +4210,6 @@ body:has(.riso-home) .riso-home .rp-index__n {
 .riso-home #home-more-work { margin-top: 1rem; }
 .riso-home #home-more-work .rp-deepDive__state { font-size: 1.75rem; line-height: 1; font-weight: 400; }
 
-/* ASCII bloom on Grove: text-drawn flowers, centered, with a quiet replay button. */
-.rp-bloom { margin: 2rem 0; display: grid; justify-items: center; }
-.rp-bloom__stage { width: min(100%, 560px); }
-.rp-bloom canvas { display: block; margin: 0 auto; }
-.rp-bloom figcaption { margin-top: .4rem; color: var(--muted); font-size: .8125rem; line-height: 1.4; text-align: center; }
-.rp-bloom__replay { background: none; border: 0; padding: 0; min-height: 24px; font: inherit; color: var(--coral-text, var(--coral)); text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
-.dark-mode .rp-bloom__replay { color: var(--coral-on-dark, var(--coral)); }
-.rp-bloom__replay:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
-
 /* Name motion (live variable type, no video): each word settles from a light
    weight to 800 once on load; hovering a word eases it lighter and back.
    Text stays real text. Nothing moves when reduced motion is requested. */

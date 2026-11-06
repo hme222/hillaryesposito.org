@@ -11,7 +11,6 @@ import CartoField from "../../components/riso/CartoField";
 import PhaseIndicator from "../../components/riso/PhaseIndicator";
 import SpanishCaseStudy from "../../components/SpanishCaseStudy";
 import { GROVE_ES } from "../../data/spanishCaseStudies";
-import AsciiBloom from "../../components/AsciiBloom";
 import CopyEmail from "../../components/CopyEmail";
 import usePageTitle from "../../hooks/usePageTitle";
 import { wireRevealObservers } from "../../hooks/useFlagshipReveal";
@@ -292,12 +291,6 @@ export default function RisoGrove() {
               </div>
             </div>
           </div>
-
-          <AsciiBloom
-            label="A bunch of three flowers drawn in text characters, growing and opening"
-            caption="Grove is for people new to plant care."
-            replayLabel="Grow it again"
-          />
 
           <h3 className="rp-subhead">Five people found the problem. Thirty-seven chose what came next.</h3>
           <p className="rp-lede">From March to May 2026, five moderated sessions showed that people stalled when care led with a feed and a mission, not their plants. Then, from May 22 to October 16, 37 people answered a self-report survey: 31 plant owners and caretakers, three florists, and three bouquet buyers. Each chose three launch dealbreakers.</p>
