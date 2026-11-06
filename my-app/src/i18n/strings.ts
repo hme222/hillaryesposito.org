@@ -78,12 +78,9 @@ const en = {
   // Keep the proposal and the later implementation distinct. The prior 20%
   // clause compressed an organization result into Hillary's personal action.
   "home.riso.heroLead":
-    "At Memorial Sloan Kettering, I traced a four-department paper detour that kept patient messages out of the chart, and proposed the queue that replaced it.",
+    "At Memorial Sloan Kettering, I proposed the queue that replaced a four-department paper detour.",
   // The hero lede above is the one place on Home that explains the paper
   // detour (2026-10-14 review, item 13); the work row and teaser don't repeat it.
-  "home.riso.heroProof": "IT and UX built it after I changed roles. The workflows in scope reach 21,000+ clinicians and staff.",
-  "home.riso.careerSwitchTitle": "From healthcare operations to product design.",
-  "home.riso.careerSwitchBody": "Six years running MSK admin and training workflows, and 13+ years of Army service in medical logistics, before designing for them.",
   "home.riso.primaryWork": "Review the MSK case study",
   "home.riso.workTitle": "Selected work.",
   "home.riso.workLinkSuffix": "case study",
@@ -107,7 +104,6 @@ const en = {
   "home.riso.proofTitle": "The numbers, with their sources.",
   "home.fold.open": "Open",
   "home.fold.close": "Close",
-  "home.fold.career.hint": "Six years at MSK, 13+ years of Army medical logistics.",
   "home.fold.about.hint": "A short bio, with a link to the full page.",
   "home.index.total": "Five case studies",
   "home.riso.supportingKicker": "Also documented · Mobbin, 200+ screens per app",
@@ -272,10 +268,7 @@ const es: Partial<Record<StringKey, string>> = {
   // ── Home: hero ──
   "home.status": "Abierta a roles de diseño de productos de salud",
   "home.riso.heroLead":
-    "En Memorial Sloan Kettering, rastreé un desvío en papel entre cuatro áreas que dejaba los mensajes de pacientes fuera del expediente, y propuse la cola que lo reemplazó.",
-  "home.riso.heroProof": "TI y UX la construyeron después de que cambié de puesto. Los flujos incluidos alcanzan a más de 21,000 clínicos y personal.",
-  "home.riso.careerSwitchTitle": "De operaciones de salud a diseño de producto.",
-  "home.riso.careerSwitchBody": "Seis años a cargo de flujos administrativos y de capacitación en MSK, y más de 13 años de servicio en el Ejército en logística médica, antes de diseñar para ellos.",
+    "En Memorial Sloan Kettering, propuse la cola que reemplazó un desvío en papel entre cuatro áreas.",
   // The panel itself stays English-only (lang="en") - the ES link says so,
   // the same way ask.ninetySecondLink does below.
   "home.riso.recruiterTourLink": "Abrir el recorrido de 90 segundos (en inglés)",
@@ -302,7 +295,6 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.proofTitle": "Los números, con sus fuentes.",
   "home.fold.open": "Abrir",
   "home.fold.close": "Cerrar",
-  "home.fold.career.hint": "Seis años en MSK, más de 13 años de logística médica en el Ejército.",
   "home.fold.about.hint": "Una biografía corta, con un enlace a la página completa.",
   "home.index.total": "Cinco casos de estudio",
   "home.riso.supportingKicker": "También documentado · Mobbin, más de 200 pantallas por app",

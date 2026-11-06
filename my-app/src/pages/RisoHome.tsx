@@ -195,20 +195,7 @@ export default function RisoHome() {
                 <span className="rp-nameSplash__role">{lang === "es" ? "Diseñadora UX" : "UX designer"}</span>
               </h1>
             </div>
-            <p className="rp-sub rp-heroProof">
-              {t("home.riso.heroLead")} <b>{glossTerms(t("home.riso.heroProof"), glossary, { tabStop: false })}</b>
-            </p>
-            {/* Career-switch context, directly under the actions: quiet, in the
-                site's existing note style, never a banner (2026-10-14, item 15). */}
-            <HomeFold
-              id="home-career-fold"
-              title={t("home.riso.careerSwitchTitle")}
-              hint={t("home.fold.career.hint")}
-              openLabel={t("home.fold.open")}
-              closeLabel={t("home.fold.close")}
-            >
-              <p className="rp-careerNote">{t("home.riso.careerSwitchBody")}</p>
-            </HomeFold>
+            <p className="rp-sub rp-heroProof">{t("home.riso.heroLead")}</p>
           </div>
         </div>
         {/* Simple hero media: photo next to the header text. The dashboard
