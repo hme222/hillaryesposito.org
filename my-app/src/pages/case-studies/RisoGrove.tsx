@@ -233,12 +233,6 @@ export default function RisoGrove() {
     <main className="riso-page flagship-page flagship-page--grove" lang="en">
       <RisoDefs />
 
-      <div className="rp-breadcrumbRow">
-        <nav className="rp-breadcrumb" aria-label="Breadcrumb">
-          <Link to="/" className="rp-breadcrumb__name" title="Hillary Esposito">Hillary Esposito</Link> / <Link to="/?scrollTo=projects">Work</Link> / <span>Grove</span>
-        </nav>
-      </div>
-
       <CaseStudyChapters project="Grove" chapters={CHAPTERS} progress />
       <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
 
@@ -364,7 +358,6 @@ export default function RisoGrove() {
               </figcaption>
             </figure>
 
-            <p className="rp-kicker">The first working version</p>
             <h2 className="rp-title">The complete first build, screen by screen.</h2>
             <p className="rp-lede">Prototype screens, not finished redesigns.</p>
             <div data-evidence="true"><GroveScreenGallery screens={SCREENS} /></div>
@@ -376,7 +369,6 @@ export default function RisoGrove() {
       <section className="rp-section" id="grove-decisions" data-language-anchor="grove-decisions">
         <div className="rp-wrap">
           <h2 className="rp-title">Three features, one testable direction each.</h2>
-          <PhaseIndicator current={2} label="In progress · Phase 2 of 3" />
           <p className="rp-lede" style={{ marginTop: "1.1rem" }}>The three directions stay visible together. They are decisions for the next prototype, not completed redesigns.</p>
           <dl className="rp-decisionRecord rp-decisionRecord--grove rp-reveal" aria-label="Grove's three next-design directions" data-evidence="true">
             {DECISIONS.map((decision) => (
@@ -593,7 +585,7 @@ export default function RisoGrove() {
           <div>
             <p className="rp-next__eyebrow">Next case study</p>
             <p className="rp-next__title">Knowunity</p>
-            <p className="rp-next__tag">Design sprint · mocked voice recall, not shipped</p>
+            
           </div>
           <span className="rp-next__arrow" aria-hidden="true">→</span>
         </div>

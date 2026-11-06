@@ -120,9 +120,6 @@ export default function FlagshipUxWoman() {
     <main className="riso-page flagship-page flagship-page--uxwoman" lang="en" ref={rootRef}>
       <RisoDefs />
 
-      <div className="rp-breadcrumbRow">
-        <nav className="rp-breadcrumb" aria-label="Breadcrumb"><Link to="/" className="rp-breadcrumb__name" title="Hillary Esposito">Hillary Esposito</Link> / <Link to="/?scrollTo=projects">Work</Link> / <span>UX Woman</span></nav>
-      </div>
       <CaseStudyChapters project="UX Woman" chapters={CHAPTERS} progress />
       <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
 
@@ -159,7 +156,6 @@ export default function FlagshipUxWoman() {
 
       <section className="rp-section rp-override" id="uxwoman-problem" data-language-anchor="uxwoman-problem" data-evidence="true">
         <div className="rp-wrap">
-          <p className="rp-kicker">Where this starts</p>
           <h2 className="rp-title">Staff described not knowing who acts next.</h2>
           <CaseMore label="What staff described">
             <p className="rp-lede">When care waits on coverage, paperwork, or a missing document, staff in different roles described unclear ownership of the next step.</p>
@@ -170,7 +166,6 @@ export default function FlagshipUxWoman() {
 
       <section className="rp-section" id="uxwoman-research" data-language-anchor="uxwoman-research" data-evidence="true">
         <div className="rp-wrap">
-          <p className="rp-kicker">What I did</p>
           <h2 className="rp-title">Six healthcare interviews, one per role.</h2>
           <p className="rp-lede">Each interview counts once. Interviews with healthcare professionals and stakeholders.</p>
           <p className="rp-body">Six roles described healthcare workflows. Participants are anonymized, no protected health information was collected, and there is no dedicated patient interview stream.</p>
@@ -179,7 +174,6 @@ export default function FlagshipUxWoman() {
 
       <section className="rp-section" id="uxwoman-findings" data-language-anchor="uxwoman-findings" data-evidence="true">
         <div className="rp-wrap">
-          <p className="rp-kicker">What the interviews showed</p>
           <h2 className="rp-title">Three findings, each rated for confidence.</h2>
           <p className="rp-lede">A rating says how directly the accounts support a claim, not how many people said it.</p>
           <ConfidenceMap caption="How strongly the interviews support each finding" rows={CONFIDENCE_ROWS} />
@@ -240,7 +234,6 @@ export default function FlagshipUxWoman() {
         </section>
         <section className="rp-section" id="uxwoman-pretotypes" data-language-anchor="uxwoman-pretotypes" data-evidence="true">
           <div className="rp-wrap">
-            <p className="rp-kicker">Cheap tests, designed</p>
             <h2 className="rp-title">Five pretotypes designed. None run.</h2>
             <p className="rp-lede">They are five separate tests, not five features of one product.</p>
             <ol className="fp-pretotypes rp-reveal">
@@ -262,7 +255,6 @@ export default function FlagshipUxWoman() {
       <div data-evidence="true"><EvidenceField
         id="uxwoman-next"
         languageAnchor="uxwoman-next"
-        kicker="Where it stands"
         title="A hypothesis, not a product."
         intro="Research phase. Planned next: reconstruct recent cases, asking each person the same neutral questions, before choosing anything to build. Recruitment waits on protocol and governance review."
         disclaimer="Exploratory, qualitative, self-reported · six healthcare interviews and one adjacent HR interview · no dedicated patient interviews · no pretotype run · the large-hospital scan is secondary research"
@@ -292,7 +284,7 @@ export default function FlagshipUxWoman() {
         </div>
       </section>
 
-      <Link className="rp-next" to="/case-study/mobbin"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Mobbin</p><p className="rp-next__tag">Supporting documentation · 200+ screens per app</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
+      <Link className="rp-next" to="/case-study/mobbin"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Mobbin</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
     </main>
   );
 }

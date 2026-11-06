@@ -150,11 +150,6 @@ export default function FlagshipMSK() {
     <main className="riso-page flagship-page flagship-page--msk" lang="en" ref={rootRef}>
       <RisoDefs />
 
-      <div className="rp-breadcrumbRow">
-        <nav className="rp-breadcrumb" aria-label="Breadcrumb">
-          <Link to="/" className="rp-breadcrumb__name" title="Hillary Esposito">Hillary Esposito</Link> / <Link to="/?scrollTo=projects">Work</Link> / <span>Memorial Sloan Kettering</span>
-        </nav>
-      </div>
       <CaseStudyChapters project="Memorial Sloan Kettering" chapters={CHAPTERS} progress />
       <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
 
@@ -404,7 +399,7 @@ export default function FlagshipMSK() {
         </div>
       </section>
 
-      <Link className="rp-next" to="/case-study/grove"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Grove</p><p className="rp-next__tag">Plant-care prototype · Phase 2 of 3</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
+      <Link className="rp-next" to="/case-study/grove"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Grove</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
     </main>
   );
 }

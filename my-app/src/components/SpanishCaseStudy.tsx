@@ -82,12 +82,6 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
     <main className="riso-page spanish-riso-case" aria-label={`${data.title}, estudio de caso`} lang="es">
       <RisoDefs />
 
-      <div className="rp-breadcrumbRow">
-        <nav className="rp-breadcrumb" aria-label="Migas de pan">
-          <Link to="/" className="rp-breadcrumb__name" title="Hillary Esposito">Hillary Esposito</Link> / <Link to="/?scrollTo=projects">Trabajo</Link> / <span>{data.breadcrumb}</span>
-        </nav>
-      </div>
-
       <CaseStudyChapters
         project={data.title}
         chapters={chapters}

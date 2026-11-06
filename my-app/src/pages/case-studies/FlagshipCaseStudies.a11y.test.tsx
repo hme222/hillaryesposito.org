@@ -154,7 +154,7 @@ describe("flagship case-study accessibility", () => {
     await act(async () => {
       root.render(<FlagshipMSK />);
     });
-    expect(container.querySelector(".rp-breadcrumbRow button")).toBeNull();
+    expect(container.querySelector(".rp-breadcrumbRow")).toBeNull();
     expect(container.querySelector(".rp-heroTour")).toBeNull();
     // No same-page jump button in the hero: the story starts right below it.
     expect(container.querySelector('.rp-hero__ctas a[href="#msk-brief"]')).toBeNull();
@@ -166,9 +166,8 @@ describe("flagship case-study accessibility", () => {
     });
     expect(container.querySelector(".rp-heroTour")).toBeNull();
     expect(container.querySelector(".rp-hero__ctas")?.textContent).toContain("Leer el estudio completo en inglés");
-    const breadcrumb = container.querySelector(".rp-breadcrumb");
-    expect(breadcrumb?.textContent).toContain("Memorial Sloan Kettering");
-    expect(breadcrumb?.textContent).not.toContain("Una cola de archivo reemplazó");
+    // Case studies carry no breadcrumb; the top nav and the chapter strip are the wayfinding.
+    expect(container.querySelector(".rp-breadcrumb")).toBeNull();
   });
 
   it("About uses the top-level page shell and has no tour button in its hero", async () => {
@@ -423,7 +422,7 @@ describe("flagship case-study accessibility", () => {
 
     expect(container.querySelector("main")?.getAttribute("lang")).toBe("es");
     expect(container.querySelector("h1")?.textContent).toContain("Las propias palabras del estudiante");
-    expect(container.querySelector(".rp-breadcrumb")?.textContent).toContain("Knowunity");
+    expect(container.querySelector(".rp-breadcrumb")).toBeNull();
     expect(container.querySelector("#es-knowunity-decisions")).not.toBeNull();
     expect(container.textContent).not.toContain("en lugar de elogiarlo");
   });
@@ -455,7 +454,7 @@ describe("flagship case-study accessibility", () => {
     await act(async () => {
       root.render(<FlagshipUxWoman />);
     });
-    expect(container.querySelector(".rp-breadcrumb")?.textContent).toContain("UX Woman");
+    expect(container.querySelector(".rp-breadcrumb")).toBeNull();
     expect(container.querySelector("#es-uxwoman-findings")).not.toBeNull();
     expect(container.querySelector("h1")?.textContent).toBe("Seis entrevistas de salud sugieren una hipótesis por\u00a0probar.");
     expect(container.textContent).toContain("UX Woman es una aceleradora de diseño UX de 7 meses, guiada por mentores.");
@@ -470,17 +469,17 @@ describe("flagship case-study accessibility", () => {
     });
     const next = container.querySelector(".rp-next");
     expect(next?.getAttribute("href")).toBe("/case-study/mobbin");
-    expect(next?.textContent).toContain("Supporting documentation");
+    expect(next?.textContent).toContain("Mobbin");
   });
 
   it.each([
-    ["MSK", <FlagshipMSK />, "/case-study/grove", "Grove", "Plant-care prototype · Phase 2 of 3"],
-    ["Grove", <RisoGrove />, "/case-study/knowunity", "Knowunity", "Design sprint · mocked voice recall, not shipped"],
-    ["Knowunity", <FlagshipKnowunity />, "/case-study/logistics", "Medical logistics", "Army operations · seven aid stations, three countries"],
-    ["Medical logistics", <FlagshipLogistics />, "/case-study/ux-woman", "UX Woman", "Supporting research · six interviews, research phase"],
-    ["UX Woman", <FlagshipUxWoman />, "/case-study/mobbin", "Mobbin", "Supporting documentation · 200+ screens per app"],
-    ["Mobbin", <FlagshipMobbin />, "/case-study/msk", "Memorial Sloan\u00a0Kettering", "Clinical systems · 21,000+ clinicians and staff"],
-  ])("keeps the approved next-case sequence from %s", async (_name, page, href, title, tag) => {
+    ["MSK", <FlagshipMSK />, "/case-study/grove", "Grove"],
+    ["Grove", <RisoGrove />, "/case-study/knowunity", "Knowunity"],
+    ["Knowunity", <FlagshipKnowunity />, "/case-study/logistics", "Medical logistics"],
+    ["Medical logistics", <FlagshipLogistics />, "/case-study/ux-woman", "UX Woman"],
+    ["UX Woman", <FlagshipUxWoman />, "/case-study/mobbin", "Mobbin"],
+    ["Mobbin", <FlagshipMobbin />, "/case-study/msk", "Memorial Sloan\u00a0Kettering"],
+  ])("keeps the approved next-case sequence from %s", async (_name, page, href, title) => {
     await act(async () => {
       root.render(page);
     });
@@ -488,7 +487,8 @@ describe("flagship case-study accessibility", () => {
     const next = container.querySelector<HTMLAnchorElement>(".rp-next");
     expect(next?.getAttribute("href")).toBe(href);
     expect(next?.querySelector(".rp-next__title")?.textContent).toBe(title);
-    expect(next?.querySelector(".rp-next__tag")?.textContent).toBe(tag);
+    // The next-case card is a title and an arrow: no tag line repeating the case's own claims.
+    expect(next?.querySelector(".rp-next__tag")).toBeNull();
   });
 
   it("names Grove's chapters Problem → Research → Decisions → Changes → Outcomes, in both languages", async () => {

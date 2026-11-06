@@ -72,9 +72,6 @@ export default function FlagshipMobbin() {
     <main className="riso-page flagship-page flagship-page--mobbin" lang="en" ref={rootRef}>
       <RisoDefs />
 
-      <div className="rp-breadcrumbRow">
-        <nav className="rp-breadcrumb" aria-label="Breadcrumb"><Link to="/" className="rp-breadcrumb__name" title="Hillary Esposito">Hillary Esposito</Link> / <Link to="/?scrollTo=projects">Work</Link> / <span>Mobbin</span></nav>
-      </div>
       <CaseStudyChapters project="Mobbin" chapters={CHAPTERS} progress />
       <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
 
@@ -108,7 +105,6 @@ export default function FlagshipMobbin() {
 
       <section className="rp-section" id="mobbin-work" data-language-anchor="mobbin-work">
         <div className="rp-wrap">
-          <p className="rp-kicker">The method · judgment before capture</p>
           <h2 className="rp-title">A screenshot is not a flow.</h2>
           <div className="fp-workSplit rp-reveal" data-evidence="true">
             <article><span>The mechanical part</span><h3>Capture the screen</h3><p>Any tool can do this part.</p></article>
@@ -124,7 +120,6 @@ export default function FlagshipMobbin() {
       <div data-evidence="true"><DecisionStory
         id="mobbin-decisions"
         languageAnchor="mobbin-decisions"
-        kicker="Four decisions · one documentation system"
         title="Editing is the work."
         intro="Preserve the useful state, sequence the task, name it for retrieval."
         steps={STEPS}
@@ -156,7 +151,6 @@ export default function FlagshipMobbin() {
         <div data-evidence="true"><MobbinIndexLens /></div>
         <section className="rp-section" id="mobbin-apps" data-language-anchor="mobbin-apps">
           <div className="rp-wrap">
-            <p className="rp-kicker">The apps</p>
             <h2 className="rp-title">Kikoff proves, Polymarket discloses, Discover keeps it familiar.</h2>
             <div data-evidence="true"><ScreenSequence label="Documented finance app sequence" items={APPS} /></div>
 
@@ -175,7 +169,6 @@ export default function FlagshipMobbin() {
       <div data-evidence="true"><EvidenceField
         id="mobbin-outcomes"
         languageAnchor="mobbin-outcomes"
-        kicker="What it added up to"
         title="A searchable record of how three finance products work."
         intro="I documented the source apps for Mobbin’s Finance+ reference library. I did not design Kikoff, Polymarket, Discover, or Mobbin."
         disclaimer="Freelance app-capture work."
@@ -197,7 +190,7 @@ export default function FlagshipMobbin() {
         </div>
       </section>
 
-      <Link className="rp-next" to="/case-study/msk"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Memorial Sloan Kettering</p><p className="rp-next__tag">Clinical systems · 21,000+ clinicians and staff</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
+      <Link className="rp-next" to="/case-study/msk"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Memorial Sloan Kettering</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
     </main>
   );
 }

@@ -86,11 +86,6 @@ export default function FlagshipLogistics() {
     <main className="riso-page flagship-page flagship-page--logistics" lang="en" ref={rootRef}>
       <RisoDefs />
 
-      <div className="rp-breadcrumbRow">
-        <nav className="rp-breadcrumb" aria-label="Breadcrumb">
-          <Link to="/" className="rp-breadcrumb__name" title="Hillary Esposito">Hillary Esposito</Link> / <Link to="/?scrollTo=projects">Work</Link> / <span>Medical logistics</span>
-        </nav>
-      </div>
       <CaseStudyChapters project="Medical logistics" chapters={CHAPTERS} progress />
       <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
 
@@ -136,7 +131,6 @@ export default function FlagshipLogistics() {
           <div className="rp-cinema__artifact rp-cinema__artifact--reminder"><span>Scale</span><b>5,000+ soldiers, $2M in supplies, seven aid stations.</b></div>
           <div className="rp-cinema__artifact rp-cinema__artifact--safety"><span>Constraint</span><b>Cold chain deliveries inside 48 hours.</b></div>
           <div className="rp-cinema__bridge">
-            <p className="rp-kicker">Why speed mattered</p>
             <h2 id="log-brief-title">A late delivery is a casualty{"\u00a0"}risk.</h2>
             <p>An aid station is where wounded soldiers are treated first.</p>
           </div>
@@ -145,7 +139,6 @@ export default function FlagshipLogistics() {
 
       <section className="rp-section" id="log-moves" data-evidence="true">
         <div className="rp-wrap">
-          <p className="rp-kicker">What I changed</p>
           <h2 className="rp-title">Move the warehouse. Then fix the handoffs.</h2>
           <div className="fp-redesigns fp-redesigns--logistics rp-reveal" data-evidence="true">
             {MOVES.map((m) => (
@@ -176,7 +169,6 @@ export default function FlagshipLogistics() {
         </summary>
         <section className="rp-section rp-override" id="log-constraints" data-evidence="true">
           <div className="rp-wrap">
-            <p className="rp-kicker">What made it hard</p>
             <h2 className="rp-title">Three constraints that did not move.</h2>
             <dl className="fp-constraintAnnotations rp-reveal" data-evidence="true">
               <div><dt>Cold chain · 48 hours</dt><dd>Late meant unusable.</dd></div>
@@ -202,7 +194,6 @@ export default function FlagshipLogistics() {
 
       <div className="fp-logisticsEvidence" data-evidence="true"><EvidenceField
         id="log-outcomes"
-        kicker="What it added up to"
         title="Measured in time, money, and things that did not happen."
         intro="Owner-reported figures from my service record."
         disclaimer="Measurement periods and methods are not preserved. No unit positions, routes, or locations are described here."
@@ -227,7 +218,7 @@ export default function FlagshipLogistics() {
         </div>
       </section>
 
-      <Link className="rp-next" to="/case-study/ux-woman"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">UX Woman</p><p className="rp-next__tag">Supporting research · six interviews, research phase</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
+      <Link className="rp-next" to="/case-study/ux-woman"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">UX Woman</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
     </main>
   );
 }

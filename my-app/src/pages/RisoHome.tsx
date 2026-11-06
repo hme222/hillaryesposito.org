@@ -239,7 +239,7 @@ export default function RisoHome() {
       <section className="rp-section" id="projects" aria-labelledby="home-work-title" data-visual="true">
         <div className="rp-wrap">
           <h2 className="rp-title" id="home-work-title">{t("home.riso.workTitle")}</h2>
-          <WorkIndex label={t("home.riso.workTitle")} total={t("home.index.total")} items={WORK_ITEMS.slice(0, 3)} />
+          <WorkIndex label={t("home.riso.workTitle")} items={WORK_ITEMS.slice(0, 3)} />
           {/* Supporting work (Logistics, UX Woman, Mobbin and the Weekend Dispatch)
               stays one click away behind a plus, so the visual list shows only the lead three. */}
           <HomeFold

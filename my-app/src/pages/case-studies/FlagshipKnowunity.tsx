@@ -143,9 +143,6 @@ export default function FlagshipKnowunity() {
     <main className="riso-page flagship-page flagship-page--knowunity" lang="en" ref={rootRef}>
       <RisoDefs />
 
-      <div className="rp-breadcrumbRow">
-        <nav className="rp-breadcrumb" aria-label="Breadcrumb"><Link to="/" className="rp-breadcrumb__name" title="Hillary Esposito">Hillary Esposito</Link> / <Link to="/?scrollTo=projects">Work</Link> / <span>Knowunity</span></nav>
-      </div>
       <CaseStudyChapters project="Knowunity" chapters={CHAPTERS} progress />
       <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
 
@@ -191,7 +188,6 @@ export default function FlagshipKnowunity() {
 
       <section className="rp-section rp-override" id="knowunity-brief" data-language-anchor="knowunity-brief" data-evidence="true">
         <div className="rp-wrap">
-          <p className="rp-kicker">Where this starts</p>
           <h2 className="rp-title">Seeing the material is not knowing it.</h2>
           <CaseMore label="What the brief asked for">
             <p className="rp-lede">After revising, a student has seen the material but hasn't proved they can pull it back out. Quizzes test recognition. Nothing makes them say it.</p>
@@ -204,7 +200,6 @@ export default function FlagshipKnowunity() {
       <div data-evidence="true"><DecisionStory
         id="knowunity-decisions"
         languageAnchor="knowunity-decisions"
-        kicker="Four decisions · I made these, not yet tested"
         title="The student does the proving, not Knowie."
         intro="Nothing makes a student say it. So: echo the words, offer the misses, ask for the mic when it's needed, say where you are."
         steps={STEPS}
@@ -239,7 +234,6 @@ export default function FlagshipKnowunity() {
 
       <section className="rp-section" id="knowunity-prototype" data-language-anchor="knowunity-prototype">
         <div className="rp-wrap">
-          <p className="rp-kicker">Mine, on their kit</p>
           <h2 className="rp-title">A working prototype, not a deck.</h2>
           <div className="fp-workSplit rp-reveal" data-evidence="true">
             <article><span>Knowunity supplied</span><h3>The brand and the parts</h3><p>Knowie, the Greed font, their Figma kit, and access to the live app and the beta.</p></article>
@@ -291,7 +285,6 @@ export default function FlagshipKnowunity() {
       <div data-evidence="true"><EvidenceField
         id="knowunity-outcomes"
         languageAnchor="knowunity-outcomes"
-        kicker="What it added up to"
         title="A badge, a review, and a mock that still needs students."
         intro="Yummy Labs awarded the entry its AI Design Sprinter badge and Knowunity reviewed the work. Recall is mocked and no students have tested it. Next: a speech-to-text build in front of students."
         disclaimer="Design-sprint prototype · recall is mocked: no speech recognition, hold time decides the result · no student testing · not a shipped Knowunity feature · Knowunity's internal numbers are not published here"
@@ -312,7 +305,7 @@ export default function FlagshipKnowunity() {
         </div>
       </section>
 
-      <Link className="rp-next" to="/case-study/logistics"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Medical logistics</p><p className="rp-next__tag">Army operations · seven aid stations, three countries</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
+      <Link className="rp-next" to="/case-study/logistics"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Medical logistics</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
     </main>
   );
 }
