@@ -4234,3 +4234,10 @@ body:has(.riso-home) .riso-home .rp-index__n {
 
 /* The role line is now a short sentence; balance keeps it off a stranded last word. */
 .riso-home .rp-nameSplash__role { text-wrap: balance; max-width: 22ch; }
+
+/* Hero panel hugs its text: the name sets the width (about 3.75 times its
+   font size) with room for the one-line lede, so no empty strip on the right. */
+body .riso-home .rp-hero .rp-clearing {
+  width: max(calc(clamp(3.25rem, 9.5vw, 7.5rem) * 3.75 + 4rem), 32rem);
+  max-width: 100%;
+}
