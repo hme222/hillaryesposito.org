@@ -4126,3 +4126,23 @@ body .site-footer__label {
 .rp-copyEmail__button:hover { background: color-mix(in srgb, var(--coral) 8%, transparent); }
 .rp-copyEmail__button:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
 .rp-copyEmail__status { min-width: 8ch; color: var(--ink-2); font-size: .8125rem; }
+
+/* ---------- Home headline: the name, large, then the role ---------- */
+.riso-home .rp-h1.rp-nameSplash { max-width: none; font-size: 1rem; line-height: 1; letter-spacing: 0; }
+.riso-home .rp-nameSplash__name {
+  display: block; font-family: var(--shell-display) !important; font-weight: 800;
+  font-size: clamp(3.25rem, 9.5vw, 7.5rem); line-height: .9; letter-spacing: -.035em;
+}
+.riso-home .rp-nameSplash__word { display: block; }
+.riso-home .rp-nameSplash__role {
+  display: block; margin-top: 1rem; font-family: var(--shell-display) !important; font-weight: 700;
+  font-size: clamp(1.5rem, 3.6vw, 2.75rem); line-height: 1.1; letter-spacing: -.015em; color: var(--coral-text, var(--coral));
+}
+.dark-mode .riso-home .rp-nameSplash__role { color: var(--coral-on-dark, var(--coral)); }
+/* Home forces the body face onto every descendant with !important, so the
+   name and role spans (not heading elements) opt back out the same way. */
+body:has(.riso-home) .riso-home .rp-nameSplash__name,
+body:has(.riso-home) .riso-home .rp-nameSplash__role,
+body:has(.riso-home) .riso-home .rp-nameSplash__word {
+  font-family: var(--shell-display) !important;
+}

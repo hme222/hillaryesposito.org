@@ -45,8 +45,8 @@ function build(root: Document) {
   const q = (s: string) => Array.from(root.querySelectorAll<HTMLElement>(s));
   const enter = (trigger: Element, start = "top 86%") => ({ trigger, start, once: true });
 
-  // Hero: the headline arrives phrase by phrase, then the support text.
-  const phrases = q(".rp-h1Phrase");
+  // Hero: the name arrives word by word, then the role, then the support text.
+  const phrases = q(".rp-nameSplash__word, .rp-nameSplash__role");
   if (phrases.length) {
     gsap.from(phrases, { yPercent: 40, opacity: 0.2, duration: 0.9, ease: "power3.out", stagger: 0.14 });
   } else {

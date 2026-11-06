@@ -159,24 +159,6 @@ const GLOSSARY = {
   },
 } as const;
 
-// The headline's real phrases. Each is set no-wrap so a line can only break
-// between them (CLAUDE.md: never a stranded word, break at a phrase). If the
-// translated title stops matching, it renders as plain text instead.
-const HERO_PHRASES = {
-  en: ["I design workflows", "before screens."],
-  es: ["Diseño flujos", "antes que pantallas."],
-} as const;
-
-function heroTitle(title: string, phrases: readonly string[]): React.ReactNode {
-  if (title !== phrases.join(" ")) return title;
-  return phrases.map((phrase, index) => (
-    <React.Fragment key={phrase}>
-      {index > 0 && " "}
-      <span className="rp-h1Phrase">{phrase}</span>
-    </React.Fragment>
-  ));
-}
-
 const DISPATCH_TRAIN_HOLD_SECONDS = 3.8;
 
 
@@ -408,11 +390,17 @@ export default function RisoHome() {
                 against (portfolio-cohesion.css) — not .rp-clearing itself,
                 which collapses under inline-size containment. */}
             <div className="rp-h1Fit">
-              <h1 className="rp-h1">{heroTitle(t("home.riso.heroTitle"), HERO_PHRASES[lang === "es" ? "es" : "en"])}</h1>
+              {/* The name is the headline: large, one word per line, then the
+                  role. The sr-only comma keeps the accessible name readable. */}
+              <h1 className="rp-h1 rp-nameSplash">
+                <span className="rp-nameSplash__name">
+                  <span className="rp-nameSplash__word">Hillary</span>{" "}
+                  <span className="rp-nameSplash__word">Esposito</span>
+                </span>
+                <span className="sr-only">, </span>
+                <span className="rp-nameSplash__role">{lang === "es" ? "Diseñadora UX" : "UX designer"}</span>
+              </h1>
             </div>
-            <p className="rp-contextLine">
-              <span className="rp-eyebrow__text">{t("home.riso.eyebrow").replace(" · ", "\u00a0· ")}</span>
-            </p>
             <p className="rp-sub rp-heroProof">
               {t("home.riso.heroLead")} <b>{glossTerms(t("home.riso.heroProof"), glossary, { tabStop: false })}</b>
             </p>
