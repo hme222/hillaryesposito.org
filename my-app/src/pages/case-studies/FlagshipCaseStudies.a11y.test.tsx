@@ -230,76 +230,40 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".rp-trustStrip")).toBeNull();
   });
 
-  it("names each Home work card from visible copy without hiding its description", async () => {
+  it("numbers each Home case and names it from visible copy", async () => {
     await act(async () => {
       root.render(<RisoHome />);
     });
 
-    const rows = Array.from(container.querySelectorAll<HTMLAnchorElement>(".rp-work"));
-    expect(rows).toHaveLength(5);
-    rows.forEach((row) => {
-      const visibleTitle = row.querySelector<HTMLElement>(".rp-work__title");
-      const description = row.querySelector<HTMLElement>(".rp-work__desc");
-      expect(visibleTitle?.id).toBeTruthy();
+    const rows = Array.from(container.querySelectorAll<HTMLAnchorElement>(".rp-index__row"));
+    expect(rows.map((row) => row.getAttribute("href"))).toEqual([
+      "/case-study/msk",
+      "/case-study/grove",
+      "/case-study/knowunity",
+      "/case-study/logistics",
+      "/case-study/ux-woman",
+    ]);
+    rows.forEach((row, index) => {
+      const description = row.querySelector<HTMLElement>(".rp-index__desc");
+      expect(row.querySelector(".rp-index__title")?.textContent).toBeTruthy();
+      expect(row.querySelector(".rp-index__n")?.textContent).toBe(`0${index + 1}`);
+      expect(row.querySelector(".rp-index__n")?.getAttribute("aria-hidden")).toBe("true");
       expect(row.getAttribute("aria-label")).toBeNull();
-      expect(row.getAttribute("aria-labelledby")).toBe(visibleTitle?.id);
-      expect(row.getAttribute("aria-describedby")?.split(" ")).toContain(description?.id);
+      expect(row.getAttribute("target")).toBeNull();
+      // The longer description appears on hover or focus, and is read as the link's description.
+      expect(row.getAttribute("aria-describedby")).toBe(description?.id);
     });
-
-    const mskCard = rows.find((row) => row.getAttribute("href") === "/case-study/msk");
-    expect(mskCard?.querySelector('[role="table"]')).toBeNull();
-    expect(mskCard?.querySelector('[tabindex="0"]')).toBeNull();
-    expect(mskCard?.querySelector(".msk-dashboard-mockup")?.getAttribute("aria-hidden")).toBe("true");
   });
 
-  it("exposes Grove's working browser prototype from Home without a dead Spanish hash", async () => {
+  it("keeps Home's work list to plain links into whole case studies", async () => {
     await act(async () => {
       root.render(<RisoHome />);
     });
-
-    const englishPrototype = Array.from(container.querySelectorAll<HTMLAnchorElement>(".rp-work__teaser"))
-      .find((link) => link.textContent?.includes("working browser prototype"));
-    expect(englishPrototype?.getAttribute("href")).toBe("/case-study/grove#grove-prototype");
-
-    mockLang = "es";
-    await act(async () => {
-      root.render(<RisoHome />);
-    });
-
-    const spanishPrototype = Array.from(container.querySelectorAll<HTMLAnchorElement>(".rp-work__teaser"))
-      .find((link) => link.textContent?.includes("prototipo funcional"));
-    expect(spanishPrototype?.getAttribute("href")).toBe("/case-study/grove");
-  });
-
-  it("opens the Knowunity case study from Home row 05, with a teaser into its four decisions", async () => {
-    await act(async () => {
-      root.render(<RisoHome />);
-    });
-
-    const rows = Array.from(container.querySelectorAll<HTMLAnchorElement>(".rp-work"));
-    expect(rows).toHaveLength(5);
-
-    const row = rows.find((link) => link.getAttribute("href") === "/case-study/knowunity");
-    expect(row).toBeDefined();
-    expect(row?.getAttribute("target")).toBeNull();
-    expect(row?.textContent).toContain("home.riso.knowunityDesc");
-    expect(row?.querySelectorAll(".rp-work__thumb--knowunity img")).toHaveLength(2);
-
-    // The teaser stays on the site (2026-10-15, call 3); the external
-    // prototype and the Storybook link live in the case study.
-    const teaser = container.querySelector<HTMLAnchorElement>('.rp-work__teaser[href="/case-study/knowunity#knowunity-decisions"]');
-    expect(teaser?.textContent).toBe("See the four decisions →");
-    expect(teaser?.getAttribute("target")).toBeNull();
+    expect(container.querySelector(".rp-work__teaser")).toBeNull();
+    expect(container.querySelector(".rp-work")).toBeNull();
     expect(container.innerHTML).not.toContain("knowunity-voice-recall");
     expect(container.innerHTML).not.toContain("chromatic.com");
     expect(container.innerHTML).not.toContain("vercel.com/hillary-esposito-s-projects");
-
-    mockLang = "es";
-    await act(async () => {
-      root.render(<RisoHome />);
-    });
-    const esTeaser = container.querySelector<HTMLAnchorElement>('.rp-work__teaser[href="/case-study/knowunity#es-knowunity-decisions"]');
-    expect(esTeaser?.textContent).toBe("Ver las cuatro decisiones →");
   });
 
   it("states the Knowunity limits and keeps Knowunity's internal numbers off the page", async () => {
@@ -436,12 +400,6 @@ describe("flagship case-study accessibility", () => {
       expect(text).toContain(phrase);
     });
     expect(text).not.toContain("70%");
-
-    await act(async () => {
-      root.render(<RisoHome />);
-    });
-    const teaser = container.querySelector<HTMLAnchorElement>('.rp-work__teaser[href="/case-study/msk#es-msk-decisions"]');
-    expect(teaser?.textContent).toBe("Ver por qué un botón necesitó cuatro reglas →");
   });
 
   it("rebuilds the Spanish Mobbin study on the English chapters", async () => {
@@ -468,25 +426,6 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".rp-breadcrumb")?.textContent).toContain("Knowunity");
     expect(container.querySelector("#es-knowunity-decisions")).not.toBeNull();
     expect(container.textContent).not.toContain("en lugar de elogiarlo");
-  });
-
-  it("opens the UX Woman case study from Home row 02", async () => {
-    await act(async () => {
-      root.render(<RisoHome />);
-    });
-    const row = Array.from(container.querySelectorAll<HTMLAnchorElement>(".rp-work")).find((link) => link.getAttribute("href") === "/case-study/ux-woman");
-    expect(row).toBeDefined();
-    expect(row?.textContent).toContain("home.riso.uxwomanDesc");
-    expect(row?.querySelectorAll(".fp-ledger > div")).toHaveLength(5);
-    const teaser = container.querySelector<HTMLAnchorElement>('.rp-work__teaser[href="/case-study/ux-woman#uxwoman-findings"]');
-    expect(teaser?.textContent).toBe("See the findings →");
-
-    mockLang = "es";
-    await act(async () => {
-      root.render(<RisoHome />);
-    });
-    const esTeaser = container.querySelector<HTMLAnchorElement>('.rp-work__teaser[href="/case-study/ux-woman#es-uxwoman-findings"]');
-    expect(esTeaser?.textContent).toBe("Ver los cinco hallazgos →");
   });
 
   it("states the UX Woman limits and never names an interviewee", async () => {
@@ -771,8 +710,6 @@ describe("flagship case-study accessibility", () => {
     // aria-label; MSK's redundant nested queue is decorative and covered by
     // the dedicated Home-card test above. Visible captions repeated the row
     // category and were cut (2026-10-16).
-    expect(container.querySelector(".rp-work__thumb--mechanism")?.getAttribute("aria-label")).toBeTruthy();
-    expect(container.querySelector(".rp-work__thumb figcaption")).toBeNull();
 
     // The hero carries no buttons: the work list is the next thing on the page.
     expect(container.querySelectorAll(".rp-hero .rp-hero__ctas > a, .rp-hero .rp-hero__ctas > button")).toHaveLength(0);

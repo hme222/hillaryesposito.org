@@ -98,7 +98,7 @@ describe("healthcare product designer hiring path", () => {
     await act(async () => root.render(<RisoHome />));
 
     const workRows = Array.from(
-      container.querySelectorAll<HTMLAnchorElement>(".rp-work"),
+      container.querySelectorAll<HTMLAnchorElement>(".rp-index__row"),
       (row) => row.getAttribute("href"),
     );
     expect(workRows).toEqual([
@@ -108,10 +108,6 @@ describe("healthcare product designer hiring path", () => {
       "/case-study/logistics",
       "/case-study/ux-woman",
     ]);
-    const logistics = container.querySelector<HTMLAnchorElement>('.rp-work[href="/case-study/logistics"]');
-    const uxWoman = container.querySelector<HTMLAnchorElement>('.rp-work[href="/case-study/ux-woman"]');
-    expect(logistics?.querySelector(".rp-work__n")?.textContent).toContain("Operational delivery");
-    expect(uxWoman?.querySelector(".rp-work__n")?.textContent).toContain("Supporting research · active");
 
     const contact = container.querySelector<HTMLElement>("#contact")!;
     const email = contact.querySelector<HTMLAnchorElement>('a[href="mailto:espositohillary@gmail.com"]');

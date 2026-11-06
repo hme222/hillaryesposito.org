@@ -2,14 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import RisoDefs from "../components/riso/RisoDefs";
 import CartoField from "../components/riso/CartoField";
-import PhaseIndicator from "../components/riso/PhaseIndicator";
-import LogisticsMechanism from "../components/LogisticsMechanism";
-import MSKDashboardMockup from "../components/MSKDashboardMockup";
 import CopyEmail from "../components/CopyEmail";
 import HomeFold from "../components/HomeFold";
+import WorkIndex from "../components/WorkIndex";
 import { glossTerms } from "../components/Term";
-import { UXWOMAN_LEDGER } from "../data/uxWomanCaseStudy";
-import { MSK_COPY } from "../data/mskCaseStudy";
 import usePageTitle from "../hooks/usePageTitle";
 import useFlagshipReveal from "../hooks/useFlagshipReveal";
 import { useLanguage, useT } from "../app/LanguageContext";
@@ -27,117 +23,18 @@ type WorkItem = {
   titleKey: StringKey;
   subKey: StringKey;
   descKey: StringKey;
-  path?: string;
-  externalHref?: string;
-  externalAriaKey?: StringKey;
-  img?: string;
-  imgSecondary?: string;
-  imgAltKey: StringKey;
-  visual: "image" | "logistics" | "msk" | "knowunity" | "uxwoman";
-  tagKey?: StringKey;
-  evidenceLabelEn?: string;
-  evidenceLabelEs?: string;
-  teaserPath?: string;
-  teaserPathEs?: string;
-  teaserEn?: string;
-  teaserEs?: string;
-  tier: "primary" | "supporting" | "more";
+  path: string;
 };
 
+// The case studies, in the order they are read: the lead case first, then
+// the ones that show a different kind of evidence.
 const WORK: WorkItem[] = [
-  {
-    n: "01",
-    titleKey: "home.proj.msk.title",
-    subKey: "home.proj.msk.subtitle",
-    descKey: "home.riso.mskDesc",
-    path: "/case-study/msk",
-    imgAltKey: "home.riso.mskAlt",
-    // Was a pin-drop map of MSK's regional locations — geography, not the
-    // product. Swapped for the same filing-queue artifact the hero and case
-    // study use, so the work list shows what was actually designed.
-    visual: "msk",
-    tier: "primary",
-    teaserPath: "/case-study/msk#msk-decisions",
-    // The condensed Spanish study has the same four rules under its own id.
-    teaserPathEs: "/case-study/msk#es-msk-decisions",
-    teaserEn: "See why one button needed four rules →",
-    teaserEs: "Ver por qué un botón necesitó cuatro reglas →",
-  },
-  {
-    n: "02",
-    titleKey: "home.proj.grove.title",
-    subKey: "home.proj.grove.subtitle",
-    descKey: "home.riso.groveDesc",
-    path: "/case-study/grove",
-    img: "/assets/grove/grove-live-care.jpg",
-    imgAltKey: "home.riso.groveAlt",
-    visual: "image",
-    tier: "primary",
-    tagKey: "home.riso.groveTag",
-    teaserPath: "/case-study/grove#grove-prototype",
-    teaserPathEs: "/case-study/grove",
-    teaserEn: "Try the working browser prototype →",
-    teaserEs: "Ver el prototipo funcional en el navegador →",
-  },
-  {
-    n: "03",
-    titleKey: "home.proj.knowunity.title",
-    subKey: "home.proj.knowunity.subtitle",
-    descKey: "home.riso.knowunityDesc",
-    // The row opens the case study, like the other rows. Since 2026-10-15 the
-    // teaser points into the case study's decisions too; the live prototype
-    // and the Storybook link live in the case study itself.
-    path: "/case-study/knowunity",
-    img: "/assets/knowunity/say-it-back-question.webp",
-    imgSecondary: "/assets/knowunity/say-it-back-pass.webp",
-    imgAltKey: "home.riso.knowunityAlt",
-    visual: "knowunity",
-    tier: "primary",
-    teaserPath: "/case-study/knowunity#knowunity-decisions",
-    teaserPathEs: "/case-study/knowunity#es-knowunity-decisions",
-    teaserEn: "See the four decisions →",
-    teaserEs: "Ver las cuatro decisiones →",
-  },
-  {
-    n: "04",
-    titleKey: "home.proj.logistics.title",
-    subKey: "home.proj.logistics.subtitle",
-    descKey: "home.riso.logisticsDesc",
-    path: "/case-study/logistics",
-    imgAltKey: "home.riso.logisticsAlt",
-    visual: "logistics",
-    tier: "supporting",
-    evidenceLabelEn: "Operational delivery",
-    evidenceLabelEs: "Entrega operativa",
-    // Same wording as the Logistics hero's own CTA; the Spanish anchor is the
-    // condensed Spanish study's id for the same section (SpanishCaseStudy
-    // prefixes every anchor with "es-").
-    teaserPath: "/case-study/logistics#log-moves",
-    teaserPathEs: "/case-study/logistics#es-log-moves",
-    teaserEn: "See the three moves →",
-    teaserEs: "Ver los tres cambios →",
-  },
-  {
-    n: "05",
-    titleKey: "home.proj.uxwoman.title",
-    subKey: "home.proj.uxwoman.subtitle",
-    descKey: "home.riso.uxwomanDesc",
-    path: "/case-study/ux-woman",
-    imgAltKey: "home.riso.uxwomanAlt",
-    visual: "uxwoman",
-    tier: "more",
-    evidenceLabelEn: "Supporting research · active",
-    evidenceLabelEs: "Investigación de apoyo · activa",
-    teaserPath: "/case-study/ux-woman#uxwoman-findings",
-    teaserPathEs: "/case-study/ux-woman#es-uxwoman-findings",
-    teaserEn: "See the findings →",
-    teaserEs: "Ver los cinco hallazgos →",
-  },
+  { n: "01", titleKey: "home.proj.msk.title", subKey: "home.proj.msk.subtitle", descKey: "home.riso.mskDesc", path: "/case-study/msk" },
+  { n: "02", titleKey: "home.proj.grove.title", subKey: "home.proj.grove.subtitle", descKey: "home.riso.groveDesc", path: "/case-study/grove" },
+  { n: "03", titleKey: "home.proj.knowunity.title", subKey: "home.proj.knowunity.subtitle", descKey: "home.riso.knowunityDesc", path: "/case-study/knowunity" },
+  { n: "04", titleKey: "home.proj.logistics.title", subKey: "home.proj.logistics.subtitle", descKey: "home.riso.logisticsDesc", path: "/case-study/logistics" },
+  { n: "05", titleKey: "home.proj.uxwoman.title", subKey: "home.proj.uxwoman.subtitle", descKey: "home.riso.uxwomanDesc", path: "/case-study/ux-woman" },
 ];
-
-const PRIMARY_WORK = WORK.filter((work) => work.tier === "primary");
-const SUPPORTING_WORK = WORK.filter((work) => work.tier === "supporting");
-const MORE_WORK = WORK.filter((work) => work.tier === "more");
 
 // Home's glossary: each short form gets one tap/hover definition, at its first
 // appearance (2026-10-14 review, item 12). NYPL is spelled out in the dispatch
@@ -266,109 +163,6 @@ export default function RisoHome() {
 
   const glossary: Record<string, string> = GLOSSARY[lang === "es" ? "es" : "en"];
 
-  const renderWorkContents = (work: WorkItem) => {
-    const idRoot = `home-work-${work.n}`;
-    return (
-    <>
-      <div>
-        {/* The 01-05 numbers are gone (portfolio critique 2026-10-23): the
-            cases are ranked by relevance, not steps in a sequence. The status
-            label stays because it carries information. */}
-        <p className="rp-work__title" id={`${idRoot}-title`}>{t(work.titleKey)}</p>
-        <p className="rp-work__sub" id={`${idRoot}-subtitle`}>{t(work.subKey)}</p>
-        <p className="rp-work__desc" id={`${idRoot}-description`}>{t(work.descKey)}</p>
-        {(work.tagKey || work.evidenceLabelEn) && (
-          <p className="rp-work__n" id={`${idRoot}-status`}>
-            {work.tagKey && <PhaseIndicator current={2} label={t(work.tagKey)} />}
-            {work.evidenceLabelEn && (
-              <span>{lang === "es" ? work.evidenceLabelEs : work.evidenceLabelEn}</span>
-            )}
-          </p>
-        )}
-      </div>
-      {work.visual === "logistics" ? (
-        <figure className="rp-work__thumb rp-work__thumb--mechanism" aria-label={t(work.imgAltKey)}>
-          <LogisticsMechanism n="01" />
-        </figure>
-      ) : work.visual === "msk" ? (
-        <figure className="rp-work__thumb rp-work__thumb--dashboard" aria-hidden="true">
-          <div className="rp-work__thumb--dashboard__frame">
-            <MSKDashboardMockup decorative compact condensedHeader hideToolbar hideRule rowIndices={[0, 2]} copy={MSK_COPY[lang === "es" ? "es" : "en"].dashboard} />
-          </div>
-        </figure>
-      ) : work.visual === "knowunity" ? (
-        <figure className="rp-work__thumb rp-work__thumb--knowunity" aria-label={t(work.imgAltKey)}>
-          <div className="rp-work__thumb--knowunity__flow" aria-hidden="true">
-            <img src={work.img} alt="" width={780} height={1688} loading="lazy" decoding="async" />
-            <img src={work.imgSecondary} alt="" width={780} height={1688} loading="lazy" decoding="async" />
-          </div>
-        </figure>
-      ) : work.visual === "uxwoman" ? (
-        <figure className="rp-work__thumb rp-work__thumb--ledger" aria-label={t(work.imgAltKey)}>
-          <dl className="fp-ledger" aria-hidden="true">
-            {UXWOMAN_LEDGER.map((row) => (
-              <div key={row.en}><dt>{lang === "es" ? row.es : row.en}</dt><dd>{row.n}</dd></div>
-            ))}
-          </dl>
-        </figure>
-      ) : (
-        <div className="rp-work__thumb rp-work__thumb--contain">
-          <img src={work.img} alt={t(work.imgAltKey)} loading="eager" decoding="async" />
-        </div>
-      )}
-    </>
-    );
-  };
-
-  const renderWorkItem = (work: WorkItem) => {
-    const supporting = work.tier !== "primary";
-    const workClassName = `rp-work rp-work--${work.visual} rp-work--${work.tier}${supporting ? " rp-work--supporting" : ""}`;
-    const idRoot = `home-work-${work.n}`;
-    const descriptionIds = [
-      (work.tagKey || work.evidenceLabelEn) ? `${idRoot}-status` : null,
-      `${idRoot}-subtitle`,
-      `${idRoot}-description`,
-    ].filter(Boolean).join(" ");
-
-    return (
-      <React.Fragment key={work.path ?? work.externalHref}>
-        {work.externalHref ? (
-          <a
-            className={workClassName}
-            href={work.externalHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-labelledby={`${idRoot}-title`}
-            aria-describedby={descriptionIds}
-          >
-            {renderWorkContents(work)}
-          </a>
-        ) : (
-          <Link
-            className={workClassName}
-            to={work.path ?? "/"}
-            aria-labelledby={`${idRoot}-title`}
-            aria-describedby={descriptionIds}
-          >
-            {renderWorkContents(work)}
-          </Link>
-        )}
-        {/* Project-specific hooks surface one high-value decision or working
-            proof point without turning it into a peer case row. Spanish
-            prototype links stay on the condensed Spanish case study because
-            the full interaction lab is English. */}
-        {work.teaserPath ? (
-          <Link
-            className={`rp-work__teaser${supporting ? " rp-work__teaser--supporting" : ""}`}
-            to={lang === "es" && work.teaserPathEs ? work.teaserPathEs : work.teaserPath}
-          >
-            {lang === "es" ? work.teaserEs : work.teaserEn}
-          </Link>
-        ) : null}
-      </React.Fragment>
-    );
-  };
-
   return (
     <main className="riso-page riso-home" ref={rootRef}>
       <RisoDefs />
@@ -437,63 +231,15 @@ export default function RisoHome() {
       <section className="rp-section" id="projects" aria-labelledby="home-work-title" data-visual="true">
         <div className="rp-wrap">
           <h2 className="rp-title" id="home-work-title">{t("home.riso.workTitle")}</h2>
-          <HomeFold
-            id="home-work-fold"
-            title={t("home.fold.work.title")}
-            summary={t("home.fold.work.summary")}
-            hint={t("home.fold.work.hint")}
-            openLabel={t("home.fold.open")}
-            closeLabel={t("home.fold.close")}
-            hashIds={["projects"]}
-          >
-          <section className="rp-workGroup" aria-labelledby="home-primary-cases-title">
-            <h3 className="sr-only" id="home-primary-cases-title">
-              {lang === "es" ? "Casos de estudio principales" : "Main case studies"}
-            </h3>
-            <div className="rp-worklist rp-reveal" data-evidence="true">
-              {PRIMARY_WORK.map(renderWorkItem)}
-            </div>
-          </section>
-
-          <section
-            className="rp-workGroup rp-workGroup--supporting"
-            aria-labelledby="home-supporting-cases-title"
-          >
-            <h3 className="sr-only" id="home-supporting-cases-title">
-              {lang === "es" ? "Más trabajo" : "More work"}
-            </h3>
-            <div className="rp-worklist rp-worklist--supporting rp-reveal" data-evidence="true">
-              {SUPPORTING_WORK.map(renderWorkItem)}
-            </div>
-          </section>
-
-          {/* More work (2026-10-22): the home list stops at four cases
-              (UXfolio 2026, ch. 3.3: 71% prefer three or four). Everything
-              else stays one click away instead of competing for the first
-              four-minute read. The content is still in the page, so the
-              Dispatch's train effect and the recruiter panel keep working. */}
-          <details
-            className="rp-deepDive rp-moreWork"
-            onToggle={() => window.dispatchEvent(new Event("resize"))}
-          >
-            <summary>
-              <span className="rp-deepDive__copy">
-                <b className="rp-deepDive__title">{t("home.riso.moreWork")}</b>
-              </span>
-              <span className="rp-deepDive__state" aria-hidden="true">
-                <span className="rp-deepDive__stateClosed">{lang === "es" ? "Abrir" : "Open"}</span>
-                <span className="rp-deepDive__stateOpen">{lang === "es" ? "Cerrar" : "Close"}</span>
-              </span>
-            </summary>
-            <div className="rp-worklist rp-worklist--supporting" data-evidence="true">
-              {MORE_WORK.map(renderWorkItem)}
-            </div>
-            <p className="rp-supportingLink">
-              <span>{t("home.riso.supportingKicker")}</span>
-              <Link to="/case-study/mobbin">{t("home.riso.supportingLink")}</Link>
-            </p>
-          </details>
-          </HomeFold>
+          <WorkIndex
+            label={t("home.riso.workTitle")}
+            total={t("home.index.total")}
+            items={WORK.map((work) => ({ n: work.n, title: t(work.titleKey), sub: t(work.subKey), desc: t(work.descKey), to: work.path }))}
+          />
+          <p className="rp-supportingLink">
+            <span>{t("home.riso.supportingKicker")}</span>
+            <Link to="/case-study/mobbin">{t("home.riso.supportingLink")}</Link>
+          </p>
         </div>
       </section>
 

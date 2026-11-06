@@ -4146,3 +4146,43 @@ body:has(.riso-home) .riso-home .rp-nameSplash__role,
 body:has(.riso-home) .riso-home .rp-nameSplash__word {
   font-family: var(--shell-display) !important;
 }
+
+/* ---------- Home work: a numbered index ---------- */
+.rp-index__total { margin: 0 0 .75rem; color: var(--muted); font-size: .9375rem; }
+.rp-index__list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+.rp-index__list li { border-bottom: 1px solid var(--hair); }
+.rp-index__row {
+  display: grid; grid-template-columns: 3.5rem minmax(0, 1fr) auto; gap: 1rem; align-items: baseline;
+  padding: 1.35rem 0; color: var(--ink); text-decoration: none;
+}
+.rp-index__n { color: var(--muted); font-weight: 800; font-size: 1.25rem; line-height: 1; }
+.rp-index__main { min-width: 0; }
+.rp-index__title { display: block; font-weight: 800; font-size: clamp(1.5rem, 3vw, 2.25rem); line-height: 1.1; letter-spacing: -.015em; text-wrap: balance; }
+.rp-index__sub { display: block; margin-top: .35rem; color: var(--ink-2); font-size: .9375rem; line-height: 1.4; }
+.rp-index__desc {
+  display: block; max-height: 0; overflow: hidden; opacity: 0; color: var(--muted); font-size: .9375rem; line-height: 1.45; max-width: 62ch;
+  transition: max-height .2s ease, opacity .2s ease, margin-top .2s ease;
+}
+.rp-index__arrow { color: var(--coral-text, var(--coral)); font-size: 1.5rem; line-height: 1; transition: transform .2s ease; }
+.dark-mode .rp-index__arrow { color: var(--coral-on-dark, var(--coral)); }
+.rp-index__row:focus-visible { outline: 3px solid var(--coral); outline-offset: -3px; }
+.rp-index__row:focus-visible .rp-index__desc { max-height: 6rem; opacity: 1; margin-top: .5rem; }
+.rp-index__row:focus-visible .rp-index__arrow { transform: translateX(6px); }
+@media (hover: hover) {
+  .rp-index__row:hover { background: color-mix(in srgb, var(--coral) 6%, transparent); }
+  .rp-index__row:hover .rp-index__desc { max-height: 6rem; opacity: 1; margin-top: .5rem; }
+  .rp-index__row:hover .rp-index__arrow { transform: translateX(6px); }
+}
+@media (max-width: 600px) {
+  .rp-index__row { grid-template-columns: 2.25rem minmax(0, 1fr) auto; gap: .6rem; padding: 1.1rem 0; }
+  .rp-index__n { font-size: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rp-index__desc, .rp-index__arrow { transition: none; }
+}
+/* Home forces the body face onto every descendant, so the index's display
+   type opts back out the same way as the headings. */
+body:has(.riso-home) .riso-home .rp-index__title,
+body:has(.riso-home) .riso-home .rp-index__n {
+  font-family: var(--shell-display) !important;
+}
