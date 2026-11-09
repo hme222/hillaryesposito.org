@@ -241,6 +241,8 @@ describe("flagship case-study accessibility", () => {
       "/case-study/knowunity",
       "/case-study/logistics",
       "/case-study/ux-woman",
+      "/case-study/mobbin",
+      "https://hme222.github.io/MTA_Accessibility_Trip_Planning/",
     ]);
     rows.forEach((row, index) => {
       const description = row.querySelector<HTMLElement>(".rp-index__desc");
@@ -248,7 +250,8 @@ describe("flagship case-study accessibility", () => {
       expect(row.querySelector(".rp-index__n")?.textContent).toBe(`0${index + 1}`);
       expect(row.querySelector(".rp-index__n")?.getAttribute("aria-hidden")).toBe("true");
       expect(row.getAttribute("aria-label")).toBeNull();
-      expect(row.getAttribute("target")).toBeNull();
+      // Only the off-site hackathon prototype opens a new tab.
+      expect(row.getAttribute("target")).toBe(row.getAttribute("href")?.startsWith("http") ? "_blank" : null);
       // The longer description appears on hover or focus, and is read as the link's description.
       expect(row.getAttribute("aria-describedby")).toBe(description?.id);
     });
@@ -553,64 +556,20 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".rp-hero .msk-dashboard-mockup")).toBeNull();
   });
 
-  it("keeps the weekend dispatch quiet until a keyboard or touch user opens it", async () => {
-    window.sessionStorage.setItem("portfolio-opening-film-seen", "true");
+  it("lists Mobbin and the hackathon project as numbered rows like the case studies", async () => {
     await act(async () => {
       root.render(<RisoHome />);
     });
-
-    const toggle = container.querySelector<HTMLButtonElement>(".rp-dispatch__toggle");
-    const panel = container.querySelector<HTMLElement>("#weekend-dispatch-panel");
-    expect(toggle).not.toBeNull();
-    expect(toggle?.getAttribute("aria-expanded")).toBe("false");
-    expect(panel?.hidden).toBe(true);
-    expect(container.querySelector(".rp-dispatch__collage")).toBeNull();
-    expect(container.textContent).not.toContain("home.dispatch.finding");
-    expect(container.querySelector(".rp-dispatchTrain__scene")?.getAttribute("aria-hidden")).toBe("true");
-    expect(container.querySelector(".rp-dispatch__masthead .rp-dispatchTrain")).not.toBeNull();
-    expect(container.querySelector(".rp-dispatch__masthead .rp-dispatch__cover")).not.toBeNull();
-    expect(container.querySelector(".rp-dispatchSection > .rp-dispatchTrain")).toBeNull();
-    expect(container.textContent).toContain("home.dispatch.trainAttribution");
-    expect(container.querySelector(".rp-dispatchTrain img")).toBeNull();
-    const trainVideo = container.querySelector<HTMLVideoElement>(".rp-dispatchTrain__video");
-    expect(trainVideo).not.toBeNull();
-    expect(trainVideo?.muted).toBe(true);
-    expect(trainVideo?.loop).toBe(false);
-    expect(trainVideo?.controls).toBe(false);
-    expect(trainVideo?.getAttribute("playsinline")).not.toBeNull();
-    expect(trainVideo?.getAttribute("aria-hidden")).toBe("true");
-    expect(trainVideo?.querySelector("source")?.getAttribute("src")).toBe(
-      "/assets/video/weekend-journal-riso-train-v2.mp4",
-    );
-    const pauseTrain = jest.fn();
-    Object.defineProperty(trainVideo, "pause", { configurable: true, value: pauseTrain });
-    Object.defineProperty(trainVideo, "currentTime", { configurable: true, value: 3.9 });
-    await act(async () => trainVideo?.dispatchEvent(new Event("timeupdate", { bubbles: true })));
-    expect(pauseTrain).toHaveBeenCalledTimes(1);
-    expect(container.querySelectorAll(".rp-dispatchTrain__fallback .rp-dispatchTrain__car")).toHaveLength(4);
-
-    await act(async () => {
-      toggle?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
-    });
-
-    expect(toggle?.getAttribute("aria-expanded")).toBe("true");
-    expect(panel?.hidden).toBe(false);
-    expect(container.querySelector(".rp-dispatchTrain")?.classList.contains("rp-dispatchTrain--departed")).toBe(true);
-    expect(container.textContent).toContain("home.dispatch.finding");
-    expect(container.textContent).toContain("home.dispatch.prototypeLabel");
-    expect(container.querySelector<HTMLAnchorElement>(".rp-dispatch__collage")?.href).toBe(
+    const more = container.querySelector("#home-more-work");
+    const rows = Array.from(more?.querySelectorAll<HTMLAnchorElement>(".rp-index__row") ?? []);
+    expect(rows.map((r) => r.getAttribute("href"))).toEqual([
+      "/case-study/logistics",
+      "/case-study/ux-woman",
+      "/case-study/mobbin",
       "https://hme222.github.io/MTA_Accessibility_Trip_Planning/",
-    );
-    expect(container.querySelectorAll(".rp-dispatch__collage img")).toHaveLength(2);
-    expect(container.querySelector(".rp-dispatch__route")).toBeNull();
-
-    await act(async () => {
-      toggle?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
-    });
-    expect(toggle?.getAttribute("aria-expanded")).toBe("false");
-    expect(panel?.hidden).toBe(true);
-    expect(container.querySelector(".rp-dispatchTrain")?.classList.contains("rp-dispatchTrain--departed")).toBe(false);
-    expect(container.querySelector(".rp-dispatchTrain")?.classList.contains("rp-dispatchTrain--returning")).toBe(true);
+    ]);
+    expect(rows[3].getAttribute("target")).toBe("_blank");
+    expect(container.querySelector(".rp-dispatch, .rp-supportingLink")).toBeNull();
   });
 
   // Direction C (design-state.md, 2026-08-27) put an expandable MSK queue

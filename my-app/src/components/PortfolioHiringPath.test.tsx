@@ -107,6 +107,8 @@ describe("healthcare product designer hiring path", () => {
       "/case-study/knowunity",
       "/case-study/logistics",
       "/case-study/ux-woman",
+      "/case-study/mobbin",
+      "https://hme222.github.io/MTA_Accessibility_Trip_Planning/",
     ]);
 
     const contact = container.querySelector<HTMLElement>("#contact")!;

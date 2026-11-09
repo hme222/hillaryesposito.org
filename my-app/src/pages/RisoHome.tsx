@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import RisoDefs from "../components/riso/RisoDefs";
 import CartoField from "../components/riso/CartoField";
 import CopyEmail from "../components/CopyEmail";
@@ -9,7 +9,6 @@ import WorkIndex from "../components/WorkIndex";
 import PhoneReel from "../components/PhoneReel";
 import type { WorkIndexItem } from "../components/WorkIndex";
 import { MSK_COPY } from "../data/mskCaseStudy";
-import { glossTerms } from "../components/Term";
 import usePageTitle from "../hooks/usePageTitle";
 import useFlagshipReveal from "../hooks/useFlagshipReveal";
 import { useLanguage, useT } from "../app/LanguageContext";
@@ -38,29 +37,11 @@ const WORK: WorkItem[] = [
   { n: "03", titleKey: "home.proj.knowunity.title", subKey: "home.proj.knowunity.subtitle", descKey: "home.riso.knowunityDesc", path: "/case-study/knowunity" },
   { n: "04", titleKey: "home.proj.logistics.title", subKey: "home.proj.logistics.subtitle", descKey: "home.riso.logisticsDesc", path: "/case-study/logistics" },
   { n: "05", titleKey: "home.proj.uxwoman.title", subKey: "home.proj.uxwoman.subtitle", descKey: "home.riso.uxwomanDesc", path: "/case-study/ux-woman" },
+  { n: "06", titleKey: "home.proj.mobbin.title", subKey: "home.proj.mobbin.subtitle", descKey: "home.riso.mobbinDesc", path: "/case-study/mobbin" },
+  { n: "07", titleKey: "home.proj.hackathon.title", subKey: "home.proj.hackathon.subtitle", descKey: "home.riso.hackathonDesc", path: "https://hme222.github.io/MTA_Accessibility_Trip_Planning/" },
 ];
 
-// Home's glossary: each short form gets one tap/hover definition, at its first
-// appearance (2026-10-14 review, item 12). NYPL is spelled out in the dispatch
-// body instead, so it needs none.
-const GLOSSARY = {
-  en: {
-    IT: "Information technology: the team that owns the hospital's systems.",
-    UX: "User experience: the team that designs how a system works for the people using it.",
-    MHA: "Master of Healthcare Administration, a graduate degree in running health systems.",
-    "Lean Six Sigma": "Lean Six Sigma Green Belt, a process-improvement certification.",
-    MTA: "Metropolitan Transportation Authority, New York's transit agency.",
-  },
-  es: {
-    TI: "Tecnología de la información: el equipo a cargo de los sistemas del hospital.",
-    UX: "Experiencia de usuario: el equipo que diseña cómo funciona un sistema para quienes lo usan.",
-    MHA: "Maestría en Administración de Salud, un posgrado en gestión de sistemas de salud.",
-    "Lean Six Sigma": "Green Belt de Lean Six Sigma, una certificación de mejora de procesos.",
-    MTA: "Autoridad Metropolitana de Transporte, la agencia de transporte de Nueva York.",
-  },
-} as const;
 
-const DISPATCH_TRAIN_HOLD_SECONDS = 3.8;
 
 
 export default function RisoHome() {
@@ -69,18 +50,11 @@ export default function RisoHome() {
   usePageTitle(undefined, true, lang);
   const location = useLocation();
   const navigate = useNavigate();
-  const [dispatchOpen, setDispatchOpen] = useState(false);
   // One control pauses every teaser reel (WCAG 2.2.2: moving content lasting
   // more than five seconds needs a way to stop it).
   const [reelsPaused, setReelsPaused] = useState(false);
-  const [dispatchTrainDeparted, setDispatchTrainDeparted] = useState(false);
-  const [dispatchTrainReturning, setDispatchTrainReturning] = useState(false);
-  const dispatchSectionRef = useRef<HTMLElement>(null);
   const rootRef = useRef<HTMLElement>(null);
   useFlagshipReveal(rootRef);
-  const dispatchTrainRef = useRef<HTMLDivElement>(null);
-  const dispatchTrainVideoRef = useRef<HTMLVideoElement>(null);
-  const dispatchTrainReturnTimerRef = useRef<number | undefined>(undefined);
 
   // Preserve global shell deep-links such as /?scrollTo=projects when the
   // reader returns from a case study or uses the footer. The Riso homepage is
@@ -98,77 +72,9 @@ export default function RisoHome() {
     return () => timers.forEach((timer) => window.clearTimeout(timer));
   }, [location.search, navigate]);
 
-  useEffect(() => {
-    const section = dispatchSectionRef.current;
-    const trainField = dispatchTrainRef.current;
-    const vehicle = trainField?.querySelector<HTMLElement>(".rp-dispatchTrain__vehicle");
-    const video = dispatchTrainVideoRef.current;
-    const masthead = section?.querySelector<HTMLElement>(".rp-dispatch__masthead");
-    if (!section || !trainField || !vehicle || !masthead) return;
-
-    section.dataset.trainEnhanced = "true";
-    const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let frame = 0;
-    let videoStarted = false;
-
-    const placeTrain = () => {
-      frame = 0;
-      if (motionPreference.matches) {
-        if (videoStarted) video?.pause();
-        section.dataset.trainDelivered = "true";
-        return;
-      }
-
-      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-      const fieldTop = trainField.getBoundingClientRect().top;
-      const startLine = viewportHeight * 0.92;
-      const travelWindow = viewportHeight * 0.5;
-      const progress = Math.min(1, Math.max(0, (startLine - fieldTop) / travelWindow));
-      const startX = -vehicle.offsetWidth - 32;
-      const mastheadRect = masthead.getBoundingClientRect();
-      const fieldRect = trainField.getBoundingClientRect();
-      const parkedX = Math.max(0, mastheadRect.left - fieldRect.left);
-      const x = startX + (parkedX - startX) * progress;
-
-      trainField.style.setProperty("--rp-train-x", `${x}px`);
-      section.dataset.trainDelivered = progress >= 0.9 ? "true" : "false";
-
-      if (video && vehicle.offsetWidth > 0 && progress >= 0.08 && !videoStarted) {
-        videoStarted = true;
-        try {
-          const playback = video.play();
-          playback?.catch(() => {
-            trainField.dataset.videoReady = "false";
-          });
-        } catch {
-          trainField.dataset.videoReady = "false";
-        }
-      }
-    };
-
-    const schedulePlacement = () => {
-      if (!frame) frame = window.requestAnimationFrame(placeTrain);
-    };
-
-    placeTrain();
-    window.addEventListener("scroll", schedulePlacement, { passive: true });
-    window.addEventListener("resize", schedulePlacement, { passive: true });
-    motionPreference.addEventListener?.("change", schedulePlacement);
-
-    return () => {
-      window.removeEventListener("scroll", schedulePlacement);
-      window.removeEventListener("resize", schedulePlacement);
-      motionPreference.removeEventListener?.("change", schedulePlacement);
-      if (frame) window.cancelAnimationFrame(frame);
-      delete section.dataset.trainEnhanced;
-      delete section.dataset.trainDelivered;
-    };
-  }, []);
-
-  useEffect(() => () => window.clearTimeout(dispatchTrainReturnTimerRef.current), []);
 
 
-  const glossary: Record<string, string> = GLOSSARY[lang === "es" ? "es" : "en"];
+
 
   const WORK_VISUALS: Record<string, React.ReactNode> = {
     "01": (
@@ -206,7 +112,7 @@ export default function RisoHome() {
     ),
   };
   const WORK_ITEMS: WorkIndexItem[] = WORK.map((work) => ({
-    n: work.n, title: t(work.titleKey), sub: t(work.subKey), desc: t(work.descKey), to: work.path, visual: WORK_VISUALS[work.n],
+    n: work.n, title: t(work.titleKey), sub: t(work.subKey), desc: t(work.descKey), to: work.path, external: work.path.startsWith("http"), visual: WORK_VISUALS[work.n],
   }));
 
   return (
@@ -270,202 +176,16 @@ export default function RisoHome() {
             </button>
           </div>
           <WorkIndex label={t("home.riso.workTitle")} items={WORK_ITEMS.slice(0, 3)} />
-          {/* Supporting work (Logistics, UX Woman, Mobbin and the Weekend Dispatch)
-              stays one click away behind a plus, so the visual list shows only the lead three. */}
+          {/* Supporting work stays one click away behind a plus, in the same
+              numbered-row format as the lead three (2026-11-09). */}
           <HomeFold
             id="home-more-work"
             title={t("home.index.more")}
             hint={t("home.index.moreHint")}
             openLabel=""
             closeLabel=""
-            hashIds={["dispatch"]}
           >
             <WorkIndex label={t("home.index.more")} items={WORK_ITEMS.slice(3)} />
-            <p className="rp-supportingLink">
-              <span>{t("home.riso.supportingKicker")}</span>
-              <Link to="/case-study/mobbin">{t("home.riso.supportingLink")}</Link>
-            </p>
-            {/* WEEKEND DISPATCH: a current-practice signal, deliberately outside the
-                three flagship rows. The story and evidence are complete at rest; the
-                route drawing is decorative context and the event photograph is provenance. */}
-            <section
-              className="rp-section rp-dispatchSection"
-              id="dispatch"
-              aria-labelledby="home-dispatch-title"
-              ref={dispatchSectionRef}
-            >
-                <article className={`rp-dispatch${dispatchOpen ? " rp-dispatch--open" : ""}`}>
-                  <div className="rp-dispatch__masthead">
-                    <div
-                      className={`rp-dispatchTrain${dispatchTrainDeparted ? " rp-dispatchTrain--departed" : ""}${dispatchTrainReturning ? " rp-dispatchTrain--returning" : ""}`}
-                      ref={dispatchTrainRef}
-                    >
-                      <div className="rp-dispatchTrain__scene" aria-hidden="true">
-                        <span className="rp-dispatchTrain__rail rp-dispatchTrain__rail--upper" />
-                        <span className="rp-dispatchTrain__rail rp-dispatchTrain__rail--lower" />
-                        <div className="rp-dispatchTrain__vehicle">
-                          <video
-                            className="rp-dispatchTrain__video"
-                            ref={dispatchTrainVideoRef}
-                            muted
-                            playsInline
-                            preload="metadata"
-                            aria-hidden="true"
-                            onCanPlay={(event) => {
-                              event.currentTarget.closest<HTMLElement>(".rp-dispatchTrain")?.setAttribute("data-video-ready", "true");
-                            }}
-                            onError={(event) => {
-                              event.currentTarget.closest<HTMLElement>(".rp-dispatchTrain")?.setAttribute("data-video-ready", "false");
-                            }}
-                            onTimeUpdate={(event) => {
-                              if (event.currentTarget.currentTime >= DISPATCH_TRAIN_HOLD_SECONDS) {
-                                event.currentTarget.pause();
-                              }
-                            }}
-                          >
-                            <source src="/assets/video/weekend-journal-riso-train-v2.mp4" type="video/mp4" />
-                          </video>
-                          <div className="rp-dispatchTrain__fallback">
-                            {[0, 1, 2, 3].map((car) => (
-                              <div
-                                className={`rp-dispatchTrain__car${car === 1 || car === 2 ? " rp-dispatchTrain__car--desktopOnly" : ""}`}
-                                key={car}
-                              >
-                                <span className="rp-dispatchTrain__windowBand">
-                                  <i /><i /><i />
-                                </span>
-                                <span className="rp-dispatchTrain__doors" />
-                                <span className="rp-dispatchTrain__ink rp-dispatchTrain__ink--blue" />
-                                <span className="rp-dispatchTrain__ink rp-dispatchTrain__ink--orange" />
-                              </div>
-                            ))}
-                          </div>
-                          <span className="rp-dispatchTrain__placard">{t("home.dispatch.eyebrow")}</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="rp-dispatch__cover">
-                      <div>
-                        <p className="rp-kicker rp-dispatch__issueLabel">{t("home.dispatch.eyebrow")}</p>
-                        <h2 className="rp-dispatch__title" id="home-dispatch-title">{t("home.dispatch.title")}</h2>
-                        <p className="rp-dispatch__question">{t("home.dispatch.question")}</p>
-                      </div>
-                      <button
-                        type="button"
-                        className="rp-dispatch__toggle"
-                        aria-expanded={dispatchOpen}
-                        aria-controls="weekend-dispatch-panel"
-                        onClick={() => {
-                          if (!dispatchOpen) {
-                            window.clearTimeout(dispatchTrainReturnTimerRef.current);
-                            setDispatchTrainReturning(false);
-                            if (dispatchTrainVideoRef.current?.offsetWidth) {
-                              dispatchTrainVideoRef.current.pause();
-                            }
-                            setDispatchTrainDeparted(true);
-                          } else {
-                            setDispatchTrainDeparted(false);
-                            setDispatchTrainReturning(true);
-                            window.clearTimeout(dispatchTrainReturnTimerRef.current);
-                            dispatchTrainReturnTimerRef.current = window.setTimeout(() => {
-                              setDispatchTrainReturning(false);
-                            }, 520);
-                          }
-                          setDispatchOpen((current) => !current);
-                        }}
-                      >
-                        <span aria-hidden="true">+</span>
-                        {t(dispatchOpen ? "home.dispatch.closeJournal" : "home.dispatch.openJournal")}
-                      </button>
-                    </div>
-                  </div>
-                  <p className="rp-dispatchTrain__attribution">{glossTerms(t("home.dispatch.trainAttribution"), glossary)}</p>
-
-                  <div
-                    className="rp-dispatch__reveal"
-                    id="weekend-dispatch-panel"
-                    hidden={!dispatchOpen}
-                  >
-                    {dispatchOpen && <div className="rp-dispatch__grid">
-                    <div className="rp-dispatch__story">
-                      <p className="rp-dispatch__body">{t("home.dispatch.body")}</p>
-
-                      <div className="rp-dispatch__finding">
-                        <p className="rp-dispatch__label">{t("home.dispatch.findingLabel")}</p>
-                        <div>
-                          <p className="rp-dispatch__findingStat">
-                            <strong>22,937</strong>
-                            <span>{t("home.dispatch.statLabel")}</span>
-                          </p>
-                          <p>{t("home.dispatch.finding")}</p>
-                        </div>
-                      </div>
-
-                      <p className="rp-dispatch__role">{t("home.dispatch.role")}</p>
-
-                      <blockquote className="rp-dispatch__rule">
-                        <p className="rp-dispatch__label">{t("home.dispatch.ruleLabel")}</p>
-                        <p className="rp-dispatch__ruleText">{t("home.dispatch.rule")}</p>
-                        <p>{t("home.dispatch.ruleBody")}</p>
-                      </blockquote>
-
-                      <div className="rp-dispatch__actions">
-                        <a
-                          className="rp-cta"
-                          href="https://hme222.github.io/MTA_Accessibility_Trip_Planning/"
-                        >
-                          <span className="rp-ext">{t("home.dispatch.primary")}</span>
-                        </a>
-                        <div className="rp-dispatch__sources" aria-label={lang === "es" ? "Fuentes del proyecto" : "Project sources"}>
-                          <a href="https://devpost.com/software/nyc-accessible-transit-planning">
-                            <span className="rp-ext">{t("home.dispatch.devpost")}</span>
-                          </a>
-                          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7495219168997322752/">
-                            <span className="rp-ext">{t("home.dispatch.linkedin")}</span>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="rp-dispatch__visual">
-                      <a
-                        className="rp-dispatch__collage"
-                        href="https://hme222.github.io/MTA_Accessibility_Trip_Planning/"
-                        aria-label={t("home.dispatch.photoLink")}
-                      >
-                        <figure>
-                          <div className="rp-dispatch__collageField">
-                            <img
-                              className="rp-dispatch__eventPhoto"
-                              src="/assets/journal/nypl-built-for-nyc.jpg"
-                              alt=""
-                              width="800"
-                              height="450"
-                              loading="lazy"
-                            />
-                            <img
-                              className="rp-dispatch__interfaceFragment"
-                              src="/assets/journal/mta-accessible-transit-landing.png"
-                              alt=""
-                              width="1440"
-                              height="900"
-                              loading="lazy"
-                            />
-                            <span className="rp-dispatch__wash rp-dispatch__wash--blue" aria-hidden="true" />
-                            <span className="rp-dispatch__wash rp-dispatch__wash--orange" aria-hidden="true" />
-                            <span className="rp-dispatch__registration" aria-hidden="true">08 / 77,236</span>
-                          </div>
-                          <figcaption>
-                            <span>{t("home.dispatch.photoCaption")}</span>
-                            <span>{t("home.dispatch.prototypeLabel")}</span>
-                          </figcaption>
-                        </figure>
-                      </a>
-                    </div>
-                    </div>}
-                  </div>
-                </article>
-            </section>
           </HomeFold>
         </div>
       </section>

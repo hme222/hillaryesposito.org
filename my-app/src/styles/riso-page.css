@@ -4286,3 +4286,9 @@ body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-g
 @media (max-width: 899px) {
   .rp-chapters { -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); }
 }
+
+/* Copy button: icon + label; on success the check mark and "Copied" take its
+   place, in green, for a few seconds. min-width keeps it from jumping. */
+.rp-copyEmail__button { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; min-width: 6.5em; }
+.rp-copyEmail__button.is-copied { color: var(--green); border-color: var(--green); }
+.dark-mode .rp-copyEmail__button.is-copied { color: var(--ink); }

@@ -168,6 +168,12 @@ const en = {
   "home.proj.msk.title": "A filing queue replaced the paper detour",
   "home.proj.logistics.title": "Medical resupply went from months to weeks",
   "home.proj.uxwoman.title": "Six healthcare interviews, one hypothesis",
+  "home.proj.mobbin.title": "200+ screens per app, searchable by task",
+  "home.proj.mobbin.subtitle": "Mobbin · Freelance app documentation",
+  "home.riso.mobbinDesc": "I captured, sequenced and labeled screens from Kikoff, Polymarket and Discover so designers can search them by task. I did not design these products.",
+  "home.proj.hackathon.title": "A transit planner that shows whether the trip home is accessible",
+  "home.proj.hackathon.subtitle": "New York Public Library hackathon · with Jacqueline Gordon",
+  "home.riso.hackathonDesc": "Built from public MTA data: eight platforms are accessible in one direction only, which puts the return trip at risk on 22,937 of 77,236 scheduled trips. Jacqueline led the accessibility features; I led the product plan and data logic.",
   "home.proj.knowunity.title": "The student’s own words are the proof",
 
   // ── Home: contact / CTA ──
@@ -362,6 +368,12 @@ const es: Partial<Record<StringKey, string>> = {
   // médico reducido" left "médico" alone on its own line at 320, 375 and 1280.
   "home.proj.logistics.title": "El reabastecimiento médico pasó de meses a\u00a0semanas",
   "home.proj.uxwoman.title": "Seis entrevistas de salud, una hipótesis",
+  "home.proj.mobbin.title": "Más de 200 pantallas por app, buscables por tarea",
+  "home.proj.mobbin.subtitle": "Mobbin · Documentación de apps, freelance",
+  "home.riso.mobbinDesc": "Capturé, ordené y etiqueté pantallas de Kikoff, Polymarket y Discover para que otros diseñadores las encuentren por tarea. No diseñé estos productos.",
+  "home.proj.hackathon.title": "Un planificador de transporte que muestra si el viaje de regreso es accesible",
+  "home.proj.hackathon.subtitle": "Hackathon de la Biblioteca Pública de Nueva York · con Jacqueline Gordon",
+  "home.riso.hackathonDesc": "Hecho con datos públicos de MTA: ocho andenes son accesibles en una sola dirección, lo que pone en riesgo el regreso en 22,937 de 77,236 viajes programados. Jacqueline dirigió las funciones de accesibilidad; yo, el plan de producto y la lógica de datos.",
   "home.proj.knowunity.title": "Las propias palabras del estudiante son la prueba",
 
   // ── Home: contact / CTA ──
