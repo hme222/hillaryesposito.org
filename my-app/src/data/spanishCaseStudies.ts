@@ -72,7 +72,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
     },
   ],
   otherProjects: [
-    { title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas", desc: "MSK · Seis años rediseñando flujos clínicos para trabajo que alcanzaba a más de 21,000 clínicos y personal administrativo.", path: "/case-study/msk" },
+    { title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas", desc: "MSK · Propuse la cola de archivo; TI y UX la construyeron después de que cambié de puesto.", path: "/case-study/msk" },
     { title: "Más de 200 pantallas por app, buscables por tarea", desc: "Mobbin · Más de 200 pantallas por app, documentadas como referencias paso a paso.", path: "/case-study/mobbin" },
     { title: "Las propias palabras del estudiante son la prueba", desc: "Knowunity · Prototipo de recuerdo activo por voz, de un sprint de diseño; recuerdo simulado.", path: "/case-study/knowunity" },
   ],
@@ -288,7 +288,7 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
   ],
   otherProjects: [
     { title: "Doce funciones se\u00a0convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
-    { title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas", desc: "MSK · Seis años rediseñando flujos clínicos para trabajo que alcanzaba a más de 21,000 clínicos y personal administrativo.", path: "/case-study/msk" },
+    { title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas", desc: "MSK · Propuse la cola de archivo; TI y UX la construyeron después de que cambié de puesto.", path: "/case-study/msk" },
   ],
   close: {
     title: "Después de 200 pantallas por app, noto cómo un flujo se gana la confianza.",
@@ -376,7 +376,7 @@ export const LOGISTICS_ES: SpanishCaseStudyData = {
     },
   ],
   otherProjects: [
-    { title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas", desc: "MSK · Seis años rediseñando flujos clínicos para trabajo que alcanzaba a más de 21,000 clínicos y personal administrativo.", path: "/case-study/msk" },
+    { title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas", desc: "MSK · Propuse la cola de archivo; TI y UX la construyeron después de que cambié de puesto.", path: "/case-study/msk" },
     { title: "Doce funciones se\u00a0convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
   ],
   close: {

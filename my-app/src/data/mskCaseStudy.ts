@@ -438,7 +438,7 @@ const en: MskCopy = {
 
   sustainment: {
     kicker: "The real test came later",
-    title: "I left before launch. Here’s what happened next.",
+    title: "I changed roles before launch. Here’s what happened next.",
     lede:
       "I handed the workflow to IT and UX, who built it. The button was added to the production system, and I saw it while training new employees.",
     // Claim audit 2026-10-13: the lanes used to say "system upgrade" ×2,

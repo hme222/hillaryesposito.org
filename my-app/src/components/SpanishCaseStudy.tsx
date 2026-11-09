@@ -139,7 +139,6 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
           key={section.title}
         >
           <div className="rp-wrap">
-            <p className="rp-kicker">{section.eyebrow}</p>
             <h2 className="rp-title">{section.title}</h2>
             {section.body.map((paragraph) => (
               <p key={paragraph} className="rp-lede">{paragraph}</p>
@@ -158,7 +157,6 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
       {data.otherProjects && data.otherProjects.length > 0 && (
         <section className="rp-section rp-section--alt" aria-labelledby="otros-proyectos">
           <div className="rp-wrap">
-            <p className="rp-kicker">Más trabajo</p>
             <h2 className="rp-title" id="otros-proyectos">Otros proyectos</h2>
             <div className="rp-worklist">
               {data.otherProjects.map((project) => (
@@ -177,7 +175,6 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
 
       <section className="rp-section">
         <div className="rp-wrap rp-close">
-          <p className="rp-kicker">Contacto</p>
           <h2>{data.close?.title ?? "¿Quiere hablar sobre este tipo de trabajo?"}</h2>
           <p>{data.close?.body ?? "Puedo explicar el proceso, las decisiones y lo que aprendí con más detalle."}</p>
           <div className="rp-hero__ctas">

@@ -340,7 +340,7 @@ export default function FlagshipMSK() {
 
       <section className="rp-section" id="msk-sustainment" data-language-anchor="msk-sustainment">
         <div className="rp-wrap">
-          <h2 className="rp-title">I left before launch. Here’s what happened next.</h2>
+          <h2 className="rp-title">I changed roles before launch. Here’s what happened next.</h2>
           {/* Added 2026-10-22 (portfolio review, UXfolio 2026 ch. 4.3): the
               outcome is owner-reported and no post-launch measurement is
               known, so the page says what would have shown it. Hillary

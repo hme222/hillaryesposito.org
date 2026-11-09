@@ -182,7 +182,7 @@ export default function FlagshipMobbin() {
 
       <section className="rp-section">
         <div className="rp-wrap rp-close">
-          <h2>After 200 screens per app, I notice how a flow earns trust.</h2>
+          <h2>After 200+ screens per app, I notice how a flow earns trust.</h2>
           <p>Kikoff shows proof after each action, Polymarket shows risk before you commit, Discover makes the fine print findable.</p>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
           <CopyEmail />

@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import type { Lang } from "../i18n/strings";
 
 const BASE = "Hillary Esposito";
-const DEFAULT_TITLE = `${BASE} | UX designer`;
-const DEFAULT_TITLE_ES = `${BASE} | Diseñadora UX`;
+const DEFAULT_TITLE = `${BASE} | Healthcare Product Designer`;
+const DEFAULT_TITLE_ES = `${BASE} | Diseñadora de productos de salud`;
 const NOT_FOUND_PAGES = new Set(["Page not found", "Página no encontrada"]);
 const DEFAULT_DESCRIPTION =
-  "Healthcare Product Designer with six years in cancer-care operations and 13+ years of Army service; initiated a clinical workflow that contributed to a 20% organization-wide EMR cost reduction.";
+  "Healthcare Product Designer with six years in cancer-care operations and 13+ years of Army service; proposed a digital filing workflow at Memorial Sloan Kettering that IT and UX later built.";
 const ORIGIN = "https://hillaryesposito.org";
 
 const ROUTE_META: Array<{ match: RegExp; description: string; image: string }> = [
@@ -19,13 +19,13 @@ const ROUTE_META: Array<{ match: RegExp; description: string; image: string }> =
   {
     match: /\/case-study\/msk$/,
     description:
-      "How a paper-to-digital workflow initiated at Memorial Sloan Kettering later contributed inside a larger initiative that reduced organization-wide EMR costs by 20%.",
+      "How a filing queue I proposed at Memorial Sloan Kettering replaced a four-department paper detour. IT and UX built it after I changed roles.",
     image: "/assets/msk/mskcc-map.jpg",
   },
   {
     match: /\/case-study\/mobbin$/,
     description:
-      "A pattern study documenting more than 200 screens across three finance apps to understand onboarding, discovery, trust, and interaction craft.",
+      "Freelance app-capture work for Mobbin: 200+ screens per app across Kikoff, Polymarket and Discover, sequenced and labeled so designers can search them by task.",
     image: "/assets/mobbin/discover.jpg",
   },
   {
@@ -43,7 +43,7 @@ const ROUTE_META: Array<{ match: RegExp; description: string; image: string }> =
   {
     match: /\/about$/,
     description:
-      "About Hillary Esposito: a Healthcare Product Designer combining clinical workflow knowledge, service design, research rigor, and responsible AI judgment.",
+      "About Hillary Esposito, Healthcare Product Designer: six years in cancer-care operations, 13+ years of Army service, and how she works.",
     image: "/assets/about/now.jpg",
   },
 ];

@@ -58,8 +58,8 @@ const CHAPTERS: AboutChapter[] = [
       { value: "7", label: "aid stations" },
       // The unit rides in the label: "1–2 wk" / "1–2 sem." did not fit the
       // five-column ledger at 1440.
-      { value: "1–\u20602", label: "weeks for medical resupply, down from 1–\u20602 months" },
-      { value: "60%", label: "lower spending" },
+      { value: "1–\u20602", label: "weeks for medical resupply, down from 1–\u20602 months (reported)" },
+      { value: "60%", label: "lower spending (reported)" },
     ],
     caseLink: { path: "/case-study/logistics", title: "Medical logistics, Iraq", source: "Review the case study" },
   },
@@ -94,8 +94,8 @@ const CHAPTERS_ES: AboutChapter[] = [
       { value: "5,000+", label: "soldados atendidos" },
       { value: "$2M", label: "en suministro médico" },
       { value: "7", label: "estaciones de ayuda" },
-      { value: "1–\u20602", label: "semanas de reabastecimiento médico, antes 1–\u20602 meses" },
-      { value: "60%", label: "menos gasto" },
+      { value: "1–\u20602", label: "semanas de reabastecimiento médico, antes 1–\u20602 meses (reportado)" },
+      { value: "60%", label: "menos gasto (reportado)" },
     ],
     caseLink: { path: "/case-study/logistics", title: "Logística médica, Irak", source: "Ver el estudio de caso" },
   },
@@ -141,7 +141,7 @@ export default function About() {
         <div className="rp-hero__content">
           <div className="rp-clearing">
             <h1 className="rp-h1">
-              {isSpanish ? "Diseño productos de salud donde cada transferencia\u00a0importa." : "I design healthcare products where every handoff\u00a0matters."}
+              {isSpanish ? "Diseño flujos antes que\u00a0pantallas." : "I design workflows before\u00a0screens."}
             </h1>
             <p className="rp-sub">
               {isSpanish ? "Seis años en operaciones de atención oncológica y más de 13 años de servicio en el Ejército, ahora en diseño de productos de salud: flujos clínicos y herramientas internas para el momento en que un paso equivocado tiene un costo." : "Six years in cancer-care operations and 13+ years of Army service, now in healthcare product design: clinical workflows and internal tools for the moment a wrong step has a cost."}

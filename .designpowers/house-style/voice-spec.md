@@ -64,18 +64,18 @@ GOOD: Same treatment. Replayed without another run.
 Proof BAD: Strong systems thinker and cross-functional collaborator
 Proof GOOD: A workflow map gave clinical, IT, and operations one system failure to resolve together.
 
-## Weekend Dispatch copy
+## Hackathon project copy (formerly "Weekend Dispatch")
 
-- Lead with the rider's unresolved return trip, not the hackathon format.
-- Keep ownership literal: Jacqueline Gordon led accessibility features; Hillary led product strategy, data logic, and AI-assisted coded prototyping.
-- Pair the 22,937 figure with its scope: scheduled trips affected by eight one-direction accessibility gaps.
-- Use `Explore the working case study`, not `Learn more` or `Check it out`.
+Updated 2026-11-09 at Hillary's direction (2026-11-06): say plainly that it is a hackathon project, no jargon.
+
+- Open by naming it a hackathon project at the New York Public Library, built with Jacqueline Gordon.
+- Keep ownership literal: Jacqueline led the accessibility features; Hillary led the product plan and the data logic, and built the prototype with AI help.
+- Pair the 22,937 figure with its scope: scheduled trips whose return trip is at risk because eight platforms are accessible in one direction only.
+- Buttons say what happens: `Try the prototype`, `Read the project`.
 
 Headline BAD: A fun weekend using AI for civic tech
-Headline GOOD: Can a rider know—not guess—whether the trip home is accessible?
-
 Attribution BAD: Official MTA accessibility planner
-Attribution GOOD: Built with MTA Open Data · Independent prototype
+Attribution GOOD: Built with public MTA data · Hackathon prototype
 
 ## Visual evidence compression copy
 
