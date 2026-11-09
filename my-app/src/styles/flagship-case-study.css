@@ -2,59 +2,17 @@
    Grove supplies the proven composition; project themes change semantic tokens,
    artifacts, and pacing without cloning the botanical identity. */
 
+/* One skin (2026-11-09): every case uses the base riso palette; the MSK and
+   Mobbin brand-mirror palettes were removed in the consistency pass. */
 .flagship-page {
   --fp-deep: #19321f;
   --fp-deep-2: #102115;
   --fp-light: var(--ink-on-dark);
 }
 
-.flagship-page--msk {
-  --paper: #e9ede7;
-  --paper-2: #dce4dd;
-  --ink: #1c2925;
-  --ink-2: #40534d;
-  --muted: #536760;
-  --hair: #bdcac2;
-  --green: #315f55;
-  --coral: #a52346;
-  --fp-deep: #183a35;
-  --fp-deep-2: #0e2824;
-}
 
-.flagship-page--mobbin {
-  --paper: #eee9df;
-  --paper-2: #e3ddd1;
-  --ink: #242522;
-  --ink-2: #4e514a;
-  --muted: #5d615a;
-  --hair: #c9c4b8;
-  --green: #4c6055;
-  --coral: #ad3e2e;
-  --fp-deep: #262925;
-  --fp-deep-2: #161815;
-}
 
-.dark-mode .flagship-page--msk {
-  --paper: #111a18;
-  --paper-2: #17231f;
-  --ink: #edf1ec;
-  --ink-2: #c0cbc4;
-  --muted: #94a59d;
-  --hair: #34463f;
-  --green: #8ab6aa;
-  --coral: #ff7d67;
-}
 
-.dark-mode .flagship-page--mobbin {
-  --paper: #171814;
-  --paper-2: #20221d;
-  --ink: #f0eee7;
-  --ink-2: #c8c5ba;
-  --muted: #9f9c92;
-  --hair: #41423a;
-  --green: #9db7a7;
-  --coral: #ff7865;
-}
 
 .flagship-page .rp-section[id],
 .flagship-page .rp-hero[id],

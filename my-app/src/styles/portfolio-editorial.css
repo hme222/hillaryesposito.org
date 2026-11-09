@@ -17,14 +17,7 @@
    Home is the cool, systematic product index; About reads as a warmer,
    more personal profile journal. Same masthead, type, and vocabulary —
    different paper stock and a portrait-led hero. */
-.about-page.riso-page {
-  --paper: #ece6d6;   /* warm cream instead of Home's cool eucalyptus */
-  --paper-2: #e4dcc8;
-}
-.dark-mode .about-page.riso-page {
-  --paper: #17150f;   /* warmer near-black than Home's cool #14150e */
-  --paper-2: #1d1a12;
-}
+/* About shares the site paper since the 2026-11-09 consistency pass. */
 
 /* Portrait-led profile masthead: photo leads on the left, statement on the
    right, no center divider, calmer collage — the opposite emphasis of Home. */
