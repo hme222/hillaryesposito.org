@@ -92,7 +92,7 @@ const en = {
   "home.riso.logisticsDesc":
     "I planned and tracked a warehouse relocation that took medical resupply from 1–2 months to 1–2 weeks, then built shared order tracking for seven aid stations.",
   "home.riso.uxwomanDesc":
-    "I ran six healthcare interviews and one adjacent HR interview: staff described unclear ownership of next steps. My hypothesis, untested: the people involved can't see who acts next. No patients interviewed; five pretotypes designed, none run. Research phase.",
+    "Six interviews with clinic and insurer staff led to one public New York Medicaid letter. I built a guide that starts from the letter in your hand. It is untested, and no patient was interviewed.",
   "home.riso.knowunityDesc":
     "Students say a definition out loud and get their own words quoted back as proof. Selected for the Yummy Labs AI Design Sprint with Knowunity: solo, 2.5 weeks, on their brief and kit. Recall mocked, not shipped.",
   "home.riso.groveAlt": "Grove daily care screen showing one clear plant-care task and overdue plants first",
@@ -162,12 +162,12 @@ const en = {
   "home.proj.grove.subtitle": "Grove · Product design · Research to scope",
   "home.proj.msk.subtitle": "Memorial Sloan Kettering · Workflow redesign",
   "home.proj.logistics.subtitle": "Army medical logistics · Service Design",
-  "home.proj.uxwoman.subtitle": "UX Woman · Healthcare research · Research phase",
+  "home.proj.uxwoman.subtitle": "UX Woman · Healthcare research · Medicaid letter guide",
   "home.proj.knowunity.subtitle": "Knowunity · Design sprint · Interactive mobile prototype",
   "home.proj.grove.title": "Twelve features became three",
   "home.proj.msk.title": "A filing queue replaced the paper detour",
   "home.proj.logistics.title": "Medical resupply went from months to weeks",
-  "home.proj.uxwoman.title": "Six healthcare interviews, one hypothesis",
+  "home.proj.uxwoman.title": "A letter with a deadline and no clear next step",
   "home.proj.mobbin.title": "200+ screens per app, searchable by task",
   "home.proj.mobbin.subtitle": "Mobbin · Freelance app documentation",
   "home.riso.mobbinDesc": "I captured, sequenced and labeled screens from Kikoff, Polymarket and Discover so designers can search them by task. I did not design these products.",
@@ -289,7 +289,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.logisticsDesc":
     "Planifiqué y supervisé una reubicación de almacén que llevó el reabastecimiento médico de 1–2 meses a 1–2 semanas, y luego creé un seguimiento compartido para siete puestos.",
   "home.riso.uxwomanDesc":
-    "Hice seis entrevistas de salud y una adyacente de RR. HH.: el personal describió una titularidad poco clara de los siguientes pasos. Mi hipótesis, sin probar: quienes participan no ven quién actúa después. Sin entrevistas a pacientes; cinco pretotipos diseñados, ninguno ejecutado. Fase de investigación.",
+    "Seis entrevistas con personal de clínicas y aseguradoras me llevaron a una carta pública de Medicaid de Nueva York. Construí una guía que empieza por la carta que tienes en la mano. No está probada y no se entrevistó a ningún paciente.",
   "home.riso.knowunityDesc":
     "Los estudiantes dicen una definición en voz alta y reciben sus propias palabras citadas como prueba. Seleccionada para el Yummy Labs AI Design Sprint con Knowunity: individual, 2.5 semanas, con su brief y su kit. Recuerdo simulado, no publicado.",
   "home.riso.groveAlt": "Pantalla de cuidado diario de Grove con una tarea clara y las plantas atrasadas primero",
@@ -358,7 +358,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.proj.grove.subtitle": "Grove · Diseño de producto · De la investigación al alcance",
   "home.proj.msk.subtitle": "Memorial Sloan Kettering · Rediseño de flujos",
   "home.proj.logistics.subtitle": "Logística médica del Ejército · Diseño de servicios",
-  "home.proj.uxwoman.subtitle": "UX Woman · Investigación en salud · Fase de investigación",
+  "home.proj.uxwoman.subtitle": "UX Woman · Investigación en salud · Guía para una carta de Medicaid",
   "home.proj.knowunity.subtitle": "Knowunity · Sprint de diseño · Prototipo móvil interactivo",
   // No-break space keeps "se convirtieron" together, so the title breaks after
   // "funciones" instead of stranding "se" at the end of line one.
@@ -367,7 +367,7 @@ const es: Partial<Record<StringKey, string>> = {
   // Same wording as the Spanish case-study title. "Tiempo de reabastecimiento
   // médico reducido" left "médico" alone on its own line at 320, 375 and 1280.
   "home.proj.logistics.title": "El reabastecimiento médico pasó de meses a\u00a0semanas",
-  "home.proj.uxwoman.title": "Seis entrevistas de salud, una hipótesis",
+  "home.proj.uxwoman.title": "Una carta con un plazo y sin un siguiente paso claro",
   "home.proj.mobbin.title": "Más de 200 pantallas por app, buscables por tarea",
   "home.proj.mobbin.subtitle": "Mobbin · Documentación de apps, freelance",
   "home.riso.mobbinDesc": "Capturé, ordené y etiqueté pantallas de Kikoff, Polymarket y Discover para que otros diseñadores las encuentren por tarea. No diseñé estos productos.",

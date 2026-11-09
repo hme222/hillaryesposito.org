@@ -434,19 +434,22 @@ describe("flagship case-study accessibility", () => {
     await act(async () => {
       root.render(<FlagshipUxWoman />);
     });
-    expect(container.querySelector("h1")?.textContent).toBe("Six healthcare interviews suggest one hypothesis to\u00a0test.");
+    expect(container.querySelector("h1")?.textContent).toBe("A letter with a deadline and no clear next\u00a0step.");
     expect(container.querySelector(".rp-heroEvidence dt")?.textContent).toBe("Role");
-    expect(container.querySelector(".rp-heroEvidence dd")?.textContent).toBe("Sole researcher · UX Woman UX Design Accelerator · 2026");
-    ["uxwoman-start", "uxwoman-problem", "uxwoman-research", "uxwoman-findings", "uxwoman-pretotypes", "uxwoman-next"].forEach((id) => {
+    ["uxwoman-start", "uxwoman-problem", "uxwoman-research", "uxwoman-findings", "uxwoman-guide", "uxwoman-next"].forEach((id) => {
       expect(container.querySelector(`#${id}`)).not.toBeNull();
     });
-    expect(container.querySelectorAll(".fp-findings li")).toHaveLength(5);
-    expect(container.querySelectorAll(".fp-pretotypes li")).toHaveLength(5);
+    expect(container.querySelectorAll(".fp-themes li")).toHaveLength(6);
+    expect(container.querySelectorAll(".fp-hypotheses article")).toHaveLength(2);
+    expect(container.querySelectorAll(".fp-guideScreens img")).toHaveLength(3);
     const text = container.textContent || "";
-    ["No patient interview stream", "not healthcare validation", "hypothesis", "Five pretotypes designed. None run.", "Secondary research", "UX Woman is a 7-month, mentor-led UX design accelerator.", "Interviews with healthcare professionals and stakeholders.", "Three findings, each rated for confidence.", "Human resources: the team that handles hiring, pay, and staff policy.", "protected health information (PHI)", "artificial intelligence (AI)"].forEach((phrase) => {
+    // The limits stay on the page: no patient interviews, untested, and the
+    // projection is labeled as a different measure from the observed count.
+    ["It is untested, and no patient was interviewed.", "UX Woman is a 7-month, mentor-led UX design accelerator.", "A projection and an observed count are different measures.", "Design concept, not an official notice.", "Built, not yet tested."].forEach((phrase) => {
       expect(text).toContain(phrase);
     });
-    ["UserTesting", "real cases", "Five signals"].forEach((phrase) => expect(text).not.toContain(phrase));
+    // Dropped at Hillary's direction (2026-11-09): the adjacent HR interview and the five pretotypes.
+    ["pretotype", "HR interview", "UserTesting"].forEach((phrase) => expect(text).not.toContain(phrase));
     ["Mario", "Shawn", "Michaela", "Remy", "Saranya", "Natasha", "Mount Sinai", "leverage", "seamless"].forEach((word) => {
       expect(text).not.toContain(word);
     });
@@ -459,11 +462,11 @@ describe("flagship case-study accessibility", () => {
     });
     expect(container.querySelector(".rp-breadcrumb")).toBeNull();
     expect(container.querySelector("#es-uxwoman-findings")).not.toBeNull();
-    expect(container.querySelector("h1")?.textContent).toBe("Seis entrevistas de salud sugieren una hipótesis por\u00a0probar.");
+    expect(container.querySelector("#es-uxwoman-guide")).not.toBeNull();
+    expect(container.querySelector("h1")?.textContent).toBe("Una carta con un plazo y sin un siguiente paso\u00a0claro.");
     expect(container.textContent).toContain("UX Woman es una aceleradora de diseño UX de 7 meses, guiada por mentores.");
-    ["UserTesting", "casos reales", "señales"].forEach((phrase) => expect(container.textContent).not.toContain(phrase));
-    expect(container.textContent).toContain("No hay un flujo de entrevistas con pacientes");
-    expect(container.textContent).toContain("ninguno ejecutado");
+    expect(container.textContent).toContain("no se entrevistó a ningún paciente");
+    ["UserTesting", "pretotipo"].forEach((phrase) => expect(container.textContent).not.toContain(phrase));
   });
 
   it("sends UX Woman's next-case-study band to supporting documentation", async () => {

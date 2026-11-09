@@ -5,12 +5,9 @@ import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/C
 import ReadingProgress from "../../components/flagship/ReadingProgress";
 import ShareCaseStudy from "../../components/flagship/ShareCaseStudy";
 import EvidenceField from "../../components/flagship/EvidenceField";
-import ConfidenceMap, { ConfidenceRow } from "../../components/flagship/ConfidenceMap";
-import BuildGates from "../../components/flagship/BuildGates";
 import CartoField from "../../components/riso/CartoField";
 import RisoDefs from "../../components/riso/RisoDefs";
 import SpanishCaseStudy from "../../components/SpanishCaseStudy";
-import Term from "../../components/Term";
 import { UXWOMAN_ES } from "../../data/spanishCaseStudies";
 import { UXWOMAN_LEDGER } from "../../data/uxWomanCaseStudy";
 import useFlagshipReveal from "../../hooks/useFlagshipReveal";
@@ -21,84 +18,44 @@ import CopyEmail from "../../components/CopyEmail";
 import CaseMore from "../../components/CaseMore";
 
 /**
- * UX Woman — healthcare research case study, research phase.
+ * UX Woman — healthcare research case study (rewritten 2026-11-09 from the
+ * midterm deck, "A Guide For A Medicaid Letter: Two Hypotheses", 22 slides).
  *
- * Story file: design-docs/case-study-stories/ux-woman.md (what UX Woman is,
- * Hillary's role, and the page's research facts, 2026-10-15).
- *
- * Source of truth: the UX Woman research folder (overall interview patterns
- * 2026-10-13, five pretotypes 2026-10-11, large-hospital AI gap scan
- * 2026-09-24). Interviewees appear by role only; names stay out of the repo.
- *
- * Deliberately absent: any outcome, time saving, or patient claim. There is no
- * patient interview stream, no pretotype has been run, and the HR interview is
- * adjacent evidence, not healthcare validation. The page says so wherever a
- * finding appears. Spanish lives in spanishCaseStudies.ts (UXWOMAN_ES) and
- * must carry the same facts.
+ * Every fact on this page is on a slide: 6 interviews with clinic and insurer
+ * staff, 0 patient interviews, 6 public sources; six themes (two added after
+ * an AI cross-check); the 475,000+ projection (NY Department of Health, "at
+ * least") and the 18,164 observed count (Arkansas, 2018), labeled as different
+ * measures; two hypotheses; the MVP 1 guide screens; two planned tests; three
+ * versions, each gated by a test. Hillary's direction (2026-11-09): drop the
+ * adjacent HR interview and the five pretotypes. Interviewees appear by role
+ * only. Spanish lives in spanishCaseStudies.ts (UXWOMAN_ES) and carries the
+ * same facts.
  */
 
 const CHAPTERS: CaseStudyChapter[] = [
   { id: "uxwoman-start", label: "Start" },
   { id: "uxwoman-problem", label: "Problem" },
   { id: "uxwoman-research", label: "Research" },
-  { id: "uxwoman-findings", label: "Findings" },
-  { id: "uxwoman-pretotypes", label: "Pretotypes" },
+  { id: "uxwoman-findings", label: "Hypotheses" },
+  { id: "uxwoman-guide", label: "Guide" },
   { id: "uxwoman-next", label: "Next step" },
 ];
 
-// Levels are the ones each finding's own confidence line already states.
-const CONFIDENCE_ROWS: ConfidenceRow[] = [
-  { finding: "Work crosses roles and organizations by hand", observed: { level: "Moderate", claim: "that it matters in several workflows" }, limit: { level: "Low", claim: "that it is one shared failure" } },
-  { finding: "Information has to fit the case", observed: { level: "Moderate", claim: "as a cross-case observation" } },
-  { finding: "Coverage barriers may interrupt care", observed: { level: "Moderate", claim: "that people in several roles see the risk" }, limit: { level: "Low", claim: "on how common it is and on patient experience" } },
-  { finding: "People keep the judgment and recovery work", observed: { level: "High", claim: "that human work is present" }, limit: { level: "Low", claim: "that it is an unmet need, or that automation answers it" } },
-  { finding: "AI experience varies", observed: { level: "High", claim: "that experience differs" } },
+const THEMES: { title: string; line: string; crossCheck?: boolean }[] = [
+  { title: "Who owns it?", line: "No one sees where a request sits." },
+  { title: "Real-life barriers", line: "Housing, transport and caregivers change the plan." },
+  { title: "Chasing by hand", line: "Phone, fax, many clicks." },
+  { title: "AI helps, a human checks", line: "Staff check what the AI produces." },
+  { title: "Proving the treatment is needed", line: "Denials turn on paperwork.", crossCheck: true },
+  { title: "Insurer rules are unclear", line: "Rules differ; reasons are hidden.", crossCheck: true },
 ];
 
-// From the project's own decision gate (handoff, 2026-10-21). None has been met:
-// the case reconstruction study has been planned, not run.
-const BUILD_GATES = [
-  { text: "A patient or caregiver describes a recent coverage or paperwork event, and the care problem that followed it.", status: "Not yet shown" },
-  { text: "The people who handle that event confirm it from their side of the work.", status: "Not yet shown" },
-  { text: "Someone already owns the step, and I can name what a new tool would replace.", status: "Not yet shown" },
-  { text: "There is an outcome I can measure safely.", status: "Not yet shown" },
-  { text: "Privacy is settled: fictional or authorized de-identified cases only.", status: "Not yet shown" },
-];
+const READER_NEEDS = ["Where it stands", "What is missing", "Who acts next", "The date", "A person to call", "What counts as proof"];
 
-const FINDINGS: { title: string; body: React.ReactNode; confidence: string }[] = [
-  {
-    title: "Work crosses roles and organizations by hand",
-    body: "Messages reached the wrong role. Clinical teams were paged. Clinic, pharmacy, and insurer called each other again.",
-    confidence: "Moderate that it matters in several workflows. Low that it is one shared failure.",
-  },
-  {
-    title: "Information has to fit the case",
-    body: "Staff reconciled records, payer criteria, and templates for one patient at a time.",
-    confidence: "Moderate as a cross-case observation.",
-  },
-  {
-    title: "Coverage barriers may interrupt care",
-    body: "Surgery readiness, discharge, and medication access came up. Staff and a former health-plan employee reported these; no patient outcome was observed.",
-    confidence: "Moderate that people in several roles see the risk. Low on how common it is and on patient experience.",
-  },
-  {
-    title: "People keep the judgment and recovery work",
-    body: "Verifying, escalating, explaining, and reassuring were done by people, and the roles differ.",
-    confidence: "High that human work is present. Low that it is an unmet need, or that automation answers it.",
-  },
-  {
-    title: "AI experience varies",
-    body: <>One person found <Term def="Artificial intelligence: software that drafts, sorts, or predicts from data.">AI</Term>-assisted drafting easier. Others had little or no AI in the workflow.</>,
-    confidence: "High that experience differs. AI is a possible tool for one task, not the shared problem.",
-  },
-];
-
-const PRETOTYPES = [
-  { title: "“What does this status mean?” cards", asks: "Can a member tell a recommendation from an approval, and see their own next step?" },
-  { title: "Coverage-in-context navigator", asks: "Does guidance at the moment of one coverage task beat a general insurance library?" },
-  { title: "Missing-information handoff receipt", asks: "Does naming the missing item and who owes it reduce ambiguity between roles?" },
-  { title: "Letter-of-medical-necessity evidence sheet", asks: "Does a source-and-reviewer checklist help staff prepare or check a letter?" },
-  { title: "Human navigator\u00a0session", asks: "When information is confusing or sensitive, does a person solve something self-service doesn't?" },
+const GUIDE_SCREENS = [
+  { src: "/assets/uxwoman/guide-1.webp", cap: "Home", alt: "Guide home screen: Understand the Medicaid work requirement. Options: see if it may apply to me, dates, I got a letter. A Talk to a person button." },
+  { src: "/assets/uxwoman/guide-2.webp", cap: "Does it apply? Question 1 of 4", alt: "Question 1 of 4: Do you have Medicaid in New York? Options: yes, not yet, no, I do not know." },
+  { src: "/assets/uxwoman/guide-3.webp", cap: "Your renewal date", alt: "Your renewal date: starts Jan 1, 2027, and your own date decides. A date field and a note that a renewal on or before Feb 1, 2027 does not need it." },
 ];
 
 export default function FlagshipUxWoman() {
@@ -133,14 +90,14 @@ export default function FlagshipUxWoman() {
         <div className="rp-grain" />
         <div className="rp-hero__content">
           <div className="rp-clearing">
-            <h1 className="rp-h1">Six healthcare interviews suggest one hypothesis to{"\u00a0"}test.</h1>
-            <span className="rp-eyebrow">UX Woman · Healthcare research · Research phase</span>
+            <h1 className="rp-h1">A letter with a deadline and no clear next{"\u00a0"}step.</h1>
+            <span className="rp-eyebrow">UX Woman · Healthcare research · Medicaid letter guide</span>
             <p className="rp-sub">
-              UX Woman is a 7-month, mentor-led UX design accelerator. In six healthcare interviews, staff described unclear ownership of next steps, through different mechanisms. My <b>hypothesis</b>: when care waits on an administrative step, the people involved can’t see who acts next. It is untested, and no patient was interviewed.
+              UX Woman is a 7-month, mentor-led UX design accelerator. I interviewed six clinic and insurer staff, then narrowed the work to one public New York Medicaid sample letter about the new work requirements. I built a guide that starts from the letter in your hand. <b>It is untested, and no patient was interviewed.</b>
             </p>
             <dl className="rp-heroEvidence" aria-label="UX Woman case evidence at a glance">
-              <div><dt>Role</dt><dd>Sole researcher · UX Woman UX Design Accelerator · 2026</dd></div>
-              <div><dt>My contribution</dt><dd>Interview plans · recruitment screener · synthesis · five pretotype designs</dd></div>
+              <div><dt>Role</dt><dd>Sole researcher and designer · UX Woman UX Design Accelerator · 2026</dd></div>
+              <div><dt>I made</dt><dd>Affinity map · persona · journey maps · user flows · wireframes · hi-fi prototype</dd></div>
             </dl>
           </div>
         </div>
@@ -150,134 +107,110 @@ export default function FlagshipUxWoman() {
               <div key={row.en}><dt>{row.en}</dt><dd>{row.n}</dd></div>
             ))}
           </dl>
-          <div className="fp-artifactLabel"><span>Research phase · 2026</span><b>Interviews and tests so far</b></div>
+          <div className="fp-artifactLabel"><span>Midterm · 2026</span><b>Research and build so far</b></div>
         </div>
       </header>
 
-      <section className="rp-section rp-override" id="uxwoman-problem" data-language-anchor="uxwoman-problem" data-evidence="true">
+      <section className="rp-section" id="uxwoman-problem" data-language-anchor="uxwoman-problem" data-evidence="true">
         <div className="rp-wrap">
-          <h2 className="rp-title">Staff described not knowing who acts next.</h2>
-          <CaseMore label="What staff described">
-            <p className="rp-lede">When care waits on coverage, paperwork, or a missing document, staff in different roles described unclear ownership of the next step.</p>
-            <p className="rp-body">The mechanisms differed: a misrouted message, a utilization-review page, an authorization queue members could not see (secondhand, from a former health-plan employee). No patient was interviewed.</p>
+          <h2 className="rp-title">Coverage can be lost to a missed response.</h2>
+          <dl className="fp-letterStats rp-reveal">
+            <div>
+              <dt>Projected, New York</dt>
+              <dd><b>475,000+</b> could lose coverage, per the New York Department of Health (“at least”)</dd>
+            </div>
+            <div>
+              <dt>Already seen, Arkansas 2018</dt>
+              <dd><b>18,164</b> lost coverage under a work requirement</dd>
+            </div>
+          </dl>
+          <p className="fp-letterStats__note">Public data. A projection and an observed count are different measures.</p>
+          <CaseMore label="The question I took to the letter">
+            <p className="rp-lede">Does the letter say what applies, by when, what to do, and what counts as proof?</p>
           </CaseMore>
         </div>
       </section>
 
       <section className="rp-section" id="uxwoman-research" data-language-anchor="uxwoman-research" data-evidence="true">
         <div className="rp-wrap">
-          <h2 className="rp-title">Six healthcare interviews, one per role.</h2>
-          <p className="rp-lede">Each interview counts once. Interviews with healthcare professionals and stakeholders.</p>
-          <p className="rp-body">Six roles described healthcare workflows. Participants are anonymized, no protected health information was collected, and there is no dedicated patient interview stream.</p>
+          <h2 className="rp-title">Six interviews, six themes.</h2>
+          <ol className="fp-themes rp-reveal">
+            {THEMES.map((theme) => (
+              <li key={theme.title}>
+                <h3>{theme.title}</h3>
+                <p>{theme.line}</p>
+                {theme.crossCheck ? <span className="fp-themes__tag">Added after an AI cross-check</span> : null}
+              </li>
+            ))}
+          </ol>
+          <CaseMore label="Who I interviewed, and what I did not hear">
+            <p>Six interviews with clinic and insurer staff, one affinity board per interview, plus six publicly available sources. No patient was interviewed. Participants are anonymized and no protected health information was collected.</p>
+            <p>The patient journey map was built from public rule text and one sample notice, so its feelings and opportunities are hypotheses. The clinic staff journey map is a composite of roles; two of the people behind it work outside New York.</p>
+          </CaseMore>
         </div>
       </section>
 
       <section className="rp-section" id="uxwoman-findings" data-language-anchor="uxwoman-findings" data-evidence="true">
         <div className="rp-wrap">
-          <h2 className="rp-title">Three findings, each rated for confidence.</h2>
-          <p className="rp-lede">A rating says how directly the accounts support a claim, not how many people said it.</p>
-          <ConfidenceMap caption="How strongly the interviews support each finding" rows={CONFIDENCE_ROWS} />
-          <CaseMore label="What each finding is based on">
-            <ol className="fp-findings rp-reveal">
-              {FINDINGS.slice(0, 3).map((finding) => (
-                <li key={finding.title}>
-                  <h3>{finding.title}</h3>
-                  <p>{finding.body}</p>
-                  <p className="fp-findings__confidence"><span>Confidence</span> {finding.confidence}</p>
-                </li>
-              ))}
-            </ol>
+          <h2 className="rp-title">Two hypotheses about one letter.</h2>
+          <div className="fp-hypotheses rp-reveal">
+            <article>
+              <span>Hypothesis 1 · the letter</span>
+              <p>The public sample leaves out, buries or blurs at least one thing a reader needs.</p>
+              <b>Test: audit the letter</b>
+            </article>
+            <article>
+              <span>Hypothesis 2 · the reader</span>
+              <p>Readers cannot say what applies, by when, or what counts as proof.</p>
+              <b>Test: readers answer</b>
+            </article>
+          </div>
+          <h3 className="fp-readerNeeds__title">Six things a reader needs</h3>
+          <ul className="fp-readerNeeds" aria-label="Six things a reader needs">
+            {READER_NEEDS.map((need) => <li key={need}>{need}</li>)}
+          </ul>
+        </div>
+      </section>
+
+      <section className="rp-section" id="uxwoman-guide" data-language-anchor="uxwoman-guide" data-evidence="true">
+        <div className="rp-wrap">
+          <h2 className="rp-title">A guide that starts from the letter in your hand.</h2>
+          <div className="fp-guideScreens rp-reveal">
+            {GUIDE_SCREENS.map((screen) => (
+              <figure key={screen.src}>
+                <img src={screen.src} alt={screen.alt} width={452} height={800} loading="lazy" decoding="async" />
+                <figcaption>{screen.cap}</figcaption>
+              </figure>
+            ))}
+          </div>
+          <p className="fp-guideScreens__note">Design concept, not an official notice. Built, not yet tested with readers.</p>
+          <CaseMore label="How the guide branches">
+            <p>One question sets the path: is there a date on the letter? With a date, the guide shows what the letter asks and a checklist you can add to your calendar. Without one, it shows where to find the date and how to reach a person. Every screen has a talk-to-a-person bar.</p>
+            <figure className="fp-guideWireframes">
+              <img src="/assets/uxwoman/wireframes-branches.webp" alt="Wireframes of the two branches. Date found: what your letter asks, then your checklist. No date: what to do, then help from a person." width={1800} height={861} loading="lazy" decoding="async" />
+              <figcaption>Wireframes: date found, or no date</figcaption>
+            </figure>
+            <p>A second concept is a status sheet for clinic staff. It shows who owns each open request, what is missing and who acts next, and asks one question: is the next action mine?</p>
           </CaseMore>
         </div>
       </section>
 
-      <details className="rp-deepDive">
-        <summary>
-          <span className="rp-deepDive__copy">
-            <b className="rp-deepDive__title">Review all five findings and pretotypes</b>
-          </span>
-          <span className="rp-deepDive__state" aria-hidden="true">
-            <span className="rp-deepDive__stateClosed">Open</span>
-            <span className="rp-deepDive__stateOpen">Close</span>
-          </span>
-        </summary>
-        <section className="rp-section" data-evidence="true">
-          <div className="rp-wrap">
-            <p className="rp-kicker">Participant and secondary-research detail</p>
-            <div className="fp-workSplit rp-reveal">
-              <article>
-                <span>Healthcare · 6</span>
-                <h3>Six roles, one per interview</h3>
-                <p>Patient financial services, revenue operations, orthopedic physician assistant, utilization-review nurse, psychiatrist, and former health-plan member services. One also spoke from personal experience as a patient.</p>
-              </article>
-              <article>
-                <span>Limits · stated up front</span>
-                <h3>No patient interview stream</h3>
-                <p>What I know about patients is secondhand, apart from that one account. A seventh, adjacent interview with an <Term def="Human resources: the team that handles hiring, pay, and staff policy.">HR</Term> director covered checking artificial intelligence (AI) sources. It is not healthcare validation. No protected health information (PHI) was collected, and participants are anonymized.</p>
-              </article>
-            </div>
-            <p className="fp-ownership fp-ownership--paper rp-reveal">
-              <b>Secondary research</b>
-              A scan of AI and information workflows in large hospitals, from federal data briefs and professional surveys. It shows system-level patterns, not what any one hospital needs.
-            </p>
-            <p className="rp-kicker">Two additional findings</p>
-            <ol className="fp-findings rp-reveal" start={4}>
-              {FINDINGS.slice(3).map((finding) => (
-                <li key={finding.title}>
-                  <h3>{finding.title}</h3>
-                  <p>{finding.body}</p>
-                  <p className="fp-findings__confidence"><span>Confidence</span> {finding.confidence}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-        <section className="rp-section" id="uxwoman-pretotypes" data-language-anchor="uxwoman-pretotypes" data-evidence="true">
-          <div className="rp-wrap">
-            <h2 className="rp-title">Five pretotypes designed. None run.</h2>
-            <p className="rp-lede">They are five separate tests, not five features of one product.</p>
-            <ol className="fp-pretotypes rp-reveal">
-              {PRETOTYPES.map((item, index) => (
-                <li key={item.title}>
-                  <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-                  <div>
-                    <h3>{item.title}</h3>
-                    <p>{item.asks}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-            <p className="fp-pretotypeNote">Each has a stop condition. If it adds paperwork without changing a next action, it stops.</p>
-          </div>
-        </section>
-      </details>
-
       <div data-evidence="true"><EvidenceField
         id="uxwoman-next"
         languageAnchor="uxwoman-next"
-        title="A hypothesis, not a product."
-        intro="Research phase. Planned next: reconstruct recent cases, asking each person the same neutral questions, before choosing anything to build. Recruitment waits on protocol and governance review."
-        disclaimer="Exploratory, qualitative, self-reported · six healthcare interviews and one adjacent HR interview · no dedicated patient interviews · no pretotype run · the large-hospital scan is secondary research"
+        title="Built, not yet tested."
+        intro="Two tests come next: an audit of the letter, then readers answering questions about it."
+        disclaimer="Six interviews with clinic and insurer staff · no patient interviews · journey maps built from public rule text and one sample notice · nothing tested with readers yet"
         metrics={[
-          { tag: "Method", n: "6", label: "healthcare interviews, plus one adjacent HR interview that is not healthcare validation" },
-          { tag: "Status", n: "0 of 5", label: "run so far. All five are designed; none has produced evidence yet" },
+          { tag: "Test 1", n: "Audit", label: "Rate the sample letter on the six things a reader needs. Holds if at least one is absent or ambiguous." },
+          { tag: "Test 2", n: "Readers", label: "Adults 19 to 64 answer four questions about the letter, then say what else they needed. Pass bar to be set before it runs." },
         ]}
-        route={["Recruit by behavior", "Rate confidence", "Reconstruct recent cases", "Then build"]}
+        route={["v1: built, untested", "v2: only if tests find gaps", "v3: only if a state-approved route allows it"]}
       /></div>
-
-      <section className="rp-section" aria-label="What would make me build">
-        <div className="rp-wrap">
-          <BuildGates
-            heading="What would make me build"
-            intro="Nothing gets built until one pathway clears all five. The first one to study is outpatient medication access when coverage changes. It is a candidate, not a finding."
-            gates={BUILD_GATES}
-          />
-        </div>
-      </section>
 
       <section className="rp-section">
         <div className="rp-wrap rp-close">
-          <h2>I check the premise before I build.</h2>
+          <h2>From a letter to a next step.</h2>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
           <CopyEmail />
           <ShareCaseStudy title="UX Woman: a case study by Hillary Esposito" />

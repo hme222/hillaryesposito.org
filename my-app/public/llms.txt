@@ -12,7 +12,7 @@ Contact: espositohillary@gmail.com
 - [Grove: twelve features became three](https://www.hillaryesposito.com/case-study/grove/): a plant-care prototype scoped with 5 moderated sessions and a 37-person self-report survey.
 - [Knowunity: the student's own words are the proof](https://www.hillaryesposito.com/case-study/knowunity/): a voice active-recall prototype from a 2.5-week design sprint; recall is mocked.
 - [Army medical logistics: resupply went from months to weeks](https://www.hillaryesposito.com/case-study/logistics/): a $2M warehouse relocation serving seven aid stations; figures are owner-reported.
-- [UX Woman: healthcare research](https://www.hillaryesposito.com/case-study/ux-woman/): staff interviews and a hypothesis-led prototype, untested.
+- [UX Woman: a letter with a deadline and no clear next step](https://www.hillaryesposito.com/case-study/ux-woman/): six interviews with clinic and insurer staff, two hypotheses about one public New York Medicaid letter, and a guide built from it; untested, no patient interviews.
 - [Mobbin: 200+ screens per app, searchable by task](https://www.hillaryesposito.com/case-study/mobbin/): freelance app-capture work; she did not design these products.
 
 ## More

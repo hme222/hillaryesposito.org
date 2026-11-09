@@ -973,3 +973,44 @@
 .fp-gates__status { white-space: nowrap; font-weight: 700; font-size: .9375rem; color: var(--ink); }
 .fp-gates__mark { margin-right: .4em; color: var(--muted); }
 @media (max-width: 640px) { .fp-gates__list li { grid-template-columns: 2.2rem 1fr; } .fp-gates__status { grid-column: 2; } }
+
+/* ---------- UX Woman, rewritten from the midterm deck (2026-11-09) ---------- */
+.fp-letterStats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 2rem 0 0; max-width: 860px; }
+.fp-letterStats > div { padding: 1.25rem 0 0; border-top: 2px solid var(--ink); }
+.fp-letterStats dt { color: var(--muted); font-size: .9375rem; font-weight: 600; }
+.fp-letterStats dd { margin: .4rem 0 0; color: var(--ink-2); font-size: 1rem; line-height: 1.45; }
+.fp-letterStats dd b { display: block; margin-bottom: .25rem; color: var(--ink); font-family: var(--shell-display); font-size: clamp(2.25rem, 5vw, 3.5rem); font-weight: 800; line-height: 1; letter-spacing: -.02em; }
+.fp-letterStats > div:last-child dd b { color: var(--coral-text, var(--coral)); }
+.fp-letterStats__note { margin: 1rem 0 0; color: var(--muted); font-size: .9375rem; }
+
+.fp-themes { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 1.5rem; counter-reset: theme; }
+.fp-themes li { padding: 1.1rem 0; border-top: 1px solid var(--hair); counter-increment: theme; }
+.fp-themes li::before { content: counter(theme); display: block; color: var(--muted); font-weight: 700; font-size: .9375rem; }
+.fp-themes h3 { margin: .3rem 0 0; font-size: 1.125rem; line-height: 1.25; }
+.fp-themes p { margin: .35rem 0 0; color: var(--ink-2); font-size: 1rem; line-height: 1.45; }
+.fp-themes__tag { display: inline-block; margin-top: .55rem; color: var(--coral-text, var(--coral)); font-size: .8125rem; font-weight: 600; }
+
+.fp-hypotheses { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin: 2rem 0 0; }
+.fp-hypotheses article { padding: 1.25rem 0 0; border-top: 2px solid var(--ink); }
+.fp-hypotheses span { color: var(--muted); font-size: .9375rem; font-weight: 600; }
+.fp-hypotheses p { margin: .5rem 0 0; color: var(--ink); font-size: 1.125rem; line-height: 1.45; }
+.fp-hypotheses b { display: block; margin-top: .75rem; color: var(--green); font-size: .9375rem; }
+.fp-readerNeeds__title { margin: 2rem 0 0; font-size: 1.125rem; }
+.fp-readerNeeds { list-style: none; margin: .75rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem; }
+.fp-readerNeeds li { padding: .4rem .8rem; border: 1px solid var(--hair); border-radius: 999px; color: var(--ink); font-size: .9375rem; }
+
+.fp-guideScreens { display: grid; grid-template-columns: repeat(3, minmax(0, 220px)); gap: 1.25rem; margin: 2rem 0 0; }
+.fp-guideScreens figure { margin: 0; }
+.fp-guideScreens img { display: block; width: 100%; height: auto; }
+.fp-guideScreens figcaption { margin-top: .5rem; color: var(--ink-2); font-size: .9375rem; }
+.fp-guideScreens__note { margin: 1rem 0 0; color: var(--muted); font-size: .9375rem; }
+.fp-guideWireframes { margin: 1.25rem 0; }
+.fp-guideWireframes img { display: block; width: 100%; height: auto; border: 1px solid var(--hair); }
+.fp-guideWireframes figcaption { margin-top: .5rem; color: var(--muted); font-size: .9375rem; }
+
+@media (max-width: 760px) {
+  .fp-letterStats, .fp-hypotheses { grid-template-columns: minmax(0, 1fr); }
+  .fp-themes { grid-template-columns: minmax(0, 1fr); }
+  .fp-guideScreens { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; }
+  .fp-guideScreens figcaption { font-size: .8125rem; }
+}
