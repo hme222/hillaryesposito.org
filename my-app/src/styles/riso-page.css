@@ -4245,3 +4245,44 @@ body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-g
 
 /* Grove hero: one quiet line under the demo button saying what the demo is. */
 .rp-heroDemoNote { order: 6; margin: .6rem 0 0; color: var(--muted); font-size: .9375rem; line-height: 1.4; }
+
+/* ---------- Phone pass (2026-11-09, measured at 390px) ---------- */
+@media (max-width: 600px) {
+  /* Hero label chip: a block, so a term inside it (Mobbin's "UX") no longer
+     becomes its own flex item and breaks words apart. */
+  .flagship-page .rp-hero .rp-eyebrow { display: block; }
+  .flagship-page .rp-hero .rp-eyebrow::before { display: inline-block; vertical-align: .1em; margin: 0 .5rem 0 0; }
+
+  /* UX Woman confidence table: each finding stacks, with its column names
+     shown inline, instead of a table scrolling off the right edge. */
+  .fp-confidence { overflow: visible; }
+  .fp-confidence thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .fp-confidence table, .fp-confidence tbody, .fp-confidence tr, .fp-confidence tbody th, .fp-confidence tbody td { display: block; width: auto; }
+  .fp-confidence tr { padding: .9rem 0; border-bottom: 1px solid var(--hair); }
+  .fp-confidence tbody th, .fp-confidence tbody td { padding: 0; border: 0; }
+  .fp-confidence tbody td { margin-top: .6rem; }
+  .fp-confidence caption { display: block; width: auto; }
+  body .fp-confidence table { min-width: 0; width: 100%; }
+  .fp-confidence__cell { grid-template-columns: auto minmax(0, 1fr); }
+  .fp-confidence__text { min-width: 0; white-space: normal; overflow-wrap: anywhere; }
+  .fp-confidence tbody th { width: auto; }
+  .fp-confidence tbody td::before { content: attr(data-label); display: block; margin-bottom: .25rem; color: var(--muted); font-size: .8125rem; font-weight: 600; }
+
+  /* Grove hero: the journal note sits under the phone, not over it. */
+  .flagship-page .rp-hero__media .rp-heroNote { position: static; transform: none; margin: .9rem auto 0; max-width: 260px; }
+  /* The phone hero box is 340px tall on phones, which squashed the screen;
+     Grove's hero grows to fit the phone and its note instead. */
+  .flagship-page--grove .rp-hero__media { flex-direction: column; height: auto; max-height: none; overflow: visible; padding-block: 1.5rem; }
+  .flagship-page--grove .rp-hero__media .rp-device { flex-shrink: 0; }
+  .flagship-page--grove .rp-hero__media .rp-device:not(.rp-device--app) { width: min(220px, 60vw); height: calc(min(220px, 60vw) * 932 / 430); }
+
+  /* Contact band: room between the heading and the first button. */
+  .rp-close h2 + .rp-hero__ctas, .rp-close h2 + .rp-cta, .rp-close p + .rp-hero__ctas { margin-top: 1.25rem; }
+
+  /* About figures: labels at the 13px floor, sentence case. */
+  .about-evidenceLedger dd { font-size: .8125rem; letter-spacing: 0; text-transform: none; }
+}
+/* Chapter strip: a fade on the right edge says it scrolls sideways. */
+@media (max-width: 899px) {
+  .rp-chapters { -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); }
+}

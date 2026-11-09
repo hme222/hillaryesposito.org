@@ -53,8 +53,8 @@ export default function ConfidenceMap({ caption, rows }: {
           {rows.map((r) => (
             <tr key={r.finding}>
               <th scope="row">{r.finding}</th>
-              <td><Level level={r.observed.level} claim={r.observed.claim} /></td>
-              <td>
+              <td data-label="What the interviews support"><Level level={r.observed.level} claim={r.observed.claim} /></td>
+              <td data-label="What they do not show">
                 {r.limit ? <Level level={r.limit.level} claim={r.limit.claim} /> : <span className="fp-confidence__none">No level stated</span>}
               </td>
             </tr>
