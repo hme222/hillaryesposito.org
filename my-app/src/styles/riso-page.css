@@ -4242,3 +4242,6 @@ body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-g
   .rp-index__row--visual:has(.rp-phoneReel) { grid-template-columns: 2.25rem minmax(0, 1fr) auto; }
   .rp-index__row--visual .rp-index__visual:has(.rp-phoneReel) { max-width: none; }
 }
+
+/* Grove hero: one quiet line under the demo button saying what the demo is. */
+.rp-heroDemoNote { order: 6; margin: .6rem 0 0; color: var(--muted); font-size: .9375rem; line-height: 1.4; }

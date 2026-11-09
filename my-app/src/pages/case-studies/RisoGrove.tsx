@@ -17,6 +17,8 @@ import usePageTitle from "../../hooks/usePageTitle";
 import { wireRevealObservers } from "../../hooks/useFlagshipReveal";
 import "../../styles/riso-page.css";
 
+const DEMO_URL = "https://grove-demo-k7q2x.vercel.app/";
+
 /**
  * Grove — case study in the Risograph Cartography system.
  * Structure follows the Carmen Elena / Pilgrimz arc: hero-plate hook →
@@ -259,6 +261,15 @@ export default function RisoGrove() {
                 <li><b>3 directions</b><span>earned the next build</span></li>
               </ol>
             </div>
+            {/* The click-through demo of the current app (Grove repo, walkthrough/),
+                deployed separately on Vercel. It runs on sample data, so the
+                label says so. Same hero action pattern as Knowunity. */}
+            <div className="rp-hero__ctas">
+              <a className="rp-cta" href={DEMO_URL} target="_blank" rel="noopener noreferrer">
+                <span className="rp-ext">Try the Grove demo</span><span className="sr-only"> (opens in new tab)</span>
+              </a>
+            </div>
+            <p className="rp-heroDemoNote">The current app on sample data. Reloading the page starts it fresh.</p>
           </div>
         </div>
         <div className="rp-hero__media" data-evidence="true">
@@ -468,7 +479,10 @@ export default function RisoGrove() {
           )}
           {/* The app's own components, documented in Storybook from the Grove
               repo (deployed separately at grove-ui.hillaryesposito.org). */}
-          <p>
+          <p className="rp-hero__ctas">
+            <a className="rp-cta" href={DEMO_URL} target="_blank" rel="noopener noreferrer">
+              <span className="rp-ext">Try the Grove demo</span><span className="sr-only"> (opens in new tab)</span>
+            </a>
             <a
               className="rp-cta rp-cta--ghost"
               href="https://grove-ui.hillaryesposito.org/?path=/story/grove-plantcard--healthy"
