@@ -287,22 +287,6 @@ export default function RisoGrove() {
             </div>
           </div>
 
-          <figure className="rp-stockPhoto rp-reveal" data-evidence="true">
-            <img
-              src="https://images.unsplash.com/photo-1533038590840-1cde6e668a91?auto=format&fit=crop&w=1200&q=70"
-              alt=""
-              loading="lazy"
-              width={1200}
-              height={400}
-            />
-            <figcaption>
-              Grove is for people new to plant care. Stock photo, not a Grove screen. Photo:{" "}
-              <a href="https://unsplash.com/@anniespratt" target="_blank" rel="noopener noreferrer">Annie Spratt</a>
-              {" / "}
-              <a href="https://unsplash.com/photos/hX_hf2lPpUU" target="_blank" rel="noopener noreferrer">Unsplash</a>
-            </figcaption>
-          </figure>
-
           <h3 className="rp-subhead">Five people found the problem. Thirty-seven chose what came next.</h3>
           <dl className="rp-surveyStats rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "90ms" } as React.CSSProperties}>
             {SURVEY_FINDINGS.map((f) => (

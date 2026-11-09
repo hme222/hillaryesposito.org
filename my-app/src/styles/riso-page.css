@@ -3493,7 +3493,9 @@ html.cs-chrome .riso-page .fp-indexLens[id] { scroll-margin-top: calc(var(--cs-c
 .rp-chapter__proof--inline { display: flex; width: fit-content; margin-top: .55rem; padding: .45rem .8rem; }
 /* Square plate with a hairline, matching the project index — not a rounded card. */
 .rp-chapter__plate { border: 1px solid var(--hair); background: var(--paper-2); }
-.rp-chapter__plate img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+/* Plates follow each photo's own shape (2026-11-09 proportion check): the
+   Army photo is landscape, and a fixed 4:5 crop cut most of it away. */
+.rp-chapter__plate img { display: block; width: 100%; height: auto; }
 /* .rp-list (also on this <ol>) doesn't set list-style:none, so the browser's
    native "1. 2. 3." marker was rendering right alongside this custom
    decimal-leading-zero counter — two numbers per line (owner-flagged
@@ -4015,10 +4017,6 @@ body .site-footer__label {
 .rp-fold__body .rp-careerNote { margin-top: 0; font-size: .9375rem; line-height: 1.5; }
 
 /* Decorative stock photo: hotlinked, labeled as stock, credited under the image. */
-.rp-stockPhoto { margin: 2rem 0; }
-.rp-stockPhoto img { display: block; width: 100%; height: clamp(160px, 28vw, 280px); object-fit: cover; border-radius: var(--r-plate, 4px); background: var(--paper-2); }
-.rp-stockPhoto figcaption { margin-top: .4rem; color: var(--muted); font-size: .8125rem; line-height: 1.4; }
-.rp-stockPhoto figcaption a { color: inherit; text-decoration: underline; text-underline-offset: 2px; min-height: 24px; }
 
 /* Closed-row titles read as section headings: display face, one step up. */
 .rp-deepDive__title { font-weight: 800; font-size: 1.5rem; line-height: 1.1; letter-spacing: -.01em; }
@@ -4183,7 +4181,9 @@ body .riso-home .rp-hero .rp-clearing {
    captures (.rp-device--app) are browser views and keep the plain card. */
 .rp-hero__media .rp-device:not(.rp-device--app) {
   --rp-bezel: color-mix(in srgb, black 86%, var(--green));
-  box-sizing: border-box;
+  /* content-box keeps the 430:932 screen ratio inside the bezel; with
+     border-box the 9px bezel squeezed the screen narrower than the capture. */
+  box-sizing: content-box;
   border: 9px solid var(--rp-bezel);
   border-radius: 46px;
   background: var(--rp-bezel);
@@ -4224,3 +4224,32 @@ body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-g
 .flagship-page--msk .fp-hero { align-items: center; }
 /* The label chip sits above the headline here, as on the other five cases. */
 .flagship-page--msk .fp-hero .rp-h1 { order: 2; margin-top: .8rem; }
+
+/* ---------- Home teasers: phone reels (2026-11-09) ----------
+   Real phone screenshots at their true 390:844 shape inside a phone frame,
+   crossfading slowly. The visual column narrows for phones; MSK keeps its
+   desktop frame. */
+.rp-index__row--visual:has(.rp-phoneReel) { grid-template-columns: 3.5rem minmax(0, 1fr) 150px auto; }
+.rp-index__visual:has(.rp-phoneReel) { aspect-ratio: auto; border: 0; background: transparent; overflow: visible; }
+.rp-phoneReel {
+  --rp-bezel: color-mix(in srgb, black 86%, var(--green));
+  width: 150px; padding: 6px; border-radius: 26px; background: var(--rp-bezel);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, white 14%, transparent), 0 18px 34px -18px rgba(0, 0, 0, .45);
+}
+.rp-phoneReel__screen { position: relative; aspect-ratio: 390 / 844; overflow: hidden; border-radius: 20px; background: #0e140f; }
+.rp-phoneReel__screen img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transition: opacity 1.2s ease;
+}
+.rp-phoneReel__screen img.is-on { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .rp-phoneReel__screen img { transition: none; } }
+.rp-workHead { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem 1rem; }
+.rp-reelToggle {
+  min-height: 44px; padding: 0 .25rem; border: 0; background: none; cursor: pointer;
+  color: var(--ink-2); font: 600 .9375rem/1 var(--sans); text-decoration: underline; text-underline-offset: 3px;
+}
+.rp-reelToggle:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
+@media (max-width: 760px) {
+  .rp-index__row--visual:has(.rp-phoneReel) { grid-template-columns: 2.25rem minmax(0, 1fr) auto; }
+  .rp-index__row--visual .rp-index__visual:has(.rp-phoneReel) { max-width: none; }
+}

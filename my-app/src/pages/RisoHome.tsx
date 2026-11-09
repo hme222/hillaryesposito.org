@@ -6,6 +6,7 @@ import CopyEmail from "../components/CopyEmail";
 import HomeFold from "../components/HomeFold";
 import MSKDashboardMockup from "../components/MSKDashboardMockup";
 import WorkIndex from "../components/WorkIndex";
+import PhoneReel from "../components/PhoneReel";
 import type { WorkIndexItem } from "../components/WorkIndex";
 import { MSK_COPY } from "../data/mskCaseStudy";
 import { glossTerms } from "../components/Term";
@@ -69,6 +70,9 @@ export default function RisoHome() {
   const location = useLocation();
   const navigate = useNavigate();
   const [dispatchOpen, setDispatchOpen] = useState(false);
+  // One control pauses every teaser reel (WCAG 2.2.2: moving content lasting
+  // more than five seconds needs a way to stop it).
+  const [reelsPaused, setReelsPaused] = useState(false);
   const [dispatchTrainDeparted, setDispatchTrainDeparted] = useState(false);
   const [dispatchTrainReturning, setDispatchTrainReturning] = useState(false);
   const dispatchSectionRef = useRef<HTMLElement>(null);
@@ -172,12 +176,33 @@ export default function RisoHome() {
         <MSKDashboardMockup decorative compact condensedHeader hideToolbar hideRule rowIndices={[0, 2]} copy={MSK_COPY[lang === "es" ? "es" : "en"].dashboard} />
       </div>
     ),
-    "02": <img className="rp-index__shot rp-index__shot--cover" src="/assets/grove/grove-live-care.jpg" alt="" width={1200} height={900} loading="lazy" decoding="async" />,
+    // Grove and Knowunity are phone products: real phone screenshots at their
+    // true 390:844 shape, crossfading slowly. MSK was a desktop work queue, so
+    // it stays in its own desktop frame rather than a phone it never ran on.
+    "02": (
+      <PhoneReel
+        paused={reelsPaused}
+        label={lang === "es" ? "Pantallas de Grove" : "Grove screens"}
+        frames={[
+          { src: "/assets/grove/reel/today.webp", name: lang === "es" ? "Hoy" : "Today" },
+          { src: "/assets/grove/reel/lesson.webp", name: lang === "es" ? "Lección" : "Lesson" },
+          { src: "/assets/grove/reel/first-care.webp", name: lang === "es" ? "Primer cuidado registrado" : "First care logged" },
+          { src: "/assets/grove/reel/pip.webp", name: "Pip" },
+        ]}
+      />
+    ),
     "03": (
-      <div className="rp-index__shot rp-index__shot--phones">
-        <img src="/assets/knowunity/say-it-back-question.webp" alt="" width={780} height={1688} loading="lazy" decoding="async" />
-        <img src="/assets/knowunity/say-it-back-pass.webp" alt="" width={780} height={1688} loading="lazy" decoding="async" />
-      </div>
+      <PhoneReel
+        paused={reelsPaused}
+        label={lang === "es" ? "Pantallas de Say It Back" : "Say It Back screens"}
+        frames={[
+          { src: "/assets/knowunity/say-it-back-mic-primer.webp", name: lang === "es" ? "Permiso del micrófono" : "Mic permission" },
+          { src: "/assets/knowunity/say-it-back-question.webp", name: lang === "es" ? "Pregunta" : "Question" },
+          { src: "/assets/knowunity/say-it-back-second-miss.webp", name: lang === "es" ? "Segundo intento" : "Second try" },
+          { src: "/assets/knowunity/say-it-back-pass.webp", name: lang === "es" ? "Acierto" : "Pass" },
+          { src: "/assets/knowunity/say-it-back-recap.webp", name: lang === "es" ? "Resumen" : "Recap" },
+        ]}
+      />
     ),
   };
   const WORK_ITEMS: WorkIndexItem[] = WORK.map((work) => ({
@@ -238,7 +263,12 @@ export default function RisoHome() {
       {/* SELECTED WORK */}
       <section className="rp-section" id="projects" aria-labelledby="home-work-title" data-visual="true">
         <div className="rp-wrap">
-          <h2 className="rp-title" id="home-work-title">{t("home.riso.workTitle")}</h2>
+          <div className="rp-workHead">
+            <h2 className="rp-title" id="home-work-title">{t("home.riso.workTitle")}</h2>
+            <button type="button" className="rp-reelToggle" aria-pressed={reelsPaused} onClick={() => setReelsPaused((p) => !p)}>
+              {reelsPaused ? (lang === "es" ? "Reproducir pantallas" : "Play screens") : (lang === "es" ? "Pausar pantallas" : "Pause screens")}
+            </button>
+          </div>
           <WorkIndex label={t("home.riso.workTitle")} items={WORK_ITEMS.slice(0, 3)} />
           {/* Supporting work (Logistics, UX Woman, Mobbin and the Weekend Dispatch)
               stays one click away behind a plus, so the visual list shows only the lead three. */}
