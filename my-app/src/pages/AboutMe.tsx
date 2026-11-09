@@ -136,14 +136,10 @@ export default function About() {
             <div className="rp-headshot">
               <img src="/assets/about/headshot.jpg" alt="Hillary Esposito" />
             </div>
-            <figcaption className="about-hero__caption">
-              {isSpanish ? "Hillary Esposito · Diseñadora de productos de salud · Nueva York" : "Hillary Esposito · Healthcare Product Designer · New York"}
-            </figcaption>
           </figure>
         </div>
         <div className="rp-hero__content">
           <div className="rp-clearing">
-            <span className="rp-eyebrow">{isSpanish ? "Sobre mí" : "About"}</span>
             <h1 className="rp-h1">
               {isSpanish ? "Diseño productos de salud donde cada transferencia\u00a0importa." : "I design healthcare products where every handoff\u00a0matters."}
             </h1>
@@ -161,7 +157,6 @@ export default function About() {
 
       <section id="about-pattern" data-language-anchor="about-pattern" className="rp-section" aria-labelledby="about-pattern-title">
         <div className="rp-wrap">
-          <p className="rp-kicker">{isSpanish ? "Mi patrón" : "My pattern"}</p>
           <h2 className="rp-title" id="about-pattern-title">
             {isSpanish ? "Busco primero el atajo." : "I look for the workaround first."}
           </h2>
@@ -214,7 +209,6 @@ export default function About() {
             <article className={`rp-split rp-chapter rp-reveal${index % 2 ? "" : " rp-split--flip"}${chapter.image ? "" : " rp-split--noMedia"}`} key={chapter.id}>
               <div className="rp-split__text">
                 <p className="rp-chapter__n">
-                  {String(index + 1).padStart(2, "0")} / {String(chapters.length).padStart(2, "0")}
                   <span>{chapter.label}</span>
                 </p>
                 <h3 className="rp-subhead">{chapter.heading}</h3>
@@ -275,7 +269,6 @@ export default function About() {
       {/* ═ PROOF — the one voice here that is not hers ══════════════ */}
       <section id="about-proof" data-language-anchor="about-proof" className="rp-section" aria-labelledby="about-proof-title">
         <div className="rp-wrap">
-          <p className="rp-kicker">{isSpanish ? "Feedback de clientes" : "Client feedback"}</p>
           <h2 className="rp-title" id="about-proof-title">
             {isSpanish ? "Cómo los clientes describen trabajar conmigo." : "How clients describe working with me."}
           </h2>
@@ -295,7 +288,6 @@ export default function About() {
       {/* ═ HUMAN ════════════════════════════════════════════════════ */}
       <section id="about-life" data-language-anchor="about-life" className="rp-section rp-section--alt" aria-labelledby="about-life-title">
         <div className="rp-wrap">
-          <p className="rp-kicker">{isSpanish ? "Fuera del trabajo" : "Outside of work"}</p>
           <h2 className="rp-title" id="about-life-title">
             {isSpanish ? "Correr, leer y Luna la gata." : "Running, reading, and Luna the cat."}
           </h2>
