@@ -268,8 +268,8 @@ const es: Partial<Record<StringKey, string>> = {
   "nav.themeToDark": "Cambiar a modo oscuro",
   "nav.themeToLight": "Cambiar a modo claro",
   "nav.langSwitch": "Switch to English",
-  "nav.settings": "Configuración",
-  "nav.settingsAria": "Configuración: tema e idioma",
+  "nav.settings": "Ajustes",
+  "nav.settingsAria": "Ajustes: tema e idioma",
 
   // ── Home: hero ──
   "home.status": "Abierta a roles de diseño de producto y a trabajo freelance de UX",

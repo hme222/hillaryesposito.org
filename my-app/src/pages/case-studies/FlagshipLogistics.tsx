@@ -101,8 +101,7 @@ export default function FlagshipLogistics() {
             <h1 className="rp-h1">Resupply went from months to{"\u00a0"}weeks.</h1>
             <span className="rp-eyebrow">Army medical logistics · Iraq · service design</span>
             <p className="rp-sub">
-              I planned and tracked a $2M warehouse relocation serving seven aid stations across three countries.
-              Resupply went from <b>1–2 months to 1–2 weeks</b>.
+              I planned and tracked a $2M warehouse move for seven aid stations in three countries, and resupply went from <b>1–2 months to 1–2 weeks</b>.
             </p>
             <dl className="rp-heroEvidence" aria-label="Medical logistics case evidence at a glance">
               <div><dt>Role</dt><dd>Medical logistics officer · relocation and service lead</dd></div>

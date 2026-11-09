@@ -50,7 +50,7 @@ export default function ShareCaseStudy({ title }: {
   };
   return (
     <div className="rp-shareRow">
-      <button type="button" className="rp-cta rp-cta--ghost rp-share" onClick={share}>Share this case study →</button>
+      <button type="button" className="rp-share rp-share--link" onClick={share}>Share this case study</button>
       <span className={`rp-woohoo${outcome ? " show" : ""}`} aria-live="polite">
         {outcome ? SHARE_MESSAGE[outcome] : ""}
       </span>

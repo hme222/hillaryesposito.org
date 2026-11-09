@@ -166,8 +166,7 @@ export default function FlagshipMSK() {
             <h1 className="rp-h1">One queue. Four teams.</h1>
             <span className="rp-eyebrow">Memorial Sloan Kettering · Clinical systems · six years, three roles</span>
             <p className="rp-sub">
-              I diagnosed and mapped a paper detour across four departments, checked feasibility,
-              and pitched a digital filing workflow. <b>Information technology (IT) and user experience (UX) teams built it after I changed roles.</b>
+              I mapped a paper detour across four departments and pitched a digital filing workflow. <b>Information technology (IT) and user experience (UX) teams built it after I changed roles.</b>
             </p>
             <dl className="rp-heroEvidence rp-heroEvidence--workflow" aria-label="MSK case evidence at a glance">
               {/* Two rows since 2026-10-16: contribution, implementation, and

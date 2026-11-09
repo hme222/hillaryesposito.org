@@ -252,7 +252,7 @@ export default function RisoGrove() {
             <h1 className="rp-h1">Twelve features became three.</h1>
             <span className="rp-eyebrow">Grove · sole designer · AI-assisted React prototype</span>
             <p className="rp-sub">
-              Emergent, an AI app builder, made the first build. I tested it with 5 people, then used a 37-person self-report survey to rank what earned the next build. The evidence cut twelve features to three.
+              I tested the first build, made with the AI app builder Emergent, with 5 people, then used a 37-person self-report survey to cut twelve features to three.
             </p>
             <div className="rp-heroEvidence rp-heroEvidence--trace" aria-label="Grove research-to-priority trace">
               <ol>

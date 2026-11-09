@@ -137,7 +137,7 @@ describe("flagship case-study accessibility", () => {
     expect(hero?.textContent).toContain("user experience (UX) teams built it after I changed roles");
     expect(hero?.textContent).toContain("Office Coordinator → Administrative Assistant → Training Facilitator (retitled Trainer I Specialist)");
     // The sub carries the contribution; the evidence list no longer restates it.
-    expect(hero?.textContent).toContain("checked feasibility, and pitched a digital filing workflow");
+    expect(hero?.textContent).toContain("pitched a digital filing workflow");
     expect(hero?.textContent).not.toContain("20%");
     expect(hero?.textContent).not.toContain("two system upgrades");
     expect(container.textContent).toContain("not attributed solely to this filing workflow");

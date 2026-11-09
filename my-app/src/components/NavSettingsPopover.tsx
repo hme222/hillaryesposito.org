@@ -98,6 +98,8 @@ export default function NavSettingsPopover({ darkMode, setDarkMode }: NavSetting
             explicitly rather than relying on this text alone (an aria-label
             on the button always wins name computation over its visible
             content, hidden or not). */}
+        {/* Visible word, so the icon is never the only label (2026-11-09). */}
+        <span className="nav-settings__triggerLabel">{t("nav.settings")}</span>
         <span className="nav-settings__triggerLangCode">
           {lang.toUpperCase()}
         </span>

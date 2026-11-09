@@ -93,7 +93,7 @@ export default function FlagshipUxWoman() {
             <h1 className="rp-h1">A letter with a deadline and no clear next{"\u00a0"}step.</h1>
             <span className="rp-eyebrow">UX Woman · Healthcare research · Medicaid letter guide</span>
             <p className="rp-sub">
-              UX Woman is a 7-month, mentor-led UX design accelerator. I interviewed six clinic and insurer staff, then narrowed the work to one public New York Medicaid sample letter about the new work requirements. I built a guide that starts from the letter in your hand. <b>It is untested, and no patient was interviewed.</b>
+              I turned six interviews with clinic and insurer staff into a guide for one New York Medicaid letter. <b>It is untested, and no patient was interviewed.</b>
             </p>
             <dl className="rp-heroEvidence" aria-label="UX Woman case evidence at a glance">
               <div><dt>Role</dt><dd>Sole researcher and designer · UX Woman UX Design Accelerator · 2026</dd></div>
@@ -144,7 +144,7 @@ export default function FlagshipUxWoman() {
             ))}
           </ol>
           <CaseMore label="Who I interviewed, and what I did not hear">
-            <p>Six interviews with clinic and insurer staff, one affinity board per interview, plus six publicly available sources. No patient was interviewed. Participants are anonymized and no protected health information was collected.</p>
+            <p>UX Woman is a 7-month, mentor-led UX design accelerator. Six interviews with clinic and insurer staff, one affinity board per interview, plus six publicly available sources. No patient was interviewed. Participants are anonymized and no protected health information was collected.</p>
             <p>The patient journey map was built from public rule text and one sample notice, so its feelings and opportunities are hypotheses. The clinic staff journey map is a composite of roles; two of the people behind it work outside New York.</p>
           </CaseMore>
         </div>

@@ -159,7 +159,7 @@ export default function FlagshipKnowunity() {
             <h1 className="rp-h1">Their own words are the proof.</h1>
             <span className="rp-eyebrow">Knowunity · Say It Back · design-sprint prototype</span>
             <p className="rp-sub">
-              After a student says a definition aloud, Knowie answers in text and quotes the student’s own words back as proof. I designed the flow and built the prototype in a solo 2.5‑week sprint.
+              In a solo 2.5‑week sprint, I designed and built a prototype where Knowie quotes a student’s own spoken definition back as proof.
             </p>
             <dl className="rp-heroEvidence rp-heroEvidence--boundary" aria-label="What I built and what is untested">
               <div><dt>Built here</dt><dd>Four interaction decisions · coded prototype · Storybook catalog</dd></div>

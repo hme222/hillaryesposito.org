@@ -1977,3 +1977,6 @@ select {
     line-height: 1.16;
   }
 }
+
+/* The settings trigger shows a word, not only an icon (2026-11-09). */
+.nav-settings__triggerLabel { font-size: inherit; font-weight: inherit; }

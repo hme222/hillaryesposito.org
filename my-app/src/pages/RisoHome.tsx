@@ -201,13 +201,13 @@ export default function RisoHome() {
               {t("contact.note")} →
             </a>
             <a
-              className="rp-cta rp-cta--ghost"
+              className="rp-textLink"
               href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               aria-label={t("nav.resumeAria")}
             >
-              {lang === "es" ? "Ver CV" : "View résumé"} →
+              {lang === "es" ? "Ver CV" : "View résumé"}
             </a>
           </div>
           <CopyEmail />

@@ -4292,3 +4292,14 @@ body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-g
 .rp-copyEmail__button { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; min-width: 6.5em; }
 .rp-copyEmail__button.is-copied { color: var(--green); border-color: var(--green); }
 .dark-mode .rp-copyEmail__button.is-copied { color: var(--ink); }
+
+/* ---------- Restraint pass (2026-11-09) ----------
+   One loud action per close: "Email me" stays the button; Share and the
+   résumé become quiet text links. */
+.rp-share--link, .rp-textLink {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0; border: 0; background: none; cursor: pointer;
+  color: var(--ink-2); font: 600 .9375rem/1.2 var(--sans); text-decoration: underline; text-underline-offset: 3px; box-shadow: none;
+}
+.rp-share--link:hover, .rp-textLink:hover { color: var(--ink); }
+.rp-share--link:focus-visible, .rp-textLink:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
+.rp-close .rp-hero__ctas { align-items: center; }
