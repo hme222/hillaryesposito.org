@@ -70,7 +70,7 @@ const en = {
   "nav.settingsAria": "Settings: theme and language",
 
   // ── Home: hero ──
-  "home.status": "Open to healthcare product design roles",
+  "home.status": "Open to product design roles and freelance UX work",
   // "Workflow fluency" named a skill without saying what it covers. The
   // durable claim is scope: the whole path a task takes, not the screen at the
   // end of it — which is what the MSK case study actually demonstrates.
@@ -272,7 +272,7 @@ const es: Partial<Record<StringKey, string>> = {
   "nav.settingsAria": "Configuración: tema e idioma",
 
   // ── Home: hero ──
-  "home.status": "Abierta a roles de diseño de productos de salud",
+  "home.status": "Abierta a roles de diseño de producto y a trabajo freelance de UX",
   "home.riso.heroTitle": "Diseño flujos antes que pantallas.",
   "home.riso.heroLead":
     "En Memorial Sloan Kettering, propuse la cola que reemplazó un desvío en papel entre cuatro áreas.",

@@ -6,7 +6,7 @@ const DEFAULT_TITLE = `${BASE} | Healthcare Product Designer`;
 const DEFAULT_TITLE_ES = `${BASE} | Diseñadora de productos de salud`;
 const NOT_FOUND_PAGES = new Set(["Page not found", "Página no encontrada"]);
 const DEFAULT_DESCRIPTION =
-  "Healthcare Product Designer with six years in cancer-care operations and 13+ years of Army service; proposed a digital filing workflow at Memorial Sloan Kettering that IT and UX later built.";
+  "Hillary Esposito, Healthcare Product Designer and freelance UX designer in New York. Six years in cancer-care operations and 13+ years of Army service. Case studies show the evidence and its limits.";
 const ORIGIN = "https://www.hillaryesposito.com";
 
 const ROUTE_META: Array<{ match: RegExp; description: string; image: string }> = [

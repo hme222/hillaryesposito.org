@@ -1,0 +1,20 @@
+# Hillary Esposito
+
+> Healthcare Product Designer and freelance UX designer based in New York. She designs clinical workflows, internal tools and research-led product decisions, and is open to full-time healthcare product design roles and freelance UX work.
+
+Background: six years in cancer-care operations at Memorial Sloan Kettering and 13+ years of Army service, including medical logistics. Master of Healthcare Administration; Lean Six Sigma Green Belt; bilingual English and Spanish.
+
+Contact: espositohillary@gmail.com
+
+## Case studies
+
+- [Memorial Sloan Kettering: a filing queue replaced the paper detour](https://www.hillaryesposito.com/case-study/msk/): she proposed a digital filing workflow that replaced a four-department paper detour; IT and UX built it after she changed roles.
+- [Grove: twelve features became three](https://www.hillaryesposito.com/case-study/grove/): a plant-care prototype scoped with 5 moderated sessions and a 37-person self-report survey.
+- [Knowunity: the student's own words are the proof](https://www.hillaryesposito.com/case-study/knowunity/): a voice active-recall prototype from a 2.5-week design sprint; recall is mocked.
+- [Army medical logistics: resupply went from months to weeks](https://www.hillaryesposito.com/case-study/logistics/): a $2M warehouse relocation serving seven aid stations; figures are owner-reported.
+- [UX Woman: healthcare research](https://www.hillaryesposito.com/case-study/ux-woman/): staff interviews and a hypothesis-led prototype, untested.
+- [Mobbin: 200+ screens per app, searchable by task](https://www.hillaryesposito.com/case-study/mobbin/): freelance app-capture work; she did not design these products.
+
+## More
+
+- [About](https://www.hillaryesposito.com/about/)
