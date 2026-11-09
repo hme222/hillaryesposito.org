@@ -6,4 +6,4 @@ User-agent: *
 Disallow: /lab/
 
 # Sitemap location (optional but recommended for SEO)
-Sitemap: https://hillaryesposito.org/sitemap.xml
+Sitemap: https://www.hillaryesposito.com/sitemap.xml

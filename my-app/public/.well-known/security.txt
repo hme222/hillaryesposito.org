@@ -1,4 +1,4 @@
 Contact: mailto:espositohillary@gmail.com
 Preferred-Languages: en, es
-Canonical: https://hillaryesposito.org/.well-known/security.txt
-Policy: https://hillaryesposito.org/SECURITY.md
+Canonical: https://www.hillaryesposito.com/.well-known/security.txt
+Policy: https://www.hillaryesposito.com/SECURITY.md

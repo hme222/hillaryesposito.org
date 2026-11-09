@@ -7,7 +7,7 @@ const DEFAULT_TITLE_ES = `${BASE} | Diseñadora de productos de salud`;
 const NOT_FOUND_PAGES = new Set(["Page not found", "Página no encontrada"]);
 const DEFAULT_DESCRIPTION =
   "Healthcare Product Designer with six years in cancer-care operations and 13+ years of Army service; proposed a digital filing workflow at Memorial Sloan Kettering that IT and UX later built.";
-const ORIGIN = "https://hillaryesposito.org";
+const ORIGIN = "https://www.hillaryesposito.com";
 
 const ROUTE_META: Array<{ match: RegExp; description: string; image: string }> = [
   {

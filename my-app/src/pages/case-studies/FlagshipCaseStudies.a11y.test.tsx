@@ -654,7 +654,7 @@ describe("flagship case-study accessibility", () => {
     expect(document.querySelector('meta[name="robots"]')?.getAttribute("content"))
       .toBe("noindex, nofollow, noarchive");
     expect(document.querySelector('link[rel="canonical"]')?.getAttribute("href"))
-      .toBe("https://hillaryesposito.org");
+      .toBe("https://www.hillaryesposito.com");
   });
 
 

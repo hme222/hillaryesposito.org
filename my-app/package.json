@@ -1,7 +1,7 @@
 {
   "name": "my-app",
   "version": "0.1.0",
-  "homepage": "https://hillaryesposito.org",
+  "homepage": "https://www.hillaryesposito.com",
   "private": true,
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

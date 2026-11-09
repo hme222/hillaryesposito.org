@@ -20,7 +20,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const DOCS = process.env.PORTFOLIO_BUILD_DIR
   ? resolve(process.env.PORTFOLIO_BUILD_DIR)
   : join(ROOT, "my-app", "build");
-const ORIGIN = "https://hillaryesposito.org";
+const ORIGIN = "https://www.hillaryesposito.com";
 
 const PUBLIC_ROUTES = [
   {
