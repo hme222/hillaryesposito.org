@@ -18,6 +18,34 @@ and being able to reach the evidence for that from where the claim is made.
 
 ---
 
+## How to render (read first)
+
+The Chrome extension is often not connected to subagents. Do not report "could
+not render" and cap at 7: a real Chrome is available through Bash.
+
+1. Confirm the dev server serves THIS project (title "Hillary Esposito | ..."),
+   not another app on the port. The harness prints each page's title.
+2. From the repo root run
+   `node scripts/axe-primary-audit.cjs --base <url>`
+   (optional `--routes /,/case-study/msk`, `--out <dir>`). It loads all 8 routes at
+   1440 and 390, runs axe under reduced motion, and measures horizontal overflow,
+   orphaned headline words, banned language in rendered text, and targets under
+   44px. It writes full-page and fold screenshots plus `report.json` to
+   `tmp/panel-render/`.
+3. Look at the screenshots with the Read tool (they are PNGs). Judge hierarchy,
+   rhythm and craft from them, not from CSS. For anything the harness does not
+   cover, write a small playwright-core script in your own scratch directory
+   (Chrome is at `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome`;
+   playwright-core is in the repo's root `node_modules`).
+4. IntersectionObserver and rAF reveals only fire after scrolling, and GSAP
+   starts elements at opacity .25. Measure contrast with reduced motion on, or
+   after scrolling through the page, never on a cold first paint.
+
+Measured by the harness: the overflow, orphan, banned-language and contrast
+gates, and hit-area sizes. Not measured: claim truth (trace to the résumé and
+`git log -S`), voice, motion feel, dark mode, the Spanish routes, keyboard
+order. Say which of those you did not check.
+
 ## Scoring rules
 
 These override any anchor below.
