@@ -1182,9 +1182,11 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
    so a future mistake in this class still fails toward visible within
    seconds of the mistake being detectable, not stuck at opacity:0 forever. */
 .js-reveal .rp-reveal {
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1);
+  /* Visible by default (panel review, 2026-11-09): only position animates, so
+     content never waits on a scroll trigger to be readable. */
+  opacity: 1;
+  transform: translateY(12px);
+  transition: transform .45s cubic-bezier(.23,1,.32,1);
   transition-delay: var(--rp-reveal-stagger, 0ms);
   animation: rp-reveal-failsafe 1ms linear 12s forwards;
 }
@@ -2746,15 +2748,15 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   .flagship-page .fp-heroArt--knowunity .fp-sequence__phone--hero { height: 232px; width: auto; border-radius: 16px; }
   .flagship-page .fp-heroArt--knowunity .fp-artifactLabel { padding: .45rem .65rem; }
   .flagship-page .fp-heroArt { min-height: 300px; }
-  .flagship-page .fp-heroArt--msk .fp-dashboardFrame { width: 96%; max-height: 245px; }
+  .flagship-page .fp-heroArt--msk .fp-dashboardFrame { width: 96%; max-height: none; }
   .flagship-page .fp-heroArt--msk .fp-artifactLabel { width: 96%; padding: .5rem .65rem; }
   /* MSK hero on phones: the five-column queue scrolled sideways inside a
      clipped frame, so STATUS / ROUTED TO / ACTION were cut at the edge. The
      hero shows the first three columns (who, what, where it stands); the full
      five-column queue appears again in the decisions section. A shorter frame
      keeps the artifact compact immediately after the orientation evidence. */
-  .flagship-page .fp-heroArt--msk { min-height: 0; max-height: 320px; }
-  .flagship-page .fp-heroArt--msk .fp-dashboardFrame { max-height: 240px; }
+  .flagship-page .fp-heroArt--msk { min-height: 0; max-height: none; }
+  .flagship-page .fp-heroArt--msk .fp-dashboardFrame { max-height: none; }
   /* The filter chips and the role/timestamp line took the frame's height
      before the first queue row; the rows are the artifact. */
   .flagship-page .fp-heroArt--msk .msk-dashboard-mockup__toolbar,
@@ -2763,7 +2765,8 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
     min-width: 0;
     grid-template-columns: 1.2fr .9fr 1fr;
   }
-  .flagship-page .fp-heroArt--msk .msk-dashboard-mockup__row > :nth-child(n + 4) { display: none; }
+  /* The compact mockup already hides Doc and Routed-to, so the phone hero shows
+     Patient, Status and Action; nothing else is hidden here. */
   /* Consequential labels stay compact but no longer fall below the 13px
      floor on the phone layouts used in the recruiter audit. */
   .rp-heroEvidence dt,
@@ -4303,3 +4306,59 @@ body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-g
 .rp-share--link:hover, .rp-textLink:hover { color: var(--ink); }
 .rp-share--link:focus-visible, .rp-textLink:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
 .rp-close .rp-hero__ctas { align-items: center; }
+
+/* ---------- Panel fixes (2026-11-09 design panel) ---------- */
+
+/* Press feedback: every button, link-button, disclosure and row answers a
+   press (none did). Strong ease-out, under 200ms. */
+/* Guarded: under reduced motion the earlier `transition: none` rules stay in
+   force (an unguarded copy of this block overrode them). */
+@media (prefers-reduced-motion: no-preference) {
+  .rp-cta, .rp-copyEmail__button, .rp-reelToggle, .rp-share--link, .rp-textLink,
+  .rp-index__row, .rp-deepDive > summary, .rp-more > summary, .nav-dock__item {
+    transition-property: transform, background-color, color, box-shadow, opacity;
+    transition-duration: var(--dur-press);
+    transition-timing-function: var(--ease-out);
+  }
+  .rp-copyEmail__button:active, .rp-reelToggle:active, .rp-share--link:active, .rp-textLink:active,
+  .rp-deepDive > summary:active, .rp-more > summary:active, .nav-dock__item:active { transform: scale(.97); }
+  .rp-index__row:active { transform: scale(.995); }
+  .rp-cta:active { transform: translate(1px, 1px) scale(.98); }
+}
+
+/* Nothing that can't be clicked moves on hover: GSAP owns these transforms,
+   and a CSS hover lift both fought it and implied a link. */
+.rp-headshot, .rp-device, .rp-strip__frame, .rp-device img, .rp-strip__frame img { transition: none !important; }
+.rp-hero__media:hover .rp-headshot, .riso-home .rp-hero__media:hover .rp-headshot,
+.rp-hero__media:hover .rp-device, .rp-split__media:hover .rp-device,
+.rp-hero__media:hover .rp-device img, .rp-split__media:hover .rp-device img,
+.rp-strip__item:hover .rp-strip__frame, .rp-strip__item:hover .rp-strip__frame img { transform: none !important; }
+
+/* Hover descriptions fade in a reserved line instead of growing the row, so
+   the rows below never jump under the cursor. */
+.rp-index__desc { max-height: none; margin-top: .5rem; opacity: 0; transform: translateY(-4px);
+  transition: opacity var(--dur-press) ease, transform var(--dur-press) var(--ease-out); }
+@media (prefers-reduced-motion: reduce) { .rp-index__desc, .rp-fold__hint { transition: none; transform: none; } }
+.rp-index__row:hover .rp-index__desc, .rp-index__row:focus-visible .rp-index__desc { max-height: none; margin-top: .5rem; opacity: 1; transform: none; }
+.rp-fold__hint { max-height: none !important; opacity: 0; transition: opacity 150ms ease; }
+@media (hover: none) { .rp-index__desc { opacity: 1; transform: none; } }
+
+/* Copy button holds one width through its Copy / Copied states. */
+.rp-copyEmail__button { min-width: 7.5em; }
+
+/* With reduced motion the reels never move, so the pause control is hidden. */
+@media (prefers-reduced-motion: reduce) { .rp-reelToggle { display: none; } }
+
+/* Contrast: "Read more" and fold links on dark bands use the light coral
+   (rust on dark green measured 2.17:1). */
+.rp-override .rp-more > summary, .rp-outcomeStage .rp-more > summary, .rp-cinema .rp-more > summary,
+.rp-override .rp-deepDive__state, .rp-outcomeStage .rp-deepDive__state { color: var(--coral-on-dark); }
+/* Grove captions measured 3.84:1 and 4.06:1: darker ink at a readable size. */
+.rp-heroNote span { color: var(--coral-text); font-size: .8125rem; letter-spacing: 0; }
+.rp-decision__tag--new { color: var(--ink); }
+/* MSK hero queue: three columns (Patient, Status, Action) like the later
+   copies, and on phones the hero grows to show it whole instead of clipping
+   the row that holds "Send to EMR". */
+@media (max-width: 760px) {
+  .flagship-page--msk .rp-hero__media { height: auto; max-height: none; overflow: visible; }
+}

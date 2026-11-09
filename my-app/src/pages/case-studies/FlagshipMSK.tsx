@@ -179,7 +179,7 @@ export default function FlagshipMSK() {
           <div className="fp-artifactLabel"><span>Recreated artifact</span><b>Office Coordinator filing queue</b></div>
           <div className="fp-dashboardFrame" aria-label="Recreated Office Coordinator filing queue concept">
             {/* Three rows tell the story (waiting, needs review, filed); the full queue made this hero 1,000px tall. */}
-            <MSKDashboardMockup legendDisclosure rowIndices={[0, 2, 4]} />
+            <MSKDashboardMockup compact legendDisclosure rowIndices={[0, 2, 4]} />
           </div>
         </div>
       </header>

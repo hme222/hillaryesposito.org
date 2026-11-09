@@ -10,60 +10,34 @@ gsap.registerPlugin(ScrollTrigger);
  * routes mount late), then adds scroll-linked motion to elements that already
  * exist. It never hides content outright (opacity starts at .25, not 0) so a
  * missed scroll event leaves the page readable, and it does nothing when the
- * visitor prefers reduced motion. Elements that carry `.rp-reveal` are left to
- * the existing reveal hook; this layer animates their children instead.
+ * visitor prefers reduced motion. Elements inside `.rp-reveal` are left to the
+ * reveal hook, so nothing gets two entrances (panel review, 2026-11-09).
+ * Numbers never count up: an evidence-led page must never show a wrong figure,
+ * even for a second mid-animation.
  */
-
-const COUNT_UP = /^(\d[\d,]*(?:\.\d+)?)(\+|%)?$/;
-
-function countUp(el: HTMLElement) {
-  const raw = el.textContent?.trim() ?? "";
-  const m = raw.match(COUNT_UP);
-  if (!m) return;
-  const target = parseFloat(m[1].replace(/,/g, ""));
-  if (!Number.isFinite(target) || target < 10) return;
-  const decimals = (m[1].split(".")[1] || "").length;
-  const suffix = m[2] ?? "";
-  const state = { v: 0 };
-  el.setAttribute("aria-label", raw);
-  gsap.to(state, {
-    v: target,
-    duration: 1.6,
-    ease: "power2.out",
-    scrollTrigger: { trigger: el, start: "top 88%", once: true },
-    onUpdate: () => {
-      const n = decimals ? state.v.toFixed(decimals) : Math.round(state.v).toLocaleString("en-US");
-      el.textContent = `${n}${suffix}`;
-    },
-    onComplete: () => {
-      el.textContent = raw;
-    },
-  });
-}
 
 function build(root: Document) {
   const q = (s: string) => Array.from(root.querySelectorAll<HTMLElement>(s));
   const enter = (trigger: Element, start = "top 86%") => ({ trigger, start, once: true });
 
-  // Hero: the name arrives word by word, then the role, then the support text.
-  const phrases = q(".rp-nameSplash__word, .rp-nameSplash__role");
-  if (phrases.length) {
-    gsap.from(phrases, { yPercent: 40, opacity: 0.2, duration: 0.9, ease: "power3.out", stagger: 0.14 });
-  } else {
-    gsap.from(q(".rp-hero .rp-h1, .rp-clearing .rp-h1"), { y: 28, opacity: 0.2, duration: 0.8, ease: "power3.out" });
+  // Hero: the name's own weight animation (CSS) is its one entrance; the
+  // support text follows quickly. Case heroes move the headline a little.
+  const notInReveal = (el: HTMLElement) => !el.closest(".rp-reveal");
+  if (!q(".rp-nameSplash__word").length) {
+    gsap.from(q(".rp-hero .rp-h1, .rp-clearing .rp-h1"), { y: 14, opacity: 0.25, duration: 0.5, ease: "expo.out" });
   }
   gsap.from(q(".rp-heroProof, .rp-sub, .rp-hero__ctas, .rp-readtime"), {
-    y: 18, opacity: 0.25, duration: 0.7, ease: "power2.out", stagger: 0.08, delay: 0.25,
+    y: 12, opacity: 0.25, duration: 0.5, ease: "expo.out", stagger: 0.06, delay: 0.1,
   });
-  // The portrait settles in and drifts a little slower than the page.
+  // The portrait drifts a little slower than the page. GSAP owns its transform;
+  // the CSS hover lift that fought it was removed.
   q(".rp-headshot").forEach((el) => {
-    gsap.from(el, { scale: 1.05, duration: 1.2, ease: "power2.out" });
     gsap.to(el, { yPercent: -4, ease: "none", scrollTrigger: { trigger: el, start: "top top", end: "bottom top", scrub: true } });
   });
 
   // Section headings rise as they enter.
-  q(".rp-title, .rp-section h2").forEach((el) => {
-    gsap.from(el, { y: 26, opacity: 0.25, duration: 0.8, ease: "power3.out", scrollTrigger: enter(el) });
+  q(".rp-title, .rp-section h2").filter(notInReveal).forEach((el) => {
+    gsap.from(el, { y: 14, opacity: 0.25, duration: 0.5, ease: "expo.out", scrollTrigger: enter(el) });
   });
 
   // Home work rows: artifacts drift against the scroll, titles step in.
@@ -73,9 +47,6 @@ function build(root: Document) {
   q(".rp-work__title").forEach((el) => {
     gsap.from(el, { x: -22, opacity: 0.3, duration: 0.7, ease: "power3.out", scrollTrigger: enter(el, "top 90%") });
   });
-
-  // Numbers count up once; the final text is restored exactly.
-  q(".rp-stat__n, .rp-surveyStats dt").forEach(countUp);
 
   // Grove: the twelve bars fill in, then the nine that waited settle back.
   const bars = q(".rp-rank__track i");
@@ -104,8 +75,8 @@ function build(root: Document) {
   });
 
   // Case-study artifacts ease in as they arrive.
-  q(".fp-artifactLabel, .fp-dashboardFrame, .rp-device, .fp-heroArt").forEach((el) => {
-    gsap.from(el, { y: 36, opacity: 0.3, duration: 0.9, ease: "power3.out", scrollTrigger: enter(el, "top 92%") });
+  q(".fp-artifactLabel, .fp-dashboardFrame, .rp-device, .fp-heroArt").filter(notInReveal).forEach((el) => {
+    gsap.from(el, { y: 16, opacity: 0.3, duration: 0.5, ease: "expo.out", scrollTrigger: enter(el, "top 92%") });
   });
 }
 

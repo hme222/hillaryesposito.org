@@ -1267,6 +1267,8 @@ textarea::placeholder {
 :root {
   --ease-spring: cubic-bezier(0.22, 0.9, 0.3, 1.15); /* slight overshoot */
   --ease-soft: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1); /* strong ease-out for press and reveal */
+  --dur-press: 160ms;
   --dur-fast: 0.2s;
   --dur: 0.34s;
   --glow: color-mix(in srgb, var(--olive-2) 16%, transparent);
