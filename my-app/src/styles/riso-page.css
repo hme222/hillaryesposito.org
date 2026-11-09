@@ -4175,28 +4175,18 @@ body .riso-home .rp-hero .rp-clearing {
 .rp-more__body { margin-top: .5rem; }
 .rp-more__body > :first-child { margin-top: 0; }
 
-/* Grove's hero capture is a real phone screen, so it gets a phone's frame:
-   a dark bezel, deeper corners, a camera pill and a thin edge highlight.
-   Without them the dark welcome screen read as a flat box. The in-app
-   captures (.rp-device--app) are browser views and keep the plain card. */
+/* One phone treatment site-wide (2026-11-09), matching Knowunity's hero:
+   the screen is the device. Rounded corners, a thin edge, a soft shadow, no
+   drawn bezel or camera pill (those covered the app's own top bar and, on
+   Grove's dark-green screen, melted into a dark slab). */
 .rp-hero__media .rp-device:not(.rp-device--app) {
-  --rp-bezel: color-mix(in srgb, black 86%, var(--green));
-  /* content-box keeps the 430:932 screen ratio inside the bezel; with
-     border-box the 9px bezel squeezed the screen narrower than the capture. */
-  box-sizing: content-box;
-  border: 9px solid var(--rp-bezel);
-  border-radius: 46px;
-  background: var(--rp-bezel);
-  box-shadow:
-    inset 0 0 0 1px color-mix(in srgb, white 14%, transparent),
-    0 0 0 1px color-mix(in srgb, white 10%, transparent),
-    0 2px 6px rgba(0, 0, 0, .12),
-    0 30px 60px -20px rgba(0, 0, 0, .35);
+  border: 1px solid var(--hair);
+  border-radius: var(--r-device);
+  background: #0e140f;
+  box-shadow: 0 28px 58px -28px rgba(0, 0, 0, .55);
 }
-.rp-hero__media .rp-device:not(.rp-device--app)::before {
-  top: 9px; width: 58px; height: 16px; background: var(--rp-bezel); opacity: 1;
-}
-.rp-hero__media .rp-device:not(.rp-device--app) img { border-radius: 36px; }
+.rp-hero__media .rp-device:not(.rp-device--app)::before { content: none; }
+.rp-hero__media .rp-device:not(.rp-device--app) img { object-fit: cover; }
 
 /* ---------- Airy spacing, applied to Home and all six case studies ----------
    Direction B from the 2026-11-06 spacing debate: more space between
@@ -4232,11 +4222,10 @@ body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-g
 .rp-index__row--visual:has(.rp-phoneReel) { grid-template-columns: 3.5rem minmax(0, 1fr) 150px auto; }
 .rp-index__visual:has(.rp-phoneReel) { aspect-ratio: auto; border: 0; background: transparent; overflow: visible; }
 .rp-phoneReel {
-  --rp-bezel: color-mix(in srgb, black 86%, var(--green));
-  width: 150px; padding: 6px; border-radius: 26px; background: var(--rp-bezel);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, white 14%, transparent), 0 18px 34px -18px rgba(0, 0, 0, .45);
+  width: 150px; border: 1px solid var(--hair); border-radius: 22px; overflow: hidden;
+  background: #0e140f; box-shadow: 0 18px 34px -18px rgba(0, 0, 0, .45);
 }
-.rp-phoneReel__screen { position: relative; aspect-ratio: 390 / 844; overflow: hidden; border-radius: 20px; background: #0e140f; }
+.rp-phoneReel__screen { position: relative; aspect-ratio: 390 / 844; overflow: hidden; }
 .rp-phoneReel__screen img {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
   opacity: 0; transition: opacity 1.2s ease;
