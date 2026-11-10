@@ -42,6 +42,12 @@ not render" and cap at 7: a real Chrome is available through Bash.
    cover, write a small playwright-core script in your own scratch directory
    (Chrome is at `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome`;
    playwright-core is in the repo's root `node_modules`).
+3b. **Blank bands in full-page PNGs are usually sticky tracks, not empty sections.**
+   `.rp-decisionStory__track` is 180vh tall so its panel can stay pinned while the
+   reader scrolls; in a full-page capture that scroll distance looks like 700-1100px of
+   blank background (Mobbin, MSK, Knowunity). Do not score it as dead space. The harness
+   writes `<route>-<width>-sticky-1..3.png` (viewport shots at 10%, 50% and 95% through
+   each track): judge those. Only call it a defect if the panel is NOT pinned there.
 4. IntersectionObserver and rAF reveals only fire after scrolling, and GSAP
    starts elements at opacity .25. Measure contrast with reduced motion on, or
    after scrolling through the page, never on a cold first paint.

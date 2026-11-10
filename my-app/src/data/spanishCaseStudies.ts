@@ -8,6 +8,8 @@ export const GROVE_ES: SpanishCaseStudyData = {
   meta: "Grove · Diseño de producto · Prototipo funcional · Fase 2 de 3",
   intro:
     "Grove es una app de cuidado de plantas. Una herramienta de IA llamada Emergent construyó una primera versión rápida y llena de funciones. Una prueba exploratoria con 5 usuarios, entre marzo y mayo de 2026, señaló sobrecarga; el registro conservado no incluye resultados por tarea, así que no hago una afirmación más amplia con esa prueba. Después, una encuesta de 37 personas redujo doce funciones a las tres prioridades que guían la Fase 2. La encuesta registra prioridades declaradas, no comportamiento observado ni demanda de mercado.",
+  /* Interview-sourced human line (Better Stories pass, 2026-11-10). Spanish is a draft translation for Hillary to review. */
+  humanLine: "Sé de plantas, así que quería más funciones. Cinco usuarios lo cambiaron.",
   stats: [
     { label: "Rol", value: "Diseñadora de producto (en solitario)" },
     { label: "Muestra", value: "37 respuestas de encuesta" },
@@ -94,6 +96,8 @@ export const MSK_ES: SpanishCaseStudyData = {
   meta: "Memorial Sloan Kettering · sistemas clínicos",
   intro:
     "Los mensajes del portal de pacientes vivían en el portal, no en la historia clínica, así que el personal los imprimía para escanearlos. Diagnostiqué y mapeé ese desvío de papel entre cuatro áreas (clínica, TI, HIM y operaciones), verifiqué su viabilidad y propuse un flujo de archivo digital. Los equipos de tecnología de la información (TI) y de experiencia de usuario (UX) lo construyeron después de que cambié de puesto.",
+  /* Interview-sourced human line (Better Stories pass, 2026-11-10). Spanish is a draft translation for Hillary to review. */
+  humanLine: "Yo imprimía las notas. Luego esperábamos.",
   stats: [
     // Two rows, matching the English hero (2026-10-16): the rest restated the
     // intro and the workflow section's provenance note.
@@ -219,6 +223,8 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
   meta: "Mobbin · Documentación de flujos de experiencia de usuario (UX) · tres apps financieras",
   intro:
     "Mobbin es una biblioteca de capturas de apps donde los diseñadores buscan ejemplos. Capturé, ordené, anoté y etiqueté más de 200 pantallas por app en Kikoff, Polymarket y Discover. Documenté estos productos; no los diseñé, ni diseñé Mobbin.",
+  /* Interview-sourced human line (Better Stories pass, 2026-11-10). Spanish is a draft translation for Hillary to review. */
+  humanLine: "Mi primer lote usó mis palabras, no las de Mobbin. Me dio vergüenza.",
   stats: [
     { label: "Cliente", value: "Mobbin · trabajo freelance" },
     { label: "Tiempo", value: "Contrato de cuatro meses" },
@@ -306,6 +312,8 @@ export const LOGISTICS_ES: SpanishCaseStudyData = {
   meta: "Logística médica del Ejército · Operaciones · Diseño de servicios · 2024",
   intro:
     "Como oficial de logística médica, planifiqué y di seguimiento a la reubicación de un almacén de $2M que abastecía a siete estaciones de ayuda en tres países. El reabastecimiento pasó de 1–2 meses a 1–2 semanas. Son cifras reportadas por mí; no se conservaron los periodos ni los métodos de medición.",
+  /* Interview-sourced human line (Better Stories pass, 2026-11-10). Spanish is a draft translation for Hillary to review. */
+  humanLine: "Yo estaba a cargo de llevar vacunas contra la rabia a tres países. Una vez, las entregué yo misma.",
   stats: [
     { label: "Rol", value: "Oficial de logística médica · líder de reubicación y servicio" },
     { label: "Escala", value: "5,000+ soldados · $2M en suministros" },
@@ -394,6 +402,8 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
   meta: "Knowunity · Sprint de diseño · Prototipo móvil interactivo · Recuerdo simulado",
   intro:
     "Knowunity es una app de estudio para estudiantes. Un estudiante dice una definición en voz alta; Knowie, el asistente de Knowunity, responde por texto. Cuando acierta, le cita sus propias palabras como prueba. Participación individual de dos semanas y media en el Yummy Labs AI Design Sprint, con el brief de Knowunity; prototipo funcional sobre su kit de componentes. El reconocimiento de voz es simulado y no se probó con estudiantes; no es una función publicada de Knowunity.",
+  /* Interview-sourced human line (Better Stories pass, 2026-11-10). Spanish is a draft translation for Hillary to review. */
+  humanLine: "Lo que más pidió Knowunity: que los estudiantes recordaran. Construí para eso.",
   stats: [
     { label: "Rol", value: "Participación individual · Yummy Labs AI Design Sprint · brief y kit de Knowunity" },
     { label: "Brief", value: "Voz de entrada, texto de salida · iOS, 390px, modo oscuro · recuerdo simulado" },
@@ -499,6 +509,8 @@ export const UXWOMAN_ES: SpanishCaseStudyData = {
   meta: "UX Woman · Investigación en salud · Guía para una carta de Medicaid",
   intro:
     "UX Woman es una aceleradora de diseño UX de 7 meses, guiada por mentores. Entrevisté a seis personas del personal de clínicas y aseguradoras y luego centré el trabajo en una carta pública de muestra de Medicaid de Nueva York sobre los nuevos requisitos de trabajo. Construí una guía que empieza por la carta que tienes en la mano. No está probada y no se entrevistó a ningún paciente.",
+  /* Interview-sourced human line (Better Stories pass, 2026-11-10). Spanish is a draft translation for Hillary to review. */
+  humanLine: "Un líder de hospital me dijo: la IA ayuda a los hospitales a prepararse y a las aseguradoras a denegar.",
   stats: [
     { label: "Rol", value: "Única investigadora y diseñadora · Aceleradora de diseño UX de UX Woman · 2026" },
     { label: "Evidencia", value: "Seis entrevistas con personal de clínicas y aseguradoras · seis fuentes públicas · ninguna entrevista con pacientes" },

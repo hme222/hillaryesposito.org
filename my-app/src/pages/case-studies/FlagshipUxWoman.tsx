@@ -95,6 +95,8 @@ export default function FlagshipUxWoman() {
             <p className="rp-sub">
               I turned six interviews with clinic and insurer staff into a guide for one New York Medicaid letter. <b>It is untested, and no patient was interviewed.</b>
             </p>
+            {/* Interview-sourced human line (Better Stories pass, 2026-11-10); source: design-docs/case-study-stories. */}
+            <p className="rp-humanLine">A hospital leader told me: AI helps hospitals prepare, and insurers deny.</p>
             <dl className="rp-heroEvidence" aria-label="UX Woman case evidence at a glance">
               <div><dt>Role</dt><dd>Sole researcher and designer · UX Woman UX Design Accelerator · 2026</dd></div>
               <div><dt>I made</dt><dd>Affinity map · persona · journey maps · user flows · wireframes · hi-fi prototype</dd></div>

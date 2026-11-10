@@ -51,6 +51,13 @@
   --ts-small: .9375rem;
   --ts-body: 1rem;
   --ts-lead: 1.125rem;
+  --ts-pull: clamp(1.25rem, 2.4vw, 1.75rem);   /* one-line human line under a hero */
+  --pull-gap: 1.4rem;        /* space above the human line */
+  --pull-indent: .9rem;      /* text inset from its coral rule */
+  --pull-rule: 3px;
+  --pull-measure: 34ch;
+  --pull-leading: 1.15;
+  --pull-tracking: -.015em;
   --ts-title: clamp(1.6rem, 4vw, 2.5rem);      /* section and item titles */
   --ts-heading: clamp(1.35rem, 3vw, 2.1rem);   /* card and step headings */
   --ts-stat: clamp(1.8rem, 4vw, 2.6rem);       /* numeric display */
@@ -422,7 +429,7 @@ html[lang="es"] .riso-home .rp-h1Fit { --h1-w100: 1116; }
   /* 13vw sized a four-word headline; the sentence needs a lower ceiling. */
   .riso-home .rp-h1 { font-size: min(clamp(1.9rem, 8.4vw, 2.9rem), calc(100cqi * 100 / var(--h1-w100))); }
   .riso-home .rp-hero__media {
-    order: -1;
+    order: 1; /* name card first on phones (panel, 2026-11-10) */
     /* Trimmed from 330-380px (2026-10-10, fix round 2): the recruiter-tour
        link - the hero's own quiet entry point to the panel - needs to land
        inside the first 844px viewport below the two primary CTAs, and the
@@ -441,7 +448,7 @@ html[lang="es"] .riso-home .rp-h1Fit { --h1-w100: 1116; }
   .riso-home .rp-hero,
   .riso-home .rp-hero__content,
   .riso-home .rp-hero__media { min-width: 0; width: 100%; box-sizing: border-box; }
-  .riso-home .rp-hero__content { order: 1; overflow: hidden; }
+  .riso-home .rp-hero__content { order: 0; overflow: hidden; }
   .riso-home .rp-clearing {
     width: calc(100vw - 2.8rem);
     max-width: calc(100vw - 2.8rem);

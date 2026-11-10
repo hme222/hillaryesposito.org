@@ -178,6 +178,23 @@ async function warm() {
         await vpage.waitForTimeout(500);
         await vpage.screenshot({ path: path.join(OUT, `${slug}.png`), fullPage: true });
         await vpage.screenshot({ path: path.join(OUT, `${slug}-fold.png`) });
+        // Sticky decision tracks (.rp-decisionStory__track, min-height 180vh) look like
+        // 700-1100px blank bands in a full-page PNG, but the panel stays pinned while the
+        // visitor scrolls through them. Shoot the viewport at three points inside each
+        // track so critics judge what a visitor sees. (The panel measured pinned at the
+        // same offset across the whole track on MSK, Mobbin and Knowunity, 2026-11-10.)
+        const tracks = await vpage.evaluate(() => [...document.querySelectorAll(".rp-decisionStory__track")].map((t) => {
+          const r = t.getBoundingClientRect(); const pn = t.querySelector(".rp-decisionStory__panel");
+          return { top: Math.round(r.top + scrollY), h: Math.round(r.height), panelH: pn ? Math.round(pn.getBoundingClientRect().height) : 0 };
+        }));
+        for (let ti = 0; ti < tracks.length; ti++) {
+          const t = tracks[ti];
+          for (const [n, f] of [[1, 0.1], [2, 0.5], [3, 0.95]]) {
+            await vpage.evaluate((y) => window.scrollTo(0, y), Math.max(0, t.top + (t.h - t.panelH) * f - 120));
+            await vpage.waitForTimeout(400);
+            await vpage.screenshot({ path: path.join(OUT, `${slug}-sticky${tracks.length > 1 ? ti + 1 : ""}-${n}.png`) });
+          }
+        }
         await vctx.close();
         const gate = m.overflowX > 0 || m.orphans.length || banned.length || axe.some((v) => v.id === "color-contrast");
         if (gate) failed = true;

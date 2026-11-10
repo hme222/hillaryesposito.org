@@ -168,6 +168,8 @@ export default function FlagshipMSK() {
             <p className="rp-sub">
               I mapped a paper detour across four departments and pitched a digital filing workflow. <b>Information technology (IT) and user experience (UX) teams built it after I changed roles.</b>
             </p>
+            {/* Interview-sourced human line (Better Stories pass, 2026-11-10); source: design-docs/case-study-stories. */}
+            <p className="rp-humanLine">I printed the notes myself. Then we waited.</p>
             <dl className="rp-heroEvidence rp-heroEvidence--workflow" aria-label="MSK case evidence at a glance">
               {/* Two rows since 2026-10-16: contribution, implementation, and
                   evidence restated the sub above and the provenance note below. */}

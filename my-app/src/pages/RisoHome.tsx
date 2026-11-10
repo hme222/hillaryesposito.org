@@ -148,6 +148,7 @@ export default function RisoHome() {
               </h1>
             </div>
             <p className="rp-sub rp-heroProof">{t("home.riso.heroLead")}</p>
+            <p className="rp-humanLine">{t("home.riso.heroHuman")}</p>
           </div>
         </div>
         {/* Simple hero media: photo next to the header text. The dashboard
@@ -181,7 +182,7 @@ export default function RisoHome() {
           <HomeFold
             id="home-more-work"
             title={t("home.index.more")}
-            hint={t("home.index.moreHint")}
+            summary={t("home.index.moreSummary")}
             openLabel=""
             closeLabel=""
           >

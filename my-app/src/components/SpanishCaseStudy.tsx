@@ -19,6 +19,8 @@ export type SpanishCaseStudyData = {
   breadcrumb: string;
   meta: string;
   intro: string;
+  /** One large-type, first-person line from Hillary's interview answers, shown under the intro. */
+  humanLine?: string;
   stats: { label: string; value: string }[];
   sections: {
     anchor: string;
@@ -106,6 +108,7 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
             <span className="rp-eyebrow">{data.meta}</span>
             <h1 className="rp-h1">{data.title}</h1>
             <p className="rp-sub">{data.intro}</p>
+            {data.humanLine ? <p className="rp-humanLine">{data.humanLine}</p> : null}
             <p className="rp-language-note rp-language-note--inline">
               Esta es una versión condensada. El estudio completo está disponible en inglés.
             </p>

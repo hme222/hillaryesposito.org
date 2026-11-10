@@ -157,11 +157,13 @@
 .flagship-page .rp-h1 { order: 2; }
 .flagship-page .rp-readtime { order: 3; }
 .flagship-page .rp-sub { order: 4; }
+.flagship-page .rp-humanLine { order: 4; } /* ties with .rp-sub, so DOM order puts it right after */
 .flagship-page .rp-heroEvidence { order: 5; }
 .flagship-page .rp-hero__ctas { order: 6; }
 .flagship-page--msk .rp-h1 { order: 1; margin-top: 0; }
 .flagship-page--msk .fp-contextLine { order: 2; margin-top: .85rem; }
 .flagship-page--msk .rp-sub { order: 3; }
+.flagship-page--msk .rp-humanLine { order: 3; }
 .flagship-page--msk .rp-heroEvidence { order: 4; }
 .flagship-page--msk .rp-hero__ctas { order: 5; }
 .rp-h1 { font-size: clamp(2.6rem, 7vw, 4.6rem); line-height: 1.0; letter-spacing: -.024em; font-weight: 800; margin: .8rem 0 0; text-wrap: balance; }
@@ -220,6 +222,19 @@
    floor and moving with the backdrop. Pulled 30% toward --ink (6.0:1 there);
    it still reads green, and flips correctly in dark mode. */
 .rp-sub b { color: color-mix(in srgb, var(--green) 70%, var(--ink)); }
+/* The human line: one first-person sentence, set large, under a hero's sub-line.
+   Typography is the voice here, so it is type and one rule, nothing else. Source:
+   design-docs/case-study-stories (Hillary's own interview answers). */
+/* The extra selectors out-rank the body-copy floor on Home and MSK (`.riso-home p`,
+   `.flagship-page--msk p`), which would otherwise set it to 16px. */
+.rp-humanLine,
+.riso-home .rp-humanLine,
+.flagship-page--msk .rp-humanLine {
+  margin: var(--pull-gap) 0 0; padding-left: var(--pull-indent); border-left: var(--pull-rule) solid var(--coral);
+  max-width: var(--pull-measure); color: var(--ink);
+  font-family: var(--display); font-size: var(--ts-pull); font-weight: 700; line-height: var(--pull-leading);
+  letter-spacing: var(--pull-tracking); text-wrap: balance;
+}
 .rp-hero__media { position: relative; height: 100%; display: flex; align-items: center; justify-content: center;
   padding: var(--sp-sm); background:
     radial-gradient(120% 90% at 70% 40%, color-mix(in srgb, var(--green) 8%, transparent), transparent 60%); }
@@ -4419,4 +4434,13 @@ body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-g
    the row that holds "Send to EMR". */
 @media (max-width: 760px) {
   .flagship-page--msk .rp-hero__media { height: auto; max-height: none; overflow: visible; }
+}
+
+/* "Send to EMR" pill (panel, 2026-11-10): the 420px rule in App.css let the action pill
+   wrap inside its cell, and it collapsed into a three-line circle. The status pill may
+   wrap; the action stays on one line and its column takes the width it needs. */
+@media (max-width: 420px) {
+  .msk-dashboard-mockup .msk-dashboard-action { white-space: nowrap; }
+  .msk-dashboard-mockup--compact .msk-dashboard-mockup__row,
+  .flagship-page .fp-heroArt--msk .msk-dashboard-mockup__row { grid-template-columns: minmax(0, 1fr) minmax(0, .9fr) max-content; }
 }

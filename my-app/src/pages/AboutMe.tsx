@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useFlagshipReveal from "../hooks/useFlagshipReveal";
 import usePageTitle from "../hooks/usePageTitle";
 import { useLanguage } from "../app/LanguageContext";
@@ -120,7 +120,6 @@ const PATTERN_PROOF = [
 
 export default function About() {
   const { lang } = useLanguage();
-  const navigate = useNavigate();
   const isSpanish = lang === "es";
   const mskCopy = MSK_COPY[isSpanish ? "es" : "en"];
   usePageTitle(isSpanish ? "Sobre mí" : "About");
@@ -337,9 +336,16 @@ export default function About() {
             <a className="rp-cta" href="mailto:espositohillary@gmail.com">
               {isSpanish ? "Escríbame" : "Email me"} →
             </a>
-            <button type="button" className="rp-cta rp-cta--ghost" onClick={() => navigate("/?scrollTo=projects")}>
-              ← {isSpanish ? "Volver al trabajo" : "Back to work"}
-            </button>
+            {/* Same secondary action, in the same text-link style, as Home (panel, 2026-11-10). */}
+            <a
+              className="rp-textLink"
+              href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={isSpanish ? "Ver CV (se abre en una pestaña nueva)" : "View résumé (opens in new tab)"}
+            >
+              {isSpanish ? "Ver CV" : "View résumé"}
+            </a>
           </div>
           <CopyEmail />
         </div>

@@ -161,6 +161,8 @@ export default function FlagshipKnowunity() {
             <p className="rp-sub">
               In a solo 2.5‑week sprint, I designed and built a prototype where Knowie quotes a student’s own spoken definition back as proof.
             </p>
+            {/* Interview-sourced human line (Better Stories pass, 2026-11-10); source: design-docs/case-study-stories. */}
+            <p className="rp-humanLine">Knowunity’s top ask: students recalling it. I built for that.</p>
             <dl className="rp-heroEvidence rp-heroEvidence--boundary" aria-label="What I built and what is untested">
               <div><dt>Built here</dt><dd>Four interaction decisions · coded prototype · Storybook catalog</dd></div>
               <div><dt>Not proved</dt><dd>Recall mocked · no student testing · not shipped</dd></div>

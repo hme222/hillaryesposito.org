@@ -266,6 +266,8 @@ export default function RisoGrove() {
             <p className="rp-sub">
               I tested the first build, made with the AI app builder Emergent, with 5 people, then used a 37-person self-report survey to cut twelve features to three.
             </p>
+            {/* Interview-sourced human line (Better Stories pass, 2026-11-10); source: design-docs/case-study-stories. */}
+            <p className="rp-humanLine">I know plants, so I wanted more features. Five users changed that.</p>
             <div className="rp-heroEvidence rp-heroEvidence--trace" aria-label="Grove research-to-priority trace">
               <ol>
                 <li><b>5 people</b><span>exposed the navigation problem</span></li>

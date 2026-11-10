@@ -521,3 +521,32 @@ Validation: Not re-tested visually this round (no mono-caps variant was built to
 - Hero art labels and "Decision log" are sentence case.
 - Still deliberate, not drift: Knowunity/Logistics/UX Woman/Mobbin hero art label spans stay tracked at 0; About's eyebrow is a plain journal label (no chip) and its mobile hero order is text first; UX Woman and Mobbin heroes are mirrored (plate right) because their lead artifact is a ledger or capture log. Logistics is not mirrored. Revisit if the mirror rule should apply to all research and documentation cases.
 - Not done this round: Grove research stat hierarchy and caption rewrite, one shared grid for the three Home work rows, one shared hero-evidence component, merging MSKMechanism and LogisticsMechanism, and a token export script. The audit and tokens.json are still dated 2026-10-15.
+
+## Evidence-band variants and disclosure bars — panel 2026-11-10
+
+Recorded after the scored panel (Coherence 6) read the dark "numbers" band as three different systems.
+Measured on all six case studies, 1440 wide.
+
+### Dark evidence band (`.rp-outcomeStage`)
+
+Option A: **One band for every case.** Rejected: the existing per-case stages each carry their own
+contrast measurements (`flagship-case-study.css`: MSK's kicker moves to the stage's light ink because
+`--coral-on-dark` measured 3.99:1 on its teal), and flattening them would reopen those.
+
+Option B: **Keep the variants and record them.** **Selected.**
+
+| Page | Stage | Glow | Texture |
+|---|---|---|---|
+| Grove, Logistics, Knowunity, UX Woman | default green `#1c3520` to `#152717` | amber | concentric rings |
+| MSK | teal `#234b44` to `#102b27` | coral | vertical rules |
+| Mobbin | graphite `#30322e` to `#171815` (`.rp-override` `#262925`) | gold | horizontal rules |
+
+Default: Reuse one dark band so every case closes the same way.
+
+Instead: Let MSK (teal) and Mobbin (graphite) mirror their subject while the shared grammar (gradient, glow, texture, tile style) holds.
+
+Validation: every variant keeps kicker and tile text above 4.5:1; confirm with Hillary that the graphite and teal stages are intended. If not, collapse to the default and remove the two overrides.
+
+### "Open +" disclosure bars
+
+No divergence found. Every page uses the same two components: `.rp-deepDive > summary` (76px) and `.rp-more > summary` (44px), with no border or fill. The variation the panel saw comes from the surface behind each bar (tinted, white, dark), not from the bar.

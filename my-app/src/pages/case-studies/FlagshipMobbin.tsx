@@ -90,6 +90,8 @@ export default function FlagshipMobbin() {
             <p className="rp-sub">
               For Mobbin, a screenshot library designers search, I captured and labeled <b>200+ screens per app</b> across Kikoff, Polymarket and Discover. I did not design these products or Mobbin.
             </p>
+            {/* Interview-sourced human line (Better Stories pass, 2026-11-10); source: design-docs/case-study-stories. */}
+            <p className="rp-humanLine">My first batch used my words, not Mobbin’s. I was embarrassed.</p>
           </div>
         </div>
         <div className="rp-hero__media fp-heroArt fp-heroArt--mobbin" aria-label="Three finance app screens documented for Mobbin" data-evidence="true">
