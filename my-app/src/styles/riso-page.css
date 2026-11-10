@@ -4254,8 +4254,8 @@ body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-g
    Real phone screenshots at their true 390:844 shape inside a phone frame,
    crossfading slowly. The visual column narrows for phones; MSK keeps its
    desktop frame. */
-.rp-index__row--visual:has(.rp-phoneReel) { grid-template-columns: 3.5rem minmax(0, 1fr) 150px auto; }
-.rp-index__visual:has(.rp-phoneReel) { aspect-ratio: auto; border: 0; background: transparent; overflow: visible; }
+.rp-index__row--visual:has(.rp-phoneReel) { grid-template-columns: 3.5rem minmax(0, 1fr) clamp(180px, 24vw, 300px) auto; }
+.rp-index__visual:has(.rp-phoneReel) { aspect-ratio: auto; border: 0; background: transparent; overflow: visible; display: flex; justify-content: center; }
 .rp-phoneReel {
   width: 150px; border: 1px solid var(--hair); border-radius: 22px; overflow: hidden;
   background: #0e140f; box-shadow: 0 18px 34px -18px rgba(0, 0, 0, .45);
@@ -4275,7 +4275,12 @@ body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-g
 .rp-reelToggle:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
 @media (max-width: 760px) {
   .rp-index__row--visual:has(.rp-phoneReel) { grid-template-columns: 2.25rem minmax(0, 1fr) auto; }
-  .rp-index__row--visual .rp-index__visual:has(.rp-phoneReel) { max-width: none; }
+  .rp-index__row--visual .rp-index__visual:has(.rp-phoneReel) { max-width: none; justify-content: flex-start; }
+  .rp-index__row--visual .rp-phoneReel { width: 112px; border-radius: 18px; }
+  .rp-index__row--visual .rp-index__visual { max-width: 280px; }
+  /* Tall enough for the header and both queue rows, so the crop ends on a row boundary. */
+  .rp-index__row--visual .rp-index__visual:has(.rp-index__shot--msk) { aspect-ratio: 7 / 6; }
+  .rp-index__shot--msk .msk-dashboard-mockup__legend, .rp-index__shot--msk .msk-dashboard-mockup__rule { display: none; }
 }
 
 /* Grove hero: one quiet line under the demo button saying what the demo is. */
@@ -4366,14 +4371,25 @@ body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-g
 .rp-hero__media:hover .rp-device img, .rp-split__media:hover .rp-device img,
 .rp-strip__item:hover .rp-strip__frame, .rp-strip__item:hover .rp-strip__frame img { transform: none !important; }
 
-/* Hover descriptions fade in a reserved line instead of growing the row, so
-   the rows below never jump under the cursor. */
-.rp-index__desc { max-height: none; margin-top: .5rem; opacity: 0; transform: translateY(-4px);
-  transition: opacity var(--dur-press) ease, transform var(--dur-press) var(--ease-out); }
+/* Row descriptions float under the sub line, out of flow, so a row never grows,
+   jumps or carries a reserved blank line (the reserved-line version left 44-130px
+   of dead space per row, found by the 2026-11-10 panel). On phones and touch
+   screens the text is not drawn, since the title and sub already say what the row
+   is, but screen readers still get it through aria-describedby. */
+.rp-index__main { position: relative; }
+.rp-index__desc {
+  position: absolute; left: 0; right: 0; top: 100%; z-index: 2; max-height: none; margin-top: .35rem;
+  padding: .55rem .75rem; background: var(--paper); border: 1px solid var(--hair);
+  box-shadow: 0 10px 24px -14px rgba(0, 0, 0, .35);
+  opacity: 0; transform: translateY(-4px); pointer-events: none;
+  transition: opacity var(--dur-press) ease, transform var(--dur-press) var(--ease-out);
+}
 @media (prefers-reduced-motion: reduce) { .rp-index__desc, .rp-fold__hint { transition: none; transform: none; } }
-.rp-index__row:hover .rp-index__desc, .rp-index__row:focus-visible .rp-index__desc { max-height: none; margin-top: .5rem; opacity: 1; transform: none; }
+.rp-index__row:hover .rp-index__desc, .rp-index__row:focus-visible .rp-index__desc { opacity: 1; transform: none; }
 .rp-fold__hint { max-height: none !important; opacity: 0; transition: opacity 150ms ease; }
-@media (hover: none) { .rp-index__desc { opacity: 1; transform: none; } }
+@media (hover: none), (max-width: 760px) {
+  .rp-index__desc { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; box-shadow: none; opacity: 1; transform: none; }
+}
 
 /* Copy button holds one width through its Copy / Copied states. */
 .rp-copyEmail__button { min-width: 7.5em; }
