@@ -61,3 +61,53 @@ large-hospital AI gap scan, 2026-09-24.)
 - Read-time line: "read · research phase, 2026".
 - Short forms spelled out on first use: human-resources (HR), protected
   health information (PHI), artificial intelligence (AI).
+
+---
+
+## Storytelling interview — 2026-11-10 (Better Stories fixes; human moment near the top)
+
+Raw answers, verbatim first. Nothing below is site copy; it needs her approval.
+
+**Q (the interview that stuck with her; or the Medicaid-letter finding instead):**
+
+**A (verbatim):** "yeah i realized that although ai made it easier for hospitals to
+prepare patient information, ai also helped insurances deny more cases that normally
+do not get denied"
+
+**Captured:** her realization: AI made it easier for hospitals to prepare patient
+information, and AI also helped insurers deny more cases that normally do not get denied.
+- This is an insight, not yet a moment or a person. No interviewee, quote or incident
+  captured.
+- It is a factual claim about the industry, in her voice. Provenance not captured.
+- CONFLICT TO SURFACE: the live page does not say this. It frames "AI helps, a human
+  checks", "Denials turn on paperwork", and its hero says six interviews with clinic and
+  insurer staff turned into a guide for one New York Medicaid letter, untested, no
+  patient interviewed. Do not add the denial claim to the page until its source is known.
+- TODO: where it came from (which interview, a public source, or her own conclusion),
+  and whether "more cases that normally do not get denied" is something someone told
+  her or what she inferred.
+
+**Q (provenance of the denial insight):** Which interview or source did it come from,
+or was it her own conclusion?
+
+**A (verbatim):** "it was an insight from the senior leader, a trend he saw on the
+larger scale impacting his hospital"
+
+**Captured:** the insight came from a senior leader she interviewed: a trend he saw at
+larger scale, affecting his hospital.
+- Provenance: one interviewee's observation, not a measured finding and not her own
+  inference. Any copy must attribute it ("a senior hospital leader told me ...") and
+  must not state it as established fact.
+- TODO: which of the six interviews this was is not captured. The page lists six roles
+  (patient financial services, revenue operations, orthopedic physician assistant,
+  utilization-review nurse, psychiatrist, former health-plan member services) and none
+  is labelled "senior leader". Confirm which role he held before attributing, and keep
+  him unnamed and unidentifiable (participants are anonymized).
+- TODO: whether anyone else interviewed said the same. Single-source until she says
+  otherwise.
+
+### Material so far for the UX Woman human line (not copy)
+A senior hospital leader described a larger-scale trend at his hospital: AI made it
+easier for hospitals to prepare patient information, and it also helped insurers deny
+more cases that normally do not get denied. (Single-source; attribute; do not state as
+fact.)

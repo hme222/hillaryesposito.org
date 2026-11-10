@@ -141,3 +141,27 @@ my specs and Knowunity's components.
   on the case study must trace to an entry there or to this file. It does not
   contradict the paraphrase; the Pass snackbar reads "Said it back in your own
   words." (supports Q3).
+
+---
+
+## Storytelling interview — 2026-11-10 (Better Stories fix 1: human moment)
+
+Raw answers, verbatim first. Nothing below is site copy; it needs her approval.
+
+**Q (what made her choose proof over praise; a moment, or reasoning):**
+
+**A (verbatim):** "that was a part of the brief, I wanted to make sure students were
+recalling information, that was the most important part of the request from knowunity"
+
+**Captured:** recall was part of Knowunity's brief and the most important part of the
+request; she wanted to make sure students were recalling information.
+- Consistent with the file and page: the brief asked for an active-recall step and a
+  felt "I actually know this now".
+- Attribution to keep straight: RECALL was the brief's ask. "Quote the student's own
+  words back instead of praise" is the earlier recorded choice (Q3: she picked it, with
+  reasons selected from offered options, no free-text wording captured). Do not credit
+  the brief for the proof-not-praise mechanism, and do not credit her for the recall goal.
+- Not a human moment: this answer is reasoning from the brief, not a scene. The honest
+  turn for this case is probably the limits (recall mocked, no student tested, speech-
+  to-text next), not a personal scene.
+- TODO: her own words for why proof beats praise are still not captured.

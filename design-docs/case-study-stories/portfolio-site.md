@@ -65,3 +65,36 @@ Approved starter questions (EN / ES):
 - What inspired the look? / ¿Qué inspiró el estilo visual?
 Use for the answer engine: Q6 sets the recruiter starter questions (MSK
 service design; UX principles as a Training Facilitator).
+
+---
+
+## Storytelling interview — 2026-11-10 (Better Stories fix 4: who the site is for)
+
+Raw answers, verbatim first. Nothing below is site copy; it needs her approval.
+
+**Target (her words, from the next-step choice):** "I'm looking not just at Meta and
+Instagram but any UX design, product design, ux researcher roles in healthcare and
+consumer or digital products"
+
+**Q (what each hiring manager, healthcare and consumer, should believe after two
+minutes on Home; one sentence each):**
+
+**A (verbatim):** "I want them to believe I'm capable to innovation, clear
+communication and able to take redirection well as i care about the product and
+design details"
+
+**Captured:** one belief for both audiences (she did not split them): capable of
+innovation; clear communication; takes redirection well; cares about the product and
+design details.
+
+**Notes (do not fill):**
+- Four claims, each needs evidence on the page, not an adjective. TODO: which existing
+  proof she wants to carry each one.
+- Tension to surface: the earlier positioning decision (feedback_positioning_voice)
+  rejected "I sweat the details" as generic. "Cares about the product and design
+  details" is the same claim in softer words. Show it, do not state it.
+- "Takes redirection well" is the claim the site proves least. The honest turns
+  already in the files ("What I got wrong": IT deprioritized the send-to-EMR idea and
+  she kept raising it; Grove care logic; Mobbin; Knowunity "what I'd change") are the
+  natural evidence. This links positioning to fix 2.
+- TODO: a real example of being redirected, in her words.

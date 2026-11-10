@@ -255,3 +255,85 @@ leads with the range:
 - The résumé passages in the Ask knowledge base still quote the résumé's own
   "Cut medical resupply time by 85%" line verbatim; they are quotes of the
   résumé, not site copy.
+
+---
+
+## Storytelling interview — 2026-11-10 (Better Stories fixes; human moment near the top)
+
+Raw answers, verbatim first. Nothing below is site copy; it needs her approval.
+
+**Q (the mission she ran herself):** What do you remember: where you were, what you
+were carrying, what you were thinking in the moment?
+
+**A (verbatim):** "I was carrying life saving vaccines across countries to a more
+austere enviornment, more dangerous"
+
+**Captured:** she personally carried vaccines across countries to a more austere,
+more dangerous environment. Her words: "life saving".
+- Consistent with the existing notes (Chapter 3: vaccines with a hard 48-hour window
+  and temperature requirement, routes through dangerous areas; she ran one mission to
+  relieve her burnt-out team).
+- Keep sites, countries and routes out of the copy: the site's own rule for this case
+  is generic, with no names, places, routes or unit positions.
+- TODO: no sensory or small detail captured (what it felt like, what she checked, what
+  she was thinking). "Life saving" is her framing; do not add a quantity of doses or
+  people served.
+
+**Q (what she checked before leaving; what would go wrong if late or if the temperature slipped):**
+
+**A (verbatim):** "if the temperature slipped it would make the vaccines less
+effective and might have life endangering effects, slightly late is fine but i had
+to make it by 48 hrs for the second vaccine"
+
+**Captured:**
+- If the temperature slipped: the vaccines would be less effective and might have
+  life-endangering effects (her words).
+- Slightly late was acceptable; the hard limit was 48 hours, for "the second vaccine".
+- TODO: "the second vaccine" is ambiguous (a second dose of the same vaccine, a second
+  product, or the second leg of the run). Confirm before any copy uses it.
+- TODO: the clinical claim ("life endangering effects") is her statement. Keep it as
+  hers and hedged ("might"); do not strengthen it, and do not add a medical
+  explanation she did not give.
+
+### Material so far for the Logistics human line (not copy)
+She personally carried life-saving vaccines across countries to a more austere, more
+dangerous environment; a temperature slip would make them less effective and might
+endanger lives; slightly late was fine, but the second vaccine had to arrive within
+48 hours.
+
+**Follow-up (what "the second vaccine" meant):**
+
+**A (verbatim):** "the second part of the rabies vaccine that requires several doses
+within certain time periods"
+
+**Captured (resolves the earlier TODO):** "the second vaccine" was the second part of
+the rabies vaccine series, which requires several doses within certain time periods.
+Her 48-hour limit applied to getting that second part there.
+- TODO: confirm she is comfortable naming rabies on the site. The case currently says
+  "vaccines" generically, and avoids names, places, routes and unit positions.
+- TODO: no dose schedule or medical detail was given; add none. Say "second part of a
+  multi-dose series" if the specific name stays out.
+
+**Statement (2026-11-10, after the flags above), verbatim:** "Logistics, I was the medical
+officer in charge of distributing the rabbies vaccines and supplying 3 countires, what is
+the issue"
+
+**Captured:**
+- She was the medical officer in charge of distributing the rabies vaccines and
+  supplying three countries.
+- She is comfortable naming rabies (she named it herself). The flag was a check, not a
+  block: the case's rule is no site names, countries, routes or unit positions. The live
+  page already says "three countries" (a count, not names), which is consistent.
+- TODO: wording of her role in this chapter. Older notes (Chapter 3) describe her as the
+  paperwork/data person who tracked missions and also ran one mission herself; this says
+  "medical officer in charge of distributing". Confirm which wording is accurate for this
+  chapter before copy uses "in charge".
+
+**Follow-up (role wording), verbatim:** "Medical logistics officer is the same thing as
+what i said"
+
+**Captured (resolves the earlier TODO):** "Medical logistics officer" and "medical officer
+in charge of distributing the rabies vaccines and supplying 3 countries" describe the same
+role. The page's existing "Medical logistics officer" is accurate; "in charge of
+distributing" is hers to use for this chapter.
+- Still keep: no country, site or route names; no dose schedule or medical explanation.

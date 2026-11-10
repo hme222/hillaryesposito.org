@@ -329,3 +329,60 @@ were out of scope for this pass.
 8. **Titles:** Office Coordinator → Administrative Assistant → Trainer I
    Specialist, now in the MSK hero evidence list. About's MSK chapter heading
    is "Six years at MSK in three roles."
+
+---
+
+## Storytelling interview — 2026-11-10 (Better Stories fixes; human moment near the top)
+
+Raw answers, verbatim first. Nothing below is site copy; it needs her approval.
+
+**Q (human moment, MSK):** Think of one specific moment when you saw the paper
+detour happening in person. What did you see, who was there, what did they say or do?
+
+**A (verbatim):** "I remember asking about the process, and wanting to see if
+there was a more efficient way to get the same result. I had hundreds of
+patients and the waiting process delayed how effective our team could work."
+
+**Captured:** a motive and a cost, not yet a scene.
+- She asked about the process because she wanted the same result more efficiently.
+- She had "hundreds of patients"; the waiting delayed how effective the team could work.
+
+**Gaps (do not fill):**
+- TODO: no concrete scene captured (what was in her hands or on her desk, who was
+  there, what was said).
+- TODO: "hundreds of patients" is her phrase; no count, period or role (Office
+  Coordinator?) is attached. Do not turn it into a number. Confirm the role it
+  describes before it appears anywhere on the site.
+
+**Q (what the waiting looked like on a normal day):** When a patient message was
+printed and sent off to be filed, what did you do next, and what could you not do
+until it came back?
+
+**A (verbatim):** "I'd print the notes, waiting for them to be filed, which
+couldn't be accessed or referenced until they were processed again."
+
+**Captured:** she printed the notes herself; once printed they waited to be filed;
+until they were processed again they could not be accessed or referenced.
+- This is a first-person action ("I'd print the notes") plus a hard consequence
+  (not accessible, not referenceable until re-processed).
+- TODO: still no named moment or person. No answer captured for what happened when
+  someone needed a message that was still waiting.
+
+**Q (a time someone needed a message that was still waiting):** What happened, and what was at stake?
+
+**A (verbatim):** "We would have to reference our system, but couldn't use it in
+conjunction with the EMR system, an inconvience"
+
+**Captured:** while a message waited, they had to reference "our system" but could
+not use it together with the EMR. Her word for the cost is "an inconvenience".
+- Keep her register: the cost here is friction at volume, not a crisis. Do not
+  dramatize it or add a patient-harm stake she did not give (the existing site copy
+  already carries the filing-gap framing; check it does not claim more than this).
+- TODO: no named person or specific incident captured. "Our system" is unspecified
+  (portal, queue, or something else); confirm before naming it.
+
+### Material so far for the MSK human line (not copy)
+She printed the notes herself; they waited to be filed; until processed again they
+could not be accessed or referenced; with hundreds of patients, that waiting slowed
+how effective her team could work; she asked about the process to get the same result
+more efficiently.

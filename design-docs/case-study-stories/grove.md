@@ -153,3 +153,62 @@ verified 19, confidence 17, sources 14, photos 13; AI-written frustration 8 of
 37. Pet safety 4 of 12 new owners who answered. Light confidence 2.4 (13
 people) vs 3.4 (14 people). Delete-trigger coding for R36/R37 is a judgment
 call (ads, notification volume, hard-to-read text); see `DELETE_CODES`.
+
+---
+
+## Storytelling interview — 2026-11-10 (Better Stories fixes 2 and 4: being redirected)
+
+Raw answers, verbatim first. Nothing below is site copy; it needs her approval.
+
+**Q (a real moment she was redirected, by a manager, team, user or the data, and what
+she did next):**
+
+**A (verbatim):** "In grove, i used the user data to guide my information archiecture
+and ui change"
+
+**Captured:** on Grove, user data guided her information-architecture and UI changes.
+- Consistent with the earlier draft brief above: the 37-person survey she ran herself
+  was meant to check her own enthusiast bias ("huge plant lady") against what a new
+  user needs first; twelve proposed features became three.
+- This answers "who redirected her": the data did, against her own instinct. It is not
+  yet a specific moment.
+- TODO: no answer captured for what she was sure of before the data, which result
+  changed her mind, and what she changed because of it.
+
+**Q (what she was sure of before the data; what changed her mind; what she changed):**
+
+**A (verbatim):** "As someone advanced with plants, i initally thought having a
+breadth of features would be best for users. I realized after the testing, I wanted
+to be more intentional in how it was built and who it was for"
+
+**Captured:**
+- Before: as someone advanced with plants, she thought a breadth of features would be
+  best for users.
+- After "the testing": she wanted to be more intentional about how it was built and
+  who it was for.
+- TODO: what "the testing" refers to. Earlier notes say a 37-person survey she ran;
+  the Grove page says a usability retest has not been run and that self-report does
+  not prove behavior. Confirm it was the survey before any copy says "testing", and do
+  not imply usability testing.
+- TODO: no specific result or specific cut named; the 12-to-3 narrowing is already in
+  the file.
+
+### Material so far for the Grove human line (not copy)
+As someone advanced with plants she first thought a breadth of features would serve
+users best; after the research she wanted the build to be more intentional about how
+it was made and who it was for. (Matches the existing arc: twelve features became
+three.)
+
+**Follow-up (what "the testing" was):**
+
+**A (verbatim):** "for grove, the first user testing i conducted befroe the redesign"
+
+**Captured (resolves the earlier TODO):** "the testing" was the first user testing she
+conducted before the redesign.
+- This matches what the file and the live page already state: usability test, March to
+  May 2026, 5 users (confirmed), on the first build made in Emergent; then a 37-person
+  self-report survey used to cut twelve features to three; high-fidelity redesign, edge
+  states and the retest are still ahead (Phase 2 of 3).
+- So the human line can say the first user testing changed her mind. It must not imply
+  the redesign has been tested.
+- TODO: which finding from those five sessions most changed her thinking is not captured.
