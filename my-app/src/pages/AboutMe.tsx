@@ -6,8 +6,15 @@ import { useLanguage } from "../app/LanguageContext";
 import { Newspaper } from "lucide-react";
 import CartoField from "../components/riso/CartoField";
 import CopyEmail from "../components/CopyEmail";
+import MSKMechanism from "../components/MSKMechanism";
+import MSKServiceBlueprint from "../components/MSKServiceBlueprint";
+import MSKSustainment from "../components/MSKSustainment";
+import OrderStatusBoard from "../components/flagship/OrderStatusBoard";
+import { MSK_COPY } from "../data/mskCaseStudy";
 import { CLIENT_FEEDBACK, CLIENT_FEEDBACK_ES } from "../data/clientFeedback";
 import "../styles/riso-page.css";
+// The reused artifacts (status board, blueprint, lanes) carry their .fp-* styles here.
+import "../styles/flagship-case-study.css";
 
 // ── Story chapters ───────────────────────────────────────────────────────
 type AboutChapter = {
@@ -115,6 +122,7 @@ export default function About() {
   const { lang } = useLanguage();
   const navigate = useNavigate();
   const isSpanish = lang === "es";
+  const mskCopy = MSK_COPY[isSpanish ? "es" : "en"];
   usePageTitle(isSpanish ? "Sobre mí" : "About");
   const rootRef = useRef<HTMLElement>(null);
   useFlagshipReveal(rootRef);
@@ -165,29 +173,44 @@ export default function About() {
               without MSK's evidence under it. These are the judgment calls rather
               than the stages — things that are true of this practice specifically. */}
           <ol className="rp-list rp-patternList rp-reveal">
+            {/* Each point carries the artifact it links to, reused from the case
+                studies (nothing drawn new): the MSK paper detour, the logistics
+                status board, the MSK service blueprint, the sustainment lanes. */}
             <li>
-              {isSpanish ? "La nota adhesiva, la hoja de cálculo personal, el paso que todos se saltan. Ahí vive el proceso real, y nunca está en el documento del proceso." : "The sticky note, the personal spreadsheet, the step everyone skips. That is where the real process lives, and it is never in the process document."}
-              <Link to={isSpanish ? PATTERN_PROOF[0].pathEs : PATTERN_PROOF[0].path} className="rp-chapter__proof rp-chapter__proof--inline">
-                <b>{isSpanish ? PATTERN_PROOF[0].es : PATTERN_PROOF[0].en}</b>
-              </Link>
+              <div className="rp-patternList__text">
+                {isSpanish ? "La nota adhesiva, la hoja de cálculo personal, el paso que todos se saltan. Ahí vive el proceso real, y nunca está en el documento del proceso." : "The sticky note, the personal spreadsheet, the step everyone skips. That is where the real process lives, and it is never in the process document."}
+                <Link to={isSpanish ? PATTERN_PROOF[0].pathEs : PATTERN_PROOF[0].path} className="rp-chapter__proof rp-chapter__proof--inline">
+                  <b>{isSpanish ? PATTERN_PROOF[0].es : PATTERN_PROOF[0].en}</b>
+                </Link>
+              </div>
+              <div className="rp-patternList__visual"><MSKMechanism n="01" labels={mskCopy.redesigns.mechanismLabels} /></div>
             </li>
             <li>
-              {isSpanish ? "Averiguo quién paga cuando falla. Un clínico entre pacientes, un soldado esperando reabastecimiento, alguien cuya planta murió. El costo decide cuánta certeza le debe el diseño." : "I find out who pays when it breaks. A clinician between patients, a soldier waiting on resupply, someone whose plant died. The cost decides how much certainty the design owes them."}
-              <Link to={isSpanish ? PATTERN_PROOF[1].pathEs : PATTERN_PROOF[1].path} className="rp-chapter__proof rp-chapter__proof--inline">
-                <b>{isSpanish ? PATTERN_PROOF[1].es : PATTERN_PROOF[1].en}</b>
-              </Link>
+              <div className="rp-patternList__text">
+                {isSpanish ? "Averiguo quién paga cuando falla. Un clínico entre pacientes, un soldado esperando reabastecimiento, alguien cuya planta murió. El costo decide cuánta certeza le debe el diseño." : "I find out who pays when it breaks. A clinician between patients, a soldier waiting on resupply, someone whose plant died. The cost decides how much certainty the design owes them."}
+                <Link to={isSpanish ? PATTERN_PROOF[1].pathEs : PATTERN_PROOF[1].path} className="rp-chapter__proof rp-chapter__proof--inline">
+                  <b>{isSpanish ? PATTERN_PROOF[1].es : PATTERN_PROOF[1].en}</b>
+                </Link>
+              </div>
+              <div className="rp-patternList__visual"><OrderStatusBoard lang={isSpanish ? "es" : "en"} /></div>
             </li>
-            <li>
-              {isSpanish ? "Hago que la falla sea compartida antes de mejorarla. Cuatro áreas con cuatro versiones del problema rechazarán la misma solución de cuatro maneras." : "I make the failure shared before I make it better. Four departments carrying four models of the problem will reject the same solution four different ways."}
-              <Link to={isSpanish ? PATTERN_PROOF[2].pathEs : PATTERN_PROOF[2].path} className="rp-chapter__proof rp-chapter__proof--inline">
-                <b>{isSpanish ? PATTERN_PROOF[2].es : PATTERN_PROOF[2].en}</b>
-              </Link>
+            <li className="is-wide">
+              <div className="rp-patternList__text">
+                {isSpanish ? "Hago que la falla sea compartida antes de mejorarla. Cuatro áreas con cuatro versiones del problema rechazarán la misma solución de cuatro maneras." : "I make the failure shared before I make it better. Four departments carrying four models of the problem will reject the same solution four different ways."}
+                <Link to={isSpanish ? PATTERN_PROOF[2].pathEs : PATTERN_PROOF[2].path} className="rp-chapter__proof rp-chapter__proof--inline">
+                  <b>{isSpanish ? PATTERN_PROOF[2].es : PATTERN_PROOF[2].en}</b>
+                </Link>
+              </div>
+              <div className="rp-patternList__visual"><MSKServiceBlueprint copy={mskCopy.blueprint} /></div>
             </li>
-            <li>
-              {isSpanish ? "Compruebo si sobrevive sin mí. Si necesita que yo lo explique para funcionar, no está terminado." : "I check whether it survives without me. If it needs me there to explain it, it is not finished."}
-              <Link to={isSpanish ? PATTERN_PROOF[3].pathEs : PATTERN_PROOF[3].path} className="rp-chapter__proof rp-chapter__proof--inline">
-                <b>{isSpanish ? PATTERN_PROOF[3].es : PATTERN_PROOF[3].en}</b>
-              </Link>
+            <li className="is-wide">
+              <div className="rp-patternList__text">
+                {isSpanish ? "Compruebo si sobrevive sin mí. Si necesita que yo lo explique para funcionar, no está terminado." : "I check whether it survives without me. If it needs me there to explain it, it is not finished."}
+                <Link to={isSpanish ? PATTERN_PROOF[3].pathEs : PATTERN_PROOF[3].path} className="rp-chapter__proof rp-chapter__proof--inline">
+                  <b>{isSpanish ? PATTERN_PROOF[3].es : PATTERN_PROOF[3].en}</b>
+                </Link>
+              </div>
+              <div className="rp-patternList__visual"><div className="fp-sustainmentFig"><MSKSustainment copy={mskCopy.sustainment} /></div></div>
             </li>
           </ol>
           {/* The one line kept from the cut "What I Do Now" story (2026-10-13):

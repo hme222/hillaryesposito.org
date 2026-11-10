@@ -103,7 +103,11 @@
   align-items: stretch;
   gap: 0;
   margin-top: auto;
-  padding: var(--sp-xl) max(var(--page-pad), calc((100% - 1280px) / 2)) 1.5rem;
+  /* One gutter, in viewport units, shared with the full-bleed credits bar below.
+     Percentages resolve against different boxes for padding and margin, which
+     left the bar 8px short of the edge at 1440 (found by the 2026-11-10 panel). */
+  --footer-gutter: max(var(--page-pad), calc((100vw - 1280px) / 2));
+  padding: var(--sp-xl) var(--footer-gutter) 1.5rem;
   text-align: left;
   color: var(--fg);
   background:
@@ -177,8 +181,8 @@
    footer's base row, so it sits directly under the statement and carries the
    copyright once. Pages contribute their own ethos + credits into it. */
 .site-footer__base {
-  margin: 0 calc(-1 * max(var(--page-pad), (100% - 1280px) / 2)) -1.5rem;
-  padding: 1.5rem max(var(--page-pad), calc((100% - 1280px) / 2));
+  margin: 0 calc(-1 * var(--footer-gutter)) -1.5rem;
+  padding: 1.5rem var(--footer-gutter);
 }
 .site-footer__baseRow {
   display: flex;

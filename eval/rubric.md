@@ -25,13 +25,18 @@ not render" and cap at 7: a real Chrome is available through Bash.
 
 1. Confirm the dev server serves THIS project (title "Hillary Esposito | ..."),
    not another app on the port. The harness prints each page's title.
-2. From the repo root run
+2. A current render may already exist: read `tmp/panel-render/latest.txt` for
+   the newest run folder and reuse its `report.json` and PNGs if the prompt says
+   so. Otherwise, from the repo root run
    `node scripts/axe-primary-audit.cjs --base <url>`
    (optional `--routes /,/case-study/msk`, `--out <dir>`). It loads all 8 routes at
    1440 and 390, runs axe under reduced motion, and measures horizontal overflow,
    orphaned headline words, banned language in rendered text, and targets under
-   44px. It writes full-page and fold screenshots plus `report.json` to
-   `tmp/panel-render/`.
+   44px. Each run writes to its own folder (`tmp/panel-render/<timestamp>-<pid>`,
+   printed at the end), warms the dev server first, and takes a lock, so several
+   critics can start it at once and will queue instead of clobbering each other.
+   A full run takes a few minutes; when a prompt gives you a folder, use that
+   one and do not start another full run.
 3. Look at the screenshots with the Read tool (they are PNGs). Judge hierarchy,
    rhythm and craft from them, not from CSS. For anything the harness does not
    cover, write a small playwright-core script in your own scratch directory

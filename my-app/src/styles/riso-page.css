@@ -3512,6 +3512,36 @@ html.cs-chrome .riso-page .fp-indexLens[id] { scroll-margin-top: calc(var(--cs-c
   position: absolute; left: 0; top: .15em;
   font-family: var(--mono); font-size: .68rem; color: var(--coral);
 }
+/* Each point sits beside the case-study artifact it links to (reused, not
+   redrawn). One plate for all four so they read as a set: the components' own
+   boxes are flattened here and the plate carries the border. Compact on purpose;
+   the full versions live on the case studies. */
+.rp-patternList li { display: grid; grid-template-columns: minmax(0, 1fr); gap: .9rem; padding-bottom: 1.6rem; }
+.rp-patternList li:last-child { padding-bottom: 0; }
+.rp-patternList__visual { min-width: 0; max-width: 30rem; padding: .85rem 1rem; border: 1px solid var(--hair); background: var(--paper-2); }
+.rp-patternList__visual > * { width: 100%; margin: 0; }
+.rp-patternList__visual .fp-mechanism,
+.rp-patternList__visual .fp-statusBoard,
+.rp-patternList__visual .fp-blueprint,
+.rp-patternList__visual .fp-sustainmentFig { margin: 0; padding: 0; border: 0; background: transparent; max-width: none; }
+/* Status board: tighter rows and type; the "recreated, no real data" note stays. */
+.rp-patternList .fp-statusBoard__head { margin-bottom: .5rem; gap: .5rem 1rem; }
+.rp-patternList .fp-statusBoard__note { font-size: .75rem; max-width: none; }
+.rp-patternList .fp-statusBoard table { font-size: .8125rem; }
+.rp-patternList .fp-statusBoard thead th { padding: .25rem .6rem .25rem 0; }
+.rp-patternList .fp-statusBoard tbody th,
+.rp-patternList .fp-statusBoard tbody td { padding: .28rem .6rem .28rem 0; }
+.rp-patternList .fp-statusBoard__read { margin-top: .6rem; font-size: .8125rem; line-height: 1.45; }
+/* Blueprint: the map and its switch only. The four prose panels are on the case study. */
+.rp-patternList .fp-blueprint__key { display: none; }
+@media (min-width: 900px) {
+  .rp-patternList li { grid-template-columns: minmax(0, 1fr) minmax(0, 30rem); column-gap: 2.5rem; align-items: start; }
+  .rp-patternList__visual { max-width: none; }
+  /* The blueprint and the sustainment lanes need the width to stay legible. */
+  .rp-patternList li.is-wide { grid-template-columns: minmax(0, 1fr); }
+  .rp-patternList li.is-wide .rp-patternList__visual { max-width: 52rem; }
+  .rp-patternList li.is-wide:last-child .rp-patternList__visual { max-width: 40rem; }
+}
 /* Closing line under the pattern list, aligned with the items' text. */
 .rp-patternCallout { max-width: 62ch; margin-top: 1.6rem; margin-left: 2.4rem; }
 /* About's story heading is the kicker itself (the H2 line was cut). */
@@ -4148,6 +4178,8 @@ body:has(.riso-home) .riso-home .rp-index__n {
 
 /* Compact copy-email: address and Copy button on one line, no label. */
 .rp-copyEmail--compact { margin-top: 0; gap: .35rem .6rem; }
+/* The footer's standalone email link is a real target: 44px tall (panel, 2026-11-10; it measured 178x18). */
+.rp-copyEmail--compact a.rp-copyEmail__address { display: inline-flex; align-items: center; min-height: 44px; }
 .rp-copyEmail--compact .rp-copyEmail__address { font-size: .875rem; }
 .site-footer__baseRow .rp-copyEmail { font-size: .875rem; }
 
