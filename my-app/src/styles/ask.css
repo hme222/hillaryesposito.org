@@ -1,7 +1,7 @@
 /* ============================================================
    Ask about the work — dialog, nav entry, bird.
    The dialog carries `.riso-page` so --paper/--ink/--coral/--coral-text/
-   --on-coral/--mono/--sans resolve in both themes (riso-page.css). Nothing
+   --on-coral/--label/--sans resolve in both themes (riso-page.css). Nothing
    here introduces a colour; every value is a token or a mix of tokens.
    ============================================================ */
 
@@ -237,7 +237,7 @@
 }
 .ask-kicker {
   margin: 0;
-  font-family: var(--mono);
+  font-family: var(--label);
   font-size: 0.66rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -315,7 +315,7 @@
   min-height: 44px;
   padding: 0.55rem 0.8rem;
   font-family: var(--sans);
-  font-size: 1rem;
+  font-size: var(--ts-body);
   color: var(--ink);
   background: var(--paper);
   border: 1px solid var(--ink);
@@ -341,7 +341,7 @@
 }
 .ask-result__status {
   margin: 0;
-  font-family: var(--mono);
+  font-family: var(--label);
   font-size: 0.78rem;
   color: var(--muted);
 }
@@ -392,7 +392,7 @@
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  font-family: var(--mono);
+  font-family: var(--label);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -431,7 +431,7 @@ span.ask-source__label {
   content: close-quote;
 }
 .ask-quote__attribution {
-  font-family: var(--mono);
+  font-family: var(--label);
   font-size: 0.7rem;
   letter-spacing: 0.04em;
   color: var(--muted);

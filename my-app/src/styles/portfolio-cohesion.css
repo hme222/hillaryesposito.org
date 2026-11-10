@@ -44,6 +44,13 @@
      on purpose: MSK's H1 is smaller because "Kettering." is wider than its
      clearing at the shared size, and About's is set for its own measure.
      Collapsing those into one display token would reintroduce the overflow. */
+  /* Text ladder (small end). Names for the sizes the CSS already used, so a size is
+     picked by role instead of typed. --ts-label is the 13px floor: recruiter-relevant
+     labels, qualifiers, status and provenance never go below it. */
+  --ts-label: .8125rem;
+  --ts-small: .9375rem;
+  --ts-body: 1rem;
+  --ts-lead: 1.125rem;
   --ts-title: clamp(1.6rem, 4vw, 2.5rem);      /* section and item titles */
   --ts-heading: clamp(1.35rem, 3vw, 2.1rem);   /* card and step headings */
   --ts-stat: clamp(1.8rem, 4vw, 2.6rem);       /* numeric display */
@@ -72,7 +79,7 @@
   --ink-on-dark: #f4f1e6;
   --shell-display: "Bricolage Grotesque", "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   --shell-sans: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-  --shell-mono: var(--shell-sans);
+  --shell-label: var(--shell-sans);
   /* Text on a coral or green fill. Shared so the tour panel and the page agree
      in both themes (the dark values are set in the .dark-mode block). */
   --on-coral: #fff;
@@ -236,7 +243,7 @@ main.riso-page:not(.riso-home),
 .site-footer__eyebrow,
 .site-footer__label {
   color: var(--shell-muted);
-  font-family: var(--shell-mono);
+  font-family: var(--shell-label);
 }
 
 /* The closing band. Fixed near-black in BOTH themes: --fg/--bg invert with the
@@ -251,7 +258,7 @@ main.riso-page:not(.riso-home),
 .site-footer__base p,
 .site-footer__madeWithLabel {
   color: #f5efe6;
-  font-family: var(--shell-mono);
+  font-family: var(--shell-label);
 }
 .site-footer__statement,
 .site-footer--compact .site-footer__statement {
@@ -523,13 +530,13 @@ html[lang="es"] .riso-home .rp-h1Fit { --h1-w100: 1116; }
 .rp-kicker,
 .rp-work__n,
 .rp-work__sub {
-  font-size: 0.8125rem;
+  font-size: var(--ts-label);
   letter-spacing: 0.08em;
 }
 .rp-cta,
 .rp-heroUtility {
   font-family: var(--sans);
-  font-size: 0.9375rem;
+  font-size: var(--ts-small);
   letter-spacing: 0;
   text-transform: none;
 }
@@ -543,11 +550,11 @@ html[lang="es"] .riso-home .rp-h1Fit { --h1-w100: 1116; }
 .rp-dispatch__toggle,
 .rp-deepDive__state {
   font-family: var(--sans);
-  font-size: .9375rem;
+  font-size: var(--ts-small);
   letter-spacing: 0;
   text-transform: none;
 }
 .rp-supportingLink > span {
-  font-size: 0.8125rem;
+  font-size: var(--ts-label);
   letter-spacing: 0.08em;
 }

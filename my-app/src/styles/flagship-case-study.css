@@ -38,7 +38,7 @@
   box-shadow: 0 14px 32px -20px rgba(0,0,0,.45); }
 /* The coral rule on the left carries the accent; the label itself is ink so it
    reads over the hero art (coral at .54rem measured under 4.5:1). */
-.fp-artifactLabel span { display: block; font: var(--rp-type-floor)/1.2 var(--mono); letter-spacing: 0; color: var(--ink); }
+.fp-artifactLabel span { display: block; font: var(--rp-type-floor)/1.2 var(--label); letter-spacing: 0; color: var(--ink); }
 .fp-artifactLabel b { display: block; margin-top: .25rem; font-size: var(--rp-type-floor); line-height: 1.35; }
 /* Mobbin's artifact is a photo, so a tag floated over it costs nothing. MSK's
    is a dense text mockup whose last two blocks — the MRN/HIM glossary and the
@@ -93,7 +93,7 @@
   width: min(940px,76vw); min-height: 260px; color: var(--fp-light); }
 .fp-cinemaCore--workflow > div { width: min(330px,30vw); padding: 1.2rem; border: 1px solid color-mix(in srgb, var(--ink-on-dark) 24%, transparent); border-radius: var(--r-plate);
   background: color-mix(in srgb, var(--ink-on-dark) 7%, transparent); backdrop-filter: blur(8px); }
-.fp-cinemaCore span { display: block; font: .72rem/1.2 var(--mono); letter-spacing: .12em; color: color-mix(in srgb, var(--fp-light) 86%, transparent); }
+.fp-cinemaCore span { display: block; font: .72rem/1.2 var(--label); letter-spacing: .12em; color: color-mix(in srgb, var(--fp-light) 86%, transparent); }
 .fp-cinemaCore b { display: block; margin-top: .45rem; font-size: clamp(1rem,2vw,1.4rem); line-height: 1.25; }
 .fp-cinemaCore small { display: block; margin-top: .55rem; color: color-mix(in srgb, var(--ink-on-dark) 68%, transparent); }
 .fp-cinemaCore > i { font-style: normal; color: var(--coral-on-dark); font-size: 1.6rem; }
@@ -155,7 +155,7 @@
   border-radius: 0;
   background: transparent;
   color: inherit;
-  font: 700 .72rem/1.2 var(--mono);
+  font: 700 .72rem/1.2 var(--label);
   letter-spacing: .035em;
   cursor: pointer;
 }
@@ -189,9 +189,9 @@
 }
 .fp-receipt__queue .msk-dashboard-status,
 .fp-receipt__queue .msk-dashboard-action { transition: background-color 320ms ease, color 320ms ease, border-color 320ms ease; }
-.fp-receipt__stepLine { margin: .9rem 0 0; font: 700 var(--rp-type-floor)/1.3 var(--mono); letter-spacing: .06em; color: color-mix(in srgb, var(--ink-on-dark) 82%, transparent); }
+.fp-receipt__stepLine { margin: .9rem 0 0; font: 700 var(--rp-type-floor)/1.3 var(--label); letter-spacing: .06em; color: color-mix(in srgb, var(--ink-on-dark) 82%, transparent); }
 .fp-receipt__boundary,
-.fp-indexLens__boundary { position: absolute; margin: 0; font: var(--rp-type-floor)/1.3 var(--mono); letter-spacing: .04em; }
+.fp-indexLens__boundary { position: absolute; margin: 0; font: var(--rp-type-floor)/1.3 var(--label); letter-spacing: .04em; }
 .fp-receipt__boundary { left: 0; bottom: 0; color: color-mix(in srgb, var(--ink-on-dark) 62%, transparent); }
 
 /* ---------- Mobbin: source capture + separate index ---------- */
@@ -251,7 +251,7 @@
 }
 .fp-indexLens.is-indexed .fp-indexLens__index { opacity: 1; transform: translateY(0); }
 .fp-indexLens__index > div { min-width: 0; padding-left: .55rem; border-left: 2px solid var(--coral); }
-.fp-indexLens__index span { display: block; font: .68rem/1.2 var(--mono); letter-spacing: .06em; color: var(--muted); }
+.fp-indexLens__index span { display: block; font: .68rem/1.2 var(--label); letter-spacing: .06em; color: var(--muted); }
 .fp-indexLens__index b { display: block; margin-top: .25rem; font-size: .78rem; line-height: 1.35; }
 .fp-indexLens__rule {
   position: absolute;
@@ -292,7 +292,7 @@
    the finding so the shape of the change registers before the sentence. */
 .fp-mechanism { margin: 1rem 0 .9rem; padding: .8rem .9rem; border: 1px solid var(--hair);
   border-radius: var(--r-plate); background: color-mix(in srgb, var(--paper) 60%, transparent);
-  color: var(--ink); font-family: var(--mono); }
+  color: var(--ink); font-family: var(--label); }
 .fp-mechanism svg { display: block; overflow: visible; }
 
 /* A visual handoff study, not another process chart. Seedance footage is
@@ -310,19 +310,19 @@
 .fp-workflow > article { padding: clamp(1rem,3vw,1.6rem); border: 1px solid var(--hair); border-radius: var(--r-plate); background: var(--paper); }
 .fp-workflow > i { font-style: normal; color: var(--coral); font-size: 1.8rem; }
 .fp-workflow__after { border-color: color-mix(in srgb,var(--green) 45%,var(--hair)) !important; }
-.fp-workflow__label { font: .62rem/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--coral); }
-.fp-workflow h3 { margin: .5rem 0 0; font-size: 1.125rem; }
+.fp-workflow__label { font: .62rem/1.2 var(--label); letter-spacing: .1em; text-transform: uppercase; color: var(--coral); }
+.fp-workflow h3 { margin: .5rem 0 0; font-size: var(--ts-lead); }
 .fp-workflow ol { list-style: none; margin: 1rem 0 0; padding: 0; }
-.fp-workflow li { display: grid; grid-template-columns: 2rem 1fr; gap: .5rem; padding: .6rem 0; border-top: 1px solid var(--hair); font-size: .9375rem; }
-.fp-workflow li b { font: .65rem/1.5 var(--mono); color: var(--green); }
+.fp-workflow li { display: grid; grid-template-columns: 2rem 1fr; gap: .5rem; padding: .6rem 0; border-top: 1px solid var(--hair); font-size: var(--ts-small); }
+.fp-workflow li b { font: .65rem/1.5 var(--label); color: var(--green); }
 .flagship-page--msk .fp-workflow__label {
   font-family: var(--sans);
   font-weight: 700;
   letter-spacing: 0;
   text-transform: none;
 }
-.flagship-page--msk .fp-workflow li b { font-family: var(--sans); font-size: .8125rem; }
-.fp-workflow article > p:last-child { margin-top: .8rem; color: var(--muted); font-size: .8125rem; }
+.flagship-page--msk .fp-workflow li b { font-family: var(--sans); font-size: var(--ts-label); }
+.fp-workflow article > p:last-child { margin-top: .8rem; color: var(--muted); font-size: var(--ts-label); }
 
 
 /* Names the redesign the principle came out of. It now sits under the three
@@ -330,11 +330,11 @@
    it has to say which of the three it belongs to. */
 .fp-mapWrap { margin-top: var(--sp-sm); }
 .fp-mapWrap > ol { display: grid; grid-template-columns: repeat(4,1fr); gap: .6rem; list-style: none; margin: .8rem 0 0; padding: 0; }
-.fp-mapWrap > ol li { padding: .55rem; border: 1px solid color-mix(in srgb, var(--ink-on-dark) 20%, transparent); border-radius: var(--r-plate); font: .62rem/1.3 var(--mono); text-align: center; }
+.fp-mapWrap > ol li { padding: .55rem; border: 1px solid color-mix(in srgb, var(--ink-on-dark) 20%, transparent); border-radius: var(--r-plate); font: .62rem/1.3 var(--label); text-align: center; }
 .fp-mapFallback { min-height: 260px; display: grid; place-items: center; border: 1px solid color-mix(in srgb, var(--ink-on-dark) 20%, transparent); }
 .fp-proofLink { display: grid; gap: .2rem; max-width: 620px; min-height: 72px; margin-top: 2rem; padding: 1rem 1.1rem;
   border: 1px solid var(--hair); border-left: 4px solid var(--coral); border-radius: var(--r-plate); color: var(--ink); text-decoration: none; }
-.fp-proofLink span { font: .6rem/1.2 var(--mono); letter-spacing: .08em; color: var(--coral-text); text-transform: uppercase; }
+.fp-proofLink span { font: .6rem/1.2 var(--label); letter-spacing: .08em; color: var(--coral-text); text-transform: uppercase; }
 
 /* Service design + process improvement — the discipline behind the MSK work,
    named plainly so the vocabulary is findable. Sits inside .rp-override, so the
@@ -342,9 +342,9 @@
 /* The one place the site says what service design actually is. Sits inside
    .rp-override, so the accents are the fixed dark-panel values. */
 .fp-ownership { max-width: 64ch; margin: var(--sp-sm) 0 0; padding-left: 1rem;
-  border-left: 3px solid var(--mint-on-dark); font-size: 1rem; line-height: 1.55;
+  border-left: 3px solid var(--mint-on-dark); font-size: var(--ts-body); line-height: 1.55;
   color: color-mix(in srgb, var(--ink-on-dark) 86%, transparent); }
-.fp-ownership b { display: block; margin-bottom: .35rem; font: var(--rp-type-floor)/1.25 var(--mono);
+.fp-ownership b { display: block; margin-bottom: .35rem; font: var(--rp-type-floor)/1.25 var(--label);
   letter-spacing: .07em; text-transform: uppercase; color: var(--mint-on-dark); }
 @media (forced-colors: active) { .fp-ownership { border-left-color: CanvasText; } }
 /* The same aside on light paper (Knowunity's Build section): themed tokens,
@@ -365,9 +365,9 @@
 .fp-roleRail__n { position: absolute; top: 0; left: 0; display: inline-flex; align-items: center;
   justify-content: center; min-width: 22px; padding: 0 .3rem; border: 1px solid color-mix(in srgb, var(--ink-on-dark) 30%, transparent);
   border-radius: 999px; background: var(--fp-deep, #24291f);
-  font: .58rem/1.9 var(--mono); letter-spacing: .06em; color: var(--mint-on-dark); }
-.fp-roleRail b { display: block; font-size: 1rem; line-height: 1.25; }
-.fp-roleRail__taught { display: block; margin-top: .35rem; font-size: .9375rem; color: color-mix(in srgb, var(--ink-on-dark) 74%, transparent); }
+  font: .58rem/1.9 var(--label); letter-spacing: .06em; color: var(--mint-on-dark); }
+.fp-roleRail b { display: block; font-size: var(--ts-body); line-height: 1.25; }
+.fp-roleRail__taught { display: block; margin-top: .35rem; font-size: var(--ts-small); color: color-mix(in srgb, var(--ink-on-dark) 74%, transparent); }
 
 /* Each role hides the method it gave her. <details> rather than a scripted
    toggle: keyboard and screen-reader behavior comes free and it survives with
@@ -379,7 +379,7 @@
 .fp-roleRail__method:not([open]) > div { display: none; }
 .fp-roleRail__method summary { display: flex; align-items: center; gap: .4rem;
   min-height: 44px; list-style: none; cursor: pointer;
-  font: .6rem/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--mint-on-dark); }
+  font: .6rem/1.2 var(--label); letter-spacing: .08em; text-transform: uppercase; color: var(--mint-on-dark); }
 .fp-roleRail__method summary::-webkit-details-marker { display: none; }
 .fp-roleRail__method summary:focus-visible { outline: 3px solid var(--coral-on-dark); outline-offset: 3px; }
 .fp-roleRail__method summary:hover .fp-roleRail__summaryLabel { text-decoration: underline; }
@@ -389,8 +389,8 @@
 .fp-roleRail__method[open] .fp-roleRail__chev { transform: translateY(1px) rotate(-135deg); }
 .fp-roleRail__method > div { padding: .8rem .9rem; margin-top: .1rem;
   border-left: 2px solid color-mix(in srgb, var(--mint-on-dark) 50%, transparent); background: color-mix(in srgb, var(--ink-on-dark) 5%, transparent); }
-.fp-roleRail__method b { font-size: .8125rem; color: var(--mint-on-dark); }
-.fp-roleRail__method p { margin: .35rem 0 0; font-size: .8125rem; line-height: 1.5; color: color-mix(in srgb, var(--ink-on-dark) 74%, transparent); }
+.fp-roleRail__method b { font-size: var(--ts-label); color: var(--mint-on-dark); }
+.fp-roleRail__method p { margin: .35rem 0 0; font-size: var(--ts-label); line-height: 1.5; color: color-mix(in srgb, var(--ink-on-dark) 74%, transparent); }
 @media (prefers-reduced-motion: reduce) {
   .fp-roleRail__chev { transition: none; }
 }
@@ -408,7 +408,7 @@
   border: 1px solid var(--hair); border-radius: var(--r-plate); background: var(--paper); }
 .fp-sustainment { color: var(--ink); }
 .fp-sustainment svg { display: block; overflow: visible; }
-.fp-sustainmentFig figcaption { margin-top: 1rem; font-family: var(--mono); font-size: var(--rp-type-floor);
+.fp-sustainmentFig figcaption { margin-top: 1rem; font-family: var(--label); font-size: var(--rp-type-floor);
   letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 
 /* The timeline's text equivalent. Quiet by design — the drawing leads and this
@@ -416,7 +416,7 @@
 .fp-survived { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px,100%),1fr));
   gap: .5rem 1.6rem; list-style: none; margin: 1.1rem 0 0; padding: 0; }
 .fp-survived li { padding-left: .9rem; border-left: 2px solid color-mix(in srgb,var(--green) 55%,transparent); }
-.fp-survived b { display: block; font-size: .8125rem; line-height: 1.3; }
+.fp-survived b { display: block; font-size: var(--ts-label); line-height: 1.3; }
 .fp-survived span { display: block; margin-top: .2rem; font-size: .8rem; line-height: 1.45; color: var(--muted); }
 @media (forced-colors: active) {
   .fp-survived li { border-left-color: CanvasText; }
@@ -464,16 +464,16 @@
 @media (max-width: 700px) { .fp-constraintAnnotations.fp-constraintAnnotations--four { grid-template-columns: 1fr; } }
 .fp-knowunityChange { padding-top: var(--sp-md); }
 .fp-knowunityChange .fp-journalLine { margin-top: 0; }
-.fp-knowunityMockNote { max-width: 62ch; margin: 1rem 0 0; color: var(--muted); font-size: .9375rem; line-height: 1.5; }
+.fp-knowunityMockNote { max-width: 62ch; margin: 1rem 0 0; color: var(--muted); font-size: var(--ts-small); line-height: 1.5; }
 .fp-workSplit { display: grid; grid-template-columns: .75fr 1.25fr; gap: 1rem; margin-top: 2rem; }
 .fp-workSplit article { padding: 1.4rem; border: 1px solid var(--hair); border-radius: var(--r-plate); background: var(--paper); }
 .fp-workSplit article:last-child { border-left: 4px solid var(--coral); }
-.fp-workSplit span, .fp-journalLine span { font: var(--rp-type-floor)/1.25 var(--mono); letter-spacing: .08em; color: var(--coral-text); text-transform: uppercase; }
+.fp-workSplit span, .fp-journalLine span { font: var(--rp-type-floor)/1.25 var(--label); letter-spacing: .08em; color: var(--coral-text); text-transform: uppercase; }
 /* --coral flips with the site theme, but .rp-override's background is pinned
    dark in both themes. Labels inside it must use the fixed override accent or
    they render at 2.46:1 in light mode. */
 .rp-override .fp-workSplit span, .rp-override .fp-journalLine span { color: var(--coral-on-dark); }
-.fp-workSplit h3 { margin: .5rem 0 0; font-size: 1.125rem; }
+.fp-workSplit h3 { margin: .5rem 0 0; font-size: var(--ts-lead); }
 .fp-workSplit p { margin-top: .5rem; color: var(--muted); }
 
 .fp-sequence { margin-top: 2rem; }
@@ -496,20 +496,20 @@
 .fp-sequence__copy .rp-kicker { color: var(--coral-text); }
 .fp-sequence__copy > p:last-child { margin-top: .75rem; max-width: 44ch; color: var(--ink-2); }
 .fp-sequence__controls { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1rem; margin-top: .7rem; border-top: 1px solid var(--hair); }
-.fp-sequence__controls button { min-height: 44px; border: 0; background: transparent; color: var(--ink); font: .66rem/1 var(--mono); text-transform: uppercase; cursor: pointer; }
+.fp-sequence__controls button { min-height: 44px; border: 0; background: transparent; color: var(--ink); font: .66rem/1 var(--label); text-transform: uppercase; cursor: pointer; }
 .fp-sequence__controls button:first-child { text-align: left; }.fp-sequence__controls button:last-child { text-align: right; }
-.fp-sequence__controls p { font: .64rem/1 var(--mono); color: var(--muted); }.fp-sequence__controls b { color: var(--coral); }
+.fp-sequence__controls p { font: .64rem/1 var(--label); color: var(--muted); }.fp-sequence__controls b { color: var(--coral); }
 .fp-sequence__dots { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; margin-top: .6rem; }
 /* Squared with the rest of the controls. The 2026-07-25 sweep caught the Grove
    system-lab tabs and missed these; a 999px pill is the one shape the editorial
    vocabulary reserves for genuine status tags. */
-.fp-sequence__dots button { min-height: 44px; padding: .55rem .8rem; border: 1px solid var(--hair); border-radius: var(--r-control); background: var(--paper); color: var(--ink); font: .62rem/1 var(--mono); cursor: pointer; }
+.fp-sequence__dots button { min-height: 44px; padding: .55rem .8rem; border: 1px solid var(--hair); border-radius: var(--r-control); background: var(--paper); color: var(--ink); font: .62rem/1 var(--label); cursor: pointer; }
 .fp-sequence__dots button.is-active { border-color: var(--ink); background: var(--ink); color: var(--paper); }
 
 /* The journal line now sits on light paper in the method section, so it uses
    themed tokens; the .rp-override variant keeps the fixed dark-panel accents. */
 .fp-journalLine { display: grid; gap: .4rem; max-width: 760px; margin-top: 2rem; padding: 1rem 1.1rem; border-left: 3px solid var(--coral); background: var(--paper-2); }
-.fp-journalLine b { color: var(--ink); font-size: .9375rem; }
+.fp-journalLine b { color: var(--ink); font-size: var(--ts-small); }
 .rp-override .fp-journalLine { border-left-color: var(--coral-on-dark); background: color-mix(in srgb, var(--ink-on-dark) 7%, transparent); }
 .rp-override .fp-journalLine b { color: var(--ink-on-dark); }
 
@@ -585,13 +585,13 @@
    reads as marketing. */
 .fp-redesigns { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; margin-top: 2rem; }
 .fp-redesigns article { padding: 1.3rem; border: 1px solid var(--hair); background: var(--paper); }
-.fp-redesigns__n { font: .62rem/1.2 var(--mono); letter-spacing: .1em; color: var(--coral); }
-.fp-redesigns h3 { margin: .5rem 0 0; font-size: 1.125rem; line-height: 1.25; }
-.fp-redesigns__finding { margin-top: .7rem; font-size: .9375rem; line-height: 1.6; color: var(--muted); }
-.fp-redesigns__change { margin-top: .7rem; font-size: .9375rem; line-height: 1.6; color: var(--ink); }
+.fp-redesigns__n { font: .62rem/1.2 var(--label); letter-spacing: .1em; color: var(--coral); }
+.fp-redesigns h3 { margin: .5rem 0 0; font-size: var(--ts-lead); line-height: 1.25; }
+.fp-redesigns__finding { margin-top: .7rem; font-size: var(--ts-small); line-height: 1.6; color: var(--muted); }
+.fp-redesigns__change { margin-top: .7rem; font-size: var(--ts-small); line-height: 1.6; color: var(--ink); }
 .fp-redesigns__wrong { margin-top: .9rem; padding-top: .8rem; border-top: 1px solid var(--hair);
-  font-size: .8125rem; line-height: 1.6; color: var(--ink-2); }
-.fp-redesigns__wrong b { display: block; font: .6rem/1.2 var(--mono); letter-spacing: .1em;
+  font-size: var(--ts-label); line-height: 1.6; color: var(--ink-2); }
+.fp-redesigns__wrong b { display: block; font: .6rem/1.2 var(--label); letter-spacing: .1em;
   text-transform: uppercase; color: var(--coral); margin-bottom: .4rem; }
 
 /* Logistics has one primary intervention and two supporting service moves. */
@@ -614,8 +614,8 @@
 .fp-constraintAnnotations { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem 1.6rem; margin: 2rem 0 0; border-top: 1px solid var(--hair); }
 .fp-constraintAnnotations > div { padding: 1rem 0 0 .9rem; border-left: 2px solid color-mix(in srgb, var(--green) 55%, transparent); }
-.fp-constraintAnnotations dt { font: 700 .62rem/1.35 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--green); }
-.fp-constraintAnnotations dd { margin: .4rem 0 0; color: var(--ink-2); font-size: .9375rem; line-height: 1.45; }
+.fp-constraintAnnotations dt { font: 700 .62rem/1.35 var(--label); letter-spacing: .08em; text-transform: uppercase; color: var(--green); }
+.fp-constraintAnnotations dd { margin: .4rem 0 0; color: var(--ink-2); font-size: var(--ts-small); line-height: 1.45; }
 @media (max-width: 700px) { .fp-constraintAnnotations { grid-template-columns: 1fr; } }
 
 /* The lead-number scale moved to the shared .rp-outcomes--lead modifier
@@ -634,24 +634,24 @@
    Mobbin, and Grove: --r-control corners, ink fill, paper text. */
 .fp-blueprint__switch { display: inline-flex; border: 1px solid var(--hair); border-radius: var(--r-control); overflow: hidden; }
 .fp-blueprint__switch button { min-height: 44px; padding: .55rem 1rem; border: 0; background: transparent;
-  font: .68rem/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2);
+  font: .68rem/1.2 var(--label); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2);
   cursor: pointer; transition: background 160ms ease, color 160ms ease; }
 .fp-blueprint__switch button + button { border-left: 1px solid var(--hair); }
 .fp-blueprint__switch button:hover { background: color-mix(in srgb, var(--coral) 8%, transparent); }
 .fp-blueprint__switch button.is-active { background: var(--ink); color: var(--paper); }
 .fp-blueprint__switch button:focus-visible { outline: 3px solid var(--coral); outline-offset: -3px; }
-.fp-blueprint__status { flex: 1 1 16rem; margin: 0; font-size: .9375rem; line-height: 1.5; color: var(--ink-2); }
+.fp-blueprint__status { flex: 1 1 16rem; margin: 0; font-size: var(--ts-small); line-height: 1.5; color: var(--ink-2); }
 
 /* An intentional sideways scroller below 620px: the thin themed scrollbar
    (same as Grove's screen strip) is its visible affordance. */
 .fp-blueprint__canvas { overflow-x: auto; scrollbar-width: thin; scrollbar-color: var(--green) var(--paper-2); padding-bottom: .4rem; }
-.fp-blueprint__canvas svg { display: block; min-width: 620px; overflow: visible; font-family: var(--mono); }
+.fp-blueprint__canvas svg { display: block; min-width: 620px; overflow: visible; font-family: var(--label); }
 
 .fp-blueprint__key { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   gap: 1.1rem 1.6rem; margin: 1.8rem 0 0; padding-top: 1.4rem; border-top: 1px solid var(--hair); }
-.fp-blueprint__key dt { font: .62rem/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase;
+.fp-blueprint__key dt { font: .62rem/1.2 var(--label); letter-spacing: .1em; text-transform: uppercase;
   color: var(--coral); margin-bottom: .4rem; }
-.fp-blueprint__key dd { margin: 0; font-size: .9375rem; line-height: 1.55; color: var(--ink-2); }
+.fp-blueprint__key dd { margin: 0; font-size: var(--ts-small); line-height: 1.55; color: var(--ink-2); }
 
 @media (max-width: 720px) {
   .fp-blueprint__switch { width: 100%; }
@@ -705,7 +705,7 @@
   left: max(var(--sp-gutter), calc((100% - 1080px) / 2 + var(--sp-gutter)));
   max-width: 44ch;
   transform: translateY(-50%);
-  font: 700 clamp(.58rem, .85vw, .7rem)/1.25 var(--mono);
+  font: 700 clamp(.58rem, .85vw, .7rem)/1.25 var(--label);
   letter-spacing: .1em;
   text-transform: uppercase;
   color: var(--muted);
@@ -860,23 +860,23 @@
 .fp-ledger > div { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
   padding: .65rem 0; border-bottom: 1px solid var(--hair); }
 .fp-ledger > div:last-child { border-bottom: 0; }
-.fp-ledger dt { font: 700 var(--rp-type-floor)/1.35 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
-.fp-ledger dd { margin: 0; font: 700 1.6rem/1 var(--mono); color: var(--ink); }
+.fp-ledger dt { font: 700 var(--rp-type-floor)/1.35 var(--label); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.fp-ledger dd { margin: 0; font: 700 1.6rem/1 var(--label); color: var(--ink); }
 .fp-findings { display: grid; gap: 0; max-width: 760px; margin: 2rem 0 0; padding: 0; list-style: none; counter-reset: finding; }
 .fp-findings li { position: relative; padding: 1.1rem 0 1.1rem 2.6rem; border-top: 1px solid var(--hair); counter-increment: finding; }
 .fp-findings li::before { content: counter(finding, decimal-leading-zero); position: absolute; left: 0; top: 1.25rem;
-  font: 700 .66rem/1.2 var(--mono); letter-spacing: .1em; color: var(--coral-text); }
-.fp-findings h3 { margin: 0; font-size: 1.125rem; }
-.fp-findings p { margin: .4rem 0 0; color: var(--muted); font-size: .9375rem; line-height: 1.5; }
+  font: 700 .66rem/1.2 var(--label); letter-spacing: .1em; color: var(--coral-text); }
+.fp-findings h3 { margin: 0; font-size: var(--ts-lead); }
+.fp-findings p { margin: .4rem 0 0; color: var(--muted); font-size: var(--ts-small); line-height: 1.5; }
 .fp-findings .fp-findings__confidence { color: var(--ink-2); }
-.fp-findings__confidence span { font: 700 var(--rp-type-floor)/1.25 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--coral-text); }
+.fp-findings__confidence span { font: 700 var(--rp-type-floor)/1.25 var(--label); letter-spacing: .08em; text-transform: uppercase; color: var(--coral-text); }
 .fp-pretotypes { display: grid; gap: .75rem; max-width: 760px; margin: 2rem 0 0; padding: 0; list-style: none; }
 .fp-pretotypes li { display: grid; grid-template-columns: 2.2rem minmax(0,1fr); gap: .9rem; padding: 1rem 1.1rem;
   border: 1px solid var(--hair); border-radius: var(--r-plate); background: var(--paper); }
-.fp-pretotypes li > span { font: 700 var(--rp-type-floor)/1.6 var(--mono); letter-spacing: .08em; color: var(--coral-text); }
-.fp-pretotypes h3 { margin: 0; font-size: 1rem; }
-.fp-pretotypes p { margin: .35rem 0 0; color: var(--muted); font-size: .9375rem; line-height: 1.5; }
-.fp-pretotypeNote { max-width: 62ch; margin: 1rem 0 0; color: var(--muted); font-size: .9375rem; line-height: 1.5; }
+.fp-pretotypes li > span { font: 700 var(--rp-type-floor)/1.6 var(--label); letter-spacing: .08em; color: var(--coral-text); }
+.fp-pretotypes h3 { margin: 0; font-size: var(--ts-body); }
+.fp-pretotypes p { margin: .35rem 0 0; color: var(--muted); font-size: var(--ts-small); line-height: 1.5; }
+.fp-pretotypeNote { max-width: 62ch; margin: 1rem 0 0; color: var(--muted); font-size: var(--ts-small); line-height: 1.5; }
 
 /* Recruiter-readability lock: evidence metadata must survive a fast scan on a
    laptop without asking the reader to zoom. These are labels and controls,
@@ -921,7 +921,7 @@
 .flagship-page--msk .fp-buttonThreshold__folio,
 .flagship-page--msk .fp-sustainmentFig figcaption {
   font-family: var(--sans);
-  font-size: .9375rem;
+  font-size: var(--ts-small);
   letter-spacing: 0;
   text-transform: none;
 }
@@ -932,7 +932,7 @@
 
 /* ---------- Confidence map (UX Woman) ---------- */
 .fp-confidence { margin: 2rem 0 0; max-width: 980px; overflow-x: auto; }
-.fp-confidence table { width: 100%; border-collapse: collapse; font-size: .9375rem; line-height: 1.4; }
+.fp-confidence table { width: 100%; border-collapse: collapse; font-size: var(--ts-small); line-height: 1.4; }
 .fp-confidence caption { text-align: left; padding: 0 0 .8rem; font-weight: 700; color: var(--ink); }
 .fp-confidence thead th { text-align: left; padding: .6rem .9rem .6rem 0; font-size: var(--rp-type-floor); font-weight: 600; color: var(--muted); border-bottom: 2px solid var(--ink); }
 .fp-confidence tbody th, .fp-confidence tbody td { text-align: left; vertical-align: top; padding: 1rem .9rem 1rem 0; border-bottom: 1px solid var(--hair); font-weight: 400; }
@@ -950,17 +950,17 @@
 .fp-statusBoard__head { display: flex; flex-wrap: wrap; gap: .8rem 1.2rem; align-items: center; justify-content: space-between; margin: 0 0 1rem; }
 .fp-statusBoard__note { margin: 0; font-size: var(--rp-type-floor); color: var(--muted); max-width: 34ch; }
 .fp-statusBoard__switch { display: inline-flex; border: 1px solid var(--ink); }
-.fp-statusBoard__switch button { min-height: 44px; padding: .5rem .9rem; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: .9375rem; cursor: pointer; }
+.fp-statusBoard__switch button { min-height: 44px; padding: .5rem .9rem; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: var(--ts-small); cursor: pointer; }
 .fp-statusBoard__switch button + button { border-left: 1px solid var(--ink); }
 .fp-statusBoard__switch button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
-.fp-statusBoard table { width: 100%; border-collapse: collapse; font-size: .9375rem; }
+.fp-statusBoard table { width: 100%; border-collapse: collapse; font-size: var(--ts-small); }
 .fp-statusBoard thead th { text-align: left; padding: .5rem .8rem .5rem 0; font-size: var(--rp-type-floor); font-weight: 600; color: var(--muted); border-bottom: 2px solid var(--ink); }
 .fp-statusBoard tbody th, .fp-statusBoard tbody td { text-align: left; padding: .7rem .8rem .7rem 0; border-bottom: 1px solid var(--hair); font-weight: 400; }
 .fp-statusBoard tbody th { font-weight: 700; width: 34%; }
 .fp-statusBoard__mark { display: inline-block; width: 1.3rem; font-weight: 800; color: var(--muted); }
 .fp-statusBoard tr.is-alert td { font-weight: 700; color: var(--coral-text); }
 .fp-statusBoard tr.is-alert .fp-statusBoard__mark { color: var(--coral-text); }
-.fp-statusBoard__read { margin: 1rem 0 0; font-size: .9375rem; line-height: 1.5; color: var(--ink-2); max-width: 60ch; }
+.fp-statusBoard__read { margin: 1rem 0 0; font-size: var(--ts-small); line-height: 1.5; color: var(--ink-2); max-width: 60ch; }
 
 /* ---------- Build gates (UX Woman) ---------- */
 .fp-gates { max-width: 760px; margin: 0; }
@@ -970,47 +970,47 @@
 .fp-gates__list li { counter-increment: gate; display: grid; grid-template-columns: 2.2rem 1fr auto; gap: .4rem 1rem; align-items: start; padding: 1rem 0; border-bottom: 1px solid var(--hair); }
 .fp-gates__list li::before { content: counter(gate); font-weight: 800; color: var(--muted); }
 .fp-gates__text { line-height: 1.45; }
-.fp-gates__status { white-space: nowrap; font-weight: 700; font-size: .9375rem; color: var(--ink); }
+.fp-gates__status { white-space: nowrap; font-weight: 700; font-size: var(--ts-small); color: var(--ink); }
 .fp-gates__mark { margin-right: .4em; color: var(--muted); }
 @media (max-width: 640px) { .fp-gates__list li { grid-template-columns: 2.2rem 1fr; } .fp-gates__status { grid-column: 2; } }
 
 /* ---------- UX Woman, rewritten from the midterm deck (2026-11-09) ---------- */
 .fp-letterStats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 2rem 0 0; max-width: 860px; }
 .fp-letterStats > div { padding: 1.25rem 0 0; border-top: 2px solid var(--ink); }
-.fp-letterStats dt { color: var(--muted); font-size: .9375rem; font-weight: 600; }
-.fp-letterStats dd { margin: .4rem 0 0; color: var(--ink-2); font-size: 1rem; line-height: 1.45; }
+.fp-letterStats dt { color: var(--muted); font-size: var(--ts-small); font-weight: 600; }
+.fp-letterStats dd { margin: .4rem 0 0; color: var(--ink-2); font-size: var(--ts-body); line-height: 1.45; }
 .fp-letterStats dd b { display: block; margin-bottom: .25rem; color: var(--ink); font-family: var(--shell-display); font-size: clamp(2.25rem, 5vw, 3.5rem); font-weight: 800; line-height: 1; letter-spacing: -.02em; }
 .fp-letterStats > div:last-child dd b { color: var(--coral-text, var(--coral)); }
-.fp-letterStats__note { margin: 1rem 0 0; color: var(--muted); font-size: .9375rem; }
+.fp-letterStats__note { margin: 1rem 0 0; color: var(--muted); font-size: var(--ts-small); }
 
 .fp-themes { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 1.5rem; counter-reset: theme; }
 .fp-themes li { padding: 1.1rem 0; border-top: 1px solid var(--hair); counter-increment: theme; }
-.fp-themes li::before { content: counter(theme); display: block; color: var(--muted); font-weight: 700; font-size: .9375rem; }
-.fp-themes h3 { margin: .3rem 0 0; font-size: 1.125rem; line-height: 1.25; }
-.fp-themes p { margin: .35rem 0 0; color: var(--ink-2); font-size: 1rem; line-height: 1.45; }
-.fp-themes__tag { display: inline-block; margin-top: .55rem; color: var(--coral-text, var(--coral)); font-size: .8125rem; font-weight: 600; }
+.fp-themes li::before { content: counter(theme); display: block; color: var(--muted); font-weight: 700; font-size: var(--ts-small); }
+.fp-themes h3 { margin: .3rem 0 0; font-size: var(--ts-lead); line-height: 1.25; }
+.fp-themes p { margin: .35rem 0 0; color: var(--ink-2); font-size: var(--ts-body); line-height: 1.45; }
+.fp-themes__tag { display: inline-block; margin-top: .55rem; color: var(--coral-text, var(--coral)); font-size: var(--ts-label); font-weight: 600; }
 
 .fp-hypotheses { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin: 2rem 0 0; }
 .fp-hypotheses article { padding: 1.25rem 0 0; border-top: 2px solid var(--ink); }
-.fp-hypotheses span { color: var(--muted); font-size: .9375rem; font-weight: 600; }
-.fp-hypotheses p { margin: .5rem 0 0; color: var(--ink); font-size: 1.125rem; line-height: 1.45; }
-.fp-hypotheses b { display: block; margin-top: .75rem; color: var(--green); font-size: .9375rem; }
-.fp-readerNeeds__title { margin: 2rem 0 0; font-size: 1.125rem; }
+.fp-hypotheses span { color: var(--muted); font-size: var(--ts-small); font-weight: 600; }
+.fp-hypotheses p { margin: .5rem 0 0; color: var(--ink); font-size: var(--ts-lead); line-height: 1.45; }
+.fp-hypotheses b { display: block; margin-top: .75rem; color: var(--green); font-size: var(--ts-small); }
+.fp-readerNeeds__title { margin: 2rem 0 0; font-size: var(--ts-lead); }
 .fp-readerNeeds { list-style: none; margin: .75rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem; }
-.fp-readerNeeds li { padding: .4rem .8rem; border: 1px solid var(--hair); border-radius: 999px; color: var(--ink); font-size: .9375rem; }
+.fp-readerNeeds li { padding: .4rem .8rem; border: 1px solid var(--hair); border-radius: 999px; color: var(--ink); font-size: var(--ts-small); }
 
 .fp-guideScreens { display: grid; grid-template-columns: repeat(3, minmax(0, 220px)); gap: 1.25rem; margin: 2rem 0 0; }
 .fp-guideScreens figure { margin: 0; }
 .fp-guideScreens img { display: block; width: 100%; height: auto; }
-.fp-guideScreens figcaption { margin-top: .5rem; color: var(--ink-2); font-size: .9375rem; }
-.fp-guideScreens__note { margin: 1rem 0 0; color: var(--muted); font-size: .9375rem; }
+.fp-guideScreens figcaption { margin-top: .5rem; color: var(--ink-2); font-size: var(--ts-small); }
+.fp-guideScreens__note { margin: 1rem 0 0; color: var(--muted); font-size: var(--ts-small); }
 .fp-guideWireframes { margin: 1.25rem 0; }
 .fp-guideWireframes img { display: block; width: 100%; height: auto; border: 1px solid var(--hair); }
-.fp-guideWireframes figcaption { margin-top: .5rem; color: var(--muted); font-size: .9375rem; }
+.fp-guideWireframes figcaption { margin-top: .5rem; color: var(--muted); font-size: var(--ts-small); }
 
 @media (max-width: 760px) {
   .fp-letterStats, .fp-hypotheses { grid-template-columns: minmax(0, 1fr); }
   .fp-themes { grid-template-columns: minmax(0, 1fr); }
   .fp-guideScreens { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; }
-  .fp-guideScreens figcaption { font-size: .8125rem; }
+  .fp-guideScreens figcaption { font-size: var(--ts-label); }
 }

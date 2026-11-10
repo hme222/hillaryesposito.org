@@ -55,8 +55,8 @@
   box-shadow: 0 2px 6px rgba(0,0,0,.14), 0 34px 60px -30px rgba(0,0,0,.42);
 }
 .about-page .about-hero__caption {
-  font-family: var(--mono);
-  font-size: .8125rem;
+  font-family: var(--label);
+  font-size: var(--ts-label);
   letter-spacing: .11em;
   text-transform: uppercase;
   color: var(--muted);
@@ -126,7 +126,7 @@
 .not-found__eyebrow {
   margin: 0 0 1rem;
   color: var(--olive-2);
-  font-size: .8125rem;
+  font-size: var(--ts-label);
   font-weight: 700;
   letter-spacing: .15em;
   line-height: 1.4;
@@ -152,7 +152,7 @@
   display: inline-flex;
   align-items: center;
   color: var(--fg);
-  font-size: .9375rem;
+  font-size: var(--ts-small);
   text-decoration: none;
   text-underline-offset: .25em;
 }
@@ -170,7 +170,7 @@
   background: transparent;
   color: var(--fg);
   font: inherit;
-  font-size: .9375rem;
+  font-size: var(--ts-small);
   text-align: start;
   text-underline-offset: .25em;
   cursor: pointer;
@@ -193,7 +193,7 @@
   margin: 0;
   color: inherit;
   opacity: .62;
-  font-size: .8125rem;
+  font-size: var(--ts-label);
   letter-spacing: .04em;
 }
 /* Compact case-study credits in the closing band. */
@@ -209,7 +209,7 @@
   flex: 0 0 auto;
   margin: 0;
   font-family: var(--font-mono, ui-monospace, monospace);
-  font-size: .8125rem;
+  font-size: var(--ts-label);
   letter-spacing: .12em;
   text-transform: uppercase;
   opacity: .6;
@@ -226,7 +226,7 @@
   padding: 0;
   list-style: none;
   font-family: var(--font-mono, ui-monospace, monospace);
-  font-size: .8125rem;
+  font-size: var(--ts-label);
 }
 
 @media (max-width: 700px) {
@@ -291,7 +291,7 @@
      second breakpoint. */
   text-wrap: balance;
   font-family: var(--font-editorial);
-  font-size: 1.125rem;
+  font-size: var(--ts-lead);
   letter-spacing: -.024em;
   line-height: 1.15;
 }
@@ -342,7 +342,7 @@
 .recruiter-panel__project-status {
   margin-top: .2rem;
   font-family: var(--shell-sans);
-  font-size: .8125rem !important;
+  font-size: var(--ts-label) !important;
   line-height: 1.45 !important;
 }
 .recruiter-panel__project:first-child { border-top: 1px solid var(--border); }

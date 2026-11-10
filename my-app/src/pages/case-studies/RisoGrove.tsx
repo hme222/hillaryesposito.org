@@ -154,7 +154,19 @@ const OVERRIDES: Array<{ topic: string; ai: string; me: string; why: string; nex
   { topic: "Watering schedule", next: true, ai: "A fixed calendar, with every plant on its own repeating interval and days overdue.", me: "The reminder asks you to check, not to water: “Fiddle Leaf: check the top inch.” Two taps: watered, or not yet.", why: "Overwatering kills more houseplants than neglect, and a fixed interval is exactly how it happens. My own care guide already says “water when the top inch is dry.” The reminder engine never caught up to it. Asking you to check makes the reminder correct, makes seasonality free, and turns “smart care reminders” from a label into a mechanism. This is the one I got wrong in the same direction as the first build: I corrected its tone five times and never once its logic." },
 ];
 
+// Grove's own product fonts, shown in its type-scale specimen. Only this page uses
+// them, so they load here instead of on every page of the site.
+const GROVE_FONTS_HREF = "https://fonts.googleapis.com/css2?family=Archivo:wght@400;800&family=Space+Mono:wght@400&display=swap";
+
 export default function RisoGrove() {
+  useEffect(() => {
+    if (document.querySelector("link[data-grove-fonts]")) return;
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = GROVE_FONTS_HREF;
+    link.setAttribute("data-grove-fonts", "true");
+    document.head.appendChild(link);
+  }, []);
   const { lang } = useLanguage();
   usePageTitle("Grove: Research-to-Scope Case Study", lang !== "es");
 

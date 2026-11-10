@@ -121,3 +121,25 @@ is needed.
 
 **Trigger to revisit:** any change to `--dur-fast`, `--r-plate`, or the
 fixed dark stages' backgrounds.
+
+## Typography tightening (2026-11-10)
+
+Value-preserving unless marked. Checked in a rendered browser (Home and Grove,
+light and dark): token values, computed sizes (15px, 13px) and font loading.
+
+| Change | Detail |
+|---|---|
+| Type ladder | New `--ts-label` (.8125rem, the 13px floor), `--ts-small` (.9375rem), `--ts-body` (1rem), `--ts-lead` (1.125rem) in `portfolio-cohesion.css`. 150 `font-size` literals of exactly those values now use them (39 / 72 / 24 / 15). `--rp-type-floor` now points at `--ts-label`. |
+| `--mono` → `--label` | `--mono` aliased the sans, so the name promised a face the site does not have. Renamed `--label` (and `--shell-mono` → `--shell-label`); 115 uses. No mono face was added. |
+| Riso palette | `--paper`, `--paper-2`, `--ink`, `--ink-2`, `--green` were byte-identical copies of the shell tokens; now `var(--shell-*)`. The `.dark-mode .riso-page` block keeps only values that differ (`--muted`, coral, on-colours). |
+| **`--hair` (visual change)** | Riso `--hair` was `#c2cbb8` (light) / `#33351f` (dark) with no recorded reason; now the shell value `#b7c1ae` / `#3a3d28`. Hairlines on riso pages are slightly stronger. Revisit if they read heavy. |
+| Grove-only fonts | Archivo and Space Mono are Grove's own product fonts, used only in its type-scale specimen. Removed from the site-wide Google Fonts link in `public/index.html`; `RisoGrove.tsx` loads them on that page only. |
+
+### Open: sizes below the 13px floor
+
+About 50 `font-size` rules in `riso-page.css`, `ask.css`, `App.css`,
+`portfolio-editorial.css` and `flagship-case-study.css` sit between `.52rem` and
+`.78rem`. Many are text inside recreated app screens and mock notifications
+(`.rp-notif__*`, `.rp-heroNote`, `.rp-cinema__artifact`), where small type is
+the point. Left as is. Decide per selector: raise to `--ts-label`, or exempt as
+artifact text and say so here.
