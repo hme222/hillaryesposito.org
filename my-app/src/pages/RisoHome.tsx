@@ -132,7 +132,7 @@ export default function RisoHome() {
           <div className="rp-clearing">
             {/* Availability rides the eyebrow as its second line instead of a
                 separate status row under the proof (density pass, 2026-10-16). */}
-            {/* .rp-h1Fit is the container the headline's fit sizing measures
+            {/* .rp-h1Fit is the container the headline’s fit sizing measures
                 against (portfolio-cohesion.css) — not .rp-clearing itself,
                 which collapses under inline-size containment. */}
             <div className="rp-h1Fit">
@@ -157,7 +157,7 @@ export default function RisoHome() {
             plain version, not a fallback state. A same-day sibling commit
             (260aa25) still had the pre-rejection dashboard markup here
             (queueExpanded, HERO_QUEUE_PREVIEW_ROW_INDICES, the expand
-            toggle) — dropped during rebase, superseded by the owner's
+            toggle) — dropped during rebase, superseded by the owner’s
             explicit "just put back my photo next to header." */}
         <div className="rp-hero__media">
           <div className="rp-headshot">

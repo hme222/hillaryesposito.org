@@ -112,7 +112,7 @@ export default function FlagshipLogistics() {
         </div>
         <div className="rp-hero__media fp-heroArt fp-heroArt--logistics" data-evidence="true">
           {/* The hero shows the mechanism (the same drawing the "three moves"
-              section uses below). The portrait was removed at the owner's
+              section uses below). The portrait was removed at the owner’s
               request, 2026-11-04. */}
           <div className="fp-logisticsHeroMechanism">
             <LogisticsMechanism n="01" />

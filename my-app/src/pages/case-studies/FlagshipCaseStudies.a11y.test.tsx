@@ -187,7 +187,7 @@ describe("flagship case-study accessibility", () => {
     const hero = container.querySelector("#grove-start");
     expect(hero?.textContent).toContain("3 directions");
     expect(container.textContent).toContain("not completed redesigns");
-    expect(container.querySelectorAll('.rp-decisionRecord[aria-label="Grove\'s three next-design directions"] dt')).toHaveLength(3);
+    expect(container.querySelectorAll('.rp-decisionRecord[aria-label="Grove’s three next-design directions"] dt')).toHaveLength(3);
     expect(container.querySelectorAll(".rp-decision")).toHaveLength(1);
     expect(container.querySelectorAll(".rp-decision img")).toHaveLength(1);
     expect(container.textContent).toContain("Still unbuilt: high-fidelity redesign, edge states, and retest");
@@ -689,7 +689,7 @@ describe("flagship case-study accessibility", () => {
       root.render(<RisoGrove />);
     });
     expect(container.querySelectorAll(".rp-deepDive__meta")).toHaveLength(0);
-    expect(container.textContent).toContain("Inspect Grove's complete research evidence");
+    expect(container.textContent).toContain("Inspect Grove’s complete research evidence");
     expect(container.textContent).toContain("Try the full Grove prototype system");
     expect(container.textContent).not.toContain("Walk the route");
   });
@@ -720,7 +720,7 @@ describe("flagship case-study accessibility", () => {
     expect(projectTitles).toEqual([
       "MSK · A filing queue replaced a four-department paper detour",
       "Grove · Twelve features became three",
-      "Knowunity · The student's own words are the proof",
+      "Knowunity · The student’s own words are the proof",
     ]);
     expect(dialog?.textContent).toContain("I mapped the four-department workaround and pitched the queue that IT and UX later built.");
     expect(dialog?.textContent?.toLowerCase()).not.toContain(["functional", "beta"].join(" "));

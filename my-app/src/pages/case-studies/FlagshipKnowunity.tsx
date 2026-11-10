@@ -50,10 +50,10 @@ const CHAPTERS: CaseStudyChapter[] = [
 ];
 
 const FRAMES = [
-  { src: "/assets/knowunity/say-it-back-pass.webp", alt: "Pass screen quoting the student's definition back" },
+  { src: "/assets/knowunity/say-it-back-pass.webp", alt: "Pass screen quoting the student’s definition back" },
   { src: "/assets/knowunity/say-it-back-recap.webp", alt: "Session recap leading with Practice what I missed" },
   { src: "/assets/knowunity/say-it-back-mic-primer.webp", alt: "Mic permission sheet opening over the first question" },
-  { src: "/assets/knowunity/say-it-back-second-miss.webp", alt: "Second-miss card headed One more go, then I'll show you the answer" },
+  { src: "/assets/knowunity/say-it-back-second-miss.webp", alt: "Second-miss card headed One more go, then I’ll show you the answer" },
 ];
 
 // The sizzle reel: 1280×720, 52s, H.264 with a music bed and no narration,
@@ -68,7 +68,7 @@ const REEL: CaseStudyReelData = {
   captionsSrc: REEL_CAPTIONS,
   kicker: "The 52-second reel",
   label: "Say It Back, the 52-second reel",
-  caption: "The prototype on Knowunity's kit. Recall is mocked: no real speech recognition.",
+  caption: "The prototype on Knowunity’s kit. Recall is mocked: no real speech recognition.",
   transcriptSummary: "What the reel shows",
   transcript: [
     "Knowie points the way in",
@@ -95,25 +95,25 @@ const STEPS = [
   {
     n: "01",
     title: "Echo the words back",
-    body: "On a clean pass, Knowie quotes the student's own transcript back as the proof. My reasoning, untested with students: seeing your own correct explanation is evidence you can retrieve it. Those are also the words you'll use in the exam.",
+    body: "On a clean pass, Knowie quotes the student’s own transcript back as the proof. My reasoning, untested with students: seeing your own correct explanation is evidence you can retrieve it. Those are also the words you’ll use in the exam.",
     note: "Proof, not praise",
   },
   {
     n: "02",
-    title: "Offer the misses, don't requeue them",
+    title: "Offer the misses, don’t requeue them",
     body: "A missed term used to come back at the end of the set. Now the run goes straight to the Recap, which leads with “Practice what I missed.” Each row says why the term is there and recommends a drill or a say-it-again.",
     note: "The student chooses the second try",
   },
   {
     n: "03",
-    title: "Ask for the mic when it's needed",
+    title: "Ask for the mic when it’s needed",
     body: "The question comes first. The permission sheet opens over it on the first mic tap, not as a full screen between an intro and question one. The intro screen is gone; every way in lands on question one.",
     note: "No cold OS prompt",
   },
   {
     n: "04",
     title: "Say where you are on the ladder",
-    body: "One hint on the first miss, a fill-the-gap hint on the second, the answer on the third. The card's headline says it: “One more go, then I'll show you the answer.” Nothing vanishes without a word.",
+    body: "One hint on the first miss, a fill-the-gap hint on the second, the answer on the third. The card’s headline says it: “One more go, then I’ll show you the answer.” Nothing vanishes without a word.",
     note: "Judge generously, out loud",
   },
 ];
@@ -178,7 +178,7 @@ export default function FlagshipKnowunity() {
           <div className="fp-sequence__phone fp-sequence__phone--hero">
             <img
               src={FRAMES[0].src}
-              alt="Say It Back pass screen: Knowie quotes the student's own definition of formal charge back as the result"
+              alt="Say It Back pass screen: Knowie quotes the student’s own definition of formal charge back as the result"
               width={CAPTURE_W}
               height={CAPTURE_H}
               decoding="async"
@@ -192,9 +192,9 @@ export default function FlagshipKnowunity() {
         <div className="rp-wrap">
           <h2 className="rp-title">Seeing the material is not knowing it.</h2>
           <CaseMore label="What the brief asked for">
-            <p className="rp-lede">After revising, a student has seen the material but hasn't proved they can pull it back out. Quizzes test recognition. Nothing makes them say it.</p>
-            <p className="rp-body">Knowunity's brief asked for a felt “I actually know this now.” The goals, in words: more students who see the step start it, and more of those who start it finish it.</p>
-            <p className="rp-body">Mid-sprint, Knowunity shipped a light beta. The brief said to treat it as one team's first pass and find where the stronger version is, not copy it.</p>
+            <p className="rp-lede">After revising, a student has seen the material but hasn’t proved they can pull it back out. Quizzes test recognition. Nothing makes them say it.</p>
+            <p className="rp-body">Knowunity’s brief asked for a felt “I actually know this now.” The goals, in words: more students who see the step start it, and more of those who start it finish it.</p>
+            <p className="rp-body">Mid-sprint, Knowunity shipped a light beta. The brief said to treat it as one team’s first pass and find where the stronger version is, not copy it.</p>
           </CaseMore>
         </div>
       </section>
@@ -203,7 +203,7 @@ export default function FlagshipKnowunity() {
         id="knowunity-decisions"
         languageAnchor="knowunity-decisions"
         title="The student does the proving, not Knowie."
-        intro="Nothing makes a student say it. So: echo the words, offer the misses, ask for the mic when it's needed, say where you are."
+        intro="Nothing makes a student say it. So: echo the words, offer the misses, ask for the mic when it’s needed, say where you are."
         steps={STEPS}
         // Same stacked crossfade as Mobbin: every capture is mounted in one
         // fixed-ratio frame and the active step turns one on, so the swap has
@@ -231,7 +231,7 @@ export default function FlagshipKnowunity() {
         )}
       /></div>
       <div className="rp-wrap fp-knowunityChange">
-        <div className="fp-journalLine"><span>What I'd change</span><b>Put a real speech-to-text version in front of students earlier. Recall was mocked the whole way.</b></div>
+        <div className="fp-journalLine"><span>What I’d change</span><b>Put a real speech-to-text version in front of students earlier. Recall was mocked the whole way.</b></div>
       </div>
 
       <section className="rp-section" id="knowunity-prototype" data-language-anchor="knowunity-prototype">
@@ -272,13 +272,13 @@ export default function FlagshipKnowunity() {
             <p className="rp-kicker fp-constraintKicker">What did not move</p>
             <dl className="fp-constraintAnnotations fp-constraintAnnotations--four rp-reveal">
               <div><dt>Voice in, text out</dt><dd>Knowie never speaks.</dd></div>
-              <div><dt>Push to talk</dt><dd>The student starts and stops the recording. No guessing when they're done.</dd></div>
-              <div><dt>Never trap the student</dt><dd>Every required action has a way out, including for someone who can't speak right now.</dd></div>
+              <div><dt>Push to talk</dt><dd>The student starts and stops the recording. No guessing when they’re done.</dd></div>
+              <div><dt>Never trap the student</dt><dd>Every required action has a way out, including for someone who can’t speak right now.</dd></div>
               <div><dt>Judge generously</dt><dd>A false “wrong” costs more here than in multiple choice.</dd></div>
             </dl>
             <p className="fp-ownership fp-ownership--paper rp-reveal">
               <b>AI in the build</b>
-              I designed and directed. Claude Code wrote most of the Next.js and Storybook code from my specs and Knowunity's Figma components.
+              I designed and directed. Claude Code wrote most of the Next.js and Storybook code from my specs and Knowunity’s Figma components.
             </p>
           </div>
         </section>
@@ -289,10 +289,10 @@ export default function FlagshipKnowunity() {
         languageAnchor="knowunity-outcomes"
         title="A badge, a review, and a mock that still needs students."
         intro="Yummy Labs awarded the entry its AI Design Sprinter badge and Knowunity reviewed the work. Recall is mocked and no students have tested it. Next: a speech-to-text build in front of students."
-        disclaimer="Design-sprint prototype · recall is mocked: no speech recognition, hold time decides the result · no student testing · not a shipped Knowunity feature · Knowunity's internal numbers are not published here"
+        disclaimer="Design-sprint prototype · recall is mocked: no speech recognition, hold time decides the result · no student testing · not a shipped Knowunity feature · Knowunity’s internal numbers are not published here"
         metrics={[
           { tag: "Build", n: "43", label: "routes in the working prototype, every screen reached by tapping, none by typing a URL" },
-          { tag: "Sprint", n: "2.5", label: "weeks, solo, on Knowunity's brief and component kit" },
+          { tag: "Sprint", n: "2.5", label: "weeks, solo, on Knowunity’s brief and component kit" },
         ]}
         route={["Meet it where the quiz ends", "Say it back", "See your own words", "Practice what you missed"]}
         aside={<CaseStudyCredential credential={{ ...BADGE, newTabLabel: t("a11y.newTab") }} />}

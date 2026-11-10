@@ -203,7 +203,7 @@ const en: MskCopy = {
     readTime: "6 min",
     readMeta: "read · 6 years, 3 roles",
     ledeOpen:
-      "Patient-portal messages lived in the portal, not the patient's chart, so staff printed them to be scanned in. As an office coordinator, I mapped that workaround across clinical, IT, HIM (health information management, the team that scans documents into charts), and operations, then presented the online workflow that was implemented two roles later. It served work touching ",
+      "Patient-portal messages lived in the portal, not the patient’s chart, so staff printed them to be scanned in. As an office coordinator, I mapped that workaround across clinical, IT, HIM (health information management, the team that scans documents into charts), and operations, then presented the online workflow that was implemented two roles later. It served work touching ",
     ledeScale: "21,000+ clinicians and staff",
     ledeMiddle: ", and ",
     ledeSustain: "I later saw it in the production system while training new employees",
@@ -258,7 +258,7 @@ const en: MskCopy = {
     mapNodesAfter: ["Open queue", "Select message", "Send to EMR", "Files in chart", "Status updated"],
     provenanceKicker: "How I made these screens",
     provenanceBody:
-      "Every screen and map here was rebuilt from memory of my own current-state documentation; the original notes didn't survive. No protected health information, no exported records, and no reproduction of the vendor interface. Showing the workflow does not require showing a patient, so it does not.",
+      "Every screen and map here was rebuilt from memory of my own current-state documentation; the original notes didn’t survive. No protected health information, no exported records, and no reproduction of the vendor interface. Showing the workflow does not require showing a patient, so it does not.",
   },
 
   blueprint: {
@@ -270,7 +270,7 @@ const en: MskCopy = {
     afterBtn: "After · no handoff",
     statusBefore:
       "For two steps the message sits below the line of visibility, owned by nobody the coordinator can see.",
-    statusAfter: "The message never leaves the coordinator's line of sight, and the queue reports back.",
+    statusAfter: "The message never leaves the coordinator’s line of sight, and the queue reports back.",
     // The four departments (msk.md, 2026-10-14 answer 6): clinical writes the
     // message, operations is the coordinator, HIM scans paper, IT owns the
     // portal, the EMR, and permissions.
@@ -344,14 +344,14 @@ const en: MskCopy = {
     legendSummary: "What these terms mean",
     ruleLabel: "Rule:",
     ruleAction: "Send to EMR",
-    rule: "appears only when the message is ready and the coordinator's role includes filing rights.",
+    rule: "appears only when the message is ready and the coordinator’s role includes filing rights.",
   },
 
   decisions: {
     kicker: "The fix looked like one button",
     title: "One button, four rules.",
     intro:
-      "One action replaced the three steps that left the system. IT and UX built the real one after I changed roles; the four rules below are how this recreation makes it safe to press. My portfolio design, not MSK's specification.",
+      "One action replaced the three steps that left the system. IT and UX built the real one after I changed roles; the four rules below are how this recreation makes it safe to press. My portfolio design, not MSK’s specification.",
     steps: [
       { n: "01", title: "Show the action only when the record is ready", body: "Staff stop opening records that still need review.", note: "Ready means actionable" },
       { n: "02", title: "Make permission limits visible", body: "View-only roles see status and ownership, not a disabled mystery button.", note: "Permission is product logic" },
@@ -406,7 +406,7 @@ const en: MskCopy = {
       {
         n: "01", role: "Office Coordinator", taught: "Where people paused",
         term: "Lean Six Sigma Green Belt (Purdue) · Master of Healthcare Administration (Rutgers)",
-        body: "Both finished in this seat, while I was running a clinic's paperwork. The Green Belt, a process-improvement certification, is the lens that showed one filing task crossing four departments.",
+        body: "Both finished in this seat, while I was running a clinic’s paperwork. The Green Belt, a process-improvement certification, is the lens that showed one filing task crossing four departments.",
       },
       {
         n: "02", role: "Administrative Assistant", taught: "How to brief people who have to act",
@@ -469,7 +469,7 @@ const en: MskCopy = {
       "The work moved from personal workaround to shared system; the plain-language format got the department compliant before the deadline.",
     proofLabel: "Independent proof · MSK News",
     proofTitle: "From the military to Memorial Sloan Kettering",
-    proofAria: "Read Hillary Esposito's career profile in MSK News (opens in new tab)",
+    proofAria: "Read Hillary Esposito’s career profile in MSK News (opens in new tab)",
   },
 
   outcomes: {

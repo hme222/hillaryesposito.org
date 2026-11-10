@@ -103,7 +103,7 @@ const en = {
   "home.riso.mskAlt": "Recreated Memorial Sloan Kettering filing queue, showing patient-portal messages moving from ready-to-send through filed",
   "home.riso.logisticsAlt": "Service mechanism diagram contrasting a rear supply point with the warehouse moved forward, beside resupply time falling from months to weeks",
   "home.riso.uxwomanAlt": "Evidence ledger: 6 healthcare interviews, 1 adjacent HR interview, 0 patient interviews, 5 pretotypes designed, 0 run",
-  "home.riso.knowunityAlt": "Two Say It Back mobile prototype states: a voice-recall question, then the pass screen quoting the student's own words back",
+  "home.riso.knowunityAlt": "Two Say It Back mobile prototype states: a voice-recall question, then the pass screen quoting the student’s own words back",
   "home.riso.groveTag": "Active · Phase 2 of 3",
   "home.riso.proofKicker": "The proof",
   "home.riso.proofTitle": "The numbers, with their sources.",
@@ -122,7 +122,7 @@ const en = {
     "A hackathon project at the New York Public Library, built with Jacqueline Gordon. Using public data from the MTA and New York City, we built a working prototype that shows whether a subway trip is accessible, by platform and direction, plus nearby curb ramps.",
   "home.dispatch.findingLabel": "What we found",
   "home.dispatch.finding":
-    "Eight platforms are accessible in one direction only. Because a trip is only as accessible as its stops, the return trip is at risk on 22,937 of the system's 77,236 scheduled trips.",
+    "Eight platforms are accessible in one direction only. Because a trip is only as accessible as its stops, the return trip is at risk on 22,937 of the system’s 77,236 scheduled trips.",
   "home.dispatch.role":
     "Jacqueline led the accessibility features. I led the product plan and the data logic, and built the prototype with AI help.",
   "home.dispatch.ruleLabel": "How it behaves",
@@ -142,7 +142,7 @@ const en = {
   // ── Home: mini about ──
   "home.about.eyebrow": "About",
   "home.about.blurb":
-    "In 2020 I reported the New Jersey National Guard's COVID-19 medical operations to the Pentagon.",
+    "In 2020 I reported the New Jersey National Guard’s COVID-19 medical operations to the Pentagon.",
   "home.about.link": "More about me →",
 
   // ── Home: proof stats ──
@@ -205,10 +205,10 @@ const en = {
   "ask.answerLabel": "Answer",
   "ask.sources": "Sources",
   "ask.passagesTitle": "What the portfolio says",
-  "ask.notCoveredTitle": "That isn't covered in the portfolio.",
+  "ask.notCoveredTitle": "That isn’t covered in the portfolio.",
   "ask.notCoveredRelated": "Closest pages",
   "ask.notCoveredEmail": "Ask Hillary directly:",
-  "ask.failedTitle": "The question tool didn't load.",
+  "ask.failedTitle": "The question tool didn’t load.",
   "ask.failedBody": "Reload the page, or email Hillary:",
   "ask.opensNewTab": "(opens in new tab)",
   "ask.close": "Close",

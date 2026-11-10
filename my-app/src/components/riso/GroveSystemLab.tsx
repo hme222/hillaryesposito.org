@@ -92,7 +92,7 @@ export default function GroveSystemLab() {
             ))}
           </div>
 
-          {/* All panels stay mounted (hidden when inactive) so every tab's
+          {/* All panels stay mounted (hidden when inactive) so every tab’s
               aria-controls resolves to a real element. */}
           <div
             className="rp-demo__panel"
@@ -116,7 +116,7 @@ export default function GroveSystemLab() {
                 </select>
               </label>
               {/* Both states share one grid cell so the card holds the taller
-                  one's height: swapping in the longer "done" copy used to grow
+                  one’s height: swapping in the longer "done" copy used to grow
                   the card by a line (+26px) with no transition. */}
               <div className="rp-demoCard__swap">
                 <div aria-hidden={reminderDone} className={reminderDone ? "is-off" : undefined}>
@@ -164,7 +164,7 @@ export default function GroveSystemLab() {
               </button>
               <div id="grove-id-sources" className="rp-demoSources" hidden={!idSourcesOpen}>
                 <p>
-                  Reconstructed from Grove's research and decision log, not a live model. In the
+                  Reconstructed from Grove’s research and decision log, not a live model. In the
                   prototype this confidence pattern comes from a plant-ID model; the specimen shows
                   the <b>trust behavior</b>, a ranked guess with a way to verify, never a silent
                   verdict.

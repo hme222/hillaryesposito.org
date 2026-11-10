@@ -342,7 +342,7 @@ export default function RisoGrove() {
       <details className="rp-deepDive">
         <summary>
           <span className="rp-deepDive__copy">
-            <b className="rp-deepDive__title">Inspect Grove's complete research evidence</b>
+            <b className="rp-deepDive__title">Inspect Grove’s complete research evidence</b>
           </span>
           <span className="rp-deepDive__state" aria-hidden="true">
             <span className="rp-deepDive__stateClosed">Open</span>
@@ -379,7 +379,7 @@ export default function RisoGrove() {
         <div className="rp-wrap">
           <h2 className="rp-title">Three features, one testable direction each.</h2>
           <p className="rp-lede" style={{ marginTop: "1.1rem" }}>The three directions stay visible together. They are decisions for the next prototype, not completed redesigns.</p>
-          <dl className="rp-decisionRecord rp-decisionRecord--grove rp-reveal" aria-label="Grove's three next-design directions" data-evidence="true">
+          <dl className="rp-decisionRecord rp-decisionRecord--grove rp-reveal" aria-label="Grove’s three next-design directions" data-evidence="true">
             {DECISIONS.map((decision) => (
               <div key={decision.feature}>
                 <dt>{decision.feature}</dt>
@@ -435,7 +435,7 @@ export default function RisoGrove() {
             <h3 className="rp-subhead">The trust decision</h3>
             <p className="rp-lede">
               A florist, unprompted: “Any generative AI in this will remove any sense of trust.”
-              She wasn't alone, 5 of 37 said they'd trust no AI feature in the app at all, and 22 of 37
+              She wasn’t alone, 5 of 37 said they’d trust no AI feature in the app at all, and 22 of 37
               said explaining why the AI made a call is what would earn their trust. Plant ID carried
               that risk directly, so instead of one confident answer, it shows top guesses, how sure it
               is, and its sources. False certainty is the fastest way to lose trust.
@@ -466,7 +466,7 @@ export default function RisoGrove() {
           <h3 className="rp-subhead">How I built the prototype</h3>
           <dl className="rp-decisionRecord" data-evidence="true">
             <div><dt>Source of truth</dt><dd>The working React prototype, not a static handoff artifact.</dd></div>
-            <div><dt>AI's job</dt><dd>Accelerate first-build implementation and help explore alternatives; research still chose what entered the product.</dd></div>
+            <div><dt>AI’s job</dt><dd>Accelerate first-build implementation and help explore alternatives; research still chose what entered the product.</dd></div>
             <div><dt>My job</dt><dd>Own research, scope, interaction decisions, accessibility, and QA.</dd></div>
             <div><dt>Boundary</dt><dd>Faster output is not evidence. Uncertain recommendations still need confidence, sources, and human review.</dd></div>
           </dl>
@@ -491,7 +491,7 @@ export default function RisoGrove() {
               </div>
             </>
           )}
-          {/* The app's own components, documented in Storybook from the Grove
+          {/* The app’s own components, documented in Storybook from the Grove
               repo (deployed separately at grove-ui.hillaryesposito.org). */}
           <p className="rp-hero__ctas">
             <a className="rp-cta" href={DEMO_URL} target="_blank" rel="noopener noreferrer">

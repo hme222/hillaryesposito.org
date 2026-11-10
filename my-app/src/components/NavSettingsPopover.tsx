@@ -90,7 +90,7 @@ export default function NavSettingsPopover({ darkMode, setDarkMode }: NavSetting
       >
         <SlidersHorizontal className="nav-settings__icon" size="1em" strokeWidth={1.5} aria-hidden="true" focusable="false" />
         {/* The current language, visible as text - not just the gloss in the
-            popover's own toggle - so the trigger discloses what it holds
+            popover’s own toggle - so the trigger discloses what it holds
             (theme + language) rather than only a generic settings glyph.
             lang is already "en"/"es"; no extra translation key needed. Not
             aria-hidden: WCAG 2.5.3 (Label in Name) needs this visible code

@@ -38,7 +38,7 @@ const CHAPTERS: CaseStudyChapter[] = [
 const ROLE_METHODS: Record<string, { term: string; body: string }> = {
   "01": {
     term: "Lean Six Sigma Green Belt (Purdue) · Master of Healthcare Administration (Rutgers)",
-    body: "Both finished in this seat, while I was running a clinic's paperwork. The Green Belt, a process-improvement certification, is the lens that showed one filing task crossing four departments.",
+    body: "Both finished in this seat, while I was running a clinic’s paperwork. The Green Belt, a process-improvement certification, is the lens that showed one filing task crossing four departments.",
   },
   "02": {
     term: "Writing for the person who has to act",
@@ -194,16 +194,16 @@ export default function FlagshipMSK() {
               below, which already carries it — so the kicker is free to be a
               beat instead of a provenance label. */}
           <h2 className="rp-title">One map exposed the shared failure.</h2>
-          {/* "The Detour" animatic was removed 2026-10-13 at the owner's direction
+          {/* "The Detour" animatic was removed 2026-10-13 at the owner’s direction
               (the deterministic version was rejected at taste review on
               2026-08-31; the generated video was scrapped the same day). */}
-          {/* Provenance, said once for the whole page (2026-10-16): the hero's
+          {/* Provenance, said once for the whole page (2026-10-16): the hero’s
               artifact label names the recreation; this note carries the
               "no patient data" boundary and what the evidence can and cannot
               claim (the former "Evidence boundary" aside). */}
           {/* These two lists are the text alternative for the aria-hidden map,
               so they stay. What went was the pair of paragraphs under them —
-              "failure mode" and "design decision" restated the map's own
+              "failure mode" and "design decision" restated the map’s own
               labels ("leaves the EMR" / "never leaves the EMR") in prose. */}
           <div className="fp-workflow rp-reveal" data-evidence="true">
             <article>
@@ -255,7 +255,7 @@ export default function FlagshipMSK() {
         id="msk-decisions"
         languageAnchor="msk-decisions"
         title="One button, four rules."
-        intro="One action replaced the three steps that left the system. These four rules are my portfolio design for making it safe to press, not MSK's specification."
+        intro="One action replaced the three steps that left the system. These four rules are my portfolio design for making it safe to press, not MSK’s specification."
         steps={DECISIONS}
         showStepNumbers={false}
         visual={(active) => (
@@ -320,7 +320,7 @@ export default function FlagshipMSK() {
                 );
               })}
             </ol>
-            {/* "Service design" appears in this page's hero eyebrow and nowhere
+            {/* "Service design" appears in this page’s hero eyebrow and nowhere
                 else on the site. It had a definition here once and I cut it as
                 abstract, which left the discipline named and unsupported. This is
                 the replacement: the claim is ownership of the whole path, which

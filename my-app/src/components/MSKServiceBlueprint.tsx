@@ -153,7 +153,7 @@ export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint }: { 
           {/* the blind window — the whole point of the drawing */}
           {!showAfter && (
             <g>
-              {/* Spans the coordinator's dead time as well as the backstage
+              {/* Spans the coordinator’s dead time as well as the backstage
                   work: the point is that nothing is happening above the line
                   while something is happening below it. */}
               <rect
@@ -239,7 +239,7 @@ export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint }: { 
             );
           })}
 
-          {/* The support lane's continuity is the argument, so draw the thread
+          {/* The support lane’s continuity is the argument, so draw the thread
               through it: unbroken after, broken across the handoff before. */}
           {(() => {
             const support = nodes.filter((n) => n.lane === "support").sort((a, b) => a.col - b.col);

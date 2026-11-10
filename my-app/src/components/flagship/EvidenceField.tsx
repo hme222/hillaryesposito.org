@@ -74,7 +74,7 @@ export default function EvidenceField({
         </p>
         )}
         <p className="rp-disclaimer">{disclaimer}</p>
-        {/* Two numbers share the row, as Grove's two outcomes do; the default
+        {/* Two numbers share the row, as Grove’s two outcomes do; the default
             three-column grid left a third of it empty. Four (MSK) sit two by
             two, so no tile is left alone on a second row. */}
         {aside ? (

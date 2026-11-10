@@ -30,7 +30,7 @@ export default function ScreenSequence({
     <div className="fp-sequence" aria-label={label}>
       <div className="fp-sequence__stage">
         {/* Every screen mounted and stacked, the current one turned on - the
-            same crossfade DecisionStory's phone uses. Swapping one <img src>
+            same crossfade DecisionStory’s phone uses. Swapping one <img src>
             cut hard between apps with a decode flash. */}
         <div className="fp-sequence__phone fp-sequence__phone--stack">
           {items.map((entry, index) => (

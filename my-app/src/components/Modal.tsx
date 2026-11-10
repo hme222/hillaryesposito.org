@@ -109,7 +109,7 @@ export default function Modal({
     const dlg = ref.current;
     if (!dlg) return;
     const onCancel = (e: Event) => {
-      e.preventDefault(); // let React own the open state; don't double-close
+      e.preventDefault(); // let React own the open state; don’t double-close
       onClose();
     };
     const onCloseEv = () => {

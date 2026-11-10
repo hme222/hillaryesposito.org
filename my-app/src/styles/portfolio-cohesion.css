@@ -58,6 +58,8 @@
   --pull-measure: 34ch;
   --pull-leading: 1.15;
   --pull-tracking: -.015em;
+  --ts-h1-about: clamp(1.9rem, 3.7vw, 2.6rem); /* About's h1 sits in a card; larger than --ts-h2 */
+  --ts-h2: clamp(1.6rem, 3.2vw, 2.1rem);       /* section h2: clearly below a hero h1 (was --ts-title, which tied with the About h1) */
   --ts-title: clamp(1.6rem, 4vw, 2.5rem);      /* section and item titles */
   --ts-heading: clamp(1.35rem, 3vw, 2.1rem);   /* card and step headings */
   --ts-stat: clamp(1.8rem, 4vw, 2.6rem);       /* numeric display */

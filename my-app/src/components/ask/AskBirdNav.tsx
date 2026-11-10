@@ -57,7 +57,7 @@ export default function AskBirdNav() {
       onBlur={() => setFocused(false)}
     >
       <AskBirdIcon className="ask-bird-nav__bird" />
-      {/* The dock's other items (Work, About, Settings) all carry a visible
+      {/* The dock’s other items (Work, About, Settings) all carry a visible
           sentence-case label, so this one does too - "Ask" stays a prefix of
           the fuller aria-label above, keeping the visible label contained in
           the accessible name. */}

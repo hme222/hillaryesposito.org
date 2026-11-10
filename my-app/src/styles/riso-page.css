@@ -225,9 +225,11 @@
 /* The human line: one first-person sentence, set large, under a hero's sub-line.
    Typography is the voice here, so it is type and one rule, nothing else. Source:
    design-docs/case-study-stories (Hillary's own interview answers). */
-/* The extra selectors out-rank the body-copy floor on Home and MSK (`.riso-home p`,
-   `.flagship-page--msk p`), which would otherwise set it to 16px. */
+/* The extra selectors out-rank the body-copy rules that would otherwise win:
+   `.riso-home p` and `.flagship-page--msk p` (16px) and `.riso-page p` (Instrument Sans,
+   which put five of the seven lines in the wrong face until the 2026-11-10 type audit). */
 .rp-humanLine,
+.riso-page .rp-humanLine,
 .riso-home .rp-humanLine,
 .flagship-page--msk .rp-humanLine {
   margin: var(--pull-gap) 0 0; padding-left: var(--pull-indent); border-left: var(--pull-rule) solid var(--coral);
@@ -453,7 +455,7 @@
 .rp-section--alt .rp-kicker,
 .rp-decisionStory__head .rp-kicker { color: var(--ink); }
 .rp-kicker { font-family: var(--label); font-size: var(--rp-type-floor); letter-spacing: .12em; text-transform: uppercase; color: var(--coral-text); font-weight: 700; }
-.rp-title { font-size: var(--ts-title); font-weight: 800; line-height: 1.05; letter-spacing: -.015em; margin: .5rem 0 0; text-wrap: balance; }
+.rp-title { font-size: var(--ts-h2); font-weight: 800; line-height: 1.05; letter-spacing: -.015em; margin: .5rem 0 0; text-wrap: balance; }
 
 /* ---------- homepage opening film ---------- */
 .rp-openingFilm {
@@ -1111,7 +1113,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 
 /* ---------- closing CTA ---------- */
 .rp-close { text-align: left; }
-.rp-close h2 { font-size: var(--ts-title); font-weight: 800; line-height: 1.05; letter-spacing: -.015em; margin: 0; text-wrap: balance; }
+.rp-close h2 { font-size: var(--ts-h2); font-weight: 800; line-height: 1.05; letter-spacing: -.015em; margin: 0; text-wrap: balance; }
 .rp-close p { color: var(--ink-2); margin: .8rem 0 1.4rem; max-width: 52ch; }
 
 /* ---------- two-column split: words + relevant screen ---------- */
@@ -2916,7 +2918,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-cinema__artifact--reminder { transform: rotate(-.8deg); }
 .rp-cinema__artifact--safety { transform: rotate(.7deg); }
 .rp-cinema__bridge .rp-kicker { color: var(--coral-on-dark); }
-.rp-cinema__bridge h2 { margin: .45rem 0 0; font-size: var(--ts-title); line-height: 1.1; letter-spacing: -.021em; text-wrap: balance; }
+.rp-cinema__bridge h2 { margin: .45rem 0 0; font-size: var(--ts-h2); line-height: 1.1; letter-spacing: -.021em; text-wrap: balance; }
 .rp-cinema__bridge > p:last-child { margin-top: .85rem; max-width: 44ch; color: color-mix(in srgb, var(--ink-on-dark) 78%, transparent); }
 @media (max-width: 760px) {
   .rp-cinema { min-height: auto; padding: 4.5rem 1rem 3rem; }

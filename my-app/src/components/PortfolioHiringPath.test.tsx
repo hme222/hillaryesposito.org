@@ -79,7 +79,7 @@ describe("healthcare product designer hiring path", () => {
     expect(Array.from(selected.querySelectorAll("strong"), (item) => item.textContent)).toEqual([
       "MSK · A filing queue replaced a four-department paper detour",
       "Grove · Twelve features became three",
-      "Knowunity · The student's own words are the proof",
+      "Knowunity · The student’s own words are the proof",
     ]);
     expect(labels.some((label) => label.textContent === "Supporting evidence")).toBe(false);
     expect(selected.textContent).toContain("Five tests and a 37-person survey");

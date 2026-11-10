@@ -55,7 +55,7 @@ export default function RecruiterPanel() {
                 content column is roughly the same measure at every
                 viewport). The CSS clamp on `.recruiter-panel__title` keeps
                 "Healthcare Product Designer" itself on one line at the
-                panel's narrowest width instead of this break accidentally
+                panel’s narrowest width instead of this break accidentally
                 creating its own second, three-line wrap. */}
             <h2 id="recruiter-panel-title" className="recruiter-panel__title" tabIndex={-1}>
               Hillary Esposito,<br />Healthcare Product Designer
@@ -122,7 +122,7 @@ export default function RecruiterPanel() {
               </li>
               <li>
                 <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/knowunity")}>
-                  <strong>Knowunity · The student's own words are the proof</strong>
+                  <strong>Knowunity · The student’s own words are the proof</strong>
                   <span className="recruiter-panel__project-proof">I designed and coded four interaction decisions in 2.5 weeks; speech recognition remains mocked.</span>
                 </button>
               </li>

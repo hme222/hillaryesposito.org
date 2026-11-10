@@ -20,7 +20,7 @@ const COPY: Record<"en" | "es", Copy> = {
     group: "Order status view",
     beforeBtn: "Before: no one sees status",
     afterBtn: "After: shared status",
-    caption: (after) => `Seven stations and the status of each station's order, ${after ? "after" : "before"} the shared order status`,
+    caption: (after) => `Seven stations and the status of each station’s order, ${after ? "after" : "before"} the shared order status`,
     station: "Station", colStation: "Station", colStatus: "Order status",
     readAfter: "Every station uses one request format, and a station that is running low shows before it runs out.",
     readBefore: "Seven ways of asking, and nobody could see an order. A station found out it was out of supply when it was already out.",

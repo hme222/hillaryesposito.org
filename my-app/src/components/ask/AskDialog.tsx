@@ -254,7 +254,7 @@ export default function AskDialog() {
           <blockquote className="ask-quote__text" lang={entry.lang}>
             {entry.text}
           </blockquote>
-          {/* The label already reads "In Hillary's words · Interview, Oct 2026"
+          {/* The label already reads "In Hillary’s words · Interview, Oct 2026"
               (ES: "En palabras de Hillary (cita original en inglés) · …"). */}
           <figcaption className="ask-quote__attribution">{renderSourceLink(entry)}</figcaption>
         </figure>
@@ -327,7 +327,7 @@ export default function AskDialog() {
             </div>
           </form>
 
-          {/* Hidden once there's an answer so it sits right under the field;
+          {/* Hidden once there’s an answer so it sits right under the field;
               kept for not covered / failed, where another question helps. */}
           {!hasAnswer && (
             <>

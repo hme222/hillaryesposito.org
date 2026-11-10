@@ -78,7 +78,7 @@
   padding: clamp(1rem, 2.5vw, 1.5rem) clamp(1.1rem, 3vw, 1.7rem);
 }
 .about-page .about-hero-profile .rp-clearing .rp-h1 {
-  font-size: var(--ts-title) !important;
+  font-size: var(--ts-h1-about) !important;
   line-height: 1.08 !important;
 }
 @media (max-width: 760px) {

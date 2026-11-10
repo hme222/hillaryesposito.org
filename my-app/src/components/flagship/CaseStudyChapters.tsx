@@ -213,7 +213,7 @@ export default function CaseStudyChapters({
         </a>
       ))}
       {/* Phones and tablets: the fixed rail is hidden there, so the length cue
-          rides at the strip's right end instead. Hidden on wide screens. */}
+          rides at the strip’s right end instead. Hidden on wide screens. */}
       {progress && <ReadingProgress variant="strip" leftLabel={leftLabel} />}
     </nav>
   );

@@ -57,7 +57,7 @@ const CHAPTERS: AboutChapter[] = [
     // restate every figure (5,000+, seven, 1–2 weeks, 60%) a second time in the
     // same breath. Cut here, not duplicated there.
     paragraphs: [
-      "In Iraq I ran medical supply for aid stations in three countries under a 48-hour cold-chain limit. In 2020 I reported the New Jersey National Guard's COVID-19 medical operations to the Pentagon.",
+      "In Iraq I ran medical supply for aid stations in three countries under a 48-hour cold-chain limit. In 2020 I reported the New Jersey National Guard’s COVID-19 medical operations to the Pentagon.",
     ],
     facts: [
       { value: "5,000+", label: "soldiers served" },
@@ -168,8 +168,8 @@ export default function About() {
             {isSpanish ? "Busco primero el atajo." : "I look for the workaround first."}
           </h2>
           {/* Rewritten from a four-step observe/map/design/measure list. That was
-              generic process language, and it restated MSK's Observe/Align/Redesign
-              without MSK's evidence under it. These are the judgment calls rather
+              generic process language, and it restated MSK’s Observe/Align/Redesign
+              without MSK’s evidence under it. These are the judgment calls rather
               than the stages — things that are true of this practice specifically. */}
           <ol className="rp-list rp-patternList rp-reveal">
             {/* Each point carries the artifact it links to, reused from the case
@@ -224,7 +224,7 @@ export default function About() {
       <section id="about-story" data-language-anchor="about-story" className="rp-section rp-section--alt" aria-labelledby="about-story-title">
         <div className="rp-wrap">
           {/* The "How I got here." H2 was cut (2026-10-13); the kicker stays the
-              section's heading so the story's h3s still sit under an h2. */}
+              section’s heading so the story’s h3s still sit under an h2. */}
           <h2 className="rp-title" id="about-story-title">{isSpanish ? "Antes del diseño: MSK y el Ejército." : "Before design: MSK and the Army."}</h2>
 
           {chapters.map((chapter, index) => (
