@@ -328,9 +328,9 @@ export default function About() {
       {/* ═ CTA ══════════════════════════════════════════════════════ */}
       <section id="about-contact" data-language-anchor="about-contact" className="rp-section">
         <div className="rp-wrap rp-close">
-          <h2>{isSpanish ? "¿Busca a alguien para diseño de productos de salud?" : "Hiring for healthcare product design?"}</h2>
+          <h2>{isSpanish ? "¿Busca a alguien para UX, diseño de producto o investigación?" : "Hiring for UX, product design or research?"}</h2>
           <p>
-            {isSpanish ? "Abierta a roles de diseño de productos de salud, y a trabajo freelance." : "Open to healthcare product design roles, and to freelance work."}
+            {isSpanish ? "Abierta a roles en salud y en productos de consumo o digitales, y a trabajo freelance de UX." : "Open to roles in healthcare and in consumer or digital products, and to freelance UX work."}
           </p>
           <div className="rp-hero__ctas">
             <a className="rp-cta" href="mailto:espositohillary@gmail.com">
@@ -342,7 +342,7 @@ export default function About() {
               href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={isSpanish ? "Ver CV (se abre en una pestaña nueva)" : "View résumé (opens in new tab)"}
+              aria-label={isSpanish ? "Ver CV (PDF, se abre en una pestaña nueva)" : "View résumé (PDF, opens in new tab)"}
             >
               {isSpanish ? "Ver CV" : "View résumé"}
             </a>

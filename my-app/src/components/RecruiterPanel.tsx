@@ -93,7 +93,7 @@ export default function RecruiterPanel() {
                  href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"
                  target="_blank"
                  rel="noopener noreferrer"
-                 aria-label="View résumé (opens in new tab)">
+                 aria-label="View résumé (PDF, opens in new tab)">
                 <FileText className="recruiter-panel__btn-icon" size="1em" strokeWidth={1.6} aria-hidden="true" focusable="false" /> View résumé
               </a>
               <a className="recruiter-panel__btn"
