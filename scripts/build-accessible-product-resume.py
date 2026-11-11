@@ -27,8 +27,8 @@ HTML = """<!doctype html>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Healthcare Product Designer résumé focused on enterprise workflows, internal tools, and complex healthcare systems." />
-  <title>Hillary Esposito - Healthcare Product Designer Resume</title>
+  <meta name="description" content="UX and product design résumé for healthcare and consumer products: workflows, research, and internal tools." />
+  <title>Hillary Esposito - UX and Product Designer Resume</title>
   <style>
     /* Every size is 12pt or larger and the résumé is one page (Hillary, 2026-11-10). At 12pt the full
        content runs to about 1.8 pages, so the one-page version drops the skills list, the Knowunity
@@ -36,17 +36,17 @@ HTML = """<!doctype html>
        (commit 07acffb and earlier). */
     @page { size: Letter; margin: 0.4in 0.5in 0.4in; }
     * { box-sizing: border-box; }
-    html { color: #17251f; background: #fff; font-family: Arial, Helvetica, sans-serif; font-size: 12pt; line-height: 1.25; }
+    html { color: #17251f; background: #fff; font-family: Arial, Helvetica, sans-serif; font-size: 12pt; line-height: 1.22; }
     body { margin: 0; }
-    header { text-align: center; margin-bottom: 0.1in; }
+    header { text-align: center; margin-bottom: 0.08in; }
     h1 { margin: 0; font-size: 28pt; line-height: 1.05; letter-spacing: 0.01em; }
-    .role { margin: 0.07in 0 0.04in; color: #285943; font-size: 12pt; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.3; }
+    .role { margin: 0.05in 0 0.03in; color: #285943; font-size: 12pt; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.3; }
     address { color: #40544b; font-style: normal; font-size: 12pt; line-height: 1.4; }
     a { color: #285943; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
     main { display: block; }
     section { break-inside: auto; }
-    h2 { margin: 0.1in 0 0.03in; padding-top: 0.04in; color: #285943; font-size: 14pt; line-height: 1.15; letter-spacing: 0.03em; text-transform: uppercase; border-top: 1px solid #b9c6bf; break-after: avoid; }
-    h3 { margin: 0.06in 0 0; font-size: 12.5pt; line-height: 1.2; break-after: avoid; }
+    h2 { margin: 0.085in 0 0.025in; padding-top: 0.03in; color: #285943; font-size: 14pt; line-height: 1.15; letter-spacing: 0.03em; text-transform: uppercase; border-top: 1px solid #b9c6bf; break-after: avoid; }
+    h3 { margin: 0.05in 0 0; font-size: 12.5pt; line-height: 1.2; break-after: avoid; }
     p { margin: 0.02in 0; }
     .meta { color: #4a5b53; font-style: italic; font-size: 12pt; }
     ul { margin: 0.03in 0 0.05in; padding-left: 0.22in; }
@@ -59,7 +59,7 @@ HTML = """<!doctype html>
 <body>
   <header>
     <h1>Hillary Esposito</h1>
-    <p class="role">Healthcare Product Designer · Enterprise Workflows, Internal Tools &amp; Complex Systems</p>
+    <p class="role">UX Designer, Product Designer &amp; Researcher · Healthcare and Consumer Products</p>
     <address>
       New York City ·
       <a href="mailto:espositohillary@gmail.com">espositohillary@gmail.com</a> ·
@@ -71,7 +71,7 @@ HTML = """<!doctype html>
   <main>
     <section aria-labelledby="summary-heading">
       <h2 id="summary-heading">Professional summary</h2>
-      <p>Healthcare Product Designer with six years at a cancer center (MSK) and 13+ years of Army service. I turn frontline observation, workflow analysis, stakeholder input, and technical constraints into clearer internal tools and testable product flows. At MSK, a workflow redesign I initiated contributed to a 20% organization-wide electronic medical record (EMR) cost reduction, as part of a larger initiative. MHA, Lean Six Sigma Green Belt, U.S. Army veteran, and bilingual English/Spanish communicator.</p>
+      <p>UX designer, product designer and researcher with six years at a cancer center (MSK) and 13+ years of Army service. I turn frontline observation, workflow analysis, stakeholder input, and technical constraints into clearer internal tools and testable product flows. At MSK, a workflow redesign I initiated contributed to a 20% organization-wide electronic medical record (EMR) cost reduction, as part of a larger initiative. MHA, Lean Six Sigma Green Belt, U.S. Army veteran, and bilingual English/Spanish communicator.</p>
     </section>
 
     <section aria-labelledby="product-heading">
@@ -128,21 +128,21 @@ def healthcare_html() -> str:
     """Reuse the proven semantic document shell with healthcare-first content."""
     html = HTML
     replacements = {
-        '<meta name="description" content="Healthcare Product Designer résumé focused on enterprise workflows, internal tools, and complex healthcare systems." />':
+        '<meta name="description" content="UX and product design résumé for healthcare and consumer products: workflows, research, and internal tools." />':
             '<meta name="description" content="Healthcare product and service design résumé focused on clinical workflows, care services, and implementation." />',
-        '<title>Hillary Esposito - Healthcare Product Designer Resume</title>':
+        '<title>Hillary Esposito - UX and Product Designer Resume</title>':
             '<title>Hillary Esposito - Healthcare Product and Service Designer Resume</title>',
-        '<p class="role">Healthcare Product Designer · Enterprise Workflows, Internal Tools &amp; Complex Systems</p>':
+        '<p class="role">UX Designer, Product Designer &amp; Researcher · Healthcare and Consumer Products</p>':
             '<p class="role">Healthcare Product &amp; Service Designer · Clinical Workflows &amp; Care Services</p>',
-        'Healthcare Product Designer with six years at a cancer center (MSK) and 13+ years of Army service. I turn frontline observation, workflow analysis, stakeholder input, and technical constraints into clearer internal tools and testable product flows. At MSK, a workflow redesign I initiated contributed to a 20% organization-wide electronic medical record (EMR) cost reduction, as part of a larger initiative. MHA, Lean Six Sigma Green Belt, U.S. Army veteran, and bilingual English/Spanish communicator.':
+        'UX designer, product designer and researcher with six years at a cancer center (MSK) and 13+ years of Army service. I turn frontline observation, workflow analysis, stakeholder input, and technical constraints into clearer internal tools and testable product flows. At MSK, a workflow redesign I initiated contributed to a 20% organization-wide electronic medical record (EMR) cost reduction, as part of a larger initiative. MHA, Lean Six Sigma Green Belt, U.S. Army veteran, and bilingual English/Spanish communicator.':
             'Healthcare product and service designer with six years at a cancer center (MSK) and 13+ years of Army service, including medical logistics. I map what staff do, where work changes hands, and who owns the next step. I stay through prototyping and implementation. At MSK, a workflow redesign I initiated contributed to a 20% organization-wide electronic medical record (EMR) cost reduction, as part of a larger initiative. MHA, Lean Six Sigma Green Belt, Army veteran, and bilingual English/Spanish communicator.',
         '<h2 id="product-heading">Product design experience</h2>':
             '<h2 id="product-heading">Current product design</h2>',
         '<h2 id="healthcare-heading">Healthcare systems and workflow experience</h2>':
             '<h2 id="healthcare-heading">Healthcare product and service experience</h2>',
         # This variant's summary is a line longer; slightly tighter leading keeps it to one page.
-        'font-size: 12pt; line-height: 1.25; }':
-            'font-size: 12pt; line-height: 1.21; }',
+        'font-size: 12pt; line-height: 1.22; }':
+            'font-size: 12pt; line-height: 1.19; }',
     }
     for old, new in replacements.items():
         if old not in html:
