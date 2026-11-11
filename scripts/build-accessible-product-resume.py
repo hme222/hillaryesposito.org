@@ -30,26 +30,30 @@ HTML = """<!doctype html>
   <meta name="description" content="Healthcare Product Designer résumé focused on enterprise workflows, internal tools, and complex healthcare systems." />
   <title>Hillary Esposito - Healthcare Product Designer Resume</title>
   <style>
-    @page { size: Letter; margin: 0.35in 0.45in 0.4in; }
+    /* Every size is 12pt or larger and the résumé is one page (Hillary, 2026-11-10). At 12pt the full
+       content runs to about 1.8 pages, so the one-page version drops the skills list, the Knowunity
+       and Mobbin entries and a few secondary bullets; the full text is in git history
+       (commit 07acffb and earlier). */
+    @page { size: Letter; margin: 0.4in 0.5in 0.4in; }
     * { box-sizing: border-box; }
-    html { color: #17251f; background: #fff; font-family: Arial, Helvetica, sans-serif; font-size: 8.5pt; line-height: 1.22; }
+    html { color: #17251f; background: #fff; font-family: Arial, Helvetica, sans-serif; font-size: 12pt; line-height: 1.25; }
     body { margin: 0; }
-    header { text-align: center; margin-bottom: 0.065in; }
-    h1 { margin: 0; font-size: 20pt; line-height: 1; letter-spacing: 0.015em; }
-    .role { margin: 0.045in 0 0.02in; color: #285943; font-size: 9pt; font-weight: 700; letter-spacing: 0.024em; text-transform: uppercase; }
-    address { color: #40544b; font-style: normal; font-size: 8pt; }
-    a { color: #285943; text-decoration: underline; text-decoration-thickness: 0.5px; text-underline-offset: 1px; }
+    header { text-align: center; margin-bottom: 0.1in; }
+    h1 { margin: 0; font-size: 28pt; line-height: 1.05; letter-spacing: 0.01em; }
+    .role { margin: 0.07in 0 0.04in; color: #285943; font-size: 12pt; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.3; }
+    address { color: #40544b; font-style: normal; font-size: 12pt; line-height: 1.4; }
+    a { color: #285943; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
     main { display: block; }
-    section { break-inside: avoid; }
-    h2 { margin: 0.055in 0 0.02in; padding-top: 0.012in; color: #285943; font-size: 9.15pt; line-height: 1.08; letter-spacing: 0.04em; text-transform: uppercase; border-top: 0.55px solid #b9c6bf; }
-    h3 { margin: 0.035in 0 0; font-size: 8.8pt; line-height: 1.1; }
-    p { margin: 0.012in 0; }
-    .meta { color: #4a5b53; font-style: italic; font-size: 7.9pt; }
-    ul { margin: 0.012in 0 0.02in; padding-left: 0.16in; }
-    li { margin: 0.008in 0; padding-left: 0.008in; }
-    .skills p { margin: 0.008in 0; }
-    .education { font-size: 8pt; }
-    footer { margin-top: 0.045in; padding-top: 0.035in; border-top: 0.55px solid #b9c6bf; color: #40544b; font-size: 6.8pt; display: flex; justify-content: space-between; }
+    section { break-inside: auto; }
+    h2 { margin: 0.1in 0 0.03in; padding-top: 0.04in; color: #285943; font-size: 14pt; line-height: 1.15; letter-spacing: 0.03em; text-transform: uppercase; border-top: 1px solid #b9c6bf; break-after: avoid; }
+    h3 { margin: 0.06in 0 0; font-size: 12.5pt; line-height: 1.2; break-after: avoid; }
+    p { margin: 0.02in 0; }
+    .meta { color: #4a5b53; font-style: italic; font-size: 12pt; }
+    ul { margin: 0.03in 0 0.05in; padding-left: 0.22in; }
+    li { margin: 0.018in 0; padding-left: 0.01in; break-inside: avoid; }
+    .skills p { margin: 0.03in 0; }
+    .education { font-size: 12pt; }
+    footer { margin-top: 0.12in; padding-top: 0.08in; border-top: 1px solid #b9c6bf; color: #40544b; font-size: 12pt; display: flex; justify-content: space-between; }
   </style>
 </head>
 <body>
@@ -59,7 +63,7 @@ HTML = """<!doctype html>
     <address>
       New York City ·
       <a href="mailto:espositohillary@gmail.com">espositohillary@gmail.com</a> ·
-      <a href="https://hillaryesposito.org">hillaryesposito.org</a> ·
+      <a href="https://www.hillaryesposito.com">www.hillaryesposito.com</a> ·
       <a href="https://www.linkedin.com/in/hillaryesposito">linkedin.com/in/hillaryesposito</a>
     </address>
   </header>
@@ -70,13 +74,6 @@ HTML = """<!doctype html>
       <p>Healthcare Product Designer with six years at a cancer center (MSK) and 13+ years of Army service. I turn frontline observation, workflow analysis, stakeholder input, and technical constraints into clearer internal tools and testable product flows. At MSK, a workflow redesign I initiated contributed to a 20% organization-wide electronic medical record (EMR) cost reduction, as part of a larger initiative. MHA, Lean Six Sigma Green Belt, U.S. Army veteran, and bilingual English/Spanish communicator.</p>
     </section>
 
-    <section class="skills" aria-labelledby="skills-heading">
-      <h2 id="skills-heading">Core skills</h2>
-      <p><strong>Product and interaction:</strong> information architecture, user flows, wireframes, functional prototypes, interaction states, accessibility, responsive design, design systems, design QA</p>
-      <p><strong>Research and service design:</strong> workflow observation, stakeholder interviews, survey synthesis, usability testing, journey mapping, service blueprints, task analysis, scope prioritization</p>
-      <p><strong>Tools and domain:</strong> Figma, FigJam, Miro, Notion, React, HTML/CSS, AI-assisted prototyping, healthcare operations, EMR workflows, Lean Six Sigma</p>
-    </section>
-
     <section aria-labelledby="product-heading">
       <h2 id="product-heading">Product design experience</h2>
       <article aria-labelledby="grove-role">
@@ -84,22 +81,6 @@ HTML = """<!doctype html>
         <p class="meta">Independent product · 2025–Present · Functional prototype, Phase 2 of 3</p>
         <ul>
           <li>Narrowed 12 proposed features to 3 after synthesizing a 37-person self-report survey, then translated the priorities into information architecture, interaction states, and a functional React prototype.</li>
-          <li>Own research planning, product scope, responsive interaction design, accessibility, prototype implementation, and iteration. The prototype is not presented as a shipped consumer product.</li>
-        </ul>
-      </article>
-      <article aria-labelledby="knowunity-role">
-        <h3 id="knowunity-role">Product Designer, Solo Entry · Yummy Labs AI Design Sprint, in partnership with Knowunity</h3>
-        <p class="meta">September 2026 · AI Design Sprinter badge · Working prototype</p>
-        <ul>
-          <li>Designed a voice active-recall step for students and built it as a working prototype on Knowunity's component kit with AI coding tools. Recall is mocked and untested with students; not a shipped Knowunity feature.</li>
-        </ul>
-      </article>
-      <article aria-labelledby="mobbin-role">
-        <h3 id="mobbin-role">Content Designer, Contract · Mobbin</h3>
-        <p class="meta">Remote · March–June 2026</p>
-        <ul>
-          <li>Documented 200+ mobile screens per app across Kikoff, Polymarket, and Discover, mapping navigation, interaction patterns, visual hierarchy, and microcopy for a reusable UX reference library.</li>
-          <li>Applied a consistent taxonomy so product and design teams could compare complete finance-app flows. The assignment covered documentation, not ownership of the products.</li>
         </ul>
       </article>
     </section>
@@ -111,7 +92,6 @@ HTML = """<!doctype html>
         <p class="meta">New York, NY · January 2022–July 2024</p>
         <ul>
           <li>Rebuilt the learning tracks for administrative onboarding across Epic, HIPAA, compliance, and role-specific workflows for a 21,000+ person organization.</li>
-          <li>Partnered with clinical, IT, HIM (health information management), and operations stakeholders to clarify ownership, exceptions, and handoffs across complex internal processes.</li>
         </ul>
       </article>
       <article aria-labelledby="coordinator-role">
@@ -129,7 +109,6 @@ HTML = """<!doctype html>
         <ul>
           <li>Cut medical resupply from 1–2 months to 1–2 weeks (85% faster per service record) by moving the warehouse into a combat zone.</li>
           <li>Built real-time order-status tracking for seven aid stations in three countries. Sites stopped over-ordering and running out, cutting spending 60%; deployment coordination improved 15%.</li>
-          <li>Directed medical logistics for 5,000+ soldiers and $2M in supplies in Iraq while absorbing a vacant Medical Operations Officer role and reporting medical operations to the Pentagon.</li>
         </ul>
       </article>
     </section>
@@ -140,11 +119,6 @@ HTML = """<!doctype html>
       <p><strong>Credentials:</strong> Google UX Design Certificate; Lean Six Sigma Green Belt, Purdue; UX, Data Analytics, and Software Engineering Bootcamps, Noble Desktop</p>
     </section>
   </main>
-
-  <footer aria-label="Document information">
-    <span>Hillary Esposito · Healthcare Product Design</span>
-    <span>Updated October 2026</span>
-  </footer>
 </body>
 </html>
 """
@@ -162,18 +136,13 @@ def healthcare_html() -> str:
             '<p class="role">Healthcare Product &amp; Service Designer · Clinical Workflows &amp; Care Services</p>',
         'Healthcare Product Designer with six years at a cancer center (MSK) and 13+ years of Army service. I turn frontline observation, workflow analysis, stakeholder input, and technical constraints into clearer internal tools and testable product flows. At MSK, a workflow redesign I initiated contributed to a 20% organization-wide electronic medical record (EMR) cost reduction, as part of a larger initiative. MHA, Lean Six Sigma Green Belt, U.S. Army veteran, and bilingual English/Spanish communicator.':
             'Healthcare product and service designer with six years at a cancer center (MSK) and 13+ years of Army service, including medical logistics. I map what staff do, where work changes hands, and who owns the next step. I stay through prototyping and implementation. At MSK, a workflow redesign I initiated contributed to a 20% organization-wide electronic medical record (EMR) cost reduction, as part of a larger initiative. MHA, Lean Six Sigma Green Belt, Army veteran, and bilingual English/Spanish communicator.',
-        '<p><strong>Product and interaction:</strong> information architecture, user flows, wireframes, functional prototypes, interaction states, accessibility, responsive design, design systems, design QA</p>':
-            '<p><strong>Healthcare product/service:</strong> clinical workflows, current/future-state mapping, journey mapping, service blueprinting, internal tools, change management, implementation, accessibility</p>',
-        '<p><strong>Research and service design:</strong> workflow observation, stakeholder interviews, survey synthesis, usability testing, journey mapping, service blueprints, task analysis, scope prioritization</p>':
-            '<p><strong>Product and research:</strong> information architecture, task analysis, stakeholder interviews, workflow observation, survey synthesis, usability testing, functional prototypes, design systems</p>',
-        '<p><strong>Tools and domain:</strong> Figma, FigJam, Miro, Notion, React, HTML/CSS, AI-assisted prototyping, healthcare operations, EMR workflows, Lean Six Sigma</p>':
-            '<p><strong>Tools and domain:</strong> Figma, FigJam, Miro, React, HTML/CSS, Epic/EMR workflows, healthcare operations, medical logistics, Lean Six Sigma</p>',
         '<h2 id="product-heading">Product design experience</h2>':
             '<h2 id="product-heading">Current product design</h2>',
         '<h2 id="healthcare-heading">Healthcare systems and workflow experience</h2>':
             '<h2 id="healthcare-heading">Healthcare product and service experience</h2>',
-        '<span>Hillary Esposito · Healthcare Product Design</span>':
-            '<span>Hillary Esposito · Healthcare Product + Service Design</span>',
+        # This variant's summary is a line longer; slightly tighter leading keeps it to one page.
+        'font-size: 12pt; line-height: 1.25; }':
+            'font-size: 12pt; line-height: 1.21; }',
     }
     for old, new in replacements.items():
         if old not in html:
