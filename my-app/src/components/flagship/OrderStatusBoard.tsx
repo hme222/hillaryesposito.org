@@ -43,7 +43,7 @@ const COPY: Record<"en" | "es", Copy> = {
 
 /**
  * @status: stable
- * @purpose: A recreated order-status board with a Before and After switch, used on the Medical logistics case study to make "everyone could see order status" concrete. Seven generic stations, no names, places, routes or unit positions, and labelled as recreated with no real data. Pick this for the logistics status change; for the filing queue use MSKDashboardMockup, and for the three small before/after schematics use LogisticsMechanism.
+ * @purpose: A recreated order-status board with a Before and After switch, used on the Medical logistics case study to make "everyone could see order status" concrete. Seven generic stations, no names, places, routes or unit positions, and labelled as recreated with no real data. Pick this for the logistics status change; for the filing queue use MSKDashboardMockup, and for the three small before/after schematics use LogisticsMechanism. Also used on About (English and Spanish, via the `lang` prop).
  */
 export default function OrderStatusBoard({ lang = "en" }: { lang?: "en" | "es" }) {
   const c = COPY[lang];

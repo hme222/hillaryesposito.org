@@ -34,16 +34,24 @@ type Lane = {
 // collide, and the outcome on its own line under the run.
 const WIDE = { W: 760, LANE_H: 82, LINE_X1: 566, nameSize: 12, smallSize: 8.5, outcomeSize: 11.5 };
 const COMPACT = { W: 380, LANE_H: 112, LINE_X1: 356, nameSize: 14, smallSize: 12, outcomeSize: 13 };
+// About's two-column row: the compact drawing at desktop width, and a still narrower
+// one at phone width so its labels stay near 12px on screen (see the type audit,
+// 2026-11-10). Selected with the `tight` prop.
+const TIGHT_PHONE = { W: 300, LANE_H: 104, LINE_X1: 280, nameSize: 13.5, smallSize: 12.5, outcomeSize: 12.5 };
 const LINE_X0 = 4;
 const COMPACT_QUERY = "(max-width: 560px)";
 
 
 /**
  * @status: stable
- * @purpose: Decorative SVG of per-system survival lanes marking events each MSK system outlasted, used on the MSK case study page. Purely decorative, not a data visualization others should extend — for an actual before/after comparison use MSKMechanism or MSKServiceBlueprint instead.
+ * @purpose: Decorative SVG of per-system survival lanes marking events each MSK system outlasted, used on the MSK case study page. Purely decorative, not a data visualization others should extend — for an actual before/after comparison use MSKMechanism or MSKServiceBlueprint instead. Also used on About, with the `tight` prop for a small plate.
  */
-export default function MSKSustainment({ copy = MSK_COPY.en.sustainment }: { copy?: MskCopy["sustainment"] }) {
-  const [compact, setCompact] = useState(() => (
+export default function MSKSustainment({ copy = MSK_COPY.en.sustainment, tight = false }: {
+  copy?: MskCopy["sustainment"];
+  /** Use the compact drawing at every width (and a narrower one on phones). For small plates. */
+  tight?: boolean;
+}) {
+  const [narrow, setCompact] = useState(() => (
     typeof window !== "undefined" && (window.matchMedia?.(COMPACT_QUERY).matches ?? false)
   ));
   useEffect(() => {
@@ -53,7 +61,8 @@ export default function MSKSustainment({ copy = MSK_COPY.en.sustainment }: { cop
     query.addEventListener?.("change", onChange);
     return () => query.removeEventListener?.("change", onChange);
   }, []);
-  const { W, LANE_H, LINE_X1, nameSize, smallSize, outcomeSize } = compact ? COMPACT : WIDE;
+  const compact = tight || narrow;
+  const { W, LANE_H, LINE_X1, nameSize, smallSize, outcomeSize } = tight ? (narrow ? TIGHT_PHONE : COMPACT) : (narrow ? COMPACT : WIDE);
   const LANES = copy.lanes;
   const H = LANE_H * LANES.length;
   return (

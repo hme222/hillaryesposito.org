@@ -3561,13 +3561,23 @@ html.cs-chrome .riso-page .fp-indexLens[id] { scroll-margin-top: calc(var(--cs-c
 .rp-patternList .fp-statusBoard__read { margin-top: .6rem; font-size: var(--ts-label); line-height: 1.45; }
 /* Blueprint: the map and its switch only. The four prose panels are on the case study. */
 .rp-patternList .fp-blueprint__key { display: none; }
+/* Phones: the blueprint's lanes cannot be read at 286px wide, so the four plain-text notes
+   stand in for the drawing; the full diagram is on the MSK case study. The paper-detour
+   diagram gets slightly larger labels instead of a crop (it has nothing to drop). */
+@media (max-width: 560px) {
+  .rp-patternList .fp-blueprint__canvas { display: none; }
+  .rp-patternList .fp-blueprint__key { display: grid; }
+  /* Coral at label size measured 4.3:1 on this plate; --coral-text is the label-size coral. */
+  .rp-patternList .fp-blueprint__key dt { color: var(--coral-text); }
+  .rp-patternList .fp-mechanism text { font-size: 11px; }
+}
 @media (min-width: 900px) {
   .rp-patternList li { grid-template-columns: minmax(0, 1fr) minmax(0, 30rem); column-gap: 2.5rem; align-items: start; }
   .rp-patternList__visual { max-width: none; }
   /* The blueprint and the sustainment lanes need the width to stay legible. */
   .rp-patternList li.is-wide { grid-template-columns: minmax(0, 1fr); }
   .rp-patternList li.is-wide .rp-patternList__visual { max-width: 52rem; }
-  .rp-patternList li.is-wide:last-child .rp-patternList__visual { max-width: 40rem; }
+  .rp-patternList li.is-wide:last-child .rp-patternList__visual { max-width: 28rem; }
 }
 /* Closing line under the pattern list, aligned with the items' text. */
 .rp-patternCallout { max-width: 62ch; margin-top: 1.6rem; margin-left: 2.4rem; }

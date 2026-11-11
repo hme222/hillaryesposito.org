@@ -200,7 +200,7 @@ export default function About() {
                   <b>{isSpanish ? PATTERN_PROOF[2].es : PATTERN_PROOF[2].en}</b>
                 </Link>
               </div>
-              <div className="rp-patternList__visual"><MSKServiceBlueprint copy={mskCopy.blueprint} /></div>
+              <div className="rp-patternList__visual"><MSKServiceBlueprint copy={mskCopy.blueprint} columns={[2, 5]} /></div>
             </li>
             <li className="is-wide">
               <div className="rp-patternList__text">
@@ -209,7 +209,7 @@ export default function About() {
                   <b>{isSpanish ? PATTERN_PROOF[3].es : PATTERN_PROOF[3].en}</b>
                 </Link>
               </div>
-              <div className="rp-patternList__visual"><div className="fp-sustainmentFig"><MSKSustainment copy={mskCopy.sustainment} /></div></div>
+              <div className="rp-patternList__visual"><div className="fp-sustainmentFig"><MSKSustainment copy={mskCopy.sustainment} tight /></div></div>
             </li>
           </ol>
           {/* The one line kept from the cut "What I Do Now" story (2026-10-13):

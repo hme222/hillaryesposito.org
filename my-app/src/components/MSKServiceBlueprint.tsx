@@ -88,14 +88,34 @@ function column(index: number, count: number) {
 
 /**
  * @status: stable
- * @purpose: Renders the MSK filing path as a toggleable before/after service-blueprint diagram (actor lanes and handoffs), used on the MSK case study page. Pick this for actor-lane handoffs specifically — for a static mechanism diagram use MSKMechanism.
+ * @purpose: Renders the MSK filing path as a toggleable before/after service-blueprint diagram (actor lanes and handoffs), used on the MSK case study page. Pick this for actor-lane handoffs specifically — for a static mechanism diagram use MSKMechanism. Also used on About, cropped to a window of columns with the `columns` prop.
  */
-export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint }: { copy?: MskCopy["blueprint"] }) {
+export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint, columns }: {
+  copy?: MskCopy["blueprint"];
+  /**
+   * Crop to a window of columns (inclusive), keeping the lane labels. About uses
+   * [2, 5]: the step before the blind window, the window itself and the step after,
+   * drawn larger. Omit for the full drawing.
+   */
+  columns?: [number, number];
+}) {
   const [showAfter, setShowAfter] = useState(false);
   const nodes = showAfter ? AFTER : BEFORE;
   const labels = showAfter ? copy.nodesAfter : copy.nodesBefore;
 
   const count = Math.max(...nodes.map((n) => n.col)) + 1;
+
+  // Cropped view: slide the node area left so the chosen columns sit beside the
+  // lane labels, and shrink the drawing to that width. The view width uses the
+  // before path's column width (6 columns) so the Before/After toggle does not
+  // resize the drawing.
+  const colW = (W - PAD_L - PAD_R) / count;
+  const span = columns ? columns[1] - columns[0] + 1 : 0;
+  const viewW = columns ? PAD_L + span * ((W - PAD_L - PAD_R) / 6) + PAD_R : W;
+  const shiftX = columns ? columns[0] * colW : 0;
+  const win = columns ? { transform: `translate(${-shiftX} 0)`, clipPath: "url(#bp-window)" } : {};
+  const subSize = columns ? 10.5 : 9;
+  const callSize = columns ? 11.5 : 10;
 
   // The window where the record is below the line of visibility and the
   // coordinator has no signal. Columns 3 and 4 of the before path.
@@ -129,20 +149,27 @@ export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint }: { 
       </div>
 
       <div className="fp-blueprint__canvas" aria-hidden="true">
-        <svg viewBox={`0 0 ${W} ${H}`} width="100%" role="presentation" focusable="false">
+        <svg viewBox={`0 0 ${viewW} ${H}`} width="100%" role="presentation" focusable="false">
+          {columns && (
+            <defs>
+              <clipPath id="bp-window">
+                <rect x={PAD_L - 4 + shiftX} y={0} width={span * colW + 8} height={H} />
+              </clipPath>
+            </defs>
+          )}
           {/* lane labels + rules */}
           {LANE_ORDER.map((lane) => (
             <g key={lane}>
               <text x="0" y={LANE_Y[lane] + 15} fontSize="11.5" fill="currentColor" fillOpacity="0.9">
                 {copy.lanes[lane]}
               </text>
-              <text x="0" y={LANE_Y[lane] + 29} fontSize="9" letterSpacing="1.1" fill="currentColor" fillOpacity="0.45">
+              <text x="0" y={LANE_Y[lane] + 29} fontSize={subSize} letterSpacing="1.1" fill="currentColor" fillOpacity="0.45">
                 {copy.laneSubs[lane].toUpperCase()}
               </text>
               <line
                 x1={PAD_L - 10}
                 y1={LANE_Y[lane] + NODE_H / 2}
-                x2={W}
+                x2={viewW}
                 y2={LANE_Y[lane] + NODE_H / 2}
                 stroke="currentColor"
                 strokeOpacity="0.08"
@@ -152,7 +179,7 @@ export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint }: { 
 
           {/* the blind window — the whole point of the drawing */}
           {!showAfter && (
-            <g>
+            <g {...win}>
               {/* Spans the coordinator’s dead time as well as the backstage
                   work: the point is that nothing is happening above the line
                   while something is happening below it. */}
@@ -167,7 +194,7 @@ export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint }: { 
               <text
                 x={blindFrom.x + 6}
                 y={LANE_Y.front + NODE_H / 2 + 4}
-                fontSize="10"
+                fontSize={callSize}
                 fill="var(--coral)"
                 fillOpacity="0.75"
               >
@@ -176,7 +203,7 @@ export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint }: { 
               <text
                 x={blindFrom.x}
                 y={LANE_Y.back + NODE_H + 26}
-                fontSize="10"
+                fontSize={callSize}
                 letterSpacing="1.1"
                 fill="var(--coral)"
                 fillOpacity="0.95"
@@ -190,18 +217,19 @@ export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint }: { 
           <line
             x1="0"
             y1={VIS_LINE_Y}
-            x2={W}
+            x2={viewW}
             y2={VIS_LINE_Y}
             stroke="currentColor"
             strokeOpacity="0.5"
             strokeWidth="1.25"
             strokeDasharray="6 4"
           />
-          <text x="0" y={VIS_LINE_Y - 6} fontSize="9" letterSpacing="1.2" fill="currentColor" fillOpacity="0.55">
+          <text x="0" y={VIS_LINE_Y - 6} fontSize={subSize} letterSpacing="1.2" fill="currentColor" fillOpacity="0.55">
             {copy.visibility}
           </text>
 
           {/* nodes, in evidence/action pairs per column */}
+          <g {...win}>
           {nodes.map((node, i) => {
             const { x, w } = column(node.col, count);
             const y = LANE_Y[node.lane];
@@ -238,13 +266,14 @@ export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint }: { 
               </g>
             );
           })}
+          </g>
 
           {/* The support lane’s continuity is the argument, so draw the thread
               through it: unbroken after, broken across the handoff before. */}
           {(() => {
             const support = nodes.filter((n) => n.lane === "support").sort((a, b) => a.col - b.col);
             const y = LANE_Y.support + NODE_H / 2;
-            return support.slice(0, -1).map((n, i) => {
+            return (<g {...win}>{support.slice(0, -1).map((n, i) => {
               const from = column(n.col, count);
               const to = column(support[i + 1].col, count);
               const contiguous = support[i + 1].col - n.col === 1;
@@ -261,12 +290,12 @@ export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint }: { 
                   strokeDasharray={contiguous ? undefined : "3 5"}
                 />
               );
-            });
+            })}</g>);
           })()}
 
           {/* the handoff arrow: frontstage hands the record across a department line */}
           {!showAfter && (
-            <path
+            <g {...win}><path
               d={`M${column(2, count).x + column(2, count).w / 2},${LANE_Y.front + NODE_H}
                   C${column(2, count).x + column(2, count).w / 2},${LANE_Y.front + NODE_H + 40}
                    ${blindFrom.x + blindFrom.w / 2},${LANE_Y.back - 40}
@@ -274,7 +303,7 @@ export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint }: { 
               fill="none"
               stroke="var(--coral)"
               strokeWidth="2"
-            />
+            /></g>
           )}
         </svg>
       </div>
