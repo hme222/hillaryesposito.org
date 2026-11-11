@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { MSK_COPY, type MskCopy } from "../data/mskCaseStudy";
 
 type MSKDashboardMockupProps = {
@@ -94,6 +94,20 @@ export default function MSKDashboardMockup({
     </>
   );
 
+  // A scrollable region has to be reachable by keyboard; a table that fits is not worth a tab stop.
+  const tableRef = useRef<HTMLDivElement>(null);
+  const [scrolls, setScrolls] = useState(false);
+  useEffect(() => {
+    const el = tableRef.current;
+    if (!el) return;
+    const measure = () => setScrolls(el.scrollWidth > el.clientWidth + 1 || el.scrollHeight > el.clientHeight + 1);
+    measure();
+    if (typeof ResizeObserver === "undefined") return;
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
   return (
     <div
       className={`msk-dashboard-mockup${compact ? " msk-dashboard-mockup--compact" : ""}`}
@@ -141,11 +155,12 @@ export default function MSKDashboardMockup({
       )}
 
       <div
+        ref={tableRef}
         className="msk-dashboard-mockup__table"
         id={tableId}
         role={decorative ? undefined : "table"}
         aria-label={decorative ? undefined : copy.tableAria}
-        tabIndex={decorative ? undefined : 0}
+        tabIndex={!decorative && scrolls ? 0 : undefined}
       >
         <div className="msk-dashboard-mockup__row msk-dashboard-mockup__row--head" role={decorative ? undefined : "row"}>
           <span role={decorative ? undefined : "columnheader"}>{copy.columns.patient}</span>

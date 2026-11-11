@@ -64,7 +64,7 @@ export default function EvidenceField({
             judgment behind them are the point. So the sequence runs above the
             outcomes as a short orientation line, and the evidence closes. */}
         {route && route.length > 0 && (
-        <p className="rp-routeRecap rp-routeRecap--lede" aria-label="How the work ran">
+        <p className="rp-routeRecap rp-routeRecap--lede" role="group" aria-label="How the work ran">
           {route.map((item, index) => (
             <React.Fragment key={item}>
               {index > 0 && <i aria-hidden="true">→</i>}

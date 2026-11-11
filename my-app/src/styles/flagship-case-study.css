@@ -913,6 +913,11 @@
 .flagship-page--msk {
   --ink-2: #354840;
 }
+/* That dark ink is for the light theme. In dark mode it stayed put and the chapter links
+   measured 1.88:1 on #14150e (a11y audit, 2026-11-10); the shared dark value is 8.84:1. */
+.dark-mode .flagship-page--msk {
+  --ink-2: var(--shell-ink-2);
+}
 .flagship-page--msk .msk-dashboard-mockup {
   background-color: #f7f8f6 !important;
   background-image: none !important;

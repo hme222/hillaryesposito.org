@@ -3301,6 +3301,22 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
     forced-color-adjust: none;
   }
   .rp-chapters a.is-active { border-bottom-width: 2px; }
+  /* The Before/After switches, the Mobbin screen dots and the nav's current item lost their
+     selected fill in this mode (a11y audit, 2026-11-10): the pressed option was
+     indistinguishable from the other. A system-colour fill and border carry it instead. */
+  .fp-statusBoard__switch button[aria-pressed="true"],
+  .fp-blueprint__switch button[aria-pressed="true"],
+  .fp-sequence__dots button[aria-pressed="true"] {
+    forced-color-adjust: none;
+    background-color: Highlight;
+    color: HighlightText;
+    border: 2px solid Highlight;
+  }
+  .nav-dock__item[aria-current] {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+  }
 
   /* 3. Where the color IS the content, opt out of the override entirely and
      add an edge so adjacent specimens stay separable. The literal swatches and

@@ -268,7 +268,7 @@ export default function RisoGrove() {
             </p>
             {/* Interview-sourced human line (Better Stories pass, 2026-11-10); source: design-docs/case-study-stories. */}
             <p className="rp-humanLine">I know plants, so I wanted more features. Five users changed that.</p>
-            <div className="rp-heroEvidence rp-heroEvidence--trace" aria-label="Grove research-to-priority trace">
+            <div className="rp-heroEvidence rp-heroEvidence--trace" role="group" aria-label="Grove research-to-priority trace">
               <ol>
                 <li><b>5 people</b><span>exposed the navigation problem</span></li>
                 <li><b>37 people</b><span>ranked the launch dealbreakers</span></li>
