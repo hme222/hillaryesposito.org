@@ -1,353 +1,163 @@
-import React, { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
-import useFlagshipReveal from "../hooks/useFlagshipReveal";
+import React, { useCallback, useEffect, useState } from "react";
 import usePageTitle from "../hooks/usePageTitle";
 import { useLanguage } from "../app/LanguageContext";
-import { Newspaper } from "lucide-react";
-import CartoField from "../components/riso/CartoField";
-import CopyEmail from "../components/CopyEmail";
-import MSKMechanism from "../components/MSKMechanism";
-import MSKServiceBlueprint from "../components/MSKServiceBlueprint";
-import MSKSustainment from "../components/MSKSustainment";
-import OrderStatusBoard from "../components/flagship/OrderStatusBoard";
-import { MSK_COPY } from "../data/mskCaseStudy";
-import { CLIENT_FEEDBACK, CLIENT_FEEDBACK_ES } from "../data/clientFeedback";
 import "../styles/riso-page.css";
-// The reused artifacts (status board, blueprint, lanes) carry their .fp-* styles here.
-import "../styles/flagship-case-study.css";
 
-// ── Story chapters ───────────────────────────────────────────────────────
-type AboutChapter = {
-  id: string;
-  label: string;
-  heading: string;
-  image?: string;
-  paragraphs: string[];
-  facts?: Array<{ value: string; label: string }>;
-  callout?: string;
-  caseLink?: { path: string; title: string; source: string };
-  articleLink?: { url: string; title: string; source: string };
+// One screen, no scroll: Hillary's own words on one side, her photos looping on
+// the other. Every line of copy is a fact or phrase she gave
+// (design-docs/case-study-stories/about-me.md). The race is not named on purpose.
+// The earlier long About (pattern, MSK/Army story, proof, contact) is in git history.
+
+type Slide = {
+  src: string;
+  width: number;
+  height: number;
+  altEn: string;
+  altEs: string;
+  capEn: string;
+  capEs: string;
 };
 
-const CHAPTERS: AboutChapter[] = [
+const SLIDES: Slide[] = [
   {
-    id: "msk",
-    label: "MSK",
-    heading: "Six years at MSK in three roles.",
-    image: "/assets/about/msk.jpg",
-    // First uses on this page, so each short form is spelled out once
-    // (2026-10-14 review, item 12).
-    paragraphs: [
-      "I started the electronic medical record (EMR) filing redesign; it contributed to a broader organization-wide initiative that reduced EMR costs by 20%. Information technology (IT) and user experience (UX) teams built it after I changed roles.",
-      "I also rebuilt CPR (cardiopulmonary resuscitation) certification and administrative onboarding across Epic (the record software), HIPAA (the patient-privacy law), and compliance.",
-    ],
-    callout: "A filing task crossed four departments. I saw it from inside the job.",
-    articleLink: {
-      url: "https://www.mskcc.org/news/hillary-esposito-s-career-path-military-msk",
-      title: "Hillary Esposito’s Career Path: From the Military to MSK",
-      source: "MSK News",
-    },
+    src: "/assets/about/headshot.jpg",
+    width: 900,
+    height: 900,
+    altEn: "Hillary Esposito",
+    altEs: "Hillary Esposito",
+    capEn: "Hillary Esposito.",
+    capEs: "Hillary Esposito.",
   },
   {
-    id: "army",
-    label: "Army",
-    heading: "Captain and Medical Logistics Officer, NJ Army National Guard.",
-    image: "/assets/about/army.jpg",
-    // Numbers live in the facts ledger below, once — the prose used to
-    // restate every figure (5,000+, seven, 1–2 weeks, 60%) a second time in the
-    // same breath. Cut here, not duplicated there.
-    paragraphs: [
-      "In Iraq I ran medical supply for aid stations in three countries under a 48-hour cold-chain limit. In 2020 I reported the New Jersey National Guard’s COVID-19 medical operations to the Pentagon.",
-    ],
-    facts: [
-      { value: "5,000+", label: "soldiers served" },
-      { value: "$2M", label: "in medical supply" },
-      { value: "7", label: "aid stations" },
-      // The unit rides in the label: "1–2 wk" / "1–2 sem." did not fit the
-      // five-column ledger at 1440.
-      { value: "1–\u20602", label: "weeks for medical resupply, down from 1–\u20602 months (reported)" },
-      { value: "60%", label: "lower spending (reported)" },
-    ],
-    caseLink: { path: "/case-study/logistics", title: "Medical logistics, Iraq", source: "Review the case study" },
+    src: "/assets/about/luna.jpg",
+    width: 825,
+    height: 1100,
+    altEn: "Luna, a tuxedo cat in a green pom-pom hat, pink harness and red jacket, in a clear backpack carrier with her paws over the edge.",
+    altEs: "Luna, una gata blanquinegra con gorro verde de pompón, arnés rosa y chaqueta roja, dentro de una mochila transparente, con las patas sobre el borde.",
+    capEn: "Luna.",
+    capEs: "Luna.",
+  },
+  {
+    src: "/assets/about/orchid.jpg",
+    width: 825,
+    height: 1100,
+    altEn: "Pink orchids with orange centers in sunlight, a living room behind them.",
+    altEs: "Orquídeas rosadas con el centro naranja, a la luz del sol, con una sala al fondo.",
+    capEn: "The urban jungle at home.",
+    capEs: "La selva urbana en casa.",
   },
 ];
 
-const CHAPTERS_ES: AboutChapter[] = [
-  {
-    id: "msk",
-    label: "MSK",
-    heading: "Seis años en MSK en tres puestos.",
-    image: "/assets/about/msk.jpg",
-    paragraphs: [
-      "Inicié el rediseño del archivo en el expediente médico electrónico (EMR); contribuyó a una iniciativa más amplia de toda la organización que redujo un 20% los costos del EMR. Los equipos de tecnología de la información (TI) y de experiencia de usuario (UX) lo construyeron después de que cambié de puesto.",
-      "También reconstruí la certificación de RCP (reanimación cardiopulmonar) y la incorporación administrativa en Epic (el software del expediente), HIPAA (la ley de privacidad del paciente) y cumplimiento.",
-    ],
-    callout: "Una tarea de archivo cruzaba cuatro áreas. La vi desde adentro del trabajo.",
-    articleLink: {
-      url: "https://www.mskcc.org/news/hillary-esposito-s-career-path-military-msk",
-      title: "Hillary Esposito’s Career Path: From the Military to MSK",
-      source: "MSK News",
-    },
-  },
-  {
-    id: "army",
-    label: "Ejército",
-    heading: "Capitana y Oficial de Logística Médica, NJ Army National Guard.",
-    image: "/assets/about/army.jpg",
-    paragraphs: [
-      "En Irak dirigí el suministro médico para estaciones de ayuda en tres países bajo un límite de cadena de frío de 48 horas. En 2020 reporté al Pentágono las operaciones médicas de la Guardia Nacional de Nueva Jersey durante la COVID-19.",
-    ],
-    facts: [
-      { value: "5,000+", label: "soldados atendidos" },
-      { value: "$2M", label: "en suministro médico" },
-      { value: "7", label: "estaciones de ayuda" },
-      { value: "1–\u20602", label: "semanas de reabastecimiento médico, antes 1–\u20602 meses (reportado)" },
-      { value: "60%", label: "menos gasto (reportado)" },
-    ],
-    caseLink: { path: "/case-study/logistics", title: "Logística médica, Irak", source: "Ver el estudio de caso" },
-  },
-];
+const SLIDE_MS = 5000;
 
-// One proof link per "My pattern" item, in list order. Spanish case studies
-// render through SpanishCaseStudy, whose anchors carry an `es-` prefix; the
-// Spanish MSK study has its own sustainment section since 2026-10-14.
-const PATTERN_PROOF = [
-  { en: "See the workaround →", es: "Ver el desvío →", path: "/case-study/msk#msk-brief", pathEs: "/case-study/msk#es-msk-brief" },
-  { en: "See the casualty risk →", es: "Ver el riesgo de bajas →", path: "/case-study/logistics#log-brief", pathEs: "/case-study/logistics#es-log-brief" },
-  { en: "See the one map →", es: "Ver el mapa →", path: "/case-study/msk#msk-workflow", pathEs: "/case-study/msk#es-msk-workflow" },
-  { en: "See what lasted →", es: "Ver lo que perduró →", path: "/case-study/msk#msk-sustainment", pathEs: "/case-study/msk#es-msk-sustainment" },
-];
+function prefersReducedMotion(): boolean {
+  try {
+    return typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  } catch {
+    return false;
+  }
+}
 
 export default function About() {
   const { lang } = useLanguage();
   const isSpanish = lang === "es";
-  const mskCopy = MSK_COPY[isSpanish ? "es" : "en"];
   usePageTitle(isSpanish ? "Sobre mí" : "About");
-  const rootRef = useRef<HTMLElement>(null);
-  useFlagshipReveal(rootRef);
-  const chapters = isSpanish ? CHAPTERS_ES : CHAPTERS;
-  const feedback = isSpanish ? CLIENT_FEEDBACK_ES : CLIENT_FEEDBACK;
+
+  const [index, setIndex] = useState(0);
+  // Motion-sensitive visitors start paused (WCAG 2.2.2); everyone can pause.
+  const [playing, setPlaying] = useState(() => !prefersReducedMotion());
+  const [hovering, setHovering] = useState(false);
+  const [focusInside, setFocusInside] = useState(false);
+
+  const count = SLIDES.length;
+  const go = useCallback((delta: number) => setIndex((i) => (i + delta + count) % count), [count]);
+
+  useEffect(() => {
+    if (!playing || hovering || focusInside) return undefined;
+    const id = window.setInterval(() => setIndex((i) => (i + 1) % count), SLIDE_MS);
+    return () => window.clearInterval(id);
+  }, [playing, hovering, focusInside, count]);
+
+  const t = (en: string, es: string) => (isSpanish ? es : en);
+  const slide = SLIDES[index];
+
   return (
-    <main className="about-page riso-page" lang={isSpanish ? "es" : "en"} ref={rootRef}>
-      {/* ═ HERO — profile masthead (portrait-led, warm; distinct from Home) ═ */}
-      <header className="rp-hero about-hero-profile" id="about-start" data-language-anchor="about-start">
-        <CartoField
-          mapSrc="/riso/elevation-01.jpg"
-          edition="eucalyptus"
-          mapZoom={1.15}
-          mapPosition="55% 40%"
-          mapOpacity={0.42}
-        />
-        <div className="rp-hero__media">
-          <figure className="about-hero__portrait">
-            <div className="rp-headshot">
-              <img src="/assets/about/headshot.jpg" alt="Hillary Esposito" />
-            </div>
-          </figure>
-        </div>
-        <div className="rp-hero__content">
-          <div className="rp-clearing">
-            <h1 className="rp-h1">
-              {isSpanish ? "Diseño flujos antes que\u00a0pantallas." : "I design workflows before\u00a0screens."}
-            </h1>
-            <p className="rp-sub">
-              {isSpanish ? "Seis años en operaciones de atención oncológica y más de 13 años de servicio en el Ejército, ahora en diseño de productos de salud: flujos clínicos y herramientas internas para el momento en que un paso equivocado tiene un costo." : "Six years in cancer-care operations and 13+ years of Army service, now in healthcare product design: clinical workflows and internal tools for the moment a wrong step has a cost."}
-            </p>
-            <ul className="rp-trustStrip" aria-label={isSpanish ? "Credenciales" : "Credentials"}>
-              <li>{isSpanish ? "MHA · Green Belt de Lean Six Sigma" : "MHA · Lean Six Sigma Green Belt"}</li>
-              <li>{isSpanish ? "Veterana del Ejército" : "Army Veteran"}</li>
-              <li>{isSpanish ? "Bilingüe EN/ES" : "Bilingual EN/ES"}</li>
-            </ul>
-          </div>
-        </div>
-      </header>
+    <main className="about-page about-stage riso-page" lang={isSpanish ? "es" : "en"}>
+      <div className="about-stage__text">
+        <h1 className="about-stage__hook">
+          {t(
+            "I'm curious about people, and they keep surprising me.",
+            "Siento curiosidad por la gente, y no deja de sorprenderme."
+          )}
+        </h1>
+        <p>
+          {t(
+            "Every time I think I know what someone will do, something different happens. So I people watch, read, and watch movies and shows, collecting other ways of seeing things.",
+            "Cada vez que creo saber qué va a hacer alguien, pasa algo distinto. Así que observo a la gente, leo y veo películas y series, para recoger otras formas de ver las cosas."
+          )}
+        </p>
+        <p>
+          {t(
+            "It's also why I do UX: people and systems, and the messy middle where they meet.",
+            "Por eso me dedico a UX: personas y sistemas, y el terreno desordenado donde se encuentran."
+          )}
+        </p>
+        <p>
+          {t(
+            "Home is New York, 80 plants, and Luna, my precious baby. We attempt walks, she hops back into her backpack, and no one bats an eyelash. In this city, that counts as a quiet day.",
+            "Mi casa es Nueva York, 80 plantas y Luna, mi bebé preciosa. Intentamos pasear, ella vuelve a saltar a su mochila y nadie se inmuta. En esta ciudad, eso cuenta como un día tranquilo."
+          )}
+        </p>
+      </div>
 
-      <section id="about-pattern" data-language-anchor="about-pattern" className="rp-section" aria-labelledby="about-pattern-title">
-        <div className="rp-wrap">
-          <h2 className="rp-title" id="about-pattern-title">
-            {isSpanish ? "Busco primero el atajo." : "I look for the workaround first."}
-          </h2>
-          {/* Rewritten from a four-step observe/map/design/measure list. That was
-              generic process language, and it restated MSK’s Observe/Align/Redesign
-              without MSK’s evidence under it. These are the judgment calls rather
-              than the stages — things that are true of this practice specifically. */}
-          <ol className="rp-list rp-patternList rp-reveal">
-            {/* Each point carries the artifact it links to, reused from the case
-                studies (nothing drawn new): the MSK paper detour, the logistics
-                status board, the MSK service blueprint, the sustainment lanes. */}
-            <li>
-              <div className="rp-patternList__text">
-                {isSpanish ? "La nota adhesiva, la hoja de cálculo personal, el paso que todos se saltan. Ahí vive el proceso real, y nunca está en el documento del proceso." : "The sticky note, the personal spreadsheet, the step everyone skips. That is where the real process lives, and it is never in the process document."}
-                <Link to={isSpanish ? PATTERN_PROOF[0].pathEs : PATTERN_PROOF[0].path} className="rp-chapter__proof rp-chapter__proof--inline">
-                  <b>{isSpanish ? PATTERN_PROOF[0].es : PATTERN_PROOF[0].en}</b>
-                </Link>
-              </div>
-              <div className="rp-patternList__visual"><MSKMechanism n="01" labels={mskCopy.redesigns.mechanismLabels} /></div>
-            </li>
-            <li>
-              <div className="rp-patternList__text">
-                {isSpanish ? "Averiguo quién paga cuando falla. Un clínico entre pacientes, un soldado esperando reabastecimiento, alguien cuya planta murió. El costo decide cuánta certeza le debe el diseño." : "I find out who pays when it breaks. A clinician between patients, a soldier waiting on resupply, someone whose plant died. The cost decides how much certainty the design owes them."}
-                <Link to={isSpanish ? PATTERN_PROOF[1].pathEs : PATTERN_PROOF[1].path} className="rp-chapter__proof rp-chapter__proof--inline">
-                  <b>{isSpanish ? PATTERN_PROOF[1].es : PATTERN_PROOF[1].en}</b>
-                </Link>
-              </div>
-              <div className="rp-patternList__visual"><OrderStatusBoard lang={isSpanish ? "es" : "en"} /></div>
-            </li>
-            <li className="is-wide">
-              <div className="rp-patternList__text">
-                {isSpanish ? "Hago que la falla sea compartida antes de mejorarla. Cuatro áreas con cuatro versiones del problema rechazarán la misma solución de cuatro maneras." : "I make the failure shared before I make it better. Four departments carrying four models of the problem will reject the same solution four different ways."}
-                <Link to={isSpanish ? PATTERN_PROOF[2].pathEs : PATTERN_PROOF[2].path} className="rp-chapter__proof rp-chapter__proof--inline">
-                  <b>{isSpanish ? PATTERN_PROOF[2].es : PATTERN_PROOF[2].en}</b>
-                </Link>
-              </div>
-              <div className="rp-patternList__visual"><MSKServiceBlueprint copy={mskCopy.blueprint} columns={[2, 5]} /></div>
-            </li>
-            <li className="is-wide">
-              <div className="rp-patternList__text">
-                {isSpanish ? "Compruebo si sobrevive sin mí. Si necesita que yo lo explique para funcionar, no está terminado." : "I check whether it survives without me. If it needs me there to explain it, it is not finished."}
-                <Link to={isSpanish ? PATTERN_PROOF[3].pathEs : PATTERN_PROOF[3].path} className="rp-chapter__proof rp-chapter__proof--inline">
-                  <b>{isSpanish ? PATTERN_PROOF[3].es : PATTERN_PROOF[3].en}</b>
-                </Link>
-              </div>
-              <div className="rp-patternList__visual"><div className="fp-sustainmentFig"><MSKSustainment copy={mskCopy.sustainment} tight /></div></div>
-            </li>
-          </ol>
-          {/* The one line kept from the cut "What I Do Now" story (2026-10-13):
-              it closes the pattern rather than opening a chapter of its own. */}
-          <p className="rp-chapter__callout rp-patternCallout">
-            {isSpanish ? "La IA aceleró las compilaciones de Grove y Knowunity. La corrección de la lógica de cuidado y el orden del permiso del micrófono fueron decisiones mías." : "AI moved the Grove and Knowunity builds faster. The care-logic fix and the mic-permission order were my calls."}
-          </p>
-        </div>
-      </section>
-
-      {/* ═ STORY ════════════════════════════════════════════════════ */}
-      <section id="about-story" data-language-anchor="about-story" className="rp-section rp-section--alt" aria-labelledby="about-story-title">
-        <div className="rp-wrap">
-          {/* The "How I got here." H2 was cut (2026-10-13); the kicker stays the
-              section’s heading so the story’s h3s still sit under an h2. */}
-          <h2 className="rp-title" id="about-story-title">{isSpanish ? "Antes del diseño: MSK y el Ejército." : "Before design: MSK and the Army."}</h2>
-
-          {chapters.map((chapter, index) => (
-            <article className={`rp-split rp-chapter rp-reveal${index % 2 ? "" : " rp-split--flip"}${chapter.image ? "" : " rp-split--noMedia"}`} key={chapter.id}>
-              <div className="rp-split__text">
-                <p className="rp-chapter__n">
-                  <span>{chapter.label}</span>
-                </p>
-                <h3 className="rp-subhead">{chapter.heading}</h3>
-                {chapter.paragraphs.map((paragraph) => (
-                  <p className="rp-chapter__body" key={paragraph}>{paragraph}</p>
-                ))}
-                {chapter.facts && (
-                  <dl className="about-evidenceLedger" aria-label={isSpanish ? "Impacto de un vistazo" : "Impact at a glance"} data-evidence="true">
-                    {chapter.facts.map((fact) => (
-                      <div key={fact.label}>
-                        <dt>{fact.value}</dt>
-                        <dd>{fact.label}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                )}
-                {chapter.callout && <p className="rp-chapter__callout">{chapter.callout}</p>}
-
-                {chapter.caseLink && (
-                  <Link to={chapter.caseLink.path} className="rp-chapter__proof">
-                    <span aria-hidden="true"><Newspaper size="1em" strokeWidth={1.6} aria-hidden="true" focusable="false" /></span>
-                    <span>
-                      <b>{chapter.caseLink.title}</b>
-                      <small>{chapter.caseLink.source}</small>
-                    </span>
-                  </Link>
-                )}
-
-                {chapter.articleLink && (
-                  <a
-                    href={chapter.articleLink.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rp-chapter__proof"
-                  >
-                    <span aria-hidden="true"><Newspaper size="1em" strokeWidth={1.6} aria-hidden="true" focusable="false" /></span>
-                    <span>
-                      <b lang={isSpanish ? "en" : undefined} className="rp-ext">{chapter.articleLink.title}</b>
-                      <small>{chapter.articleLink.source}</small>
-                      <span className="sr-only">{isSpanish ? " (se abre en una pestaña nueva)" : " (opens in new tab)"}</span>
-                    </span>
-                  </a>
-                )}
-              </div>
-
-              {chapter.image && (
-                <div className="rp-split__media">
-                  <div className="rp-chapter__plate">
-                    <img src={chapter.image} alt="" loading="lazy" />
-                  </div>
-                </div>
-              )}
-            </article>
+      <section
+        className="about-stage__show"
+        aria-roledescription="carousel"
+        aria-label={t("Photos of Hillary", "Fotos de Hillary")}
+        onMouseEnter={() => setHovering(true)}
+        onMouseLeave={() => setHovering(false)}
+        onFocus={() => setFocusInside(true)}
+        onBlur={(e) => {
+          if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setFocusInside(false);
+        }}
+      >
+        <div className="about-stage__frame">
+          {SLIDES.map((s, i) => (
+            <img
+              key={s.src}
+              src={s.src}
+              width={s.width}
+              height={s.height}
+              alt={i === index ? t(s.altEn, s.altEs) : ""}
+              aria-hidden={i === index ? undefined : true}
+              className={i === index ? "is-active" : undefined}
+              loading={i === 0 ? "eager" : "lazy"}
+              decoding="async"
+            />
           ))}
         </div>
-      </section>
-
-      {/* ═ PROOF — the one voice here that is not hers ══════════════ */}
-      <section id="about-proof" data-language-anchor="about-proof" className="rp-section" aria-labelledby="about-proof-title">
-        <div className="rp-wrap">
-          <h2 className="rp-title" id="about-proof-title">
-            {isSpanish ? "Cómo los clientes describen trabajar conmigo." : "How clients describe working with me."}
-          </h2>
-          {feedback.map((item) => (
-            <figure className="rp-testimonial rp-reveal" key={item.name}>
-              <blockquote>“{item.quote}”</blockquote>
-              <figcaption>
-                <b>{item.name}</b>
-                <span>{item.role}</span>
-                <span>{item.context}</span>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-      </section>
-
-      {/* ═ HUMAN ════════════════════════════════════════════════════ */}
-      <section id="about-life" data-language-anchor="about-life" className="rp-section rp-section--alt" aria-labelledby="about-life-title">
-        <div className="rp-wrap">
-          <h2 className="rp-title" id="about-life-title">
-            {isSpanish ? "Correr, leer y Luna la gata." : "Running, reading, and Luna the cat."}
-          </h2>
-          {/* Currently reading, stated as currently reading. This is the honest
-              home for it: crediting it on the MSK colophon would claim a book
-              started in 2026 shaped work done years earlier. */}
-          <p className="rp-nowReading">
-            <span>{isSpanish ? "Leyendo ahora" : "Reading now"}</span>
-            <b>
-              {isSpanish ? "Pensar en sistemas, de Donella Meadows." : "Thinking in Systems, Donella Meadows."}
-            </b>
+        <div className="about-stage__bar">
+          <p className="about-stage__caption" aria-live={playing ? "off" : "polite"}>
+            {t(slide.capEn, slide.capEs)}
           </p>
-        </div>
-      </section>
-
-      {/* ═ CTA ══════════════════════════════════════════════════════ */}
-      <section id="about-contact" data-language-anchor="about-contact" className="rp-section">
-        <div className="rp-wrap rp-close">
-          <h2>{isSpanish ? "¿Busca a alguien para UX, diseño de producto o investigación?" : "Hiring for UX, product design or research?"}</h2>
-          <p>
-            {isSpanish ? "Abierta a roles en salud y en productos de consumo o digitales, y a trabajo freelance de UX." : "Open to roles in healthcare and in consumer or digital products, and to freelance UX work."}
-          </p>
-          <div className="rp-hero__ctas">
-            <a className="rp-cta" href="mailto:espositohillary@gmail.com">
-              {isSpanish ? "Escríbame" : "Email me"} →
-            </a>
-            {/* Same secondary action, in the same text-link style, as Home (panel, 2026-11-10). */}
-            <a
-              className="rp-textLink"
-              href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={isSpanish ? "Ver CV (PDF, se abre en una pestaña nueva)" : "View résumé (PDF, opens in new tab)"}
+          <div className="about-stage__controls">
+            <button type="button" onClick={() => go(-1)} aria-label={t("Previous photo", "Foto anterior")}>
+              <span aria-hidden="true">←</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setPlaying((p) => !p)}
+              aria-label={playing ? t("Pause photo loop", "Pausar el ciclo de fotos") : t("Play photo loop", "Reproducir el ciclo de fotos")}
             >
-              {isSpanish ? "Ver CV" : "View résumé"}
-            </a>
+              <span aria-hidden="true">{playing ? "❚❚" : "▶"}</span>
+            </button>
+            <button type="button" onClick={() => go(1)} aria-label={t("Next photo", "Foto siguiente")}>
+              <span aria-hidden="true">→</span>
+            </button>
+            <span className="about-stage__count" aria-hidden="true">
+              {index + 1} / {count}
+            </span>
           </div>
-          <CopyEmail />
         </div>
       </section>
     </main>

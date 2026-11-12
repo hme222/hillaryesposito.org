@@ -80,10 +80,6 @@ const en = {
   "home.riso.heroTitle": "I design workflows before screens.",
   "home.riso.heroLead":
     "At Memorial Sloan Kettering, I proposed the queue that replaced a four-department paper detour.",
-  // Interview-sourced human line (Better Stories pass, 2026-11-10): shows "takes
-  // redirection well" through Grove instead of stating it.
-  "home.riso.heroHuman":
-    "I know plants. Five users still changed how I built Grove.",
   // The hero lede above is the one place on Home that explains the paper
   // detour (2026-10-14 review, item 13); the work row and teaser don't repeat it.
   "home.riso.primaryWork": "Review the MSK case study",
@@ -280,9 +276,6 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.heroTitle": "Diseño flujos antes que pantallas.",
   "home.riso.heroLead":
     "En Memorial Sloan Kettering, propuse la cola que reemplazó un desvío en papel entre cuatro áreas.",
-  // Draft translation, for Hillary to review.
-  "home.riso.heroHuman":
-    "Sé de plantas. Cinco usuarios aun así cambiaron cómo construí Grove.",
   // The panel itself stays English-only (lang="en") - the ES link says so,
   // the same way ask.ninetySecondLink does below.
   "home.riso.recruiterTourLink": "Abrir el recorrido de 90 segundos (en inglés)",

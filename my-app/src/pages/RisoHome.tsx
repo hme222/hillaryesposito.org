@@ -148,7 +148,6 @@ export default function RisoHome() {
               </h1>
             </div>
             <p className="rp-sub rp-heroProof">{t("home.riso.heroLead")}</p>
-            <p className="rp-humanLine">{t("home.riso.heroHuman")}</p>
           </div>
         </div>
         {/* Simple hero media: photo next to the header text. The dashboard
