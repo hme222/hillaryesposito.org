@@ -4,6 +4,7 @@ import { useLanguage } from "../../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
 import ReadingProgress from "../../components/flagship/ReadingProgress";
 import ShareCaseStudy from "../../components/flagship/ShareCaseStudy";
+import CaseStudyReel, { CaseStudyReelData } from "../../components/flagship/CaseStudyReel";
 import EvidenceField from "../../components/flagship/EvidenceField";
 import CartoField from "../../components/riso/CartoField";
 import RisoDefs from "../../components/riso/RisoDefs";
@@ -58,6 +59,36 @@ const GUIDE_SCREENS = [
   { src: "/assets/uxwoman/guide-3.webp", cap: "Your renewal date", alt: "Your renewal date: starts Jan 1, 2027, and your own date decides. A date field and a note that a renewal on or before Feb 1, 2027 does not need it." },
 ];
 
+// Midterm presentation: 12:58, 1440 x 900, narrated, with her webcam in the
+// corner. Captions are generated from the audio and need Hillary's proofread.
+const MIDTERM: CaseStudyReelData = {
+  src: "/assets/uxwoman/midterm-presentation.mp4",
+  poster: "/assets/uxwoman/midterm-poster.jpg",
+  captionsSrc: "/assets/uxwoman/midterm-captions-en.vtt",
+  width: 1440,
+  height: 900,
+  kicker: "The midterm",
+  label: "UX Woman midterm presentation, about 13 minutes, narrated",
+  caption: "My midterm presentation for the UX Woman UX Design Accelerator, about 13 minutes. The guide is built but not yet tested.",
+  transcriptSummary: "What the presentation covers",
+  transcript: [
+    "A letter with a deadline and no clear next step",
+    "From insurance pre-approvals to a letter I can test",
+    "Six themes from six interviews",
+    "Coverage can be lost to a missed response",
+    "What already exists",
+    "A guide that starts from the letter in your hand",
+    "The letter, phase by phase",
+    "A few ideas that shaped the MVPs",
+    "Six areas, and get help on every screen",
+    "Clinic and hospital staff journey",
+    "Three versions, each gated by a test",
+    "Who might pay",
+    "From a letter to a next step",
+  ],
+  transcriptNote: "Narrated, with captions. These are the slide titles, in order.",
+};
+
 export default function FlagshipUxWoman() {
   const { lang } = useLanguage();
   usePageTitle("UX Woman: Healthcare Research Case Study", lang !== "es");
@@ -110,6 +141,13 @@ export default function FlagshipUxWoman() {
           </dl>
         </div>
       </header>
+
+      <section className="rp-section" id="uxwoman-midterm" aria-labelledby="uxwoman-midterm-title">
+        <div className="rp-wrap">
+          <h2 className="rp-title" id="uxwoman-midterm-title">My midterm presentation.</h2>
+          <CaseStudyReel reel={MIDTERM} />
+        </div>
+      </section>
 
       <section className="rp-section" id="uxwoman-problem" data-language-anchor="uxwoman-problem" data-evidence="true">
         <div className="rp-wrap">

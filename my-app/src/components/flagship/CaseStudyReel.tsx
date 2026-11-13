@@ -17,6 +17,9 @@ export type CaseStudyReelData = {
   transcript: string[];
   /** Closing note under the lines, e.g. "Music only; no narration." */
   transcriptNote: string;
+  /** Pixel size of the video, for its frame shape. Defaults to 1280 x 720. */
+  width?: number;
+  height?: number;
 };
 
 /**
@@ -40,8 +43,9 @@ export default function CaseStudyReel({ reel }: { reel: CaseStudyReelData }) {
           preload="none"
           playsInline
           poster={reel.poster}
-          width={1280}
-          height={720}
+          width={reel.width ?? 1280}
+          height={reel.height ?? 720}
+          style={{ aspectRatio: `${reel.width ?? 1280} / ${reel.height ?? 720}` }}
           aria-label={reel.label}
           aria-describedby={captionId}
         >

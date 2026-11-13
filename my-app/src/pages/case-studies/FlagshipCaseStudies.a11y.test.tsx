@@ -624,18 +624,20 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".fp-workflow[data-evidence='true']")).not.toBeNull();
   });
 
-  it("keeps the MSK hero on the recreated queue without decorative concepts", async () => {
+  it("shows the MSK hero as the plain journey picture; the recreated queue sits in the brief below, with no retired concepts", async () => {
     await act(async () => {
       root.render(<FlagshipMSK />);
     });
 
     const heroArtifact = container.querySelector<HTMLElement>(".fp-heroArt--msk");
     expect(heroArtifact?.getAttribute("data-evidence")).toBe("true");
-    expect(heroArtifact?.querySelector(".msk-dashboard-mockup")).not.toBeNull();
+    // Hero is the journey picture (owner direction 2026-11-13, after Lex's feedback that the old hero queue screen was unclear).
+    expect(heroArtifact?.querySelector(".msk-journey")).not.toBeNull();
+    expect(heroArtifact?.querySelector(".msk-dashboard-mockup")).toBeNull();
+    expect(container.querySelector(".msk-dashboard-mockup")).not.toBeNull();
     expect(container.querySelector(".fp-mskHeroPlate__detour")).toBeNull();
     expect(container.querySelector(".fp-mskLens")).toBeNull();
     expect(container.querySelector(".fp-mskLens__controls")).toBeNull();
-    expect(container.textContent).toContain("Office Coordinator filing queue");
     const mockupTitles = Array.from(container.querySelectorAll<HTMLElement>(".msk-dashboard-mockup__title"));
     expect(mockupTitles.length).toBeGreaterThan(0);
     expect(mockupTitles.every((title) => title.tagName === "P")).toBe(true);

@@ -1,5 +1,70 @@
 # Design State: Full Portfolio Redesign — Hybrid Positioning
 
+_Last updated: 2026-11-13 by Claude (Lex feedback review + plan; prior checkpoints preserved below)_
+
+## 2026-11-13 — Lex's portfolio feedback: per-case-study review and plan
+
+**Source:** 12-minute voice review from Lex (a product designer who hires), transcribed locally; transcript in the session scratchpad, not committed. His view is one person's; Hillary should collect more perspectives.
+**Positioning decision (Hillary, 2026-11-12):** product designer with a strong UX and research lean. Not UI-sharp-first. Recorded: Home hero now says so; MSK removed from the Home hero.
+
+### What Lex said, as seven checks
+| # | Check | Home | MSK | Grove | Knowunity | Logistics | UX Woman | Mobbin |
+|---|-------|------|-----|-------|-----------|-----------|----------|--------|
+| L1 | Hero is about the person, not a project | Done | n/a | n/a | n/a | n/a | n/a | n/a |
+| L2 | Pitch is clear: product designer, UX lean | Done on Home. Not yet checked on About, footer status, closing CTAs | — | — | — | — | — | — |
+| L3 | Plain, human story a stranger gets at a bar: what, problem, why it mattered, my role | — | Intro rewritten; body still dense | Research-first; problem is a feeling, not a scene | Brief-and-build heavy | Sub packs five numbers | Clear, honest | Short, clear |
+| L4 | Visual explains the story; not UI he could "vibe code" | — | New journey picture drafted (uncommitted); old mockup was the issue | Demo video added (committed) | Phone is the real prototype (good) | Abstract before/after line drawing | No picture of the guide up top | Three real phone screens (good) |
+| L5 | Glossy final designs first, journey after | — | No final design exists (recreation) | Video now first. But the working prototype is section 5 of 9 | Final phone first (good) | n/a (logistics) | Guide screens are lower down | Final screens first (good) |
+| L6 | Only work-in-progress that supports the story; no kitchen sink | — | 9 closed panels, 9 sections, ~6,700px | 6 panels; palette and system-lab sections stall | 4 panels; build stretch is long (~6,550px) | 3 panels, fine | 3 panels, fine | 2 panels, shortest |
+| L7 | Role-change noise | — | Removed (EN + ES) | — | — | — | — | — |
+
+### Plan, in order
+**Phase 0 — needs Hillary (one decision each, then I build)**
+1. MSK visual: keep the journey picture, or retire it? See conflict below.
+2. MSK story: tell it out loud as at a bar (5 beats: what it was, the problem, why it mattered, what I did, what happened). I interview, copywriter voice rules apply, her words only.
+3. Which MSK sections fold behind a panel: "The same failure, in two more places" and "I did the jobs before I redesigned them" are the candidates.
+
+**Phase 1 — quick wins (no new facts needed)**
+- Grove: move "Try the working prototype" above the research ledger; fold the palette and system-lab sections into one panel (stall flagged in an earlier review too).
+- UX Woman: put a guide screen in the hero (assets exist: `guide-1..3.webp`); midterm video added (requested 2026-11-13).
+- Knowunity: shorten the build stretch; keep the real phone hero.
+- Logistics: split the sub-line numbers into a plain sentence plus one proof line; verify the 85% and "1–2 months to 1–2 weeks" against her service record (open since earlier).
+- Positioning words: make Home, About, footer status and every closing CTA say the same thing.
+
+**Phase 2 — MSK rewrite** from the Phase 0 interview; fold details; one picture that matches the story.
+
+**Phase 3 — verify**: blind scored-critique panel, accessibility re-check of the combined nav and the new videos, jest, production check, Ask knowledge regeneration.
+
+### Decisions log (this stretch)
+| Date | Agent | Decision | Rationale |
+|------|-------|----------|-----------|
+| 2026-11-12 | user | Product designer with UX and research lean; MSK out of Home hero | Lex: say what you are, not the project |
+| 2026-11-12 | user | Remove "changed roles" wording | Lex: it does not matter to a reader |
+| 2026-11-13 | user | Remove all eyebrows and floating hero tags in case studies | Distracting; kept MSK "Recreated artifact" label (provenance) |
+| 2026-11-13 | user | One combined liquid-glass nav on case studies, one line, never tucks | Two navs on scroll-up; "In this case study" label added |
+| 2026-11-13 | user | Grove: looping demo video replaces first-build screens | Old screens sized badly; video muted, looping, pause button |
+| 2026-11-13 | user | About page: curiosity-led copy, no work stories | Her voice; Spanish unreviewed |
+| 2026-11-13 | user | MSK: hero becomes the journey picture; exact step lists fold into a panel; provenance label moves to the brief queue row | Lex: hero visual unclear; test now guards the new hero |
+| 2026-11-13 | user | UX Woman: midterm presentation video added (13 min, captions, plays on press) | Captions are auto-generated, need her proofread |
+
+### Conflicts to resolve
+- **MSK visual vs earlier rejections.** This file records that Hillary rejected the paper/scanner detour, the routing peel, "system icons" and the chart look (2026-08 to 2026-09). The new journey picture uses printer, paper and walk icons. Her 2026-11-13 request ("cute UI that shows the service design") may supersede that. She should confirm, so it is a decision and not a repeat.
+- **Taste profile says "restrained tracked eyebrow text"**; she has removed every eyebrow. The profile needs updating (design-memory).
+- **Lex wants "about you, not the work"; the 2026-08 positioning decision was stakes and numbers first.** Resolved for the Home hero only. Case-study heroes still lead with a result.
+
+### Design debt register additions
+| ID | Source | Severity | What | Suggested fix |
+|----|--------|----------|------|---------------|
+| D-101 | Review | Medium | Spanish for About, Home hero and MSK edits is mine, not reviewed by Hillary | She reviews or a native reader does |
+| D-102 | Review | Medium | MSK journey: labels crowd the narrow columns at 1440 | Shorten notes or two rows |
+| D-103 | Audit | Medium | `hillaryesposito.org` shows a blank page: assets redirect to `.com`, blocked by the security policy | Fix the redirect in Vercel |
+| D-104 | Review | Low | Phone nav: chapters need a swipe | Accept, or drop Work/About on phones |
+| D-105 | Cleanup | Low | Unused `GroveScreenGallery`, unused Grove screenshots, `race.jpg` | Delete |
+| D-106 | Ask | Low | Ask knowledge still describes removed About and Home text | Regenerate before Ask returns |
+
+### Handoff babble
+> design-strategist → design-lead: Lex's real point is that a stranger should get each case in one breath. MSK is the one that fails it: nine folded panels and a hero picture nobody could read. Phase 0 needs Hillary's answers first, then the MSK rewrite sets the pattern for the other five.
+
 ## 2026-10-24 — Design-taste fix round implemented
 
 **Status:** Final fix round verified for shipping from Hillary's “make fixes” direction after the fresh design-taste critique. The governing brief is `design-docs/briefs/2026-10-24-design-taste-fix-round.md`.

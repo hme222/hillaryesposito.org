@@ -88,7 +88,7 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
         project={data.title}
         chapters={chapters}
         ariaLabel="Capítulos del estudio de caso"
-        jumpLabel="Ir a"
+        jumpLabel="En este caso"
       />
 
       <header

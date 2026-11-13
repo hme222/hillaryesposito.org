@@ -1,0 +1,678 @@
+WEBVTT
+
+1
+00:00:00.940 --> 00:00:06.940
+Hi everyone, my name is Hillary. I'm going to talk about healthcare research in our UX study.
+
+2
+00:00:06.940 --> 00:00:14.940
+I focused in on this concept of government mail. Has anyone received it?
+
+3
+00:00:14.940 --> 00:00:23.940
+Probably at some point in your life you've had some sort of sample letter that was really confusing and it didn't exactly provide you with the next steps.
+
+4
+00:00:23.940 --> 00:00:31.460
+That's a lot of what my study is really based off of.
+
+5
+00:00:31.460 --> 00:00:40.460
+Initially, I was really focused on insurance pre-approvals and how denials took place.
+
+6
+00:00:40.460 --> 00:00:46.460
+I started going through that rabbit hole, doing my research, defining some MVPs.
+
+7
+00:00:46.460 --> 00:00:55.460
+I eventually found myself to finding a sample letter that is affecting a major change within Medicaid.
+
+8
+00:00:55.460 --> 00:00:58.460
+I started to focus in on Medicaid a little bit more.
+
+9
+00:00:58.460 --> 00:01:03.460
+Holistically, I started with six interviews. I had clinical and insurer staff.
+
+10
+00:01:03.460 --> 00:01:09.460
+I used six different publicly available sources. I did not conduct any patient interviews,
+
+11
+00:01:09.460 --> 00:01:20.460
+although a lot of the inferences and insights that I got from my clinical staff and insurer staff kind of led me to believe certain things were common amongst patients.
+
+12
+00:01:20.460 --> 00:01:25.460
+I have some of the deliverables that I need below as well.
+
+13
+00:01:25.460 --> 00:01:29.460
+We'll go through some of those in a little bit.
+
+14
+00:01:29.460 --> 00:01:36.460
+As you can see, I have my affinity clusters here. I have six different themes that started to emerge.
+
+15
+00:01:36.460 --> 00:01:41.460
+The first theme that started to emerge is who owns it.
+
+16
+00:01:41.460 --> 00:01:52.460
+A lot of this research, the synthesis, I was finding that there was a lot of vague handoffs and patients were unclear about next steps.
+
+17
+00:01:52.460 --> 00:01:57.460
+They got information from insurance, but then all of a sudden the providers were having new information,
+
+18
+00:01:57.460 --> 00:02:02.460
+and the providers were also then going back to insurance and validating that information.
+
+19
+00:02:03.460 --> 00:02:14.460
+Within this triangle of insurance physician and patient, it was pretty confusing for all parties involved, I have to say.
+
+20
+00:02:14.460 --> 00:02:23.460
+Insurance didn't have to be super clear with how that in-between was.
+
+21
+00:02:23.460 --> 00:02:27.460
+I'll talk a little bit more about it later, but there was a lot of confusion.
+
+22
+00:02:27.460 --> 00:02:35.460
+I wanted to really look in in this process and make things a little bit more clear for patients as well as providers.
+
+23
+00:02:35.460 --> 00:02:41.460
+The overall problem was that coverage can be lost.
+
+24
+00:02:41.460 --> 00:02:46.460
+It was actually already seen in Arkansas in 2018.
+
+25
+00:02:46.460 --> 00:02:49.460
+18,000 people lost coverage under a work requirement.
+
+26
+00:02:50.460 --> 00:02:59.460
+When I was conducting my interviews, I started to see that there was an increase in coverage lost earlier this year
+
+27
+00:02:59.460 --> 00:03:07.460
+and alluding to patients being lost in coverage within these new changes that were happening within the next two years.
+
+28
+00:03:07.460 --> 00:03:15.460
+As you can see on the left-hand side, our projected numbers are 475,000 people that could lose coverage
+
+29
+00:03:15.460 --> 00:03:19.460
+if they aren't aware of these new requirements for Medicaid.
+
+30
+00:03:19.460 --> 00:03:27.460
+When I was looking at this sample letter, I noticed that it was pretty vague.
+
+31
+00:03:27.460 --> 00:03:34.460
+It's the first step within this Medicaid process of informing the patients, but even with that, it was pretty vague.
+
+32
+00:03:34.460 --> 00:03:40.460
+I wanted to be a part of a solution that was affecting this wide net of people.
+
+33
+00:03:41.460 --> 00:03:45.460
+The competition, what already exists?
+
+34
+00:03:45.460 --> 00:03:49.460
+New York State of Health, they do have really good guidelines.
+
+35
+00:03:49.460 --> 00:03:54.460
+It's just really scattered and it can be really confusing for some patients.
+
+36
+00:03:54.460 --> 00:03:57.460
+I started looking at their page.
+
+37
+00:03:57.460 --> 00:04:02.460
+I started looking at New York Health Department as well as Oklahoma Health Care Authority
+
+38
+00:04:02.460 --> 00:04:07.460
+and what they were doing with those people that were lost coverage.
+
+39
+00:04:08.460 --> 00:04:13.460
+I also looked into Legal Aid Society.
+
+40
+00:04:13.460 --> 00:04:19.460
+They actually provided a lot of really good insight and information as far as future plans
+
+41
+00:04:19.460 --> 00:04:23.460
+and what New York is really planning for.
+
+42
+00:04:23.460 --> 00:04:27.460
+I based a lot of this study based off of New York regulations,
+
+43
+00:04:27.460 --> 00:04:32.460
+but I also had interviewees that were from all across the U.S.
+
+44
+00:04:32.460 --> 00:04:39.450
+My solution was really based off of two hypotheses.
+
+45
+00:04:39.450 --> 00:04:44.450
+First of all, the sample letter that they were sent to patients was really confusing in general.
+
+46
+00:04:44.450 --> 00:04:52.450
+The language itself didn't feel really concise and clear.
+
+47
+00:04:52.450 --> 00:04:58.450
+Also, the reader, because of that language, wasn't interpreting it in the right way.
+
+48
+00:04:58.450 --> 00:05:02.450
+These are all hypotheses that I have.
+
+49
+00:05:02.450 --> 00:05:09.450
+Based off that sample letter, I wanted to identify some things that they needed,
+
+50
+00:05:09.450 --> 00:05:15.450
+where it stood, what to action next, who to speak with.
+
+51
+00:05:15.450 --> 00:05:23.450
+I also wanted to add some sort of guide for people that didn't require a sign-in,
+
+52
+00:05:23.450 --> 00:05:26.450
+didn't require their specifics.
+
+53
+00:05:26.450 --> 00:05:30.450
+It had a phone number readily available and it used that language from the letter
+
+54
+00:05:30.450 --> 00:05:35.450
+that was kind of like a hub for people to access that information.
+
+55
+00:05:35.450 --> 00:05:39.920
+Who I heard from was a lot of providers.
+
+56
+00:05:39.920 --> 00:05:43.920
+I made a lot of insights based off of providers, payers,
+
+57
+00:05:43.920 --> 00:05:49.920
+the back-end and front-end of billing, just getting that holistic picture.
+
+58
+00:05:50.920 --> 00:05:53.920
+I built a proto persona. This is Alex.
+
+59
+00:05:53.920 --> 00:05:59.920
+They're 50 years old on Medicaid and they work 80 hours a month
+
+60
+00:05:59.920 --> 00:06:01.920
+and they also volunteer.
+
+61
+00:06:01.920 --> 00:06:04.920
+So 80 hours includes work and volunteering.
+
+62
+00:06:04.920 --> 00:06:09.920
+The goal is to keep someone like Alex within coverage.
+
+63
+00:06:09.920 --> 00:06:12.920
+If they're getting this letter, do they know what the next action words are?
+
+64
+00:06:12.920 --> 00:06:14.920
+Do they know what their next steps are?
+
+65
+00:06:14.920 --> 00:06:18.920
+Do they know that it even applies to them?
+
+66
+00:06:18.920 --> 00:06:23.920
+Some considerations are that they don't actually know what to do next.
+
+67
+00:06:23.920 --> 00:06:27.920
+So I'm going to go into the journey map.
+
+68
+00:06:27.920 --> 00:06:29.920
+I have my journey map here.
+
+69
+00:06:29.920 --> 00:06:33.920
+I have the different phases, some of the actions taken.
+
+70
+00:06:33.920 --> 00:06:36.920
+As you can see, the emoji journey,
+
+71
+00:06:36.920 --> 00:06:40.920
+it can be kind of confusing when they first receive it.
+
+72
+00:06:40.920 --> 00:06:42.920
+And then they're really reading it.
+
+73
+00:06:42.920 --> 00:06:46.920
+It might even be like, oh, does this even apply to me?
+
+74
+00:06:46.920 --> 00:06:48.920
+I'm not sure.
+
+75
+00:06:48.920 --> 00:06:56.920
+And then the worst case scenario is that they don't understand that it actually applies to them
+
+76
+00:06:56.920 --> 00:06:58.920
+and then they're getting this letter saying,
+
+77
+00:06:58.920 --> 00:07:01.920
+hey, you have 30 days to prove that you're in compliance
+
+78
+00:07:01.920 --> 00:07:06.920
+and it may feel all of a sudden because they weren't able to interpret
+
+79
+00:07:06.920 --> 00:07:12.420
+the information that was received prior to that.
+
+80
+00:07:12.420 --> 00:07:19.420
+A few ideas that really shaped my MVPs is that this requirement notice
+
+81
+00:07:19.420 --> 00:07:24.420
+and also like missing the ball, who has the ball,
+
+82
+00:07:24.420 --> 00:07:28.420
+who is following the patient with their journey on their insurance coverage.
+
+83
+00:07:28.420 --> 00:07:33.420
+And so these two ideas really merged into this guide idea
+
+84
+00:07:33.420 --> 00:07:37.420
+of supporting patients and providers alike
+
+85
+00:07:37.420 --> 00:07:43.420
+throughout this journey of making sure that Medicaid had coverage.
+
+86
+00:07:43.420 --> 00:07:47.420
+Some of the guardrails I really was firm with
+
+87
+00:07:47.420 --> 00:07:54.420
+is never remove the reason for any of these solutions
+
+88
+00:07:54.420 --> 00:07:56.420
+and also never remove a human.
+
+89
+00:07:56.420 --> 00:08:01.420
+I didn't want to have AI completely take over this solution.
+
+90
+00:08:01.420 --> 00:08:03.420
+That didn't make sense to me.
+
+91
+00:08:03.420 --> 00:08:08.420
+I wanted to make sure that this was supporting real people with their issues.
+
+92
+00:08:08.420 --> 00:08:12.420
+This is an example of the letter guide that I based it off of.
+
+93
+00:08:12.420 --> 00:08:16.420
+It's just going through the flow of what are things that are important
+
+94
+00:08:16.420 --> 00:08:18.420
+for this person to know.
+
+95
+00:08:18.420 --> 00:08:24.420
+And I have some of my wireframes, my initial buildings.
+
+96
+00:08:24.420 --> 00:08:27.420
+It's just, you know, whether they have a date already,
+
+97
+00:08:27.420 --> 00:08:33.420
+whether they don't have any date, just so they have a good baseline of, you know,
+
+98
+00:08:33.420 --> 00:08:35.420
+who needs what information.
+
+99
+00:08:35.420 --> 00:08:39.140
+As you can see, I have my information architecture.
+
+100
+00:08:39.140 --> 00:08:44.140
+These are just pinpoints of information that I thought would be helpful
+
+101
+00:08:44.140 --> 00:08:45.140
+for the patient.
+
+102
+00:08:45.140 --> 00:08:50.140
+So just knowing what to access, who's in what situation,
+
+103
+00:08:50.140 --> 00:08:54.140
+and this is just the tree of what I want to build.
+
+104
+00:08:54.140 --> 00:08:59.740
+I have a high fidelity prototype here.
+
+105
+00:08:59.740 --> 00:09:02.740
+It's just some of the questions that are built just to give you an example
+
+106
+00:09:02.740 --> 00:09:05.740
+of things that I'm working on.
+
+107
+00:09:05.740 --> 00:09:08.990
+I also have two tests.
+
+108
+00:09:08.990 --> 00:09:14.990
+So my first hypothesis is that this sample letter has, you know,
+
+109
+00:09:14.990 --> 00:09:19.990
+all the information that a patient needs when it's rewritten in my words.
+
+110
+00:09:19.990 --> 00:09:24.990
+I've already begun this process, so I've sent out the letter
+
+111
+00:09:24.990 --> 00:09:28.990
+and I've already gotten some feedback, so I've started to redo the letter.
+
+112
+00:09:28.990 --> 00:09:33.990
+So that way I can build my full-out prototype.
+
+113
+00:09:33.990 --> 00:09:40.990
+And my second hypothesis is that, you know, now receiving this,
+
+114
+00:09:40.990 --> 00:09:42.990
+they understand what they need to do next.
+
+115
+00:09:42.990 --> 00:09:46.990
+And so that would be the next step for my work.
+
+116
+00:09:46.990 --> 00:09:53.370
+I have a little bit about the clinical and hospital staff journey here.
+
+117
+00:09:53.370 --> 00:09:58.370
+I am just to save time because I've gone a little over.
+
+118
+00:09:58.370 --> 00:10:01.370
+I'm just going to have this for reference.
+
+119
+00:10:01.370 --> 00:10:04.370
+But as you can see, we also have the flow with,
+
+120
+00:10:04.370 --> 00:10:07.370
+based off of my provider interactions,
+
+121
+00:10:07.370 --> 00:10:12.370
+what was important to them to know so that way they could support their patients.
+
+122
+00:10:12.370 --> 00:10:18.370
+I have a couple versions here of my vision and roadmap for my testing.
+
+123
+00:10:18.370 --> 00:10:22.370
+My personal visions are V1, V2, and V3.
+
+124
+00:10:22.370 --> 00:10:28.370
+My V1 would be building my guide for patients and providers alike
+
+125
+00:10:28.370 --> 00:10:30.370
+based off of the sample letter language
+
+126
+00:10:30.370 --> 00:10:33.370
+and pulling that information and making it concise
+
+127
+00:10:33.370 --> 00:10:38.370
+and almost like an information hub for providers and patients.
+
+128
+00:10:38.370 --> 00:10:41.370
+My V2 would then testing that out
+
+129
+00:10:41.370 --> 00:10:44.370
+and seeing if it was actually translating in real life.
+
+130
+00:10:44.370 --> 00:10:46.370
+Like, how is that working for people?
+
+131
+00:10:46.370 --> 00:10:48.370
+Is this prototype helpful?
+
+132
+00:10:48.370 --> 00:10:51.370
+And kind of assessing those gaps.
+
+133
+00:10:51.370 --> 00:10:55.370
+And then my V3 would really be reaching out to vendors,
+
+134
+00:10:55.370 --> 00:10:57.370
+seeing if they wanted to collaborate,
+
+135
+00:10:57.370 --> 00:10:59.370
+if they wanted to purchase something similar
+
+136
+00:10:59.370 --> 00:11:02.370
+or even take it to the next step
+
+137
+00:11:02.370 --> 00:11:05.370
+by providing all that information of insurance
+
+138
+00:11:05.370 --> 00:11:09.370
+and making it more secure as everything I'm building
+
+139
+00:11:09.370 --> 00:11:11.370
+is based off of publicly available data.
+
+140
+00:11:11.370 --> 00:11:15.370
+And then I just have some dates that are below
+
+141
+00:11:15.370 --> 00:11:18.370
+for January 1st, March 1st, and November 16th.
+
+142
+00:11:18.370 --> 00:11:22.370
+These are some of the key pinpoints for Medicaid
+
+143
+00:11:22.370 --> 00:11:26.370
+and some of their requirements.
+
+144
+00:11:26.370 --> 00:11:28.370
+So everything begins on January 1st,
+
+145
+00:11:28.370 --> 00:11:31.370
+showing that work requirement for patients.
+
+146
+00:11:31.370 --> 00:11:35.370
+And then March 1st is when they would have to start their renewals
+
+147
+00:11:35.370 --> 00:11:38.370
+if their date is after March 1st.
+
+148
+00:11:38.370 --> 00:11:44.370
+And then November 16th is for next year,
+
+149
+00:11:44.370 --> 00:11:48.370
+when Medicare starts releasing their information
+
+150
+00:11:48.370 --> 00:11:51.370
+and it kind of changes as well.
+
+151
+00:11:51.370 --> 00:11:55.370
+Again, my scope is really Medicaid, so it doesn't quite apply.
+
+152
+00:11:55.370 --> 00:11:58.370
+I have monetization here,
+
+153
+00:11:58.370 --> 00:12:03.370
+so I have some of the entities that would be purchasing.
+
+154
+00:12:03.370 --> 00:12:07.370
+I haven't done any outreach or anything like that,
+
+155
+00:12:07.370 --> 00:12:10.370
+but these are some of the entities that may or may not
+
+156
+00:12:10.370 --> 00:12:13.370
+want to pay for something that I'm building.
+
+157
+00:12:13.370 --> 00:12:16.370
+And I have my conclusion.
+
+158
+00:12:16.370 --> 00:12:18.370
+Thank you so much for your time.
+
+159
+00:12:18.370 --> 00:12:23.370
+I have the, you know, what I would do next
+
+160
+00:12:23.370 --> 00:12:26.370
+is really just fine-tuning the sample letter data
+
+161
+00:12:26.370 --> 00:12:28.370
+and then building my prototype.
+
+162
+00:12:28.370 --> 00:12:31.370
+I'm envisioning something like a hub.
+
+163
+00:12:31.370 --> 00:12:34.370
+I have started working on it, but it is not tested.
+
+164
+00:12:34.370 --> 00:12:39.370
+It is very much in a ideation state.
+
+165
+00:12:39.370 --> 00:12:41.370
+But based off of this data,
+
+166
+00:12:41.370 --> 00:12:44.370
+I really think this has a large outreach,
+
+167
+00:12:44.370 --> 00:12:47.370
+and so I'm really excited by this work,
+
+168
+00:12:47.370 --> 00:12:51.370
+and I'm looking forward to testing it out next.
+
+169
+00:12:51.370 --> 00:12:53.370
+Thank you so much.
+

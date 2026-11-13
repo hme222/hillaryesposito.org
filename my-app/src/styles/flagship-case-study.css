@@ -1019,3 +1019,42 @@
   .fp-guideScreens { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; }
   .fp-guideScreens figcaption { font-size: var(--ts-label); }
 }
+
+/* ---------- MSK journey: one message, drawn as a picture (hero) ---------- */
+.msk-journey { margin: 0; width: min(640px, 100%); display: grid; gap: .9rem; padding: clamp(.9rem, 2vw, 1.3rem);
+  background: color-mix(in srgb, var(--paper) 88%, transparent); border: 1px solid var(--hair); border-radius: 20px; color: var(--ink); }
+.msk-journey__bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .6rem; }
+.msk-journey__tabs { display: inline-flex; padding: 3px; border: 1px solid var(--hair); border-radius: 999px; background: var(--paper-2); }
+.msk-journey__tabs button { min-height: 44px; min-width: 44px; padding: 0 1.1rem; border: 0; border-radius: 999px; background: none; color: var(--ink-2); font: inherit; font-weight: 600; cursor: pointer; }
+.msk-journey__tabs button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.msk-journey__tabs button:focus-visible, .msk-journey__walk:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
+.msk-journey__count { margin: 0; display: grid; text-align: right; line-height: 1.2; }
+.msk-journey__count b { font-family: var(--display); font-size: 1.35rem; }
+.msk-journey__count span { color: var(--ink-2); font-size: var(--ts-small); }
+.msk-journey--before .msk-journey__count b { color: var(--coral-text, var(--coral)); }
+.msk-journey--after .msk-journey__count b { color: var(--green); }
+.msk-journey__track { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.1rem .6rem; }
+/* Three across: six stops fit as two roomy rows instead of six squeezed columns. */
+.msk-journey__track li { position: relative; display: grid; justify-items: center; align-content: start; gap: .2rem; text-align: center;
+  padding: 1.5rem .4rem .7rem; border: 1px solid var(--hair); border-radius: 16px; background: var(--paper); transition: border-color .2s ease, transform .2s ease, background .2s ease; }
+.msk-journey__track li > b { font-size: var(--ts-small); line-height: 1.2; }
+.msk-journey__track li > span:last-child { color: var(--ink-2); font-size: var(--ts-label); line-height: 1.3; }
+.msk-journey__icon { color: var(--ink); }
+.msk-journey--before .msk-journey__track li:nth-child(3) .msk-journey__icon,
+.msk-journey--before .msk-journey__track li:nth-child(4) .msk-journey__icon,
+.msk-journey--before .msk-journey__track li:nth-child(5) .msk-journey__icon { color: var(--coral-text, var(--coral)); }
+.msk-journey--after .msk-journey__track li:nth-child(3) .msk-journey__icon,
+.msk-journey--after .msk-journey__track li:nth-child(4) .msk-journey__icon { color: var(--green); }
+.msk-journey__n { position: absolute; top: .45rem; left: .55rem; font-family: var(--label); font-size: var(--ts-label); color: var(--muted); }
+.msk-journey__rider { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); height: 32px; }
+.msk-journey__track li.is-here { border-color: var(--ink); background: color-mix(in srgb, var(--green) 9%, var(--paper)); transform: translateY(-3px); }
+.msk-journey__track li.is-done { border-color: color-mix(in srgb, var(--ink) 40%, var(--hair)); }
+.msk-journey__mascot { display: block; animation: msk-journey-hop .5s ease-out; }
+@keyframes msk-journey-hop { 0% { transform: translateY(8px) scale(.9); } 60% { transform: translateY(-4px); } 100% { transform: none; } }
+.msk-journey__foot { display: flex; flex-wrap: wrap; align-items: center; gap: .7rem 1rem; }
+.msk-journey__walk { min-height: 44px; padding: 0 1.2rem; border: 1px solid var(--ink); border-radius: 999px; background: var(--paper); color: var(--ink); font: inherit; font-weight: 700; cursor: pointer; }
+.msk-journey__walk:hover:not(:disabled) { background: var(--ink); color: var(--paper); }
+.msk-journey__walk:disabled { opacity: .6; cursor: default; }
+.msk-journey figcaption { color: var(--ink-2); font-size: var(--ts-label); flex: 1 1 14rem; }
+@media (prefers-reduced-motion: reduce) { .msk-journey__mascot { animation: none; } .msk-journey__track li { transition: none; } .msk-journey__track li.is-here { transform: none; } }
+@media (forced-colors: active) { .msk-journey, .msk-journey__track li { border-color: CanvasText; } .msk-journey__tabs button[aria-pressed="true"] { forced-color-adjust: none; background: Highlight; color: HighlightText; } }

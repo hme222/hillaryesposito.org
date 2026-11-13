@@ -4577,3 +4577,7 @@ html.cs-chrome .nav-dock__chapters .rp-chapters::after { display: none; }
   html.cs-chrome .nav-dock__pill { background: Canvas; border-color: CanvasText; box-shadow: none; backdrop-filter: none; }
   html.cs-chrome .nav-dock__chapters { border-left-color: CanvasText; }
 }
+
+/* The label says these links are for this case study, not the whole site; it
+   stays visible on phones too, where the plain strip hides it. */
+html.cs-chrome .nav-dock__chapters .rp-chapters > span { display: inline; color: var(--ink-2); font-weight: 600; margin-right: .2rem; font-size: var(--ts-label); letter-spacing: 0; white-space: nowrap; }

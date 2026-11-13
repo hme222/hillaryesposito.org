@@ -9,6 +9,7 @@ import EvidenceField from "../../components/flagship/EvidenceField";
 import CaseMore from "../../components/CaseMore";
 import MSKFilingReceipt from "../../components/flagship/MSKFilingReceipt";
 import MSKDashboardMockup from "../../components/MSKDashboardMockup";
+import MSKJourney from "../../components/MSKJourney";
 import MSKServiceBlueprint from "../../components/MSKServiceBlueprint";
 import MSKMechanism from "../../components/MSKMechanism";
 import MSKSustainment from "../../components/MSKSustainment";
@@ -177,11 +178,10 @@ export default function FlagshipMSK() {
           </div>
         </div>
         <div className="rp-hero__media fp-heroArt fp-heroArt--msk" data-evidence="true">
-          <div className="fp-artifactLabel"><span>Recreated artifact</span><b>Office Coordinator filing queue</b></div>
-          <div className="fp-dashboardFrame" role="group" aria-label="Recreated Office Coordinator filing queue concept">
-            {/* Three rows tell the story (waiting, needs review, filed); the full queue made this hero 1,000px tall. */}
-            <MSKDashboardMockup compact legendDisclosure rowIndices={[0, 2, 4]} />
-          </div>
+          {/* The hero picture is now the plain journey of one message, not the
+              queue screen (portfolio feedback 2026-11-12: the visual on the right
+              was unclear). The recreated queue still appears in the receipt below. */}
+          <MSKJourney />
         </div>
       </header>
 
@@ -204,19 +204,24 @@ export default function FlagshipMSK() {
               so they stay. What went was the pair of paragraphs under them —
               "failure mode" and "design decision" restated the map’s own
               labels ("leaves the EMR" / "never leaves the EMR") in prose. */}
-          <div className="fp-workflow rp-reveal" data-evidence="true">
-            <article>
-              <span className="fp-workflow__label">Before · six steps</span>
-              <h3>Print, route, wait, check again</h3>
-              <ol>{WORKFLOW_BEFORE.map((step, index) => <li key={step}><b>{index + 1}</b>{step}</li>)}</ol>
-            </article>
-            <i aria-hidden="true">→</i>
-            <article className="fp-workflow__after">
-              <span className="fp-workflow__label">After · five steps</span>
-              <h3>File from the queue, return with status</h3>
-              <ol>{WORKFLOW_AFTER.map((step, index) => <li key={step}><b>{index + 1}</b>{step}</li>)}</ol>
-            </article>
-          </div>
+          {/* The hero journey picture already shows the change step by step, so the
+              exact word-for-word lists sit one click down, kept for fidelity. */}
+          <p className="rp-lede rp-reveal">The visible change is one fewer step. The service change is one fewer department touching the record.</p>
+          <CaseMore label="The exact steps, before and after">
+            <div className="fp-workflow rp-reveal" data-evidence="true">
+              <article>
+                <span className="fp-workflow__label">Before · six steps</span>
+                <h3>Print, route, wait, check again</h3>
+                <ol>{WORKFLOW_BEFORE.map((step, index) => <li key={step}><b>{index + 1}</b>{step}</li>)}</ol>
+              </article>
+              <i aria-hidden="true">→</i>
+              <article className="fp-workflow__after">
+                <span className="fp-workflow__label">After · five steps</span>
+                <h3>File from the queue, return with status</h3>
+                <ol>{WORKFLOW_AFTER.map((step, index) => <li key={step}><b>{index + 1}</b>{step}</li>)}</ol>
+              </article>
+            </div>
+          </CaseMore>
           <CaseMore label="How I made these screens">
             <div className="rp-note rp-reveal">
               <p className="rp-note__k">How I made these screens</p>

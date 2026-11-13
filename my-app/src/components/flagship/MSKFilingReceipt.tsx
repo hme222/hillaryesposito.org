@@ -51,7 +51,6 @@ export default function MSKFilingReceipt({
             condensedHeader
             hideToolbar
             hideRule
-            hideEyebrow
             legendDisclosure
             rowIndices={[0]}
             activeRow={0}

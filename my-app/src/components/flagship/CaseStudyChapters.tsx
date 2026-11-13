@@ -27,7 +27,7 @@ export default function CaseStudyChapters({
   project,
   chapters,
   ariaLabel,
-  jumpLabel = "Jump to",
+  jumpLabel = "In this case study",
   leftLabel = "left",
   progress = false,
 }: {

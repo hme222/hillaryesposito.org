@@ -186,7 +186,7 @@ export type MskCopy = {
 const en: MskCopy = {
   pageTitle: "MSK: Clinical Systems Case Study",
   breadcrumb: { work: "Work", here: "Memorial Sloan Kettering" },
-  jumpLabel: "Jump to",
+  jumpLabel: "In this case study",
   chapters: [
     { id: "msk-start", label: "Start" },
     { id: "msk-brief", label: "Problem" },
@@ -498,7 +498,7 @@ const en: MskCopy = {
 const es: MskCopy = {
   pageTitle: "MSK: Estudio de caso de sistemas clínicos",
   breadcrumb: { work: "Trabajo", here: "Memorial Sloan Kettering" },
-  jumpLabel: "Ir a",
+  jumpLabel: "En este caso",
   chapters: [
     { id: "msk-start", label: "Inicio" },
     { id: "msk-brief", label: "Problema" },
