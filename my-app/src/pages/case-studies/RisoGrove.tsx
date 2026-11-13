@@ -385,65 +385,8 @@ export default function RisoGrove() {
       </details>
 
       {/* THE REDESIGN — Emergent → focused, evidence-backed direction */}
-      <section className="rp-section" id="grove-decisions" data-language-anchor="grove-decisions">
-        <div className="rp-wrap">
-          <h2 className="rp-title">Three features, one testable direction each.</h2>
-          <p className="rp-lede" style={{ marginTop: "1.1rem" }}>The three directions stay visible together. They are decisions for the next prototype, not completed redesigns.</p>
-          <dl className="rp-decisionRecord rp-decisionRecord--grove rp-reveal" aria-label="Grove’s three next-design directions" data-evidence="true">
-            {DECISIONS.map((decision) => (
-              <div key={decision.feature}>
-                <dt>{decision.feature}</dt>
-                <dd>{decision.why}</dd>
-              </div>
-            ))}
-          </dl>
-          <p className="rp-lede rp-reveal" style={{ marginTop: "1.6rem" }}>
-            <strong>Why the reminder leads:</strong> it carries the clearest research-to-design change. The next chapter shows how its tone and care logic change.
-          </p>
-          <CaseMore label="What is still unbuilt">
-            <p className="rp-lede" style={{ marginTop: "clamp(2rem, 5vw, 3.5rem)" }}>
-              <strong>Still unbuilt:</strong> high-fidelity redesign, edge states, and retest. This is Phase 2 of 3.
-            </p>
-          </CaseMore>
-        </div>
-      </section>
-
-      {/* AI DECISION DEEP-DIVE */}
-      <section className="rp-section rp-override" id="grove-override" data-language-anchor="grove-override">
-        <div className="rp-wrap">
-          <h2 className="rp-title">One calm reminder instead of three guilty ones.</h2>
-          <p className="rp-lede">Remove guilt. Preserve one useful next action.</p>
-          <div className="rp-pushback rp-reveal" data-evidence="true">
-            <div className="rp-notif rp-notif--ai">
-              {/* Claim audit 2026-10-13: these three are illustrations of the guilt
-                  tone, not copy from the Emergent build (no trace in the Grove repo;
-                  Hillary confirmed). Labeled as such. */}
-              <p className="rp-notif__tag">The tone, illustrated</p>
-              <div className="rp-notif__card"><span className="rp-notif__app">Grove · now</span><p className="rp-notif__msg">I’m thirsty. Why did you forget me?</p></div>
-              <div className="rp-notif__card"><span className="rp-notif__app">Grove · 2h ago</span><p className="rp-notif__msg">Your Pothos is struggling. Don’t let it down.</p></div>
-              <div className="rp-notif__card"><span className="rp-notif__app">Grove · 5h ago</span><p className="rp-notif__msg">3 plants are counting on you today.</p></div>
-            </div>
-            <div className="rp-pushback__vs" aria-hidden="true">instead ↓</div>
-            <div className="rp-notif rp-notif--me">
-              <p className="rp-notif__tag">Next design</p>
-              <div className="rp-notif__card"><span className="rp-notif__app">Grove · 8:00 AM</span><p className="rp-notif__msg">Good morning. One thing today: check the top inch of your Fiddle Leaf.</p></div>
-            </div>
-          </div>
-
-          <CaseMore label="Why plant ID shows its sources">
-            <h3 className="rp-subhead">The trust decision</h3>
-            <p className="rp-lede">
-              A florist, unprompted: “Any generative AI in this will remove any sense of trust.”
-              She wasn’t alone, 5 of 37 said they’d trust no AI feature in the app at all, and 22 of 37
-              said explaining why the AI made a call is what would earn their trust. Plant ID carried
-              that risk directly, so instead of one confident answer, it shows top guesses, how sure it
-              is, and its sources. False certainty is the fastest way to lose trust.
-            </p>
-          </CaseMore>
-
-        </div>
-      </section>
-
+      {/* Moved up (2026-11-13, Lex: show solutions before the journey): the working
+          prototype now sits before the decision chapters. */}
       {/* The specimen library is valuable to a design-systems reviewer, but it
           is secondary to the research-to-decision story. Keep it inspectable
           without charging every recruiter the full scroll cost. */}
@@ -540,6 +483,66 @@ export default function RisoGrove() {
           </div>
         </section>
       </details>
+
+      <section className="rp-section" id="grove-decisions" data-language-anchor="grove-decisions">
+        <div className="rp-wrap">
+          <h2 className="rp-title">Three features, one testable direction each.</h2>
+          <p className="rp-lede" style={{ marginTop: "1.1rem" }}>The three directions stay visible together. They are decisions for the next prototype, not completed redesigns.</p>
+          <dl className="rp-decisionRecord rp-decisionRecord--grove rp-reveal" aria-label="Grove’s three next-design directions" data-evidence="true">
+            {DECISIONS.map((decision) => (
+              <div key={decision.feature}>
+                <dt>{decision.feature}</dt>
+                <dd>{decision.why}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="rp-lede rp-reveal" style={{ marginTop: "1.6rem" }}>
+            <strong>Why the reminder leads:</strong> it carries the clearest research-to-design change. The next chapter shows how its tone and care logic change.
+          </p>
+          <CaseMore label="What is still unbuilt">
+            <p className="rp-lede" style={{ marginTop: "clamp(2rem, 5vw, 3.5rem)" }}>
+              <strong>Still unbuilt:</strong> high-fidelity redesign, edge states, and retest. This is Phase 2 of 3.
+            </p>
+          </CaseMore>
+        </div>
+      </section>
+
+      {/* AI DECISION DEEP-DIVE */}
+      <section className="rp-section rp-override" id="grove-override" data-language-anchor="grove-override">
+        <div className="rp-wrap">
+          <h2 className="rp-title">One calm reminder instead of three guilty ones.</h2>
+          <p className="rp-lede">Remove guilt. Preserve one useful next action.</p>
+          <div className="rp-pushback rp-reveal" data-evidence="true">
+            <div className="rp-notif rp-notif--ai">
+              {/* Claim audit 2026-10-13: these three are illustrations of the guilt
+                  tone, not copy from the Emergent build (no trace in the Grove repo;
+                  Hillary confirmed). Labeled as such. */}
+              <p className="rp-notif__tag">The tone, illustrated</p>
+              <div className="rp-notif__card"><span className="rp-notif__app">Grove · now</span><p className="rp-notif__msg">I’m thirsty. Why did you forget me?</p></div>
+              <div className="rp-notif__card"><span className="rp-notif__app">Grove · 2h ago</span><p className="rp-notif__msg">Your Pothos is struggling. Don’t let it down.</p></div>
+              <div className="rp-notif__card"><span className="rp-notif__app">Grove · 5h ago</span><p className="rp-notif__msg">3 plants are counting on you today.</p></div>
+            </div>
+            <div className="rp-pushback__vs" aria-hidden="true">instead ↓</div>
+            <div className="rp-notif rp-notif--me">
+              <p className="rp-notif__tag">Next design</p>
+              <div className="rp-notif__card"><span className="rp-notif__app">Grove · 8:00 AM</span><p className="rp-notif__msg">Good morning. One thing today: check the top inch of your Fiddle Leaf.</p></div>
+            </div>
+          </div>
+
+          <CaseMore label="Why plant ID shows its sources">
+            <h3 className="rp-subhead">The trust decision</h3>
+            <p className="rp-lede">
+              A florist, unprompted: “Any generative AI in this will remove any sense of trust.”
+              She wasn’t alone, 5 of 37 said they’d trust no AI feature in the app at all, and 22 of 37
+              said explaining why the AI made a call is what would earn their trust. Plant ID carried
+              that risk directly, so instead of one confident answer, it shows top guesses, how sure it
+              is, and its sources. False certainty is the fastest way to lose trust.
+            </p>
+          </CaseMore>
+
+        </div>
+      </section>
+
 
       {/* OUTCOMES */}
       <section className="rp-section rp-outcomeStage" id="grove-outcomes" data-language-anchor="grove-outcomes">

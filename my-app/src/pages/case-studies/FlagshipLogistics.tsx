@@ -100,11 +100,12 @@ export default function FlagshipLogistics() {
           <div className="rp-clearing">
             <h1 className="rp-h1">Resupply went from months to{"\u00a0"}weeks.</h1>
             <p className="rp-sub">
-              I planned and tracked a $2M warehouse move for seven aid stations in three countries, and resupply went from <b>1–2 months to 1–2 weeks</b>.
+              I planned and tracked a warehouse move for seven aid stations in three countries.
             </p>
             {/* Interview-sourced human line (Better Stories pass, 2026-11-10); source: design-docs/case-study-stories. */}
             <p className="rp-humanLine">I was in charge of getting rabies vaccines to three countries. Once, I delivered them myself.</p>
             <dl className="rp-heroEvidence" aria-label="Medical logistics case evidence at a glance">
+              <div><dt>Result</dt><dd>Resupply went from <b>1–2 months to 1–2 weeks</b> · $2M warehouse move</dd></div>
               <div><dt>Role</dt><dd>Medical logistics officer · relocation and service lead</dd></div>
             </dl>
           </div>

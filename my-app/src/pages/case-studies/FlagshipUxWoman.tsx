@@ -134,6 +134,14 @@ export default function FlagshipUxWoman() {
           </div>
         </div>
         <div className="rp-hero__media fp-heroArt fp-heroArt--uxwoman" data-evidence="true">
+          <img
+            className="fp-uxHeroGuide"
+            src={GUIDE_SCREENS[0].src}
+            alt={GUIDE_SCREENS[0].alt}
+            width={450}
+            height={800}
+            decoding="async"
+          />
           <dl className="fp-ledger" aria-label="Evidence to date">
             {UXWOMAN_LEDGER.map((row) => (
               <div key={row.en}><dt>{row.en}</dt><dd>{row.n}</dd></div>

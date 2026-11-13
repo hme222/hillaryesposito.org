@@ -21,7 +21,7 @@ const en = {
   "a11y.newTab": " (opens in new tab)",
 
   // ── Global footer + recovery ──
-  "footer.eyebrow": "Hillary Esposito · Healthcare Product Designer",
+  "footer.eyebrow": "Hillary Esposito · Product Designer, UX and Research",
   "footer.statement": "Healthcare design that does the paperwork.",
   "footer.signoff": "Still here?",
   "footer.signoffLink": "Email me.",
@@ -70,7 +70,7 @@ const en = {
   "nav.settingsAria": "Settings: theme and language",
 
   // ── Home: hero ──
-  "home.status": "Open to product design roles and freelance UX work",
+  "home.status": "Open to product design and UX research roles, and freelance UX work",
   // Hero is about Hillary, not a project (portfolio feedback, 2026-11-12):
   // what she is and where she works, with no case-study detail.
   "home.riso.heroTitle": "Product designer with a strong UX and research lean.",
@@ -222,7 +222,7 @@ const es: Partial<Record<StringKey, string>> = {
   "a11y.newTab": " (se abre en una pestaña nueva)",
 
   // ── Global footer + recovery ──
-  "footer.eyebrow": "Hillary Esposito · Diseñadora de productos de salud",
+  "footer.eyebrow": "Hillary Esposito · Diseñadora de producto, UX e investigación",
   "footer.statement": "Hecho por alguien que ya llenó el papeleo.",
   "footer.signoff": "¿Sigue aquí?",
   "footer.signoffLink": "Escríbame.",
@@ -266,7 +266,7 @@ const es: Partial<Record<StringKey, string>> = {
   "nav.settingsAria": "Ajustes: tema e idioma",
 
   // ── Home: hero ──
-  "home.status": "Abierta a roles de diseño de producto y a trabajo freelance de UX",
+  "home.status": "Abierta a roles de diseño de producto e investigación UX, y a trabajo freelance de UX",
   "home.riso.heroTitle": "Diseñadora de producto con un fuerte enfoque en UX e investigación.",
   "home.riso.heroLead":
     "Trabajo en salud y en productos de consumo. Veterana del Ejército, bilingüe en inglés y español.",

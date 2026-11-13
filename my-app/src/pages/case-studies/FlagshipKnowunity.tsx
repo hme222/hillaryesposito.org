@@ -44,8 +44,8 @@ const CAPTURE_H = 1688;
 const CHAPTERS: CaseStudyChapter[] = [
   { id: "knowunity-start", label: "Start" },
   { id: "knowunity-brief", label: "Problem" },
-  { id: "knowunity-decisions", label: "Decisions" },
   { id: "knowunity-prototype", label: "Build" },
+  { id: "knowunity-decisions", label: "Decisions" },
   { id: "knowunity-outcomes", label: "Outcomes" },
 ];
 
@@ -197,41 +197,8 @@ export default function FlagshipKnowunity() {
         </div>
       </section>
 
-      <div data-evidence="true"><DecisionStory
-        id="knowunity-decisions"
-        languageAnchor="knowunity-decisions"
-        title="The student does the proving, not Knowie."
-        intro="Nothing makes a student say it. So: echo the words, offer the misses, ask for the mic when it’s needed, say where you are."
-        steps={STEPS}
-        // Same stacked crossfade as Mobbin: every capture is mounted in one
-        // fixed-ratio frame and the active step turns one on, so the swap has
-        // no decode flash and no height change. Inactive frames are hidden
-        // from assistive tech.
-        visual={(active) => (
-          <div className="fp-sequence__phone fp-sequence__phone--story fp-sequence__phone--stack">
-            {FRAMES.map((frame, index) => {
-              const on = (active === null ? 0 : STEP_FRAME[active]) === index;
-              return (
-                <img
-                  key={frame.src}
-                  src={frame.src}
-                  alt={frame.alt}
-                  width={CAPTURE_W}
-                  height={CAPTURE_H}
-                  loading="lazy"
-                  decoding="async"
-                  className={on ? "is-on" : undefined}
-                  aria-hidden={!on}
-                />
-              );
-            })}
-          </div>
-        )}
-      /></div>
-      <div className="rp-wrap fp-knowunityChange">
-        <div className="fp-journalLine"><span>What I’d change</span><b>Put a real speech-to-text version in front of students earlier. Recall was mocked the whole way.</b></div>
-      </div>
-
+      {/* The working prototype comes first, the decisions after (2026-11-13, Lex:
+          show the final first, then the journey). */}
       <section className="rp-section" id="knowunity-prototype" data-language-anchor="knowunity-prototype">
         <div className="rp-wrap">
           <h2 className="rp-title">A working prototype, not a deck.</h2>
@@ -281,6 +248,42 @@ export default function FlagshipKnowunity() {
           </div>
         </section>
       </details>
+
+      <div data-evidence="true"><DecisionStory
+        id="knowunity-decisions"
+        languageAnchor="knowunity-decisions"
+        title="The student does the proving, not Knowie."
+        intro="Nothing makes a student say it. So: echo the words, offer the misses, ask for the mic when it’s needed, say where you are."
+        steps={STEPS}
+        // Same stacked crossfade as Mobbin: every capture is mounted in one
+        // fixed-ratio frame and the active step turns one on, so the swap has
+        // no decode flash and no height change. Inactive frames are hidden
+        // from assistive tech.
+        visual={(active) => (
+          <div className="fp-sequence__phone fp-sequence__phone--story fp-sequence__phone--stack">
+            {FRAMES.map((frame, index) => {
+              const on = (active === null ? 0 : STEP_FRAME[active]) === index;
+              return (
+                <img
+                  key={frame.src}
+                  src={frame.src}
+                  alt={frame.alt}
+                  width={CAPTURE_W}
+                  height={CAPTURE_H}
+                  loading="lazy"
+                  decoding="async"
+                  className={on ? "is-on" : undefined}
+                  aria-hidden={!on}
+                />
+              );
+            })}
+          </div>
+        )}
+      /></div>
+      <div className="rp-wrap fp-knowunityChange">
+        <div className="fp-journalLine"><span>What I’d change</span><b>Put a real speech-to-text version in front of students earlier. Recall was mocked the whole way.</b></div>
+      </div>
+
 
       <div data-evidence="true"><EvidenceField
         id="knowunity-outcomes"

@@ -46,6 +46,9 @@ _Last updated: 2026-11-13 by Claude (Lex feedback review + plan; prior checkpoin
 | 2026-11-13 | user | About page: curiosity-led copy, no work stories | Her voice; Spanish unreviewed |
 | 2026-11-13 | user | MSK: hero becomes the journey picture; exact step lists fold into a panel; provenance label moves to the brief queue row | Lex: hero visual unclear; test now guards the new hero |
 | 2026-11-13 | user | UX Woman: midterm presentation video added (13 min, captions, plays on press) | Captions are auto-generated, need her proofread |
+| 2026-11-13 | user | Grove: prototype fold moved above the decision chapters; Knowunity: prototype section moved above the decisions (chapter nav reordered) | Lex: show the working thing before the journey |
+| 2026-11-13 | user | UX Woman hero shows the guide's home screen (labeled "Design Concept"); Logistics hero split into one plain sentence plus a Result line | Lex: picture first; fewer numbers in one breath. The "$2M warehouse move" wording is unchanged and still unverified |
+| 2026-11-13 | user | One pitch: "Product Designer, UX and Research" in titles, footer, meta, structured data; status "Open to product design and UX research roles, and freelance UX work" (EN + ES) | Replaces "Healthcare Product Designer" to match widened targets. Résumé headline still reads "UX Designer, Product Designer & Researcher" |
 
 ### Conflicts to resolve
 - **MSK visual vs earlier rejections.** This file records that Hillary rejected the paper/scanner detour, the routing peel, "system icons" and the chart look (2026-08 to 2026-09). The new journey picture uses printer, paper and walk icons. Her 2026-11-13 request ("cute UI that shows the service design") may supersede that. She should confirm, so it is a decision and not a repeat.
@@ -58,6 +61,7 @@ _Last updated: 2026-11-13 by Claude (Lex feedback review + plan; prior checkpoin
 | D-101 | Review | Medium | Spanish for About, Home hero and MSK edits is mine, not reviewed by Hillary | She reviews or a native reader does |
 | D-102 | Review | Medium | MSK journey: labels crowd the narrow columns at 1440 | Shorten notes or two rows |
 | D-103 | Audit | Medium | `hillaryesposito.org` shows a blank page: assets redirect to `.com`, blocked by the security policy | Fix the redirect in Vercel |
+| D-107 | Review | Medium | Résumé headline ("UX Designer, Product Designer & Researcher") differs from the site pitch ("Product designer with a strong UX and research lean") | Pick one phrase and update the résumé PDFs |
 | D-104 | Review | Low | Phone nav: chapters need a swipe | Accept, or drop Work/About on phones |
 | D-105 | Cleanup | Low | Unused `GroveScreenGallery`, unused Grove screenshots, `race.jpg` | Delete |
 | D-106 | Ask | Low | Ask knowledge still describes removed About and Home text | Regenerate before Ask returns |

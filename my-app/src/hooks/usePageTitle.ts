@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import type { Lang } from "../i18n/strings";
 
 const BASE = "Hillary Esposito";
-const DEFAULT_TITLE = `${BASE} | Healthcare Product Designer`;
-const DEFAULT_TITLE_ES = `${BASE} | Diseñadora de productos de salud`;
+const DEFAULT_TITLE = `${BASE} | Product Designer, UX and Research`;
+const DEFAULT_TITLE_ES = `${BASE} | Diseñadora de producto, UX e investigación`;
 const NOT_FOUND_PAGES = new Set(["Page not found", "Página no encontrada"]);
 const DEFAULT_DESCRIPTION =
-  "Hillary Esposito, Healthcare Product Designer and freelance UX designer in New York. Six years in cancer-care operations and 13+ years of Army service. Case studies show the evidence and its limits.";
+  "Hillary Esposito, product designer with a strong UX and research lean, in New York. Six years in cancer-care operations and 13+ years of Army service. Case studies show the evidence and its limits.";
 const ORIGIN = "https://www.hillaryesposito.com";
 
 const ROUTE_META: Array<{ match: RegExp; description: string; image: string }> = [
@@ -43,7 +43,7 @@ const ROUTE_META: Array<{ match: RegExp; description: string; image: string }> =
   {
     match: /\/about$/,
     description:
-      "About Hillary Esposito, Healthcare Product Designer: six years in cancer-care operations, 13+ years of Army service, and how she works.",
+      "About Hillary Esposito, product designer with a strong UX and research lean: six years in cancer-care operations, 13+ years of Army service, and how she works.",
     image: "/assets/about/now.jpg",
   },
 ];

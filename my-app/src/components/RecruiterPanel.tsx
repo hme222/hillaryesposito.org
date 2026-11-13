@@ -58,7 +58,7 @@ export default function RecruiterPanel() {
                 panel’s narrowest width instead of this break accidentally
                 creating its own second, three-line wrap. */}
             <h2 id="recruiter-panel-title" className="recruiter-panel__title" tabIndex={-1}>
-              Hillary Esposito,<br />Healthcare Product Designer
+              Hillary Esposito,<br />Product Designer
             </h2>
           </div>
           <button
