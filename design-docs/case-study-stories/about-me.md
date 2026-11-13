@@ -116,3 +116,25 @@ Feedback: didn't love the work-story About; "people make me curious, remove all 
 - Page now: curiosity hook, people watching / reading / movies and shows, UX = people and systems, then "Home is New York, 80 plants, and Luna, my precious baby... that counts as a quiet day."
 - Army and MSK stories removed from the page. Orchids story is not in the text (only the orchid photo caption).
 - Mine, not hers: "messy middle where they meet", "collecting other ways of seeing things", "that counts as a quiet day". Spanish is mine.
+
+## Grit interview (coach lens) — 2026-11-13
+**Q1:** A time you wanted to quit something hard and didn't: the exact moment you almost stopped, and what kept you going?
+**A (verbatim):** "Training for a full marathon took a lot of time effort and commitment. It required daily hours dedicated to running outside of my normal routine, and a lot of logistical planning on the weekends for me to get a long run in, running 15-18 miles requires planning for potty breaks, water and fueling. I remind myself I can do hard things when I test myself, I can overcome."
+- Captured: full-marathon training took daily hours outside her normal routine; weekend long runs of 15-18 miles needed planning for bathroom breaks, water and fueling; her reminder to herself: "I can do hard things when I test myself, I can overcome."
+- Gap: no specific "almost quit" moment yet, no race day scene, no finish time (do not state any).
+
+**Q2:** The hardest point of training or the race: where were you, what hurt or went wrong, what did you say to yourself?
+**A (verbatim):** "During my full marathon at mile 18 I was cramping, it was hot and very hilly and I felt like completely stopping. I had to find some mental courage to keep pushing. I decided to walk for a while until I could jog again without cramping, and made sure to fuel more. By mile 20 I felt refreshed, kept going and made a good pace to finish strong."
+- Captured: full marathon, mile 18: cramping, hot, very hilly, felt like completely stopping. She found mental courage, walked until she could jog without cramping, fueled more. By mile 20 she felt refreshed, kept going, made a good pace and finished strong.
+- Gap: which race, her finish time, what she told herself in words (she described it as "mental courage"), who or what was around her.
+- Observation (mine, needs her OK): she adjusted the plan (walk, fuel) instead of forcing it, which echoes the "people and systems" thread. Not to be used unless she confirms.
+
+**Q3:** At mile 18, the actual sentence in your head? Anyone or anything that helped?
+**A (verbatim):** "I really just said why am i doing this to myself? I have to keep going, I wanted this"
+- Captured: her mile-18 thought: "why am i doing this to myself? I have to keep going, I wanted this." Her motive is that she wanted it.
+- Gap: no answer on whether anyone or anything helped (sign, stranger, song); why she wanted a full marathon in the first place; what finishing felt like.
+
+**Q4:** Why did you want a full marathon after 10 half marathons? What was missing, and what did the finish feel like?
+**A (verbatim):** "I wanted to prove I could do something really hard"
+- Captured: she ran the full marathon to prove she could do something really hard.
+- Gap: who she was proving it to (herself, others, a past doubt); the finish-line moment (not answered); what she did next.

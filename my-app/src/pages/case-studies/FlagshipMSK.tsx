@@ -164,9 +164,8 @@ export default function FlagshipMSK() {
         <div className="rp-hero__content">
           <div className="rp-clearing">
             <h1 className="rp-h1">One queue. Four teams.</h1>
-            <span className="rp-eyebrow">Memorial Sloan Kettering · Clinical systems · six years, three roles</span>
             <p className="rp-sub">
-              I mapped a paper detour across four departments and pitched a digital filing workflow. <b>Information technology (IT) and user experience (UX) teams built it after I changed roles.</b>
+              Patient portal messages lived outside the medical record, so staff printed them and the paper detoured through four departments. I mapped that detour and proposed filing them from one queue. <b>The hospital’s information technology (IT) and user experience (UX) teams built the real version.</b>
             </p>
             {/* Interview-sourced human line (Better Stories pass, 2026-11-10); source: design-docs/case-study-stories. */}
             <p className="rp-humanLine">I printed the notes myself. Then we waited.</p>
@@ -341,7 +340,7 @@ export default function FlagshipMSK() {
 
       <section className="rp-section" id="msk-sustainment" data-language-anchor="msk-sustainment">
         <div className="rp-wrap">
-          <h2 className="rp-title">I changed roles before launch. Here’s what happened next.</h2>
+          <h2 className="rp-title">What happened after I handed it off.</h2>
           {/* Added 2026-10-22 (portfolio review, UXfolio 2026 ch. 4.3): the
               outcome is owner-reported and no post-launch measurement is
               known, so the page says what would have shown it. Hillary

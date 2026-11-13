@@ -67,7 +67,6 @@ export default function GroveSystemLab() {
     <div className="rp-lab">
       <section className="rp-lab__live" aria-labelledby="grove-live-title">
         <div className="rp-lab__intro">
-          <p className="rp-kicker">Live components · try them</p>
           <h3 id="grove-live-title">The system has to survive a tap.</h3>
           <p>Three small trust tests: one calm task, one honest guess, and one warning with a way to check it.</p>
         </div>
@@ -197,7 +196,6 @@ export default function GroveSystemLab() {
 
       <section className="rp-lab__tokens" aria-labelledby="grove-color-title">
         <div className="rp-lab__intro">
-          <p className="rp-kicker">Color · meaning before decoration</p>
           <h3 id="grove-color-title">A palette with jobs.</h3>
           <p>Green acts. Amber waits nearby. Rose flags overdue care without turning a plant into a disappointed parent.</p>
         </div>

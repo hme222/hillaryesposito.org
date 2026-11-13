@@ -4,7 +4,6 @@ import { useLanguage } from "../../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
 import ReadingProgress from "../../components/flagship/ReadingProgress";
 import ShareCaseStudy from "../../components/flagship/ShareCaseStudy";
-import GroveScreenGallery from "../../components/riso/GroveScreenGallery";
 import GroveSystemLab from "../../components/riso/GroveSystemLab";
 import RisoDefs from "../../components/riso/RisoDefs";
 import CartoField from "../../components/riso/CartoField";
@@ -101,49 +100,23 @@ const OUTCOMES: Array<{ n: string; l: string; needsDecisionTable?: boolean }> = 
 ];
 const VISIBLE_OUTCOMES = OUTCOMES.filter((o) => SHOW_DECISION_TABLE || !o.needsDecisionTable);
 
-const SCREENS = [
-  { src: "grove-live-collection.jpg", cap: "Your collection", bg: "#f5f0ea" },
-  { src: "grove-live-add.jpg", cap: "Add a plant", bg: "#31302e" },
-  { src: "grove-live-care.jpg", cap: "Daily care", bg: "#f5f0ea" },
-  { src: "grove-live-journal.jpg", cap: "Care journal", bg: "#f5f0ea" },
-  { src: "grove-live-personality.jpg", cap: "Plant personality", bg: "#f5f0ea" },
-  { src: "grove-live-greenhouse.jpg", cap: "Greenhouse", bg: "#f5f0ea" },
-];
 
 // Emergent evidence paired with the redesign decision. These are deliberately
 // framed as directions, not unsupported finished-screen claims.
 const DECISIONS = [
   {
     feature: "Reminders",
-    old: "grove-live-care.jpg",
-    oldAlt: "First-build care screen leading with a daily mission and a feed",
-    oldBg: "#f5f0ea",
     why: "Replace mission-and-feed urgency with one calm morning summary.",
   },
   {
     feature: "Plant ID by camera",
-    old: "grove-live-add.jpg",
-    oldAlt: "First-build add-plant screen giving a single confident identification",
-    oldBg: "#31302e",
     why: "Show top guesses, confidence, and sources, not one false verdict.",
   },
   {
     feature: "Personality, not points",
-    old: "grove-live-personality.jpg",
-    // "leaderboard" removed 2026-08-03 for the same reason as "forums" — no
-    // occurrence anywhere in the Grove repo's history. Badges and streaks are
-    // real (203 and 56 references in grove-frontend), so the point stands
-    // without the invented third item.
-    oldAlt: "First-build personality screen with badges and streaks",
-    oldBg: "#f5f0ea",
     why: "Keep plant personality; remove scorekeeping that turns care into paperwork.",
   },
 ];
-
-// The three directions are compared together below. One representative
-// first-build artifact then anchors the transition into the detailed reminder
-// decision, instead of charging recruiters three full screen-height repeats.
-const FEATURED_DECISION = DECISIONS[0];
 
 // Decisions from the first build, with one correction still being designed.
 const OVERRIDES: Array<{ topic: string; ai: string; me: string; why: string; next?: boolean }> = [
@@ -157,6 +130,59 @@ const OVERRIDES: Array<{ topic: string; ai: string; me: string; why: string; nex
 // Grove's own product fonts, shown in its type-scale specimen. Only this page uses
 // them, so they load here instead of on every page of the site.
 const GROVE_FONTS_HREF = "https://fonts.googleapis.com/css2?family=Archivo:wght@400;800&family=Space+Mono:wght@400&display=swap";
+
+/**
+ * The Grove demo, clicked through, looping at the top of the case study.
+ * Recorded from the deployed demo (fake "Maya" sample data, no real user).
+ * Silent. Autoplay is off for visitors who ask for reduced motion, and everyone
+ * gets a visible pause/play button (WCAG 2.2.2). The text below the frame says
+ * what the video shows, since it has no narration or captions.
+ */
+function GroveDemoLoop() {
+  const ref = React.useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = React.useState(false);
+
+  useEffect(() => {
+    let prefers = false;
+    try { prefers = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch { /* keep default */ }
+    const v = ref.current;
+    if (v && !prefers) {
+      const p = v.play();
+      if (p && typeof p.catch === "function") p.catch(() => setPlaying(false));
+    }
+  }, []);
+
+  const toggle = () => {
+    const v = ref.current;
+    if (!v) return;
+    if (v.paused) { void v.play(); } else { v.pause(); }
+  };
+
+  return (
+    <figure className="rp-demoLoop">
+      <div className="rp-device rp-device--video">
+        <video
+          ref={ref}
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="/assets/grove/grove-demo-poster.jpg"
+          width={780}
+          height={1688}
+          aria-label="Grove demo: a new owner signs up, takes the quiz, adds a spider plant, logs a soil test and meets Pip. Sample data, silent, loops."
+          onPlay={() => setPlaying(true)}
+          onPause={() => setPlaying(false)}
+        >
+          <source src="/assets/grove/grove-demo.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <button type="button" className="rp-demoLoop__btn" onClick={toggle} aria-pressed={playing}>
+        {playing ? "Pause demo video" : "Play demo video"}
+      </button>
+    </figure>
+  );
+}
 
 export default function RisoGrove() {
   useEffect(() => {
@@ -262,7 +288,6 @@ export default function RisoGrove() {
         <div className="rp-hero__content">
           <div className="rp-clearing">
             <h1 className="rp-h1">Twelve features became three.</h1>
-            <span className="rp-eyebrow">Grove · sole designer · AI-assisted React prototype</span>
             <p className="rp-sub">
               I tested the first build, made with the AI app builder Emergent, with 5 people, then used a 37-person self-report survey to cut twelve features to three.
             </p>
@@ -287,13 +312,7 @@ export default function RisoGrove() {
           </div>
         </div>
         <div className="rp-hero__media" data-evidence="true">
-          <div className="rp-device">
-            <img src="/assets/grove/grove1.png" alt="Grove mobile welcome screen" />
-          </div>
-          <div className="rp-heroNote rp-heroNote--reminder" aria-hidden="true">
-            <span>GROVE JOURNAL · DAY 12</span>
-            <b>Your Fiddle Leaf could use a little water.</b>
-          </div>
+          <GroveDemoLoop />
         </div>
       </header>
 
@@ -304,11 +323,6 @@ export default function RisoGrove() {
             <div className="rp-split__text">
               <h2 className="rp-title">Plant parents forget. Then they feel guilty.</h2>
               <p className="rp-lede">The job: one calm next action, with visible uncertainty when a wrong answer can cause harm.</p>
-            </div>
-            <div className="rp-split__media">
-              <div className="rp-device rp-device--app">
-                <img src="/assets/grove/grove-live-care.jpg" alt="Grove daily care: one clear task a day, overdue plants surface first, no shaming" />
-              </div>
             </div>
           </div>
 
@@ -366,10 +380,6 @@ export default function RisoGrove() {
                 Florist · unprompted. I removed AI-written care sheets from scope.
               </figcaption>
             </figure>
-
-            <h2 className="rp-title">The complete first build, screen by screen.</h2>
-            <p className="rp-lede">Prototype screens, not finished redesigns.</p>
-            <div data-evidence="true"><GroveScreenGallery screens={SCREENS} /></div>
           </div>
         </section>
       </details>
@@ -387,23 +397,12 @@ export default function RisoGrove() {
               </div>
             ))}
           </dl>
-          <figure className="rp-decision rp-reveal" data-evidence="true">
-            <div className="rp-decision__pair">
-              <div className="rp-decision__col">
-                <span className="rp-decision__tag rp-decision__tag--old">First-build screen</span>
-                <div className="rp-device rp-device--app" style={{ background: FEATURED_DECISION.oldBg }}>
-                  <img src={`/assets/grove/${FEATURED_DECISION.old}`} alt={FEATURED_DECISION.oldAlt} loading="lazy" />
-                </div>
-              </div>
-              <figcaption className="rp-decision__col rp-decision__col--dir">
-                <span className="rp-decision__tag rp-decision__tag--new">Why this one leads</span>
-                <p className="rp-decision__dirText">The reminder screen carries the clearest research-to-design change. The next chapter shows how its tone and care logic change.</p>
-              </figcaption>
-            </div>
-          </figure>
+          <p className="rp-lede rp-reveal" style={{ marginTop: "1.6rem" }}>
+            <strong>Why the reminder leads:</strong> it carries the clearest research-to-design change. The next chapter shows how its tone and care logic change.
+          </p>
           <CaseMore label="What is still unbuilt">
             <p className="rp-lede" style={{ marginTop: "clamp(2rem, 5vw, 3.5rem)" }}>
-              <strong>Still unbuilt:</strong> high-fidelity redesign, edge states, and retest. The visible screens are from the first build; this is Phase 2 of 3.
+              <strong>Still unbuilt:</strong> high-fidelity redesign, edge states, and retest. This is Phase 2 of 3.
             </p>
           </CaseMore>
         </div>

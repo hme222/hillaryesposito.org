@@ -91,7 +91,6 @@ export default function FlagshipUxWoman() {
         <div className="rp-hero__content">
           <div className="rp-clearing">
             <h1 className="rp-h1">A letter with a deadline and no clear next{"\u00a0"}step.</h1>
-            <span className="rp-eyebrow">UX Woman · Healthcare research · Medicaid letter guide</span>
             <p className="rp-sub">
               I turned six interviews with clinic and insurer staff into a guide for one New York Medicaid letter. <b>It is untested, and no patient was interviewed.</b>
             </p>
@@ -109,7 +108,6 @@ export default function FlagshipUxWoman() {
               <div key={row.en}><dt>{row.en}</dt><dd>{row.n}</dd></div>
             ))}
           </dl>
-          <div className="fp-artifactLabel"><span>Midterm · 2026</span><b>Research and build so far</b></div>
         </div>
       </header>
 

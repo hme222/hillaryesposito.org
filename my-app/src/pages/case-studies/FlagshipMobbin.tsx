@@ -86,7 +86,6 @@ export default function FlagshipMobbin() {
         <div className="rp-hero__content">
           <div className="rp-clearing">
             <h1 className="rp-h1">200+ screens per app, searchable by task.</h1>
-            <span className="rp-eyebrow">Mobbin · <Term def="User experience: how a product works for the people using it.">UX</Term> flow documentation · three finance apps</span>
             <p className="rp-sub">
               For Mobbin, a screenshot library designers search, I captured and labeled <b>200+ screens per app</b> across Kikoff, Polymarket and Discover. I did not design these products or Mobbin.
             </p>
@@ -96,7 +95,6 @@ export default function FlagshipMobbin() {
         </div>
         <div className="rp-hero__media fp-heroArt fp-heroArt--mobbin" role="group" aria-label="Three finance app screens documented for Mobbin" data-evidence="true">
           {APPS.map((app, index) => <div className={`fp-capture fp-capture--${index + 1}`} key={app.name}><img src={app.image} alt={index === 0 ? "Three documented finance app interfaces: Kikoff, Polymarket, and Discover" : ""} /></div>)}
-          <div className="fp-artifactLabel"><span>Capture log · 4 months</span><b>3 apps · 200+ screens each · one searchable library</b></div>
         </div>
       </header>
 

@@ -351,7 +351,7 @@ const en: MskCopy = {
     kicker: "The fix looked like one button",
     title: "One button, four rules.",
     intro:
-      "One action replaced the three steps that left the system. IT and UX built the real one after I changed roles; the four rules below are how this recreation makes it safe to press. My portfolio design, not MSK’s specification.",
+      "One action replaced the three steps that left the system. IT and UX built the real one; the four rules below are how this recreation makes it safe to press. My portfolio design, not MSK’s specification.",
     steps: [
       { n: "01", title: "Show the action only when the record is ready", body: "Staff stop opening records that still need review.", note: "Ready means actionable" },
       { n: "02", title: "Make permission limits visible", body: "View-only roles see status and ownership, not a disabled mystery button.", note: "Permission is product logic" },
@@ -438,7 +438,7 @@ const en: MskCopy = {
 
   sustainment: {
     kicker: "The real test came later",
-    title: "I changed roles before launch. Here’s what happened next.",
+    title: "What happened after I handed it off.",
     lede:
       "I handed the workflow to IT and UX, who built it. The button was added to the production system, and I saw it while training new employees.",
     // Claim audit 2026-10-13: the lanes used to say "system upgrade" ×2,
@@ -658,7 +658,7 @@ const es: MskCopy = {
     kicker: "El arreglo parecía un solo botón",
     title: "Un botón, cuatro reglas.",
     intro:
-      "Una acción reemplazó los tres pasos que salían del sistema. TI y UX construyeron el botón real después de que cambié de puesto; las cuatro reglas de abajo son cómo esta recreación lo hace seguro de presionar. Es mi diseño para el portafolio, no la especificación de MSK.",
+      "Una acción reemplazó los tres pasos que salían del sistema. TI y UX construyeron el botón real; las cuatro reglas de abajo son cómo esta recreación lo hace seguro de presionar. Es mi diseño para el portafolio, no la especificación de MSK.",
     steps: [
       { n: "01", title: "Mostrar la acción solo cuando el registro está listo", body: "El personal deja de abrir registros que aún necesitan revisión.", note: "Listo significa accionable" },
       { n: "02", title: "Hacer visibles los límites de permiso", body: "Los puestos de solo lectura ven estado y responsabilidad, no un botón desactivado y misterioso.", note: "El permiso es lógica de producto" },
@@ -745,7 +745,7 @@ const es: MskCopy = {
 
   sustainment: {
     kicker: "La prueba de verdad llegó después",
-    title: "Me fui antes del lanzamiento. Esto es lo que pasó después.",
+    title: "Lo que pasó después de entregarlo.",
     lede:
       "Entregué el flujo a TI y UX, que lo construyeron. El botón se agregó al sistema de producción y lo vi mientras capacitaba a nuevos empleados.",
     figcaption: "Qué pasó después de lanzar cada uno",

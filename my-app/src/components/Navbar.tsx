@@ -355,6 +355,9 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
             }}
           />
         </div>
+        {/* Case studies: the chapter links (CaseStudyChapters) render here, so
+            the site links and the chapters are one bar. Empty elsewhere. */}
+        <div className="nav-dock__chapters" id="nav-dock-chapters" />
       </div>
     </nav>
   );

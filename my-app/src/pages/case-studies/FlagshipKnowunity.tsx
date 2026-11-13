@@ -157,7 +157,6 @@ export default function FlagshipKnowunity() {
         <div className="rp-hero__content">
           <div className="rp-clearing">
             <h1 className="rp-h1">Their own words are the proof.</h1>
-            <span className="rp-eyebrow">Knowunity · Say It Back · design-sprint prototype</span>
             <p className="rp-sub">
               In a solo 2.5‑week sprint, I designed and built a prototype where Knowie quotes a student’s own spoken definition back as proof.
             </p>
@@ -184,7 +183,6 @@ export default function FlagshipKnowunity() {
               decoding="async"
             />
           </div>
-          <div className="fp-artifactLabel"><span>Design sprint · 2026</span><b>Working Next.js prototype · recall mocked</b></div>
         </div>
       </header>
 

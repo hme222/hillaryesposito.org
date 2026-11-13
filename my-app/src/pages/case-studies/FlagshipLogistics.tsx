@@ -99,7 +99,6 @@ export default function FlagshipLogistics() {
         <div className="rp-hero__content">
           <div className="rp-clearing">
             <h1 className="rp-h1">Resupply went from months to{"\u00a0"}weeks.</h1>
-            <span className="rp-eyebrow">Army medical logistics · Iraq · service design</span>
             <p className="rp-sub">
               I planned and tracked a $2M warehouse move for seven aid stations in three countries, and resupply went from <b>1–2 months to 1–2 weeks</b>.
             </p>
@@ -117,7 +116,6 @@ export default function FlagshipLogistics() {
           <div className="fp-logisticsHeroMechanism">
             <LogisticsMechanism n="01" />
           </div>
-          <div className="fp-artifactLabel"><span>Deployment · 2024</span><b>44th Infantry Brigade Combat Team · seven aid stations · three countries</b></div>
         </div>
       </header>
 

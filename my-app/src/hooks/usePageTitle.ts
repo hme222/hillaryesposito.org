@@ -19,7 +19,7 @@ const ROUTE_META: Array<{ match: RegExp; description: string; image: string }> =
   {
     match: /\/case-study\/msk$/,
     description:
-      "How a filing queue I proposed at Memorial Sloan Kettering replaced a four-department paper detour. IT and UX built it after I changed roles.",
+      "How a filing queue I proposed at Memorial Sloan Kettering replaced a four-department paper detour. IT and UX built it.",
     image: "/assets/msk/mskcc-map.jpg",
   },
   {

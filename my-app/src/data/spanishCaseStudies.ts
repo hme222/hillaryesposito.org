@@ -74,7 +74,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
     },
   ],
   otherProjects: [
-    { title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas", desc: "MSK · Propuse la cola de archivo; TI y UX la construyeron después de que cambié de puesto.", path: "/case-study/msk" },
+    { title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas", desc: "MSK · Propuse la cola de archivo; TI y UX la construyeron.", path: "/case-study/msk" },
     { title: "Más de 200 pantallas por app, buscables por tarea", desc: "Mobbin · Más de 200 pantallas por app, documentadas como referencias paso a paso.", path: "/case-study/mobbin" },
     { title: "Las propias palabras del estudiante son la prueba", desc: "Knowunity · Prototipo de recuerdo activo por voz, de un sprint de diseño; recuerdo simulado.", path: "/case-study/knowunity" },
   ],
@@ -95,7 +95,7 @@ export const MSK_ES: SpanishCaseStudyData = {
   breadcrumb: "Memorial Sloan Kettering",
   meta: "Memorial Sloan Kettering · sistemas clínicos",
   intro:
-    "Los mensajes del portal de pacientes vivían en el portal, no en la historia clínica, así que el personal los imprimía para escanearlos. Diagnostiqué y mapeé ese desvío de papel entre cuatro áreas (clínica, TI, HIM y operaciones), verifiqué su viabilidad y propuse un flujo de archivo digital. Los equipos de tecnología de la información (TI) y de experiencia de usuario (UX) lo construyeron después de que cambié de puesto.",
+    "Los mensajes del portal de pacientes vivían en el portal, no en la historia clínica, así que el personal los imprimía para escanearlos. Diagnostiqué y mapeé ese desvío de papel entre cuatro áreas (clínica, TI, HIM y operaciones), verifiqué su viabilidad y propuse un flujo de archivo digital. Los equipos de tecnología de la información (TI) y de experiencia de usuario (UX) lo construyeron.",
   /* Interview-sourced human line (Better Stories pass, 2026-11-10). Spanish is a draft translation for Hillary to review. */
   humanLine: "Yo imprimía las notas. Luego esperábamos.",
   stats: [
@@ -135,7 +135,7 @@ export const MSK_ES: SpanishCaseStudyData = {
       eyebrow: "El arreglo parecía un solo botón",
       title: "Un botón, cuatro reglas.",
       body: [
-        "Una acción reemplazó los tres pasos que salían del sistema. TI y UX construyeron el botón real después de que cambié de puesto; las cuatro reglas son cómo esta recreación lo hace seguro de presionar. Es mi diseño para el portafolio, no la especificación de MSK.",
+        "Una acción reemplazó los tres pasos que salían del sistema. TI y UX construyeron el botón real; las cuatro reglas son cómo esta recreación lo hace seguro de presionar. Es mi diseño para el portafolio, no la especificación de MSK.",
       ],
       bullets: [
         "Mostrar la acción solo cuando el registro está listo: el personal deja de abrir registros que aún necesitan revisión.",
@@ -176,7 +176,7 @@ export const MSK_ES: SpanishCaseStudyData = {
       anchor: "msk-sustainment",
       chapter: false,
       eyebrow: "La prueba de verdad llegó después",
-      title: "Me fui antes del lanzamiento. Esto es lo que pasó después.",
+      title: "Lo que pasó después de entregarlo.",
       body: [
         "Entregué el flujo a TI y UX, que lo construyeron. El botón se agregó al sistema de producción y lo vi mientras capacitaba a nuevos empleados.",
         "El trabajo pasó de un desvío personal a un sistema compartido; el formato en lenguaje sencillo dejó al área conforme antes de la fecha límite.",
@@ -294,7 +294,7 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
   ],
   otherProjects: [
     { title: "Doce funciones se\u00a0convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
-    { title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas", desc: "MSK · Propuse la cola de archivo; TI y UX la construyeron después de que cambié de puesto.", path: "/case-study/msk" },
+    { title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas", desc: "MSK · Propuse la cola de archivo; TI y UX la construyeron.", path: "/case-study/msk" },
   ],
   close: {
     title: "Después de 200 pantallas por app, noto cómo un flujo se gana la confianza.",
@@ -384,7 +384,7 @@ export const LOGISTICS_ES: SpanishCaseStudyData = {
     },
   ],
   otherProjects: [
-    { title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas", desc: "MSK · Propuse la cola de archivo; TI y UX la construyeron después de que cambié de puesto.", path: "/case-study/msk" },
+    { title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas", desc: "MSK · Propuse la cola de archivo; TI y UX la construyeron.", path: "/case-study/msk" },
     { title: "Doce funciones se\u00a0convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
   ],
   close: {

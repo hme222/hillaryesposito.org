@@ -71,17 +71,11 @@ const en = {
 
   // ── Home: hero ──
   "home.status": "Open to product design roles and freelance UX work",
-  // "Workflow fluency" named a skill without saying what it covers. The
-  // durable claim is scope: the whole path a task takes, not the screen at the
-  // end of it — which is what the MSK case study actually demonstrates.
-  //
-  // Keep the proposal and the later implementation distinct. The prior 20%
-  // clause compressed an organization result into Hillary's personal action.
-  "home.riso.heroTitle": "I design workflows before screens.",
+  // Hero is about Hillary, not a project (portfolio feedback, 2026-11-12):
+  // what she is and where she works, with no case-study detail.
+  "home.riso.heroTitle": "Product designer with a strong UX and research lean.",
   "home.riso.heroLead":
-    "At Memorial Sloan Kettering, I proposed the queue that replaced a four-department paper detour.",
-  // The hero lede above is the one place on Home that explains the paper
-  // detour (2026-10-14 review, item 13); the work row and teaser don't repeat it.
+    "I work in healthcare and consumer products. Army veteran, bilingual in English and Spanish.",
   "home.riso.primaryWork": "Review the MSK case study",
   "home.riso.workTitle": "Selected work.",
   "home.riso.workLinkSuffix": "case study",
@@ -273,9 +267,9 @@ const es: Partial<Record<StringKey, string>> = {
 
   // ── Home: hero ──
   "home.status": "Abierta a roles de diseño de producto y a trabajo freelance de UX",
-  "home.riso.heroTitle": "Diseño flujos antes que pantallas.",
+  "home.riso.heroTitle": "Diseñadora de producto con un fuerte enfoque en UX e investigación.",
   "home.riso.heroLead":
-    "En Memorial Sloan Kettering, propuse la cola que reemplazó un desvío en papel entre cuatro áreas.",
+    "Trabajo en salud y en productos de consumo. Veterana del Ejército, bilingüe en inglés y español.",
   // The panel itself stays English-only (lang="en") - the ES link says so,
   // the same way ask.ninetySecondLink does below.
   "home.riso.recruiterTourLink": "Abrir el recorrido de 90 segundos (en inglés)",

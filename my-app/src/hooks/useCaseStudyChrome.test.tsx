@@ -192,14 +192,14 @@ describe("useCaseStudyChrome", () => {
     expect(root.classList.contains("cs-chrome--tucked")).toBe(false);
   });
 
-  it("tucks on scroll down and returns on scroll up, then cleans up on unmount", () => {
+  it("keeps the one combined bar in place on scroll down and up, then cleans up on unmount", () => {
     const { unmount } = render(<Harness path="/case-study/msk/" />);
     expect(root.classList.contains("cs-chrome")).toBe(true);
     expect(root.classList.contains("cs-chrome--tucked")).toBe(false);
     setY(300);
-    expect(root.classList.contains("cs-chrome--tucked")).toBe(true);
+    expect(root.classList.contains("cs-chrome--tucked")).toBe(false);
     setY(295);
-    expect(root.classList.contains("cs-chrome--tucked")).toBe(true);
+    expect(root.classList.contains("cs-chrome--tucked")).toBe(false);
     setY(280);
     expect(root.classList.contains("cs-chrome--tucked")).toBe(false);
     unmount();
@@ -207,10 +207,10 @@ describe("useCaseStudyChrome", () => {
     expect(root.style.getPropertyValue("--cs-chrome-h")).toBe("");
   });
 
-  it("shows the dock when focus moves into it while tucked", () => {
+  it("keeps the dock shown when focus moves into it", () => {
     const { container } = render(<Harness path="/case-study/grove" />);
     setY(500);
-    expect(root.classList.contains("cs-chrome--tucked")).toBe(true);
+    expect(root.classList.contains("cs-chrome--tucked")).toBe(false);
     act(() => {
       container.querySelector<HTMLAnchorElement>(".navbar a")!.focus();
     });
@@ -237,9 +237,9 @@ describe("useCaseStudyChrome", () => {
     dialog.remove();
   });
 
-  it("starts tucked on a deep link so the hash target clears the strip alone", () => {
+  it("does not tuck on a deep link either; the combined bar stays visible", () => {
     render(<Harness path="/case-study/ux-woman" hash="#far" />);
-    expect(root.classList.contains("cs-chrome--tucked")).toBe(true);
+    expect(root.classList.contains("cs-chrome--tucked")).toBe(false);
   });
 
   it("opens the nearest closed disclosure for an exact hidden target on entry", () => {

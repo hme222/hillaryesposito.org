@@ -33,7 +33,6 @@ export default function CaseStudyReel({ reel }: { reel: CaseStudyReelData }) {
   const captionId = useId();
   return (
     <figure className="rp-reel">
-      <p className="rp-reel__kicker">{reel.kicker}</p>
       <div className="rp-reel__plate">
         <video
           className="rp-reel__video"

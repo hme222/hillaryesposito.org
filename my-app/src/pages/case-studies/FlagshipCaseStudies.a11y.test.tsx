@@ -134,10 +134,10 @@ describe("flagship case-study accessibility", () => {
     });
 
     const hero = container.querySelector("#msk-start");
-    expect(hero?.textContent).toContain("user experience (UX) teams built it after I changed roles");
+    expect(hero?.textContent).toContain("user experience (UX) teams built the real version");
     expect(hero?.textContent).toContain("Office Coordinator → Administrative Assistant → Training Facilitator (retitled Trainer I Specialist)");
     // The sub carries the contribution; the evidence list no longer restates it.
-    expect(hero?.textContent).toContain("pitched a digital filing workflow");
+    expect(hero?.textContent).toContain("proposed filing them from one queue");
     expect(hero?.textContent).not.toContain("20%");
     expect(hero?.textContent).not.toContain("two system upgrades");
     expect(container.textContent).toContain("not attributed solely to this filing workflow");
@@ -188,8 +188,7 @@ describe("flagship case-study accessibility", () => {
     expect(hero?.textContent).toContain("3 directions");
     expect(container.textContent).toContain("not completed redesigns");
     expect(container.querySelectorAll('.rp-decisionRecord[aria-label="Grove’s three next-design directions"] dt')).toHaveLength(3);
-    expect(container.querySelectorAll(".rp-decision")).toHaveLength(1);
-    expect(container.querySelectorAll(".rp-decision img")).toHaveLength(1);
+    expect(container.querySelectorAll(".rp-decision")).toHaveLength(0);
     expect(container.textContent).toContain("Still unbuilt: high-fidelity redesign, edge states, and retest");
   });
 
@@ -398,7 +397,7 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector("#es-msk-decisions")?.getAttribute("data-language-anchor")).toBe("msk-decisions");
     expect(container.querySelectorAll("#es-msk-decisions li")).toHaveLength(4);
     const text = container.textContent || "";
-    ["portal de pacientes", "un mes antes de la fecha límite original", "proyección", "Me fui antes del lanzamiento. Esto es lo que pasó después.", "clínica, TI, HIM y operaciones"].forEach((phrase) => {
+    ["portal de pacientes", "un mes antes de la fecha límite original", "proyección", "Lo que pasó después de entregarlo.", "clínica, TI, HIM y operaciones"].forEach((phrase) => {
       expect(text).toContain(phrase);
     });
     expect(text).not.toContain("70%");
@@ -805,7 +804,7 @@ describe("flagship case-study accessibility", () => {
     ["Mobbin", <FlagshipMobbin />],
     ["Knowunity", <FlagshipKnowunity />],
     ["UX Woman", <FlagshipUxWoman />],
-  ])("%s keeps outcome, context, and orientation evidence ahead of the hero artifact in source order", async (_name, page) => {
+  ])("%s keeps outcome and orientation evidence ahead of the hero artifact in source order", async (_name, page) => {
     await act(async () => {
       root.render(page);
     });
@@ -813,14 +812,12 @@ describe("flagship case-study accessibility", () => {
     const hero = container.querySelector<HTMLElement>(".rp-hero");
     const clearing = hero?.querySelector<HTMLElement>(".rp-clearing");
     const h1 = clearing?.querySelector("h1");
-    const context = clearing?.querySelector(".rp-eyebrow, .fp-contextLine");
     const orientationEnd = clearing?.querySelector(".rp-heroEvidence") || clearing?.querySelector(".rp-sub");
     const artifact = hero?.querySelector(".rp-hero__media");
     const precedes = (first: Element | null | undefined, second: Element | null | undefined) =>
       Boolean(first && second && (first.compareDocumentPosition(second) & Node.DOCUMENT_POSITION_FOLLOWING));
 
     expect(clearing?.firstElementChild).toBe(h1);
-    expect(precedes(h1, context)).toBe(true);
     expect(precedes(h1, artifact)).toBe(true);
     expect(precedes(orientationEnd, artifact)).toBe(true);
   });

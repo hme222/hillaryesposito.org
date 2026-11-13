@@ -95,6 +95,9 @@ export function chromeHeight(tucked: boolean, dockBottom: number, stripHeight: n
   return tucked ? stripHeight : dockBottom + STRIP_SHOWN_OFFSET_PX + stripHeight;
 }
 
+/** The dock and chapter strip are one bar that stays put; set true to bring back tuck-on-scroll-down. */
+export const TUCK_ENABLED = false;
+
 const JUMP_HOLD_MS = 1400; // CaseStudyChapters re-asserts its jump up to 1100ms
 const DEEP_LINK_HOLD_MS = 3000; // lazy case-study chunk + its own hash effect
 
@@ -212,7 +215,9 @@ export function useCaseStudyChrome(navRef: RefObject<HTMLElement>, pathname: str
         applied = state.tucked;
       }
       const strip = document.querySelector<HTMLElement>(".rp-chapters");
-      const h = Math.round(chromeHeight(state.tucked, readDockBottom(), strip?.offsetHeight ?? 0));
+      // A strip that lives inside the dock is already part of the dock's height.
+      const stripH = strip && !strip.closest(".navbar") ? strip.offsetHeight : 0;
+      const h = Math.round(chromeHeight(state.tucked, readDockBottom(), stripH));
       if (h !== appliedHeight) {
         root.style.setProperty("--cs-chrome-h", `${h}px`);
         appliedHeight = h;
@@ -228,6 +233,8 @@ export function useCaseStudyChrome(navRef: RefObject<HTMLElement>, pathname: str
         jumping: Date.now() < jumpUntil,
       });
       lastY = y;
+      // One combined bar, always visible (2026-11-13): the dock never tucks.
+      if (!TUCK_ENABLED) state = { tucked: false, travel: 0 };
       apply();
     };
 

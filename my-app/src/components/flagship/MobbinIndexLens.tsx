@@ -17,7 +17,6 @@ export default function MobbinIndexLens() {
     <section className={`fp-indexLens${indexed ? " is-indexed" : ""}`} id="mobbin-brief" data-language-anchor="mobbin-brief" aria-labelledby="mobbin-index-title">
       <div className="rp-wrap fp-indexLens__layout">
         <div className="fp-indexLens__copy">
-          <p className="rp-kicker">A capture has to be findable later</p>
           <h2 id="mobbin-index-title">Name the task, not just the app.</h2>
           <p>
             Mobbin users search for a task, sign in, browse, open an account, not for a screenshot

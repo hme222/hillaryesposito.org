@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import ReadingProgress from "./ReadingProgress";
 
 export type CaseStudyChapter = {
@@ -42,6 +43,12 @@ export default function CaseStudyChapters({
 }) {
   const [active, setActive] = useState<string>("");
   const [atEnd, setAtEnd] = useState(false);
+  // The site dock (Navbar) offers a slot so the chapters share its bar; with
+  // no dock mounted (tests, standalone use) the strip renders in place.
+  const [dockSlot, setDockSlot] = useState<HTMLElement | null>(null);
+  useLayoutEffect(() => {
+    setDockSlot(document.getElementById("nav-dock-chapters"));
+  }, []);
   const activeLockUntil = useRef(0);
   const stripRef = useRef<HTMLElement>(null);
   const jumpTimers = useRef<number[]>([]);
@@ -194,7 +201,7 @@ export default function CaseStudyChapters({
     };
   }, [chapters]);
 
-  return (
+  const strip = (
     <nav
       ref={stripRef}
       className={`rp-chapters${atEnd ? " is-at-end" : ""}`}
@@ -217,4 +224,5 @@ export default function CaseStudyChapters({
       {progress && <ReadingProgress variant="strip" leftLabel={leftLabel} />}
     </nav>
   );
+  return dockSlot ? createPortal(strip, dockSlot) : strip;
 }

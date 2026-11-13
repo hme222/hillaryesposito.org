@@ -42,7 +42,7 @@ describe("Grove recruiter-scan structure", () => {
     container.remove();
   });
 
-  it("compares all three directions in one ledger and features one first-build artifact", async () => {
+  it("compares all three directions in one ledger and shows no first-build screens", async () => {
     await act(async () => {
       root.render(<RisoGrove />);
     });
@@ -58,8 +58,14 @@ describe("Grove recruiter-scan structure", () => {
     expect(ledger?.textContent).toContain("one calm morning summary");
     expect(ledger?.textContent).toContain("confidence, and sources");
     expect(ledger?.textContent).toContain("remove scorekeeping");
-    expect(decisions.querySelectorAll(".rp-decision")).toHaveLength(1);
-    expect(decisions.querySelectorAll(".rp-device img")).toHaveLength(1);
+    expect(decisions.querySelectorAll(".rp-decision")).toHaveLength(0);
+    expect(decisions.querySelectorAll("img")).toHaveLength(0);
+    expect(container.querySelectorAll('img[src*="grove-live"], img[src*="grove1"]')).toHaveLength(0);
+    // The hero loops the demo video instead; it has a visible pause control.
+    const demo = container.querySelector<HTMLVideoElement>("#grove-start video[loop]");
+    expect(demo).not.toBeNull();
+    expect(demo?.muted).toBe(true);
+    expect(container.querySelector("#grove-start .rp-demoLoop__btn")).not.toBeNull();
     expect(decisions.textContent).toContain("Still unbuilt: high-fidelity redesign, edge states, and retest");
   });
 });
