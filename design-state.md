@@ -35,6 +35,20 @@ _Last updated: 2026-11-13 by Claude (Lex feedback review + plan; prior checkpoin
 
 **Phase 3 — verify**: blind scored-critique panel, accessibility re-check of the combined nav and the new videos, jest, production check, Ask knowledge regeneration.
 
+### Re-review, 2026-11-13 (after items 4–8 shipped): what Lex raised that is still open
+| # | Lex said | Status | Next step |
+|---|----------|--------|-----------|
+| R1 | MSK: say what the problem was for users and why it mattered | Done 2026-11-13 (her words, `msk.md`); Spanish unreviewed | Hillary reviews ES |
+| R2 | MSK: "what was your role in it" | Done in the body ("What I did."). Hero "Role route" row cut 2026-11-15 (Hillary's call); role ladder stays lower on the page | — |
+| R3 | MSK: who did you achieve it for | Done: the clinical team | — |
+| R4 | Plain, human voice, not punchy and scannable only | Done on the MSK intro only. Other five case studies not audited | Copywriter + copy-critic pass on all five |
+| R5 | Make hero images big; phone screens up in a wide flashy way | Partly: Home thumbnails ~520px; Grove video, UX Woman guide. Other heroes unchanged | Decide per case study |
+| R6 | Short tags (healthcare, Army) beside the photo | Done as one sentence, not tag chips. Chips would conflict with "remove distracting tags" | Hillary's call |
+| R7 | Only work-in-progress that supports the story | Partly: MSK, Grove, Mobbin folded; Knowunity decisions still ~2,100px; UX Woman not measured | Audit remaining visible process screens |
+| R8 | The recreated queue "looks vibe-codeable" as UI | Open: it still appears in the MSK brief and decision sections | Keep small, or replace with the journey picture |
+| R9 | "This is really cute, I love this on the side" (~7:45) | Unknown which element; may have been moved or removed | Ask Hillary which; verify it survives |
+| R10 | Collect more than one reviewer | Hers | Share with 2–3 more people |
+
 ### Decisions log (this stretch)
 | Date | Agent | Decision | Rationale |
 |------|-------|----------|-----------|

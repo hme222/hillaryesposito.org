@@ -135,9 +135,9 @@ describe("flagship case-study accessibility", () => {
 
     const hero = container.querySelector("#msk-start");
     expect(hero?.textContent).toContain("user experience (UX) teams built the real version");
-    expect(hero?.textContent).toContain("Office Coordinator → Administrative Assistant → Training Facilitator (retitled Trainer I Specialist)");
+    expect(hero?.textContent).not.toContain("Role route");
     // The sub carries the contribution; the evidence list no longer restates it.
-    expect(hero?.textContent).toContain("proposed filing them from one queue");
+    expect(hero?.textContent).toContain("Send to EMR button so they would file straight to the record");
     expect(hero?.textContent).not.toContain("20%");
     expect(hero?.textContent).not.toContain("two system upgrades");
     expect(container.textContent).toContain("not attributed solely to this filing workflow");
@@ -397,7 +397,7 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector("#es-msk-decisions")?.getAttribute("data-language-anchor")).toBe("msk-decisions");
     expect(container.querySelectorAll("#es-msk-decisions li")).toHaveLength(4);
     const text = container.textContent || "";
-    ["portal de pacientes", "un mes antes de la fecha límite original", "proyección", "Lo que pasó después de entregarlo.", "clínica, TI, HIM y operaciones"].forEach((phrase) => {
+    ["portal de pacientes", "un mes antes de la fecha límite original", "proyección", "Lo que pasó después de que dejé ese puesto.", "clínica, TI, HIM y operaciones"].forEach((phrase) => {
       expect(text).toContain(phrase);
     });
     expect(text).not.toContain("70%");
@@ -829,7 +829,7 @@ describe("flagship case-study accessibility", () => {
       root.render(<FlagshipMSK />);
     });
 
-    expect(container.textContent).toContain("One map exposed the shared failure.");
+    expect(container.textContent).toContain("What I did.");
     expect(container.querySelector(".fp-systemCards")).toBeNull();
     expect(container.textContent).toContain("Service-design scope:");
     expect(container.textContent).toContain("I make no claim about how often this happened.");

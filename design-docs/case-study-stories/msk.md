@@ -386,3 +386,75 @@ She printed the notes herself; they waited to be filed; until processed again th
 could not be accessed or referenced; with hundreds of patients, that waiting slowed
 how effective her team could work; she asked about the process to get the same result
 more efficiently.
+
+---
+
+## Bar-story interview — 2026-11-13 (after Lex's feedback; her words only)
+
+Purpose: Lex asked for the story as told at a bar, in plain steps: what it was, the problem for users, why it mattered, her role, what happened. Verbatim first; nothing here is site copy until she approves.
+
+**Q1 (bar version):** "So what was your project at MSK?" Two or three sentences, out loud, unpolished.
+**A (verbatim):** "I did suggested a workflow change that got adopted. I spoke with all the involved departments for the potential change and worked with leadership to think through how the adoption would be implemented. After I left my role, they got funding for the shift in workflow"
+
+**Captured:**
+- She suggested a workflow change and it was adopted.
+- She spoke with all the involved departments about the potential change.
+- She worked with leadership on how the adoption would be implemented.
+- After she left the role, they got funding for the shift.
+
+**New vs earlier answers (check, do not smooth over):**
+- NEW: "worked with leadership" on the implementation plan. Earlier notes say she pitched at the Process Improvement Fair and checked feasibility with each department; leadership was not named.
+- NEW: "they got funding" after she left. Earlier notes say IT and UX built the button after she left and that IT deprioritized it. Funding is a new fact. TODO: who funded it, and is this the same event as IT prioritizing it? Do not merge them without her say.
+
+**Gaps still open for the bar story:** who the change was for; what life was like for them before (the problem for the user); why it mattered; what her role was in one line.
+
+**Q2 (who was it for, and what was their day before):** Who was the change for, and what were they stuck doing?
+**A (verbatim):** "those facts are all true, this change was for the clinical team to see all the available information in real time in the patient's electronic Medical Record (EMR). The lag between waiting for everything to be scanned virtually took a bit of time, and this would lessen it"
+
+**Captured:**
+- CONFIRMED by Hillary: the leadership and funding facts from Q1 are all true.
+- Who it was for: the clinical team.
+- What it gave them: all the available information, in real time, in the patient's EMR.
+- The problem: the lag while everything waited to be scanned in "took a bit of time"; the change "would lessen it".
+- Wording note: "would lessen it" is a reduction, not an elimination, and she gives no amount of time. Do not write a time saving.
+
+**Still open:** why the lag mattered to the clinical team (the stakes, in her register: friction, not crisis, per the 2026-11-10 notes); her role in one line; whether the "funding" and "IT prioritized it" are one event.
+
+**Q3 (why it mattered):** When the clinical team hit that lag, what did it cost them?
+**A (verbatim):** "It took extra time to shift back and forth between systems and verify data, or just wait for it to be uploaded. potentially delaying care for patients"
+
+**Captured:**
+- The cost: extra time moving back and forth between systems and verifying data, or waiting for the upload.
+- The stake: "potentially delaying care for patients". The word "potentially" is hers; keep it. No incident, count or patient is claimed.
+- Register note: this is the first time she has named patient care as the stake. The 2026-11-10 notes said not to add one she had not given; she has now given it, qualified.
+
+**Q4 (correction to the draft):** Which line doesn't sound like you, or isn't right?
+**A (verbatim):** "I worked with IT and UX to work through the ui and design of what would be created if we got the funding at a later date"
+
+**Captured:**
+- She worked with IT and UX on the UI and design of what would be created, before funding was secured ("if we got the funding at a later date").
+- This is design work done with IT and UX, not only diagnosis and a pitch.
+
+**Conflicts to settle, do not smooth over:**
+- Earlier notes (Q2, 2026-08-29) put her ownership at "the diagnosis, the cross-department feasibility check, and the internal pitch, not the implementation", and the site says IT and UX built the real version. This new answer adds design work with IT and UX before the build.
+- 2026-10-13 audit: her four button rules are "settings for my portfolio, not a part of the button MSK case". So the recreation is not the shipped design.
+- TODO: did the UI and design she worked through with IT and UX carry into what was built after she left? Do not claim she designed the shipped button until she says so.
+
+**Q5 (did her UI and design carry into the build?):** After you left and they got funding, did the UI and design you worked through with IT and UX carry into what was built?
+**A (verbatim):** "it changed and I was unaware, but I worked with those teams with a full pitch thinking through those decisions so the adoption was ready to go when it was implemented (prepped)"
+
+**Captured:**
+- What was built changed, and she was unaware of the changes.
+- She worked with IT and UX, with a full pitch, thinking through the decisions so the adoption was ready to go when it was implemented. Her word: "prepped".
+- Resolves the Q4 TODO: she did NOT design the shipped button. Her claim is preparation, not the final design.
+- Consistent with the 2026-10-13 audit (the four button rules are her portfolio design, not MSK's spec).
+
+### Bar story, draft 1 (her facts only; connectors are mine)
+1. Problem: Patient portal messages lived outside the medical record. I printed them, and then we waited for them to be scanned in.
+2. For whom and cost: The clinical team needed to see everything in the patient's record in real time. Until the scan finished, they shifted between systems to verify data, or just waited. That could potentially delay care for patients.
+3. What I did: I suggested a Send to EMR button so messages could file straight to the record. I talked with every department it touched and worked with leadership on the rollout.
+4. Prep: I worked through the decisions with IT and UX in a full pitch, so the change was ready to go once it was funded.
+5. What happened: It was adopted. After I left the role, they got funding. The built version changed along the way, and I wasn't there for it.
+
+### Applied to the site — 2026-11-13 (Hillary approved: "yes put it on the MSK page")
+EN and ES (ES is my translation, unreviewed): hero summary, the "paper ritual" section (problem, for whom, cost), the "What I did." section (suggestion, departments, leadership, prep), and "What happened after I left that role." (adopted, funded after she left, built version changed, she later saw it in production). Closes Lex items R1 (why it mattered), R2 (her role) and R3 (who it was for).
