@@ -218,7 +218,7 @@ const en: MskCopy = {
     kicker: "It started with a workaround",
     titleLines: ["A digital workflow", "became a paper\u00a0ritual."],
     body:
-      "Patient-portal messages (patients’ questions and clinicians’ replies) lived in the portal, not in the patient’s chart, the electronic medical record (EMR), so staff printed them to be scanned into the chart. Every printed message is a chance for patient information to travel, get filed to the wrong chart, or go missing before the next visit.",
+      "Patient portal messages lived outside the medical record. I printed them, and then we waited for them to be scanned in. The clinical team needed to see everything in the patient’s record in real time. Until the scan finished, they shifted between systems to verify data, or just waited. That could potentially delay care for patients.",
     run: "Run the online path",
     replay: "Replay the online path",
     ready: "Ready to file.",
@@ -438,9 +438,9 @@ const en: MskCopy = {
 
   sustainment: {
     kicker: "The real test came later",
-    title: "What happened after I handed it off.",
+    title: "What happened after I left that role.",
     lede:
-      "I handed the workflow to IT and UX, who built it. The button was added to the production system, and I saw it while training new employees.",
+      "It was adopted. After I left that role, they got funding. The built version changed along the way, and I wasn’t there for it. I later saw it in the production system while training new employees.",
     // Claim audit 2026-10-13: the lanes used to say "system upgrade" ×2,
     // "still in use" and "still used by other admins" — claims Hillary cut on
     // 2026-09-27 (msk.md F2/F3: no source; she was not present after launch).
@@ -530,7 +530,7 @@ const es: MskCopy = {
     kicker: "Empezó con un desvío",
     titleLines: ["Un flujo digital", "se volvió un ritual de\u00a0papel."],
     body:
-      "Los mensajes del portal de pacientes (las preguntas de los pacientes y las respuestas del personal clínico) vivían en el portal, no en la historia del paciente, el expediente médico electrónico (EMR), así que el personal los imprimía para escanearlos a la historia. Cada mensaje impreso es una oportunidad de que la información del paciente circule, se archive en la historia equivocada o se pierda antes de la siguiente consulta.",
+      "Los mensajes del portal de pacientes vivían fuera de la historia clínica. Yo los imprimía y luego esperábamos a que los escanearan. El equipo clínico necesitaba ver toda la información en la historia del paciente en tiempo real. Mientras no terminaba el escaneo, pasaban de un sistema a otro para verificar datos, o simplemente esperaban. Eso podría retrasar la atención a los pacientes.",
     run: "Recorrer la ruta en línea",
     replay: "Repetir la ruta en línea",
     ready: "Listo para archivar.",
@@ -745,9 +745,9 @@ const es: MskCopy = {
 
   sustainment: {
     kicker: "La prueba de verdad llegó después",
-    title: "Lo que pasó después de entregarlo.",
+    title: "Lo que pasó después de que dejé ese puesto.",
     lede:
-      "Entregué el flujo a TI y UX, que lo construyeron. El botón se agregó al sistema de producción y lo vi mientras capacitaba a nuevos empleados.",
+      "Fue adoptado. Después de que dejé ese puesto, consiguieron el financiamiento. La versión construida cambió en el camino, y yo no estuve ahí. Más tarde la vi en el sistema de producción mientras capacitaba a nuevos empleados.",
     figcaption: "Qué pasó después de lanzar cada uno",
     shipped: "LANZADO",
     lanes: [

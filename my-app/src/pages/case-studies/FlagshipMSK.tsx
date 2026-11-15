@@ -166,15 +166,14 @@ export default function FlagshipMSK() {
           <div className="rp-clearing">
             <h1 className="rp-h1">One queue. Four teams.</h1>
             <p className="rp-sub">
-              Patient portal messages lived outside the medical record, so staff printed them and the paper detoured through four departments. I mapped that detour and proposed filing them from one queue. <b>The hospital’s information technology (IT) and user experience (UX) teams built the real version.</b>
+              Patient portal messages lived outside the medical record, so I printed them and we waited for them to be scanned in. I suggested a Send to EMR button so they would file straight to the record. <b>The hospital’s information technology (IT) and user experience (UX) teams built the real version.</b>
             </p>
             {/* Interview-sourced human line (Better Stories pass, 2026-11-10); source: design-docs/case-study-stories. */}
             <p className="rp-humanLine">I printed the notes myself. Then we waited.</p>
-            <dl className="rp-heroEvidence rp-heroEvidence--workflow" aria-label="MSK case evidence at a glance">
-              {/* Two rows since 2026-10-16: contribution, implementation, and
-                  evidence restated the sub above and the provenance note below. */}
-              <div><dt>Role route</dt><dd>Office Coordinator → Administrative Assistant → Training Facilitator (retitled Trainer I Specialist)</dd></div>
-            </dl>
+            {/* The "Role route" row (her career path) was cut 2026-11-15 at
+                Hillary's direction: Lex asked for her role on this project,
+                which "What I did." now covers. The role ladder still appears
+                lower on the page. */}
           </div>
         </div>
         <div className="rp-hero__media fp-heroArt fp-heroArt--msk" data-evidence="true">
@@ -192,7 +191,7 @@ export default function FlagshipMSK() {
           {/* The "recreated and anonymized" qualifier moved to the figcaption
               below, which already carries it — so the kicker is free to be a
               beat instead of a provenance label. */}
-          <h2 className="rp-title">One map exposed the shared failure.</h2>
+          <h2 className="rp-title">What I did.</h2>
           {/* "The Detour" animatic was removed 2026-10-13 at the owner’s direction
               (the deterministic version was rejected at taste review on
               2026-08-31; the generated video was scrapped the same day). */}
@@ -206,6 +205,7 @@ export default function FlagshipMSK() {
               labels ("leaves the EMR" / "never leaves the EMR") in prose. */}
           {/* The hero journey picture already shows the change step by step, so the
               exact word-for-word lists sit one click down, kept for fidelity. */}
+          <p className="rp-lede rp-reveal">I suggested a Send to EMR button so messages could file straight to the record. I talked with every department it touched (clinical, IT, health information management, and operations) and worked with leadership on the rollout. I worked through the decisions with IT and UX in a full pitch, so the change was ready to go once it was funded.</p>
           <p className="rp-lede rp-reveal">The visible change is one fewer step. The service change is one fewer department touching the record.</p>
           <CaseMore label="The exact steps, before and after">
             <div className="fp-workflow rp-reveal" data-evidence="true">
@@ -345,7 +345,8 @@ export default function FlagshipMSK() {
 
       <section className="rp-section" id="msk-sustainment" data-language-anchor="msk-sustainment">
         <div className="rp-wrap">
-          <h2 className="rp-title">What happened after I handed it off.</h2>
+          <h2 className="rp-title">What happened after I left that role.</h2>
+          <p className="rp-lede rp-reveal">It was adopted. After I left that role, they got funding. The built version changed along the way, and I wasn’t there for it. I later saw it in the production system while training new employees.</p>
           {/* Added 2026-10-22 (portfolio review, UXfolio 2026 ch. 4.3): the
               outcome is owner-reported and no post-launch measurement is
               known, so the page says what would have shown it. Hillary

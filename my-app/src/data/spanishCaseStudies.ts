@@ -95,7 +95,7 @@ export const MSK_ES: SpanishCaseStudyData = {
   breadcrumb: "Memorial Sloan Kettering",
   meta: "Memorial Sloan Kettering · sistemas clínicos",
   intro:
-    "Los mensajes del portal de pacientes vivían en el portal, no en la historia clínica, así que el personal los imprimía para escanearlos. Diagnostiqué y mapeé ese desvío de papel entre cuatro áreas (clínica, TI, HIM y operaciones), verifiqué su viabilidad y propuse un flujo de archivo digital. Los equipos de tecnología de la información (TI) y de experiencia de usuario (UX) lo construyeron.",
+    "Los mensajes del portal de pacientes vivían fuera de la historia clínica, así que yo los imprimía y esperábamos a que los escanearan. Sugerí un botón Enviar al EMR para que se archivaran directo en la historia clínica. Los equipos de tecnología de la información (TI) y de experiencia de usuario (UX) construyeron la versión real.",
   /* Interview-sourced human line (Better Stories pass, 2026-11-10). Spanish is a draft translation for Hillary to review. */
   humanLine: "Yo imprimía las notas. Luego esperábamos.",
   stats: [
@@ -111,8 +111,8 @@ export const MSK_ES: SpanishCaseStudyData = {
       eyebrow: "Empezó con un desvío",
       title: "Un flujo digital se volvió un ritual de papel.",
       body: [
-        "Los mensajes del portal de pacientes (las preguntas de los pacientes y las respuestas del personal clínico) vivían en el portal, no en la historia del paciente, el expediente médico electrónico (EMR). Así que el personal los imprimía para escanearlos a la historia.",
-        "Cada mensaje impreso es una oportunidad de que la información del paciente circule, se archive en la historia equivocada o se pierda antes de la siguiente consulta.",
+        "Los mensajes del portal de pacientes vivían fuera de la historia clínica. Yo los imprimía y luego esperábamos a que los escanearan.",
+        "El equipo clínico necesitaba ver toda la información en la historia del paciente en tiempo real. Mientras no terminaba el escaneo, pasaban de un sistema a otro para verificar datos, o simplemente esperaban. Eso podría retrasar la atención a los pacientes.",
       ],
     },
     {
@@ -121,6 +121,7 @@ export const MSK_ES: SpanishCaseStudyData = {
       eyebrow: "Así que conté los pasos",
       title: "Un mapa hizo que cuatro áreas vieran la misma falla.",
       body: [
+        "Sugerí un botón Enviar al EMR para que los mensajes se archivaran directo en la historia clínica. Hablé con todas las áreas involucradas (clínica, TI, HIM y operaciones) y trabajé con la dirección en cómo implementarlo. Pensé las decisiones con TI y UX en una propuesta completa, para que el cambio estuviera listo en cuanto tuviera financiamiento.",
         "Seis pasos se volvieron cinco. Un área salió del circuito. El cambio visible es un paso menos; el cambio en el servicio es un área menos tocando el expediente.",
         "Cómo se hicieron estos artefactos: reconstruidos de memoria a partir de mi documentación del estado actual. Sin datos de pacientes, registros exportados ni la interfaz del proveedor.",
       ],
@@ -176,9 +177,9 @@ export const MSK_ES: SpanishCaseStudyData = {
       anchor: "msk-sustainment",
       chapter: false,
       eyebrow: "La prueba de verdad llegó después",
-      title: "Lo que pasó después de entregarlo.",
+      title: "Lo que pasó después de que dejé ese puesto.",
       body: [
-        "Entregué el flujo a TI y UX, que lo construyeron. El botón se agregó al sistema de producción y lo vi mientras capacitaba a nuevos empleados.",
+        "Fue adoptado. Después de que dejé ese puesto, consiguieron el financiamiento. La versión construida cambió en el camino, y yo no estuve ahí. Más tarde la vi en el sistema de producción mientras capacitaba a nuevos empleados.",
         "El trabajo pasó de un desvío personal a un sistema compartido; el formato en lenguaje sencillo dejó al área conforme antes de la fecha límite.",
         "Lo que habría medido: nadie lo midió, que yo sepa. Habría seguido tres cosas: los minutos desde que llega un mensaje hasta que está en el expediente, los mensajes archivados en el expediente equivocado y las páginas impresas.",
       ],
