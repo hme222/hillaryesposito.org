@@ -27,20 +27,20 @@ describe("case-study visual echoes", () => {
     container.remove();
   });
 
-  it("shows one waiting queue row and no run button", async () => {
+  it("states the problem in words, with no queue screen and no run button", async () => {
     await act(async () => root.render(<MSKFilingReceipt />));
-    const rows = container.querySelectorAll(".fp-receipt__queue .msk-dashboard-mockup__row:not(.msk-dashboard-mockup__row--head)");
-    expect(rows).toHaveLength(1);
-    expect(rows[0].getAttribute("data-status")).toBe("ready-to-file");
-    expect(rows[0].textContent).toContain("Ready to send");
+    // Queue screen retired 2026-11-15 (Lex: "looks vibe-codeable"); the journey picture carries the change.
+    expect(container.querySelector(".msk-dashboard-mockup")).toBeNull();
+    expect(container.querySelector("#msk-receipt-title")?.textContent).toContain("paper");
+    expect(container.textContent).toContain("could potentially delay care for patients");
     expect(container.querySelector(".fp-proofControl")).toBeNull();
     expect(container.textContent).not.toMatch(/online path/i);
   });
 
-  it("passes the Spanish queue copy through", async () => {
+  it("passes the Spanish copy through", async () => {
     const { MSK_COPY } = await import("../../data/mskCaseStudy");
-    await act(async () => root.render(<MSKFilingReceipt copy={MSK_COPY.es.receipt} dashboardCopy={MSK_COPY.es.dashboard} />));
-    expect(container.querySelector(".fp-receipt__queue summary")?.textContent).toContain("Qué significan estos términos");
+    await act(async () => root.render(<MSKFilingReceipt copy={MSK_COPY.es.receipt} />));
+    expect(container.textContent).toContain("ritual de");
     expect(container.querySelector(".fp-proofControl")).toBeNull();
   });
 

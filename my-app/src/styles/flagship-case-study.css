@@ -62,6 +62,9 @@
    so the mockup rendered 341px across and 800px tall — a column of wrapped
    fragments rather than a queue. */
 .fp-dashboardFrame--story { width: 100%; }
+/* MSK decision story shows the After journey in place of the retired queue screen (2026-11-15). */
+.fp-journeyFrame--story { width: 100%; }
+.fp-journeyFrame--story .msk-journey { margin: 0; width: 100%; border-color: transparent; background: none; } /* the story panel is already the frame */
 
 /* Evidence-first restraint for MSK: the recreated interface keeps its own UI
    boundaries; the portfolio adds one plain provenance rule, not another card. */
@@ -112,6 +115,9 @@
   align-items: center;
 }
 .fp-receipt__copy { max-width: 34rem; }
+/* Text-only problem band (queue screen retired 2026-11-15): one column. */
+.fp-receipt__layout--text, .fp-receipt__layout.fp-receipt__layout--text { grid-template-columns: minmax(0, 1fr); }
+.fp-receipt__layout--text .fp-receipt__copy { max-width: 46rem; }
 .fp-receipt__copy .rp-kicker { color: var(--coral-on-dark); }
 .fp-receipt__copy h2,
 .fp-indexLens__copy h2 {
@@ -1004,9 +1010,12 @@
 .fp-readerNeeds { list-style: none; margin: .75rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem; }
 .fp-readerNeeds li { padding: .4rem .8rem; border: 1px solid var(--hair); border-radius: 999px; color: var(--ink); font-size: var(--ts-small); }
 
-.fp-guideScreens { display: grid; grid-template-columns: repeat(3, minmax(0, 220px)); gap: 1.25rem; margin: 2rem 0 0; }
+/* Spread across the full column (Lex, 2026-11-13: "make the phone screens
+   big"). 300px caps the 450px-wide sources at 1.5x; one aspect-ratio keeps
+   the three captions on one baseline (guide-1 is 450 wide, the others 452). */
+.fp-guideScreens { display: grid; grid-template-columns: repeat(3, minmax(0, 300px)); justify-content: space-between; gap: 1.25rem; margin: 2rem 0 0; }
 .fp-guideScreens figure { margin: 0; }
-.fp-guideScreens img { display: block; width: 100%; height: auto; }
+.fp-guideScreens img { display: block; width: 100%; height: auto; aspect-ratio: 452 / 800; object-fit: contain; }
 .fp-guideScreens figcaption { margin-top: .5rem; color: var(--ink-2); font-size: var(--ts-small); }
 .fp-guideScreens__note { margin: 1rem 0 0; color: var(--muted); font-size: var(--ts-small); }
 .fp-guideWireframes { margin: 1.25rem 0; }
@@ -1058,6 +1067,41 @@
 .msk-journey figcaption { color: var(--ink-2); font-size: var(--ts-label); flex: 1 1 14rem; }
 @media (prefers-reduced-motion: reduce) { .msk-journey__mascot { animation: none; } .msk-journey__track li { transition: none; } .msk-journey__track li.is-here { transform: none; } }
 @media (forced-colors: active) { .msk-journey, .msk-journey__track li { border-color: CanvasText; } .msk-journey__tabs button[aria-pressed="true"] { forced-color-adjust: none; background: Highlight; color: HighlightText; } }
+
+/* Medical logistics hero: LogisticsMoveMap (2026-11-15). A schematic of the
+   warehouse move with the same Before/After switch and card as MSKJourney. */
+.log-map { margin: 0; width: min(600px, 100%); display: grid; gap: .8rem; padding: clamp(.9rem, 2vw, 1.3rem);
+  background: color-mix(in srgb, var(--paper) 90%, transparent); border: 1px solid var(--hair); border-radius: 20px; color: var(--ink);
+  box-shadow: 0 28px 60px -34px rgba(0,0,0,.5); }
+.log-map__bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .6rem; }
+.log-map__tabs { display: inline-flex; padding: 3px; border: 1px solid var(--hair); border-radius: 999px; background: var(--paper-2); }
+.log-map__tabs button { min-height: 44px; min-width: 44px; padding: 0 1.1rem; border: 0; border-radius: 999px; background: none; color: var(--ink-2); font: inherit; font-weight: 600; cursor: pointer; }
+.log-map__tabs button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.log-map__tabs button:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
+.log-map__count { margin: 0; display: grid; text-align: right; line-height: 1.2; }
+.log-map__count b { font-family: var(--display); font-size: 1.35rem; }
+.log-map__count span { color: var(--ink-2); font-size: var(--ts-small); }
+.log-map--before .log-map__count b { color: var(--coral-text, var(--coral)); }
+.log-map--after .log-map__count b { color: var(--green); }
+.log-map__svg { display: block; width: 100%; height: auto; border-radius: 14px; background: var(--paper); }
+.log-map__region { fill: color-mix(in srgb, var(--green) 9%, transparent); stroke: color-mix(in srgb, var(--ink) 30%, transparent); stroke-width: 1.2; stroke-dasharray: 5 5; }
+.log-map__route { stroke-width: 2.4; stroke-linecap: round; }
+.log-map--before .log-map__route { stroke: var(--coral); stroke-dasharray: 6 6; }
+.log-map--after .log-map__route { stroke: var(--green); }
+.log-map__station circle { fill: var(--paper); stroke: var(--ink); stroke-width: 2; }
+.log-map__station path { stroke: var(--coral); stroke-width: 2.6; stroke-linecap: round; }
+.log-map__depot rect { fill: var(--ink); }
+.log-map__depot path { fill: none; stroke: var(--paper); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.log-map__ghost circle { fill: none; stroke: color-mix(in srgb, var(--ink) 40%, transparent); stroke-width: 1.6; stroke-dasharray: 3 4; }
+.log-map__moveLine { fill: none; stroke: color-mix(in srgb, var(--ink) 45%, transparent); stroke-width: 1.6; stroke-dasharray: 2 5; stroke-linecap: round; }
+.log-map__legend { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; color: var(--ink-2); font-size: var(--ts-label); }
+.log-map__legend li { display: inline-flex; align-items: center; gap: .45rem; }
+.log-map__key { display: inline-block; width: 14px; height: 14px; flex: none; }
+.log-map__key--depot { border-radius: 3px; background: var(--ink); }
+.log-map__key--station { border-radius: 50%; border: 2px solid var(--ink); background: var(--paper); }
+.log-map__key--region { border-radius: 4px; border: 1px dashed color-mix(in srgb, var(--ink) 40%, transparent); background: color-mix(in srgb, var(--green) 12%, transparent); }
+.log-map figcaption { color: var(--ink-2); font-size: var(--ts-label); }
+@media (forced-colors: active) { .log-map { border-color: CanvasText; } .log-map__tabs button[aria-pressed="true"] { forced-color-adjust: none; background: Highlight; color: HighlightText; } }
 
 /* UX Woman hero: the built guide's home screen sits beside the evidence ledger. */
 .fp-heroArt--uxwoman { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1.2rem; }

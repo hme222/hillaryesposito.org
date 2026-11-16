@@ -6,6 +6,7 @@ import ReadingProgress from "../../components/flagship/ReadingProgress";
 import ShareCaseStudy from "../../components/flagship/ShareCaseStudy";
 import EvidenceField from "../../components/flagship/EvidenceField";
 import LogisticsMechanism from "../../components/LogisticsMechanism";
+import LogisticsMoveMap from "../../components/LogisticsMoveMap";
 import OrderStatusBoard from "../../components/flagship/OrderStatusBoard";
 import RisoDefs from "../../components/riso/RisoDefs";
 import CartoField from "../../components/riso/CartoField";
@@ -111,12 +112,10 @@ export default function FlagshipLogistics() {
           </div>
         </div>
         <div className="rp-hero__media fp-heroArt fp-heroArt--logistics" data-evidence="true">
-          {/* The hero shows the mechanism (the same drawing the "three moves"
-              section uses below). The portrait was removed at the owner’s
-              request, 2026-11-04. */}
-          <div className="fp-logisticsHeroMechanism">
-            <LogisticsMechanism n="01" />
-          </div>
+          {/* 2026-11-15: the small move-01 line drawing (it repeats in "three
+              moves" below) gave way to a schematic of the whole warehouse move,
+              after Lex asked for bigger heroes that explain the story. */}
+          <LogisticsMoveMap />
         </div>
       </header>
 

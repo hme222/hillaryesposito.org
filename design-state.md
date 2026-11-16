@@ -42,12 +42,17 @@ _Last updated: 2026-11-13 by Claude (Lex feedback review + plan; prior checkpoin
 | R2 | MSK: "what was your role in it" | Done in the body ("What I did."). Hero "Role route" row cut 2026-11-15 (Hillary's call); role ladder stays lower on the page | — |
 | R3 | MSK: who did you achieve it for | Done: the clinical team | — |
 | R4 | Plain, human voice, not punchy and scannable only | Done on the MSK intro only. Other five case studies not audited | Copywriter + copy-critic pass on all five |
-| R5 | Make hero images big; phone screens up in a wide flashy way | Partly: Home thumbnails ~520px; Grove video, UX Woman guide. Other heroes unchanged | Decide per case study |
+| R5 | Make hero images big; phone screens up in a wide flashy way | Partly: Home thumbnails ~520px; Grove video, UX Woman guide. 2026-11-15: UX Woman guide screens 220→300px across the full column (uncommitted). Logistics hero replaced by LogisticsMoveMap schematic (uncommitted). UX Woman hero: Hillary wants her Medicaid landing page artifact; link not found | Decide per case study |
 | R6 | Short tags (healthcare, Army) beside the photo | Done as one sentence, not tag chips. Chips would conflict with "remove distracting tags" | Hillary's call |
 | R7 | Only work-in-progress that supports the story | Partly: MSK, Grove, Mobbin folded; Knowunity decisions still ~2,100px; UX Woman not measured | Audit remaining visible process screens |
-| R8 | The recreated queue "looks vibe-codeable" as UI | Open: it still appears in the MSK brief and decision sections | Keep small, or replace with the journey picture |
+| R8 | The recreated queue "looks vibe-codeable" as UI | Done 2026-11-15 (uncommitted, Hillary: "swap for journey picture"): queue removed from the MSK problem band; decisions show MSKJourney on After. Home MSK card still uses the queue | Hillary: Home card too? |
 | R9 | "This is really cute, I love this on the side" (~7:45) | Unknown which element; may have been moved or removed | Ask Hillary which; verify it survives |
 | R10 | Collect more than one reviewer | Hers | Share with 2–3 more people |
+
+### 2026-11-15 decisions (Hillary)
+- Status pill → "Open to work" / "Disponible para trabajar".
+- About stays personal; no pitch line there (closes L2 for About).
+- MSK headline "One queue. Four teams." no longer matches the Send-to-EMR story: interview pending.
 
 ### Decisions log (this stretch)
 | Date | Agent | Decision | Rationale |

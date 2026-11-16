@@ -8,7 +8,6 @@ import DecisionStory from "../../components/flagship/DecisionStory";
 import EvidenceField from "../../components/flagship/EvidenceField";
 import CaseMore from "../../components/CaseMore";
 import MSKFilingReceipt from "../../components/flagship/MSKFilingReceipt";
-import MSKDashboardMockup from "../../components/MSKDashboardMockup";
 import MSKJourney from "../../components/MSKJourney";
 import MSKServiceBlueprint from "../../components/MSKServiceBlueprint";
 import MSKMechanism from "../../components/MSKMechanism";
@@ -50,10 +49,6 @@ const ROLE_METHODS: Record<string, { term: string; body: string }> = {
     body: "I instructed on Epic (the record software), HIPAA (the patient-privacy law), and the compliance modules. Owning how staff were taught the system meant documenting what actually happens, not what the policy says, and the gap between the two is where the design work lives.",
   },
 };
-
-// Which queue row each decision is about, so the artifact highlights the thing
-// the sentence is describing rather than a generic row.
-const DECISION_ROW = [0, 4, 2, 3];
 
 // Claim audit 2026-10-13: Hillary confirmed these four rules are the
 // portfolio recreation's design, not part of the button MSK built (IT and UX
@@ -179,7 +174,8 @@ export default function FlagshipMSK() {
         <div className="rp-hero__media fp-heroArt fp-heroArt--msk" data-evidence="true">
           {/* The hero picture is now the plain journey of one message, not the
               queue screen (portfolio feedback 2026-11-12: the visual on the right
-              was unclear). The recreated queue still appears in the receipt below. */}
+              was unclear). The recreated queue screen was retired from this page on
+              2026-11-15 (Lex: it "looks vibe-codeable"). */}
           <MSKJourney />
         </div>
       </header>
@@ -262,10 +258,11 @@ export default function FlagshipMSK() {
         intro="One action replaced the three steps that left the system. These four rules are my portfolio design for making it safe to press, not MSK’s specification."
         steps={DECISIONS}
         showStepNumbers={false}
-        visual={(active) => (
-          <div className="fp-dashboardFrame fp-dashboardFrame--story">
-            <MSKDashboardMockup compact hideEyebrow legendDisclosure activeRow={active === null ? null : DECISION_ROW[active] ?? null} />
-          </div>
+        visual={() => (
+          // The recreated queue screen used to sit here. Lex (2026-11-13) said it
+          // "looks vibe-codeable"; Hillary chose the journey picture instead
+          // (2026-11-15), opened on the After path the four rules describe.
+          <div className="fp-journeyFrame--story"><MSKJourney initialMode="after" /></div>
         )}
       /></div>
 

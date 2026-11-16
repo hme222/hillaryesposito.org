@@ -624,7 +624,7 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".fp-workflow[data-evidence='true']")).not.toBeNull();
   });
 
-  it("shows the MSK hero as the plain journey picture; the recreated queue sits in the brief below, with no retired concepts", async () => {
+  it("shows the MSK journey picture in the hero and the decisions, with the recreated queue screen retired", async () => {
     await act(async () => {
       root.render(<FlagshipMSK />);
     });
@@ -634,18 +634,19 @@ describe("flagship case-study accessibility", () => {
     // Hero is the journey picture (owner direction 2026-11-13, after Lex's feedback that the old hero queue screen was unclear).
     expect(heroArtifact?.querySelector(".msk-journey")).not.toBeNull();
     expect(heroArtifact?.querySelector(".msk-dashboard-mockup")).toBeNull();
-    expect(container.querySelector(".msk-dashboard-mockup")).not.toBeNull();
+    // Queue screen retired from the page 2026-11-15 (Lex: "looks vibe-codeable"); the decisions show the After journey.
+    expect(container.querySelector(".msk-dashboard-mockup")).toBeNull();
+    expect(container.querySelectorAll(".msk-journey")).toHaveLength(2);
+    expect(container.querySelector("#msk-decisions .msk-journey--after")).not.toBeNull();
     expect(container.querySelector(".fp-mskHeroPlate__detour")).toBeNull();
     expect(container.querySelector(".fp-mskLens")).toBeNull();
     expect(container.querySelector(".fp-mskLens__controls")).toBeNull();
-    const mockupTitles = Array.from(container.querySelectorAll<HTMLElement>(".msk-dashboard-mockup__title"));
-    expect(mockupTitles.length).toBeGreaterThan(0);
-    expect(mockupTitles.every((title) => title.tagName === "P")).toBe(true);
     expect(Array.from(container.querySelectorAll("h2, h3"), (heading) => heading.textContent))
       .not.toContain("My filing queue");
     // Provenance is stated once on the page (density pass, 2026-10-16).
     expect(container.textContent?.toLowerCase().split("no patient data").length).toBe(2);
-    expect(container.textContent?.toLowerCase().split("anonymized internal tool concept").length).toBe(2);
+    // The queue's "anonymized internal tool concept" label left with the queue screen.
+    expect(container.textContent?.toLowerCase()).not.toContain("anonymized internal tool concept");
   });
 
 

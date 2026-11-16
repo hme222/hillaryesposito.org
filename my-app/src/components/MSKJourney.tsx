@@ -120,10 +120,10 @@ function prefersReducedMotion(): boolean {
 
 /**
  * @status: stable
- * @purpose: A friendly picture of the MSK filing change for first-time readers: one portal message (a small envelope with a face) travels through the six before steps or the five after steps, each with a plain-word title and icon, with a Before/After switch and a "Walk it through" button that plays one pass only when pressed. Pick this to explain the change at a glance; for actor lanes and handoffs use MSKServiceBlueprint, and for the literal queue screen use MSKDashboardMockup.
+ * @purpose: A friendly picture of the MSK filing change for first-time readers: one portal message (a small envelope with a face) travels through the six before steps or the five after steps, each with a plain-word title and icon, with a Before/After switch and a "Walk it through" button that plays one pass only when pressed; `initialMode` opens it on Before (hero) or After (the MSK decision story). Pick this to explain the change at a glance; for actor lanes and handoffs use MSKServiceBlueprint, and for the literal queue screen use MSKDashboardMockup.
  */
-export default function MSKJourney() {
-  const [mode, setMode] = useState<Mode>("before");
+export default function MSKJourney({ initialMode = "before" }: { initialMode?: Mode } = {}) {
+  const [mode, setMode] = useState<Mode>(initialMode);
   const [at, setAt] = useState(0);
   const [running, setRunning] = useState(false);
   const timers = useRef<number[]>([]);
