@@ -4115,8 +4115,7 @@ body .riso-home .rp-hero__media .rp-headshot { width: min(260px, 70%); }
 .rp-heroStatus {
   display: inline-flex; align-items: center; gap: .55rem; margin: .9rem 0 0; padding: .4rem .8rem;
   background: var(--paper-2); color: var(--ink); border: 1px solid var(--hair); border-radius: 999px;
-  font-family: var(--shell-sans); font-size: var(--ts-label); font-weight: 600; line-height: 1.3;
-}
+  font-family: var(--shell-sans); font-size: var(--ts-label); font-weight: 600; line-height: 1.3;}
 .rp-heroStatus::before { content: ""; flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
 
 /* Email address as selectable text with a Copy button. */
@@ -4456,6 +4455,8 @@ body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-g
    the row that holds "Send to EMR". */
 @media (max-width: 760px) {
   .flagship-page--msk .rp-hero__media { height: auto; max-height: none; overflow: visible; }
+  /* Logistics move map (2026-11-15): grow to show the whole card, not clip it. */
+  .flagship-page .fp-heroArt--logistics { height: auto; min-height: 0; max-height: none; overflow: visible; }
 }
 
 /* "Send to EMR" pill (panel, 2026-11-10): the 420px rule in App.css let the action pill

@@ -70,7 +70,7 @@ const en = {
   "nav.settingsAria": "Settings: theme and language",
 
   // ── Home: hero ──
-  "home.status": "Open to product design and UX research roles, and freelance UX work",
+  "home.status": "Open to work",
   // Hero is about Hillary, not a project (portfolio feedback, 2026-11-12):
   // what she is and where she works, with no case-study detail.
   "home.riso.heroTitle": "Product designer with a strong UX and research lean.",
@@ -266,7 +266,7 @@ const es: Partial<Record<StringKey, string>> = {
   "nav.settingsAria": "Ajustes: tema e idioma",
 
   // ── Home: hero ──
-  "home.status": "Abierta a roles de diseño de producto e investigación UX, y a trabajo freelance de UX",
+  "home.status": "Disponible para trabajar",
   "home.riso.heroTitle": "Diseñadora de producto con un fuerte enfoque en UX e investigación.",
   "home.riso.heroLead":
     "Trabajo en salud y en productos de consumo. Veterana del Ejército, bilingüe en inglés y español.",
