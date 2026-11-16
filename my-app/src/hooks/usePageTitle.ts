@@ -75,7 +75,10 @@ export default function usePageTitle(page?: string, enabled = true, lang: Lang =
     const description = routeMeta?.description ?? DEFAULT_DESCRIPTION;
     const image = `${ORIGIN}${routeMeta?.image ?? "/riso/painted-cartography-01.jpg"}`;
     const isNotFound = page !== undefined && NOT_FOUND_PAGES.has(page);
-    const canonical = isNotFound
+    // /r/<company> is a tagged copy of the home page (one link per application, so
+    // analytics can tell applications apart). Search engines should treat it as the home page.
+    const isTaggedHome = /^\/r\/[^/]+$/.test(path);
+    const canonical = isNotFound || isTaggedHome
       ? ORIGIN
       : `${ORIGIN}${path === "/" ? "" : path}`;
     const isPrivateRoute = path.startsWith("/lab/");
@@ -95,7 +98,9 @@ export default function usePageTitle(page?: string, enabled = true, lang: Lang =
       "robots",
       isPrivateRoute || isNotFound
         ? "noindex, nofollow, noarchive"
-        : "index, follow",
+        : isTaggedHome
+          ? "noindex, follow"
+          : "index, follow",
     );
 
     let canonicalLink = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
