@@ -72,7 +72,8 @@ The lowest text ratio is 4.79 (copied, light), 0.29 above the threshold. The low
 ## AI assistance
 
 - **What Claude did:** read the component and its CSS, wrote `CopyEmail.test.tsx`, ran the tests and the three deliberate breaks, drove headless Chrome to capture the states and read computed styles, calculated the contrast ratios, and drafted this document.
-- **What Hillary reviewed or decided:** _to be filled in by Hillary. Suggested prompts: Which states did you add or remove? Which of the findings above do you agree with? What would you change before using this as evidence?_
+- **What Hillary decided:** to check one component (the email-copy button) instead of a whole design system; to keep the site's global focus ring over the component's own coral one, which removed the losing declaration; and that nothing from this work is deployed or published without a separate approval.
+- **What Hillary reviewed:** _not yet filled in. To be written by Hillary after she has read this document._
 
 ## Reproduce
 
