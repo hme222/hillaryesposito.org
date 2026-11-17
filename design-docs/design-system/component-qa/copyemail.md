@@ -24,7 +24,7 @@ Resolved values were read from the rendered page in headless Chrome. "Source" is
 | Button | hover background | `--coral` mixed to 8% | coral at 8% | coral at 8% |
 | Button | copied text and border | `--green` (light), `--ink` text with green border (dark) | rgb(61, 107, 63) | text rgb(236, 231, 212), border rgb(124, 176, 105) |
 | Status line | color / size | `--ink-2`, `--ts-label` | rgb(69, 80, 63) / 13px | rgb(185, 181, 150) / 13px |
-| Focus ring | outline | declared as `3px solid var(--coral)`; resolves to the global rule | solid 3px rgb(90, 122, 46), offset 4px | solid 3px rgb(232, 176, 106), offset 4px |
+| Focus ring | outline | the global `button:focus-visible` rule in `styles/App.css` (the component no longer declares its own) | solid 3px rgb(90, 122, 46), offset 4px | solid 3px rgb(232, 176, 106), offset 4px |
 
 ## State matrix
 
@@ -65,7 +65,7 @@ The lowest text ratio is 4.79 (copied, light), 0.29 above the threshold. The low
 
 ## Findings
 
-1. **The focus ring the component declares is not the one that renders.** `.rp-copyEmail__button:focus-visible` asks for a 3px coral ring at 2px offset, but the global `button:focus-visible` rule in `styles/App.css` wins in the browser: a green ring in light mode and amber in dark, at 4px offset. Both pass the 3:1 requirement. Decision for Hillary: keep the global ring and delete the component's dead declaration, or make the component win. No change made.
+1. **The focus ring the component declared was not the one that rendered. Resolved 2026-11-17.** `.rp-copyEmail__button:focus-visible` asked for a 3px coral ring at 2px offset, but the global `button:focus-visible` rule in `styles/App.css` won in the browser: a green ring in light mode and amber in dark, at 4px offset, both passing 3:1. Hillary chose to keep the global ring, so the component's losing declaration was deleted. A rebuild and a re-measurement show the rendered ring is identical before and after (light solid 3px rgb(90, 122, 46), dark solid 3px rgb(232, 176, 106), offset 4px). The screenshots in `copyemail/` were taken before the deletion and remain accurate.
 2. **Hover and the copied border/text are checked by screenshot and computed style, not by a unit test**, because jsdom does not resolve the stylesheet.
 3. **Not covered:** a real screen reader and real keyboard events. The tests prove it is a native button, which brings Enter and Space with it; they do not press the keys.
 
