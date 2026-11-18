@@ -115,17 +115,23 @@ describe("flagship case-study accessibility", () => {
     expect(results.violations).toEqual([]);
   });
 
-  it("keeps the exact MSK workflow evidence with no Detour animatic", async () => {
+  it("keeps the MSK workflow steps as text with no Detour animatic", async () => {
     await act(async () => {
       root.render(<FlagshipMSK />);
     });
 
-    // The Detour animatic was removed 2026-10-13 (owner direction).
-    const exactSteps = container.querySelector(".fp-workflow[data-evidence='true']");
+    // The Detour animatic was removed 2026-10-13 (owner direction). The folded
+    // word-for-word step lists were cut 2026-11-17 (repetition cut): the two
+    // journey pictures carry the before and after steps as real list text.
     expect(container.querySelector("[data-testid='msk-the-detour']")).toBeNull();
     expect(container.querySelector(".fp-workflowFilm")).toBeNull();
-    expect(exactSteps?.textContent).toContain("Print the portal message");
-    expect(exactSteps?.textContent).toContain("Choose Send to EMR");
+    expect(container.querySelector(".fp-workflow")).toBeNull();
+    const heroSteps = container.querySelector(".fp-heroArt--msk .msk-journey ol");
+    const afterSteps = container.querySelector("#msk-decisions .msk-journey ol");
+    expect(heroSteps?.querySelectorAll("li")).toHaveLength(6);
+    expect(heroSteps?.textContent).toContain("Print it");
+    expect(afterSteps?.querySelectorAll("li")).toHaveLength(5);
+    expect(afterSteps?.textContent).toContain("Press Send to EMR");
   });
 
   it("states the MSK proposal-to-implementation boundary before outcome metrics", async () => {
@@ -185,26 +191,31 @@ describe("flagship case-study accessibility", () => {
     });
 
     const hero = container.querySelector("#grove-start");
-    expect(hero?.textContent).toContain("3 directions");
+    // The 5 / 37 / 3 trace ledger was cut (2026-11-17 repetition cut); the sub
+    // carries the same research-to-scope trace.
+    expect(hero?.textContent).toContain("I tested it with 5 people, then surveyed 37 to cut twelve features to three.");
     expect(container.textContent).toContain("not completed redesigns");
     expect(container.querySelectorAll('.rp-decisionRecord[aria-label="Grove’s three next-design directions"] dt')).toHaveLength(3);
     expect(container.querySelectorAll(".rp-decision")).toHaveLength(0);
     expect(container.textContent).toContain("Still unbuilt: high-fidelity redesign, edge states, and retest");
   });
 
-  it("ties each logistics result to its mechanism and owner-reported source", async () => {
+  it("ties each logistics result to its mechanism and its Officer Evaluation Report source", async () => {
     await act(async () => {
       root.render(<FlagshipLogistics />);
     });
 
     const hero = container.querySelector("#log-start");
-    expect(hero?.textContent).toContain("1–2 months to 1–2 weeks");
+    // The hero "Result" row was cut (2026-11-17 repetition cut); the sub carries
+    // the before, the after, and its source.
+    expect(hero?.textContent).toContain("getting supplies took 1–2 months");
+    expect(hero?.textContent).toContain("Supplies then took 1–2 weeks, per my Officer Evaluation Report.");
     expect(hero?.querySelector("h1")?.textContent).toBe("Resupply went from months to\u00a0weeks.");
-    expect(container.textContent).toContain("85% faster in my service record");
-    expect(container.textContent).toContain("Measurement periods and methods are not preserved");
-    expect(container.textContent).toContain("1–\u20602\u00a0wkreported medical resupply time");
-    expect(container.textContent).toContain("60%reported reduction in spending");
-    expect(container.textContent).toContain("15%reported: critical supplies");
+    expect(container.textContent).toContain("All three come from my Officer Evaluation Report");
+    expect(container.textContent).toContain("Measurement periods and methods were not preserved");
+    expect(container.textContent).toContain("1–\u20602\u00a0wkmedical resupply time");
+    expect(container.textContent).toContain("60%reduction in spending");
+    expect(container.textContent).toContain("15%critical supplies");
   });
 
   it("keeps the active homepage shell targets and one work-first hero route intact", async () => {
@@ -235,11 +246,11 @@ describe("flagship case-study accessibility", () => {
 
     const rows = Array.from(container.querySelectorAll<HTMLAnchorElement>(".rp-index__row"));
     expect(rows.map((row) => row.getAttribute("href"))).toEqual([
-      "/case-study/msk",
-      "/case-study/grove",
-      "/case-study/knowunity",
-      "/case-study/logistics",
       "/case-study/ux-woman",
+      "/case-study/grove",
+      "/case-study/msk",
+      "/case-study/logistics",
+      "/case-study/knowunity",
       "/case-study/mobbin",
       "https://hme222.github.io/MTA_Accessibility_Trip_Planning/",
     ]);
@@ -566,7 +577,7 @@ describe("flagship case-study accessibility", () => {
     const rows = Array.from(more?.querySelectorAll<HTMLAnchorElement>(".rp-index__row") ?? []);
     expect(rows.map((r) => r.getAttribute("href"))).toEqual([
       "/case-study/logistics",
-      "/case-study/ux-woman",
+      "/case-study/knowunity",
       "/case-study/mobbin",
       "https://hme222.github.io/MTA_Accessibility_Trip_Planning/",
     ]);
@@ -621,7 +632,7 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".fp-workflowFilm")).toBeNull();
     expect(container.querySelector(".fp-routingPeelFig")).toBeNull();
     expect(container.querySelector("[data-testid='msk-the-detour']")).toBeNull();
-    expect(container.querySelector(".fp-workflow[data-evidence='true']")).not.toBeNull();
+    expect(container.querySelectorAll(".msk-journey ol")).toHaveLength(2);
   });
 
   it("shows the MSK journey picture in the hero and the decisions, with the recreated queue screen retired", async () => {
@@ -638,6 +649,9 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".msk-dashboard-mockup")).toBeNull();
     expect(container.querySelectorAll(".msk-journey")).toHaveLength(2);
     expect(container.querySelector("#msk-decisions .msk-journey--after")).not.toBeNull();
+    // The second journey drops the tabs, walk button and caption the hero already carries.
+    expect(container.querySelectorAll(".msk-journey__tabs")).toHaveLength(1);
+    expect(container.querySelectorAll(".msk-journey figcaption")).toHaveLength(1);
     expect(container.querySelector(".fp-mskHeroPlate__detour")).toBeNull();
     expect(container.querySelector(".fp-mskLens")).toBeNull();
     expect(container.querySelector(".fp-mskLens__controls")).toBeNull();
@@ -724,7 +738,7 @@ describe("flagship case-study accessibility", () => {
       "Grove · Twelve features became three",
       "Knowunity · The student’s own words are the proof",
     ]);
-    expect(dialog?.textContent).toContain("I mapped the four-department workaround and pitched the queue that IT and UX later built.");
+    expect(dialog?.textContent).toContain("I mapped the four-department workaround and presented the queue to leadership and IT, who later built it.");
     expect(dialog?.textContent?.toLowerCase()).not.toContain(["functional", "beta"].join(" "));
     expect(dialog?.textContent?.toLowerCase()).not.toContain(["shipped", "consumer", "app"].join(" "));
 
@@ -788,7 +802,7 @@ describe("flagship case-study accessibility", () => {
   });
 
   it.each([
-    ["MSK", <FlagshipMSK />, "One queue. Four teams.", "How I made these screens"],
+    ["MSK", <FlagshipMSK />, "One queue. Four teams.", "Where this comes from"],
     ["Grove", <RisoGrove />, "Twelve features became three.", "self-report prioritized the next build"],
     ["Mobbin", <FlagshipMobbin />, "200+ screens per app, searchable by task.", "I did not design"],
   ])("%s leads with an outcome title and visible evidence boundary", async (_name, page, title, boundary) => {

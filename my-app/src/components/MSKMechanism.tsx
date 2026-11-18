@@ -4,7 +4,8 @@ import { MSK_COPY, type MskCopy } from "../data/mskCaseStudy";
 type L = MskCopy["redesigns"]["mechanismLabels"];
 
 /**
- * The mechanism under each of the three MSK redesigns, drawn.
+ * The mechanism under each of the MSK redesigns, drawn. The filing diagram
+ * ("01") was cut 2026-11-17 with the filing card it sat in.
  *
  * These are diagrams, not screenshots. None of the three shipped systems can be
  * shown as pixels — they were internal MSK tools — and inventing screens would
@@ -16,28 +17,6 @@ type L = MskCopy["redesigns"]["mechanismLabels"];
  */
 
 const INK = "currentColor";
-
-function Filing({ l }: { l: L }) {
-  // Before: a detour out of the system. After: one hop.
-  return (
-    <svg viewBox="0 0 260 96" width="100%" role="presentation" focusable="false">
-      <text x="0" y="9" fontSize="7.5" letterSpacing="1" fill="var(--coral)">{l.before}</text>
-      <rect x="0" y="16" width="62" height="22" rx="2" fill="none" stroke={INK} strokeOpacity=".45" />
-      <text x="31" y="30" fontSize="8" textAnchor="middle" fill={INK} fillOpacity=".8">{l.dashboard}</text>
-      <path d="M62,27 C80,27 80,52 98,52" fill="none" stroke="var(--coral)" strokeWidth="1.5" strokeDasharray="4 3" />
-      <rect x="98" y="41" width="62" height="22" rx="2" fill="none" stroke="var(--coral)" strokeDasharray="4 3" />
-      <text x="129" y="55" fontSize="8" textAnchor="middle" fill="var(--coral)">{l.paper}</text>
-      <path d="M160,52 C178,52 178,27 196,27" fill="none" stroke="var(--coral)" strokeWidth="1.5" strokeDasharray="4 3" />
-      <rect x="196" y="16" width="62" height="22" rx="2" fill="none" stroke={INK} strokeOpacity=".45" />
-      <text x="227" y="30" fontSize="8" textAnchor="middle" fill={INK} fillOpacity=".8">{l.chart}</text>
-
-      <text x="0" y="80" fontSize="7.5" letterSpacing="1" fill="var(--green)">{l.after}</text>
-      <rect x="0" y="86" width="62" height="10" rx="2" fill="none" stroke="var(--green)" />
-      <line x1="62" y1="91" x2="196" y2="91" stroke="var(--green)" strokeWidth="1.5" />
-      <rect x="196" y="86" width="62" height="10" rx="2" fill="none" stroke="var(--green)" />
-    </svg>
-  );
-}
 
 function Certification({ l }: { l: L }) {
   // REPLACED 2026-08-03. This used to draw a 90/60/30-day expiry alerting
@@ -112,14 +91,13 @@ function Onboarding({ l }: { l: L }) {
 }
 
 const MAP: Record<string, (props: { l: L }) => React.ReactElement> = {
-  "01": Filing,
   "02": Certification,
   "03": Onboarding,
 };
 
 /**
  * @status: stable
- * @purpose: Renders one of three decorative before/after SVG diagrams (filing, certification, onboarding) illustrating the MSK redesign mechanism, selected by the `n` prop; used on the MSK case study page. Pick this for a static before/after diagram — for actor-lane handoffs use MSKServiceBlueprint, for the interactive 3D version use MSKSystemMap. LogisticsMechanism is the same pattern re-implemented for the logistics case study, not shared — check before adding a third.
+ * @purpose: Renders one of two decorative before/after SVG diagrams (certification "02", onboarding "03") illustrating the MSK redesign mechanism, selected by the `n` prop; used on the MSK case study page. Pick this for a static before/after diagram — for actor-lane handoffs use MSKServiceBlueprint, for the interactive 3D version use MSKSystemMap. LogisticsMechanism is the same pattern re-implemented for the logistics case study, not shared — check before adding a third.
  */
 export default function MSKMechanism({ n, labels = MSK_COPY.en.redesigns.mechanismLabels }: { n: string; labels?: L }) {
   const Diagram = MAP[n];

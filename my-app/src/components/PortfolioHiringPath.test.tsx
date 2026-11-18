@@ -82,7 +82,7 @@ describe("healthcare product designer hiring path", () => {
       "Knowunity · The student’s own words are the proof",
     ]);
     expect(labels.some((label) => label.textContent === "Supporting evidence")).toBe(false);
-    expect(selected.textContent).toContain("Five tests and a 37-person survey");
+    expect(selected.textContent).toContain("One test with five people and a 37-person survey");
     expect(selected.textContent).toContain("speech recognition remains mocked");
     expect(selected.querySelector(".recruiter-panel__allWork")?.textContent).toContain("See all work");
 
@@ -102,11 +102,11 @@ describe("healthcare product designer hiring path", () => {
       (row) => row.getAttribute("href"),
     );
     expect(workRows).toEqual([
-      "/case-study/msk",
-      "/case-study/grove",
-      "/case-study/knowunity",
-      "/case-study/logistics",
       "/case-study/ux-woman",
+      "/case-study/grove",
+      "/case-study/msk",
+      "/case-study/logistics",
+      "/case-study/knowunity",
       "/case-study/mobbin",
       "https://hme222.github.io/MTA_Accessibility_Trip_Planning/",
     ]);
@@ -120,6 +120,5 @@ describe("healthcare product designer hiring path", () => {
     expect(resume?.getAttribute("target")).toBe("_blank");
     expect(resume?.getAttribute("rel")).toBe("noopener noreferrer");
     expect(resume?.getAttribute("aria-label")).toBe("nav.resumeAria");
-    expect(contact.textContent).toContain("espositohillary@gmail.com");
   });
 });

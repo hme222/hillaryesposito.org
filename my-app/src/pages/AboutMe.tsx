@@ -34,8 +34,8 @@ const SLIDES: Slide[] = [
     height: 1100,
     altEn: "Luna, a tuxedo cat in a green pom-pom hat, pink harness and red jacket, in a clear backpack carrier with her paws over the edge.",
     altEs: "Luna, una gata blanquinegra con gorro verde de pompón, arnés rosa y chaqueta roja, dentro de una mochila transparente, con las patas sobre el borde.",
-    capEn: "Luna.",
-    capEs: "Luna.",
+    capEn: "Luna, my precious baby.",
+    capEs: "Luna, mi bebé preciosa.",
   },
   {
     src: "/assets/about/orchid.jpg",
@@ -43,8 +43,26 @@ const SLIDES: Slide[] = [
     height: 1100,
     altEn: "Pink orchids with orange centers in sunlight, a living room behind them.",
     altEs: "Orquídeas rosadas con el centro naranja, a la luz del sol, con una sala al fondo.",
-    capEn: "The urban jungle at home.",
-    capEs: "La selva urbana en casa.",
+    capEn: "Two orchids from the dumpster area, back to life.",
+    capEs: "Dos orquídeas de la zona de la basura, de vuelta a la vida.",
+  },
+  {
+    src: "/assets/about/race.jpg",
+    width: 1050,
+    height: 787,
+    altEn: "Hillary in a race bib, standing on a block between giant white 2, 6 and 2 numbers, one arm raised.",
+    altEs: "Hillary con su dorsal, de pie sobre un bloque entre unos enormes números blancos 2, 6 y 2, con un brazo en alto.",
+    capEn: "10 half marathons, then one full: 26.2.",
+    capEs: "10 medios maratones y luego uno completo: 26.2.",
+  },
+  {
+    src: "/assets/about/cooking.jpg",
+    width: 618,
+    height: 1100,
+    altEn: "A floral plate of crispy prosciutto cups, each holding a cherry tomato and a mozzarella ball, drizzled with balsamic glaze and honey, beside a cutting board of halved tomatoes.",
+    altEs: "Un plato floreado con canastitas crujientes de prosciutto, cada una con un tomate cherry y una bolita de mozzarella, con glaseado balsámico y miel, junto a una tabla con tomates partidos.",
+    capEn: "My prosciutto appetizer: mozzarella, tomato, balsamic glaze and a honey drizzle.",
+    capEs: "Mi aperitivo de prosciutto: mozzarella, tomate, glaseado balsámico y un toque de miel.",
   },
 ];
 
@@ -81,36 +99,63 @@ export default function About() {
   const t = (en: string, es: string) => (isSpanish ? es : en);
   const slide = SLIDES[index];
 
+  // A word in the bio that brings its photo to the top of the stack. Hover and
+  // focus hold the loop while they last; a tap or click stops it, so the photo
+  // the visitor chose stays put.
+  // Called as cue(...), not <Cue>: a component defined in render would remount
+  // on every photo change and drop keyboard focus.
+  const cue = (target: number, children: React.ReactNode) => (
+    <button
+      type="button"
+      className={`about-stage__cue${index === target ? " is-showing" : ""}`}
+      aria-controls="about-photos"
+      aria-describedby="about-cue-hint"
+      onMouseEnter={() => { setIndex(target); setHovering(true); }}
+      onMouseLeave={() => setHovering(false)}
+      onFocus={() => { setIndex(target); setHovering(true); }}
+      onBlur={() => setHovering(false)}
+      onClick={() => { setIndex(target); setPlaying(false); }}
+    >
+      {children}
+    </button>
+  );
+
   return (
     <main className="about-page about-stage riso-page" lang={isSpanish ? "es" : "en"}>
       <div className="about-stage__text">
+        {/* Opening line is Hillary's own (2026-11-17). Body uses only facts from
+            design-docs/case-study-stories/about-me.md, in her words. Spanish is a draft.
+            Underlined words are cues: hover, focus or tap one and the print stack
+            brings that photo to the top. */}
         <h1 className="about-stage__hook">
-          {t(
-            "I'm curious about people, and they keep surprising me.",
-            "Siento curiosidad por la gente, y no deja de sorprenderme."
-          )}
+          {t("Hi, I'm ", "Hola, soy ")}
+          {cue(0, "Hillary")}.
         </h1>
-        <p>
-          {t(
-            "Every time I think I know what someone will do, something different happens. So I people watch, read, and watch movies and shows, collecting other ways of seeing things.",
-            "Cada vez que creo saber qué va a hacer alguien, pasa algo distinto. Así que observo a la gente, leo y veo películas y series, para recoger otras formas de ver las cosas."
-          )}
-        </p>
-        <p>
-          {t(
-            "It's also why I do UX: people and systems, and the messy middle where they meet.",
-            "Por eso me dedico a UX: personas y sistemas, y el terreno desordenado donde se encuentran."
-          )}
-        </p>
-        <p>
-          {t(
-            "Home is New York, 80 plants, and Luna, my precious baby. We attempt walks, she hops back into her backpack, and no one bats an eyelash. In this city, that counts as a quiet day.",
-            "Mi casa es Nueva York, 80 plantas y Luna, mi bebé preciosa. Intentamos pasear, ella vuelve a saltar a su mochila y nadie se inmuta. En esta ciudad, eso cuenta como un día tranquilo."
-          )}
-        </p>
+        {isSpanish ? (
+          <p>
+            Disfruto la {cue(4, "comida casera")}, las {cue(2, "plantas en flor")} y los mimos con mi gata, {cue(1, "Luna")}.
+          </p>
+        ) : (
+          <p>
+            I enjoy {cue(4, "home-cooked meals")}, {cue(2, "blooming plants")} and cuddles with my cat, {cue(1, "Luna")}.
+          </p>
+        )}
+        {/* Hillary picked options 8 + 10 combined (2026-11-17). "A few rescues"
+            because Luna plus two orchids is three. Spanish is a draft. */}
+        {isSpanish ? (
+          <p>
+            Mi casa en Nueva York son 80 plantas y algunos rescates: {cue(1, "Luna")} y {cue(2, "dos orquídeas")} que encontré junto a la basura. Cuando no estoy en casa con ellos, estoy {cue(3, "corriendo")}. He hecho 10 medios maratones y uno completo.
+          </p>
+        ) : (
+          <p>
+            Home in New York is 80 plants and a few rescues: {cue(1, "Luna")}, and {cue(2, "two orchids")} I found by the trash. When I'm not home with them, I'm {cue(3, "running")}. I've done 10 half marathons and one full.
+          </p>
+        )}
+        <span id="about-cue-hint" hidden>{t("Shows a photo", "Muestra una foto")}</span>
       </div>
 
       <section
+        id="about-photos"
         className="about-stage__show"
         aria-roledescription="carousel"
         aria-label={t("Photos of Hillary", "Fotos de Hillary")}
@@ -121,20 +166,31 @@ export default function About() {
           if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setFocusInside(false);
         }}
       >
-        <div className="about-stage__frame">
-          {SLIDES.map((s, i) => (
-            <img
-              key={s.src}
-              src={s.src}
-              width={s.width}
-              height={s.height}
-              alt={i === index ? t(s.altEn, s.altEs) : ""}
-              aria-hidden={i === index ? undefined : true}
-              className={i === index ? "is-active" : undefined}
-              loading={i === 0 ? "eager" : "lazy"}
-              decoding="async"
-            />
-          ))}
+        {/* A stack of prints: the current photo on top, the others tucked
+            behind at a tilt. Clicking the top print deals the next one; the
+            arrow buttons below do the same for keyboard and screen readers. */}
+        <div className="about-stage__frame about-stage__stack">
+          {SLIDES.map((s, i) => {
+            const depth = (i - index + count) % count;
+            return (
+              <figure
+                key={s.src}
+                className={`about-stage__print about-stage__print--d${depth}`}
+                style={{ aspectRatio: `${s.width} / ${s.height}` }}
+                aria-hidden={depth === 0 ? undefined : true}
+                onClick={depth === 0 ? () => go(1) : undefined}
+              >
+                <img
+                  src={s.src}
+                  width={s.width}
+                  height={s.height}
+                  alt={depth === 0 ? t(s.altEn, s.altEs) : ""}
+                  loading={i === 0 ? "eager" : "lazy"}
+                  decoding="async"
+                />
+              </figure>
+            );
+          })}
         </div>
         <div className="about-stage__bar">
           <p className="about-stage__caption" aria-live={playing ? "off" : "polite"}>

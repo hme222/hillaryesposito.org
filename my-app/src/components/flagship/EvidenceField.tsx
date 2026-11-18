@@ -13,7 +13,7 @@ type Metric = { n: string; label: string; tag?: string };
 
 /**
  * @status: stable
- * @purpose: Renders a labeled row of metric numbers (each with an optional attribution tag) plus an intro and disclaimer; used on the MSK, Mobbin, logistics, Knowunity, and UX Woman case study pages.
+ * @purpose: Renders a labeled row of metric numbers (each with an optional attribution tag) plus an optional intro and disclaimer; used on the MSK, Mobbin, logistics, Knowunity, and UX Woman case study pages.
  */
 export default function EvidenceField({
   id,
@@ -31,8 +31,10 @@ export default function EvidenceField({
   languageAnchor?: string;
   kicker?: string;
   title: string;
-  intro: string;
-  disclaimer: string;
+  /** Optional since the 2026-11-17 repetition cut: leave it off when the
+   *  title and tiles already say it. */
+  intro?: string;
+  disclaimer?: string;
   metrics: Metric[];
   /** Optional method recap above the outcomes. MSK dropped it (2026-10-16). */
   route?: string[];
@@ -41,7 +43,8 @@ export default function EvidenceField({
   /** Small proof that sits beside the tiles (Knowunity's badge). Stacks under them on phones. */
   aside?: React.ReactNode;
 }) {
-  const outcomes = (
+  // No metrics: the section keeps its title and intro, with no empty tile row.
+  const outcomes = metrics.length === 0 ? null : (
     <div className={`rp-outcomes rp-reveal${metrics.length === 2 ? " rp-outcomes--two" : metrics.length === 4 ? " rp-outcomes--four" : ""}${leadMetric ? " rp-outcomes--lead" : ""}`}>
       {metrics.map((metric) => (
         <div className="rp-stat" key={`${metric.n}-${metric.label}`}>
@@ -57,7 +60,7 @@ export default function EvidenceField({
       <div className="rp-wrap">
         {kicker && <p className="rp-kicker">{kicker}</p>}
         <h2 className="rp-title">{title}</h2>
-        <p className="rp-lede">{intro}</p>
+        {intro && <p className="rp-lede">{intro}</p>}
         {/* The route used to be the last thing on the page — a four-step method
             recap standing as the takeaway. A repeatable process is the least
             durable thing a designer can sell right now; the numbers and the
@@ -73,7 +76,7 @@ export default function EvidenceField({
           ))}
         </p>
         )}
-        <p className="rp-disclaimer">{disclaimer}</p>
+        {disclaimer && <p className="rp-disclaimer">{disclaimer}</p>}
         {/* Two numbers share the row, as Grove’s two outcomes do; the default
             three-column grid left a third of it empty. Four (MSK) sit two by
             two, so no tile is left alone on a second row. */}

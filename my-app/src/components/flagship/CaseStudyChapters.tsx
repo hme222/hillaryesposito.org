@@ -199,7 +199,8 @@ export default function CaseStudyChapters({
       strip.removeEventListener("scroll", check);
       window.removeEventListener("resize", check);
     };
-  }, [chapters]);
+    // dockSlot: the strip remounts inside the site bar, so re-attach there.
+  }, [chapters, dockSlot]);
 
   const strip = (
     <nav

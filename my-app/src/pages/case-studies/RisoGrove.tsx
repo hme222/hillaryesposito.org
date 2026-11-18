@@ -3,14 +3,12 @@ import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
 import ReadingProgress from "../../components/flagship/ReadingProgress";
-import ShareCaseStudy from "../../components/flagship/ShareCaseStudy";
 import GroveSystemLab from "../../components/riso/GroveSystemLab";
 import RisoDefs from "../../components/riso/RisoDefs";
 import CartoField from "../../components/riso/CartoField";
 import PhaseIndicator from "../../components/riso/PhaseIndicator";
 import SpanishCaseStudy from "../../components/SpanishCaseStudy";
 import { GROVE_ES } from "../../data/spanishCaseStudies";
-import CopyEmail from "../../components/CopyEmail";
 import CaseMore from "../../components/CaseMore";
 import usePageTitle from "../../hooks/usePageTitle";
 import { wireRevealObservers } from "../../hooks/useFlagshipReveal";
@@ -38,8 +36,6 @@ const CHAPTERS: CaseStudyChapter[] = [
 ];
 
 const SURVEY_FINDINGS = [
-  { stat: "76%", label: "picked smart care reminders as a launch dealbreaker, 28 of 37, the clear top answer" },
-  { stat: "54%", label: "wanted to point a camera at a plant and have the app just tell them what it is" },
   { stat: "12", label: "of 37 named notification volume, unprompted, as what would make them delete it, the most-cited reason by far" },
   // Recomputed 2026-10-19 from all 37 responses with the Grove repo's
   // docs/research/scripts/survey_stats.py. Groups come from the "relationship
@@ -289,17 +285,10 @@ export default function RisoGrove() {
           <div className="rp-clearing">
             <h1 className="rp-h1">Twelve features became three.</h1>
             <p className="rp-sub">
-              I tested the first build, made with the AI app builder Emergent, with 5 people, then used a 37-person self-report survey to cut twelve features to three.
+              Grove is a plant-care app for new plant owners. The first version, made with the AI app builder Emergent, came out crowded with features. I tested it with 5 people, then surveyed 37 to cut twelve features to three. <b>It is a working prototype, and the redesign has not been tested yet.</b>
             </p>
             {/* Interview-sourced human line (Better Stories pass, 2026-11-10); source: design-docs/case-study-stories. */}
             <p className="rp-humanLine">I know plants, so I wanted more features. Five users changed that.</p>
-            <div className="rp-heroEvidence rp-heroEvidence--trace" role="group" aria-label="Grove research-to-priority trace">
-              <ol>
-                <li><b>5 people</b><span>exposed the navigation problem</span></li>
-                <li><b>37 people</b><span>ranked the launch dealbreakers</span></li>
-                <li><b>3 directions</b><span>earned the next build</span></li>
-              </ol>
-            </div>
             {/* The click-through demo of the current app (Grove repo, walkthrough/),
                 deployed separately on Vercel. It runs on sample data, so the
                 label says so. Same hero action pattern as Knowunity. */}
@@ -308,11 +297,17 @@ export default function RisoGrove() {
                 <span className="rp-ext">Try the Grove demo</span><span className="sr-only"> (opens in new tab)</span>
               </a>
             </div>
-            <p className="rp-heroDemoNote">The current app on sample data. Reloading the page starts it fresh.</p>
+            <p className="rp-heroDemoNote">The current app on sample data.</p>
           </div>
         </div>
-        <div className="rp-hero__media" data-evidence="true">
-          <GroveDemoLoop />
+        <div className="rp-hero__media fp-heroArt--fan" data-evidence="true">
+          {/* R5 (2026-11-16): the demo video at the shared 300px fan phone
+              size, with no side phones. The only other phone frames are
+              grove1.png, a first-build screen this page deliberately leaves
+              out, and the video's own poster, which would just repeat it. */}
+          <div className="fp-fan">
+            <GroveDemoLoop />
+          </div>
         </div>
       </header>
 
@@ -322,11 +317,10 @@ export default function RisoGrove() {
           <div className="rp-split rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "0ms" } as React.CSSProperties}>
             <div className="rp-split__text">
               <h2 className="rp-title">Plant parents forget. Then they feel guilty.</h2>
-              <p className="rp-lede">The job: one calm next action, with visible uncertainty when a wrong answer can cause harm.</p>
+              <p className="rp-lede">Most people who buy a plant want one thing: to keep it alive. Then they forget to water it, or water it too much, and feel bad either way. Grove’s job is to give one calm next step, and to say when it isn’t sure.</p>
             </div>
           </div>
 
-          <h3 className="rp-subhead">Five people found the problem. Thirty-seven chose what came next.</h3>
           <dl className="rp-surveyStats rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "90ms" } as React.CSSProperties}>
             {SURVEY_FINDINGS.map((f) => (
               <div key={f.stat}>
@@ -374,12 +368,6 @@ export default function RisoGrove() {
               </>
             )}
 
-            <figure className="rp-quoteCard rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "360ms" } as React.CSSProperties}>
-              <blockquote>“Any generative AI in this will remove any sense of trust.”</blockquote>
-              <figcaption>
-                Florist · unprompted. I removed AI-written care sheets from scope.
-              </figcaption>
-            </figure>
           </div>
         </section>
       </details>
@@ -436,9 +424,6 @@ export default function RisoGrove() {
           {/* The app’s own components, documented in Storybook from the Grove
               repo (deployed separately at grove-ui.hillaryesposito.org). */}
           <p className="rp-hero__ctas">
-            <a className="rp-cta" href={DEMO_URL} target="_blank" rel="noopener noreferrer">
-              <span className="rp-ext">Try the Grove demo</span><span className="sr-only"> (opens in new tab)</span>
-            </a>
             <a
               className="rp-cta rp-cta--ghost"
               href="https://grove-ui.hillaryesposito.org/?path=/story/grove-plantcard--healthy"
@@ -476,8 +461,8 @@ export default function RisoGrove() {
 
           <h3 className="rp-subhead">Rules I kept</h3>
           <div className="rp-foundation rp-reveal" data-evidence="true">
-            <div className="rp-fcard"><p className="rp-fcard__k">Principle · locked</p><p className="rp-fcard__t">One task a day</p><p className="rp-fcard__d">A new user only ever sees one decision per screen. Five moderated sessions showed people stalled when care led with a feed and a mission.</p></div>
-            <div className="rp-fcard"><p className="rp-fcard__k">Principle · locked</p><p className="rp-fcard__t">Grouped by where they live</p><p className="rp-fcard__d">Plants grouped by room, never one long overwhelming list. Based on the five moderated sessions; task records are not preserved.</p></div>
+            <div className="rp-fcard"><p className="rp-fcard__k">Principle · locked</p><p className="rp-fcard__t">One task a day</p><p className="rp-fcard__d">A new user only ever sees one decision per screen.</p></div>
+            <div className="rp-fcard"><p className="rp-fcard__k">Principle · locked</p><p className="rp-fcard__t">Grouped by where they live</p><p className="rp-fcard__d">Plants grouped by room, never one long overwhelming list.</p></div>
             <div className="rp-fcard"><p className="rp-fcard__k">Principle · locked</p><p className="rp-fcard__t">Automated advice stays reviewable</p><p className="rp-fcard__d">A person has the final call on every uncertain recommendation. Plant ID shows top guesses with confidence and sources, not one verdict.</p></div>
           </div>
           </div>
@@ -487,7 +472,7 @@ export default function RisoGrove() {
       <section className="rp-section" id="grove-decisions" data-language-anchor="grove-decisions">
         <div className="rp-wrap">
           <h2 className="rp-title">Three features, one testable direction each.</h2>
-          <p className="rp-lede" style={{ marginTop: "1.1rem" }}>The three directions stay visible together. They are decisions for the next prototype, not completed redesigns.</p>
+          <p className="rp-lede" style={{ marginTop: "1.1rem" }}>They are decisions for the next prototype, not completed redesigns.</p>
           <dl className="rp-decisionRecord rp-decisionRecord--grove rp-reveal" aria-label="Grove’s three next-design directions" data-evidence="true">
             {DECISIONS.map((decision) => (
               <div key={decision.feature}>
@@ -496,12 +481,9 @@ export default function RisoGrove() {
               </div>
             ))}
           </dl>
-          <p className="rp-lede rp-reveal" style={{ marginTop: "1.6rem" }}>
-            <strong>Why the reminder leads:</strong> it carries the clearest research-to-design change. The next chapter shows how its tone and care logic change.
-          </p>
           <CaseMore label="What is still unbuilt">
             <p className="rp-lede" style={{ marginTop: "clamp(2rem, 5vw, 3.5rem)" }}>
-              <strong>Still unbuilt:</strong> high-fidelity redesign, edge states, and retest. This is Phase 2 of 3.
+              <strong>Still unbuilt:</strong> high-fidelity redesign, edge states, and retest.
             </p>
           </CaseMore>
         </div>
@@ -511,7 +493,6 @@ export default function RisoGrove() {
       <section className="rp-section rp-override" id="grove-override" data-language-anchor="grove-override">
         <div className="rp-wrap">
           <h2 className="rp-title">One calm reminder instead of three guilty ones.</h2>
-          <p className="rp-lede">Remove guilt. Preserve one useful next action.</p>
           <div className="rp-pushback rp-reveal" data-evidence="true">
             <div className="rp-notif rp-notif--ai">
               {/* Claim audit 2026-10-13: these three are illustrations of the guilt
@@ -536,7 +517,8 @@ export default function RisoGrove() {
               She wasn’t alone, 5 of 37 said they’d trust no AI feature in the app at all, and 22 of 37
               said explaining why the AI made a call is what would earn their trust. Plant ID carried
               that risk directly, so instead of one confident answer, it shows top guesses, how sure it
-              is, and its sources. False certainty is the fastest way to lose trust.
+              is, and its sources. False certainty is the fastest way to lose trust. I removed
+              AI-written care sheets from scope.
             </p>
           </CaseMore>
 
@@ -549,7 +531,6 @@ export default function RisoGrove() {
         <div className="rp-wrap">
           <h2 className="rp-title">The redesign is decided. Retest next.</h2>
           <PhaseIndicator current={2} total={3} label="Functional prototype · Phase 2 of 3" />
-          <p className="rp-lede">Three features scoped. One care-logic mistake found. Retest pending.</p>
           <div
             className={`rp-outcomes rp-outcomes--lead rp-reveal${VISIBLE_OUTCOMES.length === 2 ? " rp-outcomes--two" : ""}`}
             data-evidence="true"
@@ -565,11 +546,7 @@ export default function RisoGrove() {
             <b>I got the care logic wrong before I got the interface right.</b>
             The next prototype tests whether a check-first reminder protects the plant without costing long-term use.
           </p>
-          <CaseMore label="Why a plant app, and what the phases mean">
-            <p className="rp-bridge">
-              <span>Why a plant app</span>
-              Uncertain recommendations, sources to check, a human final call: the same problems as a clinical tool, at plant-level stakes.
-            </p>
+          <CaseMore label="What the phases mean">
             <div className="rp-note rp-reveal">
               <p className="rp-note__k">What the three phases mean</p>
               <p>Grove is a functional prototype in Phase 2 of 3. 1: first build + survey. 2: decisions shown here. 3: high-fidelity screens, owner testing, and edge states.</p>
@@ -588,8 +565,6 @@ export default function RisoGrove() {
           {/* The closing action stays consistent across the complete case-study
               sequence so the next step remains predictable. */}
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
-          <CopyEmail />
-          <ShareCaseStudy title="Grove: a case study by Hillary Esposito" />
         </div>
       </section>
 

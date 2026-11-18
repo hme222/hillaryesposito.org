@@ -458,3 +458,35 @@ Purpose: Lex asked for the story as told at a bar, in plain steps: what it was, 
 
 ### Applied to the site — 2026-11-13 (Hillary approved: "yes put it on the MSK page")
 EN and ES (ES is my translation, unreviewed): hero summary, the "paper ritual" section (problem, for whom, cost), the "What I did." section (suggestion, departments, leadership, prep), and "What happened after I left that role." (adopted, funded after she left, built version changed, she later saw it in production). Closes Lex items R1 (why it mattered), R2 (her role) and R3 (who it was for).
+
+## Loose-end interview — 2026-11-16 (funding vs. IT prioritizing)
+
+**Q:** When IT set the button aside, was money the blocker, and did the funding after you left reverse that? Or were they separate events?
+**A (verbatim):** "IT had other priorities and my idea required funding for hiring a permanent role to oversee the change, once the funding came and IT had the resources to make the change it was implemented"
+
+**Captured:**
+- IT had other priorities.
+- The idea needed funding to hire a permanent role to oversee the change. NEW fact: the money paid for a person, not for the button build.
+- Once the funding came and IT had the resources to make the change, it was implemented.
+- Resolves the 2026-11-13 TODO: funding and implementation are one chain (funding + IT resources, then built). They are not two unrelated events.
+
+**Conflict to settle, do not smooth over:**
+- The site (`FlagshipMSK.tsx:97`, `mskCaseStudy.ts:375`, Ask `en.json:580`) says IT "deprioritized it as not worth the effort" and that she "misjudged how small it would look to IT". That traces to the 2026-08-29 note "too small a fix for the effort involved".
+- Today's answer gives a different reason: "other priorities", plus a staffing cost. "Not worth the effort" and "other priorities" are not the same claim.
+- TODO: which is accurate, or are both true (IT saw it as small AND had other priorities)? Do not change the "What I got wrong" line until she says.
+
+**Q (follow-up):** Which is accurate: IT saw it as too small to be worth the effort, or it lost out to other priorities and the staffing cost, or both?
+**A (verbatim):** "yeah they were in the middle of a big overhaul and couldnt allocate IT's time for this"
+
+**Captured:**
+- IT was in the middle of a big overhaul and couldn't give this any of its time.
+- Resolves the conflict: the blocker was IT's time during the overhaul, plus funding for a permanent oversight role. It was NOT "not worth the effort".
+- So the site's "What I got wrong" line ("I misjudged how small it would look to IT. They deprioritized it as not worth the effort...") is inaccurate. Retire it (EN, ES, Ask knowledge) once she approves a replacement or a cut.
+- TODO: no answer yet on what she would say she got wrong, if anything. Do not invent one.
+- TODO: name of the overhaul, its size or timing: not captured. Keep it as "a big overhaul".
+
+**Q:** Is there something you'd honestly say you got wrong, or cut the box?
+**A (verbatim):** "remove what i got wrong"
+
+### Applied to the site — 2026-11-16
+Removed the "What I got wrong" line from the EMR filing item: EN (`FlagshipMSK.tsx`, `mskCaseStudy.ts`), ES (`mskCaseStudy.ts`, `spanishCaseStudies.ts`), and the Ask knowledge entry `en:msk-redesigns:4`. No replacement written. "What happened after I left that role" is unchanged; it is still accurate.

@@ -575,17 +575,6 @@
    "batch": 1
   },
   {
-   "id": "en:msk-redesigns:4",
-   "lang": "en",
-   "text": "WHAT I GOT WRONG I misjudged how small it would look to IT. They deprioritized it as not worth the effort, and I had to keep raising it to get it built.",
-   "source": {
-    "type": "page",
-    "label": "MSK case study · The same failure, in two more places.",
-    "url": "/case-study/msk/#msk-redesigns"
-   },
-   "batch": 1
-  },
-  {
    "id": "en:msk-redesigns:5",
    "lang": "en",
    "text": "Technical, legal copy kept clinicians from finishing CPR (cardiopulmonary resuscitation) certification.",
@@ -2634,7 +2623,7 @@
   {
    "id": "en:resume-summary:0",
    "lang": "en",
-   "text": "Healthcare Product Designer with six years inside a cancer center and 13+ years of Army service. Combines frontline observation, workflow analysis, stakeholder input, and technical constraints to design clearer internal tools and testable product flows.",
+   "text": "UX designer and researcher for healthcare and internal tools, with six years inside a cancer center and 13+ years of Army service. Combines frontline observation, workflow analysis, stakeholder input, and technical constraints to design clearer internal tools and testable product flows.",
    "source": {
     "type": "resume",
     "label": "Résumé · Professional summary",

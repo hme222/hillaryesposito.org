@@ -337,3 +337,45 @@ in charge of distributing the rabies vaccines and supplying 3 countries" describ
 role. The page's existing "Medical logistics officer" is accurate; "in charge of
 distributing" is hers to use for this chapter.
 - Still keep: no country, site or route names; no dose schedule or medical explanation.
+
+## Bar-story interview — 2026-11-16 (Lex's five steps; her words only)
+
+Purpose: same as MSK's 2026-11-13 round. What it was, the problem for the people served, why it mattered, her role, what happened. Verbatim first; nothing here is site copy until she approves.
+
+**Q1 (bar version):** "So what was your logistics project?" Two or three sentences, out loud.
+**A (verbatim):** "my deployment to iraq was really moving because i felt like i had a direct purpose supporting 3 different countries with medical supplies"
+
+**Captured:**
+- She tells it as a deployment to Iraq, not as a project.
+- It was "really moving" to her because she felt she had "a direct purpose".
+- What she did: supported three different countries with medical supplies.
+- Consistent with earlier notes (three countries, medical resupply). Nothing new contradicts the file.
+- NEW: the emotional frame ("really moving", "direct purpose") is the first time she has given one for the whole deployment. Keep her words; do not inflate it.
+- Gaps still open: who the supplies were for and what was going wrong for them before; why it mattered; her role in one line; what happened.
+
+**Q2:** Who were the supplies for, and what was going wrong for them when you got there?
+**A (verbatim):** "I was supporting 5,000 soldiers with medical equipment/expendable supplies"
+
+**Captured:**
+- Who: 5,000 soldiers.
+- What she supplied: medical equipment and expendable supplies (her split, keep both).
+- Number note: earlier notes and the draft say "5,000+". Today she says "5,000". Same order, no conflict; use whichever she approves, do not add the plus sign on her behalf.
+- Not answered yet: what was going wrong for them before. Asked again as Q2b.
+
+**Q2b:** When you arrived, what was going wrong for those soldiers or their medics?
+**A (verbatim):** "yeah plus is fine, I was in charge of the resupply for 6 different satelite aid stations, making sure we had enough if they ran out"
+
+**Captured:**
+- APPROVED: "5,000+" soldiers.
+- Her role: in charge of resupply for six satellite aid stations, making sure there was enough if they ran out.
+- NEW word: "satellite" aid stations.
+
+**Conflict to settle, do not smooth over:**
+- Today: SIX satellite aid stations. The site (`FlagshipLogistics.tsx:104`, `:130`) and notes (lines 107, 218) say SEVEN aid stations.
+- Possible reading (unconfirmed): six satellites plus one main station = seven. Do not assume; ask.
+- Still not answered: what was going wrong before she arrived.
+
+**Q2c:** Six, seven, or six satellites plus a main station?
+**A (verbatim):** "yes 6 plus main station make 7"
+
+**Captured (resolves the conflict):** six satellite aid stations plus the main station = seven. The site's "seven aid stations" stays accurate. If copy ever says what she was "in charge of resupply for", use her split: six satellites, plus the main station.

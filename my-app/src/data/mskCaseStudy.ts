@@ -131,8 +131,6 @@ export type MskCopy = {
     wrongLabel: string;
     items: { n: string; title: string; finding: string; change: string; wrong?: string }[];
     mechanismLabels: {
-      before: string; after: string;
-      dashboard: string; paper: string; chart: string;
       beforeProse: string; denseBlock: string; afterSteps: string;
       beforeCohort: string; sameStandard: string;
     };
@@ -203,8 +201,8 @@ const en: MskCopy = {
     readTime: "6 min",
     readMeta: "read · 6 years, 3 roles",
     ledeOpen:
-      "Patient-portal messages lived in the portal, not the patient’s chart, so staff printed them to be scanned in. As an office coordinator, I mapped that workaround across clinical, IT, HIM (health information management, the team that scans documents into charts), and operations, then presented the online workflow that was implemented two roles later. It served work touching ",
-    ledeScale: "21,000+ clinicians and staff",
+      "Patient-portal messages lived in the portal, not the patient’s chart, so staff printed them to be scanned in. As an office coordinator, I mapped that workaround across clinical, IT, HIM (health information management, the team that scans documents into charts), and operations, then presented the online workflow that was implemented two roles later, at a cancer center of ",
+    ledeScale: "21,000+ staff",
     ledeMiddle: ", and ",
     ledeSustain: "I later saw it in the production system while training new employees",
     ledeClose: ".",
@@ -218,7 +216,7 @@ const en: MskCopy = {
     kicker: "It started with a workaround",
     titleLines: ["A digital workflow", "became a paper\u00a0ritual."],
     body:
-      "Patient portal messages lived outside the medical record. I printed them, and then we waited for them to be scanned in. The clinical team needed to see everything in the patient’s record in real time. Until the scan finished, they shifted between systems to verify data, or just waited. That could potentially delay care for patients.",
+      "The clinical team needed to see everything in the patient’s record in real time. Until the scan finished, they shifted between systems to verify data, or just waited. That could potentially delay care for patients.",
     run: "Run the online path",
     replay: "Replay the online path",
     ready: "Ready to file.",
@@ -368,17 +366,10 @@ const en: MskCopy = {
     wrongLabel: "What I got wrong",
     items: [
       {
-        n: "01",
-        title: "EMR filing workflow",
-        finding: "A portal message was printed, routed to HIM, then waited to appear in the chart.",
-        change: "One dashboard action, placed where the decision was already being made.",
-        wrong: "I misjudged how small it would look to IT. They deprioritized it as not worth the effort, and I had to keep raising it to get it built.",
-      },
-      {
         n: "02",
         title: "CPR certification",
         finding: "The CPR (cardiopulmonary resuscitation) material was written in technical, legal language. So few clinicians got through it that the team planned a 4-month extension.",
-        change: "I rewrote it for the people who had to complete it. The whole department certified a month before the original deadline, with no 4-month extension.",
+        change: "I rewrote it for the people who had to complete it. The whole department certified a month before the original deadline.",
       },
       {
         n: "03",
@@ -388,8 +379,6 @@ const en: MskCopy = {
       },
     ],
     mechanismLabels: {
-      before: "BEFORE", after: "AFTER",
-      dashboard: "Dashboard", paper: "Paper", chart: "Chart",
       beforeProse: "BEFORE · LEGAL PROSE", denseBlock: "one dense block",
       afterSteps: "AFTER · STEPS A CLINICIAN CAN FOLLOW",
       beforeCohort: "BEFORE · ONE COURSE FOR EVERY COHORT", sameStandard: "same standard",
@@ -440,7 +429,7 @@ const en: MskCopy = {
     kicker: "The real test came later",
     title: "What happened after I left that role.",
     lede:
-      "It was adopted. After I left that role, they got funding. The built version changed along the way, and I wasn’t there for it. I later saw it in the production system while training new employees.",
+      "IT approved it once funding came in and built it as I presented it. I don’t know what changed behind the scenes. I later saw it in production while training new employees.",
     // Claim audit 2026-10-13: the lanes used to say "system upgrade" ×2,
     // "still in use" and "still used by other admins" — claims Hillary cut on
     // 2026-09-27 (msk.md F2/F3: no source; she was not present after launch).
@@ -467,7 +456,7 @@ const en: MskCopy = {
     ],
     why:
       "The work moved from personal workaround to shared system; the plain-language format got the department compliant before the deadline.",
-    proofLabel: "Independent proof · MSK News",
+    proofLabel: "Profile · MSK News",
     proofTitle: "From the military to Memorial Sloan Kettering",
     proofAria: "Read Hillary Esposito’s career profile in MSK News (opens in new tab)",
   },
@@ -480,8 +469,8 @@ const en: MskCopy = {
     disclaimer: "Anonymized evidence · organization-wide results are attributed to the initiative · the ~$1M/year is a projection from my pitch, not measured savings",
     metrics: [
       { tag: "Led", n: "1 month", label: "early: the whole department certified before the original deadline, with no 4-month extension" },
-      { tag: "Scale", n: "21,000+", label: "clinicians and administrative staff across the workflows in scope" },
-      { tag: "Contributed to", n: "20%", label: "organization-wide EMR cost reduction, inside a larger initiative" },
+      { tag: "Trained", n: "~2,000", label: "new employees I trained on Epic, HIPAA and compliance, by my estimate" },
+      { tag: "Contributed to", n: "20%", label: "lower printing and scanning costs, per my review of the financials with the finance department head" },
       { tag: "Projection", n: "~$1M/year", label: "projected paper savings in my Process Improvement Fair pitch, not measured savings" },
     ],
     route: ["Observe the real work", "Map the failure", "Align the system", "Get it built"],
@@ -515,8 +504,8 @@ const es: MskCopy = {
     readTime: "6 min",
     readMeta: "de lectura · 6 años, 3 puestos",
     ledeOpen:
-      "Los mensajes del portal de pacientes vivían en el portal, no en la historia clínica, así que el personal los imprimía para escanearlos. En el puesto de coordinación de oficina, mapeé ese desvío entre las áreas clínica, de TI, de HIM (gestión de información de salud, el equipo que escanea documentos a la historia) y de operaciones, y luego presenté el flujo en línea que se implementó dos puestos después. Sirvió a un trabajo que alcanzaba a ",
-    ledeScale: "más de 21,000 clínicos y personal administrativo",
+      "Los mensajes del portal de pacientes vivían en el portal, no en la historia clínica, así que el personal los imprimía para escanearlos. En el puesto de coordinación de oficina, mapeé ese desvío entre las áreas clínica, de TI, de HIM (gestión de información de salud, el equipo que escanea documentos a la historia) y de operaciones, y luego presenté el flujo en línea que se implementó dos puestos después, en un centro oncológico de ",
+    ledeScale: "más de 21,000 empleados",
     ledeMiddle: ", y ",
     ledeSustain: "después lo vi en el sistema de producción mientras capacitaba a nuevos empleados",
     ledeClose: ".",
@@ -530,7 +519,7 @@ const es: MskCopy = {
     kicker: "Empezó con un desvío",
     titleLines: ["Un flujo digital", "se volvió un ritual de\u00a0papel."],
     body:
-      "Los mensajes del portal de pacientes vivían fuera de la historia clínica. Yo los imprimía y luego esperábamos a que los escanearan. El equipo clínico necesitaba ver toda la información en la historia del paciente en tiempo real. Mientras no terminaba el escaneo, pasaban de un sistema a otro para verificar datos, o simplemente esperaban. Eso podría retrasar la atención a los pacientes.",
+      "El equipo clínico necesitaba ver toda la información en la historia del paciente en tiempo real. Mientras no terminaba el escaneo, pasaban de un sistema a otro para verificar datos, o simplemente esperaban. Eso podría retrasar la atención a los pacientes.",
     run: "Recorrer la ruta en línea",
     replay: "Repetir la ruta en línea",
     ready: "Listo para archivar.",
@@ -675,17 +664,10 @@ const es: MskCopy = {
     wrongLabel: "En qué me equivoqué",
     items: [
       {
-        n: "01",
-        title: "Flujo de archivo del EMR",
-        finding: "Un mensaje del portal se imprimía, se enviaba a HIM y luego esperaba para aparecer en la historia clínica.",
-        change: "Una sola acción en el panel, puesta donde la decisión ya se estaba tomando.",
-        wrong: "Calculé mal lo pequeño que le parecería a TI. Lo despriorizaron porque no valía el esfuerzo, y tuve que seguir insistiendo para que se construyera.",
-      },
-      {
         n: "02",
         title: "Certificación de RCP",
         finding: "El material de RCP (reanimación cardiopulmonar) estaba escrito en lenguaje técnico y legal. Tan poca gente clínica lo completaba que el equipo planeaba una prórroga de 4 meses.",
-        change: "Lo reescribí para las personas que tenían que completarlo. Toda el área se certificó un mes antes de la fecha límite original, sin la prórroga de 4 meses.",
+        change: "Lo reescribí para las personas que tenían que completarlo. Toda el área se certificó un mes antes de la fecha límite original.",
       },
       {
         n: "03",
@@ -695,8 +677,6 @@ const es: MskCopy = {
       },
     ],
     mechanismLabels: {
-      before: "ANTES", after: "DESPUÉS",
-      dashboard: "Panel", paper: "Papel", chart: "Historia",
       beforeProse: "ANTES · PROSA LEGAL", denseBlock: "un bloque denso",
       afterSteps: "DESPUÉS · PASOS QUE SE PUEDEN SEGUIR",
       beforeCohort: "ANTES · UN SOLO CURSO PARA TODA COHORTE", sameStandard: "mismo estándar",
@@ -747,7 +727,7 @@ const es: MskCopy = {
     kicker: "La prueba de verdad llegó después",
     title: "Lo que pasó después de que dejé ese puesto.",
     lede:
-      "Fue adoptado. Después de que dejé ese puesto, consiguieron el financiamiento. La versión construida cambió en el camino, y yo no estuve ahí. Más tarde la vi en el sistema de producción mientras capacitaba a nuevos empleados.",
+      "TI lo aprobó cuando llegó el financiamiento y lo construyó tal como lo presenté. No sé qué cambió por detrás. Más tarde lo vi en producción mientras capacitaba a nuevos empleados.",
     figcaption: "Qué pasó después de lanzar cada uno",
     shipped: "LANZADO",
     lanes: [
@@ -768,7 +748,7 @@ const es: MskCopy = {
     ],
     why:
       "El trabajo pasó de un desvío personal a un sistema compartido; el formato en lenguaje sencillo dejó al área conforme antes de la fecha límite.",
-    proofLabel: "Prueba independiente · MSK News",
+    proofLabel: "Perfil · MSK News",
     proofTitle: "Del ejército a Memorial Sloan Kettering",
     proofAria: "Leer el perfil de carrera de Hillary Esposito en MSK News (se abre en una pestaña nueva)",
   },
@@ -781,8 +761,8 @@ const es: MskCopy = {
     disclaimer: "Evidencia anonimizada · los resultados de toda la organización se atribuyen a la iniciativa · los ~$1M/año son una proyección de mi propuesta, no un ahorro medido",
     metrics: [
       { tag: "Dirigí", n: "1 mes", label: "antes: toda el área se certificó antes de la fecha límite original, sin la prórroga de 4 meses" },
-      { tag: "Escala", n: "21,000+", label: "clínicos y personal administrativo en los flujos que rediseñé" },
-      { tag: "Contribuí a", n: "20%", label: "reducción de costos del EMR en toda la organización, dentro de una iniciativa mayor" },
+      { tag: "Capacité", n: "~2,000", label: "nuevos empleados que capacité en Epic, HIPAA y cumplimiento, según mi estimación" },
+      { tag: "Contribuí a", n: "20%", label: "menos costos de impresión y escaneo, según mi revisión de las finanzas con el jefe del departamento de finanzas" },
       { tag: "Proyección", n: "~$1M/año", label: "ahorro proyectado en papel en mi propuesta para la Feria de Mejora de Procesos, no un ahorro medido" },
     ],
     route: ["Observar el trabajo real", "Mapear la falla", "Alinear el sistema", "Lograr que se construya"],
