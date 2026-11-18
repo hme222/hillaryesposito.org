@@ -54,11 +54,11 @@ export default function RecruiterPanel() {
                 1440 and 390 (the panel is a fixed-width slide-out, so its
                 content column is roughly the same measure at every
                 viewport). The CSS clamp on `.recruiter-panel__title` keeps
-                "Healthcare Product Designer" itself on one line at the
+                the role line itself on one line at the
                 panel’s narrowest width instead of this break accidentally
                 creating its own second, three-line wrap. */}
             <h2 id="recruiter-panel-title" className="recruiter-panel__title" tabIndex={-1}>
-              Hillary Esposito,<br />Product Designer
+              Hillary Esposito,<br />UX Designer &amp; Researcher
             </h2>
           </div>
           <button
@@ -111,13 +111,13 @@ export default function RecruiterPanel() {
               <li>
                 <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/msk")}>
                   <strong>MSK · A filing queue replaced a four-department paper detour</strong>
-                  <span className="recruiter-panel__project-proof">I mapped the four-department workaround and pitched the queue that IT and UX later built.</span>
+                  <span className="recruiter-panel__project-proof">I mapped the four-department workaround and presented the queue to leadership and IT, who later built it.</span>
                 </button>
               </li>
               <li>
                 <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/grove")}>
                   <strong>Grove · Twelve features became three</strong>
-                  <span className="recruiter-panel__project-proof">Five tests and a 37-person survey narrowed the next prototype from twelve features to three.</span>
+                  <span className="recruiter-panel__project-proof">One test with five people and a 37-person survey narrowed the next prototype from twelve features to three.</span>
                 </button>
               </li>
               <li>

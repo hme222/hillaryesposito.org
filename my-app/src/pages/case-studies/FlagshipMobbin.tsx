@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
 import ReadingProgress from "../../components/flagship/ReadingProgress";
-import ShareCaseStudy from "../../components/flagship/ShareCaseStudy";
 import DecisionStory from "../../components/flagship/DecisionStory";
 import EvidenceField from "../../components/flagship/EvidenceField";
 import MobbinIndexLens from "../../components/flagship/MobbinIndexLens";
@@ -17,8 +16,6 @@ import useFlagshipReveal from "../../hooks/useFlagshipReveal";
 import usePageTitle from "../../hooks/usePageTitle";
 import "../../styles/riso-page.css";
 import "../../styles/flagship-case-study.css";
-import CopyEmail from "../../components/CopyEmail";
-import CaseMore from "../../components/CaseMore";
 
 const CHAPTERS: CaseStudyChapter[] = [
   { id: "mobbin-start", label: "Start" },
@@ -87,14 +84,16 @@ export default function FlagshipMobbin() {
           <div className="rp-clearing">
             <h1 className="rp-h1">200+ screens per app, searchable by task.</h1>
             <p className="rp-sub">
-              For Mobbin, a screenshot library designers search, I captured and labeled <b>200+ screens per app</b> across Kikoff, Polymarket and Discover. I did not design these products or Mobbin.
+              Mobbin is a library of app screenshots that designers search for ideas. As a freelancer, I spent four months going through three apps (Kikoff, Polymarket and Discover) and capturing <b>200+ screens per app</b>. I labeled each one by task so designers can find it. I did not design these apps or Mobbin.
             </p>
             {/* Interview-sourced human line (Better Stories pass, 2026-11-10); source: design-docs/case-study-stories. */}
             <p className="rp-humanLine">My first batch used my words, not Mobbin’s. I was embarrassed.</p>
           </div>
         </div>
-        <div className="rp-hero__media fp-heroArt fp-heroArt--mobbin" role="group" aria-label="Three finance app screens documented for Mobbin" data-evidence="true">
-          {APPS.map((app, index) => <div className={`fp-capture fp-capture--${index + 1}`} key={app.name}><img src={app.image} alt={index === 0 ? "Three documented finance app interfaces: Kikoff, Polymarket, and Discover" : ""} /></div>)}
+        <div className="rp-hero__media fp-heroArt fp-heroArt--mobbin fp-heroArt--fan" role="group" aria-label="Three finance app screens documented for Mobbin" data-evidence="true">
+          <div className="fp-fan">
+            {APPS.map((app, index) => <div className={`fp-capture fp-capture--${index + 1}`} key={app.name}><img src={app.image} alt={index === 0 ? "Three documented finance app interfaces: Kikoff, Polymarket, and Discover" : ""} /></div>)}
+          </div>
         </div>
       </header>
 
@@ -104,14 +103,7 @@ export default function FlagshipMobbin() {
       <section className="rp-section" id="mobbin-work" data-language-anchor="mobbin-work">
         <div className="rp-wrap">
           <h2 className="rp-title">A screenshot is not a flow.</h2>
-          <div className="fp-workSplit rp-reveal" data-evidence="true">
-            <article><span>The mechanical part</span><h3>Capture the screen</h3><p>Any tool can do this part.</p></article>
-            <article><span>The actual work</span><h3>Decide what travels</h3><p>Choose the task, sequence, cuts, and searchable label.</p></article>
-          </div>
-          <CaseMore label="How I worked and what I got wrong">
-            <p className="rp-lede">Walk the task. Keep useful states. Order the sequence. Name it in Mobbin’s vocabulary.</p>
-            <div className="fp-journalLine"><span>What I got wrong</span><b>My first batch used my vocabulary. Revisions dropped once I learned Mobbin’s.</b></div>
-          </CaseMore>
+          <p className="rp-lede">Designers come to Mobbin looking for a task, like logging in or opening an account.</p>
         </div>
       </section>
 
@@ -119,7 +111,6 @@ export default function FlagshipMobbin() {
         id="mobbin-decisions"
         languageAnchor="mobbin-decisions"
         title="Editing is the work."
-        intro="Preserve the useful state, sequence the task, name it for retrieval."
         steps={STEPS}
         // All three documented screens are mounted in one fixed-ratio frame and
         // the active step picks which one is visible (see STEP_APP), so the
@@ -168,23 +159,14 @@ export default function FlagshipMobbin() {
         id="mobbin-outcomes"
         languageAnchor="mobbin-outcomes"
         title="A searchable record of how three finance products work."
-        intro="I documented the source apps for Mobbin’s Finance+ reference library. I did not design Kikoff, Polymarket, Discover, or Mobbin."
-        disclaimer="Freelance app-capture work."
-        metrics={[
-          { n: "200+", label: "screens per app, captured, sequenced, annotated, and labeled across three apps" },
-          { n: "3", label: "live finance apps documented, each earning confidence a different way" },
-          { n: "4", label: "months building reusable references for designers" },
-        ]}
-        route={["Capture the task", "Map the sequence", "Name the pattern", "Make it searchable"]}
+        intro="I documented the source apps for Mobbin’s Finance+ reference library."
+        metrics={[]}
       /></div>
 
       <section className="rp-section">
         <div className="rp-wrap rp-close">
           <h2>After 200+ screens per app, I notice how a flow earns trust.</h2>
-          <p>Kikoff shows proof after each action, Polymarket shows risk before you commit, Discover makes the fine print findable.</p>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
-          <CopyEmail />
-          <ShareCaseStudy title="Mobbin: a case study by Hillary Esposito" />
         </div>
       </section>
 

@@ -138,3 +138,33 @@ Feedback: didn't love the work-story About; "people make me curious, remove all 
 **A (verbatim):** "I wanted to prove I could do something really hard"
 - Captured: she ran the full marathon to prove she could do something really hard.
 - Gap: who she was proving it to (herself, others, a past doubt); the finish-line moment (not answered); what she did next.
+
+## Her opener — 2026-11-17
+**A (verbatim):** "Hi I'm Hillary. I enjoy homecooked meals, blooming plants and cuddles with my cat, Luna."
+- New fact: she enjoys home-cooked meals. She calls Luna "my cat, Luna" here herself (supersedes the 11-11 "don't say the cat" note only for this sentence).
+- On the page as the opening (punctuation trimmed: "Hi, I'm Hillary.", "home-cooked"). Body below it: curiosity line, mile-18 marathon story, Luna walks + dumpster orchids, all from facts above. Spanish is mine.
+- Page interaction (her picks #1 and #2 of five): underlined words (Hillary, blooming plants, Luna, orchids) bring their photo up; photos are a stack of tilted prints. Captions now: "Luna, my precious baby." / "Two orchids from the dumpster area, back to life."
+
+## Five storytelling rewrites rejected — 2026-11-17
+**A (verbatim):** "i don't like them arent real stories, so far i only like the hi im hillary line"
+- Facts stitched into a narrative don't read as stories to her. A story needs a scene she tells: a specific moment, what happened, what she did.
+- Page now shows only her opener. Next: interview for one real story, one question at a time.
+
+**Q:** The orchid day: what were you doing, what did they look like, what happened at home?
+**A (verbatim):** "when i was taking out garbage to the trash area in my building, I noticed someone had left two orchids in the area assuming they were dead because they weren't blooming. I picked them up, inspected them for disease and realized they were in great condition and decided to rehome them"
+- Captured: taking out the garbage in her building's trash area; two orchids left there, likely tossed as "dead" because they weren't blooming; she picked them up, inspected for disease, found them in great condition, rehomed them.
+- Gap: the ending (how long until they bloomed, what she did, what blooming looked like). The photo shows them blooming.
+
+**Ending (verbatim):** "I kept them separate from my other plants for a few weeks, watered them normally like my other orchids and after a month I noticed them growing and put them with my other orchids, they began blooming just a few months later. I didn't even know what color orchid they were until they bloomed, they stayed bloomd for 5 months, I couldn't believe it."
+**Correction (verbatim):** "say 3 months for the bloom" — read as: they bloomed three months later (time to bloom). Bloom lasted 5 months.
+- On the page as the About story, lightly trimmed. Spanish is mine.
+
+**Too long → short versions (2026-11-17).** She picked C ("My two favorite orchids came from my building's trash area...") — confirms the two orchids are her favorites.
+**New fact (verbatim):** "Luna was also a rescue cat, can we weave this narrative of resucing cats and plants?"
+- On the page: "Luna is a rescue, and so are my two favorite orchids. They came from my building's trash area, and three months after I rehomed them, they bloomed for five months straight."
+- Gap: where/when Luna was rescued (not stated; don't add).
+
+**Picked (2026-11-17):** options 8 + 10 combined → "Home in New York is 80 plants and a few rescues: Luna, and two orchids I found by the trash. When I'm not home with them, I'm running. I've done 10 half marathons and one full." ("a few rescues" and "When I'm not home with them" are my bridges; she approved the options containing them.)
+
+**Photos (2026-11-17):** race photo (26.2 sign) restored, cue on "running"; her food photo (IMG_6722, converted, metadata stripped) added as cooking.jpg, cue on "home-cooked meals". Dish name not given; caption is just "Home-cooked." until she names it.
+- Dish (her words): "prosuchutto app with mozzerella and balsamic glaze and honey drizzle and tomato" → caption "My prosciutto appetizer: mozzarella, tomato, balsamic glaze and a honey drizzle."

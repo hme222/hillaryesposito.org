@@ -70,7 +70,6 @@ export default function GroveSystemLab() {
           <h3 id="grove-live-title">The system has to survive a tap.</h3>
           <p>Three small trust tests: one calm task, one honest guess, and one warning with a way to check it.</p>
         </div>
-        <p className="rp-specimenTruth">Interactive reconstruction · built from the research and decision log, not a shipped-product claim.</p>
         <div className="rp-demo">
           <div className="rp-demo__tabs" role="tablist" aria-label="Grove component specimens">
             {TABS.map((item, index) => (

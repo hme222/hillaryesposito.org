@@ -1,0 +1,1800 @@
+{
+ "light-w390-full": {
+  "default": {
+   "pageBg": "rgb(222, 228, 214)",
+   "label": {
+    "color": "rgb(89, 98, 83)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(32, 36, 28)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(32, 36, 28)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(32, 36, 28)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(32, 36, 28)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(69, 80, 63)",
+    "size": "13px",
+    "text": "",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 16,
+    "y": 2399.90625,
+    "w": 358,
+    "h": 74.828125
+   },
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "hover": {
+   "pageBg": "rgb(222, 228, 214)",
+   "label": {
+    "color": "rgb(89, 98, 83)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(32, 36, 28)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(32, 36, 28)",
+    "bg": "color(srgb 0.741176 0.219608 0.156863 / 0.08)",
+    "border": "rgb(32, 36, 28)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(32, 36, 28)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(69, 80, 63)",
+    "size": "13px",
+    "text": "",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 16,
+    "y": 2399.90625,
+    "w": 358,
+    "h": 74.828125
+   },
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "focus": {
+   "pageBg": "rgb(222, 228, 214)",
+   "label": {
+    "color": "rgb(89, 98, 83)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(32, 36, 28)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(32, 36, 28)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(32, 36, 28)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "solid 3px rgb(90, 122, 46)",
+    "outlineOffset": "4px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(69, 80, 63)",
+    "size": "13px",
+    "text": "",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 16,
+    "y": 2399.90625,
+    "w": 358,
+    "h": 74.828125
+   },
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "error": {
+   "pageBg": "rgb(222, 228, 214)",
+   "label": {
+    "color": "rgb(89, 98, 83)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(32, 36, 28)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(32, 36, 28)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(32, 36, 28)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(32, 36, 28)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(69, 80, 63)",
+    "size": "13px",
+    "text": "Couldn\u2019t copy. Select the text instead.",
+    "srOnly": false
+   },
+   "rect": {
+    "x": 16,
+    "y": 2399.90625,
+    "w": 358,
+    "h": 74.828125
+   },
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "copied": {
+   "pageBg": "rgb(222, 228, 214)",
+   "label": {
+    "color": "rgb(89, 98, 83)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(32, 36, 28)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(61, 107, 63)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(61, 107, 63)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(61, 107, 63)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copied"
+   },
+   "status": {
+    "color": "rgb(69, 80, 63)",
+    "size": "13px",
+    "text": "Email copied.",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 16,
+    "y": 2399.90625,
+    "w": 358,
+    "h": 74.828125
+   },
+   "scrollW": 390,
+   "innerW": 390
+  }
+ },
+ "light-w390-compact": {
+  "default": {
+   "pageBg": "rgb(18, 18, 15)",
+   "label": null,
+   "address": {
+    "color": "rgb(245, 239, 230)",
+    "size": "14px",
+    "tag": "A"
+   },
+   "button": {
+    "color": "rgb(245, 239, 230)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(245, 239, 230)",
+    "borderWidth": "0px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(245, 239, 230)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(245, 239, 230)",
+    "size": "13px",
+    "text": "",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 22.609375,
+    "y": 2634.53125,
+    "w": 285.0625,
+    "h": 44
+   },
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "copied": {
+   "pageBg": "rgb(18, 18, 15)",
+   "label": null,
+   "address": {
+    "color": "rgb(245, 239, 230)",
+    "size": "14px",
+    "tag": "A"
+   },
+   "button": {
+    "color": "rgb(245, 239, 230)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(245, 239, 230)",
+    "borderWidth": "0px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(245, 239, 230)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copied"
+   },
+   "status": {
+    "color": "rgb(245, 239, 230)",
+    "size": "13px",
+    "text": "Email copied.",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 22.609375,
+    "y": 2634.53125,
+    "w": 285.0625,
+    "h": 44
+   },
+   "scrollW": 390,
+   "innerW": 390
+  }
+ },
+ "light-w1440-full": {
+  "default": {
+   "pageBg": "rgb(222, 228, 214)",
+   "label": {
+    "color": "rgb(89, 98, 83)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(32, 36, 28)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(32, 36, 28)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(32, 36, 28)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(32, 36, 28)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(69, 80, 63)",
+    "size": "13px",
+    "text": "",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 212,
+    "y": 2483.421875,
+    "w": 1016,
+    "h": 44
+   },
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "hover": {
+   "pageBg": "rgb(222, 228, 214)",
+   "label": {
+    "color": "rgb(89, 98, 83)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(32, 36, 28)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(32, 36, 28)",
+    "bg": "color(srgb 0.741176 0.219608 0.156863 / 0.08)",
+    "border": "rgb(32, 36, 28)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(32, 36, 28)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(69, 80, 63)",
+    "size": "13px",
+    "text": "",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 212,
+    "y": 2483.421875,
+    "w": 1016,
+    "h": 44
+   },
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "focus": {
+   "pageBg": "rgb(222, 228, 214)",
+   "label": {
+    "color": "rgb(89, 98, 83)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(32, 36, 28)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(32, 36, 28)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(32, 36, 28)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "solid 3px rgb(90, 122, 46)",
+    "outlineOffset": "4px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(69, 80, 63)",
+    "size": "13px",
+    "text": "",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 212,
+    "y": 2483.421875,
+    "w": 1016,
+    "h": 44
+   },
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "error": {
+   "pageBg": "rgb(222, 228, 214)",
+   "label": {
+    "color": "rgb(89, 98, 83)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(32, 36, 28)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(32, 36, 28)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(32, 36, 28)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(32, 36, 28)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(69, 80, 63)",
+    "size": "13px",
+    "text": "Couldn\u2019t copy. Select the text instead.",
+    "srOnly": false
+   },
+   "rect": {
+    "x": 212,
+    "y": 2483.421875,
+    "w": 1016,
+    "h": 44
+   },
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "copied": {
+   "pageBg": "rgb(222, 228, 214)",
+   "label": {
+    "color": "rgb(89, 98, 83)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(32, 36, 28)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(61, 107, 63)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(61, 107, 63)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(61, 107, 63)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copied"
+   },
+   "status": {
+    "color": "rgb(69, 80, 63)",
+    "size": "13px",
+    "text": "Email copied.",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 212,
+    "y": 2483.421875,
+    "w": 1016,
+    "h": 44
+   },
+   "scrollW": 1440,
+   "innerW": 1440
+  }
+ },
+ "light-w1440-compact": {
+  "default": {
+   "pageBg": "rgb(18, 18, 15)",
+   "label": null,
+   "address": {
+    "color": "rgb(245, 239, 230)",
+    "size": "14px",
+    "tag": "A"
+   },
+   "button": {
+    "color": "rgb(245, 239, 230)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(245, 239, 230)",
+    "borderWidth": "0px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(245, 239, 230)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(245, 239, 230)",
+    "size": "13px",
+    "text": "",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 541.6875,
+    "y": 2746.421875,
+    "w": 285.0625,
+    "h": 44
+   },
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "copied": {
+   "pageBg": "rgb(18, 18, 15)",
+   "label": null,
+   "address": {
+    "color": "rgb(245, 239, 230)",
+    "size": "14px",
+    "tag": "A"
+   },
+   "button": {
+    "color": "rgb(245, 239, 230)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(245, 239, 230)",
+    "borderWidth": "0px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(245, 239, 230)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copied"
+   },
+   "status": {
+    "color": "rgb(245, 239, 230)",
+    "size": "13px",
+    "text": "Email copied.",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 541.6875,
+    "y": 2746.421875,
+    "w": 285.0625,
+    "h": 44
+   },
+   "scrollW": 1440,
+   "innerW": 1440
+  }
+ },
+ "light-w320-full": {
+  "default": {
+   "pageBg": "rgb(222, 228, 214)",
+   "label": {
+    "color": "rgb(89, 98, 83)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(32, 36, 28)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(32, 36, 28)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(32, 36, 28)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(32, 36, 28)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(69, 80, 63)",
+    "size": "13px",
+    "text": "",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 16,
+    "y": 2477.9375,
+    "w": 288,
+    "h": 74.828125
+   },
+   "scrollW": 320,
+   "innerW": 320
+  },
+  "error": {
+   "pageBg": "rgb(222, 228, 214)",
+   "label": {
+    "color": "rgb(89, 98, 83)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(32, 36, 28)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(32, 36, 28)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(32, 36, 28)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(32, 36, 28)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(69, 80, 63)",
+    "size": "13px",
+    "text": "Couldn\u2019t copy. Select the text instead.",
+    "srOnly": false
+   },
+   "rect": {
+    "x": 16,
+    "y": 2477.9375,
+    "w": 288,
+    "h": 102.40625
+   },
+   "scrollW": 320,
+   "innerW": 320
+  }
+ },
+ "light-w320-compact": {
+  "default": {
+   "pageBg": "rgb(18, 18, 15)",
+   "label": null,
+   "address": {
+    "color": "rgb(245, 239, 230)",
+    "size": "14px",
+    "tag": "A"
+   },
+   "button": {
+    "color": "rgb(245, 239, 230)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(245, 239, 230)",
+    "borderWidth": "0px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(245, 239, 230)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(245, 239, 230)",
+    "size": "13px",
+    "text": "",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 18.546875,
+    "y": 2712.5625,
+    "w": 282.90625,
+    "h": 93.59375
+   },
+   "scrollW": 320,
+   "innerW": 320
+  }
+ },
+ "light-w900-full": {
+  "default": {
+   "pageBg": "rgb(222, 228, 214)",
+   "label": {
+    "color": "rgb(89, 98, 83)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(32, 36, 28)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(32, 36, 28)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(32, 36, 28)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(32, 36, 28)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(69, 80, 63)",
+    "size": "13px",
+    "text": "",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 32,
+    "y": 2207.453125,
+    "w": 836,
+    "h": 44
+   },
+   "scrollW": 900,
+   "innerW": 900
+  }
+ },
+ "light-w900-compact": {
+  "default": {
+   "pageBg": "rgb(18, 18, 15)",
+   "label": null,
+   "address": {
+    "color": "rgb(245, 239, 230)",
+    "size": "14px",
+    "tag": "A"
+   },
+   "button": {
+    "color": "rgb(245, 239, 230)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(245, 239, 230)",
+    "borderWidth": "0px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(245, 239, 230)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(245, 239, 230)",
+    "size": "13px",
+    "text": "",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 271.6875,
+    "y": 2404.453125,
+    "w": 285.0625,
+    "h": 44
+   },
+   "scrollW": 900,
+   "innerW": 900
+  }
+ },
+ "light-zoom200-full": {
+  "default": {
+   "pageBg": "rgb(222, 228, 214)",
+   "label": {
+    "color": "rgb(89, 98, 83)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(32, 36, 28)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(32, 36, 28)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(32, 36, 28)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(32, 36, 28)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(69, 80, 63)",
+    "size": "13px",
+    "text": "",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 25.59375,
+    "y": 2406.203125,
+    "w": 588.8125,
+    "h": 44
+   },
+   "scrollW": 640,
+   "innerW": 640
+  },
+  "error": {
+   "pageBg": "rgb(222, 228, 214)",
+   "label": {
+    "color": "rgb(89, 98, 83)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(32, 36, 28)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(32, 36, 28)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(32, 36, 28)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(32, 36, 28)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(69, 80, 63)",
+    "size": "13px",
+    "text": "Couldn\u2019t copy. Select the text instead.",
+    "srOnly": false
+   },
+   "rect": {
+    "x": 25.59375,
+    "y": 2406.203125,
+    "w": 588.8125,
+    "h": 71.578125
+   },
+   "scrollW": 640,
+   "innerW": 640
+  }
+ },
+ "light-zoom200-compact": {
+  "default": {
+   "pageBg": "rgb(18, 18, 15)",
+   "label": null,
+   "address": {
+    "color": "rgb(245, 239, 230)",
+    "size": "14px",
+    "tag": "A"
+   },
+   "button": {
+    "color": "rgb(245, 239, 230)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(245, 239, 230)",
+    "borderWidth": "0px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(245, 239, 230)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(245, 239, 230)",
+    "size": "13px",
+    "text": "",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 23.1875,
+    "y": 2610,
+    "w": 285.0625,
+    "h": 44
+   },
+   "scrollW": 640,
+   "innerW": 640
+  }
+ },
+ "dark-w390-full": {
+  "default": {
+   "pageBg": "rgb(25, 27, 16)",
+   "label": {
+    "color": "rgb(169, 165, 130)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(236, 231, 212)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(236, 231, 212)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(236, 231, 212)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(236, 231, 212)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(185, 181, 150)",
+    "size": "13px",
+    "text": "",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 16,
+    "y": 2399.90625,
+    "w": 358,
+    "h": 74.828125
+   },
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "hover": {
+   "pageBg": "rgb(25, 27, 16)",
+   "label": {
+    "color": "rgb(169, 165, 130)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(236, 231, 212)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(236, 231, 212)",
+    "bg": "color(srgb 1 0.54902 0.509804 / 0.08)",
+    "border": "rgb(236, 231, 212)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(236, 231, 212)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(185, 181, 150)",
+    "size": "13px",
+    "text": "",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 16,
+    "y": 2399.90625,
+    "w": 358,
+    "h": 74.828125
+   },
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "focus": {
+   "pageBg": "rgb(25, 27, 16)",
+   "label": {
+    "color": "rgb(169, 165, 130)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(236, 231, 212)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(236, 231, 212)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(236, 231, 212)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "solid 3px rgb(232, 176, 106)",
+    "outlineOffset": "4px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(185, 181, 150)",
+    "size": "13px",
+    "text": "",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 16,
+    "y": 2399.90625,
+    "w": 358,
+    "h": 74.828125
+   },
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "error": {
+   "pageBg": "rgb(25, 27, 16)",
+   "label": {
+    "color": "rgb(169, 165, 130)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(236, 231, 212)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(236, 231, 212)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(236, 231, 212)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(236, 231, 212)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(185, 181, 150)",
+    "size": "13px",
+    "text": "Couldn\u2019t copy. Select the text instead.",
+    "srOnly": false
+   },
+   "rect": {
+    "x": 16,
+    "y": 2399.90625,
+    "w": 358,
+    "h": 74.828125
+   },
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "copied": {
+   "pageBg": "rgb(25, 27, 16)",
+   "label": {
+    "color": "rgb(169, 165, 130)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(236, 231, 212)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(236, 231, 212)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(124, 176, 105)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(236, 231, 212)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copied"
+   },
+   "status": {
+    "color": "rgb(185, 181, 150)",
+    "size": "13px",
+    "text": "Email copied.",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 16,
+    "y": 2399.90625,
+    "w": 358,
+    "h": 74.828125
+   },
+   "scrollW": 390,
+   "innerW": 390
+  }
+ },
+ "dark-w390-compact": {
+  "default": {
+   "pageBg": "rgb(18, 18, 15)",
+   "label": null,
+   "address": {
+    "color": "rgb(245, 239, 230)",
+    "size": "14px",
+    "tag": "A"
+   },
+   "button": {
+    "color": "rgb(245, 239, 230)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(245, 239, 230)",
+    "borderWidth": "0px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(245, 239, 230)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(245, 239, 230)",
+    "size": "13px",
+    "text": "",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 22.609375,
+    "y": 2634.53125,
+    "w": 285.0625,
+    "h": 44
+   },
+   "scrollW": 390,
+   "innerW": 390
+  },
+  "copied": {
+   "pageBg": "rgb(18, 18, 15)",
+   "label": null,
+   "address": {
+    "color": "rgb(245, 239, 230)",
+    "size": "14px",
+    "tag": "A"
+   },
+   "button": {
+    "color": "rgb(245, 239, 230)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(245, 239, 230)",
+    "borderWidth": "0px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(245, 239, 230)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copied"
+   },
+   "status": {
+    "color": "rgb(245, 239, 230)",
+    "size": "13px",
+    "text": "Email copied.",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 22.609375,
+    "y": 2634.53125,
+    "w": 285.0625,
+    "h": 44
+   },
+   "scrollW": 390,
+   "innerW": 390
+  }
+ },
+ "dark-w1440-full": {
+  "default": {
+   "pageBg": "rgb(25, 27, 16)",
+   "label": {
+    "color": "rgb(169, 165, 130)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(236, 231, 212)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(236, 231, 212)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(236, 231, 212)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(236, 231, 212)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(185, 181, 150)",
+    "size": "13px",
+    "text": "",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 212,
+    "y": 2483.421875,
+    "w": 1016,
+    "h": 44
+   },
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "hover": {
+   "pageBg": "rgb(25, 27, 16)",
+   "label": {
+    "color": "rgb(169, 165, 130)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(236, 231, 212)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(236, 231, 212)",
+    "bg": "color(srgb 1 0.54902 0.509804 / 0.08)",
+    "border": "rgb(236, 231, 212)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(236, 231, 212)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(185, 181, 150)",
+    "size": "13px",
+    "text": "",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 212,
+    "y": 2483.421875,
+    "w": 1016,
+    "h": 44
+   },
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "focus": {
+   "pageBg": "rgb(25, 27, 16)",
+   "label": {
+    "color": "rgb(169, 165, 130)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(236, 231, 212)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(236, 231, 212)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(236, 231, 212)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "solid 3px rgb(232, 176, 106)",
+    "outlineOffset": "4px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(185, 181, 150)",
+    "size": "13px",
+    "text": "",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 212,
+    "y": 2483.421875,
+    "w": 1016,
+    "h": 44
+   },
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "error": {
+   "pageBg": "rgb(25, 27, 16)",
+   "label": {
+    "color": "rgb(169, 165, 130)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(236, 231, 212)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(236, 231, 212)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(236, 231, 212)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(236, 231, 212)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(185, 181, 150)",
+    "size": "13px",
+    "text": "Couldn\u2019t copy. Select the text instead.",
+    "srOnly": false
+   },
+   "rect": {
+    "x": 212,
+    "y": 2483.421875,
+    "w": 1016,
+    "h": 44
+   },
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "copied": {
+   "pageBg": "rgb(25, 27, 16)",
+   "label": {
+    "color": "rgb(169, 165, 130)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(236, 231, 212)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(236, 231, 212)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(124, 176, 105)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(236, 231, 212)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copied"
+   },
+   "status": {
+    "color": "rgb(185, 181, 150)",
+    "size": "13px",
+    "text": "Email copied.",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 212,
+    "y": 2483.421875,
+    "w": 1016,
+    "h": 44
+   },
+   "scrollW": 1440,
+   "innerW": 1440
+  }
+ },
+ "dark-w1440-compact": {
+  "default": {
+   "pageBg": "rgb(18, 18, 15)",
+   "label": null,
+   "address": {
+    "color": "rgb(245, 239, 230)",
+    "size": "14px",
+    "tag": "A"
+   },
+   "button": {
+    "color": "rgb(245, 239, 230)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(245, 239, 230)",
+    "borderWidth": "0px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(245, 239, 230)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(245, 239, 230)",
+    "size": "13px",
+    "text": "",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 541.6875,
+    "y": 2746.421875,
+    "w": 285.0625,
+    "h": 44
+   },
+   "scrollW": 1440,
+   "innerW": 1440
+  },
+  "copied": {
+   "pageBg": "rgb(18, 18, 15)",
+   "label": null,
+   "address": {
+    "color": "rgb(245, 239, 230)",
+    "size": "14px",
+    "tag": "A"
+   },
+   "button": {
+    "color": "rgb(245, 239, 230)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(245, 239, 230)",
+    "borderWidth": "0px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(245, 239, 230)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copied"
+   },
+   "status": {
+    "color": "rgb(245, 239, 230)",
+    "size": "13px",
+    "text": "Email copied.",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 541.6875,
+    "y": 2746.421875,
+    "w": 285.0625,
+    "h": 44
+   },
+   "scrollW": 1440,
+   "innerW": 1440
+  }
+ },
+ "dark-w320-full": {
+  "default": {
+   "pageBg": "rgb(25, 27, 16)",
+   "label": {
+    "color": "rgb(169, 165, 130)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(236, 231, 212)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(236, 231, 212)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(236, 231, 212)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(236, 231, 212)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(185, 181, 150)",
+    "size": "13px",
+    "text": "",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 16,
+    "y": 2477.9375,
+    "w": 288,
+    "h": 74.828125
+   },
+   "scrollW": 320,
+   "innerW": 320
+  },
+  "error": {
+   "pageBg": "rgb(25, 27, 16)",
+   "label": {
+    "color": "rgb(169, 165, 130)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(236, 231, 212)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(236, 231, 212)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(236, 231, 212)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(236, 231, 212)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(185, 181, 150)",
+    "size": "13px",
+    "text": "Couldn\u2019t copy. Select the text instead.",
+    "srOnly": false
+   },
+   "rect": {
+    "x": 16,
+    "y": 2477.9375,
+    "w": 288,
+    "h": 102.40625
+   },
+   "scrollW": 320,
+   "innerW": 320
+  }
+ },
+ "dark-w320-compact": {
+  "default": {
+   "pageBg": "rgb(18, 18, 15)",
+   "label": null,
+   "address": {
+    "color": "rgb(245, 239, 230)",
+    "size": "14px",
+    "tag": "A"
+   },
+   "button": {
+    "color": "rgb(245, 239, 230)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(245, 239, 230)",
+    "borderWidth": "0px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(245, 239, 230)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(245, 239, 230)",
+    "size": "13px",
+    "text": "",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 18.546875,
+    "y": 2712.5625,
+    "w": 282.90625,
+    "h": 93.59375
+   },
+   "scrollW": 320,
+   "innerW": 320
+  }
+ },
+ "dark-w900-full": {
+  "default": {
+   "pageBg": "rgb(25, 27, 16)",
+   "label": {
+    "color": "rgb(169, 165, 130)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(236, 231, 212)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(236, 231, 212)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(236, 231, 212)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(236, 231, 212)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(185, 181, 150)",
+    "size": "13px",
+    "text": "",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 32,
+    "y": 2207.453125,
+    "w": 836,
+    "h": 44
+   },
+   "scrollW": 900,
+   "innerW": 900
+  }
+ },
+ "dark-w900-compact": {
+  "default": {
+   "pageBg": "rgb(18, 18, 15)",
+   "label": null,
+   "address": {
+    "color": "rgb(245, 239, 230)",
+    "size": "14px",
+    "tag": "A"
+   },
+   "button": {
+    "color": "rgb(245, 239, 230)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(245, 239, 230)",
+    "borderWidth": "0px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(245, 239, 230)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(245, 239, 230)",
+    "size": "13px",
+    "text": "",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 271.6875,
+    "y": 2404.453125,
+    "w": 285.0625,
+    "h": 44
+   },
+   "scrollW": 900,
+   "innerW": 900
+  }
+ },
+ "dark-zoom200-full": {
+  "default": {
+   "pageBg": "rgb(25, 27, 16)",
+   "label": {
+    "color": "rgb(169, 165, 130)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(236, 231, 212)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(236, 231, 212)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(236, 231, 212)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(236, 231, 212)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(185, 181, 150)",
+    "size": "13px",
+    "text": "",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 25.59375,
+    "y": 2406.203125,
+    "w": 588.8125,
+    "h": 44
+   },
+   "scrollW": 640,
+   "innerW": 640
+  },
+  "error": {
+   "pageBg": "rgb(25, 27, 16)",
+   "label": {
+    "color": "rgb(169, 165, 130)",
+    "size": "15px"
+   },
+   "address": {
+    "color": "rgb(236, 231, 212)",
+    "size": "16px",
+    "tag": "CODE"
+   },
+   "button": {
+    "color": "rgb(236, 231, 212)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(236, 231, 212)",
+    "borderWidth": "1px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(236, 231, 212)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(185, 181, 150)",
+    "size": "13px",
+    "text": "Couldn\u2019t copy. Select the text instead.",
+    "srOnly": false
+   },
+   "rect": {
+    "x": 25.59375,
+    "y": 2406.203125,
+    "w": 588.8125,
+    "h": 71.578125
+   },
+   "scrollW": 640,
+   "innerW": 640
+  }
+ },
+ "dark-zoom200-compact": {
+  "default": {
+   "pageBg": "rgb(18, 18, 15)",
+   "label": null,
+   "address": {
+    "color": "rgb(245, 239, 230)",
+    "size": "14px",
+    "tag": "A"
+   },
+   "button": {
+    "color": "rgb(245, 239, 230)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "rgb(245, 239, 230)",
+    "borderWidth": "0px",
+    "size": "13px",
+    "weight": "700",
+    "outline": "none 3px rgb(245, 239, 230)",
+    "outlineOffset": "0px",
+    "width": 98,
+    "height": 44,
+    "transition": "0.16s",
+    "text": "Copy"
+   },
+   "status": {
+    "color": "rgb(245, 239, 230)",
+    "size": "13px",
+    "text": "",
+    "srOnly": true
+   },
+   "rect": {
+    "x": 23.1875,
+    "y": 2610,
+    "w": 285.0625,
+    "h": 44
+   },
+   "scrollW": 640,
+   "innerW": 640
+  }
+ },
+ "reduced-motion": {
+  "pageBg": "rgb(25, 27, 16)",
+  "label": {
+   "color": "rgb(169, 165, 130)",
+   "size": "15px"
+  },
+  "address": {
+   "color": "rgb(236, 231, 212)",
+   "size": "16px",
+   "tag": "CODE"
+  },
+  "button": {
+   "color": "rgb(236, 231, 212)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "border": "rgb(236, 231, 212)",
+   "borderWidth": "1px",
+   "size": "13px",
+   "weight": "700",
+   "outline": "none 3px rgb(236, 231, 212)",
+   "outlineOffset": "0px",
+   "width": 98,
+   "height": 44,
+   "transition": "1e-05s",
+   "text": "Copy"
+  },
+  "status": {
+   "color": "rgb(185, 181, 150)",
+   "size": "13px",
+   "text": "",
+   "srOnly": true
+  },
+  "rect": {
+   "x": 212,
+   "y": 2474.1875,
+   "w": 1016,
+   "h": 44
+  },
+  "scrollW": 1440,
+  "innerW": 1440
+ }
+}

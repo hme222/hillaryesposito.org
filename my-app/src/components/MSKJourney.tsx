@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import "../styles/msk-journey.css";
 
 type Mode = "before" | "after";
 type IconName = "queue" | "find" | "print" | "carry" | "wait" | "check" | "pick" | "send" | "chart";
@@ -24,6 +25,16 @@ const STOPS: Record<Mode, Stop[]> = {
     { icon: "check", title: "Come back to status", note: "The queue shows it was filed." },
   ],
 };
+
+// Spanish titles for the static Home thumbnail only, taken from the case
+// study's own Spanish "Después" line (spanishCaseStudies.ts). Draft for review.
+const AFTER_TITLES_ES = [
+  "Abrir la cola",
+  "Seleccionar el mensaje",
+  "Elegir Enviar al EMR",
+  "Se archiva en la historia",
+  "Volver al estado",
+];
 
 const STEP_MS = 850;
 
@@ -120,9 +131,56 @@ function prefersReducedMotion(): boolean {
 
 /**
  * @status: stable
- * @purpose: A friendly picture of the MSK filing change for first-time readers: one portal message (a small envelope with a face) travels through the six before steps or the five after steps, each with a plain-word title and icon, with a Before/After switch and a "Walk it through" button that plays one pass only when pressed; `initialMode` opens it on Before (hero) or After (the MSK decision story). Pick this to explain the change at a glance; for actor lanes and handoffs use MSKServiceBlueprint, and for the literal queue screen use MSKDashboardMockup.
+ * @purpose: A friendly picture of the MSK filing change for first-time readers: one portal message (a small envelope with a face) travels through the six before steps or the five after steps, each with a plain-word title and icon, with a Before/After switch and a "Walk it through" button that plays one pass only when pressed; `initialMode` opens it on Before or After; `afterOnly` renders the After track with its notes but no controls or caption (the MSK decision story, beside the hero instance); `decorative` (+ `lang`) renders a static, control-free After track for the Home work card. Pick this to explain the change at a glance; for actor lanes and handoffs use MSKServiceBlueprint, and for the literal queue screen use MSKDashboardMockup.
  */
-export default function MSKJourney({ initialMode = "before" }: { initialMode?: Mode } = {}) {
+type MSKJourneyProps = {
+  initialMode?: Mode;
+  /** Static thumbnail (Home work card): the After track only, titles only, no controls, inert. */
+  decorative?: boolean;
+  /** The After track with titles and notes, but no tabs, step count, walk
+   *  button or caption: for a second instance on a page whose first instance
+   *  already carries those (the MSK decision story). */
+  afterOnly?: boolean;
+  lang?: "en" | "es";
+};
+
+export default function MSKJourney({ initialMode = "before", decorative = false, afterOnly = false, lang = "en" }: MSKJourneyProps = {}) {
+  if (decorative) {
+    const titles = lang === "es" ? AFTER_TITLES_ES : STOPS.after.map((s) => s.title);
+    return (
+      <figure className="msk-journey msk-journey--after msk-journey--static" aria-hidden="true">
+        <ol className="msk-journey__track" style={{ "--n": STOPS.after.length } as React.CSSProperties}>
+          {STOPS.after.map((stop, i) => (
+            <li key={stop.title}>
+              <Icon name={stop.icon} />
+              <span className="msk-journey__n">{i + 1}</span>
+              <b>{titles[i]}</b>
+            </li>
+          ))}
+        </ol>
+      </figure>
+    );
+  }
+  if (afterOnly) {
+    return (
+      <figure className="msk-journey msk-journey--after msk-journey--bare">
+        <ol className="msk-journey__track" style={{ "--n": STOPS.after.length } as React.CSSProperties}>
+          {STOPS.after.map((stop, i) => (
+            <li key={stop.title}>
+              <Icon name={stop.icon} />
+              <span className="msk-journey__n" aria-hidden="true">{i + 1}</span>
+              <b>{stop.title}</b>
+              <span>{stop.note}</span>
+            </li>
+          ))}
+        </ol>
+      </figure>
+    );
+  }
+  return <InteractiveJourney initialMode={initialMode} />;
+}
+
+function InteractiveJourney({ initialMode }: { initialMode: Mode }) {
   const [mode, setMode] = useState<Mode>(initialMode);
   const [at, setAt] = useState(0);
   const [running, setRunning] = useState(false);

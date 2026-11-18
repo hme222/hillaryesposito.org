@@ -3,19 +3,16 @@ import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
 import ReadingProgress from "../../components/flagship/ReadingProgress";
-import ShareCaseStudy from "../../components/flagship/ShareCaseStudy";
 import CaseStudyReel, { CaseStudyReelData } from "../../components/flagship/CaseStudyReel";
 import EvidenceField from "../../components/flagship/EvidenceField";
 import CartoField from "../../components/riso/CartoField";
 import RisoDefs from "../../components/riso/RisoDefs";
 import SpanishCaseStudy from "../../components/SpanishCaseStudy";
 import { UXWOMAN_ES } from "../../data/spanishCaseStudies";
-import { UXWOMAN_LEDGER } from "../../data/uxWomanCaseStudy";
 import useFlagshipReveal from "../../hooks/useFlagshipReveal";
 import usePageTitle from "../../hooks/usePageTitle";
 import "../../styles/riso-page.css";
 import "../../styles/flagship-case-study.css";
-import CopyEmail from "../../components/CopyEmail";
 import CaseMore from "../../components/CaseMore";
 
 /**
@@ -69,7 +66,7 @@ const MIDTERM: CaseStudyReelData = {
   height: 900,
   kicker: "The midterm",
   label: "UX Woman midterm presentation, about 13 minutes, narrated",
-  caption: "My midterm presentation for the UX Woman UX Design Accelerator, about 13 minutes. The guide is built but not yet tested.",
+  caption: "About 13 minutes, narrated.",
   transcriptSummary: "What the presentation covers",
   transcript: [
     "A letter with a deadline and no clear next step",
@@ -123,30 +120,30 @@ export default function FlagshipUxWoman() {
           <div className="rp-clearing">
             <h1 className="rp-h1">A letter with a deadline and no clear next{"\u00a0"}step.</h1>
             <p className="rp-sub">
-              I turned six interviews with clinic and insurer staff into a guide for one New York Medicaid letter. <b>It is untested, and no patient was interviewed.</b>
+              In UX Woman, a 7-month user experience (UX) design program, I interviewed six people who work at clinics and insurers. Then I designed a guide for one sample New York Medicaid letter about new work requirements. <b>It is untested, and no patient was interviewed.</b>
             </p>
-            {/* Interview-sourced human line (Better Stories pass, 2026-11-10); source: design-docs/case-study-stories. */}
-            <p className="rp-humanLine">A hospital leader told me: AI helps hospitals prepare, and insurers deny.</p>
             <dl className="rp-heroEvidence" aria-label="UX Woman case evidence at a glance">
-              <div><dt>Role</dt><dd>Sole researcher and designer · UX Woman UX Design Accelerator · 2026</dd></div>
-              <div><dt>I made</dt><dd>Affinity map · persona · journey maps · user flows · wireframes · hi-fi prototype</dd></div>
+              <div><dt>Role</dt><dd>Sole researcher and designer · 2026</dd></div>
             </dl>
           </div>
         </div>
-        <div className="rp-hero__media fp-heroArt fp-heroArt--uxwoman" data-evidence="true">
-          <img
-            className="fp-uxHeroGuide"
-            src={GUIDE_SCREENS[0].src}
-            alt={GUIDE_SCREENS[0].alt}
-            width={450}
-            height={800}
-            decoding="async"
-          />
-          <dl className="fp-ledger" aria-label="Evidence to date">
-            {UXWOMAN_LEDGER.map((row) => (
-              <div key={row.en}><dt>{row.en}</dt><dd>{row.n}</dd></div>
-            ))}
-          </dl>
+        <div className="rp-hero__media fp-heroArt fp-heroArt--uxwoman fp-heroArt--fan" data-evidence="true">
+          {/* R5 (2026-11-16): the shared phone fan, kept at the guide's own
+              452:800 shape. Minimalism pass (2026-11-17): the five-number
+              ledger, the "I made" list and the pull quote left the hero; the
+              sub-line already states the limits. Side screens repeat in the
+              guide section below, so they are hidden from screen readers. */}
+          <div className="fp-fan fp-fan--guide">
+            <div className="fp-capture fp-capture--2">
+              <img src={GUIDE_SCREENS[0].src} alt={GUIDE_SCREENS[0].alt} width={450} height={800} decoding="async" />
+            </div>
+            <div className="fp-capture fp-capture--1" aria-hidden="true">
+              <img src={GUIDE_SCREENS[1].src} alt="" width={452} height={800} decoding="async" />
+            </div>
+            <div className="fp-capture fp-capture--3" aria-hidden="true">
+              <img src={GUIDE_SCREENS[2].src} alt="" width={452} height={800} decoding="async" />
+            </div>
+          </div>
         </div>
       </header>
 
@@ -160,6 +157,7 @@ export default function FlagshipUxWoman() {
       <section className="rp-section" id="uxwoman-problem" data-language-anchor="uxwoman-problem" data-evidence="true">
         <div className="rp-wrap">
           <h2 className="rp-title">Coverage can be lost to a missed response.</h2>
+          <p className="rp-lede">Medicaid is public health insurance. The letter tells people about a new work requirement, and if they miss their response, they can lose their coverage.</p>
           <dl className="fp-letterStats rp-reveal">
             <div>
               <dt>Projected, New York</dt>
@@ -171,15 +169,16 @@ export default function FlagshipUxWoman() {
             </div>
           </dl>
           <p className="fp-letterStats__note">Public data. A projection and an observed count are different measures.</p>
-          <CaseMore label="The question I took to the letter">
-            <p className="rp-lede">Does the letter say what applies, by when, what to do, and what counts as proof?</p>
-          </CaseMore>
         </div>
       </section>
 
       <section className="rp-section" id="uxwoman-research" data-language-anchor="uxwoman-research" data-evidence="true">
         <div className="rp-wrap">
           <h2 className="rp-title">Six interviews, six themes.</h2>
+          {/* Hillary's own line linking the themes to the guide (2026-11-16, R7). */}
+          <p className="rp-lede">While learning about denials and prior authorizations (when insurance has to approve care first), I saw that some Medicaid rule changes could leave patients without coverage within the next year. I want to help the staff who guide patients through those changes.</p>
+          {/* Interview-sourced human line (Better Stories pass, 2026-11-10); moved here from the hero 2026-11-17. */}
+          <p className="rp-humanLine">A hospital leader told me: AI helps hospitals prepare, and insurers deny.</p>
           <ol className="fp-themes rp-reveal">
             {THEMES.map((theme) => (
               <li key={theme.title}>
@@ -190,7 +189,7 @@ export default function FlagshipUxWoman() {
             ))}
           </ol>
           <CaseMore label="Who I interviewed, and what I did not hear">
-            <p>UX Woman is a 7-month, mentor-led UX design accelerator. Six interviews with clinic and insurer staff, one affinity board per interview, plus six publicly available sources. No patient was interviewed. Participants are anonymized and no protected health information was collected.</p>
+            <p>UX Woman is a 7-month, mentor-led UX design accelerator. One affinity board per interview, plus six publicly available sources. Participants are anonymized and no protected health information was collected.</p>
             <p>The patient journey map was built from public rule text and one sample notice, so its feelings and opportunities are hypotheses. The clinic staff journey map is a composite of roles; two of the people behind it work outside New York.</p>
           </CaseMore>
         </div>
@@ -229,7 +228,7 @@ export default function FlagshipUxWoman() {
               </figure>
             ))}
           </div>
-          <p className="fp-guideScreens__note">Design concept, not an official notice. Built, not yet tested with readers.</p>
+          <p className="fp-guideScreens__note">Design concept, not an official notice.</p>
           <CaseMore label="How the guide branches">
             <p>One question sets the path: is there a date on the letter? With a date, the guide shows what the letter asks and a checklist you can add to your calendar. Without one, it shows where to find the date and how to reach a person. Every screen has a talk-to-a-person bar.</p>
             <figure className="fp-guideWireframes">
@@ -245,8 +244,6 @@ export default function FlagshipUxWoman() {
         id="uxwoman-next"
         languageAnchor="uxwoman-next"
         title="Built, not yet tested."
-        intro="Two tests come next: an audit of the letter, then readers answering questions about it."
-        disclaimer="Six interviews with clinic and insurer staff · no patient interviews · journey maps built from public rule text and one sample notice · nothing tested with readers yet"
         metrics={[
           { tag: "Test 1", n: "Audit", label: "Rate the sample letter on the six things a reader needs. Holds if at least one is absent or ambiguous." },
           { tag: "Test 2", n: "Readers", label: "Adults 19 to 64 answer four questions about the letter, then say what else they needed. Pass bar to be set before it runs." },
@@ -258,8 +255,6 @@ export default function FlagshipUxWoman() {
         <div className="rp-wrap rp-close">
           <h2>From a letter to a next step.</h2>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
-          <CopyEmail />
-          <ShareCaseStudy title="UX Woman: a case study by Hillary Esposito" />
         </div>
       </section>
 

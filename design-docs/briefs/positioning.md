@@ -86,3 +86,20 @@ The portfolio must continue to state the unresolved evidence gap plainly: it
 does not yet show a directly owned digital product through release, observed
 behavior, revision, and measured result. The recut may improve hiring clarity;
 it may not rewrite that boundary.
+
+## Update 2026-11-17: one-sentence brief and title (Portfolio Strategy 2027 framework)
+
+Hillary decided this via `portfolio-positioning` against a five-step framework: Brief, Title, Promise, Signal, Bar.
+
+- **Brief (Step 1):** healthcare and internal workflow tools lead. Consumer work (Grove, Knowunity, Mobbin) is range. This re-confirms the 2026-08-29 Track A decision after the 2026-11-10 widening: the job search stays two-sided, but the site leads with one audience.
+- **Title (Step 2):** "UX Designer & Researcher". It matches her résumé headline and makes research a named strength for UX research roles.
+- **Promise (Step 3):** Home order is MSK, Logistics, UX Woman, then Grove, Knowunity, Mobbin, then the hackathon.
+- **Signal (Step 4):** each of the three visible Home cards carries a picture: the static MSK journey, the static Logistics move map, and the UX Woman guide-concept reel.
+- **Bar (Step 5):** not done yet. It needs a benchmark of how healthcare and workflow UX designers and researchers show their work.
+
+**Live copy:**
+- EN hero: "UX designer and researcher for healthcare and internal tools."
+- ES hero: "Diseñadora UX e investigadora para herramientas de salud y de uso interno."
+- The title, footer, meta and structured data use the new title.
+
+**Why the brief is not "per application":** the newsletter's point is that a generic intro tells no story. Per-application tailoring stays the job of the résumé and cover letter.

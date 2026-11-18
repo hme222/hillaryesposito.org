@@ -12,7 +12,8 @@ type Props = {
   languageAnchor?: string;
   kicker?: string;
   title: string;
-  intro: string;
+  /** Optional: a lede that restates the step titles is cut (2026-11-17). */
+  intro?: string;
   steps: DecisionStep[];
   /** Decorative sequence labels can be omitted when the ordered list already
    *  communicates sequence and the page needs a quieter editorial rhythm. */
@@ -109,7 +110,7 @@ export default function DecisionStory({ id, languageAnchor, kicker, title, intro
         <div className="rp-decisionStory__head">
           {kicker && <p className="rp-kicker">{kicker}</p>}
           <h2 id={`${id}-title`} className="rp-title">{title}</h2>
-          <p className="rp-lede">{intro}</p>
+          {intro && <p className="rp-lede">{intro}</p>}
         </div>
 
         <div className="rp-decisionStory__track" ref={trackRef}>
@@ -122,7 +123,6 @@ export default function DecisionStory({ id, languageAnchor, kicker, title, intro
                     <h3>{step.title}</h3>
                     <p>{step.body}</p>
                     <p className="rp-decisionStory__logline">
-                      {showStepNumbers && <span>Decisions</span>}
                       <b>{step.note}</b>
                     </p>
                   </div>

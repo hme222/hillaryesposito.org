@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
 import ReadingProgress from "../../components/flagship/ReadingProgress";
-import ShareCaseStudy from "../../components/flagship/ShareCaseStudy";
 import DecisionStory from "../../components/flagship/DecisionStory";
 import EvidenceField from "../../components/flagship/EvidenceField";
 import CaseMore from "../../components/CaseMore";
@@ -15,13 +14,11 @@ import MSKSustainment from "../../components/MSKSustainment";
 import RisoDefs from "../../components/riso/RisoDefs";
 import CartoField from "../../components/riso/CartoField";
 import SpanishCaseStudy from "../../components/SpanishCaseStudy";
-import Term from "../../components/Term";
 import { MSK_ES } from "../../data/spanishCaseStudies";
 import useFlagshipReveal from "../../hooks/useFlagshipReveal";
 import usePageTitle from "../../hooks/usePageTitle";
 import "../../styles/riso-page.css";
 import "../../styles/flagship-case-study.css";
-import CopyEmail from "../../components/CopyEmail";
 
 const MSKSystemMap = lazy(() => import("../../components/MSKSystemMap"));
 
@@ -42,7 +39,7 @@ const ROLE_METHODS: Record<string, { term: string; body: string }> = {
   },
   "02": {
     term: "Writing for the person who has to act",
-    body: "No certificate for this one. Technical, legal copy kept clinicians from finishing CPR certification. I rewrote it for the person who has to act, and the department certified a month before the original deadline.",
+    body: "No certificate for this one. I rewrote legal copy for the person who has to act.",
   },
   "03": {
     term: "Training & Facilitation (ATD) · current-state mapping",
@@ -88,19 +85,14 @@ const SURVIVED: { fact: string; what: React.ReactNode }[] = [
 // the detour and the one hop, the 90/60/30 warnings against expiry, and five
 // checklists collapsing into one gated path — so `change` says the thing the
 // drawing cannot, and stops narrating the thing it can.
+// The EMR filing card was cut 2026-11-17 (repetition cut): it repeated the
+// main workflow inside a section titled "two more places".
 const REDESIGNS: { n: string; title: React.ReactNode; finding: string; change: string; wrong?: string }[] = [
-  {
-    n: "01",
-    title: <><Term def="Electronic medical record: the patient’s chart.">EMR</Term> filing workflow</>,
-    finding: "Portal message → paper route → missing chart context.",
-    change: "One action where the filing decision already happened.",
-    wrong: "I misjudged how small it would look to IT. They deprioritized it as not worth the effort, and I had to keep raising it to get it built.",
-  },
   {
     n: "02",
     title: "CPR certification",
     finding: "Technical, legal copy kept clinicians from finishing CPR (cardiopulmonary resuscitation) certification.",
-    change: "The whole department certified a month before the original deadline, with no 4-month extension.",
+    change: "The whole department certified a month before the original deadline.",
   },
   {
     n: "03",
@@ -108,23 +100,6 @@ const REDESIGNS: { n: string; title: React.ReactNode; finding: string; change: s
     finding: "One course ignored radically different starting skills.",
     change: "Cohort-specific instruction adapted a one-to-three-week program to the people in the room.",
   },
-];
-
-const WORKFLOW_BEFORE = [
-  "Open the dashboard queue",
-  "Find the message",
-  "Print the portal message",
-  "Route the paper to HIM (health information management)",
-  "Wait for it to be scanned",
-  "Return later to confirm filing",
-];
-
-const WORKFLOW_AFTER = [
-  "Open the dashboard queue",
-  "Select the message",
-  "Choose Send to EMR",
-  "It files to the patient’s chart",
-  "Return with status updated",
 ];
 
 export default function FlagshipMSK() {
@@ -163,8 +138,6 @@ export default function FlagshipMSK() {
             <p className="rp-sub">
               Patient portal messages lived outside the medical record, so I printed them and we waited for them to be scanned in. I suggested a Send to EMR button so they would file straight to the record. <b>The hospital’s information technology (IT) and user experience (UX) teams built the real version.</b>
             </p>
-            {/* Interview-sourced human line (Better Stories pass, 2026-11-10); source: design-docs/case-study-stories. */}
-            <p className="rp-humanLine">I printed the notes myself. Then we waited.</p>
             {/* The "Role route" row (her career path) was cut 2026-11-15 at
                 Hillary's direction: Lex asked for her role on this project,
                 which "What I did." now covers. The role ladder still appears
@@ -195,32 +168,12 @@ export default function FlagshipMSK() {
               artifact label names the recreation; this note carries the
               "no patient data" boundary and what the evidence can and cannot
               claim (the former "Evidence boundary" aside). */}
-          {/* These two lists are the text alternative for the aria-hidden map,
-              so they stay. What went was the pair of paragraphs under them —
-              "failure mode" and "design decision" restated the map’s own
-              labels ("leaves the EMR" / "never leaves the EMR") in prose. */}
-          {/* The hero journey picture already shows the change step by step, so the
-              exact word-for-word lists sit one click down, kept for fidelity. */}
-          <p className="rp-lede rp-reveal">I suggested a Send to EMR button so messages could file straight to the record. I talked with every department it touched (clinical, IT, health information management, and operations) and worked with leadership on the rollout. I worked through the decisions with IT and UX in a full pitch, so the change was ready to go once it was funded.</p>
+          {/* The word-for-word step lists were cut 2026-11-17 (repetition cut):
+              both journey pictures already list the six and five steps as text. */}
+          <p className="rp-lede rp-reveal">I talked with every department it touched (clinical, IT, health information management, and operations) and worked with leadership on the rollout. I worked through the decisions with IT and UX in a full pitch, so the change was ready to go once it was funded.</p>
           <p className="rp-lede rp-reveal">The visible change is one fewer step. The service change is one fewer department touching the record.</p>
-          <CaseMore label="The exact steps, before and after">
-            <div className="fp-workflow rp-reveal" data-evidence="true">
-              <article>
-                <span className="fp-workflow__label">Before · six steps</span>
-                <h3>Print, route, wait, check again</h3>
-                <ol>{WORKFLOW_BEFORE.map((step, index) => <li key={step}><b>{index + 1}</b>{step}</li>)}</ol>
-              </article>
-              <i aria-hidden="true">→</i>
-              <article className="fp-workflow__after">
-                <span className="fp-workflow__label">After · five steps</span>
-                <h3>File from the queue, return with status</h3>
-                <ol>{WORKFLOW_AFTER.map((step, index) => <li key={step}><b>{index + 1}</b>{step}</li>)}</ol>
-              </article>
-            </div>
-          </CaseMore>
-          <CaseMore label="How I made these screens">
+          <CaseMore label="Where this comes from">
             <div className="rp-note rp-reveal">
-              <p className="rp-note__k">How I made these screens</p>
               <p>Rebuilt from memory of my current-state documentation. No patient data, exported records, or vendor interface. Observation counts didn’t survive, so I make no claim about how often this happened.</p>
             </div>
           </CaseMore>
@@ -243,8 +196,7 @@ export default function FlagshipMSK() {
             {/* The step count is the visible change; the handoff is the real one.
                 Same evidence as the map above, re-cut by actor instead of by step. */}
             <div className="fp-blueprintIntro rp-reveal">
-              <h3 className="rp-title">Six steps became five. One department left the loop.</h3>
-              <p className="rp-lede">The visible change is one fewer step. The service change is one fewer department touching the record. Frontstage is work the coordinator can see; backstage happens out of sight, below the line of visibility.</p>
+              <p className="rp-lede">Frontstage is work the coordinator can see; backstage happens out of sight, below the line of visibility.</p>
             </div>
             <div data-evidence="true"><MSKServiceBlueprint /></div>
           </div>
@@ -255,14 +207,14 @@ export default function FlagshipMSK() {
         id="msk-decisions"
         languageAnchor="msk-decisions"
         title="One button, four rules."
-        intro="One action replaced the three steps that left the system. These four rules are my portfolio design for making it safe to press, not MSK’s specification."
+        intro="These four rules are my portfolio design for making it safe to press, not MSK’s specification."
         steps={DECISIONS}
         showStepNumbers={false}
         visual={() => (
           // The recreated queue screen used to sit here. Lex (2026-11-13) said it
           // "looks vibe-codeable"; Hillary chose the journey picture instead
           // (2026-11-15), opened on the After path the four rules describe.
-          <div className="fp-journeyFrame--story"><MSKJourney initialMode="after" /></div>
+          <div className="fp-journeyFrame--story"><MSKJourney afterOnly /></div>
         )}
       /></div>
 
@@ -321,8 +273,7 @@ export default function FlagshipMSK() {
                 );
               })}
             </ol>
-            {/* "Service design" appears in this page’s hero eyebrow and nowhere
-                else on the site. It had a definition here once and I cut it as
+            {/* "Service design" had a definition here once and I cut it as
                 abstract, which left the discipline named and unsupported. This is
                 the replacement: the claim is ownership of the whole path, which
                 the workflow map above already proves, rather than a description
@@ -343,7 +294,7 @@ export default function FlagshipMSK() {
       <section className="rp-section" id="msk-sustainment" data-language-anchor="msk-sustainment">
         <div className="rp-wrap">
           <h2 className="rp-title">What happened after I left that role.</h2>
-          <p className="rp-lede rp-reveal">It was adopted. After I left that role, they got funding. The built version changed along the way, and I wasn’t there for it. I later saw it in the production system while training new employees.</p>
+          <p className="rp-lede rp-reveal">IT approved it once funding came in and built it as I presented it. I don’t know what changed behind the scenes. I later saw it in production while training new employees.</p>
           {/* Added 2026-10-22 (portfolio review, UXfolio 2026 ch. 4.3): the
               outcome is owner-reported and no post-launch measurement is
               known, so the page says what would have shown it. Hillary
@@ -351,7 +302,6 @@ export default function FlagshipMSK() {
               claimed here. */}
           <figure className="fp-sustainmentFig rp-reveal" data-evidence="true">
             <MSKSustainment />
-            <figcaption>What happened after each one shipped</figcaption>
           </figure>
           <CaseMore label="What happened and how I know">
             <div className="rp-note rp-reveal">
@@ -366,7 +316,7 @@ export default function FlagshipMSK() {
               ))}
             </ul>
             <a className="fp-proofLink" href="https://www.mskcc.org/news/hillary-esposito-s-career-path-military-msk" target="_blank" rel="noopener noreferrer">
-              <span>Independent proof · MSK News</span><b className="rp-ext">From the military to Memorial Sloan Kettering</b><span className="sr-only"> (opens in new tab)</span>
+              <span>Profile · MSK News</span><b className="rp-ext">From the military to Memorial Sloan Kettering</b><span className="sr-only"> (opens in new tab)</span>
             </a>
           </CaseMore>
         </div>
@@ -376,19 +326,21 @@ export default function FlagshipMSK() {
         id="msk-outcomes"
         languageAnchor="msk-outcomes"
         title="The numbers."
-        intro="Each tag says whose result it is."
-        disclaimer="Anonymized, owner-reported. The original period and cost definition for the 20% were not preserved."
+        disclaimer="Anonymized. The period the 20% covers was not preserved."
         // The same discipline the certification dashboard used on its own data:
         // say what you are looking at before someone has to work it out. All
         // three read as equal tiles otherwise, and "organization-wide" made the
         // most qualified number sound like the biggest one.
         // Four tiles since 2026-10-14 (msk.md, review answers 3–4): the
         // month-early CPR result leads, and the ~$1M/year sits beside the 20%
-        // and 21,000+ as a labelled projection, never as measured savings.
+        // as a labelled projection, never as measured savings. 2026-11-18
+        // (admissions review, answers 7–9): 21,000+ was MSK's whole headcount,
+        // not the workflow's reach, so it left; ~2,000 is her own estimate of
+        // the new employees she trained; the 20% is printing and scanning costs.
         metrics={[
           { tag: "Led", n: "1 month", label: "early: the whole department certified before the original deadline, with no 4-month extension" },
-          { tag: "Scope", n: "21,000+", label: "clinicians and administrative staff across the workflows in scope, not queue adoption" },
-          { tag: "Initiative result", n: "20%", label: "organization-wide EMR cost reduction; not attributed solely to this filing workflow" },
+          { tag: "Trained", n: "~2,000", label: "new employees I trained on Epic, HIPAA and compliance, by my estimate: about one cohort of 30 a week for two years" },
+          { tag: "Initiative result", n: "20%", label: "lower printing and scanning costs, per my review of the financials with the finance department head; not attributed solely to this filing workflow" },
           { tag: "Projection", n: "~$1M/year", label: "projected paper savings in my Process Improvement Fair pitch, not measured savings" },
         ]}
       /></div>
@@ -397,8 +349,6 @@ export default function FlagshipMSK() {
         <div className="rp-wrap rp-close">
           <h2>I find the workaround. Then I get it built.</h2>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
-          <CopyEmail />
-          <ShareCaseStudy title="MSK: a case study by Hillary Esposito" />
         </div>
       </section>
 

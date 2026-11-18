@@ -2,13 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import RisoDefs from "../components/riso/RisoDefs";
 import CartoField from "../components/riso/CartoField";
-import CopyEmail from "../components/CopyEmail";
 import HomeFold from "../components/HomeFold";
-import MSKDashboardMockup from "../components/MSKDashboardMockup";
+import MSKJourney from "../components/MSKJourney";
+import LogisticsMoveMap from "../components/LogisticsMoveMap";
 import WorkIndex from "../components/WorkIndex";
 import PhoneReel from "../components/PhoneReel";
 import type { WorkIndexItem } from "../components/WorkIndex";
-import { MSK_COPY } from "../data/mskCaseStudy";
 import usePageTitle from "../hooks/usePageTitle";
 import useFlagshipReveal from "../hooks/useFlagshipReveal";
 import { useLanguage, useT } from "../app/LanguageContext";
@@ -32,12 +31,14 @@ type WorkItem = {
 
 // The case studies, in the order they are read: the lead case first, then
 // the ones that show a different kind of evidence.
+// 2026-11-17 positioning (Hillary): healthcare and internal workflow tools
+// lead; consumer work follows as range. design-docs/briefs/positioning.md.
 const WORK: WorkItem[] = [
-  { n: "01", titleKey: "home.proj.msk.title", subKey: "home.proj.msk.subtitle", descKey: "home.riso.mskDesc", path: "/case-study/msk" },
+  { n: "01", titleKey: "home.proj.uxwoman.title", subKey: "home.proj.uxwoman.subtitle", descKey: "home.riso.uxwomanDesc", path: "/case-study/ux-woman" },
   { n: "02", titleKey: "home.proj.grove.title", subKey: "home.proj.grove.subtitle", descKey: "home.riso.groveDesc", path: "/case-study/grove" },
-  { n: "03", titleKey: "home.proj.knowunity.title", subKey: "home.proj.knowunity.subtitle", descKey: "home.riso.knowunityDesc", path: "/case-study/knowunity" },
+  { n: "03", titleKey: "home.proj.msk.title", subKey: "home.proj.msk.subtitle", descKey: "home.riso.mskDesc", path: "/case-study/msk" },
   { n: "04", titleKey: "home.proj.logistics.title", subKey: "home.proj.logistics.subtitle", descKey: "home.riso.logisticsDesc", path: "/case-study/logistics" },
-  { n: "05", titleKey: "home.proj.uxwoman.title", subKey: "home.proj.uxwoman.subtitle", descKey: "home.riso.uxwomanDesc", path: "/case-study/ux-woman" },
+  { n: "05", titleKey: "home.proj.knowunity.title", subKey: "home.proj.knowunity.subtitle", descKey: "home.riso.knowunityDesc", path: "/case-study/knowunity" },
   { n: "06", titleKey: "home.proj.mobbin.title", subKey: "home.proj.mobbin.subtitle", descKey: "home.riso.mobbinDesc", path: "/case-study/mobbin" },
   { n: "07", titleKey: "home.proj.hackathon.title", subKey: "home.proj.hackathon.subtitle", descKey: "home.riso.hackathonDesc", path: "https://hme222.github.io/MTA_Accessibility_Trip_Planning/" },
 ];
@@ -78,15 +79,36 @@ export default function RisoHome() {
 
 
   const WORK_VISUALS: Record<string, React.ReactNode> = {
-    "01": (
+    "/case-study/msk": (
       <div className="rp-index__shot rp-index__shot--msk">
-        <MSKDashboardMockup decorative compact condensedHeader hideToolbar hideRule rowIndices={[0, 2]} copy={MSK_COPY[lang === "es" ? "es" : "en"].dashboard} />
+        {/* R8 (2026-11-16, Hillary): the recreated queue read as "vibe-codeable", so
+            Home shows the same journey picture as the case study, static. */}
+        <MSKJourney decorative lang={lang === "es" ? "es" : "en"} />
       </div>
     ),
     // Grove and Knowunity are phone products: real phone screenshots at their
     // true 390:844 shape, crossfading slowly. MSK was a desktop work queue, so
     // it stays in its own desktop frame rather than a phone it never ran on.
-    "02": (
+    // 2026-11-17: healthcare work leads Home, so Logistics and UX Woman get
+    // pictures too: the move map (static) and the guide's concept screens.
+    "/case-study/logistics": (
+      <div className="rp-index__shot rp-index__shot--msk rp-index__shot--logistics">
+        <LogisticsMoveMap decorative />
+      </div>
+    ),
+    "/case-study/ux-woman": (
+      <PhoneReel
+        paused={reelsPaused}
+        aspect="452 / 800"
+        label={lang === "es" ? "Pantallas de la guía (concepto)" : "Guide concept screens"}
+        frames={[
+          { src: "/assets/uxwoman/guide-1.webp", name: lang === "es" ? "Inicio" : "Home" },
+          { src: "/assets/uxwoman/guide-2.webp", name: lang === "es" ? "¿Aplica?" : "Does it apply?" },
+          { src: "/assets/uxwoman/guide-3.webp", name: lang === "es" ? "Fecha de renovación" : "Renewal date" },
+        ]}
+      />
+    ),
+    "/case-study/grove": (
       <PhoneReel
         paused={reelsPaused}
         label={lang === "es" ? "Pantallas de Grove" : "Grove screens"}
@@ -98,7 +120,7 @@ export default function RisoHome() {
         ]}
       />
     ),
-    "03": (
+    "/case-study/knowunity": (
       <PhoneReel
         paused={reelsPaused}
         label={lang === "es" ? "Pantallas de Say It Back" : "Say It Back screens"}
@@ -113,7 +135,7 @@ export default function RisoHome() {
     ),
   };
   const WORK_ITEMS: WorkIndexItem[] = WORK.map((work) => ({
-    n: work.n, title: t(work.titleKey), sub: t(work.subKey), desc: t(work.descKey), to: work.path, external: work.path.startsWith("http"), visual: WORK_VISUALS[work.n],
+    n: work.n, title: t(work.titleKey), sub: t(work.subKey), desc: t(work.descKey), to: work.path, external: work.path.startsWith("http"), visual: WORK_VISUALS[work.path],
   }));
 
   return (
@@ -221,7 +243,6 @@ export default function RisoHome() {
               {lang === "es" ? "Ver CV" : "View résumé"}
             </a>
           </div>
-          <CopyEmail />
         </div>
       </section>
 

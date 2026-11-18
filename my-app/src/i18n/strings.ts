@@ -21,7 +21,7 @@ const en = {
   "a11y.newTab": " (opens in new tab)",
 
   // ── Global footer + recovery ──
-  "footer.eyebrow": "Hillary Esposito · Product Designer, UX and Research",
+  "footer.eyebrow": "Hillary Esposito · UX Designer & Researcher",
   "footer.statement": "Healthcare design that does the paperwork.",
   "footer.signoff": "Still here?",
   "footer.signoffLink": "Email me.",
@@ -75,16 +75,16 @@ const en = {
   "home.search": "{count} applications sent in {year}",
   // Hero is about Hillary, not a project (portfolio feedback, 2026-11-12):
   // what she is and where she works, with no case-study detail.
-  "home.riso.heroTitle": "Product designer with a strong UX and research lean.",
+  "home.riso.heroTitle": "UX designer and researcher for\u00a0healthcare and internal\u00a0tools.",
   "home.riso.heroLead":
-    "I work in healthcare and consumer products. Army veteran, bilingual in English and Spanish.",
+    "I spent six years in cancer-care operations and 13+ years in the Army. I also design consumer apps, and I’m bilingual in English and Spanish.",
   "home.riso.primaryWork": "Review the MSK case study",
   "home.riso.workTitle": "Selected work.",
   "home.riso.workLinkSuffix": "case study",
   "home.riso.groveDesc":
     "A competitive analysis, a five-user test of the original prototype, and a 37-person survey narrowed twelve features to three. The redesign is in progress; the retest comes next.",
   "home.riso.mskDesc":
-    "I mapped the detour across four departments and pitched the digital filing workflow that replaced it. Six steps became five, and one department left the loop.",
+    "I mapped the detour across four departments and presented the digital filing workflow that replaced it to leadership and IT. Six steps became five, and one department left the loop.",
   "home.riso.logisticsDesc":
     "I planned and tracked a warehouse relocation that took medical resupply from 1–2 months to 1–2 weeks, then built shared order tracking for seven aid stations.",
   "home.riso.uxwomanDesc":
@@ -102,7 +102,7 @@ const en = {
   "home.fold.open": "Open",
   "home.fold.close": "Close",
   "home.index.more": "More work",
-  "home.index.moreSummary": "4 more: Logistics, UX Woman, Mobbin and a hackathon project.",
+  "home.index.moreSummary": "4 more",
   "home.riso.supportingKicker": "Also documented · Mobbin, 200+ screens per app",
   "home.riso.supportingLink": "Review the Mobbin case study →",
   "home.riso.contactKicker": "Contact",
@@ -143,10 +143,10 @@ const en = {
   "home.stat.logistics": "Medical resupply across seven aid stations",
   "home.stat.groveSource": "Grove discovery research",
   "home.stat.mskSource": "MSK clinical operations",
-  "home.stat.logisticsSource": "Army service record",
+  "home.stat.logisticsSource": "Officer Evaluation Report",
   // Hillary's role in each proof number, above the number (2026-10-15, call 5).
   "home.stat.scaleTag": "Scope",
-  "home.stat.logisticsTag": "Led · owner-reported",
+  "home.stat.logisticsTag": "Led",
   "home.stat.researchTag": "Method",
   "home.trustAria": "Credentials",
   "home.trust.army": "Army Veteran",
@@ -224,7 +224,7 @@ const es: Partial<Record<StringKey, string>> = {
   "a11y.newTab": " (se abre en una pestaña nueva)",
 
   // ── Global footer + recovery ──
-  "footer.eyebrow": "Hillary Esposito · Diseñadora de producto, UX e investigación",
+  "footer.eyebrow": "Hillary Esposito · Diseñadora UX e investigadora",
   "footer.statement": "Hecho por alguien que ya llenó el papeleo.",
   "footer.signoff": "¿Sigue aquí?",
   "footer.signoffLink": "Escríbame.",
@@ -270,9 +270,9 @@ const es: Partial<Record<StringKey, string>> = {
   // ── Home: hero ──
   "home.status": "Disponible para trabajar",
   "home.search": "{count} solicitudes enviadas en {year}",
-  "home.riso.heroTitle": "Diseñadora de producto con un fuerte enfoque en UX e investigación.",
+  "home.riso.heroTitle": "Diseñadora UX e investigadora para herramientas\u00a0de\u00a0salud y de uso\u00a0interno.",
   "home.riso.heroLead":
-    "Trabajo en salud y en productos de consumo. Veterana del Ejército, bilingüe en inglés y español.",
+    "Pasé seis años en operaciones de atención oncológica y más de 13 en el Ejército. También diseño apps de consumo, y soy bilingüe en inglés y español.",
   // The panel itself stays English-only (lang="en") - the ES link says so,
   // the same way ask.ninetySecondLink does below.
   "home.riso.recruiterTourLink": "Abrir el recorrido de 90 segundos (en inglés)",
@@ -282,7 +282,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.groveDesc":
     "Un análisis competitivo, una prueba con cinco usuarios del prototipo original y una encuesta a 37 personas redujeron doce funciones a tres. El rediseño está en curso; la nueva prueba viene después.",
   "home.riso.mskDesc":
-    "Mapeé el desvío entre cuatro áreas y propuse el flujo de archivo digital que lo reemplazó. Seis pasos se volvieron cinco, y un área salió del circuito.",
+    "Mapeé el desvío entre cuatro áreas y presenté a la dirección y a TI el flujo de archivo digital que lo reemplazó. Seis pasos se volvieron cinco, y un área salió del circuito.",
   "home.riso.logisticsDesc":
     "Planifiqué y supervisé una reubicación de almacén que llevó el reabastecimiento médico de 1–2 meses a 1–2 semanas, y luego creé un seguimiento compartido para siete puestos.",
   "home.riso.uxwomanDesc":
@@ -300,7 +300,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.fold.open": "Abrir",
   "home.fold.close": "Cerrar",
   "home.index.more": "Más trabajo",
-  "home.index.moreSummary": "4 más: Logística, UX Woman, Mobbin y un proyecto de hackathon.",
+  "home.index.moreSummary": "4 más",
   "home.riso.supportingKicker": "También documentado · Mobbin, más de 200 pantallas por app",
   "home.riso.supportingLink": "Ver el estudio de caso de Mobbin →",
   "home.riso.contactKicker": "Contacto",
@@ -341,9 +341,9 @@ const es: Partial<Record<StringKey, string>> = {
   "home.stat.logistics": "Reabastecimiento médico en siete estaciones de ayuda",
   "home.stat.groveSource": "Investigación de descubrimiento de Grove",
   "home.stat.mskSource": "Operaciones clínicas de MSK",
-  "home.stat.logisticsSource": "Expediente de servicio del Ejército",
+  "home.stat.logisticsSource": "Informe de Evaluación de Oficial",
   "home.stat.scaleTag": "Alcance",
-  "home.stat.logisticsTag": "Dirigí · dato autorreportado",
+  "home.stat.logisticsTag": "Dirigí",
   "home.stat.researchTag": "Método",
   "home.trustAria": "Credenciales",
   "home.trust.army": "Veterana del Ejército",

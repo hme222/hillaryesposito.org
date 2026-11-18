@@ -19,8 +19,7 @@ export default function MobbinIndexLens() {
         <div className="fp-indexLens__copy">
           <h2 id="mobbin-index-title">Name the task, not just the app.</h2>
           <p>
-            Mobbin users search for a task, sign in, browse, open an account, not for a screenshot
-            number. I kept each source capture untouched, then named the task beside it using the
+            I kept each source capture untouched, then named the task beside it using the
             library’s vocabulary.
           </p>
           <button
@@ -53,7 +52,6 @@ export default function MobbinIndexLens() {
               </div>
             ))}
           </div>
-          <p className="fp-indexLens__boundary">Source interfaces documented, not designed, by Hillary</p>
         </div>
       </div>
     </section>

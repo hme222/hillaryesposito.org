@@ -10,7 +10,9 @@ export type PhoneReelFrame = {
  * @status: stable
  * @purpose: Real phone screenshots inside a phone frame that slowly crossfade from one screen to the next, used for the case-study teasers on Home. It runs only while on screen, never runs under reduced motion (it shows the first screen), and has a separate Pause control rendered by the caller beside it. Pick this for a short tour of real phone screens; for a single static phone in a case hero use the rp-device frame, and for a step-through the reader controls use the case study's own sequence.
  */
-export default function PhoneReel({ frames, label, paused = false, intervalMs = 3600 }: {
+export default function PhoneReel({ frames, label, paused = false, intervalMs = 3600, aspect }: {
+  /** CSS aspect-ratio for screens that are not 390:844 (e.g. "452 / 800"). */
+  aspect?: string;
   frames: PhoneReelFrame[];
   /** Names what the screens are, for screen readers. */
   label: string;
@@ -41,7 +43,7 @@ export default function PhoneReel({ frames, label, paused = false, intervalMs = 
 
   return (
     <div className="rp-phoneReel" ref={ref} role="img" aria-label={`${label}: ${frames.map((f) => f.name).join(", ")}`}>
-      <div className="rp-phoneReel__screen">
+      <div className="rp-phoneReel__screen" style={aspect ? { aspectRatio: aspect } : undefined}>
         {frames.map((frame, i) => (
           <img
             key={frame.src}

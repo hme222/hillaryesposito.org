@@ -66,7 +66,7 @@ type MSKDashboardMockupProps = {
 
 /**
  * @status: stable
- * @purpose: Anonymized recreation of the MSK filing work-queue dashboard (masked MRNs, status rows); used on the Home MSK card (retired from the MSK case study 2026-11-15). Pick this for the literal dashboard-as-artifact — for a picture of the change use MSKJourney, for a static mechanism diagram use MSKMechanism.
+ * @purpose: Anonymized recreation of the MSK filing work-queue dashboard (masked MRNs, status rows); retired from the MSK case study (2026-11-15) and the Home MSK card (2026-11-16, R8), so it currently renders nowhere; kept for reuse. Pick this for the literal dashboard-as-artifact — for a picture of the change use MSKJourney, for a static mechanism diagram use MSKMechanism.
  */
 export default function MSKDashboardMockup({
   compact = false,

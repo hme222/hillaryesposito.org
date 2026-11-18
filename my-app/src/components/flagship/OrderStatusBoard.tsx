@@ -9,7 +9,7 @@ const STATIONS = [1, 2, 3, 4, 5, 6, 7];
 type Copy = {
   after: string[]; before: string[]; note: string; group: string; beforeBtn: string; afterBtn: string;
   caption: (after: boolean) => string; station: string; colStation: string; colStatus: string;
-  readAfter: string; readBefore: string; lowPrefix: string; outPrefix: string;
+  lowPrefix: string; outPrefix: string;
 };
 
 const COPY: Record<"en" | "es", Copy> = {
@@ -22,8 +22,6 @@ const COPY: Record<"en" | "es", Copy> = {
     afterBtn: "After: shared status",
     caption: (after) => `Seven stations and the status of each station’s order, ${after ? "after" : "before"} the shared order status`,
     station: "Station", colStation: "Station", colStatus: "Order status",
-    readAfter: "Every station uses one request format, and a station that is running low shows before it runs out.",
-    readBefore: "Seven ways of asking, and nobody could see an order. A station found out it was out of supply when it was already out.",
     lowPrefix: "Running low", outPrefix: "Out of supply",
   },
   es: {
@@ -35,8 +33,6 @@ const COPY: Record<"en" | "es", Copy> = {
     afterBtn: "Después: estado compartido",
     caption: (after) => `Siete estaciones y el estado del pedido de cada una, ${after ? "después" : "antes"} del estado de pedidos compartido`,
     station: "Estación", colStation: "Estación", colStatus: "Estado del pedido",
-    readAfter: "Todas las estaciones usan un solo formato de pedido, y una estación con pocas existencias se ve antes de quedarse sin ellas.",
-    readBefore: "Siete maneras de pedir, y nadie podía ver un pedido. Una estación se enteraba de que no tenía existencias cuando ya no las tenía.",
     lowPrefix: "Quedan pocas", outPrefix: "Sin existencias",
   },
 };
@@ -77,9 +73,6 @@ export default function OrderStatusBoard({ lang = "en" }: { lang?: "en" | "es" }
           ))}
         </tbody>
       </table>
-      <p className="fp-statusBoard__read" aria-live="polite">
-        {view === "after" ? c.readAfter : c.readBefore}
-      </p>
     </div>
   );
 }
