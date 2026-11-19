@@ -192,7 +192,7 @@
       "id": "r17",
       "audience": "recruiter",
       "lang": "en",
-      "question": "What is Grove?",
+      "question": "What is FloraGrove?",
       "expect": [
         "en:grove-outcomes:1",
         "en:grove-start:0",
@@ -205,7 +205,7 @@
       "id": "r18",
       "audience": "recruiter",
       "lang": "en",
-      "question": "How many people did she survey for Grove?",
+      "question": "How many people did she survey for FloraGrove?",
       "expect": [
         "en:grove-start:0",
         "en:grove-research:4",
@@ -229,7 +229,7 @@
       "id": "r20",
       "audience": "recruiter",
       "lang": "en",
-      "question": "What phase is Grove in?",
+      "question": "What phase is FloraGrove in?",
       "expect": [
         "en:grove-start:5",
         "en:grove-outcomes:2",
@@ -309,7 +309,7 @@
       "id": "r27",
       "audience": "ux-designer",
       "lang": "en",
-      "question": "How does Grove handle AI uncertainty?",
+      "question": "How does FloraGrove handle AI uncertainty?",
       "expect": [
         "en:grove-decisions:3",
         "en:grove-override:18",
@@ -356,7 +356,7 @@
       "id": "d02",
       "audience": "developer",
       "lang": "en",
-      "question": "Was the Grove prototype built in React?",
+      "question": "Was the FloraGrove prototype built in React?",
       "expect": [
         "en:grove-start:4",
         "en:grove-override:7",
@@ -376,7 +376,7 @@
       "id": "d04",
       "audience": "developer",
       "lang": "en",
-      "question": "Is the Grove prototype keyboard operable?",
+      "question": "Is the FloraGrove prototype keyboard operable?",
       "expect": [
         "en:grove-prototype:1"
       ]
@@ -409,7 +409,7 @@
       "id": "u03",
       "audience": "ux-designer",
       "lang": "en",
-      "question": "What color system does Grove use?",
+      "question": "What color system does FloraGrove use?",
       "expect": [
         "en:grove-prototype:11",
         "en:grove-prototype:12",
@@ -493,7 +493,7 @@
       "id": "s05",
       "audience": "recruiter",
       "lang": "es",
-      "question": "¿A cuántas personas encuestó para Grove?",
+      "question": "¿A cuántas personas encuestó para FloraGrove?",
       "expect": [
         "es:resume-grove:0",
         "es:es-grove-research:0",
@@ -566,7 +566,7 @@
       "id": "s12",
       "audience": "recruiter",
       "lang": "es",
-      "question": "¿Qué es Grove?",
+      "question": "¿Qué es FloraGrove?",
       "expect": [
         "es:es-grove-start:0",
         "es:es-grove-brief:0"
@@ -813,7 +813,7 @@
       "id": "b08",
       "audience": "developer",
       "lang": "en",
-      "question": "Where is the Grove Storybook?",
+      "question": "Where is the FloraGrove Storybook?",
       "expect": [
         "en:build:storybook"
       ]
@@ -852,7 +852,7 @@
       "id": "b12",
       "audience": "recruiter",
       "lang": "es",
-      "question": "¿Qué herramienta de IA construyó la primera versión de Grove?",
+      "question": "¿Qué herramienta de IA construyó la primera versión de FloraGrove?",
       "expect": [
         "es:notes-grove:0",
         "es:es-grove-start:0"

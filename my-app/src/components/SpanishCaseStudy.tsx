@@ -4,6 +4,7 @@ import { switchLanguageAtCurrentSection, useLanguage } from "../app/LanguageCont
 import CaseStudyChapters, { CaseStudyChapter } from "./flagship/CaseStudyChapters";
 import CaseStudyCredential, { CaseStudyCredentialData } from "./flagship/CaseStudyCredential";
 import CaseStudyReel, { CaseStudyReelData } from "./flagship/CaseStudyReel";
+import ResultLine from "./flagship/ResultLine";
 import usePageTitle from "../hooks/usePageTitle";
 import CartoField from "./riso/CartoField";
 import RisoDefs from "./riso/RisoDefs";
@@ -20,6 +21,8 @@ export type SpanishCaseStudyData = {
   intro: string;
   /** One large-type, first-person line from Hillary's interview answers, shown under the intro. */
   humanLine?: string;
+  /** The page's one result sentence, shown under the hero (same component as the English page). */
+  resultLine?: { eyebrow: string; text: string; source?: string };
   stats: { label: string; value: string }[];
   sections: {
     anchor: string;
@@ -44,6 +47,9 @@ export type SpanishCaseStudyData = {
    *  Omit to fall back to the generic contact prompt. */
   /** `body` is optional: a close can be the title alone (2026-11-17 repetition cut). */
   close?: { title: string; body?: string };
+  /** Optional external link shown beside the hero's "read in English" button
+   *  (FloraGrove's waitlist). Opens in a new tab. */
+  heroLink?: { label: string; href: string };
 };
 
 type SpanishCaseStudyProps = {
@@ -116,10 +122,17 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
               <button type="button" className="rp-cta" onClick={readInEnglish}>
                 Leer el estudio completo en inglés →
               </button>
+              {data.heroLink ? (
+                <a className="rp-cta rp-cta--ghost" href={data.heroLink.href} target="_blank" rel="noopener noreferrer">
+                  <span className="rp-ext">{data.heroLink.label}</span><span className="sr-only"> (se abre en una pestaña nueva)</span>
+                </a>
+              ) : null}
             </div>
           </div>
         </div>
       </header>
+
+      {data.resultLine ? <ResultLine {...data.resultLine} /> : null}
 
       <section className="rp-section" aria-label="Datos clave" style={{ paddingBottom: 0 }}>
         <div className="rp-wrap">

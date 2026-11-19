@@ -198,7 +198,7 @@ const ROUTE_NAMES: Record<string, string> = {
   "/": "Home",
   "/about": "About",
   "/case-study/msk": "MSK case study",
-  "/case-study/grove": "Grove case study",
+  "/case-study/grove": "FloraGrove case study",
   "/case-study/mobbin": "Mobbin case study",
   "/case-study/logistics": "Medical logistics case study",
   "/case-study/knowunity": "Knowunity case study",
@@ -246,7 +246,7 @@ export default function AppRoutes() {
       <Route path="/projects" element={<Navigate to="/?scrollTo=projects" replace />} />
       <Route path="/about" element={<About />} />
 
-      <Route path="/case-study/grove" element={<LazyPage name="Grove"><RisoGrove /></LazyPage>} />
+      <Route path="/case-study/grove" element={<LazyPage name="FloraGrove"><RisoGrove /></LazyPage>} />
       <Route path="/riso/grove" element={<Navigate to="/case-study/grove" replace />} />
       <Route path="/case-study/mobbin" element={<LazyPage name="Mobbin"><FlagshipMobbin /></LazyPage>} />
       <Route path="/case-study/msk" element={<LazyPage name="MSK"><FlagshipMSK /></LazyPage>} />

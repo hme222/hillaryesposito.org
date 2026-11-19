@@ -22,7 +22,10 @@ import { MSK_COPY, type MskCopy } from "../data/mskCaseStudy";
 
 type Lane = "evidence" | "front" | "back" | "support";
 
-type Node = { lane: Lane; col: number };
+/** `design` marks a node that is Hillary's portfolio design rule, not something
+ *  MSK built (claim audit 2026-10-13; synthesis-lens review 2026-11-19). It gets
+ *  a dotted outline and a text tag, so the difference never rests on colour. */
+type Node = { lane: Lane; col: number; design?: boolean };
 
 /**
  * The support lane is the tell. Before, the EMR holds the record at the start
@@ -52,10 +55,10 @@ const AFTER: Node[] = [
   { lane: "support", col: 0 },
   { lane: "evidence", col: 1 },
   { lane: "front", col: 1 },
-  { lane: "support", col: 1 },
+  { lane: "support", col: 1, design: true }, // "Ready + role checked"
   { lane: "evidence", col: 2 },
   { lane: "front", col: 2 },
-  { lane: "support", col: 2 },
+  { lane: "support", col: 2, design: true }, // "Permission allows it"
   { lane: "evidence", col: 3 },
   { lane: "support", col: 3 },
   { lane: "evidence", col: 4 },
@@ -65,20 +68,27 @@ const AFTER: Node[] = [
 
 const LANE_ORDER: Lane[] = ["evidence", "front", "back", "support"];
 
+// Type audit 2026-11-19: labels were 9 to 11.5 units, which rendered at 9.2px on
+// a 1440 desktop and 5.9px on a phone, under the site's 13px label floor. Every
+// label is now 13 units and long ones wrap to two lines inside taller nodes. The
+// canvas never draws narrower than W px (see .fp-blueprint__canvas svg), so on a
+// phone the drawing scrolls sideways at full size instead of shrinking.
 const W = 940;
-const PAD_L = 150;
+const PAD_L = 160;
 const PAD_R = 18;
-const NODE_H = 36;
+const NODE_H = 46;
+const TYPE = 13;
+const LINE = 16;
 
 const LANE_Y: Record<Lane, number> = {
-  evidence: 28,
-  front: 92,
-  back: 172,
-  support: 238,
+  evidence: 30,
+  front: 104,
+  back: 196,
+  support: 290,
 };
 
-const VIS_LINE_Y = 152; // between frontstage and backstage
-const H = 300;
+const VIS_LINE_Y = 175; // between frontstage and backstage
+const H = 352;
 
 function column(index: number, count: number) {
   const usable = W - PAD_L - PAD_R;
@@ -86,9 +96,32 @@ function column(index: number, count: number) {
   return { x: PAD_L + index * colW + 5, w: colW - 10 };
 }
 
+/** Split a label into at most two lines at the space nearest its middle. */
+function wrap(label: string, max: number): string[] {
+  if (label.length <= max) return [label];
+  const mid = label.length / 2;
+  let best = -1;
+  for (let i = 0; i < label.length; i += 1) {
+    if (label[i] === " " && (best < 0 || Math.abs(i - mid) < Math.abs(best - mid))) best = i;
+  }
+  return best < 0 ? [label] : [label.slice(0, best), label.slice(best + 1)];
+}
+
+/** Lines of text centred vertically on `cy`. */
+function Lines({ lines, x, cy, ...rest }: { lines: string[]; x: number; cy: number } & React.SVGProps<SVGTextElement>) {
+  const top = cy - ((lines.length - 1) * LINE) / 2 + 4.5;
+  return (
+    <text x={x} y={top} fontSize={TYPE} {...rest}>
+      {lines.map((line, i) => (
+        <tspan key={line} x={x} dy={i === 0 ? 0 : LINE}>{line}</tspan>
+      ))}
+    </text>
+  );
+}
+
 /**
  * @status: stable
- * @purpose: Renders the MSK filing path as a toggleable before/after service-blueprint diagram (actor lanes and handoffs), used on the MSK case study page. Pick this for actor-lane handoffs specifically — for a static mechanism diagram use MSKMechanism. Also used on About, cropped to a window of columns with the `columns` prop.
+ * @purpose: Renders the MSK filing path as a toggleable before/after service-blueprint diagram (actor lanes and handoffs), used on the MSK case study page. Pick this for actor-lane handoffs specifically — for a static mechanism diagram use MSKMechanism. Also used on About, cropped to a window of columns with the `columns` prop. Carries its own legend (observed / built by IT and UX / my design, not MSK's), a "Built from" provenance line, and scrolls sideways on phones at full label size.
  */
 export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint, columns }: {
   copy?: MskCopy["blueprint"];
@@ -114,13 +147,11 @@ export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint, colu
   const viewW = columns ? PAD_L + span * ((W - PAD_L - PAD_R) / 6) + PAD_R : W;
   const shiftX = columns ? columns[0] * colW : 0;
   const win = columns ? { transform: `translate(${-shiftX} 0)`, clipPath: "url(#bp-window)" } : {};
-  const subSize = columns ? 10.5 : 9;
-  const callSize = columns ? 11.5 : 10;
-
   // The window where the record is below the line of visibility and the
   // coordinator has no signal. Columns 3 and 4 of the before path.
   const blindFrom = column(3, count);
   const blindTo = column(4, count);
+  const maxChars = Math.floor((colW - 18) / 7);
 
   return (
     <div className="fp-blueprint">
@@ -148,8 +179,12 @@ export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint, colu
         </p>
       </div>
 
-      <div className="fp-blueprint__canvas" aria-hidden="true">
-        <svg viewBox={`0 0 ${viewW} ${H}`} width="100%" role="presentation" focusable="false">
+      {/* Phones: the drawing keeps its full size and scrolls sideways inside
+          this labelled, focusable region (arrow keys scroll it). The drawing
+          itself stays aria-hidden; the key below says the same thing as text. */}
+      <p className="fp-blueprint__swipe" aria-hidden="true">{copy.swipeHint}</p>
+      <div className="fp-blueprint__canvas" role="region" aria-label={copy.canvasAria} tabIndex={0}>
+        <svg viewBox={`0 0 ${viewW} ${H}`} width="100%" style={{ minWidth: viewW }} role="presentation" focusable="false" aria-hidden="true">
           {columns && (
             <defs>
               <clipPath id="bp-window">
@@ -160,11 +195,9 @@ export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint, colu
           {/* lane labels + rules */}
           {LANE_ORDER.map((lane) => (
             <g key={lane}>
-              <text x="0" y={LANE_Y[lane] + 15} fontSize="11.5" fill="currentColor" fillOpacity="0.9">
-                {copy.lanes[lane]}
-              </text>
-              <text x="0" y={LANE_Y[lane] + 29} fontSize={subSize} letterSpacing="1.1" fill="currentColor" fillOpacity="0.45">
-                {copy.laneSubs[lane].toUpperCase()}
+              <Lines lines={wrap(copy.lanes[lane], 20)} x={0} cy={LANE_Y[lane] + 12} fill="currentColor" fillOpacity="0.9" fontWeight="600" />
+              <text x="0" y={LANE_Y[lane] + 12 + (wrap(copy.lanes[lane], 20).length + 0.5) * LINE} fontSize={TYPE} fill="currentColor" fillOpacity="0.62">
+                {copy.laneSubs[lane]}
               </text>
               <line
                 x1={PAD_L - 10}
@@ -182,31 +215,27 @@ export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint, colu
             <g {...win}>
               {/* Spans the coordinator’s dead time as well as the backstage
                   work: the point is that nothing is happening above the line
-                  while something is happening below it. */}
+                  while something is happening below it. Its length was never
+                  measured, and the label says so (synthesis-lens review). */}
               <rect
                 x={blindFrom.x - 5}
                 y={LANE_Y.front - 8}
                 width={blindTo.x + blindTo.w - blindFrom.x + 10}
-                height={LANE_Y.back + NODE_H + 14 - LANE_Y.front + 8}
+                height={LANE_Y.back + NODE_H + 8 - LANE_Y.front + 8}
                 fill="var(--coral)"
                 fillOpacity="0.07"
               />
-              <text
+              <Lines
+                lines={wrap(copy.waiting, 24)}
                 x={blindFrom.x + 6}
-                y={LANE_Y.front + NODE_H / 2 + 4}
-                fontSize={callSize}
+                cy={LANE_Y.front + NODE_H / 2}
                 fill="var(--coral)"
-                fillOpacity="0.75"
-              >
-                {copy.waiting}
-              </text>
+              />
               <text
                 x={blindFrom.x}
                 y={LANE_Y.back + NODE_H + 26}
-                fontSize={callSize}
-                letterSpacing="1.1"
+                fontSize={TYPE}
                 fill="var(--coral)"
-                fillOpacity="0.95"
               >
                 {copy.noSignal}
               </text>
@@ -224,7 +253,7 @@ export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint, colu
             strokeWidth="1.25"
             strokeDasharray="6 4"
           />
-          <text x="0" y={VIS_LINE_Y - 6} fontSize={subSize} letterSpacing="1.2" fill="currentColor" fillOpacity="0.55">
+          <text x="0" y={VIS_LINE_Y - 7} fontSize={TYPE} letterSpacing="1" fill="currentColor" fillOpacity="0.7">
             {copy.visibility}
           </text>
 
@@ -238,9 +267,15 @@ export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint, colu
             // is drawn plainly, so that in the before path its own gap — not a
             // colour — is what reads.
             const isCrossing = node.lane === "back";
+            const isDesign = Boolean(node.design);
 
             return (
-              <g key={`${labels[i]}-${i}`}>
+              <g key={`${labels[i]}-${i}`} className={isDesign ? "fp-blueprint__design" : undefined}>
+                {isDesign && (
+                  <text x={x} y={y - 8} fontSize={TYPE} fontWeight="600" fill="currentColor">
+                    {copy.designTag}
+                  </text>
+                )}
                 <rect
                   x={x}
                   y={y}
@@ -249,20 +284,19 @@ export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint, colu
                   rx={3}
                   fill={isEvidence ? "none" : "var(--paper)"}
                   stroke={isCrossing ? "var(--coral)" : "currentColor"}
-                  strokeOpacity={isCrossing ? 0.95 : isEvidence ? 0.22 : 0.42}
-                  strokeWidth={isCrossing ? 1.75 : 1.25}
-                  strokeDasharray={isEvidence ? "3 3" : isCrossing ? "5 4" : undefined}
+                  strokeOpacity={isCrossing ? 0.95 : isDesign ? 0.9 : isEvidence ? 0.22 : 0.42}
+                  strokeWidth={isCrossing ? 1.75 : isDesign ? 2 : 1.25}
+                  strokeLinecap={isDesign ? "round" : undefined}
+                  strokeDasharray={isDesign ? "0.1 4.5" : isEvidence ? "3 3" : isCrossing ? "5 4" : undefined}
                 />
-                <text
+                <Lines
+                  lines={wrap(labels[i], maxChars)}
                   x={x + w / 2}
-                  y={y + NODE_H / 2 + 4}
+                  cy={y + NODE_H / 2}
                   textAnchor="middle"
-                  fontSize="10.5"
                   fill="currentColor"
-                  fillOpacity={isEvidence ? 0.6 : 0.9}
-                >
-                  {labels[i]}
-                </text>
+                  fillOpacity={isEvidence ? 0.68 : 0.92}
+                />
               </g>
             );
           })}
@@ -307,6 +341,16 @@ export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint, colu
           )}
         </svg>
       </div>
+
+      {/* What kind of claim each box is (synthesis-lens review 2026-11-19):
+          the After path mixes what IT and UX built with two of my own rules.
+          Real text, so the distinction never rests on line style or colour. */}
+      <ul className="fp-blueprint__legend" aria-label={copy.legend.aria}>
+        <li><span className="fp-blueprint__swatch fp-blueprint__swatch--observed" aria-hidden="true" />{copy.legend.observed}</li>
+        <li><span className="fp-blueprint__swatch fp-blueprint__swatch--built" aria-hidden="true" />{copy.legend.built}</li>
+        <li><span className="fp-blueprint__swatch fp-blueprint__swatch--design" aria-hidden="true" />{copy.legend.design}</li>
+      </ul>
+      <p className="fp-blueprint__source">{copy.builtFrom}</p>
 
       {/* The real text for the drawing. Terse on purpose — the lanes carry it. */}
       <dl className="fp-blueprint__key">

@@ -1,0 +1,69 @@
+/* ResultLine (components/flagship/ResultLine.tsx): one result sentence per case
+   study. Kittl's scroll-linked pull-quote, adapted: the words darken one by one
+   as the sentence scrolls into view, so reading pace follows the scroll.
+
+   The base rules ARE the final state: every word in full ink, no animation.
+   That is what no-support browsers, reduced motion, print and forced colors get.
+   Only the @supports + @media block below sets the quiet start color.
+
+   Smoothness: the effect is a CSS scroll-driven animation on `color` only. No
+   scroll listener, no rAF, no IntersectionObserver, and no weight or size change,
+   so nothing reflows while scrolling.
+
+   Contrast of the quiet color (--muted), measured 2026-11-19 against the
+   painted background behind the sentence (worst pixel): light 5.32:1, dark
+   6.71:1. Both pass AA for body text, not just large text. --ink-2 would be
+   quieter-looking only in name: it is darker (7.09:1), so the effect would
+   barely show. */
+/* Own bottom padding, so the sentence never touches a dark band that follows
+   (Knowunity's override, Logistics' cinema). A plain paper section after it
+   drops its top padding instead, so light-to-light the gap is not doubled. */
+.rp-resultLine { padding-block: var(--sp-lg); }
+.rp-resultLine + .rp-section:not(.rp-section--alt):not(.rp-override) { padding-top: 0; }
+
+.rp-resultLine__eyebrow { margin: 0; }
+
+/* The extra selector out-ranks `.riso-page p` (body face, 1.63 leading). */
+.rp-resultLine__text,
+.riso-page .rp-resultLine__text {
+  margin: .5rem 0 0;
+  max-width: 26ch;
+  color: var(--ink);
+  font-family: var(--shell-display);
+  font-size: var(--ts-title);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -.015em;
+  text-wrap: balance;
+}
+
+.rp-resultLine__word { color: var(--ink); }
+
+.riso-page .rp-resultLine__source {
+  margin: var(--pull-gap) 0 0;
+  max-width: 64ch;
+  color: var(--muted);
+  font-size: var(--ts-small);
+}
+
+@supports (animation-timeline: view()) {
+  @media screen and (prefers-reduced-motion: no-preference) and (forced-colors: none) {
+    .rp-resultLine__text { view-timeline: --rl block; }
+    /* Word i of n starts at 5% + i/n of 35% of the cover range and finishes
+       10% later, so the first word starts as the sentence enters and the last
+       is full ink by 50% (the sentence's middle at mid-screen). */
+    .rp-resultLine__word {
+      color: var(--muted);
+      animation: rp-resultLine-ink linear both;
+      animation-timeline: --rl;
+      animation-range:
+        cover calc(5% + var(--i) / var(--n) * 35%)
+        cover calc(15% + var(--i) / var(--n) * 35%);
+    }
+  }
+}
+
+@keyframes rp-resultLine-ink {
+  from { color: var(--muted); }
+  to { color: var(--ink); }
+}

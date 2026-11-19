@@ -110,20 +110,20 @@ export default function RecruiterPanel() {
             <ul className="recruiter-panel__projects">
               <li>
                 <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/msk")}>
-                  <strong>MSK · A filing queue replaced a four-department paper detour</strong>
+                  <strong>Service design project for Memorial Sloan Kettering Cancer Center</strong>
                   <span className="recruiter-panel__project-proof">I mapped the four-department workaround and presented the queue to leadership and IT, who later built it.</span>
                 </button>
               </li>
               <li>
-                <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/grove")}>
-                  <strong>Grove · Twelve features became three</strong>
-                  <span className="recruiter-panel__project-proof">One test with five people and a 37-person survey narrowed the next prototype from twelve features to three.</span>
+                <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/ux-woman")}>
+                  <strong>Healthcare research based on changing Medicaid requirements</strong>
+                  <span className="recruiter-panel__project-proof">Six interviews with clinic and insurer staff led to one public New York Medicaid letter. The guide is untested, and no patient was interviewed.</span>
                 </button>
               </li>
               <li>
                 <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/knowunity")}>
-                  <strong>Knowunity · The student’s own words are the proof</strong>
-                  <span className="recruiter-panel__project-proof">I designed and coded four interaction decisions in 2.5 weeks; speech recognition remains mocked.</span>
+                  <strong>2.5-week design sprint with an edtech startup, run by Yummy Labs</strong>
+                  <span className="recruiter-panel__project-proof">I designed and coded four interaction decisions in 2.5 weeks; the listening is faked: it can’t understand speech.</span>
                 </button>
               </li>
             </ul>

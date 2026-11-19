@@ -32,8 +32,12 @@ type Lane = {
 // 2026-10-12). The compact layout is drawn for ~330px: half as wide, bigger
 // type, event labels alternating above and below the line so they can't
 // collide, and the outcome on its own line under the run.
-const WIDE = { W: 760, LANE_H: 82, LINE_X1: 566, nameSize: 12, smallSize: 8.5, outcomeSize: 11.5 };
-const COMPACT = { W: 380, LANE_H: 112, LINE_X1: 356, nameSize: 14, smallSize: 12, outcomeSize: 13 };
+// Type audit 2026-11-19: the smallest labels measured 10.7 px (1440) and 10.2 px
+// (390), under the 13 px label floor. WIDE's small labels went 8.5 -> 10.5 units
+// (about 13 px at desktop width); COMPACT was redrawn 330 units wide so it sits
+// near 1:1 on a phone, with 13.5-unit labels.
+const WIDE = { W: 760, LANE_H: 82, LINE_X1: 566, nameSize: 12, smallSize: 10.5, outcomeSize: 11.5 };
+const COMPACT = { W: 330, LANE_H: 112, LINE_X1: 306, nameSize: 14.5, smallSize: 13.5, outcomeSize: 14 };
 // About's two-column row: the compact drawing at desktop width, and a still narrower
 // one at phone width so its labels stay near 12px on screen (see the type audit,
 // 2026-11-10). Selected with the `tight` prop.

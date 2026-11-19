@@ -75,21 +75,21 @@ const en = {
   // what she is and where she works, with no case-study detail.
   "home.riso.heroTitle": "UX designer and researcher for\u00a0healthcare and internal\u00a0tools.",
   "home.riso.heroLead":
-    "I spent six years in cancer-care operations and 13+ years in the Army. I also design consumer apps, and I’m bilingual in English and Spanish.",
+    "I spent six years in operations at a cancer center and 13+ years in the Army. I also design consumer apps, and I’m bilingual in English and Spanish.",
   "home.riso.primaryWork": "Review the MSK case study",
   "home.riso.workTitle": "Selected work.",
   "home.riso.workLinkSuffix": "case study",
   "home.riso.groveDesc":
-    "A competitive analysis, a five-user test of the original prototype, and a 37-person survey narrowed twelve features to three. The redesign is in progress; the retest comes next.",
+    "Pre-launch. FloraGrove is a plant-care app for new plant owners. The first version had too many features, so I watched five people use it and surveyed 37. Twelve features became three. It is a working prototype in phase 2 of 3.",
   "home.riso.mskDesc":
-    "I mapped the detour across four departments and presented the digital filing workflow that replaced it to leadership and IT. Six steps became five, and one department left the loop.",
+    "Staff printed patients’ online messages just to scan them into the medical record. I mapped that detour across four departments and pitched a digital fix to hospital leaders and the tech team, who built it after I changed roles. Six steps became five, and one department no longer handles these messages.",
   "home.riso.logisticsDesc":
-    "I planned and tracked a warehouse relocation that took medical resupply from 1–2 months to 1–2 weeks, then built shared order tracking for seven aid stations.",
+    "I planned and tracked a warehouse move that cut the wait for medical supplies from 1–2 months to 1–2 weeks. Then I set up shared order tracking for seven aid stations.",
   "home.riso.uxwomanDesc":
-    "Six interviews with clinic and insurer staff led to one public New York Medicaid letter. I built a guide that starts from the letter in your hand. It is untested, and no patient was interviewed.",
+    "I interviewed six clinic and insurance staff, and they pointed me to one public New York Medicaid (public health insurance) letter. I built a guide that starts from that letter in your hand. Nobody has tested it yet, and I didn’t interview any patients.",
   "home.riso.knowunityDesc":
-    "Students say a definition out loud and get their own words quoted back as proof. Selected for the Yummy Labs AI Design Sprint with Knowunity: solo, 2.5 weeks, on their brief and kit. Recall mocked, not shipped.",
-  "home.riso.groveAlt": "Grove daily care screen showing one clear plant-care task and overdue plants first",
+    "Students explain a term out loud, and the app quotes their own words back to show they know it. I was selected for the Yummy Labs AI Design Sprint with Knowunity and worked alone for 2.5 weeks from their brief and design kit. The voice check is faked in the prototype and never shipped.",
+  "home.riso.groveAlt": "FloraGrove daily care screen showing one clear plant-care task and overdue plants first",
   "home.riso.mskAlt": "Recreated Memorial Sloan Kettering filing queue, showing patient-portal messages moving from ready-to-send through filed",
   "home.riso.logisticsAlt": "Service mechanism diagram contrasting a rear supply point with the warehouse moved forward, beside resupply time falling from months to weeks",
   "home.riso.uxwomanAlt": "Evidence ledger: 6 healthcare interviews, 1 adjacent HR interview, 0 patient interviews, 5 pretotypes designed, 0 run",
@@ -101,7 +101,7 @@ const en = {
   "home.fold.close": "Close",
   "home.index.more": "More work",
   "home.index.moreSummary": "4 more",
-  "home.riso.supportingKicker": "Also documented · Mobbin, 200+ screens per app",
+  "home.riso.supportingKicker": "Also documented · Mobbin, three finance apps",
   "home.riso.supportingLink": "Review the Mobbin case study →",
   "home.riso.contactKicker": "Contact",
   "home.dispatch.eyebrow": "Hackathon project",
@@ -139,7 +139,7 @@ const en = {
   "home.stat.research": "People surveyed before the redesign",
   "home.stat.scale": "Clinicians and administrative staff across the workflows in scope",
   "home.stat.logistics": "Medical resupply across seven aid stations",
-  "home.stat.groveSource": "Grove discovery research",
+  "home.stat.groveSource": "FloraGrove discovery research",
   "home.stat.mskSource": "MSK clinical operations",
   "home.stat.logisticsSource": "Officer Evaluation Report",
   // Hillary's role in each proof number, above the number (2026-10-15, call 5).
@@ -153,25 +153,25 @@ const en = {
 
   // ── Home: projects ──
   "home.eyebrow": "Selected work",
-  "home.proj.grove.subtitle": "Grove · Product design · Research to scope",
-  "home.proj.msk.subtitle": "Memorial Sloan Kettering · Workflow redesign",
-  "home.proj.logistics.subtitle": "Army medical logistics · Service Design",
-  "home.proj.uxwoman.subtitle": "UX Woman · Healthcare research · Medicaid letter guide",
-  "home.proj.knowunity.subtitle": "Knowunity · Design sprint · Interactive mobile prototype",
-  "home.proj.grove.title": "Twelve features became three",
-  "home.proj.msk.title": "A filing queue replaced the paper detour",
-  "home.proj.logistics.title": "Medical resupply went from months to weeks",
-  "home.proj.uxwoman.title": "A letter with a deadline and no clear next step",
-  "home.proj.mobbin.title": "200+ screens per app, searchable by task",
-  "home.proj.mobbin.subtitle": "Mobbin · Freelance app documentation",
-  "home.riso.mobbinDesc": "I captured, sequenced and labeled screens from Kikoff, Polymarket and Discover so designers can search them by task. I did not design these products.",
+  "home.proj.grove.subtitle": "Pre-launch · Phase 2 of 3",
+  "home.proj.msk.subtitle": "Memorial Sloan Kettering · Office coordinator, patient portal messages",
+  "home.proj.logistics.subtitle": "U.S. Army · Seven aid stations",
+  "home.proj.uxwoman.subtitle": "UX Woman accelerator · New York",
+  "home.proj.knowunity.subtitle": "Knowunity · Yummy Labs AI Design Sprint",
+  "home.proj.grove.title": "Product design and research for FloraGrove, a pre-\u2060launch plant-care\u00a0app",
+  "home.proj.msk.title": "Service design project for Memorial Sloan Kettering Cancer\u00a0Center",
+  "home.proj.logistics.title": "Service design for U.S.\u00a0Army medical supply, cutting resupply from months to\u00a0weeks",
+  "home.proj.uxwoman.title": "Healthcare research based on changing Medicaid requirements",
+  "home.proj.mobbin.title": "Freelance documentation of three finance apps for\u00a0Mobbin",
+  "home.proj.mobbin.subtitle": "Mobbin · Kikoff, Polymarket, Discover",
+  "home.riso.mobbinDesc": "I captured, ordered and labeled screens from Kikoff, Polymarket and Discover so designers can search them by task. I did not design these products.",
   "home.proj.hackathon.title": "A transit planner that shows whether the trip home is accessible",
   "home.proj.hackathon.subtitle": "New York Public Library hackathon · with Jacqueline Gordon",
-  "home.riso.hackathonDesc": "Built from public MTA data: eight platforms are accessible in one direction only, which puts the return trip at risk on 22,937 of 77,236 scheduled trips. Jacqueline led the accessibility features; I led the product plan and data logic.",
-  "home.proj.knowunity.title": "The student’s own words are the proof",
+  "home.riso.hackathonDesc": "Using public data from New York’s subway system, we found eight platforms that are accessible in one direction only. That puts the trip back at risk on 22,937 of 77,236 scheduled trips. Jacqueline led the accessibility features; I led the product plan and data logic.",
+  "home.proj.knowunity.title": "2.5-week design sprint with an edtech startup, run by Yummy\u00a0Labs",
 
   // ── Home: contact / CTA ──
-  "home.ctaTitle": "Building a clinical workflow or internal tool?",
+  "home.ctaTitle": "Building a tool for healthcare workers or your own team?",
   "contact.note": "Email me",
   "contact.copy": "or copy:",
   "home.linkedinAria": "LinkedIn profile (opens in new tab)",
@@ -269,7 +269,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.status": "Disponible para trabajar",
   "home.riso.heroTitle": "Diseñadora UX e investigadora para herramientas\u00a0de\u00a0salud y de uso\u00a0interno.",
   "home.riso.heroLead":
-    "Pasé seis años en operaciones de atención oncológica y más de 13 en el Ejército. También diseño apps de consumo, y soy bilingüe en inglés y español.",
+    "Pasé seis años en operaciones en un centro oncológico y más de 13 en el Ejército. También diseño apps de consumo, y soy bilingüe en inglés y español.",
   // The panel itself stays English-only (lang="en") - the ES link says so,
   // the same way ask.ninetySecondLink does below.
   "home.riso.recruiterTourLink": "Abrir el recorrido de 90 segundos (en inglés)",
@@ -277,16 +277,16 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.workTitle": "Trabajo seleccionado.",
   "home.riso.workLinkSuffix": "estudio de caso",
   "home.riso.groveDesc":
-    "Un análisis competitivo, una prueba con cinco usuarios del prototipo original y una encuesta a 37 personas redujeron doce funciones a tres. El rediseño está en curso; la nueva prueba viene después.",
+    "Antes del lanzamiento. FloraGrove es una app de cuidado de plantas para quienes empiezan. La primera versión tenía demasiadas funciones, así que vi a cinco personas usarla y encuesté a 37. Doce funciones se volvieron tres. Es un prototipo funcional en la fase 2 de 3.",
   "home.riso.mskDesc":
-    "Mapeé el desvío entre cuatro áreas y presenté a la dirección y a TI el flujo de archivo digital que lo reemplazó. Seis pasos se volvieron cinco, y un área salió del circuito.",
+    "El personal imprimía los mensajes en línea de los pacientes solo para escanearlos a la historia clínica. Mapeé ese desvío en cuatro áreas y propuse una solución digital a la dirección del hospital y al equipo de tecnología, que la construyeron después de que cambié de puesto. Seis pasos se volvieron cinco, y un área ya no maneja estos mensajes.",
   "home.riso.logisticsDesc":
-    "Planifiqué y supervisé una reubicación de almacén que llevó el reabastecimiento médico de 1–2 meses a 1–2 semanas, y luego creé un seguimiento compartido para siete puestos.",
+    "Planifiqué y seguí el traslado de un almacén que redujo la espera de suministros médicos de 1–2 meses a 1–2 semanas. Luego armé un seguimiento compartido de pedidos para siete estaciones de ayuda.",
   "home.riso.uxwomanDesc":
-    "Seis entrevistas con personal de clínicas y aseguradoras me llevaron a una carta pública de Medicaid de Nueva York. Construí una guía que empieza por la carta que tienes en la mano. No está probada y no se entrevistó a ningún paciente.",
+    "Entrevisté a seis personas de clínicas y aseguradoras, y me señalaron una carta pública de Medicaid de Nueva York (el seguro médico público). Construí una guía que empieza por esa carta que tiene en la mano. Nadie la ha probado todavía, y no entrevisté a ningún paciente.",
   "home.riso.knowunityDesc":
-    "Los estudiantes dicen una definición en voz alta y reciben sus propias palabras citadas como prueba. Seleccionada para el Yummy Labs AI Design Sprint con Knowunity: individual, 2.5 semanas, con su brief y su kit. Recuerdo simulado, no publicado.",
-  "home.riso.groveAlt": "Pantalla de cuidado diario de Grove con una tarea clara y las plantas atrasadas primero",
+    "Los estudiantes explican un término en voz alta, y la app les cita sus propias palabras para mostrar que lo saben. Me seleccionaron para el Yummy Labs AI Design Sprint con Knowunity y trabajé sola durante 2.5 semanas con sus instrucciones y su kit de diseño. La revisión por voz está simulada en el prototipo y nunca se lanzó.",
+  "home.riso.groveAlt": "Pantalla de cuidado diario de FloraGrove con una tarea clara y las plantas atrasadas primero",
   "home.riso.mskAlt": "Cola de archivo recreada de Memorial Sloan Kettering, mostrando mensajes del portal de pacientes desde listos para enviar hasta archivados",
   "home.riso.logisticsAlt": "Diagrama de mecanismo de servicio que contrasta un punto de suministro en la retaguardia con el almacén movido al frente, junto al tiempo de reabastecimiento bajando de meses a semanas",
   "home.riso.uxwomanAlt": "Registro de evidencia: 6 entrevistas de salud, 1 entrevista adyacente de RR. HH., 0 entrevistas con pacientes, 5 pretotipos diseñados, 0 ejecutados",
@@ -298,7 +298,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.fold.close": "Cerrar",
   "home.index.more": "Más trabajo",
   "home.index.moreSummary": "4 más",
-  "home.riso.supportingKicker": "También documentado · Mobbin, más de 200 pantallas por app",
+  "home.riso.supportingKicker": "También documentado · Mobbin, tres apps financieras",
   "home.riso.supportingLink": "Ver el estudio de caso de Mobbin →",
   "home.riso.contactKicker": "Contacto",
   "home.dispatch.eyebrow": "Proyecto de hackathon",
@@ -336,7 +336,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.stat.research": "Personas encuestadas antes del rediseño",
   "home.stat.scale": "Personal clínico y administrativo en los flujos incluidos",
   "home.stat.logistics": "Reabastecimiento médico en siete estaciones de ayuda",
-  "home.stat.groveSource": "Investigación de descubrimiento de Grove",
+  "home.stat.groveSource": "Investigación de descubrimiento de FloraGrove",
   "home.stat.mskSource": "Operaciones clínicas de MSK",
   "home.stat.logisticsSource": "Informe de Evaluación de Oficial",
   "home.stat.scaleTag": "Alcance",
@@ -349,29 +349,28 @@ const es: Partial<Record<StringKey, string>> = {
 
   // ── Home: projects ──
   "home.eyebrow": "Trabajo seleccionado",
-  "home.proj.grove.subtitle": "Grove · Diseño de producto · De la investigación al alcance",
-  "home.proj.msk.subtitle": "Memorial Sloan Kettering · Rediseño de flujos",
-  "home.proj.logistics.subtitle": "Logística médica del Ejército · Diseño de servicios",
-  "home.proj.uxwoman.subtitle": "UX Woman · Investigación en salud · Guía para una carta de Medicaid",
-  "home.proj.knowunity.subtitle": "Knowunity · Sprint de diseño · Prototipo móvil interactivo",
-  // No-break space keeps "se convirtieron" together, so the title breaks after
-  // "funciones" instead of stranding "se" at the end of line one.
-  "home.proj.grove.title": "Doce funciones se\u00a0convirtieron en tres",
-  "home.proj.msk.title": "Una cola de archivo reemplazó el desvío en papel",
-  // Same wording as the Spanish case-study title. "Tiempo de reabastecimiento
-  // médico reducido" left "médico" alone on its own line at 320, 375 and 1280.
-  "home.proj.logistics.title": "El reabastecimiento médico pasó de meses a\u00a0semanas",
-  "home.proj.uxwoman.title": "Una carta con un plazo y sin un siguiente paso claro",
-  "home.proj.mobbin.title": "Más de 200 pantallas por app, buscables por tarea",
-  "home.proj.mobbin.subtitle": "Mobbin · Documentación de apps, freelance",
+  "home.proj.grove.subtitle": "Antes del lanzamiento · Fase 2 de 3",
+  "home.proj.msk.subtitle": "Memorial Sloan Kettering · Coordinadora de oficina, mensajes del portal de pacientes",
+  "home.proj.logistics.subtitle": "Ejército de EE. UU. · Siete estaciones de ayuda",
+  "home.proj.uxwoman.subtitle": "Aceleradora UX Woman · Nueva York",
+  "home.proj.knowunity.subtitle": "Knowunity · Yummy Labs AI Design Sprint",
+  // Titles are project labels (2026-11-19). A no-break space before the last
+  // word keeps it from sitting alone on the final line.
+  "home.proj.grove.title": "Diseño de producto e investigación para FloraGrove, una app de cuidado de plantas antes de su\u00a0lanzamiento",
+  "home.proj.msk.title": "Proyecto de diseño de servicios para Memorial Sloan\u00a0Kettering Cancer\u00a0Center",
+  // Same wording as the Spanish case-study title.
+  "home.proj.logistics.title": "Diseño de servicios para el suministro médico del Ejército de EE.\u00a0UU., reduciendo el reabastecimiento de meses a\u00a0semanas",
+  "home.proj.uxwoman.title": "Investigación en salud basada en los requisitos cambiantes de\u00a0Medicaid",
+  "home.proj.mobbin.title": "Documentación freelance de tres apps financieras para\u00a0Mobbin",
+  "home.proj.mobbin.subtitle": "Mobbin · Kikoff, Polymarket, Discover",
   "home.riso.mobbinDesc": "Capturé, ordené y etiqueté pantallas de Kikoff, Polymarket y Discover para que otros diseñadores las encuentren por tarea. No diseñé estos productos.",
   "home.proj.hackathon.title": "Un planificador de transporte que muestra si el viaje de regreso es accesible",
   "home.proj.hackathon.subtitle": "Hackathon de la Biblioteca Pública de Nueva York · con Jacqueline Gordon",
-  "home.riso.hackathonDesc": "Hecho con datos públicos de MTA: ocho andenes son accesibles en una sola dirección, lo que pone en riesgo el regreso en 22,937 de 77,236 viajes programados. Jacqueline dirigió las funciones de accesibilidad; yo, el plan de producto y la lógica de datos.",
-  "home.proj.knowunity.title": "Las propias palabras del estudiante son la prueba",
+  "home.riso.hackathonDesc": "Con datos públicos del metro de Nueva York, encontramos ocho andenes que son accesibles en una sola dirección. Eso pone en riesgo el viaje de regreso en 22,937 de 77,236 viajes programados. Jacqueline dirigió las funciones de accesibilidad; yo dirigí el plan de producto y la lógica de datos.",
+  "home.proj.knowunity.title": "Sprint de diseño de 2.5 semanas con una startup de tecnología educativa, dirigido por Yummy\u00a0Labs",
 
   // ── Home: contact / CTA ──
-  "home.ctaTitle": "¿Está creando un flujo clínico o una herramienta interna?",
+  "home.ctaTitle": "¿Está creando una herramienta para personal de salud o para su propio equipo?",
   "contact.note": "Escríbame",
   "contact.copy": "o copie:",
   "home.linkedinAria": "Perfil de LinkedIn (se abre en una pestaña nueva)",

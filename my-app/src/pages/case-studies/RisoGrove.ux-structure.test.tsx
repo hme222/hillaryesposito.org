@@ -14,7 +14,7 @@ class ObserverStub {
   disconnect() {}
 }
 
-describe("Grove recruiter-scan structure", () => {
+describe("FloraGrove recruiter-scan structure", () => {
   let container: HTMLDivElement;
   let root: Root;
 
@@ -56,8 +56,8 @@ describe("Grove recruiter-scan structure", () => {
       "Personality, not points",
     ]);
     expect(ledger?.textContent).toContain("one calm morning summary");
-    expect(ledger?.textContent).toContain("confidence, and sources");
-    expect(ledger?.textContent).toContain("remove scorekeeping");
+    expect(ledger?.textContent).toContain("how sure it is, and its sources");
+    expect(ledger?.textContent).toContain("Remove scorekeeping");
     expect(decisions.querySelectorAll(".rp-decision")).toHaveLength(0);
     expect(decisions.querySelectorAll("img")).toHaveLength(0);
     expect(container.querySelectorAll('img[src*="grove-live"], img[src*="grove1"]')).toHaveLength(0);
@@ -66,6 +66,6 @@ describe("Grove recruiter-scan structure", () => {
     expect(demo).not.toBeNull();
     expect(demo?.muted).toBe(true);
     expect(container.querySelector("#grove-start .rp-demoLoop__btn")).not.toBeNull();
-    expect(decisions.textContent).toContain("Still unbuilt: high-fidelity redesign, edge states, and retest");
+    expect(decisions.textContent).toContain("Not built yet: the polished redesign, screens for empty or error moments, and a second round of testing");
   });
 });

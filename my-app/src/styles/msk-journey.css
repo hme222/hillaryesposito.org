@@ -35,5 +35,6 @@
 .msk-journey__walk:hover:not(:disabled) { background: var(--ink); color: var(--paper); }
 .msk-journey__walk:disabled { opacity: .6; cursor: default; }
 .msk-journey figcaption { color: var(--ink-2); font-size: var(--ts-label); flex: 1 1 14rem; }
+.msk-journey__source { display: block; margin-top: .3rem; }
 @media (prefers-reduced-motion: reduce) { .msk-journey__mascot { animation: none; } .msk-journey__track li { transition: none; } .msk-journey__track li.is-here { transform: none; } }
 @media (forced-colors: active) { .msk-journey, .msk-journey__track li { border-color: CanvasText; } .msk-journey__tabs button[aria-pressed="true"] { forced-color-adjust: none; background: Highlight; color: HighlightText; } }

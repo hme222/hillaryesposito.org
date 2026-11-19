@@ -10,9 +10,9 @@
 export type UxWomanLedgerRow = { n: string; en: string; es: string };
 
 export const UXWOMAN_LEDGER: UxWomanLedgerRow[] = [
-  { n: "6", en: "Interviews with clinic and insurer staff", es: "Entrevistas con personal de clínicas y aseguradoras" },
+  { n: "6", en: "Interviews with clinic and insurance company staff", es: "Entrevistas con personal de clínicas y aseguradoras" },
   { n: "0", en: "Patient interviews", es: "Entrevistas con pacientes" },
   { n: "6", en: "Public sources", es: "Fuentes públicas" },
-  { n: "2", en: "Hypotheses", es: "Hipótesis" },
+  { n: "2", en: "Guesses to test (hypotheses)", es: "Hipótesis" },
   { n: "0", en: "Tests run", es: "Pruebas realizadas" },
 ];

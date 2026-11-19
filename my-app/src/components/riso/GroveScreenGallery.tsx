@@ -48,7 +48,7 @@ export default function GroveScreenGallery({ screens }: { screens: Screen[] }) {
         className="rp-strip"
         ref={stripRef}
         onScroll={syncCurrent}
-        aria-label="Original Grove product screens"
+        aria-label="Original FloraGrove product screens"
         tabIndex={0}
       >
         {screens.map((screen) => (
@@ -56,7 +56,7 @@ export default function GroveScreenGallery({ screens }: { screens: Screen[] }) {
             <div className="rp-strip__frame rp-strip__frame--app" style={{ background: screen.bg }}>
               <img
                 src={`/assets/grove/${screen.src}`}
-                alt={`Grove: ${screen.cap}`}
+                alt={`FloraGrove: ${screen.cap}`}
                 loading="lazy"
               />
             </div>

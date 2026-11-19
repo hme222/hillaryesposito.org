@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
 import ReadingProgress from "../../components/flagship/ReadingProgress";
-import GroveSystemLab from "../../components/riso/GroveSystemLab";
+import ResultLine from "../../components/flagship/ResultLine";
 import RisoDefs from "../../components/riso/RisoDefs";
 import CartoField from "../../components/riso/CartoField";
 import PhaseIndicator from "../../components/riso/PhaseIndicator";
@@ -14,34 +14,30 @@ import usePageTitle from "../../hooks/usePageTitle";
 import { wireRevealObservers } from "../../hooks/useFlagshipReveal";
 import "../../styles/riso-page.css";
 
-const DEMO_URL = "https://grove-demo-k7q2x.vercel.app/";
+// FloraGrove's own public waitlist page (the app's public invite target).
+// This site never collects emails itself.
+const WAITLIST_URL = "https://floragrove.app";
 
 /**
- * Grove — case study in the Risograph Cartography system.
- * Structure follows the Carmen Elena / Pilgrimz arc: hero-plate hook →
- * concise problem → evidence → decisions → interactive trust specimens →
- * truthful current state → conversational CTA.
+ * FloraGrove — pre-launch page (rebuilt 2026-11-19 at Hillary's direction:
+ * "just a pre-launch ... landing page for people to sign up and see prototype
+ * video"). A short landing section, then a short research story.
+ *
+ * Removed on purpose, do not restore without asking her: every mention of the
+ * AI app builder that made the first version, the "AI's job / My job" record,
+ * "How I built the prototype", the design-system lab and Storybook link, the
+ * decision-override table, the guilt-reminder comparison, and the outcome
+ * tiles. GroveSystemLab still exists as a component; it just no longer renders
+ * here.
  */
 
-// Grove now shares the flagship chapter component with MSK and Mobbin rather
-// than hand-rolling its own nav, so it gets sticky wayfinding and current-
-// chapter highlighting for free. The first entry anchors the hero for active
-// tracking; the component itself renders from the second onward.
+// The first entry anchors the landing section for active tracking; the chapter
+// strip renders from the second onward.
 const CHAPTERS: CaseStudyChapter[] = [
-  { id: "grove-start", label: "Problem" },
-  { id: "grove-research", label: "Research" },
-  { id: "grove-decisions", label: "Decisions" },
-  { id: "grove-override", label: "Changes" },
-  { id: "grove-outcomes", label: "Outcomes" },
-];
-
-const SURVEY_FINDINGS = [
-  { stat: "12", label: "of 37 named notification volume, unprompted, as what would make them delete it, the most-cited reason by far" },
-  // Recomputed 2026-10-19 from all 37 responses with the Grove repo's
-  // docs/research/scripts/survey_stats.py. Groups come from the "relationship
-  // with plants" question: new owners answered 13 of 14, mean 2.38;
-  // experienced answered 14 of 14, mean 3.43 (was printed as "n=16" and "3.3").
-  { stat: "2.4", label: "out of 5: how confident new owners felt about getting sunlight right (13 people). Experienced owners rated themselves 3.4 (14 people)" },
+  { id: "grove-start", label: "Pre-launch" },
+  { id: "grove-research", label: "First test" },
+  { id: "grove-survey", label: "Survey" },
+  { id: "grove-decisions", label: "Next" },
 ];
 
 // Launch-dealbreaker picks ("choose three"), percent of all 37 responses,
@@ -79,59 +75,27 @@ const renderRankRow = (f: (typeof MVP_FEATURES)[number]) => (
   </li>
 );
 
-// The full five-call decision table ("All five decisions") is off the
-// page for now - owner's call, 2026-10-13; she is reworking it and will add it
-// back in the next few weeks. Flip this to true to restore it. The OVERRIDES
-// data below stays intact for that. While it is off, the "5 product calls"
-// outcome tile hides too: pet safety appears nowhere else on the page, so the
-// five calls would not all be visible to back the number.
-const SHOW_DECISION_TABLE = false;
-
-// "3" leads (2026-10-15, call 5): the decision is the result; the 37 is how
-// it was reached.
-const OUTCOMES: Array<{ n: string; l: string; needsDecisionTable?: boolean }> = [
-  { n: "3", l: "features that earn the download; everything else waits" },
-  { n: "37", l: "people surveyed before any screen changed" },
-  { n: "5", l: "product calls made explicit, including one care-logic mistake", needsDecisionTable: true },
-];
-const VISIBLE_OUTCOMES = OUTCOMES.filter((o) => SHOW_DECISION_TABLE || !o.needsDecisionTable);
-
-
-// Emergent evidence paired with the redesign decision. These are deliberately
-// framed as directions, not unsupported finished-screen claims.
+// Planned changes for the next prototype, framed as plans, not finished screens.
 const DECISIONS = [
   {
     feature: "Reminders",
-    why: "Replace mission-and-feed urgency with one calm morning summary.",
+    why: "Swap the pushy missions and feed for one calm morning summary.",
   },
   {
     feature: "Plant ID by camera",
-    why: "Show top guesses, confidence, and sources, not one false verdict.",
+    why: "Show the top guesses, how sure it is, and its sources, not one answer that might be wrong.",
   },
   {
     feature: "Personality, not points",
-    why: "Keep plant personality; remove scorekeeping that turns care into paperwork.",
+    why: "Keep the plant’s personality. Remove scorekeeping that makes care feel like a chore.",
   },
 ];
 
-// Decisions from the first build, with one correction still being designed.
-const OVERRIDES: Array<{ topic: string; ai: string; me: string; why: string; next?: boolean }> = [
-  { topic: "Reminder tone", ai: "Guilt and urgency.", me: "One calm morning summary.", why: "Notifications are the #1 reason people delete a plant app." },
-  { topic: "Gamification", ai: "Badges and streaks.", me: "An AI plant personality you earn: a feeling, not points.", why: "Care that feels like paperwork is the top reason people said they would stop updating: 11 of the 13 who answered. A streak also rewards watering every day, while overwatering is the most common way people kill houseplants. The optimal play would kill the subject of the product. The honest cost: calm should show lower 7-day engagement than streaks would. I’d take that trade if 90-day retention holds. If it doesn’t, the mechanic was doing work I underestimated, and I’d rather find that out than assume it." },
-  { topic: "Plant ID confidence", ai: "One confident answer, every time.", me: "Top guesses, how sure it is, and its sources.", why: "False certainty is the fastest way to lose trust." },
-  { topic: "Pet safety", ai: "Generic care tips.", me: "Toxic-to-pets warnings the moment you add a plant, with sources.", why: "4 of 12 new owners who answered picked pet safety as one of the most stressful parts of plant care. When a plant can hurt a cat, a wrong guess isn’t a suggestion. It’s a risk." },
-  { topic: "Watering schedule", next: true, ai: "A fixed calendar, with every plant on its own repeating interval and days overdue.", me: "The reminder asks you to check, not to water: “Fiddle Leaf: check the top inch.” Two taps: watered, or not yet.", why: "Overwatering kills more houseplants than neglect, and a fixed interval is exactly how it happens. My own care guide already says “water when the top inch is dry.” The reminder engine never caught up to it. Asking you to check makes the reminder correct, makes seasonality free, and turns “smart care reminders” from a label into a mechanism. This is the one I got wrong in the same direction as the first build: I corrected its tone five times and never once its logic." },
-];
-
-// Grove's own product fonts, shown in its type-scale specimen. Only this page uses
-// them, so they load here instead of on every page of the site.
-const GROVE_FONTS_HREF = "https://fonts.googleapis.com/css2?family=Archivo:wght@400;800&family=Space+Mono:wght@400&display=swap";
-
 /**
- * The Grove demo, clicked through, looping at the top of the case study.
+ * The FloraGrove demo, clicked through, looping in the landing section.
  * Recorded from the deployed demo (fake "Maya" sample data, no real user).
  * Silent. Autoplay is off for visitors who ask for reduced motion, and everyone
- * gets a visible pause/play button (WCAG 2.2.2). The text below the frame says
+ * gets a visible pause/play button (WCAG 2.2.2). The text beside the frame says
  * what the video shows, since it has no narration or captions.
  */
 function GroveDemoLoop() {
@@ -166,7 +130,7 @@ function GroveDemoLoop() {
           poster="/assets/grove/grove-demo-poster.jpg"
           width={780}
           height={1688}
-          aria-label="Grove demo: a new owner signs up, takes the quiz, adds a spider plant, logs a soil test and meets Pip. Sample data, silent, loops."
+          aria-label="FloraGrove prototype video: a new plant owner signs up, takes a quiz, adds a spider plant, logs a soil test, and meets Pip, the app’s flowerpot character. Made-up sample data. No sound. Plays on repeat."
           onPlay={() => setPlaying(true)}
           onPause={() => setPlaying(false)}
         >
@@ -174,93 +138,21 @@ function GroveDemoLoop() {
         </video>
       </div>
       <button type="button" className="rp-demoLoop__btn" onClick={toggle} aria-pressed={playing}>
-        {playing ? "Pause demo video" : "Play demo video"}
+        {playing ? "Pause prototype video" : "Play prototype video"}
       </button>
     </figure>
   );
 }
 
 export default function RisoGrove() {
-  useEffect(() => {
-    if (document.querySelector("link[data-grove-fonts]")) return;
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = GROVE_FONTS_HREF;
-    link.setAttribute("data-grove-fonts", "true");
-    document.head.appendChild(link);
-  }, []);
   const { lang } = useLanguage();
-  usePageTitle("Grove: Research-to-Scope Case Study", lang !== "es");
+  usePageTitle("FloraGrove: Pre-Launch Plant-Care App", lang !== "es");
 
-  // Scroll-reveal — fade/rise sections in as they enter view (Carmen-style
-  // motion). Shared with useFlagshipReveal so the reveal + proximity-armed
-  // failsafe logic (and any future fix to it) lives in one
-  // place — see hooks/useFlagshipReveal.ts.
+  // Scroll-reveal, shared with the other flagships (hooks/useFlagshipReveal.ts).
   useEffect(() => {
     const root = document.querySelector<HTMLElement>(".riso-page");
     if (!root) return;
     return wireRevealObservers(root);
-  }, []);
-
-  // Route legs: highlight + wiggle the pin as each crosses the viewport centre.
-  // Fires once per leg. Toggling meant the wiggle replayed every time someone
-  // scrolled back up to re-find their place — a repeated attention-grab at
-  // exactly the moment attention has already been lost.
-  useEffect(() => {
-    if (typeof IntersectionObserver === "undefined") return;
-    const legs = Array.from(document.querySelectorAll<HTMLElement>(".riso-page .rp-leg"));
-    const legIo = new IntersectionObserver(
-      (entries) =>
-        entries.forEach((e) => {
-          if (!e.isIntersecting) return;
-          e.target.classList.add("is-active");
-          legIo.unobserve(e.target);
-        }),
-      { rootMargin: "-42% 0px -42% 0px" }
-    );
-    legs.forEach((el) => legIo.observe(el));
-    return () => legIo.disconnect();
-  }, []);
-
-  // Scroll-linked hand-drawn underline — draws as the quote rises into view,
-  // reverses on scroll-up, redraws on the way back down.
-  useEffect(() => {
-    const path = document.querySelector<SVGPathElement>(".riso-page .rp-underline path");
-    const quote = document.querySelector<HTMLElement>(".riso-page .rp-quote");
-    if (!path || !quote) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      path.style.strokeDashoffset = "0";
-      return;
-    }
-    const draw = () => {
-      const r = quote.getBoundingClientRect();
-      const vh = window.innerHeight || 1;
-      const start = vh * 0.66; // starts a bit later — as your eye reaches it
-      const end = vh * 0.44; // fully drawn near centre
-      const p = Math.max(0, Math.min(1, (start - r.top) / (start - end)));
-      path.style.strokeDashoffset = String(1 - p);
-    };
-
-    // Reads layout (getBoundingClientRect) and then writes style on the same
-    // element. Left on the raw scroll event that is a read/write cycle per
-    // event; batching into one frame keeps it to a single layout pass.
-    let frame = 0;
-    const onScroll = () => {
-      if (frame) return;
-      frame = window.requestAnimationFrame(() => {
-        frame = 0;
-        draw();
-      });
-    };
-
-    draw();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      if (frame) window.cancelAnimationFrame(frame);
-    };
   }, []);
 
   if (lang === "es") return <SpanishCaseStudy data={GROVE_ES} />;
@@ -269,10 +161,10 @@ export default function RisoGrove() {
     <main className="riso-page flagship-page flagship-page--grove" lang="en">
       <RisoDefs />
 
-      <CaseStudyChapters project="Grove" chapters={CHAPTERS} progress />
+      <CaseStudyChapters project="FloraGrove" chapters={CHAPTERS} progress />
       <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
 
-      {/* HERO */}
+      {/* LANDING: what it is, the prototype video, and the waitlist. */}
       <header className="rp-hero" id="grove-start" data-language-anchor="grove-start">
         <CartoField
           mapSrc="/riso/elevation-02.jpg"
@@ -283,74 +175,68 @@ export default function RisoGrove() {
         />
         <div className="rp-hero__content">
           <div className="rp-clearing">
-            <h1 className="rp-h1">Twelve features became three.</h1>
+            <h1 className="rp-h1">Product design and research for FloraGrove, a <span className="rp-keep">pre-launch</span> <span className="rp-keep">plant-care{"\u00a0"}app</span></h1>
+            {/* Source order keeps the H1 first; CSS order shows the eyebrow above it on desktop. */}
+            <span className="rp-eyebrow">Pre-launch</span>
+            {/* What it is: from FloraGrove's own landing page description. */}
             <p className="rp-sub">
-              Grove is a plant-care app for new plant owners. The first version, made with the AI app builder Emergent, came out crowded with features. I tested it with 5 people, then surveyed 37 to cut twelve features to three. <b>It is a working prototype, and the redesign has not been tested yet.</b>
+              FloraGrove is a plant-care app for new plant owners. It tells you what each plant needs today, from water and light to soil, and why.
+              {" "}<b>Pre-launch: nothing here has shipped. FloraGrove is a functional prototype in Phase 2 of 3.</b>
             </p>
-            {/* Interview-sourced human line (Better Stories pass, 2026-11-10); source: design-docs/case-study-stories. */}
-            <p className="rp-humanLine">I know plants, so I wanted more features. Five users changed that.</p>
-            {/* The click-through demo of the current app (Grove repo, walkthrough/),
-                deployed separately on Vercel. It runs on sample data, so the
-                label says so. Same hero action pattern as Knowunity. */}
             <div className="rp-hero__ctas">
-              <a className="rp-cta" href={DEMO_URL} target="_blank" rel="noopener noreferrer">
-                <span className="rp-ext">Try the Grove demo</span><span className="sr-only"> (opens in new tab)</span>
+              <a className="rp-cta" href={WAITLIST_URL} target="_blank" rel="noopener noreferrer">
+                <span className="rp-ext">Join the waitlist</span><span className="sr-only"> (opens in new tab)</span>
               </a>
             </div>
-            <p className="rp-heroDemoNote">The current app on sample data.</p>
+            <p className="rp-heroDemoNote">The video uses made-up sample data. It has no sound and loops.</p>
           </div>
         </div>
         <div className="rp-hero__media fp-heroArt--fan" data-evidence="true">
-          {/* R5 (2026-11-16): the demo video at the shared 300px fan phone
-              size, with no side phones. The only other phone frames are
-              grove1.png, a first-build screen this page deliberately leaves
-              out, and the video's own poster, which would just repeat it. */}
           <div className="fp-fan">
             <GroveDemoLoop />
           </div>
         </div>
       </header>
 
-      {/* PROBLEM */}
+      {/* Same words and count as the survey section's lede, so the two cannot drift. */}
+      <ResultLine eyebrow="What I found" text={`Twelve features became ${countWord(CORE_FEATURES.length)}.`} />
+
+      {/* STORY 1: the first version did too much. */}
       <section className="rp-section" id="grove-research" data-language-anchor="grove-research">
         <div className="rp-wrap">
-          <div className="rp-split rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "0ms" } as React.CSSProperties}>
-            <div className="rp-split__text">
-              <h2 className="rp-title">Plant parents forget. Then they feel guilty.</h2>
-              <p className="rp-lede">Most people who buy a plant want one thing: to keep it alive. Then they forget to water it, or water it too much, and feel bad either way. Grove’s job is to give one calm next step, and to say when it isn’t sure.</p>
-            </div>
-          </div>
-
-          <dl className="rp-surveyStats rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "90ms" } as React.CSSProperties}>
-            {SURVEY_FINDINGS.map((f) => (
-              <div key={f.stat}>
-                <dt>{f.stat}</dt>
-                <dd>{f.label}</dd>
-              </div>
-            ))}
-          </dl>
-          <CaseMore label="Who took part and when">
-            <p className="rp-lede">From March to May 2026, five moderated sessions showed that people stalled when care led with a feed and a mission, not their plants. Then, from May 22 to October 16, 37 people answered a self-report survey: 31 plant owners and caretakers, three florists, and three bouquet buyers. Each chose three launch dealbreakers.</p>
-          </CaseMore>
-
-          <p className="rp-lede rp-reveal" style={{ "--rp-reveal-stagger": "180ms" } as React.CSSProperties}>
-            <strong>Limit:</strong> self-report prioritized the next build; it does not prove behavior or demand. The moderated test showed confusion, but its task records are not preserved.
+          <h2 className="rp-title">The first version tried to do too{" "}much.</h2>
+          <p className="rp-lede">
+            It opened on a feed and a mission, not on your own plants. From March to May 2026, I tested it with five people. They got stuck right there.
           </p>
+          {/* Interview-sourced human line (Better Stories pass, 2026-11-10); source: design-docs/case-study-stories. */}
+          <p className="rp-humanLine">I know plants, so I wanted more features. Five users changed that.</p>
+          <p className="rp-lede">
+            <strong>Limit:</strong> the test sessions showed confusion, but I did not keep notes on each task.
+          </p>
+        </div>
+      </section>
 
-          <h3 className="rp-subhead">What they wanted, and what waited</h3>
-          <p className="rp-lede">The top {countWord(CORE_FEATURES.length)} entered the core.</p>
-          {/* Core rows stay visible; lower-ranked evidence moves into the
-              research disclosure below. Counts still derive from MVP_FEATURES. */}
-          <ol className="rp-rank rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "270ms" } as React.CSSProperties}>
+      {/* STORY 2: the survey cut twelve features to three. */}
+      <section className="rp-section" id="grove-survey" data-language-anchor="grove-survey">
+        <div className="rp-wrap">
+          <h2 className="rp-title">Then 37 people picked what it could not launch{" "}without.</h2>
+          <p className="rp-lede">
+            From May 22 to October 16, 37 people filled out a survey: 31 plant owners and caretakers, three florists, and three bouquet buyers. Each picked the three features the app could not launch without. Twelve features became {countWord(CORE_FEATURES.length)}.
+          </p>
+          <h3 className="rp-subhead">The top {countWord(CORE_FEATURES.length)} made the cut</h3>
+          <ol className="rp-rank rp-reveal" data-evidence="true">
             {CORE_FEATURES.map(renderRankRow)}
           </ol>
+          <p className="rp-lede">
+            <strong>Limit:</strong> a survey tells you what people say they want. It set the order for the next build, but it does not prove what people would actually do.
+          </p>
         </div>
       </section>
 
       <details className="rp-deepDive">
         <summary>
           <span className="rp-deepDive__copy">
-            <b className="rp-deepDive__title">Inspect Grove’s complete research evidence</b>
+            <b className="rp-deepDive__title">See the rest of the survey ranking</b>
           </span>
           <span className="rp-deepDive__state" aria-hidden="true">
             <span className="rp-deepDive__stateClosed">Open</span>
@@ -359,121 +245,21 @@ export default function RisoGrove() {
         </summary>
         <section className="rp-section">
           <div className="rp-wrap">
-            {LATER_FEATURES.length > 0 && (
-              <>
-                <h3 className="rp-subhead">The {countWord(LATER_FEATURES.length)} that waited</h3>
-                <ol className="rp-rank" start={CORE_FEATURES.length + 1}>
-                  {LATER_FEATURES.map(renderRankRow)}
-                </ol>
-              </>
-            )}
-
+            <h3 className="rp-subhead">The {countWord(LATER_FEATURES.length)} that waited</h3>
+            <ol className="rp-rank" start={CORE_FEATURES.length + 1}>
+              {LATER_FEATURES.map(renderRankRow)}
+            </ol>
           </div>
         </section>
       </details>
 
-      {/* THE REDESIGN — Emergent → focused, evidence-backed direction */}
-      {/* Moved up (2026-11-13, Lex: show solutions before the journey): the working
-          prototype now sits before the decision chapters. */}
-      {/* The specimen library is valuable to a design-systems reviewer, but it
-          is secondary to the research-to-decision story. Keep it inspectable
-          without charging every recruiter the full scroll cost. */}
-      <details className="rp-deepDive rp-deepDive--system" id="grove-prototype">
-        <summary>
-          <span className="rp-deepDive__copy">
-            <b className="rp-deepDive__title">Try the full Grove prototype system</b>
-          </span>
-          <span className="rp-deepDive__state" aria-hidden="true">
-            <span className="rp-deepDive__stateClosed">Open</span>
-            <span className="rp-deepDive__stateOpen">Close</span>
-          </span>
-        </summary>
-        <section className="rp-section" data-language-anchor="grove-prototype">
-          <div className="rp-wrap">
-          <p className="rp-phase">Prototype proof <span>· interactive</span></p>
-          <h2 className="rp-title" style={{ marginTop: ".4rem" }}>Try the working{"\u00a0"}prototype.</h2>
-          <p className="rp-lede">Three keyboard-operable interactions first; tokens and implementation detail follow.</p>
-          <h3 className="rp-subhead">How I built the prototype</h3>
-          <dl className="rp-decisionRecord" data-evidence="true">
-            <div><dt>Source of truth</dt><dd>The working React prototype, not a static handoff artifact.</dd></div>
-            <div><dt>AI’s job</dt><dd>Accelerate first-build implementation and help explore alternatives; research still chose what entered the product.</dd></div>
-            <div><dt>My job</dt><dd>Own research, scope, interaction decisions, accessibility, and QA.</dd></div>
-            <div><dt>Boundary</dt><dd>Faster output is not evidence. Uncertain recommendations still need confidence, sources, and human review.</dd></div>
-          </dl>
-
-          {SHOW_DECISION_TABLE && (
-            <>
-              <h3 className="rp-subhead">All five decisions</h3>
-              <div className="rp-accordion rp-reveal" data-evidence="true">
-                {OVERRIDES.map((o, i) => (
-                  <details className="rp-acc" key={o.topic}>
-                    <summary>
-                      <span className="rp-acc__num">{String(i + 1).padStart(2, "0")}</span> {o.topic}
-                      {o.next && <span className="rp-acc__next">designing now</span>}
-                    </summary>
-                    <div className="rp-acc__body">
-                      <p className="rp-acc__line rp-acc__ai"><b>First build</b>{o.ai}</p>
-                      <p className="rp-acc__line rp-acc__me"><b>Next design</b>{o.me}</p>
-                      <p className="rp-acc__why">{o.why}</p>
-                    </div>
-                  </details>
-                ))}
-              </div>
-            </>
-          )}
-          {/* The app’s own components, documented in Storybook from the Grove
-              repo (deployed separately at grove-ui.hillaryesposito.org). */}
-          <p className="rp-hero__ctas">
-            <a
-              className="rp-cta rp-cta--ghost"
-              href="https://grove-ui.hillaryesposito.org/?path=/story/grove-plantcard--healthy"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Open the Storybook (opens in new tab)"
-            >
-              <span className="rp-ext">Open the Storybook</span>
-            </a>
-          </p>
-          <div data-evidence="true"><GroveSystemLab /></div>
-          <h3 className="rp-subhead">Type scale</h3>
-          <div className="rp-typescale" data-evidence="true">
-            <div className="rp-type">
-              <span className="rp-type__label">Display · Archivo 800</span>
-              <span style={{ fontSize: "2.1rem", fontWeight: 800, letterSpacing: "-.03em", lineHeight: 1 }}>Calm, not stressful</span>
-            </div>
-            <div className="rp-type">
-              <span className="rp-type__label">Body · Archivo 400</span>
-              <span style={{ fontSize: "1rem", color: "var(--ink-2)" }}>One clear task a day. A calm morning summary, never a pile of guilt.</span>
-            </div>
-            <div className="rp-type">
-              <span className="rp-type__label">Label · Space Mono</span>
-              <span className="rp-type__sampleLabel">Healthy · due · overdue</span>
-            </div>
-          </div>
-
-          <h3 className="rp-subhead">What I decided</h3>
-          <dl className="rp-decisionRecord" data-evidence="true">
-            <div><dt>First build</dt><dd>Water on a fixed calendar.</dd></div>
-            <div><dt>What broke</dt><dd>The interface rewarded overwatering.</dd></div>
-            <div><dt>Next design</dt><dd>Check the top inch. Then log watered or not yet.</dd></div>
-            <div><dt>Next test</dt><dd>Plant health and 90-day retention, not reminder taps.</dd></div>
-          </dl>
-
-          <h3 className="rp-subhead">Rules I kept</h3>
-          <div className="rp-foundation rp-reveal" data-evidence="true">
-            <div className="rp-fcard"><p className="rp-fcard__k">Principle · locked</p><p className="rp-fcard__t">One task a day</p><p className="rp-fcard__d">A new user only ever sees one decision per screen.</p></div>
-            <div className="rp-fcard"><p className="rp-fcard__k">Principle · locked</p><p className="rp-fcard__t">Grouped by where they live</p><p className="rp-fcard__d">Plants grouped by room, never one long overwhelming list.</p></div>
-            <div className="rp-fcard"><p className="rp-fcard__k">Principle · locked</p><p className="rp-fcard__t">Automated advice stays reviewable</p><p className="rp-fcard__d">A person has the final call on every uncertain recommendation. Plant ID shows top guesses with confidence and sources, not one verdict.</p></div>
-          </div>
-          </div>
-        </section>
-      </details>
-
-      <section className="rp-section" id="grove-decisions" data-language-anchor="grove-decisions">
+      {/* STORY 3: what is planned next, and what is not built yet. */}
+      <section className="rp-section rp-section--alt" id="grove-decisions" data-language-anchor="grove-decisions">
         <div className="rp-wrap">
-          <h2 className="rp-title">Three features, one testable direction each.</h2>
-          <p className="rp-lede" style={{ marginTop: "1.1rem" }}>They are decisions for the next prototype, not completed redesigns.</p>
-          <dl className="rp-decisionRecord rp-decisionRecord--grove rp-reveal" aria-label="Grove’s three next-design directions" data-evidence="true">
+          <h2 className="rp-title">The redesign is planned. Next, I test it with people.</h2>
+          <PhaseIndicator current={2} total={3} label="Functional prototype · Phase 2 of 3" />
+          <p className="rp-lede">These are plans for the next prototype, not finished screens.</p>
+          <dl className="rp-decisionRecord rp-decisionRecord--grove rp-reveal" aria-label="FloraGrove’s three planned changes" data-evidence="true">
             {DECISIONS.map((decision) => (
               <div key={decision.feature}>
                 <dt>{decision.feature}</dt>
@@ -481,100 +267,37 @@ export default function RisoGrove() {
               </div>
             ))}
           </dl>
-          <CaseMore label="What is still unbuilt">
-            <p className="rp-lede" style={{ marginTop: "clamp(2rem, 5vw, 3.5rem)" }}>
-              <strong>Still unbuilt:</strong> high-fidelity redesign, edge states, and retest.
-            </p>
-          </CaseMore>
-        </div>
-      </section>
-
-      {/* AI DECISION DEEP-DIVE */}
-      <section className="rp-section rp-override" id="grove-override" data-language-anchor="grove-override">
-        <div className="rp-wrap">
-          <h2 className="rp-title">One calm reminder instead of three guilty ones.</h2>
-          <div className="rp-pushback rp-reveal" data-evidence="true">
-            <div className="rp-notif rp-notif--ai">
-              {/* Claim audit 2026-10-13: these three are illustrations of the guilt
-                  tone, not copy from the Emergent build (no trace in the Grove repo;
-                  Hillary confirmed). Labeled as such. */}
-              <p className="rp-notif__tag">The tone, illustrated</p>
-              <div className="rp-notif__card"><span className="rp-notif__app">Grove · now</span><p className="rp-notif__msg">I’m thirsty. Why did you forget me?</p></div>
-              <div className="rp-notif__card"><span className="rp-notif__app">Grove · 2h ago</span><p className="rp-notif__msg">Your Pothos is struggling. Don’t let it down.</p></div>
-              <div className="rp-notif__card"><span className="rp-notif__app">Grove · 5h ago</span><p className="rp-notif__msg">3 plants are counting on you today.</p></div>
-            </div>
-            <div className="rp-pushback__vs" aria-hidden="true">instead ↓</div>
-            <div className="rp-notif rp-notif--me">
-              <p className="rp-notif__tag">Next design</p>
-              <div className="rp-notif__card"><span className="rp-notif__app">Grove · 8:00 AM</span><p className="rp-notif__msg">Good morning. One thing today: check the top inch of your Fiddle Leaf.</p></div>
-            </div>
-          </div>
-
-          <CaseMore label="Why plant ID shows its sources">
-            <h3 className="rp-subhead">The trust decision</h3>
-            <p className="rp-lede">
-              A florist, unprompted: “Any generative AI in this will remove any sense of trust.”
-              She wasn’t alone, 5 of 37 said they’d trust no AI feature in the app at all, and 22 of 37
-              said explaining why the AI made a call is what would earn their trust. Plant ID carried
-              that risk directly, so instead of one confident answer, it shows top guesses, how sure it
-              is, and its sources. False certainty is the fastest way to lose trust. I removed
-              AI-written care sheets from scope.
-            </p>
-          </CaseMore>
-
-        </div>
-      </section>
-
-
-      {/* OUTCOMES */}
-      <section className="rp-section rp-outcomeStage" id="grove-outcomes" data-language-anchor="grove-outcomes">
-        <div className="rp-wrap">
-          <h2 className="rp-title">The redesign is decided. Retest next.</h2>
-          <PhaseIndicator current={2} total={3} label="Functional prototype · Phase 2 of 3" />
-          <div
-            className={`rp-outcomes rp-outcomes--lead rp-reveal${VISIBLE_OUTCOMES.length === 2 ? " rp-outcomes--two" : ""}`}
-            data-evidence="true"
-          >
-            {VISIBLE_OUTCOMES.map((o) => (
-              <div className="rp-stat" key={o.n}>
-                <p className="rp-stat__n">{o.n}</p>
-                <p className="rp-stat__l">{o.l}</p>
-              </div>
-            ))}
-          </div>
-          <p className="rp-routeVerdict rp-reveal" data-evidence="true">
-            <b>I got the care logic wrong before I got the interface right.</b>
-            The next prototype tests whether a check-first reminder protects the plant without costing long-term use.
+          <p className="rp-lede">
+            <strong>Not built yet:</strong> the polished redesign, screens for empty or error moments, and a second round of testing.
           </p>
           <CaseMore label="What the phases mean">
-            <div className="rp-note rp-reveal">
+            <div className="rp-note">
               <p className="rp-note__k">What the three phases mean</p>
-              <p>Grove is a functional prototype in Phase 2 of 3. 1: first build + survey. 2: decisions shown here. 3: high-fidelity screens, owner testing, and edge states.</p>
+              <p>FloraGrove is a functional prototype in Phase 2 of 3: it works, but it isn’t finished. Phase 1: the first app and the survey. Phase 2: the decisions on this page. Phase 3: polished screens, testing with plant owners, and screens for empty or error moments.</p>
             </div>
           </CaseMore>
         </div>
       </section>
 
-      {/* CLOSING CTA */}
+      {/* CLOSING: the same email action as every case study, plus the waitlist. */}
       <section className="rp-section">
         <div className="rp-wrap rp-close">
-          <h2>I design the ‘not sure’ states.</h2>
-          <p>
-            Top guesses, how sure it is, and where that came from: Grove’s plant ID is my small version of a problem clinical tools have too.
-          </p>
-          {/* The closing action stays consistent across the complete case-study
-              sequence so the next step remains predictable. */}
-          <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
+          <h2>Want to try FloraGrove when it’s ready?</h2>
+          <div className="rp-hero__ctas">
+            <a className="rp-cta" href={WAITLIST_URL} target="_blank" rel="noopener noreferrer">
+              <span className="rp-ext">Join the waitlist</span><span className="sr-only"> (opens in new tab)</span>
+            </a>
+            <a className="rp-cta rp-cta--ghost" href="mailto:espositohillary@gmail.com">Email me →</a>
+          </div>
         </div>
       </section>
 
       {/* NEXT CASE STUDY */}
-      <Link className="rp-next" to="/case-study/knowunity">
+      <Link className="rp-next" to="/case-study/logistics">
         <div className="rp-next__inner">
           <div>
             <p className="rp-next__eyebrow">Next case study</p>
-            <p className="rp-next__title">Knowunity</p>
-            
+            <p className="rp-next__title">Medical logistics</p>
           </div>
           <span className="rp-next__arrow" aria-hidden="true">→</span>
         </div>

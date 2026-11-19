@@ -5,6 +5,7 @@ import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/C
 import ReadingProgress from "../../components/flagship/ReadingProgress";
 import CaseStudyReel, { CaseStudyReelData } from "../../components/flagship/CaseStudyReel";
 import EvidenceField from "../../components/flagship/EvidenceField";
+import ResultLine from "../../components/flagship/ResultLine";
 import CartoField from "../../components/riso/CartoField";
 import RisoDefs from "../../components/riso/RisoDefs";
 import SpanishCaseStudy from "../../components/SpanishCaseStudy";
@@ -33,27 +34,27 @@ import CaseMore from "../../components/CaseMore";
 const CHAPTERS: CaseStudyChapter[] = [
   { id: "uxwoman-start", label: "Start" },
   { id: "uxwoman-problem", label: "Problem" },
-  { id: "uxwoman-research", label: "Research" },
-  { id: "uxwoman-findings", label: "Hypotheses" },
+  { id: "uxwoman-research", label: "Interviews" },
+  { id: "uxwoman-findings", label: "Ideas to test" },
   { id: "uxwoman-guide", label: "Guide" },
   { id: "uxwoman-next", label: "Next step" },
 ];
 
 const THEMES: { title: string; line: string; crossCheck?: boolean }[] = [
-  { title: "Who owns it?", line: "No one sees where a request sits." },
-  { title: "Real-life barriers", line: "Housing, transport and caregivers change the plan." },
-  { title: "Chasing by hand", line: "Phone, fax, many clicks." },
-  { title: "AI helps, a human checks", line: "Staff check what the AI produces." },
-  { title: "Proving the treatment is needed", line: "Denials turn on paperwork.", crossCheck: true },
-  { title: "Insurer rules are unclear", line: "Rules differ; reasons are hidden.", crossCheck: true },
+  { title: "No clear owner", line: "Staff can't see who has a request or where it is." },
+  { title: "Life gets in the way", line: "Housing, transportation and caregivers can change the plan." },
+  { title: "Following up by hand", line: "Staff follow up by phone, by fax and through many clicks." },
+  { title: "AI helps, a human checks", line: "Staff still check what the AI tool makes." },
+  { title: "Proving the treatment is needed", line: "Insurers say no based on the paperwork.", crossCheck: true },
+  { title: "Insurer rules are unclear", line: "Rules change from insurer to insurer, and the reasons are hard to find.", crossCheck: true },
 ];
 
-const READER_NEEDS = ["Where it stands", "What is missing", "Who acts next", "The date", "A person to call", "What counts as proof"];
+const READER_NEEDS = ["Where things stand", "What is missing", "Who acts next", "The due date", "A person to call", "What counts as proof"];
 
 const GUIDE_SCREENS = [
-  { src: "/assets/uxwoman/guide-1.webp", cap: "Home", alt: "Guide home screen: Understand the Medicaid work requirement. Options: see if it may apply to me, dates, I got a letter. A Talk to a person button." },
-  { src: "/assets/uxwoman/guide-2.webp", cap: "Does it apply? Question 1 of 4", alt: "Question 1 of 4: Do you have Medicaid in New York? Options: yes, not yet, no, I do not know." },
-  { src: "/assets/uxwoman/guide-3.webp", cap: "Your renewal date", alt: "Your renewal date: starts Jan 1, 2027, and your own date decides. A date field and a note that a renewal on or before Feb 1, 2027 does not need it." },
+  { src: "/assets/uxwoman/guide-1.webp", cap: "Start screen", alt: "Start screen of the guide, marked Design Concept. Heading: Understand the Medicaid work requirement. It asks what you need, with three choices: See if it may apply to me, Dates, and I got a letter. A Talk to a person button sits at the bottom." },
+  { src: "/assets/uxwoman/guide-2.webp", cap: "Question 1 of 4: does the rule apply to you?", alt: "Question 1 of 4, marked Design Concept: Do you have Medicaid in New York? Four choices: Yes, I have it now; Not yet, I plan to apply; No; I do not know. A Continue button sits at the bottom." },
+  { src: "/assets/uxwoman/guide-3.webp", cap: "Your renewal date", alt: "Your renewal date screen, marked Design Concept. It says the rule starts Jan 1, 2027, and your own date decides. Below is a date field and a highlighted note: on or before Feb 1, 2027, not needed at that renewal." },
 ];
 
 // Midterm presentation: 12:58, 1440 x 900, narrated, with her webcam in the
@@ -65,8 +66,8 @@ const MIDTERM: CaseStudyReelData = {
   width: 1440,
   height: 900,
   kicker: "The midterm",
-  label: "UX Woman midterm presentation, about 13 minutes, narrated",
-  caption: "About 13 minutes, narrated.",
+  label: "UX Woman midterm presentation video, about 13 minutes, with my narration",
+  caption: "About 13 minutes, with my narration and captions.",
   transcriptSummary: "What the presentation covers",
   transcript: [
     "A letter with a deadline and no clear next step",
@@ -118,12 +119,12 @@ export default function FlagshipUxWoman() {
         <div className="rp-grain" />
         <div className="rp-hero__content">
           <div className="rp-clearing">
-            <h1 className="rp-h1">A letter with a deadline and no clear next{"\u00a0"}step.</h1>
+            <h1 className="rp-h1">Healthcare research based on changing Medicaid{"\u00a0"}requirements</h1>
             <p className="rp-sub">
-              In UX Woman, a 7-month user experience (UX) design program, I interviewed six people who work at clinics and insurers. Then I designed a guide for one sample New York Medicaid letter about new work requirements. <b>It is untested, and no patient was interviewed.</b>
+              In UX Woman, a 7-month user experience (UX) design program, I interviewed six people who work at clinics and insurance companies. Then I designed a guide to one sample letter from New York Medicaid, the public health insurance program, about its new work requirement. <b>It is untested, and no patient was interviewed.</b>
             </p>
-            <dl className="rp-heroEvidence" aria-label="UX Woman case evidence at a glance">
-              <div><dt>Role</dt><dd>Sole researcher and designer · 2026</dd></div>
+            <dl className="rp-heroEvidence" aria-label="UX Woman project at a glance">
+              <div><dt>Role</dt><dd>Solo researcher and designer · 2026</dd></div>
             </dl>
           </div>
         </div>
@@ -147,71 +148,78 @@ export default function FlagshipUxWoman() {
         </div>
       </header>
 
+      {/* "It is untested" and "no patient was interviewed" are the hero sub-line's own words. */}
+      <ResultLine
+        eyebrow="Where it stands"
+        text="I designed a guide that starts from the letter in your hand. It is untested."
+        source="No patient was interviewed."
+      />
+
       <section className="rp-section" id="uxwoman-midterm" aria-labelledby="uxwoman-midterm-title">
         <div className="rp-wrap">
-          <h2 className="rp-title" id="uxwoman-midterm-title">My midterm presentation.</h2>
+          <h2 className="rp-title" id="uxwoman-midterm-title">I recorded my midterm presentation.</h2>
           <CaseStudyReel reel={MIDTERM} />
         </div>
       </section>
 
       <section className="rp-section" id="uxwoman-problem" data-language-anchor="uxwoman-problem" data-evidence="true">
         <div className="rp-wrap">
-          <h2 className="rp-title">Coverage can be lost to a missed response.</h2>
-          <p className="rp-lede">Medicaid is public health insurance. The letter tells people about a new work requirement, and if they miss their response, they can lose their coverage.</p>
+          <h2 className="rp-title">Miss the reply, and you can lose coverage.</h2>
+          <p className="rp-lede">Medicaid is public health insurance. The letter tells people about a new rule: some must show work hours or income, or show they don't have to. If they don't reply in time, they can lose their coverage.</p>
           <dl className="fp-letterStats rp-reveal">
             <div>
-              <dt>Projected, New York</dt>
-              <dd><b>475,000+</b> could lose coverage, per the New York Department of Health (“at least”)</dd>
+              <dt>Forecast, New York</dt>
+              <dd><b>475,000+</b> people could lose coverage, the New York Department of Health estimates. It says “at least” that many.</dd>
             </div>
             <div>
-              <dt>Already seen, Arkansas 2018</dt>
-              <dd><b>18,164</b> lost coverage under a work requirement</dd>
+              <dt>Already happened, Arkansas 2018</dt>
+              <dd><b>18,164</b> people lost coverage under a work requirement</dd>
             </div>
           </dl>
-          <p className="fp-letterStats__note">Public data. A projection and an observed count are different measures.</p>
+          <p className="fp-letterStats__note">Public data. One number is a forecast and one is a real count, so they don't compare directly.</p>
         </div>
       </section>
 
       <section className="rp-section" id="uxwoman-research" data-language-anchor="uxwoman-research" data-evidence="true">
         <div className="rp-wrap">
-          <h2 className="rp-title">Six interviews, six themes.</h2>
+          <h2 className="rp-title">I interviewed six staff members and heard six themes.</h2>
           {/* Hillary's own line linking the themes to the guide (2026-11-16, R7). */}
           <p className="rp-lede">While learning about denials and prior authorizations (when insurance has to approve care first), I saw that some Medicaid rule changes could leave patients without coverage within the next year. I want to help the staff who guide patients through those changes.</p>
           {/* Interview-sourced human line (Better Stories pass, 2026-11-10); moved here from the hero 2026-11-17. */}
-          <p className="rp-humanLine">A hospital leader told me: AI helps hospitals prepare, and insurers deny.</p>
+          <p className="rp-humanLine">A hospital leader told me: AI (artificial intelligence) helps hospitals prepare, and insurers deny.</p>
           <ol className="fp-themes rp-reveal">
             {THEMES.map((theme) => (
               <li key={theme.title}>
                 <h3>{theme.title}</h3>
                 <p>{theme.line}</p>
-                {theme.crossCheck ? <span className="fp-themes__tag">Added after an AI cross-check</span> : null}
+                {theme.crossCheck ? <span className="fp-themes__tag">Added after a second check with AI</span> : null}
               </li>
             ))}
           </ol>
           <CaseMore label="Who I interviewed, and what I did not hear">
-            <p>UX Woman is a 7-month, mentor-led UX design accelerator. One affinity board per interview, plus six publicly available sources. Participants are anonymized and no protected health information was collected.</p>
-            <p>The patient journey map was built from public rule text and one sample notice, so its feelings and opportunities are hypotheses. The clinic staff journey map is a composite of roles; two of the people behind it work outside New York.</p>
+            <p>UX Woman is a 7-month, mentor-led UX design accelerator. For each interview, I grouped my notes by topic on one board. I also used six public sources. Nobody is named, and I collected no private health information.</p>
+            <p>I mapped a patient's path step by step. I built it from the public rules and one sample letter, not from patients, so the feelings and chances to help on it are guesses. My map of clinic staff work blends several roles. Two of the people behind it work outside New York.</p>
           </CaseMore>
         </div>
       </section>
 
       <section className="rp-section" id="uxwoman-findings" data-language-anchor="uxwoman-findings" data-evidence="true">
         <div className="rp-wrap">
-          <h2 className="rp-title">Two hypotheses about one letter.</h2>
+          <h2 className="rp-title">I made two testable guesses about the letter.</h2>
           <div className="fp-hypotheses rp-reveal">
             <article>
-              <span>Hypothesis 1 · the letter</span>
-              <p>The public sample leaves out, buries or blurs at least one thing a reader needs.</p>
-              <b>Test: audit the letter</b>
+              <span>Guess 1 · about the letter</span>
+              <p>The public sample letter leaves out, hides or muddles at least one thing a reader needs.</p>
+              <b>Test: check the letter against the list below</b>
             </article>
             <article>
-              <span>Hypothesis 2 · the reader</span>
-              <p>Readers cannot say what applies, by when, or what counts as proof.</p>
-              <b>Test: readers answer</b>
+              <span>Guess 2 · about the reader</span>
+              <p>People who read it can't tell what applies to them, by when, or what counts as proof.</p>
+              <b>Test: ask readers questions about it</b>
             </article>
           </div>
-          <h3 className="fp-readerNeeds__title">Six things a reader needs</h3>
-          <ul className="fp-readerNeeds" aria-label="Six things a reader needs">
+          <h3 className="fp-readerNeeds__title">Six things a reader needs to know</h3>
+          <ul className="fp-readerNeeds" aria-label="Six things a reader needs to know">
             {READER_NEEDS.map((need) => <li key={need}>{need}</li>)}
           </ul>
         </div>
@@ -219,7 +227,7 @@ export default function FlagshipUxWoman() {
 
       <section className="rp-section" id="uxwoman-guide" data-language-anchor="uxwoman-guide" data-evidence="true">
         <div className="rp-wrap">
-          <h2 className="rp-title">A guide that starts from the letter in your hand.</h2>
+          <h2 className="rp-title">I designed a guide that starts from the letter in your hand.</h2>
           <div className="fp-guideScreens rp-reveal">
             {GUIDE_SCREENS.map((screen) => (
               <figure key={screen.src}>
@@ -229,13 +237,13 @@ export default function FlagshipUxWoman() {
             ))}
           </div>
           <p className="fp-guideScreens__note">Design concept, not an official notice.</p>
-          <CaseMore label="How the guide branches">
-            <p>One question sets the path: is there a date on the letter? With a date, the guide shows what the letter asks and a checklist you can add to your calendar. Without one, it shows where to find the date and how to reach a person. Every screen has a talk-to-a-person bar.</p>
+          <CaseMore label="How the guide splits into two paths">
+            <p>One question picks the path: is there a date on the letter? If yes, the guide shows what the letter asks, then a checklist with a button that adds the deadline to your calendar. If no, it shows where to find the date and how to reach a person. Every screen has a button to talk to a person.</p>
             <figure className="fp-guideWireframes">
-              <img src="/assets/uxwoman/wireframes-branches.webp" alt="Wireframes of the two branches. Date found: what your letter asks, then your checklist. No date: what to do, then help from a person." width={1800} height={861} loading="lazy" decoding="async" />
-              <figcaption>Wireframes: date found, or no date</figcaption>
+              <img src="/assets/uxwoman/wireframes-branches.webp" alt="Four rough screens in two paths, each marked Design concept, not an official notice. Date found: What your letter asks, then Your checklist, with Add deadline to my calendar and Print the checklist buttons. No date: No date? Here's what to do, then Help from a person. Phone numbers are placeholders." width={1800} height={861} loading="lazy" decoding="async" />
+              <figcaption>Rough screen sketches (wireframes): date found, or no date</figcaption>
             </figure>
-            <p>A second concept is a status sheet for clinic staff. It shows who owns each open request, what is missing and who acts next, and asks one question: is the next action mine?</p>
+            <p>My second idea is a status sheet for clinic staff. It shows who has each open request, what is missing and who acts next. It answers one question: is the next step mine?</p>
           </CaseMore>
         </div>
       </section>
@@ -245,10 +253,10 @@ export default function FlagshipUxWoman() {
         languageAnchor="uxwoman-next"
         title="Built, not yet tested."
         metrics={[
-          { tag: "Test 1", n: "Audit", label: "Rate the sample letter on the six things a reader needs. Holds if at least one is absent or ambiguous." },
-          { tag: "Test 2", n: "Readers", label: "Adults 19 to 64 answer four questions about the letter, then say what else they needed. Pass bar to be set before it runs." },
+          { tag: "Test 1", n: "Letter check", label: "Score the sample letter on the six things a reader needs to know. Guess 1 holds if at least one is missing or unclear." },
+          { tag: "Test 2", n: "Reader questions", label: "Adults ages 19 to 64 answer four questions about the letter, then say what else they needed. I'll set the passing score before the test runs." },
         ]}
-        route={["v1: built, untested", "v2: only if tests find gaps", "v3: only if a state-approved route allows it"]}
+        route={["Version 1: built, not tested", "Version 2: only if the tests find gaps", "Version 3: only if the state approves a way to offer it"]}
       /></div>
 
       <section className="rp-section">
@@ -258,7 +266,7 @@ export default function FlagshipUxWoman() {
         </div>
       </section>
 
-      <Link className="rp-next" to="/case-study/mobbin"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Mobbin</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
+      <Link className="rp-next" to="/case-study/knowunity"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Knowunity</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
     </main>
   );
 }

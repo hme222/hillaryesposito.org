@@ -71,7 +71,7 @@ export default function GroveSystemLab() {
           <p>Three small trust tests: one calm task, one honest guess, and one warning with a way to check it.</p>
         </div>
         <div className="rp-demo">
-          <div className="rp-demo__tabs" role="tablist" aria-label="Grove component specimens">
+          <div className="rp-demo__tabs" role="tablist" aria-label="FloraGrove component specimens">
             {TABS.map((item, index) => (
               <button
                 key={item.id}
@@ -101,7 +101,7 @@ export default function GroveSystemLab() {
             tabIndex={0}
           >
             <div className={`rp-demoCard${reminderDone ? " is-done" : ""}`}>
-              <span className="rp-demoCard__eyebrow">Grove · today</span>
+              <span className="rp-demoCard__eyebrow">FloraGrove · today</span>
               <label className="rp-demoSelect">
                 <span>Plant and room</span>
                 <select value={plant} onChange={(event) => {
@@ -162,7 +162,7 @@ export default function GroveSystemLab() {
               </button>
               <div id="grove-id-sources" className="rp-demoSources" hidden={!idSourcesOpen}>
                 <p>
-                  Reconstructed from Grove’s research and decision log, not a live model. In the
+                  Reconstructed from FloraGrove’s research and decision log, not a live model. In the
                   prototype this confidence pattern comes from a plant-ID model; the specimen shows
                   the <b>trust behavior</b>, a ranked guess with a way to verify, never a silent
                   verdict.
@@ -182,7 +182,7 @@ export default function GroveSystemLab() {
             <div className={`rp-demoCard rp-demoCard--safety${safetyChecked ? " is-checked" : ""}`}>
               <span className="rp-demoCard__eyebrow">Pet safety · verify before advice</span>
               <h4>{safetyChecked ? "Source checked." : "Toxic to cats and dogs"}</h4>
-              <p>{safetyChecked ? "ASPCA lists pothos as toxic. If ingestion is possible, call your veterinarian." : "Grove flags the risk now and links the source. You still make the call."}</p>
+              <p>{safetyChecked ? "ASPCA lists pothos as toxic. If ingestion is possible, call your veterinarian." : "FloraGrove flags the risk now and links the source. You still make the call."}</p>
               <button type="button" onClick={() => setSafetyChecked((value) => !value)}>
                 {safetyChecked ? "Back to warning" : "Check the source"}
               </button>
@@ -220,7 +220,7 @@ export default function GroveSystemLab() {
         <p className="sr-only" role="status" aria-live="polite">
           {copied ? (copied.ok ? `${copied.hex} copied to clipboard` : `Clipboard unavailable. Select ${copied.hex} to copy it`) : ""}
         </p>
-        <div className="rp-neutral" aria-label="Grove neutral color ramp from ink to paper">
+        <div className="rp-neutral" aria-label="FloraGrove neutral color ramp from ink to paper">
           {["#20241C", "#45503F", "#66705F", "#C2CBB8", "#DEE4D6", "#F5F0EA"].map((color, index) => (
             <span key={color} style={{ background: color }} title={color}>
               <span>{index === 0 ? "ink" : index === 5 ? "paper" : index + 1}</span>

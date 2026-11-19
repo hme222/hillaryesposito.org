@@ -2,85 +2,74 @@ import type { SpanishCaseStudyData } from "../components/SpanishCaseStudy";
 import { KNOWUNITY_BADGE_ASSET } from "./knowunityBadge";
 
 export const GROVE_ES: SpanishCaseStudyData = {
-  // No-break space: the line breaks after "funciones", never stranding "se".
-  title: "Doce funciones se\u00a0convirtieron en tres.",
-  breadcrumb: "Grove",
-  meta: "Grove · Diseño de producto · Prototipo funcional · Fase 2 de 3",
+  // No-break space before the last word, so it never strands on line two.
+  title: "Diseño de producto e investigación para FloraGrove, una app de cuidado de plantas antes de su\u00a0lanzamiento",
+  breadcrumb: "FloraGrove",
+  meta: "FloraGrove · Antes del lanzamiento · Prototipo funcional · Fase 2 de 3",
+  // Pre-launch rebuild (2026-11-19): mirrors the English page. No mention of
+  // the AI app builder behind the first version, at Hillary's direction.
   intro:
-    "Grove es una app de cuidado de plantas para quienes empiezan. La primera versión, hecha con la herramienta de IA Emergent, salió llena de funciones. La probé con 5 personas y luego encuesté a 37 para reducir doce funciones a tres. Es un prototipo funcional, y el rediseño aún no se ha probado. La encuesta registra prioridades declaradas, no comportamiento observado.",
+    "FloraGrove es una app de cuidado de plantas para quienes empiezan. Le dice lo que cada planta necesita hoy, desde el agua y la luz hasta la tierra, y por qué. Antes del lanzamiento: nada de esto se ha lanzado. FloraGrove es un prototipo funcional en la Fase 2 de 3.",
   /* Interview-sourced human line (Better Stories pass, 2026-11-10). Spanish is a draft translation for Hillary to review. */
   humanLine: "Sé de plantas, así que quería más funciones. Cinco usuarios lo cambiaron.",
+  heroLink: { label: "Unirse a la lista de espera", href: "https://floragrove.app" },
+  // Same sentence as the survey section below.
+  resultLine: { eyebrow: "Lo que encontré", text: "Doce funciones se volvieron tres." },
   stats: [
     { label: "Rol", value: "Diseñadora de producto (en solitario)" },
     { label: "Muestra", value: "37 respuestas de encuesta" },
-    { label: "Tiempo", value: "Fase 2 de 3" },
-    { label: "Estado", value: "Rediseño en curso" },
+    { label: "Fase", value: "Fase 2 de 3" },
+    { label: "Estado", value: "Antes del lanzamiento" },
   ],
   sections: [
     {
-      anchor: "grove-brief",
-      chapter: "Problema",
-      eyebrow: "Dónde empieza esto",
-      title: "Los dueños de plantas se olvidan. Y luego se sienten culpables.",
+      anchor: "grove-research",
+      chapter: "Primera prueba",
+      eyebrow: "Primera versión",
+      title: "La primera versión intentaba hacer demasiado.",
       body: [
-        "La mayoría de la gente que compra una planta quiere una sola cosa: mantenerla viva. Pero se olvidan de regarla, o la riegan de más, y de cualquier forma se sienten mal. Les pregunté a 37 personas qué haría que una app de plantas se ganara un lugar en su teléfono. Una de las dos respuestas más comunes: “Los consejos son demasiado genéricos, no toman en cuenta mi casa.” Lo que más rápido hace que borren una app, dicho por 12 de 37 sin que se lo preguntara: demasiadas notificaciones. Una persona lo resumió así: “El cuidado de plantas debería sentirse tranquilo y sano, no estresante.”",
-        "El punto débil: en lo que peor están los dueños nuevos es en la luz, dónde poner una planta, y por qué. Ninguna app grande lo enseña. Los dueños nuevos calificaron su confianza para darles la luz del sol correcta en 2.4 de 5 (13 personas); los experimentados, en 3.4 (14 personas). Ahí, más la confianza, es donde Grove gana o no gana.",
+        "Abría con publicaciones de otras personas y una misión, no con sus propias plantas. De marzo a mayo de 2026, la probé con cinco personas. Se atoraron justo ahí.",
+        "Límite: las sesiones de prueba mostraron confusión, pero no guardé notas de cada tarea.",
       ],
     },
     {
-      anchor: "grove-research",
-      chapter: "Investigación",
-      eyebrow: "Investigación",
-      title: "Les pregunté a 37 personas qué importa de verdad.",
+      anchor: "grove-survey",
+      chapter: "Encuesta",
+      eyebrow: "Encuesta",
+      title: "Luego 37 personas eligieron lo que la app necesitaba para lanzarse.",
       body: [
-        "Después de que una prueba con 5 usuarios mostró que la primera versión estaba sobrecargada, hice una encuesta para decidir qué debía conservar el rediseño. 37 personas, desde principiantes hasta coleccionistas serios, respondieron entre el 22 de mayo y el 16 de octubre de 2026: 31 dueños y cuidadores de plantas, 3 floristas y 3 compradores de ramos.",
-        "Emergent había construido las funciones sociales dentro de la app. La encuesta dijo que no es por eso que la gente la descarga. Así que hice una pregunta difícil: “Si Grove solo pudiera lanzarse con TRES funciones, ¿cuáles no podría dejar de tener?” El rediseño empieza por esas tres. Todo lo demás espera.",
-        "Límite de la evidencia: la encuesta registra prioridades declaradas. La usé para decidir qué construir y probar después, no para afirmar comportamiento observado ni demanda de mercado.",
+        "Del 22 de mayo al 16 de octubre, 37 personas respondieron una encuesta: 31 dueños y cuidadores de plantas, tres floristas y tres compradores de ramos. Cada una eligió las tres funciones sin las que la app no podría lanzarse. Doce funciones se volvieron tres.",
+        "Límite: una encuesta muestra lo que la gente dice que quiere. Me sirvió para ordenar lo próximo que construyo, pero no prueba lo que la gente haría de verdad.",
       ],
       bullets: [
-        "Recordatorios inteligentes: la función más pedida (76%), pero solo con límites claros.",
-        "Identificar la planta con la cámara (54%) y diagnóstico por foto: esenciales, pero tenían que mostrar cuánta confianza tienen y sus fuentes.",
-        "Las advertencias para plantas tóxicas para mascotas (4 de 12 dueños nuevos que respondieron las marcaron entre lo más estresante del cuidado) y la educación sobre la luz pasaron a ser parte del núcleo de confianza, aunque yo ni siquiera las había construido.",
+        "Recordatorios inteligentes: 76%.",
+        "Identificar la planta con la cámara (IA): 54%.",
+        "Diagnóstico por foto (IA): 49%.",
       ],
     },
     {
       anchor: "grove-decisions",
-      chapter: "Decisiones",
-      eyebrow: "Producto",
-      title: "Agrupé las plantas por dónde viven, no en una sola lista larga.",
+      chapter: "Siguiente",
+      eyebrow: "Lo que sigue",
+      title: "El rediseño está planeado. Después, lo pruebo con personas.",
       body: [
-        "Otras apps meten todas las plantas en una sola lista larga. Abruma, ¿por dónde empieza? Grove agrupa las plantas por dónde viven: la ventana de la cocina, el estante de la sala, la recámara. Cada pantalla responde una sola pregunta: ¿qué grupo estoy viendo? Un usuario nuevo solo ve una tarea al día.",
-        "También anoté las cuatro decisiones donde le dije que no a la IA: el tono que hace sentir culpa, las recompensas tipo juego, la falsa certeza al identificar una planta y la seguridad para mascotas. Cada una respaldada por lo que dijo la encuesta. La quinta es un error mío: la lógica del calendario de riego, que todavía estoy corrigiendo.",
-        "Esa quinta es la que estoy diseñando ahora. La IA armó un calendario de riego: cada planta con su intervalo fijo. Pero regar de más mata más plantas de interior que olvidarlas, y un intervalo fijo es justo como pasa. El recordatorio le va a pedir que revise, no que riegue: “Ficus lirado, revise la primera pulgada de tierra.” Mi propia guía de cuidado ya lo decía; el motor de recordatorios no se había puesto al día.",
+        "Estos son planes para el próximo prototipo, no pantallas terminadas.",
+        "Todavía no está construido: el rediseño pulido, las pantallas para momentos vacíos o de error, y una segunda ronda de pruebas.",
       ],
-    },
-    {
-      anchor: "grove-override",
-      chapter: "Cambios",
-      eyebrow: "Cuando algo sale mal",
-      title: "El producto se decide en los momentos difíciles.",
-      body: [
-        "Cuando todo sale bien, cualquier app se ve bien. La prueba real son los momentos difíciles: la pantalla vacía, cuando la IA no está segura, volver después de varios días sin que le haga sentir culpa, la advertencia de una planta tóxica para mascotas, y el tono de los recordatorios. Esos detalles deciden si la app se siente útil o estresante.",
-      ],
-    },
-    {
-      anchor: "grove-outcomes",
-      chapter: "Resultados",
-      eyebrow: "Resultado",
-      title: "Fase 2 de 3: el rediseño está decidido; la nueva prueba es lo siguiente.",
-      body: [
-        "Lo que quedó no fue solo una app bonita. Fue una definición más honesta de la primera versión, una hipótesis clara para las pruebas con personas reales, y un registro de decisiones que muestra dónde la IA acelera el trabajo y dónde un humano tiene que corregirla. La diferencia no es usar IA. Es saber cuándo confiar en ella y cuándo decir que no.",
+      bullets: [
+        "Recordatorios: cambiar las misiones insistentes y las publicaciones por un solo resumen tranquilo por la mañana.",
+        "Identificar la planta con la cámara: mostrar las mejores opciones, qué tan segura está y sus fuentes, no una sola respuesta que podría estar mal.",
+        "Personalidad, no puntos: conservar la personalidad de la planta y quitar los puntajes que hacen que el cuidado se sienta como una tarea.",
       ],
     },
   ],
   otherProjects: [
-    { title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas", desc: "MSK · Propuse la cola de archivo; TI y UX la construyeron.", path: "/case-study/msk" },
-    { title: "Más de 200 pantallas por app, buscables por tarea", desc: "Mobbin · Más de 200 pantallas por app, documentadas como referencias paso a paso.", path: "/case-study/mobbin" },
-    { title: "Las propias palabras del estudiante son la prueba", desc: "Knowunity · Prototipo de recuerdo activo por voz, de un sprint de diseño; recuerdo simulado.", path: "/case-study/knowunity" },
+    { title: "Proyecto de diseño de servicios para Memorial Sloan\u00a0Kettering Cancer\u00a0Center", desc: "MSK · Propuse la cola de archivo; TI y UX la construyeron.", path: "/case-study/msk" },
+    { title: "Documentación freelance de tres apps financieras para\u00a0Mobbin", desc: "Mobbin · Tres apps financieras, con las pantallas etiquetadas por tarea.", path: "/case-study/mobbin" },
+    { title: "Sprint de diseño de 2.5 semanas con una startup de tecnología educativa, dirigido por Yummy\u00a0Labs", desc: "Knowunity · Prototipo de recuerdo activo por voz, de un sprint de diseño; recuerdo simulado.", path: "/case-study/knowunity" },
   ],
   close: {
-    title: "Diseño los estados de duda.",
-    body: "Las mejores opciones, qué tan segura está y de dónde salió: la identificación de plantas de Grove es mi versión pequeña de un problema que también tienen las herramientas clínicas.",
+    title: "¿Quiere probar FloraGrove cuando esté listo?",
   },
 };
 
@@ -91,11 +80,12 @@ export const GROVE_ES: SpanishCaseStudyData = {
 // language switch all land in place. Sustainment stays out of the chapter
 // strip, as it does in English.
 export const MSK_ES: SpanishCaseStudyData = {
-  title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas.",
+  title: "Proyecto de diseño de servicios para Memorial Sloan\u00a0Kettering Cancer\u00a0Center",
   breadcrumb: "Memorial Sloan Kettering",
-  meta: "Memorial Sloan Kettering · sistemas clínicos",
+  meta: "Memorial Sloan Kettering · diseño de servicios",
+  resultLine: { eyebrow: "Lo que cambió", text: "Seis pasos se volvieron cinco, y un área dejó de participar." },
   intro:
-    "Los mensajes del portal de pacientes vivían fuera de la historia clínica, así que yo los imprimía y esperábamos a que los escanearan. Sugerí un botón Enviar al EMR para que se archivaran directo en la historia clínica. Los equipos de tecnología de la información (TI) y de experiencia de usuario (UX) construyeron la versión real.",
+    "Como coordinadora de oficina, mapeé cómo los mensajes del portal de pacientes, el sitio web donde los pacientes le escriben a su equipo de atención, pasaban por cuatro áreas, y propuse una solución. Los mensajes no se guardaban en la historia clínica electrónica del paciente (EMR, por sus siglas en inglés). Así que yo los imprimía y esperábamos a que los escanearan. Sugerí un botón Enviar al EMR para que se archivaran directo en la historia clínica. Los equipos de tecnología de la información (TI) y de experiencia de usuario (UX) construyeron la versión real.",
   stats: [
     // Two rows, matching the English hero (2026-10-16): the rest restated the
     // intro and the workflow section's provenance note.
@@ -107,66 +97,69 @@ export const MSK_ES: SpanishCaseStudyData = {
       anchor: "msk-brief",
       chapter: "Problema",
       eyebrow: "Empezó con un desvío",
-      title: "Un flujo digital se volvió un ritual de papel.",
+      title: "Los mensajes en línea terminaban en papel.",
       body: [
-        "El equipo clínico necesitaba ver toda la información en la historia del paciente en tiempo real. Mientras no terminaba el escaneo, pasaban de un sistema a otro para verificar datos, o simplemente esperaban. Eso podría retrasar la atención a los pacientes.",
+        "El equipo de atención necesitaba ver al momento todo lo que estaba en la historia clínica del paciente. Mientras no terminaba el escaneo, pasaban de un sistema a otro para revisar los datos, o esperaban. Eso podía retrasar la atención del paciente.",
       ],
     },
     {
       anchor: "msk-workflow",
-      chapter: "Flujo",
+      chapter: "Lo que hice",
       eyebrow: "Así que conté los pasos",
-      title: "Un mapa hizo que cuatro áreas vieran la misma falla.",
+      title: "Dibujé un mapa que las cuatro áreas podían ver.",
       body: [
-        "Hablé con todas las áreas involucradas (clínica, TI, HIM y operaciones) y trabajé con la dirección en cómo implementarlo. Pensé las decisiones con TI y UX en una propuesta completa, para que el cambio estuviera listo en cuanto tuviera financiamiento.",
-        "El cambio visible es un paso menos; el cambio en el servicio es un área menos tocando el expediente.",
-        "Cómo se hicieron estos artefactos: reconstruidos de memoria a partir de mi documentación del estado actual. Sin datos de pacientes, registros exportados ni la interfaz del proveedor.",
+        "Hablé con todas las áreas que tocaba el papel: clínica, TI, operaciones y HIM (gestión de información de salud, el equipo que escanea el papel a las historias clínicas). Trabajé con la dirección en la implementación. Repasé cada decisión con TI y UX en una propuesta completa, para que el cambio estuviera listo para construirse en cuanto tuviera financiamiento.",
+        "En pantalla, el cambio fue un paso menos. Por detrás, un área completa dejó de tener que manejar el mensaje.",
+        "De dónde sale esto: redibujé estas imágenes de memoria, a partir de mis propias notas sobre cómo se hacía el trabajo. No tienen datos de pacientes, registros exportados ni copias de las pantallas del software real.",
       ],
       bullets: [
-        "Antes · seis pasos: abrir la cola del panel, encontrar el mensaje, imprimirlo, enviar el papel a HIM (gestión de información de salud, el equipo que escanea documentos a la historia), esperar el escaneo y volver después a confirmar el archivo.",
+        "Antes · seis pasos: abrir la cola del panel, encontrar el mensaje, imprimirlo, enviar el papel a HIM, esperar a que lo escaneen y volver después a revisar que se archivó.",
         "Después · cinco pasos: abrir la cola del panel, seleccionar el mensaje, elegir Enviar al EMR, que se archive en la historia del paciente y volver con el estado actualizado.",
       ],
     },
     {
       anchor: "msk-decisions",
-      chapter: "Decisiones",
+      chapter: "Reglas del botón",
       eyebrow: "El arreglo parecía un solo botón",
-      title: "Un botón, cuatro reglas.",
+      title: "Puse cuatro reglas sobre cómo funciona el botón.",
       body: [
-        "TI y UX construyeron el botón real; las cuatro reglas son cómo esta recreación lo hace seguro de presionar. Es mi diseño para el portafolio, no la especificación de MSK.",
+        "TI y UX construyeron el botón real. Escribí estas cuatro reglas para esta versión del portafolio. No son el diseño real de MSK.",
+        "Cómo las comprobaría: los minutos desde que llega un mensaje hasta que queda en la historia clínica, los mensajes archivados en la historia clínica del paciente equivocado y las páginas impresas.",
       ],
       bullets: [
-        "Mostrar la acción solo cuando el registro está listo: el personal deja de abrir registros que aún necesitan revisión.",
-        "Hacer visibles los límites de permiso: los puestos de solo lectura ven el estado y quién es responsable, no un botón desactivado y misterioso.",
-        "Separar lo bloqueado de lo no iniciado: las excepciones reciben un motivo y una persona responsable, para que el rezago deje de esconderlas.",
-        "Devolver a la gente a la cola: el personal regresa a donde empezó, con el estado actualizado.",
+        "Mostrar el botón solo cuando el mensaje está listo: así el personal no abre mensajes que todavía necesitan revisión.",
+        "Mostrar quién puede archivar: el personal que solo puede ver recibe el estado y quién tiene el mensaje, no un botón gris sin explicación.",
+        "Distinguir los mensajes atascados de los nuevos: un mensaje atascado recibe un motivo y una persona a cargo, para que no se esconda en la pila.",
+        "Devolver a la gente a la cola: después de archivar, el personal vuelve a donde empezó, con el estado actualizado.",
       ],
     },
     {
       anchor: "msk-redesigns",
-      chapter: "Rediseños",
+      chapter: "Más arreglos",
       eyebrow: "Luego apareció dos veces más",
-      title: "La misma falla, en dos lugares más.",
-      body: ["La certificación y la incorporación tenían el mismo problema: el siguiente paso estaba escondido."],
+      title: "Encontré el mismo problema en dos lugares más.",
+      // Synthesis-lens review 2026-11-19: mirrors the English "my reading" line,
+      // which is true of both cards.
+      body: ["Mi lectura del patrón: la capacitación de RCP (reanimación cardiopulmonar) y la de nuevos empleados estaban escritas para alguien que no era la persona que las usaba. El personal clínico recibía lenguaje legal. El personal nuevo recibía un solo curso para todos los niveles."],
       bullets: [
-        "Certificación de RCP (reanimación cardiopulmonar): el lenguaje técnico y legal impedía que el personal clínico la terminara. Toda el área se certificó un mes antes de la fecha límite original.",
-        "Incorporación administrativa: un solo curso ignoraba puntos de partida muy distintos. La instrucción por cohorte adaptó un programa de una a tres semanas a las personas en la sala.",
+        "Certificación de RCP: el curso estaba escrito en lenguaje técnico y legal, así que el personal clínico no lo terminaba. Lo reescribí en lenguaje sencillo. Toda el área se certificó un mes antes de la fecha límite original.",
+        "Capacitación del nuevo personal de oficina: todos los nuevos empleados recibían el mismo curso, sin importar cuánto sabían. Adapté el programa de una a tres semanas a cada grupo, según quién estaba en la sala.",
       ],
     },
     {
       anchor: "msk-systems",
-      chapter: "Contexto",
+      chapter: "Trasfondo",
       eyebrow: "Por qué pude verlo",
       title: "Hice los trabajos antes de rediseñarlos.",
       body: [
-        "Ese patrón no se ve desde fuera de un sistema. Yo ya había ocupado tres de sus puestos.",
-        "Alcance del diseño de servicios: la ruta completa a través de sistemas, áreas, permisos y traspasos, no solo la pantalla de la cola.",
-        "Límite de la evidencia: se conservan el flujo, las áreas, las decisiones y los resultados. Los conteos de la observación no; no afirmo una prevalencia.",
+        "Un problema así no se ve desde fuera. Yo ya había hecho tres trabajos dentro del sistema.",
+        "Mi alcance: todo el camino que recorría el mensaje, entre software, áreas, quién podía hacer qué y cada traspaso. No solo una pantalla.",
+        "Lo que esto prueba y lo que no: mis notas conservaron el camino, las áreas, las decisiones y los resultados. No anoté a cuántas personas observé en sus turnos, así que esto explica las decisiones, pero no prueba qué tan común era el problema.",
       ],
       bullets: [
-        "01 · Coordinadora de oficina: dónde se detenía la gente. En este puesto terminé el Lean Six Sigma Green Belt (Purdue), una certificación de mejora de procesos, y la Maestría en Administración de Salud (Rutgers). El Green Belt es la lente que mostró una tarea de archivo cruzando cuatro áreas.",
-        "02 · Asistente administrativa: cómo informar a quien tiene que actuar. Un texto técnico y legal impedía que los clínicos terminaran la certificación de RCP. Lo reescribí para quien tiene que actuar.",
-        "03 · Facilitadora de capacitación: la autoridad para rediseñarlo. Di instrucción sobre Epic (el software del expediente), HIPAA (la ley de privacidad del paciente) y los módulos de cumplimiento. Hacerme cargo de cómo se enseñaba el sistema significó documentar lo que de verdad pasa, no lo que dice la política.",
+        "01 · Coordinadora de oficina: dónde se atascaba la gente. En este puesto terminé el Lean Six Sigma Green Belt (Purdue) y la Maestría en Administración de Salud (Rutgers), mientras llevaba el papeleo de una clínica. El Green Belt es un certificado para mejorar cómo se hace el trabajo. Así vi una tarea de archivo pasar por cuatro áreas.",
+        "02 · Asistente administrativa: cómo escribir para quien hace la tarea. No hay certificado para esto. Un lenguaje técnico y legal impedía que el personal clínico terminara la certificación de RCP. Lo reescribí en lenguaje sencillo para quienes tenían que seguirlo.",
+        "03 · Facilitadora de capacitación: la autoridad para rediseñarlo. Enseñé Epic (el software de la historia clínica), HIPAA (la ley de privacidad del paciente) y los cursos de cumplimiento. Para enseñar bien el sistema, anoté lo que el personal hacía de verdad, no lo que decía la política. La diferencia entre las dos cosas es donde está el trabajo de diseño.",
       ],
     },
     {
@@ -175,39 +168,39 @@ export const MSK_ES: SpanishCaseStudyData = {
       eyebrow: "La prueba de verdad llegó después",
       title: "Lo que pasó después de que dejé ese puesto.",
       body: [
-        "TI lo aprobó cuando llegó el financiamiento y lo construyó tal como lo presenté. No sé qué cambió por detrás. Más tarde lo vi en producción mientras capacitaba a nuevos empleados.",
-        "El trabajo pasó de un desvío personal a un sistema compartido; el formato en lenguaje sencillo dejó al área conforme antes de la fecha límite.",
-        "Lo que habría medido: nadie lo midió, que yo sepa. Habría seguido tres cosas: los minutos desde que llega un mensaje hasta que está en el expediente, los mensajes archivados en el expediente equivocado y las páginas impresas.",
+        "TI lo aprobó cuando llegó el financiamiento y lo construyó tal como lo propuse. No sé qué cambió por detrás. Más tarde, mientras capacitaba a nuevos empleados, lo vi en el sistema en uso.",
+        "Un desvío personal pasó a ser parte del sistema compartido. El curso en lenguaje sencillo logró que el área se certificara antes de la fecha límite.",
+        "Lo que habría medido: que yo sepa, nadie lo midió. Habría seguido tres cosas: los minutos desde que llega un mensaje hasta que queda en la historia clínica, los mensajes archivados en la historia clínica del paciente equivocado y las páginas impresas.",
       ],
       bullets: [
-        "Flujo de archivo del EMR: el botón se agregó al sistema de producción y lo vi mientras capacitaba a nuevos empleados.",
-        "Formato de certificación de RCP: área conforme un mes antes de la fecha límite original, sin prórroga.",
+        "Archivar en la historia clínica: se agregó al sistema en uso. Lo vi ahí mientras capacitaba a nuevos empleados.",
+        "Reescritura del curso de RCP: toda el área se certificó un mes antes de la fecha límite original. No hizo falta prórroga.",
       ],
     },
     {
       anchor: "msk-outcomes",
       chapter: "Resultados",
       eyebrow: "A cuánto sumó",
-      title: "Los números, y a quién pertenecen.",
+      title: "Qué cambió, y a quién le corresponde el mérito.",
       body: [
-        "Inicié y presenté el rediseño del archivo, reescribí el material de certificación clínica y reconstruí con el equipo de diseño los itinerarios de aprendizaje de la incorporación administrativa, probándolos con distintas cohortes.",
-        "Evidencia anonimizada · el 20% no se atribuye solo a la cola de archivo; no se conservó el período que cubre · los ~$1M/año son una proyección de mi propuesta, no un ahorro medido.",
+        "Como coordinadora, impulsé la idea de archivar los mensajes del portal directo en la historia clínica en línea. Se construyó a partir de mi propuesta dos puestos después. También reescribí el curso de RCP para el personal clínico que lo tomaba. Y, con el equipo de diseño, rehíce la capacitación del nuevo personal de oficina: Epic, HIPAA, cumplimiento y las habilidades sociales del puesto.",
+        "Datos anonimizados · el 20% no se atribuye solo a la cola de archivo, y no tengo registro del período que cubre · los ~$1M/año son una proyección de mi propuesta, no un ahorro medido.",
       ],
       bullets: [
         "Dirigí · 1 mes antes: toda el área se certificó antes de la fecha límite original, sin la prórroga de 4 meses.",
-        "Capacité · ~2,000: nuevos empleados que capacité en Epic, HIPAA y cumplimiento, según mi estimación: más o menos un grupo de 30 por semana durante dos años.",
-        "Resultado de la iniciativa · 20%: menos costos de impresión y escaneo, según mi revisión de las finanzas con el jefe del departamento de finanzas; no se atribuye solo a este flujo de archivo.",
+        "Capacité · ~2,000: nuevos empleados que capacité en Epic, HIPAA y cumplimiento. Mi estimación: más o menos un grupo de 30 por semana durante dos años.",
+        "Resultado de la iniciativa · 20%: menos costos de impresión y escaneo, según mi revisión de las cifras con la persona a cargo del departamento de finanzas; no se atribuye solo a este flujo de archivo.",
         "Proyección · ~$1M/año: ahorro proyectado en papel en mi propuesta para la Feria de Mejora de Procesos, no un ahorro medido.",
       ],
     },
   ],
   otherProjects: [
-    { title: "Doce funciones se\u00a0convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
-    { title: "Más de 200 pantallas por app, buscables por tarea", desc: "Mobbin · Más de 200 pantallas por app, documentadas como referencias paso a paso.", path: "/case-study/mobbin" },
+    { title: "Diseño de producto e investigación para FloraGrove, una app de cuidado de plantas antes de su\u00a0lanzamiento", desc: "FloraGrove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
+    { title: "Documentación freelance de tres apps financieras para\u00a0Mobbin", desc: "Mobbin · Tres apps financieras, con las pantallas etiquetadas por tarea.", path: "/case-study/mobbin" },
   ],
   close: {
     title: "Encuentro el desvío. Después logro que se construya.",
-    body: "Lo mapeo para que cada área vea la misma falla, y luego lo convierto en una decisión que la organización va a construir.",
+    body: "Lo mapeo para que cada área vea el mismo problema. Luego lo convierto en un plan que el hospital va a construir.",
   },
 };
 
@@ -215,13 +208,15 @@ export const MSK_ES: SpanishCaseStudyData = {
 // chapter (rebuilt 2026-10-15). Nothing is added beyond the English page;
 // chapter names and section anchors match it.
 export const MOBBIN_ES: SpanishCaseStudyData = {
-  title: "Más de 200 pantallas por app, buscables por tarea.",
+  title: "Documentación freelance de tres apps financieras para\u00a0Mobbin",
   breadcrumb: "Mobbin",
-  meta: "Mobbin · Documentación de flujos de experiencia de usuario (UX) · tres apps financieras",
+  meta: "Mobbin · Etiquetado de pantallas de apps · tres apps financieras",
   intro:
-    "Mobbin es una biblioteca de capturas de apps donde los diseñadores buscan ideas. Como freelance, pasé cuatro meses recorriendo tres apps (Kikoff, Polymarket y Discover) y capturando más de 200 pantallas por app. Etiqueté cada una por tarea para que los diseñadores puedan encontrarla. No diseñé estas apps ni Mobbin.",
-  /* Interview-sourced human line (Better Stories pass, 2026-11-10). Spanish is a draft translation for Hillary to review. */
-  humanLine: "Mi primer lote usó mis palabras, no las de Mobbin. Me dio vergüenza.",
+    "Mobbin es un sitio donde los diseñadores buscan capturas de apps reales para inspirarse. Como freelance, pasé cuatro meses con tres apps: Kikoff, Polymarket y Discover. Tomé capturas de más de 200 pantallas por app y etiqueté cada una por tarea, como iniciar sesión, para que los diseñadores puedan encontrarla. No diseñé estas apps ni Mobbin.",
+  resultLine: {
+    eyebrow: "Lo que hice",
+    text: "Tomé capturas de más de 200 pantallas por app y etiqueté cada una por tarea, para que los diseñadores puedan encontrarla.",
+  },
   stats: [
     { label: "Cliente", value: "Mobbin · trabajo freelance" },
     { label: "Tiempo", value: "Contrato de cuatro meses" },
@@ -241,52 +236,52 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
       anchor: "mobbin-work",
       chapter: "Método",
       eyebrow: "El método · criterio antes de capturar",
-      title: "Una captura no es un flujo.",
+      title: "Una sola captura no muestra la tarea completa.",
       body: [
-        "Los diseñadores llegan a Mobbin buscando una tarea, como iniciar sesión o abrir una cuenta.",
+        "Los diseñadores llegan a Mobbin para ver cómo las apps resuelven una tarea, como iniciar sesión o abrir una cuenta.",
       ],
     },
     {
       anchor: "mobbin-decisions",
       chapter: "Decisiones",
       eyebrow: "Cuatro decisiones · un sistema de documentación",
-      title: "Editar es el trabajo.",
+      title: "Elegir qué conservar fue el trabajo.",
       body: [],
       bullets: [
-        "Capturar la tarea completa: recorrer la app como una persona real, incluidos los estados vacíos, los errores y las pantallas que solo tienen sentido en secuencia.",
-        "Recortar lo que no ayuda: las pantallas de marketing no merecían el mismo espacio que los flujos de registro, pago, cuenta o recuperación. Lo completo también necesita una editora.",
-        "Nombrarlo en el lenguaje de Mobbin: un patrón solo se encuentra cuando la etiqueta coincide con las palabras que otro diseñador va a buscar, no con las que yo prefiero.",
-        "Escribir para alguien que nunca voy a conocer: cada anotación explica qué hace la pantalla, dónde está y por qué importa el patrón, sin tener la app abierta.",
+        "Capturar la tarea completa: usar la app como lo haría una persona real. Conservar las pantallas vacías, los mensajes de error y las pantallas que solo tienen sentido en orden.",
+        "Recortar lo que no ayuda: las pantallas de bienvenida de marketing no merecían el mismo espacio que registrarse, pagar, manejar una cuenta o volver a entrar a ella.",
+        "Usar las palabras de Mobbin: una pantalla solo se encuentra fácil cuando su etiqueta coincide con lo que otro diseñador escribe en el buscador, no con las palabras que a mí me gustan.",
+        "Escribir para alguien que nunca voy a conocer: cada nota dice qué hace la pantalla, en qué parte de la app aparece y por qué importa, para que nadie necesite tener la app abierta.",
       ],
     },
     {
       anchor: "mobbin-apps",
       chapter: "Apps",
       eyebrow: "Las apps",
-      title: "Kikoff demuestra, Polymarket transparenta, Discover lo mantiene familiar.",
+      title: "Kikoff muestra el avance. Polymarket muestra el riesgo. Discover se siente familiar.",
       body: ["Las pantallas están en Mobbin Finance+, la biblioteca a la que se integraron."],
       bullets: [
-        "Kikoff · construcción de crédito: un registro largo se gana su extensión mostrando un puntaje, un plan y una prueba después de cada acción.",
-        "Polymarket · mercados de predicción: las probabilidades, las reglas de liquidación y el riesgo quedan a la vista antes de que alguien arriesgue dinero en un resultado incierto.",
-        "Discover · banca: la interfaz se apoya en patrones conocidos de tarjetas y cuentas, y luego hace fácil encontrar la letra pequeña.",
+        "Kikoff · construcción de crédito: el registro es largo, pero cada paso te devuelve algo: un puntaje, un plan o una señal de que funcionó.",
+        "Polymarket · apuestas sobre eventos reales: antes de poner dinero, las probabilidades, las reglas de cómo se paga una apuesta y el riesgo quedan a la vista.",
+        "Discover · banca: la app se parece a las apps de bancos y tarjetas que la gente ya conoce. La letra pequeña es fácil de encontrar.",
       ],
     },
     {
       anchor: "mobbin-outcomes",
       chapter: "Resultados",
       eyebrow: "A cuánto sumó",
-      title: "Un registro buscable de cómo funcionan tres productos\u00a0financieros.",
+      title: "Un registro buscable de cómo funcionan tres apps\u00a0financieras.",
       body: [
-        "Documenté las apps de origen para la biblioteca de referencia Finance+ de Mobbin.",
+        "Mis capturas y etiquetas entraron en la biblioteca Finance+ de Mobbin.",
       ],
     },
   ],
   otherProjects: [
-    { title: "Doce funciones se\u00a0convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
-    { title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas", desc: "MSK · Propuse la cola de archivo; TI y UX la construyeron.", path: "/case-study/msk" },
+    { title: "Diseño de producto e investigación para FloraGrove, una app de cuidado de plantas antes de su\u00a0lanzamiento", desc: "FloraGrove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
+    { title: "Proyecto de diseño de servicios para Memorial Sloan\u00a0Kettering Cancer\u00a0Center", desc: "MSK · Propuse la cola de archivo; TI y UX la construyeron.", path: "/case-study/msk" },
   ],
   close: {
-    title: "Después de 200 pantallas por app, noto cómo un flujo se gana la confianza.",
+    title: "Después de más de 200 pantallas por app, noto qué hace que una app dé confianza.",
   },
 };
 
@@ -296,36 +291,42 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
 export const LOGISTICS_ES: SpanishCaseStudyData = {
   breadcrumb: "Logística médica del Ejército",
   // Worded to break into multi-word lines; "reabastecimiento" alone filled a line.
-  title: "El reabastecimiento pasó de meses a\u00a0semanas.",
+  title: "Diseño de servicios para el suministro médico del Ejército de EE.\u00a0UU., reduciendo el reabastecimiento de meses a\u00a0semanas",
   meta: "Logística médica del Ejército · Operaciones · Diseño de servicios · 2024",
   intro:
-    "En un despliegue de la Guardia Nacional del Ejército en Irak y dos países vecinos, estuve a cargo de los suministros médicos de siete estaciones de ayuda. Cuando llegué, conseguir suministros tardaba 1–2 meses. Propuse acercar el almacén, y luego planifiqué y di seguimiento a la mudanza. Después, los suministros tardaban 1–2 semanas, según mi Informe de Evaluación de Oficial. No se conservaron los periodos ni los métodos de medición.",
+    "En un despliegue de la Guardia Nacional del Ejército en Irak y dos países vecinos, estuve a cargo de los suministros médicos de siete estaciones de ayuda, donde primero se atiende a los soldados heridos. Cuando llegué, reabastecerlas tardaba 1–2 meses. Propuse acercar nuestro almacén, y luego planifiqué y di seguimiento a la mudanza. Después, reabastecerlas tardaba 1–2 semanas, según mi Informe de Evaluación de Oficial, la evaluación escrita que el Ejército hace de mi trabajo. No se guardaron registros de cómo ni durante qué periodo se midió.",
   /* Interview-sourced human line (Better Stories pass, 2026-11-10). Spanish is a draft translation for Hillary to review. */
   humanLine: "Yo estaba a cargo de llevar vacunas contra la rabia a tres países. Una vez, las entregué yo misma.",
+  // The intro's own sentence; 1–2 kept together with a word joiner, as on the English page.
+  resultLine: {
+    eyebrow: "Lo que cambió",
+    text: "Después, reabastecerlas tardaba 1–\u20602\u00a0semanas, según mi Informe de Evaluación de Oficial.",
+    source: "Mi Informe de Evaluación de Oficial es la evaluación escrita que el Ejército hace de mi trabajo.",
+  },
   stats: [
-    { label: "Rol", value: "Oficial de logística médica · líder de reubicación y servicio" },
-    { label: "Escala", value: "5,000+ soldados de Nueva Jersey · $2M en suministros" },
+    { label: "Rol", value: "Oficial de logística médica, a cargo de los suministros médicos · dirigí la mudanza del almacén y el reabastecimiento de las estaciones" },
+    { label: "Tamaño", value: "5,000+ soldados de Nueva Jersey · $2M en suministros" },
   ],
   sections: [
     {
       anchor: "log-brief",
       eyebrow: "Por qué importaba la rapidez",
-      title: "Una entrega tardía es un riesgo de\u00a0bajas.",
+      title: "Una entrega tardía ponía en riesgo a los soldados\u00a0heridos.",
       body: [
-        "Una estación de ayuda es donde primero se atiende a los soldados heridos.",
+        "Ninguna estación podía esperar 1–2 meses por suministros.",
       ],
     },
     {
       anchor: "log-moves",
-      eyebrow: "Lo que cambié",
-      title: "Mover el almacén. Después, arreglar los traspasos.",
+      eyebrow: "Lo que hice",
+      title: "Moví el almacén. Después arreglé cómo pedían las\u00a0estaciones.",
       body: [
-        "Hice el trabajo pesado junto a mi equipo. Después, las estaciones pidieron seguir sus propios pedidos.",
+        "Hice el trabajo físico de la mudanza con mi equipo. Después, las estaciones pidieron seguir sus propios pedidos.",
       ],
       bullets: [
-        "Acercar el punto de suministro: cada reabastecimiento empezaba demasiado lejos de las estaciones de ayuda. Planifiqué y di seguimiento a la mudanza de $2M. La hice por fases, de lo más esencial a lo menos, y dividí al personal para que ninguna estación de ayuda se quedara sin suministro durante la mudanza.",
-        "Una sola forma de pedir: siete estaciones usaban formatos distintos de solicitud y de reporte. Creé un protocolo de solicitud compartido y capacité a cada sitio en cómo pedir y qué significaba cada estado del pedido.",
-        "Pedir antes de que se acabe: nadie veía el estado de los pedidos, así que unos sitios pedían de más y otros se quedaban sin nada. Creé un estado de pedidos compartido en tiempo real. La falla contra la que lo diseñé: un sitio que “se queda en negro”, sin suministros.",
+        "Acerqué el almacén: cada entrega de suministros empezaba demasiado lejos de las estaciones de ayuda. Planifiqué y di seguimiento a la mudanza de $2M en suministros. Movimos primero lo más esencial, y dividí al equipo para que todas las estaciones siguieran recibiendo suministros durante la mudanza.",
+        "Una sola forma de pedir para todas las estaciones: cada una de las siete estaciones pedía y reportaba en su propio formato. Creé una forma compartida de pedir y le enseñé a cada estación a usarla y qué significaba cada estado del pedido.",
+        "Cada estación puede seguir sus pedidos: nadie veía dónde estaba un pedido, así que las estaciones pedían de más o se quedaban sin nada. Creé un sistema en línea que le mostraba a cada estación sus pedidos a medida que cambiaba su estado. Su trabajo era evitar que una estación “se quedara en negro”, es decir, sin suministros.",
       ],
     },
     {
@@ -343,36 +344,36 @@ export const LOGISTICS_ES: SpanishCaseStudyData = {
     },
     {
       anchor: "log-constraints",
-      eyebrow: "Lo que lo hizo difícil",
-      title: "Tres restricciones que no cambiaban.",
+      eyebrow: "Límites",
+      title: "Tres límites dentro de los que tuve que trabajar.",
       body: [],
       bullets: [
-        "Cadena de frío · 48 horas: llegar tarde significaba que ya no servía.",
-        "Tres países: sistemas y vocabulario distintos.",
-        "Zona de combate · $2M en suministros: sin ensayo y sin margen de error.",
+        "Vacunas en frío · 48 horas: si llegaban tarde, ya no se podían usar.",
+        "Tres países: cada uno con sus propios sistemas y sus propias palabras para las cosas.",
+        "Zona de combate · $2M en suministros: sin ensayo previo y sin margen de error.",
       ],
     },
     {
       anchor: "log-outcomes",
       eyebrow: "A cuánto sumó",
-      title: "Medido en tiempo, dinero y cosas que no pasaron.",
+      title: "Los suministros llegaron más rápido y costaron menos.",
       body: [
-        "Las tres cifras vienen de mi Informe de Evaluación de Oficial. No se conservaron los periodos ni los métodos de medición. Aquí no se describen posiciones, rutas ni ubicaciones de unidades.",
+        "Las tres cifras vienen de mi Informe de Evaluación de Oficial. No se guardaron registros de cómo ni durante qué periodo se midieron. Aquí no se describen posiciones, rutas ni ubicaciones de unidades.",
       ],
       bullets: [
-        "1–2 semanas: tiempo de reabastecimiento médico después de acercar el almacén, antes 1–2 meses · 85% más rápido.",
-        "60%: reducción del gasto, sin perder disponibilidad, cuando el estado compartido de pedidos acabó con los pedidos de más y los faltantes.",
-        "15%: la eficiencia para llevar suministros críticos a las estaciones mejoró tras un solo protocolo de comunicación.",
+        "1–2 semanas: para reabastecer suministros médicos después de acercar el almacén, antes 1–2 meses · 85% más rápido.",
+        "60%: menos gasto, con los suministros todavía disponibles, cuando las estaciones pudieron ver sus pedidos y dejaron de pedir de más o de quedarse sin nada.",
+        "15%: entrega más eficiente de suministros críticos después de crear una forma compartida de comunicarnos.",
       ],
     },
   ],
   otherProjects: [
-    { title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas", desc: "MSK · Propuse la cola de archivo; TI y UX la construyeron.", path: "/case-study/msk" },
-    { title: "Doce funciones se\u00a0convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
+    { title: "Proyecto de diseño de servicios para Memorial Sloan\u00a0Kettering Cancer\u00a0Center", desc: "MSK · Propuse la cola de archivo; TI y UX la construyeron.", path: "/case-study/msk" },
+    { title: "Diseño de producto e investigación para FloraGrove, una app de cuidado de plantas antes de su\u00a0lanzamiento", desc: "FloraGrove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
   ],
   close: {
-    title: "Las cadenas de suministro y los flujos clínicos fallan de la misma manera.",
-    body: "Cada reabastecimiento empezaba demasiado lejos de las estaciones de ayuda. Los mensajes del portal tomaban una ruta de papel y perdían el contexto del expediente. En ambos moví el paso que no correspondía.",
+    title: "Las cadenas de suministro del Ejército y el papeleo de una clínica fallan de la misma manera.",
+    body: "En el Ejército, las entregas de suministros empezaban demasiado lejos de las estaciones de ayuda. En el hospital, los mensajes de los pacientes se imprimían y escaneaban antes de llegar a la historia clínica. En los dos trabajos, moví el paso que estaba en el lugar equivocado.",
   },
 };
 
@@ -380,51 +381,55 @@ export const LOGISTICS_ES: SpanishCaseStudyData = {
 // page; Knowunity's internal numbers stay off both. Section anchors match the
 // English chapter ids so the language switch lands in place.
 export const KNOWUNITY_ES: SpanishCaseStudyData = {
-  title: "Las propias palabras del estudiante son la\u00a0prueba.",
+  title: "Sprint de diseño de 2.5 semanas con una startup de tecnología educativa, dirigido por Yummy\u00a0Labs",
   breadcrumb: "Knowunity",
   meta: "Knowunity · Sprint de diseño · Prototipo móvil interactivo · Recuerdo simulado",
   intro:
-    "En un sprint de diseño de dos semanas y media, organizado por Yummy Labs, trabajé sola con un brief real de Knowunity, una app de estudio. Diseñé y construí un prototipo donde el estudiante explica una idea en voz alta y Knowie, el asistente de la app, le muestra sus propias palabras cuando acierta. Todavía no escucha ni califica voz real, y ningún estudiante lo ha probado.",
+    "En un sprint de diseño de dos semanas y media (un reto de diseño con tiempo limitado), organizado por Yummy Labs, trabajé sola en un encargo real de Knowunity, una app de estudio. Diseñé y construí un prototipo funcional: el estudiante explica una idea en voz alta y, cuando acierta, Knowie, la mascota de la app, le muestra sus propias palabras. Todavía no puede escuchar ni calificar voz real, y ningún estudiante lo ha probado.",
   /* Interview-sourced human line (Better Stories pass, 2026-11-10). Spanish is a draft translation for Hillary to review. */
+  resultLine: {
+    eyebrow: "Lo que construí",
+    text: "El estudiante explica una idea en voz alta y, cuando acierta, Knowie le muestra sus propias palabras.",
+  },
   stats: [
-    { label: "Rol", value: "Participación individual · Yummy Labs AI Design Sprint · brief y kit de Knowunity" },
-    { label: "Brief", value: "Voz de entrada, texto de salida · iOS, 390px, modo oscuro · recuerdo simulado" },
-    { label: "Resultado", value: "Insignia AI Design Sprinter de Yummy Labs · revisado por Knowunity · no publicado" },
+    { label: "Rol", value: "Participación individual · Yummy Labs AI Design Sprint · encargo y kit de diseño de Knowunity" },
+    { label: "Encargo", value: "El estudiante habla, Knowie responde con texto · iOS, 390px de ancho, modo oscuro · la escucha es simulada" },
+    { label: "Resultado", value: "Insignia AI Design Sprinter de Yummy Labs · revisado por Knowunity · no es parte de la app real de Knowunity" },
   ],
   sections: [
     {
       anchor: "knowunity-brief",
       eyebrow: "Dónde empieza esto",
-      title: "Ver el material no es saberlo.",
+      title: "Knowunity quería que los estudiantes demostraran que recuerdan.",
       body: [
-        "Después de estudiar, el estudiante vio el material, pero no ha demostrado que pueda recordarlo por su cuenta. Los cuestionarios revisan si reconoces una respuesta, y nada te pide que la digas. Knowunity quería un momento en que el estudiante sienta: “esto ya lo sé”.",
-        "Las metas, en palabras: que más estudiantes que ven el paso lo empiecen, y que más de los que empiezan lo terminen.",
-        "A mitad del sprint, Knowunity publicó una versión ligera en beta. El brief pedía tratarla como el primer intento de un equipo y encontrar la versión más fuerte, no copiarla.",
+        "Después de estudiar, el estudiante ya vio el material, pero no ha demostrado que pueda recordarlo por su cuenta. Los pasos de práctica de la app revisan si reconoces o usas la respuesta correcta. No te piden que la expliques. Knowunity quería un momento en que el estudiante sienta: “esto ya lo sé”.",
+        "Dos metas: que más de los estudiantes que ven el nuevo paso lo empiecen, y que más de los que lo empiezan lo terminen.",
+        "A mitad del sprint, Knowunity lanzó su propia versión de prueba sencilla (una beta). El encargo pedía tratarla como el primer intento de un equipo y encontrar una versión más fuerte, no copiarla.",
       ],
       bullets: [
-        "Voz de entrada, texto de salida: Knowie nunca habla.",
-        "Pulsar para hablar: el estudiante inicia y detiene la grabación. Nadie adivina cuándo terminó.",
-        "Nunca atrapar al estudiante: cada acción obligatoria tiene salida, incluso para quien no puede hablar en ese momento.",
+        "Voz de entrada, texto de salida: el estudiante habla. Knowie solo responde con texto.",
+        "Pulsar para hablar: el estudiante inicia y detiene la grabación, así la app nunca adivina cuándo terminó.",
+        "Siempre hay una salida: todo lo que el estudiante tiene que hacer tiene otro camino, como escribir cuando no puede hablar en ese momento.",
       ],
     },
     {
       anchor: "knowunity-decisions",
       eyebrow: "Cuatro decisiones que tomé, aún sin probar",
-      title: "Quien demuestra es el estudiante, no Knowie.",
-      body: ["Nadie puede obligar a un estudiante a explicar en voz alta, así que cada uno de estos cuatro cambios le facilita seguir."],
+      title: "Hice que el estudiante sea quien demuestra, no Knowie.",
+      body: ["No se puede obligar a un estudiante a explicar en voz alta. Por eso, cada uno de estos cuatro cambios le facilita seguir."],
       bullets: [
-        "Devolver las palabras: cuando acierta, Knowie le muestra la respuesta que dijo en voz alta. Mi suposición, aún sin probar con estudiantes: ver sus propias palabras demuestra que puede recordarlas.",
-        "Repetir cuando esté listo: una palabra fallada volvía sola al final de la serie. Ahora el resumen empieza con “Practicar lo que fallé”, y el estudiante elige cuándo intentarlo otra vez.",
+        "Mostrarle sus palabras: cuando acierta, Knowie le muestra lo que dijo. Mi suposición, aún sin probar con estudiantes: ver sus propias palabras demuestra que puede recordarlas.",
+        "Repetir cuando esté listo: una pregunta fallada antes volvía sola al final. Ahora el resumen ofrece “Practicar lo que fallé”, y el estudiante elige cuándo.",
         "Pedir el micrófono cuando hace falta: la primera pregunta aparece enseguida, sin pantalla de introducción. La app pide usar el micrófono solo cuando el estudiante lo toca.",
-        "Decir qué pasa después de cada fallo: al primer fallo, Knowie da una pista. Al segundo, una pista de completar el espacio, y al tercero muestra la respuesta, avisando antes.",
+        "Decir qué pasa después de cada fallo: primer fallo, una pista. Segundo, una pista de completar el espacio, más “Un intento más y luego te muestro la respuesta”. Tercero, la respuesta.",
       ],
     },
     {
       anchor: "knowunity-prototype",
       eyebrow: "Cómo lo construí",
-      title: "Un prototipo funcional, no una presentación.",
+      title: "Construí una versión que se puede tocar y recorrer, no diapositivas.",
       body: [
-        "Knowunity aportó a Knowie, la fuente Greed, su kit de Figma y acceso a la app y a la beta. Yo hice los flujos, las decisiones y el código: un prototipo en Next.js con 43 rutas, a 390px en modo oscuro, y un catálogo en Storybook sobre su kit. Claude Code escribió la mayor parte del código a partir de mis especificaciones.",
+        "Knowunity me dio a Knowie, la fuente Greed, su kit de diseño en Figma (una herramienta de diseño) y acceso a la app real y a la beta. Yo hice las pantallas, las decisiones y el código: un prototipo en Next.js con 43 páginas, del tamaño de un teléfono (390px de ancho), en modo oscuro. Además, un Storybook, un catálogo de sus piezas, construido sobre su kit. Claude Code, una herramienta de inteligencia artificial (IA) para programar, escribió la mayor parte del código a partir de mis planes escritos.",
       ],
       // Same asset as the English page. The reel's on-screen text is in
       // English; the list translates it and the note says so.
@@ -434,7 +439,7 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
         captionsSrc: "/assets/knowunity/say-it-back-sizzle-captions-en.vtt",
         kicker: "El video de 52 segundos",
         label: "Say It Back, el video de 52 segundos",
-        caption: "El prototipo sobre el kit de Knowunity. El recuerdo es simulado: no hay reconocimiento de voz real.",
+        caption: "El prototipo, construido con el kit de diseño de Knowunity. La escucha es simulada: todavía no puede oír ni calificar voz real.",
         transcriptSummary: "Qué muestra el video",
         transcript: [
           "Knowie le indica por dónde empezar",
@@ -453,10 +458,10 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
     {
       anchor: "knowunity-outcomes",
       eyebrow: "Resultado",
-      title: "Una insignia, una revisión y una simulación que aún necesita\u00a0estudiantes.",
+      title: "Yummy Labs me dio una insignia, y Knowunity revisó el\u00a0trabajo.",
       body: [
-        "Yummy Labs otorgó a la entrada su insignia AI Design Sprinter y Knowunity revisó el trabajo. El reconocimiento de voz es simulado: cuánto tiempo se mantiene el micrófono decide el resultado. No hubo pruebas con estudiantes. No es una función publicada de Knowunity.",
-        "Siguiente paso: una versión con reconocimiento de voz frente a estudiantes.",
+        "La insignia es la AI Design Sprinter de Yummy Labs. La escucha es simulada: en el prototipo, cuánto tiempo mantienes el micrófono decide el resultado, porque no entiende el habla. No se probó con estudiantes. No es parte de la app real de Knowunity.",
+        "Siguiente paso: una versión que convierta la voz real en texto, frente a estudiantes.",
       ],
       credential: {
         ...KNOWUNITY_BADGE_ASSET,
@@ -468,11 +473,11 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
     },
   ],
   otherProjects: [
-    { title: "Doce funciones se\u00a0convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
-    { title: "El reabastecimiento médico pasó de meses a semanas", desc: "Logística médica del Ejército · siete estaciones de ayuda, tres países.", path: "/case-study/logistics" },
+    { title: "Diseño de producto e investigación para FloraGrove, una app de cuidado de plantas antes de su\u00a0lanzamiento", desc: "FloraGrove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
+    { title: "Diseño de servicios para el suministro médico del Ejército de EE.\u00a0UU., reduciendo el reabastecimiento de meses a\u00a0semanas", desc: "Logística médica del Ejército · siete estaciones de ayuda, tres países.", path: "/case-study/logistics" },
   ],
   close: {
-    title: "Hago prototipos para encontrar la siguiente prueba.",
+    title: "Construyo versiones que funcionan para saber qué probar después.",
     body: "Say It Back muestra cómo trabajo: construirlo, decir qué es simulado y nombrar la siguiente prueba.",
   },
 };
@@ -482,15 +487,21 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
 // only. Section anchors match the English chapter ids so the language switch
 // lands in place.
 export const UXWOMAN_ES: SpanishCaseStudyData = {
-  title: "Una carta con un plazo y sin un siguiente paso\u00a0claro.",
+  title: "Investigación en salud basada en los requisitos cambiantes de\u00a0Medicaid",
   breadcrumb: "UX Woman",
   meta: "UX Woman · Investigación en salud · Guía para una carta de Medicaid",
   intro:
-    "UX Woman es una aceleradora de diseño UX de 7 meses, guiada por mentores. Entrevisté a seis personas del personal de clínicas y aseguradoras y luego centré el trabajo en una carta pública de muestra de Medicaid de Nueva York sobre los nuevos requisitos de trabajo. Construí una guía que empieza por la carta que tienes en la mano. No está probada y no se entrevistó a ningún paciente.",
+    "UX Woman es una aceleradora de diseño de experiencia de usuario (UX) de 7 meses, guiada por mentores. Entrevisté a seis personas que trabajan en clínicas y aseguradoras. Luego diseñé una guía para una carta pública de muestra de Medicaid de Nueva York, el programa público de seguro médico, sobre su nuevo requisito de trabajo. La guía empieza por la carta que tienes en la mano. No está probada y no se entrevistó a ningún paciente.",
   /* Interview-sourced human line (Better Stories pass, 2026-11-10). Spanish is a draft translation for Hillary to review. */
-  humanLine: "Un líder de hospital me dijo: la IA ayuda a los hospitales a prepararse y a las aseguradoras a denegar.",
+  humanLine: "Un líder de hospital me dijo: la IA (inteligencia artificial) ayuda a los hospitales a prepararse y a las aseguradoras a denegar.",
+  // The intro's own words: "La guía empieza por la carta…" and "No está probada".
+  resultLine: {
+    eyebrow: "En qué punto está",
+    text: "Diseñé una guía que empieza por la carta que tienes en la mano. No está probada.",
+    source: "No se entrevistó a ningún paciente.",
+  },
   stats: [
-    { label: "Rol", value: "Única investigadora y diseñadora · 2026" },
+    { label: "Rol", value: "Investigadora y diseñadora en solitario · 2026" },
     { label: "Evidencia", value: "Seis entrevistas con personal de clínicas y aseguradoras · seis fuentes públicas · ninguna entrevista con pacientes" },
     { label: "Hice", value: "Mapa de afinidad · persona · mapas de recorrido · flujos · wireframes · prototipo de alta fidelidad" },
     { label: "Estado", value: "Construida, sin probar · dos pruebas planificadas" },
@@ -499,47 +510,47 @@ export const UXWOMAN_ES: SpanishCaseStudyData = {
     {
       anchor: "uxwoman-problem",
       eyebrow: "Problema",
-      title: "Se puede perder la cobertura por no responder a tiempo.",
+      title: "Si no respondes a tiempo, puedes perder la cobertura.",
       body: [
-        "Medicaid es un seguro de salud público. La carta le avisa a la gente de un nuevo requisito de trabajo, y si no responden a tiempo, pueden perder su cobertura.",
-        "Proyección para Nueva York: al menos 475,000 personas podrían perder la cobertura, según el Departamento de Salud de Nueva York. Ya visto en Arkansas en 2018: 18,164 personas perdieron la cobertura bajo un requisito de trabajo. Son datos públicos; una proyección y un conteo observado son medidas distintas.",
+        "Medicaid es un seguro de salud público. La carta le avisa a la gente de una nueva regla: algunas personas tienen que mostrar horas de trabajo o ingresos, o mostrar que la regla no les aplica. Si no responden a tiempo, pueden perder su cobertura.",
+        "Pronóstico para Nueva York: al menos 475,000 personas podrían perder la cobertura, según calcula el Departamento de Salud de Nueva York. Ya pasó en Arkansas en 2018: 18,164 personas perdieron la cobertura bajo un requisito de trabajo. Son datos públicos. Una cifra es un pronóstico y la otra es un conteo real, así que no se comparan directamente.",
       ],
     },
     {
       anchor: "uxwoman-research",
-      eyebrow: "Investigación",
-      title: "Seis entrevistas, seis temas.",
+      eyebrow: "Entrevistas",
+      title: "Hice seis entrevistas con el personal y escuché seis temas.",
       body: [
         // Hillary's themes line (2026-11-16); Spanish is a draft for her review.
         "Mientras aprendía sobre rechazos y autorizaciones previas (cuando el seguro tiene que aprobar la atención primero), vi que algunos cambios en las reglas de Medicaid podrían dejar a pacientes sin cobertura en el próximo año. Quiero ayudar al personal que guía a los pacientes en esos cambios.",
-        "Un tablero de afinidad por entrevista, y seis fuentes públicas. Las personas participantes están anonimizadas y no se recopiló información de salud protegida.",
+        "Por cada entrevista, agrupé mis notas por tema en un tablero. También usé seis fuentes públicas. No se nombra a nadie y no recopilé información privada de salud.",
       ],
       bullets: [
-        "¿De quién es? Nadie ve dónde está una solicitud.",
-        "Barreras de la vida real: la vivienda, el transporte y el cuidado de otras personas cambian el plan.",
-        "Persiguiendo a mano: teléfono, fax, muchos clics.",
-        "La IA ayuda, una persona revisa: el personal revisa lo que produce la IA.",
-        "Probar que el tratamiento es necesario: las denegaciones dependen del papeleo. Añadido tras una verificación con IA.",
-        "Las reglas de las aseguradoras no son claras: las reglas difieren y las razones están ocultas. Añadido tras una verificación con IA.",
+        "Nadie es claramente responsable: el personal no ve quién tiene una solicitud ni dónde está.",
+        "La vida se atraviesa: la vivienda, el transporte y el cuidado de otras personas pueden cambiar el plan.",
+        "Seguimiento a mano: el personal da seguimiento por teléfono, por fax y con muchos clics.",
+        "La IA ayuda, una persona revisa: el personal todavía revisa lo que produce la herramienta de IA.",
+        "Probar que el tratamiento es necesario: las aseguradoras dicen que no según el papeleo. Añadido tras una segunda revisión con IA.",
+        "Las reglas de las aseguradoras no son claras: cambian de una aseguradora a otra y las razones son difíciles de encontrar. Añadido tras una segunda revisión con IA.",
       ],
     },
     {
       anchor: "uxwoman-findings",
-      eyebrow: "Hipótesis",
-      title: "Dos hipótesis sobre una carta.",
+      eyebrow: "Ideas para probar",
+      title: "Hice dos suposiciones sobre la carta que se pueden probar.",
       body: [
-        "Hipótesis 1, la carta: la muestra pública omite, esconde o deja borrosa al menos una cosa que el lector necesita. Prueba: auditar la carta.",
-        "Hipótesis 2, el lector: los lectores no pueden decir qué aplica, para cuándo ni qué cuenta como prueba. Prueba: que los lectores respondan.",
-        "Seis cosas que el lector necesita: dónde está su caso, qué falta, quién actúa después, la fecha, una persona a quien llamar y qué cuenta como prueba.",
+        "Suposición 1, sobre la carta: la carta pública de muestra omite, esconde o deja confusa al menos una cosa que el lector necesita. Prueba: revisar la carta con la lista de abajo.",
+        "Suposición 2, sobre el lector: quienes la leen no pueden saber qué les aplica, para cuándo ni qué cuenta como prueba. Prueba: hacerles preguntas a los lectores sobre la carta.",
+        "Seis cosas que el lector necesita saber: en qué punto está todo, qué falta, quién actúa después, la fecha límite, una persona a quien llamar y qué cuenta como prueba.",
       ],
     },
     {
       anchor: "uxwoman-guide",
       eyebrow: "Guía",
-      title: "Una guía que empieza por la carta que tienes en la mano.",
+      title: "Diseñé una guía que empieza por la carta que tienes en la mano.",
       body: [
-        "Una pregunta decide el camino: ¿hay una fecha en la carta? Con fecha, la guía muestra lo que pide la carta y una lista que puedes añadir a tu calendario. Sin fecha, muestra dónde encontrarla y cómo hablar con una persona. Cada pantalla tiene una barra para hablar con una persona.",
-        "Un segundo concepto es una hoja de estado para el personal de la clínica: quién es responsable de cada solicitud abierta, qué falta y quién actúa después. Es un concepto de diseño, no un aviso oficial.",
+        "Una pregunta elige el camino: ¿hay una fecha en la carta? Si la hay, la guía muestra lo que pide la carta y luego una lista de pasos con un botón que agrega la fecha límite a tu calendario. Si no, muestra dónde encontrar la fecha y cómo hablar con una persona. Cada pantalla tiene un botón para hablar con una persona.",
+        "Mi segunda idea es una hoja de estado para el personal de la clínica: quién tiene cada solicitud abierta, qué falta y quién actúa después. Responde una pregunta: ¿el siguiente paso me toca a mí? Es un concepto de diseño, no un aviso oficial.",
       ],
     },
     {
@@ -547,15 +558,15 @@ export const UXWOMAN_ES: SpanishCaseStudyData = {
       eyebrow: "Siguiente paso",
       title: "Construida, aún sin probar.",
       body: [
-        "Prueba 1: calificar la carta de muestra según las seis cosas que el lector necesita. Se sostiene si al menos una falta o es ambigua.",
-        "Prueba 2: adultos de 19 a 64 años responden cuatro preguntas sobre la carta y dicen qué más necesitaban. El nivel de aprobación se define antes de hacerla.",
-        "Versión 1: construida, sin probar. Versión 2: solo si las pruebas encuentran vacíos. Versión 3: solo si una vía aprobada por el estado lo permite.",
+        "Prueba 1, revisión de la carta: calificar la carta de muestra según las seis cosas que el lector necesita saber. La suposición 1 se sostiene si al menos una falta o no está clara.",
+        "Prueba 2, preguntas a lectores: adultos de 19 a 64 años responden cuatro preguntas sobre la carta y luego dicen qué más necesitaban. Fijaré la calificación para aprobar antes de hacer la prueba.",
+        "Versión 1: construida, sin probar. Versión 2: solo si las pruebas encuentran vacíos. Versión 3: solo si el estado aprueba una forma de ofrecerla.",
       ],
     },
   ],
   otherProjects: [
-    { title: "Las propias palabras del estudiante son la prueba", desc: "Knowunity · Sprint de diseño, recuerdo por voz simulado.", path: "/case-study/knowunity" },
-    { title: "Doce funciones se\u00a0convirtieron en tres", desc: "Grove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
+    { title: "Sprint de diseño de 2.5 semanas con una startup de tecnología educativa, dirigido por Yummy\u00a0Labs", desc: "Knowunity · Sprint de diseño, recuerdo por voz simulado.", path: "/case-study/knowunity" },
+    { title: "Diseño de producto e investigación para FloraGrove, una app de cuidado de plantas antes de su\u00a0lanzamiento", desc: "FloraGrove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
   ],
   close: {
     title: "De una carta a un siguiente paso.",

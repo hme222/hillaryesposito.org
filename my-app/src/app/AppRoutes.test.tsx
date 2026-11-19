@@ -63,7 +63,7 @@ describe("AppRoutes", () => {
         await new Promise((resolve) => setTimeout(resolve, 25));
       });
     }
-    expect(container.querySelector("h1")?.textContent).toContain("own words are the");
+    expect(container.querySelector("h1")?.textContent).toContain("run by Yummy\u00a0Labs");
     expect(container.querySelector(".flagship-page--knowunity")).not.toBeNull();
     act(() => root.unmount());
     container.remove();
@@ -83,7 +83,7 @@ describe("AppRoutes", () => {
         await new Promise((resolve) => setTimeout(resolve, 25));
       });
     }
-    expect(container.querySelector("h1")?.textContent).toMatch(/A letter with a deadline/);
+    expect(container.querySelector("h1")?.textContent).toMatch(/Healthcare research based on changing Medicaid/);
     expect(container.querySelector(".flagship-page--uxwoman")).not.toBeNull();
     act(() => root.unmount());
     container.remove();

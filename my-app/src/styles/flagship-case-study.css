@@ -591,7 +591,25 @@
 /* An intentional sideways scroller below 620px: the thin themed scrollbar
    (same as Grove's screen strip) is its visible affordance. */
 .fp-blueprint__canvas { overflow-x: auto; scrollbar-width: thin; scrollbar-color: var(--green) var(--paper-2); padding-bottom: .4rem; }
-.fp-blueprint__canvas svg { display: block; min-width: 620px; overflow: visible; font-family: var(--label); }
+/* The svg's inline min-width is its own viewBox width, so it never draws below
+   1 px per unit: 13-unit labels stay at 13 px and a phone scrolls instead
+   (type audit 2026-11-19; they measured 5.9 px at 390 before). */
+.fp-blueprint__canvas svg { display: block; overflow: visible; font-family: var(--label); }
+.fp-blueprint__canvas:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+.fp-blueprint { container-type: inline-size; }
+.fp-blueprint__swipe { display: none; margin: 0 0 .5rem; font: var(--ts-label)/1.3 var(--label); color: var(--ink-2); }
+@container (max-width: 939px) { .fp-blueprint__swipe { display: block; } }
+
+/* Says what kind of claim each box is. Text carries it; the swatches echo the
+   drawing's outlines. */
+.fp-blueprint__legend { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; margin: .9rem 0 0; padding: 0;
+  list-style: none; font-size: var(--ts-label); line-height: 1.4; color: var(--ink-2); }
+.fp-blueprint__legend li { display: inline-flex; align-items: center; gap: .45rem; }
+.fp-blueprint__swatch { flex: none; width: 1.4rem; height: .85rem; border-radius: 2px; }
+.fp-blueprint__swatch--observed { border: 1px solid color-mix(in srgb, var(--ink) 45%, transparent); }
+.fp-blueprint__swatch--built { border: 2px solid var(--ink); }
+.fp-blueprint__swatch--design { border: 2px dotted var(--ink); }
+.fp-blueprint__source { margin: .5rem 0 0; font-size: var(--ts-label); line-height: 1.45; color: var(--ink-2); }
 
 .fp-blueprint__key { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   gap: 1.1rem 1.6rem; margin: 1.8rem 0 0; padding-top: 1.4rem; border-top: 1px solid var(--hair); }
@@ -960,3 +978,10 @@
 
 /* UX Woman hero: the guide's three concept screens fan above the evidence ledger (riso-page.css § R5). */
 .fp-heroArt--uxwoman { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1.2rem; }
+
+/* ---------- 2026-11-19 MSK synthesis-lens fixes ---------- */
+/* Capped so the 11.5-unit labels land near 15 px on desktop and stay above
+   12 px on a phone, instead of growing with the card. */
+.flagship-page--msk .fp-mechanism svg { max-width: 22rem; margin-inline: auto; }
+.fp-redesigns__source { margin: -.4rem 0 0; font-size: var(--ts-label); line-height: 1.4; color: var(--ink-2); }
+.rp-decisionStory__head .rp-decisionStory__note { margin-top: .6rem; }
