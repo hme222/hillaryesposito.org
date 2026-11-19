@@ -246,7 +246,7 @@ function InteractiveJourney({ initialMode }: { initialMode: Mode }) {
         {/* "Built from" sits on the picture itself, not only in the collapsed
             "Where this comes from" note (synthesis-lens review 2026-11-19). */}
         <figcaption>
-          One patient-portal message, drawn as a picture. Illustration, not a screenshot.
+          One patient-portal message. Illustration, not a screenshot.
           <span className="msk-journey__source">Built from memory of my own notes on the work. No patient data. My counts were lost, so I make no claim about how often this happened.</span>
         </figcaption>
       </div>

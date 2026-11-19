@@ -80,15 +80,15 @@ const en = {
   "home.riso.workTitle": "Selected work.",
   "home.riso.workLinkSuffix": "case study",
   "home.riso.groveDesc":
-    "Pre-launch. FloraGrove is a plant-care app for new plant owners. The first version had too many features, so I watched five people use it and surveyed 37. Twelve features became three. It is a working prototype in phase 2 of 3.",
+    "The first version had too many features for new plant owners, so I watched five people use it and surveyed 37. Twelve features became three.",
   "home.riso.mskDesc":
     "Staff printed patients’ online messages just to scan them into the medical record. I mapped that detour across four departments and pitched a digital fix to hospital leaders and the tech team, who built it after I changed roles. Six steps became five, and one department no longer handles these messages.",
   "home.riso.logisticsDesc":
-    "I planned and tracked a warehouse move that cut the wait for medical supplies from 1–2 months to 1–2 weeks. Then I set up shared order tracking for seven aid stations.",
+    "I planned and tracked a warehouse move that cut the wait for medical supplies from 1–2 months to 1–2 weeks. Then I set up shared order tracking.",
   "home.riso.uxwomanDesc":
     "I interviewed six clinic and insurance staff, and they pointed me to one public New York Medicaid (public health insurance) letter. I built a guide that starts from that letter in your hand. Nobody has tested it yet, and I didn’t interview any patients.",
   "home.riso.knowunityDesc":
-    "Students explain a term out loud, and the app quotes their own words back to show they know it. I was selected for the Yummy Labs AI Design Sprint with Knowunity and worked alone for 2.5 weeks from their brief and design kit. The voice check is faked in the prototype and never shipped.",
+    "Students explain a term out loud, and the app quotes their own words back to show they know it. I was selected for the sprint and worked alone from Knowunity’s brief and design kit. The voice check is faked in the prototype and never shipped.",
   "home.riso.groveAlt": "FloraGrove daily care screen showing one clear plant-care task and overdue plants first",
   "home.riso.mskAlt": "Recreated Memorial Sloan Kettering filing queue, showing patient-portal messages moving from ready-to-send through filed",
   "home.riso.logisticsAlt": "Service mechanism diagram contrasting a rear supply point with the warehouse moved forward, beside resupply time falling from months to weeks",
@@ -153,8 +153,8 @@ const en = {
 
   // ── Home: projects ──
   "home.eyebrow": "Selected work",
-  "home.proj.grove.subtitle": "Pre-launch · Phase 2 of 3",
-  "home.proj.msk.subtitle": "Memorial Sloan Kettering · Office coordinator, patient portal messages",
+  "home.proj.grove.subtitle": "Working prototype · Phase 2 of 3",
+  "home.proj.msk.subtitle": "Office coordinator, patient portal messages",
   "home.proj.logistics.subtitle": "U.S. Army · Seven aid stations",
   "home.proj.uxwoman.subtitle": "UX Woman accelerator · New York",
   "home.proj.knowunity.subtitle": "Knowunity · Yummy Labs AI Design Sprint",
@@ -163,8 +163,8 @@ const en = {
   "home.proj.logistics.title": "Service design for U.S.\u00a0Army medical supply, cutting resupply from months to\u00a0weeks",
   "home.proj.uxwoman.title": "Healthcare research based on changing Medicaid requirements",
   "home.proj.mobbin.title": "Freelance documentation of three finance apps for\u00a0Mobbin",
-  "home.proj.mobbin.subtitle": "Mobbin · Kikoff, Polymarket, Discover",
-  "home.riso.mobbinDesc": "I captured, ordered and labeled screens from Kikoff, Polymarket and Discover so designers can search them by task. I did not design these products.",
+  "home.proj.mobbin.subtitle": "Kikoff, Polymarket, Discover",
+  "home.riso.mobbinDesc": "I captured, ordered and labeled each app’s screens so designers can search them by task. I did not design these products.",
   "home.proj.hackathon.title": "A transit planner that shows whether the trip home is accessible",
   "home.proj.hackathon.subtitle": "New York Public Library hackathon · with Jacqueline Gordon",
   "home.riso.hackathonDesc": "Using public data from New York’s subway system, we found eight platforms that are accessible in one direction only. That puts the trip back at risk on 22,937 of 77,236 scheduled trips. Jacqueline led the accessibility features; I led the product plan and data logic.",
@@ -277,15 +277,15 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.workTitle": "Trabajo seleccionado.",
   "home.riso.workLinkSuffix": "estudio de caso",
   "home.riso.groveDesc":
-    "Antes del lanzamiento. FloraGrove es una app de cuidado de plantas para quienes empiezan. La primera versión tenía demasiadas funciones, así que vi a cinco personas usarla y encuesté a 37. Doce funciones se volvieron tres. Es un prototipo funcional en la fase 2 de 3.",
+    "La primera versión tenía demasiadas funciones para quienes empiezan con las plantas, así que vi a cinco personas usarla y encuesté a 37. Doce funciones se volvieron tres.",
   "home.riso.mskDesc":
     "El personal imprimía los mensajes en línea de los pacientes solo para escanearlos a la historia clínica. Mapeé ese desvío en cuatro áreas y propuse una solución digital a la dirección del hospital y al equipo de tecnología, que la construyeron después de que cambié de puesto. Seis pasos se volvieron cinco, y un área ya no maneja estos mensajes.",
   "home.riso.logisticsDesc":
-    "Planifiqué y seguí el traslado de un almacén que redujo la espera de suministros médicos de 1–2 meses a 1–2 semanas. Luego armé un seguimiento compartido de pedidos para siete estaciones de ayuda.",
+    "Planifiqué y seguí el traslado de un almacén que redujo la espera de suministros médicos de 1–2 meses a 1–2 semanas. Luego armé un seguimiento compartido de pedidos.",
   "home.riso.uxwomanDesc":
     "Entrevisté a seis personas de clínicas y aseguradoras, y me señalaron una carta pública de Medicaid de Nueva York (el seguro médico público). Construí una guía que empieza por esa carta que tiene en la mano. Nadie la ha probado todavía, y no entrevisté a ningún paciente.",
   "home.riso.knowunityDesc":
-    "Los estudiantes explican un término en voz alta, y la app les cita sus propias palabras para mostrar que lo saben. Me seleccionaron para el Yummy Labs AI Design Sprint con Knowunity y trabajé sola durante 2.5 semanas con sus instrucciones y su kit de diseño. La revisión por voz está simulada en el prototipo y nunca se lanzó.",
+    "Los estudiantes explican un término en voz alta, y la app les cita sus propias palabras para mostrar que lo saben. Me seleccionaron para el sprint y trabajé sola con el encargo y el kit de diseño de Knowunity. La revisión por voz está simulada en el prototipo y nunca se lanzó.",
   "home.riso.groveAlt": "Pantalla de cuidado diario de FloraGrove con una tarea clara y las plantas atrasadas primero",
   "home.riso.mskAlt": "Cola de archivo recreada de Memorial Sloan Kettering, mostrando mensajes del portal de pacientes desde listos para enviar hasta archivados",
   "home.riso.logisticsAlt": "Diagrama de mecanismo de servicio que contrasta un punto de suministro en la retaguardia con el almacén movido al frente, junto al tiempo de reabastecimiento bajando de meses a semanas",
@@ -349,8 +349,8 @@ const es: Partial<Record<StringKey, string>> = {
 
   // ── Home: projects ──
   "home.eyebrow": "Trabajo seleccionado",
-  "home.proj.grove.subtitle": "Antes del lanzamiento · Fase 2 de 3",
-  "home.proj.msk.subtitle": "Memorial Sloan Kettering · Coordinadora de oficina, mensajes del portal de pacientes",
+  "home.proj.grove.subtitle": "Prototipo funcional · Fase 2 de 3",
+  "home.proj.msk.subtitle": "Coordinadora de oficina, mensajes del portal de pacientes",
   "home.proj.logistics.subtitle": "Ejército de EE. UU. · Siete estaciones de ayuda",
   "home.proj.uxwoman.subtitle": "Aceleradora UX Woman · Nueva York",
   "home.proj.knowunity.subtitle": "Knowunity · Yummy Labs AI Design Sprint",
@@ -362,8 +362,8 @@ const es: Partial<Record<StringKey, string>> = {
   "home.proj.logistics.title": "Diseño de servicios para el suministro médico del Ejército de EE.\u00a0UU., reduciendo el reabastecimiento de meses a\u00a0semanas",
   "home.proj.uxwoman.title": "Investigación en salud basada en los requisitos cambiantes de\u00a0Medicaid",
   "home.proj.mobbin.title": "Documentación freelance de tres apps financieras para\u00a0Mobbin",
-  "home.proj.mobbin.subtitle": "Mobbin · Kikoff, Polymarket, Discover",
-  "home.riso.mobbinDesc": "Capturé, ordené y etiqueté pantallas de Kikoff, Polymarket y Discover para que otros diseñadores las encuentren por tarea. No diseñé estos productos.",
+  "home.proj.mobbin.subtitle": "Kikoff, Polymarket, Discover",
+  "home.riso.mobbinDesc": "Capturé, ordené y etiqueté las pantallas de cada app para que otros diseñadores las encuentren por tarea. No diseñé estos productos.",
   "home.proj.hackathon.title": "Un planificador de transporte que muestra si el viaje de regreso es accesible",
   "home.proj.hackathon.subtitle": "Hackathon de la Biblioteca Pública de Nueva York · con Jacqueline Gordon",
   "home.riso.hackathonDesc": "Con datos públicos del metro de Nueva York, encontramos ocho andenes que son accesibles en una sola dirección. Eso pone en riesgo el viaje de regreso en 22,937 de 77,236 viajes programados. Jacqueline dirigió las funciones de accesibilidad; yo dirigí el plan de producto y la lógica de datos.",

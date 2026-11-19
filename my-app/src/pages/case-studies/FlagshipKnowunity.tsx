@@ -67,7 +67,7 @@ const REEL: CaseStudyReelData = {
   captionsSrc: REEL_CAPTIONS,
   kicker: "The 52-second reel",
   label: "Say It Back, the 52-second reel",
-  caption: "The prototype, built from Knowunity’s design kit. The listening is faked: it can’t hear or grade real speech yet.",
+  caption: "The listening is faked: it can’t hear or grade real speech yet.",
   transcriptSummary: "What the reel shows",
   transcript: [
     "Knowie points the way in",
@@ -100,7 +100,7 @@ const STEPS = [
   {
     n: "02",
     title: "Retry when they’re ready",
-    body: "A missed question used to come back by itself at the end. Now the summary offers “Practice what I missed,” and the student picks when.",
+    body: "A missed question used to come back by itself at the end. Now the summary offers “Practice what I missed.”",
     note: "The student chooses the second try",
   },
   {
@@ -157,7 +157,7 @@ export default function FlagshipKnowunity() {
           <div className="rp-clearing">
             <h1 className="rp-h1">2.5-week design sprint with an edtech startup, run by Yummy{"\u00a0"}Labs</h1>
             <p className="rp-sub">
-              In a 2.5-week design sprint (a timed design challenge) run by Yummy Labs, I worked alone on a real assignment from Knowunity, a study app. I designed and built a working prototype: a student explains an idea out loud, and when they get it right, Knowie, the app’s mascot, shows them their own words. <b>It can’t hear or grade real speech yet, and no student has tried it.</b>
+              In the sprint (a timed design challenge), I worked alone on a real assignment from Knowunity, a study app whose mascot is Knowie. I designed and built a working prototype. <b>It can’t hear or grade real speech yet, and no student has tried it.</b>
             </p>
             <div className="rp-hero__ctas">
               <a className="rp-cta" href={PROTOTYPE_URL} target="_blank" rel="noopener noreferrer">
@@ -213,7 +213,7 @@ export default function FlagshipKnowunity() {
           <h2 className="rp-title">I built a version you can tap through, not slides.</h2>
           <div className="fp-workSplit rp-reveal" data-evidence="true">
             <article><span>Knowunity gave me</span><h3>Their brand and design parts</h3><p>Knowie, the Greed font, their design kit in Figma (a design tool), and access to the live app and the beta.</p></article>
-            <article><span>I did</span><h3>The screens, the choices, and the build</h3><p>A Next.js prototype with 43 pages, phone-sized (390px wide), in dark mode. Plus a Storybook, a catalog of its parts, built on their kit. Claude Code, an AI coding tool, wrote most of the code from my written plans.</p></article>
+            <article><span>I did</span><h3>The screens, the choices, and the build</h3><p>A Next.js prototype, phone-sized (390px wide), in dark mode. Plus a Storybook, a catalog of its parts, built on their kit. Claude Code, an AI coding tool, wrote most of the code from my written plans.</p></article>
           </div>
           <CaseStudyReel reel={REEL} />
           <div className="rp-hero__ctas">
@@ -287,7 +287,7 @@ export default function FlagshipKnowunity() {
         id="knowunity-outcomes"
         languageAnchor="knowunity-outcomes"
         title="Yummy Labs gave me a badge, and Knowunity reviewed it."
-        intro="The badge is Yummy Labs’ AI Design Sprinter badge. Next: a version that turns real speech into text, in front of students."
+        intro="Next: a version that turns real speech into text, in front of students."
         disclaimer="Design-sprint prototype · the listening is faked: it can’t understand speech · not tested with students · not part of the real Knowunity app"
         metrics={[
           { tag: "Build", n: "43", label: "pages in the working prototype, each reached by tapping, not by typing a web address" },

@@ -13,7 +13,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
   /* Interview-sourced human line (Better Stories pass, 2026-11-10). Spanish is a draft translation for Hillary to review. */
   humanLine: "Sé de plantas, así que quería más funciones. Cinco usuarios lo cambiaron.",
   heroLink: { label: "Unirse a la lista de espera", href: "https://floragrove.app" },
-  // Same sentence as the survey section below.
+  // Said once, here; the survey section no longer repeats it.
   resultLine: { eyebrow: "Lo que encontré", text: "Doce funciones se volvieron tres." },
   stats: [
     { label: "Rol", value: "Diseñadora de producto (en solitario)" },
@@ -38,7 +38,7 @@ export const GROVE_ES: SpanishCaseStudyData = {
       eyebrow: "Encuesta",
       title: "Luego 37 personas eligieron lo que la app necesitaba para lanzarse.",
       body: [
-        "Del 22 de mayo al 16 de octubre, 37 personas respondieron una encuesta: 31 dueños y cuidadores de plantas, tres floristas y tres compradores de ramos. Cada una eligió las tres funciones sin las que la app no podría lanzarse. Doce funciones se volvieron tres.",
+        "Del 22 de mayo al 16 de octubre, 37 personas respondieron una encuesta: 31 dueños y cuidadores de plantas, tres floristas y tres compradores de ramos. Cada una eligió tres funciones.",
         "Límite: una encuesta muestra lo que la gente dice que quiere. Me sirvió para ordenar lo próximo que construyo, pero no prueba lo que la gente haría de verdad.",
       ],
       bullets: [
@@ -85,7 +85,7 @@ export const MSK_ES: SpanishCaseStudyData = {
   meta: "Memorial Sloan Kettering · diseño de servicios",
   resultLine: { eyebrow: "Lo que cambió", text: "Seis pasos se volvieron cinco, y un área dejó de participar." },
   intro:
-    "Como coordinadora de oficina, mapeé cómo los mensajes del portal de pacientes, el sitio web donde los pacientes le escriben a su equipo de atención, pasaban por cuatro áreas, y propuse una solución. Los mensajes no se guardaban en la historia clínica electrónica del paciente (EMR, por sus siglas en inglés). Así que yo los imprimía y esperábamos a que los escanearan. Sugerí un botón Enviar al EMR para que se archivaran directo en la historia clínica. Los equipos de tecnología de la información (TI) y de experiencia de usuario (UX) construyeron la versión real.",
+    "Como coordinadora de oficina, mapeé cómo los mensajes del portal de pacientes, el sitio web donde los pacientes le escriben a su equipo de atención, pasaban por cuatro áreas. Los mensajes no se guardaban en la historia clínica electrónica del paciente (EMR, por sus siglas en inglés). Así que yo los imprimía y esperábamos a que los escanearan. Sugerí un botón Enviar al EMR para que se archivaran directo en la historia clínica. Los equipos de tecnología de la información (TI) y de experiencia de usuario (UX) construyeron la versión real.",
   stats: [
     // Two rows, matching the English hero (2026-10-16): the rest restated the
     // intro and the workflow section's provenance note.
@@ -108,9 +108,8 @@ export const MSK_ES: SpanishCaseStudyData = {
       eyebrow: "Así que conté los pasos",
       title: "Dibujé un mapa que las cuatro áreas podían ver.",
       body: [
-        "Hablé con todas las áreas que tocaba el papel: clínica, TI, operaciones y HIM (gestión de información de salud, el equipo que escanea el papel a las historias clínicas). Trabajé con la dirección en la implementación. Repasé cada decisión con TI y UX en una propuesta completa, para que el cambio estuviera listo para construirse en cuanto tuviera financiamiento.",
-        "En pantalla, el cambio fue un paso menos. Por detrás, un área completa dejó de tener que manejar el mensaje.",
-        "De dónde sale esto: redibujé estas imágenes de memoria, a partir de mis propias notas sobre cómo se hacía el trabajo. No tienen datos de pacientes, registros exportados ni copias de las pantallas del software real.",
+        "Hablé con todas las áreas que tocaba el papel: clínica, TI, operaciones y HIM (gestión de información de salud). Trabajé con la dirección en la implementación. Repasé cada decisión con TI y UX en una propuesta completa.",
+        "De dónde sale esto: redibujé estas imágenes de memoria, a partir de mis propias notas. No tienen datos de pacientes, registros exportados ni copias de las pantallas del software real.",
       ],
       bullets: [
         "Antes · seis pasos: abrir la cola del panel, encontrar el mensaje, imprimirlo, enviar el papel a HIM, esperar a que lo escaneen y volver después a revisar que se archivó.",
@@ -123,7 +122,7 @@ export const MSK_ES: SpanishCaseStudyData = {
       eyebrow: "El arreglo parecía un solo botón",
       title: "Puse cuatro reglas sobre cómo funciona el botón.",
       body: [
-        "TI y UX construyeron el botón real. Escribí estas cuatro reglas para esta versión del portafolio. No son el diseño real de MSK.",
+        "TI y UX construyeron el botón real. Escribí estas reglas para esta versión del portafolio. No son el diseño real de MSK.",
         "Cómo las comprobaría: los minutos desde que llega un mensaje hasta que queda en la historia clínica, los mensajes archivados en la historia clínica del paciente equivocado y las páginas impresas.",
       ],
       bullets: [
@@ -140,7 +139,7 @@ export const MSK_ES: SpanishCaseStudyData = {
       title: "Encontré el mismo problema en dos lugares más.",
       // Synthesis-lens review 2026-11-19: mirrors the English "my reading" line,
       // which is true of both cards.
-      body: ["Mi lectura del patrón: la capacitación de RCP (reanimación cardiopulmonar) y la de nuevos empleados estaban escritas para alguien que no era la persona que las usaba. El personal clínico recibía lenguaje legal. El personal nuevo recibía un solo curso para todos los niveles."],
+      body: ["Mi lectura del patrón: la capacitación de RCP (reanimación cardiopulmonar) y la de nuevos empleados estaban escritas para alguien que no era la persona que las usaba."],
       bullets: [
         "Certificación de RCP: el curso estaba escrito en lenguaje técnico y legal, así que el personal clínico no lo terminaba. Lo reescribí en lenguaje sencillo. Toda el área se certificó un mes antes de la fecha límite original.",
         "Capacitación del nuevo personal de oficina: todos los nuevos empleados recibían el mismo curso, sin importar cuánto sabían. Adapté el programa de una a tres semanas a cada grupo, según quién estaba en la sala.",
@@ -152,13 +151,13 @@ export const MSK_ES: SpanishCaseStudyData = {
       eyebrow: "Por qué pude verlo",
       title: "Hice los trabajos antes de rediseñarlos.",
       body: [
-        "Un problema así no se ve desde fuera. Yo ya había hecho tres trabajos dentro del sistema.",
+        "Un problema así no se ve desde fuera.",
         "Mi alcance: todo el camino que recorría el mensaje, entre software, áreas, quién podía hacer qué y cada traspaso. No solo una pantalla.",
         "Lo que esto prueba y lo que no: mis notas conservaron el camino, las áreas, las decisiones y los resultados. No anoté a cuántas personas observé en sus turnos, así que esto explica las decisiones, pero no prueba qué tan común era el problema.",
       ],
       bullets: [
         "01 · Coordinadora de oficina: dónde se atascaba la gente. En este puesto terminé el Lean Six Sigma Green Belt (Purdue) y la Maestría en Administración de Salud (Rutgers), mientras llevaba el papeleo de una clínica. El Green Belt es un certificado para mejorar cómo se hace el trabajo. Así vi una tarea de archivo pasar por cuatro áreas.",
-        "02 · Asistente administrativa: cómo escribir para quien hace la tarea. No hay certificado para esto. Un lenguaje técnico y legal impedía que el personal clínico terminara la certificación de RCP. Lo reescribí en lenguaje sencillo para quienes tenían que seguirlo.",
+        "02 · Asistente administrativa: cómo escribir para quien hace la tarea. No hay certificado para esto.",
         "03 · Facilitadora de capacitación: la autoridad para rediseñarlo. Enseñé Epic (el software de la historia clínica), HIPAA (la ley de privacidad del paciente) y los cursos de cumplimiento. Para enseñar bien el sistema, anoté lo que el personal hacía de verdad, no lo que decía la política. La diferencia entre las dos cosas es donde está el trabajo de diseño.",
       ],
     },
@@ -173,7 +172,7 @@ export const MSK_ES: SpanishCaseStudyData = {
         "Lo que habría medido: que yo sepa, nadie lo midió. Habría seguido tres cosas: los minutos desde que llega un mensaje hasta que queda en la historia clínica, los mensajes archivados en la historia clínica del paciente equivocado y las páginas impresas.",
       ],
       bullets: [
-        "Archivar en la historia clínica: se agregó al sistema en uso. Lo vi ahí mientras capacitaba a nuevos empleados.",
+        "Archivar en la historia clínica: se agregó al sistema en uso.",
         "Reescritura del curso de RCP: toda el área se certificó un mes antes de la fecha límite original. No hizo falta prórroga.",
       ],
     },
@@ -212,7 +211,7 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
   breadcrumb: "Mobbin",
   meta: "Mobbin · Etiquetado de pantallas de apps · tres apps financieras",
   intro:
-    "Mobbin es un sitio donde los diseñadores buscan capturas de apps reales para inspirarse. Como freelance, pasé cuatro meses con tres apps: Kikoff, Polymarket y Discover. Tomé capturas de más de 200 pantallas por app y etiqueté cada una por tarea, como iniciar sesión, para que los diseñadores puedan encontrarla. No diseñé estas apps ni Mobbin.",
+    "Mobbin es un sitio donde los diseñadores buscan capturas de apps reales para inspirarse. Como freelance, pasé cuatro meses con tres apps: Kikoff, Polymarket y Discover. No diseñé estas apps ni Mobbin.",
   resultLine: {
     eyebrow: "Lo que hice",
     text: "Tomé capturas de más de 200 pantallas por app y etiqueté cada una por tarea, para que los diseñadores puedan encontrarla.",
@@ -281,7 +280,7 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
     { title: "Proyecto de diseño de servicios para Memorial Sloan\u00a0Kettering Cancer\u00a0Center", desc: "MSK · Propuse la cola de archivo; TI y UX la construyeron.", path: "/case-study/msk" },
   ],
   close: {
-    title: "Después de más de 200 pantallas por app, noto qué hace que una app dé confianza.",
+    title: "Ahora noto qué hace que una app dé confianza.",
   },
 };
 
@@ -294,17 +293,17 @@ export const LOGISTICS_ES: SpanishCaseStudyData = {
   title: "Diseño de servicios para el suministro médico del Ejército de EE.\u00a0UU., reduciendo el reabastecimiento de meses a\u00a0semanas",
   meta: "Logística médica del Ejército · Operaciones · Diseño de servicios · 2024",
   intro:
-    "En un despliegue de la Guardia Nacional del Ejército en Irak y dos países vecinos, estuve a cargo de los suministros médicos de siete estaciones de ayuda, donde primero se atiende a los soldados heridos. Cuando llegué, reabastecerlas tardaba 1–2 meses. Propuse acercar nuestro almacén, y luego planifiqué y di seguimiento a la mudanza. Después, reabastecerlas tardaba 1–2 semanas, según mi Informe de Evaluación de Oficial, la evaluación escrita que el Ejército hace de mi trabajo. No se guardaron registros de cómo ni durante qué periodo se midió.",
+    "En un despliegue de la Guardia Nacional del Ejército en Irak y dos países vecinos, estuve a cargo de los suministros médicos de siete estaciones de ayuda, donde primero se atiende a los soldados heridos. Cuando llegué, reabastecerlas tardaba 1–2 meses. Propuse acercar nuestro almacén, y luego planifiqué y di seguimiento a la mudanza.",
   /* Interview-sourced human line (Better Stories pass, 2026-11-10). Spanish is a draft translation for Hillary to review. */
   humanLine: "Yo estaba a cargo de llevar vacunas contra la rabia a tres países. Una vez, las entregué yo misma.",
-  // The intro's own sentence; 1–2 kept together with a word joiner, as on the English page.
+  // The result sentence lives only here (cut from the intro, 2026-11-19); 1–2 kept together with a word joiner, as on the English page.
   resultLine: {
     eyebrow: "Lo que cambió",
     text: "Después, reabastecerlas tardaba 1–\u20602\u00a0semanas, según mi Informe de Evaluación de Oficial.",
     source: "Mi Informe de Evaluación de Oficial es la evaluación escrita que el Ejército hace de mi trabajo.",
   },
   stats: [
-    { label: "Rol", value: "Oficial de logística médica, a cargo de los suministros médicos · dirigí la mudanza del almacén y el reabastecimiento de las estaciones" },
+    { label: "Rol", value: "Oficial de logística médica · dirigí la mudanza del almacén y el reabastecimiento de las estaciones" },
     { label: "Tamaño", value: "5,000+ soldados de Nueva Jersey · $2M en suministros" },
   ],
   sections: [
@@ -385,7 +384,7 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
   breadcrumb: "Knowunity",
   meta: "Knowunity · Sprint de diseño · Prototipo móvil interactivo · Recuerdo simulado",
   intro:
-    "En un sprint de diseño de dos semanas y media (un reto de diseño con tiempo limitado), organizado por Yummy Labs, trabajé sola en un encargo real de Knowunity, una app de estudio. Diseñé y construí un prototipo funcional: el estudiante explica una idea en voz alta y, cuando acierta, Knowie, la mascota de la app, le muestra sus propias palabras. Todavía no puede escuchar ni calificar voz real, y ningún estudiante lo ha probado.",
+    "En el sprint (un reto de diseño con tiempo limitado), trabajé sola en un encargo real de Knowunity, una app de estudio cuya mascota es Knowie. Diseñé y construí un prototipo funcional. Todavía no puede escuchar ni calificar voz real, y ningún estudiante lo ha probado.",
   /* Interview-sourced human line (Better Stories pass, 2026-11-10). Spanish is a draft translation for Hillary to review. */
   resultLine: {
     eyebrow: "Lo que construí",
@@ -419,7 +418,7 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
       body: ["No se puede obligar a un estudiante a explicar en voz alta. Por eso, cada uno de estos cuatro cambios le facilita seguir."],
       bullets: [
         "Mostrarle sus palabras: cuando acierta, Knowie le muestra lo que dijo. Mi suposición, aún sin probar con estudiantes: ver sus propias palabras demuestra que puede recordarlas.",
-        "Repetir cuando esté listo: una pregunta fallada antes volvía sola al final. Ahora el resumen ofrece “Practicar lo que fallé”, y el estudiante elige cuándo.",
+        "Repetir cuando esté listo: una pregunta fallada antes volvía sola al final. Ahora el resumen ofrece “Practicar lo que fallé”.",
         "Pedir el micrófono cuando hace falta: la primera pregunta aparece enseguida, sin pantalla de introducción. La app pide usar el micrófono solo cuando el estudiante lo toca.",
         "Decir qué pasa después de cada fallo: primer fallo, una pista. Segundo, una pista de completar el espacio, más “Un intento más y luego te muestro la respuesta”. Tercero, la respuesta.",
       ],
@@ -439,7 +438,7 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
         captionsSrc: "/assets/knowunity/say-it-back-sizzle-captions-en.vtt",
         kicker: "El video de 52 segundos",
         label: "Say It Back, el video de 52 segundos",
-        caption: "El prototipo, construido con el kit de diseño de Knowunity. La escucha es simulada: todavía no puede oír ni calificar voz real.",
+        caption: "La escucha es simulada: todavía no puede oír ni calificar voz real.",
         transcriptSummary: "Qué muestra el video",
         transcript: [
           "Knowie le indica por dónde empezar",
@@ -460,7 +459,7 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
       eyebrow: "Resultado",
       title: "Yummy Labs me dio una insignia, y Knowunity revisó el\u00a0trabajo.",
       body: [
-        "La insignia es la AI Design Sprinter de Yummy Labs. La escucha es simulada: en el prototipo, cuánto tiempo mantienes el micrófono decide el resultado, porque no entiende el habla. No se probó con estudiantes. No es parte de la app real de Knowunity.",
+        "La escucha es simulada: en el prototipo, cuánto tiempo mantienes el micrófono decide el resultado, porque no entiende el habla. No se probó con estudiantes. No es parte de la app real de Knowunity.",
         "Siguiente paso: una versión que convierta la voz real en texto, frente a estudiantes.",
       ],
       credential: {
@@ -491,10 +490,10 @@ export const UXWOMAN_ES: SpanishCaseStudyData = {
   breadcrumb: "UX Woman",
   meta: "UX Woman · Investigación en salud · Guía para una carta de Medicaid",
   intro:
-    "UX Woman es una aceleradora de diseño de experiencia de usuario (UX) de 7 meses, guiada por mentores. Entrevisté a seis personas que trabajan en clínicas y aseguradoras. Luego diseñé una guía para una carta pública de muestra de Medicaid de Nueva York, el programa público de seguro médico, sobre su nuevo requisito de trabajo. La guía empieza por la carta que tienes en la mano. No está probada y no se entrevistó a ningún paciente.",
+    "UX Woman es una aceleradora de diseño de experiencia de usuario (UX) de 7 meses, guiada por mentores. Entrevisté a seis personas que trabajan en clínicas y aseguradoras. Luego diseñé una guía para una carta pública de muestra de Medicaid de Nueva York, el programa público de seguro médico, sobre su nuevo requisito de trabajo. No está probada y no se entrevistó a ningún paciente.",
   /* Interview-sourced human line (Better Stories pass, 2026-11-10). Spanish is a draft translation for Hillary to review. */
   humanLine: "Un líder de hospital me dijo: la IA (inteligencia artificial) ayuda a los hospitales a prepararse y a las aseguradoras a denegar.",
-  // The intro's own words: "La guía empieza por la carta…" and "No está probada".
+  // "La guía empieza por la carta…" is said once, here; "No está probada" stays in the intro too as the honesty limit.
   resultLine: {
     eyebrow: "En qué punto está",
     text: "Diseñé una guía que empieza por la carta que tienes en la mano. No está probada.",
@@ -512,14 +511,14 @@ export const UXWOMAN_ES: SpanishCaseStudyData = {
       eyebrow: "Problema",
       title: "Si no respondes a tiempo, puedes perder la cobertura.",
       body: [
-        "Medicaid es un seguro de salud público. La carta le avisa a la gente de una nueva regla: algunas personas tienen que mostrar horas de trabajo o ingresos, o mostrar que la regla no les aplica. Si no responden a tiempo, pueden perder su cobertura.",
+        "La carta le avisa a la gente de una nueva regla: algunas personas tienen que mostrar horas de trabajo o ingresos, o mostrar que la regla no les aplica.",
         "Pronóstico para Nueva York: al menos 475,000 personas podrían perder la cobertura, según calcula el Departamento de Salud de Nueva York. Ya pasó en Arkansas en 2018: 18,164 personas perdieron la cobertura bajo un requisito de trabajo. Son datos públicos. Una cifra es un pronóstico y la otra es un conteo real, así que no se comparan directamente.",
       ],
     },
     {
       anchor: "uxwoman-research",
       eyebrow: "Entrevistas",
-      title: "Hice seis entrevistas con el personal y escuché seis temas.",
+      title: "Escuché seis temas.",
       body: [
         // Hillary's themes line (2026-11-16); Spanish is a draft for her review.
         "Mientras aprendía sobre rechazos y autorizaciones previas (cuando el seguro tiene que aprobar la atención primero), vi que algunos cambios en las reglas de Medicaid podrían dejar a pacientes sin cobertura en el próximo año. Quiero ayudar al personal que guía a los pacientes en esos cambios.",
@@ -537,7 +536,7 @@ export const UXWOMAN_ES: SpanishCaseStudyData = {
     {
       anchor: "uxwoman-findings",
       eyebrow: "Ideas para probar",
-      title: "Hice dos suposiciones sobre la carta que se pueden probar.",
+      title: "Hice dos suposiciones que se pueden probar.",
       body: [
         "Suposición 1, sobre la carta: la carta pública de muestra omite, esconde o deja confusa al menos una cosa que el lector necesita. Prueba: revisar la carta con la lista de abajo.",
         "Suposición 2, sobre el lector: quienes la leen no pueden saber qué les aplica, para cuándo ni qué cuenta como prueba. Prueba: hacerles preguntas a los lectores sobre la carta.",
@@ -547,7 +546,7 @@ export const UXWOMAN_ES: SpanishCaseStudyData = {
     {
       anchor: "uxwoman-guide",
       eyebrow: "Guía",
-      title: "Diseñé una guía que empieza por la carta que tienes en la mano.",
+      title: "La guía.",
       body: [
         "Una pregunta elige el camino: ¿hay una fecha en la carta? Si la hay, la guía muestra lo que pide la carta y luego una lista de pasos con un botón que agrega la fecha límite a tu calendario. Si no, muestra dónde encontrar la fecha y cómo hablar con una persona. Cada pantalla tiene un botón para hablar con una persona.",
         "Mi segunda idea es una hoja de estado para el personal de la clínica: quién tiene cada solicitud abierta, qué falta y quién actúa después. Responde una pregunta: ¿el siguiente paso me toca a mí? Es un concepto de diseño, no un aviso oficial.",

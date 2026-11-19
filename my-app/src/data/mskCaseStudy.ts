@@ -319,11 +319,11 @@ const en: MskCopy = {
         "Opens the queue, finds the message, prints it, then has to come back later to check it was ever filed.",
       frontAfter:
         "Opens the queue, picks the message, sends it to the chart, and lands back on the queue with the status already updated.",
-      backTerm: "HIM (the scanning team) · out of sight",
+      backTerm: "HIM · out of sight",
       backBefore:
-        "Gets the paper and scans it. They do the job right, but out of sight, with no way to report back to the queue.",
+        "Gets the paper and scans it. They do the job right, with no way to report back to the queue.",
       backAfter:
-        "Off this path. The team that used to get the paper no longer handles these messages.",
+        "Off this path.",
       supportTerm: "IT: portal, EMR, and permissions · systems",
       supportBefore:
         "Their systems hold the message before it’s printed and after it’s scanned. Not in between, and that’s the gap.",
@@ -333,7 +333,7 @@ const en: MskCopy = {
       changedBefore:
         "Six steps, but one matters most: the message passes to another department, and no word comes back.",
       changedAfter:
-        "One department left the path. The coordinator can see the message from start to finish.",
+        "One department left the path.",
     },
     switchAria: "Choose which path the map shows",
   },
@@ -388,7 +388,7 @@ const en: MskCopy = {
     // fit the CPR card but not the new-hire card (one course for every skill
     // level). This line is labelled as her reading and is true of both.
     lede:
-      "My reading of the pattern: both were written for someone other than the person using them. Clinicians got legal language. New hires got one course for every skill level.",
+      "My reading of the pattern: both were written for someone other than the person using them.",
     wrongLabel: "What I got wrong",
     items: [
       {
@@ -635,11 +635,11 @@ const es: MskCopy = {
         "Abre la cola, busca el mensaje, lo imprime, y después tiene que volver para comprobar si alguna vez se archivó.",
       frontAfter:
         "Abre la cola, elige el mensaje, lo envía a la historia y vuelve a la cola con el estado ya actualizado.",
-      backTerm: "HIM (el equipo de escaneo) · fuera de la vista",
+      backTerm: "HIM · fuera de la vista",
       backBefore:
-        "Recibe el papel y lo escanea. Hace bien su trabajo, pero fuera de la vista y sin manera de avisar a la cola.",
+        "Recibe el papel y lo escanea. Hace bien su trabajo, sin manera de avisar a la cola.",
       backAfter:
-        "Fuera de esta ruta. El equipo que antes recibía el papel ya no maneja estos mensajes.",
+        "Fuera de esta ruta.",
       supportTerm: "TI: portal, EMR y permisos · sistemas",
       supportBefore:
         "Sus sistemas guardan el mensaje antes de imprimirlo y después de escanearlo. No en medio, y ese es el hueco.",
@@ -649,7 +649,7 @@ const es: MskCopy = {
       changedBefore:
         "Seis pasos, pero uno importa más: el mensaje pasa a otra área y no vuelve ninguna respuesta.",
       changedAfter:
-        "Un área salió de la ruta. La coordinación puede ver el mensaje de principio a fin.",
+        "Un área salió de la ruta.",
     },
     switchAria: "Elegir qué ruta muestra el mapa",
   },
@@ -699,7 +699,7 @@ const es: MskCopy = {
     kicker: "Luego apareció dos veces más",
     title: "Encontré el mismo problema en dos lugares más.",
     lede:
-      "Mi lectura del patrón: los dos estaban escritos para alguien que no era la persona que los usaba. El personal clínico recibía lenguaje legal. El personal nuevo recibía un solo curso para todos los niveles.",
+      "Mi lectura del patrón: los dos estaban escritos para alguien que no era la persona que los usaba.",
     wrongLabel: "En qué me equivoqué",
     items: [
       {

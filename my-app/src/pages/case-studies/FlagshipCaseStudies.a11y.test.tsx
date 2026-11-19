@@ -193,7 +193,9 @@ describe("flagship case-study accessibility", () => {
     // Pre-launch rebuild (2026-11-19): the research-to-scope trace now lives in
     // the short story under the landing section.
     expect(container.querySelector("#grove-research")?.textContent).toContain("From March to May 2026, I tested it with five people.");
-    expect(container.querySelector("#grove-survey")?.textContent).toContain("Twelve features became three.");
+    // "Twelve features became three" is said once, in the result sentence under the hero.
+    expect(container.querySelector(".rp-resultLine")?.textContent?.replace(/\u00a0/g, " ")).toContain("Twelve features became three.");
+    expect(container.querySelector("#grove-survey")?.textContent).not.toContain("Twelve features became three.");
     expect(container.textContent).toContain("not finished screens");
     expect(container.querySelectorAll('.rp-decisionRecord[aria-label="FloraGrove’s three planned changes"] dt')).toHaveLength(3);
     expect(container.querySelectorAll(".rp-decision")).toHaveLength(0);
@@ -206,10 +208,12 @@ describe("flagship case-study accessibility", () => {
     });
 
     const hero = container.querySelector("#log-start");
-    // The hero "Result" row was cut (2026-11-17 repetition cut); the sub carries
-    // the before, the after, and its source.
+    // Minimal pass (2026-11-19): the hero carries the before and the move; the result and its
+    // source live once, in the result sentence under it (word joiner inside "1–2").
     expect(hero?.textContent).toContain("restocking them took 1–2 months");
-    expect(hero?.textContent).toContain("Restocking then took 1–2 weeks, according to my Officer Evaluation Report");
+    expect(hero?.textContent).not.toContain("according to my Officer Evaluation Report");
+    expect(container.querySelector(".rp-resultLine")?.textContent?.replace(/\u00a0/g, " ")).toContain("Restocking then took 1–\u20602 weeks, according to my Officer Evaluation Report");
+    expect(container.querySelector(".rp-resultLine")?.textContent?.replace(/\u00a0/g, " ")).toContain("My Officer Evaluation Report is the Army’s written review of my work.");
     expect(hero?.querySelector("h1")?.textContent).toBe("Service design for U.S.\u00a0Army medical supply, cutting resupply from months to\u00a0weeks");
     expect(container.textContent).toContain("All three numbers come from my Officer Evaluation Report");
     expect(container.textContent).toContain("Records of how and over what time they were measured were not kept");
@@ -307,7 +311,7 @@ describe("flagship case-study accessibility", () => {
 
   it.each([
     ["en", "#knowunity-prototype", "Say It Back, the 52-second reel", "What the reel shows", "The listening is faked: it can’t hear or grade real speech yet.", "Music only; no narration."],
-    ["es", "#es-knowunity-prototype", "Say It Back, el video de 52 segundos", "Qué muestra el video", "El prototipo, construido con el kit de diseño de Knowunity. La escucha es simulada: todavía no puede oír ni calificar voz real.", "Solo música, sin narración."],
+    ["es", "#es-knowunity-prototype", "Say It Back, el video de 52 segundos", "Qué muestra el video", "La escucha es simulada: todavía no puede oír ni calificar voz real.", "Solo música, sin narración."],
   ])("plays the Knowunity reel only on request, with a text alternative (%s)", async (lang, sectionId, label, summary, caption, note) => {
     mockLang = lang;
     await act(async () => {
@@ -390,7 +394,7 @@ describe("flagship case-study accessibility", () => {
 
     // The badge's own name replaces the old "Design Sprint Badge" wording.
     expect(container.textContent).not.toMatch(/Design Sprint Badge|insignia Design Sprint /);
-    expect(container.textContent).toContain(lang === "en" ? "AI Design Sprinter badge" : "La insignia es la AI Design Sprinter");
+    expect(container.textContent).toContain(lang === "en" ? "AI Design Sprinter badge" : "Insignia AI Design Sprinter");
     // Skill tags stay in the image, not the page text.
     expect(figure.textContent).not.toMatch(/Prompt|Vibe|Figma/i);
   });
@@ -455,7 +459,7 @@ describe("flagship case-study accessibility", () => {
     const text = container.textContent || "";
     // The limits stay on the page: no patient interviews, untested, and the
     // projection is labeled as a different measure from the observed count.
-    ["It is untested, and no patient was interviewed.", "UX Woman is a 7-month, mentor-led UX design accelerator.", "Public data. One number is a forecast and one is a real count, so they don't compare directly.", "Design concept, not an official notice.", "Built, not yet tested."].forEach((phrase) => {
+    ["It is untested, and no patient was interviewed.", "UX Woman is a mentor-led UX design accelerator.", "Public data. One number is a forecast and one is a real count, so they don't compare directly.", "Design concept, not an official notice.", "Built, not yet tested."].forEach((phrase) => {
       expect(text).toContain(phrase);
     });
     // Dropped at Hillary's direction (2026-11-09): the adjacent HR interview and the five pretotypes.
@@ -544,7 +548,8 @@ describe("flagship case-study accessibility", () => {
     const next = container.querySelector("#grove-decisions");
     expect(next?.querySelector('.rp-phase__track[aria-label="Functional prototype · Phase 2 of 3"]')).not.toBeNull();
     expect(next?.querySelector(".rp-disclaimer")).toBeNull();
-    expect(next?.textContent).toContain("functional prototype in Phase 2 of 3");
+    // The full honesty line is in the hero; the phase bar and its label carry it here.
+    expect(container.querySelector("#grove-start")?.textContent).toContain("functional prototype in Phase 2 of 3");
     expect(next?.textContent).toContain("What the three phases mean");
   });
 
@@ -935,7 +940,7 @@ describe("flagship case-study accessibility", () => {
       const section = container.querySelector("#msk-redesigns")!;
       expect(section.querySelector("h2")?.textContent).toBe("I found the same problem in two more places.");
       expect(section.querySelector(".rp-lede")?.textContent).toBe(
-        "My reading of the pattern: both were written for someone other than the person using them. Clinicians got legal language. New hires got one course for every skill level.",
+        "My reading of the pattern: both were written for someone other than the person using them.",
       );
       expect(section.textContent).not.toContain("couldn’t tell what to do next");
       expect(Array.from(section.querySelectorAll(".fp-redesigns__source"), (p) => p.textContent)).toEqual([

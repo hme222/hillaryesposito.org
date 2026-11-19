@@ -41,7 +41,7 @@ const ROLE_METHODS: Record<string, { term: string; body: string }> = {
   },
   "02": {
     term: "Writing for the person doing the task",
-    body: "No certificate for this one. I rewrote legal language for the people who had to follow it.",
+    body: "No certificate for this one.",
   },
   "03": {
     term: "Training & Facilitation (ATD, the Association for Talent Development) · mapping how work really happens",
@@ -70,7 +70,7 @@ const ROLES = [
 const SURVIVED: { fact: string; what: React.ReactNode }[] = [
   {
     fact: "Filing to the chart",
-    what: "Added to the live system. I saw it there while training new employees.",
+    what: "Added to the live system.",
   },
   { fact: "CPR course rewrite", what: "The whole department certified a month before the original deadline. No extension needed." },
   // "Clinician onboarding — still in use after three leadership transitions"
@@ -141,7 +141,7 @@ export default function FlagshipMSK() {
           <div className="rp-clearing">
             <h1 className="rp-h1">Service design project for Memorial <span className="rp-keep">Sloan Kettering</span> Cancer{"\u00a0"}Center</h1>
             <p className="rp-sub">
-              As an office coordinator, I mapped how messages from the patient portal, the website patients use to write to their care team, moved through four departments, and I proposed a fix. The messages didn’t save to the patient’s electronic medical record (EMR), the digital chart. So I printed them, and we waited for them to be scanned in. I suggested a Send to EMR button so they would file straight to the record. <b>The hospital’s information technology (IT) and user experience (UX) teams built the real version.</b>
+              As an office coordinator, I mapped how messages from the patient portal, the website patients use to write to their care team, moved through four departments. The messages didn’t save to the patient’s electronic medical record (EMR), the digital chart. So I printed them, and we waited for them to be scanned in. I suggested a Send to EMR button so they would file straight to the record. <b>The hospital’s information technology (IT) and user experience (UX) teams built the real version.</b>
             </p>
             {/* The "Role route" row (her career path) was cut 2026-11-15 at
                 Hillary's direction: Lex asked for her role on this project,
@@ -177,11 +177,10 @@ export default function FlagshipMSK() {
               claim (the former "Evidence boundary" aside). */}
           {/* The word-for-word step lists were cut 2026-11-17 (repetition cut):
               both journey pictures already list the six and five steps as text. */}
-          <p className="rp-lede rp-reveal">That was four departments: clinical, IT, operations, and health information management (HIM), the team that scans paper into charts. I worked with leadership on the rollout. I walked IT and UX through every decision in a full pitch, so the change was ready to build once it was funded.</p>
-          <p className="rp-lede rp-reveal">On screen, the change was one fewer step. Behind the scenes, one whole department no longer had to handle the message.</p>
+          <p className="rp-lede rp-reveal">Four departments: clinical, IT, operations, and health information management (HIM). I worked with leadership on the rollout. I walked IT and UX through every decision in a full pitch.</p>
           <CaseMore label="Where this comes from">
             <div className="rp-note rp-reveal">
-              <p>I redrew these pictures from memory of my own notes on how the work was done. They hold no patient data, no exported records, and no copies of the real software’s screens. My counts from watching the work were lost, so I make no claim about how often this happened.</p>
+              <p>I redrew these pictures from memory of my own notes. They hold no patient data, no exported records, and no copies of the real software’s screens.</p>
             </div>
           </CaseMore>
 
@@ -214,7 +213,7 @@ export default function FlagshipMSK() {
         id="msk-decisions"
         languageAnchor="msk-decisions"
         title="I set four rules for how the button behaves."
-        intro="I wrote these four rules for this portfolio version. They are not MSK’s actual design."
+        intro="I wrote these for this portfolio version. They are not MSK’s actual design."
         // Restates the three measures under "What I would have measured" below.
         introNote={MSK_COPY.en.decisions.check}
         steps={DECISIONS}
@@ -263,7 +262,7 @@ export default function FlagshipMSK() {
         <section className="rp-section rp-override" id="msk-systems" data-language-anchor="msk-systems">
           <div className="rp-wrap">
             <h2 className="rp-title">I did the jobs before I redesigned them.</h2>
-            <p className="rp-lede">You don’t spot a problem like this from outside. I had already done three jobs inside it.</p>
+            <p className="rp-lede">You don’t spot a problem like this from outside.</p>
             <ol className="fp-roleRail rp-reveal" aria-label="Three roles at MSK, in order" data-evidence="true" style={{ "--rp-reveal-stagger": "0ms" } as React.CSSProperties}>
               {ROLES.map((r) => {
                 const method = ROLE_METHODS[r.n];

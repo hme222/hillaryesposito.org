@@ -123,7 +123,7 @@ export default function RecruiterPanel() {
               <li>
                 <button type="button" className="recruiter-panel__project" onClick={() => go("/case-study/knowunity")}>
                   <strong>2.5-week design sprint with an edtech startup, run by Yummy Labs</strong>
-                  <span className="recruiter-panel__project-proof">I designed and coded four interaction decisions in 2.5 weeks; the listening is faked: it can’t understand speech.</span>
+                  <span className="recruiter-panel__project-proof">I designed and coded four interaction decisions; the listening is faked: it can’t understand speech.</span>
                 </button>
               </li>
             </ul>

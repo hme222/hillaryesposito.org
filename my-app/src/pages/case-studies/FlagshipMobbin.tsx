@@ -28,16 +28,16 @@ const CHAPTERS: CaseStudyChapter[] = [
 ];
 
 const APPS: ScreenSequenceItem[] = [
-  { name: "Kikoff", category: "Credit building · a result after every step", image: "/assets/mobbin/kikoff.jpg", alt: "Kikoff credit-building app screen, one of the screens I captured", summary: "The sign-up is long, but each step pays you back with a score, a plan, or a sign that it worked." },
-  { name: "Polymarket", category: "Betting on real events · odds and risk shown first", image: "/assets/mobbin/polymarket.jpg", alt: "Polymarket home screen listing live games, each team with a percentage chance", summary: "Before anyone puts money down, the odds, the rules for how a bet pays out, and the risk stay on screen." },
-  { name: "Discover", category: "Banking · familiar screens, easy-to-find fine print", image: "/assets/mobbin/discover.jpg", alt: "Discover welcome screen with a Login button and links to register, contact support, or open an account", summary: "The app looks like the bank and card apps people already know. The fine print is easy to find." },
+  { name: "Kikoff", category: "Credit building", image: "/assets/mobbin/kikoff.jpg", alt: "Kikoff credit-building app screen, one of the screens I captured", summary: "The sign-up is long, but each step pays you back with a score, a plan, or a sign that it worked." },
+  { name: "Polymarket", category: "Betting on real events", image: "/assets/mobbin/polymarket.jpg", alt: "Polymarket home screen listing live games, each team with a percentage chance", summary: "Before anyone puts money down, the odds, the rules for how a bet pays out, and the risk stay on screen." },
+  { name: "Discover", category: "Banking", image: "/assets/mobbin/discover.jpg", alt: "Discover welcome screen with a Login button and links to register, contact support, or open an account", summary: "The app looks like the bank and card apps people already know. The fine print is easy to find." },
 ];
 
 const STEPS = [
   { n: "01", title: "Screenshot the whole task", body: "Use the app like a real person would. Keep the blank screens, the error messages, and the screens that only make sense in order.", note: "In order, not a pile" },
   { n: "02", title: "Cut what won’t help", body: "Marketing welcome screens didn’t get the same space as signing up, paying, managing an account, or getting back into one.", note: "Real tasks in, splash screens out" },
   { n: "03", title: "Use Mobbin’s words", body: "A screen is easy to find only when its label matches what another designer types into search, not the words I happen to like.", note: "Mobbin’s words meant fewer redos" },
-  { n: "04", title: "Write for someone I’ll never meet", body: "Each note has to say what the screen does, where it comes in the app, and why it matters, so nobody needs the app open.", note: "Makes sense with the app closed" },
+  { n: "04", title: "Write for someone I’ll never meet", body: "Each note has to say what the screen does, where it comes in the app, and why it matters.", note: "Makes sense with the app closed" },
 ];
 
 // Which documented app sits beside each decision. Index into APPS. The pairing
@@ -85,7 +85,7 @@ export default function FlagshipMobbin() {
           <div className="rp-clearing">
             <h1 className="rp-h1">Freelance documentation of three finance apps for{"\u00a0"}Mobbin</h1>
             <p className="rp-sub">
-              Mobbin is a website where designers look up screenshots of real apps for ideas. As a freelancer, I spent four months on three apps: Kikoff, Polymarket, and Discover. I took screenshots of <b>200+ screens per app</b> and labeled each one by task, like logging in, so designers can find it. I did not design these apps or Mobbin.
+              Mobbin is a website where designers look up screenshots of real apps for ideas. As a freelancer, I spent four months on three apps: Kikoff, Polymarket, and Discover. I did not design these apps or Mobbin.
             </p>
           </div>
         </div>
@@ -169,7 +169,7 @@ export default function FlagshipMobbin() {
 
       <section className="rp-section">
         <div className="rp-wrap rp-close">
-          <h2>After 200+ screens per app, I notice what makes an app feel safe to trust.</h2>
+          <h2>Now I notice what makes an app feel safe to trust.</h2>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
         </div>
       </section>

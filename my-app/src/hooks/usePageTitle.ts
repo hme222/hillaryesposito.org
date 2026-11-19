@@ -31,7 +31,7 @@ const ROUTE_META: Array<{ match: RegExp; description: string; image: string }> =
   {
     match: /\/case-study\/ux-woman$/,
     description:
-      "A healthcare research case study: six interviews with clinic and insurer staff led to one public New York Medicaid letter and a guide that starts from it. Two hypotheses, two planned tests, nothing tested with readers yet.",
+      "Six interviews with clinic and insurer staff led to one public New York Medicaid letter and a guide that starts from it. Two hypotheses, two planned tests, nothing tested with readers yet.",
     image: "/assets/about/now.jpg",
   },
   {

@@ -84,7 +84,7 @@ const MIDTERM: CaseStudyReelData = {
     "Who might pay",
     "From a letter to a next step",
   ],
-  transcriptNote: "Narrated, with captions. These are the slide titles, in order.",
+  transcriptNote: "These are the slide titles, in order.",
 };
 
 export default function FlagshipUxWoman() {
@@ -165,7 +165,7 @@ export default function FlagshipUxWoman() {
       <section className="rp-section" id="uxwoman-problem" data-language-anchor="uxwoman-problem" data-evidence="true">
         <div className="rp-wrap">
           <h2 className="rp-title">Miss the reply, and you can lose coverage.</h2>
-          <p className="rp-lede">Medicaid is public health insurance. The letter tells people about a new rule: some must show work hours or income, or show they don't have to. If they don't reply in time, they can lose their coverage.</p>
+          <p className="rp-lede">The letter tells people about a new rule: some must show work hours or income, or show they don't have to.</p>
           <dl className="fp-letterStats rp-reveal">
             <div>
               <dt>Forecast, New York</dt>
@@ -182,7 +182,7 @@ export default function FlagshipUxWoman() {
 
       <section className="rp-section" id="uxwoman-research" data-language-anchor="uxwoman-research" data-evidence="true">
         <div className="rp-wrap">
-          <h2 className="rp-title">I interviewed six staff members and heard six themes.</h2>
+          <h2 className="rp-title">I heard six themes.</h2>
           {/* Hillary's own line linking the themes to the guide (2026-11-16, R7). */}
           <p className="rp-lede">While learning about denials and prior authorizations (when insurance has to approve care first), I saw that some Medicaid rule changes could leave patients without coverage within the next year. I want to help the staff who guide patients through those changes.</p>
           {/* Interview-sourced human line (Better Stories pass, 2026-11-10); moved here from the hero 2026-11-17. */}
@@ -197,7 +197,7 @@ export default function FlagshipUxWoman() {
             ))}
           </ol>
           <CaseMore label="Who I interviewed, and what I did not hear">
-            <p>UX Woman is a 7-month, mentor-led UX design accelerator. For each interview, I grouped my notes by topic on one board. I also used six public sources. Nobody is named, and I collected no private health information.</p>
+            <p>UX Woman is a mentor-led UX design accelerator. For each interview, I grouped my notes by topic on one board. I also used six public sources. Nobody is named, and I collected no private health information.</p>
             <p>I mapped a patient's path step by step. I built it from the public rules and one sample letter, not from patients, so the feelings and chances to help on it are guesses. My map of clinic staff work blends several roles. Two of the people behind it work outside New York.</p>
           </CaseMore>
         </div>
@@ -205,7 +205,7 @@ export default function FlagshipUxWoman() {
 
       <section className="rp-section" id="uxwoman-findings" data-language-anchor="uxwoman-findings" data-evidence="true">
         <div className="rp-wrap">
-          <h2 className="rp-title">I made two testable guesses about the letter.</h2>
+          <h2 className="rp-title">I made two testable guesses.</h2>
           <div className="fp-hypotheses rp-reveal">
             <article>
               <span>Guess 1 · about the letter</span>
@@ -227,7 +227,7 @@ export default function FlagshipUxWoman() {
 
       <section className="rp-section" id="uxwoman-guide" data-language-anchor="uxwoman-guide" data-evidence="true">
         <div className="rp-wrap">
-          <h2 className="rp-title">I designed a guide that starts from the letter in your hand.</h2>
+          <h2 className="rp-title">The guide.</h2>
           <div className="fp-guideScreens rp-reveal">
             {GUIDE_SCREENS.map((screen) => (
               <figure key={screen.src}>
