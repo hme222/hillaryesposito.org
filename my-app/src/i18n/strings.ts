@@ -71,8 +71,6 @@ const en = {
 
   // ── Home: hero ──
   "home.status": "Open to work",
-  // Counts only (no company names), exported from the owner's private job tracker.
-  "home.search": "{count} applications sent in {year}",
   // Hero is about Hillary, not a project (portfolio feedback, 2026-11-12):
   // what she is and where she works, with no case-study detail.
   "home.riso.heroTitle": "UX designer and researcher for\u00a0healthcare and internal\u00a0tools.",
@@ -269,7 +267,6 @@ const es: Partial<Record<StringKey, string>> = {
 
   // ── Home: hero ──
   "home.status": "Disponible para trabajar",
-  "home.search": "{count} solicitudes enviadas en {year}",
   "home.riso.heroTitle": "Diseñadora UX e investigadora para herramientas\u00a0de\u00a0salud y de uso\u00a0interno.",
   "home.riso.heroLead":
     "Pasé seis años en operaciones de atención oncológica y más de 13 en el Ejército. También diseño apps de consumo, y soy bilingüe en inglés y español.",
