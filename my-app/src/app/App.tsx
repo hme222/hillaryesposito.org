@@ -9,6 +9,7 @@ import { Lang, translate } from "../i18n/strings";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import RecruiterPanel from "../components/RecruiterPanel";
+import PhoneZoom from "../components/PhoneZoom";
 import AskDialog from "../components/ask/AskDialog";
 import { ASK_ENABLED } from "../components/ask/askEnabled";
 import { Analytics } from "@vercel/analytics/react";
@@ -73,6 +74,7 @@ export default function App() {
           </div>
 
           <RecruiterPanel />
+          <PhoneZoom />
           {/* After RecruiterPanel on purpose: when its "Ask a question" link
               fires, the panel's close effect runs before this dialog opens. */}
           {ASK_ENABLED && <AskDialog />}

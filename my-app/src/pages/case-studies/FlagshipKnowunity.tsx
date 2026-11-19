@@ -7,6 +7,7 @@ import CaseStudyCredential, { CaseStudyCredentialData } from "../../components/f
 import CaseStudyReel, { CaseStudyReelData } from "../../components/flagship/CaseStudyReel";
 import DecisionStory from "../../components/flagship/DecisionStory";
 import EvidenceField from "../../components/flagship/EvidenceField";
+import ResultLine from "../../components/flagship/ResultLine";
 import CaseMore from "../../components/CaseMore";
 import CartoField from "../../components/riso/CartoField";
 import RisoDefs from "../../components/riso/RisoDefs";
@@ -48,10 +49,10 @@ const CHAPTERS: CaseStudyChapter[] = [
 ];
 
 const FRAMES = [
-  { src: "/assets/knowunity/say-it-back-pass.webp", alt: "Pass screen quoting the student’s definition back" },
-  { src: "/assets/knowunity/say-it-back-recap.webp", alt: "Session recap leading with Practice what I missed" },
-  { src: "/assets/knowunity/say-it-back-mic-primer.webp", alt: "Mic permission sheet opening over the first question" },
-  { src: "/assets/knowunity/say-it-back-second-miss.webp", alt: "Second-miss card headed One more go, then I’ll show you the answer" },
+  { src: "/assets/knowunity/say-it-back-pass.webp", alt: "Correct-answer screen showing the student’s own definition under “You said”" },
+  { src: "/assets/knowunity/say-it-back-recap.webp", alt: "End-of-session summary, “You can say 3 of 4 back without help,” with a Practice what I missed button" },
+  { src: "/assets/knowunity/say-it-back-mic-primer.webp", alt: "Panel asking to turn on the mic, with a Type instead option, opened over a chemistry question" },
+  { src: "/assets/knowunity/say-it-back-second-miss.webp", alt: "Screen after a second wrong answer: “One more go, then I’ll show you the answer,” with a fill-in-the-blank hint" },
 ];
 
 // The sizzle reel: 1280×720, 52s, H.264 with a music bed and no narration,
@@ -66,7 +67,7 @@ const REEL: CaseStudyReelData = {
   captionsSrc: REEL_CAPTIONS,
   kicker: "The 52-second reel",
   label: "Say It Back, the 52-second reel",
-  caption: "The prototype on Knowunity’s kit. Recall is mocked: no real speech recognition.",
+  caption: "The prototype, built from Knowunity’s design kit. The listening is faked: it can’t hear or grade real speech yet.",
   transcriptSummary: "What the reel shows",
   transcript: [
     "Knowie points the way in",
@@ -92,14 +93,14 @@ const BADGE: Omit<CaseStudyCredentialData, "newTabLabel"> = {
 const STEPS = [
   {
     n: "01",
-    title: "Echo the words back",
+    title: "Show their words back",
     body: "When a student gets it right, Knowie shows what they said. My guess, untested with students: seeing your own words proves you remember them.",
     note: "Proof, not praise",
   },
   {
     n: "02",
-    title: "Retry when ready",
-    body: "A missed word used to come back at the end on its own. Now the summary starts with “Practice what I missed,” and the student picks when.",
+    title: "Retry when they’re ready",
+    body: "A missed question used to come back by itself at the end. Now the summary offers “Practice what I missed,” and the student picks when.",
     note: "The student chooses the second try",
   },
   {
@@ -111,8 +112,8 @@ const STEPS = [
   {
     n: "04",
     title: "Say what happens after each miss",
-    body: "One miss gets a hint, and two get a fill-in-the-blank hint. On the third miss, Knowie says it will show the answer, then shows it.",
-    note: "Judge generously, out loud",
+    body: "First miss: a hint. Second: a fill-in-the-blank hint, plus “One more go, then I’ll show you the answer.” Third: the answer.",
+    note: "Every miss says what comes next",
   },
 ];
 
@@ -124,7 +125,7 @@ const STEP_FRAME = [0, 1, 2, 3];
 export default function FlagshipKnowunity() {
   const { lang } = useLanguage();
   const t = useT();
-  usePageTitle("Knowunity: Voice Active Recall Case Study", lang !== "es");
+  usePageTitle("Knowunity: Say It Back Case Study", lang !== "es");
   const rootRef = useRef<HTMLElement>(null);
   useFlagshipReveal(rootRef);
 
@@ -154,9 +155,9 @@ export default function FlagshipKnowunity() {
         <div className="rp-grain" />
         <div className="rp-hero__content">
           <div className="rp-clearing">
-            <h1 className="rp-h1">Their own words are the proof.</h1>
+            <h1 className="rp-h1">2.5-week design sprint with an edtech startup, run by Yummy{"\u00a0"}Labs</h1>
             <p className="rp-sub">
-              In a 2.5-week design sprint run by Yummy Labs, I worked alone on a real brief from Knowunity, a study app. I designed and built a prototype where a student explains an idea out loud, and Knowie, the app’s mascot, shows their own words back when they get it right. <b>It doesn’t hear or grade real speech yet, and no student has tried it.</b>
+              In a 2.5-week design sprint (a timed design challenge) run by Yummy Labs, I worked alone on a real assignment from Knowunity, a study app. I designed and built a working prototype: a student explains an idea out loud, and when they get it right, Knowie, the app’s mascot, shows them their own words. <b>It can’t hear or grade real speech yet, and no student has tried it.</b>
             </p>
             <div className="rp-hero__ctas">
               <a className="rp-cta" href={PROTOTYPE_URL} target="_blank" rel="noopener noreferrer">
@@ -173,7 +174,7 @@ export default function FlagshipKnowunity() {
             <div className="fp-capture fp-capture--2">
               <img
                 src={FRAMES[0].src}
-                alt="Say It Back pass screen: Knowie quotes the student’s own definition of formal charge back as the result"
+                alt="Say It Back correct-answer screen: under “You said,” Knowie shows the student’s own definition of formal charge"
                 width={CAPTURE_W}
                 height={CAPTURE_H}
                 decoding="async"
@@ -189,13 +190,18 @@ export default function FlagshipKnowunity() {
         </div>
       </header>
 
+      <ResultLine
+        eyebrow="What I built"
+        text="Students explain an idea out loud, and when they get it right, Knowie shows them their own words."
+      />
+
       <section className="rp-section rp-override" id="knowunity-brief" data-language-anchor="knowunity-brief" data-evidence="true">
         <div className="rp-wrap">
-          <h2 className="rp-title">Seeing the material is not knowing it.</h2>
-          <p className="rp-lede">After studying, a student has seen the material, but hasn’t shown they can remember it on their own. Quizzes check whether you recognize an answer, and nothing asks you to say it. Knowunity wanted a moment where the student feels, “I actually know this now.”</p>
-          <CaseMore label="What the brief asked for">
-            <p className="rp-body">The goals, in words: more students who see the step start it, and more of those who start it finish it.</p>
-            <p className="rp-body">Mid-sprint, Knowunity shipped a light beta. The brief said to treat it as one team’s first pass and find where the stronger version is, not copy it.</p>
+          <h2 className="rp-title">Knowunity wanted students to prove they remember.</h2>
+          <p className="rp-lede">After studying, a student has seen the material, but hasn’t shown they can remember it on their own. The app’s practice steps check if you can spot or use the right answer. They don’t ask you to explain it. Knowunity wanted a moment where the student feels, “I actually know this now.”</p>
+          <CaseMore label="What Knowunity asked for">
+            <p className="rp-body">Two goals: more of the students who see the new step start it, and more of those who start it finish.</p>
+            <p className="rp-body">Partway through the sprint, Knowunity released its own simple test version (a beta). The assignment said to treat it as one team’s first try and find a stronger version, not copy it.</p>
           </CaseMore>
         </div>
       </section>
@@ -204,10 +210,10 @@ export default function FlagshipKnowunity() {
           show the final first, then the journey). */}
       <section className="rp-section" id="knowunity-prototype" data-language-anchor="knowunity-prototype">
         <div className="rp-wrap">
-          <h2 className="rp-title">A working prototype, not a deck.</h2>
+          <h2 className="rp-title">I built a version you can tap through, not slides.</h2>
           <div className="fp-workSplit rp-reveal" data-evidence="true">
-            <article><span>Knowunity supplied</span><h3>The brand and the parts</h3><p>Knowie, the Greed font, their Figma kit, and access to the live app and the beta.</p></article>
-            <article><span>I did</span><h3>The flows, the decisions, the direction</h3><p>Next.js prototype, 43 routes, 390px dark mode, plus a Storybook catalog built on their kit. Claude Code wrote most of the code from my specs.</p></article>
+            <article><span>Knowunity gave me</span><h3>Their brand and design parts</h3><p>Knowie, the Greed font, their design kit in Figma (a design tool), and access to the live app and the beta.</p></article>
+            <article><span>I did</span><h3>The screens, the choices, and the build</h3><p>A Next.js prototype with 43 pages, phone-sized (390px wide), in dark mode. Plus a Storybook, a catalog of its parts, built on their kit. Claude Code, an AI coding tool, wrote most of the code from my written plans.</p></article>
           </div>
           <CaseStudyReel reel={REEL} />
           <div className="rp-hero__ctas">
@@ -215,10 +221,10 @@ export default function FlagshipKnowunity() {
               <span className="rp-ext">Try the working prototype</span><span className="sr-only">{t("a11y.newTab")}</span>
             </a>
             <a className="rp-cta rp-cta--ghost" href={STORYBOOK_URL} target="_blank" rel="noopener noreferrer">
-              <span className="rp-ext">Open the Storybook</span><span className="sr-only">{t("a11y.newTab")}</span>
+              <span className="rp-ext">Open the parts catalog (Storybook)</span><span className="sr-only">{t("a11y.newTab")}</span>
             </a>
           </div>
-          <p className="fp-knowunityMockNote">How long you hold the mic decides the result. Question 2's first try is scripted to mishear so that state is always seen.</p>
+          <p className="fp-knowunityMockNote">In the prototype, how long you hold the mic decides the result. On question 2, the first try always “mishears” you, so you can see that screen.</p>
         </div>
       </section>
 
@@ -234,11 +240,11 @@ export default function FlagshipKnowunity() {
         </summary>
         <section className="rp-section">
           <div className="rp-wrap">
-            <p className="rp-kicker fp-constraintKicker">What did not move</p>
+            <p className="rp-kicker fp-constraintKicker">Rules that never changed</p>
             <dl className="fp-constraintAnnotations rp-reveal">
-              <div><dt>Voice in, text out</dt><dd>Knowie never speaks.</dd></div>
-              <div><dt>Push to talk</dt><dd>The student starts and stops the recording. No guessing when they’re done.</dd></div>
-              <div><dt>Never trap the student</dt><dd>Every required action has a way out, including for someone who can’t speak right now.</dd></div>
+              <div><dt>Voice in, text out</dt><dd>The student talks. Knowie only answers in text.</dd></div>
+              <div><dt>Push to talk</dt><dd>The student starts and stops the recording, so the app never guesses when they’re done.</dd></div>
+              <div><dt>Always a way out</dt><dd>Anything the student has to do has another way through, like typing when they can’t talk right now.</dd></div>
             </dl>
           </div>
         </section>
@@ -247,8 +253,8 @@ export default function FlagshipKnowunity() {
       <div data-evidence="true"><DecisionStory
         id="knowunity-decisions"
         languageAnchor="knowunity-decisions"
-        title="The student does the proving, not Knowie."
-        intro="Nobody can make a student explain out loud, so each of these four changes makes it easier to keep going."
+        title="I made the student do the proving, not Knowie."
+        intro="You can’t force a student to explain out loud. So each of these four changes makes it easier to keep going."
         steps={STEPS}
         // Same stacked crossfade as Mobbin: every capture is mounted in one
         // fixed-ratio frame and the active step turns one on, so the swap has
@@ -280,24 +286,24 @@ export default function FlagshipKnowunity() {
       <div data-evidence="true"><EvidenceField
         id="knowunity-outcomes"
         languageAnchor="knowunity-outcomes"
-        title="A badge, a review, and a mock that still needs students."
-        intro="Yummy Labs awarded the entry its AI Design Sprinter badge and Knowunity reviewed the work. Next: a speech-to-text build in front of students."
-        disclaimer="Design-sprint prototype · recall is mocked: no speech recognition · no student testing · not a shipped Knowunity feature"
+        title="Yummy Labs gave me a badge, and Knowunity reviewed it."
+        intro="The badge is Yummy Labs’ AI Design Sprinter badge. Next: a version that turns real speech into text, in front of students."
+        disclaimer="Design-sprint prototype · the listening is faked: it can’t understand speech · not tested with students · not part of the real Knowunity app"
         metrics={[
-          { tag: "Build", n: "43", label: "routes in the working prototype, every screen reached by tapping, none by typing a URL" },
-          { tag: "Sprint", n: "2.5", label: "weeks, solo, on Knowunity’s brief and component kit" },
+          { tag: "Build", n: "43", label: "pages in the working prototype, each reached by tapping, not by typing a web address" },
+          { tag: "Sprint", n: "2.5", label: "weeks, working alone, on Knowunity’s assignment and design kit" },
         ]}
         aside={<CaseStudyCredential credential={{ ...BADGE, newTabLabel: t("a11y.newTab") }} />}
       /></div>
 
       <section className="rp-section">
         <div className="rp-wrap rp-close">
-          <h2>I prototype to find the next test.</h2>
+          <h2>I build working versions to learn what to test next.</h2>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
         </div>
       </section>
 
-      <Link className="rp-next" to="/case-study/logistics"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Medical logistics</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
+      <Link className="rp-next" to="/case-study/grove"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">FloraGrove</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
     </main>
   );
 }

@@ -77,13 +77,13 @@ describe("healthcare product designer hiring path", () => {
     const selected = labels.find((label) => label.textContent === "Selected work")?.closest("section")!;
 
     expect(Array.from(selected.querySelectorAll("strong"), (item) => item.textContent)).toEqual([
-      "MSK · A filing queue replaced a four-department paper detour",
-      "Grove · Twelve features became three",
-      "Knowunity · The student’s own words are the proof",
+      "Service design project for Memorial Sloan Kettering Cancer Center",
+      "Healthcare research based on changing Medicaid requirements",
+      "2.5-week design sprint with an edtech startup, run by Yummy Labs",
     ]);
     expect(labels.some((label) => label.textContent === "Supporting evidence")).toBe(false);
-    expect(selected.textContent).toContain("One test with five people and a 37-person survey");
-    expect(selected.textContent).toContain("speech recognition remains mocked");
+    expect(selected.textContent).toContain("Six interviews with clinic and insurer staff");
+    expect(selected.textContent).toContain("the listening is faked");
     expect(selected.querySelector(".recruiter-panel__allWork")?.textContent).toContain("See all work");
 
     const resume = dialog.querySelector<HTMLAnchorElement>('a[href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"]');
@@ -102,11 +102,11 @@ describe("healthcare product designer hiring path", () => {
       (row) => row.getAttribute("href"),
     );
     expect(workRows).toEqual([
-      "/case-study/ux-woman",
-      "/case-study/grove",
       "/case-study/msk",
-      "/case-study/logistics",
+      "/case-study/ux-woman",
       "/case-study/knowunity",
+      "/case-study/grove",
+      "/case-study/logistics",
       "/case-study/mobbin",
       "https://hme222.github.io/MTA_Accessibility_Trip_Planning/",
     ]);

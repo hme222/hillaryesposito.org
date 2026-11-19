@@ -1383,7 +1383,6 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .riso-home .rp-clearing { max-width: 44ch; }
 .rp-headshot { width: min(340px, 78%); aspect-ratio: 4/5; border-radius: var(--r-plate); overflow: hidden; border: 1px solid var(--hair);
   box-shadow: 0 2px 6px rgba(0,0,0,.12), 0 30px 60px -20px rgba(0,0,0,.35); transition: transform .45s cubic-bezier(.2,.8,.2,1); }
-.rp-hero__media:hover .rp-headshot { transform: translateY(-6px); }
 .rp-headshot img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .riso-home .rp-hero__media { background: transparent; }
 .riso-home .rp-hero__media .rp-headshot {
@@ -1400,9 +1399,6 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 }
 .riso-home .rp-hero__media .rp-headshot img {
   filter: saturate(.78) contrast(1.04);
-}
-.riso-home .rp-hero__media:hover .rp-headshot {
-  transform: translateY(3%) rotate(.7deg);
 }
 .dark-mode .riso-home .rp-hero__media .rp-headshot { mix-blend-mode: screen; opacity: .86; }
 
@@ -2632,7 +2628,6 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
     width: min(330px, 82%);
     transform: translateY(9%) rotate(.7deg);
   }
-  .riso-home .rp-hero__media:hover .rp-headshot { transform: translateY(9%) rotate(.7deg); }
   .spanish-riso-case .rp-hero__media { display: none; }
 
   /* Direct entrants need the project name, Hillary's contribution, and the
@@ -4015,7 +4010,10 @@ body:has(.riso-home) .riso-home .rp-nameSplash__word {
 }
 .rp-index__n { color: var(--muted); font-weight: 800; font-size: 1.25rem; line-height: 1; }
 .rp-index__main { min-width: 0; }
-.rp-index__title { display: block; font-weight: 800; font-size: clamp(1.5rem, 3vw, 2.25rem); line-height: 1.1; letter-spacing: -.015em; text-wrap: balance; }
+/* Work titles are project labels (2026-11-19), longer than the old outcome
+   lines, so they take the card-heading size: at the old display size
+   "Medicaid requirements" split mid-word in the 370px column at 1440. */
+.rp-index__title { display: block; font-weight: 800; font-size: var(--ts-heading); line-height: 1.1; letter-spacing: -.015em; text-wrap: balance; }
 .rp-index__sub { display: block; margin-top: .35rem; color: var(--ink-2); font-size: var(--ts-small); line-height: 1.4; }
 .rp-index__desc {
   display: block; max-height: 0; overflow: hidden; opacity: 0; color: var(--muted); font-size: var(--ts-small); line-height: 1.45; max-width: 62ch;
@@ -4286,7 +4284,6 @@ body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-g
 /* Nothing that can't be clicked moves on hover: GSAP owns these transforms,
    and a CSS hover lift both fought it and implied a link. */
 .rp-headshot, .rp-device, .rp-strip__frame, .rp-device img, .rp-strip__frame img { transition: none !important; }
-.rp-hero__media:hover .rp-headshot, .riso-home .rp-hero__media:hover .rp-headshot,
 .rp-hero__media:hover .rp-device, .rp-split__media:hover .rp-device,
 .rp-hero__media:hover .rp-device img, .rp-split__media:hover .rp-device img,
 .rp-strip__item:hover .rp-strip__frame, .rp-strip__item:hover .rp-strip__frame img { transform: none !important; }
@@ -4334,63 +4331,131 @@ body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-g
   .flagship-page .fp-heroArt--msk .msk-dashboard-mockup__row { grid-template-columns: minmax(0, 1fr) minmax(0, .9fr) max-content; }
 }
 
-/* About: one screen, no scroll. Bio left, looping photos right. --about-chrome is
-   the space the site footer and floating nav take, so main fills exactly the rest.
-   min-height (not height) so 200% zoom and short windows scroll instead of clipping. */
-.about-page.about-stage { --about-chrome: 165px; min-height: calc(100svh - var(--about-chrome)); display: grid; gap: 2rem;
-  align-items: center; padding: 5rem var(--sp-gutter) 1.25rem; max-width: 1180px; margin: 0 auto; background: transparent; }
-.about-stage__hook { font-family: var(--display); font-weight: 800; letter-spacing: -.015em; line-height: 1.08;
-  font-size: var(--ts-h2); margin: 0 0 1.1rem; text-wrap: balance; max-width: 22ch; }
-.about-stage__text p { max-width: 50ch; margin: 0 0 .9rem; font-size: var(--ts-body); line-height: 1.55; }
-.about-stage__eyebrow { margin: 0 0 .5rem; font-family: var(--label); font-size: var(--ts-small); letter-spacing: .08em;
-  text-transform: uppercase; color: var(--ink-2); }
-.about-stage__show { min-width: 0; }
-.about-stage__frame { position: relative; width: 100%; height: min(55svh, 560px); background: var(--paper-2);
-  border: 1px solid var(--hair); overflow: hidden; }
-/* Stack of prints (2026-11-17): every photo is a bordered print centred in the
-   frame; the top one sits nearly straight, the ones behind fan out at a tilt. */
-.about-stage__stack { display: grid; grid-template: minmax(0, 1fr) / minmax(0, 1fr); place-items: center; overflow: visible; background: transparent; border: 0; }
-.about-stage__print { grid-area: 1 / 1; margin: 0; box-sizing: border-box; height: 88%; width: auto; max-width: 92%;
-  padding: .55rem .55rem 1.6rem; background: var(--paper); border: 1px solid var(--hair);
-  box-shadow: 0 2px 6px color-mix(in srgb, var(--ink) 12%, transparent), 0 22px 44px -24px color-mix(in srgb, var(--ink) 55%, transparent); }
-.about-stage__print img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.about-stage__print--d0 { z-index: 3; transform: rotate(-1.5deg); cursor: pointer; }
-.about-stage__print--d1 { z-index: 2; transform: translate(7%, 2%) rotate(5deg); }
-.about-stage__print--d2 { z-index: 1; transform: translate(-7%, 3%) rotate(-6deg); }
-.about-stage__print--d3 { z-index: 0; transform: translate(4%, -3%) rotate(2.5deg); }
-.about-stage__print--d4 { z-index: -1; transform: translate(-3%, -2%) rotate(-3deg); }
+/* About: a glass column of text over the site's painted collage, with the photo
+   centered in the open space beside it (a stacked layout on a phone). The glass is the
+   same recipe as the nav dock. --about-chrome is the space the footer and floating nav
+   take. min-height (not height) so 200% zoom and short windows scroll, never clip. */
+.about-page.about-stage {
+  --about-chrome: 165px; --gw: clamp(560px, 50vw, 760px);
+  --glass-bg: color-mix(in srgb, var(--paper) 56%, transparent);
+  --glass-bd: color-mix(in srgb, var(--paper) 45%, var(--hair));
+  --glass-sh: inset 0 1px 0 color-mix(in srgb, #fff 72%, transparent), inset 0 -1px 0 color-mix(in srgb, var(--ink) 7%, transparent), 0 14px 34px -16px color-mix(in srgb, var(--ink) 45%, transparent);
+  position: relative; isolation: isolate; min-height: calc(100svh - var(--about-chrome));
+  display: grid; grid-template-columns: var(--gw) minmax(0, 1fr); gap: 0; align-items: center;
+  max-width: none; margin: 0; padding: 5rem 0 2rem; background: transparent;
+}
+.dark-mode .about-page.about-stage {
+  --glass-bg: color-mix(in srgb, var(--paper) 78%, transparent);
+  --glass-sh: inset 0 1px 0 color-mix(in srgb, #fff 16%, transparent), inset 0 -1px 0 color-mix(in srgb, #000 30%, transparent), 0 14px 34px -16px rgba(0, 0, 0, .7);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .about-page.about-stage { --glass-bg: color-mix(in srgb, var(--paper) 94%, transparent); }
+}
+/* The collage (a real painted-paper asset from /riso), full width behind everything. The
+   component passes it in as --about-collage: this build tool cannot resolve an absolute
+   url() written in a stylesheet. */
+.about-stage::before {
+  content: ""; position: absolute; inset: 0; z-index: -2;
+  background: linear-gradient(color-mix(in srgb, var(--paper) 10%, transparent), color-mix(in srgb, var(--paper) 10%, transparent)), var(--about-collage) 18% 40% / cover;
+}
+.dark-mode .about-stage::before {
+  background: linear-gradient(color-mix(in srgb, var(--paper) 62%, transparent), color-mix(in srgb, var(--paper) 62%, transparent)), var(--about-collage) 18% 40% / cover;
+}
+/* The glass column: full height, flat left edge, square-ish corner like the rest of the site. */
+.about-stage::after {
+  content: ""; position: absolute; z-index: -1; left: 0; top: 0; bottom: 0; width: var(--gw);
+  border-radius: 0 var(--r-plate) var(--r-plate) 0; border-left: 0; background: var(--glass-bg); border: 1px solid var(--glass-bd); box-shadow: var(--glass-sh);
+  -webkit-backdrop-filter: blur(22px) saturate(1.7); backdrop-filter: blur(22px) saturate(1.7);
+}
+.about-stage__text { container-type: inline-size; padding: 0 clamp(28px, 3.4vw, 56px) 0 clamp(36px, 5vw, 80px); }
+/* The headline sizes itself to the column it sits in, so the period never pokes past the glass. */
+.about-stage__hook { font-family: var(--display); font-weight: 800; letter-spacing: -.035em; line-height: .92;
+  font-size: min(7rem, 16.2cqw); margin: 0 0 .4em; white-space: nowrap; max-width: none; font-variation-settings: "opsz" 96; }
+.about-stage:lang(es) .about-stage__hook { font-size: min(7rem, 13.6cqw); }
+.about-stage__text p { max-width: 30ch; margin: 0; font-size: clamp(1.25rem, 2.1vw, 1.75rem); line-height: 1.45; }
+.about-stage__text p + p { margin-top: .9em; }
+.about-stage__show { justify-self: center; width: min(420px, calc(100% - 12vw)); min-width: 0; }
+/* One outlined photo. Photos crossfade; the landscape race photo widens the frame so none of it is cropped. */
+/* A fixed 4:5 well holds the frame, so the wide race photo never changes the height of the column
+   (and the text beside it never slides out from under the pointer). */
+.about-stage__well { width: 100%; aspect-ratio: 4 / 5; display: grid; place-items: center; }
+.about-stage__mat { width: 100%; padding: .55rem; border-radius: calc(var(--r-plate) + 2px); background: var(--glass-bg); border: 1px solid var(--glass-bd); box-shadow: var(--glass-sh);
+  -webkit-backdrop-filter: blur(22px) saturate(1.7); backdrop-filter: blur(22px) saturate(1.7); }
+.about-stage__frame { position: relative; width: 100%; aspect-ratio: 4 / 5; border-radius: var(--r-plate); outline: 1px solid color-mix(in srgb, var(--ink) 16%, transparent); outline-offset: -1px;
+  overflow: hidden; background: var(--paper-2); cursor: pointer; }
+.about-stage__frame.is-wide { aspect-ratio: 4 / 3; }
+.about-stage__frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; }
+.about-stage__frame img.is-on { opacity: 1; }
 @media (prefers-reduced-motion: no-preference) {
-  .about-stage__print { transition: transform .45s var(--ease-out, ease-out); }
+  .about-stage__frame { transition: aspect-ratio .35s cubic-bezier(.3, .9, .3, 1); }
+  .about-stage__frame img { transition: opacity .28s ease; }
 }
-/* Words in the bio that bring their photo up. Quiet until hovered: a dotted
-   coral underline, solid while that photo is on top. */
-.about-stage__cue { display: inline; padding: 0; margin: 0; border: 0; background: none; font: inherit; color: inherit;
-  letter-spacing: inherit; cursor: pointer; text-decoration: underline dotted var(--coral); text-decoration-thickness: 2px;
-  text-underline-offset: .2em; }
-.about-stage__cue:hover, .about-stage__cue.is-showing { text-decoration-style: solid; }
-.about-stage__cue:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
-.about-stage__bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: .6rem; }
-.about-stage__caption { margin: 0; font-size: var(--ts-small); color: var(--ink-2); }
-.about-stage__controls { display: flex; align-items: center; gap: .35rem; }
-.about-stage__controls button { min-width: 44px; min-height: 44px; border: 1px solid var(--hair); background: var(--paper);
-  color: var(--ink); font: inherit; font-size: .875rem; cursor: pointer; }
-.about-stage__controls button:hover { border-color: var(--ink); }
-.about-stage__controls button:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
-.about-stage__count { min-width: 3.2em; text-align: right; font-size: var(--ts-small); color: var(--ink-2); }
-@media (min-width: 900px) {
-  .about-page.about-stage { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 3.5rem; }
+.about-stage__bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .6rem 1rem; margin-top: .9rem; }
+.about-stage__captions { display: grid; min-width: 0; flex: 1 1 12rem; }
+.about-stage__caption { grid-area: 1 / 1; justify-self: start; align-self: start; visibility: hidden; margin: 0; padding: .5rem .8rem; font-size: var(--ts-small); line-height: 1.3; color: var(--ink);
+  background: var(--glass-bg); border: 1px solid var(--glass-bd); box-shadow: var(--glass-sh); border-radius: var(--r-plate);
+  -webkit-backdrop-filter: blur(22px) saturate(1.7); backdrop-filter: blur(22px) saturate(1.7); }
+.about-stage__caption.is-on { visibility: visible; }
+.about-stage__controls { display: flex; align-items: center; gap: .15rem; padding: .3rem .45rem; border-radius: 999px;
+  background: var(--glass-bg); border: 1px solid var(--glass-bd); box-shadow: var(--glass-sh); -webkit-backdrop-filter: blur(22px) saturate(1.7); backdrop-filter: blur(22px) saturate(1.7); }
+.about-stage__controls button { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--ink); cursor: pointer; }
+.about-stage__play { background: var(--ink) !important; color: var(--paper) !important; width: 40px !important; height: 40px !important; margin: 2px 4px 2px 0; }
+.about-stage__controls button:hover:not(.about-stage__play) { background: color-mix(in srgb, var(--ink) 9%, transparent); }
+.about-stage__controls button:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
+.about-stage__rule { width: 1px; height: 22px; margin: 0 .3rem; background: color-mix(in srgb, var(--ink) 20%, transparent); }
+.about-stage__dots { display: inline-flex; align-items: center; gap: 6px; padding: 0 .35rem; }
+.about-stage__dots i { display: block; width: 7px; height: 7px; border-radius: 99px; background: color-mix(in srgb, var(--ink) 28%, transparent); }
+.about-stage__dots i.is-on { width: 20px; background: var(--coral); }
+@media (prefers-reduced-motion: no-preference) { .about-stage__dots i { transition: width .3s cubic-bezier(.3, .9, .3, 1), background-color .3s; } .about-stage__controls button { transition: background-color .2s; } }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .about-stage__word:hover, .about-stage__cue[data-cue="me"]:hover { font-weight: 500; }
 }
+/* Words in the bio that bring their photo up: a solid coral underline, and each one moves
+   the way it sounds. Underline is a background (not text-decoration) so it still shows
+   under the per-letter spans. */
+.about-stage__cue { display: inline-block; position: relative; padding: 0 0 .08em; margin: 0; border: 0; border-radius: 3px; font: inherit; color: inherit;
+  letter-spacing: inherit; cursor: pointer; background: linear-gradient(var(--coral), var(--coral)) left bottom / 100% 2px no-repeat; }
+.about-stage__cue:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.about-stage__ch { display: inline-block; white-space: pre; }
+@media (prefers-reduced-motion: no-preference) {
+  /* The headline uses the Home page's name motion: each word settles from a light weight to
+     extra-bold once on load, and eases lighter on hover. Clicking the name replays it. */
+  @keyframes aboutNameWeight { from { font-weight: 400; } to { font-weight: 800; } }
+  .about-stage__word, .about-stage__cue[data-cue="me"] { animation: aboutNameWeight 1.5s cubic-bezier(.2, .7, .2, 1) backwards; transition: font-weight .35s ease; }
+  .about-stage__word:nth-of-type(2) { animation-delay: .18s; }
+  .about-stage__cue[data-cue="me"] { animation-delay: .36s; }
+  @keyframes aboutNameWeightB { from { font-weight: 400; } to { font-weight: 800; } }
+  .about-stage__cue[data-cue="me"][data-settle="a"] { animation: aboutNameWeight 1.5s cubic-bezier(.2, .7, .2, 1) 0s backwards; }
+  .about-stage__cue[data-cue="me"][data-settle="b"] { animation: aboutNameWeightB 1.5s cubic-bezier(.2, .7, .2, 1) 0s backwards; }
+  /* home-cooked: a short simmer (finite, so a click never leaves it bobbing) */
+  .about-stage__cue[data-cue="cook"]:is(:hover, :focus-visible) .about-stage__ch { animation: aboutBob .42s ease-in-out 3 alternate; animation-delay: calc(var(--i) * 40ms); }
+  @keyframes aboutBob { to { transform: translateY(-.16em); } }
+  /* blooming: the letters swell from regular to bold, one after another */
+  .about-stage__cue[data-cue="plant"] .about-stage__ch { font-variation-settings: "wght" 400; transition: font-variation-settings .55s cubic-bezier(.3, .9, .3, 1) calc(var(--i) * 28ms); }
+  .about-stage__cue[data-cue="plant"]:is(:hover, :focus-visible) .about-stage__ch { font-variation-settings: "wght" 700; }
+  /* Luna: a tail curl through the letters */
+  .about-stage__cue[data-cue="luna"]:is(:hover, :focus-visible) .about-stage__ch { animation: aboutCurl .55s ease-in-out both; animation-delay: calc(var(--i) * 80ms); transform-origin: 50% 100%; }
+  @keyframes aboutCurl { 0%, 100% { transform: none; } 45% { transform: translateY(-.2em) rotate(-12deg); } }
+  /* running: zips off and back in */
+  .about-stage__cue[data-cue="run"]:is(:hover, :focus-visible) { animation: aboutZip .6s cubic-bezier(.5, 0, .3, 1); }
+  @keyframes aboutZip { 0% { transform: none; opacity: 1; } 40% { transform: translateX(1.3em); opacity: 0; } 41% { transform: translateX(-1.3em); opacity: 0; } 100% { transform: none; opacity: 1; } }
+}
+/* Phone and small tablet: the photo first, then the text on its own glass panel. The page
+   scrolls (no cramped one-screen mode, no tiny text). */
 @media (max-width: 899px) {
-  .about-page.about-stage { --about-chrome: 145px; gap: .8rem; padding-top: 4.5rem; padding-bottom: .6rem; }
-  .about-stage__show { order: -1; }
-  .about-stage__frame { height: min(17svh, 200px); }
-  .about-stage__hook { font-size: 1.35rem; margin-bottom: .4rem; }
-  .about-stage__text p { font-size: .9rem; line-height: 1.42; margin-bottom: .5rem; }
+  .about-page.about-stage { --about-chrome: 145px; grid-template-columns: minmax(0, 1fr); gap: 1.1rem; align-items: start; padding: 4.5rem var(--sp-gutter) 2rem; }
+  .about-stage::after { display: none; }
+  .about-stage__show { order: -1; width: min(300px, 76%); }
+  .about-stage__text { padding: 1.5rem 1.4rem 1.6rem; background: var(--glass-bg); border: 1px solid var(--glass-bd); border-radius: var(--r-plate); box-shadow: var(--glass-sh);
+    -webkit-backdrop-filter: blur(22px) saturate(1.7); backdrop-filter: blur(22px) saturate(1.7); }
+  .about-stage__text p { max-width: none; font-size: 1.125rem; line-height: 1.5; }
+  .about-stage__bar { flex-direction: column; align-items: center; margin-top: .7rem; gap: .7rem; }
+  .about-stage__controls { order: -1; }
+  .about-stage__captions { width: 100%; flex: 0 0 auto; justify-items: center; }
+  .about-stage__caption { justify-self: center; text-align: center; max-width: 100%; }
 }
-@media (min-width: 900px) and (max-height: 760px) { .about-stage__text p { line-height: 1.45; margin-bottom: .6rem; } }
-@media (max-width: 520px) { .about-page.about-stage { --about-chrome: 258px; } .about-stage__eyebrow { display: none; } .about-stage__hook { font-size: 1.25rem; } }
 @media (forced-colors: active) {
-  .about-stage__print, .about-stage__controls button { border-color: CanvasText; }
+  .about-stage__frame, .about-stage__controls button { border-color: CanvasText; }
   .about-stage__cue { text-decoration-color: LinkText; }
 }
 
@@ -4520,9 +4585,11 @@ html.cs-chrome .nav-dock__chapters .rp-chapters > span { display: inline; color:
 @media (min-width: 761px) {
   .flagship-page .rp-hero__media.fp-heroArt--fan { padding-block: 0; }
 }
-/* The guide screens already draw their own rounded frame; a second border
-   around them read as a phone inside a phone. */
-.fp-fan--guide > .fp-capture { border: 0; border-radius: 22px; background: transparent; }
+/* The guide screens already draw their own rounded frame. Any border, clip or
+   shadow box around them either doubled it (a phone inside a phone) or shaved
+   the corners off the drawn one, so the picture shows whole and uncropped. */
+.fp-fan--guide > .fp-capture { border: 0; border-radius: 0; overflow: visible; background: transparent; box-shadow: none; }
+.fp-fan--guide > .fp-capture img { object-fit: contain; }
 /* Knowunity is the one flair moment: the fan opens wider and its right phone
    runs off the edge of the screen. Static; no entrance motion. */
 .flagship-page--knowunity .fp-fan { --fan-spread: calc(var(--fan-w) * .67); --fan-shift: calc(var(--fan-w) * .16); }
@@ -4550,3 +4617,51 @@ html.cs-chrome .nav-dock__chapters .rp-chapters > span { display: inline; color:
 /* Minimalism pass (2026-11-17): the UX Woman midterm reads as a supporting
    video, not a second hero, so it sits at reading width. */
 #uxwoman-midterm .rp-reel { max-width: 760px; }
+
+/* ---------- Phone zoom: tap a phone screen to enlarge it (components/PhoneZoom.tsx) ----------
+   Dark in both themes so the screenshot is the brightest thing on screen. The dialog sits at the
+   app root, outside .riso-page, so it uses the app-wide --shell-* tokens, not --ink/--paper. */
+[data-phone-zoom] { cursor: zoom-in; }
+[data-phone-zoom]:focus-visible { outline: 3px solid var(--shell-ink); outline-offset: 4px; }
+.pz-dialog {
+  --pz-bg: var(--shell-ink); --pz-fg: var(--shell-paper);
+  --pz-chip-bg: var(--shell-paper-2); --pz-chip-fg: var(--shell-ink);
+  position: fixed; inset: 0; margin: 0; padding: 0; border: 0;
+  width: 100vw; max-width: none; height: 100dvh; max-height: none;
+  background: var(--pz-bg); color: var(--pz-fg); overflow: hidden;
+}
+.dark-mode .pz-dialog {
+  --pz-bg: var(--shell-paper); --pz-fg: var(--shell-ink);
+  --pz-chip-bg: var(--shell-ink); --pz-chip-fg: var(--shell-paper);
+}
+.pz-dialog::backdrop { background: var(--shell-ink); }
+.pz { position: absolute; inset: 0; display: flex; flex-direction: column; }
+.pz__bar {
+  position: absolute; z-index: 2; top: max(.75rem, env(safe-area-inset-top)); right: max(.75rem, env(safe-area-inset-right));
+  display: flex; align-items: center; gap: .5rem;
+}
+.pz__bar button {
+  min-width: 44px; min-height: 44px; padding: 0 .9rem; cursor: pointer;
+  font: 700 1.4rem/1 var(--shell-sans); color: var(--pz-chip-fg); background: var(--pz-chip-bg);
+  border: 1px solid var(--shell-hair); border-radius: 999px;
+}
+.pz__bar button:disabled { opacity: .45; cursor: default; }
+.pz__bar button:focus-visible, .pz__stage:focus-visible { outline: 3px solid var(--pz-fg); outline-offset: 3px; }
+.pz__close { font-size: 1.75rem !important; }
+.pz__level {
+  min-width: 4.5ch; padding: .5rem .6rem; text-align: center; border-radius: 999px;
+  font: 700 var(--ts-label)/1 var(--shell-sans); color: var(--pz-fg);
+  background: color-mix(in srgb, var(--pz-fg) 14%, transparent);
+}
+.pz__stage {
+  flex: 1; display: flex; overflow: auto; overscroll-behavior: contain;
+  padding: 4.5rem 1rem 1.25rem; touch-action: pan-x pan-y pinch-zoom;
+}
+/* margin:auto centers the picture while it fits and lets it scroll from its edge once zoomed past the screen. */
+.pz__img {
+  --pz-scale: 1;
+  flex: none; margin: auto; max-width: none; user-select: none;
+  height: calc((100dvh - 6rem) * var(--pz-scale)); width: auto;
+  /* No rounding or frame: screenshots draw their own corners and borders, and clipping would cut them. */
+}
+@media (prefers-reduced-motion: no-preference) { .pz__img { transition: height .18s ease; } }

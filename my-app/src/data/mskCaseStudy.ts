@@ -89,6 +89,13 @@ export type MskCopy = {
     noSignal: string;
     nodesBefore: string[];
     nodesAfter: string[];
+    /** Tag over the two After nodes that are Hillary's design rules, not MSK's build. */
+    designTag: string;
+    legend: { aria: string; observed: string; built: string; design: string };
+    /** One line under the drawing: what it is built from. */
+    builtFrom: string;
+    swipeHint: string;
+    canvasAria: string;
     key: {
       frontTerm: string; frontBefore: string; frontAfter: string;
       backTerm: string; backBefore: string; backAfter: string;
@@ -121,6 +128,8 @@ export type MskCopy = {
     kicker: string;
     title: string;
     intro: string;
+    /** How the rules could be checked; restates the three measures under "What I would have measured". */
+    check: string;
     steps: { n: string; title: string; body: string; note: string }[];
   };
 
@@ -132,7 +141,7 @@ export type MskCopy = {
     items: { n: string; title: string; finding: string; change: string; wrong?: string }[];
     mechanismLabels: {
       beforeProse: string; denseBlock: string; afterSteps: string;
-      beforeCohort: string; sameStandard: string;
+      beforeCohort: string; sameStandard: string; afterCohort: string;
     };
   };
 
@@ -188,48 +197,48 @@ const en: MskCopy = {
   chapters: [
     { id: "msk-start", label: "Start" },
     { id: "msk-brief", label: "Problem" },
-    { id: "msk-workflow", label: "Workflow" },
-    { id: "msk-decisions", label: "Decisions" },
-    { id: "msk-redesigns", label: "Redesigns" },
-    { id: "msk-systems", label: "Context" },
-    { id: "msk-outcomes", label: "Outcomes" },
+    { id: "msk-workflow", label: "What I did" },
+    { id: "msk-decisions", label: "Button rules" },
+    { id: "msk-redesigns", label: "More fixes" },
+    { id: "msk-systems", label: "Background" },
+    { id: "msk-outcomes", label: "Results" },
   ],
 
   hero: {
-    eyebrow: "Memorial Sloan Kettering · clinical systems",
-    title: "A filing queue replaced a four-department paper detour.",
+    eyebrow: "Memorial Sloan Kettering · service design",
+    title: "Service design project for Memorial Sloan Kettering Cancer\u00a0Center",
     readTime: "6 min",
-    readMeta: "read · 6 years, 3 roles",
+    readMeta: "read · 6 years, 3 jobs",
     ledeOpen:
-      "Patient-portal messages lived in the portal, not the patient’s chart, so staff printed them to be scanned in. As an office coordinator, I mapped that workaround across clinical, IT, HIM (health information management, the team that scans documents into charts), and operations, then presented the online workflow that was implemented two roles later, at a cancer center of ",
+      "Messages from the patient portal didn’t save to the patient’s chart, so staff printed them to be scanned in. As an office coordinator, I mapped that workaround across four departments: clinical, IT, operations, and HIM (health information management, the team that scans paper into charts). Then I pitched an online fix. It was built two jobs later, at a cancer center of ",
     ledeScale: "21,000+ staff",
     ledeMiddle: ", and ",
-    ledeSustain: "I later saw it in the production system while training new employees",
+    ledeSustain: "I later saw it in the live system while training new employees",
     ledeClose: ".",
     cta: "See the workflow →",
-    artifactTag: "RECREATED ARTIFACT",
+    artifactTag: "RE-CREATION",
     artifactName: "Office Coordinator filing queue",
-    dashboardAria: "Recreated Office Coordinator filing queue concept",
+    dashboardAria: "Re-created concept of the Office Coordinator filing queue",
   },
 
   receipt: {
     kicker: "It started with a workaround",
-    titleLines: ["A digital workflow", "became a paper\u00a0ritual."],
+    titleLines: ["Online messages", "ended up on\u00a0paper."],
     body:
-      "The clinical team needed to see everything in the patient’s record in real time. Until the scan finished, they shifted between systems to verify data, or just waited. That could potentially delay care for patients.",
-    run: "Run the online path",
-    replay: "Replay the online path",
+      "The care team needed to see everything in the patient’s chart right away. Until the scan was done, they switched between systems to check the facts, or they waited. That could delay a patient’s care.",
+    run: "Play the online path",
+    replay: "Play the online path again",
     ready: "Ready to file.",
-    steps: ["Queue opened", "Role confirmed", "Filed to the online chart", "Returned with status updated"],
-    boundary: "Recreated interaction",
+    steps: ["Queue opened", "Permission checked", "Filed to the patient’s chart", "Back to the queue, status updated"],
+    boundary: "Re-created, not the real software",
   },
 
   workflow: {
     kicker: "So I counted the steps",
-    title: "One map made four departments see the same failure.",
+    title: "I drew one map that all four departments could see.",
     lede:
-      "Nobody had written the whole path down. On one page, four departments saw the same failure instead of four versions of it.",
-    figcaption: "Recreated current-state and future-state map · no patient data",
+      "Nobody had written the whole path down. On one page, four departments saw the same problem, not four versions of it.",
+    figcaption: "Re-created map of the path before and after · no patient data",
     beforeLabel: "Before · six steps",
     beforeHeading: "Print, route, wait, check again",
     afterLabel: "After · five steps",
@@ -238,9 +247,9 @@ const en: MskCopy = {
       "Open the dashboard queue",
       "Find the message",
       "Print the portal message",
-      "Route the paper to HIM",
+      "Send the paper to HIM",
       "Wait for it to be scanned",
-      "Return later to confirm filing",
+      "Come back later to check it was filed",
     ],
     after: [
       "Open the dashboard queue",
@@ -252,75 +261,87 @@ const en: MskCopy = {
     mapBefore: "BEFORE · 6 STEPS · LEAVES THE EMR",
     mapAfter: "AFTER · 5 STEPS · NEVER LEAVES THE EMR",
     mapAside: "three steps outside the system",
-    mapNodesBefore: ["Open queue", "Find message", "Print", "Route to HIM", "Wait for scan", "Re-check filing"],
+    mapNodesBefore: ["Open queue", "Find message", "Print", "Send to HIM", "Wait for scan", "Check it was filed"],
     mapNodesAfter: ["Open queue", "Select message", "Send to EMR", "Files in chart", "Status updated"],
     provenanceKicker: "How I made these screens",
     provenanceBody:
-      "Every screen and map here was rebuilt from memory of my own current-state documentation; the original notes didn’t survive. No protected health information, no exported records, and no reproduction of the vendor interface. Showing the workflow does not require showing a patient, so it does not.",
+      "I redrew every screen and map here from memory of my own notes on how the work was done. The original notes were lost. There’s no private patient information, no exported records, and no copy of the real software’s screens. Showing the path doesn’t need a patient, so it doesn’t show one.",
   },
 
   blueprint: {
     introKicker: "Then I counted the handoffs",
-    introTitle: "Six steps became five. One department left the loop.",
+    introTitle: "Six steps became five, and one department dropped out.",
     introLede:
-      "The visible change is one fewer step. The service change is one fewer department touching the record. Below is the same path drawn by who was holding it.",
+      "On screen, the change was one fewer step. Behind the scenes, one whole department no longer had to handle the message. Below is the same path, sorted by who was holding it.",
     beforeBtn: "Before · one handoff",
     afterBtn: "After · no handoff",
     statusBefore:
-      "For two steps the message sits below the line of visibility, owned by nobody the coordinator can see.",
-    statusAfter: "The message never leaves the coordinator’s line of sight, and the queue reports back.",
+      "For two steps the message drops out of sight. The coordinator can’t tell who has it.",
+    statusAfter: "The message never leaves the coordinator’s sight, and the queue shows when it’s filed.",
     // The four departments (msk.md, 2026-10-14 answer 6): clinical writes the
     // message, operations is the coordinator, HIM scans paper, IT owns the
     // portal, the EMR, and permissions.
-    lanes: { evidence: "Clinical message", front: "Coordinator", back: "HIM · document imaging", support: "Portal + EMR" },
-    laneSubs: { evidence: "What exists", front: "Operations · front", back: "Backstage", support: "IT · support" },
-    visibility: "LINE OF VISIBILITY",
-    waiting: "coordinator is waiting",
-    noSignal: "No return signal, which is why step 6 exists",
+    lanes: { evidence: "Care team message", front: "Coordinator", back: "HIM · scanning team", support: "Portal + EMR" },
+    laneSubs: { evidence: "The message", front: "Operations · in view", back: "Out of sight", support: "IT · systems" },
+    visibility: "LINE OF SIGHT",
+    // Synthesis-lens review 2026-11-19: the shaded band read like a measured
+    // wait. No one measured it, so the label says so.
+    waiting: "coordinator is waiting (length not measured)",
+    noSignal: "No word comes back, which is why step 6 exists",
     nodesBefore: [
       "Dashboard queue", "Open queue", "In the portal",
       "Message on screen", "Find message",
       "Printed page", "Print the message",
-      "Paper in transit", "Route to HIM",
-      "Scan queue", "Wait for scan",
-      "Chart entry", "Re-check filing", "Now in the EMR",
+      "Paper on its way", "Send to HIM",
+      "Scan pile", "Wait for scan",
+      "Chart entry", "Check it was filed", "Now in the EMR",
     ],
     nodesAfter: [
       "Dashboard queue", "Open queue", "In the portal",
       "Message on screen", "Select message", "Ready + role checked",
-      "One action", "Send to EMR", "Permission allows it",
+      "One button", "Send to EMR", "Permission allows it",
       "Chart entry", "Files in the chart",
-      "Queue status", "Return, status updated", "Now in the EMR",
+      "Queue status", "Back, status updated", "Now in the EMR",
     ],
+    designTag: "my design, not MSK’s",
+    legend: {
+      aria: "What each box shows",
+      observed: "Before: what I saw (observed)",
+      built: "After, solid boxes: built by IT and UX",
+      design: "Dotted boxes: my design, not MSK’s",
+    },
+    builtFrom: "Built from memory of my own notes on the work. No patient data. My counts were lost, so I make no claim about how often this happened.",
+    swipeHint: "Swipe to see all steps",
+    canvasAria: "Service blueprint drawing. Scroll sideways to see all steps.",
     key: {
-      frontTerm: "Coordinator (operations) · frontstage",
+      frontTerm: "Coordinator (operations) · in view",
       frontBefore:
-        "Opens the queue, finds the message, prints it, then has to return later and check whether it was ever filed.",
+        "Opens the queue, finds the message, prints it, then has to come back later to check it was ever filed.",
       frontAfter:
-        "Opens the queue, selects the message, sends it to the chart, and lands back on the queue with the status already updated.",
-      backTerm: "HIM (document imaging) · backstage",
+        "Opens the queue, picks the message, sends it to the chart, and lands back on the queue with the status already updated.",
+      backTerm: "HIM (the scanning team) · out of sight",
       backBefore:
-        "Receives the paper and scans it. Doing the work correctly, out of sight, with no way to report back into the queue.",
+        "Gets the paper and scans it. They do the job right, but out of sight, with no way to report back to the queue.",
       backAfter:
-        "Not on this path any more. The department that used to receive paper never enters the filing workflow.",
-      supportTerm: "IT: portal, EMR, and permissions · support",
+        "Off this path. The team that used to get the paper no longer handles these messages.",
+      supportTerm: "IT: portal, EMR, and permissions · systems",
       supportBefore:
-        "Holds the message in the portal before it is printed and in the chart after it is scanned, but not in between, which is where the gap is.",
+        "Their systems hold the message before it’s printed and after it’s scanned. Not in between, and that’s the gap.",
       supportAfter:
         "Writes the message into the chart, and exposes the action only when the message is ready and the role allows it.",
       changedTerm: "What changed",
       changedBefore:
-        "Six steps, but only one that matters: the moment the message crosses a department line with no signal coming back.",
+        "Six steps, but one matters most: the message passes to another department, and no word comes back.",
       changedAfter:
-        "One department left the path. The message stays above the line of visibility from open to confirmation.",
+        "One department left the path. The coordinator can see the message from start to finish.",
     },
-    switchAria: "Choose which path the blueprint shows",
+    switchAria: "Choose which path the map shows",
   },
 
   dashboard: {
-    groupAria: "Anonymized Office Coordinator filing queue mockup",
-    tableAria: "Anonymized patient-message filing queue",
-    eyebrow: "Anonymized internal tool concept",
+    groupAria: "Anonymized mock-up of the Office Coordinator filing queue",
+    tableAria: "Anonymized queue of patient messages to file",
+    eyebrow: "Anonymized concept of a staff-only tool",
     title: "My filing queue",
     roleView: "Office Coordinator view",
     queueMeta: "47 in queue · 09:42",
@@ -347,115 +368,121 @@ const en: MskCopy = {
 
   decisions: {
     kicker: "The fix looked like one button",
-    title: "One button, four rules.",
+    title: "I set four rules for how the button behaves.",
     intro:
-      "One action replaced the three steps that left the system. IT and UX built the real one; the four rules below are how this recreation makes it safe to press. My portfolio design, not MSK’s specification.",
+      "One button replaced the three steps that left the system. IT and UX built the real one. I wrote the four rules below for this portfolio version. They are not MSK’s actual design.",
+    check:
+      "How I’d check them: minutes from a message arriving to it landing in the chart, messages filed to the wrong patient’s chart, and pages printed.",
     steps: [
-      { n: "01", title: "Show the action only when the record is ready", body: "Staff stop opening records that still need review.", note: "Ready means actionable" },
-      { n: "02", title: "Make permission limits visible", body: "View-only roles see status and ownership, not a disabled mystery button.", note: "Permission is product logic" },
-      { n: "03", title: "Separate blocked from not started", body: "Exceptions get a reason and an owner, so the backlog stops hiding them.", note: "Blocked needs an owner" },
-      { n: "04", title: "Return people to the queue", body: "Staff land back where they started, status updated.", note: "Preserve place and context" },
+      { n: "01", title: "Show the button only when the message is ready", body: "So staff don’t open messages that still need a review.", note: "Ready means you can act on it" },
+      { n: "02", title: "Show who is allowed to file", body: "Staff who can only view see the status and who has it, not a gray button with no reason.", note: "Who can do what is part of the design" },
+      { n: "03", title: "Tell stuck messages apart from new ones", body: "A stuck message gets a reason and a person in charge, so it can’t hide in the pile.", note: "Stuck needs a person" },
+      { n: "04", title: "Send people back to the queue", body: "After filing, staff land where they started, with the status updated.", note: "Don’t lose their place" },
     ],
   },
 
   redesigns: {
     kicker: "Then it turned up twice more",
-    title: "The same failure, in two more places.",
+    title: "I found the same problem in two more places.",
+    // Synthesis-lens review 2026-11-19: "people couldn't tell what to do next"
+    // fit the CPR card but not the new-hire card (one course for every skill
+    // level). This line is labelled as her reading and is true of both.
     lede:
-      "Certification and onboarding had the same problem: the next action was buried.",
+      "My reading of the pattern: both were written for someone other than the person using them. Clinicians got legal language. New hires got one course for every skill level.",
     wrongLabel: "What I got wrong",
     items: [
       {
         n: "02",
         title: "CPR certification",
-        finding: "The CPR (cardiopulmonary resuscitation) material was written in technical, legal language. So few clinicians got through it that the team planned a 4-month extension.",
-        change: "I rewrote it for the people who had to complete it. The whole department certified a month before the original deadline.",
+        finding: "The CPR (cardiopulmonary resuscitation) course was written in technical, legal language. So few clinicians got through it that the team planned a 4-month extension.",
+        change: "I rewrote it in plain language for the people who had to finish it. The whole department certified a month before the original deadline.",
       },
       {
         n: "03",
-        title: "Administrative onboarding",
-        finding: "Epic, HIPAA, the compliance modules, and the technical and soft skills of the job were taught the same way to every new administrative hire, people who arrived with very different starting points, some fluent with the systems, some never having opened them.",
-        change: "I worked with the design team to rebuild the program, then curated the instruction cohort by cohort so a one-to-three-week course met the range of abilities actually in the room.",
+        title: "Training new office staff",
+        finding: "Every new office hire learned Epic, HIPAA, the compliance courses, and the people skills of the job the same way. Some already knew the systems. Some had never opened them.",
+        change: "I worked with the design team to rebuild the program. Then I adjusted it for each group, so the one-to-three-week course fit the people actually in the room.",
       },
     ],
     mechanismLabels: {
-      beforeProse: "BEFORE · LEGAL PROSE", denseBlock: "one dense block",
+      beforeProse: "BEFORE · LEGAL LANGUAGE", denseBlock: "one dense block",
       afterSteps: "AFTER · STEPS A CLINICIAN CAN FOLLOW",
-      beforeCohort: "BEFORE · ONE COURSE FOR EVERY COHORT", sameStandard: "same standard",
+      beforeCohort: "BEFORE · ONE COURSE FOR EVERY GROUP", sameStandard: "same standard",
+      afterCohort: "AFTER · ADJUSTED FOR EACH GROUP",
     },
   },
 
   systems: {
     kicker: "Why I could see it",
     title: "I did the jobs before I redesigned them.",
-    lede: "You do not spot that pattern from outside a system. I had already sat in three of its seats.",
+    lede: "You don’t spot a problem like this from outside. I had already done three jobs inside it.",
     rolesAria: "Three roles at MSK, in order",
     methodLabel: "The method it gave me",
     roles: [
       {
-        n: "01", role: "Office Coordinator", taught: "Where people paused",
+        n: "01", role: "Office Coordinator", taught: "Where people got stuck",
         term: "Lean Six Sigma Green Belt (Purdue) · Master of Healthcare Administration (Rutgers)",
-        body: "Both finished in this seat, while I was running a clinic’s paperwork. The Green Belt, a process-improvement certification, is the lens that showed one filing task crossing four departments.",
+        body: "I finished both in this job, while running a clinic’s paperwork. The Green Belt is a certificate in improving how work gets done. It’s how I saw one filing task passing through four departments.",
       },
       {
-        n: "02", role: "Administrative Assistant", taught: "How to brief people who have to act",
-        term: "Writing for the person who has to act",
-        body: "No certificate for this one. Technical, legal copy kept clinicians from finishing CPR certification. I rewrote it for the person who has to act, and the department certified a month before the original deadline.",
+        n: "02", role: "Administrative Assistant", taught: "How to write for the person doing the task",
+        term: "Writing for the person doing the task",
+        body: "No certificate for this one. Technical, legal language kept clinicians from finishing CPR certification. I rewrote it in plain language, and the department certified a month before the original deadline.",
       },
       {
         n: "03", role: "Training Facilitator", taught: "The authority to redesign it",
-        term: "Training & Facilitation (ATD) · current-state mapping",
-        body: "I instructed on Epic (the record software), HIPAA (the patient-privacy law), and the compliance modules. Owning how staff were taught the system meant documenting what actually happens, not what the policy says, and the gap between the two is where the design work lives.",
+        term: "Training & Facilitation (ATD, the Association for Talent Development) · mapping how work really happens",
+        body: "I taught Epic (the medical record software), HIPAA (the patient-privacy law), and the compliance courses. To teach the system well, I wrote down what staff really did, not what the policy said. The gap between the two is where the design work is.",
       },
     ],
     cards: [
-      { tag: "01 · Observe", title: "Find the workarounds", body: "Shadow real shifts. The sticky notes and personal spreadsheets told the truth the policy map missed." },
-      { tag: "02 · Align", title: "Make the failure shared", body: "Current-state maps gave four departments one picture to argue with instead of four email threads." },
-      { tag: "03 · Redesign", title: "Sequence the next action", body: "Move the task to where the decision already happens, then make ownership and exceptions visible." },
+      { tag: "01 · Watch", title: "Find the workarounds", body: "Shadow real shifts. The sticky notes and personal spreadsheets told the truth the policy map missed." },
+      { tag: "02 · Share", title: "Show everyone the same problem", body: "Maps of how the work really ran gave four departments one picture to argue with, not four email threads." },
+      { tag: "03 · Redesign", title: "Put the next step in reach", body: "Move the task to where the decision already happens. Then show who owns it and what’s stuck." },
     ],
-    ownershipLabel: "What service design means here:",
+    ownershipLabel: "My scope:",
     ownershipBody:
-      "I own the whole path a task takes, across four departments that did not report to me, not the screen at the end of it. The queue above is one screen. The reason it works is everything behind it.",
-    boundaryAria: "What the research does and does not show",
-    boundaryLabel: "Evidence boundary",
+      "I own the whole path a task takes, across four departments that didn’t report to me, not just the screen at the end. The queue above is one screen. It works because of everything behind it.",
+    boundaryAria: "What this research does and doesn’t show",
+    boundaryLabel: "What this proves, and what it doesn’t",
     boundaryBody:
-      "The source record preserves the workflow, departments, decisions, and outcomes. Participant counts from shift observation were not recorded, so I use this evidence to explain the decisions, not to claim prevalence.",
-    mapFallback: "Four departments, one task → mapped → redesigned → in production",
+      "My notes kept the path, the departments, the decisions, and the results. I didn’t record how many people I watched on shift, so this explains the decisions. It doesn’t prove how common the problem was.",
+    mapFallback: "One task, four departments → mapped → redesigned → in the live system",
     mapStagesAria: "Stages of the change",
-    mapStages: ["Four departments, one task", "Mapped", "Redesigned", "In production"],
+    mapStages: ["One task, four departments", "Mapped", "Redesigned", "In the live system"],
   },
 
   sustainment: {
     kicker: "The real test came later",
     title: "What happened after I left that role.",
     lede:
-      "IT approved it once funding came in and built it as I presented it. I don’t know what changed behind the scenes. I later saw it in production while training new employees.",
+      "IT approved it once funding came in and built it as I pitched it. I don’t know what changed behind the scenes. Later, while training new employees, I saw it in the live system.",
     // Claim audit 2026-10-13: the lanes used to say "system upgrade" ×2,
     // "still in use" and "still used by other admins" — claims Hillary cut on
     // 2026-09-27 (msk.md F2/F3: no source; she was not present after launch).
     // The drawing kept them after the text list was corrected. Lanes now carry
     // only what the sources support: the handoff, the button in production
     // (seen first-hand while training; register 2026-11-01), and compliance a month early (Q3/Q5).
-    figcaption: "What happened after each one shipped",
-    shipped: "SHIPPED",
+    figcaption: "What happened after each one launched",
+    shipped: "LAUNCHED",
     lanes: [
       {
-        name: "EMR filing workflow",
+        name: "Filing to the chart",
         events: [{ at: 0.42, label: "handed to IT and UX" }],
-        outcome: "added to the production system",
+        outcome: "added to the live system",
       },
       {
-        name: "CPR certification format",
-        events: [{ at: 0.5, label: "compliant a month early" }],
+        name: "CPR course rewrite",
+        events: [{ at: 0.5, label: "certified a month early" }],
         outcome: "no extension needed",
       },
     ],
     survived: [
-      { fact: "EMR filing workflow", what: "Added to the production system; I saw it while training new employees" },
-      { fact: "CPR certification format", what: "Department compliant a month before the original deadline, no extension needed" },
+      { fact: "Filing to the chart", what: "Added to the live system. I saw it there while training new employees." },
+      { fact: "CPR course rewrite", what: "The whole department certified a month before the original deadline. No extension needed." },
     ],
     why:
-      "The work moved from personal workaround to shared system; the plain-language format got the department compliant before the deadline.",
+      "A personal workaround became part of the shared system. The plain-language course got the department certified before the deadline.",
     proofLabel: "Profile · MSK News",
     proofTitle: "From the military to Memorial Sloan Kettering",
     proofAria: "Read Hillary Esposito’s career profile in MSK News (opens in new tab)",
@@ -463,25 +490,25 @@ const en: MskCopy = {
 
   outcomes: {
     kicker: "What it added up to",
-    title: "The numbers, and whose they are.",
+    title: "What changed, and who gets the credit.",
     intro:
-      "I initiated the dashboard-to-online-EMR workflow redesign as a coordinator and it was implemented off my presentation to the company two roles later, rewrote the CPR certification material for the clinicians completing it, and rebuilt the onboarding program, Epic, HIPAA, compliance, and the technical and soft skills, for new administrative staff.",
-    disclaimer: "Anonymized evidence · organization-wide results are attributed to the initiative · the ~$1M/year is a projection from my pitch, not measured savings",
+      "As a coordinator, I started the push to file portal messages straight to the online chart. It was built from my pitch two jobs later. I also rewrote the CPR course for the clinicians taking it. And I rebuilt training for new office staff: Epic, HIPAA, compliance, and the people skills of the job.",
+    disclaimer: "Details anonymized · hospital-wide results belong to the whole effort, not just me · the ~$1M/year is a forecast from my pitch, not measured savings",
     metrics: [
       { tag: "Led", n: "1 month", label: "early: the whole department certified before the original deadline, with no 4-month extension" },
-      { tag: "Trained", n: "~2,000", label: "new employees I trained on Epic, HIPAA and compliance, by my estimate" },
-      { tag: "Contributed to", n: "20%", label: "lower printing and scanning costs, per my review of the financials with the finance department head" },
+      { tag: "Trained", n: "~2,000", label: "new employees I trained on Epic, HIPAA, and compliance, by my estimate" },
+      { tag: "Contributed to", n: "20%", label: "lower printing and scanning costs, from my review of the numbers with the head of the finance department" },
       { tag: "Projection", n: "~$1M/year", label: "projected paper savings in my Process Improvement Fair pitch, not measured savings" },
     ],
-    route: ["Observe the real work", "Map the failure", "Align the system", "Get it built"],
+    route: ["Watch the real work", "Map the problem", "Get every team on board", "Get it built"],
   },
 
   close: {
     title: "I find the workaround. Then I get it built.",
-    body: "I map it so every department sees the same failure, then turn it into a decision the organization will build.",
+    body: "I map it so every department sees the same problem. Then I turn it into a plan the hospital will build.",
     cta: "Email me →",
   },
-  next: { eyebrow: "Next case study", title: "Mobbin", tag: "UX flow documentation · 200+ screens per app" },
+  next: { eyebrow: "Next case study", title: "Mobbin", tag: "Screen labeling · three finance apps" },
 };
 
 const es: MskCopy = {
@@ -491,48 +518,48 @@ const es: MskCopy = {
   chapters: [
     { id: "msk-start", label: "Inicio" },
     { id: "msk-brief", label: "Problema" },
-    { id: "msk-workflow", label: "Flujo" },
-    { id: "msk-decisions", label: "Decisiones" },
-    { id: "msk-redesigns", label: "Rediseños" },
-    { id: "msk-systems", label: "Contexto" },
+    { id: "msk-workflow", label: "Lo que hice" },
+    { id: "msk-decisions", label: "Reglas del botón" },
+    { id: "msk-redesigns", label: "Más arreglos" },
+    { id: "msk-systems", label: "Antecedentes" },
     { id: "msk-outcomes", label: "Resultados" },
   ],
 
   hero: {
-    eyebrow: "Memorial Sloan Kettering · sistemas clínicos",
-    title: "Una cola de archivo reemplazó un desvío de papel entre cuatro áreas.",
+    eyebrow: "Memorial Sloan Kettering · diseño de servicios",
+    title: "Proyecto de diseño de servicios para Memorial Sloan Kettering Cancer\u00a0Center",
     readTime: "6 min",
-    readMeta: "de lectura · 6 años, 3 puestos",
+    readMeta: "de lectura · 6 años, 3 trabajos",
     ledeOpen:
-      "Los mensajes del portal de pacientes vivían en el portal, no en la historia clínica, así que el personal los imprimía para escanearlos. En el puesto de coordinación de oficina, mapeé ese desvío entre las áreas clínica, de TI, de HIM (gestión de información de salud, el equipo que escanea documentos a la historia) y de operaciones, y luego presenté el flujo en línea que se implementó dos puestos después, en un centro oncológico de ",
+      "Los mensajes del portal de pacientes no se guardaban en la historia clínica del paciente, así que el personal los imprimía para escanearlos. Como coordinadora de oficina, mapeé ese desvío en cuatro áreas: clínica, TI (el equipo de tecnología), operaciones y HIM (gestión de información de salud, el equipo que escanea el papel a las historias). Luego propuse una solución en línea. Se construyó dos trabajos después, en un centro oncológico de ",
     ledeScale: "más de 21,000 empleados",
     ledeMiddle: ", y ",
-    ledeSustain: "después lo vi en el sistema de producción mientras capacitaba a nuevos empleados",
+    ledeSustain: "después la vi en el sistema en uso mientras capacitaba a nuevos empleados",
     ledeClose: ".",
     cta: "Ver el flujo →",
-    artifactTag: "ARTEFACTO RECREADO",
+    artifactTag: "RECREACIÓN",
     artifactName: "Cola de archivo de coordinación",
     dashboardAria: "Concepto recreado de la cola de archivo de coordinación de oficina",
   },
 
   receipt: {
     kicker: "Empezó con un desvío",
-    titleLines: ["Un flujo digital", "se volvió un ritual de\u00a0papel."],
+    titleLines: ["Los mensajes en línea", "terminaban en\u00a0papel."],
     body:
-      "El equipo clínico necesitaba ver toda la información en la historia del paciente en tiempo real. Mientras no terminaba el escaneo, pasaban de un sistema a otro para verificar datos, o simplemente esperaban. Eso podría retrasar la atención a los pacientes.",
-    run: "Recorrer la ruta en línea",
-    replay: "Repetir la ruta en línea",
+      "El equipo de atención necesitaba ver todo lo que había en la historia del paciente de inmediato. Hasta que terminaba el escaneo, pasaban de un sistema a otro para comprobar los datos, o esperaban. Eso podía retrasar la atención de un paciente.",
+    run: "Ver la ruta en línea",
+    replay: "Ver otra vez la ruta en línea",
     ready: "Listo para archivar.",
-    steps: ["Cola abierta", "Permiso confirmado", "Archivado en la historia en línea", "Regreso con el estado actualizado"],
-    boundary: "Interacción recreada",
+    steps: ["Cola abierta", "Permiso verificado", "Archivado en la historia del paciente", "De vuelta en la cola, estado actualizado"],
+    boundary: "Recreación, no el software real",
   },
 
   workflow: {
     kicker: "Así que conté los pasos",
-    title: "La cola de archivo reemplazó el desvío.",
+    title: "Dibujé un mapa que las cuatro áreas podían ver.",
     lede:
-      "Nadie había escrito la ruta completa. En una sola página, cuatro áreas vieron la misma falla en lugar de cuatro versiones de ella.",
-    figcaption: "Mapa recreado del estado actual y del estado futuro · sin datos de pacientes",
+      "Nadie había escrito la ruta completa. En una sola página, cuatro áreas vieron el mismo problema, no cuatro versiones de él.",
+    figcaption: "Mapa recreado de la ruta antes y después · sin datos de pacientes",
     beforeLabel: "Antes · seis pasos",
     beforeHeading: "Imprimir, enviar, esperar, volver a revisar",
     afterLabel: "Después · cinco pasos",
@@ -543,7 +570,7 @@ const es: MskCopy = {
       "Imprimir el mensaje del portal",
       "Enviar el papel a HIM",
       "Esperar a que lo escaneen",
-      "Volver después a confirmar el archivo",
+      "Volver después a comprobar que se archivó",
     ],
     after: [
       "Abrir la cola del panel",
@@ -555,72 +582,82 @@ const es: MskCopy = {
     mapBefore: "ANTES · 6 PASOS · SALE DEL EMR",
     mapAfter: "DESPUÉS · 5 PASOS · NUNCA SALE DEL EMR",
     mapAside: "tres pasos fuera del sistema",
-    mapNodesBefore: ["Abrir cola", "Buscar mensaje", "Imprimir", "Enviar a HIM", "Esperar escaneo", "Revisar archivo"],
+    mapNodesBefore: ["Abrir cola", "Buscar mensaje", "Imprimir", "Enviar a HIM", "Esperar escaneo", "Ver si se archivó"],
     mapNodesAfter: ["Abrir cola", "Elegir mensaje", "Enviar al EMR", "Archiva en historia", "Estado actualizado"],
     provenanceKicker: "Cómo se hicieron estos artefactos",
     provenanceBody:
-      "Cada pantalla y cada mapa aquí se reconstruyeron de memoria a partir de mi propia documentación del estado actual; las notas originales no se conservaron. Sin información de salud protegida, sin registros exportados y sin reproducir la interfaz del proveedor. Mostrar el flujo no exige mostrar a un paciente, así que no lo hace.",
+      "Redibujé de memoria cada pantalla y cada mapa de aquí, a partir de mis propias notas sobre cómo se hacía el trabajo. Las notas originales se perdieron. No hay información privada de pacientes, ni registros exportados, ni copias de las pantallas del software real. Mostrar la ruta no requiere mostrar a un paciente, así que no se muestra ninguno.",
   },
 
   blueprint: {
     introKicker: "Luego conté los traspasos",
-    introTitle: "Seis pasos se volvieron cinco. Un área salió del circuito.",
+    introTitle: "Seis pasos se volvieron cinco, y un área dejó de participar.",
     introLede:
-      "El cambio visible es un paso menos. El cambio en el servicio es un área menos tocando el expediente. Abajo está la misma ruta, dibujada según quién tenía el mensaje en la mano.",
+      "En pantalla, el cambio fue un paso menos. Por detrás, un área entera ya no tuvo que manejar el mensaje. Abajo está la misma ruta, ordenada según quién tenía el mensaje.",
     beforeBtn: "Antes · un traspaso",
     afterBtn: "Después · sin traspaso",
     statusBefore:
-      "Durante dos pasos el mensaje queda bajo la línea de visibilidad, en manos de nadie que la coordinación pueda ver.",
-    statusAfter: "El mensaje nunca sale de la vista de la coordinación, y la cola informa de vuelta.",
-    lanes: { evidence: "Mensaje clínico", front: "Coordinación", back: "HIM · imágenes", support: "Portal + EMR" },
-    laneSubs: { evidence: "Lo que existe", front: "Operaciones · frente", back: "Trastienda", support: "TI · soporte" },
-    visibility: "LÍNEA DE VISIBILIDAD",
-    waiting: "la coordinación espera",
-    noSignal: "Sin señal de vuelta, por eso existe el paso 6",
+      "Durante dos pasos el mensaje se pierde de vista. La coordinación no sabe quién lo tiene.",
+    statusAfter: "El mensaje nunca sale de la vista de la coordinación, y la cola muestra cuándo se archiva.",
+    lanes: { evidence: "Mensaje del equipo de atención", front: "Coordinación", back: "HIM · equipo de escaneo", support: "Portal + EMR" },
+    laneSubs: { evidence: "El mensaje", front: "Operaciones · a la vista", back: "Fuera de la vista", support: "TI · sistemas" },
+    visibility: "LÍNEA DE VISTA",
+    waiting: "la coordinación espera (no se midió cuánto)",
+    noSignal: "No vuelve ninguna respuesta, por eso existe el paso 6",
     nodesBefore: [
       "Cola del panel", "Abrir la cola", "En el portal",
       "Mensaje en pantalla", "Buscar mensaje",
       "Página impresa", "Imprimir el mensaje",
-      "Papel en tránsito", "Enviar a HIM",
-      "Cola de escaneo", "Esperar el escaneo",
-      "Entrada en la historia", "Revisar el archivo", "Ya en el EMR",
+      "Papel en camino", "Enviar a HIM",
+      "Pila de escaneo", "Esperar el escaneo",
+      "Entrada en la historia", "Ver si se archivó", "Ya en el EMR",
     ],
     nodesAfter: [
       "Cola del panel", "Abrir la cola", "En el portal",
       "Mensaje en pantalla", "Seleccionar mensaje", "Listo + permiso verificado",
-      "Una acción", "Enviar al EMR", "El permiso lo autoriza",
+      "Un botón", "Enviar al EMR", "El permiso lo autoriza",
       "Entrada en la historia", "Se archiva en la historia",
       "Estado de la cola", "Volver, estado actualizado", "Ya en el EMR",
     ],
+    designTag: "mi diseño, no el de MSK",
+    legend: {
+      aria: "Qué muestra cada recuadro",
+      observed: "Antes: lo que vi (observado)",
+      built: "Después, recuadros sólidos: los construyeron TI y UX",
+      design: "Recuadros punteados: mi diseño, no el de MSK",
+    },
+    builtFrom: "Hecho de memoria a partir de mis propias notas sobre el trabajo. Sin datos de pacientes. Mis conteos se perdieron, así que no afirmo con qué frecuencia pasaba.",
+    swipeHint: "Deslice para ver todos los pasos",
+    canvasAria: "Dibujo del plano del servicio. Desplácese de lado para ver todos los pasos.",
     key: {
-      frontTerm: "Coordinación (operaciones) · escenario visible",
+      frontTerm: "Coordinación (operaciones) · a la vista",
       frontBefore:
-        "Abre la cola, busca el mensaje, lo imprime, y después tiene que volver a revisar si alguna vez se archivó.",
+        "Abre la cola, busca el mensaje, lo imprime, y después tiene que volver para comprobar si alguna vez se archivó.",
       frontAfter:
-        "Abre la cola, selecciona el mensaje, lo envía a la historia y regresa a la cola con el estado ya actualizado.",
-      backTerm: "HIM (imágenes de documentos) · trastienda",
+        "Abre la cola, elige el mensaje, lo envía a la historia y vuelve a la cola con el estado ya actualizado.",
+      backTerm: "HIM (el equipo de escaneo) · fuera de la vista",
       backBefore:
-        "Recibe el papel y lo escanea. Hace el trabajo bien, fuera de la vista, y sin manera de informar de vuelta a la cola.",
+        "Recibe el papel y lo escanea. Hace bien su trabajo, pero fuera de la vista y sin manera de avisar a la cola.",
       backAfter:
-        "Ya no está en esta ruta. El área que antes recibía papel nunca entra al flujo de archivo.",
-      supportTerm: "TI: portal, EMR y permisos · soporte",
+        "Fuera de esta ruta. El equipo que antes recibía el papel ya no maneja estos mensajes.",
+      supportTerm: "TI: portal, EMR y permisos · sistemas",
       supportBefore:
-        "Tiene el mensaje en el portal antes de imprimirlo y en la historia después de escanearlo, pero no en medio, que es justo donde está el hueco.",
+        "Sus sistemas guardan el mensaje antes de imprimirlo y después de escanearlo. No en medio, y ese es el hueco.",
       supportAfter:
         "Escribe el mensaje en la historia y muestra la acción solo cuando el mensaje está listo y el permiso lo autoriza.",
       changedTerm: "Qué cambió",
       changedBefore:
-        "Seis pasos, pero solo uno importa: el momento en que el mensaje cruza la línea de un área sin que vuelva ninguna señal.",
+        "Seis pasos, pero uno importa más: el mensaje pasa a otra área y no vuelve ninguna respuesta.",
       changedAfter:
-        "Un área salió de la ruta. El mensaje se queda por encima de la línea de visibilidad desde que se abre hasta que se confirma.",
+        "Un área salió de la ruta. La coordinación puede ver el mensaje de principio a fin.",
     },
-    switchAria: "Elegir qué ruta muestra el plano de servicio",
+    switchAria: "Elegir qué ruta muestra el mapa",
   },
 
   dashboard: {
     groupAria: "Maqueta anonimizada de la cola de archivo de coordinación de oficina",
-    tableAria: "Cola anonimizada de archivo de mensajes de pacientes",
-    eyebrow: "Concepto anonimizado de herramienta interna",
+    tableAria: "Cola anonimizada de mensajes de pacientes por archivar",
+    eyebrow: "Concepto anonimizado de una herramienta solo para el personal",
     title: "Mi cola de archivo",
     roleView: "Vista de coordinación de oficina",
     queueMeta: "47 en la cola · 09:42",
@@ -645,109 +682,112 @@ const es: MskCopy = {
 
   decisions: {
     kicker: "El arreglo parecía un solo botón",
-    title: "Un botón, cuatro reglas.",
+    title: "Definí cuatro reglas para cómo se comporta el botón.",
     intro:
-      "Una acción reemplazó los tres pasos que salían del sistema. TI y UX construyeron el botón real; las cuatro reglas de abajo son cómo esta recreación lo hace seguro de presionar. Es mi diseño para el portafolio, no la especificación de MSK.",
+      "Un botón reemplazó los tres pasos que salían del sistema. TI y UX (el equipo de diseño de experiencia de usuario) construyeron el botón real. Escribí las cuatro reglas de abajo para esta versión del portafolio. No son el diseño real de MSK.",
+    check:
+      "Cómo las comprobaría: los minutos desde que llega un mensaje hasta que queda en la historia clínica, los mensajes archivados en la historia clínica del paciente equivocado y las páginas impresas.",
     steps: [
-      { n: "01", title: "Mostrar la acción solo cuando el registro está listo", body: "El personal deja de abrir registros que aún necesitan revisión.", note: "Listo significa accionable" },
-      { n: "02", title: "Hacer visibles los límites de permiso", body: "Los puestos de solo lectura ven estado y responsabilidad, no un botón desactivado y misterioso.", note: "El permiso es lógica de producto" },
-      { n: "03", title: "Separar bloqueado de no iniciado", body: "Las excepciones reciben un motivo y una persona responsable, para que el rezago deje de esconderlas.", note: "Lo bloqueado necesita responsable" },
-      { n: "04", title: "Devolver a la gente a la cola", body: "El personal aterriza donde empezó, con el estado actualizado.", note: "Conservar el lugar y el contexto" },
+      { n: "01", title: "Mostrar el botón solo cuando el mensaje está listo", body: "Así el personal no abre mensajes que todavía necesitan revisión.", note: "Listo significa que se puede actuar" },
+      { n: "02", title: "Mostrar quién puede archivar", body: "El personal que solo puede ver ve el estado y quién lo tiene, no un botón gris sin motivo.", note: "Quién puede hacer qué es parte del diseño" },
+      { n: "03", title: "Distinguir los mensajes atascados de los nuevos", body: "Un mensaje atascado recibe un motivo y una persona a cargo, para que no se esconda en la pila.", note: "Lo atascado necesita una persona" },
+      { n: "04", title: "Devolver a la gente a la cola", body: "Después de archivar, el personal vuelve a donde empezó, con el estado actualizado.", note: "No perder su lugar" },
     ],
   },
 
   redesigns: {
     kicker: "Luego apareció dos veces más",
-    title: "La misma falla, en dos lugares más.",
+    title: "Encontré el mismo problema en dos lugares más.",
     lede:
-      "La certificación y la incorporación tenían el mismo problema: el siguiente paso estaba escondido.",
+      "Mi lectura del patrón: los dos estaban escritos para alguien que no era la persona que los usaba. El personal clínico recibía lenguaje legal. El personal nuevo recibía un solo curso para todos los niveles.",
     wrongLabel: "En qué me equivoqué",
     items: [
       {
         n: "02",
         title: "Certificación de RCP",
-        finding: "El material de RCP (reanimación cardiopulmonar) estaba escrito en lenguaje técnico y legal. Tan poca gente clínica lo completaba que el equipo planeaba una prórroga de 4 meses.",
-        change: "Lo reescribí para las personas que tenían que completarlo. Toda el área se certificó un mes antes de la fecha límite original.",
+        finding: "El curso de RCP (reanimación cardiopulmonar) estaba escrito en lenguaje técnico y legal. Tan poca gente clínica lo completaba que el equipo planeaba una prórroga de 4 meses.",
+        change: "Lo reescribí en lenguaje sencillo para las personas que tenían que terminarlo. Toda el área se certificó un mes antes de la fecha límite original.",
       },
       {
         n: "03",
-        title: "Incorporación administrativa",
-        finding: "Epic, HIPAA, los módulos de cumplimiento y las habilidades técnicas y blandas del puesto se enseñaban igual a cada nueva persona administrativa, gente que llegaba con puntos de partida muy distintos, algunas con soltura en los sistemas y otras que nunca los habían abierto.",
-        change: "Trabajé con el equipo de diseño para reconstruir el programa y luego ajusté la instrucción cohorte por cohorte, para que un curso de una a tres semanas respondiera al rango de habilidades que de verdad había en la sala.",
+        title: "Capacitación del personal nuevo de oficina",
+        finding: "Cada persona nueva de oficina aprendía de la misma forma Epic, HIPAA, los cursos de cumplimiento y el trato con la gente que pide el puesto. Algunas ya conocían los sistemas. Otras nunca los habían abierto.",
+        change: "Trabajé con el equipo de diseño para reconstruir el programa. Luego lo ajusté para cada grupo, para que el curso de una a tres semanas sirviera a las personas que de verdad estaban en la sala.",
       },
     ],
     mechanismLabels: {
-      beforeProse: "ANTES · PROSA LEGAL", denseBlock: "un bloque denso",
+      beforeProse: "ANTES · LENGUAJE LEGAL", denseBlock: "un bloque denso",
       afterSteps: "DESPUÉS · PASOS QUE SE PUEDEN SEGUIR",
-      beforeCohort: "ANTES · UN SOLO CURSO PARA TODA COHORTE", sameStandard: "mismo estándar",
+      beforeCohort: "ANTES · EL MISMO CURSO PARA TODOS LOS GRUPOS", sameStandard: "mismo estándar",
+      afterCohort: "DESPUÉS · AJUSTADO PARA CADA GRUPO",
     },
   },
 
   systems: {
     kicker: "Por qué pude verlo",
     title: "Hice los trabajos antes de rediseñarlos.",
-    lede: "Ese patrón no se ve desde fuera de un sistema. Yo ya me había sentado en tres de sus sillas.",
+    lede: "Un problema así no se ve desde fuera. Yo ya había hecho tres trabajos adentro.",
     rolesAria: "Tres puestos en MSK, en orden",
     methodLabel: "El método que me dio",
     roles: [
       {
-        n: "01", role: "Coordinación de oficina", taught: "Dónde se detenía la gente",
+        n: "01", role: "Coordinación de oficina", taught: "Dónde se atascaba la gente",
         term: "Lean Six Sigma Green Belt (Purdue) · Maestría en Administración de Salud (Rutgers)",
-        body: "Terminé ambas en este puesto, mientras llevaba el papeleo de una clínica. El Green Belt, una certificación de mejora de procesos, es la lente que mostró una tarea de archivo cruzando cuatro áreas.",
+        body: "Terminé ambas en este trabajo, mientras llevaba el papeleo de una clínica. El Green Belt es un certificado en mejorar cómo se hace el trabajo. Gracias a él vi que una sola tarea de archivo pasaba por cuatro áreas.",
       },
       {
-        n: "02", role: "Asistencia administrativa", taught: "Cómo informar a quien tiene que actuar",
-        term: "Escribir para quien tiene que actuar",
-        body: "Aquí no hay certificado. Convertir decisiones de liderazgo en informes claros me enseñó a escribir para la persona que tiene que actuar. La reescritura de RCP y la presentación del EMR salieron de esa práctica.",
+        n: "02", role: "Asistencia administrativa", taught: "Cómo escribir para la persona que hace la tarea",
+        term: "Escribir para la persona que hace la tarea",
+        body: "Aquí no hay certificado. El lenguaje técnico y legal impedía que el personal clínico terminara la certificación de RCP. Lo reescribí en lenguaje sencillo, y el área se certificó un mes antes de la fecha límite original.",
       },
       {
         n: "03", role: "Facilitadora de capacitación", taught: "La autoridad para rediseñarlo",
-        term: "Capacitación y facilitación (ATD) · mapeo del estado actual",
-        body: "Di instrucción sobre Epic (el software del expediente), HIPAA (la ley de privacidad del paciente) y los módulos de cumplimiento. Hacerme cargo de cómo se le enseñaba el sistema al personal significó documentar lo que de verdad pasa, no lo que dice la política, y la brecha entre las dos es donde vive el trabajo de diseño.",
+        term: "Capacitación y facilitación (ATD, la Association for Talent Development) · mapear cómo se hace de verdad el trabajo",
+        body: "Enseñé Epic (el software de la historia clínica), HIPAA (la ley de privacidad del paciente) y los cursos de cumplimiento. Para enseñar bien el sistema, anoté lo que el personal hacía de verdad, no lo que decía la política. La brecha entre las dos cosas es donde está el trabajo de diseño.",
       },
     ],
     cards: [
       { tag: "01 · Observar", title: "Encontrar los desvíos", body: "Acompañar turnos reales. Las notas adhesivas y las hojas de cálculo personales decían la verdad que el mapa de políticas no veía." },
-      { tag: "02 · Alinear", title: "Volver compartida la falla", body: "Los mapas del estado actual le dieron a cuatro áreas una sola imagen con la cual discutir, en vez de cuatro cadenas de correo." },
-      { tag: "03 · Rediseñar", title: "Ordenar la siguiente acción", body: "Mover la tarea a donde la decisión ya ocurre, y luego hacer visibles la responsabilidad y las excepciones." },
+      { tag: "02 · Compartir", title: "Mostrarles a todos el mismo problema", body: "Los mapas de cómo se hacía de verdad el trabajo le dieron a cuatro áreas una sola imagen para discutir, no cuatro cadenas de correo." },
+      { tag: "03 · Rediseñar", title: "Poner el siguiente paso a la mano", body: "Mover la tarea a donde ya se toma la decisión. Luego mostrar quién se encarga y qué está atascado." },
     ],
-    ownershipLabel: "Qué significa aquí el diseño de servicios:",
+    ownershipLabel: "Mi alcance:",
     ownershipBody:
-      "Me hago cargo de toda la ruta que recorre una tarea, a través de cuatro áreas que no me reportaban, no de la pantalla del final. La cola de arriba es una pantalla. La razón por la que funciona es todo lo que está detrás.",
-    boundaryAria: "Límite de evidencia de la investigación en MSK",
-    boundaryLabel: "Límite de la evidencia",
+      "Me hago cargo de toda la ruta que recorre una tarea, a través de cuatro áreas que no me reportaban, no solo de la pantalla del final. La cola de arriba es una pantalla. Funciona por todo lo que tiene detrás.",
+    boundaryAria: "Lo que esta investigación muestra y lo que no",
+    boundaryLabel: "Lo que esto demuestra, y lo que no",
     boundaryBody:
-      "El registro original conserva el flujo, las áreas, las decisiones y los resultados. Los conteos de participantes de la observación de turnos no se registraron, así que uso esta evidencia para explicar las decisiones, no para afirmar una prevalencia.",
-    mapFallback: "Cuatro áreas, una tarea → mapeados → rediseñados → en producción",
+      "Mis notas guardaron la ruta, las áreas, las decisiones y los resultados. No anoté a cuántas personas observé en los turnos, así que esto explica las decisiones. No demuestra qué tan común era el problema.",
+    mapFallback: "Una tarea, cuatro áreas → mapeada → rediseñada → en el sistema en uso",
     mapStagesAria: "Etapas de transformación del sistema clínico",
-    mapStages: ["Cuatro áreas, una tarea", "Mapeados", "Rediseñados", "En producción"],
+    mapStages: ["Una tarea, cuatro áreas", "Mapeada", "Rediseñada", "En el sistema en uso"],
   },
 
   sustainment: {
     kicker: "La prueba de verdad llegó después",
     title: "Lo que pasó después de que dejé ese puesto.",
     lede:
-      "TI lo aprobó cuando llegó el financiamiento y lo construyó tal como lo presenté. No sé qué cambió por detrás. Más tarde lo vi en producción mientras capacitaba a nuevos empleados.",
+      "TI lo aprobó cuando llegó el financiamiento y lo construyó tal como lo propuse. No sé qué cambió por detrás. Más tarde, mientras capacitaba a nuevos empleados, lo vi en el sistema en uso.",
     figcaption: "Qué pasó después de lanzar cada uno",
     shipped: "LANZADO",
     lanes: [
       {
-        name: "Flujo de archivo del EMR",
+        name: "Archivo en la historia clínica",
         events: [{ at: 0.42, label: "entregado a TI y UX" }],
-        outcome: "agregado al sistema de producción",
+        outcome: "agregado al sistema en uso",
       },
       {
-        name: "Formato de certificación de RCP",
-        events: [{ at: 0.5, label: "conforme un mes antes" }],
+        name: "Reescritura del curso de RCP",
+        events: [{ at: 0.5, label: "certificada un mes antes" }],
         outcome: "sin prórroga",
       },
     ],
     survived: [
-      { fact: "Flujo de archivo del EMR", what: "Agregado al sistema de producción; lo vi mientras capacitaba a nuevos empleados" },
-      { fact: "Formato de certificación de RCP", what: "Área conforme un mes antes de la fecha límite original, sin prórroga" },
+      { fact: "Archivo en la historia clínica", what: "Agregado al sistema en uso. Lo vi ahí mientras capacitaba a nuevos empleados." },
+      { fact: "Reescritura del curso de RCP", what: "Toda el área se certificó un mes antes de la fecha límite original. Sin prórroga." },
     ],
     why:
-      "El trabajo pasó de un desvío personal a un sistema compartido; el formato en lenguaje sencillo dejó al área conforme antes de la fecha límite.",
+      "Un desvío personal pasó a ser parte del sistema compartido. El curso en lenguaje sencillo logró que el área se certificara antes de la fecha límite.",
     proofLabel: "Perfil · MSK News",
     proofTitle: "Del ejército a Memorial Sloan Kettering",
     proofAria: "Leer el perfil de carrera de Hillary Esposito en MSK News (se abre en una pestaña nueva)",
@@ -755,25 +795,25 @@ const es: MskCopy = {
 
   outcomes: {
     kicker: "A cuánto sumó",
-    title: "Los números, y a quién pertenecen.",
+    title: "Qué cambió, y a quién le corresponde el mérito.",
     intro:
-      "Inicié el rediseño del flujo del panel al EMR en línea desde el puesto de coordinación, y se implementó a partir de mi presentación a la organización dos puestos después; reescribí el material de certificación de RCP para el personal clínico que debía completarlo; y reconstruí el programa de incorporación, Epic, HIPAA, cumplimiento y las habilidades técnicas y blandas, para el nuevo personal administrativo.",
-    disclaimer: "Evidencia anonimizada · los resultados de toda la organización se atribuyen a la iniciativa · los ~$1M/año son una proyección de mi propuesta, no un ahorro medido",
+      "Como coordinadora, impulsé que los mensajes del portal se archivaran directamente en la historia clínica en línea. Se construyó a partir de mi propuesta dos trabajos después. También reescribí el curso de RCP para el personal clínico que lo tomaba. Y reconstruí la capacitación del personal nuevo de oficina: Epic, HIPAA, cumplimiento y el trato con la gente que pide el puesto.",
+    disclaimer: "Detalles anonimizados · los resultados de todo el hospital son del esfuerzo completo, no solo míos · los ~$1M/año son una previsión de mi propuesta, no un ahorro medido",
     metrics: [
       { tag: "Dirigí", n: "1 mes", label: "antes: toda el área se certificó antes de la fecha límite original, sin la prórroga de 4 meses" },
       { tag: "Capacité", n: "~2,000", label: "nuevos empleados que capacité en Epic, HIPAA y cumplimiento, según mi estimación" },
-      { tag: "Contribuí a", n: "20%", label: "menos costos de impresión y escaneo, según mi revisión de las finanzas con el jefe del departamento de finanzas" },
+      { tag: "Contribuí a", n: "20%", label: "menos costos de impresión y escaneo, según mi revisión de las cifras con el jefe del departamento de finanzas" },
       { tag: "Proyección", n: "~$1M/año", label: "ahorro proyectado en papel en mi propuesta para la Feria de Mejora de Procesos, no un ahorro medido" },
     ],
-    route: ["Observar el trabajo real", "Mapear la falla", "Alinear el sistema", "Lograr que se construya"],
+    route: ["Observar el trabajo real", "Mapear el problema", "Sumar a todos los equipos", "Lograr que se construya"],
   },
 
   close: {
     title: "Encuentro el desvío. Después logro que se construya.",
-    body: "Lo mapeo para que cada área vea la misma falla, y luego lo convierto en una decisión que la organización va a construir.",
+    body: "Lo mapeo para que cada área vea el mismo problema. Luego lo convierto en un plan que el hospital va a construir.",
     cta: "Escríbame →",
   },
-  next: { eyebrow: "Siguiente estudio de caso", title: "Mobbin", tag: "Documentación de flujos UX · más de 200 pantallas por app" },
+  next: { eyebrow: "Siguiente estudio de caso", title: "Mobbin", tag: "Etiquetado de pantallas · tres apps financieras" },
 };
 
 export const MSK_COPY: Record<Lang, MskCopy> = { en, es };

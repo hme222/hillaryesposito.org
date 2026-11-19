@@ -93,7 +93,7 @@ describe("flagship case-study accessibility", () => {
     ["Medical logistics", <FlagshipLogistics />],
     ["Knowunity", <FlagshipKnowunity />],
     ["UX Woman", <FlagshipUxWoman />],
-    ["Grove", <RisoGrove />],
+    ["FloraGrove", <RisoGrove />],
     ["Home", <RisoHome />],
     ["About", <About />],
     ["404 recovery", <NotFoundPage />],
@@ -185,19 +185,19 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".rp-recruiterTourTrigger")).toBeNull();
   });
 
-  it("labels Grove redesign work as testable direction with retest pending", async () => {
+  it("labels FloraGrove redesign work as testable direction with retest pending", async () => {
     await act(async () => {
       root.render(<RisoGrove />);
     });
 
-    const hero = container.querySelector("#grove-start");
-    // The 5 / 37 / 3 trace ledger was cut (2026-11-17 repetition cut); the sub
-    // carries the same research-to-scope trace.
-    expect(hero?.textContent).toContain("I tested it with 5 people, then surveyed 37 to cut twelve features to three.");
-    expect(container.textContent).toContain("not completed redesigns");
-    expect(container.querySelectorAll('.rp-decisionRecord[aria-label="Grove’s three next-design directions"] dt')).toHaveLength(3);
+    // Pre-launch rebuild (2026-11-19): the research-to-scope trace now lives in
+    // the short story under the landing section.
+    expect(container.querySelector("#grove-research")?.textContent).toContain("From March to May 2026, I tested it with five people.");
+    expect(container.querySelector("#grove-survey")?.textContent).toContain("Twelve features became three.");
+    expect(container.textContent).toContain("not finished screens");
+    expect(container.querySelectorAll('.rp-decisionRecord[aria-label="FloraGrove’s three planned changes"] dt')).toHaveLength(3);
     expect(container.querySelectorAll(".rp-decision")).toHaveLength(0);
-    expect(container.textContent).toContain("Still unbuilt: high-fidelity redesign, edge states, and retest");
+    expect(container.textContent).toContain("Not built yet: the polished redesign, screens for empty or error moments, and a second round of testing");
   });
 
   it("ties each logistics result to its mechanism and its Officer Evaluation Report source", async () => {
@@ -208,14 +208,14 @@ describe("flagship case-study accessibility", () => {
     const hero = container.querySelector("#log-start");
     // The hero "Result" row was cut (2026-11-17 repetition cut); the sub carries
     // the before, the after, and its source.
-    expect(hero?.textContent).toContain("getting supplies took 1–2 months");
-    expect(hero?.textContent).toContain("Supplies then took 1–2 weeks, per my Officer Evaluation Report.");
-    expect(hero?.querySelector("h1")?.textContent).toBe("Resupply went from months to\u00a0weeks.");
-    expect(container.textContent).toContain("All three come from my Officer Evaluation Report");
-    expect(container.textContent).toContain("Measurement periods and methods were not preserved");
-    expect(container.textContent).toContain("1–\u20602\u00a0wkmedical resupply time");
-    expect(container.textContent).toContain("60%reduction in spending");
-    expect(container.textContent).toContain("15%critical supplies");
+    expect(hero?.textContent).toContain("restocking them took 1–2 months");
+    expect(hero?.textContent).toContain("Restocking then took 1–2 weeks, according to my Officer Evaluation Report");
+    expect(hero?.querySelector("h1")?.textContent).toBe("Service design for U.S.\u00a0Army medical supply, cutting resupply from months to\u00a0weeks");
+    expect(container.textContent).toContain("All three numbers come from my Officer Evaluation Report");
+    expect(container.textContent).toContain("Records of how and over what time they were measured were not kept");
+    expect(container.textContent).toContain("1–\u20602\u00a0wkto restock medical supplies");
+    expect(container.textContent).toContain("60%less spending");
+    expect(container.textContent).toContain("15%more efficient delivery of critical supplies");
   });
 
   it("keeps the active homepage shell targets and one work-first hero route intact", async () => {
@@ -246,11 +246,11 @@ describe("flagship case-study accessibility", () => {
 
     const rows = Array.from(container.querySelectorAll<HTMLAnchorElement>(".rp-index__row"));
     expect(rows.map((row) => row.getAttribute("href"))).toEqual([
-      "/case-study/ux-woman",
-      "/case-study/grove",
       "/case-study/msk",
-      "/case-study/logistics",
+      "/case-study/ux-woman",
       "/case-study/knowunity",
+      "/case-study/grove",
+      "/case-study/logistics",
       "/case-study/mobbin",
       "https://hme222.github.io/MTA_Accessibility_Trip_Planning/",
     ]);
@@ -283,31 +283,31 @@ describe("flagship case-study accessibility", () => {
       root.render(<FlagshipKnowunity />);
     });
 
-    expect(container.querySelector("h1")?.textContent).toBe("Their own words are the proof.");
+    expect(container.querySelector("h1")?.textContent).toBe("2.5-week design sprint with an edtech startup, run by Yummy\u00a0Labs");
     ["knowunity-start", "knowunity-brief", "knowunity-decisions", "knowunity-prototype", "knowunity-outcomes"].forEach((id) => {
       expect(container.querySelector(`#${id}`)).not.toBeNull();
     });
     expect(container.querySelectorAll(".rp-decisionStory__visual img")).toHaveLength(4);
     expect(container.querySelectorAll(".rp-decisionStory__visual img.is-on")).toHaveLength(1);
     expect(container.querySelectorAll(".rp-outcomes--two .rp-stat")).toHaveLength(2);
-    expect(container.textContent).toContain("recall is mocked");
-    expect(container.textContent).toContain("no student testing");
+    expect(container.textContent).toContain("the listening is faked");
+    expect(container.textContent).toContain("not tested with students");
     expect(container.textContent).not.toContain("instead of praise");
     ["642,000", "15.2%", "16.6%", "57.2%", "25%", "70%"].forEach((n) => expect(container.textContent).not.toContain(n));
 
     const storybook = container.querySelector<HTMLAnchorElement>('a[href*="chromatic.com"]');
     expect(storybook?.getAttribute("target")).toBe("_blank");
     expect(storybook?.hasAttribute("aria-label")).toBe(false);
-    expect(storybook?.querySelector(".rp-ext")?.textContent).toBe("Open the Storybook");
+    expect(storybook?.querySelector(".rp-ext")?.textContent).toBe("Open the parts catalog (Storybook)");
     // The public production domain; the older alias lands on a stale build.
     const prototype = container.querySelector<HTMLAnchorElement>('a[href*="knowunity-voice-recall"]');
     expect(prototype?.getAttribute("href")).toBe("https://knowunity-voice-recall-eight.vercel.app/");
-    expect(container.querySelector(".rp-next")?.getAttribute("href")).toBe("/case-study/logistics");
+    expect(container.querySelector(".rp-next")?.getAttribute("href")).toBe("/case-study/grove");
   });
 
   it.each([
-    ["en", "#knowunity-prototype", "Say It Back, the 52-second reel", "What the reel shows", "Recall is mocked: no real speech recognition.", "Music only; no narration."],
-    ["es", "#es-knowunity-prototype", "Say It Back, el video de 52 segundos", "Qué muestra el video", "El recuerdo es simulado: no hay reconocimiento de voz real.", "Solo música, sin narración."],
+    ["en", "#knowunity-prototype", "Say It Back, the 52-second reel", "What the reel shows", "The listening is faked: it can’t hear or grade real speech yet.", "Music only; no narration."],
+    ["es", "#es-knowunity-prototype", "Say It Back, el video de 52 segundos", "Qué muestra el video", "El prototipo, construido con el kit de diseño de Knowunity. La escucha es simulada: todavía no puede oír ni calificar voz real.", "Solo música, sin narración."],
   ])("plays the Knowunity reel only on request, with a text alternative (%s)", async (lang, sectionId, label, summary, caption, note) => {
     mockLang = lang;
     await act(async () => {
@@ -390,7 +390,7 @@ describe("flagship case-study accessibility", () => {
 
     // The badge's own name replaces the old "Design Sprint Badge" wording.
     expect(container.textContent).not.toMatch(/Design Sprint Badge|insignia Design Sprint /);
-    expect(container.textContent).toContain(lang === "en" ? "AI Design Sprinter badge" : "insignia AI Design Sprinter");
+    expect(container.textContent).toContain(lang === "en" ? "AI Design Sprinter badge" : "La insignia es la AI Design Sprinter");
     // Skill tags stay in the image, not the page text.
     expect(figure.textContent).not.toMatch(/Prompt|Vibe|Figma/i);
   });
@@ -401,14 +401,14 @@ describe("flagship case-study accessibility", () => {
       root.render(<FlagshipMSK />);
     });
     const chapterLinks = Array.from(container.querySelectorAll<HTMLAnchorElement>(".rp-chapters a"), (a) => a.textContent);
-    expect(chapterLinks).toEqual(["Problema", "Flujo", "Decisiones", "Rediseños", "Contexto", "Resultados"]);
+    expect(chapterLinks).toEqual(["Problema", "Lo que hice", "Reglas del botón", "Más arreglos", "Trasfondo", "Resultados"]);
     ["es-msk-start", "es-msk-brief", "es-msk-workflow", "es-msk-decisions", "es-msk-redesigns", "es-msk-systems", "es-msk-sustainment", "es-msk-outcomes"].forEach((id) => {
       expect(container.querySelector(`#${id}`)).not.toBeNull();
     });
     expect(container.querySelector("#es-msk-decisions")?.getAttribute("data-language-anchor")).toBe("msk-decisions");
     expect(container.querySelectorAll("#es-msk-decisions li")).toHaveLength(4);
     const text = container.textContent || "";
-    ["portal de pacientes", "un mes antes de la fecha límite original", "proyección", "Lo que pasó después de que dejé ese puesto.", "clínica, TI, HIM y operaciones"].forEach((phrase) => {
+    ["portal de pacientes", "un mes antes de la fecha límite original", "proyección", "Lo que pasó después de que dejé ese puesto.", "clínica, TI, operaciones y HIM"].forEach((phrase) => {
       expect(text).toContain(phrase);
     });
     expect(text).not.toContain("70%");
@@ -422,8 +422,8 @@ describe("flagship case-study accessibility", () => {
     const chapterLinks = Array.from(container.querySelectorAll<HTMLAnchorElement>(".rp-chapters a"), (a) => a.textContent);
     expect(chapterLinks).toEqual(["Problema", "Método", "Decisiones", "Apps", "Resultados"]);
     const text = container.textContent || "";
-    expect(text).toContain("Mobbin es una biblioteca de capturas de apps");
-    expect(text).toContain("Kikoff demuestra, Polymarket transparenta, Discover lo mantiene familiar.");
+    expect(text).toContain("Mobbin es un sitio donde los diseñadores buscan capturas de apps");
+    expect(text).toContain("Kikoff muestra el avance. Polymarket muestra el riesgo. Discover se siente familiar.");
     ["Remoto", "mar.–jun."].forEach((phrase) => expect(text).not.toContain(phrase));
   });
 
@@ -434,7 +434,7 @@ describe("flagship case-study accessibility", () => {
     });
 
     expect(container.querySelector("main")?.getAttribute("lang")).toBe("es");
-    expect(container.querySelector("h1")?.textContent).toContain("Las propias palabras del estudiante");
+    expect(container.querySelector("h1")?.textContent).toContain("Sprint de diseño de 2.5 semanas con una startup de tecnología educativa, dirigido por Yummy\u00a0Labs");
     expect(container.querySelector(".rp-breadcrumb")).toBeNull();
     expect(container.querySelector("#es-knowunity-decisions")).not.toBeNull();
     expect(container.textContent).not.toContain("en lugar de elogiarlo");
@@ -444,7 +444,7 @@ describe("flagship case-study accessibility", () => {
     await act(async () => {
       root.render(<FlagshipUxWoman />);
     });
-    expect(container.querySelector("h1")?.textContent).toBe("A letter with a deadline and no clear next\u00a0step.");
+    expect(container.querySelector("h1")?.textContent).toBe("Healthcare research based on changing Medicaid\u00a0requirements");
     expect(container.querySelector(".rp-heroEvidence dt")?.textContent).toBe("Role");
     ["uxwoman-start", "uxwoman-problem", "uxwoman-research", "uxwoman-findings", "uxwoman-guide", "uxwoman-next"].forEach((id) => {
       expect(container.querySelector(`#${id}`)).not.toBeNull();
@@ -455,7 +455,7 @@ describe("flagship case-study accessibility", () => {
     const text = container.textContent || "";
     // The limits stay on the page: no patient interviews, untested, and the
     // projection is labeled as a different measure from the observed count.
-    ["It is untested, and no patient was interviewed.", "UX Woman is a 7-month, mentor-led UX design accelerator.", "A projection and an observed count are different measures.", "Design concept, not an official notice.", "Built, not yet tested."].forEach((phrase) => {
+    ["It is untested, and no patient was interviewed.", "UX Woman is a 7-month, mentor-led UX design accelerator.", "Public data. One number is a forecast and one is a real count, so they don't compare directly.", "Design concept, not an official notice.", "Built, not yet tested."].forEach((phrase) => {
       expect(text).toContain(phrase);
     });
     // Dropped at Hillary's direction (2026-11-09): the adjacent HR interview and the five pretotypes.
@@ -473,8 +473,8 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".rp-breadcrumb")).toBeNull();
     expect(container.querySelector("#es-uxwoman-findings")).not.toBeNull();
     expect(container.querySelector("#es-uxwoman-guide")).not.toBeNull();
-    expect(container.querySelector("h1")?.textContent).toBe("Una carta con un plazo y sin un siguiente paso\u00a0claro.");
-    expect(container.textContent).toContain("UX Woman es una aceleradora de diseño UX de 7 meses, guiada por mentores.");
+    expect(container.querySelector("h1")?.textContent).toBe("Investigación en salud basada en los requisitos cambiantes de\u00a0Medicaid");
+    expect(container.textContent).toContain("UX Woman es una aceleradora de diseño de experiencia de usuario (UX) de 7 meses, guiada por mentores.");
     expect(container.textContent).toContain("no se entrevistó a ningún paciente");
     ["UserTesting", "pretotipo"].forEach((phrase) => expect(container.textContent).not.toContain(phrase));
   });
@@ -484,16 +484,16 @@ describe("flagship case-study accessibility", () => {
       root.render(<FlagshipUxWoman />);
     });
     const next = container.querySelector(".rp-next");
-    expect(next?.getAttribute("href")).toBe("/case-study/mobbin");
-    expect(next?.textContent).toContain("Mobbin");
+    expect(next?.getAttribute("href")).toBe("/case-study/knowunity");
+    expect(next?.textContent).toContain("Knowunity");
   });
 
   it.each([
-    ["MSK", <FlagshipMSK />, "/case-study/grove", "Grove"],
-    ["Grove", <RisoGrove />, "/case-study/knowunity", "Knowunity"],
-    ["Knowunity", <FlagshipKnowunity />, "/case-study/logistics", "Medical logistics"],
-    ["Medical logistics", <FlagshipLogistics />, "/case-study/ux-woman", "UX Woman"],
-    ["UX Woman", <FlagshipUxWoman />, "/case-study/mobbin", "Mobbin"],
+    ["MSK", <FlagshipMSK />, "/case-study/ux-woman", "UX Woman"],
+    ["UX Woman", <FlagshipUxWoman />, "/case-study/knowunity", "Knowunity"],
+    ["Knowunity", <FlagshipKnowunity />, "/case-study/grove", "FloraGrove"],
+    ["FloraGrove", <RisoGrove />, "/case-study/logistics", "Medical logistics"],
+    ["Medical logistics", <FlagshipLogistics />, "/case-study/mobbin", "Mobbin"],
     ["Mobbin", <FlagshipMobbin />, "/case-study/msk", "Memorial Sloan\u00a0Kettering"],
   ])("keeps the approved next-case sequence from %s", async (_name, page, href, title) => {
     await act(async () => {
@@ -507,41 +507,54 @@ describe("flagship case-study accessibility", () => {
     expect(next?.querySelector(".rp-next__tag")).toBeNull();
   });
 
-  it("names Grove's chapters Problem → Research → Decisions → Changes → Outcomes, in both languages", async () => {
+  it("names FloraGrove's pre-launch chapters First test → Survey → Next, in both languages", async () => {
     await act(async () => {
       root.render(<RisoGrove />);
     });
-    expect(Array.from(container.querySelectorAll(".rp-chapters a"), (a) => a.textContent)).toEqual(["Research", "Decisions", "Changes", "Outcomes"]);
-    expect(container.querySelector("#grove-override")).not.toBeNull();
+    expect(Array.from(container.querySelectorAll(".rp-chapters a"), (a) => a.textContent)).toEqual(["First test", "Survey", "Next"]);
+    expect(container.querySelector("#grove-survey")).not.toBeNull();
+    // The old Changes and Outcomes chapters were cut with the pre-launch rebuild.
+    expect(container.querySelector("#grove-override")).toBeNull();
+    expect(container.querySelector("#grove-outcomes")).toBeNull();
 
     mockLang = "es";
     await act(async () => {
       root.render(<RisoGrove />);
     });
-    expect(Array.from(container.querySelectorAll(".rp-chapters a"), (a) => a.textContent)).toEqual(["Problema", "Investigación", "Decisiones", "Cambios", "Resultados"]);
-    expect(container.querySelector("#es-grove-override")).not.toBeNull();
+    expect(Array.from(container.querySelectorAll(".rp-chapters a"), (a) => a.textContent)).toEqual(["Primera prueba", "Encuesta", "Siguiente"]);
+    expect(container.querySelector("#es-grove-survey")).not.toBeNull();
+    // Each Spanish chapter shares its anchor with an English section, so the
+    // language switch lands in place.
+    ["grove-research", "grove-survey", "grove-decisions"].forEach((id) => {
+      expect(container.querySelector(`#es-${id}`)).not.toBeNull();
+    });
+    const waitlist = container.querySelector<HTMLAnchorElement>('#es-grove-start a[href="https://floragrove.app"]');
+    expect(waitlist?.textContent).toContain("Unirse a la lista de espera");
+    expect(waitlist?.getAttribute("target")).toBe("_blank");
+    expect(waitlist?.getAttribute("rel")).toContain("noopener");
+    expect(waitlist?.textContent).toContain("(se abre en una pestaña nueva)");
+    expect(container.textContent).toContain("Antes del lanzamiento");
+    expect(container.textContent).not.toMatch(/Emergent/);
   });
 
-  it("leads Grove's outcomes with the 3 features under a phase bar", async () => {
+  it("keeps FloraGrove's phase bar and phase explainer in the next-steps chapter", async () => {
     await act(async () => {
       root.render(<RisoGrove />);
     });
-    const outcomes = container.querySelector("#grove-outcomes");
-    expect(outcomes?.querySelector('.rp-phase__track[aria-label="Functional prototype · Phase 2 of 3"]')).not.toBeNull();
-    expect(outcomes?.querySelector(".rp-disclaimer")).toBeNull();
-    expect(outcomes?.querySelector(".rp-outcomes--lead")).not.toBeNull();
-    expect(Array.from(outcomes?.querySelectorAll(".rp-stat__n") || [], (n) => n.textContent)).toEqual(["3", "37"]);
-    expect(outcomes?.textContent).toContain("functional prototype in Phase 2 of 3");
-    expect(outcomes?.textContent).toContain("What the three phases mean");
+    const next = container.querySelector("#grove-decisions");
+    expect(next?.querySelector('.rp-phase__track[aria-label="Functional prototype · Phase 2 of 3"]')).not.toBeNull();
+    expect(next?.querySelector(".rp-disclaimer")).toBeNull();
+    expect(next?.textContent).toContain("functional prototype in Phase 2 of 3");
+    expect(next?.textContent).toContain("What the three phases mean");
   });
 
-  it("sends Grove's next-case-study band to Knowunity", async () => {
+  it("sends FloraGrove's next-case-study band to Medical logistics", async () => {
     await act(async () => {
       root.render(<RisoGrove />);
     });
     const next = container.querySelector<HTMLAnchorElement>(".rp-next");
-    expect(next?.getAttribute("href")).toBe("/case-study/knowunity");
-    expect(next?.textContent).toContain("Knowunity");
+    expect(next?.getAttribute("href")).toBe("/case-study/logistics");
+    expect(next?.textContent).toContain("Medical logistics");
   });
 
   // The product-led "Draft A" (rotating MSK/Grove/Army showcase) and
@@ -576,8 +589,8 @@ describe("flagship case-study accessibility", () => {
     const more = container.querySelector("#home-more-work");
     const rows = Array.from(more?.querySelectorAll<HTMLAnchorElement>(".rp-index__row") ?? []);
     expect(rows.map((r) => r.getAttribute("href"))).toEqual([
+      "/case-study/grove",
       "/case-study/logistics",
-      "/case-study/knowunity",
       "/case-study/mobbin",
       "https://hme222.github.io/MTA_Accessibility_Trip_Planning/",
     ]);
@@ -608,7 +621,7 @@ describe("flagship case-study accessibility", () => {
   // reader had the argument. All three were removed on 2026-08-03 at Hillary's
   // request. Asserted rather than merely absent so they cannot creep back.
   it.each([
-    ["Grove", <RisoGrove />],
+    ["FloraGrove", <RisoGrove />],
     ["Mobbin", <FlagshipMobbin />],
     ["MSK", <FlagshipMSK />],
   ])("%s carries no evidence-poster decision trace", async (_name, page) => {
@@ -657,8 +670,10 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".fp-mskLens__controls")).toBeNull();
     expect(Array.from(container.querySelectorAll("h2, h3"), (heading) => heading.textContent))
       .not.toContain("My filing queue");
-    // Provenance is stated once on the page (density pass, 2026-10-16).
-    expect(container.textContent?.toLowerCase().split("no patient data").length).toBe(2);
+    // Provenance (density pass, 2026-10-16) is stated in full once, in "Where
+    // this comes from", and since 2026-11-19 as a one-line "Built from" caption on
+    // each MSK visual (hero journey and blueprint). No other repeats.
+    expect(container.textContent?.toLowerCase().split("no patient data").length).toBe(4);
     // The queue's "anonymized internal tool concept" label left with the queue screen.
     expect(container.textContent?.toLowerCase()).not.toContain("anonymized internal tool concept");
   });
@@ -705,8 +720,8 @@ describe("flagship case-study accessibility", () => {
       root.render(<RisoGrove />);
     });
     expect(container.querySelectorAll(".rp-deepDive__meta")).toHaveLength(0);
-    expect(container.textContent).toContain("Inspect Grove’s complete research evidence");
-    expect(container.textContent).toContain("Try the full Grove prototype system");
+    expect(container.textContent).toContain("See the rest of the survey ranking");
+    expect(container.textContent).not.toContain("see how I built it");
     expect(container.textContent).not.toContain("Walk the route");
   });
 
@@ -725,8 +740,8 @@ describe("flagship case-study accessibility", () => {
 
     const dialog = container.querySelector<HTMLDialogElement>(".recruiter-panel");
     expect(dialog?.open).toBe(true);
-    expect(dialog?.textContent).toContain("Grove");
-    expect(dialog?.textContent).toContain("MSK · A filing queue replaced a four-department paper detour");
+    expect(dialog?.textContent).toContain("Healthcare research based on changing Medicaid requirements");
+    expect(dialog?.textContent).toContain("Service design project for Memorial Sloan Kettering Cancer Center");
     expect(dialog?.textContent).toContain("See all work");
 
     const projectTitles = Array.from(
@@ -734,9 +749,9 @@ describe("flagship case-study accessibility", () => {
       (item) => item.textContent,
     );
     expect(projectTitles).toEqual([
-      "MSK · A filing queue replaced a four-department paper detour",
-      "Grove · Twelve features became three",
-      "Knowunity · The student’s own words are the proof",
+      "Service design project for Memorial Sloan Kettering Cancer Center",
+      "Healthcare research based on changing Medicaid requirements",
+      "2.5-week design sprint with an edtech startup, run by Yummy Labs",
     ]);
     expect(dialog?.textContent).toContain("I mapped the four-department workaround and presented the queue to leadership and IT, who later built it.");
     expect(dialog?.textContent?.toLowerCase()).not.toContain(["functional", "beta"].join(" "));
@@ -802,10 +817,10 @@ describe("flagship case-study accessibility", () => {
   });
 
   it.each([
-    ["MSK", <FlagshipMSK />, "One queue. Four teams.", "Where this comes from"],
-    ["Grove", <RisoGrove />, "Twelve features became three.", "self-report prioritized the next build"],
-    ["Mobbin", <FlagshipMobbin />, "200+ screens per app, searchable by task.", "I did not design"],
-  ])("%s leads with an outcome title and visible evidence boundary", async (_name, page, title, boundary) => {
+    ["MSK", <FlagshipMSK />, "Service design project for Memorial Sloan Kettering Cancer\u00a0Center", "Where this comes from"],
+    ["FloraGrove", <RisoGrove />, "Product design and research for FloraGrove, a pre-launch plant-care\u00a0app", "it does not prove what people would actually do"],
+    ["Mobbin", <FlagshipMobbin />, "Freelance documentation of three finance apps for\u00a0Mobbin", "I did not design"],
+  ])("%s leads with a project-label title and visible evidence boundary", async (_name, page, title, boundary) => {
     await act(async () => {
       root.render(page);
     });
@@ -817,7 +832,7 @@ describe("flagship case-study accessibility", () => {
   it.each([
     ["MSK", <FlagshipMSK />],
     ["Medical logistics", <FlagshipLogistics />],
-    ["Grove", <RisoGrove />],
+    ["FloraGrove", <RisoGrove />],
     ["Mobbin", <FlagshipMobbin />],
     ["Knowunity", <FlagshipKnowunity />],
     ["UX Woman", <FlagshipUxWoman />],
@@ -839,14 +854,120 @@ describe("flagship case-study accessibility", () => {
     expect(precedes(orientationEnd, artifact)).toBe(true);
   });
 
+  // Synthesis-lens review (2026-11-19): what is observed, built and designed is
+  // said in words on the visuals themselves, not only in a collapsed note.
+  describe("MSK synthesis-lens fixes", () => {
+    const render = async () => {
+      await act(async () => {
+        root.render(<FlagshipMSK />);
+      });
+    };
+
+    it("tags the two After nodes that are her design, in text, with a legend", async () => {
+      await render();
+      const blueprint = container.querySelector(".fp-blueprint")!;
+      const after = Array.from(blueprint.querySelectorAll("button")).find((b) => b.textContent?.startsWith("After"));
+      await act(async () => after?.click());
+      const tags = Array.from(blueprint.querySelectorAll(".fp-blueprint__design text"))
+        .filter((t) => t.textContent === "my design, not MSK’s");
+      expect(tags).toHaveLength(2);
+      const tagged = Array.from(blueprint.querySelectorAll(".fp-blueprint__design"), (g) => g.textContent);
+      expect(tagged.some((t) => t?.includes("Ready + role"))).toBe(true);
+      expect(tagged.some((t) => t?.includes("Permission"))).toBe(true);
+      // The legend is real text, outside the aria-hidden drawing.
+      const legend = blueprint.querySelector("ul.fp-blueprint__legend");
+      expect(legend?.closest("[aria-hidden='true']")).toBeNull();
+      const items = Array.from(legend?.querySelectorAll("li") ?? [], (li) => li.textContent);
+      expect(items).toEqual([
+        "Before: what I saw (observed)",
+        "After, solid boxes: built by IT and UX",
+        "Dotted boxes: my design, not MSK’s",
+      ]);
+      // Before: no design tags.
+      const before = Array.from(blueprint.querySelectorAll("button")).find((b) => b.textContent?.startsWith("Before"));
+      await act(async () => before?.click());
+      expect(blueprint.querySelectorAll(".fp-blueprint__design")).toHaveLength(0);
+    });
+
+    it("puts a Built from line under the blueprint and the hero journey", async () => {
+      await render();
+      const builtFrom = /^Built from memory of my own notes on the work\. No patient data\. My counts were lost, so I make no claim about how often this happened\.$/;
+      const blueprintSource = container.querySelector(".fp-blueprint .fp-blueprint__source");
+      expect(blueprintSource?.textContent).toMatch(builtFrom);
+      expect(blueprintSource?.closest("[aria-hidden='true']")).toBeNull();
+      const journeyCaption = container.querySelector(".fp-heroArt--msk .msk-journey figcaption");
+      expect(journeyCaption?.textContent).toContain("Illustration, not a screenshot.");
+      expect(journeyCaption?.querySelector(".msk-journey__source")?.textContent).toMatch(builtFrom);
+      // The collapsed provenance note stays.
+      expect(container.textContent).toContain("Where this comes from");
+    });
+
+    it("labels the wait band as not measured", async () => {
+      await render();
+      const svgText = Array.from(container.querySelectorAll(".fp-blueprint svg text"), (t) => t.textContent).join(" ");
+      expect(svgText).toContain("coordinator is waiting");
+      expect(svgText).toContain("(length not measured)");
+    });
+
+    it("gives the scrolling drawing a focusable, named region", async () => {
+      await render();
+      const region = container.querySelector(".fp-blueprint__canvas");
+      expect(region?.getAttribute("role")).toBe("region");
+      expect(region?.getAttribute("tabindex")).toBe("0");
+      expect(region?.getAttribute("aria-label")).toMatch(/scroll sideways/i);
+      expect(region?.querySelector("svg")?.getAttribute("aria-hidden")).toBe("true");
+    });
+
+    it("says how the four button rules could be checked, keeping the original measures", async () => {
+      await render();
+      const head = container.querySelector("#msk-decisions .rp-decisionStory__head");
+      expect(head?.textContent).toContain("They are not MSK’s actual design.");
+      expect(head?.querySelector(".rp-decisionStory__note")?.textContent).toBe(
+        "How I’d check them: minutes from a message arriving to it landing in the chart, messages filed to the wrong patient’s chart, and pages printed.",
+      );
+      expect(container.querySelector("#msk-sustainment")?.textContent).toContain(
+        "I would have tracked three things: minutes from a message arriving to it landing in the chart",
+      );
+    });
+
+    it("states the two-more-places theme as her reading, true of both cards, with illustration labels", async () => {
+      await render();
+      const section = container.querySelector("#msk-redesigns")!;
+      expect(section.querySelector("h2")?.textContent).toBe("I found the same problem in two more places.");
+      expect(section.querySelector(".rp-lede")?.textContent).toBe(
+        "My reading of the pattern: both were written for someone other than the person using them. Clinicians got legal language. New hires got one course for every skill level.",
+      );
+      expect(section.textContent).not.toContain("couldn’t tell what to do next");
+      expect(Array.from(section.querySelectorAll(".fp-redesigns__source"), (p) => p.textContent)).toEqual([
+        "Illustration, not the real text.",
+        "Illustration, not the real course.",
+      ]);
+      // The new-hire drawing shows its After as well as its Before.
+      const cards = section.querySelectorAll("article");
+      const drawing = cards[1].querySelector(".fp-mechanism svg")?.textContent ?? "";
+      expect(drawing).toContain("BEFORE");
+      expect(drawing).toContain("AFTER");
+      expect(drawing).toContain("ADJUSTED FOR EACH GROUP");
+    });
+
+    it("mirrors the theme and check lines in Spanish", async () => {
+      mockLang = "es";
+      await render();
+      const text = container.textContent || "";
+      expect(text).toContain("Mi lectura del patrón:");
+      expect(text).not.toContain("la gente no sabía qué hacer después");
+      expect(container.querySelector("#es-msk-decisions")?.textContent).toContain("Cómo las comprobaría:");
+    });
+  });
+
   it("keeps MSK's workflow chapter focused on evidence instead of repeating its process", async () => {
     await act(async () => {
       root.render(<FlagshipMSK />);
     });
 
-    expect(container.textContent).toContain("What I did.");
+    expect(container.textContent).toContain("I talked to every team the paper touched.");
     expect(container.querySelector(".fp-systemCards")).toBeNull();
-    expect(container.textContent).toContain("Service-design scope:");
+    expect(container.textContent).toContain("My scope:");
     expect(container.textContent).toContain("I make no claim about how often this happened.");
   });
 
@@ -869,56 +990,54 @@ describe("flagship case-study accessibility", () => {
     expect(nextProject?.getAttribute("href")).toBe("/case-study/msk");
   });
 
-  it("Grove system lab mounts every tab panel and toggles a real source disclosure", async () => {
+  // Pre-launch rebuild (2026-11-19, Hillary's direction): the page is a short
+  // landing section plus a short research story. The build-process material
+  // (system lab, Storybook link, "AI's job / My job") and every mention of the
+  // AI app builder behind the first version are gone, and must stay gone.
+  it("opens FloraGrove with a pre-launch landing: label, video, and waitlist link", async () => {
     await act(async () => {
       root.render(<RisoGrove />);
     });
 
-    // Every tab's aria-controls must resolve to a mounted panel (no dead refs).
-    ["reminder", "confidence", "safety"].forEach((id) => {
-      const panel = container.querySelector(`#grove-panel-${id}`);
-      expect(panel).not.toBeNull();
-      expect(panel?.getAttribute("role")).toBe("tabpanel");
-    });
+    const hero = container.querySelector<HTMLElement>("#grove-start");
+    expect(hero?.querySelector(".rp-eyebrow")?.textContent).toBe("Pre-launch");
+    expect(hero?.textContent).toContain("Pre-launch: nothing here has shipped. FloraGrove is a functional prototype in Phase 2 of 3.");
+    expect(hero?.textContent).toContain("what each plant needs today, from water and light to soil, and why");
 
-    // The "Check sources" control actually reveals a source panel (not a dead button).
-    const sources = container.querySelector<HTMLElement>("#grove-id-sources");
-    expect(sources).not.toBeNull();
-    expect(sources?.hidden).toBe(true);
+    const waitlist = hero?.querySelector<HTMLAnchorElement>('a[href="https://floragrove.app"]');
+    expect(waitlist?.textContent).toContain("Join the waitlist");
+    expect(waitlist?.getAttribute("target")).toBe("_blank");
+    expect(waitlist?.getAttribute("rel")).toBe("noopener noreferrer");
+    expect(waitlist?.querySelector(".sr-only")?.textContent).toBe(" (opens in new tab)");
+    // No form on this site: sign-up happens on FloraGrove's own page.
+    expect(container.querySelector("form")).toBeNull();
+    expect(container.querySelector('input[type="email"]')).toBeNull();
 
-    const checkSources = Array.from(container.querySelectorAll("button")).find(
-      (button) => button.textContent === "Check sources",
-    );
-    expect(checkSources).toBeTruthy();
-    expect(checkSources?.getAttribute("aria-controls")).toBe("grove-id-sources");
-    await act(async () => checkSources?.click());
-    expect(sources?.hidden).toBe(false);
+    const video = hero?.querySelector<HTMLVideoElement>("video");
+    expect(video?.getAttribute("aria-label")).toContain("Made-up sample data. No sound. Plays on repeat.");
+    expect(video?.getAttribute("poster")).toBe("/assets/grove/grove-demo-poster.jpg");
+    const toggle = hero?.querySelector<HTMLButtonElement>(".rp-demoLoop__btn");
+    expect(toggle?.getAttribute("aria-pressed")).not.toBeNull();
+    expect(toggle?.textContent).toMatch(/^(Play|Pause) prototype video$/);
+    expect(hero?.textContent).toContain("made-up sample data");
+
+    expect(container.textContent).not.toMatch(/Emergent/);
+    // Never framed as a beta, a launch, or something you can get today.
+    expect(container.textContent).not.toMatch(/\bbeta\b|\blaunched\b|available now|download now/i);
   });
 
-  it("keeps Grove prototype detail optional on ordinary visits", async () => {
+  it("FloraGrove no longer renders the system lab, Storybook link, or build-process records", async () => {
     await act(async () => {
       root.render(<RisoGrove />);
     });
 
-    const details = container.querySelector<HTMLDetailsElement>("#grove-prototype");
-    const heroAction = container.querySelector<HTMLAnchorElement>('#grove-start a[href="#grove-research"]');
-    expect(details).not.toBeNull();
-    expect(details?.open).toBe(false);
-    expect(container.querySelector('a[href="#grove-prototype"]')).toBeNull();
-    expect(heroAction).toBeNull();
-  });
-
-  it("leaves Grove hash disclosure ownership to the shared chrome without focus theft", async () => {
-    window.history.replaceState(null, "", "/case-study/grove#grove-prototype");
-    await act(async () => {
-      root.render(<RisoGrove />);
-    });
-    const details = container.querySelector<HTMLDetailsElement>("#grove-prototype");
-    const summary = details?.querySelector<HTMLElement>("summary");
-    expect(details?.open).toBe(false);
-    expect(document.activeElement).not.toBe(summary);
-    expect(summary?.textContent).toContain("Try the full Grove prototype system");
-    expect(summary?.textContent).not.toContain("Prototype on this page");
+    expect(container.querySelector("#grove-prototype")).toBeNull();
+    expect(container.querySelector("#grove-panel-reminder")).toBeNull();
+    expect(container.querySelector('a[href*="grove-ui"]')).toBeNull();
+    expect(container.textContent).not.toContain("Storybook");
+    expect(container.textContent).not.toContain("AI’s job");
+    expect(container.textContent).not.toContain("How I built the prototype");
+    expect(container.textContent).not.toMatch(/Claude Code|AI app builder|AI tool built/);
   });
 
   it("does not insert a completion modal into the case-study reading path", async () => {
@@ -932,7 +1051,7 @@ describe("flagship case-study accessibility", () => {
   });
 
   it.each([
-    ["Grove", <RisoGrove />],
+    ["FloraGrove", <RisoGrove />],
     ["MSK", <FlagshipMSK />],
     ["Mobbin", <FlagshipMobbin />],
     ["Knowunity", <FlagshipKnowunity />],

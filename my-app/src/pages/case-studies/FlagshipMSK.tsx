@@ -11,10 +11,12 @@ import MSKJourney from "../../components/MSKJourney";
 import MSKServiceBlueprint from "../../components/MSKServiceBlueprint";
 import MSKMechanism from "../../components/MSKMechanism";
 import MSKSustainment from "../../components/MSKSustainment";
+import ResultLine from "../../components/flagship/ResultLine";
 import RisoDefs from "../../components/riso/RisoDefs";
 import CartoField from "../../components/riso/CartoField";
 import SpanishCaseStudy from "../../components/SpanishCaseStudy";
 import { MSK_ES } from "../../data/spanishCaseStudies";
+import { MSK_COPY } from "../../data/mskCaseStudy";
 import useFlagshipReveal from "../../hooks/useFlagshipReveal";
 import usePageTitle from "../../hooks/usePageTitle";
 import "../../styles/riso-page.css";
@@ -25,25 +27,25 @@ const MSKSystemMap = lazy(() => import("../../components/MSKSystemMap"));
 const CHAPTERS: CaseStudyChapter[] = [
   { id: "msk-start", label: "Start" },
   { id: "msk-brief", label: "Problem" },
-  { id: "msk-workflow", label: "Workflow" },
-  { id: "msk-decisions", label: "Decisions" },
-  { id: "msk-redesigns", label: "Redesigns" },
-  { id: "msk-systems", label: "Context" },
-  { id: "msk-outcomes", label: "Outcomes" },
+  { id: "msk-workflow", label: "What I did" },
+  { id: "msk-decisions", label: "Button rules" },
+  { id: "msk-redesigns", label: "More fixes" },
+  { id: "msk-systems", label: "Background" },
+  { id: "msk-outcomes", label: "Results" },
 ];
 
 const ROLE_METHODS: Record<string, { term: string; body: string }> = {
   "01": {
     term: "Lean Six Sigma Green Belt (Purdue) · Master of Healthcare Administration (Rutgers)",
-    body: "Both finished in this seat, while I was running a clinic’s paperwork. The Green Belt, a process-improvement certification, is the lens that showed one filing task crossing four departments.",
+    body: "I finished both in this job, while running a clinic’s paperwork. The Green Belt is a certificate in improving how work gets done. It’s how I saw one filing task passing through four departments.",
   },
   "02": {
-    term: "Writing for the person who has to act",
-    body: "No certificate for this one. I rewrote legal copy for the person who has to act.",
+    term: "Writing for the person doing the task",
+    body: "No certificate for this one. I rewrote legal language for the people who had to follow it.",
   },
   "03": {
-    term: "Training & Facilitation (ATD) · current-state mapping",
-    body: "I instructed on Epic (the record software), HIPAA (the patient-privacy law), and the compliance modules. Owning how staff were taught the system meant documenting what actually happens, not what the policy says, and the gap between the two is where the design work lives.",
+    term: "Training & Facilitation (ATD, the Association for Talent Development) · mapping how work really happens",
+    body: "I taught Epic (the medical record software), HIPAA (the patient-privacy law), and the compliance courses. To teach the system well, I wrote down what staff really did, not what the policy said. The gap between the two is where the design work is.",
   },
 };
 
@@ -51,15 +53,15 @@ const ROLE_METHODS: Record<string, { term: string; body: string }> = {
 // portfolio recreation's design, not part of the button MSK built (IT and UX
 // implemented it after she changed roles). The intro says so; keep it that way.
 const DECISIONS = [
-  { n: "01", title: "Show the action only when the record is ready", body: "Staff stop opening records that still need review.", note: "Ready means actionable" },
-  { n: "02", title: "Make permission limits visible", body: "View-only roles see status and ownership, not a disabled mystery button.", note: "Permission is product logic" },
-  { n: "03", title: "Separate blocked from not started", body: "Exceptions get a reason and an owner, so the backlog stops hiding them.", note: "Blocked needs an owner" },
-  { n: "04", title: "Return people to the queue", body: "Staff land back where they started, status updated.", note: "Preserve place and context" },
+  { n: "01", title: "Show the button only when the message is ready", body: "So staff don’t open messages that still need a review.", note: "Ready means you can act on it" },
+  { n: "02", title: "Show who is allowed to file", body: "Staff who can only view see the status and who has it, not a gray button with no reason.", note: "Who can do what is part of the design" },
+  { n: "03", title: "Tell stuck messages apart from new ones", body: "A stuck message gets a reason and a person in charge, so it can’t hide in the pile.", note: "Stuck needs a person" },
+  { n: "04", title: "Send people back to the queue", body: "After filing, staff land where they started, with the status updated.", note: "Don’t lose their place" },
 ];
 
 const ROLES = [
-  { n: "01", role: "Office Coordinator", taught: "Where people paused" },
-  { n: "02", role: "Administrative Assistant", taught: "How to brief people who have to act" },
+  { n: "01", role: "Office Coordinator", taught: "Where people got stuck" },
+  { n: "02", role: "Administrative Assistant", taught: "How to write for the person doing the task" },
   { n: "03", role: "Training Facilitator", taught: "The authority to redesign it" },
 ];
 
@@ -67,10 +69,10 @@ const ROLES = [
 // system shipped, limited to what msk.md supports (see the lanes' comment).
 const SURVIVED: { fact: string; what: React.ReactNode }[] = [
   {
-    fact: "EMR filing workflow",
-    what: "Added to the production system; I saw it while training new employees",
+    fact: "Filing to the chart",
+    what: "Added to the live system. I saw it there while training new employees.",
   },
-  { fact: "CPR certification format", what: "Department compliant a month before the original deadline, no extension needed" },
+  { fact: "CPR course rewrite", what: "The whole department certified a month before the original deadline. No extension needed." },
   // "Clinician onboarding — still in use after three leadership transitions"
   // was removed on 2026-08-03. The programme was not clinician onboarding, and
   // the three-transitions claim was attached to that wrong description; nothing
@@ -87,18 +89,21 @@ const SURVIVED: { fact: string; what: React.ReactNode }[] = [
 // drawing cannot, and stops narrating the thing it can.
 // The EMR filing card was cut 2026-11-17 (repetition cut): it repeated the
 // main workflow inside a section titled "two more places".
-const REDESIGNS: { n: string; title: React.ReactNode; finding: string; change: string; wrong?: string }[] = [
+// Each drawing is labelled as an illustration (synthesis-lens review 2026-11-19).
+const REDESIGNS: { n: string; title: React.ReactNode; finding: string; change: string; illustration: string; wrong?: string }[] = [
   {
     n: "02",
     title: "CPR certification",
-    finding: "Technical, legal copy kept clinicians from finishing CPR (cardiopulmonary resuscitation) certification.",
-    change: "The whole department certified a month before the original deadline.",
+    finding: "The CPR (cardiopulmonary resuscitation) course was written in technical, legal language, so clinicians weren’t finishing it.",
+    change: "I rewrote it in plain language. The whole department certified a month before the original deadline.",
+    illustration: "Illustration, not the real text.",
   },
   {
     n: "03",
-    title: "Administrative onboarding",
-    finding: "One course ignored radically different starting skills.",
-    change: "Cohort-specific instruction adapted a one-to-three-week program to the people in the room.",
+    title: "Training new office staff",
+    finding: "Every new hire got the same course, no matter how much they already knew.",
+    change: "I adjusted the one-to-three-week program for each group of new hires, based on who was in the room.",
+    illustration: "Illustration, not the real course.",
   },
 ];
 
@@ -134,9 +139,9 @@ export default function FlagshipMSK() {
         />
         <div className="rp-hero__content">
           <div className="rp-clearing">
-            <h1 className="rp-h1">One queue. Four teams.</h1>
+            <h1 className="rp-h1">Service design project for Memorial <span className="rp-keep">Sloan Kettering</span> Cancer{"\u00a0"}Center</h1>
             <p className="rp-sub">
-              Patient portal messages lived outside the medical record, so I printed them and we waited for them to be scanned in. I suggested a Send to EMR button so they would file straight to the record. <b>The hospital’s information technology (IT) and user experience (UX) teams built the real version.</b>
+              As an office coordinator, I mapped how messages from the patient portal, the website patients use to write to their care team, moved through four departments, and I proposed a fix. The messages didn’t save to the patient’s electronic medical record (EMR), the digital chart. So I printed them, and we waited for them to be scanned in. I suggested a Send to EMR button so they would file straight to the record. <b>The hospital’s information technology (IT) and user experience (UX) teams built the real version.</b>
             </p>
             {/* The "Role route" row (her career path) was cut 2026-11-15 at
                 Hillary's direction: Lex asked for her role on this project,
@@ -153,6 +158,8 @@ export default function FlagshipMSK() {
         </div>
       </header>
 
+      <ResultLine eyebrow="What changed" text="Six steps became five, and one department dropped out." />
+
       <div data-evidence="true"><MSKFilingReceipt /></div>
 
       <section className="rp-section" id="msk-workflow" data-language-anchor="msk-workflow">
@@ -160,7 +167,7 @@ export default function FlagshipMSK() {
           {/* The "recreated and anonymized" qualifier moved to the figcaption
               below, which already carries it — so the kicker is free to be a
               beat instead of a provenance label. */}
-          <h2 className="rp-title">What I did.</h2>
+          <h2 className="rp-title">I talked to every team the paper touched.</h2>
           {/* "The Detour" animatic was removed 2026-10-13 at the owner’s direction
               (the deterministic version was rejected at taste review on
               2026-08-31; the generated video was scrapped the same day). */}
@@ -170,11 +177,11 @@ export default function FlagshipMSK() {
               claim (the former "Evidence boundary" aside). */}
           {/* The word-for-word step lists were cut 2026-11-17 (repetition cut):
               both journey pictures already list the six and five steps as text. */}
-          <p className="rp-lede rp-reveal">I talked with every department it touched (clinical, IT, health information management, and operations) and worked with leadership on the rollout. I worked through the decisions with IT and UX in a full pitch, so the change was ready to go once it was funded.</p>
-          <p className="rp-lede rp-reveal">The visible change is one fewer step. The service change is one fewer department touching the record.</p>
+          <p className="rp-lede rp-reveal">That was four departments: clinical, IT, operations, and health information management (HIM), the team that scans paper into charts. I worked with leadership on the rollout. I walked IT and UX through every decision in a full pitch, so the change was ready to build once it was funded.</p>
+          <p className="rp-lede rp-reveal">On screen, the change was one fewer step. Behind the scenes, one whole department no longer had to handle the message.</p>
           <CaseMore label="Where this comes from">
             <div className="rp-note rp-reveal">
-              <p>Rebuilt from memory of my current-state documentation. No patient data, exported records, or vendor interface. Observation counts didn’t survive, so I make no claim about how often this happened.</p>
+              <p>I redrew these pictures from memory of my own notes on how the work was done. They hold no patient data, no exported records, and no copies of the real software’s screens. My counts from watching the work were lost, so I make no claim about how often this happened.</p>
             </div>
           </CaseMore>
 
@@ -184,7 +191,7 @@ export default function FlagshipMSK() {
       <details className="rp-deepDive">
         <summary>
           <span className="rp-deepDive__copy">
-            <b className="rp-deepDive__title">Inspect the complete service blueprint</b>
+            <b className="rp-deepDive__title">See who held the message at each step</b>
           </span>
           <span className="rp-deepDive__state" aria-hidden="true">
             <span className="rp-deepDive__stateClosed">Open</span>
@@ -196,7 +203,7 @@ export default function FlagshipMSK() {
             {/* The step count is the visible change; the handoff is the real one.
                 Same evidence as the map above, re-cut by actor instead of by step. */}
             <div className="fp-blueprintIntro rp-reveal">
-              <p className="rp-lede">Frontstage is work the coordinator can see; backstage happens out of sight, below the line of visibility.</p>
+              <p className="rp-lede">Work above the line is what the coordinator could see. Work below it happened out of sight.</p>
             </div>
             <div data-evidence="true"><MSKServiceBlueprint /></div>
           </div>
@@ -206,8 +213,10 @@ export default function FlagshipMSK() {
       <div data-evidence="true"><DecisionStory
         id="msk-decisions"
         languageAnchor="msk-decisions"
-        title="One button, four rules."
-        intro="These four rules are my portfolio design for making it safe to press, not MSK’s specification."
+        title="I set four rules for how the button behaves."
+        intro="I wrote these four rules for this portfolio version. They are not MSK’s actual design."
+        // Restates the three measures under "What I would have measured" below.
+        introNote={MSK_COPY.en.decisions.check}
         steps={DECISIONS}
         showStepNumbers={false}
         visual={() => (
@@ -221,7 +230,7 @@ export default function FlagshipMSK() {
       <details className="rp-deepDive">
         <summary>
           <span className="rp-deepDive__copy">
-            <b className="rp-deepDive__title">See the related MSK workflow redesigns</b>
+            <b className="rp-deepDive__title">See two more fixes I made at MSK</b>
           </span>
           <span className="rp-deepDive__state" aria-hidden="true">
             <span className="rp-deepDive__stateClosed">Open</span>
@@ -230,13 +239,16 @@ export default function FlagshipMSK() {
         </summary>
         <section className="rp-section" id="msk-redesigns" data-language-anchor="msk-redesigns">
           <div className="rp-wrap">
-            <h2 className="rp-title">The same failure, in two more places.</h2>
-            <p className="rp-lede">Certification and onboarding had the same problem: the next action was buried.</p>
+            <h2 className="rp-title">I found the same problem in two more places.</h2>
+            {/* Was "people couldn't tell what to do next", which only the CPR card
+                showed. Now labelled as her reading, true of both (2026-11-19). */}
+            <p className="rp-lede">{MSK_COPY.en.redesigns.lede}</p>
             <div className="fp-redesigns rp-reveal" data-evidence="true">
               {REDESIGNS.map((r) => (
                 <article key={r.n}>
                   <h3>{r.title}</h3>
                   <MSKMechanism n={r.n} />
+                  <p className="fp-redesigns__source">{r.illustration}</p>
                   <p className="fp-redesigns__finding">{r.finding}</p>
                   <p className="fp-redesigns__change">{r.change}</p>
                   {r.wrong && (
@@ -251,7 +263,7 @@ export default function FlagshipMSK() {
         <section className="rp-section rp-override" id="msk-systems" data-language-anchor="msk-systems">
           <div className="rp-wrap">
             <h2 className="rp-title">I did the jobs before I redesigned them.</h2>
-            <p className="rp-lede">You do not spot that pattern from outside a system. I had already sat in three of its seats.</p>
+            <p className="rp-lede">You don’t spot a problem like this from outside. I had already done three jobs inside it.</p>
             <ol className="fp-roleRail rp-reveal" aria-label="Three roles at MSK, in order" data-evidence="true" style={{ "--rp-reveal-stagger": "0ms" } as React.CSSProperties}>
               {ROLES.map((r) => {
                 const method = ROLE_METHODS[r.n];
@@ -279,13 +291,13 @@ export default function FlagshipMSK() {
                 the workflow map above already proves, rather than a description
                 of a method. */}
             <p className="fp-ownership rp-reveal" style={{ "--rp-reveal-stagger": "90ms" } as React.CSSProperties}>
-              <b>Service-design scope:</b> the full path across systems, departments, permissions, and handoffs, not only the queue screen.
+              <b>My scope:</b> the whole path the message took, across software, departments, who was allowed to do what, and every handoff. Not just one screen.
             </p>
             <div className="fp-mapWrap rp-reveal" data-evidence="true" style={{ "--rp-reveal-stagger": "270ms" } as React.CSSProperties}>
-              <Suspense fallback={<div className="fp-mapFallback">Four departments, one task → mapped → redesigned → in production</div>}>
+              <Suspense fallback={<div className="fp-mapFallback">One task, four departments → mapped → redesigned → in the live system</div>}>
                 <MSKSystemMap />
               </Suspense>
-              <ol aria-label="Stages of the change"><li>Four departments, one task</li><li>Mapped</li><li>Redesigned</li><li>In production</li></ol>
+              <ol aria-label="Stages of the change"><li>One task, four departments</li><li>Mapped</li><li>Redesigned</li><li>In the live system</li></ol>
             </div>
           </div>
         </section>
@@ -294,7 +306,7 @@ export default function FlagshipMSK() {
       <section className="rp-section" id="msk-sustainment" data-language-anchor="msk-sustainment">
         <div className="rp-wrap">
           <h2 className="rp-title">What happened after I left that role.</h2>
-          <p className="rp-lede rp-reveal">IT approved it once funding came in and built it as I presented it. I don’t know what changed behind the scenes. I later saw it in production while training new employees.</p>
+          <p className="rp-lede rp-reveal">IT approved it once funding came in and built it as I pitched it. I don’t know what changed behind the scenes. Later, while training new employees, I saw it in the live system.</p>
           {/* Added 2026-10-22 (portfolio review, UXfolio 2026 ch. 4.3): the
               outcome is owner-reported and no post-launch measurement is
               known, so the page says what would have shown it. Hillary
@@ -306,7 +318,7 @@ export default function FlagshipMSK() {
           <CaseMore label="What happened and how I know">
             <div className="rp-note rp-reveal">
               <p className="rp-note__k">What I would have measured</p>
-              <p>No one measured it that I know of. I would have tracked minutes from a message arriving to it sitting in the chart, messages filed to the wrong chart, and pages printed.</p>
+              <p>As far as I know, no one measured it. I would have tracked three things: minutes from a message arriving to it landing in the chart, messages filed to the wrong patient’s chart, and pages printed.</p>
             </div>
             {/* The real text for the drawing above, and the exact claim on each
                 lane. Deliberately terse — the timeline is doing the work. */}
@@ -325,8 +337,8 @@ export default function FlagshipMSK() {
       <div data-evidence="true"><EvidenceField
         id="msk-outcomes"
         languageAnchor="msk-outcomes"
-        title="The numbers."
-        disclaimer="Anonymized. The period the 20% covers was not preserved."
+        title="What changed, and who gets the credit."
+        disclaimer="Details anonymized. I have no record of what time period the 20% covers."
         // The same discipline the certification dashboard used on its own data:
         // say what you are looking at before someone has to work it out. All
         // three read as equal tiles otherwise, and "organization-wide" made the
@@ -339,8 +351,8 @@ export default function FlagshipMSK() {
         // the new employees she trained; the 20% is printing and scanning costs.
         metrics={[
           { tag: "Led", n: "1 month", label: "early: the whole department certified before the original deadline, with no 4-month extension" },
-          { tag: "Trained", n: "~2,000", label: "new employees I trained on Epic, HIPAA and compliance, by my estimate: about one cohort of 30 a week for two years" },
-          { tag: "Initiative result", n: "20%", label: "lower printing and scanning costs, per my review of the financials with the finance department head; not attributed solely to this filing workflow" },
+          { tag: "Trained", n: "~2,000", label: "new employees I trained on Epic, HIPAA, and compliance. My estimate: about one group of 30 a week for two years." },
+          { tag: "Initiative result", n: "20%", label: "lower printing and scanning costs, from my review of the numbers with the head of the finance department; not attributed solely to this filing workflow" },
           { tag: "Projection", n: "~$1M/year", label: "projected paper savings in my Process Improvement Fair pitch, not measured savings" },
         ]}
       /></div>
@@ -352,7 +364,7 @@ export default function FlagshipMSK() {
         </div>
       </section>
 
-      <Link className="rp-next" to="/case-study/grove"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Grove</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
+      <Link className="rp-next" to="/case-study/ux-woman"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">UX Woman</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
     </main>
   );
 }

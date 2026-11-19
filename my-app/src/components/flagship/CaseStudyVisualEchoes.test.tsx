@@ -32,7 +32,7 @@ describe("case-study visual echoes", () => {
     // Queue screen retired 2026-11-15 (Lex: "looks vibe-codeable"); the journey picture carries the change.
     expect(container.querySelector(".msk-dashboard-mockup")).toBeNull();
     expect(container.querySelector("#msk-receipt-title")?.textContent).toContain("paper");
-    expect(container.textContent).toContain("could potentially delay care for patients");
+    expect(container.textContent).toContain("could delay a patient’s care");
     expect(container.querySelector(".fp-proofControl")).toBeNull();
     expect(container.textContent).not.toMatch(/online path/i);
   });
@@ -40,7 +40,7 @@ describe("case-study visual echoes", () => {
   it("passes the Spanish copy through", async () => {
     const { MSK_COPY } = await import("../../data/mskCaseStudy");
     await act(async () => root.render(<MSKFilingReceipt copy={MSK_COPY.es.receipt} />));
-    expect(container.textContent).toContain("ritual de");
+    expect(container.textContent).toContain("terminaban en");
     expect(container.querySelector(".fp-proofControl")).toBeNull();
   });
 

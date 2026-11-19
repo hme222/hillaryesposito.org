@@ -355,7 +355,6 @@ html[lang="es"] .riso-home .rp-h1Fit { --h1-w100: 1116; }
   background: var(--paper-2);
   border-color: color-mix(in srgb, var(--paper) 22%, transparent);
 }
-.riso-home .rp-hero__media:hover .rp-headshot { transform: translateY(1%) rotate(-.6deg); }
 /* Expanded (5 rows + toolbar + rule) content, measured live the same way:
    633px at 1440px, 828px at 1024px, 888px at 820px (the same 800–900px zone
    that peaks for the closed state above, for the same text-wrap reason).

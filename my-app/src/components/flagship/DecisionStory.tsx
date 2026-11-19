@@ -14,6 +14,8 @@ type Props = {
   title: string;
   /** Optional: a lede that restates the step titles is cut (2026-11-17). */
   intro?: string;
+  /** Optional second line under the intro, e.g. how the rules could be checked. */
+  introNote?: string;
   steps: DecisionStep[];
   /** Decorative sequence labels can be omitted when the ordered list already
    *  communicates sequence and the page needs a quieter editorial rhythm. */
@@ -56,7 +58,7 @@ type Props = {
 // Matches the `max-width: 900px` block in riso-page.css that unpins the panel.
 const STACKED_QUERY = "(max-width: 900px)";
 
-export default function DecisionStory({ id, languageAnchor, kicker, title, intro, steps, showStepNumbers = true, visual }: Props) {
+export default function DecisionStory({ id, languageAnchor, kicker, title, intro, introNote, steps, showStepNumbers = true, visual }: Props) {
   const [active, setActive] = useState(0);
   // Below the breakpoint the panel stacks: steps above, artifact below, never
   // on screen together, and every step styled as active. A scroll-driven
@@ -111,6 +113,7 @@ export default function DecisionStory({ id, languageAnchor, kicker, title, intro
           {kicker && <p className="rp-kicker">{kicker}</p>}
           <h2 id={`${id}-title`} className="rp-title">{title}</h2>
           {intro && <p className="rp-lede">{intro}</p>}
+          {introNote && <p className="rp-lede rp-decisionStory__note">{introNote}</p>}
         </div>
 
         <div className="rp-decisionStory__track" ref={trackRef}>

@@ -4,6 +4,7 @@ import { useLanguage } from "../../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
 import ReadingProgress from "../../components/flagship/ReadingProgress";
 import EvidenceField from "../../components/flagship/EvidenceField";
+import ResultLine from "../../components/flagship/ResultLine";
 import LogisticsMechanism from "../../components/LogisticsMechanism";
 import LogisticsMoveMap from "../../components/LogisticsMoveMap";
 import OrderStatusBoard from "../../components/flagship/OrderStatusBoard";
@@ -38,29 +39,29 @@ import CaseMore from "../../components/CaseMore";
 const CHAPTERS: CaseStudyChapter[] = [
   { id: "log-start", label: "Start" },
   { id: "log-brief", label: "Problem" },
-  { id: "log-moves", label: "Moves" },
-  { id: "log-constraints", label: "Constraints" },
+  { id: "log-moves", label: "What I did" },
+  { id: "log-constraints", label: "Limits" },
   { id: "log-outcomes", label: "Outcomes" },
 ];
 
 const MOVES: { n: string; title: string; finding: string; change: React.ReactNode }[] = [
   {
     n: "01",
-    title: "Move the supply point forward",
-    finding: "Every resupply run began too far from the aid stations.",
-    change: <>Planned and tracked the $2M move forward, in phases from most essential to least, with personnel split so no aid station went unsupplied during the move.</>,
+    title: "Moved the warehouse closer",
+    finding: "Every supply delivery started too far from the aid stations.",
+    change: <>I planned and tracked the move of $2M in supplies. We moved the most essential supplies first, and I split the team so every aid station kept getting supplies during the move.</>,
   },
   {
     n: "02",
-    title: "One way of asking",
-    finding: "Seven stations used different request and reporting formats.",
-    change: "Built one shared request protocol and trained each site on how to order and what each order status meant.",
+    title: "Gave every station one way to order",
+    finding: "Each of the seven stations ordered and reported in its own format.",
+    change: "I built one shared way to order and taught each station how to use it and what each order status meant.",
   },
   {
     n: "03",
-    title: "Order before it runs out",
-    finding: "No one could see order status, so sites over-ordered or ran out.",
-    change: "Built shared real-time order status. The failure it was built against: a site “going black,” out of supplies.",
+    title: "Let every station track its orders",
+    finding: "No one could see where an order was, so stations ordered too much or ran out.",
+    change: "I built an online tracker that showed every station its orders as their status changed. Its job was to stop a station from “going black,” or running out of supplies.",
   },
 ];
 
@@ -96,14 +97,14 @@ export default function FlagshipLogistics() {
         />
         <div className="rp-hero__content">
           <div className="rp-clearing">
-            <h1 className="rp-h1">Resupply went from months to{"\u00a0"}weeks.</h1>
+            <h1 className="rp-h1">Service design for U.S.{"\u00a0"}Army <span className="rp-keep">medical supply</span>, cutting resupply from months to{"\u00a0"}weeks</h1>
             <p className="rp-sub">
-              On an Army National Guard deployment to Iraq and two neighboring countries, I was in charge of medical supplies for seven aid stations. When I arrived, getting supplies took 1–2 months. I made the case to move the warehouse closer, then planned and tracked the move. <b>Supplies then took 1–2 weeks, per my Officer Evaluation Report.</b>
+              On an Army National Guard deployment to Iraq and two neighboring countries, I was in charge of medical supplies for seven aid stations, where wounded soldiers are treated first. When I arrived, restocking them took 1–2 months. I made the case to move our warehouse closer, then planned and tracked the move. <b>Restocking then took 1–2 weeks, according to my Officer Evaluation Report, the Army’s written review of my work.</b>
             </p>
             {/* Interview-sourced human line (Better Stories pass, 2026-11-10); source: design-docs/case-study-stories. */}
             <p className="rp-humanLine">I was in charge of getting rabies vaccines to three countries. Once, I delivered them myself.</p>
-            <dl className="rp-heroEvidence" aria-label="Medical logistics case evidence at a glance">
-              <div><dt>Role</dt><dd>Medical logistics officer · relocation and service lead</dd></div>
+            <dl className="rp-heroEvidence" aria-label="My role at a glance">
+              <div><dt>Role</dt><dd>Medical logistics officer, in charge of medical supplies · led the warehouse move and station restocking</dd></div>
             </dl>
           </div>
         </div>
@@ -115,27 +116,34 @@ export default function FlagshipLogistics() {
         </div>
       </header>
 
+      {/* The hero sub-line's own sentence; 1–2 is kept together the way the stat tile does it. */}
+      <ResultLine
+        eyebrow="What changed"
+        text={"Restocking then took 1–⁠2 weeks, according to my Officer Evaluation Report."}
+        source="My Officer Evaluation Report is the Army’s written review of my work."
+      />
+
       <section className="rp-cinema fp-cinema" id="log-brief" aria-labelledby="log-brief-title" data-evidence="true">
         <div className="rp-cinema__sticky">
           <div className="rp-cinema__wash" aria-hidden="true" />
           <div className="fp-cinemaCore fp-cinemaCore--workflow">
-            <div><span>THE JOB</span><b>Medicine and equipment, before it is needed</b><small>Not after someone asks.</small></div>
+            <div><span>MY JOB</span><b>Get medicine and equipment to each station before it is needed</b><small>Not after someone asks.</small></div>
             <i aria-hidden="true">→</i>
-            <div><span>THE STAKE</span><b>An aid station that runs out</b></div>
+            <div><span>THE RISK</span><b>An aid station runs out</b></div>
           </div>
-          <div className="rp-cinema__artifact rp-cinema__artifact--reminder"><span>Scale</span><b>5,000+ New Jersey soldiers, $2M in supplies, seven aid stations.</b></div>
-          <div className="rp-cinema__artifact rp-cinema__artifact--safety"><span>Constraint</span><b>Cold chain deliveries inside 48 hours.</b></div>
+          <div className="rp-cinema__artifact rp-cinema__artifact--reminder"><span>Size</span><b>5,000+ New Jersey soldiers, $2M in supplies, seven aid stations.</b></div>
+          <div className="rp-cinema__artifact rp-cinema__artifact--safety"><span>Deadline</span><b>Vaccines had to stay cold and arrive within 48 hours.</b></div>
           <div className="rp-cinema__bridge">
-            <h2 id="log-brief-title">A late delivery is a casualty{"\u00a0"}risk.</h2>
-            <p>An aid station is where wounded soldiers are treated first.</p>
+            <h2 id="log-brief-title">A late delivery put wounded soldiers at{"\u00a0"}risk.</h2>
+            <p>No station could wait 1–2 months for supplies.</p>
           </div>
         </div>
       </section>
 
       <section className="rp-section" id="log-moves" data-evidence="true">
         <div className="rp-wrap">
-          <h2 className="rp-title">Move the warehouse. Then fix the handoffs.</h2>
-          <p className="rp-lede">I did the heavy lifting alongside my team. Afterward the stations asked to track their own orders.</p>
+          <h2 className="rp-title">I moved the warehouse. Then I fixed how stations ordered.</h2>
+          <p className="rp-lede">I did the physical work of the move with my team. After that, the stations asked to track their own orders.</p>
           <div className="fp-redesigns fp-redesigns--logistics rp-reveal" data-evidence="true">
             {MOVES.map((m) => (
               <article key={m.n}>
@@ -163,11 +171,11 @@ export default function FlagshipLogistics() {
         </summary>
         <section className="rp-section rp-override" id="log-constraints" data-evidence="true">
           <div className="rp-wrap">
-            <h2 className="rp-title">Three constraints that did not move.</h2>
+            <h2 className="rp-title">Three limits I had to work within.</h2>
             <dl className="fp-constraintAnnotations rp-reveal" data-evidence="true">
-              <div><dt>Cold chain · 48 hours</dt><dd>Late meant unusable.</dd></div>
-              <div><dt>Three countries</dt><dd>Different systems and vocabulary.</dd></div>
-              <div><dt>Combat zone · $2M in supplies</dt><dd>No rehearsal or acceptable failure.</dd></div>
+              <div><dt>Cold vaccines · 48 hours</dt><dd>If they arrived late, they couldn’t be used.</dd></div>
+              <div><dt>Three countries</dt><dd>Each had its own systems and its own words for things.</dd></div>
+              <div><dt>Combat zone · $2M in supplies</dt><dd>No practice run, and no room for mistakes.</dd></div>
             </dl>
           </div>
         </section>
@@ -175,27 +183,27 @@ export default function FlagshipLogistics() {
 
       <div className="fp-logisticsEvidence" data-evidence="true"><EvidenceField
         id="log-outcomes"
-        title="Measured in time, money, and things that did not happen."
-        disclaimer="All three come from my Officer Evaluation Report. Measurement periods and methods were not preserved."
+        title="Supplies arrived faster and cost less."
+        disclaimer="All three numbers come from my Officer Evaluation Report. Records of how and over what time they were measured were not kept."
         metrics={[
-          { tag: "Relocation", n: "1–\u20602\u00a0wk", label: "medical resupply time after the warehouse moved forward, down from 1–2 months · 85% faster" },
-          { tag: "Order status", n: "60%", label: "reduction in spending, while maintaining availability, after shared real-time order status stopped over-ordering and stockouts" },
-          { tag: "Protocol", n: "15%", label: "critical supplies reached the stations more efficiently after one shared communication protocol" },
+          { tag: "Warehouse move", n: "1–\u20602\u00a0wk", label: "to restock medical supplies after the warehouse moved closer, down from 1–2 months · 85% faster" },
+          { tag: "Order tracker", n: "60%", label: "less spending, with supplies still on hand, once stations could see their orders and stopped ordering too much or running out" },
+          { tag: "Shared process", n: "15%", label: "more efficient delivery of critical supplies after we set up one shared way to communicate" },
         ]}
         leadMetric
       /></div>
 
       <section className="rp-section">
         <div className="rp-wrap rp-close">
-          <h2>Supply lines and clinic workflows break the same way.</h2>
+          <h2>Army supply lines and clinic paperwork break the same way.</h2>
           <CaseMore label="How this connects to clinic work">
-            <p>A supply run began too far from the aid stations. Portal messages took a paper route and lost their chart context. In both, I moved the step that did not belong.</p>
+            <p>In the Army, supply deliveries started too far from the aid stations. At the hospital, patient messages were printed and scanned before they reached the medical chart. In both jobs, I moved the step that was in the wrong place.</p>
           </CaseMore>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
         </div>
       </section>
 
-      <Link className="rp-next" to="/case-study/ux-woman"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">UX Woman</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
+      <Link className="rp-next" to="/case-study/mobbin"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Mobbin</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
     </main>
   );
 }
