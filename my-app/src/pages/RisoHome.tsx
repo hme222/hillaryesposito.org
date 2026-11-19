@@ -12,7 +12,6 @@ import usePageTitle from "../hooks/usePageTitle";
 import useFlagshipReveal from "../hooks/useFlagshipReveal";
 import { useLanguage, useT } from "../app/LanguageContext";
 import type { StringKey } from "../i18n/strings";
-import jobSearch from "../data/jobSearch.json";
 import "../styles/riso-page.css";
 
 /**
@@ -186,16 +185,6 @@ export default function RisoHome() {
             <img src="/assets/about/headshot.jpg" alt="Hillary Esposito" />
           </div>
           <p className="rp-heroStatus">{t("home.status")}</p>
-          <p
-            className="rp-heroStats"
-            title={new Date(`${jobSearch.asOf}T00:00:00Z`).toLocaleDateString(lang === "es" ? "es-US" : "en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" })}
-          >
-            {t("home.search", {
-              // Round down once it is a big number ("40+") so it stays true as the count moves.
-              count: jobSearch.applicationsThisYear >= 20 ? `${Math.floor(jobSearch.applicationsThisYear / 10) * 10}+` : String(jobSearch.applicationsThisYear),
-              year: String(jobSearch.year),
-            })}
-          </p>
         </div>
       </header>
 
