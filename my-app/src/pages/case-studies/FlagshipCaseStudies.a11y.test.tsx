@@ -143,7 +143,7 @@ describe("flagship case-study accessibility", () => {
     expect(hero?.textContent).toContain("user experience (UX) teams built the real version");
     expect(hero?.textContent).not.toContain("Role route");
     // The sub carries the contribution; the evidence list no longer restates it.
-    expect(hero?.textContent).toContain("Send to EMR button so they would file straight to the record");
+    expect(hero?.textContent).toContain("I proposed a Send to EMR button to file them directly");
     expect(hero?.textContent).not.toContain("20%");
     expect(hero?.textContent).not.toContain("two system upgrades");
     expect(container.textContent).toContain("not attributed solely to this filing workflow");
@@ -193,7 +193,9 @@ describe("flagship case-study accessibility", () => {
     // Pre-launch rebuild (2026-11-19): the research-to-scope trace now lives in
     // the short story under the landing section.
     expect(container.querySelector("#grove-research")?.textContent).toContain("From March to May 2026, I tested it with five people.");
-    expect(container.querySelector("#grove-survey")?.textContent).toContain("Twelve features became three.");
+    // "Twelve features became three" is said once, in the result sentence under the hero.
+    expect(container.querySelector(".rp-resultLine")?.textContent?.replace(/\u00a0/g, " ")).toContain("Twelve features became three.");
+    expect(container.querySelector("#grove-survey")?.textContent).not.toContain("Twelve features became three.");
     expect(container.textContent).toContain("not finished screens");
     expect(container.querySelectorAll('.rp-decisionRecord[aria-label="FloraGrove’s three planned changes"] dt')).toHaveLength(3);
     expect(container.querySelectorAll(".rp-decision")).toHaveLength(0);
@@ -206,10 +208,12 @@ describe("flagship case-study accessibility", () => {
     });
 
     const hero = container.querySelector("#log-start");
-    // The hero "Result" row was cut (2026-11-17 repetition cut); the sub carries
-    // the before, the after, and its source.
+    // Minimal pass (2026-11-19): the hero carries the before and the move; the result and its
+    // source live once, in the result sentence under it (word joiner inside "1–2").
     expect(hero?.textContent).toContain("restocking them took 1–2 months");
-    expect(hero?.textContent).toContain("Restocking then took 1–2 weeks, according to my Officer Evaluation Report");
+    expect(hero?.textContent).not.toContain("according to my Officer Evaluation Report");
+    expect(container.querySelector(".rp-resultLine")?.textContent?.replace(/\u00a0/g, " ")).toContain("Restocking then took 1–\u20602 weeks, according to my Officer Evaluation Report");
+    expect(container.querySelector(".rp-resultLine")?.textContent?.replace(/\u00a0/g, " ")).toContain("My Officer Evaluation Report is the Army’s written review of my work.");
     expect(hero?.querySelector("h1")?.textContent).toBe("Service design for U.S.\u00a0Army medical supply, cutting resupply from months to\u00a0weeks");
     expect(container.textContent).toContain("All three numbers come from my Officer Evaluation Report");
     expect(container.textContent).toContain("Records of how and over what time they were measured were not kept");
@@ -307,7 +311,7 @@ describe("flagship case-study accessibility", () => {
 
   it.each([
     ["en", "#knowunity-prototype", "Say It Back, the 52-second reel", "What the reel shows", "The listening is faked: it can’t hear or grade real speech yet.", "Music only; no narration."],
-    ["es", "#es-knowunity-prototype", "Say It Back, el video de 52 segundos", "Qué muestra el video", "El prototipo, construido con el kit de diseño de Knowunity. La escucha es simulada: todavía no puede oír ni calificar voz real.", "Solo música, sin narración."],
+    ["es", "#es-knowunity-prototype", "Say It Back, el video de 52 segundos", "Qué muestra el video", "La escucha es simulada: todavía no puede oír ni calificar voz real.", "Solo música, sin narración."],
   ])("plays the Knowunity reel only on request, with a text alternative (%s)", async (lang, sectionId, label, summary, caption, note) => {
     mockLang = lang;
     await act(async () => {
@@ -390,7 +394,7 @@ describe("flagship case-study accessibility", () => {
 
     // The badge's own name replaces the old "Design Sprint Badge" wording.
     expect(container.textContent).not.toMatch(/Design Sprint Badge|insignia Design Sprint /);
-    expect(container.textContent).toContain(lang === "en" ? "AI Design Sprinter badge" : "La insignia es la AI Design Sprinter");
+    expect(container.textContent).toContain(lang === "en" ? "AI Design Sprinter badge" : "Insignia AI Design Sprinter");
     // Skill tags stay in the image, not the page text.
     expect(figure.textContent).not.toMatch(/Prompt|Vibe|Figma/i);
   });
@@ -455,7 +459,7 @@ describe("flagship case-study accessibility", () => {
     const text = container.textContent || "";
     // The limits stay on the page: no patient interviews, untested, and the
     // projection is labeled as a different measure from the observed count.
-    ["It is untested, and no patient was interviewed.", "UX Woman is a 7-month, mentor-led UX design accelerator.", "Public data. One number is a forecast and one is a real count, so they don't compare directly.", "Design concept, not an official notice.", "Built, not yet tested."].forEach((phrase) => {
+    ["UX Woman is a mentor-led UX design accelerator.", "Public data. One number is a forecast and one is a real count, so they don't compare directly.", "Design concept, not an official notice.", "Built, not yet tested."].forEach((phrase) => {
       expect(text).toContain(phrase);
     });
     // Dropped at Hillary's direction (2026-11-09): the adjacent HR interview and the five pretotypes.
@@ -475,7 +479,6 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector("#es-uxwoman-guide")).not.toBeNull();
     expect(container.querySelector("h1")?.textContent).toBe("Investigación en salud basada en los requisitos cambiantes de\u00a0Medicaid");
     expect(container.textContent).toContain("UX Woman es una aceleradora de diseño de experiencia de usuario (UX) de 7 meses, guiada por mentores.");
-    expect(container.textContent).toContain("no se entrevistó a ningún paciente");
     ["UserTesting", "pretotipo"].forEach((phrase) => expect(container.textContent).not.toContain(phrase));
   });
 
@@ -544,7 +547,8 @@ describe("flagship case-study accessibility", () => {
     const next = container.querySelector("#grove-decisions");
     expect(next?.querySelector('.rp-phase__track[aria-label="Functional prototype · Phase 2 of 3"]')).not.toBeNull();
     expect(next?.querySelector(".rp-disclaimer")).toBeNull();
-    expect(next?.textContent).toContain("functional prototype in Phase 2 of 3");
+    // The full honesty line is in the hero; the phase bar and its label carry it here.
+    expect(container.querySelector("#grove-start")?.textContent).toContain("functional prototype in Phase 2 of 3");
     expect(next?.textContent).toContain("What the three phases mean");
   });
 
@@ -662,18 +666,18 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".msk-dashboard-mockup")).toBeNull();
     expect(container.querySelectorAll(".msk-journey")).toHaveLength(2);
     expect(container.querySelector("#msk-decisions .msk-journey--after")).not.toBeNull();
-    // The second journey drops the tabs, walk button and caption the hero already carries.
+    // The second journey drops the tabs and walk button the hero already carries. The journey
+    // captions ("Illustration, not a screenshot", "Built from memory...") were removed 2026-11-20.
     expect(container.querySelectorAll(".msk-journey__tabs")).toHaveLength(1);
-    expect(container.querySelectorAll(".msk-journey figcaption")).toHaveLength(1);
+    expect(container.querySelectorAll(".msk-journey figcaption")).toHaveLength(0);
     expect(container.querySelector(".fp-mskHeroPlate__detour")).toBeNull();
     expect(container.querySelector(".fp-mskLens")).toBeNull();
     expect(container.querySelector(".fp-mskLens__controls")).toBeNull();
     expect(Array.from(container.querySelectorAll("h2, h3"), (heading) => heading.textContent))
       .not.toContain("My filing queue");
-    // Provenance (density pass, 2026-10-16) is stated in full once, in "Where
-    // this comes from", and since 2026-11-19 as a one-line "Built from" caption on
-    // each MSK visual (hero journey and blueprint). No other repeats.
-    expect(container.textContent?.toLowerCase().split("no patient data").length).toBe(4);
+    // The provenance notes ("Where this comes from" and the "Built from" captions) were
+    // removed at Hillary's request on 2026-11-20, so the phrase no longer appears.
+    expect(container.textContent?.toLowerCase()).not.toContain("no patient data");
     // The queue's "anonymized internal tool concept" label left with the queue screen.
     expect(container.textContent?.toLowerCase()).not.toContain("anonymized internal tool concept");
   });
@@ -817,7 +821,7 @@ describe("flagship case-study accessibility", () => {
   });
 
   it.each([
-    ["MSK", <FlagshipMSK />, "Service design project for Memorial Sloan Kettering Cancer\u00a0Center", "Where this comes from"],
+    ["MSK", <FlagshipMSK />, "Service design project for Memorial Sloan Kettering Cancer\u00a0Center", "They are not MSK’s actual design."],
     ["FloraGrove", <RisoGrove />, "Product design and research for FloraGrove, a pre-launch plant-care\u00a0app", "it does not prove what people would actually do"],
     ["Mobbin", <FlagshipMobbin />, "Freelance documentation of three finance apps for\u00a0Mobbin", "I did not design"],
   ])("%s leads with a project-label title and visible evidence boundary", async (_name, page, title, boundary) => {
@@ -889,19 +893,6 @@ describe("flagship case-study accessibility", () => {
       expect(blueprint.querySelectorAll(".fp-blueprint__design")).toHaveLength(0);
     });
 
-    it("puts a Built from line under the blueprint and the hero journey", async () => {
-      await render();
-      const builtFrom = /^Built from memory of my own notes on the work\. No patient data\. My counts were lost, so I make no claim about how often this happened\.$/;
-      const blueprintSource = container.querySelector(".fp-blueprint .fp-blueprint__source");
-      expect(blueprintSource?.textContent).toMatch(builtFrom);
-      expect(blueprintSource?.closest("[aria-hidden='true']")).toBeNull();
-      const journeyCaption = container.querySelector(".fp-heroArt--msk .msk-journey figcaption");
-      expect(journeyCaption?.textContent).toContain("Illustration, not a screenshot.");
-      expect(journeyCaption?.querySelector(".msk-journey__source")?.textContent).toMatch(builtFrom);
-      // The collapsed provenance note stays.
-      expect(container.textContent).toContain("Where this comes from");
-    });
-
     it("labels the wait band as not measured", async () => {
       await render();
       const svgText = Array.from(container.querySelectorAll(".fp-blueprint svg text"), (t) => t.textContent).join(" ");
@@ -935,7 +926,7 @@ describe("flagship case-study accessibility", () => {
       const section = container.querySelector("#msk-redesigns")!;
       expect(section.querySelector("h2")?.textContent).toBe("I found the same problem in two more places.");
       expect(section.querySelector(".rp-lede")?.textContent).toBe(
-        "My reading of the pattern: both were written for someone other than the person using them. Clinicians got legal language. New hires got one course for every skill level.",
+        "My reading of the pattern: both were written for someone other than the person using them.",
       );
       expect(section.textContent).not.toContain("couldn’t tell what to do next");
       expect(Array.from(section.querySelectorAll(".fp-redesigns__source"), (p) => p.textContent)).toEqual([
@@ -968,7 +959,6 @@ describe("flagship case-study accessibility", () => {
     expect(container.textContent).toContain("I talked to every team the paper touched.");
     expect(container.querySelector(".fp-systemCards")).toBeNull();
     expect(container.textContent).toContain("My scope:");
-    expect(container.textContent).toContain("I make no claim about how often this happened.");
   });
 
   it("supports the Mobbin gallery and a direct next-project path", async () => {

@@ -93,7 +93,6 @@ export type MskCopy = {
     designTag: string;
     legend: { aria: string; observed: string; built: string; design: string };
     /** One line under the drawing: what it is built from. */
-    builtFrom: string;
     swipeHint: string;
     canvasAria: string;
     key: {
@@ -270,9 +269,9 @@ const en: MskCopy = {
 
   blueprint: {
     introKicker: "Then I counted the handoffs",
-    introTitle: "Six steps became five, and one department dropped out.",
+    introTitle: "Six steps became five.",
     introLede:
-      "On screen, the change was one fewer step. Behind the scenes, one whole department no longer had to handle the message. Below is the same path, sorted by who was holding it.",
+      "On screen, the change was one fewer step. Below is the same path, sorted by who was holding it.",
     beforeBtn: "Before · one handoff",
     afterBtn: "After · no handoff",
     statusBefore:
@@ -310,7 +309,6 @@ const en: MskCopy = {
       built: "After, solid boxes: built by IT and UX",
       design: "Dotted boxes: my design, not MSK’s",
     },
-    builtFrom: "Built from memory of my own notes on the work. No patient data. My counts were lost, so I make no claim about how often this happened.",
     swipeHint: "Swipe to see all steps",
     canvasAria: "Service blueprint drawing. Scroll sideways to see all steps.",
     key: {
@@ -319,11 +317,11 @@ const en: MskCopy = {
         "Opens the queue, finds the message, prints it, then has to come back later to check it was ever filed.",
       frontAfter:
         "Opens the queue, picks the message, sends it to the chart, and lands back on the queue with the status already updated.",
-      backTerm: "HIM (the scanning team) · out of sight",
+      backTerm: "HIM · out of sight",
       backBefore:
-        "Gets the paper and scans it. They do the job right, but out of sight, with no way to report back to the queue.",
+        "Gets the paper and scans it. They do the job right, with no way to report back to the queue.",
       backAfter:
-        "Off this path. The team that used to get the paper no longer handles these messages.",
+        "Off this path.",
       supportTerm: "IT: portal, EMR, and permissions · systems",
       supportBefore:
         "Their systems hold the message before it’s printed and after it’s scanned. Not in between, and that’s the gap.",
@@ -333,7 +331,7 @@ const en: MskCopy = {
       changedBefore:
         "Six steps, but one matters most: the message passes to another department, and no word comes back.",
       changedAfter:
-        "One department left the path. The coordinator can see the message from start to finish.",
+        "One handoff left the path.",
     },
     switchAria: "Choose which path the map shows",
   },
@@ -388,7 +386,7 @@ const en: MskCopy = {
     // fit the CPR card but not the new-hire card (one course for every skill
     // level). This line is labelled as her reading and is true of both.
     lede:
-      "My reading of the pattern: both were written for someone other than the person using them. Clinicians got legal language. New hires got one course for every skill level.",
+      "My reading of the pattern: both were written for someone other than the person using them.",
     wrongLabel: "What I got wrong",
     items: [
       {
@@ -490,7 +488,7 @@ const en: MskCopy = {
 
   outcomes: {
     kicker: "What it added up to",
-    title: "What changed, and who gets the credit.",
+    title: "The numbers, and where each comes from.",
     intro:
       "As a coordinator, I started the push to file portal messages straight to the online chart. It was built from my pitch two jobs later. I also rewrote the CPR course for the clinicians taking it. And I rebuilt training for new office staff: Epic, HIPAA, compliance, and the people skills of the job.",
     disclaimer: "Details anonymized · hospital-wide results belong to the whole effort, not just me · the ~$1M/year is a forecast from my pitch, not measured savings",
@@ -591,9 +589,9 @@ const es: MskCopy = {
 
   blueprint: {
     introKicker: "Luego conté los traspasos",
-    introTitle: "Seis pasos se volvieron cinco, y un área dejó de participar.",
+    introTitle: "Seis pasos se volvieron cinco.",
     introLede:
-      "En pantalla, el cambio fue un paso menos. Por detrás, un área entera ya no tuvo que manejar el mensaje. Abajo está la misma ruta, ordenada según quién tenía el mensaje.",
+      "En pantalla, el cambio fue un paso menos. Abajo está la misma ruta, ordenada según quién tenía el mensaje.",
     beforeBtn: "Antes · un traspaso",
     afterBtn: "Después · sin traspaso",
     statusBefore:
@@ -626,7 +624,6 @@ const es: MskCopy = {
       built: "Después, recuadros sólidos: los construyeron TI y UX",
       design: "Recuadros punteados: mi diseño, no el de MSK",
     },
-    builtFrom: "Hecho de memoria a partir de mis propias notas sobre el trabajo. Sin datos de pacientes. Mis conteos se perdieron, así que no afirmo con qué frecuencia pasaba.",
     swipeHint: "Deslice para ver todos los pasos",
     canvasAria: "Dibujo del plano del servicio. Desplácese de lado para ver todos los pasos.",
     key: {
@@ -635,11 +632,11 @@ const es: MskCopy = {
         "Abre la cola, busca el mensaje, lo imprime, y después tiene que volver para comprobar si alguna vez se archivó.",
       frontAfter:
         "Abre la cola, elige el mensaje, lo envía a la historia y vuelve a la cola con el estado ya actualizado.",
-      backTerm: "HIM (el equipo de escaneo) · fuera de la vista",
+      backTerm: "HIM · fuera de la vista",
       backBefore:
-        "Recibe el papel y lo escanea. Hace bien su trabajo, pero fuera de la vista y sin manera de avisar a la cola.",
+        "Recibe el papel y lo escanea. Hace bien su trabajo, sin manera de avisar a la cola.",
       backAfter:
-        "Fuera de esta ruta. El equipo que antes recibía el papel ya no maneja estos mensajes.",
+        "Fuera de esta ruta.",
       supportTerm: "TI: portal, EMR y permisos · sistemas",
       supportBefore:
         "Sus sistemas guardan el mensaje antes de imprimirlo y después de escanearlo. No en medio, y ese es el hueco.",
@@ -649,7 +646,7 @@ const es: MskCopy = {
       changedBefore:
         "Seis pasos, pero uno importa más: el mensaje pasa a otra área y no vuelve ninguna respuesta.",
       changedAfter:
-        "Un área salió de la ruta. La coordinación puede ver el mensaje de principio a fin.",
+        "Un traspaso salió de la ruta.",
     },
     switchAria: "Elegir qué ruta muestra el mapa",
   },
@@ -699,7 +696,7 @@ const es: MskCopy = {
     kicker: "Luego apareció dos veces más",
     title: "Encontré el mismo problema en dos lugares más.",
     lede:
-      "Mi lectura del patrón: los dos estaban escritos para alguien que no era la persona que los usaba. El personal clínico recibía lenguaje legal. El personal nuevo recibía un solo curso para todos los niveles.",
+      "Mi lectura del patrón: los dos estaban escritos para alguien que no era la persona que los usaba.",
     wrongLabel: "En qué me equivoqué",
     items: [
       {
@@ -795,7 +792,7 @@ const es: MskCopy = {
 
   outcomes: {
     kicker: "A cuánto sumó",
-    title: "Qué cambió, y a quién le corresponde el mérito.",
+    title: "Las cifras y de dónde viene cada una.",
     intro:
       "Como coordinadora, impulsé que los mensajes del portal se archivaran directamente en la historia clínica en línea. Se construyó a partir de mi propuesta dos trabajos después. También reescribí el curso de RCP para el personal clínico que lo tomaba. Y reconstruí la capacitación del personal nuevo de oficina: Epic, HIPAA, cumplimiento y el trato con la gente que pide el puesto.",
     disclaimer: "Detalles anonimizados · los resultados de todo el hospital son del esfuerzo completo, no solo míos · los ~$1M/año son una previsión de mi propuesta, no un ahorro medido",

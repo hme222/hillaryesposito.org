@@ -1,6 +1,37 @@
 # Design State: Full Portfolio Redesign — Hybrid Positioning
 
-_Last updated: 2026-11-13 by Claude (Lex feedback review + plan; prior checkpoints preserved below)_
+_Last updated: 2026-11-20 by Claude (case-study chapter nav; figure trays + fold bands; prior checkpoints preserved below)_
+
+## 2026-11-20 — Case-study chapter nav: left column (wide) + floating chip (narrow)
+
+Built on branch `minimal-pass`, not committed. Hillary picked "option 5, placement A" (desktop) and "M8" (mobile) from live mockups.
+
+**Decisions**
+- The chapter links left the dock pill. `CaseStudyChapters` is now one `<nav>` with two CSS layouts. Wide screens get a fixed left column with an uppercase label and a coral rule on the active link. Narrower screens get a bottom chip (previous / current chapter / next), and the toggle opens the same link list as a sheet. The `#nav-dock-chapters` portal slot is gone from Navbar.
+- Deviation: the column shows from 1420px, not 900px. The real content box is 1080px plus the gutter, not the mockup's 720px. Below 1420px the column would cover text or wrap its label, so the chip covers 0–1419px.
+- The column fades in only after the hero clears 24vh, because hero headlines start at x≈86. Both layouts fade out while the footer is in view. Keyboard focus brings them back.
+- The chip's "NN% left" copy is hidden from 901px up on pages that have the right-edge rail. Spanish pages have no rail, so their chip keeps it.
+- The `ReadingProgress` "strip" variant was removed. The chip reads `useReadingLeft()`.
+- Conflict, resolved in Hillary's favour: the house rule says chrome uses sentence case, but she chose an uppercase "In this case study" label.
+
+**Open questions**
+- Mobbin's "Problem" chapter (`mobbin-brief`, the index lens) sits inside the closed "See every screen I captured" disclosure, after Decisions. So in list order, "Problem" is not where the page starts. Previous / next opens that disclosure when it steps there. This was already the case before this pass.
+
+## 2026-11-20 — Figure trays (shapeof.ai Examples) + section-fold bands
+
+Built on branch `minimal-pass`, not committed. CSS-only apart from one SVG stroke opacity.
+
+**Decisions**
+- New tokens in `portfolio-cohesion.css`: `--r-tray` 12px, `--r-tray-media` 6px, `--tray-inset` 8px, `--tray-gap` 1.5rem. They are a stated exception to the "square plates" rule: the tray is a mount, not a product surface.
+- Tray tint is `--tray-fill` (ink 4% light / 6% dark / ink-on-dark 8% on dark stages). The media surface is `--tray-media`. Both are defined in riso-page.css on `.flagship-page, .spanish-riso-case`.
+- Blueprint: the switch sits on a row above the tray. The SVG carries the media surface. Legend and key are caption text below, with no chips or band. The evidence-node stroke opacity went from 0.5 to 0.6 (3.02 to 3.99:1).
+- Folds: a closed `.rp-deepDive` gets a band of its own (4% ink tint, rule above and below). An open one, or a section whose Read more or transcript is open, gets a green-tinted band with a 3px green rule at each end. Inside that band, `--muted`, `--coral-text` and `--green` are remapped darker so small text stays at or above 4.5:1.
+- Deviation: the Grove hero video tray uses paper at 80%, not the 4% tint, because the 4% tint disappears on the map.
+- Fixed a pre-existing defect: Logistics' constraint list on the dark override measured about 1.6:1.
+
+**Open questions**
+- The Spanish transcript still uses the old disclosure look, because the disclosure redesign is scoped to `.flagship-page`. It does get the new band.
+- On Mobbin at 390px, the index-lens captures wrap 2+1. This was already the case before this pass.
 
 ## 2026-11-13 — Lex's portfolio feedback: per-case-study review and plan
 

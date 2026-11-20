@@ -1,3 +1,4 @@
+import CopyEmail from "../components/CopyEmail";
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import RisoDefs from "../components/riso/RisoDefs";
@@ -222,6 +223,7 @@ export default function RisoHome() {
             <a className="rp-cta" href="mailto:espositohillary@gmail.com">
               {t("contact.note")} →
             </a>
+            <CopyEmail compact />
             <a
               className="rp-textLink"
               href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"

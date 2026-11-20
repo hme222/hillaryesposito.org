@@ -311,8 +311,7 @@ select:focus-visible {
   /* The pill's own real bottom edge, as a distance from the viewport top
      (Navbar.tsx sets this from `.nav-dock__pill`'s own
      `getBoundingClientRect().bottom` on mount, resize, and webfont load) -
-     so anything sitting just under the dock - the case-study
-     `.rp-chapters` sticky strip (riso-page.css) is the one example today -
+     so anything sitting just under the dock (jump-target scroll margins)
      can derive its own offset from this one value instead of a hard-coded
      px guess that silently drifts whenever the pill's own padding changes
      at a breakpoint. The static fallback below is only for the instant

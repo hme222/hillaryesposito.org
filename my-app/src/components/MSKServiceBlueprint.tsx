@@ -90,6 +90,15 @@ const LANE_Y: Record<Lane, number> = {
 const VIS_LINE_Y = 175; // between frontstage and backstage
 const H = 352;
 
+/** Each lane's band, top and bottom (2026-11-20: the lanes were faint 8% rules
+ *  and read as one grey field). The front/back edge is the line of sight. */
+const LANE_BAND: Record<Lane, [number, number]> = {
+  evidence: [8, 90],
+  front: [90, VIS_LINE_Y],
+  back: [VIS_LINE_Y, 280],
+  support: [280, H - 6],
+};
+
 function column(index: number, count: number) {
   const usable = W - PAD_L - PAD_R;
   const colW = usable / count;
@@ -192,11 +201,24 @@ export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint, colu
               </clipPath>
             </defs>
           )}
+          {/* lane bands: alternating fills so each actor reads as its own row */}
+          {LANE_ORDER.map((lane, i) => (
+            <rect
+              key={`band-${lane}`}
+              className="fp-blueprint__band"
+              x={0}
+              y={LANE_BAND[lane][0]}
+              width={viewW}
+              height={LANE_BAND[lane][1] - LANE_BAND[lane][0]}
+              fill="currentColor"
+              fillOpacity={i % 2 === 0 ? 0.055 : 0}
+            />
+          ))}
           {/* lane labels + rules */}
           {LANE_ORDER.map((lane) => (
             <g key={lane}>
-              <Lines lines={wrap(copy.lanes[lane], 20)} x={0} cy={LANE_Y[lane] + 12} fill="currentColor" fillOpacity="0.9" fontWeight="600" />
-              <text x="0" y={LANE_Y[lane] + 12 + (wrap(copy.lanes[lane], 20).length + 0.5) * LINE} fontSize={TYPE} fill="currentColor" fillOpacity="0.62">
+              <Lines lines={wrap(copy.lanes[lane], 20)} x={10} cy={LANE_Y[lane] + 12} fill="currentColor" fontWeight="700" />
+              <text x="10" y={LANE_Y[lane] + 12 + (wrap(copy.lanes[lane], 20).length + 0.5) * LINE} fontSize={TYPE} fill="currentColor" fillOpacity="0.8">
                 {copy.laneSubs[lane]}
               </text>
               <line
@@ -205,7 +227,7 @@ export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint, colu
                 x2={viewW}
                 y2={LANE_Y[lane] + NODE_H / 2}
                 stroke="currentColor"
-                strokeOpacity="0.08"
+                strokeOpacity="0.14"
               />
             </g>
           ))}
@@ -249,11 +271,11 @@ export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint, colu
             x2={viewW}
             y2={VIS_LINE_Y}
             stroke="currentColor"
-            strokeOpacity="0.5"
-            strokeWidth="1.25"
+            strokeOpacity="0.75"
+            strokeWidth="1.5"
             strokeDasharray="6 4"
           />
-          <text x="0" y={VIS_LINE_Y - 7} fontSize={TYPE} letterSpacing="1" fill="currentColor" fillOpacity="0.7">
+          <text x="10" y={VIS_LINE_Y - 7} fontSize={TYPE} letterSpacing="1" fontWeight="600" fill="currentColor" fillOpacity="0.85">
             {copy.visibility}
           </text>
 
@@ -282,10 +304,10 @@ export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint, colu
                   width={w}
                   height={NODE_H}
                   rx={3}
-                  fill={isEvidence ? "none" : "var(--paper)"}
+                  fill={isEvidence ? "var(--bp-node-evidence, none)" : "var(--bp-node, var(--paper))"}
                   stroke={isCrossing ? "var(--coral)" : "currentColor"}
-                  strokeOpacity={isCrossing ? 0.95 : isDesign ? 0.9 : isEvidence ? 0.22 : 0.42}
-                  strokeWidth={isCrossing ? 1.75 : isDesign ? 2 : 1.25}
+                  strokeOpacity={isCrossing ? 1 : isDesign ? 0.95 : isEvidence ? 0.6 : 0.78}
+                  strokeWidth={isCrossing ? 1.75 : isDesign ? 2 : isEvidence ? 1.25 : 1.5}
                   strokeLinecap={isDesign ? "round" : undefined}
                   strokeDasharray={isDesign ? "0.1 4.5" : isEvidence ? "3 3" : isCrossing ? "5 4" : undefined}
                 />
@@ -295,7 +317,7 @@ export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint, colu
                   cy={y + NODE_H / 2}
                   textAnchor="middle"
                   fill="currentColor"
-                  fillOpacity={isEvidence ? 0.68 : 0.92}
+                  fillOpacity={isEvidence ? 0.82 : 1}
                 />
               </g>
             );
@@ -350,7 +372,6 @@ export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint, colu
         <li><span className="fp-blueprint__swatch fp-blueprint__swatch--built" aria-hidden="true" />{copy.legend.built}</li>
         <li><span className="fp-blueprint__swatch fp-blueprint__swatch--design" aria-hidden="true" />{copy.legend.design}</li>
       </ul>
-      <p className="fp-blueprint__source">{copy.builtFrom}</p>
 
       {/* The real text for the drawing. Terse on purpose — the lanes carry it. */}
       <dl className="fp-blueprint__key">

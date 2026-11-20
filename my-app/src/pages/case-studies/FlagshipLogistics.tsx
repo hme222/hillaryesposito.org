@@ -1,3 +1,4 @@
+import CopyEmail from "../../components/CopyEmail";
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
@@ -99,12 +100,12 @@ export default function FlagshipLogistics() {
           <div className="rp-clearing">
             <h1 className="rp-h1">Service design for U.S.{"\u00a0"}Army <span className="rp-keep">medical supply</span>, cutting resupply from months to{"\u00a0"}weeks</h1>
             <p className="rp-sub">
-              On an Army National Guard deployment to Iraq and two neighboring countries, I was in charge of medical supplies for seven aid stations, where wounded soldiers are treated first. When I arrived, restocking them took 1–2 months. I made the case to move our warehouse closer, then planned and tracked the move. <b>Restocking then took 1–2 weeks, according to my Officer Evaluation Report, the Army’s written review of my work.</b>
+              On an Army National Guard deployment to Iraq and two neighboring countries, I was in charge of medical supplies for seven aid stations, where wounded soldiers are treated first. When I arrived, restocking them took 1–2 months. I made the case to move our warehouse closer, then planned and tracked the move.
             </p>
             {/* Interview-sourced human line (Better Stories pass, 2026-11-10); source: design-docs/case-study-stories. */}
             <p className="rp-humanLine">I was in charge of getting rabies vaccines to three countries. Once, I delivered them myself.</p>
             <dl className="rp-heroEvidence" aria-label="My role at a glance">
-              <div><dt>Role</dt><dd>Medical logistics officer, in charge of medical supplies · led the warehouse move and station restocking</dd></div>
+              <div><dt>Role</dt><dd>Medical logistics officer · led the warehouse move and station restocking</dd></div>
             </dl>
           </div>
         </div>
@@ -116,7 +117,7 @@ export default function FlagshipLogistics() {
         </div>
       </header>
 
-      {/* The hero sub-line's own sentence; 1–2 is kept together the way the stat tile does it. */}
+      {/* The result sentence lives only here (cut from the hero, 2026-11-19); 1–2 is kept together the way the stat tile does it. */}
       <ResultLine
         eyebrow="What changed"
         text={"Restocking then took 1–⁠2 weeks, according to my Officer Evaluation Report."}
@@ -200,6 +201,7 @@ export default function FlagshipLogistics() {
             <p>In the Army, supply deliveries started too far from the aid stations. At the hospital, patient messages were printed and scanned before they reached the medical chart. In both jobs, I moved the step that was in the wrong place.</p>
           </CaseMore>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
+          <CopyEmail compact />
         </div>
       </section>
 

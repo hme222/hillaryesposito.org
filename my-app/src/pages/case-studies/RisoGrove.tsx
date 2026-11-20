@@ -1,3 +1,4 @@
+import CopyEmail from "../../components/CopyEmail";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
@@ -198,7 +199,7 @@ export default function RisoGrove() {
         </div>
       </header>
 
-      {/* Same words and count as the survey section's lede, so the two cannot drift. */}
+      {/* Said once, here; the survey lede no longer repeats it. Count comes from CORE_FEATURES. */}
       <ResultLine eyebrow="What I found" text={`Twelve features became ${countWord(CORE_FEATURES.length)}.`} />
 
       {/* STORY 1: the first version did too much. */}
@@ -221,7 +222,7 @@ export default function RisoGrove() {
         <div className="rp-wrap">
           <h2 className="rp-title">Then 37 people picked what it could not launch{" "}without.</h2>
           <p className="rp-lede">
-            From May 22 to October 16, 37 people filled out a survey: 31 plant owners and caretakers, three florists, and three bouquet buyers. Each picked the three features the app could not launch without. Twelve features became {countWord(CORE_FEATURES.length)}.
+            From May 22 to October 16, 37 people filled out a survey: 31 plant owners and caretakers, three florists, and three bouquet buyers. Each picked three features.
           </p>
           <h3 className="rp-subhead">The top {countWord(CORE_FEATURES.length)} made the cut</h3>
           <ol className="rp-rank rp-reveal" data-evidence="true">
@@ -273,7 +274,7 @@ export default function RisoGrove() {
           <CaseMore label="What the phases mean">
             <div className="rp-note">
               <p className="rp-note__k">What the three phases mean</p>
-              <p>FloraGrove is a functional prototype in Phase 2 of 3: it works, but it isn’t finished. Phase 1: the first app and the survey. Phase 2: the decisions on this page. Phase 3: polished screens, testing with plant owners, and screens for empty or error moments.</p>
+              <p>FloraGrove works, but it isn’t finished. Phase 1: the first app and the survey. Phase 2: the decisions on this page. Phase 3: polished screens, testing with plant owners, and screens for empty or error moments.</p>
             </div>
           </CaseMore>
         </div>
@@ -288,6 +289,7 @@ export default function RisoGrove() {
               <span className="rp-ext">Join the waitlist</span><span className="sr-only"> (opens in new tab)</span>
             </a>
             <a className="rp-cta rp-cta--ghost" href="mailto:espositohillary@gmail.com">Email me →</a>
+            <CopyEmail compact />
           </div>
         </div>
       </section>

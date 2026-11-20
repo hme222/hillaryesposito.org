@@ -243,12 +243,6 @@ function InteractiveJourney({ initialMode }: { initialMode: Mode }) {
         <button type="button" className="msk-journey__walk" onClick={walk} disabled={running}>
           {running ? "Walking…" : "Walk it through"}
         </button>
-        {/* "Built from" sits on the picture itself, not only in the collapsed
-            "Where this comes from" note (synthesis-lens review 2026-11-19). */}
-        <figcaption>
-          One patient-portal message, drawn as a picture. Illustration, not a screenshot.
-          <span className="msk-journey__source">Built from memory of my own notes on the work. No patient data. My counts were lost, so I make no claim about how often this happened.</span>
-        </figcaption>
       </div>
       <p className="sr-only" role="status" aria-live="polite">{running ? `Step ${at + 1}: ${stops[at].title}` : ""}</p>
     </figure>

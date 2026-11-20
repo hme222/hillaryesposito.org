@@ -102,4 +102,85 @@ describe("CaseStudyChapters focus behavior", () => {
 
     expect(scrollIntoView).toHaveBeenCalledTimes(1);
   });
+
+  it("steps to the next chapter from the chip without moving focus, and announces it", () => {
+    const prev = container.querySelector<HTMLButtonElement>('button[aria-label="Previous chapter"]');
+    const next = container.querySelector<HTMLButtonElement>('button[aria-label="Next chapter"]');
+    // Above the first linked chapter there is nothing to go back to.
+    expect(prev?.getAttribute("aria-disabled")).toBe("true");
+    expect(next?.getAttribute("aria-disabled")).toBeNull();
+
+    next?.focus();
+    act(() => {
+      next?.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, detail: 0 }));
+    });
+
+    expect(window.location.hash).toBe("#test-decisions");
+    expect(document.activeElement).toBe(next);
+    expect(container.querySelector('.rp-chapters a[aria-current="true"]')?.textContent).toBe("Decisions");
+    expect(container.querySelector('[role="status"]')?.textContent).toBe("Decisions");
+    expect(container.querySelector(".rp-chapters__toggle")?.textContent).toContain("1 of 1");
+    // Last chapter: next is disabled now and does nothing.
+    expect(next?.getAttribute("aria-disabled")).toBe("true");
+    act(() => {
+      next?.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true }));
+    });
+    expect(scrollIntoView).toHaveBeenCalledTimes(1);
+  });
+
+  it("opens the chapter sheet from the chip, closes it on Escape, and returns focus", () => {
+    const toggle = container.querySelector<HTMLButtonElement>(".rp-chapters__toggle");
+    const nav = container.querySelector(".rp-chapters");
+    expect(toggle?.getAttribute("aria-expanded")).toBe("false");
+    expect(toggle?.getAttribute("aria-controls")).toBe(container.querySelector(".rp-chapters__list")?.id);
+
+    act(() => toggle?.click());
+    expect(toggle?.getAttribute("aria-expanded")).toBe("true");
+    expect(nav?.classList.contains("is-open")).toBe(true);
+
+    act(() => {
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
+    });
+    expect(toggle?.getAttribute("aria-expanded")).toBe("false");
+    expect(document.activeElement).toBe(toggle);
+  });
+
+  it("closes the sheet when a chapter is picked from it", () => {
+    const toggle = container.querySelector<HTMLButtonElement>(".rp-chapters__toggle");
+    act(() => toggle?.click());
+    const chapterLink = container.querySelector<HTMLAnchorElement>('.rp-chapters a[href="#test-decisions"]');
+    act(() => {
+      chapterLink?.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, detail: 1 }));
+    });
+    expect(toggle?.getAttribute("aria-expanded")).toBe("false");
+    expect(window.location.hash).toBe("#test-decisions");
+  });
+
+  it("localizes the chip's position line and step labels", () => {
+    act(() => {
+      root.render(
+        <>
+          <CaseStudyChapters
+            project="Prueba"
+            chapters={[
+              { id: "test-start", label: "Inicio" },
+              { id: "test-decisions", label: "Decisiones" },
+            ]}
+            ofLabel="de"
+            leftLabel="restante"
+            prevLabel="Capítulo anterior"
+            nextLabel="Capítulo siguiente"
+          />
+          <section id="test-start"><h1>Inicio</h1></section>
+          <section id="test-decisions"><h2>Decisiones</h2></section>
+        </>,
+      );
+    });
+    const next = container.querySelector<HTMLButtonElement>('button[aria-label="Capítulo siguiente"]');
+    expect(container.querySelector('button[aria-label="Capítulo anterior"]')).not.toBeNull();
+    act(() => next?.click());
+    const toggle = container.querySelector(".rp-chapters__toggle");
+    expect(toggle?.textContent).toContain("1 de 1");
+    expect(toggle?.textContent).toContain("restante");
+  });
 });
