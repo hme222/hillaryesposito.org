@@ -101,6 +101,17 @@ export const TUCK_ENABLED = false;
 const JUMP_HOLD_MS = 1400; // CaseStudyChapters re-asserts its jump up to 1100ms
 const DEEP_LINK_HOLD_MS = 3000; // lazy case-study chunk + its own hash effect
 
+/** Height of a chapter strip that sits across the top of the reading area.
+    The current chapter nav (CaseStudyChapters) is fixed beside or below the
+    content, never across the top, so it adds nothing; a strip inside the
+    dock is already part of the dock's height. */
+function inFlowStripHeight(): number {
+  const strip = document.querySelector<HTMLElement>(".rp-chapters");
+  if (!strip || strip.closest(".navbar")) return 0;
+  if (getComputedStyle(strip).position === "fixed") return 0;
+  return strip.offsetHeight;
+}
+
 function readDockBottom(): number {
   const raw = getComputedStyle(document.documentElement).getPropertyValue("--dock-h");
   const n = parseFloat(raw);
@@ -214,9 +225,7 @@ export function useCaseStudyChrome(navRef: RefObject<HTMLElement>, pathname: str
         root.classList.toggle("cs-chrome--tucked", state.tucked);
         applied = state.tucked;
       }
-      const strip = document.querySelector<HTMLElement>(".rp-chapters");
-      // A strip that lives inside the dock is already part of the dock's height.
-      const stripH = strip && !strip.closest(".navbar") ? strip.offsetHeight : 0;
+      const stripH = inFlowStripHeight();
       const h = Math.round(chromeHeight(state.tucked, readDockBottom(), stripH));
       if (h !== appliedHeight) {
         root.style.setProperty("--cs-chrome-h", `${h}px`);
@@ -275,8 +284,7 @@ export function useCaseStudyChrome(navRef: RefObject<HTMLElement>, pathname: str
       // history.replaceState, which emits neither hashchange nor popstate.
       // Reveal before it measures and scrolls the destination.
       openHashTargetDisclosure(href);
-      const strip = document.querySelector<HTMLElement>(".rp-chapters");
-      const landing = target.getBoundingClientRect().top + window.scrollY - (strip?.offsetHeight ?? 0);
+      const landing = target.getBoundingClientRect().top + window.scrollY - inFlowStripHeight();
       if (landing <= TUCK_AFTER_PX) return;
       navFocused = false;
       holdTucked(JUMP_HOLD_MS);

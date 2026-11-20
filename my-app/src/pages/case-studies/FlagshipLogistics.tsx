@@ -1,3 +1,4 @@
+import CopyEmail from "../../components/CopyEmail";
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
@@ -200,6 +201,7 @@ export default function FlagshipLogistics() {
             <p>In the Army, supply deliveries started too far from the aid stations. At the hospital, patient messages were printed and scanned before they reached the medical chart. In both jobs, I moved the step that was in the wrong place.</p>
           </CaseMore>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
+          <CopyEmail compact />
         </div>
       </section>
 

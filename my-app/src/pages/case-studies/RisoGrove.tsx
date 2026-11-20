@@ -1,3 +1,4 @@
+import CopyEmail from "../../components/CopyEmail";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
@@ -288,6 +289,7 @@ export default function RisoGrove() {
               <span className="rp-ext">Join the waitlist</span><span className="sr-only"> (opens in new tab)</span>
             </a>
             <a className="rp-cta rp-cta--ghost" href="mailto:espositohillary@gmail.com">Email me →</a>
+            <CopyEmail compact />
           </div>
         </div>
       </section>

@@ -1,3 +1,4 @@
+import CopyEmail from "../../components/CopyEmail";
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
@@ -121,7 +122,7 @@ export default function FlagshipUxWoman() {
           <div className="rp-clearing">
             <h1 className="rp-h1">Healthcare research based on changing Medicaid{"\u00a0"}requirements</h1>
             <p className="rp-sub">
-              In UX Woman, a 7-month user experience (UX) design program, I interviewed six people who work at clinics and insurance companies. Then I designed a guide to one sample letter from New York Medicaid, the public health insurance program, about its new work requirement. <b>It is untested, and no patient was interviewed.</b>
+              In UX Woman, a 7-month user experience (UX) design program, I interviewed six people who work at clinics and insurance companies. Then I designed a guide to one sample letter from New York Medicaid, the public health insurance program, about its new work requirement.
             </p>
             <dl className="rp-heroEvidence" aria-label="UX Woman project at a glance">
               <div><dt>Role</dt><dd>Solo researcher and designer · 2026</dd></div>
@@ -263,6 +264,7 @@ export default function FlagshipUxWoman() {
         <div className="rp-wrap rp-close">
           <h2>From a letter to a next step.</h2>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
+          <CopyEmail compact />
         </div>
       </section>
 

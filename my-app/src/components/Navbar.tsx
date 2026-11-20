@@ -20,7 +20,7 @@ const SECTION_IDS = ["home", "projects", "about", "contact"];
 
 /**
  * @status: stable
- * @purpose: Printed route dock - the site's primary navigation (rendered in app/App.tsx): a sticky, transparent full-width `<nav>` (reserving the same flow height the old full-width bar did) holding one visible, top-centre, detached pill cluster (Home mark, Work, About, the Ask bird, and a Settings disclosure for theme/language) with a sliding "printed route marker" behind whichever item is active. Same layout on desktop and phone - no hamburger, no off-canvas menu. Handles same-page section scrolling and case-study/About active-state tracking; Settings owns the dark-mode and language toggles that used to sit loose in the old full-width bar. On case-study routes only, useCaseStudyChrome tucks the dock while the reader scrolls down (the chapter strip pins to the top as the single bar) and returns it on scroll up, focus, or an open menu/tour.
+ * @purpose: Printed route dock - the site's primary navigation (rendered in app/App.tsx): a sticky, transparent full-width `<nav>` (reserving the same flow height the old full-width bar did) holding one visible, top-centre, detached pill cluster (Home mark, Work, About, the Ask bird, and a Settings disclosure for theme/language) with a sliding "printed route marker" behind whichever item is active. Same layout on desktop and phone - no hamburger, no off-canvas menu. Handles same-page section scrolling and case-study/About active-state tracking; Settings owns the dark-mode and language toggles that used to sit loose in the old full-width bar. On case-study routes it takes a glass finish and useCaseStudyChrome keeps jump targets clear of it; the chapter links are a separate nav (CaseStudyChapters), not part of the pill.
  */
 export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   const t = useT();
@@ -236,8 +236,8 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   }, []);
 
   // Publish the pill's own real bottom edge (distance from the viewport top,
-  // not `.navbar`'s own box) as a CSS custom property, so sticky secondary
-  // nav (the case-study `.rp-chapters` strip) can derive its offset from one
+  // not `.navbar`'s own box) as a CSS custom property, so anything placed
+  // under the dock (jump-target scroll margins) can derive its offset from one
   // shared value instead of a hard-coded px guess that silently drifts
   // whenever the pill's padding changes at a breakpoint (riso-page.css reads
   // `--dock-h`). Deliberately the PILL's own rect, not `.navbar`'s: `.navbar`
@@ -355,9 +355,6 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
             }}
           />
         </div>
-        {/* Case studies: the chapter links (CaseStudyChapters) render here, so
-            the site links and the chapters are one bar. Empty elsewhere. */}
-        <div className="nav-dock__chapters" id="nav-dock-chapters" />
       </div>
     </nav>
   );

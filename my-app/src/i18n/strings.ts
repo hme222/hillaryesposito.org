@@ -82,7 +82,7 @@ const en = {
   "home.riso.groveDesc":
     "The first version had too many features for new plant owners, so I watched five people use it and surveyed 37. Twelve features became three.",
   "home.riso.mskDesc":
-    "Staff printed patients’ online messages just to scan them into the medical record. I mapped that detour across four departments and pitched a digital fix to hospital leaders and the tech team, who built it after I changed roles. Six steps became five, and one department no longer handles these messages.",
+    "Staff printed patients’ online messages just to scan them into the medical record. I mapped that detour across four departments and pitched a digital fix to hospital leaders and the tech team, who built it after I changed roles. Six steps became five.",
   "home.riso.logisticsDesc":
     "I planned and tracked a warehouse move that cut the wait for medical supplies from 1–2 months to 1–2 weeks. Then I set up shared order tracking.",
   "home.riso.uxwomanDesc":
@@ -279,7 +279,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.riso.groveDesc":
     "La primera versión tenía demasiadas funciones para quienes empiezan con las plantas, así que vi a cinco personas usarla y encuesté a 37. Doce funciones se volvieron tres.",
   "home.riso.mskDesc":
-    "El personal imprimía los mensajes en línea de los pacientes solo para escanearlos a la historia clínica. Mapeé ese desvío en cuatro áreas y propuse una solución digital a la dirección del hospital y al equipo de tecnología, que la construyeron después de que cambié de puesto. Seis pasos se volvieron cinco, y un área ya no maneja estos mensajes.",
+    "El personal imprimía los mensajes en línea de los pacientes solo para escanearlos a la historia clínica. Mapeé ese desvío en cuatro áreas y propuse una solución digital a la dirección del hospital y al equipo de tecnología, que la construyeron después de que cambié de puesto. Seis pasos se volvieron cinco.",
   "home.riso.logisticsDesc":
     "Planifiqué y seguí el traslado de un almacén que redujo la espera de suministros médicos de 1–2 meses a 1–2 semanas. Luego armé un seguimiento compartido de pedidos.",
   "home.riso.uxwomanDesc":

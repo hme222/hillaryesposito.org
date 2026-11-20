@@ -83,9 +83,9 @@ export const MSK_ES: SpanishCaseStudyData = {
   title: "Proyecto de diseño de servicios para Memorial Sloan\u00a0Kettering Cancer\u00a0Center",
   breadcrumb: "Memorial Sloan Kettering",
   meta: "Memorial Sloan Kettering · diseño de servicios",
-  resultLine: { eyebrow: "Lo que cambió", text: "Seis pasos se volvieron cinco, y un área dejó de participar." },
+  resultLine: { eyebrow: "Lo que cambió", text: "Seis pasos se volvieron cinco." },
   intro:
-    "Como coordinadora de oficina, mapeé cómo los mensajes del portal de pacientes, el sitio web donde los pacientes le escriben a su equipo de atención, pasaban por cuatro áreas. Los mensajes no se guardaban en la historia clínica electrónica del paciente (EMR, por sus siglas en inglés). Así que yo los imprimía y esperábamos a que los escanearan. Sugerí un botón Enviar al EMR para que se archivaran directo en la historia clínica. Los equipos de tecnología de la información (TI) y de experiencia de usuario (UX) construyeron la versión real.",
+    "Como coordinadora de oficina, mapeé cómo los mensajes del portal de pacientes pasaban por cuatro áreas. No se guardaban en la historia clínica electrónica del paciente (EMR, por sus siglas en inglés), así que los imprimíamos y esperábamos al equipo de escaneo. Propuse un botón Enviar al EMR para archivarlos directo. Los equipos de tecnología de la información (TI) y de experiencia de usuario (UX) del hospital construyeron la versión real.",
   stats: [
     // Two rows, matching the English hero (2026-10-16): the rest restated the
     // intro and the workflow section's provenance note.
@@ -109,7 +109,6 @@ export const MSK_ES: SpanishCaseStudyData = {
       title: "Dibujé un mapa que las cuatro áreas podían ver.",
       body: [
         "Hablé con todas las áreas que tocaba el papel: clínica, TI, operaciones y HIM (gestión de información de salud). Trabajé con la dirección en la implementación. Repasé cada decisión con TI y UX en una propuesta completa.",
-        "De dónde sale esto: redibujé estas imágenes de memoria, a partir de mis propias notas. No tienen datos de pacientes, registros exportados ni copias de las pantallas del software real.",
       ],
       bullets: [
         "Antes · seis pasos: abrir la cola del panel, encontrar el mensaje, imprimirlo, enviar el papel a HIM, esperar a que lo escaneen y volver después a revisar que se archivó.",
@@ -183,7 +182,7 @@ export const MSK_ES: SpanishCaseStudyData = {
       title: "Qué cambió, y a quién le corresponde el mérito.",
       body: [
         "Como coordinadora, impulsé la idea de archivar los mensajes del portal directo en la historia clínica en línea. Se construyó a partir de mi propuesta dos puestos después. También reescribí el curso de RCP para el personal clínico que lo tomaba. Y, con el equipo de diseño, rehíce la capacitación del nuevo personal de oficina: Epic, HIPAA, cumplimiento y las habilidades sociales del puesto.",
-        "Datos anonimizados · el 20% no se atribuye solo a la cola de archivo, y no tengo registro del período que cubre · los ~$1M/año son una proyección de mi propuesta, no un ahorro medido.",
+        "El 20% no se atribuye solo a la cola de archivo · los ~$1M/año son una proyección de mi propuesta, no un ahorro medido.",
       ],
       bullets: [
         "Dirigí · 1 mes antes: toda el área se certificó antes de la fecha límite original, sin la prórroga de 4 meses.",
@@ -490,7 +489,7 @@ export const UXWOMAN_ES: SpanishCaseStudyData = {
   breadcrumb: "UX Woman",
   meta: "UX Woman · Investigación en salud · Guía para una carta de Medicaid",
   intro:
-    "UX Woman es una aceleradora de diseño de experiencia de usuario (UX) de 7 meses, guiada por mentores. Entrevisté a seis personas que trabajan en clínicas y aseguradoras. Luego diseñé una guía para una carta pública de muestra de Medicaid de Nueva York, el programa público de seguro médico, sobre su nuevo requisito de trabajo. No está probada y no se entrevistó a ningún paciente.",
+    "UX Woman es una aceleradora de diseño de experiencia de usuario (UX) de 7 meses, guiada por mentores. Entrevisté a seis personas que trabajan en clínicas y aseguradoras. Luego diseñé una guía para una carta pública de muestra de Medicaid de Nueva York, el programa público de seguro médico, sobre su nuevo requisito de trabajo.",
   /* Interview-sourced human line (Better Stories pass, 2026-11-10). Spanish is a draft translation for Hillary to review. */
   humanLine: "Un líder de hospital me dijo: la IA (inteligencia artificial) ayuda a los hospitales a prepararse y a las aseguradoras a denegar.",
   // "La guía empieza por la carta…" is said once, here; "No está probada" stays in the intro too as the honesty limit.

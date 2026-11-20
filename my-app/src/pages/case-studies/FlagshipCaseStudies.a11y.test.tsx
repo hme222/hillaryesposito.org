@@ -143,7 +143,7 @@ describe("flagship case-study accessibility", () => {
     expect(hero?.textContent).toContain("user experience (UX) teams built the real version");
     expect(hero?.textContent).not.toContain("Role route");
     // The sub carries the contribution; the evidence list no longer restates it.
-    expect(hero?.textContent).toContain("Send to EMR button so they would file straight to the record");
+    expect(hero?.textContent).toContain("I proposed a Send to EMR button to file them directly");
     expect(hero?.textContent).not.toContain("20%");
     expect(hero?.textContent).not.toContain("two system upgrades");
     expect(container.textContent).toContain("not attributed solely to this filing workflow");
@@ -459,7 +459,7 @@ describe("flagship case-study accessibility", () => {
     const text = container.textContent || "";
     // The limits stay on the page: no patient interviews, untested, and the
     // projection is labeled as a different measure from the observed count.
-    ["It is untested, and no patient was interviewed.", "UX Woman is a mentor-led UX design accelerator.", "Public data. One number is a forecast and one is a real count, so they don't compare directly.", "Design concept, not an official notice.", "Built, not yet tested."].forEach((phrase) => {
+    ["UX Woman is a mentor-led UX design accelerator.", "Public data. One number is a forecast and one is a real count, so they don't compare directly.", "Design concept, not an official notice.", "Built, not yet tested."].forEach((phrase) => {
       expect(text).toContain(phrase);
     });
     // Dropped at Hillary's direction (2026-11-09): the adjacent HR interview and the five pretotypes.
@@ -479,7 +479,6 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector("#es-uxwoman-guide")).not.toBeNull();
     expect(container.querySelector("h1")?.textContent).toBe("Investigación en salud basada en los requisitos cambiantes de\u00a0Medicaid");
     expect(container.textContent).toContain("UX Woman es una aceleradora de diseño de experiencia de usuario (UX) de 7 meses, guiada por mentores.");
-    expect(container.textContent).toContain("no se entrevistó a ningún paciente");
     ["UserTesting", "pretotipo"].forEach((phrase) => expect(container.textContent).not.toContain(phrase));
   });
 
@@ -667,18 +666,18 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".msk-dashboard-mockup")).toBeNull();
     expect(container.querySelectorAll(".msk-journey")).toHaveLength(2);
     expect(container.querySelector("#msk-decisions .msk-journey--after")).not.toBeNull();
-    // The second journey drops the tabs, walk button and caption the hero already carries.
+    // The second journey drops the tabs and walk button the hero already carries. The journey
+    // captions ("Illustration, not a screenshot", "Built from memory...") were removed 2026-11-20.
     expect(container.querySelectorAll(".msk-journey__tabs")).toHaveLength(1);
-    expect(container.querySelectorAll(".msk-journey figcaption")).toHaveLength(1);
+    expect(container.querySelectorAll(".msk-journey figcaption")).toHaveLength(0);
     expect(container.querySelector(".fp-mskHeroPlate__detour")).toBeNull();
     expect(container.querySelector(".fp-mskLens")).toBeNull();
     expect(container.querySelector(".fp-mskLens__controls")).toBeNull();
     expect(Array.from(container.querySelectorAll("h2, h3"), (heading) => heading.textContent))
       .not.toContain("My filing queue");
-    // Provenance (density pass, 2026-10-16) is stated in full once, in "Where
-    // this comes from", and since 2026-11-19 as a one-line "Built from" caption on
-    // each MSK visual (hero journey and blueprint). No other repeats.
-    expect(container.textContent?.toLowerCase().split("no patient data").length).toBe(4);
+    // The provenance notes ("Where this comes from" and the "Built from" captions) were
+    // removed at Hillary's request on 2026-11-20, so the phrase no longer appears.
+    expect(container.textContent?.toLowerCase()).not.toContain("no patient data");
     // The queue's "anonymized internal tool concept" label left with the queue screen.
     expect(container.textContent?.toLowerCase()).not.toContain("anonymized internal tool concept");
   });
@@ -822,7 +821,7 @@ describe("flagship case-study accessibility", () => {
   });
 
   it.each([
-    ["MSK", <FlagshipMSK />, "Service design project for Memorial Sloan Kettering Cancer\u00a0Center", "Where this comes from"],
+    ["MSK", <FlagshipMSK />, "Service design project for Memorial Sloan Kettering Cancer\u00a0Center", "They are not MSK’s actual design."],
     ["FloraGrove", <RisoGrove />, "Product design and research for FloraGrove, a pre-launch plant-care\u00a0app", "it does not prove what people would actually do"],
     ["Mobbin", <FlagshipMobbin />, "Freelance documentation of three finance apps for\u00a0Mobbin", "I did not design"],
   ])("%s leads with a project-label title and visible evidence boundary", async (_name, page, title, boundary) => {
@@ -894,19 +893,6 @@ describe("flagship case-study accessibility", () => {
       expect(blueprint.querySelectorAll(".fp-blueprint__design")).toHaveLength(0);
     });
 
-    it("puts a Built from line under the blueprint and the hero journey", async () => {
-      await render();
-      const builtFrom = /^Built from memory of my own notes on the work\. No patient data\. My counts were lost, so I make no claim about how often this happened\.$/;
-      const blueprintSource = container.querySelector(".fp-blueprint .fp-blueprint__source");
-      expect(blueprintSource?.textContent).toMatch(builtFrom);
-      expect(blueprintSource?.closest("[aria-hidden='true']")).toBeNull();
-      const journeyCaption = container.querySelector(".fp-heroArt--msk .msk-journey figcaption");
-      expect(journeyCaption?.textContent).toContain("Illustration, not a screenshot.");
-      expect(journeyCaption?.querySelector(".msk-journey__source")?.textContent).toMatch(builtFrom);
-      // The collapsed provenance note stays.
-      expect(container.textContent).toContain("Where this comes from");
-    });
-
     it("labels the wait band as not measured", async () => {
       await render();
       const svgText = Array.from(container.querySelectorAll(".fp-blueprint svg text"), (t) => t.textContent).join(" ");
@@ -973,7 +959,6 @@ describe("flagship case-study accessibility", () => {
     expect(container.textContent).toContain("I talked to every team the paper touched.");
     expect(container.querySelector(".fp-systemCards")).toBeNull();
     expect(container.textContent).toContain("My scope:");
-    expect(container.textContent).toContain("I make no claim about how often this happened.");
   });
 
   it("supports the Mobbin gallery and a direct next-project path", async () => {

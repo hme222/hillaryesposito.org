@@ -1,3 +1,4 @@
+import CopyEmail from "../../components/CopyEmail";
 import React, { lazy, Suspense, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
@@ -141,7 +142,7 @@ export default function FlagshipMSK() {
           <div className="rp-clearing">
             <h1 className="rp-h1">Service design project for Memorial <span className="rp-keep">Sloan Kettering</span> Cancer{"\u00a0"}Center</h1>
             <p className="rp-sub">
-              As an office coordinator, I mapped how messages from the patient portal, the website patients use to write to their care team, moved through four departments. The messages didn’t save to the patient’s electronic medical record (EMR), the digital chart. So I printed them, and we waited for them to be scanned in. I suggested a Send to EMR button so they would file straight to the record. <b>The hospital’s information technology (IT) and user experience (UX) teams built the real version.</b>
+              As an office coordinator, I mapped how patient portal messages passed through four departments. They didn’t save to the patient’s electronic medical record (EMR), so we printed them and waited for the scanning team. I proposed a Send to EMR button to file them directly. <b>The hospital’s information technology (IT) and user experience (UX) teams built the real version.</b>
             </p>
             {/* The "Role route" row (her career path) was cut 2026-11-15 at
                 Hillary's direction: Lex asked for her role on this project,
@@ -158,7 +159,7 @@ export default function FlagshipMSK() {
         </div>
       </header>
 
-      <ResultLine eyebrow="What changed" text="Six steps became five, and one department dropped out." />
+      <ResultLine eyebrow="What changed" text="Six steps became five." />
 
       <div data-evidence="true"><MSKFilingReceipt /></div>
 
@@ -171,19 +172,12 @@ export default function FlagshipMSK() {
           {/* "The Detour" animatic was removed 2026-10-13 at the owner’s direction
               (the deterministic version was rejected at taste review on
               2026-08-31; the generated video was scrapped the same day). */}
-          {/* Provenance, said once for the whole page (2026-10-16): the hero’s
-              artifact label names the recreation; this note carries the
-              "no patient data" boundary and what the evidence can and cannot
-              claim (the former "Evidence boundary" aside). */}
+          {/* The "Where this comes from" provenance note and the captions that said
+              the drawings are re-created from memory with no patient data were
+              removed at Hillary's request (2026-11-20). */}
           {/* The word-for-word step lists were cut 2026-11-17 (repetition cut):
               both journey pictures already list the six and five steps as text. */}
           <p className="rp-lede rp-reveal">Four departments: clinical, IT, operations, and health information management (HIM). I worked with leadership on the rollout. I walked IT and UX through every decision in a full pitch.</p>
-          <CaseMore label="Where this comes from">
-            <div className="rp-note rp-reveal">
-              <p>I redrew these pictures from memory of my own notes. They hold no patient data, no exported records, and no copies of the real software’s screens.</p>
-            </div>
-          </CaseMore>
-
         </div>
       </section>
 
@@ -336,8 +330,7 @@ export default function FlagshipMSK() {
       <div data-evidence="true"><EvidenceField
         id="msk-outcomes"
         languageAnchor="msk-outcomes"
-        title="What changed, and who gets the credit."
-        disclaimer="Details anonymized. I have no record of what time period the 20% covers."
+        title="The numbers, and where each comes from."
         // The same discipline the certification dashboard used on its own data:
         // say what you are looking at before someone has to work it out. All
         // three read as equal tiles otherwise, and "organization-wide" made the
@@ -349,10 +342,10 @@ export default function FlagshipMSK() {
         // not the workflow's reach, so it left; ~2,000 is her own estimate of
         // the new employees she trained; the 20% is printing and scanning costs.
         metrics={[
-          { tag: "Led", n: "1 month", label: "early: the whole department certified before the original deadline, with no 4-month extension" },
-          { tag: "Trained", n: "~2,000", label: "new employees I trained on Epic, HIPAA, and compliance. My estimate: about one group of 30 a week for two years." },
-          { tag: "Initiative result", n: "20%", label: "lower printing and scanning costs, from my review of the numbers with the head of the finance department; not attributed solely to this filing workflow" },
-          { tag: "Projection", n: "~$1M/year", label: "projected paper savings in my Process Improvement Fair pitch, not measured savings" },
+          { n: "1 month", label: "early: the whole department certified before the original deadline, with no 4-month extension" },
+          { n: "~2,000", label: "new employees I trained on Epic, HIPAA, and compliance. My estimate: about one group of 30 a week for two years." },
+          { n: "20%", label: "lower printing and scanning costs, from my review of the numbers with the head of the finance department; not attributed solely to this filing workflow" },
+          { n: "~$1M/year", label: "projected paper savings in my Process Improvement Fair pitch, not measured savings" },
         ]}
       /></div>
 
@@ -360,6 +353,7 @@ export default function FlagshipMSK() {
         <div className="rp-wrap rp-close">
           <h2>I find the workaround. Then I get it built.</h2>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
+          <CopyEmail compact />
         </div>
       </section>
 

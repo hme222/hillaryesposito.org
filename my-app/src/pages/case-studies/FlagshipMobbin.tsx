@@ -1,3 +1,4 @@
+import CopyEmail from "../../components/CopyEmail";
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
@@ -171,6 +172,7 @@ export default function FlagshipMobbin() {
         <div className="rp-wrap rp-close">
           <h2>Now I notice what makes an app feel safe to trust.</h2>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
+          <CopyEmail compact />
         </div>
       </section>
 

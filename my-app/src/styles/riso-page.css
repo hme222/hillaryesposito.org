@@ -2458,84 +2458,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   .rp-breadcrumb { flex-wrap: wrap; row-gap: 0; overflow-x: visible; }
 }
 
-/* Sticky so the reader can always see where they are on a long study, and so
-   losing your place costs a glance instead of a re-scan. The paper background
-   is required now that content scrolls underneath it. `top` derives from
-   `--dock-h` (the dock's own real measured height, set in Navbar.tsx) plus
-   2px for the pill's own flat offset shadow and 12px of intended clearance
-   below it - one shared value instead of a hard-coded 74px that only ever
-   matched one breakpoint and silently drifted at every other. */
-.rp-chapters { position: sticky; top: calc(var(--dock-h, 74px) + 14px); z-index: 5;
-  max-width: 1080px; margin: .35rem auto 1rem; padding: .3rem var(--sp-gutter);
-  display: flex; align-items: center; flex-wrap: wrap; gap: .35rem .55rem; font-family: var(--label);
-  font-size: var(--rp-type-floor); letter-spacing: .025em;
-  /* 92% let dark artifact text — the MSK queue's column headers, the hero
-     headline — read straight through the strip as a ghosted second layer.
-     97% keeps the frosted edge without the bleed. */
-  background: color-mix(in srgb, var(--paper) 97%, transparent); backdrop-filter: blur(6px); }
-/* Case-study reading mode (hooks/useCaseStudyChrome.ts): with the dock
-   tucked, the strip pins to the very top as the single bar. `top` moves with
-   the dock's own slide, and only once the hook allows motion. */
-.cs-chrome--tucked .rp-chapters { top: 0; }
-.cs-chrome--animate .rp-chapters { transition: top var(--dur-fast) var(--ease-soft); }
-.rp-chapters span { color: var(--muted); margin-right: .15rem; }
-.rp-chapters a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--hair);
-  min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; padding: 0 .2rem; }
-.rp-chapters a:hover, .rp-chapters a:focus-visible { color: var(--green); border-bottom-color: var(--green); }
-/* Current chapter. Weight carries it as well as color, so the state survives
-   grayscale, forced colors, and color-vision differences. */
-.rp-chapters a.is-active { color: var(--ink); font-weight: 700; border-bottom-color: var(--ink); }
-/* Phones: one sideways-scrolling row. Wrapping made the sticky strip two rows
-   (102px), so nav + strip held 21% of an 844px screen while reading. The
-   "Jump to" label goes; the nav's aria-label still names the strip. */
-@media (max-width: 760px) {
-  .rp-chapters {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scrollbar-width: none;
-    margin-bottom: .4rem;
-    padding-bottom: .2rem;
-  }
-  .rp-chapters::-webkit-scrollbar { display: none; }
-  .rp-chapters > span { display: none; }
-  .rp-chapters a { flex: 0 0 auto; }
-  /* The row runs past the screen edge with no scrollbar, so a chapter cut at
-     the edge read as the end of the list. Fade the last 32px before the edge
-     (or before the pinned length cue) to say "more this way"; the fade drops
-     once the last chapter is fully in view (.is-at-end, set in
-     CaseStudyChapters).
-     The fade is painted, not masked: a mask-image made the strip itself
-     transparent there, so the page scrolling underneath bled through. The
-     ::after is a sticky flex item ordered between the links and the cue, with
-     a negative margin so it takes no room in the row. */
-  .rp-chapters {
-    --rp-strip-cue: 0px;
-    background: var(--paper);
-  }
-  .rp-chapters::after {
-    content: "";
-    order: 1;
-    position: sticky;
-    right: var(--rp-strip-cue);
-    z-index: 1;
-    flex: 0 0 32px;
-    align-self: stretch;
-    margin-left: calc(-32px - .55rem);
-    background: linear-gradient(to right, color-mix(in srgb, var(--paper) 0%, transparent), var(--paper));
-    pointer-events: none;
-  }
-  .rp-chapters .rp-progress--strip { order: 2; }
-  /* With the length cue pinned at the right, the strip drops its right
-     padding so the cue sits flush to the screen edge: sticky positioning
-     stops at the padding edge, which let a cut-off chapter name show in the
-     16px past the cue. The cue carries that padding itself instead. */
-  .rp-chapters:has(.rp-progress--strip) {
-    padding-right: 0;
-    --rp-strip-cue: calc(var(--rp-cue-w) + var(--sp-gutter));
-  }
-  .rp-chapters.is-at-end::after { display: none; }
-}
+/* Chapter nav (CaseStudyChapters): see "Chapter nav" at the end of this file. */
 
 
 /* ---------- type scale specimen ---------- */
@@ -3161,7 +3084,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
     border: 2px solid Highlight;
     forced-color-adjust: none;
   }
-  .rp-chapters a.is-active { border-bottom-width: 2px; }
+  .rp-chapters a.is-active { border-left-width: 4px; }
   /* The Before/After switches, the Mobbin screen dots and the nav's current item lost their
      selected fill in this mode (a11y audit, 2026-11-10): the pressed option was
      indistinguishable from the other. A system-colour fill and border carry it instead. */
@@ -3297,50 +3220,18 @@ html.cs-chrome .riso-page .fp-indexLens[id] { scroll-margin-top: calc(var(--cs-c
 .rp-progress--numeric .rp-progress__label { padding-right: .2rem; }
 
 /* Below the tablet breakpoint the screen edges are too tight for the fixed
-   rail, so the length cue moves into the sticky chapter strip: the number
-   alone, pinned to the strip's right end (CaseStudyChapters renders it with
-   variant="strip"). On wide screens the strip copy stays hidden. */
-.rp-progress--strip { display: none; }
-/* Fits "100% left" in the strip's type. Shared by the cue and the fade. */
-.rp-chapters { --rp-cue-w: 5.6rem; }
+   rail; the chapter chip (CaseStudyChapters) carries the same "NN% left"
+   number there instead. */
 @media (max-width: 900px) {
   .rp-progress { display: none; }
-  .rp-progress.rp-progress--strip {
-    position: sticky;
-    right: 0;
-    top: auto;
-    z-index: 1;
-    transform: none;
-    display: flex;
-    flex: 0 0 auto;
-    align-self: stretch;
-    justify-content: flex-end;
-    width: var(--rp-cue-w);
-    box-sizing: border-box;
-    margin-left: auto;
-    padding: 0;
-    opacity: 1;
-    visibility: visible;
-    background: var(--paper);
-  }
-  .rp-progress--strip .rp-progress__label { white-space: nowrap; font-variant-numeric: tabular-nums; }
-  .rp-progress--strip .rp-progress__label b { display: inline; font-size: .69rem; margin-right: .3em; }
-}
-/* Phones: the strip scrolls sideways and has dropped its right padding (see
-   the .rp-chapters phone block), so the cue carries the gutter itself. */
-@media (max-width: 760px) {
-  .rp-progress.rp-progress--strip {
-    width: calc(var(--rp-cue-w) + var(--sp-gutter));
-    padding-right: var(--sp-gutter);
-  }
 }
 /* The fill is a position readout, not an animation. Reduced motion keeps the
    value and drops the reveal and fill transitions. */
 @media (prefers-reduced-motion: reduce) {
   .rp-progress,
   .rp-progress__fill,
-  .rp-chapters a,
-  .rp-chapters a.is-active { transition: none; }
+  .rp-chapters,
+  .rp-chapters a { transition: none; }
 }
 
 /* ---------- about: story chapters in the riso system ---------- */
@@ -3616,7 +3507,6 @@ h2.rp-kicker { margin: 0 0 .4rem; line-height: 1.3; }
   letter-spacing: 0;
 }
 
-.rp-progress--strip .rp-progress__label b,
 .rp-gallery__controls button,
 .rp-gallery__controls p {
   font-size: var(--rp-type-floor);
@@ -3909,18 +3799,11 @@ body .site-footer__label {
 .rp-type:nth-child(2) > span:not(.rp-type__label) { font-family: "Archivo", sans-serif; }
 .rp-type:nth-child(3) > .rp-type__sampleLabel { font-family: "Space Mono", monospace; letter-spacing: .14em; text-transform: uppercase; }
 
-/* Phone chapter strip: the sticky progress label sat over the last chapters
-   ("Redesig…", "Outcom…"). The strip scrolls edge to edge instead. */
-@media (max-width: 600px) {
-  .rp-progress--strip .rp-progress__label { display: none; }
-}
 /* One next-case band: MSK's title collapsed to body size under its scope. */
 .flagship-page--msk .rp-next__tag { font-size: var(--rp-type-floor); }
 
 /* Round-three fixes. */
-/* Phone chapter strip: fade the right edge so the clipped last chapter reads as overflow. */
 @media (max-width: 600px) {
-  .rp-chapters { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 2.5rem), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 2.5rem), transparent); }
   /* Home: keep the hero plate off the portrait's collar. */
   .riso-home .rp-hero__media .rp-headshot { max-height: 100%; overflow: hidden; }
   .riso-home .rp-hero__media .rp-headshot img { height: 100%; object-fit: cover; object-position: 50% 15%; }
@@ -4240,11 +4123,6 @@ body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-g
   /* About figures: labels at the 13px floor, sentence case. */
   .about-evidenceLedger dd { font-size: var(--ts-label); letter-spacing: 0; text-transform: none; }
 }
-/* Chapter strip: a fade on the right edge says it scrolls sideways. */
-@media (max-width: 899px) {
-  .rp-chapters { -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); }
-}
-
 /* Copy button: icon + label; on success the check mark and "Copied" take its
    place, in green, for a few seconds. min-width keeps it from jumping. */
 .rp-copyEmail__button { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; min-width: 6.5em; }
@@ -4474,13 +4352,14 @@ body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-g
 .flagship-page .rp-hero__media .rp-device.rp-device--video { height: auto; width: min(270px, 68vw); }
 .rp-split:not(:has(.rp-split__media)) { grid-template-columns: 1fr; }
 
-/* ---------- One combined glass bar on case studies (2026-11-13) ----------
-   The site dock and the chapter links are a single liquid-glass capsule that
-   stays put while reading: translucent paper, a blurred and saturated backdrop,
-   a lit top edge and a hairline, built from the same tokens as the rest of the
-   system so it reads as paper-and-glass, not a new theme. Scoped to case-study
-   routes (html.cs-chrome); Home and About keep the printed pill. */
-.nav-dock__chapters:empty { display: none; }
+/* ---------- Glass dock pill on case studies (2026-11-13) ----------
+   The site dock on case-study routes is a liquid-glass capsule that stays put
+   while reading: translucent paper, a blurred and saturated backdrop, a lit
+   top edge and a hairline, built from the same tokens as the rest of the
+   system so it reads as paper-and-glass, not a new theme. Scoped to
+   case-study routes (html.cs-chrome); Home and About keep the printed pill.
+   The chapter links used to share this bar; since 2026-11-20 they live in
+   their own nav (see "Chapter nav" at the end of this file). */
 html.cs-chrome .nav-dock__pill {
   flex-direction: row; align-items: center; border-radius: 999px; padding: .3rem .45rem;
   background: color-mix(in srgb, var(--paper) 56%, transparent);
@@ -4502,43 +4381,9 @@ html.dark-mode.cs-chrome .nav-dock__pill {
   html.cs-chrome .nav-dock__pill { background: color-mix(in srgb, var(--paper) 94%, transparent); }
 }
 html.cs-chrome .nav-dock__pill .nav-dock__track { flex: 0 0 auto; }
-/* One line: the chapters sit beside the site links, divided by a hairline. */
-html.cs-chrome .nav-dock__chapters { flex: 1 1 auto; min-width: 0; margin: 0 0 0 .5rem; padding-left: .5rem; border-left: 1px solid color-mix(in srgb, var(--hair) 80%, transparent); }
-html.cs-chrome .nav-dock__chapters .rp-chapters {
-  position: static; top: auto; max-width: none; margin: 0; padding: 0 .35rem;
-  background: none; -webkit-backdrop-filter: none; backdrop-filter: none; justify-content: flex-start;
-  flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; white-space: nowrap;
-}
-html.cs-chrome .nav-dock__chapters .rp-chapters::-webkit-scrollbar { display: none; }
-html.cs-chrome .nav-dock__chapters .rp-chapters a { flex: 0 0 auto; }
-html.cs-chrome .nav-dock__chapters .rp-chapters::after { display: none; }
-/* In the bar the "% left" cue never shows: between 761 and 900px it pinned
-   over the scrolling chapter names. A clipped row fades at its right edge
-   instead, and the fade drops once the last chapter is in view. (2026-11-17) */
-html.cs-chrome .nav-dock__chapters .rp-chapters .rp-progress--strip { display: none; }
-@media (min-width: 761px) {
-  html.cs-chrome .nav-dock__chapters .rp-chapters:not(.is-at-end) {
-    -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 1.6rem), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 1.6rem), transparent);
-  }
-}
-@media (max-width: 760px) {
-  /* Still one line on phones: the whole bar swipes sideways, links then chapters. */
-  html.cs-chrome .nav-dock__pill {
-    overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none;
-    -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 1.6rem), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 1.6rem), transparent);
-  }
-  html.cs-chrome .nav-dock__pill::-webkit-scrollbar { display: none; }
-  html.cs-chrome .nav-dock__chapters { flex: 0 0 auto; }
-  html.cs-chrome .nav-dock__chapters .rp-chapters { overflow: visible; margin-bottom: 0; padding-bottom: 0; -webkit-mask-image: none; mask-image: none; }
-}
 @media (forced-colors: active) {
   html.cs-chrome .nav-dock__pill { background: Canvas; border-color: CanvasText; box-shadow: none; backdrop-filter: none; }
-  html.cs-chrome .nav-dock__chapters { border-left-color: CanvasText; }
 }
-
-/* The label says these links are for this case study, not the whole site; it
-   stays visible on phones too, where the plain strip hides it. */
-html.cs-chrome .nav-dock__chapters .rp-chapters > span { display: inline; color: var(--ink-2); font-weight: 600; margin-right: .2rem; font-size: var(--ts-label); letter-spacing: 0; white-space: nowrap; }
 
 /* ---------- R5 phone fan (2026-11-16) ----------
    One fan for the case studies that ran on a phone: Knowunity, Mobbin and
@@ -4665,3 +4510,479 @@ html.cs-chrome .nav-dock__chapters .rp-chapters > span { display: inline; color:
   /* No rounding or frame: screenshots draw their own corners and borders, and clipping would cut them. */
 }
 @media (prefers-reduced-motion: no-preference) { .pz__img { transition: height .18s ease; } }
+
+/* ---------- Case-study disclosures, redesigned (2026-11-20) ----------
+   Hillary: "all the plus sign sections need to be redone on all case studies
+   to stand out more." The quiet coral "+ link" read as a footnote. Every case-
+   study disclosure (CaseMore's .rp-more, the .rp-deepDive section folds and
+   the reel transcript) is now one raised control: a plate lighter than the
+   page, a 1px ink border, a bold ink label and a round +/− badge at the end.
+   Open, CaseMore's body sits inside the same plate under a rule; a section
+   fold keeps its plate as the header of what it opened. Scoped to
+   .flagship-page so Home's HomeFold rows keep their own ruled look.
+   Colors are per-context custom properties so light pages, the dark bands
+   (.rp-override, .rp-outcomeStage, .rp-cinema) and dark mode each get a
+   measured set. */
+.flagship-page {
+  --disc-plate: color-mix(in srgb, var(--paper) 40%, white);
+  --disc-plate-hover: color-mix(in srgb, var(--paper) 15%, white);
+  --disc-line: color-mix(in srgb, var(--ink) 62%, transparent);
+  --disc-line-hover: var(--ink);
+  --disc-rule: var(--hair);
+  --disc-ink: var(--ink);
+  --disc-badge: var(--coral);
+  --disc-badge-ink: var(--disc-plate);
+  --disc-focus: var(--coral);
+  --disc-shadow: 0 1px 0 color-mix(in srgb, var(--ink) 14%, transparent), 0 6px 18px -12px color-mix(in srgb, var(--ink) 45%, transparent);
+}
+.flagship-page :is(.rp-override, .rp-outcomeStage, .rp-cinema),
+.dark-mode .flagship-page {
+  --disc-plate: color-mix(in srgb, var(--ink-on-dark) 9%, transparent);
+  --disc-plate-hover: color-mix(in srgb, var(--ink-on-dark) 15%, transparent);
+  --disc-line: color-mix(in srgb, var(--ink-on-dark) 58%, transparent);
+  --disc-line-hover: var(--ink-on-dark);
+  --disc-rule: color-mix(in srgb, var(--ink-on-dark) 22%, transparent);
+  --disc-ink: var(--ink-on-dark);
+  --disc-badge: var(--coral-on-dark);
+  --disc-badge-ink: #14150e;
+  --disc-focus: var(--coral-on-dark);
+  --disc-shadow: 0 1px 0 color-mix(in srgb, black 30%, transparent);
+}
+
+/* The plate and its control, shared by all three. */
+.flagship-page :is(.rp-more, .rp-reel__transcript) {
+  max-width: 46rem; border: 1px solid var(--disc-line); border-radius: var(--r-plate);
+  background: var(--disc-plate); box-shadow: var(--disc-shadow); color: var(--disc-ink);
+}
+.flagship-page .rp-more { margin: clamp(1.5rem, 3vw, 2rem) 0 0; }
+.flagship-page .rp-wrap > .rp-title + .rp-more { margin-top: var(--rp-headline-gap); }
+.flagship-page .rp-reel__transcript { margin-top: 1rem; border-bottom: 1px solid var(--disc-line); }
+
+.flagship-page :is(.rp-more, .rp-reel__transcript) > summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  min-height: 56px; padding: .6rem .7rem .6rem 1.1rem; cursor: pointer; list-style: none;
+  border-radius: var(--r-plate); color: var(--disc-ink);
+  font-family: var(--shell-sans); font-size: var(--ts-body); font-weight: 700; line-height: 1.3;
+}
+.flagship-page .rp-reel__transcript > summary::before { content: none; }
+
+/* The round badge. Drawn with two gradient bars instead of a "+" glyph so the
+   cross stays centred at any font; open drops the vertical bar to read "−". */
+.flagship-page :is(.rp-more, .rp-reel__transcript) > summary::after,
+.flagship-page .rp-deepDive__state::after {
+  content: ""; flex: none; width: 2rem; height: 2rem; border-radius: 50%;
+  background:
+    linear-gradient(var(--disc-badge-ink), var(--disc-badge-ink)) center / .8rem 2px no-repeat,
+    linear-gradient(var(--disc-badge-ink), var(--disc-badge-ink)) center / 2px .8rem no-repeat,
+    var(--disc-badge);
+}
+.flagship-page :is(.rp-more, .rp-reel__transcript)[open] > summary::after,
+.flagship-page .rp-deepDive[open] .rp-deepDive__state::after {
+  background:
+    linear-gradient(var(--disc-badge-ink), var(--disc-badge-ink)) center / .8rem 2px no-repeat,
+    linear-gradient(var(--disc-badge-ink), var(--disc-badge-ink)) center / 2px 0 no-repeat,
+    var(--disc-badge);
+}
+
+/* Open: CaseMore's body joins the plate under one rule. */
+.flagship-page :is(.rp-more, .rp-reel__transcript)[open] > summary {
+  border-bottom: 1px solid var(--disc-rule); border-radius: var(--r-plate) var(--r-plate) 0 0;
+}
+.flagship-page .rp-more__body { margin: 0; padding: 1.25rem 1.1rem 1.4rem; }
+.flagship-page .rp-reel__transcript > .rp-acc__body { padding: 1.1rem 1.1rem 1.25rem; }
+.flagship-page .rp-more__body > :first-child { margin-top: 0; }
+.flagship-page .rp-more__body > * + * { margin-top: .85rem; }
+.flagship-page .rp-more__body :is(p, li) { color: inherit; }
+
+/* Section folds: the full-bleed band becomes the same plate, centred on the
+   page column, with the bigger title the fold already had. */
+.flagship-page .rp-deepDive {
+  border: 0; background: none; padding: clamp(.5rem, 2vw, 1rem) var(--sp-gutter);
+}
+.flagship-page .rp-deepDive > summary {
+  max-width: calc(1080px - 2 * var(--sp-gutter)); min-height: 72px; margin: 0 auto;
+  padding: .85rem .85rem .85rem clamp(1rem, 2.5vw, 1.5rem);
+  border: 1px solid var(--disc-line); border-radius: var(--r-plate);
+  background: var(--disc-plate); box-shadow: var(--disc-shadow); color: var(--disc-ink);
+}
+.flagship-page .rp-deepDive[open] > summary { border-bottom: 1px solid var(--disc-line-hover); border-color: var(--disc-line-hover); }
+.flagship-page .rp-deepDive__state {
+  display: inline-flex; align-items: center; gap: .6rem; min-height: 44px;
+  color: var(--disc-ink); font-family: var(--shell-sans); font-size: var(--ts-small); font-weight: 700;
+}
+.flagship-page .rp-deepDive__stateClosed::after,
+.flagship-page .rp-deepDive__stateOpen::after { content: none; }
+/* The opened sections follow the plate closely instead of after a full
+   section's worth of empty paper. */
+.flagship-page .rp-deepDive[open] > .rp-section:first-of-type { padding-top: clamp(2rem, 4vw, 3rem); }
+
+/* Hover, focus, press: one set of states for all three. */
+@media (hover: hover) {
+  .flagship-page :is(.rp-more, .rp-reel__transcript) > summary:hover,
+  .flagship-page .rp-deepDive > summary:hover { background: var(--disc-plate-hover); }
+  .flagship-page :is(.rp-more, .rp-reel__transcript):hover,
+  .flagship-page .rp-deepDive > summary:hover { border-color: var(--disc-line-hover); }
+}
+.flagship-page :is(.rp-more, .rp-reel__transcript) > summary:focus-visible,
+.flagship-page .rp-deepDive > summary:focus-visible { outline: 3px solid var(--disc-focus); outline-offset: 3px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flagship-page :is(.rp-more, .rp-reel__transcript) > summary::after,
+  .flagship-page .rp-deepDive__state::after { transition: background-size var(--dur-press, 160ms) var(--ease-out, ease-out); }
+  .flagship-page :is(.rp-more, .rp-reel__transcript) { transition: border-color var(--dur-press, 160ms) ease-out; }
+}
+@media (forced-colors: active) {
+  .flagship-page :is(.rp-more, .rp-reel__transcript),
+  .flagship-page .rp-deepDive > summary { border-color: CanvasText; }
+  .flagship-page :is(.rp-more, .rp-reel__transcript) > summary::after,
+  .flagship-page .rp-deepDive__state::after { forced-color-adjust: none; border: 2px solid CanvasText; }
+}
+@media (max-width: 480px) {
+  .flagship-page .rp-deepDive__title { font-size: 1.125rem; }
+}
+
+/* ---------- Figure trays + section folds (2026-11-20, shapeof.ai pass) ----------
+   Two of Hillary's asks, one block, case studies only (Home and About untouched).
+
+   1. Figures. "Replicate the styling of the Examples section on
+      shapeof.ai/patterns/synthesis." Each example there is a soft tray (8px
+      inset, 12px corners, a 4% ink tint, no border, no shadow) with the media
+      on its own surface inside, and one italic, muted, centred line under it.
+      Every case-study figure (reels, screenshots, decision-story visuals,
+      credentials) now uses that mount. Media keeps its own aspect ratio:
+      nothing is cropped or stretched.
+
+   2. Folds. "It's unclear where the new section begins and the old section
+      began, rethink all of the + ui." A closed section fold is its own band
+      (paper-2 with a rule above and below). Opened, the whole band turns a
+      green-tinted surface with a green rule at each end, for as long as it is
+      open, so "this is the opened part" has a start and an end. A section
+      whose Read more or transcript is open takes the same band. The plate and
+      badge from the disclosure redesign above stay as they are. */
+:is(.flagship-page, .spanish-riso-case) {
+  --tray-fill: color-mix(in srgb, var(--ink) 4%, transparent);
+  --tray-media: color-mix(in srgb, var(--paper) 40%, white);
+  --fold-band: color-mix(in srgb, var(--ink) 4%, transparent);
+  --fold-open: color-mix(in srgb, var(--green) 9%, var(--paper-2));
+  --fold-rule: color-mix(in srgb, var(--ink) 24%, transparent);
+  --fold-edge: var(--green);
+}
+.dark-mode :is(.flagship-page, .spanish-riso-case) {
+  --tray-fill: color-mix(in srgb, var(--ink) 6%, transparent);
+  --tray-media: color-mix(in srgb, var(--ink) 11%, var(--paper));
+  --fold-open: color-mix(in srgb, var(--green) 12%, var(--paper-2));
+  --fold-rule: color-mix(in srgb, var(--ink) 22%, transparent);
+}
+:is(.flagship-page, .spanish-riso-case) :is(.rp-override, .rp-outcomeStage, .rp-cinema) {
+  --tray-fill: color-mix(in srgb, var(--ink-on-dark) 8%, transparent);
+}
+
+/* The shared caption line. */
+:is(.flagship-page, .spanish-riso-case) :is(.rp-reel__caption, .rp-credential__caption) {
+  margin: .75rem auto 0; max-width: 56ch; text-align: center;
+  font-size: var(--ts-small); font-style: italic; line-height: 1.8; color: var(--muted);
+}
+:is(.flagship-page, .spanish-riso-case) :is(.rp-override, .rp-outcomeStage, .rp-cinema) :is(.rp-reel__caption, .rp-credential__caption) {
+  color: color-mix(in srgb, var(--ink-on-dark) 78%, transparent);
+}
+/* The credential sits in a 180px column beside the outcome tiles: left-set,
+   so its caption lines up with the link under it. */
+:is(.flagship-page, .spanish-riso-case) .rp-credential__caption { margin-left: 0; text-align: left; font-size: var(--ts-label); line-height: 1.6; }
+
+/* Reels: video in the tray, native controls on the video itself, nothing
+   laid over the frame. */
+:is(.flagship-page, .spanish-riso-case) .rp-reel__plate {
+  padding: var(--tray-inset); border: 0; border-radius: var(--r-tray); overflow: visible;
+  background: var(--tray-fill);
+}
+:is(.flagship-page, .spanish-riso-case) .rp-reel__video { border-radius: var(--r-tray-media); background: black; }
+:is(.flagship-page, .spanish-riso-case) .rp-reel__transcript { margin-top: var(--tray-gap); }
+
+/* Credential thumbnail. */
+:is(.flagship-page, .spanish-riso-case) .rp-credential__plate {
+  padding: var(--tray-inset); border: 0; border-radius: var(--r-tray); background: var(--tray-fill);
+}
+:is(.flagship-page, .spanish-riso-case) .rp-credential__img { border-radius: var(--r-tray-media); }
+
+/* Decision-story visual: the panel is the tray, the old grid paper becomes
+   the media surface inside it, inset by the tray's 8px. */
+:is(.flagship-page, .spanish-riso-case) .rp-decisionStory__visual {
+  padding: calc(var(--tray-inset) + clamp(1rem, 2.5vw, 1.6rem));
+  border: 0; border-radius: var(--r-tray); box-shadow: none; background: var(--tray-fill);
+}
+:is(.flagship-page, .spanish-riso-case) .rp-decisionStory__visual::before {
+  inset: var(--tray-inset); border-radius: var(--r-tray-media); opacity: 1;
+  background:
+    linear-gradient(color-mix(in srgb, var(--hair) 40%, transparent) 1px, transparent 1px) 0 0 / 28px 28px,
+    linear-gradient(90deg, color-mix(in srgb, var(--hair) 40%, transparent) 1px, transparent 1px) 0 0 / 28px 28px,
+    radial-gradient(circle at 50% 40%, color-mix(in srgb, var(--green) 12%, transparent), transparent 48%),
+    var(--tray-media);
+}
+
+/* Section folds. Closed: a band of its own. */
+.flagship-page > .rp-deepDive {
+  background: var(--fold-band);
+  border-top: 1px solid var(--fold-rule); border-bottom: 1px solid var(--fold-rule);
+  padding-block: clamp(1rem, 3vw, 1.75rem);
+}
+/* Open: the whole band changes surface, green rule at the start and the end,
+   and the sections inside lose their own fills so the band reads as one
+   piece. Dark stages inside it (MSK's systems band) keep their colour and
+   sit inside the band. On the tint, --muted is remapped to --ink-2 and
+   --coral-text and --green are taken a step darker, so small labels keep
+   4.5:1 there (Grove's phase label measured 4.28 before). */
+.flagship-page > .rp-deepDive[open] {
+  --muted: var(--ink-2);
+  --coral-text: color-mix(in srgb, var(--coral) 72%, var(--ink));
+  --green: color-mix(in srgb, var(--shell-green) 80%, var(--shell-ink));
+  background: var(--fold-open);
+  border-top: 3px solid var(--fold-edge); border-bottom: 3px solid var(--fold-edge);
+  padding-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+.flagship-page > .rp-deepDive[open] > .rp-section:not(.rp-override, .rp-outcomeStage, .rp-cinema) { background: none; }
+.flagship-page > .rp-deepDive[open] > .rp-section:last-child:not(.rp-override, .rp-outcomeStage, .rp-cinema) { padding-bottom: clamp(1rem, 3vw, 2rem); }
+
+/* Read more and transcripts: the section they sit in takes the same band
+   while one is open. Closed, a hairline under that section marks its end. */
+:is(.flagship-page, .spanish-riso-case) > .rp-section:not(.rp-override, .rp-outcomeStage, .rp-cinema):has(.rp-more, .rp-reel__transcript) {
+  border-bottom: 1px solid var(--fold-rule);
+}
+:is(.flagship-page, .spanish-riso-case) > .rp-section:not(.rp-override, .rp-outcomeStage, .rp-cinema):has(.rp-more[open], .rp-reel__transcript[open]) {
+  --muted: var(--ink-2);
+  --coral-text: color-mix(in srgb, var(--coral) 72%, var(--ink));
+  --green: color-mix(in srgb, var(--shell-green) 80%, var(--shell-ink));
+  background: var(--fold-open);
+  border-top: 3px solid var(--fold-edge); border-bottom: 3px solid var(--fold-edge);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .flagship-page > .rp-deepDive,
+  :is(.flagship-page, .spanish-riso-case) > .rp-section { transition: background-color var(--dur-press, 160ms) ease-out; }
+}
+@media (forced-colors: active) {
+  .flagship-page > .rp-deepDive,
+  :is(.flagship-page, .spanish-riso-case) > .rp-section:has(.rp-more[open], .rp-reel__transcript[open]) { border-color: CanvasText; }
+}
+
+/* Grove's prototype video, in the hero: the same tray, but on the map the 4%
+   tint disappears, so this one tray is paper at 80%. The video keeps its own
+   780:1688 shape (the frame's height now comes from the video, not a fixed
+   phone ratio), corners 6px, poster showing until play; the play/pause
+   button stays below the tray, never over the picture. */
+.flagship-page .rp-hero__media .rp-demoLoop .rp-device.rp-device--video {
+  aspect-ratio: auto; height: auto; padding: var(--tray-inset);
+  border: 0; border-radius: var(--r-tray); box-shadow: none;
+  background: color-mix(in srgb, var(--paper) 80%, transparent);
+}
+.flagship-page .rp-demoLoop .rp-device--video video {
+  height: auto; aspect-ratio: 780 / 1688; object-fit: contain; border-radius: var(--r-tray-media);
+}
+.flagship-page .rp-demoLoop__btn { border-radius: var(--r-control); }
+
+/* ---------- Chapter nav (CaseStudyChapters, 2026-11-20) ----------
+   One <nav>, two layouts. Hillary picked both from live mockups: "option 5,
+   placement A" for wide screens, "M8" for everything narrower.
+
+   Wide (>= 1420px): a fixed column of plain links under the dock pill, left
+   of the content. The content column is .rp-wrap's 1080px box plus the page
+   gutter, so its text starts at (100vw - 1080px) / 2 + gutter. The column
+   ends 24px before that, starts no closer than 16px to the screen edge, and
+   is at most 216px wide. Below 1420px it is too narrow for "In this case
+   study" on one line (and soon covers text), so the chip takes over there,
+   not at 900px as first sketched: the mockup assumed a 720px content
+   column.
+
+   It fades in once the hero has scrolled above its top line (24vh), so it
+   never sits over the hero's full-width headline, and fades out while the
+   footer is in view. Hidden states use opacity, not visibility, so the links
+   stay in the tab order; keyboard focus inside (:focus-visible) brings them
+   back. A mouse click does not, so a clicked link never pins it over the
+   footer.
+
+   Narrow (< 1420px): a floating bottom-center chip, previous / current
+   chapter (a toggle) / next. The toggle opens the same link list as a sheet
+   above the chip. Collisions checked 2026-11-20: the recruiter pill and the
+   back-to-top button the .rp-progress note mentions are no longer rendered
+   (see App.css, route-dock redesign), and the right-edge rail is vertically
+   centered and hidden below 900px, so nothing else owns the bottom center.
+   The chip hides while the footer is in view so it never covers footer
+   links. */
+.rp-chapters {
+  --rp-col-max: 216px;
+  --rp-col-edge: 16px;
+  --rp-col-gap: 24px;
+  --rp-content-left: calc((100vw - 1080px) / 2 + var(--sp-gutter));
+  font-family: var(--sans);
+  transition: opacity var(--dur-fast) var(--ease-soft);
+}
+.rp-chapters__list { list-style: none; margin: 0; padding: 0; counter-reset: rp-chapter; }
+.rp-chapters__list li { counter-increment: rp-chapter; }
+.rp-chapters a { text-decoration: none; }
+
+@media (min-width: 1420px) {
+  .rp-chapters {
+    position: fixed;
+    z-index: 30;
+    top: 24vh;
+    left: max(var(--rp-col-edge), calc(var(--rp-content-left) - var(--rp-col-gap) - var(--rp-col-max)));
+    width: min(var(--rp-col-max), calc(var(--rp-content-left) - var(--rp-col-gap) - var(--rp-col-edge)));
+    max-height: 70vh;
+    overflow-y: auto;
+    border-left: 1px solid var(--hair);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .rp-chapters.is-shown { opacity: 1; pointer-events: auto; }
+  .rp-chapters.is-past { opacity: 0; pointer-events: none; }
+  .rp-chapters:has(:focus-visible) { opacity: 1; pointer-events: auto; }
+  .rp-chapters .rp-chapters__label {
+    margin: 0;
+    padding: 0 0 10px 16px;
+    font-family: var(--sans);
+    font-size: var(--ts-label);
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .rp-chapters__chip { display: none; }
+  .rp-chapters a {
+    display: block;
+    padding: 7px 0 7px 16px;
+    margin-left: -1px;
+    border-left: 2px solid transparent;
+    font-size: var(--ts-small);
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--ink-2);
+  }
+  .rp-chapters a:hover { color: var(--ink); }
+  .rp-chapters a:focus-visible { outline: 3px solid var(--coral); outline-offset: -3px; }
+  /* Weight carries the state as well as color and the coral rule, so it
+     survives grayscale, forced colors, and color-vision differences. */
+  .rp-chapters a.is-active { color: var(--ink); font-weight: 700; border-left-color: var(--coral); }
+}
+
+@media (max-width: 1419.98px) {
+  .rp-chapters {
+    position: fixed;
+    z-index: 60;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .rp-chapters.is-shown, .rp-chapters.is-open, .rp-chapters:has(:focus-visible) { opacity: 1; }
+  .rp-chapters.is-past:not(:has(:focus-visible)):not(.is-open) { opacity: 0; }
+  .rp-chapters__label { display: none; }
+  .rp-chapters__chip {
+    position: fixed;
+    left: 50%;
+    bottom: max(14px, env(safe-area-inset-bottom));
+    transform: translateX(-50%);
+    display: flex;
+    align-items: stretch;
+    max-width: calc(100vw - 20px);
+    border-radius: 999px;
+    overflow: hidden;
+    background: var(--ink);
+    color: var(--paper);
+    box-shadow: 0 8px 24px color-mix(in srgb, #000 28%, transparent);
+  }
+  .rp-chapters.is-shown .rp-chapters__chip,
+  .rp-chapters.is-open .rp-chapters__chip,
+  .rp-chapters:has(:focus-visible) .rp-chapters__chip { pointer-events: auto; }
+  .rp-chapters.is-past:not(:has(:focus-visible)):not(.is-open) .rp-chapters__chip { pointer-events: none; }
+  .rp-chapters__chip button {
+    appearance: none;
+    margin: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    min-height: 48px;
+  }
+  .rp-chapters__chip .rp-chapters__step { min-width: 48px; padding: 0 16px; font-size: 1.25rem; font-weight: 700; line-height: 1; }
+  .rp-chapters__chip .rp-chapters__step[aria-disabled="true"] { opacity: .3; cursor: default; }
+  .rp-chapters__chip .rp-chapters__toggle {
+    flex: 1 1 auto;
+    min-width: 12.5rem;
+    max-width: 16rem;
+    padding: 7px 14px;
+    border-inline: 1px solid color-mix(in srgb, var(--paper) 19%, transparent);
+    text-align: center;
+    line-height: 1.15;
+  }
+  .rp-chapters__toggle b {
+    display: block;
+    font-size: var(--ts-small);
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .rp-chapters__toggle small {
+    display: block;
+    font-size: var(--ts-label);
+    font-weight: 500;
+    color: color-mix(in srgb, var(--paper) 78%, var(--ink));
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .rp-chapters__chip button:focus-visible { outline: 3px solid var(--coral); outline-offset: -4px; border-radius: 999px; }
+
+  /* The sheet: the same link list, opened above the chip. */
+  .rp-chapters__list {
+    position: fixed;
+    left: 10px;
+    right: 10px;
+    bottom: calc(max(14px, env(safe-area-inset-bottom)) + 58px);
+    display: none;
+    flex-direction: column;
+    max-height: calc(100vh - 160px);
+    overflow-y: auto;
+    padding: 6px;
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    border-radius: 14px;
+    box-shadow: 0 18px 40px color-mix(in srgb, #000 22%, transparent);
+    pointer-events: auto;
+  }
+  .rp-chapters.is-open .rp-chapters__list { display: flex; }
+  .rp-chapters__list a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: var(--ts-small);
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .rp-chapters__list a::before {
+    content: counter(rp-chapter, decimal-leading-zero);
+    content: counter(rp-chapter, decimal-leading-zero) / "";
+    flex: 0 0 2ch;
+    font-family: var(--display, var(--sans));
+    font-weight: 700;
+    color: var(--coral-text, var(--coral));
+  }
+  .rp-chapters__list a:hover { background: var(--paper-2); }
+  .rp-chapters__list a.is-active { background: var(--paper-2); }
+  .rp-chapters__list a:focus-visible { outline: 3px solid var(--coral); outline-offset: -3px; }
+}
+/* Where the page has the right-edge rail, it already shows "NN% left" from
+   901px up; the chip drops its copy there so the number is never on screen
+   twice. (The Spanish pages have no rail, so their chip keeps it.) */
+@media (min-width: 901px) {
+  .riso-page:has(.rp-progress) .rp-chapters__left { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rp-chapters { transition: none; }
+}
+@media (forced-colors: active) {
+  .rp-chapters__chip { border: 1px solid CanvasText; }
+  .rp-chapters a.is-active { forced-color-adjust: none; border-left-color: Highlight; }
+}

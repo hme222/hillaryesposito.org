@@ -1,3 +1,4 @@
+import CopyEmail from "./CopyEmail";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { switchLanguageAtCurrentSection, useLanguage } from "../app/LanguageContext";
@@ -95,6 +96,10 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
         chapters={chapters}
         ariaLabel="Capítulos del estudio de caso"
         jumpLabel="En este caso"
+        ofLabel="de"
+        leftLabel="restante"
+        prevLabel="Capítulo anterior"
+        nextLabel="Capítulo siguiente"
       />
 
       <header
@@ -195,6 +200,7 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
           {data.close ? (data.close.body ? <p>{data.close.body}</p> : null) : <p>Puedo explicar el proceso, las decisiones y lo que aprendí con más detalle.</p>}
           <div className="rp-hero__ctas">
             <a href="mailto:espositohillary@gmail.com" className="rp-cta">Escríbame →</a>
+            <CopyEmail compact lang="es" />
             <button type="button" className="rp-cta rp-cta--ghost" onClick={() => navigate("/?scrollTo=projects")}>
               ← Volver al trabajo
             </button>

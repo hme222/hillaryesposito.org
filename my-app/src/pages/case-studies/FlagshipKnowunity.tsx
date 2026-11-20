@@ -1,3 +1,4 @@
+import CopyEmail from "../../components/CopyEmail";
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage, useT } from "../../app/LanguageContext";
@@ -300,6 +301,7 @@ export default function FlagshipKnowunity() {
         <div className="rp-wrap rp-close">
           <h2>I build working versions to learn what to test next.</h2>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
+          <CopyEmail compact />
         </div>
       </section>
 

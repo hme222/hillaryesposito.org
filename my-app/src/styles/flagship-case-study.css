@@ -609,7 +609,6 @@
 .fp-blueprint__swatch--observed { border: 1px solid color-mix(in srgb, var(--ink) 45%, transparent); }
 .fp-blueprint__swatch--built { border: 2px solid var(--ink); }
 .fp-blueprint__swatch--design { border: 2px dotted var(--ink); }
-.fp-blueprint__source { margin: .5rem 0 0; font-size: var(--ts-label); line-height: 1.45; color: var(--ink-2); }
 
 .fp-blueprint__key { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   gap: 1.1rem 1.6rem; margin: 1.8rem 0 0; padding-top: 1.4rem; border-top: 1px solid var(--hair); }
@@ -985,3 +984,311 @@
 .flagship-page--msk .fp-mechanism svg { max-width: 22rem; margin-inline: auto; }
 .fp-redesigns__source { margin: -.4rem 0 0; font-size: var(--ts-label); line-height: 1.4; color: var(--ink-2); }
 .rp-decisionStory__head .rp-decisionStory__note { margin-top: .6rem; }
+
+/* ---------- 2026-11-20 MSK surface pass ----------
+   Hillary's review: the blueprint "background blends in too much", the four
+   rules and the two-fixes cards needed cleaner spacing, the sustainment fold
+   needed an order, and the outcome tiles needed more frost behind the text.
+   The plate colors come from the --disc-* set in riso-page.css (the shared
+   disclosure redesign), so every raised surface on the page is one color. */
+
+/* Blueprint: a plate that reads off the page, no empty band above it. */
+.flagship-page .rp-deepDive .fp-blueprintIntro, .flagship-page .rp-deepDive .fp-blueprintIntro > .rp-lede { margin-top: 0; }
+.flagship-page .fp-blueprint {
+  --bp-node: var(--disc-plate-hover, var(--paper));
+  --bp-node-evidence: color-mix(in srgb, var(--disc-plate-hover, var(--paper)) 55%, transparent);
+  margin-top: 1.5rem; padding: 0; overflow: hidden;
+  border: 1px solid var(--disc-line, var(--hair)); border-radius: var(--r-plate);
+  background: var(--disc-plate, var(--paper)); box-shadow: var(--disc-shadow, none);
+}
+.flagship-page .fp-blueprint__controls {
+  align-items: center; margin: 0; padding: 1rem clamp(1rem, 2.5vw, 1.5rem);
+  border-bottom: 1px solid var(--disc-rule, var(--hair));
+}
+.flagship-page .fp-blueprint__switch { border-color: var(--disc-line, var(--hair)); }
+.flagship-page .fp-blueprint__switch button + button { border-left-color: var(--disc-line, var(--hair)); }
+.flagship-page .fp-blueprint__switch button:not(.is-active) { color: var(--ink); }
+.flagship-page .fp-blueprint__status { color: var(--ink); }
+.flagship-page .fp-blueprint__swipe { margin: 1rem clamp(1rem, 2.5vw, 1.5rem) 0; }
+.flagship-page .fp-blueprint__canvas { padding: 1rem clamp(1rem, 2.5vw, 1.5rem) .75rem; }
+
+/* Legend as chips, each one a swatch and its words. */
+.flagship-page .fp-blueprint__legend {
+  gap: .5rem; margin: 0; padding: 0 clamp(1rem, 2.5vw, 1.5rem) 1.25rem; color: var(--ink);
+}
+.flagship-page .fp-blueprint__legend li {
+  min-height: 36px; padding: .35rem .75rem .35rem .6rem;
+  border: 1px solid var(--disc-line, var(--hair)); border-radius: var(--r-control);
+  background: var(--bp-node);
+}
+.flagship-page .fp-blueprint__swatch--observed { border: 1.25px dashed color-mix(in srgb, var(--ink) 60%, transparent); }
+
+/* Key: four even columns with a rule over each, on a band of its own. */
+.flagship-page .fp-blueprint__key {
+  grid-template-columns: repeat(auto-fit, minmax(min(13rem, 100%), 1fr)); gap: 1.25rem 1.5rem;
+  margin: 0; padding: 1.25rem clamp(1rem, 2.5vw, 1.5rem) 1.5rem;
+  border-top: 1px solid var(--disc-rule, var(--hair));
+  background: color-mix(in srgb, var(--ink) 4%, transparent);
+}
+.flagship-page .fp-blueprint__key > div { padding-top: .75rem; border-top: 2px solid var(--ink); }
+.flagship-page .fp-blueprint__key dt { color: var(--coral-text, var(--coral)); font-weight: 700; margin-bottom: .45rem; }
+.flagship-page .fp-blueprint__key dd { color: var(--ink); }
+.dark-mode .flagship-page .fp-blueprint__key dt { color: var(--coral-on-dark); }
+
+/* Four rules: the steps and the visual are two even columns that start on
+   the same line, the visual is the same raised plate, and "How I'd check
+   them" is set apart as its own note instead of a second lede. */
+.flagship-page--msk .rp-decisionStory__head .rp-decisionStory__note {
+  margin-top: 1.25rem; padding: .9rem 1.1rem;
+  border: 1px solid var(--disc-line); border-left: 3px solid var(--green); border-radius: var(--r-plate);
+  background: var(--disc-plate); color: var(--ink);
+}
+.flagship-page--msk .rp-decisionStory__track { margin-top: clamp(2rem, 4vw, 3rem); }
+.flagship-page--msk .rp-decisionStory__panel {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+.flagship-page--msk .rp-decisionStory__steps { gap: .5rem; }
+.flagship-page--msk .rp-decisionStory__steps li { padding: .9rem 0 .9rem 1.25rem; }
+.flagship-page--msk .rp-decisionStory__steps li:first-child { padding-top: 0; }
+.flagship-page--msk .rp-decisionStory__logline { margin-top: .5rem; }
+.flagship-page--msk .rp-decisionStory__visual {
+  padding: clamp(1rem, 2vw, 1.25rem); border: 1px solid var(--disc-line); border-radius: var(--r-plate);
+  background: var(--disc-plate); box-shadow: var(--disc-shadow);
+}
+/* The five After stops as rows beside the four rules: number, icon, words. */
+.flagship-page--msk .fp-journeyFrame--story .msk-journey { padding: 0; }
+.flagship-page--msk .fp-journeyFrame--story .msk-journey__track { grid-template-columns: minmax(0, 1fr); gap: .5rem; }
+.flagship-page--msk .fp-journeyFrame--story .msk-journey__track li {
+  grid-template-columns: 1.5rem 44px minmax(0, 1fr); grid-template-rows: auto auto;
+  justify-items: start; align-items: center; column-gap: .75rem; row-gap: .1rem; text-align: left;
+  padding: .7rem 1rem .7rem .75rem; border-color: color-mix(in srgb, var(--ink) 28%, transparent); border-radius: var(--r-plate);
+  background: var(--paper);
+}
+.flagship-page--msk .fp-journeyFrame--story .msk-journey__n {
+  position: static; grid-column: 1; grid-row: 1 / span 2; font-weight: 700; color: var(--ink);
+}
+.flagship-page--msk .fp-journeyFrame--story .msk-journey__icon { grid-column: 2; grid-row: 1 / span 2; }
+.flagship-page--msk .fp-journeyFrame--story .msk-journey__track li > b { grid-column: 3; align-self: end; }
+.flagship-page--msk .fp-journeyFrame--story .msk-journey__track li > span:last-child { grid-column: 3; align-self: start; }
+@media (max-width: 900px) {
+  .flagship-page--msk .rp-decisionStory__panel { grid-template-columns: minmax(0, 1fr); }
+  .flagship-page--msk .rp-decisionStory__steps li:first-child { padding-top: .9rem; }
+}
+
+/* Two more fixes: raised cards with one rhythm, the drawing and its
+   "illustration" caption kept together, the finding and the change split by
+   a rule. */
+.flagship-page--msk .fp-redesigns { gap: clamp(1rem, 2vw, 1.5rem); margin-top: clamp(1.5rem, 3vw, 2rem); }
+.flagship-page--msk .fp-redesigns article {
+  display: grid; align-content: start; gap: 0; padding: clamp(1.1rem, 2.5vw, 1.5rem);
+  border: 1px solid var(--disc-line); border-radius: var(--r-plate);
+  background: var(--disc-plate); box-shadow: var(--disc-shadow);
+}
+.flagship-page--msk .fp-redesigns h3 { margin: 0; }
+.flagship-page--msk .fp-redesigns .fp-mechanism {
+  margin: 1rem 0 0; background: var(--paper); border-color: color-mix(in srgb, var(--ink) 30%, transparent);
+}
+.flagship-page--msk .fp-redesigns__source { margin: .5rem 0 0; color: var(--ink-2); }
+.flagship-page--msk .fp-redesigns__finding {
+  margin: 1.1rem 0 0; padding-top: 1rem; border-top: 1px solid var(--disc-rule); color: var(--ink-2);
+}
+.flagship-page--msk .fp-redesigns__change { margin: .75rem 0 0; font-weight: 600; }
+
+/* The timeline above the fold sits on the same raised plate. */
+.flagship-page--msk .fp-sustainmentFig {
+  border-color: var(--disc-line); background: var(--disc-plate); box-shadow: var(--disc-shadow);
+}
+
+/* Sustainment fold: three rows on one grid — label column, content column —
+   so the measure, the two lanes and the press link read as one ordered list. */
+.flagship-page--msk #msk-sustainment .rp-more { max-width: none; }
+.flagship-page--msk #msk-sustainment .rp-more__body { display: grid; padding: 0; }
+.flagship-page--msk #msk-sustainment .rp-more__body > * {
+  margin: 0; padding: 1.1rem 1.1rem 1.2rem; border-top: 1px solid var(--disc-rule);
+}
+.flagship-page--msk #msk-sustainment .rp-more__body > :first-child { border-top: 0; }
+.flagship-page--msk #msk-sustainment .rp-note {
+  display: grid; grid-template-columns: minmax(10rem, 13rem) minmax(0, 1fr); gap: .5rem 1.5rem;
+  border-width: 0; border-top-width: 0; border-radius: 0; background: none;
+}
+.flagship-page--msk #msk-sustainment .rp-note__k {
+  margin: 0; font-family: var(--shell-sans); font-size: var(--ts-small); font-weight: 700;
+  letter-spacing: 0; text-transform: none; color: var(--ink);
+}
+.flagship-page--msk #msk-sustainment .rp-note p:not(.rp-note__k) { color: var(--ink-2); line-height: 1.55; }
+.flagship-page--msk #msk-sustainment .fp-survived { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; list-style: none; }
+.flagship-page--msk #msk-sustainment .fp-survived li {
+  display: grid; grid-template-columns: minmax(10rem, 13rem) minmax(0, 1fr); gap: .25rem 1.5rem;
+  padding: .55rem 0; border-left: 0;
+}
+.flagship-page--msk #msk-sustainment .fp-survived li + li { border-top: 1px dashed var(--disc-rule); }
+.flagship-page--msk #msk-sustainment .fp-survived b { font-size: var(--ts-small); font-weight: 700; color: var(--ink); }
+.flagship-page--msk #msk-sustainment .fp-survived span { margin: 0; font-size: var(--ts-small); color: var(--ink-2); }
+.flagship-page--msk #msk-sustainment .fp-proofLink {
+  display: grid; grid-template-columns: minmax(10rem, 13rem) minmax(0, 1fr); align-items: center; gap: .25rem 1.5rem;
+  max-width: none; min-height: 64px; border: 0; border-top: 1px solid var(--disc-rule); border-radius: 0 0 var(--r-plate) var(--r-plate);
+}
+.flagship-page--msk #msk-sustainment .fp-proofLink span:first-child {
+  font-family: var(--shell-sans); font-size: var(--ts-small); font-weight: 700; letter-spacing: 0; text-transform: none; color: var(--coral-text, var(--coral));
+}
+.flagship-page--msk #msk-sustainment .fp-proofLink b { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; }
+@media (hover: hover) {
+  .flagship-page--msk #msk-sustainment .fp-proofLink:hover { background: var(--disc-plate-hover); }
+  .flagship-page--msk #msk-sustainment .fp-proofLink:hover b { text-decoration-thickness: 2px; }
+}
+.flagship-page--msk #msk-sustainment .fp-proofLink:focus-visible { outline: 3px solid var(--coral); outline-offset: -3px; }
+@media (max-width: 640px) {
+  .flagship-page--msk #msk-sustainment :is(.rp-note, .fp-survived li, .fp-proofLink) { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Outcome tiles: more frost. A deeper tinted glass with a real blur, separate
+   tiles, and the label and tag inks raised; measured 2026-11-20. */
+.flagship-page--msk .rp-outcomeStage .rp-outcomes { gap: .75rem; border: 0; }
+.flagship-page--msk .rp-outcomeStage .rp-outcomes .rp-stat {
+  border: 1px solid color-mix(in srgb, var(--ink-on-dark) 48%, transparent); border-radius: var(--r-plate);
+  background:
+    linear-gradient(color-mix(in srgb, var(--ink-on-dark) 9%, transparent), color-mix(in srgb, var(--ink-on-dark) 9%, transparent)),
+    color-mix(in srgb, var(--fp-deep-2) 66%, transparent);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1); backdrop-filter: blur(14px) saturate(1.1);
+}
+.flagship-page--msk .rp-outcomeStage .rp-stat__l { color: color-mix(in srgb, var(--ink-on-dark) 94%, transparent); }
+.flagship-page--msk .rp-outcomeStage .rp-stat__tag { color: color-mix(in srgb, var(--ink-on-dark) 86%, transparent); }
+
+/* ---------- 2026-11-20 Blueprint in a tray (shapeof.ai Examples) ----------
+   Hillary: "redo 'See who held the message at each step' using my inspo".
+   The inspiration is the Examples grid on shapeof.ai: one soft tray per
+   example (8px inset, 12px corners, a 4% ink tint, no border, no shadow), the
+   media on its own surface inside it, and a quiet italic line underneath.
+   So the blueprint stops being a boxed plate with a header bar and a key band:
+   the switch sits above the tray on its own row, the drawing is the only
+   thing in the tray, and the legend and key read as captions below it. This
+   replaces the plate/chip/band look from the surface pass above; the
+   --bp-node fills it set are kept. Scoped to .flagship-page so About's
+   cropped copy keeps its own frame. */
+.flagship-page .fp-blueprint {
+  --bp-media: var(--tray-media);
+  --bp-media-pad: clamp(.75rem, 2vw, 1.25rem);
+  --bp-node: var(--tray-media);
+  --bp-node-evidence: color-mix(in srgb, var(--tray-media) 70%, transparent);
+  margin-top: var(--tray-gap); padding: 0; overflow: visible;
+  border: 0; border-radius: 0; background: none; box-shadow: none;
+}
+
+/* Controls: a quiet row above the tray, not a header bar. */
+.flagship-page .fp-blueprint__controls {
+  align-items: center; gap: .75rem 1.25rem; margin: 0 0 1rem; padding: 0; border: 0;
+}
+.flagship-page .fp-blueprint__status { color: var(--ink-2); }
+
+/* The tray. The drawing scrolls sideways inside it on phones; the tray and
+   its 8px frame stay put. */
+.flagship-page .fp-blueprint__canvas {
+  padding: var(--tray-inset); border-radius: var(--r-tray);
+  background: var(--tray-fill);
+  scrollbar-color: color-mix(in srgb, var(--ink) 45%, transparent) transparent;
+}
+.flagship-page .fp-blueprint__canvas:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+/* The media surface: the svg itself carries the paper, the 6px corners and
+   its own inset, so the lane bands stop short of the tray's edge the way a
+   screenshot does. content-box keeps the inline min-width = viewBox width
+   (1 px per unit at every width). */
+.flagship-page .fp-blueprint__canvas svg {
+  box-sizing: content-box; width: calc(100% - 2 * var(--bp-media-pad));
+  padding: var(--bp-media-pad); border-radius: var(--r-tray-media);
+  background: var(--bp-media);
+}
+.flagship-page .fp-blueprint__swipe {
+  margin: 0 0 .5rem; font-family: var(--shell-sans); font-size: var(--ts-label); font-style: italic; color: var(--muted);
+}
+
+/* Legend and key: caption text under the tray, no chips, no band. The
+   swatches stay small: they are the only link between the words and the
+   line styles in the drawing. */
+.flagship-page .fp-blueprint__legend {
+  justify-content: center; gap: .25rem 1.5rem; margin: .75rem 0 0; padding: 0;
+  font-size: var(--ts-small); font-style: italic; line-height: 1.8; color: var(--muted);
+}
+.flagship-page .fp-blueprint__legend li { min-height: 0; padding: 0; border: 0; border-radius: 0; background: none; }
+.flagship-page .fp-blueprint__swatch { width: 1.1rem; height: .7rem; }
+.flagship-page .fp-blueprint__swatch--observed { border: 1.25px dashed var(--muted); }
+.flagship-page .fp-blueprint__swatch--built { border: 1.5px solid var(--ink-2); }
+.flagship-page .fp-blueprint__swatch--design { border: 2px dotted var(--ink-2); }
+
+.flagship-page .fp-blueprint__key {
+  grid-template-columns: repeat(auto-fit, minmax(min(13rem, 100%), 1fr)); gap: 1rem var(--tray-gap);
+  margin: var(--tray-gap) 0 0; padding: 0; border: 0; background: none;
+}
+.flagship-page .fp-blueprint__key > div { padding: 0; border: 0; }
+.flagship-page .fp-blueprint__key dt {
+  margin-bottom: .2rem; font-family: var(--shell-sans); font-size: var(--ts-label); font-weight: 700;
+  letter-spacing: 0; text-transform: none; color: var(--ink);
+}
+.flagship-page .fp-blueprint__key dd { font-style: italic; line-height: 1.7; color: var(--muted); }
+.dark-mode .flagship-page .fp-blueprint__key dt { color: var(--ink); }
+@media (forced-colors: active) {
+  .flagship-page .fp-blueprint__canvas { border: 1px solid CanvasText; }
+  .flagship-page .fp-blueprint__canvas svg { background: Canvas; }
+}
+
+/* ---------- 2026-11-20 Figure trays, flagship figures ----------
+   The same tray as riso-page.css's "Figure trays + section folds" block, for
+   the figures only these pages have. Screenshots get the tray as an 8px
+   border in the tray tint (background clipped to the image), so no wrapper
+   is needed and the image keeps its own aspect ratio. */
+.fp-guideScreens { gap: var(--tray-gap); }
+.fp-guideScreens img,
+.fp-guideWireframes img {
+  /* content-box: the aspect-ratio applies to the picture, not picture + tray,
+     so nothing letterboxes and nothing crops. */
+  box-sizing: content-box; width: calc(100% - 2 * var(--tray-inset));
+  border: var(--tray-inset) solid var(--tray-fill); border-radius: var(--r-tray);
+}
+.fp-guideScreens figcaption,
+.fp-guideWireframes figcaption {
+  margin-top: .75rem; text-align: center;
+  font-size: var(--ts-small); font-style: italic; line-height: 1.8; color: var(--muted);
+}
+@media (max-width: 760px) {
+  .fp-guideScreens { gap: .75rem; }
+  .fp-guideScreens img { width: calc(100% - 10px); border-width: 5px; border-radius: 9px; }
+  .fp-guideScreens figcaption { font-size: var(--ts-label); line-height: 1.5; }
+}
+
+/* MSK sustainment timeline: the figure is the tray, the drawing the media. */
+.flagship-page--msk .fp-sustainmentFig {
+  margin-top: var(--tray-gap); padding: var(--tray-inset);
+  border: 0; border-radius: var(--r-tray); background: var(--tray-fill); box-shadow: none;
+}
+.flagship-page--msk .fp-sustainmentFig .fp-sustainment {
+  padding: clamp(1rem, 3vw, 1.75rem) clamp(.9rem, 2.5vw, 1.6rem);
+  border-radius: var(--r-tray-media); background: var(--tray-media);
+}
+
+/* MSK decision-story visual: tray, the journey rows on the media surface.
+   Replaces the raised plate from the surface pass. */
+.flagship-page--msk .rp-decisionStory__visual {
+  padding: var(--tray-inset); border: 0; border-radius: var(--r-tray); box-shadow: none; background: var(--tray-fill);
+}
+.flagship-page--msk .rp-decisionStory__visual > * {
+  padding: clamp(.9rem, 2vw, 1.25rem); border-radius: var(--r-tray-media); background: var(--tray-media);
+}
+
+/* Mobbin: the captured screens in the index lens, and the sequence stage. */
+.fp-indexLens__phone {
+  border: var(--tray-inset) solid var(--tray-fill); border-radius: var(--r-tray);
+  background: var(--tray-media); background-clip: padding-box; box-shadow: none;
+}
+.fp-indexLens__phone img { object-fit: contain; } /* the border now sits inside the frame's aspect box: contain, never crop */
+.flagship-page .fp-sequence__stage {
+  border: 0; border-radius: var(--r-tray) !important; /* beats portfolio-cohesion's square-plate !important */
+  background: var(--tray-fill);
+}
+/* Inside an opened fold the index lens drops its own paper band, so the
+   fold's tinted band reads as one surface (riso-page.css, section folds). */
+.flagship-page > .rp-deepDive[open] .fp-indexLens { border-block: 0; background: none; }
+/* Found while checking the opened Logistics fold (2026-11-20): on the dark
+   override stage the constraint list painted --ink-2 / --green, a light-theme
+   ink on #17321b (about 1.6:1). The stage's own fixed inks instead. */
+.rp-override .fp-constraintAnnotations dt { color: var(--mint-on-dark); }
+.rp-override .fp-constraintAnnotations dd { color: color-mix(in srgb, var(--ink-on-dark) 86%, transparent); }
+.rp-override .fp-constraintAnnotations { border-top-color: color-mix(in srgb, var(--ink-on-dark) 30%, transparent); }

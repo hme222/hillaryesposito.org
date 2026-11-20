@@ -93,7 +93,6 @@ export type MskCopy = {
     designTag: string;
     legend: { aria: string; observed: string; built: string; design: string };
     /** One line under the drawing: what it is built from. */
-    builtFrom: string;
     swipeHint: string;
     canvasAria: string;
     key: {
@@ -270,9 +269,9 @@ const en: MskCopy = {
 
   blueprint: {
     introKicker: "Then I counted the handoffs",
-    introTitle: "Six steps became five, and one department dropped out.",
+    introTitle: "Six steps became five.",
     introLede:
-      "On screen, the change was one fewer step. Behind the scenes, one whole department no longer had to handle the message. Below is the same path, sorted by who was holding it.",
+      "On screen, the change was one fewer step. Below is the same path, sorted by who was holding it.",
     beforeBtn: "Before · one handoff",
     afterBtn: "After · no handoff",
     statusBefore:
@@ -310,7 +309,6 @@ const en: MskCopy = {
       built: "After, solid boxes: built by IT and UX",
       design: "Dotted boxes: my design, not MSK’s",
     },
-    builtFrom: "Built from memory of my own notes on the work. No patient data. My counts were lost, so I make no claim about how often this happened.",
     swipeHint: "Swipe to see all steps",
     canvasAria: "Service blueprint drawing. Scroll sideways to see all steps.",
     key: {
@@ -333,7 +331,7 @@ const en: MskCopy = {
       changedBefore:
         "Six steps, but one matters most: the message passes to another department, and no word comes back.",
       changedAfter:
-        "One department left the path.",
+        "One handoff left the path.",
     },
     switchAria: "Choose which path the map shows",
   },
@@ -490,7 +488,7 @@ const en: MskCopy = {
 
   outcomes: {
     kicker: "What it added up to",
-    title: "What changed, and who gets the credit.",
+    title: "The numbers, and where each comes from.",
     intro:
       "As a coordinator, I started the push to file portal messages straight to the online chart. It was built from my pitch two jobs later. I also rewrote the CPR course for the clinicians taking it. And I rebuilt training for new office staff: Epic, HIPAA, compliance, and the people skills of the job.",
     disclaimer: "Details anonymized · hospital-wide results belong to the whole effort, not just me · the ~$1M/year is a forecast from my pitch, not measured savings",
@@ -591,9 +589,9 @@ const es: MskCopy = {
 
   blueprint: {
     introKicker: "Luego conté los traspasos",
-    introTitle: "Seis pasos se volvieron cinco, y un área dejó de participar.",
+    introTitle: "Seis pasos se volvieron cinco.",
     introLede:
-      "En pantalla, el cambio fue un paso menos. Por detrás, un área entera ya no tuvo que manejar el mensaje. Abajo está la misma ruta, ordenada según quién tenía el mensaje.",
+      "En pantalla, el cambio fue un paso menos. Abajo está la misma ruta, ordenada según quién tenía el mensaje.",
     beforeBtn: "Antes · un traspaso",
     afterBtn: "Después · sin traspaso",
     statusBefore:
@@ -626,7 +624,6 @@ const es: MskCopy = {
       built: "Después, recuadros sólidos: los construyeron TI y UX",
       design: "Recuadros punteados: mi diseño, no el de MSK",
     },
-    builtFrom: "Hecho de memoria a partir de mis propias notas sobre el trabajo. Sin datos de pacientes. Mis conteos se perdieron, así que no afirmo con qué frecuencia pasaba.",
     swipeHint: "Deslice para ver todos los pasos",
     canvasAria: "Dibujo del plano del servicio. Desplácese de lado para ver todos los pasos.",
     key: {
@@ -649,7 +646,7 @@ const es: MskCopy = {
       changedBefore:
         "Seis pasos, pero uno importa más: el mensaje pasa a otra área y no vuelve ninguna respuesta.",
       changedAfter:
-        "Un área salió de la ruta.",
+        "Un traspaso salió de la ruta.",
     },
     switchAria: "Elegir qué ruta muestra el mapa",
   },
@@ -795,7 +792,7 @@ const es: MskCopy = {
 
   outcomes: {
     kicker: "A cuánto sumó",
-    title: "Qué cambió, y a quién le corresponde el mérito.",
+    title: "Las cifras y de dónde viene cada una.",
     intro:
       "Como coordinadora, impulsé que los mensajes del portal se archivaran directamente en la historia clínica en línea. Se construyó a partir de mi propuesta dos trabajos después. También reescribí el curso de RCP para el personal clínico que lo tomaba. Y reconstruí la capacitación del personal nuevo de oficina: Epic, HIPAA, cumplimiento y el trato con la gente que pide el puesto.",
     disclaimer: "Detalles anonimizados · los resultados de todo el hospital son del esfuerzo completo, no solo míos · los ~$1M/año son una previsión de mi propuesta, no un ahorro medido",

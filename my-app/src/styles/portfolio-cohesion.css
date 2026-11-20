@@ -36,6 +36,14 @@
   --r-plate: 4px;
   --r-control: 3px;
   --r-device: 28px;
+  /* Figure tray (2026-11-20, from shapeof.ai's Examples grid): case-study
+     figures sit in a soft tinted tray, the media inset by --tray-inset so the
+     tray reads as a frame. The one place plates are allowed real corners:
+     the tray is a mount, not a product surface. */
+  --r-tray: 12px;
+  --r-tray-media: 6px;
+  --tray-inset: 8px;
+  --tray-gap: 1.5rem;
 
   /* Type scale — the shared middle. Section titles, card headings, and numeric
      display were each being set with slightly different arbitrary numbers doing
