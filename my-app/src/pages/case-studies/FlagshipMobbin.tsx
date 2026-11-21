@@ -105,6 +105,11 @@ export default function FlagshipMobbin() {
       {/* The "Documentation trace" evidence-poster section was removed on
           2026-08-03, matching Grove and MSK. */}
 
+      {/* The "Problem" chapter (#mobbin-brief) sits here, open, in chapter
+          order. It used to live inside the "See every screen" fold after
+          Decisions, so stepping to chapter 2 meant opening a fold. */}
+      <div data-evidence="true"><MobbinIndexLens /></div>
+
       <section className="rp-section" id="mobbin-work" data-language-anchor="mobbin-work">
         <div className="rp-wrap">
           <h2 className="rp-title">One screenshot doesn’t show the whole task.</h2>
@@ -142,7 +147,6 @@ export default function FlagshipMobbin() {
             <span className="rp-deepDive__stateOpen">Close</span>
           </span>
         </summary>
-        <div data-evidence="true"><MobbinIndexLens /></div>
         <section className="rp-section" id="mobbin-apps" data-language-anchor="mobbin-apps">
           <div className="rp-wrap">
             <h2 className="rp-title">Kikoff shows progress. Polymarket shows the risk. Discover feels familiar.</h2>
@@ -170,7 +174,6 @@ export default function FlagshipMobbin() {
 
       <section className="rp-section">
         <div className="rp-wrap rp-close">
-          <h2>Now I notice what makes an app feel safe to trust.</h2>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
           <CopyEmail compact />
         </div>

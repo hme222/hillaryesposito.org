@@ -4519,11 +4519,12 @@ html.cs-chrome .nav-dock__pill .nav-dock__track { flex: 0 0 auto; }
    page, a 1px ink border, a bold ink label and a round +/− badge at the end.
    Open, CaseMore's body sits inside the same plate under a rule; a section
    fold keeps its plate as the header of what it opened. Scoped to
-   .flagship-page so Home's HomeFold rows keep their own ruled look.
+   .flagship-page so Home's HomeFold rows keep their own ruled look, and
+   extended to .spanish-riso-case (2026-11-20) so the Spanish pages match.
    Colors are per-context custom properties so light pages, the dark bands
    (.rp-override, .rp-outcomeStage, .rp-cinema) and dark mode each get a
    measured set. */
-.flagship-page {
+:is(.flagship-page, .spanish-riso-case) {
   --disc-plate: color-mix(in srgb, var(--paper) 40%, white);
   --disc-plate-hover: color-mix(in srgb, var(--paper) 15%, white);
   --disc-line: color-mix(in srgb, var(--ink) 62%, transparent);
@@ -4535,8 +4536,8 @@ html.cs-chrome .nav-dock__pill .nav-dock__track { flex: 0 0 auto; }
   --disc-focus: var(--coral);
   --disc-shadow: 0 1px 0 color-mix(in srgb, var(--ink) 14%, transparent), 0 6px 18px -12px color-mix(in srgb, var(--ink) 45%, transparent);
 }
-.flagship-page :is(.rp-override, .rp-outcomeStage, .rp-cinema),
-.dark-mode .flagship-page {
+:is(.flagship-page, .spanish-riso-case) :is(.rp-override, .rp-outcomeStage, .rp-cinema),
+.dark-mode :is(.flagship-page, .spanish-riso-case) {
   --disc-plate: color-mix(in srgb, var(--ink-on-dark) 9%, transparent);
   --disc-plate-hover: color-mix(in srgb, var(--ink-on-dark) 15%, transparent);
   --disc-line: color-mix(in srgb, var(--ink-on-dark) 58%, transparent);
@@ -4550,34 +4551,34 @@ html.cs-chrome .nav-dock__pill .nav-dock__track { flex: 0 0 auto; }
 }
 
 /* The plate and its control, shared by all three. */
-.flagship-page :is(.rp-more, .rp-reel__transcript) {
+:is(.flagship-page, .spanish-riso-case) :is(.rp-more, .rp-reel__transcript) {
   max-width: 46rem; border: 1px solid var(--disc-line); border-radius: var(--r-plate);
   background: var(--disc-plate); box-shadow: var(--disc-shadow); color: var(--disc-ink);
 }
-.flagship-page .rp-more { margin: clamp(1.5rem, 3vw, 2rem) 0 0; }
-.flagship-page .rp-wrap > .rp-title + .rp-more { margin-top: var(--rp-headline-gap); }
-.flagship-page .rp-reel__transcript { margin-top: 1rem; border-bottom: 1px solid var(--disc-line); }
+:is(.flagship-page, .spanish-riso-case) .rp-more { margin: clamp(1.5rem, 3vw, 2rem) 0 0; }
+:is(.flagship-page, .spanish-riso-case) .rp-wrap > .rp-title + .rp-more { margin-top: var(--rp-headline-gap); }
+:is(.flagship-page, .spanish-riso-case) .rp-reel__transcript { margin-top: 1rem; border-bottom: 1px solid var(--disc-line); }
 
-.flagship-page :is(.rp-more, .rp-reel__transcript) > summary {
+:is(.flagship-page, .spanish-riso-case) :is(.rp-more, .rp-reel__transcript) > summary {
   display: flex; align-items: center; justify-content: space-between; gap: 1rem;
   min-height: 56px; padding: .6rem .7rem .6rem 1.1rem; cursor: pointer; list-style: none;
   border-radius: var(--r-plate); color: var(--disc-ink);
   font-family: var(--shell-sans); font-size: var(--ts-body); font-weight: 700; line-height: 1.3;
 }
-.flagship-page .rp-reel__transcript > summary::before { content: none; }
+:is(.flagship-page, .spanish-riso-case) .rp-reel__transcript > summary::before { content: none; }
 
 /* The round badge. Drawn with two gradient bars instead of a "+" glyph so the
    cross stays centred at any font; open drops the vertical bar to read "−". */
-.flagship-page :is(.rp-more, .rp-reel__transcript) > summary::after,
-.flagship-page .rp-deepDive__state::after {
+:is(.flagship-page, .spanish-riso-case) :is(.rp-more, .rp-reel__transcript) > summary::after,
+:is(.flagship-page, .spanish-riso-case) .rp-deepDive__state::after {
   content: ""; flex: none; width: 2rem; height: 2rem; border-radius: 50%;
   background:
     linear-gradient(var(--disc-badge-ink), var(--disc-badge-ink)) center / .8rem 2px no-repeat,
     linear-gradient(var(--disc-badge-ink), var(--disc-badge-ink)) center / 2px .8rem no-repeat,
     var(--disc-badge);
 }
-.flagship-page :is(.rp-more, .rp-reel__transcript)[open] > summary::after,
-.flagship-page .rp-deepDive[open] .rp-deepDive__state::after {
+:is(.flagship-page, .spanish-riso-case) :is(.rp-more, .rp-reel__transcript)[open] > summary::after,
+:is(.flagship-page, .spanish-riso-case) .rp-deepDive[open] .rp-deepDive__state::after {
   background:
     linear-gradient(var(--disc-badge-ink), var(--disc-badge-ink)) center / .8rem 2px no-repeat,
     linear-gradient(var(--disc-badge-ink), var(--disc-badge-ink)) center / 2px 0 no-repeat,
@@ -4585,59 +4586,59 @@ html.cs-chrome .nav-dock__pill .nav-dock__track { flex: 0 0 auto; }
 }
 
 /* Open: CaseMore's body joins the plate under one rule. */
-.flagship-page :is(.rp-more, .rp-reel__transcript)[open] > summary {
+:is(.flagship-page, .spanish-riso-case) :is(.rp-more, .rp-reel__transcript)[open] > summary {
   border-bottom: 1px solid var(--disc-rule); border-radius: var(--r-plate) var(--r-plate) 0 0;
 }
-.flagship-page .rp-more__body { margin: 0; padding: 1.25rem 1.1rem 1.4rem; }
-.flagship-page .rp-reel__transcript > .rp-acc__body { padding: 1.1rem 1.1rem 1.25rem; }
-.flagship-page .rp-more__body > :first-child { margin-top: 0; }
-.flagship-page .rp-more__body > * + * { margin-top: .85rem; }
-.flagship-page .rp-more__body :is(p, li) { color: inherit; }
+:is(.flagship-page, .spanish-riso-case) .rp-more__body { margin: 0; padding: 1.25rem 1.1rem 1.4rem; }
+:is(.flagship-page, .spanish-riso-case) .rp-reel__transcript > .rp-acc__body { padding: 1.1rem 1.1rem 1.25rem; }
+:is(.flagship-page, .spanish-riso-case) .rp-more__body > :first-child { margin-top: 0; }
+:is(.flagship-page, .spanish-riso-case) .rp-more__body > * + * { margin-top: .85rem; }
+:is(.flagship-page, .spanish-riso-case) .rp-more__body :is(p, li) { color: inherit; }
 
 /* Section folds: the full-bleed band becomes the same plate, centred on the
    page column, with the bigger title the fold already had. */
-.flagship-page .rp-deepDive {
+:is(.flagship-page, .spanish-riso-case) .rp-deepDive {
   border: 0; background: none; padding: clamp(.5rem, 2vw, 1rem) var(--sp-gutter);
 }
-.flagship-page .rp-deepDive > summary {
+:is(.flagship-page, .spanish-riso-case) .rp-deepDive > summary {
   max-width: calc(1080px - 2 * var(--sp-gutter)); min-height: 72px; margin: 0 auto;
   padding: .85rem .85rem .85rem clamp(1rem, 2.5vw, 1.5rem);
   border: 1px solid var(--disc-line); border-radius: var(--r-plate);
   background: var(--disc-plate); box-shadow: var(--disc-shadow); color: var(--disc-ink);
 }
-.flagship-page .rp-deepDive[open] > summary { border-bottom: 1px solid var(--disc-line-hover); border-color: var(--disc-line-hover); }
-.flagship-page .rp-deepDive__state {
+:is(.flagship-page, .spanish-riso-case) .rp-deepDive[open] > summary { border-bottom: 1px solid var(--disc-line-hover); border-color: var(--disc-line-hover); }
+:is(.flagship-page, .spanish-riso-case) .rp-deepDive__state {
   display: inline-flex; align-items: center; gap: .6rem; min-height: 44px;
   color: var(--disc-ink); font-family: var(--shell-sans); font-size: var(--ts-small); font-weight: 700;
 }
-.flagship-page .rp-deepDive__stateClosed::after,
-.flagship-page .rp-deepDive__stateOpen::after { content: none; }
+:is(.flagship-page, .spanish-riso-case) .rp-deepDive__stateClosed::after,
+:is(.flagship-page, .spanish-riso-case) .rp-deepDive__stateOpen::after { content: none; }
 /* The opened sections follow the plate closely instead of after a full
    section's worth of empty paper. */
-.flagship-page .rp-deepDive[open] > .rp-section:first-of-type { padding-top: clamp(2rem, 4vw, 3rem); }
+:is(.flagship-page, .spanish-riso-case) .rp-deepDive[open] > .rp-section:first-of-type { padding-top: clamp(2rem, 4vw, 3rem); }
 
 /* Hover, focus, press: one set of states for all three. */
 @media (hover: hover) {
-  .flagship-page :is(.rp-more, .rp-reel__transcript) > summary:hover,
-  .flagship-page .rp-deepDive > summary:hover { background: var(--disc-plate-hover); }
-  .flagship-page :is(.rp-more, .rp-reel__transcript):hover,
-  .flagship-page .rp-deepDive > summary:hover { border-color: var(--disc-line-hover); }
+  :is(.flagship-page, .spanish-riso-case) :is(.rp-more, .rp-reel__transcript) > summary:hover,
+  :is(.flagship-page, .spanish-riso-case) .rp-deepDive > summary:hover { background: var(--disc-plate-hover); }
+  :is(.flagship-page, .spanish-riso-case) :is(.rp-more, .rp-reel__transcript):hover,
+  :is(.flagship-page, .spanish-riso-case) .rp-deepDive > summary:hover { border-color: var(--disc-line-hover); }
 }
-.flagship-page :is(.rp-more, .rp-reel__transcript) > summary:focus-visible,
-.flagship-page .rp-deepDive > summary:focus-visible { outline: 3px solid var(--disc-focus); outline-offset: 3px; }
+:is(.flagship-page, .spanish-riso-case) :is(.rp-more, .rp-reel__transcript) > summary:focus-visible,
+:is(.flagship-page, .spanish-riso-case) .rp-deepDive > summary:focus-visible { outline: 3px solid var(--disc-focus); outline-offset: 3px; }
 @media (prefers-reduced-motion: no-preference) {
-  .flagship-page :is(.rp-more, .rp-reel__transcript) > summary::after,
-  .flagship-page .rp-deepDive__state::after { transition: background-size var(--dur-press, 160ms) var(--ease-out, ease-out); }
-  .flagship-page :is(.rp-more, .rp-reel__transcript) { transition: border-color var(--dur-press, 160ms) ease-out; }
+  :is(.flagship-page, .spanish-riso-case) :is(.rp-more, .rp-reel__transcript) > summary::after,
+  :is(.flagship-page, .spanish-riso-case) .rp-deepDive__state::after { transition: background-size var(--dur-press, 160ms) var(--ease-out, ease-out); }
+  :is(.flagship-page, .spanish-riso-case) :is(.rp-more, .rp-reel__transcript) { transition: border-color var(--dur-press, 160ms) ease-out; }
 }
 @media (forced-colors: active) {
-  .flagship-page :is(.rp-more, .rp-reel__transcript),
-  .flagship-page .rp-deepDive > summary { border-color: CanvasText; }
-  .flagship-page :is(.rp-more, .rp-reel__transcript) > summary::after,
-  .flagship-page .rp-deepDive__state::after { forced-color-adjust: none; border: 2px solid CanvasText; }
+  :is(.flagship-page, .spanish-riso-case) :is(.rp-more, .rp-reel__transcript),
+  :is(.flagship-page, .spanish-riso-case) .rp-deepDive > summary { border-color: CanvasText; }
+  :is(.flagship-page, .spanish-riso-case) :is(.rp-more, .rp-reel__transcript) > summary::after,
+  :is(.flagship-page, .spanish-riso-case) .rp-deepDive__state::after { forced-color-adjust: none; border: 2px solid CanvasText; }
 }
 @media (max-width: 480px) {
-  .flagship-page .rp-deepDive__title { font-size: 1.125rem; }
+  :is(.flagship-page, .spanish-riso-case) .rp-deepDive__title { font-size: 1.125rem; }
 }
 
 /* ---------- Figure trays + section folds (2026-11-20, shapeof.ai pass) ----------
@@ -4719,7 +4720,7 @@ html.cs-chrome .nav-dock__pill .nav-dock__track { flex: 0 0 auto; }
 }
 
 /* Section folds. Closed: a band of its own. */
-.flagship-page > .rp-deepDive {
+:is(.flagship-page, .spanish-riso-case) > .rp-deepDive {
   background: var(--fold-band);
   border-top: 1px solid var(--fold-rule); border-bottom: 1px solid var(--fold-rule);
   padding-block: clamp(1rem, 3vw, 1.75rem);
@@ -4730,7 +4731,7 @@ html.cs-chrome .nav-dock__pill .nav-dock__track { flex: 0 0 auto; }
    sit inside the band. On the tint, --muted is remapped to --ink-2 and
    --coral-text and --green are taken a step darker, so small labels keep
    4.5:1 there (Grove's phase label measured 4.28 before). */
-.flagship-page > .rp-deepDive[open] {
+:is(.flagship-page, .spanish-riso-case) > .rp-deepDive[open] {
   --muted: var(--ink-2);
   --coral-text: color-mix(in srgb, var(--coral) 72%, var(--ink));
   --green: color-mix(in srgb, var(--shell-green) 80%, var(--shell-ink));
@@ -4738,8 +4739,8 @@ html.cs-chrome .nav-dock__pill .nav-dock__track { flex: 0 0 auto; }
   border-top: 3px solid var(--fold-edge); border-bottom: 3px solid var(--fold-edge);
   padding-bottom: clamp(1.5rem, 4vw, 2.5rem);
 }
-.flagship-page > .rp-deepDive[open] > .rp-section:not(.rp-override, .rp-outcomeStage, .rp-cinema) { background: none; }
-.flagship-page > .rp-deepDive[open] > .rp-section:last-child:not(.rp-override, .rp-outcomeStage, .rp-cinema) { padding-bottom: clamp(1rem, 3vw, 2rem); }
+:is(.flagship-page, .spanish-riso-case) > .rp-deepDive[open] > .rp-section:not(.rp-override, .rp-outcomeStage, .rp-cinema) { background: none; }
+:is(.flagship-page, .spanish-riso-case) > .rp-deepDive[open] > .rp-section:last-child:not(.rp-override, .rp-outcomeStage, .rp-cinema) { padding-bottom: clamp(1rem, 3vw, 2rem); }
 
 /* Read more and transcripts: the section they sit in takes the same band
    while one is open. Closed, a hairline under that section marks its end. */
@@ -4754,11 +4755,11 @@ html.cs-chrome .nav-dock__pill .nav-dock__track { flex: 0 0 auto; }
   border-top: 3px solid var(--fold-edge); border-bottom: 3px solid var(--fold-edge);
 }
 @media (prefers-reduced-motion: no-preference) {
-  .flagship-page > .rp-deepDive,
+  :is(.flagship-page, .spanish-riso-case) > .rp-deepDive,
   :is(.flagship-page, .spanish-riso-case) > .rp-section { transition: background-color var(--dur-press, 160ms) ease-out; }
 }
 @media (forced-colors: active) {
-  .flagship-page > .rp-deepDive,
+  :is(.flagship-page, .spanish-riso-case) > .rp-deepDive,
   :is(.flagship-page, .spanish-riso-case) > .rp-section:has(.rp-more[open], .rp-reel__transcript[open]) { border-color: CanvasText; }
 }
 
@@ -4986,3 +4987,7 @@ html.cs-chrome .nav-dock__pill .nav-dock__track { flex: 0 0 auto; }
   .rp-chapters__chip { border: 1px solid CanvasText; }
   .rp-chapters a.is-active { forced-color-adjust: none; border-left-color: Highlight; }
 }
+
+/* A close with no headline or sentence (Mobbin): only the email buttons, so the
+   section shrinks to the buttons instead of holding a full section's padding. */
+.rp-section:has(> .rp-close:not(:has(h2, p))) { padding-block: var(--sp-lg, 2rem); }

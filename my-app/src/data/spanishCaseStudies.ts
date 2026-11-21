@@ -278,9 +278,9 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
     { title: "Diseño de producto e investigación para FloraGrove, una app de cuidado de plantas antes de su\u00a0lanzamiento", desc: "FloraGrove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
     { title: "Proyecto de diseño de servicios para Memorial Sloan\u00a0Kettering Cancer\u00a0Center", desc: "MSK · Propuse la cola de archivo; TI y UX la construyeron.", path: "/case-study/msk" },
   ],
-  close: {
-    title: "Ahora noto qué hace que una app dé confianza.",
-  },
+  // The closing line was cut (2026-11-20, matching the English page): the
+  // page ends on the outcomes, then the contact buttons.
+  close: {},
 };
 
 // Condensed from FlagshipLogistics.tsx. Every figure and limit here is already
@@ -359,9 +359,9 @@ export const LOGISTICS_ES: SpanishCaseStudyData = {
         "Las tres cifras vienen de mi Informe de Evaluación de Oficial. No se guardaron registros de cómo ni durante qué periodo se midieron. Aquí no se describen posiciones, rutas ni ubicaciones de unidades.",
       ],
       bullets: [
-        "1–2 semanas: para reabastecer suministros médicos después de acercar el almacén, antes 1–2 meses · 85% más rápido.",
+        "1–2 semanas: para reabastecer suministros médicos después de acercar el almacén, antes 1–2 meses · cerca de 85% más rápido, mi estimación.",
         "60%: menos gasto, con los suministros todavía disponibles, cuando las estaciones pudieron ver sus pedidos y dejaron de pedir de más o de quedarse sin nada.",
-        "15%: entrega más eficiente de suministros críticos después de crear una forma compartida de comunicarnos.",
+        "15%: entrega más eficiente de suministros críticos después de crear una forma compartida de comunicarnos. Mi estimación.",
       ],
     },
   ],
