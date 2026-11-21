@@ -14,7 +14,7 @@ export default function MobbinIndexLens() {
   const [indexed, setIndexed] = useState(false);
 
   return (
-    <section className={`fp-indexLens${indexed ? " is-indexed" : ""}`} id="mobbin-brief" data-language-anchor="mobbin-brief" aria-labelledby="mobbin-index-title">
+    <section className={`fp-indexLens${indexed ? " is-indexed" : ""}`} id="mobbin-work" data-language-anchor="mobbin-work" aria-labelledby="mobbin-index-title">
       <div className="rp-wrap fp-indexLens__layout">
         <div className="fp-indexLens__copy">
           <h2 id="mobbin-index-title">Name the task, not just the app.</h2>

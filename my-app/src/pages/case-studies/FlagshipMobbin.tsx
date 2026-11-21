@@ -22,9 +22,8 @@ import "../../styles/flagship-case-study.css";
 const CHAPTERS: CaseStudyChapter[] = [
   { id: "mobbin-start", label: "Start" },
   { id: "mobbin-brief", label: "Problem" },
-  { id: "mobbin-work", label: "The work" },
+  { id: "mobbin-work", label: "What I did" },
   { id: "mobbin-decisions", label: "Decisions" },
-  { id: "mobbin-apps", label: "Apps" },
   { id: "mobbin-outcomes", label: "Outcomes" },
 ];
 
@@ -105,17 +104,15 @@ export default function FlagshipMobbin() {
       {/* The "Documentation trace" evidence-poster section was removed on
           2026-08-03, matching Grove and MSK. */}
 
-      {/* The "Problem" chapter (#mobbin-brief) sits here, open, in chapter
-          order. It used to live inside the "See every screen" fold after
-          Decisions, so stepping to chapter 2 meant opening a fold. */}
-      <div data-evidence="true"><MobbinIndexLens /></div>
-
-      <section className="rp-section" id="mobbin-work" data-language-anchor="mobbin-work">
+      <section className="rp-section" id="mobbin-brief" data-language-anchor="mobbin-brief">
         <div className="rp-wrap">
           <h2 className="rp-title">One screenshot doesn’t show the whole task.</h2>
           <p className="rp-lede">Designers come to Mobbin to see how apps handle a task, like logging in or opening an account.</p>
         </div>
       </section>
+
+      {/* Same order as the other studies: Problem, then What I did. */}
+      <div data-evidence="true"><MobbinIndexLens /></div>
 
       <div data-evidence="true"><DecisionStory
         id="mobbin-decisions"

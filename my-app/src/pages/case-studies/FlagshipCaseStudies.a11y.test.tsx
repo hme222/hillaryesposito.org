@@ -424,7 +424,7 @@ describe("flagship case-study accessibility", () => {
       root.render(<FlagshipMobbin />);
     });
     const chapterLinks = Array.from(container.querySelectorAll<HTMLAnchorElement>(".rp-chapters a"), (a) => a.textContent);
-    expect(chapterLinks).toEqual(["Problema", "Método", "Decisiones", "Apps", "Resultados"]);
+    expect(chapterLinks).toEqual(["Problema", "Qué hice", "Decisiones", "Resultados"]);
     const text = container.textContent || "";
     expect(text).toContain("Mobbin es un sitio donde los diseñadores buscan capturas de apps");
     expect(text).toContain("Kikoff muestra el avance. Polymarket muestra el riesgo. Discover se siente familiar.");

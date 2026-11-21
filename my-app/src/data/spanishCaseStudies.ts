@@ -224,19 +224,19 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
     {
       anchor: "mobbin-brief",
       chapter: "Problema",
-      eyebrow: "Una captura tiene que encontrarse después",
-      title: "Nombrar la tarea, no solo la app.",
-      body: [
-        "Dejé cada captura original intacta y nombré la tarea a su lado con el vocabulario de la biblioteca.",
-      ],
-    },
-    {
-      anchor: "mobbin-work",
-      chapter: "Método",
       eyebrow: "El método · criterio antes de capturar",
       title: "Una sola captura no muestra la tarea completa.",
       body: [
         "Los diseñadores llegan a Mobbin para ver cómo las apps resuelven una tarea, como iniciar sesión o abrir una cuenta.",
+      ],
+    },
+    {
+      anchor: "mobbin-work",
+      chapter: "Qué hice",
+      eyebrow: "Una captura tiene que encontrarse después",
+      title: "Nombrar la tarea, no solo la app.",
+      body: [
+        "Dejé cada captura original intacta y nombré la tarea a su lado con el vocabulario de la biblioteca.",
       ],
     },
     {
@@ -254,7 +254,7 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
     },
     {
       anchor: "mobbin-apps",
-      chapter: "Apps",
+      chapter: false,
       eyebrow: "Las apps",
       title: "Kikoff muestra el avance. Polymarket muestra el riesgo. Discover se siente familiar.",
       body: ["Las pantallas están en Mobbin Finance+, la biblioteca a la que se integraron."],
