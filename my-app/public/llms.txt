@@ -13,7 +13,6 @@ Contact: espositohillary@gmail.com
 - [2.5-week design sprint with an edtech startup, run by Yummy Labs](https://www.hillaryesposito.com/case-study/knowunity/): a voice active-recall prototype; recall is mocked.
 - [Service design for U.S. Army medical supply, cutting resupply from months to weeks](https://www.hillaryesposito.com/case-study/logistics/): a warehouse relocation serving seven aid stations; figures are from her Officer Evaluation Report.
 - [Healthcare research based on changing Medicaid requirements](https://www.hillaryesposito.com/case-study/ux-woman/): six interviews with clinic and insurer staff, two hypotheses about one public New York Medicaid letter, and a guide built from it; untested, no patient interviews.
-- [Freelance documentation of three finance apps for Mobbin](https://www.hillaryesposito.com/case-study/mobbin/): Kikoff, Polymarket and Discover; she did not design these products.
 
 ## More
 
