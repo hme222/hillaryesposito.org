@@ -187,9 +187,9 @@ export default function FlagshipLogistics() {
         title="Supplies arrived faster and cost less."
         disclaimer="All three numbers come from my Officer Evaluation Report. Records of how and over what time they were measured were not kept."
         metrics={[
-          { tag: "Warehouse move", n: "1–\u20602\u00a0wk", label: "to restock medical supplies after the warehouse moved closer, down from 1–2 months · 85% faster" },
+          { tag: "Warehouse move", n: "1–\u20602\u00a0wk", label: "to restock medical supplies after the warehouse moved closer, down from 1–2 months · about 85% faster, my estimate" },
           { tag: "Order tracker", n: "60%", label: "less spending, with supplies still on hand, once stations could see their orders and stopped ordering too much or running out" },
-          { tag: "Shared process", n: "15%", label: "more efficient delivery of critical supplies after we set up one shared way to communicate" },
+          { tag: "Shared process", n: "15%", label: "more efficient delivery of critical supplies after we set up one shared way to communicate. My estimate." },
         ]}
         leadMetric
       /></div>
@@ -205,7 +205,7 @@ export default function FlagshipLogistics() {
         </div>
       </section>
 
-      <Link className="rp-next" to="/case-study/mobbin"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Mobbin</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
+      <Link className="rp-next" to="/case-study/msk"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Memorial Sloan{"\u00a0"}Kettering</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
     </main>
   );
 }

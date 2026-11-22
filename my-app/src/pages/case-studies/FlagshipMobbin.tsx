@@ -22,9 +22,8 @@ import "../../styles/flagship-case-study.css";
 const CHAPTERS: CaseStudyChapter[] = [
   { id: "mobbin-start", label: "Start" },
   { id: "mobbin-brief", label: "Problem" },
-  { id: "mobbin-work", label: "The work" },
+  { id: "mobbin-work", label: "What I did" },
   { id: "mobbin-decisions", label: "Decisions" },
-  { id: "mobbin-apps", label: "Apps" },
   { id: "mobbin-outcomes", label: "Outcomes" },
 ];
 
@@ -105,12 +104,15 @@ export default function FlagshipMobbin() {
       {/* The "Documentation trace" evidence-poster section was removed on
           2026-08-03, matching Grove and MSK. */}
 
-      <section className="rp-section" id="mobbin-work" data-language-anchor="mobbin-work">
+      <section className="rp-section" id="mobbin-brief" data-language-anchor="mobbin-brief">
         <div className="rp-wrap">
           <h2 className="rp-title">One screenshot doesn’t show the whole task.</h2>
           <p className="rp-lede">Designers come to Mobbin to see how apps handle a task, like logging in or opening an account.</p>
         </div>
       </section>
+
+      {/* Same order as the other studies: Problem, then What I did. */}
+      <div data-evidence="true"><MobbinIndexLens /></div>
 
       <div data-evidence="true"><DecisionStory
         id="mobbin-decisions"
@@ -142,7 +144,6 @@ export default function FlagshipMobbin() {
             <span className="rp-deepDive__stateOpen">Close</span>
           </span>
         </summary>
-        <div data-evidence="true"><MobbinIndexLens /></div>
         <section className="rp-section" id="mobbin-apps" data-language-anchor="mobbin-apps">
           <div className="rp-wrap">
             <h2 className="rp-title">Kikoff shows progress. Polymarket shows the risk. Discover feels familiar.</h2>
@@ -170,7 +171,6 @@ export default function FlagshipMobbin() {
 
       <section className="rp-section">
         <div className="rp-wrap rp-close">
-          <h2>Now I notice what makes an app feel safe to trust.</h2>
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
           <CopyEmail compact />
         </div>

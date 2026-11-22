@@ -32,15 +32,15 @@ type WorkItem = {
 // The case studies, in the order they are read: the lead case first, then
 // the ones that show a different kind of evidence.
 // 2026-11-17 positioning (Hillary): healthcare and internal workflow tools
-// lead; consumer work follows as range. design-docs/briefs/positioning.md.
+// lead; consumer work follows as range. Mobbin hidden 2026-11-22 (Hillary):
+// route and page files stay, nothing links to it. design-docs/briefs/positioning.md.
 const WORK: WorkItem[] = [
   { n: "01", titleKey: "home.proj.msk.title", subKey: "home.proj.msk.subtitle", descKey: "home.riso.mskDesc", path: "/case-study/msk" },
   { n: "02", titleKey: "home.proj.uxwoman.title", subKey: "home.proj.uxwoman.subtitle", descKey: "home.riso.uxwomanDesc", path: "/case-study/ux-woman" },
   { n: "03", titleKey: "home.proj.knowunity.title", subKey: "home.proj.knowunity.subtitle", descKey: "home.riso.knowunityDesc", path: "/case-study/knowunity" },
   { n: "04", titleKey: "home.proj.grove.title", subKey: "home.proj.grove.subtitle", descKey: "home.riso.groveDesc", path: "/case-study/grove" },
   { n: "05", titleKey: "home.proj.logistics.title", subKey: "home.proj.logistics.subtitle", descKey: "home.riso.logisticsDesc", path: "/case-study/logistics" },
-  { n: "06", titleKey: "home.proj.mobbin.title", subKey: "home.proj.mobbin.subtitle", descKey: "home.riso.mobbinDesc", path: "/case-study/mobbin" },
-  { n: "07", titleKey: "home.proj.hackathon.title", subKey: "home.proj.hackathon.subtitle", descKey: "home.riso.hackathonDesc", path: "https://hme222.github.io/MTA_Accessibility_Trip_Planning/" },
+  { n: "06", titleKey: "home.proj.hackathon.title", subKey: "home.proj.hackathon.subtitle", descKey: "home.riso.hackathonDesc", path: "https://hme222.github.io/MTA_Accessibility_Trip_Planning/" },
 ];
 
 

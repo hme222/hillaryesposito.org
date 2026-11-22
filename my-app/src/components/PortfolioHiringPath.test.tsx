@@ -107,7 +107,6 @@ describe("healthcare product designer hiring path", () => {
       "/case-study/knowunity",
       "/case-study/grove",
       "/case-study/logistics",
-      "/case-study/mobbin",
       "https://hme222.github.io/MTA_Accessibility_Trip_Planning/",
     ]);
 

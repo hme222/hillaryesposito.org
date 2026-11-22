@@ -46,8 +46,10 @@ export type SpanishCaseStudyData = {
   otherProjects?: { title: string; desc: string; path: string }[];
   /** The page's own closing statement, matching the English page's closer.
    *  Omit to fall back to the generic contact prompt. */
-  /** `body` is optional: a close can be the title alone (2026-11-17 repetition cut). */
-  close?: { title: string; body?: string };
+  /** `body` is optional: a close can be the title alone (2026-11-17 repetition cut).
+   *  `title` is optional too: `close: {}` keeps only the contact buttons, so the
+   *  page ends on its last section (Mobbin, 2026-11-20). */
+  close?: { title?: string; body?: string };
   /** Optional external link shown beside the hero's "read in English" button
    *  (FloraGrove's waitlist). Opens in a new tab. */
   heroLink?: { label: string; href: string };
@@ -196,7 +198,7 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
 
       <section className="rp-section">
         <div className="rp-wrap rp-close">
-          <h2>{data.close?.title ?? "¿Quiere hablar sobre este tipo de trabajo?"}</h2>
+          {data.close && !data.close.title ? null : <h2>{data.close?.title ?? "¿Quiere hablar sobre este tipo de trabajo?"}</h2>}
           {data.close ? (data.close.body ? <p>{data.close.body}</p> : null) : <p>Puedo explicar el proceso, las decisiones y lo que aprendí con más detalle.</p>}
           <div className="rp-hero__ctas">
             <a href="mailto:espositohillary@gmail.com" className="rp-cta">Escríbame →</a>

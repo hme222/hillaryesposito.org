@@ -255,7 +255,6 @@ describe("flagship case-study accessibility", () => {
       "/case-study/knowunity",
       "/case-study/grove",
       "/case-study/logistics",
-      "/case-study/mobbin",
       "https://hme222.github.io/MTA_Accessibility_Trip_Planning/",
     ]);
     rows.forEach((row, index) => {
@@ -424,7 +423,7 @@ describe("flagship case-study accessibility", () => {
       root.render(<FlagshipMobbin />);
     });
     const chapterLinks = Array.from(container.querySelectorAll<HTMLAnchorElement>(".rp-chapters a"), (a) => a.textContent);
-    expect(chapterLinks).toEqual(["Problema", "Método", "Decisiones", "Apps", "Resultados"]);
+    expect(chapterLinks).toEqual(["Problema", "Qué hice", "Decisiones", "Resultados"]);
     const text = container.textContent || "";
     expect(text).toContain("Mobbin es un sitio donde los diseñadores buscan capturas de apps");
     expect(text).toContain("Kikoff muestra el avance. Polymarket muestra el riesgo. Discover se siente familiar.");
@@ -496,7 +495,7 @@ describe("flagship case-study accessibility", () => {
     ["UX Woman", <FlagshipUxWoman />, "/case-study/knowunity", "Knowunity"],
     ["Knowunity", <FlagshipKnowunity />, "/case-study/grove", "FloraGrove"],
     ["FloraGrove", <RisoGrove />, "/case-study/logistics", "Medical logistics"],
-    ["Medical logistics", <FlagshipLogistics />, "/case-study/mobbin", "Mobbin"],
+    ["Medical logistics", <FlagshipLogistics />, "/case-study/msk", "Memorial Sloan\u00a0Kettering"],
     ["Mobbin", <FlagshipMobbin />, "/case-study/msk", "Memorial Sloan\u00a0Kettering"],
   ])("keeps the approved next-case sequence from %s", async (_name, page, href, title) => {
     await act(async () => {
@@ -586,7 +585,7 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".rp-hero .msk-dashboard-mockup")).toBeNull();
   });
 
-  it("lists Mobbin and the hackathon project as numbered rows like the case studies", async () => {
+  it("lists the hackathon project as a numbered row like the case studies (Mobbin is hidden)", async () => {
     await act(async () => {
       root.render(<RisoHome />);
     });
@@ -595,10 +594,9 @@ describe("flagship case-study accessibility", () => {
     expect(rows.map((r) => r.getAttribute("href"))).toEqual([
       "/case-study/grove",
       "/case-study/logistics",
-      "/case-study/mobbin",
       "https://hme222.github.io/MTA_Accessibility_Trip_Planning/",
     ]);
-    expect(rows[3].getAttribute("target")).toBe("_blank");
+    expect(rows[2].getAttribute("target")).toBe("_blank");
     expect(container.querySelector(".rp-dispatch, .rp-supportingLink")).toBeNull();
   });
 
