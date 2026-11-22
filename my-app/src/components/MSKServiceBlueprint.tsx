@@ -367,6 +367,7 @@ export default function MSKServiceBlueprint({ copy = MSK_COPY.en.blueprint, colu
       {/* What kind of claim each box is (synthesis-lens review 2026-11-19):
           the After path mixes what IT and UX built with two of my own rules.
           Real text, so the distinction never rests on line style or colour. */}
+      <p className="fp-blueprint__seat">{copy.seat}</p>
       <ul className="fp-blueprint__legend" aria-label={copy.legend.aria}>
         <li><span className="fp-blueprint__swatch fp-blueprint__swatch--observed" aria-hidden="true" />{copy.legend.observed}</li>
         <li><span className="fp-blueprint__swatch fp-blueprint__swatch--built" aria-hidden="true" />{copy.legend.built}</li>

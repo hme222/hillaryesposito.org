@@ -1,19 +1,19 @@
 /* LogisticsMoveMap styles. Moved from flagship-case-study.css on 2026-11-17 so the
    component brings its own styles to Home (case-study CSS loads only with the lazy route). */
 .log-map { margin: 0; width: min(600px, 100%); display: grid; gap: .8rem; padding: clamp(.9rem, 2vw, 1.3rem);
-  background: color-mix(in srgb, var(--paper) 90%, transparent); border: 1px solid var(--hair); border-radius: 20px; color: var(--ink);
+  background: color-mix(in srgb, var(--paper) 90%, transparent); border: 1px solid var(--hair); border-radius: var(--r-plate); color: var(--ink);
   box-shadow: 0 28px 60px -34px rgba(0,0,0,.5); }
 .log-map__bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .6rem; }
 .log-map__tabs { display: inline-flex; padding: 3px; border: 1px solid var(--hair); border-radius: 999px; background: var(--paper-2); }
 .log-map__tabs button { min-height: 44px; min-width: 44px; padding: 0 1.1rem; border: 0; border-radius: 999px; background: none; color: var(--ink-2); font: inherit; font-weight: 600; cursor: pointer; }
 .log-map__tabs button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
-.log-map__tabs button:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
+.log-map__tabs button:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
 .log-map__count { margin: 0; display: grid; text-align: right; line-height: 1.2; }
 .log-map__count b { font-family: var(--display); font-size: 1.35rem; }
 .log-map__count span { color: var(--ink-2); font-size: var(--ts-small); }
 .log-map--before .log-map__count b { color: var(--coral-text, var(--coral)); }
 .log-map--after .log-map__count b { color: var(--green); }
-.log-map__svg { display: block; width: 100%; height: auto; border-radius: 14px; background: var(--paper); }
+.log-map__svg { display: block; width: 100%; height: auto; border-radius: var(--r-control); background: var(--paper); }
 .log-map__region { fill: color-mix(in srgb, var(--green) 9%, transparent); stroke: color-mix(in srgb, var(--ink) 30%, transparent); stroke-width: 1.2; stroke-dasharray: 5 5; }
 .log-map__route { stroke-width: 2.4; stroke-linecap: round; }
 .log-map--before .log-map__route { stroke: var(--coral); stroke-dasharray: 6 6; }

@@ -23,7 +23,7 @@
   --olive-2: #5a7a2e;
   --olive-3: #3d5a1e;
   --accent-warm: #946420; /* darkened from #b87d35 to clear WCAG AA (4.5:1) at body size on the light bg */
-  --focus: var(--olive-2);
+  --focus: var(--shell-green); /* the site green, same as --focus-ring (portfolio-cohesion.css) */
 
   /* Surfaces */
   --surface-0: var(--bg);
@@ -111,7 +111,7 @@ body.dark-mode,
   --olive-2: #d9a55e;
   --olive-3: #b8823f;
   --accent-warm: #e8b06a;
-  --focus: #e8b06a;
+  --focus: var(--shell-green);
 
   /* Surfaces */
   --surface-0: #15120c;

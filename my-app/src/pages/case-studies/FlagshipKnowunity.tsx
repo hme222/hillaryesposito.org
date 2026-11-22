@@ -257,30 +257,24 @@ export default function FlagshipKnowunity() {
         title="I made the student do the proving, not Knowie."
         intro="You can’t force a student to explain out loud. So each of these four changes makes it easier to keep going."
         steps={STEPS}
-        // Same stacked crossfade as Mobbin: every capture is mounted in one
-        // fixed-ratio frame and the active step turns one on, so the swap has
-        // no decode flash and no height change. Inactive frames are hidden
-        // from assistive tech.
-        visual={(active) => (
-          <div className="fp-sequence__phone fp-sequence__phone--story fp-sequence__phone--stack">
-            {FRAMES.map((frame, index) => {
-              const on = (active === null ? 0 : STEP_FRAME[active]) === index;
-              return (
-                <img
-                  key={frame.src}
-                  src={frame.src}
-                  alt={frame.alt}
-                  width={CAPTURE_W}
-                  height={CAPTURE_H}
-                  loading="lazy"
-                  decoding="async"
-                  className={on ? "is-on" : undefined}
-                  aria-hidden={!on}
-                />
-              );
-            })}
-          </div>
-        )}
+        // Each decision sits beside its own screen (STEP_FRAME maps step to
+        // capture). Nothing is pinned or crossfaded any more (2026-11-22).
+        visualPerStep
+        visual={(index) => {
+          const frame = FRAMES[STEP_FRAME[index ?? 0]];
+          return (
+            <div className="fp-sequence__phone fp-sequence__phone--story">
+              <img
+                src={frame.src}
+                alt={frame.alt}
+                width={CAPTURE_W}
+                height={CAPTURE_H}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          );
+        }}
       /></div>
 
 
