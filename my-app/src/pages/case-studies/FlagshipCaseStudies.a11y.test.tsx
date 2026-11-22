@@ -243,7 +243,7 @@ describe("flagship case-study accessibility", () => {
     expect(container.querySelector(".rp-trustStrip")).toBeNull();
   });
 
-  it("numbers each Home case and names it from visible copy", async () => {
+  it("lists each Home case unnumbered and names it from visible copy", async () => {
     await act(async () => {
       root.render(<RisoHome />);
     });
@@ -257,11 +257,17 @@ describe("flagship case-study accessibility", () => {
       "/case-study/logistics",
       "https://hme222.github.io/MTA_Accessibility_Trip_Planning/",
     ]);
-    rows.forEach((row, index) => {
+    rows.forEach((row) => {
       const description = row.querySelector<HTMLElement>(".rp-index__desc");
       expect(row.querySelector(".rp-index__title")?.textContent).toBeTruthy();
-      expect(row.querySelector(".rp-index__n")?.textContent).toBe(`0${index + 1}`);
-      expect(row.querySelector(".rp-index__n")?.getAttribute("aria-hidden")).toBe("true");
+      // The cases are not a sequence: no visible numbers. Only the off-site row
+      // keeps an arrow, and it is hidden from screen readers (the sr-only text
+      // says it opens a new tab instead).
+      expect(row.querySelector(".rp-index__n")).toBeNull();
+      const isExternal = row.getAttribute("href")?.startsWith("http") ?? false;
+      const arrow = row.querySelector(".rp-index__arrow");
+      expect(Boolean(arrow)).toBe(isExternal);
+      if (arrow) expect(arrow.getAttribute("aria-hidden")).toBe("true");
       expect(row.getAttribute("aria-label")).toBeNull();
       // Only the off-site hackathon prototype opens a new tab.
       expect(row.getAttribute("target")).toBe(row.getAttribute("href")?.startsWith("http") ? "_blank" : null);
@@ -290,8 +296,15 @@ describe("flagship case-study accessibility", () => {
     ["knowunity-start", "knowunity-brief", "knowunity-decisions", "knowunity-prototype", "knowunity-outcomes"].forEach((id) => {
       expect(container.querySelector(`#${id}`)).not.toBeNull();
     });
-    expect(container.querySelectorAll(".rp-decisionStory__visual img")).toHaveLength(4);
-    expect(container.querySelectorAll(".rp-decisionStory__visual img.is-on")).toHaveLength(1);
+    // One screen per decision, each beside its own step and each announced
+    // (nothing is a hidden crossfade frame any more).
+    const storyImages = Array.from(container.querySelectorAll<HTMLImageElement>(".rp-decisionStory__pair .rp-decisionStory__visual img"));
+    expect(storyImages).toHaveLength(4);
+    expect(new Set(storyImages.map((img) => img.getAttribute("src"))).size).toBe(4);
+    storyImages.forEach((img) => {
+      expect(img.getAttribute("alt")).toBeTruthy();
+      expect(img.getAttribute("aria-hidden")).toBeNull();
+    });
     expect(container.querySelectorAll(".rp-outcomes--two .rp-stat")).toHaveLength(2);
     expect(container.textContent).toContain("the listening is faked");
     expect(container.textContent).toContain("not tested with students");
@@ -819,8 +832,8 @@ describe("flagship case-study accessibility", () => {
   });
 
   it.each([
-    ["MSK", <FlagshipMSK />, "Service design project for Memorial Sloan Kettering Cancer\u00a0Center", "They are not MSK’s actual design."],
-    ["FloraGrove", <RisoGrove />, "Product design and research for FloraGrove, a pre-launch plant-care\u00a0app", "it does not prove what people would actually do"],
+    ["MSK", <FlagshipMSK />, "Service design project\u00a0for Memorial Sloan Kettering Cancer\u00a0Center", "They are not MSK’s actual design."],
+    ["FloraGrove", <RisoGrove />, "Product design and research for\u00a0FloraGrove, a pre-launch plant-care\u00a0app", "it does not prove what people would actually do"],
     ["Mobbin", <FlagshipMobbin />, "Freelance documentation of three finance apps for\u00a0Mobbin", "I did not design"],
   ])("%s leads with a project-label title and visible evidence boundary", async (_name, page, title, boundary) => {
     await act(async () => {

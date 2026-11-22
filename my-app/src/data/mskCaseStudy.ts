@@ -92,6 +92,8 @@ export type MskCopy = {
     /** Tag over the two After nodes that are Hillary's design rules, not MSK's build. */
     designTag: string;
     legend: { aria: string; observed: string; built: string; design: string };
+    /** Whose seat the drawing is from. */
+    seat: string;
     /** One line under the drawing: what it is built from. */
     swipeHint: string;
     canvasAria: string;
@@ -303,6 +305,7 @@ const en: MskCopy = {
       "Queue status", "Back, status updated", "Now in the EMR",
     ],
     designTag: "my design, not MSK’s",
+    seat: "Drawn from the coordinator’s seat.",
     legend: {
       aria: "What each box shows",
       observed: "Before: what I saw (observed)",
@@ -454,7 +457,7 @@ const en: MskCopy = {
     kicker: "The real test came later",
     title: "What happened after I left that role.",
     lede:
-      "IT approved it once funding came in and built it as I pitched it. I don’t know what changed behind the scenes. Later, while training new employees, I saw it in the live system.",
+      "IT was in the middle of a big overhaul, and the plan needed funding for a permanent role: someone to oversee the digital side of scanning and the EMR. IT approved it once funding came in and built it as I pitched it. I don’t know what changed behind the scenes. Later, while training new employees, I saw it in the live system.",
     // Claim audit 2026-10-13: the lanes used to say "system upgrade" ×2,
     // "still in use" and "still used by other admins" — claims Hillary cut on
     // 2026-09-27 (msk.md F2/F3: no source; she was not present after launch).
@@ -495,7 +498,7 @@ const en: MskCopy = {
     metrics: [
       { tag: "Led", n: "1 month", label: "early: the whole department certified before the original deadline, with no 4-month extension" },
       { tag: "Trained", n: "~2,000", label: "new employees I trained on Epic, HIPAA, and compliance, by my estimate" },
-      { tag: "Contributed to", n: "20%", label: "lower printing and scanning costs, from my review of the numbers with the head of the finance department" },
+      { tag: "Contributed to", n: "20%", label: "lower printing and scanning costs in 2018–2019, from my review of the numbers with the head of the finance department" },
       { tag: "Projection", n: "~$1M/year", label: "projected paper savings in my Process Improvement Fair pitch, not measured savings" },
     ],
     route: ["Watch the real work", "Map the problem", "Get every team on board", "Get it built"],
@@ -618,6 +621,7 @@ const es: MskCopy = {
       "Estado de la cola", "Volver, estado actualizado", "Ya en el EMR",
     ],
     designTag: "mi diseño, no el de MSK",
+    seat: "Dibujado desde el puesto de la coordinadora.",
     legend: {
       aria: "Qué muestra cada recuadro",
       observed: "Antes: lo que vi (observado)",
@@ -764,7 +768,7 @@ const es: MskCopy = {
     kicker: "La prueba de verdad llegó después",
     title: "Lo que pasó después de que dejé ese puesto.",
     lede:
-      "TI lo aprobó cuando llegó el financiamiento y lo construyó tal como lo propuse. No sé qué cambió por detrás. Más tarde, mientras capacitaba a nuevos empleados, lo vi en el sistema en uso.",
+      "TI estaba en medio de una gran renovación, y el plan necesitaba financiamiento para un puesto permanente: alguien que supervisara la parte digital del escaneo y del EMR. TI lo aprobó cuando llegó el financiamiento y lo construyó tal como lo propuse. No sé qué cambió por detrás. Más tarde, mientras capacitaba a nuevos empleados, lo vi en el sistema en uso.",
     figcaption: "Qué pasó después de lanzar cada uno",
     shipped: "LANZADO",
     lanes: [
@@ -799,7 +803,7 @@ const es: MskCopy = {
     metrics: [
       { tag: "Dirigí", n: "1 mes", label: "antes: toda el área se certificó antes de la fecha límite original, sin la prórroga de 4 meses" },
       { tag: "Capacité", n: "~2,000", label: "nuevos empleados que capacité en Epic, HIPAA y cumplimiento, según mi estimación" },
-      { tag: "Contribuí a", n: "20%", label: "menos costos de impresión y escaneo, según mi revisión de las cifras con el jefe del departamento de finanzas" },
+      { tag: "Contribuí a", n: "20%", label: "menos costos de impresión y escaneo en 2018–2019, según mi revisión de las cifras con el jefe del departamento de finanzas" },
       { tag: "Proyección", n: "~$1M/año", label: "ahorro proyectado en papel en mi propuesta para la Feria de Mejora de Procesos, no un ahorro medido" },
     ],
     route: ["Observar el trabajo real", "Mapear el problema", "Sumar a todos los equipos", "Lograr que se construya"],

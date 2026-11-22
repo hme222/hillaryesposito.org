@@ -27,13 +27,13 @@
 .rp-resultLine__text,
 .riso-page .rp-resultLine__text {
   margin: .5rem 0 0;
-  max-width: 26ch;
+  max-width: 34ch;
   color: var(--ink);
-  font-family: var(--shell-display);
-  font-size: var(--ts-title);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -.015em;
+  font-family: var(--shell-sans);
+  font-size: var(--ts-result);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -.01em;
   text-wrap: balance;
 }
 

@@ -175,16 +175,27 @@
    help a box that never knew how big its own headline was. Size the plate in
    rem against the hero column and give the headline a ceiling that fits it.
    Scoped off .riso-home so the homepage hero keeps its display scale. */
-.riso-page:not(.riso-home) .rp-hero .rp-clearing { max-width: min(44rem, 100%); }
-.riso-page:not(.riso-home) .rp-hero .rp-h1 { font-size: clamp(2rem, 3.1vw, 2.8rem); max-width: 100%; }
+/* 2026-11-22 hierarchy pass: the H1 now clearly outranks the result line
+   (--ts-result) and section H2s (--ts-h2): 52px at 1440 against 28 and 34.
+   The text column takes a little more of the hero so the bigger title still
+   sets in three lines. Logistics carries the longest title, so it keeps the
+   old ceiling and stays at three lines instead of four. */
+.riso-page:not(.riso-home) .rp-hero .rp-clearing { max-width: min(50rem, 100%); }
+.riso-page:not(.riso-home) .rp-hero .rp-h1 { font-size: clamp(2rem, 3.6vw, 3.25rem); max-width: 100%; }
+.riso-page.flagship-page--logistics .rp-hero .rp-h1 { font-size: clamp(1.75rem, 3.1vw, 2.75rem); }
+@media (min-width: 761px) {
+  .riso-page:not(.riso-home) .rp-hero { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); }
+  .riso-page:not(.riso-home) .rp-hero::after { left: 57.5%; }
+  .riso-page:not(.riso-home) .rp-hero__content { padding-inline: clamp(1.4rem, 3vw, 2.5rem); }
+}
 /* Supporting cases open with the evidence artifact, not the flagship template.
    Source order remains title-first for assistive technology; only the wider
    visual composition changes. Mobile keeps the orientation-first text order. */
 @media (min-width: 761px) {
-  .flagship-page--mobbin .rp-hero,
-  .flagship-page--uxwoman .rp-hero { grid-template-columns: .95fr 1.05fr; }
-  .flagship-page--mobbin .rp-hero::after,
-  .flagship-page--uxwoman .rp-hero::after { left: 47.5%; }
+  .riso-page.flagship-page--mobbin .rp-hero,
+  .riso-page.flagship-page--uxwoman .rp-hero { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); }
+  .riso-page.flagship-page--mobbin .rp-hero::after,
+  .riso-page.flagship-page--uxwoman .rp-hero::after { left: 42.5%; }
   .flagship-page--mobbin .rp-hero__content,
   .flagship-page--uxwoman .rp-hero__content { grid-column: 2; grid-row: 1; }
   .flagship-page--mobbin .rp-hero__media,
@@ -194,10 +205,15 @@
    case-study titles stranded single words ("department", "medical"). A
    slightly smaller size plus .rp-keep word pairs keeps every line multi-word
    from 320 to 480. .rp-keep only binds here; wider screens wrap normally. */
-@media (max-width: 480px) {
-  .riso-page:not(.riso-home) .rp-hero .rp-h1 { font-size: clamp(1.6rem, 7.4vw, 2rem); }
-  .rp-keep { white-space: nowrap; }
+/* 2026-11-22: phones size the title to fit its longest kept phrase
+   ("Memorial Sloan Kettering", 1100px at a 100px reference) in the plate,
+   about 100vw minus 4rem of padding, so a proper name never splits. */
+@media (max-width: 760px) {
+  .riso-page:not(.riso-home) .rp-hero .rp-h1 { font-size: clamp(1.4rem, calc((100vw - 4.5rem) / 11.4), 2rem); }
+  .riso-page.flagship-page--logistics .rp-hero .rp-h1 { font-size: clamp(1.4rem, calc((100vw - 4.5rem) / 12.6), 1.75rem); }
+  .riso-page:not(.riso-home) .rp-hero__content { padding-inline: 1rem; }
 }
+.rp-keep { white-space: nowrap; }
 @media (max-width: 760px) {
   /* `balance` equalises line lengths, which is precisely how the last word ends
      up alone. `pretty` optimises the last line instead. */
@@ -232,7 +248,7 @@
 .riso-page .rp-humanLine,
 .riso-home .rp-humanLine,
 .flagship-page--msk .rp-humanLine {
-  margin: var(--pull-gap) 0 0; padding-left: var(--pull-indent); border-left: var(--pull-rule) solid var(--coral);
+  margin: var(--pull-gap) 0 0; padding-left: var(--pull-indent); border-left: var(--pull-rule) solid var(--ink);
   max-width: var(--pull-measure); color: var(--ink);
   font-family: var(--display); font-size: var(--ts-pull); font-weight: 700; line-height: var(--pull-leading);
   letter-spacing: var(--pull-tracking); text-wrap: balance;
@@ -454,7 +470,7 @@
 .rp-section--alt { background: var(--paper-2); border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); }
 .rp-section--alt .rp-kicker,
 .rp-decisionStory__head .rp-kicker { color: var(--ink); }
-.rp-kicker { font-family: var(--label); font-size: var(--rp-type-floor); letter-spacing: .12em; text-transform: uppercase; color: var(--coral-text); font-weight: 700; }
+.rp-kicker { font-family: var(--label); font-size: var(--rp-type-floor); letter-spacing: .12em; text-transform: uppercase; color: var(--green); font-weight: 700; } /* green, not coral: 2026-11-22 coral pass */
 .rp-title { font-size: var(--ts-h2); font-weight: 800; line-height: 1.05; letter-spacing: -.015em; margin: .5rem 0 0; text-wrap: balance; }
 
 /* ---------- homepage opening film ---------- */
@@ -546,7 +562,7 @@
 .rp-openingFilm.is-exiting .rp-openingFilm__skip { opacity: 0; }
 .rp-openingFilm__skip:hover { background: rgba(20, 21, 14, .62); }
 .rp-openingFilm__skip:focus-visible {
-  outline: 3px solid var(--coral);
+  outline: 3px solid var(--focus-ring);
   outline-offset: 3px;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1225,9 +1241,9 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-acc { border-bottom: 1px solid var(--hair); }
 .rp-acc summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 1rem; padding: 1.1rem 0; font-weight: 700; font-size: var(--ts-body); }
 .rp-acc summary::-webkit-details-marker { display: none; }
-.rp-acc summary::before { content: "+"; font-family: var(--label); color: var(--coral); font-size: var(--ts-lead); width: 1ch; }
+.rp-acc summary::before { content: "+"; font-family: var(--label); color: var(--ink); font-size: var(--ts-lead); width: 1ch; }
 .rp-acc[open] summary::before { content: "\2013"; }
-.rp-acc summary:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+.rp-acc summary:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 3px; }
 .rp-acc__num { font-family: var(--label); font-size: .72rem; color: var(--green); }
 /* Marks a call being made now rather than one already in the build — the same
    labeling discipline as the recreated-artifact and AI-built tags. */
@@ -1269,7 +1285,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-credential__link { display: inline-flex; align-items: center; min-height: 44px; color: var(--ink); font-size: var(--ts-label);
   font-weight: 600; text-decoration: underline; text-underline-offset: .2em; text-decoration-thickness: 1px; }
 .rp-credential__link:hover { text-decoration-thickness: 2px; }
-.rp-credential__link:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+.rp-credential__link:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 3px; }
 /* Beside the tiles: the row takes the old grid's top margin, the badge column
    holds 160-180px and top-aligns so the tiles still follow the disclaimer.
    Phones stack it under the tiles at up to 180px. */
@@ -1303,19 +1319,18 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   min-width: 44px;
   min-height: 44px;
   font: 600 .8125rem/1 var(--shell-sans);
-  color: var(--coral-text);
+  color: var(--ink);
 }
-.dark-mode .rp-deepDive__state { color: var(--coral-on-dark); }
 .rp-deepDive__stateClosed::after { content: " +"; }
 .rp-deepDive__stateOpen { display: none; }
 .rp-deepDive__stateOpen::after { content: " −"; }
 .rp-deepDive[open] > summary { border-bottom: 1px solid var(--hair); }
 .rp-deepDive[open] .rp-deepDive__stateClosed { display: none; }
 .rp-deepDive[open] .rp-deepDive__stateOpen { display: inline; }
-.rp-deepDive > summary:focus-visible { outline: 3px solid var(--coral); outline-offset: -4px; }
+.rp-deepDive > summary:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: -4px; }
 .rp-deepDive .rp-section { border: 0; }
 @media (hover: hover) {
-  .rp-deepDive > summary:hover { background: color-mix(in srgb, var(--coral) 8%, transparent); }
+  .rp-deepDive > summary:hover { background: color-mix(in srgb, var(--ink) 5%, transparent); }
 }
 @media (max-width: 360px) {
   .rp-deepDive > summary { grid-template-columns: minmax(0, 1fr) 44px; }
@@ -1375,7 +1390,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   letter-spacing: .07em; text-transform: uppercase; text-decoration: underline;
   text-decoration-thickness: 1px; text-underline-offset: .32em; cursor: pointer; }
 .rp-heroUtility:hover { color: var(--ink); text-underline-offset: .48em; }
-.rp-heroUtility:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+.rp-heroUtility:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 3px; }
 /* The opener is video; with reduced motion on it could only show a still
    for 6.5s with no explanation (motion review 2026-10-12), so the replay
    button isn't offered at all. The autoplay already skips reduced motion. */
@@ -1802,7 +1817,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-dispatch__sources a:hover { color: var(--coral); }
 .rp-dispatch__sources a:focus-visible,
 .rp-dispatch .rp-cta:focus-visible {
-  outline: 3px solid var(--coral);
+  outline: 3px solid var(--focus-ring);
   outline-offset: 4px;
 }
 .rp-dispatch__visual {
@@ -2174,7 +2189,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   transform: rotate(8deg);
 }
 .rp-dispatch__toggle:focus-visible {
-  outline: 3px solid var(--coral);
+  outline: 3px solid var(--focus-ring);
   outline-offset: 5px;
 }
 .rp-dispatch__toggle[aria-expanded="true"] > span { transform: rotate(45deg); }
@@ -2292,7 +2307,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   transform: rotate(-.4deg) translate(-.15rem, .15rem);
 }
 .rp-dispatch__collage:focus-visible {
-  outline: 4px solid var(--coral);
+  outline: 4px solid var(--focus-ring);
   outline-offset: 6px;
 }
 
@@ -2504,7 +2519,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   /* A <button> defaults to buttontext (black), which vanished on the dark-mode paper. */
   color: var(--ink); }
 .rp-swatch:hover { transform: translateY(-3px); box-shadow: 0 10px 24px -8px rgba(0,0,0,.28); }
-.rp-swatch:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
+.rp-swatch:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
 .rp-swatch__chip { display: block; height: 58px; }
 .rp-swatch__meta { display: block; padding: .55rem .65rem .65rem; }
 .rp-swatch__name { display: block; font-size: var(--ts-label); font-weight: 700; margin-bottom: .12rem; }
@@ -2631,7 +2646,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 
 /* ---------- hero journal entries ---------- */
 .rp-heroNote { position: absolute; z-index: 4; max-width: 220px; padding: .72rem .78rem .78rem 1rem;
-  border: 1px solid var(--hair); border-left: 3px solid var(--coral); border-radius: 2px 7px 7px 2px;
+  border: 1px solid var(--hair); border-left: 3px solid var(--ink); border-radius: var(--r-plate);
   background: color-mix(in srgb, var(--paper) 94%, transparent);
   background-image: repeating-linear-gradient(to bottom, transparent 0 23px, color-mix(in srgb, var(--hair) 44%, transparent) 23px 24px);
   box-shadow: 0 12px 28px -16px rgba(0,0,0,.38); transform: rotate(var(--note-tilt, -1deg)); }
@@ -2656,7 +2671,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
    the section after it. The paper-to-transparent scrim at the top edge is gone
    too — the dark field now meets the hero as a clean cut (owner direction,
    superseding the 2026-07-23 "clean gradient transition" note). */
-.rp-cinema { position: relative; margin-top: -1px; background: #192619; color: var(--ink-on-dark); }
+.rp-cinema { position: relative; margin-top: -1px; background: var(--forest); color: var(--ink-on-dark); }
 .rp-cinema::before { content: none; }
 .rp-cinema::after { content: none; }
 /* overflow stays visible so an enlarged bridge heading cannot be clipped
@@ -2696,15 +2711,11 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
    with the two boxes sharing the width instead of holding a fixed 330px. */
 .rp-cinema__sticky .fp-cinemaCore { width: 100%; min-height: 0; }
 .rp-cinema__sticky .fp-cinemaCore--workflow > div { width: auto; flex: 1 1 0; }
-.rp-cinema__wash { position: absolute; inset: 0; z-index: -2; background:
-  radial-gradient(circle at 18% 20%, rgba(239,83,64,.28), transparent 23%),
-  radial-gradient(circle at 78% 38%, rgba(198,138,46,.22), transparent 24%),
-  linear-gradient(145deg, #243d25 0%, #172417 58%, #101810 100%); }
-.rp-cinema__wash::after { content: ""; position: absolute; inset: 0; opacity: .26; mix-blend-mode: screen;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='.8'/%3E%3C/svg%3E"); }
+/* Flat (2026-11-22): the glow and generated noise are gone; the band is --forest. */
+.rp-cinema__wash { position: absolute; inset: 0; z-index: -2; background: var(--forest); }
 .rp-cinema__artifact { width: min(320px, 100%); padding: 1rem 1.05rem; color: #20241c; /* plate is always light: bind ink to the plate, not the theme */
   background: color-mix(in srgb, var(--ink-on-dark) 94%, transparent); border: 1px solid color-mix(in srgb, var(--ink-on-dark) 62%, transparent); border-radius: var(--r-plate);
-  box-shadow: 0 22px 48px -26px rgba(0,0,0,.72); backdrop-filter: blur(10px); }
+  box-shadow: none; }
 .rp-cinema__artifact span { font-family: var(--label); font-size: .58rem; letter-spacing: .09em; text-transform: uppercase; color: #596253; }
 .rp-cinema__artifact b { display: block; margin-top: .35rem; font-size: var(--ts-body); line-height: 1.3; }
 .rp-cinema__artifact p { margin-top: .25rem; font-size: .78rem; line-height: 1.45; color: #354840; }
@@ -2719,9 +2730,8 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-cinema__artifact { width: 100%; align-self: stretch; }
 /* Tiny residual rotations keep the collage feel. At the old ±2deg, against a
    column edge, they read as knocked over rather than placed. */
-.rp-cinema__artifact--reminder { transform: rotate(-.8deg); }
-.rp-cinema__artifact--safety { transform: rotate(.7deg); }
-.rp-cinema__bridge .rp-kicker { color: var(--coral-on-dark); }
+/* Flat plates: no tilt, no drop shadow (2026-11-22, one shape language). */
+.rp-cinema__bridge .rp-kicker { color: var(--mint-on-dark); }
 .rp-cinema__bridge h2 { margin: .45rem 0 0; font-size: var(--ts-h2); line-height: 1.1; letter-spacing: -.021em; text-wrap: balance; }
 .rp-cinema__bridge > p:last-child { margin-top: .85rem; max-width: 44ch; color: color-mix(in srgb, var(--ink-on-dark) 78%, transparent); }
 @media (max-width: 760px) {
@@ -2738,10 +2748,11 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 }
 
 /* ---------- the human override is the differentiator ---------- */
-.rp-override { background: #17321b; color: var(--ink-on-dark); border-top: 1px solid color-mix(in srgb, var(--ink-on-dark) 18%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--ink-on-dark) 18%, transparent); }
+.rp-override { background: var(--forest); color: var(--ink-on-dark); border-top: 1px solid color-mix(in srgb, var(--ink-on-dark) 18%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--ink-on-dark) 18%, transparent); }
 .rp-override .rp-title, .rp-override .rp-lede, .rp-override .rp-acc__line { color: var(--ink-on-dark); }
 .rp-override .rp-lede, .rp-override .rp-body, .rp-override .rp-acc__why { color: color-mix(in srgb, var(--ink-on-dark) 76%, transparent); }
-.rp-override .rp-kicker, .rp-override .rp-notif--ai .rp-notif__tag { color: var(--coral-on-dark); }
+.rp-override .rp-kicker { color: var(--mint-on-dark); }
+.rp-override .rp-notif--ai .rp-notif__tag { color: var(--coral-on-dark); }
 .rp-override .rp-notif--me .rp-notif__tag, .rp-override .rp-acc__num, .rp-override .rp-acc__me b { color: var(--mint-on-dark); }
 .rp-override .rp-pushback__vs { color: color-mix(in srgb, var(--ink-on-dark) 62%, transparent); }
 .rp-override .rp-notif { border-color: color-mix(in srgb, var(--ink-on-dark) 18%, transparent); }
@@ -2791,7 +2802,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-demo__tabs button { min-height: 44px; padding: .55rem 1rem; border: 0; border-radius: var(--r-control); background: transparent;
   color: var(--muted); font: 700 .72rem/1 var(--label); letter-spacing: .03em; cursor: pointer; }
 .rp-demo__tabs button[aria-selected="true"] { color: var(--paper); background: var(--ink); }
-.rp-demo__tabs button:focus-visible, .rp-demoCard button:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+.rp-demo__tabs button:focus-visible, .rp-demoCard button:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 3px; }
 .rp-demo__panel { min-height: 320px; display: grid; place-items: center; padding: clamp(1.4rem,5vw,3.5rem) 0; outline: 0; }
 .rp-demo__panel[hidden] { display: none; }
 .rp-demoCard { width: min(460px,100%); padding: clamp(1.2rem,4vw,2rem); border: 1px solid var(--hair); border-radius: var(--r-plate);
@@ -2810,14 +2821,14 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-demoCard button { min-height: 44px; margin-top: 1.15rem; padding: .65rem 1rem; border: 0; border-radius: var(--r-plate);
   background: #3a6b2e; color: #fff; font: 700 .72rem/1 var(--label); text-transform: uppercase; letter-spacing: .06em; cursor: pointer; }
 .rp-demoCard.is-done { border-color: #3a6b2e; }
-.rp-demoSources { margin-top: 1rem; padding: .85rem 1rem; border-left: 3px solid #3a6b2e; background: rgba(58,107,46,.07); border-radius: 0 7px 7px 0; }
+.rp-demoSources { margin-top: 1rem; padding: .85rem 1rem; border-left: 3px solid #3a6b2e; background: rgba(58,107,46,.07); border-radius: 0; }
 .rp-demoSources[hidden] { display: none; }
 .rp-demoSources p { margin: 0; font-size: var(--ts-label); color: #45503f; }
 .rp-demoSelect { display: grid; gap: .3rem; margin: .9rem 0 1rem; max-width: 320px; }
 .rp-demoSelect span { font-family: var(--label); font-size: .58rem; letter-spacing: .08em; text-transform: uppercase; color: #66705f; }
 .rp-demoSelect select { width: 100%; min-height: 44px; padding: .55rem 2.2rem .55rem .7rem; border: 1px solid #c2cbb8;
   border-radius: var(--r-plate); background: #f5f0ea; color: #20241c; font: .78rem/1.2 var(--label); }
-.rp-demoSelect select:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+.rp-demoSelect select:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 3px; }
 .rp-demoCard--safety { border-left: 5px solid var(--grove-rose); }
 .rp-demoCard--safety.is-checked { border-left-color: #3a6b2e; }
 .rp-confidence { display: grid; gap: .6rem; margin-top: 1rem; }
@@ -2849,37 +2860,47 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   .rp-demo__tabs button { flex: 1; padding-inline: .45rem; }
 }
 
-/* ---------- sticky decision narrative ---------- */
+/* ---------- decision narrative (unpinned 2026-11-22) ----------
+   Plain stacked content: one visual beside the whole list, or each step
+   beside its own visual (.rp-decisionStory__pair). No sticky track, no
+   scroll-linked state, so no empty pinned column. */
 .rp-decisionStory { padding: var(--sp-2xl) 0; border-block: 1px solid var(--hair); background: var(--paper-2); }
 
 .rp-decisionStory__head { max-width: 56ch; }
 
-/* The scroll track. Its height is the runway the panel is pinned across, and
-   the fraction of it that has passed the top of the viewport is what selects
-   the active decision. */
-.rp-decisionStory__track { position: relative; min-height: 180vh; margin-top: var(--sp-lg); }
-
-/* Steps and artifact travel together. They are one pinned panel precisely so
-   they cannot come apart the way the previous version did. */
-/* The artifact gets the larger share. At a 500px cap the queue was cramped
-   enough that the header, legend and rule all read as clutter. */
-/* `--cs-chrome-h` is the visible top chrome (dock + chapter strip, or the
-   strip alone while the dock is tucked), set by hooks/useCaseStudyChrome.ts;
-   the fallback is the old fixed 136px. */
-.rp-decisionStory__panel { position: sticky; top: calc(var(--cs-chrome-h, 128px) + 8px); display: grid;
+.rp-decisionStory__panel { display: grid; margin-top: var(--sp-lg);
   grid-template-columns: minmax(0, .8fr) minmax(0, 620px); gap: clamp(1.5rem, 3vw, 2.4rem);
   align-items: start; }
-.cs-chrome--animate .rp-decisionStory__panel { transition: top var(--dur-fast) var(--ease-soft); }
+
+/* Each step with its own visual beside it: text | screen. Two steps per row
+   from 1100px so four phone screens don't stack into a 2,800px column. */
+.rp-decisionStory__steps--paired { margin-top: var(--sp-lg); gap: var(--sp-md) clamp(1.5rem, 4vw, 3rem); }
+@media (min-width: 1100px) {
+  .rp-decisionStory__steps--paired { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.rp-decisionStory__steps.rp-decisionStory__steps--paired > li.rp-decisionStory__pair {
+  display: grid; grid-template-columns: minmax(0, 1fr) clamp(150px, 16vw, 200px); gap: clamp(1rem, 2.5vw, 1.75rem);
+  align-items: start; padding: 0; border: 0; }
+.rp-decisionStory__step { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .75rem;
+  padding: .85rem 0 .85rem 1rem; border-left: 3px solid var(--ink); }
+.rp-decisionStory--quiet .rp-decisionStory__step { grid-template-columns: minmax(0, 1fr); }
+.rp-decisionStory__pair .rp-decisionStory__visual { display: block; }
+.rp-decisionStory__pair .fp-sequence__phone--story { width: 100%; margin: 0; box-shadow: none; }
+@media (max-width: 900px) {
+  .rp-decisionStory__panel { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+@media (max-width: 560px) {
+  .rp-decisionStory__steps.rp-decisionStory__steps--paired > li.rp-decisionStory__pair { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  .rp-decisionStory__pair .rp-decisionStory__visual { width: min(240px, 100%); }
+}
 
 .rp-decisionStory__steps { list-style: none; margin: 0; padding: 0; display: grid; gap: .25rem; }
 /* The rule is the position indicator. Every step keeps its text at all times —
    the active one is emphasis on content already on screen, never a reveal. */
 .rp-decisionStory__steps li { display: grid; grid-template-columns: auto minmax(0,1fr); gap: .75rem;
-  padding: .85rem 0 .85rem 1rem; border-left: 3px solid var(--hair);
-  transition: border-color .3s ease, background-color .3s ease; opacity: 1; }
-.rp-decisionStory__steps li.is-active { border-left-color: var(--coral); opacity: 1; }
+  padding: .85rem 0 .85rem 1rem; border-left: 3px solid var(--ink); }
 .rp-decisionStory--quiet .rp-decisionStory__steps li { grid-template-columns: minmax(0, 1fr); }
-.rp-decisionStory__n { font-family: var(--label); font-size: .68rem; line-height: 1.6; color: var(--coral-text); }
+.rp-decisionStory__n { font-family: var(--label); font-size: var(--ts-label); line-height: 1.6; color: var(--green); }
 .rp-decisionStory__steps h3 { margin: 0; font-size: clamp(1.02rem, 1.5vw, 1.22rem);
   line-height: 1.2; letter-spacing: -.012em; }
 .rp-decisionStory__steps p { margin: .3rem 0 0; font-size: var(--ts-small); line-height: 1.45; color: var(--ink-2); }
@@ -2888,12 +2909,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 
 .rp-decisionStory__visual { position: relative; overflow: hidden;
   border: 1px solid var(--hair); border-radius: var(--r-plate); padding: clamp(1rem, 2.5vw, 1.6rem);
-  background:
-    radial-gradient(circle at 50% 40%, color-mix(in srgb,var(--green) 14%,transparent), transparent 48%),
-    color-mix(in srgb,var(--paper) 88%,white); }
-.rp-decisionStory__visual::before { content: ""; position: absolute; inset: 0; opacity: .38; background-image:
-  linear-gradient(var(--hair) 1px,transparent 1px), linear-gradient(90deg,var(--hair) 1px,transparent 1px);
-  background-size: 28px 28px; }
+  background: color-mix(in srgb,var(--paper) 88%,white); }
 .rp-decisionStory__visual > * { position: relative; z-index: 1; }
 
 /* MSK's interface recreation is already a dense product surface. The case-
@@ -2904,23 +2920,13 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 }
 .flagship-page--msk .rp-decisionStory__visual::before { content: none; }
 
-/* Below the sticky breakpoint the panel is just a stacked block. Nothing is
-   conditional on scroll, so nothing is lost — every step still carries its
-   own text and the artifact still sits with them. */
 @media (max-width: 900px) {
-  .rp-decisionStory__track { min-height: 0; }
-  .rp-decisionStory__panel { position: static; grid-template-columns: 1fr; gap: 1.5rem; }
-  .rp-decisionStory__steps li { display: block; opacity: 1; border-left-color: var(--coral); }
-  .rp-decisionStory__steps li > span { display: block; margin-bottom: .3rem; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .rp-decisionStory__steps li { transition: none; }
+  .rp-decisionStory__steps li, .rp-decisionStory__step { display: block; }
+  .rp-decisionStory__steps li > span, .rp-decisionStory__step > span { display: block; margin-bottom: .3rem; }
 }
 
 @media (forced-colors: active) {
-  .rp-decisionStory__steps li { opacity: 1; border-left-color: CanvasText; }
-  .rp-decisionStory__steps li.is-active { border-left-color: Highlight; }
+  .rp-decisionStory__steps li, .rp-decisionStory__step { border-left-color: CanvasText; }
 }
 
 @media (max-width: 860px) {
@@ -2937,15 +2943,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
    default --fp-deep (flagship-case-study.css): Grove carries the class but does
    not import that sheet, so the variable is undefined there. */
 .rp-outcomeStage { position: relative; overflow: hidden; min-height: 74vh; display: grid; align-items: center; color: var(--ink-on-dark);
-  background-color: var(--fp-deep, #19321f);
-  background-image:
-  radial-gradient(circle at 76% 20%, rgba(198,138,46,.22),transparent 24%),
-  radial-gradient(circle at 18% 76%, rgba(239,83,64,.16),transparent 28%),
-  /* Start darkened from #264529: --coral-on-dark measured 4.39:1 on it and
-     3.92:1 inside the coral glow. #1c3520 clears 5.46 / 4.70. */
-  linear-gradient(135deg,#1c3520,#152717 72%); }
-.rp-outcomeStage::before { content: ""; position: absolute; inset: 0; opacity: .22; pointer-events: none; background-image:
-  repeating-radial-gradient(ellipse at 78% 112%,transparent 0 64px,color-mix(in srgb, var(--ink-on-dark) 38%, transparent) 65px 66px,transparent 67px 106px); }
+  background: var(--forest); }
 .rp-outcomeStage .rp-wrap { position: relative; z-index: 1; }
 .rp-outcomeStage .rp-title, .rp-outcomeStage .rp-lede { color: var(--ink-on-dark); }
 .rp-outcomeStage .rp-lede { color: color-mix(in srgb, var(--ink-on-dark) 78%, transparent); }
@@ -2957,7 +2955,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
 .rp-outcomeStage .rp-phase__label { color: color-mix(in srgb, var(--ink-on-dark) 78%, transparent); }
 /* Fixed dark stage: kickers take the panel's dark-surface coral, as
    .rp-override does — the page coral measured 1.87–2.35:1 here. */
-.rp-outcomeStage .rp-kicker { color: var(--coral-on-dark); }
+.rp-outcomeStage .rp-kicker { color: var(--mint-on-dark); }
 .rp-outcomeStage .rp-stat { background: color-mix(in srgb, var(--ink-on-dark) 8%, transparent); border-color: color-mix(in srgb, var(--ink-on-dark) 22%, transparent); backdrop-filter: blur(8px); }
 .rp-outcomeStage .rp-stat__tag { color: color-mix(in srgb, var(--ink-on-dark) 66%, transparent); }
 .rp-outcomeStage .rp-stat__n { color: #d8e9c7; }
@@ -3063,7 +3061,7 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
   font-weight: 600; line-height: 1.5; color: var(--ink-2); }
 @media (forced-colors: active) { .rp-nowReading { border-left-color: CanvasText; } }
 
-.rp-testimonial { margin: 2.2rem 0 0; padding: 1.5rem 1.6rem; border: 1px solid var(--hair); border-left: 3px solid var(--coral); background: var(--paper); }
+.rp-testimonial { margin: 2.2rem 0 0; padding: 1.5rem 1.6rem; border: 1px solid var(--hair); border-left: 3px solid var(--ink); background: var(--paper); }
 .rp-testimonial blockquote { margin: 0; font-size: clamp(1.05rem, 2vw, 1.3rem); line-height: 1.5; letter-spacing: -.012em; }
 .rp-testimonial figcaption { display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem .8rem; margin-top: 1rem; }
 .rp-testimonial figcaption b { font-size: var(--ts-small); }
@@ -3283,7 +3281,7 @@ html.cs-chrome .riso-page .fp-indexLens[id] { scroll-margin-top: calc(var(--cs-c
   border: 1px solid var(--hair); border-left: 3px solid var(--coral);
   color: var(--ink); text-decoration: none;
 }
-.rp-chapter__proof:hover { background: color-mix(in srgb, var(--coral) 6%, transparent); }
+.rp-chapter__proof:hover { background: color-mix(in srgb, var(--ink) 5%, transparent); }
 .rp-chapter__proof b { display: block; font-size: var(--ts-small); }
 .rp-chapter__proof small { display: block; margin-top: .15rem; font-family: var(--label); font-size: var(--rp-type-floor); letter-spacing: .06em; color: var(--muted); }
 /* About's "My pattern" list: one compact proof link under each item — same
@@ -3432,7 +3430,7 @@ h2.rp-kicker { margin: 0 0 .4rem; line-height: 1.3; }
   content: ""; position: absolute; left: 50%; top: 50%;
   width: max(100%, 44px); height: 44px; transform: translate(-50%, -50%);
 }
-.term__trigger:focus-visible { outline: 2px solid var(--coral); outline-offset: 2px; border-radius: 2px; }
+.term__trigger:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; border-radius: 2px; }
 .term__tip.term__tip {
   display: none; margin: 0; position: absolute; z-index: 40; left: 0; top: calc(100% + .45rem);
   width: max-content; max-width: min(17rem, calc(100vw - 2rem));
@@ -3665,10 +3663,19 @@ body:has(.flagship-page--msk) .msk-dashboard-mockup {
 }
 .riso-home p,
 .riso-home li,
-.riso-home blockquote,
-.flagship-page--msk p,
-.flagship-page--msk li,
-.flagship-page--msk blockquote { font-size: max(1rem, var(--rp-type-floor)); }
+.riso-home blockquote { font-size: max(1rem, var(--rp-type-floor)); }
+/* Case-study reading text: 17px on every case (MSK used to force 16px onto
+   every p, labels included), held under 80 characters a line. Classed
+   paragraphs (kickers, captions, stats) keep their own role sizes. */
+.flagship-page :is(p, li, blockquote):not([class]),
+.flagship-page .rp-lede,
+.flagship-page .rp-body {
+  font-size: var(--ts-read);
+  line-height: 1.6;
+}
+.flagship-page .rp-wrap > :is(p, ul, ol):not([class]),
+.flagship-page .rp-lede,
+.flagship-page .rp-body { max-width: var(--measure-read); }
 
 .riso-home .rp-work--supporting .rp-work__desc,
 .riso-home .rp-careerNote p:not(.rp-note__k),
@@ -3693,8 +3700,7 @@ body:has(.flagship-page--msk) .msk-dashboard-mockup {
     font-size: clamp(1.75rem, 7.1vw, 2rem);
   }
   .riso-home .rp-work__title,
-  .riso-home .rp-close h2,
-  .flagship-page--msk .rp-title { font-size: 1.45rem; }
+  .riso-home .rp-close h2 { font-size: 1.45rem; }
 }
 
 /* ---------- 2026-11-03 one type system, one chrome ---------- */
@@ -3860,7 +3866,7 @@ body .riso-home .rp-hero__media .rp-headshot { width: min(260px, 70%); }
   font: 700 .8125rem/1 var(--shell-sans); color: var(--ink); background: transparent;
   border: 1px solid var(--ink); border-radius: var(--r-control, 3px);
 }
-.rp-copyEmail__button:hover { background: color-mix(in srgb, var(--coral) 8%, transparent); }
+.rp-copyEmail__button:hover { background: color-mix(in srgb, var(--ink) 6%, transparent); }
 .rp-copyEmail__status { min-width: 8ch; color: var(--ink-2); font-size: var(--ts-label); }
 
 /* ---------- Home headline: the name, large, then the role ---------- */
@@ -3883,15 +3889,16 @@ body:has(.riso-home) .riso-home .rp-nameSplash__word {
   font-family: var(--shell-display) !important;
 }
 
-/* ---------- Home work: a numbered index ---------- */
+/* ---------- Home work: an index ----------
+   No numbers and no per-row arrow (2026-11-22): the cases are not a
+   sequence, and the whole row is already the link. */
 .rp-index__total { margin: 0 0 .75rem; color: var(--muted); font-size: var(--ts-small); }
 .rp-index__list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
 .rp-index__list li { border-bottom: 1px solid var(--hair); }
 .rp-index__row {
-  display: grid; grid-template-columns: 3.5rem minmax(0, 1fr) auto; gap: 1rem; align-items: baseline;
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem; align-items: baseline;
   padding: 1.35rem 0; color: var(--ink); text-decoration: none;
 }
-.rp-index__n { color: var(--muted); font-weight: 800; font-size: 1.25rem; line-height: 1; }
 .rp-index__main { min-width: 0; }
 /* Work titles are project labels (2026-11-19), longer than the old outcome
    lines, so they take the card-heading size: at the old display size
@@ -3902,48 +3909,49 @@ body:has(.riso-home) .riso-home .rp-nameSplash__word {
   display: block; max-height: 0; overflow: hidden; opacity: 0; color: var(--muted); font-size: var(--ts-small); line-height: 1.45; max-width: 62ch;
   transition: max-height .2s ease, opacity .2s ease, margin-top .2s ease;
 }
-.rp-index__arrow { color: var(--coral-text, var(--coral)); font-size: 1.5rem; line-height: 1; transition: transform .2s ease; }
-.dark-mode .rp-index__arrow { color: var(--coral-on-dark, var(--coral)); }
-.rp-index__row:focus-visible { outline: 3px solid var(--coral); outline-offset: -3px; }
+/* Off-site rows only: the arrow says "leaves this site". */
+.rp-index__arrow { color: var(--ink-2); font-size: 1.25rem; line-height: 1; }
+.rp-index__row:focus-visible { outline: 3px solid var(--green); outline-offset: -3px; }
 .rp-index__row:focus-visible .rp-index__desc { max-height: 24rem; opacity: 1; margin-top: .5rem; }
-.rp-index__row:focus-visible .rp-index__arrow { transform: translateX(6px); }
 @media (hover: hover) {
-  .rp-index__row:hover { background: color-mix(in srgb, var(--coral) 6%, transparent); }
+  .rp-index__row:hover { background: color-mix(in srgb, var(--ink) 4%, transparent); }
+  .rp-index__row:hover .rp-index__title { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .15em; }
   .rp-index__row:hover .rp-index__desc { max-height: 24rem; opacity: 1; margin-top: .5rem; }
-  .rp-index__row:hover .rp-index__arrow { transform: translateX(6px); }
 }
 @media (max-width: 600px) {
-  .rp-index__row { grid-template-columns: 2.25rem minmax(0, 1fr) auto; gap: .6rem; padding: 1.1rem 0; }
-  .rp-index__n { font-size: var(--ts-body); }
+  .rp-index__row { gap: .6rem; padding: 1.1rem 0; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .rp-index__desc, .rp-index__arrow { transition: none; }
+  .rp-index__desc { transition: none; }
 }
 /* Home forces the body face onto every descendant, so the index's display
    type opts back out the same way as the headings. */
-body:has(.riso-home) .riso-home .rp-index__title,
-body:has(.riso-home) .riso-home .rp-index__n {
+body:has(.riso-home) .riso-home .rp-index__title {
   font-family: var(--shell-display) !important;
 }
 
 /* Work index: the lead three rows carry a picture on the right. The picture is
-   decorative (aria-hidden) and fixed to 4:3 so rows never shift as images load. */
-.rp-index__row--visual { grid-template-columns: 3.5rem minmax(0, 1fr) clamp(240px, 38vw, 520px) auto; align-items: center; }
-.rp-index__visual { display: block; aspect-ratio: 4 / 3; overflow: hidden; border: 1px solid var(--hair); background: var(--paper-2); position: relative; }
+   decorative (aria-hidden). One frame for all three (2026-11-22): the same
+   square paper plate, hairline and inset, fixed to 16:10 so rows never shift
+   as images load and the queue and the phones read as one set. */
+.rp-index__row--visual { grid-template-columns: minmax(0, 1fr) clamp(240px, 38vw, 520px); align-items: center; }
+.rp-index__visual {
+  display: block; position: relative; box-sizing: border-box; aspect-ratio: 16 / 10; overflow: hidden;
+  padding: var(--tray-inset); border: 1px solid var(--hair); border-radius: var(--r-plate); background: var(--paper-2);
+}
 .rp-index__shot { display: block; width: 100%; height: 100%; }
 .rp-index__shot--cover { object-fit: cover; object-position: top center; transition: transform .3s ease; }
-.rp-index__shot--msk { position: relative; overflow: hidden; background: var(--paper); }
+.rp-index__shot--msk { position: relative; overflow: hidden; background: transparent; }
 /* R8 (2026-11-16): the static MSKJourney After track replaces the queue screen. */
-.rp-index__shot--msk { display: grid; place-items: center; padding: .7rem; box-sizing: border-box; }
+.rp-index__shot--msk { display: grid; place-items: center; padding: .7rem; box-sizing: border-box; border-radius: var(--r-control); }
 .rp-index__shot--msk .msk-journey--static { width: 100%; padding: 0; border: 0; background: none; pointer-events: none; }
 .rp-index__shot--msk .msk-journey--static .msk-journey__track { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .45rem; }
-.rp-index__shot--msk .msk-journey--static .msk-journey__track li { padding: 1.1rem .25rem .55rem; border-radius: 12px; }
+.rp-index__shot--msk .msk-journey--static .msk-journey__track li { padding: 1.1rem .25rem .55rem; border-radius: var(--r-plate); }
 .rp-index__shot--msk .msk-journey--static .msk-journey__icon { width: 34px; height: 34px; }
 .rp-index__shot--msk .msk-journey--static .msk-journey__track li > b { font-size: var(--ts-label); }
 /* 2026-11-17: the static LogisticsMoveMap (After) on the Home Logistics card. */
 .rp-index__shot--logistics .log-map--static { width: 100%; padding: 0; border: 0; background: none; box-shadow: none; pointer-events: none; }
 @media (min-width: 900px) {
-  .rp-index__visual:has(.rp-index__shot--msk) { aspect-ratio: 16 / 10; }
   .rp-index__shot--msk .msk-journey--static .msk-journey__track li { padding: 2.4rem .3rem 2rem; gap: .5rem; }
   .rp-index__shot--msk .msk-journey--static .msk-journey__icon { width: 46px; height: 46px; }
   .rp-index__shot--msk .msk-journey--static .msk-journey__track li > b { font-size: var(--ts-small); }
@@ -3952,8 +3960,8 @@ body:has(.riso-home) .riso-home .rp-index__n {
 .rp-index__shot--phones img { justify-self: center; width: auto; max-width: 100%; height: 100%; aspect-ratio: 390 / 844; min-height: 0; border-radius: 8px; object-fit: contain; border: 1px solid color-mix(in srgb, var(--ink) 32%, transparent); background: #080a15; }
 @media (hover: hover) { .rp-index__row:hover .rp-index__shot--cover { transform: scale(1.03); } }
 @media (max-width: 760px) {
-  .rp-index__row--visual { grid-template-columns: 2.25rem minmax(0, 1fr) auto; }
-  .rp-index__row--visual .rp-index__visual { grid-column: 2 / -1; grid-row: 2; margin-top: .5rem; max-width: none; }
+  .rp-index__row--visual { grid-template-columns: minmax(0, 1fr); }
+  .rp-index__row--visual .rp-index__visual { grid-column: 1 / -1; grid-row: 2; margin-top: .5rem; max-width: none; }
 }
 @media (prefers-reduced-motion: reduce) { .rp-index__shot--cover { transition: none; } }
 /* The "+" fold under the index: the open/close state reads as a plus/minus mark. */
@@ -3998,16 +4006,15 @@ body .riso-home .rp-hero .rp-clearing {
 .rp-more { margin: 1rem 0 0; }
 .rp-more > summary {
   display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; cursor: pointer; list-style: none;
-  color: var(--coral-text, var(--coral)); font-family: var(--shell-sans); font-size: var(--ts-small); font-weight: 600;
+  color: var(--ink); font-family: var(--shell-sans); font-size: var(--ts-small); font-weight: 600;
 }
-.dark-mode .rp-more > summary { color: var(--coral-on-dark, var(--coral)); }
 .rp-more > summary::-webkit-details-marker { display: none; }
 .rp-more > summary::after { content: "+"; font-size: 1.25rem; line-height: 1; }
 .rp-more[open] > summary::after { content: "−"; }
 .rp-more__open { display: none; }
 .rp-more[open] .rp-more__closed { display: none; }
 .rp-more[open] .rp-more__open { display: inline; }
-.rp-more > summary:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+.rp-more > summary:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 3px; }
 .rp-more__body { margin-top: .5rem; }
 .rp-more__body > :first-child { margin-top: 0; }
 
@@ -4031,9 +4038,18 @@ body .riso-home .rp-hero .rp-clearing {
    raising it here moves every .rp-section on these pages together. */
 .riso-home,
 .flagship-page {
-  --sp-xl: clamp(4rem, 9vw, 8rem);
+  --sp-xl: var(--sp-section-md);
   --rp-headline-gap: clamp(1.25rem, 2.4vw, 2rem);
 }
+/* Three-step rhythm (2026-11-22). Dark bands and the decision story are the
+   chapter changes, so they get the wide step; a section straight after an
+   opened-or-closed fold, and the closing contact section, take the tight one. */
+.flagship-page :is(.rp-override, .rp-outcomeStage, .fp-receipt),
+.flagship-page .rp-decisionStory { padding-block: var(--sp-section-lg); }
+.flagship-page .rp-deepDive + .rp-section,
+.flagship-page > .rp-section:has(+ .rp-next),
+.flagship-page .rp-resultLine { padding-block: var(--sp-section-sm); }
+
 .riso-home .rp-wrap > .rp-title + :not(details):not(.rp-more),
 .flagship-page .rp-wrap > .rp-title + :not(details):not(.rp-more),
 .flagship-page .rp-wrap > h2 + :not(details):not(.rp-more) {
@@ -4055,11 +4071,12 @@ body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-g
    Real phone screenshots at their true 390:844 shape inside a phone frame,
    crossfading slowly. The visual column narrows for phones; MSK keeps its
    desktop frame. */
-.rp-index__row--visual:has(.rp-phoneReel) { grid-template-columns: 3.5rem minmax(0, 1fr) clamp(240px, 38vw, 520px) auto; }
-.rp-index__visual:has(.rp-phoneReel) { aspect-ratio: auto; border: 0; background: transparent; overflow: visible; display: flex; justify-content: center; }
+/* The phone sits inside the same frame as the queue: full frame height, no
+   drop shadow, the plate radius rather than a device bezel. */
+.rp-index__visual:has(.rp-phoneReel) { display: flex; justify-content: center; }
 .rp-phoneReel {
-  width: 150px; border: 1px solid var(--hair); border-radius: 22px; overflow: hidden;
-  background: #0e140f; box-shadow: 0 18px 34px -18px rgba(0, 0, 0, .45);
+  height: 100%; width: auto; aspect-ratio: 390 / 844; border: 1px solid var(--hair); border-radius: var(--r-control); overflow: hidden;
+  background: #0e140f; box-shadow: none;
 }
 .rp-phoneReel__screen { position: relative; aspect-ratio: 390 / 844; overflow: hidden; }
 .rp-phoneReel__screen img {
@@ -4073,14 +4090,12 @@ body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-g
   min-height: 44px; padding: 0 .25rem; border: 0; background: none; cursor: pointer;
   color: var(--ink-2); font: 600 .9375rem/1 var(--sans); text-decoration: underline; text-underline-offset: 3px;
 }
-.rp-reelToggle:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
+.rp-reelToggle:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
 @media (max-width: 760px) {
-  .rp-index__row--visual:has(.rp-phoneReel) { grid-template-columns: 2.25rem minmax(0, 1fr) auto; }
-  .rp-index__row--visual .rp-index__visual:has(.rp-phoneReel) { max-width: none; justify-content: flex-start; }
-  .rp-index__row--visual .rp-phoneReel { width: 112px; border-radius: 18px; }
   .rp-index__row--visual .rp-index__visual { max-width: none; }
-  /* Five stops wrap to 3 + 2 on phones; tall enough that neither row crops. */
-  .rp-index__row--visual .rp-index__visual:has(.rp-index__shot--msk) { aspect-ratio: 7 / 6; }
+  /* Five stops wrap to 3 + 2 on phones; tall enough that neither row crops.
+     The phone rows share that shape so all three frames match. */
+  .rp-index__row--visual .rp-index__visual { aspect-ratio: 7 / 6; }
   .rp-index__shot--msk .msk-journey--static .msk-journey__track { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
@@ -4137,7 +4152,7 @@ body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-g
   color: var(--ink-2); font: 600 .9375rem/1.2 var(--sans); text-decoration: underline; text-underline-offset: 3px; box-shadow: none;
 }
 .rp-textLink:hover { color: var(--ink); }
-.rp-textLink:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
+.rp-textLink:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
 .rp-close .rp-hero__ctas { align-items: center; }
 
 /* ---------- Panel fixes (2026-11-09 design panel) ---------- */
@@ -4184,10 +4199,10 @@ body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-g
 /* With reduced motion the reels never move, so the pause control is hidden. */
 @media (prefers-reduced-motion: reduce) { .rp-reelToggle { display: none; } }
 
-/* Contrast: "Read more" and fold links on dark bands use the light coral
-   (rust on dark green measured 2.17:1). */
+/* "Read more" and fold links on dark bands take the stage ink (coral is no
+   longer a disclosure colour, 2026-11-22). */
 .rp-override .rp-more > summary, .rp-outcomeStage .rp-more > summary, .rp-cinema .rp-more > summary,
-.rp-override .rp-deepDive__state, .rp-outcomeStage .rp-deepDive__state { color: var(--coral-on-dark); }
+.rp-override .rp-deepDive__state, .rp-outcomeStage .rp-deepDive__state { color: var(--ink-on-dark); }
 /* Grove captions measured 3.84:1 and 4.06:1: darker ink at a readable size. */
 .rp-heroNote span { color: var(--coral-text); font-size: var(--ts-label); letter-spacing: 0; }
 .rp-decision__tag--new { color: var(--ink); }
@@ -4277,9 +4292,9 @@ body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-g
 .about-stage__controls { display: flex; align-items: center; gap: .15rem; padding: .3rem .45rem; border-radius: 999px;
   background: var(--glass-bg); border: 1px solid var(--glass-bd); box-shadow: var(--glass-sh); -webkit-backdrop-filter: blur(22px) saturate(1.7); backdrop-filter: blur(22px) saturate(1.7); }
 .about-stage__controls button { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--ink); cursor: pointer; }
-.about-stage__play { background: var(--ink) !important; color: var(--paper) !important; width: 40px !important; height: 40px !important; margin: 2px 4px 2px 0; }
+.about-stage__play { background: var(--ink) !important; color: var(--paper) !important; width: 44px !important; height: 44px !important; margin: 0 4px 0 0; }
 .about-stage__controls button:hover:not(.about-stage__play) { background: color-mix(in srgb, var(--ink) 9%, transparent); }
-.about-stage__controls button:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
+.about-stage__controls button:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
 .about-stage__rule { width: 1px; height: 22px; margin: 0 .3rem; background: color-mix(in srgb, var(--ink) 20%, transparent); }
 .about-stage__dots { display: inline-flex; align-items: center; gap: 6px; padding: 0 .35rem; }
 .about-stage__dots i { display: block; width: 7px; height: 7px; border-radius: 99px; background: color-mix(in srgb, var(--ink) 28%, transparent); }
@@ -4294,6 +4309,9 @@ body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-g
 .about-stage__cue { display: inline-block; position: relative; padding: 0 0 .08em; margin: 0; border: 0; border-radius: 3px; font: inherit; color: inherit;
   letter-spacing: inherit; cursor: pointer; background: linear-gradient(var(--coral), var(--coral)) left bottom / 100% 2px no-repeat; }
 .about-stage__cue:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+/* 44px touch target without moving the prose: the cue's hit area reaches
+   8px above and below the 28px word (2026-11-22, measured at 390). */
+.about-stage__cue::after { content: ""; position: absolute; inset: -8px -2px; }
 .about-stage__ch { display: inline-block; white-space: pre; }
 @media (prefers-reduced-motion: no-preference) {
   /* The headline uses the Home page's name motion: each word settles from a light weight to
@@ -4348,7 +4366,7 @@ body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-g
 .rp-device--video video { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; background: #20241c; }
 .rp-demoLoop__btn { min-height: 44px; padding: 0 1rem; border: 1px solid var(--ink); background: var(--paper); color: var(--ink); font: inherit; font-size: var(--ts-small); cursor: pointer; }
 .rp-demoLoop__btn:hover { background: var(--paper-2); }
-.rp-demoLoop__btn:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
+.rp-demoLoop__btn:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
 .flagship-page .rp-hero__media .rp-device.rp-device--video { height: auto; width: min(270px, 68vw); }
 .rp-split:not(:has(.rp-split__media)) { grid-template-columns: 1fr; }
 
@@ -4451,7 +4469,7 @@ html.cs-chrome .nav-dock__pill .nav-dock__track { flex: 0 0 auto; }
 @media (max-width: 760px), (orientation: landscape) and (max-width: 900px) and (max-height: 500px) {
   .fp-fan { --fan-w: 150px; --fan-spread: 82px; --fan-drop: .6rem; --fan-pad: 1.25rem; }
   .flagship-page--knowunity .fp-fan { --fan-spread: 92px; --fan-shift: 20px; }
-  .fp-capture { border-radius: 18px; }
+  .fp-capture { border-radius: var(--r-device); }
   .flagship-page .rp-hero__media.fp-heroArt--fan { min-height: 0; max-height: none; height: auto; padding: .5rem 1rem 1.5rem; }
 }
 
@@ -4531,10 +4549,12 @@ html.cs-chrome .nav-dock__pill .nav-dock__track { flex: 0 0 auto; }
   --disc-line-hover: var(--ink);
   --disc-rule: var(--hair);
   --disc-ink: var(--ink);
-  --disc-badge: var(--coral);
-  --disc-badge-ink: var(--disc-plate);
-  --disc-focus: var(--coral);
-  --disc-shadow: 0 1px 0 color-mix(in srgb, var(--ink) 14%, transparent), 0 6px 18px -12px color-mix(in srgb, var(--ink) 45%, transparent);
+  /* Ink badge, not coral (2026-11-22): coral is kept for the Next case study
+     band, primary actions and the before/problem mark. Flat plate, no shadow. */
+  --disc-badge: var(--ink);
+  --disc-badge-ink: var(--paper);
+  --disc-focus: var(--green);
+  --disc-shadow: none;
 }
 :is(.flagship-page, .spanish-riso-case) :is(.rp-override, .rp-outcomeStage, .rp-cinema),
 .dark-mode :is(.flagship-page, .spanish-riso-case) {
@@ -4544,10 +4564,10 @@ html.cs-chrome .nav-dock__pill .nav-dock__track { flex: 0 0 auto; }
   --disc-line-hover: var(--ink-on-dark);
   --disc-rule: color-mix(in srgb, var(--ink-on-dark) 22%, transparent);
   --disc-ink: var(--ink-on-dark);
-  --disc-badge: var(--coral-on-dark);
-  --disc-badge-ink: #14150e;
-  --disc-focus: var(--coral-on-dark);
-  --disc-shadow: 0 1px 0 color-mix(in srgb, black 30%, transparent);
+  --disc-badge: var(--ink-on-dark);
+  --disc-badge-ink: var(--forest);
+  --disc-focus: var(--mint-on-dark);
+  --disc-shadow: none;
 }
 
 /* The plate and its control, shared by all three. */
@@ -4710,12 +4730,13 @@ html.cs-chrome .nav-dock__pill .nav-dock__track { flex: 0 0 auto; }
   padding: calc(var(--tray-inset) + clamp(1rem, 2.5vw, 1.6rem));
   border: 0; border-radius: var(--r-tray); box-shadow: none; background: var(--tray-fill);
 }
+/* A step's own screen: just the tray's inset, the screen fills the rest. */
+:is(.flagship-page, .spanish-riso-case) .rp-decisionStory__pair .rp-decisionStory__visual { padding: var(--tray-inset); }
 :is(.flagship-page, .spanish-riso-case) .rp-decisionStory__visual::before {
   inset: var(--tray-inset); border-radius: var(--r-tray-media); opacity: 1;
   background:
     linear-gradient(color-mix(in srgb, var(--hair) 40%, transparent) 1px, transparent 1px) 0 0 / 28px 28px,
     linear-gradient(90deg, color-mix(in srgb, var(--hair) 40%, transparent) 1px, transparent 1px) 0 0 / 28px 28px,
-    radial-gradient(circle at 50% 40%, color-mix(in srgb, var(--green) 12%, transparent), transparent 48%),
     var(--tray-media);
 }
 
@@ -4827,10 +4848,14 @@ html.cs-chrome .nav-dock__pill .nav-dock__track { flex: 0 0 auto; }
     width: min(var(--rp-col-max), calc(var(--rp-content-left) - var(--rp-col-gap) - var(--rp-col-edge)));
     max-height: 70vh;
     overflow-y: auto;
-    border-left: 1px solid var(--hair);
     opacity: 0;
     pointer-events: none;
   }
+  /* The 1px line is drawn per row (label and each item, which stack with no
+     gap) rather than on the nav, so it can flip with its row over a dark
+     stage. Same line as before on paper. */
+  .rp-chapters .rp-chapters__label,
+  .rp-chapters__list li { border-left: 1px solid var(--hair); }
   .rp-chapters.is-shown { opacity: 1; pointer-events: auto; }
   .rp-chapters.is-past { opacity: 0; pointer-events: none; }
   .rp-chapters:has(:focus-visible) { opacity: 1; pointer-events: auto; }
@@ -4856,10 +4881,38 @@ html.cs-chrome .nav-dock__pill .nav-dock__track { flex: 0 0 auto; }
     color: var(--ink-2);
   }
   .rp-chapters a:hover { color: var(--ink); }
-  .rp-chapters a:focus-visible { outline: 3px solid var(--coral); outline-offset: -3px; }
-  /* Weight carries the state as well as color and the coral rule, so it
+  .rp-chapters a:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: -3px; }
+  /* Weight carries the state as well as color and the green rule, so it
      survives grayscale, forced colors, and color-vision differences. */
-  .rp-chapters a.is-active { color: var(--ink); font-weight: 700; border-left-color: var(--coral); }
+  .rp-chapters a.is-active { color: var(--ink); font-weight: 700; border-left-color: var(--green); }
+
+  /* Over a dark stage (2026-11-22). The column is fixed, so the --forest
+     bands scroll under it and the paper inks above vanish there (label
+     2.6:1, links 2:1, the active item 1.1:1). CaseStudyChapters tests what
+     is painted behind each row and marks it .is-on-dark; that row switches
+     to the fixed on-dark inks the bands themselves use. These do not flip
+     with the theme, so dark mode gets the same values over a band.
+     Measured on --forest in Chrome: label 9.0:1, links 11.2:1, active
+     14.9:1, mint rule 9.8:1 (re-measure before lowering an alpha). */
+  .rp-chapters .rp-chapters__label.is-on-dark,
+  .rp-chapters__list li.is-on-dark {
+    --focus-ring: var(--mint-on-dark);
+    --focus: var(--mint-on-dark);
+    border-left-color: color-mix(in srgb, var(--ink-on-dark) 24%, transparent);
+  }
+  .rp-chapters .rp-chapters__label.is-on-dark { color: color-mix(in srgb, var(--ink-on-dark) 76%, transparent); }
+  .rp-chapters__list li.is-on-dark a { color: color-mix(in srgb, var(--ink-on-dark) 86%, transparent); }
+  .rp-chapters__list li.is-on-dark a:hover,
+  .rp-chapters__list li.is-on-dark a.is-active { color: var(--ink-on-dark); }
+  .rp-chapters__list li.is-on-dark a.is-active { border-left-color: var(--mint-on-dark); }
+}
+/* Only a short color change as a band edge passes; no movement. */
+@media (min-width: 1420px) and (prefers-reduced-motion: no-preference) {
+  .rp-chapters .rp-chapters__label,
+  .rp-chapters__list li,
+  .rp-chapters__list a {
+    transition: color var(--dur-fast) var(--ease-soft), border-color var(--dur-fast) var(--ease-soft);
+  }
 }
 
 @media (max-width: 1419.98px) {
@@ -4931,7 +4984,7 @@ html.cs-chrome .nav-dock__pill .nav-dock__track { flex: 0 0 auto; }
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
   }
-  .rp-chapters__chip button:focus-visible { outline: 3px solid var(--coral); outline-offset: -4px; border-radius: 999px; }
+  .rp-chapters__chip button:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: -4px; border-radius: 999px; }
 
   /* The sheet: the same link list, opened above the chip. */
   .rp-chapters__list {
@@ -4972,7 +5025,7 @@ html.cs-chrome .nav-dock__pill .nav-dock__track { flex: 0 0 auto; }
   }
   .rp-chapters__list a:hover { background: var(--paper-2); }
   .rp-chapters__list a.is-active { background: var(--paper-2); }
-  .rp-chapters__list a:focus-visible { outline: 3px solid var(--coral); outline-offset: -3px; }
+  .rp-chapters__list a:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: -3px; }
 }
 /* Where the page has the right-edge rail, it already shows "NN% left" from
    901px up; the chip drops its copy there so the number is never on screen
@@ -4985,9 +5038,109 @@ html.cs-chrome .nav-dock__pill .nav-dock__track { flex: 0 0 auto; }
 }
 @media (forced-colors: active) {
   .rp-chapters__chip { border: 1px solid CanvasText; }
-  .rp-chapters a.is-active { forced-color-adjust: none; border-left-color: Highlight; }
+  .rp-chapters a.is-active,
+  .rp-chapters__list li.is-on-dark a.is-active { forced-color-adjust: none; border-left-color: Highlight; }
+  /* forced-color-adjust: none keeps the on-dark cream too; system ink
+     instead, so the active item never goes light-on-Canvas. */
+  .rp-chapters__list li.is-on-dark a.is-active { color: CanvasText; }
 }
 
-/* A close with no headline or sentence (Mobbin): only the email buttons, so the
-   section shrinks to the buttons instead of holding a full section's padding. */
-.rp-section:has(> .rp-close:not(:has(h2, p))) { padding-block: var(--sp-lg, 2rem); }
+
+/* ---------- Closing section: collage + one glass panel (2026-11-22, option B) ----------
+   The hero's painted collage (/riso/painted-cartography-01.jpg, passed in as
+   --collage-src from App.tsx, because the build cannot resolve an absolute
+   url() in a stylesheet) fills the whole closing section on every case study,
+   the Spanish pages and Home's #contact. One wide frosted panel sits on it,
+   centered: the heading, then "Email me", the address and Copy on one row.
+   The panel is the existing .rp-close wrapper, so the markup and tab order
+   are unchanged. Each page shows a different part of the painting
+   (--collage-crop). The collage is a background, so nothing is announced. */
+.riso-page {
+  --close-pad: clamp(3.5rem, 10vw, 7.5rem);
+  /* 82%, not the mockup's 78%: at 78% the quieter --ink-2 text (the résumé
+     link, the Spanish sentence) would fall to ~4.4:1 over the darkest
+     unblurred patch of the painting; at 82% the floor is ~4.8:1. */
+  --close-glass: color-mix(in srgb, var(--paper) 82%, transparent);
+  --close-veil: transparent;
+  --close-edge: color-mix(in srgb, var(--paper) 60%, transparent);
+  --close-lift: color-mix(in srgb, var(--paper) 70%, transparent);
+  --collage-crop: 60% 70%;
+}
+/* Dark: a paper veil darkens the painting, and the panel's edge and top
+   highlight come from the light ink instead of the (now dark) paper. */
+.dark-mode .riso-page {
+  --close-veil: color-mix(in srgb, var(--paper) 50%, transparent);
+  --close-edge: color-mix(in srgb, var(--ink) 18%, transparent);
+  --close-lift: color-mix(in srgb, var(--ink) 14%, transparent);
+}
+.flagship-page--msk { --collage-crop: 55% 82%; }
+.flagship-page--uxwoman { --collage-crop: 100% 62%; }
+.flagship-page--knowunity { --collage-crop: 12% 100%; }
+.flagship-page--logistics { --collage-crop: 100% 8%; }
+.flagship-page--grove { --collage-crop: 72% 46%; }
+.riso-home { --collage-crop: 38% 92%; }
+.spanish-riso-case { --collage-crop: 40% 30%; }
+
+.riso-page .rp-section:has(> .rp-close) {
+  padding-block: var(--close-pad);
+  border-top: 1px solid var(--ink);
+  border-bottom: 0;
+  background-color: var(--paper-2);
+  background-image: linear-gradient(var(--close-veil), var(--close-veil)), var(--collage-src);
+  background-repeat: no-repeat;
+  background-position: center, var(--collage-crop);
+  background-size: cover, max(150%, 1400px) auto;
+}
+.riso-page .rp-section > .rp-close {
+  width: min(780px, 100% - 2 * var(--sp-gutter));
+  max-width: none;
+  margin-inline: auto;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+  gap: 1rem;
+  text-align: center;
+  background: var(--close-glass);
+  -webkit-backdrop-filter: blur(18px) saturate(1.5);
+  backdrop-filter: blur(18px) saturate(1.5);
+  border: 1px solid var(--close-edge);
+  box-shadow: inset 0 1px 0 var(--close-lift);
+  border-radius: var(--r-plate);
+}
+/* Heading, sentence and the Logistics disclosure each take a full row; the
+   actions share the row under them. */
+.riso-page .rp-section > .rp-close > :is(h2, p, .rp-more) { flex: 0 0 100%; margin: 0; }
+.riso-page .rp-section > .rp-close > h2 { margin-bottom: .4rem; }
+.riso-page .rp-section > .rp-close > p { margin-inline: auto; max-width: 52ch; }
+.riso-page .rp-section > .rp-close > .rp-more > .rp-more__body { text-align: left; }
+.riso-page .rp-section > .rp-close > .rp-cta,
+.riso-page .rp-section > .rp-close > .rp-copyEmail,
+.riso-page .rp-section > .rp-close > .rp-hero__ctas { margin: 0 !important; }
+.riso-page .rp-section > .rp-close > .rp-hero__ctas { flex: 0 0 100%; justify-content: center; align-items: center; gap: .8rem 1rem; }
+.riso-page .rp-section > .rp-close .rp-copyEmail { justify-content: center; }
+.riso-page .rp-section > .rp-close .rp-cta { border-radius: var(--r-control); }
+.riso-page .rp-section > .rp-close .rp-copyEmail__button { border-radius: var(--r-control); }
+
+/* No frosting: a browser without backdrop-filter, or a reader who asked for
+   less transparency, gets a solid paper panel. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .riso-page .rp-section > .rp-close { background: var(--paper); }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .riso-page .rp-section > .rp-close {
+    background: var(--paper);
+    -webkit-backdrop-filter: none; backdrop-filter: none;
+  }
+}
+/* Forced colors: no painting, a plain bordered panel in system colors. */
+@media (forced-colors: active) {
+  .riso-page .rp-section:has(> .rp-close) { background-image: none; }
+  .riso-page .rp-section > .rp-close {
+    background: Canvas; color: CanvasText;
+    -webkit-backdrop-filter: none; backdrop-filter: none;
+    border-color: CanvasText; box-shadow: none;
+  }
+}
+
+/* A close with no headline or sentence (Mobbin, unlisted): only the email
+   buttons, so the section shrinks to the buttons. */
+.riso-page .rp-section:has(> .rp-close:not(:has(h2, p))) { padding-block: var(--sp-lg, 2rem); }

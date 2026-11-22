@@ -183,7 +183,7 @@ export default function FlagshipUxWoman() {
 
       <section className="rp-section" id="uxwoman-research" data-language-anchor="uxwoman-research" data-evidence="true">
         <div className="rp-wrap">
-          <h2 className="rp-title">I heard six themes.</h2>
+          <h2 className="rp-title">Six themes came out of the interviews.</h2>
           {/* Hillary's own line linking the themes to the guide (2026-11-16, R7). */}
           <p className="rp-lede">While learning about denials and prior authorizations (when insurance has to approve care first), I saw that some Medicaid rule changes could leave patients without coverage within the next year. I want to help the staff who guide patients through those changes.</p>
           {/* Interview-sourced human line (Better Stories pass, 2026-11-10); moved here from the hero 2026-11-17. */}
@@ -228,7 +228,7 @@ export default function FlagshipUxWoman() {
 
       <section className="rp-section" id="uxwoman-guide" data-language-anchor="uxwoman-guide" data-evidence="true">
         <div className="rp-wrap">
-          <h2 className="rp-title">The guide.</h2>
+          <h2 className="rp-title">The guide I made.</h2>
           <div className="fp-guideScreens rp-reveal">
             {GUIDE_SCREENS.map((screen) => (
               <figure key={screen.src}>

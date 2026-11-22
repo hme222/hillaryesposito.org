@@ -5,8 +5,8 @@
 /* One skin (2026-11-09): every case uses the base riso palette; the MSK and
    Mobbin brand-mirror palettes were removed in the consistency pass. */
 .flagship-page {
-  --fp-deep: #19321f;
-  --fp-deep-2: #102115;
+  --fp-deep: var(--forest);
+  --fp-deep-2: var(--forest);
   --fp-light: var(--ink-on-dark);
 }
 
@@ -34,7 +34,7 @@
 .fp-heroArt::before { content: ""; position: absolute; inset: 8% 4%; z-index: -1; border-radius: 50%;
   background: radial-gradient(circle,color-mix(in srgb,var(--green) 18%,transparent),transparent 66%); }
 .fp-artifactLabel { position: absolute; z-index: 4; max-width: 250px; padding: .7rem .8rem; border: 1px solid var(--hair);
-  border-left: 3px solid var(--coral); border-radius: 3px 8px 8px 3px; background: color-mix(in srgb,var(--paper) 94%,transparent);
+  border-left: 3px solid var(--ink); border-radius: var(--r-plate); background: color-mix(in srgb,var(--paper) 94%,transparent);
   box-shadow: 0 14px 32px -20px rgba(0,0,0,.45); }
 /* The coral rule on the left carries the accent; the label itself is ink so it
    reads over the hero art (coral at .54rem measured under 4.5:1). */
@@ -55,7 +55,7 @@
    mid-row and took the glossary and the rule line with it — the reader was
    told about a rule the artifact no longer showed. */
 .fp-dashboardFrame { position: relative; z-index: 2; width: min(560px,84%); overflow: hidden;
-  border: 1px solid color-mix(in srgb,var(--green) 28%,var(--hair)); border-radius: 18px;
+  border: 1px solid color-mix(in srgb,var(--green) 28%,var(--hair)); border-radius: var(--r-plate);
   background: color-mix(in srgb,var(--paper) 90%,white); box-shadow: 0 34px 70px -34px rgba(0,0,0,.55); }
 .fp-dashboardFrame > * { max-width: 100%; }
 /* Fills its column. At the old min(520px,92%) the column was only 436px wide,
@@ -87,11 +87,7 @@
   box-shadow: none;
 }
 
-.fp-cinema { background: var(--fp-deep); }
-.fp-cinema .rp-cinema__wash { background:
-  radial-gradient(circle at 16% 20%,color-mix(in srgb,var(--coral) 26%,transparent),transparent 25%),
-  radial-gradient(circle at 78% 38%,color-mix(in srgb,var(--green) 34%,transparent),transparent 27%),
-  linear-gradient(135deg,var(--fp-deep),var(--fp-deep-2)); }
+.fp-cinema { background: var(--forest); }
 .fp-cinemaCore { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; gap: var(--sp-sm);
   width: min(940px,76vw); min-height: 260px; color: var(--fp-light); }
 .fp-cinemaCore--workflow > div { width: min(330px,30vw); padding: 1.2rem; border: 1px solid color-mix(in srgb, var(--ink-on-dark) 24%, transparent); border-radius: var(--r-plate);
@@ -118,7 +114,7 @@
 /* Text-only problem band (queue screen retired 2026-11-15): one column. */
 .fp-receipt__layout--text, .fp-receipt__layout.fp-receipt__layout--text { grid-template-columns: minmax(0, 1fr); }
 .fp-receipt__layout--text .fp-receipt__copy { max-width: 46rem; }
-.fp-receipt__copy .rp-kicker { color: var(--coral-on-dark); }
+.fp-receipt__copy .rp-kicker { color: var(--mint-on-dark); }
 .fp-receipt__copy h2,
 .fp-indexLens__copy h2 {
   max-width: 16ch;
@@ -165,9 +161,9 @@
   letter-spacing: .035em;
   cursor: pointer;
 }
-.fp-proofControl span { display: inline-block; margin-left: .25rem; color: var(--coral); transition: transform 180ms ease; }
+.fp-proofControl span { display: inline-block; margin-left: .25rem; color: var(--ink); transition: transform 180ms ease; }
 .fp-proofControl:hover span { transform: translateX(3px); }
-.fp-proofControl:focus-visible { outline: 3px solid var(--coral); outline-offset: 5px; }
+.fp-proofControl:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 5px; }
 .fp-proofStatus {
   position: absolute;
   width: 1px;
@@ -317,7 +313,7 @@
 .fp-mapWrap > ol li { padding: .55rem; border: 1px solid color-mix(in srgb, var(--ink-on-dark) 20%, transparent); border-radius: var(--r-plate); font: .62rem/1.3 var(--label); text-align: center; }
 .fp-mapFallback { min-height: 260px; display: grid; place-items: center; border: 1px solid color-mix(in srgb, var(--ink-on-dark) 20%, transparent); }
 .fp-proofLink { display: grid; gap: .2rem; max-width: 620px; min-height: 72px; margin-top: 2rem; padding: 1rem 1.1rem;
-  border: 1px solid var(--hair); border-left: 4px solid var(--coral); border-radius: var(--r-plate); color: var(--ink); text-decoration: none; }
+  border: 1px solid var(--hair); border-left: 4px solid var(--ink); border-radius: var(--r-plate); color: var(--ink); text-decoration: none; }
 .fp-proofLink span { font: .6rem/1.2 var(--label); letter-spacing: .08em; color: var(--coral-text); text-transform: uppercase; }
 
 /* Service design + process improvement — the discipline behind the MSK work,
@@ -361,7 +357,7 @@
   min-height: 44px; list-style: none; cursor: pointer;
   font: .6rem/1.2 var(--label); letter-spacing: .08em; text-transform: uppercase; color: var(--mint-on-dark); }
 .fp-roleRail__method summary::-webkit-details-marker { display: none; }
-.fp-roleRail__method summary:focus-visible { outline: 3px solid var(--coral-on-dark); outline-offset: 3px; }
+.fp-roleRail__method summary:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 3px; }
 .fp-roleRail__method summary:hover .fp-roleRail__summaryLabel { text-decoration: underline; }
 .fp-roleRail__chev { width: 7px; height: 7px; border-right: 1.5px solid currentColor;
   border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg);
@@ -432,12 +428,12 @@
 .fp-knowunityMockNote { max-width: 62ch; margin: 1rem 0 0; color: var(--muted); font-size: var(--ts-small); line-height: 1.5; }
 .fp-workSplit { display: grid; grid-template-columns: .75fr 1.25fr; gap: 1rem; margin-top: 2rem; }
 .fp-workSplit article { padding: 1.4rem; border: 1px solid var(--hair); border-radius: var(--r-plate); background: var(--paper); }
-.fp-workSplit article:last-child { border-left: 4px solid var(--coral); }
-.fp-workSplit span { font: var(--rp-type-floor)/1.25 var(--label); letter-spacing: .08em; color: var(--coral-text); text-transform: uppercase; }
+.fp-workSplit article:last-child { border-left: 4px solid var(--ink); }
+.fp-workSplit span { font: var(--rp-type-floor)/1.25 var(--label); letter-spacing: .08em; color: var(--green); text-transform: uppercase; }
 /* --coral flips with the site theme, but .rp-override's background is pinned
    dark in both themes. Labels inside it must use the fixed override accent or
    they render at 2.46:1 in light mode. */
-.rp-override .fp-workSplit span { color: var(--coral-on-dark); }
+.rp-override .fp-workSplit span { color: var(--mint-on-dark); }
 .fp-workSplit h3 { margin: .5rem 0 0; font-size: var(--ts-lead); }
 .fp-workSplit p { margin-top: .5rem; color: var(--muted); }
 
@@ -458,7 +454,7 @@
 .fp-sequence__phone--stack img.is-on { opacity: 1; }
 .fp-sequence__copy h3 { margin: .45rem 0 0; font-size: var(--ts-title); line-height: 1.05; }
 /* Coral on the tinted sequence panel measured 4.27:1; the darker small-text coral clears it. */
-.fp-sequence__copy .rp-kicker { color: var(--coral-text); }
+.fp-sequence__copy .rp-kicker { color: var(--green); }
 .fp-sequence__copy > p:last-child { margin-top: .75rem; max-width: 44ch; color: var(--ink-2); }
 .fp-sequence__controls { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1rem; margin-top: .7rem; border-top: 1px solid var(--hair); }
 .fp-sequence__controls button { min-height: 44px; border: 0; background: transparent; color: var(--ink); font: .66rem/1 var(--label); text-transform: uppercase; cursor: pointer; }
@@ -472,15 +468,8 @@
 .fp-sequence__dots button.is-active { border-color: var(--ink); background: var(--ink); color: var(--paper); }
 
 
-/* background-color + background-image, not the shorthand: the solid colour is
-   what contrast tooling reads (see .rp-outcomeStage in riso-page.css). */
-.flagship-page--msk .rp-outcomeStage { background-color: var(--fp-deep); background-image:
-  radial-gradient(circle at 78% 24%,rgba(201,88,67,.2),transparent 25%),
-  repeating-linear-gradient(90deg,transparent 0 76px,color-mix(in srgb, var(--ink-on-dark) 3.5%, transparent) 77px 78px),
-  linear-gradient(135deg,#234b44,#102b27 74%); }
-/* MSK's teal stage is lighter where the kicker sits: --coral-on-dark measured
-   3.99:1 on #234b44 and 3.57:1 inside the coral glow. The stage's own light
-   ink holds above 4.5:1 across the whole gradient. */
+/* MSK's outcomes stage is the shared flat --forest (riso-page.css); its own
+   teal gradient, glow and stripes were removed 2026-11-22. */
 .flagship-page--msk .rp-outcomeStage .rp-kicker { color: var(--ink-on-dark); }
 /* MSK's outcomes ride the shared section rhythm (--sp-xl) instead of a 74vh
    floor, which left an empty band around four tiles. */
@@ -585,7 +574,7 @@
 .fp-blueprint__switch button + button { border-left: 1px solid var(--hair); }
 .fp-blueprint__switch button:hover { background: color-mix(in srgb, var(--coral) 8%, transparent); }
 .fp-blueprint__switch button.is-active { background: var(--ink); color: var(--paper); }
-.fp-blueprint__switch button:focus-visible { outline: 3px solid var(--coral); outline-offset: -3px; }
+.fp-blueprint__switch button:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: -3px; }
 .fp-blueprint__status { flex: 1 1 16rem; margin: 0; font-size: var(--ts-small); line-height: 1.5; color: var(--ink-2); }
 
 /* An intentional sideways scroller below 620px: the thin themed scrollbar
@@ -595,7 +584,7 @@
    1 px per unit: 13-unit labels stay at 13 px and a phone scrolls instead
    (type audit 2026-11-19; they measured 5.9 px at 390 before). */
 .fp-blueprint__canvas svg { display: block; overflow: visible; font-family: var(--label); }
-.fp-blueprint__canvas:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+.fp-blueprint__canvas:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 3px; }
 .fp-blueprint { container-type: inline-size; }
 .fp-blueprint__swipe { display: none; margin: 0 0 .5rem; font: var(--ts-label)/1.3 var(--label); color: var(--ink-2); }
 @container (max-width: 939px) { .fp-blueprint__swipe { display: block; } }
@@ -1043,7 +1032,7 @@
   border: 1px solid var(--disc-line); border-left: 3px solid var(--green); border-radius: var(--r-plate);
   background: var(--disc-plate); color: var(--ink);
 }
-.flagship-page--msk .rp-decisionStory__track { margin-top: clamp(2rem, 4vw, 3rem); }
+.flagship-page--msk .rp-decisionStory__panel { margin-top: clamp(2rem, 4vw, 3rem); }
 .flagship-page--msk .rp-decisionStory__panel {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(1.5rem, 3vw, 2.5rem);
 }
@@ -1136,20 +1125,17 @@
   .flagship-page--msk #msk-sustainment .fp-proofLink:hover { background: var(--disc-plate-hover); }
   .flagship-page--msk #msk-sustainment .fp-proofLink:hover b { text-decoration-thickness: 2px; }
 }
-.flagship-page--msk #msk-sustainment .fp-proofLink:focus-visible { outline: 3px solid var(--coral); outline-offset: -3px; }
+.flagship-page--msk #msk-sustainment .fp-proofLink:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: -3px; }
 @media (max-width: 640px) {
   .flagship-page--msk #msk-sustainment :is(.rp-note, .fp-survived li, .fp-proofLink) { grid-template-columns: minmax(0, 1fr); }
 }
 
-/* Outcome tiles: more frost. A deeper tinted glass with a real blur, separate
-   tiles, and the label and tag inks raised; measured 2026-11-20. */
+/* Outcome tiles: flat paper-on-forest plates. The frosted glass went with
+   the gradient it was frosting (2026-11-22). */
 .flagship-page--msk .rp-outcomeStage .rp-outcomes { gap: .75rem; border: 0; }
 .flagship-page--msk .rp-outcomeStage .rp-outcomes .rp-stat {
   border: 1px solid color-mix(in srgb, var(--ink-on-dark) 48%, transparent); border-radius: var(--r-plate);
-  background:
-    linear-gradient(color-mix(in srgb, var(--ink-on-dark) 9%, transparent), color-mix(in srgb, var(--ink-on-dark) 9%, transparent)),
-    color-mix(in srgb, var(--fp-deep-2) 66%, transparent);
-  -webkit-backdrop-filter: blur(14px) saturate(1.1); backdrop-filter: blur(14px) saturate(1.1);
+  background: color-mix(in srgb, var(--ink-on-dark) 7%, var(--forest));
 }
 .flagship-page--msk .rp-outcomeStage .rp-stat__l { color: color-mix(in srgb, var(--ink-on-dark) 94%, transparent); }
 .flagship-page--msk .rp-outcomeStage .rp-stat__tag { color: color-mix(in srgb, var(--ink-on-dark) 86%, transparent); }
@@ -1187,7 +1173,7 @@
   background: var(--tray-fill);
   scrollbar-color: color-mix(in srgb, var(--ink) 45%, transparent) transparent;
 }
-.flagship-page .fp-blueprint__canvas:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+.flagship-page .fp-blueprint__canvas:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 3px; }
 /* The media surface: the svg itself carries the paper, the 6px corners and
    its own inset, so the lane bands stop short of the tray's edge the way a
    screenshot does. content-box keeps the inline min-width = viewBox width
@@ -1292,3 +1278,7 @@
 .rp-override .fp-constraintAnnotations dt { color: var(--mint-on-dark); }
 .rp-override .fp-constraintAnnotations dd { color: color-mix(in srgb, var(--ink-on-dark) 86%, transparent); }
 .rp-override .fp-constraintAnnotations { border-top-color: color-mix(in srgb, var(--ink-on-dark) 30%, transparent); }
+
+/* Whose seat the blueprint is drawn from: a quiet caption under the tray, same
+   italic muted treatment as the other figure captions. */
+.fp-blueprint__seat { margin: .75rem 0 0; font-style: italic; font-size: var(--ts-small, .9rem); line-height: 1.7; color: var(--ink-2); text-align: center; }

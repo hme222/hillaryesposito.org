@@ -29,19 +29,28 @@
   --sp-xl: clamp(3rem, 7vw, 5.5rem);     /* standard section padding-block */
   --sp-2xl: clamp(4rem, 8vw, 7rem);
   --sp-3xl: clamp(5rem, 10vw, 9rem);     /* major breaks between movements */
+  /* Section rhythm in three steps (2026-11-22), replacing one uniform 128px
+     on every section: tight after a fold or before the close, standard
+     between sections, and wide around the dark bands that change chapter. */
+  --sp-section-sm: clamp(2.5rem, 5vw, 4rem);    /* 64px at 1440 */
+  --sp-section-md: clamp(3.5rem, 7vw, 6rem);    /* 96px */
+  --sp-section-lg: clamp(4.5rem, 11vw, 10rem);  /* 160px */
 
   /* Radius. The stated rule is square plates, with radius reserved for literal
      device hardware. Four values were doing "near-square plate" and six were
      doing "phone frame". Circles and genuine status pills stay as-is. */
+  /* One shape language (2026-11-22): square-ish paper for every content
+     surface (0 to --r-plate), and 999px pills only for nav and controls.
+     The stray 12/16/20/22/28px corners collapsed into these. --r-device was
+     28px phone bezels; phones now sit as screens on the same paper. */
   --r-plate: 4px;
   --r-control: 3px;
-  --r-device: 28px;
+  --r-device: var(--r-plate);
   /* Figure tray (2026-11-20, from shapeof.ai's Examples grid): case-study
      figures sit in a soft tinted tray, the media inset by --tray-inset so the
-     tray reads as a frame. The one place plates are allowed real corners:
-     the tray is a mount, not a product surface. */
-  --r-tray: 12px;
-  --r-tray-media: 6px;
+     tray reads as a frame. Same plate corners as everything else now. */
+  --r-tray: var(--r-plate);
+  --r-tray-media: 2px;
   --tray-inset: 8px;
   --tray-gap: 1.5rem;
 
@@ -58,7 +67,12 @@
   --ts-label: .8125rem;
   --ts-small: .9375rem;
   --ts-body: 1rem;
+  --ts-read: 1.0625rem;  /* case-study reading text: 17px, capped at --measure-read */
+  --measure-read: 68ch;
   --ts-lead: 1.125rem;
+  /* The one result sentence under a case-study hero. Sits below the H1 (52px)
+     and the section H2 (--ts-h2, 34px) so the three never read as peers. */
+  --ts-result: clamp(1.25rem, 2vw, 1.75rem);
   --ts-pull: clamp(1.25rem, 2.4vw, 1.75rem);   /* one-line human line under a hero */
   --pull-gap: 1.4rem;        /* space above the human line */
   --pull-indent: .9rem;      /* text inset from its coral rule */
@@ -67,7 +81,7 @@
   --pull-leading: 1.15;
   --pull-tracking: -.015em;
   --ts-h1-about: clamp(1.9rem, 3.7vw, 2.6rem); /* About's h1 sits in a card; larger than --ts-h2 */
-  --ts-h2: clamp(1.6rem, 3.2vw, 2.1rem);       /* section h2: clearly below a hero h1 (was --ts-title, which tied with the About h1) */
+  --ts-h2: clamp(1.3rem, 1rem + 1.6vw, 2.1rem); /* section h2: clearly below a hero h1 at every width (34px at 1440, 22px at 390; was 1.6rem min, which outranked the phone H1) */
   --ts-title: clamp(1.6rem, 4vw, 2.5rem);      /* section and item titles */
   --ts-heading: clamp(1.35rem, 3vw, 2.1rem);   /* card and step headings */
   --ts-stat: clamp(1.8rem, 4vw, 2.6rem);       /* numeric display */
@@ -94,6 +108,16 @@
      color.semantic.fixed.mint-on-dark / ink-on-dark. */
   --mint-on-dark: #a9d28f;
   --ink-on-dark: #f4f1e6;
+  /* The one dark band colour (2026-11-22). Every fixed dark stage (.rp-override,
+     .rp-cinema, .rp-outcomeStage, .fp-receipt) was its own green or gradient
+     (#17321b, #192619, #19321f, #1c3520→#152717, MSK's teal #234b44→#102b27),
+     several with a radial glow and drawn contour rings. Now one flat ink-green.
+     It is darker than all of them, so every *-on-dark ink above gains contrast.
+     Exported as color.semantic.fixed.forest. */
+  --forest: #102115;
+  /* One focus ring (2026-11-22): the site green, not --olive-2 (#5a7a2e) or
+     coral. Dark stages switch it to the mint ink so it still reads (below). */
+  --focus-ring: var(--shell-green);
   --shell-display: "Bricolage Grotesque", "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   --shell-sans: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   --shell-label: var(--shell-sans);
@@ -114,6 +138,13 @@
   --shell-green: #7cb069;
   --on-coral: #14150e;
   --on-green: #14150e;
+}
+
+/* Focus on the fixed dark stages: mint-on-dark, 9:1 on --forest. App.css's
+   global ring reads --focus (with !important), so both names flip here. */
+:is(.rp-override, .rp-outcomeStage, .rp-cinema, .fp-receipt, .rp-openingFilm, .site-footer__base) {
+  --focus-ring: var(--mint-on-dark);
+  --focus: var(--mint-on-dark);
 }
 
 .app {
@@ -573,3 +604,7 @@ html[lang="es"] .riso-home .rp-h1Fit { --h1-w100: 1116; }
   font-size: var(--ts-label);
   letter-spacing: 0.08em;
 }
+
+/* A compact footer with an authored close above it holds only the base row, so
+   its empty paper-2 top padding showed as a stray strip under "Next case study". */
+.site-footer--compact { padding-top: 0; }

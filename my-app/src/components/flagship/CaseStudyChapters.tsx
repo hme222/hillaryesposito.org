@@ -8,6 +8,43 @@ export type CaseStudyChapter = {
 };
 
 /**
+ * Every fixed dark stage the wide chapter column can scroll over: the flat
+ * --forest bands (the same list portfolio-cohesion.css switches the focus
+ * ring for), plus an opt-in hook for any future dark band.
+ */
+export const DARK_SURFACE_SELECTOR =
+  '.rp-override, .rp-outcomeStage, .rp-cinema, .fp-cinema, .fp-receipt, .rp-openingFilm, .site-footer__base, [data-surface="dark"]';
+
+/** The column layout's breakpoint (riso-page.css, "Chapter nav"). */
+const COLUMN_QUERY = "(min-width: 1420px)";
+
+/**
+ * Is a dark stage what's painted behind this point? Walks the paint stack
+ * under the point, skipping the chapter nav itself: the first dark stage
+ * wins, and the first other opaque background decides. Inside a stage, a
+ * dark fill (a stage's own wash layer) still counts as dark and a light one
+ * (a card or plate on the band) does not; outside one, any opaque fill (the
+ * page paper, in either theme) means "not dark".
+ */
+export function isOverDarkSurface(x: number, y: number, ignore: Element | null): boolean {
+  if (typeof document.elementsFromPoint !== "function") return false;
+  for (const el of document.elementsFromPoint(x, y)) {
+    if (ignore && ignore.contains(el)) continue;
+    if (el.matches(DARK_SURFACE_SELECTOR)) return true;
+    // rgb()/rgba() give 0–255 channels; color-mix() results serialize as
+    // color(srgb r g b / a) with 0–1 channels. A fourth number is the alpha.
+    const fill = window.getComputedStyle(el).backgroundColor;
+    const scale = fill.startsWith("color(") ? 255 : 1;
+    const channels = (fill.match(/[\d.]+/g) || []).map(Number);
+    const [r = 0, g = 0, b = 0, alpha] = channels;
+    if (channels.length < 3 || (alpha !== undefined && alpha < 0.5)) continue;
+    const luma = (0.2126 * r + 0.7152 * g + 0.0722 * b) * scale;
+    return !!el.closest(DARK_SURFACE_SELECTOR) && luma < 96;
+  }
+  return false;
+}
+
+/**
  * Chapter wayfinding for the long case studies.
  *
  * Fixed and self-highlighting on purpose. These pages run long enough that a
@@ -25,6 +62,10 @@ export type CaseStudyChapter = {
  * Active tracking uses the reference-line approach from Navbar rather than an
  * IntersectionObserver threshold: sections here are routinely taller than the
  * viewport, so "30% visible" never becomes true for the tall ones.
+ *
+ * The wide column is fixed, so the dark --forest stages scroll under it. The
+ * same rAF-throttled pass marks each row that has a dark stage behind it
+ * (.is-on-dark) and the CSS switches that row to the on-dark inks.
  */
 /**
  * @status: stable
@@ -61,6 +102,10 @@ export default function CaseStudyChapters({
   const [past, setPast] = useState(false);
   const [open, setOpen] = useState(false);
   const [announce, setAnnounce] = useState("");
+  // Wide column only: which rows sit over a dark stage, one "1"/"0" per row
+  // (the label, then each link), so a band edge crossing the column flips
+  // only the rows it covers. "" when none / not the column layout.
+  const [onDark, setOnDark] = useState("");
   const left = useReadingLeft();
   const listId = useId();
   const navRef = useRef<HTMLElement>(null);
@@ -84,6 +129,21 @@ export default function CaseStudyChapters({
       setShown(!hero || hero.getBoundingClientRect().bottom <= window.innerHeight * 0.24);
       const container = navRef.current?.parentElement;
       setPast(!!container && container.getBoundingClientRect().bottom < window.innerHeight - 8);
+      // Each row is tested at its own center against what's painted under it.
+      const nav = navRef.current;
+      let rows = "";
+      if (nav && window.matchMedia?.(COLUMN_QUERY).matches) {
+        const items = [nav.querySelector(".rp-chapters__label"), ...Array.from(nav.querySelectorAll(".rp-chapters__list > li"))];
+        rows = items
+          .map((item) => {
+            const box = item?.getBoundingClientRect();
+            if (!box || box.height === 0) return "0";
+            return isOverDarkSurface(box.left + box.width / 2, box.top + box.height / 2, nav) ? "1" : "0";
+          })
+          .join("");
+        if (!rows.includes("1")) rows = "";
+      }
+      setOnDark(rows);
       if (Date.now() < activeLockUntil.current) return;
       const line = Math.min(240, window.innerHeight * 0.3);
       let currentId = "";
@@ -222,15 +282,16 @@ export default function CaseStudyChapters({
     setAnnounce(chapter.label);
   };
 
-  const positionLine = current ? `${index + 1} ${ofLabel} ${linked.length}` : "";
+  const rowDark = (row: number) => onDark[row] === "1";
+  const positionLine = current ?`${index + 1} ${ofLabel} ${linked.length}` : "";
 
   return (
     <nav
       ref={navRef}
-      className={`rp-chapters${shown ? " is-shown" : ""}${past ? " is-past" : ""}${open ? " is-open" : ""}`}
+      className={`rp-chapters${shown ? " is-shown" : ""}${past ? " is-past" : ""}${open ? " is-open" : ""}${onDark ? " is-on-dark" : ""}`}
       aria-label={ariaLabel || `${project} case study chapters`}
     >
-      <p className="rp-chapters__label">{jumpLabel}</p>
+      <p className={`rp-chapters__label${rowDark(0) ? " is-on-dark" : ""}`}>{jumpLabel}</p>
 
       <div className="rp-chapters__chip">
         <button
@@ -273,8 +334,8 @@ export default function CaseStudyChapters({
       </div>
 
       <ol className="rp-chapters__list" id={listId}>
-        {linked.map((chapter) => (
-          <li key={chapter.id}>
+        {linked.map((chapter, i) => (
+          <li key={chapter.id} className={rowDark(i + 1) ? "is-on-dark" : undefined}>
             <a
               href={`#${chapter.id}`}
               onClick={(event) => onLink(event, chapter)}

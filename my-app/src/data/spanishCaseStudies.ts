@@ -83,7 +83,7 @@ export const MSK_ES: SpanishCaseStudyData = {
   title: "Proyecto de diseño de servicios para Memorial Sloan\u00a0Kettering Cancer\u00a0Center",
   breadcrumb: "Memorial Sloan Kettering",
   meta: "Memorial Sloan Kettering · diseño de servicios",
-  resultLine: { eyebrow: "Lo que cambió", text: "Seis pasos se volvieron cinco." },
+  resultLine: { eyebrow: "Lo que cambió", text: "El personal ya no espera un escaneo." },
   intro:
     "Como coordinadora de oficina, mapeé cómo los mensajes del portal de pacientes pasaban por cuatro áreas. No se guardaban en la historia clínica electrónica del paciente (EMR, por sus siglas en inglés), así que los imprimíamos y esperábamos al equipo de escaneo. Propuse un botón Enviar al EMR para archivarlos directo. Los equipos de tecnología de la información (TI) y de experiencia de usuario (UX) del hospital construyeron la versión real.",
   stats: [
@@ -108,7 +108,7 @@ export const MSK_ES: SpanishCaseStudyData = {
       eyebrow: "Así que conté los pasos",
       title: "Dibujé un mapa que las cuatro áreas podían ver.",
       body: [
-        "Hablé con todas las áreas que tocaba el papel: clínica, TI, operaciones y HIM (gestión de información de salud). Trabajé con la dirección en la implementación. Repasé cada decisión con TI y UX en una propuesta completa.",
+        "Hablé con todas las áreas que tocaba el papel: clínica, TI, operaciones y HIM (gestión de información de salud). Aprendí el recorrido haciendo esos trabajos, hablando con cada área y revisando el rastro en papel. Trabajé con la dirección en la implementación. Repasé cada decisión con TI y UX en una propuesta completa.",
       ],
       bullets: [
         "Antes · seis pasos: abrir la cola del panel, encontrar el mensaje, imprimirlo, enviar el papel a HIM, esperar a que lo escaneen y volver después a revisar que se archivó.",
@@ -166,7 +166,7 @@ export const MSK_ES: SpanishCaseStudyData = {
       eyebrow: "La prueba de verdad llegó después",
       title: "Lo que pasó después de que dejé ese puesto.",
       body: [
-        "TI lo aprobó cuando llegó el financiamiento y lo construyó tal como lo propuse. No sé qué cambió por detrás. Más tarde, mientras capacitaba a nuevos empleados, lo vi en el sistema en uso.",
+        "TI estaba en medio de una gran renovación, y el plan necesitaba financiamiento para un puesto permanente: alguien que supervisara la parte digital del escaneo y del EMR. TI lo aprobó cuando llegó el financiamiento y lo construyó tal como lo propuse. No sé qué cambió por detrás. Más tarde, mientras capacitaba a nuevos empleados, lo vi en el sistema en uso.",
         "Un desvío personal pasó a ser parte del sistema compartido. El curso en lenguaje sencillo logró que el área se certificara antes de la fecha límite.",
         "Lo que habría medido: que yo sepa, nadie lo midió. Habría seguido tres cosas: los minutos desde que llega un mensaje hasta que queda en la historia clínica, los mensajes archivados en la historia clínica del paciente equivocado y las páginas impresas.",
       ],
@@ -187,7 +187,7 @@ export const MSK_ES: SpanishCaseStudyData = {
       bullets: [
         "Dirigí · 1 mes antes: toda el área se certificó antes de la fecha límite original, sin la prórroga de 4 meses.",
         "Capacité · ~2,000: nuevos empleados que capacité en Epic, HIPAA y cumplimiento. Mi estimación: más o menos un grupo de 30 por semana durante dos años.",
-        "Resultado de la iniciativa · 20%: menos costos de impresión y escaneo, según mi revisión de las cifras con la persona a cargo del departamento de finanzas; no se atribuye solo a este flujo de archivo.",
+        "Resultado de la iniciativa · 20%: menos costos de impresión y escaneo en 2018–2019, según mi revisión de las cifras con la persona a cargo del departamento de finanzas; no se atribuye solo a este flujo de archivo.",
         "Proyección · ~$1M/año: ahorro proyectado en papel en mi propuesta para la Feria de Mejora de Procesos, no un ahorro medido.",
       ],
     },
@@ -289,7 +289,7 @@ export const MOBBIN_ES: SpanishCaseStudyData = {
 export const LOGISTICS_ES: SpanishCaseStudyData = {
   breadcrumb: "Logística médica del Ejército",
   // Worded to break into multi-word lines; "reabastecimiento" alone filled a line.
-  title: "Diseño de servicios para el suministro médico del Ejército de EE.\u00a0UU., reduciendo el reabastecimiento de meses a\u00a0semanas",
+  title: "Diseño de servicios para el suministro médico del Ejército de EE.\u00a0UU., con reabastecimiento de 1–2 meses a 1–2\u00a0semanas",
   meta: "Logística médica del Ejército · Operaciones · Diseño de servicios · 2024",
   intro:
     "En un despliegue de la Guardia Nacional del Ejército en Irak y dos países vecinos, estuve a cargo de los suministros médicos de siete estaciones de ayuda, donde primero se atiende a los soldados heridos. Cuando llegué, reabastecerlas tardaba 1–2 meses. Propuse acercar nuestro almacén, y luego planifiqué y di seguimiento a la mudanza.",
@@ -472,7 +472,7 @@ export const KNOWUNITY_ES: SpanishCaseStudyData = {
   ],
   otherProjects: [
     { title: "Diseño de producto e investigación para FloraGrove, una app de cuidado de plantas antes de su\u00a0lanzamiento", desc: "FloraGrove · Prototipo funcional de cuidado de plantas, Fase 2 de 3.", path: "/case-study/grove" },
-    { title: "Diseño de servicios para el suministro médico del Ejército de EE.\u00a0UU., reduciendo el reabastecimiento de meses a\u00a0semanas", desc: "Logística médica del Ejército · siete estaciones de ayuda, tres países.", path: "/case-study/logistics" },
+    { title: "Diseño de servicios para el suministro médico del Ejército de EE.\u00a0UU., con reabastecimiento de 1–2 meses a 1–2\u00a0semanas", desc: "Logística médica del Ejército · siete estaciones de ayuda, tres países.", path: "/case-study/logistics" },
   ],
   close: {
     title: "Construyo versiones que funcionan para saber qué probar después.",
@@ -517,7 +517,7 @@ export const UXWOMAN_ES: SpanishCaseStudyData = {
     {
       anchor: "uxwoman-research",
       eyebrow: "Entrevistas",
-      title: "Escuché seis temas.",
+      title: "De las entrevistas salieron seis temas.",
       body: [
         // Hillary's themes line (2026-11-16); Spanish is a draft for her review.
         "Mientras aprendía sobre rechazos y autorizaciones previas (cuando el seguro tiene que aprobar la atención primero), vi que algunos cambios en las reglas de Medicaid podrían dejar a pacientes sin cobertura en el próximo año. Quiero ayudar al personal que guía a los pacientes en esos cambios.",
@@ -545,7 +545,7 @@ export const UXWOMAN_ES: SpanishCaseStudyData = {
     {
       anchor: "uxwoman-guide",
       eyebrow: "Guía",
-      title: "La guía.",
+      title: "La guía que hice.",
       body: [
         "Una pregunta elige el camino: ¿hay una fecha en la carta? Si la hay, la guía muestra lo que pide la carta y luego una lista de pasos con un botón que agrega la fecha límite a tu calendario. Si no, muestra dónde encontrar la fecha y cómo hablar con una persona. Cada pantalla tiene un botón para hablar con una persona.",
         "Mi segunda idea es una hoja de estado para el personal de la clínica: quién tiene cada solicitud abierta, qué falta y quién actúa después. Responde una pregunta: ¿el siguiente paso me toca a mí? Es un concepto de diseño, no un aviso oficial.",

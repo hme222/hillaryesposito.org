@@ -65,7 +65,10 @@ export default function App() {
           <Analytics debug={false} />
           <a href="#main-content" className="sr-only-focusable">{translate(lang, "app.skip")}</a>
 
-          <div className= "app">
+          {/* --collage-src: the painted collage, for the quiet strips below the
+              fold (riso-page.css § collage strips). Passed from here because the
+              build cannot resolve an absolute url() written in a stylesheet. */}
+          <div className="app" style={{ "--collage-src": 'url("/riso/painted-cartography-01.jpg")' } as React.CSSProperties}>
             <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
             <div id="main-content" tabIndex={-1}>
               <AppRoutes />

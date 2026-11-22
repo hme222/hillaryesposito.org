@@ -153,7 +153,7 @@ const en = {
 
   // ── Home: projects ──
   "home.eyebrow": "Selected work",
-  "home.proj.grove.subtitle": "Working prototype · Phase 2 of 3",
+  "home.proj.grove.subtitle": "Pre-launch prototype · Phase 2 of 3",
   "home.proj.msk.subtitle": "Office coordinator, patient portal messages",
   "home.proj.logistics.subtitle": "U.S. Army · Seven aid stations",
   "home.proj.uxwoman.subtitle": "UX Woman accelerator · New York",
@@ -349,7 +349,7 @@ const es: Partial<Record<StringKey, string>> = {
 
   // ── Home: projects ──
   "home.eyebrow": "Trabajo seleccionado",
-  "home.proj.grove.subtitle": "Prototipo funcional · Fase 2 de 3",
+  "home.proj.grove.subtitle": "Prototipo previo al lanzamiento · Fase 2 de 3",
   "home.proj.msk.subtitle": "Coordinadora de oficina, mensajes del portal de pacientes",
   "home.proj.logistics.subtitle": "Ejército de EE. UU. · Siete estaciones de ayuda",
   "home.proj.uxwoman.subtitle": "Aceleradora UX Woman · Nueva York",
@@ -359,7 +359,7 @@ const es: Partial<Record<StringKey, string>> = {
   "home.proj.grove.title": "Diseño de producto e investigación para FloraGrove, una app de cuidado de plantas antes de su\u00a0lanzamiento",
   "home.proj.msk.title": "Proyecto de diseño de servicios para Memorial Sloan\u00a0Kettering Cancer\u00a0Center",
   // Same wording as the Spanish case-study title.
-  "home.proj.logistics.title": "Diseño de servicios para el suministro médico del Ejército de EE.\u00a0UU., reduciendo el reabastecimiento de meses a\u00a0semanas",
+  "home.proj.logistics.title": "Diseño de servicios para el suministro médico del Ejército de EE.\u00a0UU., con reabastecimiento de 1–2 meses a 1–2\u00a0semanas",
   "home.proj.uxwoman.title": "Investigación en salud basada en los requisitos cambiantes de\u00a0Medicaid",
   "home.proj.mobbin.title": "Documentación freelance de tres apps financieras para\u00a0Mobbin",
   "home.proj.mobbin.subtitle": "Kikoff, Polymarket, Discover",

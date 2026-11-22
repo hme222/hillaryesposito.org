@@ -176,7 +176,7 @@ export default function RisoGrove() {
         />
         <div className="rp-hero__content">
           <div className="rp-clearing">
-            <h1 className="rp-h1">Product design and research for FloraGrove, a <span className="rp-keep">pre-launch</span> <span className="rp-keep">plant-care{"\u00a0"}app</span></h1>
+            <h1 className="rp-h1">Product design and research for{"\u00a0"}FloraGrove, <span className="rp-keep">a pre-launch</span> <span className="rp-keep">plant-care{"\u00a0"}app</span></h1>
             {/* Source order keeps the H1 first; CSS order shows the eyebrow above it on desktop. */}
             <span className="rp-eyebrow">Pre-launch</span>
             {/* What it is: from FloraGrove's own landing page description. */}

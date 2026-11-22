@@ -140,7 +140,7 @@ export default function FlagshipMSK() {
         />
         <div className="rp-hero__content">
           <div className="rp-clearing">
-            <h1 className="rp-h1">Service design project for Memorial <span className="rp-keep">Sloan Kettering</span> Cancer{"\u00a0"}Center</h1>
+            <h1 className="rp-h1">Service design project{"\u00a0"}for <span className="rp-keep">Memorial Sloan Kettering</span> Cancer{"\u00a0"}Center</h1>
             <p className="rp-sub">
               As an office coordinator, I mapped how patient portal messages passed through four departments. They didn’t save to the patient’s electronic medical record (EMR), so we printed them and waited for the scanning team. I proposed a Send to EMR button to file them directly. <b>The hospital’s information technology (IT) and user experience (UX) teams built the real version.</b>
             </p>
@@ -159,7 +159,7 @@ export default function FlagshipMSK() {
         </div>
       </header>
 
-      <ResultLine eyebrow="What changed" text="Six steps became five." />
+      <ResultLine eyebrow="What changed" text="Staff no longer wait for a scan." />
 
       <div data-evidence="true"><MSKFilingReceipt /></div>
 
@@ -177,7 +177,7 @@ export default function FlagshipMSK() {
               removed at Hillary's request (2026-11-20). */}
           {/* The word-for-word step lists were cut 2026-11-17 (repetition cut):
               both journey pictures already list the six and five steps as text. */}
-          <p className="rp-lede rp-reveal">Four departments: clinical, IT, operations, and health information management (HIM). I worked with leadership on the rollout. I walked IT and UX through every decision in a full pitch.</p>
+          <p className="rp-lede rp-reveal">Four departments: clinical, IT, operations, and health information management (HIM). I learned the path by doing the jobs, talking with each department, and reading the paper trail. I worked with leadership on the rollout. I walked IT and UX through every decision in a full pitch.</p>
         </div>
       </section>
 
@@ -299,7 +299,7 @@ export default function FlagshipMSK() {
       <section className="rp-section" id="msk-sustainment" data-language-anchor="msk-sustainment">
         <div className="rp-wrap">
           <h2 className="rp-title">What happened after I left that role.</h2>
-          <p className="rp-lede rp-reveal">IT approved it once funding came in and built it as I pitched it. I don’t know what changed behind the scenes. Later, while training new employees, I saw it in the live system.</p>
+          <p className="rp-lede rp-reveal">IT was in the middle of a big overhaul, and the plan needed funding for a permanent role: someone to oversee the digital side of scanning and the EMR. IT approved it once funding came in and built it as I pitched it. I don’t know what changed behind the scenes. Later, while training new employees, I saw it in the live system.</p>
           {/* Added 2026-10-22 (portfolio review, UXfolio 2026 ch. 4.3): the
               outcome is owner-reported and no post-launch measurement is
               known, so the page says what would have shown it. Hillary
@@ -344,7 +344,7 @@ export default function FlagshipMSK() {
         metrics={[
           { n: "1 month", label: "early: the whole department certified before the original deadline, with no 4-month extension" },
           { n: "~2,000", label: "new employees I trained on Epic, HIPAA, and compliance. My estimate: about one group of 30 a week for two years." },
-          { n: "20%", label: "lower printing and scanning costs, from my review of the numbers with the head of the finance department; not attributed solely to this filing workflow" },
+          { n: "20%", label: "lower printing and scanning costs in 2018–2019, from my review of the numbers with the head of the finance department; not attributed solely to this filing workflow" },
           { n: "~$1M/year", label: "projected paper savings in my Process Improvement Fair pitch, not measured savings" },
         ]}
       /></div>

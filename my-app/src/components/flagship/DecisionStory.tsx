@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useRef, useState } from "react";
+import React, { ReactNode } from "react";
 
 export type DecisionStep = {
   n: string;
@@ -20,92 +20,33 @@ type Props = {
   /** Decorative sequence labels can be omitted when the ordered list already
    *  communicates sequence and the page needs a quieter editorial rhythm. */
   showStepNumbers?: boolean;
-  /** Receives the active step index so the artifact can highlight its own row,
-   *  or null below the sticky breakpoint, where every step reads as active. */
+  /** The artifact. Called with null once, for one visual beside the whole
+   *  list (every step reads as current), or with each step's index when
+   *  `visualPerStep` is set, so each step carries its own picture. */
   visual: (activeIndex: number | null) => ReactNode;
+  /** Render `visual(index)` beside every step instead of one visual beside
+   *  the list. Use when each decision has its own screen (Knowunity). */
+  visualPerStep?: boolean;
 };
 
 /**
- * Interaction-logic section: the artifact stays on screen while the decisions
- * it encodes advance.
+ * Interaction-logic section: a short list of decisions, each with the
+ * artifact that shows it.
  *
- * This was a scroll narrative once before and it broke, so the failure modes
- * are worth naming:
- *
- * 1. The old version pinned the visual beside a step column that was much
- *    taller than it, so past a point the reader had prose with the artifact
- *    gone — and the caption explaining each step lived *inside* the image, so
- *    it left too.
- * 2. It depended on scroll position, an animation-frame tick, and each step
- *    being taller than a detection band. Each was a way to break quietly.
- *
- * What is different here. The steps and the artifact are in the *same* sticky
- * panel, so they cannot separate — if you can see one you can see the other.
- * Every step renders its title, body and decision-log line at all times, so
- * nothing is hidden behind scroll state and nothing is lost to a screen reader,
- * a failed observer, or a printout. The active step is a highlight on content
- * that is already there, not a reveal of content that is not.
- *
- * Position is one division against the track's own rect: how far the track has
- * traveled past the top of the viewport, over the distance it can travel. The
- * track is the only element measured, so there is nothing to fall out of sync
- * with — no per-step height, no detection band a short step can slip through.
+ * History, so it is not rebuilt: this was a sticky panel pinned across a
+ * 180vh scroll track, with the active step chosen from scroll position and the
+ * visual crossfading to match. Pinned, it left ~1100px of empty column on MSK
+ * and ~600px on Knowunity (2026-11-22 audit). Now it is plain stacked
+ * content: no sticky, no scroll listener. Either one visual sits beside the
+ * whole list, or (`visualPerStep`) each step sits beside its own visual,
+ * text and picture in two columns from 900px and stacked below that. Every
+ * step always shows its title, body and decision-log line.
  */
 /**
  * @status: stable
- * @purpose: Sticky-panel decision narrative where a scroll-tracked step list stays alongside a caller-supplied visual that highlights the active step; part of the flagship case-study loop (MSK, Mobbin) and already in use there. The only decision-story component; reuse it rather than adding a sibling.
+ * @purpose: Decision narrative for flagship case studies (MSK, Knowunity): a stacked list of decisions with a caller-supplied visual, either one beside the whole list or one beside each step (visualPerStep). Nothing is pinned or scroll-linked. The only decision-story component; reuse it rather than adding a sibling.
  */
-// Matches the `max-width: 900px` block in riso-page.css that unpins the panel.
-const STACKED_QUERY = "(max-width: 900px)";
-
-export default function DecisionStory({ id, languageAnchor, kicker, title, intro, introNote, steps, showStepNumbers = true, visual }: Props) {
-  const [active, setActive] = useState(0);
-  // Below the breakpoint the panel stacks: steps above, artifact below, never
-  // on screen together, and every step styled as active. A scroll-driven
-  // highlight there pointed at a row whose step had already scrolled away
-  // (motion review 2026-10-12), so the visual gets no active index at all.
-  const [stacked, setStacked] = useState(() => (
-    typeof window !== "undefined" && (window.matchMedia?.(STACKED_QUERY).matches ?? false)
-  ));
-  useEffect(() => {
-    const query = window.matchMedia?.(STACKED_QUERY);
-    if (!query) return;
-    const onChange = (event: MediaQueryListEvent) => setStacked(event.matches);
-    query.addEventListener?.("change", onChange);
-    return () => query.removeEventListener?.("change", onChange);
-  }, []);
-  const trackRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-
-    // One rect read per scroll event, no rAF and no timer. Deliberate: this ran
-    // on rAF first, and rAF is throttled or suspended whenever the tab is
-    // backgrounded or occluded, which left the section frozen on whichever step
-    // it had when it lost focus. A passive listener reading a single rect is
-    // cheap, and setActive below short-circuits unless the index actually
-    // changes — so the whole section costs at most four React renders.
-    const measure = () => {
-      const rect = track.getBoundingClientRect();
-      // The runway is however much of the track passes the top of the viewport
-      // before its bottom arrives there.
-      const runway = rect.height - window.innerHeight;
-      if (runway <= 0) return;
-      const progress = Math.min(1, Math.max(0, -rect.top / runway));
-      const index = Math.min(steps.length - 1, Math.floor(progress * steps.length));
-      setActive((current) => (current === index ? current : index));
-    };
-
-    measure();
-    window.addEventListener("scroll", measure, { passive: true });
-    window.addEventListener("resize", measure);
-    return () => {
-      window.removeEventListener("scroll", measure);
-      window.removeEventListener("resize", measure);
-    };
-  }, [steps.length]);
-
+export default function DecisionStory({ id, languageAnchor, kicker, title, intro, introNote, steps, showStepNumbers = true, visual, visualPerStep = false }: Props) {
   return (
     <section className={`rp-decisionStory${showStepNumbers ? "" : " rp-decisionStory--quiet"}`} id={id} data-language-anchor={languageAnchor} aria-labelledby={`${id}-title`}>
       <div className="rp-wrap">
@@ -116,11 +57,29 @@ export default function DecisionStory({ id, languageAnchor, kicker, title, intro
           {introNote && <p className="rp-lede rp-decisionStory__note">{introNote}</p>}
         </div>
 
-        <div className="rp-decisionStory__track" ref={trackRef}>
+        {visualPerStep ? (
+          <ol className="rp-decisionStory__steps rp-decisionStory__steps--paired">
+            {steps.map((step, index) => (
+              <li key={step.n} className="rp-decisionStory__pair">
+                <div className="rp-decisionStory__step">
+                  {showStepNumbers && <span className="rp-decisionStory__n">{step.n}</span>}
+                  <div>
+                    <h3>{step.title}</h3>
+                    <p>{step.body}</p>
+                    <p className="rp-decisionStory__logline">
+                      <b>{step.note}</b>
+                    </p>
+                  </div>
+                </div>
+                <div className="rp-decisionStory__visual">{visual(index)}</div>
+              </li>
+            ))}
+          </ol>
+        ) : (
           <div className="rp-decisionStory__panel">
             <ol className="rp-decisionStory__steps">
-              {steps.map((step, index) => (
-                <li key={step.n} className={index === active ? "is-active" : undefined}>
+              {steps.map((step) => (
+                <li key={step.n}>
                   {showStepNumbers && <span className="rp-decisionStory__n">{step.n}</span>}
                   <div>
                     <h3>{step.title}</h3>
@@ -132,9 +91,9 @@ export default function DecisionStory({ id, languageAnchor, kicker, title, intro
                 </li>
               ))}
             </ol>
-            <div className="rp-decisionStory__visual">{visual(stacked ? null : active)}</div>
+            <div className="rp-decisionStory__visual">{visual(null)}</div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );
