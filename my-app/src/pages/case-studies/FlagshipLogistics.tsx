@@ -2,8 +2,7 @@ import CopyEmail from "../../components/CopyEmail";
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
-import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
-import ReadingProgress from "../../components/flagship/ReadingProgress";
+import CaseStudyChapters, { CaseStudyChapter, chapterLabel } from "../../components/flagship/CaseStudyChapters";
 import EvidenceField from "../../components/flagship/EvidenceField";
 import ResultLine from "../../components/flagship/ResultLine";
 import LogisticsMechanism from "../../components/LogisticsMechanism";
@@ -87,7 +86,6 @@ export default function FlagshipLogistics() {
       <RisoDefs />
 
       <CaseStudyChapters project="Medical logistics" chapters={CHAPTERS} progress />
-      <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
 
       <header className="rp-hero fp-hero" id="log-start">
         <CartoField
@@ -135,6 +133,7 @@ export default function FlagshipLogistics() {
           <div className="rp-cinema__artifact rp-cinema__artifact--reminder"><span>Size</span><b>5,000+ New Jersey soldiers, $2M in supplies, seven aid stations.</b></div>
           <div className="rp-cinema__artifact rp-cinema__artifact--safety"><span>Deadline</span><b>Vaccines had to stay cold and arrive within 48 hours.</b></div>
           <div className="rp-cinema__bridge">
+            <p className="rp-kicker">{chapterLabel(CHAPTERS, "log-brief")}</p>
             <h2 id="log-brief-title">A late delivery put wounded soldiers at{"\u00a0"}risk.</h2>
             <p>No station could wait 1–2 months for supplies.</p>
           </div>
@@ -143,6 +142,7 @@ export default function FlagshipLogistics() {
 
       <section className="rp-section" id="log-moves" data-evidence="true">
         <div className="rp-wrap">
+          <p className="rp-kicker">{chapterLabel(CHAPTERS, "log-moves")}</p>
           <h2 className="rp-title">I moved the warehouse. Then I fixed how stations ordered.</h2>
           <p className="rp-lede">I did the physical work of the move with my team. After that, the stations asked to track their own orders.</p>
           <div className="fp-redesigns fp-redesigns--logistics rp-reveal" data-evidence="true">
@@ -172,6 +172,7 @@ export default function FlagshipLogistics() {
         </summary>
         <section className="rp-section rp-override" id="log-constraints" data-evidence="true">
           <div className="rp-wrap">
+            <p className="rp-kicker">{chapterLabel(CHAPTERS, "log-constraints")}</p>
             <h2 className="rp-title">Three limits I had to work within.</h2>
             <dl className="fp-constraintAnnotations rp-reveal" data-evidence="true">
               <div><dt>Cold vaccines · 48 hours</dt><dd>If they arrived late, they couldn’t be used.</dd></div>
@@ -184,6 +185,7 @@ export default function FlagshipLogistics() {
 
       <div className="fp-logisticsEvidence" data-evidence="true"><EvidenceField
         id="log-outcomes"
+        kicker={chapterLabel(CHAPTERS, "log-outcomes")}
         title="Supplies arrived faster and cost less."
         disclaimer="All three numbers come from my Officer Evaluation Report. Records of how and over what time they were measured were not kept."
         metrics={[
@@ -193,6 +195,9 @@ export default function FlagshipLogistics() {
         ]}
         leadMetric
       /></div>
+
+      {/* Next case study sits above the closing band, so the band and the footer read as one ending. */}
+      <Link className="rp-next" to="/case-study/msk"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Memorial Sloan{"\u00a0"}Kettering</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
 
       <section className="rp-section">
         <div className="rp-wrap rp-close">
@@ -205,7 +210,6 @@ export default function FlagshipLogistics() {
         </div>
       </section>
 
-      <Link className="rp-next" to="/case-study/msk"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Memorial Sloan{"\u00a0"}Kettering</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
     </main>
   );
 }

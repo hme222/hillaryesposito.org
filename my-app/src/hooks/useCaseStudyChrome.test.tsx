@@ -185,46 +185,81 @@ describe("useCaseStudyChrome", () => {
     jest.restoreAllMocks();
   });
 
-  it("does nothing off the case-study routes", () => {
-    render(<Harness path="/about" />);
+  it("off the case-study routes: tucks the dock, but adds no case-study jump rules", () => {
+    const { unmount } = render(<Harness path="/about" />);
     setY(800);
     expect(root.classList.contains("cs-chrome")).toBe(false);
-    expect(root.classList.contains("cs-chrome--tucked")).toBe(false);
+    expect(root.style.getPropertyValue("--cs-chrome-h")).toBe("");
+    expect(root.classList.contains("nav-tucked")).toBe(true);
+    unmount();
+    expect(root.classList.contains("nav-tucked")).toBe(false);
   });
 
-  it("keeps the one combined bar in place on scroll down and up, then cleans up on unmount", () => {
+  it("tucks on scroll down, returns on a deliberate scroll up and at the top, then cleans up on unmount", () => {
     const { unmount } = render(<Harness path="/case-study/msk/" />);
     expect(root.classList.contains("cs-chrome")).toBe(true);
-    expect(root.classList.contains("cs-chrome--tucked")).toBe(false);
+    expect(root.classList.contains("nav-tucked")).toBe(false);
     setY(300);
-    expect(root.classList.contains("cs-chrome--tucked")).toBe(false);
+    expect(root.classList.contains("nav-tucked")).toBe(true);
+    // Small upward jitter does not bring it back.
     setY(295);
-    expect(root.classList.contains("cs-chrome--tucked")).toBe(false);
+    expect(root.classList.contains("nav-tucked")).toBe(true);
     setY(280);
-    expect(root.classList.contains("cs-chrome--tucked")).toBe(false);
+    expect(root.classList.contains("nav-tucked")).toBe(false);
+    setY(600);
+    expect(root.classList.contains("nav-tucked")).toBe(true);
+    setY(0);
+    expect(root.classList.contains("nav-tucked")).toBe(false);
     unmount();
     expect(root.classList.contains("cs-chrome")).toBe(false);
+    expect(root.classList.contains("nav-tucked")).toBe(false);
     expect(root.style.getPropertyValue("--cs-chrome-h")).toBe("");
   });
 
-  it("keeps the dock shown when focus moves into it", () => {
+  it("brings the dock back on a Tab press and holds it until the next wheel input", () => {
+    render(<Harness path="/case-study/msk" />);
+    setY(500);
+    expect(root.classList.contains("nav-tucked")).toBe(true);
+    act(() => {
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: "Tab", bubbles: true }));
+    });
+    expect(root.classList.contains("nav-tucked")).toBe(false);
+    // Focus moving down the page scrolls it; the dock stays.
+    setY(900);
+    expect(root.classList.contains("nav-tucked")).toBe(false);
+    act(() => {
+      window.dispatchEvent(new Event("wheel"));
+    });
+    setY(1200);
+    expect(root.classList.contains("nav-tucked")).toBe(true);
+  });
+
+  it("never tucks under reduced motion", () => {
+    matchesReduce = true;
+    render(<Harness path="/" />);
+    setY(500);
+    setY(900);
+    expect(root.classList.contains("nav-tucked")).toBe(false);
+  });
+
+  it("brings the dock back when focus moves into it", () => {
     const { container } = render(<Harness path="/case-study/grove" />);
     setY(500);
-    expect(root.classList.contains("cs-chrome--tucked")).toBe(false);
+    expect(root.classList.contains("nav-tucked")).toBe(true);
     act(() => {
       container.querySelector<HTMLAnchorElement>(".navbar a")!.focus();
     });
-    expect(root.classList.contains("cs-chrome--tucked")).toBe(false);
+    expect(root.classList.contains("nav-tucked")).toBe(false);
     // Stays shown while focused, even scrolling down.
     setY(700);
-    expect(root.classList.contains("cs-chrome--tucked")).toBe(false);
+    expect(root.classList.contains("nav-tucked")).toBe(false);
   });
 
   it("keeps the dock shown while a dock menu is open", () => {
     const { container } = render(<Harness path="/case-study/logistics" />);
     container.querySelector(".navbar button")!.setAttribute("aria-expanded", "true");
     setY(500);
-    expect(root.classList.contains("cs-chrome--tucked")).toBe(false);
+    expect(root.classList.contains("nav-tucked")).toBe(false);
   });
 
   it("keeps the dock shown while a modal dialog (the tour) is open", () => {
@@ -233,13 +268,13 @@ describe("useCaseStudyChrome", () => {
     document.body.appendChild(dialog);
     render(<Harness path="/case-study/knowunity" />);
     setY(500);
-    expect(root.classList.contains("cs-chrome--tucked")).toBe(false);
+    expect(root.classList.contains("nav-tucked")).toBe(false);
     dialog.remove();
   });
 
-  it("does not tuck on a deep link either; the combined bar stays visible", () => {
+  it("starts tucked on a deep link so the landing heading clears the chrome", () => {
     render(<Harness path="/case-study/ux-woman" hash="#far" />);
-    expect(root.classList.contains("cs-chrome--tucked")).toBe(false);
+    expect(root.classList.contains("nav-tucked")).toBe(true);
   });
 
   it("opens the nearest closed disclosure for an exact hidden target on entry", () => {
@@ -301,11 +336,11 @@ describe("useCaseStudyChrome", () => {
 
   it("allows transitions only after first paint, and never under reduced motion", () => {
     const { unmount } = render(<Harness path="/case-study/msk" />);
-    expect(root.classList.contains("cs-chrome--animate")).toBe(false);
+    expect(root.classList.contains("nav-tuck--animate")).toBe(false);
     act(() => {
       jest.advanceTimersByTime(100);
     });
-    expect(root.classList.contains("cs-chrome--animate")).toBe(true);
+    expect(root.classList.contains("nav-tuck--animate")).toBe(true);
     unmount();
 
     matchesReduce = true;
@@ -313,6 +348,6 @@ describe("useCaseStudyChrome", () => {
     act(() => {
       jest.advanceTimersByTime(100);
     });
-    expect(root.classList.contains("cs-chrome--animate")).toBe(false);
+    expect(root.classList.contains("nav-tuck--animate")).toBe(false);
   });
 });

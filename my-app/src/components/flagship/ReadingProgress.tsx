@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-
-export type ProgressVariant = "chapters" | "rail" | "numeric";
+import { useEffect, useState } from "react";
 
 /**
  * How much of this case study is left.
@@ -9,96 +7,21 @@ export type ProgressVariant = "chapters" | "rail" | "numeric";
  * answering "how much more is there". That question decides whether someone
  * commits to reading or bails, so it is worth answering plainly.
  *
- * Three variants so the treatment can be compared in place:
- *  - "chapters" — the rail with a tick per chapter. Shows remaining AND
- *    structure, which a plain bar cannot. Ticks sit at each section's real
- *    scroll position, so an uneven page reads as uneven rather than being
- *    flattened into equal slices.
- *  - "rail" — fill and percentage, no structure.
- *  - "numeric" — the percentage alone.
- *
- * Below 900px the fixed rail has no room; the chapter chip (CaseStudyChapters)
- * shows the same number, read from useReadingLeft below.
- *
- * aria-hidden throughout: scroll position is not actionable, and announcing a
- * changing percentage on every scroll event would be pure noise. The chapter
- * nav already carries location for assistive tech.
+ * The right-edge rail that used to show this was removed on 2026-11-23 (pick
+ * I6-S4, "one chip for every width"): the number now lives only in the
+ * CaseStudyChapters chip, which reads it from useReadingLeft below.
  */
 /**
  * @status: stable
- * @purpose: Renders a decorative, aria-hidden reading-progress indicator (chapter rail, fill bar, or numeric percentage; its useReadingLeft hook feeds the same "NN% left" number to the CaseStudyChapters chip on narrow screens) showing how much of a long case-study page remains; used on the MSK/Mobbin/logistics/Grove/Knowunity/UX Woman case study pages. Pick this for continuous scroll position — for a discrete named-phase count (e.g. "Phase 2 of 3") use PhaseIndicator instead.
+ * @purpose: Reading-position hook only (useReadingLeft): the whole percent of a long case-study page still unread, rAF-throttled, which the CaseStudyChapters chip shows as "NN% left". No visible component of its own since the right-edge rail was removed; for a discrete named-phase count (e.g. "Phase 2 of 3") use PhaseIndicator instead.
  */
-export default function ReadingProgress({
-  variant = "chapters",
-  chapterIds = [],
-  leftLabel = "left",
-}: {
-  variant?: ProgressVariant;
-  chapterIds?: string[];
-  leftLabel?: string;
-}) {
-  const { read, shown } = useReadPosition();
-  const [ticks, setTicks] = useState<number[]>([]);
-
-  // Tick positions are absolute document offsets: they do not change while
-  // scrolling, only when the layout does. Measuring them per frame meant a
-  // forced reflow per chapter on every scroll event for a constant result.
-  useEffect(() => {
-    const measureTicks = () => {
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      if (max <= 0 || !chapterIds.length) return;
-      setTicks(
-        chapterIds
-          .map((id) => {
-            const el = document.getElementById(id);
-            if (!el) return -1;
-            return (el.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.35) / max;
-          })
-          .filter((v) => v > 0.02 && v < 0.98),
-      );
-    };
-    measureTicks();
-    window.addEventListener("resize", measureTicks);
-    return () => window.removeEventListener("resize", measureTicks);
-  }, [chapterIds]);
-
-  const left = Math.max(0, Math.round((1 - read) * 100));
-
-  return (
-    <div
-      className={`rp-progress rp-progress--${variant}${shown ? " is-shown" : ""}`}
-      aria-hidden="true"
-    >
-      {variant !== "numeric" && (
-        <div className="rp-progress__track">
-          <div className="rp-progress__fill" style={{ transform: `scaleY(${read})` }} />
-          {variant === "chapters" &&
-            ticks.map((t) => (
-              <span className="rp-progress__tick" key={t} style={{ top: `${t * 100}%` }} />
-            ))}
-        </div>
-      )}
-      <p className="rp-progress__label">
-        <b>{left}%</b>
-        <span>{leftLabel}</span>
-      </p>
-    </div>
-  );
-}
-
-/** Share of the page scrolled (0-1) and whether the rail has revealed,
-    rAF-throttled. */
-function useReadPosition(): { read: number; shown: boolean } {
+export function useReadingLeft(): number {
   const [read, setRead] = useState(0);
-  const [shown, setShown] = useState(false);
   useEffect(() => {
     let frame = 0;
     const measure = () => {
       const max = document.documentElement.scrollHeight - window.innerHeight;
       setRead(max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0);
-      // Reveal only once the opening composition is behind the reader — the
-      // same rule the other utility controls follow.
-      setShown(window.scrollY > window.innerHeight * 0.6);
     };
     const onScroll = () => {
       if (frame) return;
@@ -116,10 +39,5 @@ function useReadPosition(): { read: number; shown: boolean } {
       if (frame) window.cancelAnimationFrame(frame);
     };
   }, []);
-  return { read, shown };
-}
-
-/** Whole percent of the page still unread: the rail's "NN% left" number. */
-export function useReadingLeft(): number {
-  return Math.max(0, Math.round((1 - useReadPosition().read) * 100));
+  return Math.max(0, Math.round((1 - read) * 100));
 }

@@ -2,8 +2,7 @@ import CopyEmail from "../../components/CopyEmail";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
-import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
-import ReadingProgress from "../../components/flagship/ReadingProgress";
+import CaseStudyChapters, { CaseStudyChapter, chapterLabel } from "../../components/flagship/CaseStudyChapters";
 import ResultLine from "../../components/flagship/ResultLine";
 import RisoDefs from "../../components/riso/RisoDefs";
 import CartoField from "../../components/riso/CartoField";
@@ -163,7 +162,6 @@ export default function RisoGrove() {
       <RisoDefs />
 
       <CaseStudyChapters project="FloraGrove" chapters={CHAPTERS} progress />
-      <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
 
       {/* LANDING: what it is, the prototype video, and the waitlist. */}
       <header className="rp-hero" id="grove-start" data-language-anchor="grove-start">
@@ -205,6 +203,7 @@ export default function RisoGrove() {
       {/* STORY 1: the first version did too much. */}
       <section className="rp-section" id="grove-research" data-language-anchor="grove-research">
         <div className="rp-wrap">
+          <p className="rp-kicker">{chapterLabel(CHAPTERS, "grove-research")}</p>
           <h2 className="rp-title">The first version tried to do too{" "}much.</h2>
           <p className="rp-lede">
             It opened on a feed and a mission, not on your own plants. From March to May 2026, I tested it with five people. They got stuck right there.
@@ -220,6 +219,7 @@ export default function RisoGrove() {
       {/* STORY 2: the survey cut twelve features to three. */}
       <section className="rp-section" id="grove-survey" data-language-anchor="grove-survey">
         <div className="rp-wrap">
+          <p className="rp-kicker">{chapterLabel(CHAPTERS, "grove-survey")}</p>
           <h2 className="rp-title">Then 37 people picked what it could not launch{" "}without.</h2>
           <p className="rp-lede">
             From May 22 to October 16, 37 people filled out a survey: 31 plant owners and caretakers, three florists, and three bouquet buyers. Each picked three features.
@@ -257,6 +257,7 @@ export default function RisoGrove() {
       {/* STORY 3: what is planned next, and what is not built yet. */}
       <section className="rp-section rp-section--alt" id="grove-decisions" data-language-anchor="grove-decisions">
         <div className="rp-wrap">
+          <p className="rp-kicker">{chapterLabel(CHAPTERS, "grove-decisions")}</p>
           <h2 className="rp-title">The redesign is planned. Next, I test it with people.</h2>
           <PhaseIndicator current={2} total={3} label="Functional prototype · Phase 2 of 3" />
           <p className="rp-lede">These are plans for the next prototype, not finished screens.</p>
@@ -281,6 +282,17 @@ export default function RisoGrove() {
       </section>
 
       {/* CLOSING: the same email action as every case study, plus the waitlist. */}
+      {/* Next case study sits above the closing band, so the band and the footer read as one ending. */}
+      <Link className="rp-next" to="/case-study/logistics">
+        <div className="rp-next__inner">
+          <div>
+            <p className="rp-next__eyebrow">Next case study</p>
+            <p className="rp-next__title">Medical logistics</p>
+          </div>
+          <span className="rp-next__arrow" aria-hidden="true">→</span>
+        </div>
+      </Link>
+
       <section className="rp-section">
         <div className="rp-wrap rp-close">
           <h2>Want to try FloraGrove when it’s ready?</h2>
@@ -295,15 +307,6 @@ export default function RisoGrove() {
       </section>
 
       {/* NEXT CASE STUDY */}
-      <Link className="rp-next" to="/case-study/logistics">
-        <div className="rp-next__inner">
-          <div>
-            <p className="rp-next__eyebrow">Next case study</p>
-            <p className="rp-next__title">Medical logistics</p>
-          </div>
-          <span className="rp-next__arrow" aria-hidden="true">→</span>
-        </div>
-      </Link>
 
     </main>
   );

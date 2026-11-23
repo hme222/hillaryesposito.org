@@ -2,8 +2,7 @@ import CopyEmail from "../../components/CopyEmail";
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
-import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
-import ReadingProgress from "../../components/flagship/ReadingProgress";
+import CaseStudyChapters, { CaseStudyChapter, chapterLabel } from "../../components/flagship/CaseStudyChapters";
 import CaseStudyReel, { CaseStudyReelData } from "../../components/flagship/CaseStudyReel";
 import EvidenceField from "../../components/flagship/EvidenceField";
 import ResultLine from "../../components/flagship/ResultLine";
@@ -108,7 +107,6 @@ export default function FlagshipUxWoman() {
       <RisoDefs />
 
       <CaseStudyChapters project="UX Woman" chapters={CHAPTERS} progress />
-      <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
 
       <header className="rp-hero fp-hero" id="uxwoman-start" data-language-anchor="uxwoman-start">
         <CartoField
@@ -165,6 +163,7 @@ export default function FlagshipUxWoman() {
 
       <section className="rp-section" id="uxwoman-problem" data-language-anchor="uxwoman-problem" data-evidence="true">
         <div className="rp-wrap">
+          <p className="rp-kicker">{chapterLabel(CHAPTERS, "uxwoman-problem")}</p>
           <h2 className="rp-title">Miss the reply, and you can lose coverage.</h2>
           <p className="rp-lede">The letter tells people about a new rule: some must show work hours or income, or show they don't have to.</p>
           <dl className="fp-letterStats rp-reveal">
@@ -183,6 +182,7 @@ export default function FlagshipUxWoman() {
 
       <section className="rp-section" id="uxwoman-research" data-language-anchor="uxwoman-research" data-evidence="true">
         <div className="rp-wrap">
+          <p className="rp-kicker">{chapterLabel(CHAPTERS, "uxwoman-research")}</p>
           <h2 className="rp-title">Six themes came out of the interviews.</h2>
           {/* Hillary's own line linking the themes to the guide (2026-11-16, R7). */}
           <p className="rp-lede">While learning about denials and prior authorizations (when insurance has to approve care first), I saw that some Medicaid rule changes could leave patients without coverage within the next year. I want to help the staff who guide patients through those changes.</p>
@@ -206,6 +206,7 @@ export default function FlagshipUxWoman() {
 
       <section className="rp-section" id="uxwoman-findings" data-language-anchor="uxwoman-findings" data-evidence="true">
         <div className="rp-wrap">
+          <p className="rp-kicker">{chapterLabel(CHAPTERS, "uxwoman-findings")}</p>
           <h2 className="rp-title">I made two testable guesses.</h2>
           <div className="fp-hypotheses rp-reveal">
             <article>
@@ -228,6 +229,7 @@ export default function FlagshipUxWoman() {
 
       <section className="rp-section" id="uxwoman-guide" data-language-anchor="uxwoman-guide" data-evidence="true">
         <div className="rp-wrap">
+          <p className="rp-kicker">{chapterLabel(CHAPTERS, "uxwoman-guide")}</p>
           <h2 className="rp-title">The guide I made.</h2>
           <div className="fp-guideScreens rp-reveal">
             {GUIDE_SCREENS.map((screen) => (
@@ -251,6 +253,7 @@ export default function FlagshipUxWoman() {
 
       <div data-evidence="true"><EvidenceField
         id="uxwoman-next"
+        kicker={chapterLabel(CHAPTERS, "uxwoman-next")}
         languageAnchor="uxwoman-next"
         title="Built, not yet tested."
         metrics={[
@@ -260,6 +263,9 @@ export default function FlagshipUxWoman() {
         route={["Version 1: built, not tested", "Version 2: only if the tests find gaps", "Version 3: only if the state approves a way to offer it"]}
       /></div>
 
+      {/* Next case study sits above the closing band, so the band and the footer read as one ending. */}
+      <Link className="rp-next" to="/case-study/knowunity"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Knowunity</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
+
       <section className="rp-section">
         <div className="rp-wrap rp-close">
           <h2>From a letter to a next step.</h2>
@@ -268,7 +274,6 @@ export default function FlagshipUxWoman() {
         </div>
       </section>
 
-      <Link className="rp-next" to="/case-study/knowunity"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Knowunity</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
     </main>
   );
 }

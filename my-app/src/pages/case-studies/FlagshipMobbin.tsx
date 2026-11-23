@@ -3,7 +3,6 @@ import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
 import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
-import ReadingProgress from "../../components/flagship/ReadingProgress";
 import DecisionStory from "../../components/flagship/DecisionStory";
 import EvidenceField from "../../components/flagship/EvidenceField";
 import ResultLine from "../../components/flagship/ResultLine";
@@ -71,7 +70,6 @@ export default function FlagshipMobbin() {
       <RisoDefs />
 
       <CaseStudyChapters project="Mobbin" chapters={CHAPTERS} progress />
-      <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
 
       <header className="rp-hero fp-hero" id="mobbin-start" data-language-anchor="mobbin-start">
         <CartoField
@@ -169,6 +167,9 @@ export default function FlagshipMobbin() {
         metrics={[]}
       /></div>
 
+      {/* Next case study sits above the closing band, so the band and the footer read as one ending. */}
+      <Link className="rp-next" to="/case-study/msk"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Memorial Sloan Kettering</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
+
       <section className="rp-section">
         <div className="rp-wrap rp-close">
           <a className="rp-cta" href="mailto:espositohillary@gmail.com">Email me →</a>
@@ -176,7 +177,6 @@ export default function FlagshipMobbin() {
         </div>
       </section>
 
-      <Link className="rp-next" to="/case-study/msk"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">Memorial Sloan Kettering</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
     </main>
   );
 }

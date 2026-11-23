@@ -162,6 +162,8 @@ export default function SpanishCaseStudy({ data }: SpanishCaseStudyProps) {
           key={section.title}
         >
           <div className="rp-wrap">
+            {/* The chapter's name as the eyebrow: the same words the chip shows. */}
+            {section.chapter !== false && <p className="rp-kicker">{section.chapter || section.eyebrow}</p>}
             <h2 className="rp-title">{section.title}</h2>
             {section.body.map((paragraph) => (
               <p key={paragraph} className="rp-lede">{paragraph}</p>

@@ -42,10 +42,12 @@
   /* One shape language (2026-11-22): square-ish paper for every content
      surface (0 to --r-plate), and 999px pills only for nav and controls.
      The stray 12/16/20/22/28px corners collapsed into these. --r-device was
-     28px phone bezels; phones now sit as screens on the same paper. */
+     collapsed to the plate's 4px, which made every phone a near-square rectangle
+     (2026-11-23, she asked for iPhone shape). It is now an iPhone corner as a
+     percentage (12% wide / 5.5% tall is circular at 390:844), so it scales. */
   --r-plate: 4px;
   --r-control: 3px;
-  --r-device: var(--r-plate);
+  --r-device: 12% / 5.5%;
   /* Figure tray (2026-11-20, from shapeof.ai's Examples grid): case-study
      figures sit in a soft tinted tray, the media inset by --tray-inset so the
      tray reads as a frame. Same plate corners as everything else now. */
@@ -82,6 +84,16 @@
   --pull-tracking: -.015em;
   --ts-h1-about: clamp(1.9rem, 3.7vw, 2.6rem); /* About's h1 sits in a card; larger than --ts-h2 */
   --ts-h2: clamp(1.3rem, 1rem + 1.6vw, 2.1rem); /* section h2: clearly below a hero h1 at every width (34px at 1440, 22px at 390; was 1.6rem min, which outranked the phone H1) */
+  /* Heading roles (2026-11-23, pick I4-S4): one size per job, so a skimming
+     reader can tell a chapter from a closing ask from a card.
+       hero H1      per-surface display size (see the note above)
+       closing ask  --ts-close: the one heading on the collage panel
+       section H2   --ts-h2
+       result line  --ts-result: a statement in the sans, not a heading
+       minor H3     --ts-h3: card, step and sub-section headings
+       eyebrow      --ts-label caps: chapter names and list labels */
+  --ts-close: clamp(1.375rem, .6rem + 2.6vw, 2.5rem); /* 40px at 1440; the --ts-h2 floor (22px) on phones, so the ask breaks at its full stop */
+  --ts-h3: var(--ts-lead);
   --ts-title: clamp(1.6rem, 4vw, 2.5rem);      /* section and item titles */
   --ts-heading: clamp(1.35rem, 3vw, 2.1rem);   /* card and step headings */
   --ts-stat: clamp(1.8rem, 4vw, 2.6rem);       /* numeric display */

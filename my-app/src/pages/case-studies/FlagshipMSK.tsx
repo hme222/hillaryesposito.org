@@ -2,8 +2,7 @@ import CopyEmail from "../../components/CopyEmail";
 import React, { lazy, Suspense, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../app/LanguageContext";
-import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
-import ReadingProgress from "../../components/flagship/ReadingProgress";
+import CaseStudyChapters, { CaseStudyChapter, chapterLabel } from "../../components/flagship/CaseStudyChapters";
 import DecisionStory from "../../components/flagship/DecisionStory";
 import EvidenceField from "../../components/flagship/EvidenceField";
 import CaseMore from "../../components/CaseMore";
@@ -128,7 +127,6 @@ export default function FlagshipMSK() {
       <RisoDefs />
 
       <CaseStudyChapters project="Memorial Sloan Kettering" chapters={CHAPTERS} progress />
-      <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
 
       <header className="rp-hero fp-hero" id="msk-start" data-language-anchor="msk-start">
         <CartoField
@@ -161,13 +159,14 @@ export default function FlagshipMSK() {
 
       <ResultLine eyebrow="What changed" text="Staff no longer wait for a scan." />
 
-      <div data-evidence="true"><MSKFilingReceipt /></div>
+      <div data-evidence="true"><MSKFilingReceipt kicker={chapterLabel(CHAPTERS, "msk-brief")} /></div>
 
       <section className="rp-section" id="msk-workflow" data-language-anchor="msk-workflow">
         <div className="rp-wrap">
           {/* The "recreated and anonymized" qualifier moved to the figcaption
               below, which already carries it — so the kicker is free to be a
               beat instead of a provenance label. */}
+          <p className="rp-kicker">{chapterLabel(CHAPTERS, "msk-workflow")}</p>
           <h2 className="rp-title">I talked to every team the paper touched.</h2>
           {/* "The Detour" animatic was removed 2026-10-13 at the owner’s direction
               (the deterministic version was rejected at taste review on
@@ -205,6 +204,7 @@ export default function FlagshipMSK() {
 
       <div data-evidence="true"><DecisionStory
         id="msk-decisions"
+        kicker={chapterLabel(CHAPTERS, "msk-decisions")}
         languageAnchor="msk-decisions"
         title="I set four rules for how the button behaves."
         intro="I wrote these for this portfolio version. They are not MSK’s actual design."
@@ -232,6 +232,7 @@ export default function FlagshipMSK() {
         </summary>
         <section className="rp-section" id="msk-redesigns" data-language-anchor="msk-redesigns">
           <div className="rp-wrap">
+            <p className="rp-kicker">{chapterLabel(CHAPTERS, "msk-redesigns")}</p>
             <h2 className="rp-title">I found the same problem in two more places.</h2>
             {/* Was "people couldn't tell what to do next", which only the CPR card
                 showed. Now labelled as her reading, true of both (2026-11-19). */}
@@ -255,6 +256,7 @@ export default function FlagshipMSK() {
 
         <section className="rp-section rp-override" id="msk-systems" data-language-anchor="msk-systems">
           <div className="rp-wrap">
+            <p className="rp-kicker">{chapterLabel(CHAPTERS, "msk-systems")}</p>
             <h2 className="rp-title">I did the jobs before I redesigned them.</h2>
             <p className="rp-lede">You don’t spot a problem like this from outside.</p>
             <ol className="fp-roleRail rp-reveal" aria-label="Three roles at MSK, in order" data-evidence="true" style={{ "--rp-reveal-stagger": "0ms" } as React.CSSProperties}>
@@ -329,6 +331,7 @@ export default function FlagshipMSK() {
 
       <div data-evidence="true"><EvidenceField
         id="msk-outcomes"
+        kicker={chapterLabel(CHAPTERS, "msk-outcomes")}
         languageAnchor="msk-outcomes"
         title="The numbers, and where each comes from."
         // The same discipline the certification dashboard used on its own data:
@@ -349,6 +352,9 @@ export default function FlagshipMSK() {
         ]}
       /></div>
 
+      {/* Next case study sits above the closing band, so the band and the footer read as one ending. */}
+      <Link className="rp-next" to="/case-study/ux-woman"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">UX Woman</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
+
       <section className="rp-section">
         <div className="rp-wrap rp-close">
           <h2>I find the workaround. Then I get it built.</h2>
@@ -357,7 +363,6 @@ export default function FlagshipMSK() {
         </div>
       </section>
 
-      <Link className="rp-next" to="/case-study/ux-woman"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">UX Woman</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
     </main>
   );
 }

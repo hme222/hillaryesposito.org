@@ -2,8 +2,7 @@ import CopyEmail from "../../components/CopyEmail";
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage, useT } from "../../app/LanguageContext";
-import CaseStudyChapters, { CaseStudyChapter } from "../../components/flagship/CaseStudyChapters";
-import ReadingProgress from "../../components/flagship/ReadingProgress";
+import CaseStudyChapters, { CaseStudyChapter, chapterLabel } from "../../components/flagship/CaseStudyChapters";
 import CaseStudyCredential, { CaseStudyCredentialData } from "../../components/flagship/CaseStudyCredential";
 import CaseStudyReel, { CaseStudyReelData } from "../../components/flagship/CaseStudyReel";
 import DecisionStory from "../../components/flagship/DecisionStory";
@@ -144,7 +143,6 @@ export default function FlagshipKnowunity() {
       <RisoDefs />
 
       <CaseStudyChapters project="Knowunity" chapters={CHAPTERS} progress />
-      <ReadingProgress chapterIds={CHAPTERS.map((c) => c.id)} />
 
       <header className="rp-hero fp-hero" id="knowunity-start" data-language-anchor="knowunity-start">
         <CartoField
@@ -198,6 +196,7 @@ export default function FlagshipKnowunity() {
 
       <section className="rp-section rp-override" id="knowunity-brief" data-language-anchor="knowunity-brief" data-evidence="true">
         <div className="rp-wrap">
+          <p className="rp-kicker">{chapterLabel(CHAPTERS, "knowunity-brief")}</p>
           <h2 className="rp-title">Knowunity wanted students to prove they remember.</h2>
           <p className="rp-lede">After studying, a student has seen the material, but hasn’t shown they can remember it on their own. The app’s practice steps check if you can spot or use the right answer. They don’t ask you to explain it. Knowunity wanted a moment where the student feels, “I actually know this now.”</p>
           <CaseMore label="What Knowunity asked for">
@@ -211,6 +210,7 @@ export default function FlagshipKnowunity() {
           show the final first, then the journey). */}
       <section className="rp-section" id="knowunity-prototype" data-language-anchor="knowunity-prototype">
         <div className="rp-wrap">
+          <p className="rp-kicker">{chapterLabel(CHAPTERS, "knowunity-prototype")}</p>
           <h2 className="rp-title">I built a version you can tap through, not slides.</h2>
           <div className="fp-workSplit rp-reveal" data-evidence="true">
             <article><span>Knowunity gave me</span><h3>Their brand and design parts</h3><p>Knowie, the Greed font, their design kit in Figma (a design tool), and access to the live app and the beta.</p></article>
@@ -253,6 +253,7 @@ export default function FlagshipKnowunity() {
 
       <div data-evidence="true"><DecisionStory
         id="knowunity-decisions"
+        kicker={chapterLabel(CHAPTERS, "knowunity-decisions")}
         languageAnchor="knowunity-decisions"
         title="I made the student do the proving, not Knowie."
         intro="You can’t force a student to explain out loud. So each of these four changes makes it easier to keep going."
@@ -280,6 +281,7 @@ export default function FlagshipKnowunity() {
 
       <div data-evidence="true"><EvidenceField
         id="knowunity-outcomes"
+        kicker={chapterLabel(CHAPTERS, "knowunity-outcomes")}
         languageAnchor="knowunity-outcomes"
         title="Yummy Labs gave me a badge, and Knowunity reviewed it."
         intro="Next: a version that turns real speech into text, in front of students."
@@ -291,6 +293,9 @@ export default function FlagshipKnowunity() {
         aside={<CaseStudyCredential credential={{ ...BADGE, newTabLabel: t("a11y.newTab") }} />}
       /></div>
 
+      {/* Next case study sits above the closing band, so the band and the footer read as one ending. */}
+      <Link className="rp-next" to="/case-study/grove"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">FloraGrove</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
+
       <section className="rp-section">
         <div className="rp-wrap rp-close">
           <h2>I build working versions to learn what to test next.</h2>
@@ -299,7 +304,6 @@ export default function FlagshipKnowunity() {
         </div>
       </section>
 
-      <Link className="rp-next" to="/case-study/grove"><div className="rp-next__inner"><div><p className="rp-next__eyebrow">Next case study</p><p className="rp-next__title">FloraGrove</p></div><span className="rp-next__arrow" aria-hidden="true">→</span></div></Link>
     </main>
   );
 }

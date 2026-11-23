@@ -1,19 +1,22 @@
 import { RefObject, useEffect } from "react";
 
 /**
- * "Nav hides, chapters stay" - the reading-mode chrome controller for the
- * case-study routes.
+ * "Nav that tucks away while reading" (2026-11-23, Hillary's pick I5-S5) -
+ * the reading-mode chrome controller, plus the case-study jump-target rules.
  *
- * On a case study the dock pill plus the sticky chapter strip stacked to
- * ~135px of chrome while reading. Here, scrolling DOWN past a small threshold
- * tucks the dock off the top and the chapter strip pins to `top: 0` as the
- * only bar; a deliberate scroll UP brings the dock back with the strip
- * beneath it. Back near the top, the normal dock shows.
+ * On every route, scrolling DOWN past a small threshold tucks the dock pill
+ * off the top of the window; a deliberate scroll UP, or reaching the top,
+ * brings it back. It never tucks while:
+ *   - focus is inside the dock, or a dock menu / modal is open;
+ *   - the reader is moving with the keyboard (a Tab press holds it on screen
+ *     until the next wheel, touch or pointer input);
+ *   - the reader asked for reduced motion (the dock simply stays put).
  *
  * Everything is driven by classes on <html> so the CSS owns the visuals:
- *   - `cs-chrome`           route gate (case-study routes only)
- *   - `cs-chrome--tucked`   dock is off-screen, strip at top: 0
- *   - `cs-chrome--animate`  transitions allowed (never under reduced motion,
+ *   - `cs-chrome`           route gate (case-study routes only): jump targets
+ *                           read `--cs-chrome-h` for their scroll margin
+ *   - `nav-tucked`          dock is off-screen (any route)
+ *   - `nav-tuck--animate`   transitions allowed (never under reduced motion,
  *                           and never on the first frame, so a deep link
  *                           doesn't play a slide on arrival)
  * and one custom property, `--cs-chrome-h`: the height of whatever top chrome
@@ -95,8 +98,8 @@ export function chromeHeight(tucked: boolean, dockBottom: number, stripHeight: n
   return tucked ? stripHeight : dockBottom + STRIP_SHOWN_OFFSET_PX + stripHeight;
 }
 
-/** The dock and chapter strip are one bar that stays put; set true to bring back tuck-on-scroll-down. */
-export const TUCK_ENABLED = false;
+/** Master switch for tuck-on-scroll-down. On since 2026-11-23 (I5-S5). */
+export const TUCK_ENABLED = true;
 
 const JUMP_HOLD_MS = 1400; // CaseStudyChapters re-asserts its jump up to 1100ms
 const DEEP_LINK_HOLD_MS = 3000; // lazy case-study chunk + its own hash effect
@@ -142,8 +145,9 @@ export function openHashTargetDisclosure(hash: string): boolean {
 }
 
 /**
- * Wires the controller to the dock `<nav>` for the current route. No-op (and
- * fully cleaned up) off the case-study routes, so Home/About/404 are untouched.
+ * Wires the controller to the dock `<nav>` for the current route. The tuck
+ * runs on every route; the hash reveal and `cs-chrome` jump-target rules run
+ * on the case-study routes only.
  */
 export function useCaseStudyChrome(navRef: RefObject<HTMLElement>, pathname: string, hash = ""): void {
   const enabled = isCaseStudyPath(pathname);
@@ -198,7 +202,6 @@ export function useCaseStudyChrome(navRef: RefObject<HTMLElement>, pathname: str
   }, [enabled, pathname, hash]);
 
   useEffect(() => {
-    if (!enabled) return;
     const root = document.documentElement;
     const nav = navRef.current;
     const reduceQuery = typeof window.matchMedia === "function"
@@ -215,19 +218,25 @@ export function useCaseStudyChrome(navRef: RefObject<HTMLElement>, pathname: str
     let applied: boolean | null = null;
     let appliedHeight = -1;
 
+    // A Tab press anywhere means the reader is moving by keyboard: keep the
+    // dock on screen until they next scroll by wheel, touch or pointer.
+    let keyboardHold = false;
+
     const isForced = () =>
       navFocused ||
+      keyboardHold ||
+      !!reduceQuery?.matches ||
       !!nav?.querySelector('[aria-expanded="true"]') ||
       !!document.querySelector("dialog[open]");
 
     const apply = () => {
       if (applied !== state.tucked) {
-        root.classList.toggle("cs-chrome--tucked", state.tucked);
+        root.classList.toggle("nav-tucked", state.tucked);
         applied = state.tucked;
       }
       const stripH = inFlowStripHeight();
       const h = Math.round(chromeHeight(state.tucked, readDockBottom(), stripH));
-      if (h !== appliedHeight) {
+      if (enabled && h !== appliedHeight) {
         root.style.setProperty("--cs-chrome-h", `${h}px`);
         appliedHeight = h;
       }
@@ -242,7 +251,6 @@ export function useCaseStudyChrome(navRef: RefObject<HTMLElement>, pathname: str
         jumping: Date.now() < jumpUntil,
       });
       lastY = y;
-      // One combined bar, always visible (2026-11-13): the dock never tucks.
       if (!TUCK_ENABLED) state = { tucked: false, travel: 0 };
       apply();
     };
@@ -330,10 +338,26 @@ export function useCaseStudyChrome(navRef: RefObject<HTMLElement>, pathname: str
     treeObserver?.observe(main, { childList: true, subtree: true });
 
     const setAnimate = () => {
-      root.classList.toggle("cs-chrome--animate", !reduceQuery?.matches);
+      root.classList.toggle("nav-tuck--animate", !reduceQuery?.matches);
     };
 
-    root.classList.add("cs-chrome");
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "Tab" || keyboardHold) return;
+      keyboardHold = true;
+      evaluate();
+    };
+    const onPointerInput = () => {
+      if (!keyboardHold) return;
+      keyboardHold = false;
+      evaluate();
+    };
+    // Reduced motion turning on mid-visit brings a tucked dock back at once.
+    const onReduceChange = () => {
+      setAnimate();
+      evaluate();
+    };
+
+    if (enabled) root.classList.add("cs-chrome");
     watchStrip();
     if (hash.length > 1) {
       // Arriving on a deep link (e.g. from Home): the page's own hash effect
@@ -351,7 +375,11 @@ export function useCaseStudyChrome(navRef: RefObject<HTMLElement>, pathname: str
     document.addEventListener("click", onClickCapture, true);
     nav?.addEventListener("focusin", onFocusIn);
     nav?.addEventListener("focusout", onFocusOut);
-    reduceQuery?.addEventListener?.("change", setAnimate);
+    document.addEventListener("keydown", onKeyDown, true);
+    window.addEventListener("wheel", onPointerInput, { passive: true, capture: true });
+    window.addEventListener("touchstart", onPointerInput, { passive: true, capture: true });
+    window.addEventListener("pointerdown", onPointerInput, true);
+    reduceQuery?.addEventListener?.("change", onReduceChange);
 
     return () => {
       window.removeEventListener("scroll", onScroll);
@@ -359,14 +387,18 @@ export function useCaseStudyChrome(navRef: RefObject<HTMLElement>, pathname: str
       document.removeEventListener("click", onClickCapture, true);
       nav?.removeEventListener("focusin", onFocusIn);
       nav?.removeEventListener("focusout", onFocusOut);
-      reduceQuery?.removeEventListener?.("change", setAnimate);
+      document.removeEventListener("keydown", onKeyDown, true);
+      window.removeEventListener("wheel", onPointerInput, true);
+      window.removeEventListener("touchstart", onPointerInput, true);
+      window.removeEventListener("pointerdown", onPointerInput, true);
+      reduceQuery?.removeEventListener?.("change", onReduceChange);
       observer?.disconnect();
       treeObserver?.disconnect();
       resizeObserver?.disconnect();
       if (frame) window.cancelAnimationFrame(frame);
       window.clearTimeout(jumpTimer);
       window.clearTimeout(animateTimer);
-      root.classList.remove("cs-chrome", "cs-chrome--tucked", "cs-chrome--animate");
+      root.classList.remove("cs-chrome", "nav-tucked", "nav-tuck--animate");
       root.style.removeProperty("--cs-chrome-h");
     };
     // `hash` is read only on route entry; a same-page hash change is a click

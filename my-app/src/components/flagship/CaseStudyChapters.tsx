@@ -7,41 +7,11 @@ export type CaseStudyChapter = {
   label: string;
 };
 
-/**
- * Every fixed dark stage the wide chapter column can scroll over: the flat
- * --forest bands (the same list portfolio-cohesion.css switches the focus
- * ring for), plus an opt-in hook for any future dark band.
- */
-export const DARK_SURFACE_SELECTOR =
-  '.rp-override, .rp-outcomeStage, .rp-cinema, .fp-cinema, .fp-receipt, .rp-openingFilm, .site-footer__base, [data-surface="dark"]';
-
-/** The column layout's breakpoint (riso-page.css, "Chapter nav"). */
-const COLUMN_QUERY = "(min-width: 1420px)";
-
-/**
- * Is a dark stage what's painted behind this point? Walks the paint stack
- * under the point, skipping the chapter nav itself: the first dark stage
- * wins, and the first other opaque background decides. Inside a stage, a
- * dark fill (a stage's own wash layer) still counts as dark and a light one
- * (a card or plate on the band) does not; outside one, any opaque fill (the
- * page paper, in either theme) means "not dark".
- */
-export function isOverDarkSurface(x: number, y: number, ignore: Element | null): boolean {
-  if (typeof document.elementsFromPoint !== "function") return false;
-  for (const el of document.elementsFromPoint(x, y)) {
-    if (ignore && ignore.contains(el)) continue;
-    if (el.matches(DARK_SURFACE_SELECTOR)) return true;
-    // rgb()/rgba() give 0–255 channels; color-mix() results serialize as
-    // color(srgb r g b / a) with 0–1 channels. A fourth number is the alpha.
-    const fill = window.getComputedStyle(el).backgroundColor;
-    const scale = fill.startsWith("color(") ? 255 : 1;
-    const channels = (fill.match(/[\d.]+/g) || []).map(Number);
-    const [r = 0, g = 0, b = 0, alpha] = channels;
-    if (channels.length < 3 || (alpha !== undefined && alpha < 0.5)) continue;
-    const luma = (0.2126 * r + 0.7152 * g + 0.0722 * b) * scale;
-    return !!el.closest(DARK_SURFACE_SELECTOR) && luma < 96;
-  }
-  return false;
+/** A chapter's own name, for the small eyebrow above its H2 (type roles,
+    2026-11-23): the same words the chip and sheet show, so the page adds no
+    new copy and the two never drift apart. */
+export function chapterLabel(chapters: CaseStudyChapter[], id: string): string {
+  return chapters.find((chapter) => chapter.id === id)?.label ?? "";
 }
 
 /**
@@ -52,24 +22,18 @@ export function isOverDarkSurface(x: number, y: number, ignore: Element | null):
  * that only says where you *can* go — never where you *are* — leaves them to
  * re-scan the page to reorient.
  *
- * One <nav>, two layouts, chosen by CSS (riso-page.css, "chapter nav"):
- *  - Wide screens (room left of the content column): a fixed column of plain
- *    links under the site's dock pill, the current chapter marked.
- *  - Everything narrower: a floating bottom chip — previous, the current
- *    chapter (a toggle that opens the full list as a sheet), next. The sheet
- *    IS the same link list the column shows, so there is one set of links.
+ * One layout at every width (2026-11-23, "one chip for every width"): a
+ * floating bottom chip — previous, the current chapter (a toggle that opens
+ * the full list as a sheet), next. The chip also carries the "NN% left"
+ * length cue, so it is the only reading chrome on the page.
  *
  * Active tracking uses the reference-line approach from Navbar rather than an
  * IntersectionObserver threshold: sections here are routinely taller than the
  * viewport, so "30% visible" never becomes true for the tall ones.
- *
- * The wide column is fixed, so the dark --forest stages scroll under it. The
- * same rAF-throttled pass marks each row that has a dark stage behind it
- * (.is-on-dark) and the CSS switches that row to the on-dark inks.
  */
 /**
  * @status: stable
- * @purpose: Renders the self-highlighting chapter navigation for long case-study pages (English and Spanish): a fixed left column of chapter links on wide screens, and a floating previous / current-chapter / next chip with a chapter sheet on narrower ones.
+ * @purpose: Renders the self-highlighting chapter navigation for long case-study pages (English and Spanish): one floating previous / current-chapter / next chip at every width, with the chapter list as a sheet and the "NN% left" reading cue inside the chip.
  */
 export default function CaseStudyChapters({
   project,
@@ -96,16 +60,13 @@ export default function CaseStudyChapters({
   progress?: boolean;
 }) {
   const [active, setActive] = useState<string>("");
-  // Opening composition still on screen: the column would sit over the hero.
+  // Opening composition still on screen: the chip waits until the hero is read.
   const [shown, setShown] = useState(false);
-  // The footer is in view: get out of its way.
+  // The page's ending (Next case study, then the closing band with the footer
+  // on it) is in view: get out of its way.
   const [past, setPast] = useState(false);
   const [open, setOpen] = useState(false);
   const [announce, setAnnounce] = useState("");
-  // Wide column only: which rows sit over a dark stage, one "1"/"0" per row
-  // (the label, then each link), so a band edge crossing the column flips
-  // only the rows it covers. "" when none / not the column layout.
-  const [onDark, setOnDark] = useState("");
   const left = useReadingLeft();
   const listId = useId();
   const navRef = useRef<HTMLElement>(null);
@@ -125,25 +86,20 @@ export default function CaseStudyChapters({
     const ids = chapters.map((chapter) => chapter.id);
     const update = () => {
       const hero = ids[0] ? document.getElementById(ids[0]) : null;
-      // Same 24vh line the column's top sits on.
       setShown(!hero || hero.getBoundingClientRect().bottom <= window.innerHeight * 0.24);
       const container = navRef.current?.parentElement;
-      setPast(!!container && container.getBoundingClientRect().bottom < window.innerHeight - 8);
-      // Each row is tested at its own center against what's painted under it.
-      const nav = navRef.current;
-      let rows = "";
-      if (nav && window.matchMedia?.(COLUMN_QUERY).matches) {
-        const items = [nav.querySelector(".rp-chapters__label"), ...Array.from(nav.querySelectorAll(".rp-chapters__list > li"))];
-        rows = items
-          .map((item) => {
-            const box = item?.getBoundingClientRect();
-            if (!box || box.height === 0) return "0";
-            return isOverDarkSurface(box.left + box.width / 2, box.top + box.height / 2, nav) ? "1" : "0";
-          })
-          .join("");
-        if (!rows.includes("1")) rows = "";
-      }
-      setOnDark(rows);
+      // The ending starts at "Next case study" (above the band) or, without
+      // one, at the closing band. Pages without either fall back to the end of
+      // the page's own container.
+      const ending =
+        document.querySelector(".rp-next") ||
+        document.querySelector(".rp-close")?.closest(".rp-section") ||
+        null;
+      setPast(
+        ending
+          ? ending.getBoundingClientRect().top < window.innerHeight * 0.9
+          : !!container && container.getBoundingClientRect().bottom < window.innerHeight - 8,
+      );
       if (Date.now() < activeLockUntil.current) return;
       const line = Math.min(240, window.innerHeight * 0.3);
       let currentId = "";
@@ -282,17 +238,14 @@ export default function CaseStudyChapters({
     setAnnounce(chapter.label);
   };
 
-  const rowDark = (row: number) => onDark[row] === "1";
   const positionLine = current ?`${index + 1} ${ofLabel} ${linked.length}` : "";
 
   return (
     <nav
       ref={navRef}
-      className={`rp-chapters${shown ? " is-shown" : ""}${past ? " is-past" : ""}${open ? " is-open" : ""}${onDark ? " is-on-dark" : ""}`}
+      className={`rp-chapters${shown ? " is-shown" : ""}${past ? " is-past" : ""}${open ? " is-open" : ""}`}
       aria-label={ariaLabel || `${project} case study chapters`}
     >
-      <p className={`rp-chapters__label${rowDark(0) ? " is-on-dark" : ""}`}>{jumpLabel}</p>
-
       <div className="rp-chapters__chip">
         <button
           type="button"
@@ -334,8 +287,8 @@ export default function CaseStudyChapters({
       </div>
 
       <ol className="rp-chapters__list" id={listId}>
-        {linked.map((chapter, i) => (
-          <li key={chapter.id} className={rowDark(i + 1) ? "is-on-dark" : undefined}>
+        {linked.map((chapter) => (
+          <li key={chapter.id}>
             <a
               href={`#${chapter.id}`}
               onClick={(event) => onLink(event, chapter)}

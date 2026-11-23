@@ -468,8 +468,8 @@
    --sp-2xl as the page's single movement break. */
 .rp-section { position: relative; padding-block: var(--sp-xl); }
 .rp-section--alt { background: var(--paper-2); border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); }
-.rp-section--alt .rp-kicker,
-.rp-decisionStory__head .rp-kicker { color: var(--ink); }
+/* Eyebrows stay green on the paper-2 bands too (4.8:1), so the role reads
+   the same everywhere (2026-11-23, I4-S4); they used to switch to ink here. */
 .rp-kicker { font-family: var(--label); font-size: var(--rp-type-floor); letter-spacing: .12em; text-transform: uppercase; color: var(--green); font-weight: 700; } /* green, not coral: 2026-11-22 coral pass */
 .rp-title { font-size: var(--ts-h2); font-weight: 800; line-height: 1.05; letter-spacing: -.015em; margin: .5rem 0 0; text-wrap: balance; }
 
@@ -3082,7 +3082,6 @@ html.rp-filmChoreo.rp-filmChoreo--go .rp-hero__content::after {
     border: 2px solid Highlight;
     forced-color-adjust: none;
   }
-  .rp-chapters a.is-active { border-left-width: 4px; }
   /* The Before/After switches, the Mobbin screen dots and the nav's current item lost their
      selected fill in this mode (a11y audit, 2026-11-10): the pressed option was
      indistinguishable from the other. A system-colour fill and border carry it instead. */
@@ -3162,74 +3161,6 @@ html.cs-chrome .riso-page .fp-indexLens[id] { scroll-margin-top: calc(var(--cs-c
 @media (max-width: 760px) {
   html.cs-chrome .riso-page .fp-receipt[id],
   html.cs-chrome .riso-page .fp-indexLens[id] { scroll-margin-top: calc(var(--cs-chrome-h) + 52px); }
-}
-
-/* ---------- reading progress ---------- */
-/* Right edge, vertically centered, and deliberately short: the bottom-right
-   corner belongs to the recruiter pill (bottom 1.75rem) and back-to-top
-   (bottom 5.5rem), and fixed-control collisions have been a defect here before.
-   Flush to the edge so it reads as a margin mark, not a floating widget. */
-.rp-progress {
-  position: fixed;
-  right: 0;
-  top: 50%;
-  z-index: 38;
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-  gap: .6rem;
-  padding: 0 .7rem 0 0;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity .25s ease, visibility .25s ease;
-  pointer-events: none;
-}
-.rp-progress.is-shown { opacity: 1; visibility: visible; }
-.rp-progress__track {
-  position: relative;
-  order: 2;
-  width: 2px;
-  height: min(38vh, 320px);
-  background: color-mix(in srgb, var(--ink) 16%, transparent);
-}
-.rp-progress__fill {
-  position: absolute;
-  inset: 0;
-  background: var(--coral);
-  transform-origin: top;
-}
-.rp-progress__tick {
-  position: absolute;
-  right: -3px;
-  width: 8px;
-  height: 1px;
-  background: color-mix(in srgb, var(--ink) 34%, transparent);
-}
-.rp-progress__label {
-  order: 1;
-  margin: 0;
-  text-align: right;
-  font-family: var(--label);
-  line-height: 1.1;
-  color: var(--muted);
-}
-.rp-progress__label b { display: block; font-size: .78rem; color: var(--ink); }
-.rp-progress__label span { font-size: .55rem; letter-spacing: .12em; text-transform: uppercase; }
-.rp-progress--numeric .rp-progress__label { padding-right: .2rem; }
-
-/* Below the tablet breakpoint the screen edges are too tight for the fixed
-   rail; the chapter chip (CaseStudyChapters) carries the same "NN% left"
-   number there instead. */
-@media (max-width: 900px) {
-  .rp-progress { display: none; }
-}
-/* The fill is a position readout, not an animation. Reduced motion keeps the
-   value and drops the reveal and fill transitions. */
-@media (prefers-reduced-motion: reduce) {
-  .rp-progress,
-  .rp-progress__fill,
-  .rp-chapters,
-  .rp-chapters a { transition: none; }
 }
 
 /* ---------- about: story chapters in the riso system ---------- */
@@ -3483,8 +3414,6 @@ h2.rp-kicker { margin: 0 0 .4rem; line-height: 1.3; }
 .rp-rank__pct,
 .rp-nowReading span,
 .rp-testimonial figcaption span,
-.rp-progress__label b,
-.rp-progress__label span,
 .rp-patternList li::before {
   font-size: var(--rp-type-floor);
 }
@@ -3747,15 +3676,47 @@ body .site-footer__label {
   text-transform: none;
 }
 
+/* ---------- Heading roles (2026-11-23, Hillary's pick I4-S4) ----------
+   Three heading sizes with a job each, plus two labelled roles. Tokens live
+   in portfolio-cohesion.css (--ts-close, --ts-h2, --ts-h3, --ts-result).
+   The eyebrow is the one exception to the sentence-case chrome rule above:
+   small tracked caps in green, used for each chapter's name over its H2 and
+   for list labels ("Selected work."), so the H2s can differ by role instead
+   of all reading as peers. Every eyebrow word already exists on the page (the
+   chapter chip shows the same names). */
+.riso-page .rp-kicker {
+  margin: 0 0 .6rem;
+  font-family: var(--sans);
+  font-size: var(--ts-label);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+/* Home and MSK force the display face onto every heading with !important
+   (above); the list label is an h2 for structure but a label by role. */
+body:has(.riso-home) .riso-home h2.rp-kicker { font-family: var(--sans) !important; }
+.riso-home #projects .rp-workHead { align-items: center; }
+/* Section H2s share one weight; the MSK receipt and the Logistics cinema set
+   theirs at 700. */
+.riso-page .fp-receipt h2,
+.riso-page .rp-cinema__bridge h2 { font-weight: 800; }
+/* The closing ask is a size above the chapter headings. */
+.riso-page .rp-section > .rp-close > h2 { font-size: var(--ts-close); text-wrap: balance; }
+/* Minor H3s: one size. */
+.riso-page :is(.fp-redesigns h3, .fp-themes h3, .fp-readerNeeds__title, .fp-findings h3, .fp-workSplit h3, .rp-decisionStory__steps h3, .rp-subhead) {
+  font-size: var(--ts-h3);
+}
+.riso-page .fp-redesigns--logistics article:first-child h3 { font-size: var(--ts-h3); }
+
 /* Page-level labels (read times, badges, captions, definition terms, log tags)
    follow the same sentence-case rule as the chrome above. Labels inside product
    reconstructions (.msk-dashboard-mockup, .rp-demoCard, .rp-cinema__artifact,
    .rp-typescale, notification cards) keep their tracked caps: that is the
    product's voice, not the site's. */
 #root :is(
-  .fp-proofLink span, .rp-progress__label span, .fp-sequence__controls button,
+  .fp-proofLink span, .fp-sequence__controls button,
   .fp-blueprint button, .fp-blueprint__switch *,
-  .rp-progress__label,
   .rp-readtime,
   .rp-readtime *,
   .rp-badge,
@@ -3814,8 +3775,6 @@ body .site-footer__label {
   .riso-home .rp-hero__media .rp-headshot { max-height: 100%; overflow: hidden; }
   .riso-home .rp-hero__media .rp-headshot img { height: 100%; object-fit: cover; object-position: 50% 15%; }
 }
-/* The reading-progress number sits on a plate so it reads over dark stages too. */
-.rp-progress__label { background: var(--paper); padding: .2rem .35rem; border: 1px solid var(--hair); border-radius: 4px; }
 /* MSK hero lines up with the other five: plate top meets the artifact label top. */
 .flagship-page--msk .rp-hero { align-items: start; }
 
@@ -3964,6 +3923,16 @@ body:has(.riso-home) .riso-home .rp-index__title {
   .rp-index__row--visual .rp-index__visual { grid-column: 1 / -1; grid-row: 2; margin-top: .5rem; max-width: none; }
 }
 @media (prefers-reduced-motion: reduce) { .rp-index__shot--cover { transition: none; } }
+/* Proof strip docked to the bottom of the hero (2026-11-23, pick I2-S4).
+   The blank strip under the hero becomes the top of the work list: the
+   hero's own 1px ink line is the list's top rule (one line, both jobs), the
+   "Selected work." label sits right under it, and the first row's title
+   starts at the top of its row so it shows above the fold. */
+.riso-home #projects { padding-top: 1rem; }
+.riso-home #projects .rp-workHead { padding-bottom: 0; }
+.riso-home #projects > .rp-wrap > .rp-index > .rp-index__list { border-top: 0; }
+.riso-home #projects > .rp-wrap > .rp-index > .rp-index__list > li:first-child .rp-index__row { padding-top: .5rem; }
+.riso-home #projects > .rp-wrap > .rp-index > .rp-index__list > li:first-child .rp-index__row--visual { align-items: start; }
 /* The "+" fold under the index: the open/close state reads as a plus/minus mark. */
 .riso-home #home-more-work { margin-top: 1rem; }
 .riso-home #home-more-work .rp-deepDive__state { font-size: 1.75rem; line-height: 1; font-weight: 400; }
@@ -4085,6 +4054,25 @@ body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-g
 }
 .rp-phoneReel__screen img.is-on { opacity: 1; }
 @media (prefers-reduced-motion: reduce) { .rp-phoneReel__screen img { transition: none; } }
+/* Two phones, tilted, bleeding off the frame (2026-11-23, pick I1-S2). The
+   current screen sits in front at -4deg, the previous one behind at +5deg, both at
+   full strength (70% opacity washed the back screen out). Each phone keeps its true tall shape (390:844 or the guide's 452:800)
+   and fits the frame's height; cropping the bottom made them read as squares. */
+.rp-index__visual:has(.rp-phonePair) { padding: 0; }
+/* Phone rows get a portrait frame (4:5), not the 16:10 plate the queue and the
+   map use: in a wide box the phones were small and read as squares. */
+.rp-index__row--visual .rp-index__visual:has(.rp-phonePair) { aspect-ratio: 4 / 5; }
+.rp-phonePair { position: absolute; inset: 0; }
+.rp-phonePair .rp-phoneReel {
+  position: absolute; height: 76%; width: auto; aspect-ratio: var(--phone-ar, 390 / 844);
+  border-radius: var(--r-device);
+}
+.rp-phonePair .rp-phoneReel__screen { height: 100%; width: 100%; aspect-ratio: auto; }
+.rp-phonePair .rp-phoneReel--front {
+  right: 7%; top: 12%; z-index: 2; transform: rotate(-4deg);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ink) 25%, transparent);
+}
+.rp-phonePair .rp-phoneReel--back { right: 40%; top: 7%; z-index: 1; transform: rotate(5deg); }
 .rp-workHead { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem 1rem; }
 .rp-reelToggle {
   min-height: 44px; padding: 0 .25rem; border: 0; background: none; cursor: pointer;
@@ -4799,250 +4787,153 @@ html.cs-chrome .nav-dock__pill .nav-dock__track { flex: 0 0 auto; }
 }
 .flagship-page .rp-demoLoop__btn { border-radius: var(--r-control); }
 
-/* ---------- Chapter nav (CaseStudyChapters, 2026-11-20) ----------
-   One <nav>, two layouts. Hillary picked both from live mockups: "option 5,
-   placement A" for wide screens, "M8" for everything narrower.
+/* ---------- Chapter nav (CaseStudyChapters) ----------
+   One chip for every width (2026-11-23, Hillary's pick I6-S4). The fixed
+   left column (>= 1420px) and the right-edge "% left" rail are gone: the
+   floating bottom-center chip — previous / current chapter (a toggle) /
+   next — is the only chapter nav, and it carries the "NN% left" cue. The
+   toggle opens the same link list as a sheet above the chip.
 
-   Wide (>= 1420px): a fixed column of plain links under the dock pill, left
-   of the content. The content column is .rp-wrap's 1080px box plus the page
-   gutter, so its text starts at (100vw - 1080px) / 2 + gutter. The column
-   ends 24px before that, starts no closer than 16px to the screen edge, and
-   is at most 216px wide. Below 1420px it is too narrow for "In this case
-   study" on one line (and soon covers text), so the chip takes over there,
-   not at 900px as first sketched: the mockup assumed a 720px content
-   column.
+   Sage glass with a 1px rule, not the old solid ink pill, so it reads as
+   part of the paper. Its fill is 90% paper, so the ink text keeps its
+   contrast over the dark --forest bands as well as over paper.
 
-   It fades in once the hero has scrolled above its top line (24vh), so it
-   never sits over the hero's full-width headline, and fades out while the
-   footer is in view. Hidden states use opacity, not visibility, so the links
-   stay in the tab order; keyboard focus inside (:focus-visible) brings them
-   back. A mouse click does not, so a clicked link never pins it over the
-   footer.
-
-   Narrow (< 1420px): a floating bottom-center chip, previous / current
-   chapter (a toggle) / next. The toggle opens the same link list as a sheet
-   above the chip. Collisions checked 2026-11-20: the recruiter pill and the
-   back-to-top button the .rp-progress note mentions are no longer rendered
-   (see App.css, route-dock redesign), and the right-edge rail is vertically
-   centered and hidden below 900px, so nothing else owns the bottom center.
-   The chip hides while the footer is in view so it never covers footer
-   links. */
+   It fades in once the hero has scrolled above 24vh, and fades out while
+   the closing band is in view so it never covers the footer links. Hidden
+   states use opacity, so the buttons stay in the tab order; keyboard focus
+   inside (:focus-visible) brings it back. */
 .rp-chapters {
-  --rp-col-max: 216px;
-  --rp-col-edge: 16px;
-  --rp-col-gap: 24px;
-  --rp-content-left: calc((100vw - 1080px) / 2 + var(--sp-gutter));
+  --rp-chip-edge: color-mix(in srgb, var(--ink) 50%, var(--paper));
+  position: fixed;
+  z-index: 60;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
   font-family: var(--sans);
   transition: opacity var(--dur-fast) var(--ease-soft);
 }
+.rp-chapters.is-shown, .rp-chapters.is-open, .rp-chapters:has(:focus-visible) { opacity: 1; }
+.rp-chapters.is-past:not(:has(:focus-visible)):not(.is-open) { opacity: 0; }
 .rp-chapters__list { list-style: none; margin: 0; padding: 0; counter-reset: rp-chapter; }
 .rp-chapters__list li { counter-increment: rp-chapter; }
 .rp-chapters a { text-decoration: none; }
-
-@media (min-width: 1420px) {
-  .rp-chapters {
-    position: fixed;
-    z-index: 30;
-    top: 24vh;
-    left: max(var(--rp-col-edge), calc(var(--rp-content-left) - var(--rp-col-gap) - var(--rp-col-max)));
-    width: min(var(--rp-col-max), calc(var(--rp-content-left) - var(--rp-col-gap) - var(--rp-col-edge)));
-    max-height: 70vh;
-    overflow-y: auto;
-    opacity: 0;
-    pointer-events: none;
-  }
-  /* The 1px line is drawn per row (label and each item, which stack with no
-     gap) rather than on the nav, so it can flip with its row over a dark
-     stage. Same line as before on paper. */
-  .rp-chapters .rp-chapters__label,
-  .rp-chapters__list li { border-left: 1px solid var(--hair); }
-  .rp-chapters.is-shown { opacity: 1; pointer-events: auto; }
-  .rp-chapters.is-past { opacity: 0; pointer-events: none; }
-  .rp-chapters:has(:focus-visible) { opacity: 1; pointer-events: auto; }
-  .rp-chapters .rp-chapters__label {
-    margin: 0;
-    padding: 0 0 10px 16px;
-    font-family: var(--sans);
-    font-size: var(--ts-label);
-    font-weight: 600;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .rp-chapters__chip { display: none; }
-  .rp-chapters a {
-    display: block;
-    padding: 7px 0 7px 16px;
-    margin-left: -1px;
-    border-left: 2px solid transparent;
-    font-size: var(--ts-small);
-    font-weight: 500;
-    line-height: 1.3;
-    color: var(--ink-2);
-  }
-  .rp-chapters a:hover { color: var(--ink); }
-  .rp-chapters a:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: -3px; }
-  /* Weight carries the state as well as color and the green rule, so it
-     survives grayscale, forced colors, and color-vision differences. */
-  .rp-chapters a.is-active { color: var(--ink); font-weight: 700; border-left-color: var(--green); }
-
-  /* Over a dark stage (2026-11-22). The column is fixed, so the --forest
-     bands scroll under it and the paper inks above vanish there (label
-     2.6:1, links 2:1, the active item 1.1:1). CaseStudyChapters tests what
-     is painted behind each row and marks it .is-on-dark; that row switches
-     to the fixed on-dark inks the bands themselves use. These do not flip
-     with the theme, so dark mode gets the same values over a band.
-     Measured on --forest in Chrome: label 9.0:1, links 11.2:1, active
-     14.9:1, mint rule 9.8:1 (re-measure before lowering an alpha). */
-  .rp-chapters .rp-chapters__label.is-on-dark,
-  .rp-chapters__list li.is-on-dark {
-    --focus-ring: var(--mint-on-dark);
-    --focus: var(--mint-on-dark);
-    border-left-color: color-mix(in srgb, var(--ink-on-dark) 24%, transparent);
-  }
-  .rp-chapters .rp-chapters__label.is-on-dark { color: color-mix(in srgb, var(--ink-on-dark) 76%, transparent); }
-  .rp-chapters__list li.is-on-dark a { color: color-mix(in srgb, var(--ink-on-dark) 86%, transparent); }
-  .rp-chapters__list li.is-on-dark a:hover,
-  .rp-chapters__list li.is-on-dark a.is-active { color: var(--ink-on-dark); }
-  .rp-chapters__list li.is-on-dark a.is-active { border-left-color: var(--mint-on-dark); }
+.rp-chapters__chip {
+  position: fixed;
+  left: 50%;
+  bottom: max(14px, env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  display: flex;
+  align-items: stretch;
+  max-width: calc(100vw - 20px);
+  border-radius: 999px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--paper) 90%, transparent);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--rp-chip-edge);
+  color: var(--ink);
 }
-/* Only a short color change as a band edge passes; no movement. */
-@media (min-width: 1420px) and (prefers-reduced-motion: no-preference) {
-  .rp-chapters .rp-chapters__label,
-  .rp-chapters__list li,
-  .rp-chapters__list a {
-    transition: color var(--dur-fast) var(--ease-soft), border-color var(--dur-fast) var(--ease-soft);
-  }
+.rp-chapters.is-shown .rp-chapters__chip,
+.rp-chapters.is-open .rp-chapters__chip,
+.rp-chapters:has(:focus-visible) .rp-chapters__chip { pointer-events: auto; }
+.rp-chapters.is-past:not(:has(:focus-visible)):not(.is-open) .rp-chapters__chip { pointer-events: none; }
+.rp-chapters__chip button {
+  appearance: none;
+  margin: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  min-height: 44px;
 }
+.rp-chapters__chip .rp-chapters__step { min-width: 44px; padding: 0 14px; font-size: 1.25rem; font-weight: 700; line-height: 1; }
+.rp-chapters__chip .rp-chapters__step:hover:not([aria-disabled="true"]) { background: var(--paper-2); }
+.rp-chapters__chip .rp-chapters__step[aria-disabled="true"] { opacity: .3; cursor: default; }
+.rp-chapters__chip .rp-chapters__toggle {
+  flex: 1 1 auto;
+  min-width: 12.5rem;
+  max-width: 16rem;
+  padding: 4px 14px;
+  border-inline: 1px solid var(--rp-chip-edge);
+  text-align: center;
+  line-height: 1.15;
+}
+.rp-chapters__chip .rp-chapters__toggle:hover { background: var(--paper-2); }
+.rp-chapters__toggle b {
+  display: block;
+  font-size: var(--ts-small);
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rp-chapters__toggle small {
+  display: block;
+  font-size: var(--ts-label);
+  font-weight: 500;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.rp-chapters__chip button:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: -4px; border-radius: 999px; }
 
-@media (max-width: 1419.98px) {
-  .rp-chapters {
-    position: fixed;
-    z-index: 60;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 0;
-    opacity: 0;
-    pointer-events: none;
-  }
-  .rp-chapters.is-shown, .rp-chapters.is-open, .rp-chapters:has(:focus-visible) { opacity: 1; }
-  .rp-chapters.is-past:not(:has(:focus-visible)):not(.is-open) { opacity: 0; }
-  .rp-chapters__label { display: none; }
-  .rp-chapters__chip {
-    position: fixed;
-    left: 50%;
-    bottom: max(14px, env(safe-area-inset-bottom));
-    transform: translateX(-50%);
-    display: flex;
-    align-items: stretch;
-    max-width: calc(100vw - 20px);
-    border-radius: 999px;
-    overflow: hidden;
-    background: var(--ink);
-    color: var(--paper);
-    box-shadow: 0 8px 24px color-mix(in srgb, #000 28%, transparent);
-  }
-  .rp-chapters.is-shown .rp-chapters__chip,
-  .rp-chapters.is-open .rp-chapters__chip,
-  .rp-chapters:has(:focus-visible) .rp-chapters__chip { pointer-events: auto; }
-  .rp-chapters.is-past:not(:has(:focus-visible)):not(.is-open) .rp-chapters__chip { pointer-events: none; }
-  .rp-chapters__chip button {
-    appearance: none;
-    margin: 0;
-    border: 0;
-    background: none;
-    color: inherit;
-    font: inherit;
-    cursor: pointer;
-    min-height: 48px;
-  }
-  .rp-chapters__chip .rp-chapters__step { min-width: 48px; padding: 0 16px; font-size: 1.25rem; font-weight: 700; line-height: 1; }
-  .rp-chapters__chip .rp-chapters__step[aria-disabled="true"] { opacity: .3; cursor: default; }
-  .rp-chapters__chip .rp-chapters__toggle {
-    flex: 1 1 auto;
-    min-width: 12.5rem;
-    max-width: 16rem;
-    padding: 7px 14px;
-    border-inline: 1px solid color-mix(in srgb, var(--paper) 19%, transparent);
-    text-align: center;
-    line-height: 1.15;
-  }
-  .rp-chapters__toggle b {
-    display: block;
-    font-size: var(--ts-small);
-    font-weight: 700;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .rp-chapters__toggle small {
-    display: block;
-    font-size: var(--ts-label);
-    font-weight: 500;
-    color: color-mix(in srgb, var(--paper) 78%, var(--ink));
-    font-variant-numeric: tabular-nums;
-    white-space: nowrap;
-  }
-  .rp-chapters__chip button:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: -4px; border-radius: 999px; }
-
-  /* The sheet: the same link list, opened above the chip. */
-  .rp-chapters__list {
-    position: fixed;
-    left: 10px;
-    right: 10px;
-    bottom: calc(max(14px, env(safe-area-inset-bottom)) + 58px);
-    display: none;
-    flex-direction: column;
-    max-height: calc(100vh - 160px);
-    overflow-y: auto;
-    padding: 6px;
-    background: var(--paper);
-    border: 1px solid var(--ink);
-    border-radius: 14px;
-    box-shadow: 0 18px 40px color-mix(in srgb, #000 22%, transparent);
-    pointer-events: auto;
-  }
-  .rp-chapters.is-open .rp-chapters__list { display: flex; }
-  .rp-chapters__list a {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    min-height: 44px;
-    padding: 10px 14px;
-    border-radius: 8px;
-    font-size: var(--ts-small);
-    font-weight: 600;
-    color: var(--ink);
-  }
-  .rp-chapters__list a::before {
-    content: counter(rp-chapter, decimal-leading-zero);
-    content: counter(rp-chapter, decimal-leading-zero) / "";
-    flex: 0 0 2ch;
-    font-family: var(--display, var(--sans));
-    font-weight: 700;
-    color: var(--coral-text, var(--coral));
-  }
-  .rp-chapters__list a:hover { background: var(--paper-2); }
-  .rp-chapters__list a.is-active { background: var(--paper-2); }
-  .rp-chapters__list a:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: -3px; }
+/* The sheet: the link list, opened above the chip. Capped at the reading
+   measure so it stays a sheet, not a full-width banner, on wide screens. */
+.rp-chapters__list {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(26rem, calc(100vw - 20px));
+  bottom: calc(max(14px, env(safe-area-inset-bottom)) + 54px);
+  display: none;
+  flex-direction: column;
+  max-height: calc(100vh - 160px);
+  overflow-y: auto;
+  padding: 6px;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  border-radius: 14px;
+  box-shadow: 0 18px 40px color-mix(in srgb, #000 22%, transparent);
+  pointer-events: auto;
 }
-/* Where the page has the right-edge rail, it already shows "NN% left" from
-   901px up; the chip drops its copy there so the number is never on screen
-   twice. (The Spanish pages have no rail, so their chip keeps it.) */
-@media (min-width: 901px) {
-  .riso-page:has(.rp-progress) .rp-chapters__left { display: none; }
+.rp-chapters.is-open .rp-chapters__list { display: flex; }
+.rp-chapters__list a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: var(--ts-small);
+  font-weight: 600;
+  color: var(--ink);
 }
+.rp-chapters__list a::before {
+  content: counter(rp-chapter, decimal-leading-zero);
+  content: counter(rp-chapter, decimal-leading-zero) / "";
+  flex: 0 0 2ch;
+  font-family: var(--display, var(--sans));
+  font-weight: 700;
+  color: var(--coral-text, var(--coral));
+}
+.rp-chapters__list a:hover { background: var(--paper-2); }
+/* Weight and fill carry the state, so it survives grayscale and color-vision
+   differences. */
+.rp-chapters__list a.is-active { background: var(--paper-2); font-weight: 700; }
+.rp-chapters__list a:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: -3px; }
 @media (prefers-reduced-motion: reduce) {
   .rp-chapters { transition: none; }
 }
+@media (prefers-reduced-transparency: reduce) {
+  .rp-chapters__chip { background: var(--paper); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
 @media (forced-colors: active) {
   .rp-chapters__chip { border: 1px solid CanvasText; }
-  .rp-chapters a.is-active,
-  .rp-chapters__list li.is-on-dark a.is-active { forced-color-adjust: none; border-left-color: Highlight; }
-  /* forced-color-adjust: none keeps the on-dark cream too; system ink
-     instead, so the active item never goes light-on-Canvas. */
-  .rp-chapters__list li.is-on-dark a.is-active { color: CanvasText; }
+  .rp-chapters__list a.is-active { forced-color-adjust: none; background: Highlight; color: HighlightText; }
 }
 
 
@@ -5139,6 +5030,71 @@ html.cs-chrome .nav-dock__pill .nav-dock__track { flex: 0 0 auto; }
     -webkit-backdrop-filter: none; backdrop-filter: none;
     border-color: CanvasText; box-shadow: none;
   }
+}
+
+/* ---------- One ending: closing band + footer (2026-11-23, pick I3-S3) ----------
+   On every page with the collage closing (Home, the case studies, the Spanish
+   pages), the footer reads as the bottom strip of that band instead of a
+   separate black band under it. The footer stays its own <footer> landmark
+   after <main>, not nested in the section: it is pulled up over the band's
+   bottom edge by its own height, and its row sits on a forest strip that lets
+   the painting show through. The band grows by the same height so the glass
+   panel stays centered in the part above the strip. The address and Copy
+   are already in the panel, so the footer's copy is hidden there. About and
+   404 have no collage closing and keep the plain footer.
+   Tab order follows the DOM: Next case study (moved above the band), the
+   panel, then the footer links. */
+:root { --close-foot-h: 3.5rem; }
+@media (max-width: 700px) {
+  :root { --close-foot-h: 5.5rem; }
+}
+.riso-page .rp-section:has(> .rp-close) {
+  position: relative;
+  box-sizing: border-box;
+  min-height: 35rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: calc(var(--close-pad) + var(--close-foot-h));
+}
+@media (max-width: 700px) {
+  .riso-page .rp-section:has(> .rp-close) { min-height: 0; }
+}
+body:has(.riso-page .rp-section > .rp-close) .site-footer {
+  position: relative;
+  z-index: 1;
+  margin-top: calc(-1 * var(--close-foot-h));
+  padding: 0;
+  background: none;
+  border-top: 0;
+}
+body:has(.riso-page .rp-section > .rp-close) .site-footer__base {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  min-height: var(--close-foot-h);
+  margin: 0;
+  /* 44px link targets + this = 56px, the strip height. */
+  padding-block: .375rem;
+  background: color-mix(in srgb, var(--forest) 82%, transparent);
+  border-top: 0;
+  color: var(--ink-on-dark);
+}
+body:has(.riso-page .rp-section > .rp-close) .site-footer__baseRow { width: 100%; align-items: center; }
+/* Full ink on the strip: the base row's 62% opacity would drop the
+   copyright below 4.5:1 where a light patch of the painting shows through. */
+body:has(.riso-page .rp-section > .rp-close) .site-footer__base p { opacity: 1; color: var(--ink-on-dark); }
+body:has(.riso-page .rp-section > .rp-close) .site-footer__links a { color: var(--ink-on-dark); }
+body:has(.riso-page .rp-section > .rp-close) .site-footer__links .rp-ext::after { color: var(--coral-on-dark); }
+body:has(.riso-page .rp-section > .rp-close) .site-footer .rp-copyEmail { display: none; }
+@media (max-width: 700px) {
+  body:has(.riso-page .rp-section > .rp-close) .site-footer__baseRow { gap: .5rem; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  body:has(.riso-page .rp-section > .rp-close) .site-footer__base { background: var(--forest); }
+}
+@media (forced-colors: active) {
+  body:has(.riso-page .rp-section > .rp-close) .site-footer__base { background: Canvas; border-top: 1px solid CanvasText; }
 }
 
 /* A close with no headline or sentence (Mobbin, unlisted): only the email
