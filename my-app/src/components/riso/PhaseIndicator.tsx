@@ -14,7 +14,7 @@ import React from "react";
  */
 /**
  * @status: stable
- * @purpose: Renders a determinate segmented progress indicator (e.g. "Phase 2 of 3") with a full-text accessible label; used on the home page and the Grove case study page. Pick this for a discrete, named-phase count — for continuous reading position through a long page use ReadingProgress instead.
+ * @purpose: Renders a determinate segmented progress indicator (e.g. "Phase 2 of 3") with a full-text accessible label; used on the home page and the Grove case study page. Pick this for a discrete, named-phase count — for continuous reading position through a long page, the CaseStudyChapters chip shows "NN% left" (from ReadingProgress's useReadingLeft hook).
  */
 export default function PhaseIndicator({
   current,

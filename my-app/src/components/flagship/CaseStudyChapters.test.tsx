@@ -1,6 +1,6 @@
 import React, { act } from "react";
 import { createRoot, Root } from "react-dom/client";
-import CaseStudyChapters, { isOverDarkSurface } from "./CaseStudyChapters";
+import CaseStudyChapters from "./CaseStudyChapters";
 
 describe("CaseStudyChapters focus behavior", () => {
   let container: HTMLDivElement;
@@ -182,49 +182,5 @@ describe("CaseStudyChapters focus behavior", () => {
     const toggle = container.querySelector(".rp-chapters__toggle");
     expect(toggle?.textContent).toContain("1 de 1");
     expect(toggle?.textContent).toContain("restante");
-  });
-});
-
-// The dark-stage test under the column. elementsFromPoint is stubbed with the
-// paint stack the browser would return, so no layout is mocked.
-describe("isOverDarkSurface", () => {
-  const original = document.elementsFromPoint;
-  const stack = (...els: Element[]) => {
-    document.elementsFromPoint = () => els;
-  };
-  const el = (html: string) => {
-    const wrap = document.createElement("div");
-    wrap.innerHTML = html;
-    document.body.appendChild(wrap);
-    return wrap;
-  };
-  afterEach(() => {
-    document.elementsFromPoint = original;
-    document.body.innerHTML = "";
-  });
-
-  it("is dark over a dark stage, skipping the nav itself", () => {
-    const page = el('<nav id="n"><a>Link</a></nav><section class="rp-override"><div class="rp-wrap"></div></section>');
-    const nav = page.querySelector("#n");
-    stack(nav!.firstElementChild!, nav!, page.querySelector(".rp-wrap")!, page.querySelector(".rp-override")!, document.body);
-    expect(isOverDarkSurface(0, 0, nav)).toBe(true);
-  });
-
-  it("counts a stage's own dark wash layer as dark", () => {
-    const page = el('<section class="rp-cinema"><div class="wash" style="background-color: rgb(16, 33, 21)"></div></section>');
-    stack(page.querySelector(".wash")!, page.querySelector(".rp-cinema")!);
-    expect(isOverDarkSurface(0, 0, null)).toBe(true);
-  });
-
-  it("is not dark over a light card sitting on a stage", () => {
-    const page = el('<section class="rp-outcomeStage"><div class="card" style="background-color: rgb(244, 241, 230)"></div></section>');
-    stack(page.querySelector(".card")!, page.querySelector(".rp-outcomeStage")!);
-    expect(isOverDarkSurface(0, 0, null)).toBe(false);
-  });
-
-  it("is not dark over the page paper, even when the paper is dark (dark mode)", () => {
-    const page = el('<main style="background-color: rgb(23, 24, 17)"><p>Text</p></main>');
-    stack(page.querySelector("p")!, page.querySelector("main")!, document.body);
-    expect(isOverDarkSurface(0, 0, null)).toBe(false);
   });
 });

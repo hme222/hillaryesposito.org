@@ -344,18 +344,33 @@ select:focus-visible {
   border: none;
   pointer-events: none; /* only the pill inside is interactive */
 }
-/* Case-study reading mode (hooks/useCaseStudyChrome.ts sets these classes on
-   <html>, case-study routes only). Scrolling down tucks the dock above the
-   viewport so the chapter strip is the one bar; transform only, so the dock
-   stays in the tab order and in the accessibility tree. Focus inside it
-   brings it straight back - the hook does this too; `:focus-within` covers
-   the frame before its listener runs. No transition until the hook adds
-   `--animate` (never under reduced motion, never on first paint). */
-.cs-chrome--tucked .navbar:not(:focus-within) {
-  transform: translateY(-100%);
+/* Nav that tucks away while reading (2026-11-23, pick I5-S5;
+   hooks/useCaseStudyChrome.ts sets these classes on <html>, every route).
+   Scrolling down slides the dock up out of the window and fades it; a
+   deliberate scroll up, the top of the page, a Tab press or focus inside it
+   brings it back. Transform and opacity only, so nothing below it moves
+   (no layout shift) and it stays in the tab order and the accessibility
+   tree. `:focus-within` covers the frame before the hook's listener runs.
+   One orchestrated feel: it leaves quickly on a plain ease, and returns on
+   the site's spring (--ease-spring, a slight overshoot) so it settles into
+   place. No transition until the hook adds `--animate` (never on first
+   paint), and under reduced motion the hook never tucks at all. */
+.nav-tucked .navbar:not(:focus-within) {
+  transform: translateY(-110%);
+  opacity: 0;
 }
-.cs-chrome--animate .navbar {
-  transition: transform var(--dur-fast) var(--ease-soft);
+.nav-tuck--animate .navbar {
+  transition:
+    transform var(--dur) var(--ease-spring),
+    opacity var(--dur-fast) var(--ease-out);
+}
+.nav-tuck--animate.nav-tucked .navbar:not(:focus-within) {
+  transition:
+    transform var(--dur-fast) var(--ease-soft),
+    opacity var(--dur-fast) var(--ease-soft);
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-tucked .navbar { transform: none; opacity: 1; }
 }
 .nav-dock__pill {
   /* Containing block for its own ::after (the opening film's transient

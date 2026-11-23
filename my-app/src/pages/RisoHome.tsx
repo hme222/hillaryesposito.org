@@ -98,6 +98,7 @@ export default function RisoHome() {
     ),
     "/case-study/ux-woman": (
       <PhoneReel
+        pair
         paused={reelsPaused}
         aspect="452 / 800"
         label={lang === "es" ? "Pantallas de la guía (concepto)" : "Guide concept screens"}
@@ -110,6 +111,7 @@ export default function RisoHome() {
     ),
     "/case-study/grove": (
       <PhoneReel
+        pair
         paused={reelsPaused}
         label={lang === "es" ? "Pantallas de FloraGrove" : "FloraGrove screens"}
         frames={[
@@ -122,6 +124,7 @@ export default function RisoHome() {
     ),
     "/case-study/knowunity": (
       <PhoneReel
+        pair
         paused={reelsPaused}
         label={lang === "es" ? "Pantallas de Say It Back" : "Say It Back screens"}
         frames={[
@@ -193,7 +196,7 @@ export default function RisoHome() {
       <section className="rp-section" id="projects" aria-labelledby="home-work-title" data-visual="true">
         <div className="rp-wrap">
           <div className="rp-workHead">
-            <h2 className="rp-title" id="home-work-title">{t("home.riso.workTitle")}</h2>
+            <h2 className="rp-kicker" id="home-work-title">{t("home.riso.workTitle")}</h2>
             <button type="button" className="rp-reelToggle" aria-pressed={reelsPaused} onClick={() => setReelsPaused((p) => !p)}>
               {reelsPaused ? (lang === "es" ? "Reproducir pantallas" : "Play screens") : (lang === "es" ? "Pausar pantallas" : "Pause screens")}
             </button>
