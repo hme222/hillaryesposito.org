@@ -110,14 +110,9 @@ describe("healthcare product designer hiring path", () => {
       "https://hme222.github.io/MTA_Accessibility_Trip_Planning/",
     ]);
 
-    const contact = container.querySelector<HTMLElement>("#contact")!;
-    const email = contact.querySelector<HTMLAnchorElement>('a[href="mailto:espositohillary@gmail.com"]');
-    const resume = contact.querySelector<HTMLAnchorElement>('a[href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"]');
-
-    expect(email?.textContent).toContain("contact.note");
-    expect(resume?.textContent).toContain("View résumé");
-    expect(resume?.getAttribute("target")).toBe("_blank");
-    expect(resume?.getAttribute("rel")).toBe("noopener noreferrer");
-    expect(resume?.getAttribute("aria-label")).toBe("nav.resumeAria");
+    // The "Building a tool..." contact section was removed from Home on
+    // 2026-11-24; the email, copy button and links live in the footer, and the
+    // résumé is a nav tab.
+    expect(container.querySelector("#contact")).toBeNull();
   });
 });

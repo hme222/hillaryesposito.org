@@ -61,6 +61,7 @@ const en = {
   "nav.dockAbout": "About",
   "nav.resume": "Résumé",
   "nav.resumeAria": "View résumé (PDF, opens in new tab)",
+  "nav.backToTop": "Back to top",
   "nav.themeToDark": "Switch to dark mode",
   "nav.themeToLight": "Switch to light mode",
   // The language toggle is labelled in the language you'd switch TO,
@@ -100,7 +101,6 @@ const en = {
   "home.fold.open": "Open",
   "home.fold.close": "Close",
   "home.index.more": "More work",
-  "home.index.moreSummary": "4 more",
   "home.riso.supportingKicker": "Also documented · Mobbin, three finance apps",
   "home.riso.supportingLink": "Review the Mobbin case study →",
   "home.riso.contactKicker": "Contact",
@@ -171,7 +171,6 @@ const en = {
   "home.proj.knowunity.title": "2.5-week design sprint with an edtech startup, run by Yummy\u00a0Labs",
 
   // ── Home: contact / CTA ──
-  "home.ctaTitle": "Building a tool for healthcare workers or your own team?",
   "contact.note": "Email me",
   "contact.copy": "or copy:",
   "home.linkedinAria": "LinkedIn profile (opens in new tab)",
@@ -259,6 +258,7 @@ const es: Partial<Record<StringKey, string>> = {
   "nav.dockAbout": "Sobre mí",
   "nav.resume": "CV",
   "nav.resumeAria": "Ver CV (PDF, se abre en una pestaña nueva)",
+  "nav.backToTop": "Volver arriba",
   "nav.themeToDark": "Cambiar a modo oscuro",
   "nav.themeToLight": "Cambiar a modo claro",
   "nav.langSwitch": "Switch to English",
@@ -297,7 +297,6 @@ const es: Partial<Record<StringKey, string>> = {
   "home.fold.open": "Abrir",
   "home.fold.close": "Cerrar",
   "home.index.more": "Más trabajo",
-  "home.index.moreSummary": "4 más",
   "home.riso.supportingKicker": "También documentado · Mobbin, tres apps financieras",
   "home.riso.supportingLink": "Ver el estudio de caso de Mobbin →",
   "home.riso.contactKicker": "Contacto",
@@ -370,7 +369,6 @@ const es: Partial<Record<StringKey, string>> = {
   "home.proj.knowunity.title": "Sprint de diseño de 2.5 semanas con una startup de tecnología educativa, dirigido por Yummy\u00a0Labs",
 
   // ── Home: contact / CTA ──
-  "home.ctaTitle": "¿Está creando una herramienta para personal de salud o para su propio equipo?",
   "contact.note": "Escríbame",
   "contact.copy": "o copie:",
   "home.linkedinAria": "Perfil de LinkedIn (se abre en una pestaña nueva)",

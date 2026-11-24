@@ -227,9 +227,10 @@ describe("flagship case-study accessibility", () => {
       root.render(<RisoHome />);
     });
 
-    ["home", "projects", "contact"].forEach((id) => {
+    ["home", "projects"].forEach((id) => {
       expect(container.querySelector(`#${id}`)).not.toBeNull();
     });
+    expect(container.querySelector("#contact")).toBeNull();   // removed 2026-11-24
     // The hero has no buttons; the MSK case study is reached from the work list.
     expect(container.querySelector('a[href="/case-study/msk"]')).not.toBeNull();
     expect(container.querySelector(".rp-recruiter-link")).toBeNull();

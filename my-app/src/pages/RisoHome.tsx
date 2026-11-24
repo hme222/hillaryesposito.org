@@ -1,4 +1,3 @@
-import CopyEmail from "../components/CopyEmail";
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import RisoDefs from "../components/riso/RisoDefs";
@@ -207,36 +206,11 @@ export default function RisoHome() {
           <HomeFold
             id="home-more-work"
             title={t("home.index.more")}
-            summary={t("home.index.moreSummary")}
             openLabel=""
             closeLabel=""
           >
             <WorkIndex label={t("home.index.more")} items={WORK_ITEMS.slice(3)} />
           </HomeFold>
-        </div>
-      </section>
-
-      {/* The recruiter path resolves before secondary journal/about material. */}
-      <section className="rp-section rp-section--alt" id="contact" aria-labelledby="home-contact-title">
-        <div className="rp-wrap rp-close">
-          <h2 id="home-contact-title">{t("home.ctaTitle")}</h2>
-          {/* The hiring actions stay adjacent; the address remains visible
-              and selectable so a missing mail client never dead-ends. */}
-          <div className="rp-hero__ctas">
-            <a className="rp-cta" href="mailto:espositohillary@gmail.com">
-              {t("contact.note")} →
-            </a>
-            <CopyEmail compact />
-            <a
-              className="rp-textLink"
-              href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={t("nav.resumeAria")}
-            >
-              {lang === "es" ? "Ver CV" : "View résumé"}
-            </a>
-          </div>
         </div>
       </section>
 

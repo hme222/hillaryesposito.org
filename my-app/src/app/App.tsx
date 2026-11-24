@@ -8,6 +8,7 @@ import { LanguageContext } from "./LanguageContext";
 import { Lang, translate } from "../i18n/strings";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import BackToTop from "../components/BackToTop";
 import RecruiterPanel from "../components/RecruiterPanel";
 import PhoneZoom from "../components/PhoneZoom";
 import AskDialog from "../components/ask/AskDialog";
@@ -75,6 +76,7 @@ export default function App() {
             </div>
             <Footer />
           </div>
+          <BackToTop />
 
           <RecruiterPanel />
           <PhoneZoom />

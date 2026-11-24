@@ -46,13 +46,14 @@ describe("CopyEmail", () => {
 
   // ---- default state -------------------------------------------------------
 
-  it("shows the label, the address as selectable text, and a Copy button", () => {
+  it("shows the label, the address as selectable text, and an icon-only copy button", () => {
     render();
     expect(container.textContent).toContain("My email");
     const address = container.querySelector(".rp-copyEmail__address") as HTMLElement;
     expect(address.tagName).toBe("CODE");
     expect(address.textContent).toBe(ADDRESS);
-    expect(button().textContent).toBe("Copy");
+    expect(button().getAttribute("aria-label")).toBe("Copy email address");
+    expect(button().textContent).toBe("");
     expect(button().classList.contains("is-copied")).toBe(false);
   });
 
@@ -64,7 +65,7 @@ describe("CopyEmail", () => {
     expect(button().disabled).toBe(false);
   });
 
-  it("keeps the icon decorative so the button name comes from its text", () => {
+  it("keeps the icon decorative so the button name comes from its label", () => {
     render();
     const icon = button().querySelector("svg") as SVGElement;
     expect(icon.getAttribute("aria-hidden")).toBe("true");
@@ -86,13 +87,13 @@ describe("CopyEmail", () => {
     mockLang.current = "es";
     render();
     expect(container.textContent).toContain("Mi correo");
-    expect(button().textContent).toBe("Copiar");
+    expect(button().getAttribute("aria-label")).toBe("Copiar correo");
   });
 
   it("lets the lang prop override the language provider", () => {
     mockLang.current = "en";
     render({ lang: "es" });
-    expect(button().textContent).toBe("Copiar");
+    expect(button().getAttribute("aria-label")).toBe("Copiar correo");
   });
 
   // ---- copied state --------------------------------------------------------
@@ -107,7 +108,7 @@ describe("CopyEmail", () => {
     });
 
     expect(writeText).toHaveBeenCalledWith(ADDRESS);
-    expect(button().textContent).toBe("Copied");
+    expect(button().getAttribute("aria-label")).toBe("Email copied");
     expect(button().classList.contains("is-copied")).toBe(true);
     expect(status().textContent).toBe("Email copied.");
     expect(status().classList.contains("sr-only")).toBe(true);   // announced, not shown a second time
@@ -115,11 +116,11 @@ describe("CopyEmail", () => {
     act(() => {
       jest.advanceTimersByTime(3199);
     });
-    expect(button().textContent).toBe("Copied");
+    expect(button().getAttribute("aria-label")).toBe("Email copied");
     act(() => {
       jest.advanceTimersByTime(2);
     });
-    expect(button().textContent).toBe("Copy");
+    expect(button().getAttribute("aria-label")).toBe("Copy email address");
     expect(status().textContent).toBe("");
   });
 
@@ -130,7 +131,7 @@ describe("CopyEmail", () => {
     await act(async () => {
       button().click();
     });
-    expect(button().textContent).toBe("Copiado");
+    expect(button().getAttribute("aria-label")).toBe("Correo copiado");
     expect(status().textContent).toBe("Correo copiado.");
   });
 
@@ -144,7 +145,8 @@ describe("CopyEmail", () => {
     });
     expect(status().textContent).toBe("Couldn’t copy. Select the text instead.");
     expect(status().classList.contains("sr-only")).toBe(false);   // a failure must be visible, not only announced
-    expect(button().textContent).toBe("Copy");
+    expect(button().getAttribute("aria-label")).toBe("Copy email address");
+    expect(button().textContent).toBe("");
     expect(button().classList.contains("is-copied")).toBe(false);
   });
 

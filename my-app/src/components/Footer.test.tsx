@@ -54,7 +54,7 @@ describe("Footer", () => {
       container.querySelectorAll<HTMLAnchorElement>('a[href="mailto:espositohillary@gmail.com"]')
     ).map((a) => a.textContent);
     expect(emails).toEqual(["espositohillary@gmail.com"]);
-    expect(Array.from(container.querySelectorAll("button")).map((b) => b.textContent)).toContain("Copy");
+    expect(Array.from(container.querySelectorAll("button")).map((b) => b.getAttribute("aria-label"))).toContain("Copy email address");
 
     const resume = container.querySelector<HTMLAnchorElement>(
       'a[href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"]'
