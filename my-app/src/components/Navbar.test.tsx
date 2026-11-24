@@ -77,16 +77,21 @@ describe("Navbar (printed route dock)", () => {
 
   // Ask is switched off (components/ask/askEnabled.ts, 2026-10-13); when it
   // comes back, its item sits between About and Settings again.
-  it("renders the dock items in tab order: Home, Work, About, Settings", async () => {
+  // Résumé joined the dock on 2026-11-24 (her note: "work, resume, About").
+  it("renders the dock items in tab order: Home, Work, Résumé, About, Settings", async () => {
     await render();
     const items = Array.from(container.querySelectorAll(".nav-dock__items > li"));
-    expect(items).toHaveLength(4);
+    expect(items).toHaveLength(5);
     expect(items[0].querySelector(".nav-dock__item--home")).not.toBeNull();
     expect(items[1].querySelector("a")?.textContent).toBe("nav.dockWork");
-    expect(items[2].querySelector("a")?.getAttribute("href")).toBe("/about");
-    expect(items[2].querySelector("a")?.textContent).toBe("nav.dockAbout");
+    const resume = items[2].querySelector("a");
+    expect(resume?.getAttribute("href")).toBe("/assets/Hillary_Esposito_Portfolio_Resume.pdf");
+    expect(resume?.getAttribute("target")).toBe("_blank");
+    expect(resume?.textContent).toBe("nav.resume");
+    expect(items[3].querySelector("a")?.getAttribute("href")).toBe("/about");
+    expect(items[3].querySelector("a")?.textContent).toBe("nav.dockAbout");
     expect(container.querySelector(".ask-bird-nav")).toBeNull();
-    expect(items[3].querySelector(".nav-dock__item--settings")).not.toBeNull();
+    expect(items[4].querySelector(".nav-dock__item--settings")).not.toBeNull();
   });
 
   it("Home and Work are real links, not button-only controls", async () => {
@@ -99,9 +104,8 @@ describe("Navbar (printed route dock)", () => {
     expect(work?.getAttribute("href")).toBe("/?scrollTo=projects");
   });
 
-  it("has no résumé, contact, recruiter, or back-to-top items", async () => {
+  it("has no old résumé link class, recruiter, or back-to-top items", async () => {
     await render();
-    expect(container.textContent).not.toContain("Résumé");
     expect(container.querySelector(".nav-link--resume")).toBeNull();
     expect(container.querySelector(".nav-recruiter-entry")).toBeNull();
     expect(container.querySelector(".nav-back-to-top-entry")).toBeNull();

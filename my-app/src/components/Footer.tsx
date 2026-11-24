@@ -30,34 +30,36 @@ export default function Footer() {
     >
       <div className="site-footer__base">
         <div className="site-footer__baseRow">
-          <p>© 2026 Hillary Esposito</p>
-          <CopyEmail compact />
-          <nav className="site-footer__links" aria-label={t("footer.connect")}>
-            <a
-              href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={t("nav.resumeAria")}
-            >
-              <span className="rp-ext">{t("nav.resume")}</span>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/hillaryesposito/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={t("home.linkedinAria")}
-            >
-              <span className="rp-ext">LinkedIn</span>
-            </a>
-            <a
-              href="https://github.com/hme222"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={t("footer.githubAria")}
-            >
-              <span className="rp-ext">GitHub</span>
-            </a>
-          </nav>
+          <div className="site-footer__contact">
+            <CopyEmail compact />
+            <nav className="site-footer__links" aria-label={t("footer.connect")}>
+              <a
+                href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t("nav.resumeAria")}
+              >
+                <span className="rp-ext">{t("nav.resume")}</span>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/hillaryesposito/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t("home.linkedinAria")}
+              >
+                <span className="rp-ext">LinkedIn</span>
+              </a>
+              <a
+                href="https://github.com/hme222"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t("footer.githubAria")}
+              >
+                <span className="rp-ext">GitHub</span>
+              </a>
+            </nav>
+          </div>
+          <p className="site-footer__name">© 2026 Hillary Esposito</p>
         </div>
       </div>
     </footer>

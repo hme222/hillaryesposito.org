@@ -323,6 +323,18 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
             </li>
 
             <li>
+              <a
+                className="nav-dock__item"
+                href="/assets/Hillary_Esposito_Portfolio_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t("nav.resumeAria")}
+              >
+                {t("nav.resume")}
+              </a>
+            </li>
+
+            <li>
               <Link
                 ref={aboutRef}
                 to="/about"

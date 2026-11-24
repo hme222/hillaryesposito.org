@@ -23,18 +23,22 @@
      that sections do not share a rhythm. These are the values already carrying
      the most weight, promoted to tokens. */
   --sp-gutter: clamp(1rem, 4vw, 2rem);   /* page gutter, the most-used value */
-  --sp-sm: clamp(1.5rem, 4vw, 3rem);
-  --sp-md: clamp(2rem, 5vw, 4rem);
-  --sp-lg: clamp(2.5rem, 6vw, 5rem);
-  --sp-xl: clamp(3rem, 7vw, 5.5rem);     /* standard section padding-block */
-  --sp-2xl: clamp(4rem, 8vw, 7rem);
-  --sp-3xl: clamp(5rem, 10vw, 9rem);     /* major breaks between movements */
-  /* Section rhythm in three steps (2026-11-22), replacing one uniform 128px
-     on every section: tight after a fold or before the close, standard
-     between sections, and wide around the dark bands that change chapter. */
-  --sp-section-sm: clamp(2.5rem, 5vw, 4rem);    /* 64px at 1440 */
-  --sp-section-md: clamp(3.5rem, 7vw, 6rem);    /* 96px */
-  --sp-section-lg: clamp(4.5rem, 11vw, 10rem);  /* 160px */
+  /* 8pt grid, three spacing steps (2026-11-24, her note: "8pt grid system for the
+     padding, 3 set limits: 24, 48, 96"). Every older step below now points at one
+     of these, so a section can only be spaced 24, 48 or 96 at desktop. Each step
+     is a multiple of 8 at its smallest and largest value. */
+  --space-1: clamp(1rem, 3vw, 1.5rem);    /* 16px on phones, 24px */
+  --space-2: clamp(2rem, 4vw, 3rem);      /* 32px on phones, 48px */
+  --space-3: clamp(4rem, 7vw, 6rem);      /* 64px on phones, 96px */
+  --sp-sm: var(--space-1);
+  --sp-md: var(--space-2);
+  --sp-lg: var(--space-2);
+  --sp-xl: var(--space-3);               /* standard section padding-block */
+  --sp-2xl: var(--space-3);
+  --sp-3xl: var(--space-3);              /* major breaks between movements */
+  --sp-section-sm: var(--space-2);       /* tight: after a fold or before the close */
+  --sp-section-md: var(--space-3);       /* standard between sections */
+  --sp-section-lg: var(--space-3);       /* around the dark bands that change chapter */
 
   /* Radius. The stated rule is square plates, with radius reserved for literal
      device hardware. Four values were doing "near-square plate" and six were

@@ -4063,16 +4063,16 @@ body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-g
    map use: in a wide box the phones were small and read as squares. */
 .rp-index__row--visual .rp-index__visual:has(.rp-phonePair) { aspect-ratio: 4 / 5; }
 .rp-phonePair { position: absolute; inset: 0; }
-.rp-phonePair .rp-phoneReel {
+.rp-index__visual .rp-phonePair .rp-phoneReel {
   position: absolute; height: 76%; width: auto; aspect-ratio: var(--phone-ar, 390 / 844);
   border-radius: var(--r-device);
 }
-.rp-phonePair .rp-phoneReel__screen { height: 100%; width: 100%; aspect-ratio: auto; }
-.rp-phonePair .rp-phoneReel--front {
-  right: 7%; top: 12%; z-index: 2; transform: rotate(-4deg);
+.rp-index__visual .rp-phonePair .rp-phoneReel__screen { height: 100%; width: 100%; aspect-ratio: auto; }
+.rp-index__visual .rp-phonePair .rp-phoneReel--front {
+  right: 7%; top: 12%; z-index: 2; transform: none; /* upright: a rotated screenshot is resampled and goes soft (2026-11-24) */
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--ink) 25%, transparent);
 }
-.rp-phonePair .rp-phoneReel--back { right: 40%; top: 7%; z-index: 1; transform: rotate(5deg); }
+.rp-index__visual .rp-phonePair .rp-phoneReel--back { right: 40%; top: 7%; z-index: 1; transform: rotate(5deg); will-change: transform; }
 .rp-workHead { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem 1rem; }
 .rp-reelToggle {
   min-height: 44px; padding: 0 .25rem; border: 0; background: none; cursor: pointer;
@@ -4312,8 +4312,11 @@ body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-g
   .about-stage__cue[data-cue="me"][data-settle="a"] { animation: aboutNameWeight 1.5s cubic-bezier(.2, .7, .2, 1) 0s backwards; }
   .about-stage__cue[data-cue="me"][data-settle="b"] { animation: aboutNameWeightB 1.5s cubic-bezier(.2, .7, .2, 1) 0s backwards; }
   /* home-cooked: a short simmer (finite, so a click never leaves it bobbing) */
-  .about-stage__cue[data-cue="cook"]:is(:hover, :focus-visible) .about-stage__ch { animation: aboutBob .42s ease-in-out 3 alternate; animation-delay: calc(var(--i) * 40ms); }
-  @keyframes aboutBob { to { transform: translateY(-.16em); } }
+  .about-stage__cue[data-cue="cook"]:is(:hover, :focus-visible) .about-stage__ch { animation: aboutBob .6s ease-in-out 2; animation-delay: calc(var(--i) * 40ms); }
+  /* Whole up-and-down loops, so each letter ends where it started. The old
+     "alternate" with 3 passes ended on the raised pose and snapped back, which
+     read as janky on the second run (2026-11-24). */
+  @keyframes aboutBob { 0%, 100% { transform: none; } 50% { transform: translateY(-.16em); } }
   /* blooming: the letters swell from regular to bold, one after another */
   .about-stage__cue[data-cue="plant"] .about-stage__ch { font-variation-settings: "wght" 400; transition: font-variation-settings .55s cubic-bezier(.3, .9, .3, 1) calc(var(--i) * 28ms); }
   .about-stage__cue[data-cue="plant"]:is(:hover, :focus-visible) .about-stage__ch { font-variation-settings: "wght" 700; }
@@ -4401,7 +4404,7 @@ html.cs-chrome .nav-dock__pill .nav-dock__track { flex: 0 0 auto; }
    sideways. Lives here, not in flagship-case-study.css, because Grove only
    loads this file. */
 .fp-fan {
-  --fan-w: clamp(150px, 20vw, 300px);
+  --fan-w: clamp(150px, 20vw, 300px);   /* back to full size: 10% smaller read as less crisp (2026-11-24) */
   --fan-ratio: 390 / 844;
   --fan-spread: calc(var(--fan-w) * .53);
   --fan-tilt: 6deg;
@@ -4947,7 +4950,7 @@ html.cs-chrome .nav-dock__pill .nav-dock__track { flex: 0 0 auto; }
    are unchanged. Each page shows a different part of the painting
    (--collage-crop). The collage is a background, so nothing is announced. */
 .riso-page {
-  --close-pad: clamp(3.5rem, 10vw, 7.5rem);
+  --close-pad: var(--space-3);
   /* 82%, not the mockup's 78%: at 78% the quieter --ink-2 text (the résumé
      link, the Spanish sentence) would fall to ~4.4:1 over the darkest
      unblurred patch of the painting; at 82% the floor is ~4.8:1. */
@@ -5086,7 +5089,6 @@ body:has(.riso-page .rp-section > .rp-close) .site-footer__baseRow { width: 100%
 body:has(.riso-page .rp-section > .rp-close) .site-footer__base p { opacity: 1; color: var(--ink-on-dark); }
 body:has(.riso-page .rp-section > .rp-close) .site-footer__links a { color: var(--ink-on-dark); }
 body:has(.riso-page .rp-section > .rp-close) .site-footer__links .rp-ext::after { color: var(--coral-on-dark); }
-body:has(.riso-page .rp-section > .rp-close) .site-footer .rp-copyEmail { display: none; }
 @media (max-width: 700px) {
   body:has(.riso-page .rp-section > .rp-close) .site-footer__baseRow { gap: .5rem; }
 }
@@ -5100,3 +5102,128 @@ body:has(.riso-page .rp-section > .rp-close) .site-footer .rp-copyEmail { displa
 /* A close with no headline or sentence (Mobbin, unlisted): only the email
    buttons, so the section shrinks to the buttons. */
 .riso-page .rp-section:has(> .rp-close:not(:has(h2, p))) { padding-block: var(--sp-lg, 2rem); }
+
+/* ---------- Footer, one layout everywhere (2026-11-24) ----------
+   Left: the email with its copy icon, then Résumé, LinkedIn, GitHub. Right:
+   the name and year. The email is no longer hidden under a close, since the
+   footer is where she wants it. */
+.site-footer__baseRow { display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 2rem; }
+.site-footer__contact { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem 1.5rem; }
+.site-footer__name { margin-left: auto; text-align: right; }
+@media (max-width: 700px) {
+  .site-footer__baseRow { flex-direction: column; align-items: flex-start; }
+  .site-footer__name { margin-left: 0; text-align: left; }
+}
+body:has(.riso-page .rp-section > .rp-close) .site-footer .rp-copyEmail__address { color: var(--ink-on-dark); }
+body:has(.riso-page .rp-section > .rp-close) .site-footer .rp-copyEmail__button { color: var(--ink-on-dark); border-color: color-mix(in srgb, var(--ink-on-dark) 55%, transparent); }
+
+/* ---------- Copy button: icon only, tooltip names it (2026-11-24) ---------- */
+.rp-copyEmail__button, .rp-copyEmail--compact .rp-copyEmail__button {
+  position: relative; box-sizing: border-box; width: 44px; min-width: 44px; height: 44px; min-height: 44px; padding: 0; gap: 0;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 1rem;
+}
+.rp-copyEmail__button::after {
+  content: attr(data-tip); position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%);
+  padding: .3rem .55rem; border-radius: var(--r-control); background: var(--ink); color: var(--paper);
+  font: 600 var(--ts-label)/1.2 var(--shell-sans); white-space: nowrap; pointer-events: none;
+  opacity: 0; transition: opacity .12s ease;
+}
+.rp-copyEmail__button:hover::after, .rp-copyEmail__button:focus-visible::after, .rp-copyEmail__button.is-copied::after { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .rp-copyEmail__button::after { transition: none; } }
+@media (forced-colors: active) { .rp-copyEmail__button::after { background: Canvas; color: CanvasText; border: 1px solid CanvasText; } }
+
+/* ---------- One real phone frame for every phone (2026-11-24) ----------
+   A bezel (the ink-colored border), a light outer edge so it reads on dark
+   screens, and a camera pill, on every phone-shaped element. The corner is the
+   --r-device percentage. This replaces the earlier flat 1px hairline frames and
+   the case-by-case "no drawn bezel" exceptions. Border and edge use !important
+   because several older, more specific rules (the hero and strip frames) set
+   their own hairline border. */
+:is(.rp-phoneReel, .fp-capture, .rp-device, .fp-sequence__phone, .rp-strip__frame):not(.rp-device--app, .rp-strip__frame--app) {
+  --bezel: 5px;
+  position: relative; box-sizing: border-box;
+  border: var(--bezel) solid var(--ink) !important;
+  border-radius: var(--r-device);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--paper) 45%, transparent), 0 24px 48px -26px rgba(0, 0, 0, .5);
+}
+:is(.rp-phoneReel, .fp-capture, .rp-device, .fp-sequence__phone, .rp-strip__frame):not(.rp-device--app, .rp-strip__frame--app)::after {
+  content: ""; position: absolute; z-index: 3; top: 1.1%; left: 50%; transform: translateX(-50%);
+  width: 21%; aspect-ratio: 4.4 / 1; border-radius: 999px; background: var(--ink); pointer-events: none;
+}
+/* Small phones (strips, decision-story pairs) get a thinner bezel. */
+:is(.rp-strip__frame, .rp-decisionStory__pair .fp-sequence__phone--story) { --bezel: 3px; }
+/* Grove's hero device already draws its own camera pill; keep one. */
+.rp-device::before { display: none; }
+
+/* ---------- No underlines; arrows lift on hover (2026-11-24) ----------
+   Links and the email address carry no underline. The cue is the color change
+   on hover and focus, and an arrow that moves up and out. Inline text links
+   keep their green color and semibold weight so they still read as links. */
+:is(.rp-copyEmail__address, .site-footer__links a, .rp-credential__link, .rp-textLink, .rp-reelToggle, a.rp-ext) { text-decoration: none; }
+:is(.rp-copyEmail__address, .site-footer__links a, .rp-credential__link, .rp-textLink, .rp-reelToggle):hover { color: var(--green); }
+.rp-ext::after { display: inline-block; transition: transform .18s ease; }
+a:hover > .rp-ext::after, a.rp-ext:hover::after, a:focus-visible > .rp-ext::after, a.rp-ext:focus-visible::after { transform: translate(2px, -3px); }
+@media (prefers-reduced-motion: reduce) { .rp-ext::after { transition: none; } }
+body:has(.riso-page .rp-section > .rp-close) .site-footer :is(.rp-copyEmail__address, .site-footer__links a):hover { color: var(--coral-on-dark); }
+
+/* Underlines, second pass: the editorial sheet's footer rule and the base link
+   rule are more specific than the block above, so these repeat the selectors at
+   higher specificity (2026-11-24). */
+.site-footer .site-footer__links a, .site-footer a.rp-copyEmail__address, .rp-copyEmail a.rp-copyEmail__address,
+.rp-close a.rp-copyEmail__address, a.rp-credential__link, a.rp-textLink { text-decoration: none; }
+
+/* In-between widths (2026-11-24, her note "diff breakpoints: fix the in-between
+   widths"): between a phone and a laptop the Home picture column was ~310px, and
+   the five MSK step labels clipped ("messag"). The column is wider here and the
+   step labels use the smaller step so every word fits. */
+@media (min-width: 761px) and (max-width: 1000px) {
+  .rp-index__row--visual { grid-template-columns: minmax(0, 1fr) clamp(300px, 46vw, 520px); }
+  .rp-index__shot--msk .msk-journey--static .msk-journey__track { gap: .3rem; }
+  .rp-index__shot--msk .msk-journey--static .msk-journey__track li { padding-inline: .15rem; }
+  .rp-index__shot--msk .msk-journey--static .msk-journey__track li > b { font-size: var(--ts-label); overflow-wrap: anywhere; }
+}
+
+/* Grove's in-app captures (.rp-device--app, .rp-strip__frame--app) are 614x743
+   browser views, not phones: no bezel, no camera pill, and the plate corner
+   they had before. The phone frame above shrank them and cropped the image with
+   object-fit: cover, which made the screens look soft (2026-11-24). */
+.rp-device.rp-device--app, .rp-strip__frame.rp-strip__frame--app {
+  border: 1px solid var(--hair); border-radius: var(--r-plate);
+  box-shadow: 0 2px 6px rgba(0,0,0,.12), 0 30px 60px -20px rgba(0,0,0,.35);
+}
+
+/* Footer links at the far ends (2026-11-24): the left group and the name sit at
+   the page gutter, not inside the 1280px content column. */
+.site-footer .site-footer__base { padding-inline: var(--sp-gutter); }
+
+/* ---------- Back to top (2026-11-24) ----------
+   A small floating glass arrow, bottom right, on case studies once the reader
+   is near the end. Same glass recipe as the nav dock, using the shell tokens because the button sits outside .riso-page; hidden (and out of the
+   tab order) until it is needed. */
+.back-to-top {
+  position: fixed; z-index: 40; right: var(--sp-gutter); bottom: calc(var(--sp-gutter) + 3.5rem + env(safe-area-inset-bottom, 0px));
+  display: grid; place-items: center; width: 48px; height: 48px; padding: 0; cursor: pointer;
+  color: var(--shell-ink); border: 1px solid color-mix(in srgb, var(--shell-paper) 45%, var(--shell-hair)); border-radius: 999px;
+  background: color-mix(in srgb, var(--shell-paper) 62%, transparent);
+  -webkit-backdrop-filter: blur(16px) saturate(1.6); backdrop-filter: blur(16px) saturate(1.6);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 70%, transparent), 0 12px 28px -14px color-mix(in srgb, var(--shell-ink) 50%, transparent);
+  opacity: 0; transform: translateY(8px); pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease;
+}
+.back-to-top.is-shown { opacity: 1; transform: none; pointer-events: auto; }
+.back-to-top:hover { background: color-mix(in srgb, var(--shell-paper) 82%, transparent); }
+.back-to-top:hover svg { transform: translateY(-2px); }
+.back-to-top svg { transition: transform .18s ease; }
+.back-to-top:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .back-to-top, .back-to-top svg { transition: none; } .back-to-top { transform: none; } }
+@media (prefers-reduced-transparency: reduce) { .back-to-top { background: var(--shell-paper); -webkit-backdrop-filter: none; backdrop-filter: none; } }
+@media (forced-colors: active) { .back-to-top { background: Canvas; border-color: CanvasText; color: CanvasText; } }
+
+/* One hero size on Home and About (2026-11-24, her note: sizing is the design
+   system across pages). About's headline caps at the same token as Home's name
+   and still shrinks to fit its column; its bio uses the result-line size. */
+:root { --ts-hero: clamp(3.25rem, 9.5vw, 7.5rem); }
+.about-stage__hook { font-size: min(var(--ts-hero), 16.2cqw); }
+.about-stage:lang(es) .about-stage__hook { font-size: min(var(--ts-hero), 13.6cqw); }
+.about-stage__text p { font-size: var(--ts-result); }
+@media (max-width: 899px) { .about-stage__text p { font-size: var(--ts-lead); } }
