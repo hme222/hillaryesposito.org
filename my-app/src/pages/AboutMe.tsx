@@ -142,7 +142,7 @@ export default function About() {
         }
       }}
     >
-      {kind === "run" || kind === "me" ? text : letters(text)}
+      {kind === "me" ? text : letters(text)}
     </button>
   );
 
