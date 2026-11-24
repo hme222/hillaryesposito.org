@@ -3874,7 +3874,7 @@ body:has(.riso-home) .riso-home .rp-nameSplash__word {
 .rp-index__row:focus-visible .rp-index__desc { max-height: 24rem; opacity: 1; margin-top: .5rem; }
 @media (hover: hover) {
   .rp-index__row:hover { background: color-mix(in srgb, var(--ink) 4%, transparent); }
-  .rp-index__row:hover .rp-index__title { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .15em; }
+  .rp-index__row:hover .rp-index__title { text-decoration: none; color: var(--green); }
   .rp-index__row:hover .rp-index__desc { max-height: 24rem; opacity: 1; margin-top: .5rem; }
 }
 @media (max-width: 600px) {
@@ -4323,9 +4323,13 @@ body .flagship-page .fp-receipt__copy > h2 + p { margin-top: var(--rp-headline-g
   /* Luna: a tail curl through the letters */
   .about-stage__cue[data-cue="luna"]:is(:hover, :focus-visible) .about-stage__ch { animation: aboutCurl .55s ease-in-out both; animation-delay: calc(var(--i) * 80ms); transform-origin: 50% 100%; }
   @keyframes aboutCurl { 0%, 100% { transform: none; } 45% { transform: translateY(-.2em) rotate(-12deg); } }
-  /* running: zips off and back in */
-  .about-stage__cue[data-cue="run"]:is(:hover, :focus-visible) { animation: aboutZip .6s cubic-bezier(.5, 0, .3, 1); }
-  @keyframes aboutZip { 0% { transform: none; opacity: 1; } 40% { transform: translateX(1.3em); opacity: 0; } 41% { transform: translateX(-1.3em); opacity: 0; } 100% { transform: none; opacity: 1; } }
+  /* running: the letters dash off to the right and slip back in from the left,
+     one after another. The old version moved the whole button, so the pointer
+     slid off it mid-animation, hover ended, the animation cancelled and
+     restarted on re-entry, and the word flickered (2026-11-24). Now the button
+     stays put and only its letters move. */
+  .about-stage__cue[data-cue="run"]:is(:hover, :focus-visible) .about-stage__ch { animation: aboutZip .7s cubic-bezier(.5, 0, .3, 1) both; animation-delay: calc(var(--i) * 45ms); }
+  @keyframes aboutZip { 0% { transform: none; opacity: 1; } 40% { transform: translateX(.9em); opacity: 0; } 41% { transform: translateX(-.9em); opacity: 0; } 100% { transform: none; opacity: 1; } }
 }
 /* Phone and small tablet: the photo first, then the text on its own glass panel. The page
    scrolls (no cramped one-screen mode, no tiny text). */
@@ -5219,11 +5223,38 @@ body:has(.riso-page .rp-section > .rp-close) .site-footer :is(.rp-copyEmail__add
 @media (prefers-reduced-transparency: reduce) { .back-to-top { background: var(--shell-paper); -webkit-backdrop-filter: none; backdrop-filter: none; } }
 @media (forced-colors: active) { .back-to-top { background: Canvas; border-color: CanvasText; color: CanvasText; } }
 
-/* One hero size on Home and About (2026-11-24, her note: sizing is the design
-   system across pages). About's headline caps at the same token as Home's name
-   and still shrinks to fit its column; its bio uses the result-line size. */
+/* About uses Home's type, exactly (2026-11-24, her note: "about text sizing isn't
+   the same as main page"): the headline is Home's name size (--ts-hero, same
+   weight, tracking and leading) and wraps to two lines instead of shrinking to
+   fit one; the bio is Home's body size, 16px on a 26px line. */
 :root { --ts-hero: clamp(3.25rem, 9.5vw, 7.5rem); }
-.about-stage__hook { font-size: min(var(--ts-hero), 16.2cqw); }
-.about-stage:lang(es) .about-stage__hook { font-size: min(var(--ts-hero), 13.6cqw); }
-.about-stage__text p { font-size: var(--ts-result); }
-@media (max-width: 899px) { .about-stage__text p { font-size: var(--ts-lead); } }
+.about-stage__hook, .about-stage:lang(es) .about-stage__hook { font-size: var(--ts-hero); line-height: .9; letter-spacing: -.035em; white-space: normal; text-wrap: balance; }
+.about-stage__text p, .about-stage__text p + p { font-size: var(--ts-body); line-height: 1.625; }
+@media (max-width: 899px) { .about-stage__text p { font-size: var(--ts-body); line-height: 1.625; } }
+
+/* ---------- No underline on hover, on Home's case-study rows or inside the case
+   studies (2026-11-24, her question "why isn't the underline removed when I hover
+   over case studies?"). The Home row title used to underline on hover; the role
+   rail, proof links and stat sources underlined on hover or at rest. Color and
+   weight carry the hover cue instead. Scoped to the case-study pages so Home's
+   dotted definitions and focus outlines keep working. */
+:is(.flagship-page, .spanish-riso-case) :is(a, summary, button, .fp-roleRail__summaryLabel, .rp-stat__source, .fp-proofLink b, .rp-credential__link):is(:link, :visited, :hover, :focus-visible, :active),
+:is(.flagship-page, .spanish-riso-case) :is(.fp-roleRail__summaryLabel, .rp-stat__source, .fp-proofLink b, .rp-credential__link) { text-decoration: none !important; }
+:is(.flagship-page, .spanish-riso-case) :is(.fp-roleRail__summaryLabel, .rp-stat__source, .fp-proofLink b, .rp-credential__link):hover { color: var(--green); }
+
+/* Red arrows and copy button again, and a tighter tooltip (2026-11-24). */
+.rp-ext::after { color: var(--coral); }
+.rp-cta:not(.rp-cta--ghost) .rp-ext::after { color: currentColor; }
+.rp-copyEmail__button { color: var(--coral); border-color: var(--coral); }
+.rp-copyEmail__button:hover { background: color-mix(in srgb, var(--coral) 10%, transparent); }
+.rp-copyEmail__button.is-copied { color: var(--green); border-color: var(--green); }
+.rp-copyEmail__button::after { bottom: calc(100% + 2px); }
+body:has(.riso-page .rp-section > .rp-close) .site-footer .rp-copyEmail__button { color: var(--coral-on-dark); border-color: color-mix(in srgb, var(--coral-on-dark) 70%, transparent); }
+body:has(.riso-page .rp-section > .rp-close) .site-footer .rp-copyEmail__button.is-copied { color: var(--ink-on-dark); border-color: var(--ink-on-dark); }
+.dark-mode .rp-copyEmail__button { color: var(--coral-on-dark, var(--coral)); border-color: var(--coral-on-dark, var(--coral)); }
+/* The footer is always a dark strip and sits outside .riso-page, where --coral is
+   not defined, so its arrows and copy button take the on-dark coral directly. */
+.site-footer .rp-ext::after { color: var(--coral-on-dark); }
+.site-footer .rp-copyEmail__button { color: var(--coral-on-dark); border-color: color-mix(in srgb, var(--coral-on-dark) 70%, transparent); }
+.site-footer .rp-copyEmail__button:hover { background: color-mix(in srgb, var(--coral-on-dark) 14%, transparent); }
+.site-footer .rp-copyEmail__button.is-copied { color: var(--ink-on-dark, #f5efe6); border-color: currentColor; }
